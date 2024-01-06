@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 /**
- * Enqueue all styles
+ * Enqueue all scripts
  */
 if ( ! function_exists( 'ast_scripts' ) ) {
 	add_action( 'wp_enqueue_scripts', 'ast_scripts' );
@@ -18,7 +18,7 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 	}
 }
 /**
- * Enqueue all scripts
+ * Enqueue all styles
  */
 if ( ! function_exists( 'ast_styles' ) ) {
 	add_action( 'wp_enqueue_scripts', 'ast_styles' );
@@ -28,5 +28,6 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		                             '/assets/css/magnific-popup.css', array(), null, 'all' );
 		wp_enqueue_style( 'owl-css', get_template_directory_uri() .
 		                             '/assets/css/owl.carousel.min.css', array(), null, 'all' );
+		wp_enqueue_style( 'fonts', 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap', array(), null, 'all' );
 	}
 }
