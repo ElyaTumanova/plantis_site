@@ -13,26 +13,34 @@
 <div id="page" class="site">
 
 	<header id="header" class="header" role="banner">
-		<div class="logo">
-			<?php $logo = carbon_get_theme_option('logo')?>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="200" height="35"></a>
+		<div class="header__info">
+
 		</div>
-		<div class="description">
-			<?php $site_title = carbon_get_theme_option('site_title')?>
-			<?php if ( is_front_page() || is_home() ) : ?>
-				<h1 class="site-title"><?php echo $site_title ?></h1>
-			<?php else : ?>
-				<p class="site-title"><?php echo $site_title ?></p>
-			<?php endif; ?>
-			<p class="site-description"><?php bloginfo( 'description' ); ?></p>
-		</div><!-- .description -->
-		
-		<div class="search">
-			<?get_search_form();?>
+		<div class="header__main">
+			<div class="logo">
+				<?php $logo = carbon_get_theme_option('logo')?>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="200" height="35"></a>
+			</div>
+			<div class="description">
+				<?php $site_title = carbon_get_theme_option('site_title')?>
+				<?php if ( is_front_page()) : ?>
+					<h1 class="site-title"><?php echo $site_title ?></h1>
+				<?php else : ?>
+					<p class="site-title"><?php echo $site_title ?></p>
+				<?php endif; ?>
+			</div><!-- .description -->
+			<div class="search">
+				<?get_search_form();?>
+			</div>
+			<div class="header-cart">
+				<?php plnt_woocommerce_cart_header(); ?>
+			</div>
 		</div>
 		
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<?php ast_primary_menu(); ?>
-		</nav><!-- #site-navigation -->
+		<div class="header__menu">
+			<nav id="site-navigation" class="main-navigation" role="navigation">
+				<?php ast_primary_menu(); ?>
+			</nav><!-- #site-navigation -->
+		</div>
 	</header><!-- #header -->
 	
