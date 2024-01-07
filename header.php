@@ -13,18 +13,20 @@
 <div id="page" class="site">
 
 	<header id="header" class="header" role="banner">
-		<div class="branding">
-			<?php if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php endif; ?>
-			<p class="site-description"><?php bloginfo( 'description' ); ?></p>
-		</div><!-- .site-branding -->
 		<div class="logo">
 			<?php $logo = carbon_get_theme_option('logo')?>
-			<img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="537" height="95">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="200" height="35"></a>
 		</div>
+		<div class="description">
+			<?php $site_title = carbon_get_theme_option('site_title')?>
+			<?php if ( is_front_page() || is_home() ) : ?>
+				<h1 class="site-title"><?php echo $site_title ?></h1>
+			<?php else : ?>
+				<p class="site-title"><?php echo $site_title ?></p>
+			<?php endif; ?>
+			<p class="site-description"><?php bloginfo( 'description' ); ?></p>
+		</div><!-- .description -->
+		
 		<div class="search">
 			<?get_search_form();?>
 		</div>

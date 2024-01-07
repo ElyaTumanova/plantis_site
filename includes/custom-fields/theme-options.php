@@ -11,8 +11,13 @@ Container::make('theme_options', 'Настройки темы')
          ->add_fields(array(
 			 Field::make( 'image', 'logo', 'Logo' )
 			 ->set_value_type( 'url' ),
-	         Field::make('header_scripts', 'crb_header_script'),
-	         Field::make('footer_scripts', 'crb_footer_script'),
+			 Field::make( 'image', 'account_icon', 'Personal Account' )
+			 ->set_value_type( 'url' ),
+			 Field::make( 'image', 'whishlist_icon', 'Wishlist' )
+			 ->set_value_type( 'url' ),
+			 Field::make( 'image', 'cart_icon', 'Cart' )
+			 ->set_value_type( 'url' ),
+			 Field::make( 'text', 'site_title', 'Site title in header' )
          ));
 
 // Add second options page under 'Basic Options'
