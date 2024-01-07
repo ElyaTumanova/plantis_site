@@ -1,6 +1,7 @@
 .header__main {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     color: var(--accent-color);
 }
 
@@ -8,6 +9,7 @@
     font-size: 16px;
     font-weight: 600;
     text-transform: uppercase;
+    margin: 0;
 }
 
 /* cart styles */
