@@ -46,6 +46,9 @@ html {
 
 body {
     margin: 0;
+    --accent-color: #146F41;
+    --red-color: #F93D05;
+    --white-color: #fff;
 }
 
 article,

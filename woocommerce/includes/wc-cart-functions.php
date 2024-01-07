@@ -7,9 +7,9 @@ function plnt_woocommerce_cart_header() {
 	?>
 		<?php $cart_icon = carbon_get_theme_option('cart_icon')?>
 		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="header-cart__link">
+			<span class="header-cart__count"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
 			<img class="header-cart__icon" src="<?php echo $cart_icon ?>" alt="cart" width="25" height="25">
 			<span class="header-cart__label">Корзина</span>		
-			<span class="header-cart__count"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
 		</a>
 	<?php
 }

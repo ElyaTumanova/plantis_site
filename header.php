@@ -19,7 +19,7 @@
 		<div class="header__main">
 			<div class="logo">
 				<?php $logo = carbon_get_theme_option('logo')?>
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="200" height="35"></a>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
 			</div>
 			<div class="description">
 				<?php $site_title = carbon_get_theme_option('site_title')?>

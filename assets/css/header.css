@@ -1,0 +1,42 @@
+.header__main {
+    display: flex;
+    justify-content: space-between;
+    color: var(--accent-color);
+}
+
+.site-title {
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* cart styles */
+
+.header-cart {
+    position: relative;
+}
+
+.header-cart__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-cart__label {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.header-cart__count {
+    position: absolute;
+    top: -7px;
+    right: 3px;
+    font-size: 10px;
+    background: var(--red-color);
+    padding: 2px 4px;
+    border-radius: 10px;
+    line-height: 10px;
+    color: var(--white-color);
+}
+
