@@ -21,6 +21,10 @@
 			<?php endif; ?>
 			<p class="site-description"><?php bloginfo( 'description' ); ?></p>
 		</div><!-- .site-branding -->
+
+		<div class="search">
+			<?get_search_form();?>
+		</div>
 		
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<?php ast_primary_menu(); ?>
