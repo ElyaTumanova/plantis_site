@@ -21,7 +21,10 @@
 			<?php endif; ?>
 			<p class="site-description"><?php bloginfo( 'description' ); ?></p>
 		</div><!-- .site-branding -->
-
+		<div class="logo">
+			<?php $logo = carbon_get_theme_option('logo')?>
+			<img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="537" height="95">
+		</div>
 		<div class="search">
 			<?get_search_form();?>
 		</div>
