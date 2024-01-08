@@ -14,13 +14,19 @@
 
 	<header id="header" class="header" role="banner">
 		<div class="header__info">
-
 		</div>
 		<div class="header__main">
 			<div class="logo">
 				<?php $logo = carbon_get_theme_option('logo')?>
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
 			</div><!-- .logo -->
+			<div class="search-btn">
+				<?php $search_icon = carbon_get_theme_option('search_icon')?>
+				<button class="search-btn__button">
+					<img class="header-btn__icon" src="<?php echo $search_icon ?>" alt="search" width="25" height="25">
+					<span class="header-btn__label">Корзина</span>		
+				</button>
+			</div>
 			<div class="description">
 				<?php $site_title = carbon_get_theme_option('site_title')?>
 				<?php if ( is_front_page()) : ?>

@@ -17,6 +17,8 @@ Container::make('theme_options', 'Настройки темы')
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'cart_icon', 'Cart' )
 			 ->set_value_type( 'url' ),
+			 Field::make( 'image', 'search_icon', 'Search' )
+			 ->set_value_type( 'url' ),
 			 Field::make( 'text', 'site_title', 'Site title in header' )
          ));
 
