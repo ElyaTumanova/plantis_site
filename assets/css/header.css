@@ -81,3 +81,15 @@
     text-transform: uppercase;
     line-height: 14px;
 }
+
+/* search popup styles */
+
+.search-popup {
+    display: none;
+}
+
+.search-popup_active{
+    display: block;
+    position: fixed;
+    top: 0;
+}
