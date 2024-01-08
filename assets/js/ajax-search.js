@@ -10,6 +10,7 @@ jQuery(function ($){
             action: 'search-ajax',
             nonce: search_form.nonce
         };
+        console.log(data);
         $.ajax ({
             url: search_form.url,
             data: data,
