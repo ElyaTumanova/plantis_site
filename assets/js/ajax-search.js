@@ -1,6 +1,6 @@
 jQuery(function ($){
-    $('.search_form input[name="s"]').on('keyup', function (){  //стили контейнеров формы поиска из header
-        var search = $('.search_form input[name="s"]').val();
+    $('.search-form input[name="s"]').on('keyup', function (){  //стили контейнеров формы поиска из header
+        var search = $('.search-form input[name="s"]').val();
         console.log(search);
         if (search.length <4) {
             return false; //ajax works after 4 digits input
