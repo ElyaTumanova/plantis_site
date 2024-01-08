@@ -82,7 +82,7 @@
     line-height: 14px;
 }
 
-/* search popup styles */
+/* search and search popup styles */
 
 .search-popup {
     display: none;
@@ -91,14 +91,26 @@
 .search-popup_active{
     display: block;
     position: fixed;
-    top: 86px;
+    top: 67px;
     background: var(--background);
     width: 100%;
-    padding: 10px 0;
 }
 
 .search {
     padding: 10px 0;
+}
+
+.search-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-field {
+    border: none;
+}
+
+.search-submit {
+    display: none;
 }
 
 .popup-overlay {

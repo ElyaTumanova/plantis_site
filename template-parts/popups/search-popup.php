@@ -5,7 +5,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="search-popup">
     <div class="search">
-        <?get_search_form();?>
+        <div class="search__wrap">
+            <?get_search_form();?>
+            <div class="search__close"></div>
+        </div>
         <div class="search-result"></div>
     </div>
     <div class="popup-overlay"></div>
