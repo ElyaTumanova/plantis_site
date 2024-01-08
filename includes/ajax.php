@@ -25,12 +25,13 @@ function plnt_search_ajax_action_callback (){
             $product = wc_get_product( $product_id );
             print_r($product);
             $price = get_post_meta( get_the_ID(), '_regular_price', true);
-            $sale = get_post_meta( get_the_ID(), '_price', true);
+            $sale = get_post_meta( get_the_ID(), '_sale_price', true);
             ?>
             <div class="search-result__item">
                 <a href="<?php echo get_permalink();?>" class="search-result__link" target="blank">
                     <span class="search-result__title"><?php echo get_the_title();?></span>
-                    <span class="search-result__title"><?php echo $price?></span>
+                    <span class="search-result__price"><?php echo $price?></span>
+                    <span class="search-result__sale"><?php echo get_post_meta( get_the_ID(), '_sale_price', true);?></span>
                 </a>  
             </div>
             <?php
