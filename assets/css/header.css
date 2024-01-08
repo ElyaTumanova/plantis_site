@@ -42,3 +42,29 @@
     color: var(--white-color);
 }
 
+
+/* main menu styles */
+
+.header__menu {
+    background-color: var(--accent-color);
+    color: var(--white-color);
+}
+.primary-menu {
+    display: flex;
+    list-style: none;
+    column-gap: 25px;
+    justify-content: space-between;
+}
+.sub-menu {
+    list-style: none;
+}
+
+.primary-menu a, .sub-menu a {
+    text-decoration: none;
+}
+
+.primary-menu a:hover, .sub-menu a:hover {
+    text-decoration-color: inherit;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+}
