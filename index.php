@@ -31,5 +31,5 @@
 </div><!-- .content-area -->
 
 <?php get_footer(); ?>
-<?php plnt_search_popup(); ?>
+<?php get_template_part( '/templates/search-popup' ); ?>
 
