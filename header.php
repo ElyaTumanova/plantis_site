@@ -31,6 +31,9 @@
 			</div><!-- .description -->
 			<div class="search">
 				<?get_search_form();?>
+				<div class="serach__result">
+					
+				</div>
 			</div>
 			<div class="header-cart">
 				<?php plnt_woocommerce_cart_header(); ?>

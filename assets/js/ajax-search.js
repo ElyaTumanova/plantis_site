@@ -1,0 +1,25 @@
+jQuery(function ($){
+    $('.search_form input[name="s"]').on('keyup', function (){  //стили контейнеров формы поиска из header
+        var search = $('.search_form input[name="s"]').val();
+        if (search.length <4) {
+            return false; //ajax works after 4 digits input
+        }
+        var data = {
+            s: search,
+            action: 'search-ajax',
+            nonce: search_form.nonce
+        };
+        $.ajax ({
+            url: search_form.url,
+            data: data,
+            type: 'POST',
+            dataType: 'json',
+            beforeSend: function(xhr){
+            },
+            success: function(data){
+                $('.search .serach__result').html(data.out);    //стили контейнеров формы поиска из header
+                console.log(data);
+            }
+        });
+    });
+});
