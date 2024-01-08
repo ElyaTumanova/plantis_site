@@ -31,5 +31,7 @@
 </div><!-- .content-area -->
 
 <?php get_footer(); ?>
-<?php get_template_part( '/templates/search-popup' ); ?>
+<div class="search-wrap">
+	<?php get_template_part( '/templates/search-popup' ); ?>
+</div>
 
