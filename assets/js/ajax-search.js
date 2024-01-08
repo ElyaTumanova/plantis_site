@@ -20,7 +20,7 @@ jQuery(function ($){
             },
             success: function(data){
                 console.log(data);
-                //$('.search .serach__result').html(data.out);    //стили контейнеров формы поиска из header
+                $('.search .serach__result').html(data.out);    //стили контейнеров формы поиска из header
             }
         });
     });
