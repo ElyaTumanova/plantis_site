@@ -34,7 +34,7 @@ function plnt_search_ajax_action_callback (){
                     <span class="search-result__descr"><?php get_post_meta( get_the_ID(), '_short_description', true);?></span>
                     <?php if ($sale) {
                         ?>
-                        <span class="search-result__price"><?php echo get_post_meta( get_the_ID(), '_regular_price', true);?></span>
+                        <span class="search-result__reg-price"><?php echo get_post_meta( get_the_ID(), '_regular_price', true);?></span>
                         <span class="search-result__sale"><?php echo get_post_meta( get_the_ID(), '_sale_price', true);?></span>
                         <?php
                     } else {
