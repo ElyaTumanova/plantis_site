@@ -21,11 +21,11 @@ function plnt_search_ajax_action_callback (){
     if ($query_ajax->have_posts()) {
         while ($query_ajax->have_posts()){
             $query_ajax->the_post();
-            //$product_id = get_the_ID();
-            //$product = wc_get_product( $product_id );
+            $product_id = get_the_ID();
+            $product = wc_get_product( $product_id );
+            print_r($product);
             $price = get_post_meta( get_the_ID(), '_regular_price', true);
             $sale = get_post_meta( get_the_ID(), '_price', true);
-            print_r($price);
             ?>
             <div class="search-result__item">
                 <a href="<?php echo get_permalink();?>" class="search-result__link" target="blank">
