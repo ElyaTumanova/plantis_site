@@ -1,8 +1,19 @@
+.container {
+    max-width: 1300px;
+    margin: auto;
+}
+
 .header__main {
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: var(--accent-color);
+}
+
+.header__right-wrap {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 15px;
 }
 
 .site-title {

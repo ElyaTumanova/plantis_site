@@ -14,18 +14,21 @@
 
 	<header id="header" class="header" role="banner">
 		<div class="header__info">
+			<div class="container"></div>
 		</div>
-		<div class="header__main">
-			<div class="logo">
-				<?php $logo = carbon_get_theme_option('logo')?>
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
-			</div><!-- .logo -->
-			<div class="search-btn">
-				<?php $search_icon = carbon_get_theme_option('search_icon')?>
-				<button class="header-btn__wrap">
-					<img class="header-btn__icon" src="<?php echo $search_icon ?>" alt="search" width="21" height="21">
-					<span class="header-btn__label">Поиск</span>		
-				</button>
+		<div class="header__main container">
+			<div class="header__right-wrap">
+				<div class="logo">
+					<?php $logo = carbon_get_theme_option('logo')?>
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
+				</div><!-- .logo -->
+				<div class="search-btn">
+					<?php $search_icon = carbon_get_theme_option('search_icon')?>
+					<button class="header-btn__wrap">
+						<img class="header-btn__icon" src="<?php echo $search_icon ?>" alt="search" width="21" height="21">
+						<span class="header-btn__label">Поиск</span>		
+					</button>
+				</div>
 			</div>
 			<div class="description">
 				<?php $site_title = carbon_get_theme_option('site_title')?>
@@ -41,9 +44,11 @@
 		</div>
 		
 		<div class="header__menu">
-			<nav id="site-navigation" class="main-navigation" role="navigation">
-				<?php ast_primary_menu(); ?>
-			</nav><!-- #site-navigation -->
+			<div class="container">
+				<nav id="site-navigation" class="main-navigation" role="navigation">
+					<?php ast_primary_menu(); ?>
+				</nav><!-- #site-navigation -->
+			</div>
 		</div>
 	</header><!-- #header -->
 	
