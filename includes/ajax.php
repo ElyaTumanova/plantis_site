@@ -8,7 +8,7 @@ add_action('wp_ajax_nopriv_search-ajax', 'plnt_search_ajax_action_callback');
 
 function plnt_search_ajax_action_callback (){
     if(!wp_verify_nonce($_POST['nonce'], 'search_nonce')){
-        echo "<script>console.log('{$_POST}');</script>";
+        echo "<script>console.log('$_POST');</script>";
         wp_die('Данные отправлены не с того адреса');
     }
 
