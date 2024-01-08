@@ -35,7 +35,7 @@
     position: relative;
 }
 
-.header-btn__wrap {
+.header-btn__wrap, .header-btn__wrap:active {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,5 +91,8 @@
 .search-popup_active{
     display: block;
     position: fixed;
-    top: 0;
+    top: 67px;
+    background: var(--background);
+    width: 100%;
+    padding: 10px 0;
 }

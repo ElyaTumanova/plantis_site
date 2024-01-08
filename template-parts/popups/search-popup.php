@@ -8,4 +8,5 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?get_search_form();?>
         <div class="search-result"></div>
     </div>
+    <div class="popup-overlay"></div>
 </div>	

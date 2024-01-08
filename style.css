@@ -47,6 +47,7 @@ html {
     --accent-color: #146F41;
     --red-color: #F93D05;
     --white-color: #fff;
+    --background: #FDFDFD;
 }
 
 body {
@@ -350,7 +351,7 @@ html {
 }
 
 body {
-    background: #fff; /* Fallback for when there is no custom background color defined. */
+    background:var(--background); /* Fallback for when there is no custom background color defined. */
 }
 
 blockquote:before,
