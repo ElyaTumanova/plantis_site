@@ -26,6 +26,7 @@ function plnt_search_ajax_action_callback (){
                 <div class="search-result__item">
                     <a href="<?php echo get_permalink();?>" class="search-result__link" target="blank">
                         <span class="search-result__title"><?php echo get_the_title();?></span>
+                        <span class="search-result__title"><?php echo get_the_content();?></span>
                     </a>  
                 </div>
             </div>
