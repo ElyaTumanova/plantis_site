@@ -22,7 +22,11 @@ function plnt_search_ajax_action_callback (){
         while ($query_ajax->have_posts()){
             $query_ajax->the_post();
             ?>
-            <div class="search-result__title"><?php echo get_the_title();?></div>
+            <div class="search-result__text">
+                <div class="search-result__title">
+                  <a href="<?php echo get_permalink();?>" class="search-result__link" target="blank"><?php echo get_the_title();?></a>  
+                </div>
+            </div>
             <?php
         }
     } else {
