@@ -23,8 +23,15 @@ function plnt_search_ajax_action_callback (){
             $query_ajax->the_post();
             ?>
             <div class="search-result__text">
-                <div class="search-result__title">
-                  <a href="<?php echo get_permalink();?>" class="search-result__link" target="blank"><?php echo get_the_title();?></a>  
+                <div class="search-result__item">
+                  <a href="<?php echo get_permalink();?>" class="search-result__link" target="blank">
+                    <div class="search-result__image"><?php echo get_image();?></div>
+                    <span class="search-result__title"><?php echo get_the_title();?></span>
+                    <span class="search-result__descr"><?php echo get_short_description();?></span>
+                    <span class="search-result__price"><?php echo get_price();?></span>
+                    <span class="search-result__price"><?php echo get_regular_price();?></span>
+                    <span class="search-result__sale-price"><?php echo get_sale_price();?></span>
+                </a>  
                 </div>
             </div>
             <?php
