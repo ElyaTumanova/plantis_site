@@ -48,6 +48,7 @@
 .header__menu {
     background-color: var(--accent-color);
     color: var(--white-color);
+    padding: 15px 0;
 }
 .primary-menu {
     display: flex;

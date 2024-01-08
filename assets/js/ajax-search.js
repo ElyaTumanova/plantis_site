@@ -10,7 +10,6 @@ jQuery(function ($){
             action: 'search-ajax',
             nonce: search_form.nonce
         };
-        console.log(data);
         $.ajax ({
             url: search_form.url,
             data: data,
@@ -19,8 +18,7 @@ jQuery(function ($){
             beforeSend: function(xhr){
             },
             success: function(data){
-                console.log(data);
-                $('.search .serach__result').html(data.out);    //стили контейнеров формы поиска из header
+                $('.search .search-result').html(data.out);    //стили контейнеров формы поиска из header
             }
         });
     });

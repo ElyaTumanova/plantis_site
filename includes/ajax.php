@@ -22,9 +22,13 @@ function plnt_search_ajax_action_callback (){
         while ($query_ajax->have_posts()){
             $query_ajax->the_post();
             ?>
-            <div class="search__title"><?php echo get_the_title();?></div>
+            <div class="search-result__title"><?php echo get_the_title();?></div>
             <?php
         }
+    } else {
+        ?>
+        <div class="search-result__text">Ничего не найдено</div>
+        <?php
     }
     $json_data['out'] = ob_get_clean();
     wp_send_json($json_data);

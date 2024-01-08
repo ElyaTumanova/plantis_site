@@ -20,7 +20,7 @@
 			<div class="logo">
 				<?php $logo = carbon_get_theme_option('logo')?>
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
-			</div>
+			</div><!-- .logo -->
 			<div class="description">
 				<?php $site_title = carbon_get_theme_option('site_title')?>
 				<?php if ( is_front_page()) : ?>
@@ -31,13 +31,13 @@
 			</div><!-- .description -->
 			<div class="search">
 				<?get_search_form();?>
-				<div class="serach__result">
-					
+				<div class="search-result">
+
 				</div>
-			</div>
+			</div><!-- .search -->
 			<div class="header-cart">
 				<?php plnt_woocommerce_cart_header(); ?>
-			</div>
+			</div><!-- .header-cart -->
 		</div>
 		
 		<div class="header__menu">
