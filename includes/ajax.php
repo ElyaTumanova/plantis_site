@@ -17,11 +17,11 @@ function plnt_search_ajax_action_callback (){
         's' => $_POST['s']
     );
     $query_ajax = new WP_Query($arg);
+    print_r(  $query_ajax );
     $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
     if ($query_ajax->have_posts()) {
         while ($query_ajax->have_posts()){
             $query_ajax->the_post();
-            get_pr($query_ajax->the_post(););
             ?>
             <div class="search-result__item">
                 <a href="<?php echo get_permalink();?>" class="search-result__link" target="blank">
