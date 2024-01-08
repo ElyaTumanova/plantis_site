@@ -21,7 +21,7 @@ function plnt_search_ajax_action_callback (){
     if ($query_ajax->have_posts()) {
         while ($query_ajax->have_posts()){
             $query_ajax->the_post();
-            echo $query_ajax->the_post();
+            get_pr($query_ajax->the_post(););
             ?>
             <div class="search-result__item">
                 <a href="<?php echo get_permalink();?>" class="search-result__link" target="blank">
