@@ -29,12 +29,6 @@
 					<p class="site-title"><?php echo $site_title ?></p>
 				<?php endif; ?>
 			</div><!-- .description -->
-			<div class="search">
-				<?get_search_form();?>
-				<div class="search-result">
-
-				</div>
-			</div><!-- .search -->
 			<div class="header-cart">
 				<?php plnt_woocommerce_cart_header(); ?>
 			</div><!-- .header-cart -->
@@ -45,5 +39,6 @@
 				<?php ast_primary_menu(); ?>
 			</nav><!-- #site-navigation -->
 		</div>
+		
 	</header><!-- #header -->
 	
