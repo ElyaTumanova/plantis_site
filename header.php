@@ -39,6 +39,5 @@
 				<?php ast_primary_menu(); ?>
 			</nav><!-- #site-navigation -->
 		</div>
-		<?php plnt_search_popup(); ?>
 	</header><!-- #header -->
 	

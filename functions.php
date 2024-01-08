@@ -26,6 +26,9 @@ require get_template_directory() . '/includes/navigation.php';
 /** Add ajax */
 require get_template_directory() . '/includes/ajax.php';
 
+/** Add search popup */
+require get_template_directory() . '/templates/search-popup.php';
+
 /** Add Woocommerce files */
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 	require get_template_directory() . '/woocommerce/includes/wc-cart-functions.php';
