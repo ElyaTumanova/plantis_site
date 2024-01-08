@@ -18,8 +18,8 @@ jQuery(function ($){
             beforeSend: function(xhr){
             },
             success: function(data){
-                $('.search .serach__result').html(data.out);    //стили контейнеров формы поиска из header
                 console.log(data);
+                //$('.search .serach__result').html(data.out);    //стили контейнеров формы поиска из header
             }
         });
     });
