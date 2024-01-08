@@ -53,6 +53,10 @@
     display: flex;
     column-gap: 25px;
     justify-content: space-between;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 14px;
 }
 
 .primary-menu a, .sub-menu a {
