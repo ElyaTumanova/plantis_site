@@ -23,8 +23,8 @@
 			<div class="search-btn">
 				<?php $search_icon = carbon_get_theme_option('search_icon')?>
 				<button class="header-btn__wrap">
-					<img class="header-btn__icon" src="<?php echo $search_icon ?>" alt="search" width="25" height="25">
-					<span class="header-btn__label">Корзина</span>		
+					<img class="header-btn__icon" src="<?php echo $search_icon ?>" alt="search" width="21" height="21">
+					<span class="header-btn__label">Поиск</span>		
 				</button>
 			</div>
 			<div class="description">
