@@ -47,3 +47,13 @@
 .stock {
     display: none;
 }
+
+/* скрываем стрелочки внутри поля ввода кол-ва */
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    margin: 0;
+}
