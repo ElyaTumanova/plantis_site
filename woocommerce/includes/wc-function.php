@@ -22,5 +22,7 @@ if ( ! function_exists( 'ast_breadrumbs_yoast' ) ) {
 add_filter( 'wp_get_attachment_image_attributes', 'plnt_add_lazy_class');
 
 function plnt_add_lazy_class () {
-	pr($attr);
+	echo '<pre>';
+	print_r( $attr );
+	echo '</pre>';
 }
