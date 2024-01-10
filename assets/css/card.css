@@ -11,10 +11,27 @@
 
 .product__image-wrap {
     grid-area: image;
+    position: relative;
+}
+
+.onsale {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+
+.woocommerce-product-gallery__trigger {
+    position: absolute;
+    z-index: 2;
+    top: 0;
 }
 
 .summary {
     grid-area: info;
+}
+
+.product__price-wrap {
+    grid-area: price;
 }
 
 .up-sells {
@@ -23,4 +40,10 @@
 
 .related {
     grid-area: up-sells;
+}
+
+
+/* скрываем кол-во товаров в наличии */
+.stock {
+    display: none;
 }
