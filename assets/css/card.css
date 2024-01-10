@@ -1,15 +1,16 @@
 .product {
     display: grid;
     grid-template-columns: 50% 35% 20%;
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
     grid-template-areas:
-    "sale info price"
     "photo info price"
-    "content1 content2 content3";
+    "descr up-sells up-sells";
+    column-gap: 20px;
+    row-gap: 20px;
 }
 
 .onsale {
-    grid-area: sale;
+    grid-area: photo;
 }
 
 .woocommerce-product-gallery {
@@ -18,4 +19,12 @@
 
 .summary {
     grid-area: info;
+}
+
+.up-sells {
+    grid-area: up-sells;
+}
+
+.related {
+    grid-area: up-sells;
 }
