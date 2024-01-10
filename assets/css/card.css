@@ -1,0 +1,21 @@
+.product {
+    display: grid;
+    grid-template-columns: 50% 35% 20%;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+    "sale info price"
+    "photo info price"
+    "content1 content2 content3";
+}
+
+.onsale {
+    grid-area: sale;
+}
+
+.woocommerce-product-gallery {
+    grid-area: photo;
+}
+
+.summary {
+    grid-area: info;
+}
