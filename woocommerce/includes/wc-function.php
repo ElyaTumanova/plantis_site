@@ -19,8 +19,9 @@ if ( ! function_exists( 'ast_breadrumbs_yoast' ) ) {
 }
 
 //lazy loading for images
-add_filter( 'wp_get_attachment_image_attributes', 'plnt_add_lazy_class');
+add_filter( 'wp_get_attachment_image_attributes', 'plnt_add_lazy_class', 10, 2);
 
-function plnt_add_lazy_class ($attr, $attachment, $size) {
+function plnt_add_lazy_class ($attr) {
 	$attr['class'] = 'lazy';
+	return $attr;
 }
