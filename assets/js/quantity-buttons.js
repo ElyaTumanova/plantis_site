@@ -1,4 +1,7 @@
-$( 'body' ).on( 'click', 'button.plus, button.minus', function() {
+document.querySelector('product__btn-plus').addEventListener('click', plnt_quantity_increment);
+document.querySelector('product__btn-minus').addEventListener('click', plnt_quantity_increment);
+
+function plnt_quantity_increment() {
  
 	var qty = $(this).parent().find( 'input' ),
 	    val = parseInt( qty.val() ),
@@ -21,4 +24,4 @@ $( 'body' ).on( 'click', 'button.plus, button.minus', function() {
 		}
 	}
  
-});
+};

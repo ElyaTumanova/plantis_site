@@ -47,9 +47,9 @@ add_action( 'woocommerce_before_quantity_input_field', 'truemisha_quantity_plus'
 add_action( 'woocommerce_after_quantity_input_field', 'truemisha_quantity_minus', 25 );
  
 function truemisha_quantity_plus() {
-	echo '<button type="button" class="plus">+</button>';
+	echo '<button type="button" class="product__btn-plus">+</button>';
 }
  
 function truemisha_quantity_minus() {
-	echo '<button type="button" class="minus">-</button>';
+	echo '<button type="button" class="product__btn-minus">-</button>';
 }
