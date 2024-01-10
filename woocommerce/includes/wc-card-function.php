@@ -14,7 +14,7 @@ add_action('woocommerce_before_single_product_summary', 'plnt_product_image_wrap
 
 function plnt_product_image_wrap () {
     ?>
-    <div class="product_image_wrap">
+    <div class="product__image-wrap">
     <?php
         woocommerce_show_product_sale_flash();
         woocommerce_show_product_images();
