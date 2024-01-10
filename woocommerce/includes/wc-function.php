@@ -20,7 +20,7 @@ if ( ! function_exists( 'ast_breadrumbs_yoast' ) ) {
 
 //lazy loading for images
 function plnt_add_lazy_class ($attr) {
-	$attr['class'] .= ' lazy';
+	$attr['class'] .= ' lazy progressive replace';
 	return $attr;
 }
 
