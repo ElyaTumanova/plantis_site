@@ -61,10 +61,7 @@ input[type="number"] {
 }
 
 
-/* FlexSlider Dot Pagination: controlNav
- * https://wpbeaches.com/add-navigation-arrows-in-woocommerce-product-gallery-slider-2/
- * FlexSlider option controlNav (located in the flexslider javascript file) MUST be set to true for this to work
-*/
+/* FlexSlider Dot Pagination*/
 .flex-control-nav {
     width: 100%;
     position: absolute;
@@ -102,4 +99,25 @@ input[type="number"] {
     cursor: default;
 }
 
+/* FlexSlider Navigation Arrows*/
+ul.flex-direction-nav {
+    position: absolute;
+    top: 30%;
+    z-index: 99999;
+    width: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0px;
+    list-style: none;}
+
+li.flex-nav-prev {float: left;}
+li.flex-nav-next {float: right;}
+a.flex-next {visibility:hidden;}
+a.flex-prev {visibility:hidden;}
+a.flex-next::after {visibility:visible;content: '\f105';
+    font-family: FontAwesome;margin-right: 10px;font-size: 70px;    }
+a.flex-prev::before {
+    visibility:visible;
+    content: '\f104';
+    font-family: FontAwesome;    margin-left: 10px;font-size: 70px;}
 /* FlexSlider Dot Pagination - end
