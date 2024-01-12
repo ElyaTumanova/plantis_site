@@ -4,8 +4,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-// табы
+// табы и описание
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
+add_action('woocommerce_before_single_product_summary', 'plnt_product_description', 10);
+
+function plnt_product_image_wrap () {
+    the_content();
+}
 
 
 // фото товара, бейдж распродажа

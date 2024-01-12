@@ -115,9 +115,9 @@ li.flex-nav-next {float: right;}
 a.flex-next {visibility:hidden;}
 a.flex-prev {visibility:hidden;}
 a.flex-next::after {visibility:visible;content: '\276F';
-    margin-right: 10px;font-size: 40px;    }
+    margin-right: 10px;font-size: 33px;    }
 a.flex-prev::before {
     visibility:visible;
     content: '\276E';
-    margin-left: 10px;font-size: 40px;}
+    margin-left: 10px;font-size: 33px;}
 /* FlexSlider Dot Pagination - end
