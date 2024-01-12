@@ -100,7 +100,7 @@ function truemisha_quantity_minus() {
 	echo '<button type="button" class="minus">-</button>';
 }
 
-// мета данные товара
+// мета данные товара и атрибуты
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 add_action( 'woocommerce_single_product_summary', 'plnt_product_artikul', 40 );
 add_action( 'woocommerce_single_product_summary', 'plnt_product_attributes', 50 );
@@ -112,6 +112,17 @@ function plnt_product_artikul() {
 	if( $sku ) { // если заполнен, то выводим
 		echo '<p class="product__artikul">Артикул: ' . $sku . '</p>';
 	}
+}
+
+function check_category () {
+	global $post;
+	$idCats=[];
+	$terms_post = get_the_terms( $post->cat_ID , 'product_cat' );
+	foreach ($terms_post as $term_cat) {
+    $term_cat_id = $term_cat->term_id;
+	$idCats[$term_cat_id]=$term_cat_id;
+	};	
+	return $idCats;
 }
 
 function plnt_product_attributes(){
