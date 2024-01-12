@@ -18,11 +18,28 @@ function plnt_product_image_wrap () {
     ?>
     <div class="product__image-wrap">
     <?php
-        woocommerce_show_product_sale_flash();
+        truemisha_sale_badge();
         woocommerce_show_product_images();
     ?>
     </div>
     <?php 
+}
+
+function truemisha_sale_badge() {
+ 
+	// получаем объект текущего товара в цикле
+	global $product;
+ 
+	// есле не распродажа, ничего не делаем
+	if ( ! $product->is_on_sale() ) {
+		return;
+	}
+		// рассчитываем процент скидки
+		$percentage = ( ( $product->get_regular_price() - $product->get_sale_price() ) / $product->get_regular_price() ) * 100;
+ 
+	if ( $percentage > 0 ) {
+		echo '<div class="onsale">Скидка ' . round( $percentage ) . '%</div>';
+	}
 }
 
 //цена и кнопка в корзину
@@ -63,7 +80,7 @@ function plnt_product_artikul() {
 	$sku = $product->get_sku();
  
 	if( $sku ) { // если заполнен, то выводим
-		echo '<p>Артикул: ' . $sku . '</p>';
+		echo '<p class="product__artikul">Артикул: ' . $sku . '</p>';
 	}
  
 }
