@@ -102,7 +102,7 @@
             $(".nbs-flexisel-item > img").css("max-height", baseHeight);
           }
 
-          $("<div class='nbs-flexisel-nav-left'></div><div class='nbs-flexisel-nav-right'></div>").insertAfter(object);
+          $("<div class='nbs-flexisel-nav-left'>FFFF</div><div class='nbs-flexisel-nav-right'>FFFFF</div>").insertAfter(object);
           var cloneContent = object.children().clone();
           object.append(cloneContent);
     },
