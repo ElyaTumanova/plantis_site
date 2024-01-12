@@ -46,7 +46,7 @@ if ( $upsells ) : ?>
 
 			<?php endforeach; ?>
 
-            </ul>
+        </ul>
         
         <script type="text/javascript">
             jQuery(window).load(function() {
