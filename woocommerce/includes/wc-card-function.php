@@ -148,33 +148,40 @@ function plnt_product_attributes(){
 remove_action('woocommerce_after_single_product_summary','woocommerce_output_related_products', 20);
 add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 20);
 
-function plnt_get_cross_sells(){
-    woocommerce_cross_sell_display();
-}
+add_filter('woocommerce_upsell_display_args', function ($args) {
+    $args['posts_per_page'] = 8;
+    return $args;
+})
+
 
 add_filter( 'woocommerce_product_upsells_products_heading' , 'plnt_upsells_heading' );
 
 function plnt_upsells_heading () {
     $idCats = check_category ();
     foreach ($idCats as $cat){
-    switch ($cat) {
-        case 838:				//category ID for plants
-            return 'Этому растению подойдет';
+        switch ($cat) {
+            case 838:				//category ID for plants
+                return 'Этому растению подойдет';
             break;
-        case 86:				//category ID for gorshki
-            return 'Другие цвета';
-            break;
-        case 802:				//category ID for treez
-            return 'Другие цвета и сопутствующие';
-            break;
-        default:
-            break;
-        }
+            case 86:				//category ID for gorshki
+                return 'Другие цвета';
+                break;
+                case 802:				//category ID for treez
+                    return 'Другие цвета и сопутствующие';
+                    break;
+                    default:
+                    break;
+                }
     }
 };
+        
+function plnt_get_cross_sells(){
+    woocommerce_cross_sell_display();
+}
 
 add_filter( 'woocommerce_product_cross_sells_products_heading' , 'plnt_cross_sells_heading' );
 
 function plnt_cross_sells_heading() {
     return 'Похожие растения';
 };
+
