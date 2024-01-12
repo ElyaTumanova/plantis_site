@@ -35,6 +35,9 @@
     grid-area: price;
 }
 
+.product__description {
+    grid-area: descr;
+}
 .up-sells {
     grid-area: up-sells;
 }

@@ -9,7 +9,13 @@ remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_p
 add_action('woocommerce_before_single_product_summary', 'plnt_product_description', 10);
 
 function plnt_product_description () {
+    ?>
+    <div class="product__description">
+    <?php
     the_content();
+    ?>
+    </div>
+    <?php 
 }
 
 
