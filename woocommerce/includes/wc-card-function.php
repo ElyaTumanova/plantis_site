@@ -49,10 +49,9 @@ add_filter( 'woocommerce_single_product_carousel_options', 'plnt_product_gallery
 function plnt_product_gallery( $options ) {
  
 	$options[ 'directionNav' ] = true;
-	$options[ 'controlNav' ] = false;
+	$options[ 'controlNav' ] = true;
 	$options[ 'animationLoop' ] = true;
 	return $options;
- 
 }
 
 // отключаем зум для фото товара
