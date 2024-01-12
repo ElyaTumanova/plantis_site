@@ -152,3 +152,23 @@ function plnt_get_cross_sells(){
     woocommerce_cross_sell_display();
 }
 
+add_filter( 'woocommerce_product_upsells_products_heading' , 'plnt_upsells_heading' );
+
+function plnt_upsells_heading () {
+    $idCats = check_category ();
+    foreach ($idCats as $cat){
+    switch ($cat) {
+        case 838:				//category ID for plants
+            return 'Этому растению подойдет';
+            break;
+        case 86:				//category ID for gorshki
+            return 'Другие цвета';
+            break;
+        case 802:				//category ID for treez
+            return 'Другие цвета и сопутствующие';
+            break;
+        default:
+            break;
+        }
+    }
+}
