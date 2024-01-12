@@ -78,11 +78,13 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 10);
 
 function plnt_price_wrap(){
+    global $product;
     ?>
     <div class="product__price-wrap">
     <?php
         woocommerce_template_single_price();
         woocommerce_template_single_add_to_cart();
+        wc_display_product_attributes($product);
     ?>
     </div>
     <?php 
