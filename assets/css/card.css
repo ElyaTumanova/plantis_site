@@ -38,6 +38,10 @@
 .product__description {
     grid-area: descr;
 }
+.product__description p {
+    margin: 0;
+}
+
 .up-sells {
     grid-area: up-sells;
 }

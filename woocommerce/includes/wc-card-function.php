@@ -11,6 +11,7 @@ add_action('woocommerce_before_single_product_summary', 'plnt_product_descriptio
 function plnt_product_description () {
     ?>
     <div class="product__description">
+        <h2 class="header-second">Описание</h2>
     <?php
     the_content();
     ?>
