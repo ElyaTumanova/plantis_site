@@ -129,3 +129,45 @@ a.flex-prev::before {
     content: '\276E';
     margin-left: 10px;font-size: 33px;}
 /* FlexSlider Dot Pagination - end
+
+
+/*-- flexisel --*/
+.flex-slider{	
+	background:#222227;
+	padding: 70px 0 165px 0;
+}
+.opportunity{
+	background:#28282e;
+	margin:0px 20px;
+	padding:80px 0;
+	position:relative;
+}
+#flexiselDemo1,#flexiselDemo2 {
+	display: none;
+}
+.nbs-flexisel-container {
+	position: relative;
+	max-width: 100%;
+}
+.nbs-flexisel-ul {
+	position: relative;
+	width: 9999px;
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+	text-align: center;
+}
+.nbs-flexisel-inner {
+	overflow: hidden;
+	margin: 0px auto;
+}
+.nbs-flexisel-item {
+	float: left;
+	margin:0;
+	padding: 0 15px;
+	position: relative; 
+}
+.nbs-flexisel-item > img {
+	cursor: pointer;
+	position: relative;
+}
