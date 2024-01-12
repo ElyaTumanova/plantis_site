@@ -1,10 +1,11 @@
 .product {
     display: grid;
     grid-template-columns: 50% 35% 20%;
-    grid-template-rows: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
     grid-template-areas:
     "image info price"
-    "descr up-sells up-sells";
+    "descr up-sells up-sells"
+    "descr related related";
     column-gap: 20px;
     row-gap: 20px;
 }
@@ -47,7 +48,7 @@
 }
 
 .related {
-    grid-area: up-sells;
+    grid-area: related;
 }
 
 

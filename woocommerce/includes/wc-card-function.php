@@ -142,3 +142,13 @@ function plnt_product_attributes(){
     </div>
     <?php 
 }
+
+//upsells & cross sells
+
+remove_action('woocommerce_after_single_product_summary','woocommerce_output_related_products', 20);
+add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 20);
+
+function plnt_get_cross_sells(){
+    woocommerce_cross_sell_display();
+}
+
