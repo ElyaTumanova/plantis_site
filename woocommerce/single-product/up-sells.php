@@ -51,7 +51,7 @@ if ( $upsells ) : ?>
         <script type="text/javascript">
             jQuery(window).load(function() {
                 jQuery("#flexisel-upsells").flexisel({
-                    visibleItems:5,
+                    visibleItems:3,
                     animationSpeed: 1000,
                     autoPlay: false,
                     autoPlaySpeed: 3000,
