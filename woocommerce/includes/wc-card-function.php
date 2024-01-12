@@ -172,3 +172,9 @@ function plnt_upsells_heading () {
         }
     }
 }
+
+add_filter( 'woocommerce_product_cross_sells_products_heading' , 'plnt_cross_sells_heading' );
+
+function plnt_cross_sells_heading(){
+    return 'Похожие растения'
+};
