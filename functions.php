@@ -35,4 +35,5 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	require get_template_directory() . '/woocommerce/includes/wc-function.php';
 	require get_template_directory() . '/woocommerce/includes/wc-remove-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-card-function.php';
+	require get_template_directory() . '/woocommerce/includes/wc-catalog-functions.php';
 }
