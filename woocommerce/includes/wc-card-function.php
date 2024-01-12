@@ -151,8 +151,7 @@ add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 20
 add_filter('woocommerce_upsell_display_args', function ($args) {
     $args['posts_per_page'] = 8;
     return $args;
-})
-
+});
 
 add_filter( 'woocommerce_product_upsells_products_heading' , 'plnt_upsells_heading' );
 
