@@ -42,6 +42,19 @@ function truemisha_sale_badge() {
 	}
 }
 
+//слайдер фото товара
+
+add_filter( 'woocommerce_single_product_carousel_options', 'plnt_product_gallery' );
+ 
+function plnt_product_gallery( $options ) {
+ 
+	$options[ 'directionNav' ] = true;
+	$options[ 'controlNav' ] = false;
+	$options[ 'animationLoop' ] = true;
+	return $options;
+ 
+}
+
 //цена и кнопка в корзину
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
