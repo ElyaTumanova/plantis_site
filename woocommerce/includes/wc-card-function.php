@@ -78,13 +78,11 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 10);
 
 function plnt_price_wrap(){
-    global $product;
     ?>
     <div class="product__price-wrap">
     <?php
         woocommerce_template_single_price();
         woocommerce_template_single_add_to_cart();
-        wc_display_product_attributes($product);
     ?>
     </div>
     <?php 
@@ -105,6 +103,7 @@ function truemisha_quantity_minus() {
 // мета данные товара
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 add_action( 'woocommerce_single_product_summary', 'plnt_product_artikul', 40 );
+add_action( 'woocommerce_single_product_summary', 'plnt_product_attributes', 50 );
 
 function plnt_product_artikul() {
     global $product;
@@ -113,5 +112,22 @@ function plnt_product_artikul() {
 	if( $sku ) { // если заполнен, то выводим
 		echo '<p class="product__artikul">Артикул: ' . $sku . '</p>';
 	}
- 
+}
+
+function plnt_product_attributes(){
+    global $product;
+    ?>
+    <div class="product__attributes">
+    <?php
+        $idCats = check_category ();
+        if( in_array( "90" ,$idCats ) )
+            {
+            echo  '<h2 class="header-second">Уход и характеристики</h2>';
+            } else {
+            echo '<h2 class="header-second">Характеристики</h2>';
+            }
+        wc_display_product_attributes($product);
+    ?>
+    </div>
+    <?php 
 }
