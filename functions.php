@@ -1,4 +1,11 @@
 <?php
+
+global $plants_cat_id;
+$plants_cat_id = '90';
+$gorshki_cat_id = 86;
+$treez_cat_id = 802;
+
+
 /** Add Carbon Fields */
 add_action( 'carbon_fields_register_fields', 'ast_register_custom_fields' );
 function ast_register_custom_fields() {
