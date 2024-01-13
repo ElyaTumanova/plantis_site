@@ -193,7 +193,7 @@ add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 20
 
 function plnt_get_cross_sells(){
     ?>
-	<div class="check"></div>
+	<div class="check">hihihi</div>
     <?php 
     woocommerce_cross_sell_display();
 }
