@@ -131,6 +131,7 @@ function check_category () {
 
 function plnt_product_attributes(){
     global $product;
+    global $plants_cat_id;
     ?>
     <div class="product__attributes">
     <?php
