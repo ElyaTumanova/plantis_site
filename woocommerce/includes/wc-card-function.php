@@ -159,7 +159,7 @@ function plnt_upsells_heading () {
     $idCats = check_category ();
     foreach ($idCats as $cat){
         switch ($cat) {
-            case 90:				//category ID for plants
+            case $plants_cat_id:				//category ID for plants
                 return 'Этому растению подойдет';
                 break;
             case 86:				//category ID for gorshki
