@@ -160,11 +160,12 @@ add_filter('woocommerce_upsell_display_args', function ($args) {
 add_filter( 'woocommerce_product_upsells_products_heading' , 'plnt_upsells_heading' );
 
 function plnt_upsells_heading () {
+    global $plants_cat_id;
     echo'<script>console.log('.$plants_cat_id.')</script>';
     $idCats = check_category ();
     foreach ($idCats as $cat){
         switch ($cat) {
-            case global $plants_cat_id:				//category ID for plants
+            case $plants_cat_id:				//category ID for plants
                 return 'Этому растению подойдет';
                 break;
             case $gorshki_cat_id:				//category ID for gorshki
