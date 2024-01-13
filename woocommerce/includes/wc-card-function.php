@@ -198,9 +198,9 @@ function plnt_get_cross_sells(){
     woocommerce_cross_sell_display();
 }
 
-// add_filter( 'woocommerce_product_cross_sells_products_heading' , 'plnt_cross_sells_heading' );
+add_filter( 'woocommerce_product_cross_sells_products_heading' , 'plnt_cross_sells_heading' );
 
-// function plnt_cross_sells_heading() {
-//     return 'Похожие растения';
-// };
+function plnt_cross_sells_heading() {
+    return 'Похожие растения';
+};
 
