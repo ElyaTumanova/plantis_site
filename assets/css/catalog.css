@@ -27,7 +27,8 @@
     grid-area: pagination;
 }
 
-ul.products {
+/* стили для сетки каталога */
+.catalog__grid ul.products {
     display: flex;
     align-items: stretch;
     flex-direction: row;
