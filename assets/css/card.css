@@ -1,4 +1,4 @@
-/* .product {
+.card__grid {
     display: grid;
     grid-template-columns: 50% 35% 20%;
     grid-template-rows: repeat(3, auto);
@@ -10,7 +10,7 @@
     row-gap: 20px;
 }
 
-.product__image-wrap {
+.card__image-wrap {
     grid-area: image;
     position: relative;
 }
@@ -26,14 +26,14 @@
     grid-area: info;
 }
 
-.product__price-wrap {
+.card__price-wrap {
     grid-area: price;
 }
 
-.product__description {
+.card__description {
     grid-area: descr;
 }
-.product__description p {
+.card__description p {
     margin: 0;
 }
 
@@ -43,7 +43,7 @@
 
 .related {
     grid-area: related;
-} */
+}
 
 
 /* скрываем кол-во товаров в наличии */

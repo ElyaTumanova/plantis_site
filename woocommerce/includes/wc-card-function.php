@@ -3,11 +3,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+
+//обертки для card grid
 add_action('woocommerce_before_single_product_summary','plnt_card_grid_start',5);
 
 function plnt_card_grid_start () {
     ?>
-	<div class="card__grid">hihih</div>
+	<div class="card__grid">
     <?php 
 };
 
@@ -15,7 +17,7 @@ add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',30);
 
 function plnt_card_grid_end () {
     ?>
-	<div class="card__grid">hello</div>
+	</div>
     <?php 
 };
 
@@ -25,7 +27,7 @@ add_action('woocommerce_before_single_product_summary', 'plnt_product_descriptio
 
 function plnt_product_description () {
     ?>
-    <div class="product__description">
+    <div class="card__description">
         <h2 class="header-second">Описание</h2>
     <?php
     the_content();
@@ -43,7 +45,7 @@ add_action('woocommerce_before_single_product_summary', 'plnt_product_image_wrap
 
 function plnt_product_image_wrap () {
     ?>
-    <div class="product__image-wrap">
+    <div class="card__image-wrap">
     <?php
         truemisha_sale_badge();
         woocommerce_show_product_images();
@@ -89,7 +91,7 @@ add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 10);
 
 function plnt_price_wrap(){
     ?>
-    <div class="product__price-wrap">
+    <div class="card__price-wrap">
     <?php
         woocommerce_template_single_price();
         woocommerce_template_single_add_to_cart();
