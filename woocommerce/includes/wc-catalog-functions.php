@@ -47,24 +47,6 @@ add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_
 remove_action('woocommerce_before_shop_loop_item_title','woocommerce_show_product_loop_sale_flash', 10);
 add_action('woocommerce_before_shop_loop_item_title','truemisha_sale_badge', 10);
 
-function truemisha_sale_badge() {
- 
-	// получаем объект текущего товара в цикле
-	global $product;
- 
-	// есле не распродажа, ничего не делаем
-	if ( ! $product->is_on_sale() ) {
-		return;
-	}
-		// рассчитываем процент скидки
-		$percentage = ( ( $product->get_regular_price() - $product->get_sale_price() ) / $product->get_regular_price() ) * 100;
- 
-	if ( $percentage > 0 ) {
-		echo '<div class="sale_badge"><span class="sale_badge-skidka">Скидка </span>' . round( $percentage ) . '%</div>';
-	}
-}
-
-
 // // перенос кнопки в корзину
 
 remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
