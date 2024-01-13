@@ -1,4 +1,4 @@
-.product {
+/* .product {
     display: grid;
     grid-template-columns: 50% 35% 20%;
     grid-template-rows: repeat(3, auto);
@@ -43,7 +43,7 @@
 
 .related {
     grid-area: related;
-}
+} */
 
 
 /* скрываем кол-во товаров в наличии */
