@@ -24,7 +24,8 @@ function plnt_catalog_sidebar() {
     <?php 
 };
 
-add_action('woocommerce_after_shop_loop','plnt_catalog_grid_end',20)
+add_action('woocommerce_after_shop_loop','plnt_catalog_grid_end',20);
+
 function plnt_catalog_grid_end() {
 	?>
 	</div>
