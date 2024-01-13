@@ -23,7 +23,7 @@ if ( ! function_exists( 'ast_theme_support' ) ) :
 		add_theme_support( 'automatic-feed-links' );
 		// Woocommerce support
 		add_theme_support( 'woocommerce' );
-		add_theme_support( 'wc-product-gallery-zoom' );
+		//add_theme_support( 'wc-product-gallery-zoom' );
 		add_theme_support( 'wc-product-gallery-lightbox' );
 		add_theme_support( 'wc-product-gallery-slider' );
 		// Add foundation.css as editor style https://codex.wordpress.org/Editor_Style
