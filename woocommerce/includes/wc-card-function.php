@@ -3,11 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-// constants
-$plants_cat_id = 90;
-$gorshki_cat_id = 86;
-$treez_cat_id = 802;
-
 // табы и описание
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
 add_action('woocommerce_before_single_product_summary', 'plnt_product_description', 10);
@@ -162,6 +157,8 @@ add_filter( 'woocommerce_product_upsells_products_heading' , 'plnt_upsells_headi
 
 function plnt_upsells_heading () {
     global $plants_cat_id;
+    global $gorshki_cat_id;
+    global $treez_cat_id;
     echo'<script>console.log('.$plants_cat_id.')</script>';
     $idCats = check_category ();
     foreach ($idCats as $cat){

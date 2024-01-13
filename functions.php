@@ -25,6 +25,8 @@ require get_template_directory() . '/includes/meta-data.php';
 require get_template_directory() . '/includes/navigation.php';
 /** Add ajax */
 require get_template_directory() . '/includes/ajax.php';
+/** Add constants */
+require get_template_directory() . '/includes/constants.php';
 
 /** Add Woocommerce files */
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
