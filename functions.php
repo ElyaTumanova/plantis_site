@@ -27,7 +27,8 @@ require get_template_directory() . '/includes/navigation.php';
 require get_template_directory() . '/includes/ajax.php';
 
 
-global $plants_cat_id = carbon_get_theme_option('plants_cat_id');
+global $plants_cat_id;
+$plants_cat_id = carbon_get_theme_option('plants_cat_id');
 
 /** Add Woocommerce files */
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
