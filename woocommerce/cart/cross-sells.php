@@ -1,8 +1,8 @@
 <?php
 /**
- * Single Product Up-Sells
+ * Cross-sells
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/single-product/up-sells.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/cart/cross-sells.php.
  * 
  * MODIFIED FOR PLANTIS_THEME
  *
@@ -12,45 +12,43 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see         https://woo.com/document/template-structure/
- * @package     WooCommerce\Templates
- * @version     3.0.0
+ * @see https://woo.com/document/template-structure/
+ * @package WooCommerce\Templates
+ * @version 4.4.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
-if ( $upsells ) : ?>
+if ( $cross_sells ) : ?>
 
-	<section class="up-sells upsells products">
+	<div class="cross-sells">
 		<?php
-		$heading = apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) );
+		$heading = apply_filters( 'woocommerce_product_cross_sells_products_heading', __( 'You may be interested in&hellip;', 'woocommerce' ) );
 
 		if ( $heading ) :
 			?>
 			<h2><?php echo esc_html( $heading ); ?></h2>
 		<?php endif; ?>
 
-        <ul id="flexisel-upsells" class="products columns-<?php echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>">
+		<ul id="flexisel-cross-sells" class="products columns-<?php echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>">
 
-			<?php foreach ( $upsells as $upsell ) : ?>
+			<?php foreach ( $cross_sells as $cross_sell ) : ?>
 
 				<?php
-				$post_object = get_post( $upsell->get_id() );
+					$post_object = get_post( $cross_sell->get_id() );
 
-				setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+					setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
 
-				wc_get_template_part( 'content', 'product' );
+					wc_get_template_part( 'content', 'product' );
 				?>
 
 			<?php endforeach; ?>
 
         </ul>
-        
+
         <script type="text/javascript">
             jQuery(window).load(function() {
-                jQuery("#flexisel-upsells").flexisel({
+                jQuery("#flexisel-cross-sells").flexisel({
                     visibleItems:3,
                     animationSpeed: 1000,
                     autoPlay: false,
@@ -75,8 +73,7 @@ if ( $upsells ) : ?>
             });
 		</script>
 
-	</section>
-
+	</div>
 	<?php
 endif;
 
