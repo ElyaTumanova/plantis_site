@@ -19,7 +19,7 @@
       autoPlay: false,
       autoPlaySpeed: 3000,    		
       pauseOnHover: true,
-    setMaxWidthAndHeight: false,
+      setMaxWidthAndHeight: false,
       enableResponsiveBreakpoints: false,
       responsiveBreakpoints: { 
         portrait: { 
@@ -42,9 +42,9 @@
   *******************************/         
       
       var object = $(this);
-  var settings = $.extend(defaults, options);        
-  var itemsWidth; // Declare the global width of each item in carousel
-  var canNavigate = true; 
+      var settings = $.extend(defaults, options);        
+      var itemsWidth; // Declare the global width of each item in carousel
+      var canNavigate = true; 
       var itemsVisible = settings.visibleItems; 
       
   /******************************
@@ -102,7 +102,7 @@
             $(".nbs-flexisel-item > img").css("max-height", baseHeight);
           }
 
-          $("<div class='nbs-flexisel-nav-left'>'&#276F'</div><div class='nbs-flexisel-nav-right'>'&#276E'</div>").insertAfter(object);
+          $("<div class='nbs-flexisel-nav-left'>'&#10095;'</div><div class='nbs-flexisel-nav-right'>'&#10094;'</div>").insertAfter(object);
           var cloneContent = object.children().clone();
           object.append(cloneContent);
     },

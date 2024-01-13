@@ -72,7 +72,6 @@ if ( $upsells ) : ?>
                         }
                     }
                 });
-
             });
 		</script>
 

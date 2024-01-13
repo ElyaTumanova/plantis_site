@@ -8,7 +8,7 @@ use Carbon_Fields\Field;
 
 // Default options page
 Container::make('theme_options', 'Настройки темы')
-         ->add_fields(array(
+		 ->add_tab( __('Icons'), array(
 			 Field::make( 'image', 'logo', 'Logo' )
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'account_icon', 'Personal Account' )
@@ -20,7 +20,10 @@ Container::make('theme_options', 'Настройки темы')
 			 Field::make( 'image', 'search_icon', 'Search' )
 			 ->set_value_type( 'url' ),
 			 Field::make( 'text', 'site_title', 'Site title in header' )
-         ));
+         ))
+		 ->add_tab( __('Constants'), array(
+			Field::make( 'text', 'plants_cat_id', 'ID for Plants category' )
+		));
 
 // Add second options page under 'Basic Options'
 Container::make('theme_options', 'Social Links')
