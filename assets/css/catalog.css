@@ -1,11 +1,28 @@
-/* .product {
+.catalog__grid {
     display: grid;
-    grid-template-columns: 50% 35% 20%;
-    grid-template-rows: repeat(3, auto);
+    grid-template-columns:30% 70%;
+    grid-template-rows: repeat(4, auto);
     grid-template-areas:
-    "image info price"
-    "descr up-sells up-sells"
-    "descr related related";
+    "sidebar metki"
+    "sidebar sorting"
+    "sidebar catalog"
+    "sidebar pagination";
     column-gap: 20px;
     row-gap: 20px;
-} */
+}
+
+.catalog__sidebar {
+    grid-area: sidebar;
+}
+
+.woocommerce-ordering {
+    grid-area: sorting;
+}
+
+.products {
+    grid-area: catalog;
+}
+
+.woocommerce-pagination {
+    grid-area: pagination;
+}
