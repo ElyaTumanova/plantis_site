@@ -31,11 +31,6 @@ if ( ! function_exists( 'ast_theme_support' ) ) :
 	}
 endif;
 
-add_action( 'after_setup_theme', 'estore_content_width', 0 );
-function estore_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'estore_content_width', 1300 );
-}
-
 // Разрешаем загрузку svg
 add_filter( 'upload_mimes', 'svg_upload_allow' );
 

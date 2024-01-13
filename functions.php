@@ -36,3 +36,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	require get_template_directory() . '/woocommerce/includes/wc-card-function.php';
 	require get_template_directory() . '/woocommerce/includes/wc-catalog-functions.php';
 }
+
+global $plants_cat_id;
+$plants_cat_id = carbon_get_theme_option('plants_cat_id');
+echo '<script>console.log('.$plants_cat_id.')</script>'

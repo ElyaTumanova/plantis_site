@@ -9,12 +9,6 @@
 	<?php wp_head(); ?>
 </head>
 
-<?php
-global $plants_cat_id;
-$plants_cat_id = carbon_get_theme_option('plants_cat_id');
-// echo '<script>console.log('.$plants_cat_id.')</script>'
-?>
-
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 
