@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-add_action('woocommerce_before_single_product','plnt_card_grid_start');
+add_action('woocommerce_before_single_product_summary','plnt_card_grid_start',5);
 
 function plnt_card_grid_start () {
     ?>
