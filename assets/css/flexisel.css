@@ -10,9 +10,6 @@
 	padding:80px 0;
 	position:relative;
 }
-#flexiselDemo1,#flexiselDemo2 {
-	display: none;
-}
 .nbs-flexisel-container {
 	position: relative;
 	max-width: 100%;

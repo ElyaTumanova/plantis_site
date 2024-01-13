@@ -169,7 +169,6 @@ function plnt_upsells_heading () {
     global $plants_cat_id;
     global $gorshki_cat_id;
     global $treez_cat_id;
-    echo'<script>console.log('.$plants_cat_id.')</script>';
     $idCats = check_category ();
     foreach ($idCats as $cat){
         switch ($cat) {
@@ -194,7 +193,7 @@ add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 20
 
 function plnt_get_cross_sells(){
     ?>
-	<div>hihihi</div>
+	<div class="check"></div>
     <?php 
     woocommerce_cross_sell_display();
 }
