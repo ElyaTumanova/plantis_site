@@ -4,6 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // constants
+global $plants_cat_id;
 $plants_cat_id = 90;
 $gorshki_cat_id = 86;
 $treez_cat_id = 802;
@@ -160,6 +161,7 @@ add_filter('woocommerce_upsell_display_args', function ($args) {
 add_filter( 'woocommerce_product_upsells_products_heading' , 'plnt_upsells_heading' );
 
 function plnt_upsells_heading () {
+    echo'<script>console.log('.$plants_cat_id.')</script>';
     $idCats = check_category ();
     foreach ($idCats as $cat){
         switch ($cat) {
