@@ -78,10 +78,5 @@ ul.products {
         align-items: flex-start;
         margin: 0 8px 16px 8px;
         box-sizing: border-box;
-
-        img.attachment-woocommerce_thumbnail,
-        img.woocommerce-placeholder {
-            height: auto !important;
-        }
     }
 }
