@@ -5,7 +5,7 @@
     grid-template-areas:
     "image info price"
     "descr up-sells up-sells"
-    "descr related related";
+    "descr cross-sells cross-sells";
     column-gap: 20px;
     row-gap: 20px;
 }
@@ -41,8 +41,8 @@
     grid-area: up-sells;
 }
 
-.related {
-    grid-area: related;
+.cross-sells {
+    grid-area: cross-sells;
 }
 
 
