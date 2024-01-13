@@ -159,7 +159,7 @@ function plnt_upsells_heading () {
     $idCats = check_category ();
     foreach ($idCats as $cat){
         switch ($cat) {
-            case 838:				//category ID for plants
+            case 90:				//category ID for plants
                 return 'Этому растению подойдет';
                 break;
             case 86:				//category ID for gorshki
@@ -169,6 +169,7 @@ function plnt_upsells_heading () {
                 return 'Другие цвета и сопутствующие';
                 break;
             default:
+                return 'Вас также заитересует';
                 break;
         }
     }

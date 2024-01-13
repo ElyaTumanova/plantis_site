@@ -24,7 +24,8 @@ $plants_cat_id = carbon_get_theme_option('plants_cat_id');
 		</div>
 		<div class="header__main container">
 			<div class="header__right-wrap">
-				<div class="logo">				
+				<div class="logo">
+					<?php $logo = carbon_get_theme_option('logo');?>
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
 				</div><!-- .logo -->
 				<div class="search-btn">
