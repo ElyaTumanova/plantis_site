@@ -4,13 +4,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
+remove_action('woocommerce_archive_description','woocommerce_taxonomy_archive_description',10);
+remove_action('woocommerce_before_shop_loop','woocommerce_result_count',20);
+
+add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar',20);
+
+function plnt_catalog_sidebar() {
+	?>
+    <div class="catalog__sidebar">
+   		catalod sidebaer here
+    </div>
+    <?php 
+};
+
+
 //вывод меток 
 
 add_action('woocommerce_after_shop_loop_item', 'plnt_get_product_tags', 20);
 
 function plnt_get_product_tags() {
-	$tags_exeptions = array(66,106);
 	global $product;
+	global $tags_exeptions;
 	$tags = $product->tag_ids;
 	echo '<div class=catalog__tags>';
 	foreach($tags as $tag) {
