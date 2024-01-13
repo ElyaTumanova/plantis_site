@@ -19,7 +19,7 @@
     grid-area: sorting;
 }
 
-.products {
+.catalog__grid .products {
     grid-area: catalog;
 }
 
@@ -80,4 +80,8 @@
         margin: 0 8px 16px 8px;
         box-sizing: border-box;
     }
+}
+
+.woocommerce-loop-product__link {
+    position: relative;
 }
