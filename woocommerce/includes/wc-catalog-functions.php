@@ -52,7 +52,7 @@ add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_
 add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product_link_open', 5);
 add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product_link_close', 15);
 
-
+// // короткое описание
 add_action('woocommerce_shop_loop_item_title','woocommerce_template_single_excerpt', 20);
 
 
@@ -67,6 +67,9 @@ function plnt_get_product_tags() {
 	echo '<div class=catalog__tags>';
 	foreach($tags as $tag) {
 		if (!in_array($tag, $tags_exeptions, true)) {
+			echo '<pre>';
+			print_r( $tag );
+			echo '</pre>';
 			echo '<span class=catalog__tag>'.get_term($tag)->name.' </span>';
 		}
 	}
