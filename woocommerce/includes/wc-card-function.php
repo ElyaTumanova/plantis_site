@@ -156,6 +156,7 @@ add_filter('woocommerce_upsell_display_args', function ($args) {
 add_filter( 'woocommerce_product_upsells_products_heading' , 'plnt_upsells_heading' );
 
 function plnt_upsells_heading () {
+    echo $plants_cat_id;
     $idCats = check_category ();
     foreach ($idCats as $cat){
         switch ($cat) {
