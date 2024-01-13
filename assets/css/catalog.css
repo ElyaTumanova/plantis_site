@@ -1,4 +1,4 @@
-/* .catalog__grid {
+.catalog__grid {
     display: grid;
     grid-template-columns:30% 70%;
     grid-template-rows: repeat(4, auto);
@@ -25,4 +25,4 @@
 
 .woocommerce-pagination {
     grid-area: pagination;
-} */
+}
