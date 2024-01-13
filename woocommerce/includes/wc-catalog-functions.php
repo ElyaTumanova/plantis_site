@@ -4,8 +4,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // оформление каталога целиком
+
+// // убираем лишнее
 remove_action('woocommerce_archive_description','woocommerce_taxonomy_archive_description',10);
 remove_action('woocommerce_before_shop_loop','woocommerce_result_count',20);
+
+// // структура каталога
 
 add_action('woocommerce_before_shop_loop','plnt_catalog_grid_start',15);
 function plnt_catalog_grid_start() {
@@ -37,9 +41,15 @@ function plnt_catalog_grid_end() {
 // // перенос ссылки на фото
 
 remove_action('woocommerce_after_shop_loop_item','woocommerce_template_loop_product_link_close', 5);
-add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_product_link_close',20);
+add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_product_link_close', 20);
 
-// //вывод меток 
+// // перенос кнопки в корзину
+
+remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
+add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_add_to_cart', 30);
+
+
+// // вывод меток 
 
 add_action('woocommerce_after_shop_loop_item', 'plnt_get_product_tags', 20);
 
