@@ -65,16 +65,18 @@ add_action('woocommerce_shop_loop_item_title','woocommerce_template_single_excer
 add_action('woocommerce_after_shop_loop_item', 'plnt_get_product_tags', 20);
 
 function plnt_get_product_tags() {
-	global $product;
-	global $tags_exeptions;
-	$tags = $product->tag_ids;
-	echo '<div class=catalog__tags>';
-	foreach($tags as $tag) {
-		if (!in_array($tag, $tags_exeptions, true)) {
-			echo '<a class=catalog__tag-link href="'.get_tag_link(get_term($tag)->term_taxonomy_id).'">
-				<span class=catalog__tag>'.get_term($tag)->name.' </span>
-			</a>';
+	if(is_shop() || is_category() ||is_tag()) {
+		global $product;
+		global $tags_exeptions;
+		$tags = $product->tag_ids;
+		echo '<div class=catalog__tags>';
+		foreach($tags as $tag) {
+			if (!in_array($tag, $tags_exeptions, true)) {
+				echo '<a class=catalog__tag-link href="'.get_tag_link(get_term($tag)->term_taxonomy_id).'">
+					<span class=catalog__tag>'.get_term($tag)->name.' </span>
+				</a>';
+			}
 		}
+		echo '</div>';
 	}
-	echo '</div>';
 }
