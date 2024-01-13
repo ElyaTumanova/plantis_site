@@ -3,13 +3,13 @@
 <?php
 global $plants_cat_id;
 $plants_cat_id = carbon_get_theme_option('plants_cat_id');
-echo $plants_cat_id;
 ?>
 
 
 
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
+	<?php echo $plants_cat_id;?>
 		
 		<?php if ( have_posts() ) : ?>
 			
