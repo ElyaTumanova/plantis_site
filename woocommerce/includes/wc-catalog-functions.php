@@ -68,7 +68,7 @@ function plnt_get_product_tags() {
 	foreach($tags as $tag) {
 		if (!in_array($tag, $tags_exeptions, true)) {
 			echo '<pre>';
-			print_r( $tag );
+			print_r( get_term($tag) );
 			echo '</pre>';
 			echo '<span class=catalog__tag>'.get_term($tag)->name.' </span>';
 		}
