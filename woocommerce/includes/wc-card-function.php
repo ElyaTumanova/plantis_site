@@ -131,7 +131,7 @@ function plnt_product_attributes(){
     <div class="product__attributes">
     <?php
         $idCats = check_category ();
-        if( in_array( "90" ,$idCats ) )
+        if( in_array( $plants_cat_id ,$idCats ) )
             {
             echo  '<h2 class="header-second">Уход и характеристики</h2>';
             } else {
@@ -162,10 +162,10 @@ function plnt_upsells_heading () {
             case $plants_cat_id:				//category ID for plants
                 return 'Этому растению подойдет';
                 break;
-            case 86:				//category ID for gorshki
+            case $gorshki_cat_id:				//category ID for gorshki
                 return 'Другие цвета';
                 break;
-            case 802:				//category ID for treez
+            case $treez_cat_id:				//category ID for treez
                 return 'Другие цвета и сопутствующие';
                 break;
             default:
