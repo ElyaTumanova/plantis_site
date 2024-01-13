@@ -13,7 +13,7 @@ function plnt_card_grid_start () {
 
 add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',30);
 
-function plnt_card_grid_start () {
+function plnt_card_grid_end () {
     ?>
 	<div class="card__grid">hello</div>
     <?php 
