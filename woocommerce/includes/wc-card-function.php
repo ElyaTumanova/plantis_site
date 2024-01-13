@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-$plants_cat_id = carbon_get_theme_option('plants_cat_id');
+//$plants_cat_id = carbon_get_theme_option('plants_cat_id');
 
 // табы и описание
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
@@ -161,7 +161,7 @@ function plnt_upsells_heading () {
     $idCats = check_category ();
     foreach ($idCats as $cat){
         switch ($cat) {
-            case $plants_cat_id:				//category ID for plants
+            case 838:				//category ID for plants
                 return 'Этому растению подойдет';
             break;
             case 86:				//category ID for gorshki
