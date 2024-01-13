@@ -49,7 +49,7 @@ function truemisha_sale_badge() {
 		$percentage = ( ( $product->get_regular_price() - $product->get_sale_price() ) / $product->get_regular_price() ) * 100;
  
 	if ( $percentage > 0 ) {
-		echo '<div class="product__onsale"><span class="product__onsale-skidka">Скидка </span>' . round( $percentage ) . '%</div>';
+		echo '<div class="sale_badge"><span class="sale_badge-skidka">Скидка </span>' . round( $percentage ) . '%</div>';
 	}
 }
 
@@ -65,10 +65,10 @@ function plnt_product_gallery( $options ) {
 	return $options;
 }
 
-// отключаем зум для фото товара
-add_action( 'after_setup_theme', function() {
-	remove_theme_support( 'wc-product-gallery-zoom' );
-});
+// // отключаем зум для фото товара
+// add_action( 'after_setup_theme', function() {
+// 	remove_theme_support( 'wc-product-gallery-zoom' );
+// });
 
 //цена и кнопка в корзину
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );

@@ -1,0 +1,15 @@
+.container {
+    max-width: 1300px;
+    margin: auto;
+}
+
+.content-area {
+    max-width: 1300px;
+    margin: auto;
+}
+
+.sale_badge {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}

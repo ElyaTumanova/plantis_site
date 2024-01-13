@@ -48,6 +48,8 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		                             '/assets/css/magnific-popup.css', array(), null, 'all' );
 		wp_enqueue_style( 'owl-css', get_template_directory_uri() .
 		                             '/assets/css/owl.carousel.min.css', array(), null, 'all' );
+		wp_enqueue_style( 'general', get_template_directory_uri() .
+		                             '/assets/css/general.css', array(), null, 'all' );
 		wp_enqueue_style( 'header', get_template_directory_uri() .
 		                             '/assets/css/header.css', array(), null, 'all' );
 		wp_enqueue_style( 'card', get_template_directory_uri() .

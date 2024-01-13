@@ -1,12 +1,4 @@
-.container {
-    max-width: 1300px;
-    margin: auto;
-}
 
-.content-area {
-    max-width: 1300px;
-    margin: auto;
-}
 
 .header__main {
     display: flex;
