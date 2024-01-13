@@ -158,9 +158,6 @@ function plnt_product_attributes(){
 
 //upsells & cross sells
 
-remove_action('woocommerce_after_single_product_summary','woocommerce_output_related_products', 20);
-add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 20);
-
 add_filter('woocommerce_upsell_display_args', function ($args) {
     $args['posts_per_page'] = 8;
     return $args;
@@ -192,7 +189,13 @@ function plnt_upsells_heading () {
     }
 };
         
+remove_action('woocommerce_after_single_product_summary','woocommerce_output_related_products', 20);
+add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 20);
+
 function plnt_get_cross_sells(){
+    ?>
+	<div>hihihi</div>
+    <?php 
     woocommerce_cross_sell_display();
 }
 
