@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-//$plants_cat_id = carbon_get_theme_option('plants_cat_id');
+$plants_cat_id = carbon_get_theme_option('plants_cat_id');
 
 // табы и описание
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
