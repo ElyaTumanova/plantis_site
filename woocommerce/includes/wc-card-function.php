@@ -66,9 +66,9 @@ function plnt_product_gallery( $options ) {
 }
 
 // отключаем зум для фото товара
-add_action( 'after_setup_theme', function() {
-	remove_theme_support( 'wc-product-gallery-zoom' );
-});
+// add_action( 'after_setup_theme', function() {
+// 	remove_theme_support( 'wc-product-gallery-zoom' );
+// });
 
 //цена и кнопка в корзину
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
