@@ -3,6 +3,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+add_action('woocommerce_before_single_product','plnt_card_grid_start');
+
+function plnt_card_grid_start () {
+    ?>
+	<div class="card__grid">hihih</div>
+    <?php 
+};
+
 // табы и описание
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
 add_action('woocommerce_before_single_product_summary', 'plnt_product_description', 10);
@@ -82,7 +90,7 @@ function plnt_price_wrap(){
     <?php 
 }
 
-//кнопки изменения количетсва
+//кнопки изменения количества
 add_action( 'woocommerce_before_quantity_input_field', 'truemisha_quantity_minus', 25 );
 add_action( 'woocommerce_after_quantity_input_field', 'truemisha_quantity_plus', 25 );
  
