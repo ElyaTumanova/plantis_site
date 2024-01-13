@@ -7,16 +7,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 remove_action('woocommerce_archive_description','woocommerce_taxonomy_archive_description',10);
 remove_action('woocommerce_before_shop_loop','woocommerce_result_count',20);
 
+add_action('woocommerce_before_shop_loop','plnt_catalog_grid_start',15);
+function plnt_catalog_grid_start() {
+	?>
+	<div class="catalog__grid">
+    <?php 
+};
+
 add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar',20);
 
 function plnt_catalog_sidebar() {
 	?>
     <div class="catalog__sidebar">
-   		catalod sidebaer here
+   		catalog sidebaer here
     </div>
     <?php 
 };
 
+add_action('woocommerce_after_shop_loop','plnt_catalog_grid_end',20)
+function plnt_catalog_grid_end() {
+	?>
+	</div>
+    <?php 
+};
 
 //вывод меток 
 
