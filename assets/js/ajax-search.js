@@ -16,7 +16,7 @@ jQuery(function ($){
             type: 'POST',
             dataType: 'json',
             beforeSend: function(xhr){
-                $('.search-field').placeholder('Ищем...');
+                $('.search-field').text('Ищем...');
             },
             success: function(data){
                 $('.search-field').placeholder('Поиск...');
