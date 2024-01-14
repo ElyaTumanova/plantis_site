@@ -18,7 +18,6 @@ jQuery(function ($){
             beforeSend: function(xhr){
             },
             success: function(data){
-                $('.search-field').placeholder('Поиск...');
                 $('.search .search-result').html(data.out);    //стили контейнеров формы поиска из header
             }
         });
