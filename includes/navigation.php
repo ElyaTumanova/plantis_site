@@ -59,10 +59,6 @@ function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
 		if ( $item->current ) {
 			$classes[] = 'menu-node--active';
 		}
-
-		echo '<pre>';
-		print_r( $item );
-		echo '</pre>';
 	}
 
 	return $classes;
@@ -99,28 +95,32 @@ function filter_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
 }
 
 // добавить CSS класс для элементов меню, у которых есть дочерние
-// add_filter( 'wp_nav_menu_objects', 'css_for_nav_parrent' );
-// function css_for_nav_parrent( $items ){
+add_filter( 'wp_nav_menu_objects', 'css_for_nav_parrent' );
+function css_for_nav_parrent( $items ){
 
-// 	foreach( $items as $item ){
+		echo '<pre>';
+		print_r( $items );
+		echo '</pre>';
 
-// 		if( __nav_hasSub( $item->ID, $items ) ){
-// 			// все элементы поля "classes" меню, будут совмещены и выведены в атрибут class HTML тега <li>
-// 			$item->classes[] = 'menu-parent-item';
-// 		}
+	foreach( $items as $item ){
 
-// 	}
+		if( __nav_hasSub( $item->ID, $items ) ){
+			// все элементы поля "classes" меню, будут совмещены и выведены в атрибут class HTML тега <li>
+			$item->classes[] = 'menu-parent-item';
+		}
 
-// 	return $items;
-// }
+	}
 
-// function __nav_hasSub( $item_id, $items ){
+	return $items;
+}
 
-// 	foreach( $items as $item ){
+function __nav_hasSub( $item_id, $items ){
 
-// 		if( $item->menu_item_parent && $item->menu_item_parent == $item_id )
-// 			return true;
-// 	}
+	foreach( $items as $item ){
 
-// 	return false;
-// }
+		if( $item->menu_item_parent && $item->menu_item_parent == $item_id )
+			return true;
+	}
+
+	return false;
+}
