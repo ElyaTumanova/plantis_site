@@ -21,7 +21,7 @@
 
 .site-title {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     margin: 0;
 }
@@ -45,7 +45,7 @@
 
 .header-btn__label {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.5;
 }
 
@@ -69,14 +69,17 @@
     color: var(--white-color);
 }
 
+.menu--main {
+    font-size: 16px;
+    font-weight: 600; 
+    text-transform: uppercase;
+    line-height: 14px;
+    letter-spacing: 0.01em;
+}
 .menu-horizontal {
     display: flex;
     column-gap: 20px;
     justify-content: space-between;
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
-    line-height: 14px;
 }
 
 .menu--vertical { 
