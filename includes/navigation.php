@@ -105,7 +105,7 @@ function css_for_nav_parrent( $items ){
 	foreach( $items as $item ){
 
 		echo '<pre>';
-		print_r( $item);
+		print_r( $item->ID);
 		print_r( $item->classes);
 		echo '</pre>';
 
@@ -125,15 +125,15 @@ function css_for_nav_parrent( $items ){
 
 function nav_hasSub( $item_id, $items ){
 
-	echo '<pre>';
-	print_r( $item_id );
-	echo '</pre>';
-
 	foreach( $items as $item ){
 
-		if( $item->menu_item_parent && $item->menu_item_parent == $item_id )
-			return true;
+		if( $item->menu_item_parent && $item->menu_item_parent == $item_id ) {
+			echo '<pre>';
+			print_r( 'true');
+			echo '</pre>';
+		}
+		return true;
 	}
-
 	return false;
+
 }
