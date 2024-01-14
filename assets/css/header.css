@@ -165,7 +165,7 @@
     justify-content: space-between;
 }
 
-input[type="search"] {
+input[type="search"], input[type="search"]:focus-visible {
     border: none;
 }
 
@@ -197,6 +197,10 @@ input[type="search"] {
   
 .search__close {
     margin-right: 20px;
+}
+
+.search__close:hover {
+    cursor:pointer;
 }
 
 .search-field {
