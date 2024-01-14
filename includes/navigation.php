@@ -21,7 +21,6 @@ if ( ! function_exists( 'ast_primary_menu' ) ) {
 		wp_nav_menu( array(
 			'container'      => 'nav',
 			'menu_class'     => 'primary-menu',
-			// 'walker' => new CSS_Menu_Walker(),
 			'theme_location' => 'primary',
 			'depth'          => 3,
 			'fallback_cb'     => '__return_empty_string',
@@ -29,61 +28,67 @@ if ( ! function_exists( 'ast_primary_menu' ) ) {
 	}
 }
 
-// class CSS_Menu_Walker extends Walker {
-// 	var $db_fields = array('parent' => 'menu_item_parent', 'id' => 'db_id');
-	
-// 	function start_lvl(&$output, $depth = 0, $args = array()) {
-// 		$indent = str_repeat("t", $depth);
-// 		$output .= "n$indent<ul>n";
-// 	}
-	
-// 	function end_lvl(&$output, $depth = 0, $args = array()) {
-// 		$indent = str_repeat("t", $depth);
-// 		$output .= "$indent</ul>n";
-// 	}
-	
-// 	function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
-	
-// 		global $wp_query;
-// 		$indent = ($depth) ? str_repeat("t", $depth) : '';
-// 		$class_names = $value = '';
-// 		$classes = empty($item->classes) ? array() : (array) $item->classes;
-		
-// 		/* Добавление активного класса */
-// 		if (in_array('current-menu-item', $classes)) {
-// 			$classes[] = 'active';
-// 			unset($classes['current-menu-item']);
-// 		}
-		
-// 		/* Проверка наличия дочерних элементов */
-// 		$children = get_posts(array('post_type' => 'nav_menu_item', 'nopaging' => true, 'numberposts' => 1, 'meta_key' => '_menu_item_menu_item_parent', 'meta_value' => $item->ID));
-// 		if (!empty($children)) {
-// 			$classes[] = 'has-sub';
-// 		}
-		
-// 		$class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
-// 		$class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
-		
-// 		$id = apply_filters('nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args);
-// 		$id = $id ? ' id="' . esc_attr($id) . '"' : '';
-		
-// 		$output .= $indent . '<li' . $id . $value . $class_names .'>';
-		
-// 		$attributes  = ! empty($item->attr_title) ? ' title="'  . esc_attr($item->attr_title) .'"' : '';
-// 		$attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target    ) .'"' : '';
-// 		$attributes .= ! empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn       ) .'"' : '';
-// 		$attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url       ) .'"' : '';
-		
-// 		$item_output = $args->before;
-// 		$item_output .= '<a'. $attributes .'><span>';
-// 		$item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
-// 		$item_output .= '</span></a>';
-// 		$item_output .= $args->after;
-		
-// 		$output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
-// 	}
-	
-// 	function end_el(&$output, $item, $depth = 0, $args = array()) {
-// 		$output .= "</li>n";
-// 	}
-// }
+
+//классы меню
+add_filter( 'wp_nav_menu_args', 'filter_wp_menu_args' );
+function filter_wp_menu_args( $args ) {
+	if ( $args['theme_location'] === 'header-menu' ) {
+		$args['container']  = false;
+		$args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
+		$args['menu_class'] = 'menu menu--main menu-horizontal';
+	}
+
+	return $args;
+}
+
+// Изменяем атрибут id у тега li
+add_filter( 'nav_menu_item_id', 'filter_menu_item_css_id', 10, 4 );
+function filter_menu_item_css_id( $menu_id, $item, $args, $depth ) {
+	return $args->theme_location === 'header-menu' ? '' : $menu_id;
+}
+
+// Изменяем атрибут class у тега li
+add_filter( 'nav_menu_css_class', 'filter_nav_menu_css_classes', 10, 4 );
+function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
+	if ( $args->theme_location === 'header-menu' ) {
+		$classes = [
+			'menu-node',
+			'menu-node--main_lvl_' . ( $depth + 1 )
+		];
+
+		if ( $item->current ) {
+			$classes[] = 'menu-node--active';
+		}
+	}
+
+	return $classes;
+}
+
+// Изменяет класс у вложенного ul
+add_filter( 'nav_menu_submenu_css_class', 'filter_nav_menu_submenu_css_class', 10, 3 );
+function filter_nav_menu_submenu_css_class( $classes, $args, $depth ) {
+	if ( $args->theme_location === 'header-menu' ) {
+		$classes = [
+			'menu',
+			'menu--dropdown',
+			'menu--vertical'
+		];
+	}
+
+	return $classes;
+}
+
+
+// ДОбавляем классы ссылкам
+add_filter( 'nav_menu_link_attributes', 'filter_nav_menu_link_attributes', 10, 4 );
+function filter_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
+	if ( $args->theme_location === 'header-menu' ) {
+		$atts['class'] = 'menu-link';
+
+		if ( $item->current ) {
+			$atts['class'] .= ' menu-link--active';
+		}
+	}
+
+	return $atts;
+}
