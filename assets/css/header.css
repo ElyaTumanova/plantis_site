@@ -108,7 +108,7 @@
 
 .menu-node > .menu--dropdown {
     transition: translateY 0.6s;
-    transform: translateY(-10px);
+    transform: translateY(20px);
 }
 
 .menu--dropdown_lvl_2 {
