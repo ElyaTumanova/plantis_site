@@ -21,21 +21,17 @@ function plnt_search_ajax_action_callback (){
     if ($query_ajax->have_posts()) {
         while ($query_ajax->have_posts()){
             $query_ajax->the_post();
-            $product_id = get_the_ID();
-            $product = wc_get_product( $product_id );
-            print_r($product);
+            $product = wc_get_product( get_the_ID() );
+            // print_r($product);
+            $short_descr = $product->get_short_description()
             $sale = get_post_meta( get_the_ID(), '_sale_price', true);
             ?>
             <div class="search-result__item">
                 <a href="<?php echo get_permalink();?>" class="search-result__link" target="blank">
                     <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );?>" class="search-result__image" alt="<?php echo get_the_title();?>">
                     <div class="search-result__info">
-                                <?php echo '<pre>';
-                                print_r( get_post_meta( get_the_ID()) );
-                                echo '</pre>';
-                                ?>
                         <span class="search-result__title"><?php echo get_the_title();?></span>
-                        <span class="search-result__descr"><?php get_post_meta( get_the_ID(), '_excerpt', true);?></span>
+                        <span class="search-result__descr"><?php echo $short_descr?></span>
                         <?php if ($sale) {
                             ?>
                             <span class="search-result__reg-price"><?php echo get_post_meta( get_the_ID(), '_regular_price', true);?>&#8381;</span>
