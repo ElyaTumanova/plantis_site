@@ -80,7 +80,7 @@
 }
 
 .menu--vertical {
-    visibility: hidden;
+    /* visibility: hidden; */
     position: absolute;
     color: black;
     background: white;
@@ -102,7 +102,7 @@
 }
 
 .menu-node:hover > .menu--dropdown {
-    visibility: visible;
+    /* visibility: visible; */
     transform: translateY(0);
 }
 
