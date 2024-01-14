@@ -89,14 +89,16 @@
     line-height: 14px;
 }
 
-.menu--dropdown {
+.menu--vertical {
     visibility: hidden;
     position: absolute;
     color: black;
     background: white;
+    display: flex;
+    flex-direction: column;
 }
 
-.menu-node:hover .menu--dropdown {visibility: visible;}
+.menu-node:hover > .menu--dropdown {visibility: visible;}
 
 
 

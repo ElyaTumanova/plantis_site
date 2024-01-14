@@ -70,6 +70,7 @@ function filter_nav_menu_submenu_css_class( $classes, $args, $depth ) {
 	if ( $args->theme_location === 'primary' ) {
 		$classes = [
 			'menu',
+			'menu--dropdown_lvl_' . ( $depth + 1 )
 			'menu--dropdown',
 			'menu--vertical'
 		];
