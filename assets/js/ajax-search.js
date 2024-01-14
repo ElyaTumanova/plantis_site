@@ -24,6 +24,7 @@ jQuery(function ($){
     });
 
     $('.search__close').click(function () {
+        console.log('hihi');
         $('.search-result').empty();
         $('.search_form input[name="s"]').val('');
     })
