@@ -202,3 +202,27 @@ input[type="search"] {
     row-gap: 20px;
   }
 
+  .search-result__link {
+    display: flex;
+    column-gap: 20px;
+  }
+
+  .search-result__info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+.search-result__reg-price {
+    font-size: 20px;
+    font-weight: 400;
+    color: red;
+    text-decoration: line-through;
+}
+
+.search-result__price {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+
+  

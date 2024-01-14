@@ -31,15 +31,15 @@ function plnt_search_ajax_action_callback (){
                     <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );?>" class="search-result__image" alt="<?php echo get_the_title();?>">
                     <div class="search-result__info">
                         <span class="search-result__title"><?php echo get_the_title();?></span>
-                        <span class="search-result__descr"><?php get_post_meta( get_the_ID(), '_short_description', true);?></span>
+                        <span class="search-result__descr"><?php get_post_meta( get_the_ID(), '_short_description', true);?>&#8381;</span>
                         <?php if ($sale) {
                             ?>
-                            <span class="search-result__reg-price"><?php echo get_post_meta( get_the_ID(), '_regular_price', true);?></span>
-                            <span class="search-result__sale"><?php echo get_post_meta( get_the_ID(), '_sale_price', true);?></span>
+                            <span class="search-result__reg-price"><?php echo get_post_meta( get_the_ID(), '_regular_price', true);?>&#8381;</span>
+                            <span class="search-result__price"><?php echo get_post_meta( get_the_ID(), '_sale_price', true);?>&#8381;</span>
                             <?php
                         } else {
                             ?>
-                            <span class="search-result__price"><?php echo get_post_meta( get_the_ID(), '_price', true);?></span>
+                            <span class="search-result__price"><?php echo get_post_meta( get_the_ID(), '_price', true);?>&#8381;</span>
                             <?php 
                         }
                         ?>
