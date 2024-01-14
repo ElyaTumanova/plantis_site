@@ -30,16 +30,16 @@ if ( ! function_exists( 'ast_primary_menu' ) ) {
 
 
 //классы меню
-// add_filter( 'wp_nav_menu_args', 'filter_wp_menu_args' );
-// function filter_wp_menu_args( $args ) {
-// 	if ( $args['theme_location'] === 'primary' ) {
-// 		$args['container']  = false;
-// 		$args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
-// 		$args['menu_class'] = 'menu menu--main menu-horizontal';
-// 	}
+add_filter( 'wp_nav_menu_args', 'filter_wp_menu_args' );
+function filter_wp_menu_args( $args ) {
+	if ( $args['theme_location'] === 'primary' ) {
+		$args['container']  = false;
+		$args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
+		$args['menu_class'] = 'menu menu--main menu-horizontal';
+	}
 
-// 	return $args;
-// }
+	return $args;
+}
 
 // Изменяем атрибут id у тега li
 add_filter( 'nav_menu_item_id', 'filter_menu_item_css_id', 10, 4 );
@@ -99,32 +99,41 @@ function filter_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
 }
 
 // добавить CSS класс для элементов меню, у которых есть дочерние
-// add_filter( 'wp_nav_menu_objects', 'css_for_nav_parrent' );
-// function css_for_nav_parrent( $items ){
+add_filter( 'wp_nav_menu_objects', 'css_for_nav_parrent' );
+function css_for_nav_parrent( $items ){
 
-// 	foreach( $items as $item ){
+	foreach( $items as $item ){
 
-// 		if( nav_hasSub( $item->ID, $items ) ){
-// 			// все элементы поля "classes" меню, будут совмещены и выведены в атрибут class HTML тега <li>
-// 			$item->classes[] = 'menu-parent-item';
-// 		}
+		echo '<pre>';
+		print_r( $item);
+		print_r( $item->classes);
+		echo '</pre>';
 
-// 	}
+		if( nav_hasSub( $item->ID, $items ) ){
+			// все элементы поля "classes" меню, будут совмещены и выведены в атрибут class HTML тега <li>
+			$item->classes[] = 'menu-parent-item';
 
-// 	return $items;
-// }
+			echo '<pre>';
+			print_r( $item->classes);
+			echo '</pre>';
+		}
 
-// function nav_hasSub( $item_id, $items ){
+	}
 
-// 	echo '<pre>';
-// 	print_r( $item_id );
-// 	echo '</pre>';
+	return $items;
+}
 
-// 	foreach( $items as $item ){
+function nav_hasSub( $item_id, $items ){
 
-// 		if( $item->menu_item_parent && $item->menu_item_parent == $item_id )
-// 			return true;
-// 	}
+	echo '<pre>';
+	print_r( $item_id );
+	echo '</pre>';
 
-// 	return false;
-// }
+	foreach( $items as $item ){
+
+		if( $item->menu_item_parent && $item->menu_item_parent == $item_id )
+			return true;
+	}
+
+	return false;
+}
