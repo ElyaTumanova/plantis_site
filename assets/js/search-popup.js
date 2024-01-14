@@ -5,33 +5,27 @@ const searchOverlay = document.querySelector('.popup-overlay');
 const searchResult = document.querySelector('.search-result');
 const searchInput = document.querySelector('.search-field');
 
-console.log(searchPopup);
-
-
-
 searchBtn.addEventListener ("click", (evt)=>{
-    // searchPopup.classList.toggle ('search-popup_active');
-    // document.body.classList.toggle ('body-overlay');
-    close_search_popup ();
+    toggle_search_popup ();
 });
 
 searchClose.addEventListener ("click", (evt)=>{
-    close_search_popup ();
+    toggle_search_popup ();
 });
 
 searchOverlay.addEventListener ("click", (evt)=>{
-    close_search_popup ();
+    toggle_search_popup ();
 });
 
 document.addEventListener('keydown', function(e){
     if((e.key=='Escape'||e.key=='Esc')){
         if(searchPopup.classList.contains('search-popup_active')) {
-            close_search_popup ();
+            toggle_search_popup ();
         } 
     }
 }, true);
 
-function close_search_popup () {
+function toggle_search_popup () {
     searchPopup.classList.toggle ('search-popup_active');
     document.body.classList.toggle ('body-overlay');
     const deleteElement = searchResult.querySelectorAll('div');
