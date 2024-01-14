@@ -77,8 +77,8 @@
     letter-spacing: 0.01em;
 }
 
-.menu--main .menu-node .menu-link {
-    padding: 15px 0;
+.menu--main .menu-node {
+    padding: 15px 25px;
     display: block;
 }
 
@@ -93,8 +93,7 @@
     background: var(--background);
     display: flex;
     flex-direction: column;
-    padding: 20px 25px;
-    /* row-gap: 20px; */
+    padding: 20px 0;
     box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     min-width: 180px;
@@ -110,9 +109,9 @@
     margin-top: 10px;
 }
 
-.menu-node_lvl_1 {
+/* .menu-node_lvl_1 {
     padding: 15px 0;
-}
+} */
 
 .menu-node:hover > .menu--dropdown {
     visibility: visible;
