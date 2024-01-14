@@ -184,34 +184,40 @@ input[type="search"] {
 .search__wrap {
     display: flex;
     justify-content: space-between;
-  }
+}
   
-  .search__close {
-   margin-right: 20px
-  }
-  
-  .search-field {
+.search__close {
+    margin-right: 20px;
+}
+
+.search-field {
     width: calc(100vw - 110px);
     max-width: calc(1300px - 110px);
-  }
+}
 
-  .search-result {
+.search-result {
     padding: 20px 0;
     display: flex;
     flex-direction: column;
     row-gap: 20px;
-  }
+}
 
-  .search-result__link {
+.search-result__link {
     display: flex;
     column-gap: 20px;
-  }
+}
 
-  .search-result__info {
+.search-result__info {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-  }
+}
+
+.search-result__title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
 .search-result__reg-price {
     font-size: 20px;
     font-weight: 400;
