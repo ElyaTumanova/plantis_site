@@ -104,10 +104,13 @@
 .menu-node:hover > .menu--dropdown {
     visibility: visible;
     background-color: #2E9AFF;
+    transform: translate(0, 0, 0);
 }
 
 .menu-node > .menu--dropdown {
+    transform: translate(0, -10px, 0);
     transition: background-color 0.6s;
+    transition: translate 0.6s;
 }
 
 .menu--dropdown_lvl_2 {
