@@ -194,3 +194,18 @@ input[type="search"] {
     width: calc(100vw - 110px);
     max-width: calc(1300px - 110px);
   }
+
+  .search-result {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  .search-result__link {
+    display: grid;
+    grid-template-columns: 150px auto;
+    grid-template-rows: auto;
+    grid-template-areas:"1 2";
+  }
+
