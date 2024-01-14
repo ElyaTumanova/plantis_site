@@ -51,15 +51,7 @@ function filter_menu_item_css_id( $menu_id, $item, $args, $depth ) {
 add_filter( 'nav_menu_css_class', 'filter_nav_menu_css_classes', 10, 4 );
 function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
 	if ( $args->theme_location === 'primary' ) {
-		// echo '<pre>';
-		// print_r( $item );
-		// print_r( $args );
-		// echo '</pre>';
 		array_push($classes, 'menu-node', 'menu-node_lvl_' . ( $depth + 1 ));
-		// $classes[] = 
-		// 	'menu-node',
-		// 	'menu-node_lvl_' . ( $depth + 1 )
-		// ;
 
 		if ( $item->current ) {
 			$classes[] = 'menu-node--active';
@@ -73,12 +65,7 @@ function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
 add_filter( 'nav_menu_submenu_css_class', 'filter_nav_menu_submenu_css_class', 10, 3 );
 function filter_nav_menu_submenu_css_class( $classes, $args, $depth ) {
 	if ( $args->theme_location === 'primary' ) {
-		$classes[] = [
-			'menu',
-			'menu--dropdown_lvl_' . ( $depth + 1 ),
-			'menu--dropdown',
-			'menu--vertical'
-		];
+		array_push($classes, 'menu', 'menu--dropdown', 'menu--vertical', 'menu--dropdown_lvl_' . ( $depth + 1 ));
 	}
 
 	return $classes;
