@@ -21,9 +21,9 @@ function plnt_search_ajax_action_callback (){
     if ($query_ajax->have_posts()) {
         while ($query_ajax->have_posts()){
             $query_ajax->the_post();
-            //$product_id = get_the_ID();
-            //$product = wc_get_product( $product_id );
-            //print_r($product);
+            $product_id = get_the_ID();
+            $product = wc_get_product( $product_id );
+            print_r($product);
             $sale = get_post_meta( get_the_ID(), '_sale_price', true);
             ?>
             <div class="search-result__item">
