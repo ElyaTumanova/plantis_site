@@ -123,13 +123,14 @@
 .menu-item-has-children.menu-node_lvl_2> a {
     display: flex;
     justify-content: space-between;
+    margin-right: 20px;
 }
 
 .menu-item-has-children.menu-node_lvl_2> a:after {
     content: "\276F";
-    padding-left: 20px;
     font-size: 10px;
-    vertical-align: top;
+    position: absolute;
+    right: 13px;
 }
 .menu-item-has-children.menu-node_lvl_2> a:after:hover {
     text-decoration: none;
