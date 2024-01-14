@@ -102,9 +102,6 @@
 }
 .menu-node:hover > .menu--dropdown {
     visibility: visible;
-}
-
-.menu-node > .menu--dropdown {
     transition: all 2s ease;
 }
 
