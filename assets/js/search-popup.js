@@ -28,10 +28,10 @@ function close_search_popup () {
 
 };
 
-document.addEventListener( 'click', (e) => {
-	const withinBoundaries = e.composedPath().includes(searchPopup);
+// document.addEventListener( 'click', (e) => {
+// 	const withinBoundaries = e.composedPath().includes(searchPopup);
  
-	if ( ! withinBoundaries ) {
-		close_search_popup ();
-	}
-});
+// 	if ( ! withinBoundaries ) {
+// 		close_search_popup ();
+// 	}
+// });
