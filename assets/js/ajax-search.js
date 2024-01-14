@@ -16,10 +16,17 @@ jQuery(function ($){
             type: 'POST',
             dataType: 'json',
             beforeSend: function(xhr){
+                $('.search-field').placeholder('Ищем...');
             },
             success: function(data){
+                $('.search-field').placeholder('Поиск...');
                 $('.search .search-result').html(data.out);    //стили контейнеров формы поиска из header
             }
         });
     });
+
+    $('.search__close').click(function () {
+        $('.search-result').empty();
+        $('.search_form input[name="s"]').val('');
+    })
 });
