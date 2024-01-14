@@ -98,13 +98,9 @@ function filter_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
 add_filter( 'wp_nav_menu_objects', 'css_for_nav_parrent' );
 function css_for_nav_parrent( $items ){
 
-		echo '<pre>';
-		print_r( $items );
-		echo '</pre>';
-
 	foreach( $items as $item ){
 
-		if( __nav_hasSub( $item->ID, $items ) ){
+		if( nav_hasSub( $item->ID, $items ) ){
 			// все элементы поля "classes" меню, будут совмещены и выведены в атрибут class HTML тега <li>
 			$item->classes[] = 'menu-parent-item';
 		}
@@ -114,7 +110,11 @@ function css_for_nav_parrent( $items ){
 	return $items;
 }
 
-function __nav_hasSub( $item_id, $items ){
+function nav_hasSub( $item_id, $items ){
+
+	echo '<pre>';
+	print_r( $item_id );
+	echo '</pre>';
 
 	foreach( $items as $item ){
 
