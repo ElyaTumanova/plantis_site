@@ -30,16 +30,16 @@ if ( ! function_exists( 'ast_primary_menu' ) ) {
 
 
 //классы меню
-add_filter( 'wp_nav_menu_args', 'filter_wp_menu_args' );
-function filter_wp_menu_args( $args ) {
-	if ( $args['theme_location'] === 'primary' ) {
-		$args['container']  = false;
-		$args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
-		$args['menu_class'] = 'menu menu--main menu-horizontal';
-	}
+// add_filter( 'wp_nav_menu_args', 'filter_wp_menu_args' );
+// function filter_wp_menu_args( $args ) {
+// 	if ( $args['theme_location'] === 'primary' ) {
+// 		$args['container']  = false;
+// 		$args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
+// 		$args['menu_class'] = 'menu menu--main menu-horizontal';
+// 	}
 
-	return $args;
-}
+// 	return $args;
+// }
 
 // Изменяем атрибут id у тега li
 add_filter( 'nav_menu_item_id', 'filter_menu_item_css_id', 10, 4 );
@@ -51,10 +51,10 @@ function filter_menu_item_css_id( $menu_id, $item, $args, $depth ) {
 add_filter( 'nav_menu_css_class', 'filter_nav_menu_css_classes', 10, 4 );
 function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
 	if ( $args->theme_location === 'primary' ) {
-		echo '<pre>';
-		print_r( $item );
-		print_r( $args );
-		echo '</pre>';
+		// echo '<pre>';
+		// print_r( $item );
+		// print_r( $args );
+		// echo '</pre>';
 		$classes = [
 			'menu-node',
 			'menu-node_lvl_' . ( $depth + 1 )
