@@ -207,15 +207,22 @@ input[type="search"] {
     column-gap: 20px;
 }
 
-.search-result__info {
+/* .search-result__info {
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
-}
+} */
 
 .search-result__title {
     font-size: 20px;
     font-weight: 700;
+    display: block;
+}
+
+.search-result__descr {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 15px;
+    display: block;
 }
 
 .search-result__reg-price {
@@ -223,12 +230,15 @@ input[type="search"] {
     font-weight: 400;
     color: red;
     text-decoration: line-through;
+    margin-right: 10px;
 }
 
 .search-result__price {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 400;
 }
+
+
 
 
   
