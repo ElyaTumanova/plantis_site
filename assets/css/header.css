@@ -104,11 +104,11 @@
 .menu-node:hover > .menu--dropdown {
     /* visibility: visible; */
     transform: translateY(0);
-    transition: translateY 200ms;
 }
 
 .menu-node > .menu--dropdown {
     transform: translateY(20px);
+    transition: transform 200ms;
 }
 
 .menu--dropdown_lvl_2 {
