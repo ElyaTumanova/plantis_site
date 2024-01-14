@@ -180,3 +180,16 @@ input[type="search"] {
     z-index: -1;
     position: fixed;
 }
+
+.search__wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .search__close {
+   margin-right: 20px
+  }
+  
+  .search-field {
+    width: calc(100vw - 110px);
+  }
