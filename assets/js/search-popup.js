@@ -3,9 +3,9 @@ const searchPopup = document.querySelector('.search-popup');
 const searchClose = document.querySelector('.search__close');
 const searchOverlay = document.querySelector('.popup-overlay');
 const searchResult = document.querySelector('.search-result');
-const searchInput = document.querySelector('..search_form input[name="s"]');
+// const searchInput = document.querySelector('.search_form input[name="s"]');
 
-console.log(searchInput);
+// console.log(searchInput);
 
 
 
@@ -34,6 +34,6 @@ function close_search_popup () {
     for (let i = 0; i < deleteElement.length; i++) {
       deleteElement[i].remove();
     }
-    searchInput.value= "";
+    // searchInput.value= "";
 };
 
