@@ -192,4 +192,5 @@ input[type="search"] {
   
   .search-field {
     width: calc(100vw - 110px);
+    max-width: calc(1300px - 110px);
   }
