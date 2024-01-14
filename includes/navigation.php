@@ -55,7 +55,7 @@ function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
 		// print_r( $item );
 		// print_r( $args );
 		// echo '</pre>';
-		$classes = [
+		$classes[] = [
 			'menu-node',
 			'menu-node_lvl_' . ( $depth + 1 )
 		];
@@ -72,7 +72,7 @@ function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
 add_filter( 'nav_menu_submenu_css_class', 'filter_nav_menu_submenu_css_class', 10, 3 );
 function filter_nav_menu_submenu_css_class( $classes, $args, $depth ) {
 	if ( $args->theme_location === 'primary' ) {
-		$classes = [
+		$classes[] = [
 			'menu',
 			'menu--dropdown_lvl_' . ( $depth + 1 ),
 			'menu--dropdown',
@@ -99,41 +99,41 @@ function filter_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
 }
 
 // добавить CSS класс для элементов меню, у которых есть дочерние
-add_filter( 'wp_nav_menu_objects', 'css_for_nav_parrent' );
-function css_for_nav_parrent( $items ){
+// add_filter( 'wp_nav_menu_objects', 'css_for_nav_parrent' );
+// function css_for_nav_parrent( $items ){
 
-	foreach( $items as $item ){
+// 	foreach( $items as $item ){
 
-		echo '<pre>';
-		print_r( $item->ID);
-		print_r( $item->classes);
-		echo '</pre>';
+// 		echo '<pre>';
+// 		print_r( $item->ID);
+// 		print_r( $item->classes);
+// 		echo '</pre>';
 
-		if( nav_hasSub( $item->ID, $items ) ){
-			// все элементы поля "classes" меню, будут совмещены и выведены в атрибут class HTML тега <li>
-			$item->classes[] = 'menu-parent-item';
+// 		if( nav_hasSub( $item->ID, $items ) ){
+// 			// все элементы поля "classes" меню, будут совмещены и выведены в атрибут class HTML тега <li>
+// 			$item->classes[] = 'menu-parent-item';
 
-			echo '<pre>';
-			print_r( $item->classes);
-			echo '</pre>';
-		}
+// 			echo '<pre>';
+// 			print_r( $item->classes);
+// 			echo '</pre>';
+// 		}
 
-	}
+// 	}
 
-	return $items;
-}
+// 	return $items;
+// }
 
-function nav_hasSub( $item_id, $items ){
+// function nav_hasSub( $item_id, $items ){
 
-	foreach( $items as $item ){
+// 	foreach( $items as $item ){
 
-		if( $item->menu_item_parent && $item->menu_item_parent == $item_id ) {
-			echo '<pre>';
-			print_r( 'true');
-			echo '</pre>';
-		}
-		return true;
-	}
-	return false;
+// 		if( $item->menu_item_parent && $item->menu_item_parent == $item_id ) {
+// 			echo '<pre>';
+// 			print_r( 'true');
+// 			echo '</pre>';
+// 		}
+// 		return true;
+// 	}
+// 	return false;
 
-}
+// }
