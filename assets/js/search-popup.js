@@ -6,7 +6,7 @@ const searchOverlay = document.querySelector('.popup-overlay');
 
 searchBtn.addEventListener ("click", (evt)=>{
     searchPopup.classList.toggle ('search-popup_active');
-    document.body.classList.toggle ('fix-body');
+    // document.body.classList.toggle ('fix-body');
 });
 searchClose.addEventListener ("click", (evt)=>{
     close_search_popup ();
@@ -23,7 +23,7 @@ document.addEventListener('keydown', function(e){
 
 function close_search_popup () {
     searchPopup.classList.remove ('search-popup_active');
-    document.body.classList.remove ('fix-body');
+    // document.body.classList.remove ('fix-body');
 
 };
 
