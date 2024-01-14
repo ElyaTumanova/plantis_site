@@ -53,7 +53,7 @@ function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
 	if ( $args->theme_location === 'primary' ) {
 		$classes = [
 			'menu-node',
-			'menu-node--main_lvl_' . ( $depth + 1 )
+			'menu-node_lvl_' . ( $depth + 1 )
 		];
 
 		if ( $item->current ) {
