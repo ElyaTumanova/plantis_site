@@ -77,7 +77,6 @@
     font-weight: 600;
     text-transform: uppercase;
     line-height: 14px;
-    padding: 15px 0;
 }
 
 .menu--vertical {
@@ -98,6 +97,9 @@
     margin-top: 10px;
 }
 
+.menu-node {
+    padding: 15px 0;
+}
 .menu-node:hover > .menu--dropdown {visibility: visible;}
 
 .menu--dropdown_lvl_2 {
