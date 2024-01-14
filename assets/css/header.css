@@ -202,10 +202,3 @@ input[type="search"] {
     row-gap: 20px;
   }
 
-  .search-result__link {
-    display: grid;
-    grid-template-columns: 150px auto;
-    grid-template-rows: auto;
-    grid-template-areas:"1 2";
-  }
-

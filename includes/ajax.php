@@ -29,19 +29,21 @@ function plnt_search_ajax_action_callback (){
             <div class="search-result__item">
                 <a href="<?php echo get_permalink();?>" class="search-result__link" target="blank">
                     <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );?>" class="search-result__image" alt="<?php echo get_the_title();?>">
-                    <span class="search-result__title"><?php echo get_the_title();?></span>
-                    <span class="search-result__descr"><?php get_post_meta( get_the_ID(), '_short_description', true);?></span>
-                    <?php if ($sale) {
+                    <div class="search-result__info">
+                        <span class="search-result__title"><?php echo get_the_title();?></span>
+                        <span class="search-result__descr"><?php get_post_meta( get_the_ID(), '_short_description', true);?></span>
+                        <?php if ($sale) {
+                            ?>
+                            <span class="search-result__reg-price"><?php echo get_post_meta( get_the_ID(), '_regular_price', true);?></span>
+                            <span class="search-result__sale"><?php echo get_post_meta( get_the_ID(), '_sale_price', true);?></span>
+                            <?php
+                        } else {
+                            ?>
+                            <span class="search-result__price"><?php echo get_post_meta( get_the_ID(), '_price', true);?></span>
+                            <?php 
+                        }
                         ?>
-                        <span class="search-result__reg-price"><?php echo get_post_meta( get_the_ID(), '_regular_price', true);?></span>
-                        <span class="search-result__sale"><?php echo get_post_meta( get_the_ID(), '_sale_price', true);?></span>
-                        <?php
-                    } else {
-                        ?>
-                        <span class="search-result__price"><?php echo get_post_meta( get_the_ID(), '_price', true);?></span>
-                        <?php 
-                    }
-                    ?>
+                    </div>
                 </a>  
             </div>
             <?php
