@@ -5,7 +5,7 @@ const searchOverlay = document.querySelector('.popup-overlay');
 const searchResult = document.querySelector('.search-result');
 const searchInput = document.querySelector('.search-field');
 
-console.log(searchInput);
+console.log(searchPopup);
 
 
 
@@ -25,7 +25,7 @@ searchOverlay.addEventListener ("click", (evt)=>{
 
 document.addEventListener('keydown', function(e){
     if((e.key=='Escape'||e.key=='Esc')){
-        if(searchPopup.classList.includes('search-popup_active')) {
+        if(searchPopup.classList.contains('search-popup_active')) {
             close_search_popup ();
         } 
     }
