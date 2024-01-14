@@ -77,8 +77,9 @@
     letter-spacing: 0.01em;
 }
 
-.menu--main .menu-link {
+.menu--main .menu-node .menu-link {
     padding: 15px 0;
+    display: block;
 }
 
 .menu-horizontal {
