@@ -2,6 +2,11 @@ const searchBtn = document.querySelector('.search-btn');
 const searchPopup = document.querySelector('.search-popup');
 const searchClose = document.querySelector('.search__close');
 const searchOverlay = document.querySelector('.popup-overlay');
+const searchResult = document.querySelector('.search-result');
+const searchInput = document.querySelector('..search_form input[name="s"]');
+
+console.log(searchInput);
+
 
 
 searchBtn.addEventListener ("click", (evt)=>{
@@ -25,7 +30,10 @@ document.addEventListener('keydown', function(e){
 function close_search_popup () {
     searchPopup.classList.remove ('search-popup_active');
     document.body.classList.remove ('body-overlay');
-
+    const deleteElement = searchResult.querySelectorAll('div');
+    for (let i = 0; i < deleteElement.length; i++) {
+      deleteElement[i].remove();
+    }
+    searchInput.value= "";
 };
-
 
