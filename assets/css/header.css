@@ -200,6 +200,8 @@ input[type="search"] {
     display: flex;
     flex-direction: column;
     row-gap: 20px;
+    max-height: 80vh;
+    overflow-y: scroll;
 }
 
 .search-result__link {
