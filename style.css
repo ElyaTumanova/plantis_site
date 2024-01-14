@@ -43,12 +43,6 @@ html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust:     100%;
 }
-:root {
-    --accent-color: #146F41;
-    --red-color: #F93D05;
-    --white-color: #fff;
-    --background: #FDFDFD;
-}
 
 body {
     margin: 0;

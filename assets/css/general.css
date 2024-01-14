@@ -2,6 +2,13 @@
     background-color: red;
 }
 
+:root {
+    --accent-color: #146F41;
+    --red-color: #F93D05;
+    --white-color: #fff;
+    --background: #FDFDFD;
+    --text:#000;
+}
 .container {
     max-width: 1300px;
     margin: auto;
