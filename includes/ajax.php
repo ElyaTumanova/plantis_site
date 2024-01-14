@@ -23,7 +23,7 @@ function plnt_search_ajax_action_callback (){
             $query_ajax->the_post();
             $product = wc_get_product( get_the_ID() );
             // print_r($product);
-            $short_descr = $product->get_short_description()
+            $short_descr = $product->get_short_description();
             $sale = get_post_meta( get_the_ID(), '_sale_price', true);
             ?>
             <div class="search-result__item">
