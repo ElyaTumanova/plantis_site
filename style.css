@@ -39,8 +39,7 @@ Text Domain: art-starter-theme
 # Normalize
 --------------------------------------------------------------*/
 html {
-    font-family: sans-serif;
-    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Nunito', sans-serif;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust:     100%;
 }
@@ -264,8 +263,7 @@ input,
 select,
 textarea {
     color: #404040;
-    font-family: sans-serif;
-    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Nunito', sans-serif;
     font-size: 16px;
     line-height: 1.5;
 }
