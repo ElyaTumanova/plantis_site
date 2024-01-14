@@ -14,7 +14,7 @@
 
 	<header id="header" class="header" role="banner">
 		<div class="header__info">
-			<div class="container">
+			<div class="header__info-wrap container">
 				<a href="https://t.me/plantis" class="header__telegram" role="button">
 					<span class="header__telegram-icon">
 						<svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">

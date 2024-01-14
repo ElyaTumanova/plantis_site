@@ -275,6 +275,12 @@ input[type="search"], input[type="search"]:focus-visible {
 .header__info {
     background-color: var(--gray);
 }
+
+.header__info-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* telegram btn styles */
 .header__telegram {
     background-color: #0886C4;
