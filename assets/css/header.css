@@ -79,6 +79,24 @@
     line-height: 14px;
 }
 
+.menu-horizontal {
+    display: flex;
+    column-gap: 20px;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 14px;
+}
+
+.menu--dropdown {
+    visibility: hidden;
+    position: absolute;
+    color: black;
+    background: white;
+}
+
+.menu-node:hover .menu--dropdown {visibility: visible;}
 
 
 
