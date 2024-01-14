@@ -10,9 +10,11 @@ console.log(searchInput);
 
 
 searchBtn.addEventListener ("click", (evt)=>{
-    searchPopup.classList.toggle ('search-popup_active');
-    document.body.classList.toggle ('body-overlay');
+    // searchPopup.classList.toggle ('search-popup_active');
+    // document.body.classList.toggle ('body-overlay');
+    close_search_popup ();
 });
+
 searchClose.addEventListener ("click", (evt)=>{
     close_search_popup ();
 });
@@ -28,8 +30,8 @@ document.addEventListener('keydown', function(e){
 }, true);
 
 function close_search_popup () {
-    searchPopup.classList.remove ('search-popup_active');
-    document.body.classList.remove ('body-overlay');
+    searchPopup.classList.toggle ('search-popup_active');
+    document.body.classList.toggle ('body-overlay');
     const deleteElement = searchResult.querySelectorAll('div');
     for (let i = 0; i < deleteElement.length; i++) {
       deleteElement[i].remove();
