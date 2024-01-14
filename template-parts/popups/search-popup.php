@@ -4,7 +4,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="search-popup">
-    <!-- <div class="popup-overlay-search-short"></div> -->
     <div class="search container">
         <div class="search__wrap">
             <?get_search_form();?>

@@ -272,6 +272,21 @@ input[type="search"], input[type="search"]:focus-visible {
 }
 
 
+.header__info {
+    background-color: var(--gray);
+}
+/* telegram btn styles */
+.header__telegram {
+    background-color: #0886C4;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+    padding: 9px 10px 9px 10px;
+    color: var(--white-color);
+}
+
+.header__telegram-icon {
+  margin-right: 5px;
+}
 
 
   
