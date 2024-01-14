@@ -100,6 +100,11 @@
 
 .menu-node:hover > .menu--dropdown {visibility: visible;}
 
+.menu--dropdown_lvl_2 {
+    right: -70%;
+    top: 0;
+}
+
 
 
 /* search and search popup styles */
