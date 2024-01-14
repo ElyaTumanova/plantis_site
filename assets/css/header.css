@@ -100,7 +100,13 @@
 .menu-node_lvl_1 {
     padding: 15px 0;
 }
-.menu-node:hover > .menu--dropdown {visibility: visible;}
+.menu-node:hover > .menu--dropdown {
+    visibility: visible;
+}
+
+.menu-node > .menu--dropdown {
+    transition: all 2s ease;
+}
 
 .menu--dropdown_lvl_2 {
     left: 100%;
