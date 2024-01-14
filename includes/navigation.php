@@ -55,10 +55,11 @@ function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
 		// print_r( $item );
 		// print_r( $args );
 		// echo '</pre>';
-		$classes[] = [
-			'menu-node',
-			'menu-node_lvl_' . ( $depth + 1 )
-		];
+		array_push($classes, 'menu-node', 'menu-node_lvl_' . ( $depth + 1 ));
+		// $classes[] = 
+		// 	'menu-node',
+		// 	'menu-node_lvl_' . ( $depth + 1 )
+		// ;
 
 		if ( $item->current ) {
 			$classes[] = 'menu-node--active';
