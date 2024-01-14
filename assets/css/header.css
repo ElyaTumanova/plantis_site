@@ -120,6 +120,12 @@
     top: 0;
 }
 
+.menu-item-has-children.menu-node_lvl_2> a:after {
+    content: "\276F";
+    padding-left: 10px;
+    font-size: 10px;
+  }
+
 
 
 /* search and search popup styles */
