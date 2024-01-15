@@ -112,10 +112,30 @@
     opacity: 0.7;
 }
 
-.price {
+.product .price {
     margin-top: 20px;
     font-size: 24px;
     line-height: 1.1;
     font-weight: 700;
     margin-bottom: 20px;
+}
+
+.product .sale .price {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+
+.sale .woocommerce-Price-amount:last-child {
+    color: var(--red-color);
+    font-size: 24px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.sale .woocommerce-Price-amount:first-child {
+    color: var(--red-color);
 }
