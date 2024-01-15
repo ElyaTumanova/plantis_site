@@ -43,6 +43,7 @@
     box-shadow: none;
     color: inherit;
     padding: 0;
+    text-decoration: none;
 }
 
 .header-btn__icon {
