@@ -15,6 +15,9 @@
 	<header id="header" class="header" role="banner">
 		<div class="header__info">
 			<div class="header__info-wrap container">
+				<nav class="header__info-navigation" role="navigation">
+					<?php plnt_secondary_menu(); ?>
+				</nav>
 				<a href="https://t.me/plantis" class="header__telegram" role="button">
 					<span class="header__telegram-icon">
 						<svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +60,7 @@
 		<div class="header__menu">
 			<div class="container">
 				<nav id="site-navigation" class="main-navigation" role="navigation">
-					<?php ast_primary_menu(); ?>
+					<?php plnt_primary_menu(); ?>
 				</nav><!-- #site-navigation -->
 			</div>
 		</div>
