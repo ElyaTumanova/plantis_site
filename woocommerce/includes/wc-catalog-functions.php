@@ -24,7 +24,6 @@ function plnt_catalog_sidebar() {
 	?>
     <div class="catalog__sidebar">
    		catalog sidebaer here
-		<?php woocommerce_get_sidebar ()?>
     </div>
     <?php 
 };
