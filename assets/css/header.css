@@ -77,8 +77,13 @@
     letter-spacing: 0.01em;
 }
 
-.menu-node_lvl_2, .menu-node_lvl_3 {
+.menu--main .menu-node_lvl_2, .menu-node_lvl_3 {
     padding: 15px 25px;
+    display: block;
+}
+
+.menu--info .menu-node_lvl_2, .menu-node_lvl_3 {
+    padding: 10px 15px;
     display: block;
 }
 
@@ -96,7 +101,14 @@
     padding: 10px 0;
     box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
+}
+
+.menu--main .menu--vertical {
     min-width: 190px;
+}
+
+.menu--info .menu--vertical {
+    max-width: 190px;
 }
 
 .menu--dropdown {
