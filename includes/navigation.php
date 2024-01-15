@@ -42,8 +42,8 @@ if ( ! function_exists( 'plnt_secondary_menu' ) ) {
 
 
 //классы меню
-add_filter( 'wp_nav_menu_args', 'filter_wp_menu_args' );
-function filter_wp_menu_args( $args ) {
+add_filter( 'wp_nav_menu_args', 'filter_wp_menu_args_primary' );
+function filter_wp_menu_args_primary( $args ) {
 	if ( $args['theme_location'] === 'primary' ) {
 		$args['container']  = false;
 		$args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
@@ -53,8 +53,8 @@ function filter_wp_menu_args( $args ) {
 	return $args;
 }
 
-add_filter( 'wp_nav_menu_args', 'filter_wp_menu_args' );
-function filter_wp_menu_args( $args ) {
+add_filter( 'wp_nav_menu_args', 'filter_wp_menu_args_secondary' );
+function filter_wp_menu_args_secondary( $args ) {
 	if ( $args['theme_location'] === 'secondary' ) {
 		$args['container']  = false;
 		$args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
