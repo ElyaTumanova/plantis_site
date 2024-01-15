@@ -45,6 +45,10 @@
     padding: 0;
 }
 
+.header-btn__icon {
+    height: 25px;
+}
+
 .header-btn__label {
     font-size: 14px;
     font-weight: 700;
