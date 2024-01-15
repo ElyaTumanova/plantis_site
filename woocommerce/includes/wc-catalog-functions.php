@@ -24,9 +24,12 @@ function plnt_catalog_sidebar() {
 	?>
     <div class="catalog__sidebar">
    		catalog sidebaer here
+		<?php woocommerce_get_sidebar ()?>
     </div>
     <?php 
 };
+
+remove_action('woocommerce_sidebar','woocommerce_get_sidebar', 10)
 
 add_action('woocommerce_after_shop_loop','plnt_catalog_grid_end',20);
 
