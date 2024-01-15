@@ -75,7 +75,7 @@
     li.product {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: start;
         align-items: flex-start;
         /* margin: 0 8px 16px 8px; */
         box-sizing: border-box;
@@ -95,4 +95,11 @@
     color: var(--white-color);
     background-color: var(--accent-color);
     border-color: var(--accent-color);
+    margin: 10px 0 20px;
+}
+
+.woocommerce-loop-product__title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
 }
