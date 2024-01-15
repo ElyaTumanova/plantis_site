@@ -132,7 +132,7 @@
     color: var(--red-color);
 }
 
-.sale .woocommerce-Price-amount:last-child {
+.sale .woocommerce-Price-amount:last-of-type {
     font-size: 24px;
     line-height: 1.1;
     font-weight: 700;
