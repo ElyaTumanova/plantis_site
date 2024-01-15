@@ -24,6 +24,7 @@ function plnt_catalog_sidebar() {
 	?>
     <div class="catalog__sidebar">
    		catalog sidebaer here
+		<?php echo do_shortcode('[yith_wcan_filters slug="default-preset"]') ?>
     </div>
     <?php 
 };
