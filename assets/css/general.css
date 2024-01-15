@@ -2,9 +2,9 @@
     background-color: red;
 }
 
-/* * {
+* {
     outline: 1px solid red;
-} */
+}
 
 :root {
     --accent-color: #146F41;
@@ -39,4 +39,20 @@
     position: absolute;
     top: 0;
     z-index: 2;
+}
+
+.button {
+    display: inline-block; 
+    
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 14px;
+    text-align: center;
+
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 5px;
+    
+    padding: 10px 0px 10px 0px;
 }

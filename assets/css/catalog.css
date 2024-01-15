@@ -85,3 +85,14 @@
 .woocommerce-loop-product__link {
     position: relative;
 }
+
+
+/* стили для карточки товара в каталоге */
+
+
+.add_to_cart_button {
+    width: 100%;
+    color: var(--white);
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
