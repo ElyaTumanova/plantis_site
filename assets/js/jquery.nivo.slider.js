@@ -121,11 +121,11 @@
             timer = setInterval(function(){ nivoRun(slider, kids, settings, false); }, settings.pauseTime);
         }
         
-        // Add Direction nav
+        // Add Direction nav /заменила slider на parentElement
         if(settings.directionNav){
-            slider.append('<div class="nivo-directionNav"><a class="nivo-prevNav">'+ settings.prevText +'</a><a class="nivo-nextNav">'+ settings.nextText +'</a></div>');
+            parentElement.append('<div class="nivo-directionNav"><a class="nivo-prevNav">'+ settings.prevText +'</a><a class="nivo-nextNav">'+ settings.nextText +'</a></div>');
             
-            $(slider).on('click', 'a.nivo-prevNav', function(){
+            $(parentElement).on('click', 'a.nivo-prevNav', function(){
                 if(vars.running) { return false; }
                 clearInterval(timer);
                 timer = '';
@@ -133,7 +133,7 @@
                 nivoRun(slider, kids, settings, 'prev');
             });
             
-            $(slider).on('click', 'a.nivo-nextNav', function(){
+            $(parentElement).on('click', 'a.nivo-nextNav', function(){
                 if(vars.running) { return false; }
                 clearInterval(timer);
                 timer = '';
