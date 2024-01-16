@@ -75,35 +75,6 @@ function plnt_catalog_gallery() {
   			echo wp_get_attachment_image( $attachment_id, 'shop_catalog' );
 		};
 	echo '</div>';
-
-	?>
-	<script type="text/javascript">
-		jQuery(window).load(function() {
-			jQuery("#flexisel-catalog-gallery").flexisel({
-				visibleItems:3,
-				animationSpeed: 1000,
-				autoPlay: false,
-				autoPlaySpeed: 3000,
-				pauseOnHover: true,
-				enableResponsiveBreakpoints: true,
-				responsiveBreakpoints: {
-					portrait: {
-						changePoint:480,
-						visibleItems: 1
-					},
-					landscape: {
-						changePoint:640,
-						visibleItems:2
-					},
-					tablet: {
-						changePoint:768,
-						visibleItems: 3
-					}
-				}
-			});
-		});
-	</script>
-	<?php
 };
 
 
