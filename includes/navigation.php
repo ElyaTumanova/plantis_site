@@ -100,7 +100,7 @@ function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
 // Изменяет класс у вложенного ul
 add_filter( 'nav_menu_submenu_css_class', 'filter_nav_menu_submenu_css_class', 10, 3 );
 function filter_nav_menu_submenu_css_class( $classes, $args, $depth ) {
-	if ( !$args->theme_location !== 'mobile' ) {
+	if ( $args->theme_location !== 'mobile' ) {
 		array_push($classes, 'menu', 'menu--dropdown', 'menu--vertical', 'menu--dropdown_lvl_' . ( $depth + 1 ));
 	}
 
@@ -111,7 +111,7 @@ function filter_nav_menu_submenu_css_class( $classes, $args, $depth ) {
 // ДОбавляем классы ссылкам
 add_filter( 'nav_menu_link_attributes', 'filter_nav_menu_link_attributes', 10, 4 );
 function filter_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
-	if ( !$args->theme_location !== 'mobile' ) {
+	if ( $args->theme_location !== 'mobile' ) {
 		$atts['class'] = 'menu-link';
 
 		if ( $item->current ) {
