@@ -81,7 +81,7 @@ function plnt_catalog_gallery() {
 		<script>
 			jQuery(function($){
 				$('.nivo-catalog-gallery').nivoSlider({
-					effect: 'random',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
+					effect: 'slideInRight',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
 					animSpeed: 500,                 // скорость анимации
 					pauseTime: 3000,                // пауза между сменой слайдов
 					directionNav: true,             // нужно ли отображать кнопки перехода на следующий и предыдущий слайд
