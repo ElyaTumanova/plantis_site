@@ -19,9 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 // }
 
 //lazy loading for images
-function plnt_add_lazy_class ($attr) {
-	$attr['class'] .= ' lazy progressive replace';
-	return $attr;
-}
+// function plnt_add_lazy_class ($attr) {
+// 	$attr['class'] .= ' lazy progressive replace';
+// 	return $attr;
+// }
 
-add_filter( 'wp_get_attachment_image_attributes', 'plnt_add_lazy_class', 10, 2);
+// add_filter( 'wp_get_attachment_image_attributes', 'plnt_add_lazy_class', 10, 2);
