@@ -68,13 +68,13 @@ function plnt_catalog_gallery() {
 global $product;
 $image = $product->get_image();	
 $attachment_ids = $product->get_gallery_attachment_ids();
-// $url = get_permalink( $product_id );
-	// echo "<a href=$url class='image-slider-wrap'>";
+
+	echo "<div class='product__image-slider-wrap'>";
 		echo $image;
 		foreach( $attachment_ids as $attachment_id ) {
   			echo wp_get_attachment_image( $attachment_id, 'shop_catalog' );
 		};
-	// echo "</a>";
+	echo "</div>";
 };
 
 
