@@ -91,6 +91,7 @@ function plnt_catalog_gallery() {
 					prevText: 'Назад',               // текст перехода на предыдущий слайд
 					nextText: 'Вперед',               // текст кнопки перехода на следующий слайд
 					randomStart: false,             // начинать со случайного слайда
+					controlNavThumbs: true,
 				});
 			});
 		</script>

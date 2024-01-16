@@ -26,8 +26,6 @@
         // Get this slider
         var slider = $(element);
         slider.data('nivo:vars', vars).addClass('nivoSlider');
-        var parentElement = slider.closest('li');
-        console.log(parentElement);
 
         // Find our slider children
         var kids = slider.children();
@@ -163,7 +161,8 @@
             //Set initial active link
             $('a:eq('+ vars.currentSlide +')', vars.controlNavEl).addClass('active');
             
-            $('a', vars.controlNavEl).bind('click', function(){
+            $('a', vars.controlNavEl).bind('click', function(event){
+                event.preventDefault();
                 if(vars.running) return false;
                 if($(this).hasClass('active')) return false;
                 clearInterval(timer);
