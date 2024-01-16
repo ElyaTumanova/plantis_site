@@ -23,12 +23,9 @@ add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar',20);
 function plnt_catalog_sidebar() {
 	?>
     <div class="catalog__sidebar">
-   		catalog sidebaer here
-		<?php echo do_shortcode('[br_filter_single filter_id=6057]') ?>
+   		catalog sidebar here
 		<?php echo do_shortcode('[br_filter_single filter_id=6055]') ?>
-		<?php echo do_shortcode('[br_filter_single filter_id=6054]') ?>
 		<?php echo do_shortcode('[br_filter_single filter_id=6056]') ?>
-		<?php echo do_shortcode('[br_filter_single filter_id=6058]') ?>
     </div>
     <?php 
 };
@@ -41,6 +38,19 @@ function plnt_catalog_grid_end() {
 	?>
 	</div>
     <?php 
+};
+
+// // вывод фильтров
+add_action('woocommerce_before_shop_loop','plnt_catalog_filters_metki', 20);
+
+function plnt_catalog_filters_metki() {
+	echo do_shortcode('[br_filter_single filter_id=6054]');
+};
+
+add_action('woocommerce_before_shop_loop','plnt_catalog_filters_active', 40);
+
+function plnt_catalog_filters_active() {
+	echo do_shortcode('[br_filter_single filter_id=6057]');
 };
 
 //оформление карточки товара в каталоге
