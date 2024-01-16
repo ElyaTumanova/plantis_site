@@ -95,8 +95,9 @@ function plnt_catalog_gallery() {
 			});
 		</script>
 		<?php
+	} else {
+		woocommerce_template_loop_product_thumbnail();
 	}
-
 };
 
 
