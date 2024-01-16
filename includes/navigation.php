@@ -86,12 +86,12 @@ function filter_menu_item_css_id( $menu_id, $item, $args, $depth ) {
 // Изменяем атрибут class у тега li
 add_filter( 'nav_menu_css_class', 'filter_nav_menu_css_classes', 10, 4 );
 function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
-	// if ( $args->theme_location === 'primary' ) {
+	if ( !$args->theme_location === 'mobile' ) {
 		array_push($classes, 'menu-node', 'menu-node_lvl_' . ( $depth + 1 ));
 
 		if ( $item->current ) {
 			$classes[] = 'menu-node--active';
-		// }
+		}
 	}
 
 	return $classes;
@@ -100,9 +100,9 @@ function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
 // Изменяет класс у вложенного ul
 add_filter( 'nav_menu_submenu_css_class', 'filter_nav_menu_submenu_css_class', 10, 3 );
 function filter_nav_menu_submenu_css_class( $classes, $args, $depth ) {
-	// if ( $args->theme_location === 'primary' ) {
+	if ( !$args->theme_location === 'mobile' ) {
 		array_push($classes, 'menu', 'menu--dropdown', 'menu--vertical', 'menu--dropdown_lvl_' . ( $depth + 1 ));
-	// }
+	}
 
 	return $classes;
 }
@@ -111,13 +111,13 @@ function filter_nav_menu_submenu_css_class( $classes, $args, $depth ) {
 // ДОбавляем классы ссылкам
 add_filter( 'nav_menu_link_attributes', 'filter_nav_menu_link_attributes', 10, 4 );
 function filter_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
-	// if ( $args->theme_location === 'primary' ) {
+	if ( !$args->theme_location === 'mobile' ) {
 		$atts['class'] = 'menu-link';
 
 		if ( $item->current ) {
 			$atts['class'] .= ' menu-link--active';
 		}
-	// }
+	}
 
 	return $atts;
 }
