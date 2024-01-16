@@ -5,14 +5,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Register Menus
  */
-register_nav_menus(array(
-	'top-bar-r'  => 'Right Top Bar',
-	'mobile-nav' => 'Mobile',
-));
+// register_nav_menus(array(
+// 	'top-bar-r'  => 'Right Top Bar',
+// 	'mobile-nav' => 'Mobile',
+// ));
 register_nav_menus( array(
 	'primary'   => esc_html__( 'Primary Menu', 'art-starter-theme' ),
 	'secondary' => esc_html__( 'Secondary Menu', 'art-starter-theme' ),
 	'mobile'    => esc_html__( 'Mobile Menu', 'art-starter-theme' ),
+	'catalog'    => esc_html__( 'Categories in Catalog', 'art-starter-theme' ),
 ) );
 
 
@@ -34,6 +35,18 @@ if ( ! function_exists( 'plnt_secondary_menu' ) ) {
 			'container'      => 'nav',
 			'menu_class'     => 'secondary-menu',
 			'theme_location' => 'secondary',
+			'depth'          => 3,
+			'fallback_cb'     => '__return_empty_string',
+		));
+	}
+}
+
+if ( ! function_exists( 'plnt_catalog_menu' ) ) {
+	function plnt_catalog_menu() {
+		wp_nav_menu( array(
+			'container'      => 'nav',
+			'menu_class'     => 'catalog-menu',
+			'theme_location' => 'catalog',
 			'depth'          => 3,
 			'fallback_cb'     => '__return_empty_string',
 		));
