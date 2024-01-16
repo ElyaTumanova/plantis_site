@@ -23,6 +23,7 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 
 		wp_enqueue_script( 'lazy-load', get_template_directory_uri() .
 		                                     '/assets/js/lazy-load.js', array( 'jquery' ), null, true );
+
 		wp_enqueue_script( 'progressive-image', get_template_directory_uri() .
 		                                     '/assets/js/progressive-image.js', array( 'jquery' ), null, true );
 
