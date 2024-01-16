@@ -65,16 +65,45 @@ add_action('woocommerce_before_shop_loop_item_title','plnt_catalog_gallery', 10)
 
 function plnt_catalog_gallery() {
 
-global $product;
-$image = $product->get_image();	
-$attachment_ids = $product->get_gallery_attachment_ids();
+	global $product;
+	$image = $product->get_image();	
+	$attachment_ids = $product->get_gallery_attachment_ids();
 
-	echo '<div class="product__image-slider-wrap">';
+	echo '<div class="product__image-slider-wrap" id="flexisel-catalog-gallery" >';
 		echo $image;
 		foreach( $attachment_ids as $attachment_id ) {
   			echo wp_get_attachment_image( $attachment_id, 'shop_catalog' );
 		};
 	echo '</div>';
+
+	?>
+	<script type="text/javascript">
+		jQuery(window).load(function() {
+			jQuery("#flexisel-catalog-gallery").flexisel({
+				visibleItems:3,
+				animationSpeed: 1000,
+				autoPlay: false,
+				autoPlaySpeed: 3000,
+				pauseOnHover: true,
+				enableResponsiveBreakpoints: true,
+				responsiveBreakpoints: {
+					portrait: {
+						changePoint:480,
+						visibleItems: 1
+					},
+					landscape: {
+						changePoint:640,
+						visibleItems:2
+					},
+					tablet: {
+						changePoint:768,
+						visibleItems: 3
+					}
+				}
+			});
+		});
+	</script>
+	<?php
 };
 
 
