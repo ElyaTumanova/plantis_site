@@ -42,6 +42,7 @@
   *******************************/         
       
       var object = $(this);
+      console.log(this);
       var settings = $.extend(defaults, options);        
       var itemsWidth; // Declare the global width of each item in carousel
       var canNavigate = true; 
