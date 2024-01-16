@@ -26,6 +26,7 @@ function plnt_catalog_sidebar() {
    		catalog sidebar here
 		<?php echo do_shortcode('[br_filter_single filter_id=6055]') ?>
 		<?php echo do_shortcode('[br_filter_single filter_id=6056]') ?>
+		<?php echo do_shortcode('[br_filter_single filter_id=6057]') ?>
     </div>
     <?php 
 };
