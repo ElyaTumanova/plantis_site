@@ -100,6 +100,9 @@ function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
 // Изменяет класс у вложенного ul
 add_filter( 'nav_menu_submenu_css_class', 'filter_nav_menu_submenu_css_class', 10, 3 );
 function filter_nav_menu_submenu_css_class( $classes, $args, $depth ) {
+	echo '<pre>';
+	print_r( $args );
+	echo '</pre>';
 	if ( $args->theme_location !== 'mobile' ) {
 		array_push($classes, 'menu', 'menu--dropdown', 'menu--vertical', 'menu--dropdown_lvl_' . ( $depth + 1 ));
 	}
