@@ -65,14 +65,3 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		wp_enqueue_style( 'fonts', 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap', array(), null, 'all' );
 	}
 }
-
-/**
- * Dequeue all styles
- */
-
-// add_action( 'wp_enqueue_scripts', 'my_dequeue_style', 99 );
-
-// function my_dequeue_style(){
-// 	wp_dequeue_style( 'font-awesome' );  //berocket style
-// 	wp_dequeue_style( 'berocket_aapf_widget-style' );  //berocket style
-// }
