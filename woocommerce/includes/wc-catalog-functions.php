@@ -44,8 +44,13 @@ function plnt_catalog_grid_end() {
 add_action('woocommerce_before_shop_loop','plnt_catalog_filters_metki', 20);
 
 function plnt_catalog_filters_metki() {
-	echo do_shortcode('[br_filter_single filter_id=6057]');
-	echo do_shortcode('[br_filter_single filter_id=6054]');
+	?>
+    <div class="catalog__test">
+   		test here
+		   <?php echo do_shortcode('[br_filter_single filter_id=6054]') ?>
+		   <?php echo do_shortcode('[br_filter_single filter_id=6057]') ?>
+    </div>
+    <?php 	
 };
 
 // add_action('woocommerce_before_shop_loop','plnt_catalog_filters_active', 40);
