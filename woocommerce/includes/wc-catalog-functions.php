@@ -61,7 +61,21 @@ add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_
 // // замена фото на слайдер
 
 remove_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_product_thumbnail', 10);
-add_action('woocommerce_before_shop_loop_item_title','woocommerce_show_product_images', 10);
+add_action('woocommerce_before_shop_loop_item_title','plnt_catalog_gallery', 10);
+
+function plnt_catalog_gallery() {
+
+global $product;
+$image = $product->get_image();	
+$attachment_ids = $product->get_gallery_attachment_ids();
+// $url = get_permalink( $product_id );
+	// echo "<a href=$url class='image-slider-wrap'>";
+		echo $image;
+		foreach( $attachment_ids as $attachment_id ) {
+  			echo wp_get_attachment_image( $attachment_id, 'shop_catalog' );
+		};
+	// echo "</a>";
+};
 
 
 // // бейдж распродажа
