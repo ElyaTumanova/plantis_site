@@ -69,7 +69,7 @@ function plnt_catalog_gallery() {
 	$image = $product->get_image();	
 	$attachment_ids = $product->get_gallery_attachment_ids();
 
-	echo '<div class="product__image-slider-wrap" id="nivo-catalog-gallery" >';
+	echo '<div class="product__image-slider-wrap nivo-catalog-gallery" >';
 		echo $image;
 		foreach( $attachment_ids as $attachment_id ) {
   			echo wp_get_attachment_image( $attachment_id, 'shop_catalog' );
@@ -79,7 +79,7 @@ function plnt_catalog_gallery() {
 	?>
 	<script>
 		jQuery(function($){
-			$('#nivo-catalog-gallery').nivoSlider({
+			$('.nivo-catalog-gallery').nivoSlider({
 				effect: 'random',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
 				animSpeed: 500,                 // скорость анимации
 				pauseTime: 3000,                // пауза между сменой слайдов
