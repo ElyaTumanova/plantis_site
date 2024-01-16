@@ -45,6 +45,7 @@ add_action('woocommerce_before_shop_loop','plnt_catalog_filters_main_area', 20);
 function plnt_catalog_filters_main_area() {
 	?>
     <div class="catalog__filter-wrap">
+		<?php plnt_catalog_menu() ?>
 		<?php echo do_shortcode('[br_filter_single filter_id=6054]') ?>
 		<?php echo do_shortcode('[br_filter_single filter_id=6057]') ?>
     </div>
