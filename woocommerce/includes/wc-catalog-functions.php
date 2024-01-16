@@ -44,8 +44,8 @@ function plnt_catalog_grid_end() {
 add_action('woocommerce_before_shop_loop','plnt_catalog_filters_metki', 20);
 
 function plnt_catalog_filters_metki() {
-	echo do_shortcode('[br_filter_single filter_id=6054]');
 	echo do_shortcode('[br_filter_single filter_id=6057]');
+	echo do_shortcode('[br_filter_single filter_id=6054]');
 };
 
 // add_action('woocommerce_before_shop_loop','plnt_catalog_filters_active', 40);
