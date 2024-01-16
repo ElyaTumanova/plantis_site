@@ -65,35 +65,38 @@ add_action('woocommerce_before_shop_loop_item_title','plnt_catalog_gallery', 10)
 
 function plnt_catalog_gallery() {
 
-	global $product;
-	$image = $product->get_image();	
-	$attachment_ids = $product->get_gallery_attachment_ids();
+	if (is_shop() || is_category() ||is_tag()) {
+		global $product;
+		$image = $product->get_image();	
+		$attachment_ids = $product->get_gallery_attachment_ids();
 
-	echo '<div class="product__image-slider-wrap nivo-catalog-gallery" >';
-		echo $image;
-		foreach( $attachment_ids as $attachment_id ) {
-  			echo wp_get_attachment_image( $attachment_id, 'shop_catalog' );
-		};
-	echo '</div>';
+		echo '<div class="product__image-slider-wrap nivo-catalog-gallery" >';
+			echo $image;
+			foreach( $attachment_ids as $attachment_id ) {
+				echo wp_get_attachment_image( $attachment_id, 'shop_catalog' );
+			};
+		echo '</div>';
 
-	?>
-	<script>
-		jQuery(function($){
-			$('.nivo-catalog-gallery').nivoSlider({
-				effect: 'random',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
-				animSpeed: 500,                 // скорость анимации
-				pauseTime: 3000,                // пауза между сменой слайдов
-				directionNav: true,             // нужно ли отображать кнопки перехода на следующий и предыдущий слайд
-				controlNav: true,               // 1,2,3... навигация (например в виде точек)
-				pauseOnHover: true,             // останавливать прокрутку слайдов при наведении мыши
-				manualAdvance: true,           // true - отключить автопрокрутку
-				prevText: 'Назад',               // текст перехода на предыдущий слайд
-				nextText: 'Вперед',               // текст кнопки перехода на следующий слайд
-				randomStart: false,             // начинать со случайного слайда
+		?>
+		<script>
+			jQuery(function($){
+				$('.nivo-catalog-gallery').nivoSlider({
+					effect: 'random',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
+					animSpeed: 500,                 // скорость анимации
+					pauseTime: 3000,                // пауза между сменой слайдов
+					directionNav: true,             // нужно ли отображать кнопки перехода на следующий и предыдущий слайд
+					controlNav: true,               // 1,2,3... навигация (например в виде точек)
+					pauseOnHover: true,             // останавливать прокрутку слайдов при наведении мыши
+					manualAdvance: true,           // true - отключить автопрокрутку
+					prevText: 'Назад',               // текст перехода на предыдущий слайд
+					nextText: 'Вперед',               // текст кнопки перехода на следующий слайд
+					randomStart: false,             // начинать со случайного слайда
+				});
 			});
-		});
-	</script>
-	<?php
+		</script>
+		<?php
+	}
+
 };
 
 
