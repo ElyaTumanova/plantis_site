@@ -69,7 +69,7 @@
 }
 
 
-/* main menu styles */
+/* primary & secondary menu styles */
 
 .header__menu {
     background-color: var(--accent-color);
@@ -175,7 +175,23 @@
     text-decoration: none;
 }
 
+/* catalog menu styles */
 
+.catalog__dropdown::after {
+    pointer-events: all;
+    float: right;
+    content: '>';
+    display: inline-block;
+    padding: 10px;
+    position: relative;
+    top: -1.25em;
+    transform: rotate(90deg);
+    transform-origin: 50%;
+    transition: transform 300ms ease;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+ }
 
 /* search and search popup styles */
 

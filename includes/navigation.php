@@ -133,9 +133,6 @@ function filter_nav_menu_css_classes_catalog( $classes, $item, $args, $depth ) {
 		if (in_array('menu-item-has-children',$classes )){
 			array_push($classes, 'catalog__dropdown', 'catalog-node_lvl_' . ( $depth + 1 ));
 		}
-		// echo '<pre>';
-		// print_r( $classes );
-		// echo '</pre>';
 
 		if ( $item->current ) {
 			$classes[] = 'catalog-node--active';
