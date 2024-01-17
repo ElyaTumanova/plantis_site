@@ -22,10 +22,10 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		                                     '/assets/js/search-popup.js', array( 'jquery' ), null, true );
 
 		// wp_enqueue_script( 'lazy-load', get_template_directory_uri() .
-		//                                      '/assets/js/lazy-load.js', array( 'jquery' ), null, true );
+		//                                      '/assets/js/lazy-load.js', array( 'jquery' ), null, true ); // for lazy load
 
-		wp_enqueue_script( 'progressive-image', get_template_directory_uri() .
-		                                     '/assets/js/progressive-image.js', array( 'jquery' ), null, true );
+		// wp_enqueue_script( 'progressive-image', get_template_directory_uri() .
+		                                    //  '/assets/js/progressive-image.js', array( 'jquery' ), null, true ); // for lazy load
 
 		wp_enqueue_script( 'quantity-buttons', get_template_directory_uri() .
 		                                     '/assets/js/quantity-buttons.js', array( 'jquery' ), null, true );
@@ -60,8 +60,8 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		                             '/assets/css/card.css', array(), null, 'all' );
 		wp_enqueue_style( 'catalog', get_template_directory_uri() .
 		                             '/assets/css/catalog.css', array(), null, 'all' );
-		wp_enqueue_style( 'progressive-image', get_template_directory_uri() .
-		                             '/assets/css/progressive-image.css', array(), null, 'all' );
+		// wp_enqueue_style( 'progressive-image', get_template_directory_uri() .
+		//                              '/assets/css/progressive-image.css', array(), null, 'all' ); // for lazy load
 		wp_enqueue_style( 'FlexSlider', get_template_directory_uri() .
 		                             '/assets/css/FlexSlider.css', array(), null, 'all' );
 		wp_enqueue_style( 'flexisel', get_template_directory_uri() .

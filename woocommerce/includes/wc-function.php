@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // 	}
 // }
 
-//lazy loading for images
+//lazy load for images
 // function plnt_add_lazy_class ($attr) {
 // 	$attr['class'] .= ' lazy progressive replace';
 // 	return $attr;
