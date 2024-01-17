@@ -178,15 +178,24 @@
 /* catalog menu styles */
 
 .catalog__node {
-    position: relative;
     display: block;
     padding: 10px 0;
+    font-size: 16px;
+    font-weight: 600;
  }
 
- .catalog__node a {
+.catalog__node a {
     text-decoration: none;
-  }
-  
+}
+
+.catalog__node_lvl_2 {
+    display: block;
+    color: #6f6f6f;
+    padding: 10px 0;
+    border-bottom: solid 1px #6f6f6f;
+    margin-left: 10px;
+}
+   
 
 .catalog__dropdown {
     position: relative;
@@ -230,15 +239,15 @@
     padding: 0;
     margin: 0;
   }
-  .catalog__dropdown .catalog__dropdown-menu li {
+  /* .catalog__dropdown .catalog__dropdown-menu li {
     padding: 0;
-  }
-  .catalog__dropdown .catalog__dropdown-menu li a {
+  } */
+  /* .catalog__dropdown .catalog__dropdown-menu li a {
     display: block;
     color: #6f6f6f;
     background: #eee;
     padding: 10px 10px;
-  }
+  } */
   
 .catalog__dropdown .catalog__dropdown-menu_show {
     display: block;
