@@ -129,14 +129,17 @@ function filter_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
 add_filter( 'nav_menu_css_class', 'filter_nav_menu_css_classes_catalog', 10, 4 );
 function filter_nav_menu_css_classes_catalog( $classes, $item, $args, $depth ) {
 	if ( $args->theme_location === 'catalog') {
-		echo '<pre>';
-		print_r( $classes );
-		echo '</pre>';
-		// array_push($classes, 'menu-node', 'menu-node_lvl_' . ( $depth + 1 ));
 
-		// if ( $item->current ) {
-		// 	$classes[] = 'menu-node--active';
-		// }
+		if (in_array('menu-item-has-children',$classes )){
+			array_push($classes, 'catalog__dropdown', 'catalog-node_lvl_' . ( $depth + 1 ));
+		}
+		// echo '<pre>';
+		// print_r( $classes );
+		// echo '</pre>';
+
+		if ( $item->current ) {
+			$classes[] = 'catalog-node--active';
+		}
 	}
 
 	return $classes;
