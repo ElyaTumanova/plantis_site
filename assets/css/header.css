@@ -181,7 +181,7 @@
     position: relative;
 }
 
-.catalog__dropdown:after {
+/* .catalog__dropdown:after {
     content: "\276F";
     font-size: 16px;
     position: absolute;
@@ -198,9 +198,18 @@
     -o-transition: -o-transform 0.6s;
     -webkit-transition: -webkit-transform 0.6s;
     transition: transform 0.6s;
- }
+ } */
 
  .catalog__dropdown .catalog__dropdown_open:after {
+    content: "\276F";
+    font-size: 16px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    border: solid 1px black;
+
+
     -moz-transform: rotate(-180deg);
     -ms-transform: rotate(-180deg);
     -webkit-transform: rotate(-180deg);
