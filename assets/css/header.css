@@ -178,19 +178,10 @@
 /* catalog menu styles */
 
 .catalog__dropdown:after {
-    pointer-events: all;
-    float: right;
-    content: '>';
-    display: inline-block;
-    padding: 10px;
-    position: relative;
-    top: -1.25em;
-    transform: rotate(90deg);
-    transform-origin: 50%;
-    transition: transform 300ms ease;
-    color: #fff;
-    cursor: pointer;
-    font-weight: 700;
+    content: "\276F";
+    font-size: 10px;
+    position: absolute;
+    right: 13px;
  }
 
 /* search and search popup styles */
