@@ -177,7 +177,7 @@
 
 /* catalog menu styles */
 
-.catalog__dropdown::after {
+.catalog__dropdown:after {
     pointer-events: all;
     float: right;
     content: '>';
