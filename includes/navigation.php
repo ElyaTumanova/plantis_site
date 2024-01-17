@@ -130,8 +130,10 @@ add_filter( 'nav_menu_css_class', 'filter_nav_menu_css_classes_catalog', 10, 4 )
 function filter_nav_menu_css_classes_catalog( $classes, $item, $args, $depth ) {
 	if ( $args->theme_location === 'catalog') {
 
+		array_push($classes, 'catalog__node', 'catalog__node_lvl_' . ( $depth + 1 ));
+
 		if (in_array('menu-item-has-children',$classes )){
-			array_push($classes, 'catalog__dropdown', 'catalog-node_lvl_' . ( $depth + 1 ));
+			array_push($classes, 'catalog__dropdown');
 		}
 
 		if ( $item->current ) {
