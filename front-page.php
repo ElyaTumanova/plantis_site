@@ -8,6 +8,33 @@ get_header(); ?>
 
 	<div class="catalog__sidebar">
 		<?php echo do_shortcode('[products on_sale="true" class="main-sale-slider" limit="8" columns="3" orderby="rand" category="komnatnye-rasteniya"]') ?>
+
+		<script type="text/javascript">
+            jQuery(window).load(function() {
+                jQuery(".main-sale-slider > ul").flexisel({
+                    visibleItems:3,
+                    animationSpeed: 1000,
+                    autoPlay: false,
+                    autoPlaySpeed: 3000,
+                    pauseOnHover: true,
+                    enableResponsiveBreakpoints: true,
+                    responsiveBreakpoints: {
+                        portrait: {
+                            changePoint:480,
+                            visibleItems: 1
+                        },
+                        landscape: {
+                            changePoint:640,
+                            visibleItems:2
+                        },
+                        tablet: {
+                            changePoint:768,
+                            visibleItems: 3
+                        }
+                    }
+                });
+            });
+		</script>
     </div>
 			
 	</main><!-- #main -->
