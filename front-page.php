@@ -2,27 +2,28 @@
 
 get_header(); ?>
 
+<?php 
+	$banner_1 = carbon_get_theme_option('main_banner_1');
+	$banner_1_name = carbon_get_theme_option('main_banner_1_name');
+	$banner_2 = carbon_get_theme_option('main_banner_2');
+	$banner_2_name = carbon_get_theme_option('main_banner_2_name');
+	$banner_3 = carbon_get_theme_option('main_banner_3');
+	$banner_3_name = carbon_get_theme_option('main_banner_3_name');
+	$banner_4 = carbon_get_theme_option('main_banner_4');
+	$banner_4_name = carbon_get_theme_option('main_banner_4_name');
+?>
+
 <div class="content-area">
 	<div>может быть это главная?</div>
 	<main id="main" class="site-main" role="main">
 
 	<div class="main__banners nivo-main-banner-gallery">
-		<?php $banner_1 = carbon_get_theme_option('main_banner_1');?>
-		<?php $banner_1_name = carbon_get_theme_option('main_banner_1_name');?>
-		<?php $banner_2 = carbon_get_theme_option('main_banner_2');?>
-		<?php $banner_2_name = carbon_get_theme_option('main_banner_2_name');?>
-		<?php $banner_3 = carbon_get_theme_option('main_banner_3');?>
-		<?php $banner_3_name = carbon_get_theme_option('main_banner_3_name');?>
-		<?php $banner_4 = carbon_get_theme_option('main_banner_4');?>
-		<?php $banner_4_name = carbon_get_theme_option('main_banner_4_name');?>
-
-
 		<img src="<?php echo $banner_1 ?>" class="main__banner-img" alt="<?php echo $banner_1_name?>" width="900" height="280">
 		<img src="<?php echo $banner_2 ?>" class="main__banner-img" alt="<?php echo $banner_2_name?>" width="900" height="280">
 
 		<script>
 			jQuery(function($){
-				$('.nivo-catalog-gallery').nivoSlider({
+				$('.nivo-main-banner-gallery').nivoSlider({
 					effect: 'slideInLeft',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
 					animSpeed: 200,                 // скорость анимации
 					pauseTime: 3000,                // пауза между сменой слайдов
