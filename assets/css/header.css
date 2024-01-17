@@ -204,21 +204,20 @@
     margin-left: 10px;
 }
 
-.catalog__node_lvl_3:not(:last-child) {
+.catalog__node_lvl_3 {
     margin-left: 20px;
     padding: 10px 0;
     border-bottom: solid 1px #6f6f6f;
 }
 
 .catalog__node_lvl_3:first-child {
-    margin-left: 20px;
     padding: 20px 0 10px;
-    border-bottom: solid 1px #6f6f6f;
 }
 
 .catalog__node_lvl_3:last-child {
     margin-left: 20px;
     padding-top: 10px;
+    border-bottom: none;
 }
    
 .catalog__dropdown {
