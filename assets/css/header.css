@@ -239,8 +239,9 @@ transition: transform 0.6s;
 }
 
 .catalog__dropdown:hover:after {
-cursor: pointer;
-color: var(--accent-color);
+    cursor: pointer;
+    color: var(--accent-color);
+    background-color: red;
 }
  
 .catalog__dropdown .catalog__dropdown-menu {
