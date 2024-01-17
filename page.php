@@ -5,6 +5,7 @@ get_header(); ?>
 
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
+		<div>ЭТО ГЛАВНАЯ?</div>
 		
 		<?php while ( have_posts() ) : the_post(); ?>
 			
