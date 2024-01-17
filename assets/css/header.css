@@ -272,7 +272,7 @@
     padding: 10px 10px;
   }
   
-.catalog__dropdown-menu_show {
+.catalog__dropdown .catalog__dropdown-menu_show {
     display: block;
     max-height: 9999px;
     -moz-transform: scaleY(1);
