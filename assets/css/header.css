@@ -200,7 +200,7 @@
     transition: transform 0.6s;
  }
 
- .catalog__dropdown .catalog__dropdown_open :after {
+ .catalog__dropdown .catalog__dropdown_open:after {
     -moz-transform: rotate(-180deg);
     -ms-transform: rotate(-180deg);
     -webkit-transform: rotate(-180deg);
