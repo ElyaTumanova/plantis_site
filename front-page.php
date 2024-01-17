@@ -8,7 +8,19 @@ get_header(); ?>
 
 	<div class="main__banners">
 		<?php $banner_1 = carbon_get_theme_option('main_banner_1');?>
-		<img src="<?php echo $banner_1 ?>" class="main__banner-img" alt="Plantis" width="150" height="26">
+		<?php $banner_1_name = carbon_get_theme_option('main_banner_1_name');?>
+		<?php $banner_2 = carbon_get_theme_option('main_banner_2');?>
+		<?php $banner_2_name = carbon_get_theme_option('main_banner_2_name');?>
+		<?php $banner_3 = carbon_get_theme_option('main_banner_3');?>
+		<?php $banner_3_name = carbon_get_theme_option('main_banner_3_name');?>
+		<?php $banner_4 = carbon_get_theme_option('main_banner_4');?>
+		<?php $banner_4_name = carbon_get_theme_option('main_banner_4_name');?>
+
+		<script>
+		console.log ($banner_1);
+		console.log ($banner_4);
+		</script>
+		<img src="<?php echo $banner_1 ?>" class="main__banner-img" alt="<?php echo $banner_1_name?>" width="900" height="280">
 	</div>
 	<div class="main__sale-gallery">
 		<?php echo do_shortcode('[products on_sale="true" class="main-sale-slider" limit="8" columns="3" orderby="rand" category="komnatnye-rasteniya"]') ?>
