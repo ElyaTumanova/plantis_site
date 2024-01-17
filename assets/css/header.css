@@ -196,12 +196,19 @@
     color: var(--accent-color);
 }
 
-.catalog__node_lvl_2 {
+.catalog__node {
     display: block;
     color: #6f6f6f;
     padding: 10px 0;
     border-bottom: solid 1px #6f6f6f;
+}
+
+.catalog__node_lvl_2 {
     margin-left: 10px;
+}
+
+.catalog__node_lvl_3 {
+    margin-left: 20px;
 }
    
 .catalog__dropdown {
