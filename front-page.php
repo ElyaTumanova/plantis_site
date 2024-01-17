@@ -17,8 +17,8 @@ get_header(); ?>
 		<?php $banner_4_name = carbon_get_theme_option('main_banner_4_name');?>
 
 		<script>
-		console.log ($banner_1);
-		console.log ($banner_4);
+		console.log (<?php echo $banner_1 ?>);
+		console.log (<?php echo $banner_4 ?>);
 		</script>
 		<img src="<?php echo $banner_1 ?>" class="main__banner-img" alt="<?php echo $banner_1_name?>" width="900" height="280">
 	</div>
