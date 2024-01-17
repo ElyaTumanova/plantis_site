@@ -16,10 +16,11 @@ get_header(); ?>
 		<?php $banner_4 = carbon_get_theme_option('main_banner_4');?>
 		<?php $banner_4_name = carbon_get_theme_option('main_banner_4_name');?>
 
-		<script>
+		<!-- <script>
 		console.log (<?php echo $banner_1 ?>);
 		console.log (<?php echo $banner_4 ?>);
-		</script>
+		</script> -->
+		<?php if() ?>
 		<img src="<?php echo $banner_1 ?>" class="main__banner-img" alt="<?php echo $banner_1_name?>" width="900" height="280">
 	</div>
 	<div class="main__sale-gallery">

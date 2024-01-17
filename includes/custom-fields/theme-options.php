@@ -34,6 +34,8 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'image', 'main_banner_4', 'Banner 4' )
 			 ->set_value_type( 'url' ),
 			Field::make( 'text', 'main_banner_4_name', 'Banner 4 Name' ),
+			Field::make( 'media_gallery', 'crb_media_gallery' )
+    		 ->set_type( 'image' )
 		));
 
 // Add second options page under 'Basic Options'
