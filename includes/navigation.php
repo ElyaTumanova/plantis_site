@@ -130,7 +130,7 @@ add_filter( 'nav_menu_css_class', 'filter_nav_menu_css_classes_catalog', 10, 4 )
 function filter_nav_menu_css_classes_catalog( $classes, $item, $args, $depth ) {
 	if ( $args->theme_location === 'catalog') {
 		echo '<pre>';
-		print_r( $args );
+		print_r( $classes );
 		echo '</pre>';
 		// array_push($classes, 'menu-node', 'menu-node_lvl_' . ( $depth + 1 ));
 
