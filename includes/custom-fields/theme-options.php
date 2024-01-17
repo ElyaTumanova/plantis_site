@@ -27,13 +27,13 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'main_banner_1_name', 'Banner 1 Name' ),
 			Field::make( 'image', 'main_banner_2', 'Banner 2' )
 			 ->set_value_type( 'url' ),
-			Field::make( 'text', 'main_banner_1_name', 'Banner 2 Name' ),
+			Field::make( 'text', 'main_banner_2_name', 'Banner 2 Name' ),
 			Field::make( 'image', 'main_banner_3', 'Banner 3' )
 			 ->set_value_type( 'url' ),
-			Field::make( 'text', 'main_banner_1_name', 'Banner 3 Name' ),
+			Field::make( 'text', 'main_banner_3_name', 'Banner 3 Name' ),
 			Field::make( 'image', 'main_banner_4', 'Banner 4' )
 			 ->set_value_type( 'url' ),
-			Field::make( 'text', 'main_banner_1_name', 'Banner 4 Name' ),
+			Field::make( 'text', 'main_banner_4_name', 'Banner 4 Name' ),
 		));
 
 // Add second options page under 'Basic Options'
