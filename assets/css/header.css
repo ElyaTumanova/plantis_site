@@ -227,7 +227,7 @@
     transition: transform 0.6s;
 }
 
-.catalog__dropdown-menu_lvl_2.catalog__dropdown:after {
+.catalog__node_lvl_2.catalog__dropdown:after {
     top: 10px;
 }
 
