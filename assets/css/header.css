@@ -208,6 +208,10 @@
     position: relative;
 }
 
+.catalog__dropdown:hover:after {
+    cursor: pointer;
+}
+
 .catalog__dropdown:after {
     content: "\276F";
     font-size: 16px;
