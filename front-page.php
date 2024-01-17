@@ -6,7 +6,11 @@ get_header(); ?>
 	<div>может быть это главная?</div>
 	<main id="main" class="site-main" role="main">
 
-	<div class="catalog__sidebar">
+	<div class="main__banners">
+		<?php $banner_1 = carbon_get_theme_option('main_banner_1');?>
+		<img src="<?php echo $banner_1 ?>" class="main__banner-img" alt="Plantis" width="150" height="26">
+	</div>
+	<div class="main__sale-gallery">
 		<?php echo do_shortcode('[products on_sale="true" class="main-sale-slider" limit="8" columns="3" orderby="rand" category="komnatnye-rasteniya"]') ?>
 
 		<script type="text/javascript">
