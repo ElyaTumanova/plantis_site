@@ -25,12 +25,10 @@
 
         // Get this slider
         var slider = $(element);
-        console.log(slider);
         slider.data('nivo:vars', vars).addClass('nivoSlider');
 
         // Find our slider children
         var kids = slider.children();
-        console.log(kids);
         kids.each(function() {
             var child = $(this);
             var link = '';
