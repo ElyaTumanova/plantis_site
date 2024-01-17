@@ -137,7 +137,7 @@ function filter_nav_menu_css_classes_catalog( $classes, $item, $args, $depth ) {
 		}
 
 		if ( $item->current ) {
-			$classes[] = 'catalog-node--active';
+			$classes[] = 'catalog__node_active';
 		}
 	}
 
@@ -148,7 +148,7 @@ function filter_nav_menu_css_classes_catalog( $classes, $item, $args, $depth ) {
 add_filter( 'nav_menu_submenu_css_class', 'filter_nav_menu_submenu_css_class_catalog', 10, 3 );
 function filter_nav_menu_submenu_css_class_catalog( $classes, $args, $depth ) {
 	if ( $args->theme_location === 'catalog' ) {
-		array_push($classes, 'catalog__dropdown-menu', 'catalog__menu--dropdown_lvl_' . ( $depth + 1 ));
+		array_push($classes, 'catalog__dropdown-menu', 'catalog__dropdown-menu_lvl_' . ( $depth + 1 ));
 	}
 
 	return $classes;
