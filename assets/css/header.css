@@ -205,18 +205,19 @@
 }
 
 .catalog__node_lvl_3 {
-    margin-left: 20px;
-    padding: 10px 0;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-bottom: solid 1px #6f6f6f;
 }
 
 .catalog__node_lvl_3:first-child {
-    padding: 20px 0 10px;
+    padding-top: 20px;
 }
 
 .catalog__node_lvl_3:last-child {
-    margin-left: 20px;
-    padding-top: 10px;
+    padding-bottom: 0;
     border-bottom: none;
 }
    
