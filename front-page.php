@@ -7,7 +7,7 @@ get_header(); ?>
 	<main id="main" class="site-main" role="main">
 
 	<div class="catalog__sidebar">
-		<?php echo do_shortcode('[products on_sale="true" limit="8" columns="3" orderby="rand" category="komnatnye-rasteniya"]') ?>
+		<?php echo do_shortcode('[products on_sale="true" id="main-sale-slider" limit="8" columns="3" orderby="rand" category="komnatnye-rasteniya"]') ?>
     </div>
 			
 	</main><!-- #main -->
