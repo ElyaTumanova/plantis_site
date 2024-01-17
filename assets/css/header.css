@@ -196,7 +196,7 @@
     color: var(--accent-color);
 }
 
-.catalog__node {
+.catalog__node_lvl_2 {
     display: block;
     color: #6f6f6f;
     padding: 10px 0;
