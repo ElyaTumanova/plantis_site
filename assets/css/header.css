@@ -200,7 +200,7 @@
     transition: transform 0.6s;
  }
 
- .catalog__dropdown .catalog__dropdown-menu_show:after {
+ .catalog__dropdown_open :after {
     -moz-transform: rotate(-180deg);
     -ms-transform: rotate(-180deg);
     -webkit-transform: rotate(-180deg);
@@ -272,7 +272,7 @@
     padding: 10px 10px;
   }
   
-  .catalog__dropdown .catalog__dropdown-menu_show {
+.catalog__dropdown-menu_show {
     display: block;
     max-height: 9999px;
     -moz-transform: scaleY(1);

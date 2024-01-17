@@ -10,7 +10,7 @@ dropdown.forEach((el) => {
         // event.preventDefault();
 		console.log('Произошло событие', event.target);
 		menu.classList.toggle('catalog__dropdown-menu_show');
-		// button.classList.toggle('open');
+		el.classList.toggle('catalog__dropdown_open');
 		// event.stopPropagation();
 	})
 })
