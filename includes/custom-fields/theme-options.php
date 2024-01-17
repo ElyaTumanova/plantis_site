@@ -35,7 +35,7 @@ Container::make('theme_options', 'Настройки темы')
 			 ->set_value_type( 'url' ),
 			Field::make( 'text', 'main_banner_4_name', 'Banner 4 Name' ),
 			Field::make( 'media_gallery', 'main_banners', 'Баннеры' )
-			->set_type( 'image' )
+			->set_value_type( 'image' )
 			->set_duplicates_allowed( false ),
 		));
 
