@@ -2,6 +2,7 @@
 
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
+		<div>Это главная??</div>
 		
 		<?php if ( have_posts() ) : ?>
 			
