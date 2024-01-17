@@ -11,6 +11,6 @@ dropdown.forEach((el) => {
 		console.log('Произошло событие', event.target);
 		menu.classList.toggle('catalog__dropdown-menu_show');
 		el.classList.toggle('catalog__dropdown_open');
-		// event.stopPropagation();
+		event.stopPropagation();
 	})
 })
