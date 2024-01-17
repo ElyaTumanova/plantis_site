@@ -21,8 +21,15 @@ Container::make('theme_options', 'Настройки темы')
 			 ->set_value_type( 'url' ),
 			 Field::make( 'text', 'site_title', 'Site title in header' )
          ))
-		 ->add_tab( __('Constants'), array(
-			Field::make( 'text', 'plants_cat_id', 'ID for Plants category' )
+		 ->add_tab( __('Main Page Banners'), array(
+			Field::make( 'image', 'main_banner_1', 'Banner 1' )
+			 ->set_value_type( 'url' ),
+			Field::make( 'image', 'main_banner_2', 'Banner 2' )
+			 ->set_value_type( 'url' ),
+			Field::make( 'image', 'main_banner_3', 'Banner 3' )
+			 ->set_value_type( 'url' ),
+			Field::make( 'image', 'main_banner_4', 'Banner 4' )
+			 ->set_value_type( 'url' ),
 		));
 
 // Add second options page under 'Basic Options'
