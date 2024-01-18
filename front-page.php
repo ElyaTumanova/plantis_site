@@ -5,10 +5,12 @@ get_header(); ?>
 
 
 <div class="content-area">
-	<div>может быть это главная?</div>
 	<main id="main" class="site-main" role="main">
 
-	<?php get_template_part('template-parts/main-banners-gallery');?>
+	<div class="main__banners-wrap">
+		<?php get_template_part('template-parts/main-banners-gallery');?>
+	</div>
+
 
 	
 	<div class="main__sale-gallery">
