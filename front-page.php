@@ -19,7 +19,7 @@ get_header(); ?>
 				<script type="text/javascript">
 					jQuery(window).load(function() {
 						jQuery(".main-sale-slider > ul").flexisel({
-							visibleItems:4,
+							visibleItems:3,
 							animationSpeed: 1000,
 							autoPlay: false,
 							autoPlaySpeed: 3000,
@@ -32,11 +32,11 @@ get_header(); ?>
 								},
 								landscape: {
 									changePoint:640,
-									visibleItems:1
+									visibleItems:2
 								},
 								tablet: {
 									changePoint:768,
-									visibleItems: 1
+									visibleItems: 3
 								}
 							}
 						});
