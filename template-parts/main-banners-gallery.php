@@ -16,8 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="main__banners nivo-main-banner-gallery">
-    <img src="<?php echo $banner_1 ?>" class="main__banner-img" alt="<?php echo $banner_1_name?>" width="900" height="280">
-    <img src="<?php echo $banner_2 ?>" class="main__banner-img" style="visibility:hidden;" alt="<?php echo $banner_2_name?>" width="900" height="280">
+    <img src="<?php echo $banner_1 ?>" class="main__banner-img" alt="<?php echo $banner_1_name?>">
+    <img src="<?php echo $banner_2 ?>" class="main__banner-img" style="visibility:hidden;" alt="<?php echo $banner_2_name?>">
 </div>
 
 <script>
