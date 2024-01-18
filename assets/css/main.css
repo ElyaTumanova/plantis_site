@@ -16,6 +16,7 @@
             "image button";
 	grid-template-columns: 165px auto;
 	column-gap: 10px;
+    text-align: left;
 }
 
 .main__sale-gallery .woocommerce-loop-product__link:first-of-type {
@@ -24,14 +25,21 @@
 
 .main__sale-gallery .add_to_cart_button, .main__sale-gallery .product_type_simple {
     grid-area: button;
+    font-size: 12px;
+    line-height: 14px;
+    width: 175px;
 }
 
 .main__sale-gallery .woocommerce-loop-product__link:last-of-type {
     grid-area: name;
+    font-size: 16px;
+    line-height: 18px;
 }
 
 .main__sale-gallery .woocommerce-product-details__short-description {
     grid-area: descr;
+    font-size: 12px;
+    line-height: 14px;
 }
 
 .main__sale-gallery .price {
