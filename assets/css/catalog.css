@@ -97,6 +97,9 @@ ul.products {
     color: var(--white-color);
     background-color: var(--accent-color);
     border-color: var(--accent-color);
+}
+
+.catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple {
     margin: 10px 0 15px;
 }
 

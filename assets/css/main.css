@@ -28,6 +28,7 @@
     font-size: 12px;
     line-height: 14px;
     width: 175px;
+    align-self: flex-end;
 }
 
 .main__sale-gallery .woocommerce-loop-product__link:last-of-type {
