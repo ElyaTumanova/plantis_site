@@ -21,6 +21,7 @@
 
 .main__sale-gallery .woocommerce-loop-product__link:first-of-type {
     grid-area: image;
+    font-size: 0;
 }
 
 .main__sale-gallery .add_to_cart_button, .main__sale-gallery .product_type_simple {
