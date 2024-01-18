@@ -32,6 +32,9 @@
 
 .main__sale-gallery .woocommerce-loop-product__link:last-of-type {
     grid-area: name;
+}
+
+.main__sale-gallery .woocommerce-loop-product__title {
     font-size: 16px;
     line-height: 18px;
 }
