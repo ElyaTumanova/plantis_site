@@ -1,4 +1,40 @@
 .main__wrap {
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 60% 40%;
+    column-gap: 20px;
+    row-gap: 50px;
 }
+
+.main__sale-gallery .product {
+	display: grid;
+    grid-template-rows:  30px auto auto auto;
+    grid-template-areas:
+			"image sale"
+			"image price"
+            "image name"
+			"image descr"
+            "image button";
+	grid-template-columns: 165px auto;
+	column-gap: 10px;
+}
+
+.main__sale-gallery .woocommerce-loop-product__link:first-of-type {
+    grid-area: image;
+}
+
+.main__sale-gallery .add_to_cart_button, .main__sale-gallery .product_type_simple {
+    grid-area: button;
+}
+
+.main__sale-gallery .woocommerce-loop-product__link:last-of-type {
+    grid-area: name;
+}
+
+.main__sale-gallery .woocommerce-product-details__short-description {
+    grid-area: descr;
+}
+
+.main__sale-gallery .price {
+    grid-area: price;
+}
+
