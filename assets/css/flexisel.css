@@ -53,13 +53,14 @@
     z-index: 9999;
 }
 .nbs-flexisel-nav-left {
-    left:-5%;
+    left: 0;
     top:38% !important;
     /* background:url(assets/images/left-arrow.png) no-repeat 0px 0px; */
 }
 .nbs-flexisel-nav-right {
-    right:-5%;
+    right: 0;
     top:38% !important;
+    text-align: end;
     /* background:url(assets/images/right-arrow.png) no-repeat 0px 0px; */
 }
 
