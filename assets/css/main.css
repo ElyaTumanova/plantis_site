@@ -1,11 +1,16 @@
 /* first sreen styles */
 
-/* banners */
 .main__wrap {
     display: grid;
     grid-template-columns: 65% 35%;
     row-gap: 50px;
 }
+
+.main__row {
+    margin-bottom: 50px;
+}
+
+/* banners */
 
 .main__wrap-colored-bg {
     background-color: #F5F5F6;
@@ -139,6 +144,7 @@
     grid-area: desrc;
     font-size: 16px;
     font-weight: 500;
+    line-height: 1.4;
 }
 
 .advantages_mob {
@@ -201,37 +207,36 @@
 .main__contacts {
     border-radius: 1000px;
     background-color: var(--accent-color);
-    max-width: 296px;
+    width: 334px;
+    height: 334px;
     margin: 0 auto;
-    max-height: 296px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    row-gap: 20px;
+    row-gap: 35px;
 }
 
 .main__contacts-text {
     text-align: center;
     color: var(--white);
     font-size: 22px;
-    line-height: 1.1;
+    line-height: 1.15;
     font-weight: 400;
-    padding: 0 10px;
+    max-width: 250px;
 }
 
 .main__contacts-buttons {
     display: flex;
     column-gap: 30px;
-    background-color: aqua;
     border-radius: 100px;
 }
 
 .main__contacts-button {
-    display: block;
-    padding: 10px 11px;
+    display: flex;
+    width: 50px;
+    height: 50px;
     border-radius: 100px;
-    font-size: 0;
 }
 
 .main__contacts-button-telegram {
@@ -243,6 +248,7 @@
 }
 
 .main__contacts-button-icon {
-    height: 20px;
+    height: 30px;
     fill: white;
+    margin: auto; 
 }
