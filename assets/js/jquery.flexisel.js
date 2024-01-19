@@ -202,6 +202,7 @@
         var innerWidth = listParent.width();
         
         itemsWidth = (innerWidth)/itemsVisible;
+        console.log(itemsWidth);
         
         var childSet = object.children();
         

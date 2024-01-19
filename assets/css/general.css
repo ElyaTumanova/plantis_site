@@ -71,3 +71,9 @@
     
     padding: 10px 0px 10px 0px;
 }
+
+.heading-2{
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
