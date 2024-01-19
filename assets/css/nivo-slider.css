@@ -90,7 +90,7 @@
 /* Direction nav styles (e.g. Next & Prev) */
 .nivo-directionNav a, .nivo-directionNav a:hover {
 	position:absolute;
-	top:50%;
+	top:41%;
 	z-index:9;
 	cursor:pointer;
 	text-decoration: none;
