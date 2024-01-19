@@ -10,8 +10,14 @@
 }
 
 .main__sale-gallery-wrap {
-    max-height: 245px;
+    max-height: 265px;
     overflow: hidden;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    padding: 20px 10px 15px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .main__sale-gallery .product {
@@ -23,9 +29,10 @@
             "image name"
 			"image descr"
             "image button";
-	grid-template-columns: 165px auto;
+	grid-template-columns: 180px auto;
 	column-gap: 10px;
     text-align: left;
+    padding-right: 10px;
 }
 
 .main__sale-gallery .woocommerce-loop-product__link:first-of-type {
@@ -34,10 +41,10 @@
 }
 
 .main__sale-gallery .sale_badge {
-    font-size: 16px;
+    font-size: 14px;
     top: 0;
     bottom: auto;
-    right: -117px;
+    right: -107px;
     border-radius: 5px;
 }
 
@@ -51,7 +58,6 @@
     line-height: 14px;
     width: 175px;
     align-self: flex-end;
-    margin-top: 23px;
 }
 
 .main__sale-gallery .woocommerce-loop-product__link:last-of-type {
@@ -71,7 +77,7 @@
 
 .main__sale-gallery .price {
     grid-area: price;
-    margin-top: 20px;
+    margin-top: 15x;
     margin-bottom: 10px;
 }
 
