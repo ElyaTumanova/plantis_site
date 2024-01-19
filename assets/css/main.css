@@ -19,10 +19,6 @@
     text-align: left;
 }
 
-.main__sale-gallery .product:not(:first-child) {
-    visibility: hidden;
-}
-
 .main__sale-gallery .woocommerce-loop-product__link:first-of-type {
     grid-area: image;
     font-size: 0;

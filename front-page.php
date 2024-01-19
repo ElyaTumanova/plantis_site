@@ -16,7 +16,7 @@ get_header(); ?>
 			<div class="main__sale-gallery">
 				<?php echo do_shortcode('[products on_sale="true" class="main-sale-slider" limit="8" columns="1" orderby="rand" category="komnatnye-rasteniya"]') ?>
 		
-				<script type="text/javascript">
+				<!-- <script type="text/javascript">
 					jQuery(window).load(function() {
 						jQuery(".main-sale-slider > ul").flexisel({
 							visibleItems:1,
@@ -41,7 +41,7 @@ get_header(); ?>
 							}
 						});
 					});
-				</script>
+				</script> -->
 			</div>			
 		</div>
 	</div>
