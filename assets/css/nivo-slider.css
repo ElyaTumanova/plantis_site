@@ -104,11 +104,6 @@
 .nivo-controlNav {
 	text-align:center;
 	padding: 15px 0;
-	position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-	z-index: 100;
 }
 .nivo-controlNav a {
 	cursor:pointer;
@@ -119,4 +114,12 @@
 	font-weight:bold;
 	opacity: 1;
 	
+}
+
+.catalog__grid .nivo-controlNav {
+	position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+	z-index: 100;
 }
