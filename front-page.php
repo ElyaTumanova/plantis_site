@@ -43,7 +43,8 @@ get_header(); ?>
 							});
 						});
 					</script>
-				</div>			
+				</div>
+				<a class="main__sale-button" href="http://new.plantis.shop/product-category/%d1%81%d0%ba%d0%b8%d0%b4%d0%ba%d0%b8/"></a>			
 			</div>
 		</div>
 	</div>
