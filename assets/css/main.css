@@ -205,7 +205,10 @@
     margin: 0 auto;
     max-height: 296px;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    row-gap: 20px;
 }
 
 .main__contacts-text {
@@ -215,4 +218,31 @@
     line-height: 1.1;
     font-weight: 400;
     padding: 0 10px;
+}
+
+.main__contacts-buttons {
+    display: flex;
+    column-gap: 30px;
+    background-color: aqua;
+    border-radius: 100px;
+}
+
+.main__contacts-button {
+    display: block;
+    padding: 10px 11px;
+    border-radius: 100px;
+    font-size: 0;
+}
+
+.main__contacts-button-telegram {
+    background-color: var(--telegram);
+}
+
+.main__contacts-button-whatsapp {
+    background-color: var(--whatsapp);
+}
+
+.main__contacts-button-icon {
+    height: 20px;
+    fill: white;
 }
