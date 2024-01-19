@@ -2,8 +2,11 @@
     display: grid;
     grid-template-columns: 65% 35%;
     row-gap: 50px;
-    padding: 20px 0;
+}
+
+.main__wrap-colored-bg {
     background-color: #F5F5F6;
+    padding: 20px 0;
 }
 
 .main__banners-wrap {
