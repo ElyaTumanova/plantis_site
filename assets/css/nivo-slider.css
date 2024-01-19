@@ -104,10 +104,17 @@
 .nivo-controlNav {
 	text-align:center;
 	padding: 15px 0;
+	position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 .nivo-controlNav a {
 	cursor:pointer;
+	margin: 10px;
+	opacity: 0.7;
 }
 .nivo-controlNav a.active {
 	font-weight:bold;
+	opacity: 1;
 }
