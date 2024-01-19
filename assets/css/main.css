@@ -32,7 +32,7 @@
     max-height: 390px;
     overflow: hidden;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-    padding: 10px 10px;
+    padding: 15px 10px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -53,6 +53,10 @@
 	column-gap: 10px;
     text-align: left;
     /* padding-right: 30px; */
+}
+
+.main__sale-gallery .nbs-flexisel-inner {
+    max-height: 177px;
 }
 
 .main__sale-gallery .woocommerce-loop-product__link:first-of-type {
@@ -87,6 +91,10 @@
 .main__sale-gallery .woocommerce-loop-product__title {
     font-size: 16px;
     line-height: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 185px;
 }
 
 .main__sale-gallery .woocommerce-product-details__short-description {
@@ -104,7 +112,7 @@
 
 .main__sale-gallery-title {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     color: var(--accent-color);
 }
 
