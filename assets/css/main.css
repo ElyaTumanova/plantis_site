@@ -29,7 +29,7 @@
 /* sale gallery */
 
 .main__sale-gallery-wrap {
-    max-height: 390px;
+    max-height: 286px;
     overflow: hidden;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
     padding: 15px 10px;
@@ -52,7 +52,6 @@
 	grid-template-columns: 165px auto;
 	column-gap: 10px;
     text-align: left;
-    /* padding-right: 30px; */
 }
 
 .main__sale-gallery .nbs-flexisel-inner {
@@ -112,8 +111,13 @@
 
 .main__sale-gallery-title {
     text-align: center;
-    margin-bottom: 20px;
-    color: var(--accent-color);
+    color: var(--sale);
+}
+
+.main__sale-button {
+    background-color: var(--sale);
+    border-color: var(--sale);
+    color: var(--white);
 }
 
 /* advantages */
