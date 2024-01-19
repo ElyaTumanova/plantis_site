@@ -65,7 +65,7 @@
     padding: 2px 4px;
     border-radius: 10px;
     line-height: 10px;
-    color: var(--white-color);
+    color: var(--white);
 }
 
 
@@ -73,7 +73,7 @@
 
 .header__menu {
     background-color: var(--accent-color);
-    color: var(--white-color);
+    color: var(--white);
 }
 
 .menu--main {
@@ -419,10 +419,10 @@ input[type="search"], input[type="search"]:focus-visible {
     border-radius: 10px 10px 10px 10px;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
     padding: 5px 7px 5px 7px;
-    color: var(--white-color);
+    color: var(--white);
 }
 .header__telegram:hover {
-    color: var(--white-color);
+    color: var(--white);
     text-decoration: none;
     box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
 }

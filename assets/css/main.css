@@ -194,3 +194,25 @@
     overflow-x: auto;
     width: fit-content;
 }
+
+
+/* contacts ellipse */
+
+.main__contacts {
+    border-radius: 1000px;
+    background-color: var(--accent-color);
+    max-width: 296px;
+    margin: 0 auto;
+    max-height: 296px;
+    display: flex;
+    align-items: center;
+}
+
+.main__contacts-text {
+    text-align: center;
+    color: var(--white);
+    font-size: 22px;
+    line-height: 1.1;
+    font-weight: 400;
+    padding: 0 10px;
+}
