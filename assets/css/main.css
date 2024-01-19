@@ -13,7 +13,7 @@
     max-height: 265px;
     overflow: hidden;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-    padding: 20px 10px 15px;
+    padding: 20px 10px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -73,11 +73,12 @@
     grid-area: descr;
     font-size: 12px;
     line-height: 14px;
+    margin-bottom: 10px;
 }
 
 .main__sale-gallery .price {
     grid-area: price;
-    margin-top: 15x;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
