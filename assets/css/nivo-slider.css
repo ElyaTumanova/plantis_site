@@ -88,11 +88,12 @@
     display:none;
 }
 /* Direction nav styles (e.g. Next & Prev) */
-.nivo-directionNav a {
+.nivo-directionNav a, .nivo-directionNav a:hover {
 	position:absolute;
-	top:45%;
+	top:50%;
 	z-index:9;
 	cursor:pointer;
+	text-decoration: none;
 }
 .nivo-prevNav {
 	left:0px;
@@ -110,10 +111,11 @@
     left: 0;
 	z-index: 100;
 }
-.nivo-controlNav a {
+.nivo-controlNav a,  .nivo-controlNav a:hover{
 	cursor:pointer;
 	margin: 10px;
 	opacity: 0.7;
+	text-decoration: none;
 }
 .nivo-controlNav a.active {
 	font-weight:bold;
