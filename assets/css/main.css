@@ -266,8 +266,17 @@
 }
 
 .main__about-text, .main__about-list {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.4;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-weight: 500;
+}
+
+.main__about-list {
+    padding-left: 20px;
+    list-style: inside;
+}
+
+.main__about-list li {
+    margin-bottom: 10px;
 }
