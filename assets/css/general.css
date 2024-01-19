@@ -35,6 +35,7 @@
 .content-area {
     max-width: 1300px;
     margin: auto;
+    margin-top: 10px;
 }
 
 .sale_badge {
