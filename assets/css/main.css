@@ -2,7 +2,7 @@
 
 .main__wrap {
     display: grid;
-    grid-template-columns: 65% 35%;
+    grid-template-columns: 70% 30%;
     row-gap: 50px;
 }
 
@@ -29,7 +29,7 @@
 /* sale gallery */
 
 .main__sale-gallery-wrap {
-    max-height: 265px;
+    max-height: 500px;
     overflow: hidden;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
     padding: 10px 10px;
@@ -52,7 +52,7 @@
 	grid-template-columns: 165px auto;
 	column-gap: 10px;
     text-align: left;
-    padding-right: 10px;
+    padding-right: 30px;
 }
 
 .main__sale-gallery .woocommerce-loop-product__link:first-of-type {
