@@ -37,8 +37,23 @@
 
 .sale_badge {
     position: absolute;
-    top: 0;
+    bottom: 0;
     z-index: 2;
+    background-color: var(--red-color);
+    color: var(--white-color);
+    display: flex;
+    align-items: center;
+    border-radius: 0px 5px 0px 5px;
+    padding: 0 5px 0 0;
+}
+
+.sale_badge-skidka {
+    background-color: var(--text);
+    color: var(--white-color);
+    display: block;
+    padding: 5px;
+    border-radius: 0px 0px 0px 5px;
+    margin-right: 3px;
 }
 
 .button {
