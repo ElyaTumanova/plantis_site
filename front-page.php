@@ -13,6 +13,7 @@ get_header(); ?>
 		</div>
 
 		<div class="main__sale-gallery-wrap">
+			<h2 class="main__sale-gallery-title">Спецпредложения</h2>
 			<div class="main__sale-gallery">
 				<?php echo do_shortcode('[products on_sale="true" class="main-sale-slider" limit="8" columns="1" orderby="rand" category="komnatnye-rasteniya"]') ?>
 		
