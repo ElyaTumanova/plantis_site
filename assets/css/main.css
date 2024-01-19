@@ -1,3 +1,6 @@
+/* first sreen styles */
+
+/* banners */
 .main__wrap {
     display: grid;
     grid-template-columns: 65% 35%;
@@ -17,6 +20,8 @@
 .main__banners {
     border-radius: 5px;
 }
+
+/* sale gallery */
 
 .main__sale-gallery-wrap {
     max-height: 265px;
@@ -98,3 +103,95 @@
     color: var(--accent-color);
 }
 
+/* advantages */
+.advantages {
+    display: grid;
+    grid-template: repeat(2, auto) / repeat(2,auto);
+    row-gap: 30px;
+    column-gap: 30px;
+    /* 	width: 65% */
+}
+
+.advantages__wrap {
+    row-gap: 15px;
+    display: grid;
+    grid-template: repeat(2, auto) / 70px auto;
+    grid-template-areas: "photo title"
+    "desrc desrc";
+}
+
+.advantages__title {
+    grid-area: title;
+    margin: auto 0 auto 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.advantages__image {
+    grid-area: photo;
+    width: 70px;
+    height: 70px;
+    margin: auto 10px auto 0;
+}
+
+.advantages__descr {
+    grid-area: desrc;
+/* 	max-width: 500px; */
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.advantages_mob {
+    display: flex;
+    flex-wrap: nowrap;
+    row-gap: 30px;
+    column-gap: 30px;
+    width: 100%;
+}
+    
+.advantages__wrap_mob {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    height: fit-content;
+}
+
+.advantages__title-wrap_mob {
+    display: flex;
+    align-items: center;
+    background-color: var(--e-global-color-ce8c95e);
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px
+}
+
+.advantages__image_mob {
+    width: 50px;
+    height: 50px;
+    margin: auto 10px auto 0
+}
+
+.advantages__title_mob {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #fff;
+}
+
+.advantages__descr_mob {
+    min-width: 300px;	
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #F7F7F7;
+    padding: 10px;
+    min-height: 120px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.overflow_section {
+    overflow-x: auto;
+    width: fit-content;
+}
