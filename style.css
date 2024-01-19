@@ -490,13 +490,13 @@ a {
 }
 
 a:visited {
-    color: inherit;
+    /* color: inherit; */
 }
 
 a:hover,
 a:focus,
 a:active {
-    color: inherit;
+    /* color: inherit; */
     text-decoration-color: inherit;
     text-decoration-line: underline;
     text-decoration-style: solid;
