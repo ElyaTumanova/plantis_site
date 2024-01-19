@@ -121,3 +121,7 @@
 	font-weight:bold;
 	opacity: 1;
 }
+
+.main__banners .nivo-directionNav a {
+	padding: 0 10px;
+}
