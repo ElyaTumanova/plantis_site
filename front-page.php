@@ -7,7 +7,7 @@ get_header(); ?>
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
 
-	<div class="main__wrap">
+	<div class="main__wrap container">
 		<div class="main__banners-wrap">
 			<?php get_template_part('template-parts/main-banners-gallery');?>
 		</div>
