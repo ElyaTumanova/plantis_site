@@ -221,8 +221,8 @@ new iWC_Orderby_Stock_Status;
 add_filter( 'woocommerce_product_query_meta_query', 'shop_only_instock_products', 10, 2 );
 
 function shop_only_instock_products( $meta_query, $query ) {
-// Only on shop archive pages
-	if( is_admin() || is_search() || ! is_shop() ) {
+	global $plants_cat_id;
+	if( is_admin() || is_search() || is_shop() || !is_product_category($plants_cat_id) ) { 		//где хотим срыть товары не в наличии
 		$meta_query[] = array(
 			'key' => '_stock_status',
 			'value' => 'outofstock',
