@@ -16,24 +16,24 @@ function plnt_woocommerce_cart_header() {
 }
 
 
-function plnt_woocommerce_cart_header_fragment( $fragments ) {
- 
-	ob_start();
-	plnt_woocommerce_cart_header();
- 
-	$fragments[ 'a.header-cart__link' ] = ob_get_clean();
-	
-	return $fragments;
- 
-}
 // function plnt_woocommerce_cart_header_fragment( $fragments ) {
  
-// 	global $woocommerce;
+// 	ob_start();
+// 	plnt_woocommerce_cart_header();
  
-// 	$fragments[ 'a.header-cart__link' ] = plnt_woocommerce_cart_header();
+// 	$fragments[ 'a.header-cart__link' ] = ob_get_clean();
+	
 // 	return $fragments;
  
 // }
+function plnt_woocommerce_cart_header_fragment( $fragments ) {
+ 
+	global $woocommerce;
+ 
+	$fragments[ 'a.header-cart__link' ] = plnt_woocommerce_cart_header();
+	return $fragments;
+ 
+}
 
 add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_fragment', 25 );
 
