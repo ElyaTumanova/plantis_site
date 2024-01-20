@@ -23,6 +23,7 @@ jQuery(function ($){
 	}
 
 	$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки
+
  
 });
 })
