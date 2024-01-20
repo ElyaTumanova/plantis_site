@@ -40,9 +40,10 @@ function cart_refresh_update_qty() {
 				   jQuery('[name="update_cart"]').removeAttr("disabled").trigger('click');
 			   }, 100 );
 		   });
+		   <?php WC_AJAX::get_refreshed_fragments();?>
 	</script>
 	   <?php
-	   WC_AJAX::get_refreshed_fragments();
+	   
 	}
 }
 
