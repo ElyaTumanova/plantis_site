@@ -29,13 +29,13 @@ function plnt_woocommerce_cart_header_fragment( $fragments ) {
 
 add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_fragment', 25 );
 
-// for dev
+// FOR DEV
 
-add_action('woocommerce_before_cart','my_get_cart_amount',40);
+// add_action('woocommerce_before_cart','my_get_cart_amount',40);
 
-function my_get_cart_amount () {
-	echo wp_kses_data(WC()->cart->get_cart_contents_count());
-};
+// function my_get_cart_amount () {
+// 	echo wp_kses_data(WC()->cart->get_cart_contents_count());
+// };
 
 // доп функции для корзины
 
