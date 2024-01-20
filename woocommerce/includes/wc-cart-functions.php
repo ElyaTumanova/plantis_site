@@ -3,6 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+// вывод корзины в хедере
 function plnt_woocommerce_cart_header() {
 	?>
 		<?php $cart_icon = carbon_get_theme_option('cart_icon')?>
@@ -27,3 +28,22 @@ function plnt_woocommerce_cart_header_fragment( $fragments ) {
 }
 
 add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_fragment', 25 );
+
+// доп функции для корзины
+
+// // автообновление корзины без перезагрузки
+ add_action( 'wp_footer', 'cart_refresh_update_qty', 100 );
+
+ function cart_refresh_update_qty() {
+     if ( is_cart() ) {
+        ?>
+       <script type="text/javascript">
+           jQuery('div.woocommerce').on('change', 'input.qty', function(){
+                setTimeout(function() {
+                    jQuery('[name="update_cart"]').trigger('click');
+                }, 100 );
+            });
+     </script>
+        <?php
+     }
+ }
