@@ -169,11 +169,12 @@ add_filter('woocommerce_product_add_to_cart_text','plnt_change_add_to_cart_text'
 
 function plnt_change_add_to_cart_text($text) {
 	global $product;
-	if ($product->!is_in_stock()) {
+	if ($product->is_in_stock()) {
+		return $text;
+	} else {
 		$text = __( 'Заказать', 'woocommerce' );
+		return $text;
 	}
-
-	return $text;
 }
 
 // // обрамляем загловок в ссылку
