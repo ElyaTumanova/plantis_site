@@ -218,7 +218,7 @@ new iWC_Orderby_Stock_Status;
 
 // // скрываем товары не в наличии для определенных страниц и категорий 
 
-add_filter( 'pre_get_posts', 'truemisha_show_in_stock_only', 25 );
+//add_filter( 'pre_get_posts', 'truemisha_show_in_stock_only', 25 );
 
 function truemisha_show_in_stock_only( $query ) {
 	global $plants_cat_id;
