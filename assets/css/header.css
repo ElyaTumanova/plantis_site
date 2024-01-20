@@ -424,8 +424,6 @@ input[type="search"], input[type="search"]:focus-visible {
 }
 .header__telegram:hover {
     color: var(--white);
-    text-decoration: none;
-    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
 }
 
 .header__telegram-icon {
