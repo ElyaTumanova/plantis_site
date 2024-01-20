@@ -154,7 +154,7 @@ add_action('woocommerce_before_shop_loop_item_title','truemisha_sale_badge', 10)
 add_action('woocommerce_before_shop_loop_item_title','plnt_wish_list_btn_catalog', 20);
 
 function plnt_wish_list_btn_catalog() {
-	do_shortcode('[yith_wcwl_add_to_wishlist]');
+	echo do_shortcode('[yith_wcwl_add_to_wishlist]');
 }
 
 
