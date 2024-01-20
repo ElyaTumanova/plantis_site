@@ -281,8 +281,9 @@ function truemisha_custom_orderby_option( $sortby ) {
 }
 
 
-add_filter('yith_wcwl_table_product_show_add_to_cart','plnt_add_to_cart_for_wishlist',10);
+add_action('yith_wcwl_table_product_before_add_to_cart','plnt_add_to_cart_for_wishlist',10);
 
 function plnt_add_to_cart_for_wishlist() {
+	echo '<div>hi</div>';
 	do_shortcode('[add_to_cart]');
 };
