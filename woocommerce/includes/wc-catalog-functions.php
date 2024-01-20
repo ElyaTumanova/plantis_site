@@ -54,6 +54,14 @@ function plnt_catalog_filters_main_area() {
 
 // // заголовок каталога
 
+add_filter( 'woocommerce_show_page_title', 'wp_kama_woocommerce_show_page_title_filter' );
+
+function wp_kama_woocommerce_show_page_title_filter( $true ){
+
+	// filter...
+	return $false;
+}
+
 add_filter( 'woocommerce_page_title', 'plnt_woocommerce_page_title');
 
 function plnt_woocommerce_page_title($page_title) {
