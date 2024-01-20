@@ -42,7 +42,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 add_action('yith_wcwl_table_product_before_add_to_cart','plnt_add_to_cart_for_wishlist');
 
 function plnt_add_to_cart_for_wishlist() {
-	echo '<pre>';
-	print_r( $item );
-	echo '</pre>';
+	?>
+	<div>hihihihh</div>
+	<?php
 };
