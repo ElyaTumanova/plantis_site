@@ -26,14 +26,6 @@ function plnt_woocommerce_cart_header_fragment( $fragments ) {
 	return $fragments;
  
 }
-// function plnt_woocommerce_cart_header_fragment( $fragments ) {
- 
-// 	global $woocommerce;
- 
-// 	$fragments[ 'a.header-cart__link' ] = plnt_woocommerce_cart_header();
-// 	return $fragments;
- 
-// }
 
 add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_fragment', 25 );
 
