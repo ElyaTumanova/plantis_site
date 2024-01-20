@@ -29,23 +29,6 @@ function plnt_woocommerce_cart_header_fragment( $fragments ) {
 
 add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_fragment', 25 );
 
-add_action( 'wp_footer', 'cart_refresh_update_qty', 100 );
-
-function cart_refresh_update_qty() {
-	if ( is_cart() ) {
-	   ?>
-	  <script type="text/javascript">
-		  jQuery('div.woocommerce').on('change', 'input.qty', function(){
-			   setTimeout(function() {
-				   jQuery('[name="update_cart"]').removeAttr("disabled").trigger('click');
-			   }, 100 );
-			   <?php WC_AJAX::get_refreshed_fragments();?>
-		   });
-	</script>
-	   <?php
-	   
-	}
-}
 
 // FOR DEV
 
