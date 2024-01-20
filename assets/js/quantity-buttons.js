@@ -22,7 +22,7 @@ jQuery(function ($){
 		}
 	}
 
-	$( '[name="update_cart"]' ).trigger( 'click' );
+	$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' );
  
 });
 })
