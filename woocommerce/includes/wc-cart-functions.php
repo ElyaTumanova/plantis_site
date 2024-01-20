@@ -16,13 +16,21 @@ function plnt_woocommerce_cart_header() {
 }
 
 
+// function plnt_woocommerce_cart_header_fragment( $fragments ) {
+ 
+// 	ob_start();
+// 	plnt_woocommerce_cart_header();
+ 
+// 	$fragments[ 'a.header-cart__link' ] = ob_get_clean();
+	
+// 	return $fragments;
+ 
+// }
 function plnt_woocommerce_cart_header_fragment( $fragments ) {
  
-	ob_start();
-	plnt_woocommerce_cart_header();
+	global $woocommerce;
  
-	$fragments[ 'a.header-cart__link' ] = ob_get_clean();
-	
+	$fragments[ 'a.truemisha-cart-frag-1' ] = plnt_woocommerce_cart_header();
 	return $fragments;
  
 }
@@ -30,23 +38,6 @@ function plnt_woocommerce_cart_header_fragment( $fragments ) {
 add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_fragment', 25 );
 
 // доп функции для корзины
-
-// // автообновление корзины без перезагрузки
- //add_action( 'wp_footer', 'cart_refresh_update_qty', 100 );
-
- function cart_refresh_update_qty() {
-	if ( is_cart() ) {
-	?>
-		<script type="text/javascript">
-			jQuery('div.woocommerce').on('change', 'input.qty', function(){
-				setTimeout(function() {
-					jQuery('[name="update_cart"]').trigger('click');
-				}, 100 );
-			});
-		</script>
-	<?php
-	}
- }
 
 // // изменяем кнопку "в корзину" после добавления товара в корзину
 

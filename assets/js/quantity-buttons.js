@@ -22,15 +22,7 @@ jQuery(function ($){
 		}
 	}
 
-	$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' );
+	$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки
  
 });
 })
-
-// jQuery( function( $ ) {
- 
-// 	$( 'body' ).on( 'click', 'button.plus, button.minus', function() { // поле с количеством имеет класс .qty
-// 		$( '[name="update_cart"]' ).trigger( 'click' );
-// 	} );
- 
-// } );
