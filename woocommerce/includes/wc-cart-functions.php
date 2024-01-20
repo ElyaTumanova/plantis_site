@@ -48,6 +48,18 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_f
      }
  }
 
+ jQuery( function( $ ) {
+ 
+	$( 'body' ).on( 'click', '.plus, .minus', function() {
+ 
+		// делаем всё, что нужно сделать, меняем количество в полях
+ 
+		input.val( quantity ).change();
+		$( '[name="update_cart"]' ).trigger( 'click' );
+	} );
+ 
+} );
+
 // // изменяем кнопку "в корзину" после добавления товара в корзину
 
 
