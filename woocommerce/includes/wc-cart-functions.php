@@ -47,3 +47,32 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_f
         <?php
      }
  }
+
+// // изменяем кнопку "в корзину" после добавления товара в корзину
+
+
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'truemisha_single_product_btn_text' ); // текст для страницы самого товара
+ 
+function truemisha_single_product_btn_text( $text ) {
+	if( WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( get_the_ID() ) ) ) {
+		$text = 'Добавлен';
+	}
+ 
+	return $text;
+}
+ 
+
+add_filter( 'woocommerce_product_add_to_cart_text', 'truemisha_product_btn_text', 20, 2 ); //текст для страниц каталога товаров, категорий товаров и т д
+ 
+function truemisha_product_btn_text( $text, $product ) {
+	if( 
+	   $product->is_type( 'simple' )
+	   && $product->is_purchasable()
+	   && $product->is_in_stock()
+// 		&& !wp_is_mobile()
+	   && WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( $product->get_id() ) )
+	) {
+		$text = 'Добавлен';
+	}
+	return $text;
+}
