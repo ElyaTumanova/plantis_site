@@ -218,29 +218,17 @@ new iWC_Orderby_Stock_Status;
 
 // // скрываем товары не в наличии для определенных страниц и категорий 
 
-//add_filter( 'pre_get_posts', 'truemisha_show_in_stock_only', 25 );
+add_filter( 'woocommerce_product_query_meta_query', 'shop_only_instock_products', 10, 2 );
 
-function truemisha_show_in_stock_only( $query ) {
-	global $plants_cat_id;
- 
-	if(
-		! is_admin()
-		&& $query->is_main_query()
-		&& (is_shop() || !is_product_category($plants_cat_id))
-	) {
- 
-		$query->set( 
-			'meta_query', 
-			array( 
-				array(
-					'key'       => '_stock_status',
-					'value'     => 'outofstock',
-					'compare'   => 'NOT IN'
-				)
-			)
+function shop_only_instock_products( $meta_query, $query ) {
+// Only on shop archive pages
+if( is_admin() || is_search() || ! is_shop() ) return $meta_query;
+	$meta_query[] = array(
+		'key' => '_stock_status',
+		'value' => 'outofstock',
+		'compare' => '!='
 		);
-	}
- 
+	return $meta_query;
 }
 
 
