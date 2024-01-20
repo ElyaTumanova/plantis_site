@@ -157,6 +157,11 @@ function plnt_wish_list_btn_catalog() {
 	echo do_shortcode('[yith_wcwl_add_to_wishlist]');
 }
 
+add_action('yith_wcwl_table_product_before_add_to_cart','my_finction');
+
+function my_finction() {
+	echo do_shortcode('[add_to_cart]');
+}
 
 // // перенос кнопки в корзину
 
