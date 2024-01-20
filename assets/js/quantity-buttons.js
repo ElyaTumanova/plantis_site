@@ -24,7 +24,7 @@ jQuery(function ($){
 
 	$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки
 
-	$.ajax( $fragment_refresh );
+	refresh_cart_fragment();
  
 });
 })
