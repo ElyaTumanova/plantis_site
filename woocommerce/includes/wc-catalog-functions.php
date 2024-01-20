@@ -165,7 +165,7 @@ add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_
 
 add_filter('woocommerce_product_add_to_cart_text','my_function');
 
-function my_finction() {
+function my_function() {
 	echo '<pre>';
 	print_r( $text );
 	echo '</pre>';
