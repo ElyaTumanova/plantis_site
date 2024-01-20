@@ -80,9 +80,7 @@ function wp_kama_woocommerce_show_page_title_filter( $true ){
 	return $false;
 }
 
-// выводим новый заголовок
-
-add_action('woocommerce_archive_description','plnt_page_title');
+add_action('woocommerce_archive_description','plnt_page_title'); // выводим новый заголовок
 
 function plnt_page_title () {
 	$archive_title = get_the_archive_title();
@@ -93,8 +91,9 @@ function plnt_page_title () {
 	else {
 		echo '<h1 class="my_header__title">'.$archive_title."</h1>";
 	}
-
 }
+
+add_filter( 'get_the_archive_title_prefix', '__return_empty_string' ); // убираем префикс Архивы
 
 //оформление карточки товара в каталоге
 
