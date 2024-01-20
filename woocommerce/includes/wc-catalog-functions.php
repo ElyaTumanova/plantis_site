@@ -167,7 +167,7 @@ add_action('woocommerce_shop_loop_item_title','woocommerce_template_single_excer
 add_action('woocommerce_after_shop_loop_item', 'plnt_get_product_tags', 20);
 
 function plnt_get_product_tags() {
-	if(is_shop() || is_category() ||is_tag()) {
+	if(is_shop() is_product_category() || is_product_tag()) {
 		global $product;
 		global $tags_exeptions;
 		$tags = $product->tag_ids;
@@ -186,8 +186,7 @@ function plnt_get_product_tags() {
 
 // функции для вывода товаров
 
-// // сортировка с учетом наличия
-//  Order product collections by stock status, instock products first.
+// // вывод товаров в каталоге с учетом наличия - instock products first 
 
 class iWC_Orderby_Stock_Status
 {
@@ -235,7 +234,7 @@ function shop_only_instock_products( $meta_query, $query ) {
 }
 
 
-// // варианты сортировки товаров
+// // варианты сортировки товаров в каталоге
 
 add_filter( 'woocommerce_catalog_orderby', 'truemisha_remove_orderby_options' );
  
@@ -280,3 +279,10 @@ function truemisha_custom_orderby_option( $sortby ) {
 	$sortby['name_list_desc'] = 'По названию от Я до А';
 	return $sortby;
 }
+
+
+add_filter('yith_wcwl_table_product_show_add_to_cart','plnt_add_to_cart_for_wishlist',10);
+
+function plnt_add_to_cart_for_wishlist() {
+	do_shortcode('[add_to_cart]');
+};
