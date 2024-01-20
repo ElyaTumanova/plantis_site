@@ -60,6 +60,7 @@ function plnt_woocommerce_page_title($page_title) {
 	if ( is_paged() ) {
 		$pageNum = get_query_var('paged');
 
+		$page_title .= " - Страница ".$pageNum;
 		return $page_title;
 	}
 	
