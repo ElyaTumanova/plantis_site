@@ -157,16 +157,19 @@ function plnt_wish_list_btn_catalog() {
 	echo do_shortcode('[yith_wcwl_add_to_wishlist]');
 }
 
-add_action('yith_wcwl_table_product_before_add_to_cart','my_finction');
-
-function my_finction() {
-	echo do_shortcode('[add_to_cart]');
-}
 
 // // перенос кнопки в корзину
 
 remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
 add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_add_to_cart', 30);
+
+add_filter('woocommerce_product_add_to_cart_text','my_function');
+
+function my_finction() {
+	echo '<pre>';
+	print_r( $text );
+	echo '</pre>';
+}
 
 // // обрамляем загловок в ссылку
 add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product_link_open', 5);
