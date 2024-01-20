@@ -119,7 +119,7 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 					 *
 					 * @return string
 					 */
-					echo esc_html( apply_filters( 'yith_wcwl_wishlist_view_price_heading', __( 'Unit price lalalala', 'yith-woocommerce-wishlist' ), $wishlist ) );
+					echo esc_html( apply_filters( 'yith_wcwl_wishlist_view_price_heading', __( 'Unit price', 'yith-woocommerce-wishlist' ), $wishlist ) );
 					?>
 				</span>
 			</th>
