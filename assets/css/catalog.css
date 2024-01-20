@@ -79,8 +79,8 @@ ul.products {
         flex-direction: column;
         justify-content: start;
         align-items: flex-start;
-        /* margin: 0 8px 16px 8px; */
         box-sizing: border-box;
+        position: relative;
     }
 }
 

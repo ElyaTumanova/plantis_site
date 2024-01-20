@@ -34,7 +34,7 @@ function plnt_product_description () {
     ?>
     </div>
     <?php 
-}
+};
 
 
 // фото товара, бейдж распродажа
@@ -52,7 +52,7 @@ function plnt_product_image_wrap () {
     ?>
     </div>
     <?php 
-}
+};
 
 function truemisha_sale_badge() {
  
@@ -69,7 +69,7 @@ function truemisha_sale_badge() {
 	if ( $percentage > 0 ) {
 		echo '<div class="sale_badge"><span class="sale_badge-skidka">Скидка </span>' . round( $percentage ) . '%</div>';
 	}
-}
+};
 
 //слайдер фото товара
 
@@ -81,7 +81,7 @@ function plnt_product_gallery( $options ) {
 	$options[ 'controlNav' ] = true;
 	$options[ 'animationLoop' ] = true;
 	return $options;
-}
+};
 
 //цена и кнопка в корзину
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
@@ -98,7 +98,16 @@ function plnt_price_wrap(){
     ?>
     </div>
     <?php 
-}
+};
+
+// wish list button
+
+add_action('woocommerce_after_add_to_cart_button', 'plnt_card_wishlist_btn', 10);
+
+function plnt_card_wishlist_btn() {
+    echo do_shortcode('[yith_wcwl_add_to_wishlist]');
+};
+
 
 //кнопки изменения количества
 add_action( 'woocommerce_before_quantity_input_field', 'truemisha_quantity_minus', 25 );
@@ -106,11 +115,11 @@ add_action( 'woocommerce_after_quantity_input_field', 'truemisha_quantity_plus',
  
 function truemisha_quantity_plus() {
 	echo '<button type="button" class="plus">+</button>';
-}
+};
  
 function truemisha_quantity_minus() {
 	echo '<button type="button" class="minus">-</button>';
-}
+};
 
 // мета данные товара и атрибуты
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
@@ -124,7 +133,7 @@ function plnt_product_artikul() {
 	if( $sku ) { // если заполнен, то выводим
 		echo '<p class="product__artikul">Артикул: ' . $sku . '</p>';
 	}
-}
+};
 
 function check_category () {
 	global $post;
@@ -135,7 +144,7 @@ function check_category () {
 	$idCats[$term_cat_id]=$term_cat_id;
 	};	
 	return $idCats;
-}
+};
 
 function plnt_product_attributes(){
     global $product;
@@ -154,7 +163,7 @@ function plnt_product_attributes(){
     ?>
     </div>
     <?php 
-}
+};
 
 //upsells & cross sells
 
