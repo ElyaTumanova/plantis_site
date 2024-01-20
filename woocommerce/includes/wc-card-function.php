@@ -210,3 +210,40 @@ function plnt_cross_sells_heading() {
     return 'Похожие растения';
 };
 
+// ссылка "назад" для карточки товара
+
+add_action('woocommerce_before_main_content','plnt_category_link',25);
+
+function plnt_category_link () {
+    global $plants_cat_id;
+    global $gorshki_cat_id;
+    global $treez_cat_id;
+	$idCats = check_category ();
+	foreach ($idCats as $cat){
+		switch ($cat)  {
+			case $plants_cat_id:				//category ID for plants
+				$link = get_term_link( $cat, 'product_cat' );
+				$text = 'Каталог растений';
+				break;
+			case $gorshki_cat_id:				//category ID for gorshki
+				$link = get_term_link( $cat, 'product_cat' );
+				$text = 'Каталог горшков';
+				break;
+			case 69:				//category ID for ukhod
+				$link = get_term_link( $cat, 'product_cat' );
+				$text = 'Каталог товаров для ухода';
+				break;
+			case $treez_cat_id:				//category ID for treez
+				$link = get_term_link( $cat, 'product_cat' );
+				$text = 'Каталог кашпо Treez';
+				break;
+			default:
+				break;
+				$link = get_permalink( wc_get_page_id( 'shop' ) );
+				$text = 'Каталог товаров';
+			}
+	}	
+	echo '
+	<span> &#10095;</span>
+	<a href="' . $link . '">'.$text.'</a>';
+}
