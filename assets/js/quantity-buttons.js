@@ -21,14 +21,16 @@ jQuery(function ($){
 			qty.val( val - step );
 		}
 	}
+
+	$( '[name="update_cart"]' ).trigger( 'click' );
  
 });
 })
 
-jQuery( function( $ ) {
+// jQuery( function( $ ) {
  
-	$( 'body' ).on( 'click', 'button.plus, button.minus', function() { // поле с количеством имеет класс .qty
-		$( '[name="update_cart"]' ).trigger( 'click' );
-	} );
+// 	$( 'body' ).on( 'click', 'button.plus, button.minus', function() { // поле с количеством имеет класс .qty
+// 		$( '[name="update_cart"]' ).trigger( 'click' );
+// 	} );
  
-} );
+// } );
