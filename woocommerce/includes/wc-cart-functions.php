@@ -45,7 +45,7 @@ function my_get_cart_amount () {
 // // изменяем кнопку "в корзину" после добавления товара в корзину
 
 
-//add_filter( 'woocommerce_product_single_add_to_cart_text', 'truemisha_single_product_btn_text' ); // текст для страницы самого товара
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'truemisha_single_product_btn_text' ); // текст для страницы самого товара
  
 function truemisha_single_product_btn_text( $text ) {
 	if( WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( get_the_ID() ) ) ) {
@@ -56,7 +56,7 @@ function truemisha_single_product_btn_text( $text ) {
 }
  
 
-//add_filter( 'woocommerce_product_add_to_cart_text', 'truemisha_product_btn_text', 20, 2 ); //текст для страниц каталога товаров, категорий товаров и т д
+add_filter( 'woocommerce_product_add_to_cart_text', 'truemisha_product_btn_text', 20, 2 ); //текст для страниц каталога товаров, категорий товаров и т д
  
 function truemisha_product_btn_text( $text, $product ) {
 	if( 
@@ -90,9 +90,9 @@ function ajax_button_text_js_script() {
 					var buttonContent = '<span class="jet-woo-button-content"> <span class="button-label">'+text+'</span> <span class="button-icon"> '+svg+'</span> </span>'
 					var buttonText = '<span class="button-label">'+text+'</span>';
 					var buttonIcon = '<span class="button-icon"> '+svg+'</span>';
-					console.log ($this)
+					//console.log ($this)
 					//$this.html(buttonText).attr('data-tip',text);
-					$this.html(buttonContent);
+					$this.html(buttonText);
 				});
 			});
 		</script>
