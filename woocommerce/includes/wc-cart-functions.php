@@ -42,16 +42,17 @@ function cart_refresh_update_qty() {
 		   });
 	</script>
 	   <?php
+	   WC_AJAX::get_refreshed_fragments();
 	}
 }
 
 // FOR DEV
 
-// add_action('woocommerce_before_cart','my_get_cart_amount',40);
+add_action('woocommerce_before_cart','my_get_cart_amount',40);
 
-// function my_get_cart_amount () {
-// 	echo wp_kses_data(WC()->cart->get_cart_contents_count());
-// };
+function my_get_cart_amount () {
+	echo wp_kses_data(WC()->cart->get_cart_contents_count());
+};
 
 // доп функции для корзины
 
