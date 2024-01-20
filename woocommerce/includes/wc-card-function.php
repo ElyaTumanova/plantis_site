@@ -212,7 +212,7 @@ function plnt_cross_sells_heading() {
 
 // ссылка "назад" для карточки товара
 
-add_action('woocommerce_before_main_content','plnt_category_link',25);
+add_action('woocommerce_before_single_product','plnt_category_link',25);
 
 function plnt_category_link () {
     global $plants_cat_id;
