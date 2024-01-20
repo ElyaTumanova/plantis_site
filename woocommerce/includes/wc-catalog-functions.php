@@ -171,3 +171,50 @@ class iWC_Orderby_Stock_Status
 }
  
 new iWC_Orderby_Stock_Status;
+
+
+// // варианты сортировки товаров
+
+add_filter( 'woocommerce_catalog_orderby', 'truemisha_remove_orderby_options' );
+ 
+function truemisha_remove_orderby_options( $sortby ) {
+ 
+	unset( $sortby[ 'popularity' ] ); // по популярности
+	unset( $sortby[ 'date' ] ); // Сортировка по более позднему
+	unset( $sortby[ 'price' ] ); // Цены: по возрастанию
+	unset( $sortby[ 'price-desc' ] ); // Цены: по убыванию
+ 
+	return $sortby;
+ 
+}
+add_filter( 'woocommerce_get_catalog_ordering_args', 'custom_woocommerce_get_catalog_ordering_args' );
+
+function custom_woocommerce_get_catalog_ordering_args( $args ) {
+$orderby_value = isset( $_GET['orderby'] ) ? woocommerce_clean( $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
+
+if ( 'name_list_asc' == $orderby_value ) {
+$args['orderby'] = 'name';
+$args['order'] = 'ASC';
+$args['meta_key'] = '';
+}
+
+if ( 'name_list_desc' == $orderby_value ) {
+$args['orderby'] = 'name';
+$args['order'] = 'DESC';
+$args['meta_key'] = '';
+}
+
+return $args;
+}
+
+add_filter( 'woocommerce_catalog_orderby', 'truemisha_custom_orderby_option' );
+ 
+function truemisha_custom_orderby_option( $sortby ) {
+	$sortby['date'] = 'По новизне';
+	$sortby['popularity'] = 'По популярности';
+	$sortby['price-desc'] = 'По уменьшению цены';
+	$sortby['price'] = 'По увеличению цены';
+	$sortby['name_list_asc'] = 'По названию от А до Я';
+	$sortby['name_list_desc'] = 'По названию от Я до А';
+	return $sortby;
+}
