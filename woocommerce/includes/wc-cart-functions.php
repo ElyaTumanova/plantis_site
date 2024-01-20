@@ -32,7 +32,7 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_f
 // доп функции для корзины
 
 // // автообновление корзины без перезагрузки
- add_action( 'wp_footer', 'cart_refresh_update_qty', 100 );
+ //add_action( 'wp_footer', 'cart_refresh_update_qty', 100 );
 
  function cart_refresh_update_qty() {
 	if ( is_cart() ) {
@@ -43,12 +43,6 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_f
 					jQuery('[name="update_cart"]').trigger('click');
 				}, 100 );
 			});
-
-			jQuery('div.woocommerce').on( 'click', '.plus, .minus', function() {
-			// делаем всё, что нужно сделать, меняем количество в полях
-			input.val( quantity ).change();
-			$( '[name="update_cart"]' ).trigger( 'click' );
-			} );
 		</script>
 	<?php
 	}
