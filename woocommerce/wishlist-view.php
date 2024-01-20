@@ -119,7 +119,7 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 					 *
 					 * @return string
 					 */
-					echo esc_html( apply_filters( 'yith_wcwl_wishlist_view_price_heading', __( 'Unit price', 'yith-woocommerce-wishlist' ), $wishlist ) );
+					echo esc_html( apply_filters( 'yith_wcwl_wishlist_view_price_heading', __( 'Unit price lalalala', 'yith-woocommerce-wishlist' ), $wishlist ) );
 					?>
 				</span>
 			</th>
@@ -496,11 +496,7 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 							?>
                             <!-- modified for plantis theme -->
 							<?php if ( $show_add_to_cart && $item->is_purchasable() ) : ?>     
-								<?php 
-                                    echo '<pre>';
-                                    print_r( $show_add_to_cart );
-                                    echo '</pre>';
-                                    woocommerce_template_loop_add_to_cart( array( 'quantity' => $show_quantity ? $item->get_quantity() : 1 ) ); ?>
+								<?php woocommerce_template_loop_add_to_cart( array( 'quantity' => $show_quantity ? $item->get_quantity() : 1 ) ); ?>
 							<?php endif ?>
 
 							<?php
