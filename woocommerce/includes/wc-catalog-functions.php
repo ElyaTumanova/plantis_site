@@ -165,7 +165,7 @@ add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_
 
 add_filter('woocommerce_product_add_to_cart_text','plnt_change_add_to_cart_text');
 
-function plnt_change_add_to_cart_text($text, $this) {
+function plnt_change_add_to_cart_text($text) {
 	$text = $this->is_purchasable() && $this->is_in_stock() ? __( 'Add to cart', 'woocommerce' ) : __( 'Заказать', 'woocommerce' );
 
 	return $text;
