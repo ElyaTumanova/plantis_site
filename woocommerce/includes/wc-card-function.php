@@ -244,6 +244,6 @@ function plnt_category_link () {
 			}
 	}	
 	echo '
-	<span> &#10095;</span>
+	<span>&#10094; </span>
 	<a href="' . $link . '">'.$text.'</a>';
 }
