@@ -52,6 +52,22 @@ function plnt_catalog_filters_main_area() {
     <?php 	
 };
 
+// // заголовок каталога
+remove_action('woocommerce_single_product_summary','woocommerce_template_single_title',5);
+add_action('woocommerce_single_product_summary','plnt_template_single_title',5);
+
+function plnt_template_single_title() {
+	$archive_title = get_the_archive_title();
+	if ( is_paged() ) {
+		$pageNum = get_query_var('paged');
+	echo '<h1 class="my_header__title_paged">'.$archive_title," - Страница ", $pageNum."</h1>";}
+	
+	else {
+		echo '<h1 class="my_header__title">'.$archive_title."</h1>";
+	}
+}
+
+
 //оформление карточки товара в каталоге
 
 // // перенос ссылки на фото
