@@ -222,13 +222,16 @@ add_filter( 'woocommerce_product_query_meta_query', 'shop_only_instock_products'
 
 function shop_only_instock_products( $meta_query, $query ) {
 // Only on shop archive pages
-if( is_admin() || is_search() || ! is_shop() ) return $meta_query;
-	$meta_query[] = array(
-		'key' => '_stock_status',
-		'value' => 'outofstock',
-		'compare' => '!='
-		);
-	return $meta_query;
+	if( is_admin() || is_search() || ! is_shop() ) {
+		$meta_query[] = array(
+			'key' => '_stock_status',
+			'value' => 'outofstock',
+			'compare' => '!='
+			);
+		return $meta_query;
+	} else {
+		return $meta_query;
+	}
 }
 
 
