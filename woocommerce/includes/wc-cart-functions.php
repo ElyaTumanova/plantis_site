@@ -32,13 +32,13 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_f
 
 // FOR DEV
 
-add_action('woocommerce_before_cart','my_get_cart_amount',40);
+// add_action('woocommerce_before_cart','my_get_cart_amount',40);
 
-function my_get_cart_amount () {
-	?>
-	<a class="header-cart__link"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></a>
-	<?php
-};
+// function my_get_cart_amount () {
+// 	?>
+// 	<a class="header-cart__link"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></a>
+// 	<?php
+// };
 
 // доп функции для корзины
 
