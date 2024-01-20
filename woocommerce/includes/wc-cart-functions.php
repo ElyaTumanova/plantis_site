@@ -39,8 +39,8 @@ function cart_refresh_update_qty() {
 			   setTimeout(function() {
 				   jQuery('[name="update_cart"]').removeAttr("disabled").trigger('click');
 			   }, 100 );
+			   <?php WC_AJAX::get_refreshed_fragments();?>
 		   });
-		   <?php WC_AJAX::get_refreshed_fragments();?>
 	</script>
 	   <?php
 	   
