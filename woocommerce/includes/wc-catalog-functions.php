@@ -216,6 +216,34 @@ class iWC_Orderby_Stock_Status
 new iWC_Orderby_Stock_Status;
 
 
+// // скрываем товары не в наличии для определенных страниц и категорий 
+
+add_filter( 'pre_get_posts', 'truemisha_show_in_stock_only', 25 );
+
+function truemisha_show_in_stock_only( $query ) {
+	global $plants_cat_id;
+ 
+	if(
+		! is_admin()
+		&& $query->is_main_query()
+		&& (is_shop() || !is_product_category($plants_cat_id))
+	) {
+ 
+		$query->set( 
+			'meta_query', 
+			array( 
+				array(
+					'key'       => '_stock_status',
+					'value'     => 'outofstock',
+					'compare'   => 'NOT IN'
+				)
+			)
+		);
+	}
+ 
+}
+
+
 // // варианты сортировки товаров
 
 add_filter( 'woocommerce_catalog_orderby', 'truemisha_remove_orderby_options' );

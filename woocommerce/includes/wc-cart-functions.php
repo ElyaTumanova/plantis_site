@@ -79,7 +79,7 @@ function ajax_button_text_js_script() {
 		?>;
 	   <script>
 		  jQuery(function($) {
-			   var text = '<?php echo $text; ?>',      $this;
+			    var text = '<?php echo $text; ?>',      $this;
 				var svg = '<?php echo $svg; ?>',      $this;
 				$(document.body).on('click', '.ajax_add_to_cart', function(event){
 					$this = $(this); 
