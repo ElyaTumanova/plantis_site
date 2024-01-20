@@ -109,7 +109,7 @@ add_action('woocommerce_before_shop_loop_item_title','plnt_catalog_gallery', 10)
 
 function plnt_catalog_gallery() {
 
-	if (is_shop() || is_category() ||is_tag()) {
+	if (is_shop() || is_product_category() || is_product_tag()) {
 		global $product;
 		$image = $product->get_image();	
 		$attachment_ids = $product->get_gallery_attachment_ids();
