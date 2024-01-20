@@ -54,7 +54,7 @@ function plnt_catalog_filters_main_area() {
 
 // // заголовок каталога
 
-// // // Option 1
+// // // Option 1 - изменяем текст заголовка в функции woocommerce_page_title
 
 //add_filter( 'woocommerce_page_title', 'plnt_woocommerce_page_title');
 
@@ -71,7 +71,7 @@ function plnt_catalog_filters_main_area() {
 // 	}
 // }
 
-// // // Option 2
+// // // Option 2 - отменяем вывод заголовка через хук woocommerce_show_page_title
 add_filter( 'woocommerce_show_page_title', 'wp_kama_woocommerce_show_page_title_filter' );
 
 function wp_kama_woocommerce_show_page_title_filter( $true ){
@@ -80,7 +80,20 @@ function wp_kama_woocommerce_show_page_title_filter( $true ){
 	return $false;
 }
 
+// выводим новый заголовок
 
+add_action('woocommerce_archive_description','plnt_page_title');
+
+function my_cat_title () {
+	if ( is_paged() ) {
+		$pageNum = get_query_var('paged');
+	echo '<h1 class="my_header__title_paged">'.$page_title," - Страница ", $pageNum."</h1>";}
+	
+	else {
+		echo '<h1 class="my_header__title">'.$page_title."</h1>";
+	}
+
+}
 
 //оформление карточки товара в каталоге
 
