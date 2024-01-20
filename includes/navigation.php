@@ -153,3 +153,64 @@ function filter_nav_menu_submenu_css_class_catalog( $classes, $args, $depth ) {
 
 	return $classes;
 }
+
+
+// доп функции для вывода меню
+
+// // убираем пустые категории из меню
+function nav_remove_empty_category_menu_item ( $items, $menu) {
+
+    if ( ! is_admin() ) {
+        
+        $args = array(
+        'hide_empty' => false,
+        'hierarchical' => true,
+    );
+
+    $product_categories = get_terms( 'product_cat', $args );
+
+    $exclude = array();
+    foreach ( $product_categories as $category ) {
+
+        $posts         = get_posts( array( 'post_type' => 'product', 'posts_per_page' => -1, 'product_cat' => $category->slug, 'fields' => 'ids' ) );
+        $show_category = false;
+
+        foreach ( $posts as $post ) {
+
+            $product         = new wC_Product( $post );
+            $visible_product = $product->get_stock_status() == 'instock';
+
+            if ( true === $visible_product ) {
+                $show_category = true;
+                break;
+            }
+
+        }
+
+        if ( false === $show_category ) {
+            $exclude[] = $category->term_id;
+        }
+
+    }
+
+        global $wpdb;
+
+        $nopost = $wpdb->get_col( "SELECT term_taxonomy_id FROM $wpdb->term_taxonomy WHERE count = 0" );
+
+        foreach ( $items as $key => $item ) {
+
+            if ( ( 'taxonomy' == $item->type ) && ( in_array( $item->object_id, $exclude ) ) ) {
+
+                unset( $items[$key] );
+
+            }
+
+        }
+
+    }
+
+    return $items;
+
+}
+
+add_filter( 'wp_get_nav_menu_items', 'nav_remove_empty_category_menu_item', 10, 3 );
