@@ -163,10 +163,15 @@ function plnt_wish_list_btn_catalog() {
 remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
 add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_add_to_cart', 30);
 
+// // меняем текст кнопки в корзину, если товар не в наличии
+
 add_filter('woocommerce_product_add_to_cart_text','plnt_change_add_to_cart_text');
 
 function plnt_change_add_to_cart_text($text) {
-	$text = $this->is_purchasable() && $this->is_in_stock() ? __( 'Add to cart', 'woocommerce' ) : __( 'Заказать', 'woocommerce' );
+	global $product;
+	if ($product->!is_in_stock()) {
+		$text = __( 'Заказать', 'woocommerce' );
+	}
 
 	return $text;
 }
