@@ -238,9 +238,9 @@ function plnt_category_link () {
 				$text = 'Каталог кашпо Treez';
 				break;
 			default:
-				break;
 				$link = get_permalink( wc_get_page_id( 'shop' ) );
 				$text = 'Каталог товаров';
+                break;
 			}
 	}	
 	echo '
