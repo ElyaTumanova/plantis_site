@@ -29,6 +29,8 @@ function plnt_woocommerce_cart_header_fragment( $fragments ) {
 
 add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_fragment', 25 );
 
+// for dev
+
 add_action('woocommerce_before_cart','my_get_cart_amount',40);
 
 function my_get_cart_amount () {
