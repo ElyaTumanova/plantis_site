@@ -85,12 +85,13 @@ function wp_kama_woocommerce_show_page_title_filter( $true ){
 add_action('woocommerce_archive_description','plnt_page_title');
 
 function plnt_page_title () {
+	$archive_title = get_the_archive_title();
 	if ( is_paged() ) {
 		$pageNum = get_query_var('paged');
-	echo '<h1 class="my_header__title_paged">'.$page_title," - Страница ", $pageNum."</h1>";}
+	echo '<h1 class="my_header__title_paged">'.$archive_title," - Страница ", $pageNum."</h1>";}
 	
 	else {
-		echo '<h1 class="my_header__title">'.$page_title."</h1>";
+		echo '<h1 class="my_header__title">'.$archive_title."</h1>";
 	}
 
 }
