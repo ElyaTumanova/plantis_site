@@ -24,7 +24,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<li <?php wc_product_class( '', $product ); ?> data-id="'<?php $product->get_id(); ?>'">
+<li <?php wc_product_class( '', $product ); ?> data-id="<?php $product->get_id(); ?>">
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
