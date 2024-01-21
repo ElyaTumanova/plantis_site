@@ -105,13 +105,13 @@ function plnt_price_wrap(){
 
 // add_action('woocommerce_after_single_product_summary', 'plnt_wish_wrap', 20);
 
-// function plnt_wish_wrap(){
-//     global $product;
-//     $id = $product->get_id();
-//     echo '
-//     <div class="br_wish_wait_block br_wish_wait_'. $id .'" data-id='. $id .'><span class="br_ww_button br_wish_button br_wish_add button" data-type="wish" href="#add_to_wish_list"><i class="fa fa-heart-o"></i></span></div>
-//     ';
-// };
+function plnt_wish_wrap(){
+    global $product;
+    $id = $product->get_id();
+    echo '
+    <div class="br_wish_wait_block br_wish_wait_'. $id .'" data-id='. $id .'><span class="br_ww_button br_wish_button br_wish_add button" data-type="wish" href="#add_to_wish_list"><i class="fa fa-heart-o"></i></span></div>
+    ';
+};
 
 //кнопки изменения количества
 add_action( 'woocommerce_before_quantity_input_field', 'truemisha_quantity_minus', 25 );
