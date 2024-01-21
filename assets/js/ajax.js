@@ -47,7 +47,7 @@ window.paceOptions = {
                   if(pageNum <= max && !$(this).hasClass('loading')) {
                       $(this).html('<i class="fa fa-spinner fa-pulse"></i>'+mts_ajax_loadposts.i18n_loading).addClass('loading');
   
-                      $('.more-page-'+ pageNum).load(nextLink + '.product', function() {
+                      $('.more-page-'+ pageNum).load(nextLink + ' .product', function() {
                           // Update page number and nextLink.
                           pageNum++;
                           var new_url = nextLink;
