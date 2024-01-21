@@ -100,7 +100,7 @@ function plnt_price_wrap(){
     <?php 
 };
 
-add_action('woocommerce_after_single_product_summary', 'plnt_wish_wrap', 20);
+//add_action('woocommerce_after_single_product_summary', 'plnt_wish_wrap', 20);
 
 function plnt_wish_wrap(){
     ?>
