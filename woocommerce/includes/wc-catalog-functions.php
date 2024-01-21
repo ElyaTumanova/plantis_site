@@ -250,7 +250,7 @@ function plnt_add_remove_link_wishlist() {
 	}
 }
 
-add_action('woocommerce_shop_loop','plnt_wishlist_count');
+add_action('woocommerce_shop_loop','plnt_wishlist_count',10);
 
 function plnt_wishlist_count() {
 	if(is_page('wishlist')){	
