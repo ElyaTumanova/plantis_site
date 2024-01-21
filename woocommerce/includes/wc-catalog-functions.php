@@ -40,6 +40,10 @@ function plnt_catalog_grid_end() {
     <?php 
 };
 
+add_action('woocommerce_after_shop_loop','the_posts_pagination', 10);
+
+
+
 // // вывод фильтров
 add_action('woocommerce_before_shop_loop','plnt_catalog_filters_main_area', 20);
 
