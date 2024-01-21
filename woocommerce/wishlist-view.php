@@ -495,9 +495,8 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 							$show_add_to_cart = apply_filters( 'yith_wcwl_table_product_show_add_to_cart', $show_add_to_cart, $item, $wishlist );
 							?>
                             <!-- modified for plantis theme -->
-							<?php if ( $show_add_to_cart && $item->is_purchasable() ) : ?>
-                                <?php echo do_shortcode('[add_to_cart id="5312"]') ?>     
-								<?php woocommerce_template_loop_add_to_cart( array( 'quantity' => $show_quantity ? $item->get_quantity() : 1 ) ); ?>
+							<?php if ( $show_add_to_cart && $item->is_purchasable() ) : ?> 
+								<?php woocommerce_template_loop_add_to_cart(); ?>
 							<?php endif ?>
 
 							<?php
