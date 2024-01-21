@@ -499,7 +499,10 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 								<?php woocommerce_template_loop_add_to_cart( array( 'quantity' => $show_quantity ? $item->get_quantity() : 1 ) ); ?>
                                 <?php echo '<pre>';
                                 print_r( $item->get_stock_status() );
-                                echo '</pre>';?>
+                                echo '</pre>';
+                                
+                                echo apply_filters( 'woocommerce_loop_add_to_cart_args', wp_parse_args( $args, $defaults ), $product );
+                                ?>
 							<?php endif ?>
 
 							<?php
