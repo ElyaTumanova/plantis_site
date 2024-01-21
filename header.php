@@ -54,7 +54,7 @@
 			</div><!-- .description -->
 			<div class="header__wrap">
 				<div class="header__wishlist">
-					<?php echo do_shortcode('[yith_wcwl_items_count]') ?>
+					<?php echo count(get_user_meta(get_current_user_id(), 'berocket_wish', true)); ?>
 				</div>
 				<div class="header__account">
 					<?php $account_icon = carbon_get_theme_option('account_icon')?>
