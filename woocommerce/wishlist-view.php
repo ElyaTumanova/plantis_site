@@ -496,7 +496,7 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 							?>
                             <!-- modified for plantis theme -->
 							<?php if ( $show_add_to_cart && $item->is_purchasable() ) : ?>
-                                <?php echo do_shortcode('[add_to_cart id="5445"]') ?>     
+                                <?php echo do_shortcode('[add_to_cart id="5312"]') ?>     
 								<?php woocommerce_template_loop_add_to_cart( array( 'quantity' => $show_quantity ? $item->get_quantity() : 1 ) ); ?>
 							<?php endif ?>
 
