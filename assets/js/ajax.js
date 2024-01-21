@@ -38,7 +38,8 @@ jQuery(document).ready(function ($) {
 
     // Insert the "Load More Posts" link.
     $('.pagination')
-        .before('<div class="more-page-' + pageNum + '"></div>')
+        // .before('<div class="more-page-' + pageNum + '"></div>')
+        .before(woocommerce_product_loop_start() + woocommerce_product_loop_end())
         .after('<div id="load-posts"><a href="#"><i class="fa fa-spinner"></i>' + mts_ajax_loadposts.i18n_loadmore + '</a></div>');
     if (pageNum == max + 1) {
         $('#load-posts a').html('<i class="fa fa-ban"></i>' + mts_ajax_loadposts.i18n_nomore).addClass('disabled');
