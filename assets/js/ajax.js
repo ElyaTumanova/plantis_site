@@ -47,7 +47,7 @@ window.paceOptions = {
                   if(pageNum <= max && !$(this).hasClass('loading')) {
                       $(this).html('<i class="fa fa-spinner fa-pulse"></i>'+mts_ajax_loadposts.i18n_loading).addClass('loading');
   
-                      $('.more-page more-page-'+ pageNum).load(nextLink + ' .product', function() {
+                      $('.more-page-'+ pageNum).load(nextLink + ' .product', function() {
                           // Update page number and nextLink.
                           pageNum++;
                           var new_url = nextLink;
@@ -55,7 +55,7 @@ window.paceOptions = {
                           nextLink = nextLink.replace(/(\/?)page(\/|d=)[0-9]+/, '$1page$2'+ pageNum);
   
                           // Add a new placeholder, for when user clicks again.
-                          $('#load-posts').before('<div class="more-page more-page-'+ pageNum +'"></div>');
+                          $('#load-posts').before('<div class="more-page-'+ pageNum +'"></div>');
   
                           if(pageNum <= max) {
                               $('#load-posts a').html('<i class="fa fa-spinner"></i>'+mts_ajax_loadposts.i18n_loadmore).removeClass('loading');
