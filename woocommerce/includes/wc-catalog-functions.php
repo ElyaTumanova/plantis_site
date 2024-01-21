@@ -183,7 +183,7 @@ function plnt_woocommerce_loop_add_to_cart_args_outofstock( $args, $product ){
 	if ($product->is_in_stock()) {
 		return $args;
 	} else {
-		$args['class'] = 'product_out_of_stock';
+		$args['class'] .= 'product_out_of_stock';
 		return $args;
 	}
 };
