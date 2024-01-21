@@ -102,11 +102,11 @@ function plnt_price_wrap(){
 
 // wish list button
 
-add_action('woocommerce_after_add_to_cart_button', 'plnt_card_wishlist_btn', 10);
+//add_action('woocommerce_after_add_to_cart_button', 'plnt_card_wishlist_btn', 10);
 
-function plnt_card_wishlist_btn() {
-    get_wish_button();
-};
+// function plnt_card_wishlist_btn() {
+//     get_wish_button();
+// };
 
 
 // function plnt_card_wishlist_btn() {
