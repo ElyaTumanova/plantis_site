@@ -57,8 +57,6 @@ function plnt_catalog_grid_end() {
     <?php 
 };
 
-add_action('woocommerce_after_shop_loop','the_posts_pagination', 10);
-
 // // меняем пагинацию на стандартную вордпресс
 // remove_action('woocommerce_after_shop_loop','woocommerce_pagination', 10);
 // add_action('woocommerce_after_shop_loop','the_posts_pagination', 10);
