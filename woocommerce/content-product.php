@@ -27,7 +27,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 }
 $id = $product->get_id();
 if(is_page('wishlist')){
-	global $wish_product_count = wc_get_loop_prop( 'total' );
+	$wish_product_count = wc_get_loop_prop( 'total' );
 }
 ?>
 <li <?php wc_product_class( '', $product ); ?> data-id="<?php echo $id; ?>"> 
