@@ -308,5 +308,10 @@ function truemisha_custom_orderby_option( $sortby ) {
 add_action('my_wish_action','my_wish_action_func');
 
 function my_wish_action_func() {
-	echo '<div>hello</div>';
+	?>
+    <div>
+		hello
+    </div>
+    <?php 
+	
 };
