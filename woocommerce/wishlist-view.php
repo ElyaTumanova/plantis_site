@@ -213,7 +213,7 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 
 	<tbody class="wishlist-items-wrapper">
 	<?php                            
-    add_filter( 'woocommerce_product_add_to_cart_text', 'plnt_wishlist_btn_text', 20, 2 );
+    add_filter( 'woocommerce_product_add_to_cart_text', 'plnt_wishlist_btn_text', 20, 2 ); // modified for plantis theme
     function plnt_wishlist_btn_text( $text, $product ) {
         global $product;
         if ($product->is_in_stock()) {

@@ -177,6 +177,7 @@ function plnt_change_add_to_cart_text($text) {
 	}
 }
 
+// // добавляем класс для кнопки в корзину, если товар не в наличии
 add_filter( 'woocommerce_loop_add_to_cart_args', 'plnt_woocommerce_loop_add_to_cart_args_outofstock', 10, 2 );
 
 function plnt_woocommerce_loop_add_to_cart_args_outofstock( $args, $product ){
@@ -313,17 +314,3 @@ function truemisha_custom_orderby_option( $sortby ) {
 	$sortby['name_list_desc'] = 'По названию от Я до А';
 	return $sortby;
 }
-
-
-//FOR DEV
-//add_action('my_wish_action','my_wish_action_func');
-
-function my_wish_action_func() {
-	?>
-    <div>
-		hello
-		<?php echo do_shortcode('[add_to_cart_url id="5445"]') ?>
-    </div>
-    <?php 
-	
-};
