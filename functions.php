@@ -50,10 +50,10 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 // 	}
 // }
 
-function plnt_check_wishlist() {
-	global $wish_product_count;
-	echo $wish_product_count;
-}
+// function plnt_check_wishlist() {
+// 	global $wish_product_count;
+// 	echo $wish_product_count;
+// }
 
 
- add_action( 'wp_footer', 'plnt_check_wishlist' );
+//  add_action( 'wp_footer', 'plnt_check_wishlist' );

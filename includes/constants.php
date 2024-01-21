@@ -9,8 +9,3 @@ $gorshki_cat_id = 86;
 $treez_cat_id = 802;
 
 $tags_exeptions = array(66,106);
-
-
-if(is_page('wishlist')){
-	$wish_product_count = wc_get_loop_prop( 'total' );
-}
