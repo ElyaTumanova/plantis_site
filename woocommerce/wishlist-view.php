@@ -499,8 +499,8 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 								<?php woocommerce_template_loop_add_to_cart( array( 'quantity' => $show_quantity ? $item->get_quantity() : 1 ) ); ?>
                                 <?php echo '<pre>';
                                 print_r( $item->get_stock_status() );
-                                print_r( add_to_cart_url() );
-                                print_r( add_to_cart_text() );
+                                print_r( $item->add_to_cart_url() );
+                                print_r( $item->add_to_cart_text() );
                                 echo '</pre>';
                                 
                                 ?>
