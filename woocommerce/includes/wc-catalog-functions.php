@@ -223,7 +223,7 @@ function plnt_get_product_tags() {
 		foreach($tags as $tag) {
 			if (!in_array($tag, $tags_exeptions, true)) {
 				echo '<a class=catalog__tag-link href="'.get_tag_link(get_term($tag)->term_taxonomy_id).'">
-					<span class=catalog__tag>'.get_term($tag)->name.' </span>
+					<span class=catalog__tag>'.get_term($tag)->name.'</span>
 				</a>';
 			}
 		}
@@ -232,7 +232,7 @@ function plnt_get_product_tags() {
 }
 
 
-add_filter( 'post_class', 'estore_add_class_loop_item' );
+add_filter('post_class', 'estore_add_class_loop_item');
 function estore_add_class_loop_item($clasess){
 	if(is_page('wishlist')){
 		$clasess[] .= 'berocket_ww_product';
