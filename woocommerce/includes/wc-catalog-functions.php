@@ -265,7 +265,7 @@ new iWC_Orderby_Stock_Status;
 
 // // скрываем товары не в наличии для определенных страниц и категорий 
 
-add_filter( 'woocommerce_product_query_meta_query', 'shop_only_instock_products', 10, 2 );
+//add_filter( 'woocommerce_product_query_meta_query', 'shop_only_instock_products', 10, 2 );
 
 function shop_only_instock_products( $meta_query, $query ) {
 	global $plants_cat_id;
