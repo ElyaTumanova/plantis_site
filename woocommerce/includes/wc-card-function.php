@@ -100,14 +100,6 @@ function plnt_price_wrap(){
     <?php 
 };
 
-// wish list button
-
-add_action('woocommerce_after_add_to_cart_button', 'plnt_card_wishlist_btn', 10);
-
-function plnt_card_wishlist_btn() {
-    echo do_shortcode('[yith_wcwl_add_to_wishlist]');
-};
-
 
 //кнопки изменения количества
 add_action( 'woocommerce_before_quantity_input_field', 'truemisha_quantity_minus', 25 );
