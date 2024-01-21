@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // // убираем лишнее
 remove_action('woocommerce_archive_description','woocommerce_taxonomy_archive_description',10);
-remove_action('woocommerce_before_shop_loop','woocommerce_result_count',20);
+//remove_action('woocommerce_before_shop_loop','woocommerce_result_count',20);
 
 // // структура каталога
 

@@ -50,9 +50,9 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 // 	}
 // }
 
-function plnt_check_wishlist() {
-	echo get_user_meta(get_current_user_id(), 'berocket_wish', true);
-}
+// function plnt_check_wishlist() {
+// 	echo get_user_meta(get_current_user_id(), 'berocket_wish', true);
+// }
 
 
-add_action( 'wp_footer', 'plnt_check_wishlist' );
+// add_action( 'wp_footer', 'plnt_check_wishlist' );
