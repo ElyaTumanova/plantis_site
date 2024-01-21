@@ -126,7 +126,7 @@ function plnt_catalog_gallery() {
 		echo '</div>';
 
 		?>
-		<script>
+		<!-- <script>
 			jQuery(function($){
 				$('.nivo-catalog-gallery').nivoSlider({
 					effect: 'slideInLeft',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
@@ -141,7 +141,7 @@ function plnt_catalog_gallery() {
 					randomStart: false,             // начинать со случайного слайда
 				});
 			});
-		</script>
+		</script> -->
 		<?php
 	} else {
 		woocommerce_template_loop_product_thumbnail();
