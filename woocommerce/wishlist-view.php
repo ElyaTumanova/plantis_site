@@ -500,14 +500,14 @@ if ( ! defined( 'YITH_WCWL' ) ) {
                                 if ($product->is_in_stock()) {
                                     add_filter( 'woocommerce_loop_add_to_cart_args', 'filter_woocommerce_loop_add_to_cart_args', 10, 2 );
                                     function filter_woocommerce_loop_add_to_cart_args( $args, $product ) {
-                                        $args['class'] = 'button add_to_cart alt';
+                                        $args['class'] = 'button product_type_simple add_to_cart_button ajax_add_to_cart';
                                         return $args;
                                     }
                                     woocommerce_template_loop_add_to_cart( array( 'quantity' => $show_quantity ? $item->get_quantity() : 1) ); 
                                 } else {
-                                    add_filter( 'woocommerce_loop_add_to_cart_args', 'filter_woocommerce_loop_add_to_cart_args', 10, 2 );
-                                    function filter_woocommerce_loop_add_to_cart_args( $args, $product ) {
-                                        $args['class'] = 'button alt';
+                                    add_filter( 'woocommerce_loop_add_to_cart_args', 'filter_woocommerce_loop_add_to_cart_args_2', 10, 2 );
+                                    function filter_woocommerce_loop_add_to_cart_args_2( $args, $product ) {
+                                        $args['class'] = 'button product_type_simple';
                                         return $args;
                                     }
                                     woocommerce_template_loop_add_to_cart( array( 'quantity' => $show_quantity ? $item->get_quantity() : 1 ) ); 
