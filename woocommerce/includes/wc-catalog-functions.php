@@ -311,7 +311,7 @@ function my_wish_action_func() {
 	?>
     <div>
 		hello
-		<?php echo do_shortcode('[add_to_cart_url id="5445"]') ?>
+		<?php echo do_shortcode('[add_to_cart id="5445"]') ?>
     </div>
     <?php 
 	
