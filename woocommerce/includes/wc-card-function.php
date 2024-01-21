@@ -92,14 +92,25 @@ add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 10);
 function plnt_price_wrap(){
     ?>
     <div class="card__price-wrap">
-    <?php
+        <?php
         woocommerce_template_single_price();
         woocommerce_template_single_add_to_cart();
-    ?>
+        ?>
     </div>
     <?php 
 };
 
+add_action('woocommerce_after_single_product_summary', 'plnt_wish_wrap', 20);
+
+function plnt_price_wrap(){
+    ?>
+    <div class="card__wish-wrap">
+        <?php
+        get_wish_button_wish();
+        ?>
+    </div>
+    <?php 
+};
 
 //кнопки изменения количества
 add_action( 'woocommerce_before_quantity_input_field', 'truemisha_quantity_minus', 25 );

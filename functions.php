@@ -40,14 +40,3 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	// require get_template_directory() . '/woocommerce/includes/wc-yith-wishlist-finctions.php';
 	// require get_template_directory() . '/woocommerce/includes/wc-pagination-functions.php';  //load more
 }
-
-function plnt_check_page() {
-	if ( is_shop() ) {
-		echo 'Это главная страница магазина!';
-	}
-	else {
-		echo 'Это какая-то другая страница.';
-	}
-}
-
-add_action( 'wp_footer', 'plnt_check_page' );
