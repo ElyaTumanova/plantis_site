@@ -36,6 +36,8 @@ if ( $upsells ) : ?>
 
 			<?php foreach ( $upsells as $upsell ) : ?>
 
+                <?php if ( ! $upsell->is_in_stock() && ! $upsell->backorders_allowed() ) : continue; endif; ?>
+
 				<?php
 				$post_object = get_post( $upsell->get_id() );
 
