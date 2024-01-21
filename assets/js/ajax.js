@@ -38,8 +38,7 @@ jQuery(document).ready(function ($) {
 
     // Insert the "Load More Posts" link.
     $('.pagination')
-        // .before('<div class="more-page-' + pageNum + '"></div>')
-        .before('<ul class="more-page-' + pageNum + ' products columns-2"></ul>')
+        .before('<div class="more-page more-page-' + pageNum + '"></div>')
         .after('<div id="load-posts"><a href="#"><i class="fa fa-spinner"></i>' + mts_ajax_loadposts.i18n_loadmore + '</a></div>');
     if (pageNum == max + 1) {
         $('#load-posts a').html('<i class="fa fa-ban"></i>' + mts_ajax_loadposts.i18n_nomore).addClass('disabled');
@@ -56,7 +55,7 @@ jQuery(document).ready(function ($) {
                 nextLink = nextLink.replace(/(\/?)page(\/|d=)[0-9]+/, '$1page$2' + pageNum);
 
                 // Add a new placeholder, for when user clicks again.
-                $('#load-posts').before('<div class="more-page-' + pageNum + '"></div>');
+                $('#load-posts').before('<div class="more-page more-page-' + pageNum + '"></div>');
 
                 if (pageNum <= max) {
                     $('#load-posts a').html('<i class="fa fa-spinner"></i>' + mts_ajax_loadposts.i18n_loadmore).removeClass('loading');
