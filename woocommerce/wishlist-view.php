@@ -498,7 +498,7 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 							<?php if ( $show_add_to_cart && $item->is_purchasable()  ) : ?> 
 								<?php woocommerce_template_loop_add_to_cart( array( 'quantity' => $show_quantity ? $item->get_quantity() : 1 ) ); ?>
                                 <?php echo '<pre>';
-                                print_r(apply_filters( 'woocommerce_loop_add_to_cart_args', wp_parse_args( $args, $defaults ), $product ); );
+                                print_r(apply_filters( 'woocommerce_loop_add_to_cart_args', wp_parse_args( $args, $defaults ), $product ));
                                 echo '</pre>';
                                 ?>
 							<?php endif ?>
