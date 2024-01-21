@@ -102,7 +102,7 @@ function plnt_price_wrap(){
 
 add_action('woocommerce_after_single_product_summary', 'plnt_wish_wrap', 20);
 
-function plnt_price_wrap(){
+function plnt_wish_wrap(){
     ?>
     <div class="card__wish-wrap">
         <?php
