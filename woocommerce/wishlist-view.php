@@ -500,7 +500,7 @@ if ( ! defined( 'YITH_WCWL' ) ) {
                                 if ($product->is_in_stock()) {
                                     woocommerce_template_loop_add_to_cart( array( 'quantity' => $show_quantity ? $item->get_quantity() : 1) ); 
                                 } else {
-                                    apply_filter( 'woocommerce_loop_add_to_cart_args', 'filter_woocommerce_loop_add_to_cart_args', 10, 2 );
+                                    apply_filters( 'woocommerce_loop_add_to_cart_args', 'filter_woocommerce_loop_add_to_cart_args', 10, 2 );
                                     function filter_woocommerce_loop_add_to_cart_args( $args, $product ) {
                                         $args['class'] = 'button product_type_simple';
                                         return $args;
