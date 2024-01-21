@@ -35,13 +35,11 @@ jQuery(document).ready(function ($) {
     var max = parseInt(mts_ajax_loadposts.maxPages);
     var nextLink = mts_ajax_loadposts.nextLink;
     var autoLoad = mts_ajax_loadposts.autoLoad;
-    var loop_start = woocommerce_product_loop_start();
-    var loop_end = woocommerce_product_loop_end();
-    console.log(loop_start);
 
     // Insert the "Load More Posts" link.
     $('.pagination')
-        .before('<div class="more-page-' + pageNum + '"></div>')
+        // .before('<div class="more-page-' + pageNum + '"></div>')
+        .before('<ul class="more-page-' + pageNum + ' products columns-2"></ul>')
         .after('<div id="load-posts"><a href="#"><i class="fa fa-spinner"></i>' + mts_ajax_loadposts.i18n_loadmore + '</a></div>');
     if (pageNum == max + 1) {
         $('#load-posts a').html('<i class="fa fa-ban"></i>' + mts_ajax_loadposts.i18n_nomore).addClass('disabled');
