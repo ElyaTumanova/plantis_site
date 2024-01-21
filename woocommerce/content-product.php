@@ -23,8 +23,9 @@ global $product;
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
+$id = $product->get_id();
 ?>
-<li <?php wc_product_class( '', $product ); ?> data-id="<?php $product->get_id(); ?>">
+<li <?php wc_product_class( '', $product ); ?> data-id="<?php echo $id; ?>">
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
