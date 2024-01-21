@@ -498,13 +498,12 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 							<?php if ( $show_add_to_cart && $item->is_purchasable()  ) : ?> 
 								<?php woocommerce_template_loop_add_to_cart( array( 'quantity' => $show_quantity ? $item->get_quantity() : 1 ) ); ?>
                                 <?php echo '<pre>';
-                                global $product;
-                                print_r( $item->get_stock_status() );
-                                print_r( $product->is_in_stock() );
-                                print_r( $product->add_to_cart_url() );
-                                print_r( $product->add_to_cart_text() );
-                                echo '</pre>';
-                                
+                                //global $product;
+                               // print_r( $item->get_stock_status() );
+                               // print_r( $product->is_in_stock() );
+                                //print_r( $product->add_to_cart_url() );
+                                //print_r( $product->add_to_cart_text() );
+                                //echo '</pre>';
                                 ?>
 							<?php endif ?>
 
