@@ -26,9 +26,9 @@
     grid-area: catalog;
 } */
 
-.woocommerce-pagination {
+/* .woocommerce-pagination {
     grid-area: pagination;
-}
+} */
 
 /* стили для сетки каталога */
 .catalog__grid 

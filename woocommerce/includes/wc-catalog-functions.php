@@ -126,8 +126,8 @@ add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_
 
 // // замена фото на слайдер
 
-//remove_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_product_thumbnail', 10);
-//add_action('woocommerce_before_shop_loop_item_title','plnt_catalog_gallery', 10);
+remove_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_product_thumbnail', 10);
+add_action('woocommerce_before_shop_loop_item_title','plnt_catalog_gallery', 10);
 
 function plnt_catalog_gallery() {
 
@@ -144,7 +144,7 @@ function plnt_catalog_gallery() {
 		echo '</div>';
 
 		?>
-		<!-- <script>
+		<script>
 			jQuery(function($){
 				$('.nivo-catalog-gallery').nivoSlider({
 					effect: 'slideInLeft',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
@@ -159,7 +159,7 @@ function plnt_catalog_gallery() {
 					randomStart: false,             // начинать со случайного слайда
 				});
 			});
-		</script> -->
+		</script>
 		<?php
 	} else {
 		woocommerce_template_loop_product_thumbnail();
