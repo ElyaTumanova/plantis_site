@@ -58,6 +58,8 @@ if ( woocommerce_product_loop() ) {
 
 	woocommerce_product_loop_start();
 
+	echo wc_get_loop_prop( 'total' );
+
 	if ( wc_get_loop_prop( 'total' ) ) {
 		while ( have_posts() ) {
 			the_post();
