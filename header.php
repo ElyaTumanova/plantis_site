@@ -53,6 +53,9 @@
 				<?php endif; ?>
 			</div><!-- .description -->
 			<div class="header__wrap">
+				<div class="header__wishlist">
+					<?php echo do_shortcode('[yith_wcwl_items_count]') ?>
+				</div>
 				<div class="header__account">
 					<?php $account_icon = carbon_get_theme_option('account_icon')?>
 					<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="header-btn__wrap">
