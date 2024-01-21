@@ -100,13 +100,15 @@ function plnt_price_wrap(){
     <?php 
 };
 
+//кнопка в избранное
+
 add_action('woocommerce_after_single_product_summary', 'plnt_wish_wrap', 20);
 
 function plnt_wish_wrap(){
     global $product;
     $id = $product->get_id();
     echo '
-    <div class="br_wish_wait_block br_wish_wait_5442" data-id='. $id .'><span class="br_ww_button br_wish_button br_wish_add button" data-type="wish" href="#add_to_wish_list"><i class="fa fa-heart-o"></i></span></div>
+    <div class="br_wish_wait_block br_wish_wait" data-id='. $id .'><span class="br_ww_button br_wish_button br_wish_add button" data-type="wish" href="#add_to_wish_list"><i class="fa fa-heart-o"></i></span></div>
     ';
 };
 
