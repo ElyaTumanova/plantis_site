@@ -269,7 +269,7 @@ add_filter( 'woocommerce_product_query_meta_query', 'shop_only_instock_products'
 
 function shop_only_instock_products( $meta_query, $query ) {
 	global $plants_cat_id;
-	if( is_shop() || !is_product_category($plants_cat_id) ) { 		//где хотим срыть товары не в наличии
+	if( is_shop() ) { 		//где хотим срыть товары не в наличии
 		$meta_query[] = array(
 			'key' => '_stock_status',
 			'value' => 'outofstock',
@@ -281,6 +281,7 @@ function shop_only_instock_products( $meta_query, $query ) {
 	}
 }
 
+//!is_product_category($plants_cat_id)
 
 // // варианты сортировки товаров в каталоге
 
