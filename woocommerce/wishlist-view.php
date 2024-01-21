@@ -497,14 +497,18 @@ if ( ! defined( 'YITH_WCWL' ) ) {
                             <!-- modified for plantis theme -->
 							<?php if ( $show_add_to_cart && $item->is_purchasable()  ) : ?> 
 								<?php woocommerce_template_loop_add_to_cart( array( 'quantity' => $show_quantity ? $item->get_quantity() : 1 ) ); ?>
-                                <?php echo '<pre>';
-                                //global $product;
-                               // print_r( $item->get_stock_status() );
-                               // print_r( $product->is_in_stock() );
-                                //print_r( $product->add_to_cart_url() );
-                                //print_r( $product->add_to_cart_text() );
-                                //echo '</pre>';
-                                ?>
+								<?php 
+                                
+                                add_filter( 'woocommerce_product_add_to_cart_text', 'plnt_wishlist_btn_text', 20, 2 );
+                                function plnt_wishlist_btn_text( $text, $product ) {
+                                    global $product;
+                                    if ($product->is_in_stock()) {
+                                        return $text;
+                                    } else {
+                                        $text = __( 'Заказать', 'woocommerce' );
+                                        return $text;
+                                    }
+                                } ?>
 							<?php endif ?>
 
 							<?php
