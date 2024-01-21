@@ -95,6 +95,7 @@ ul.products {
     min-width: 12vw;
     column-gap: 16px;
     row-gap: 16px;
+    list-style: none;
 }
 
 .catalog__grid .more-page li.product {
@@ -105,6 +106,9 @@ ul.products {
     position: relative;
 }
 
+.catalog__grid .more-page {
+    grid-area: catalog;
+}
 
 /* стили для карточки товара в каталоге */
 
