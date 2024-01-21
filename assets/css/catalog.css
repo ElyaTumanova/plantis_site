@@ -18,13 +18,17 @@
     grid-area: sorting;
 }
 
-.catalog__grid .products {
+.catalog__products-wrap {
     grid-area: catalog;
 }
 
-.woocommerce-pagination {
+/* .catalog__grid .products {
+    grid-area: catalog;
+} */
+
+/* .woocommerce-pagination {
     grid-area: pagination;
-}
+} */
 
 /* стили для сетки каталога */
 .catalog__grid 

@@ -34,18 +34,16 @@ add_action('woocommerce_before_shop_loop','plnt_catalog_products_wrap_start',40)
 
 function plnt_catalog_products_wrap_start() {
 	?>
-    <div class="catalog__products-wrap">
-		</div>
-		<?php 
+    	<div class="catalog__products-wrap">
+	<?php 
 };
 
 add_action('woocommerce_after_shop_loop','plnt_catalog_products_wrap_end',20);
 
 function plnt_catalog_products_wrap_end() {
 	?>
-    <div class="catalog__products-wrap">
 		</div>
-		<?php 
+	<?php 
 };
 
 
