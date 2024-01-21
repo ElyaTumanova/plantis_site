@@ -496,9 +496,18 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 							?>
                             <!-- modified for plantis theme -->
 							<?php if ( $show_add_to_cart && $item->is_purchasable()  ) : ?> 
-								<?php woocommerce_template_loop_add_to_cart( array( 'quantity' => $show_quantity ? $item->get_quantity() : 1 ) ); ?>
+								<?php 
+                                if ($product->is_in_stock()) {
+                                    woocommerce_template_loop_add_to_cart( array( 'quantity' => $show_quantity ? $item->get_quantity() : 1, 'class' => 'button add_to_cart alt' ) ); 
+                                } else {
+                                    woocommerce_template_loop_add_to_cart( array( 'quantity' => $show_quantity ? $item->get_quantity() : 1, 'class' => 'button alt' ) ); 
+                                }
+                                ?>
+                                    
+                                    
                                 <?php echo '<pre>';
-                                print_r(apply_filters( 'woocommerce_loop_add_to_cart_args', wp_parse_args( $args, $defaults ), $product ));
+                                print_r( $item->get_stock_status() );
+                                print_r( apply_filters( 'woocommerce_loop_add_to_cart_args', wp_parse_args( $args, $defaults ), $product ) );
                                 echo '</pre>';
                                 ?>
 							<?php endif ?>
