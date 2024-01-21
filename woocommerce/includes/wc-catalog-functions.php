@@ -232,6 +232,15 @@ function plnt_get_product_tags() {
 }
 
 
+add_filter( 'post_class', 'estore_add_class_loop_item' );
+function estore_add_class_loop_item($clasess){
+	if(is_shop() || is_product_taxonomy()){
+		$clasess[] .= 'my_class';
+	}
+	//get_pr($clasess, false);
+	return $clasess;
+}
+
 // функции для вывода товаров
 
 // // вывод товаров в каталоге с учетом наличия - instock products first 
