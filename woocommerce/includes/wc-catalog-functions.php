@@ -39,7 +39,7 @@ function plnt_catalog_products_wrap_start() {
 		<?php 
 };
 
-add_action('woocommerce_after_shop_loop','plnt_catalog_products_wrap_end',5);
+add_action('woocommerce_after_shop_loop','plnt_catalog_products_wrap_end',20);
 
 function plnt_catalog_products_wrap_end() {
 	?>
