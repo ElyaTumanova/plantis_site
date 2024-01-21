@@ -151,11 +151,11 @@ add_action('woocommerce_before_shop_loop_item_title','truemisha_sale_badge', 10)
 
 
 // // wish list button
-add_action('woocommerce_before_shop_loop_item_title','plnt_wish_list_btn_catalog', 20);
+// add_action('woocommerce_before_shop_loop_item_title','plnt_wish_list_btn_catalog', 20);
 
-function plnt_wish_list_btn_catalog() {
-	echo do_shortcode('[yith_wcwl_add_to_wishlist]');
-}
+// function plnt_wish_list_btn_catalog() {
+// 	echo do_shortcode('[yith_wcwl_add_to_wishlist]');
+// }
 
 
 // // перенос кнопки в корзину
@@ -302,3 +302,11 @@ function truemisha_custom_orderby_option( $sortby ) {
 	$sortby['name_list_desc'] = 'По названию от Я до А';
 	return $sortby;
 }
+
+
+
+add_action('my_wish_action','my_wish_action_func');
+
+function my_wish_action_func() {
+	echo '<div>hello</div>';
+};
