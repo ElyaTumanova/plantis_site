@@ -231,14 +231,23 @@ function plnt_get_product_tags() {
 	}
 }
 
-
-add_filter('post_class', 'estore_add_class_loop_item');
-function estore_add_class_loop_item($clasess){
+// // добавляем класс для wishlist
+add_filter('post_class', 'plnt_add_class_loop_item_wish');
+function plnt_add_class_loop_item_wish($clasess){
 	if(is_page('wishlist')){
 		$clasess[] .= 'berocket_ww_product';
 	}
 	//get_pr($clasess, false);
 	return $clasess;
+}
+
+add_action('woocommerce_before_shop_loop_item','plnt_add_remove_link_wishlist',5);
+function plnt_add_remove_link_wishlist() {
+	if(is_page('wishlist')){	
+		?>
+		<a class="berocket_ww_remove" href="#remove">&#10006;</a>
+		<?php 
+	}
 }
 
 // функции для вывода товаров
