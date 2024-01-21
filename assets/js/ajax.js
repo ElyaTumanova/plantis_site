@@ -37,7 +37,7 @@ window.paceOptions = {
           var autoLoad = mts_ajax_loadposts.autoLoad;
           
                  // Insert the "Load More Posts" link.
-              $('.pagination')
+              $('.woocommerce-pagination')
                   .before('<div class="more-page-'+ pageNum +'"></div>')
                   .after('<div id="load-posts"><a href="#"><i class="fa fa-spinner"></i>' + mts_ajax_loadposts.i18n_loadmore + '</a></div>');
               if (pageNum == max+1) {
@@ -70,7 +70,7 @@ window.paceOptions = {
   
                   return false;
               });
-             $('.pagination').remove();
+             $('.woocommerce-pagination').remove();
   
   var fnDelay = (function(){
     var timer = 0;
