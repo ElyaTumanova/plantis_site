@@ -26,9 +26,9 @@
     grid-area: catalog;
 } */
 
-/* .woocommerce-pagination {
+.woocommerce-pagination {
     grid-area: pagination;
-} */
+}
 
 /* стили для сетки каталога */
 .catalog__grid 
@@ -86,6 +86,28 @@ ul.products {
         box-sizing: border-box;
         position: relative;
     }
+}
+
+/* доп стили для классов load more */
+.catalog__grid .more-page {
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    word-break: break-word;
+    min-width: 12vw;
+    column-gap: 16px;
+    row-gap: 16px;
+    list-style: none;
+}
+
+.catalog__grid .more-page li.product {
+    width: calc(100% / 2 - 16px);
+}
+
+.woocommerce-loop-product__link {
+    position: relative;
 }
 
 /* стили для карточки товара в каталоге */
