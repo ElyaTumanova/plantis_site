@@ -250,6 +250,16 @@ function plnt_add_remove_link_wishlist() {
 	}
 }
 
+add_action('woocommerce_shop_loop','plnt_wishlist_count');
+
+function plnt_wishlist_count() {
+	if(is_page('wishlist')){	
+		?>
+		<div>hihi</div>
+		<?php 
+	}
+}
+
 // функции для вывода товаров
 
 // // вывод товаров в каталоге с учетом наличия - instock products first 
