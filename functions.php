@@ -51,4 +51,9 @@ function plnt_check_page() {
 }
 
 add_action( 'wp_footer', 'plnt_check_page' );
-add_action( 'wp_footer', echo 'hi' );
+add_action( 'wp_footer', 'my_function' );
+
+
+function my_function() {
+	echo 'hi';
+}
