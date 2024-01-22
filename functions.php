@@ -41,14 +41,14 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	// require get_template_directory() . '/woocommerce/includes/wc-pagination-functions.php';  //load more
 }
 
-// function plnt_check_page() {
-// 	if ( is_page('wishlist') ) {
-// 		echo 'Это wishlist!';
-// 	}
-// 	else {
-// 		echo 'Это какая-то другая страница.';
-// 	}
-// }
+function plnt_check_page() {
+	if ( is_product() ) {
+		echo 'Это продукт!';
+	}
+	else {
+		echo 'Это какая-то другая страница.';
+	}
+}
 
 // function plnt_check_wishlist() {
 // 	global $wish_product_count;
@@ -56,4 +56,4 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 // }
 
 
-//  add_action( 'wp_footer', 'plnt_check_wishlist' );
+ add_action( 'wp_footer', 'plnt_check_page' );
