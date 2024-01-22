@@ -95,7 +95,7 @@ function plnt_price_wrap(){
         <?php
         woocommerce_template_single_price();
         woocommerce_template_single_add_to_cart();
-        plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
+        //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
         ?>
     </div>
     <?php 
