@@ -122,7 +122,11 @@ function truemisha_quantity_plus() {
 };
  
 function truemisha_quantity_minus() {
-	echo '<button type="button" class="minus">-</button>';
+    global $product;
+    $quantity =  $product->get_stock_quantity();
+    if ($quantity > 1) {
+	    echo '<button type="button" class="minus">-</button>';
+    }
 };
 
 // мета данные товара и атрибуты
