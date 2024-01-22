@@ -111,6 +111,7 @@ function plnt_wish_wrap(){
 };
 
 function plnt_check_stock_status() {
+    global $product;
     echo $product->get_stock_status();
 }
 
