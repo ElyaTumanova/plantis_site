@@ -126,6 +126,14 @@ function plnt_outofstock_info() {
         ?>
         <button class="button card__preorder-btn">Предзаказ</button>
         <?php
+    }
+}
+
+add_action('woocommerce_before_main_content','plnt_outofstock_popup', 25);
+
+function plnt_outofstock_popup() {
+    global $product;
+    if ( $product->get_stock_status() ==='outofstock') {
         wc_get_template_part('template-parts/popups/preorder-popup');
     }
 }
@@ -280,7 +288,8 @@ function plnt_category_link () {
                 break;
 			}
 	}	
-	echo '
+	echo '<div class="card__toback-link">
 	<span>&#10094; </span>
-	<a href="' . $link . '">'.$text.'</a>';
+	<a href="' . $link . '">'.$text.'</a>
+    </div>';
 }
