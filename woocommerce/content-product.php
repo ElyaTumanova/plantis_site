@@ -4,7 +4,7 @@
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/content-product.php.
  * 
- *  MODIFIED FOR PLANTIS_THEME
+ *  MODIFIED FOR PLANTIS_THEME (for berocket wish list integration only)
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to

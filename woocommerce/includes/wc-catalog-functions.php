@@ -231,7 +231,7 @@ function plnt_get_product_tags() {
 	}
 }
 
-// // добавляем класс для wishlist
+// // добавляем класс для шортокода products для be rocket wishlist
 add_filter('post_class', 'plnt_add_class_loop_item_wish');
 function plnt_add_class_loop_item_wish($clasess){
 	if(is_page('wishlist')){
@@ -246,16 +246,6 @@ function plnt_add_remove_link_wishlist() {
 	if(is_page('wishlist')){	
 		?>
 		<a class="berocket_ww_remove" href="#remove">&#10006;</a>
-		<?php 
-	}
-}
-
-add_action('woocommerce_shop_loop','plnt_wishlist_count',10);
-
-function plnt_wishlist_count() {
-	if(is_page('wishlist')){	
-		?>
-		<div>hihi</div>
 		<?php 
 	}
 }
