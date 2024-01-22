@@ -97,6 +97,8 @@ function plnt_price_wrap(){
         woocommerce_template_single_price();
         woocommerce_template_single_add_to_cart();
         //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
+        plnt_outofstock_info();
+        plnt_card_wishlist_btn(); //кнопка в избранное для yith
         ?>
     </div>
     <?php 
@@ -113,6 +115,15 @@ function plnt_wish_wrap(){
 function plnt_check_stock_status() {
     global $product;
     echo $product->get_stock_status();
+}
+
+function plnt_outofstock_info() {
+    global $product;
+    if ( $product->get_stock_status() ==='outofstock') {
+        ?>
+        <div class="card__outofstock-info">К сожалению, данный товар закончился!<br>Свяжитесь с нами удобным способом, и мы привезём его под заказ.</div>
+        <?php
+    }
 }
 
 //кнопки изменения количества
