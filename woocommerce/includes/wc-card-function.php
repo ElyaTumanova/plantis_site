@@ -109,6 +109,8 @@ function plnt_wish_wrap(){
     ';
 };
 
+add_action('woocommerce_after_add_to_cart_quantity','woocommerce_template_loop_add_to_cart',10);
+
 //кнопки изменения количества
 add_action( 'woocommerce_before_quantity_input_field', 'truemisha_quantity_minus', 25 );
 add_action( 'woocommerce_after_quantity_input_field', 'truemisha_quantity_plus', 25 );
