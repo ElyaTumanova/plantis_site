@@ -115,7 +115,7 @@ add_action( 'woocommerce_after_quantity_input_field', 'truemisha_quantity_plus',
  
 function truemisha_quantity_plus() {
     global $product;
-    $quantity =  $product=>get_stock_quantity();
+    $quantity =  $product->get_stock_quantity();
     if ($quantity > 1) {
         echo '<button type="button" class="plus">+</button>';
     }
