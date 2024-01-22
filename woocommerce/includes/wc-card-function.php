@@ -116,7 +116,11 @@ add_action( 'woocommerce_after_quantity_input_field', 'truemisha_quantity_plus',
 function truemisha_quantity_plus() {
     global $product;
     $quantity =  $product->get_stock_quantity();
-    if ($quantity > 1) {
+    if(is_product()) {
+        if ($quantity > 1) {
+            echo '<button type="button" class="plus">+</button>';
+        }
+    } else {
         echo '<button type="button" class="plus">+</button>';
     }
 };
@@ -124,8 +128,12 @@ function truemisha_quantity_plus() {
 function truemisha_quantity_minus() {
     global $product;
     $quantity =  $product->get_stock_quantity();
-    if ($quantity > 1) {
-	    echo '<button type="button" class="minus">-</button>';
+    if(is_product()) {
+        if ($quantity > 1) {
+            echo '<button type="button" class="minus">-</button>';
+        }
+    } else {
+        echo '<button type="button" class="minus">-</button>';
     }
 };
 
