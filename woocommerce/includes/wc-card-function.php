@@ -123,6 +123,9 @@ function plnt_outofstock_info() {
         <div class="card__outofstock-info">К сожалению, данный товар закончился!<br>Свяжитесь с нами удобным способом, и мы привезём его под заказ.</div>
         <?php
         plnt_card_wishlist_btn(); //кнопка в избранное для yith
+        ?>
+        <button class="button card__preorder-btn">Предзаказ</button>
+        <?php
     }
 }
 
