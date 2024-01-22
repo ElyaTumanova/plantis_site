@@ -93,6 +93,7 @@ function plnt_price_wrap(){
     ?>
     <div class="card__price-wrap">
         <?php
+        plnt_check_stock_status();
         woocommerce_template_single_price();
         woocommerce_template_single_add_to_cart();
         //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
@@ -108,6 +109,10 @@ function plnt_wish_wrap(){
     <div class="br_wish_wait_block br_wish_wait_'. $id .'" data-id='. $id .'><span class="br_ww_button br_wish_button br_wish_add button" data-type="wish" href="#add_to_wish_list"><i class="fa fa-heart-o"></i></span></div>
     ';
 };
+
+function plnt_check_stock_status() {
+    echo $product->get_stock_status();
+}
 
 //кнопки изменения количества
 add_action( 'woocommerce_before_quantity_input_field', 'truemisha_quantity_minus', 25 );
