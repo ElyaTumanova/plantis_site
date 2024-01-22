@@ -42,8 +42,8 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 }
 
 function plnt_check_page() {
-	if ( is_product() ) {
-		echo 'Это продукт!';
+	if ( is_cart() ) {
+		echo 'Это корзина!';
 	}
 	else {
 		echo 'Это какая-то другая страница.';
