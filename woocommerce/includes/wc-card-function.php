@@ -126,6 +126,7 @@ function plnt_outofstock_info() {
         ?>
         <button class="button card__preorder-btn">Предзаказ</button>
         <?php
+        get_template_part('template-parts/popups/preorder-popup');
     }
 }
 
