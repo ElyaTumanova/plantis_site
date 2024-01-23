@@ -1,0 +1,12 @@
+.preorder {
+    position: absolute;
+    top: 30%;
+    background: white;
+    /* width: fit-content; */
+    /* height: fit-content; */
+    padding: 50px;
+    margin: 150px;
+    left: 0;
+    right: 0;
+
+}
