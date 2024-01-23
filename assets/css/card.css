@@ -196,7 +196,7 @@
     margin: 0;
     align-self: center;
 }
-.card__grid .cart .yith-wcwl-add-to-wishlist a {
+.card__grid .cart .yith-wcwl-add-button a, .card__grid .cart .yith-wcwl-add-button span {
     font-size: 0;
 }
 
