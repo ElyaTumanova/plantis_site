@@ -3,11 +3,10 @@
 .card__grid {
     display: grid;
     grid-template-columns: 45% 35% 25%;
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
     grid-template-areas:
     "image info price"
-    "descr up-sells up-sells"
-    "descr cross-sells cross-sells";
+    "descr sliders sliders";
     column-gap: 20px;
     row-gap: 20px;
 }
@@ -40,11 +39,11 @@
 }
 
 .up-sells {
-    grid-area: up-sells;
+    grid-area: sliders;
 }
 
 .cross-sells {
-    grid-area: cross-sells;
+    grid-area: sliders;
 }
 
 
