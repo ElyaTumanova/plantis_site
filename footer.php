@@ -5,7 +5,12 @@
 
 <?php get_template_part('template-parts/popups/search-popup');?>
 
-<?php wc_get_template_part('template-parts/popups/preorder-popup');?>
+<?php 
+    global $product;
+    if (is_product() && $product->get_stock_status() ==='outofstock') {
+        wc_get_template_part('template-parts/popups/preorder-popup');
+    }
+?>
 
 <?php wp_footer(); ?>
 
