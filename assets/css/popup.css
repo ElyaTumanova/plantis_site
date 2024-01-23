@@ -1,12 +1,21 @@
 .preorder {
     position: absolute;
     top: 30%;
-    background: white;
-    /* width: fit-content; */
-    /* height: fit-content; */
+    background: var(--background);
     padding: 50px;
-    margin: 150px;
     left: 0;
     right: 0;
+}
 
+.preopder__heading {
+    display: inline;
+    color: var(--accent-color);
+}
+
+.preorder__close {
+    float: right;
+}
+
+.preorder__form {
+    margin: 30px 0;
 }
