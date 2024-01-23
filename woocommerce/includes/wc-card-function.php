@@ -253,8 +253,8 @@ function plnt_get_cross_sells(){
                 'post_type' => 'product',
                 'ignore_sticky_posts' => 1,
                 'no_found_rows' => 1,
-                'posts_per_page' => apply_filters( 'woocommerce_cross_sells_total', $posts_per_page ),
-                'orderby' => $orderby,
+                'posts_per_page' => 8,
+                'orderby' => $rand,
                 'post__in' => $crosssell_ids
             );
 
