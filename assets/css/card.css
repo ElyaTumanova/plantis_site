@@ -7,7 +7,7 @@
     grid-template-areas:
     "image info price"
     "descr sliders sliders";
-    column-gap: 20px;
+    /* column-gap: 20px; */
     row-gap: 20px;
 }
 
