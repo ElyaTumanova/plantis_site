@@ -203,6 +203,23 @@ function plnt_product_attributes(){
 
 //upsells & cross sells
 
+add_action('woocommerce_after_single_product_summary','plnt_sliders_wrap_start', 15);
+
+function plnt_sliders_wrap_start() {
+    ?>
+	<div class="card__sliders-wrap">
+    <?php 
+};
+
+add_action('woocommerce_after_single_product_summary','plnt_sliders_wrap_end',30);
+
+function plnt_sliders_wrap_end () {
+    ?>
+	</div>
+    <?php 
+};
+
+
 add_filter('woocommerce_upsell_display_args', function ($args) {
     $args['posts_per_page'] = 8;
     return $args;
@@ -235,6 +252,7 @@ function plnt_upsells_heading () {
         
 remove_action('woocommerce_after_single_product_summary','woocommerce_output_related_products', 20);
 add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 20);
+
 
 
 function plnt_get_cross_sells(){

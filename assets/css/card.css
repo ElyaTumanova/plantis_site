@@ -38,13 +38,17 @@
     margin: 0;
 }
 
-.up-sells {
+.card__sliders-wrap {
+    grid-area: sliders;
+}
+
+/* .up-sells {
     grid-area: sliders;
 }
 
 .cross-sells {
     grid-area: sliders;
-}
+} */
 
 
 /* стили элементов */
