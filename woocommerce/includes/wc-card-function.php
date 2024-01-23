@@ -129,14 +129,14 @@ function plnt_outofstock_info() {
     }
 }
 
-add_action('woocommerce_before_main_content','plnt_outofstock_popup', 25);
+// add_action('woocommerce_before_main_content','plnt_outofstock_popup', 25);
 
-function plnt_outofstock_popup() {
-    global $product;
-    if ( $product->get_stock_status() ==='outofstock') {
-        wc_get_template_part('template-parts/popups/preorder-popup');
-    }
-}
+// function plnt_outofstock_popup() {
+//     global $product;
+//     if ( $product->get_stock_status() ==='outofstock') {
+//         wc_get_template_part('template-parts/popups/preorder-popup');
+//     }
+// }
 
 //кнопки изменения количества
 add_action( 'woocommerce_before_quantity_input_field', 'truemisha_quantity_minus', 25 );
