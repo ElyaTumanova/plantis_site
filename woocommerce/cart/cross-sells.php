@@ -34,7 +34,9 @@ if ( $cross_sells ) : ?>
 
 			<?php foreach ( $cross_sells as $cross_sell ) : ?>
 
-                <?php if ( ! $cross_sell->is_in_stock() && ! $cross_sell->backorders_allowed() ) : continue; endif; ?> 
+                <?php 
+                    //if ( ! $cross_sell->is_in_stock() && ! $cross_sell->backorders_allowed() ) : continue; endif; 
+                    ?> 
 
 				<?php
 					$post_object = get_post( $cross_sell->get_id() );

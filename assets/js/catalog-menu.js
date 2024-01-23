@@ -1,5 +1,4 @@
 const dropdown = document.querySelectorAll('.catalog__dropdown');
-console.log(dropdown);
 
 dropdown.forEach((el) => {
 	const menu = el.querySelector('.catalog__dropdown-menu');
