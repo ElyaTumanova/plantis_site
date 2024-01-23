@@ -2,7 +2,7 @@
 const openPopupBtn = document.querySelector('.search-btn');
 const popup = document.querySelector('.search-popup');
 const closePopupBtn = document.querySelector('.search__close');
-const popupOverlay = document.querySelector('.popup-overlay');
+const popupOverlay = document.querySelector('.search__popup-overlay');
 
 //доп переменные для поиска
 const searchResult = document.querySelector('.search-result');

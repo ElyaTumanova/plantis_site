@@ -11,5 +11,5 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
         <div class="search-result"></div>
     </div>
-    <div class="popup-overlay"></div>
+    <div class="search__popup-overlay popup-overlay"></div>
 </div>	
