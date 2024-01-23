@@ -135,16 +135,23 @@
     margin-bottom: 35px;
 }
 
+.card__price-wrap {
+    background-color: var(--accent-back);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+
 .card__grid .cart {
-    width: fit-content;
     display: grid;
     grid-template-columns: 70% 30%;
     grid-template-rows: repeat(2, auto);
     grid-template-areas:
     "cart wish"
     "quantity quantity";
-    column-gap: 5px;
-    row-gap: 5px;
+    column-gap: 15px;
+    row-gap: 15px;
 }
 
 .card__grid .cart .quantity {
@@ -153,10 +160,13 @@
 
 .card__grid .cart .button {
     grid-area: cart;
+    padding: 15px 10px;
 }
 
 .card__grid .cart .yith-wcwl-add-to-wishlist {
     grid-area: wish;
+    margin: 0;
+    align-self: center;
 }
 
 /* скрываем лишнее */
