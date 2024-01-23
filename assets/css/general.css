@@ -37,7 +37,7 @@
 
 .sale_badge {
     position: absolute;
-    bottom: 0;
+    bottom: 4px;
     z-index: 2;
     background-color: var(--red-color);
     color: var(--white);
