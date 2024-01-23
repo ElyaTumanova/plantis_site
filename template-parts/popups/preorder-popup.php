@@ -9,7 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
             <h2 class="preopder__heading heading-2">Предзаказ товара</h2>
             <span class="preorder__close heading-2">&#10006;</span>
             <div class="preorder__form">ТУТ БУДЕТ ФОРМА</div>
-            <p class="preorder__text">Нажимая кнопку "Отправить", вы даете согласие на обработку своих персональных данных и соглашаетесь с положениями, описанными в нашей политике конфиденциальности.</p>
+            <p class="preorder__text">Нажимая кнопку "Отправить", вы даете согласие на обработку своих персональных данных и соглашаетесь с положениями, 
+                описанными в нашей <a class="preorder__link" target="blank" href="<?php get_site_url()?>/privacy-policy/">политике конфиденциальности</a>.</p>
         </div>
     </div>
     <div class="preorder__popup-overlay popup-overlay"></div>
