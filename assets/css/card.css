@@ -44,6 +44,10 @@
 
 /* стили элементов */
 
+.card__grid .heading-2 {
+    color: var(--accent-color);
+}
+
 .product_title {
     font-size: 28px;
     font-weight: 700;
@@ -90,7 +94,7 @@
     margin-bottom: 15px;
 }
 
-.card__sliders-wrap div {
+.card__sliders-wrap .up-sells, .card__sliders-wrap .cross-sells {
     margin-bottom: 35px;
 }
 
