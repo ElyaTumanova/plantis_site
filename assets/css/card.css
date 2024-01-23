@@ -156,6 +156,24 @@
 
 .card__grid .cart .quantity {
     grid-area: quantity;
+    width: fit-content;
+    background-color: var(--background);
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.card__grid .cart .quantity button {
+    border: none;
+    background-color: var(--background);
+    font-size: 40px;
+    line-height: 1;
+}
+
+.card__grid .cart .quantity input {
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
 }
 
 .card__grid .cart .button {
