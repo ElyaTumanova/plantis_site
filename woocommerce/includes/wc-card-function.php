@@ -203,7 +203,7 @@ function plnt_product_attributes(){
 
 //upsells & cross sells
 
-add_action('woocommerce_after_single_product_summary','plnt_sliders_wrap_start', 15);
+add_action('woocommerce_after_single_product_summary','plnt_sliders_wrap_start', 10);
 
 function plnt_sliders_wrap_start() {
     ?>
