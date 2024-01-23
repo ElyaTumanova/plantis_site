@@ -290,7 +290,7 @@
     display: none;
 }
 
-.search-popup_active{
+.popup_active{
     display: block;
     position: fixed;
     top: 0px;

@@ -1,33 +1,37 @@
-const searchBtn = document.querySelector('.search-btn');
-const searchPopup = document.querySelector('.search-popup');
-const searchClose = document.querySelector('.search__close');
-const searchOverlay = document.querySelector('.popup-overlay');
+//переменные для управления попапом
+const openPopupBtn = document.querySelector('.search-btn');
+const popup = document.querySelector('.search-popup');
+const closePopupBtn = document.querySelector('.search__close');
+const popupOverlay = document.querySelector('.popup-overlay');
+
+//доп переменные для поиска
 const searchResult = document.querySelector('.search-result');
 const searchInput = document.querySelector('.search-field');
 
-searchBtn.addEventListener ("click", (evt)=>{
+openPopupBtn.addEventListener ("click", (evt)=>{
     toggle_search_popup ();
 });
 
-searchClose.addEventListener ("click", (evt)=>{
+closePopupBtn.addEventListener ("click", (evt)=>{
     toggle_search_popup ();
 });
 
-searchOverlay.addEventListener ("click", (evt)=>{
+popupOverlay.addEventListener ("click", (evt)=>{
     toggle_search_popup ();
 });
 
 document.addEventListener('keydown', function(e){
     if((e.key=='Escape'||e.key=='Esc')){
-        if(searchPopup.classList.contains('search-popup_active')) {
+        if(popup.classList.contains('popup_active')) {
             toggle_search_popup ();
         } 
     }
 }, true);
 
 function toggle_search_popup () {
-    searchPopup.classList.toggle ('search-popup_active');
-    // document.body.classList.toggle ('body-overlay');
+    popup.classList.toggle ('popup_active');
+
+    // для поиска
     const deleteElement = searchResult.querySelectorAll('div');
     for (let i = 0; i < deleteElement.length; i++) {
       deleteElement[i].remove();
