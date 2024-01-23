@@ -4,9 +4,8 @@ const preorderPopup = document.querySelector('.preorder-popup');
 const preorderClosePopupBtn = document.querySelector('.preorder__close');
 const preorderPopupOverlay = document.querySelector('.preorder__popup-overlay');
 
-if (preorderPopup === null || preorderOpenPopupBtn === null) {
-    return;
-} else {
+if (preorderPopup != null && preorderOpenPopupBtn != null) {
+    
     preorderOpenPopupBtn.addEventListener ("click", (evt)=>{
         toggle_preorder_popup ();
     });
