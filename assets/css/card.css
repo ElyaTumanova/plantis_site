@@ -137,6 +137,26 @@
 
 .card__grid .cart {
     width: fit-content;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas:
+    "cart wish"
+    "quantity quantity";
+    column-gap: 5px;
+    row-gap: 5px;
+}
+
+.card__grid .cart .quantity {
+    grid-area: quantity;
+}
+
+.card__grid .cart .button {
+    grid-area: cart;
+}
+
+.card__grid .cart .yith-wcwl-add-to-wishlist {
+    grid-area: wish;
 }
 
 /* скрываем лишнее */
