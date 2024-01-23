@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 ?>
-<div class="preorder-popup popup popup_active">
+<div class="preorder-popup popup">
     <div class="preorder container">
         <div class="preorder__wrap">
             <h2 class="preopder__heading heading-2">Предзаказ товара</h2>

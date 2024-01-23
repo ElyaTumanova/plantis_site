@@ -1,31 +1,31 @@
 //переменные для управления попапом
 const preorderOpenPopupBtn = document.querySelector('.card__preorder-btn');
-const popup = document.querySelector('.preorder-popup');
-const closePopupBtn = document.querySelector('.preorder__close');
-const popupOverlay = document.querySelector('.preorder__popup-overlay');
+const preorderPopup = document.querySelector('.preorder-popup');
+const preorderClosePopupBtn = document.querySelector('.preorder__close');
+const preorderPopupOverlay = document.querySelector('.preorder__popup-overlay');
 
 
 preorderOpenPopupBtn.addEventListener ("click", (evt)=>{
-    toggle_search_popup ();
+    toggle_preorder_popup ();
 });
 
-closePopupBtn.addEventListener ("click", (evt)=>{
-    toggle_search_popup ();
+preorderClosePopupBtn.addEventListener ("click", (evt)=>{
+    toggle_preorder_popup ();
 });
 
-popupOverlay.addEventListener ("click", (evt)=>{
-    toggle_search_popup ();
+preorderPopupOverlay.addEventListener ("click", (evt)=>{
+    toggle_preorder_popup ();
 });
 
 document.addEventListener('keydown', function(e){
     if((e.key=='Escape'||e.key=='Esc')){
-        if(popup.classList.contains('popup_active')) {
-            toggle_search_popup ();
+        if(preorderPopup.classList.contains('popup_active')) {
+            toggle_preorder_popup ();
         } 
     }
 }, true);
 
-function toggle_search_popup () {
-    popup.classList.toggle ('popup_active');
+function toggle_preorder_popup () {
+    preorderPopup.classList.toggle ('popup_active');
 };
 
