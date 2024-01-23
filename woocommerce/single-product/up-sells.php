@@ -23,13 +23,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( $upsells ) : ?>
 
-	<section class="up-sells upsells products">
+	<div class="up-sells upsells products">
 		<?php
 		$heading = apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) );
 
 		if ( $heading ) :
 			?>
-			<h2><?php echo esc_html( $heading ); ?></h2>
+			<h2 class="heading-2"><?php echo esc_html( $heading ); ?></h2>
 		<?php endif; ?>
 
         <ul id="flexisel-upsells" class="products columns-<?php echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>">
@@ -77,7 +77,7 @@ if ( $upsells ) : ?>
             });
 		</script>
 
-	</section>
+        </div>
 
 	<?php
 endif;
