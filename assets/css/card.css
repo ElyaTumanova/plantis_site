@@ -158,15 +158,24 @@
     grid-area: quantity;
     width: fit-content;
     background-color: var(--background);
-    padding: 7px;
+    padding: 4px 7px;
     border-radius: 5px;
+    display: flex;
+    box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
 }
 
 .card__grid .cart .quantity button {
     border: none;
     background-color: var(--background);
-    font-size: 40px;
     line-height: 1;
+}
+
+.card__grid .cart .quantity .plus {
+    font-size: 30px;
+    font-weight: 600;
+}
+.card__grid .cart .quantity .minus {
+    font-size: 40px;
 }
 
 .card__grid .cart .quantity input {
@@ -174,6 +183,7 @@
     font-size: 20px;
     font-weight: 700;
     line-height: 1;
+    text-align: center;
 }
 
 .card__grid .cart .button {
