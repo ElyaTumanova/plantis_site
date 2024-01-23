@@ -196,6 +196,9 @@
     margin: 0;
     align-self: center;
 }
+.card__grid .cart .yith-wcwl-add-to-wishlist a {
+    font-size: 0;
+}
 
 /* скрываем лишнее */
 
