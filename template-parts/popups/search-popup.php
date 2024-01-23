@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 ?>
-<div class="search-popup">
+<div class="search-popup popup">
     <div class="search">
         <div class="search__wrap container">
             <?get_search_form();?>
