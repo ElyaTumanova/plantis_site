@@ -260,7 +260,7 @@ function plnt_get_cross_sells(){
 
             $products = new WP_Query( $args );
 
-            $woocommerce_loop['columns'] = apply_filters( 'woocommerce_cross_sells_columns', $columns );
+            // $woocommerce_loop['columns'] = apply_filters( 'woocommerce_cross_sells_columns', $columns );
 
             if ( $products->have_posts() ) : ?>
 
@@ -268,15 +268,42 @@ function plnt_get_cross_sells(){
 
                 <h2><?php _e( 'Похожие растения', 'woocommerce' ) ?></h2>
 
-                <?php woocommerce_product_loop_start(); ?>
+                <ul id="flexisel-cross-sells" class="products columns-<?php echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>">
 
-                <?php while ( $products->have_posts() ) : $products->the_post(); ?>
+                    <?php while ( $products->have_posts() ) : $products->the_post(); ?>
 
-                <?php wc_get_template_part( 'content', 'product' ); ?>
+                    <?php wc_get_template_part( 'content', 'product' ); ?>
 
-                <?php endwhile; // end of the loop. ?>
+                    <?php endwhile; // end of the loop. ?>
 
-                <?php woocommerce_product_loop_end(); ?>
+                </ul>
+
+                <script type="text/javascript">
+                    jQuery(window).load(function() {
+                        jQuery("#flexisel-cross-sells").flexisel({
+                            visibleItems:3,
+                            animationSpeed: 1000,
+                            autoPlay: false,
+                            autoPlaySpeed: 3000,
+                            pauseOnHover: true,
+                            enableResponsiveBreakpoints: true,
+                            responsiveBreakpoints: {
+                                portrait: {
+                                    changePoint:480,
+                                    visibleItems: 1
+                                },
+                                landscape: {
+                                    changePoint:640,
+                                    visibleItems:2
+                                },
+                                tablet: {
+                                    changePoint:768,
+                                    visibleItems: 3
+                                }
+                            }
+                        });
+                    });
+                </script>
 
                 </div>
 
