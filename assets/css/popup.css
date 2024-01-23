@@ -43,6 +43,10 @@
     float: right;
 }
 
+.preorder__close:hover {
+    cursor: pointer;
+}
+
 .preorder__form {
     margin: 30px 0;
 }
