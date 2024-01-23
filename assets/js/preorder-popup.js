@@ -1,11 +1,11 @@
 //переменные для управления попапом
-const openPopupBtn = document.querySelector('.card__preorder-btn');
+const preorderOpenPopupBtn = document.querySelector('.card__preorder-btn');
 const popup = document.querySelector('.preorder-popup');
 const closePopupBtn = document.querySelector('.preorder__close');
 const popupOverlay = document.querySelector('.preorder__popup-overlay');
 
 
-openPopupBtn.addEventListener ("click", (evt)=>{
+preorderOpenPopupBtn.addEventListener ("click", (evt)=>{
     toggle_search_popup ();
 });
 
