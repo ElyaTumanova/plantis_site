@@ -236,15 +236,66 @@ function plnt_upsells_heading () {
 remove_action('woocommerce_after_single_product_summary','woocommerce_output_related_products', 20);
 add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 20);
 
+// function plnt_get_cross_sells(){
+//     woocommerce_cross_sell_display();
+// }
+
 function plnt_get_cross_sells(){
-    woocommerce_cross_sell_display();
+    $crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
+
+    if( !empty ($crosssell_ids) ){
+
+        $crosssell_ids = $crosssell_ids[0];
+
+        if(count($crosssell_ids)>0){
+
+            $args = array(
+                'post_type' => 'product',
+                'ignore_sticky_posts' => 1,
+                'no_found_rows' => 1,
+                'posts_per_page' => apply_filters( 'woocommerce_cross_sells_total', $posts_per_page ),
+                'orderby' => $orderby,
+                'post__in' => $crosssell_ids
+            );
+
+            $products = new WP_Query( $args );
+
+            $woocommerce_loop['columns'] = apply_filters( 'woocommerce_cross_sells_columns', $columns );
+
+            if ( $products->have_posts() ) : ?>
+
+                <div class="cross-sells">
+
+                <h2><?php _e( 'Похожие растения', 'woocommerce' ) ?></h2>
+
+                <?php woocommerce_product_loop_start(); ?>
+
+                <?php while ( $products->have_posts() ) : $products->the_post(); ?>
+
+                <?php wc_get_template_part( 'content', 'product' ); ?>
+
+                <?php endwhile; // end of the loop. ?>
+
+                <?php woocommerce_product_loop_end(); ?>
+
+                </div>
+
+            <?php endif;
+
+        }
+
+        wp_reset_query();
+
+    }
 }
 
-add_filter( 'woocommerce_product_cross_sells_products_heading' , 'plnt_cross_sells_heading' );
 
-function plnt_cross_sells_heading() {
-    return 'Похожие растения';
-};
+
+// add_filter( 'woocommerce_product_cross_sells_products_heading' , 'plnt_cross_sells_heading' );
+
+// function plnt_cross_sells_heading() {
+//     return 'Похожие растения';
+// };
 
 // ссылка "назад" для карточки товара
 
