@@ -28,7 +28,7 @@ add_action('woocommerce_before_single_product_summary', 'plnt_product_descriptio
 function plnt_product_description () {
     ?>
     <div class="card__description">
-        <h2 class="header-second">Описание</h2>
+        <h2 class="heading-2">Описание</h2>
     <?php
     the_content();
     ?>
@@ -93,7 +93,7 @@ function plnt_price_wrap(){
     ?>
     <div class="card__price-wrap">
         <?php
-        plnt_check_stock_status();
+        // plnt_check_stock_status();
         woocommerce_template_single_price();
         woocommerce_template_single_add_to_cart();
         //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
@@ -191,9 +191,9 @@ function plnt_product_attributes(){
         $idCats = check_category ();
         if( in_array( $plants_cat_id ,$idCats ) )
             {
-            echo  '<h2 class="header-second">Уход и характеристики</h2>';
+            echo  '<h2 class="heading-2">Уход и характеристики</h2>';
             } else {
-            echo '<h2 class="header-second">Характеристики</h2>';
+            echo '<h2 class="heading-2">Характеристики</h2>';
             }
         wc_display_product_attributes($product);
     ?>
@@ -236,9 +236,6 @@ function plnt_upsells_heading () {
 remove_action('woocommerce_after_single_product_summary','woocommerce_output_related_products', 20);
 add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 20);
 
-// function plnt_get_cross_sells(){
-//     woocommerce_cross_sell_display();
-// }
 
 function plnt_get_cross_sells(){
     $crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
@@ -266,8 +263,6 @@ function plnt_get_cross_sells(){
             );
 
             $products = new WP_Query( $args );
-
-            // $woocommerce_loop['columns'] = apply_filters( 'woocommerce_cross_sells_columns', $columns );
 
             if ( $products->have_posts() ) : ?>
 
@@ -323,13 +318,6 @@ function plnt_get_cross_sells(){
     }
 }
 
-
-
-// add_filter( 'woocommerce_product_cross_sells_products_heading' , 'plnt_cross_sells_heading' );
-
-// function plnt_cross_sells_heading() {
-//     return 'Похожие растения';
-// };
 
 // ссылка "назад" для карточки товара
 

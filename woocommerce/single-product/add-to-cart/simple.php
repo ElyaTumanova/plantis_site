@@ -4,7 +4,7 @@
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/single-product/add-to-cart/simple.php.
  * 
- * MODIFIED FOR PLANTIS THEME
+ * MODIFIED FOR PLANTIS THEME (добавлены атрибуты для кнопки в корзину для AJAX)
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to

@@ -1,6 +1,8 @@
+/* сетка карточки и расположение элементов */
+
 .card__grid {
     display: grid;
-    grid-template-columns: 50% 35% 20%;
+    grid-template-columns: 45% 35% 25%;
     grid-template-rows: repeat(3, auto);
     grid-template-areas:
     "image info price"
@@ -46,6 +48,44 @@
 }
 
 
+/* стили элементов */
+
+.product_title {
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: none;
+    line-height: 34px;
+    margin-bottom: 15px;
+}
+
+.card__grid .woocommerce-product-details__short-description {
+    margin-bottom: 15px;
+}
+
+.product__artikul {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 26px;
+    opacity: 0.7;
+    margin-bottom: 35px;
+}
+
+.product__attributes h2 {
+    margin-bottom: 15px;
+}
+
+.woocommerce-product-attributes {
+    text-align: left;
+}
+
+.woocommerce-product-attributes th, .woocommerce-product-attributes td {
+    padding: 10px 0 0;
+}
+
+
+
+/* скрываем лишнее */
+
 /* скрываем кол-во товаров в наличии */
 .stock {
     display: none;
@@ -60,4 +100,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input[type="number"] {
     -moz-appearance: textfield;
+}
+
+/* ссылка на просмотр корзины после добавления */
+.added_to_cart .wc-forward {
+    display: none;
 }
