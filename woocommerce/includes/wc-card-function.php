@@ -257,8 +257,10 @@ function plnt_get_cross_sells(){
                 'orderby' => $rand,
                 'post__in' => $crosssell_ids,
                 'meta_query' => array(
-                    'key' => '_stock_status',
-                    'value' => 'instock')
+					'key'       => '_stock_status',
+					'value'     => 'outofstock',
+					'compare'   => 'NOT IN'
+				)
             );
 
             $products = new WP_Query( $args );
