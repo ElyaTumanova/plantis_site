@@ -140,13 +140,13 @@ ul.products {
     opacity: 0.7;
 }
 
-.product .price {
+.catalog-grid .product .price {
     font-size: 24px;
     line-height: 1.1;
     font-weight: 700;
 }
 
-.sale .price {
+.catalog-grid .sale .price {
     font-size: 18px;
     font-weight: 500;
     line-height: 1.1;
@@ -156,7 +156,7 @@ ul.products {
     margin: 20px 0;
 }
 
-.sale ins .woocommerce-Price-amount {
+.catalog__grid .sale ins .woocommerce-Price-amount {
     font-size: 24px;
     line-height: 1.1;
     font-weight: 700;

@@ -90,6 +90,29 @@
     opacity: 0.7;
 }
 
+.card-grid .product .price {
+    font-size: 24px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.card-grid .sale .price {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.card__grid .product .price, .catalog__grid .sale .price {
+    margin: 20px 0;
+}
+
+.card__grid .sale ins .woocommerce-Price-amount {
+    font-size: 24px;
+    line-height: 1.1;
+    font-weight: 700;
+    color: var(--red-color);
+}
+
 .card__description h2 {
     margin-bottom: 15px;
 }
