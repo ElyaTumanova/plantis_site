@@ -2,7 +2,7 @@
 
 .card__grid {
     display: grid;
-    grid-template-columns: 45% 35% 25%;
+    grid-template-columns: 45% 30% 25%;
     grid-template-rows: repeat(2, auto);
     grid-template-areas:
     "image info price"
@@ -78,6 +78,16 @@
 
 .woocommerce-product-attributes th, .woocommerce-product-attributes td {
     padding: 10px 0 0;
+    vertical-align: top;
+    font-weight: 500;
+}
+
+
+.woocommerce-product-attributes th {
+    width: 35%;
+    word-break: break-word;
+    hyphens: auto;
+    opacity: 0.7;
 }
 
 .card__description h2 {
