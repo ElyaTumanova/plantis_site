@@ -1,7 +1,7 @@
 const searchBtn = document.querySelector('.search-btn');
 const searchPopup = document.querySelector('.search-popup');
 const searchClose = document.querySelector('.search__close');
-// const searchOverlay = document.querySelector('.popup-overlay');
+const searchOverlay = document.querySelector('.search-popup');
 const searchResult = document.querySelector('.search-result');
 const searchInput = document.querySelector('.search-field');
 
@@ -13,9 +13,9 @@ searchClose.addEventListener ("click", (evt)=>{
     toggle_search_popup ();
 });
 
-// searchOverlay.addEventListener ("click", (evt)=>{
-//     toggle_search_popup ();
-// });
+searchOverlay.addEventListener ("click", (evt)=>{
+    toggle_search_popup ();
+});
 
 document.addEventListener('keydown', function(e){
     if((e.key=='Escape'||e.key=='Esc')){
