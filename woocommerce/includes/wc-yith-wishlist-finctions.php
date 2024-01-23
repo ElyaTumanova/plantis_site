@@ -12,11 +12,11 @@ function plnt_card_wishlist_btn() {
 };
 
 // // wish list button in catalog
-add_action('woocommerce_before_shop_loop_item_title','plnt_wish_list_btn_catalog', 20);
+// add_action('woocommerce_before_shop_loop_item_title','plnt_wish_list_btn_catalog', 20);
 
-function plnt_wish_list_btn_catalog() {
-	echo do_shortcode('[yith_wcwl_add_to_wishlist]');
-}
+// function plnt_wish_list_btn_catalog() {
+// 	echo do_shortcode('[yith_wcwl_add_to_wishlist]');
+// }
 
 
 // шорткод для выводассылки и кол-ва + ajsx обновление
