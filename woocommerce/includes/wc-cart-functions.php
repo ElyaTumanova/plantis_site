@@ -49,7 +49,7 @@ add_filter( 'woocommerce_product_single_add_to_cart_text', 'truemisha_single_pro
  
 function truemisha_single_product_btn_text( $text ) {
 	if( WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( get_the_ID() ) ) ) {
-		$text = 'В корзине. Добавить еще';
+		$text = 'В корзине';
 	}
  
 	return $text;
