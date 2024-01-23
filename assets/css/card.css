@@ -157,17 +157,16 @@
 .card__grid .cart .quantity {
     grid-area: quantity;
     width: fit-content;
-    background-color: var(--background);
-    padding: 4px 7px;
     border-radius: 5px;
     display: flex;
-    box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
+    /* box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.15); */
 }
 
 .card__grid .cart .quantity button {
     border: none;
-    background-color: var(--background);
+    background-color: var(--accent-back);
     line-height: 1;
+    border-radius: 5px
 }
 
 .card__grid .cart .quantity .plus {
@@ -184,6 +183,7 @@
     font-weight: 700;
     line-height: 1;
     text-align: center;
+    background-color: var(--accent-back);
 }
 
 .card__grid .cart .button {
