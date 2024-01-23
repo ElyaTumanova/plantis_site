@@ -256,11 +256,13 @@ function plnt_get_cross_sells(){
                 'posts_per_page' => 8,
                 'orderby' => $rand,
                 'post__in' => $crosssell_ids,
-                'meta_query' => array(
-					'key'       => '_stock_status',
-					'value'     => 'outofstock',
-					'compare'   => 'NOT IN'
-				)
+                'meta_query' => array( 
+                    array(
+                        'key'       => '_stock_status',
+                        'value'     => 'outofstock',
+                        'compare'   => 'NOT IN'
+                    )
+                )
             );
 
             $products = new WP_Query( $args );
