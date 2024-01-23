@@ -10,4 +10,4 @@ $treez_cat_id = 802;
 
 $tags_exeptions = array(66,106);
 
-$site_title = carbon_get_theme_option('site_title')
+$site_title = carbon_get_theme_option('site_title');
