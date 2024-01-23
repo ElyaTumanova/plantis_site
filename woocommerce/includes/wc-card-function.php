@@ -268,7 +268,7 @@ function plnt_get_cross_sells(){
 
                 <div class="cross-sells">
 
-                <h2><?php _e( 'Похожие растения', 'woocommerce' ) ?></h2>
+                <h2 class="heading-2"><?php _e( 'Похожие растения', 'woocommerce' ) ?></h2>
 
                 <ul id="flexisel-cross-sells" class="products columns-<?php echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>">
 
