@@ -98,6 +98,10 @@
     margin-bottom: 35px;
 }
 
+.card__grid .cart {
+    width: fit-content;
+}
+
 /* скрываем лишнее */
 
 /* скрываем кол-во товаров в наличии */
