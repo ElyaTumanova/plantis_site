@@ -83,7 +83,7 @@
     margin-bottom: 35px;
 }
 
-.product__attributes h2 {
+.product__attributes .heading-2 {
     margin-bottom: 10px;
 }
 
@@ -132,7 +132,7 @@
     /* opacity: 1; */
 }
 
-.card__description h2 {
+.card__description .heading-2 {
     margin-bottom: 15px;
 }
 
@@ -142,7 +142,7 @@
     line-height: 1.3;
 }
 
-.card__sliders-wrap h2 {
+.card__sliders-wrap .heading-2 {
     margin-bottom: 15px;
 }
 
