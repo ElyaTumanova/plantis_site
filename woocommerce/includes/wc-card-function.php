@@ -111,8 +111,8 @@ add_filter( 'woocommerce_cart_redirect_after_error', '__return_false' );  //ос
 
 //     return $fragments;
 // }
-// add_filter( 'woocommerce_add_to_cart_fragments', 'ace_ajax_add_to_cart_add_fragments' );
-add_filter( 'wp_footer', 'ace_ajax_add_to_cart_add_fragments' );
+add_filter( 'woocommerce_add_to_cart_fragments', 'ace_ajax_add_to_cart_add_fragments' );
+// add_filter( 'wp_footer', 'ace_ajax_add_to_cart_add_fragments' );
 
 function ace_ajax_add_to_cart_add_fragments() {
 
