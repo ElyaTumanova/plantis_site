@@ -263,6 +263,10 @@ ul.products {
 
 .main__sale-gallery .yith-wcwl-add-to-wishlist {
     grid-area: wish; 
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 0;
 }
 
 .main__sale-gallery .yith-wcwl-add-to-wishlist img {
