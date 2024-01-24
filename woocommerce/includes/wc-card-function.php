@@ -134,11 +134,14 @@ function ace_ajax_add_to_cart_add_fragments() {
     
     woocommerce_output_all_notices();
     $notices_html = ob_get_clean();
+    echo '<pre>';
+	print_r( $notices_html );
+	echo '</pre>';
     $htmlelement = '.woocommerce-notices-wrapper';
     
     $fragments = array ($htmlelement => $notices_html);
     
-    // wc_clear_notices(); // should probably be uncommented
+    wc_clear_notices(); // should probably be uncommented
     
     return $fragments;
     }
