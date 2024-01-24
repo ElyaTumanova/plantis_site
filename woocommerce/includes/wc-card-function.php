@@ -90,63 +90,6 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 
 add_filter( 'woocommerce_cart_redirect_after_error', '__return_false' );  //остановка перезагрузки страницы (перадресации) при ошибке добаления товара в корзину
 
-/**
- * Add fragments for notices
- */
-// function ace_ajax_add_to_cart_add_fragments( $fragments ) {
-//     $all_notices  = WC()->session->get( 'wc_notices', array() );
-//     $notice_types = apply_filters( 'woocommerce_notice_types', array( 'error', 'success', 'notice' ) );
-
-//     ob_start();
-//     foreach ( $notice_types as $notice_type ) {
-//         if ( wc_notice_count( $notice_type ) > 0 ) {
-//             wc_get_template( "notices/{$notice_type}.php", array(
-//                 'notices' => array_filter( $all_notices[ $notice_type ] ),
-//             ) );
-//         }
-//     }
-//     $fragments['div.woocommerce-notices-wrapper'] = ob_get_clean();
-
-//     wc_clear_notices();
-
-//     return $fragments;
-// }
-add_filter( 'woocommerce_add_to_cart_fragments', 'ace_ajax_add_to_cart_add_fragments' );
-// add_filter( 'wp_footer', 'ace_ajax_add_to_cart_add_fragments' );
-
-function ace_ajax_add_to_cart_add_fragments() {
-
-    // // Exclude Checkout Page
-    // if (is_checkout()) {
-    // return;
-    // }
-    
-    // // Exclude Cart Page
-    // if (is_cart()) {
-    // return;
-    // }
-    
-    // // Exclude Single Product Page
-    // if (is_product()) {
-    // return;
-    // }
-    
-    ob_start();
-    
-    woocommerce_output_all_notices();
-    $notices_html = ob_get_clean();
-    echo '<pre>';
-	print_r( $notices_html );
-	echo '</pre>';
-    $htmlelement = '.woocommerce-notices-wrapper';
-    
-    $fragments = array ($htmlelement => $notices_html);
-    
-    //wc_clear_notices(); // should probably be uncommented
-    
-    return $fragments;
-    }
-
 add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 5);
 
 function plnt_price_wrap(){
