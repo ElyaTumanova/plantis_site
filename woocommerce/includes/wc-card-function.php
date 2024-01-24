@@ -93,25 +93,25 @@ add_filter( 'woocommerce_cart_redirect_after_error', '__return_false' );
 /**
  * Add fragments for notices
  */
-// function ace_ajax_add_to_cart_add_fragments( $fragments ) {
-//     $all_notices  = WC()->session->get( 'wc_notices', array() );
-//     $notice_types = apply_filters( 'woocommerce_notice_types', array( 'error', 'success', 'notice' ) );
+function ace_ajax_add_to_cart_add_fragments( $fragments ) {
+    $all_notices  = WC()->session->get( 'wc_notices', array() );
+    $notice_types = apply_filters( 'woocommerce_notice_types', array( 'error', 'success', 'notice' ) );
 
-//     ob_start();
-//     foreach ( $notice_types as $notice_type ) {
-//         if ( wc_notice_count( $notice_type ) > 0 ) {
-//             wc_get_template( "notices/{$notice_type}.php", array(
-//                 'notices' => array_filter( $all_notices[ $notice_type ] ),
-//             ) );
-//         }
-//     }
-//     $fragments['notices_html'] = ob_get_clean();
+    ob_start();
+    foreach ( $notice_types as $notice_type ) {
+        if ( wc_notice_count( $notice_type ) > 0 ) {
+            wc_get_template( "notices/{$notice_type}.php", array(
+                'notices' => array_filter( $all_notices[ $notice_type ] ),
+            ) );
+        }
+    }
+    $fragments['notices_html'] = ob_get_clean();
 
-//     wc_clear_notices();
+    wc_clear_notices();
 
-//     return $fragments;
-// }
-//add_filter( 'woocommerce_add_to_cart_fragments', 'ace_ajax_add_to_cart_add_fragments' );
+    return $fragments;
+}
+add_filter( 'woocommerce_add_to_cart_fragments', 'ace_ajax_add_to_cart_add_fragments' );
 
 
 
@@ -126,6 +126,9 @@ function plnt_price_wrap(){
         woocommerce_template_single_add_to_cart();
         //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
         plnt_outofstock_info();
+        ?>
+        <div class="notices_html"></div>;
+        <?php
         //woocommerce_output_all_notices();
         get_template_part('template-parts/delivery-info'); // delivery info for card
         ?>
