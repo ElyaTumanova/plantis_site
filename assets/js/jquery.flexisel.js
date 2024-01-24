@@ -126,7 +126,7 @@
         
         methods.setResponsiveEvents();
         
-        var innerWidth = $(listParent).width();
+        var innerWidth = $(listParent).width() - 30;
         var innerHeight = $(listParent).height(); 
         
         itemsWidth = (innerWidth)/itemsVisible;
@@ -203,7 +203,7 @@
         canNavigate = false;
         
         var listParent = object.parent();
-        var innerWidth = listParent.width();
+        var innerWidth = listParent.width() -30;
         
         itemsWidth = (innerWidth)/itemsVisible;
         
@@ -236,7 +236,7 @@
         canNavigate = false;
         
         var listParent = object.parent();
-        var innerWidth = listParent.width();
+        var innerWidth = listParent.width() -30;
         
         itemsWidth = (innerWidth)/itemsVisible;
         
@@ -268,7 +268,7 @@
       var listParent = object.parent();
       var childSet = object.children();				
       
-      var innerWidth = listParent.width(); 
+      var innerWidth = listParent.width() - 30; 
       itemsWidth = (innerWidth)/itemsVisible;
       childSet.width(itemsWidth);
       object.css({'left' : -itemsWidth});		
