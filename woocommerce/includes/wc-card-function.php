@@ -105,7 +105,7 @@ function ace_ajax_add_to_cart_add_fragments( $fragments ) {
             ) );
         }
     }
-    $fragments['notices_html'] = ob_get_clean();
+    $fragments['div.notices_html'] = ob_get_clean();
 
     wc_clear_notices();
 
