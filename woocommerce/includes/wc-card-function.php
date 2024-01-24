@@ -88,6 +88,31 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 remove_action('woocommerce_before_single_product','woocommerce_output_all_notices',10); /* уведомления woocommerce*/
 
+/**
+ * Add fragments for notices
+ */
+function ace_ajax_add_to_cart_add_fragments( $fragments ) {
+    $all_notices  = WC()->session->get( 'wc_notices', array() );
+    $notice_types = apply_filters( 'woocommerce_notice_types', array( 'error', 'success', 'notice' ) );
+
+    ob_start();
+    foreach ( $notice_types as $notice_type ) {
+        if ( wc_notice_count( $notice_type ) > 0 ) {
+            wc_get_template( "notices/{$notice_type}.php", array(
+                'notices' => array_filter( $all_notices[ $notice_type ] ),
+            ) );
+        }
+    }
+    $fragments['notices_html'] = ob_get_clean();
+
+    wc_clear_notices();
+
+    return $fragments;
+}
+add_filter( 'woocommerce_add_to_cart_fragments', 'ace_ajax_add_to_cart_add_fragments' );
+
+
+
 add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 5);
 
 function plnt_price_wrap(){
