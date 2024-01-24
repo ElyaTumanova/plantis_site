@@ -103,13 +103,13 @@ function ace_ajax_add_to_cart_add_fragments( $fragments ) {
             ) );
         }
     }
-    $fragments['.notices_html'] = ob_get_clean();
+    $fragments['notices_html'] = ob_get_clean();
 
     wc_clear_notices();
 
     return $fragments;
 }
-add_filter( 'woocommerce_add_to_cart_fragments', 'ace_ajax_add_to_cart_add_fragments' );
+//add_filter( 'woocommerce_add_to_cart_fragments', 'ace_ajax_add_to_cart_add_fragments' );
 
 
 

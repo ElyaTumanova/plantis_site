@@ -468,7 +468,7 @@ class WC_AJAX {
 			if ( 'yes' === get_option( 'woocommerce_cart_redirect_after_add' ) ) {
 				wc_add_to_cart_message( array( $product_id => $quantity ), true );
 			}
-
+            echo '<script> console.log ("hi") </script>';
 			self::get_refreshed_fragments();
 
 		} else {
