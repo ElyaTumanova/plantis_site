@@ -9,7 +9,7 @@
     "image banner1 banner2"
     "descr sliders sliders";
     column-gap: 20px;
-    row-gap: 40px;
+    row-gap: 30px;
 }
 
 .card__image-wrap {
