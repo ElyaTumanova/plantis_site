@@ -81,11 +81,6 @@
         childSet.last().insertBefore(childSet.first());
         object.css({'left' : -itemsWidth}); 
 
-        console.log(innerWidth);
-        console.log(itemsWidth);
-        console.log(columnGaps);
-
-
         object.fadeIn();
       $(window).trigger("resize"); // needed to position arrows correctly
 

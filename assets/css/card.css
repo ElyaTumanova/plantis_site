@@ -250,19 +250,17 @@ input[type="number"] {
   }
   
   .delivery_table__row {
-  
     border-bottom: 1px solid #E7D7CB;
-  
   }
+
   .delivery_table__row:last-child {
-  
     border-bottom: none;
-  
   }
   
   .delivery_table__row div:last-child {
       font-weight: 600;
   }
+  
   .delivery_table__header {
     font-size: 14px;
     line-height: 16px;
