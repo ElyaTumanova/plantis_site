@@ -86,7 +86,7 @@ function plnt_product_gallery( $options ) {
 //цена и кнопка в корзину, кнопка в избранное
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
-remove_action('woocommerce_before_single_product','woocommerce_output_all_notices', 10); /* уведомления woocommerce*/
+//remove_action('woocommerce_before_single_product','woocommerce_output_all_notices', 10); /* уведомления woocommerce*/
 
 /**
  * Add fragments for notices
