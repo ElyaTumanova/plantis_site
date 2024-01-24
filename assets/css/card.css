@@ -73,7 +73,7 @@
     margin-bottom: 15px;
 }
 
-.card__grid .woocommerce-product-details__short-description {
+.card__grid .summary .woocommerce-product-details__short-description {
     margin-bottom: 15px;
 }
 
@@ -208,6 +208,53 @@
 }
 .card__grid .cart .yith-wcwl-add-button a, .card__grid .cart .yith-wcwl-add-button span {
     font-size: 0;
+}
+
+
+/*cross sells & up sells*/
+
+.card__sliders-wrap .product li {
+    padding: 10px;
+    text-align: left;
+}
+
+.card__sliders-wrap .yith-wcwl-add-button img {
+    max-width: 25px;
+    margin: 5px;
+}
+
+.card__sliders-wrap .woocommerce-loop-product__title {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.card__sliders-wrap .woocommerce-product-details__short-description {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 7px;
+}
+
+.card__sliders-wrap .product .price {
+    font-size: 20px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.card__sliders-wrap .sale .price {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.card__sliders-wrap .sale ins .woocommerce-Price-amount {
+    font-size: 20px;
+    line-height: 1.1;
+    font-weight: 700;
+    color: var(--red-color);
 }
 
 /* скрываем лишнее */
