@@ -135,9 +135,7 @@ function plnt_outofstock_info() {
 add_action('woocommerce_after_single_product_summary', 'plnt_card_banners_wrap', 5);
 
 function plnt_card_banners_wrap() {
-    ?>
-    <div class="card__bunners_wrap">БАННЕРЫ</div>
-    <?php
+    get_template_part('template-parts/card-banners'); // delivery info for card
 }
 
 
