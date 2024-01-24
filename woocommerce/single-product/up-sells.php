@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( $upsells ) : ?>
 
-	<div class="up-sells upsells products">
+	<div class="up-sells upsells">
 		<?php
 		$heading = apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) );
 
