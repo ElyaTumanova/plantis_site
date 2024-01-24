@@ -44,14 +44,23 @@
 	display: grid;
     grid-template-rows:  30px auto auto auto;
     grid-template-areas:
-			"image sale"
-			"image price"
-            "image name"
-			"image descr"
-            "image button";
-	grid-template-columns: 165px auto;
+			"image sale sale"
+			"image price price"
+            "image name name"
+			"image descr descr"
+            "image button wish";
+	grid-template-columns: 165px auto auto;
 	column-gap: 10px;
     text-align: left;
+}
+
+.main__sale-gallery .yith-wcwl-add-to-wishlist {
+    grid-area: wish; 
+}
+
+.main__sale-gallery .yith-wcwl-add-to-wishlist img {
+    width: 27px;
+    
 }
 
 .main__sale-gallery .nbs-flexisel-inner {
@@ -62,6 +71,7 @@
     grid-area: image;
     font-size: 0;
 }
+
 
 .main__sale-gallery .sale_badge {
     font-size: 14px;
