@@ -87,7 +87,7 @@ function plnt_product_gallery( $options ) {
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 
-add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 10);
+add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 5);
 
 function plnt_price_wrap(){
     ?>
@@ -104,7 +104,7 @@ function plnt_price_wrap(){
     <?php 
 };
 
-function plnt_wish_wrap(){
+function plnt_wish_wrap() {
     global $product;
     $id = $product->get_id();
     echo '
@@ -129,6 +129,17 @@ function plnt_outofstock_info() {
         <?php
     }
 }
+
+// баннеры в карточке товара
+
+add_action('woocommerce_after_single_product_summary', 'plnt_card_banners_wrap', 5);
+
+function plnt_card_banners_wrap() {
+    ?>
+    <div class="card__bunners_wrap">БАННЕРЫ</div>
+    <?php
+}
+
 
 //кнопки изменения количества
 add_action( 'woocommerce_before_quantity_input_field', 'truemisha_quantity_minus', 25 );
