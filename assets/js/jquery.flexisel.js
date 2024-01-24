@@ -47,6 +47,7 @@
       var itemsWidth; // Declare the global width of each item in carousel
       var canNavigate = true; 
       var itemsVisible = settings.visibleItems; 
+      var columnGaps = settings.columnGaps;
       
   /******************************
   Public Methods
