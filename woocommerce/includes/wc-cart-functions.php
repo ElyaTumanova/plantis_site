@@ -76,7 +76,7 @@ function ajax_button_text_js_script() {
 	if (!(is_product() )){
 		$text = __('Добавлен', 'woocommerce');
 		$svg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path fill="#fff" d="M8.305 20.982.179 12.856l2.031-2.031 6.095 6.094 13.08-13.08 2.03 2.032-15.11 15.111Z"/></svg>' 
-		?>;
+		?>
 	   <script>
 		  jQuery(function($) {
 			    var text = '<?php echo $text; ?>',      $this;

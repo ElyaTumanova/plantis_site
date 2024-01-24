@@ -127,7 +127,7 @@ function plnt_price_wrap(){
         //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
         plnt_outofstock_info();
         ?>
-        <div class="notices_html"></div>;
+        <div class="notices_html"></div>
         <?php
         //woocommerce_output_all_notices();
         get_template_part('template-parts/delivery-info'); // delivery info for card
