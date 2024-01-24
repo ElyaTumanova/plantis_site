@@ -36,11 +36,6 @@
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
 }
 
-.card__banners-wrap {
-    display: flex;
-    column-gap: 20px;
-}
-
 .card_banner:first-of-type {
     grid-area: banner1;
 }

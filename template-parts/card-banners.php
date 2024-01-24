@@ -4,12 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div class="card__banners-wrap">
-    <div class="card_banner">
-        <p>Напишите нам, и мы пришлём вам “живые” фотографии этого растения</p>
-        <?php get_template_part('template-parts/social-media-btns');?>
-    </div>
-    <div class="card_banner">
-        <p>При покупке <a href="<?php get_site_url()?>/product-category/gorshki_i_kashpo/" target="_blank" rel="noopener">горшка </a>— пересадка в подарок!</p>
-    </div>
+
+<div class="card_banner">
+    <p>Напишите нам, и мы пришлём вам “живые” фотографии этого растения</p>
+    <?php get_template_part('template-parts/social-media-btns');?>
+</div>
+<div class="card_banner">
+    <p>При покупке <a href="<?php get_site_url()?>/product-category/gorshki_i_kashpo/" target="_blank" rel="noopener">горшка </a>— пересадка в подарок!</p>
 </div>
