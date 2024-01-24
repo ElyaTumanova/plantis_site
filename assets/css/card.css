@@ -6,7 +6,7 @@
     grid-template-rows: repeat(3, auto);
     grid-template-areas:
     "image info price"
-    "image bunners bunners"
+    "image banner1 banner2"
     "descr sliders sliders";
     column-gap: 20px;
     row-gap: 40px;
@@ -37,9 +37,16 @@
 }
 
 .card__banners-wrap {
-    grid-area: bunners;
     display: flex;
     column-gap: 20px;
+}
+
+.card_banner:first-of-type {
+    grid-area: banner1;
+}
+
+.card_banner:last-of-type {
+    grid-area: banner2;
 }
 
 .card_banner {
