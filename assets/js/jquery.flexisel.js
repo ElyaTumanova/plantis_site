@@ -73,7 +73,7 @@
       var childSet = object.children();
       
         var innerWidth = listParent.width(); // Set widths
-        itemsWidth = (innerWidth)/itemsVisible;
+        itemsWidth = (innerWidth)/itemsVisible - 10;
         childSet.width(itemsWidth);
         childSet.last().insertBefore(childSet.first());
         childSet.last().insertBefore(childSet.first());
