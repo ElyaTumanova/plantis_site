@@ -6,7 +6,7 @@
     grid-template-rows: repeat(3, auto);
     grid-template-areas:
     "image info price"
-    "image bunners"
+    "image bunners bunners"
     "descr sliders sliders";
     column-gap: 20px;
     row-gap: 40px;
@@ -34,6 +34,10 @@
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+.card__bunners_wrap {
+    grid-area: bunners;
 }
 
 .card__description {
