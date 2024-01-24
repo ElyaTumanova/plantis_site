@@ -105,7 +105,7 @@ function ace_ajax_add_to_cart_add_fragments( $fragments ) {
             ) );
         }
     }
-    $fragments['woocommerce-notices-wrapper'] = ob_get_clean();
+    $fragments['div.woocommerce-notices-wrapper'] = ob_get_clean();
 
     wc_clear_notices();
 
