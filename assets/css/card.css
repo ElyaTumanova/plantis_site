@@ -263,7 +263,7 @@ input[type="number"] {
 }
 
 /* ссылка на просмотр корзины после добавления */
-.added_to_cart .wc-forward {
+.wc-forward {
     display: none;
 }
 
