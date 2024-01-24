@@ -36,8 +36,12 @@
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
 }
 
-.card__bunners_wrap {
+.card__banners-wrap {
     grid-area: bunners;
+    display: flex;
+    column-gap: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    padding: 10px;
 }
 
 .card__description {
