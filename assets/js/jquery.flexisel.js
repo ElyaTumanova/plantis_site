@@ -15,6 +15,7 @@
 
       var defaults = $.extend({
       visibleItems: 4,
+      columnGaps: 0,
       animationSpeed: 200,
       autoPlay: false,
       autoPlaySpeed: 3000,    		
@@ -81,6 +82,7 @@
 
         console.log(innerWidth);
         console.log(itemsWidth);
+        console.log(columnGaps);
 
 
         object.fadeIn();

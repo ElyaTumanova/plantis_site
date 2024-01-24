@@ -264,7 +264,7 @@ ul.products {
 .main__sale-gallery .yith-wcwl-add-to-wishlist {
     grid-area: wish; 
     display: flex;
-    align-items: center;
+    align-items: end;
     position: relative;
     top: 0;
 }
@@ -272,6 +272,7 @@ ul.products {
 .main__sale-gallery .yith-wcwl-add-button img {
     width: 27px;
     margin: 0;
+    margin-left: 10px;
     
 }
 
