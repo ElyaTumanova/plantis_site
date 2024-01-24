@@ -302,6 +302,7 @@ function plnt_get_cross_sells(){
                     jQuery(window).load(function() {
                         jQuery("#flexisel-cross-sells").flexisel({
                             visibleItems:3,
+                            columnGaps: 30,
                             animationSpeed: 1000,
                             autoPlay: false,
                             autoPlaySpeed: 3000,
