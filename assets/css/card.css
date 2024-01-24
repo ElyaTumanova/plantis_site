@@ -232,3 +232,41 @@ input[type="number"] {
 .added_to_cart .wc-forward {
     display: none;
 }
+
+
+/* стили для информации о доставке */
+.delivery_table {
+    width: 100%;
+    font-size: 12px;
+    line-height: 14px;
+    hyphens: none;
+  
+  }
+  .delivery_table__row {
+    display: flex;
+    justify-content: space-between;
+      padding-bottom: 5px;
+      padding-top: 5px;
+  }
+  
+  .delivery_table__row {
+  
+    border-bottom: 1px solid #E7D7CB;
+  
+  }
+  .delivery_table__row:last-child {
+  
+    border-bottom: none;
+  
+  }
+  
+  .delivery_table__row div:last-child {
+      font-weight: 600;
+  }
+  .delivery_table__header {
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0;
+    margin-bottom: 7px;
+    font-weight: 600;
+  }

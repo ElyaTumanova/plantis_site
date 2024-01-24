@@ -98,6 +98,7 @@ function plnt_price_wrap(){
         woocommerce_template_single_add_to_cart();
         //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
         plnt_outofstock_info();
+        get_template_part('template-parts/plnt-delivery-info'); // delivery info for card
         ?>
     </div>
     <?php 
@@ -252,8 +253,6 @@ function plnt_upsells_heading () {
         
 remove_action('woocommerce_after_single_product_summary','woocommerce_output_related_products', 20);
 add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 20);
-
-
 
 function plnt_get_cross_sells(){
     get_template_part('template-parts/plnt-cross-sells');
