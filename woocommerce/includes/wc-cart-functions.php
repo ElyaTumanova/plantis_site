@@ -35,6 +35,7 @@ function plnt_woocommerce_cart_header_fragment( $fragments ) {
 	plnt_woocommerce_cart_header();
  
 	$fragments[ 'a.header-cart__link' ] = ob_get_clean();
+	$fragments[ 'div.mini-cart__wrap' ] = ob_get_clean();
 	
 	return $fragments;
  
