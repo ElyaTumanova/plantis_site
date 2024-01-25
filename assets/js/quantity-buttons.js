@@ -31,8 +31,7 @@ jQuery(function ($){
 	console.log('hi');
 	
 	$( 'div.quantity .qty' ).change( function() {
-	
-		console.log(this);
+	console.log('hello');
 
 	//const qty = $(this).val();
 	//console.log(qty);
