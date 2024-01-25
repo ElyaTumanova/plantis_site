@@ -23,18 +23,6 @@
     position: fixed;
 }
 
-/* mini-cart */
-
-.mini-cart {
-    position: absolute;
-    top: 0;
-    background: var(--background);
-    padding: 50px;
-    left: 0;
-    right: 0;
-    z-index: 99999;
-}
-
 /* preorder popup */
 
 .preorder {
