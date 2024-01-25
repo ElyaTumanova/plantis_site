@@ -4,6 +4,14 @@
     display: none;
 }
 
+/* блок итого */
+
+.checkout-button {
+    color: var(--white);
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
 /* таблица корзины */
 
 .shop_table {
@@ -19,17 +27,21 @@
         min-width: 50px;
     }
 
-    td.product-remove {
-        font-size: 30px;
-        font-weight: 700;
-        text-align: center;
-    }
-
     th.product-thumbnail {
         width: 250px;
     }
 
-    td.product-name, td.product-price {
+    th.product-name {
+        width: 400px;
+    }
+    
+    td.product-remove {
+        font-size: 30px;
+        font-weight: 700;
+        text-align: left;
+    }
+
+    td.product-name, td.product-price, td.product-subtotal {
         font-size: 16px;
         font-weight: 600;
         line-height: 1.3;
@@ -66,7 +78,7 @@
             font-weight: 700;
             line-height: 1;
             text-align: center;
-            background-color: var(--accent-back);
+            background-color: var(--background);
             max-width: 100px;
         }
     }
