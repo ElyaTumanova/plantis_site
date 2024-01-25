@@ -102,7 +102,7 @@ function plnt_price_wrap(){
         woocommerce_template_single_price();
         ?><div class="cart"> <?php
             woocommerce_template_loop_add_to_cart();    //заменили обычную не яакс кнопку на аякс кнопку из каталога
-            woocommerce_quantity_input();               // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
+            plnt_get_quantity_input();               // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
             plnt_card_wishlist_btn();
         ?></div>
         <?php
@@ -113,6 +113,16 @@ function plnt_price_wrap(){
         ?>
     </div>
     <?php 
+};
+
+function plnt_get_quantity_input() {
+    global $product;
+    if(is_product()) {
+        $quantity =  $product->get_stock_quantity();
+        if ($quantity > 1) {
+            woocommerce_quantity_input();
+        }
+    } 
 };
 
 // function plnt_wish_wrap() {
