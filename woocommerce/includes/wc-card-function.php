@@ -117,6 +117,12 @@ function plnt_price_wrap(){
 
 ///////////////////////////////////////////
 function plnt_card_qty() {
+	?>
+	<span class="card-qty"><?php echo plnt_get_card_qty()?></span>
+	<?php
+}
+
+function plnt_get_card_qty() {
     global $product;
     $product_id = $product->get_id();
     $cart_content = WC()->cart->cart_contents;
@@ -131,10 +137,6 @@ function plnt_card_qty() {
     }
 
     return $cnt_products;
-
-	?>
-	<span class="card-qty"><?php echo $cnt_products?></span>
-	<?php
 }
 
 function plnt_card_qty_fragment( $fragments ) {
