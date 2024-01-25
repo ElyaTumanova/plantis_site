@@ -355,6 +355,10 @@
     opacity: 100%;
 }
 
+.woocommerce-mini-cart {
+    margin-bottom: 25px;
+}
+
 .woocommerce-mini-cart-item {
     display: grid;
     grid-template-columns: 100px 150px auto;
@@ -363,22 +367,60 @@
     "image name remove"
     "image price x";
     column-gap: 10px;
+    margin-bottom: 10px;
 }
 
 .woocommerce-mini-cart-item .remove {
     grid-area: remove;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 0;
+    padding-top: 7px;
 }
 
 .woocommerce-mini-cart-item .product {
     grid-area: image;
 }
 
-.woocommerce-mini-cart-item .product {
-    grid-area: image;
+.woocommerce-mini-cart-item .product-name {
+    grid-area: name;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .woocommerce-mini-cart-item .quantity {
     grid-area: price;
+}
+
+.woocommerce-mini-cart-item .quantity .woocommerce-Price-amount  {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.woocommerce-mini-cart__total span {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.woocommerce-mini-cart__total .woocommerce-Price-amount {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.woocommerce-mini-cart__buttons {
+    margin-top: 15px;
+}
+
+.woocommerce-mini-cart__buttons .button {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 7px;
+}
+
+.woocommerce-mini-cart__buttons .wc-forward {
+    margin-bottom: 10px;
 }
 
 
