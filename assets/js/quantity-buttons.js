@@ -40,7 +40,7 @@ jQuery(function ($){
 	}
 
 	console.log (newVal);
-	//qty.attr('value', newVal );
+	qty.attr('value', newVal );
 	//qty.parent().prev().attr( 'data-quantity', newVal );
 
 
