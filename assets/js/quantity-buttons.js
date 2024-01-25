@@ -10,20 +10,7 @@ jQuery(function ($){
 	console.log($(this));
 	console.log(qty);
  
-	// дальше меняем значение количества в зависимости от нажатия кнопки
-	// if ( $( this ).is( '.plus' ) ) {
-	// 	if ( max && ( max <= val ) ) {
-	// 		qty.attr('value', max );
-	// 	} else {
-	// 		qty.attr('value', val + step );
-	// 	}
-	// } else {
-	// 	if ( min && ( min >= val ) ) {
-	// 		qty.attr('value', min );
-	// 	} else if ( val > 1 ) {
-	// 		qty.attr('value', val - step );
-	// 	}
-	// }
+	// дальше определяем новое значение количества в зависимости от нажатия кнопки
 	var newVal;
 	if ( $( this ).is( '.plus' ) ) {
 		if ( max && ( max <= val ) ) {
@@ -39,9 +26,8 @@ jQuery(function ($){
 		}
 	}
 
-	console.log (newVal);
-	qty.attr('value', newVal );
-	qty.parent().prev().attr( 'data-quantity', newVal );
+	qty.attr('value', newVal );  //устанавливаем новое значение для инпута
+	qty.parent().prev().attr( 'data-quantity', newVal ); //устанавливаем новое значение для атрибута кнопки добавить в корзину
 
 
 	//$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки
@@ -49,17 +35,11 @@ jQuery(function ($){
 });
 })
 
-jQuery(function ($){
-	//console.log('hi');
-	
+
+// аналогичная функция - работает при изменении кол-ва в инпуте напрямую
+jQuery(function ($){	
 	$( 'div.quantity .qty' ).change( function() {
-	//console.log('hello');
-
 	const qty = $(this).val();
-	//console.log(qty);
-	//console.log($(this).parent().prev());
 	$(this).parent().prev().attr( 'data-quantity', qty );
-	//console.log($(this).parent().prev());
-
 	} )
 });
