@@ -330,25 +330,30 @@
 
 /* mini-cart */
 
-.mini-cart {
+.mini-cart__wrap {
     position: absolute;
-    top: 60px;
-    background: var(--background);
-    padding: 20px;
+    top: 0;
     right: 0;
     z-index: 99999;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
-    border-radius: 5px;
     visibility: hidden;
+    background: transparent;
+    padding-top: 60px;
 }
 
-.header-cart:hover > .mini-cart {
+.mini-cart {
+    background: var(--background);
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+
+.header-cart:hover > .mini-cart__wrap {
     visibility: visible;
 }
 
 .woocommerce-mini-cart-item {
     display: grid;
-    grid-template-columns: 100px auto auto;
+    grid-template-columns: 100px 150px auto;
     grid-template-rows: repeat(2,auto);
     grid-template-areas: 
     "image name remove"

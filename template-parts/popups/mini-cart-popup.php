@@ -4,7 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div class="mini-cart">
-    <?php woocommerce_mini_cart();?>
+<div class="mini-cart__wrap">
+    <div class="mini-cart">
+        <?php woocommerce_mini_cart();?>
+    </div>
 </div>
 
