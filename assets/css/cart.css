@@ -34,4 +34,41 @@
         line-height: 1.3;
     }
 
+    td.product-quantity {
+
+      .quantity {
+            width: fit-content;
+            border-radius: 5px;
+            display: flex;
+            /* box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.15); */
+        }
+        
+        .quantity button {
+            border: none;
+            background-color: var(--accent-back);
+            line-height: 1;
+            border-radius: 5px
+        }
+        
+        .quantity .plus {
+            font-size: 30px;
+            font-weight: 600;
+        }
+        
+        .quantity .minus {
+            font-size: 40px;
+        }
+        
+        .quantity input {
+            border: none;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            background-color: var(--accent-back);
+            max-width: 100px;
+        }
+    }
+
+
 }
