@@ -58,6 +58,7 @@
     font-size: 14px;
     line-height: 1.2;
     font-weight: 700;
+    margin-bottom: 4px;
 }
 
 .card_banner a {
@@ -196,7 +197,7 @@
     "cart wish"
     "quantity quantity";
     column-gap: 15px;
-    row-gap: 15px;
+    /* row-gap: 15px; */
 }
 
 .card__price-wrap .quantity {
@@ -229,6 +230,7 @@
     line-height: 1;
     text-align: center;
     background-color: var(--accent-back);
+    max-width: 100px;
 }
 
 .card__grid .cart .button {
@@ -270,6 +272,10 @@ input[type="number"] {
 
 
 /* стили для информации о доставке */
+
+.delivery-info {
+    margin-top: 10px;
+}
 .delivery_table {
     width: 100%;
     font-size: 12px;
