@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // wish list button in card
 
-add_action('woocommerce_after_add_to_cart_button', 'plnt_card_wishlist_btn', 10);
+// add_action('woocommerce_after_add_to_cart_button', 'plnt_card_wishlist_btn', 10); //работает если использрвать в карточке не аякс кнопку добавления в корзину
 
 function plnt_card_wishlist_btn() {
     echo do_shortcode('[yith_wcwl_add_to_wishlist]');

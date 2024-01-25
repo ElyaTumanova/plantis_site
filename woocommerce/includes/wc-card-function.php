@@ -98,8 +98,12 @@ function plnt_price_wrap(){
         <?php
         // plnt_check_stock_status();
         woocommerce_template_single_price();
-        woocommerce_template_loop_add_to_cart();    //заменили обычную не яакс кнопку на аякс кнопку из каталога
-        woocommerce_quantity_input();               // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
+        ?><div class="cart"> <?php
+            woocommerce_template_loop_add_to_cart();    //заменили обычную не яакс кнопку на аякс кнопку из каталога
+            woocommerce_quantity_input();               // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
+            plnt_card_wishlist_btn();
+        ?></div>
+        <?php
         //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
         plnt_outofstock_info();
         //woocommerce_output_all_notices();
@@ -109,13 +113,13 @@ function plnt_price_wrap(){
     <?php 
 };
 
-function plnt_wish_wrap() {
-    global $product;
-    $id = $product->get_id();
-    echo '
-    <div class="br_wish_wait_block br_wish_wait_'. $id .'" data-id='. $id .'><span class="br_ww_button br_wish_button br_wish_add button" data-type="wish" href="#add_to_wish_list"><i class="fa fa-heart-o"></i></span></div>
-    ';
-};
+// function plnt_wish_wrap() {
+//     global $product;
+//     $id = $product->get_id();
+//     echo '
+//     <div class="br_wish_wait_block br_wish_wait_'. $id .'" data-id='. $id .'><span class="br_ww_button br_wish_button br_wish_add button" data-type="wish" href="#add_to_wish_list"><i class="fa fa-heart-o"></i></span></div>
+//     ';
+// };
 
 function plnt_check_stock_status() {
     global $product;
