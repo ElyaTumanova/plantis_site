@@ -33,8 +33,8 @@ jQuery(function ($){
 	$( 'div.quantity .qty' ).change( function() {
 	console.log('hello');
 
-	//const qty = $(this).val();
-	//console.log(qty);
+	const qty = $(this).val();
+	console.log(qty);
 	// $(this).parent().next().attr( 'data-quantity', qty );
 
 	} )
