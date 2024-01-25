@@ -347,7 +347,7 @@
     border-radius: 5px;
 }
 
-.header-cart:hover > .mini-cart__wrap {
+.header-cart:hover .mini-cart__wrap {
     visibility: visible;
 }
 
