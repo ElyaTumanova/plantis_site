@@ -139,18 +139,18 @@ function plnt_get_card_qty() {
     return $cnt_products;
 }
 
-function plnt_card_qty_fragment( $fragments ) {
+// function plnt_card_qty_fragment( $fragments ) {
  
-	ob_start();
-	plnt_card_qty();
+// 	ob_start();
+// 	plnt_card_qty();
  
-	$fragments[ 'span.card-qty' ] = ob_get_clean();
+// 	$fragments[ 'span.card-qty' ] = ob_get_clean();
 	
-	return $fragments;
+// 	return $fragments;
  
-}
+// }
 
-add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_card_qty_fragment', 30 );
+// add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_card_qty_fragment', 30 );
 
 ////////////////////////////////////
 
