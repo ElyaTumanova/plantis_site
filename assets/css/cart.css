@@ -13,18 +13,18 @@
 
 thead {
 
-    &.product-remove {
+    .product-remove {
         min-width: 50px;
         font-size: 30px;
         font-weight: 700;
         text-align: center;
     }
 
-    &.product-thumbnail {
+    .product-thumbnail {
         max-width: 250px;
     }
 
-    &.product-name {
+    .product-name {
         font-size: 16px;
         font-weight: 600;
         line-height: 1.3;
