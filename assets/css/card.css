@@ -239,7 +239,8 @@
 }
 
 .card__grid .cart .added {
-    background-color: orange;
+    background-color: var(--added-cart);
+    border-color: var(--added-cart);
 }
 
 .card__grid .cart .yith-wcwl-add-to-wishlist {
