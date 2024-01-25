@@ -123,9 +123,11 @@ function trigger_for_ajax_add_to_cart() { ?>
             $('body').on( 'added_to_cart', function(){
                 // Your code here
                 console.log('added_to_cart'); // Test output on browser console
+                <?php
                 echo '<pre>';
                 print_r( 'hello' );
                 echo '</pre>';
+                ?>
             });
         })(jQuery);
     </script>
