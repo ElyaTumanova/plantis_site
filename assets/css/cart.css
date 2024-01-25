@@ -30,8 +30,6 @@
 /* таблица корзины */
 
 .shop_table {
-    border-spacing: 10px;
-    border-collapse: separate;
 
     thead {
         text-transform: uppercase;
@@ -40,6 +38,11 @@
 
     th {
         border-bottom: 1px solid var(--gray);
+        padding-bottom: 5px;
+    }
+
+    td {
+        padding: 10px;
     }
 
     th.product-remove {
