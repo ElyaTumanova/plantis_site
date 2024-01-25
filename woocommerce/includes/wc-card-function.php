@@ -117,10 +117,8 @@ function plnt_price_wrap(){
 
 ///////////////////////////////////////////
 function plnt_card_qty() {
-    global $product;
-    $product_id = $product->get_id();
 	?>
-	<span class="card-qty"><?php echo wp_kses_data(WC()->cart->get_cart_item($product_id))?></span>
+	<span class="card-qty"><?php echo wp_kses_data(WC()->cart->get_cart_item('product_id'))?></span>
 	<?php
 }
 
