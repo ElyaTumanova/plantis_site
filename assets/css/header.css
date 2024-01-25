@@ -32,6 +32,13 @@
     position: relative;
 }
 
+.fa-heart-o:before {
+    content: "";
+}
+
+.yith-wcwl-icon {
+    font-family: 'Nunito', sans-serif;
+}
 /* cart styles */
 
 .header-cart {
