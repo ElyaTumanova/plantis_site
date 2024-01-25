@@ -10,6 +10,9 @@
     border-spacing: 10px;
     border-collapse: separate;
 
+    thead {
+        text-transform: uppercase;
+    }
 
     th.product-remove {
         min-width: 50px;
