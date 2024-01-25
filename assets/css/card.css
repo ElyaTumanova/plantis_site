@@ -272,7 +272,7 @@ input[type="number"] {
 }
 
 /* ссылка на просмотр корзины после добавления */
-.wc-forward {
+.added_to_cart .wc-forward {
     display: none;
 }
 
