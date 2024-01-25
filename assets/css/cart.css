@@ -39,7 +39,7 @@
     }
 
     th {
-        border-bottom: 1px solid var(--gary);
+        border-bottom: 1px solid var(--gray);
     }
 
     th.product-remove {
