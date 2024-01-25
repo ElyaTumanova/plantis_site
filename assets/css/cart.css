@@ -27,6 +27,8 @@
 .cart_totals .woocommerce-Price-amount {
     font-size: 30px;
 }
+
+
 /* таблица корзины */
 
 .shop_table {
@@ -42,7 +44,7 @@
     }
 
     td {
-        padding: 0 10px 0 0;
+        padding: 0 10px 20px 0;
     }
 
     th.product-remove {
@@ -71,7 +73,7 @@
         text-align: left;
     }
 
-    td.product-remove a:hover, td.product-remove a:active  {
+    td.product-remove a:hover, td.product-remove a:active, td.product-remove a:focus  {
         text-decoration: none;
         color: var(--accent-color);
     }
