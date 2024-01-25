@@ -190,7 +190,7 @@
 
 /* кнопка в коризину и инпут изменения количетсва */
 
-.card__grid .cart {
+.card__grid .add-to-cart-wrap {
     display: grid;
     grid-template-columns: 70% 30%;
     grid-template-rows: repeat(2, auto);
@@ -234,22 +234,22 @@
     max-width: 100px;
 }
 
-.card__grid .cart .button {
+.card__grid .add-to-cart-wrap .button {
     grid-area: cart;
     padding: 15px 10px;
 }
 
-.card__grid .cart .added {
+.card__grid .add-to-cart-wrap .added {
     background-color: var(--added-cart);
     border-color: var(--added-cart);
 }
 
-.card__grid .cart .yith-wcwl-add-to-wishlist {
+.card__grid .add-to-cart-wrap .yith-wcwl-add-to-wishlist {
     grid-area: wish;
     margin: 0;
     align-self: center;
 }
-.card__grid .cart .yith-wcwl-add-button a, .card__grid .cart .yith-wcwl-add-button span {
+.card__grid .add-to-cart-wrap .yith-wcwl-add-button a, .card__grid .add-to-cart-wrap .yith-wcwl-add-button span {
     font-size: 0;
 }
 
@@ -272,7 +272,7 @@ input[type="number"] {
 }
 
 /* ссылка на просмотр корзины после добавления */
-.cart .wc-forward {
+.add-to-cart-wrap .wc-forward {
     display: none;
 }
 

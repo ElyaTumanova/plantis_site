@@ -100,7 +100,7 @@ function plnt_price_wrap(){
         // plnt_check_stock_status();
         //plnt_card_qty();
         woocommerce_template_single_price();
-        ?><div class="cart"> <?php
+        ?><div class="add-to-cart-wrap"> <?php
             woocommerce_template_loop_add_to_cart();    //заменили обычную не яакс кнопку на аякс кнопку из каталога
             plnt_get_quantity_input();               // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
             plnt_card_wishlist_btn();
