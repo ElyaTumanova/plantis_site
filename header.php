@@ -82,5 +82,8 @@
 				</nav><!-- #site-navigation -->
 			</div>
 		</div>
+		<div class="mini-cart">
+			<?php woocommerce_mini_cart();?>
+		</div>
 	</header><!-- #header -->
 	
