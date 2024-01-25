@@ -106,15 +106,6 @@ function plnt_price_wrap(){
         //woocommerce_output_all_notices();
         get_template_part('template-parts/delivery-info'); // delivery info for card
         ?>
-        <script>
-            $( 'div.quantity .qty' ).change( function() {
-
-            const qty = $(this).val();
-                console.log(qty);
-           // $(this).parent().next().attr( 'data-quantity', qty );
-
-            } );
-        </script>
     </div>
     <?php 
 };

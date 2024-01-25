@@ -26,3 +26,13 @@ jQuery(function ($){
  
 });
 })
+
+jQuery(function ($){
+	$( 'div.quantity .qty' ).change( function() {
+
+	const qty = $(this).val();
+	console.log(qty);
+	// $(this).parent().next().attr( 'data-quantity', qty );
+
+	} )
+});
