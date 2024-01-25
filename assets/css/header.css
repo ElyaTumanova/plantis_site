@@ -337,7 +337,7 @@
     z-index: 99999;
     visibility: hidden;
     background: transparent;
-    transform: translateY(20px);
+    transform: translateY(-20px);
     opacity: 0;
     transition: all 200ms ease-out;
 }
@@ -357,6 +357,7 @@
 
 .woocommerce-mini-cart {
     margin-bottom: 25px;
+    color: var(--text);
 }
 
 .woocommerce-mini-cart-item {
@@ -397,6 +398,9 @@
     font-weight: 700;
 }
 
+.woocommerce-mini-cart__total {
+    color: var(--text);
+}
 .woocommerce-mini-cart__total span {
     font-size: 18px;
     font-weight: 600;
