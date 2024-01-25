@@ -11,60 +11,44 @@ remove_action('woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10);
 add_action('woocommerce_before_cart', 'woocommerce_cart_totals', 20);
 
 
-// вывод корзины в хедере
-function plnt_woocommerce_cart_header_1() {
-	?>
-		<?php $cart_icon = carbon_get_theme_option('cart_icon')?>
-
-			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="header-btn__wrap header-cart__link">
-				<span class="header__count"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
-				<img class="header-btn__icon" src="<?php echo $cart_icon ?>" alt="cart" width="25" height="25">
-				<span class="header-btn__label">Корзина</span>		
-			</a>
-
+// вывод корзины в хедере и мини корзины
+function plnt_woocommerce_cart_header() {
+	$cart_icon = carbon_get_theme_option('cart_icon')?>
+		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="header-btn__wrap header-cart__link">
+			<span class="header__count"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
+			<img class="header-btn__icon" src="<?php echo $cart_icon ?>" alt="cart" width="25" height="25">
+			<span class="header-btn__label">Корзина</span>		
+		</a>
 	<?php
 }
 
-function plnt_woocommerce_cart_header_2() {
-	?>
-
-
-			
-			<div class="mini-cart__wrap">
-				<div class="mini-cart">
-					<?php woocommerce_mini_cart();?>
-				</div>
-			</div>
-
-	<?php
-}
-
-
-function plnt_woocommerce_cart_header_fragment_1( $fragments ) {
- 
+function plnt_woocommerce_cart_header_fragment( $fragments ) {
 	ob_start();
-	plnt_woocommerce_cart_header_1();
- 
+	plnt_woocommerce_cart_header();
 	$fragments[ 'a.header-cart__link'] = ob_get_clean();
-	
 	return $fragments;
- 
 }
 
-add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_fragment_1', 25 );
+add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_fragment', 25 );
 
-function plnt_woocommerce_cart_header_fragment_2( $fragments ) {
- 
+function plnt_woocommerce_mini_cart() {
+	?>		
+		<div class="mini-cart__wrap">
+			<div class="mini-cart">
+				<?php woocommerce_mini_cart();?>
+			</div>
+		</div>
+	<?php
+}
+
+function plnt_woocommerce_mini_cart_fragment( $fragments ) {
 	ob_start();
-	plnt_woocommerce_cart_header_2();
- 
+	plnt_woocommerce_mini_cart();
 	$fragments[ 'div.mini-cart__wrap'] = ob_get_clean();
-	
 	return $fragments;
- 
 }
 
-add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_fragment_2', 25 );
+add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_mini_cart_fragment', 25 );
 
 
 

@@ -70,8 +70,9 @@
 					</a>
 				</div>
 				<div class="header-cart">
-					<?php plnt_woocommerce_cart_header_1(); 
-						plnt_woocommerce_cart_header_2(); 
+					<?php 
+						plnt_woocommerce_cart_header(); 
+						plnt_woocommerce_mini_cart(); 
 					?>
 				</div><!-- .header-cart -->
 			</div>
