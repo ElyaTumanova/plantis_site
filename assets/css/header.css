@@ -344,7 +344,7 @@
 
 .woocommerce-mini-cart-item {
     display: grid;
-    grid-template-columns: 100px, auto, auto;
+    grid-template-columns: 100px auto auto;
     grid-template-rows: repeat(2,auto);
     grid-template-areas: 
     "image name remove"
