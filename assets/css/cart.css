@@ -38,7 +38,7 @@
 
     th {
         border-bottom: 1px solid var(--gray);
-        padding-bottom: 5px;
+        padding: 0 10px 5px 0;
     }
 
     td {
