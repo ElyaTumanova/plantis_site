@@ -38,8 +38,12 @@
         text-align: left;
     }
 
+    th {
+        border-bottom: 1px solid var(--gary);
+    }
+
     th.product-remove {
-        min-width: 50px;
+        width: fit-content;
     }
 
     th.product-thumbnail {
@@ -54,6 +58,11 @@
         font-size: 30px;
         font-weight: 700;
         text-align: left;
+    }
+
+    td.product-remove a:hover {
+        text-decoration: none;
+        color: var(--accent-color);
     }
 
     td.product-name, td.product-price, td.product-subtotal {
