@@ -95,10 +95,6 @@
     color: var(--accent-color);
 }
 
-.card__grid .sale_badge {
-    bottom: 4px;
-}
-
 .card__image-wrap img {
     border-radius: 5px;
 }
