@@ -27,10 +27,10 @@ jQuery(function ($){
 	}
 
 	qty.attr('value', newVal );  //устанавливаем новое значение для инпута
-	qty.parent().prev().attr( 'data-quantity', newVal ); //устанавливаем новое значение для атрибута кнопки добавить в корзину
+	qty.parent().prev().attr( 'data-quantity', newVal ); //устанавливаем новое значение для атрибута кнопки добавить в корзину. div "quantity" должен идти сразу за кнопкой в корзирну
 
 
-	//$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки
+	$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки
  
 });
 })
