@@ -73,6 +73,7 @@
 					<?php plnt_woocommerce_cart_header(); ?>
 				</div><!-- .header-cart -->
 			</div>
+			<?php get_template_part('template-parts/popups/mini-cart-popup');?>
 		</div>
 		
 		<div class="header__menu">
