@@ -117,11 +117,25 @@ function plnt_price_wrap(){
 
 ///////////////////////////////////////////
 function plnt_card_qty() {
+    global $product;
+    $product_id = $product->get_id();
+    $cart_content = WC()->cart->cart_contents;
+
+    $cnt_products = 0;
+    if ( $cart_content ) {
+        foreach ( $cart_content as $cart_item ) {
+            if ( $cart_item['product_id'] == $product_id ) {
+                $cnt_products += $cart_item['quantity'];
+            }
+        }
+    }
+
+    return $cnt_products;
+
 	?>
-	<span class="card-qty"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
+	<span class="card-qty"><?php echo $cnt_products?></span>
 	<?php
 }
-
 
 function plnt_card_qty_fragment( $fragments ) {
  
