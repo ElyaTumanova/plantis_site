@@ -15,6 +15,9 @@
 .card__image-wrap {
     grid-area: image;
     position: relative;
+    /* чтобы не было смещения пока грузится слайдер*/
+    max-height: 585px;
+    overflow: hidden;
 }
 
 .woocommerce-product-gallery__trigger {
