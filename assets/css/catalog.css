@@ -84,27 +84,6 @@ ul.products {
     }
 }
 
-/* доп стили для классов load more */
-/* .catalog__grid .more-page {
-    display: flex;
-    align-items: stretch;
-    flex-direction: row;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    word-break: break-word;
-    min-width: 12vw;
-    column-gap: 16px;
-    row-gap: 16px;
-    list-style: none;
-}
-
-.catalog__grid .more-page li.product {
-    width: calc(100% / 2 - 16px);
-}
-
-.woocommerce-loop-product__link {
-    position: relative;
-} */
 
 /* стили для карточки товара в каталоге */
 
@@ -112,6 +91,15 @@ ul.products {
 .catalog__products-wrap .wc-forward {
     display: none;
 }
+
+.woocommerce-LoopProduct-link {
+    position: relative;
+    /* чтобы не было смещения пока грузится слайдер*/
+    max-height: 439px; 
+    overflow: hidden;
+}
+
+/* кнопка добавления в корзину */
 
 .add_to_cart_button, .product_type_simple {
     width: 100%;
@@ -124,6 +112,7 @@ ul.products {
     margin: 10px 0 15px;
 }
 
+/* заголовок и описание */
 .woocommerce-loop-product__title {
     font-size: 20px;
     font-weight: 700;
@@ -164,6 +153,7 @@ ul.products {
     color: var(--red-color);
 }
 
+/* метки */
 .catalog__tag {
     border-radius: 20px;
     padding: 0px 7px;
@@ -297,7 +287,7 @@ ul.products {
     font-size: 14px;
     top: 0;
     bottom: auto;
-    right: 99px;
+    right: -107px;
     border-radius: 5px;
 }
 
