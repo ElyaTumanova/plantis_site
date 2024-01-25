@@ -150,7 +150,7 @@ function plnt_card_qty_fragment( $fragments ) {
  
 }
 
-add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_card_qty_fragment', 25 );
+add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_card_qty_fragment', 30 );
 
 ////////////////////////////////////
 
