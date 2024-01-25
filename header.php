@@ -54,7 +54,12 @@
 			</div><!-- .description -->
 			<div class="header__wrap">
 				<div class="header__wishlist">
-				<?php echo do_shortcode('[yith_wcwl_items_count]')?>
+					<?php $whishlist_icon = carbon_get_theme_option('whishlist_icon')?>
+					<a href="<?php get_site_url()?>/whishlist/" class="header-btn__wrap">
+						<span class="header-cart__count"><?php echo do_shortcode('[yith_wcwl_items_count]')?></span>
+						<img class="header-btn__icon" src="<?php echo $whishlist_icon ?>" alt="wishlist" width="25" height="25">
+						<span class="header-btn__label">Избранное</span>		
+					</a>
 				</div>
 				<div class="header__account">
 					<?php $account_icon = carbon_get_theme_option('account_icon')?>
