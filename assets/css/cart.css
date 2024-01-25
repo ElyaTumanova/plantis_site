@@ -15,16 +15,19 @@
 
 th.product-remove {
     min-width: 50px;
+}
+
+td.product-remove {
     font-size: 30px;
     font-weight: 700;
     text-align: center;
 }
 
 th.product-thumbnail {
-    max-width: 250px;
+    width: 250px;
 }
 
-th.product-name {
+td.product-name {
     font-size: 16px;
     font-weight: 600;
     line-height: 1.3;
