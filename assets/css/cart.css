@@ -6,18 +6,16 @@
 
 /* блок итого */
 
-.cart_totals .wc-proceed-to-checkout {
-    margin-left: 20px;
+.cart_totals {
+    margin: 15px 0;
+    display: flex;
+    column-gap: 20px;
 }
 
 .cart_totals .checkout-button {
     color: var(--white);
     background-color: var(--accent-color);
     border-color: var(--accent-color);
-}
-
-.cart_totals {
-    margin: 15px 0;
 }
 
 .cart_totals .order-total {
