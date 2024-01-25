@@ -85,7 +85,7 @@ ul.products {
 }
 
 /* доп стили для классов load more */
-.catalog__grid .more-page {
+/* .catalog__grid .more-page {
     display: flex;
     align-items: stretch;
     flex-direction: row;
@@ -104,10 +104,14 @@ ul.products {
 
 .woocommerce-loop-product__link {
     position: relative;
-}
+} */
 
 /* стили для карточки товара в каталоге */
 
+/* ссылка на просмотр корзины после добавления */
+.catalog__products-wrap .wc-forward {
+    display: none;
+}
 
 .add_to_cart_button, .product_type_simple {
     width: 100%;
