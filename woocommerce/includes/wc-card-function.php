@@ -115,63 +115,6 @@ function plnt_price_wrap(){
     <?php 
 };
 
-///////////////////////////////////////////
-add_action( 'wp_footer', 'trigger_for_ajax_add_to_cart' );
-function trigger_for_ajax_add_to_cart() { ?>
-    <script type="text/javascript">
-        (function($){
-            $('body').on( 'added_to_cart', function(){
-                // Your code here
-                console.log('added_to_cart'); // Test output on browser console
-                <?php
-                echo '<pre>';
-                print_r( 'hello' );
-                echo '</pre>';
-                ?>
-            });
-        })(jQuery);
-    </script>
-<?php }
-
-
-function plnt_card_qty() {
-	?>
-	<span class="card-qty"><?php echo wp_kses_data(WC()->cart->get_cart_item('product_id'))?></span>
-	<?php
-}
-
-function plnt_get_card_qty() {
-    global $product;
-    $product_id = $product->get_id();
-    $cart_content = WC()->cart->cart_contents;
-
-    $cnt_products = 0;
-    if ( $cart_content ) {
-        foreach ( $cart_content as $cart_item ) {
-            if ( $cart_item['product_id'] == $product_id ) {
-                $cnt_products += $cart_item['quantity'];
-            }
-        }
-    }
-
-    return $cnt_products;
-}
-
-function plnt_card_qty_fragment( $fragments ) {
- 
-	ob_start();
-	plnt_card_qty();
- 
-	$fragments[ 'span.card-qty' ] = ob_get_clean();
-	
-	return $fragments;
- 
-}
-
-//add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_card_qty_fragment', 25 );
-
-////////////////////////////////////
-
 // function plnt_wish_wrap() {
 //     global $product;
 //     $id = $product->get_id();
