@@ -118,7 +118,7 @@ function plnt_price_wrap(){
 ///////////////////////////////////////////
 function plnt_card_qty() {
 	?>
-	<span class="card-qty"><?php echo plnt_get_card_qty()?></span>
+	<span class="card-qty"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
 	<?php
 }
 
@@ -139,18 +139,18 @@ function plnt_get_card_qty() {
     return $cnt_products;
 }
 
-// function plnt_card_qty_fragment( $fragments ) {
+function plnt_card_qty_fragment( $fragments ) {
  
-// 	ob_start();
-// 	plnt_card_qty();
+	ob_start();
+	plnt_card_qty();
  
-// 	$fragments[ 'span.card-qty' ] = ob_get_clean();
+	$fragments[ 'span.card-qty' ] = ob_get_clean();
 	
-// 	return $fragments;
+	return $fragments;
  
-// }
+}
 
-// add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_card_qty_fragment', 30 );
+add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_card_qty_fragment', 25 );
 
 ////////////////////////////////////
 
