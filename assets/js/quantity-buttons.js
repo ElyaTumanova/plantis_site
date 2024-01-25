@@ -41,7 +41,7 @@ jQuery(function ($){
 
 	console.log (newVal);
 	qty.attr('value', newVal );
-	//qty.parent().prev().attr( 'data-quantity', newVal );
+	qty.parent().prev().attr( 'data-quantity', newVal );
 
 
 	//$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки
