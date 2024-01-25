@@ -3,6 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 ?>
+
 <div class="search-popup popup">
     <div class="search">
         <div class="search__wrap container">
@@ -12,4 +13,4 @@ if ( ! defined( 'ABSPATH' ) ) {
         <div class="search-result"></div>
     </div>
     <div class="search__popup-overlay popup-overlay"></div>
-</div>	
+</div>
