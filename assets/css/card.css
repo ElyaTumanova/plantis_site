@@ -186,8 +186,9 @@
     margin-bottom: 35px;
 }
 
+/* кнопка в коризину и инпут изменения количетсва */
 
-.card__grid .cart {
+/* .card__grid .cart {
     display: grid;
     grid-template-columns: 70% 30%;
     grid-template-rows: repeat(2, auto);
@@ -196,32 +197,32 @@
     "quantity quantity";
     column-gap: 15px;
     row-gap: 15px;
-}
+} */
 
-.card__grid .cart .quantity {
-    grid-area: quantity;
+.card__price-wrap .quantity {
+    /* grid-area: quantity; */
     width: fit-content;
     border-radius: 5px;
     display: flex;
     /* box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.15); */
 }
 
-.card__grid .cart .quantity button {
+.card__price-wrap .quantity button {
     border: none;
     background-color: var(--accent-back);
     line-height: 1;
     border-radius: 5px
 }
 
-.card__grid .cart .quantity .plus {
+.card__price-wrap .quantity .plus {
     font-size: 30px;
     font-weight: 600;
 }
-.card__grid .cart .quantity .minus {
+.card__price-wrap .quantity .minus {
     font-size: 40px;
 }
 
-.card__grid .cart .quantity input {
+.card__price-wrap .quantity input {
     border: none;
     font-size: 20px;
     font-weight: 700;
@@ -230,19 +231,19 @@
     background-color: var(--accent-back);
 }
 
-.card__grid .cart .button {
+/* .card__grid .cart .button {
     grid-area: cart;
     padding: 15px 10px;
-}
+} */
 
-.card__grid .cart .yith-wcwl-add-to-wishlist {
+/* .card__grid .cart .yith-wcwl-add-to-wishlist {
     grid-area: wish;
     margin: 0;
     align-self: center;
 }
 .card__grid .cart .yith-wcwl-add-button a, .card__grid .cart .yith-wcwl-add-button span {
     font-size: 0;
-}
+} */
 
 /* скрываем лишнее */
 

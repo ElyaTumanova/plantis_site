@@ -98,9 +98,8 @@ function plnt_price_wrap(){
         <?php
         // plnt_check_stock_status();
         woocommerce_template_single_price();
-        // woocommerce_template_single_add_to_cart();
-        woocommerce_template_loop_add_to_cart();
-        woocommerce_quantity_input();
+        woocommerce_template_loop_add_to_cart();    //заменили обычную не яакс кнопку на аякс кнопку из каталога
+        woocommerce_quantity_input();               // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
         //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
         plnt_outofstock_info();
         //woocommerce_output_all_notices();
