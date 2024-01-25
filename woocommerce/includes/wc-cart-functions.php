@@ -20,6 +20,11 @@ function plnt_woocommerce_cart_header() {
 			<img class="header-btn__icon" src="<?php echo $cart_icon ?>" alt="cart" width="25" height="25">
 			<span class="header-btn__label">Корзина</span>		
 		</a>
+		<div class="mini-cart__wrap">
+			<div class="mini-cart">
+				<?php woocommerce_mini_cart();?>
+			</div>
+		</div>
 	<?php
 }
 

@@ -71,7 +71,7 @@
 				</div>
 				<div class="header-cart">
 					<?php plnt_woocommerce_cart_header(); ?>
-					<?php get_template_part('template-parts/popups/mini-cart-popup');?>
+					<?php //get_template_part('template-parts/popups/mini-cart-popup');?>
 				</div><!-- .header-cart -->
 			</div>
 		</div>
