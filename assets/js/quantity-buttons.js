@@ -11,19 +11,37 @@ jQuery(function ($){
 	console.log(qty);
  
 	// дальше меняем значение количества в зависимости от нажатия кнопки
+	// if ( $( this ).is( '.plus' ) ) {
+	// 	if ( max && ( max <= val ) ) {
+	// 		qty.attr('value', max );
+	// 	} else {
+	// 		qty.attr('value', val + step );
+	// 	}
+	// } else {
+	// 	if ( min && ( min >= val ) ) {
+	// 		qty.attr('value', min );
+	// 	} else if ( val > 1 ) {
+	// 		qty.attr('value', val - step );
+	// 	}
+	// }
+	var newVal;
 	if ( $( this ).is( '.plus' ) ) {
 		if ( max && ( max <= val ) ) {
-			qty.attr('value', max );
+			newVal= max;
 		} else {
-			qty.attr('value', val + step );
+			newVal= val + step ;
 		}
 	} else {
 		if ( min && ( min >= val ) ) {
-			qty.attr('value', min );
+			newVal=  min;
 		} else if ( val > 1 ) {
-			qty.attr('value', val - step );
+			newVal= val - step;
 		}
 	}
+
+	console.log (newVal);
+	//qty.attr('value', newVal );
+	//qty.parent().prev().attr( 'data-quantity', newVal );
 
 
 	//$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки
