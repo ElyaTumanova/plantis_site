@@ -339,7 +339,11 @@
     z-index: 99999;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
-    /* visibility: hidden; */
+    visibility: hidden;
+}
+
+.header-cart:hover > .mini-cart {
+    visibility: visible;
 }
 
 .woocommerce-mini-cart-item {
@@ -367,13 +371,6 @@
 .woocommerce-mini-cart-item .quantity {
     grid-area: price;
 }
-
-/* .woocommerce-mini-cart-item img {
-    max-width: 100px;
-} */
-/* .woocommerce-mini-cart-item a {
-    display: flex;
-} */
 
 
   

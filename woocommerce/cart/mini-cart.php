@@ -66,7 +66,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 						<a class="product" href="<?php echo esc_url( $product_permalink ); ?>">
 							<?php echo $thumbnail; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 						</a>
-                        <span class="product-name"><?php echo wp_kses_post( $product_name )?>;</span>
+                        <span class="product-name"><?php echo wp_kses_post( $product_name )?></span>
 					<?php endif; ?>
 					<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					<?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $cart_item['quantity'], $product_price ) . '</span>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
