@@ -28,6 +28,10 @@
     margin: 0;
 }
 
+.header__wishlist {
+    position: relative;
+}
+
 /* cart styles */
 
 .header-cart {
