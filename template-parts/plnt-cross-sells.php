@@ -45,7 +45,7 @@ if( !empty ($crosssell_ids) ){
 
             </ul>
 
-            <script type="text/javascript">
+            <!-- <script type="text/javascript">
                 jQuery(window).load(function() {
                     jQuery("#flexisel-cross-sells").flexisel({
                         visibleItems:3,
@@ -71,7 +71,7 @@ if( !empty ($crosssell_ids) ){
                         }
                     });
                 });
-            </script>
+            </script> -->
 
             </div>
 

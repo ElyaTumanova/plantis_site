@@ -236,8 +236,10 @@ ul.products {
 /* sale gallery */
 
 .main__sale-gallery-wrap {
-    max-height: 286px;
+    /* чтобы не было смещения пока грузится слайдер*/
+    max-height: 286px; 
     overflow: hidden;
+    
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
     padding: 15px 10px;
     border-radius: 5px;
