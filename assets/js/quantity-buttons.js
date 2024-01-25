@@ -35,7 +35,8 @@ jQuery(function ($){
 
 	const qty = $(this).val();
 	console.log(qty);
-	// $(this).parent().next().attr( 'data-quantity', qty );
+	console.log($(this).parent());
+	//$(this).parent().next().attr( 'data-quantity', qty );
 
 	} )
 });
