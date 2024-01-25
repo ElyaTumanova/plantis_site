@@ -28,10 +28,14 @@ jQuery(function ($){
 })
 
 jQuery(function ($){
+	console.log('hi');
+	
 	$( 'div.quantity .qty' ).change( function() {
+	
+		console.log(this);
 
-	const qty = $(this).val();
-	console.log(qty);
+	//const qty = $(this).val();
+	//console.log(qty);
 	// $(this).parent().next().attr( 'data-quantity', qty );
 
 	} )
