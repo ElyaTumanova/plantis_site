@@ -342,9 +342,9 @@
     /* visibility: hidden; */
 }
 
-/* .woocommerce-mini-cart-item {
+.woocommerce-mini-cart-item {
     display: grid;
-    grid-template-columns: 50px, auto, auto;
+    grid-template-columns: 100px, auto, auto;
     grid-template-rows: repeat(2,auto);
     grid-template-areas: 
     "image name remove"
@@ -356,14 +356,22 @@
     grid-area: remove;
 }
 
-.woocommerce-mini-cart-item .remove {
-    grid-area: remove;
+.woocommerce-mini-cart-item .product {
+    grid-area: image;
 }
 
-.woocommerce-mini-cart-item img {
-    max-width: 100px;
+.woocommerce-mini-cart-item .product {
+    grid-area: image;
 }
-.woocommerce-mini-cart-item a {
+
+.woocommerce-mini-cart-item .quantity {
+    grid-area: price;
+}
+
+/* .woocommerce-mini-cart-item img {
+    max-width: 100px;
+} */
+/* .woocommerce-mini-cart-item a {
     display: flex;
 } */
 
