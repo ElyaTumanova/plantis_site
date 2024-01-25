@@ -27,7 +27,7 @@ jQuery(function ($){
 	}
 
 	qty.attr('value', newVal );  //устанавливаем новое значение для инпута
-	qty.parent().prev(".add_to_cart_button").attr( 'data-quantity', newVal ); //устанавливаем новое значение для атрибута кнопки добавить в корзину. div "quantity" должен идти сразу за кнопкой в корзирну
+	qty.parent().parent().find(".add_to_cart_button").attr( 'data-quantity', newVal ); //устанавливаем новое значение для атрибута кнопки добавить в корзину. div "quantity" должен идти сразу за кнопкой в корзирну
 
 
 	$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки
