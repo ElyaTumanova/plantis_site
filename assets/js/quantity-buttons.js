@@ -9,23 +9,21 @@ jQuery(function ($){
 	step = parseInt( qty.attr( 'step' ) );
 	console.log($(this));
 	console.log(qty);
-
-	qty.attr('value', '55');
  
 	// дальше меняем значение количества в зависимости от нажатия кнопки
-	// if ( $( this ).is( '.plus' ) ) {
-	// 	if ( max && ( max <= val ) ) {
-	// 		qty.val( max );
-	// 	} else {
-	// 		qty.val( val + step );
-	// 	}
-	// } else {
-	// 	if ( min && ( min >= val ) ) {
-	// 		qty.val( min );
-	// 	} else if ( val > 1 ) {
-	// 		qty.val( val - step );
-	// 	}
-	// }
+	if ( $( this ).is( '.plus' ) ) {
+		if ( max && ( max <= val ) ) {
+			qty.attr('value', max );
+		} else {
+			qty.attr('value', val + step );
+		}
+	} else {
+		if ( min && ( min >= val ) ) {
+			qty.attr('value', min );
+		} else if ( val > 1 ) {
+			qty.attr('value', val - step );
+		}
+	}
 
 
 	//$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки
