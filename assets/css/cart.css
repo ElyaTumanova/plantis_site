@@ -56,6 +56,14 @@
     th.product-name {
         width: 400px;
     }
+
+    th.product-quantity, th.product-price, th.product-subtotal {
+        text-align: center;
+    }
+
+    td.product-price, td.product-subtotal {
+        text-align: center;
+    }
     
     td.product-remove {
         font-size: 30px;
@@ -80,6 +88,7 @@
             width: fit-content;
             border-radius: 5px;
             display: flex;
+            margin: auto;
             /* box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.15); */
         }
         
