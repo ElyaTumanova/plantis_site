@@ -98,7 +98,9 @@ function plnt_price_wrap(){
         <?php
         // plnt_check_stock_status();
         woocommerce_template_single_price();
-        woocommerce_template_single_add_to_cart();
+        // woocommerce_template_single_add_to_cart();
+        woocommerce_template_loop_add_to_cart();
+        woocommerce_quantity_input();
         //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
         plnt_outofstock_info();
         //woocommerce_output_all_notices();
