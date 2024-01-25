@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
 remove_action('woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10);
-add_action('woocommerce_before_cart_contents', 'woocommerce_cart_totals', 10)
+add_action('woocommerce_before_cart_contents', 'woocommerce_cart_totals', 10);
 
 
 // вывод корзины в хедере
