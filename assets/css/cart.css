@@ -63,7 +63,7 @@
         text-align: left;
     }
 
-    td.product-remove a:hover {
+    td.product-remove a:hover, td.product-remove a:active  {
         text-decoration: none;
         color: var(--accent-color);
     }
