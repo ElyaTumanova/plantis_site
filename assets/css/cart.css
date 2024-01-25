@@ -1,0 +1,32 @@
+/* скрываем кнопку "Обновить корзину" */
+
+.woocommerce-cart-form [name="update_cart"] {
+    display: none;
+}
+
+/* таблица корзины */
+
+.shop_table {
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+
+thead {
+
+    &.product-remove {
+        min-width: 50px;
+        font-size: 30px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    &.product-thumbnail {
+        max-width: 250px;
+    }
+
+    &.product-name {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+}
