@@ -238,6 +238,10 @@
     padding: 15px 10px;
 }
 
+.card__grid .cart .button .added {
+    background-color: orange;
+}
+
 .card__grid .cart .yith-wcwl-add-to-wishlist {
     grid-area: wish;
     margin: 0;
