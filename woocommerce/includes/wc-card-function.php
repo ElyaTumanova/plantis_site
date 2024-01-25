@@ -98,7 +98,7 @@ function plnt_price_wrap(){
     <div class="card__price-wrap">
         <?php
         // plnt_check_stock_status();
-        plnt_card_qty();
+        //plnt_card_qty();
         woocommerce_template_single_price();
         ?><div class="cart"> <?php
             woocommerce_template_loop_add_to_cart();    //заменили обычную не яакс кнопку на аякс кнопку из каталога
@@ -116,6 +116,19 @@ function plnt_price_wrap(){
 };
 
 ///////////////////////////////////////////
+add_action( 'wp_footer', 'trigger_for_ajax_add_to_cart' );
+function trigger_for_ajax_add_to_cart() { ?>
+    <script type="text/javascript">
+        (function($){
+            $('body').on( 'added_to_cart', function(){
+                // Your code here
+                console.log('added_to_cart'); // Test output on browser console
+            });
+        })(jQuery);
+    </script>
+<?php }
+
+
 function plnt_card_qty() {
 	?>
 	<span class="card-qty"><?php echo wp_kses_data(WC()->cart->get_cart_item('product_id'))?></span>
@@ -150,7 +163,7 @@ function plnt_card_qty_fragment( $fragments ) {
  
 }
 
-add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_card_qty_fragment', 25 );
+//add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_card_qty_fragment', 25 );
 
 ////////////////////////////////////
 
