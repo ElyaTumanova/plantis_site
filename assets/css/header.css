@@ -191,7 +191,7 @@
 
 .catalog__node {
     display: block;
-    padding-top: 20px;
+    padding-bottom: 20px;
     font-size: 16px;
     font-weight: 600;
  }
@@ -241,7 +241,7 @@
     font-size: 16px;
     position: absolute;
     right: 0;
-    top: 20px;
+    top: 0;
     width: 30px;
     text-align: center;
 
