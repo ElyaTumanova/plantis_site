@@ -373,11 +373,11 @@ ul.products {
 }
 
 .catalog__filter-metki  ul li label{
-    color: var(--text);
+    color: var(--text) !important;
 }
 
 .catalog__filter-metki  ul li label:hover{
-    color: var(--accent-color);
+    color: var(--accent-color) !important;
 }
 
 /* активные фильтры */
