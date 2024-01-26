@@ -26,4 +26,12 @@
     grid-area: adress;
 }
 
+.contacts__wrap .heading-2 {
+    margin-bottom: 15px;
+}
+
+.contacts__social-media, .contacts__map {
+    margin-top: 20px;
+}
+
 
