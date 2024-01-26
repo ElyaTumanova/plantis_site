@@ -4,7 +4,7 @@
 
 .catalog__grid {
     display: grid;
-    grid-template-columns:30% 70%;
+    grid-template-columns:20% calc(80% - 30px);;
     grid-template-rows: repeat(4, auto);
     grid-template-areas:
     "sidebar metki"
@@ -20,7 +20,14 @@
 
 .woocommerce-ordering {
     grid-area: sorting;
+    justify-self: end;
+    margin-bottom: 10px;
 }
+
+.woocommerce-ordering select {
+    border-radius: 5px;
+}
+
 
 .catalog__products-wrap {
     grid-area: catalog;
@@ -339,3 +346,15 @@ ul.products {
     border-color: var(--sale);
     color: var(--white);
 }
+
+
+/*--------------------------------------------------------------
+# Filters
+--------------------------------------------------------------*/
+
+/* метки */
+
+/* .berocket_single_filter_widget_6054  ul {
+    display: flex;
+    column-gap: 15px;
+} */
