@@ -365,15 +365,27 @@ ul.products {
 }
 
 .catalog__filter-metki  ul li {
-    border: solid 2px green;
-    padding: 3px 8px;
+    border: solid 2px var(--accent-color);
+    padding: 3px 8px !important;
     border-radius: 20px;
     font-size: 16px;
     font-weight: 700;
 }
 
+.catalog__filter-metki  ul li label{
+    border: solid 2px var(--text);
+}
+
+/* активные фильтры */
+
 .catalog__filter-active h3 {
     display: none;
+}
+
+.catalog__filter-active .berocket_aapf_widget_selected_area {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 60px;
 }
 
 .catalog__filter-active .bapf_sfa_taxonomy ul {
