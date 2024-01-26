@@ -193,6 +193,12 @@ ul.products {
     position: relative;
 }
 
+.card__sliders-wrap .product .woocommerce-LoopProduct-link {
+    /* убираем отступ снизу у фото */
+    font-size: 0;
+    line-height: 0;
+} 
+
 .card__sliders-wrap .yith-wcwl-add-button img {
     width: 25px;
     margin: 5px;
@@ -396,7 +402,7 @@ ul.products {
 }
 
 .catalog__filter-active .berocket_aapf_widget_selected_filter .bapf_sfa_unall {
-    margin-left: auto;
+    margin-left: auto !important;
     margin-top: auto;
 }
 

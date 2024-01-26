@@ -50,6 +50,8 @@ header {
     align-items: center;
     border-radius: 0px 5px 0px 5px;
     padding: 0 5px 0 0;
+    font-size: 14px;
+    line-height: 1;
 }
 
 .sale_badge-skidka {
