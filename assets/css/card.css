@@ -320,7 +320,7 @@ input[type="number"] {
 /* out of stock info */
 
 .card__outofstock-btn-wrap {
-    margin-top: 15px;
+    margin: 15px 0;
     display: flex;
     column-gap: 15px;
 }
