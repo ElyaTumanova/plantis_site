@@ -83,10 +83,12 @@ if ( ! function_exists( 'ast_styles' ) ) {
 	}
 }
 
-add_action( 'wp_enqueue_scripts', 'plnt_styles_off', 999 );
- 
-function plnt_styles_off() {
+add_action('wp_print_styles', 'plnt_remove_styles', 100);
+function plnt_remove_styles() {
+wp_deregister_style( 'berocket_aapf_widget-style' );
+}
 
+add_action( 'wp_enqueue_scripts', 'plnt_styles_off', 999 );
+function plnt_styles_off() {
 	wp_dequeue_style( 'berocket_aapf_widget-style' );
- 
 }
