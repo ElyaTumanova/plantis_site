@@ -69,6 +69,8 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		                             '/assets/css/catalog.css', array(), null, 'all' );
 		wp_enqueue_style( 'cart', get_template_directory_uri() .
 		                             '/assets/css/cart.css', array(), null, 'all' );
+		wp_enqueue_style( 'pages', get_template_directory_uri() .
+		                             '/assets/css/pages.css', array(), null, 'all' );
 		wp_enqueue_style( 'popup', get_template_directory_uri() .
 		                             '/assets/css/popup.css', array(), null, 'all' );
 		// wp_enqueue_style( 'progressive-image', get_template_directory_uri() .
@@ -82,15 +84,3 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		wp_enqueue_style( 'fonts', 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap', array(), null, 'all' );
 	}
 }
-
-
-//отключаем файлы со стилями для фильтров berocket #filters #berocket
-// add_action('wp_print_styles', 'plnt_remove_styles', 100);
-// function plnt_remove_styles() {
-// wp_deregister_style( 'berocket_aapf_widget-style' );
-// }
-
-// add_action( 'wp_enqueue_scripts', 'plnt_styles_off', 999 );
-// function plnt_styles_off() {
-// 	wp_dequeue_style( 'berocket_aapf_widget-style' );
-// }

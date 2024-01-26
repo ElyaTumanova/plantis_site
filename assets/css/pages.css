@@ -1,0 +1,16 @@
+/*--------------------------------------------------------------
+# Contacts
+--------------------------------------------------------------*/
+
+.contacts__wrap {
+    display: flex;
+    column-gap: 15px;
+    justify-content: space-between;
+}
+
+.contacts__wrap-col {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
