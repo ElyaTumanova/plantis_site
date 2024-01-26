@@ -408,14 +408,20 @@ ul.products {
     margin-top: 50px;
     display: flex;
     flex-direction: column;
-    row-gap: 50px;
+    row-gap: 15px;
 }
 .catalog__sidebar-filters .bapf_head {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+.catalog__sidebar-filters .bapf_head h3{
     font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
-    margin-top: 5px;
-    margin-bottom: 15px;
+    color: var(--text);
+    padding: 0;
+    margin: 0;
+    border: none;
 }
 
 
