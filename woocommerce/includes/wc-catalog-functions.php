@@ -3,13 +3,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/*--------------------------------------------------------------
+# Catalog 
+--------------------------------------------------------------*/
 // оформление каталога целиком
 
 // // убираем лишнее
 remove_action('woocommerce_archive_description','woocommerce_taxonomy_archive_description',10);
-remove_action('woocommerce_before_shop_loop','woocommerce_result_count',20);
+remove_action('woocommerce_before_shop_loop','woocommerce_result_count', 20);
+remove_action('woocommerce_sidebar','woocommerce_get_sidebar', 10);
 
-// // структура каталога
+// // структура каталога - добавлеям обертки
 
 add_action('woocommerce_before_shop_loop','plnt_catalog_grid_start',15);
 function plnt_catalog_grid_start() {
@@ -18,20 +22,7 @@ function plnt_catalog_grid_start() {
     <?php 
 };
 
-add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar',20);
-
-function plnt_catalog_sidebar() {
-	?>
-    <div class="catalog__sidebar">
-		<?php plnt_catalog_menu() ?>
-		<?php echo do_shortcode('[br_filter_single filter_id=6055]') ?>
-		<?php echo do_shortcode('[br_filter_single filter_id=6056]') ?>
-    </div>
-    <?php 
-};
-
 add_action('woocommerce_before_shop_loop','plnt_catalog_products_wrap_start',40);
-
 function plnt_catalog_products_wrap_start() {
 	?>
     	<div class="catalog__products-wrap">
@@ -39,15 +30,11 @@ function plnt_catalog_products_wrap_start() {
 };
 
 add_action('woocommerce_after_shop_loop','plnt_catalog_products_wrap_end',20);
-
 function plnt_catalog_products_wrap_end() {
 	?>
 		</div>
 	<?php 
 };
-
-
-remove_action('woocommerce_sidebar','woocommerce_get_sidebar', 10);
 
 add_action('woocommerce_after_shop_loop','plnt_catalog_grid_end',20);
 
@@ -62,7 +49,21 @@ function plnt_catalog_grid_end() {
 // add_action('woocommerce_after_shop_loop','the_posts_pagination', 10);
 
 
-// // вывод фильтров
+// // вывод меню и фильтров в сайд баре  #filters #berocket
+add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar',20);
+function plnt_catalog_sidebar() {
+	?>
+    <div class="catalog__sidebar">
+		<?php plnt_catalog_menu() ?>
+		<div class="catalog__sidebar-filters">
+			<?php echo do_shortcode('[br_filter_single filter_id=6055]') ?>
+			<?php echo do_shortcode('[br_filter_single filter_id=6056]') ?>
+		</div>
+    </div>
+    <?php 
+};
+
+// // вывод фильтров над каталогом  #filters #berocket
 add_action('woocommerce_before_shop_loop','plnt_catalog_filters_main_area', 20);
 
 function plnt_catalog_filters_main_area() {
@@ -120,6 +121,10 @@ function plnt_page_title () {
 }
 
 add_filter( 'get_the_archive_title_prefix', '__return_empty_string' ); // убираем префикс Архивы
+
+/*--------------------------------------------------------------
+# Card in Catalog 
+--------------------------------------------------------------*/
 
 //оформление карточки товара в каталоге
 
@@ -254,6 +259,9 @@ function plnt_add_remove_link_wishlist() {
 	}
 }
 
+/*--------------------------------------------------------------
+# Catalog Functions
+--------------------------------------------------------------*/
 // функции для вывода товаров
 
 // // вывод товаров в каталоге с учетом наличия - instock products first 
