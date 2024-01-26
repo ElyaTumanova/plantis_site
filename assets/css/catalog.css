@@ -445,7 +445,7 @@ ul.products {
 }
 
 .catalog__sidebar-filters .ui-slider-range {
-    background: var(--accent-color);
+    background: var(--accent-color) !important;
     height: 3px;
 }
 
