@@ -3,14 +3,27 @@
 --------------------------------------------------------------*/
 
 .contacts__wrap {
-    display: flex;
-    column-gap: 15px;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    column-gap: 20px;
+    row-gap: 20px;
+    margin-top: 30px;
+    grid-template-areas: 
+    "phones hours"
+    "mail adress";
 }
 
-.contacts__wrap-col {
-    display: flex;
-    flex-direction: column;
-    row-gap: 30px;
+.contacts__phones {
+    grid-area: phones;
 }
+.contacts__mail {
+    grid-area: mail;
+}
+.contacts__work-hours {
+    grid-area: hours;
+}
+.contacts__adress {
+    grid-area: adress;
+}
+
 
