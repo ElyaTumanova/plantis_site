@@ -101,9 +101,6 @@ function plnt_price_wrap(){
         woocommerce_template_single_price();
         ?><div class="add-to-cart-wrap"> <?php
             plnt_get_add_to_card();
-            //woocommerce_template_loop_add_to_cart();    //заменили обычную не яакс кнопку на аякс кнопку из каталога
-            //plnt_get_quantity_input();               // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
-            plnt_card_wishlist_btn();
         ?></div>
         <?php
         //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
@@ -121,23 +118,16 @@ function plnt_get_add_to_card() {
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
         if ($quantity > 0) {
-            woocommerce_template_loop_add_to_cart();
+            woocommerce_template_loop_add_to_cart(); //заменили обычную не яакс кнопку на аякс кнопку из каталога
         }
         if ($quantity > 1) {
-            woocommerce_quantity_input();
+            woocommerce_quantity_input();           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
+        }
+        if ($quantity > 0) {
+            woocommerce_template_loop_add_to_cart();
         }
     } 
 };
-
-// function plnt_get_quantity_input() {
-//     global $product;
-//     if(is_product()) {
-//         $quantity =  $product->get_stock_quantity();
-//         if ($quantity > 1) {
-//             woocommerce_quantity_input();
-//         }
-//     } 
-// };
 
 // function plnt_wish_wrap() {
 //     global $product;
