@@ -351,6 +351,7 @@ ul.products {
 /*--------------------------------------------------------------
 # Filters
 --------------------------------------------------------------*/
+/* #berocket */
 
 /* метки */
 
@@ -358,3 +359,33 @@ ul.products {
     display: flex;
     column-gap: 15px;
 }
+
+.catalog__filter-metki  ul li input{
+    visibility: hidden;
+}
+
+.catalog__filter-metki  ul li {
+    border: solid 2px green;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.catalog__filter-active h3 {
+    display: none;
+}
+
+.catalog__filter-active .bapf_sfa_taxonomy ul {
+    display: flex;
+    column-gap: 15px;
+}
+
+.catalog__filter-active .bapf_sfa_taxonomy ul li a{
+    display: flex;
+    flex-direction: row-reverse;
+    column-gap: 10px;
+}
+
+
+
