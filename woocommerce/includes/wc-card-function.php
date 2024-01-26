@@ -99,10 +99,7 @@ function plnt_price_wrap(){
         <?php
         // plnt_check_stock_status();
         woocommerce_template_single_price();
-        ?><div class="add-to-cart-wrap"> <?php
-            plnt_get_add_to_card();
-        ?></div>
-        <?php
+        plnt_get_add_to_card();
         //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
         plnt_outofstock_info();
         //woocommerce_output_all_notices();
@@ -117,6 +114,7 @@ function plnt_get_add_to_card() {
     global $product;
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
+        ?><div class="add-to-cart-wrap"> <?php
         if ($quantity > 0) {
             woocommerce_template_loop_add_to_cart(); //заменили обычную не яакс кнопку на аякс кнопку из каталога
         }
@@ -124,8 +122,10 @@ function plnt_get_add_to_card() {
             woocommerce_quantity_input();           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
         }
         if ($quantity > 0) {
-            woocommerce_template_loop_add_to_cart();
+            plnt_card_wishlist_btn();
         }
+        ?></div>
+        <?php
     } 
 };
 
