@@ -316,3 +316,23 @@ input[type="number"] {
     margin-bottom: 7px;
     font-weight: 600;
 }
+
+/* out of stock info */
+
+.card__outofstock-btn-wrap {
+    margin-top: 15px;
+    display: flex;
+    column-gap: 15px;
+}
+
+.card__preorder-btn {
+    color:var(--white);
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    width: 100%;
+}
+
+.card__outofstock-btn-wrap .yith-wcwl-add-to-wishlist{
+    margin-top: 0;
+    width: fit-content;
+}
