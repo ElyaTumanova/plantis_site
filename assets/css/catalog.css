@@ -376,6 +376,10 @@ ul.products {
     color: var(--text);
 }
 
+.catalog__filter-metki  ul li label:hover{
+    color: var(--accent-color);
+}
+
 /* активные фильтры */
 
 .catalog__filter-active h3 {
