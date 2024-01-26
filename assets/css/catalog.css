@@ -354,6 +354,10 @@ ul.products {
 
 /* метки */
 
+.catalog__filter-metki  .bapf_head  {
+    display: none;
+}
+
 .catalog__filter-metki  ul {
     display: flex;
     column-gap: 15px;
@@ -392,6 +396,7 @@ ul.products {
 
 .catalog__filter-active .berocket_aapf_widget_selected_filter .bapf_sfa_unall {
     margin-left: auto;
+    margin-top: auto;
 }
 
 .catalog__filter-active .bapf_sfa_taxonomy ul {
