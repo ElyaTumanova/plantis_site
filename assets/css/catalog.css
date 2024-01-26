@@ -467,9 +467,9 @@ ul.products {
 
 .catalog__instock-filter input:not(checked) + label {
   position: relative; 
-  padding: 0 0 0 60px;
-      display: block;
-    height: 30px;
+  padding: 5px 0 0 60px;
+  /* display: block;
+  height: 30px; */
 }
 
 .catalog__instock-filter input:not(checked) + label:before {
