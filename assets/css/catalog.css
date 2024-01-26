@@ -373,7 +373,7 @@ ul.products {
 }
 
 .catalog__filter-metki  ul li label{
-    border: solid 2px var(--text);
+    color: var(--text);
 }
 
 /* активные фильтры */
@@ -382,7 +382,7 @@ ul.products {
     display: none;
 }
 
-.catalog__filter-active .berocket_aapf_widget_selected_area {
+.catalog__filter-active .berocket_aapf_widget_selected_filter {
     display: flex;
     justify-content: space-between;
     column-gap: 60px;
