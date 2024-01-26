@@ -387,13 +387,22 @@ ul.products {
 
 .catalog__filter-active .berocket_aapf_widget_selected_filter {
     display: flex;
-    justify-content: space-between;
-    column-gap: 60px;
+    column-gap: 30px;
+}
+
+.catalog__filter-active .berocket_aapf_widget_selected_filter .bapf_sfa_unall {
+    margin-left: auto;
 }
 
 .catalog__filter-active .bapf_sfa_taxonomy ul {
     display: flex;
     column-gap: 15px;
+}
+
+.catalog__filter-active .bapf_sfa_taxonomy span {
+    font-size: 14px;
+    margin-bottom: 3px;
+    display: block;
 }
 
 .catalog__filter-active .bapf_sfa_taxonomy ul li a{
@@ -424,11 +433,25 @@ ul.products {
     border: none;
 }
 
+/* фильтр цены */
+.catalog__sidebar-filters .bapf_slidr_all {
+    margin-bottom: 0;
+}
+
+.catalog__sidebar-filters .ui-slider-range {
+    background: var(--accent-color);
+    height: 3px;
+}
 
 .catalog__sidebar-filters .bapf_body ul{
     display: flex;
     flex-direction: column;
     row-gap: 10px;
+}
+
+.catalog__sidebar-filters .bapf_body ul li{
+    display: flex;
+    column-gap: 7px;
 }
 
 
