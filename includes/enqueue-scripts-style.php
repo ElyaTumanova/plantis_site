@@ -80,7 +80,13 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		wp_enqueue_style( 'nivo-slider', get_template_directory_uri() .
 		                             '/assets/css/nivo-slider.css', array(), null, 'all' );
 		wp_enqueue_style( 'fonts', 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap', array(), null, 'all' );
-
-		wp_dequeue_style( 'berocket_aapf_widget-style' );
 	}
+}
+
+add_action( 'wp_enqueue_scripts', 'plnt_styles_off', 999 );
+ 
+function plnt_styles_off() {
+
+	wp_dequeue_style( 'berocket_aapf_widget-style' );
+ 
 }
