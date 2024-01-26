@@ -98,11 +98,11 @@ function plnt_price_wrap(){
     <div class="card__price-wrap">
         <?php
         // plnt_check_stock_status();
-        //plnt_card_qty();
         woocommerce_template_single_price();
         ?><div class="add-to-cart-wrap"> <?php
-            woocommerce_template_loop_add_to_cart();    //заменили обычную не яакс кнопку на аякс кнопку из каталога
-            plnt_get_quantity_input();               // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
+            plnt_get_add_to_card();
+            //woocommerce_template_loop_add_to_cart();    //заменили обычную не яакс кнопку на аякс кнопку из каталога
+            //plnt_get_quantity_input();               // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
             plnt_card_wishlist_btn();
         ?></div>
         <?php
@@ -115,15 +115,29 @@ function plnt_price_wrap(){
     <?php 
 };
 
-function plnt_get_quantity_input() {
+
+function plnt_get_add_to_card() {
     global $product;
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
+        if ($quantity > 0) {
+            woocommerce_template_loop_add_to_cart();
+        }
         if ($quantity > 1) {
             woocommerce_quantity_input();
         }
     } 
 };
+
+// function plnt_get_quantity_input() {
+//     global $product;
+//     if(is_product()) {
+//         $quantity =  $product->get_stock_quantity();
+//         if ($quantity > 1) {
+//             woocommerce_quantity_input();
+//         }
+//     } 
+// };
 
 // function plnt_wish_wrap() {
 //     global $product;
