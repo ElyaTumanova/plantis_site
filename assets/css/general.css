@@ -20,6 +20,10 @@
     --added-cart: #FE6A4C;
 }
 
+.d-none {
+    display: none;
+}
+
 .fix-body {
     height: 100vh;
     overflow-y: hidden;
