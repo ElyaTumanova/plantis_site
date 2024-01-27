@@ -235,12 +235,8 @@
     column-gap: 30px;
 }
 
-#orddd-checkout-fields p:first-child {
-    width: 300px;
-}
-
-#orddd-checkout-fields p:last-child {
-    width: calc(100% - 315px);
+#orddd-checkout-fields p {
+    width: calc(50% - 15px);
 }
 
 #orddd-checkout-fields input {
