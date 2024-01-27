@@ -60,24 +60,6 @@
 	padding-top:0;
 }
 
-/* кнопка оформления заказа*/
-.woocommerce-checkout .place-order .button {
-    background-color: var(--accent-color); 
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: 500;
-    text-transform: uppercase;
-    color: var(--white);
-}
-
-.woocommerce-checkout .place-order .button:hover {
-  background-color: #3c7662; 
-  color: white;
-}
-/* .woocommerce-checkout .place-order .button:before {
-  display: none;
-} */
-
 
 /*офорление блока доставка и итого*/
 
@@ -156,3 +138,32 @@
 .woocommerce-checkout .woocommerce-checkout-review-order table tr th:last-child, .woocommerce-checkout .woocommerce-checkout-review-order table tr td:last-child {
     width: 140px;
 }
+
+/* способы оплаты */
+
+.wc_payment_methods li .payment_box {
+    padding: 20px;
+    border-radius: 4px;
+    margin: 10px 0 15px;
+    display: block;
+    background-color: var(--accent-back);
+}
+
+/* кнопка оформления заказа*/
+.woocommerce-checkout .place-order .button {
+    background-color: var(--accent-color); 
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--white);
+    width: 100%;
+}
+
+/* .woocommerce-checkout .place-order .button:hover {
+  background-color: #3c7662; 
+  color: white;
+} */
+/* .woocommerce-checkout .place-order .button:before {
+  display: none;
+} */
