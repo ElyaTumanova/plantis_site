@@ -229,8 +229,24 @@
 
 /* время доставки */
 
-#orddd-checkout-fields p {
+#orddd-checkout-fields {
     margin-bottom: 30px;
+}
+
+#orddd-checkout-fields p {
+    width: calc(50% - 15px);
+    display: inline-block;
+}
+
+#orddd-checkout-fields p:first-of-type {
+    margin-right: 30px;
+}
+
+#orddd-checkout-fields input {
+    padding: 14px 20px;
+    width: 100%;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
 }
 
 #orddd-checkout-fields label {
