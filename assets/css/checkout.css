@@ -40,9 +40,10 @@
   text-align: center;
   background-color: var(--accent-color);
   padding: 20px 5px;
-	border-radius: 15px;
-	font-weight: 600;
+  border-radius: 15px;
+  font-weight: 600;
 }
+
 .checkout__text {
 	font-weight: 500;
 }
@@ -62,7 +63,7 @@
 .woocommerce-checkout .place-order .button {
     background-color: #3c7662; 
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     text-transform: uppercase;
 }
@@ -83,9 +84,9 @@
 #order_review > table > tfoot > tr.order-total {background-color:var(--accent-color);
 	color: #ffffff; }
 
-#order_review > table > tfoot > tr.order-total > td > strong > span {color: #ffffff; font-size:20px;}
+#order_review > table > tfoot > tr.order-total > td > strong > span {color: var(--white); font-size:20px;}
 
-#order_review > table > thead {background-color:var(--accent-color); color: #ffffff;}
+#order_review > table > thead {background-color:var(--accent-color); color: var(--white);}
 
 #order_review > table > tbody {font-weight: 600}
 
@@ -95,27 +96,30 @@
 
 #order_review > table > tfoot > tr:nth-child(3) > th {
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     padding: 7px 20px;
+    text-align: left;
 }
 
 
 #order_review > table > thead > tr > th.product-name {
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     padding: 7px 20px;
+    text-align: left;
 }
 
 #order_review > table > thead > tr > th.product-total {
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     padding: 7px 20px;
+    text-align: left;
 }
 
 .woocommerce-checkout .woocommerce-checkout-review-order table tbody tr td {
     padding: 17px 20px;
     border-bottom: 1px solid #ebeced;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .woocommerce-checkout .woocommerce-checkout-review-order table tfoot tr td {
