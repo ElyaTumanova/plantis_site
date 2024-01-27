@@ -266,8 +266,22 @@ div#orddd_list_view_select {
 
 .woocommerce-checkout .woocommerce-NoticeGroup-checkout {
     color: var(--red-color);
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    
+}
+
+.woocommerce-checkout .woocommerce-NoticeGroup-checkout ul {
+    margin-left: 25px;
+    line-height: 1.2;
 }
 
 .woocommerce-checkout .woocommerce-NoticeGroup-checkout::before {
     content: "\0021";
+    position: absolute;
+    padding: 1px 7px 0px;
+    color: var(--white);
+    background-color: var(--red-color);
+    border-radius: 20px;
 }
