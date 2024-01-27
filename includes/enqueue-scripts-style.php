@@ -69,6 +69,8 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		                             '/assets/css/catalog.css', array(), null, 'all' );
 		wp_enqueue_style( 'cart', get_template_directory_uri() .
 		                             '/assets/css/cart.css', array(), null, 'all' );
+		wp_enqueue_style( 'checkout', get_template_directory_uri() .
+		                             '/assets/css/checkout.css', array(), null, 'all' );
 		wp_enqueue_style( 'pages', get_template_directory_uri() .
 		                             '/assets/css/pages.css', array(), null, 'all' );
 		wp_enqueue_style( 'popup', get_template_directory_uri() .

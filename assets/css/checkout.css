@@ -1,0 +1,7 @@
+@media (min-width: 768px) {
+	.order_wrap {
+        display: grid;
+        grid-template-columns: 45% auto;
+        column-gap: 40px;
+	}
+}
