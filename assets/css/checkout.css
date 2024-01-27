@@ -81,7 +81,7 @@
 
 /*офорление блока доставка и итого*/
 
-.woocommerce-shipping-totals.shipping {border-top: 2px solid var(--accent-color);}
+.woocommerce-shipping-totals.shipping {border-top: 2px solid var(--accent-color); background-color: var(--accent-back);}
 
 #order_review > table > tfoot > tr.order-total {background-color:var(--accent-color);
 	color: #ffffff; }
