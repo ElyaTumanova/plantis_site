@@ -216,3 +216,7 @@
 #billing_phone_field {
     margin-right: 30px;
 }
+
+.woocommerce-additional-fields h3 {
+    display: none;
+}
