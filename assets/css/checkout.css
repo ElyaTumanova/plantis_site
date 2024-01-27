@@ -174,3 +174,11 @@
 .woocommerce-terms-and-conditions-wrapper {
     margin-bottom: 20px;
 }
+
+/* контактная информация */
+
+.woocommerce-billing-fields__field-wrapper input {
+    padding: 14px 20px;
+    width: 100%;
+    margin-bottom: 30px;
+}
