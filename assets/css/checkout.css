@@ -38,7 +38,7 @@
 
 .checkout__additional {
   text-align: center;
-  background-color: var(--e-global-color-68a4649 );
+  background-color: var(--accent-color);
   padding: 20px 5px;
 	border-radius: 15px;
 	font-weight: 600;
