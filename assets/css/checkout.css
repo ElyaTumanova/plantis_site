@@ -49,9 +49,10 @@
 }
 .checkout__title {
 	text-transform: uppercase;
-	font-size: 16px!important;
-	font-weight: 600!important;
-	margin: 40px 0 10px!important;
+	font-size: 16px;
+	font-weight: 600;
+	margin: 40px 0 10px;
+    color: var(--accent-color);
 }
 
 .woocommerce-checkout form.woocommerce-checkout {
@@ -123,7 +124,7 @@
 }
 
 #order_review > table > tfoot > tr.woocommerce-shipping-totals.shipping > td > strong {
-    font-weight: 500;
+    font-weight: 700;
     text-transform: uppercase;
     line-height: 32px;
 }
@@ -144,13 +145,8 @@
 .woocommerce-shipping-methods li {
     display: flex;
     column-gap: 7px;
+    margin-bottom: 4px;
 }
-
-#shipping_method > li:nth-child(2) > label {
-    padding-left: 10px;
-}
-
-
 
 .cart-subtotal {
     display: none;
