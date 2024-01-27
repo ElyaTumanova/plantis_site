@@ -253,3 +253,7 @@
     margin-bottom: 10px;
     display: block;
 }
+
+.orddd-checkout-fields .orddd_list_view_container .list-view {
+    margin: 0;
+}
