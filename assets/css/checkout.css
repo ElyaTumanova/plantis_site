@@ -50,7 +50,7 @@
 .checkout__title {
 	text-transform: uppercase;
 	font-size: 16px;
-	font-weight: 600;
+	font-weight: 700;
 	margin: 40px 0 10px;
     color: var(--accent-color);
 }
@@ -62,11 +62,12 @@
 
 /* кнопка оформления заказа*/
 .woocommerce-checkout .place-order .button {
-    background-color: #3c7662; 
+    background-color: var(--accent-color); 
     border-radius: 5px;
     font-size: 16px;
     font-weight: 500;
     text-transform: uppercase;
+    color: var(--white);
 }
 
 .woocommerce-checkout .place-order .button:hover {
@@ -85,7 +86,7 @@
 #order_review > table > tfoot > tr.order-total {background-color:var(--accent-color);
 	color: #ffffff; }
 
-#order_review > table > tfoot > tr.order-total > td > strong > span {color: var(--white); font-size:20px;}
+#order_review > table > tfoot > tr.order-total > td > strong > span {color: var(--white); font-size:20px; font-weight: 600;}
 
 #order_review > table > thead {background-color:var(--accent-color); color: var(--white);}
 
