@@ -231,15 +231,16 @@
 
 #orddd-checkout-fields {
     margin-bottom: 30px;
+    display: flex;
+    column-gap: 30px;
 }
 
-#orddd-checkout-fields p {
-    width: calc(50% - 15px);
-    display: inline-block;
+#orddd-checkout-fields p:first-child {
+    width: 300px;
 }
 
-#orddd-checkout-fields p:first-of-type {
-    margin-right: 30px;
+#orddd-checkout-fields p:last-child {
+    width: calc(100% - 315px);
 }
 
 #orddd-checkout-fields input {
