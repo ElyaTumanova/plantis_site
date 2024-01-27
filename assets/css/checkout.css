@@ -261,3 +261,13 @@ div#orddd_list_view_select {
     column-gap: 10px !important;
     row-gap: 10px !important;
 }
+
+/* сообщение об ошибке */
+
+.woocommerce-checkout .woocommerce-NoticeGroup-checkout {
+    color: var(--red-color);
+}
+
+.woocommerce-checkout .woocommerce-NoticeGroup-checkout::before {
+    content: "\0021";
+}
