@@ -254,6 +254,6 @@
     display: block;
 }
 
-.orddd-checkout-fields .orddd_list_view_container .list-view {
+label.list-view {
     margin: 0;
 }
