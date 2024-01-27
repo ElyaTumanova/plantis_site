@@ -32,9 +32,9 @@
 .woocommerce-input-wrapper {
 		display: flex;
 }
-.woocommerce-checkout .woocommerce-checkout-review-order table tfoot tr:last-child th, .woocommerce-checkout .woocommerce-checkout-review-order table tfoot tr:last-child td {
+/* .woocommerce-checkout .woocommerce-checkout-review-order table tfoot tr:last-child th, .woocommerce-checkout .woocommerce-checkout-review-order table tfoot tr:last-child td {
 	padding-bottom: 7px!important;
-}
+} */
 
 .checkout__additional {
   text-align: center;
@@ -96,6 +96,7 @@
 #order_review > table > tfoot > tr:nth-child(3) > th {
     font-weight: 500;
     font-size: 14px;
+    padding: 7px 20px;
 }
 
 
