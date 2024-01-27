@@ -257,7 +257,7 @@ label.list-view {
 }
 
 div#orddd_list_view_select {
-    grid-template-columns: repeat( 2, 1fr);
-    column-gap: 10px;
-    row-gap: 10px;
+    grid-template-columns: repeat( 2, 1fr) !important;
+    column-gap: 10px !important;
+    row-gap: 10px !important;
 }
