@@ -229,11 +229,11 @@
 
 /* время доставки */
 
-.orddd-checkout-fields p {
+#orddd-checkout-fields p {
     margin-bottom: 30px;
 }
 
-.orddd-checkout-fields label {
+#orddd-checkout-fields label {
     margin-bottom: 10px;
     display: block;
 }
