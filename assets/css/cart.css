@@ -31,7 +31,7 @@
 
 /* таблица корзины */
 
-.shop_table {
+.woocommerce-cart-form .shop_table {
 
     thead {
         text-transform: uppercase;
