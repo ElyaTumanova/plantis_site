@@ -249,8 +249,15 @@
 #orddd-checkout-fields label {
     margin-bottom: 10px;
     display: block;
+    border-radius: 5px;
 }
 
 label.list-view {
     margin: 0 !important;
+}
+
+div#orddd_list_view_select {
+    grid-template-columns: repeat( 2, 1fr);
+    column-gap: 10px;
+    row-gap: 10px;
 }
