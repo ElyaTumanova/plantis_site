@@ -57,3 +57,38 @@
 	margin-top:0;
 	padding-top:0;
 }
+
+/* кнопка оформления заказа*/
+.woocommerce-checkout .place-order .button {
+    background-color: #3c7662; 
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.woocommerce-checkout .place-order .button:hover {
+  background-color: #3c7662; 
+  color: white;
+}
+/* .woocommerce-checkout .place-order .button:before {
+  display: none;
+} */
+
+
+/*офорление блока доставка и итого*/
+.woocommerce-shipping-totals.shipping {border-top: 2px solid var(--accent-color);}
+
+#order_review > table > tfoot > tr.order-total {background-color:var(--accent-color);
+	color: #ffffff; }
+
+#order_review > table > tfoot > tr.order-total > td > strong > span {color: #ffffff; font-size:20px;}
+
+#order_review > table > thead {background-color:var(--accent-color); color: #ffffff;}
+
+#order_review > table > tbody {font-weight: 600}
+
+#order_review > table > tfoot > tr.fee > td {background-color:#F1F6F3; color: #000000; } 
+
+#order_review > table > tfoot > tr.fee > td > span > bdi {color: #000000; } 
+
