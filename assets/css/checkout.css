@@ -42,7 +42,6 @@
   padding: 20px 5px;
   border-radius: 15px;
   font-weight: 600;
-  margin-top: 30px;
 }
 
 .checkout__text {
@@ -226,4 +225,15 @@
     width: 100%;
     margin-bottom: 30px;
     border: 1px solid #ccc;
+}
+
+/* время доставки */
+
+.orddd-checkout-fields p {
+    margin-bottom: 30px;
+}
+
+.orddd-checkout-fields label {
+    margin-bottom: 10px;
+    display: block;
 }
