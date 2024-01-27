@@ -3,9 +3,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-
+// переместили блок с выбором способа оплаты
 remove_action('woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20);
 add_action('woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20);
+
+// информация о пересадке в горшок
+add_action('woocommerce_checkout_shipping', 'plnt_checkout_peresadka_info', 15);
+
+function plnt_checkout_peresadka_info(){
+	?>
+	<div class="checkout__additional">Мы БЕСПЛАТНО пересадим вашего нового друга в качественный грунт при одновременной покупке растения и горшка (доплата за грунт не требуется).</div>
+	<?php
+}
+
 
 // информация об условиях доставки
 add_action( 'woocommerce_checkout_order_review', 'plnt_delivery_condition_info', 30 );
