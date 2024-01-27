@@ -163,3 +163,14 @@
 .woocommerce-checkout .wc_payment_methods {
     margin: 15px 0;
 }
+.woocommerce-checkout .wc_payment_methods .wc_payment_method{
+    margin-bottom: 15px;
+}
+
+.woocommerce-checkout .wc_payment_methods label:hover{
+    cursor: pointer;
+}
+
+.woocommerce-terms-and-conditions-wrapper {
+    margin-bottom: 20px;
+}
