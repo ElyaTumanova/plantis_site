@@ -93,6 +93,11 @@
 
 #order_review > table > tfoot > tr.fee > td > span > bdi {color: #000000; } 
 
+#order_review > table > tfoot > tr:nth-child(3) > th {
+    font-weight: 500;
+    font-size: 14px;
+}
+
 
 #order_review > table > thead > tr > th.product-name {
     font-weight: 500;
@@ -104,6 +109,10 @@
     font-weight: 500;
     font-size: 14px;
     padding: 7px 20px;
+}
+
+.woocommerce-checkout .woocommerce-checkout-review-order table tfoot tr:last-child td {
+    padding-bottom: 7px;
 }
 
 .woocommerce-checkout .woocommerce-checkout-review-order table tbody tr td {
