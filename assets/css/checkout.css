@@ -97,7 +97,7 @@
 #order_review > table > tfoot > tr:nth-child(3) > th {
     font-weight: 500;
     font-size: 16px;
-    padding: 7px 20px;
+    padding: 10px 20px;
     text-align: left;
 }
 
@@ -105,14 +105,14 @@
 #order_review > table > thead > tr > th.product-name {
     font-weight: 500;
     font-size: 16px;
-    padding: 7px 20px;
+    padding: 10px 20px;
     text-align: left;
 }
 
 #order_review > table > thead > tr > th.product-total {
     font-weight: 500;
     font-size: 16px;
-    padding: 7px 20px;
+    padding: 10px 20px;
     text-align: left;
 }
 
@@ -122,12 +122,18 @@
     font-size: 16px;
 }
 
+#order_review > table > tfoot > tr.woocommerce-shipping-totals.shipping > td > strong {
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 32px;
+}
+
 .woocommerce-checkout .woocommerce-checkout-review-order table tfoot tr td {
-    padding: 7px 20px;
+    padding: 10px 20px;
 }
 
 .woocommerce-checkout .woocommerce-checkout-review-order table tfoot tr:last-child td {
-    padding-bottom: 7px;
+    padding-bottom: 10x;
 }
 
 .woocommerce-checkout .woocommerce-checkout-review-order table .amount {
@@ -139,6 +145,12 @@
     display: flex;
     column-gap: 7px;
 }
+
+#shipping_method > li:nth-child(2) > label {
+    padding-left: 10px;
+}
+
+
 
 .cart-subtotal {
     display: none;
