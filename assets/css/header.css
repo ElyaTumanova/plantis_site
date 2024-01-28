@@ -7,7 +7,6 @@
     }
 }
 
-
 .header {
     /* margin-bottom: 10px; */
 }
@@ -133,6 +132,12 @@
 --------------------------------------------------------------*/
 
 /* header mob */
+
+@media (min-width: 1299px) {
+    .header__mob {
+        display: none;
+    }
+}
 
 .header__mob {
     display: flex;
