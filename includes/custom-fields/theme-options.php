@@ -19,6 +19,10 @@ Container::make('theme_options', 'Настройки темы')
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'search_icon', 'Search' )
 			 ->set_value_type( 'url' ),
+			 Field::make( 'image', 'search_icon_mob', 'Search for mob' )
+			 ->set_value_type( 'url' ),
+			 Field::make( 'image', 'menu_icon_mob', 'Menu for mob' )
+			 ->set_value_type( 'url' ),
 			 Field::make( 'text', 'site_title', 'Site title in header' )
          ))
 		 ->add_tab( __('Main Page Banners'), array(

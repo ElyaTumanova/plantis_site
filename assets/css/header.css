@@ -53,6 +53,12 @@
     justify-content: space-between;
 }
 
+.header-btn__wrap_mob {
+    padding: 5px 10px;
+    background-color: var(--accent-color);
+    border-radius: 5px;
+}
+
 /* cart styles */
 
 .header-cart {
