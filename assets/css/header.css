@@ -143,6 +143,7 @@
     .header__mob {
         display: flex;
         justify-content: space-between;
+        padding: 10px 0;
     }
 
     .header-btn__wrap_mob {

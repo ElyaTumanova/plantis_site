@@ -40,6 +40,20 @@
     margin-top: 10px;
 }
 
+
+@media (max-width: 1300px) {
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .content-area {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+
 .entry-header, .woocommerce-products-header {
     margin-top: 10px;
 }
