@@ -133,21 +133,23 @@
 
 /* header mob */
 
-@media (min-width: 1299px) {
+@media (min-width: 1300px) {
     .header__mob {
         display: none;
     }
 }
 
-.header__mob {
-    display: flex;
-    justify-content: space-between;
-}
+@media (max-width: 1300px) {
+    .header__mob {
+        display: flex;
+        justify-content: space-between;
+    }
 
-.header-btn__wrap_mob {
-    padding: 5px 10px;
-    background-color: var(--accent-color);
-    border-radius: 5px;
+    .header-btn__wrap_mob {
+        padding: 5px 10px;
+        background-color: var(--accent-color);
+        border-radius: 5px;
+    }
 }
 
 
