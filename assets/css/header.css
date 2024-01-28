@@ -45,6 +45,14 @@
     font-family: 'Nunito', sans-serif;
 }
 
+
+/* header mob */
+
+.header__mob {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* cart styles */
 
 .header-cart {
