@@ -479,17 +479,25 @@ ul.products {
 
 /* фильтр с подборками */
 
+.catalog__sidebar-filters [data-name="Подборки"] h3 {
+    font-size: 0;
+}
 .catalog__sidebar-filters [data-name="Подборки"] h3::after {
     content: "В подарок";
+    font-size: 16px;
 }
 
 /* стрелка для выпадающего списка фильтров */
-.catalog__sidebar-filters .fa-chevron-down {
+.catalog__sidebar-filters .fa-chevron-down, .catalog__sidebar-filters .fa-chevron-up {
     transform: rotate(90deg);
 }
 
 .catalog__sidebar-filters .fa-chevron-down:before {
     content: "\276F" !important;
+}
+
+.catalog__sidebar-filters .fa-chevron-up:before {
+    content: "\276E" !important;
 }
 
 /*стили для switch чекбокса в наличии*/
