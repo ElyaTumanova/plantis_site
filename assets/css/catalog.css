@@ -361,6 +361,10 @@ ul.products {
 
 /* метки */
 
+.catalog__filter-wrap {
+    overflow-x: scroll;
+}
+
 .catalog__filter-metki  .bapf_head  {
     display: none;
 }
@@ -384,6 +388,7 @@ ul.products {
 
 .catalog__filter-metki  ul li label{
     color: var(--text) !important;
+    white-space: nowrap;
 }
 
 .catalog__filter-metki  ul li label:hover{

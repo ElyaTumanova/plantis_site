@@ -63,6 +63,7 @@ function plnt_catalog_sidebar() {
 			<?php echo do_shortcode('[br_filter_single filter_id=6056]') ?>
 			<?php echo do_shortcode('[br_filter_single filter_id=6108]') ?>
 			<?php echo do_shortcode('[br_filter_single filter_id=6109]') ?>
+			<?php echo do_shortcode('[br_filter_single filter_id=10988]') ?>
 		</div>
     </div>
     <?php 
