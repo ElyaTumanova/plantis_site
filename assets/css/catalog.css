@@ -428,7 +428,7 @@ ul.products {
     column-gap: 10px;
 }
 
-/* фильтры в сайд баре */
+/* фильтры в сайдбаре */
 
 .catalog__sidebar-filters {
     margin-top: 50px;
@@ -448,6 +448,12 @@ ul.products {
     padding: 0;
     margin: 0;
     border: none;
+}
+
+/* фильтр в наличии */
+
+.catalog__instock-filter [data-name="Нет в наличии"] {
+    display: none;
 }
 
 /* фильтр цены */
@@ -471,6 +477,7 @@ ul.products {
     column-gap: 7px;
 }
 
+/* стрелка для выпадающего списка фильтров */
 .catalog__sidebar-filters .fa-chevron-down {
     transform: rotate(90deg);
 }
@@ -480,7 +487,6 @@ ul.products {
 }
 
 /*стили для switch чекбокса в наличии*/
-
 
 .catalog__instock-filter input:not(checked) { position: absolute; opacity: 0;} 
 
