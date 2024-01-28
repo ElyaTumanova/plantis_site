@@ -452,7 +452,7 @@ ul.products {
 
 /* фильтр в наличии */
 
-.catalog__instock-filter [data-name="Нет в наличии"] {
+.catalog__instock-filter li:has([data-name="Нет в наличии"]) {
     display: none;
 }
 
