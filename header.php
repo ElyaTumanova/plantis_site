@@ -88,7 +88,7 @@
 			</div>
 		</div>
 
-		<div class="header__mob">
+		<div class="header__mob container">
 			<div class="search-btn">
 				<?php $search_icon_mob = carbon_get_theme_option('search_icon_mob')?>
 				<button class="header-btn__wrap header-btn__wrap_mob">
