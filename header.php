@@ -90,9 +90,9 @@
 
 		<div class="header__mob">
 			<div class="search-btn">
-				<?php $search_icon = carbon_get_theme_option('search_icon')?>
+				<?php $search_icon_mob = carbon_get_theme_option('search_icon_mob')?>
 				<button class="header-btn__wrap header-btn__wrap_mob">
-					<img class="header-btn__icon" src="<?php echo $search_icon ?>" alt="search" width="21" height="21">		
+					<img class="header-btn__icon" src="<?php echo $search_icon_mob ?>" alt="search" width="21" height="21">		
 				</button>
 			</div>
 			<div class="logo">
@@ -100,7 +100,7 @@
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
 			</div><!-- .logo -->
 			<div class="header__mob-menu">
-				<!-- <?php $search_icon_mob = carbon_get_theme_option('search_icon')?> -->
+				<!-- <?php $menu_icon_mob = carbon_get_theme_option('menu_icon_mob')?> -->
 				<button class="header-btn__wrap header-btn__wrap_mob">
 					<img class="header-btn__icon" src="<?php echo $menu_icon_mob ?>" alt="menu" width="21" height="21">		
 				</button>

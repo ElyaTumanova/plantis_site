@@ -1,3 +1,7 @@
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
 .header {
     /* margin-bottom: 10px; */
 }
@@ -45,20 +49,6 @@
     font-family: 'Nunito', sans-serif;
 }
 
-
-/* header mob */
-
-.header__mob {
-    display: flex;
-    justify-content: space-between;
-}
-
-.header-btn__wrap_mob {
-    padding: 5px 10px;
-    background-color: var(--accent-color);
-    border-radius: 5px;
-}
-
 /* cart styles */
 
 .header-cart {
@@ -99,6 +89,60 @@
     color: var(--white);
 }
 
+/* header__info styles */
+
+.header__info {
+    background-color: var(--gray);
+}
+
+.header__info-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 5px 0;
+}
+
+/* telegram btn styles */
+.header__telegram, .header__telegram:visited {
+    background-color: var(--telegram);
+    border-color: var(--telegram);
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+    padding: 5px 7px 5px 7px;
+    color: var(--white);
+}
+.header__telegram:hover {
+    color: var(--white);
+}
+
+.header__telegram-icon {
+  margin-right: 5px;
+}
+
+
+/*--------------------------------------------------------------
+# Header for mobile
+--------------------------------------------------------------*/
+
+/* header mob */
+
+.header__mob {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-btn__wrap_mob {
+    padding: 5px 10px;
+    background-color: var(--accent-color);
+    border-radius: 5px;
+}
+
+
+/*--------------------------------------------------------------
+# Menu for desktop
+--------------------------------------------------------------*/
 
 /* primary & secondary menu styles */
 
@@ -315,37 +359,10 @@
     transition: max-height 1s ease-in-out;
   }
 
-/* header__info styles */
 
-.header__info {
-    background-color: var(--gray);
-}
-
-.header__info-wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-    font-weight: 700;
-    padding: 5px 0;
-}
-
-/* telegram btn styles */
-.header__telegram, .header__telegram:visited {
-    background-color: var(--telegram);
-    border-color: var(--telegram);
-    border-radius: 10px 10px 10px 10px;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-    padding: 5px 7px 5px 7px;
-    color: var(--white);
-}
-.header__telegram:hover {
-    color: var(--white);
-}
-
-.header__telegram-icon {
-  margin-right: 5px;
-}
+/*--------------------------------------------------------------
+# Mini cart
+--------------------------------------------------------------*/
 
 /* mini-cart */
 
