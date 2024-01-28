@@ -453,7 +453,7 @@ ul.products {
 /* фильтр в наличии */
 
 .catalog__instock-filter li:has([data-name="Нет в наличии"]) {
-    display: none;
+    display: none !important;
 }
 
 /* фильтр цены */
