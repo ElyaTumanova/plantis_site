@@ -105,8 +105,8 @@
           }
 
           $("<div class='nbs-flexisel-nav-left'>&#10094;</div><div class='nbs-flexisel-nav-right'>&#10095;</div>").insertAfter(object);
-          var cloneContent = object.children().clone();
-          object.append(cloneContent);
+          //var cloneContent = object.children().clone();
+          //object.append(cloneContent);
     },
         
     
