@@ -64,14 +64,14 @@
     /* background:url(assets/images/right-arrow.png) no-repeat 0px 0px; */
 }
 
-@media (max-width: 1024px){
+/* @media (max-width: 1024px){
     .nbs-flexisel-nav-right {
         right: -2%;
     }
     .nbs-flexisel-nav-left {
         left: -2%;
     }
-}
+} */
 
 @media (max-width:991px){
     .nbs-flexisel-item {
