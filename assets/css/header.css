@@ -1,7 +1,7 @@
 /*--------------------------------------------------------------
 # Header for desktop
 --------------------------------------------------------------*/
-@media (max-width: 1280px) {
+@media (max-width: 1279px) {
     .header__desktop {
         display: none;
     }
@@ -133,13 +133,13 @@
 
 /* header mob */
 
-@media (min-width: 1280px) {
+@media (min-width: 1279px) {
     .header__mob {
         display: none;
     }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1279px) {
     .header__mob {
         display: flex;
         justify-content: space-between;
