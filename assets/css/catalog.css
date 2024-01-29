@@ -259,7 +259,7 @@ ul.products {
 }
 
 /* стили для десктопа   #adaptive*/
-@media (min-width: 768px) {
+@media (min-width: 769px) {
     .main__sale-gallery .product {
         display: grid;
         grid-template-rows:  30px auto auto auto;
@@ -328,7 +328,7 @@ ul.products {
 }
 
 /* стили для мобилки   #adaptive*/
-@media (max-width:767px) {
+@media (max-width:768px) {
     .main__sale-gallery .products {
         display: flex;
         column-gap: 5px;
