@@ -305,7 +305,7 @@ ul.products {
 }
 
 @media (max-width:768px) {
-    .main__sale-gallery .product {
+    .main__sale-gallery .products {
         display: flex;
         column-gap: 5px;
     }
