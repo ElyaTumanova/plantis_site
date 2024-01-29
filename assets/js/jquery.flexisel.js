@@ -178,15 +178,19 @@
       if(settings.enableResponsiveBreakpoints == true) {
         if(contentWidth < settings.responsiveBreakpoints.portrait.changePoint) {
           itemsVisible = settings.responsiveBreakpoints.portrait.visibleItems;
+          columnGaps = settings.responsiveBreakpoints.portrait.columnGaps;
         }
         else if(contentWidth > settings.responsiveBreakpoints.portrait.changePoint && contentWidth < settings.responsiveBreakpoints.landscape.changePoint) {
           itemsVisible = settings.responsiveBreakpoints.landscape.visibleItems;
+          columnGaps = settings.responsiveBreakpoints.landscape.columnGaps;
         }
         else if(contentWidth > settings.responsiveBreakpoints.landscape.changePoint && contentWidth < settings.responsiveBreakpoints.tablet.changePoint) {
           itemsVisible = settings.responsiveBreakpoints.tablet.visibleItems;
+          columnGaps = settings.responsiveBreakpoints.tablet.columnGaps;
         }
         else {
           itemsVisible = settings.visibleItems;
+          columnGaps = settings.columnGaps;
         }
       }
     },			
