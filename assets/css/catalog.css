@@ -101,10 +101,13 @@ ul.products {
 }
 
 .catalog__products-wrap .woocommerce-LoopProduct-link {
-    position: relative;
     /* чтобы не было смещения пока грузится слайдер*/
     max-height: 439px; 
     overflow: hidden;
+}
+
+.woocommerce-LoopProduct-link {
+    position: relative;
 }
 
 /* кнопка добавления в корзину */
