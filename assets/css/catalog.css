@@ -273,6 +273,11 @@ ul.products {
         column-gap: 10px;
     }
 
+    .main__sale-gallery .products {
+        display: flex;
+        column-gap: 0;
+    }
+
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
         grid-area: wish; 
     }
