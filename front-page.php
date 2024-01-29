@@ -35,7 +35,7 @@ get_header(); ?>
 									},
 									tablet: {
 										changePoint:1279,
-										visibleItems: 2
+										visibleItems: 3
 									}
 								}
 							});
