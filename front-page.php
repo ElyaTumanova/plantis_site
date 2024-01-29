@@ -26,7 +26,7 @@ get_header(); ?>
 								enableResponsiveBreakpoints: true,
 								responsiveBreakpoints: {
 									portrait: {
-										changePoint:768,
+										changePoint:767,
 										visibleItems: 2,
 										columnGaps: 10
 									},

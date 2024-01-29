@@ -328,7 +328,7 @@ ul.products {
 }
 
 /* стили для мобилки   #adaptive*/
-@media (max-width:767px) {
+@media (max-width:768px) {
     .main__sale-gallery .products {
         display: flex;
         column-gap: 5px;
