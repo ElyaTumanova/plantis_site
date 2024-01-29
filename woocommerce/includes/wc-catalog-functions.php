@@ -184,7 +184,7 @@ function plnt_catalog_gallery() {
 
 // // бейдж распродажа
 remove_action('woocommerce_before_shop_loop_item_title','woocommerce_show_product_loop_sale_flash', 10);
-add_action('woocommerce_before_shop_loop_item_title','truemisha_sale_badge', 10);
+add_action('woocommerce_before_shop_loop_item','truemisha_sale_badge', 10);
 
 // // перенос кнопки в корзину
 
