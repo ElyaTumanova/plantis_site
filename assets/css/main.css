@@ -29,6 +29,12 @@
     position: relative;
 }
 
+@media (max-width:1279px) {
+    .main__banners-wrap {
+        margin-right: 0;
+    }
+}
+
 .main__banners {
     border-radius: 5px;
 }

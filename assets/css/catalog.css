@@ -256,6 +256,7 @@ ul.products {
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--background);
+    row-gap: 15px;
 }
 
 .main__sale-gallery .product {
@@ -313,7 +314,7 @@ ul.products {
     grid-area: button;
     font-size: 12px;
     line-height: 14px;
-    width: 140px;
+    width: 100%;
     align-self: flex-end;
 }
 
