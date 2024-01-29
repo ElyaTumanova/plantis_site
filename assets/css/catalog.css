@@ -337,6 +337,15 @@ ul.products {
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
         position: absolute;
         top: 0;
+        right: 0;
+    }
+
+    .main__sale-gallery .woocommerce-loop-product__title{
+        margin-top: 7px;
+    }
+
+    .main__sale-gallery .yith-wcwl-add-button img {
+        margin: 0;
     }
 }
 
