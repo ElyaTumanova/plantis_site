@@ -100,7 +100,7 @@ ul.products {
     display: none;
 }
 
-.woocommerce-LoopProduct-link {
+.catalog__products-wrap .woocommerce-LoopProduct-link {
     position: relative;
     /* чтобы не было смещения пока грузится слайдер*/
     max-height: 439px; 
@@ -296,10 +296,6 @@ ul.products {
 .main__sale-gallery .woocommerce-loop-product__link:first-of-type {
     grid-area: image;
     font-size: 0;
-}
-
-.main__sale-gallery .woocommerce-LoopProduct-link {
-    overflow: visible;
 }
 
 .main__sale-gallery .sale_badge {
