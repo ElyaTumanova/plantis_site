@@ -34,7 +34,7 @@ get_header(); ?>
 										visibleItems:2
 									},
 									tablet: {
-										changePoint:768,
+										changePoint:1279,
 										visibleItems: 2
 									}
 								}
