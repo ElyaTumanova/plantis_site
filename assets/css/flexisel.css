@@ -73,11 +73,11 @@
     }
 } */
 
-@media (max-width:991px){
+/* @media (max-width:991px){
     .nbs-flexisel-item {
         padding: 0 10px;
     }
-}
+} */
 
 @media (max-width:480px){
     .nbs-flexisel-item > img {
