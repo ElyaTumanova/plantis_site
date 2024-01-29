@@ -30,7 +30,7 @@ get_header(); ?>
 										visibleItems: 2
 									},
 									landscape: {
-										changePoint:640,
+										changePoint:1095,
 										visibleItems:2
 									},
 									tablet: {
