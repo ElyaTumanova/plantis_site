@@ -259,19 +259,23 @@ ul.products {
     row-gap: 15px;
 }
 
-.main__sale-gallery .product {
-	display: grid;
-    grid-template-rows:  30px auto auto auto;
-    grid-template-areas:
-			"image sale sale"
-			"image price price"
-            "image name name"
-			"image descr descr"
-            "image button wish";
-	grid-template-columns: 165px auto auto;
-	column-gap: 10px;
-    text-align: left;
+@media (min-width: 768px) {
+    .main__sale-gallery .product {
+        display: grid;
+        grid-template-rows:  30px auto auto auto;
+        grid-template-areas:
+                "image sale sale"
+                "image price price"
+                "image name name"
+                "image descr descr"
+                "image button wish";
+        grid-template-columns: 165px auto auto;
+        column-gap: 10px;
+        text-align: left;
+    }
+
 }
+
 
 .main__sale-gallery .yith-wcwl-add-to-wishlist {
     grid-area: wish; 
@@ -302,7 +306,7 @@ ul.products {
     font-size: 14px;
     top: 0;
     bottom: auto;
-    right: -107px;
+    left: 175px;
     border-radius: 5px;
 }
 
