@@ -259,6 +259,14 @@ ul.products {
 }
 
 /* стили для десктопа   #adaptive*/
+
+@media (min-width: 767px) {
+    .main__sale-gallery .products {
+        display: flex;
+        column-gap: 0;
+    }
+}
+
 @media (min-width: 768px) {
     .main__sale-gallery .product {
         display: grid;
@@ -271,11 +279,6 @@ ul.products {
                 "image button wish";
         grid-template-columns: 165px auto auto;
         column-gap: 10px;
-    }
-
-    .main__sale-gallery .products {
-        display: flex;
-        column-gap: 0;
     }
 
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
