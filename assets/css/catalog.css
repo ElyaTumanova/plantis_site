@@ -267,7 +267,30 @@ ul.products {
                 "image button wish";
         grid-template-columns: 165px auto auto;
         column-gap: 10px;
-        text-align: left;
+    }
+
+    .main__sale-gallery .yith-wcwl-add-to-wishlist {
+        grid-area: wish; 
+    }
+
+    .main__sale-gallery .woocommerce-loop-product__link:first-of-type {
+        grid-area: image;
+    }
+
+    .main__sale-gallery .add_to_cart_button, .main__sale-gallery .product_type_simple {
+        grid-area: button;
+    }
+
+    .main__sale-gallery .woocommerce-loop-product__link:last-of-type {
+        grid-area: name;
+    }
+
+    .main__sale-gallery .woocommerce-product-details__short-description {
+        grid-area: descr;
+    }
+
+    .main__sale-gallery .price {
+        grid-area: price;
     }
 
     .main__sale-gallery .nbs-flexisel-inner {
@@ -279,11 +302,20 @@ ul.products {
         max-height: 286px; 
         overflow: hidden;
     }
+}
 
+@media (max-width:768px) {
+    .main__sale-gallery .product {
+        display: flex;
+        column-gap: 5px;
+    }
+}
+
+.main__sale-gallery .product {
+    text-align: left;
 }
 
 .main__sale-gallery .yith-wcwl-add-to-wishlist {
-    grid-area: wish; 
     display: flex;
     align-items: end;
     position: relative;
@@ -299,7 +331,6 @@ ul.products {
 }
 
 .main__sale-gallery .woocommerce-loop-product__link:first-of-type {
-    grid-area: image;
     font-size: 0;
 }
 
@@ -316,16 +347,11 @@ ul.products {
 }
 
 .main__sale-gallery .add_to_cart_button, .main__sale-gallery .product_type_simple {
-    grid-area: button;
     font-size: 12px;
     line-height: 14px;
     width: 100%;
     align-self: flex-end;
     min-width: 120px;
-}
-
-.main__sale-gallery .woocommerce-loop-product__link:last-of-type {
-    grid-area: name;
 }
 
 .main__sale-gallery .woocommerce-loop-product__title {
@@ -338,14 +364,12 @@ ul.products {
 }
 
 .main__sale-gallery .woocommerce-product-details__short-description {
-    grid-area: descr;
     font-size: 12px;
     line-height: 14px;
     margin-bottom: 10px;
 }
 
 .main__sale-gallery .price {
-    grid-area: price;
     margin-top: 10px;
     margin-bottom: 10px;
 }
