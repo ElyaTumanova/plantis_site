@@ -10,6 +10,13 @@
     margin-bottom: 75px;
 }
 
+@media (max-width:1300px) {
+    .main__wrap {
+        grid-template-columns: 100%;
+        row-gap: 30px;
+    }
+}
+
 /* banners */
 
 .main__wrap-colored-bg {
