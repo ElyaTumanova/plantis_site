@@ -287,8 +287,8 @@
     },			
 
     // new code
-    swipeStart: function() {
-      let evt = getEvent();
+    swipeStart: function(evt) {
+      // let evt = getEvent();
 
       console.log(evt);
   
