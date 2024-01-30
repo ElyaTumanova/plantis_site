@@ -149,7 +149,7 @@
       // });
 
       $(object).on("mousedown",function (event) {
-        methods.scrollLeft();
+        methods.simulateClick();
         console.log('Произошло событие', event.clientX)
       });
 
@@ -301,7 +301,26 @@
       itemsWidth = (innerWidth)/itemsVisible;
       childSet.width(itemsWidth);
       object.css({'left' : -itemsWidth});		
-    },			
+    },		
+    
+    /******************************
+    simulateClick 
+    *******************************/
+    
+    simulateClick: function() {
+      // Get the element to send a click event
+      // const cb = document.getElementById("checkbox");
+    
+      // Create a synthetic click MouseEvent
+      let evt = new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+      });
+    
+      // Send the event to the checkbox element
+      leftArrow.dispatchEvent(evt);
+    }
       
       };
       
