@@ -131,9 +131,11 @@
           let move = pointEnd - pointStart;
           if (move <-50) {
             console.log(move);
+            $('a.nivo-nextNav').trigger('click');
           };
           if (move >50) {
             console.log(move);
+            $('a.nivo-prevNav').trigger('click');
           };
 
         });
