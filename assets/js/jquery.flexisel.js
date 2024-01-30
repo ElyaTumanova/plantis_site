@@ -222,6 +222,7 @@
     
     scrollLeft:function() {
 
+      console.log('hi');
       if(canNavigate == true) {
         canNavigate = false;
         
