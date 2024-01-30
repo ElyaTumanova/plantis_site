@@ -309,6 +309,8 @@
         // sliderTrack.style.transition = '';
   
         $(document).on('mousemove', console.log(posInit));
+        $(document).on('mousemove', function (event) {
+          methods.swipeStart(event);});
 
         // document.addEventListener('touchmove', swipeAction);
         // document.addEventListener('mousemove', swipeAction);
@@ -319,6 +321,21 @@
         // sliderList.classList.add('grabbing');
       // }
     },
+
+    swipeAction: function(evt) {
+
+      // let evt = getEvent(),
+        // style = sliderTrack.style.transform,
+        // transform = +style.match(trfRegExp)[0];
+  
+      posX2 = posX1 - evt.clientX;
+      posX1 = evt.clientX;
+  
+      posY2 = posY1 - evt.clientY;
+      posY1 = evt.clientY;
+
+      console.log(posX2);
+    }
     // end new code
       
       };
