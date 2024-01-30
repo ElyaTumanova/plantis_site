@@ -143,9 +143,9 @@
       
     // new code
 
-      $(object).on("touchmove",function (event) {
+      $(object).on("touchstart",function (event) {
         pointStart = event.clientX;
-        console.log('Произошло событие', event)
+        console.log('Произошло событие', event.changedTouches[0].clientX)
       });
 
       // $(object).on("mousedown",function (event) {
