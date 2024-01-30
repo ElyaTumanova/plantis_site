@@ -127,6 +127,21 @@
     border-bottom-left-radius: 10px;
 }
 
+@media (max-width:767px) {
+    .advantages {
+        display: flex;
+        overflow-y: scroll;
+        min-width: 300px;
+        font-size: 14px;
+        font-weight: 500;
+        background-color: #F7F7F7;
+        padding: 10px;
+        min-height: 120px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+}
+
 .overflow_section {
     overflow-x: auto;
     width: fit-content;
