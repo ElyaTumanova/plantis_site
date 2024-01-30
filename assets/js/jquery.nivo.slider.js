@@ -126,17 +126,17 @@
           console.log(pointStart);
         });
 
-        // $(object).on("touchmove",function (event) {
-        //   pointEnd = event.changedTouches[0].clientX;
-        //   let move = pointEnd - pointStart;
-        //   if (move <-50) {
-        //     methods.scrollRight();
-        //   };
-        //   if (move >50) {
-        //     methods.scrollLeft();
-        //   };
+        $(slider).on("touchmove",function (event) {
+          pointEnd = event.changedTouches[0].clientX;
+          let move = pointEnd - pointStart;
+          if (move <-50) {
+            console.log(move);
+          };
+          if (move >50) {
+            console.log(move);
+          };
 
-        // });
+        });
 
         // Add Direction nav
         if(settings.directionNav){
