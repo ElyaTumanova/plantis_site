@@ -143,9 +143,9 @@
       
     // new code
 
-      $(object).on("pointerdown",function (event) {
+      $(object).on("touchmove",function (event) {
         pointStart = event.clientX;
-        console.log('Произошло событие', event.clientX)
+        console.log('Произошло событие', event)
       });
 
       // $(object).on("mousedown",function (event) {
@@ -153,20 +153,20 @@
       //   console.log('Произошло событие', event.clientX)
       // });
 
-      $(object).on("pointerup",function (event) {
-        pointEnd = event.clientX;
-        console.log('Произошло событие', event.clientX);
-        let move = pointEnd - pointStart;
-        if (move <0) {
-          console.log('Сдвиг', move);
-          methods.scrollRight();
-        };
-        if (move >0) {
-          console.log('Сдвиг', move);
-          methods.scrollLeft();
-        };
+      // $(object).on("pointerup",function (event) {
+      //   pointEnd = event.clientX;
+      //   console.log('Произошло событие', event.clientX);
+      //   let move = pointEnd - pointStart;
+      //   if (move <0) {
+      //     console.log('Сдвиг', move);
+      //     methods.scrollRight();
+      //   };
+      //   if (move >0) {
+      //     console.log('Сдвиг', move);
+      //     methods.scrollLeft();
+      //   };
 
-      });
+      // });
 
       // end new code
 
