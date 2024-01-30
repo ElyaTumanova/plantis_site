@@ -143,10 +143,10 @@
       
     // new code
 
-      // $(object).on("mousedown",function (event) {
-      //   pointStart = event.clientX;
-      //   console.log('Произошло событие', event.clientX)
-      // });
+      $(object).on("mousedown",function (event) {
+        pointStart = event.clientX;
+        console.log('Произошло событие', event.clientX)
+      });
 
       // $(object).on("mousedown",function (event) {
       //   methods.simulateClick();
