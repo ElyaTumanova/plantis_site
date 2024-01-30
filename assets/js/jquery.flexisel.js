@@ -143,20 +143,25 @@
       
     // new code
 
+      // $(object).on("mousedown",function (event) {
+      //   pointStart = event.clientX;
+      //   console.log('Произошло событие', event.clientX)
+      // });
+
       $(object).on("mousedown",function (event) {
-        pointStart = event.clientX;
+        methods.scrollLeft();
         console.log('Произошло событие', event.clientX)
       });
 
-      $(object).on("mouseup",function (event) {
-        pointEnd = event.clientX;
-        console.log('Произошло событие', event.clientX);
-        let move = pointEnd - pointStart;
-        if (move <=0) {
-          console.log('Сдвиг', move);
-          methods.scrollLeft();
-        }
-      });
+      // $(object).on("mouseup",function (event) {
+      //   pointEnd = event.clientX;
+      //   console.log('Произошло событие', event.clientX);
+      //   let move = pointEnd - pointStart;
+      //   if (move <=0) {
+      //     console.log('Сдвиг', move);
+      //     methods.scrollLeft();
+      //   }
+      // });
 
       // end new code
 
