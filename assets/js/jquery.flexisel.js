@@ -148,6 +148,13 @@
         console.log('Произошло событие', event.clientX)
       });
 
+      $(object).on("mouseup",function (event) {
+        pointEnd = event.clientX;
+        console.log('Произошло событие', event.clientX);
+        let move = pointEnd - pointStart;
+        console.log('Сдвиг', move);
+      });
+
       // end new code
 
       $(leftArrow).on("click", function (event) {
