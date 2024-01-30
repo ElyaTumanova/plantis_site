@@ -140,35 +140,22 @@
       });					
       
 
-      
-    // new code
-
       $(object).on("touchstart",function (event) {
         pointStart = event.changedTouches[0].clientX;
-        console.log('Произошло событие', event.changedTouches[0].clientX)
       });
-
-      // $(object).on("mousedown",function (event) {
-      //   methods.simulateClick();
-      //   console.log('Произошло событие', event.clientX)
-      // });
 
       $(object).on("touchmove",function (event) {
         pointEnd = event.changedTouches[0].clientX;
-        console.log('Произошло событие', event.changedTouches[0].clientX);
         let move = pointEnd - pointStart;
         if (move <-100) {
-          console.log('Сдвиг', move);
           methods.scrollRight();
         };
         if (move >100) {
-          console.log('Сдвиг', move);
           methods.scrollLeft();
         };
 
       });
 
-      // end new code
 
       $(leftArrow).on("click", function (event) {
         methods.scrollLeft();
@@ -210,18 +197,22 @@
         if(contentWidth < settings.responsiveBreakpoints.portrait.changePoint) {
           itemsVisible = settings.responsiveBreakpoints.portrait.visibleItems;
           columnGaps = settings.responsiveBreakpoints.portrait.columnGaps;
+          animationSpeed = settings.responsiveBreakpoints.portrait.animationSpeed;
         }
         else if(contentWidth > settings.responsiveBreakpoints.portrait.changePoint && contentWidth < settings.responsiveBreakpoints.landscape.changePoint) {
           itemsVisible = settings.responsiveBreakpoints.landscape.visibleItems;
           columnGaps = settings.responsiveBreakpoints.landscape.columnGaps;
+          animationSpeed = settings.responsiveBreakpoints.landscape.animationSpeed;
         }
         else if(contentWidth > settings.responsiveBreakpoints.landscape.changePoint && contentWidth < settings.responsiveBreakpoints.tablet.changePoint) {
           itemsVisible = settings.responsiveBreakpoints.tablet.visibleItems;
           columnGaps = settings.responsiveBreakpoints.tablet.columnGaps;
+          animationSpeed = settings.responsiveBreakpoints.tablet.animationSpeed;
         }
         else {
           itemsVisible = settings.visibleItems;
           columnGaps = settings.columnGaps;
+          animationSpeed = settings.animationSpeed;
         }
       }
     },			
@@ -307,19 +298,6 @@
       childSet.width(itemsWidth);
       object.css({'left' : -itemsWidth});		
     },		
-    
-    // /******************************
-    // simulateClick 
-    // *******************************/
-    
-    // simulateClick: function() {
-    //   // Get the element to send a click event
-    //   var listParent = object.parent();
-    //   var leftArrow = listParent.find($(".nbs-flexisel-nav-left"));
-    
-    //   // Send the event to the checkbox element
-    //   leftArrow.trigger('click');
-    // }
       
       };
       

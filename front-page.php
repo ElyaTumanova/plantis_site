@@ -28,7 +28,8 @@ get_header(); ?>
 									portrait: {
 										changePoint:767,
 										visibleItems: 2,
-										columnGaps: 10
+										columnGaps: 10,
+										animationSpeed: 2000,
 									},
 									landscape: {
 										changePoint:1095,
