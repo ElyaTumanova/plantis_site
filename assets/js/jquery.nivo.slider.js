@@ -124,10 +124,10 @@
         $(slider).on("touchstart",function (event) {
           pointStart = event.changedTouches[0].clientX;
           console.log(event.currentTarget);
-          currentTarget = event.currentTarget.getAttribute("class");
-          console.log(currentTarget);
-          nextNav = $(currentTarget.replace(' ', '.')).find("a.nivo-nextNav");
-          prevNav = $(currentTarget.replace(' ', '.')).find("a.nivo-prevNav");
+        //   currentTarget = event.currentTarget.getAttribute("class");
+        //   console.log(currentTarget);
+          nextNav = $(this).find("a.nivo-nextNav");
+        //   prevNav = $(currentTarget.replace(' ', '.')).find("a.nivo-prevNav");
           console.log(nextNav);
         });
 
