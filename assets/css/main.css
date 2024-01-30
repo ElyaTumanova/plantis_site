@@ -131,15 +131,16 @@
     .advantages {
         display: flex;
         overflow-y: scroll;
-        background-color: #F7F7F7;
-        padding: 10px;
-        min-height: 120px;
-        border-bottom-right-radius: 10px;
-        border-bottom-left-radius: 10px;
     }
 
     .advantages__wrap {
         min-width: 300px;
+        background-color: var(--gray);
+        padding: 10px;
+        min-height: 120px;
+        /* border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px; */
+        border-radius: 10px;
     }
 
     .advantages__title {
