@@ -312,15 +312,8 @@
       var listParent = object.parent();
       var leftArrow = listParent.find($(".nbs-flexisel-nav-left"));
     
-      // Create a synthetic click MouseEvent
-      let evt = new MouseEvent("click", {
-        bubbles: true,
-        cancelable: true,
-        view: window,
-      });
-    
       // Send the event to the checkbox element
-      leftArrow.dispatchEvent(evt);
+      leftArrow.trigger('click');
     }
       
       };
