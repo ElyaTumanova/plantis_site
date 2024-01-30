@@ -22,7 +22,7 @@ get_header(); ?>
 								animationSpeed: 1000,
 								autoPlay: false,
 								autoPlaySpeed: 3000,
-								pauseOnHover: true,
+								pauseOnHover: false,
 								enableResponsiveBreakpoints: true,
 								responsiveBreakpoints: {
 									portrait: {
