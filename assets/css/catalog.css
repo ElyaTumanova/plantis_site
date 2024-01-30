@@ -395,6 +395,7 @@ ul.products {
         display: flex;
         column-gap: 5px;
         overflow-x: scroll;
+        overflow-y: hidden;
     }
 
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
