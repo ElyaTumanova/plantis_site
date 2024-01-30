@@ -100,11 +100,16 @@ ul.products {
     display: none;
 }
 
-.catalog__products-wrap .woocommerce-LoopProduct-link {
-    /* чтобы не было смещения пока грузится слайдер*/
+/* .catalog__products-wrap .woocommerce-LoopProduct-link {
     max-height: 439px; 
     overflow: hidden;
+} */
+
+/* чтобы не было смещения пока грузится слайдер*/
+.catalog__products-wrap .product__image-slider-wrap img:not(:first-child) {
+    display: none;
 }
+
 
 .woocommerce-LoopProduct-link {
     position: relative;
