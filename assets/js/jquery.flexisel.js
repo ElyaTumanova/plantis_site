@@ -144,7 +144,8 @@
     // new code
 
       $(object).on("mousedown",function (event) {
-        methods.swipeStart(event);
+        pointStart = event.clientX;
+        console.log('Произошло событие', event.clientX)
       });
 
       // end new code
@@ -287,55 +288,60 @@
     },			
 
     // new code
-    swipeStart: function(evt) {
-      // let evt = getEvent();
+    // swipeStart: function(evt) {
+    //   let pointStart;
+    //   let pointEnd;
 
-      console.log(evt);
+    //   block.addEventListener("mousedown",function (event) {
+    //     pointStart = event.clientX;
+    //     console.log('Произошло событие', event.clientX)
+    //   });
+
+    //   block.addEventListener("mouseup",function (event) {
+    //     pointEnd = event.clientX;
+    //     console.log('Произошло событие', event.clientX);
+    //     let move = pointEnd - pointStart;
+    //     console.log('Сдвиг', move);
+    //   });
+
+    // },
+
+
+    // swipeStart: function(evt) {
+    //   // let evt = getEvent();
+
+    //   console.log(evt);
   
-      // if (allowSwipe) {
+    //   // if (allowSwipe) {
   
-        // swipeStartTime = Date.now();
+    //     // swipeStartTime = Date.now();
         
-        // transition = true;
+    //     // transition = true;
   
-        // nextTrf = (slideIndex + 1) * -slideWidth;
-        // prevTrf = (slideIndex - 1) * -slideWidth;
+    //     // nextTrf = (slideIndex + 1) * -slideWidth;
+    //     // prevTrf = (slideIndex - 1) * -slideWidth;
   
-        posInit = posX1 = evt.clientX;
-        posY1 = evt.clientY;
+    //     posInit = posX1 = evt.clientX;
+    //     posY1 = evt.clientY;
 
-        console.log(posInit);
+    //     console.log(posInit);
   
-        // sliderTrack.style.transition = '';
+    //     // sliderTrack.style.transition = '';
   
-        $(document).on('mousemove', console.log(posInit));
-        $(document).on('mousemove', function (event) {
-          methods.swipeStart(event);});
+    //     $(document).on('mousemove', console.log(posInit));
+    //     $(document).on('mousemove', function (event) {
+    //       methods.swipeAction(event);});
 
-        // document.addEventListener('touchmove', swipeAction);
-        // document.addEventListener('mousemove', swipeAction);
-        // document.addEventListener('touchend', swipeEnd);
-        // document.addEventListener('mouseup', swipeEnd);
+    //     // document.addEventListener('touchmove', swipeAction);
+    //     // document.addEventListener('mousemove', swipeAction);
+    //     // document.addEventListener('touchend', swipeEnd);
+    //     // document.addEventListener('mouseup', swipeEnd);
   
-        // sliderList.classList.remove('grab');
-        // sliderList.classList.add('grabbing');
-      // }
-    },
+    //     // sliderList.classList.remove('grab');
+    //     // sliderList.classList.add('grabbing');
+    //   // }
+    // },
 
-    swipeAction: function(evt) {
-
-      // let evt = getEvent(),
-        // style = sliderTrack.style.transform,
-        // transform = +style.match(trfRegExp)[0];
-  
-      posX2 = posX1 - evt.clientX;
-      posX1 = evt.clientX;
-  
-      posY2 = posY1 - evt.clientY;
-      posY1 = evt.clientY;
-
-      console.log(posX2);
-    }
     // end new code
       
       };
