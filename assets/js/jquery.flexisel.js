@@ -157,11 +157,11 @@
         pointEnd = event.changedTouches[0].clientX;
         console.log('Произошло событие', event.changedTouches[0].clientX);
         let move = pointEnd - pointStart;
-        if (move <0) {
+        if (move <-100) {
           console.log('Сдвиг', move);
           methods.scrollRight();
         };
-        if (move >0) {
+        if (move >100) {
           console.log('Сдвиг', move);
           methods.scrollLeft();
         };
