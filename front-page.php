@@ -15,9 +15,9 @@ get_header(); ?>
 				<div class="main__sale-gallery">
 					<?php 
 					if (wp_is_mobile()) {
-						echo do_shortcode('[products on_sale="true" class="main-sale-slider-mob" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]') 
+						echo do_shortcode('[products on_sale="true" class="main-sale-slider-mob" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]'); 
 					} else {
-						echo do_shortcode('[products on_sale="true" class="main-sale-slider" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]') 
+						echo do_shortcode('[products on_sale="true" class="main-sale-slider" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]'); 
 					}
 					?>
 
