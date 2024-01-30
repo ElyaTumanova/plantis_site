@@ -139,21 +139,21 @@
         
       });					
       
-      // $(object).on("touchstart",function (event) {
-      //   pointStart = event.changedTouches[0].clientX;
-      // });
+      $(object).on("touchstart",function (event) {
+        pointStart = event.changedTouches[0].clientX;
+      });
 
-      // $(object).on("touchmove",function (event) {
-      //   pointEnd = event.changedTouches[0].clientX;
-      //   let move = pointEnd - pointStart;
-      //   if (move <-100) {
-      //     methods.scrollRight();
-      //   };
-      //   if (move >100) {
-      //     methods.scrollLeft();
-      //   };
+      $(object).on("touchmove",function (event) {
+        pointEnd = event.changedTouches[0].clientX;
+        let move = pointEnd - pointStart;
+        if (move <-50) {
+          methods.scrollRight();
+        };
+        if (move >50) {
+          methods.scrollLeft();
+        };
 
-      // });
+      });
 
       $(leftArrow).on("click", function (event) {
         methods.scrollLeft();

@@ -22,7 +22,7 @@ get_header(); ?>
 								animationSpeed: 1000,
 								autoPlay: false,
 								autoPlaySpeed: 3000,
-								pauseOnHover: true,
+								pauseOnHover: false,
 								enableResponsiveBreakpoints: true,
 								responsiveBreakpoints: {
 									portrait: {
@@ -34,12 +34,14 @@ get_header(); ?>
 									landscape: {
 										changePoint:1095,
 										visibleItems:2,
-										columnGaps: 0
+										columnGaps: 0,
+										animationSpeed: 1000,
 									},
 									tablet: {
 										changePoint:1279,
 										visibleItems: 3,
-										columnGaps: 0
+										columnGaps: 0.
+										animationSpeed: 1000,
 									}
 								}
 							});
