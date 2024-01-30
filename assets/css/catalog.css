@@ -334,6 +334,7 @@ ul.products {
 
 .main__sale-gallery .product {
     text-align: left;
+    position: relative;
 }
 
 .main__sale-gallery .yith-wcwl-add-to-wishlist {
