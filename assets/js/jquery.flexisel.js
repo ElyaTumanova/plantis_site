@@ -48,10 +48,6 @@
       var canNavigate = true; 
       var itemsVisible = settings.visibleItems; 
       var columnGaps = settings.columnGaps;
-      var listParent = object.parent();
-      var childSet = object.children();
-      var leftArrow = listParent.find($(".nbs-flexisel-nav-left"));
-      var rightArrow = listParent.find($(".nbs-flexisel-nav-right"));
       
   /******************************
   Public Methods
@@ -119,10 +115,10 @@
     *******************************/
     setEventHandlers: function() {
       
-      // var listParent = object.parent();
-      // var childSet = object.children();
-      // var leftArrow = listParent.find($(".nbs-flexisel-nav-left"));
-      // var rightArrow = listParent.find($(".nbs-flexisel-nav-right"));
+      var listParent = object.parent();
+      var childSet = object.children();
+      var leftArrow = listParent.find($(".nbs-flexisel-nav-left"));
+      var rightArrow = listParent.find($(".nbs-flexisel-nav-right"));
       
       $(window).on("resize", function(event){
         
@@ -313,7 +309,8 @@
     
     simulateClick: function() {
       // Get the element to send a click event
-      // const cb = document.getElementById("checkbox");
+      var listParent = object.parent();
+      var leftArrow = listParent.find($(".nbs-flexisel-nav-left"));
     
       // Create a synthetic click MouseEvent
       let evt = new MouseEvent("click", {
