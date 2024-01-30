@@ -139,6 +139,47 @@
         
       });					
       
+
+      
+    // new code
+
+      $(object).on("mousedown",swipeStart);
+
+      swipeStart = function() {
+        let evt = getEvent();
+
+        console.log(evt);
+    
+        // if (allowSwipe) {
+    
+          // swipeStartTime = Date.now();
+          
+          // transition = true;
+    
+          // nextTrf = (slideIndex + 1) * -slideWidth;
+          // prevTrf = (slideIndex - 1) * -slideWidth;
+    
+          posInit = posX1 = evt.clientX;
+          posY1 = evt.clientY;
+
+          console.log(posInit);
+    
+          // sliderTrack.style.transition = '';
+    
+          document.addEventListener('mousemove', console.log(posInit));
+
+          // document.addEventListener('touchmove', swipeAction);
+          // document.addEventListener('mousemove', swipeAction);
+          // document.addEventListener('touchend', swipeEnd);
+          // document.addEventListener('mouseup', swipeEnd);
+    
+          // sliderList.classList.remove('grab');
+          // sliderList.classList.add('grabbing');
+        // }
+      },
+
+      // end new code
+
       $(leftArrow).on("click", function (event) {
         methods.scrollLeft();
       });
