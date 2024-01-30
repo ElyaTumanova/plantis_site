@@ -125,6 +125,7 @@
           pointStart = event.changedTouches[0].clientX;
           console.log(event.currentTarget);
           currentTarget = event.currentTarget.getAttribute("class");
+          console.log(currentTarget);
           nextNav = currentTarget.find("a.nivo-nextNav");
           prevNav = currentTarget.find("a.nivo-prevNav");
           console.log(nextNav);
