@@ -123,7 +123,6 @@
 
         $(slider).on("touchstart",function (event) {
           pointStart = event.changedTouches[0].clientX;
-          console.log(event.currentTarget);
           nextNav = $(this).find("a.nivo-nextNav");
           prevNav = $(this).find("a.nivo-prevNav");
         });
