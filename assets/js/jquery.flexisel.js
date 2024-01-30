@@ -148,20 +148,20 @@
       //   console.log('Произошло событие', event.clientX)
       // });
 
-      $(object).on("mousedown",function (event) {
-        methods.simulateClick();
-        console.log('Произошло событие', event.clientX)
-      });
-
-      // $(object).on("mouseup",function (event) {
-      //   pointEnd = event.clientX;
-      //   console.log('Произошло событие', event.clientX);
-      //   let move = pointEnd - pointStart;
-      //   if (move <=0) {
-      //     console.log('Сдвиг', move);
-      //     methods.scrollLeft();
-      //   }
+      // $(object).on("mousedown",function (event) {
+      //   methods.simulateClick();
+      //   console.log('Произошло событие', event.clientX)
       // });
+
+      $(object).on("mouseup",function (event) {
+        pointEnd = event.clientX;
+        console.log('Произошло событие', event.clientX);
+        let move = pointEnd - pointStart;
+        if (move <=0) {
+          console.log('Сдвиг', move);
+          methods.scrollLeft();
+        }
+      });
 
       // end new code
 
@@ -303,18 +303,18 @@
       object.css({'left' : -itemsWidth});		
     },		
     
-    /******************************
-    simulateClick 
-    *******************************/
+    // /******************************
+    // simulateClick 
+    // *******************************/
     
-    simulateClick: function() {
-      // Get the element to send a click event
-      var listParent = object.parent();
-      var leftArrow = listParent.find($(".nbs-flexisel-nav-left"));
+    // simulateClick: function() {
+    //   // Get the element to send a click event
+    //   var listParent = object.parent();
+    //   var leftArrow = listParent.find($(".nbs-flexisel-nav-left"));
     
-      // Send the event to the checkbox element
-      leftArrow.trigger('click');
-    }
+    //   // Send the event to the checkbox element
+    //   leftArrow.trigger('click');
+    // }
       
       };
       
