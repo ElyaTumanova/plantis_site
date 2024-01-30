@@ -144,7 +144,7 @@
     // new code
 
       $(object).on("mousedown",function (event) {
-        methods.swipeStart();
+        methods.swipeStart(event);
       });
 
       // end new code
