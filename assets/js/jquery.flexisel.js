@@ -139,6 +139,8 @@
         
       });					
       
+
+      // swipe slider
       // $(object).on("touchstart",function (event) {
       //   pointStart = event.changedTouches[0].clientX;
       // });
@@ -195,22 +197,18 @@
         if(contentWidth < settings.responsiveBreakpoints.portrait.changePoint) {
           itemsVisible = settings.responsiveBreakpoints.portrait.visibleItems;
           columnGaps = settings.responsiveBreakpoints.portrait.columnGaps;
-          // animationSpeed = settings.responsiveBreakpoints.portrait.animationSpeed;
         }
         else if(contentWidth > settings.responsiveBreakpoints.portrait.changePoint && contentWidth < settings.responsiveBreakpoints.landscape.changePoint) {
           itemsVisible = settings.responsiveBreakpoints.landscape.visibleItems;
           columnGaps = settings.responsiveBreakpoints.landscape.columnGaps;
-          // animationSpeed = settings.responsiveBreakpoints.landscape.animationSpeed;
         }
         else if(contentWidth > settings.responsiveBreakpoints.landscape.changePoint && contentWidth < settings.responsiveBreakpoints.tablet.changePoint) {
           itemsVisible = settings.responsiveBreakpoints.tablet.visibleItems;
           columnGaps = settings.responsiveBreakpoints.tablet.columnGaps;
-          // animationSpeed = settings.responsiveBreakpoints.tablet.animationSpeed;
         }
         else {
           itemsVisible = settings.visibleItems;
           columnGaps = settings.columnGaps;
-          // animationSpeed = settings.animationSpeed;
         }
       }
     },			

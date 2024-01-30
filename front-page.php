@@ -22,7 +22,6 @@ get_header(); ?>
 					?>
 
 					<script type="text/javascript">
-						console.log('not mob');
 						jQuery(window).load(function() {
 							jQuery(".main-sale-slider > ul").flexisel({
 								visibleItems:1,
@@ -35,20 +34,17 @@ get_header(); ?>
 									portrait: {
 										changePoint:767,
 										visibleItems: 2,
-										columnGaps: 10,
-										// animationSpeed: 2000,
+										columnGaps: 10
 									},
 									landscape: {
 										changePoint:1095,
 										visibleItems:2,
-										columnGaps: 0,
-										// animationSpeed: 1000,
+										columnGaps: 0
 									},
 									tablet: {
 										changePoint:1279,
 										visibleItems: 3,
-										columnGaps: 0.
-										// animationSpeed: 1000,
+										columnGaps: 0
 									}
 								}
 							});
