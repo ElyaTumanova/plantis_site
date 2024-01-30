@@ -153,6 +153,9 @@
         console.log('Произошло событие', event.clientX);
         let move = pointEnd - pointStart;
         console.log('Сдвиг', move);
+        if (move <0) {
+          methods.scrollLeft();
+        }
       });
 
       // end new code
