@@ -110,7 +110,7 @@
             }
         }
         
-        //Process initial  caption
+        //Process initial caption
         processCaption(settings);
         
         // In the words of Super Mario "let's a go!"
@@ -119,6 +119,25 @@
             timer = setInterval(function(){ nivoRun(slider, kids, settings, false); }, settings.pauseTime);
         }
         
+        // Swiper
+
+        $(slider).on("touchstart",function (event) {
+          pointStart = event.changedTouches[0].clientX;
+          console.log(pointStart);
+        });
+
+        // $(object).on("touchmove",function (event) {
+        //   pointEnd = event.changedTouches[0].clientX;
+        //   let move = pointEnd - pointStart;
+        //   if (move <-50) {
+        //     methods.scrollRight();
+        //   };
+        //   if (move >50) {
+        //     methods.scrollLeft();
+        //   };
+
+        // });
+
         // Add Direction nav
         if(settings.directionNav){
             slider.append('<div class="nivo-directionNav"><a class="nivo-prevNav">'+ settings.prevText +'</a><a class="nivo-nextNav">'+ settings.nextText +'</a></div>');
