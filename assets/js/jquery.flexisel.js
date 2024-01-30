@@ -152,7 +152,7 @@
         pointEnd = event.clientX;
         console.log('Произошло событие', event.clientX);
         let move = pointEnd - pointStart;
-        if (move <0) {
+        if (move <=0) {
           console.log('Сдвиг', move);
           methods.scrollLeft();
         }
@@ -161,7 +161,6 @@
       // end new code
 
       $(leftArrow).on("click", function (event) {
-        console.log('left');
         methods.scrollLeft();
       });
       
