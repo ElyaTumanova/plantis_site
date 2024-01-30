@@ -48,6 +48,7 @@
       var canNavigate = true; 
       var itemsVisible = settings.visibleItems; 
       var columnGaps = settings.columnGaps;
+      var leftArrow = listParent.find($(".nbs-flexisel-nav-left"));
       
   /******************************
   Public Methods
@@ -117,7 +118,7 @@
       
       var listParent = object.parent();
       var childSet = object.children();
-      var leftArrow = listParent.find($(".nbs-flexisel-nav-left"));
+      // var leftArrow = listParent.find($(".nbs-flexisel-nav-left"));
       var rightArrow = listParent.find($(".nbs-flexisel-nav-right"));
       
       $(window).on("resize", function(event){
