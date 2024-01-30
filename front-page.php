@@ -29,19 +29,19 @@ get_header(); ?>
 										changePoint:767,
 										visibleItems: 2,
 										columnGaps: 10,
-										animationSpeed: 2000,
+										// animationSpeed: 2000,
 									},
 									landscape: {
 										changePoint:1095,
 										visibleItems:2,
 										columnGaps: 0,
-										animationSpeed: 1000,
+										// animationSpeed: 1000,
 									},
 									tablet: {
 										changePoint:1279,
 										visibleItems: 3,
 										columnGaps: 0.
-										animationSpeed: 1000,
+										// animationSpeed: 1000,
 									}
 								}
 							});
