@@ -161,6 +161,7 @@
       // end new code
 
       $(leftArrow).on("click", function (event) {
+        console.log('left');
         methods.scrollLeft();
       });
       
@@ -296,63 +297,6 @@
       childSet.width(itemsWidth);
       object.css({'left' : -itemsWidth});		
     },			
-
-    // new code
-    // swipeStart: function(evt) {
-    //   let pointStart;
-    //   let pointEnd;
-
-    //   block.addEventListener("mousedown",function (event) {
-    //     pointStart = event.clientX;
-    //     console.log('Произошло событие', event.clientX)
-    //   });
-
-    //   block.addEventListener("mouseup",function (event) {
-    //     pointEnd = event.clientX;
-    //     console.log('Произошло событие', event.clientX);
-    //     let move = pointEnd - pointStart;
-    //     console.log('Сдвиг', move);
-    //   });
-
-    // },
-
-
-    // swipeStart: function(evt) {
-    //   // let evt = getEvent();
-
-    //   console.log(evt);
-  
-    //   // if (allowSwipe) {
-  
-    //     // swipeStartTime = Date.now();
-        
-    //     // transition = true;
-  
-    //     // nextTrf = (slideIndex + 1) * -slideWidth;
-    //     // prevTrf = (slideIndex - 1) * -slideWidth;
-  
-    //     posInit = posX1 = evt.clientX;
-    //     posY1 = evt.clientY;
-
-    //     console.log(posInit);
-  
-    //     // sliderTrack.style.transition = '';
-  
-    //     $(document).on('mousemove', console.log(posInit));
-    //     $(document).on('mousemove', function (event) {
-    //       methods.swipeAction(event);});
-
-    //     // document.addEventListener('touchmove', swipeAction);
-    //     // document.addEventListener('mousemove', swipeAction);
-    //     // document.addEventListener('touchend', swipeEnd);
-    //     // document.addEventListener('mouseup', swipeEnd);
-  
-    //     // sliderList.classList.remove('grab');
-    //     // sliderList.classList.add('grabbing');
-    //   // }
-    // },
-
-    // end new code
       
       };
       
