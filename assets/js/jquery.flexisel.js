@@ -143,7 +143,7 @@
       
     // new code
 
-      $(object).on("mousedown",function (event) {
+      $(object).on("touchstart",function (event) {
         pointStart = event.clientX;
         console.log('Произошло событие', event.clientX)
       });
@@ -153,7 +153,7 @@
       //   console.log('Произошло событие', event.clientX)
       // });
 
-      $(object).on("mouseup",function (event) {
+      $(object).on("touchend",function (event) {
         pointEnd = event.clientX;
         console.log('Произошло событие', event.clientX);
         let move = pointEnd - pointStart;
