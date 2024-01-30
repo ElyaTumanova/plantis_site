@@ -123,7 +123,10 @@
 
         $(slider).on("touchstart",function (event) {
           pointStart = event.changedTouches[0].clientX;
-          console.log(event);
+          console.log(event.currentTarget);
+          nextNav = event.currentTarget.find("a.nivo-nextNav");
+          prevNav = event.currentTarget.find("a.nivo-prevNav");
+          console.log(nextNav);
         });
 
         $(slider).on("touchmove",function (event) {
@@ -131,11 +134,11 @@
           let move = pointEnd - pointStart;
           if (move <-50) {
             console.log(move);
-            $('a.nivo-nextNav').trigger('click');
+            $(nextNav).trigger('click');
           };
           if (move >50) {
             console.log(move);
-            $('a.nivo-prevNav').trigger('click');
+            $(prevNav).trigger('click');
           };
 
         });
