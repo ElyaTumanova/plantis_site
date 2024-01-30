@@ -123,7 +123,7 @@
 
         $(slider).on("touchstart",function (event) {
           pointStart = event.changedTouches[0].clientX;
-          console.log(pointStart);
+          console.log(event);
         });
 
         $(slider).on("touchmove",function (event) {
