@@ -23,8 +23,8 @@ get_header(); ?>
 			</header><!-- .page-header -->
             <?php
             if ( is_search() ) {
-                echo "Search page"
-            };
+                echo "Search page";
+            }
             ?>
             <div class="catalog__grid">
                 <div class="catalog__sidebar">
