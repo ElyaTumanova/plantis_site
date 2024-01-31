@@ -26,6 +26,23 @@ get_header(); ?>
             //     echo "Search page";
             // }
             global $wp_query;
+
+            $arg = array(
+                'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
+                'post_status' => 'publish',
+                's' => get_search_query(),
+                'meta_query' => array( 
+                    array(
+                        'key'       => '_stock_status',
+                        'value'     => 'outofstock',
+                        'compare'   => 'NOT IN'
+                    )
+                )
+            );
+            $query = new WP_Query($arg);
+
+            $wp_query = $query
+
             echo '<pre>';
             print_r( $wp_query );
             echo '</pre>';     
