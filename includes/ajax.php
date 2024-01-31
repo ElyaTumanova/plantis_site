@@ -14,7 +14,14 @@ function plnt_search_ajax_action_callback (){
     $arg = array(
         'post_type' => array('product'), // если нужен поиск по постам - доавляем в массив 'post'
         'post_status' => 'publish',
-        's' => $_POST['s']
+        's' => $_POST['s'],
+        'meta_query' => array( 
+            array(
+                'key'       => '_stock_status',
+                'value'     => 'outofstock',
+                'compare'   => 'NOT IN'
+            )
+        )
     );
     $query_ajax = new WP_Query($arg);
     $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
