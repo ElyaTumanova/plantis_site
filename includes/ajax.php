@@ -56,7 +56,7 @@ function plnt_search_ajax_action_callback (){
             <?php
         }
         ?>
-        <a class="search-result__btn button" href="<?php site_url() . urlencode( get_query_var( 's' ) )?>">Посмотреть все</a>
+        <a class="search-result__btn button" href="<?php site_url()?>">Посмотреть все</a>
         <?php
     } else {
         ?>
