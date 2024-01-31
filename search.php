@@ -24,7 +24,7 @@ get_header(); ?>
 
 			<?php
 
-			do_action( 'woocommerce_before_shop_loop' );
+			// do_action( 'woocommerce_before_shop_loop' );
 
 			woocommerce_product_loop_start();
 			/* Start the Loop */
