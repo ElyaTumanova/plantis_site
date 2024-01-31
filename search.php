@@ -41,10 +41,10 @@ get_header(); ?>
                         while ( have_posts() ) : the_post();
                         // global $post;
                         $product = wc_get_product( get_the_ID() );
-                        echo '<pre>';
-                        print_r( $product );
-                        echo '</pre>';     
-                  
+                        // echo '<pre>';
+                        // print_r( $product );
+                        // echo '</pre>';   
+                        if ($product->is_in_stock()) {
                             /**
                              * Run the loop for the search to output the results.
                              * If you want to overload this in a child theme then include a file
@@ -52,7 +52,7 @@ get_header(); ?>
                              */
                             // get_template_part( 'template-parts/content', 'search' );
                             wc_get_template_part( 'content', 'product' );
-                      
+                        }                      
                         endwhile;
                         ?>
                     </ul> 
