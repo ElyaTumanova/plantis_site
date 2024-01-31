@@ -6,10 +6,10 @@ const menuMobOpen = document.querySelector('.header__mob-menu');
 const menuMobClose = document.querySelector('.menu-mob__close');
 
 menuMobOpen.addEventListener ("click", (evt)=>{
-    toggle_search_popup ();
+    toggle_mob_menu ();
 });
 menuMobClose.addEventListener ("click", (evt)=>{
-    toggle_search_popup ();
+    toggle_mob_menu ();
 });
 
 function toggle_mob_menu () {
