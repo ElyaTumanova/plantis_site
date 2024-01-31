@@ -35,7 +35,7 @@
 	 ?>
  </header>
  <?php
- if ( woocommerce_product_loop() ) {
+ 
  
 	 /**
 	  * Hook: woocommerce_before_shop_loop.
@@ -69,14 +69,7 @@
 	  * @hooked woocommerce_pagination - 10
 	  */
 	 do_action( 'woocommerce_after_shop_loop' );
- } else {
-	 /**
-	  * Hook: woocommerce_no_products_found.
-	  *
-	  * @hooked wc_no_products_found - 10
-	  */
-	 do_action( 'woocommerce_no_products_found' );
- }
+ 
  
  /**
   * Hook: woocommerce_after_main_content.
