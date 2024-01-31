@@ -21,29 +21,40 @@ get_header(); ?>
 					printf( esc_html__( 'Search Results for: %s', 'estore' ), '<span>' . get_search_query() . '</span>' );
 				?></h1>
 			</header><!-- .page-header -->
+            <div class="catalog__grid">
+                <div class="catalog__sidebar"></div>
+                <div class="catalog__products-wrap">
+                    <ul class="products columns-2"> 
+                        <?php
+                        /* Start the Loop */
+                        while ( have_posts() ) : the_post();
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+                            /**
+                             * Run the loop for the search to output the results.
+                             * If you want to overload this in a child theme then include a file
+                             * called content-search.php and that will be used instead.
+                             */
+                            // get_template_part( 'template-parts/content', 'search' );
+                            wc_get_template_part( 'content', 'product' );
 
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				// get_template_part( 'template-parts/content', 'search' );
-                wc_get_template_part( 'content', 'product' );
+                        endwhile;
+                        ?>
+                    </ul> 
+                    
+                    <?php
 
-			endwhile;
+                    // the_posts_navigation();
+                    the_posts_pagination();
 
-			// the_posts_navigation();
-            the_posts_pagination();
+                    else :
 
-		else :
+                        get_template_part( 'template-parts/content', 'none' );
 
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif; ?>
+                    endif; ?>
+                     
+                </div>
+            </div>
+			
 
 		</main><!-- #main -->
 	</section><!-- #primary -->
