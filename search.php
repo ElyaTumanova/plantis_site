@@ -39,7 +39,7 @@ get_header(); ?>
             $search_query = new WP_Query($arg);
             $wp_query = $search_query;
             ?>
-            
+
             <div class="catalog__grid">
                 <div class="catalog__sidebar">
                     <?php plnt_catalog_menu() ?>
@@ -59,7 +59,11 @@ get_header(); ?>
                     
                     <?php
 
-                    the_posts_pagination();
+                    // the_posts_pagination();
+
+                    the_posts_pagination( array(
+                        'class' => 'pagination woocommerce-pagination',
+                    ));
 
                     else :
 
