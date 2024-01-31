@@ -4,6 +4,7 @@
 </div><!-- #page -->
 
 <?php get_template_part('template-parts/popups/search-popup');?>
+<?php get_template_part('template-parts/popups/burger-menu');?>
 
 <?php 
     global $product;

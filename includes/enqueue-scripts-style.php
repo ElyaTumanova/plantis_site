@@ -63,6 +63,8 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		                             '/assets/css/main.css', array(), null, 'all' );
 		wp_enqueue_style( 'header', get_template_directory_uri() .
 		                             '/assets/css/header.css', array(), null, 'all' );
+		wp_enqueue_style( 'menu', get_template_directory_uri() .
+		                             '/assets/css/menu.css', array(), null, 'all' );
 		wp_enqueue_style( 'card', get_template_directory_uri() .
 		                             '/assets/css/card.css', array(), null, 'all' );
 		wp_enqueue_style( 'catalog', get_template_directory_uri() .
