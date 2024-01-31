@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <?get_search_form();?>
             <div class="search__close">&#10006;</div>
         </div>
-        <div class="search-result"></div>
+        <div class="search-result container"></div>
     </div>
     <div class="search__popup-overlay popup-overlay"></div>
 </div>

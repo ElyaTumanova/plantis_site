@@ -106,6 +106,10 @@ input[type="search"], input[type="search"]:focus-visible {
     overflow-y: scroll;
 }
 
+.search-result__text {
+    margin-top: 10px;
+}
+
 .search-result__item:first-child {
     padding-top: 20px;
 }
