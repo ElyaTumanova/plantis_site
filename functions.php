@@ -58,7 +58,7 @@ function template_chooser($template) {
 	$post_type = get_query_var('post_type');   
 	if( $wp_query->is_search && $post_type == 'products' )   
 	{
-	  return locate_template('archive-product.php');  //  redirect to archive-product.php
+	  return wc_locate_template('archive-product.php');  //  redirect to archive-product.php
 	}   
 	return $template;   
   }
