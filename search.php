@@ -21,9 +21,9 @@ get_header(); ?>
 					printf( esc_html__( 'Search Results for: %s', 'estore' ), '<span>' . get_search_query() . '</span>' );
 				?></h1>
 			</header><!-- .page-header -->
+
             <?php
             global $wp_query;
-
             $arg = array(
                 'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
                 'post_status' => 'publish',
@@ -37,10 +37,9 @@ get_header(); ?>
                 )
             );
             $search_query = new WP_Query($arg);
-
             $wp_query = $search_query;
-     
-             ?>
+            ?>
+            
             <div class="catalog__grid">
                 <div class="catalog__sidebar">
                     <?php plnt_catalog_menu() ?>
@@ -52,12 +51,6 @@ get_header(); ?>
                         while ( have_posts() ) : the_post();
                         $product = wc_get_product( get_the_ID() );
                         if ($product->is_in_stock()) {
-                            /**
-                             * Run the loop for the search to output the results.
-                             * If you want to overload this in a child theme then include a file
-                             * called content-search.php and that will be used instead.
-                             */
-                            // get_template_part( 'template-parts/content', 'search' );
                             wc_get_template_part( 'content', 'product' );
                         }                      
                         endwhile;
@@ -66,9 +59,7 @@ get_header(); ?>
                     
                     <?php
 
-                    // the_posts_navigation();
-                    //the_posts_pagination();
-                    woocommerce_pagination();
+                    the_posts_pagination();
 
                     else :
 
