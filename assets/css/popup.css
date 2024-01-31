@@ -106,6 +106,12 @@ input[type="search"], input[type="search"]:focus-visible {
     overflow-y: scroll;
 }
 
+@media (max-width:767px) {
+    .search-result {
+        max-height: 50vh;
+    }
+}
+
 .search-result__text {
     margin-top: 10px;
 }

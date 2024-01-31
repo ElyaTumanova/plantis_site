@@ -1,7 +1,6 @@
 jQuery(function ($){
     $('.search-form input[name="s"]').on('keyup', function (){  //стили контейнеров формы поиска из header
         var search = $('.search-form input[name="s"]').val();
-        console.log(search);
         if (search.length <4) {
             return false; //ajax works after 4 digits input
         }
@@ -18,7 +17,6 @@ jQuery(function ($){
             beforeSend: function(xhr){
             },
             success: function(data){
-                console.log(data.out)
                 $('.search .search-result').html(data.out);    //стили контейнеров формы поиска из header
             }
         });
