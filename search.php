@@ -14,7 +14,7 @@ get_header(); ?>
 
 		<?php
 		if ( have_posts() ) : ?>
-
+			
 			<header class="page-header">
 				<h1 class="page-title"><?php
 					/* translators: %s: search query. */
@@ -23,7 +23,7 @@ get_header(); ?>
 			</header><!-- .page-header -->
 
 			<?php
-
+			echo is_woocommerce();
 			// do_action( 'woocommerce_before_shop_loop' );
 
 			woocommerce_product_loop_start();
