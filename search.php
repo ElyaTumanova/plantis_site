@@ -47,7 +47,7 @@ get_header(); ?>
 
 			do_action( 'woocommerce_after_shop_loop' );
 
-			the_posts_navigation();
+			// the_posts_navigation();
 
 		else :
 
