@@ -18,6 +18,9 @@ function toggle_mob_menu () {
     body.classList.toggle ('fix-body');
 };
 
+let vh = window.innerHeight;
+console.log(vh);
+document.documentElement.style.setProperty('--vh', `${vh}px`);
 // слушаем событие resize
 window.addEventListener('resize', () => {
     // получаем текущее значение высоты
