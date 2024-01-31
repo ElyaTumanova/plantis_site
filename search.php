@@ -25,10 +25,10 @@ get_header(); ?>
             // if ( is_search() ) {
             //     echo "Search page";
             // }
-            // global $wp_query;
-            // echo '<pre>';
-            // print_r( $wp_query );
-            // echo '</pre>';     
+            global $wp_query;
+            echo '<pre>';
+            print_r( $wp_query );
+            echo '</pre>';     
             // ?>
             <div class="catalog__grid">
                 <div class="catalog__sidebar">
