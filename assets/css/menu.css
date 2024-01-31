@@ -228,6 +228,9 @@
     .menu-mob {
         display: none;
     }
+    .menu-mob_active {
+        display: none;
+      }
 }  
 
 .menu-mob {
@@ -237,4 +240,9 @@
     position: absolute;
     top: 0;
     z-index: 9999;
+    display: none;
+  }
+
+  .menu-mob_active {
+    display: block;
   }
