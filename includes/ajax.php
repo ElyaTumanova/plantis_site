@@ -12,7 +12,7 @@ function plnt_search_ajax_action_callback (){
     }
 
     $arg = array(
-        'post_type' => array('product'), // если нужен поиск по постам - доавляем в массив 'post'
+        'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
         'post_status' => 'publish',
         's' => $_POST['s'],
         'meta_query' => array( 
