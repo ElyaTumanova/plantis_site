@@ -55,6 +55,9 @@ function plnt_search_ajax_action_callback (){
             </div>
             <?php
         }
+        ?>
+        <a class="search-result__link" href="<?php get_search_link()?>">Посмотреть все</a>
+        <?php
     } else {
         ?>
         <div class="search-result__text">Ничего не найдено</div>
