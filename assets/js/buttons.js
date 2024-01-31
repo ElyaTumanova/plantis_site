@@ -1,7 +1,7 @@
 /*--------------------------------------------------------------
 # Menu in header for mobile
 --------------------------------------------------------------*/
-const menuMob = document.querySelectorAll('.menu-mob');
+const menuMob = document.querySelector('.menu-mob');
 const menuMobOpen = document.querySelector('.header__mob-menu');
 const menuMobClose = document.querySelector('.menu-mob__close');
 
