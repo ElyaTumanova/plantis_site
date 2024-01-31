@@ -43,7 +43,7 @@ get_header(); ?>
 
 		endif; ?>
 
-		</main><!-- #main -->
+		</main><!-- #main -->   
 	</section><!-- #primary -->
 
 <?php
