@@ -24,7 +24,7 @@ get_header(); ?>
             <?php
             if ( is_search() ) {
                 echo "Search page"
-            }
+            };
             ?>
             <div class="catalog__grid">
                 <div class="catalog__sidebar">
