@@ -23,7 +23,6 @@ get_header(); ?>
 			</header><!-- .page-header -->
 
 			<?php
-			echo is_woocommerce();
 			// do_action( 'woocommerce_before_shop_loop' );
 
 			woocommerce_product_loop_start();
