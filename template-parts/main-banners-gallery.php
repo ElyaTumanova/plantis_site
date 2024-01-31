@@ -13,6 +13,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$banner_3_name = carbon_get_theme_option('main_banner_3_name');
 	$banner_4 = carbon_get_theme_option('main_banner_4');
 	$banner_4_name = carbon_get_theme_option('main_banner_4_name');
+
+
+		// выводим переменные с размерами
+		echo "Ширина экрана: ". $_GET['width'] ."<br />\n";
+		echo "Высота экрана: ". $_GET['height'] ."<br />\n";
+
 ?>
 
 <div class="main__banners nivo-main-banner-gallery">
