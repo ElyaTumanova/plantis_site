@@ -53,7 +53,7 @@
 
 /* search and search popup styles */
 
-.search {
+.search-popup .search {
     padding: 10px 0;
     background: var(--background);
     position: absolute;
