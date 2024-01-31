@@ -39,7 +39,7 @@ get_header(); ?>
                         <?php
                         /* Start the Loop */
                         while ( have_posts() ) : the_post();
-                        global $post
+                        global $post;
                         echo '<pre>';
                         print_r( $post );
                         echo '</pre>';     
