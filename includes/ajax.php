@@ -56,7 +56,7 @@ function plnt_search_ajax_action_callback (){
             <?php
         }
         ?>
-        <a class="search-result__btn button" href="<?php get_search_link()?>">Посмотреть все</a>
+        <a class="search-result__btn button" href="<?php get_search_link('treez')?>">Посмотреть все</a>
         <?php
     } else {
         ?>
