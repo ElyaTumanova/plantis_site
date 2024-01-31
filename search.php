@@ -25,6 +25,9 @@ get_header(); ?>
             if ( is_search() ) {
                 echo "Search page";
             }
+            echo '<pre>';
+            print_r( $query );
+            echo '</pre>';
             ?>
             <div class="catalog__grid">
                 <div class="catalog__sidebar">
