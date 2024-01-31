@@ -45,9 +45,9 @@ get_header(); ?>
 
 			woocommerce_product_loop_end();
 
-			woocommerce_pagination();
+			// woocommerce_pagination();
 
-			// the_posts_navigation();
+			the_posts_navigation();
 
 		else :
 
