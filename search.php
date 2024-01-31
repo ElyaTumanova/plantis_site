@@ -39,9 +39,10 @@ get_header(); ?>
                         <?php
                         /* Start the Loop */
                         while ( have_posts() ) : the_post();
-                        global $post;
+                        // global $post;
+                        $product = wc_get_product( get_the_ID() );
                         echo '<pre>';
-                        print_r( $post );
+                        print_r( $product );
                         echo '</pre>';     
                   
                             /**
