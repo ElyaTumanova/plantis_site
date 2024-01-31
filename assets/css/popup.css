@@ -62,7 +62,7 @@
 }
 
 @media (max-width:1279px) {
-    .search {
+    .search-popup .search {
         top: 55px;
     }
 }
