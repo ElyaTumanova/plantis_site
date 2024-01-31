@@ -56,7 +56,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 function template_chooser($template) {    
 	global $wp_query;   
 	$post_type = get_query_var('post_type');   
-	if( $wp_query->is_search && $post_type == 'products' )   
+	if( $wp_query->is_search )   
 	{
 	  return wc_locate_template('archive-product.php');  //  redirect to archive-product.php
 	}   
