@@ -131,11 +131,9 @@
           pointEnd = event.changedTouches[0].clientX;
           let move = pointEnd - pointStart;
           if (move <-50) {
-            console.log(move);
             $(nextNav).trigger('click');
           };
           if (move >50) {
-            console.log(move);
             $(prevNav).trigger('click');
           };
 
