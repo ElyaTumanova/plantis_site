@@ -26,7 +26,7 @@ get_header(); ?>
 
 			// do_action( 'woocommerce_before_shop_loop' );
 
-			// woocommerce_product_loop_start();
+			woocommerce_product_loop_start();
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
 
@@ -35,15 +35,15 @@ get_header(); ?>
 				 * If you want to overload this in a child theme then include a file
 				 * called content-search.php and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', 'search' );
+				// get_template_part( 'template-parts/content', 'search' );
 
 				// do_action( 'woocommerce_shop_loop' );
 				
-				// wc_get_template_part( 'content', 'product' );
+				wc_get_template_part( 'content', 'product' );
 
 			endwhile;
 
-			// woocommerce_product_loop_end();
+			woocommerce_product_loop_end();
 
 			// woocommerce_pagination();
 
