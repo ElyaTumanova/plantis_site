@@ -262,10 +262,10 @@
   .menu-mob__item_accent {
     background-color: var(--accent-color);
     color: var(--white);
-    padding: 15px 30px;
+    padding: 15px 55px 15px 30px;
   }
 
   .menu-mob__item {
-    padding: 15px 30px;
+    padding: 15px 55px 15px 30px;
   }
 
