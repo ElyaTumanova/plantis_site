@@ -17,3 +17,10 @@ function toggle_mob_menu () {
     menuMob.classList.toggle ('menu-mob_active');
     body.classList.toggle ('fix-body');
 };
+
+// слушаем событие resize
+window.addEventListener('resize', () => {
+    // получаем текущее значение высоты
+    let vh = window.innerHeight;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  });
