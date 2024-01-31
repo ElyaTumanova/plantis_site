@@ -61,6 +61,13 @@
     width: 100%;
 }
 
+@media (max-width:767px) {
+    .search {
+        top: 55px;
+    }
+}
+
+
 .search-form {
     display: flex;
     justify-content: space-between;
