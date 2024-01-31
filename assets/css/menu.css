@@ -247,7 +247,7 @@
   }
 
   .menu-mob__close {
-    position: absolute;
+    position: fixed;
     top: 5px;
     right: 0;
     border: none;

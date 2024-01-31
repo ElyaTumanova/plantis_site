@@ -18,6 +18,10 @@ function toggle_mob_menu () {
     body.classList.toggle ('fix-body');
 };
 
+/*--------------------------------------------------------------
+# Высота экрана мобильного устройства
+--------------------------------------------------------------*/
+
 let vh = window.innerHeight;
 console.log(vh);
 document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -27,4 +31,4 @@ window.addEventListener('resize', () => {
     let vh = window.innerHeight;
     console.log(vh);
     document.documentElement.style.setProperty('--vh', `${vh}px`);
-  });
+});
