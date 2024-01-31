@@ -51,13 +51,13 @@
     border-radius: 5px;
 }
 
-.main__banners_mob {
+/* .main__banners_mob {
     display: none;
-}
+} */
 
 /* banners #adaptive*/
 
-@media (max-width:767px) {
+/* @media (max-width:767px) {
     .main__banners {
         display: none;
     }
@@ -65,7 +65,7 @@
     .main__banners_mob {
         display: block;
     }
-}
+} */
 
 /* advantages */
 .advantages {
