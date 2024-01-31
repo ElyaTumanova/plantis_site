@@ -67,7 +67,6 @@
     }
 }
 
-
 .search-form {
     display: flex;
     justify-content: space-between;
@@ -114,6 +113,12 @@ input[type="search"], input[type="search"]:focus-visible {
 
 .search-result__text {
     margin-top: 10px;
+}
+
+.search-result__btn {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--white);
 }
 
 .search-result__item:first-child {
