@@ -39,8 +39,9 @@ get_header(); ?>
                         <?php
                         /* Start the Loop */
                         while ( have_posts() ) : the_post();
+                        global $post
                         echo '<pre>';
-                        print_r( the_post() );
+                        print_r( $post );
                         echo '</pre>';     
                   
                             /**
