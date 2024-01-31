@@ -23,6 +23,10 @@ get_header(); ?>
 			</header><!-- .page-header -->
 
 			<?php
+
+			do_action( 'woocommerce_before_shop_loop' );
+
+			woocommerce_product_loop_start();
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
 
@@ -38,6 +42,10 @@ get_header(); ?>
 				wc_get_template_part( 'content', 'product' );
 
 			endwhile;
+
+			woocommerce_product_loop_end();
+
+			do_action( 'woocommerce_after_shop_loop' );
 
 			the_posts_navigation();
 
