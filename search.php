@@ -21,6 +21,11 @@ get_header(); ?>
 					printf( esc_html__( 'Search Results for: %s', 'estore' ), '<span>' . get_search_query() . '</span>' );
 				?></h1>
 			</header><!-- .page-header -->
+            <?php
+            if ( is_search() ) {
+                echo "Search page"
+            }
+            ?>
             <div class="catalog__grid">
                 <div class="catalog__sidebar">
                     <?php plnt_catalog_menu() ?>
