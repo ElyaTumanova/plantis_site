@@ -32,6 +32,9 @@ get_header(); ?>
 				 * called content-search.php and that will be used instead.
 				 */
 				// get_template_part( 'template-parts/content', 'search' );
+
+				do_action( 'woocommerce_shop_loop' );
+				
 				wc_get_template_part( 'content', 'product' );
 
 			endwhile;
