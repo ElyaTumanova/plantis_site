@@ -41,7 +41,7 @@ get_header(); ?>
             );
             $query = new WP_Query($arg);
 
-            $wp_query = $query
+            $wp_query = $query;
 
             echo '<pre>';
             print_r( $wp_query );
