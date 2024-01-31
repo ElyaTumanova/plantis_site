@@ -24,7 +24,7 @@ function plnt_search_ajax_action_callback (){
         )
     );
     echo '<pre>';
-	print_r( $_POST['s']; );
+	print_r( $_POST['s']);
 	echo '</pre>';
     $query_ajax = new WP_Query($arg);
     $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
