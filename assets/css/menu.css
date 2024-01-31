@@ -235,7 +235,7 @@
 
 .menu-mob {
     width: 100vw;
-    height: fit-content;
+    height: 100vh;
     overflow-y: scroll;
     padding: 45px 0;
     background-color: var(--background);
