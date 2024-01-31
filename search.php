@@ -22,9 +22,6 @@ get_header(); ?>
 				?></h1>
 			</header><!-- .page-header -->
             <?php
-            // if ( is_search() ) {
-            //     echo "Search page";
-            // }
             global $wp_query;
 
             $arg = array(
@@ -39,14 +36,11 @@ get_header(); ?>
                     )
                 )
             );
-            $query = new WP_Query($arg);
+            $search_query = new WP_Query($arg);
 
-            $wp_query = $query;
-
-            echo '<pre>';
-            print_r( $wp_query );
-            echo '</pre>';     
-            // ?>
+            $wp_query = $search_query;
+     
+             ?>
             <div class="catalog__grid">
                 <div class="catalog__sidebar">
                     <?php plnt_catalog_menu() ?>
@@ -56,11 +50,7 @@ get_header(); ?>
                         <?php
                         /* Start the Loop */
                         while ( have_posts() ) : the_post();
-                        // global $post;
                         $product = wc_get_product( get_the_ID() );
-                        // echo '<pre>';
-                        // print_r( $product );
-                        // echo '</pre>';   
                         if ($product->is_in_stock()) {
                             /**
                              * Run the loop for the search to output the results.
@@ -77,7 +67,8 @@ get_header(); ?>
                     <?php
 
                     // the_posts_navigation();
-                    the_posts_pagination();
+                    //the_posts_pagination();
+                    woocommerce_pagination();
 
                     else :
 
