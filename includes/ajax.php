@@ -23,9 +23,6 @@ function plnt_search_ajax_action_callback (){
             )
         )
     );
-    echo '<pre>';
-	print_r( $_POST['s']);
-	echo '</pre>';
     $query_ajax = new WP_Query($arg);
     $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
     if ($query_ajax->have_posts()) {
@@ -59,7 +56,7 @@ function plnt_search_ajax_action_callback (){
             <?php
         }
         ?>
-        <a class="search-result__btn button" href="<?php echo site_url()?>/?s=<?php echo get_query_var( 's' )?>">Посмотреть все</a>
+        <a class="search-result__btn button" href="<?php echo site_url()?>/?s=<?php echo $_POST['s']?>">Посмотреть все</a>
         <?php
     } else {
         ?>
