@@ -1,9 +1,9 @@
 /*--------------------------------------------------------------
 # Menu in header for mobile
 --------------------------------------------------------------*/
-const menuMob = document.querySelector('.menu-mob');
+const menuMob = document.querySelector('.burger-menu');
 const menuMobOpen = document.querySelector('.header__mob-menu');
-const menuMobClose = document.querySelector('.menu-mob__close');
+const menuMobClose = document.querySelector('.burger-menu__close');
 const body = document.querySelector('body');
 
 menuMobOpen.addEventListener ("click", (evt)=>{
@@ -15,6 +15,25 @@ menuMobClose.addEventListener ("click", (evt)=>{
 
 function toggle_mob_menu () {
     menuMob.classList.toggle ('menu-mob_active');
+    body.classList.toggle ('fix-body');
+};
+
+/*--------------------------------------------------------------
+# Catalog for mobile
+--------------------------------------------------------------*/
+const catalogMob = document.querySelector('.catalog-menu');
+const catalogMobOpen = document.querySelector('.header__catalog');
+const catalogMobClose = document.querySelector('.catalog-menu__close');
+
+catalogMobOpen.addEventListener ("click", (evt)=>{
+    toggle_mob_catalog ();
+});
+catalogMobClose.addEventListener ("click", (evt)=>{
+    toggle_mob_catalog ();
+});
+
+function toggle_mob_catalog () {
+    catalogMob.classList.toggle ('menu-mob_active');
     body.classList.toggle ('fix-body');
 };
 

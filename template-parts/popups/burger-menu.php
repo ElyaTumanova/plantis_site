@@ -4,8 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div class="menu-mob">
-    <div class="menu-mob__close button">&#10006;</div>
+<div class="menu-mob burger-menu">
+    <div class="menu-mob__close burger-menu__close button">&#10006;</div>
     <div class="menu-mob__item_accent ">Услуги</div>
     <div class="menu-mob__item"> <a href="#">Пересадка</a></div>
     <div class="menu-mob__item"> <a href="#">Озеленение</a></div>
