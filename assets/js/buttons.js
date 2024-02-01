@@ -38,16 +38,18 @@ function toggle_mob_catalog () {
 };
 
 /*--------------------------------------------------------------
-# Высота экрана мобильного устройства
+# Высота и ширина экрана мобильного устройства
 --------------------------------------------------------------*/
 
 let vh = window.innerHeight;
-console.log(vh);
+let vw = window.innerWidth;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
+document.documentElement.style.setProperty('--vw', `${vw}px`);
 // слушаем событие resize
 window.addEventListener('resize', () => {
     // получаем текущее значение высоты
     let vh = window.innerHeight;
-    console.log(vh);
+    let vw = window.innerWidth;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
+    document.documentElement.style.setProperty('--vw', `${vw}px`);
 });
