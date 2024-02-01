@@ -4,7 +4,7 @@
 
 .catalog__grid {
     display: grid;
-    grid-template-columns:20% calc(80% - 30px);;
+    grid-template-columns:20% calc(80% - 30px);
     grid-template-rows: repeat(4, auto);
     grid-template-areas:
     "sidebar metki"
@@ -15,9 +15,35 @@
     margin-top: 30px;
 }
 
+/* #adaptive */
+@media (max-width: 1024px) {
+    .catalog__grid {
+        grid-template-columns: 25% calc(75% - 30px);
+    }
+}
+
+
+@media (max-width: 767px) {
+    .catalog__grid {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(5, auto);
+        grid-template-areas:
+            "sidebar"
+            "metki"
+            "sorting"
+            "catalog"
+            "pagination";
+    }
+}
+
 .catalog__sidebar {
     grid-area: sidebar;
 }
+
+/* .catalog__sidebar .modal-mob {
+    display: block;
+} */
 
 .woocommerce-ordering {
     grid-area: sorting;

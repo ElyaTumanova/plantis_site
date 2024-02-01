@@ -49,7 +49,7 @@ function plnt_catalog_grid_end() {
 add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar',20);
 function plnt_catalog_sidebar() {
 	?>
-    <div class="catalog__sidebar">
+    <div class="catalog__sidebar modal-mob">
 		<?php plnt_catalog_menu() ?>
 		<div class="catalog__sidebar-filters">
 			<div class="catalog__instock-filter">

@@ -4,27 +4,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div class="menu-mob burger-menu">
-    <div class="menu-mob__close burger-menu__close button">&#10006;</div>
-    <div class="menu-mob__item_accent ">Услуги</div>
-    <div class="menu-mob__item"> <a href="#">Пересадка</a></div>
-    <div class="menu-mob__item"> <a href="#">Озеленение</a></div>
-    <div class="menu-mob__item"> <a href="#">Оптовая покупка растений</a></div>
-    <div class="menu-mob__item_accent ">Информация</div>
-    <div class="menu-mob__item"> <a href="#">Доставка и самовывоз (Москва и МО)</a></div>
-    <div class="menu-mob__item"> <a href="#">Доставка комнатных растений по России</a></div>
-    <div class="menu-mob__item"> <a href="#">Оплата</a></div>
-    <div class="menu-mob__item"> <a href="#">О нас</a></div>
-    <div class="menu-mob__item"> <a href="#">Возврат и обмен</a></div>
-    <div class="menu-mob__item"> <a href="#">Вопросы и ответы</a></div>
-    <div class="menu-mob__item"><a href="#">Поставщикам и партнерам</a></div>
-    <div class="menu-mob__item_accent ">Контакты</div>
-    <div class="menu-mob__item"><a href="https://yandex.ru/maps/-/CXQ-ErQ" target="blank">Москва, ул. Мещерякова, д.3 </a></div>
-    <div class="menu-mob__item"><a href="tel:+78002015790">8 800 201 57 90</a> | <a href="tel:+79647687944">8 964 768 79 44</a></div>
-    <div class="menu-mob__item">Прием заказов круглосуточно</div>
-    <div class="menu-mob__item">Шоурум ежедневно с 10 до 20</div>
-    <div class="menu-mob__item"><a href="mailto:INFO@PLANTIS.SHOP" target="blank">INFO@PLANTIS.SHOP </a></div>
-    <div class="menu-mob__item">
+<div class="modal-mob burger-menu">
+    <div class="modal-mob__close burger-menu__close button">&#10006;</div>
+    <div class="burger-menu__item_accent ">Услуги</div>
+    <div class="burger-menu__item"> <a href="#">Пересадка</a></div>
+    <div class="burger-menu__item"> <a href="#">Озеленение</a></div>
+    <div class="burger-menu__item"> <a href="#">Оптовая покупка растений</a></div>
+    <div class="burger-menu__item_accent ">Информация</div>
+    <div class="burger-menu__item"> <a href="#">Доставка и самовывоз (Москва и МО)</a></div>
+    <div class="burger-menu__item"> <a href="#">Доставка комнатных растений по России</a></div>
+    <div class="burger-menu__item"> <a href="#">Оплата</a></div>
+    <div class="burger-menu__item"> <a href="#">О нас</a></div>
+    <div class="burger-menu__item"> <a href="#">Возврат и обмен</a></div>
+    <div class="burger-menu__item"> <a href="#">Вопросы и ответы</a></div>
+    <div class="burger-menu__item"><a href="#">Поставщикам и партнерам</a></div>
+    <div class="burger-menu__item_accent ">Контакты</div>
+    <div class="burger-menu__item"><a href="https://yandex.ru/maps/-/CXQ-ErQ" target="blank">Москва, ул. Мещерякова, д.3 </a></div>
+    <div class="burger-menu__item"><a href="tel:+78002015790">8 800 201 57 90</a> | <a href="tel:+79647687944">8 964 768 79 44</a></div>
+    <div class="burger-menu__item">Прием заказов круглосуточно</div>
+    <div class="burger-menu__item">Шоурум ежедневно с 10 до 20</div>
+    <div class="burger-menu__item"><a href="mailto:INFO@PLANTIS.SHOP" target="blank">INFO@PLANTIS.SHOP </a></div>
+    <div class="burger-menu__item">
         <a href="https://t.me/plantis" class="header__telegram button" role="button">
             <span class="header__telegram-icon">
                 <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,5 +34,5 @@ if ( ! defined( 'ABSPATH' ) ) {
             <span class="header__telegram-text">Telegram канал</span>
         </a>
     </div>
-    <div class="menu-mob__item_accent "><a href="<?php echo site_url()?>/my-account/">Личный кабинет </a></div>
+    <div class="burger-menu__item_accent "><a href="<?php echo site_url()?>/my-account/">Личный кабинет </a></div>
 </div>

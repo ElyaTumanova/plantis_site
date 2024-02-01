@@ -14,7 +14,7 @@ menuMobClose.addEventListener ("click", (evt)=>{
 });
 
 function toggle_mob_menu () {
-    menuMob.classList.toggle ('menu-mob_active');
+    menuMob.classList.toggle ('modal-mob_active');
     body.classList.toggle ('fix-body');
 };
 
@@ -33,7 +33,7 @@ catalogMobClose.addEventListener ("click", (evt)=>{
 });
 
 function toggle_mob_catalog () {
-    catalogMob.classList.toggle ('menu-mob_active');
+    catalogMob.classList.toggle ('modal-mob_active');
     body.classList.toggle ('fix-body');
 };
 
