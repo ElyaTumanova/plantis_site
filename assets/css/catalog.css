@@ -219,7 +219,7 @@ ul.products {
         position: absolute;
         top: auto;
         bottom: auto;
-        top: calc(var(--imgH) + 10px);
+        top: calc(var(--imgH) + 19px);
         right: 80px;
         border-radius: 100px;
         border: solid 3px var(--accent-color);
@@ -275,6 +275,12 @@ ul.products {
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 5px;
+}
+
+@media (max-width: 767px) {
+    .catalog-grid .woocommerce-loop-product__title {
+        margin-top: 10px;
+    }
 }
 
 .woocommerce-product-details__short-description {
