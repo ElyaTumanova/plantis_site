@@ -216,6 +216,8 @@ ul.products {
 
 @media (max-width:767px) {
     .catalog__products-wrap .yith-wcwl-add-to-wishlist {
+        position: absolute;
+        top: auto;
         bottom: 65px;
         right: 80px;
         border-radius: 100px;
@@ -257,7 +259,7 @@ ul.products {
         position: absolute;
         bottom: 40px;
         right: 10px;
-        background: url(http://new.plantis.shop/wp-content/uploads/2023/05/cart-white.svg) no-repeat center / cover;
+        background: var(--accent-color) url(http://new.plantis.shop/wp-content/uploads/2023/05/cart-white.svg) no-repeat center / cover;
     }
     
 }
