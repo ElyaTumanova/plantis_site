@@ -102,6 +102,10 @@
     .catalog__sidebar-filters-heading {
         display: none;
     }
+
+    .catalog__mob-filter-wrap {
+        display: none;
+    }
 }
 
 .catalog__sidebar-filters-heading {
