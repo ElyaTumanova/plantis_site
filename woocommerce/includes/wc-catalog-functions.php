@@ -27,7 +27,7 @@ function plnt_catalog_products_wrap_start() {
 	?>
     	<div class = "catalog__mob-filter-wrap"> 
 			<div class="catalog__instock-filter">
-				<?php echo do_shortcode('[br_filter_single filter_id=6110]') ?>
+				<?php echo do_shortcode('[br_filter_single filter_id=10996]') ?>
 			</div>
 			<div class="catalog__mob-filter-btn button">ФФФ</div>
 		</div>
@@ -60,7 +60,6 @@ function plnt_catalog_sidebar() {
 		<?php plnt_catalog_menu() ?>
 		<div class="catalog__sidebar-filters">
 			<div class="catalog__instock-filter">
-				<?php echo do_shortcode('[br_filter_single filter_id=6110]') ?>
 				<?php echo do_shortcode('[br_filter_single filter_id=6110]') ?>
 			</div>
 			<?php echo do_shortcode('[br_filter_single filter_id=6055]') ?>
