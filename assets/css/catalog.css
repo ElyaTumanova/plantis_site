@@ -63,6 +63,18 @@
     .catalog__grid .menu-catalog-container {
         display: none;
     }
+
+    .catalog__sidebar-filters {
+        margin-top: 27px;
+    }
+
+    .catalog__sidebar-ordering {
+        margin-top: 27px;
+    }
+
+    .catalog-sidebar__close {
+        top: 35px;
+    }
 }
 
 @media (min-width: 767px) {         /* убираем все мобильные свойства начиная с экранов 767px */
@@ -97,7 +109,7 @@
     font-weight: 600;
     text-transform: uppercase;
     color: var(--text);
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 .catalog__sidebar-ordering-heading {
