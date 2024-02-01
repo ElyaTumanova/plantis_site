@@ -207,8 +207,13 @@ ul.products {
 
 /* wish */
 
-.catalog__products-wrap .yith-wcwl-add-to-wishlist {
-    border: none;
+@media (max-width:768px) {
+    .catalog__products-wrap .yith-wcwl-add-to-wishlist {
+        border: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 }
 
 .woocommerce-LoopProduct-link {
