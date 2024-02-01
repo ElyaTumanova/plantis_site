@@ -59,6 +59,10 @@
         grid-area: filters;
         display: block;
     }
+
+    .catalog__grid .menu-catalog-container {
+        display: none;
+    }
 }
 
 @media (min-width: 767px) {         /* убираем все мобильные свойства начиная с экранов 767px */
