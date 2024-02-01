@@ -27,11 +27,12 @@
     .catalog__grid {
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: repeat(5, auto);
+        grid-template-rows: repeat(6, auto);
         grid-template-areas:
             "sidebar"
             "metki"
             "sorting"
+            "filters"
             "catalog"
             "pagination";
     }
@@ -42,12 +43,21 @@
     padding-right: 10px;
 }
 
+.catalog__mob-filter-wrap {
+    display: none;
+}
+
 /* #adaptive for sidebar modal*/
 @media (max-width: 767px) {
     .catalog__sidebar {
         padding-right: 40px;
         padding-left: 40px;
         width: calc(100vw - 20px);
+    }
+
+    .catalog__mob-filter-wrap {
+        grid-area: filters;
+        display: block;
     }
 }
 
