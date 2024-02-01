@@ -18,7 +18,8 @@
 /* #adaptive */
 @media (max-width: 1024px) {
     .catalog__grid {
-        grid-template-columns: 25% calc(75% - 30px);
+        grid-template-columns: 30% calc(70% - 25px);
+        column-gap: 25px;
     }
 }
 
@@ -40,6 +41,13 @@
 .catalog__sidebar {
     grid-area: sidebar;
     padding-right: 10px;
+}
+
+@media (max-width: 767px) {
+    .catalog__sidebar {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
 }
 
 @media (min-width: 767px) {
