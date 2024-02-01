@@ -1,4 +1,18 @@
 /*--------------------------------------------------------------
+# Высота и ширина экрана мобильного устройства
+--------------------------------------------------------------*/
+
+let vh = window.innerHeight;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+// слушаем событие resize
+window.addEventListener('resize', () => {
+    // получаем текущее значение высоты
+    let vh = window.innerHeight;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+
+
+/*--------------------------------------------------------------
 # Menu in header for mobile
 --------------------------------------------------------------*/
 const menuMob = document.querySelector('.burger-menu');
@@ -45,29 +59,18 @@ const filtersMobOpen = document.querySelector('.catalog__mob-filter-btn ');
 const filtersMobClose = document.querySelector('.catalog-sidebar__close');
 const contentArea = document.querySelector('.content-area');
 
-filtersMobOpen.addEventListener ("click", (evt)=>{
-    toggle_mob_filters ();
-});
-filtersMobClose.addEventListener ("click", (evt)=>{
-    toggle_mob_filters ();
-});
+if (filtersMob) {
+    filtersMobOpen.addEventListener ("click", (evt)=>{
+        toggle_mob_filters ();
+    });
+    filtersMobClose.addEventListener ("click", (evt)=>{
+        toggle_mob_filters ();
+    });
+    
+    function toggle_mob_filters () {
+        filtersMob.classList.toggle ('modal-mob_active');
+        body.classList.toggle ('fix-body');
+        contentArea.classList.toggle ('no-padding');
+    };
+}
 
-function toggle_mob_filters () {
-    filtersMob.classList.toggle ('modal-mob_active');
-    body.classList.toggle ('fix-body');
-    contentArea.classList.toggle ('no-padding');
-};
-
-/*--------------------------------------------------------------
-# Высота и ширина экрана мобильного устройства
---------------------------------------------------------------*/
-
-let vh = window.innerHeight;
-console.log(vh);
-document.documentElement.style.setProperty('--vh', `${vh}px`);
-// слушаем событие resize
-window.addEventListener('resize', () => {
-    // получаем текущее значение высоты
-    let vh = window.innerHeight;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-});
