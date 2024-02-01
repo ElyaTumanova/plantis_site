@@ -38,6 +38,27 @@ function toggle_mob_catalog () {
 };
 
 /*--------------------------------------------------------------
+# Filters for mobile in catalog
+--------------------------------------------------------------*/
+const filtersMob = document.querySelector('.catalog__sidebar');
+const filtersMobOpen = document.querySelector('.catalog__mob-filter-btn ');
+const filtersMobClose = document.querySelector('.catalog-sidebar__close');
+const contentArea = document.querySelector('.content-area');
+
+filtersMobOpen.addEventListener ("click", (evt)=>{
+    toggle_mob_filters ();
+});
+filtersMobClose.addEventListener ("click", (evt)=>{
+    toggle_mob_filters ();
+});
+
+function toggle_mob_filters () {
+    filtersMob.classList.toggle ('modal-mob_active');
+    body.classList.toggle ('fix-body');
+    contentArea.classList.toggle ('no-padding');
+};
+
+/*--------------------------------------------------------------
 # Высота и ширина экрана мобильного устройства
 --------------------------------------------------------------*/
 
