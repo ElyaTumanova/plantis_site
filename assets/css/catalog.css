@@ -222,7 +222,7 @@ ul.products {
         right: 80px;
         border-radius: 100px;
         border: solid 3px var(--accent-color);
-        padding: 14px 13px 10px 13px;
+        padding: 11px 10px 7px 10px;
     }
 
     .catalog__products-wrap .yith-wcwl-add-to-wishlist a.add_to_wishlist>img {
@@ -257,9 +257,13 @@ ul.products {
         height: 60px;
         border-radius: 100px;
         position: absolute;
-        bottom: 40px;
+        bottom: 46px;
         right: 10px;
-        background: var(--accent-color) url(http://new.plantis.shop/wp-content/uploads/2023/05/cart-white.svg) no-repeat center / cover;
+        background-image: url(http://new.plantis.shop/wp-content/uploads/2023/05/cart-white.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 0;
+        background-size: 65%;
     }
     
 }
@@ -296,6 +300,12 @@ ul.products {
 
 .product .price, .sale .price {
     margin: 20px 0;
+}
+
+@media (max-width:767px) {
+    .product .price, .sale .price {
+        margin: 10px 0;
+    }
 }
 
 .sale ins .woocommerce-Price-amount {
