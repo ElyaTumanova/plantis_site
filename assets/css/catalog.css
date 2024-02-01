@@ -227,7 +227,7 @@ ul.products {
 
     .catalog__products-wrap .yith-wcwl-add-to-wishlist a.add_to_wishlist>img {
         margin: 0;
-        max-width: 26px;
+        max-width: 20px;
     }
 }
 
@@ -263,7 +263,7 @@ ul.products {
         background-repeat: no-repeat;
         background-position: center;
         padding: 0;
-        background-size: 65%;
+        background-size: 50%;
     }
     
 }
