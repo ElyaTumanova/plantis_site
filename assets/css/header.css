@@ -281,3 +281,12 @@
     background-color: var(--accent-color);
     border-color: var(--accent-color);
 } 
+
+/*--------------------------------------------------------------
+# Mini cart
+--------------------------------------------------------------*/
+
+.footer {
+    background-color: var(--accent-color);
+    height: 300px;
+}
