@@ -278,7 +278,7 @@ ul.products {
 }
 
 @media (max-width: 767px) {
-    .catalog-grid .woocommerce-loop-product__title {
+    .catalog__grid .woocommerce-loop-product__title {
         margin-top: 10px;
     }
 }
