@@ -234,7 +234,7 @@
 }  
 
 .modal-mob {
-    width: var(--vw);
+    width: 100vw;
     height: var(--vh);
     overflow-y: scroll;
     padding: 45px 0;

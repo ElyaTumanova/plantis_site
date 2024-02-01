@@ -42,14 +42,10 @@ function toggle_mob_catalog () {
 --------------------------------------------------------------*/
 
 let vh = window.innerHeight;
-let vw = window.innerWidth;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
-document.documentElement.style.setProperty('--vw', `${vw}px`);
 // слушаем событие resize
 window.addEventListener('resize', () => {
     // получаем текущее значение высоты
     let vh = window.innerHeight;
-    let vw = window.innerWidth;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
-    document.documentElement.style.setProperty('--vw', `${vw}px`);
 });

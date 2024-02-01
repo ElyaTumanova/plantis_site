@@ -23,7 +23,6 @@
     }
 }
 
-
 @media (max-width: 767px) {
     .catalog__grid {
         display: grid;
@@ -47,6 +46,7 @@
     .catalog__sidebar {
         padding-right: 40px;
         padding-left: 40px;
+        width: calc(100vw - 20px);
     }
 }
 
