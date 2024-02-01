@@ -63,10 +63,6 @@
     .catalog__grid .menu-catalog-container {
         display: none;
     }
-
-    .woocommerce-ordering {
-        display: none;
-    }
 }
 
 @media (min-width: 767px) {         /* убираем все мобильные свойства начиная с экранов 767px */
@@ -84,6 +80,14 @@
     }
 
     .catalog__sidebar-ordering {
+        display: none;
+    }
+
+    .catalog__sidebar-ordering {
+        display: none;
+    }
+
+    .catalog__sidebar-filters-heading {
         display: none;
     }
 }
@@ -621,7 +625,7 @@ ul.products {
 .catalog__mob-filter-wrap .catalog__instock-filter .bapf_sfilter {
     display: flex;
     flex-direction: row-reverse;
-    margin: 0;
+    margin: 5px 0 0 0;
 }
 
 .catalog__mob-filter-wrap .catalog__instock-filter .bapf_head {
