@@ -219,7 +219,7 @@ ul.products {
         position: absolute;
         top: auto;
         bottom: auto;
-        top: calc(var(--imgH) + 19px);
+        top: calc(var(--imgH) + 45px);
         right: 80px;
         border-radius: 100px;
         border: solid 3px var(--accent-color);
@@ -258,7 +258,7 @@ ul.products {
         height: 60px;
         border-radius: 100px;
         position: absolute;
-        top:var(--imgH);
+        top: calc(var(--imgH) + 25px);
         right: 10px;
         background-image: url(http://new.plantis.shop/wp-content/uploads/2023/05/cart-white.svg);
         background-repeat: no-repeat;
