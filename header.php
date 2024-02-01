@@ -106,5 +106,22 @@
 				</button>
 			</div>
 		</div>
+		
+		<div class="header__mob header__nav-wrap container">
+			<div class="header__wishlist">
+				<?php $whishlist_icon = carbon_get_theme_option('whishlist_icon')?>
+					<div class="header__count"><?php echo do_shortcode('[yith_wcwl_items_count]')?></div>
+					<a href="<?php echo get_site_url()?>/wishlist" class="header-btn__wrap">		
+						<img class="header-btn__icon" src="<?php echo $whishlist_icon ?>" alt="wishlist" width="25" height="25">
+						<span class="header-btn__label">Избранное</span>		
+					</a>
+				</a>
+			</div>
+			<div class="header-cart">
+				<?php 
+					plnt_woocommerce_cart_header(); 
+				?>
+			</div><!-- .header-cart -->
+		</div>
 	</header><!-- #header -->
 	
