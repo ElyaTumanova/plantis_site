@@ -203,6 +203,7 @@ ul.products {
 
 .woocommerce-LoopProduct-link {
     position: relative;
+    width: 100%;
 }
 
 /* кнопка добавления в корзину */
