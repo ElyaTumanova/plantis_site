@@ -207,10 +207,10 @@ ul.products {
 
 @media (max-width:768px) {
     .catalog__products-wrap .yith-wcwl-add-to-wishlist {
-        border: none;
-        position: absolute;
-        top: 0;
-        right: 0;
+        bottom: 65px;
+        right: 80px;
+        border-radius: 100px;
+        border-color: var(--accent-color);
     }
 }
 
@@ -230,6 +230,21 @@ ul.products {
 
 .catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple {
     margin: 10px 0 15px;
+}
+
+@media (max-width: 767px) {
+
+    .add_to_cart_button, .product_type_simple {
+        font-size: 0;
+        width: 60px;
+        height: 60px;
+        border-radius: 100px;
+        position: absolute;
+        bottom: 40px;
+        right: 10px;
+        background-image: url(http://new.plantis.shop/wp-content/uploads/2023/05/cart-white.svg);
+    }
+    
 }
 
 /* заголовок и описание */
