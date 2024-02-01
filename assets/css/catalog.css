@@ -740,17 +740,27 @@ ul.products {
 	border-top: solid 2px #95E1D4;
 	padding: 10px 0;
 	font-size: 16px;
-  font-weight: 600;
-  line-height: 26px;
+    font-weight: 600;
+    line-height: 26px;
 	color: #000;
+    margin-top: 25px;
+}
+
+.woocommerce-pagination ul.page-numbers {
+	display: flex;
+    justify-content: center;
+    column-gap: 10px;
 }
 
 .woocommerce-pagination ul.page-numbers li .page-numbers {
-	width: auto;
-	padding: 0 5px;
-	border: none !important;
+    padding: 4px 10px;
+    border-radius: 5px;
 }
 
 .woocommerce-pagination a.page-numbers:not(.prev):not(.next):hover, .woocommerce-pagination a.page-numbers:not(.prev):not(.next).current, .woocommerce-pagination span.page-numbers:not(.prev):not(.next):hover, .woocommerce-pagination span.page-numbers:not(.prev):not(.next).current {
 	background-color: #95E1D4 !important;
+}
+
+.woocommerce-pagination a.next, .woocommerce-pagination a.prev{
+    font-size: 25px;
 }
