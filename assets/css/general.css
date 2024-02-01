@@ -29,9 +29,6 @@
     overflow-y: hidden;
 }
 
-.no-padding {
-    padding: 0;
-}
 
 .container {
     max-width: 1300px;
@@ -54,6 +51,10 @@
     .content-area {
         padding-left: 10px;
         padding-right: 10px;
+    }
+
+    .no-padding {
+        padding: 0;
     }
 }
 
