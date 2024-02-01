@@ -579,11 +579,28 @@ ul.products {
     margin: 0;
     border: none;
 }
-
+.catalog__mob-filter-wrap {
+    display: flex;
+    justify-content: space-between;
+}
 /* фильтр в наличии */
 
 .catalog__instock-filter li:has([data-name="Нет в наличии"]) {
     display: none !important;
+}
+
+.catalog__mob-filter-wrap .catalog__instock-filter .bapf_sfilter {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.catalog__mob-filter-wrap .catalog__instock-filter .bapf_body label {
+    font-size: 0;
+}
+
+.catalog__mob-filter-wrap .catalog__instock-filter h3 {
+    font-size: 14px;
+    font-weight: 500;
 }
 
 /* фильтр цены */
