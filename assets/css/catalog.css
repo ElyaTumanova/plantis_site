@@ -39,10 +39,15 @@
 
 .catalog__sidebar {
     grid-area: sidebar;
+    padding-right: 10px;
 }
 
 .catalog__grid .modal-mob {
     display: block;
+    position: relative;
+    padding: 0;
+    width: 100%;
+    height: fit-content;
 }
 
 .woocommerce-ordering {
