@@ -724,3 +724,33 @@ ul.products {
   border-color: #4AD963;
 }
 .catalog__instock-filter input:checked + label:after { left: 26px;}
+
+/*--------------------------------------------------------------
+# Load more & pagination
+--------------------------------------------------------------*/
+
+
+.lmp_load_more_button {
+    margin-top: 25px;
+}
+
+.woocommerce-pagination {
+	justify-content: center;
+	border-bottom: solid 2px #95E1D4;
+	border-top: solid 2px #95E1D4;
+	padding: 10px 0;
+	font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+	color: #000;
+}
+
+.woocommerce-pagination ul.page-numbers li .page-numbers {
+	width: auto;
+	padding: 0 5px;
+	border: none !important;
+}
+
+.woocommerce-pagination a.page-numbers:not(.prev):not(.next):hover, .woocommerce-pagination a.page-numbers:not(.prev):not(.next).current, .woocommerce-pagination span.page-numbers:not(.prev):not(.next):hover, .woocommerce-pagination span.page-numbers:not(.prev):not(.next).current {
+	background-color: #95E1D4 !important;
+}
