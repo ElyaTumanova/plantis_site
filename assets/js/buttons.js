@@ -21,7 +21,7 @@ function toggle_mob_menu () {
 /*--------------------------------------------------------------
 # Catalog for mobile
 --------------------------------------------------------------*/
-const catalogMob = document.querySelector('.catalog-menu');
+const catalogMob = document.querySelector('.catalog-menu__wrap');
 const catalogMobOpen = document.querySelector('.header__catalog');
 const catalogMobClose = document.querySelector('.catalog-menu__close');
 
