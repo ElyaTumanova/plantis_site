@@ -251,13 +251,13 @@ ul.products {
 
 @media (max-width: 767px) {
 
-    .add_to_cart_button, .product_type_simple {
+    .catalog__grid .add_to_cart_button, .product_type_simple {
         font-size: 0;
         width: 60px;
         height: 60px;
         border-radius: 100px;
         position: absolute;
-        bottom: 46px;
+        top:var(--imgH);
         right: 10px;
         background-image: url(http://new.plantis.shop/wp-content/uploads/2023/05/cart-white.svg);
         background-repeat: no-repeat;
