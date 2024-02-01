@@ -748,13 +748,14 @@ ul.products {
     line-height: 26px;
 	color: #000;
     margin-top: 25px;
-    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .woocommerce-pagination ul.page-numbers {
 	display: flex;
     justify-content: center;
-    column-gap: 10px;
+    column-gap: 5px;
 }
 
 .woocommerce-pagination ul.page-numbers li .page-numbers {
