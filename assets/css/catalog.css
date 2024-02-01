@@ -740,7 +740,6 @@ ul.products {
 }
 
 .woocommerce-pagination {
-	justify-content: center;
 	border-bottom: solid 2px #95E1D4;
 	border-top: solid 2px #95E1D4;
 	padding: 10px 0;
@@ -749,6 +748,7 @@ ul.products {
     line-height: 26px;
 	color: #000;
     margin-top: 25px;
+    width: 100%;
 }
 
 .woocommerce-pagination ul.page-numbers {
