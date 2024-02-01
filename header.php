@@ -111,7 +111,7 @@
 			<div class="header__phone">
 				<?php $phone_icon = carbon_get_theme_option('phone_icon')?>
 					<div class="header-btn__wrap">		
-						<img class="header-btn__icon_large" src="<?php echo $phone_icon ?>" alt="phone" width="35" height="35">
+						<img class="header-btn__icon_large" src="<?php echo $phone_icon ?>" alt="phone" width="50" height="50">
 					</div>
 				</a>
 			</div>
