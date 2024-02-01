@@ -207,7 +207,7 @@ ul.products {
 
 /* wish */
 
-.yith-wcwl-add-to-wishlist {
+.catalog__products-wrap .yith-wcwl-add-to-wishlist {
     border: none;
 }
 
