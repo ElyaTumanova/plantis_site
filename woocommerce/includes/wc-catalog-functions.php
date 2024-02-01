@@ -29,7 +29,7 @@ function plnt_catalog_products_wrap_start() {
 			<div class="catalog__instock-filter">
 				<?php echo do_shortcode('[br_filter_single filter_id=10996]') ?>
 			</div>
-			<div class="catalog__mob-filter-btn button">ФФФ</div>
+			<div class="catalog__mob-filter-btn button"><img src="http://new.plantis.shop/wp-content/uploads/2024/02/filter.svg" alt="Фильтр"></div>
 		</div>
 		<div class="catalog__products-wrap">
 	<?php 

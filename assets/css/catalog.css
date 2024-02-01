@@ -592,6 +592,11 @@ ul.products {
 .catalog__mob-filter-wrap .catalog__instock-filter .bapf_sfilter {
     display: flex;
     flex-direction: row-reverse;
+    margin: 0;
+}
+
+.catalog__mob-filter-wrap .catalog__instock-filter .bapf_head {
+    margin-top: 11px;
 }
 
 .catalog__mob-filter-wrap .catalog__instock-filter .bapf_body label {
