@@ -15,7 +15,7 @@
     margin-top: 30px;
 }
 
-/* #adaptive */
+/* #adaptive for grid*/
 @media (max-width: 1024px) {
     .catalog__grid {
         grid-template-columns: 30% calc(70% - 25px);
@@ -42,6 +42,7 @@
     padding-right: 10px;
 }
 
+/* #adaptive for sidebar modal*/
 @media (max-width: 767px) {
     .catalog__sidebar {
         padding-right: 40px;
@@ -50,7 +51,7 @@
     }
 }
 
-@media (min-width: 767px) {
+@media (min-width: 767px) {         /* убираем все мобильные свойства начиная с экранов 767px */
     .catalog__grid .modal-mob {
         display: block;
         position: relative;
@@ -58,6 +59,10 @@
         width: 100%;
         height: fit-content;
         z-index: 1;
+    }
+
+    .catalog-sidebar__close {
+        display: none;
     }
 }
 

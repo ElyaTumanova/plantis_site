@@ -25,7 +25,8 @@ function plnt_catalog_grid_start() {
 add_action('woocommerce_before_shop_loop','plnt_catalog_products_wrap_start',40);
 function plnt_catalog_products_wrap_start() {
 	?>
-    	<div class="catalog__products-wrap">
+    	<div class = "catalog__mob-filter-wrap"> </div>
+		<div class="catalog__products-wrap">
 	<?php 
 };
 
