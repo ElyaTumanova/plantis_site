@@ -63,6 +63,7 @@ function toggle_mob_filters () {
 --------------------------------------------------------------*/
 
 let vh = window.innerHeight;
+console.log(vh);
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 // слушаем событие resize
 window.addEventListener('resize', () => {
