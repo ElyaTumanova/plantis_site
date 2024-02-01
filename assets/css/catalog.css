@@ -41,6 +41,14 @@
         display: none;
     }
 
+    .catalog__sidebar-ordering .woocommerce-ordering {
+        display: block;
+    }
+
+    .catalog__sidebar-ordering .woocommerce-ordering select{
+        width: 100%;
+    }
+
     .catalog__mob-filter-wrap {
         grid-area: filters;
         display: block;
