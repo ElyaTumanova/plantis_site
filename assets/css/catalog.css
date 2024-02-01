@@ -42,12 +42,15 @@
     padding-right: 10px;
 }
 
-.catalog__grid .modal-mob {
-    display: block;
-    position: relative;
-    padding: 0;
-    width: 100%;
-    height: fit-content;
+@media (min-width: 767px) {
+    .catalog__grid .modal-mob {
+        display: block;
+        position: relative;
+        padding-right: 10px;
+        width: 100%;
+        height: fit-content;
+        z-index: 1;
+    }
 }
 
 .woocommerce-ordering {
