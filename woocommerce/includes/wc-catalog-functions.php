@@ -56,8 +56,13 @@ add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar',20);
 function plnt_catalog_sidebar() {
 	?>
     <div class="catalog__sidebar modal-mob">
+		<p class="catalog__sidebar-filters-heading">Фильтры</p>
 		<div class="modal-mob__close catalog-sidebar__close button">&#10006;</div>
 		<?php plnt_catalog_menu() ?>
+		<div class="catalog__sidebar-ordering">
+			<p class="catalog__sidebar-ordering-heading">Сортировка</p>
+			<?php woocommerce_catalog_ordering() ?>
+		</div>
 		<div class="catalog__sidebar-filters">
 			<div class="catalog__instock-filter">
 				<?php echo do_shortcode('[br_filter_single filter_id=6110]') ?>
