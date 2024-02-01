@@ -41,9 +41,9 @@
     grid-area: sidebar;
 }
 
-/* .catalog__sidebar .modal-mob {
+.catalog__grid .modal-mob {
     display: block;
-} */
+}
 
 .woocommerce-ordering {
     grid-area: sorting;
