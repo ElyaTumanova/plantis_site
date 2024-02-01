@@ -77,6 +77,10 @@
     height: 25px;
 }
 
+.header-btn__icon_large {
+    height: 35px;
+}
+
 .header-btn__label {
     font-size: 14px;
     font-weight: 700;
