@@ -50,6 +50,7 @@ add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar',20);
 function plnt_catalog_sidebar() {
 	?>
     <div class="catalog__sidebar modal-mob">
+		<div class="modal-mob__close catalog-sidebar__close button">&#10006;</div>
 		<?php plnt_catalog_menu() ?>
 		<div class="catalog__sidebar-filters">
 			<div class="catalog__instock-filter">
