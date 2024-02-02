@@ -31,6 +31,7 @@
 @media (max-width: 767px) {
     .cart_totals {
         justify-content: space-between;
+        column-gap: 5px;
     }
 
     .cart_totals .order-total {
@@ -39,10 +40,11 @@
 
     .cart_totals .order-total strong {
         display: block;
+        width: fit-content;
     }
 
     .cart_totals .checkout-button {
-        min-width: max-content;
+        min-width: fit-content;
     }
 }
 
@@ -180,7 +182,7 @@
             grid-area: name;
             font-size: 14px;
             text-align: left;
-            align-self: center;
+            align-self: flex-start;
         }
 
         td.product-subtotal {
@@ -196,6 +198,7 @@
             margin-left: auto;
             margin-right: 0;
             padding: 0;
+            align-self: center;
             
             .quantity {
                 border: 1px solid var(--gray);

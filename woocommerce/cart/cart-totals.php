@@ -25,8 +25,8 @@ defined( 'ABSPATH' ) || exit;
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
     <div class="order-total">
-        <th><?php esc_html_e( 'Общая стоимость заказа:', 'woocommerce' ); ?></th>
-        <td data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td>
+        <div><?php esc_html_e( 'Общая стоимость заказа:', 'woocommerce' ); ?></div>
+        <div data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></div>
     </div>
 
 	<div class="wc-proceed-to-checkout">
