@@ -43,6 +43,7 @@
 
 .wishlist_table.mobile li .product-thumbnail {
     width: 100% !important;
+    max-width: 100% !important;
     margin-right: 0 !important;
 }
 
