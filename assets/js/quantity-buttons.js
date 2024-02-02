@@ -1,5 +1,5 @@
 jQuery(function ($){
-    $( 'body' ).on( 'click', 'button.plus, button.minus', function() {
+    $( 'body' ).on( 'click', 'div.plus, div.minus', function() {
  
 	var qty = $(this).parent().find( 'input' ),
 	val = parseInt( qty.val() ),
