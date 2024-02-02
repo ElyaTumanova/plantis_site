@@ -376,9 +376,11 @@ input[type="number"] {
         box-shadow: 0px -2px 3px 0px rgba(0, 0, 0, 0.1);
         background-color: var(--accent-back);
         padding: 10px 30px;
-        display: flex;
+        /* display: flex;
         justify-content: space-between;
-        column-gap: 30px;
+        column-gap: 30px; */
+        display: grid;
+        grid-template-columns: repeat(2, auto);
     }
 
     .product .card__price-wrap .price, .sale .card__price-wrap .price {
@@ -391,11 +393,11 @@ input[type="number"] {
     }
 
     .card__grid .add-to-cart-wrap {
-        display: grid;
         grid-template-columns: 35% 30% 35%;
         grid-template-rows: auto;
         grid-template-areas:
         "quantity wish cart";
         column-gap: 10px;
+        width: 100%;
     }
 }
