@@ -154,33 +154,43 @@
         }
 
         td.product-quantity {
-              
-              /* .quantity button {
-                  border: none;
-                  background-color: var(--background);
-                  line-height: 1;
-                  border-radius: 5px
-              } */
-              
-              .quantity .plus {
-                  font-size: 25px;
-              }
-              
-              .quantity .minus {
-                  font-size: 34px;
-              }
-              
-              .quantity input {
-                  font-size: 16px;
-              }
-          }
+                
+            .quantity .plus {
+                font-size: 25px;
+            }
+            
+            .quantity .minus {
+                font-size: 34px;
+            }
+            
+            .quantity input {
+                font-size: 16px;
+            }
+        }
 
-          td.product-name, td.product-price, td.product-subtotal {
+        td.product-name, td.product-price, td.product-subtotal {
             font-size: 14px;
         }
 
-        th.product-name {
+        th.product-name, td.product-name {
             width: 135px;
+        }
+
+        .cart_totals {
+            justify-content: space-between;
+        }
+
+
+        .cart_totals .order-total {
+            font-size: 18px;
+        }
+
+        .cart_totals .order-total strong {
+            display: block;
+        }
+
+        .cart_totals .checkout-button {
+            min-width: max-content;
         }
 
 
