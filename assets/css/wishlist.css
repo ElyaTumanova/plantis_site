@@ -6,17 +6,17 @@
     padding: 0;
 }
 
-.table.wishlist_table {
-    font-size: 16px !important;
-    font-weight: 500;
-}
-
 .wishlist_table tr th.product-thumbnail {
     width: 300px !important;
 }
 
 .wishlist_table tr td.product-thumbnail a {
     max-width: 300px !important;
+}
+
+table.wishlist_table tbody td.product-name {
+    font-size: 16px;
+    font-weight: 500;
 }
 
 table.wishlist_table tbody td.product-price {
