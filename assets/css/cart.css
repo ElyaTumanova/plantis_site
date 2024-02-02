@@ -56,7 +56,7 @@
     }
 
     th.product-name {
-        width: 200px;
+        width: 400px;
     }
 
     @media (max-width:1024px) {
@@ -65,7 +65,7 @@
         }
     
         th.product-name {
-            width: 400px;
+            width: 200px;
         }
     }
 
