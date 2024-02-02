@@ -51,7 +51,7 @@ do_action( 'yith_wcwl_before_wishlist_share', $wishlist );
 ?>
 
 <div class="yith-wcwl-share">
-	<h4 class="yith-wcwl-share-title"><?php echo esc_html( $share_title ); ?></h4>
+	<h4 class="yith-wcwl-share-title">Поделиться<?php //echo esc_html( $share_title ); ?></h4>
 	<ul>
 		<?php if ( $share_facebook_enabled ) : ?>
 			<li class="share-button">
@@ -114,6 +114,16 @@ do_action( 'yith_wcwl_before_wishlist_share', $wishlist );
 				</a>
 			</li>
 		<?php endif; ?>
+        <li class="share-button">
+            <a class="telegram" href="<?php echo esc_attr( $share_whatsapp_url ); ?>" data-action="share/whatsapp/share" target="_blank" rel="noopener" title="<?php esc_html_e( 'WhatsApp', 'yith-woocommerce-wishlist' ); ?>">
+                <?php echo $share_whatsapp_icon ? yith_wcwl_kses_icon( $share_whatsapp_icon ) : esc_html__( 'Whatsapp', 'yith-woocommerce-wishlist' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+            </a>
+        </li>
+        <div><?php echo $share_link_title?></div>
+        <div><?php echo $share_link_url?></div>
+        
+        
+
 	</ul>
 
 	<?php if ( $share_url_enabled ) : ?>
