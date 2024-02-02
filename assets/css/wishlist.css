@@ -21,6 +21,10 @@
     margin-right: 12px;
 }
 
+.yith-wcwl-share {
+    min-width: 420px;
+}
+
 .yith-wcwl-share a {
     border-radius: 5px;
 }
