@@ -20,23 +20,6 @@
     font-size: 14px;
     margin-right: 12px;
 }
-
-.yith-wcwl-share {
-    min-width: 420px;
-}
-
-.yith-wcwl-share a {
-    border-radius: 5px;
-}
-
-.yith-wcwl-share a.telegram {
-    background-color: var(--telegram);
-}
-
-.yith-wcwl-after-share-section input {
-    width: 100%;
-}
-
 /*--------------------------------------------------------------
 # Mobile
 --------------------------------------------------------------*/
@@ -82,4 +65,25 @@
     color: var(--white);
     border-color: var(--accent-color);
     text-transform: uppercase;
+}
+
+/*--------------------------------------------------------------
+# Share section
+--------------------------------------------------------------*/
+
+.yith-wcwl-share {
+    min-width: 100%;
+    max-width: 420px;
+}
+
+.yith-wcwl-share a {
+    border-radius: 5px;
+}
+
+.yith-wcwl-share a.telegram {
+    background-color: var(--telegram);
+}
+
+.yith-wcwl-after-share-section input {
+    width: 100%;
 }
