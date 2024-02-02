@@ -265,7 +265,7 @@ ul.products {
     border-color: var(--added-cart);
 }
 
-.product_type_simple .product_out_of_stock {
+.product_out_of_stock {
     background-color: var(--red-color);
     border-color: var(--red-color);
 }
