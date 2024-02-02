@@ -28,6 +28,24 @@
     font-size: 30px;
 }
 
+@media (max-width: 767px) {
+    .cart_totals {
+        justify-content: space-between;
+    }
+
+    .cart_totals .order-total {
+        font-size: 18px;
+    }
+
+    .cart_totals .order-total strong {
+        display: block;
+    }
+
+    .cart_totals .checkout-button {
+        min-width: max-content;
+    }
+}
+
 
 /* таблица корзины */
 
@@ -175,26 +193,5 @@
         th.product-name, td.product-name {
             width: 135px;
         }
-
-        .cart_totals {
-            justify-content: space-between;
-        }
-
-
-        .cart_totals .order-total {
-            font-size: 18px;
-        }
-
-        .cart_totals .order-total strong {
-            display: block;
-        }
-
-        .cart_totals .checkout-button {
-            min-width: max-content;
-        }
-
-
     }
-
-
 }
