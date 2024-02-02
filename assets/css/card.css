@@ -214,14 +214,14 @@
     /* box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.15); */
 }
 
-.card__price-wrap .quantity button {
+.card__price-wrap .quantity div {
     border: none;
     background-color: var(--accent-back);
     line-height: 1;
     border-radius: 5px
 }
 
-.card__price-wrap .quantity button {
+.card__price-wrap .quantity div {
     font-size: 30px;
     font-weight: 600;
 }
@@ -411,7 +411,7 @@ input[type="number"] {
         font-size: 20px;
     }
 
-    .card__price-wrap .quantity button {
+    .card__price-wrap .quantity div {
         font-size: 24px;
         /* max-width: 27px; */
     }
