@@ -260,7 +260,7 @@ ul.products {
     border-color: var(--accent-color);
 }
 
-.add_to_cart_button .added {
+.added {
     background-color: var(--added-cart);
     border-color: var(--added-cart);
 }
