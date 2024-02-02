@@ -204,14 +204,17 @@
                 
             .quantity .plus {
                 font-size: 25px;
+                max-width: min-content;
             }
             
             .quantity .minus {
                 font-size: 34px;
+                max-width: min-content;
             }
             
             .quantity input {
                 font-size: 16px;
+                max-width: min-content;
             }
         }
 
