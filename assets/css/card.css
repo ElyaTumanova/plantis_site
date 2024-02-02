@@ -12,6 +12,27 @@
     row-gap: 20px;
 }
 
+/* #adaptive for grid*/
+
+@media (max-width: 767px) {
+    .card__grid {
+        grid-template-columns: 100%;
+        grid-auto-rows:auto;
+        grid-template-areas:
+        "image"
+        "info"
+        "price"
+        "banner1"
+        "banner2"
+        "sliders"
+        "descr";
+        column-gap: 0;
+        row-gap: 30px;
+    }
+}
+
+
+
 .card__image-wrap {
     grid-area: image;
     position: relative;
