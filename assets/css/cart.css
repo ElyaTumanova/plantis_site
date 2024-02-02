@@ -160,7 +160,7 @@
 
         tr.woocommerce-cart-form__cart-item {
             display: grid;
-            grid-template-columns:repeat(4, auto);
+            grid-template-columns:10px 80px 120px auto;
             grid-template-rows: repeat(2, auto);
             grid-template-areas:
             "remove img name name"
@@ -193,10 +193,10 @@
             font-size: 18px;
         }
 
-        td.product-thumbnail img {
+        /* td.product-thumbnail img {
             width: 80px;
             max-width: 100px;
-        }
+        } */
 
         td.product-quantity {
                 
