@@ -210,14 +210,10 @@
                 margin: 0;
             }
                 
-            .quantity .plus {
+            .quantity .plus, .quantity .minus {
                 font-size: 25px;
                 max-width: 27px;
-            }
-            
-            .quantity .minus {
-                font-size: 25px;
-                max-width: 27px;
+                text-align: center;
             }
             
             .quantity input {
