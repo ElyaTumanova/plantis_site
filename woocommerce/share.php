@@ -123,7 +123,11 @@ do_action( 'yith_wcwl_before_wishlist_share', $wishlist );
         ?>
         <li class="share-button">
             <a class="telegram" href="<?php echo esc_attr( $share_telegram_url ); ?>" data-action="share/telegram/share" target="_blank" rel="noopener" title="<?php esc_html_e( 'Telegram', 'yith-woocommerce-wishlist' ); ?>">
-                <?php echo $share_whatsapp_icon ? yith_wcwl_kses_icon( $share_whatsapp_icon ) : esc_html__( 'Telegram', 'yith-woocommerce-wishlist' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                <span class="header__telegram-icon">
+                    <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.4223 1.02293C13.4223 1.02293 14.7544 0.503503 14.6434 1.76497C14.6064 2.28441 14.2734 4.10241 14.0144 6.06883L13.1263 11.8939C13.1263 11.8939 13.0523 12.7472 12.3862 12.8956C11.7202 13.044 10.7211 12.3762 10.5361 12.2278C10.3881 12.1165 7.7609 10.4469 6.8358 9.63063C6.57677 9.40801 6.28075 8.96278 6.8728 8.44335L10.7581 4.73316C11.2022 4.28793 11.6462 3.24907 9.79603 4.51054L4.61563 8.03525C4.61563 8.03525 4.02359 8.40626 2.91352 8.07235L0.508316 7.3303C0.508316 7.3303 -0.379756 6.77378 1.13737 6.21722C4.83767 4.47341 9.38902 2.69251 13.4223 1.02293Z" fill="white"></path>
+                    </svg>
+                </span>
             </a>
         </li>
         <div><?php echo $share_link_title?></div>
