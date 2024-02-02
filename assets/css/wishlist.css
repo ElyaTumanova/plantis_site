@@ -24,17 +24,17 @@
 --------------------------------------------------------------*/
 
 .wishlist_table.mobile li .item-wrapper {
-    max-width: 100%;
+    max-width: 100% !important;
 }
 
 .wishlist_table.mobile li .item-details {
-    max-width: 100%;
+    max-width: 100% !important;
     margin-top: 15px;
 }
 
 .wishlist_table.mobile li .product-thumbnail {
-    max-width: 100%;
-    margin-right: 0;
+    max-width: 100% !important;
+    margin-right: 0 !important;
 }
 
 .wishlist_table.mobile li .item-details table.item-details-table td.value {
