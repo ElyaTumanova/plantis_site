@@ -114,9 +114,16 @@ do_action( 'yith_wcwl_before_wishlist_share', $wishlist );
 				</a>
 			</li>
 		<?php endif; ?>
+        <?php 
+        if ( wp_is_mobile() ) {
+            $share_telegram_url = 'whatsapp://send?text=' . $share_link_title . ' - ' . urlencode( $share_link_url );
+        } else {
+            $share_telegram_url = 'https://telegram.me/share/url?url=' . urlencode( $share_link_url ) . '&text=' . $share_link_title;
+        }
+        ?>
         <li class="share-button">
-            <a class="telegram" href="<?php echo esc_attr( $share_whatsapp_url ); ?>" data-action="share/whatsapp/share" target="_blank" rel="noopener" title="<?php esc_html_e( 'WhatsApp', 'yith-woocommerce-wishlist' ); ?>">
-                <?php echo $share_whatsapp_icon ? yith_wcwl_kses_icon( $share_whatsapp_icon ) : esc_html__( 'Whatsapp', 'yith-woocommerce-wishlist' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+            <a class="telegram" href="<?php echo esc_attr( $share_telegram_url ); ?>" data-action="share/telegram/share" target="_blank" rel="noopener" title="<?php esc_html_e( 'Telegram', 'yith-woocommerce-wishlist' ); ?>">
+                <?php echo $share_whatsapp_icon ? yith_wcwl_kses_icon( $share_whatsapp_icon ) : esc_html__( 'Telegram', 'yith-woocommerce-wishlist' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
             </a>
         </li>
         <div><?php echo $share_link_title?></div>
