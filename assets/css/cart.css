@@ -149,7 +149,8 @@
         }
 
         td.product-thumbnail img {
-            width: 100px;
+            width: 80px;
+            max-width: 100px;
         }
 
         td.product-quantity {
@@ -173,6 +174,10 @@
                   font-size: 16px;
               }
           }
+
+          td.product-name, td.product-price, td.product-subtotal {
+            font-size: 14px;
+        }
 
 
     }
