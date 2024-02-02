@@ -18,6 +18,11 @@
     max-width: 300px !important;
 }
 
+table.wishlist_table tbody td.product-remove {
+    font-size: 25px;
+    font-weight: 700;
+}
+
 table.wishlist_table tbody td.product-name {
     font-size: 16px;
     font-weight: 500;
