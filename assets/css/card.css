@@ -221,12 +221,9 @@
     border-radius: 5px
 }
 
-.card__price-wrap .quantity .plus {
+.card__price-wrap .quantity button {
     font-size: 30px;
     font-weight: 600;
-}
-.card__price-wrap .quantity .minus {
-    font-size: 30px;
 }
 
 .card__price-wrap .quantity input {
@@ -379,6 +376,7 @@ input[type="number"] {
         display: grid;
         grid-template-columns: repeat(2, auto);
         align-items: center;
+        z-index: 9998;
     }
 
     .product .card__price-wrap .price, .sale .card__price-wrap .price {
