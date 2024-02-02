@@ -375,7 +375,7 @@ input[type="number"] {
         left: 0;
         box-shadow: 0px -2px 3px 0px rgba(0, 0, 0, 0.1);
         background-color: var(--accent-back);
-        padding: 10px 30px;
+        padding: 10px;
         display: grid;
         grid-template-columns: repeat(2, auto);
         align-items: center;
@@ -395,7 +395,7 @@ input[type="number"] {
         grid-template-rows: auto;
         grid-template-areas:
         "quantity wish cart";
-        column-gap: 20px;
+        column-gap: 10px;
         width: 100%;
     }
 
