@@ -28,12 +28,12 @@
 }
 
 .wishlist_table.mobile li .item-details {
-    max-width: 100% !important;
+    width: 100% !important;
     margin-top: 15px;
 }
 
 .wishlist_table.mobile li .product-thumbnail {
-    max-width: 100% !important;
+    width: 100% !important;
     margin-right: 0 !important;
 }
 
