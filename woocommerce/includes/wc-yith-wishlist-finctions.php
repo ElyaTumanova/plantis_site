@@ -19,7 +19,7 @@ function plnt_card_wishlist_btn() {
 // }
 
 
-// шорткод для выводассылки и кол-ва + ajsx обновление
+// шорткод для вывода ссылки и кол-ва + ajsx обновление
 if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) ) {
     function yith_wcwl_get_items_count() {
       ob_start();
@@ -67,3 +67,14 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
   
     add_action( 'wp_enqueue_scripts', 'yith_wcwl_enqueue_custom_script', 20 );
   }
+
+
+  // перевод текстов
+
+  function plnt_change_text( $translated_text ) {
+    if ( $translated_text == 'Add all to cart' ) {
+      $translated_text = 'Добавить все в корзину';
+    }
+    return $translated_text;
+  }
+  add_filter( 'gettext', 'plnt_change_text', 20 );
