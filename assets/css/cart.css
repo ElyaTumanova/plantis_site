@@ -199,6 +199,7 @@
             
             .quantity {
                 border: 1px solid var(--gray);
+                margin: 0;
             }
                 
             .quantity .plus {
