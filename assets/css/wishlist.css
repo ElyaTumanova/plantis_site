@@ -87,3 +87,8 @@
 .yith-wcwl-after-share-section input {
     width: 100%;
 }
+
+.yith-wcwl-share a.telegram:hover {
+    background: #595A5A;
+    background-color: #595A5A;
+}
