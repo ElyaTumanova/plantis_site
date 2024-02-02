@@ -29,9 +29,23 @@
         column-gap: 0;
         row-gap: 30px;
     }
+
+    /* #adaptive плашка для добавления в корзину*/
+
+    .card__add-to-cart-wrap {
+        position: fixed;
+        bottom: 72px;
+        right: 0;
+        left: 0;
+        box-shadow: 0px -2px 3px 0px rgba(0, 0, 0, 0.1);
+        background-color: var(--accent-back);
+        padding: 10px 30px;
+    }
+
+    .product .card__price-wrap .price, .sale .card__price-wrap .price {
+        margin: 0 0 10px;
+    }
 }
-
-
 
 .card__image-wrap {
     grid-area: image;
