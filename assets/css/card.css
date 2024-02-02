@@ -222,7 +222,7 @@
     border-radius: 5px;
     font-size: 30px;
     font-weight: 600;
-    padding: 0;
+    padding: 0 7px;
     margin: auto;
 }
 
@@ -234,7 +234,7 @@
     text-align: center;
     background-color: var(--accent-back);
     max-width: 100px;
-    margin: 0 14px;
+    /* margin: 0 14px; */
 }
 
 .card__grid .add-to-cart-wrap .button {
@@ -399,11 +399,11 @@ input[type="number"] {
     }
 
     .card__grid .add-to-cart-wrap {
-        grid-template-columns: 87px 32px auto;
+        grid-template-columns: 92px 32px auto;
         grid-template-rows: auto;
         grid-template-areas:
         "quantity wish cart";
-        column-gap: 10px;
+        column-gap: 15px;
         width: 100%;
     }
 
