@@ -239,6 +239,11 @@ ul.products {
         margin: 0;
         max-width: 20px;
     }
+
+    .catalog__products-wrap .yith-wcwl-add-to-wishlist a.delete_item>img {
+        margin: 0;
+        max-width: 20px;
+    }
 }
 
 .woocommerce-LoopProduct-link {

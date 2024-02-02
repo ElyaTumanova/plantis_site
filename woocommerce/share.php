@@ -115,22 +115,13 @@ do_action( 'yith_wcwl_before_wishlist_share', $wishlist );
 			</li>
 		<?php endif; ?>
         <?php 
-        // if ( wp_is_mobile() ) {
-        //     $share_telegram_url = 'whatsapp://send?text=' . $share_link_title . ' - ' . urlencode( $share_link_url );
-        // } else {
-            $share_telegram_url = 'https://telegram.me/share/url?url=' . urlencode( $share_link_url ) . '&text=' . $share_link_title;
-        // }
+         $share_telegram_url = 'https://telegram.me/share/url?url=' . urlencode( $share_link_url ) . '&text=' . $share_link_title;
         ?>
         <li class="share-button">
             <a class="telegram" href="<?php echo esc_attr( $share_telegram_url ); ?>" data-action="share/telegram/share" target="_blank" rel="noopener" title="<?php esc_html_e( 'Telegram', 'yith-woocommerce-wishlist' ); ?>">
                 <i class="fa fa-telegram" aria-hidden="true"></i>
             </a>
-        </li>
-        <div><?php echo $share_link_title?></div>
-        <div><?php echo $share_link_url?></div>
-        
-        
-
+        </li>   
 	</ul>
 
 	<?php if ( $share_url_enabled ) : ?>
