@@ -84,6 +84,22 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 					<?php endif ?>
 
 					<div class="item-wrapper">
+						<?php if ( $show_remove_product || $repeat_remove_button ) : ?>
+							<div class="product-remove">
+								<?php
+								/**
+								 * APPLY_FILTERS: yith_wcwl_remove_product_wishlist_message_title
+								 *
+								 * Filter the title of the button to remove the product from the wishlist.
+								 *
+								 * @param string $title Button title
+								 *
+								 * @return string
+								 */
+								?>
+								<a href="<?php echo esc_url( $item->get_remove_url() ); ?>" class="remove_from_wishlist" title="<?php echo esc_html( apply_filters( 'yith_wcwl_remove_product_wishlist_message_title', __( 'Remove this product', 'yith-woocommerce-wishlist' ) ) ); ?>"><i class="fa">✖</i></a>
+							</div>
+						<?php endif; ?>
 						<div class="product-thumbnail">
 							<a href="<?php echo esc_url( get_permalink( apply_filters( 'woocommerce_in_cart_product', $item->get_product_id() ) ) ); ?>">
 								<?php echo wp_kses_post( $product->get_image() ); ?>
@@ -277,22 +293,6 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 							</div>
 						<?php endif; ?>
 
-						<?php if ( $show_remove_product || $repeat_remove_button ) : ?>
-							<div class="product-remove">
-								<?php
-								/**
-								 * APPLY_FILTERS: yith_wcwl_remove_product_wishlist_message_title
-								 *
-								 * Filter the title of the button to remove the product from the wishlist.
-								 *
-								 * @param string $title Button title
-								 *
-								 * @return string
-								 */
-								?>
-								<a href="<?php echo esc_url( $item->get_remove_url() ); ?>" class="remove_from_wishlist" title="<?php echo esc_html( apply_filters( 'yith_wcwl_remove_product_wishlist_message_title', __( 'Remove this product', 'yith-woocommerce-wishlist' ) ) ); ?>"><i class="fa fa-trash"></i></a>
-							</div>
-						<?php endif; ?>
 					</div>
 				</li>
 				<?php

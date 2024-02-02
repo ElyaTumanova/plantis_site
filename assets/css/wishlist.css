@@ -23,6 +23,35 @@
 # Mobile
 --------------------------------------------------------------*/
 
+.wishlist_table.mobile li .item-wrapper {
+    max-width: 100%;
+}
+
+.wishlist_table.mobile li .item-details {
+    max-width: 100%;
+    margin-top: 15px;
+}
+
+.wishlist_table.mobile li .product-thumbnail {
+    max-width: 100%;
+    margin-right: 0;
+}
+
 .wishlist_table.mobile li .item-details table.item-details-table td.value {
     text-align: left;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.wishlist_table.mobile .product-name h3 {
+    font-weight: 600;
+}
+
+.yith_wcwl_wishlist_footer .wishlist-actions>* {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    color: var(--white);
+    border-color: var(--accent-color);
+    text-transform: uppercase;
 }
