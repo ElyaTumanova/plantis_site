@@ -1,3 +1,28 @@
+/*--------------------------------------------------------------
+# Desktop
+--------------------------------------------------------------*/
+
 .woocommerce .wishlist-title h2 {
     padding: 0;
+}
+
+.wishlist_table .product-add-to-cart a.button {
+    border-collapse: separate;
+}
+
+.yith_wcwl_wishlist_footer .yith_wcwl_footer_additional_action>* {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    color: var(--white);
+    border-color: var(--accent-color);
+    text-transform: uppercase;
+}
+
+/*--------------------------------------------------------------
+# Mobile
+--------------------------------------------------------------*/
+
+.wishlist_table.mobile li .item-details table.item-details-table td.value {
+    text-align: left;
 }

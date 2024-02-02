@@ -160,9 +160,9 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 
 									<?php if ( $show_price || $show_price_variations ) : ?>
 										<tr>
-											<td class="label">
-												<?php esc_html_e( 'Price:', 'yith-woocommerce-wishlist' ); ?>
-											</td>
+											<!-- <td class="label">
+												<?php //esc_html_e( 'Цена:', 'yith-woocommerce-wishlist' ); ?>
+											</td> -->
 											<td class="value">
 												<?php
 												if ( $show_price ) {
