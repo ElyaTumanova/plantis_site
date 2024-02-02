@@ -160,7 +160,7 @@
 
         tr.woocommerce-cart-form__cart-item {
             display: grid;
-            grid-template-columns:20px 80px 120px auto;
+            grid-template-columns:20px 80px 120px calc(100% - 220px);
             grid-template-rows: repeat(2, auto);
             grid-template-areas:
             "remove img name name"
