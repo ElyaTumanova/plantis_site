@@ -202,8 +202,9 @@
     grid-template-rows: repeat(2, auto);
     grid-template-areas:
     "cart wish"
-    "quantity quantity";
+    "quantity x";
     column-gap: 15px;
+    justify-content: stretch;
 }
 
 .card__price-wrap .quantity {
@@ -218,12 +219,11 @@
     border: none;
     background-color: var(--accent-back);
     line-height: 1;
-    border-radius: 5px
-}
-
-.card__price-wrap .quantity div {
+    border-radius: 5px;
     font-size: 30px;
     font-weight: 600;
+    padding: 0 5px;
+    margin: auto;
 }
 
 .card__price-wrap .quantity input {
