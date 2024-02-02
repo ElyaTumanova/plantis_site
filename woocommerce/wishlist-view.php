@@ -1,6 +1,8 @@
 <?php
 /**
  * Wishlist page template - Standard Layout
+ * 
+ * MODIFIED FOR PLANTIS THEME
  *
  * @author YITH
  * @package YITH\Wishlist\Templates\Wishlist\View
@@ -99,7 +101,7 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 				 *
 				 * @return string
 				 */
-				echo esc_html( apply_filters( 'yith_wcwl_wishlist_view_name_heading', __( 'Product name', 'yith-woocommerce-wishlist' ), $wishlist ) );
+				echo esc_html( apply_filters( 'yith_wcwl_wishlist_view_name_heading', __( 'Товар', 'yith-woocommerce-wishlist' ), $wishlist ) );
 				?>
 			</span>
 		</th>
@@ -119,7 +121,7 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 					 *
 					 * @return string
 					 */
-					echo esc_html( apply_filters( 'yith_wcwl_wishlist_view_price_heading', __( 'Unit price', 'yith-woocommerce-wishlist' ), $wishlist ) );
+					echo esc_html( apply_filters( 'yith_wcwl_wishlist_view_price_heading', __( 'Цена', 'yith-woocommerce-wishlist' ), $wishlist ) );
 					?>
 				</span>
 			</th>

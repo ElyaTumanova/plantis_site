@@ -83,7 +83,7 @@ do_action( 'yith_wcwl_before_wishlist_form', $wishlist );
 						 */
 						echo yith_wcwl_kses_icon( apply_filters( 'yith_wcwl_edit_title_icon', '<i class="fa fa-pencil"></i>' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						?>
-						<?php esc_html_e( 'Edit title', 'yith-woocommerce-wishlist' ); ?>
+						<?php esc_html_e( 'Редактировать название', 'yith-woocommerce-wishlist' ); ?>
 					</a>
 				<?php endif; ?>
 			</div>
