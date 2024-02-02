@@ -199,6 +199,7 @@
             
             .quantity {
                 border: 1px solid var(--gray);
+                max-width: 85px;
             }
                 
             .quantity .plus {
