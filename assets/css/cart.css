@@ -183,6 +183,7 @@
             
             .quantity input {
                 font-size: 16px;
+                max-width: 15px;
             }
         }
 
