@@ -222,7 +222,7 @@
     border-radius: 5px;
     font-size: 30px;
     font-weight: 600;
-    padding: 0 7px;
+    padding: 0;
     margin: auto;
 }
 
@@ -234,6 +234,7 @@
     text-align: center;
     background-color: var(--accent-back);
     max-width: 100px;
+    margin: 0 14px;
 }
 
 .card__grid .add-to-cart-wrap .button {
