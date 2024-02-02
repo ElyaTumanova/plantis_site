@@ -175,10 +175,10 @@ function truemisha_quantity_plus() {
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
         if ($quantity > 1) {
-            echo '<button type="button" class="plus">+</button>';
+            echo '<button type="button" class="plus">&#43;</button>';
         }
     } else {
-        echo '<button type="button" class="plus">+</button>';
+        echo '<button type="button" class="plus">&#43;</button>';
     }
 };
  
@@ -187,10 +187,10 @@ function truemisha_quantity_minus() {
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
         if ($quantity > 1) {
-            echo '<button type="button" class="minus">-</button>';
+            echo '<button type="button" class="minus">&#8722;</button>';
         }
     } else {
-        echo '<button type="button" class="minus">-</button>';
+        echo '<button type="button" class="minus">&#8722;</button>';
     }
 };
 
