@@ -160,7 +160,7 @@
 
         tr.woocommerce-cart-form__cart-item {
             display: grid;
-            grid-template-columns:10px 80px 120px auto;
+            grid-template-columns:20px 80px 120px auto;
             grid-template-rows: repeat(2, auto);
             grid-template-areas:
             "remove img name name"
@@ -171,34 +171,32 @@
 
         td.product-remove {
             grid-area: remove;
+            font-size: 18px;
         }
         td.product-thumbnail {
             grid-area: img;
         }
         td.product-name {
             grid-area: name;
+            font-size: 14px;
+            text-align: left;
+            align-self: center;
         }
+
         td.product-subtotal {
             grid-area: price;
+            font-size: 20px;
+            text-align: left;
+            align-self: center;
+            padding: 0;
         }
+
         td.product-quantity {
             grid-area: qty;
-        }
-
-        td {
-            padding: 10px 2px 0 0;
-        }
-
-        td.product-remove {
-            font-size: 18px;
-        }
-
-        /* td.product-thumbnail img {
-            width: 80px;
-            max-width: 100px;
-        } */
-
-        td.product-quantity {
+            margin-left: auto;
+            margin-right: 0;
+            border: 1px solid var(--gray);
+            padding: 0;
                 
             .quantity .plus {
                 font-size: 25px;
@@ -213,12 +211,9 @@
             }
         }
 
-        td.product-name, td.product-price, td.product-subtotal {
-            font-size: 14px;
+        td {
+            padding: 10px 2px 0 0;
         }
 
-        /* th.product-name, td.product-name {
-            width: 135px;
-        } */
     }
 }
