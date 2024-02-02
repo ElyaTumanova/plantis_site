@@ -6,6 +6,10 @@
     padding: 0;
 }
 
+.wishlist_table thead {
+    display: none;
+}
+
 .wishlist_table tr th.product-thumbnail {
     width: 300px !important;
 }
