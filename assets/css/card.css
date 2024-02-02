@@ -386,7 +386,7 @@ input[type="number"] {
     }
 
     .product .card__price-wrap .price {
-        font-size: 30px;
+        font-size: 24px;
         font-weight: 600;
     }
 
@@ -400,6 +400,11 @@ input[type="number"] {
     }
 
     .card__price-wrap .quantity input {
-        max-width: 60px;
+        max-width: 40px;
+        font-size: 16px;
+    }
+
+    .card__price-wrap .quantity button {
+        font-size: 24px;
     }
 }
