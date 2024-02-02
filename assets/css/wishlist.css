@@ -22,13 +22,22 @@
 /*--------------------------------------------------------------
 # Mobile
 --------------------------------------------------------------*/
+.wishlist_table.mobile li {
+    margin-bottom: 35px !important;
+}
 
 .wishlist_table.mobile li .item-wrapper {
     max-width: 100% !important;
+    width: 100% !important;
+}
+
+.wishlist_table.mobile li .item-wrapper .product-remove{
+    text-align: right;
+    font-size: 25px;
 }
 
 .wishlist_table.mobile li .item-details {
-    width: 100% !important;
+    max-width: 100% !important;
     margin-top: 15px;
 }
 
