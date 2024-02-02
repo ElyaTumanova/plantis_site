@@ -1,6 +1,8 @@
 <?php
 /**
  * Wishlist header
+ * 
+ * MODIFIED FOR PLANTIS THEME
  *
  * @author YITH
  * @package YITH\Wishlist\Templates\Wishlist\View

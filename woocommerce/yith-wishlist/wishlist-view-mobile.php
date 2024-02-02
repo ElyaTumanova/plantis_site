@@ -1,6 +1,8 @@
 <?php
 /**
  * Wishlist page template - Standard Layout
+ * 
+ * MODIFIED FOR PLANTIS THEME
  *
  * @author YITH
  * @package YITH\Wishlist\Templates\Wishlist\View
