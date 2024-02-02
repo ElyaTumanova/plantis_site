@@ -179,6 +179,10 @@
             font-size: 14px;
         }
 
+        th.product-name {
+            width: 135px;
+        }
+
 
     }
 
