@@ -413,6 +413,6 @@ input[type="number"] {
 
     .card__price-wrap .quantity button {
         font-size: 24px;
-        max-width: 27px;
+        /* max-width: 27px; */
     }
 }
