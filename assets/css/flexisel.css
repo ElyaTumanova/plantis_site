@@ -50,7 +50,7 @@
     height:40px;
     position: absolute;
     cursor: pointer;
-    z-index: 9999;
+    z-index: 9997;
 }
 .nbs-flexisel-nav-left {
     left: 0;
