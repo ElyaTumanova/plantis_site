@@ -36,6 +36,7 @@
 
     .cart_totals .order-total {
         font-size: 18px;
+        max-width: 55%;
     }
 
     .cart_totals .order-total div {
