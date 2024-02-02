@@ -131,5 +131,51 @@
         }
     }
 
+    @media (max-width: 767px) {
+        td.product-price, th.product-price {
+            display: none;
+        }
+
+        thead {
+            display: none;
+        }
+
+        td {
+            padding: 10px 2px 0 0;
+        }
+
+        td.product-remove {
+            font-size: 18px;
+        }
+
+        td.product-thumbnail img {
+            width: 100px;
+        }
+
+        td.product-quantity {
+              
+              /* .quantity button {
+                  border: none;
+                  background-color: var(--background);
+                  line-height: 1;
+                  border-radius: 5px
+              } */
+              
+              .quantity .plus {
+                  font-size: 25px;
+              }
+              
+              .quantity .minus {
+                  font-size: 34px;
+              }
+              
+              .quantity input {
+                  font-size: 16px;
+              }
+          }
+
+
+    }
+
 
 }
