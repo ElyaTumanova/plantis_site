@@ -195,8 +195,11 @@
             grid-area: qty;
             margin-left: auto;
             margin-right: 0;
-            border: 1px solid var(--gray);
             padding: 0;
+            
+            .quantity {
+                border: 1px solid var(--gray);
+            }
                 
             .quantity .plus {
                 font-size: 25px;
