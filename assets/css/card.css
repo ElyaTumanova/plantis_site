@@ -408,7 +408,7 @@ input[type="number"] {
     }
 
     .card__price-wrap .quantity input {
-        max-width: 30px;
+        max-width: 35px;
         font-size: 20px;
     }
 
