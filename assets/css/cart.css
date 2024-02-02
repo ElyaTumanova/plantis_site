@@ -158,6 +158,33 @@
             display: none;
         }
 
+        tr.woocommerce-cart-form__cart-item {
+            display: grid;
+            grid-template-columns:repeat(4, auto);
+            grid-template-rows: repeat(2, auto);
+            grid-template-areas:
+            "remove img name name"
+            "remove img price qty";
+            column-gap: 5px;
+            margin-top: 5px;
+        }
+
+        td.product-remove {
+            grid-area: remove;
+        }
+        td.product-thumbnail {
+            grid-area: img;
+        }
+        td.product-name {
+            grid-area: name;
+        }
+        td.product-subtotal {
+            grid-area: price;
+        }
+        td.product-quantity {
+            grid-area: qty;
+        }
+
         td {
             padding: 10px 2px 0 0;
         }
