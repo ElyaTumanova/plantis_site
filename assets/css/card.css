@@ -390,6 +390,14 @@ input[type="number"] {
         font-weight: 600;
     }
 
+    .sale .card__price-wrap .price {
+        font-size: 18px;
+    }
+
+    .sale .card__price-wrap ins .woocommerce-Price-amount {
+        font-size: 24px;
+    }
+
     .card__grid .add-to-cart-wrap {
         grid-template-columns: 90px 32px auto;
         grid-template-rows: auto;
