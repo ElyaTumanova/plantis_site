@@ -71,10 +71,18 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
 
   // перевод текстов
 
-  function plnt_change_text( $translated_text ) {
+  function plnt_change_text_wish_1( $translated_text ) {
     if ( $translated_text == 'Add all to cart' ) {
       $translated_text = 'Добавить все в корзину';
     }
     return $translated_text;
   }
-  add_filter( 'gettext', 'plnt_change_text', 20 );
+  add_filter( 'gettext', 'plnt_change_text_wish_1', 20 );
+
+  function plnt_change_text_wish_2( $translated_text ) {
+    if ( $translated_text == 'Edit title' ) {
+      $translated_text = 'Редактировать название';
+    }
+    return $translated_text;
+  }
+  add_filter( 'gettext', 'plnt_change_text_wish_2', 20 );
