@@ -260,6 +260,16 @@ ul.products {
     border-color: var(--accent-color);
 }
 
+.add_to_cart_button .added {
+    background-color: var(--added-cart);
+    border-color: var(--added-cart);
+}
+
+.product_type_simple .product_out_of_stock {
+    background-color: var(--red-color);
+    border-color: var(--red-color);
+}
+
 .catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple {
     margin: 10px 0 15px;
 }
@@ -745,6 +755,7 @@ ul.products {
 /* стрелка для выпадающего списка фильтров */
 .catalog__sidebar-filters .fa-chevron-down, .catalog__sidebar-filters .fa-chevron-up {
     transform: rotate(90deg);
+    margin-right: 4px;
 }
 
 .catalog__sidebar-filters .fa-chevron-down:before {
