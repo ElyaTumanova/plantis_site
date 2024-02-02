@@ -96,11 +96,15 @@ add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 5);
 function plnt_price_wrap(){
     ?>
     <div class="card__price-wrap">
+        <div class = "card__add-to-cart-wrap">
+            <?php
+            // plnt_check_stock_status();
+            woocommerce_template_single_price();
+            plnt_get_add_to_card();
+            //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
+            ?>
+        </div>
         <?php
-        // plnt_check_stock_status();
-        woocommerce_template_single_price();
-        plnt_get_add_to_card();
-        //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
         plnt_outofstock_info();
         //woocommerce_output_all_notices();
         get_template_part('template-parts/delivery-info'); // delivery info for card
