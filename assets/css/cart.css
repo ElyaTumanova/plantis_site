@@ -129,20 +129,13 @@
             /* box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.15); */
         }
         
-        .quantity button {
+        .quantity div {
             border: none;
             background-color: var(--background);
             line-height: 1;
-            border-radius: 5px
-        }
-        
-        .quantity .plus {
+            border-radius: 5px;
             font-size: 30px;
             font-weight: 600;
-        }
-        
-        .quantity .minus {
-            font-size: 30px;
         }
         
         .quantity input {
@@ -210,9 +203,9 @@
                 margin: 0;
             }
                 
-            .quantity .plus, .quantity .minus {
+            .quantity div {
                 font-size: 25px;
-                max-width: 27px;
+                padding: 0 10px;
                 text-align: center;
             }
             
