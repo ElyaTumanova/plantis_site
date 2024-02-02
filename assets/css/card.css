@@ -391,7 +391,7 @@ input[type="number"] {
     }
 
     .card__grid .add-to-cart-wrap {
-        grid-template-columns: 120px 32px auto;
+        grid-template-columns: 90px 32px auto;
         grid-template-rows: auto;
         grid-template-areas:
         "quantity wish cart";
@@ -400,8 +400,8 @@ input[type="number"] {
     }
 
     .card__price-wrap .quantity input {
-        max-width: 40px;
-        font-size: 16px;
+        max-width: 30px;
+        font-size: 20px;
     }
 
     .card__price-wrap .quantity button {
