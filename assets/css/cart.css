@@ -212,12 +212,12 @@
                 
             .quantity .plus {
                 font-size: 25px;
-                max-width: 25px;
+                max-width: 27px;
             }
             
             .quantity .minus {
                 font-size: 25px;
-                max-width: 25px;
+                max-width: 27px;
             }
             
             .quantity input {
