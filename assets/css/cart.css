@@ -175,15 +175,17 @@
                 
             .quantity .plus {
                 font-size: 25px;
+                max-width: 25px;
             }
             
             .quantity .minus {
                 font-size: 34px;
+                max-width: 25px;
             }
             
             .quantity input {
                 font-size: 16px;
-                max-width: 15px;
+                max-width: 25px;
             }
         }
 
