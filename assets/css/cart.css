@@ -56,7 +56,17 @@
     }
 
     th.product-name {
-        width: 400px;
+        width: 200px;
+    }
+
+    @media (max-width:1024px) {
+        th.product-thumbnail {
+            width: 150px;
+        }
+    
+        th.product-name {
+            width: 400px;
+        }
     }
 
     th.product-quantity, th.product-price, th.product-subtotal {

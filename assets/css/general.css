@@ -111,3 +111,8 @@
     text-transform: uppercase;
     font-weight: 700;
 }
+
+.woocommerce-message {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
