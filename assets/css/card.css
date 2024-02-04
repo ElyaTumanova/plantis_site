@@ -353,7 +353,7 @@ input[type="number"] {
 
 /* #adaptive for grid*/
 @media (max-width: 1024px) {
-    .catalog__grid {
+    .card__grid {
         grid-template-columns: 35% 35% calc(30% - 20px);
         column-gap: 10px;
     }
