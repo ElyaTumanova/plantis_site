@@ -63,29 +63,6 @@
     margin-top: 10px;
 }
 
-.sale_badge {
-    position: absolute;
-    bottom: 0;
-    z-index: 2;
-    background-color: var(--red-color);
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    border-radius: 0px 5px 0px 5px;
-    padding: 0 5px 0 0;
-    font-size: 14px;
-    line-height: 1;
-}
-
-.sale_badge-skidka {
-    background-color: var(--text);
-    color: var(--white);
-    display: block;
-    padding: 5px;
-    border-radius: 0px 0px 0px 5px;
-    margin-right: 3px;
-}
-
 .button {
     display: inline-block; 
     
@@ -112,6 +89,7 @@
     font-weight: 700;
 }
 
+/* woocommerce message & notice */
 .woocommerce-message {
     margin-bottom: 10px;
     margin-top: 10px;
@@ -120,4 +98,34 @@
 .woocommerce-info {
     margin-bottom: 10px;
     margin-top: 10px;
+}
+
+.woocommerce-notices-wrapper {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/* sale badge */
+
+.sale_badge {
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    background-color: var(--red-color);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    border-radius: 0px 5px 0px 5px;
+    padding: 0 5px 0 0;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.sale_badge-skidka {
+    background-color: var(--text);
+    color: var(--white);
+    display: block;
+    padding: 5px;
+    border-radius: 0px 0px 0px 5px;
+    margin-right: 3px;
 }
