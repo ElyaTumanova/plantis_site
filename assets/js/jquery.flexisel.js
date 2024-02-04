@@ -46,8 +46,7 @@
       var settings = $.extend(defaults, options);        
       var itemsWidth; // Declare the global width of each item in carousel
       var canNavigate = true; 
-      //var itemsVisible = settings.visibleItems; 
-      var itemsVisible; 
+      var itemsVisible = settings.visibleItems; 
       var columnGaps = settings.columnGaps;
 
       
@@ -62,8 +61,7 @@
     init: function() {
       
           return this.each(function () {
-            methods.appendHTML();
-            methods.setResponsiveEvents();      			
+            methods.appendHTML();  			
             methods.setEventHandlers();      			
             methods.initializeItems();
       });
