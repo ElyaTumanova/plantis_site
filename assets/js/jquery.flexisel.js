@@ -21,7 +21,7 @@
       autoPlaySpeed: 3000,    		
       pauseOnHover: true,
       setMaxWidthAndHeight: false,
-      enableResponsiveBreakpoints: false,
+      enableResponsiveBreakpoints: true,
       responsiveBreakpoints: { 
         portrait: { 
           changePoint:480,
@@ -83,10 +83,6 @@
 
         object.fadeIn();
       $(window).trigger("resize"); // needed to position arrows correctly
-
-      console.log (itemsVisible);
-      console.log (innerWidth);
-      console.log (itemsWidth);
     },
     
     
@@ -139,7 +135,6 @@
         var arrowMargin = (innerHeight/2) - halfArrowHeight;
         leftArrow.css("top", arrowMargin + "px");
         rightArrow.css("top", arrowMargin + "px");
-        
       });					
       
 
