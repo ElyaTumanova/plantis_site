@@ -130,7 +130,7 @@
         itemsWidth = (innerWidth)/itemsVisible;
         
         childSet.width(itemsWidth);
-        object.css({'left' : -itemsWidth});
+        //object.css({'left' : -itemsWidth});  //чтобы не прятался первый товар, если он один
         
         var halfArrowHeight = (leftArrow.height())/2;
         var arrowMargin = (innerHeight/2) - halfArrowHeight;
