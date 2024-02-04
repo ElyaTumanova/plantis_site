@@ -107,6 +107,10 @@
     border-radius: 5px;
 }
 
+.woocommerce-product-gallery {
+    position: relative;
+}
+
 .product_title {
     font-size: 28px;
     font-weight: 700;
