@@ -56,7 +56,7 @@ if ( $upsells ) : ?>
                 jQuery(window).load(function() {
                     jQuery("#flexisel-upsells").flexisel({
                         visibleItems: 3,
-                        columnGaps: 30,
+                        columnGaps: 30,  //кол-во колонок * column-gap для .card__sliders-wrap .products
                         animationSpeed: 1000,
                         autoPlay: false,
                         autoPlaySpeed: 3000,
@@ -66,12 +66,12 @@ if ( $upsells ) : ?>
                             portrait: {
                                 changePoint:480,
                                 visibleItems: 1,
-                                columnGaps: 30
+                                columnGaps: 10
                             },
                             landscape: {
                                 changePoint:640,
                                 visibleItems:2,
-                                columnGaps: 30
+                                columnGaps: 20
                             },
                             tablet: {
                                 changePoint:768,
