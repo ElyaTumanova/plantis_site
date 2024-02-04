@@ -50,6 +50,10 @@
     margin-bottom: 20px;
 }
 
+.payment__wrap li {
+    margin-bottom: 5px;
+}
+
 .payment__wrap p {
     margin-bottom: 10px;
 }
