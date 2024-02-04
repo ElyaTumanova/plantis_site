@@ -79,7 +79,7 @@
         childSet.width(itemsWidth);
         childSet.last().insertBefore(childSet.first());
         childSet.last().insertBefore(childSet.first());
-        object.css({'left' : -itemsWidth}); 
+        //object.css({'left' : -itemsWidth}); 
 
         object.fadeIn();
       $(window).trigger("resize"); // needed to position arrows correctly
@@ -292,7 +292,7 @@
       var innerWidth = listParent.width() - columnGaps; 
       itemsWidth = (innerWidth)/itemsVisible;
       childSet.width(itemsWidth);
-      object.css({'left' : -itemsWidth});		
+      //object.css({'left' : -itemsWidth});		
     },		
       
       };
