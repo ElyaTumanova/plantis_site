@@ -84,6 +84,7 @@
         object.fadeIn();
       $(window).trigger("resize"); // needed to position arrows correctly
 
+      console.log (itemsVisible);
     },
     
     
@@ -219,7 +220,6 @@
     
     scrollLeft:function() {
 
-      console.log('hi');
       if(canNavigate == true) {
         canNavigate = false;
         
