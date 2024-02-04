@@ -380,10 +380,21 @@ ul.products {
 }
 
 .card__sliders-wrap .product {
-    /* padding-right: 10px; */
     text-align: left;
     position: relative;
     width: calc((100% - 20px)/3);
+}
+
+@media (max-width: 639px) {
+    .card__sliders-wrap .product {
+        width: calc((100% - 10px)/2);
+    }
+}
+
+@media (max-width: 479px) {
+    .card__sliders-wrap .product {
+        width: 100%;
+    }
 }
 
 .card__sliders-wrap .product .woocommerce-LoopProduct-link {
