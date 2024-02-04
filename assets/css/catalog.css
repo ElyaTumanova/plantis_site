@@ -383,6 +383,7 @@ ul.products {
     /* padding-right: 10px; */
     text-align: left;
     position: relative;
+    width: calc(100%/3 - 20px);
 }
 
 .card__sliders-wrap .product .woocommerce-LoopProduct-link {
