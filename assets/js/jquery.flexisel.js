@@ -61,7 +61,8 @@
     init: function() {
       
           return this.each(function () {
-            methods.appendHTML();  			
+            methods.appendHTML();
+            methods.setResponsiveEvents();      			
             methods.setEventHandlers();      			
             methods.initializeItems();
       });
