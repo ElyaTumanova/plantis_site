@@ -295,6 +295,9 @@
       itemsWidth = (innerWidth)/itemsVisible;
 
       console.log(itemsVisible);
+      console.log(innerWidth);
+      console.log(itemsWidth);
+      
       childSet.width(itemsWidth);
       object.css({'left' : -itemsWidth});		
     },		
