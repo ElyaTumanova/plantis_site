@@ -147,6 +147,12 @@
     opacity: 0.7;
 }
 
+@media (max-width:1024px) {
+    .woocommerce-product-attributes  {
+        font-size: 14px;
+    }
+}
+
 /* стили цены */
 .product .card__price-wrap .price {
     font-size: 45px;
@@ -344,6 +350,14 @@ input[type="number"] {
 /*--------------------------------------------------------------
 # Adaptive
 --------------------------------------------------------------*/
+
+/* #adaptive for grid*/
+@media (max-width: 1024px) {
+    .catalog__grid {
+        grid-template-columns: 35% 35% calc(30% - 20px);
+        column-gap: 10px;
+    }
+}
 
 @media (max-width: 767px) {
 
