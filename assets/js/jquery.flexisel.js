@@ -212,6 +212,8 @@
           columnGaps = settings.columnGaps;
         }
       }
+
+      console.log(itemsVisible);
     },			
     
     /******************************
