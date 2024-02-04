@@ -176,6 +176,13 @@ ul.products {
         }
     }
 
+    &.columns-3 {
+
+        li.product {
+            width: calc(100% / 3 - 16px);
+        }
+    }
+
     li.product {
         display: flex;
         flex-direction: column;

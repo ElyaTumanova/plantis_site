@@ -32,7 +32,8 @@ if ( $upsells ) : ?>
 			<h2 class="heading-2"><?php echo esc_html( $heading ); ?></h2>
 		<?php endif; ?>
 
-        <ul id="flexisel-upsells" class="products columns-<?php echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>">
+        <!-- <ul id="flexisel-upsells" class="products columns-<?php //echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>"> -->
+        <ul id="flexisel-upsells" class="products columns-3">
 
 			<?php foreach ( $upsells as $upsell ) : ?>
 
