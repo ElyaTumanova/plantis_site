@@ -35,4 +35,20 @@
     margin-top: 20px;
 }
 
+/*--------------------------------------------------------------
+# Payment
+--------------------------------------------------------------*/
+
+.payment__wrap {
+    margin-top: 30px;
+}
+
+.payment__wrap ul {
+    list-style: disc;
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
 
