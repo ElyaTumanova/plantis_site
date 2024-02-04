@@ -293,6 +293,8 @@
       
       var innerWidth = listParent.width() - columnGaps; 
       itemsWidth = (innerWidth)/itemsVisible;
+
+      console.log(itemsVisible);
       childSet.width(itemsWidth);
       object.css({'left' : -itemsWidth});		
     },		
