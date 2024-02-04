@@ -47,7 +47,6 @@
       var itemsWidth; // Declare the global width of each item in carousel
       var canNavigate = true; 
       var itemsVisible = settings.visibleItems; 
-      //var itemsVisible; 
       var columnGaps = settings.columnGaps;
 
       
@@ -79,7 +78,7 @@
       var innerHeight = listParent.height(); 
       var childSet = object.children();
       
-        var innerWidth = listParent.width() //- columnGaps; // Set widths
+        var innerWidth = listParent.width() - columnGaps; // Set widths
         itemsWidth = (innerWidth)/itemsVisible;
 
         
@@ -135,7 +134,7 @@
         
         methods.setResponsiveEvents();
         
-        var innerWidth = $(listParent).width() //- columnGaps;
+        var innerWidth = $(listParent).width() - columnGaps;
         var innerHeight = $(listParent).height(); 
         
         itemsWidth = (innerWidth)/itemsVisible;
@@ -238,7 +237,7 @@
         canNavigate = false;
         
         var listParent = object.parent();
-        var innerWidth = listParent.width() //- columnGaps;
+        var innerWidth = listParent.width() - columnGaps;
         
         itemsWidth = (innerWidth)/itemsVisible;
         
@@ -271,7 +270,7 @@
         canNavigate = false;
         
         var listParent = object.parent();
-        var innerWidth = listParent.width() //- columnGaps;
+        var innerWidth = listParent.width() - columnGaps;
         
         itemsWidth = (innerWidth)/itemsVisible;
         
@@ -303,7 +302,7 @@
       var listParent = object.parent();
       var childSet = object.children();				
       
-      var innerWidth = listParent.width() //- columnGaps; 
+      var innerWidth = listParent.width() - columnGaps; 
       itemsWidth = (innerWidth)/itemsVisible;
       childSet.width(itemsWidth);
       object.css({'left' : -itemsWidth});		

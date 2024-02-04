@@ -65,15 +65,18 @@ if ( $upsells ) : ?>
                         responsiveBreakpoints: {
                             portrait: {
                                 changePoint:480,
-                                visibleItems: 1
+                                visibleItems: 1,
+                                columnGaps: 30
                             },
                             landscape: {
                                 changePoint:640,
-                                visibleItems:2
+                                visibleItems:2,
+                                columnGaps: 30
                             },
                             tablet: {
                                 changePoint:768,
-                                visibleItems: 3
+                                visibleItems: 3,
+                                columnGaps: 30
                             }
                         }
                     });
