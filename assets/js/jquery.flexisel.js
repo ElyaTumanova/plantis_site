@@ -48,6 +48,9 @@
       var canNavigate = true; 
       var itemsVisible = settings.visibleItems; 
       var columnGaps = settings.columnGaps;
+
+      
+      console.log(itemsVisible);
       
   /******************************
   Public Methods
@@ -76,6 +79,13 @@
       
         var innerWidth = listParent.width() - columnGaps; // Set widths
         itemsWidth = (innerWidth)/itemsVisible;
+
+        
+        console.log(itemsVisible);
+        console.log(innerWidth);
+        console.log(itemsWidth);
+
+
         childSet.width(itemsWidth);
         childSet.last().insertBefore(childSet.first());
         childSet.last().insertBefore(childSet.first());
@@ -293,11 +303,6 @@
       
       var innerWidth = listParent.width() - columnGaps; 
       itemsWidth = (innerWidth)/itemsVisible;
-
-      console.log(itemsVisible);
-      console.log(innerWidth);
-      console.log(itemsWidth);
-      
       childSet.width(itemsWidth);
       object.css({'left' : -itemsWidth});		
     },		
