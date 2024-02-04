@@ -8,7 +8,7 @@
     margin-top: 30px;
 }
 
-#customer_login div {
+#customer_login > div {
     width: 50%;
 }
 
