@@ -50,7 +50,7 @@ if ( $upsells ) : ?>
 
         </ul>
         
-        <?php echo $upsells  ?>
+        <?php echo count($upsells)  ?>
         <script type="text/javascript">
             jQuery(window).load(function() {
                 jQuery("#flexisel-upsells").flexisel({
