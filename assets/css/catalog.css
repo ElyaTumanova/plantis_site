@@ -222,7 +222,7 @@ ul.products {
 /* wish */
 
 @media (max-width:768px) {
-    .catalog__products-wrap .yith-wcwl-add-to-wishlist {
+    .yith-wcwl-add-to-wishlist {
         border: none;
         position: absolute;
         top: 0;
@@ -594,12 +594,12 @@ ul.products {
         overflow-y: hidden;
     }
 
-    .main__sale-gallery .yith-wcwl-add-to-wishlist {
+    /* .main__sale-gallery .yith-wcwl-add-to-wishlist {
         position: absolute;
         top: 0;
         right: 0;
         border: none;
-    }
+    } */
 
     .main__sale-gallery .woocommerce-loop-product__title{
         margin-top: 7px;
