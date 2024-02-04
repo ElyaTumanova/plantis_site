@@ -85,6 +85,8 @@
       $(window).trigger("resize"); // needed to position arrows correctly
 
       console.log (itemsVisible);
+      console.log (innerWidth);
+      console.log (itemsWidth);
     },
     
     
