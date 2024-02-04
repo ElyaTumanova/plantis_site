@@ -60,8 +60,8 @@ if( !empty ($crosssell_ids) ){
                             responsiveBreakpoints: {
                                 portrait: {
                                     changePoint:480,
-                                    visibleItems: 1,
-                                    columnGaps: 10
+                                    visibleItems: 2,
+                                    columnGaps: 20
                                 },
                                 landscape: {
                                     changePoint:640,

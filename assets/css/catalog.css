@@ -385,19 +385,14 @@ ul.products {
     width: calc((100% - 20px)/3);
 }
 
+/*cross sells & up sells #adaptive*/
+
 @media (max-width: 640px) {
     .card__sliders-wrap .product {
         width: calc((100% - 10px)/2);
     }
 }
 
-/*cross sells & up sells #adaptive*/
-
-@media (max-width: 480px) {
-    .card__sliders-wrap .product {
-        width: 100%;
-    }
-}
 
 @media (max-width:768px) {
     .card__sliders-wrap .yith-wcwl-add-to-wishlist {

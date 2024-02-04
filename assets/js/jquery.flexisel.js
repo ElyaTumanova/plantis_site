@@ -50,8 +50,6 @@
       var columnGaps = settings.columnGaps;
 
       
-      console.log(itemsVisible);
-      
   /******************************
   Public Methods
   *******************************/        
@@ -80,12 +78,6 @@
       
         var innerWidth = listParent.width() - columnGaps; // Set widths
         itemsWidth = (innerWidth)/itemsVisible;
-
-        
-        console.log(itemsVisible);
-        console.log(innerWidth);
-        console.log(itemsWidth);
-
 
         childSet.width(itemsWidth);
         childSet.last().insertBefore(childSet.first());
@@ -201,9 +193,6 @@
     
     setResponsiveEvents: function() {
       var contentWidth = $('html').width();
-      console.log(contentWidth);
-      console.log(settings.enableResponsiveBreakpoints);
-
       
       if(settings.enableResponsiveBreakpoints == true) {
         if(contentWidth <= settings.responsiveBreakpoints.portrait.changePoint) {
@@ -223,8 +212,6 @@
           columnGaps = settings.columnGaps;
         }
       }
-
-      console.log(itemsVisible);
     },			
     
     /******************************
