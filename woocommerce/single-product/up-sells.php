@@ -50,11 +50,13 @@ if ( $upsells ) : ?>
 
         </ul>
         
-        <?php if (count($upsells) >3) {  ?>
+        <?php if (count($upsells) >3) { 
+            $items = 3} 
+            else {$items = count($upsells)}?>
             <script type="text/javascript">
                 jQuery(window).load(function() {
                     jQuery("#flexisel-upsells").flexisel({
-                        visibleItems:3,
+                        visibleItems: <?php $items?>,
                         columnGaps: 30,
                         animationSpeed: 1000,
                         autoPlay: false,
@@ -78,10 +80,7 @@ if ( $upsells ) : ?>
                     });
                 });
             </script>
-        <?php } ?>
-
         </div>
-
 	<?php
 endif;
 
