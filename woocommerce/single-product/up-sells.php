@@ -78,7 +78,7 @@ if ( $upsells ) : ?>
                     });
                 });
             </script>
-        <?php }
+        <?php } ?>
 
         </div>
 
