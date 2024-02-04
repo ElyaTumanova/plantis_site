@@ -79,6 +79,8 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		                             '/assets/css/pages.css', array(), null, 'all' );
 		wp_enqueue_style( 'wishlist', get_template_directory_uri() .
 		                             '/assets/css/wishlist.css', array(), null, 'all' );
+		wp_enqueue_style( 'account', get_template_directory_uri() .
+		                             '/assets/css/account.css', array(), null, 'all' );
 		wp_enqueue_style( 'popup', get_template_directory_uri() .
 		                             '/assets/css/popup.css', array(), null, 'all' );
 		// wp_enqueue_style( 'progressive-image', get_template_directory_uri() .

@@ -1,0 +1,39 @@
+/*--------------------------------------------------------------
+# My Account
+--------------------------------------------------------------*/
+
+
+#customer_login {
+    display: flex;
+    margin-top: 30px;
+}
+
+#customer_login div {
+    width: 50%;
+}
+
+#customer_login h2 {
+    margin-bottom: 20px;
+}
+
+#customer_login form p {
+    margin-bottom: 10px;
+}
+
+#customer_login form button {
+    color: var(--white);
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+
+@media (max-width: 767px) {
+    #customer_login {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #customer_login div {
+        width: 100%;
+    }
+}

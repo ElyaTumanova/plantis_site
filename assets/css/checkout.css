@@ -19,7 +19,7 @@
 }
 
 #order_comments {
-	min-height: 50px;
+	min-height: 80px;
 }
 .dontcallme label {
 	padding-right: 10px;
@@ -48,6 +48,11 @@
 	font-weight: 500;
     padding-top:20px;
     line-height: 1.2;
+}
+
+.checkout__text span{
+	font-weight: 700;
+    font-size: 20px;
 }
 
 .checkout__text a{
@@ -260,6 +265,23 @@ div#orddd_list_view_select {
     grid-template-columns: repeat( 2, 1fr) !important;
     column-gap: 10px !important;
     row-gap: 10px !important;
+}
+
+/* время доставки #adaptive*/
+
+@media (max-width: 540px) {
+    #orddd-checkout-fields {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #orddd-checkout-fields p {
+        width: 100%;
+    }
+
+    div#orddd_list_view_select {
+        grid-template-columns: repeat( 4, 1fr) !important;
+    }
 }
 
 /* сообщение об ошибке */
