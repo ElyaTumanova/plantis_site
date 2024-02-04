@@ -35,7 +35,8 @@ if( !empty ($crosssell_ids) ){
 
             <h2 class="heading-2"><?php _e( 'Похожие растения', 'woocommerce' ) ?></h2>
 
-            <ul id="flexisel-cross-sells" class="products columns-<?php echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>">
+            <!-- <ul id="flexisel-cross-sells" class="products columns-<?php //echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>"> -->
+            <ul id="flexisel-cross-sells" class="products columns-3">
 
                 <?php while ( $products->have_posts() ) : $products->the_post(); ?>
 
@@ -45,33 +46,38 @@ if( !empty ($crosssell_ids) ){
 
             </ul>
 
-            <script type="text/javascript">
-                jQuery(window).load(function() {
-                    jQuery("#flexisel-cross-sells").flexisel({
-                        visibleItems:3,
-                        columnGaps: 30,
-                        animationSpeed: 1000,
-                        autoPlay: false,
-                        autoPlaySpeed: 3000,
-                        pauseOnHover: true,
-                        enableResponsiveBreakpoints: true,
-                        responsiveBreakpoints: {
-                            portrait: {
-                                changePoint:480,
-                                visibleItems: 1
-                            },
-                            landscape: {
-                                changePoint:640,
-                                visibleItems:2
-                            },
-                            tablet: {
-                                changePoint:768,
-                                visibleItems: 3
+            <?php if (count($products) >3) {?> 
+                <script type="text/javascript">
+                    jQuery(window).load(function() {
+                        jQuery("#flexisel-cross-sells").flexisel({
+                            visibleItems:3,
+                            columnGaps: 30,
+                            animationSpeed: 1000,
+                            autoPlay: false,
+                            autoPlaySpeed: 3000,
+                            pauseOnHover: true,
+                            enableResponsiveBreakpoints: true,
+                            responsiveBreakpoints: {
+                                portrait: {
+                                    changePoint:480,
+                                    visibleItems: 1,
+                                    columnGaps: 10
+                                },
+                                landscape: {
+                                    changePoint:640,
+                                    visibleItems:2,
+                                    columnGaps: 20
+                                },
+                                tablet: {
+                                    changePoint:768,
+                                    visibleItems: 3,
+                                    columnGaps: 30
+                                }
                             }
-                        }
+                        });
                     });
-                });
-            </script>
+                </script>
+            <?php }?>  
 
             </div>
 
