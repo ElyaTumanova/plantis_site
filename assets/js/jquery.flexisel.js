@@ -190,6 +190,9 @@
     
     setResponsiveEvents: function() {
       var contentWidth = $('html').width();
+      console.log(contentWidth);
+      console.log(settings.enableResponsiveBreakpoints);
+
       
       if(settings.enableResponsiveBreakpoints == true) {
         if(contentWidth < settings.responsiveBreakpoints.portrait.changePoint) {
