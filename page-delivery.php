@@ -3,8 +3,8 @@ get_header(); ?>
 
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
-        <div class="delivery__wrap">
-            <div class="delivery__delivery">
+        <div class="delivery">
+            <div class="delivery__wrap">
                 <h1 class="entry-header">Доставка</h1>
 
                 <h3 class="delivery__heading">Если ваш заказ <b>от 2000</b> рублей:</h3>
@@ -16,7 +16,7 @@ get_header(); ?>
                         </ul>
                     <p class="delivery__subheading"><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
                     <ul>
-                        <li>>в пределах МКАД — 790 рублей;</li>
+                        <li>в пределах МКАД — 790 рублей;</li>
                         <li>за пределы МКАД (до 5 км) — 990 рублей.</li>
                     </ul>				
                 </div>
@@ -55,7 +55,7 @@ get_header(); ?>
                 <?php get_template_part('template-parts/contacts_part');?>
 
             </div>
-            <div class="delivery__pickup">
+            <div class="delivery__wrap">
                 <h2 class="entry-header">Самовывоз</h2>
                 
                 <h3 class="delivery__heading">Где</h3>

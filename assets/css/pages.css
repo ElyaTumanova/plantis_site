@@ -63,7 +63,7 @@
 # Delivery
 --------------------------------------------------------------*/
 
-.delivery__wrap {
+.delivery {
     display: flex;
     column-gap: 15px;
     row-gap: 30px;
@@ -78,5 +78,25 @@
 .delivery__heading {
     margin-top: 20px;
     margin-bottom: 10px;
+}
+
+.delivery__subheading {
+    margin-bottom: 10px;
+}
+
+.delivery ul {
+    margin-bottom: 20px;
+    list-style: disc;
+    margin-left: 30px;
+
+}
+
+.delivery ul li{
+    margin-bottom: 10px;
+}
+
+.delivery p {
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
