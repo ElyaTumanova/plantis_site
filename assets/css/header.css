@@ -1,6 +1,11 @@
 /*--------------------------------------------------------------
 # Header for desktop
 --------------------------------------------------------------*/
+
+.header__breadcrumb {
+    margin-top: 10px;
+}
+
 @media (max-width: 1279px) {
     .header__desktop {
         display: none;
