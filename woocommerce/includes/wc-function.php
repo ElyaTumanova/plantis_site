@@ -18,6 +18,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 // 	}
 // }
 
+remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
+
 //lazy load for images
 // function plnt_add_lazy_class ($attr) {
 // 	$attr['class'] .= ' lazy progressive replace';

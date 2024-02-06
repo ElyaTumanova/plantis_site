@@ -107,7 +107,7 @@
 			</div>
 		</div>
 
-		<div class="header__breadcrumb"><?php woocommerce_breadcrumb() ?></div>
+		<div class="header__breadcrumb container"><?php woocommerce_breadcrumb() ?></div>
 		
 		<div class="header__mob header__nav-wrap container">
 			<div class="header__phone">
