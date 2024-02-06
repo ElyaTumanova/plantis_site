@@ -59,4 +59,19 @@
 }
 
 
+/*--------------------------------------------------------------
+# Delivery
+--------------------------------------------------------------*/
+
+.delivery__wrap {
+    display: flex;
+    column-gap: 15px;
+    row-gap: 30px;
+}
+
+@media (max-width: 1024px) {
+    .delivery__wrap {
+        flex-direction: column;
+    }
+}
 

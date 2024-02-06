@@ -63,6 +63,14 @@
     margin-top: 10px;
 }
 
+.my_header__title, .entry-header {
+    color: var(--accent-color);
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    font-size: 45px;
+}
+
 .button {
     display: inline-block; 
     
