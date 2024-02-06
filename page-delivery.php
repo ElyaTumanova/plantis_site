@@ -4,6 +4,13 @@ get_header(); ?>
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
         <div class="delivery">
+
+                <?php $search_icon_mob = carbon_get_theme_option('search_icon_mob')?>
+				<button class="header-btn__wrap header-btn__wrap_mob">
+					<img class="header-btn__icon" src="<?php echo $search_icon_mob ?>" alt="search" width="21" height="21">		
+				</button>
+
+
             <div class="delivery__wrap">
                 <h1 class="entry-header">Доставка</h1>
 
