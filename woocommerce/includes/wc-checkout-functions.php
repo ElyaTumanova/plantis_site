@@ -33,9 +33,9 @@ add_action( 'woocommerce_checkout_order_review', 'my_delivery_small_oder_info', 
 
 function my_delivery_small_oder_info () {
     $min_free_delivery = carbon_get_theme_option('min_free_delivery');
-    echo  $min_free_delivery;
+    $min_small_delivery = carbon_get_theme_option('min_small_delivery');
 	if ( WC()->cart->subtotal < 2000 ) {
-		$cart = 2000 - WC()->cart->subtotal;
+		$cart = $min_small_delivery - WC()->cart->subtotal;
 		echo '<div class="checkout__free-delivery-text">
         Добавьте товаров на <span>'.$cart,'</span> рублей, чтобы стоимость доставки уменьшилась!</div>';
 	} else {
