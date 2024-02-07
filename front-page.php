@@ -70,7 +70,8 @@ get_header(); ?>
 			<div class="advantages__wrap">									
 				<img width="115" height="100" src="https://plantis.shop/wp-content/uploads/2023/11/доставка_зел.svg" class="advantages__image" alt="" loading="lazy">														
 				<div class="advantages__title">Бережная доставка</div>
-				<div class="advantages__descr">Осуществляем доставку комнатных растений до двери. Если сумма покупки будет выше 15000 рублей, то делаем это бесплатно</div>	
+				<?php $min_free_delivery = carbon_get_theme_option('min_free_delivery');?>
+				<div class="advantages__descr">Осуществляем доставку комнатных растений до двери. Если сумма покупки будет выше <?php echo $min_free_delivery?> рублей, то делаем это бесплатно</div>	
 			</div>
 			<div class="advantages__wrap">		
 				<img width="112" height="100" src="https://plantis.shop/wp-content/uploads/2023/11/уход_зел.svg" class="advantages__image" alt="" loading="lazy">												
