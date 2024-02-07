@@ -34,7 +34,6 @@ add_action( 'woocommerce_checkout_order_review', 'my_delivery_small_oder_info', 
 function my_delivery_small_oder_info () {
     $min_free_delivery = carbon_get_theme_option('min_free_delivery');
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-    echo str_replace(" ","",$min_free_delivery);
 	if ( WC()->cart->subtotal < str_replace(" ","",$min_small_delivery)) {
 		$cart = str_replace(" ","",$min_small_delivery) - WC()->cart->subtotal;
 		echo '<div class="checkout__free-delivery-text">
