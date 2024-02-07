@@ -174,7 +174,7 @@
 }
 
 .product .card__price-wrap .price, .sale .card__price-wrap .price {
-    margin: 0 0 30px;
+    margin: 0 0 20px;
 }
 
 .sale .card__price-wrap ins .woocommerce-Price-amount {
@@ -293,7 +293,7 @@ input[type="number"] {
 /* стили для информации о доставке */
 
 .delivery-info {
-    margin-top: auto;
+    margin-top: 10px;
 }
 .delivery_table {
     width: 100%;
