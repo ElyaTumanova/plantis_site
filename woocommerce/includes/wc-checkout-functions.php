@@ -32,7 +32,7 @@ function plnt_delivery_condition_info () {
 add_action( 'woocommerce_checkout_order_review', 'my_delivery_small_oder_info', 20 );
 
 function my_delivery_small_oder_info () {
-    global $min_free_delivery;
+    $min_free_delivery = carbon_get_theme_option('min_free_delivery');
     echo  $min_free_delivery;
 	if ( WC()->cart->subtotal < 2000 ) {
 		$cart = 2000 - WC()->cart->subtotal;
