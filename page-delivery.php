@@ -24,31 +24,31 @@ get_header(); ?>
                 <div class="delivery__text">
                     <p class="delivery__subheading"><strong>Доставка на следующий день или позже:</strong></p>
                         <ul>
-                            <li>в пределах МКАД — 590 рублей;</li>
-                            <li>за пределы МКАД (до 5 км) — 790 рублей.</li>
+                            <li>в пределах МКАД — <?php echo $in_mkad ?> рублей;</li>
+                            <li>за пределы МКАД (до 5 км) — <?php echo $out_mkad ?> рублей.</li>
                         </ul>
                     <p class="delivery__subheading"><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
                     <ul>
-                        <li>в пределах МКАД — 790 рублей;</li>
-                        <li>за пределы МКАД (до 5 км) — 990 рублей.</li>
+                        <li>в пределах МКАД — <?php echo $in_mkad_urg ?> рублей;</li>
+                        <li>за пределы МКАД (до 5 км) — <?php echo $out_mkad_urg ?> рублей.</li>
                     </ul>				
                 </div>
                 
-                <h3 class="delivery__heading heading-2">Если ваш заказ <b>до 2000</b> рублей:</h3>
+                <h3 class="delivery__heading heading-2">Если ваш заказ <b>до <?php echo $min_small_delivery ?></b> рублей:</h3>
                 <div class="delivery__text">
 				    <p class="delivery__subheading"><strong>Доставка на следующий день или позже:</strong></p>
                     <ul>
-                        <li>в пределах МКАД — 790 рублей;</li>
-                        <li>за пределы МКАД (до 5 км) — 990 рублей.</li>
+                        <li>в пределах МКАД — <?php echo $in_mkad_small ?> рублей;</li>
+                        <li>за пределы МКАД (до 5 км) — <?php echo $out_mkad_small ?> рублей.</li>
                     </ul>
                     <p class="delivery__subheading"><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
                     <ul>
-                        <li>в пределах МКАД — 990 рублей;</li>
-                        <li>за пределы МКАД (до 5 км) — 1190 рублей.</li>
+                        <li>в пределах МКАД — <?php echo $in_mkad_small_urg ?> рублей;</li>
+                        <li>за пределы МКАД (до 5 км) — <?php echo $out_mkad_small_urg ?> рублей.</li>
                     </ul>
                     <p class="delivery__note">В итоговой стоимости заказа не учитывается цена доставки!</p>
                     <p>Мы работаем без выходных, поэтому <strong>доставка осуществляется каждый день.</strong></p>
-                    <p>При заказе товаров на сумму <strong>свыше 15 000 рублей</strong> доставка осуществляется бесплатно.</p>					
+                    <p>При заказе товаров на сумму <strong>свыше <?php echo $min_free_delivery ?> рублей</strong> доставка осуществляется бесплатно.</p>					
                 </div>
 
                 <h3 class="delivery__heading heading-2">Интервалы доставки</h3>
