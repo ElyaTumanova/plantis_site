@@ -39,8 +39,8 @@ function my_delivery_small_oder_info () {
 		echo '<div class="checkout__free-delivery-text">
         Добавьте товаров на <span>'.$cart,'</span> рублей, чтобы стоимость доставки уменьшилась!</div>';
 	} else {
-		if ( WC()->cart->subtotal < number_format($min_free_delivery) ) {
-			$cart = number_format($min_free_delivery) - WC()->cart->subtotal;
+		if ( WC()->cart->subtotal < (int)$min_free_delivery) {
+			$cart = (int)$min_free_delivery - WC()->cart->subtotal;
 			echo '<div class="checkout__text">
 			До бесплатной доставки внутри МКАД осталось <span>'.$cart,'</span> рублей!</div>';
 		}
