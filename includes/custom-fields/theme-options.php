@@ -54,7 +54,16 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'main_banner_4_name', 'Banner 4 Name' ),
 		))
 		->add_tab( __('Delivery'), array(
-			Field::make( 'text', 'out_mkad', 'Site title in header' )
+			Field::make( 'text', 'in_mkad', 'Доставка в пределах МКАД на след день более мин суммы' ),
+			Field::make( 'text', 'out_mkad', 'Доставка за пределы МКАД на след день более мин суммы'),
+			Field::make( 'text', 'in_mkad_urg', 'Доставка в пределах МКАД срочная более мин суммы'),
+			Field::make( 'text', 'out_mkad_urg', 'Доставка за пределы МКАД срочная более мин суммы'),
+			Field::make( 'text', 'in_mkad_small', 'Доставка в пределах МКАД на след день до мин суммы'),
+			Field::make( 'text', 'out_mkad_small', 'Доставка за пределы МКАД на след день до мин суммы'),
+			Field::make( 'text', 'in_mkad_small_urg', 'Доставка в пределах МКАД срочная до мин суммы'),
+			Field::make( 'text', 'out_mkad_small_urg', 'Доставка за пределы МКАД срочная до мин суммы'),
+			Field::make( 'text', 'min_free_delivery', 'Минимальная сумма заказа для бесплатной доставки'),
+			Field::make( 'text', 'min_small_delivery', 'Сумма заказа для более дорогой доставки'),
 			
 	   ));
 
