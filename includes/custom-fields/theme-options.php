@@ -54,7 +54,7 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'main_banner_4_name', 'Banner 4 Name' ),
 		))
 		->add_tab( __('Delivery'), array(
-			Field::make( 'text', 'site_title', 'Site title in header' )
+			Field::make( 'text', 'outMKAD', 'Site title in header' )
 			
 	   ));
 
