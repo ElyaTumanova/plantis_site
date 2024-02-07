@@ -52,7 +52,7 @@ get_header(); ?>
                 <h3 class="delivery__heading heading-2">Связаться с нами</h3>
                 <p>Ничего страшного, если вы не можете принять заказ в согласованные дату и время. В таком случае просим связаться с нами удобным для вас способом.</p>
 
-                <?php get_template_part('template-parts/contacts_part');?>
+                <?php get_template_part('template-parts/contacts-part');?>
 
             </div>
             <div class="delivery__wrap">
