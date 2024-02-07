@@ -2,16 +2,16 @@
 get_header(); ?>
 
 <?php 
-    $in_mkad = carbon_get_theme_option('in_mkad')
-    $out_mkad = carbon_get_theme_option('out_mkad')
-    $in_mkad_urg = carbon_get_theme_option('in_mkad_urg')
-    $out_mkad_urg = carbon_get_theme_option('out_mkad_urg')
-    $in_mkad_small = carbon_get_theme_option('in_mkad_small')
-    $out_mkad_small = carbon_get_theme_option('out_mkad_small')
-    $in_mkad_small_urg = carbon_get_theme_option('in_mkad_small_urg')
-    $out_mkad_small_urg = carbon_get_theme_option('out_mkad_small_urg')
-    $min_free_delivery = carbon_get_theme_option('min_free_delivery')
-    $min_small_delivery = carbon_get_theme_option('min_small_delivery')
+    $in_mkad = carbon_get_theme_option('in_mkad');
+    $out_mkad = carbon_get_theme_option('out_mkad');
+    $in_mkad_urg = carbon_get_theme_option('in_mkad_urg');
+    $out_mkad_urg = carbon_get_theme_option('out_mkad_urg');
+    $in_mkad_small = carbon_get_theme_option('in_mkad_small');
+    $out_mkad_small = carbon_get_theme_option('out_mkad_small');
+    $in_mkad_small_urg = carbon_get_theme_option('in_mkad_small_urg');
+    $out_mkad_small_urg = carbon_get_theme_option('out_mkad_small_urg');
+    $min_free_delivery = carbon_get_theme_option('min_free_delivery');
+    $min_small_delivery = carbon_get_theme_option('min_small_delivery');
 ?>
 
 <div class="content-area">
