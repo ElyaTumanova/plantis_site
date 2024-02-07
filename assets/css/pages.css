@@ -70,8 +70,8 @@
     font-weight: 500;
 }
 
-@media (max-width: 1024px) {
-    .delivery__wrap {
+@media (max-width: 767px) {
+    .delivery {
         flex-direction: column;
     }
 }
@@ -100,6 +100,7 @@
 .delivery p {
     margin-bottom: 10px;
     margin-top: 10px;
+    line-height: 1.4;
 }
 
 .delivery__note {
