@@ -63,7 +63,7 @@
     margin-top: 10px;
 }
 
-.my_header__title, .entry-header {
+.my_header__title, .entry-header, .entry-title {
     color: var(--accent-color);
     font-weight: 700;
     line-height: 1.1;
