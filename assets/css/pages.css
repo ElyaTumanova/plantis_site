@@ -67,6 +67,9 @@
     display: flex;
     column-gap: 15px;
     row-gap: 30px;
+}
+
+.delivery__wrap {
     font-weight: 500;
 }
 
@@ -80,6 +83,7 @@
     margin-top: 30px;
     margin-bottom: 10px;
     color: var(--accent-color);
+    line-height: 1.2;
 }
 
 .delivery__subheading {
