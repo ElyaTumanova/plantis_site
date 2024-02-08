@@ -90,9 +90,3 @@ function show_svg_in_media_library( $response ) {
 
 	return $response;
 }
-
-add_shortcode ('contacts_parts', 'add_contacts_parts_shortcode');
-
-function add_contacts_parts_shortcode () {
-	get_template_part('template-parts/contacts-part');
-}
