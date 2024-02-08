@@ -42,7 +42,7 @@ get_header(); ?>
                     </div>
                 </div>
                 <div class="about__col">
-                    <div class="about__slider">
+                    <div class="about__slider about__slider_photo">
                         <div class="nivo-about-photo-gallery">
                             <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_4.webp" alt="Мастерская Plantis">
                             <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_2.webp" alt="Мастерская Plantis">
@@ -56,7 +56,7 @@ get_header(); ?>
                         </div>
                     </div>
 
-                    <div class="about__slider">
+                    <div class="about__slider about__slider_feedback">
                         <div class="nivo-about-feedback">
                             <img src="https://plantis.shop/wp-content/uploads/2022/10/01_.webp" alt="Отзывы об интернет-магазине Plantis">
                             <img src="https://plantis.shop/wp-content/uploads/2022/10/02_-1.webp" alt="Отзывы об интернет-магазине Plantis">

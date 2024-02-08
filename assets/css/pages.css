@@ -188,7 +188,7 @@
     bottom: auto;
 }
 
-.about__slider:first-of-type .nivo-directionNav {
+.about__slider_photo .nivo-directionNav {
     color: var(--white);
 }
 
@@ -197,9 +197,16 @@
 }
 
 .about__slider {
-    border-radius: 10px;
     position: relative;
+}
+
+.about__slider_photo {
     margin-bottom: 40px;
+}
+
+.about__slider_feedback {
+    padding-left: 10px;
+    background-color: var(--accent-color);
 }
 
 
