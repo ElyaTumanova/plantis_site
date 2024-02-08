@@ -153,7 +153,12 @@
 .info__accent-text {
     font-size: 25px;
     line-height: 1.2;
-    margin-bottom: 10px;
     text-transform: uppercase;
     margin-bottom: 30px;
+}
+
+.info__accent-text-small {
+    font-size: 18px;
+    line-height: 1.2;
+    margin-bottom: 20px;
 }
