@@ -167,3 +167,9 @@
 .info__paragraph {
     margin: 20px 0;
 }
+
+.info__about {
+    display: flex;
+    column-gap: 15px;
+    row-gap: 30px;
+}
