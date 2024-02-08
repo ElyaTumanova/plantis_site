@@ -38,7 +38,7 @@ get_header(); ?>
                     </div>
                 </div>
                 <div class="info__wrap">
-                    фото
+                    <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_4.webp" alt="Мастерская Plantis">
                 </div>
 
             </div>
