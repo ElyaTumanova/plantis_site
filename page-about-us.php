@@ -58,7 +58,7 @@ get_header(); ?>
 
                     <div lass="about__slider">
                         <div class="nivo-about-feedback">
-                            <img src="https://plantis.shop/wp-content/uploads/2022/10/01_.webpp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/10/01_.webp" alt="Отзывы об интернет-магазине Plantis">
                             <img src="https://plantis.shop/wp-content/uploads/2022/10/02_-1.webp" alt="Отзывы об интернет-магазине Plantis">
                             <img src="https://plantis.shop/wp-content/uploads/2022/10/03_.webp" alt="Отзывы об интернет-магазине Plantis">
                             <img src="https://plantis.shop/wp-content/uploads/2022/10/04_.webp" alt="Отзывы об интернет-магазине Plantis">
