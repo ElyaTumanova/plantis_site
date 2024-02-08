@@ -71,7 +71,6 @@
 
 .delivery__wrap {
     font-weight: 500;
-    line-height: 1.4;
 }
 
 @media (max-width: 767px) {
@@ -112,6 +111,17 @@
     color: var(--red-color);
     font-weight: 700;
 }
+
+/*--------------------------------------------------------------
+# Delivery Russia
+--------------------------------------------------------------*/
+
+/* .delivery-ru p{
+    line-height: 1.4;
+}
+
+.delivery-ru ul  */
+
 
 /*--------------------------------------------------------------
 # Contacts Part
