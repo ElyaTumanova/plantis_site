@@ -130,3 +130,15 @@
     flex-direction: column;
     row-gap: 15px;
 }
+
+/*--------------------------------------------------------------
+# Info Pages
+--------------------------------------------------------------*/
+
+.entry-content {
+    margin-top: 30px;
+}
+.entry-content p{
+    font-weight: 500;
+    line-height: 1.3;
+}
