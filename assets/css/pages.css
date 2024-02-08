@@ -174,7 +174,7 @@
 
 .about__wrap {
     display: grid;
-    column-gap: 30px;
+    column-gap: 50px;
     row-gap: 30px;
-    grid-template-columns: 60% calc(40% - 30px);
+    grid-template-columns: 60% calc(40% - 50px);
 }
