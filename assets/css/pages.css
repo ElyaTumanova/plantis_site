@@ -188,7 +188,7 @@
     bottom: auto;
 }
 
-.about__slider .nivo-directionNav {
+.about__slider:first-of-type .nivo-directionNav {
     color: var(--white);
     font-size: 25px;
 }
