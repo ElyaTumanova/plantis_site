@@ -137,8 +137,10 @@
 
 .entry-content {
     margin-top: 30px;
+    max-width: 900px;
 }
 .entry-content p{
     font-weight: 500;
-    line-height: 1.3;
+    line-height: 1.4;
+    margin-bottom: 15px;
 }
