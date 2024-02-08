@@ -183,3 +183,18 @@
     row-gap: 30px;
     grid-template-columns: 60% calc(40% - 50px);
 }
+
+.about__col {
+    position: relative;
+}
+
+.about__col .nivo-controlNav {
+    bottom: auto;
+}
+
+.about__col .nivo-directionNav {
+    color: var(--white);
+    font-size: 25px;
+}
+
+
