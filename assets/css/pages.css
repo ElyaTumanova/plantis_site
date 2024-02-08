@@ -184,8 +184,12 @@
     grid-template-columns: 60% calc(40% - 50px);
 }
 
-.about__slider .nivo-controlNav {
+.about__slider_photo .nivo-controlNav {
     bottom: auto;
+}
+
+.about__slider_feedback .nivo-controlNav {
+    bottom: 10px;
 }
 
 .about__slider_photo .nivo-directionNav {
@@ -198,15 +202,17 @@
 
 .about__slider {
     position: relative;
-}
-
-.about__slider_photo {
     margin-bottom: 40px;
 }
 
 .about__slider_feedback {
     padding-left: 10px;
     background-color: var(--accent-color);
+    border-radius: 10px;
+}
+
+.about__slider_photo img {
+    border-radius: 10px;
 }
 
 
