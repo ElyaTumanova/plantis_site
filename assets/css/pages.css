@@ -173,7 +173,8 @@
 }
 
 .about__wrap {
-    display: flex;
-    column-gap: 15px;
+    display: grid;
+    column-gap: 30px;
     row-gap: 30px;
+    grid-template-columns: 60% calc(40% - 30px);
 }
