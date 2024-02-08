@@ -42,21 +42,57 @@ get_header(); ?>
                     </div>
                 </div>
                 <div class="about__col">
-                    <div class="about__photo nivo-about-photo-gallery">
-                        <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_4.webp" alt="Мастерская Plantis">
-                        <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_2.webp" alt="Мастерская Plantis">
-                        <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_7.webp" alt="Мастерская Plantis">
-                        <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_9.webp" alt="Мастерская Plantis">
-                        <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_8.webp" alt="Мастерская Plantis">
-                        <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_3.webp" alt="Мастерская Plantis">
-                        <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_6.webp" alt="Мастерская Plantis">
-                        <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_5.webp" alt="Мастерская Plantis">
-                        <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_1.webp" alt="Мастерская Plantis">
+                    <div class="about__slider">
+                        <div class="nivo-about-photo-gallery">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_4.webp" alt="Мастерская Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_2.webp" alt="Мастерская Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_7.webp" alt="Мастерская Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_9.webp" alt="Мастерская Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_8.webp" alt="Мастерская Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_3.webp" alt="Мастерская Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_6.webp" alt="Мастерская Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_5.webp" alt="Мастерская Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_1.webp" alt="Мастерская Plantis">
+                        </div>
                     </div>
+
+                    <div lass="about__slider">
+                        <div class="nivo-about-feedback">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/10/01_.webpp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/10/02_-1.webp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/10/03_.webp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/10/04_.webp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/10/05_.webp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/10/06_.webp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/10/07_.webp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/10/08_.webp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/10/09_.webp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/10/10_.webp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/10/11_.webp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2022/10/01_.webp" alt="Отзывы об интернет-магазине Plantis">
+                        </div>
+                    </div>
+
 
                     <script>
                         jQuery(function($){
                             $('.nivo-about-photo-gallery').nivoSlider({
+                                effect: 'fade',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
+                                animSpeed: 200,                 // скорость анимации
+                                pauseTime: 3000,                // пауза между сменой слайдов
+                                directionNav: true,             // нужно ли отображать кнопки перехода на следующий и предыдущий слайд
+                                controlNav: true,               // 1,2,3... навигация (например в виде точек)
+                                pauseOnHover: true,             // останавливать прокрутку слайдов при наведении мыши
+                                manualAdvance: true,           // true - отключить автопрокрутку
+                                prevText: '&#10094;',               // текст перехода на предыдущий слайд
+                                nextText: '&#10095;',               // текст кнопки перехода на следующий слайд
+                                randomStart: false,             // начинать со случайного слайда
+                            })
+                        });
+                    </script>
+                    <script>
+                        jQuery(function($){
+                            $('.nivo-about-feedback').nivoSlider({
                                 effect: 'fade',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
                                 animSpeed: 200,                 // скорость анимации
                                 pauseTime: 3000,                // пауза между сменой слайдов

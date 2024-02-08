@@ -184,17 +184,18 @@
     grid-template-columns: 60% calc(40% - 50px);
 }
 
-.about__col {
-    position: relative;
-}
-
-.about__col .nivo-controlNav {
+.about__slider .nivo-controlNav {
     bottom: auto;
 }
 
-.about__col .nivo-directionNav {
+.about__slider .nivo-directionNav {
     color: var(--white);
     font-size: 25px;
+}
+
+.about__slider {
+    border-radius: 10px;
+    position: relative;
 }
 
 
