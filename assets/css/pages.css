@@ -149,3 +149,9 @@
     color: var(--red-color);
     font-weight: 700;
 }
+
+.info__accent-text {
+    font-size: 25px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
