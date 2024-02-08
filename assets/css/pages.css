@@ -90,18 +90,18 @@
     margin-bottom: 10px;
 }
 
-.delivery ul {
+.delivery__wrap ul {
     margin-bottom: 20px;
     list-style: disc;
     margin-left: 30px;
 
 }
 
-.delivery ul li{
+.delivery__wrap ul li{
     margin-bottom: 10px;
 }
 
-.delivery p {
+.delivery__wrap p {
     margin-bottom: 10px;
     margin-top: 10px;
     line-height: 1.4;
