@@ -192,6 +192,10 @@
     bottom: 10px;
 }
 
+.about__slider_feedback .nivo-nextNav {
+    right: 12px;
+}
+
 .about__slider_photo .nivo-directionNav {
     color: var(--white);
 }
