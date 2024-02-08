@@ -168,6 +168,10 @@
     margin: 20px 0;
 }
 
+.about {
+    margin-top: 30px;
+}
+
 .about__wrap {
     display: flex;
     column-gap: 15px;
