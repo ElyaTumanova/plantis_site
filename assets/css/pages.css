@@ -190,6 +190,9 @@
 
 .about__slider:first-of-type .nivo-directionNav {
     color: var(--white);
+}
+
+.about__slider .nivo-directionNav {
     font-size: 25px;
 }
 
