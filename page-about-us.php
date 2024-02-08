@@ -6,8 +6,8 @@ get_header(); ?>
 		<header class="entry-header">
 			<h1 class="entry-title">О нас</h1>                
 		</header>
-		<div class="entry-content">
-            <div class="info__about">
+		<div class="about">
+            <div class="about__wrap">
                 <div class="info__wrap">
                     <div class="info__accent-text">Мы хотим стать для вас местом, где вы поймёте, что выращивание комнатных растений простой процесс, который не требует много сил и специфических знаний.</div>
                     <h2 class="info__heading heading-2">Кто мы такие?</h2>
