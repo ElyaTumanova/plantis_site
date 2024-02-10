@@ -24,7 +24,7 @@ get_header(); ?>
                 <table class="info__table"><tbody><tr><td><b>Сумма заказа</b></td><td><b>Размер скидки</b></td></tr><tr><td>От 50 000 рублей</td><td>5%</td></tr><tr><td>От 100 000 рублей</td><td>10%</td></tr><tr><td>От 200 000 рублей</td><td>15%</td></tr></tbody></table>
                 <p>Скидка распространяется только на покупку горшечных растений.</p>
             </div>
-            <div>
+            <div class="optom__plants-cats-az">
                 <h2 class="heading-2">Категории растений от А до Я</h2>
                 <?php get_template_part('template-parts/plant-cats-az');?>
                 <a href="<?php 
