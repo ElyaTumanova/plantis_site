@@ -25,7 +25,7 @@
 
 /* preorder popup */
 
-.preorder {
+.page-popup__container {
     position: absolute;
     top: 30%;
     background: var(--background);
@@ -34,20 +34,20 @@
     right: 0;
 }
 
-.preopder__heading {
+.page-popup__heading {
     display: inline;
     color: var(--accent-color);
 }
 
-.preorder__close {
+.page-popup__close {
     float: right;
 }
 
-.preorder__close:hover {
+.page-popup__close:hover {
     cursor: pointer;
 }
 
-.preorder__form {
+.page-popup__form {
     margin: 30px 0;
 }
 
