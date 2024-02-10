@@ -247,11 +247,17 @@
 # Optom & Plant categories A to Z
 --------------------------------------------------------------*/
 .optom .heading-2 {
-    margin: 30px 0 50px;
+    margin: 50px 0 30px;
 }
 .optom__plants-cats-az {
     display: flex;
     flex-direction: column;
+}
+
+.optom__button_cats {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    max-width: 300px;
 }
 
 .plants-cats-az {

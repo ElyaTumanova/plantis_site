@@ -31,7 +31,7 @@ get_header(); ?>
                 global $plants_cat_id;
                 echo get_term_link( $plants_cat_id, 'product_cat' );
                 ?>" 
-                class="button">Каталог растений</a>
+                class="optom__button_cats button">Каталог растений</a>
             </div>
             <h2 class="heading-2">Остались вопросы?</h2>
             <p>Позвоните нам или напишите, любым удобным способом!</p>
