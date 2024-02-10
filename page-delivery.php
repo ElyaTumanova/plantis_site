@@ -21,13 +21,13 @@ get_header(); ?>
                 <h1 class="entry-header">Доставка</h1>
 
                 <h3 class="info__heading heading-2">Если ваш заказ <b>от <?php echo $min_small_delivery ?></b> рублей:</h3>
-                <div class="info__text">
-                    <p class="info__subheading"><strong>Доставка на следующий день или позже:</strong></p>
+                <div>
+                    <p><strong>Доставка на следующий день или позже:</strong></p>
                         <ul>
                             <li>в пределах МКАД — <?php echo $in_mkad ?> рублей;</li>
                             <li>за пределы МКАД (до 5 км) — <?php echo $out_mkad ?> рублей.</li>
                         </ul>
-                    <p class="info__subheading"><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
+                    <p><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
                     <ul>
                         <li>в пределах МКАД — <?php echo $in_mkad_urg ?> рублей;</li>
                         <li>за пределы МКАД (до 5 км) — <?php echo $out_mkad_urg ?> рублей.</li>
@@ -35,13 +35,13 @@ get_header(); ?>
                 </div>
                 
                 <h3 class="info__heading heading-2">Если ваш заказ <b>до <?php echo $min_small_delivery ?></b> рублей:</h3>
-                <div class="info__text">
-				    <p class="info__subheading"><strong>Доставка на следующий день или позже:</strong></p>
+                <div>
+				    <p><strong>Доставка на следующий день или позже:</strong></p>
                     <ul>
                         <li>в пределах МКАД — <?php echo $in_mkad_small ?> рублей;</li>
                         <li>за пределы МКАД (до 5 км) — <?php echo $out_mkad_small ?> рублей.</li>
                     </ul>
-                    <p class="info__subheading"><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
+                    <p><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
                     <ul>
                         <li>в пределах МКАД — <?php echo $in_mkad_small_urg ?> рублей;</li>
                         <li>за пределы МКАД (до 5 км) — <?php echo $out_mkad_small_urg ?> рублей.</li>
@@ -52,7 +52,7 @@ get_header(); ?>
                 </div>
 
                 <h3 class="info__heading heading-2">Интервалы доставки</h3>
-                <div class="info__text">
+                <div>
                     <ul>
                         <li>с 11:00 до 21:00;</li>
                         <li>с 11:00 до 16:00;</li>
