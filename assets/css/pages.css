@@ -237,9 +237,9 @@
 # Peresadka
 --------------------------------------------------------------*/
 .peresadka {
-    font-weight: 500;
-    line-height: 1.4;
-    margin-bottom: 15px;
+    /* font-weight: 500;
+    line-height: 1.4; */
+    /* margin-bottom: 15px; */
     max-width: 1000px;
 }
 
@@ -251,9 +251,9 @@
     line-height: 1.1;
 }
 
-.peresadka p {
+/* .peresadka p {
     margin-bottom: 10px;
-}
+} */
 
 .peresadka__table {
 	min-width: 50%;
@@ -275,6 +275,10 @@
 	line-height: 110%;
 	border: 2px solid #dddddd;
 }
+
+/*--------------------------------------------------------------
+# Landscaping
+--------------------------------------------------------------*/
 
 .landscaping {
     display: grid;

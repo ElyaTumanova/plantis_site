@@ -6,7 +6,7 @@ get_header(); ?>
 		<header class="entry-header">
 			<h1 class="entry-title">Услуги по пересадке комнатных растений</h1>                
 		</header>
-		<div class="peresadka info__list">
+		<div class="peresadka info__content info__list">
 
             <h2 class="peresadka__heading">Вы хотите купить комнатное растение. И теперь перед вами стоит задача его пересадить. Но&nbsp;вы не знаете с чего начать?</h2>
 			<p>Это просто!</p>
