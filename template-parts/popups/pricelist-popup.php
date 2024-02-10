@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="page-popup popup">
     <div class="page-popup__container container">
         <div class="page-popup__wrap">
-            <h2 class="page-popup__heading heading-2">Предзаказ товара</h2>
+            <h2 class="page-popup__heading heading-2">Получить оптовый прайс-лист</h2>
             <span class="page-popup__close heading-2">&#10006;</span>
             <div class="page-popup__form">ТУТ БУДЕТ ФОРМА</div>
             <p class="page-popup__text">Нажимая кнопку "Отправить", вы даете согласие на обработку своих персональных данных и соглашаетесь с положениями, 
