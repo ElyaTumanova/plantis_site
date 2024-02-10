@@ -229,6 +229,7 @@
     font-weight: 500;
     line-height: 1.4;
     margin-bottom: 15px;
+    max-width: 1000px;
 }
 
 .peresadka__heading {
@@ -236,6 +237,7 @@
     font-size: 22px;
     font-weight: 600;
     margin-top: 30px;
+    line-height: 1.1;
 }
 
 .peresadka ul {
