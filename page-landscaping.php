@@ -6,7 +6,7 @@ get_header(); ?>
 		<header class="entry-header">
 			<h1 class="entry-title">Озеленение</h1>                
 		</header>
-		<div class="landscaping info__list">
+		<div class="landscaping info__content info__list">
             <div>
                 <p>Вы мечтаете, чтобы ваш дом/квартира/офис/магазин/кафе наполнились живыми растениями, но не знаете с чего начать?</p>
                 <p>Это нормально!</p>
