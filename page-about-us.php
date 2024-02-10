@@ -12,7 +12,7 @@ get_header(); ?>
 		</header>
 		<div class="about info__content">
             <div class="about__wrap">
-                <div class="about__col">
+                <div>
                     <div class="info__accent-text">Мы хотим стать для вас местом, где вы поймёте, что выращивание комнатных растений простой процесс, который не требует много сил и специфических знаний.</div>
                     <h2 class="info__heading heading-2">Кто мы такие?</h2>
                     <div class="info__paragraph info__list">
@@ -41,7 +41,7 @@ get_header(); ?>
                         <p>Растения дома помогают снизить стресс и усталость, а также повысить продуктивность и реализовать свой потенциал. Они поднимают настроение и помогают нам чувствовать себя более расслабленными и защищенными.</p>
                     </div>
                 </div>
-                <div class="about__col">
+                <div>
                     <div class="about__slider about__slider_photo">
                         <div class="nivo-about-photo-gallery">
                             <img src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_4.webp" alt="Мастерская Plantis">
