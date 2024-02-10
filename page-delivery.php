@@ -16,8 +16,8 @@ get_header(); ?>
 
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
-        <div class="delivery">
-            <div class="info__wrap info__list">
+        <div class="delivery info__content info__list">
+            <div>
                 <h1 class="entry-header">Доставка</h1>
 
                 <h3 class="info__heading heading-2">Если ваш заказ <b>от <?php echo $min_small_delivery ?></b> рублей:</h3>
@@ -66,9 +66,8 @@ get_header(); ?>
                 <p>Ничего страшного, если вы не можете принять заказ в согласованные дату и время. В таком случае просим связаться с нами удобным для вас способом.</p>
 
                 <?php get_template_part('template-parts/contacts-part');?>
-
             </div>
-            <div class="info__wrap">
+            <div>
                 <h2 class="entry-header">Самовывоз</h2>
                 
                 <h3 class="info__heading heading-2">Где</h3>
