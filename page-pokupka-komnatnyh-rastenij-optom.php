@@ -32,7 +32,7 @@ get_header(); ?>
                 echo get_term_link( $plants_cat_id, 'product_cat' );
                 ?>" 
                 class="optom__button optom__button_cats button">Каталог растений</a>
-                <button class="optom__button optom__button_pricelist button">Получить оптовый прайс-лист</button>
+                <button class="optom__button optom__button_pricelist button page-popup-open-btn">Получить оптовый прайс-лист</button>
             </div>
             <h2 class="heading-2">Остались вопросы?</h2>
             <p>Позвоните нам или напишите, любым удобным способом!</p>
