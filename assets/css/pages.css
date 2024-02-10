@@ -224,6 +224,10 @@
 .landscaping {
     display: grid;
     grid-template-columns: 60% auto;
-    column-gap: 20px;
+    column-gap: 30px;
     max-width: 100%;
+}
+
+.landscaping__photo {
+    border-radius: 10px;
 }
