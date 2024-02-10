@@ -17,7 +17,7 @@ get_header(); ?>
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
         <div class="delivery">
-            <div class="info__wrap">
+            <div class="info__wrap info__list">
                 <h1 class="entry-header">Доставка</h1>
 
                 <h3 class="info__heading heading-2">Если ваш заказ <b>от <?php echo $min_small_delivery ?></b> рублей:</h3>

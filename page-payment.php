@@ -6,7 +6,7 @@ get_header(); ?>
 		<header class="entry-header">
 			<h1 class="entry-title">Способы оплаты</h1>                
 		</header>
-		<div class="payment__wrap">
+		<div class="payment__wrap info__list">
             <p>Способы оплаты вашего заказа:</p>
             <ul>
                 <li>Банковской картой сразу при оформлении;</li>

@@ -43,7 +43,7 @@
     margin-top: 30px;
 }
 
-.payment__wrap ul {
+/* .payment__wrap ul {
     list-style: disc;
     margin-left: 30px;
     margin-top: 20px;
@@ -52,7 +52,7 @@
 
 .payment__wrap li {
     padding-bottom: 5px;
-}
+} */
 
 .payment__wrap p {
     margin-bottom: 10px;
@@ -112,13 +112,24 @@
     text-transform: uppercase;
 }
 
-.entry-content ul {
+/* .entry-content ul {
+    margin-bottom: 20px;
+    list-style: disc;
+    margin-left: 30px;
+} */
+
+.info__list ul {
     margin-bottom: 20px;
     list-style: disc;
     margin-left: 30px;
 }
 
-.entry-content ul li{
+/* .entry-content ul li{
+    line-height: 1.3;
+    margin-bottom: 5px;
+} */
+
+.info__list ul li{
     line-height: 1.3;
     margin-bottom: 5px;
 }
@@ -144,7 +155,7 @@
     margin-bottom: 10px;
 }
 
-.info__wrap ul, .info__paragraph ul {
+/* .info__wrap ul, .info__paragraph ul {
     margin-bottom: 20px;
     list-style: disc;
     margin-left: 30px;
@@ -153,7 +164,7 @@
 .info__wrap ul li, .info__paragraph ul li{
     line-height: 1.3;
     margin-bottom: 5px;
-}
+} */
 
 .info__wrap p, .info__paragraph p {
     margin-bottom: 10px;
@@ -256,7 +267,7 @@
     line-height: 1.1;
 }
 
-.peresadka ul {
+/* .peresadka ul {
     margin-bottom: 20px;
     list-style: disc;
     margin-left: 30px;
@@ -265,7 +276,7 @@
 .peresadka ul li {
     line-height: 1.3;
     margin-bottom: 5px;
-}
+} */
 
 .peresadka p {
     margin-bottom: 10px;
