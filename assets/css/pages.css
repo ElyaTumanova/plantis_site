@@ -252,22 +252,24 @@
 .optom__plants-cats-az {
     display: flex;
     flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+}
+
+.optom__button {
+    color: var(--white);
+    width: 300px;
+    /* margin: auto; */
 }
 
 .optom__button_cats {
     background-color: var(--accent-color);
     border-color: var(--accent-color);
-    color: var(--white);
-    width: 300px;
-    margin: auto;
 }
 
 .optom__button_pricelist {
     background-color: var(--added-cart);
     border-color: var(--added-cart);
-    color: var(--white);
-    width: 300px;
-    margin: auto;
 }
 
 .plants-cats-az {
