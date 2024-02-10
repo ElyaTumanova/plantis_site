@@ -25,7 +25,7 @@ get_header(); ?>
                 <p>Скидка распространяется только на покупку горшечных растений.</p>
             </div>
             <div>
-                <h2 class="info__accent-text-small">Категории растений от А до Я</h2>
+                <h2 class="heading-2">Категории растений от А до Я</h2>
                 <?php get_template_part('template-parts/plant-cats-az');?>
                 <a href="<?php 
                 global $plants_cat_id;
