@@ -25,7 +25,11 @@ get_header(); ?>
 
             <h2 class="info__accent-text-small">Категории растений от А до Я</h2>
 
-            <a href="<?php echo get_term_link( $product_cat_id, 'komnatnye-rasteniya' );?>" class="button">Каталог растений</a>
+            <a href="<?php 
+            global $plants_cat_id;
+            echo get_term_link( $plants_cat_id, 'product_cat' );
+            ?>" 
+            class="button">Каталог растений</a>
 
             <h2 class="heading-2">Остались вопросы?</h2>
             <p>Позвоните нам или напишите, любым удобным способом!</p>
