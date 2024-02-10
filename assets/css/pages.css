@@ -257,7 +257,17 @@
 .optom__button_cats {
     background-color: var(--accent-color);
     border-color: var(--accent-color);
-    max-width: 300px;
+    color: var(--white);
+    width: 300px;
+    margin: auto;
+}
+
+.optom__button_pricelist {
+    background-color: var(--added-cart);
+    border-color: var(--added-cart);
+    color: var(--white);
+    width: 300px;
+    margin: auto;
 }
 
 .plants-cats-az {
