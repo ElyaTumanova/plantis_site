@@ -6,7 +6,7 @@ get_header(); ?>
 		<header class="entry-header">
 			<h1 class="entry-title">ХОТИТЕ КУПИТЬ КОМНАТНЫЕ РАСТЕНИЯ ОПТОМ?</h1>                
 		</header>
-		<div class="info__content info__list">
+		<div class="optom info__content info__list">
             <h2 class="info__accent-text-small">
             Вы - дизайнер? Или вам просто нужен надежный поставщик комнатных растений?
             А может быть вы - компания, которая самостоятельно решила заняться озеленением своего офиса? 
@@ -25,7 +25,7 @@ get_header(); ?>
 
             <h2 class="info__accent-text-small">Категории растений от А до Я</h2>
 
-            <h2 class="elementor-heading-title elementor-size-default">Остались вопросы?</h2>
+            <h2 class="heading-2">Остались вопросы?</h2>
             <p>Позвоните нам или напишите, любым удобным способом!</p>
             <?php get_template_part('template-parts/contacts-part');?>
 		</div>
