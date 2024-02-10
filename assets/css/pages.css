@@ -58,6 +58,27 @@
     margin: 20px 0;
 }
 
+.info__table {
+	min-width: 50%;
+	margin-top:20px;
+	margin-bottom: 20px;
+	border: 2px solid #dddddd;
+	border-collapse: collapse; 
+}
+.info__table th {
+	font-weight: bold;
+	line-height: 110%;
+	padding: 5px;
+	background: #efefef;
+	border: 2px solid #dddddd;
+}
+
+.info__table td {
+	padding: 5px 10px ;
+	line-height: 110%;
+	border: 2px solid #dddddd;
+}
+
 /*--------------------------------------------------------------
 # Contacts
 --------------------------------------------------------------*/
@@ -194,27 +215,6 @@
     font-weight: 600;
     margin-top: 30px;
     line-height: 1.1;
-}
-
-.peresadka__table {
-	min-width: 50%;
-	margin-top:20px;
-	margin-bottom: 20px;
-	border: 2px solid #dddddd;
-	border-collapse: collapse; 
-}
-.peresadka__table th {
-	font-weight: bold;
-	line-height: 110%;
-	padding: 5px;
-	background: #efefef;
-	border: 2px solid #dddddd;
-}
-
-.peresadka__table td {
-	padding: 5px 10px ;
-	line-height: 110%;
-	border: 2px solid #dddddd;
 }
 
 /*--------------------------------------------------------------

@@ -23,7 +23,7 @@ get_header(); ?>
             <h2 class="peresadka__heading">У вас уже есть горшок или кашпо?</h2>
             <p>	Никаких проблем! Пересадка в <strong>ваш</strong> горшок, который вы приобрели <strong>не у нас</strong>, будет стоить: </p>
 
-            <table class="peresadka__table">
+            <table class="info__table">
             <tbody>
             <tr>
             <td><b>Диаметр горшка/кашпо</b></td>
@@ -78,7 +78,7 @@ get_header(); ?>
             <br>Вы приняли решение пересадить фикусы в кашпо диаметром 40 см, а хлорофитум в 25ый горшок.</p>
             <p>Стоимость наших услуг составит:</p>
 
-            <table class="peresadka__table">
+            <table class="info__table">
             <tbody>
             <tr>
             <td><b>Услуга</b></td>
