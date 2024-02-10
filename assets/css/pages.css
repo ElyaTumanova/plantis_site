@@ -232,10 +232,10 @@
 }
 
 .peresadka__heading {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-size: 22px;
     font-weight: 600;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .peresadka ul {
@@ -247,6 +247,10 @@
 .peresadka ul li {
     line-height: 1.3;
     margin-bottom: 5px;
+}
+
+.peresadka p {
+    margin-bottom: 10px;
 }
 
 .peresadka__table {
