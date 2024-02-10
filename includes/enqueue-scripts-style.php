@@ -20,8 +20,8 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		));
 		wp_enqueue_script( 'search-popup', get_template_directory_uri() .
 		                                     '/assets/js/search-popup.js', array( 'jquery' ), null, true );
-		wp_enqueue_script( 'preorder-popup', get_template_directory_uri() .
-											 '/assets/js/preorder-popup.js', array( 'jquery' ), null, true );	
+		wp_enqueue_script( 'page-popup', get_template_directory_uri() .
+											 '/assets/js/page-popup.js', array( 'jquery' ), null, true );	
 		wp_enqueue_script( 'buttons', get_template_directory_uri() .
 											 '/assets/js/buttons.js', array( 'jquery' ), null, true );	
 

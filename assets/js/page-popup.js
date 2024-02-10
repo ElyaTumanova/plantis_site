@@ -7,28 +7,28 @@ const preorderPopupOverlay = document.querySelector('.page-popup__popup-overlay'
 if (preorderPopup != null && preorderOpenPopupBtn != null) {
     
     preorderOpenPopupBtn.addEventListener ("click", (evt)=>{
-        toggle_preorder_popup ();
+        toggle_page_popup ();
     });
 
 
     preorderClosePopupBtn.addEventListener ("click", (evt)=>{
-        toggle_preorder_popup ();
+        toggle_page_popup ();
     });
 
     preorderPopupOverlay.addEventListener ("click", (evt)=>{
-        toggle_preorder_popup ();
+        toggle_page_popup ();
     });
 
     document.addEventListener('keydown', function(e){
         if((e.key=='Escape'||e.key=='Esc')){
             if(preorderPopup.classList.contains('popup_active')) {
-                toggle_preorder_popup ();
+                toggle_page_popup ();
             } 
         }
     }, true);
 }
 
-function toggle_preorder_popup () {
+function toggle_page_popup () {
     preorderPopup.classList.toggle ('popup_active');
 };
 
