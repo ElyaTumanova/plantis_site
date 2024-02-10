@@ -338,4 +338,13 @@ function plnt_category_link () {
     </div>';
 }
 
+// поп-ап предзаказ preoprder popup
+add_action('woocommerce_after_main_content','plnt_get_preorder_popup');
+
+function plnt_get_preorder_popup () {
+    global $product;
+    if (is_product() && $product->get_stock_status() ==='outofstock') {
+        wc_get_template_part('template-parts/popups/preorder-popup');
+    }
+}
 
