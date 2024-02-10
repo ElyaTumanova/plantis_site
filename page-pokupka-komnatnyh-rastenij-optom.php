@@ -38,6 +38,7 @@ get_header(); ?>
             <p>Позвоните нам или напишите, любым удобным способом!</p>
             <?php get_template_part('template-parts/contacts-part');?>
 		</div>
+        <?php get_template_part('template-parts/popups/pricelist-popup');?>
 	</main><!-- #main -->
 </div><!-- #primary -->
 
