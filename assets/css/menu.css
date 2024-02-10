@@ -18,12 +18,12 @@
 }
 
 .menu--main .menu-node_lvl_2, .menu-node_lvl_3 {
-    padding: 15px 25px;
+    padding: 10px 25px;
     display: block;
 }
 
 .menu--info .menu-node_lvl_2, .menu-node_lvl_3 {
-    padding: 10px 15px;
+    padding: 8px 15px;
     display: block;
 }
 
@@ -107,6 +107,7 @@
     font-size: 10px;
     position: absolute;
     right: 13px;
+    margin-top: 3px;
 }
 .menu-item-has-children.menu-node_lvl_2> a:after:hover {
     text-decoration: none;
