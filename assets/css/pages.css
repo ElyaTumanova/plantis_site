@@ -33,12 +33,7 @@
     margin-top: 30px;
     margin-bottom: 10px;
     color: var(--accent-color);
-    line-height: 1.2;
 }
-
-/* .info__subheading {
-    margin-bottom: 10px;
-} */
 
 .info__note {
     color: var(--red-color);
