@@ -184,9 +184,8 @@
 --------------------------------------------------------------*/
 
 .about {
-    margin-top: 30px;
     font-size: 18px;
-    font-weight: 500;
+    max-width: 100%;
 }
 
 .about__wrap {
