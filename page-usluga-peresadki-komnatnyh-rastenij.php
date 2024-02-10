@@ -4,9 +4,9 @@ get_header(); ?>
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
 		<header class="entry-header">
-			<h1 class="entry-title">Поставщикам и партнерам</h1>                
+			<h1 class="entry-title">Услуги по пересадке комнатных растений</h1>                
 		</header>
-		<div class="entry-content presadka">
+		<div class="presadka">
 
             <h2 class="peresadka__heading">Вы хотите купить комнатное растение. И теперь перед вами стоит задача его пересадить. Но вы не знаете с чего начать?</h2>
 			<p>Это просто!</p>
