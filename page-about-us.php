@@ -10,7 +10,7 @@ get_header(); ?>
 		<header class="entry-header">
 			<h1 class="entry-title">О нас</h1>                
 		</header>
-		<div class="about">
+		<div class="about info__content">
             <div class="about__wrap">
                 <div class="about__col">
                     <div class="info__accent-text">Мы хотим стать для вас местом, где вы поймёте, что выращивание комнатных растений простой процесс, который не требует много сил и специфических знаний.</div>

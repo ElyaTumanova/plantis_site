@@ -45,11 +45,11 @@
     margin-bottom: 5px;
 }
 
-.info__paragraph p {
+/* .info__paragraph p {
     margin-bottom: 10px;
     margin-top: 10px;
     line-height: 1.4;
-}
+} */
 
 /* .info__wrap {
     font-weight: 500;
@@ -66,11 +66,11 @@
     margin-bottom: 10px;
 }
 
-.info__paragraph p {
+/* .info__paragraph p {
     margin-bottom: 10px;
     margin-top: 10px;
     line-height: 1.4;
-}
+} */
 
 .info__note {
     color: var(--red-color);
