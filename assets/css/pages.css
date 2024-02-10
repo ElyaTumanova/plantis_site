@@ -225,4 +225,5 @@
     display: grid;
     grid-template-columns: 60% auto;
     column-gap: 20px;
+    max-width: 100%;
 }
