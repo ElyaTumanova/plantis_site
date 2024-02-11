@@ -8,8 +8,8 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelector ('.card__price-wrap .add_to_cart_button').addEventListener('click',()=>{
-        ym(87781741, 'reachGoal', 'click-button-cart-detalka-new');
         console.log('hi');
+        ym(87781741, 'reachGoal', 'click-button-cart-detalka-new');
         
         return true; 
     })
