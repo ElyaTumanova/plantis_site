@@ -8,7 +8,25 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelector ('.card__price-wrap .add_to_cart_button').addEventListener('click',()=>{
+        const productName = document.querySelector ('.card__grid .product_title').value;
+        console.log(productName);
         ym(87781741, 'reachGoal', 'click-button-cart-detalka-new');
+        // window.dataLayer.push(
+        //     {
+        //         "ecommerce": {
+        //             "currencyCode": "RUB",
+        //             "add": {
+        //                 "products" : [
+        //                     {
+        //                         "name":,
+        //                         "quantity":,
+        //                         "price":
+        //                     }
+        //                 ]
+        //             }
+        //         }
+        //     }
+        // )
         console.log(JSON.stringify(window.dataLayer));
         
         return true; 
