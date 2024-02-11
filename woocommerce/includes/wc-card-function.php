@@ -355,7 +355,7 @@ function plnt_get_product () {
     global $product;
     ?> 
     <script>
-        console.log(<?php $product?>)
+        console.log(<?php echo $product;?>)
     </script>
     <?php
 }
