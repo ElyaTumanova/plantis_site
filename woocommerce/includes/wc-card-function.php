@@ -339,12 +339,24 @@ function plnt_category_link () {
 }
 
 // поп-ап предзаказ preoprder popup
-add_action('woocommerce_after_main_content','plnt_get_preorder_popup');
+add_action('woocommerce_after_main_content','plnt_get_preorder_popup',20);
 
 function plnt_get_preorder_popup () {
     global $product;
     if (is_product() && $product->get_stock_status() ==='outofstock') {
         wc_get_template_part('template-parts/popups/preorder-popup');
     }
+}
+
+
+add_action('woocommerce_after_main_content','plnt_get_product',30);
+
+function plnt_get_product () {
+    global $product;
+    ?> 
+    <script>
+        console.log(<?php . $product . ?>)
+    </script>
+    <?php
 }
 
