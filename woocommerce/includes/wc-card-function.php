@@ -212,25 +212,47 @@ function plnt_product_artikul() {
 	}
 };
 
+// function check_category () {
+// 	global $post;
+// 	$idCats=[];
+// 	$terms_post = get_the_terms( $post->cat_ID , 'product_cat' );
+// 	foreach ($terms_post as $term_cat) {
+//     $term_cat_id = $term_cat->term_id;
+// 	$idCats[$term_cat_id]=$term_cat_id;
+// 	};	
+// 	return $idCats;
+// };
 function check_category () {
-	global $post;
-	$idCats=[];
-	$terms_post = get_the_terms( $post->cat_ID , 'product_cat' );
-	foreach ($terms_post as $term_cat) {
-    $term_cat_id = $term_cat->term_id;
-	$idCats[$term_cat_id]=$term_cat_id;
-	};	
-	return $idCats;
+    global $product;
+    global $plants_cat_id;
+    global $gorshki_cat_id;
+    global $treez_cat_id;
+	$idCats = $product->get_category_ids();
+    foreach ($idCats as $cat){
+        switch ($cat) {
+            case $plants_cat_id:				//category ID for plants
+                return $parentCatId = $plants_cat_id;
+                break;
+            case $gorshki_cat_id:				//category ID for gorshki
+                return $parentCatId = $gorshki_cat_id;
+                break;
+            case $treez_cat_id:				//category ID for treez
+                return $parentCatId = $treez_cat_id;
+                break;
+            default:
+                // return 'Вас также заитересует';
+                break;
+        }
+    }
+	// return $parentCatId;
 };
 
 function plnt_product_attributes(){
-    global $product;
-    global $plants_cat_id;
     ?>
     <div class="product__attributes">
     <?php
-        $idCats = check_category ();
-        if( in_array( $plants_cat_id ,$idCats ) )
+        $parentCatId = check_category ();
+        if( $parentCatId = $plants_cat_id  )
             {
             echo  '<h2 class="heading-2">Уход и характеристики</h2>';
             } else {
@@ -241,6 +263,25 @@ function plnt_product_attributes(){
     </div>
     <?php 
 };
+
+// function plnt_product_attributes(){
+//     global $product;
+//     global $plants_cat_id;
+//     ?>
+<!-- //     <div class="product__attributes"> -->
+//     <?php
+//         $idCats = check_category ();
+//         if( in_array( $plants_cat_id ,$idCats ) )
+//             {
+//             echo  '<h2 class="heading-2">Уход и характеристики</h2>';
+//             } else {
+//             echo '<h2 class="heading-2">Характеристики</h2>';
+//             }
+//         wc_display_product_attributes($product);
+//     ?>
+<!-- //     </div> -->
+//     <?php 
+// };
 
 //upsells & cross sells
 
