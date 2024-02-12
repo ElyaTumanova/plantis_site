@@ -355,6 +355,7 @@ function plnt_get_product () {
     global $product;
     $id = $product->get_id();
     $productName = $product->get_title();
+    $price = $product->get_price()
     ?> 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -369,7 +370,7 @@ function plnt_get_product () {
                                     {
                                         "name":'<?php echo $productName?>',
                                         // "quantity":,
-                                        // "price":
+                                        "price":'<?php echo $price?>'
                                     }
                                 ]
                             }
