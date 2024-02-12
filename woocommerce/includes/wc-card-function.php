@@ -122,10 +122,8 @@ function plnt_price_wrap(){
 
 
 function plnt_cart_notice () {
-global add_to_cart();
  ?>
     <div class='cart-notice'><?php woocommerce_output_all_notices()?></div>
-    <div class='cart-cart'><?php add_to_cart()?></div>
  <?php
 }
  
