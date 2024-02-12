@@ -410,7 +410,7 @@ function plnt_metrika_card () {
                     <?php 
                     if($_POST['productId']) {
                         $productId = $_POST['productId'];
-                    }
+                    };
                     echo '<pre>';
                     print_r( $productId );
                     echo '</pre>';
