@@ -114,6 +114,16 @@ function plnt_price_wrap(){
     <?php 
 };
 
+ 
+function plnt_cart_notice_fragment( $fragments ) {
+	ob_start();
+	plnt_price_wrap();
+	$fragments[ 'div.cart-notice'] = ob_get_clean();
+	return $fragments;
+}
+
+add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_cart_notice_fragment', 25 );
+
 
 function plnt_get_add_to_card() {
     global $product;
