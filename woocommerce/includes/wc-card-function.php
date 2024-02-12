@@ -405,7 +405,8 @@ function plnt_metrika_card () {
             addToCardBtns.forEach(btn => {
                 btn.addEventListener('click',function (e){
                     console.log(e.target);
-                    console.log("hi");
+                    productId = e.target.getAttribute('data-product_id');
+                    console.log(productId);
                 });
             });
                        
