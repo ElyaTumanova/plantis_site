@@ -304,10 +304,11 @@ function plnt_get_cross_sells(){
 add_action('woocommerce_before_single_product','plnt_category_link',20);
 
 function plnt_category_link () {
+    global $product;
     global $plants_cat_id;
     global $gorshki_cat_id;
     global $treez_cat_id;
-	$idCats = check_category ();
+	$idCats = $product->get_category_ids();
 	foreach ($idCats as $cat){
 		switch ($cat)  {
 			case $plants_cat_id:				//category ID for plants
