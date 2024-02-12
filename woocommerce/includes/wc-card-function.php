@@ -360,8 +360,8 @@ function plnt_get_product () {
         document.addEventListener("DOMContentLoaded", function() {
             document.querySelector ('.card__price-wrap .add_to_cart_button').addEventListener('click',()=>{
                 // const productName = document.querySelector ('.card__grid .product_title').innerHTML;
-                // const productName = <?php //cho $productName?>;
-                console.log(<?php echo $id?>);
+                
+                console.log(<?php echo $productName?>);
                 // window.dataLayer.push(
                 //     {
                 //         "ecommerce": {
