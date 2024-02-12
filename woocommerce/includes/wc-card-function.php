@@ -411,9 +411,6 @@ function plnt_metrika_card () {
                     if($_POST['productId']) {
                         $productId = $_POST['productId'];
                     };
-                    echo '<pre>';
-                    print_r( $productId );
-                    echo '</pre>';
                     ?>
                 });
             });
