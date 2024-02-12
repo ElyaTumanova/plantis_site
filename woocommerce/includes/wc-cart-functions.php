@@ -121,7 +121,7 @@ function ajax_button_text_js_script() {
 
  // FOR DEV
 
- add_action( 'woocommerce_add_to_cart', 'plnt_add_to_cart_action', 10, 6 );
+//add_action( 'woocommerce_add_to_cart', 'plnt_add_to_cart_action', 10, 6 );
 
 
 function plnt_add_to_cart_action($cart_id, $product_id, $request_quantity, $variation_id, $variation, $cart_item_data) {
@@ -130,3 +130,20 @@ function plnt_add_to_cart_action($cart_id, $product_id, $request_quantity, $vari
 	echo $request_quantity; 
 
 }
+
+
+function plnt_cart_metrika() {
+	$cartCount = WC()->cart->get_cart_contents_count();
+	?>
+	<script> console.log(<?php echo $cartCount?>)</script>
+	<?php
+}
+
+function plnt_cart_metrika_fragment( $fragments ) {
+	ob_start();
+	plnt_cart_metrika();
+	$fragments = ob_get_clean();
+	return $fragments;
+}
+
+add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_cart_metrika_fragment', 25 );
