@@ -361,24 +361,24 @@ function plnt_get_product () {
             document.querySelector ('.card__price-wrap .add_to_cart_button').addEventListener('click',()=>{
                 // const productName = document.querySelector ('.card__grid .product_title').innerHTML;
                 
-                console.log(<?php echo $productName?>);
-                // window.dataLayer.push(
-                //     {
-                //         "ecommerce": {
-                //             "currencyCode": "RUB",
-                //             "add": {
-                //                 "products" : [
-                //                     {
-                //                         "name":productName,
-                //                         // "quantity":,
-                //                         // "price":
-                //                     }
-                //                 ]
-                //             }
-                //         }
-                //     }
-                // )
-                // console.log(JSON.stringify(window.dataLayer));
+                // console.log(<?php echo //$productName?>);
+                window.dataLayer.push(
+                    {
+                        "ecommerce": {
+                            "currencyCode": "RUB",
+                            "add": {
+                                "products" : [
+                                    {
+                                        "name":<?php echo $productName?>,
+                                        // "quantity":,
+                                        // "price":
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                )
+                console.log(JSON.stringify(window.dataLayer));
                 
                 return true; 
             })
