@@ -127,7 +127,7 @@ function ajax_button_text_js_script() {
 function plnt_add_to_cart_action() {
 	?> <script>
 		console.log(<?php echo $product_id; ?>)
-		console.log(<?php echo echo $request_quantity; ?>)
+		console.log(<?php echo $request_quantity; ?>)
 		</script> 
 	<?php	
 }
