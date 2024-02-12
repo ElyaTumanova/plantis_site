@@ -243,10 +243,6 @@ function plnt_product_attributes(){
     <div class="product__attributes">
     <?php
         $parentCatId = check_category();
-        echo '<pre>';
-        print_r( $parentCatId );
-        print_r( $plants_cat_id );
-        echo '</pre>';
         if( $parentCatId === $plants_cat_id )
             {
             echo  '<h2 class="heading-2">Уход и характеристики</h2>';
@@ -374,8 +370,11 @@ function plnt_get_product () {
     $productName = $product->get_title();
     $price = $product->get_price();
     $cats = $product->get_category_ids();
+    $parentCatId = check_category();
+    $catname = get_cat_name($parentCatId);
+
     echo '<pre>';
-	print_r( $cats );
+	print_r( $catname );
 	echo '</pre>';
     ?> 
     <script>
