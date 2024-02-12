@@ -402,6 +402,7 @@ function plnt_get_product () {
 
             document.querySelector ('.card__sliders-wrap .add_to_cart_button').addEventListener('click',function (e){
                 console.log(e.target);
+                console.log('hi');
                 // window.dataLayer.push(
                 //     {
                 //         "ecommerce": {
