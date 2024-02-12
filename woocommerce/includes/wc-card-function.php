@@ -245,8 +245,9 @@ function plnt_product_attributes(){
         $parentCatId = check_category();
         echo '<pre>';
         print_r( $parentCatId );
+        print_r( $plants_cat_id );
         echo '</pre>';
-        if( $parentCatId = $plants_cat_id  )
+        if( $parentCatId = $plants_cat_id )
             {
             echo  '<h2 class="heading-2">Уход и характеристики</h2>';
             } else {
