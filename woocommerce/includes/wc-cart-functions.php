@@ -121,25 +121,21 @@ function ajax_button_text_js_script() {
 
  // FOR DEV
 
-//add_action( 'woocommerce_after_shop_loop_item', 'plnt_add_to_cart_action', 10, 6 );
-
-
-function plnt_add_to_cart_action() {
-	global $woocommerce;
-   	$items = $woocommerce->cart->get_cart();
-   	$last_added_item_details = end($items)['data'];
-    ?> 
-    <script>
-        console.log(<?php echo $last_added_item_details?>)
-    </script>
-    <?php
-
+function plnt_woocommerce_mini_cart() {
+	?>		
+		<div class="mini-cart__wrap">
+			<div class="mini-cart">
+				<?php woocommerce_mini_cart();?>
+			</div>
+		</div>
+	<?php
 }
 
-add_filter( 'wc_add_to_cart_message_html', 'truemisha_tovar_v_korzine', 10, 3 );
- 
-function truemisha_tovar_v_korzine( $message, $products, $show_qty ) {
- 
-	return 'Готово! Товар в корзине.' ;
- 
+function plnt_woocommerce_mini_cart_fragment( $fragments ) {
+	ob_start();
+	plnt_woocommerce_mini_cart();
+	$fragments[ 'div.mini-cart__wrap'] = ob_get_clean();
+	return $fragments;
 }
+
+add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_mini_cart_fragment', 25 );

@@ -89,7 +89,7 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 //remove_action('woocommerce_before_single_product','woocommerce_output_all_notices', 10); /* уведомления woocommerce*/
 
 add_filter( 'woocommerce_cart_redirect_after_error', '__return_false' );  //остановка перезагрузки страницы (перадресации) при ошибке добаления товара в корзину
-add_filter( 'wc_add_to_cart_message_html', '__return_false' );
+//add_filter( 'wc_add_to_cart_message_html', '__return_false' ); //Удалить сообщение «Товар добавлен в корзину..»
 
 add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 5);
 
@@ -103,6 +103,7 @@ function plnt_price_wrap(){
             plnt_get_add_to_card();
             //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
             ?>
+            <div class='cart-notice'><?php woocommerce_output_all_notices()?></div>
         </div>
         <?php
         plnt_outofstock_info();
@@ -400,22 +401,22 @@ function plnt_metrika_card () {
                 return true; 
             });
 
-            const addToCardBtns = document.querySelectorAll('.card__sliders-wrap .add_to_cart_button');
+            // const addToCardBtns = document.querySelectorAll('.card__sliders-wrap .add_to_cart_button');
             
-            addToCardBtns.forEach(btn => {
-                btn.addEventListener('click',function (e){
-                    console.log(e.target);
-                    productId = e.target.getAttribute('data-product_id');
-                    console.log(productId);
-                    <?php 
-                    if($_POST['productId']) {
-                        $productId = $_POST['productId'];
-                    };
-                    $my_super_product = wc_get_product( $productId );
-                    ?>
-                    console.log(<?php echo $my_super_product?>)
-                });
-            });
+            // addToCardBtns.forEach(btn => {
+            //     btn.addEventListener('click',function (e){
+            //         console.log(e.target);
+            //         productId = e.target.getAttribute('data-product_id');
+            //         console.log(productId);
+            //         <?php 
+            //         if($_POST['productId']) {
+            //             $productId = $_POST['productId'];
+            //         };
+            //         $my_super_product = wc_get_product( $productId );
+            //         ?>
+            //         console.log(<?php echo $my_super_product?>)
+            //     });
+            // });
                        
 
         })
