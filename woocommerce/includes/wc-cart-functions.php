@@ -124,27 +124,50 @@ function ajax_button_text_js_script() {
 //add_action( 'woocommerce_add_to_cart', 'plnt_add_to_cart_action', 10, 6 );
 
 
-function plnt_add_to_cart_action($cart_id, $product_id, $request_quantity, $variation_id, $variation, $cart_item_data) {
+// function plnt_add_to_cart_action($cart_id, $product_id, $request_quantity, $variation_id, $variation, $cart_item_data) {
 
-	echo $product_id;
-	echo $request_quantity; 
+// 	echo $product_id;
+// 	echo $request_quantity; 
 
-}
+// }
 
-add_filter( 'woocommerce_add_cart_item', 'wp_kama_woocommerce_add_cart_item_filter', 10, 2 );
+// add_filter( 'woocommerce_add_cart_item', 'wp_kama_woocommerce_add_cart_item_filter', 10, 2 );
+
+// /**
+//  * Function for `woocommerce_add_cart_item` filter-hook.
+//  * 
+//  * @param array  $cart_item_data Array of cart item data being added to the cart.
+//  * @param string $cart_id        Id of the item in the cart.
+//  *
+//  * @return array
+//  */
+// function wp_kama_woocommerce_add_cart_item_filter( $cart_item_data, $cart_id ){
+//     ?> 
+//     <script>
+//         console.log(<?php echo $cart_item_data;?>)
+//     </script>
+//     <?php
+
+// 	return $cart_item_data;
+// }
+
+add_filter( 'woocommerce_add_cart_item_data', 'wp_kama_woocommerce_add_cart_item_data_filter', 10, 4 );
 
 /**
- * Function for `woocommerce_add_cart_item` filter-hook.
+ * Function for `woocommerce_add_cart_item_data` filter-hook.
  * 
- * @param array  $cart_item_data Array of cart item data being added to the cart.
- * @param string $cart_id        Id of the item in the cart.
+ * @param array   $cart_item_data Array of other cart item data.
+ * @param integer $product_id     ID of the product added to the cart.
+ * @param integer $variation_id   Variation ID of the product added to the cart.
+ * @param integer $quantity       Quantity of the item added to the cart.
  *
  * @return array
  */
-function wp_kama_woocommerce_add_cart_item_filter( $cart_item_data, $cart_id ){
-    ?> 
+function wp_kama_woocommerce_add_cart_item_data_filter( $cart_item_data, $product_id, $variation_id, $quantity ){
+
+	?> 
     <script>
-        console.log(<?php echo $cart_item_data;?>)
+        console.log(<?php echo $product_id;?>)
     </script>
     <?php
 
