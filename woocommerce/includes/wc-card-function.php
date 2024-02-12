@@ -408,7 +408,10 @@ function plnt_metrika_card () {
                     productId = e.target.getAttribute('data-product_id');
                     console.log(productId);
                     <?php 
-                    $productId = ?>productId<?php
+                    if($_POST['productId']) {
+                        $productId = $_POST['productId'];
+                    }
+                    ?>
                     echo '<pre>';
                     print_r( $productId );
                     echo '</pre>';
