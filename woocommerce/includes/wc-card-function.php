@@ -355,14 +355,14 @@ function plnt_get_product () {
     global $product;
     $id = $product->get_id();
     $productName = $product->get_title();
-    $price = $product->get_price()
+    $price = $product->get_price();
+    $cats = $product->get_category_ids();
     ?> 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.querySelector ('.card__price-wrap .add_to_cart_button').addEventListener('click',()=>{
-                // const productName = document.querySelector ('.card__grid .product_title').innerHTML;
+                console.log(<?php echo $cats?>)
                 const qty = document.querySelector('.add-to-cart-wrap .quantity input').value;
-                console.log (qty);
                 window.dataLayer.push(
                     {
                         "ecommerce": {
@@ -371,7 +371,7 @@ function plnt_get_product () {
                                 "products" : [
                                     {
                                         "name":'<?php echo $productName?>',
-                                        // "quantity":,
+                                        "quantity":'qty',
                                         "price":'<?php echo $price?>'
                                     }
                                 ]
