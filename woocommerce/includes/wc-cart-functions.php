@@ -125,11 +125,12 @@ add_action( 'woocommerce_after_shop_loop_item', 'plnt_add_to_cart_action', 10, 6
 
 
 function plnt_add_to_cart_action() {
-
-	global $product;
+	global $woocommerce;
+   	$items = $woocommerce->cart->get_cart();
+   	$last_added_item_details = end($items)['data'];
     ?> 
     <script>
-        console.log(<?php echo $product;?>)
+        console.log(<?php echo $last_added_item_details?>)
     </script>
     <?php
 
