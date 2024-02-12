@@ -153,3 +153,23 @@ function wp_kama_woocommerce_ajax_added_to_cart_action( $product_id ){
     <?php
 
 }
+
+add_action( 'woocommerce_cart_item_removed', 'wp_kama_woocommerce_cart_item_removed_action', 10, 2 );
+
+/**
+ * Function for `woocommerce_cart_item_removed` action-hook.
+ * 
+ * @param  $cart_item_key 
+ * @param  $that          
+ *
+ * @return void
+ */
+function wp_kama_woocommerce_cart_item_removed_action( $cart_item_key, $that ){
+
+	?> 
+    <script>
+        console.log(<?php echo $cart_item_key?>)
+    </script>
+    <?php
+
+}
