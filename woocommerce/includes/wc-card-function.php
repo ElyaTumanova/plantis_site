@@ -361,6 +361,8 @@ function plnt_get_product () {
         document.addEventListener("DOMContentLoaded", function() {
             document.querySelector ('.card__price-wrap .add_to_cart_button').addEventListener('click',()=>{
                 // const productName = document.querySelector ('.card__grid .product_title').innerHTML;
+                const qty = document.querySelector ('.cadd-to-cart-wrap .quantity input').value;
+                console.log (qty);
                 window.dataLayer.push(
                     {
                         "ecommerce": {
