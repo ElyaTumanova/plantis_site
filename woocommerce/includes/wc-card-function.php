@@ -88,8 +88,14 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 //remove_action('woocommerce_before_single_product','woocommerce_output_all_notices', 10); /* уведомления woocommerce*/
 
-add_filter( 'woocommerce_cart_redirect_after_error', '__return_false' );  //остановка перезагрузки страницы (перадресации) при ошибке добаления товара в корзину
+//add_filter( 'woocommerce_cart_redirect_after_error', '__return_false' );  //остановка перезагрузки страницы (перадресации) при ошибке добаления товара в корзину
 //add_filter( 'wc_add_to_cart_message_html', '__return_false' ); //Удалить сообщение «Товар добавлен в корзину..»
+add_filter( 'wc_add_to_cart_message_html', 'bbloomer_custom_add_to_cart_message' );
+ 
+function bbloomer_custom_add_to_cart_message() {
+$message = 'Nicely done!' ;
+return $message;
+}
 
 add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 5);
 
