@@ -130,3 +130,19 @@ function plnt_add_to_cart_action($cart_id, $product_id, $request_quantity, $vari
 	echo $request_quantity; 
 
 }
+
+add_filter( 'woocommerce_add_cart_item', 'wp_kama_woocommerce_add_cart_item_filter', 10, 2 );
+
+/**
+ * Function for `woocommerce_add_cart_item` filter-hook.
+ * 
+ * @param array  $cart_item_data Array of cart item data being added to the cart.
+ * @param string $cart_id        Id of the item in the cart.
+ *
+ * @return array
+ */
+function wp_kama_woocommerce_add_cart_item_filter( $cart_item_data, $cart_id ){
+
+	echo $cart_item_data;
+	return $cart_item_data;
+}
