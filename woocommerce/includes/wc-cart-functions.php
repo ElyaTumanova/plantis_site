@@ -136,3 +136,10 @@ function plnt_add_to_cart_action() {
 
 }
 
+add_filter( 'wc_add_to_cart_message_html', 'truemisha_tovar_v_korzine', 10, 3 );
+ 
+function truemisha_tovar_v_korzine( $message, $products, $show_qty ) {
+ 
+	return 'Готово! Товар в корзине.' ;
+ 
+}
