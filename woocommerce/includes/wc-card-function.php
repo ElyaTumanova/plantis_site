@@ -127,18 +127,17 @@ function plnt_cart_notice () {
  <?php
 }
 
-function plnt_hi () {
-    ?>
-       <script>console.log('hi')</script>
-    <?php
-   }
+add_action('woocommerce_add_to_cart', array(&$this, 'track_cart_add'), 10, 6);
 
-add_action('woocommerce_add_to_cart', 'plnt_hi', 10, 6);
+function track_cart_add($cart_item_key, $product_id = 0, $quantity = 1, $variation_id = null, $variation = null, $cart_item_data = null) {
+    ?>
+    <script>console.log('hi')</script>
+    <?php
+}
  
 function plnt_cart_notice_fragment( $fragments ) {
 	ob_start();
 	plnt_cart_notice();
-    plnt_hi();
 	$fragments[ 'div.cart-notice'] = ob_get_clean();
 	return $fragments;
 }
