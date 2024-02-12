@@ -349,7 +349,7 @@ function plnt_get_preorder_popup () {
 }
 
 // FOR DEV
-add_action('woocommerce_after_main_content','plnt_get_product',30);
+//add_action('woocommerce_after_main_content','plnt_get_product',30);
 
 function plnt_get_product () {
     global $product;

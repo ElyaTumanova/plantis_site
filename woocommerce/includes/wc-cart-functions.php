@@ -142,7 +142,11 @@ add_filter( 'woocommerce_add_cart_item', 'wp_kama_woocommerce_add_cart_item_filt
  * @return array
  */
 function wp_kama_woocommerce_add_cart_item_filter( $cart_item_data, $cart_id ){
+    ?> 
+    <script>
+        console.log(<?php echo $cart_item_data;?>)
+    </script>
+    <?php
 
-	echo $cart_item_data;
 	return $cart_item_data;
 }
