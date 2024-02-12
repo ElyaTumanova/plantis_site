@@ -367,7 +367,7 @@ function plnt_get_preorder_popup () {
 
 add_action('woocommerce_after_main_content','plnt_metrika_card', 30);
 
-function plnt_get_product () {
+function plnt_metrika_card () {
     global $product;
     $productName = $product->get_title();
     $price = $product->get_price();
@@ -402,7 +402,6 @@ function plnt_get_product () {
 
             document.querySelector ('.card__sliders-wrap .add_to_cart_button').addEventListener('click',function (e){
                 console.log(e.target);
-                console.log('hi');
                 // window.dataLayer.push(
                 //     {
                 //         "ecommerce": {
@@ -429,4 +428,3 @@ function plnt_get_product () {
     </script>
     <?php
 }
-
