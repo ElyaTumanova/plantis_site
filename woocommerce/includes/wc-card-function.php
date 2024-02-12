@@ -367,7 +367,7 @@ function plnt_get_product () {
                             "add": {
                                 "products" : [
                                     {
-                                        "name":<?php echo $productName?>,
+                                        "name":'<?php echo $productName?>',
                                         // "quantity":,
                                         // "price":
                                     }
