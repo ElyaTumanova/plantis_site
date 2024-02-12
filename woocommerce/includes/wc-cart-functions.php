@@ -121,10 +121,10 @@ function ajax_button_text_js_script() {
 
  // FOR DEV
 
- //add_action( 'woocommerce_add_to_cart', 'plnt_add_to_cart_action', 10, 6 );
+ add_action( 'woocommerce_add_to_cart', 'plnt_add_to_cart_action', 10, 6 );
 
 
-function plnt_add_to_cart_action() {
+function plnt_add_to_cart_action($cart_id, $product_id, $request_quantity, $variation_id, $variation, $cart_item_data) {
 	?> <script>
 		console.log(<?php echo $product_id; ?>)
 		console.log(<?php echo $request_quantity; ?>)
