@@ -121,7 +121,7 @@ function ajax_button_text_js_script() {
 
  // FOR DEV
 
- add_action( 'woocommerce_add_to_cart', 'plnt_add_to_cart_action', 10, 6 );
+ //add_action( 'woocommerce_add_to_cart', 'plnt_add_to_cart_action', 10, 6 );
 
 
 function plnt_add_to_cart_action() {
