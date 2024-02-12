@@ -361,12 +361,14 @@ function plnt_get_preorder_popup () {
     }
 }
 
-// FOR DEV
-add_action('woocommerce_after_main_content','plnt_get_product',30);
+/*--------------------------------------------------------------
+# METRIKA E-COMMERCE 
+--------------------------------------------------------------*/
+
+add_action('woocommerce_after_main_content','plnt_metrika_card', 30);
 
 function plnt_get_product () {
     global $product;
-    //$id = $product->get_id();
     $productName = $product->get_title();
     $price = $product->get_price();
     $parentCatId = check_category();
@@ -375,7 +377,6 @@ function plnt_get_product () {
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.querySelector ('.card__price-wrap .add_to_cart_button').addEventListener('click',()=>{
-                console.log(<?php echo $cats?>)
                 const qty = document.querySelector('.add-to-cart-wrap .quantity input').value;
                 window.dataLayer.push(
                     {
@@ -397,7 +398,32 @@ function plnt_get_product () {
                 console.log(JSON.stringify(window.dataLayer));
                 
                 return true; 
-            })
+            });
+
+            document.querySelector ('.card__sliders-wrap .add_to_cart_button').addEventListener('click',(e)=>{
+                console.log(e.target);
+                // window.dataLayer.push(
+                //     {
+                //         "ecommerce": {
+                //             "currencyCode": "RUB",
+                //             "add": {
+                //                 "products" : [
+                //                     {
+                //                         "name":'<?php echo $productName?>',
+                //                         "quantity": qty,
+                //                         "price":'<?php echo $price?>',
+                //                         "category":'<?php echo $catName?>'
+                //                     }
+                //                 ]
+                //             }
+                //         }
+                //     }
+                // )
+                // console.log(JSON.stringify(window.dataLayer));
+                
+                return true; 
+            });
+
         })
     </script>
     <?php
