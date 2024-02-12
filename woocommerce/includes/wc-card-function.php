@@ -371,10 +371,10 @@ function plnt_get_product () {
     $price = $product->get_price();
     $cats = $product->get_category_ids();
     $parentCatId = check_category();
-    $catname = get_cat_name($parentCatId);
+    $catname = get_the_category_by_ID($parentCatId);
 
     echo '<pre>';
-	print_r( $parentCatId );
+	print_r( $catname );
 	echo '</pre>';
     ?> 
     <script>
