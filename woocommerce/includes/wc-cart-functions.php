@@ -121,7 +121,7 @@ function ajax_button_text_js_script() {
 
  // FOR DEV
 
-add_action( 'woocommerce_after_shop_loop_item', 'plnt_add_to_cart_action', 10, 6 );
+//add_action( 'woocommerce_after_shop_loop_item', 'plnt_add_to_cart_action', 10, 6 );
 
 
 function plnt_add_to_cart_action() {
@@ -134,4 +134,22 @@ function plnt_add_to_cart_action() {
     </script>
     <?php
 
+}
+
+add_action( 'woocommerce_ajax_added_to_cart', 'wp_kama_woocommerce_ajax_added_to_cart_action' );
+
+/**
+ * Function for `woocommerce_ajax_added_to_cart` action-hook.
+ * 
+ * @param  $product_id 
+ *
+ * @return void
+ */
+function wp_kama_woocommerce_ajax_added_to_cart_action( $product_id ){
+
+	?> 
+    <script>
+        console.log(<?php echo $product_id ?>)
+    </script>
+    <?php
 }
