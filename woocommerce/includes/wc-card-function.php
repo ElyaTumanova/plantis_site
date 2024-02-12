@@ -407,6 +407,12 @@ function plnt_metrika_card () {
                     console.log(e.target);
                     productId = e.target.getAttribute('data-product_id');
                     console.log(productId);
+                    <?php 
+                    $productId = ?>productId<?php
+                    echo '<pre>';
+                    print_r( $productId );
+                    echo '</pre>';
+                    ?>
                 });
             });
                        
