@@ -356,8 +356,7 @@ function plnt_get_product () {
     $id = $product->get_id();
     $productName = $product->get_title();
     $price = $product->get_price();
-    //$cats = $product->get_category_ids();
-    $cats = $product->get_category();
+    $cats = $product->get_category_ids();
     echo '<pre>';
 	print_r( $cats );
 	echo '</pre>';
