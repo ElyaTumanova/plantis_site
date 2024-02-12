@@ -147,4 +147,28 @@ add_action( 'woocommerce_ajax_added_to_cart', 'wp_kama_woocommerce_ajax_added_to
  */
 function wp_kama_woocommerce_ajax_added_to_cart_action( $product_id ){
 	var_dump($product_id);
+	$productName = $product_id;
+	?> 
+    <script>
+        window.dataLayer.push(
+		{
+			"ecommerce": {
+				"currencyCode": "RUB",
+				"add": {
+					"products" : [
+						{
+							"name":productName,
+							// "quantity":,
+							// "price":
+						}
+					]
+				}
+			}
+		}
+	)
+	console.log(JSON.stringify(window.dataLayer));
+    </script>
+    <?php
+
+	
 }
