@@ -357,6 +357,9 @@ function plnt_get_product () {
     $productName = $product->get_title();
     $price = $product->get_price();
     $cats = $product->get_category_ids();
+    echo '<pre>';
+	print_r( $cats );
+	echo '</pre>';
     ?> 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
