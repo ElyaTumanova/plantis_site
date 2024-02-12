@@ -327,8 +327,8 @@ function plnt_category_link () {
 				$text = 'Каталог кашпо Treez';
 				break;
 			default:
-				$link = get_permalink( wc_get_page_id( 'shop' ) );
-				$text = 'Каталог товаров';
+				// $link = get_permalink( wc_get_page_id( 'shop' ) );
+				// $text = 'Каталог товаров';
                 break;
 			}
 	}	
@@ -356,7 +356,8 @@ function plnt_get_product () {
     $id = $product->get_id();
     $productName = $product->get_title();
     $price = $product->get_price();
-    $cats = $product->get_category_ids();
+    //$cats = $product->get_category_ids();
+    $cats = $product->get_category();
     echo '<pre>';
 	print_r( $cats );
 	echo '</pre>';
