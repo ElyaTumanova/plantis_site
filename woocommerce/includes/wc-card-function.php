@@ -108,7 +108,7 @@ function plnt_price_wrap(){
             woocommerce_template_single_price();
             plnt_get_add_to_card();
             //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
-            plnt_cart_notice();
+            //plnt_cart_notice();
             ?>
         </div>
         <?php
@@ -126,10 +126,19 @@ function plnt_cart_notice () {
     <div class='cart-notice'><?php woocommerce_output_all_notices()?></div>
  <?php
 }
+
+function plnt_hi () {
+    ?>
+       <script>console.log('hi')</script>
+    <?php
+   }
+
+add_action('woocommerce_add_to_cart', 'plnt_hi', 10, 6);
  
 function plnt_cart_notice_fragment( $fragments ) {
 	ob_start();
 	plnt_cart_notice();
+    plnt_hi();
 	$fragments[ 'div.cart-notice'] = ob_get_clean();
 	return $fragments;
 }
