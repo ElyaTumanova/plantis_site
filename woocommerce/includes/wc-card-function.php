@@ -353,14 +353,15 @@ add_action('woocommerce_after_main_content','plnt_get_product',30);
 
 function plnt_get_product () {
     global $product;
+    $id = $product->get_id();
     $productName = $product->get_title();
     ?> 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.querySelector ('.card__price-wrap .add_to_cart_button').addEventListener('click',()=>{
                 // const productName = document.querySelector ('.card__grid .product_title').innerHTML;
-                // const productName = <?php echo $productName?>;
-                console.log(<?php echo $productName?>);
+                // const productName = <?php //cho $productName?>;
+                console.log(<?php echo $id?>);
                 // window.dataLayer.push(
                 //     {
                 //         "ecommerce": {
