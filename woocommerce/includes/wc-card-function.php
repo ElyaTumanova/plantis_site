@@ -353,9 +353,35 @@ function plnt_get_preorder_popup () {
 
 function plnt_get_product () {
     global $product;
+    $productName = $product->get_title();
     ?> 
     <script>
-        console.log(<?php echo $product;?>)
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector ('.card__price-wrap .add_to_cart_button').addEventListener('click',()=>{
+                // const productName = document.querySelector ('.card__grid .product_title').innerHTML;
+                const productName = <?php echo $productName?>;
+                console.log(productName);
+                // window.dataLayer.push(
+                //     {
+                //         "ecommerce": {
+                //             "currencyCode": "RUB",
+                //             "add": {
+                //                 "products" : [
+                //                     {
+                //                         "name":productName,
+                //                         // "quantity":,
+                //                         // "price":
+                //                     }
+                //                 ]
+                //             }
+                //         }
+                //     }
+                // )
+                // console.log(JSON.stringify(window.dataLayer));
+                
+                return true; 
+            })
+        })
     </script>
     <?php
 }
