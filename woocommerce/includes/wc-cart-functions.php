@@ -29,7 +29,7 @@ function plnt_woocommerce_cart_header_fragment( $fragments ) {
 	return $fragments;
 }
 
-//add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_fragment', 25 );
+add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_fragment', 25 );
 
 function plnt_woocommerce_mini_cart() {
 	?>		
@@ -48,7 +48,7 @@ function plnt_woocommerce_mini_cart_fragment( $fragments ) {
 	return $fragments;
 }
 
-//add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_mini_cart_fragment', 25 );
+add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_mini_cart_fragment', 25 );
 
 // изменяем подытог мини корзины
 
@@ -136,7 +136,7 @@ function plnt_add_to_cart_action() {
 
 }
 
-add_action( 'woocommerce_ajax_added_to_cart', 'wp_kama_woocommerce_ajax_added_to_cart_action' );
+//add_action( 'woocommerce_ajax_added_to_cart', 'wp_kama_woocommerce_ajax_added_to_cart_action' );
 
 /**
  * Function for `woocommerce_ajax_added_to_cart` action-hook.
