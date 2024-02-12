@@ -374,7 +374,7 @@ function plnt_get_product () {
     $catname = get_cat_name($parentCatId);
 
     echo '<pre>';
-	print_r( $catname );
+	print_r( $parentCatId );
 	echo '</pre>';
     ?> 
     <script>
