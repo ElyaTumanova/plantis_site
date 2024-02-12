@@ -400,10 +400,11 @@ function plnt_metrika_card () {
                 return true; 
             });
 
-            document.querySelector ('.card__sliders-wrap .add_to_cart_button').addEventListener('click',function (e){
-                // console.log(e.target);
-                console.log("hi");
-            });
+            console.log(document.querySelector ('.card__sliders-wrap .add_to_cart_button'));
+            // document.querySelector ('.card__sliders-wrap .add_to_cart_button').addEventListener('click',function (e){
+            //     // console.log(e.target);
+            //     console.log("hi");
+            // });
 
         })
     </script>
