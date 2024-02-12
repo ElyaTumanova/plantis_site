@@ -402,26 +402,6 @@ function plnt_metrika_card () {
 
             document.querySelector ('.card__sliders-wrap .add_to_cart_button').addEventListener('click',function (e){
                 console.log(e.target);
-                // window.dataLayer.push(
-                //     {
-                //         "ecommerce": {
-                //             "currencyCode": "RUB",
-                //             "add": {
-                //                 "products" : [
-                //                     {
-                //                         "name":'<?php //echo $productName?>',
-                //                         "quantity": qty,
-                //                         "price":'<?php //echo $price?>',
-                //                         "category":'<?php// echo $catName?>'
-                //                     }
-                //                 ]
-                //             }
-                //         }
-                //     }
-                // )
-                // console.log(JSON.stringify(window.dataLayer));
-                
-                // return true; 
             });
 
         })
