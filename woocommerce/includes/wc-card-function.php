@@ -401,7 +401,8 @@ function plnt_metrika_card () {
             });
 
             document.querySelector ('.card__sliders-wrap .add_to_cart_button').addEventListener('click',function (e){
-                console.log(e.target);
+                // console.log(e.target);
+                console.log("hi");
             });
 
         })
