@@ -366,16 +366,11 @@ add_action('woocommerce_after_main_content','plnt_get_product',30);
 
 function plnt_get_product () {
     global $product;
-    $id = $product->get_id();
+    //$id = $product->get_id();
     $productName = $product->get_title();
     $price = $product->get_price();
-    $cats = $product->get_category_ids();
     $parentCatId = check_category();
-    $catname = get_the_category_by_ID($parentCatId);
-
-    echo '<pre>';
-	print_r( $catname );
-	echo '</pre>';
+    $catName = get_the_category_by_ID($parentCatId);
     ?> 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -391,7 +386,8 @@ function plnt_get_product () {
                                     {
                                         "name":'<?php echo $productName?>',
                                         "quantity":'qty',
-                                        "price":'<?php echo $price?>'
+                                        "price":'<?php echo $price?>',
+                                        "category":'<?php echo $catName?>'
                                     }
                                 ]
                             }
