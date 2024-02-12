@@ -248,10 +248,14 @@ function check_category () {
 };
 
 function plnt_product_attributes(){
+    global $product;
     ?>
     <div class="product__attributes">
     <?php
-        $parentCatId = check_category ();
+        $parentCatId = check_category();
+        echo '<pre>';
+        print_r( $parentCatId );
+        echo '</pre>';
         if( $parentCatId = $plants_cat_id  )
             {
             echo  '<h2 class="heading-2">Уход и характеристики</h2>';
