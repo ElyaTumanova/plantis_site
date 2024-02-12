@@ -146,10 +146,5 @@ add_action( 'woocommerce_ajax_added_to_cart', 'wp_kama_woocommerce_ajax_added_to
  * @return void
  */
 function wp_kama_woocommerce_ajax_added_to_cart_action( $product_id ){
-
-	?> 
-    <script>
-        console.log(<?php echo $product_id ?>)
-    </script>
-    <?php
+	var_dump($product_id);
 }
