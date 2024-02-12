@@ -154,22 +154,22 @@ function wp_kama_woocommerce_ajax_added_to_cart_action( $product_id ){
 
 }
 
-add_action( 'woocommerce_cart_item_removed', 'wp_kama_woocommerce_cart_item_removed_action', 10, 2 );
+add_action( 'woocommerce_after_cart_item_quantity_update', 'wp_kama_woocommerce_after_cart_item_quantity_update_action', 10, 4 );
 
 /**
- * Function for `woocommerce_cart_item_removed` action-hook.
+ * Function for `woocommerce_after_cart_item_quantity_update` action-hook.
  * 
  * @param  $cart_item_key 
+ * @param  $quantity      
+ * @param  $old_quantity  
  * @param  $that          
  *
  * @return void
  */
-function wp_kama_woocommerce_cart_item_removed_action( $cart_item_key, $that ){
-
+function wp_kama_woocommerce_after_cart_item_quantity_update_action( $cart_item_key, $quantity, $old_quantity, $that ){
 	?> 
     <script>
-        console.log(<?php echo $cart_item_key?>)
+        console.log('hi')
     </script>
     <?php
-
 }
