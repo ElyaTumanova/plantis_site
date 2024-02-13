@@ -391,8 +391,8 @@ function plnt_get_preorder_popup () {
 //add_action('woocommerce_after_main_content','plnt_metrika_card', 30);
 
 
-$productIdMetrika;
-add_action('woocommerce_add_to_cart', 'track_cart_add', 10, 6);
+// $productIdMetrika;
+//add_action('woocommerce_add_to_cart', 'track_cart_add', 10, 6);
 
 function track_cart_add($cart_item_key, $product_id, $quantity, $variation_id, $variation, $cart_item_data) {
     // $productIdMetrika = $product_id;
