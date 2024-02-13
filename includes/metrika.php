@@ -64,11 +64,6 @@ function filter_woocommerce_loop_add_to_cart_args( $args, $product ) {
 add_action('wp_footer', 'plnt_metrika_cart_remove', 30);
 
 function plnt_metrika_cart_remove () {
-    // global $product;
-    // $productName = $product->get_title();
-    // $price = $product->get_price();
-    // $parentCatId = check_category($product);
-    // $catName = get_the_category_by_ID($parentCatId);
 
     if ( ! WC()->cart->is_empty() ) {
             ?> 
@@ -81,28 +76,33 @@ function plnt_metrika_cart_remove () {
                         remove.addEventListener('click', function (){
                             console.log(remove);
                             console.log(remove.getAttribute('data-product_id'));
+                            productName = remove.getAttribute('data-product_name');
+                            price = remove.getAttribute('data-product_price');
+                            catName = remove.getAttribute('data-product_category');
+                            quantity = remove.getAttribute('data-product_quantity');
                         })
                     });
 
-                    // window.dataLayer.push(
-                    //     {
-                    //         "ecommerce": {
-                    //             "currencyCode": "RUB",
-                    //             "detail": {
-                    //                 "products" : [
-                    //                     {
-                    //                         "name":'<?php echo $productName?>',
-                    //                         "price":'<?php echo $price?>',
-                    //                         "category":'<?php echo $catName?>'
-                    //                     }
-                    //                 ]
-                    //             }
-                    //         }
-                    //     }
-                    // )
-                    // console.log(JSON.stringify(window.dataLayer));
+                    window.dataLayer.push(
+                        {
+                            "ecommerce": {
+                                "currencyCode": "RUB",
+                                "detail": {
+                                    "products" : [
+                                        {
+                                            "name": productName,
+                                            "price": price,
+                                            "category": catName,
+                                            "quantity": quantity
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    )
+                    console.log(JSON.stringify(window.dataLayer));
                     
-                    // return true; 
+                    return true; 
                 })
             </script>
             <?php
