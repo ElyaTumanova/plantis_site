@@ -405,23 +405,23 @@ function track_cart_add($cart_item_key, $product_id, $quantity, $variation_id, $
     <?php
 };
 
-add_action('wp_footer','custom_jquery_add_to_cart_script');
-function custom_jquery_add_to_cart_script(){
-    // if ( is_shop() || is_product_category() || is_product_tag() ): // Only for archives pages
-        ?>
-            <script type="text/javascript">
-                // Ready state
-                (function($){ 
+// add_action('wp_footer','custom_jquery_add_to_cart_script');
+// function custom_jquery_add_to_cart_script(){
+//     // if ( is_shop() || is_product_category() || is_product_tag() ): // Only for archives pages
+//         ?>
+//             <script type="text/javascript">
+//                 // Ready state
+//                 (function($){ 
  
-                    $( document.body ).trigger( 'added_to_cart', function(){
-                        console.log('EVENT: added_to_cart');
-                    });
+//                     $( document.body ).trigger( 'added_to_cart', function(){
+//                         console.log('EVENT: added_to_cart');
+//                     });
  
-                })(jQuery); // "jQuery" Working with WP (added the $ alias as argument)
-            </script>
-        <?php
-    // endif;
-}
+//                 })(jQuery); // "jQuery" Working with WP (added the $ alias as argument)
+//             </script>
+//         <?php
+//     // endif;
+// }
 
 function plnt_metrika_card () {
     global $product;

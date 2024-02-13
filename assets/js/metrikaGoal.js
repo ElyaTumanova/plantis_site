@@ -34,4 +34,9 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 })
 
+jQuery('body').on('add_to_cart', function(){
+    console.log('add_to_cart triggered');
+    // now.do.whatever();
+});
+
 
