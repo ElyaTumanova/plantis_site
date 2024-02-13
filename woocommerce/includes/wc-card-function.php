@@ -127,15 +127,6 @@ function plnt_cart_notice () {
  <?php
 }
 
-add_action('woocommerce_add_to_cart', 'track_cart_add', 10, 6);
-
-function track_cart_add($cart_item_key, $product_id, $quantity, $variation_id, $variation, $cart_item_data) {
-    echo $product_id;
-    ?>
-    <script>console.log('hello')</script>
-    <?php
-}
- 
 function plnt_cart_notice_fragment( $fragments ) {
 	ob_start();
 	plnt_cart_notice();
@@ -398,6 +389,21 @@ function plnt_get_preorder_popup () {
 --------------------------------------------------------------*/
 
 add_action('woocommerce_after_main_content','plnt_metrika_card', 30);
+
+
+$productIdMetrika
+add_action('woocommerce_add_to_cart', 'track_cart_add', 10, 6);
+
+function track_cart_add($cart_item_key, $product_id, $quantity, $variation_id, $variation, $cart_item_data) {
+    $productIdMetrika = $product_id;
+    echo $productIdMetrika;
+    ?>
+    <script type="text/javascript">
+   		alert("thank you");
+   		// ваш_код
+    </script>
+    <?php
+}
 
 function plnt_metrika_card () {
     global $product;
