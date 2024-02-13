@@ -60,10 +60,11 @@ do_action( 'woocommerce_before_cart' ); ?>
 						<td class="product-remove">
 							<?php
 								$parentCatId = check_category($_product);
+								$quantity = plnt_get_product_quantity_in_cart($product_id);
 								echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 									'woocommerce_cart_item_remove_link',
 									sprintf(
-										'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s" data-product_name="%s" data-product_category="%s">&times;</a>',
+										'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s" data-product_name="%s" data-product_category="%s" data-product_quantity="%s">&times;</a>',
 										esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
 										/* translators: %s is the product name */
 										esc_attr( sprintf( __( 'Remove %s from cart', 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),
@@ -71,8 +72,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 										esc_attr( $_product->get_sku() ),
 										esc_attr( $_product->get_title() ),
 										esc_attr( get_the_category_by_ID($parentCatId) ),
-
-
+										esc_attr( $quantity)
 									),
 									$cart_item_key
 								);

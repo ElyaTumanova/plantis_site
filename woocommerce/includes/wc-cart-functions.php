@@ -119,5 +119,26 @@ function ajax_button_text_js_script() {
 	}
  }
 
+ // HELPERS	
+
+ //Функция, возвращающая количество определённого товара в корзине
+ function plnt_get_product_quantity_in_cart( $product_id ) {
+ 
+	// по умолчанию количество товара равно 0
+	$quantity = 0;
+	// проходим циклом через все товары в корзине
+	foreach ( WC()->cart->get_cart() as $cart_item ) {
+		// можно еще проверяет ID вариаций $cart_item[ 'variation_id' ]
+		// если данный товар в цикле – наш товар, то записываем его количество в переменную
+		if( $product_id == $cart_item[ 'product_id' ] ){
+			$quantity = $cart_item[ 'quantity' ];
+			break; // и прерываем цикл
+		}
+	}
+ 
+	return $quantity;
+ 
+}
+
  // FOR DEV
 

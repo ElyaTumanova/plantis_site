@@ -235,29 +235,6 @@ function plnt_product_artikul() {
 	}
 };
 
-function check_category ($product) {
-    global $plants_cat_id;
-    global $gorshki_cat_id;
-    global $treez_cat_id;
-	$idCats = $product->get_category_ids();
-    foreach ($idCats as $cat){
-        switch ($cat) {
-            case $plants_cat_id:				//category ID for plants
-                return $parentCatId = $plants_cat_id;
-                break;
-            case $gorshki_cat_id:				//category ID for gorshki
-                return $parentCatId = $gorshki_cat_id;
-                break;
-            case $treez_cat_id:				//category ID for treez
-                return $parentCatId = $treez_cat_id;
-                break;
-            default:
-                // return 'Вас также заитересует';
-                break;
-        }
-    }
-};
-
 function plnt_product_attributes(){
     global $product;
     global $plants_cat_id;
@@ -383,4 +360,28 @@ function plnt_get_preorder_popup () {
         wc_get_template_part('template-parts/popups/preorder-popup');
     }
 }
+
+// HELPERS
+// функция, определяет есть ли среди категорий товара "родительсике"
+function check_category ($product) {
+    global $plants_cat_id;
+    global $gorshki_cat_id;
+    global $treez_cat_id;
+	$idCats = $product->get_category_ids();
+    foreach ($idCats as $cat){
+        switch ($cat) {
+            case $plants_cat_id:				//category ID for plants
+                return $parentCatId = $plants_cat_id;
+                break;
+            case $gorshki_cat_id:				//category ID for gorshki
+                return $parentCatId = $gorshki_cat_id;
+                break;
+            case $treez_cat_id:				//category ID for treez
+                return $parentCatId = $treez_cat_id;
+                break;
+            default:
+                break;
+        }
+    }
+};
 
