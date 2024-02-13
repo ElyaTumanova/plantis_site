@@ -49,6 +49,11 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
+
+		wp_deregister_script('wc-add-to-cart');
+		wp_register_script('plnt_wc-add-to-cart', get_template_directory_uri() .
+										'/assets/js/add-to-cart.min.js', array( 'jquery' ), null, true );
+		wp_enqueue_script('plnt_wc-add-to-cart');
 	}
 }
 /**
@@ -97,3 +102,4 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		wp_enqueue_style( 'fonts', 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap', array(), null, 'all' );
 	}
 }
+
