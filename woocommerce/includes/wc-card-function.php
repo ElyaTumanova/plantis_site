@@ -396,7 +396,12 @@ add_action('wp_ajax_woocommerce_add_to_cart', 'track_cart_add', 10, 6);
 
 function track_cart_add($cart_item_key, $product_id, $quantity, $variation_id, $variation, $cart_item_data) {
     // $productIdMetrika = $product_id;
-    echo $product_id;
+    // echo $product_id;
+    ?>
+    <script type="text/javascript">
+     console.log('EVENT: added_to_cart');
+    </script>
+<?php
   
 };
 
