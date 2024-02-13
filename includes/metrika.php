@@ -80,29 +80,31 @@ function plnt_metrika_cart_remove () {
                             const price = remove.getAttribute('data-product_price');
                             const catName = remove.getAttribute('data-product_category');
                             const quantity = remove.getAttribute('data-product_quantity');
+
+                            window.dataLayer.push(
+                                {
+                                    "ecommerce": {
+                                        "currencyCode": "RUB",
+                                        "detail": {
+                                            "products" : [
+                                                {
+                                                    "name": productName,
+                                                    "price": price,
+                                                    "category": catName,
+                                                    "quantity": quantity
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            )
+                            console.log(JSON.stringify(window.dataLayer));
+                            
+                            return true; 
                         })
                     });
 
-                    window.dataLayer.push(
-                        {
-                            "ecommerce": {
-                                "currencyCode": "RUB",
-                                "detail": {
-                                    "products" : [
-                                        {
-                                            "name": 'productName',
-                                            "price": price,
-                                            "category": catName,
-                                            "quantity": quantity
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    )
-                    console.log(JSON.stringify(window.dataLayer));
                     
-                    return true; 
                 })
             </script>
             <?php
