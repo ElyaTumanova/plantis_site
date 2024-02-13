@@ -413,7 +413,7 @@ function custom_jquery_add_to_cart_script(){
                 // Ready state
                 (function($){ 
  
-                    $( document.body ).on( 'added_to_cart', function(){
+                    $( document.body ).trigger( 'added_to_cart', function(){
                         console.log('EVENT: added_to_cart');
                     });
  
