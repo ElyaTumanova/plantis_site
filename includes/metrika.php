@@ -61,7 +61,7 @@ function filter_woocommerce_loop_add_to_cart_args( $args, $product ) {
 }
 
 
-add_action('wp_footer', 'plnt_metrika_cart_remove', 30);
+//add_action('wp_footer', 'plnt_metrika_cart_remove', 30);
 
 function plnt_metrika_cart_remove () {
 
@@ -69,10 +69,7 @@ function plnt_metrika_cart_remove () {
             ?> 
             <script>
                 console.log('hi cart');
-                document.addEventListener("DOMContentLoaded", plnt_remove_listeners);
-                console.log(document.querySelector('[name="update_cart"]'));
-                document.querySelector('[name="update_cart"]').addEventListener("click", plnt_remove_listeners);
-                
+                document.addEventListener("DOMContentLoaded", plnt_remove_listeners);                
                 
                 function plnt_remove_listeners() {
                     removes = document.querySelectorAll('.remove');
