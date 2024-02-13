@@ -90,7 +90,7 @@ function plnt_metrika_cart_remove () {
                                 "detail": {
                                     "products" : [
                                         {
-                                            "name": productName,
+                                            "name": 'productName',
                                             "price": price,
                                             "category": catName,
                                             "quantity": quantity
