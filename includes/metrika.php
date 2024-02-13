@@ -78,8 +78,9 @@ function plnt_metrika_cart_remove () {
                     removes = document.querySelectorAll('a .remove');
                     console.log(removes);
                     removes.forEach(remove => {
-                        remove.addEventListener('click', function (e){
-                            console.log(e.target.getAttribute('data-product_id'));
+                        remove.addEventListener('click', function (){
+                            console.log(remove);
+                            console.log(remove.getAttribute('data-product_id'));
                         })
                     });
 
