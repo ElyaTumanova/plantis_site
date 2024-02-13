@@ -428,57 +428,40 @@ function plnt_metrika_card () {
     $price = $product->get_price();
     $parentCatId = check_category();
     $catName = get_the_category_by_ID($parentCatId);
-    ?> 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelector ('.card__price-wrap .add_to_cart_button').addEventListener('click',()=>{
-                const qty = document.querySelector('.add-to-cart-wrap .quantity input').value;
-                window.dataLayer.push(
-                    {
-                        "ecommerce": {
-                            "currencyCode": "RUB",
-                            "add": {
-                                "products" : [
-                                    {
-                                        "name":'<?php echo $productName?>',
-                                        "quantity": qty,
-                                        "price":'<?php echo $price?>',
-                                        "category":'<?php echo $catName?>'
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                )
-                console.log(JSON.stringify(window.dataLayer));
-                
-                return true; 
-            });
 
-            // const addToCardBtns = document.querySelectorAll('.card__sliders-wrap .add_to_cart_button');
-            
-            // addToCardBtns.forEach(btn => {
-            //     btn.addEventListener('click',function (e){
-            //         console.log(e.target);
-            //         productId = e.target.getAttribute('data-product_id');
-            //         console.log(productId);
-            //         <?php 
-            //         if($_POST['productId']) {
-            //             $productId = $_POST['productId'];
-            //         };
-            //         $my_super_product = wc_get_product( $productId );
-            //         ?>
-            //         console.log(<?php echo $my_super_product?>)
-            //     });
-            // });
-                       
+        if (is_product()) {
 
-        })
-    </script>
-    <?php
-}
+            ?> 
+            <script>
+                console.log('hi product');
+                // document.addEventListener("DOMContentLoaded", function() {
+                //     window.dataLayer.push(
+                //             {
+                //                 "ecommerce": {
+                //                     "currencyCode": "RUB",
+                //                     "add": {
+                //                         "products" : [
+                //                             {
+                //                                 "name":'<?php echo $productName?>',
+                //                                 "quantity": qty,
+                //                                 "price":'<?php echo $price?>',
+                //                                 "category":'<?php echo $catName?>'
+                //                             }
+                //                         ]
+                //                     }
+                //                 }
+                //             }
+                //         )
+                //         console.log(JSON.stringify(window.dataLayer));
+                        
+                //         return true; 
+                // })
+            </script>
+            <?php
+        }
+    }
 
-
+// добавляем доп атрибуты для кнопки Добавить в корзину для использования в Ynadex Metrika e-commerce
 add_filter( 'woocommerce_loop_add_to_cart_args', 'filter_woocommerce_loop_add_to_cart_args', 10, 2 );
 function filter_woocommerce_loop_add_to_cart_args( $args, $product ) {
     $productName = $product->get_title();
