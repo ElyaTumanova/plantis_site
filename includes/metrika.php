@@ -61,7 +61,7 @@ function filter_woocommerce_loop_add_to_cart_args( $args, $product ) {
 }
 
 
-add_action('woocommerce_before_cart', 'plnt_metrika_cart_remove', 30);
+add_action('wp_footer', 'plnt_metrika_cart_remove', 30);
 
 function plnt_metrika_cart_remove () {
     // global $product;
