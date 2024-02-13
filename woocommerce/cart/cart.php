@@ -59,7 +59,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 						<td class="product-remove">
 							<?php
-								$parentCatId = check_category($product);
+								$parentCatId = check_category($_product);
 								echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 									'woocommerce_cart_item_remove_link',
 									sprintf(
