@@ -388,9 +388,6 @@ function plnt_get_preorder_popup () {
 # METRIKA E-COMMERCE 
 --------------------------------------------------------------*/
 
-//add_action('woocommerce_after_main_content','plnt_metrika_card', 30);
-
-
 // $productIdMetrika;
 //add_action('woocommerce_ajax_added_to_cart', 'track_cart_add', 10, 6);
 
@@ -422,6 +419,8 @@ function custom_jquery_add_to_cart_script(){
         <?php
     // endif;
 }
+
+//add_action('woocommerce_after_main_content','plnt_metrika_card', 30);
 
 function plnt_metrika_card () {
     global $product;
@@ -477,4 +476,15 @@ function plnt_metrika_card () {
         })
     </script>
     <?php
+}
+
+
+
+
+add_action('wp_ajax_woocommerce_add_to_cart', 'plnt_woocommerce_add_to_cart_action_callback');
+add_action('wp_ajax_nopriv_woocommerce_add_to_cart', 'plnt_woocommerce_add_to_cart_action_callback');
+
+function plnt_woocommerce_add_to_cart_action_callback (){
+    $prodId = $_POST['product_id'];
+    echo $prodId;
 }
