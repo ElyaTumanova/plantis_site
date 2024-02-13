@@ -401,28 +401,27 @@ function plnt_metrika_card () {
             ?> 
             <script>
                 console.log('hi product');
-                // document.addEventListener("DOMContentLoaded", function() {
-                //     window.dataLayer.push(
-                //             {
-                //                 "ecommerce": {
-                //                     "currencyCode": "RUB",
-                //                     "add": {
-                //                         "products" : [
-                //                             {
-                //                                 "name":'<?php echo $productName?>',
-                //                                 "quantity": qty,
-                //                                 "price":'<?php echo $price?>',
-                //                                 "category":'<?php echo $catName?>'
-                //                             }
-                //                         ]
-                //                     }
-                //                 }
-                //             }
-                //         )
-                //         console.log(JSON.stringify(window.dataLayer));
+                document.addEventListener("DOMContentLoaded", function() {
+                    window.dataLayer.push(
+                            {
+                                "ecommerce": {
+                                    "currencyCode": "RUB",
+                                    "detail": {
+                                        "products" : [
+                                            {
+                                                "name":'<?php echo $productName?>',
+                                                "price":'<?php echo $price?>',
+                                                "category":'<?php echo $catName?>'
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        )
+                        console.log(JSON.stringify(window.dataLayer));
                         
-                //         return true; 
-                // })
+                        return true; 
+                })
             </script>
             <?php
         }
