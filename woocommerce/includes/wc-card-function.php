@@ -388,7 +388,7 @@ function plnt_get_preorder_popup () {
 # METRIKA E-COMMERCE 
 --------------------------------------------------------------*/
 
-add_action('woocommerce_after_main_content','plnt_metrika_card', 30);
+//add_action('woocommerce_after_main_content','plnt_metrika_card', 30);
 
 
 $productIdMetrika;
@@ -413,7 +413,7 @@ function custom_jquery_add_to_cart_script(){
                 // Ready state
                 (function($){ 
  
-                    $( document.body ).on( 'added_to_cart', function(){
+                    $( document.body ).on( 'add_to_cart', function(){
                         console.log('EVENT: added_to_cart');
                     });
  
