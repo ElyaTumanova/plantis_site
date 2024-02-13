@@ -427,7 +427,7 @@ function plnt_metrika_card () {
         }
     }
 
-// добавляем доп атрибуты для кнопки Добавить в корзину для использования в Ynadex Metrika e-commerce
+// добавляем доп атрибуты для кнопки Добавить в корзину для использования в Yandex Metrika e-commerce
 add_filter( 'woocommerce_loop_add_to_cart_args', 'filter_woocommerce_loop_add_to_cart_args', 10, 2 );
 function filter_woocommerce_loop_add_to_cart_args( $args, $product ) {
     $productName = $product->get_title();
@@ -439,17 +439,5 @@ function filter_woocommerce_loop_add_to_cart_args( $args, $product ) {
     $args['attributes']['data-category-name'] = $catName;
 
     return $args;
-}
-
-
-//add_action( 'woocommerce_remove_cart_item', 'after_remove_product_from_cart', 10, 2 );
-function after_remove_product_from_cart($removed_cart_item_key, $cart) {
-    $product_id = $cart->cart_contents[ $removed_cart_item_key ]['product_id'];
-
-            ?> 
-            <script>
-                console.log(<?php echo $product_id?>);    
-            </script>
-            <?php
 }
 
