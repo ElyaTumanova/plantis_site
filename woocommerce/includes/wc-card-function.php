@@ -395,12 +395,27 @@ $productIdMetrika;
 add_action('woocommerce_add_to_cart', 'track_cart_add', 10, 6);
 
 function track_cart_add($cart_item_key, $product_id, $quantity, $variation_id, $variation, $cart_item_data) {
-    $productIdMetrika = $product_id;
-    echo $productIdMetrika;
+    // $productIdMetrika = $product_id;
+    // echo $productIdMetrika;
     ?>
     <script type="text/javascript">
-   		alert("thank you");
-   		// ваш_код
+   	    window.dataLayer.push(
+            {
+                "ecommerce": {
+                    "currencyCode": "RUB",
+                    "add": {
+                        "products" : [
+                            {
+                                "name":'<?php echo $product_id?>'
+                            }
+                        ]
+                    }
+                }
+            }
+        )
+        console.log(JSON.stringify(window.dataLayer));
+        
+        return true; 
     </script>
     <?php
 };
