@@ -129,7 +129,8 @@ function plnt_cart_notice () {
 
 add_action('woocommerce_add_to_cart', 'track_cart_add', 10, 6);
 
-function track_cart_add($cart_item_key, $product_id = 0, $quantity = 1, $variation_id = null, $variation = null, $cart_item_data = null) {
+function track_cart_add($cart_item_key, $product_id, $quantity, $variation_id, $variation, $cart_item_data) {
+    echo $product_id;
     ?>
     <script>console.log('hello')</script>
     <?php
