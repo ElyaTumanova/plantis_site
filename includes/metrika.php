@@ -70,7 +70,9 @@ function plnt_metrika_cart_remove () {
             <script>
                 console.log('hi cart');
                 document.addEventListener("DOMContentLoaded", plnt_remove_listeners);
-                document.addEventListener("wc_update_cart", plnt_remove_listeners);
+                console.log(document.querySelector('[name="update_cart"]'));
+                document.querySelector('[name="update_cart"]');
+                // document.addEventListener("wc_update_cart", plnt_remove_listeners);
                 
                 
                 function plnt_remove_listeners() {
