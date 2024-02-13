@@ -76,10 +76,10 @@ function plnt_metrika_cart_remove () {
                         remove.addEventListener('click', function (){
                             console.log(remove);
                             console.log(remove.getAttribute('data-product_id'));
-                            productName = remove.getAttribute('data-product_name');
-                            price = remove.getAttribute('data-product_price');
-                            catName = remove.getAttribute('data-product_category');
-                            quantity = remove.getAttribute('data-product_quantity');
+                            const productName = remove.getAttribute('data-product_name');
+                            const price = remove.getAttribute('data-product_price');
+                            const catName = remove.getAttribute('data-product_category');
+                            const quantity = remove.getAttribute('data-product_quantity');
                         })
                     });
 
