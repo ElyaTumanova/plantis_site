@@ -486,5 +486,10 @@ add_action('wp_ajax_nopriv_woocommerce_add_to_cart', 'plnt_woocommerce_add_to_ca
 
 function plnt_woocommerce_add_to_cart_action_callback (){
     $prodId = $_POST['product_id'];
-    echo $prodId;
+
+    ?>
+    <script type="text/javascript">
+     console.log(<?php echo $prodId ?>);
+    </script>
+    <?php
 }
