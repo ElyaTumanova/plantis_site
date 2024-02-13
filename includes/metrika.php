@@ -12,7 +12,7 @@ function plnt_metrika_card () {
     global $product;
     $productName = $product->get_title();
     $price = $product->get_price();
-    $parentCatId = check_category();
+    $parentCatId = check_category($product);
     $catName = get_the_category_by_ID($parentCatId);
 
         if (is_product()) {
@@ -51,7 +51,7 @@ add_filter( 'woocommerce_loop_add_to_cart_args', 'filter_woocommerce_loop_add_to
 function filter_woocommerce_loop_add_to_cart_args( $args, $product ) {
     $productName = $product->get_title();
     $price = $product->get_price();
-    $parentCatId = check_category();
+    $parentCatId = check_category($product);
     $catName = get_the_category_by_ID($parentCatId);
     $args['attributes']['data-product-name'] = $productName;
     $args['attributes']['data-product-price'] = $price;
@@ -67,7 +67,7 @@ function plnt_metrika_cart_remove () {
     // global $product;
     // $productName = $product->get_title();
     // $price = $product->get_price();
-    // $parentCatId = check_category();
+    // $parentCatId = check_category($product);
     // $catName = get_the_category_by_ID($parentCatId);
 
     if ( ! WC()->cart->is_empty() ) {

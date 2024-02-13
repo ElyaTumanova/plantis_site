@@ -235,8 +235,7 @@ function plnt_product_artikul() {
 	}
 };
 
-function check_category () {
-    global $product;
+function check_category ($product) {
     global $plants_cat_id;
     global $gorshki_cat_id;
     global $treez_cat_id;
@@ -265,7 +264,7 @@ function plnt_product_attributes(){
     ?>
     <div class="product__attributes">
     <?php
-        $parentCatId = check_category();
+        $parentCatId = check_category($product);
         if( $parentCatId === $plants_cat_id )
             {
             echo  '<h2 class="heading-2">Уход и характеристики</h2>';
@@ -305,10 +304,11 @@ add_filter('woocommerce_upsell_display_args', function ($args) {
 add_filter( 'woocommerce_product_upsells_products_heading' , 'plnt_upsells_heading' );
 
 function plnt_upsells_heading () {
+    global $product;
     global $plants_cat_id;
     global $gorshki_cat_id;
     global $treez_cat_id;
-    $parentCatId = check_category ();
+    $parentCatId = check_category ($product);
     switch ($parentCatId) {
         case $plants_cat_id:				//category ID for plants
             return 'Этому растению подойдет';
