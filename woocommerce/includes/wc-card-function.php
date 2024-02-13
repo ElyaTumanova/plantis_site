@@ -481,7 +481,13 @@ function plnt_metrika_card () {
 
 add_filter( 'woocommerce_loop_add_to_cart_args', 'filter_woocommerce_loop_add_to_cart_args', 10, 2 );
 function filter_woocommerce_loop_add_to_cart_args( $args, $product ) {
-    $args['attributes']['data-name'] = 'hiname';
+    $productName = $product->get_title();
+    $price = $product->get_price();
+    $parentCatId = check_category();
+    $catName = get_the_category_by_ID($parentCatId);
+    $args['attributes']['data-product-name'] = $productName;
+    $args['attributes']['data-product-price'] = $price;
+    $args['attributes']['data-category-name'] = $catName;
 
     return $args;
 }
