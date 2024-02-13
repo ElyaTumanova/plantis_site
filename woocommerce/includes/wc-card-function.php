@@ -481,8 +481,8 @@ function plnt_metrika_card () {
 
 
 
-add_action('wp_ajax_woocommerce_add_to_cart', 'plnt_woocommerce_add_to_cart_action_callback');
-add_action('wp_ajax_nopriv_woocommerce_add_to_cart', 'plnt_woocommerce_add_to_cart_action_callback');
+add_action('wc_ajax_add_to_cart', 'plnt_woocommerce_add_to_cart_action_callback');
+//add_action('wp_ajax_nopriv_woocommerce_add_to_cart', 'plnt_woocommerce_add_to_cart_action_callback');
 
 function plnt_woocommerce_add_to_cart_action_callback (){
     $prodId = $_POST['product_id'];
