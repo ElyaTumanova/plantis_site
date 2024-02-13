@@ -387,40 +387,7 @@ function plnt_get_preorder_popup () {
 /*--------------------------------------------------------------
 # METRIKA E-COMMERCE 
 --------------------------------------------------------------*/
-
-// $productIdMetrika;
-//add_action('woocommerce_ajax_added_to_cart', 'track_cart_add', 10, 6);
-
-function track_cart_add($product_id) {
-    // $productIdMetrika = $product_id;
-    // echo $product_id;
-    ?>
-    <script type="text/javascript">
-     console.log('EVENT: added_to_cart');
-    </script>
-<?php
-  
-};
-
-//add_action('wp_footer','custom_jquery_add_to_cart_script');
-function custom_jquery_add_to_cart_script(){
-    // if ( is_shop() || is_product_category() || is_product_tag() ): // Only for archives pages
-        ?>
-            <script type="text/javascript">
-                // Ready state
-                (function($){ 
- 
-                    $( document.body ).trigger( 'added_to_cart', function(){
-                        console.log('EVENT: added_to_cart');
-                    });
- 
-                })(jQuery); // "jQuery" Working with WP (added the $ alias as argument)
-            </script>
-        <?php
-    // endif;
-}
-
-//add_action('woocommerce_after_main_content','plnt_metrika_card', 30);
+add_action('woocommerce_after_main_content','plnt_metrika_card', 30);
 
 function plnt_metrika_card () {
     global $product;
