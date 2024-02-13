@@ -127,7 +127,7 @@ function plnt_cart_notice () {
  <?php
 }
 
-add_action('woocommerce_add_to_cart', array(&$this, 'track_cart_add'), 10, 6);
+add_action('woocommerce_add_to_cart', 'track_cart_add', 10, 6);
 
 function track_cart_add($cart_item_key, $product_id = 0, $quantity = 1, $variation_id = null, $variation = null, $cart_item_data = null) {
     ?>
