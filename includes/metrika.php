@@ -85,7 +85,7 @@ function plnt_metrika_cart_remove () {
                                 {
                                     "ecommerce": {
                                         "currencyCode": "RUB",
-                                        "detail": {
+                                        "remove": {
                                             "products" : [
                                                 {
                                                     "name": productName,
