@@ -442,3 +442,15 @@ function filter_woocommerce_loop_add_to_cart_args( $args, $product ) {
 }
 
 
+add_action( 'woocommerce_cart_item_removed', 'after_remove_product_from_cart', 10, 2 );
+function after_remove_product_from_cart($removed_cart_item_key, $cart) {
+    $line_item = $cart->removed_cart_contents[ $removed_cart_item_key ];
+    $product_id = $line_item[ 'product_id' ];
+    ?> 
+            <script>
+                console.log(<?php echo $product_id?>);
+               
+            </script>
+            <?php
+}
+
