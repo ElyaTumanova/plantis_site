@@ -35,10 +35,6 @@ jQuery(function ($){
 	var $productData = $(this).parent().parent().parent().find('.product-remove > a')[0].dataset;
 	console.log($productData);
 
-	qty.attr("data-product_name",$productData.product_name);
-	qty.attr("data-product_category",$productData.product_category);
-	qty.attr("data-product_price",$productData.product_price);
-
 	$( '[name="update_cart"]' ).attr("data-product_name",$productData.product_name);
 	$( '[name="update_cart"]' ).attr("data-product_category",$productData.product_category);
 	$( '[name="update_cart"]' ).attr("data-product_price",$productData.product_price);
@@ -55,5 +51,13 @@ jQuery(function ($){
 	$( 'div.quantity .qty' ).change( function() {
 	const qty = $(this).val();
 	$(this).parent().parent().find(".add_to_cart_button").attr( 'data-quantity', qty );
+
+	var $productData = $(this).parent().parent().parent().find('.product-remove > a')[0].dataset;
+	console.log($productData);
+	
+	$(this).attr("data-product_name",$productData.product_name);
+	$(this).attr("data-product_category",$productData.product_category);
+	$(this).attr("data-product_price",$productData.product_price);
+
 	} )
 });
