@@ -33,9 +33,9 @@ jQuery(function ($){
 	console.log($productData);
 
 	if ( $( this ).is( '.plus' ) ) {
-		$( '[name="update_cart"]' ).attr("metrika-action",'add');
+		$( '[name="update_cart"]' ).attr("data-metrika_action",'add');
 	} else {
-		$( '[name="update_cart"]' ).attr("metrika-action",'remove');
+		$( '[name="update_cart"]' ).attr("data-metrika_action",'remove');
 	}
 
 	$( '[name="update_cart"]' ).attr("data-product_name",$productData.product_name);
