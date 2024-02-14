@@ -59,15 +59,13 @@ jQuery(function ($){
 jQuery(function ($){	
 	$( 'div.quantity .qty' ).change( function() {
 	console.log(this);
-	// const qty = $(this).val();
-	// $(this).parent().parent().find(".add_to_cart_button").attr( 'data-quantity', qty );
 
-	// var $productData = $(this).parent().parent().parent().find('.product-remove > a')[0].dataset;
-	// console.log($productData);
+	var $productData = $(this).parent().parent().parent().find('.product-remove > a')[0].dataset;
+	console.log($productData);
 	
-	// $(this).attr("data-product_name",$productData.product_name);
-	// $(this).attr("data-product_category",$productData.product_category);
-	// $(this).attr("data-product_price",$productData.product_price);
+	$(this).attr("data-product_name",$productData.product_name);
+	$(this).attr("data-product_category",$productData.product_category);
+	$(this).attr("data-product_price",$productData.product_price);
 
 	} )
 });
