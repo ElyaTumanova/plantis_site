@@ -11,6 +11,10 @@ remove_action('woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10);
 add_action('woocommerce_before_cart', 'woocommerce_cart_totals', 20);
 
 
+/*--------------------------------------------------------------
+# CART FRAGMENTS 
+--------------------------------------------------------------*/
+
 // вывод корзины в хедере и мини корзины
 function plnt_woocommerce_cart_header() {
 	$cart_icon = carbon_get_theme_option('cart_icon')?>
@@ -50,6 +54,25 @@ function plnt_woocommerce_mini_cart_fragment( $fragments ) {
 
 add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_mini_cart_fragment', 25 );
 
+function plnt_cart_notice () {
+	?>
+	   <div class='cart-notice'><?php woocommerce_output_all_notices()?></div>
+	<?php
+   }
+   
+   function plnt_cart_notice_fragment( $fragments ) {
+	   ob_start();
+	   plnt_cart_notice();
+	   $fragments[ 'div.cart-notice'] = ob_get_clean();
+	   return $fragments;
+   }
+   
+   add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_cart_notice_fragment', 25 );
+
+/*--------------------------------------------------------------
+# MINI CART 
+--------------------------------------------------------------*/
+
 // изменяем подытог мини корзины
 
 remove_action('woocommerce_widget_shopping_cart_total','woocommerce_widget_shopping_cart_subtotal', 10);
@@ -59,6 +82,9 @@ function plnt_woocommerce_widget_shopping_cart_subtotal() {
 	echo '<span>' . esc_html__( 'Сумма:', 'woocommerce' ) . '</span> ' . WC()->cart->get_cart_subtotal(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
+/*--------------------------------------------------------------
+# CART FUNCTIONS 
+--------------------------------------------------------------*/
 // доп функции для корзины
 
 // // изменяем кнопку "в корзину" после добавления товара в корзину
@@ -119,7 +145,10 @@ function ajax_button_text_js_script() {
 	}
  }
 
- // HELPERS	
+
+/*--------------------------------------------------------------
+# HELPERS 
+--------------------------------------------------------------*/
 
  //Функция, возвращающая количество определённого товара в корзине
  function plnt_get_product_quantity_in_cart( $product_id ) {
@@ -139,6 +168,4 @@ function ajax_button_text_js_script() {
 	return $quantity;
  
 }
-
- // FOR DEV
 

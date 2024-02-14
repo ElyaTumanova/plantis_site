@@ -90,12 +90,7 @@ remove_action('woocommerce_before_single_product','woocommerce_output_all_notice
 
 //add_filter( 'woocommerce_cart_redirect_after_error', '__return_false' );  //остановка перезагрузки страницы (перадресации) при ошибке добаления товара в корзину
 //add_filter( 'wc_add_to_cart_message_html', '__return_false' ); //Удалить сообщение «Товар добавлен в корзину..»
-add_filter( 'wc_add_to_cart_message_html', 'bbloomer_custom_add_to_cart_message' );
- 
-function bbloomer_custom_add_to_cart_message() {
-$message = 'Nicely done!' ;
-return $message;
-}
+
 
 add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 5);
 
@@ -119,22 +114,6 @@ function plnt_price_wrap(){
     </div>
     <?php 
 };
-
-
-function plnt_cart_notice () {
- ?>
-    <div class='cart-notice'><?php woocommerce_output_all_notices()?></div>
- <?php
-}
-
-function plnt_cart_notice_fragment( $fragments ) {
-	ob_start();
-	plnt_cart_notice();
-	$fragments[ 'div.cart-notice'] = ob_get_clean();
-	return $fragments;
-}
-
-add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_cart_notice_fragment', 25 );
 
 
 function plnt_get_add_to_card() {
@@ -361,7 +340,9 @@ function plnt_get_preorder_popup () {
     }
 }
 
-// HELPERS
+/*--------------------------------------------------------------
+# HELPERS 
+--------------------------------------------------------------*/
 // функция, определяет есть ли среди категорий товара "родительсике"
 function check_category ($product) {
     global $plants_cat_id;
