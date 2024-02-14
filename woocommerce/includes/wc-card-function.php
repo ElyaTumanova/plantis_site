@@ -173,8 +173,8 @@ function plnt_card_banners_wrap() {
 
 
 //кнопки изменения количества
-//add_action( 'woocommerce_before_quantity_input_field', 'truemisha_quantity_minus', 25 );
-//add_action( 'woocommerce_after_quantity_input_field', 'truemisha_quantity_plus', 25 );
+add_action( 'woocommerce_before_quantity_input_field', 'truemisha_quantity_minus', 25 );
+add_action( 'woocommerce_after_quantity_input_field', 'truemisha_quantity_plus', 25 );
  
 function truemisha_quantity_plus() {
     global $product;
