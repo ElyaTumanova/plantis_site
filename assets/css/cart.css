@@ -1,8 +1,8 @@
 /* скрываем кнопку "Обновить корзину" */
 
-/* .woocommerce-cart-form [name="update_cart"] {
+.woocommerce-cart-form [name="update_cart"] {
     display: none;
-} */
+}
 
 /* блок итого */
 

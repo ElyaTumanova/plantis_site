@@ -47,6 +47,18 @@ function my_delivery_small_oder_info () {
 	}	
 }
 
+
+// перевод текстов
+
+function plnt_change_text_checkout_1( $translated_text ) {
+    if ( $translated_text == 'Select a date to view time slots' ) {
+      $translated_text = 'Сначала выберите дату';
+    }
+    return $translated_text;
+  }
+  add_filter( 'gettext', 'plnt_change_text_checkout_1', 20 );
+
+
 // доп функции
 
 /* Уведомление об ошибке в оформлении заказа */
