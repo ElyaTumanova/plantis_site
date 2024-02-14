@@ -57,7 +57,7 @@ jQuery(function ($){
 jQuery(function ($){
     $( 'body' ).on( 'click', '.woocommerce-cart-form div.plus, .woocommerce-cart-form div.minus', function() {
 
- 
+		console.log(this);
 	// дальше определяем новое значение количества в зависимости от нажатия кнопки
 
 	if ( $( this ).is( '.plus' ) ) {
