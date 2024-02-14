@@ -32,7 +32,7 @@ jQuery(function ($){
 	var $productData = $(this).parent().parent().parent().find('.product-remove > a')[0].dataset;
 	console.log($productData);
 
-	$( '[name="update_cart"]' ).attr("product","test");
+	$( '[name="update_cart"]' ).attr("data-product_name",$productData.product_name);
 	$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки
  
 });
