@@ -10,6 +10,7 @@ jQuery(function ($){
 	// дальше определяем новое значение количества в зависимости от нажатия кнопки
 	var newVal;
 	if ( $( this ).is( '.plus' ) ) {
+		console.log(this);
 		if ( max && ( max <= val ) ) {
 			newVal= max;
 		} else {
