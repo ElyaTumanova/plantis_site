@@ -61,8 +61,10 @@ jQuery(function ($){
 	// дальше определяем новое значение количества в зависимости от нажатия кнопки
 
 	if ( $( this ).is( '.plus' ) ) {
+		console.log('plus');
 		$( '[name="update_cart"]' ).attr("data-metrika_action",'add'); //для Yandex Metrika E-commerce
 	} else {
+		console.log('minus');
 		$( '[name="update_cart"]' ).attr("data-metrika_action",'remove'); //для Yandex Metrika E-commerce
 	}
 
