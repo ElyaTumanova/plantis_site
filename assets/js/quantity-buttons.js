@@ -11,14 +11,14 @@ jQuery(function ($){
 	var newVal;
 	if ( $( this ).is( '.plus' ) ) {
 		console.log(this);
-		$( '[name="update_cart"]' ).attr("data-metrika_action",'add');
+		$( '[name="update_cart"]' ).attr("data-metrika_action",'add'); //для Yandex Metrika E-commerce
 		if ( max && ( max <= val ) ) {
 			newVal= max;
 		} else {
 			newVal= val + step ;
 		}
 	} else {
-		$( '[name="update_cart"]' ).attr("data-metrika_action",'remove');
+		$( '[name="update_cart"]' ).attr("data-metrika_action",'remove'); //для Yandex Metrika E-commerce
 		if ( min && ( min >= val ) ) {
 			newVal=  min;
 		} else if ( val > 1 ) {
@@ -31,13 +31,19 @@ jQuery(function ($){
 
 	qty.parent().parent().find(".add_to_cart_button").attr( 'data-quantity', newVal ); //устанавливаем новое значение для атрибута кнопки добавить в корзину. div "quantity" должен находится в одном родительском узле с кнопкой в корзирну
 
-	// определеям товар, для которого изменили кол-во и находим его параметры, записанные в кнопку удаления remove
+	// определеям товар, для которого изменили кол-во и находим его параметры, записанные в кнопку удаления remove - для Yandex Metrika E-commerce
 	var $productData = $(this).parent().parent().parent().find('.product-remove > a')[0].dataset;
 	console.log($productData);
+
+	qty.attr("data-product_name",$productData.product_name);
+	qty.attr("data-product_category",$productData.product_category);
+	qty.attr("data-product_price",$productData.product_price);
 
 	$( '[name="update_cart"]' ).attr("data-product_name",$productData.product_name);
 	$( '[name="update_cart"]' ).attr("data-product_category",$productData.product_category);
 	$( '[name="update_cart"]' ).attr("data-product_price",$productData.product_price);
+
+	
 	$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки
  
 });
