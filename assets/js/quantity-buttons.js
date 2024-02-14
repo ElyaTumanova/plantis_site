@@ -33,7 +33,7 @@ jQuery(function ($){
 
 	// определеям товар, для которого изменили кол-во и находим его параметры, записанные в кнопку удаления remove - для Yandex Metrika E-commerce
 	var $productData = $(this).parent().parent().parent().find('.product-remove > a')[0].dataset;
-	console.log($productData);
+	// console.log($productData);
 
 	$( '[name="update_cart"]' ).attr("data-product_name",$productData.product_name);
 	$( '[name="update_cart"]' ).attr("data-product_category",$productData.product_category);
@@ -51,21 +51,5 @@ jQuery(function ($){
 	$( 'div.quantity .qty' ).change( function() {
 	const qty = $(this).val();
 	$(this).parent().parent().find(".add_to_cart_button").attr( 'data-quantity', qty );
-	} )
-});
-
-
-// аналогичная функция - работает при изменении кол-ва в инпуте напрямую
-jQuery(function ($){	
-	$( 'div.quantity .qty' ).change( function() {
-	console.log(this);
-
-	var $productData = $(this).parent().parent().parent().find('.product-remove > a')[0].dataset;
-	console.log($productData);
-	
-	$(this).attr("data-product_name",$productData.product_name);
-	$(this).attr("data-product_category",$productData.product_category);
-	$(this).attr("data-product_price",$productData.product_price);
-
 	} )
 });

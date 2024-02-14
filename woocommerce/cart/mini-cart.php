@@ -49,13 +49,17 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 					echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						'woocommerce_cart_item_remove_link',
 						sprintf(
-							'<a href="%s" class="remove remove_from_cart_button" aria-label="%s" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s">&times;</a>',
+							'<a href="%s" class="remove remove_from_cart_button" aria-label="%s" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s" data-product_name="%s" data-product_category="%s" data-product_quantity="%s" data-product_price="%s">&times;</a>',
 							esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
 							/* translators: %s is the product name */
 							esc_attr( sprintf( __( 'Remove %s from cart', 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),
 							esc_attr( $product_id ),
 							esc_attr( $cart_item_key ),
-							esc_attr( $_product->get_sku() )
+							esc_attr( $_product->get_sku() ),
+							esc_attr( $_product->get_title() ),
+							esc_attr( get_the_category_by_ID($parentCatId) ),
+							esc_attr( $quantity),
+							esc_attr( $_product->get_price())
 						),
 						$cart_item_key
 					);
