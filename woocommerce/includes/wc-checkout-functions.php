@@ -62,7 +62,7 @@ function plnt_change_text_checkout_1( $translated_text ) {
 // доп функции
 
 /* Уведомление об ошибке в оформлении заказа */
-add_action( 'woocommerce_after_checkout_validation', 'checkout_validation_unique_error', 9999, 2 );
+//add_action( 'woocommerce_after_checkout_validation', 'checkout_validation_unique_error', 9999, 2 );
 function checkout_validation_unique_error( $data, $errors ){
     // Check for any validation errors
     if( ! empty( $errors->get_error_codes() ) ) {
