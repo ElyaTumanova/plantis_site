@@ -11,12 +11,14 @@ jQuery(function ($){
 	var newVal;
 	if ( $( this ).is( '.plus' ) ) {
 		console.log(this);
+		$( '[name="update_cart"]' ).attr("data-metrika_action",'add');
 		if ( max && ( max <= val ) ) {
 			newVal= max;
 		} else {
 			newVal= val + step ;
 		}
 	} else {
+		$( '[name="update_cart"]' ).attr("data-metrika_action",'remove');
 		if ( min && ( min >= val ) ) {
 			newVal=  min;
 		} else if ( val > 1 ) {
@@ -32,13 +34,6 @@ jQuery(function ($){
 	// определеям товар, для которого изменили кол-во и находим его параметры, записанные в кнопку удаления remove
 	var $productData = $(this).parent().parent().parent().find('.product-remove > a')[0].dataset;
 	console.log($productData);
-
-	if ( $( this ).is( '.plus' ) ) {
-		console.log(this);
-		$( '[name="update_cart"]' ).attr("data-metrika_action",'add');
-	} else {
-		$( '[name="update_cart"]' ).attr("data-metrika_action",'remove');
-	}
 
 	$( '[name="update_cart"]' ).attr("data-product_name",$productData.product_name);
 	$( '[name="update_cart"]' ).attr("data-product_category",$productData.product_category);
