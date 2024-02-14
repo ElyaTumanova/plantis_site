@@ -57,7 +57,7 @@ jQuery(function ($){
 
 // аналогичная функция - работает при изменении кол-ва в инпуте напрямую
 jQuery(function ($){	
-	$( 'woocommerce-cart-form__cart-item div.quantity .qty' ).change( function() {
+	$( 'div.quantity .qty' ).change( function() {
 	console.log(this);
 	// const qty = $(this).val();
 	// $(this).parent().parent().find(".add_to_cart_button").attr( 'data-quantity', qty );
