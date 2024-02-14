@@ -33,6 +33,7 @@ jQuery(function ($){
 	console.log($productData);
 
 	if ( $( this ).is( '.plus' ) ) {
+		console.log(this);
 		$( '[name="update_cart"]' ).attr("data-metrika_action",'add');
 	} else {
 		$( '[name="update_cart"]' ).attr("data-metrika_action",'remove');
