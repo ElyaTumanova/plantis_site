@@ -32,6 +32,12 @@ jQuery(function ($){
 	var $productData = $(this).parent().parent().parent().find('.product-remove > a')[0].dataset;
 	console.log($productData);
 
+	if ( $( this ).is( '.plus' ) ) {
+		$( '[name="update_cart"]' ).attr("metrika-action",'add');
+	} else {
+		$( '[name="update_cart"]' ).attr("metrika-action",'remove');
+	}
+
 	$( '[name="update_cart"]' ).attr("data-product_name",$productData.product_name);
 	$( '[name="update_cart"]' ).attr("data-product_category",$productData.product_category);
 	$( '[name="update_cart"]' ).attr("data-product_price",$productData.product_price);
