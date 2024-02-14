@@ -33,6 +33,8 @@ jQuery(function ($){
 	console.log($productData);
 
 	$( '[name="update_cart"]' ).attr("data-product_name",$productData.product_name);
+	$( '[name="update_cart"]' ).attr("data-product_category",$productData.product_category);
+	$( '[name="update_cart"]' ).attr("data-product_price",$productData.product_price);
 	$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки
  
 });
