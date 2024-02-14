@@ -28,6 +28,10 @@ jQuery(function ($){
 
 	qty.parent().parent().find(".add_to_cart_button").attr( 'data-quantity', newVal ); //устанавливаем новое значение для атрибута кнопки добавить в корзину. div "quantity" должен находится в одном родительском узле с кнопкой в корзирну
 
+	// определеям товар, для которого изменили кол-во
+	var $productData = $(this).parent();
+	console.log($productData);
+
 	$( '[name="update_cart"]' ).attr("product","test");
 	$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки
  
