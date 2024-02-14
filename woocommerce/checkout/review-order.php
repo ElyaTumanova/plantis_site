@@ -31,10 +31,6 @@ defined( 'ABSPATH' ) || exit;
 		do_action( 'woocommerce_review_order_before_cart_contents' );
 
 		foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-			echo '<pre>';
-			print_r( $cart_item['line_total'] );
-			echo '</pre>';
-
 			$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 			$parentCatId = check_category($_product);
 
