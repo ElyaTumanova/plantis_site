@@ -46,6 +46,8 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 				?>
 				<li class="woocommerce-mini-cart-item <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?>">
 					<?php
+					$parentCatId = check_category($_product);
+					$quantity = plnt_get_product_quantity_in_cart($product_id);
 					echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						'woocommerce_cart_item_remove_link',
 						sprintf(
