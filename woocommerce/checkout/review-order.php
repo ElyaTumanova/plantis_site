@@ -32,7 +32,7 @@ defined( 'ABSPATH' ) || exit;
 
 		foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 			echo '<pre>';
-			print_r( $cart_item );
+			print_r( $cart_item['line_total'] );
 			echo '</pre>';
 
 			$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
@@ -44,7 +44,7 @@ defined( 'ABSPATH' ) || exit;
 				data-product_name="<?php echo $_product->get_name()?>" 
 				data-product_category="<?php echo get_the_category_by_ID($parentCatId)?>" 
 				data-product_quantity="<?php echo $cart_item['quantity']?>"
-				data-product_price="<?php echo $cart_item?>"
+				data-product_price="<?php echo $cart_item['line_total']?>"
 				>
 					<td class="product-name">
 						<?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) ) . '&nbsp;'; ?>
