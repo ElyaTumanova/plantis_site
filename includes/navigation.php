@@ -58,7 +58,7 @@ if ( ! function_exists( 'plnt_footer_menu_plants' ) ) {
 	function plnt_footer_menu_plants() {
 		wp_nav_menu( array(
 			'container'      => 'nav',
-			'menu_class'     => 'footer__menu-list',
+			'menu_class'     => 'footer__menu-palnts',
 			'theme_location' => 'footer-plants',
 			'depth'          => 1,
 			'fallback_cb'     => '__return_empty_string',
@@ -70,7 +70,7 @@ if ( ! function_exists( 'plnt_footer_menu_services' ) ) {
 	function plnt_footer_menu_services() {
 		wp_nav_menu( array(
 			'container'      => 'nav',
-			'menu_class'     => 'footer__heading footer__heading_link',
+			'menu_class'     => 'footer__menu-services',
 			'theme_location' => 'footer-services',
 			'depth'          => 1,
 			'fallback_cb'     => '__return_empty_string',
