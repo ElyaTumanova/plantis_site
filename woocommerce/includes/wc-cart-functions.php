@@ -60,14 +60,14 @@ function plnt_cart_notice () {
 	<?php
    }
    
-   function plnt_cart_notice_fragment( $fragments ) {
-	   ob_start();
-	   plnt_cart_notice();
-	   $fragments[ 'div.cart-notice'] = ob_get_clean();
-	   return $fragments;
-   }
+//    function plnt_cart_notice_fragment( $fragments ) {
+// 	   ob_start();
+// 	   plnt_cart_notice();
+// 	   $fragments[ 'div.cart-notice'] = ob_get_clean();
+// 	   return $fragments;
+//    }
    
-   add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_cart_notice_fragment', 25 );
+// add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_cart_notice_fragment', 25 );
 
 /*--------------------------------------------------------------
 # MINI CART 
