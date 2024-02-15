@@ -350,8 +350,9 @@ div#orddd_list_view_select {
     line-height: 1.4;
 }
 
-.woocommerce-order-received .woocommerce-order table.shop_table.order_details {
+.woocommerce-order-received .woocommerce-order table {
     width: 100%;
     border-top: 1px solid #ebeced;
     text-align: left;
+    margin-bottom: 20px;
 }
