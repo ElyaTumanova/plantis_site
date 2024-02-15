@@ -67,7 +67,7 @@ if ( ! function_exists( 'plnt_footer_menu_plants' ) ) {
 }
 
 if ( ! function_exists( 'plnt_footer_menu_services' ) ) {
-	function plnt_footer_menu_plants() {
+	function plnt_footer_menu_services() {
 		wp_nav_menu( array(
 			'container'      => 'nav',
 			'menu_class'     => 'footer__menu-list',
