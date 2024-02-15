@@ -358,7 +358,7 @@
   margin-right: 20px;
 }
 .footer__info-requsits {
-  margin: 20px 0;
+  margin: 10px 0;
   font-size: 12px;
 }
 
@@ -379,4 +379,10 @@
     padding-bottom: 25px;
     text-decoration: none;
     color: inherit;
+}
+
+@media (max-width: 767px) {
+    .footer__contacts {
+        order: -1;
+    }
 }
