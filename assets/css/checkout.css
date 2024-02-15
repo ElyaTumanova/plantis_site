@@ -367,7 +367,7 @@ div#orddd_list_view_select {
     padding: 5px 0;
 }
 
-/* прячем строку с подитогом и способом дотсавки*/
+/* прячем строку с подитогом и способом доставки*/
 
 .woocommerce-order-received .woocommerce-order .woocommerce-table--order-details tfoot tr:first-child {
     display: none;
