@@ -272,8 +272,14 @@
 .cart-notice {
     font-size: 14px;
     font-weight: 500;
-    margin-top: 10px;
     color: var(--red-color);
+}
+
+.add-to-cart-wrap .cart-notice {
+    margin-top: 10px;
+}
+.catalog__products-wrap .cart-notice {
+    margin-bottom: 10px;
 }
 
 /* скрываем лишнее */
