@@ -320,15 +320,17 @@ div#orddd_list_view_select {
 # Thankyou page
 --------------------------------------------------------------*/
 
-
+/* сообщение Спасибо за ваш заказ! */
 .woocommerce-order-received .woocommerce-order .woocommerce-notice {
     font-size: 20px;
     margin-bottom: 20px;
     line-height: 1.4;
     display: flex;
     align-items: center;
+    column-gap: 10px;
 }
 
+/* детали заказа */
 .woocommerce-thankyou-order-details {
     margin-bottom: 20px;
 }
@@ -337,6 +339,8 @@ div#orddd_list_view_select {
     margin-bottom: 5px;
 }
 
+
+/* товары в заказе*/
 .woocommerce-order-details__title {
     font-size: 18px;
     text-transform: uppercase;
@@ -346,16 +350,22 @@ div#orddd_list_view_select {
     margin: 20px 0 10px;    
 }
 
-.woocommerce-order-received .woocommerce-order table.shop_table.order_details tr {
+.woocommerce-order-received .woocommerce-order .woocommerce-table--order-details {
+    width: 100%;
+    border-top: 1px solid #ebeced;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.woocommerce-order-received .woocommerce-order .woocommerce-table--order-details tr {
     border-bottom: 1px solid #ebeced;
     font-size: 16px;
     padding: 3px 0;
     line-height: 1.4;
 }
 
-.woocommerce-order-received .woocommerce-order table {
-    width: 100%;
-    border-top: 1px solid #ebeced;
-    text-align: left;
-    margin-bottom: 20px;
+/* прячем строку с подитогом */
+
+.woocommerce-order-received .woocommerce-order .woocommerce-table--order-details tfoot tr:first-child {
+    display: none;
 }
