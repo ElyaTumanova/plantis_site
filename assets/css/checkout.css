@@ -382,3 +382,8 @@ div#orddd_list_view_select {
 .woocommerce-customer-details .woocommerce-column__title {
     display: none;
 }
+
+.thankyou__adress-heading {
+    color: var(--accent-color);
+    margin: 20px 0 10px;    
+}
