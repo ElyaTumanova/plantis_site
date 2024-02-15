@@ -364,6 +364,12 @@
 
 .footer__info-link {
   color: inherit;
+  text-decoration: underline;
+  display: block;
+}
+
+.footer__info-link:hover {
+  text-decoration: none;
 }
 
 .footer__contacts .contacts-part__wrap {
