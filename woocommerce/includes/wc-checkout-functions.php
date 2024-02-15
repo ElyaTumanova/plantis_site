@@ -266,6 +266,11 @@ function truemisha_remove_shipping_on_price( $rates, $package ) {
  
 }
 
+/*--------------------------------------------------------------
+# Thankyou page
+--------------------------------------------------------------*/
+
+// уведомление Спасибо за заказ
 
 add_filter( 'woocommerce_thankyou_order_received_text', 'plnt_custom_ty_msg' );
 

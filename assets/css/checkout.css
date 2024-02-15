@@ -367,7 +367,7 @@ div#orddd_list_view_select {
     padding: 5px 0;
 }
 
-/* прячем строку с подитогом b способом дотсавки*/
+/* прячем строку с подитогом и способом дотсавки*/
 
 .woocommerce-order-received .woocommerce-order .woocommerce-table--order-details tfoot tr:first-child {
     display: none;
@@ -378,12 +378,12 @@ div#orddd_list_view_select {
 }
 
 /* адрес клиента */ 
-/* скрываем адрес из формы по умолчанию */
-.woocommerce-customer-details .woocommerce-column__title {
-    display: none;
-}
 
-.thankyou__adress-heading {
+.woocommerce-customer-details .woocommerce-column__title {
     color: var(--accent-color);
-    margin: 20px 0 10px;    
+    margin: 20px 0 10px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.2;
 }
