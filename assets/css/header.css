@@ -366,3 +366,17 @@
   color: inherit;
 }
 
+.footer__contacts .contacts-part__wrap {
+    margin: 0;
+    display: block;
+}
+
+.footer__contacts .contacts-part__phones {
+    font-size: 22px;
+    line-height: 1;
+    font-weight: 300;
+    text-transform: uppercase;
+    padding-bottom: 25px;
+    text-decoration: none;
+    color: inherit;
+}
