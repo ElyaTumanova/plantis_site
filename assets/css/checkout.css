@@ -1,3 +1,7 @@
+/*--------------------------------------------------------------
+# Checkout page
+--------------------------------------------------------------*/
+
 @media (min-width: 768px) {
 	.order_wrap {
         display: grid;
@@ -310,4 +314,39 @@ div#orddd_list_view_select {
     color: var(--white);
     background-color: var(--red-color);
     border-radius: 20px;
+}
+
+/*--------------------------------------------------------------
+# Thankyou page
+--------------------------------------------------------------*/
+
+
+.woocommerce-order-received .woocommerce-order .woocommerce-notice {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.woocommerce-thankyou-order-details {
+    margin-bottom: 20px;
+}
+
+.woocommerce-order-details__title {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--accent-color);
+    margin: 20px 0 10px;    
+}
+
+.woocommerce-order-received .woocommerce-order table.shop_table.order_details tr th {
+    border-bottom: 1px solid #ebeced;
+    font-size: 14px;
+    padding: 3px 0;
+}
+
+.woocommerce-order-received .woocommerce-order table.shop_table.order_details {
+    width: 100%;
+    border-top: 1px solid #ebeced;
+    text-align: left;
 }
