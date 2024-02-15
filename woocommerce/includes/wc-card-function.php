@@ -103,8 +103,8 @@ function plnt_price_wrap(){
             woocommerce_template_single_price();
             plnt_get_add_to_card();
             //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
+            plnt_cart_notice();
             ?>
-            <div class='cart-notice'></div>
         </div>
         <?php
         plnt_outofstock_info();
@@ -114,6 +114,11 @@ function plnt_price_wrap(){
     <?php 
 };
 
+function plnt_cart_notice() {   // уведомление о том, что в корзину добавили максимальное кол-во товара, добавляется аяксом в add-to-cart.js
+    ?>
+        <div class='cart-notice'></div> 
+    <?php
+}
 
 function plnt_get_add_to_card() {
     global $product;

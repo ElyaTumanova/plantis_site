@@ -255,6 +255,9 @@ function plnt_get_product_tags() {
 	}
 }
 
+// // уведомление о том, что в корзину добавили максимальное кол-во товара
+add_action('woocommerce_after_shop_loop_item', 'plnt_cart_notice', 30);
+
 // // добавляем класс для шортокода products для be rocket wishlist
 // add_filter('post_class', 'plnt_add_class_loop_item_wish');
 // function plnt_add_class_loop_item_wish($clasess){
