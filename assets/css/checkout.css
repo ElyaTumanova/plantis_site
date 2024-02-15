@@ -360,8 +360,11 @@ div#orddd_list_view_select {
 .woocommerce-order-received .woocommerce-order .woocommerce-table--order-details tr {
     border-bottom: 1px solid #ebeced;
     font-size: 16px;
-    padding: 3px 0;
     line-height: 1.4;
+}
+
+.woocommerce-order-received .woocommerce-order .woocommerce-table--order-details td {
+    padding: 5px 0;
 }
 
 /* прячем строку с подитогом */
