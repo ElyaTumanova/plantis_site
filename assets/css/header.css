@@ -390,6 +390,7 @@
 @media (max-width: 767px) {
     .footer__contacts {
         order: -1;
+        width: 100%;
     }
     .footer {
         margin-bottom: 100px;
