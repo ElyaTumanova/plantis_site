@@ -1,7 +1,14 @@
-<footer id="footer" class="footer container" role="contentinfo">
+<footer id="footer" class="footer" role="contentinfo">
+
+<div class="footer__nav container">
+
+    <div class="footer__contacts">
+        <?php get_template_part('template-parts/contacts-part');?>
+    </div>
+</div>
 
 
-<div class="footer__info">
+<div class="footer__info container">
     <span class="footer__info-copyright">© 2023 Plantis | Комнатные растения и аксессуары с доставкой. Тел. <a href="tel:+78002015790">8 800 201 57 90</a></span>
     <a href="https://plantis.shop/privacy-policy/" class="footer__info-link" role="button">
         Политика конфиденциальности
@@ -13,9 +20,7 @@
     </p>
 </div>
 
-<div class="footer__contacts">
-    <?php get_template_part('template-parts/contacts-part');?>
-</div>
+
 
 </footer><!-- #colophon -->
 </div><!-- #page -->
