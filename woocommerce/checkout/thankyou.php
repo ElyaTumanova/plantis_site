@@ -82,11 +82,12 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php //do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() ); ?>
 		<?php do_action( 'woocommerce_thankyou', $order->get_id() ); ?>
+        <?php wc_get_template( 'order/order-details-customer.php', array('order' => $order ));?>
 
 	<?php else : ?>
 
 		<?php wc_get_template( 'checkout/order-received.php', array( 'order' => false ) ); ?>
-        <?php wc_get_template( 'order/order-details-customer.php', array('order' => $order ));?>
+     
 
 	<?php endif; ?>
 
