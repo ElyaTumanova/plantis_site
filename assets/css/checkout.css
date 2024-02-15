@@ -232,6 +232,10 @@
     border: 1px solid #ccc;
 }
 
+#billing_country_field {
+    display:none; 
+}
+
 /* время доставки */
 
 #orddd-checkout-fields {
