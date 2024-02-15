@@ -103,7 +103,6 @@ function plnt_price_wrap(){
             woocommerce_template_single_price();
             plnt_get_add_to_card();
             //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
-            plnt_cart_notice();
             ?>
         </div>
         <?php
@@ -134,6 +133,7 @@ function plnt_get_add_to_card() {
         if ($quantity > 0) {
             plnt_card_wishlist_btn();
         }
+        plnt_cart_notice();
         ?></div>
         <?php
     } 
