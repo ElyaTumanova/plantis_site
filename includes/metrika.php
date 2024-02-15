@@ -22,7 +22,6 @@ function plnt_metrika_card () {
 
             ?> 
             <script>
-                console.log('hi product');
                 document.addEventListener("DOMContentLoaded", function() {
                     window.dataLayer.push(
                         {
@@ -40,7 +39,7 @@ function plnt_metrika_card () {
                             }
                         }
                     )
-                    console.log(JSON.stringify(window.dataLayer));
+                    // console.log(JSON.stringify(window.dataLayer));
                     
                     return true; 
                 })

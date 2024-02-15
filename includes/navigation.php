@@ -12,7 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 register_nav_menus( array(
 	'primary'   => esc_html__( 'Primary Menu', 'art-starter-theme' ),
 	'secondary' => esc_html__( 'Secondary Menu', 'art-starter-theme' ),
-	'mobile'    => esc_html__( 'Mobile Menu', 'art-starter-theme' ),
 	'catalog'    => esc_html__( 'Categories in Catalog', 'art-starter-theme' ),
 ) );
 
