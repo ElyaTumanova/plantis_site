@@ -6,9 +6,7 @@
         <?php plnt_footer_menu_plants(); ?>
     </div>
     <div class="footer__categories-menu footer__menu-wrap">
-        <div class="footer__menu-list">
         
-        </div>
     </div>
     <div class="footer__info-menu footer__menu-wrap">
         <?php get_template_part('template-parts/info-pages-list');?>

@@ -14,6 +14,7 @@ register_nav_menus( array(
 	'secondary' => esc_html__( 'Secondary Menu', 'art-starter-theme' ),
 	'catalog'    => esc_html__( 'Categories in Catalog', 'art-starter-theme' ),
 	'footer-plants'    => esc_html__( 'Plants Categories in Footer', 'art-starter-theme' ),
+	'footer-services'    => esc_html__( 'Services List in Footer', 'art-starter-theme' ),
 ) );
 
 
@@ -59,6 +60,18 @@ if ( ! function_exists( 'plnt_footer_menu_plants' ) ) {
 			'container'      => 'nav',
 			'menu_class'     => 'footer__menu-list',
 			'theme_location' => 'footer-plants',
+			'depth'          => 1,
+			'fallback_cb'     => '__return_empty_string',
+		));
+	}
+}
+
+if ( ! function_exists( 'plnt_footer_menu_services' ) ) {
+	function plnt_footer_menu_plants() {
+		wp_nav_menu( array(
+			'container'      => 'nav',
+			'menu_class'     => 'footer__menu-list',
+			'theme_location' => 'footer-services',
 			'depth'          => 1,
 			'fallback_cb'     => '__return_empty_string',
 		));
