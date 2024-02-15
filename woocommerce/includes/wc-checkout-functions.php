@@ -265,3 +265,13 @@ function truemisha_remove_shipping_on_price( $rates, $package ) {
 	return $rates;
  
 }
+
+
+add_filter( 'woocommerce_thankyou_order_received_text', 'plnt_custom_ty_msg' );
+
+    function plnt_custom_ty_msg ( $thank_you_msg ) {
+
+        $thank_you_msg =  'Спасибо за ваш заказ! Наши менеджеры пляшут от радости! Как закончат танцевать, сразу вам перезвонят ' ?><img draggable="false" role="img" class="emoji" alt="😉" src="https://s.w.org/images/core/emoji/14.0.0/svg/1f609.svg"><?php;
+
+    return $thank_you_msg;
+}
