@@ -86,7 +86,7 @@ defined( 'ABSPATH' ) || exit;
 	<?php else : ?>
 
 		<?php wc_get_template( 'checkout/order-received.php', array( 'order' => false ) ); ?>
-		<?php wc_get_template( 'order/order-details-customer.php' ); //добвила детали клиента?>     
+        <?php wc_get_template( 'order/order-details-customer.php', array('order' => $order ));?>
 
 	<?php endif; ?>
 
