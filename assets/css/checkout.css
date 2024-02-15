@@ -343,10 +343,11 @@ div#orddd_list_view_select {
     margin: 20px 0 10px;    
 }
 
-.woocommerce-order-received .woocommerce-order table.shop_table.order_details tr th {
+.woocommerce-order-received .woocommerce-order table.shop_table.order_details tr {
     border-bottom: 1px solid #ebeced;
-    font-size: 14px;
+    font-size: 16px;
     padding: 3px 0;
+    line-height: 1.4;
 }
 
 .woocommerce-order-received .woocommerce-order table.shop_table.order_details {
