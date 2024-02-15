@@ -315,6 +315,38 @@
     flex-direction: column;
 }
 
+.footer__menu-list .menu-item {
+    color: #fff;
+    list-style-type: none;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 400;
+    padding-bottom: 10px;
+}
+
+.footer__heading {
+    list-style-type: none;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-bottom: 15px;
+    color: inherit;
+      margin: 0;
+  }
+  
+.footer__heading_link {
+text-decoration: none;
+color: inherit;
+display: block;
+}
+
+.footer__heading_link:hover {
+cursor: pointer;
+    color: inherit;
+    text-decoration: underline;
+}
+
 
 .footer__info {
   font-size: 14px;

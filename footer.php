@@ -2,7 +2,7 @@
 
 <div class="footer__nav container">
     <div class="footer__plants-menu footer__menu-wrap">
-        <a class="footer__heading footer__heading_link" href="https://plantis.shop/product-category/komnatnye-rasteniya/">Растения</a>
+        <a class="footer__heading footer__heading_link" href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">Растения</a>
         <?php plnt_footer_menu_plants(); ?>
     </div>
     <div class="footer__categories-menu footer__menu-wrap">
@@ -21,7 +21,7 @@
 
 <div class="footer__info container">
     <span class="footer__info-copyright">© 2023 Plantis | Комнатные растения и аксессуары с доставкой. Тел. <a href="tel:+78002015790">8 800 201 57 90</a></span>
-    <a href="https://plantis.shop/privacy-policy/" class="footer__info-link" role="button">
+    <a href="<?php echo site_url()?>/privacy-policy/" class="footer__info-link" role="button">
         Политика конфиденциальности
     </a>
     <p class="footer__info-requsits">Туманов Вячеслав Витальевич
