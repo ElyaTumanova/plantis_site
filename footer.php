@@ -5,8 +5,8 @@
         <a class="footer__heading footer__heading_link" href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">Растения</a>
         <?php plnt_footer_menu_plants(); ?>
     </div>
-    <div class="footer__categories-menu footer__menu-wrap">
-        
+    <div class="footer__services-menu footer__menu-wrap">
+        <?php plnt_footer_menu_services(); ?>
     </div>
     <div class="footer__info-menu footer__menu-wrap">
         <?php get_template_part('template-parts/info-pages-list');?>
