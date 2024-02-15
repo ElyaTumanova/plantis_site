@@ -13,6 +13,7 @@ register_nav_menus( array(
 	'primary'   => esc_html__( 'Primary Menu', 'art-starter-theme' ),
 	'secondary' => esc_html__( 'Secondary Menu', 'art-starter-theme' ),
 	'catalog'    => esc_html__( 'Categories in Catalog', 'art-starter-theme' ),
+	'footer-plants'    => esc_html__( 'Plants Categories in Footer', 'art-starter-theme' ),
 ) );
 
 
@@ -47,6 +48,18 @@ if ( ! function_exists( 'plnt_catalog_menu' ) ) {
 			'menu_class'     => 'catalog-menu',
 			'theme_location' => 'catalog',
 			'depth'          => 3,
+			'fallback_cb'     => '__return_empty_string',
+		));
+	}
+}
+
+if ( ! function_exists( 'plnt_footer_menu_plants' ) ) {
+	function plnt_footer_menu_plants() {
+		wp_nav_menu( array(
+			'container'      => 'nav',
+			'menu_class'     => 'footer__menu-list',
+			'theme_location' => 'footer-plants',
+			'depth'          => 1,
 			'fallback_cb'     => '__return_empty_string',
 		));
 	}

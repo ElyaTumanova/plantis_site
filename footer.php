@@ -1,7 +1,16 @@
 <footer id="footer" class="footer" role="contentinfo">
 
 <div class="footer__nav container">
-    <div class="footer__menu-wrap">
+    <div class="footer__plants-menu footer__menu-wrap">
+        <a class="footer__heading footer__heading_link" href="https://plantis.shop/product-category/komnatnye-rasteniya/">Растения</a>
+        <?php plnt_footer_menu_plants(); ?>
+    </div>
+    <div class="footer__categories-menu footer__menu-wrap">
+        <div class="footer__menu-list">
+        
+        </div>
+    </div>
+    <div class="footer__info-menu footer__menu-wrap">
         <?php get_template_part('template-parts/info-pages-list');?>
     </div>
     <div class="footer__contacts">
