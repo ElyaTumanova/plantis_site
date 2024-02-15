@@ -297,6 +297,16 @@
     color: var(--white);
 }
 
+.footer__nav {
+    display: flex;
+    justify-content: space-between;
+	flex-wrap: wrap;
+    row-gap: 30px;
+}
+
+.footer__menu-wrap {
+	min-width: 200px;
+}
 
 .footer__info {
   font-size: 14px;

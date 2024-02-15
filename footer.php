@@ -1,7 +1,9 @@
 <footer id="footer" class="footer" role="contentinfo">
 
 <div class="footer__nav container">
-
+    <div class="footer__menu-wrap">
+        <?php get_template_part('template-parts/info-pages-list');?>
+    </div>
     <div class="footer__contacts">
         <?php get_template_part('template-parts/contacts-part');?>
     </div>
