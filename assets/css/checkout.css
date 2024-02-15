@@ -376,3 +376,9 @@ div#orddd_list_view_select {
 .woocommerce-order-received .woocommerce-order .woocommerce-table--order-details tfoot tr:nth-child(3) {
     display: none;
 }
+
+/* адрес клиента */ 
+/* скрываем адрес из формы по умолчанию */
+.woocommerce-customer-details .woocommerce-column__title {
+    display: none;
+}
