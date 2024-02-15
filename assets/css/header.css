@@ -315,7 +315,7 @@
     flex-direction: column;
 }
 
-.footer__menu-list .menu-item, .footer__info-menu .menu__item_accent {
+.footer__menu-list .menu-item, .footer__info-menu .menu__item {
     color: #fff;
     list-style-type: none;
     font-size: 14px;
