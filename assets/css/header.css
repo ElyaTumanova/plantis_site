@@ -294,4 +294,23 @@
 .footer {
     background-color: var(--accent-color);
     height: 300px;
+    color: var(--white);
+}
+
+
+.footer__info {
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: 30px;
+}
+.footer__info-copyright {
+  margin-right: 20px;
+}
+.footer__info-requsits {
+  margin: 20px 0;
+  font-size: 12px;
+}
+
+.footer__info-link {
+  color: inherit;
 }

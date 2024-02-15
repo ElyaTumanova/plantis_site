@@ -1,4 +1,4 @@
-<footer id="footer" class="footer" role="contentinfo">
+<footer id="footer" class="footer container" role="contentinfo">
 
 
 <div class="footer__info">
@@ -11,6 +11,10 @@
         <br>Юридический адрес: 105082, Москва, Б. Почтовая, д. 1/33, стр.1
         <br>Расчетный счёт: 40802810900002894566 Банк: АО “ТИНЬКОФФ БАНК” БИК: 044525974 Корр. счёт: 30101810145250000974
     </p>
+</div>
+
+<div class="footer__contacts">
+    <?php get_template_part('template-parts/contacts-part');?>
 </div>
 
 </footer><!-- #colophon -->
