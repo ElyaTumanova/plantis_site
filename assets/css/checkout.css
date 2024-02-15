@@ -330,6 +330,10 @@ div#orddd_list_view_select {
     margin-bottom: 20px;
 }
 
+.woocommerce-thankyou-order-details li{
+    margin-bottom: 5px;
+}
+
 .woocommerce-order-details__title {
     font-size: 18px;
     text-transform: uppercase;
