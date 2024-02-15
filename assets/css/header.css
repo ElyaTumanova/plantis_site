@@ -385,4 +385,13 @@
     .footer__contacts {
         order: -1;
     }
+    .footer {
+        margin-bottom: 100px;
+    }
+}
+
+@media (max-width: 1279px) {
+    .footer {
+        margin-bottom: 50px;
+    }
 }
