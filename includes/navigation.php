@@ -70,7 +70,7 @@ if ( ! function_exists( 'plnt_footer_menu_services' ) ) {
 	function plnt_footer_menu_services() {
 		wp_nav_menu( array(
 			'container'      => 'nav',
-			'menu_class'     => 'footer__menu-list',
+			'menu_class'     => 'footer__heading footer__heading_link',
 			'theme_location' => 'footer-services',
 			'depth'          => 1,
 			'fallback_cb'     => '__return_empty_string',
