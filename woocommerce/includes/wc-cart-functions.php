@@ -54,21 +54,6 @@ function plnt_woocommerce_mini_cart_fragment( $fragments ) {
 
 add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_mini_cart_fragment', 25 );
 
-function plnt_cart_notice () {
-	?>
-	   <div class='cart-notice'><?php woocommerce_output_all_notices()?></div>
-	<?php
-   }
-   
-//    function plnt_cart_notice_fragment( $fragments ) {
-// 	   ob_start();
-// 	   plnt_cart_notice();
-// 	   $fragments[ 'div.cart-notice'] = ob_get_clean();
-// 	   return $fragments;
-//    }
-   
-// add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_cart_notice_fragment', 25 );
-
 /*--------------------------------------------------------------
 # MINI CART 
 --------------------------------------------------------------*/
