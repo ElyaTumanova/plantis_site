@@ -105,6 +105,7 @@ function plnt_price_wrap(){
             //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
             // plnt_cart_notice();
             ?>
+            <div class='cart-notice'></div>
         </div>
         <?php
         plnt_outofstock_info();
