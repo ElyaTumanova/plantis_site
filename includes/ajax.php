@@ -19,16 +19,17 @@ function plnt_search_ajax_action_callback (){
             array(
                 'key'       => '_stock_status',
                 'value'     => 'outofstock',
-                'compare'   => 'NOT IN'
+                'compare'   => 'NOT IN',
+                'posts_per_page' => -1,
             )
         )
     );
     $query_ajax = new WP_Query($arg);
     $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
     if ($query_ajax->have_posts()) {
-        echo '<pre>';
-        print_r( $query_ajax );
-        echo '</pre>';
+        // echo '<pre>';
+        // print_r( $query_ajax );
+        // echo '</pre>';
         while ($query_ajax->have_posts()){
             $query_ajax->the_post();
             $product = wc_get_product( get_the_ID() );
