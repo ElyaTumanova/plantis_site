@@ -15,7 +15,7 @@ function plnt_search_ajax_action_callback (){
         'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
         'post_status' => 'publish',
         's' => $_POST['s'],
-        'posts_per_page' => -1,
+        // 'posts_per_page' => -1,
         'meta_query' => array( 
             array(
                 'key'       => '_stock_status',

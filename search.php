@@ -28,7 +28,7 @@ get_header(); ?>
                 'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
                 'post_status' => 'publish',
                 's' => get_search_query(),
-                'posts_per_page' => 5,
+                'posts_per_page' => -1,
                 'meta_query' => array( 
                     array(
                         'key'       => '_stock_status',
@@ -63,7 +63,7 @@ get_header(); ?>
                     // the_posts_pagination();
 
                     the_posts_pagination( array(
-                        // 'class' => 'woocommerce-pagination',
+                        'class' => 'woocommerce-pagination',
                         'prev_text'    => __('←'),
 	                    'next_text'    => __('→'),
                     ));
