@@ -857,13 +857,13 @@ ul.products {
     overflow: hidden;
 }
 
-.woocommerce-pagination ul.page-numbers {
+.woocommerce-pagination ul.page-numbers, .woocommerce-pagination .nav-links {
 	display: flex;
     justify-content: center;
     column-gap: 5px;
 }
 
-.woocommerce-pagination ul.page-numbers li .page-numbers {
+.woocommerce-pagination ul.page-numbers li .page-numbers, .woocommerce-pagination span, .woocommerce-pagination a {
     padding: 4px 10px;
     border-radius: 5px;
 }
