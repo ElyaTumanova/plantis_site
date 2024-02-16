@@ -27,6 +27,7 @@
 .fix-body {
     height: 100vh;
     overflow-y: hidden;
+    overflow: hidden;
 }
 
 
