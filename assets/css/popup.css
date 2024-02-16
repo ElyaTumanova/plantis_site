@@ -103,6 +103,7 @@ input[type="search"], input[type="search"]:focus-visible {
     flex-direction: column;
     max-height: 80vh;
     overflow-y: scroll;
+    padding-bottom: 50px;
 }
 
 @media (max-width:767px) {
@@ -119,8 +120,17 @@ input[type="search"], input[type="search"]:focus-visible {
     background-color: var(--accent-color);
     border-color: var(--accent-color);
     color: var(--white);
+    position: absolute;
+    bottom: 10px;
 }
 
+@media (max-width:767px) {
+    .search-result__btn {
+        right: 10px;
+        left: 10px;
+
+    }
+}
 .search-result__item:first-child {
     padding-top: 20px;
 }
