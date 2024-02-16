@@ -62,7 +62,7 @@ get_header(); ?>
                     // the_posts_pagination();
 
                     the_posts_pagination( array(
-                        'class' => 'woocommerce-pagination',
+                        // 'class' => 'woocommerce-pagination',
                         'prev_text'    => __('←'),
 	                    'next_text'    => __('→'),
                     ));
