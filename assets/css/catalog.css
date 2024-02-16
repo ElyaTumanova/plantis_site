@@ -856,6 +856,9 @@ ul.products {
     max-width: 100%;
     overflow: hidden;
 }
+.woocommerce-pagination:hover{
+    text-decoration: none;
+}
 
 .woocommerce-pagination ul.page-numbers, .woocommerce-pagination .nav-links {
 	display: flex;
