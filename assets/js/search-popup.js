@@ -33,6 +33,7 @@ document.addEventListener('keydown', function(e){
 
 function toggle_search_popup () {
     searchPopup.classList.toggle ('popup_active');
+    body.classList.toggle ('fix-body');
 
     // для поиска
     const deleteElement = searchResult.querySelectorAll('div');
