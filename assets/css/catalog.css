@@ -856,9 +856,6 @@ ul.products {
     max-width: 100%;
     overflow: hidden;
 }
-.woocommerce-pagination:hover{
-    text-decoration: none;
-}
 
 .woocommerce-pagination ul.page-numbers, .woocommerce-pagination .nav-links {
 	display: flex;
@@ -869,6 +866,10 @@ ul.products {
 .woocommerce-pagination ul.page-numbers li .page-numbers, .woocommerce-pagination span, .woocommerce-pagination a {
     padding: 4px 10px;
     border-radius: 5px;
+}
+
+.woocommerce-pagination ul.page-numbers li .page-numbers:hover, .woocommerce-pagination span:hover, .woocommerce-pagination a:hover {
+    text-decoration: none;
 }
 
 .woocommerce-pagination a.page-numbers:not(.prev):not(.next):hover, .woocommerce-pagination a.page-numbers:not(.prev):not(.next).current, .woocommerce-pagination span.page-numbers:not(.prev):not(.next):hover, .woocommerce-pagination span.page-numbers:not(.prev):not(.next).current {
