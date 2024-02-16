@@ -57,7 +57,7 @@
     padding: 10px 0;
     background: var(--background);
     position: absolute;
-    top: 106px;
+    top: 108px;
     width: 100%;
 }
 
@@ -129,7 +129,8 @@ input[type="search"], input[type="search"]:focus-visible {
 .search-result__item:first-child {
     padding-top: 20px;
 }
-.search-result__item:last-child {
+
+.search-result__item:last-of-type {
     padding-bottom: 40px;
 }
 
