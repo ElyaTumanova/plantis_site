@@ -389,7 +389,7 @@
 
 @media (max-width: 1279px) {
     .footer {
-        margin-bottom: 50px;
+        padding-bottom: 80px;
     }
 }
 
@@ -399,6 +399,6 @@
         width: 100%;
     }
     .footer {
-        margin-bottom: 100px;
+        padding-bottom: 130px;
     }
 }
