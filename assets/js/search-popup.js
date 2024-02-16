@@ -36,10 +36,13 @@ function toggle_search_popup () {
     body.classList.toggle ('fix-body');
 
     // для поиска
+    const searchPopupResultBtn = document.querySelector('.search-result__btn');
     const deleteElement = searchResult.querySelectorAll('div');
     for (let i = 0; i < deleteElement.length; i++) {
       deleteElement[i].remove();
     }
+    searchPopupResultBtn.remove();
     searchInput.value= "";
+
 };
 
