@@ -382,7 +382,7 @@ function truemisha_custom_orderby_option( $sortby ) {
 add_filter( 'woocommerce_pagination_args', 'plnt_woocommerce_pagination_args_filter' );
 
 function plnt_woocommerce_pagination_args_filter( $array ){
-	$array (
+	$array = array(
 		'end_size'  => 2,
 		'mid_size'  => 1,
 	)
