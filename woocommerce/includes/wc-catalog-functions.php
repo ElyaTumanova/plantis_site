@@ -87,10 +87,10 @@ function plnt_catalog_filters_main_area() {
 		<div class="catalog__filter-metki">
 			<?php echo do_shortcode('[br_filter_single filter_id=10989]') ?>  
 		</div>
-		<div class="catalog__filter-active">
-			<?php echo do_shortcode('[br_filter_single filter_id=6057]') ?>
-		</div>
     </div>
+	<div class="catalog__filter-active">
+		<?php echo do_shortcode('[br_filter_single filter_id=6057]') ?>
+	</div>
     <?php 	
 };
 
