@@ -28,10 +28,6 @@ if( !empty ($crosssell_ids) ){
         );
 
         $products = new WP_Query( $args );
-        echo '<pre>';
-        print_r( count($products->posts) );
-        echo '</pre>';
-
         if ( $products->have_posts() ) : ?>
 
             <div class="cross-sells">
@@ -49,7 +45,7 @@ if( !empty ($crosssell_ids) ){
 
             </ul>
 
-            <?php if (count($products) >3) {?> 
+            <?php if (count($products->posts) >3) {?> 
                 <script type="text/javascript">
                     jQuery(window).load(function() {
                         jQuery("#flexisel-cross-sells").flexisel({
