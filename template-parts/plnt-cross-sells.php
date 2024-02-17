@@ -45,7 +45,14 @@ if( !empty ($crosssell_ids) ){
 
             </ul>
 
-            <?php if (count($products->posts) >2) {?> 
+            <?php 
+            var $num;
+            if (wp_is_mobile()) {
+                $num = 2;
+            } else {
+                $num = 3;
+            }
+            if (count($products->posts) >$num) {?> 
                 <script type="text/javascript">
                     jQuery(window).load(function() {
                         jQuery("#flexisel-cross-sells").flexisel({
