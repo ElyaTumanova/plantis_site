@@ -14,7 +14,8 @@
     word-break: break-word;
     min-width: 12vw;
     column-gap: 16px;
-    row-gap: 16px;
+    row-gap: 35px;
+    margin-bottom: 50px;
 }
 
 .wishlist-items-wrapper tr{
