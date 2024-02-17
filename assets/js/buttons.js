@@ -11,17 +11,17 @@ window.addEventListener('resize', () => {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
 
-const productImg = document.querySelector('.product__image-slider-wrap');
-if (productImg) {
-    let imgHeight = productImg.offsetHeight;
-    document.documentElement.style.setProperty('--imgH', `${imgHeight}px`);
-    // слушаем событие resize
-    window.addEventListener('resize', () => {
-        // получаем текущее значение высоты
-        let imgHeight = productImg.offsetHeight;
-        document.documentElement.style.setProperty('--imgH', `${imgHeight}px`);
-    });
-}
+// const productImg = document.querySelector('.product__image-slider-wrap');
+// if (productImg) {
+//     let imgHeight = productImg.offsetHeight;
+//     document.documentElement.style.setProperty('--imgH', `${imgHeight}px`);
+//     // слушаем событие resize
+//     window.addEventListener('resize', () => {
+//         // получаем текущее значение высоты
+//         let imgHeight = productImg.offsetHeight;
+//         document.documentElement.style.setProperty('--imgH', `${imgHeight}px`);
+//     });
+// }
 
 
 
