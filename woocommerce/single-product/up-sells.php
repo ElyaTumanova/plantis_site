@@ -33,7 +33,14 @@ if ( $upsells ) : ?>
 		<?php endif; ?>
 
         <!-- <ul id="flexisel-upsells" class="products columns-<?php //echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>"> -->
-        <ul id="flexisel-upsells" class="products columns-3">
+        <!-- <ul id="flexisel-upsells" class="products columns-3"> -->
+        <?php 
+            if (wp_is_mobile()) {
+                    ?> <ul class="card__slider_mob products columns-3"> <?php
+            } else {
+                ?> <ul id="flexisel-upsells" class="card__slider products columns-3"> <?php
+            }
+        ?>
 
 			<?php foreach ( $upsells as $upsell ) : ?>
 
