@@ -333,6 +333,10 @@ ul.products {
 }
 
 /* стили цены */
+.price bdi {
+    white-space: nowrap;
+}
+
 .product .price {
     font-size: 24px;
     line-height: 1.1;
