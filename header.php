@@ -6,14 +6,14 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<!-- Yandex.Metrika counter -->
-		<!-- <script type="text/javascript" >
+		<script type="text/javascript" >
 		(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
 		m[i].l=1*new Date();
 		for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
 		k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
 		(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-		ym(87781741, "init", {
+		ym(96498108, "init", {
 				clickmap:true,
 				trackLinks:true,
 				accurateTrackBounce:true,
@@ -22,7 +22,7 @@
 		});
 
 		window.dataLayer = window.dataLayer || [];
-		</script> -->
+		</script>
 	<!-- /Yandex.Metrika counter -->
 	<?php wp_head(); ?>
 </head>
