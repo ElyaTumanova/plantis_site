@@ -382,12 +382,12 @@ ul.products {
 }
 
 /* слайдер для прокручивания галереи товаров горизонтальным скроллом */
-.products__slider_mob {
+.products__slider_mob, .main-sale-slider-mob ul{
     overflow-x: scroll;
     overflow-y: hidden;
 }
 
-.products__slider_mob .product {
+.products__slider_mob .product, .main-sale-slider-mob ul li {
     min-width: calc((100% - 10px)/2);
 }
 
