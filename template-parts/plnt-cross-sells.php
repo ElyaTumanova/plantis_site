@@ -37,9 +37,9 @@ if( !empty ($crosssell_ids) ){
             <!-- <ul id="flexisel-cross-sells" class="products columns-<?php //echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>"> -->
             <?php 
                 if (wp_is_mobile()) {
-                     ?> <ul class="card__slider_mob products columns-3"> <?php
+                     ?> <ul class="products__slider_mob products columns-3"> <?php
                 } else {
-                    ?> <ul id="flexisel-cross-sells" class="card__slider products columns-3"> <?php
+                    ?> <ul id="flexisel-cross-sells" class="products columns-3"> <?php
                 }
             ?>
             <!-- <ul id="flexisel-cross-sells" class="products columns-3"> -->

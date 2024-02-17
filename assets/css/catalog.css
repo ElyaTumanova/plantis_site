@@ -381,6 +381,15 @@ ul.products {
     display: inline-block;
 }
 
+/* слайдер для прокручивания галереи товаров горизонтальным скроллом */
+.products__slider_mob {
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.products__slider_mob .product {
+    min-width: calc((100% - 10px)/2);
+}
 
 /*--------------------------------------------------------------
 # Upsells & Cross sells in Card
@@ -401,17 +410,6 @@ ul.products {
 }
 
 /*cross sells & up sells #adaptive*/
-
-.card__slider_mob {
-    overflow-x: scroll;
-    overflow-y: hidden;
-}
-
-.card__slider_mob .product {
-    min-width: calc((100% - 10px)/2);
-}
-
-
 
 @media (max-width:768px) {
     .card__sliders-wrap .yith-wcwl-add-to-wishlist {
@@ -612,12 +610,12 @@ ul.products {
 
 /* sale gallery стили для мобилки   #adaptive*/
 @media (max-width:767px) {
-    .main__sale-gallery .products {
+    /* .main__sale-gallery .products {
         display: flex;
         column-gap: 5px;
         overflow-x: scroll;
         overflow-y: hidden;
-    }
+    } */
 
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
         position: absolute;

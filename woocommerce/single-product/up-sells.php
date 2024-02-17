@@ -36,9 +36,9 @@ if ( $upsells ) : ?>
         <!-- <ul id="flexisel-upsells" class="products columns-3"> -->
         <?php 
             if (wp_is_mobile()) {
-                    ?> <ul class="card__slider_mob products columns-3"> <?php
+                    ?> <ul class="products__slider_mob products columns-3"> <?php
             } else {
-                ?> <ul id="flexisel-upsells" class="card__slider products columns-3"> <?php
+                ?> <ul id="flexisel-upsells" class="products columns-3"> <?php
             }
         ?>
 
