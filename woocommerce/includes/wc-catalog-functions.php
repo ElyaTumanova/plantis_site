@@ -383,6 +383,14 @@ add_filter( 'woocommerce_pagination_args', 'plnt_woocommerce_pagination_args_fil
 
 function plnt_woocommerce_pagination_args_filter( $array ){
 	$array = array(
+		'base'      => $base,
+		'format'    => $format,
+		'add_args'  => false,
+		'current'   => max( 1, $current ),
+		'total'     => $total,
+		'prev_text' => is_rtl() ? '&rarr;' : '&larr;',
+		'next_text' => is_rtl() ? '&larr;' : '&rarr;',
+		'type'      => 'list',
 		'end_size'  => 2,
 		'mid_size'  => 1,
 	);
