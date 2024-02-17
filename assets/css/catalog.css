@@ -288,14 +288,18 @@ ul.products {
         width: 60px;
         height: 60px;
         border-radius: 100px;
-        position: absolute;
+        margin-bottom: 0;
+        margin-top: -60px;
+        margin-left: auto;
+        /* position: absolute;
         top: calc(var(--imgH) + 60px);
-        right: 10px;
+        right: 10px; */
         background-image: url(http://new.plantis.shop/wp-content/uploads/2023/05/cart-white.svg);
         background-repeat: no-repeat;
         background-position: center;
         padding: 0;
         background-size: 50%;
+        order: 1;
     }
     
 }
@@ -356,7 +360,8 @@ ul.products {
 /* метки */
 
 .catalog__tags {
-    margin-top: 22px;
+    /* margin-top: 22px; */
+    order: 2;
 }
 
 .catalog__tag {
