@@ -232,14 +232,19 @@ ul.products {
 
 @media (max-width:767px) {
     .catalog__products-wrap .yith-wcwl-add-to-wishlist {
-        position: absolute;
+        /* position: absolute;
         top: auto;
         bottom: auto;
         top: calc(var(--imgH) + 80px);
-        right: 80px;
+        right: 80px; */
         border-radius: 100px;
         border: solid 3px var(--accent-color);
         padding: 11px 10px 7px 10px;
+        position: relative;
+        order: 2;
+        margin-top: -52px;
+        margin-left: auto;
+        margin-right: 70px;
     }
 
     .catalog__products-wrap .yith-wcwl-add-to-wishlist a.add_to_wishlist>img {
@@ -360,7 +365,7 @@ ul.products {
 /* метки */
 
 .catalog__tags {
-    /* margin-top: 22px; */
+    margin-top: 20px;
     order: 2;
 }
 
