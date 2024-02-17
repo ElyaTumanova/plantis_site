@@ -385,6 +385,6 @@ function plnt_woocommerce_pagination_args_filter( $array ){
 	$array = array(
 		'end_size'  => 2,
 		'mid_size'  => 1,
-	)
+	);
 	return $array;
 }
