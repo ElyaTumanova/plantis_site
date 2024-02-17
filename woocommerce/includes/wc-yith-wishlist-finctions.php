@@ -95,5 +95,13 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
   }
   add_filter( 'gettext', 'plnt_change_text_wish_3', 20 );
 
+  function plnt_change_text_wish_4( $translated_text ) {
+    if ( $translated_text == 'Product added to cart successfully' ) {
+      $translated_text = 'Товары добавлены в корзину';
+    }
+    return $translated_text;
+  }
+  add_filter( 'gettext', 'plnt_change_text_wish_4', 20 );
+
 
   
