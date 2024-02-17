@@ -685,13 +685,17 @@ ul.products {
 
 /* активные фильтры */
 
+.catalog__filter-active {
+    overflow-x: scroll;
+}
+
 .catalog__filter-active h3 {
     display: none;
 }
 
 .catalog__filter-active .berocket_aapf_widget_selected_filter {
     display: flex;
-    column-gap: 30px;
+    column-gap: 10px;
 }
 
 .catalog__filter-active .berocket_aapf_widget_selected_filter .bapf_sfa_unall {
