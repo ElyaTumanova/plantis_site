@@ -46,7 +46,6 @@ if( !empty ($crosssell_ids) ){
             </ul>
 
             <?php 
-            var $num;
             if (wp_is_mobile()) {
                 $num = 2;
             } else {
