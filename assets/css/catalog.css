@@ -381,16 +381,6 @@ ul.products {
     display: inline-block;
 }
 
-/* слайдер для прокручивания галереи товаров горизонтальным скроллом */
-.products__slider_mob, .main-sale-slider-mob ul{
-    overflow-x: scroll;
-    overflow-y: hidden;
-}
-
-.products__slider_mob .product, .main-sale-slider-mob ul li {
-    min-width: calc((100% - 10px)/2);
-}
-
 /*--------------------------------------------------------------
 # Upsells & Cross sells in Card
 --------------------------------------------------------------*/
@@ -463,6 +453,21 @@ ul.products {
     line-height: 1.1;
     font-weight: 700;
     color: var(--red-color);
+}
+
+/* слайдер для прокручивания галереи товаров горизонтальным скроллом */
+.products__slider_mob, .main-sale-slider-mob .products{
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.products__slider_mob .product, .main-sale-slider-mob .products .product {
+    min-width: calc((100% - 10px)/2);
+}
+
+.main-sale-slider-mob .products {
+    display: flex;
+     column-gap: 5px;
 }
 
 /*--------------------------------------------------------------
