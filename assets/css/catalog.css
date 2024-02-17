@@ -408,7 +408,7 @@ ul.products {
 }
 
 .card__slider_mob .product {
-    width: calc((100% - 10px)/2);
+    min-width: calc((100% - 10px)/2);
 }
 
 
