@@ -402,7 +402,7 @@ ul.products {
 
 /*cross sells & up sells #adaptive*/
 
-.card__slider_mob .products {
+.card__slider_mob {
     overflow-x: scroll;
     overflow-y: hidden;
 }
