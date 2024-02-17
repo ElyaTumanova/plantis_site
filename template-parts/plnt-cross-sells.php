@@ -35,7 +35,14 @@ if( !empty ($crosssell_ids) ){
             <h2 class="heading-2"><?php _e( 'Похожие растения', 'woocommerce' ) ?></h2>
 
             <!-- <ul id="flexisel-cross-sells" class="products columns-<?php //echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>"> -->
-            <ul id="flexisel-cross-sells" class="products columns-3">
+            <?php 
+                if (wp_is_mobile()) {
+                     ?> <ul class="products columns-3"> <?php
+                } else {
+                    ?> <ul id="flexisel-cross-sells" class="products columns-3"> <?php
+                }
+            ?>
+            <!-- <ul id="flexisel-cross-sells" class="products columns-3"> -->
 
                 <?php while ( $products->have_posts() ) : $products->the_post(); ?>
 
@@ -46,12 +53,12 @@ if( !empty ($crosssell_ids) ){
             </ul>
 
             <?php 
-            if (wp_is_mobile()) {
-                $num = 2;
-            } else {
-                $num = 3;
-            }
-            if (count($products->posts) >$num) {?> 
+            // if (wp_is_mobile()) {
+            //     $num = 2;
+            // } else {
+            //     $num = 3;
+            // }
+            if (count($products->posts) >3) {?> 
                 <script type="text/javascript">
                     jQuery(window).load(function() {
                         jQuery("#flexisel-cross-sells").flexisel({
