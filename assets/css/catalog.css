@@ -407,11 +407,10 @@ ul.products {
     overflow-y: hidden;
 }
 
-/* @media (max-width: 640px) {
-    .card__sliders-wrap .product {
-        width: calc((100% - 10px)/2);
-    }
-} */
+.card__slider_mob .product {
+    width: calc((100% - 10px)/2);
+}
+
 
 
 @media (max-width:768px) {
