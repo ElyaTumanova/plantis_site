@@ -20,8 +20,9 @@
 .wishlist-items-wrapper tr{
     display: flex;
     flex-direction: column;
-    max-width: 300px;
+    width: calc(100% / 3 - 32px);
     justify-content: space-between;
+    row-gap: 15px;
 }
 
 .woocommerce .wishlist-title h2 {
@@ -33,7 +34,7 @@
 }
 
 .wishlist_table tr th.product-thumbnail {
-    width: 300px !important;
+    width: 100% !important;
 }
 
 .wishlist_table tbody td {
@@ -41,13 +42,16 @@
 }
 
 .wishlist_table tr td.product-thumbnail a {
-    max-width: 300px !important;
+    max-width: 100% !important;
+    font-size: 0;
 }
 
 table.wishlist_table tbody td.product-remove {
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 700;
     padding: 0;
+    margin-bottom: 10px;
+    align-self: end;
 }
 
 table.wishlist_table tbody td.product-remove a:hover{
