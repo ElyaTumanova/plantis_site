@@ -235,7 +235,7 @@ ul.products {
         position: absolute;
         top: auto;
         bottom: auto;
-        top: calc(var(--imgH) + 60px);
+        top: calc(var(--imgH) + 80px);
         right: 80px;
         border-radius: 100px;
         border: solid 3px var(--accent-color);
@@ -289,7 +289,7 @@ ul.products {
         height: 60px;
         border-radius: 100px;
         position: absolute;
-        top: calc(var(--imgH) + 40px);
+        top: calc(var(--imgH) + 60px);
         right: 10px;
         background-image: url(http://new.plantis.shop/wp-content/uploads/2023/05/cart-white.svg);
         background-repeat: no-repeat;
@@ -356,7 +356,7 @@ ul.products {
 /* метки */
 .catalog__tag {
     border-radius: 20px;
-    padding: 2px 7px 3px;
+    padding: 3px 7px 3px;
     box-shadow: 0 0 0 1px #f2f2f2;
     border: solid 2px var(--accent-color);
     font-weight: 600;

@@ -376,3 +376,14 @@ function truemisha_custom_orderby_option( $sortby ) {
 	$sortby['name_list_desc'] = 'По названию от Я до А';
 	return $sortby;
 }
+
+// параметры пагинации #pagination #woocommerce-pagination
+
+add_filter( 'woocommerce_pagination_args', 'plnt_woocommerce_pagination_args_filter' );
+
+function plnt_woocommerce_pagination_args_filter( $array ){
+
+	'end_size'  => 2,
+	'mid_size'  => 1,
+	return $array;
+}
