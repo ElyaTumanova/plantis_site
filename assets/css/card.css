@@ -263,7 +263,7 @@
     margin: 0;
     align-self: center;
 }
-.card__grid .add-to-cart-wrap .yith-wcwl-add-button a, .card__grid .add-to-cart-wrap .yith-wcwl-add-button span {
+.card__grid .add-to-cart-wrap .yith-wcwl-add-button {
     font-size: 0;
 }
 
