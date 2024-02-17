@@ -112,7 +112,7 @@ table.wishlist_table tbody td.product-price ins{
 }
 
 .wishlist_table.mobile li .item-wrapper .product-remove{
-    text-align: right;
+    text-align: left;
     font-size: 25px;
     margin-bottom: 10px;
 }
