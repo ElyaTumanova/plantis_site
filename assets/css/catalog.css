@@ -354,6 +354,11 @@ ul.products {
 }
 
 /* метки */
+
+.catalog__tags {
+    margin-top: 22px;
+}
+
 .catalog__tag {
     border-radius: 20px;
     padding: 3px 7px 3px;
