@@ -5,6 +5,23 @@
 /*--------------------------------------------------------------
 # Desktop
 --------------------------------------------------------------*/
+.wishlist-items-wrapper {
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    word-break: break-word;
+    min-width: 12vw;
+    column-gap: 16px;
+    row-gap: 16px;
+}
+
+.wishlist-items-wrapper tr{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+}
 
 .woocommerce .wishlist-title h2 {
     padding: 0;
