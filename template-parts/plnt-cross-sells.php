@@ -46,7 +46,7 @@ if( !empty ($crosssell_ids) ){
 
             </ul>
 
-            <?php if (count($crosssell_ids) >3) {?> 
+            <?php if (count($products) >3) {?> 
                 <script type="text/javascript">
                     jQuery(window).load(function() {
                         jQuery("#flexisel-cross-sells").flexisel({

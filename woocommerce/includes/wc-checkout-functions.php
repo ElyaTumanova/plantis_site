@@ -52,7 +52,7 @@ function my_delivery_small_oder_info () {
 
 function plnt_change_text_checkout_1( $translated_text ) {
     if ( $translated_text == 'Select a date to view time slots' ) {
-      $translated_text = 'Сначала выберите дату';
+      $translated_text = 'Сначала выберите дату доставки';
     }
     return $translated_text;
   }
