@@ -27,6 +27,10 @@ table.wishlist_table tbody td.product-remove {
     font-weight: 700;
 }
 
+table.wishlist_table tbody td.product-remove a:hover{
+    text-decoration: none;
+}
+
 table.wishlist_table tbody td.product-name {
     font-size: 16px;
     font-weight: 500;
@@ -34,6 +38,16 @@ table.wishlist_table tbody td.product-name {
 
 table.wishlist_table tbody td.product-price {
     font-size: 25px;
+}
+
+table.wishlist_table tbody td.product-price del{
+    font-size: 18px;
+    margin-right: 10px;
+    font-weight: 500;
+}
+
+table.wishlist_table tbody td.product-price ins{
+    color: var(--red-color);
 }
 
 .wishlist_table .product-add-to-cart a.button {
