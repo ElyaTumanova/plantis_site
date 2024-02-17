@@ -30,7 +30,7 @@ if( !empty ($crosssell_ids) ){
         $products = new WP_Query( $args );
         if ( $products->have_posts() ) : ?>
 
-            <div class="cross-sells">
+            <div class="cross-sells main__sale-gallery">
 
             <h2 class="heading-2"><?php _e( 'Похожие растения', 'woocommerce' ) ?></h2>
 
