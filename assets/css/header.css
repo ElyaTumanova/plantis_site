@@ -234,6 +234,10 @@
     padding-top: 7px;
 }
 
+.woocommerce-mini-cart-item .remove a:hover{
+    text-decoration: none;
+}
+
 .woocommerce-mini-cart-item .product {
     grid-area: image;
 }
