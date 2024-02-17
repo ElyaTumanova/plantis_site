@@ -19,6 +19,7 @@
 					accurateTrackBounce:true,
 					ecommerce:"dataLayer"
 			});
+			window.dataLayer = window.dataLayer || [];
 		</script>
 	<!-- /Yandex.Metrika counter -->
 	<?php wp_head(); ?>
