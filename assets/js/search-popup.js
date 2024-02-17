@@ -41,8 +41,10 @@ function toggle_search_popup () {
     for (let i = 0; i < deleteElement.length; i++) {
       deleteElement[i].remove();
     }
-    searchPopupResultBtn.remove();
     searchInput.value= "";
+    if(searchPopupResultBtn) {
+        searchPopupResultBtn.remove();
+    }
 
 };
 
