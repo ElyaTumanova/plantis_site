@@ -30,16 +30,16 @@ if( !empty ($crosssell_ids) ){
         $products = new WP_Query( $args );
         if ( $products->have_posts() ) : ?>
 
-            <div class="cross-sells main__sale-gallery">
+            <div class="cross-sells">
 
             <h2 class="heading-2"><?php _e( 'Похожие растения', 'woocommerce' ) ?></h2>
 
             <!-- <ul id="flexisel-cross-sells" class="products columns-<?php //echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>"> -->
             <?php 
                 if (wp_is_mobile()) {
-                     ?> <ul class="products columns-3"> <?php
+                     ?> <ul class="card__slider_mob products columns-3"> <?php
                 } else {
-                    ?> <ul id="flexisel-cross-sells" class="products columns-3"> <?php
+                    ?> <ul id="flexisel-cross-sells" class="card__slider products columns-3"> <?php
                 }
             ?>
             <!-- <ul id="flexisel-cross-sells" class="products columns-3"> -->

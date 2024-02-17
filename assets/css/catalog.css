@@ -402,11 +402,16 @@ ul.products {
 
 /*cross sells & up sells #adaptive*/
 
-@media (max-width: 640px) {
+.card__slider_mob .products {
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+/* @media (max-width: 640px) {
     .card__sliders-wrap .product {
         width: calc((100% - 10px)/2);
     }
-}
+} */
 
 
 @media (max-width:768px) {
