@@ -155,7 +155,7 @@
         $(slider).on("touchend",function (event) {
             console.log(moveY);
             body.classList.remove ('no-touch');
-            window.scrollBy(0, moveY);
+            window.scrollBy(0, -moveY);
             // console.log('Прикосновение закончено')
         });
 
