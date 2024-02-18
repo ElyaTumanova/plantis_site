@@ -188,6 +188,10 @@
     color: var(--white);
 }
 
+.about__slider_feedback {
+    grid-column: span 2;
+}
+
 .about__slider_feedback .nivo-nextNav {
     right: 9px;
 }
