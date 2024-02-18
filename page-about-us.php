@@ -73,6 +73,7 @@ get_header(); ?>
                 </script>
             </div>
             <div class="about__full-width-wrap">
+                <h2 class="entry-title container">Отзывы</h2> 
                 <div class="about__slider about__slider_feedback container">
                     <?php if (wp_is_mobile()) {?>
                         <div class="nivo-about-feedback">
