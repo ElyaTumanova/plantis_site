@@ -20,7 +20,7 @@
 //     // },
 // });
 
-const swiper = new Swiper('.swiper', {
+const swiper = new Swiper('.swiper_about-us_desktop', {
     // Optional parameters
     // direction: 'vertical',
     // loop: true,
