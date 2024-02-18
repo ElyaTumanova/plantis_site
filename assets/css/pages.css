@@ -181,6 +181,10 @@
 
 .about__full-width-wrap {
     background-color: var(--accent-color);
+    color: var(--white);
+    padding-top: 30px;
+    margin-top: 30px;
+    margin-bottom: -58px;
 }
 
 .about__slider_photo .nivo-controlNav {
