@@ -21,9 +21,12 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		wp_enqueue_script( 'search-popup', get_template_directory_uri() .
 		                                     '/assets/js/search-popup.js', array( 'jquery' ), null, true );
 		wp_enqueue_script( 'page-popup', get_template_directory_uri() .
-											 '/assets/js/page-popup.js', array( 'jquery' ), null, true );	
+											 '/assets/js/page-popup.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'swiper', get_template_directory_uri() .
+		                                     '/assets/js/swiper.js', array( 'jquery' ), null, true ); //swiper
+
 		wp_enqueue_script( 'buttons', get_template_directory_uri() .
-											 '/assets/js/buttons.js', array( 'jquery' ), null, true );	
+											 '/assets/js/buttons.js', array( 'jquery', 'swiper' ), null, true );	
 
 		// wp_enqueue_script( 'lazy-load', get_template_directory_uri() .
 		//                                      '/assets/js/lazy-load.js', array( 'jquery' ), null, true ); // for lazy load
@@ -42,9 +45,6 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 
 		wp_enqueue_script( 'catalog-menu', get_template_directory_uri() .
 		                                     '/assets/js/catalog-menu.js', array( 'jquery' ), null, true );
-
-		wp_enqueue_script( 'swiper', get_template_directory_uri() .
-		                                     '/assets/js/swiper.js', array( 'jquery' ), null, true ); //swiper
 
 		wp_enqueue_script( 'metrikaGoal', get_template_directory_uri() .
 		                                     '/assets/js/metrikaGoal.js', array( 'jquery' ), null, true );  //metrikaGoal Яндекс Метрика Yandex Metrika
