@@ -294,6 +294,7 @@
     flex-wrap: wrap;
     column-gap: 15px;
     row-gap: 15px;
+    margin-bottom: 25px;
 }
 
 .plants-cats-az__item {
