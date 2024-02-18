@@ -179,6 +179,10 @@
     grid-template-columns: 60% calc(40% - 50px);
 }
 
+.about__full-width-wrap {
+    background-color: var(--accent-color);
+}
+
 .about__slider_photo .nivo-controlNav {
     bottom: auto;
 }

@@ -2,7 +2,7 @@
 
 get_header(); ?>
 
-<div class="content-area-main">
+<div class="content-area-full-width">
 	<main id="main" class="site-main" role="main">
 	<div class="main__wrap-colored-bg main__row">
 		<div class="main__wrap container">
