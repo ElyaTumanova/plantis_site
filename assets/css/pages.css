@@ -235,7 +235,7 @@
     max-width: 100%;
 }
 
-@media (max-width:767px) {
+@media (max-width:1024px) {
     .landscaping {
         display: grid;
         grid-template-columns: 100%;
