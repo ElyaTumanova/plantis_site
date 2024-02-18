@@ -7,7 +7,7 @@ get_header(); ?>
 			<h1 class="entry-title">Вакансии</h1>                
 		</header>
 		<div class="vakansii info__content info__list">
-            <div class="info__accent-text">
+            <div class="info__accent-text-upper">
                 <p>У Plantis большие планы, и мы решили расширяться. </p>
                 <p>И сейчас в нашей команде не хватает тебя —&nbsp; амбициозного, заряженного на результат и полного идей. <br>Идей, которые мы реализуем вместе.</p>	
             </div>
