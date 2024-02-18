@@ -45,6 +45,13 @@
     line-height: 1.2;
     text-transform: uppercase;
     margin-bottom: 30px;
+    font-weight: 500;
+}
+
+@media (max-width:767px) {
+    .info__accent-text-upper {
+        font-size: 20px;
+    }
 }
 
 .info__accent-text-small {
