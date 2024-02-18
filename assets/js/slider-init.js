@@ -1,4 +1,4 @@
-const swiper = new Swiper('.swiper_about-us_mob', {
+const swiper_about_us_mob = new Swiper('.swiper_about-us_mob', {
     // Optional parameters
     // direction: 'vertical',
     // loop: true,
@@ -20,7 +20,7 @@ const swiper = new Swiper('.swiper_about-us_mob', {
     // },
 });
 
-const swiper = new Swiper('.swiper_about-us_desktop', {
+const swiper_about_us_desktop = new Swiper('.swiper_about-us_desktop', {
     // Optional parameters
     // direction: 'vertical',
     // loop: true,
