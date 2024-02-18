@@ -156,7 +156,7 @@
             console.log(moveY);
             body.classList.remove ('no-touch');
             window.scrollBy({
-                top: -moveY,
+                top: -moveY*2,
                 left: 0,
                 behavior: 'smooth'
               });
