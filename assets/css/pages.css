@@ -221,10 +221,10 @@
 }
 
 @media (max-width:767px) {
-    .about__slider_feedback .nivo-nextNav {
+    .about__slider .nivo-nextNav {
         display: none;
     }
-    .about__slider_feedback .nivo-prevNav {
+    .about__slider .nivo-prevNav {
         display: none;
     }
 }
