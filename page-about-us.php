@@ -76,7 +76,7 @@ get_header(); ?>
                 <h2 class="entry-title container">Отзывы</h2> 
                 <div class="about__slider about__slider_feedback container">
                     <?php if (wp_is_mobile()) {?>
-                        <div class="swiper_about-us_mob">
+                        <div class="swiper_about-us_mob swiper">
                             <div class="swiper-wrapper">
                                 <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2024/02/12.webp" alt="Отзывы об интернет-магазине Plantis">
                                 <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2024/02/14.webp" alt="Отзывы об интернет-магазине Plantis">
@@ -98,7 +98,7 @@ get_header(); ?>
                             <div class="swiper-button-next"></div>
                         </div> <?php 
                         } else {?>
-                        <div class="swiper_about-us_desktop">
+                        <div class="swiper_about-us_desktop swiper">
                             <div class="swiper-wrapper">
                                 <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2024/02/feedback_01_1.webp" alt="Отзывы об интернет-магазине Plantis">
                                 <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2024/02/feedback_02.webp" alt="Отзывы об интернет-магазине Plantis">
