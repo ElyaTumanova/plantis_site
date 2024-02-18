@@ -135,9 +135,11 @@
           let move = pointEnd - pointStart;
           if (move <-50) {
             $(nextNav).trigger('click');
+            body.classList.toggle ('fix-body');
           };
           if (move >50) {
             $(prevNav).trigger('click');
+            body.classList.toggle ('fix-body');
           };
 
         });
