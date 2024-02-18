@@ -127,7 +127,7 @@ get_header(); ?>
                         })
                     });
                 </script>
-                <!-- <script>
+                <script>
                     const swiper = new Swiper('.swiper', {
                     // Optional parameters
                     direction: 'vertical',
@@ -149,7 +149,7 @@ get_header(); ?>
                     //     el: '.swiper-scrollbar',
                     // },
                     });
-                </script> -->
+                </script>
             </div>
 
             
