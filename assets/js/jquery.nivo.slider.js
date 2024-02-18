@@ -124,35 +124,37 @@
         var body = document.querySelector('body');
 
         $(slider).on("touchstart",function (event) {
-          pointStart = event.changedTouches[0].clientX;
-          pointStartY = event.changedTouches[0].clientY;
-          nextNav = $(this).find("a.nivo-nextNav");
-          prevNav = $(this).find("a.nivo-prevNav");
-          body.classList.add ('no-touch');
+            console.log('Вы приложили палец к элементу')
+            pointStart = event.changedTouches[0].clientX;
+            pointStartY = event.changedTouches[0].clientY;
+            nextNav = $(this).find("a.nivo-nextNav");
+            prevNav = $(this).find("a.nivo-prevNav");
+            body.classList.add ('no-touch');
         });
 
         $(slider).on("touchmove",function (event) {
-          pointEnd = event.changedTouches[0].clientX;
-          pointEndY = event.changedTouches[0].clientY;
-          let move = pointEnd - pointStart;
-          let moveY = pointEndY - pointStartY;
-          if (move <-50) {
-            $(nextNav).trigger('click');
-          };
-          if (move >50) {
-            $(prevNav).trigger('click');
-          };
-          if (moveY > 100) {
-            body.classList.remove ('no-touch');
-          };
-          if (moveY < -100) {
-            body.classList.remove ('no-touch');
-          };
+            pointEnd = event.changedTouches[0].clientX;
+            pointEndY = event.changedTouches[0].clientY;
+            let move = pointEnd - pointStart;
+            let moveY = pointEndY - pointStartY;
+            if (move <-50) {
+                $(nextNav).trigger('click');
+            };
+            if (move >50) {
+                $(prevNav).trigger('click');
+            };
+            if (moveY > 100) {
+                body.classList.remove ('no-touch');
+            };
+            if (moveY < -100) {
+                body.classList.remove ('no-touch');
+            };
         });
 
         $(slider).on("touchend",function (event) {
             body.classList.remove ('no-touch');
-          });
+            console.log('Прикосновение закончено')
+        });
 
 
         // Add Direction nav
