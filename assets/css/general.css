@@ -64,7 +64,7 @@
     margin-top: 10px;
 }
 
-.my_header__title, .entry-header, .entry-title {
+.my_header__title, .entry-header, .entry-title, .my_header__title_paged {
     color: var(--accent-color);
     font-weight: 700;
     line-height: 1.1;
@@ -73,7 +73,7 @@
 }
 
 @media (max-width: 767px) {
-    .my_header__title, .entry-header, .entry-title {
+    .my_header__title, .entry-header, .entry-title, .my_header__title_paged {
         font-size: 30px;
     }
 }
