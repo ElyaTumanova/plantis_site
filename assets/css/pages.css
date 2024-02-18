@@ -189,7 +189,10 @@
 }
 
 .about__slider_feedback .nivo-nextNav {
-    right: 12px;
+    right: 9px;
+}
+.about__slider_feedback .nivo-prevNav {
+    left: 9px;
 }
 
 .about__slider_photo .nivo-directionNav {
@@ -206,7 +209,6 @@
 }
 
 .about__slider_feedback {
-    padding-left: 10px;
     background-color: var(--accent-color);
     border-radius: 10px;
 }

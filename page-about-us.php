@@ -57,22 +57,30 @@ get_header(); ?>
                     </div>
 
                     <div class="about__slider about__slider_feedback">
-                        <div class="nivo-about-feedback">
-                            <img src="https://plantis.shop/wp-content/uploads/2024/02/12.webp" alt="Отзывы об интернет-магазине Plantis">
-                            <img src="https://plantis.shop/wp-content/uploads/2024/02/14.webp" alt="Отзывы об интернет-магазине Plantis">
-                            <img src="https://plantis.shop/wp-content/uploads/2024/02/13.webp" alt="Отзывы об интернет-магазине Plantis">
-                            <img src="https://plantis.shop/wp-content/uploads/2022/10/01_.webp" alt="Отзывы об интернет-магазине Plantis">
-                            <img src="https://plantis.shop/wp-content/uploads/2022/10/02_-1.webp" alt="Отзывы об интернет-магазине Plantis">
-                            <img src="https://plantis.shop/wp-content/uploads/2022/10/03_.webp" alt="Отзывы об интернет-магазине Plantis">
-                            <img src="https://plantis.shop/wp-content/uploads/2022/10/04_.webp" alt="Отзывы об интернет-магазине Plantis">
-                            <img src="https://plantis.shop/wp-content/uploads/2022/10/05_.webp" alt="Отзывы об интернет-магазине Plantis">
-                            <img src="https://plantis.shop/wp-content/uploads/2022/10/06_.webp" alt="Отзывы об интернет-магазине Plantis">
-                            <img src="https://plantis.shop/wp-content/uploads/2022/10/07_.webp" alt="Отзывы об интернет-магазине Plantis">
-                            <img src="https://plantis.shop/wp-content/uploads/2022/10/08_.webp" alt="Отзывы об интернет-магазине Plantis">
-                            <img src="https://plantis.shop/wp-content/uploads/2022/10/09_.webp" alt="Отзывы об интернет-магазине Plantis">
-                            <img src="https://plantis.shop/wp-content/uploads/2022/10/10_.webp" alt="Отзывы об интернет-магазине Plantis">
-                            <img src="https://plantis.shop/wp-content/uploads/2022/10/11_.webp" alt="Отзывы об интернет-магазине Plantis">
-                        </div>
+                        <?php if (wp_is_mobile()) {?>
+                            <div class="nivo-about-feedback">
+                                <img src="https://plantis.shop/wp-content/uploads/2024/02/12.webp" alt="Отзывы об интернет-магазине Plantis">
+                                <img src="https://plantis.shop/wp-content/uploads/2024/02/14.webp" alt="Отзывы об интернет-магазине Plantis">
+                                <img src="https://plantis.shop/wp-content/uploads/2024/02/13.webp" alt="Отзывы об интернет-магазине Plantis">
+                                <img src="https://plantis.shop/wp-content/uploads/2022/10/01_.webp" alt="Отзывы об интернет-магазине Plantis">
+                                <img src="https://plantis.shop/wp-content/uploads/2022/10/02_-1.webp" alt="Отзывы об интернет-магазине Plantis">
+                                <img src="https://plantis.shop/wp-content/uploads/2022/10/03_.webp" alt="Отзывы об интернет-магазине Plantis">
+                                <img src="https://plantis.shop/wp-content/uploads/2022/10/04_.webp" alt="Отзывы об интернет-магазине Plantis">
+                                <img src="https://plantis.shop/wp-content/uploads/2022/10/05_.webp" alt="Отзывы об интернет-магазине Plantis">
+                                <img src="https://plantis.shop/wp-content/uploads/2022/10/06_.webp" alt="Отзывы об интернет-магазине Plantis">
+                                <img src="https://plantis.shop/wp-content/uploads/2022/10/07_.webp" alt="Отзывы об интернет-магазине Plantis">
+                                <img src="https://plantis.shop/wp-content/uploads/2022/10/08_.webp" alt="Отзывы об интернет-магазине Plantis">
+                                <img src="https://plantis.shop/wp-content/uploads/2022/10/09_.webp" alt="Отзывы об интернет-магазине Plantis">
+                                <img src="https://plantis.shop/wp-content/uploads/2022/10/10_.webp" alt="Отзывы об интернет-магазине Plantis">
+                                <img src="https://plantis.shop/wp-content/uploads/2022/10/11_.webp" alt="Отзывы об интернет-магазине Plantis">
+                            </div> <?php 
+                            } else {?>
+                            <div class="nivo-about-feedback">
+                                <img src="https://plantis.shop/wp-content/uploads/2024/02/feedback_01.webp" alt="Отзывы об интернет-магазине Plantis">
+                            </div>
+                            <?php
+                            } 
+                        ?>
                     </div>
 
 
