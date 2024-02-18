@@ -124,7 +124,7 @@
         var body = document.querySelector('body');
 
         $(slider).on("touchstart",function (event) {
-            console.log('Вы приложили палец к элементу')
+            // console.log('Вы приложили палец к элементу')
             pointStart = event.changedTouches[0].clientX;
             pointStartY = event.changedTouches[0].clientY;
             nextNav = $(this).find("a.nivo-nextNav");
@@ -144,10 +144,12 @@
                 $(prevNav).trigger('click');
             };
             if (moveY > 100) {
+                console.log(moveY);
                 body.classList.remove ('no-touch');
                 body.scrollBy(0, moveY);
             };
             if (moveY < -100) {
+                console.log(moveY);
                 body.classList.remove ('no-touch');
                 body.scrollBy(0, moveY);
             };
@@ -155,7 +157,7 @@
 
         $(slider).on("touchend",function (event) {
             body.classList.remove ('no-touch');
-            console.log('Прикосновение закончено')
+            // console.log('Прикосновение закончено')
         });
 
 
