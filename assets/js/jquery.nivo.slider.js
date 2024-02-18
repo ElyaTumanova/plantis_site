@@ -139,7 +139,7 @@
           };
           if (move >50) {
             $(prevNav).trigger('click');
-            // body.classList.toggle ('fix-body');
+            body.classList.remove ('no-touch');
           };
 
         });
