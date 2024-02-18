@@ -130,7 +130,7 @@
             pointStartY = event.changedTouches[0].clientY;
             nextNav = $(this).find("a.nivo-nextNav");
             prevNav = $(this).find("a.nivo-prevNav");
-            body.classList.add ('no-touch');
+            // body.classList.add ('no-touch');
         });
 
         $(slider).on("touchmove",function (event) {
@@ -144,24 +144,24 @@
             if (move >50) {
                 $(prevNav).trigger('click');
             };
-            if (moveY > 100) {
-                body.classList.remove ('no-touch');
-            };
-            if (moveY < -100) {
-                body.classList.remove ('no-touch');
-            };
+            // if (moveY > 100) {
+            //     body.classList.remove ('no-touch');
+            // };
+            // if (moveY < -100) {
+            //     body.classList.remove ('no-touch');
+            // };
         });
 
-        $(slider).on("touchend",function (event) {
-            console.log(moveY);
-            body.classList.remove ('no-touch');
-            window.scrollBy({
-                top: -moveY*2,
-                left: 0,
-                behavior: 'smooth'
-              });
-            // console.log('Прикосновение закончено')
-        });
+        // $(slider).on("touchend",function (event) {
+        //     console.log(moveY);
+        //     body.classList.remove ('no-touch');
+        //     window.scrollBy({
+        //         top: -moveY*2,
+        //         left: 0,
+        //         behavior: 'smooth'
+        //       });
+        //     // console.log('Прикосновение закончено')
+        // });
 
 
         // Add Direction nav
