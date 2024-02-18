@@ -123,31 +123,30 @@
 
         $(slider).on("touchstart",function (event) {
           pointStart = event.changedTouches[0].clientX;
-          pointStartY = event.changedTouches[0].clientY;
+        //   pointStartY = event.changedTouches[0].clientY;
           nextNav = $(this).find("a.nivo-nextNav");
           prevNav = $(this).find("a.nivo-prevNav");
-          var body = document.querySelector('body');
-          console.log(body);
-          body.classList.add ('no-touch');
+        //   var body = document.querySelector('body');
+        //   body.classList.add ('no-touch');
         });
 
         $(slider).on("touchmove",function (event) {
           pointEnd = event.changedTouches[0].clientX;
-          pointEndY = event.changedTouches[0].clientY;
+        //   pointEndY = event.changedTouches[0].clientY;
           let move = pointEnd - pointStart;
-          let moveY = pointEndY - pointStartY;
+        //   let moveY = pointEndY - pointStartY;
           if (move <-50) {
             $(nextNav).trigger('click');
           };
           if (move >50) {
             $(prevNav).trigger('click');
           };
-          if (moveY > 10) {
-            body.classList.remove ('no-touch');
-          };
-          if (moveY < -10) {
-            body.classList.remove ('no-touch');
-          };
+        //   if (moveY > 10) {
+        //     body.classList.remove ('no-touch');
+        //   };
+        //   if (moveY < -10) {
+        //     body.classList.remove ('no-touch');
+        //   };
 
         });
 
