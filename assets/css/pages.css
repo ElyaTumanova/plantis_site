@@ -220,6 +220,21 @@
     left: 9px;
 }
 
+@media (max-width:767px) {
+    .about__slider_feedback .nivo-nextNav {
+        color: black;
+    }
+    .about__slider_feedback .nivo-prevNav {
+        color: black;
+    }
+}
+.about__slider_feedback .nivo-controlNav {
+    bottom: -15px;
+}
+.about__slider_feedback .nivo-controlNav a {
+   margin: 7px;
+}
+
 .about__slider_photo .nivo-directionNav {
     color: var(--white);
 }
