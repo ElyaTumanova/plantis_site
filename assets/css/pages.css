@@ -222,10 +222,10 @@
 
 @media (max-width:767px) {
     .about__slider_feedback .nivo-nextNav {
-        color: black;
+        display: none;
     }
     .about__slider_feedback .nivo-prevNav {
-        color: black;
+        display: none;
     }
 }
 .about__slider_feedback .nivo-controlNav {
