@@ -94,7 +94,8 @@ get_header(); ?>
                         </div> <?php 
                         } else {?>
                         <div class="nivo-about-feedback">
-                            <img src="https://plantis.shop/wp-content/uploads/2024/02/feedback_01.webp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2024/02/feedback_01_1.webp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2024/02/feedback_02.webp" alt="Отзывы об интернет-магазине Plantis">
                         </div>
                         <?php
                         } 
