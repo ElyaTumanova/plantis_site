@@ -121,12 +121,13 @@
         
         // Swiper
 
+        var body = document.querySelector('body');
+
         $(slider).on("touchstart",function (event) {
           pointStart = event.changedTouches[0].clientX;
           pointStartY = event.changedTouches[0].clientY;
           nextNav = $(this).find("a.nivo-nextNav");
           prevNav = $(this).find("a.nivo-prevNav");
-          var body = document.querySelector('body');
           body.classList.add ('no-touch');
         });
 
@@ -147,8 +148,12 @@
           if (moveY < -100) {
             body.classList.remove ('no-touch');
           };
-
         });
+
+        $(slider).on("touchend",function (event) {
+            body.classList.remove ('no-touch');
+          });
+
 
         // Add Direction nav
         if(settings.directionNav){
