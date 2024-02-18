@@ -122,6 +122,7 @@
         // Swiper
 
         var body = document.querySelector('body');
+        var moveY;
 
         $(slider).on("touchstart",function (event) {
             // console.log('Вы приложили палец к элементу')
@@ -136,7 +137,7 @@
             pointEnd = event.changedTouches[0].clientX;
             pointEndY = event.changedTouches[0].clientY;
             let move = pointEnd - pointStart;
-            let moveY = pointEndY - pointStartY;
+            moveY = pointEndY - pointStartY;
             if (move <-50) {
                 $(nextNav).trigger('click');
             };
