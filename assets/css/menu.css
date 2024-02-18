@@ -272,10 +272,12 @@
     background-color: var(--accent-color);
     color: var(--white);
     padding: 15px 55px 15px 30px;
+    font-size: 16px;
   }
 
   .burger-menu .menu__item {
     padding: 15px 55px 15px 30px;
+    font-size: 16px;
   }
 
   .catalog-menu__wrap {
