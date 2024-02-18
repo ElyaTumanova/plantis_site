@@ -30,6 +30,10 @@
     overflow: hidden;
 }
 
+.no-touch {
+    touch-action: none;
+}
+
 
 .container {
     max-width: 1300px;
