@@ -179,6 +179,12 @@
     grid-template-columns: 60% calc(40% - 50px);
 }
 
+@media (max-width:1023px) {
+    .about__wrap {
+        grid-template-columns: 100%;
+    } 
+}
+
 .about__full-width-wrap {
     background-color: var(--accent-color);
     color: var(--white);
@@ -189,6 +195,7 @@
 
 .about__full-width-wrap .entry-title {
     color: var(--white);
+    margin-bottom: 25px;
 }
 
 .about__slider_photo .nivo-controlNav {
@@ -261,10 +268,7 @@
 
 @media (max-width:1023px) {
     .landscaping {
-        display: grid;
         grid-template-columns: 100%;
-        column-gap: 30px;
-        max-width: 100%;
     }
     
 }
