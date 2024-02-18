@@ -4,6 +4,7 @@
 
 .header__breadcrumb {
     margin-top: 10px;
+    font-size: 14px;
 }
 
 @media (max-width: 1279px) {
