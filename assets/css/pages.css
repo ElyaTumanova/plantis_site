@@ -303,6 +303,7 @@
 @media (max-width:740px) {
     .plants-cats-az__item {
         max-width: calc((100% - 15px)/2);
+        width: calc((100% - 15px)/2);
     }
 }
 
