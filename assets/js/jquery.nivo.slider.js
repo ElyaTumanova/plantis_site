@@ -122,12 +122,13 @@
         // Swiper
 
         $(slider).on("touchstart",function (event) {
+          e.preventDefault();
           pointStart = event.changedTouches[0].clientX;
           nextNav = $(this).find("a.nivo-nextNav");
           prevNav = $(this).find("a.nivo-prevNav");
-          var body = document.querySelector('body');
-          console.log(body);
-          body.classList.toggle ('fix-body');
+        //   var body = document.querySelector('body');
+        //   console.log(body);
+        //   body.classList.toggle ('fix-body');
         });
 
         $(slider).on("touchmove",function (event) {
@@ -135,11 +136,11 @@
           let move = pointEnd - pointStart;
           if (move <-50) {
             $(nextNav).trigger('click');
-            body.classList.toggle ('fix-body');
+            // body.classList.toggle ('fix-body');
           };
           if (move >50) {
             $(prevNav).trigger('click');
-            body.classList.toggle ('fix-body');
+            // body.classList.toggle ('fix-body');
           };
 
         });
