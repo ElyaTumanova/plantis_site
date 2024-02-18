@@ -144,19 +144,17 @@
                 $(prevNav).trigger('click');
             };
             if (moveY > 100) {
-                console.log(moveY);
                 body.classList.remove ('no-touch');
-                body.scrollBy(0, moveY);
             };
             if (moveY < -100) {
-                console.log(moveY);
                 body.classList.remove ('no-touch');
-                body.scrollBy(0, moveY);
             };
         });
 
         $(slider).on("touchend",function (event) {
+            console.log(moveY);
             body.classList.remove ('no-touch');
+            body.scrollBy(0, moveY);
             // console.log('Прикосновение закончено')
         });
 
