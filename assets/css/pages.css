@@ -223,13 +223,13 @@
     max-width: 1000px;
 }
 
-.peresadka__heading {
+/* .peresadka__heading {
     margin-bottom: 15px;
     font-size: 22px;
     font-weight: 600;
     margin-top: 30px;
     line-height: 1.1;
-}
+} */
 
 /*--------------------------------------------------------------
 # Landscaping
@@ -298,6 +298,12 @@
 
 .plants-cats-az__item {
     max-width: 230px;
+}
+
+@media (max-width:740px) {
+    .plants-cats-az__item {
+        max-width: calc((100% - 15px)/2);
+    }
 }
 
 .plants-cats-az-title {
