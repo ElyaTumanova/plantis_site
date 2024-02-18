@@ -145,9 +145,11 @@
             };
             if (moveY > 100) {
                 body.classList.remove ('no-touch');
+                body.scrollBy(0, moveY);
             };
             if (moveY < -100) {
                 body.classList.remove ('no-touch');
+                body.scrollBy(0, moveY);
             };
         });
 
