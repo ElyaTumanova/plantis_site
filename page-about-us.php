@@ -104,7 +104,7 @@ get_header(); ?>
                 <script>
                     jQuery(function($){
                         $('.nivo-about-feedback').nivoSlider({
-                            effect: 'fade',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
+                            effect: 'fold',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
                             animSpeed: 200,                 // скорость анимации
                             pauseTime: 3000,                // пауза между сменой слайдов
                             directionNav: true,             // нужно ли отображать кнопки перехода на следующий и предыдущий слайд
