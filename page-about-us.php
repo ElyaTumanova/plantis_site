@@ -96,6 +96,9 @@ get_header(); ?>
                         <div class="nivo-about-feedback">
                             <img src="https://plantis.shop/wp-content/uploads/2024/02/feedback_01_1.webp" alt="Отзывы об интернет-магазине Plantis">
                             <img src="https://plantis.shop/wp-content/uploads/2024/02/feedback_02.webp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2024/02/feedback_03.webp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2024/02/feedback_04.webp" alt="Отзывы об интернет-магазине Plantis">
+                            <img src="https://plantis.shop/wp-content/uploads/2024/02/feedback_05.webp" alt="Отзывы об интернет-магазине Plantis">
                         </div>
                         <?php
                         } 
