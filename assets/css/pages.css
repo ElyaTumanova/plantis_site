@@ -263,9 +263,9 @@
 /*--------------------------------------------------------------
 # Optom & Plant categories A to Z
 --------------------------------------------------------------*/
-.optom .heading-2 {
+/* .optom .heading-2 {
     margin: 50px 0 30px;
-}
+} */
 .optom__plants-cats-az {
     display: flex;
     flex-direction: column;
