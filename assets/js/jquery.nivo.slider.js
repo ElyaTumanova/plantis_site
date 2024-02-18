@@ -125,6 +125,8 @@
           pointStart = event.changedTouches[0].clientX;
           nextNav = $(this).find("a.nivo-nextNav");
           prevNav = $(this).find("a.nivo-prevNav");
+          body = document.querySelector('body');
+          body.classList.toggle ('fix-body');
         });
 
         $(slider).on("touchmove",function (event) {
