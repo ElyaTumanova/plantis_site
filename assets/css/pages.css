@@ -235,6 +235,16 @@
     max-width: 100%;
 }
 
+@media (max-width:767px) {
+    .landscaping {
+        display: grid;
+        grid-template-columns: 100%;
+        column-gap: 30px;
+        max-width: 100%;
+    }
+    
+}
+
 .landscaping__photo {
     border-radius: 10px;
 }
