@@ -308,6 +308,27 @@
     ;
 }
 
+@media (max-width:767px) {
+    .cats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(12, 1fr);
+        grid-template-areas:
+        "lisv lisv"
+        "lisv lisv"
+        "palms fikus"
+        "palms fikus"
+        "palms napol"
+        "palms napol"
+        "cvetush napol"
+        "cvetush napol"
+        "neprikhotliv lianas"
+        "neprikhotliv lianas"
+        "neprikhotliv petfriendly"
+        "succulent petfriendly"
+        ;
+    }  
+}
+
 .cats-grid__inner_palms {
     grid-area: palms;
 }
@@ -339,4 +360,5 @@
 .cats-grid__inner {
     border: solid 1px black;
     min-height: 80px;
+    padding: 10px;
 }
