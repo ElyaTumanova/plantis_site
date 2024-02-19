@@ -56,6 +56,9 @@ get_header(); ?>
 		</div>
 	</div>
 	<div class="main__wrap container main__row">
+		<div class="main__cats">
+			
+		</div>
 		<div class="advantages">
 			<div class="advantages__wrap">
 				<img width="111" height="100" src="https://plantis.shop/wp-content/uploads/2023/11/фото_зел.svg" class="advantages__image" alt="" loading="lazy">														

@@ -53,6 +53,26 @@ Container::make('theme_options', 'Настройки темы')
 			 ->set_value_type( 'url' ),
 			Field::make( 'text', 'main_banner_4_name', 'Banner 4 Name' ),
 		))
+		 ->add_tab( __('Main Page Categories'), array(
+			Field::make( 'image', 'cats_palms', 'Пальмы' )
+			 ->set_value_type( 'url' ),
+			Field::make( 'image', 'cats_fikus', 'Фикусы' )
+			 ->set_value_type( 'url' ),
+			Field::make( 'image', 'cats_lisv', 'Декор-листв' )
+			 ->set_value_type( 'url' ),
+			Field::make( 'image', 'cats_napol', 'Напольные' )
+			 ->set_value_type( 'url' ),
+			Field::make( 'image', 'cats_cvetush', 'Цветущие' )
+			 ->set_value_type( 'url' ),
+			Field::make( 'image', 'cats_lianas', 'Лианы' )
+			 ->set_value_type( 'url' ),
+			Field::make( 'image', 'cats_neprikhotliv', 'Неприхотливые' )
+			 ->set_value_type( 'url' ),
+			Field::make( 'image', 'cats_succulent', 'Суккуленты' )
+			 ->set_value_type( 'url' ),
+			Field::make( 'image', 'cats_petfriendly', 'Pet Frendly' )
+			 ->set_value_type( 'url' ),
+		))
 		->add_tab( __('Delivery'), array(
 			Field::make( 'text', 'in_mkad', 'Доставка в пределах МКАД на след день более мин суммы' ),
 			Field::make( 'text', 'out_mkad', 'Доставка за пределы МКАД на след день более мин суммы'),
