@@ -335,3 +335,8 @@
 .cats-grid__inner_fikus {
     grid-area: fikus;
 }
+
+.cats-grid__inner {
+    border: solid 1px black;
+    min-height: 200px;
+}
