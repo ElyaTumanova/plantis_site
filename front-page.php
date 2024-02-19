@@ -56,8 +56,8 @@ get_header(); ?>
 		</div>
 	</div>
 	<div class="main__wrap container main__row">
-		<div class="main__cats">
-			
+		<div class="main__cats-wrap">
+			<?php get_template_part('template-parts/plants-cats-grid');?>
 		</div>
 		<div class="advantages">
 			<div class="advantages__wrap">
