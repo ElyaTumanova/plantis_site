@@ -28,6 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="cats-grid__inner">
         <h3 class="cats-grid__title">Декоративно-лиственные</h3>
         <img src="<?php echo $cats_lisv ?>" class="cats-grid__img" alt="Декоративно-лиственные">
+    </div>
     <div class="cats-grid__inner">
         <h3 class="cats-grid__title">Напольные</h3>
         <img src="<?php echo $cats_napol ?>" class="cats-grid__img" alt="Напольные">
