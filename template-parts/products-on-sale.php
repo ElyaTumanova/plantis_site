@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $product_ids_on_sale = wc_get_product_ids_on_sale();
 $arg = array(
     'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
-    'post__in' => array_merge( array( 0 ), $product_ids_on_sale )
+    'post__in' => array_merge( array( 0 ), $product_ids_on_sale ),
     'post_status' => 'publish',
     // 's' => get_search_query(),
     'tax_query' => array(
