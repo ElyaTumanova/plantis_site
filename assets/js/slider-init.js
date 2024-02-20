@@ -27,6 +27,43 @@ const swiper_main_banners = new Swiper('.main__banners-swiper', {
     }
 });
 
+const swiper_card_cross_upsells = new Swiper('.main__sale-swiper', {
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    spaceBetween: 15,
+    breakpoints: {
+        320: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+            navigation: {
+                enabled: false,
+            },
+            freeMode: true,
+            slidesPerView: 2,
+        },
+        768: {
+            navigation: {
+                enabled: true,
+            },
+            slidesPerView: 3,
+        },
+        1278: {
+            navigation: {
+                enabled: true,
+            },
+            slidesPerView: 1,
+        }
+    }
+});
+
 /*--------------------------------------------------------------
 # Catalog
 --------------------------------------------------------------*/

@@ -7,9 +7,6 @@ $product_ids_on_sale = wc_get_product_ids_on_sale();
 
 
 if( !empty ($product_ids_on_sale) ){
-    echo '<pre>';
-	print_r( $product_ids_on_sale );
-	echo '</pre>';
 
         $args = array(
             'post_type' => 'product',
@@ -35,10 +32,8 @@ if( !empty ($product_ids_on_sale) ){
         );
 
         $products = new WP_Query( $args );
-        if ( $products->have_posts() ) : ?>
-
-            <div class="cross-sells">     
-                <div class="swiper">
+        if ( $products->have_posts() ) : ?>   
+                <div class="main__sale-swiper  swiper">
                     <ul class="products columns-3 swiper-wrapper"> 
                         <?php while ( $products->have_posts() ) : $products->the_post(); ?>
 
@@ -50,7 +45,6 @@ if( !empty ($product_ids_on_sale) ){
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                 </div>
-            </div>
 
         <?php endif;
 
