@@ -47,6 +47,9 @@ const swiper_about_photo = new Swiper('.about__swiper-photo', {
         320: {
         slidesPerView: 1,
         slidesPerGroup: 1,
+        navigation: {
+            enabled: false,
+        },
         },
         768: {
         slidesPerView: 2,
@@ -75,6 +78,9 @@ const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
         320: {
         slidesPerView: 1,
         slidesPerGroup: 1,
+        navigation: {
+            enabled: false,
+        },
         },
         768: {
         slidesPerView: 2,
