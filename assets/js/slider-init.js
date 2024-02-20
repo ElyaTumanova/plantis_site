@@ -12,10 +12,10 @@ const swiper_about_us = new Swiper('.swiper_about-us', {
         320: {
         slidesPerView: 1,
         },
-        640: {
+        768: {
         slidesPerView: 2,
         },
-        768: {
+        1024: {
         slidesPerView: 3,
         }
     }
