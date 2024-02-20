@@ -19,7 +19,7 @@ get_header(); ?>
 					} else {
 						echo do_shortcode('[products on_sale="true" class="main-sale-slider swiper" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]');
 						
-						add_action( 'woocommerce_shortcode_after_products_loop', 'wp_kama_woocommerce_shortcode_after_type_loop_action' );
+						add_action( 'woocommerce_after_shop_loop', 'wp_kama_woocommerce_shortcode_after_type_loop_action' );
 
 						/**
 						 * Function for `woocommerce_shortcode_after_(type)_loop` action-hook.
@@ -28,7 +28,7 @@ get_header(); ?>
 						 *
 						 * @return void
 						 */
-						function wp_kama_woocommerce_shortcode_after_type_loop_action( $attributes ){
+						function wp_kama_woocommerce_shortcode_after_type_loop_action(){
 
 							echo '<div>hihi</div>';
 						}
