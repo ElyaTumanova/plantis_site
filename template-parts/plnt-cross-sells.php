@@ -42,7 +42,7 @@ if( !empty ($crosssell_ids) ){
                     <?php
                 // } else {
                     ?> 
-                <div class="cross-sells-swiper swiper">
+                <div class="cross-upsells-swiper swiper">
                             <ul class="products columns-3 swiper-wrapper"> <?php
                         // }
                     ?>
@@ -55,6 +55,9 @@ if( !empty ($crosssell_ids) ){
                         <?php endwhile; // end of the loop. ?>
 
                     </ul>
+                    <div class="swiper-pagination"></div>
+	                <div class="swiper-button-prev"></div>
+	                <div class="swiper-button-next"></div>
                 </div>
 
 
