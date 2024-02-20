@@ -36,21 +36,27 @@ if( !empty ($crosssell_ids) ){
 
             <!-- <ul id="flexisel-cross-sells" class="products columns-<?php //echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>"> -->
             <?php 
-                if (wp_is_mobile()) {
-                     ?> <ul class="products__slider_mob products columns-3"> <?php
-                } else {
-                    ?> <ul id="flexisel-cross-sells" class="products columns-3"> <?php
-                }
-            ?>
-            <!-- <ul id="flexisel-cross-sells" class="products columns-3"> -->
+                // if (wp_is_mobile()) {
+                //      ?> 
+                <!-- <ul class="products__slider_mob products columns-3">  -->
+                    <?php
+                // } else {
+                    ?> 
+                <div class="cross-sells-swiper swiper">
+                            <ul class="products columns-3 swiper-wrapper"> <?php
+                        // }
+                    ?>
+                    <!-- <ul id="flexisel-cross-sells" class="products columns-3"> -->
 
-                <?php while ( $products->have_posts() ) : $products->the_post(); ?>
+                        <?php while ( $products->have_posts() ) : $products->the_post(); ?>
 
-                <?php wc_get_template_part( 'content', 'product' ); ?>
+                        <?php wc_get_template_part( 'content', 'product' ); ?>
 
-                <?php endwhile; // end of the loop. ?>
+                        <?php endwhile; // end of the loop. ?>
 
-            </ul>
+                    </ul>
+                </div>
+
 
             <?php 
             // if (wp_is_mobile()) {
@@ -58,8 +64,8 @@ if( !empty ($crosssell_ids) ){
             // } else {
             //     $num = 3;
             // }
-            if (count($products->posts) >3) {?> 
-                <script type="text/javascript">
+            // if (count($products->posts) >3) {?> 
+                <!-- <script type="text/javascript">
                     jQuery(window).load(function() {
                         jQuery("#flexisel-cross-sells").flexisel({
                             visibleItems:3,
@@ -88,8 +94,8 @@ if( !empty ($crosssell_ids) ){
                             }
                         });
                     });
-                </script>
-            <?php }?>  
+                </script> -->
+            <!-- <?php }?>   -->
 
             </div>
 
