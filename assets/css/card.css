@@ -88,6 +88,7 @@
 
 .card__sliders-wrap {
     grid-area: sliders;
+    min-width: 0;
 }
 
 /* стили элементов */
