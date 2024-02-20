@@ -42,7 +42,7 @@ if( !empty ($crosssell_ids) ){
                     <?php
                 // } else {
                     ?> 
-                <div class="cross-upsells-swiper ">
+                <div class="cross-upsells-swiper swiper">
                             <ul class="products columns-3 "> <?php
                         // }
                     ?>
