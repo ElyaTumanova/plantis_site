@@ -55,9 +55,9 @@ if( !empty ($crosssell_ids) ){
                         <?php endwhile; // end of the loop. ?>
 
                     </ul>
-                    <!-- <div class="swiper-pagination"></div>
+                    <div class="swiper-pagination"></div>
 	                <div class="swiper-button-prev"></div>
-	                <div class="swiper-button-next"></div> -->
+	                <div class="swiper-button-next"></div>
                 </div>
 
 
