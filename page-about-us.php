@@ -43,7 +43,7 @@ get_header(); ?>
                 </div>
 
                 <div class="about__slider about__slider_photo">
-                    <div class="about__feedback-swiper swiper">
+                    <div class="about__swiper swiper">
                         <div class="swiper-wrapper">
                             <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_4.webp" alt="Мастерская Plantis">
                             <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_2.webp" alt="Мастерская Plantis">
@@ -55,13 +55,16 @@ get_header(); ?>
                             <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_5.webp" alt="Мастерская Plantis">
                             <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_1.webp" alt="Мастерская Plantis">
                         </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
                     </div>
                 </div>
             </div>
             <div class="about__full-width-wrap">
                 <h2 class="entry-title container">Отзывы</h2> 
                 <div class="about__slider about__slider_feedback container">
-                        <div class="about__feedback-swiper swiper">
+                        <div class="about__swiper swiper">
                             <div class="swiper-wrapper">
                                 <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2024/02/12.webp" alt="Отзывы об интернет-магазине Plantis">
                                 <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2024/02/14.webp" alt="Отзывы об интернет-магазине Plantis">

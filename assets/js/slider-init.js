@@ -1,4 +1,4 @@
-const swiper_about_feedback = new Swiper('.about__feedback-swiper', {
+const swiper_about_feedback = new Swiper('.about__swiper', {
     pagination: {
         el: '.swiper-pagination',
     },
