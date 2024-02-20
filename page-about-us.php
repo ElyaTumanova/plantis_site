@@ -46,14 +46,18 @@ get_header(); ?>
                     <div class="about__swiper-photo swiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <img loading="lazy" src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_4.webp" alt="Мастерская Plantis">
-                                <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                                <div>
+                                    <img loading="lazy" src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_4.webp" alt="Мастерская Plantis">
+                                    <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                                </div>
                             </div>
                             <div class="swiper-slide">
-                                <img  loading="lazy" src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_2.webp" alt="Мастерская Plantis">
-                                <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                                <div>
+                                    <img  loading="lazy" src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_2.webp" alt="Мастерская Plantis">
+                                    <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                                </div>
                             </div>
-                            <div class="swiper-slide">
+                            <!-- <div class="swiper-slide">
                                 <img  loading="lazy" src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_7.webp" alt="Мастерская Plantis">
                                 <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                             </div>
@@ -80,7 +84,7 @@ get_header(); ?>
                             <div class="swiper-slide">
                                 <img  loading="lazy" src="https://plantis.shop/wp-content/uploads/2022/11/%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F-Plantis_1.webp" alt="Мастерская Plantis">
                                 <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="swiper-pagination"></div>
                         <div class="swiper-button-prev"></div>
