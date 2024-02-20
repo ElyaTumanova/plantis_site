@@ -165,9 +165,8 @@ function plnt_catalog_gallery() {
 			<div class="swiper-wrapper" >';
 				echo $image;
 				foreach( $attachment_ids as $attachment_id ) {
-					echo wp_get_attachment_image( $attachment_id, 'shop_catalog', array(
-						'class' => "attachment-$size_class size-$size_class attachment-woocommerce_thumbnail",
-					));
+					$params = [ 'class' => "attachment-$size_class size-$size_class attachment-woocommerce_thumbnail" ]
+					echo wp_get_attachment_image( $attachment_id, 'shop_catalog', false, $params);
 				};
 			echo '
 			</div>
