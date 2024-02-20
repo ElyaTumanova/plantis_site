@@ -103,6 +103,11 @@ get_header(); ?>
 		<p class="main__about-text">Для нас это важно, ведь так приятно делать сервис, после которого вы будете вспоминать нас с теплотой и смотреть на своего нового друга.</p>					
 	</div>
 
+	<div>
+	<?php get_template_part('template-parts/plnt-cross-sells');?>
+	
+	</div>
+
 	</main><!-- #main -->
 </div><!-- #primary -->
 
