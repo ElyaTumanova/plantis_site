@@ -27,36 +27,6 @@ const swiper_main_banners = new Swiper('.main__banners-swiper', {
     }
 });
 
-const swiper_main_sale = new Swiper('.main-sale-slider', {
-    slideClass: 'product',
-    wrapperClass: 'products',
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    slidesPerView: 1,
-    slidesPerGroup: 1,
-    spaceBetween: 0,
-    breakpoints: {
-        320: {
-            navigation: {
-                enabled: false,
-            },
-        },
-        768: {
-            navigation: {
-                enabled: true,
-            },
-        }
-    }
-});
-
-
-
 /*--------------------------------------------------------------
 # About Us
 --------------------------------------------------------------*/

@@ -14,14 +14,14 @@ get_header(); ?>
 				<h2 class="main__sale-gallery-title heading-2">Спецпредложения</h2>
 				<div class="main__sale-gallery">
 					<?php 
-					// if (wp_is_mobile()) {
-						// echo do_shortcode('[products on_sale="true" class="main-sale-slider-mob" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]'); 
-					// } else {
-						echo do_shortcode('[products on_sale="true" class="main-sale-slider swiper" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]');
-					// }
+					if (wp_is_mobile()) {
+						echo do_shortcode('[products on_sale="true" class="main-sale-slider-mob" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]'); 
+					} else {
+						echo do_shortcode('[products on_sale="true" class="main-sale-slider" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]');
+					}
 					?>
 
-					<!-- <script type="text/javascript">
+					<script type="text/javascript">
 						jQuery(window).load(function() {
 							jQuery(".main-sale-slider > ul").flexisel({
 								visibleItems:1,
@@ -49,7 +49,7 @@ get_header(); ?>
 								}
 							});
 						});
-					</script> -->
+					</script>
 				</div>
 				<a class="main__sale-button button" href="http://new.plantis.shop/product-category/%d1%81%d0%ba%d0%b8%d0%b4%d0%ba%d0%b8/"> Все комнатные растения со скидкой</a>			
 			</div>
