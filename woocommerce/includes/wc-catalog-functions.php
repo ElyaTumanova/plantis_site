@@ -403,5 +403,5 @@ add_action( 'woocommerce_shortcode_after_products_loop', 'wp_kama_woocommerce_sh
  */
 function wp_kama_woocommerce_shortcode_after_type_loop_action( $attributes ){
 
-	echo '<div>hihihi</div>'
+	echo '<div>hihihi</div>';
 }
