@@ -17,7 +17,7 @@ get_header(); ?>
 					if (wp_is_mobile()) {
 						echo do_shortcode('[products on_sale="true" class="main-sale-slider-mob" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]'); 
 					} else {
-						echo do_shortcode('[products on_sale="true" class="main-sale-slider" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]'); 
+						echo do_shortcode('[products on_sale="true" class="main-sale-slider swiper" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]'); 
 					}
 					?>
 
