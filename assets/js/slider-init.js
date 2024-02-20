@@ -6,7 +6,7 @@ const swiper_about_us = new Swiper('.swiper_about-us', {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
-    // slidesPerView: 3,
+    slidesPerView: 3,
     // spaceBetween: 10,
     // breakpoints: {
     //     320: {
