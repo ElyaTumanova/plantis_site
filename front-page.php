@@ -21,7 +21,7 @@ get_header(); ?>
 					}
 					?>
 
-					<script type="text/javascript">
+					<!-- <script type="text/javascript">
 						jQuery(window).load(function() {
 							jQuery(".main-sale-slider > ul").flexisel({
 								visibleItems:1,
@@ -49,7 +49,7 @@ get_header(); ?>
 								}
 							});
 						});
-					</script>
+					</script> -->
 				</div>
 				<a class="main__sale-button button" href="http://new.plantis.shop/product-category/%d1%81%d0%ba%d0%b8%d0%b4%d0%ba%d0%b8/"> Все комнатные растения со скидкой</a>			
 			</div>
