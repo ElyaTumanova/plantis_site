@@ -27,7 +27,7 @@ const swiper_main_banners = new Swiper('.main__banners-swiper', {
     }
 });
 
-const swiper_main_sale = new Swiper('.main-sale-slider', {
+const swiper_main_sale = new Swiper('.main__sale-gallery', {
     slideClass: 'product',
     wrapperClass: 'products',
     pagination: {
