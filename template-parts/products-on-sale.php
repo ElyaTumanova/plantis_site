@@ -22,13 +22,13 @@ $arg = array(
     //         'value'     => 'outofstock',
     //         'compare'   => 'NOT IN'
     //     )),
-    'tax_query' => array(
-		array(
-			'taxonomy' => 'category',
-			'field' => 'slug',
-			'terms' => 'komnatnye-rasteniya'
-		)
-    ),
+    // 'tax_query' => array(
+	// 	array(
+	// 		'taxonomy' => 'category',
+	// 		'field' => 'slug',
+	// 		'terms' => 'komnatnye-rasteniya'
+	// 	)
+    // ),
     // 'posts_per_page' => -1,
     // 'meta_query' => array( 
     //     array(
