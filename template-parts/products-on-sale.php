@@ -6,9 +6,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php
 global $wp_query;
+$product_ids_on_sale = wc_get_product_ids_on_sale();
 $arg = array(
     'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
     'post_status' => 'publish',
+    'post__in' => array_merge( array( 0 ), $product_ids_on_sale ),
     // 'meta_query'     => array(
     //     'relation' => 'AND',
     //     array( // Simple products type
@@ -22,13 +24,13 @@ $arg = array(
     //         'value'     => 'outofstock',
     //         'compare'   => 'NOT IN'
     //     )),
-    'tax_query' => array(
-		array(
-			'taxonomy' => 'category',
-			'field' => 'slug',
-			'terms' => 'komnatnye-rasteniya'
-		)
-    ),
+    // 'tax_query' => array(
+	// 	array(
+	// 		'taxonomy' => 'category',
+	// 		'field' => 'slug',
+	// 		'terms' => 'komnatnye-rasteniya'
+	// 	)
+    // ),
     // 'posts_per_page' => -1,
     // 'meta_query' => array( 
     //     array(
