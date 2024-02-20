@@ -6,15 +6,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php
 // global $wp_query;
-$product_ids_on_sale = wc_get_product_ids_on_sale();
-echo '<pre>';
-print_r( $$product_ids_on_sale);
-echo '</pre>';
 $arg = array(
     'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
-    'post__in' => array_merge( array( 0 ), $product_ids_on_sale ),
     'post_status' => 'publish',
-    // 's' => get_search_query(),
+    'meta_query'     => array(
+        'relation' => 'AND',
+        array( // Simple products type
+            'key'           => '_sale_price',
+            'value'         => 0,
+            'compare'       => '>',
+            'type'          => 'numeric'
+        ),
+        array(
+            'key'       => '_stock_status',
+            'value'     => 'outofstock',
+            'compare'   => 'NOT IN'
+        )),
     'tax_query' => array(
 		array(
 			'taxonomy' => 'category',
@@ -23,20 +30,20 @@ $arg = array(
 		)
     ),
     'posts_per_page' => -1,
-    'meta_query' => array( 
-        array(
-            'key'       => '_stock_status',
-            'value'     => 'outofstock',
-            'compare'   => 'NOT IN'
-        )
-    ),
+    // 'meta_query' => array( 
+    //     array(
+    //         'key'       => '_stock_status',
+    //         'value'     => 'outofstock',
+    //         'compare'   => 'NOT IN'
+    //     )
+    // ),
     'orderby' => 'rand',
 );
 $on_sale_query = new WP_Query($arg);
 // $wp_query = $on_sale_query;
-// echo '<pre>';
-// print_r( $on_sale_query );
-// echo '</pre>';
+echo '<pre>';
+print_r( $on_sale_query->have_posts() );
+echo '</pre>';
 
 
 if( $on_sale_query->have_posts() ) :
