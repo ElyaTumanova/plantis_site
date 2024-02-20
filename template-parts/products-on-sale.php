@@ -7,6 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php
 // global $wp_query;
 $product_ids_on_sale = wc_get_product_ids_on_sale();
+echo '<pre>';
+print_r( $$product_ids_on_sale);
+echo '</pre>';
 $arg = array(
     'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
     'post__in' => array_merge( array( 0 ), $product_ids_on_sale ),
