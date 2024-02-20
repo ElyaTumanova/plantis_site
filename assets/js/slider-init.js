@@ -62,7 +62,6 @@ const swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
 # Card
 --------------------------------------------------------------*/
 const swiper_card_cross_upsells = new Swiper('.cross-upsells-swiper', {
-    // slideClass: 'product',
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
@@ -77,6 +76,7 @@ const swiper_card_cross_upsells = new Swiper('.cross-upsells-swiper', {
     breakpoints: {
         320: {
             slidesPerView: 2,
+            spaceBetween: 10,
             navigation: {
                 enabled: false,
             },

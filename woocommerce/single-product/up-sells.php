@@ -32,65 +32,26 @@ if ( $upsells ) : ?>
 			<h2 class="heading-2"><?php echo esc_html( $heading ); ?></h2>
 		<?php endif; ?>
 
-        <!-- <ul id="flexisel-upsells" class="products columns-<?php //echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>"> -->
-        <!-- <ul id="flexisel-upsells" class="products columns-3"> -->
-        <?php 
-            if (wp_is_mobile()) {
-                    ?> <ul class="products__slider_mob products columns-3"> <?php
-            } else {
-                ?> <ul id="flexisel-upsells" class="products columns-3"> <?php
-            }
-        ?>
+        <div class="cross-upsells-swiper swiper">
+            <ul class="products columns-3 swiper-wrapper">
 
-			<?php foreach ( $upsells as $upsell ) : ?>
+                <?php foreach ( $upsells as $upsell ) : ?>
+                    <?php if ( ! $upsell->is_in_stock() && ! $upsell->backorders_allowed() ) : continue; endif; ?>
+                    <?php
+                    $post_object = get_post( $upsell->get_id() );
 
-                <?php if ( ! $upsell->is_in_stock() && ! $upsell->backorders_allowed() ) : continue; endif; ?>
+                    setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
 
-				<?php
-				$post_object = get_post( $upsell->get_id() );
+                    wc_get_template_part( 'content', 'product' );
+                    ?>
 
-				setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
-
-				wc_get_template_part( 'content', 'product' );
-				?>
-
-			<?php endforeach; ?>
-
-        </ul>
-        
-        <?php if (count($upsells) >3) {?>  
-            <script type="text/javascript">
-                jQuery(window).load(function() {
-                    jQuery("#flexisel-upsells").flexisel({
-                        visibleItems: 3,
-                        columnGaps: 30,  //кол-во колонок * column-gap для .card__sliders-wrap .products
-                        animationSpeed: 1000,
-                        autoPlay: false,
-                        autoPlaySpeed: 3000,
-                        pauseOnHover: true,
-                        enableResponsiveBreakpoints: true,
-                        responsiveBreakpoints: {
-                            portrait: {
-                                changePoint:480,
-                                visibleItems: 2,
-                                columnGaps: 20
-                            },
-                            landscape: {
-                                changePoint:640,
-                                visibleItems:2,
-                                columnGaps: 20
-                            },
-                            tablet: {
-                                changePoint:768,
-                                visibleItems: 3,
-                                columnGaps: 30
-                            }
-                        }
-                    });
-                });
-            </script>
-        <?php }?>  
-        </div>
+                <?php endforeach; ?>
+            </ul>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>  
+    </div>
 	<?php
 endif;
 
