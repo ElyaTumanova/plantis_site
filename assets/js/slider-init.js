@@ -36,7 +36,7 @@ const swiper_about_photo = new Swiper('.about__swiper-photo', {
         prevEl: '.swiper-button-prev',
     },
     slidesPerView: 1,
-    slidesPerGroup: 3,
+    slidesPerGroup: 1,
     spaceBetween: 10,
     breakpoints: {
         320: {
@@ -48,8 +48,8 @@ const swiper_about_photo = new Swiper('.about__swiper-photo', {
         slidesPerGroup: 2,
         },
         1023: {
-        slidesPerView: 3,
-        slidesPerGroup: 3,
+        slidesPerView: 1,
+        slidesPerGroup: 1,
         }
     }
 });
