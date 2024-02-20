@@ -30,8 +30,8 @@ get_header(); ?>
 						 */
 						function wp_kama_woocommerce_shortcode_after_type_loop_action( $attributes ){
 
-							echo '<div>hihi</div>'
-						};
+							echo '<div>hihi</div>';
+						}
 					}
 					?>
 
