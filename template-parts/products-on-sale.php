@@ -31,6 +31,9 @@ $arg = array(
 );
 $on_sale_query = new WP_Query($arg);
 // $wp_query = $on_sale_query;
+echo '<pre>';
+print_r( $on_sale_query );
+echo '</pre>';
 
 
 if( $on_sale_query->have_posts() ) :
