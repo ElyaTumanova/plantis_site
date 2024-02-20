@@ -61,32 +61,32 @@ const swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
 /*--------------------------------------------------------------
 # Card
 --------------------------------------------------------------*/
-const swiper_card_cross_upsells = new Swiper('.cross-upsells-swiper', {
-    slideClass: 'product',
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    slidesPerView: 2,
-    slidesPerGroup: 1,
-    spaceBetween: 0,
-    breakpoints: {
-        320: {
-            navigation: {
-                enabled: false,
-            },
-        },
-        768: {
-            navigation: {
-                enabled: true,
-            },
-        }
-    }
-});
+// const swiper_card_cross_upsells = new Swiper('.cross-upsells-swiper', {
+//     slideClass: 'product',
+//     pagination: {
+//         el: '.swiper-pagination',
+//         clickable: true,
+//     },
+//     navigation: {
+//         nextEl: '.swiper-button-next',
+//         prevEl: '.swiper-button-prev',
+//     },
+//     slidesPerView: 2,
+//     slidesPerGroup: 1,
+//     spaceBetween: 0,
+//     breakpoints: {
+//         320: {
+//             navigation: {
+//                 enabled: false,
+//             },
+//         },
+//         768: {
+//             navigation: {
+//                 enabled: true,
+//             },
+//         }
+//     }
+// });
 
 /*--------------------------------------------------------------
 # About Us

@@ -260,6 +260,16 @@ function plnt_get_product_tags() {
 // 	return $clasess;
 // }
 
+// // добавляем класс для шортокода products для be rocket wishlist
+add_filter('post_class', 'plnt_add_class_loop_item_card');
+function plnt_add_class_loop_item_card($clasess){
+	if(is_product()){
+		$clasess[] .= 'swiper-slide';
+	}
+	//get_pr($clasess, false);
+	return $clasess;
+}
+
 //add_action('woocommerce_before_shop_loop_item','plnt_add_remove_link_wishlist',5);
 function plnt_add_remove_link_wishlist() {
 	if(is_page('wishlist')){	
