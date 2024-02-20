@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $product_ids_on_sale = wc_get_product_ids_on_sale();
     echo '<pre>';
-	print_r( $var );
+	print_r( $product_ids_on_sale );
 	echo '</pre>';
 
 
