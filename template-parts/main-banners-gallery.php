@@ -25,7 +25,7 @@ if (wp_is_mobile()) {
 <div class="main__banners main__banners-swiper swiper">
 	<div class="swiper-wrapper">
 		<img class="swiper-slide" src="<?php echo $banner_1 ?>" class="main__banner-img" alt="<?php echo $banner_1_name?>">
-		<img class="swiper-slide" src="<?php echo $banner_2 ?>" class="main__banner-img" style="visibility:hidden;" alt="<?php echo $banner_2_name?>">
+		<img class="swiper-slide" src="<?php echo $banner_2 ?>" class="main__banner-img" alt="<?php echo $banner_2_name?>">
 	</div>
 	<div class="swiper-pagination"></div>
 	<div class="swiper-button-prev"></div>
