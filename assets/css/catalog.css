@@ -392,10 +392,6 @@ ul.products {
 
 /*cross sells & up sells*/
 
-.card__sliders-wrap .add_to_cart_button, .card__sliders-wrap .product_type_simple {
-    width: auto;
-}
-
 /* .card__sliders-wrap .products {
     display: flex;
     column-gap: 10px;
