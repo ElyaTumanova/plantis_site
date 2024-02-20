@@ -75,8 +75,7 @@ get_header(); ?>
             <div class="about__full-width-wrap">
                 <h2 class="entry-title container">Отзывы</h2> 
                 <div class="about__slider about__slider_feedback container">
-                    <?php if (wp_is_mobile()) {?>
-                        <div class="swiper_about-us_mob swiper">
+                        <div class="swiper_about-us swiper">
                             <div class="swiper-wrapper">
                                 <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2024/02/12.webp" alt="Отзывы об интернет-магазине Plantis">
                                 <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2024/02/14.webp" alt="Отзывы об интернет-магазине Plantis">
@@ -96,25 +95,10 @@ get_header(); ?>
                             <div class="swiper-pagination"></div>
                             <div class="swiper-button-prev"></div>
                             <div class="swiper-button-next"></div>
-                        </div> <?php 
-                        } else {?>
-                        <div class="swiper_about-us_desktop swiper">
-                            <div class="swiper-wrapper">
-                                <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2024/02/feedback_01_1.webp" alt="Отзывы об интернет-магазине Plantis">
-                                <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2024/02/feedback_02.webp" alt="Отзывы об интернет-магазине Plantis">
-                                <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2024/02/feedback_03.webp" alt="Отзывы об интернет-магазине Plantis">
-                                <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2024/02/feedback_04.webp" alt="Отзывы об интернет-магазине Plantis">
-                                <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2024/02/feedback_05.webp" alt="Отзывы об интернет-магазине Plantis">
-                            </div>
-                            <div class="swiper-pagination"></div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                        </div>
-                        <?php
-                        } 
-                    ?>
+                        </div>  
+                     
                 </div>                   
-                <script>
+                <!-- <script>
                     jQuery(function($){
                         $('.nivo-about-feedback').nivoSlider({
                             effect: 'slideInRight',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
@@ -129,7 +113,7 @@ get_header(); ?>
                             randomStart: false,             // начинать со случайного слайда
                         })
                     });
-                </script>
+                </script> -->
             </div>
 
             
