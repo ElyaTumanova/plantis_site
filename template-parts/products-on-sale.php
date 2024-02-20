@@ -9,19 +9,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 $arg = array(
     'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
     'post_status' => 'publish',
-    'meta_query'     => array(
-        'relation' => 'AND',
-        array( // Simple products type
-            'key'           => '_sale_price',
-            'value'         => 0,
-            'compare'       => '>',
-            'type'          => 'numeric'
-        ),
-        array(
-            'key'       => '_stock_status',
-            'value'     => 'outofstock',
-            'compare'   => 'NOT IN'
-        )),
+    // 'meta_query'     => array(
+    //     'relation' => 'AND',
+    //     array( // Simple products type
+    //         'key'           => '_sale_price',
+    //         'value'         => 0,
+    //         'compare'       => '>',
+    //         'type'          => 'numeric'
+    //     ),
+    //     array(
+    //         'key'       => '_stock_status',
+    //         'value'     => 'outofstock',
+    //         'compare'   => 'NOT IN'
+    //     )),
     'tax_query' => array(
 		array(
 			'taxonomy' => 'category',
