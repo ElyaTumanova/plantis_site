@@ -73,7 +73,7 @@ const swiper_card_cross_upsells = new Swiper('.cross-upsells-swiper', {
     },
     slidesPerView: 3,
     slidesPerGroup: 1,
-    spaceBetween: 10,
+    spaceBetween: 15,
     breakpoints: {
         320: {
             slidesPerView: 2,
