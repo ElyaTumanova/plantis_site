@@ -43,7 +43,7 @@ if( !empty ($crosssell_ids) ){
                 // } else {
                     ?> 
                 <div class="cross-upsells-swiper swiper">
-                            <ul class="products columns-3 "> <?php
+                            <ul class="products columns-3 swiper-wrapper"> <?php
                         // }
                     ?>
                     <!-- <ul id="flexisel-cross-sells" class="products columns-3"> -->
