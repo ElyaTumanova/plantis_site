@@ -214,10 +214,10 @@ ul.products {
     display: none;
 }
 
-/* чтобы не было смещения пока грузится слайдер*/
+/* чтобы не было смещения пока грузится слайдер
 .catalog__products-wrap .product__image-slider-wrap img:not(:first-child) {
     display: none;
-}
+} */
 
 /* wish */
 
