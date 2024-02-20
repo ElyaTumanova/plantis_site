@@ -32,13 +32,13 @@ $arg = array(
 	// 	)
     // ),
     // 'posts_per_page' => -1,
-    // 'meta_query' => array( 
-    //     array(
-    //         'key'       => '_stock_status',
-    //         'value'     => 'outofstock',
-    //         'compare'   => 'NOT IN'
-    //     )
-    // ),
+    'meta_query' => array( 
+        array(
+            'key'       => '_stock_status',
+            'value'     => 'outofstock',
+            'compare'   => 'NOT IN'
+        )
+    ),
     'orderby' => 'rand',
 );
 $on_sale_query = new WP_Query($arg);
