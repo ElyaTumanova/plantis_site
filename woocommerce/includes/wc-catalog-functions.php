@@ -160,15 +160,22 @@ function plnt_catalog_gallery() {
 		$image = $product->get_image();	
 		$attachment_ids = $product->get_gallery_attachment_ids();
 
-		echo '<div class="product__image-slider-wrap nivo-catalog-gallery" >';
-			echo $image;
-			foreach( $attachment_ids as $attachment_id ) {
-				echo wp_get_attachment_image( $attachment_id, 'shop_catalog' );
-			};
-		echo '</div>';
+		echo '
+		<div class="product__image-slider-wrap swiper">
+			<div class="swiper-wrapper" >';
+				echo $image;
+				foreach( $attachment_ids as $attachment_id ) {
+					echo wp_get_attachment_image( $attachment_id, 'shop_catalog' );
+				};
+			echo '
+			</div>
+			<div class="swiper-pagination"></div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</div>';
 
 		?>
-		<script>
+		<!-- <script>
 			jQuery(function($){
 				$('.nivo-catalog-gallery').nivoSlider({
 					effect: 'fade',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
@@ -183,7 +190,7 @@ function plnt_catalog_gallery() {
 					randomStart: false,             // начинать со случайного слайда
 				});
 			});
-		</script>
+		</script> -->
 		<?php
 	} else {
 		woocommerce_template_loop_product_thumbnail();
