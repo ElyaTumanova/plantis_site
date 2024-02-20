@@ -41,7 +41,9 @@ if( $on_sale_query->have_posts() ) :
     ?><ul class="products columns-2"><?php
         // затем запускаем цикл
         while( $on_sale_query->have_posts() ) : $on_sale_query->the_post();
-
+            echo '<pre>';
+            print_r( $on_sale_query->the_post() );
+            echo '</pre>';
             $product = wc_get_product( get_the_ID() );
             if ($product->is_in_stock()) {
                 wc_get_template_part( 'content', 'product' );
