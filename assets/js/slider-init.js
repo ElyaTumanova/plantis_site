@@ -21,7 +21,7 @@ const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
     }
 });
 
-const swiper_about_feedback = new Swiper('.about__swiper-photo', {
+const swiper_about_photo = new Swiper('.about__swiper-photo', {
     pagination: {
         el: '.swiper-pagination',
     },
