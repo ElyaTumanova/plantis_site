@@ -22,12 +22,14 @@ if (wp_is_mobile()) {
 	$banner_4_name = carbon_get_theme_option('main_banner_4_name');
 ?>
 
-<div class="main__banners nivo-main-banner-gallery">
-    <img src="<?php echo $banner_1 ?>" class="main__banner-img" alt="<?php echo $banner_1_name?>">
-    <img src="<?php echo $banner_2 ?>" class="main__banner-img" style="visibility:hidden;" alt="<?php echo $banner_2_name?>">
+<div class="main__banners main__banners-swiper swiper">
+	<div class="swiper-wrapper">
+		<img class="swiper-slide" src="<?php echo $banner_1 ?>" class="main__banner-img" alt="<?php echo $banner_1_name?>">
+		<img class="swiper-slide" src="<?php echo $banner_2 ?>" class="main__banner-img" style="visibility:hidden;" alt="<?php echo $banner_2_name?>">
+	</div>
 </div>
 
-<script>
+<!-- <script>
 	jQuery(function($){
 		$('.nivo-main-banner-gallery').nivoSlider({
 			effect: 'fade',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
@@ -42,4 +44,4 @@ if (wp_is_mobile()) {
 			randomStart: false,             // начинать со случайного слайда
 		})
 	});
-</script>
+</script> -->
