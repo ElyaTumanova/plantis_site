@@ -10,20 +10,20 @@ const swiper_about_photo = new Swiper('.about__swiper-photo', {
     slidesPerView: 1,
     slidesPerGroup: 1,
     spaceBetween: 10,
-    // breakpoints: {
-    //     320: {
-    //     slidesPerView: 1,
-    //     slidesPerGroup: 1,
-    //     },
-    //     768: {
-    //     slidesPerView: 2,
-    //     slidesPerGroup: 2,
-    //     },
-    //     1023: {
-    //     slidesPerView: 1,
-    //     slidesPerGroup: 1,
-    //     }
-    // }
+    breakpoints: {
+        320: {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        },
+        768: {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        },
+        1023: {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        }
+    }
 });
 
 const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
