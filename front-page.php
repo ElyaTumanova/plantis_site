@@ -12,12 +12,26 @@ get_header(); ?>
 	
 			<div class="main__sale-gallery-wrap">
 				<h2 class="main__sale-gallery-title heading-2">Спецпредложения</h2>
-				<div class="main__sale-gallery swiper">
+				<div class="main__sale-gallery">
 					<?php 
 					if (wp_is_mobile()) {
 						echo do_shortcode('[products on_sale="true" class="main-sale-slider-mob" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]'); 
 					} else {
-						echo do_shortcode('[products on_sale="true" class="main-sale-slider" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]'); 
+						echo do_shortcode('[products on_sale="true" class="main-sale-slider swiper" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]');
+						
+						add_action( 'woocommerce_shortcode_after_products_loop', 'wp_kama_woocommerce_shortcode_after_type_loop_action' );
+
+						/**
+						 * Function for `woocommerce_shortcode_after_(type)_loop` action-hook.
+						 * 
+						 * @param  $attributes 
+						 *
+						 * @return void
+						 */
+						function wp_kama_woocommerce_shortcode_after_type_loop_action( $attributes ){
+
+							echo ?> <div>hihi</div> <?php
+						}
 					}
 					?>
 
