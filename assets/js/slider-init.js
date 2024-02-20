@@ -1,31 +1,31 @@
 /*--------------------------------------------------------------
 # Front Page
 --------------------------------------------------------------*/
-// const swiper_main_banners = new Swiper('.main__banners-swiper', {
-//     pagination: {
-//         el: '.swiper-pagination',
-//         clickable: true,
-//     },
-//     navigation: {
-//         nextEl: '.swiper-button-next',
-//         prevEl: '.swiper-button-prev',
-//     },
-//     slidesPerView: 1,
-//     slidesPerGroup: 1,
-//     spaceBetween: 0,
-//     breakpoints: {
-//         320: {
-//             navigation: {
-//                 enabled: false,
-//             },
-//         },
-//         768: {
-//             navigation: {
-//                 enabled: true,
-//             },
-//         }
-//     }
-// });
+const swiper_main_banners = new Swiper('.main__banners-swiper', {
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    spaceBetween: 0,
+    breakpoints: {
+        320: {
+            navigation: {
+                enabled: false,
+            },
+        },
+        768: {
+            navigation: {
+                enabled: true,
+            },
+        }
+    }
+});
 
 /*--------------------------------------------------------------
 # Catalog
@@ -80,6 +80,8 @@ const swiper_card_cross_upsells = new Swiper('.cross-upsells-swiper', {
             navigation: {
                 enabled: false,
             },
+            freeMode: true,
+            slidesPerView: 2,
         },
         768: {
             navigation: {
