@@ -392,7 +392,7 @@ function plnt_woocommerce_pagination_args_filter( $array ){
 	return $array;
 }
 
-add_action( 'woocommerce_shortcode_after_products_loop', 'wp_kama_woocommerce_shortcode_after_type_loop_action' );
+add_action( 'woocommerce_shortcode_after_products_loop', 'wp_kama_woocommerce_shortcode_after_type_loop_action',10 );
 
 /**
  * Function for `woocommerce_shortcode_after_(type)_loop` action-hook.
