@@ -29,7 +29,7 @@ $arg = array(
 			'terms' => 'komnatnye-rasteniya'
 		)
     ),
-    'posts_per_page' => -1,
+    // 'posts_per_page' => -1,
     // 'meta_query' => array( 
     //     array(
     //         'key'       => '_stock_status',
