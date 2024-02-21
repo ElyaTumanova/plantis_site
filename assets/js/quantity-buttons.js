@@ -6,6 +6,8 @@ jQuery(function ($){
 	min = parseInt( qty.attr( 'min' ) ),
 	max = parseInt( qty.attr( 'max' ) ),
 	step = parseInt( qty.attr( 'step' ) );
+	plus = document.querySelector( '.plus' );
+	minus = document.querySelector( '.minus' );
  
 	// дальше определяем новое значение количества в зависимости от нажатия кнопки
 	var newVal;
