@@ -28,7 +28,9 @@ $args = array(
 );
 
 $products = new WP_Query( $args );
-echo $products;
+echo '<pre>';
+print_r( $products );
+echo '</pre>';
 if ( $products->have_posts() ) : ?>   
         <div class="card__ukhod-loop">
             <h2 class="heading-2">Товары для ухода за растениями</h2>

@@ -28,7 +28,9 @@ if( !empty ($crosssell_ids) ){
         );
 
         $products = new WP_Query( $args );
-        echo $products;
+        echo '<pre>';
+        print_r( $products );
+        echo '</pre>';
         if ( $products->have_posts() ) : ?>
 
             <div class="cross-sells">
