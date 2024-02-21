@@ -1,4 +1,15 @@
 /*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
+.woocommerce-LoopProduct-link {
+    /* убираем отступ снизу у фото */
+    font-size: 0;
+    line-height: 0;
+} 
+
+
+/*--------------------------------------------------------------
 # Catalog
 --------------------------------------------------------------*/
 
@@ -414,12 +425,6 @@ ul.products {
     }
 }
 
-.card__sliders-wrap .product .woocommerce-LoopProduct-link {
-    /* убираем отступ снизу у фото */
-    font-size: 0;
-    line-height: 0;
-} 
-
 .card__sliders-wrap .yith-wcwl-add-button {
     font-size: 0;
 }
@@ -586,9 +591,9 @@ ul.products {
     margin-left: 10px; 
 }
 
-.main__sale-gallery .woocommerce-loop-product__link:first-of-type {
+/* .main__sale-gallery .woocommerce-loop-product__link:first-of-type {
     font-size: 0;
-}
+} */
 
 .main__sale-gallery .add_to_cart_button, .main__sale-gallery .product_type_simple {
     font-size: 12px;
