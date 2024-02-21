@@ -685,17 +685,25 @@ ul.products {
 
 /* метки */
 
-.catalog__filter-metki {
-    overflow-x: scroll;
-}
-
 .catalog__filter-metki  .bapf_head  {
     display: none;
 }
 
-.catalog__filter-metki  ul {
+.catalog__filter-metki ul {
     display: flex;
     column-gap: 15px;
+    flex-wrap: wrap;
+    row-gap: 10px;
+}
+
+@media (max-width:767px) {
+    .catalog__filter-metki ul {
+        flex-wrap: nowrap;
+    }
+
+    .catalog__filter-metki {
+        overflow-x: scroll;
+    }
 }
 
 .catalog__filter-metki  ul li input{
