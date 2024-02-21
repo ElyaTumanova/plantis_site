@@ -337,11 +337,11 @@
   .swiper-rtl .swiper-button-prev {
     right: var(--swiper-navigation-sides-offset, 10px);
     left: auto;
-    margin-left: 3px;
   }
   .swiper-button-next:after,
   .swiper-rtl .swiper-button-prev:after {
     content: 'next';
+    margin-left: 3px;
   }
   /* Navigation font end */
   :root {
