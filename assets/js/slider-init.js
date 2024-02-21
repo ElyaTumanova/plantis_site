@@ -50,7 +50,7 @@ const swiper_main_sale = new Swiper('.main__sale-swiper', {
             freeMode: true,
             slidesPerView: 2,
         },
-        768: {
+        1205: {
             navigation: {
                 enabled: true,
             },
