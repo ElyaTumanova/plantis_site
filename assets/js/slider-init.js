@@ -39,7 +39,7 @@ const swiper_main_sale = new Swiper('.main__sale-swiper', {
     },
     slidesPerView: 1,
     slidesPerGroup: 1,
-    spaceBetween: 15,
+    spaceBetween: 0,
     breakpoints: {
         320: {
             slidesPerView: 2,
