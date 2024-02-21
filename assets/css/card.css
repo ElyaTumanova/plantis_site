@@ -242,6 +242,10 @@
     cursor: pointer;
 }
 
+.card__price-wrap .quantity .minus {
+    opacity: 50%;
+}
+
 .card__price-wrap .quantity input {
     border: none;
     font-size: 20px;
