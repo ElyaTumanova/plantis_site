@@ -30,7 +30,7 @@ jQuery(function ($){
 	qty.attr('value', newVal );  //устанавливаем новое значение для инпута
 	qty.val(newVal);  //устанавливаем новое значение для инпута
 
-	if (newVal = max) {
+	if (newVal === max) {
 		console.log(newVal);
 		console.log(max);
 		$(".plus").attr('style','opacity:50%');
