@@ -183,3 +183,11 @@
     background-color: var(--background);
     margin-top: -20px;
   }
+
+.swiper-wrapper {
+    margin-bottom: 10px;
+}
+
+.swiper-pagination {
+    bottom: -3px;
+}

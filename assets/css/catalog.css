@@ -521,7 +521,7 @@ ul.products {
     .main__sale-gallery .products {
         display: flex;
         column-gap: 0;
-        padding-bottom: 10px;
+        /* padding-bottom: 10px; */
     }
 
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
@@ -641,9 +641,9 @@ ul.products {
 
 /* sale gallery стили для мобилки   #adaptive*/
 @media (max-width:767px) {
-    .main__sale-gallery .products {
+    /* .main__sale-gallery .products {
         padding-bottom: 10px;
-    }
+    } */
 
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
         position: absolute;
@@ -668,9 +668,9 @@ ul.products {
 
 /* стили для swiper */
 
-.main__sale-gallery .swiper-pagination {
+/* .main__sale-gallery .swiper-pagination {
     bottom: -3px;
-}
+} */
 .main__sale-gallery .swiper-button-next {
     right: 6px;
 }
