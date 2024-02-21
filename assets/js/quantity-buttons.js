@@ -6,18 +6,19 @@ jQuery(function ($){
 	min = parseInt( qty.attr( 'min' ) ),
 	max = parseInt( qty.attr( 'max' ) ),
 	step = parseInt( qty.attr( 'step' ) );
+	console.log(qty);
  
 	// дальше определяем новое значение количества в зависимости от нажатия кнопки
 	var newVal;
 	if ( $( this ).is( '.plus' ) ) {
-		$( '[name="update_cart"]' ).attr("data-metrika_action",'add'); //для Yandex Metrika E-commerce
+		$( '[name="update_cart"]' ).attr("data-metrika_action",'add'); //для Yandex Metrika E-commerce в корзине
 		if ( max && ( max <= val ) ) {
 			newVal= max;
 		} else {
 			newVal= val + step ;
 		}
 	} else {
-		$( '[name="update_cart"]' ).attr("data-metrika_action",'remove'); //для Yandex Metrika E-commerce
+		$( '[name="update_cart"]' ).attr("data-metrika_action",'remove'); //для Yandex Metrika E-commerce в корзине
 		if ( min && ( min >= val ) ) {
 			newVal=  min;
 		} else if ( val > 1 ) {
@@ -28,6 +29,7 @@ jQuery(function ($){
 	qty.attr('value', newVal );  //устанавливаем новое значение для инпута
 	qty.val(newVal);  //устанавливаем новое значение для инпута
 
+	// меняем стили кнопок на активные/неактивные
 	if (newVal === max) {
 		$(".plus").attr('style','opacity:50%');
 	} else {
