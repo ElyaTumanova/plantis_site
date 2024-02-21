@@ -73,7 +73,7 @@ function get_cats() {
 		'hide_empty' => false,
 	] );
 	echo '<pre>';
-		print_r( $categories['term_id'] );
+		print_r( $categories);
 		echo '</pre>';
 	//$categories.foreach ($variable as $key => $value) {
 	// 	echo '<pre>';
