@@ -72,9 +72,12 @@ function get_cats() {
 		'taxonomy' => 'product_tag',
 		'hide_empty' => false,
 	] );
-	echo '<pre>';
-	print_r( $categories );
-	echo '</pre>'; 
+	$categories.foreach ($variable as $key => $value) {
+		echo '<pre>';
+		print_r( $value['term_id'] );
+		echo '</pre>';
+	}
+	 
 }
 
 add_action( 'wp_footer', 'get_cats' );
