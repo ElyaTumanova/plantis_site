@@ -497,9 +497,11 @@ ul.products {
 
 /* sale gallery стили для десктопа   #adaptive*/
 @media (min-width: 767px) {
+    .main__sale-gallery-wrap {
+        padding: 10px 0;
+    }
     .main__sale-gallery .product {
         display: grid;
-        padding: 10px 0;
         grid-template-rows:  24px auto auto auto;
         grid-template-areas:
                 "image sale sale"
