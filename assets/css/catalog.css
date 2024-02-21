@@ -420,6 +420,10 @@ ul.products {
     line-height: 0;
 } 
 
+.card__sliders-wrap .yith-wcwl-add-button {
+    font-size: 0;
+}
+
 .card__sliders-wrap .yith-wcwl-add-button img {
     width: 25px;
     margin: 5px;
@@ -482,13 +486,13 @@ ul.products {
 
 .main__sale-gallery-wrap {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-    padding: 10px 10px;
+    padding: 10px 0;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--background);
-    row-gap: 10px;
+    row-gap: 8px;
 }
 
 /* sale gallery стили для десктопа   #adaptive*/
@@ -515,7 +519,7 @@ ul.products {
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
         grid-area: wish; 
         display: flex;
-        align-items: end;
+        align-items: center;
         position: relative;
         top: 0;
         border: none;
@@ -569,6 +573,10 @@ ul.products {
     position: relative;
 }
 
+.main__sale-gallery .yith-wcwl-add-button {
+    font-size: 0;
+}
+
 .main__sale-gallery .yith-wcwl-add-button img {
     width: 27px;
     margin: 0;
@@ -583,7 +591,7 @@ ul.products {
     font-size: 12px;
     line-height: 14px;
     width: 100%;
-    align-self: flex-end;
+    align-self: center;
     min-width: 140px;
 }
 
@@ -620,6 +628,7 @@ ul.products {
     background-color: var(--sale);
     border-color: var(--sale);
     color: var(--white);
+    margin: 0 10px;
 }
 
 /* sale gallery стили для мобилки   #adaptive*/
@@ -642,11 +651,12 @@ ul.products {
         margin-top: 7px;
     }
 
-    .main__sale-gallery .yith-wcwl-add-button img {
-        margin: 0;
+    .main__sale-gallery .yith-wcwl-add-button {
+        font-size: 0;
     }
 
     .main__sale-gallery .yith-wcwl-add-button img {
+        margin: 0;
         width: 22px;
     }
 }
@@ -654,12 +664,18 @@ ul.products {
 /* стили для swiper */
 
 .main__sale-gallery .swiper-pagination {
-    bottom: 0;
+    bottom: -3px;
 }
 .main__sale-gallery .swiper-pagination-bullet {
     width: 10px;
     height: 2px;
     border-radius: 30%;
+}
+.main__sale-gallery .swiper-button-next {
+    right: 6px;
+}
+.main__sale-gallery .swiper-button-prev {
+    left: 6px;
 }
 
 
