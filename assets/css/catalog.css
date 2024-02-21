@@ -178,7 +178,7 @@ ul.products {
     word-break: break-word;
     min-width: 12vw;
     column-gap: 16px;
-    row-gap: 16px;
+    row-gap: 26px;
 
     &.columns-2 {
 
@@ -294,7 +294,7 @@ ul.products {
 }
 
 .catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple {
-    margin: 10px 0 15px;
+    margin: 10px 0 0;
 }
 
 @media (max-width: 767px) {
@@ -361,7 +361,7 @@ ul.products {
 }
 
 .product .price, .sale .price {
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 @media (max-width:767px) {
