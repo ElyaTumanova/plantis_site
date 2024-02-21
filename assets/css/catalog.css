@@ -509,6 +509,7 @@ ul.products {
     .main__sale-gallery .products {
         display: flex;
         column-gap: 0;
+        padding-bottom: 10px;
     }
 
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
@@ -648,6 +649,17 @@ ul.products {
     .main__sale-gallery .yith-wcwl-add-button img {
         width: 22px;
     }
+}
+
+/* стили для swiper */
+
+.main__sale-gallery .swiper-pagination {
+    bottom: 0;
+}
+.main__sale-gallery .swiper-pagination-bullet {
+    width: 10px;
+    height: 2px;
+    border-radius: 30%;
 }
 
 
