@@ -6,6 +6,7 @@ jQuery(function ($){
 	min = parseInt( qty.attr( 'min' ) ),
 	max = parseInt( qty.attr( 'max' ) ),
 	step = parseInt( qty.attr( 'step' ) );
+	console.log(this);
 	console.log(qty);
  
 	// дальше определяем новое значение количества в зависимости от нажатия кнопки
