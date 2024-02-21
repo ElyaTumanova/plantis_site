@@ -293,7 +293,7 @@ remove_action('woocommerce_after_single_product_summary','woocommerce_output_rel
 add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 20);
 
 function plnt_get_cross_sells(){
-    get_template_part('template-parts/plnt-cross-sells');
+    // get_template_part('template-parts/plnt-cross-sells');
 }
 
 // товары для ухода
@@ -301,7 +301,8 @@ function plnt_get_cross_sells(){
 add_action('woocommerce_after_single_product_summary','plnt_card_ukhod_loop',40);
 
 function plnt_card_ukhod_loop() {
-    echo do_shortcode ('[products category="ukhod"]');
+    get_template_part('template-parts/plnt-cross-sells');
+    // echo do_shortcode ('[products category="ukhod"]');
     // get_template_part('template-parts/products-ukhod');
 }
 
