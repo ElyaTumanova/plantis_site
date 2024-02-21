@@ -71,6 +71,13 @@
 					<?php endif; ?>
 				</div><!-- .description -->
 				<div class="header__wrap">
+					<div class="header__account">
+						<?php $account_icon = carbon_get_theme_option('account_icon')?>
+						<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="header-btn__wrap">
+							<img class="header-btn__icon" src="<?php echo $account_icon ?>" alt="account" width="25" height="25">
+							<span class="header-btn__label">Войти</span>		
+						</a>
+					</div>
 					<div class="header__wishlist">
 						<?php $whishlist_icon = carbon_get_theme_option('whishlist_icon')?>
 							<div class="header__count"><?php echo do_shortcode('[yith_wcwl_items_count]')?></div>
@@ -80,13 +87,7 @@
 							</a>
 						</a>
 					</div>
-					<div class="header__account">
-						<?php $account_icon = carbon_get_theme_option('account_icon')?>
-						<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="header-btn__wrap">
-							<img class="header-btn__icon" src="<?php echo $account_icon ?>" alt="account" width="25" height="25">
-							<span class="header-btn__label">Войти</span>		
-						</a>
-					</div>
+					
 					<div class="header-cart">
 						<?php 
 							plnt_woocommerce_cart_header(); 

@@ -97,13 +97,18 @@
 .header__count {
     position: absolute;
     top: -7px;
-    right: 3px;
     font-size: 10px;
     background: var(--red-color);
     padding: 2px 4px;
     border-radius: 10px;
     line-height: 10px;
     color: var(--white);
+}
+.header__wishlist .header__count {
+    right: 11px;
+}
+.header-cart .header__count {
+    right: 3px;
 }
 
 /* header__info styles */
