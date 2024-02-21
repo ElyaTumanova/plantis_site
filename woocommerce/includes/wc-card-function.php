@@ -123,15 +123,14 @@ function plnt_get_add_to_card() {
     global $product;
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
-        echo $product->get_max_purchase_quantity();
-        echo $quantity;
         ?><div class="add-to-cart-wrap"> <?php
         if ($quantity > 0) {
             woocommerce_template_loop_add_to_cart(); //заменили обычную не яакс кнопку на аякс кнопку из каталога
         }
         if ($quantity > 1) {
             woocommerce_quantity_input(array(
-                'max_value'    => $quantity,
+                'min_value' => 1,
+                'max_value'    => $quantity,    // почему-то пришлось передавать заново, проверить на PLANTIS #TODO
             ),);           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
         }
         if ($quantity > 0) {
