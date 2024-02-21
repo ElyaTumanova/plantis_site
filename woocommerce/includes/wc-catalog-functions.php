@@ -165,8 +165,8 @@ function plnt_catalog_gallery() {
 			<div class="swiper-wrapper" >';
 				echo $image;
 				foreach( $attachment_ids as $attachment_id ) {
-					$params = [ 'class' => "attachment-woocommerce_thumbnail" ];
-					echo wp_get_attachment_image( $attachment_id, 'shop_catalog', false, $params);
+					// $params = [ 'class' => "attachment-woocommerce_thumbnail" ];
+					echo wp_get_attachment_image( $attachment_id, 'shop_catalog');
 				};
 			echo '
 			</div>
@@ -182,10 +182,13 @@ function plnt_catalog_gallery() {
 	}
 };
 
+// добавляем класс для swiper
 add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
 function AddThumbnailClass( $atts, $attachment ) {
-    $atts['class'] .= " product-img"; // product-img - новый класс
-    return $atts;
+	if (is_shop() || is_product_category() || is_product_tag()) {
+		$atts['class'] .= " swiper-slide"; 
+		return $atts;
+	}
 }
 
 

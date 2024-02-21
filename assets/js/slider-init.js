@@ -75,7 +75,7 @@ const swiper_main_sale = new Swiper('.main__sale-swiper', {
 --------------------------------------------------------------*/
 
 const swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
-    slideClass: 'attachment-woocommerce_thumbnail',
+    // slideClass: 'attachment-woocommerce_thumbnail',
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
