@@ -401,3 +401,15 @@ function plnt_woocommerce_pagination_args_filter( $array ){
 	);
 	return $array;
 }
+
+// добавляем директивы ноиндекс, фоллоу для страниц пагинации, начиная со 2
+add_shortcode('pagination', 'woocommerce_pagination');
+
+/* Yoast SEO -  add noindex, follow for paginated pages */
+function filter_wpseo_robots( $robotsstr ) {
+    if ( is_paged() ) {
+        return 'noindex, follow';
+    }
+ 
+    return $robotsstr;
+}
