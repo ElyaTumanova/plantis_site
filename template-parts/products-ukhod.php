@@ -32,7 +32,7 @@ if ( $products->have_posts() ) : ?>
         <div class="card__ukhod-loop">
             <h2 class="heading-2">Товары для ухода за растениями</h2>
             <div class="card-ukhod-swiper swiper"></div>
-            <ul class="products columns-3"> 
+            <ul class="products columns-3 swiper-wrapper"> 
                 <?php while ( $products->have_posts() ) : $products->the_post(); ?>
                 <?php wc_get_template_part( 'content', 'product' ); ?>
                 <?php endwhile; // end of the loop. ?>
