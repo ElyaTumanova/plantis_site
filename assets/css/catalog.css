@@ -733,15 +733,6 @@ ul.products {
     white-space: nowrap;
 }
 
-@media (max-width:767px) {
-    .catalog__filter-active {
-        overflow-x: scroll;
-    }
-    .catalog__filter-active .berocket_aapf_widget_selected_filter {
-        flex-wrap: nowrap;
-    }
-}
-
 .catalog__filter-active h3 {
     display: none;
 }
@@ -750,6 +741,15 @@ ul.products {
     display: flex;
     column-gap: 10px;
     flex-wrap: wrap;
+}
+
+@media (max-width:767px) {
+    .catalog__filter-active {
+        overflow-x: scroll;
+    }
+    .catalog__filter-active .berocket_aapf_widget_selected_filter {
+        flex-wrap: nowrap;
+    }
 }
 
 .catalog__filter-active .berocket_aapf_widget_selected_filter .bapf_sfa_unall {
