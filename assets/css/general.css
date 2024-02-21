@@ -189,5 +189,5 @@
 }
 
 .swiper-pagination {
-    bottom: -3px;
+    bottom: -3px !important;
 }
