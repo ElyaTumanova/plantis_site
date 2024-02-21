@@ -13,7 +13,7 @@ function plnt_card_grid_start () {
     <?php 
 };
 
-add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',30);
+add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',50);
 
 function plnt_card_grid_end () {
     ?>
