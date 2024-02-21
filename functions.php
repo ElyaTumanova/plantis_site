@@ -69,7 +69,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 function get_cats() {
 	$categories = get_terms( [
-		'taxonomy' => 'product_cat',
+		'taxonomy' => 'product_tag',
 		'hide_empty' => false,
 	] );
 	echo '<pre>';
