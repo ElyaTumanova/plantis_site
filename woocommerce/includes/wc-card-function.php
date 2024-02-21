@@ -302,7 +302,8 @@ add_action('woocommerce_after_single_product_summary','plnt_card_ukhod_loop',40)
 
 function plnt_card_ukhod_loop() {
     // echo do_shortcode ('[products category="ukhod"]');
-    get_template_part('template-parts/products-ukhod');
+    // get_template_part('template-parts/products-ukhod');
+    get_template_part('template-parts/products-on-sale');
 }
 
 // ссылка "назад" для карточки товара
