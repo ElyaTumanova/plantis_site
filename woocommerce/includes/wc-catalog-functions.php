@@ -182,6 +182,12 @@ function plnt_catalog_gallery() {
 	}
 };
 
+add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
+function AddThumbnailClass( $atts, $attachment ) {
+    $atts['class'] .= " product-img"; // product-img - новый класс
+    return $atts;
+}
+
 
 // // бейдж распродажа
 remove_action('woocommerce_before_shop_loop_item_title','woocommerce_show_product_loop_sale_flash', 10);
@@ -260,7 +266,7 @@ function plnt_get_product_tags() {
 // 	return $clasess;
 // }
 
-// // добавляем класс для swiper
+// // добавляем класс для swiper для каталог гридов
 add_filter('post_class', 'plnt_add_class_loop_item_swiper');
 function plnt_add_class_loop_item_swiper($clasess){
 	if(is_product() || is_front_page()){
