@@ -671,10 +671,10 @@ ul.products {
 --------------------------------------------------------------*/
 /* стили для swiper */
 
-.main__sale-gallery .swiper-wrapper, .card__sliders-wrap .swiper-wrapper{
+.main__sale-gallery .swiper-wrapper, .card__grid .swiper-wrapper{
     padding-bottom: 10px;
 }
-.main__sale-gallery .swiper-pagination, .card__sliders-wrap .swiper-pagination {
+.main__sale-gallery .swiper-pagination, .card__grid .swiper-pagination {
     bottom: -3px;
 }
 .main__sale-gallery .swiper-button-next {
