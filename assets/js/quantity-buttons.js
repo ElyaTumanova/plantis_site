@@ -31,6 +31,8 @@ jQuery(function ($){
 	qty.val(newVal);  //устанавливаем новое значение для инпута
 
 	if (newVal = max) {
+		console.log(newVal);
+		console.log(max);
 		$(".plus").attr('style','opacity:50%');
 	} else {
 		$(".plus").attr('style','opacity:0');
