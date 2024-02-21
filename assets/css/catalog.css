@@ -687,8 +687,11 @@ ul.products {
 
 .catalog__filter-metki {
     overflow-x: scroll;
-    scrollbar-width: none;
 }
+
+.catalog__filter-metki::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
 
 .catalog__filter-metki  .bapf_head  {
     display: none;
@@ -724,7 +727,6 @@ ul.products {
 
 .catalog__filter-active {
     overflow-x: scroll;
-    scrollbar-width: none;
     white-space: nowrap;
 }
 
