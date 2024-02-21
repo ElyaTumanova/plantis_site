@@ -16,12 +16,20 @@ jQuery(function ($){
 			newVal= val + step ;
 			$( '[name="update_cart"]' ).attr("data-metrika_action",'add'); //для Yandex Metrika E-commerce в корзине
 		}
-	} else {
+	// } else {
+	// 	$( '[name="update_cart"]' ).attr("data-metrika_action",'remove'); //для Yandex Metrika E-commerce в корзине
+	// 	if ( min && ( min >= val ) ) {
+	// 		newVal =  min;
+	// 	} else if ( val > 1 ) {
+	// 		newVal= val - step;
+	// 	}
+	}
+	if ( $( this ).is( '.minus' ) ) {
+		$( '[name="update_cart"]' ).attr("data-metrika_action",'remove'); //для Yandex Metrika E-commerce в корзине
 		if ( min && ( min >= val ) ) {
 			newVal =  min;
 		} else if ( val > 1 ) {
 			newVal= val - step;
-			$( '[name="update_cart"]' ).attr("data-metrika_action",'remove'); //для Yandex Metrika E-commerce в корзине
 		}
 	}
 
