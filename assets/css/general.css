@@ -174,16 +174,16 @@
     border-radius: 50%;
     background-color: var(--background);
     margin-top: -20px;
-  }
-  .swiper-button-next {
+}
+.swiper-button-next {
     height: 40px;
     width: 40px;
     box-shadow: 0 1px 20px rgba(4, 6, 28, .1);
     border-radius: 50%;
     background-color: var(--background);
     margin-top: -20px;
-  }
-
+}
+/* выводим пагинацию под swiper */
 .swiper-wrapper {
     margin-bottom: 10px;
 }
