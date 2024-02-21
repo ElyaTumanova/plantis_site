@@ -183,11 +183,3 @@
     background-color: var(--background);
     margin-top: -20px;
 }
-/* выводим пагинацию под swiper */
-.swiper-wrapper {
-    padding-bottom: 10px;
-}
-
-.swiper-pagination {
-    bottom: -3px !important;
-}
