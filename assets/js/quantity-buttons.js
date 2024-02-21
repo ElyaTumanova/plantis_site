@@ -10,6 +10,7 @@ jQuery(function ($){
 	// дальше определяем новое значение количества в зависимости от нажатия кнопки
 	var newVal;
 	if ( $( this ).is( '.plus' ) ) {
+		console.log('plus');
 		if ( max && ( max <= val ) ) {
 			newVal= max;
 		} else {
@@ -25,6 +26,7 @@ jQuery(function ($){
 	// 	}
 	}
 	if ( $( this ).is( '.minus' ) ) {
+		console.log('minus');
 		$( '[name="update_cart"]' ).attr("data-metrika_action",'remove'); //для Yandex Metrika E-commerce в корзине
 		if ( min && ( min >= val ) ) {
 			newVal =  min;
