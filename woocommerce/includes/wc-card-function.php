@@ -123,6 +123,7 @@ function plnt_get_add_to_card() {
     global $product;
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
+        echo $product->get_max_purchase_quantity();
         echo $quantity;
         ?><div class="add-to-cart-wrap"> <?php
         if ($quantity > 0) {
