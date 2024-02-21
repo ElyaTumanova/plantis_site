@@ -130,7 +130,9 @@ function plnt_get_add_to_card() {
             woocommerce_template_loop_add_to_cart(); //заменили обычную не яакс кнопку на аякс кнопку из каталога
         }
         if ($quantity > 1) {
-            woocommerce_quantity_input();           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
+            woocommerce_quantity_input(array(
+                'max_value'    => $quantity,
+            ),);           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
         }
         if ($quantity > 0) {
             plnt_card_wishlist_btn();
