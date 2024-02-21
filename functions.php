@@ -66,3 +66,12 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 // 	return $template;   
 //   }
 //   add_filter('template_include', 'template_chooser');
+
+function get_cats() {
+	$categories = get_categories();
+	echo '<pre>';
+	print_r( $categories );
+	echo '</pre>'; 
+}
+
+add_action( 'wp_footer', 'get_cats' );
