@@ -27,48 +27,48 @@ const swiper_main_banners = new Swiper('.main__banners-swiper', {
     }
 });
 
-// const swiper_main_sale = new Swiper('.main__sale-swiper', {
-//     slideClass: 'product',
-//     pagination: {
-//         el: '.swiper-pagination',
-//         clickable: true,
-//     },
-//     navigation: {
-//         nextEl: '.swiper-button-next',
-//         prevEl: '.swiper-button-prev',
-//     },
-//     slidesPerView: 1,
-//     slidesPerGroup: 1,
-//     spaceBetween: 0,
-//     breakpoints: {
-//         320: {
-//             slidesPerView: 2,
-//             spaceBetween: 10,
-//             navigation: {
-//                 enabled: false,
-//             },
-//             // freeMode: true,
-//         },
-//         767: {
-//             navigation: {
-//                 enabled: true,
-//             },
-//             slidesPerView: 2,
-//         },
-//         1205: {
-//             navigation: {
-//                 enabled: true,
-//             },
-//             slidesPerView: 3,
-//         },
-//         1278: {
-//             navigation: {
-//                 enabled: true,
-//             },
-//             slidesPerView: 1,
-//         }
-//     }
-// });
+const swiper_main_sale = new Swiper('.main__sale-swiper', {
+    // slideClass: 'product',
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    spaceBetween: 0,
+    breakpoints: {
+        320: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+            navigation: {
+                enabled: false,
+            },
+            // freeMode: true,
+        },
+        767: {
+            navigation: {
+                enabled: true,
+            },
+            slidesPerView: 2,
+        },
+        1205: {
+            navigation: {
+                enabled: true,
+            },
+            slidesPerView: 3,
+        },
+        1278: {
+            navigation: {
+                enabled: true,
+            },
+            slidesPerView: 1,
+        }
+    }
+});
 
 /*--------------------------------------------------------------
 # Catalog
