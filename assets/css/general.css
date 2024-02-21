@@ -185,7 +185,7 @@
 }
 /* выводим пагинацию под swiper */
 .swiper-wrapper {
-    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 .swiper-pagination {
