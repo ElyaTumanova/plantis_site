@@ -72,11 +72,14 @@ function get_cats() {
 		'taxonomy' => 'product_tag',
 		'hide_empty' => false,
 	] );
-	$categories.foreach ($variable as $key => $value) {
-		echo '<pre>';
-		print_r( $value['term_id'] );
+	echo '<pre>';
+		print_r( $categories['term_id'] );
 		echo '</pre>';
-	}
+	//$categories.foreach ($variable as $key => $value) {
+	// 	echo '<pre>';
+	// 	print_r( $value['term_id'] );
+	// 	echo '</pre>';
+	// }
 	 
 }
 
