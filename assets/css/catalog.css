@@ -730,8 +730,13 @@ ul.products {
 /* активные фильтры */
 
 .catalog__filter-active {
-    overflow-x: scroll;
     white-space: nowrap;
+}
+
+@media (max-width:767px) {
+    .catalog__filter-active {
+        overflow-x: scroll;
+    }
 }
 
 .catalog__filter-active h3 {
