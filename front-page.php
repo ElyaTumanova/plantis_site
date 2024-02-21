@@ -13,7 +13,7 @@ get_header(); ?>
 			<div class="main__sale-gallery-wrap">
 				<h2 class="main__sale-gallery-title heading-2">Спецпредложения</h2>
 				<div class="main__sale-gallery">
-					<?php get_template_part('template-parts/products-on-sale');
+					<?php //get_template_part('template-parts/products-on-sale');
 					// if (wp_is_mobile()) {
 					// 	echo do_shortcode('[products on_sale="true" class="main-sale-slider-mob" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]'); 
 					// } else {
