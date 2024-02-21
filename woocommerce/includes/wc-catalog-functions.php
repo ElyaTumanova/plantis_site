@@ -183,20 +183,12 @@ function plnt_catalog_gallery() {
 };
 
 // добавляем класс для swiper
-// add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
-// function AddThumbnailClass( $atts, $attachment ) {
-// 	if (is_shop() || is_product_category() || is_product_tag()) {
-// 		$atts['class'] .= " swiper-slide"; 
-// 		return $atts;
-// 	}
-// }
-
-// Добавление класса к миниатюре товара WooCommerce
 add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
 function AddThumbnailClass( $atts, $attachment ) {
-    $atts['class'] .= " product-img"; // product-img - новый класс
-    return $atts;
+		$atts['class'] .= " swiper-slide"; 
+		return $atts;
 }
+
 
 
 // // бейдж распродажа
