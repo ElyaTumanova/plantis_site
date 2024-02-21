@@ -22,7 +22,7 @@ $args = array(
         array(
             'taxonomy' => 'product_cat',
             'field' => 'slug',
-            'terms' => 'komnatnye-rasteniya'
+            'terms' => 'ukhod'
         )
     )
 );
@@ -31,6 +31,7 @@ $products = new WP_Query( $args );
 if ( $products->have_posts() ) : ?>   
         <div class="card__ukhod-loop">
             <h2 class="heading-2">Товары для ухода за растениями</h2>
+            <div class="card-ukhod-swiper swiper"></div>
             <ul class="products columns-3"> 
                 <?php while ( $products->have_posts() ) : $products->the_post(); ?>
                 <?php wc_get_template_part( 'content', 'product' ); ?>

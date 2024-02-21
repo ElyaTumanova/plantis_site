@@ -124,9 +124,39 @@ const swiper_card_cross_upsells = new Swiper('.cross-upsells-swiper', {
                 enabled: false,
             },
             freeMode: true,
-            slidesPerView: 2,
         },
         768: {
+            navigation: {
+                enabled: true,
+            },
+        }
+    }
+});
+
+const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    slidesPerView: 4,
+    slidesPerGroup: 1,
+    spaceBetween: 15,
+    breakpoints: {
+        320: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+            navigation: {
+                enabled: false,
+            },
+            freeMode: true,
+        },
+        768: {
+            slidesPerView: 3,
+            spaceBetween: 10,
             navigation: {
                 enabled: true,
             },
