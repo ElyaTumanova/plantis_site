@@ -269,14 +269,14 @@ function plnt_get_product_tags() {
 // }
 
 // // добавляем класс для swiper для каталог гридов
-add_filter('post_class', 'plnt_add_class_loop_item_swiper');
-function plnt_add_class_loop_item_swiper($clasess){
-	if(is_product() || is_front_page()){
-		$clasess[] .= 'swiper-slide';
-	}
-	//get_pr($clasess, false);
-	return $clasess;
-}
+// add_filter('post_class', 'plnt_add_class_loop_item_swiper');
+// function plnt_add_class_loop_item_swiper($clasess){
+// 	if(is_product() || is_front_page()){
+// 		$clasess[] .= 'swiper-slide';
+// 	}
+// 	//get_pr($clasess, false);
+// 	return $clasess;
+// }
 
 //add_action('woocommerce_before_shop_loop_item','plnt_add_remove_link_wishlist',5);
 function plnt_add_remove_link_wishlist() {
