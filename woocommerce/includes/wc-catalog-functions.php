@@ -191,6 +191,13 @@ function plnt_catalog_gallery() {
 // 	}
 // }
 
+// Добавление класса к миниатюре товара WooCommerce
+add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
+function AddThumbnailClass( $atts, $attachment ) {
+    $atts['class'] .= " product-img"; // product-img - новый класс
+    return $atts;
+}
+
 
 // // бейдж распродажа
 remove_action('woocommerce_before_shop_loop_item_title','woocommerce_show_product_loop_sale_flash', 10);
