@@ -39,9 +39,7 @@ if ( $products->have_posts() ) : ?>
                 
                 <div>hello</div>
                 
-                <?php woocommerce_product_loop_start(); ?>
                 <?php wc_get_template_part( 'content', 'product' ); ?>
-                <?php woocommerce_product_loop_end(); ?>
 
                 <?php endwhile; // end of the loop. ?>
             </ul>
