@@ -22,7 +22,7 @@ $args = array(
         array(
             'taxonomy' => 'product_cat',
             'field' => 'slug',
-            'terms' => 'ukhod'
+            'terms' => 'komnatnye-rasteniya'
         )
     )
 );
