@@ -3,11 +3,12 @@
 .card__grid {
     display: grid;
     grid-template-columns: 45% 30% calc(25% - 40px);
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: repeat(4, auto);
     grid-template-areas:
     "image info price"
     "image banner1 banner2"
-    "descr sliders sliders";
+    "descr sliders sliders"
+    "ukhod ukhod ukhod";
     column-gap: 20px;
     row-gap: 20px;
 }
@@ -47,6 +48,10 @@
 
 .card_banner:last-of-type {
     grid-area: banner2;
+}
+
+.card__ukhod-loop {
+    grid-area: ukhod;
 }
 
 .card_banner {
@@ -403,6 +408,7 @@ input[type="number"] {
         "banner1"
         "banner2"
         "sliders"
+        "ukhod"
         "descr";
         column-gap: 0;
         row-gap: 30px;

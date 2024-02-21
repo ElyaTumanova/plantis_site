@@ -10,23 +10,15 @@ jQuery(function ($){
 	// дальше определяем новое значение количества в зависимости от нажатия кнопки
 	var newVal;
 	if ( $( this ).is( '.plus' ) ) {
-		console.log('plus');
+		$( '[name="update_cart"]' ).attr("data-metrika_action",'add'); //для Yandex Metrika E-commerce в корзине #TODO если val = max
 		if ( max && ( max <= val ) ) {
 			newVal= max;
 		} else {
 			newVal= val + step ;
-			$( '[name="update_cart"]' ).attr("data-metrika_action",'add'); //для Yandex Metrika E-commerce в корзине
 		}
-	// } else {
-	// 	$( '[name="update_cart"]' ).attr("data-metrika_action",'remove'); //для Yandex Metrika E-commerce в корзине
-	// 	if ( min && ( min >= val ) ) {
-	// 		newVal =  min;
-	// 	} else if ( val > 1 ) {
-	// 		newVal= val - step;
-	// 	}
 	}
+
 	if ( $( this ).is( '.minus' ) ) {
-		console.log('minus');
 		$( '[name="update_cart"]' ).attr("data-metrika_action",'remove'); //для Yandex Metrika E-commerce в корзине
 		if ( min && ( min >= val ) ) {
 			newVal =  min;
