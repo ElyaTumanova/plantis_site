@@ -710,7 +710,7 @@ ul.products {
     margin-bottom: 20px;
 }
 
-@media (max-width:767px) {
+@media (max-width:769px) {
     .card__ukhod-loop .yith-wcwl-add-to-wishlist {
         position: absolute;
         top: 10px;
