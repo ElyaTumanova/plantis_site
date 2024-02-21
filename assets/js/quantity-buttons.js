@@ -17,11 +17,11 @@ jQuery(function ($){
 			$( '[name="update_cart"]' ).attr("data-metrika_action",'add'); //для Yandex Metrika E-commerce в корзине
 		}
 	} else {
-		$( '[name="update_cart"]' ).attr("data-metrika_action",'remove'); //для Yandex Metrika E-commerce в корзине
 		if ( min && ( min >= val ) ) {
-			newVal=  min;
+			newVal =  min;
 		} else if ( val > 1 ) {
 			newVal= val - step;
+			$( '[name="update_cart"]' ).attr("data-metrika_action",'remove'); //для Yandex Metrika E-commerce в корзине
 		}
 	}
 
