@@ -59,7 +59,7 @@ get_header(); ?>
 		</div>
 	</div>
 	<div>
-		<?php echo do_shortcode('[products on_sale="true" class="main-sale-slider" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]');?>
+		<?php echo do_shortcode('[products class="main-sale-slider" limit="10" columns="1" orderby="rand" category="ukhod"]');?>
 		<?php //get_template_part('template-parts/products-ukhod');?>
 	</div>
 	<div class="main__about container main__row">
