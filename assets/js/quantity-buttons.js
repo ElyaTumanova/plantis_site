@@ -35,7 +35,7 @@ jQuery(function ($){
 		console.log(max);
 		$(".plus").attr('style','opacity:50%');
 	} else {
-		$(".plus").attr('style','opacity:0');
+		$(".plus").attr('style','opacity:100%');
 	}
 
 	qty.parent().parent().find(".add_to_cart_button").attr( 'data-quantity', newVal ); //устанавливаем новое значение для атрибута кнопки добавить в корзину. div "quantity" должен находится в одном родительском узле с кнопкой в корзирну
