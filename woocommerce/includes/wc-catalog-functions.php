@@ -218,7 +218,7 @@ function plnt_change_add_to_cart_text($text) {
 }
 
 // // добавляем класс для кнопки в корзину, если товар не в наличии
-add_filter( 'woocommerce_loop_add_to_cart_args', 'plnt_woocommerce_loop_add_to_cart_args_outofstock', 10, 2 );
+//add_filter( 'woocommerce_loop_add_to_cart_args', 'plnt_woocommerce_loop_add_to_cart_args_outofstock', 10, 2 );
 
 function plnt_woocommerce_loop_add_to_cart_args_outofstock( $args, $product ){
 	if ($product->is_in_stock()) {
@@ -269,14 +269,14 @@ function plnt_get_product_tags() {
 // }
 
 // // добавляем класс для swiper для каталог гридов
-// add_filter('post_class', 'plnt_add_class_loop_item_swiper');
-// function plnt_add_class_loop_item_swiper($clasess){
-// 	if(is_product() || is_front_page()){
-// 		$clasess[] .= 'swiper-slide';
-// 	}
-// 	//get_pr($clasess, false);
-// 	return $clasess;
-// }
+add_filter('post_class', 'plnt_add_class_loop_item_swiper');
+function plnt_add_class_loop_item_swiper($clasess){
+	if(is_product() || is_front_page()){
+		$clasess[] .= 'swiper-slide';
+	}
+	//get_pr($clasess, false);
+	return $clasess;
+}
 
 //add_action('woocommerce_before_shop_loop_item','plnt_add_remove_link_wishlist',5);
 function plnt_add_remove_link_wishlist() {
