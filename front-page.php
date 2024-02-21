@@ -10,7 +10,7 @@ get_header(); ?>
 				<?php get_template_part('template-parts/main-banners-gallery');?>
 			</div>
 	
-			<div class="cross-sells">
+			<div class="main__sale-gallery-wrap">
 				<h2 class="main__sale-gallery-title heading-2">Спецпредложения</h2>
 				<div class="main__sale-gallery">
 					<?php get_template_part('template-parts/products-on-sale');
@@ -18,8 +18,7 @@ get_header(); ?>
 					// 	echo do_shortcode('[products on_sale="true" class="main-sale-slider-mob" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]'); 
 					// } else {
 					// 	echo do_shortcode('[products on_sale="true" class="main-sale-slider" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]');
-					// 
-					//main__sale-gallery-wrap}
+					// }
 
 					?>
 				</div>
