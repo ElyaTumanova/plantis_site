@@ -19,7 +19,7 @@ const swiper_main_banners = new Swiper('.main__banners-swiper', {
                 enabled: false,
             },
         },
-        768: {
+        767: {
             navigation: {
                 enabled: true,
             },

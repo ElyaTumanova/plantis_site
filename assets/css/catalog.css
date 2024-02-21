@@ -609,9 +609,9 @@ ul.products {
     font-size: 12px;
     line-height: 14px;
     margin-bottom: 10px;
-    white-space: nowrap;
+    /* white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; */
     max-width: 185px;
 }
 
