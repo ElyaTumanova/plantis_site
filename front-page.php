@@ -13,7 +13,7 @@ get_header(); ?>
 			<div class="main__sale-gallery-wrap">
 				<h2 class="main__sale-gallery-title heading-2">Спецпредложения</h2>
 				<div class="main__sale-gallery">
-					<?php //get_template_part('template-parts/products-on-sale');
+					<?php get_template_part('template-parts/products-on-sale');
 					// if (wp_is_mobile()) {
 					// 	echo do_shortcode('[products on_sale="true" class="main-sale-slider-mob" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]'); 
 					// } else {
@@ -57,10 +57,6 @@ get_header(); ?>
 			<p class="main__contacts-text">Не знаете, какое комнатное растение подойдёт именно вам?<br>Спросите нас об этом!</p>
 			<?php get_template_part('template-parts/social-media-btns');?>
 		</div>
-	</div>
-	<div>
-		<?php //echo do_shortcode('[products limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]');?>
-		<?php get_template_part('template-parts/products-ukhod');?>
 	</div>
 	<div class="main__about container main__row">
 		<h2 class="main__about-heading">ИНТЕРНЕТ МАГАЗИН КОМНАТНЫХ РАСТЕНИЙ и цветов PLANTIS.SHOP</h2>		
