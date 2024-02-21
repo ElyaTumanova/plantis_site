@@ -690,8 +690,8 @@ ul.products {
 }
 
 .catalog__filter-metki::-webkit-scrollbar {
-    display: none; /* for Chrome, Safari, and Opera */
-  }
+    display: none;
+}
 
 .catalog__filter-metki  .bapf_head  {
     display: none;
