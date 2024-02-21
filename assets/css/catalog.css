@@ -383,6 +383,12 @@ ul.products {
     order: 2;
 }
 
+@media(max-width: 767px) {
+    .catalog__tags {
+        margin-top: 10px;
+    }
+}
+
 .catalog__tag {
     border-radius: 20px;
     padding: 3px 7px 3px;
