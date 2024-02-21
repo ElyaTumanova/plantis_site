@@ -37,7 +37,7 @@ if ( $products->have_posts() ) : ?>
             <ul class="products columns-3"> 
                 <?php while ( $products->have_posts() ) : $products->the_post(); ?>
                 <div>hello</div>
-                <?php //wc_get_template_part( 'content', 'product' ); ?>
+                <?php wc_get_template_part( 'content', 'product' ); ?>
 
                 <?php endwhile; // end of the loop. ?>
             </ul>
