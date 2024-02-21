@@ -469,7 +469,7 @@ ul.products {
 }
 
 /* слайдер для прокручивания галереи товаров горизонтальным скроллом */
-.products__slider_mob, .main-sale-slider-mob .products{
+/* .products__slider_mob, .main-sale-slider-mob .products{
     overflow-x: scroll;
     overflow-y: hidden;
 }
@@ -481,7 +481,7 @@ ul.products {
 .main-sale-slider-mob .products {
     display: flex;
      column-gap: 5px;
-}
+} */
 
 /*--------------------------------------------------------------
 # Horizontal catalog slider for front-page
@@ -521,7 +521,7 @@ ul.products {
     .main__sale-gallery .products {
         display: flex;
         column-gap: 0;
-        padding-bottom: 10px;
+        /* padding-bottom: 10px; */
     }
 
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
@@ -641,9 +641,9 @@ ul.products {
 
 /* sale gallery стили для мобилки   #adaptive*/
 @media (max-width:767px) {
-    .main__sale-gallery .products {
+    /* .main__sale-gallery .products {
         padding-bottom: 10px;
-    }
+    } */
 
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
         position: absolute;
@@ -666,9 +666,15 @@ ul.products {
     }
 }
 
+/*--------------------------------------------------------------
+# Swiper
+--------------------------------------------------------------*/
 /* стили для swiper */
 
-.main__sale-gallery .swiper-pagination {
+.main__sale-gallery .swiper-wrapper, .card__sliders-wrap .swiper-wrapper{
+    padding-bottom: 10px;
+}
+.main__sale-gallery .swiper-pagination, .card__sliders-wrap .swiper-pagination {
     bottom: -3px;
 }
 .main__sale-gallery .swiper-button-next {
