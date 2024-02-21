@@ -37,10 +37,10 @@ if ( $products->have_posts() ) : ?>
                     <?php wc_get_template_part( 'content', 'product' ); ?>
                     <?php endwhile; // end of the loop. ?>
                 </ul>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
         </div>
 
 <?php endif;
