@@ -673,6 +673,12 @@ ul.products {
     left: 6px;
 }
 
+.main__sale-gallery .swiper-button-prev, .main__sale-gallery .swiper-button-next {
+    margin-top: 0;
+    top: 82px;
+}
+
+
 /*--------------------------------------------------------------
 # Filters #berocket #filters
 --------------------------------------------------------------*/

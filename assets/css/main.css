@@ -8,10 +8,10 @@
 
 /* стили для swiper */
 
-.main__wrap .swiper-button-prev, .main__wrap .swiper-button-next {
+/* .main__wrap .swiper-button-prev, .main__wrap .swiper-button-next {
     margin-top: 0;
     top: 82px;
-}
+} */
 
 .main__row {
     margin-bottom: 75px;
