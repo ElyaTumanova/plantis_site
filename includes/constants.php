@@ -8,6 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 $plants_cat_id = 90;
 $gorshki_cat_id = 86;
 $treez_cat_id = 802;
+$treez_poliv_cat_id = 229;
+$ukhod_cat_id = 378;
+$misc_cat_id = 16;
 
 $tags_podarki = array(
 	374,

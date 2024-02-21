@@ -364,6 +364,9 @@ function check_category ($product) {
     global $plants_cat_id;
     global $gorshki_cat_id;
     global $treez_cat_id;
+    global $treez_poliv_cat_id;
+    // global $ukhod_cat_id;
+    global $misc_cat_id;
 	$idCats = $product->get_category_ids();
     foreach ($idCats as $cat){
         switch ($cat) {
@@ -377,6 +380,7 @@ function check_category ($product) {
                 return $parentCatId = $treez_cat_id;
                 break;
             default:
+                return $parentCatId = $misc_cat_id;
                 break;
         }
     }
