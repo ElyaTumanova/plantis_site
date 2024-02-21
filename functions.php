@@ -68,7 +68,10 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 //   add_filter('template_include', 'template_chooser');
 
 function get_cats() {
-	$categories = get_categories();
+	$categories = get_terms( [
+		'taxonomy' => 'product_cat',
+		'hide_empty' => false,
+	] );
 	echo '<pre>';
 	print_r( $categories );
 	echo '</pre>'; 
