@@ -218,7 +218,7 @@ function plnt_change_add_to_cart_text($text) {
 }
 
 // // добавляем класс для кнопки в корзину, если товар не в наличии
-//add_filter( 'woocommerce_loop_add_to_cart_args', 'plnt_woocommerce_loop_add_to_cart_args_outofstock', 10, 2 );
+add_filter( 'woocommerce_loop_add_to_cart_args', 'plnt_woocommerce_loop_add_to_cart_args_outofstock', 10, 2 );
 
 function plnt_woocommerce_loop_add_to_cart_args_outofstock( $args, $product ){
 	if ($product->is_in_stock()) {

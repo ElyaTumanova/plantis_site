@@ -58,7 +58,9 @@ get_header(); ?>
 			<?php get_template_part('template-parts/social-media-btns');?>
 		</div>
 	</div>
-
+	<div>
+		<?php get_template_part('template-parts/products-ukhod');?>
+	</div>
 	<div class="main__about container main__row">
 		<h2 class="main__about-heading">ИНТЕРНЕТ МАГАЗИН КОМНАТНЫХ РАСТЕНИЙ и цветов PLANTIS.SHOP</h2>		
 		<p class="main__about-text">Мы сделали ставку на сервис и не прогадали.</p>
