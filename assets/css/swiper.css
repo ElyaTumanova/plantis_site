@@ -298,21 +298,11 @@
   .swiper-rtl .swiper-button-next {
     left: var(--swiper-navigation-sides-offset, 10px);
     right: auto;
-    height: 40px;
-    width: 40px;
-    box-shadow: 0 1px 20px rgba(4, 6, 28, .1);
-    border-radius: 50%;
-    background-color: var(--background);
   }
   .swiper-button-next,
   .swiper-rtl .swiper-button-prev {
     right: var(--swiper-navigation-sides-offset, 10px);
     left: auto;
-    height: 40px;
-    width: 40px;
-    box-shadow: 0 1px 20px rgba(4, 6, 28, .1);
-    border-radius: 50%;
-    background-color: var(--background);
   }
   .swiper-button-lock {
     display: none;

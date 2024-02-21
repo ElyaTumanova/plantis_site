@@ -236,11 +236,11 @@ add_action('woocommerce_after_shop_loop_item', 'plnt_get_product_tags', 20);
 function plnt_get_product_tags() {
 	if(is_shop() || is_product_category() || is_product_tag()) {
 		global $product;
-		global $tags_exeptions;
+		global $tags_podarki;
 		$tags = $product->tag_ids;
 		echo '<div class=catalog__tags>';
 		foreach($tags as $tag) {
-			if (!in_array($tag, $tags_exeptions, true)) {
+			if (!in_array($tag, $tags_podarki, true)) {
 				echo '<a class=catalog__tag-link href="'.get_tag_link(get_term($tag)->term_taxonomy_id).'">
 					<span class=catalog__tag>'.get_term($tag)->name.'</span>
 				</a>';
