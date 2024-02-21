@@ -723,6 +723,10 @@ ul.products {
         margin: 5px;
     }
 
+    .card__ukhod-loop .add_to_cart_button, .card__ukhod-loop .product_type_simple {
+        margin: 0;
+    }
+
     .card__ukhod-loop .woocommerce-loop-product__title {
         font-size: 14px;
         font-weight: 700;
