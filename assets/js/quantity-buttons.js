@@ -8,6 +8,7 @@ jQuery(function ($){
 	step = parseInt( qty.attr( 'step' ) );
 	console.log(this);
 	console.log(qty);
+	console.log('hello');
  
 	// дальше определяем новое значение количества в зависимости от нажатия кнопки
 	var newVal;
