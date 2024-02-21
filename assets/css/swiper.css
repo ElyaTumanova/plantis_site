@@ -246,7 +246,7 @@
     height: var(--swiper-virtual-size);
   }
   :root {
-    --swiper-navigation-size: 44px;
+    --swiper-navigation-size: 28px;
     /*
     --swiper-navigation-top-offset: 50%;
     --swiper-navigation-sides-offset: 10px;
