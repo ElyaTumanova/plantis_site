@@ -664,11 +664,6 @@ ul.products {
 .main__sale-gallery .swiper-pagination {
     bottom: -3px;
 }
-.main__sale-gallery .swiper-pagination-bullet {
-    width: 10px;
-    height: 3px;
-    border-radius: 30%;
-}
 .main__sale-gallery .swiper-button-next {
     right: 6px;
 }
