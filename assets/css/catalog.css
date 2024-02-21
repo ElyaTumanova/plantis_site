@@ -482,20 +482,20 @@ ul.products {
 
 .main__sale-gallery-wrap {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-    padding: 15px 10px;
+    padding: 10px 10px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--background);
-    row-gap: 15px;
+    row-gap: 10px;
 }
 
 /* sale gallery стили для десктопа   #adaptive*/
 @media (min-width: 767px) {
     .main__sale-gallery .product {
         display: grid;
-        grid-template-rows:  30px auto auto auto;
+        grid-template-rows:  24px auto auto auto;
         grid-template-areas:
                 "image sale sale"
                 "image price price"
@@ -544,11 +544,11 @@ ul.products {
         max-height: 177px;
     }
 
-    .main__sale-gallery-wrap {
-        /* чтобы не было смещения пока грузится слайдер*/
+    /* чтобы не было смещения пока грузится слайдер*/
+    /* .main__sale-gallery-wrap {
         max-height: 286px; 
         overflow: hidden;
-    }
+    } */
 
     .main__sale-gallery .sale_badge {
         font-size: 14px;
@@ -589,9 +589,9 @@ ul.products {
 .main__sale-gallery .woocommerce-loop-product__title {
     font-size: 16px;
     line-height: 18px;
-    white-space: nowrap;
+    /* white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; */
     max-width: 185px;
 }
 
@@ -606,8 +606,8 @@ ul.products {
 }
 
 .main__sale-gallery .price {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 6px;
+    margin-bottom: 6px;
 }
 
 .main__sale-gallery-title {
