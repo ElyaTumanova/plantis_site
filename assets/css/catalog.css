@@ -506,7 +506,7 @@ ul.products {
                 "image name name"
                 "image descr descr"
                 "image button wish";
-        grid-template-columns: 165px auto auto;
+        grid-template-columns: 165px 165px auto;
         column-gap: 10px;
     }
 
@@ -668,7 +668,7 @@ ul.products {
 }
 .main__sale-gallery .swiper-pagination-bullet {
     width: 10px;
-    height: 2px;
+    height: 3px;
     border-radius: 30%;
 }
 .main__sale-gallery .swiper-button-next {
