@@ -33,7 +33,7 @@ if ( $products->have_posts() ) : ?>
             <h2 class="heading-2">Товары для ухода за растениями</h2>
             <ul class="products columns-3"> 
                 <?php while ( $products->have_posts() ) : $products->the_post(); 
-                echo $products->the_post()?>
+                echo $products?>
                 
                 <div>hello</div>
                 <?php wc_get_template_part( 'content', 'product' ); ?>
