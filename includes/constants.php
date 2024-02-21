@@ -32,6 +32,7 @@ $tags_podarki = array(
 // $treez_cat_id = 802;
 // $treez_poliv_cat_id = 846;
 // $ukhod_cat_id = 69;
+// $misc_cat_id = 23;
 
 // $tags_podarki = array(
 // 	1084,

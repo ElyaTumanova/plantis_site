@@ -28,19 +28,12 @@ $args = array(
 );
 
 $products = new WP_Query( $args );
-echo '<pre>';
-print_r( $products );
-echo '</pre>';
 if ( $products->have_posts() ) : ?>   
         <div class="card__ukhod-loop">
             <h2 class="heading-2">Товары для ухода за растениями</h2>
             <ul class="products columns-3"> 
                 <?php while ( $products->have_posts() ) : $products->the_post(); ?>
-                
-                <div>hello</div>
-                
                 <?php wc_get_template_part( 'content', 'product' ); ?>
-
                 <?php endwhile; // end of the loop. ?>
             </ul>
             <div class="swiper-pagination"></div>
