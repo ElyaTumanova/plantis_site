@@ -486,7 +486,7 @@ ul.products {
 
 .main__sale-gallery-wrap {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-    padding: 10px 0;
+    padding: 10px 10px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -499,6 +499,7 @@ ul.products {
 @media (min-width: 767px) {
     .main__sale-gallery .product {
         display: grid;
+        padding: 10px 0;
         grid-template-rows:  24px auto auto auto;
         grid-template-areas:
                 "image sale sale"
