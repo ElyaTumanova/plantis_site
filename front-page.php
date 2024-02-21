@@ -59,7 +59,8 @@ get_header(); ?>
 		</div>
 	</div>
 	<div>
-		<?php echo do_shortcode('[products limit="10" columns="1" orderby="rand" category="ukhod"]');?>
+		<?php //echo do_shortcode('[products limit="10" columns="1" orderby="rand" category="ukhod"]');?>
+		<?php get_template_part('template-parts/products-on-sale');?>
 		<?php //get_template_part('template-parts/products-ukhod');?>
 	</div>
 	<div class="main__about container main__row">
