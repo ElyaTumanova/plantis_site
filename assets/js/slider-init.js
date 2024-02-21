@@ -27,7 +27,8 @@ const swiper_main_banners = new Swiper('.main__banners-swiper', {
     }
 });
 
-const swiper_card_cross_upsells = new Swiper('.main__sale-swiper', {
+const swiper_main_sale = new Swiper('.main__sale-swiper', {
+    slideClass: 'product',
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
