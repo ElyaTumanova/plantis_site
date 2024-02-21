@@ -10,7 +10,7 @@ get_header(); ?>
 				<?php get_template_part('template-parts/main-banners-gallery');?>
 			</div>
 	
-			<div class="main__sale-gallery-wrap">
+			<div class="cross-sells">
 				<h2 class="main__sale-gallery-title heading-2">Спецпредложения</h2>
 				<div class="main__sale-gallery">
 					<?php get_template_part('template-parts/products-on-sale');
@@ -18,39 +18,10 @@ get_header(); ?>
 					// 	echo do_shortcode('[products on_sale="true" class="main-sale-slider-mob" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]'); 
 					// } else {
 					// 	echo do_shortcode('[products on_sale="true" class="main-sale-slider" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]');
-					// }
+					// 
+					//main__sale-gallery-wrap}
 
 					?>
-
-					<!-- <script type="text/javascript">
-						jQuery(window).load(function() {
-							jQuery(".main-sale-slider > ul").flexisel({
-								visibleItems:1,
-								animationSpeed: 1000,
-								autoPlay: false,
-								autoPlaySpeed: 3000,
-								pauseOnHover: false,
-								enableResponsiveBreakpoints: true,
-								responsiveBreakpoints: {
-									portrait: {
-										changePoint:767,
-										visibleItems: 2,
-										columnGaps: 10
-									},
-									landscape: {
-										changePoint:1095,
-										visibleItems:2,
-										columnGaps: 0
-									},
-									tablet: {
-										changePoint:1279,
-										visibleItems: 3,
-										columnGaps: 0
-									}
-								}
-							});
-						});
-					</script> -->
 				</div>
 				<a class="main__sale-button button" href="http://new.plantis.shop/product-category/%d1%81%d0%ba%d0%b8%d0%b4%d0%ba%d0%b8/"> Все комнатные растения со скидкой</a>			
 			</div>
