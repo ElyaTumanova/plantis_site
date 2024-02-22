@@ -310,22 +310,7 @@ add_action('woocommerce_before_single_product','plnt_category_link',20);
 
 function plnt_category_link () {
     global $product;
-    
-    //debug
-    global $ukhod_cat_id;
-    $idCats = $product->get_category_ids();
-    echo '<pre>';
-    print_r( $idCats);
-    echo '</pre>';
-    echo '<pre>';
-    print_r( in_array($ukhod_cat_id, $idCats));
-    echo '</pre>';
-    //debug
-
     $parentCat = check_category ($product);
-    echo '<pre>';
-    print_r( $parentCat);
-    echo '</pre>';
     $term = get_term($parentCat);
     $link = get_term_link( $parentCat, 'product_cat' );
     $name = $term->name;
@@ -370,25 +355,5 @@ function check_category ($product) {
     } else {
         return $parentCatId = $misc_cat_id;
     }
-
-    // foreach ($idCats as $cat){
-    //     switch ($cat) {
-    //         case $plants_cat_id:				//category ID for plants
-    //             return $parentCatId = $plants_cat_id;
-    //             break;
-    //         case $gorshki_cat_id:				//category ID for gorshki
-    //             return $parentCatId = $gorshki_cat_id;
-    //             break;
-    //         case $treez_cat_id:				//category ID for treez
-    //             return $parentCatId = $treez_cat_id;
-    //             break;
-    //         case $misc_cat_id:				//category ID for treez
-    //             return $parentCatId = $misc_cat_id;
-    //             break;
-    //         default:
-    //             return $parentCatId = $misc_cat_id;
-    //             break;
-    //     }
-    // }
 };
 

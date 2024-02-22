@@ -159,36 +159,6 @@ function plnt_catalog_gallery() {
 		global $product;
 		$image = $product->get_image();	
 		$attachment_ids = $product->get_gallery_attachment_ids();
-
-		//debug
-		global $plants_cat_id;
-		global $gorshki_cat_id;
-
-		// $parentCatId = check_category($product);
-		$idCats = $product->get_category_ids();
-
-		 if (in_array($plants_cat_id, $idCats)) {
-			$parentCatId = $plants_cat_id;
-		} else if (in_array($gorshki_cat_id, $idCats)) {
-			$parentCatId = $gorshki_cat_id;
-		} else if (in_array($treez_cat_id, $idCats)) {
-			$parentCatId = $treez_cat_id;
-		} else if (in_array($treez_poliv_cat_id, $idCats)) {
-			$parentCatId = $treez_poliv_cat_id;
-		} else if (in_array($ukhod_cat_id, $idCats)) {
-			$parentCatId = $ukhod_cat_id;
-		} else {
-			$parentCatId = 16;
-		}
-
-
-		echo '<pre>';
-		print_r( $product->get_category_ids());
-		print_r( $parentCatId);
-		print_r( (in_array($plants_cat_id, $idCats)));
-		echo '</pre>';
-		//debug
-		
 		echo '
 		<div class="product__image-slider-wrap swiper">
 			<div class="swiper-wrapper" >';
