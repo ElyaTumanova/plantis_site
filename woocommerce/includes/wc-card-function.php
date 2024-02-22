@@ -356,8 +356,6 @@ function check_category ($product) {
             case $misc_cat_id:				//category ID for uncatheforized
                 return $parentCatId = $misc_cat_id;
                 break;
-            default:
-                break;
         }
     }
 };
