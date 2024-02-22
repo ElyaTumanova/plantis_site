@@ -133,7 +133,9 @@
 
 .catalog__node a {
     text-decoration: none;
+    display: block;
 }
+
 .catalog__node a:hover {
     color: var(--accent-color);
     cursor: pointer;
