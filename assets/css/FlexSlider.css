@@ -86,5 +86,9 @@ a.flex-prev::before {
     font-size: 18px; 
     font-family: swiper-icons; 
     font-weight: 600;}
+
+.flex-direction-nav a:hover {
+    text-decoration: none;
+}
 /* FlexSlider Dot Pagination - end
 
