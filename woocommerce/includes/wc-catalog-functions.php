@@ -161,6 +161,8 @@ function plnt_catalog_gallery() {
 		$attachment_ids = $product->get_gallery_attachment_ids();
 
 		global $plants_cat_id;
+		global $gorshki_cat_id;
+
 		// $parentCatId = check_category($product);
 		$idCats = $product->get_category_ids();
 
