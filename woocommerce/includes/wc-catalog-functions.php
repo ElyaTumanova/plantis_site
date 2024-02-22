@@ -160,7 +160,10 @@ function plnt_catalog_gallery() {
 		$image = $product->get_image();	
 		$attachment_ids = $product->get_gallery_attachment_ids();
 		$parentCatId = check_category($product);
-		echo $parentCatId;
+
+		echo '<pre>';
+		print_r( $parentCatId);
+		echo '</pre>';
 
 		echo '
 		<div class="product__image-slider-wrap swiper">
