@@ -51,7 +51,7 @@ ul.flex-direction-nav {
     list-style: none;}
 
 li.flex-nav-prev {float: left; 
-    margin-left: 5px;
+    margin-left: 10px;
     height: 40px;
     width: 40px;
     box-shadow: 0 1px 20px rgba(4, 6, 28, .1);
@@ -62,7 +62,7 @@ li.flex-nav-prev {float: left;
     justify-content: center;}
 
 li.flex-nav-next {float: right;
-    margin-right: 5px;
+    margin-right: 10px;
     height: 40px;
     width: 40px;
     box-shadow: 0 1px 20px rgba(4, 6, 28, .1);
