@@ -12,8 +12,8 @@
     zoom: 1;
 }
 .flex-control-paging li a {
-    width: 7px;
-    height: 7px;
+    /* width: 7px;
+    height: 7px; */
     display: block;
     background: #666;
     background: rgba(0, 0, 0, 0.5);
@@ -23,9 +23,12 @@
     -moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
     -o-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
     box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-    -webkit-border-radius: 20px;
+    /* -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
-    border-radius: 20px;
+    border-radius: 20px; */
+    width: 10px;
+    height: 3px;
+    border-radius: 30%;
 }
 .flex-control-paging li a:hover {
     background: #333;
