@@ -312,9 +312,13 @@ function plnt_category_link () {
     global $product;
     
     //debug
+    global $ukhod_cat_id;
     $idCats = $product->get_category_ids();
     echo '<pre>';
     print_r( $idCats);
+    echo '</pre>';
+    echo '<pre>';
+    print_r( in_array($ukhod_cat_id, $idCats));
     echo '</pre>';
     //debug
 
