@@ -159,11 +159,11 @@ function plnt_catalog_gallery() {
 		global $product;
 		$image = $product->get_image();	
 		$attachment_ids = $product->get_gallery_attachment_ids();
-		// $parentCatId = check_category($product);
+		$parentCatId = check_category($product);
 
-		// echo '<pre>';
-		// print_r( $parentCatId);
-		// echo '</pre>';
+		echo '<pre>';
+		print_r( $parentCatId);
+		echo '</pre>';
 
 		echo '
 		<div class="product__image-slider-wrap swiper">
