@@ -107,7 +107,9 @@
     content: "next";
     font-family: swiper-icons;
     text-transform: none;
-    font-size: 10px;
+    letter-spacing: 0;
+    font-weight: 600;
+    font-size: 13px;
     position: absolute;
     right: 13px;
     margin-top: 3px;

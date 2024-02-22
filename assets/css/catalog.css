@@ -950,6 +950,7 @@ ul.products {
     content: "next" !important;
     font-family: swiper-icons !important;
     text-transform: none;
+    font-weight: 600;
 }
 
 .catalog__sidebar-filters .fa-chevron-up:before {
