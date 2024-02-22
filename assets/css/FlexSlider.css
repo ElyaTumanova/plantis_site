@@ -51,8 +51,8 @@ li.flex-nav-prev {float: left;}
 li.flex-nav-next {float: right;}
 a.flex-next {visibility:hidden;}
 a.flex-prev {visibility:hidden;}
-a.flex-next::after {visibility:visible;content: '\276F';
-    margin-right: 10px;font-size: 33px;    }
+a.flex-next::after {visibility:visible;content: 'next';
+    margin-right: 10px;font-size: 33px;  font-family: swiper-icons;  }
 a.flex-prev::before {
     visibility:visible;
     content: '\276E';
