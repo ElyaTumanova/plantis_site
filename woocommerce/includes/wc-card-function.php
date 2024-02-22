@@ -314,9 +314,10 @@ function plnt_category_link () {
     // global $gorshki_cat_id;
     // global $treez_cat_id;
     $parentCat = check_category ($product);
+    $term = get_term($parentCat);
     echo '<pre>';
     print_r( get_term($parentCat) );
-    print_r( get_term($parentCat['name']) );
+    print_r( $term->name );
     print_r(  $link = get_term_link( $parentCat, 'product_cat' ));
    
     echo '</pre>';
