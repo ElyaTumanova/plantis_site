@@ -40,8 +40,8 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		wp_enqueue_script( 'quantity-buttons', get_template_directory_uri() .
 		                                     '/assets/js/quantity-buttons.js', array( 'jquery' ), null, true );
 											 
-		wp_enqueue_script( 'jquery.flexisel', get_template_directory_uri() .
-		                                     '/assets/js/jquery.flexisel.js', array( 'jquery' ), null, true );
+		// wp_enqueue_script( 'jquery.flexisel', get_template_directory_uri() .
+		//                                      '/assets/js/jquery.flexisel.js', array( 'jquery' ), null, true );
 
 		// wp_enqueue_script( 'jquery.nivo.slider', get_template_directory_uri() .
 		//                                      '/assets/js/jquery.nivo.slider.js', array( 'jquery' ), null, true);
@@ -98,8 +98,8 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		//                              '/assets/css/progressive-image.css', array(), null, 'all' ); // for lazy load
 		wp_enqueue_style( 'FlexSlider', get_template_directory_uri() .
 		                             '/assets/css/FlexSlider.css', array(), null, 'all' );
-		wp_enqueue_style( 'flexisel', get_template_directory_uri() .
-		                             '/assets/css/flexisel.css', array(), null, 'all' );
+		// wp_enqueue_style( 'flexisel', get_template_directory_uri() .
+		//                              '/assets/css/flexisel.css', array(), null, 'all' );
 		// wp_enqueue_style( 'nivo-slider', get_template_directory_uri() .
 		//                              '/assets/css/nivo-slider.css', array(), null, 'all' );
 		wp_enqueue_style( 'fonts', 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap', array(), null, 'all' );
