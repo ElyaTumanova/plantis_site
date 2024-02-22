@@ -315,12 +315,14 @@ function plnt_category_link () {
     // global $treez_cat_id;
     $parentCat = check_category ($product);
     $term = get_term($parentCat);
-    echo '<pre>';
-    print_r( get_term($parentCat) );
-    print_r( $term->name );
-    print_r(  $link = get_term_link( $parentCat, 'product_cat' ));
-   
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r( get_term($parentCat) );
+    // print_r( $term->name );
+    // print_r(  $link = get_term_link( $parentCat, 'product_cat' ));
+    // echo '</pre>';
+
+    $link = get_term_link( $parentCat, 'product_cat' );
+    $name = $term->name;
 	// $idCats = $product->get_category_ids();
 	// foreach ($idCats as $cat){
         
@@ -356,10 +358,10 @@ function plnt_category_link () {
     //             break;
 	// 		}
 	//}	
-	// echo '<div class="card__toback-link">
-	// <span>&#10094;</span>
-	// <a href="' . $link . '">'.$text.'</a>
-    // </div>';
+	echo '<div class="card__toback-link">
+	<span>&#10094;</span>
+	<a href="' . $link . '">Каталог: '.$name.'</a>
+    </div>';
 }
 
 // поп-ап предзаказ preoprder popup
