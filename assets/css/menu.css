@@ -145,7 +145,7 @@
 
 .catalog__node_lvl_2 {
     display: block;
-    color: #6f6f6f;
+    color: var(--text);
     padding: 10px 0;
     border-bottom: solid 1px #6f6f6f;
     margin-left: 5px;
