@@ -180,7 +180,7 @@
 
 .catalog__dropdown:after {
     /* content: "\276F"; */
-    content: "next";
+    content: "next" attr(data-el);
     font-family: swiper-icons;
     font-size: 16px;
     position: absolute;
@@ -188,8 +188,6 @@
     top: 0;
     width: 30px;
     text-align: center;
-
-    content:attr(data-el);
 
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
