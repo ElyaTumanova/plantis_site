@@ -52,20 +52,36 @@ li.flex-nav-prev {float: left;
     width: 40px;
     box-shadow: 0 1px 20px rgba(4, 6, 28, .1);
     border-radius: 50%;
-    background-color: var(--background);}
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;}
+
 li.flex-nav-next {float: right;
     height: 40px;
     width: 40px;
     box-shadow: 0 1px 20px rgba(4, 6, 28, .1);
     border-radius: 50%;
-    background-color: var(--background);}
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;}
+
 a.flex-next {visibility:hidden; font-size: 0;}
 a.flex-prev {visibility:hidden; font-size: 0;}
-a.flex-next::after {visibility:visible;content: 'next';
-    margin-right: 10px;font-size: 18px;  font-family: swiper-icons;  }
+a.flex-next::after {
+    visibility:visible;
+    content: 'next';
+    font-size: 18px;  
+    font-family: swiper-icons; 
+    font-weight: 600;
+}
+
 a.flex-prev::before {
     visibility:visible;
     content: 'prev';
-    margin-left: 10px;font-size: 18px; font-family: swiper-icons;}
+    font-size: 18px; 
+    font-family: swiper-icons; 
+    font-weight: 600;}
 /* FlexSlider Dot Pagination - end
 
