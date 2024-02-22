@@ -189,6 +189,8 @@
     width: 30px;
     text-align: center;
 
+    content:attr(data-el);
+
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
