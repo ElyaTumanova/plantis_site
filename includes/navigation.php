@@ -196,6 +196,9 @@ function filter_wp_menu_args_catalog( $args ) {
 			$args['link_after'] = '<span class="menu__dropdown-arrow">next</span>';
 		// }		
 	}
+	echo '<pre>';
+	print_r( $args );
+	echo '</pre>';
 
 	return $args;
 }
