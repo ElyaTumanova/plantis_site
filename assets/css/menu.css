@@ -148,7 +148,7 @@
     color: #6f6f6f;
     padding: 10px 0;
     border-bottom: solid 1px #6f6f6f;
-    /* margin-left: 10px; */
+    margin-left: 5px;
 }
 
 .catalog__node_lvl_2:first-child {
@@ -156,7 +156,8 @@
 }
 
 .catalog__node_lvl_3 {
-    padding-left: 20px;
+    /* padding-left: 20px; */
+    margin-left: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: solid 1px #6f6f6f;
