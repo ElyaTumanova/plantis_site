@@ -55,7 +55,7 @@ table.wishlist_table tbody td.product-remove {
     align-self: end;
 }
 
-table.wishlist_table tbody td.product-remove a:hover{
+table.wishlist_table tbody td.product-remove a:hover, table.wishlist_table tbody td.product-remove a:focus, table.wishlist_table tbody td.product-remove a:active{
     text-decoration: none;
 }
 
