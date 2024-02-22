@@ -519,7 +519,7 @@ ul.products {
                 "image name name"
                 "image descr descr"
                 "image button wish";
-        grid-template-columns: 165px 140px auto;
+        grid-template-columns: 165px 152px auto;
         column-gap: 10px;
         text-align: left;
         position: relative;
