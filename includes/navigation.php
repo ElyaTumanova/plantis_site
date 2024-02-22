@@ -179,53 +179,14 @@ function filter_nav_menu_submenu_css_class_catalog( $classes, $args, $depth ) {
 	return $classes;
 }
 
-// add_filter( 'nav_menu_item_args', 'filter_wp_menu_args_catalog', 10, 3 );
-// function filter_wp_menu_args_catalog( $args, $item, $depth ) {
-// 	if ( $args['theme_location'] === 'catalog' ) {
-// 		// if (in_array('catalog__dropdown',$classes )){
-// 			$args['link_after'] = '<span class="menu__dropdown-arrow">next</span>';
-// 		// }		
-// 	}
-// 	return $args;
-// }
 
 add_filter( 'wp_nav_menu_args', 'filter_wp_menu_args_catalog' );
 function filter_wp_menu_args_catalog( $args ) {
 	if ( $args['theme_location'] === 'catalog' ) {
-		// if (in_array('catalog__dropdown',$classes )){
-			$args['link_after'] = '<span class="menu__dropdown-arrow">next</span>';
-		// }		
+		$args['link_after'] = '<span class="menu__dropdown-arrow">next</span>';
 	}
-	echo '<pre>';
-	print_r( $args );
-	echo '</pre>';
-
 	return $args;
 }
-
-// add_filter( 'nav_menu_link_attributes', 'filter_wp_menu_link_attr_catalog', 10, 4 );
-// function filter_wp_menu_link_attr_catalog( $atts, $item, $args, $depth ) {
-// 	if ( $args->theme_location === 'catalog' ) {
-// 		// if (in_array('catalog__dropdown', $item['classes'])){
-// 			$args['link_after'] = '<span class="menu__dropdown-arrow">next</span>';
-// 		// }		
-// 	}
-// 	return $args;
-// }
-
-//example
-// add_filter( 'nav_menu_link_attributes', 'filter_nav_menu_link_attributes', 10, 4 );
-// function filter_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
-// 	if ( $args->theme_location === 'primary' || $args->theme_location === 'secondary' ) {
-// 		$atts['class'] = 'menu-link';
-
-// 		if ( $item->current ) {
-// 			$atts['class'] .= ' menu-link--active';
-// 		}
-// 	}
-
-// 	return $atts;
-// }
 
 // доп функции для вывода меню
 
