@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // YM action detail
 
-add_action('woocommerce_after_main_content','plnt_metrika_card', 30);
+//add_action('woocommerce_after_main_content','plnt_metrika_card', 30);
 
 function plnt_metrika_card () {
     global $product;
