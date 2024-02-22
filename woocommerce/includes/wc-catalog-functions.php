@@ -162,6 +162,7 @@ function plnt_catalog_gallery() {
 		$parentCatId = check_category($product);
 
 		echo '<pre>';
+		print_r( $product->get_category_ids());
 		print_r( $parentCatId);
 		echo '</pre>';
 
