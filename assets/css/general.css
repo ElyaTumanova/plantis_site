@@ -193,3 +193,15 @@
     background-color: var(--background);
     margin-top: -20px;
 }
+
+/* wish list */
+
+.yith-wcwl-add-to-wishlist a.add_to_wishlist>img, .yith-wcwl-add-to-wishlist a.delete_item>img, .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
+    margin: 10px !important;
+}
+
+.yith-wcwl-add-button {
+    box-shadow: 0 1px 20px rgba(4, 6, 28, .1);
+    border-radius: 50%;
+    background-color: var(--background);
+}
