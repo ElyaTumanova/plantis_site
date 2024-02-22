@@ -47,15 +47,25 @@ ul.flex-direction-nav {
     padding: 0px;
     list-style: none;}
 
-li.flex-nav-prev {float: left;}
-li.flex-nav-next {float: right;}
-a.flex-next {visibility:hidden;}
-a.flex-prev {visibility:hidden;}
+li.flex-nav-prev {float: left; 
+    height: 40px;
+    width: 40px;
+    box-shadow: 0 1px 20px rgba(4, 6, 28, .1);
+    border-radius: 50%;
+    background-color: var(--background);}
+li.flex-nav-next {float: right;
+    height: 40px;
+    width: 40px;
+    box-shadow: 0 1px 20px rgba(4, 6, 28, .1);
+    border-radius: 50%;
+    background-color: var(--background);}
+a.flex-next {visibility:hidden; font-size: 0;}
+a.flex-prev {visibility:hidden; font-size: 0;}
 a.flex-next::after {visibility:visible;content: 'next';
-    margin-right: 10px;font-size: 33px;  font-family: swiper-icons;  }
+    margin-right: 10px;font-size: 18px;  font-family: swiper-icons;  }
 a.flex-prev::before {
     visibility:visible;
-    content: '\276E';
-    margin-left: 10px;font-size: 33px;}
+    content: 'prev';
+    margin-left: 10px;font-size: 18px; font-family: swiper-icons;}
 /* FlexSlider Dot Pagination - end
 
