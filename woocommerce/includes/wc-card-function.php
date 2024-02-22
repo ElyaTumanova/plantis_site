@@ -317,8 +317,11 @@ function plnt_category_link () {
     print_r( $idCats);
     echo '</pre>';
     //debug
-    
+
     $parentCat = check_category ($product);
+    echo '<pre>';
+    print_r( $parentCat);
+    echo '</pre>';
     $term = get_term($parentCat);
     $link = get_term_link( $parentCat, 'product_cat' );
     $name = $term->name;
