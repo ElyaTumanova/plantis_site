@@ -179,7 +179,7 @@ function filter_nav_menu_submenu_css_class_catalog( $classes, $args, $depth ) {
 	return $classes;
 }
 
-add_filter( 'nav_menu_item_args', 'filter_wp_menu_args_catalog' );
+add_filter( 'nav_menu_item_args', 'filter_wp_menu_args_catalog', 10, 3 );
 function filter_wp_menu_args_catalog( $args, $item, $depth ) {
 	if ( $args['theme_location'] === 'catalog' ) {
 		// if (in_array('catalog__dropdown',$classes )){
