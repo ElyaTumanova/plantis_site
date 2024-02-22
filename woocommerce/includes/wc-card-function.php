@@ -342,38 +342,38 @@ function check_category ($product) {
     global $ukhod_cat_id;
     global $misc_cat_id;
 	$idCats = $product->get_category_ids();
-    if (in_array($plants_cat_id, $idCats)) {
-        $parentCatId = $plants_cat_id;
-    } else if (in_array($gorshki_cat_id, $idCats)) {
-        $parentCatId = $gorshki_cat_id;
-    } else if (in_array($treez_cat_id, $idCats)) {
-        $parentCatId = $treez_cat_id;
-    } else if (in_array($treez_poliv_cat_id, $idCats)) {
-        $parentCatId = $treez_poliv_cat_id;
-    } else if (in_array($ukhod_cat_id, $idCats)) {
-        $parentCatId = $ukhod_cat_id;
-    } else {
-        $parentCatId = 16;
-    }
-
-    // foreach ($idCats as $cat){
-    //     switch ($cat) {
-    //         case $plants_cat_id:				//category ID for plants
-    //             return $parentCatId = $plants_cat_id;
-    //             break;
-    //         case $gorshki_cat_id:				//category ID for gorshki
-    //             return $parentCatId = $gorshki_cat_id;
-    //             break;
-    //         case $treez_cat_id:				//category ID for treez
-    //             return $parentCatId = $treez_cat_id;
-    //             break;
-    //         case $misc_cat_id:				//category ID for treez
-    //             return $parentCatId = $misc_cat_id;
-    //             break;
-    //         default:
-    //             return $parentCatId = $misc_cat_id;
-    //             break;
-    //     }
+    // if (in_array($plants_cat_id, $idCats)) {
+    //     $parentCatId = $plants_cat_id;
+    // } else if (in_array($gorshki_cat_id, $idCats)) {
+    //     $parentCatId = $gorshki_cat_id;
+    // } else if (in_array($treez_cat_id, $idCats)) {
+    //     $parentCatId = $treez_cat_id;
+    // } else if (in_array($treez_poliv_cat_id, $idCats)) {
+    //     $parentCatId = $treez_poliv_cat_id;
+    // } else if (in_array($ukhod_cat_id, $idCats)) {
+    //     $parentCatId = $ukhod_cat_id;
+    // } else {
+    //     $parentCatId = 16;
     // }
+
+    foreach ($idCats as $cat){
+        switch ($cat) {
+            case $plants_cat_id:				//category ID for plants
+                return $parentCatId = $plants_cat_id;
+                break;
+            case $gorshki_cat_id:				//category ID for gorshki
+                return $parentCatId = $gorshki_cat_id;
+                break;
+            case $treez_cat_id:				//category ID for treez
+                return $parentCatId = $treez_cat_id;
+                break;
+            case $misc_cat_id:				//category ID for treez
+                return $parentCatId = $misc_cat_id;
+                break;
+            default:
+                return $parentCatId = $misc_cat_id;
+                break;
+        }
+    }
 };
 
