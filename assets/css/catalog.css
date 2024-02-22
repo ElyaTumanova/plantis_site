@@ -521,6 +521,9 @@ ul.products {
                 "image button wish";
         grid-template-columns: 165px 140px auto;
         column-gap: 10px;
+        text-align: left;
+        position: relative;
+        height: auto;
     }
 
     .main__sale-gallery .products {
@@ -580,11 +583,6 @@ ul.products {
     .main__sale-gallery .sale_badge-skidka {
         border-radius: 5px 0 0 5px;
     }
-}
-
-.main__sale-gallery .product {
-    text-align: left;
-    position: relative;
 }
 
 .main__sale-gallery .yith-wcwl-add-button {
