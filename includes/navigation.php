@@ -182,7 +182,9 @@ function filter_nav_menu_submenu_css_class_catalog( $classes, $args, $depth ) {
 add_filter( 'wp_nav_menu_args', 'filter_wp_menu_args_catalog' );
 function filter_wp_menu_args_catalog( $args ) {
 	if ( $args['theme_location'] === 'catalog' ) {
-		$args['link_after'] = '<span>hi</span>';
+		if (in_array('catalog__dropdown',$classes )){
+			$args['link_after'] = '<span class="menu__dropdown-arrow">next</span>';
+		}		
 	}
 
 	return $args;
