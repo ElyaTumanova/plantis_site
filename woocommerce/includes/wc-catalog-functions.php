@@ -162,7 +162,7 @@ function plnt_catalog_gallery() {
 
 		global $plants_cat_id;
 		$parentCatId = check_category($product);
-		$idCats = $product->get_category_ids()
+		$idCats = $product->get_category_ids();
 		echo '<pre>';
 		print_r( $product->get_category_ids());
 		print_r( $parentCatId);
