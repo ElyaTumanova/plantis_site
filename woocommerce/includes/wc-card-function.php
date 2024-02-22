@@ -353,7 +353,7 @@ function check_category ($product) {
     } else if (in_array($ukhod_cat_id, $idCats)) {
         $parentCatId = $ukhod_cat_id;
     } else {
-        $parentCatId = $misc_cat_id;
+        $parentCatId = 16;
     }
 
     // foreach ($idCats as $cat){
