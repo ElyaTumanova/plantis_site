@@ -23,7 +23,7 @@
     flex-direction: column;
     width: calc(100% / 3 - 32px);
     justify-content: space-between;
-    row-gap: 15px;
+    row-gap: 0;
 }
 
 .woocommerce .wishlist-title h2 {
@@ -83,6 +83,10 @@ table.wishlist_table tbody td.product-price del{
 
 table.wishlist_table tbody td.product-price ins{
     color: var(--red-color);
+}
+
+table.wishlist_table tbody td.product-add-to-cart {
+    margin-top: 15px;
 }
 
 .wishlist_table .product-add-to-cart a.button {
