@@ -366,7 +366,7 @@ function check_category ($product) {
     } else if (in_array($treez_poliv_cat_id, $idCats)) {
         return $parentCatId = $treez_poliv_cat_id;
     } else if (in_array($ukhod_cat_id, $idCats)) {
-        $parentCatId = $ukhod_cat_id;
+        return $parentCatId = $ukhod_cat_id;
     } else {
         return $parentCatId = $misc_cat_id;
     }
