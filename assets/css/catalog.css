@@ -946,11 +946,15 @@ ul.products {
 }
 
 .catalog__sidebar-filters .fa-chevron-down:before {
-    content: "\276F" !important;
+    /* content: "\276F" !important; */
+    content: "next" !important;
+    font-family: swiper-icons !important;
 }
 
 .catalog__sidebar-filters .fa-chevron-up:before {
-    content: "\276E" !important;
+    /* content: "\276E" !important; */
+    content: "prev" !important;
+    font-family: swiper-icons !important;
 }
 
 /*стили для switch чекбокса в наличии*/
