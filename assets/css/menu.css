@@ -106,6 +106,7 @@
     /* content: "\276F"; */
     content: "next";
     font-family: swiper-icons;
+    text-transform: none;
     font-size: 10px;
     position: absolute;
     right: 13px;

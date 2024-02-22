@@ -949,6 +949,7 @@ ul.products {
     /* content: "\276F" !important; */
     content: "next" !important;
     font-family: swiper-icons !important;
+    text-transform: none;
 }
 
 .catalog__sidebar-filters .fa-chevron-up:before {
