@@ -161,8 +161,24 @@ function plnt_catalog_gallery() {
 		$attachment_ids = $product->get_gallery_attachment_ids();
 
 		global $plants_cat_id;
-		$parentCatId = check_category($product);
+		// $parentCatId = check_category($product);
 		$idCats = $product->get_category_ids();
+
+		 if (in_array($plants_cat_id, $idCats)) {
+			$parentCatId = $plants_cat_id;
+		} else if (in_array($gorshki_cat_id, $idCats)) {
+			$parentCatId = $gorshki_cat_id;
+		} else if (in_array($treez_cat_id, $idCats)) {
+			$parentCatId = $treez_cat_id;
+		} else if (in_array($treez_poliv_cat_id, $idCats)) {
+			$parentCatId = $treez_poliv_cat_id;
+		} else if (in_array($ukhod_cat_id, $idCats)) {
+			$parentCatId = $ukhod_cat_id;
+		} else {
+			$parentCatId = 16;
+		}
+
+
 		echo '<pre>';
 		print_r( $product->get_category_ids());
 		print_r( $parentCatId);
