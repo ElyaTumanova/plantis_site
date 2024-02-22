@@ -353,7 +353,10 @@ function check_category ($product) {
             case $treez_cat_id:				//category ID for treez
                 return $parentCatId = $treez_cat_id;
                 break;
-            case $misc_cat_id:				//category ID for uncatheforized
+            case $misc_cat_id:				//category ID for treez
+                return $parentCatId = $misc_cat_id;
+                break;
+            default:
                 return $parentCatId = $misc_cat_id;
                 break;
         }
