@@ -315,6 +315,10 @@ function plnt_category_link () {
     global $treez_cat_id;
 	$idCats = $product->get_category_ids();
 	foreach ($idCats as $cat){
+        echo '<pre>';
+        print_r( get_term($cat) );
+        echo '</pre>';
+
 		switch ($cat)  {
 			case $plants_cat_id:				//category ID for plants
 				$link = get_term_link( $cat, 'product_cat' );
@@ -332,6 +336,14 @@ function plnt_category_link () {
 				$link = get_term_link( $cat, 'product_cat' );
 				$text = 'Каталог кашпо Treez';
 				break;
+			case $treez_poliv_cat_id:				//category ID for treez
+				$link = get_term_link( $cat, 'product_cat' );
+				$text = 'Каталог Систем Автополива Treez';
+				break;
+                case $misc_cat_id:
+				$link = get_permalink( wc_get_page_id( 'shop' ) );
+				$text = 'Каталог товаров';
+                break;
 			default:
 				// $link = get_permalink( wc_get_page_id( 'shop' ) );
 				// $text = 'Каталог товаров';
