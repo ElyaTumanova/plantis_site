@@ -187,8 +187,8 @@ function filter_wp_menu_args_catalog( $args ) {
 		// }		
 	}
 
-// 	return $args;
-// }
+	return $args;
+}
 // add_filter( 'nav_menu_link_attributes', 'filter_wp_menu_link_attr_catalog', 10, 4 );
 // function filter_wp_menu_link_attr_catalog( $atts, $item, $args, $depth ) {
 // 	if ( $args->theme_location === 'catalog' ) {
