@@ -197,7 +197,7 @@
 /* wish list */
 
 .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, .yith-wcwl-add-to-wishlist a.delete_item>img, .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
-    margin: 10px !important;
+    margin: 11px 10px 10px !important;
 }
 
 .yith-wcwl-add-button {
