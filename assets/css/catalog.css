@@ -512,7 +512,7 @@ ul.products {
     }
     .main__sale-gallery .product {
         display: grid;
-        grid-template-rows:  24px auto auto auto;
+        grid-template-rows:  24px auto auto auto auto;
         grid-template-areas:
                 "image sale sale"
                 "image price price"
