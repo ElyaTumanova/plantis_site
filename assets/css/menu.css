@@ -180,7 +180,7 @@
 
 .catalog__dropdown:after {
     /* content: "\276F"; */
-    content: "next" attr(data-el);
+    content: "next";
     font-family: swiper-icons;
     font-size: 16px;
     position: absolute;

@@ -179,6 +179,15 @@ function filter_nav_menu_submenu_css_class_catalog( $classes, $args, $depth ) {
 	return $classes;
 }
 
+add_filter( 'wp_nav_menu_args', 'filter_wp_menu_args_catalog' );
+function filter_wp_menu_args_catalog( $args ) {
+	if ( $args['theme_location'] === 'catalog' ) {
+		$args['link_after'] = '<span>hi</span>';
+	}
+
+	return $args;
+}
+
 
 // доп функции для вывода меню
 
