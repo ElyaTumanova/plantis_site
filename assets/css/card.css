@@ -276,6 +276,7 @@
     grid-area: wish;
     margin: 0;
     align-self: center;
+    width: fit-content;
 }
 .card__grid .add-to-cart-wrap .yith-wcwl-add-button {
     font-size: 0;
@@ -449,7 +450,7 @@ input[type="number"] {
     }
 
     .card__grid .add-to-cart-wrap {
-        grid-template-columns: 92px 32px auto;
+        grid-template-columns: 92px 55px auto;
         grid-template-rows: auto;
         grid-template-areas:
         "quantity wish cart";

@@ -203,5 +203,5 @@
 .yith-wcwl-add-button {
     box-shadow: 0 1px 20px rgba(4, 6, 28, .1);
     border-radius: 50%;
-    background-color: var(--background);
+    font-size: 0;
 }
