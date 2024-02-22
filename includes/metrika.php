@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // YM action detail
 
-//add_action('woocommerce_after_main_content','plnt_metrika_card', 30);
+add_action('woocommerce_after_main_content','plnt_metrika_card', 30);
 
 function plnt_metrika_card () {
     global $product;
@@ -50,7 +50,7 @@ function plnt_metrika_card () {
 
 // YM action add
 // добавляем доп атрибуты для кнопки Добавить в корзину для использования в Yandex Metrika e-commerce
-add_filter( 'woocommerce_loop_add_to_cart_args', 'filter_woocommerce_loop_add_to_cart_args', 10, 2 );
+//add_filter( 'woocommerce_loop_add_to_cart_args', 'filter_woocommerce_loop_add_to_cart_args', 10, 2 );
 function filter_woocommerce_loop_add_to_cart_args( $args, $product ) {
     $productName = $product->get_title();
     $price = $product->get_price();
