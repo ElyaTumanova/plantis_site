@@ -16,6 +16,7 @@
 .card__image-wrap {
     grid-area: image;
     position: relative;
+    height: fit-content;
     /* чтобы не было смещения пока грузится слайдер*/
     /* max-height: 585px;
     overflow: hidden; */
