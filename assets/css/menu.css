@@ -112,7 +112,7 @@
     font-size: 13px;
     position: absolute;
     right: 13px;
-    margin-top: 3px;
+    margin-top: 2px;
 }
 .menu-item-has-children.menu-node_lvl_2> a:after:hover {
     text-decoration: none;
@@ -148,7 +148,7 @@
     color: #6f6f6f;
     padding: 10px 0;
     border-bottom: solid 1px #6f6f6f;
-    margin-left: 10px;
+    /* margin-left: 10px; */
 }
 
 .catalog__node_lvl_3 {
