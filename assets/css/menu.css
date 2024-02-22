@@ -151,6 +151,10 @@
     /* margin-left: 10px; */
 }
 
+.catalog__node_lvl_2:first-child {
+    padding-top: 20px;
+}
+
 .catalog__node_lvl_3 {
     padding-left: 20px;
     padding-top: 10px;
