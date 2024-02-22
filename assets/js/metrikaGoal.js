@@ -7,6 +7,31 @@ jQuery(document).ready(function() {
 		ym(96498108, 'reachGoal', 'click-button-cart-listing'); 
         return true;
 	});
+
+    // Клик по кнопке «Положить в корзину», кросс-сейлы - NEW #TODO - ДОБАВИТЬ В МЕТРИКУ
+	jQuery('.cross-sells .add_to_cart_button').click(function(){
+		ym(96498108, 'reachGoal', 'click-button-cart-cross-sells'); 
+        return true;
+	});
+
+    // Клик по кнопке «Положить в корзину», ап-сейлы - NEW #TODO - ДОБАВИТЬ В МЕТРИКУ
+	jQuery('.up-sells .add_to_cart_button').click(function(){
+		ym(96498108, 'reachGoal', 'click-button-cart-up-sells'); 
+        return true;
+	});
+
+    // Клик по кнопке «Положить в корзину», товары для ухода - NEW #TODO - ДОБАВИТЬ В МЕТРИКУ
+	jQuery('.card__ukhod-loop .add_to_cart_button').click(function(){
+		ym(96498108, 'reachGoal', 'click-button-cart-ukhod-loop'); 
+        return true;
+	});
+
+    // Клик по кнопке «Положить в корзину», спецпредложения - NEW #TODO - ДОБАВИТЬ В МЕТРИКУ
+	jQuery('.main__sale-gallery .add_to_cart_button').click(function(){
+		ym(96498108, 'reachGoal', 'click-button-cart-sale'); 
+        return true;
+	});
+
     // Клик по кнопке «Положить в корзину», деталка
 	jQuery('.card__price-wrap .add_to_cart_button').click(function(){
 		ym(96498108, 'reachGoal', 'click-button-cart-detalka'); 
