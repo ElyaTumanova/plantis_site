@@ -160,6 +160,7 @@ function plnt_catalog_gallery() {
 		$image = $product->get_image();	
 		$attachment_ids = $product->get_gallery_attachment_ids();
 
+		//debug
 		global $plants_cat_id;
 		global $gorshki_cat_id;
 
@@ -186,7 +187,8 @@ function plnt_catalog_gallery() {
 		print_r( $parentCatId);
 		print_r( (in_array($plants_cat_id, $idCats)));
 		echo '</pre>';
-
+		//debug
+		
 		echo '
 		<div class="product__image-slider-wrap swiper">
 			<div class="swiper-wrapper" >';

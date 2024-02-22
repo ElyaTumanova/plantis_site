@@ -310,6 +310,14 @@ add_action('woocommerce_before_single_product','plnt_category_link',20);
 
 function plnt_category_link () {
     global $product;
+    
+    //debug
+    $idCats = $product->get_category_ids();
+    echo '<pre>';
+    print_r( $idCats);
+    echo '</pre>';
+    //debug
+    
     $parentCat = check_category ($product);
     $term = get_term($parentCat);
     $link = get_term_link( $parentCat, 'product_cat' );
