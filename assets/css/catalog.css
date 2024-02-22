@@ -677,7 +677,7 @@ ul.products {
 --------------------------------------------------------------*/
 /* стили для swiper */
 
-/* .main__sale-gallery .swiper-wrapper,  */
+.main__sale-gallery .swiper-wrapper, 
 .card__grid .swiper-wrapper{
     padding-bottom: 10px;
 }
