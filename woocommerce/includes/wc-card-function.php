@@ -310,50 +310,52 @@ add_action('woocommerce_before_single_product','plnt_category_link',20);
 
 function plnt_category_link () {
     global $product;
-    global $plants_cat_id;
-    global $gorshki_cat_id;
-    global $treez_cat_id;
-	$idCats = $product->get_category_ids();
-	foreach ($idCats as $cat){
-        echo '<pre>';
-        print_r( get_term($cat) );
-        echo '</pre>';
+    // global $plants_cat_id;
+    // global $gorshki_cat_id;
+    // global $treez_cat_id;
+    $parentCat = check_category ($product);
+    echo '<pre>';
+    print_r( get_term($parentCat) );
+    echo '</pre>';
+	// $idCats = $product->get_category_ids();
+	// foreach ($idCats as $cat){
+        
 
-		switch ($cat)  {
-			case $plants_cat_id:				//category ID for plants
-				$link = get_term_link( $cat, 'product_cat' );
-				$text = 'Каталог растений';
-				break;
-			case $gorshki_cat_id:				//category ID for gorshki
-				$link = get_term_link( $cat, 'product_cat' );
-				$text = 'Каталог горшков';
-				break;
-			case 69:				//category ID for ukhod
-				$link = get_term_link( $cat, 'product_cat' );
-				$text = 'Каталог товаров для ухода';
-				break;
-			case $treez_cat_id:				//category ID for treez
-				$link = get_term_link( $cat, 'product_cat' );
-				$text = 'Каталог кашпо Treez';
-				break;
-			case $treez_poliv_cat_id:				//category ID for treez
-				$link = get_term_link( $cat, 'product_cat' );
-				$text = 'Каталог Систем Автополива Treez';
-				break;
-                case $misc_cat_id:
-				$link = get_permalink( wc_get_page_id( 'shop' ) );
-				$text = 'Каталог товаров';
-                break;
-			default:
-				// $link = get_permalink( wc_get_page_id( 'shop' ) );
-				// $text = 'Каталог товаров';
-                break;
-			}
-	}	
-	echo '<div class="card__toback-link">
-	<span>&#10094;</span>
-	<a href="' . $link . '">'.$text.'</a>
-    </div>';
+	// 	switch ($cat)  {
+	// 		case $plants_cat_id:				//category ID for plants
+	// 			$link = get_term_link( $cat, 'product_cat' );
+	// 			$text = 'Каталог растений';
+	// 			break;
+	// 		case $gorshki_cat_id:				//category ID for gorshki
+	// 			$link = get_term_link( $cat, 'product_cat' );
+	// 			$text = 'Каталог горшков';
+	// 			break;
+	// 		case 69:				//category ID for ukhod
+	// 			$link = get_term_link( $cat, 'product_cat' );
+	// 			$text = 'Каталог товаров для ухода';
+	// 			break;
+	// 		case $treez_cat_id:				//category ID for treez
+	// 			$link = get_term_link( $cat, 'product_cat' );
+	// 			$text = 'Каталог кашпо Treez';
+	// 			break;
+	// 		case $treez_poliv_cat_id:				//category ID for treez
+	// 			$link = get_term_link( $cat, 'product_cat' );
+	// 			$text = 'Каталог Систем Автополива Treez';
+	// 			break;
+    //             case $misc_cat_id:
+	// 			$link = get_permalink( wc_get_page_id( 'shop' ) );
+	// 			$text = 'Каталог товаров';
+    //             break;
+	// 		default:
+	// 			// $link = get_permalink( wc_get_page_id( 'shop' ) );
+	// 			// $text = 'Каталог товаров';
+    //             break;
+	// 		}
+	//}	
+	// echo '<div class="card__toback-link">
+	// <span>&#10094;</span>
+	// <a href="' . $link . '">'.$text.'</a>
+    // </div>';
 }
 
 // поп-ап предзаказ preoprder popup
