@@ -159,11 +159,14 @@ function plnt_catalog_gallery() {
 		global $product;
 		$image = $product->get_image();	
 		$attachment_ids = $product->get_gallery_attachment_ids();
-		$parentCatId = check_category($product);
 
+		global $plants_cat_id;
+		$parentCatId = check_category($product);
+		$idCats = $product->get_category_ids()
 		echo '<pre>';
 		print_r( $product->get_category_ids());
 		print_r( $parentCatId);
+		print_r( (in_array($plants_cat_id, $idCats)));
 		echo '</pre>';
 
 		echo '
