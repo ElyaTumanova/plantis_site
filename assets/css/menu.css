@@ -133,8 +133,7 @@
 
 .catalog__node a {
     text-decoration: none;
-    display: flex;
-    justify-content: space-between;
+    display: inline;
 }
 
 .catalog__node a:hover {
