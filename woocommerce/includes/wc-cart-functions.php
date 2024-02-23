@@ -116,6 +116,13 @@ function ajax_button_text_js_script() {
 				});
 
 				$(document.body).on('added_to_cart', function(event,b,data){
+					
+					var buttonContent = '<span class="jet-woo-button-content"> <span class="button-label">'+text+'</span> <span class="button-icon"> '+svg+'</span> </span>'
+					var buttonText = '<span class="button-label">'+text+'</span>';
+					var buttonIcon = '<span class="button-icon"> '+svg+'</span>';
+					//console.log ($this)
+					//$this.html(buttonText).attr('data-tip',text);
+					$this.html(buttonText);
 
 					<?php  
 					$cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
@@ -124,13 +131,6 @@ function ajax_button_text_js_script() {
 
 					var remove_cart_url = <?php echo $remove_cart_url; ?>;
 					console.log (remove_cart_url);
-					
-					var buttonContent = '<span class="jet-woo-button-content"> <span class="button-label">'+text+'</span> <span class="button-icon"> '+svg+'</span> </span>'
-					var buttonText = '<span class="button-label">'+text+'</span>';
-					var buttonIcon = '<span class="button-icon"> '+svg+'</span>';
-					//console.log ($this)
-					//$this.html(buttonText).attr('data-tip',text);
-					$this.html(buttonText);
 				});
 			});
 		</script>
