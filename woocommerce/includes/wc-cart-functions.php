@@ -133,8 +133,10 @@ function ajax_button_text_js_script() {
 add_filter( 'woocommerce_loop_add_to_cart_args', 'plnt_woocommerce_loop_add_to_cart_args_in_cart', 10, 2 );
 
 function plnt_woocommerce_loop_add_to_cart_args_in_cart( $args, $product ){
+	$cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
+	$remove_cart_url = wc_get_cart_remove_url( $cart_item_key );
 	echo '<pre>';
-	print_r( WC()->cart->generate_cart_id( $product->get_id() ));
+	print_r( $remove_cart_url);
 	echo '</pre>';
 	if( 
 		$product->is_type( 'simple' )
