@@ -112,6 +112,7 @@ function ajax_button_text_js_script() {
 				var svg = '<?php echo $svg; ?>',      $this;
 				$(document.body).on('click', '.ajax_add_to_cart', function(event){
 					$this = $(this); 
+					console.log(this);
 				});
 
 				$(document.body).on('added_to_cart', function(event,b,data){
