@@ -50,7 +50,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <img src="<?php echo $cats_succulent ?>" class="cats-grid__img" alt="Суккуленты">
     </div>
     <div class="cats-grid__inner cats-grid__inner_petfriendly">
-        <h3 class="cats-grid__title">Pet Frendly</h3>
-        <img src="<?php echo $cats_petfriendly ?>" class="cats-grid__img" alt="Pet Frendly">
+        <h3 class="cats-grid__title">Pet Friendly</h3>
+        <img src="<?php echo $cats_petfriendly ?>" class="cats-grid__img" alt="Pet Friendly">
     </div>
 </div>

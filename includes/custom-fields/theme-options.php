@@ -70,7 +70,7 @@ Container::make('theme_options', 'Настройки темы')
 			 ->set_value_type( 'url' ),
 			Field::make( 'image', 'cats_succulent', 'Суккуленты' )
 			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'cats_petfriendly', 'Pet Frendly' )
+			Field::make( 'image', 'cats_petfriendly', 'Pet Friendly' )
 			 ->set_value_type( 'url' ),
 		))
 		->add_tab( __('Delivery'), array(
