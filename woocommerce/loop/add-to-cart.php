@@ -28,11 +28,11 @@ if( $product->is_type( 'simple' )
 && $product->is_in_stock()
 && WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( $product->get_id() ) )) 
 { 
-$cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
-$url = wc_get_cart_remove_url( $cart_item_key );
+    $cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
+    $url = wc_get_cart_remove_url( $cart_item_key );
 }
 else {
-$url = $product->add_to_cart_url() ,
+    $url = $product->add_to_cart_url();
 }
 //
 
