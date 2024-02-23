@@ -130,9 +130,9 @@ function ajax_button_text_js_script() {
  }
 
 // // добавляем класс для кнопки в корзину, после добавления товара в корзину
-add_filter( 'woocommerce_loop_add_to_cart_args', 'plnt_woocommerce_loop_add_to_cart_args_in_cart', 10, 2 );
+add_filter( 'woocommerce_loop_add_to_cart_args', 'plnt_woocommerce_loop_add_to_cart_args_remove_cart', 10, 2 );
 
-function plnt_woocommerce_loop_add_to_cart_args_in_cart( $args, $product ){
+function plnt_woocommerce_loop_add_to_cart_args_remove_cart( $args, $product ){
 	$cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
 	$remove_cart_url = wc_get_cart_remove_url( $cart_item_key );
 	echo '<pre>';
@@ -150,6 +150,16 @@ function plnt_woocommerce_loop_add_to_cart_args_in_cart( $args, $product ){
 	} else {
 		return $args;
 	}
+}
+
+add_filter( 'woocommerce_loop_add_to_cart_link', 'plnt_woocommerce_loop_add_to_cart_link_remove_cart', 10, 3 );
+
+function plnt_woocommerce_loop_add_to_cart_link_remove_cart( $class, $product, $args ){
+	echo '<pre>';
+	print_r( $args);
+	echo '</pre>';
+	// filter...
+	return $args;
 }
 
 /*--------------------------------------------------------------
