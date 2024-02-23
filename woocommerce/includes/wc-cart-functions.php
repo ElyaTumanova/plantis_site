@@ -54,6 +54,16 @@ function plnt_woocommerce_mini_cart_fragment( $fragments ) {
 
 add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_mini_cart_fragment', 25 );
 
+function plnt_woocommerce_add_to_cart_btn( $fragments ) {
+	ob_start();
+	woocommerce_template_loop_add_to_cart();
+	$fragments[ 'a.product_type_simple'] = ob_get_clean();
+	return $fragments;
+}
+
+add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_add_to_cart_btn', 25 );
+
+
 /*--------------------------------------------------------------
 # MINI CART 
 --------------------------------------------------------------*/
