@@ -99,13 +99,12 @@ function plnt_remove_from_cart(){
 	?>
 	</div>
 	<?php
-	wc_get_template( 'loop/add-to-cart.php', $args );
 }
 
 function plnt_woocommerce_add_to_cart_btn( $fragments ) {
 	ob_start();
 	plnt_remove_from_cart();
-	$fragments[ 'a.product_type_simple'] = ob_get_clean();
+	$fragments[ '.newbtn'] = ob_get_clean();
 	return $fragments;
 }
 
