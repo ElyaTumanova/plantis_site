@@ -1,4 +1,5 @@
-// 
+// NEW PLANTIS SHOP COUNTER 96498108
+// PLANTIS SHOP COUNTER 87781741
 
 
 jQuery(document).ready(function() {
