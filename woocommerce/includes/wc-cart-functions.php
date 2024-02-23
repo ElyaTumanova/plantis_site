@@ -92,7 +92,11 @@ function plnt_remove_from_cart(){
 			$args['attributes']['aria-label'] = wp_strip_all_tags( $args['attributes']['aria-label'] );
 		}
 
+		echo '<pre>';
+		print_r( $args );
+		echo '</pre>';
 		wc_get_template( 'loop/add-to-cart.php', $args );
+
 	}
 
 }
