@@ -84,7 +84,6 @@ function truemisha_single_product_btn_text( $text ) {
  
 	return $text;
 }
- 
 
 add_filter( 'woocommerce_product_add_to_cart_text', 'truemisha_product_btn_text', 20, 2 ); //текст для страниц каталога товаров, категорий товаров и т д
  
@@ -130,6 +129,23 @@ function ajax_button_text_js_script() {
 	}
  }
 
+// // добавляем класс для кнопки в корзину, после добавления товара в корзину
+add_filter( 'woocommerce_loop_add_to_cart_args', 'plnt_woocommerce_loop_add_to_cart_args_in_cart', 10, 2 );
+
+function plnt_woocommerce_loop_add_to_cart_args_in_cart( $args, $product ){
+	if( 
+		$product->is_type( 'simple' )
+		&& $product->is_purchasable()
+		&& $product->is_in_stock()
+ // 		&& !wp_is_mobile()
+		&& WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( $product->get_id() ) )
+	 ) {
+		$args['class'] .= ' remove_from_cart_button';
+		return $args;
+	} else {
+		return $args;
+	}
+}
 
 /*--------------------------------------------------------------
 # HELPERS 
