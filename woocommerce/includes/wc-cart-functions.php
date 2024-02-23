@@ -140,7 +140,7 @@ function plnt_woocommerce_loop_add_to_cart_args_in_cart( $args, $product ){
  // 		&& !wp_is_mobile()
 		&& WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( $product->get_id() ) )
 	 ) {
-		$args['class'] .= ' remove_from_cart_button';
+		$args['class'] = 'button product_type_simple remove_from_cart_button';
 		return $args;
 	} else {
 		return $args;
