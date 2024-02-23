@@ -133,6 +133,9 @@ function ajax_button_text_js_script() {
 add_filter( 'woocommerce_loop_add_to_cart_args', 'plnt_woocommerce_loop_add_to_cart_args_in_cart', 10, 2 );
 
 function plnt_woocommerce_loop_add_to_cart_args_in_cart( $args, $product ){
+	echo '<pre>';
+	print_r( WC()->cart->generate_cart_id( $product->get_id() ));
+	echo '</pre>';
 	if( 
 		$product->is_type( 'simple' )
 		&& $product->is_purchasable()
