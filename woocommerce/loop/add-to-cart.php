@@ -20,25 +20,28 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 global $product;
+
+// added
+if( $product->is_type( 'simple' )
+&& $product->is_purchasable()
+&& $product->is_in_stock()
+&& WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( $product->get_id() ) )) 
+{ 
+$cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
+$url = wc_get_cart_remove_url( $cart_item_key );
+}
+else {
+$url = $product->add_to_cart_url() ,
+}
+//
 
 echo apply_filters(
 	'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
 	sprintf(
 		'<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
-        if( $product->is_type( 'simple' )
-            && $product->is_purchasable()
-            && $product->is_in_stock()
-            && WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( $product->get_id() ) )) 
-        { 
-            $cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
-            $remove_cart_url = wc_get_cart_remove_url( $cart_item_key );
-            esc_url( $remove_cart_url ),
-        }
-         else {
-             esc_url( $product->add_to_cart_url() ),
-         }
+        // esc_url( $product->add_to_cart_url() ),
+        esc_url( $url),
 		esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
 		esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ),
 		isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
