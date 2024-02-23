@@ -116,6 +116,14 @@ function ajax_button_text_js_script() {
 				});
 
 				$(document.body).on('added_to_cart', function(event,b,data){
+
+					<?php  
+					$cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
+					$remove_cart_url = wc_get_cart_remove_url( $cart_item_key );
+					?>;
+
+					var remove_cart_url = <?php echo $remove_cart_url; ?>;
+					console.log (remove_cart_url);
 					
 					var buttonContent = '<span class="jet-woo-button-content"> <span class="button-label">'+text+'</span> <span class="button-icon"> '+svg+'</span> </span>'
 					var buttonText = '<span class="button-label">'+text+'</span>';
