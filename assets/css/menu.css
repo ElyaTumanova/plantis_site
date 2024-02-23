@@ -182,7 +182,7 @@
     display: none;
 }
 
-.catalog__dropdown .menu__dropdown-arrow {
+li.catalog__dropdown > .menu__dropdown-arrow {
     display: inline;
     content: "next";
     font-family: swiper-icons;
