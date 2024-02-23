@@ -183,11 +183,14 @@
 }
 
 .catalog__dropdown .menu__dropdown-arrow {
-    display: block;
+    display: inline;
+    content: "next";
+    font-family: swiper-icons;
+    font-size: 16px;
 }
 
-.catalog__dropdown:after {
-    /* content: "\276F"; */
+/* .catalog__dropdown:after {
+    content: "\276F";
     content: "next";
     font-family: swiper-icons;
     font-size: 16px;
@@ -205,7 +208,7 @@
     -o-transition: -o-transform 0.6s;
     -webkit-transition: -webkit-transform 0.6s;
     transition: transform 0.6s;
-}
+} */
 
 .catalog__node_lvl_2.catalog__dropdown:after {
     top: 10px;
