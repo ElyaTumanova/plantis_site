@@ -297,6 +297,10 @@ ul.products {
     margin: 10px 0 0;
 }
 
+.catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple:active, .catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple:focus {
+    text-decoration: none;
+}
+
 @media (max-width: 767px) {
 
     .catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple {
