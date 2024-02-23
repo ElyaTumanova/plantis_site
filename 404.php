@@ -4,44 +4,12 @@
 	<main id="main" class="site-main" role="main">
 		
 		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'art-starter-theme' ); ?></h1>
-			</header><!-- .page-header -->
-			
+						
 			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'art-starter-theme' ); ?></p>
-				
-				<?php get_search_form(); ?>
-				
-				<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
-				
-				<?php if ( ast_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'art-starter-theme' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-							?>
-						</ul>
-					</div><!-- .widget -->
-				<?php endif; ?>
-				
-				<?php
-				/* translators: %1$s: smiley */
-				$archive_content = '<p>' .
-				                   sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'art-starter-theme' ), convert_smilies( ':)' ) ) .
-				                   '</p>';
-				the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
-				?>
-				
-				<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
-			
+				<img width="800" height="286" src="https://plantis.shop/wp-content/uploads/2022/01/404_5-1024x366.png" alt="" srcset="https://plantis.shop/wp-content/uploads/2022/01/404_5-1024x366.png 1024w, https://plantis.shop/wp-content/uploads/2022/01/404_5-680x243.png 680w, https://plantis.shop/wp-content/uploads/2022/01/404_5-300x107.png 300w, https://plantis.shop/wp-content/uploads/2022/01/404_5-768x274.png 768w, https://plantis.shop/wp-content/uploads/2022/01/404_5-1536x549.png 1536w, https://plantis.shop/wp-content/uploads/2022/01/404_5-2048x732.png 2048w, https://plantis.shop/wp-content/uploads/2022/01/404_5-600x214.png 600w, https://plantis.shop/wp-content/uploads/2022/01/404_5.png 1600w" sizes="(max-width: 800px) 100vw, 800px">
+				<p>Упс! Похоже что-то пошло не так…</p>
+				<p>Давайте начнем сначала!</p>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="button" role="button">На главную</a>
 			</div><!-- .page-content -->
 		</section><!-- .error-404 -->
 	
