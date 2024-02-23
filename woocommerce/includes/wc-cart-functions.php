@@ -85,20 +85,20 @@ function truemisha_single_product_btn_text( $text ) {
 	return $text;
 }
 
-add_filter( 'woocommerce_product_add_to_cart_text', 'truemisha_product_btn_text', 20, 2 ); //текст для страниц каталога товаров, категорий товаров и т д
+// add_filter( 'woocommerce_product_add_to_cart_text', 'truemisha_product_btn_text', 20, 2 ); //текст для страниц каталога товаров, категорий товаров и т д
  
-function truemisha_product_btn_text( $text, $product ) {
-	if( 
-	   $product->is_type( 'simple' )
-	   && $product->is_purchasable()
-	   && $product->is_in_stock()
-// 		&& !wp_is_mobile()
-	   && WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( $product->get_id() ) )
-	) {
-		$text = 'Добавлен';
-	}
-	return $text;
-}
+// function truemisha_product_btn_text( $text, $product ) {
+// 	if( 
+// 	   $product->is_type( 'simple' )
+// 	   && $product->is_purchasable()
+// 	   && $product->is_in_stock()
+// // 		&& !wp_is_mobile()
+// 	   && WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( $product->get_id() ) )
+// 	) {
+// 		$text = 'Добавлен';
+// 	}
+// 	return $text;
+// }
 
 add_action( 'wp_footer', 'ajax_button_text_js_script' );
 function ajax_button_text_js_script() {
@@ -151,16 +151,6 @@ function plnt_woocommerce_loop_add_to_cart_args_remove_cart( $args, $product ){
 		return $args;
 	}
 }
-
-// add_filter( 'woocommerce_loop_add_to_cart_link', 'plnt_woocommerce_loop_add_to_cart_link_remove_cart', 10, 3 );
-
-// function plnt_woocommerce_loop_add_to_cart_link_remove_cart( $class, $product, $args ){
-// 	echo '<pre>';
-// 	print_r( $args);
-// 	echo '</pre>';
-// 	// filter...
-// 	return $args;
-// }
 
 /*--------------------------------------------------------------
 # HELPERS 

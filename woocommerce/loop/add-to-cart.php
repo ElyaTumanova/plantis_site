@@ -30,9 +30,11 @@ if( $product->is_type( 'simple' )
 { 
     $cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
     $url = wc_get_cart_remove_url( $cart_item_key );
+    $text = 'Убрать из корзины';
 }
 else {
     $url = $product->add_to_cart_url();
+    $text = $product->add_to_cart_text();
 }
 //
 
@@ -45,7 +47,8 @@ echo apply_filters(
 		esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
 		esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ),
 		isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
-		esc_html( $product->add_to_cart_text() )
+		// esc_html( $product->add_to_cart_text() )
+		esc_html( $text )
 	),
 	$product,
 	$args
