@@ -152,15 +152,15 @@ function plnt_woocommerce_loop_add_to_cart_args_remove_cart( $args, $product ){
 	}
 }
 
-add_filter( 'woocommerce_loop_add_to_cart_link', 'plnt_woocommerce_loop_add_to_cart_link_remove_cart', 10, 3 );
+// add_filter( 'woocommerce_loop_add_to_cart_link', 'plnt_woocommerce_loop_add_to_cart_link_remove_cart', 10, 3 );
 
-function plnt_woocommerce_loop_add_to_cart_link_remove_cart( $class, $product, $args ){
-	echo '<pre>';
-	print_r( $args);
-	echo '</pre>';
-	// filter...
-	return $args;
-}
+// function plnt_woocommerce_loop_add_to_cart_link_remove_cart( $class, $product, $args ){
+// 	echo '<pre>';
+// 	print_r( $args);
+// 	echo '</pre>';
+// 	// filter...
+// 	return $args;
+// }
 
 /*--------------------------------------------------------------
 # HELPERS 
