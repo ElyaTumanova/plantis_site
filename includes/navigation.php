@@ -179,7 +179,7 @@ function filter_nav_menu_submenu_css_class_catalog( $classes, $args, $depth ) {
 	return $classes;
 }
 
-
+// // Добавляем стрелочку для разворачивания меню
 add_filter( 'wp_nav_menu_args', 'filter_wp_menu_args_catalog' );
 function filter_wp_menu_args_catalog( $args ) {
 	if ( $args['theme_location'] === 'catalog' ) {
