@@ -188,14 +188,11 @@ function AddThumbnailClass( $atts, $attachment ) {
 		return $atts;
 }
 
-
-
 // // бейдж распродажа
 remove_action('woocommerce_before_shop_loop_item_title','woocommerce_show_product_loop_sale_flash', 10);
 add_action('woocommerce_before_shop_loop_item_title','truemisha_sale_badge', 5);
 
 // // перенос кнопки в корзину
-
 remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
 add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_add_to_cart', 30);
 
@@ -237,7 +234,6 @@ add_action('woocommerce_shop_loop_item_title','woocommerce_template_single_excer
 
 
 // // вывод меток 
-
 add_action('woocommerce_after_shop_loop_item', 'plnt_get_product_tags', 20);
 
 function plnt_get_product_tags() {
@@ -401,7 +397,7 @@ function plnt_woocommerce_pagination_args_filter( $array ){
 	return $array;
 }
 
-// добавляем директивы ноиндекс, фоллоу для страниц пагинации, начиная со 2
+// добавляем директивы ноиндекс, фоллоу для страниц пагинации, начиная со 2 #SEO
 add_filter( 'wpseo_robots', 'filter_wpseo_robots' );
 
 /* Yoast SEO -  add noindex, follow for paginated pages */

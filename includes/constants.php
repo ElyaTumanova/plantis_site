@@ -3,6 +3,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+var $site = get_site_url();
+	echo '<pre>';
+	var_dump( $site );
+	echo '</pre>';
 //NEW PLANTIS SHOP
 // constants for categories IDs
 $plants_cat_id = 90;
