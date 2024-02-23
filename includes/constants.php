@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-var $site = get_site_url();
+$site = get_site_url();
 	echo '<pre>';
 	var_dump( $site );
 	echo '</pre>';
