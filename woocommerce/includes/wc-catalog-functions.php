@@ -198,6 +198,25 @@ add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_
 
 // // уведомление о том, что в корзину добавили максимальное кол-во товара
 add_action('woocommerce_before_shop_loop_item_title', 'plnt_cart_notice', 40);
+add_action('woocommerce_before_shop_loop_item_title', 'plnt_remove_link', 40);
+
+function plnt_remove_link() {  
+    global $product;
+    $cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
+	$remove_cart_url = wc_get_cart_remove_url( $cart_item_key );
+    ?>
+        <div class='remove-link'><?php echo $remove_cart_url;?></div> 
+    <?php
+}
+
+function plnt_remove_link_fragment( $fragments ) {
+	ob_start();
+	plnt_remove_link();
+	$fragments[ 'div.mini-cart__wrap'] = ob_get_clean();
+	return $fragments;
+}
+
+add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_remove_link_fragment', 25 );
 
 // // меняем текст кнопки в корзину, если товар не в наличии
 
