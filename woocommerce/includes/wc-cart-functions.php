@@ -197,7 +197,7 @@ function ajax_button_text_js_script() {
  }
 
 // // добавляем класс для кнопки в корзину, после добавления товара в корзину
-add_filter( 'woocommerce_loop_add_to_cart_args', 'plnt_woocommerce_loop_add_to_cart_args_remove_cart', 10, 2 );
+//add_filter( 'woocommerce_loop_add_to_cart_args', 'plnt_woocommerce_loop_add_to_cart_args_remove_cart', 10, 2 );
 
 function plnt_woocommerce_loop_add_to_cart_args_remove_cart( $args, $product ){
 	$cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
