@@ -161,7 +161,7 @@ function plnt_catalog_gallery() {
 		$attachment_ids = $product->get_gallery_attachment_ids();
 		echo '
 		<div class="product__image-slider-wrap">
-			<div class="swiper-wrapper" >';
+			<div class="swiper-wrapper_nivo" >';
 				echo $image;
 				foreach( $attachment_ids as $attachment_id ) {
 					// $params = [ 'class' => "attachment-woocommerce_thumbnail" ];
@@ -169,16 +169,14 @@ function plnt_catalog_gallery() {
 				};
 			echo '
 			</div>
-			<div class="swiper-pagination"></div>
-			<div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div>
+		
 		</div>';
 
 		?>
 
 		<script type="text/javascript">
 			$ (window).load (function () {
-			$ ('.product__image-slider-wrap').nivoSlider ();
+			$ ('.swiper-wrapper_nivo').nivoSlider ();
 			});
 		</script>
 		<?php
@@ -187,8 +185,12 @@ function plnt_catalog_gallery() {
 	}
 };
 
+// <div class="swiper-pagination"></div>
+// <div class="swiper-button-prev"></div>
+// <div class="swiper-button-next"></div>
+
 // добавляем класс для swiper
-add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
+//add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
 function AddThumbnailClass( $atts, $attachment ) {
 		$atts['class'] .= " swiper-slide"; 
 		return $atts;
