@@ -58,8 +58,6 @@ if ( woocommerce_product_loop() ) {
 
 	woocommerce_product_loop_start();
 
-	do_action( 'woocommerce_after_product_loop_start' );   //plnt new action
-
 	if ( wc_get_loop_prop( 'total' ) ) {
 		while ( have_posts() ) {
 			the_post();
@@ -72,6 +70,9 @@ if ( woocommerce_product_loop() ) {
 			wc_get_template_part( 'content', 'product' );
 		}
 	}
+
+	
+	do_action( 'woocommerce_before_product_loop_end' );   //plnt new action
 
 	woocommerce_product_loop_end();
 
