@@ -154,8 +154,6 @@ remove_action('woocommerce_before_shop_loop_item_title','woocommerce_template_lo
 add_action('woocommerce_before_shop_loop_item_title','plnt_catalog_gallery', 10);
 add_action('woocommerce_before_product_loop_end','plnt_img_gallery_swiper_init', 10);
 
-
-
 function plnt_catalog_gallery() {
 
 	if (is_shop() || is_product_category() || is_product_tag()) {
@@ -184,34 +182,35 @@ function plnt_catalog_gallery() {
 function plnt_img_gallery_swiper_init() {
 	?>
 	<script>
-		swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-			navigation: {
-				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev',
-			},
-			slidesPerView: 1,
-			slidesPerGroup: 1,
-			spaceBetween: 0,
-			observer: true,
-			observeParents: true,
-			observeSlideChildren: true,
-			breakpoints: {
-				320: {
-					navigation: {
-						enabled: false,
-					},
-				},
-				768: {
-					navigation: {
-						enabled: true,
-					},
-				}
-			}
-		});
+		// swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
+		// 	pagination: {
+		// 		el: '.swiper-pagination',
+		// 		clickable: true,
+		// 	},
+		// 	navigation: {
+		// 		nextEl: '.swiper-button-next',
+		// 		prevEl: '.swiper-button-prev',
+		// 	},
+		// 	slidesPerView: 1,
+		// 	slidesPerGroup: 1,
+		// 	spaceBetween: 0,
+		// 	observer: true,
+		// 	observeParents: true,
+		// 	observeSlideChildren: true,
+		// 	breakpoints: {
+		// 		320: {
+		// 			navigation: {
+		// 				enabled: false,
+		// 			},
+		// 		},
+		// 		768: {
+		// 			navigation: {
+		// 				enabled: true,
+		// 			},
+		// 		}
+		// 	}
+		// });
+		swiper_catalog_card_imgs.init();
 	</script>
 	<?php
 }
