@@ -241,7 +241,7 @@ ul.products {
     .catalog__products-wrap .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, 
     .catalog__products-wrap .yith-wcwl-add-to-wishlist a.delete_item>img, 
     .catalog__products-wrap .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
-        margin: 0;
+        margin: 0 !important;
     }
 
     .catalog__products-wrap .yith-wcwl-add-to-wishlist {
