@@ -421,17 +421,9 @@ function filter_wpseo_robots( $robotsstr ) {
 //   add_filter( 'gettext', 'plnt_change_text_catalog_1', 20 );
 
 
-add_filter( 'woocommerce_get_breadcrumb', 'wp_kama_woocommerce_get_breadcrumb_filter', 10, 2 );
+add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
 
-/**
- * Function for `woocommerce_get_breadcrumb` filter-hook.
- * 
- * @param  $crumbs 
- * @param  $that   
- *
- * @return 
- */
-function wp_kama_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
+function plnt_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 	foreach ( $crumbs as $crumb ) {
 		if (str_contains($crumb[0], 'Товары с меткой ')) {
 			$key = array_search($crumb, $crumbs);
@@ -440,17 +432,11 @@ function wp_kama_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 			$replacements = array(0 => $newstring);
 
 			$crumbNew = array_replace($crumb, $replacements);
-			echo '<pre>';
-			print_r( $crumbNew );
-			echo '</pre>';
 			$replacements2 = array($key => $crumbNew);
 			$crumbsNew = array_replace($crumbs, $replacements2);
 			$crumbs = $crumbsNew;
 		}
 	}
-	echo '<pre>';
-	print_r( $crumbsNew );
-	echo '</pre>';
-	
+
 	return $crumbs;
 }
