@@ -187,34 +187,34 @@ function swiper_init() {
 	?>
 	<script>
 		console.log('hi swiper');
-		// const swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
-		// 	pagination: {
-		// 		el: '.swiper-pagination',
-		// 		clickable: true,
-		// 	},
-		// 	navigation: {
-		// 		nextEl: '.swiper-button-next',
-		// 		prevEl: '.swiper-button-prev',
-		// 	},
-		// 	slidesPerView: 1,
-		// 	slidesPerGroup: 1,
-		// 	spaceBetween: 0,
-		// 	observer: true,
-		// 	observeParents: true,
-		// 	observeSlideChildren: true,
-		// 	breakpoints: {
-		// 		320: {
-		// 			navigation: {
-		// 				enabled: false,
-		// 			},
-		// 		},
-		// 		768: {
-		// 			navigation: {
-		// 				enabled: true,
-		// 			},
-		// 		}
-		// 	}
-		// });
+		const swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			slidesPerView: 1,
+			slidesPerGroup: 1,
+			spaceBetween: 0,
+			observer: true,
+			observeParents: true,
+			observeSlideChildren: true,
+			breakpoints: {
+				320: {
+					navigation: {
+						enabled: false,
+					},
+				},
+				768: {
+					navigation: {
+						enabled: true,
+					},
+				}
+			}
+		});
 	</script>
 	<?php
 }
