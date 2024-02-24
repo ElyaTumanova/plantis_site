@@ -152,7 +152,7 @@ add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_
 
 remove_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_product_thumbnail', 10);
 add_action('woocommerce_before_shop_loop_item_title','plnt_catalog_gallery', 10);
-//add_action('woocommerce_before_product_loop_end','swiper_init', 10);
+add_action('woocommerce_before_product_loop_end','plnt_img_gallery_swiper_init', 10);
 
 
 
@@ -181,7 +181,7 @@ function plnt_catalog_gallery() {
 	}
 };
 
-function swiper_init() {
+function plnt_img_gallery_swiper_init() {
 	?>
 	<script>
 		console.log('hi swiper');

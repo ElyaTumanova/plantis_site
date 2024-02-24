@@ -74,35 +74,7 @@ const swiper_main_sale = new Swiper('.main__sale-swiper', {
 # Catalog
 --------------------------------------------------------------*/
 
-swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    slidesPerView: 1,
-    slidesPerGroup: 1,
-    spaceBetween: 0,
-    observer: true,
-    observeParents: true,
-    observeSlideChildren: true,
-    breakpoints: {
-        320: {
-            navigation: {
-                enabled: false,
-            },
-        },
-        768: {
-            navigation: {
-                enabled: true,
-            },
-        }
-    }
-});
-
+// слайдер инициирован в wc-catalog-functions, чтобы повторно инициироваться при аякс обновлении каталога при приминении фильтров
 
 
 /*--------------------------------------------------------------
