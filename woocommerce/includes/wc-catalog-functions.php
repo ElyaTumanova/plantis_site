@@ -160,8 +160,8 @@ function plnt_catalog_gallery() {
 		$image = $product->get_image();	
 		$attachment_ids = $product->get_gallery_attachment_ids();
 		echo '
-		<div class="product__image-slider-wrap">
-			<div class="nivo-catalog-gallery" >';
+		<div class="product__image-slider-wrap swiper">
+			<div class="swiper-wrapper" >';
 				echo $image;
 				foreach( $attachment_ids as $attachment_id ) {
 					// $params = [ 'class' => "attachment-woocommerce_thumbnail" ];
@@ -169,39 +169,49 @@ function plnt_catalog_gallery() {
 				};
 			echo '
 			</div>
-		
+			<div class="swiper-pagination"></div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
 		</div>';
-
 		?>
-
-		<script>
-			jQuery(function($){
-				$('.nivo-catalog-gallery').nivoSlider({
-					effect: 'slideInLeft',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
-					animSpeed: 200,                 // скорость анимации
-					pauseTime: 3000,                // пауза между сменой слайдов
-					directionNav: true,             // нужно ли отображать кнопки перехода на следующий и предыдущий слайд
-					controlNav: true,               // 1,2,3... навигация (например в виде точек)
-					pauseOnHover: true,             // останавливать прокрутку слайдов при наведении мыши
-					manualAdvance: true,           // true - отключить автопрокрутку
-					prevText: '&#10094;',               // текст перехода на предыдущий слайд
-					nextText: '&#10095;',               // текст кнопки перехода на следующий слайд
-					randomStart: false,             // начинать со случайного слайда
-				});
+		<!-- <script>
+			const swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
+				pagination: {
+					el: '.swiper-pagination',
+					clickable: true,
+				},
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				},
+				slidesPerView: 1,
+				slidesPerGroup: 1,
+				spaceBetween: 0,
+				observer: true,
+				observeParents: true,
+				observeSlideChildren: true,
+				breakpoints: {
+					320: {
+						navigation: {
+							enabled: false,
+						},
+					},
+					768: {
+						navigation: {
+							enabled: true,
+						},
+					}
+				}
 			});
-		</script>
+		</script> -->
 		<?php
 	} else {
 		woocommerce_template_loop_product_thumbnail();
 	}
 };
 
-// <div class="swiper-pagination"></div>
-// <div class="swiper-button-prev"></div>
-// <div class="swiper-button-next"></div>
-
 // добавляем класс для swiper
-//add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
+add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
 function AddThumbnailClass( $atts, $attachment ) {
 		$atts['class'] .= " swiper-slide"; 
 		return $atts;
