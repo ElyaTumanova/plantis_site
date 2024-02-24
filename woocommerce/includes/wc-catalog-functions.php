@@ -194,6 +194,7 @@ function plnt_img_gallery_swiper_init() {
 			slidesPerView: 1,
 			slidesPerGroup: 1,
 			spaceBetween: 0,
+			loop: true,
 			observer: true,
 			observeParents: true,
 			observeSlideChildren: true,
