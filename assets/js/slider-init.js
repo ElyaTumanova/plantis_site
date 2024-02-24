@@ -29,7 +29,6 @@ const swiper_main_banners = new Swiper('.main__banners-swiper', {
 });
 
 const swiper_main_sale = new Swiper('.main__sale-swiper', {
-    // slideClass: 'product',
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
@@ -42,6 +41,7 @@ const swiper_main_sale = new Swiper('.main__sale-swiper', {
     slidesPerGroup: 1,
     spaceBetween: 0,
     loop: true,
+    freeMode: true,
     breakpoints: {
         320: {
             slidesPerView: 2,
@@ -49,7 +49,6 @@ const swiper_main_sale = new Swiper('.main__sale-swiper', {
             navigation: {
                 enabled: false,
             },
-            freeMode: true,
         },
         767: {
             navigation: {
