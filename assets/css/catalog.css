@@ -440,8 +440,8 @@ ul.products {
     .card__sliders-wrap .yith-wcwl-add-to-wishlist {
         border: none;
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 10px;
+        right: 10px;
     }
 }
 
