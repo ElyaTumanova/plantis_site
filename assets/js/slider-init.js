@@ -87,6 +87,9 @@ const swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
     slidesPerView: 1,
     slidesPerGroup: 1,
     spaceBetween: 0,
+    observer: true,
+    observeParents: true,
+    observeSlideChildren: true,
     breakpoints: {
         320: {
             navigation: {
