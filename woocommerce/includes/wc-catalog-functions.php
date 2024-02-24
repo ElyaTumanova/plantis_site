@@ -184,7 +184,6 @@ function plnt_catalog_gallery() {
 function plnt_img_gallery_swiper_init() {
 	?>
 	<script>
-		console.log('hi swiper');
 		swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
 			pagination: {
 				el: '.swiper-pagination',
@@ -213,7 +212,6 @@ function plnt_img_gallery_swiper_init() {
 				}
 			}
 		});
-		console.log('bye swiper');
 	</script>
 	<?php
 }
