@@ -29,7 +29,7 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 											 '/assets/js/buttons.js', array( 'jquery' ), null, true );	
 											 
 		wp_enqueue_script( 'slider-init', get_template_directory_uri() .
-											 '/assets/js/slider-init.js', array( 'jquery', 'swiper' ), null, true );	
+											 '/assets/js/slider-init.js', array( 'jquery', 'swiper', 'berocket_aapf_widget-script' ), null, true );	
 
 		// wp_enqueue_script( 'lazy-load', get_template_directory_uri() .
 		//                                      '/assets/js/lazy-load.js', array( 'jquery' ), null, true ); // for lazy load
