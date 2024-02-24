@@ -437,10 +437,7 @@ function wp_kama_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 	echo '</pre>';
 	foreach ( $crumbs as $crumb ) {
 		if (str_contains($crumb[0], 'Товары с меткой ')) {
-			$onlyconsonants = str_replace('Товары с меткой ', "ляляля", $crumb[0]);
-			echo '<pre>';
-			print_r( $onlyconsonants );
-			echo '</pre>';
+			return $crumb[0] = str_replace('Товары с меткой ', "Товары из подборки ", $crumb[0]);
 		}
 	}
 	
