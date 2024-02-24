@@ -665,6 +665,10 @@ ul.products {
         border: none;
     }
 
+    .main__sale-gallery li img {
+        z-index: 0;
+    }
+
     .main__sale-gallery .woocommerce-loop-product__title{
         margin-top: 7px;
     }
