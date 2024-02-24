@@ -683,7 +683,12 @@ ul.products {
     padding-bottom: 10px;
 }
 .main__sale-gallery .swiper-pagination, .card__grid .swiper-pagination {
-    bottom: -3px;
+    /* bottom: -3px; for bullets*/
+    
+    /* for progress bar */
+    bottom: 0;
+    top: auto;
+    height: 2px;
 }
 .main__sale-gallery .swiper-button-next {
     right: 6px;

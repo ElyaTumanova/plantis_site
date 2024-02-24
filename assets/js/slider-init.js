@@ -85,6 +85,7 @@ const swiper_card_cross_upsells = new Swiper('.cross-upsells-swiper', {
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
+        type: 'progressbar'
     },
     navigation: {
         nextEl: '.swiper-button-next',
@@ -115,6 +116,7 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
+        type: 'progressbar'
     },
     navigation: {
         nextEl: '.swiper-button-next',
