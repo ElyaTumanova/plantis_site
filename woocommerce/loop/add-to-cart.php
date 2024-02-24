@@ -4,7 +4,7 @@
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/loop/add-to-cart.php.
  * 
- * MODIFIED FOR PLANTIS THEME
+ * MODIFIED FOR PLANTIS THEME (for remove from cart function)
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -31,10 +31,12 @@ if( $product->is_type( 'simple' )
     $cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
     $url = wc_get_cart_remove_url( $cart_item_key );
     $text = 'Убрать из корзины';
+    $class = 'button product_type_simple remove_from_cart_button';
 }
 else {
     $url = $product->add_to_cart_url();
     $text = $product->add_to_cart_text();
+    $class = isset( $args['class'] ) ? $args['class'] : 'button';
 }
 //
 
@@ -45,7 +47,8 @@ echo apply_filters(
         // esc_url( $product->add_to_cart_url() ),
         esc_url( $url),
 		esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
-		esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ),
+		// esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ),
+		esc_attr( $class ),
 		isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
 		// esc_html( $product->add_to_cart_text() )
 		esc_html( $text )
