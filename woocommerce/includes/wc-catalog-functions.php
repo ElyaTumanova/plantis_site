@@ -152,6 +152,7 @@ add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_
 
 remove_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_product_thumbnail', 10);
 add_action('woocommerce_before_shop_loop_item_title','plnt_catalog_gallery', 10);
+add_action('woocommerce_before_shop_loop_item_title','swiper_init', 10);
 
 function plnt_catalog_gallery() {
 
@@ -173,42 +174,45 @@ function plnt_catalog_gallery() {
 			<div class="swiper-button-prev"></div>
 			<div class="swiper-button-next"></div>
 		</div>';
-		?>
-		<script>
-			const swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
-				pagination: {
-					el: '.swiper-pagination',
-					clickable: true,
-				},
-				navigation: {
-					nextEl: '.swiper-button-next',
-					prevEl: '.swiper-button-prev',
-				},
-				slidesPerView: 1,
-				slidesPerGroup: 1,
-				spaceBetween: 0,
-				observer: true,
-				observeParents: true,
-				observeSlideChildren: true,
-				breakpoints: {
-					320: {
-						navigation: {
-							enabled: false,
-						},
-					},
-					768: {
-						navigation: {
-							enabled: true,
-						},
-					}
-				}
-			});
-		</script>
-		<?php
 	} else {
 		woocommerce_template_loop_product_thumbnail();
 	}
 };
+
+function swiper_init() {
+	?>
+	<script>
+		const swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			slidesPerView: 1,
+			slidesPerGroup: 1,
+			spaceBetween: 0,
+			observer: true,
+			observeParents: true,
+			observeSlideChildren: true,
+			breakpoints: {
+				320: {
+					navigation: {
+						enabled: false,
+					},
+				},
+				768: {
+					navigation: {
+						enabled: true,
+					},
+				}
+			}
+		});
+	</script>
+	<?php
+}
 
 // добавляем класс для swiper
 add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
