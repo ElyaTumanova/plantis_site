@@ -174,7 +174,7 @@ function plnt_catalog_gallery() {
 			<div class="swiper-button-next"></div>
 		</div>';
 		?>
-		<!-- <script>
+		<script>
 			const swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
 				pagination: {
 					el: '.swiper-pagination',
@@ -203,7 +203,7 @@ function plnt_catalog_gallery() {
 					}
 				}
 			});
-		</script> -->
+		</script>
 		<?php
 	} else {
 		woocommerce_template_loop_product_thumbnail();
