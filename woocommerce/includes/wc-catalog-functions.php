@@ -436,9 +436,12 @@ function wp_kama_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 	print_r( $crumbs );
 	echo '</pre>';
 	foreach ( $crumbs as $crumb ) {
-		echo '<pre>';
-		print_r( $crumb[0] );
-		echo '</pre>';
+		if (str_contains($crumb[0], 'Товары с меткой ')) {
+			echo '<pre>';
+			print_r( $crumb[0] );
+			echo '</pre>';
+		}
+		
 	}
 	return $crumbs;
 }
