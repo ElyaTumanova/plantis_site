@@ -408,3 +408,14 @@ function filter_wpseo_robots( $robotsstr ) {
  
     return $robotsstr;
 }
+
+
+// перевод текстов
+
+function plnt_change_text_catalog_1( $translated_text ) {
+    if ( $translated_text == 'Товары с меткой ' ) {
+      $translated_text = 'Товары из подборки ';
+    }
+    return $translated_text;
+  }
+  add_filter( 'gettext', 'plnt_change_text_catalog_1', 20 );
