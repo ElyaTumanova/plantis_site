@@ -32,6 +32,7 @@ const swiper_main_sale = new Swiper('.main__sale-swiper', {
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
+        type: 'progressbar'
     },
     navigation: {
         nextEl: '.swiper-button-next',
@@ -93,6 +94,7 @@ const swiper_card_cross_upsells = new Swiper('.cross-upsells-swiper', {
     slidesPerGroup: 1,
     spaceBetween: 15,
     loop: true,
+    freeMode: true,
     breakpoints: {
         320: {
             slidesPerView: 2,
@@ -100,7 +102,6 @@ const swiper_card_cross_upsells = new Swiper('.cross-upsells-swiper', {
             navigation: {
                 enabled: false,
             },
-            freeMode: true,
         },
         768: {
             navigation: {
@@ -123,6 +124,7 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
     slidesPerGroup: 1,
     spaceBetween: 15,
     loop: true,
+    freeMode: true,
     breakpoints: {
         320: {
             slidesPerView: 2,
