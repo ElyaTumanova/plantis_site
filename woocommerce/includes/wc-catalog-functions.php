@@ -434,7 +434,11 @@ add_filter( 'woocommerce_get_breadcrumb', 'wp_kama_woocommerce_get_breadcrumb_fi
 function wp_kama_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 	foreach ( $crumbs as $crumb ) {
 		if (str_contains($crumb[0], 'Товары с меткой ')) {
-			$crumb[0] = str_replace('Товары с меткой ', "Товары из подборки ", $crumb[0]);
+			$crumbnew = str_replace('Товары с меткой ', "Товары из подборки ", $crumb[0]);
+
+			$replacements = array(0 => $crumbnew);
+
+			return $crumb = array_replace($crumb, $replacements,);
 		}
 	}
 	echo '<pre>';
