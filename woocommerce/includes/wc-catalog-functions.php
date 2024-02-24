@@ -438,7 +438,10 @@ function wp_kama_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 
 			$replacements = array(0 => $crumbnew);
 
-			return $crumb = array_replace($crumb, $replacements,);
+			$crumb_ = array_replace($crumb, $replacements,);
+			echo '<pre>';
+			print_r( $crumb_ );
+			echo '</pre>';
 		}
 	}
 	echo '<pre>';
