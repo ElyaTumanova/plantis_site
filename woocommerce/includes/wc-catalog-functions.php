@@ -419,3 +419,22 @@ function plnt_change_text_catalog_1( $translated_text ) {
     return $translated_text;
   }
   add_filter( 'gettext', 'plnt_change_text_catalog_1', 20 );
+
+
+  add_filter( 'woocommerce_get_breadcrumb', 'wp_kama_woocommerce_get_breadcrumb_filter', 10, 2 );
+
+/**
+ * Function for `woocommerce_get_breadcrumb` filter-hook.
+ * 
+ * @param  $crumbs 
+ * @param  $that   
+ *
+ * @return 
+ */
+function wp_kama_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
+
+	echo '<pre>';
+	print_r( $crumbs );
+	echo '</pre>';
+	return $crumbs;
+}

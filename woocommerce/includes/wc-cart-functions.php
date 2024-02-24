@@ -196,29 +196,6 @@ function ajax_button_text_js_script() {
 	}
  }
 
-// // добавляем класс для кнопки в корзину, после добавления товара в корзину
-//add_filter( 'woocommerce_loop_add_to_cart_args', 'plnt_woocommerce_loop_add_to_cart_args_remove_cart', 10, 2 );
-
-function plnt_woocommerce_loop_add_to_cart_args_remove_cart( $args, $product ){
-	$cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
-	$remove_cart_url = wc_get_cart_remove_url( $cart_item_key );
-	// echo '<pre>';
-	// print_r( $args);
-	// echo '</pre>';
-	if( 
-		$product->is_type( 'simple' )
-		&& $product->is_purchasable()
-		&& $product->is_in_stock()
- // 		&& !wp_is_mobile()
-		&& WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( $product->get_id() ) )
-	 ) {
-		$args['class'] = 'button product_type_simple remove_from_cart_button';
-		return $args;
-	} else {
-		return $args;
-	}
-}
-
 /*--------------------------------------------------------------
 # HELPERS 
 --------------------------------------------------------------*/
