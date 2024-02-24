@@ -43,7 +43,9 @@ const swiper_main_sale = new Swiper('.main__sale-swiper', {
     spaceBetween: 0,
     loop: true,
     freeMode: true,
-    effect: 'fade',
+    observer: true,
+    observeParents: true,
+    observeSlideChildren: true,
     breakpoints: {
         320: {
             slidesPerView: 2,
