@@ -209,14 +209,14 @@ function plnt_remove_link() {
     <?php
 }
 
-function plnt_remove_link_fragment( $fragments ) {
-	ob_start();
-	plnt_remove_link();
-	$fragments[ 'div.mini-cart__wrap'] = ob_get_clean();
-	return $fragments;
-}
+// function plnt_remove_link_fragment( $fragments ) {
+// 	ob_start();
+// 	plnt_remove_link();
+// 	$fragments[ 'div.mini-cart__wrap'] = ob_get_clean();
+// 	return $fragments;
+// }
 
-add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_remove_link_fragment', 25 );
+// add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_remove_link_fragment', 25 );
 
 // // меняем текст кнопки в корзину, если товар не в наличии
 
