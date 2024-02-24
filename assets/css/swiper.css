@@ -74,6 +74,7 @@
     position: relative;
     transition-property: transform;
     /* display: block; */
+    z-index: 1;
   }
   .swiper-slide-invisible-blank {
     visibility: hidden;

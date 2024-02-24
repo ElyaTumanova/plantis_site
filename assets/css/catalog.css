@@ -658,16 +658,11 @@ ul.products {
     } */
 
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
-        /* position: absolute;
+        position: absolute;
         z-index: 2;
         top: 10px;
-        right: 10px; */
+        right: 10px;
         border: none;
-
-        position: relative;
-        transform: translateY(28px);
-        width: fit-content;
-        margin-left: auto;
     }
 
     .main__sale-gallery .woocommerce-loop-product__title{
