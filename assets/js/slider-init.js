@@ -49,7 +49,7 @@ const swiper_main_sale = new Swiper('.main__sale-swiper', {
             navigation: {
                 enabled: false,
             },
-            // freeMode: true,
+            freeMode: true,
         },
         767: {
             navigation: {
