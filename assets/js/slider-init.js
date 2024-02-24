@@ -13,6 +13,7 @@ const swiper_main_banners = new Swiper('.main__banners-swiper', {
     slidesPerView: 1,
     slidesPerGroup: 1,
     spaceBetween: 0,
+    loop: true,
     breakpoints: {
         320: {
             navigation: {
@@ -40,6 +41,7 @@ const swiper_main_sale = new Swiper('.main__sale-swiper', {
     slidesPerView: 1,
     slidesPerGroup: 1,
     spaceBetween: 0,
+    loop: true,
     breakpoints: {
         320: {
             slidesPerView: 2,
@@ -91,6 +93,7 @@ const swiper_card_cross_upsells = new Swiper('.cross-upsells-swiper', {
     slidesPerView: 3,
     slidesPerGroup: 1,
     spaceBetween: 15,
+    loop: true,
     breakpoints: {
         320: {
             slidesPerView: 2,
@@ -120,6 +123,7 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
     slidesPerView: 4,
     slidesPerGroup: 1,
     spaceBetween: 15,
+    loop: true,
     breakpoints: {
         320: {
             slidesPerView: 2,
@@ -155,6 +159,7 @@ const swiper_about_photo = new Swiper('.about__swiper-photo', {
     slidesPerView: 1,
     slidesPerGroup: 1,
     spaceBetween: 10,
+    loop: true,
     breakpoints: {
         320: {
         slidesPerView: 1,
@@ -186,6 +191,7 @@ const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
     slidesPerView: 3,
     slidesPerGroup: 3,
     spaceBetween: 10,
+    loop: true,
     breakpoints: {
         320: {
         slidesPerView: 1,
