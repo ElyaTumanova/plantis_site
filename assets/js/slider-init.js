@@ -42,7 +42,7 @@ const swiper_main_sale = new Swiper('.main__sale-swiper', {
     slidesPerGroup: 1,
     spaceBetween: 0,
     loop: true,
-    // freeMode: true,
+    freeMode: true,
     breakpoints: {
         320: {
             slidesPerView: 2,
