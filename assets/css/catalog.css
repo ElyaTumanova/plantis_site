@@ -663,6 +663,7 @@ ul.products {
         top: 10px;
         right: 10px;
         border: none;
+        -webkit-overflow-scrolling:touch;
     }
 
     .main__sale-gallery .woocommerce-loop-product__title{
