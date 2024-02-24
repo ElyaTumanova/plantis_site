@@ -421,7 +421,7 @@ function filter_wpseo_robots( $robotsstr ) {
 //   add_filter( 'gettext', 'plnt_change_text_catalog_1', 20 );
 
 
-//   add_filter( 'woocommerce_get_breadcrumb', 'wp_kama_woocommerce_get_breadcrumb_filter', 10, 2 );
+add_filter( 'woocommerce_get_breadcrumb', 'wp_kama_woocommerce_get_breadcrumb_filter', 10, 2 );
 
 /**
  * Function for `woocommerce_get_breadcrumb` filter-hook.
