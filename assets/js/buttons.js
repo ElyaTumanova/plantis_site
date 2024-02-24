@@ -75,3 +75,8 @@ if (filtersMob) {
         contentArea.classList.toggle ('no-padding');
     };
 }
+
+
+$( document ).ready(function() {
+    console.log( "ready!" );
+});
