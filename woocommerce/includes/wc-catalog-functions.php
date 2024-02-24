@@ -154,7 +154,7 @@ remove_action('woocommerce_before_shop_loop_item_title','woocommerce_template_lo
 add_action('woocommerce_before_shop_loop_item_title','plnt_catalog_gallery', 10);
 //add_action('woocommerce_before_shop_loop_item_title','swiper_init', 30);
 //add_action('woocommerce_before_shop_loop','swiper_init', 30);
-//add_action('woocommerce_after_product_loop_start','swiper_init', 10);
+add_action('woocommerce_after_product_loop_start','swiper_init', 10);
 
 
 
@@ -215,6 +215,7 @@ function swiper_init() {
 				}
 			}
 		});
+		console.log('bye swiper');
 	</script>
 	<?php
 }
