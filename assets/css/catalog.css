@@ -4,7 +4,7 @@
 
 .woocommerce-LoopProduct-link {
     /* убираем отступ снизу у фото */
-    font-size: 0;
+    /* font-size: 0; */
     line-height: 0;
 } 
 
