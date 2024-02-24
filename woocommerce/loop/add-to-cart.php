@@ -30,8 +30,8 @@ if( $product->is_type( 'simple' )
 { 
     $cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
     $url = wc_get_cart_remove_url( $cart_item_key );
-    $text = 'Убрать из корзины';
-    $class = 'button product_type_simple remove_from_cart_button';
+    $text = 'Добавлен';
+    $class = 'button product_type_simple remove_from_cart_button added';
 }
 else {
     $url = $product->add_to_cart_url();
