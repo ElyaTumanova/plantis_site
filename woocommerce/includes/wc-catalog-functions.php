@@ -412,16 +412,16 @@ function filter_wpseo_robots( $robotsstr ) {
 
 // перевод текстов
 
-function plnt_change_text_catalog_1( $translated_text ) {
-    if ( $translated_text == 'Товары с меткой ' ) {
-      $translated_text = 'Товары из подборки ';
-    }
-    return $translated_text;
-  }
-  add_filter( 'gettext', 'plnt_change_text_catalog_1', 20 );
+// function plnt_change_text_catalog_1( $translated_text ) {
+//     if ( $translated_text == 'Товары с меткой ' ) {
+//       $translated_text = 'Товары из подборки ';
+//     }
+//     return $translated_text;
+//   }
+//   add_filter( 'gettext', 'plnt_change_text_catalog_1', 20 );
 
 
-  add_filter( 'woocommerce_get_breadcrumb', 'wp_kama_woocommerce_get_breadcrumb_filter', 10, 2 );
+//   add_filter( 'woocommerce_get_breadcrumb', 'wp_kama_woocommerce_get_breadcrumb_filter', 10, 2 );
 
 /**
  * Function for `woocommerce_get_breadcrumb` filter-hook.
@@ -433,8 +433,11 @@ function plnt_change_text_catalog_1( $translated_text ) {
  */
 function wp_kama_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 
-	echo '<pre>';
-	print_r( $crumbs );
-	echo '</pre>';
+	foreach ( $crumbs as $crumb ) {
+
+		echo '<pre>';
+		print_r( $crumb );
+		echo '</pre>';
+	}
 	return $crumbs;
 }
