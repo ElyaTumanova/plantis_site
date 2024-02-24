@@ -666,7 +666,7 @@ ul.products {
     }
 
     .main__sale-gallery li img {
-        z-index: 0;
+        z-index: 0 !important;
     }
 
     .main__sale-gallery .woocommerce-loop-product__title{
