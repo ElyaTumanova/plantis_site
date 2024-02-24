@@ -187,7 +187,7 @@ function swiper_init() {
 	?>
 	<script>
 		console.log('hi swiper');
-		let swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
+		swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
 			pagination: {
 				el: '.swiper-pagination',
 				clickable: true,
