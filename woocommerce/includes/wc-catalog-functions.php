@@ -160,7 +160,7 @@ function plnt_catalog_gallery() {
 		$image = $product->get_image();	
 		$attachment_ids = $product->get_gallery_attachment_ids();
 		echo '
-		<div class="product__image-slider-wrap swiper">
+		<div class="product__image-slider-wrap">
 			<div class="swiper-wrapper" >';
 				echo $image;
 				foreach( $attachment_ids as $attachment_id ) {
@@ -175,6 +175,12 @@ function plnt_catalog_gallery() {
 		</div>';
 
 		?>
+
+		<script type="text/javascript">
+			$ (window).load (function () {
+			$ ('.product__image-slider-wrap').nivoSlider ();
+			});
+		</script>
 		<?php
 	} else {
 		woocommerce_template_loop_product_thumbnail();
