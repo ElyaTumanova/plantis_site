@@ -88,6 +88,7 @@
     transition-property: transform, height;
   }
   .swiper-backface-hidden .swiper-slide {
+    -webkit-transform: translateZ(0x);
     transform: translateZ(0);
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
