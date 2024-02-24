@@ -153,6 +153,7 @@ add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_
 remove_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_product_thumbnail', 10);
 add_action('woocommerce_before_shop_loop_item_title','plnt_catalog_gallery', 10);
 //add_action('woocommerce_before_shop_loop_item_title','swiper_init', 10);
+add_action('woocommerce_before_shop_loop_item_title','swiper_catalog_init', 10);
 
 function plnt_catalog_gallery() {
 
