@@ -60,9 +60,11 @@ function filter_woocommerce_loop_add_to_cart_args( $args, $product ) {
     $args['attributes']['data-product-price'] = $price;
     $args['attributes']['data-category-name'] = $catName;
 
+    //for Add/Remove from cart
+
     $cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
 	$remove_cart_url = wc_get_cart_remove_url( $cart_item_key );
-    $args['attributes']['data-remove-link'] = $remove_cart_url;
+    $args['attributes']['data-remove_link'] = $remove_cart_url;
 
     return $args;
 }
