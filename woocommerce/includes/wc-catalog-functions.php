@@ -435,13 +435,16 @@ function wp_kama_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 	echo '<pre>';
 	print_r( $crumbs );
 	echo '</pre>';
-	foreach ( $crumbs as $crumb ) {
-		if (str_contains($crumb[0], 'Товары с меткой ')) {
-			echo '<pre>';
-			print_r( $crumb[0] );
-			echo '</pre>';
-		}
-		
-	}
+	// foreach ( $crumbs as $crumb ) {
+	// 	if (str_contains($crumb[0], 'Товары с меткой ')) {
+	// 		echo '<pre>';
+	// 		print_r( $crumb[0] );
+	// 		echo '</pre>';
+	// 	}
+	// }
+	$onlyconsonants = str_replace('Товары с меткой ', "ляляля", $crumbs);
+	echo '<pre>';
+	print_r( $onlyconsonants );
+	echo '</pre>';
 	return $crumbs;
 }
