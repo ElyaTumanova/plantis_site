@@ -437,7 +437,7 @@ function wp_kama_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 	echo '</pre>';
 	foreach ( $crumbs as $crumb ) {
 		echo '<pre>';
-		print_r( $crumb );
+		print_r( $crumb[0] );
 		echo '</pre>';
 	}
 	return $crumbs;
