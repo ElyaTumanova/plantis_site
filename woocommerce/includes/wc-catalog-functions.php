@@ -451,5 +451,5 @@ function wp_kama_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 	print_r( $crumbsNew );
 	echo '</pre>';
 	
-	return $crumbs;
+	return $crumbsNew;
 }
