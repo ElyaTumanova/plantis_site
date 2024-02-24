@@ -161,7 +161,7 @@ function plnt_catalog_gallery() {
 		$attachment_ids = $product->get_gallery_attachment_ids();
 		echo '
 		<div class="product__image-slider-wrap">
-			<div class="swiper-wrapper_nivo" >';
+			<div class="nivo-catalog-gallery" >';
 				echo $image;
 				foreach( $attachment_ids as $attachment_id ) {
 					// $params = [ 'class' => "attachment-woocommerce_thumbnail" ];
@@ -174,18 +174,18 @@ function plnt_catalog_gallery() {
 
 		?>
 
-		<script type="text/javascript">
+		<script>
 			jQuery(function($){
-				$('swiper-wrapper_nivo').nivoSlider({
-					effect: 'random',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
-					animSpeed: 500,                 // скорость анимации
+				$('.nivo-catalog-gallery').nivoSlider({
+					effect: 'slideInLeft',               // эффекты, например: 'fold, fade, sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, slideInRight, slideInLeft'
+					animSpeed: 200,                 // скорость анимации
 					pauseTime: 3000,                // пауза между сменой слайдов
 					directionNav: true,             // нужно ли отображать кнопки перехода на следующий и предыдущий слайд
 					controlNav: true,               // 1,2,3... навигация (например в виде точек)
 					pauseOnHover: true,             // останавливать прокрутку слайдов при наведении мыши
-					manualAdvance: false,           // true - отключить автопрокрутку
-					prevText: 'Назад',               // текст перехода на предыдущий слайд
-					nextText: 'Вперед',               // текст кнопки перехода на следующий слайд
+					manualAdvance: true,           // true - отключить автопрокрутку
+					prevText: '&#10094;',               // текст перехода на предыдущий слайд
+					nextText: '&#10095;',               // текст кнопки перехода на следующий слайд
 					randomStart: false,             // начинать со случайного слайда
 				});
 			});
