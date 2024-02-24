@@ -70,3 +70,11 @@ jQuery(function ($){
 	$(this).parent().parent().find(".add_to_cart_button").attr( 'data-quantity', qty );
 	} )
 });
+
+
+// FOR DEV
+jQuery(function ($){	
+	$( document ).ready(function() {
+		console.log( "ready!" );
+	});
+});
