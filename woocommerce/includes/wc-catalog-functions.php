@@ -432,9 +432,10 @@ function filter_wpseo_robots( $robotsstr ) {
  * @return 
  */
 function wp_kama_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
-
+	echo '<pre>';
+	print_r( $crumbs );
+	echo '</pre>';
 	foreach ( $crumbs as $crumb ) {
-
 		echo '<pre>';
 		print_r( $crumb );
 		echo '</pre>';
