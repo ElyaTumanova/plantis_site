@@ -183,6 +183,7 @@ function plnt_catalog_gallery() {
 function swiper_init() {
 	?>
 	<script>
+		console.log('hi swiper');
 		const swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
 			pagination: {
 				el: '.swiper-pagination',
