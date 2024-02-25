@@ -401,6 +401,12 @@ input[type="number"] {
     width: fit-content;
 }
 
+.card__outofstock-info {
+    font-size: 14px;
+    font-weight: 700;
+    padding-bottom: 15px;
+}
+
 
 /*--------------------------------------------------------------
 # Adaptive
