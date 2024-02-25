@@ -62,10 +62,14 @@
 
     .catalog__mob-filter-wrap {
         grid-area: filters;
-        display: block;
         display: flex;
         justify-content: space-between;
         margin-bottom: 20px;
+        align-items: center;
+    }
+    
+    .catalog__instock-filter {
+        padding-bottom: 10px;
     }
 }
 
@@ -913,7 +917,7 @@ ul.products {
 .catalog__mob-filter-wrap .catalog__instock-filter .bapf_sfilter {
     display: flex;
     flex-direction: row-reverse;
-    margin: 5px 0 0 0;
+    margin: 0;
 }
 
 .catalog__mob-filter-wrap .catalog__instock-filter .bapf_head {
