@@ -479,4 +479,9 @@ input[type="number"] {
         font-size: 24px;
         /* max-width: 27px; */
     }
+
+    /* стили элементов */
+    .card__image-wrap .flex-direction-nav {
+        display: none;
+    }
 }
