@@ -739,6 +739,17 @@ ul.products {
     margin-bottom: 20px;
 }
 
+.card__ukhod-btn {
+    color: var(--white);
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    width: fit-content;
+}
+
 @media (max-width:769px) {
     .card__ukhod-loop .yith-wcwl-add-to-wishlist {
         position: absolute;
