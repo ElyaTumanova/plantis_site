@@ -103,10 +103,11 @@ function plnt_price_wrap(){
             woocommerce_template_single_price();
             plnt_get_add_to_card();
             //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
-            plnt_outofstock_info();
+            plnt_outofstock_btn();
             ?>
         </div>
         <?php
+        plnt_outofstock_info();
         get_template_part('template-parts/delivery-info'); // delivery info for card
         ?>
     </div>
@@ -160,6 +161,13 @@ function plnt_outofstock_info() {
     if ( $product->get_stock_status() ==='outofstock') {
         ?>
         <div class="card__outofstock-info">К сожалению, данный товар закончился!<br>Свяжитесь с нами удобным способом, и мы привезём его под заказ.</div>
+        <?php
+    }
+}
+function plnt_outofstock_btn() {
+    global $product;
+    if ( $product->get_stock_status() ==='outofstock') {
+        ?>
         <div class="card__outofstock-btn-wrap">
             <button class="button card__preorder-btn page-popup-open-btn">Предзаказ</button>
             <?php
