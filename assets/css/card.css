@@ -103,6 +103,9 @@
 }
 .card__toback-link {
     margin-top: 15px;
+    font-size: 18px;
+    font-family: swiper-icons;
+    font-weight: 600;
 }
 
 .card__grid .heading-2 {

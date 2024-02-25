@@ -315,7 +315,7 @@ function plnt_category_link () {
     $link = get_term_link( $parentCat, 'product_cat' );
     $name = $term->name;
 	echo '<div class="card__toback-link">
-	<span>&#10094;</span>
+	<span>prev</span>
 	<a href="' . $link . '">Каталог: '.$name.'</a>
     </div>';
 }
