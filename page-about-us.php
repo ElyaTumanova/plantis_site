@@ -93,6 +93,14 @@ get_header(); ?>
                 <div class="about__slider about__slider_feedback container">
                         <div class="about__swiper-feedback swiper">
                             <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="check"> hihi</div>
+                                    <img src="https://plantis.shop/wp-content/uploads/2024/02/12.webp" alt="Отзывы об интернет-магазине Plantis">
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="check"> hihi</div>
+                                    <img src="https://plantis.shop/wp-content/uploads/2024/02/12.webp" alt="Отзывы об интернет-магазине Plantis">
+                                </div>
                                 <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2024/02/12.webp" alt="Отзывы об интернет-магазине Plantis">
                                 <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2024/02/14.webp" alt="Отзывы об интернет-магазине Plantis">
                                 <img class="swiper-slide" src="https://plantis.shop/wp-content/uploads/2024/02/13.webp" alt="Отзывы об интернет-магазине Plantis">
