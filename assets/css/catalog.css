@@ -1081,9 +1081,12 @@ ul.products {
     margin-top: 25px;
 }
 
+.woocommerce-pagination .page-numbers {
+    border-bottom: solid 2px #95E1D4;
+    border-top: solid 2px #95E1D4;
+}
+
 .page-numbers {
-	border-bottom: solid 2px #95E1D4;
-	border-top: solid 2px #95E1D4;
 	padding: 10px 0;
 	font-size: 16px;
     font-weight: 600;
