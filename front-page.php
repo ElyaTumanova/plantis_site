@@ -1,6 +1,9 @@
 <?php
 
-get_header(); ?>
+get_header(); 
+
+global $skidki_cat_id;
+?>
 
 <div class="content-area-full-width">
 	<main id="main" class="site-main" role="main">
@@ -22,7 +25,7 @@ get_header(); ?>
 
 					?>
 				</div>
-				<a class="main__sale-button button" href="http://new.plantis.shop/product-category/%d1%81%d0%ba%d0%b8%d0%b4%d0%ba%d0%b8/"> Все комнатные растения со скидкой</a>			
+				<a class="main__sale-button button" href="<?php echo get_term_link( $skidki_cat_id, 'product_cat' );?>"> Все комнатные растения со скидкой</a>			
 			</div>
 		</div>
 	</div>

@@ -17,6 +17,7 @@ if($site === 'http://new.plantis.shop') {
 	$treez_poliv_cat_id = 229;
 	$ukhod_cat_id = 378;
 	$misc_cat_id = 16;
+	$skidki_cat_id = 105;
 	
 	$tags_podarki = array(
 		374,

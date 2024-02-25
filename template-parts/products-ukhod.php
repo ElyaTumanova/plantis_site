@@ -3,6 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+global $ukhod_cat_id;
 
 $args = array(
     'post_type' => 'product',
@@ -41,6 +42,7 @@ if ( $products->have_posts() ) : ?>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
             </div>
+            <a class="button card__ukhod-btn" href="<?php echo get_term_link( $ukhod_cat_id, 'product_cat' );?>">Все товары для ухода</a>
         </div>
 
 <?php endif;
