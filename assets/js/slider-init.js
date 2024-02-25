@@ -198,7 +198,6 @@ const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
     slidesPerGroup: 3,
     spaceBetween: 10,
     loop: true,
-    freeMode: true,
     breakpoints: {
         320: {
         slidesPerView: 1,
