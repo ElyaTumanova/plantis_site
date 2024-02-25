@@ -23,8 +23,8 @@ add_action( 'woocommerce_checkout_order_review', 'plnt_delivery_condition_info',
 
 function plnt_delivery_condition_info () {
 	echo '<div class="checkout__text">
-        После оформления заказа мы свяжемся с вами в <a href="https://plantis.shop/contacts/">рабочее время</a> и согласуем время доставки.
-        <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a>
+        После оформления заказа мы свяжемся с вами в <a href="'echo get_site_url()'/contacts/">рабочее время</a> и согласуем время доставки.
+        <a href="'echo get_site_url()'/delivery/">Подробнее об условиях доставки.</a>
 		Важно! Срочную доставку "день в день" можно оформить до 18 часов.</div>';
 }
 

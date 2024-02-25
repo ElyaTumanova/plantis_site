@@ -389,6 +389,10 @@ div#orddd_list_view_select {
     display: none;
 }
 
+.woocommerce-customer-details .address{
+    line-height: 1.4;
+}
+
 .thankyou__adress-heading {
     color: var(--accent-color);
     margin: 20px 0 10px;    
