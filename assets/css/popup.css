@@ -23,7 +23,7 @@
     position: fixed;
 }
 
-/* preorder & proce list popup */
+/* preorder & price list popup */
 
 .page-popup__wrap {
     position: relative;
@@ -55,6 +55,15 @@
 
 .page-popup__form {
     margin: 30px 0;
+}
+
+.page-popup__link {
+    text-decoration: underline;
+}
+
+.page-popup__link:hover {
+    text-decoration: none;
+    cursor: pointer;
 }
 
 /* search and search popup styles */
