@@ -114,10 +114,14 @@
     padding: 10px;
 }
 
-.button:hover { 
-    text-decoration: none;
-    box-shadow: inset 0 0 0 50px rgba(0, 0, 0, 0.2);
+@media (hover: hover) {
+    .button:hover { 
+        text-decoration: none;
+        box-shadow: inset 0 0 0 50px rgba(0, 0, 0, 0.2);
+    }
 }
+
+
 .heading-2 {
     font-size: 18px;
     text-transform: uppercase;
