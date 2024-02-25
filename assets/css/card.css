@@ -117,6 +117,10 @@
     position: relative;
 }
 
+.woocommerce-product-gallery a {
+    font-size: 0;
+}
+
 .product_title {
     font-size: 28px;
     font-weight: 700;
