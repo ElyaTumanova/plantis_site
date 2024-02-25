@@ -1,5 +1,7 @@
 .check {
     background-color: red;
+    position: absolute;
+    top: 10px;
 }
 
 /* * {
