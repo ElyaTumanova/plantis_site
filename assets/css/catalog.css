@@ -724,7 +724,7 @@ ul.products {
 }
 
 .card__sliders-wrap .swiper-button-prev, .card__sliders-wrap .swiper-button-next {
-    top: calc(50% - 20px);
+    top: calc(50% - 50px);
 }
 
 /*--------------------------------------------------------------
