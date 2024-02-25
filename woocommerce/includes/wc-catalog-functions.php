@@ -216,8 +216,8 @@ function plnt_img_gallery_swiper_init() {
 	<?php
 }
 
-// добавляем класс для swiper
-add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
+// добавляем класс для swiper к изображениям товара
+//add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
 function AddThumbnailClass( $atts, $attachment ) {
 		$atts['class'] .= " swiper-slide"; 
 		return $atts;
