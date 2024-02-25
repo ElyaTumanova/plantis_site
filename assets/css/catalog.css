@@ -364,16 +364,16 @@ ul.products {
     white-space: nowrap;
 }
 
-.sale .price {
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.1;
-}
-
 .product .price {
     font-size: 24px;
     line-height: 1.1;
     font-weight: 700;
+}
+
+.sale .price {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.1;
 }
 
 .product .price, .sale .price {
