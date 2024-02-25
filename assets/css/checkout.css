@@ -325,10 +325,16 @@ div#orddd_list_view_select {
     font-size: 20px;
     margin-bottom: 20px;
     line-height: 1.4;
-    display: flex;
-    align-items: center;
-    column-gap: 10px;
+    position: relative;
 }
+
+.woocommerce-order-received .woocommerce-order .woocommerce-notice img{
+    position: absolute;
+    top: 3px;
+    margin-left: 10px;
+}
+
+
 
 /* детали заказа */
 .woocommerce-thankyou-order-details {
