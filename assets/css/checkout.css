@@ -330,7 +330,7 @@ div#orddd_list_view_select {
 
 .woocommerce-order-received .woocommerce-order .woocommerce-notice img{
     position: absolute;
-    top: 3px;
+    bottom: 4px;
     margin-left: 10px;
 }
 
