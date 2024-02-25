@@ -80,6 +80,7 @@ a.flex-next::after {
     font-size: 18px;  
     font-family: swiper-icons; 
     font-weight: 600;
+    padding-left: 3px;
 }
 
 a.flex-prev::before {
@@ -87,7 +88,9 @@ a.flex-prev::before {
     content: 'prev';
     font-size: 18px; 
     font-family: swiper-icons; 
-    font-weight: 600;}
+    font-weight: 600;
+    padding-right: 3px;
+}
 
 .flex-direction-nav a:hover {
     text-decoration: none;
