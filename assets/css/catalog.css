@@ -972,6 +972,7 @@ ul.products {
     /* content: "\276E" !important; */
     content: "prev" !important;
     font-family: swiper-icons !important;
+    text-transform: none;
 }
 
 /*стили для switch чекбокса в наличии*/

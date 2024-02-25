@@ -2,9 +2,9 @@
     background-color: red;
 }
 
-* {
+/* * {
     outline: 1px solid red;
-}
+} */
 
 :root {
     --accent-color: #146F41;
