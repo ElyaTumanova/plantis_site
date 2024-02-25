@@ -113,12 +113,12 @@
     border-radius: 5px;
 }
 
-.woocommerce-product-gallery {
-    position: relative;
+.card__image-wrap .sale_badge {
+    font-size: 16px;
 }
 
-.woocommerce-product-gallery a {
-    font-size: 0;
+.woocommerce-product-gallery {
+    position: relative;
 }
 
 .woocommerce-product-gallery__wrapper div {
