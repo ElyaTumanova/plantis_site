@@ -23,7 +23,11 @@
     position: fixed;
 }
 
-/* preorder popup */
+/* preorder & proce list popup */
+
+.page-popup__wrap {
+    position: relative;
+}
 
 .page-popup__container {
     position: absolute;
@@ -40,7 +44,9 @@
 }
 
 .page-popup__close {
-    float: right;
+    position: absolute;
+    top: -30px;
+    right: -30px;
 }
 
 .page-popup__close:hover {
