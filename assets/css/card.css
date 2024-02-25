@@ -238,8 +238,12 @@
     "quantity x";
     column-gap: 15px;
     justify-content: stretch;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     row-gap: 5px;
+}
+
+.card__price-btns-wrap {
+    margin-bottom: 15px;
 }
 
 .card__price-wrap .quantity {
@@ -384,7 +388,7 @@ input[type="number"] {
 /* out of stock info */
 
 .card__outofstock-btn-wrap {
-    margin: 0 0 15px;
+    /* margin: 0 0 15px; */
     display: flex;
     column-gap: 15px;
 }
