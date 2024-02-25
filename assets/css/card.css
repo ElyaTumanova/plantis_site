@@ -51,7 +51,7 @@
     grid-area: banner2;
 }
 
-.card__ukhod-loop {
+.card__ukhod-wrap {
     grid-area: ukhod;
 }
 

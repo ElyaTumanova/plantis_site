@@ -22,7 +22,7 @@ jQuery(document).ready(function() {
 	});
 
     // Клик по кнопке «Положить в корзину», товары для ухода - NEW #TODO - ДОБАВИТЬ В МЕТРИКУ
-	jQuery('.card__ukhod-loop .add_to_cart_button').click(function(){
+	jQuery('.card__ukhod-wrap .add_to_cart_button').click(function(){
 		ym(96498108, 'reachGoal', 'click-button-cart-ukhod-loop'); 
         return true;
 	});

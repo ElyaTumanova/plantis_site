@@ -731,11 +731,11 @@ ul.products {
 # Ukhod
 --------------------------------------------------------------*/
 
-.card__ukhod-loop .add_to_cart_button, .card__ukhod-loop .product_type_simple {
+.card__ukhod-wrap .add_to_cart_button, .card__ukhod-wrap .product_type_simple {
     margin: 10px 0 15px;
 }
 
-.card__ukhod-loop .my_header__title {
+.card__ukhod-wrap .my_header__title {
     margin-bottom: 20px;
 }
 
@@ -750,24 +750,29 @@ ul.products {
     width: fit-content;
 }
 
+.card__ukhod-wrap .swiper-button-prev, .card__ukhod-wrap .swiper-button-next {
+    top: calc(50% - 50px);
+}
+
+
 @media (max-width:769px) {
-    .card__ukhod-loop .yith-wcwl-add-to-wishlist {
+    .card__ukhod-wrap .yith-wcwl-add-to-wishlist {
         position: absolute;
         top: 10px;
         right: 10px;
         border: none;
     }
 
-    .card__ukhod-loop .yith-wcwl-add-button img {
+    .card__ukhod-wrap .yith-wcwl-add-button img {
         width: 25px;
         margin: 5px;
     }
 
-    .card__ukhod-loop .add_to_cart_button, .card__ukhod-loop .product_type_simple {
+    .card__ukhod-wrap .add_to_cart_button, .card__ukhod-wrap .product_type_simple {
         margin: 0;
     }
 
-    .card__ukhod-loop .woocommerce-loop-product__title {
+    .card__ukhod-wrap .woocommerce-loop-product__title {
         font-size: 14px;
         font-weight: 700;
         line-height: 1.1;
@@ -775,26 +780,26 @@ ul.products {
         margin-top: 10px;
     }
 
-    .card__ukhod-loop .woocommerce-product-details__short-description {
+    .card__ukhod-wrap .woocommerce-product-details__short-description {
         font-size: 14px;
         font-weight: 600;
         line-height: 1.3;
         margin-bottom: 7px;
     }
 
-    .card__ukhod-loop .product .price {
+    .card__ukhod-wrap .product .price {
         font-size: 20px;
         line-height: 1.1;
         font-weight: 700;
     }
     
-    .card__ukhod-loop .sale .price {
+    .card__ukhod-wrap .sale .price {
         font-size: 16px;
         font-weight: 500;
         line-height: 1.1;
     }
     
-    .card__ukhod-loop .sale ins .woocommerce-Price-amount {
+    .card__ukhod-wrap .sale ins .woocommerce-Price-amount {
         font-size: 20px;
         line-height: 1.1;
         font-weight: 700;
