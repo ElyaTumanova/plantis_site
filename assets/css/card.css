@@ -103,10 +103,13 @@
 }
 .card__toback-link {
     margin-top: 15px;
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
 }
 
 .card__toback-link span {
-    font-size: 15px;
+    font-size: 12px;
     font-family: swiper-icons;
     font-weight: 600;
 }
