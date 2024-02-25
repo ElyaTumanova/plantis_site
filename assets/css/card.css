@@ -121,6 +121,10 @@
     font-size: 0;
 }
 
+.woocommerce-product-gallery__wrapper div {
+    font-size: 0;
+}
+
 .product_title {
     font-size: 28px;
     font-weight: 700;
