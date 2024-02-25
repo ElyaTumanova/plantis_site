@@ -1081,7 +1081,7 @@ ul.products {
     margin-top: 25px;
 }
 
-.woocommerce-pagination .page-numbers {
+.woocommerce-pagination > ul {
     border-bottom: solid 2px #95E1D4;
     border-top: solid 2px #95E1D4;
 }
