@@ -64,7 +64,7 @@
         grid-area: filters;
         display: flex;
         justify-content: space-between;
-        margin-bottom: 20px;
+        margin-bottom: 0;
         align-items: center;
     }
     
