@@ -743,7 +743,7 @@ ul.products {
     color: var(--white);
     background-color: var(--accent-color);
     border-color: var(--accent-color);
-    margin-top: 20px;
+    margin-top: 20px;   
     margin-right: auto;
     margin-left: auto;
     display: block;
@@ -787,7 +787,7 @@ ul.products {
         margin-bottom: 7px;
     }
 
-    .card__ukhod-wrap .product .price {
+    /* .card__ukhod-wrap .product .price {
         font-size: 20px;
         line-height: 1.1;
         font-weight: 700;
@@ -804,7 +804,7 @@ ul.products {
         line-height: 1.1;
         font-weight: 700;
         color: var(--red-color);
-    }
+    } */
 }
 
 /*--------------------------------------------------------------
