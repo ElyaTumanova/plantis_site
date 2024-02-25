@@ -751,7 +751,7 @@ ul.products {
 }
 
 .card__ukhod-wrap .swiper-button-prev, .card__ukhod-wrap .swiper-button-next {
-    top: calc(50% - 50px);
+    top: calc(50% - 55px);
 }
 
 
