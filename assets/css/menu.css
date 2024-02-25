@@ -146,7 +146,7 @@
     cursor: pointer;
 }
 
-.catalog__node_active {
+.catalog__node_active a, .catalog__node_active span{
     color: var(--accent-color);
 }
 
