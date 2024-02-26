@@ -210,7 +210,7 @@ function nav_remove_empty_category_menu_item ( $items, $menu) {
 
         foreach ( $posts as $post ) {
 
-            $product         = new wC_Product( $post );
+            $product         = new WC_Product( $post );
             $visible_product = $product->get_stock_status() == 'instock';
 
             if ( true === $visible_product ) {

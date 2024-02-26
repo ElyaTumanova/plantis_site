@@ -29,7 +29,7 @@ function plnt_catalog_products_wrap_start() {
 	?>
     	<div class = "catalog__mob-filter-wrap"> 
 			<div class="catalog__instock-filter">
-				<?php echo do_shortcode('[br_filter_single filter_id=10996]') ?>
+				<?php echo do_shortcode('[br_filter_single filter_id=10996]') //Товары в наличии для моб?>
 			</div>
 			<div class="catalog__mob-filter-btn button"><img src="http://new.plantis.shop/wp-content/uploads/2024/02/filter.svg" alt="Фильтр"></div>
 		</div>
@@ -67,7 +67,7 @@ function plnt_catalog_sidebar() {
 		</div>
 		<div class="catalog__sidebar-filters">
 			<div class="catalog__instock-filter">
-				<?php echo do_shortcode('[br_filter_single filter_id=6110]') ?>
+				<?php echo do_shortcode('[br_filter_single filter_id=6110]') //товары в наличии?>
 			</div>
 			<?php echo do_shortcode('[br_filter_single filter_id=6055]') // цена?>
 			<?php echo do_shortcode('[br_filter_single filter_id=6056]') // высота?>
@@ -92,10 +92,10 @@ function plnt_catalog_filters_main_area() {
 	?>
     <div class="catalog__filter-wrap">
 		<div class="catalog__filter-metki">
-			<?php echo do_shortcode('[br_filter_single filter_id=10989]') ?>  
+			<?php echo do_shortcode('[br_filter_single filter_id=10989]') //Подборки?>  
 		</div>
 		<div class="catalog__filter-active">
-			<?php echo do_shortcode('[br_filter_single filter_id=6057]') ?>
+			<?php echo do_shortcode('[br_filter_single filter_id=6057]') //Активные фильтры?>
 		</div>
     </div>
     <?php 	
