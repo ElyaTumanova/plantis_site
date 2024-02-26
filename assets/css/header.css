@@ -159,6 +159,9 @@
     .header__mob {
         display: none;
     }
+    .header__nav-wrap {
+        display: none;
+    }
 }
 
 @media (max-width: 1279px) {
