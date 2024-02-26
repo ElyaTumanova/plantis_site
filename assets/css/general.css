@@ -58,11 +58,6 @@
         padding-right: 10px;
     }
 
-    .archive  .content-area {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
     .no-padding {
         padding: 0;
     }
@@ -71,6 +66,18 @@
 
 .entry-header, .woocommerce-products-header {
     margin-top: 10px;
+}
+
+/* корректировка отступов для каталога */
+
+@media (max-width: 767px) {
+    .archive .content-area {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .archive .woocommerce-products-header {
+        padding: 0 10px;
+    }
 }
 
 .my_header__title, .entry-header, .entry-title {
