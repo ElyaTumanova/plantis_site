@@ -13,7 +13,7 @@ if($site === 'http://new.plantis.shop') {
 	// constants for categories IDs
 	$plants_cat_id = 90;
 	$gorshki_cat_id = 86;
-	$treez_cat_id = 802;
+	$treez_cat_id = 379;
 	$treez_poliv_cat_id = 229;
 	$ukhod_cat_id = 378;
 	$misc_cat_id = 16;

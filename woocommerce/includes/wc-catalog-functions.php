@@ -76,6 +76,7 @@ function plnt_catalog_sidebar() {
 			<?php echo do_shortcode('[br_filter_single filter_id=11116]') // влажность?>
 			<?php echo do_shortcode('[br_filter_single filter_id=6108]') // цвет?>
 			<?php echo do_shortcode('[br_filter_single filter_id=11117]') // диаметр горшка?>
+			<?php echo do_shortcode('[br_filter_single filter_id=12013]') // форма?>
 			<?php echo do_shortcode('[br_filter_single filter_id=10988]') // в подарок?>
 		</div>
     </div>
