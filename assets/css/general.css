@@ -106,6 +106,7 @@
     text-transform: uppercase;
     line-height: 1;
     /* text-align: center; */
+    text-decoration: none;
 
     border-style: solid;
     border-width: 1px 1px 1px 1px;
