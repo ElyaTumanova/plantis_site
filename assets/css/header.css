@@ -449,7 +449,7 @@
     display: flex;
     flex-direction: column;
     width: 90%;
-    transition: right 0.5s;
+    transition: right 0.5s 1s;
 }
 
 .popup_active .side-cart {
