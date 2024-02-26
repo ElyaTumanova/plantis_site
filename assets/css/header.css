@@ -438,6 +438,10 @@
 # Side cart
 --------------------------------------------------------------*/
 
+.side-cart__wrap .popup {
+    display: block;
+}
+
 .side-cart {
     position: fixed;
     max-width: 320px;
@@ -449,7 +453,7 @@
     display: flex;
     flex-direction: column;
     width: 90%;
-    transition: right 0.5s 1s;
+    transition: right 0.5s;
 }
 
 .popup_active .side-cart {
