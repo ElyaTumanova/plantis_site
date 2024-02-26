@@ -162,6 +162,10 @@
 }
 
 @media (max-width: 1279px) {
+    .header {
+        margin-top: 65px;
+    }
+    
     .header__mob {
         display: flex;
         justify-content: space-between;
