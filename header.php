@@ -127,7 +127,7 @@
 
 		<div class="header__breadcrumb container"><?php woocommerce_breadcrumb() ?></div>
 		
-		<div class="header__mob header__nav-wrap container">
+		<div class="header__nav-wrap container">
 			<div class="header__phone">
 				<?php $phone_icon = carbon_get_theme_option('phone_icon')?>
 					<a href="tel:+79647687944" class="header-btn__wrap">		
