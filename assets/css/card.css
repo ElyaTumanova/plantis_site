@@ -473,6 +473,10 @@ input[type="number"] {
         z-index: 9998;
     }
 
+    .card__price-btns-wrap {
+        margin-bottom: 0;
+    }
+
     .product .card__price-wrap .price, .sale .card__price-wrap .price {
         margin: 0;
     }
