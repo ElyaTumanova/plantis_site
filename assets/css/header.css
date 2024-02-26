@@ -452,7 +452,7 @@
     transition: 0.5s;
 }
 
-.side-cart_open {
+.side-cart_active {
     right: 0;
 }
 

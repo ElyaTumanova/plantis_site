@@ -29,8 +29,9 @@
     </p>
 </div>
 
-<div class="side-cart side-cart_open">
+<div class="side-cart side-cart_active">
     <button class="side-cart__open-btn">hello</button>
+    <div class="page-popup__popup-overlay popup-overlay"></div>
 </div>
 
 
