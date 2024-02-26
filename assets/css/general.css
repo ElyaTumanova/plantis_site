@@ -223,7 +223,11 @@
 @media (max-width: 768px) {
 .add-to-wishlist-before_image .yith-wcwl-add-to-wishlist {
     bottom: auto;
-    top: 0;
     border: none;
+    z-index: 10;
+    margin: 0;
+    top: 10px;
+    right: 10px;
+
 }
 }
