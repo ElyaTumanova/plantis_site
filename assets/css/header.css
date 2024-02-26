@@ -449,9 +449,10 @@
     display: flex;
     flex-direction: column;
     width: 90%;
+    transition: right 0.5s;
 }
 
-.side-cart_active {
+.popup_active .side-cart {
     right: 0;
 }
 

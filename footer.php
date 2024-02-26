@@ -32,7 +32,7 @@
 <div class="side-cart__wrap">
     <button class="side-cart__open-btn page-popup-open-btn">hello</button>
     <div class="side-cart__wrap page-popup popup">
-        <div class="side-cart side-cart_active">        </div>
+        <div class="side-cart">        </div>
         <div class="page-popup__popup-overlay popup-overlay"></div>
     </div>
 </div>
