@@ -336,7 +336,7 @@ ul.products {
     
 }
 
-.product_out_of_stock {
+.catalog__grid .product_out_of_stock {
     background-image: none;
     font-size: 10px;
     font-weight: 700;
