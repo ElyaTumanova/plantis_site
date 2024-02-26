@@ -3,6 +3,8 @@ const preorderOpenPopupBtn = document.querySelector('.page-popup-open-btn');
 const preorderPopup = document.querySelector('.page-popup');
 const preorderClosePopupBtn = document.querySelector('.page-popup__close');
 const preorderPopupOverlay = document.querySelector('.page-popup__popup-overlay');
+// for side cart
+const sideCartBtn = document.querySelector('.side-cart__open-btn');
 
 if (preorderPopup != null && preorderOpenPopupBtn != null) {
     
@@ -31,5 +33,13 @@ if (preorderPopup != null && preorderOpenPopupBtn != null) {
 
 function toggle_page_popup () {
     preorderPopup.classList.toggle ('popup_active');
+    // for side cart
+    if (sideCartBtn) {
+        sideCartBtn.classList.toggle ('side-cart__open-btn_active');
+    }
 };
+
+
+
+
 

@@ -463,7 +463,9 @@
     z-index: 99999;
 }
 
-.popup_active .side-cart__open-btn {
+.side-cart__open-btn_active {
     right: 330px;
 }
+
+
 
