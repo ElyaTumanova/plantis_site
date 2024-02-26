@@ -22,6 +22,8 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		                                     '/assets/js/search-popup.js', array( 'jquery' ), null, true );
 		wp_enqueue_script( 'page-popup', get_template_directory_uri() .
 											 '/assets/js/page-popup.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'side-cart', get_template_directory_uri() .
+											 '/assets/js/side-cart.js', array( 'jquery' ), null, true );
 		wp_enqueue_script( 'swiper', get_template_directory_uri() .
 		                                     '/assets/js/swiper.js', array( 'jquery' ), null, false ); //swiper
 
