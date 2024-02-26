@@ -336,6 +336,12 @@ ul.products {
     
 }
 
+.product_out_of_stock {
+    background-image: none;
+    font-size: 10px;
+    font-weight: 700;
+}
+
 /* заголовок и описание */
 .woocommerce-loop-product__title {
     font-size: 20px;
