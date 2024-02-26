@@ -10,10 +10,11 @@ if (preorderPopup != null && preorderOpenPopupBtn != null) {
         toggle_page_popup ();
     });
 
-
-    preorderClosePopupBtn.addEventListener ("click", (evt)=>{
-        toggle_page_popup ();
-    });
+    if (preorderClosePopupBtn) {
+        preorderClosePopupBtn.addEventListener ("click", (evt)=>{
+            toggle_page_popup ();
+        });
+    }
 
     preorderPopupOverlay.addEventListener ("click", (evt)=>{
         toggle_page_popup ();
