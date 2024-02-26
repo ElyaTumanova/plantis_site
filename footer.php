@@ -29,7 +29,7 @@
     </p>
 </div>
 
-<div class="side-cart">
+<div class="side-cart side-cart_open">
     <button class="side-cart__open-btn">hello</button>
 </div>
 
