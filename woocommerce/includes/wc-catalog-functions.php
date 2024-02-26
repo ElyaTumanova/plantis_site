@@ -23,6 +23,7 @@ function plnt_catalog_grid_start() {
     <?php 
 };
 
+// фильтр Товары в наличии #berocket #filters
 add_action('woocommerce_before_shop_loop','plnt_catalog_products_wrap_start',40);
 function plnt_catalog_products_wrap_start() {
 	?>
@@ -68,11 +69,13 @@ function plnt_catalog_sidebar() {
 			<div class="catalog__instock-filter">
 				<?php echo do_shortcode('[br_filter_single filter_id=6110]') ?>
 			</div>
-			<?php echo do_shortcode('[br_filter_single filter_id=6055]') ?>
-			<?php echo do_shortcode('[br_filter_single filter_id=6056]') ?>
-			<?php echo do_shortcode('[br_filter_single filter_id=6108]') ?>
-			<?php echo do_shortcode('[br_filter_single filter_id=6109]') ?>
-			<?php echo do_shortcode('[br_filter_single filter_id=10988]') ?>
+			<?php echo do_shortcode('[br_filter_single filter_id=6055]') // цена?>
+			<?php echo do_shortcode('[br_filter_single filter_id=6056]') // высота?>
+			<?php echo do_shortcode('[br_filter_single filter_id=6109]') //	полив?>
+			<?php echo do_shortcode('[br_filter_single filter_id=11115]') // освещение?>
+			<?php echo do_shortcode('[br_filter_single filter_id=11116]') // влажность?>
+			<?php echo do_shortcode('[br_filter_single filter_id=6108]') // цвет?>
+			<?php echo do_shortcode('[br_filter_single filter_id=10988]') // в подарок?>
 		</div>
     </div>
     <?php 
