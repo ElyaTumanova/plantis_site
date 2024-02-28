@@ -75,7 +75,7 @@
         justify-content: space-between;
         margin-bottom: 0;
         align-items: center;
-        padding: 0 0 5px;
+        padding: 0;
         background-color: var(--background);
         /* position: sticky;
         top: 111px;
@@ -884,6 +884,10 @@ ul.products {
 
     .catalog__filter-metki {
         overflow-x: scroll;
+    }
+
+    .catalog__filter-metki .bapf_sfilter {
+        margin-bottom: 5px;
     }
 }
 
