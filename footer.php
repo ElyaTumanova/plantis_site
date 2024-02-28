@@ -32,7 +32,7 @@
 <div class="side-cart__wrap">
     <?php $cart_icon = carbon_get_theme_option('cart_icon')?>
     <button class="side-cart__open-btn">
-        <img class="side-cart__icon" src="<?php echo $cart_icon ?>" alt="cart" width="25" height="25">
+        <img class="side-cart__icon" src="<?php echo $cart_icon ?>" alt="cart" width="35" height="35">
     </button>
     <div class="side-cart__popup popup">
         <div class="side-cart">
