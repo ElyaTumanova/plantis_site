@@ -132,12 +132,12 @@ do_action( 'woocommerce_before_cart' ); ?>
 						// $catName = get_the_category_by_ID($parentCatId);
 						?>
 						<!-- <a class="cart__minus ajax_add_to_cart" 
-						href="<?php echo //$add_to_cart_link?>" 
+						href="<?php //echo $add_to_cart_link?>" 
 						data-quantity="1" 
 						data-product-name = "<?php //echo $product_name?>"
-						data-product_id="<?php echo //$product_id?>" 
-						data-product-price="<?php echo //$price?>" 
-						data-category-name="<?php echo //$catName?>" >&#8722;</a> -->
+						data-product_id="<?php //echo $product_id?>" 
+						data-product-price="<?php //echo $price?>" 
+						data-category-name="<?php //echo $catName?>" >&#8722;</a> -->
 						<?php
 						if ( $_product->is_sold_individually() ) {
 							$min_quantity = 1;
