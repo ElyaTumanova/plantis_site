@@ -479,5 +479,11 @@
     margin-bottom: 20px;
 }
 
+.side-cart .mini-cart {
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+}
+
 
 
