@@ -907,6 +907,11 @@ ul.products {
 
 .catalog__filter-active {
     white-space: nowrap;
+    margin-top: 10px;
+}
+
+.catalog__filter-active .bapf_sfilter {
+    margin-bottom: 5px;
 }
 
 .catalog__filter-active h3 {
