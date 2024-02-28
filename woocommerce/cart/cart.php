@@ -128,8 +128,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 						<?php // dev
 						$add_to_cart_link = '?add-to-cart='.$product_id;
 						// $productName = $product->get_title();
-						$price = $product->get_price();
-						$parentCatId = check_category($product);
+						$price = $_product->get_price();
+						$parentCatId = check_category($_product);
 						$catName = get_the_category_by_ID($parentCatId);
 						?>
 						<a class="cart__minus ajax_add_to_cart" 
