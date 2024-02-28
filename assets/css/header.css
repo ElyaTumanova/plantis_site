@@ -476,13 +476,23 @@
 }
 
 .side-cart__title {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .side-cart .mini-cart {
     padding: 0;
     box-shadow: none;
     border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.side-cart .woocommerce-mini-cart__total {
+    margin-top: auto;
+}
+.side-cart .woocommerce-mini-cart__buttons {
+    margin-bottom: 20px;
 }
 
 
