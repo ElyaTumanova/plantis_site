@@ -58,6 +58,7 @@
 
     .catalog__sidebar-ordering .woocommerce-ordering {
         display: block;
+        margin-top: 10px;
     }
 
     .catalog__sidebar-ordering .woocommerce-ordering select{
