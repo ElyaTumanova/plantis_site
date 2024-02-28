@@ -125,7 +125,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 						</td>
 
 						<td class="product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'woocommerce' ); ?>">
-						<a class="cart__minus" href="<?php echo esc_url( wc_get_cart_remove_url( $cart_item_key ) )?>">&#8722;</a>
+						<?php $add_to_cart_link = '?add-to-cart='+$product_id;?>
+						<a class="cart__minus ajax_add_to_cart" href="?add-to-cart=<?php echo $add_to_cart_link?>">&#8722;</a>
 						<?php
 						if ( $_product->is_sold_individually() ) {
 							$min_quantity = 1;
