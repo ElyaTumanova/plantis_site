@@ -215,10 +215,10 @@ function truemisha_quantity_plus() {
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
         if ($quantity > 1) {
-            echo '<div class="plus ajax_add_to_cart">&#43;</div>';
+            echo '<div class="plus">&#43;</div>';
         }
     } else {
-        echo '<div class="plus ajax_add_to_cart">&#43;</div>';
+        echo '<div class="plus">&#43;</div>';
     }
 };
  
