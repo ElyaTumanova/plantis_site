@@ -236,12 +236,6 @@ function truemisha_quantity_minus() {
     // }
 };
 
-
-    $cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
-	$remove_cart_url = wc_get_cart_remove_url( $cart_item_key );
-    $args['attributes']['data-remove_link'] = $remove_cart_url;
-    $args['attributes']['data-cart_item_key'] = $cart_item_key;
-
 // мета данные товара и атрибуты
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 add_action( 'woocommerce_single_product_summary', 'plnt_product_artikul', 40 );
