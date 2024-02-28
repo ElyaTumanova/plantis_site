@@ -51,6 +51,10 @@
     grid-area: banner2;
 }
 
+.card__grid_outofstock #card_banner_photo {
+    display: none;
+}
+
 .card__ukhod-wrap {
     grid-area: ukhod;
 }
