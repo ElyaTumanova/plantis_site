@@ -107,13 +107,13 @@
         text-align: center;
     }
     
-    td.product-remove {
+    td.plnt_product-remove {
         font-size: 30px;
         font-weight: 700;
         text-align: left;
     }
 
-    td.product-remove a:hover, td.product-remove a:active, td.product-remove a:focus  {
+    td.plnt_product-remove a:hover, td.plnt_product-remove a:active, td.plnt_product-remove a:focus  {
         text-decoration: none;
         color: var(--accent-color);
     }
@@ -179,7 +179,7 @@
             margin-top: 5px;
         }
 
-        td.product-remove {
+        td.plnt_product-remove {
             grid-area: remove;
             font-size: 18px;
         }
