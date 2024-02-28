@@ -127,7 +127,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						<td class="product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'woocommerce' ); ?>">
 						<?php // dev
 						$add_to_cart_link = '?add-to-cart='.$product_id;
-						$productName = $product->get_title();
+						// $productName = $product->get_title();
 						$price = $product->get_price();
 						$parentCatId = check_category($product);
 						$catName = get_the_category_by_ID($parentCatId);
@@ -135,6 +135,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						<a class="cart__minus ajax_add_to_cart" 
 						href="<?php echo $add_to_cart_link?>" 
 						data-quantity="1" 
+						data-product-name = "<?php echo $product_name?>"
 						data-product_id="<?php echo $product_id?>" 
 						data-product-price="<?php echo $price?>" 
 						data-category-name="<?php echo $catName?>" >&#8722;</a>
