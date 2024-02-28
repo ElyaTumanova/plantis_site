@@ -63,19 +63,22 @@ function plnt_catalog_sidebar() {
 			<div class="catalog__instock-filter">
 				<?php echo do_shortcode('[br_filter_single filter_id=6110]') //товары в наличии?>
 			</div>
-			<?php echo do_shortcode('[br_filter_single filter_id=6055]') // цена?>
-			<?php echo do_shortcode('[br_filter_single filter_id=6056]') // высота?>
-			<?php echo do_shortcode('[br_filter_single filter_id=6109]') //	полив?>
-			<?php echo do_shortcode('[br_filter_single filter_id=11115]') // освещение?>
-			<?php echo do_shortcode('[br_filter_single filter_id=11116]') // влажность?>
-			<?php //echo do_shortcode('[br_filter_single filter_id=12018]') // автополив?>
-			<?php echo do_shortcode('[br_filter_single filter_id=11117]') // диаметр горшка?>
-			<?php echo do_shortcode('[br_filter_single filter_id=12017]') // диаметр кашпо Treez?>
-			<?php echo do_shortcode('[br_filter_single filter_id=6108]') // цвет?>
-			<?php echo do_shortcode('[br_filter_single filter_id=12013]') // форма?>
-			<?php echo do_shortcode('[br_filter_single filter_id=12015]') // материал?>
-			<?php echo do_shortcode('[br_filter_single filter_id=12016]') // Объем?>
-			<?php echo do_shortcode('[br_filter_single filter_id=10988]') // в подарок?>
+			<?php 
+			echo do_shortcode('[br_filter_single filter_id=6055]') // цена
+			if (!is_shop()) {
+				echo do_shortcode('[br_filter_single filter_id=6056]') // высота
+				echo do_shortcode('[br_filter_single filter_id=6109]') //	полив
+				echo do_shortcode('[br_filter_single filter_id=11115]') // освещение
+				echo do_shortcode('[br_filter_single filter_id=11116]') // влажность
+				//echo do_shortcode('[br_filter_single filter_id=12018]') // автополив
+				echo do_shortcode('[br_filter_single filter_id=11117]') // диаметр горшка
+				echo do_shortcode('[br_filter_single filter_id=12017]') // диаметр кашпо Treez
+				echo do_shortcode('[br_filter_single filter_id=6108]') // цвет
+				echo do_shortcode('[br_filter_single filter_id=12013]') // форма
+				echo do_shortcode('[br_filter_single filter_id=12015]') // материал
+				echo do_shortcode('[br_filter_single filter_id=12016]') // Объем
+				echo do_shortcode('[br_filter_single filter_id=10988]') // в подарок
+			}?>
 		</div>
     </div>
     <?php 
