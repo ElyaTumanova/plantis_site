@@ -513,7 +513,7 @@
     left: 0;
     background: var(--accent-color);
     border-radius: 50%;
-    border-radius: var(--accent-color);
+    border-color: var(--accent-color);
     padding: 5px 4px;
     color: var(--white);
     font-size: 14px;
