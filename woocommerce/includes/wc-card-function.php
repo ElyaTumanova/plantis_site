@@ -217,9 +217,10 @@ function truemisha_quantity_plus() {
         if ($quantity > 1) {
             echo '<div class="plus">&#43;</div>';
         }
-    } else {
-        echo '<div class="plus">&#43;</div>';
-    }
+    } 
+    // else {
+    //     echo '<div class="plus">&#43;</div>';
+    // }
 };
  
 function truemisha_quantity_minus() {
@@ -229,10 +230,17 @@ function truemisha_quantity_minus() {
         if ($quantity > 1) {
             echo '<div class="minus">&#8722;</div>';
         }
-    } else {
-        echo '<div class="remove_from_cart_button minus">&#8722;</div>';
-    }
+    } 
+    // else {
+    //     echo '<div class="remove_from_cart_button minus">&#8722;</div>';
+    // }
 };
+
+
+    $cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
+	$remove_cart_url = wc_get_cart_remove_url( $cart_item_key );
+    $args['attributes']['data-remove_link'] = $remove_cart_url;
+    $args['attributes']['data-cart_item_key'] = $cart_item_key;
 
 // мета данные товара и атрибуты
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
