@@ -8,9 +8,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_action('woocommerce_before_single_product_summary','plnt_card_grid_start',5);
 
 function plnt_card_grid_start () {
-    ?>
-	<div class="card__grid">
-    <?php 
+    global $product;
+    if ( $product->get_stock_status() ==='outofstock') {
+        ?>
+        <div class="card__grid card__grid_outofstock">
+        <?php
+    } else {
+        ?>
+        <div class="card__grid">
+        <?php
+    }
 };
 
 add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',50);
@@ -187,20 +194,7 @@ function plnt_outofstock_btn() {
 add_action('woocommerce_after_single_product_summary', 'plnt_card_banners_wrap', 5);
 
 function plnt_card_banners_wrap() {
-    global $product;
-    if ( $product->get_stock_status() ==='outofstock') {
-        ?>
-        <div class="card__banners_outofstock">
-        <?php
-    } else {
-        ?>
-        <div class="card__banners">
-        <?php
-    }
     get_template_part('template-parts/card-banners'); // info cards for card
-    ?>
-    </div>
-    <?php
 }
 
 
