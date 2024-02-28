@@ -230,7 +230,7 @@ function truemisha_quantity_minus() {
             echo '<div class="minus">&#8722;</div>';
         }
     } else {
-        echo '<div class="minus">&#8722;</div>';
+        echo '<div class="remove_from_cart_button minus">&#8722;</div>';
     }
 };
 
