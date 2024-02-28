@@ -445,8 +445,8 @@
 
 .side-cart {
     position: fixed;
-    max-width: 320px;
-    right: -320px;
+    max-width: 350px;
+    right: -350px;
     top: 0;
     bottom: 0;
     background-color: var(--background);
@@ -472,7 +472,7 @@
 }
 
 .side-cart__open-btn_active {
-    right: 330px;
+    right: 360px;
 }
 
 .side-cart__title {
@@ -495,7 +495,7 @@
     margin-bottom: 20px;
 }
 .side-cart .woocommerce-mini-cart {
-    max-height: calc(100vh - 210px);
+    max-height: calc(100vh - 230px);
     overflow-y: scroll;
     overflow-x: hidden;
 }
