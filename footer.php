@@ -32,7 +32,8 @@
 <div class="side-cart__wrap">
     <button class="side-cart__open-btn">hello</button>
     <div class="side-cart__popup popup">
-        <div class="side-cart">      
+        <div class="side-cart">
+            <h4 class="side-cart__title heading-2">Корзина</h4>      
             <?php woocommerce_mini_cart();?> 
         </div>
         <div class="side-cart__popup-overlay popup-overlay"></div>
