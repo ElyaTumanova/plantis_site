@@ -38,7 +38,7 @@
     <div class="side-cart__popup popup">
         <div class="side-cart">
             <h4 class="side-cart__title heading-2">Корзина</h4>      
-            <?php plnt_woocommerce_mini_cart();?> 
+            <?php //plnt_woocommerce_mini_cart();?> 
         </div>
         <div class="side-cart__popup-overlay popup-overlay"></div>
     </div>
