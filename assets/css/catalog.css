@@ -52,6 +52,9 @@
     .catalog__grid .woocommerce-ordering {
         display: none;
     }
+    .catalog__grid .woocommerce-ordering select {
+        display: none;
+    }
 
     .catalog__sidebar-ordering .woocommerce-ordering {
         display: block;
