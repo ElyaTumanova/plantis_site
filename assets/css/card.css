@@ -55,6 +55,10 @@
     display: none;
 }
 
+.card__grid_outofstock #card_banner_peresadka {
+    grid-column: span 2;
+}
+
 .card__ukhod-wrap {
     grid-area: ukhod;
 }
