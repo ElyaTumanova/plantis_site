@@ -49,10 +49,10 @@
         margin-top: 20px;
     }
 
-    .catalog__grid .woocommerce-ordering {
+    .catalog__filter-wrap .woocommerce-ordering {
         display: none;
     }
-    .catalog__grid .woocommerce-ordering select {
+    .catalog__filter-wrap .woocommerce-ordering select {
         display: none;
     }
 
