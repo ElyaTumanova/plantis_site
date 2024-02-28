@@ -134,7 +134,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						?>
 						<a class="cart__minus ajax_add_to_cart" 
 						href="<?php echo $add_to_cart_link?>" 
-						data-quantity="1" 
+						data-quantity="-1" 
 						data-product-name = "<?php echo $product_name?>"
 						data-product_id="<?php echo $product_id?>" 
 						data-product-price="<?php echo $price?>" 
