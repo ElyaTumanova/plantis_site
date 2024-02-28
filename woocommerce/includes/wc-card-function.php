@@ -187,7 +187,20 @@ function plnt_outofstock_btn() {
 add_action('woocommerce_after_single_product_summary', 'plnt_card_banners_wrap', 5);
 
 function plnt_card_banners_wrap() {
-    get_template_part('template-parts/card-banners'); // delivery info for card
+    global $product;
+    if ( $product->get_stock_status() ==='outofstock') {
+        ?>
+        <div class="card__banners_outofstock">
+        <?php
+    } else {
+        ?>
+        <div class="card__banners">
+        <?php
+    }
+    get_template_part('template-parts/card-banners'); // info cards for card
+    ?>
+    </div>
+    <?php
 }
 
 
