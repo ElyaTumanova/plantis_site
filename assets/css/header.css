@@ -456,6 +456,7 @@
     width: 90%;
     transition: right 0.5s;
     padding: 15px;
+    color: var(--text);
 }
 
 .popup_active .side-cart {
