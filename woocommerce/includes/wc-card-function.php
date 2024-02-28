@@ -9,15 +9,23 @@ add_action('woocommerce_before_single_product_summary','plnt_card_grid_start',5)
 
 function plnt_card_grid_start () {
     global $product;
-    if ( $product->get_stock_status() ==='outofstock') {
-        ?>
-        <div class="card__grid card__grid_outofstock">
-        <?php
+    global $plants_cat_id;
+    $parentCatId = check_category ($product);
+    if ($parentCatId === $plants_cat_id) {
+        if ( $product->get_stock_status() ==='outofstock') {
+            ?>
+            <div class="card__grid card__grid_outofstock">
+            <?php
+        } else {
+            ?>
+            <div class="card__grid">
+            <?php
+        }
     } else {
         ?>
-        <div class="card__grid">
+        <div class="card__grid card__grid_not-plant">
         <?php
-    }
+    } 
 };
 
 add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',50);
@@ -304,8 +312,7 @@ function plnt_upsells_heading () {
         default:
             return 'Вас также заитересует';
             break;
-    }
-    
+    }    
 };
         
 remove_action('woocommerce_after_single_product_summary','woocommerce_output_related_products', 20);
