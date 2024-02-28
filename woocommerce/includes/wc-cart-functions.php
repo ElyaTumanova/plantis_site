@@ -37,9 +37,9 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_f
 
 function plnt_woocommerce_mini_cart() {
 	?>		
-			<div class="mini-cart">
-				<?php woocommerce_mini_cart();?>
-			</div>
+	<div class="mini-cart">
+		<?php woocommerce_mini_cart();?>
+	</div>
 	<?php
 }
 
@@ -51,9 +51,6 @@ function plnt_woocommerce_mini_cart_fragment( $fragments ) {
 }
 
 add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_mini_cart_fragment', 25 );
-
-
-
 
 // FOR DEV REMOVE FROM CART
 // function plnt_remove_from_cart(){
