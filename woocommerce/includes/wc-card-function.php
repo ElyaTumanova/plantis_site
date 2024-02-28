@@ -184,9 +184,9 @@ function plnt_outofstock_btn() {
 
 // баннеры в карточке товара
 
-add_action('woocommerce_after_single_product_summary', 'plnt_card_banners_wrap', 5);
+add_action('woocommerce_after_single_product_summary', 'plnt_card__banners_wrap', 5);
 
-function plnt_card_banners_wrap() {
+function plnt_card__banners_wrap() {
     get_template_part('template-parts/card-banners'); // delivery info for card
 }
 
