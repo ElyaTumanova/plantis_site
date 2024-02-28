@@ -185,7 +185,7 @@
 .woocommerce-ordering {
     grid-area: sorting;
     justify-self: end;
-    margin: 10px 0;
+    margin-bottom: 10px;
 }
 
 .woocommerce-ordering select {
