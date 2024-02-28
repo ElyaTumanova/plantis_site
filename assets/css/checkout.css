@@ -30,7 +30,11 @@
 }
 
 .woocommerce-shipping-methods li {
-	display: flex;
+    display: flex;
+    column-gap: 7px;
+    margin-bottom: 4px;
+    min-height: 20px;
+    align-items: center;
 }
 
 .woocommerce-input-wrapper {
@@ -155,12 +159,6 @@
 .woocommerce-checkout .woocommerce-checkout-review-order table .amount {
     font-size: 20px;
     line-height: 1;
-}
-
-.woocommerce-shipping-methods li {
-    display: flex;
-    column-gap: 7px;
-    margin-bottom: 4px;
 }
 
 .cart-subtotal {
