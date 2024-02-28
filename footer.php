@@ -33,7 +33,7 @@
     <button class="side-cart__open-btn">hello</button>
     <div class="side-cart__popup popup">
         <div class="side-cart">      
-            <?php plnt_woocommerce_mini_cart();?>  
+            <?php woocommerce_mini_cart();?> 
         </div>
         <div class="side-cart__popup-overlay popup-overlay"></div>
     </div>
