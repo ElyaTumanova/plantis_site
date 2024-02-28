@@ -507,5 +507,18 @@
     overflow-x: hidden;
 }
 
+.side-cart__count {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    background: var(--accent-color);
+    border-radius: 50%;
+    border-radius: var(--accent-color);
+    padding: 5px 4px;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+}
+
 
 
