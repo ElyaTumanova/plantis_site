@@ -49,10 +49,10 @@
         margin-top: 20px;
     }
 
-    .catalog__filter-wrap .woocommerce-ordering {
+    .catalog__grid .woocommerce-ordering {
         display: none;
     }
-    .catalog__filter-wrap .woocommerce-ordering select {
+    .catalog__grid .woocommerce-ordering select {
         display: none;
     }
 
@@ -61,6 +61,7 @@
     }
 
     .catalog__sidebar-ordering .woocommerce-ordering select{
+        display: block;
         width: 100%;
     }
 
