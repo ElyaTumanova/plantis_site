@@ -91,7 +91,9 @@
 					<div class="header-cart">
 						<?php 
 							plnt_woocommerce_cart_header(); 
-							plnt_woocommerce_mini_cart(); 
+							?><div class="mini-cart__wrap"> <?php
+								plnt_woocommerce_mini_cart(); 
+							?></div>
 						?>
 					</div><!-- .header-cart -->
 				</div>
