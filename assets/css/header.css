@@ -309,6 +309,7 @@
     font-size: 12px;
     font-weight: 700;
     padding: 7px;
+    color: var(--accent-color);
 }
 
 .woocommerce-mini-cart__buttons .checkout {
@@ -454,6 +455,7 @@
     flex-direction: column;
     width: 90%;
     transition: right 0.5s;
+    padding: 15px;
 }
 
 .popup_active .side-cart {
