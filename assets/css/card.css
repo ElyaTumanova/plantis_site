@@ -6,7 +6,7 @@
     grid-template-rows: repeat(4, auto);
     grid-template-areas:
     "image info price"
-    "image banners banners"
+    "image banner1 banner2"
     "descr sliders sliders"
     "ukhod ukhod ukhod";
     column-gap: 20px;
@@ -43,22 +43,19 @@
     flex-direction: column;
 }
 
-.card__banners {
-    grid-area: banners;
-}
-/* .card__banner:first-of-type {
+.card_banner:first-of-type {
     grid-area: banner1;
 }
 
-.card__banner:last-of-type {
+.card_banner:last-of-type {
     grid-area: banner2;
-} */
+}
 
 .card__ukhod-wrap {
     grid-area: ukhod;
 }
 
-.card__banner {
+.card_banner {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
     padding: 10px;
     border-radius: 5px;
@@ -75,11 +72,11 @@
     /* margin-bottom: 4px; */
 }
 
-.card__banner a {
+.card_banner a {
     color: var(--accent-color);
 }
 
-.card__banner a:hover {
+.card_banner a:hover {
     color: var(--accent-color);
     cursor: pointer;
 }
@@ -451,7 +448,8 @@ input[type="number"] {
         "image"
         "info"
         "price"
-        "banners"
+        "banner1"
+        "banner2"
         "sliders"
         "ukhod"
         "descr";
