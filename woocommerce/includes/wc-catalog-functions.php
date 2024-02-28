@@ -68,7 +68,7 @@ function plnt_catalog_sidebar() {
 			<?php echo do_shortcode('[br_filter_single filter_id=6109]') //	полив?>
 			<?php echo do_shortcode('[br_filter_single filter_id=11115]') // освещение?>
 			<?php echo do_shortcode('[br_filter_single filter_id=11116]') // влажность?>
-			<?php echo do_shortcode('[br_filter_single filter_id=12018]') // автополив?>
+			<?php //echo do_shortcode('[br_filter_single filter_id=12018]') // автополив?>
 			<?php echo do_shortcode('[br_filter_single filter_id=11117]') // диаметр горшка?>
 			<?php echo do_shortcode('[br_filter_single filter_id=12017]') // диаметр кашпо Treez?>
 			<?php echo do_shortcode('[br_filter_single filter_id=6108]') // цвет?>
