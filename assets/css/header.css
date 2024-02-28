@@ -494,6 +494,11 @@
 .side-cart .woocommerce-mini-cart__buttons {
     margin-bottom: 20px;
 }
+.side-cart .woocommerce-mini-cart {
+    max-height: calc(100vh - 210px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 
 
 
