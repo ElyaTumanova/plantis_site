@@ -340,6 +340,10 @@ ul.products {
     text-decoration: none;
 }
 
+.catalog__grid .product_out_of_stock {
+    background-image: none;
+}
+
 @media (max-width: 767px) {
 
     .catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple {
@@ -360,14 +364,15 @@ ul.products {
         background-size: 50%;
         order: 1;
     }
+
+    .catalog__grid .product_out_of_stock {
+        font-size: 10px;
+        font-weight: 700;
+    }
     
 }
 
-.catalog__grid .product_out_of_stock {
-    background-image: none;
-    font-size: 10px;
-    font-weight: 700;
-}
+
 
 /* заголовок и описание */
 .woocommerce-loop-product__title {
