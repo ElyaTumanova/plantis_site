@@ -70,7 +70,6 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 0;
-        margin-top: 10px;
         align-items: center;
         position: sticky;
         top: 111px;
@@ -909,11 +908,6 @@ ul.products {
 
 .catalog__filter-active {
     white-space: nowrap;
-    margin-top: 10px;
-}
-
-.catalog__filter-active .bapf_sfilter {
-    margin-bottom: 5px;
 }
 
 .catalog__filter-active h3 {
@@ -924,15 +918,6 @@ ul.products {
     display: flex;
     column-gap: 10px;
     flex-wrap: wrap;
-}
-
-@media (max-width:767px) {
-    .catalog__filter-active {
-        overflow-x: scroll;
-    }
-    .catalog__filter-active .berocket_aapf_widget_selected_filter {
-        flex-wrap: nowrap;
-    }
 }
 
 .catalog__filter-active .berocket_aapf_widget_selected_filter .bapf_sfa_unall {
@@ -955,6 +940,23 @@ ul.products {
     display: flex;
     flex-direction: row-reverse;
     column-gap: 10px;
+}
+
+@media (max-width:767px) {
+    .catalog__filter-active {
+        overflow-x: scroll;
+        margin-top: 10px;
+    }
+    .catalog__filter-active .berocket_aapf_widget_selected_filter {
+        flex-wrap: nowrap;
+    }
+    .catalog__filter-active .bapf_sfilter {
+        margin-bottom: 0;
+    }
+    
+    .catalog__filter-active  .bapf_sfilter.bapf_divi_sfa .berocket_aapf_widget_selected_filter ul {
+        margin-bottom: 0;
+    }
 }
 
 /* фильтры в сайдбаре */
