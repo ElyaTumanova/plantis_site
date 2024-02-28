@@ -218,9 +218,9 @@ function truemisha_quantity_plus() {
             echo '<div class="plus">&#43;</div>';
         }
     } 
-    // else {
-    //     echo '<div class="plus">&#43;</div>';
-    // }
+    else {
+        echo '<div class="plus">&#43;</div>';
+    }
 };
  
 function truemisha_quantity_minus() {
@@ -231,9 +231,9 @@ function truemisha_quantity_minus() {
             echo '<div class="minus">&#8722;</div>';
         }
     } 
-    // else {
-    //     echo '<div class="remove_from_cart_button minus">&#8722;</div>';
-    // }
+    else {
+        echo '<div class="minus">&#8722;</div>';
+    }
 };
 
 // мета данные товара и атрибуты
