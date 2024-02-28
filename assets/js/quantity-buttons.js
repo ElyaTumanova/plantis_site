@@ -57,9 +57,7 @@ jQuery(function ($){
 	}
 
 	
-	$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки
-	$( document.body ).trigger( 'added_to_cart' );
- 
+	$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
 });
 })
 
