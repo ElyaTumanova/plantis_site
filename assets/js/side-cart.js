@@ -31,7 +31,6 @@ if (sideCartPopup != null && sideCartOpenPopupBtn != null) {
 
 function toggle_side_cart_popup () {
     sideCartPopup.classList.toggle ('popup_active');
-    // for side cart
     if (sideCartOpenPopupBtn) {
         sideCartOpenPopupBtn.classList.toggle ('side-cart__open-btn_active');
     }
