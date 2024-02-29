@@ -3,20 +3,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-function create_yandex_xml () {
+function create_yandex_xml_btn () {
 	?>
-	<button class="my_test_button">Click me</button>
+	<button class="xml_button">Создать фид</button>
 	<script>
         // const intervalId = setInterval(function() {
         // console.log('Я выполняюсь каждую секунду')
         // }, 1000);
 
-		const element = document.querySelector('.my_test_button')
+		const element = document.querySelector('.xml_button')
 
 		element.addEventListener('click', function (event) {
 		console.log('Произошло событие', event.type);
+        create_yandex_xml();
+        }
 
-
+        function create_yandex_xml(){
 		<?php 
 		$yandex_xml .= "<?xml version='1.0' encoding='UTF-8'?>
         <yml_catalog date='".date('Y-m-d H:i')."'>
@@ -143,5 +145,5 @@ function create_yandex_xml () {
 	<?php
 }
 
-add_action( 'wp_footer', 'create_yandex_xml' );
+add_action( 'wp_footer', 'create_yandex_xml_btn' );
 ?>
