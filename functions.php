@@ -99,7 +99,13 @@ function create_xml_button () {
 		const element = document.querySelector('.my_test_button')
 
 		element.addEventListener('click', function (event) {
-		console.log('Произошло событие', event.type)
+		console.log('Произошло событие', event.type);
+		<?php 
+		$sitemap .= '<?xml version="1.0" encoding="UTF-8"?>' . '<?xml-stylesheet type="text/xsl"?>';
+		$fp = fopen( ABSPATH . "lalalal.xml", 'w' );
+		fwrite( $fp, $sitemap );
+		fclose( $fp );
+		?>
 		})
 
 	</script>
