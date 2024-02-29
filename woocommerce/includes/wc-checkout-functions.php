@@ -369,15 +369,14 @@ function custom_checkout_field_script() {
 
 /* скрываем лишние способы доставки если доступна доставка бесплатная*/
 add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_method', 20, 2 );
- 
-function new_truemisha_remove_shipping_method( $rates, $package ) {
+
+function new_truemisha_remove_shipping_method( $package['rates'], $package ) {
     echo '<pre>';
-	print_r( $var );
+	print_r( $package );
 	echo '</pre>';
  
 	// удаляем способ доставки, если доступна бесплатная
-	if ( isset( $rates[ 'free_shipping:5' ] ) ) {
-        
+	if ( isset( $rates[ 'free_shipping:5' ] ) ) {        
 	    unset( $rates[ 'flat_rate:1' ] );
 // 		unset( $rates[ 'flat_rate:12' ] );
 		unset( $rates[ 'flat_rate:13' ] );
@@ -388,7 +387,7 @@ function new_truemisha_remove_shipping_method( $rates, $package ) {
 		unset( $rates[ 'flat_rate:18' ] );
 	}
  
-	return $rates;
+	return $package['rates'];
 }
 
 function truemisha_remove_shipping_method( $rates, $package ) {
