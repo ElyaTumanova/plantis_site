@@ -14,5 +14,5 @@
     $user->appendChild($password);// Добавляем в узел "user" узел "password"
     $root->appendChild($user); // Добавляем в корневой узел "users" узел "user"
   }
-  $dom->save("wp-content/yandex-xml/users.xml"); // Сохраняем полученный XML-документ в файл
+  $dom->save("wp-content/yandex-xml/users1.xml"); // Сохраняем полученный XML-документ в файл
 ?>
