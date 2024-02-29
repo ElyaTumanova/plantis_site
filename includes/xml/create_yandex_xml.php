@@ -56,8 +56,8 @@ function create_yandex_xml () {
                     'taxonomy' => 'product_cat',
                     'field' => 'id',
                     'operator' => 'NOT IN',
-                    'terms' => '379',
-                    'include_children' => 1,
+                    'terms' => '[379,229]',
+                    // 'include_children' => 1,
                 )
             )
         );
