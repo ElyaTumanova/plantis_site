@@ -96,7 +96,7 @@ function create_yandex_xml () {
                 $yandex_xml .= "<price>".get_post_meta($allproduct->ID,'_sale_price',true)."</price>
                 <oldprice>".get_post_meta($allproduct->ID,'_regular_price',true)."</oldprice>";
             } else {
-                $yandex_xml .= "<price>".get_post_meta($allproduct->ID,'_price',true)."</price>"
+                $yandex_xml .= "<price>".get_post_meta($allproduct->ID,'_price',true)."</price>";
             };
             $yandex_xml .= 
             "
