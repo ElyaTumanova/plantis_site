@@ -49,6 +49,13 @@ function create_yandex_xml_btn () {
             'post_type'      => 'product',
             'posts_per_page' => -1,
             'post_status'    => 'publish',
+            'meta_query' => array( 
+                array(
+                    'key'       => '_stock_status',
+                    'value'     => 'outofstock',
+                    'compare'   => 'NOT IN'
+                )
+            ),
             'tax_query' => array(
                 array(
                     'taxonomy' => 'product_cat',
