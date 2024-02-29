@@ -1,6 +1,7 @@
 <?php
   $dom = new domDocument("1.0", "utf-8"); // Создаём XML-документ версии 1.0 с кодировкой utf-8
   $root = $dom->createElement("yml_catalog"); // Создаём корневой элемент
+  $root->setAttribute("date", date('Y-m-d H:i'));
   $dom->appendChild($root);
   $shop = $dom->createElement("shop");
   $root->appendChild($shop);
