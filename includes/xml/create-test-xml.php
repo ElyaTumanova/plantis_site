@@ -93,7 +93,7 @@ function create_yandex_xml () {
             <url>".get_permalink($allproduct->ID)."</url>
             <price>".get_post_meta($allproduct->ID,'products_price',true)."</price>
             <currencyId>RUR</currencyId>
-            <categoryId>".."</categoryId>
+            <categoryId>""</categoryId>
             ";
 
             if($product_img[0])
