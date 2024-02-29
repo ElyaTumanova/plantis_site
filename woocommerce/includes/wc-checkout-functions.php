@@ -374,6 +374,9 @@ function new_truemisha_remove_shipping_method( $rates, $package ) {
  
 	// удаляем способ доставки, если доступна бесплатная
 	if ( isset( $rates[ 'free_shipping:5' ] ) ) {
+        echo '<pre>';
+        print_r( $rates );
+        echo '</pre>';
 	    unset( $rates[ 'flat_rate:1' ] );
 // 		unset( $rates[ 'flat_rate:12' ] );
 		unset( $rates[ 'flat_rate:13' ] );
