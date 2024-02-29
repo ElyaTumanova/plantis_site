@@ -5,6 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $xml = new SimpleXMLElement('<xml/>');
 
+echo $xml->asXML("wp-content/yandex-xml/users2.xml");
+
 // $dom = new domDocument("1.0", "utf-8"); // Создаём XML-документ версии 1.0 с кодировкой utf-8
 // $root = $dom->createElement("yml_catalog"); // Создаём корневой элемент
 // $root->setAttribute("date", date('Y-m-d H:i'));
@@ -61,6 +63,6 @@ $xml = new SimpleXMLElement('<xml/>');
 //     $user->appendChild($password);// Добавляем в узел "user" узел "password"
 //     $root->appendChild($user); // Добавляем в корневой узел "users" узел "user"
 //   }
-  $dom->save("wp-content/yandex-xml/users1.xml"); // Сохраняем полученный XML-документ в файл
+//   $dom->save("wp-content/yandex-xml/users1.xml"); // Сохраняем полученный XML-документ в файл
 ?>
 
