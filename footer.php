@@ -28,21 +28,26 @@
         <br>Расчетный счёт: 40802810900002894566 Банк: АО “ТИНЬКОФФ БАНК” БИК: 044525974 Корр. счёт: 30101810145250000974
     </p>
 </div>
-
-<div class="side-cart__wrap">
-    <?php $cart_icon = carbon_get_theme_option('cart_icon')?>
-    <button class="side-cart__open-btn">
-        <?php plnt_side_cart_count ();?>
-        <img class="side-cart__icon" src="<?php echo $cart_icon ?>" alt="cart" width="35" height="35">
-    </button>
-    <div class="side-cart__popup popup">
-        <div class="side-cart">
-            <h4 class="side-cart__title heading-2">Корзина</h4>      
-            <?php plnt_woocommerce_mini_cart();?> 
+<?php if(WC()->cart->get_cart_contents_count()>0) {
+    ?> 
+        <div class="side-cart__wrap">
+            <?php $cart_icon = carbon_get_theme_option('cart_icon')?>
+            <button class="side-cart__open-btn">
+                <?php plnt_side_cart_count ();?>
+                <img class="side-cart__icon" src="<?php echo $cart_icon ?>" alt="cart" width="35" height="35">
+            </button>
+            <div class="side-cart__popup popup">
+                <div class="side-cart">
+                    <h4 class="side-cart__title heading-2">Корзина</h4>      
+                    <?php plnt_woocommerce_mini_cart();?> 
+                </div>
+                <div class="side-cart__popup-overlay popup-overlay"></div>
+            </div>
         </div>
-        <div class="side-cart__popup-overlay popup-overlay"></div>
-    </div>
-</div>
+    <?php
+}?> 
+
+
 
 
 
