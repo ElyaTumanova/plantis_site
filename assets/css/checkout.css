@@ -222,7 +222,7 @@
     width: fit-content;
 }
 
-.billing_dontcallme_field .woocommerce-input-wrapper {
+#billing_dontcallme_field .woocommerce-input-wrapper {
     margin-top: 10px;
 }
 
