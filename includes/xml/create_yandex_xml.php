@@ -1,7 +1,7 @@
 <?php
-// if ( ! defined( 'ABSPATH' ) ) {
-// 	exit; // Exit if accessed directly
-// }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 function create_yandex_xml () {
 	?>
@@ -15,7 +15,6 @@ function create_yandex_xml () {
 
 		<?php 
 		$yandex_xml .= "<?xml version='1.0' encoding='UTF-8'?>
-        <!DOCTYPE yml_catalog SYSTEM 'shops.dtd'>
         <yml_catalog date='".date('Y-m-d H:i')."'>
         <shop>
         <name>".get_bloginfo('name')."</name>
