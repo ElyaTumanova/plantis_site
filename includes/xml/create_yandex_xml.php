@@ -30,6 +30,7 @@ function create_yandex_xml () {
         $args=array(
             'taxonomy'   => 'product_cat',
             'hide_empty' => true,
+            'exclude_tree'    => array(379,229),
         );
         $terms=get_terms($args);
         foreach($terms as $item){
@@ -57,7 +58,7 @@ function create_yandex_xml () {
                     'field' => 'id',
                     'operator' => 'NOT IN',
                     'terms' => [379,229],
-                    // 'include_children' => 1,
+                    'include_children' => 1,
                 )
             )
         );
