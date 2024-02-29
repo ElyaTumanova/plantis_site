@@ -115,9 +115,6 @@ function new_custom_checkout_field_script() {
 				urgentPickup1 = '<?php echo $urgent_delivery1; ?>',urgentPickup2 = '<?php echo $urgent_delivery2; ?>',
 				urgentPickup3 = '<?php echo $urgent_delivery3; ?>',urgentPickup4 = '<?php echo $urgent_delivery4; ?>';
 
-                console.log(b7);
-                console.log(document.querySelector(b7));
-
             // Utility function to shows or hide checkout fields
             function showHide( action='show', selector='' ){
                 if( action == 'show' )
