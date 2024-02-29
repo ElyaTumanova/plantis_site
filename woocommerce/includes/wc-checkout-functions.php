@@ -108,7 +108,7 @@ function new_custom_checkout_field_script() {
                 rq = '-required',       vr = 'validate'+rq,     w = 'woocommerce',      wv = w+'-validated',
                 iv = '-invalid',        fi = '-field',          wir = w+iv+' '+w+iv+rq+fi,
                 b = '#billing_',        s = '#shipping_',       f = '_field',
-                a1 = 'country',     a2 = 'address_1',   a3 = 'address_2',   a4 = 'postcode',    a5 = 'state', a6 = 'city', a7 = 'address_3'
+                a1 = 'country',     a2 = 'address_1',   a3 = 'address_2',   a4 = 'postcode',    a5 = 'state', a6 = 'city', a7 = 'address_3',
                 b1 = b+a1+f,        b2 = b+a2+f,        b3 = b+a3+f,        b4 = b+a4+f,        b5 = b+a5+f, b6 = b+a6+f, b7 = b+a7+f,
                 s1 = s+a1+f,        s2 = s+a2+f,        s3 = s+a3+f,        s4 = s+a4+f,        s5 = s+a5+f,
                 localPickup = '<?php echo $local_pickup; ?>',
