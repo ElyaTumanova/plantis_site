@@ -6,6 +6,10 @@
     outline: 1px solid red;
 } */
 
+.xml_button {
+    display: none;
+}
+
 :root {
     --accent-color: #146F41;
     --red-color: #F93D05;
