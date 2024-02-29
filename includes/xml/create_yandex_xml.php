@@ -7,17 +7,6 @@ function create_yandex_xml_btn () {
 	?>
 	<button class="xml_button">Создать фид</button>
 	<script>
-        // const intervalId = setInterval(function() {
-        // console.log('Я выполняюсь каждую секунду')
-        // }, 1000);
-
-		const element = document.querySelector('.xml_button')
-
-		element.addEventListener('click', function (event) {
-		console.log('Произошло событие', event.type);
-        create_yandex_xml();
-        };
-
         function create_yandex_xml(){
 		<?php 
 		$yandex_xml .= "<?xml version='1.0' encoding='UTF-8'?>
@@ -140,7 +129,18 @@ function create_yandex_xml_btn () {
 		fwrite( $fp, $yandex_xml );
 		fclose( $fp );
 		?>
-		})
+		}
+
+        // const intervalId = setInterval(function() {
+        // console.log('Я выполняюсь каждую секунду')
+        // }, 1000);
+
+		const element = document.querySelector('.xml_button');
+
+        element.addEventListener('click', function (event) {
+        console.log('Произошло событие', event.type);
+        create_yandex_xml();
+        });
 	</script>
 	<?php
 }
