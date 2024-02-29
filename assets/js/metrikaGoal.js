@@ -57,22 +57,31 @@ jQuery(document).ready(function() {
 	});
 
     //UX Клик по кнопке «Переход в корзину», мини корзина - NEW #TODO - ДОБАВИТЬ В МЕТРИКУ?
-    jQuery('.woocommerce-mini-cart .button .wc-forward').click(function(){
+    jQuery('.mini-cart__wrap .woocommerce-mini-cart .button .wc-forward').click(function(){
 		ym(96498108, 'reachGoal', 'click-minicart-button-cart'); return true;
 	});
 
     //UX Клик по кнопке «Переход в оформление заказа», мини корзина - NEW #TODO - ДОБАВИТЬ В МЕТРИКУ?
-    jQuery('.woocommerce-mini-cart .button .checkout .wc-forward').click(function(){
+    jQuery('.mini-cart__wrap .woocommerce-mini-cart .button .checkout .wc-forward').click(function(){
 		ym(96498108, 'reachGoal', 'click-minicart-button-order'); return true;
 	});
 
-    //это боковая корзина?
+    //это боковая корзина side cart
     //UX Клик по кнопке вызова модалки «Корзина»
+	jQuery('.side-cart__open-btn').click(function(){
+		ym(96498108, 'reachGoal', 'click-button-cart-call-modal'); return true;
+	});
 
     //Клик по кнопке «Корзина», внутри модалки
-
+	jQuery('.side-cart .woocommerce-mini-cart .button .wc-forward').click(function(){
+		ym(96498108, 'reachGoal', 'click-button-cart-modal'); return true;
+	});
+	
     //Клик по кнопке «Оформить заказ», модалка
-   
+	jQuery('.side-cart .woocommerce-mini-cart .button .checkout .wc-forward').click(function(){
+		ym(96498108, 'reachGoal', 'click-button-order-modal'); return true;
+	});
+	
     //Клик на кнопку «Положить в избранное»
     jQuery('.yith-wcwl-add-button .add_to_wishlist').click(function(){
 		ym(96498108, 'reachGoal', 'click-button-favorites'); return true;
