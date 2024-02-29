@@ -1,113 +1,18 @@
 <?php
-// Подключаем библиотеки CMS WordPress
-define('WP_USE_THEMES', false);
-require_once('wp-load.php');
-
-// Прописываем значения, чтобы файл читался и открывался как XML
-header("Content-type: text/xml; charset=UTF-8");
-print (pack('CCC', 0xef, 0xbb, 0xbf));
-
-// Заголовок. В get_bloginfo('name') и get_bloginfo('url') берутся значения из настройки админки.
-print 
-"<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE yml_catalog SYSTEM 'shops.dtd'>
-<yml_catalog date='".date('Y-m-d H:i')."'>
-<shop>
-<name>".get_bloginfo('name')."</name>
-<url>".get_bloginfo('url')."</url>
-";
-
-// Валюта. Если у вас используется альтернативная валюта или + ещё какая-то, то поменяйте данный участок кода.
-print "<currencies>
-<currency id='RUB' rate='1'/>
-</currencies>
-";
-
-
-// Список категории. В примере участвует кастомная таксономия 'products_category', её замените на ту, которая создана у вас.
-print "<categories>
-";
-$args=array(
-	'taxonomy'   => 'products_category',
-    'hide_empty' => false,
-);
-$terms=get_terms($args);
-foreach($terms as $item){
-	print "<category id='".$item->term_id."'";
-
-	if($item->parent!=0){
-		print " parentId='".$item->parent."'";
-	}
-	print ">".htmlspecialchars(trim($item->name))."</category>
-	";
-}
-print "</categories>
-";
-
-// Список товаров. В примере участвует кастомный тип записи 'products', его замените на тот, который создан у вас.
-print "<offers>
-";
-$args=array(
-	'post_type'      => 'products',
-    'posts_per_page' => -1,
-    'post_status'    => 'publish',
-);
-$query = new WP_Query;
-$allproducts = $query->query($args);
-foreach($allproducts as $allproduct){
-	// Определяем последую категорию в дереве, к которой присвоен конкретный товар в текущем цикле. В примере участвует кастомная таксономия 'products_category', её замените на ту, которая создана у вас.
-	$lastcateg='';
-    if($categorys=get_the_terms($allproduct->ID,'products_category')){
-        if(count($categorys)>1){
-            $arrtemp=array();
-            foreach($categorys as $category){
-                $arrtemp[]=$category->term_id;
-            }
-            
-            foreach($arrtemp as $arrtempz){
-                $termchildren=get_term_children($arrtempz,'products_category');
-                if($termchildren==null){
-                    $lastcateg=$arrtempz;
-                    break;
-                }
-
-                foreach($termchildren as $child){
-                    if(!in_array($child,$arrtemp)){
-                        $lastcateg=$arrtempz;
-                        break 2;
-                    }
-                }
-            }     
-        }else{
-            $lastcateg=$categorys[0]->term_id;
-        }
-    }  
-	
-	// Получаем картинку товара. Если она у вас хранится в мета поле, берите из него.
-    $product_img=wp_get_attachment_image_src(get_post_thumbnail_id($allproduct->ID),'full');  
-
-print 
-"
-<offer id='".$allproduct->ID."' available='true'>
-<url>".get_permalink($allproduct->ID)."</url>
-<price>".get_post_meta($allproduct->ID,'products_price',true)."</price>
-<currencyId>RUR</currencyId>
-<categoryId>".$lastcateg."</categoryId>
-";
-
-if($product_img[0])
-print "<picture>".$product_img[0]."</picture>
-";
-
-print "<name>".htmlspecialchars($allproduct->post_title)."</name>
-<description><![CDATA['".htmlspecialchars(strip_tags($allproduct->post_content))."]]></description>
-</offer>
-";
-}
-
-print "</offers>
-";
-print "</shop>
-</yml_catalog>
-";
+  $dom = new domDocument("1.0", "utf-8"); // Создаём XML-документ версии 1.0 с кодировкой utf-8
+  $root = $dom->createElement("users"); // Создаём корневой элемент
+  $dom->appendChild($root);
+  $logins = array("User1", "User2", "User3"); // Логины пользователей
+  $passwords = array("Pass1", "Pass2", "Pass3"); // Пароли пользователей
+  for ($i = 0; $i < count($logins); $i++) {
+    $id = $i + 1; // id-пользователя
+    $user = $dom->createElement("user"); // Создаём узел "user"
+    $user->setAttribute("id", $id); // Устанавливаем атрибут "id" у узла "user"
+    $login = $dom->createElement("login", $logins[$i]); // Создаём узел "login" с текстом внутри
+    $password = $dom->createElement("password", $passwords[$i]); // Создаём узел "password" с текстом внутри
+    $user->appendChild($login); // Добавляем в узел "user" узел "login"
+    $user->appendChild($password);// Добавляем в узел "user" узел "password"
+    $root->appendChild($user); // Добавляем в корневой узел "users" узел "user"
+  }
+  $dom->save("wp-content/yandex-xml/users1.xml"); // Сохраняем полученный XML-документ в файл
 ?>
