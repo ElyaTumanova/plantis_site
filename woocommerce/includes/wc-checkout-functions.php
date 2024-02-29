@@ -368,7 +368,7 @@ function custom_checkout_field_script() {
 }
 
 /* скрываем лишние способы доставки если доступна доставка бесплатная*/
-//add_filter( 'woocommerce_package_rates', 'truemisha_remove_shipping_method', 20, 2 );
+add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_method', 20, 2 );
  
 function new_truemisha_remove_shipping_method( $rates, $package ) {
  
