@@ -101,8 +101,8 @@ function create_yandex_xml () {
             <offer id='".$allproduct->ID."' available='true'>
             <url>".get_permalink($allproduct->ID)."</url>";
 
-            $sale = get_post_meta( get_the_ID(), '_sale_price', true);
-            if ($sale) {
+            $sale = get_post_meta($allproduct->ID, '_sale_price', true);
+            if ($sale>0) {
                 $yandex_xml .= "<price>".get_post_meta($allproduct->ID,'_sale_price',true)."</price>
                 <oldprice>".get_post_meta($allproduct->ID,'_regular_price',true)."</oldprice>";
             } else {
