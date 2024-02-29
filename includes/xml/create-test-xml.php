@@ -32,12 +32,21 @@ $currencies->appendChild($currency);
 $categories = $dom->createElement("categories");
 $shop->appendChild($categories);
 
-$category = $dom->createElement("category");
-$categories->appendChild($category);
+//список категорий
+$args=array(
+	'taxonomy'   => 'product_cat',
+    'hide_empty' => true,
+);
+$cats=get_terms($args);
 
-
-
-
+foreach($cats as $item) {
+    $category = $dom->createElement("category",$item->name);
+    $category->setAttribute("id", $item->term_id);
+    if($item->parent!=0){
+        $category->setAttribute("parentId", $item->parent);
+	}
+    $categories->appendChild($category);
+}
 
 //   $logins = array("User1", "User2", "User3"); // Логины пользователей
 //   $passwords = array("Pass1", "Pass2", "Pass3"); // Пароли пользователей
