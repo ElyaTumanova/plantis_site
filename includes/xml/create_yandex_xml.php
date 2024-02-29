@@ -56,32 +56,32 @@ function create_yandex_xml () {
         $allproducts = $query->query($args);
         foreach($allproducts as $allproduct){
             // Определяем последую категорию в дереве, к которой присвоен конкретный товар в текущем цикле. В примере участвует кастомная таксономия 'products_category', её замените на ту, которая создана у вас.
-            // $lastcateg='';
-            // if($categorys=get_the_terms($allproduct->ID,'products_category')){
-            //     if(count($categorys)>1){
-            //         $arrtemp=array();
-            //         foreach($categorys as $category){
-            //             $arrtemp[]=$category->term_id;
-            //         }
+            $lastcateg='';
+            if($categorys=get_the_terms($allproduct->ID,'product_cat')){
+                if(count($categorys)>1){
+                    $arrtemp=array();
+                    foreach($categorys as $category){
+                        $arrtemp[]=$category->term_id;
+                    }
                     
-            //         foreach($arrtemp as $arrtempz){
-            //             $termchildren=get_term_children($arrtempz,'products_category');
-            //             if($termchildren==null){
-            //                 $lastcateg=$arrtempz;
-            //                 break;
-            //             }
+                    foreach($arrtemp as $arrtempz){
+                        $termchildren=get_term_children($arrtempz,'product_cat');
+                        if($termchildren==null){
+                            $lastcateg=$arrtempz;
+                            break;
+                        }
 
-            //             foreach($termchildren as $child){
-            //                 if(!in_array($child,$arrtemp)){
-            //                     $lastcateg=$arrtempz;
-            //                     break 2;
-            //                 }
-            //             }
-            //         }     
-            //     }else{
-            //         $lastcateg=$categorys[0]->term_id;
-            //     }
-            // }  
+                        foreach($termchildren as $child){
+                            if(!in_array($child,$arrtemp)){
+                                $lastcateg=$arrtempz;
+                                break 2;
+                            }
+                        }
+                    }     
+                }else{
+                    $lastcateg=$categorys[0]->term_id;
+                }
+            }  
             
             // Получаем картинку товара. Если она у вас хранится в мета поле, берите из него.
             $product_img=wp_get_attachment_image_src(get_post_thumbnail_id($allproduct->ID),'full');  
@@ -101,7 +101,7 @@ function create_yandex_xml () {
             $yandex_xml .= 
             "
             <currencyId>RUR</currencyId>
-            <categoryId></categoryId>
+            <categoryId>".$lastcateg."</categoryId>
             ";
 
             if($product_img[0])
