@@ -85,9 +85,17 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 add_action( "save_post", "eg_create_sitemap" );
 function eg_create_sitemap() {
-    $sitemap .= '<?xml version="1.0" encoding="UTF-8"?>' . '<?xml-stylesheet type="text/xsl" href="' . 
-        esc_url( home_url( '/' ) ) . 'sitemap.xsl"?>';
+    $sitemap .= '<?xml version="1.0" encoding="UTF-8"?>' . '<?xml-stylesheet type="text/xsl"?>';
     $fp = fopen( ABSPATH . "lalalal.xml", 'w' );
     fwrite( $fp, $sitemap );
     fclose( $fp );
 }
+
+
+function create_xml_button () {
+	?>
+	<button>Click me</button>
+	<?php
+}
+
+add_action( 'wp_footer', 'plnt_check_page' );
