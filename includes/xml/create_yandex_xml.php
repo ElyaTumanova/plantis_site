@@ -7,10 +7,10 @@ function create_yandex_xml () {
 	?>
 	<button class="my_test_button">Click me</button>
 	<script>
-        const intervalId = setInterval(function() {
-        console.log('Я выполняюсь каждую секунду')
-        }, 1000);
-        
+        // const intervalId = setInterval(function() {
+        // console.log('Я выполняюсь каждую секунду')
+        // }, 1000);
+
 		const element = document.querySelector('.my_test_button')
 
 		element.addEventListener('click', function (event) {
@@ -134,7 +134,7 @@ function create_yandex_xml () {
         </yml_catalog>
         ";
 
-		$fp = fopen( ABSPATH . "/wp-content/yandex-xml/lalalal.xml", 'w' );
+		$fp = fopen( ABSPATH . "/wp-content/yandex-xml/feed-yml-0.xml", 'w' );
 		fwrite( $fp, $yandex_xml );
 		fclose( $fp );
 		?>
