@@ -6,18 +6,27 @@
   $shop = $dom->createElement("shop");
   $root->appendChild($shop);
 
+  //Добавляем элементы в shop
   $name = $dom->createElement("name", get_bloginfo('name'));
-  $company = $dom->createElement("company", get_bloginfo('name'));
-  $url = $dom->createElement("url", get_bloginfo('url'));
-  $platform = $dom->createElement("platform",'WordPress - Yml for Yandex Market');
-  $version = $dom->createElement("version",'6.4.3');
-
   $shop->appendChild($name);
+  $company = $dom->createElement("company", get_bloginfo('name'));
   $shop->appendChild($company);
+  $url = $dom->createElement("url", get_bloginfo('url'));
   $shop->appendChild($url);
-  $shop->appendChild($platform);
-  $shop->appendChild($version);
-  
+
+
+//   $platform = $dom->createElement("platform",'WordPress - Yml for Yandex Market');
+//   $version = $dom->createElement("version",'6.4.3');
+//   $shop->appendChild($platform);
+//   $shop->appendChild($version);
+
+$currencies = $dom->createElement("currencies");
+$shop->appendChild($currencies);
+$currency = $dom->createElement("currency");
+$currency->setAttribute("id", 'RUR');
+$currency->setAttribute("rate", '1');
+$currency->setAttribute("rate", '1');
+$currencies->appendChild($currency); 
 
 
 //   $logins = array("User1", "User2", "User3"); // Логины пользователей
@@ -35,10 +44,7 @@
   $dom->save("wp-content/yandex-xml/users1.xml"); // Сохраняем полученный XML-документ в файл
 ?>
 
-
 <!-- 
-<name>Plantis</name>
-<company>Plantis</company>
-<url>https://plantis.shop/</url>
-<platform>WordPress - Yml for Yandex Market</platform>
-<version>6.4.3</version> -->
+<currencies>
+<currency id="RUR" rate="1"/>
+</currencies> -->
