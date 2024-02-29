@@ -45,6 +45,73 @@ function create_yandex_xml () {
         $yandex_xml .= "</categories>
         ";
 
+        // Список товаров. В примере участвует кастомный тип записи 'products', его замените на тот, который создан у вас.
+        $yandex_xml .= "<offers>
+        ";
+        $args=array(
+            'post_type'      => 'products',
+            'posts_per_page' => -1,
+            'post_status'    => 'publish',
+        );
+        $query = new WP_Query;
+        $allproducts = $query->query($args);
+        foreach($allproducts as $allproduct){
+            // Определяем последую категорию в дереве, к которой присвоен конкретный товар в текущем цикле. В примере участвует кастомная таксономия 'products_category', её замените на ту, которая создана у вас.
+            // $lastcateg='';
+            // if($categorys=get_the_terms($allproduct->ID,'products_category')){
+            //     if(count($categorys)>1){
+            //         $arrtemp=array();
+            //         foreach($categorys as $category){
+            //             $arrtemp[]=$category->term_id;
+            //         }
+                    
+            //         foreach($arrtemp as $arrtempz){
+            //             $termchildren=get_term_children($arrtempz,'products_category');
+            //             if($termchildren==null){
+            //                 $lastcateg=$arrtempz;
+            //                 break;
+            //             }
+
+            //             foreach($termchildren as $child){
+            //                 if(!in_array($child,$arrtemp)){
+            //                     $lastcateg=$arrtempz;
+            //                     break 2;
+            //                 }
+            //             }
+            //         }     
+            //     }else{
+            //         $lastcateg=$categorys[0]->term_id;
+            //     }
+            // }  
+            
+            // Получаем картинку товара. Если она у вас хранится в мета поле, берите из него.
+            $product_img=wp_get_attachment_image_src(get_post_thumbnail_id($allproduct->ID),'full');  
+
+            $yandex_xml .= 
+            "
+            <offer id='".$allproduct->ID."' available='true'>
+            <url>".get_permalink($allproduct->ID)."</url>
+            <price>".get_post_meta($allproduct->ID,'products_price',true)."</price>
+            <currencyId>RUR</currencyId>
+            <categoryId>".."</categoryId>
+            ";
+
+            if($product_img[0])
+            $yandex_xml .= "<picture>".$product_img[0]."</picture>
+            ";
+
+            $yandex_xml .= "<name>".htmlspecialchars($allproduct->post_title)."</name>
+            <description><![CDATA['".htmlspecialchars(strip_tags($allproduct->post_content))."]]></description>
+            </offer>
+            ";
+        }
+
+        $yandex_xml .= "</offers>
+        ";
+        $yandex_xml .= "</shop>
+        </yml_catalog>
+";
+
 
 
 
