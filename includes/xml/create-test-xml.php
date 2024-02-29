@@ -11,10 +11,27 @@ function create_yandex_xml () {
 
 		element.addEventListener('click', function (event) {
 		console.log('Произошло событие', event.type);
+
+
 		<?php 
-		$sitemap .= '<?xml version="1.0" encoding="UTF-8"?>' . '<?xml-stylesheet type="text/xsl"?>';
+		$yandex_xml .= "<?xml version='1.0' encoding='UTF-8'?>
+        <!DOCTYPE yml_catalog SYSTEM 'shops.dtd'>
+        <yml_catalog date='".date('Y-m-d H:i')."'>
+        <shop>
+        <name>".get_bloginfo('name')."</name>
+        <url>".get_bloginfo('url')."</url>
+        ";
+
+
+
+
+
+
+
+
+
 		$fp = fopen( ABSPATH . "/wp-content/yandex-xml/lalalal.xml", 'w' );
-		fwrite( $fp, $sitemap );
+		fwrite( $fp, $yandex_xml );
 		fclose( $fp );
 		?>
 		})
