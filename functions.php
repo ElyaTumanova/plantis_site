@@ -102,7 +102,7 @@ function create_xml_button () {
 		console.log('Произошло событие', event.type);
 		<?php 
 		$sitemap .= '<?xml version="1.0" encoding="UTF-8"?>' . '<?xml-stylesheet type="text/xsl"?>';
-		$fp = fopen( ABSPATH . "lalalal.xml", 'w' );
+		$fp = fopen( ABSPATH . "/wp-content/yandex-xml/lalalal.xml", 'w' );
 		fwrite( $fp, $sitemap );
 		fclose( $fp );
 		?>
