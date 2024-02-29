@@ -2,6 +2,8 @@
   $dom = new domDocument("1.0", "utf-8"); // Создаём XML-документ версии 1.0 с кодировкой utf-8
   $root = $dom->createElement("yml_catalog"); // Создаём корневой элемент
   $dom->appendChild($root);
+  $shop = $dom->createElement("shop");
+  $root->appendChild($shop);
 //   $logins = array("User1", "User2", "User3"); // Логины пользователей
 //   $passwords = array("Pass1", "Pass2", "Pass3"); // Пароли пользователей
 //   for ($i = 0; $i < count($logins); $i++) {
