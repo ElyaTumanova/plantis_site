@@ -444,6 +444,13 @@
     }
 }
 
+@media (max-width:1279px) {
+    .side-cart__open-btn {
+        bottom: 95px;
+    }
+}
+
+
 .side-cart__wrap .popup {
     display: block;
 }
