@@ -20,6 +20,29 @@ function create_yandex_xml () {
         <shop>
         <name>".get_bloginfo('name')."</name>
         <url>".get_bloginfo('url')."</url>
+        <currencies>
+        <currency id='RUB' rate='1'/>
+        </currencies>
+        ";
+
+        $yandex_xml .="<categories>
+        ";
+
+        $args=array(
+            'taxonomy'   => 'product_cat',
+            'hide_empty' => true,
+        );
+        $terms=get_terms($args);
+        foreach($terms as $item){
+            $yandex_xml .="<category id='".$item->term_id."'";
+        
+            if($item->parent!=0){
+                $yandex_xml .= " parentId='".$item->parent."'";
+            }
+            $yandex_xml .= ">".htmlspecialchars(trim($item->name))."</category>
+            ";
+        }
+        $yandex_xml .= "</categories>
         ";
 
 
