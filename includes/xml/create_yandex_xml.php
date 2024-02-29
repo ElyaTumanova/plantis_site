@@ -7,6 +7,10 @@ function create_yandex_xml () {
 	?>
 	<button class="my_test_button">Click me</button>
 	<script>
+        const intervalId = setInterval(function() {
+        console.log('Я выполняюсь каждую секунду')
+        }, 1000);
+        
 		const element = document.querySelector('.my_test_button')
 
 		element.addEventListener('click', function (event) {
