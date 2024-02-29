@@ -85,7 +85,7 @@ function checkout_validation_unique_error( $data, $errors ){
 add_action( 'wp_footer', 'new_custom_checkout_field_script' );
 function new_custom_checkout_field_script() {
 	
-	if( !is_page( 12 ) ) {
+	if( !is_page( 'checkout' ) ) {
 		return;
 	}
 
