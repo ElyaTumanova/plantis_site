@@ -3,9 +3,26 @@
 // 	exit; // Exit if accessed directly
 // }
 
-$xml = new SimpleXMLElement('<xml/>');
+function create_yandex_xml () {
+	?>
+	<button class="my_test_button">Click me</button>
+	<script>
+		const element = document.querySelector('.my_test_button')
 
-echo $xml->asXML("wp-content/yandex-xml/users2.xml");
+		element.addEventListener('click', function (event) {
+		console.log('Произошло событие', event.type);
+		<?php 
+		$sitemap .= '<?xml version="1.0" encoding="UTF-8"?>' . '<?xml-stylesheet type="text/xsl"?>';
+		$fp = fopen( ABSPATH . "/wp-content/yandex-xml/lalalal.xml", 'w' );
+		fwrite( $fp, $sitemap );
+		fclose( $fp );
+		?>
+		})
+	</script>
+	<?php
+}
+
+add_action( 'wp_footer', 'create_yandex_xml' );
 
 // $dom = new domDocument("1.0", "utf-8"); // Создаём XML-документ версии 1.0 с кодировкой utf-8
 // $root = $dom->createElement("yml_catalog"); // Создаём корневой элемент

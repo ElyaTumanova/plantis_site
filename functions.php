@@ -29,8 +29,8 @@ require get_template_directory() . '/includes/ajax.php';
 require get_template_directory() . '/includes/constants.php';
 /** Add Ynadex metrika */
 require get_template_directory() . '/includes/metrika.php';
-// /** Add XML */
-// require get_template_directory() . '/includes/xml/create-test-xml.php';
+/** Add XML */
+require get_template_directory() . '/includes/xml/create-test-xml.php';
 
 /** Add Woocommerce files */
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
@@ -81,35 +81,4 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 // add_action( 'wp_footer', 'get_cats' );
 
-/* function to create sitemap.xml file in root directory of site  */
 
-add_action( "save_post", "eg_create_sitemap" );
-function eg_create_sitemap() {
-    $sitemap .= '<?xml version="1.0" encoding="UTF-8"?>' . '<?xml-stylesheet type="text/xsl"?>';
-    $fp = fopen( ABSPATH . "lalalal.xml", 'w' );
-    fwrite( $fp, $sitemap );
-    fclose( $fp );
-}
-
-
-function create_xml_button () {
-	?>
-	<button class="my_test_button">Click me</button>
-	<script>
-		const element = document.querySelector('.my_test_button')
-
-		element.addEventListener('click', function (event) {
-		console.log('Произошло событие', event.type);
-		<?php 
-		$sitemap .= '<?xml version="1.0" encoding="UTF-8"?>' . '<?xml-stylesheet type="text/xsl"?>';
-		$fp = fopen( ABSPATH . "/wp-content/yandex-xml/lalalal.xml", 'w' );
-		fwrite( $fp, $sitemap );
-		fclose( $fp );
-		?>
-		})
-
-	</script>
-	<?php
-}
-
-add_action( 'wp_footer', 'create_xml_button' );
