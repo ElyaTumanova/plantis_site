@@ -94,7 +94,15 @@ function eg_create_sitemap() {
 
 function create_xml_button () {
 	?>
-	<button>Click me</button>
+	<button class="my_test_button">Click me</button>
+	<script>
+		const element = document.querySelector('my_test_button')
+
+		element.addEventListener('click', function (event) {
+		console.log('Произошло событие', event.type)
+		})
+
+	</script>
 	<?php
 }
 
