@@ -3,8 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 // Подключаем библиотеки CMS WordPress
-define('WP_USE_THEMES', false);
-require_once('wp-load.php');
+// define('WP_USE_THEMES', false);
+// require_once('wp-load.php');
 
 $dom = new domDocument("1.0", "utf-8"); // Создаём XML-документ версии 1.0 с кодировкой utf-8
 $root = $dom->createElement("yml_catalog"); // Создаём корневой элемент
