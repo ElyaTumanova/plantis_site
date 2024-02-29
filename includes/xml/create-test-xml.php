@@ -49,7 +49,7 @@ function create_yandex_xml () {
         $yandex_xml .= "<offers>
         ";
         $args=array(
-            'post_type'      => 'products',
+            'post_type'      => 'product',
             'posts_per_page' => -1,
             'post_status'    => 'publish',
         );
