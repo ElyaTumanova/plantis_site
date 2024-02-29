@@ -1,18 +1,25 @@
 <?php
-  $dom = new domDocument("1.0", "utf-8"); // Создаём XML-документ версии 1.0 с кодировкой utf-8
-  $root = $dom->createElement("yml_catalog"); // Создаём корневой элемент
-  $root->setAttribute("date", date('Y-m-d H:i'));
-  $dom->appendChild($root);
-  $shop = $dom->createElement("shop");
-  $root->appendChild($shop);
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+// Подключаем библиотеки CMS WordPress
+define('WP_USE_THEMES', false);
+require_once('wp-load.php');
 
-  //Добавляем элементы в shop
-  $name = $dom->createElement("name", get_bloginfo('name'));
-  $shop->appendChild($name);
-  $company = $dom->createElement("company", get_bloginfo('name'));
-  $shop->appendChild($company);
-  $url = $dom->createElement("url", get_bloginfo('url'));
-  $shop->appendChild($url);
+$dom = new domDocument("1.0", "utf-8"); // Создаём XML-документ версии 1.0 с кодировкой utf-8
+$root = $dom->createElement("yml_catalog"); // Создаём корневой элемент
+$root->setAttribute("date", date('Y-m-d H:i'));
+$dom->appendChild($root);
+$shop = $dom->createElement("shop");
+$root->appendChild($shop);
+
+//Добавляем элементы в shop
+$name = $dom->createElement("name", get_bloginfo('name'));
+$shop->appendChild($name);
+$company = $dom->createElement("company", get_bloginfo('name'));
+$shop->appendChild($company);
+$url = $dom->createElement("url", get_bloginfo('url'));
+$shop->appendChild($url);
 
 
 //   $platform = $dom->createElement("platform",'WordPress - Yml for Yandex Market');
