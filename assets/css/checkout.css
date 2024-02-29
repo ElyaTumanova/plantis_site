@@ -207,6 +207,10 @@
 
 /* контактная информация */
 
+.woocommerce-billing-fields .required {
+    display: none;
+}
+
 .woocommerce-billing-fields__field-wrapper input {
     padding: 14px 20px;
     width: 100%;
@@ -216,6 +220,10 @@
 
 .woocommerce-billing-fields__field-wrapper input.input-radio {
     width: fit-content;
+}
+
+.billing_dontcallme_field .woocommerce-input-wrapper {
+    margin-top: 10px;
 }
 
 #billing_phone_field, #billing_email_field {
