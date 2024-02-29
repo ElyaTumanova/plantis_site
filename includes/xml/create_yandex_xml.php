@@ -16,7 +16,7 @@ function create_yandex_xml_btn () {
 		element.addEventListener('click', function (event) {
 		console.log('Произошло событие', event.type);
         create_yandex_xml();
-        }
+        };
 
         function create_yandex_xml(){
 		<?php 
