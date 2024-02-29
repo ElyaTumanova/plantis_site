@@ -112,9 +112,10 @@ function new_custom_checkout_field_script() {
                 b1 = b+a1+f,        b2 = b+a2+f,        b3 = b+a3+f,        b4 = b+a4+f,        b5 = b+a5+f, b6 = b+a6+f, b7 = b+a7+f,
                 s1 = s+a1+f,        s2 = s+a2+f,        s3 = s+a3+f,        s4 = s+a4+f,        s5 = s+a5+f,
                 localPickup = '<?php echo $local_pickup; ?>',
-				urgentPickup1 = '<?php echo $urgent_delivery1; ?>',urgentPickup2 = '<?php echo $urgent_delivery2; ?>';
+				urgentPickup1 = '<?php echo $urgent_delivery1; ?>',urgentPickup2 = '<?php echo $urgent_delivery2; ?>',
 				urgentPickup3 = '<?php echo $urgent_delivery3; ?>',urgentPickup4 = '<?php echo $urgent_delivery4; ?>';
 
+                console.log(b7);
                 console.log(document.querySelector(b7));
 
             // Utility function to shows or hide checkout fields
