@@ -9,6 +9,8 @@ function create_yandex_xml_btn () {
 	<script>
         function create_yandex_xml(){
 		<?php 
+        global $treez_cat_id;
+        global $treez_poliv_cat_id;
 		$yandex_xml .= "<?xml version='1.0' encoding='UTF-8'?>
         <yml_catalog date='".date('Y-m-d H:i')."'>
         <shop>
@@ -25,7 +27,7 @@ function create_yandex_xml_btn () {
         $args=array(
             'taxonomy'   => 'product_cat',
             'hide_empty' => true,
-            'exclude_tree'    => array(379,229),
+            'exclude_tree'    => array($treez_cat_id, $treez_poliv_cat_id),
         );
         $terms=get_terms($args);
         foreach($terms as $item){
@@ -52,7 +54,7 @@ function create_yandex_xml_btn () {
                     'taxonomy' => 'product_cat',
                     'field' => 'id',
                     'operator' => 'NOT IN',
-                    'terms' => [379,229],
+                    'terms' => [$treez_cat_id, $treez_poliv_cat_id],
                     'include_children' => 1,
                 )
             )
