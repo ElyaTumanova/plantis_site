@@ -28,7 +28,7 @@
         <br>Расчетный счёт: 40802810900002894566 Банк: АО “ТИНЬКОФФ БАНК” БИК: 044525974 Корр. счёт: 30101810145250000974
     </p>
 </div>
-<?php if(WC()->cart->get_cart_contents_count()>0) {
+<?php //if(WC()->cart->get_cart_contents_count()>0) {
     ?> 
         <div class="side-cart__wrap">
             <?php $cart_icon = carbon_get_theme_option('cart_icon')?>
@@ -45,7 +45,7 @@
             </div>
         </div>
     <?php
-}?> 
+//}?> 
 
 
 
