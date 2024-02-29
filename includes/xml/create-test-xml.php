@@ -28,6 +28,16 @@ $currency->setAttribute("rate", '1');
 $currency->setAttribute("rate", '1');
 $currencies->appendChild($currency); 
 
+//Добавляем категории
+$categories = $dom->createElement("categories");
+$shop->appendChild($categories);
+
+$category = $dom->createElement("category");
+$categories->appendChild($category);
+
+
+
+
 
 //   $logins = array("User1", "User2", "User3"); // Логины пользователей
 //   $passwords = array("Pass1", "Pass2", "Pass3"); // Пароли пользователей
@@ -44,7 +54,3 @@ $currencies->appendChild($currency);
   $dom->save("wp-content/yandex-xml/users1.xml"); // Сохраняем полученный XML-документ в файл
 ?>
 
-<!-- 
-<currencies>
-<currency id="RUR" rate="1"/>
-</currencies> -->
