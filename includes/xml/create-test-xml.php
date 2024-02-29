@@ -40,5 +40,5 @@
 
 	$dom->save($xml_file_name);
 
-	echo "$xml_file_name has been successfully created";
+	echo "$xml_file_name HIHIHIHIHIHI has been successfully created";
 ?>
