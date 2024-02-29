@@ -214,7 +214,7 @@
     border: 1px solid #ccc;
 }
 
-#billing_dontcallme_field .woocommerce-billing-fields__field-wrapper input {
+.woocommerce-billing-fields__field-wrapper input.input-radio {
     width: fit-content;
 }
 
