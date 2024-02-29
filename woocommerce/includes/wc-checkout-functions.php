@@ -101,7 +101,7 @@ function new_custom_checkout_field_script() {
     ?>
     <script>
 		deliveryDate = document.querySelector('#e_deliverydate_field');
-		deliveryInterval = document.querySelector('#additional_delivery_interval_field');
+		deliveryInterval = document.querySelector('#orddd_time_slot_field');
         jQuery(function($){
             var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
                 csa = 'input#ship-to-different-address-checkbox',
