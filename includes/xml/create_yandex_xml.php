@@ -51,6 +51,15 @@ function create_yandex_xml () {
             'post_type'      => 'product',
             'posts_per_page' => -1,
             'post_status'    => 'publish',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'product_cat',
+                    'field' => 'id',
+                    'operator' => 'NOT IN',
+                    'terms' => '379',
+                    'include_children' => 1,
+                )
+            )
         );
         $query = new WP_Query;
         $allproducts = $query->query($args);
