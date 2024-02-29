@@ -80,3 +80,14 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 // }
 
 // add_action( 'wp_footer', 'get_cats' );
+
+/* function to create sitemap.xml file in root directory of site  */
+
+add_action( "save_post", "eg_create_sitemap" );
+function eg_create_sitemap() {
+    $sitemap .= '<?xml version="1.0" encoding="UTF-8"?>' . '<?xml-stylesheet type="text/xsl" href="' . 
+        esc_url( home_url( '/' ) ) . 'sitemap.xsl"?>';
+    $fp = fopen( ABSPATH . "lalalal.xml", 'w' );
+    fwrite( $fp, $sitemap );
+    fclose( $fp );
+}
