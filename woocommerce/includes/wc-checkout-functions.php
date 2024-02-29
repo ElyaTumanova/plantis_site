@@ -370,7 +370,7 @@ function custom_checkout_field_script() {
 /* скрываем лишние способы доставки если доступна доставка бесплатная*/
 add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_method', 20, 2 );
 
-function new_truemisha_remove_shipping_method( $package['rates'], $package ) {
+function new_truemisha_remove_shipping_method( $package ) {
     echo '<pre>';
 	print_r( $package );
 	echo '</pre>';
