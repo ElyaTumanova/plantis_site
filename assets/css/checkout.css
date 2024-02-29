@@ -259,12 +259,12 @@
 
 #orddd-checkout-fields p {
     width: calc(50% - 15px);
+    margin-bottom: 30px;
 }
 
 #orddd-checkout-fields input {
     padding: 14px 20px;
     width: 100%;
-    margin-bottom: 30px;
     border: 1px solid #ccc;
 }
 
