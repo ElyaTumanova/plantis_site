@@ -1,7 +1,7 @@
 <?php
 // Подключаем библиотеки CMS WordPress
-// define('WP_USE_THEMES', false);
-// require_once('wp-load.php');
+define('WP_USE_THEMES', false);
+require_once('wp-load.php');
 
 // Прописываем значения, чтобы файл читался и открывался как XML
 // header("Content-type: text/xml; charset=UTF-8");
