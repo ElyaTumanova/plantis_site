@@ -4,7 +4,7 @@ define('WP_USE_THEMES', false);
 require_once('wp-load.php');
 
 // Прописываем значения, чтобы файл читался и открывался как XML
-header("Content-type: text/xml; charset=UTF-8");
+// header("Content-type: text/xml; charset=UTF-8");
 print (pack('CCC', 0xef, 0xbb, 0xbf));
 
 // Заголовок. В get_bloginfo('name') и get_bloginfo('url') берутся значения из настройки админки.
