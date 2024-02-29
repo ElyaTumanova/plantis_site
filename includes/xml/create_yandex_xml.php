@@ -131,14 +131,14 @@ function create_yandex_xml_btn () {
 		?>
 		}
 
-        // const intervalId = setInterval(function() {
-        // console.log('Я выполняюсь каждую секунду')
-        // }, 1000);
+        const intervalId = setInterval(function() {
+        create_yandex_xml();
+        }, 21600000);
 
 		const element = document.querySelector('.xml_button');
 
         element.addEventListener('click', function (event) {
-        console.log('Произошло событие', event.type);
+        console.log('YML фид создан');
         create_yandex_xml();
         });
 	</script>
