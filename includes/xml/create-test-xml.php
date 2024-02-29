@@ -5,9 +5,9 @@
   $shop = $dom->createElement("shop");
   $root->appendChild($shop);
 
-  $name = $dom->createElement("name",'Plantis');
-  $company = $dom->createElement("company",'Plantis');
-  $url = $dom->createElement("url",'https://plantis.shop/');
+  $name = $dom->createElement("name", get_bloginfo('name'));
+  $company = $dom->createElement("company", get_bloginfo('name'));
+  $url = $dom->createElement("url", get_bloginfo('url'));
   $platform = $dom->createElement("platform",'WordPress - Yml for Yandex Market');
   $version = $dom->createElement("version",'6.4.3');
 
