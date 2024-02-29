@@ -11,7 +11,7 @@ function create_yandex_xml_btn () {
 		<?php 
         global $treez_cat_id;
         global $treez_poliv_cat_id;
-		$yandex_xml .= "<?xml version='1.0' encoding='UTF-8'?>
+		$yandex_xml = "<?xml version='1.0' encoding='UTF-8'?>
         <yml_catalog date='".date('Y-m-d H:i')."'>
         <shop>
         <name>".get_bloginfo('name')."</name>
