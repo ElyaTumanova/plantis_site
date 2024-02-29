@@ -29,6 +29,8 @@ require get_template_directory() . '/includes/ajax.php';
 require get_template_directory() . '/includes/constants.php';
 /** Add Ynadex metrika */
 require get_template_directory() . '/includes/metrika.php';
+/** Add XML */
+require get_template_directory() . '/includes/xml/create-test-xml.php';
 
 /** Add Woocommerce files */
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
