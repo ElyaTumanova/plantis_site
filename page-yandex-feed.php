@@ -28,8 +28,8 @@ print "<currencies>
 print "<categories>
 ";
 $args=array(
-	'taxonomy'   => 'products_category',
-    'hide_empty' => false,
+	'taxonomy'   => 'product_cat',
+    'hide_empty' => true,
 );
 $terms=get_terms($args);
 foreach($terms as $item){
