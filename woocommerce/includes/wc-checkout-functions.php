@@ -393,11 +393,11 @@ function hide_shipping_when_free_is_available( $rates, $package ) {
 	return $rates;
 }
 
-add_filter( 'woocommerce_package_rates', 'hide_shipping_when_free_is_available', 10, 2 );
+//add_filter( 'woocommerce_package_rates', 'hide_shipping_when_free_is_available', 10, 2 );
 
 
 
-//add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_method', 20, 2 );
+add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_method', 20, 2 );
  
 function new_truemisha_remove_shipping_method( $rates, $package ) {
  
