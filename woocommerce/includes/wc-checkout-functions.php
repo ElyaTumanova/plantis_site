@@ -373,7 +373,7 @@ add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_method',
 function new_truemisha_remove_shipping_method( $rates, $package ) {
     echo '<script>
     console.log ('.$rates.')
-    </script>'
+    </script>';
  
 	// удаляем способ доставки, если доступна бесплатная
 	if ( isset( $rates[ 'free_shipping:5' ] ) ) { 
