@@ -371,6 +371,9 @@ function custom_checkout_field_script() {
 add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_method', 20, 2 );
  
 function new_truemisha_remove_shipping_method( $rates, $package ) {
+    echo '<script>
+    console.log ('.$rates.')
+    </script>'
  
 	// удаляем способ доставки, если доступна бесплатная
 	if ( isset( $rates[ 'free_shipping:5' ] ) ) { 
