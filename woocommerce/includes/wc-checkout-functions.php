@@ -369,34 +369,6 @@ function custom_checkout_field_script() {
 
 /* скрываем лишние способы доставки если доступна доставка бесплатная*/
 
-function hide_shipping_when_free_is_available( $rates, $package ) {
-	$new_rates = array();
-	foreach ( $rates as $rate_id => $rate ) {
-		// Only modify rates if free_shipping is present.
-		if ( 'free_shipping' === $rate->method_id ) {
-			$new_rates[ $rate_id ] = $rate;
-			break;
-		}
-	}
-
-	if ( ! empty( $new_rates ) ) {
-		//Save local pickup if it's present.
-		foreach ( $rates as $rate_id => $rate ) {
-			if ('local_pickup' === $rate->method_id ) {
-				$new_rates[ $rate_id ] = $rate;
-				break;
-			}
-		}
-		return $new_rates;
-	}
-
-	return $rates;
-}
-
-//add_filter( 'woocommerce_package_rates', 'hide_shipping_when_free_is_available', 10, 2 );
-
-
-
 add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_method', 20, 2 );
  
 function new_truemisha_remove_shipping_method( $rates, $package ) {
@@ -437,8 +409,27 @@ function truemisha_remove_shipping_method( $rates, $package ) {
 
 /* стоимость доставки в зависимости от суммы заказа*/
 	
-//add_filter( 'woocommerce_package_rates', 'truemisha_remove_shipping_on_price', 25, 2 );
+add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
  
+function new_truemisha_remove_shipping_on_price( $rates, $package ) {
+ 
+	// если сумма всех товаров в корзине меньше 1000, отключаем способ доставки
+	if ( WC()->cart->subtotal < 2000 ) {
+	    unset( $rates[ 'flat_rate:1' ] );
+		unset( $rates[ 'flat_rate:12' ] );
+		unset( $rates[ 'flat_rate:13' ] );
+		unset( $rates[ 'flat_rate:14' ] );		
+	} else {
+		unset( $rates[ 'flat_rate:15' ] );
+		unset( $rates[ 'flat_rate:16' ] );
+		unset( $rates[ 'flat_rate:17' ] );
+		unset( $rates[ 'flat_rate:18' ] );
+	}
+ 
+	return $rates;
+ 
+}
+
 function truemisha_remove_shipping_on_price( $rates, $package ) {
  
 	// если сумма всех товаров в корзине меньше 1000, отключаем способ доставки
