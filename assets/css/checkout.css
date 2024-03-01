@@ -339,14 +339,14 @@ div#orddd_list_view_select {
   }
 
   /* для элемента label связанного с .custom-radio */
-  .custom-radio+label {
+  .order_wrap input[type=radio]+label {
     display: inline-flex;
     align-items: center;
     user-select: none;
   }
 
   /* создание в label псевдоэлемента  before со следующими стилями */
-  .custom-radio+label::before {
+  .order_wrap input[type=radio]+label::before {
     content: '';
     display: inline-block;
     width: 1em;
