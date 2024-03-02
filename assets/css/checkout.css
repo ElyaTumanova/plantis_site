@@ -173,11 +173,6 @@
     width: 140px;
 }
 
-#order_review table > thead > tr > th.product-total {
-    display: flex;
-    justify-content: end;
-}
-
 #order_review table > tbody > tr > td.product-total {
     display: flex;
     justify-content: end;
