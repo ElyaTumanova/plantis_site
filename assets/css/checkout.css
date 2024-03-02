@@ -178,6 +178,12 @@
     justify-content: end;
 }
 
+
+#order_review table > tfoot > tr.order-total > td {
+    display: flex;
+    justify-content: end;
+}
+
 #shipping_method li label {
     width: 100%;
     justify-content: flex-start;
