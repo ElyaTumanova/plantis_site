@@ -175,6 +175,15 @@
     width: 140px;
 }
 
+#shipping_method li label {
+    width: 100%;
+    justify-content: flex-start;
+}
+
+#shipping_method li span {
+    margin-left: auto;
+}
+
 /* способы оплаты */
 
 .wc_payment_methods li .payment_box {
