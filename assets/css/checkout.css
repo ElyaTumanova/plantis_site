@@ -97,8 +97,6 @@
 }
 
 
-
-
 /*офорление блока доставка и итого*/
 
 .woocommerce-shipping-totals.shipping {border-top: 2px solid var(--accent-color); background-color: var(--accent-back);}
@@ -173,6 +171,11 @@
 
 .woocommerce-checkout .woocommerce-checkout-review-order table tr th:last-child, .woocommerce-checkout .woocommerce-checkout-review-order table tr td:last-child {
     width: 140px;
+}
+
+#order_review table > tbody > td.product-total {
+    display: flex;
+    justify-content: end;
 }
 
 #shipping_method li label {
