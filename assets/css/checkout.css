@@ -173,7 +173,7 @@
     width: 140px;
 }
 
-#order_review table > tbody > td.product-total {
+#order_review table > tbody > tr > td.product-total {
     display: flex;
     justify-content: end;
 }
