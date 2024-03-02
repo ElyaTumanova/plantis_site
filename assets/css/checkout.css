@@ -133,8 +133,6 @@
     font-size: 16px;
     padding: 10px 20px;
     text-align: left;
-    display: flex;
-    justify-content: end;
 }
 
 .woocommerce-checkout .woocommerce-checkout-review-order table tbody tr td {
@@ -173,6 +171,11 @@
 
 .woocommerce-checkout .woocommerce-checkout-review-order table tr th:last-child, .woocommerce-checkout .woocommerce-checkout-review-order table tr td:last-child {
     width: 140px;
+}
+
+#order_review table > thead > tr > th.product-total {
+    display: flex;
+    justify-content: end;
 }
 
 #order_review table > tbody > tr > td.product-total {
