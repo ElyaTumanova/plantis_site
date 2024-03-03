@@ -146,8 +146,8 @@ function new_custom_checkout_field_script() {
                     showHide('hide',b5);    //state
 					showHide('hide',b6);    //city
                     showHide('hide',b7);    //#billing_adress_3_field
-                    console.log(b1);
-                    document.querySelector(b1).classList.remove(vr);
+                    console.log(document.querySelector(b2));
+                    //document.querySelector(b2).classList.remove(vr);
                     //b1.classList.remove(vr); ///// here
                 }
         
