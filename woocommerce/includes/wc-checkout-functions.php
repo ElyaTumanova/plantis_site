@@ -127,7 +127,9 @@ function new_custom_checkout_field_script() {
                     });
                 else
                     $(selector).hide(function(){
+                        console.log($(this));
                         $(this).removeClass(vr);
+                        console.log($(this));
                         $(this).removeClass(wv);
                         $(this).removeClass(wir);
                         if( $(selector+' > label > abbr').html() != undefined )
