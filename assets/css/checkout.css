@@ -174,8 +174,7 @@
 }
 
 #order_review table > tbody > tr > td.product-total {
-    display: flex;
-    justify-content: end;
+    text-align: right;
 }
 
 #order_review table > tfoot > tr.order-total > td {
