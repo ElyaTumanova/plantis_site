@@ -470,6 +470,13 @@ div#orddd_list_view_select {
     margin-bottom: 5px;
 }
 
+.woocommerce-order-details .woocommerce-table--custom-fields {
+    width: fit-content;
+}
+.woocommerce-order-details .woocommerce-table--custom-fields th {
+    padding-right: 15px;
+}
+
 
 /* товары в заказе*/
 .woocommerce-order-details__title {

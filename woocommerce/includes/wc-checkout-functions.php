@@ -120,7 +120,6 @@ function new_custom_checkout_field_script() {
                 if( action == 'show' )
                     $(selector).show(function(){
                         $(this).addClass(vr);
-                        console.log($(this));
                         $(this).removeClass(wv);
                         $(this).removeClass(wir);
                         if( $(selector+' > label > abbr').html() == undefined )
