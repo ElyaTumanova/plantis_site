@@ -139,6 +139,7 @@ function new_custom_checkout_field_script() {
             setTimeout(function(){
                 if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
                 {
+                    console.log(document.querySelector(b2));
                     // showHide('hide',b1);    //#billing_country_field - always hidden
                     showHide('hide',b2);    //#billing_adress_1_field
                     showHide('hide',b3);    //#billing_adress_2_field  
