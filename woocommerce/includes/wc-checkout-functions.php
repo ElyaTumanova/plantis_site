@@ -140,6 +140,7 @@ function new_custom_checkout_field_script() {
                 if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
                 {
                     console.log(document.querySelector(b2));
+                    console.log(document.querySelector(b3));
                     // showHide('hide',b1);    //#billing_country_field - always hidden
                     showHide('hide',b2);    //#billing_adress_1_field
                     showHide('hide',b3);    //#billing_adress_2_field  
@@ -148,9 +149,7 @@ function new_custom_checkout_field_script() {
 					showHide('hide',b6);    //city
                     showHide('hide',b7);    //#billing_adress_3_field
                     console.log(document.querySelector(b2));
-                    console.log($(ismc).val());
-                    //document.querySelector(b2).classList.remove(vr);
-                    //b1.classList.remove(vr); ///// here
+                    console.log(document.querySelector(b3));
                 }
         
                 else
