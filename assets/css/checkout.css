@@ -243,6 +243,13 @@
     border: 1px solid #ccc;
 }
 
+@media (max-width: 767px) {
+    .woocommerce-billing-fields__field-wrapper input {
+        margin-bottom: 15px;
+    }
+    
+}
+
 .woocommerce-billing-fields__field-wrapper input.input-radio {
     width: fit-content;
 }
@@ -266,6 +273,16 @@
 
 #billing_phone_field {
     margin-right: 30px;
+}
+
+@media (max-width: 767px) {
+    #billing_phone_field, #billing_email_field {
+        width: 100%;
+    }
+    
+    #billing_phone_field {
+        margin-right: 0;
+    }
 }
 
 .woocommerce-additional-fields h3 {
