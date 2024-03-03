@@ -120,6 +120,7 @@ function new_custom_checkout_field_script() {
                 if( action == 'show' )
                     $(selector).show(function(){
                         $(this).addClass(vr);
+                        console.log($(this));
                         $(this).removeClass(wv);
                         $(this).removeClass(wir);
                         if( $(selector+' > label > abbr').html() == undefined )
@@ -127,9 +128,7 @@ function new_custom_checkout_field_script() {
                     });
                 else
                     $(selector).hide(function(){
-                        console.log($(this));
                         $(this).removeClass(vr);
-                        console.log($(this));
                         $(this).removeClass(wv);
                         $(this).removeClass(wir);
                         if( $(selector+' > label > abbr').html() != undefined )
@@ -141,8 +140,6 @@ function new_custom_checkout_field_script() {
             setTimeout(function(){
                 if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
                 {
-                    console.log(document.querySelector(b2));
-                    console.log(document.querySelector(b3));
                     // showHide('hide',b1);    //#billing_country_field - always hidden
                     showHide('hide',b2);    //#billing_adress_1_field
                     showHide('hide',b3);    //#billing_adress_2_field  
@@ -150,8 +147,6 @@ function new_custom_checkout_field_script() {
                     showHide('hide',b5);    //state
 					showHide('hide',b6);    //city
                     showHide('hide',b7);    //#billing_adress_3_field
-                    console.log(document.querySelector(b2));
-                    console.log(document.querySelector(b3));
                 }
         
                 else
