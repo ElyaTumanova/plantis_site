@@ -186,7 +186,7 @@ function new_custom_checkout_field_script() {
                 } else {
 					deliveryDate.classList.remove('d-none');
 				};
-                bi.classList.remove(vr); ///// here
+                b1.classList.remove(vr); ///// here
             });
 			
 			 $( 'form.checkout' ).on( 'change', ism, function() {		
