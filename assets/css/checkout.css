@@ -186,10 +186,13 @@
 #shipping_method li label {
     width: 100%;
     justify-content: flex-start;
+    align-items: flex-start;
 }
 
 #shipping_method li span {
     margin-left: auto;
+    min-width: 85px;
+    text-align: right;
 }
 
 /* способы оплаты */
