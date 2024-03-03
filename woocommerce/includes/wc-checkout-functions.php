@@ -146,6 +146,7 @@ function new_custom_checkout_field_script() {
                     showHide('hide',b5);    //state
 					showHide('hide',b6);    //city
                     showHide('hide',b7);    //#billing_adress_3_field
+                    b1.removeClass(vr); ///// here
                 }
         
                 else
@@ -186,7 +187,6 @@ function new_custom_checkout_field_script() {
                 } else {
 					deliveryDate.classList.remove('d-none');
 				};
-                b1.classList.remove(vr); ///// here
             });
 			
 			 $( 'form.checkout' ).on( 'change', ism, function() {		
