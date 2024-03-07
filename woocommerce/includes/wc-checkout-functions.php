@@ -512,7 +512,7 @@ function true_process_fields( $data ) {
 
 	// затем доп поля
 	if( ! empty( $_POST[ 'billing_address_4' ] ) ) {
-		$fields[] = 'дополнительная информация ' . absint( $_POST[ 'billing_address_4' ] );
+		$fields[] = 'дополнительная информация ' . $_POST[ 'billing_address_4' ];
 	}
 
 	// объединяем все заполненные данные запятой
