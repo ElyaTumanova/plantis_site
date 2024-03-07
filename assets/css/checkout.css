@@ -6,14 +6,6 @@
 	.order_wrap {
         display: grid;
         grid-template-columns: 45% auto;
-        column-gap: 20px;
-	}
-}
-
-@media (min-width: 865px) {
-	.order_wrap {
-        display: grid;
-        grid-template-columns: 45% auto;
         column-gap: 40px;
 	}
 }
