@@ -350,6 +350,21 @@ div#orddd_list_view_select {
 
 /* время доставки #adaptive*/
 
+@media (min-width: 768px ) and (max-width: 865px) {
+    #orddd-checkout-fields {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #orddd-checkout-fields p {
+        width: 100%;
+    }
+
+    div#orddd_list_view_select {
+        grid-template-columns: repeat( 4, 1fr) !important;
+    }
+}
+
 @media (max-width: 540px) {
     #orddd-checkout-fields {
         display: flex;
