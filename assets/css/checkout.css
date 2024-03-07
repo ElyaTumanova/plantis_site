@@ -380,6 +380,10 @@ div#orddd_list_view_select {
     line-height: 1.2;
 }
 
+.woocommerce-checkout .woocommerce-NoticeGroup-checkout ul li{
+    margin-bottom: 15px;
+}
+
 .woocommerce-checkout .woocommerce-NoticeGroup-checkout::before {
     content: "\0021";
     position: absolute;
