@@ -412,12 +412,11 @@ div#orddd_list_view_select {
     margin-top: 20px;
     font-size: 18px;
     font-weight: 600;
-    margin-left: 25px;
-    line-height: 1.2;
 }
 
 .woocommerce-checkout .woocommerce-error li{
     margin-bottom: 15px;
+    margin-left: 25px;
 }
 
 .woocommerce-checkout .woocommerce-error::before {
