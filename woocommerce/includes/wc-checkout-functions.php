@@ -146,6 +146,7 @@ function new_custom_checkout_field_script() {
 					showHide('hide',b6);    //city
                     showHide('hide',b7);    //#billing_adress_3_field
                     showHide('hide',b8);    //#billing_adress_4_field
+                    showHide('hide','additional-address-field');    
                 }
         
                 else
@@ -158,6 +159,7 @@ function new_custom_checkout_field_script() {
 					showHide('show',b6);
 					showHide('show',b7);
 					showHide('show',b8);
+                    showHide('show','additional-address-field');
                 }        
             }, 100);
 			
@@ -210,6 +212,7 @@ function new_custom_checkout_field_script() {
 					showHide('hide',b6);
 					showHide('hide',b7);
 					showHide('hide',b8);
+                    showHide('hide','additional-address-field'); 
    
                 }
              
@@ -223,6 +226,7 @@ function new_custom_checkout_field_script() {
 					showHide('show',b6);
 					showHide('show',b7);
 					showHide('show',b8);
+                    showHide('show','additional-address-field'); 
                 }
             });
 	
@@ -460,7 +464,7 @@ function true_fields( $field, $key, $args, $value ) {
  
 	if( 'billing_address_2' === $key ) {
  
-		$field = '<p class="form-row address-field form-row-wide" data-priority="60">
+		$field = '<p class="form-row address-field additional-address-field form-row-wide" data-priority="60">
 			<span class="woocommerce-input-wrapper true-wrapper woocommerce-address-wrapper">
 				<input type="number" name="billing_address_2" id="billing_address_2" placeholder="Подъезд" value="">
 				<input type="number" name="billing_address_3" id="billing_address_3" placeholder="Этаж" value="">
