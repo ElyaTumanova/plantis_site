@@ -101,6 +101,7 @@ function new_custom_checkout_field_script() {
     <script>
 		deliveryDate = document.querySelector('#e_deliverydate_field');
 		deliveryInterval = document.querySelector('#orddd_time_slot_field');
+        additionalAddress = document.querySelector('.additional-address-field');
         jQuery(function($){
             var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
                 csa = 'input#ship-to-different-address-checkbox',
@@ -146,7 +147,7 @@ function new_custom_checkout_field_script() {
 					showHide('hide',b6);    //city
                     showHide('hide',b7);    //#billing_adress_3_field
                     showHide('hide',b8);    //#billing_adress_4_field
-                    showHide('hide','additional-address-field');    
+                    additionalAddress.classList.add('d-none');   
                 }
         
                 else
@@ -159,7 +160,7 @@ function new_custom_checkout_field_script() {
 					showHide('show',b6);
 					showHide('show',b7);
 					showHide('show',b8);
-                    showHide('show','additional-address-field');
+                    additionalAddress.classList.remove('d-none'); 
                 }        
             }, 100);
 			
@@ -212,8 +213,7 @@ function new_custom_checkout_field_script() {
 					showHide('hide',b6);
 					showHide('hide',b7);
 					showHide('hide',b8);
-                    showHide('hide','additional-address-field'); 
-   
+                    additionalAddress.classList.add('d-none'); 
                 }
              
                 else
@@ -226,7 +226,7 @@ function new_custom_checkout_field_script() {
 					showHide('show',b6);
 					showHide('show',b7);
 					showHide('show',b8);
-                    showHide('show','additional-address-field'); 
+                    additionalAddress.classList.remove('d-none'); 
                 }
             });
 	
@@ -234,6 +234,127 @@ function new_custom_checkout_field_script() {
     </script>
     <?php
 }
+
+
+
+/* скрываем лишние способы доставки если доступна доставка бесплатная*/
+
+add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_method', 20, 2 );
+ 
+function new_truemisha_remove_shipping_method( $rates, $package ) {
+ 
+	// удаляем способ доставки, если доступна бесплатная
+	if ( isset( $rates[ 'free_shipping:5' ] ) ) { 
+	    unset( $rates[ 'flat_rate:1' ] );
+// 		unset( $rates[ 'flat_rate:12' ] );
+		unset( $rates[ 'flat_rate:13' ] );
+// 		unset( $rates[ 'flat_rate:14' ] );
+		unset( $rates[ 'flat_rate:15' ] );
+		unset( $rates[ 'flat_rate:16' ] );
+		unset( $rates[ 'flat_rate:17' ] );
+		unset( $rates[ 'flat_rate:18' ] );
+	}
+ 
+	return $rates;
+}
+
+
+/* стоимость доставки в зависимости от суммы заказа*/
+	
+add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
+ 
+function new_truemisha_remove_shipping_on_price( $rates, $package ) {
+ 
+	// если сумма всех товаров в корзине меньше 1000, отключаем способ доставки
+	if ( WC()->cart->subtotal < 2000 ) {
+	    unset( $rates[ 'flat_rate:1' ] );
+		unset( $rates[ 'flat_rate:12' ] );
+		unset( $rates[ 'flat_rate:13' ] );
+		unset( $rates[ 'flat_rate:14' ] );		
+	} else {
+		unset( $rates[ 'flat_rate:15' ] );
+		unset( $rates[ 'flat_rate:16' ] );
+		unset( $rates[ 'flat_rate:17' ] );
+		unset( $rates[ 'flat_rate:18' ] );
+	}
+ 
+	return $rates;
+ 
+}
+
+// делим поле billing_address_2 на несколько полей//
+
+add_filter( 'woocommerce_form_field_text', 'true_fields', 25, 4 );
+ 
+function true_fields( $field, $key, $args, $value ) {
+ 
+	if( 'billing_address_2' === $key ) {
+ 
+		$field = '<p class="form-row address-field additional-address-field form-row-wide" data-priority="60">
+			<span class="woocommerce-input-wrapper true-wrapper woocommerce-address-wrapper">
+				<input type="number" name="billing_address_2" id="billing_address_2" placeholder="Подъезд" value="">
+				<input type="number" name="billing_address_3" id="billing_address_3" placeholder="Этаж" value="">
+				<input type="text" name="billing_address_4" id="billing_address_4" placeholder="Дополнительная информация" value="">
+			</span>
+		</p>';
+ 
+	}
+ 
+	return $field;
+ 
+}
+
+add_filter( 'woocommerce_checkout_posted_data', 'true_process_fields' );
+ 
+function true_process_fields( $data ) {
+ 
+	// в поле billing_address_2 мы и будем записывать новые значения полей
+	$data[ 'billing_address_2' ] = '';
+	$fields = array();
+ 
+	// получаем данные из глобального $_POST, сначала парадную (подъезд)
+	if( ! empty( $_POST[ 'billing_address_2' ] ) ) {
+		$fields[] = 'подъезд ' . absint( $_POST[ 'billing_address_2' ] );
+	}
+	// затем этаж
+	if( ! empty( $_POST[ 'billing_address_3' ] ) ) {
+		$fields[] = 'этаж ' . absint( $_POST[ 'billing_address_3' ] );
+	}
+
+	// затем доп поля
+	if( ! empty( $_POST[ 'billing_address_4' ] ) ) {
+		$fields[] = ' ' . $_POST[ 'billing_address_4' ];
+	}
+
+	// объединяем все заполненные данные запятой
+	$data[ 'billing_address_2' ] = join( ', ', $fields );
+ 
+	// возвращаем результат
+	return $data;
+ 
+}
+
+
+/*--------------------------------------------------------------
+# Thankyou page
+--------------------------------------------------------------*/
+
+// уведомление Спасибо за заказ
+
+add_filter( 'woocommerce_thankyou_order_received_text', 'plnt_custom_ty_msg' );
+
+    function plnt_custom_ty_msg ( $thank_you_msg ) {
+        $emoji = '<img draggable="false" role="img" class="emoji" alt="😉" height="20px" width="20px" src="https://s.w.org/images/core/emoji/14.0.0/svg/1f609.svg">';
+        $thank_you_msg =  'Спасибо за ваш заказ! Наши менеджеры пляшут от радости! Как закончат танцевать, сразу вам перезвонят ' . $emoji ;
+
+    return $thank_you_msg;
+}
+
+
+
+/*--------------------------------------------------------------
+# old functions for plantis.shop
+--------------------------------------------------------------*/
 
 
 function custom_checkout_field_script() {
@@ -374,68 +495,6 @@ function custom_checkout_field_script() {
     <?php
 }
 
-/* скрываем лишние способы доставки если доступна доставка бесплатная*/
-
-add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_method', 20, 2 );
- 
-function new_truemisha_remove_shipping_method( $rates, $package ) {
- 
-	// удаляем способ доставки, если доступна бесплатная
-	if ( isset( $rates[ 'free_shipping:5' ] ) ) { 
-	    unset( $rates[ 'flat_rate:1' ] );
-// 		unset( $rates[ 'flat_rate:12' ] );
-		unset( $rates[ 'flat_rate:13' ] );
-// 		unset( $rates[ 'flat_rate:14' ] );
-		unset( $rates[ 'flat_rate:15' ] );
-		unset( $rates[ 'flat_rate:16' ] );
-		unset( $rates[ 'flat_rate:17' ] );
-		unset( $rates[ 'flat_rate:18' ] );
-	}
- 
-	return $rates;
-}
-
-// function truemisha_remove_shipping_method( $rates, $package ) {
- 
-// 	// удаляем способ доставки, если доступна бесплатная
-// 	if ( isset( $rates[ 'free_shipping:4' ] ) ) {
-// 	    unset( $rates[ 'flat_rate:2' ] );
-// // 		unset( $rates[ 'flat_rate:3' ] );
-// 		unset( $rates[ 'flat_rate:5' ] );
-// // 		unset( $rates[ 'flat_rate:6' ] );
-// 		unset( $rates[ 'flat_rate:9' ] );
-// 		unset( $rates[ 'flat_rate:10' ] );
-// 		unset( $rates[ 'flat_rate:11' ] );
-// 		unset( $rates[ 'flat_rate:12' ] );
-// 	}
- 
-// 	return $rates;
-// }
-
-
-
-/* стоимость доставки в зависимости от суммы заказа*/
-	
-add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
- 
-function new_truemisha_remove_shipping_on_price( $rates, $package ) {
- 
-	// если сумма всех товаров в корзине меньше 1000, отключаем способ доставки
-	if ( WC()->cart->subtotal < 2000 ) {
-	    unset( $rates[ 'flat_rate:1' ] );
-		unset( $rates[ 'flat_rate:12' ] );
-		unset( $rates[ 'flat_rate:13' ] );
-		unset( $rates[ 'flat_rate:14' ] );		
-	} else {
-		unset( $rates[ 'flat_rate:15' ] );
-		unset( $rates[ 'flat_rate:16' ] );
-		unset( $rates[ 'flat_rate:17' ] );
-		unset( $rates[ 'flat_rate:18' ] );
-	}
- 
-	return $rates;
- 
-}
 
 // function truemisha_remove_shipping_on_price( $rates, $package ) {
  
@@ -456,70 +515,20 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
  
 // }
 
-// делим поле billing_address_2 на несколько полей//
 
-add_filter( 'woocommerce_form_field_text', 'true_fields', 25, 4 );
+// function truemisha_remove_shipping_method( $rates, $package ) {
  
-function true_fields( $field, $key, $args, $value ) {
+// 	// удаляем способ доставки, если доступна бесплатная
+// 	if ( isset( $rates[ 'free_shipping:4' ] ) ) {
+// 	    unset( $rates[ 'flat_rate:2' ] );
+// // 		unset( $rates[ 'flat_rate:3' ] );
+// 		unset( $rates[ 'flat_rate:5' ] );
+// // 		unset( $rates[ 'flat_rate:6' ] );
+// 		unset( $rates[ 'flat_rate:9' ] );
+// 		unset( $rates[ 'flat_rate:10' ] );
+// 		unset( $rates[ 'flat_rate:11' ] );
+// 		unset( $rates[ 'flat_rate:12' ] );
+// 	}
  
-	if( 'billing_address_2' === $key ) {
- 
-		$field = '<p class="form-row address-field additional-address-field form-row-wide" data-priority="60">
-			<span class="woocommerce-input-wrapper true-wrapper woocommerce-address-wrapper">
-				<input type="number" name="billing_address_2" id="billing_address_2" placeholder="Подъезд" value="">
-				<input type="number" name="billing_address_3" id="billing_address_3" placeholder="Этаж" value="">
-				<input type="text" name="billing_address_4" id="billing_address_4" placeholder="Дополнительная информация" value="">
-			</span>
-		</p>';
- 
-	}
- 
-	return $field;
- 
-}
-
-add_filter( 'woocommerce_checkout_posted_data', 'true_process_fields' );
- 
-function true_process_fields( $data ) {
- 
-	// в поле billing_address_2 мы и будем записывать новые значения полей
-	$data[ 'billing_address_2' ] = '';
-	$fields = array();
- 
-	// получаем данные из глобального $_POST, сначала парадную (подъезд)
-	if( ! empty( $_POST[ 'billing_address_2' ] ) ) {
-		$fields[] = 'подъезд ' . absint( $_POST[ 'billing_address_2' ] );
-	}
-	// затем этаж
-	if( ! empty( $_POST[ 'billing_address_3' ] ) ) {
-		$fields[] = 'этаж ' . absint( $_POST[ 'billing_address_3' ] );
-	}
-
-	// затем доп поля
-	if( ! empty( $_POST[ 'billing_address_4' ] ) ) {
-		$fields[] = ' ' . $_POST[ 'billing_address_4' ];
-	}
-
-	// объединяем все заполненные данные запятой
-	$data[ 'billing_address_2' ] = join( ', ', $fields );
- 
-	// возвращаем результат
-	return $data;
- 
-}
-
-
-/*--------------------------------------------------------------
-# Thankyou page
---------------------------------------------------------------*/
-
-// уведомление Спасибо за заказ
-
-add_filter( 'woocommerce_thankyou_order_received_text', 'plnt_custom_ty_msg' );
-
-    function plnt_custom_ty_msg ( $thank_you_msg ) {
-        $emoji = '<img draggable="false" role="img" class="emoji" alt="😉" height="20px" width="20px" src="https://s.w.org/images/core/emoji/14.0.0/svg/1f609.svg">';
-        $thank_you_msg =  'Спасибо за ваш заказ! Наши менеджеры пляшут от радости! Как закончат танцевать, сразу вам перезвонят ' . $emoji ;
-
-    return $thank_you_msg;
-}
+// 	return $rates;
+// }
