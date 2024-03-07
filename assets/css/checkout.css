@@ -348,6 +348,14 @@ div#orddd_list_view_select {
     row-gap: 10px !important;
 }
 
+#e_deliverydate_field .optional {
+    display: none;
+}
+
+#orddd_time_slot_field .optional {
+    display: none;
+}
+
 /* время доставки #adaptive*/
 
 @media (min-width: 768px ) and (max-width: 1024px) {
