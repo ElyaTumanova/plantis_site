@@ -307,8 +307,8 @@ function true_fields( $field, $key, $args, $value ) {
  
 		$field = '<p class="form-row address-field additional-address-field form-row-wide" data-priority="60">
 			<span class="woocommerce-input-wrapper true-wrapper woocommerce-address-wrapper">
-				<input type="number" name="billing_address_2" id="billing_address_2" placeholder="Подъезд" value="">
-				<input type="number" name="billing_address_3" id="billing_address_3" placeholder="Этаж" value="">
+				<input type="text" name="billing_address_2" id="billing_address_2" placeholder="Подъезд" value="">
+				<input type="text" name="billing_address_3" id="billing_address_3" placeholder="Этаж" value="">
 				<input type="text" name="billing_address_4" id="billing_address_4" placeholder="Дополнительная информация" value="">
 			</span>
 		</p>';
@@ -329,11 +329,11 @@ function true_process_fields( $data ) {
  
 	// получаем данные из глобального $_POST, сначала парадную (подъезд)
 	if( ! empty( $_POST[ 'billing_address_2' ] ) ) {
-		$fields[] = 'подъезд ' . absint( $_POST[ 'billing_address_2' ] );
+		$fields[] = 'подъезд ' . $_POST[ 'billing_address_2' ];
 	}
 	// затем этаж
 	if( ! empty( $_POST[ 'billing_address_3' ] ) ) {
-		$fields[] = 'этаж ' . absint( $_POST[ 'billing_address_3' ] );
+		$fields[] = 'этаж ' . $_POST[ 'billing_address_3' ];
 	}
 
 	// затем доп поля
