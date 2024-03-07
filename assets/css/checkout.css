@@ -301,11 +301,24 @@
     display:none; 
 }
 
+.woocommerce-address-wrapper {
+    flex-wrap: wrap;
+}
 
 #billing_address_2, #billing_address_3 {
-    margin-right: 15px;
+    margin-right: 10px;
     max-width: 110px;
     border-radius: 3px;
+}
+
+@media (max-width: 1024px) {
+    #billing_address_2, #billing_address_3 {
+        max-width: calc(50% - 5px);
+    }
+    #billing_address_3 {
+        margin-right: 0;
+    }
+
 }
 /* время доставки */
 
