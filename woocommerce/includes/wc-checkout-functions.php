@@ -483,7 +483,7 @@ function true_fields( $field, $key, $args, $value ) {
 			<span class="woocommerce-input-wrapper true-wrapper">
 				<input type="number" name="billing_address_2" id="billing_address_2" placeholder="Подъезд" value="">
 				<input type="number" name="billing_address_3" id="billing_address_3" placeholder="Этаж" value="">
-				<input type="number" name="billing_address_4" id="billing_address_4" placeholder="Дополнительная информация" value="">
+				<input type="text" name="billing_address_4" id="billing_address_4" placeholder="Дополнительная информация" value="">
 			</span>
 		</p>';
  
