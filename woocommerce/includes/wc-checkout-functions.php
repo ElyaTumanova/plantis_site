@@ -48,6 +48,7 @@ function my_delivery_small_oder_info () {
 }
 
 
+
 // перевод текстов
 
 function plnt_change_text_checkout_1( $translated_text ) {
@@ -265,7 +266,7 @@ add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price
  
 function new_truemisha_remove_shipping_on_price( $rates, $package ) {
  
-	// если сумма всех товаров в корзине меньше 1000, отключаем способ доставки
+	// если сумма всех товаров в корзине меньше 2000, отключаем способ доставки
 	if ( WC()->cart->subtotal < 2000 ) {
 	    unset( $rates[ 'flat_rate:1' ] );
 		unset( $rates[ 'flat_rate:12' ] );
@@ -334,6 +335,56 @@ function true_process_fields( $data ) {
  
 }
 
+
+
+/*минимальная сумма заказа для кашпо Teez*/
+add_action( 'woocommerce_checkout_process', 'min_amount_for_category' );
+add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category' );
+ 
+function min_amount_for_category(){
+    global $treez_cat_id;
+ 	$minimum = 20000;
+	$qty = 0; // обязательно сначала ставим 0
+ 	$cat_amount = 0;
+	$products_min = false;
+	foreach ( WC()->cart->get_cart() as $cart_item ) {
+			$_product = $cart_item['data'];
+            $_product_id = $_product->id;
+            $terms = get_the_terms( $_product_id, 'product_cat' );
+			foreach ($terms as $term) {
+                    $_categoryid = $term->term_id;
+                }
+                // your products categories
+                if ( $_categoryid === $treez_cat_id ) {
+                    $products_min = true;
+					$qty = $cart_item[ 'quantity' ];
+					$price = $cart_item['data']->get_price();
+					$cat_amount = $cat_amount + $price*$qty;
+                }	
+	}
+ 
+		    if( ( is_cart() || is_checkout() ) && $cat_amount < $minimum && $products_min) {
+				wc_print_notice(
+                    sprintf( 'Минимальная сумма заказа для кашпо Treez %s (без учета стоимости других товаров).'  ,
+                        wc_price( $minimum ),
+                        wc_price( WC()->cart->total )
+                    ), 'error'
+                );
+            } 
+	
+			if ( $cat_amount < $minimum && $products_min) {
+
+				wc_add_notice( 
+					sprintf( 
+						'Минимальная сумма заказа для кашпо Treez %s (без учета стоимости других товаров).',
+						wc_price( $minimum ),
+						wc_price( WC()->cart->subtotal )
+					),
+					'error'
+				);
+
+	}
+}
 
 /*--------------------------------------------------------------
 # Thankyou page
