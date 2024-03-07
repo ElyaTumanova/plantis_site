@@ -77,11 +77,11 @@ function checkout_validation_unique_error( $data, $errors ){
     }
 }
 
-/* ПОЛЯ ФОРМЫ ОФОРМЛЕНИЯ ЗАКАЗА  - АКТИВИРОВАТЬ ДЛЯ PLANTIS.SHOP!!!!
+/* ПОЛЯ ФОРМЫ ОФОРМЛЕНИЯ ЗАКАЗА  - АКТИВИРОВАТЬ ДЛЯ PLANTIS.SHOP!!!! #TODO
 
 // Conditional Show hide checkout fields based on chosen shipping methods*/
 
-//add_action( 'wp_footer', 'new_custom_checkout_field_script' );
+add_action( 'wp_footer', 'new_custom_checkout_field_script' );
 function new_custom_checkout_field_script() {
 	
 	if( !is_page( 'checkout' ) ) {
@@ -107,8 +107,8 @@ function new_custom_checkout_field_script() {
                 rq = '-required',       vr = 'validate'+rq,     w = 'woocommerce',      wv = w+'-validated',
                 iv = '-invalid',        fi = '-field',          wir = w+iv+' '+w+iv+rq+fi,
                 b = '#billing_',        s = '#shipping_',       f = '_field',
-                a1 = 'country',     a2 = 'address_1',   a3 = 'address_2',   a4 = 'postcode',    a5 = 'state', a6 = 'city', a7 = 'address_3',
-                b1 = b+a1+f,        b2 = b+a2+f,        b3 = b+a3+f,        b4 = b+a4+f,        b5 = b+a5+f, b6 = b+a6+f, b7 = b+a7+f,
+                a1 = 'country',     a2 = 'address_1',   a3 = 'address_2',   a4 = 'postcode',    a5 = 'state', a6 = 'city', a7 = 'address_3', a8 = 'address_4'
+                b1 = b+a1+f,        b2 = b+a2+f,        b3 = b+a3+f,        b4 = b+a4+f,        b5 = b+a5+f, b6 = b+a6+f, b7 = b+a7+f, b8 = b+a8+f,
                 s1 = s+a1+f,        s2 = s+a2+f,        s3 = s+a3+f,        s4 = s+a4+f,        s5 = s+a5+f,
                 localPickup = '<?php echo $local_pickup; ?>',
 				urgentPickup1 = '<?php echo $urgent_delivery1; ?>',urgentPickup2 = '<?php echo $urgent_delivery2; ?>',
@@ -145,6 +145,7 @@ function new_custom_checkout_field_script() {
                     showHide('hide',b5);    //state
 					showHide('hide',b6);    //city
                     showHide('hide',b7);    //#billing_adress_3_field
+                    showHide('hide',b8);    //#billing_adress_4_field
                 }
         
                 else
@@ -156,6 +157,7 @@ function new_custom_checkout_field_script() {
                     showHide('show',b5);
 					showHide('show',b6);
 					showHide('show',b7);
+					showHide('show',b8);
                 }        
             }, 100);
 			
@@ -207,6 +209,7 @@ function new_custom_checkout_field_script() {
                     showHide('hide',b5);
 					showHide('hide',b6);
 					showHide('hide',b7);
+					showHide('hide',b8);
    
                 }
              
@@ -219,6 +222,7 @@ function new_custom_checkout_field_script() {
                     showHide('show',b5);
 					showHide('show',b6);
 					showHide('show',b7);
+					showHide('show',b8);
                 }
             });
 	
@@ -228,143 +232,143 @@ function new_custom_checkout_field_script() {
 }
 
 
-function custom_checkout_field_script() {
+// function custom_checkout_field_script() {
 	
-	if( !is_page( 16 ) ) {
-		return;
-	}
+// 	if( !is_page( 16 ) ) {
+// 		return;
+// 	}
 
-    // HERE your shipping methods rate IDs
-    $local_pickup = 'local_pickup:1';
-	$urgent_delivery1 = 'flat_rate:5';
-	$urgent_delivery2 = 'flat_rate:6';
+//     // HERE your shipping methods rate IDs
+//     $local_pickup = 'local_pickup:1';
+// 	$urgent_delivery1 = 'flat_rate:5';
+// 	$urgent_delivery2 = 'flat_rate:6';
 
-    $required_text = esc_attr__( 'required', 'woocommerce' );
-    $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';
-    ?>
-    <script>
-		deliveryDate = document.querySelector('#e_deliverydate_field');
-		deliveryInterval = document.querySelector('#additional_delivery_interval_field');
-        jQuery(function($){
-            var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
-                csa = 'input#ship-to-different-address-checkbox',
-                rq = '-required',       vr = 'validate'+rq,     w = 'woocommerce',      wv = w+'-validated',
-                iv = '-invalid',        fi = '-field',          wir = w+iv+' '+w+iv+rq+fi,
-                b = '#billing_',        s = '#shipping_',       f = '_field',
-                a1 = 'country',     a2 = 'address_1',   a3 = 'address_2',   a4 = 'postcode',    a5 = 'state', a6 = 'city',
-                b1 = b+a1+f,        b2 = b+a2+f,        b3 = b+a3+f,        b4 = b+a4+f,        b5 = b+a5+f, b6 = b+a6+f,
-                s1 = s+a1+f,        s2 = s+a2+f,        s3 = s+a3+f,        s4 = s+a4+f,        s5 = s+a5+f,
-                localPickup = '<?php echo $local_pickup; ?>',
-				urgentPickup1 = '<?php echo $urgent_delivery1; ?>',urgentPickup2 = '<?php echo $urgent_delivery2; ?>';
+//     $required_text = esc_attr__( 'required', 'woocommerce' );
+//     $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';
+//     ?>
+//     <script>
+// 		deliveryDate = document.querySelector('#e_deliverydate_field');
+// 		deliveryInterval = document.querySelector('#additional_delivery_interval_field');
+//         jQuery(function($){
+//             var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
+//                 csa = 'input#ship-to-different-address-checkbox',
+//                 rq = '-required',       vr = 'validate'+rq,     w = 'woocommerce',      wv = w+'-validated',
+//                 iv = '-invalid',        fi = '-field',          wir = w+iv+' '+w+iv+rq+fi,
+//                 b = '#billing_',        s = '#shipping_',       f = '_field',
+//                 a1 = 'country',     a2 = 'address_1',   a3 = 'address_2',   a4 = 'postcode',    a5 = 'state', a6 = 'city',
+//                 b1 = b+a1+f,        b2 = b+a2+f,        b3 = b+a3+f,        b4 = b+a4+f,        b5 = b+a5+f, b6 = b+a6+f,
+//                 s1 = s+a1+f,        s2 = s+a2+f,        s3 = s+a3+f,        s4 = s+a4+f,        s5 = s+a5+f,
+//                 localPickup = '<?php echo $local_pickup; ?>',
+// 				urgentPickup1 = '<?php echo $urgent_delivery1; ?>',urgentPickup2 = '<?php echo $urgent_delivery2; ?>';
 
-            // Utility function to shows or hide checkout fields
-            function showHide( action='show', selector='' ){
-                if( action == 'show' )
-                    $(selector).show(function(){
-                        $(this).addClass(vr);
-                        $(this).removeClass(wv);
-                        $(this).removeClass(wir);
-                        if( $(selector+' > label > abbr').html() == undefined )
-                            $(selector+' label').append('<?php echo $required_html; ?>');
-                    });
-                else
-                    $(selector).hide(function(){
-                        $(this).removeClass(vr);
-                        $(this).removeClass(wv);
-                        $(this).removeClass(wir);
-                        if( $(selector+' > label > abbr').html() != undefined )
-                            $(selector+' label > .required').remove();
-                    });
-            }
+//             // Utility function to shows or hide checkout fields
+//             function showHide( action='show', selector='' ){
+//                 if( action == 'show' )
+//                     $(selector).show(function(){
+//                         $(this).addClass(vr);
+//                         $(this).removeClass(wv);
+//                         $(this).removeClass(wir);
+//                         if( $(selector+' > label > abbr').html() == undefined )
+//                             $(selector+' label').append('<?php echo $required_html; ?>');
+//                     });
+//                 else
+//                     $(selector).hide(function(){
+//                         $(this).removeClass(vr);
+//                         $(this).removeClass(wv);
+//                         $(this).removeClass(wir);
+//                         if( $(selector+' > label > abbr').html() != undefined )
+//                             $(selector+' label > .required').remove();
+//                     });
+//             }
 
-            // Initializing at start after checkout init (Based on the chosen shipping method)
-            setTimeout(function(){
-                if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
-                {
-                    showHide('hide',b1);
-                    showHide('hide',b2);
-                    showHide('hide',b3);
-                    showHide('hide',b4);
-                    showHide('hide',b5);
-					showHide('hide',b6);
-                }
+//             // Initializing at start after checkout init (Based on the chosen shipping method)
+//             setTimeout(function(){
+//                 if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
+//                 {
+//                     showHide('hide',b1);
+//                     showHide('hide',b2);
+//                     showHide('hide',b3);
+//                     showHide('hide',b4);
+//                     showHide('hide',b5);
+// 					showHide('hide',b6);
+//                 }
         
-                else
-                {
-                    showHide('show',b1);
-                    showHide('show',b2);
-                    showHide('show',b3);
-                    showHide('show',b4);
-                    showHide('show',b5);
-					showHide('show',b6);
-                }        
-            }, 100);
+//                 else
+//                 {
+//                     showHide('show',b1);
+//                     showHide('show',b2);
+//                     showHide('show',b3);
+//                     showHide('show',b4);
+//                     showHide('show',b5);
+// 					showHide('show',b6);
+//                 }        
+//             }, 100);
 			
-			setTimeout(function(){
-                     if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2) // Chosen "Local pickup" (Hiding "Delivery")
-                {
-                    deliveryDate.classList.add('d-none');
-                } else {
-					deliveryDate.classList.remove('d-none');
-				}
-            }, 100);
+// 			setTimeout(function(){
+//                      if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2) // Chosen "Local pickup" (Hiding "Delivery")
+//                 {
+//                     deliveryDate.classList.add('d-none');
+//                 } else {
+// 					deliveryDate.classList.remove('d-none');
+// 				}
+//             }, 100);
 			
-			setTimeout(function(){
-                     if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2) // Chosen "Local pickup" (Hiding "Delivery")
-                {
-					deliveryInterval.classList.add('d-none');
-                } else {
-					deliveryInterval.classList.remove('d-none');
-				}
-            }, 100);
+// 			setTimeout(function(){
+//                      if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2) // Chosen "Local pickup" (Hiding "Delivery")
+//                 {
+// 					deliveryInterval.classList.add('d-none');
+//                 } else {
+// 					deliveryInterval.classList.remove('d-none');
+// 				}
+//             }, 100);
 			
-			// Initializing at start after checkout init (Based on the chosen shipping method)
-            $( 'form.checkout' ).on( 'change', ism, function() {		
-				if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2) // Chosen "Local pickup" (Hiding "Delivery")
-                {
-                    deliveryDate.classList.add('d-none');
-                } else {
-					deliveryDate.classList.remove('d-none');
-				}
-            });
+// 			// Initializing at start after checkout init (Based on the chosen shipping method)
+//             $( 'form.checkout' ).on( 'change', ism, function() {		
+// 				if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2) // Chosen "Local pickup" (Hiding "Delivery")
+//                 {
+//                     deliveryDate.classList.add('d-none');
+//                 } else {
+// 					deliveryDate.classList.remove('d-none');
+// 				}
+//             });
 			
-			 $( 'form.checkout' ).on( 'change', ism, function() {		
-				if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2) // Chosen "Local pickup" (Hiding "Delivery")
-                {
-					deliveryInterval.classList.add('d-none');
-                } else {
-					deliveryInterval.classList.remove('d-none');
-				}
-            });
+// 			 $( 'form.checkout' ).on( 'change', ism, function() {		
+// 				if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2) // Chosen "Local pickup" (Hiding "Delivery")
+//                 {
+// 					deliveryInterval.classList.add('d-none');
+//                 } else {
+// 					deliveryInterval.classList.remove('d-none');
+// 				}
+//             });
 
-            // When shipping method is changed (Live event)
-            $( 'form.checkout' ).on( 'change', ism, function() {
-                if( $(ismc).val() == localPickup )
-                {
-                    showHide('hide',b1);
-                    showHide('hide',b2);
-                    showHide('hide',b3);
-                    showHide('hide',b4);
-                    showHide('hide',b5);
-					showHide('hide',b6);
+//             // When shipping method is changed (Live event)
+//             $( 'form.checkout' ).on( 'change', ism, function() {
+//                 if( $(ismc).val() == localPickup )
+//                 {
+//                     showHide('hide',b1);
+//                     showHide('hide',b2);
+//                     showHide('hide',b3);
+//                     showHide('hide',b4);
+//                     showHide('hide',b5);
+// 					showHide('hide',b6);
    
-                }
+//                 }
              
-                else
-                {
-                    showHide('show',b1);
-                    showHide('show',b2);
-                    showHide('show',b3);
-                    showHide('show',b4);
-                    showHide('show',b5);
-					showHide('show',b6);
-                }
-            });
+//                 else
+//                 {
+//                     showHide('show',b1);
+//                     showHide('show',b2);
+//                     showHide('show',b3);
+//                     showHide('show',b4);
+//                     showHide('show',b5);
+// 					showHide('show',b6);
+//                 }
+//             });
 	
-        });
-    </script>
-    <?php
-}
+//         });
+//     </script>
+//     <?php
+// }
 
 /* скрываем лишние способы доставки если доступна доставка бесплатная*/
 
@@ -387,22 +391,22 @@ function new_truemisha_remove_shipping_method( $rates, $package ) {
 	return $rates;
 }
 
-function truemisha_remove_shipping_method( $rates, $package ) {
+// function truemisha_remove_shipping_method( $rates, $package ) {
  
-	// удаляем способ доставки, если доступна бесплатная
-	if ( isset( $rates[ 'free_shipping:4' ] ) ) {
-	    unset( $rates[ 'flat_rate:2' ] );
-// 		unset( $rates[ 'flat_rate:3' ] );
-		unset( $rates[ 'flat_rate:5' ] );
-// 		unset( $rates[ 'flat_rate:6' ] );
-		unset( $rates[ 'flat_rate:9' ] );
-		unset( $rates[ 'flat_rate:10' ] );
-		unset( $rates[ 'flat_rate:11' ] );
-		unset( $rates[ 'flat_rate:12' ] );
-	}
+// 	// удаляем способ доставки, если доступна бесплатная
+// 	if ( isset( $rates[ 'free_shipping:4' ] ) ) {
+// 	    unset( $rates[ 'flat_rate:2' ] );
+// // 		unset( $rates[ 'flat_rate:3' ] );
+// 		unset( $rates[ 'flat_rate:5' ] );
+// // 		unset( $rates[ 'flat_rate:6' ] );
+// 		unset( $rates[ 'flat_rate:9' ] );
+// 		unset( $rates[ 'flat_rate:10' ] );
+// 		unset( $rates[ 'flat_rate:11' ] );
+// 		unset( $rates[ 'flat_rate:12' ] );
+// 	}
  
-	return $rates;
-}
+// 	return $rates;
+// }
 
 
 
@@ -429,24 +433,24 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
  
 }
 
-function truemisha_remove_shipping_on_price( $rates, $package ) {
+// function truemisha_remove_shipping_on_price( $rates, $package ) {
  
-	// если сумма всех товаров в корзине меньше 1000, отключаем способ доставки
-	if ( WC()->cart->subtotal < 2000 ) {
-	    unset( $rates[ 'flat_rate:2' ] );
-		unset( $rates[ 'flat_rate:3' ] );
-		unset( $rates[ 'flat_rate:5' ] );
-		unset( $rates[ 'flat_rate:6' ] );		
-	} else {
-		unset( $rates[ 'flat_rate:9' ] );
-		unset( $rates[ 'flat_rate:10' ] );
-		unset( $rates[ 'flat_rate:11' ] );
-		unset( $rates[ 'flat_rate:12' ] );
-	}
+// 	// если сумма всех товаров в корзине меньше 1000, отключаем способ доставки
+// 	if ( WC()->cart->subtotal < 2000 ) {
+// 	    unset( $rates[ 'flat_rate:2' ] );
+// 		unset( $rates[ 'flat_rate:3' ] );
+// 		unset( $rates[ 'flat_rate:5' ] );
+// 		unset( $rates[ 'flat_rate:6' ] );		
+// 	} else {
+// 		unset( $rates[ 'flat_rate:9' ] );
+// 		unset( $rates[ 'flat_rate:10' ] );
+// 		unset( $rates[ 'flat_rate:11' ] );
+// 		unset( $rates[ 'flat_rate:12' ] );
+// 	}
  
-	return $rates;
+// 	return $rates;
  
-}
+// }
 
 // делим поле billing_address_2 на несколько полей//
 
