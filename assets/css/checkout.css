@@ -301,6 +301,12 @@
     display:none; 
 }
 
+
+#billing_address_2, #billing_address_3 {
+    margin-right: 15px;
+    max-width: 150px;
+    border-radius: 3px;
+}
 /* время доставки */
 
 #orddd-checkout-fields {

@@ -448,30 +448,7 @@ function truemisha_remove_shipping_on_price( $rates, $package ) {
  
 }
 
-// добавляем поля в группу полей адреса//
-
-// add_filter( 'woocommerce_billing_fields', 'true_add_custom_billing_field', 25 );
- 
-// function true_add_custom_billing_field( $fields ) {
- 
-// 	// массив нового поля
-// 	$new_field = array(
-// 		'billing_etazh' => array(
-// 			'type'          => 'text', // text, textarea, select, radio, checkbox, password
-// 			'required'	=> false, // по сути только добавляет значок "*" и всё
-// 			'class'         => array( 'form-row-wide' ), // массив классов поля
-// 			'label'         => 'Этаж',
-// 			'label_class'   => 'true-label', // класс лейбла
-// 		)
-// 	);
- 
-// 	// объединяем поля
-// 	$fields = array_slice( $fields, 0, 2, true ) + $new_field + array_slice( $fields, 2, NULL, true );
- 
-// 	return $fields;
- 
-// }
-
+// делим поле billing_address_2 на несколько полей//
 
 add_filter( 'woocommerce_form_field_text', 'true_fields', 25, 4 );
  
@@ -480,7 +457,7 @@ function true_fields( $field, $key, $args, $value ) {
 	if( 'billing_address_2' === $key ) {
  
 		$field = '<p class="form-row address-field form-row-wide" data-priority="60">
-			<span class="woocommerce-input-wrapper true-wrapper">
+			<span class="woocommerce-input-wrapper true-wrapper woocommerce-address-wrapper">
 				<input type="number" name="billing_address_2" id="billing_address_2" placeholder="Подъезд" value="">
 				<input type="number" name="billing_address_3" id="billing_address_3" placeholder="Этаж" value="">
 				<input type="text" name="billing_address_4" id="billing_address_4" placeholder="Дополнительная информация" value="">
