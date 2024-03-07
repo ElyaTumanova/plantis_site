@@ -82,7 +82,7 @@ function checkout_validation_unique_error( $data, $errors ){
  
 // Conditional Show hide checkout fields based on chosen shipping methods*/
 
-add_action( 'wp_footer', 'new_custom_checkout_field_script' );
+//add_action( 'wp_footer', 'new_custom_checkout_field_script' );
 function new_custom_checkout_field_script() {
 	
 	if( !is_page( 'checkout' ) ) {
