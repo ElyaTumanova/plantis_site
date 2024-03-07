@@ -408,6 +408,22 @@ div#orddd_list_view_select {
     border-radius: 20px;
 }
 
+.woocommerce-checkout .woocommerce-error {
+    color: var(--red-color);
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.woocommerce-checkout .woocommerce-error::before {
+    content: "\0021";
+    position: absolute;
+    padding: 1px 7px 0px;
+    color: var(--white);
+    background-color: var(--red-color);
+    border-radius: 20px;
+}
+
 /* radio button */
 
 /* для элемента input c type="radio" */
