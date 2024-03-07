@@ -141,12 +141,12 @@ function new_custom_checkout_field_script() {
                 {
                     // showHide('hide',b1);    //#billing_country_field - always hidden
                     showHide('hide',b2);    //#billing_adress_1_field
-                    showHide('hide',b3);    //#billing_adress_2_field  
-                    showHide('hide',b4);    //postcode
-                    showHide('hide',b5);    //state
-					showHide('hide',b6);    //city
-                    showHide('hide',b7);    //#billing_adress_3_field
-                    showHide('hide',b8);    //#billing_adress_4_field
+                    //showHide('hide',b3);    //#billing_adress_2_field  
+                    //showHide('hide',b4);    //postcode
+                    //showHide('hide',b5);    //state
+					//showHide('hide',b6);    //city
+                    //showHide('hide',b7);    //#billing_adress_3_field
+                    //showHide('hide',b8);    //#billing_adress_4_field
                     additionalAddress.classList.add('d-none');   
                 }
         
@@ -154,12 +154,12 @@ function new_custom_checkout_field_script() {
                 {
                     // showHide('show',b1);
                     showHide('show',b2);
-                    showHide('show',b3);
-                    showHide('show',b4);
-                    showHide('show',b5);
-					showHide('show',b6);
-					showHide('show',b7);
-					showHide('show',b8);
+                    //showHide('show',b3);
+                    //showHide('show',b4);
+                    //showHide('show',b5);
+					//showHide('show',b6);
+					//showHide('show',b7);
+					//showHide('show',b8);
                     additionalAddress.classList.remove('d-none'); 
                 }        
             }, 100);
@@ -207,12 +207,12 @@ function new_custom_checkout_field_script() {
                 {
                     // showHide('hide',b1);
                     showHide('hide',b2);
-                    showHide('hide',b3);
-                    showHide('hide',b4);
-                    showHide('hide',b5);
-					showHide('hide',b6);
-					showHide('hide',b7);
-					showHide('hide',b8);
+                    // showHide('hide',b3);
+                    // showHide('hide',b4);
+                    // showHide('hide',b5);
+					// showHide('hide',b6);
+					// showHide('hide',b7);
+					// showHide('hide',b8);
                     additionalAddress.classList.add('d-none'); 
                 }
              
@@ -220,12 +220,12 @@ function new_custom_checkout_field_script() {
                 {
                     // showHide('show',b1);
                     showHide('show',b2);
-                    showHide('show',b3);
-                    showHide('show',b4);
-                    showHide('show',b5);
-					showHide('show',b6);
-					showHide('show',b7);
-					showHide('show',b8);
+                    // showHide('show',b3);
+                    // showHide('show',b4);
+                    // showHide('show',b5);
+					// showHide('show',b6);
+					// showHide('show',b7);
+					// showHide('show',b8);
                     additionalAddress.classList.remove('d-none'); 
                 }
             });
