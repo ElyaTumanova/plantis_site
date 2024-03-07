@@ -350,7 +350,7 @@ div#orddd_list_view_select {
 
 /* время доставки #adaptive*/
 
-@media (min-width: 768px ) and (max-width: 865px) {
+@media (min-width: 768px ) and (max-width: 1024px) {
     #orddd-checkout-fields {
         display: flex;
         flex-direction: column;
