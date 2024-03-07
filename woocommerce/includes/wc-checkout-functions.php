@@ -23,8 +23,8 @@ add_action( 'woocommerce_checkout_order_review', 'plnt_delivery_condition_info',
 
 function plnt_delivery_condition_info () {
 	echo '<div class="checkout__text">
-        После оформления заказа мы свяжемся с вами в <a href="https://plantis.shop/contacts/">рабочее время</a> и согласуем время доставки.
-        <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a>
+        После оформления заказа мы свяжемся с вами в <a href="https://plantis.shop/contacts/">рабочее время</a> и согласуем время доставки.<br>
+        <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a> <br>
 		Важно! Срочную доставку "день в день" можно оформить до 18 часов.</div>';
 }
 
@@ -47,41 +47,18 @@ function my_delivery_small_oder_info () {
 	}	
 }
 
-add_action( 'woocommerce_checkout_order_review', 'my_delivery_large_products_oder_info', 20 );
+add_action( 'woocommerce_checkout_order_review', 'my_delivery_large_products_oder_info', 25 );
 
 function my_delivery_large_products_oder_info () {
     $class_slug = 'delivery_large';
 
     foreach ( WC()->cart->get_cart() as $cart_item ) {
         if( $cart_item['data']->get_shipping_class() == $class_slug ){
-            echo '<pre>';
-            print_r( $class_slug );
-            echo '</pre>';
+            echo '<div class="checkout__text">
+			Вы выбрали крупногабаритный товар. Стоимость доставки увеличена. <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></div>';
             break; // Stop the loop
         } 	
     }
-
-    // if( ( is_cart() || is_checkout() ) && $cat_amount < $minimum && $products_min) {
-    //     wc_print_notice(
-    //         sprintf( 'Минимальная сумма заказа для кашпо Treez %s (без учета стоимости других товаров).'  ,
-    //             wc_price( $minimum ),
-    //             wc_price( WC()->cart->total )
-    //         ), 'error'
-    //     );
-    // } 
-
-    // if ( $cat_amount < $minimum && $products_min) {
-
-    //     wc_add_notice( 
-    //         sprintf( 
-    //             'Минимальная сумма заказа для кашпо Treez %s (без учета стоимости других товаров).',
-    //             wc_price( $minimum ),
-    //             wc_price( WC()->cart->subtotal )
-    //         ),
-    //         'error'
-    //     );
-
-    // }
 }
 
 
