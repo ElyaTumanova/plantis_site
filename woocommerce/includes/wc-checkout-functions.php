@@ -77,9 +77,8 @@ function checkout_validation_unique_error( $data, $errors ){
     }
 }
 
-
 /* ПОЛЯ ФОРМЫ ОФОРМЛЕНИЯ ЗАКАЗА  - АКТИВИРОВАТЬ ДЛЯ PLANTIS.SHOP!!!!
- 
+
 // Conditional Show hide checkout fields based on chosen shipping methods*/
 
 //add_action( 'wp_footer', 'new_custom_checkout_field_script' );
@@ -448,6 +447,31 @@ function truemisha_remove_shipping_on_price( $rates, $package ) {
 	return $rates;
  
 }
+
+// добавляем поля в группу полей адреса//
+
+add_filter( 'woocommerce_billing_fields', 'true_add_custom_billing_field', 25 );
+ 
+function true_add_custom_billing_field( $fields ) {
+ 
+	// массив нового поля
+	$new_field = array(
+		'billing_etazh' => array(
+			'type'          => 'text', // text, textarea, select, radio, checkbox, password
+			'required'	=> false, // по сути только добавляет значок "*" и всё
+			'class'         => array( 'form-row-wide' ), // массив классов поля
+			'label'         => 'Этаж',
+			'label_class'   => 'true-label', // класс лейбла
+		)
+	);
+ 
+	// объединяем поля
+	$fields = array_slice( $fields, 0, 2, true ) + $new_field + array_slice( $fields, 2, NULL, true );
+ 
+	return $fields;
+ 
+}
+
 
 /*--------------------------------------------------------------
 # Thankyou page
