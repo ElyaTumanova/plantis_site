@@ -16,7 +16,7 @@ get_header(); ?>
 
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
-        <div class="delivery info__content info__list">
+        <div class="delivery info__list">
             <div>
                 <h1 class="entry-header">Доставка</h1>
 
