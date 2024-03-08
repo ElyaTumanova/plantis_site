@@ -88,6 +88,7 @@ function plnt_catalog_sidebar() {
 add_action('woocommerce_before_shop_loop','plnt_catalog_filters_main_area', 20);
 
 function plnt_catalog_filters_main_area() {
+	global $filter_icon;
 	?>
     <div class="catalog__filter-wrap">
 		<div class="catalog__filter-metki">
@@ -97,7 +98,8 @@ function plnt_catalog_filters_main_area() {
 			<div class="catalog__instock-filter">
 				<?php echo do_shortcode('[br_filter_single filter_id=10996]') //Товары в наличии для моб?>
 			</div>
-			<div class="catalog__mob-filter-btn button"><img src="http://new.plantis.shop/wp-content/uploads/2024/02/filter.svg" alt="Фильтр"></div>
+			<div class="catalog__mob-filter-btn button"><img src="<?php echo $filter_icon ?>" alt="Фильтр"></div>
+			<!-- <div class="catalog__mob-filter-btn button"><img src="http://new.plantis.shop/wp-content/uploads/2024/02/filter.svg" alt="Фильтр"></div> -->
 		</div>
 		<div class="catalog__filter-active">
 			<?php echo do_shortcode('[br_filter_single filter_id=6057]') //Активные фильтры?>

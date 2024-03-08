@@ -92,7 +92,7 @@ function checkout_validation_unique_error( $data, $errors ){
     }
 }
 
-/* ПОЛЯ ФОРМЫ ОФОРМЛЕНИЯ ЗАКАЗА  - АКТИВИРОВАТЬ ДЛЯ PLANTIS.SHOP!!!! #TODO
+/* ПОЛЯ ФОРМЫ ОФОРМЛЕНИЯ ЗАКАЗА  - ПРОВЕРИТЬ ДЛЯ PLANTIS.SHOP!!!! #TODO
 
 // Conditional Show hide checkout fields based on chosen shipping methods*/
 
@@ -448,7 +448,7 @@ add_filter( 'woocommerce_thankyou_order_received_text', 'plnt_custom_ty_msg' );
 
 
 /*--------------------------------------------------------------
-# old functions for plantis.shop
+# old functions for plantis.shop   #TODO to be deleted
 --------------------------------------------------------------*/
 
 
