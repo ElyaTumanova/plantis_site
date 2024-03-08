@@ -5,13 +5,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $site = get_site_url();
 
-if (is_front_page()) {
-	if($site === 'http://new.plantis.shop') {
-		echo '<script> console.log("hello new plantis")</script>';
-	} else {
-		echo '<script> console.log("hello plantis")</script>';
+function plnt_check_site() {
+	if (is_front_page()) {
+		if($site === 'http://new.plantis.shop') {
+			echo '<script> console.log("hello new plantis")</script>';
+		} else {
+			echo '<script> console.log("hello plantis")</script>';
+		}
 	}
 }
+
+add_action( 'wp_footer', 'plnt_check_site' );
 
 /* Категории товаров */
 if($site === 'http://new.plantis.shop') {
