@@ -92,6 +92,20 @@ if($site === 'http://new.plantis.shop') {
 
 } else {
 	// PLANTIS SHOP
+	$local_pickup = 'local_pickup:1'; //самовывоз
+	
+	$delivery_inMKAD = 'flat_rate:2';
+	$delivery_outMKAD = 'flat_rate:3';
+	$delivery_inMKAD_small = 'flat_rate:9';
+	$delivery_outMKAD_small = 'flat_rate:10';
+
+
+	$urgent_delivery_inMKAD = 'flat_rate:5'; 
+	$urgent_delivery_outMKAD = 'flat_rate:6'; 
+	$urgent_delivery_inMKAD_small = 'flat_rate:11'; 
+	$urgent_delivery_outMKAD_small = 'flat_rate:12';
+	
+	$delivery_free = 'free_shipping:4';
 	
 }
 
