@@ -262,13 +262,16 @@ function plnt_product_attributes(){
     ?>
     <div class="product__attributes">
     <?php
-        $parentCatId = check_category($product);
-        if( $parentCatId === $plants_cat_id )
-            {
-            echo  '<h2 class="heading-2">Уход и характеристики</h2>';
-            } else {
-            echo '<h2 class="heading-2">Характеристики</h2>';
-            }
+        $attributes = $product->get_attributes();
+        if(!empty($attributes)){
+            $parentCatId = check_category($product);
+            if( $parentCatId === $plants_cat_id )
+                {
+                echo  '<h2 class="heading-2">Уход и характеристики</h2>';
+                } else {
+                echo '<h2 class="heading-2">Характеристики</h2>';
+                }
+        }
         wc_display_product_attributes($product);
     ?>
     </div>
