@@ -41,7 +41,7 @@ remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_p
 add_action('woocommerce_before_single_product_summary', 'plnt_product_description', 10);
 
 function plnt_product_description () {
-    if (the_content()) {
+
         ?>
         <div class="card__description">
             <h2 class="heading-2">Описание</h2>
@@ -50,7 +50,7 @@ function plnt_product_description () {
         ?>
         </div>
         <?php 
-    }
+
 };
 
 
