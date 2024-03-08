@@ -294,18 +294,33 @@ function new_truemisha_remove_shipping_method( $rates, $package ) {
 add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
  
 function new_truemisha_remove_shipping_on_price( $rates, $package ) {
+
+    global $local_pickup;
+	
+	global $delivery_inMKAD;
+	global $delivery_outMKAD;
+	global $delivery_inMKAD_small;
+	global $delivery_outMKAD_small;
+
+
+	global $urgent_delivery_inMKAD; 
+	global $urgent_delivery_outMKAD; 
+	global $urgent_delivery_inMKAD_small; 
+	global $urgent_delivery_outMKAD_small;
+	
+	global $delivery_free;
  
 	// если сумма всех товаров в корзине меньше 2000, отключаем способ доставки
 	if ( WC()->cart->subtotal < 2000 ) {
-	    unset( $rates[ 'flat_rate:1' ] );
-		unset( $rates[ 'flat_rate:12' ] );
-		unset( $rates[ 'flat_rate:13' ] );
-		unset( $rates[ 'flat_rate:14' ] );		
+	    unset( $rates[ $delivery_inMKAD ] );
+		unset( $rates[ $delivery_outMKAD ] );
+		unset( $rates[ $urgent_delivery_inMKAD ] );
+		unset( $rates[ $urgent_delivery_outMKAD ] );		
 	} else {
-		unset( $rates[ 'flat_rate:15' ] );
-		unset( $rates[ 'flat_rate:16' ] );
-		unset( $rates[ 'flat_rate:17' ] );
-		unset( $rates[ 'flat_rate:18' ] );
+		unset( $rates[ $delivery_inMKAD_small ] );
+		unset( $rates[ $delivery_outMKAD_small ] );
+		unset( $rates[ $urgent_delivery_inMKAD_small ] );
+		unset( $rates[ $urgent_delivery_outMKAD_small ] );
 	}
  
 	return $rates;
