@@ -27,8 +27,8 @@ Container::make('theme_options', 'Настройки темы')
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'phone_icon', 'Phone button for mob' )
 			 ->set_value_type( 'url' ),
-			 Field::make( 'image', 'filter_icon', 'Filter button for mob in catalog' )
-			 ->set_value_type( 'url' ),
+			//  Field::make( 'image', 'filter_icon', 'Filter button for mob in catalog' )
+			//  ->set_value_type( 'url' ),
 			 Field::make( 'text', 'site_title', 'Site title in header' )
          ))
 		 ->add_tab( __('Main Page Banners'), array(
@@ -89,17 +89,17 @@ Container::make('theme_options', 'Настройки темы')
 	   ));
 
 // Add second options page under 'Basic Options'
-Container::make('theme_options', 'Social Links')
-         ->set_page_parent('Настройки темы')  // title of a top level Theme Options page
-         ->add_fields(array(
-		Field::make('text', 'crb_facebook_link', 'попр'),
-		Field::make('text', 'crb_twitter_link')
-	));
+// Container::make('theme_options', 'Social Links')
+//          ->set_page_parent('Настройки темы')  // title of a top level Theme Options page
+//          ->add_fields(array(
+// 		Field::make('text', 'crb_facebook_link', 'попр'),
+// 		Field::make('text', 'crb_twitter_link')
+// 	));
 
 // Add third options page under "Appearance"
-Container::make('theme_options', 'Customize Background')
-			->set_page_parent('themes.php')
-            ->add_fields(array(
-		Field::make('color', 'crb_background_color'),
-		Field::make('image', 'crb_background_image')
-	));
+// Container::make('theme_options', 'Customize Background')
+// 			->set_page_parent('themes.php')
+//             ->add_fields(array(
+// 		Field::make('color', 'crb_background_color'),
+// 		Field::make('image', 'crb_background_image')
+// 	));

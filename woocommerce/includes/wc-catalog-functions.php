@@ -99,7 +99,6 @@ function plnt_catalog_filters_main_area() {
 				<?php echo do_shortcode('[br_filter_single filter_id=10996]') //Товары в наличии для моб?>
 			</div>
 			<div class="catalog__mob-filter-btn button"><img src="<?php echo $filter_icon ?>" alt="Фильтр"></div>
-			<!-- <div class="catalog__mob-filter-btn button"><img src="http://new.plantis.shop/wp-content/uploads/2024/02/filter.svg" alt="Фильтр"></div> -->
 		</div>
 		<div class="catalog__filter-active">
 			<?php echo do_shortcode('[br_filter_single filter_id=6057]') //Активные фильтры?>
