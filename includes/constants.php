@@ -106,7 +106,6 @@ if($site === 'http://new.plantis.shop') {
 	$urgent_delivery_outMKAD_small = 'flat_rate:12';
 	
 	$delivery_free = 'free_shipping:4';
-	
 }
 
 
