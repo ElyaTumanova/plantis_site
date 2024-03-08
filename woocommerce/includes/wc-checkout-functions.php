@@ -104,11 +104,17 @@ function new_custom_checkout_field_script() {
 	}
 
     // HERE your shipping methods rate IDs
-    $local_pickup = 'local_pickup:9';
-	$urgent_delivery1 = 'flat_rate:13';
-	$urgent_delivery2 = 'flat_rate:14';
-	$urgent_delivery3 = 'flat_rate:17';
-	$urgent_delivery4 = 'flat_rate:18';
+    global $local_pickup;
+	global $urgent_delivery1;
+	global $urgent_delivery2;
+	global $urgent_delivery3;
+	global $urgent_delivery4;
+    
+    // $local_pickup = 'local_pickup:9';
+	// $urgent_delivery1 = 'flat_rate:13';
+	// $urgent_delivery2 = 'flat_rate:14';
+	// $urgent_delivery3 = 'flat_rate:17';
+	// $urgent_delivery4 = 'flat_rate:18';
 
     $required_text = esc_attr__( 'required', 'woocommerce' );
     $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';

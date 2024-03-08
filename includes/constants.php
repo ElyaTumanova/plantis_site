@@ -11,6 +11,7 @@ if($site === 'http://new.plantis.shop') {
 	echo '<script> console.log("hello plantis")</script>';
 }
 
+/* Категории товаров */
 if($site === 'http://new.plantis.shop') {
 	//NEW PLANTIS SHOP
 	// constants for categories IDs
@@ -56,6 +57,21 @@ if($site === 'http://new.plantis.shop') {
 		1077,
 		1078,
 		1074);
+}
+
+
+/* Способы доставки */
+
+if($site === 'http://new.plantis.shop') {
+	//NEW PLANTIS SHOP
+	$local_pickup = 'local_pickup:9';
+	$urgent_delivery1 = 'flat_rate:13';
+	$urgent_delivery2 = 'flat_rate:14';
+	$urgent_delivery3 = 'flat_rate:17';
+	$urgent_delivery4 = 'flat_rate:18';
+} else {
+	// PLANTIS SHOP
+	
 }
 
 
