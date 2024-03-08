@@ -275,14 +275,14 @@ function new_truemisha_remove_shipping_method( $rates, $package ) {
  
 	// удаляем способ доставки, если доступна бесплатная
 	if ( isset( $rates[ $delivery_free ] ) ) { 
-	    unset( $rates[ 'flat_rate:1' ] );
-// 		unset( $rates[ 'flat_rate:12' ] );
-		unset( $rates[ 'flat_rate:13' ] );
-// 		unset( $rates[ 'flat_rate:14' ] );
-		unset( $rates[ 'flat_rate:15' ] );
-		unset( $rates[ 'flat_rate:16' ] );
-		unset( $rates[ 'flat_rate:17' ] );
-		unset( $rates[ 'flat_rate:18' ] );
+	    unset( $rates[ $delivery_inMKAD ] );
+// 		unset( $rates[ $delivery_outMKAD ] );
+		unset( $rates[ $urgent_delivery_inMKAD ] );
+// 		unset( $rates[ $urgent_delivery_outMKAD ] );
+		unset( $rates[ $delivery_inMKAD_small ] );
+		unset( $rates[ $delivery_outMKAD_small ] );
+		unset( $rates[ $urgent_delivery_inMKAD_small ] );
+		unset( $rates[ $urgent_delivery_outMKAD_small ] );
 	}
  
 	return $rates;
