@@ -4,9 +4,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $site = get_site_url();
-	// echo '<pre>';
-	// var_dump( $site );
-	// echo '</pre>';
+	echo '<script>' '</pre>';
+
+if($site === 'http://new.plantis.shop') {
+	echo '<script> console.log("hello new plantis")</script>';
+} else {
+	echo '<script> console.log("hello plantis")</script>';
+}
 
 if($site === 'http://new.plantis.shop') {
 	//NEW PLANTIS SHOP
