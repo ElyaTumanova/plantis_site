@@ -3,6 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+// not used
+
 if ( ! function_exists( 'ast_posted_on' ) ) :
 
 	function ast_posted_on() {
