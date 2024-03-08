@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $site = get_site_url();
 
 function plnt_check_site() {
+	global $site;
 	if (is_front_page()) {
 		if($site === 'http://new.plantis.shop') {
 			echo '<script> console.log("hello new plantis")</script>';
