@@ -109,8 +109,9 @@ if($site === 'http://new.plantis.shop') {
 }
 
 
+/* Изображения и иконки */
 
-
+$filter_icon = "http://new.plantis.shop/wp-content/uploads/2024/02/filter.svg";
 
 
 

@@ -88,7 +88,7 @@ function plnt_catalog_sidebar() {
 add_action('woocommerce_before_shop_loop','plnt_catalog_filters_main_area', 20);
 
 function plnt_catalog_filters_main_area() {
-	$filter_icon = carbon_get_theme_option('filter_icon');
+	global $filter_icon;
 	?>
     <div class="catalog__filter-wrap">
 		<div class="catalog__filter-metki">
