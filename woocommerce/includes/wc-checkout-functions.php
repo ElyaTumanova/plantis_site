@@ -105,16 +105,10 @@ function new_custom_checkout_field_script() {
 
     // HERE your shipping methods rate IDs
     global $local_pickup;
-	global $urgent_delivery1;
-	global $urgent_delivery2;
-	global $urgent_delivery3;
-	global $urgent_delivery4;
-    
-    // $local_pickup = 'local_pickup:9';
-	// $urgent_delivery1 = 'flat_rate:13';
-	// $urgent_delivery2 = 'flat_rate:14';
-	// $urgent_delivery3 = 'flat_rate:17';
-	// $urgent_delivery4 = 'flat_rate:18';
+	global $urgent_delivery_inMKAD;
+	global $urgent_delivery_outMKAD;
+	global $urgent_delivery_inMKAD_small;
+	global $urgent_delivery_outMKAD_small;
 
     $required_text = esc_attr__( 'required', 'woocommerce' );
     $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';
@@ -133,8 +127,8 @@ function new_custom_checkout_field_script() {
                 b1 = b+a1+f,        b2 = b+a2+f,        b3 = b+a3+f,        b4 = b+a4+f,        b5 = b+a5+f, b6 = b+a6+f, b7 = b+a7+f, b8 = b+a8+f,
                 s1 = s+a1+f,        s2 = s+a2+f,        s3 = s+a3+f,        s4 = s+a4+f,        s5 = s+a5+f,
                 localPickup = '<?php echo $local_pickup; ?>',
-				urgentPickup1 = '<?php echo $urgent_delivery1; ?>',urgentPickup2 = '<?php echo $urgent_delivery2; ?>',
-				urgentPickup3 = '<?php echo $urgent_delivery3; ?>',urgentPickup4 = '<?php echo $urgent_delivery4; ?>';
+				urgentPickup1 = '<?php echo $urgent_delivery_inMKAD; ?>',urgentPickup2 = '<?php echo $urgent_delivery_outMKAD; ?>',
+				urgentPickup3 = '<?php echo $urgent_delivery_inMKAD_small; ?>',urgentPickup4 = '<?php echo $urgent_delivery_outMKAD_small; ?>';
 
             // Utility function to shows or hide checkout fields
             function showHide( action='show', selector='' ){
@@ -263,9 +257,24 @@ function new_custom_checkout_field_script() {
 add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_method', 20, 2 );
  
 function new_truemisha_remove_shipping_method( $rates, $package ) {
+
+    global $local_pickup;
+	
+	global $delivery_inMKAD;
+	global $delivery_outMKAD;
+	global $delivery_inMKAD_small;
+	global $delivery_outMKAD_small;
+
+
+	global $urgent_delivery_inMKAD; 
+	global $urgent_delivery_outMKAD; 
+	global $urgent_delivery_inMKAD_small; 
+	global $urgent_delivery_outMKAD_small;
+	
+	global $delivery_free;
  
 	// удаляем способ доставки, если доступна бесплатная
-	if ( isset( $rates[ 'free_shipping:5' ] ) ) { 
+	if ( isset( $rates[ $delivery_free ] ) ) { 
 	    unset( $rates[ 'flat_rate:1' ] );
 // 		unset( $rates[ 'flat_rate:12' ] );
 		unset( $rates[ 'flat_rate:13' ] );
@@ -436,8 +445,8 @@ function custom_checkout_field_script() {
 
     // HERE your shipping methods rate IDs
     $local_pickup = 'local_pickup:1';
-	$urgent_delivery1 = 'flat_rate:5';
-	$urgent_delivery2 = 'flat_rate:6';
+	$urgent_delivery_inMKAD = 'flat_rate:5';
+	$urgent_delivery_outMKAD = 'flat_rate:6';
 
     $required_text = esc_attr__( 'required', 'woocommerce' );
     $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';
@@ -455,7 +464,7 @@ function custom_checkout_field_script() {
                 b1 = b+a1+f,        b2 = b+a2+f,        b3 = b+a3+f,        b4 = b+a4+f,        b5 = b+a5+f, b6 = b+a6+f,
                 s1 = s+a1+f,        s2 = s+a2+f,        s3 = s+a3+f,        s4 = s+a4+f,        s5 = s+a5+f,
                 localPickup = '<?php echo $local_pickup; ?>',
-				urgentPickup1 = '<?php echo $urgent_delivery1; ?>',urgentPickup2 = '<?php echo $urgent_delivery2; ?>';
+				urgentPickup1 = '<?php echo $urgent_delivery_inMKAD; ?>',urgentPickup2 = '<?php echo $urgent_delivery_outMKAD; ?>';
 
             // Utility function to shows or hide checkout fields
             function showHide( action='show', selector='' ){

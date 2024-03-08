@@ -14,9 +14,9 @@ function plnt_check_site() {
 			echo '<script> console.log("hello plantis")</script>';
 		}
 	}
-	echo '<pre>';
-	print_r( $site );
-	echo '</pre>';
+	// echo '<pre>';
+	// print_r( $site );
+	// echo '</pre>';
 }
 
 add_action( 'wp_footer', 'plnt_check_site' );
@@ -74,11 +74,22 @@ if($site === 'http://new.plantis.shop') {
 
 if($site === 'http://new.plantis.shop') {
 	//NEW PLANTIS SHOP
-	$local_pickup = 'local_pickup:9';
-	$urgent_delivery1 = 'flat_rate:13';
-	$urgent_delivery2 = 'flat_rate:14';
-	$urgent_delivery3 = 'flat_rate:17';
-	$urgent_delivery4 = 'flat_rate:18';
+	$local_pickup = 'local_pickup:9'; //самовывоз
+	
+	$delivery_inMKAD = 'flat_rate:1';
+	$delivery_outMKAD = 'flat_rate:12';
+	$delivery_inMKAD_small = 'flat_rate:15';
+	$delivery_outMKAD_small = 'flat_rate:16';
+
+
+	$urgent_delivery_inMKAD = 'flat_rate:13'; 
+	$urgent_delivery_outMKAD = 'flat_rate:14'; 
+	$urgent_delivery_inMKAD_small = 'flat_rate:17'; 
+	$urgent_delivery_outMKAD_small = 'flat_rate:18';
+	
+	$delivery_free = 'free_shipping:5';
+
+
 } else {
 	// PLANTIS SHOP
 	
