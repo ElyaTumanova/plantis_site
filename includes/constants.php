@@ -109,9 +109,8 @@ if($site === 'http://new.plantis.shop') {
 }
 
 
-/* Настройки темы */
 
-$filter_icon = carbon_get_theme_option('filter_icon');
+
 
 
 
