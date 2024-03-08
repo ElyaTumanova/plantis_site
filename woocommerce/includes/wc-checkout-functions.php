@@ -388,7 +388,6 @@ add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category' );
 function min_amount_for_category(){
     global $treez_cat_id;
     $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
- 	$minimum = 20000;
 	$qty = 0; // обязательно сначала ставим 0
  	$cat_amount = 0;
 	$products_min = false;
