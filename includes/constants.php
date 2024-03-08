@@ -4,7 +4,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $site = get_site_url();
-	echo '<script>' '</pre>';
 
 if($site === 'http://new.plantis.shop') {
 	echo '<script> console.log("hello new plantis")</script>';
