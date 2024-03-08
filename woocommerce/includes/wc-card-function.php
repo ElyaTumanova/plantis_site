@@ -42,14 +42,18 @@ add_action('woocommerce_before_single_product_summary', 'plnt_product_descriptio
 
 function plnt_product_description () {
 
+    ?>
+    <div class="card__description">
+    <?php
+    if (the_content()) {
         ?>
-        <div class="card__description">
             <h2 class="heading-2">Описание</h2>
         <?php
-        the_content();
-        ?>
-        </div>
-        <?php 
+    }
+    the_content();
+    ?>
+    </div>
+    <?php 
 
 };
 
