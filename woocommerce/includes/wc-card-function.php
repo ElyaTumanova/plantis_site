@@ -45,11 +45,11 @@ function plnt_product_description () {
     ?>
     <div class="card__description">
     <?php
-    if (the_content()) {
+    if( '' !== get_post()->post_content ) {
         ?>
             <h2 class="heading-2">Описание</h2>
         <?php
-    }
+        }
     the_content();
     ?>
     </div>
