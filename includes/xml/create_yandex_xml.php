@@ -67,6 +67,9 @@ function create_yandex_xml_btn () {
             )
         );
         $query = new WP_Query;
+        echo '<pre>';
+    	print_r( $allproducts );
+    	echo '</pre>';
         $allproducts = $query->query($args);
         foreach($allproducts as $allproduct){
             // Определяем последую категорию в дереве, к которой присвоен конкретный товар в текущем цикле. В примере участвует кастомная таксономия 'products_category', её замените на ту, которая создана у вас.
