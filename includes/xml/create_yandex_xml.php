@@ -154,7 +154,7 @@ function create_yandex_xml_btn () {
         element.addEventListener('click', function (event) {
         create_yandex_xml();
         console.log('YML фид создан');
-        const allproductscount = <?php echo $allproductscount; ?>
+        const allproductscount = <?php echo $allproductscount; ?>;
         console.log(allproductscount);
         });
 	</script>
