@@ -74,7 +74,7 @@ function create_yandex_xml_btn () {
         foreach($allproducts as $allproduct){
             $prodid = $allproduct->ID;
             ?>
-            const prodid = <?php echo $prodid; ?>;
+            var prodid = <?php echo $prodid; ?>;
             console.log(prodid);
             <?php
             // echo '<pre>';
