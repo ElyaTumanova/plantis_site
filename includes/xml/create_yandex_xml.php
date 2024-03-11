@@ -69,7 +69,9 @@ function create_yandex_xml_btn () {
         $query = new WP_Query;
         $allproducts = $query->query($args);
 
-        print_r( count($allproducts) );
+        $allproductscount = count($allproducts);
+
+        // print_r( count($allproducts) );
 
         foreach($allproducts as $allproduct){
             // Определяем последую категорию в дереве, к которой присвоен конкретный товар в текущем цикле. В примере участвует кастомная таксономия 'products_category', её замените на ту, которая создана у вас.
@@ -150,8 +152,10 @@ function create_yandex_xml_btn () {
 		const element = document.querySelector('.xml_button');
 
         element.addEventListener('click', function (event) {
-        console.log('YML фид создан');
         create_yandex_xml();
+        console.log('YML фид создан');
+        const allproductscount = <?php echo $allproductscount; ?>
+        console.log(allproductscount);
         });
 	</script>
 	<?php
