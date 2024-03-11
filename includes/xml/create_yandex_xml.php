@@ -71,9 +71,13 @@ function create_yandex_xml_btn () {
 
         $allproductscount = count($allproducts);
 
-        // print_r( count($allproducts) );
-
         foreach($allproducts as $allproduct){
+            echo $allproduct;
+            ?> 
+            // <script>
+            // console.log(<?php //echo $allproductscount; ?>)
+            // </script>
+            <?php
             // Определяем последую категорию в дереве, к которой присвоен конкретный товар в текущем цикле. В примере участвует кастомная таксономия 'products_category', её замените на ту, которая создана у вас.
             $lastcateg='';
             if($categorys=get_the_terms($allproduct->ID,'product_cat')){
