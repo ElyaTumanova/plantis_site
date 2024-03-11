@@ -68,7 +68,7 @@ function create_yandex_xml_btn () {
         );
         $query = new WP_Query;
         echo '<pre>';
-    	print_r( $allproducts );
+    	print_r( '$allproducts' );
     	echo '</pre>';
         $allproducts = $query->query($args);
         foreach($allproducts as $allproduct){
