@@ -13,7 +13,7 @@
 			k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
 			(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-			ym(96498108, "init", {
+			ym(87781741, "init", {
 					clickmap:true,
 					trackLinks:true,
 					accurateTrackBounce:true,
@@ -26,7 +26,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<noscript><div><img src="https://mc.yandex.ru/watch/96498108" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript><div><img src="https://mc.yandex.ru/watch/87781741" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <div id="page" class="site">
 
 	<header id="header" class="header" role="banner">
