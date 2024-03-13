@@ -1017,7 +1017,7 @@ ul.products {
 }
 
 .catalog__mob-filter-wrap .catalog__instock-filter .bapf_body label {
-    font-size: 0;
+    font-size: 0 !important;
 }
 
 .catalog__mob-filter-wrap .catalog__instock-filter h3 {
