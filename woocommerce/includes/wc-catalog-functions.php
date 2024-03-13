@@ -107,7 +107,7 @@ function plnt_catalog_filters_main_area() {
     <?php 	
 };
 
-// // заголовок каталога
+// // заголовок каталога    #TODO не работатет почему-то
 
 // // // Option 1 - изменяем текст заголовка в функции woocommerce_page_title
 
@@ -127,13 +127,13 @@ function plnt_catalog_filters_main_area() {
 // }
 
 // // // Option 2 - отменяем вывод заголовка через хук woocommerce_show_page_title
-add_filter( 'woocommerce_show_page_title', 'wp_kama_woocommerce_show_page_title_filter' );
+// add_filter( 'woocommerce_show_page_title', 'wp_kama_woocommerce_show_page_title_filter' );
 
-function wp_kama_woocommerce_show_page_title_filter( $true ){
+// function wp_kama_woocommerce_show_page_title_filter( $true ){
 
-	// filter...
-	return $false;
-}
+// 	// filter...
+// 	return $false;
+// }
 
 add_action('woocommerce_archive_description','plnt_page_title'); // выводим новый заголовок
 
