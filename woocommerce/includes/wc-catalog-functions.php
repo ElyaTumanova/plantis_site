@@ -111,25 +111,25 @@ function plnt_catalog_filters_main_area() {
 
 // // // Option 1 - изменяем текст заголовка в функции woocommerce_page_title
 
-add_filter( 'woocommerce_page_title', 'plnt_woocommerce_page_title');
+// add_filter( 'woocommerce_page_title', 'plnt_woocommerce_page_title');
 
-function plnt_woocommerce_page_title($page_title) {
-	if ( is_paged() ) {
-		$pageNum = get_query_var('paged');
+// function plnt_woocommerce_page_title($page_title) {
+// 	if ( is_paged() ) {
+// 		$pageNum = get_query_var('paged');
 
-		$page_title .= " - Страница ".$pageNum;
-		return $page_title;
-	}
+// 		$page_title .= " - Страница ".$pageNum;
+// 		return $page_title;
+// 	}
 	
-	else {
-		return $page_title;
-	}
-}
+// 	else {
+// 		return $page_title;
+// 	}
+// }
 
 // // // Option 2 - отменяем вывод заголовка через хук woocommerce_show_page_title
-//add_filter( 'woocommerce_show_page_title', 'wp_kama_woocommerce_show_page_title_filter' );
+add_filter( 'woocommerce_show_page_title', 'wp_kama_woocommerce_show_page_title_filter' );
 
-function wp_kama_woocommerce_show_page_title_filter( $true ){
+function wp_kama_woocommerce_show_page_title_filter( $false ){
 
 	// filter...
 	return $false;
