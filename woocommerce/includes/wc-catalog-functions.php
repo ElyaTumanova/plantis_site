@@ -127,7 +127,7 @@ function plnt_catalog_filters_main_area() {
 // }
 
 // // // Option 2 - отменяем вывод заголовка через хук woocommerce_show_page_title
-add_filter( 'woocommerce_show_page_title', 'wp_kama_woocommerce_show_page_title_filter' );
+//add_filter( 'woocommerce_show_page_title', 'wp_kama_woocommerce_show_page_title_filter' );
 
 function wp_kama_woocommerce_show_page_title_filter( $true ){
 
