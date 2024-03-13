@@ -61,23 +61,23 @@ function plnt_catalog_sidebar() {
 		</div>
 		<div class="catalog__sidebar-filters">
 			<div class="catalog__instock-filter">
-				<?php echo do_shortcode('[br_filter_single filter_id=6110]') //товары в наличии?>
+				<?php echo do_shortcode('[br_filter_single filter_id=6110]') //товары в наличии //56534?>
 			</div>
 			<?php 
-			echo do_shortcode('[br_filter_single filter_id=6055]'); // цена
+			echo do_shortcode('[br_filter_single filter_id=6055]'); // цена  \\56529
 			if (!is_shop()) {
-				echo do_shortcode('[br_filter_single filter_id=6056]'); // высота
-				echo do_shortcode('[br_filter_single filter_id=6109]'); //	полив
-				echo do_shortcode('[br_filter_single filter_id=11115]'); // освещение
-				echo do_shortcode('[br_filter_single filter_id=11116]'); // влажность
+				echo do_shortcode('[br_filter_single filter_id=6056]'); // высота //56530
+				echo do_shortcode('[br_filter_single filter_id=6109]'); //	полив //56533
+				echo do_shortcode('[br_filter_single filter_id=11115]'); // освещение //56538
+				echo do_shortcode('[br_filter_single filter_id=11116]'); // влажность //56539
 				//echo do_shortcode('[br_filter_single filter_id=12018]'); // автополив
-				echo do_shortcode('[br_filter_single filter_id=11117]'); // диаметр горшка
-				echo do_shortcode('[br_filter_single filter_id=12017]'); // диаметр кашпо Treez
-				echo do_shortcode('[br_filter_single filter_id=6108]'); // цвет
-				echo do_shortcode('[br_filter_single filter_id=12013]'); // форма
-				echo do_shortcode('[br_filter_single filter_id=12015]'); // материал
-				echo do_shortcode('[br_filter_single filter_id=12016]'); // Объем
-				echo do_shortcode('[br_filter_single filter_id=10988]'); // в подарок
+				echo do_shortcode('[br_filter_single filter_id=11117]'); // диаметр горшка //56540
+				echo do_shortcode('[br_filter_single filter_id=12017]'); // диаметр кашпо Treez //56545
+				echo do_shortcode('[br_filter_single filter_id=6108]'); // цвет //56532
+				echo do_shortcode('[br_filter_single filter_id=12013]'); // форма //56541
+				echo do_shortcode('[br_filter_single filter_id=12015]'); // материал //56543
+				echo do_shortcode('[br_filter_single filter_id=12016]'); // Объем //56544
+				echo do_shortcode('[br_filter_single filter_id=10988]'); // в подарок //56535
 			}?>
 		</div>
     </div>
@@ -92,16 +92,16 @@ function plnt_catalog_filters_main_area() {
 	?>
     <div class="catalog__filter-wrap">
 		<div class="catalog__filter-metki">
-			<?php echo do_shortcode('[br_filter_single filter_id=10989]') //Подборки?>  
+			<?php echo do_shortcode('[br_filter_single filter_id=10989]') //Подборки //56536?>  
 		</div>
 		<div class = "catalog__mob-filter-wrap"> 
 			<div class="catalog__instock-filter">
-				<?php echo do_shortcode('[br_filter_single filter_id=10996]') //Товары в наличии для моб?>
+				<?php echo do_shortcode('[br_filter_single filter_id=10996]') //Товары в наличии для моб //56537?>
 			</div>
 			<div class="catalog__mob-filter-btn button"><img src="<?php echo $filter_icon ?>" alt="Фильтр"></div>
 		</div>
 		<div class="catalog__filter-active">
-			<?php echo do_shortcode('[br_filter_single filter_id=6057]') //Активные фильтры?>
+			<?php echo do_shortcode('[br_filter_single filter_id=6057]') //Активные фильтры //56531?>
 		</div>
     </div>
     <?php 	
