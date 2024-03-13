@@ -10,7 +10,7 @@ $args = array(
     'ignore_sticky_posts' => 1,
     'no_found_rows' => 1,
     'posts_per_page' => 8,
-    'orderby' => $rand,
+    'orderby' => 'rand',
     // 'post__in' => $product_ids_on_sale,
     'meta_query' => array( 
         array(
