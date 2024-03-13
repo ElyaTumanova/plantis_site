@@ -111,7 +111,7 @@ if($site === 'http://new.plantis.shop') {
 
 /* Изображения и иконки */
 
-$filter_icon = "http://new.plantis.shop/wp-content/uploads/2024/02/filter.svg";
+$filter_icon = "https://plantis.shop/wp-content/uploads/2024/03/filter-1.svg";
 
 
 
