@@ -151,14 +151,14 @@ function plnt_woocommerce_page_title($page_title) {
 
 // // // Option 3
 function plnt_page_title ($title) {
+	$pageNum = get_query_var('paged');
 	if ( is_paged() ) {
-		$pageNum = get_query_var('paged');
 		// $newtitle = $title." - Страница ". $pageNum;
 		$newtitle = $pageNum;
 		$title = $newtitle;
 	}
 	else {
-		$title = $title;
+		$title = $title." - Страница ". $pageNum;;
 	}
 	return $title;
 }
