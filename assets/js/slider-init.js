@@ -140,7 +140,7 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
             freeMode: true,
         },
         768: {
-            slidesPerView: 6,
+            slidesPerView: 4,
             spaceBetween: 10,
             navigation: {
                 enabled: true,
