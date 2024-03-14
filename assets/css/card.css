@@ -18,8 +18,8 @@
     position: relative;
     height: fit-content;
     /* чтобы не было смещения пока грузится слайдер*/
-    /* max-height: 585px;
-    overflow: hidden; */
+    max-height: 585px;
+    overflow: hidden;
 }
 
 .woocommerce-product-gallery__trigger {
