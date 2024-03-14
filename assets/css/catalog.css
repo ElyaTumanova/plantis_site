@@ -463,6 +463,11 @@ ul.products {
     }
 }
 
+/* фото товара */
+
+.product__image-slider-wrap img {
+    border: var(--background) 1px solid;
+}
 /*--------------------------------------------------------------
 # Upsells & Cross sells in Card
 --------------------------------------------------------------*/
