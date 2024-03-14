@@ -719,6 +719,7 @@ ul.products {
     border-color: var(--sale);
     color: var(--white);
     margin: 0 10px;
+    margin-top: auto;
 }
 
 /* sale gallery стили для мобилки   #adaptive*/
@@ -790,7 +791,7 @@ ul.products {
 
 .main__sale-gallery .swiper-button-prev, .main__sale-gallery .swiper-button-next {
     margin-top: 0;
-    top: 72px;
+    top: 70px;
 }
 
 @media (max-width: 1279px) {
