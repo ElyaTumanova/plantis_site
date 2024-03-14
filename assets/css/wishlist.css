@@ -65,6 +65,7 @@ table.wishlist_table tbody td.product-name {
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 table.wishlist_table tbody td.product-price {

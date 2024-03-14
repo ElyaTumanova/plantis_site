@@ -162,7 +162,7 @@ function plnt_get_add_to_card() {
         if ($quantity > 0) {
             plnt_card_wishlist_btn();
         }
-        plnt_cart_notice();
+        // plnt_cart_notice();
         ?></div>
         <?php
     } 
