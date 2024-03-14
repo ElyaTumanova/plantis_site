@@ -403,6 +403,10 @@
     border-radius: 10px;
 }
 
+.cats-grid__img {
+    border-radius: 10px;
+}
+
 .cats-grid__title {
     font-size: 18px;
     font-weight: 700;
