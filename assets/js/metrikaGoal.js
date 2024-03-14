@@ -9,25 +9,25 @@ jQuery(document).ready(function() {
         return true;
 	});
 
-    // Клик по кнопке «Положить в корзину», кросс-сейлы - NEW #TODO - ДОБАВИТЬ В МЕТРИКУ
+    // Клик по кнопке «Положить в корзину», кросс-сейлы
 	jQuery('.cross-sells .add_to_cart_button').click(function(){
 		ym(87781741, 'reachGoal', 'click-button-cart-cross-sells'); 
         return true;
 	});
 
-    // Клик по кнопке «Положить в корзину», ап-сейлы - NEW #TODO - ДОБАВИТЬ В МЕТРИКУ
+    // Клик по кнопке «Положить в корзину», ап-сейлы
 	jQuery('.up-sells .add_to_cart_button').click(function(){
 		ym(87781741, 'reachGoal', 'click-button-cart-up-sells'); 
         return true;
 	});
 
-    // Клик по кнопке «Положить в корзину», товары для ухода - NEW #TODO - ДОБАВИТЬ В МЕТРИКУ
+    // Клик по кнопке «Положить в корзину», товары для ухода
 	jQuery('.card__ukhod-wrap .add_to_cart_button').click(function(){
 		ym(87781741, 'reachGoal', 'click-button-cart-ukhod-loop'); 
         return true;
 	});
 
-    // Клик по кнопке «Положить в корзину», спецпредложения - NEW #TODO - ДОБАВИТЬ В МЕТРИКУ
+    // Клик по кнопке «Положить в корзину», спецпредложения
 	jQuery('.main__sale-gallery .add_to_cart_button').click(function(){
 		ym(87781741, 'reachGoal', 'click-button-cart-sale'); 
         return true;
@@ -56,12 +56,12 @@ jQuery(document).ready(function() {
 		ym(87781741, 'reachGoal', 'click-button-cart'); return true;
 	});
 
-    //UX Клик по кнопке «Переход в корзину», мини корзина - NEW #TODO - ДОБАВИТЬ В МЕТРИКУ?
+    //UX Клик по кнопке «Переход в корзину», мини корзина
     jQuery('.mini-cart__wrap .woocommerce-mini-cart .button .wc-forward').click(function(){
 		ym(87781741, 'reachGoal', 'click-minicart-button-cart'); return true;
 	});
 
-    //UX Клик по кнопке «Переход в оформление заказа», мини корзина - NEW #TODO - ДОБАВИТЬ В МЕТРИКУ?
+    //UX Клик по кнопке «Переход в оформление заказа», мини корзина
     jQuery('.mini-cart__wrap .woocommerce-mini-cart .button .checkout .wc-forward').click(function(){
 		ym(87781741, 'reachGoal', 'click-minicart-button-order'); return true;
 	});
@@ -87,7 +87,7 @@ jQuery(document).ready(function() {
 		ym(87781741, 'reachGoal', 'click-button-favorites'); return true;
 	});
     
-    //Клик на кнопку «Убрать из избранного» - NEW #TODO - ДОБАВИТЬ В МЕТРИКУ?
+    //Клик на кнопку «Убрать из избранного»
     jQuery('.yith-wcwl-add-button .delete_item').click(function(){
 		ym(87781741, 'reachGoal', 'click-button-favorites-remove'); return true;
 	});	

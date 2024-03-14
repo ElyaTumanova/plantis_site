@@ -66,6 +66,12 @@
     cursor: pointer;
 }
 
+/* contact form 7 */
+
+.wpcf7-form p {
+    padding-bottom: 15px;
+}
+
 /* search and search popup styles */
 
 .search-popup .search {
