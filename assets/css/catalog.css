@@ -751,6 +751,13 @@ ul.products {
 .card__grid .swiper-wrapper{
     padding-bottom: 10px;
 }
+
+@media (min-width:767px) {
+    .main__sale-gallery .swiper-wrapper, 
+    .card__grid .swiper-wrapper{
+    padding-bottom: 0;
+}
+}
 .main__sale-gallery .swiper-pagination, .card__grid .swiper-pagination {
     /* bottom: -3px; for bullets*/
 
