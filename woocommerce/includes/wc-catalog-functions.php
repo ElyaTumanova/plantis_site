@@ -136,6 +136,14 @@ add_filter( "get_the_archive_title", "plnt_change_my_title" );
 # Card in Catalog 
 --------------------------------------------------------------*/
 
+//название товара - меняем тег h2
+
+remove_action( 'woocommerce_shop_loop_item_title','woocommerce_template_loop_product_title', 10 );
+add_action('woocommerce_shop_loop_item_title', 'soChangeProductsTitle', 10 );
+function soChangeProductsTitle() {
+    echo '<div class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div>';
+}
+
 //оформление карточки товара в каталоге
 
 // // перенос ссылки на фото
