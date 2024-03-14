@@ -581,12 +581,12 @@ ul.products {
     }
     .main__sale-gallery .product {
         display: grid;
-        grid-template-rows:  24px auto auto auto auto;
+        grid-template-rows:  24px auto auto auto;
         grid-template-areas:
                 "image sale sale"
                 "image price price"
                 "image name name"
-                "image descr descr"
+                /* "image descr descr" */
                 "image button wish";
         grid-template-columns: 165px 152px auto;
         column-gap: 10px;
@@ -623,9 +623,9 @@ ul.products {
         grid-area: name;
     }
 
-    .main__sale-gallery .woocommerce-product-details__short-description {
+    /* .main__sale-gallery .woocommerce-product-details__short-description {
         grid-area: descr;
-    }
+    } */
 
     .main__sale-gallery .price {
         grid-area: price;
@@ -685,6 +685,8 @@ ul.products {
 }
 
 .main__sale-gallery .woocommerce-product-details__short-description {
+    display: none;
+
     font-size: 12px;
     line-height: 14px;
     margin-bottom: 10px;
