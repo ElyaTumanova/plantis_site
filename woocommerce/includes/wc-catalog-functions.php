@@ -444,12 +444,9 @@ function move_to_top_on_pagination() {
 				$(document.body).on('click', '.page-numbers:not(.current)', function (event) {
 					event.preventDefault();
 					$('html, body').animate({
-						scrollTop: $(".catalog__products-wrap").offset().top - 100
+						scrollTop: $(".catalog__products-wrap").offset().top - 200
 					}, 777);
-					// var link = $(this).attr('href');
-					// setTimeout(function () {
-					// 	window.location.href = link;
-					// }, 1000);
+
 				});
 			});
 		</script>
