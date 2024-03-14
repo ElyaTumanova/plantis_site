@@ -100,8 +100,16 @@
     font-size: 25px;
 }
 
+.paged .woocommerce-products-header__title {
+    color: var(--accent-color);
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
 @media (max-width: 767px) {
-    .my_header__title, .entry-header, .entry-title {
+    .my_header__title, .entry-header, .entry-title, .woocommerce-products-header__title {
         font-size: 30px;
     }
     .my_header__title_paged {
