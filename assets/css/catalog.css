@@ -682,6 +682,7 @@ ul.products {
     overflow: hidden;
     text-overflow: ellipsis; */
     max-width: 185px;
+    margin-bottom: 0px;
 }
 
 .main__sale-gallery .woocommerce-product-details__short-description {
