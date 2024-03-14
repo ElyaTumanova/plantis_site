@@ -72,6 +72,12 @@
     padding-bottom: 15px;
 }
 
+.wpcf7-submit {
+    background-color: var(--accent-color);
+    color: var(--white);
+    border-color: var(--accent-color);
+}
+
 /* search and search popup styles */
 
 .search-popup .search {
