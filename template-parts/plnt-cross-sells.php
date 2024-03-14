@@ -20,7 +20,10 @@ if( !empty ($crosssell_ids) ){
             'ignore_sticky_posts' => 1,
             'no_found_rows' => 1,
             'posts_per_page' => 8,
-            'orderby' => 'rand',
+            // 'orderby' => 'rand',
+            'orderby' => array(
+                'name' => 'ASC'
+             ),
             'post__in' => $crosssell_ids,
             'meta_query' => array( 
                 array(
