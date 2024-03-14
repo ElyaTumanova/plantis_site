@@ -446,10 +446,10 @@ function move_to_top_on_pagination() {
 					$('html, body').animate({
 						scrollTop: $(".catalog__products-wrap").offset().top - 100
 					}, 777);
-					var link = $(this).attr('href');
-					setTimeout(function () {
-						window.location.href = link;
-					}, 1000);
+					// var link = $(this).attr('href');
+					// setTimeout(function () {
+					// 	window.location.href = link;
+					// }, 1000);
 				});
 			});
 		</script>
