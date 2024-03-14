@@ -21,13 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( $upsells ) : 
-
-    // echo '<pre>';
-	// print_r( $upsells );
-	// echo '</pre>';
-    
-    ?>
+if ( $upsells ) : ?>
 
 	<div class="up-sells upsells">
 		<?php
