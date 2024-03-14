@@ -62,6 +62,19 @@
     height: 100%;
 }
 
+.main__banner-img_mob {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .main__banner-img {
+        display: none;
+    }
+    .main__banner-img_mob {
+        display: block;
+    }
+}
+
 /* advantages */
 .advantages {
     display: grid;
