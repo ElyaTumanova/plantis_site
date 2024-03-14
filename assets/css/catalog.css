@@ -742,6 +742,14 @@ ul.products {
     }
 }
 
+/* wish */
+
+.main__sale-gallery .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, 
+.main__sale-gallery .yith-wcwl-add-to-wishlist a.delete_item>img, 
+.main__sale-gallery .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
+    max-width: 25px;
+}
+
 /*--------------------------------------------------------------
 # Swiper
 --------------------------------------------------------------*/
@@ -775,7 +783,7 @@ ul.products {
 
 .main__sale-gallery .swiper-button-prev, .main__sale-gallery .swiper-button-next {
     margin-top: 0;
-    top: 82px;
+    top: 70px;
 }
 
 .card__sliders-wrap .swiper-button-prev, .card__sliders-wrap .swiper-button-next {
