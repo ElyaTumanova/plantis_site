@@ -569,7 +569,7 @@ ul.products {
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     background-color: var(--background);
     row-gap: 8px;
 }
@@ -661,7 +661,7 @@ ul.products {
 @media (min-width:1279px) {
     .main__sale-gallery .yith-wcwl-add-button {
         margin-left: auto;
-        margin-right: 10px;
+        margin-right: 6px;
     }
 }
 
@@ -712,6 +712,7 @@ ul.products {
 .main__sale-gallery-title {
     text-align: center;
     color: var(--sale);
+    margin-bottom: 20px;
 }
 
 .main__sale-button {
@@ -791,7 +792,7 @@ ul.products {
 
 .main__sale-gallery .swiper-button-prev, .main__sale-gallery .swiper-button-next {
     margin-top: 0;
-    top: 70px;
+    top: 63px;
 }
 
 @media (max-width: 1279px) {
