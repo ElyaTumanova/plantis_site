@@ -161,7 +161,8 @@ function plnt_catalog_gallery() {
 				echo $image;
 				foreach( $attachment_ids as $attachment_id ) {
 					// $params = [ 'class' => "attachment-woocommerce_thumbnail" ];
-					echo wp_get_attachment_image( $attachment_id, 'shop_catalog');
+					// echo wp_get_attachment_image( $attachment_id, 'shop_catalog');
+					echo wp_get_attachment_image( $attachment_id);
 				};
 			echo '
 			</div>
