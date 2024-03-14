@@ -468,7 +468,7 @@ function filter_wpseo_robots( $robotsstr ) {
 }
 
 
-// изменяем названия меток на подборки для хлебных крошек
+// изменяем названия меток на подборки для хлебных крошек #breadcrumb
 
 
 add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
