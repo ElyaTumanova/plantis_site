@@ -119,8 +119,10 @@
 }
 
 /* последнее выпадающее меню выравниваем по правому краю, чтобы не было горизонтального скролла */
-.menu--main .menu-item:last-of-type .menu--dropdown {
-    right: 10px;
+@media (max-width: 1300px) {
+    .menu--main .menu-item:last-of-type .menu--dropdown {
+        right: 10px;
+    }
 }
 
 /*--------------------------------------------------------------
