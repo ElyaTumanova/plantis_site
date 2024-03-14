@@ -833,6 +833,10 @@ ul.products {
     top: calc(50% - 45px);
 }
 
+.card__ukhod-wrap .woocommerce-loop-product__title {
+    font-size: 16px;
+}
+
 /* стили цены */
 .card__ukhod-wrap .product .price {
     font-size: 24px;
@@ -852,6 +856,7 @@ ul.products {
     font-weight: 700;
     color: var(--red-color);
 }
+
 
 @media (max-width:767px) {
     .card__ukhod-wrap .yith-wcwl-add-to-wishlist {
