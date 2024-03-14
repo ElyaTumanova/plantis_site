@@ -26,4 +26,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 // 	return $attr;
 // }
 
-// add_filter( 'wp_get_attachment_image_attributes', 'plnt_add_lazy_class', 10, 2);
+function plnt_add_lazy_attr ($attr) {
+	$attr['loading'] = ' lazy';
+	return $attr;
+}
+
+ add_filter( 'wp_get_attachment_image_attributes', 'plnt_add_lazy_attr', 10, 2);
