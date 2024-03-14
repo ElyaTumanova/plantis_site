@@ -153,7 +153,10 @@ function plnt_woocommerce_page_title($page_title) {
 function plnt_page_title ($title) {
 	if ( is_paged() ) {
 		$pageNum = get_query_var('paged');
-		$title = $title." - Страница ". $pageNum;}
+		// $newtitle = $title." - Страница ". $pageNum;
+		$newtitle = $pageNum;
+		$title = $newtitle;
+	}
 	else {
 		$title = $title;
 	}
