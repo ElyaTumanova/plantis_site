@@ -62,15 +62,15 @@
     height: 100%;
 }
 
-.main__banner-img_mob {
+.main__banners_mob {
     display: none;
 }
 
 @media (max-width: 767px) {
-    .main__banner-img {
+    .main__banners {
         display: none;
     }
-    .main__banner-img_mob {
+    .main__banners_mob {
         display: block;
     }
 }
