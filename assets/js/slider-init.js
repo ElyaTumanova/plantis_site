@@ -145,6 +145,13 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
             navigation: {
                 enabled: true,
             },
+        },
+        1024: {
+            slidesPerView: 6,
+            spaceBetween: 15,
+            navigation: {
+                enabled: true,
+            },
         }
     }
 });
