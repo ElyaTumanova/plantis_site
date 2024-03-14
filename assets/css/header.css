@@ -2,12 +2,12 @@
 # Header for desktop
 --------------------------------------------------------------*/
 
-.header__breadcrumb {
+.header__breadcrumb, .woocommerce-breadcrumb {
     font-size: 14px;
 }
-.header__breadcrumb .woocommerce-breadcrumb {
+/* .header__breadcrumb .woocommerce-breadcrumb {
     padding-top: 10px;
-}
+} */
 
 
 
