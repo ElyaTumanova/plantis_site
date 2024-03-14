@@ -747,7 +747,7 @@ ul.products {
 .main__sale-gallery .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, 
 .main__sale-gallery .yith-wcwl-add-to-wishlist a.delete_item>img, 
 .main__sale-gallery .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
-    max-width: 25px;
+    max-width: 22px;
 }
 
 /*--------------------------------------------------------------
@@ -763,7 +763,7 @@ ul.products {
 @media (min-width:767px) {
     .main__sale-gallery .swiper-wrapper, 
     .card__grid .swiper-wrapper{
-    padding-bottom: 0;
+    padding-bottom: 5px;
 }
 }
 .main__sale-gallery .swiper-pagination, .card__grid .swiper-pagination {
@@ -783,7 +783,14 @@ ul.products {
 
 .main__sale-gallery .swiper-button-prev, .main__sale-gallery .swiper-button-next {
     margin-top: 0;
-    top: 70px;
+    top: 72px;
+}
+
+@media (max-width: 1279px) {
+    .main__sale-gallery .swiper-button-prev, .main__sale-gallery .swiper-button-next {
+        margin-top: 0;
+        top: 55px;
+    }
 }
 
 .card__sliders-wrap .swiper-button-prev, .card__sliders-wrap .swiper-button-next {
