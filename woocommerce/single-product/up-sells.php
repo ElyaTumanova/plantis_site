@@ -23,9 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( $upsells ) : 
 
-    echo '<pre>';
-	print_r( $upsells );
-	echo '</pre>';
+    // echo '<pre>';
+	// print_r( $upsells );
+	// echo '</pre>';
     
     ?>
 
