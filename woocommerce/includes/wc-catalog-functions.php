@@ -437,6 +437,27 @@ function plnt_woocommerce_pagination_args_filter( $array ){
 	return $array;
 }
 
+function move_to_top_on_pagination() {
+	?>
+		<script>
+			jQuery(function ($) {
+				$(document.body).on('click', '.page-numbers:not(.current)', function (event) {
+					event.preventDefault();
+					$('html, body').animate({
+						scrollTop: $(".woof_products_top_panel_content").offset().top - 100
+					}, 777);
+					var link = $(this).attr('href');
+					setTimeout(function () {
+						window.location.href = link;
+					}, 1000);
+				});
+			});
+		</script>
+	<?php
+	}
+
+add_action('wp_footer', 'move_to_top_on_pagination');
+
 // добавляем директивы ноиндекс, фоллоу для страниц пагинации, начиная со 2 #SEO
 add_filter( 'wpseo_robots', 'filter_wpseo_robots' );
 
