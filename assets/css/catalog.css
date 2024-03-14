@@ -9,9 +9,9 @@
 } 
 
 /* скрываем заголовок катлога стандартный */
-.woocommerce-products-header__title {
+/* .woocommerce-products-header__title {
     display: none;
-}
+} */
 
 /*--------------------------------------------------------------
 # Catalog

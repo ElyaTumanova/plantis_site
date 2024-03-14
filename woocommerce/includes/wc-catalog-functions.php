@@ -111,20 +111,20 @@ function plnt_catalog_filters_main_area() {
 
 // // // Option 1 - изменяем текст заголовка в функции woocommerce_page_title
 
-// add_filter( 'woocommerce_page_title', 'plnt_woocommerce_page_title');
+add_filter( 'woocommerce_page_title', 'plnt_woocommerce_page_title');
 
-// function plnt_woocommerce_page_title($page_title) {
-// 	if ( is_paged() ) {
-// 		$pageNum = get_query_var('paged');
+function plnt_woocommerce_page_title($page_title) {
+	if ( is_paged() ) {
+		$pageNum = get_query_var('paged');
 
-// 		$page_title .= " - Страница ".$pageNum;
-// 		return $page_title;
-// 	}
+		$page_title .= " - Страница ".$pageNum;
+		return $page_title;
+	}
 	
-// 	else {
-// 		return $page_title;
-// 	}
-// }
+	else {
+		return $page_title;
+	}
+}
 
 // // // Option 2 - отменяем вывод заголовка через хук woocommerce_show_page_title
 // add_filter( 'woocommerce_show_page_title', 'wp_kama_woocommerce_show_page_title_filter' );
@@ -135,7 +135,7 @@ function plnt_catalog_filters_main_area() {
 // 	return $false;
 // }
 
-add_action('woocommerce_archive_description','plnt_page_title'); // выводим новый заголовок
+//add_action('woocommerce_archive_description','plnt_page_title'); // выводим новый заголовок
 
 function plnt_page_title () {
 	$archive_title = get_the_archive_title();
@@ -148,7 +148,7 @@ function plnt_page_title () {
 	}
 }
 
-add_filter( 'get_the_archive_title_prefix', '__return_empty_string' ); // убираем префикс Архивы
+//add_filter( 'get_the_archive_title_prefix', '__return_empty_string' ); // убираем префикс Архивы
 
 // меняем название заголовка для shop
 function plnt_change_my_title( $title ){
