@@ -576,9 +576,9 @@ ul.products {
 
 /* sale gallery стили для десктопа   #adaptive*/
 @media (min-width: 767px) {
-    .main__sale-gallery-wrap {
+    /* .main__sale-gallery-wrap {
         padding: 10px 0;
-    }
+    } */
     .main__sale-gallery .product {
         display: grid;
         grid-template-rows:  24px auto auto auto;
@@ -588,7 +588,7 @@ ul.products {
                 "image name name"
                 /* "image descr descr" */
                 "image button wish";
-        grid-template-columns: 165px 152px auto;
+        grid-template-columns: 142px 150px auto;
         column-gap: 10px;
         text-align: left;
         position: relative;
@@ -656,6 +656,8 @@ ul.products {
 
 .main__sale-gallery .yith-wcwl-add-button {
     font-size: 0;
+    margin-left: auto;
+    margin-right: 10px;
 }
 
 .main__sale-gallery .yith-wcwl-add-button img {
