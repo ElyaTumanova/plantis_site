@@ -84,13 +84,14 @@
     }
 }
 
-.my_header__title, .entry-header, .entry-title {
+.my_header__title, .entry-header, .entry-title, .woocommerce-products-header__title {
     color: var(--accent-color);
     font-weight: 700;
     line-height: 1.1;
     text-transform: uppercase;
     font-size: 40px;
 }
+
 .my_header__title_paged {
     color: var(--accent-color);
     font-weight: 700;
