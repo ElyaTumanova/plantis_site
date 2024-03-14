@@ -8,14 +8,14 @@ $is_out_of_stock = $product->get_stock_status() ==='outofstock';
 
 
 $crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
-    
+echo '<pre>';
+print_r( $crosssell_ids[0]);
+echo '</pre>';
 
 if( !empty ($crosssell_ids) ){
 
     $crosssell_ids = $crosssell_ids[0];
-    echo '<pre>';
-	print_r( $crosssell_ids );
-	echo '</pre>';
+    
 
     if(count($crosssell_ids)>0){
 
