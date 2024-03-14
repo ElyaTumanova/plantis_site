@@ -75,7 +75,12 @@
     }
 }
 
-.main__banners-swiper img {
+.main__banners, .main__banners_mob {
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.main__banners img, .main__banners_mob img {
     border-radius: 5px;
 }
 
