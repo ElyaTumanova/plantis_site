@@ -84,6 +84,8 @@
     }
 }
 
+/* заголовк H1 */
+
 .my_header__title, .entry-header, .entry-title, .woocommerce-products-header__title {
     color: var(--accent-color);
     font-weight: 700;
@@ -113,6 +115,10 @@
         font-size: 30px;
     }
     .my_header__title_paged {
+        font-size: 18px;
+    }
+
+    .paged .woocommerce-products-header__title {
         font-size: 18px;
     }
 }
