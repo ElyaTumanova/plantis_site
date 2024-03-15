@@ -47,6 +47,15 @@
     }
 }
 
+@media (max-width: 767px) {
+    .page-popup__container {
+        top: 100px;
+        padding: 15px;
+        max-width: 1300px;
+        margin: auto;
+    }
+}
+
 .page-popup__heading {
     display: inline;
     color: var(--accent-color);
@@ -66,6 +75,12 @@
     margin: 30px 0;
 }
 
+@media (max-width: 767px) {
+    .page-popup__form {
+        margin: 20px 0;
+    }
+}
+
 .page-popup__link {
     text-decoration: underline;
 }
@@ -75,11 +90,26 @@
     cursor: pointer;
 }
 
+.page-popup__text {
+    font-size: 14px;
+}
+
 /* contact form 7 */
 
 .wpcf7-form p {
     padding-bottom: 15px;
 }
+
+.wpcf7-form input {
+    width: 100%;
+}
+
+
+.wpcf7-form textarea {
+    max-height: 100px;
+}
+
+
 
 .wpcf7-submit {
     background-color: var(--accent-color);
