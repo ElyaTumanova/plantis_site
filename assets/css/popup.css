@@ -31,7 +31,7 @@
 
 .page-popup__container {
     position: absolute;
-    top: 30%;
+    top: 100px;
     background: var(--background);
     padding: 50px;
     left: 0;
