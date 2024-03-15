@@ -400,11 +400,20 @@ input[type="number"] {
 
 .card__outofstock-btn-wrap {
     /* margin: 0 0 15px; */
-    display: flex;
+    /* display: flex;
+    column-gap: 15px; */
+    
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 52px;
+    grid-template-areas:
+    "preorder wish";
     column-gap: 15px;
+    justify-content: stretch;
 }
 
 .card__preorder-btn {
+    grid-area: preorder;
     color:var(--white);
     background-color: var(--accent-color);
     border-color: var(--accent-color);
@@ -413,6 +422,7 @@ input[type="number"] {
 }
 
 .card__outofstock-btn-wrap .yith-wcwl-add-to-wishlist{
+    grid-area: wish;
     margin-top: 0;
     width: fit-content;
 }
@@ -425,8 +435,16 @@ input[type="number"] {
 
 @media (max-width: 767px) {
     .card__outofstock-btn-wrap {
-        flex-direction: row-reverse;
-        margin: 0;
+        /* flex-direction: row-reverse;
+        margin: 0; */
+        grid-template-columns: 55px auto;
+        grid-template-rows: 52px;
+        grid-template-areas:
+        "wish preorder";
+        column-gap: 15px;
+        width: 100%;
+        margin-bottom: 0;
+        row-gap: 0;
     }
 
     .card__preorder-btn {
