@@ -18,7 +18,7 @@
 
 
 <div class="footer__info container">
-    <span class="footer__info-copyright">© 2023 Plantis | Комнатные растения и аксессуары с доставкой. Тел. <a href="tel:+78002015790">8 800 201 57 90</a></span>
+    <span class="footer__info-copyright">© 2021 - 2024 Plantis | Комнатные растения и аксессуары с доставкой. Тел. <a href="tel:+78002015790">8 800 201 57 90</a></span>
     <a href="<?php echo site_url()?>/privacy-policy/" class="footer__info-link" role="button">
         Политика конфиденциальности
     </a>

@@ -472,6 +472,7 @@ input[type="number"] {
     .card__add-to-cart-wrap {
         position: fixed;
         bottom: 72px;
+        min-height: 72px;
         right: 0;
         left: 0;
         box-shadow: 0px -2px 3px 0px rgba(0, 0, 0, 0.1);
