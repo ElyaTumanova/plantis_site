@@ -51,13 +51,13 @@
     margin-top: 10px;
 }
 
-.fix-body .container {
+/* .fix-body .container {
     padding-right: var(--scrollWidth);
 }
 
 .fix-body .content-area {
     padding-right: var(--scrollWidth);
-}
+} */
 
 
 @media (max-width: 1300px) {
