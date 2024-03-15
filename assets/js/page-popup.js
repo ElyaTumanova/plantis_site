@@ -3,6 +3,7 @@ const pageOpenPopupBtn = document.querySelector('.page-popup-open-btn');
 const pagePopup = document.querySelector('.page-popup');
 const pageClosePopupBtn = document.querySelector('.page-popup__close');
 const pagePopupOverlay = document.querySelector('.page-popup__popup-overlay');
+const body = document.querySelector('body');
 
 if (pagePopup != null && pageOpenPopupBtn != null) {
     
@@ -31,6 +32,7 @@ if (pagePopup != null && pageOpenPopupBtn != null) {
 
 function toggle_page_popup () {
     pagePopup.classList.toggle ('popup_active');
+    body.classList.toggle ('fix-body');
 };
 
 
