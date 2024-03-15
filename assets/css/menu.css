@@ -97,6 +97,11 @@
     top: 0;
 }
 
+.menu_podarok .menu--dropdown_lvl_2 {
+    top: auto;
+    bottom: -50px;
+}
+
 .menu-item-has-children.menu-node_lvl_2> a {
     display: flex;
     justify-content: space-between;
