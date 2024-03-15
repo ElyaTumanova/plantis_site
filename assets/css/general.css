@@ -51,15 +51,18 @@
     margin-top: 10px;
 }
 
-.fix-body .container {
-    max-width: calc(1300px + var(--scrollWidth));
-    padding-right: var(--scrollWidth);
+@media (min-width: 1300px) {
+    .fix-body .container {
+        max-width: calc(1300px + var(--scrollWidth));
+        padding-right: var(--scrollWidth);
+    }
+    
+    .fix-body .content-area {
+        max-width: calc(1300px + var(--scrollWidth));
+        padding-right: var(--scrollWidth);
+    }
 }
 
-.fix-body .content-area {
-    max-width: calc(1300px + var(--scrollWidth));
-    padding-right: var(--scrollWidth);
-}
 
 
 @media (max-width: 1300px) {
