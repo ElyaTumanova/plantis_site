@@ -72,12 +72,14 @@
 }
 
 .page-popup__form {
-    margin: 30px 0;
+    /* margin: 30px 0; */
+    margin-top: 30px;
 }
 
 @media (max-width: 767px) {
     .page-popup__form {
-        margin: 20px 0;
+        /* margin: 20px 0; */
+        margin-top: 20px;
     }
 }
 
@@ -104,12 +106,9 @@
     width: 100%;
 }
 
-
 .wpcf7-form textarea {
     max-height: 100px;
 }
-
-
 
 .wpcf7-submit {
     background-color: var(--accent-color);
