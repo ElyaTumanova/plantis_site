@@ -36,6 +36,7 @@
     padding: 50px;
     left: 0;
     /* right: var(--scrollWidth); */
+    right: 0;
 }
 
 .page-popup__heading {
