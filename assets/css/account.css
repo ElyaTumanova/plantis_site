@@ -93,6 +93,17 @@
 
 .woocommerce-MyAccount-orders th {
     text-align: left;
+    max-width: 100px;
+    vertical-align: top;
 }
+
+.woocommerce-orders-table__header-order-delivery-date, .woocommerce-orders-table__cell-order-delivery-date {
+    display: none;
+}
+.woocommerce-orders-table__header-order-total, .woocommerce-orders-table__cell-order-total {
+    display: none;
+}
+
+
 
 
