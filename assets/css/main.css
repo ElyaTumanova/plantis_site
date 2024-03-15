@@ -6,21 +6,11 @@
     row-gap: 50px;
 }
 
-/* стили для swiper */
-@media (min-width:1279px) {
-    
-    .main__wrap .swiper-button-prev, .main__wrap .swiper-button-next {
-        margin-top: 0;
-        top: 123px;
-    }
-}
-
-
 .main__row {
     margin-bottom: 75px;
 }
 
-@media (max-width:1279px) {
+@media (max-width:1024px) {
 
     .main__wrap {
         grid-template-columns: 100%;
@@ -32,11 +22,15 @@
     .main__row {
         margin-bottom: 45px;
     }
+}
 
-    /* .main__wrap {
-        display: flex;
-        flex-direction: column-reverse;
-    } */
+/* стили для swiper */
+@media (min-width:1279px) {
+    
+    .main__wrap .swiper-button-prev, .main__wrap .swiper-button-next {
+        margin-top: 0;
+        top: 123px;
+    }
 }
 
 /* banners */
@@ -82,6 +76,18 @@
 
 .main__banners img, .main__banners_mob img {
     border-radius: 5px;
+}
+
+/* catalog buttons */
+
+.main__catalog-buttons-wrap {
+    display: none;
+}
+
+@media (max-width:767px) {
+    .main__catalog-buttons-wrap {
+        display: block;
+    }
 }
 
 /* advantages */

@@ -12,17 +12,15 @@ global $skidki_cat_id;
 			<div class="main__banners-wrap">
 				<?php get_template_part('template-parts/main-banners-gallery');?>
 			</div>
+
+			<div class="main__catalog-buttons-wrap">
+				
+			</div>
 	
 			<div class="main__sale-gallery-wrap">
 				<h2 class="main__sale-gallery-title heading-2">Спецпредложения</h2>
 				<div class="main__sale-gallery">
 					<?php get_template_part('template-parts/products-on-sale');
-					// if (wp_is_mobile()) {
-					// 	echo do_shortcode('[products on_sale="true" class="main-sale-slider-mob" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]'); 
-					// } else {
-					// 	echo do_shortcode('[products on_sale="true" class="main-sale-slider" limit="10" columns="1" orderby="rand" category="komnatnye-rasteniya"]');
-					// }
-
 					?>
 				</div>
 				<a class="main__sale-button button" href="<?php echo get_term_link( $skidki_cat_id, 'product_cat' );?>"> Все комнатные растения со скидкой</a>			
