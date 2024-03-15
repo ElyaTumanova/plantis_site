@@ -51,19 +51,15 @@
     margin-top: 10px;
 }
 
-@media (min-width: 1300px) {
-    .fix-body .container {
-        max-width: calc(1300px + var(--scrollWidth));
-        padding-right: var(--scrollWidth);
-    }
-    
-    .fix-body .content-area {
-        max-width: calc(1300px + var(--scrollWidth));
-        padding-right: var(--scrollWidth);
-    }
+.fix-body .container {
+    max-width: calc(1300px + var(--scrollWidth));
+    padding-right: var(--scrollWidth);
 }
 
-
+.fix-body .content-area {
+    max-width: calc(1300px + var(--scrollWidth));
+    padding-right: var(--scrollWidth);
+}
 
 @media (max-width: 1300px) {
     .container {
@@ -78,6 +74,16 @@
 
     .no-padding {
         padding: 0;
+    }
+
+    .fix-body .container {
+        max-width: calc(1300px + var(--scrollWidth));
+        padding-right: calc(10px + var(--scrollWidth));
+    }
+    
+    .fix-body .content-area {
+        max-width: calc(1300px + var(--scrollWidth));
+        padding-right: calc(10px + var(--scrollWidth));
     }
 }
 
