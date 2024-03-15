@@ -11,6 +11,18 @@ window.addEventListener('resize', () => {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
 
+/*--------------------------------------------------------------
+# Ширина скролл бара окна браузера
+--------------------------------------------------------------*/
+
+let scrollWidth= window.innerWidth-$(document).width();
+// слушаем событие resize
+window.addEventListener('resize', () => {
+    // получаем текущее значение высоты
+    let scrollWidth= window.innerWidth-$(document).width()
+});
+
+console.log (scrollWidth);
 
 
 
