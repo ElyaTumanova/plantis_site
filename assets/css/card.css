@@ -399,10 +399,6 @@ input[type="number"] {
 /* out of stock info */
 
 .card__outofstock-btn-wrap {
-    /* margin: 0 0 15px; */
-    /* display: flex;
-    column-gap: 15px; */
-    
     display: grid;
     grid-template-columns: 70% 30%;
     grid-template-rows: 52px;
@@ -435,8 +431,6 @@ input[type="number"] {
 
 @media (max-width: 767px) {
     .card__outofstock-btn-wrap {
-        /* flex-direction: row-reverse;
-        margin: 0; */
         grid-template-columns: 55px auto;
         grid-template-rows: 52px;
         grid-template-areas:
