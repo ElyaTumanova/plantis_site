@@ -4,10 +4,14 @@
 
 .header__breadcrumb, .woocommerce-breadcrumb {
     font-size: 14px;
-}
-/* .header__breadcrumb .woocommerce-breadcrumb {
     padding-top: 10px;
-} */
+}
+
+@media (max-width: 767px) {
+    .woocommerce-breadcrumb {
+        padding: 10px 10px 0px;
+    }
+}
 
 
 
