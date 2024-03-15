@@ -476,6 +476,9 @@ div#orddd_list_view_select {
     background-color: #e9ecef;
   }
 
+.payment_method_tinkoff img {
+    display: none;
+}
 /*--------------------------------------------------------------
 # Thankyou page
 --------------------------------------------------------------*/
