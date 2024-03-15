@@ -96,12 +96,14 @@
     color: var(--white);
     background-color: var(--accent-color);
     border-color: var(--accent-color);
+    width: 100%;
 }
 
 .main__gorshki-button {
     color: var(--accent-color);
     background-color: transparent;
     border-color: var(--accent-color);
+    width: 100%;
 }
 
 /* advantages */
