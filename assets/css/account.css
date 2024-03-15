@@ -64,7 +64,7 @@
     border-radius: 3px;
 }
 
-.woocommerce-MyAccount-content p:first-of-type {
+.woocommerce-MyAccount-content p:first-child {
     margin-bottom: 30px;
     font-size: 18px;
     line-height: 1.3;
