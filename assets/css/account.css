@@ -111,6 +111,13 @@
     }
 }
 
+.woocommerce-MyAccount-content .woocommerce-table--order-details th {
+    text-align: left;
+    max-width: 100px;
+    vertical-align: top;
+    padding: 5px;
+}
+
 
 
 
