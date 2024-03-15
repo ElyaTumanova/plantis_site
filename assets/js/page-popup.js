@@ -1,28 +1,28 @@
 //переменные для управления попапом
-const preorderOpenPopupBtn = document.querySelector('.page-popup-open-btn');
-const preorderPopup = document.querySelector('.page-popup');
-const preorderClosePopupBtn = document.querySelector('.page-popup__close');
-const preorderPopupOverlay = document.querySelector('.page-popup__popup-overlay');
+const pageOpenPopupBtn = document.querySelector('.page-popup-open-btn');
+const pagePopup = document.querySelector('.page-popup');
+const pageClosePopupBtn = document.querySelector('.page-popup__close');
+const pagePopupOverlay = document.querySelector('.page-popup__popup-overlay');
 
-if (preorderPopup != null && preorderOpenPopupBtn != null) {
+if (pagePopup != null && pageOpenPopupBtn != null) {
     
-    preorderOpenPopupBtn.addEventListener ("click", (evt)=>{
+    pageOpenPopupBtn.addEventListener ("click", (evt)=>{
         toggle_page_popup ();
     });
 
-    if (preorderClosePopupBtn) {
-        preorderClosePopupBtn.addEventListener ("click", (evt)=>{
+    if (pageClosePopupBtn) {
+        pageClosePopupBtn.addEventListener ("click", (evt)=>{
             toggle_page_popup ();
         });
     }
 
-    preorderPopupOverlay.addEventListener ("click", (evt)=>{
+    pagePopupOverlay.addEventListener ("click", (evt)=>{
         toggle_page_popup ();
     });
 
     document.addEventListener('keydown', function(e){
         if((e.key=='Escape'||e.key=='Esc')){
-            if(preorderPopup.classList.contains('popup_active')) {
+            if(pagePopup.classList.contains('popup_active')) {
                 toggle_page_popup ();
             } 
         }
@@ -30,7 +30,7 @@ if (preorderPopup != null && preorderOpenPopupBtn != null) {
 }
 
 function toggle_page_popup () {
-    preorderPopup.classList.toggle ('popup_active');
+    pagePopup.classList.toggle ('popup_active');
 };
 
 
