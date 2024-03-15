@@ -4,7 +4,12 @@
 
 .header__breadcrumb, .woocommerce-breadcrumb {
     font-size: 14px;
-    padding-top: 10px;
+}
+
+@media (max-width: 1279px) {
+    .woocommerce-breadcrumb {
+        padding-top: 10px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -14,15 +19,10 @@
 }
 
 
-
 @media (max-width: 1279px) {
     .header__desktop {
         display: none;
     }
-}
-
-.header {
-    /* margin-bottom: 10px; */
 }
 
 .header__main {
