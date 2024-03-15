@@ -125,9 +125,12 @@ function plnt_price_wrap(){
             ?> 
             <div class="card__price-btns-wrap">
             <?php
-            plnt_get_add_to_card();
-            //plnt_wish_wrap(); //кнопка в избранное для be rocket wishlist
-            plnt_outofstock_btn();
+            global $product;
+            if ( $product->get_stock_status() ==='outofstock') {
+                plnt_outofstock_btn();
+            } else {
+                plnt_get_add_to_card();
+            }
             ?>
             </div>
         </div>
