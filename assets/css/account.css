@@ -91,4 +91,8 @@
     color: var(--white);
 }
 
+.woocommerce-MyAccount-orders th {
+    text-align: left;
+}
+
 
