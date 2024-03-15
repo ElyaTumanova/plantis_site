@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="page-popup popup">
-    <div class="page-popup__container container">
+    <div class="page-popup__container">
         <div class="page-popup__wrap">
             <h2 class="page-popup__heading heading-2">Предзаказ товара</h2>
             <span class="page-popup__close heading-2">&#10006;</span>
