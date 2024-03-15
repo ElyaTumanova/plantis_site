@@ -41,6 +41,12 @@
     margin: auto;
 }
 
+@media (max-width: 1279px) {
+    .page-popup__container {
+        right: 0;
+    }
+}
+
 .page-popup__heading {
     display: inline;
     color: var(--accent-color);
