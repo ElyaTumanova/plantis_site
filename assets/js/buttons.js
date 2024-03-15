@@ -15,11 +15,12 @@ window.addEventListener('resize', () => {
 # Ширина скролл бара окна браузера
 --------------------------------------------------------------*/
 
-let scrollWidth= window.innerWidth-$(document).width();
+let scrollWidth= window.innerWidth - document.body.clientWidth;
 // слушаем событие resize
 window.addEventListener('resize', () => {
     // получаем текущее значение высоты
-    let scrollWidth= window.innerWidth-$(document).width()
+    let scrollWidth= window.innerWidth - document.body.clientWidth;
+    console.log (scrollWidth);
 });
 
 console.log (scrollWidth);
