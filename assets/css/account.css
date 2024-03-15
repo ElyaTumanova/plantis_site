@@ -49,10 +49,12 @@
 
 .woocommerce-MyAccount-navigation ul {
     display: flex;
-    column-gap: 30px;
+    column-gap: 5px;
     text-transform: uppercase;
     font-weight: 700;
     align-items: baseline;
+    justify-content: space-between;
+    max-width: 400px;
 }
 
 .woocommerce-MyAccount-navigation ul li:last-of-type{
@@ -91,17 +93,22 @@
     color: var(--white);
 }
 
+/* список заказов */
+
 .woocommerce-MyAccount-orders th {
     text-align: left;
     max-width: 100px;
     vertical-align: top;
+    padding: 5px;
 }
 
-.woocommerce-orders-table__header-order-delivery-date, .woocommerce-orders-table__cell-order-delivery-date {
-    display: none;
-}
-.woocommerce-orders-table__header-order-total, .woocommerce-orders-table__cell-order-total {
-    display: none;
+@media (max-width:767px) {
+    .woocommerce-orders-table__header-order-delivery-date, .woocommerce-orders-table__cell-order-delivery-date {
+        display: none;
+    }
+    .woocommerce-orders-table__header-order-total, .woocommerce-orders-table__cell-order-total {
+        display: none;
+    }
 }
 
 
