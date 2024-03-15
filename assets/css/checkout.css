@@ -513,6 +513,15 @@ div#orddd_list_view_select {
 }
 .woocommerce-order-details .woocommerce-table--custom-fields th {
     padding-right: 15px;
+    text-align: left;
+    padding-bottom: 10px;
+    vertical-align: top;
+}
+
+.woocommerce-order-details .woocommerce-table--custom-fields td {
+    text-align: left;
+    padding-bottom: 10px;
+    vertical-align: top;
 }
 
 
