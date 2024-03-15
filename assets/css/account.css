@@ -84,4 +84,11 @@
     margin-bottom: 20px;
 }
 
+.woocommerce-EditAccountForm button {
+    margin-top: 20px;
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--white);
+}
+
 
