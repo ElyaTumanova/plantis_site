@@ -64,7 +64,7 @@
     border-radius: 3px;
 }
 
-.woocommerce-MyAccount-content p:nth-child(2) {
+.woocommerce-MyAccount-content:nth-child(2):not(form) {
     margin-bottom: 30px;
     font-size: 18px;
     line-height: 1.3;
