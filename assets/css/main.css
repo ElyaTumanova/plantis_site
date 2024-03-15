@@ -86,8 +86,22 @@
 
 @media (max-width:767px) {
     .main__catalog-buttons-wrap {
-        display: block;
+        display: flex;
+        justify-content: space-between;
+        column-gap: 20px;
     }
+}
+
+.main__plants-button {
+    color: var(--white);
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.main__gorshki-button {
+    color: var(--accent-color);
+    background-color: transparent;
+    border-color: var(--accent-color);
 }
 
 /* advantages */
