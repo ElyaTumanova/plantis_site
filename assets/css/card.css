@@ -242,7 +242,8 @@
 .card__grid .add-to-cart-wrap {
     display: grid;
     grid-template-columns: 70% 30%;
-    grid-template-rows: repeat(2, auto);
+    /* grid-template-rows: repeat(2, auto); */
+    grid-template-rows: 52px auto;
     grid-template-areas:
     "cart wish"
     "quantity x";
@@ -508,7 +509,7 @@ input[type="number"] {
 
     .card__grid .add-to-cart-wrap {
         grid-template-columns: 92px 55px auto;
-        grid-template-rows: auto;
+        grid-template-rows: 52px;
         grid-template-areas:
         "quantity wish cart";
         column-gap: 15px;
