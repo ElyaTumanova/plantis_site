@@ -16,14 +16,13 @@ window.addEventListener('resize', () => {
 --------------------------------------------------------------*/
 
 let scrollWidth= window.innerWidth - document.body.clientWidth;
+document.documentElement.style.setProperty('--scrollWidth', `${scrollWidth}px`);
 // слушаем событие resize
 window.addEventListener('resize', () => {
     // получаем текущее значение высоты
     let scrollWidth= window.innerWidth - document.body.clientWidth;
-    console.log (scrollWidth);
+    document.documentElement.style.setProperty('--scrollWidth', `${scrollWidth}px`);
 });
-
-console.log (scrollWidth);
 
 
 
