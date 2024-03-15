@@ -67,6 +67,13 @@
     right: -30px;
 }
 
+@media (max-width: 767px) {
+    .page-popup__close {
+        top: 0;
+        right: 0;
+    }
+}
+
 .page-popup__close:hover {
     cursor: pointer;
 }
