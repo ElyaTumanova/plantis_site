@@ -1,43 +1,86 @@
 <?php
 /**
- * The template for displaying search results pages.
+ * The template for displaying search results pages
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package Astra
- * @since 1.0.0
+ * @package estore
  */
-
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
-}
 
 get_header(); ?>
 
-<?php if ( astra_page_layout() == 'left-sidebar' ) : ?>
+	<section id="primary" class="content-area">
+		<main id="main" class="site-main">
 
-	<?php get_sidebar(); ?>
+		<?php
+		if ( have_posts() ) : ?>
 
-<?php endif ?>
+			<header class="page-header">
+				<h1 class="page-title"><?php
+					/* translators: %s: search query. */
+					printf( esc_html__( 'Результаты поиска: %s', 'estore' ), '<span>' . get_search_query() . '</span>' );
+				?></h1>
+			</header><!-- .page-header -->
 
-	<div id="primary" <?php astra_primary_class(); ?>>
+            <?php
+            global $wp_query;
+            $arg = array(
+                'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
+                'post_status' => 'publish',
+                's' => get_search_query(),
+                'posts_per_page' => -1,
+                'meta_query' => array( 
+                    array(
+                        'key'       => '_stock_status',
+                        'value'     => 'outofstock',
+                        'compare'   => 'NOT IN'
+                    )
+                )
+            );
+            $search_query = new WP_Query($arg);
+            $wp_query = $search_query;
+            ?>
 
-		<?php astra_primary_content_top(); ?>
+            <div class="catalog__grid">
+                <div class="catalog__sidebar">
+                    <?php plnt_catalog_menu() ?>
+                </div>
+                <div class="catalog__products-wrap">
+                    <ul class="products columns-2"> 
+                        <?php
+                        /* Start the Loop */
+                        while ( have_posts() ) : the_post();
+                        $product = wc_get_product( get_the_ID() );
+                        if ($product->is_in_stock()) {
+                            wc_get_template_part( 'content', 'product' );
+                        }                      
+                        endwhile;
+                        ?>
+                    </ul> 
+                    
+                    <?php
 
-		<?php astra_archive_header(); ?>
+                    // the_posts_pagination();
 
-		<?php astra_content_loop(); ?>		
+                    the_posts_pagination( array(
+                        'class' => 'woocommerce-pagination',
+                        'prev_text'    => __('←'),
+	                    'next_text'    => __('→'),
+                    ));
 
-		<?php astra_pagination(); ?>
+                    else :
 
-		<?php astra_primary_content_bottom(); ?>
+                        get_template_part( 'template-parts/content', 'none' );
 
-	</div><!-- #primary -->
+                    endif; ?>
+                     
+                </div>
+            </div>
+			
 
-<?php if ( astra_page_layout() == 'right-sidebar' ) : ?>
+		</main><!-- #main -->
+	</section><!-- #primary -->
 
-	<?php get_sidebar(); ?>
-
-<?php endif ?>
-
-<?php get_footer(); ?>
+<?php
+get_sidebar();
+get_footer();
