@@ -51,9 +51,9 @@ get_header(); ?>
                         /* Start the Loop */
                         while ( have_posts() ) : the_post();
                         $product = wc_get_product( get_the_ID() );
-                        if ($product->is_in_stock()) {
+                        // if ($product->is_in_stock()) {
                             wc_get_template_part( 'content', 'product' );
-                        }                      
+                        // }                      
                         endwhile;
                         ?>
                     </ul> 
