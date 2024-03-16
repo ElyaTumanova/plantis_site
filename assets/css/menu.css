@@ -95,6 +95,10 @@
     margin-left: -6px;
     /* margin-top: 15px; */
     top: 0;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(10, auto);
+    grid-auto-flow: column;
 }
 
 .menu_podarok .menu--dropdown_lvl_2 {
