@@ -1,43 +1,43 @@
 <?php
 /**
- * Template for displaying Search Results pages
+ * The template for displaying search results pages.
  *
- * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.0
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
+ *
+ * @package Astra
+ * @since 1.0.0
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 get_header(); ?>
 
-		<div id="container">
-			<div id="content" role="main">
+<?php if ( astra_page_layout() == 'left-sidebar' ) : ?>
 
-<?php if ( have_posts() ) : ?>
-				<h1 class="page-title">
-				<?php
-				/* translators: %s: Search query. */
-				printf( __( 'Search Results for: %s', 'twentyten' ), '<span>' . get_search_query() . '</span>' );
-				?>
-				</h1>
-				<?php
-				/*
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called loop-search.php and that will be used instead.
-				 */
-				get_template_part( 'loop', 'search' );
-				?>
-<?php else : ?>
-				<div id="post-0" class="post no-results not-found">
-					<h2 class="entry-title"><?php _e( 'Nothing Found', 'twentyten' ); ?></h2>
-					<div class="entry-content">
-						<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'twentyten' ); ?></p>
-						<?php get_search_form(); ?>
-					</div><!-- .entry-content -->
-				</div><!-- #post-0 -->
-<?php endif; ?>
-			</div><!-- #content -->
-		</div><!-- #container -->
+	<?php get_sidebar(); ?>
 
-<?php get_sidebar(); ?>
+<?php endif ?>
+
+	<div id="primary" <?php astra_primary_class(); ?>>
+
+		<?php astra_primary_content_top(); ?>
+
+		<?php astra_archive_header(); ?>
+
+		<?php astra_content_loop(); ?>		
+
+		<?php astra_pagination(); ?>
+
+		<?php astra_primary_content_bottom(); ?>
+
+	</div><!-- #primary -->
+
+<?php if ( astra_page_layout() == 'right-sidebar' ) : ?>
+
+	<?php get_sidebar(); ?>
+
+<?php endif ?>
+
 <?php get_footer(); ?>
