@@ -24,7 +24,7 @@ require get_template_directory() . '/includes/cleanup.php';
 /** Add register nav menu */
 require get_template_directory() . '/includes/navigation.php';
 /** Add ajax */
-// require get_template_directory() . '/includes/ajax.php';
+require get_template_directory() . '/includes/ajax.php';
 /** Add constants */
 require get_template_directory() . '/includes/constants.php';
 /** Add Ynadex metrika */
