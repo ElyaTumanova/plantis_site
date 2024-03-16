@@ -62,7 +62,7 @@ function plnt_search_ajax_action_callback (){
         }
         ?>
         <!-- <a class="search-result__btn button" href="<?php //echo site_url()?>/?s=<?php //echo $_POST['s']?>">Посмотреть все</a> -->
-        <input class="search-result__btn button" type="submit" id="searchsubmit" value="Посмотреть все" />
+        <input class="search-result__btn button" type="submit" id="searchform" value="Посмотреть все" />
         <?php
     } else {
         ?>
