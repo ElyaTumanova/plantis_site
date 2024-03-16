@@ -12,7 +12,7 @@ function crb_load() {
 	\Carbon_Fields\Carbon_Fields::boot();
 }
 /** Add theme support */
-require get_template_directory() . '/includes/theme-support.php';
+// require get_template_directory() . '/includes/theme-support.php';
 /** Enqueue scripts */
 require get_template_directory() . '/includes/enqueue-scripts-style.php';
 /** Various clean up functions */
