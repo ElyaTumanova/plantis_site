@@ -12,11 +12,11 @@ function crb_load() {
 	\Carbon_Fields\Carbon_Fields::boot();
 }
 /** Add theme support */
-// require get_template_directory() . '/includes/theme-support.php';
+require get_template_directory() . '/includes/theme-support.php';
 /** Enqueue scripts */
 require get_template_directory() . '/includes/enqueue-scripts-style.php';
 /** Various clean up functions */
-require get_template_directory() . '/includes/cleanup.php';
+// require get_template_directory() . '/includes/cleanup.php';
 /** Return entry meta information for posts */
 // require get_template_directory() . '/includes/meta-data.php';
 /** Create widget areas in sidebar and footer */
