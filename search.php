@@ -23,22 +23,22 @@ get_header(); ?>
 			</header><!-- .page-header -->
 
             <?php
-            global $wp_query;
-            $arg = array(
-                'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
-                'post_status' => 'publish',
-                's' => get_search_query(),
-                'posts_per_page' => -1,
-                'meta_query' => array( 
-                    array(
-                        'key'       => '_stock_status',
-                        'value'     => 'outofstock',
-                        'compare'   => 'NOT IN'
-                    )
-                )
-            );
-            $search_query = new WP_Query($arg);
-            $wp_query = $search_query;
+            // global $wp_query;
+            // $arg = array(
+            //     'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
+            //     'post_status' => 'publish',
+            //     's' => get_search_query(),
+            //     'posts_per_page' => -1,
+            //     'meta_query' => array( 
+            //         array(
+            //             'key'       => '_stock_status',
+            //             'value'     => 'outofstock',
+            //             'compare'   => 'NOT IN'
+            //         )
+            //     )
+            // );
+            // $search_query = new WP_Query($arg);
+            // $wp_query = $search_query;
             ?>
 
             <div class="catalog__grid">
