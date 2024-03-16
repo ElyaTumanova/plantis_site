@@ -3,8 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-add_action('wp_ajax_search-ajax', 'plnt_search_ajax_action_callback');
-add_action('wp_ajax_nopriv_search-ajax', 'plnt_search_ajax_action_callback');
+//add_action('wp_ajax_search-ajax', 'plnt_search_ajax_action_callback');
+//add_action('wp_ajax_nopriv_search-ajax', 'plnt_search_ajax_action_callback');
 
 function plnt_search_ajax_action_callback (){
     if(!wp_verify_nonce($_POST['nonce'], 'search-nonce')){
@@ -61,7 +61,6 @@ function plnt_search_ajax_action_callback (){
             <?php
         }
         ?>
-        <!-- <a class="search-result__btn button" href="<?php //echo site_url()?>/?s=<?php //echo $_POST['s']?>">Посмотреть все</a> -->
         <input class="search-result__btn button" type="submit" form ="searchform" value="Посмотреть все" />
         <?php
     } else {
