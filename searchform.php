@@ -2,5 +2,5 @@
 	<label class="screen-reader-text" for="s">Найти: </label>
 	<input type="search" class="search-field" placeholder="Поиск…" value="<?php echo get_search_query() ?>" name="s" id="s" />
     <input type="hidden" value="product" name="post_type" />
-	<input class="search-submit" type="submit" id="searchsubmit" value="Поиск" />
+	<!-- <input class="search-submit" type="submit" id="searchsubmit" value="Поиск" /> -->
 </form>
