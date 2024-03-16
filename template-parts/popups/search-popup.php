@@ -7,8 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="search-popup popup">
     <div class="search">
         <div class="search__wrap container">
-            <?//get_search_form();?>
-            <?php aws_get_search_form( true ); ?>
+            <?get_search_form();?>
             <div class="search__close">&#10006;</div>
         </div>
         <div class="search-result container"></div>
