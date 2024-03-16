@@ -47,6 +47,16 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 
 // FOR DEV
+
+function fix_no_orders_found_bug_for_woocommerce( $query_args ) {
+	if ( isset( $query_args['post_status'] ) && empty( $query_args['post_status'] ) ) {
+	  unset( $query_args['post_status'] );
+	}
+	return $query_args;
+  }
+  add_filter( 'request', 'fix_no_orders_found_bug_for_woocommerce', 1, 1 ); 
+
+  
 // function plnt_check_page() {
 // 	if ( is_cart() ) {
 // 		echo 'Это корзина!';
