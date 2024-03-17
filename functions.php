@@ -41,9 +41,9 @@ require get_template_directory() . '/includes/xml/create_yandex_xml.php';
 	require get_template_directory() . '/woocommerce/includes/wc-function.php';
 	require get_template_directory() . '/woocommerce/includes/wc-remove-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-card-function.php';
-	require get_template_directory() . '/woocommerce/includes/wc-catalog-functions.php';
-// 	require get_template_directory() . '/woocommerce/includes/wc-yith-wishlist-finctions.php';
-// 	require get_template_directory() . '/woocommerce/includes/wc-account-functions.php';
+	// require get_template_directory() . '/woocommerce/includes/wc-catalog-functions.php';
+	require get_template_directory() . '/woocommerce/includes/wc-yith-wishlist-finctions.php';
+	require get_template_directory() . '/woocommerce/includes/wc-account-functions.php';
 // }
 
 
