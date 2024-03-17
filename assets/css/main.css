@@ -367,7 +367,7 @@
 
 @media (max-width:767px) {
     .cats-grid {
-        grid-template-columns: repeat(2, auto);
+        grid-template-columns: repeat(2, 50%);
         grid-template-rows: repeat(12, auto);
         grid-template-areas:
         "lisv lisv"
