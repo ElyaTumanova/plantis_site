@@ -5,23 +5,43 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+	
 	<!-- Yandex.Metrika counter -->
-		<script type="text/javascript" >
-			(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-			m[i].l=1*new Date();
-			for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-			k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-			(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-			ym(87781741, "init", {
-					clickmap:true,
-					trackLinks:true,
-					accurateTrackBounce:true,
-					ecommerce:"dataLayer"
+	<script type="text/javascript" >
+		(function (d, w, c) {
+			(w[c] = w[c] || []).push(function() {
+				try {
+					w.yaCounter87781741 = new Ya.Metrika({
+						id:87781741,
+						clickmap:true,
+						trackLinks:true,
+						accurateTrackBounce:true,
+						webvisor:true,
+						ecommerce:"dataLayer"
+					});
+				} catch(e) { }
 			});
-			window.dataLayer = window.dataLayer || [];
-		</script>
+
+			var n = d.getElementsByTagName("script")[0],
+				x = "https://mc.yandex.ru/metrika/watch.js",
+				s = d.createElement("script"),
+				f = function () { n.parentNode.insertBefore(s, n); };
+			for (var i = 0; i < document.scripts.length; i++) {
+				if (document.scripts[i].src === x) { return; }
+			}
+			s.type = "text/javascript";
+			s.async = true;
+			s.src = x;
+
+			if (w.opera == "[object Opera]") {
+				d.addEventListener("DOMContentLoaded", f, false);
+			} else { f(); }
+		})(document, window, "yandex_metrika_callbacks");
+		window.dataLayer = window.dataLayer || [];
+	</script>
+	<noscript><div><img src="https://mc.yandex.ru/watch/87781741" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 	<!-- /Yandex.Metrika counter -->
+
 	<?php wp_head(); ?>
 </head>
 
