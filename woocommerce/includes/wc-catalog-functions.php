@@ -293,16 +293,6 @@ function plnt_get_product_tags() {
 	}
 }
 
-// // добавляем класс для шортокода products для be rocket wishlist
-// add_filter('post_class', 'plnt_add_class_loop_item_wish');
-// function plnt_add_class_loop_item_wish($clasess){
-// 	if(is_page('wishlist')){
-// 		$clasess[] .= 'berocket_ww_product';
-// 	}
-// 	//get_pr($clasess, false);
-// 	return $clasess;
-// }
-
 // // добавляем класс для swiper для каталог гридов
 add_filter('post_class', 'plnt_add_class_loop_item_swiper');
 function plnt_add_class_loop_item_swiper($clasess){
@@ -313,15 +303,6 @@ function plnt_add_class_loop_item_swiper($clasess){
 	return $clasess;
 }
 
-//add_action('woocommerce_before_shop_loop_item','plnt_add_remove_link_wishlist',5);
-function plnt_add_remove_link_wishlist() {
-	if(is_page('wishlist')){	
-		?>
-		<a class="berocket_ww_remove" href="#remove">&#10006;</a>
-		<?php 
-	}
-}
-
 /*--------------------------------------------------------------
 # Catalog Functions
 --------------------------------------------------------------*/
@@ -329,31 +310,31 @@ function plnt_add_remove_link_wishlist() {
 
 // // вывод товаров в каталоге с учетом наличия - instock products first 
 
-class iWC_Orderby_Stock_Status
-{
+// class iWC_Orderby_Stock_Status
+// {
  
-	public function __construct()
-	{
-		// Check if WooCommerce is active
-		if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
-			add_filter('posts_clauses', array($this, 'order_by_stock_status'), 2000);
-		}
-	}
+// 	public function __construct()
+// 	{
+// 		// Check if WooCommerce is active
+// 		if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
+// 			add_filter('posts_clauses', array($this, 'order_by_stock_status'), 2000);
+// 		}
+// 	}
  
-	public function order_by_stock_status($posts_clauses)
-	{
-		global $wpdb;
-		// only change query on WooCommerce loops
-		if (is_woocommerce() && (is_shop() || is_product_category() || is_product_tag()) || is_search()) {
-			$posts_clauses['join'] .= " INNER JOIN $wpdb->postmeta istockstatus ON ($wpdb->posts.ID = istockstatus.post_id) ";
-			$posts_clauses['orderby'] = " istockstatus.meta_value ASC, " . $posts_clauses['orderby'];
-			$posts_clauses['where'] = " AND istockstatus.meta_key = '_stock_status' AND istockstatus.meta_value <> '' " . $posts_clauses['where'];
-		}
-		return $posts_clauses;
-	}
-}
+// 	public function order_by_stock_status($posts_clauses)
+// 	{
+// 		global $wpdb;
+// 		// only change query on WooCommerce loops
+// 		if (is_woocommerce() && (is_shop() || is_product_category() || is_product_tag()) || is_search()) {
+// 			$posts_clauses['join'] .= " INNER JOIN $wpdb->postmeta istockstatus ON ($wpdb->posts.ID = istockstatus.post_id) ";
+// 			$posts_clauses['orderby'] = " istockstatus.meta_value ASC, " . $posts_clauses['orderby'];
+// 			$posts_clauses['where'] = " AND istockstatus.meta_key = '_stock_status' AND istockstatus.meta_value <> '' " . $posts_clauses['where'];
+// 		}
+// 		return $posts_clauses;
+// 	}
+// }
  
-new iWC_Orderby_Stock_Status;
+// new iWC_Orderby_Stock_Status;
 
 
 // // скрываем товары не в наличии для определенных страниц и категорий 
