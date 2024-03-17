@@ -367,8 +367,8 @@
 
 @media (max-width:767px) {
     .cats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(12, 1fr);
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(12, auto);
         grid-template-areas:
         "lisv lisv"
         "lisv lisv"
@@ -383,6 +383,8 @@
         "neprikhotliv petfriendly"
         "succulent petfriendly"
         ;
+        row-gap: 0;
+        column-gap: 0;
     }  
 }
 
