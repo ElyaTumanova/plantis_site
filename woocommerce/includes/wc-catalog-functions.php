@@ -336,6 +336,18 @@ function plnt_add_class_loop_item_swiper($clasess){
  
 // new iWC_Orderby_Stock_Status;
 
+add_filter( 'woocommerce_get_catalog_ordering_args', 'truemisha_sort_by_stock', 25 );
+ 
+function truemisha_sort_by_stock( $args ) {
+ 
+	$args[ 'meta_key' ] = '_stock_status';
+	$args[ 'orderby' ] = 'meta_value';
+	$args[ 'order' ] = 'ASC';
+ 
+	return $args;
+ 
+}
+
 
 // // скрываем товары не в наличии для определенных страниц и категорий 
 
