@@ -41,7 +41,7 @@
 	</script>
 	<noscript><div><img src="https://mc.yandex.ru/watch/87781741" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 	<!-- /Yandex.Metrika counter -->
-
+	
 	<?php wp_head(); ?>
 </head>
 
