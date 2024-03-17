@@ -34,17 +34,17 @@ require get_template_directory() . '/includes/metrika.php';
 require get_template_directory() . '/includes/xml/create_yandex_xml.php';
 
 /** Add Woocommerce files */
-if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-	require get_template_directory() . '/woocommerce/includes/wc-cart-functions.php';
-	require get_template_directory() . '/woocommerce/includes/wc-checkout-functions.php';
-	require get_template_directory() . '/woocommerce/includes/wc-custom-fields.php';
-	require get_template_directory() . '/woocommerce/includes/wc-function.php';
-	require get_template_directory() . '/woocommerce/includes/wc-remove-functions.php';
-	// require get_template_directory() . '/woocommerce/includes/wc-card-function.php';
-	require get_template_directory() . '/woocommerce/includes/wc-catalog-functions.php';
-	require get_template_directory() . '/woocommerce/includes/wc-yith-wishlist-finctions.php';
-	require get_template_directory() . '/woocommerce/includes/wc-account-functions.php';
-}
+// if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+// 	require get_template_directory() . '/woocommerce/includes/wc-cart-functions.php';
+// 	require get_template_directory() . '/woocommerce/includes/wc-checkout-functions.php';
+// 	require get_template_directory() . '/woocommerce/includes/wc-custom-fields.php';
+// 	require get_template_directory() . '/woocommerce/includes/wc-function.php';
+// 	require get_template_directory() . '/woocommerce/includes/wc-remove-functions.php';
+// 	require get_template_directory() . '/woocommerce/includes/wc-card-function.php';
+// 	require get_template_directory() . '/woocommerce/includes/wc-catalog-functions.php';
+// 	require get_template_directory() . '/woocommerce/includes/wc-yith-wishlist-finctions.php';
+// 	require get_template_directory() . '/woocommerce/includes/wc-account-functions.php';
+// }
 
 
 // FOR DEV
