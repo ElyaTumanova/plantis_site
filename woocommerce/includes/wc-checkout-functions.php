@@ -430,7 +430,7 @@ function min_amount_for_category(){
     }
 }
 
-//add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category_info' );
+add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category_info' );
 add_action( 'woocommerce_checkout_order_review', 'min_amount_for_category_info',40 );
 
 function min_amount_for_category_info(){
