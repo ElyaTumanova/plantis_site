@@ -294,6 +294,10 @@
     display: none;
 }
 
+.woocommerce-additional-fields .optional {
+    display: none;
+}
+
 .woocommerce-additional-fields__field-wrapper textarea {
     padding: 14px 20px;
     width: 100%;
