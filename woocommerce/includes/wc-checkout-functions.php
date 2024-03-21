@@ -446,9 +446,10 @@ function min_amount_for_category_info(){
 	foreach ( WC()->cart->get_cart() as $cart_item ) {
 			$_product = $cart_item['data'];
             $_product_id = $_product->id;
+            $parentCat = check_category ($_product);
             $terms = get_the_terms( $_product_id, 'product_cat' );
             echo '<pre>';
-            print_r( $terms);
+            print_r( $parentCat);
             echo '</pre>';
 			foreach ($terms as $term) {
                     $_categoryid = $term->term_id;
