@@ -464,8 +464,8 @@ function min_amount_for_category_info(){
 	}
 
     if( $cat_amount < $min_treez_delivery && $products_min) {
-        echo '<div>
-        Минимальная сумма заказа для кашпо Treez <span>'.$min_treez_delivery,'</span> (без учета стоимости других товаров)</div>';
+        echo '<div class="checkout__text">
+        Минимальная сумма заказа для кашпо Treez <span>'.$min_treez_delivery,'</span> рублей (без учета стоимости других товаров)</div>';
     } 
    
 }
