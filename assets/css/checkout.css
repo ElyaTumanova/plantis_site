@@ -237,6 +237,10 @@
     display: none;
 }
 
+.woocommerce-billing-fields .optional {
+    display: none;
+}
+
 .woocommerce-billing-fields__field-wrapper input {
     padding: 14px 20px;
     width: 100%;
