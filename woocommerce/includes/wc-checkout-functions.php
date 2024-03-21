@@ -450,7 +450,6 @@ function min_amount_for_category_info(){
 			foreach ($terms as $term) {
                     $_categoryid = $term->term_id;
                 }
-                echo '<div>'.$_categoryid,'</div>';
                 // your products categories
                 if ( $_categoryid === $treez_cat_id ) {
                     $products_min = true;
