@@ -223,7 +223,7 @@ function truemisha_quantity_plus() {
     global $product;
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
-        if ($quantity > 1) {
+        if ($quantity > 1 || !$product->get_manage_stock()) {
             echo '<div class="plus">&#43;</div>';
         }
     } 
@@ -236,7 +236,7 @@ function truemisha_quantity_minus() {
     global $product;
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
-        if ($quantity > 1) {
+        if ($quantity > 1 || !$product->get_manage_stock()) {
             echo '<div class="minus">&#8722;</div>';
         }
     } 
