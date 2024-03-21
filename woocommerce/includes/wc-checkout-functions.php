@@ -92,7 +92,7 @@ function checkout_validation_unique_error( $data, $errors ){
     }
 }
 
-/* ПОЛЯ ФОРМЫ ОФОРМЛЕНИЯ ЗАКАЗА  - ПРОВЕРИТЬ ДЛЯ PLANTIS.SHOP!!!! #TODO
+/* ПОЛЯ ФОРМЫ ОФОРМЛЕНИЯ ЗАКАЗА*/
 
 // Conditional Show hide checkout fields based on chosen shipping methods*/
 
@@ -384,6 +384,7 @@ function true_process_fields( $data ) {
 /*минимальная сумма заказа для кашпо Teez*/
 add_action( 'woocommerce_checkout_process', 'min_amount_for_category' );
 // add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category' );
+add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category_info' );
  
 function min_amount_for_category(){
     global $treez_cat_id;
@@ -428,6 +429,35 @@ function min_amount_for_category(){
         );
 
     }
+}
+
+function min_amount_for_category_info(){
+    global $treez_cat_id;
+    $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
+	$qty = 0; // обязательно сначала ставим 0
+ 	$cat_amount = 0;
+	$products_min = false;
+	foreach ( WC()->cart->get_cart() as $cart_item ) {
+			$_product = $cart_item['data'];
+            $_product_id = $_product->id;
+            $terms = get_the_terms( $_product_id, 'product_cat' );
+			foreach ($terms as $term) {
+                    $_categoryid = $term->term_id;
+                }
+                // your products categories
+                if ( $_categoryid === $treez_cat_id ) {
+                    $products_min = true;
+					$qty = $cart_item[ 'quantity' ];
+					$price = $cart_item['data']->get_price();
+					$cat_amount = $cat_amount + $price*$qty;
+                }	
+	}
+ 
+    if( ( is_cart() || is_checkout() ) && $cat_amount < $min_treez_delivery && $products_min) {
+        echo '<div class="checkout__free-delivery-text">
+        Минимальная сумма заказа для кашпо Treez <span>'.$min_treez_delivery,'</span> (без учета стоимости других товаров)</div>';
+    } 
+   
 }
 
 /*--------------------------------------------------------------
