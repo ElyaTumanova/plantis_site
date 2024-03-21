@@ -292,6 +292,7 @@
     text-align: center;
     background-color: var(--accent-back);
     max-width: 100px;
+    width: 65px;
     /* margin: 0 14px; */
 }
 
