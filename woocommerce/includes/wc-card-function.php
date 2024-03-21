@@ -153,7 +153,7 @@ function plnt_get_add_to_card() {
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
         ?><div class="add-to-cart-wrap"> <?php
-        if ($quantity > 0) {
+        if ($product->get_stock_status() ==='instock') {
             woocommerce_template_loop_add_to_cart(); //заменили обычную не яакс кнопку на аякс кнопку из каталога
         }
         if ($quantity > 1) {
@@ -162,7 +162,7 @@ function plnt_get_add_to_card() {
                 'max_value'    => $quantity,    // почему-то пришлось передавать заново, проверить на PLANTIS #TODO
             ),);           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
         }
-        if ($quantity > 0) {
+        if ($product->get_stock_status() ==='instock') {
             plnt_card_wishlist_btn();
         }
         // plnt_cart_notice();
