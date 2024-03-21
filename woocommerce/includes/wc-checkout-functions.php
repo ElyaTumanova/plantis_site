@@ -458,12 +458,12 @@ function min_amount_for_category_info(){
 	}
  
     // if( ( is_cart() || is_checkout() ) && $cat_amount < $min_treez_delivery && $products_min) {
-    //     echo '<div class="checkout__free-delivery-text">
+    //     echo '<div>
     //     Минимальная сумма заказа для кашпо Treez <span>'.$min_treez_delivery,'</span> (без учета стоимости других товаров)</div>';
     // } 
-
+    echo '<div><span>'.$cat_amount,'</span></div>';
     if( $cat_amount < $min_treez_delivery && $products_min) {
-        echo '<div class="checkout__free-delivery-text">
+        echo '<div>
         Минимальная сумма заказа для кашпо Treez <span>'.$min_treez_delivery,'</span> (без учета стоимости других товаров)</div>';
     } 
    
