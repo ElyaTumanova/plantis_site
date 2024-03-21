@@ -432,6 +432,7 @@ function min_amount_for_category(){
 }
 
 function min_amount_for_category_info(){
+    echo '<div>hi</div>';
     global $treez_cat_id;
     $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
 	$qty = 0; // обязательно сначала ставим 0
