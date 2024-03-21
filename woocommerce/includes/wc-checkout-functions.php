@@ -382,8 +382,8 @@ function true_process_fields( $data ) {
 
 
 /*минимальная сумма заказа для кашпо Teez*/
-// add_action( 'woocommerce_checkout_process', 'min_amount_for_category' );
-add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category' );
+add_action( 'woocommerce_checkout_process', 'min_amount_for_category' );
+// add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category' );
  
 function min_amount_for_category(){
     global $treez_cat_id;
@@ -416,18 +416,18 @@ function min_amount_for_category(){
         );
     } 
 
-    if ( $cat_amount < $min_treez_delivery && $products_min) {
+    // if ( $cat_amount < $min_treez_delivery && $products_min) {
 
-        wc_add_notice( 
-            sprintf( 
-                'Минимальная сумма заказа для кашпо Treez %s (без учета стоимости других товаров).',
-                wc_price( $min_treez_delivery ),
-                wc_price( WC()->cart->subtotal )
-            ),
-            'error'
-        );
+    //     wc_add_notice( 
+    //         sprintf( 
+    //             'Минимальная сумма заказа для кашпо Treez %s (без учета стоимости других товаров).',
+    //             wc_price( $min_treez_delivery ),
+    //             wc_price( WC()->cart->subtotal )
+    //         ),
+    //         'error'
+    //     );
 
-    }
+    // }
 }
 
 /*--------------------------------------------------------------
