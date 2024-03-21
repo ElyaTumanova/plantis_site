@@ -436,9 +436,9 @@ add_action( 'woocommerce_checkout_order_review', 'min_amount_for_category_info',
 function min_amount_for_category_info(){
     global $treez_cat_id;
     $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
-    echo '<div>hi</div>';
-    echo '<div class="checkout__free-delivery-text">
-    Минимальная сумма заказа для кашпо Treez <span>'.$min_treez_delivery,'</span> (без учета стоимости других товаров)</div>';
+    // echo '<div>hi</div>';
+    // echo '<div class="checkout__free-delivery-text">
+    // Минимальная сумма заказа для кашпо Treez <span>'.$min_treez_delivery,'</span> (без учета стоимости других товаров)</div>';
 	$qty = 0; // обязательно сначала ставим 0
  	$cat_amount = 0;
 	$products_min = false;
