@@ -384,7 +384,6 @@ function true_process_fields( $data ) {
 /*минимальная сумма заказа для кашпо Teez*/
 add_action( 'woocommerce_checkout_process', 'min_amount_for_category' );
 // add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category' );
-add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category_info' );
  
 function min_amount_for_category(){
     global $treez_cat_id;
@@ -431,8 +430,12 @@ function min_amount_for_category(){
     }
 }
 
+add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category_info' );
+
 function min_amount_for_category_info(){
     // echo '<div>hi</div>';
+    echo '<div class="checkout__free-delivery-text">
+    Минимальная сумма заказа для кашпо Treez <span>'.$min_treez_delivery,'</span> (без учета стоимости других товаров)</div>';
     global $treez_cat_id;
     $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
 	$qty = 0; // обязательно сначала ставим 0
@@ -480,186 +483,3 @@ add_filter( 'woocommerce_thankyou_order_received_text', 'plnt_custom_ty_msg' );
 
     return $thank_you_msg;
 }
-
-
-
-/*--------------------------------------------------------------
-# old functions for plantis.shop   #TODO to be deleted
---------------------------------------------------------------*/
-
-
-function custom_checkout_field_script() {
-	
-	if( !is_page( 16 ) ) {
-		return;
-	}
-
-    // HERE your shipping methods rate IDs
-    $local_pickup = 'local_pickup:1';
-	$urgent_delivery_inMKAD = 'flat_rate:5';
-	$urgent_delivery_outMKAD = 'flat_rate:6';
-
-    $required_text = esc_attr__( 'required', 'woocommerce' );
-    $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';
-    ?>
-    <script>
-		deliveryDate = document.querySelector('#e_deliverydate_field');
-		deliveryInterval = document.querySelector('#additional_delivery_interval_field');
-        jQuery(function($){
-            var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
-                csa = 'input#ship-to-different-address-checkbox',
-                rq = '-required',       vr = 'validate'+rq,     w = 'woocommerce',      wv = w+'-validated',
-                iv = '-invalid',        fi = '-field',          wir = w+iv+' '+w+iv+rq+fi,
-                b = '#billing_',        s = '#shipping_',       f = '_field',
-                a1 = 'country',     a2 = 'address_1',   a3 = 'address_2',   a4 = 'postcode',    a5 = 'state', a6 = 'city',
-                b1 = b+a1+f,        b2 = b+a2+f,        b3 = b+a3+f,        b4 = b+a4+f,        b5 = b+a5+f, b6 = b+a6+f,
-                s1 = s+a1+f,        s2 = s+a2+f,        s3 = s+a3+f,        s4 = s+a4+f,        s5 = s+a5+f,
-                localPickup = '<?php echo $local_pickup; ?>',
-				urgentPickup1 = '<?php echo $urgent_delivery_inMKAD; ?>',urgentPickup2 = '<?php echo $urgent_delivery_outMKAD; ?>';
-
-            // Utility function to shows or hide checkout fields
-            function showHide( action='show', selector='' ){
-                if( action == 'show' )
-                    $(selector).show(function(){
-                        $(this).addClass(vr);
-                        $(this).removeClass(wv);
-                        $(this).removeClass(wir);
-                        if( $(selector+' > label > abbr').html() == undefined )
-                            $(selector+' label').append('<?php echo $required_html; ?>');
-                    });
-                else
-                    $(selector).hide(function(){
-                        $(this).removeClass(vr);
-                        $(this).removeClass(wv);
-                        $(this).removeClass(wir);
-                        if( $(selector+' > label > abbr').html() != undefined )
-                            $(selector+' label > .required').remove();
-                    });
-            }
-
-            // Initializing at start after checkout init (Based on the chosen shipping method)
-            setTimeout(function(){
-                if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
-                {
-                    showHide('hide',b1);
-                    showHide('hide',b2);
-                    showHide('hide',b3);
-                    showHide('hide',b4);
-                    showHide('hide',b5);
-					showHide('hide',b6);
-                }
-        
-                else
-                {
-                    showHide('show',b1);
-                    showHide('show',b2);
-                    showHide('show',b3);
-                    showHide('show',b4);
-                    showHide('show',b5);
-					showHide('show',b6);
-                }        
-            }, 100);
-			
-			setTimeout(function(){
-                     if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2) // Chosen "Local pickup" (Hiding "Delivery")
-                {
-                    deliveryDate.classList.add('d-none');
-                } else {
-					deliveryDate.classList.remove('d-none');
-				}
-            }, 100);
-			
-			setTimeout(function(){
-                     if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2) // Chosen "Local pickup" (Hiding "Delivery")
-                {
-					deliveryInterval.classList.add('d-none');
-                } else {
-					deliveryInterval.classList.remove('d-none');
-				}
-            }, 100);
-			
-			// Initializing at start after checkout init (Based on the chosen shipping method)
-            $( 'form.checkout' ).on( 'change', ism, function() {		
-				if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2) // Chosen "Local pickup" (Hiding "Delivery")
-                {
-                    deliveryDate.classList.add('d-none');
-                } else {
-					deliveryDate.classList.remove('d-none');
-				}
-            });
-			
-			 $( 'form.checkout' ).on( 'change', ism, function() {		
-				if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2) // Chosen "Local pickup" (Hiding "Delivery")
-                {
-					deliveryInterval.classList.add('d-none');
-                } else {
-					deliveryInterval.classList.remove('d-none');
-				}
-            });
-
-            // When shipping method is changed (Live event)
-            $( 'form.checkout' ).on( 'change', ism, function() {
-                if( $(ismc).val() == localPickup )
-                {
-                    showHide('hide',b1);
-                    showHide('hide',b2);
-                    showHide('hide',b3);
-                    showHide('hide',b4);
-                    showHide('hide',b5);
-					showHide('hide',b6);
-   
-                }
-             
-                else
-                {
-                    showHide('show',b1);
-                    showHide('show',b2);
-                    showHide('show',b3);
-                    showHide('show',b4);
-                    showHide('show',b5);
-					showHide('show',b6);
-                }
-            });
-	
-        });
-    </script>
-    <?php
-}
-
-
-// function truemisha_remove_shipping_on_price( $rates, $package ) {
- 
-// 	// если сумма всех товаров в корзине меньше 1000, отключаем способ доставки
-// 	if ( WC()->cart->subtotal < 2000 ) {
-// 	    unset( $rates[ 'flat_rate:2' ] );
-// 		unset( $rates[ 'flat_rate:3' ] );
-// 		unset( $rates[ 'flat_rate:5' ] );
-// 		unset( $rates[ 'flat_rate:6' ] );		
-// 	} else {
-// 		unset( $rates[ 'flat_rate:9' ] );
-// 		unset( $rates[ 'flat_rate:10' ] );
-// 		unset( $rates[ 'flat_rate:11' ] );
-// 		unset( $rates[ 'flat_rate:12' ] );
-// 	}
- 
-// 	return $rates;
- 
-// }
-
-
-// function truemisha_remove_shipping_method( $rates, $package ) {
- 
-// 	// удаляем способ доставки, если доступна бесплатная
-// 	if ( isset( $rates[ 'free_shipping:4' ] ) ) {
-// 	    unset( $rates[ 'flat_rate:2' ] );
-// // 		unset( $rates[ 'flat_rate:3' ] );
-// 		unset( $rates[ 'flat_rate:5' ] );
-// // 		unset( $rates[ 'flat_rate:6' ] );
-// 		unset( $rates[ 'flat_rate:9' ] );
-// 		unset( $rates[ 'flat_rate:10' ] );
-// 		unset( $rates[ 'flat_rate:11' ] );
-// 		unset( $rates[ 'flat_rate:12' ] );
-// 	}
- 
-// 	return $rates;
-// }
