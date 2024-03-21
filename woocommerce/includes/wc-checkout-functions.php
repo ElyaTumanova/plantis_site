@@ -447,15 +447,15 @@ function min_amount_for_category_info(){
 			$_product = $cart_item['data'];
             $_product_id = $_product->id;
             $parentCat = check_category ($_product);
-            $terms = get_the_terms( $_product_id, 'product_cat' );
-            echo '<pre>';
-            print_r( $parentCat);
-            echo '</pre>';
-			foreach ($terms as $term) {
-                    $_categoryid = $term->term_id;
-                }
+            // $terms = get_the_terms( $_product_id, 'product_cat' );
+            // echo '<pre>';
+            // print_r( $parentCat);
+            // echo '</pre>';
+			// foreach ($terms as $term) {
+            //         $_categoryid = $term->term_id;
+            //     }
                 // your products categories
-                if ( $_categoryid === $treez_cat_id ) {
+                if ( $parentCat === $treez_cat_id ) {
                     $products_min = true;
 					$qty = $cart_item[ 'quantity' ];
 					$price = $cart_item['data']->get_price();
