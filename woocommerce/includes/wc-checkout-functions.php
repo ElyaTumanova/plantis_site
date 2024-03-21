@@ -436,10 +436,6 @@ add_action( 'woocommerce_checkout_order_review', 'min_amount_for_category_info',
 function min_amount_for_category_info(){
     global $treez_cat_id;
     $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
-    // echo '<div>'.$treez_cat_id,'</div>';
-    // echo '<div>hi</div>';
-    // echo '<div class="checkout__free-delivery-text">
-    // Минимальная сумма заказа для кашпо Treez <span>'.$min_treez_delivery,'</span> (без учета стоимости других товаров)</div>';
 	$qty = 0; // обязательно сначала ставим 0
  	$cat_amount = 0;
 	$products_min = false;
@@ -447,27 +443,19 @@ function min_amount_for_category_info(){
 			$_product = $cart_item['data'];
             $_product_id = $_product->id;
             $parentCat = check_category ($_product);
-            // $terms = get_the_terms( $_product_id, 'product_cat' );
-            // echo '<pre>';
-            // print_r( $parentCat);
-            // echo '</pre>';
-			// foreach ($terms as $term) {
-            //         $_categoryid = $term->term_id;
-            //     }
-                // your products categories
-                if ( $parentCat === $treez_cat_id ) {
-                    $products_min = true;
-					$qty = $cart_item[ 'quantity' ];
-					$price = $cart_item['data']->get_price();
-					$cat_amount = $cat_amount + $price*$qty;
-                }	
+
+            if ( $parentCat === $treez_cat_id ) {
+                $products_min = true;
+                $qty = $cart_item[ 'quantity' ];
+                $price = $cart_item['data']->get_price();
+                $cat_amount = $cat_amount + $price*$qty;
+            }	
 	}
 
     if( $cat_amount < $min_treez_delivery && $products_min) {
         echo '<div class="checkout__text checkout__text_alarm">
         Минимальная сумма заказа для кашпо Treez <span>'.$min_treez_delivery,'</span> рублей (без учета стоимости других товаров)</div>';
-    } 
-   
+    }   
 }
 
 /*--------------------------------------------------------------
