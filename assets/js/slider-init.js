@@ -28,52 +28,52 @@ const swiper_main_banners = new Swiper('.main__banners-swiper', {
     }
 });
 
-const swiper_main_sale = new Swiper('.main__sale-swiper', {
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        type: 'progressbar'
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    slidesPerView: 1,
-    slidesPerGroup: 1,
-    spaceBetween: 0,
-    loop: true,
-    freeMode: true,
-    observer: true,
-    observeParents: true,
-    observeSlideChildren: true,
-    breakpoints: {
-        320: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-            navigation: {
-                enabled: false,
-            },
-        },
-        767: {
-            navigation: {
-                enabled: true,
-            },
-            slidesPerView: 2,
-        },
-        1125: {
-            navigation: {
-                enabled: true,
-            },
-            slidesPerView: 3,
-        },
-        1279: {
-            navigation: {
-                enabled: true,
-            },
-            slidesPerView: 1,
-        }
-    }
-});
+// const swiper_main_sale = new Swiper('.main__sale-swiper', {
+//     pagination: {
+//         el: '.swiper-pagination',
+//         clickable: true,
+//         type: 'progressbar'
+//     },
+//     navigation: {
+//         nextEl: '.swiper-button-next',
+//         prevEl: '.swiper-button-prev',
+//     },
+//     slidesPerView: 1,
+//     slidesPerGroup: 1,
+//     spaceBetween: 0,
+//     loop: true,
+//     freeMode: true,
+//     observer: true,
+//     observeParents: true,
+//     observeSlideChildren: true,
+//     breakpoints: {
+//         320: {
+//             slidesPerView: 2,
+//             spaceBetween: 10,
+//             navigation: {
+//                 enabled: false,
+//             },
+//         },
+//         767: {
+//             navigation: {
+//                 enabled: true,
+//             },
+//             slidesPerView: 2,
+//         },
+//         1125: {
+//             navigation: {
+//                 enabled: true,
+//             },
+//             slidesPerView: 3,
+//         },
+//         1279: {
+//             navigation: {
+//                 enabled: true,
+//             },
+//             slidesPerView: 1,
+//         }
+//     }
+// });
 
 /*--------------------------------------------------------------
 # Catalog
