@@ -730,10 +730,16 @@ ul.products {
         padding-bottom: 10px;
     } */
 
+    /* чтобы не было смещения до загруpки слайдера */
     .main__sale-gallery .product {
         width: calc(100% / 2 - 5px);
         margin-right: 10px;
     }
+
+    .main__sale-gallery .swiper-button-prev, .main__sale-gallery .swiper-button-next {
+        display: none;
+    }
+    /*  */
 
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
         position: absolute;
