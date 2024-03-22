@@ -28,6 +28,10 @@
     display: block;
 }
 
+.menu-node_lvl_3 {
+    white-space: nowrap;
+}
+
 .menu--main .sub-menu, .menu--info .sub-menu {
     line-height: 1.2;
 }
