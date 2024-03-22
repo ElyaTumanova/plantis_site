@@ -599,11 +599,7 @@ ul.products {
         display: flex;
         column-gap: 0;
         /* padding-bottom: 10px; */
-    }
-
-    .main__sale-gallery .product {
-        width: calc(100% / 2 - 8px);
-    }    
+    } 
 
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
         grid-area: wish; 
@@ -733,6 +729,10 @@ ul.products {
     /* .main__sale-gallery .products {
         padding-bottom: 10px;
     } */
+
+    .main__sale-gallery .product {
+        width: calc(100% / 2 - 8px);
+    }
 
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
         position: absolute;
