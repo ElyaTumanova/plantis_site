@@ -54,6 +54,7 @@
 
 .menu--main .menu--vertical {
     min-width: 210px;
+    width: fit-content;
 }
 
 .menu--info .menu--vertical {
