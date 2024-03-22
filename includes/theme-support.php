@@ -90,3 +90,7 @@ function show_svg_in_media_library( $response ) {
 
 	return $response;
 }
+
+// отключаем scrset
+
+remove_filter( 'the_content', 'wp_make_content_images_responsive' );
