@@ -120,7 +120,7 @@ function plnt_no_filter_css() {
 	// 	return;
 	// }
  
-	wp_dequeue_style( 'berocket_aapf_widget' );
+	wp_dequeue_style( 'aapf_widget-style' );
 	// wp_dequeue_script( 'contact-form-7' );
  
 }
