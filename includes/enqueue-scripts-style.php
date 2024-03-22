@@ -56,9 +56,9 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		wp_enqueue_script( 'metrikaGoal', get_template_directory_uri() .
 		                                     '/assets/js/metrikaGoal.js', array( 'jquery' ), null, true );  //metrikaGoal Яндекс Метрика Yandex Metrika
 
-		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-			wp_enqueue_script( 'comment-reply' );
-		}
+		// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		// 	wp_enqueue_script( 'comment-reply' );
+		// }
 	}
 }
 /**
@@ -110,3 +110,17 @@ if ( ! function_exists( 'ast_styles' ) ) {
 	}
 }
 
+
+add_action( 'wp_enqueue_scripts', 'plnt_no_filter_css', 999 );
+ 
+function plnt_no_filter_css() {
+ 
+	// находимся не на странице каталога сразу выходим из функции
+	if( is_shop() || is_product_category() || is_product_tag() ) {
+		return;
+	}
+ 
+	wp_dequeue_style( 'berocket_aapf_widget-style' );
+	// wp_dequeue_script( 'contact-form-7' );
+ 
+}
