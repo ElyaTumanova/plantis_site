@@ -108,7 +108,6 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		//                              '/assets/css/nivo-slider.css', array(), null, 'all' );
 		wp_enqueue_style( 'fonts', 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap', array(), null, 'all' );
 	};
-	wp_dequeue_style( 'berocket_aapf_widget-style' );
 }
 
 
