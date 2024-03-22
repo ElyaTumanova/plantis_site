@@ -93,4 +93,4 @@ function show_svg_in_media_library( $response ) {
 
 // отключаем scrset
 
-add_filter( 'wp_img_tag_add_srcset_and_sizes_attr', '__return_false' );
+add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
