@@ -301,7 +301,7 @@ function plnt_sliders_wrap_end () {
 
 
 add_filter('woocommerce_upsell_display_args', function ($args) {
-    $args['posts_per_page'] = -1;
+    $args['posts_per_page'] = 8;
     return $args;
 });
 
