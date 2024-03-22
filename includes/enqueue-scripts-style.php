@@ -8,8 +8,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! function_exists( 'ast_scripts' ) ) {
 	add_action( 'wp_enqueue_scripts', 'ast_scripts' );
 	function ast_scripts() {
-		wp_enqueue_script( 'magnific-popup', get_template_directory_uri() .
-		                                     '/assets/js/jquery.magnific-popup.min.js', array( 'jquery' ), null, true );
+		// wp_enqueue_script( 'magnific-popup', get_template_directory_uri() .
+		//                                      '/assets/js/jquery.magnific-popup.min.js', array( 'jquery' ), null, true );
 		// wp_enqueue_script( 'owl-script', get_template_directory_uri() .
 		//                                  '/assets/js/owl.carousel.min.js', array( 'jquery' ), null, true );
 		
