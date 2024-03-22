@@ -601,6 +601,10 @@ ul.products {
         /* padding-bottom: 10px; */
     }
 
+    .main__sale-gallery .product {
+        width: calc(100% / 2 - 8px);
+    }    
+
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
         grid-area: wish; 
         display: flex;
