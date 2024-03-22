@@ -731,7 +731,8 @@ ul.products {
     } */
 
     .main__sale-gallery .product {
-        width: calc(100% / 2 - 8px);
+        width: calc(100% / 2 - 5px);
+        margin-right: 10px;
     }
 
     .main__sale-gallery .yith-wcwl-add-to-wishlist {
