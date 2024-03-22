@@ -239,6 +239,10 @@
     margin-bottom: 20px;
 }
 
+.woocommerce-privacy-policy-text {
+    font-size: 14px;
+}
+
 /* контактная информация */
 
 .woocommerce-billing-fields .required {
