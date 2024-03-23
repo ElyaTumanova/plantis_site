@@ -197,7 +197,6 @@ function plnt_img_gallery_swiper_init() {
 			slidesPerView: 1,
 			slidesPerGroup: 1,
 			spaceBetween: 0,
-			lazy: true,
 			loop: true,
 			freeMode: false,
 			observer: true,
