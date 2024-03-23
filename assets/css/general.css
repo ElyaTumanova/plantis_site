@@ -92,11 +92,11 @@
     padding-top: 10px;
 }
 
-@media (max-width: 1279px) {
+/* @media (max-width: 1279px) {
     .archive .woocommerce-products-header {
-        padding: 0 10px;
+        padding: 10px 10px 0;
     }
-}
+} */
 
 
 /* корректировка отступов для каталога */
