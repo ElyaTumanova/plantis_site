@@ -87,17 +87,10 @@
     }
 }
 
-.entry-header, .woocommerce-products-header {
-    /* margin-top: 10px; */
+/* .entry-header,  */
+.woocommerce-products-header {
     padding-top: 10px;
 }
-
-/* @media (max-width: 1279px) {
-    .archive .woocommerce-products-header {
-        padding: 10px 10px 0;
-    }
-} */
-
 
 /* корректировка отступов для каталога */
 
