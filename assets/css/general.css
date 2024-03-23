@@ -87,6 +87,10 @@
     }
 }
 
+.entry-header, .woocommerce-products-header {
+    margin-top: 10px;
+}
+
 @media (max-width: 1279px) {
     .entry-header, .woocommerce-products-header {
         padding-top: 10px;
