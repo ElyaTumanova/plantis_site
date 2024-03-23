@@ -56,7 +56,8 @@ const catalogMobOpen = document.querySelector('.header__catalog');
 const catalogMobClose = document.querySelector('.catalog-menu__close');
 
 // для разворачивая пункта меню с растениями
-const dropdownPlants = document.querySelector('.catalog__dropdown');
+const catalogInHeader = document.querySelector('.menu-catalog-container');
+const dropdownPlants = catalogInHeader.querySelector('.catalog__dropdown');
 const menuPlants = dropdownPlants.querySelector('.catalog__dropdown-menu');
 
 catalogMobOpen.addEventListener ("click", (evt)=>{
