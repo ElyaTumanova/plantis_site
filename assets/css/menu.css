@@ -267,7 +267,7 @@
     -o-transition: max-height 1s ease-in-out;
     -webkit-transition: max-height 1s ease-in-out;
     transition: max-height 1s ease-in-out;
-  }
+}
 
 /*--------------------------------------------------------------
 # Menu in header for mobile

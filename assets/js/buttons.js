@@ -55,6 +55,10 @@ const catalogMob = document.querySelector('.catalog-menu__wrap');
 const catalogMobOpen = document.querySelector('.header__catalog');
 const catalogMobClose = document.querySelector('.catalog-menu__close');
 
+// для разворачивая пункта меню с растениями
+const dropdownPlants = document.querySelector('.catalog__dropdown');
+const menuPlants = dropdownPlants.querySelector('.catalog__dropdown-menu');
+
 catalogMobOpen.addEventListener ("click", (evt)=>{
     toggle_mob_catalog ();
 });
@@ -65,7 +69,12 @@ catalogMobClose.addEventListener ("click", (evt)=>{
 function toggle_mob_catalog () {
     catalogMob.classList.toggle ('modal-mob_active');
     body.classList.toggle ('fix-body');
+    // для разворачивая пункта меню с растениями
+    menuPlants.classList.add('catalog__dropdown-menu_show');
+	dropdownPlants.classList.add('catalog__dropdown_open');
 };
+
+
 
 /*--------------------------------------------------------------
 # Filters for mobile in catalog
