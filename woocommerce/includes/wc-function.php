@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // }
 
 function plnt_add_lazy_attr ($attr) {
-	$attr['loading'] = ' lazy';
+	$attr['loading'] = 'lazy';
 	return $attr;
 }
 
