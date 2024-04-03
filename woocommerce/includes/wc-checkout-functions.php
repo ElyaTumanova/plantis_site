@@ -468,10 +468,11 @@ function plnt_check_cart_item_stock() {
 
     // check each cart item for our category
     foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+        $product = $cart_item['data'];
 
-        if ( $cart_item->get_stock_status() ==='outofstock') {
+        if ( $product->get_stock_status() ==='outofstock') {
             echo '<pre>';
-            print_r( $cart_item );
+            print_r( $product );
             echo '</pre>';
         } else {
             echo '<pre>';
