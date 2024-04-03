@@ -20,7 +20,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<p><?php esc_html_e( 'ЛЯЛЯЛЯ There are some issues with the items in your cart. Please go back to the cart page and resolve these issues before checking out.', 'woocommerce' ); ?></p>
+<p><?php esc_html_e( 'Некоторые товары в Вашей корзине закончились. Вернитесь, пожалуйста, в корзину, чтобы скорректировать заказ.', 'woocommerce' ); ?></p>
 
 <?php do_action( 'woocommerce_cart_has_errors' ); ?>
 
