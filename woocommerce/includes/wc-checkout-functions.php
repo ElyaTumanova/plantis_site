@@ -469,9 +469,15 @@ function plnt_check_cart_item_stock() {
     // check each cart item for our category
     foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 
-        echo '<pre>';
-        print_r( $cart_item );
-        echo '</pre>';
+        if ( $cart_item->get_stock_status() ==='outofstock') {
+            echo '<pre>';
+            print_r( $cart_item );
+            echo '</pre>';
+        } else {
+            echo '<pre>';
+            print_r( 'NO' );
+            echo '</pre>';
+        }
 
         // // if a product is not in our category, bail out since we know the category is not alone
         // if ( ! has_term( $category, 'product_cat', $cart_item['data']->id ) ) {
