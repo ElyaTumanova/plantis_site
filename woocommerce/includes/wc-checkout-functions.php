@@ -462,28 +462,15 @@ add_action ('woocommerce_cart_has_errors', 'plnt_check_cart_item_stock');
 
 function plnt_check_cart_item_stock() {
 
-    // echo '<pre>';
-	// print_r( 'HI' );
-	// echo '</pre>';
-
-    // check each cart item for our category
     foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
         $product = $cart_item['data'];
 
         if ( $product->get_stock_status() ==='outofstock') {
-            echo '<pre>';
+            echo '<div>';
             print_r( $product->get_name() );
-            echo '</pre>';
+            echo '</div>';
         } 
-
-        // // if a product is not in our category, bail out since we know the category is not alone
-        // if ( ! has_term( $category, 'product_cat', $cart_item['data']->id ) ) {
-        //     return false;
-        // }
     }
-
-    // // if we're here, all items in the cart are in our category
-    // return true;
 }
 
 /*--------------------------------------------------------------
