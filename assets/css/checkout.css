@@ -437,6 +437,8 @@ div#orddd_list_view_select {
     background-color: var(--accent-back);
     border-radius: 5px;
     color: var(--red-color);
+    font-size: 20px;
+    font-weight: 600;
 }
 
 /* radio button */
