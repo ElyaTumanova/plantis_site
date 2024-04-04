@@ -458,6 +458,7 @@ function min_amount_for_category_info(){
     }   
 }
 
+// выводим в форме офорлмения заказа информацию, о товарах, которые закончились
 add_action ('woocommerce_cart_has_errors', 'plnt_check_cart_item_stock');
 
 function plnt_check_cart_item_stock() {
