@@ -434,7 +434,7 @@ div#orddd_list_view_select {
 .cart-error {
     margin: 10px 0;
     padding: 10px;
-    background-color: var(--gray);
+    /* background-color: var(--gray); */
     border-radius: 5px;
     color: var(--red-color);
     font-size: 20px;
