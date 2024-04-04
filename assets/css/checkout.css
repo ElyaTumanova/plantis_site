@@ -458,6 +458,12 @@ div#orddd_list_view_select {
     font-weight: 700;
 }
 
+.woocommerce .wc-backward {
+    color: var(--white);
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
 /* radio button */
 
 /* для элемента input c type="radio" */
