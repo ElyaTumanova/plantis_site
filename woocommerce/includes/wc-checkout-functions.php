@@ -472,7 +472,7 @@ function plnt_check_cart_item_stock() {
 
         if ( $product->get_stock_status() ==='outofstock') {
             echo '<pre>';
-            print_r( $product );
+            print_r( $product->get_name() );
             echo '</pre>';
         } 
 
