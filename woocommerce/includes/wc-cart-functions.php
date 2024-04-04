@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // структура корзины
 
 // // выводим в корзине информацию, о товарах, которые закончились и убиран стандартные уведолмления
-// remove_action( 'woocommerce_before_cart', 'woocommerce_output_all_notices', 10 );
+remove_action( 'woocommerce_before_cart', 'woocommerce_output_all_notices', 10 );
 add_action ('woocommerce_before_cart', 'plnt_check_cart_item_stock',10);
 remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
 remove_action('woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10);
