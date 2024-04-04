@@ -441,6 +441,16 @@ div#orddd_list_view_select {
     font-weight: 600;
 }
 
+.cart-error-list {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: var(--gray);
+    border-radius: 5px;
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 600;
+}
+
 /* radio button */
 
 /* для элемента input c type="radio" */
