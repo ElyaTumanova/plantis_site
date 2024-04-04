@@ -464,18 +464,12 @@ add_action ('woocommerce_cart_has_errors', 'plnt_check_cart_item_stock');
 function plnt_check_cart_item_stock() {
 
     $isOutOfStock = false;
-    echo '<pre>';
-    print_r( $isOutOfStock );
-    echo '</pre>';
 
     foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
         $product = $cart_item['data'];
 
         if ( $product->get_stock_status() ==='outofstock') {
             $isOutOfStock = true;
-            echo '<pre>';
-            print_r( $isOutOfStock );
-            echo '</pre>';
         } 
     }
     
