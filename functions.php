@@ -52,7 +52,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 function plnt_check_page() {
 	
-	if ( cat_is_ancestor_of( $gorshki_cat_id, get_queried_object_id() ) ) {
+	if ( term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) ) {
 		echo 'подкатегория';
 	}
 	else {
@@ -72,16 +72,16 @@ function plnt_check_page() {
  add_action( 'wp_footer', 'plnt_check_page' );
 
 
-function get_cats() {
-	$categories = get_terms( [
-		'taxonomy' => 'product_tag',
-		'hide_empty' => false,
-	] );
-	echo '<pre>';
-	print_r( $categories );
-	echo '</pre>';
-}
+// function get_cats() {
+// 	$categories = get_terms( [
+// 		'taxonomy' => 'product_tag',
+// 		'hide_empty' => false,
+// 	] );
+// 	echo '<pre>';
+// 	print_r( $categories );
+// 	echo '</pre>';
+// }
 
-add_action( 'wp_footer', 'get_cats' );
+// add_action( 'wp_footer', 'get_cats' );
 
 
