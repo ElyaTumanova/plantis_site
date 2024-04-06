@@ -54,6 +54,9 @@ function plnt_check_page() {
 	
 	if ( cat_is_ancestor_of( $gorshki_cat_id, get_queried_object_id() ) ) {
 		echo 'подкатегория';
+		echo '<pre>';
+		print_r( get_queried_object_id() );
+		echo '</pre>';
 	}
 	else {
 		echo 'Это какая-то другая страница.';
