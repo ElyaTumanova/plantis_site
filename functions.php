@@ -72,16 +72,16 @@ function plnt_check_page() {
  add_action( 'wp_footer', 'plnt_check_page' );
 
 
-// function get_cats() {
-// 	$categories = get_terms( [
-// 		'taxonomy' => 'product_tag',
-// 		'hide_empty' => false,
-// 	] );
-// 	echo '<pre>';
-// 	print_r( $categories );
-// 	echo '</pre>';
-// }
+function get_cats() {
+	$categories = get_terms( [
+		'taxonomy' => 'product_tag',
+		'hide_empty' => false,
+	] );
+	echo '<pre>';
+	print_r( $categories );
+	echo '</pre>';
+}
 
-// add_action( 'wp_footer', 'get_cats' );
+add_action( 'wp_footer', 'get_cats' );
 
 
