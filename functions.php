@@ -50,27 +50,25 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 // FOR DEV
 
 
-// function plnt_check_page() {
-// 	if ( is_cart() ) {
-// 		echo 'Это корзина!';
-// 	}
-// 	else {
-// 		echo 'Это какая-то другая страница.';
-// 	}
-// }
+function plnt_check_page() {
+	
+	if ( cat_is_ancestor_of( $gorshki_cat_id, get_queried_object_id() ) ) {
+		echo 'подкатегория';
+	}
+	else {
+		echo 'Это какая-то другая страница.';
+	}
 
-//  add_action( 'wp_footer', 'plnt_check_page' );
+	// if ( is_cart() ) {
+	// 	echo 'Это корзина!';
+	// }
+	// else {
+	// 	echo 'Это какая-то другая страница.';
+	// }
+}
 
-// function template_chooser($template) {    
-// 	global $wp_query;   
-// 	$post_type = get_query_var('post_type');   
-// 	if( $wp_query->is_search )   
-// 	{
-// 	  return wc_locate_template('archive-product.php');  //  redirect to archive-product.php
-// 	}   
-// 	return $template;   
-//   }
-//   add_filter('template_include', 'template_chooser');
+ add_action( 'wp_footer', 'plnt_check_page' );
+
 
 // function get_cats() {
 // 	$categories = get_terms( [
