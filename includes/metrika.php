@@ -66,7 +66,7 @@ function filter_woocommerce_loop_add_to_cart_args( $args, $product ) {
 	$remove_cart_url = wc_get_cart_remove_url( $cart_item_key );
     $args['attributes']['data-remove_link'] = $remove_cart_url;
     $args['attributes']['data-cart_item_key'] = $cart_item_key;
-    $args['attributes']['rel'] = 'nofollow';
+    $args['attributes']['rel'] = 'nofollow';                        //#nofollow
 
     return $args;
 }

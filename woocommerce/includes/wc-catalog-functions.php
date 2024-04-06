@@ -330,7 +330,7 @@ function shop_only_instock_products( $meta_query, $query ) {
 	global $plants_cat_id;
 	global $gorshki_cat_id;
     global $treez_cat_id;
-	if( is_shop() || is_product_category($gorshki_cat_id) || is_product_category($treez_cat_id) || is_search()) { 		//где хотим срыть товары не в наличии
+	if( is_shop() || is_product_category($gorshki_cat_id) || || term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id() ) || is_product_category($treez_cat_id) || is_search()) { 		//где хотим срыть товары не в наличии
 		$meta_query[] = array(
 			'key' => '_stock_status',
 			'value' => 'outofstock',
@@ -347,33 +347,31 @@ function shop_only_instock_products( $meta_query, $query ) {
 add_filter( 'woocommerce_catalog_orderby', 'truemisha_remove_orderby_options' );
  
 function truemisha_remove_orderby_options( $sortby ) {
- 
 	unset( $sortby[ 'popularity' ] ); // по популярности
 	unset( $sortby[ 'date' ] ); // Сортировка по более позднему
 	unset( $sortby[ 'price' ] ); // Цены: по возрастанию
 	unset( $sortby[ 'price-desc' ] ); // Цены: по убыванию
  
 	return $sortby;
- 
 }
 add_filter( 'woocommerce_get_catalog_ordering_args', 'custom_woocommerce_get_catalog_ordering_args' );
 
 function custom_woocommerce_get_catalog_ordering_args( $args ) {
-$orderby_value = isset( $_GET['orderby'] ) ? woocommerce_clean( $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
+	$orderby_value = isset( $_GET['orderby'] ) ? woocommerce_clean( $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
 
-if ( 'name_list_asc' == $orderby_value ) {
-$args['orderby'] = 'name';
-$args['order'] = 'ASC';
-$args['meta_key'] = '';
-}
+	if ( 'name_list_asc' == $orderby_value ) {
+	$args['orderby'] = 'name';
+	$args['order'] = 'ASC';
+	$args['meta_key'] = '';
+	}
 
-if ( 'name_list_desc' == $orderby_value ) {
-$args['orderby'] = 'name';
-$args['order'] = 'DESC';
-$args['meta_key'] = '';
-}
+	if ( 'name_list_desc' == $orderby_value ) {
+	$args['orderby'] = 'name';
+	$args['order'] = 'DESC';
+	$args['meta_key'] = '';
+	}
 
-return $args;
+	return $args;
 }
 
 add_filter( 'woocommerce_catalog_orderby', 'truemisha_custom_orderby_option' );
@@ -435,8 +433,6 @@ function filter_wpseo_robots( $robotsstr ) {
 
 
 // изменяем названия меток на подборки для хлебных крошек #breadcrumb
-
-
 add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
 
 function plnt_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
