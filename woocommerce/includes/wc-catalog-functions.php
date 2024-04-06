@@ -330,7 +330,7 @@ function shop_only_instock_products( $meta_query, $query ) {
 	global $plants_cat_id;
 	global $gorshki_cat_id;
     global $treez_cat_id;
-	if( is_shop() || is_product_category($gorshki_cat_id) || || term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id() ) || is_product_category($treez_cat_id) || is_search()) { 		//где хотим срыть товары не в наличии
+	if( is_shop() || is_product_category($gorshki_cat_id) || term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id() ) || is_product_category($treez_cat_id) || is_search()) { 		//где хотим срыть товары не в наличии
 		$meta_query[] = array(
 			'key' => '_stock_status',
 			'value' => 'outofstock',
