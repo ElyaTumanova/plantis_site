@@ -440,15 +440,6 @@ function filter_wpseo_robots( $robotsstr ) {
     return $robotsstr;
 }
 
-add_action('wp_head', 'woocommerce_pagination_canonical_tag');
-
-function woocommerce_pagination_canonical_tag() {
-    if (is_paged()) {
-        $canonical_url = get_pagenum_link(1);
-        echo '<link rel="canonical" href="' . $canonical_url . '" />' . "\n";
-    }
-}
-
 
 // изменяем названия меток на подборки для хлебных крошек #breadcrumb
 add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
