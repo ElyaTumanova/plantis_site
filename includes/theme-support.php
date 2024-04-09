@@ -116,25 +116,3 @@ function check_301redirect_tax_url(){
 	}
 
 }
-
-// add_filter( 'parse_tax_query', function( $wp ) {
-// 	$extra_queries = array();
-// 	foreach ( get_taxonomies( array( 'hierarchical' => '1' ), 'object' ) as $taxonomy ) {
-// 		if ( !$taxonomy->rewrite['hierarchical'] )
-// 			continue; /** Not a hierarchical rewrite */
-// 		if ( empty( $wp->query[$taxonomy->query_var] ) )
-// 			continue; /** Not this query */
-// 		$terms = explode( '/', $wp->query[$taxonomy->query_var] );
-// 		array_pop( $terms ); /** Basename already exists in the tax_query */
-// 		foreach ( $wp->tax_query->queries as &$query ) {
-// 			if ( $query['taxonomy'] == $taxonomy->name ) {
-// 				foreach ( $terms as $term ) {
-// 					$extra_query = array_merge( $query, array() );
-// 					$extra_query['terms'] = array( $term );
-// 					$extra_queries = $extra_query;
-// 				}
-// 			}
-// 		}
-// 		$wp->tax_query->queries = array_merge( $wp->tax_query->queries, $extra_queries );
-// 	}
-// } );
