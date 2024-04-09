@@ -322,7 +322,7 @@ function order_by_stock_status($posts_clauses) {
     return $posts_clauses;
 }
 
-// // скрываем товары не в наличии для определенных страниц и категорий   //#to be continued cat_is_ancestor_of not working
+// // скрываем товары не в наличии для определенных страниц и категорий 
 
 add_filter( 'woocommerce_product_query_meta_query', 'shop_only_instock_products', 10, 2 );
 

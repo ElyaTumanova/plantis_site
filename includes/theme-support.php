@@ -96,7 +96,7 @@ function show_svg_in_media_library( $response ) {
 add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
 
 
-// убираем дубли URL
+// убираем дубли URL для категорий товаров
 add_action( 'template_redirect', 'check_301redirect_tax_url', 9 );
 function check_301redirect_tax_url(){
 
@@ -114,5 +114,4 @@ function check_301redirect_tax_url(){
 		wp_redirect( $redirect_to, 301 );
 		exit;
 	}
-
 }
