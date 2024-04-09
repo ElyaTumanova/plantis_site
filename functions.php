@@ -60,6 +60,7 @@ function plnt_check_page() {
 	}
 	echo '<pre>';
 	print_r( get_queried_object_id() );
+	print_r( $gorshki_cat_id );
 	echo '</pre>';
 	// if ( is_cart() ) {
 	// 	echo 'Это корзина!';
