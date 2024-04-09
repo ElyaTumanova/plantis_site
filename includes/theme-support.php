@@ -97,44 +97,44 @@ add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
 
 
 // убираем дубли URL
-// add_action( 'template_redirect', 'check_301redirect_tax_url', 9 );
-// function check_301redirect_tax_url(){
+add_action( 'template_redirect', 'check_301redirect_tax_url', 9 );
+function check_301redirect_tax_url(){
 
-// 	// not taxonomy
-// 	if( ! ( is_category() || is_tag() || is_tax() ) )
-// 		return;
+	// not taxonomy
+	if( ! ( is_category() || is_tag() || is_tax() ) )
+		return;
 
-// 	$qo = get_queried_object();
+	$qo = get_queried_object();
 
-// 	$term_url = get_term_link( $qo );
-// 	$parsed_url = parse_url( $_SERVER['REQUEST_URI'] );
+	$term_url = get_term_link( $qo );
+	$parsed_url = parse_url( $_SERVER['REQUEST_URI'] );
 
-// 	if( strpos( $parsed_url['path'], wp_make_link_relative( $term_url ) ) === false ){
-// 		$redirect_to = isset( $parsed_url['query'] ) ? "$term_url?{$parsed_url['query']}" : $term_url;
-// 		wp_redirect( $redirect_to, 301 );
-// 		exit;
-// 	}
-
-// }
-
-add_filter( 'parse_tax_query', function( $wp ) {
-	$extra_queries = array();
-	foreach ( get_taxonomies( array( 'hierarchical' => '1' ), 'object' ) as $taxonomy ) {
-		if ( !$taxonomy->rewrite['hierarchical'] )
-			continue; /** Not a hierarchical rewrite */
-		if ( empty( $wp->query[$taxonomy->query_var] ) )
-			continue; /** Not this query */
-		$terms = explode( '/', $wp->query[$taxonomy->query_var] );
-		array_pop( $terms ); /** Basename already exists in the tax_query */
-		foreach ( $wp->tax_query->queries as &$query ) {
-			if ( $query['taxonomy'] == $taxonomy->name ) {
-				foreach ( $terms as $term ) {
-					$extra_query = array_merge( $query, array() );
-					$extra_query['terms'] = array( $term );
-					$extra_queries = $extra_query;
-				}
-			}
-		}
-		$wp->tax_query->queries = array_merge( $wp->tax_query->queries, $extra_queries );
+	if( strpos( $parsed_url['path'], wp_make_link_relative( $term_url ) ) === false ){
+		$redirect_to = isset( $parsed_url['query'] ) ? "$term_url?{$parsed_url['query']}" : $term_url;
+		wp_redirect( $redirect_to, 301 );
+		exit;
 	}
-} );
+
+}
+
+// add_filter( 'parse_tax_query', function( $wp ) {
+// 	$extra_queries = array();
+// 	foreach ( get_taxonomies( array( 'hierarchical' => '1' ), 'object' ) as $taxonomy ) {
+// 		if ( !$taxonomy->rewrite['hierarchical'] )
+// 			continue; /** Not a hierarchical rewrite */
+// 		if ( empty( $wp->query[$taxonomy->query_var] ) )
+// 			continue; /** Not this query */
+// 		$terms = explode( '/', $wp->query[$taxonomy->query_var] );
+// 		array_pop( $terms ); /** Basename already exists in the tax_query */
+// 		foreach ( $wp->tax_query->queries as &$query ) {
+// 			if ( $query['taxonomy'] == $taxonomy->name ) {
+// 				foreach ( $terms as $term ) {
+// 					$extra_query = array_merge( $query, array() );
+// 					$extra_query['terms'] = array( $term );
+// 					$extra_queries = $extra_query;
+// 				}
+// 			}
+// 		}
+// 		$wp->tax_query->queries = array_merge( $wp->tax_query->queries, $extra_queries );
+// 	}
+// } );
