@@ -94,3 +94,25 @@ function show_svg_in_media_library( $response ) {
 // отключаем scrset
 
 add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
+
+
+// убираем дубли URL
+add_action( 'template_redirect', 'check_301redirect_tax_url', 9 );
+function check_301redirect_tax_url(){
+
+	// not taxonomy
+	if( ! ( is_category() || is_tag() || is_tax() ) )
+		return;
+
+	$qo = get_queried_object();
+
+	$term_url = get_term_link( $qo );
+	$parsed_url = parse_url( $_SERVER['REQUEST_URI'] );
+
+	if( strpos( $parsed_url['path'], wp_make_link_relative( $term_url ) ) === false ){
+		$redirect_to = isset( $parsed_url['query'] ) ? "$term_url?{$parsed_url['query']}" : $term_url;
+		wp_redirect( $redirect_to, 301 );
+		exit;
+	}
+
+}
