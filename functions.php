@@ -123,4 +123,5 @@ function plnt_check_page() {
 // 	echo '<link rel="canonical" href="' . esc_url( $url ) . "\" />\n";
 // }
 
+add_filter( 'wpseo_canonical', '__return_false' );
 
