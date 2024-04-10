@@ -92,35 +92,35 @@ function plnt_check_page() {
 // add_action( 'wp_footer', 'get_cats' );
 
 
-add_action( 'wp_head', 'kama_rel_canonical');
-function kama_rel_canonical(){
-	// if ( ! is_singular() ) {
-	// 	return;
-	// }
+// add_action( 'wp_head', 'kama_rel_canonical');
+// function kama_rel_canonical(){
+// 	// if ( ! is_singular() ) {
+// 	// 	return;
+// 	// }
 
-	if ( ! $id = get_queried_object_id() ) {
-		return;
-	}
+// 	if ( ! $id = get_queried_object_id() ) {
+// 		return;
+// 	}
 
-	$url = get_permalink( $id );
+// 	$url = get_permalink( $id );
 
-	$page = get_query_var( 'page' );
-	if ( $page >= 2 ) {
-		if ( '' == get_option( 'permalink_structure' ) ) {
-			$url = add_query_arg( 'page', $page, $url );
-		} else {
-			$url = trailingslashit( $url ) . user_trailingslashit( $page, 'single_paged' );
-		}
-	}
+// 	$page = get_query_var( 'page' );
+// 	if ( $page >= 2 ) {
+// 		if ( '' == get_option( 'permalink_structure' ) ) {
+// 			$url = add_query_arg( 'page', $page, $url );
+// 		} else {
+// 			$url = trailingslashit( $url ) . user_trailingslashit( $page, 'single_paged' );
+// 		}
+// 	}
 
-	/* этот блок отвечает за пагинацию комментариев, поэтому его закроем
-	$cpage = get_query_var( 'cpage' );
-	if ( $cpage ) {
-		$url = get_comments_pagenum_link( $cpage );
-	}
-	*/
+// 	/* этот блок отвечает за пагинацию комментариев, поэтому его закроем
+// 	$cpage = get_query_var( 'cpage' );
+// 	if ( $cpage ) {
+// 		$url = get_comments_pagenum_link( $cpage );
+// 	}
+// 	*/
 
-	echo '<link rel="canonical" href="' . esc_url( $url ) . "\" />\n";
-}
+// 	echo '<link rel="canonical" href="' . esc_url( $url ) . "\" />\n";
+// }
 
 
