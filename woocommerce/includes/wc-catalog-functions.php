@@ -353,7 +353,7 @@ function shop_only_instock_products( $meta_query, $query ) {
 
 // // варианты сортировки товаров в каталоге
 
-//add_filter( 'woocommerce_catalog_orderby', 'truemisha_remove_orderby_options' );
+add_filter( 'woocommerce_catalog_orderby', 'truemisha_remove_orderby_options' );
  
 function truemisha_remove_orderby_options( $sortby ) {
 	unset( $sortby[ 'popularity' ] ); // по популярности
@@ -363,7 +363,7 @@ function truemisha_remove_orderby_options( $sortby ) {
  
 	return $sortby;
 }
-//add_filter( 'woocommerce_get_catalog_ordering_args', 'custom_woocommerce_get_catalog_ordering_args' );
+add_filter( 'woocommerce_get_catalog_ordering_args', 'custom_woocommerce_get_catalog_ordering_args' );
 
 function custom_woocommerce_get_catalog_ordering_args( $args ) {
 	$orderby_value = isset( $_GET['orderby'] ) ? woocommerce_clean( $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
@@ -383,7 +383,7 @@ function custom_woocommerce_get_catalog_ordering_args( $args ) {
 	return $args;
 }
 
-//add_filter( 'woocommerce_catalog_orderby', 'truemisha_custom_orderby_option' );
+add_filter( 'woocommerce_catalog_orderby', 'truemisha_custom_orderby_option' );
  
 function truemisha_custom_orderby_option( $sortby ) {
 	$sortby['date'] = 'По новизне';
@@ -397,7 +397,7 @@ function truemisha_custom_orderby_option( $sortby ) {
 
 // параметры пагинации #pagination #woocommerce-pagination
 
-add_filter( 'woocommerce_pagination_args', 'plnt_woocommerce_pagination_args_filter' );
+//add_filter( 'woocommerce_pagination_args', 'plnt_woocommerce_pagination_args_filter' );
 
 function plnt_woocommerce_pagination_args_filter( $array ){
 	$array = array(
@@ -426,7 +426,7 @@ function move_to_top_on_pagination() {
 	<?php
 	}
 
-add_action('wp_footer', 'move_to_top_on_pagination');
+//add_action('wp_footer', 'move_to_top_on_pagination');
 
 // добавляем директивы ноиндекс, фоллоу для страниц пагинации, начиная со 2 #SEO
 add_filter( 'wpseo_robots', 'filter_wpseo_robots' );
