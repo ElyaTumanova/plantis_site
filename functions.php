@@ -68,15 +68,15 @@ function plnt_check_page() {
 	// else {
 	// 	echo 'Это какая-то другая страница.';
 	// }
-	// if( is_paged() ){
-	// 	$canon_url = get_pagenum_link(1);
-	// 	echo '<pre>';
-	// 	print_r( $canon_url );
-	// 	echo '</pre>';
-	// }
+	if( is_paged() ){
+		$canon_url = get_pagenum_link(1);
+		echo '<pre>';
+		print_r( $canon_url );
+		echo '</pre>';
+	}
 }
 
-// add_action( 'wp_footer', 'plnt_check_page' );
+add_action( 'wp_footer', 'plnt_check_page' );
 
 
 // function get_cats() {
@@ -124,4 +124,14 @@ function plnt_check_page() {
 // }
 
 // add_filter( 'wpseo_canonical', '__return_false' );
+
+function wpcrft_return_canonical($canonical) {
+	// is_paged() относится только к страницам типа архивы, главной, дат, к тем которые делятся на несколько
+	if (is_paged()) {
+		$canonical = get_pagenum_link(1);	
+	}	
+	return $canonical;	
+   }
+	
+add_filter( 'wpseo_canonical', 'wpcrft_return_canonical');
 

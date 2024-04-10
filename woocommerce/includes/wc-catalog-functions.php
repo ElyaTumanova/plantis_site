@@ -449,15 +449,7 @@ function filter_wpseo_robots( $robotsstr ) {
 // 	return $link;
 // }
 
-function wpcrft_return_canonical($canonical) {
-	// is_paged() относится только к страницам типа архивы, главной, дат, к тем которые делятся на несколько
-	if (is_paged()) {
-		$canonical = get_pagenum_link(1);	
-	}	
-	return $canonical;	
-   }
-	
-add_filter( 'wpseo_canonical', 'wpcrft_return_canonical', 100 );
+
 
 // add_filter( 'get_canonical_url', 'subpages_canonical', 10, 2 );
 
