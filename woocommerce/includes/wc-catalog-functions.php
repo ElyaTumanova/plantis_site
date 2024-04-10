@@ -397,7 +397,7 @@ function truemisha_custom_orderby_option( $sortby ) {
 
 // параметры пагинации #pagination #woocommerce-pagination
 
-//add_filter( 'woocommerce_pagination_args', 'plnt_woocommerce_pagination_args_filter' );
+add_filter( 'woocommerce_pagination_args', 'plnt_woocommerce_pagination_args_filter' );
 
 function plnt_woocommerce_pagination_args_filter( $array ){
 	$array = array(
@@ -426,10 +426,10 @@ function move_to_top_on_pagination() {
 	<?php
 	}
 
-//add_action('wp_footer', 'move_to_top_on_pagination');
+add_action('wp_footer', 'move_to_top_on_pagination');
 
 // добавляем директивы ноиндекс, фоллоу для страниц пагинации, начиная со 2 #SEO
-add_filter( 'wpseo_robots', 'filter_wpseo_robots' );
+//add_filter( 'wpseo_robots', 'filter_wpseo_robots' );
 
 /* Yoast SEO -  add noindex, follow for paginated pages */
 function filter_wpseo_robots( $robotsstr ) {
