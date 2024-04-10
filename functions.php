@@ -68,21 +68,15 @@ function plnt_check_page() {
 	// else {
 	// 	echo 'Это какая-то другая страница.';
 	// }
-	if( is_paged() ){
-		$canon_url = get_pagenum_link(1);
-		echo '<pre>';
-		print_r( $canon_url );
-		echo '</pre>';
-	}
-
-	if ( is_singular()) {
-		echo '<pre>';
-		print_r( 'Вы находитесь на странице поста.');
-		echo '</pre>';
-	}
+	// if( is_paged() ){
+	// 	$canon_url = get_pagenum_link(1);
+	// 	echo '<pre>';
+	// 	print_r( $canon_url );
+	// 	echo '</pre>';
+	// }
 }
 
- add_action( 'wp_footer', 'plnt_check_page' );
+// add_action( 'wp_footer', 'plnt_check_page' );
 
 
 // function get_cats() {
@@ -96,5 +90,37 @@ function plnt_check_page() {
 // }
 
 // add_action( 'wp_footer', 'get_cats' );
+
+
+add_action( 'wp_head', 'kama_rel_canonical');
+function kama_rel_canonical(){
+	// if ( ! is_singular() ) {
+	// 	return;
+	// }
+
+	if ( ! $id = get_queried_object_id() ) {
+		return;
+	}
+
+	$url = get_permalink( $id );
+
+	$page = get_query_var( 'page' );
+	if ( $page >= 2 ) {
+		if ( '' == get_option( 'permalink_structure' ) ) {
+			$url = add_query_arg( 'page', $page, $url );
+		} else {
+			$url = trailingslashit( $url ) . user_trailingslashit( $page, 'single_paged' );
+		}
+	}
+
+	/* этот блок отвечает за пагинацию комментариев, поэтому его закроем
+	$cpage = get_query_var( 'cpage' );
+	if ( $cpage ) {
+		$url = get_comments_pagenum_link( $cpage );
+	}
+	*/
+
+	echo '<link rel="canonical" href="' . esc_url( $url ) . "\" />\n";
+}
 
 
