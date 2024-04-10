@@ -125,13 +125,25 @@ add_action( 'wp_footer', 'plnt_check_page' );
 
 // add_filter( 'wpseo_canonical', '__return_false' );
 
-function wpcrft_return_canonical($canonical) {
-	// is_paged() относится только к страницам типа архивы, главной, дат, к тем которые делятся на несколько
-	if (is_paged()) {
-		$canonical = get_pagenum_link(1);	
-	}	
-	return $canonical;	
-   }
+// function wpcrft_return_canonical($canonical) {
+// 	// is_paged() относится только к страницам типа архивы, главной, дат, к тем которые делятся на несколько
+// 	if (is_paged()) {
+// 		$canonical = get_pagenum_link(1);	
+// 	}	
+// 	return $canonical;	
+//    }
 	
-add_filter( 'wpseo_canonical', 'wpcrft_return_canonical', 20, 1 );
+// add_filter( 'wpseo_canonical', 'wpcrft_return_canonical', 20, 1 );
+
+function return_canon () {
+    $canon_page = get_pagenum_link(1);
+    return $canon_page;
+}
+
+function canon_paged() {
+    if (is_paged()) {
+        add_filter( 'wpseo_canonical', 'return_canon' );
+    }
+}
+add_filter('wpseo_head','canon_paged'); 
 
