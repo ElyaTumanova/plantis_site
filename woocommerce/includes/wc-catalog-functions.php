@@ -479,6 +479,18 @@ function woocommerce_pagination_canonical_tag() {
     }
 }
 
+function return_canon () {
+    $canon_page = get_pagenum_link(1);
+    return $canon_page;
+}
+
+function canon_paged() {
+    if (is_paged()) {
+        add_filter( 'wpseo_canonical', 'return_canon' );
+    }
+}
+add_filter('wpseo_head','canon_paged'); 
+
 // изменяем названия меток на подборки для хлебных крошек #breadcrumb
 add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
 
