@@ -125,4 +125,3 @@ function plnt_check_page() {
 
 // add_filter( 'wpseo_canonical', '__return_false' );
 
-remove_action( 'template_redirect', 'redirect_canonical' );
