@@ -440,6 +440,14 @@ function filter_wpseo_robots( $robotsstr ) {
     return $robotsstr;
 }
 
+// изменяем canonical для страниц пагинации #SEO
+add_filter('wpseo_canonical', 'removeCanonicalArchivePagination');
+
+function removeCanonicalArchivePagination($link) {
+$link = preg_replace('#\\??/page[\\/=]\\d+#', '', $link);
+	return $link;
+}
+
 
 // изменяем названия меток на подборки для хлебных крошек #breadcrumb
 add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
