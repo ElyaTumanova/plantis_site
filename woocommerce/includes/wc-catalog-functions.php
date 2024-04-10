@@ -470,26 +470,26 @@ function filter_wpseo_robots( $robotsstr ) {
 // 	return $canonical_url;
 // }
 
-add_action('wp_head', 'woocommerce_pagination_canonical_tag');
+// add_action('wp_head', 'woocommerce_pagination_canonical_tag');
 
-function woocommerce_pagination_canonical_tag() {
-    if (is_paged()) {
-        $canonical_url = get_pagenum_link(1);
-        echo '<link rel="canonical" href="' . $canonical_url . '" />' . "\n";
-    }
-}
+// function woocommerce_pagination_canonical_tag() {
+//     if (is_paged()) {
+//         $canonical_url = get_pagenum_link(1);
+//         echo '<link rel="canonical" href="' . $canonical_url . '" />' . "\n";
+//     }
+// }
 
-function return_canon () {
-    $canon_page = get_pagenum_link(1);
-    return $canon_page;
-}
+// set home_page canonical for each home pagination link
+add_filter( 'get_canonical_url', 'wp_kama_get_canonical_url_filter', 10, 2 );
+function wp_kama_get_canonical_url_filter( $canonical_url, $post ){
 
-function canon_paged() {
-    if (is_paged()) {
-        add_filter( 'wpseo_canonical', 'return_canon' );
-    }
+	if( is_paged() ){
+		$canon_url = get_pagenum_link(1);
+		return $canon_url;
+	}
+
+	return $canonical_url;
 }
-add_filter('wpseo_head','canon_paged'); 
 
 // изменяем названия меток на подборки для хлебных крошек #breadcrumb
 add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
