@@ -442,12 +442,12 @@ function filter_wpseo_robots( $robotsstr ) {
 
 // изменяем canonical для страниц пагинации #SEO
 
-// add_filter('wpseo_canonical', 'removeCanonicalArchivePagination');
+add_filter('wpseo_canonical', 'removeCanonicalArchivePagination');
 
-// function removeCanonicalArchivePagination($link) {
-// $link = preg_replace('#\\??/page[\\/=]\\d+#', '', $link);
-// 	return $link;
-// }
+function removeCanonicalArchivePagination($link) {
+$link = preg_replace('#\\??/page[\\/=]\\d+#', '', $link);
+	return $link;
+}
 
 // function wpcrft_return_canonical() {
 // 	// is_paged() относится только к страницам типа архивы, главной, дат, к тем которые делятся на несколько
