@@ -310,7 +310,7 @@ function plnt_add_class_loop_item_swiper($clasess){
 
 // // вывод товаров в каталоге с учетом наличия - instock products first 
 
-//add_filter('posts_clauses', 'order_by_stock_status', 9999);
+add_filter('posts_clauses', 'order_by_stock_status', 9999);
 function order_by_stock_status($posts_clauses) {
     global $wpdb;
     // only change query on WooCommerce loops
@@ -324,7 +324,7 @@ function order_by_stock_status($posts_clauses) {
 
 // // скрываем товары не в наличии для определенных страниц и категорий 
 
-add_filter( 'woocommerce_product_query_meta_query', 'shop_only_instock_products', 10, 2 );
+//add_filter( 'woocommerce_product_query_meta_query', 'shop_only_instock_products', 10, 2 );
 
 function shop_only_instock_products( $meta_query, $query ) {
 	global $plants_cat_id;
