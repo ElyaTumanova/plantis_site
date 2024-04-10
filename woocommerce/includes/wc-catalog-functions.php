@@ -441,13 +441,23 @@ function filter_wpseo_robots( $robotsstr ) {
 }
 
 // изменяем canonical для страниц пагинации #SEO
-add_filter('wpseo_canonical', 'removeCanonicalArchivePagination');
 
-function removeCanonicalArchivePagination($link) {
-$link = preg_replace('#\\??/page[\\/=]\\d+#', '', $link);
-	return $link;
-}
+// add_filter('wpseo_canonical', 'removeCanonicalArchivePagination');
 
+// function removeCanonicalArchivePagination($link) {
+// $link = preg_replace('#\\??/page[\\/=]\\d+#', '', $link);
+// 	return $link;
+// }
+
+function wpcrft_return_canonical() {
+	// is_paged() относится только к страницам типа архивы, главной, дат, к тем которые делятся на несколько
+	if (is_paged()) {
+	$canon_page = get_pagenum_link(1);
+	return $canon_page;
+	}
+   }
+	
+   add_filter( 'wpseo_canonical', 'wpcrft_return_canonical', 100 );
 
 // изменяем названия меток на подборки для хлебных крошек #breadcrumb
 add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
