@@ -78,6 +78,17 @@ function plnt_check_page() {
 
  add_action( 'wp_footer', 'plnt_check_page' );
 
+ 
+ // Удалить каноническую ссылку - SEO by Yoast
+
+function at_remove_dup_canonical_link() {
+
+return false;
+
+}
+
+add_filter( 'wpseo_canonical', 'at_remove_dup_canonical_link' );
+
 
 // function get_cats() {
 // 	$categories = get_terms( [
