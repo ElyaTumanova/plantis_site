@@ -459,19 +459,6 @@ function filter_wpseo_robots( $robotsstr ) {
 	
 //    add_filter( 'wpseo_canonical', 'wpcrft_return_canonical', 100 );
 
-function wpschool_canonical_redirect() {
-
-    if( is_singular() && !is_front_page() ) {
-        global $post, $page;
-        $num_pages = substr_count( $post->post_content, '<!--nextpage-->' ) + 1;
-        if( $page > $num_pages || $page == 1 ) {
-            wp_safe_redirect( get_permalink( $post->ID ), 301 );
-            exit();
-        }
-    }
-}
-add_action( 'template_redirect', 'wpschool_canonical_redirect' );
-
 // изменяем названия меток на подборки для хлебных крошек #breadcrumb
 add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
 
