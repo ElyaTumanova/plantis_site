@@ -324,7 +324,7 @@ function order_by_stock_status($posts_clauses) {
 
 // // скрываем товары не в наличии для определенных страниц и категорий 
 
-//add_filter( 'woocommerce_product_query_meta_query', 'shop_only_instock_products', 10, 2 );
+add_filter( 'woocommerce_product_query_meta_query', 'shop_only_instock_products', 10, 2 );
 
 function shop_only_instock_products( $meta_query, $query ) {
 	global $plants_cat_id;
@@ -353,7 +353,7 @@ function shop_only_instock_products( $meta_query, $query ) {
 
 // // варианты сортировки товаров в каталоге
 
-add_filter( 'woocommerce_catalog_orderby', 'truemisha_remove_orderby_options' );
+//add_filter( 'woocommerce_catalog_orderby', 'truemisha_remove_orderby_options' );
  
 function truemisha_remove_orderby_options( $sortby ) {
 	unset( $sortby[ 'popularity' ] ); // по популярности
@@ -363,7 +363,7 @@ function truemisha_remove_orderby_options( $sortby ) {
  
 	return $sortby;
 }
-add_filter( 'woocommerce_get_catalog_ordering_args', 'custom_woocommerce_get_catalog_ordering_args' );
+//add_filter( 'woocommerce_get_catalog_ordering_args', 'custom_woocommerce_get_catalog_ordering_args' );
 
 function custom_woocommerce_get_catalog_ordering_args( $args ) {
 	$orderby_value = isset( $_GET['orderby'] ) ? woocommerce_clean( $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
@@ -383,7 +383,7 @@ function custom_woocommerce_get_catalog_ordering_args( $args ) {
 	return $args;
 }
 
-add_filter( 'woocommerce_catalog_orderby', 'truemisha_custom_orderby_option' );
+//add_filter( 'woocommerce_catalog_orderby', 'truemisha_custom_orderby_option' );
  
 function truemisha_custom_orderby_option( $sortby ) {
 	$sortby['date'] = 'По новизне';
