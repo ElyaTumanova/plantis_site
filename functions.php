@@ -125,14 +125,4 @@ function plnt_check_page() {
 
 // add_filter( 'wpseo_canonical', '__return_false' );
 
-// отключим редирект в записях потому что при /page/2 редиректит на /
-add_filter( 'redirect_canonical', 'page_disable_redirect_canonical' );
-
-function page_disable_redirect_canonical( $redirect_url ){
-
-	if( is_paged() ){
-		$redirect_url = false;
-	}
-
-	return $redirect_url;
-}
+remove_action( 'template_redirect', 'redirect_canonical' );
