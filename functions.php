@@ -50,27 +50,33 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 // FOR DEV
 
 
-// function plnt_check_page() {
-// 	global $gorshki_cat_id;
-// 	if ( term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) ) {
-// 		echo 'подкатегория';
-// 	}
-// 	else {
-// 		echo 'Это какая-то другая страница.';
-// 	}
-// 	echo '<pre>';
-// 	print_r( get_queried_object_id() );
-// 	print_r( $gorshki_cat_id );
-// 	echo '</pre>';
-// 	// if ( is_cart() ) {
-// 	// 	echo 'Это корзина!';
-// 	// }
-// 	// else {
-// 	// 	echo 'Это какая-то другая страница.';
-// 	// }
-// }
+function plnt_check_page() {
+	// global $gorshki_cat_id;
+	// if ( term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) ) {
+	// 	echo 'подкатегория';
+	// }
+	// else {
+	// 	echo 'Это какая-то другая страница.';
+	// }
+	// echo '<pre>';
+	// print_r( get_queried_object_id() );
+	// print_r( $gorshki_cat_id );
+	// echo '</pre>';
+	// if ( is_cart() ) {
+	// 	echo 'Это корзина!';
+	// }
+	// else {
+	// 	echo 'Это какая-то другая страница.';
+	// }
+	if( is_paged() ){
+		$canon_url = get_pagenum_link(1);
+		echo '<pre>';
+		print_r( $canon_url );
+		echo '</pre>';
+	}
+}
 
-//  add_action( 'wp_footer', 'plnt_check_page' );
+ add_action( 'wp_footer', 'plnt_check_page' );
 
 
 // function get_cats() {
@@ -86,15 +92,3 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 // add_action( 'wp_footer', 'get_cats' );
 
 
-// function wpschool_canonical_redirect() {
-
-//     if( is_singular() && !is_front_page() ) {
-//         global $post, $page;
-//         $num_pages = substr_count( $post->post_content, '<!--nextpage-->' ) + 1;
-//         if( $page > $num_pages || $page == 1 ) {
-//             wp_safe_redirect( get_permalink( $post->ID ), 301 );
-//             exit();
-//         }
-//     }
-// }
-// add_action( 'template_redirect', 'wpschool_canonical_redirect' );
