@@ -86,15 +86,15 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 // add_action( 'wp_footer', 'get_cats' );
 
 
-function wpschool_canonical_redirect() {
+// function wpschool_canonical_redirect() {
 
-    if( is_singular() && !is_front_page() ) {
-        global $post, $page;
-        $num_pages = substr_count( $post->post_content, '<!--nextpage-->' ) + 1;
-        if( $page > $num_pages || $page == 1 ) {
-            wp_safe_redirect( get_permalink( $post->ID ), 301 );
-            exit();
-        }
-    }
-}
-add_action( 'template_redirect', 'wpschool_canonical_redirect' );
+//     if( is_singular() && !is_front_page() ) {
+//         global $post, $page;
+//         $num_pages = substr_count( $post->post_content, '<!--nextpage-->' ) + 1;
+//         if( $page > $num_pages || $page == 1 ) {
+//             wp_safe_redirect( get_permalink( $post->ID ), 301 );
+//             exit();
+//         }
+//     }
+// }
+// add_action( 'template_redirect', 'wpschool_canonical_redirect' );

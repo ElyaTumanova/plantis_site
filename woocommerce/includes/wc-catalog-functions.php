@@ -459,6 +459,17 @@ function filter_wpseo_robots( $robotsstr ) {
 	
 //    add_filter( 'wpseo_canonical', 'wpcrft_return_canonical', 100 );
 
+add_filter( 'get_canonical_url', 'subpages_canonical', 10, 2 );
+
+function subpages_canonical( $canonical_url, $post ){
+
+	if( $subpage = get_query_var('post_subpage') ){
+		$canonical_url = user_trailingslashit( rtrim( get_permalink( $post ), '/' ) ."/$subpage" );
+	}
+
+	return $canonical_url;
+}
+
 // изменяем названия меток на подборки для хлебных крошек #breadcrumb
 add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
 
