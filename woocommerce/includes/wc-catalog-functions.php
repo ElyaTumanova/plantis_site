@@ -109,7 +109,7 @@ function plnt_catalog_filters_main_area() {
 
 // // заголовок каталога 
 
-//add_filter( 'woocommerce_page_title', 'plnt_woocommerce_page_title');
+add_filter( 'woocommerce_page_title', 'plnt_woocommerce_page_title');
 
 function plnt_woocommerce_page_title($page_title) {
 	if ( is_paged() ) {
@@ -130,7 +130,7 @@ function plnt_change_my_title( $title ){
     if ( $title == "Магазин" ) $title = "Все товары";
     return $title;
 }
-//add_filter( "get_the_archive_title", "plnt_change_my_title" );
+add_filter( "get_the_archive_title", "plnt_change_my_title" );
 
 /*--------------------------------------------------------------
 # Card in Catalog 
@@ -310,7 +310,7 @@ function plnt_add_class_loop_item_swiper($clasess){
 
 // // вывод товаров в каталоге с учетом наличия - instock products first 
 
-add_filter('posts_clauses', 'order_by_stock_status', 9999);
+//add_filter('posts_clauses', 'order_by_stock_status', 9999);
 function order_by_stock_status($posts_clauses) {
     global $wpdb;
     // only change query on WooCommerce loops
