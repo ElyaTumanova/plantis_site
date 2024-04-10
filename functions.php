@@ -76,7 +76,7 @@ function plnt_check_page() {
 	}
 }
 
-add_action( 'wp_footer', 'plnt_check_page' );
+//add_action( 'wp_footer', 'plnt_check_page' );
 
 
 // function get_cats() {
