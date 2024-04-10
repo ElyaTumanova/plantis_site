@@ -75,8 +75,10 @@ function plnt_check_page() {
 		echo '</pre>';
 	}
 
-	if ( is_singular( 'post' )) {
-		echo 'Вы находитесь на странице поста.';
+	if ( is_singular()) {
+		echo '<pre>';
+		print_r( 'Вы находитесь на странице поста.');
+		echo '</pre>';
 	}
 }
 
