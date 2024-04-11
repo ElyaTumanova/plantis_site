@@ -30,12 +30,16 @@ if ( $upsells ) : ?>
 		if ( $heading ) :
 			?>
 			<h2 class="heading-2"><?php echo esc_html( $heading ); ?></h2>
+            <?php echo '<pre>';
+                    print_r( $upsells );
+                    echo '</pre>';?>
 		<?php endif; ?>
 
         <div class="cross-upsells-swiper swiper">
             <ul class="products columns-3 swiper-wrapper">
 
                 <?php foreach ( $upsells as $upsell ) : ?>
+                    
                     <?php if ( ! $upsell->is_in_stock() && ! $upsell->backorders_allowed() ) : continue; endif; ?>
                     <?php
                     $post_object = get_post( $upsell->get_id() );
