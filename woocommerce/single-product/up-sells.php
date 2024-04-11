@@ -32,13 +32,16 @@ if ( $upsells ) : ?>
 			<h2 class="heading-2"><?php echo esc_html( $heading ); ?></h2>
 		<?php endif; ?>
 
-        <div class="">
-            <ul class="products columns-3">
+        <div class="cross-upsells-swiper swiper">
+            <ul class="products columns-3 swiper-wrapper">
 
                 <?php foreach ( $upsells as $upsell ) : ?>                    
                     <?php if ( ! $upsell->is_in_stock() && ! $upsell->backorders_allowed() ) : continue; endif; ?>
                     <?php
                     $post_object = get_post( $upsell->get_id() );
+                    echo '<pre>';
+                    print_r( $post_object );
+                    echo '</pre>';
 
                     setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
 
