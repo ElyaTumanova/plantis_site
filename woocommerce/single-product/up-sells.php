@@ -33,13 +33,15 @@ if ( $upsells ) : ?>
 		<?php endif; ?>
 
         <div class="">
-            <ul class="products columns-3">
+            <ul class="products columns-3 ">
 
-                <?php foreach ( $upsells as $upsell ) : ?>                    
-                    <?php if ( ! $upsell->is_in_stock() && ! $upsell->backorders_allowed() ) : continue; endif; ?>
+                <?php foreach ( $upsells as $upsell ) : ?>
+                    
+                    <?php //if ( ! $upsell->is_in_stock() && ! $upsell->backorders_allowed() ) : continue; endif; ?>
                     <?php
                     $post_object = get_post( $upsell->get_id() );
                     echo '<pre>';
+                    print_r( $post_object );
                     print_r( $upsell );
                     echo '</pre>';
 
