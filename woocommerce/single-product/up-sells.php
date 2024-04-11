@@ -40,7 +40,7 @@ if ( $upsells ) : ?>
                     <?php
                     $post_object = get_post( $upsell->get_id() );
                     echo '<pre>';
-                    print_r( $post_object );
+                    print_r( $upsell );
                     echo '</pre>';
 
                     setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
