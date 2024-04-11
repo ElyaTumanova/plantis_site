@@ -32,8 +32,8 @@ if ( $upsells ) : ?>
 			<h2 class="heading-2"><?php echo esc_html( $heading ); ?></h2>
 		<?php endif; ?>
 
-        <div class="cross-upsells-swiper swiper">
-            <ul class="products columns-3 swiper-wrapper">
+        <div class="">
+            <ul class="products columns-3">
 
                 <?php foreach ( $upsells as $upsell ) : ?>                    
                     <?php if ( ! $upsell->is_in_stock() && ! $upsell->backorders_allowed() ) : continue; endif; ?>
