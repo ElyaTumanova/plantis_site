@@ -158,7 +158,13 @@ function add_custom_canonical_tags() {
     if (is_paged()) {
         // Получаем URL первой страницы текущего архива
         $first_page_url = get_pagenum_link(1);
-        
+		
+		// Разбираем URL на составляющие
+		$parsedUrl = parse_url($first_page_url);
+
+		// Строим новый URL без query-параметров
+		$first_page_url = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . $parsedUrl['path'];
+				
         // Добавляем canonical тег
         echo '<link rel="canonical" href="' . esc_url($first_page_url) . '" />' . "\n";
 
