@@ -125,15 +125,15 @@ function plnt_check_page() {
 
 // add_filter( 'wpseo_canonical', '__return_false' );
 
-function wpcrft_return_canonical($canonical) {
-	// is_paged() относится только к страницам типа архивы, главной, дат, к тем которые делятся на несколько
-	if (is_paged()) {
-		$canonical = get_pagenum_link(1);	
-	}	
-	return $canonical;	
-   }
+// function wpcrft_return_canonical($canonical) {
+// 	// is_paged() относится только к страницам типа архивы, главной, дат, к тем которые делятся на несколько
+// 	if (is_paged()) {
+// 		$canonical = get_pagenum_link(1);	
+// 	}	
+// 	return $canonical;	
+//    }
 	
-add_filter( 'wpseo_canonical', 'wpcrft_return_canonical', 20, 1 );
+// add_filter( 'wpseo_canonical', 'wpcrft_return_canonical', 20, 1 );
 
 // function return_canon () {
 //     $canon_page = get_pagenum_link(1);
@@ -146,4 +146,40 @@ add_filter( 'wpseo_canonical', 'wpcrft_return_canonical', 20, 1 );
 //     }
 // }
 // add_filter('wpseo_head','canon_paged'); 
+
+function remove_my_theme_canonical() {
+    $br_aapf_paid_instance = BeRocket_AAPF_paid::getInstance();
+    remove_action('wp_head', array($br_aapf_paid_instance, 'wp_head_canonical'), 99999);
+}
+add_action('init', 'remove_my_theme_canonical');
+
+
+function add_custom_canonical_tags() {
+    if (is_paged()) {
+        // Получаем URL первой страницы текущего архива
+        $first_page_url = get_pagenum_link(1);
+        
+        // Добавляем canonical тег
+        echo '<link rel="canonical" href="' . esc_url($first_page_url) . '" />' . "\n";
+
+        // Получаем номер текущей страницы
+        $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+
+        // Добавляем ссылки на следующую и предыдущую страницы
+        if ($paged > 1) {
+            $prev_page_url = get_pagenum_link($paged - 1);
+            echo '<link rel="prev" href="' . esc_url($prev_page_url) . '" />' . "\n";
+        }
+        
+        // Проверяем, есть ли следующая страница
+        global $wp_query;
+        if ($paged < $wp_query->max_num_pages) {
+            $next_page_url = get_pagenum_link($paged + 1);
+            echo '<link rel="next" href="' . esc_url($next_page_url) . '" />' . "\n";
+        }
+    }
+}
+
+// Добавляем действие в WordPress, чтобы выполнить функцию при выводе тегов в head
+add_action('wp_head', 'add_custom_canonical_tags');
 
