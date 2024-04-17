@@ -147,6 +147,7 @@
 
 .header__notice_mob {
     padding: 5px 10px;
+    font-size: 14px;
 }
 
 @media (min-width: 1279px) {
