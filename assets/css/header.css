@@ -145,6 +145,12 @@
 }
 
 
+@media (min-width: 1279px) {
+    .header__notice_mob {
+        display: none;
+    }
+}
+
 
 /* telegram btn styles */
 .header__telegram, .header__telegram:visited {
