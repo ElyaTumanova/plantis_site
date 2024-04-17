@@ -135,6 +135,17 @@
     padding-bottom: 5px;
 }
 
+/* header__notice styles */
+
+.header__notice {
+    padding: 7px 0;
+    text-align: center;
+    background-color: #f3afaf;
+    font-weight: 600;
+}
+
+
+
 /* telegram btn styles */
 .header__telegram, .header__telegram:visited {
     background-color: var(--telegram);
