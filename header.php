@@ -68,10 +68,6 @@
 					<div class="header__working-hours">Самовывоз ежедневно с 10 до 20</div>
 				</div>
 			</div>
-			<div class="header__notice">
-				Внимание! Магазин 20.04 не работает. У нас выходной, мы тоже хотим отдохнуть 😉
-			</div>
-
 			<div class="header__main container">
 				<div class="header__wrap">
 					<div class="logo">
@@ -148,6 +144,10 @@
 					<img class="header-btn__icon" src="<?php echo $menu_icon_mob ?>" alt="menu" width="21" height="21">		
 				</button>
 			</div>
+		</div>
+
+		<div class="header__notice">
+			Внимание! Магазин 20.04 не работает. У нас выходной, мы тоже хотим отдохнуть 😉
 		</div>
 
 		<!-- <div class="header__breadcrumb container"><?php //woocommerce_breadcrumb() ?></div> -->
