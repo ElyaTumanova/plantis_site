@@ -68,7 +68,7 @@
 					<div class="header__working-hours">Самовывоз ежедневно с 10 до 20</div>
 				</div>
 			</div>
-			<div class="header__notice">
+			<div class="header__notice-wrap">
 				<?php get_template_part( 'template-parts/header-notice' );?>
 			</div>
 
@@ -149,7 +149,7 @@
 				</button>
 			</div>
 		</div>
-		<div class="header__notice header__notice_mob">
+		<div class="header__notice-wrap_mob">
 			<?php get_template_part( 'template-parts/header-notice' );?>
 		</div>
 

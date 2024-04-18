@@ -144,14 +144,19 @@
     font-weight: 600;
 }
 
+@media (max-width: 1279px) {
+    .header__notice-wrap {
+        display: none;
+    }
 
-.header__notice_mob {
-    padding: 5px 10px;
-    font-size: 14px;
+    .header__notice {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
 }
 
 @media (min-width: 1279px) {
-    .header__notice_mob {
+    .header__notice-wrap_mob {
         display: none;
     }
 }
