@@ -68,10 +68,9 @@
 					<div class="header__working-hours">Самовывоз ежедневно с 10 до 20</div>
 				</div>
 			</div>
-			<?php get_template_part( 'template-parts/header-notice' );?>
-			<!-- <div class="header__notice">
-				Внимание! Магазин 20.04 не работает. У нас выходной, мы тоже хотим отдохнуть 😉
-			</div> -->
+			<div class="header__notice">
+				<?php get_template_part( 'template-parts/header-notice' );?>
+			</div>
 
 			<div class="header__main container">
 				<div class="header__wrap">
@@ -151,7 +150,7 @@
 			</div>
 		</div>
 		<div class="header__notice header__notice_mob">
-			Внимание! Магазин 20.04 не работает. У нас выходной, мы тоже хотим отдохнуть 😉
+			<?php get_template_part( 'template-parts/header-notice' );?>
 		</div>
 
 		<!-- <div class="header__breadcrumb container"><?php //woocommerce_breadcrumb() ?></div> -->
