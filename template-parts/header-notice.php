@@ -10,6 +10,7 @@ if ($show_notice === 'yes') {
 ?>
 <div class="header__notice">
     <?php echo $notice ?>
+    <?php echo $show_notice ?>
 </div> 
 <?php
 };
