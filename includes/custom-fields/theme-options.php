@@ -85,7 +85,9 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'min_free_delivery', 'Минимальная сумма заказа для бесплатной доставки'),
 			Field::make( 'text', 'min_small_delivery', 'Сумма заказа для более дорогой доставки'),
 			Field::make( 'text', 'min_treez_delivery', 'Сумма заказа для доставки кашпо Treez'),
-			
+	   ));
+		->add_tab( __('Header notice'), array(
+			Field::make( 'text', 'notice', 'Уведомление' ),
 	   ));
 
 // Add second options page under 'Basic Options'
