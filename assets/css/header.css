@@ -161,6 +161,12 @@
     }
 }
 
+.header__notice-wrap_mob {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 55px;
+}
 
 /* telegram btn styles */
 .header__telegram, .header__telegram:visited {
