@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $notice = carbon_get_theme_option('notice');
 $show_notice = carbon_get_theme_option('show_notice');
 
-if ($show_notice === '1') {
+if ($show_notice) {
 ?>
 <div class="header__notice">
     <?php echo $notice ?>
