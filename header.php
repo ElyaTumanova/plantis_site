@@ -68,9 +68,12 @@
 					<div class="header__working-hours">Самовывоз ежедневно с 10 до 20</div>
 				</div>
 			</div>
-			<div class="header__notice">
+			<?php
+				get_template_part( 'template-parts/header-notice' );
+				?>
+			<!-- <div class="header__notice">
 				Внимание! Магазин 20.04 не работает. У нас выходной, мы тоже хотим отдохнуть 😉
-			</div>
+			</div> -->
 
 			<div class="header__main container">
 				<div class="header__wrap">
