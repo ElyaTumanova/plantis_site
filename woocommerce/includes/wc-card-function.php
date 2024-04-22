@@ -307,10 +307,10 @@ function plnt_get_upsells(){
     get_template_part('template-parts/plnt-upsells');
 }
 
-add_filter('woocommerce_upsell_display_args', function ($args) {
-    $args['posts_per_page'] = 8;
-    return $args;
-});
+// add_filter('woocommerce_upsell_display_args', function ($args) {
+//     $args['posts_per_page'] = 8;
+//     return $args;
+// });
 
 add_filter( 'woocommerce_product_upsells_products_heading' , 'plnt_upsells_heading' );
 

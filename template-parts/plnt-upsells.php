@@ -4,20 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $product;
-// $is_out_of_stock = $product->get_stock_status() ==='outofstock';
 
-
-//$crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
 $upsells_ids = $product->get_upsell_ids();
 
 if( !empty ($upsells_ids) ){
 
-    // echo '<pre>';
-	// print_r( $upsells_ids );
-	// echo '</pre>';
-
-    // $crosssell_ids = $crosssell_ids[0];
-    
 
     if(count($upsells_ids)>0){
 
