@@ -12,9 +12,9 @@ $upsells_ids = $product->get_upsell_ids();
 
 if( !empty ($upsells_ids) ){
 
-    echo '<pre>';
-	print_r( $upsells_ids );
-	echo '</pre>';
+    // echo '<pre>';
+	// print_r( $upsells_ids );
+	// echo '</pre>';
 
     // $crosssell_ids = $crosssell_ids[0];
     
