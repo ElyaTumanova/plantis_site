@@ -307,6 +307,14 @@ ul.products {
     }
 }
 
+.cross-upsells-swiper .yith-wcwl-add-to-wishlist {
+    position: absolute;
+    z-index: 10;
+    margin: 0;
+    top: 10px;
+    right: 10px;
+}
+
 .woocommerce-LoopProduct-link {
     position: relative;
     width: 100%;
