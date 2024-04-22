@@ -4,10 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $product;
-$is_out_of_stock = $product->get_stock_status() ==='outofstock';
+// $is_out_of_stock = $product->get_stock_status() ==='outofstock';
 
 
-$crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
+//$crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
 $upsells_ids = $product->get_upsell_ids();
 
 if( !empty ($upsells_ids) ){
@@ -16,10 +16,10 @@ if( !empty ($upsells_ids) ){
 	print_r( $upsells_ids );
 	echo '</pre>';
 
-    $crosssell_ids = $crosssell_ids[0];
+    // $crosssell_ids = $crosssell_ids[0];
     
 
-    if(count($crosssell_ids)>0){
+    if(count($upsells_ids)>0){
 
         $args = array(
             'post_type' => 'product',
@@ -27,7 +27,7 @@ if( !empty ($upsells_ids) ){
             'no_found_rows' => 1,
             'posts_per_page' => 8,
             'orderby' => 'rand',
-            'post__in' => $crosssell_ids,
+            'post__in' => $upsells_ids,
             'meta_query' => array( 
                 array(
                     'key'       => '_stock_status',
@@ -40,19 +40,16 @@ if( !empty ($upsells_ids) ){
         $products = new WP_Query( $args );
         if ( $products->have_posts() ) : ?>
 
-            <div class="cross-sells">
+            <div class="up-sells upsells">
 
-                <?php 
-                if ( $is_out_of_stock) {
+                <?php
+                $heading = apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) );
+
+                if ( $heading ) :
                     ?>
-                    <h2 class="heading-2"><?php _e( 'Похожие растения в наличии', 'woocommerce' ) ?></h2>       
-                    <?php
-                } else {
-                    ?>
-                    <h2 class="heading-2"><?php _e( 'Похожие растения', 'woocommerce' ) ?></h2>
-                    <?php       
-                }
-                ?>         
+                    <h2 class="heading-2"><?php echo esc_html( $heading ); ?></h2>
+                <?php endif; ?>    
+                    
                 <div class="cross-upsells-swiper swiper">
                     <ul class="products columns-3 swiper-wrapper"> 
                         <?php while ( $products->have_posts() ) : $products->the_post(); ?>
