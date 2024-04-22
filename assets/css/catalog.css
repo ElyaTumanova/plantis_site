@@ -307,21 +307,7 @@ ul.products {
     }
 }
 
-.cross-upsells-swiper .yith-wcwl-add-to-wishlist {
-    position: absolute;
-    z-index: 10;
-    margin: 0;
-    top: 10px;
-    right: 10px;
-}
 
-.card-ukhod-swiper .yith-wcwl-add-to-wishlist {
-    position: absolute;
-    z-index: 10;
-    margin: 0;
-    top: 10px;
-    right: 10px;
-}
 
 .woocommerce-LoopProduct-link {
     position: relative;
@@ -506,6 +492,14 @@ ul.products {
     position: relative;
     width: calc((100% - 20px)/3);
 } */
+
+.cross-upsells-swiper .yith-wcwl-add-to-wishlist {
+    position: absolute;
+    z-index: 10;
+    margin: 0;
+    top: 10px;
+    right: 10px;
+}
 
 /*cross sells & up sells #adaptive*/
 
@@ -867,6 +861,14 @@ ul.products {
 
 .card__ukhod-wrap .woocommerce-loop-product__title {
     font-size: 16px;
+}
+
+.card-ukhod-swiper .yith-wcwl-add-to-wishlist {
+    position: absolute;
+    z-index: 10;
+    margin: 0;
+    top: 10px;
+    right: 10px;
 }
 
 /* стили цены */
