@@ -259,11 +259,13 @@ function payment_checkout_field_script() {
 	}
 
     global $payment_inn;
+    global $inn_field;
 
     ?>
     <script>
         payment_inn = document.querySelector('#<?php echo $payment_inn; ?>');
-        console.log(payment_inn);
+        inn_field = document.querySelector('#<?php echo $inn_field; ?>');
+        console.log(inn_field);
     </script>
     <?php
 }

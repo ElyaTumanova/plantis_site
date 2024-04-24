@@ -89,7 +89,8 @@ if($site === 'http://new.plantis.shop') {
 	
 	$delivery_free = 'free_shipping:5';
 
-	$payment_inn = 'payment_method_cheque';
+	$payment_inn = 'payment_method_cheque'; //ID for payment checkbox
+	$inn_field = 'additional_inn'; //ID for INN field
 
 
 } else {
@@ -110,6 +111,7 @@ if($site === 'http://new.plantis.shop') {
 	$delivery_free = 'free_shipping:4';
 
 	$payment_inn = 'payment_method_cheque';
+	$inn_field = 'additional_inn';
 }
 
 
