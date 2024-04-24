@@ -217,6 +217,15 @@ function new_custom_checkout_field_script() {
 			
 			// Initializing at start after checkout init (Based on the chosen shipping method)
             $( 'form.checkout' ).on( 'change', ism, function() {		
+				if( $(payment_inn_chekbox).attr('checked')) // Chosen "INN payment" (Show "INN")
+                {
+                    inn_field.classList.remove('d-none');
+                } else {
+					inn_field.classList.add('d-none');
+				};
+            });
+
+            $( 'form.checkout' ).on( 'change', ism, function() {		
 				if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
                 {
                     deliveryDate.classList.add('d-none');
