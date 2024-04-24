@@ -110,6 +110,9 @@ function new_custom_checkout_field_script() {
 	global $urgent_delivery_inMKAD_small;
 	global $urgent_delivery_outMKAD_small;
 
+    global $payment_inn;
+    global $inn_field;
+
     $required_text = esc_attr__( 'required', 'woocommerce' );
     $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';
     ?>
@@ -117,6 +120,12 @@ function new_custom_checkout_field_script() {
 		deliveryDate = document.querySelector('#e_deliverydate_field');
 		deliveryInterval = document.querySelector('#orddd_time_slot_field');
         additionalAddress = document.querySelector('.additional-address-field');
+
+        payment_inn = document.querySelector('#<?php echo $payment_inn; ?>');
+        inn_field = document.querySelector('#<?php echo $inn_field; ?>');
+        console.log(inn_field);
+
+
         jQuery(function($){
             var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
                 csa = 'input#ship-to-different-address-checkbox',
@@ -250,25 +259,25 @@ function new_custom_checkout_field_script() {
     <?php
 }
 
-add_action( 'wp_footer', 'payment_checkout_field_script' );
+// add_action( 'wp_footer', 'payment_checkout_field_script' );
 
-function payment_checkout_field_script() {
+// function payment_checkout_field_script() {
 	
-	if( !is_page( 'checkout' ) ) {
-		return;
-	}
+// 	if( !is_page( 'checkout' ) ) {
+// 		return;
+// 	}
 
-    global $payment_inn;
-    global $inn_field;
+//     global $payment_inn;
+//     global $inn_field;
 
-    ?>
-    <script>
-        payment_inn = document.querySelector('#<?php echo $payment_inn; ?>');
-        inn_field = document.querySelector('#<?php echo $inn_field; ?>');
-        console.log(inn_field);
-    </script>
-    <?php
-}
+//     ?>
+//     <script>
+//         payment_inn = document.querySelector('#<?php echo $payment_inn; ?>');
+//         inn_field = document.querySelector('#<?php echo $inn_field; ?>');
+//         console.log(inn_field);
+//     </script>
+//     <?php
+// }
 
 /* скрываем лишние способы доставки если доступна доставка бесплатная*/
 
