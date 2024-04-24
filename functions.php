@@ -85,7 +85,7 @@ add_action( 'wp_footer', 'plnt_order_payment' );
 
 function plnt_order_payment() {
 	$WC_Order = new WC_Order();
-	$order_id = get_id($WC_Order)
+	$order_id = get_id($WC_Order);
 	$order = wc_get_order( $order_id );
 
 	echo '<pre>';
