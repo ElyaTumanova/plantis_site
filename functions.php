@@ -83,8 +83,8 @@ function plnt_check_page() {
 add_action( 'wp_footer', 'plnt_order_payment' );
 
 
-function plnt_order_payment($payment_method) {
-
+function plnt_order_payment() {
+	$payment_method = WC()->session->get( 'chosen_payment_method' );
 	echo '<pre>';
 	print_r( $payment_method );
 	echo '</pre>';
@@ -120,7 +120,7 @@ function name_of_your_function( $posted_data) {
     // }
 }
 
-add_action('woocommerce_checkout_update_order_review', 'name_of_your_function');
+//add_action('woocommerce_checkout_update_order_review', 'name_of_your_function');
 
 // function get_cats() {
 // 	$categories = get_terms( [
