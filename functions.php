@@ -96,15 +96,17 @@ function name_of_your_function( $posted_data) {
 
     // Parsing posted data on checkout
     $post = array();
-    // $vars = explode('&', $posted_data);
-    // foreach ($vars as $k => $value){
-    //     $v = explode('=', urldecode($value));
-    //     $post[$v[0]] = $v[1];
-    // }
+    $vars = explode('&', $posted_data);
+    foreach ($vars as $k => $value){
+        $v = explode('=', urldecode($value));
+        $post[$v[0]] = $v[1];
+    }
 
     // Here we collect payment method
     $payment_method = $post['payment_method'];
-	plnt_order_payment($payment_method);
+	echo '<pre>';
+	var_dump( $payment_method );
+	echo '</pre>'; 
 
     // Run code custom code for each specific payment option selected
     // if ($payment_method == "paypal") {
@@ -120,7 +122,7 @@ function name_of_your_function( $posted_data) {
     // }
 }
 
-//add_action('woocommerce_checkout_update_order_review', 'name_of_your_function');
+add_action('woocommerce_checkout_update_order_review', 'name_of_your_function');
 
 // function get_cats() {
 // 	$categories = get_terms( [
