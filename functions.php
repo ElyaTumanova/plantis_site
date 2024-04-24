@@ -90,6 +90,7 @@ function plnt_order_payment() {
 	$order = wc_get_order( $order_id );
 
 	echo '<pre>';
+	print_r( $WC_Order );
 	print_r( $order_id );
 	echo '</pre>';
 }
