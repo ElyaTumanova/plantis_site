@@ -216,7 +216,7 @@ function new_custom_checkout_field_script() {
             }, 100);
 			
 			// Initializing at start after checkout init (Based on the chosen shipping method)
-            $( 'form.checkout' ).on( 'change', ism, function() {		
+            $( 'form.checkout' ).on( 'change', payment_inn_chekbox, function() {		
 				if( $(payment_inn_chekbox).attr('checked')) // Chosen "INN payment" (Show "INN")
                 {
                     inn_field.classList.remove('d-none');
