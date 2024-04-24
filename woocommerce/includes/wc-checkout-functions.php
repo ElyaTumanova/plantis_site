@@ -110,7 +110,7 @@ function new_custom_checkout_field_script() {
 	global $urgent_delivery_inMKAD_small;
 	global $urgent_delivery_outMKAD_small;
 
-    global $payment_inn;
+    global $payment_inn_chekbox;
     global $inn_field;
 
     $required_text = esc_attr__( 'required', 'woocommerce' );
@@ -121,7 +121,7 @@ function new_custom_checkout_field_script() {
 		deliveryInterval = document.querySelector('#orddd_time_slot_field');
         additionalAddress = document.querySelector('.additional-address-field');
 
-        payment_inn = document.querySelector('#<?php echo $payment_inn; ?>');
+        payment_inn_chekbox = document.querySelector('#<?php echo $payment_inn_chekbox; ?>');
         inn_field = document.querySelector('#<?php echo $inn_field; ?>');
         console.log(inn_field);
 
@@ -203,6 +203,15 @@ function new_custom_checkout_field_script() {
 					deliveryInterval.classList.add('d-none');
                 } else {
 					deliveryInterval.classList.remove('d-none');
+				}
+            }, 100);
+
+            setTimeout(function(){
+                     if( $(payment_inn_chekbox).checked()) // Chosen "INN payment" (Show "INN")
+                {
+                    inn_field.classList.remove('d-none');
+                } else {
+					inn_field.classList.add('d-none');
 				}
             }, 100);
 			
