@@ -79,6 +79,19 @@ function plnt_check_page() {
 //add_action( 'wp_footer', 'plnt_check_page' );
 
 
+
+add_action( 'wp_footer', 'plnt_order_payment' );
+
+
+function plnt_order_payment() {
+	$order_id = wc_get_order_id_by_order_key( $_GET[ 'key' ] );
+	$order = wc_get_order( $order_id )
+
+	echo '<pre>';
+	print_r( $order );
+	echo '</pre>';
+}
+
 // function get_cats() {
 // 	$categories = get_terms( [
 // 		'taxonomy' => 'product_tag',
