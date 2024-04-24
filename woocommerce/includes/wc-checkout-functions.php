@@ -262,7 +262,7 @@ function payment_checkout_field_script() {
 
     ?>
     <script>
-        payment_inn = document.querySelector('<?php echo $payment_inn; ?>');
+        payment_inn = document.querySelector('#payment_method_cheque');
         console.log(payment_inn);
     </script>
     <?php
