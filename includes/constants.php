@@ -70,7 +70,7 @@ if($site === 'http://new.plantis.shop') {
 }
 
 
-/* Способы доставки */
+/* Способы доставки и оплаты */
 
 if($site === 'http://new.plantis.shop') {
 	//NEW PLANTIS SHOP
@@ -89,6 +89,8 @@ if($site === 'http://new.plantis.shop') {
 	
 	$delivery_free = 'free_shipping:5';
 
+	$payment_inn = 'payment_method_cheque';
+
 
 } else {
 	// PLANTIS SHOP
@@ -106,6 +108,8 @@ if($site === 'http://new.plantis.shop') {
 	$urgent_delivery_outMKAD_small = 'flat_rate:12';
 	
 	$delivery_free = 'free_shipping:4';
+
+	$payment_inn = 'payment_method_cheque';
 }
 
 

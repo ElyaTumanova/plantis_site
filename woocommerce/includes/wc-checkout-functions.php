@@ -250,7 +250,23 @@ function new_custom_checkout_field_script() {
     <?php
 }
 
+add_action( 'wp_footer', 'payment_checkout_field_script' );
 
+function new_custom_checkout_field_script() {
+	
+	if( !is_page( 'checkout' ) ) {
+		return;
+	}
+
+    global $payment_inn;
+
+    ?>
+    <script>
+        payment_inn = document.querySelector('<?php echo $payment_inn; ?>');
+        console.log(payment_inn);
+    </script>
+    <?php
+}
 
 /* скрываем лишние способы доставки если доступна доставка бесплатная*/
 
