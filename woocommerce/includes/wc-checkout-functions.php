@@ -259,26 +259,6 @@ function new_custom_checkout_field_script() {
     <?php
 }
 
-// add_action( 'wp_footer', 'payment_checkout_field_script' );
-
-// function payment_checkout_field_script() {
-	
-// 	if( !is_page( 'checkout' ) ) {
-// 		return;
-// 	}
-
-//     global $payment_inn;
-//     global $inn_field;
-
-//     ?>
-//     <script>
-//         payment_inn = document.querySelector('#<?php echo $payment_inn; ?>');
-//         inn_field = document.querySelector('#<?php echo $inn_field; ?>');
-//         console.log(inn_field);
-//     </script>
-//     <?php
-// }
-
 /* скрываем лишние способы доставки если доступна доставка бесплатная*/
 
 add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_method', 20, 2 );
