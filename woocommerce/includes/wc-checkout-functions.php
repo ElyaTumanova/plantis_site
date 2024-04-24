@@ -252,7 +252,7 @@ function new_custom_checkout_field_script() {
 
 add_action( 'wp_footer', 'payment_checkout_field_script' );
 
-function new_custom_checkout_field_script() {
+function payment_checkout_field_script() {
 	
 	if( !is_page( 'checkout' ) ) {
 		return;
