@@ -207,7 +207,7 @@ function new_custom_checkout_field_script() {
             }, 100);
 
             setTimeout(function(){
-                     if( $(payment_inn_chekbox).checked()) // Chosen "INN payment" (Show "INN")
+                     if( $(payment_inn_chekbox).attr('checked')) // Chosen "INN payment" (Show "INN")
                 {
                     inn_field.classList.remove('d-none');
                 } else {
