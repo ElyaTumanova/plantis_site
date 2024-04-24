@@ -104,7 +104,7 @@ function name_of_your_function( $posted_data) {
 
     // Here we collect payment method
     $payment_method = $post['payment_method'];
-	plnt_order_payment($payment_method)
+	plnt_order_payment($payment_method);
 
     // Run code custom code for each specific payment option selected
     // if ($payment_method == "paypal") {
