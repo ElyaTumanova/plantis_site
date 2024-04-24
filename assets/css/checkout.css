@@ -317,6 +317,16 @@
     border: 1px solid #ccc;
 }
 
+
+.woocommerce-additional-fields__field-wrapper input {
+    padding: 14px 20px;
+    width: 100%;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+}
+
+
+
 #billing_country_field {
     display:none; 
 }
