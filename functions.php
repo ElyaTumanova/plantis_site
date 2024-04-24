@@ -95,7 +95,7 @@ function plnt_check_page() {
 // 	echo '</pre>';
 // }
 
-add_action('woocommerce_checkout_order_processed', 'wh_pre_paymentcall');
+//add_action('woocommerce_checkout_order_processed', 'wh_pre_paymentcall');
 
 function wh_pre_paymentcall($order_id) {
 
