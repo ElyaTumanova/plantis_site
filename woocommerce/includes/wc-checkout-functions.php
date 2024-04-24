@@ -121,9 +121,7 @@ function new_custom_checkout_field_script() {
 		deliveryInterval = document.querySelector('#orddd_time_slot_field');
         additionalAddress = document.querySelector('.additional-address-field');
 
-        payment_inn_chekbox = document.querySelector('#<?php echo $payment_inn_chekbox; ?>');
         inn_field = document.querySelector('#<?php echo $inn_field; ?>');
-        console.log(payment_inn_chekbox);
 
 
         jQuery(function($){
@@ -138,6 +136,9 @@ function new_custom_checkout_field_script() {
                 localPickup = '<?php echo $local_pickup; ?>',
 				urgentPickup1 = '<?php echo $urgent_delivery_inMKAD; ?>',urgentPickup2 = '<?php echo $urgent_delivery_outMKAD; ?>',
 				urgentPickup3 = '<?php echo $urgent_delivery_inMKAD_small; ?>',urgentPickup4 = '<?php echo $urgent_delivery_outMKAD_small; ?>';
+
+                payment_method = 'input[name^="payment_method"]', payment_method_checked = payment_method+':checked';
+                payment_inn_chekbox = '<?php echo $payment_inn_chekbox; ?>'
 
             // Utility function to shows or hide checkout fields
             function showHide( action='show', selector='' ){
@@ -207,7 +208,7 @@ function new_custom_checkout_field_script() {
             }, 100);
 
             setTimeout(function(){
-                     if( $(payment_inn_chekbox).attr('checked')) // Chosen "INN payment" (Show "INN")
+                     if( $(payment_method_checked).val() == payment_inn_chekbox) // Chosen "INN payment" (Show "INN")
                 {
                     inn_field.classList.remove('d-none');
                 } else {
@@ -216,9 +217,8 @@ function new_custom_checkout_field_script() {
             }, 100);
 			
 			// Initializing at start after checkout init (Based on the chosen shipping method)
-            $( 'form.checkout' ).on( 'change', payment_inn_chekbox, function() {	
-                console.log(payment_inn_chekbox);	
-				if( $(payment_inn_chekbox).attr('checked')) // Chosen "INN payment" (Show "INN")
+            $( 'form.checkout' ).on( 'change', payment_method, function() {		
+				if( $(payment_method_checked).val() == payment_inn_chekbox) // Chosen "INN payment" (Show "INN")
                 {
                     inn_field.classList.remove('d-none');
                 } else {

@@ -110,7 +110,7 @@ if($site === 'http://new.plantis.shop') {
 	
 	$delivery_free = 'free_shipping:4';
 
-	$payment_inn_chekbox = 'payment_method_cheque';
+	$payment_inn_chekbox = 'cheque';
 	$inn_field = 'additional_inn';
 }
 
