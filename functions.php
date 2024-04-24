@@ -86,12 +86,12 @@ add_action( 'wp_footer', 'plnt_order_payment' );
 function plnt_order_payment() {
 	global $woocommerce, $post;
 	$WC_Order = new WC_Order($post->ID);
-	$order_id = $WC_Order->get_id();
-	$order = wc_get_order( $order_id );
+	// $order_id = $WC_Order->get_id();
+	// $order = wc_get_order( $order_id );
 
 	echo '<pre>';
 	print_r( $WC_Order );
-	print_r( $order_id );
+	// print_r( $order_id );
 	echo '</pre>';
 }
 
