@@ -80,7 +80,7 @@ function plnt_check_page() {
 
 
 
-add_action( 'wp_footer', 'plnt_order_payment' );
+//add_action( 'wp_footer', 'plnt_order_payment' );
 
 
 function plnt_order_payment() {
