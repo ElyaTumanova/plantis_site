@@ -123,7 +123,7 @@ function new_custom_checkout_field_script() {
 
         payment_inn_chekbox = document.querySelector('#<?php echo $payment_inn_chekbox; ?>');
         inn_field = document.querySelector('#<?php echo $inn_field; ?>');
-        console.log(inn_field);
+        console.log(payment_inn_chekbox);
 
 
         jQuery(function($){
