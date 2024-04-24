@@ -95,20 +95,39 @@ function plnt_check_page() {
 // 	echo '</pre>';
 // }
 
-//add_action('woocommerce_checkout_order_processed', 'wh_pre_paymentcall');
+function name_of_your_function( $posted_data) {
 
-function wh_pre_paymentcall($order_id) {
+    global $woocommerce;
 
-    //create an order instance
-    $order = wc_get_order($order_id);
-		echo '<pre>';
-		print_r( $order_id );
-		echo '</pre>';
-    //$payment_method = $order->payment_method_title;
-    //$status = $order->get_status();
+    // Parsing posted data on checkout
+    $post = array();
+    // $vars = explode('&', $posted_data);
+    // foreach ($vars as $k => $value){
+    //     $v = explode('=', urldecode($value));
+    //     $post[$v[0]] = $v[1];
+    // }
 
-    // write your custom logic over here.
+    // Here we collect payment method
+    $payment_method = $post['payment_method'];
+	echo '<pre>';
+	print_r( $payment_method );
+	echo '</pre>';
+
+    // Run code custom code for each specific payment option selected
+    // if ($payment_method == "paypal") {
+    //     // Your code goes here
+    // }
+
+    // elseif ($payment_method == "bacs") {
+    //     // Your code goes here
+    // }
+
+    // elseif ($payment_method == "stripe") {
+    //     // Your code goes here
+    // }
 }
+
+add_action('woocommerce_checkout_update_order_review', 'name_of_your_function');
 
 // function get_cats() {
 // 	$categories = get_terms( [
