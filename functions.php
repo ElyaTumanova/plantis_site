@@ -80,20 +80,15 @@ function plnt_check_page() {
 
 
 
-// add_action( 'wp_footer', 'plnt_order_payment' );
+add_action( 'wp_footer', 'plnt_order_payment' );
 
 
-// function plnt_order_payment() {
-// 	global $woocommerce, $post;
-// 	$WC_Order = new WC_Order($post->ID);
-// 	// $order_id = $WC_Order->get_id();
-// 	// $order = wc_get_order( $order_id );
+function plnt_order_payment($payment_method) {
 
-// 	echo '<pre>';
-// 	print_r( $WC_Order );
-// 	// print_r( $order_id );
-// 	echo '</pre>';
-// }
+	echo '<pre>';
+	print_r( $payment_method );
+	echo '</pre>';
+}
 
 function name_of_your_function( $posted_data) {
 
@@ -109,9 +104,7 @@ function name_of_your_function( $posted_data) {
 
     // Here we collect payment method
     $payment_method = $post['payment_method'];
-	echo '<pre>';
-	print_r( $payment_method );
-	echo '</pre>';
+	plnt_order_payment($payment_method)
 
     // Run code custom code for each specific payment option selected
     // if ($payment_method == "paypal") {
