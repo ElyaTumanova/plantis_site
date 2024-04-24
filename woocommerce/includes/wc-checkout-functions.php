@@ -220,6 +220,7 @@ function new_custom_checkout_field_script() {
             $( 'form.checkout' ).on( 'change', payment_method, function() {	
                 console.log(inn_field);
                 console.log(payment_inn_chekbox);
+                console.log($(payment_method_checked).val());
 				if( $(payment_method_checked).val() == payment_inn_chekbox) // Chosen "INN payment" (Show "INN")
                 {
                     inn_field.classList.remove('d-none');
