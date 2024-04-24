@@ -80,19 +80,34 @@ function plnt_check_page() {
 
 
 
-add_action( 'wp_footer', 'plnt_order_payment' );
+// add_action( 'wp_footer', 'plnt_order_payment' );
 
 
-function plnt_order_payment() {
-	global $woocommerce, $post;
-	$WC_Order = new WC_Order($post->ID);
-	// $order_id = $WC_Order->get_id();
-	// $order = wc_get_order( $order_id );
+// function plnt_order_payment() {
+// 	global $woocommerce, $post;
+// 	$WC_Order = new WC_Order($post->ID);
+// 	// $order_id = $WC_Order->get_id();
+// 	// $order = wc_get_order( $order_id );
 
-	echo '<pre>';
-	print_r( $WC_Order );
-	// print_r( $order_id );
-	echo '</pre>';
+// 	echo '<pre>';
+// 	print_r( $WC_Order );
+// 	// print_r( $order_id );
+// 	echo '</pre>';
+// }
+
+add_action('woocommerce_checkout_order_processed', 'wh_pre_paymentcall');
+
+function wh_pre_paymentcall($order_id) {
+
+    //create an order instance
+    $order = wc_get_order($order_id);
+		echo '<pre>';
+		print_r( $order_id );
+		echo '</pre>';
+    //$payment_method = $order->payment_method_title;
+    //$status = $order->get_status();
+
+    // write your custom logic over here.
 }
 
 // function get_cats() {
