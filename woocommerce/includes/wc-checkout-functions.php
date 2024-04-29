@@ -172,9 +172,7 @@ function new_custom_checkout_field_script() {
 					//showHide('hide',b6);    //city
                     //showHide('hide',b7);    //#billing_adress_3_field
                     //showHide('hide',b8);    //#billing_adress_4_field
-                    if (additionalAddress) {
-                        additionalAddress.classList.add('d-none');   
-                    }
+                    if (additionalAddress) {additionalAddress.classList.add('d-none');}
                 }
         
                 else
@@ -187,36 +185,34 @@ function new_custom_checkout_field_script() {
 					//showHide('show',b6);
 					//showHide('show',b7);
 					//showHide('show',b8);
-                    if (additionalAddress) {
-                        additionalAddress.classList.remove('d-none'); 
-                    }
+                    if (additionalAddress) {additionalAddress.classList.remove('d-none');}
                 }        
             }, 100);
 			
 			setTimeout(function(){
                      if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
                 {
-                    deliveryDate.classList.add('d-none');
+                    if (deliveryDate) {deliveryDate.classList.add('d-none')};
                 } else {
-					deliveryDate.classList.remove('d-none');
+					if (deliveryDate) {deliveryDate.classList.remove('d-none')};
 				}
             }, 100);
 			
 			setTimeout(function(){
                      if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
                 {
-					deliveryInterval.classList.add('d-none');
+					if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
                 } else {
-					deliveryInterval.classList.remove('d-none');
+					if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
 				}
             }, 100);
 
             setTimeout(function(){
                      if( $(payment_method_checked).val() == payment_inn_chekbox) // Chosen "INN payment" (Show "INN")
                 {
-                    inn_field.classList.remove('d-none');
+                    if (inn_field) {inn_field.classList.remove('d-none')};
                 } else {
-					inn_field.classList.add('d-none');
+					if (inn_field) {inn_field.classList.add('d-none')};
 				}
             }, 100);
 			
@@ -224,27 +220,27 @@ function new_custom_checkout_field_script() {
             $( 'form.checkout' ).on( 'change', payment_method, function() {	
 				if( $(payment_method_checked).val() == payment_inn_chekbox) // Chosen "INN payment" (Show "INN")
                 {
-                    inn_field.classList.remove('d-none');
+                    if (inn_field) {inn_field.classList.remove('d-none')};
                 } else {
-					inn_field.classList.add('d-none');
+					if (inn_field) {inn_field.classList.add('d-none')};
 				};
             });
 
             $( 'form.checkout' ).on( 'change', ism, function() {		
 				if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
                 {
-                    deliveryDate.classList.add('d-none');
+                    if (deliveryDate) {deliveryDate.classList.add('d-none')};
                 } else {
-					deliveryDate.classList.remove('d-none');
+					if (deliveryDate) {deliveryDate.classList.remove('d-none')};
 				};
             });
 			
 			 $( 'form.checkout' ).on( 'change', ism, function() {		
 				if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
                 {
-					deliveryInterval.classList.add('d-none');
+					if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
                 } else {
-					deliveryInterval.classList.remove('d-none');
+					if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
 				}
             });
 
@@ -260,9 +256,7 @@ function new_custom_checkout_field_script() {
 					// showHide('hide',b6);
 					// showHide('hide',b7);
 					// showHide('hide',b8);
-                    if (additionalAddress) {
-                        additionalAddress.classList.add('d-none'); 
-                    }
+                    if (additionalAddress) {additionalAddress.classList.add('d-none');}
                 }
              
                 else
@@ -275,9 +269,7 @@ function new_custom_checkout_field_script() {
 					// showHide('show',b6);
 					// showHide('show',b7);
 					// showHide('show',b8);
-                    if (additionalAddress) {
-                        additionalAddress.classList.remove('d-none'); 
-                    }
+                    if (additionalAddress) {additionalAddress.classList.remove('d-none');}
                 }
             });
 	
