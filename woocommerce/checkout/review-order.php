@@ -35,12 +35,13 @@ defined( 'ABSPATH' ) || exit;
 			$parentCatId = check_category($_product);
 
 			if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
+				$price = get_post_meta($cart_item['product_id'] , '_price', true);
 				?>
 				<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>" 
 				data-product_name="<?php echo $_product->get_name()?>" 
 				data-product_category="<?php echo get_the_category_by_ID($parentCatId)?>" 
 				data-product_quantity="<?php echo $cart_item['quantity']?>"
-				data-product_price="<?php echo $cart_item['price']?>"
+				data-product_price="<?php $price?>"
 				>
 					<td class="product-name">
 						<?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) ) . '&nbsp;'; ?>
