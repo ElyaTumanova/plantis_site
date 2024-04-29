@@ -40,7 +40,7 @@ defined( 'ABSPATH' ) || exit;
 				data-product_name="<?php echo $_product->get_name()?>" 
 				data-product_category="<?php echo get_the_category_by_ID($parentCatId)?>" 
 				data-product_quantity="<?php echo $cart_item['quantity']?>"
-				data-product_price="<?php echo $cart_item['line_total']?>"
+				data-product_price="<?php echo $cart_item['price']?>"
 				>
 					<td class="product-name">
 						<?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) ) . '&nbsp;'; ?>
