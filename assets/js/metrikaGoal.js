@@ -2,7 +2,8 @@
 jQuery(document).ready(function() {
     // Клик по кнопке «Положить в корзину», листинг
 	jQuery('.catalog__products-wrap .add_to_cart_button').click(function(){
-		ym(87781741, 'reachGoal', 'click-button-cart-listing'); 
+		yaCounter87781741.reachGoal('click-button-cart-listing'); 
+		// ym(87781741, 'reachGoal', 'click-button-cart-listing'); 
         return true;
 	});
 
