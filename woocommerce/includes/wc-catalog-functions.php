@@ -450,7 +450,13 @@ function remove_my_theme_canonical() {
 add_action('init', 'remove_my_theme_canonical');
 
 
-add_filter( 'wpseo_canonical', '__return_false',  10, 1 );
+add_filter( 'wpseo_canonical', 'joe_remove_yoast_meta' );
+add_filter( 'wpseo_metadesc', 'joe_remove_yoast_meta' );
+function joe_remove_yoast_meta( $filter ){
+	// Добавьте сюда свои условия
+		return false;
+
+}
 
 
 function add_custom_canonical_tags() {
