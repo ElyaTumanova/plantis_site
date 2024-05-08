@@ -449,10 +449,7 @@ function remove_my_theme_canonical() {
 }
 add_action('init', 'remove_my_theme_canonical');
 
-function at_remove_dup_canonical_link() {
-	return false;
-}
-add_filter( 'wpseo_canonical', 'at_remove_dup_canonical_link' );
+add_filter( 'wpseo_canonical', '__return_false' );
 
 
 function add_custom_canonical_tags() {
