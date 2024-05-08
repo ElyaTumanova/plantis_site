@@ -449,10 +449,12 @@ function remove_my_theme_canonical() {
 }
 add_action('init', 'remove_my_theme_canonical');
 
-function remove_canonical() {
-    add_filter( 'wpseo_canonical', '__return_false',  10, 1 );
+add_filter( 'wpseo_canonical', 'joe_remove_yoast_meta' );
+function joe_remove_yoast_meta( $filter ){
+	// Добавьте сюда свои условия
+		return false;
+	return $filter;
 }
-add_action('wp', 'remove_canonical');
 
 function add_custom_canonical_tags() {
     // if (is_paged()) {
