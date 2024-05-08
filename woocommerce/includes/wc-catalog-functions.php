@@ -451,7 +451,6 @@ add_action('init', 'remove_my_theme_canonical');
 
 add_filter( 'wpseo_canonical', '__return_false' );
 
-
 function add_custom_canonical_tags() {
     // if (is_paged()) {
         // Получаем URL первой страницы текущего архива
