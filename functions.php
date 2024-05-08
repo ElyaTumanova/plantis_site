@@ -52,8 +52,11 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 add_filter( 'wpseo_canonical', 'joe_remove_yoast_meta' );
 function joe_remove_yoast_meta( $filter ){
 	// Добавьте сюда свои условия
+	if( is_archive() ){
 		return false;
+	}
 
+	return $filter;
 }
 
 
