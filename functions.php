@@ -49,17 +49,6 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 // FOR DEV
 
-add_filter('aioseop_canonical_url','remove_canonical_url', 10, 1);
-function remove_canonical_url( $url ){
-global $post;
-if( is_category() ){
-return false; // Remove the canonical URL for categories.
-} elseif (is_archive() ){
-return false; // Remove the canonical URL for archives.
-}
-return $url;
-}
-
 function plnt_check_page() {
 	// global $gorshki_cat_id;
 	// if ( term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) ) {
