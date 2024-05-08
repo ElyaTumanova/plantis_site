@@ -142,7 +142,7 @@ function create_yandex_xml_btn () {
         </yml_catalog>
         ";
 
-		$fp = fopen( ABSPATH . "/wp-content/yandex-xml/feed-yml-0.xml", 'w' );  #TODO - указать путь для фида
+		$fp = fopen( ABSPATH . "/wp-content/yandex-xml/feed-yml-0.xml", 'w' ); 
 		fwrite( $fp, $yandex_xml );
 		fclose( $fp );
 		?>
