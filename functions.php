@@ -49,6 +49,8 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 // FOR DEV
 
+add_filter( 'wpseo_canonical', '__return_false' );
+
 function plnt_check_page() {
 	// global $gorshki_cat_id;
 	// if ( term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) ) {
