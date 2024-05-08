@@ -49,6 +49,13 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 // FOR DEV
 
+add_filter( 'wpseo_canonical', 'joe_remove_yoast_meta' );
+function joe_remove_yoast_meta( $filter ){
+	// Добавьте сюда свои условия
+		return false;
+
+}
+
 
 function plnt_check_page() {
 	// global $gorshki_cat_id;
@@ -80,58 +87,5 @@ function plnt_check_page() {
 
 
 
-add_action( 'wp_footer', 'plnt_order_payment' );
-
-
-function plnt_order_payment() {
-	$payment_method = WC()->session->get( 'chosen_payment_method' );
-	echo '<pre>';
-	print_r( $payment_method );
-	echo '</pre>';
-}
-
-function name_of_your_function( $posted_data) {
-
-    global $woocommerce;
-
-    // Parsing posted data on checkout
-    $post = array();
-    $vars = explode('&', $posted_data);
-    foreach ($vars as $k => $value){
-        $v = explode('=', urldecode($value));
-        $post[$v[0]] = $v[1];
-    }
-
-    // Here we collect payment method
-    $payment_method = $post['payment_method'];
-	echo '<pre>';
-	var_dump( $payment_method );
-	echo '</pre>'; 
-
-    // Run code custom code for each specific payment option selected
-    // if ($payment_method == "paypal") {
-    //     // Your code goes here
-    // }
-
-    // elseif ($payment_method == "bacs") {
-    //     // Your code goes here
-    // }
-
-    // elseif ($payment_method == "stripe") {
-    //     // Your code goes here
-    // }
-}
-
-//add_action('woocommerce_checkout_update_order_review', 'name_of_your_function');
-
-// function get_cats() {
-// 	$categories = get_terms( [
-// 		'taxonomy' => 'product_tag',
-// 		'hide_empty' => false,
-// 	] );
-// 	echo '<pre>';
-// 	print_r( $categories );
-// 	echo '</pre>';
-// }
 
 
