@@ -106,6 +106,12 @@
     grid-auto-flow: column;
 }
 
+.menu--dropdown_lvl_3 {
+    left: 100%;
+    margin-left: -6px;
+    top: 0;
+}
+
 .menu_podarok .menu--dropdown_lvl_2 {
     top: auto;
     bottom: -50px;
@@ -117,7 +123,7 @@
     margin-right: 20px;
 }
 
-.menu-item-has-children.menu-node_lvl_2> a:after {
+.menu-item-has-children.menu-node_lvl_2> a:after, .menu-item-has-children.menu-node_lvl_3> a:after {
     /* content: "\276F"; */
     content: "next";
     font-family: swiper-icons;
