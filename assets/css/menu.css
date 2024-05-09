@@ -23,7 +23,7 @@
     position: relative;
 }
 
-.menu--info .menu-node_lvl_2, .menu-node_lvl_3 {
+.menu--info .menu-node_lvl_2, .menu-node_lvl_3, .menu-node_lvl_4 {
     padding: 8px 15px;
     display: block;
 }
