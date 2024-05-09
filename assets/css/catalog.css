@@ -863,7 +863,7 @@ ul.products {
     font-size: 16px;
 }
 
-.card-ukhod-swiper .yith-wcwl-add-to-wishlist {
+.card__ukhod-wrap .yith-wcwl-add-to-wishlist {
     position: absolute;
     z-index: 10;
     margin: 0;
