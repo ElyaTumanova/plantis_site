@@ -863,6 +863,10 @@ ul.products {
     font-size: 16px;
 }
 
+.card__ukhod-wrap .product {
+    position: relative;
+}
+
 .card__ukhod-wrap .yith-wcwl-add-to-wishlist {
     position: absolute;
     z-index: 10;
