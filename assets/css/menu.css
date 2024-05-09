@@ -142,7 +142,8 @@
 .menu_item_treez .menu-item {
     padding-left: 30px;
 }
-.menu_item_treez-cat {
+
+.menu_item_treez .menu_item_treez-cat {
     padding-left: 15px;
     font-weight: 700;
     text-decoration: underline;
