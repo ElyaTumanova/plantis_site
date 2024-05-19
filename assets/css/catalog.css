@@ -461,6 +461,10 @@ ul.products {
     display: inline-block;
 }
 
+.catalog__tag-link:hover {
+    text-decoration: none;
+}
+
 /* sale badge */
 
 @media (max-width: 767px) {
