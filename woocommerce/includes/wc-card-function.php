@@ -10,6 +10,7 @@ add_action('woocommerce_before_single_product_summary','plnt_card_grid_start',5)
 function plnt_card_grid_start () {
     global $product;
     global $plants_cat_id;
+    global $treez_cat_id;
     $parentCatId = check_category ($product);
     if ($parentCatId === $plants_cat_id) {
         if ( $product->get_stock_status() ==='outofstock') {
@@ -22,9 +23,15 @@ function plnt_card_grid_start () {
             <?php
         }
     } else {
-        ?>
-        <div class="card__grid card__grid_not-plant">
-        <?php
+        if ($parentCatId === $treez_cat_id) {
+            ?>
+            <div class="card__grid card__grid_not-plant card__grid_treez ">
+            <?php
+        } else {
+            ?>
+            <div class="card__grid card__grid_not-plant">
+            <?php
+        }
     } 
 };
 
