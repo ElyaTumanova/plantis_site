@@ -92,6 +92,9 @@
     grid-area: banner1;
 }
 
+#card_banner_treez p:first-child {
+    color: var(--red-color);
+}
 
 .card_banner {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
