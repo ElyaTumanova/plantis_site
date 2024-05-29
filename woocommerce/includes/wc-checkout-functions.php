@@ -513,7 +513,7 @@ function plnt_disable_payment_treez( $available_gateways ) {
         }
     
         if( $products_min) {
-            unset( $available_gateways['bacs'] );
+            unset( $available_gateways['tinkoff'] );
         }
         return $available_gateways;
     }
