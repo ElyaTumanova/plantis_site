@@ -79,6 +79,14 @@
     grid-column: span 2;
 }
 
+#card_banner_treez {
+    display: none;
+}
+
+.card__grid_treez #card_banner_treez {
+    display: block;
+}
+
 .card_banner {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
     padding: 10px;

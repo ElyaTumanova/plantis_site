@@ -11,3 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="card_banner" id="card_banner_peresadka">
     <p>При покупке <a href="<?php echo get_site_url()?>/product-category/gorshki_i_kashpo/" target="_blank" rel="noopener">горшка </a>— пересадка в подарок!</p>
 </div>
+<div class="card_banner" id="card_banner_treez">
+    <p> Оплатить заказ с кашпо Treez можно будет после подтверждения наличия кашпо. Наш менеджер свяжется с Вами после оформления заказа.</p>
+</div>
