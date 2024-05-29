@@ -496,23 +496,27 @@ function plnt_disable_payment_treez( $available_gateways ) {
 	// $qty = 0; // обязательно сначала ставим 0
  	// $cat_amount = 0;
 	$products_min = false;
-	foreach ( WC()->cart->get_cart() as $cart_item ) {
-			$_product = $cart_item['data'];
-            $_product_id = $_product->id;
-            $parentCat = check_category ($_product);
-
-            if ( $parentCat === $treez_cat_id ) {
-                $products_min = true;
-                // $qty = $cart_item[ 'quantity' ];
-                // $price = $cart_item['data']->get_price();
-                // $cat_amount = $cat_amount + $price*$qty;
-            }	
-	}
-
-    if( $products_min) {
-        unset( $available_gateways['bacs'] );
+    if (is_admin()) {
+        return $available_gateways;
+    } else {
+        foreach ( WC()->cart->get_cart() as $cart_item ) {
+                $_product = $cart_item['data'];
+                $_product_id = $_product->id;
+                $parentCat = check_category ($_product);
+    
+                if ( $parentCat === $treez_cat_id ) {
+                    $products_min = true;
+                    // $qty = $cart_item[ 'quantity' ];
+                    // $price = $cart_item['data']->get_price();
+                    // $cat_amount = $cat_amount + $price*$qty;
+                }	
+        }
+    
+        if( $products_min) {
+            unset( $available_gateways['bacs'] );
+        }
+        return $available_gateways;
     }
-    return $available_gateways;
 }
 
 // выводим в форме оформления заказа информацию, о товарах, которые закончились
