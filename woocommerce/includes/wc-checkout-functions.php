@@ -488,32 +488,32 @@ function min_amount_for_category_info(){
     }   
 }
 
-// add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_treez' );
+add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_treez' );
 
-// function plnt_disable_payment_treez( $available_gateways ) {
-//     global $treez_cat_id;
-//     // $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
-// 	// $qty = 0; // обязательно сначала ставим 0
-//  	// $cat_amount = 0;
-// 	$products_min = false;
-// 	foreach ( WC()->cart->get_cart() as $cart_item ) {
-// 			$_product = $cart_item['data'];
-//             $_product_id = $_product->id;
-//             $parentCat = check_category ($_product);
+function plnt_disable_payment_treez( $available_gateways ) {
+    global $treez_cat_id;
+    // $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
+	// $qty = 0; // обязательно сначала ставим 0
+ 	// $cat_amount = 0;
+	$products_min = false;
+	foreach ( WC()->cart->get_cart() as $cart_item ) {
+			$_product = $cart_item['data'];
+            $_product_id = $_product->id;
+            $parentCat = check_category ($_product);
 
-//             if ( $parentCat === $treez_cat_id ) {
-//                 $products_min = true;
-//                 // $qty = $cart_item[ 'quantity' ];
-//                 // $price = $cart_item['data']->get_price();
-//                 // $cat_amount = $cat_amount + $price*$qty;
-//             }	
-// 	}
+            if ( $parentCat === $treez_cat_id ) {
+                $products_min = true;
+                // $qty = $cart_item[ 'quantity' ];
+                // $price = $cart_item['data']->get_price();
+                // $cat_amount = $cat_amount + $price*$qty;
+            }	
+	}
 
-//     if( $products_min) {
-//         unset( $available_gateways['tinkoff'] );
-//     }
-//     return $available_gateways;
-// }
+    if( $products_min) {
+        unset( $available_gateways['bacs'] );
+    }
+    return $available_gateways;
+}
 
 // выводим в форме оформления заказа информацию, о товарах, которые закончились
 add_action ('woocommerce_cart_has_errors', 'plnt_check_cart_item_stock');
