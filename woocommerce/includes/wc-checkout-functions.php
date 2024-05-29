@@ -495,7 +495,7 @@ function plnt_disable_payment_treez( $available_gateways ) {
     // $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
 	// $qty = 0; // обязательно сначала ставим 0
  	// $cat_amount = 0;
-	// $products_min = false;
+	$products_min = false;
 	foreach ( WC()->cart->get_cart() as $cart_item ) {
 			$_product = $cart_item['data'];
             $_product_id = $_product->id;
