@@ -87,7 +87,7 @@
 }
 
 .card__grid_treez #card_banner_treez {
-    display: block;
+    display: flex;
 }
 
 .card_banner {
