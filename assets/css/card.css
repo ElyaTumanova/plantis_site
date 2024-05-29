@@ -80,6 +80,7 @@
 }
 .card__grid_treez #card_banner_peresadka {
     grid-column: span 1;
+    grid-area: banner2;
 }
 
 #card_banner_treez {
@@ -88,7 +89,9 @@
 
 .card__grid_treez #card_banner_treez {
     display: flex;
+    grid-area: banner1;
 }
+
 
 .card_banner {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
