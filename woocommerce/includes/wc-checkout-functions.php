@@ -39,11 +39,13 @@ function my_delivery_small_oder_info () {
 		echo '<div class="checkout__free-delivery-text">
         Добавьте товаров на <span>'.$cart,'</span> рублей, чтобы стоимость доставки уменьшилась!</div>';
 	} else {
-		if ( WC()->cart->subtotal < str_replace(" ","",$min_free_delivery)) {
-			$cart = str_replace(" ","",$min_free_delivery) - WC()->cart->subtotal;
-			echo '<div class="checkout__text">
-			До бесплатной доставки внутри МКАД осталось <span>'.$cart,'</span> рублей!</div>';
-		}
+        if(WC()->cart->subtotal>20000) {
+            if ( WC()->cart->subtotal < str_replace(" ","",$min_free_delivery)) {
+                $cart = str_replace(" ","",$min_free_delivery) - WC()->cart->subtotal;
+                echo '<div class="checkout__text">
+                До бесплатной доставки внутри МКАД осталось <span>'.$cart,'</span> рублей!</div>';
+            }
+        }
 	}	
 }
 
