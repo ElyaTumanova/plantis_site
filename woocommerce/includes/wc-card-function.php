@@ -127,19 +127,21 @@ function plnt_price_wrap(){
     <div class="card__price-wrap">
         <div class = "card__add-to-cart-wrap">
             <?php
-            plnt_check_stock_status();
             woocommerce_template_single_price();
             ?> 
             <div class="card__price-btns-wrap">
-            <?php
-            global $product;
-            if ( $product->get_stock_status() ==='outofstock') {
-                plnt_outofstock_btn();
-            } else {
-                plnt_get_add_to_card();
-            }
-            ?>
+                <?php
+                global $product;
+                if ( $product->get_stock_status() ==='outofstock') {
+                    plnt_outofstock_btn();
+                } else {
+                    plnt_get_add_to_card();
+                }
+                ?>
             </div>
+            <?php
+            plnt_check_stock_status();
+            ?>
         </div>
         <?php
         plnt_outofstock_info();
