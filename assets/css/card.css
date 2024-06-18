@@ -254,6 +254,18 @@
     margin-bottom: 35px;
 }
 
+/*статус наличия товара*/
+
+.card__stockstatus { 
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.card__stockstatus::before {
+    content: icon;
+}
+
 /* кнопка в коризину и инпут изменения количетсва */
 
 .card__grid .add-to-cart-wrap {
