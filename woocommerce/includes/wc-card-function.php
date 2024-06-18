@@ -190,7 +190,9 @@ function plnt_check_stock_status() {
     global $product;
     if ( $product->get_stock_status() ==='instock') {
         ?>
-        <div class="card__stockstatus">В наличии</div>
+        <div class="card__stockstatus">
+        <div class="card__stockstatus-pulse">
+        </div> В наличии</div>
         <?php
     }
 }
