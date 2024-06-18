@@ -262,6 +262,7 @@
     margin-bottom: 15px;
     margin-left: 30px;
     position: relative;
+    white-space: nowrap;
 }
 
 .card__stockstatus-pulse {
