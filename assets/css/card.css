@@ -565,8 +565,24 @@ input[type="number"] {
         padding: 10px;
         display: grid;
         grid-template-columns: repeat(2, auto);
+        grid-template-areas:
+        "price buttons"
+        "stock buttons"
+        ;
         align-items: center;
         z-index: 9998;
+    }
+
+    .card__add-to-cart-wrap .price {
+        grid-area: price;
+    }
+
+    .card__add-to-cart-wrap .card__stockstatus {
+        grid-area: stock;
+    }
+
+    .card__add-to-cart-wrap .card__price-btns-wrap {
+        grid-area: buttons;
     }
 
     .card__price-btns-wrap {
