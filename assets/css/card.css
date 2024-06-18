@@ -615,7 +615,7 @@ input[type="number"] {
         grid-template-rows: 52px;
         grid-template-areas:
         "quantity wish cart";
-        column-gap: 15px;
+        column-gap: 13px;
         width: 100%;
         margin-bottom: 0;
         row-gap: 0;
