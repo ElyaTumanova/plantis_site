@@ -128,6 +128,7 @@ function plnt_price_wrap(){
         <div class = "card__add-to-cart-wrap">
             <?php
             woocommerce_template_single_price();
+            plnt_check_stock_status();
             ?> 
             <div class="card__price-btns-wrap">
                 <?php
@@ -139,9 +140,6 @@ function plnt_price_wrap(){
                 }
                 ?>
             </div>
-            <?php
-            plnt_check_stock_status();
-            ?>
         </div>
         <?php
         plnt_outofstock_info();
