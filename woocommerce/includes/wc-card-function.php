@@ -190,7 +190,11 @@ function plnt_get_add_to_card() {
 
 function plnt_check_stock_status() {
     global $product;
-    echo $product->get_stock_status();
+    if ( $product->get_stock_status() ==='instock') {
+        ?>
+        <div class="card__stockstatus">В наличии</div>
+        <?php
+    }
 }
 
 function plnt_outofstock_info() {
