@@ -370,6 +370,7 @@
     grid-area: cart;
     /* padding: 12px 10px; */
     margin: 4px 0;
+    white-space: nowrap;
 }
 
 .card__grid .add-to-cart-wrap .added {
