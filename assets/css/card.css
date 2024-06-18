@@ -580,6 +580,7 @@ input[type="number"] {
 
     .card__add-to-cart-wrap .card__stockstatus {
         grid-area: stock;
+        margin-bottom: 5px;
     }
 
     .card__add-to-cart-wrap .card__price-btns-wrap {
