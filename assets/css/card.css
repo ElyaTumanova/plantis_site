@@ -259,6 +259,7 @@
 .card__stockstatus { 
     font-size: 14px;
     font-weight: 700;
+    text-transform:uppercase;
     margin-bottom: 15px;
     margin-left: 30px;
     position: absolute;
