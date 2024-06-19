@@ -312,6 +312,10 @@
     }
   }
 
+  .catalog__products-wrap .card__stockstatus {
+    margin-top: 31px;
+  }
+
 /* кнопка в коризину и инпут изменения количетсва */
 
 .card__grid .add-to-cart-wrap {
