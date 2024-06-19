@@ -340,7 +340,7 @@
   .card__ukhod-wrap .card__stockstatus, .card__sliders-wrap .card__stockstatus {
     height: 8px;
     width: 8px;
-    left: -20px;
+    left: 10px;
   }
 
   .card__sliders-wrap .card__stockstatus-pulse::after,
