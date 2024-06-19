@@ -76,6 +76,7 @@ function plnt_product_image_wrap () {
     <div class="card__image-wrap">
     <?php
         truemisha_sale_badge();
+        plnt_check_stock_status();
         woocommerce_show_product_images();
     ?>
     </div>
@@ -128,7 +129,6 @@ function plnt_price_wrap(){
         <div class = "card__add-to-cart-wrap">
             <?php
             woocommerce_template_single_price();
-            plnt_check_stock_status();
             ?> 
             <div class="card__price-btns-wrap">
                 <?php
