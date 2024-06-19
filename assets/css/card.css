@@ -337,7 +337,7 @@
     margin-left: 20px;
   }
 
-  .card__ukhod-wrap .card__stockstatus, .card__sliders-wrap .card__stockstatus-pulse {
+  .card__ukhod-wrap .card__stockstatus, .card__sliders-wrap .card__stockstatus {
     height: 8px;
     width: 8px;
     left: -20px;
