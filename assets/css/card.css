@@ -270,7 +270,7 @@
     z-index: 2;
 }
 
-.card__stockstatus-pulse {
+/* .card__stockstatus-pulse {
     height: 10px;
     width: 10px;
     border-radius: 100px;
@@ -325,7 +325,7 @@
       transform: scale(1.2);
       opacity: 0;
     }
-  }
+  } */
 
   /*для каталогов*/
   .catalog__products-wrap .card__stockstatus {
@@ -343,7 +343,7 @@
     left: 15px;
   }
 
-  .card__sliders-wrap .card__stockstatus-pulse::after,
+  /* .card__sliders-wrap .card__stockstatus-pulse::after,
   .card__sliders-wrap .card__stockstatus-pulse::before,
   .card__ukhod-wrap .card__stockstatus-pulse::after,
   .card__ukhod-wrap .card__stockstatus-pulse::before {
@@ -351,6 +351,10 @@
     right: -8px;
     top: -8px;
     bottom: -8px;
+  } */
+
+  .main__sale-gallery .card__stockstatus {
+    display: none;
   }
 
 
