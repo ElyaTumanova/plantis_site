@@ -261,13 +261,16 @@
     font-weight: 700;
     text-transform:uppercase;
     margin-bottom: 15px;
-    margin-left: 30px;
+    /* margin-left: 30px; */
     position: absolute;
     white-space: nowrap;
     margin-top: 15px;
     top: 0;
     left: 10px;
     z-index: 2;
+    background-color: green;
+    padding: 4px 5px 2px;
+    border-radius: 3px;
 }
 
 /* .card__stockstatus-pulse {
@@ -328,9 +331,9 @@
   } */
 
   /*для каталогов*/
-  .catalog__products-wrap .card__stockstatus {
+  /* .catalog__products-wrap .card__stockstatus {
     margin-top: 31px;
-  }
+  } */
 
   .card__ukhod-wrap .card__stockstatus, .card__sliders-wrap .card__stockstatus {
     font-size: 12px;
