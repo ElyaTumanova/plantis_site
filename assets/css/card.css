@@ -270,6 +270,7 @@
     z-index: 2;
     padding: 4px 5px 2px;
     border-radius: 3px;
+    color: var(--white);
 }
 
 .card__stockstatus_in {
@@ -344,14 +345,14 @@
 
   .card__ukhod-wrap .card__stockstatus, .card__sliders-wrap .card__stockstatus {
     font-size: 12px;
-    margin-left: 20px;
+    /* margin-left: 20px; */
   }
 
-  .card__ukhod-wrap .card__stockstatus, .card__sliders-wrap .card__stockstatus {
+  /* .card__ukhod-wrap .card__stockstatus, .card__sliders-wrap .card__stockstatus {
     height: 8px;
     width: 8px;
     left: 15px;
-  }
+  } */
 
   /* .card__sliders-wrap .card__stockstatus-pulse::after,
   .card__sliders-wrap .card__stockstatus-pulse::before,
