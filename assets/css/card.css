@@ -268,9 +268,16 @@
     top: 0;
     left: 10px;
     z-index: 2;
-    background-color: green;
     padding: 4px 5px 2px;
     border-radius: 3px;
+}
+
+.card__stockstatus_in {
+    background-color: var(--stock-color);
+}
+
+.card__stockstatus_out {
+    background-color: var(--red-color);
 }
 
 /* .card__stockstatus-pulse {
