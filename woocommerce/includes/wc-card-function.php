@@ -188,14 +188,18 @@ function plnt_get_add_to_card() {
 
 function plnt_check_stock_status() {
     global $product;
-    if ( $product->get_stock_status() ==='instock') {
-        ?>
-        <div class="card__stockstatus card__stockstatus_in">В наличии</div>
-        <?php
-    } else {
-        ?>
-        <div class="card__stockstatus card__stockstatus_out">Под заказ</div>
-        <?php
+    global $plants_cat_id;
+    $parentCatId = check_category ($product);
+    if ($parentCatId === $plants_cat_id) {
+        if ( $product->get_stock_status() ==='instock') {
+            ?>
+            <div class="card__stockstatus card__stockstatus_in">В наличии</div>
+            <?php
+        } else {
+            ?>
+            <div class="card__stockstatus card__stockstatus_out">Под заказ</div>
+            <?php
+        }
     }
 }
 
@@ -395,7 +399,7 @@ function plnt_get_preorder_popup () {
 /*--------------------------------------------------------------
 # HELPERS 
 --------------------------------------------------------------*/
-// функция, определяет есть ли среди категорий товара "родительсике"
+// функция, определяет есть ли среди категорий товара "родительские"
 function check_category ($product) {
     global $plants_cat_id;
     global $gorshki_cat_id;
