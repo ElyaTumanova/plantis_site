@@ -270,6 +270,12 @@
     min-width: 96px;
 }
 
+@media (max-width:767px) {
+    .card__stockstatus {
+        padding: 3px;
+        min-width: 103px;
+    }
+}
 .card__stockstatus_in {
     background-color: var(--stock-color);
 }
