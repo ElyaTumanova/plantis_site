@@ -259,11 +259,12 @@
 .card__stockstatus { 
     font-size: 15px;
     font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
     /* text-transform:uppercase; */
     /* margin-bottom: 15px; */
     /* margin-left: 30px; */
     position: absolute;
-    white-space: nowrap;
     /* margin-top: 15px; */
     top: 0;
     /* left: 10px; */
@@ -272,6 +273,7 @@
     /* border-radius: 3px; */
     border-radius: 5px 0px 5px 0px;
     color: var(--white);
+    min-width: 96px;
 }
 
 .card__stockstatus_in {
