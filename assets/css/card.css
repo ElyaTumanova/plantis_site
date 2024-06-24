@@ -286,6 +286,7 @@
 
 .card__image-wrap .card__stockstatus {
     font-size: 17px;
+    min-width: 107px;
 }
 
   /*для каталогов*/
