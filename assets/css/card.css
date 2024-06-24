@@ -283,17 +283,6 @@
     min-width: 107px;
 }
 
-  /*для каталогов*/
-
-
-  .card__ukhod-wrap .card__stockstatus, .card__sliders-wrap .card__stockstatus {
-    display: none;
-  }
-
-  .main__sale-gallery .card__stockstatus {
-    display: none;
-  }
-
 
 /* кнопка в коризину и инпут изменения количетсва */
 

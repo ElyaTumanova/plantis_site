@@ -473,6 +473,25 @@ ul.products {
     }
 }
 
+/*stock status badge*/
+
+@media (max-width: 767px) {
+    .catalog__products-wrap .card__stockstatus {
+        font-size: 16px;
+        min-width: 103px;
+    }
+}
+
+
+.card__ukhod-wrap .card__stockstatus, .card__sliders-wrap .card__stockstatus {
+    display: none;
+  }
+
+  .main__sale-gallery .card__stockstatus {
+    display: none;
+  }
+
+
 /* фото товара */
 
 .product__image-slider-wrap img {
