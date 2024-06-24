@@ -44,7 +44,7 @@ if( !empty ($crosssell_ids) ){
                     <?php
                 } else {
                     ?>
-                    <h2 class="heading-2"><?php _e( 'Похожие растения', 'woocommerce' ) ?></h2>
+                    <h2 class="heading-2"><?php _e( 'Похожие растения в наличии', 'woocommerce' ) ?></h2>
                     <?php       
                 }
                 ?>         
