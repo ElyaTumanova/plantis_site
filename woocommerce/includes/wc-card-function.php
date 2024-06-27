@@ -302,22 +302,22 @@ function plnt_product_attributes(){
 
 //upsells & cross sells
 
-add_action('woocommerce_after_single_product_summary', 'plnt_card_crosssells_wrap_start', 6);
+// add_action('woocommerce_after_single_product_summary', 'plnt_card_crosssells_wrap_start', 6);
 
-function plnt_card_crosssells_wrap_start(){
-    ?>
-    <div class="card__crosssell-wrap">
+// function plnt_card_crosssells_wrap_start(){
+//     ?>
+//     <div class="card__crosssell-wrap">
     
-    <?php 
-};
+//     <?php 
+// };
 
-add_action('woocommerce_after_single_product_summary', 'plnt_card_crosssells_wrap_end', 8);
+// add_action('woocommerce_after_single_product_summary', 'plnt_card_crosssells_wrap_end', 8);
 
-function plnt_card_crosssells_wrap_end(){
-    ?>
-    </div>
-    <?php 
-};
+// function plnt_card_crosssells_wrap_end(){
+//     ?>
+//     </div>
+//     <?php 
+// };
 
 add_action('woocommerce_after_single_product_summary','plnt_sliders_wrap_start', 10);
 
@@ -373,7 +373,7 @@ function plnt_upsells_heading () {
 };
         
 remove_action('woocommerce_after_single_product_summary','woocommerce_output_related_products', 20);
-add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 7);
+add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 20);
 
 function plnt_get_cross_sells(){
     get_template_part('template-parts/plnt-cross-sells');
