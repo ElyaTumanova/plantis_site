@@ -381,11 +381,11 @@ function plnt_get_cross_sells(){
 
 // tabs
 
-add_action('woocommerce_after_single_product_summary','plnt_get_card_tabs', 35);
+// add_action('woocommerce_after_single_product_summary','plnt_get_card_tabs', 35);
 
-function plnt_get_card_tabs() {
-    get_template_part('template-parts/card-tabs');
-}
+// function plnt_get_card_tabs() {
+//     get_template_part('template-parts/card-tabs');
+// }
 
 // товары для ухода
 
