@@ -40,7 +40,7 @@ if( !empty ($crosssell_ids) ){
                 <?php 
                 if ( $is_out_of_stock) {
                     ?>
-                    <h2 class="heading-2"><?php _e( 'Похожие растения в наличии', 'woocommerce' ) ?></h2>       
+                    <h2 class="heading-2"><?php _e( 'Похожие растения', 'woocommerce' ) ?></h2>       
                     <?php
                 } else {
                     ?>
