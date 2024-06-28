@@ -43,16 +43,16 @@ function plnt_card_grid_end () {
     <?php 
 };
 
-// табы(убираем) и описание
+// табы и описание
 
 // remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
 
-add_filter( 'woocommerce_product_tabs', 'truemisha_new_product_tab', 25 );
+add_filter( 'woocommerce_product_tabs', 'truemisha_new_product_tab', 5 );
  
 function truemisha_new_product_tab( $tabs ) {
  
 	$tabs[ 'new_super_tab' ] = array(
-		'title' 	=> 'Супер таб',
+		'title' 	=> 'Доставка',
 		'priority' 	=> 25,
 		'callback' 	=> 'truemisha_new_tab_content'
 	);
@@ -62,7 +62,7 @@ function truemisha_new_product_tab( $tabs ) {
 }
 function truemisha_new_tab_content() {
  
-	echo '<p>Какой-то HTML код для вкладки</p>';
+	get_template_part('template-parts/delivery-info'); // delivery info for card
  
 }
 
