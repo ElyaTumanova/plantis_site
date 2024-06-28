@@ -531,7 +531,7 @@ input[type="number"] {
     padding: 5px;
 }
 
-.card__grid .wc-tabs .delivery_table__header {
+.card__grid .wc-tab .delivery_table__header {
     display: none;
 }
 
