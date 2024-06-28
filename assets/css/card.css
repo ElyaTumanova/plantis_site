@@ -539,7 +539,7 @@ input[type="number"] {
     display: none;
 }
 
-.card__grid .wc-tab .woocommerce-Tabs-panel--description p {
+.card__grid .woocommerce-Tabs-panel--description p {
     font-size: 16px;
     font-weight: 500;
     line-height: 1.3;
