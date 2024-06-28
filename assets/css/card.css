@@ -504,6 +504,16 @@ input[type="number"] {
 
 }
 
+/*tabs*/
+
+.card__grid .wc-tabs {
+    display: flex;
+}
+
+.card__grid .wc-tabs li{
+    padding: 5px;
+    background-color: var(--accent-back);
+}
 
 /*--------------------------------------------------------------
 # Adaptive General
