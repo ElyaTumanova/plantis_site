@@ -513,13 +513,17 @@ input[type="number"] {
 
 .card__grid .wc-tabs li{
     padding: 5px;
-    /* background-color: var(--accent-back); */
     border-left: solid 1px white;
     flex: 1;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
 }
 
 .card__grid .wc-tabs .active{
-    background-color: var(--accent-back);
+    background-color: var(--gray);
 }
 
 .card__grid .wc-tabs a:hover, .card__grid .wc-tabsa:focus, .card__grid .wc-tabsa:active{
@@ -527,7 +531,7 @@ input[type="number"] {
 }
 
 .card__grid .wc-tab {
-    background-color: var(--accent-back);
+    background-color: var(--gray);
     padding: 5px;
 }
 
