@@ -44,7 +44,29 @@ function plnt_card_grid_end () {
 };
 
 // табы(убираем) и описание
+
 // remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
+
+add_filter( 'woocommerce_product_tabs', 'truemisha_new_product_tab', 25 );
+ 
+function truemisha_new_product_tab( $tabs ) {
+ 
+	$tabs[ 'new_super_tab' ] = array(
+		'title' 	=> 'Супер таб',
+		'priority' 	=> 25,
+		'callback' 	=> 'truemisha_new_tab_content'
+	);
+ 
+	return $tabs;
+ 
+}
+function truemisha_new_tab_content() {
+ 
+	echo '<p>Какой-то HTML код для вкладки</p>';
+ 
+}
+
+
 add_action('woocommerce_before_single_product_summary', 'plnt_product_description', 10);
 
 function plnt_product_description () {
