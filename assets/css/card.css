@@ -513,6 +513,12 @@ input[type="number"] {
 .card__grid .wc-tabs li{
     padding: 5px;
     background-color: var(--accent-back);
+    border-left: solid 1px white;
+    flex: 1;
+}
+
+.card__grid .wc-tab {
+    background-color: var(--accent-back);
 }
 
 /*--------------------------------------------------------------
