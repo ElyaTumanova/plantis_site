@@ -508,17 +508,23 @@ input[type="number"] {
 
 .card__grid .wc-tabs {
     display: flex;
+    border-bottom: solid 1px white;
 }
 
 .card__grid .wc-tabs li{
     padding: 5px;
-    background-color: var(--accent-back);
+    /* background-color: var(--accent-back); */
     border-left: solid 1px white;
     flex: 1;
 }
 
+.card__grid .wc-tabs li+.active{
+    background-color: var(--accent-back);
+}
+
 .card__grid .wc-tab {
     background-color: var(--accent-back);
+    padding: 5px;
 }
 
 /*--------------------------------------------------------------
