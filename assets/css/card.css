@@ -518,7 +518,7 @@ input[type="number"] {
     flex: 1;
 }
 
-.card__grid .wc-tabs li+.active{
+.card__grid .wc-tabs li .active{
     background-color: var(--accent-back);
 }
 
