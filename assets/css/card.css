@@ -522,9 +522,21 @@ input[type="number"] {
     background-color: var(--accent-back);
 }
 
+.card__grid .wc-tabs a:hover, .card__grid .wc-tabsa:focus, .card__grid .wc-tabsa:active{
+   text-decoration: none;
+}
+
 .card__grid .wc-tab {
     background-color: var(--accent-back);
     padding: 5px;
+}
+
+.card__grid .wc-tabs .delivery_table__header {
+    display: none;
+}
+
+.card__grid .wc-tab h2 {
+    display: none;
 }
 
 /*--------------------------------------------------------------
