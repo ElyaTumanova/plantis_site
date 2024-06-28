@@ -43,10 +43,22 @@ function plnt_card_grid_end () {
     <?php 
 };
 
-// табы и описание
+// табы
 
 // remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
 
+// //редактируем стандартные табы
+add_filter( 'woocommerce_product_tabs', 'truemisha_rename_tabs', 25 );
+ 
+function truemisha_rename_tabs( $tabs ) {
+ 
+	$tabs[ 'additional_information' ][ 'title' ] = 'Уход и характеристики';
+ 
+	return $tabs;
+ 
+}
+
+// // таб доставка
 add_filter( 'woocommerce_product_tabs', 'truemisha_new_product_tab', 25 );
  
 function truemisha_new_product_tab( $tabs ) {
@@ -75,7 +87,7 @@ function truemisha_reorder_tabs( $tabs ) {
  
 }
 
-
+// описание
 add_action('woocommerce_before_single_product_summary', 'plnt_product_description', 10);
 
 function plnt_product_description () {
