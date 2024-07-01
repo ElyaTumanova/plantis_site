@@ -508,22 +508,25 @@ input[type="number"] {
 
 .card__grid .wc-tabs {
     display: flex;
-    border-bottom: solid 1px white;
+    /* border-bottom: solid 1px white; */
 }
 
 .card__grid .wc-tabs li{
     padding: 5px;
-    border-left: solid 1px white;
+    /* border-left: solid 1px white; */
     flex: 1;
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 700;
     line-height: 1.2;
     text-align: center;
+    opacity: 50%;
 }
 
 .card__grid .wc-tabs .active{
-    background-color: var(--gray);
+    /* background-color: var(--gray); */
+    opacity: 100%;
+    border-bottom: solid 2px var(--accent-color);
 }
 
 .card__grid .wc-tabs a:hover, .card__grid .wc-tabsa:focus, .card__grid .wc-tabsa:active{
@@ -531,7 +534,7 @@ input[type="number"] {
 }
 
 .card__grid .wc-tab {
-    background-color: var(--gray);
+    /* background-color: var(--gray); */
     padding: 5px;
 }
 
