@@ -51,11 +51,15 @@ function plnt_card_grid_end () {
 add_filter( 'woocommerce_product_tabs', 'truemisha_rename_tabs', 25 );
  
 function truemisha_rename_tabs( $tabs ) {
- 
-	$tabs[ 'additional_information' ][ 'title' ] = 'Уход и характеристики';
- 
+    global $product;
+    global $plants_cat_id;
+    $parentCatId = check_category($product);
+    if( $parentCatId === $plants_cat_id ) {
+        $tabs[ 'additional_information' ][ 'title' ] = 'Уход и характеристики';
+    } else {
+        $tabs[ 'additional_information' ][ 'title' ] = 'Xарактеристики';
+    }
 	return $tabs;
- 
 }
 
 // // таб доставка
