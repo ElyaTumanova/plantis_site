@@ -76,6 +76,9 @@
     grid-area: upsells;
 }
 
+.card__grid .wc-tabs-wrapper {
+    display: none;
+}
 /* card banners */
 .card_banner:first-of-type {
     grid-area: banner1;
@@ -613,6 +616,7 @@ input[type="number"] {
 
     .card__grid .wc-tabs-wrapper {
         grid-area: descr; 
+        display: block;
     }
     /* #adaptive плашка для добавления в корзину*/
 
