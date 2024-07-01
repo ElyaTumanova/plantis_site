@@ -44,6 +44,12 @@
     flex-direction: column;
 }
 
+@media (max-width:767px) {
+    .card__price-wrap {
+        padding: 0;
+    }
+}
+
 .card__ukhod-wrap {
     grid-area: ukhod;
 }
@@ -593,7 +599,7 @@ input[type="number"] {
         grid-template-areas:
         "image"
         "info"
-        "price"
+        /* "price" */
         "banner1"
         "banner2"
         "upsells"
