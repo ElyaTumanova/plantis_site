@@ -47,21 +47,6 @@ function plnt_card_grid_end () {
 
 // remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
 
-// //редактируем стандартные табы
-add_filter( 'woocommerce_product_tabs', 'truemisha_rename_tabs', 25 );
- 
-function truemisha_rename_tabs( $tabs ) {
-    global $product;
-    global $plants_cat_id;
-    $parentCatId = check_category($product);
-    if( $parentCatId === $plants_cat_id ) {
-        $tabs[ 'additional_information' ][ 'title' ] = 'Уход и характеристики';
-    } else {
-        $tabs[ 'additional_information' ][ 'title' ] = 'Xарактеристики';
-    }
-	return $tabs;
-}
-
 // // таб доставка
 add_filter( 'woocommerce_product_tabs', 'truemisha_new_product_tab', 25 );
  
@@ -76,6 +61,7 @@ function truemisha_new_product_tab( $tabs ) {
 	return $tabs;
  
 }
+
 function truemisha_new_tab_content() {
  
 	get_template_part('template-parts/delivery-info'); // delivery info for card
@@ -89,6 +75,21 @@ function truemisha_reorder_tabs( $tabs ) {
 	$tabs[ 'new_super_tab' ][ 'priority' ] = 5;
 	return $tabs;
  
+}
+
+// //редактируем стандартные табы
+add_filter( 'woocommerce_product_tabs', 'truemisha_rename_tabs', 25 );
+ 
+function truemisha_rename_tabs( $tabs ) {
+    global $product;
+    global $plants_cat_id;
+    $parentCatId = check_category($product);
+    if( $parentCatId === $plants_cat_id ) {
+        $tabs[ 'additional_information' ][ 'title' ] = 'Уход и характеристики';
+    } else {
+        $tabs[ 'additional_information' ][ 'title' ] = 'Xарактеристики';
+    }
+	return $tabs;
 }
 
 // описание
