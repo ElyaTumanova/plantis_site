@@ -72,7 +72,7 @@ add_filter( 'woocommerce_product_tabs', 'truemisha_reorder_tabs', 25 );
  
 function truemisha_reorder_tabs( $tabs ) {
  
-	$tabs[ 'new_super_tab' ][ 'priority' ] = 5;
+	$tabs[ 'new_super_tab' ][ 'priority' ] = 1;
 	return $tabs;
  
 }
