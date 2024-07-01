@@ -35,7 +35,7 @@ if( !empty ($crosssell_ids) ){
         $products = new WP_Query( $args );
         if ( $products->have_posts() ) : ?>
 
-            <div class="cross-sells">
+            <div class="card__sliders-wrap cross-sells">
 
                 <?php 
                 if ( $is_out_of_stock) {

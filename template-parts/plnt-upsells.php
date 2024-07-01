@@ -31,7 +31,7 @@ if( !empty ($upsells_ids) ){
         $products = new WP_Query( $args );
         if ( $products->have_posts() ) : ?>
 
-            <div class="up-sells upsells">
+            <div class="card__sliders-wrap up-sells upsells">
 
                 <?php
                 $heading = apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) );

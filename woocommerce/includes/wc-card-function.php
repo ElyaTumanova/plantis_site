@@ -367,7 +367,7 @@ function plnt_card_crosssells_wrap_end(){
     <?php 
 };
 
-add_action('woocommerce_after_single_product_summary','plnt_sliders_wrap_start', 10);
+//add_action('woocommerce_after_single_product_summary','plnt_sliders_wrap_start', 10);
 
 function plnt_sliders_wrap_start() {
     ?>
@@ -375,7 +375,7 @@ function plnt_sliders_wrap_start() {
     <?php 
 };
 
-add_action('woocommerce_after_single_product_summary','plnt_sliders_wrap_end',30);
+//add_action('woocommerce_after_single_product_summary','plnt_sliders_wrap_end',30);
 
 function plnt_sliders_wrap_end () {
     ?>
