@@ -622,6 +622,10 @@ input[type="number"] {
     .card__grid .product__attributes {
         display: none;
     }
+
+    .product__artikul {
+        margin-bottom: 0;
+    }
     /* #adaptive плашка для добавления в корзину*/
 
     .card__add-to-cart-wrap {
