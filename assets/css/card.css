@@ -610,6 +610,9 @@ input[type="number"] {
         row-gap: 30px;
     }
 
+    .card__price-wrap {
+        grid-area: descr;
+    }
     /* #adaptive плашка для добавления в корзину*/
 
     .card__add-to-cart-wrap {
