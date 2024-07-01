@@ -619,7 +619,7 @@ input[type="number"] {
         display: block;
     }
 
-    .product__attributes {
+    .card__grid .product__attributes {
         display: none;
     }
     /* #adaptive плашка для добавления в корзину*/
