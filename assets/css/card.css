@@ -596,7 +596,8 @@ input[type="number"] {
         "price"
         "banner1"
         "banner2"
-        "sliders"
+        "upsells"
+        "crossells"
         "ukhod"
         "descr";
         column-gap: 0;
