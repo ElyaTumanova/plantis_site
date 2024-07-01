@@ -590,13 +590,13 @@ input[type="number"] {
         grid-template-areas:
         "image"
         "info"
+        "crossells"
         /* "price" */
         "banner1"
+        "descr"
         "banner2"
         "upsells"
-        "crossells"
         "ukhod"
-        "descr"
         "tohide";
         column-gap: 0;
         row-gap: 30px;
