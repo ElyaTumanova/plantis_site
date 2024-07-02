@@ -14,7 +14,7 @@
     row-gap: 20px;
 }
 
-.card__grid + .card__grid_outofstock {
+.card__grid.card__grid_outofstock {
     grid-template-areas:
     "image info price"
     "descr crossells crossells"
