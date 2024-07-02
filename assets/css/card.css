@@ -22,7 +22,7 @@
     row-gap: 20px;
     grid-template-areas:
     "image info price"
-    "image crossells crossells"
+    "descr crossells crossells"
     "descr banner1 banner2"
     "descr upsells upsells"
     "ukhod ukhod ukhod";
