@@ -14,12 +14,7 @@
     row-gap: 20px;
 }
 
-.card__grid.card__grid_outofstock {
-    display: grid;
-    grid-template-columns: 45% 30% calc(25% - 40px);
-    grid-template-rows: repeat(5, auto);
-    column-gap: 20px;
-    row-gap: 20px;
+.card__grid_outofstock {
     grid-template-areas:
     "image info price"
     "descr crossells crossells"
