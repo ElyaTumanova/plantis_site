@@ -624,11 +624,17 @@ input[type="number"] {
         "tohide";
     }
 
-    .card__price-wrap {
+    .card__grid .card__price-wrap {
         grid-area: tohide;
         padding: 0;
         height: 0;
     }
+
+    .card__grid_outofstock .card__price-wrap {
+        grid-area: info;
+    }
+
+    
 
     .card__description {
         grid-area: tohide;
