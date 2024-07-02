@@ -14,6 +14,15 @@
     row-gap: 20px;
 }
 
+.card__grid_outofstock {
+    grid-template-areas:
+    "image info price"
+    "descr crossells crossells"
+    "image banner1 banner2"
+    "descr upsells upsells"
+    "ukhod ukhod ukhod";
+}
+
 .card__image-wrap {
     grid-area: image;
     position: relative;
