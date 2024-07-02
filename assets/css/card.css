@@ -633,6 +633,8 @@ input[type="number"] {
 
     .card__grid_outofstock .card__price-wrap {
         grid-area: outofstock;
+        padding: 10px;
+        height: fit-content;
     }
 
     
