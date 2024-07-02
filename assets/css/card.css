@@ -626,6 +626,13 @@ input[type="number"] {
     .product__artikul {
         margin-bottom: 0;
     }
+
+    .card__grid .up-sells, .card__grid .cross-sells {
+        margin-bottom: 0;
+    }
+
+
+
     /* #adaptive плашка для добавления в корзину*/
 
     .card__add-to-cart-wrap {
