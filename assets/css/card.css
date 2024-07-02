@@ -615,6 +615,7 @@ input[type="number"] {
         grid-template-areas:
         "image"
         "info"
+        "outofstock"
         "crossells"
         /* "price" */
         "descr"
@@ -631,7 +632,7 @@ input[type="number"] {
     }
 
     .card__grid_outofstock .card__price-wrap {
-        grid-area: info;
+        grid-area: outofstock;
     }
 
     
