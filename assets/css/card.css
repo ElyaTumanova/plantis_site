@@ -611,6 +611,19 @@ input[type="number"] {
         row-gap: 30px;
     }
 
+    .card__grid_outofstock {
+        grid-template-areas:
+        "image"
+        "info"
+        "crossells"
+        /* "price" */
+        "descr"
+        "banner1"
+        "upsells"
+        "ukhod"
+        "tohide";
+    }
+
     .card__price-wrap {
         grid-area: tohide;
         padding: 0;
