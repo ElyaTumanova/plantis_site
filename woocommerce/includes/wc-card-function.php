@@ -106,6 +106,12 @@ function truemisha_remove_product_tabs( $tabs ) {
      
     }
 
+    if('' === get_post()->post_content ) {
+
+        unset( $tabs[ 'description' ] ); // вкладка Описание
+     
+    }
+
     return $tabs;
  
 }
