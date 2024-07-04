@@ -98,13 +98,9 @@ add_filter( 'woocommerce_product_tabs', 'truemisha_remove_product_tabs', 25 );
  
 function truemisha_remove_product_tabs( $tabs ) {
 
-    // if( empty( $tabs[ 'description' ] ) ) {
-
-    //     unset( $tabs[ 'description' ] ); // вкладка Описание
-     
-    // }
-
-    if( empty( $tabs[ 'additional_information' ] ) ) {
+    global $product;
+    
+    if(empty($product->get_attributes())) {
 
         unset( $tabs[ 'additional_information' ] ); // вкладка Описание
      
