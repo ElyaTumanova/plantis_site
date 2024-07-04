@@ -98,7 +98,7 @@ add_filter( 'woocommerce_product_tabs', 'truemisha_remove_product_tabs', 25 );
  
 function truemisha_remove_product_tabs( $tabs ) {
 
-    if( '' === get_post()->post_content ) {
+    if( empty( $tabs[ 'description' ] ) ) {
 
         unset( $tabs[ 'description' ] ); // вкладка Описание
      
