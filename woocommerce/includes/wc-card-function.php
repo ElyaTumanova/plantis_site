@@ -94,7 +94,7 @@ function truemisha_rename_tabs( $tabs ) {
 	return $tabs;
 }
 
-add_filter( 'woocommerce_product_tabs', 'truemisha_remove_product_tabs', 30 );
+add_filter( 'woocommerce_product_tabs', 'truemisha_remove_product_tabs', 25 );
  
 function truemisha_remove_product_tabs( $tabs ) {
 
@@ -104,11 +104,11 @@ function truemisha_remove_product_tabs( $tabs ) {
      
     // }
 
-    if( empty( $tabs[ 'additional_information' ] ) ) {
+    // if( empty( $tabs[ 'additional_information' ] ) ) {
 
         unset( $tabs[ 'additional_information' ] ); // вкладка Описание
      
-    }
+    // }
 
     return $tabs;
  
