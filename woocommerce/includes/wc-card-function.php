@@ -98,12 +98,12 @@ function truemisha_rename_tabs( $tabs ) {
  
 function truemisha_remove_product_tabs( $tabs ) {
 
-    if( empty( $tabs[ 'description' ] ) ) {
+    // if( empty( $tabs[ 'description' ] ) ) {
 
-        unset( $tabs[ 'description' ] ); // вкладка Описание
+    //     unset( $tabs[ 'description' ] ); // вкладка Описание
      
-    }
-    
+    // }
+
     if( empty( $tabs[ 'additional_information' ] ) ) {
 
         unset( $tabs[ 'additional_information' ] ); // вкладка Описание
