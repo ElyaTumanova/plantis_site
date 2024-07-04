@@ -52,7 +52,7 @@ add_filter( 'woocommerce_product_tabs', 'truemisha_new_product_tab', 25 );
  
 function truemisha_new_product_tab( $tabs ) {
  
-	$tabs[ 'new_super_tab' ] = array(
+	$tabs[ 'delivery' ] = array(
 		'title' 	=> 'Доставка',
 		'priority' 	=> 25,
 		'callback' 	=> 'truemisha_new_tab_content'
@@ -72,7 +72,9 @@ add_filter( 'woocommerce_product_tabs', 'truemisha_reorder_tabs', 25 );
  
 function truemisha_reorder_tabs( $tabs ) {
  
-	$tabs[ 'new_super_tab' ][ 'priority' ] = 1;
+	$tabs[ 'delivery' ][ 'priority' ] = 20;
+    $tabs[ 'additional_information' ][ 'priority' ] = 10;
+    $tabs[ 'description' ][ 'priority' ] = 30;
 	return $tabs;
  
 }

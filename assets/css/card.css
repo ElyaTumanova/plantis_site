@@ -88,6 +88,7 @@
 .card__grid .wc-tabs-wrapper {
     display: none;
 }
+
 /* card banners */
 .card_banner:first-of-type {
     grid-area: banner1;
