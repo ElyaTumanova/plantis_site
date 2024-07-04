@@ -105,8 +105,9 @@
     grid-column: span 2;
 }
 .card__grid_treez #card_banner_peresadka {
-    grid-column: span 1;
-    grid-area: banner2;
+    /* grid-column: span 1;
+    grid-area: banner2; */
+    display: none;
 }
 
 #card_banner_treez {
@@ -116,6 +117,7 @@
 .card__grid_treez #card_banner_treez {
     display: flex;
     grid-area: banner1;
+    grid-column: span 2;
 }
 
 #card_banner_treez p:first-child {
@@ -600,7 +602,6 @@ input[type="number"] {
         "image"
         "info"
         "crossells"
-        /* "price" */
         "banner1"
         "descr"
         "banner2"
@@ -617,7 +618,6 @@ input[type="number"] {
         "info"
         "outofstock"
         "crossells"
-        /* "price" */
         "descr"
         "banner1"
         "upsells"
