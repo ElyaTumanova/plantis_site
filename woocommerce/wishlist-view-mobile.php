@@ -99,7 +99,7 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 								 * @return string
 								 */
 								?>
-								<a href="<?php echo esc_url( $item->get_remove_url() ); ?>" class="remove_from_wishlist" title="<?php echo esc_html( apply_filters( 'yith_wcwl_remove_product_wishlist_message_title', __( 'Remove this product', 'yith-woocommerce-wishlist' ) ) ); ?>"><i class="fa">✖</i></a>
+								<a href="<?php echo esc_url( $item->get_remove_url() ); ?>" class="remove_from_wishlist" title="<?php echo esc_html( apply_filters( 'yith_wcwl_remove_product_wishlist_message_title', __( 'Удалить товар', 'yith-woocommerce-wishlist' ) ) ); ?>"><i class="fa">✖</i></a>
 							</div>
 						<?php endif; ?>
 						<div class="product-thumbnail">

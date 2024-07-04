@@ -111,5 +111,13 @@ function plnt_change_text_wish_5( $translated_text ) {
 }
 add_filter( 'gettext', 'plnt_change_text_wish_5', 20 );
 
+function plnt_change_text_wish_6( $translated_text ) {
+  if ( $translated_text == 'No products added to the wishlist' ) {
+    $translated_text = 'Здесь будут ваши избранные товары';
+  }
+  return $translated_text;
+}
+add_filter( 'gettext', 'plnt_change_text_wish_6', 20 );
+
 
   
