@@ -11,7 +11,6 @@ $args = array(
     'no_found_rows' => 1,
     'posts_per_page' => 8,
     'orderby' => 'rand',
-    // 'post__in' => $product_ids_on_sale,
     'meta_query' => array( 
         array(
             'key'       => '_stock_status',
@@ -31,7 +30,7 @@ $args = array(
 
 $products = new WP_Query( $args );
 if ( $products->have_posts() ) : ?>   
-        <div class="card__ukhod-wrap">
+        <div class="card__sliders-wrap">
             <h2 class="my_header__title">Популярные товары</h2>
             <div class="cart-popular-swiper swiper">
                 <ul class="products columns-3 swiper-wrapper"> 

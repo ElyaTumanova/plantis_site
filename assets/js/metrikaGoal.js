@@ -25,7 +25,6 @@ jQuery(document).ready(function() {
 	jQuery('.card__grid .card__ukhod-wrap .add_to_cart_button').click(function(){
 		yaCounter87781741.reachGoal('click-button-cart-ukhod-loop');
 		// ym(87781741, 'reachGoal', 'click-button-cart-ukhod-loop'); 
-		console.log('hi')
         return true;
 	});
 
