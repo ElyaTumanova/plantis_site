@@ -156,6 +156,9 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
     }
 });
 
+/*--------------------------------------------------------------
+# Cart
+--------------------------------------------------------------*/
 const swiper_cart_popular = new Swiper('.cart-popular-swiper', {
     pagination: {
         el: '.swiper-pagination',
