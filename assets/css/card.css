@@ -53,7 +53,7 @@
     flex-direction: column;
 }
 
-.card__ukhod-wrap {
+.card__grid .card__ukhod-wrap {
     grid-area: ukhod;
 }
 
