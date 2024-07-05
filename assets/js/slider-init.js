@@ -156,6 +156,47 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
     }
 });
 
+const swiper_cart_popular = new Swiper('.cart-popular-swiper', {
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        type: 'progressbar'
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    slidesPerView: 6,
+    slidesPerGroup: 1,
+    spaceBetween: 15,
+    loop: true,
+    freeMode: true,
+    breakpoints: {
+        320: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+            navigation: {
+                enabled: false,
+            },
+            freeMode: true,
+        },
+        768: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+            navigation: {
+                enabled: true,
+            },
+        },
+        1024: {
+            slidesPerView: 6,
+            spaceBetween: 15,
+            navigation: {
+                enabled: true,
+            },
+        }
+    }
+});
+
 /*--------------------------------------------------------------
 # About Us
 --------------------------------------------------------------*/
