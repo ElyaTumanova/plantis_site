@@ -15,11 +15,14 @@ add_action('woocommerce_before_cart', 'woocommerce_cart_totals', 20);
 
 remove_action( 'woocommerce_before_checkout_form', 'woocommerce_output_all_notices', 10 );
 
-add_action( 'woocommerce_cart_collaterals', 'plnt_cart_popular', 10);
+// популярные товары в корзине
+add_action( 'woocommerce_after_cart', 'plnt_cart_popular', 10);
+add_action( 'woocommerce_cart_is_empty', 'plnt_cart_popular',20);
 
 function plnt_cart_popular() {
 	echo do_shortcode( '[products limit="3" order="desc" orderby="price" visibility="featured"]' ); 
 }
+
 
 
 /*--------------------------------------------------------------
