@@ -29,6 +29,7 @@ function plnt_cart_popular_swiper_init() {
 	<script>
 		console.log('hi');
 		const swiper_cart_popular = new Swiper('.cart-popular-swiper', {
+			hashNavigation: true,
 			enabled: true,
 			pagination: {
 				el: '.swiper-pagination',
