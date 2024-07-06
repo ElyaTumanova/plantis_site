@@ -27,6 +27,7 @@ function plnt_cart_popular() {
 function plnt_cart_popular_swiper_init() {
 	?>
 	<script>
+		console.log('hi');
 		const swiper_cart_popular = new Swiper('.cart-popular-swiper', {
 			pagination: {
 				el: '.swiper-pagination',
@@ -67,6 +68,7 @@ function plnt_cart_popular_swiper_init() {
 				}
 			}
 		});
+		console.log('hello');
 	</script>
 	<?php
 }
