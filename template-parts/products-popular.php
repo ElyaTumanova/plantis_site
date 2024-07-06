@@ -9,7 +9,7 @@ $args = array(
     'post_type' => 'product',
     'ignore_sticky_posts' => 1,
     'no_found_rows' => 1,
-    'posts_per_page' => 12,
+    'posts_per_page' => 8,
     'orderby' => 'rand',
     'meta_query' => array( 
         array(
