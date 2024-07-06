@@ -40,7 +40,7 @@ function plnt_cart_popular_swiper_init() {
 			slidesPerView: 6,
 			slidesPerGroup: 1,
 			spaceBetween: 15,
-			loop: false,
+			loop: true,
 			freeMode: true,
 			breakpoints: {
 				320: {
