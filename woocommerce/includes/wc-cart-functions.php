@@ -70,6 +70,7 @@ function plnt_cart_popular_swiper_init() {
 			}
 		});
 		console.log('hello');
+		console.log(swiper_cart_popular.params);
 	</script>
 	<?php
 }
