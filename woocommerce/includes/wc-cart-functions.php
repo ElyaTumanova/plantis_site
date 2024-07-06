@@ -18,10 +18,58 @@ remove_action( 'woocommerce_before_checkout_form', 'woocommerce_output_all_notic
 // популярные товары в корзине
 add_action( 'woocommerce_after_cart', 'plnt_cart_popular', 10);
 add_action( 'woocommerce_cart_is_empty', 'plnt_cart_popular',30);
+add_action( 'woocommerce_cart_is_empty', 'plnt_cart_popular_swiper_init',40);
 
 function plnt_cart_popular() {
-	get_template_part('template-parts/products-ukhod'); 
+	get_template_part('template-parts/products-popular'); 
 };
+
+function plnt_cart_popular_swiper_init() {
+	?>
+	<script>
+		const swiper_cart_popular = new Swiper('.cart-popular-swiper', {
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+				type: 'progressbar'
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			slidesPerView: 6,
+			slidesPerGroup: 1,
+			spaceBetween: 15,
+			loop: false,
+			freeMode: true,
+			breakpoints: {
+				320: {
+					slidesPerView: 2,
+					spaceBetween: 10,
+					navigation: {
+						enabled: false,
+					},
+					freeMode: true,
+				},
+				768: {
+					slidesPerView: 4,
+					spaceBetween: 10,
+					navigation: {
+						enabled: true,
+					},
+				},
+				1024: {
+					slidesPerView: 6,
+					spaceBetween: 15,
+					navigation: {
+						enabled: true,
+					},
+				}
+			}
+		});
+	</script>
+	<?php
+}
 
 
 
