@@ -169,11 +169,11 @@ const swiper_cart_popular = new Swiper('.cart-popular-swiper', {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
-    slidesPerView: 4,
+    slidesPerView: 6,
     slidesPerGroup: 1,
     spaceBetween: 15,
     loop: false,
-    freeMode: true,
+    freeMode: false,
     breakpoints: {
         320: {
             slidesPerView: 2,
@@ -191,7 +191,7 @@ const swiper_cart_popular = new Swiper('.cart-popular-swiper', {
             },
         },
         1024: {
-            slidesPerView: 4,
+            slidesPerView: 6,
             spaceBetween: 15,
             navigation: {
                 enabled: true,
