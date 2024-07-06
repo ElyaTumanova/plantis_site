@@ -156,6 +156,8 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
     }
 });
 
+console.log(swiper_card_ukhod.params);
+
 /*--------------------------------------------------------------
 # Cart
 --------------------------------------------------------------*/
