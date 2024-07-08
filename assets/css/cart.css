@@ -237,16 +237,16 @@
 # Popular
 --------------------------------------------------------------*/
 
-.cart__popular-wrap {
+.popular-products-wrap {
     margin: 40px 0;
 }
 
-.cart__popular-wrap .my_header__title {
+.popular-products-wrap .my_header__title {
     font-size: 30px;
 }
 
 @media (max-width: 767px) {
-    .cart__popular-wrap .my_header__title {
+    .popular-products-wrap .my_header__title {
         font-size: 20px;
     }
 }

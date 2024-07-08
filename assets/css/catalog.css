@@ -816,11 +816,11 @@ ul.products {
 /* стили для swiper */
 
 .main__sale-gallery .swiper-wrapper, 
-.card__grid .swiper-wrapper, .cart__popular-wrap .swiper-wrapper {
+.card__grid .swiper-wrapper, .popular-products-wrap .swiper-wrapper {
     padding-bottom: 10px;
 }
 
-.main__sale-gallery .swiper-pagination, .card__grid .swiper-pagination, .cart__popular-wrap .swiper-pagination {
+.main__sale-gallery .swiper-pagination, .card__grid .swiper-pagination, .popular-products-wrap .swiper-pagination {
     bottom: 0;
     top: auto;
     height: 2px;
