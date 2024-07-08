@@ -281,6 +281,7 @@ function plnt_outofstock_info() {
         ?>
         <div class="card__outofstock-info">К сожалению, данный товар закончился!<br>Свяжитесь с нами удобным способом, и мы привезём его под заказ.</div>
         <?php
+        get_template_part('template-parts/social-media-btns');
     }
 }
 function plnt_outofstock_btn() {
