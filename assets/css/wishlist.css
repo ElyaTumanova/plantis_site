@@ -176,6 +176,7 @@ table.wishlist_table tbody td.product-add-to-cart {
 .yith-wcwl-share {
     width: 100%;
     max-width: 420px;
+    margin-bottom: 50px !important;
 }
 
 .yith-wcwl-share a {
@@ -193,9 +194,4 @@ table.wishlist_table tbody td.product-add-to-cart {
 .yith-wcwl-share a.telegram:hover {
     background: #595A5A;
     background-color: #595A5A;
-}
-
-
-.yith_wcwl_wishlist_footer .yith-wcwl-share {
-    margin-bottom: 50px !important;
 }
