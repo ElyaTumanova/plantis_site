@@ -536,12 +536,12 @@ input[type="number"] {
 .card__grid .wc-tabs {
     display: flex;
     /* border-bottom: solid 1px white; */
-    background-color: var(--gray);
+    /* background-color: var(--gray); */
 }
 
 .card__grid .wc-tabs li{
     padding: 5px;
-    border-bottom: solid 2px white;
+    /* border-bottom: solid 2px white; */
     flex: 1;
     text-transform: uppercase;
     font-size: 14px;
@@ -551,10 +551,10 @@ input[type="number"] {
     opacity: 50%;
 }
 
-.card__grid .wc-tabs li:not(:first-child):not(:last-child) {
+/* .card__grid .wc-tabs li:not(:first-child):not(:last-child) {
     border-left: solid 2px var(--background);
     border-right: solid 2px var(--background);
-}
+} */
 
 
 
@@ -569,7 +569,7 @@ input[type="number"] {
 }
 
 .card__grid .wc-tab {
-    background-color: var(--gray);
+    /* background-color: var(--gray); */
     padding: 5px;
 }
 
@@ -659,6 +659,9 @@ input[type="number"] {
     .card__grid .wc-tabs-wrapper {
         grid-area: descr; 
         display: block;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+        border-radius: 5px;
+
     }
 
     .card__grid .product__attributes {
