@@ -551,11 +551,7 @@ input[type="number"] {
     opacity: 50%;
 }
 
-.card__grid .wc-tabs li:not(:first-child) {
-    border-left: solid 1px white;
-    border-right: solid 1px white;
-}
-.card__grid .wc-tabs li:not(:last-child) {
+.card__grid .wc-tabs li:not(:first-child):not(:last-child) {
     border-left: solid 1px white;
     border-right: solid 1px white;
 }
