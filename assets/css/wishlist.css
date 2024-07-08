@@ -196,6 +196,6 @@ table.wishlist_table tbody td.product-add-to-cart {
 }
 
 
-.yith_wcwl_wishlist_footer>div {
+.yith_wcwl_wishlist_footer .yith-wcwl-share {
     margin-bottom: 50px;
 }
