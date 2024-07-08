@@ -30,7 +30,7 @@ $args = array(
 
 $products = new WP_Query( $args );
 if ( $products->have_posts() ) : ?>   
-        <div class="card__ukhod-wrap">
+        <div class="card__ukhod-wrap cart__popular-wrap">
             <h2 class="my_header__title">Популярные товары</h2>
             <div class="cart-popular-swiper swiper">
                 <ul class="products columns-3 swiper-wrapper"> 
