@@ -485,7 +485,7 @@ ul.products {
 }
 
 
-.card__ukhod-wrap .card__stockstatus, .card__sliders-wrap .card__stockstatus {
+.product-slider-wrap .card__stockstatus, .card__sliders-wrap .card__stockstatus {
     display: none;
   }
 
@@ -852,11 +852,6 @@ ul.products {
 /*--------------------------------------------------------------
 # Ukhod
 --------------------------------------------------------------*/
-
-.card__ukhod-wrap .add_to_cart_button, .card__ukhod-wrap .product_type_simple {
-    margin: 10px 0 15px;
-}
-
 .card__ukhod-wrap .my_header__title {
     margin-bottom: 20px;
 }
@@ -872,19 +867,29 @@ ul.products {
     width: fit-content;
 }
 
-.card__ukhod-wrap .swiper-button-prev, .card__ukhod-wrap .swiper-button-next {
+/*--------------------------------------------------------------
+# Product slider
+--------------------------------------------------------------*/
+
+.product-slider-wrap .add_to_cart_button, .product-slider-wrap .product_type_simple {
+    margin: 10px 0 15px;
+}
+
+
+
+.product-slider-wrap .swiper-button-prev, .product-slider-wrap .swiper-button-next {
     top: calc(50% - 45px);
 }
 
-.card__ukhod-wrap .woocommerce-loop-product__title {
+.product-slider-wrap .woocommerce-loop-product__title {
     font-size: 16px;
 }
 
-.card__ukhod-wrap .product {
+.product-slider-wrap .product {
     position: relative;
 }
 
-.card__ukhod-wrap .yith-wcwl-add-to-wishlist {
+.product-slider-wrap .yith-wcwl-add-to-wishlist {
     position: absolute;
     z-index: 10;
     margin: 0;
@@ -893,19 +898,19 @@ ul.products {
 }
 
 /* стили цены */
-.card__ukhod-wrap .product .price {
+.product-slider-wrap .product .price {
     font-size: 24px;
     line-height: 1.1;
     font-weight: 700;
 }
 
-.card__ukhod-wrap .sale .price {
+.product-slider-wrap .sale .price {
     font-size: 18px;
     font-weight: 500;
     line-height: 1.1;
 }
 
-.card__ukhod-wrap .sale ins .woocommerce-Price-amount {
+.product-slider-wrap .sale ins .woocommerce-Price-amount {
     font-size: 24px;
     line-height: 1.1;
     font-weight: 700;
@@ -914,23 +919,23 @@ ul.products {
 
 
 @media (max-width:767px) {
-    .card__ukhod-wrap .yith-wcwl-add-to-wishlist {
+    .product-slider-wrap .yith-wcwl-add-to-wishlist {
         position: absolute;
         top: 10px;
         right: 10px;
         border: none;
     }
 
-    .card__ukhod-wrap .yith-wcwl-add-button img {
+    .product-slider-wrap .yith-wcwl-add-button img {
         width: 25px;
         margin: 5px;
     }
 
-    .card__ukhod-wrap .add_to_cart_button, .card__ukhod-wrap .product_type_simple {
+    .product-slider-wrap .add_to_cart_button, .product-slider-wrap .product_type_simple {
         margin: 0;
     }
 
-    .card__ukhod-wrap .woocommerce-loop-product__title {
+    .product-slider-wrap .woocommerce-loop-product__title {
         font-size: 14px;
         font-weight: 700;
         line-height: 1.1;
@@ -938,7 +943,7 @@ ul.products {
         margin-top: 10px;
     }
 
-    .card__ukhod-wrap .woocommerce-product-details__short-description {
+    .product-slider-wrap .woocommerce-product-details__short-description {
         font-size: 14px;
         font-weight: 600;
         line-height: 1.3;
@@ -946,19 +951,19 @@ ul.products {
     }
 
     /* стили цены */
-    .card__ukhod-wrap .product .price {
+    .product-slider-wrap .product .price {
         font-size: 20px;
         line-height: 1.1;
         font-weight: 700;
     }
     
-    .card__ukhod-wrap .sale .price {
+    .product-slider-wrap .sale .price {
         font-size: 16px;
         font-weight: 500;
         line-height: 1.1;
     }
     
-    .card__ukhod-wrap .sale ins .woocommerce-Price-amount {
+    .product-slider-wrap .sale ins .woocommerce-Price-amount {
         font-size: 20px;
         line-height: 1.1;
         font-weight: 700;
@@ -967,9 +972,9 @@ ul.products {
 }
 
 
-.card__ukhod-wrap .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, 
-.card__ukhod-wrap .yith-wcwl-add-to-wishlist a.delete_item>img, 
-.card__ukhod-wrap .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
+.product-slider-wrap .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, 
+.product-slider-wrap .yith-wcwl-add-to-wishlist a.delete_item>img, 
+.product-slider-wrap .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
     max-width: 25px;
 }
 

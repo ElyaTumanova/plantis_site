@@ -30,7 +30,7 @@ $args = array(
 
 $products = new WP_Query( $args );
 if ( $products->have_posts() ) : ?>   
-        <div class="card__ukhod-wrap">
+        <div class="card__ukhod-wrap product-slider-wrap">
             <h2 class="my_header__title">Товары для ухода за растениями</h2>
             <div class="card-ukhod-swiper swiper">
                 <ul class="products columns-3 swiper-wrapper"> 
