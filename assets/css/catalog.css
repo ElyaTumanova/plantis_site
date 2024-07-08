@@ -826,7 +826,7 @@ ul.products {
     padding-bottom: 5px;
 }
 } */
-.main__sale-gallery .swiper-pagination, .card__grid .swiper-pagination {
+.main__sale-gallery .swiper-pagination, .card__grid .swiper-pagination, .card__ukhod-wrap .swiper-pagination {
     /* bottom: -3px; for bullets*/
 
     /* for progress bar */
@@ -834,6 +834,7 @@ ul.products {
     top: auto;
     height: 2px;
 }
+
 .main__sale-gallery .swiper-button-next {
     right: 6px;
 }
