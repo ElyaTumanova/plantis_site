@@ -639,11 +639,9 @@ input[type="number"] {
     }
 
     .card__grid_outofstock .card__outofstock-info {
-        padding-bottom: 0;
+        text-align: center;
     }
-
-    
-
+ 
     .card__description {
         grid-area: tohide;
         padding: 0;
@@ -667,7 +665,9 @@ input[type="number"] {
         margin-bottom: 0;
     }
 
-
+    .card__price-wrap .social-media__buttons {
+        margin: auto;
+    }
 
     /* #adaptive плашка для добавления в корзину*/
 
