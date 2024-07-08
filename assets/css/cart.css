@@ -232,21 +232,3 @@
 
     }
 }
-
-/*--------------------------------------------------------------
-# Popular
---------------------------------------------------------------*/
-
-.popular-products-wrap {
-    margin: 40px 0;
-}
-
-.popular-products-wrap .my_header__title {
-    font-size: 30px;
-}
-
-@media (max-width: 767px) {
-    .popular-products-wrap .my_header__title {
-        font-size: 20px;
-    }
-}
