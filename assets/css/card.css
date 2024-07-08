@@ -536,6 +536,7 @@ input[type="number"] {
 .card__grid .wc-tabs {
     display: flex;
     /* border-bottom: solid 1px white; */
+    background-color: var(--gray);
 }
 
 .card__grid .wc-tabs li{
@@ -549,6 +550,17 @@ input[type="number"] {
     text-align: center;
     opacity: 50%;
 }
+
+.card__grid .wc-tabs li:not(:first-child) {
+    border-left: solid 1px white;
+    border-right: solid 1px white;
+}
+.card__grid .wc-tabs li:not(:last-child) {
+    border-left: solid 1px white;
+    border-right: solid 1px white;
+}
+
+
 
 .card__grid .wc-tabs .active{
     /* background-color: var(--gray); */

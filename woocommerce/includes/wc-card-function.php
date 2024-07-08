@@ -53,7 +53,7 @@ add_filter( 'woocommerce_product_tabs', 'truemisha_new_product_tab', 25 );
 function truemisha_new_product_tab( $tabs ) {
  
 	$tabs[ 'delivery' ] = array(
-		'title' 	=> 'Доставка',
+		'title' 	=> 'Доставка и самовывоз',
 		'priority' 	=> 25,
 		'callback' 	=> 'truemisha_new_tab_content'
 	);
