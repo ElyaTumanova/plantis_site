@@ -69,6 +69,9 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
   }
 
 
+
+add_action('yith_wcwl_after_wishlist','plnt_cart_popular', 20)
+
 // перевод текстов
 
 function plnt_change_text_wish_1( $translated_text ) {
