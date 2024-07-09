@@ -557,16 +557,16 @@ input[type="number"] {
 }
 
 .card__grid .wc-tabs li:not(:first-child):not(:last-child) {
-    border-left: solid 2px var(--background);
-    border-right: solid 2px var(--background);
-    /* margin-right: 2px;
-    margin-left: 2px; */
+    /* border-left: solid 2px var(--background);
+    border-right: solid 2px var(--background); */
+    margin-right: 2px;
+    margin-left: 2px;
 }
 
-.card__grid .wc-tabs .active:not(:first-child):not(:last-child) {
+/* .card__grid .wc-tabs .active:not(:first-child):not(:last-child) {
     border-left: solid 2px var(--gray);
     border-right: solid 2px var(--gray);
-}
+} */
 
 .card__grid .wc-tabs .active{
     background-color: var(--background);
