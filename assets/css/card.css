@@ -559,7 +559,10 @@ input[type="number"] {
     border-right: solid 1px var(--background);
 }
 
-
+.card__grid .wc-tabs .active:not(:first-child):not(:last-child) {
+    border-left: solid 1px var(--background);
+    border-right: solid 1px var(--background);
+}
 
 .card__grid .wc-tabs .active{
     background-color: var(--background);
