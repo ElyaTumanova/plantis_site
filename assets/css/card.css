@@ -577,7 +577,9 @@ input[type="number"] {
     /* background-color: var(--gray); */
     padding: 7px;
     border-radius: 0 0 5px 5px;
-    border: solid 2px var(--gray);
+    border-bottom: solid 2px var(--gray);
+    border-right: solid 2px var(--gray);
+    border-left: solid 2px var(--gray);
 }
 
 .card__grid .wc-tab .delivery_table__header {
