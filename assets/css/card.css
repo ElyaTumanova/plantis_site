@@ -53,6 +53,10 @@
     flex-direction: column;
 }
 
+.card__price-wrap .social-media__buttons {
+    margin: auto;
+}
+
 .card__grid .card__ukhod-wrap {
     grid-area: ukhod;
 }
@@ -309,7 +313,6 @@
     font-size: 17px;
     min-width: 107px;
 }
-
 
 /* кнопка в коризину и инпут изменения количетсва */
 
@@ -689,10 +692,6 @@ input[type="number"] {
 
     .card__grid .up-sells, .card__grid .cross-sells {
         margin-bottom: 0;
-    }
-
-    .card__price-wrap .social-media__buttons {
-        margin: auto;
     }
 
     /* #adaptive плашка для добавления в корзину*/
