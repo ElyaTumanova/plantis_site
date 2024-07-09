@@ -567,12 +567,12 @@ input[type="number"] {
     border-right: solid 1px var(--gray);
 } */
 
-/* .card__grid .wc-tabs .active{
+.card__grid .wc-tabs .active{
     background-color: var(--background);
     opacity: 100%;
     border: solid 2px var(--gray);
     border-bottom: solid 1px var(--background);
-} */
+}
 
 .card__grid .wc-tabs a:hover, .card__grid .wc-tabsa:focus, .card__grid .wc-tabsa:active{
    text-decoration: none;
