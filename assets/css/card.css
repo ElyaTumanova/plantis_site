@@ -560,8 +560,8 @@ input[type="number"] {
 }
 
 .card__grid .wc-tabs .active:not(:first-child):not(:last-child) {
-    border-left: solid 1px var(--background);
-    border-right: solid 1px var(--background);
+    border-left: solid 1px var(--gray);
+    border-right: solid 1px var(--gray);
 }
 
 .card__grid .wc-tabs .active{
