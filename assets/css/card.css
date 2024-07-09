@@ -550,8 +550,9 @@ input[type="number"] {
     text-align: center;
     /* opacity: 50%; */
     border-radius: 5px 5px 0 0;
-    border-bottom: solid 2px var(--gray);
-    border-top: solid 2px var(--gray);
+    border: solid 2px var(--gray);
+    /* border-bottom: solid 2px var(--gray);
+    border-top: solid 2px var(--gray); */
     background-color: var(--gray);
 }
 
@@ -570,7 +571,6 @@ input[type="number"] {
 .card__grid .wc-tabs .active{
     background-color: var(--background);
     opacity: 100%;
-    border: solid 2px var(--gray);
     border-bottom: solid 1px var(--background);
 }
 
