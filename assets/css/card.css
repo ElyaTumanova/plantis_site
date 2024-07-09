@@ -551,6 +551,7 @@ input[type="number"] {
     /* opacity: 50%; */
     border-radius: 5px 5px 0 0;
     border: solid 1px var(--background);
+    border-bottom: solid 1px var(--gray);
     background-color: var(--gray);
 }
 
