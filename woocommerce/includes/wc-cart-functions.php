@@ -36,7 +36,7 @@ function plnt_empty_cart_btns() {
 			<a class="main__plants-button button" href="<?php echo get_term_link( $plants_cat_id, 'product_cat' );?>">Комнатные растения</a>
 			<a class="main__gorshki-button button" href="<?php echo get_term_link( $gorshki_cat_id, 'product_cat' );?>">Горшки и кашпо</a>
 		</div>
-	<?php;
+	<?php
 };
 
 
