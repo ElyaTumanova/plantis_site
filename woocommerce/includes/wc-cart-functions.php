@@ -24,6 +24,18 @@ function plnt_cart_popular() {
 };
 
 
+// empty cart message
+
+add_filter( 'wc_empty_cart_message', 'plnt_empty_cart_message_filter' );
+
+
+function plnt_empty_cart_message_filter( $message ){
+
+	$message = 'lala';
+
+	return $message;
+}
+
 /*--------------------------------------------------------------
 # CART FRAGMENTS 
 --------------------------------------------------------------*/
