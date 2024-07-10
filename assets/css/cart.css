@@ -240,7 +240,7 @@
     margin-bottom: 15px;
 }
 
-.cart-empty .woocommerce-info {
+.cart-empty {
     display: flex;
     flex-direction: column;
     align-items: center;
