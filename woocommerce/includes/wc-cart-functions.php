@@ -29,7 +29,14 @@ function plnt_cart_popular() {
 add_action( 'woocommerce_cart_is_empty', 'plnt_empty_cart_btns',5 );
 
 function plnt_empty_cart_btns() {
-	echo 'llalal';
+	global $plants_cat_id;
+	global $gorshki_cat_id;
+	?> 
+		<div class="cart__catalog-buttons-wrap">
+			<a class="main__plants-button button" href="<?php echo get_term_link( $plants_cat_id, 'product_cat' );?>">Комнатные растения</a>
+			<a class="main__gorshki-button button" href="<?php echo get_term_link( $gorshki_cat_id, 'product_cat' );?>">Горшки и кашпо</a>
+		</div>
+	<?php;
 };
 
 
