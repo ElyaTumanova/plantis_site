@@ -31,7 +31,7 @@ add_filter( 'wc_empty_cart_message', 'plnt_empty_cart_message_filter' );
 
 function plnt_empty_cart_message_filter( $message ){
 
-	$message = '<img src="https://plantis.shop/wp-content/uploads/2024/07/кактус.svg" alt="Empty cart"> lala';
+	$message = '<img class = cart__empty-image src="https://plantis.shop/wp-content/uploads/2024/07/кактус.svg" alt="Empty cart"> Ваша корзина пока пуста.';
 
 	return $message;
 }
