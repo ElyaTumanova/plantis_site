@@ -26,7 +26,7 @@ function plnt_cart_popular() {
 
 // empty cart
 
-add_action( 'woocommerce_cart_is_empty', 'plnt_empty_cart_btns',5 );
+add_action( 'woocommerce_cart_is_empty', 'plnt_empty_cart_btns',15 );
 
 function plnt_empty_cart_btns() {
 	global $plants_cat_id;
