@@ -73,10 +73,10 @@ function plnt_catalog_sidebar() {
 				echo do_shortcode('[br_filter_single filter_id=56538]'); // освещение //56538 //11115
 				echo do_shortcode('[br_filter_single filter_id=56539]'); // влажность //56539 //11116
 				//echo do_shortcode('[br_filter_single filter_id=12018]'); // автополив
-				if (is_category($gorshki_cat_id)) {
+				if (is_product_category($gorshki_cat_id)) {
 					echo do_shortcode('[br_filter_single filter_id=56540]'); // диаметр горшка //56540 //11117
 				}
-				if (is_category($treez_cat_id)) {
+				if (is_product_category($treez_cat_id)) {
 					echo do_shortcode('[br_filter_single filter_id=56545]'); // диаметр кашпо Treez //56545 //12017
 				}
 				echo do_shortcode('[br_filter_single filter_id=56532]'); // цвет //56532 //6108
