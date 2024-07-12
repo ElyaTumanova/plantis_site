@@ -50,8 +50,6 @@ function plnt_catalog_grid_end() {
 // // вывод меню и фильтров в сайд баре  #filters #berocket
 add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar',20);
 function plnt_catalog_sidebar() {
-	global $gorshki_cat_id;
-	global $treez_cat_id;
 	?>
     <div class="catalog__sidebar modal-mob">
 		<p class="catalog__sidebar-filters-heading">Фильтры</p>
@@ -66,6 +64,8 @@ function plnt_catalog_sidebar() {
 				<?php echo do_shortcode('[br_filter_single filter_id=56534]') //товары в наличии //56534 //6110?>
 			</div>
 			<?php 
+			global $gorshki_cat_id;
+			global $treez_cat_id;
 			echo do_shortcode('[br_filter_single filter_id=56529]'); // цена  \\56529 //6055
 			if (!is_shop()) {
 				echo do_shortcode('[br_filter_single filter_id=56530]'); // высота //56530 //6056
