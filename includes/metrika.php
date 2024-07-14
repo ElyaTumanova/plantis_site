@@ -13,39 +13,41 @@ add_action('woocommerce_after_main_content','plnt_metrika_card', 30);
 
 function plnt_metrika_card () {
     global $product;
-    $productName = $product->get_title();
-    $price = $product->get_price();
-    $parentCatId = check_category($product);
-    $catName = get_the_category_by_ID($parentCatId);
-
-        if (is_product()) {
-
-            ?> 
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    window.dataLayer.push(
-                        {
-                            "ecommerce": {
-                                "currencyCode": "RUB",
-                                "detail": {
-                                    "products" : [
-                                        {
-                                            "name":'<?php echo $productName?>',
-                                            "price":'<?php echo $price?>',
-                                            "category":'<?php echo $catName?>'
-                                        }
-                                    ]
+    if ($product) {
+        $productName = $product->get_title();
+        $price = $product->get_price();
+        $parentCatId = check_category($product);
+        $catName = get_the_category_by_ID($parentCatId);
+    
+            if (is_product()) {
+    
+                ?> 
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        window.dataLayer.push(
+                            {
+                                "ecommerce": {
+                                    "currencyCode": "RUB",
+                                    "detail": {
+                                        "products" : [
+                                            {
+                                                "name":'<?php echo $productName?>',
+                                                "price":'<?php echo $price?>',
+                                                "category":'<?php echo $catName?>'
+                                            }
+                                        ]
+                                    }
                                 }
                             }
-                        }
-                    )
-                    // console.log(JSON.stringify(window.dataLayer));
-                    
-                    return true; 
-                })
-            </script>
-            <?php
-        }
+                        )
+                        console.log(JSON.stringify(window.dataLayer));
+                        
+                        return true; 
+                    })
+                </script>
+                <?php
+            }
+    }
     }
 
 // YM action add
