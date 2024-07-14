@@ -392,6 +392,10 @@ ul.products {
 @media (max-width: 767px) {
     .catalog__grid .woocommerce-loop-product__title {
         margin-top: 10px;
+    }
+    
+    .catalog__grid .product_cat-ukhod .woocommerce-loop-product__title {
+        margin-top: 10px;
         /* max-width: 385px; */
         margin-bottom: 25px;
     }
