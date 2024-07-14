@@ -109,7 +109,14 @@
 .card__grid_outofstock #card_banner_peresadka, .card__grid_not-plant #card_banner_peresadka {
     grid-column: span 2;
 }
+
 .card__grid_treez #card_banner_peresadka {
+    /* grid-column: span 1;
+    grid-area: banner2; */
+    display: none;
+}
+
+.product_cat-kashpo-treez #card_banner_peresadka {
     /* grid-column: span 1;
     grid-area: banner2; */
     display: none;
