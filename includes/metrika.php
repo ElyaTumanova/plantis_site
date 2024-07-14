@@ -40,7 +40,7 @@ function plnt_metrika_card () {
                                 }
                             }
                         )
-                        console.log(JSON.stringify(window.dataLayer));
+                        //console.log(JSON.stringify(window.dataLayer));
                         
                         return true; 
                     })
