@@ -201,6 +201,7 @@ function plnt_price_wrap(){
         <div class = "card__add-to-cart-wrap">
             <?php
             woocommerce_template_single_price();
+            plnt_get_peresadka_add_to_cart();
             ?> 
             <div class="card__price-btns-wrap">
                 <?php
@@ -216,7 +217,6 @@ function plnt_price_wrap(){
         <?php
         plnt_outofstock_info();
         get_template_part('template-parts/delivery-info'); // delivery info for card
-        //plnt_get_peresadka_add_to_cart();
         ?>
     </div>
     <?php 
