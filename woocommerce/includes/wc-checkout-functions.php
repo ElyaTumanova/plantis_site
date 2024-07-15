@@ -243,7 +243,7 @@ function new_custom_checkout_field_script() {
                 } else {
 					if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
 				}
-            }, 500);
+            }, 400);
             });
 			
 			 $( 'form.checkout' ).on( 'change', ism, function() {
@@ -260,7 +260,7 @@ function new_custom_checkout_field_script() {
                 } else {
 					if (deliveryInterval) {deliveryInterval.classList.remove('d-none'); deliveryInterval.style.display='block'};
 				}
-            }, 500);
+            }, 400);
             });
 
             // When shipping method is changed (Live event)
