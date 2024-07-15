@@ -243,6 +243,9 @@ function new_custom_checkout_field_script() {
                 console.log($(ismc).val());	
                 console.log(deliveryInterval);
                 console.log(localPickup);
+                if( $(ismc).val() == localPickup){
+                    console.log('hihi')
+                };
 				if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
                 {
 					if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
