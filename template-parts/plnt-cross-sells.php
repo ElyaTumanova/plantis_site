@@ -35,7 +35,7 @@ if( !empty ($crosssell_ids) ){
                     'taxonomy' => 'product_cat',
                     'field' => 'slug',
                     'terms' => 'peresadka',
-                    'compare'   => 'NOT IN'
+                    'operator' => 'NOT IN'
                 )
             )
         );
