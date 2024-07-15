@@ -125,6 +125,7 @@ function new_custom_checkout_field_script() {
 
         inn_field = document.querySelector('#<?php echo $inn_field; ?>');
 
+        console.log(deliveryInterval);
 
         jQuery(function($){
             var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
@@ -161,6 +162,7 @@ function new_custom_checkout_field_script() {
                             $(selector+' label > .required').remove();
                     });
             }
+            console.log($(ismc).val());
 
             // Initializing at start after checkout init (Based on the chosen shipping method)
             setTimeout(function(){
@@ -228,7 +230,7 @@ function new_custom_checkout_field_script() {
 				};
             });
 
-            $( 'form.checkout' ).on( 'change', ism, function() {		
+            $( 'form.checkout' ).on( 'change', ism, function() {	
 				if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
                 {
                     if (deliveryDate) {deliveryDate.classList.add('d-none')};
@@ -237,7 +239,8 @@ function new_custom_checkout_field_script() {
 				};
             });
 			
-			 $( 'form.checkout' ).on( 'change', ism, function() {		
+			 $( 'form.checkout' ).on( 'change', ism, function() {	
+                console.log($(ismc).val());	
 				if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
                 {
 					if (deliveryInterval) {deliveryInterval.classList.add('d-none')};

@@ -216,7 +216,7 @@ function plnt_price_wrap(){
         <?php
         plnt_outofstock_info();
         get_template_part('template-parts/delivery-info'); // delivery info for card
-        plnt_get_peresadka_add_to_cart();
+        //plnt_get_peresadka_add_to_cart();
         ?>
     </div>
     <?php 
