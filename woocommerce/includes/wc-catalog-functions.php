@@ -237,9 +237,6 @@ add_action('woocommerce_before_shop_loop_item_title','truemisha_sale_badge', 5);
 remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
 add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_add_to_cart', 30);
 
-// // уведомление о том, что в корзину добавили максимальное кол-во товара
-add_action('woocommerce_before_shop_loop_item_title', 'plnt_cart_notice', 40);
-
 // // меняем текст кнопки в корзину, если товар не в наличии
 
 add_filter('woocommerce_product_add_to_cart_text','plnt_change_add_to_cart_text');
