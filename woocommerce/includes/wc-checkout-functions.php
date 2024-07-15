@@ -235,7 +235,7 @@ function new_custom_checkout_field_script() {
 				if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
                 {
                     console.log('true');
-                    if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'};
+                    if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'}; console.log('hihi');
                     console.log(deliveryDate);	
                 } else {
                     console.log('false');
