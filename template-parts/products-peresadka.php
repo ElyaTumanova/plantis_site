@@ -45,7 +45,7 @@ if( !empty ($crosssell_ids) ){
         echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
         ?>
             <div class="card__peresadka">
-                
+            <a href="#" class="button product_type_simple add_to_cart_button ajax_add_to_cart"><?php get_the_title() ?></a>
             </div>
 
         <?php endif;

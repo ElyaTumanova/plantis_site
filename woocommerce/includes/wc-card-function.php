@@ -222,10 +222,7 @@ function plnt_price_wrap(){
     <?php 
 };
 
-function plnt_get_peresadka_add_to_cart() {
-    global $product;
-    $url = $product->add_to_cart_url();
-    echo '<a href="'.$url.'" class="button product_type_simple add_to_cart_button ajax_add_to_cart">Пересадка</a>';
+function plnt_get_peresadka_add_to_cart() {    
     get_template_part('template-parts/products-peresadka');
 };
 
