@@ -40,7 +40,7 @@ if( !empty ($crosssell_ids) ){
         );
 
         $products = new WP_Query( $args );
-        if ( $products->have_posts() ) : $products->the_post() 
+        if ( $products->have_posts() ) : $products->the_post(); 
         
         echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
         ?>
