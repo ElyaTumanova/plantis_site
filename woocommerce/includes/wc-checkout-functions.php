@@ -230,19 +230,27 @@ function new_custom_checkout_field_script() {
             });
 
             $( 'form.checkout' ).on( 'change', ism, function() {
-                console.log('date form');
-                console.log(deliveryDate);	
-				if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
+                // console.log('date form');
+                // console.log(deliveryDate);	
+				// if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
+                // {
+                //     console.log('true');
+                //     if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'}; console.log('hihi');
+                //     console.log(deliveryDate);	
+                // } else {
+                //     console.log('false');
+				// 	if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
+                //     console.log(deliveryDate);
+				// };
+                // console.log(deliveryDate);	
+                setTimeout(function(){
+                     if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
                 {
-                    console.log('true');
-                    if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'}; console.log('hihi');
-                    console.log(deliveryDate);	
+                    if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'};
                 } else {
-                    console.log('false');
 					if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
-                    console.log(deliveryDate);
-				};
-                console.log(deliveryDate);	
+				}
+            }, 500);
             });
 			
 			 $( 'form.checkout' ).on( 'change', ism, function() {
