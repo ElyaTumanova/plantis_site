@@ -40,10 +40,11 @@ if( !empty ($crosssell_ids) ){
         );
 
         $products = new WP_Query( $args );
-        if ( $products->have_posts() ) : $products->the_post() ?>
-
+        if ( $products->have_posts() ) : echo $products->the_post() 
+             
+        ?>
             <div class="card__peresadka">
-                <?php wc_get_template_part( 'content', 'product' ); ?>>
+                
             </div>
 
         <?php endif;
