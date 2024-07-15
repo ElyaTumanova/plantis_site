@@ -29,6 +29,14 @@ if( !empty ($crosssell_ids) ){
                     'value'     => 'outofstock',
                     'compare'   => 'NOT IN'
                 )
+            ),
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'product_cat',
+                    'field' => 'slug',
+                    'terms' => 'peresadka',
+                    'compare'   => 'NOT IN'
+                )
             )
         );
 
