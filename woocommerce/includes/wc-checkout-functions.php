@@ -162,7 +162,6 @@ function new_custom_checkout_field_script() {
                             $(selector+' label > .required').remove();
                     });
             }
-            console.log($(ismc).val());
 
             // Initializing at start after checkout init (Based on the chosen shipping method)
             setTimeout(function(){
