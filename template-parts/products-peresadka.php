@@ -42,7 +42,8 @@ if( !empty ($crosssell_ids) ){
         $products = new WP_Query( $args );
         if ( $products->have_posts() ) : $products->the_post(); 
         
-        echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
+        //echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
+        echo $post->ID;
         ?>
             <div class="card__peresadka">
             <a href="#" class="button product_type_simple add_to_cart_button ajax_add_to_cart"><?php echo get_the_title() ?></a>
