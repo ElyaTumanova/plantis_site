@@ -216,15 +216,15 @@ function plnt_price_wrap(){
         <?php
         plnt_outofstock_info();
         get_template_part('template-parts/delivery-info'); // delivery info for card
+        plnt_get_peresadka_add_to_cart();
         ?>
     </div>
     <?php 
 };
 
-function plnt_cart_notice() {   // уведомление о том, что в корзину добавили максимальное кол-во товара, добавляется аяксом в add-to-cart.js
-    ?>
-        <div class='cart-notice'></div> 
-    <?php
+function plnt_get_peresadka_add_to_cart() {
+    global $product;
+    $url = $product->add_to_cart_url();
 }
 
 function plnt_get_add_to_card() {
@@ -244,7 +244,6 @@ function plnt_get_add_to_card() {
         if ($product->get_stock_status() ==='instock') {
             plnt_card_wishlist_btn();
         }
-        // plnt_cart_notice();
         ?></div>
         <?php
     } 
