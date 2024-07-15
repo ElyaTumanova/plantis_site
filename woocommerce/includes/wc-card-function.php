@@ -225,7 +225,9 @@ function plnt_price_wrap(){
 function plnt_get_peresadka_add_to_cart() {
     global $product;
     $url = $product->add_to_cart_url();
-    echo $url;
+    ?> <a href="<?php echo site_url()?>/" class="" role="button"><?php
+
+    
 }
 
 function plnt_get_add_to_card() {
