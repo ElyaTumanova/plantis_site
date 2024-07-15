@@ -201,7 +201,6 @@ function plnt_price_wrap(){
         <div class = "card__add-to-cart-wrap">
             <?php
             woocommerce_template_single_price();
-            plnt_get_peresadka_add_to_cart();
             ?> 
             <div class="card__price-btns-wrap">
                 <?php
@@ -217,6 +216,7 @@ function plnt_price_wrap(){
         <?php
         plnt_outofstock_info();
         get_template_part('template-parts/delivery-info'); // delivery info for card
+        plnt_get_peresadka_add_to_cart();
         ?>
     </div>
     <?php 
@@ -225,7 +225,7 @@ function plnt_price_wrap(){
 function plnt_get_peresadka_add_to_cart() {
     global $product;
     $url = $product->add_to_cart_url();
-    echo '<a href="'.$url.'" class="button" role="button"> </a>';
+    echo '<a href="'.$url.'" class="button" role="button">Пересадка</a>';
 };
 
 function plnt_get_add_to_card() {
