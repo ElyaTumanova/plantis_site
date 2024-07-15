@@ -238,7 +238,9 @@ function new_custom_checkout_field_script() {
                     if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'};
                     console.log(deliveryDate);	
                 } else {
+                    console.log('false');
 					if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
+                    console.log(deliveryDate);
 				};
                 console.log(deliveryDate);	
             });
