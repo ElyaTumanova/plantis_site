@@ -242,9 +242,11 @@ function new_custom_checkout_field_script() {
                 {
                     console.log('true');
                     if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'};
+                    console.log(deliveryDate);	
                 } else {
 					if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
 				};
+                console.log(deliveryDate);	
             });
 			
 			 $( 'form.checkout' ).on( 'change', ism, function() {
