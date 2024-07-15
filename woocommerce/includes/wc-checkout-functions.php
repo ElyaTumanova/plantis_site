@@ -125,8 +125,6 @@ function new_custom_checkout_field_script() {
 
         inn_field = document.querySelector('#<?php echo $inn_field; ?>');
 
-        console.log(deliveryDate);
-
         jQuery(function($){
             var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
                 csa = 'input#ship-to-different-address-checkbox',
@@ -232,7 +230,7 @@ function new_custom_checkout_field_script() {
             $( 'form.checkout' ).on( 'change', ism, function() {
 				// if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
                 // {
-                //     if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'}; console.log('hihi');
+                //     if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'};
                 // } else {
 				// 	if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
 				// };
