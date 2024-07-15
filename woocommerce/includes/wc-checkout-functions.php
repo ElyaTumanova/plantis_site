@@ -203,11 +203,7 @@ function new_custom_checkout_field_script() {
                 } else {
 					if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
 				}
-<<<<<<< HEAD
-            }, 150);
-=======
             }, 1000);
->>>>>>> 887b5292c191703dd206df3c428961c15741211c
 			
 			setTimeout(function(){
                      if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
