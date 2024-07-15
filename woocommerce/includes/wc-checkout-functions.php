@@ -125,7 +125,7 @@ function new_custom_checkout_field_script() {
 
         inn_field = document.querySelector('#<?php echo $inn_field; ?>');
 
-        console.log(deliveryInterval);
+        console.log(deliveryDate);
 
         jQuery(function($){
             var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
@@ -194,6 +194,9 @@ function new_custom_checkout_field_script() {
             }, 100);
 			
 			setTimeout(function(){
+                console.log('deliveryDate timeout');	
+                console.log($(ismc).val());	
+                console.log(deliveryDate);
                      if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
                 {
                     if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'};
@@ -231,6 +234,9 @@ function new_custom_checkout_field_script() {
             });
 
             $( 'form.checkout' ).on( 'change', ism, function() {	
+                console.log('deliveryDate form');	
+                console.log($(ismc).val());	
+                console.log(deliveryDate);
 				if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
                 {
                     if (deliveryDate) {deliveryDate.classList.add('d-none');deliveryDate.style.display='none'};
@@ -240,8 +246,8 @@ function new_custom_checkout_field_script() {
             });
 			
 			 $( 'form.checkout' ).on( 'change', ism, function() {
-                console.log($(ismc).val());	
-                console.log(deliveryInterval);	
+                // console.log($(ismc).val());	
+                // console.log(deliveryInterval);	
 				if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
                 {
 					if (deliveryInterval) {deliveryInterval.classList.add('d-none');deliveryInterval.style.display='none'};
