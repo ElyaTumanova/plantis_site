@@ -230,19 +230,12 @@ function new_custom_checkout_field_script() {
             });
 
             $( 'form.checkout' ).on( 'change', ism, function() {
-                // console.log('date form');
-                // console.log(deliveryDate);	
 				// if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
                 // {
-                //     console.log('true');
                 //     if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'}; console.log('hihi');
-                //     console.log(deliveryDate);	
                 // } else {
-                //     console.log('false');
 				// 	if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
-                //     console.log(deliveryDate);
 				// };
-                // console.log(deliveryDate);	
                 setTimeout(function(){
                      if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
                 {
@@ -254,16 +247,20 @@ function new_custom_checkout_field_script() {
             });
 			
 			 $( 'form.checkout' ).on( 'change', ism, function() {
-                // console.log('interval form');
-                // console.log($(ismc).val());
-                // console.log(deliveryInterval);
-
-				if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
+				// if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
+                // {
+				// 	if (deliveryInterval) {deliveryInterval.classList.add('d-none'); deliveryInterval.style.display='none'};
+                // } else {
+				// 	if (deliveryInterval) {deliveryInterval.classList.remove('d-none'); deliveryInterval.style.display='block'};
+				// }
+                setTimeout(function(){
+                     if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
                 {
 					if (deliveryInterval) {deliveryInterval.classList.add('d-none'); deliveryInterval.style.display='none'};
                 } else {
 					if (deliveryInterval) {deliveryInterval.classList.remove('d-none'); deliveryInterval.style.display='block'};
 				}
+            }, 500);
             });
 
             // When shipping method is changed (Live event)
