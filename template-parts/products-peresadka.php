@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // global $product;
 $product_id = $args[ 'product_id' ];
-echo 'hihihi'.$product_id.'hihihi';
+echo 'hihihi'.$product_id.'hohoho';
 $product = wc_get_product( $product_id );
 
 $crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
