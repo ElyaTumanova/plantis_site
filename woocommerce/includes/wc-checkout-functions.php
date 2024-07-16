@@ -190,23 +190,23 @@ function new_custom_checkout_field_script() {
                 }        
             }, 100);
 			
-			// setTimeout(function(){
-            //          if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
-            //     {
-            //         if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'};
-            //     } else {
-			// 		if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
-			// 	}
-            // }, 500);
+			setTimeout(function(){
+                     if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
+                {
+                    if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'};
+                } else {
+					if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
+				}
+            }, 500);
 			
-			// setTimeout(function(){
-            //          if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
-            //     {
-			// 		if (deliveryInterval) {deliveryInterval.classList.add('d-none'); deliveryInterval.style.display='none'};
-            //     } else {
-			// 		if (deliveryInterval) {deliveryInterval.classList.remove('d-none'); deliveryInterval.style.display='block'};
-			// 	}
-            // }, 500);
+			setTimeout(function(){
+                     if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
+                {
+					if (deliveryInterval) {deliveryInterval.classList.add('d-none'); deliveryInterval.style.display='none'};
+                } else {
+					if (deliveryInterval) {deliveryInterval.classList.remove('d-none'); deliveryInterval.style.display='block'};
+				}
+            }, 500);
 
             setTimeout(function(){
                      if( $(payment_method_checked).val() == payment_inn_chekbox) // Chosen "INN payment" (Show "INN")
@@ -227,51 +227,41 @@ function new_custom_checkout_field_script() {
 				};
             });
 
-            // $( 'form.checkout' ).on( 'change', ism, function() {
-			// 	// if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
-            //     // {
-            //     //     if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'};
-            //     // } else {
-			// 	// 	if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
-			// 	// };
+            $( 'form.checkout' ).on( 'change', ism, function() {
+				// if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
+                // {
+                //     if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'};
+                // } else {
+				// 	if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
+				// };
 
-            //     setTimeout(function(){
-            //          if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
-            //     {
-            //         if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'};
-            //     } else {
-			// 		if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
-			// 	}
-            //     }, 500);
-            // });
+                setTimeout(function(){
+                     if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
+                {
+                    if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'};
+                } else {
+					if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
+				}
+                }, 500);
+            });
 			
-			//  $( 'form.checkout' ).on( 'change', ism, function() {
-			// 	// if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
-            //     // {
-			// 	// 	if (deliveryInterval) {deliveryInterval.classList.add('d-none'); deliveryInterval.style.display='none'};
-            //     // } else {
-			// 	// 	if (deliveryInterval) {deliveryInterval.classList.remove('d-none'); deliveryInterval.style.display='block'};
-			// 	// }
+			 $( 'form.checkout' ).on( 'change', ism, function() {
+				// if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
+                // {
+				// 	if (deliveryInterval) {deliveryInterval.classList.add('d-none'); deliveryInterval.style.display='none'};
+                // } else {
+				// 	if (deliveryInterval) {deliveryInterval.classList.remove('d-none'); deliveryInterval.style.display='block'};
+				// }
                 
-            //     setTimeout(function(){
-            //          if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
-            //     {
-			// 		if (deliveryInterval) {deliveryInterval.classList.add('d-none'); deliveryInterval.style.display='none'};
-            //     } else {
-			// 		if (deliveryInterval) {deliveryInterval.classList.remove('d-none'); deliveryInterval.style.display='block'};
-			// 	}
-            //     }, 500);
-            // });
-
-            //     // setTimeout(function(){
-            //     //      if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
-            //     // {
-			// 	// 	if (deliveryInterval) {deliveryInterval.classList.add('d-none'); deliveryInterval.style.display='none'};
-            //     // } else {
-			// 	// 	if (deliveryInterval) {deliveryInterval.classList.remove('d-none'); deliveryInterval.style.display='block'};
-			// 	// }
-            //     // }, 500);
-            // });
+                setTimeout(function(){
+                     if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
+                {
+					if (deliveryInterval) {deliveryInterval.classList.add('d-none'); deliveryInterval.style.display='none'};
+                } else {
+					if (deliveryInterval) {deliveryInterval.classList.remove('d-none'); deliveryInterval.style.display='block'};
+				}
+                }, 500);
+            });
 
             // When shipping method is changed (Live event)
             $( 'form.checkout' ).on( 'change', ism, function() {
