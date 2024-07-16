@@ -23,8 +23,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $product;
 global $peresadka_cat_id;
 $parentCat = check_category ($product);
-echo $parentCat;
-echo $peresadka_cat_id;
 
 // added
 if( $product->is_type( 'simple' )
@@ -41,7 +39,7 @@ else {
 	if ($parentCat === $peresadka_cat_id) 
 	{
 		$url = $product->add_to_cart_url();
-		$text = 'Лалалал';
+		$text = $product->get_title();
 		$class = isset( $args['class'] ) ? $args['class'] : 'button';
 	} 
 	else {
