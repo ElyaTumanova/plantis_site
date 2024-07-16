@@ -42,9 +42,9 @@ if( !empty ($crosssell_ids) ){
         $products = new WP_Query( $args );
         if ( $products->have_posts() ) : $products->the_post(); 
 
-        add_filter( 'woocommerce_product_single_add_to_cart_text', 'truemisha_single_product_btn_text' );
+        add_filter( 'woocommerce_product_single_add_to_cart_text', 'plnt_single_product_btn_text' );
  
-        function truemisha_single_product_btn_text( $text ) {
+        function plnt_single_product_btn_text( $text ) {
         
            
                 $text = 'лалала';
