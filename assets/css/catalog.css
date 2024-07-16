@@ -335,7 +335,7 @@ ul.products {
 }
 
 .catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple {
-    margin: 10px 0 0;
+    margin: 10px 0 10px;
 }
 
 .catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple:active, .catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple:focus {

@@ -402,22 +402,6 @@
     font-size: 0;
 }
 
-/* уведомление о том, что в корзину добавили максимальное кол-во товара */
-
-.cart-notice {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--red-color);
-}
-
-.add-to-cart-wrap .cart-notice {
-    margin-top: 10px;
-    position: absolute;
-}
-.catalog__products-wrap .cart-notice {
-    margin-bottom: 10px;
-}
-
 /* скрываем лишнее */
 
 /* скрываем кол-во товаров в наличии */
