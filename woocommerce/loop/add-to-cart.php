@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $product;
 global $peresadka_cat_id;
 $parentCat = check_category ($product);
-echo 'hi cart';
+
 // added
 if( $product->is_type( 'simple' )
 && $product->is_purchasable()
