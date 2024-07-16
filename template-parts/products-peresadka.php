@@ -42,9 +42,9 @@ if( !empty ($crosssell_ids) ){
         );
 
         $products = new WP_Query( $args );
+        echo count($products);
         if ( $products->have_posts() ) : $products->the_post(); 
             woocommerce_template_loop_add_to_cart();
-            echo 'hi cart';
             woocommerce_quantity_input();
         endif;
     }
