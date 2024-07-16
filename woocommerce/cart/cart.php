@@ -120,7 +120,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						<?php 
 						get_template_part('template-parts/products-peresadka',
 								array( // массив с параметрами
-									'product' => $_product
+									'product_id' => $product_id
 								)); 
 						?>
 						</div>

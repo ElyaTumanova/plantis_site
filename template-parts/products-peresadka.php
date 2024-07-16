@@ -4,8 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // global $product;
-$product = $args[ 'product' ];
-echo $product;
+$product_id = $args[ 'product_id' ];
+echo $product_id;
+$product = wc_get_product( $product_id );
+
 $crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
 
 if( !empty ($crosssell_ids) ){
