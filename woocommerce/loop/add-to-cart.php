@@ -41,7 +41,7 @@ else {
 		$url = $product->add_to_cart_url();
 		$text = $product->get_title();
 		$class = isset( $args['class'] ) ? $args['class'] : 'button';
-		echo 'hihi'
+		echo 'hihi';
 	} 
 	else {
 		$url = $product->add_to_cart_url();
