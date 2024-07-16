@@ -41,29 +41,21 @@ if( !empty ($crosssell_ids) ){
 
         $products = new WP_Query( $args );
         if ( $products->have_posts() ) : $products->the_post(); 
-
-        add_filter( 'woocommerce_product_single_add_to_cart_text', 'plnt_single_product_btn_text' );
- 
-        function plnt_single_product_btn_text( $text ) {
-        
-           
-                $text = 'лалала';
-
-        
-            return $text;
-        
-        }
         
         //echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
         //echo $post->ID;
         ?>
             <div class="card__peresadka">
             <?php woocommerce_template_loop_add_to_cart();?>
-            <!-- <a href="<?php// echo get_site_url()?>/?add-to-cart=<?php //echo $post->ID?>" data-quantity="1" class="button"><?php //echo get_the_title() ?></a> -->
             </div>
 
         <?php endif;
 
+    }
+
+    add_filter( 'woocommerce_product_single_add_to_cart_text', 'woo_custom_cart_button_txt' ); // 
+    function woo_custom_cart_button_txt() {
+            return __( 'Новая подпись кнопки В корзину', 'woocommerce' );
     }
 
     wp_reset_query();
