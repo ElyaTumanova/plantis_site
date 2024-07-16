@@ -258,3 +258,10 @@
     margin-right: auto;
     margin-left: auto;
 }
+
+
+/* peresadka */
+
+.woocommerce-cart-form .cart__peresadka .quantity {
+    display: none;
+}
