@@ -3,15 +3,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-global $product;
-// $product_id = $args[ 'product_id' ];
-// echo 'hihihi'.$product_id.'hohoho';
-// $product = wc_get_product( $product_id );
-echo $product;
+//global $product;
+$product_id = $args[ 'product_id' ];
+echo 'hihihi'.$product_id.'hohoho';
+$product = wc_get_product( $product_id );
 
-$crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
+//$crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
+$crosssell_ids = get_post_meta( $product_id, '_crosssell_ids' );
+
 
 if( !empty ($crosssell_ids) ){
+    echo 'true';
 
     $crosssell_ids = $crosssell_ids[0];
     
