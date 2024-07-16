@@ -51,9 +51,18 @@ if( !empty ($crosssell_ids) ){
 
         <?php endif;
 
+        add_filter( 'woocommerce_loop_add_to_cart_args', 'wp_kama_woocommerce_loop_add_to_cart_args_filter', 10, 2 );
+
+        function wp_kama_woocommerce_loop_add_to_cart_args_filter( $array, $product ){
+
+            array(
+                'attributes' => array(
+                    'data-quantity'  => '120',
+                ))
+            return $array;
+        }
     }
 
-    
 
     wp_reset_query();
     wp_reset_postdata();
