@@ -116,6 +116,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 							echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'woocommerce' ) . '</p>', $product_id ) );
 						}
 						?>
+						<!-- peresadka -->
 						<div class="cart__peresadka">
 						<?php 
 						get_template_part('template-parts/products-peresadka',null,

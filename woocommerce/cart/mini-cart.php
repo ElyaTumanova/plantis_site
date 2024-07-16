@@ -76,6 +76,17 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 					<?php endif; ?>
 					<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					<?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $cart_item['quantity'], $product_price ) . '</span>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						
+					<!-- peresadka -->
+					<div class="cart__peresadka">
+						<?php 
+						get_template_part('template-parts/products-peresadka',null,
+								array( // массив с параметрами
+									'product_id' => $product_id
+								)); 
+						?>
+					</div>
+
 				</li>
 				<?php
 			}
