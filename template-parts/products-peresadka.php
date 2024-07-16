@@ -56,6 +56,7 @@ if( !empty ($crosssell_ids) ){
         function wp_kama_woocommerce_loop_add_to_cart_args_filter( $array, $product ){
 
             array(
+                'quantity'   => 120,
                 'attributes' => array(
                     'data-quantity'  => '120',
                 ));
