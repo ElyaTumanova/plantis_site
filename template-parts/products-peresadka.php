@@ -44,10 +44,10 @@ if( !empty ($crosssell_ids) ){
 
         $products = new WP_Query( $args );
         if ( $products->have_posts() ) : $products->the_post(); 
-        ?>
-            <?php woocommerce_template_loop_add_to_cart();
-            woocommerce_quantity_input();?>
-        <?php endif;
+        echo the_post();
+            woocommerce_template_loop_add_to_cart();
+            woocommerce_quantity_input();
+        endif;
     }
     wp_reset_query();
     wp_reset_postdata();
