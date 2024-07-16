@@ -122,7 +122,6 @@ do_action( 'woocommerce_before_cart' ); ?>
 								array( // массив с параметрами
 									'product_id' => $product_id
 								)); 
-								woocommerce_quantity_input();
 						?>
 						</div>
 						</td>
