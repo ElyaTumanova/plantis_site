@@ -17,7 +17,7 @@ if( !empty ($crosssell_ids) ){
     $crosssell_ids = $crosssell_ids[0];
 
     if(count($crosssell_ids)>0){
-        echo 'true';
+        echo $crosssell_ids;
 
         $args = array(
             'post_type' => 'product',
@@ -43,7 +43,6 @@ if( !empty ($crosssell_ids) ){
         );
 
         $products = new WP_Query( $args );
-        echo $products;
         if ( $products->have_posts() ) : $products->the_post(); 
         ?>
             <?php woocommerce_template_loop_add_to_cart();
