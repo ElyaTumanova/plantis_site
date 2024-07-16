@@ -21,6 +21,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 global $product;
+global $peresadka_cat_id;
+$parentCat = check_category ($product);
 
 // added
 if( $product->is_type( 'simple' )
@@ -34,9 +36,17 @@ if( $product->is_type( 'simple' )
     $class = 'button product_type_simple remove_from_cart_button added';
 }
 else {
-    $url = $product->add_to_cart_url();
-    $text = $product->add_to_cart_text();
-    $class = isset( $args['class'] ) ? $args['class'] : 'button';
+	if ($parentCat === $peresadka_cat_id) 
+	{
+		$url = $product->add_to_cart_url();
+		$text = 'Лалалал';
+		$class = isset( $args['class'] ) ? $args['class'] : 'button';
+	} 
+	else {
+		$url = $product->add_to_cart_url();
+		$text = $product->add_to_cart_text();
+		$class = isset( $args['class'] ) ? $args['class'] : 'button';
+	}
 }
 //
 
