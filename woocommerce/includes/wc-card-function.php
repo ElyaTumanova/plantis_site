@@ -224,7 +224,7 @@ function plnt_price_wrap(){
 
 function plnt_get_peresadka_add_to_cart() {
     global $product; 
-    $product_id -> get_id();
+    $product_id = $product->get_id();
     ?><div class="card__peresadka"><?php 
     get_template_part('template-parts/products-peresadka', 
         array( // массив с параметрами
