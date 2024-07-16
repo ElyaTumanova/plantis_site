@@ -222,8 +222,10 @@ function plnt_price_wrap(){
     <?php 
 };
 
-function plnt_get_peresadka_add_to_cart() {    
+function plnt_get_peresadka_add_to_cart() {   
+    ?><div class="card__peresadka"><?php 
     get_template_part('template-parts/products-peresadka');
+    ?></div><?php
 };
 
 function plnt_get_add_to_card() {

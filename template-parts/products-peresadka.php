@@ -42,12 +42,8 @@ if( !empty ($crosssell_ids) ){
         $products = new WP_Query( $args );
         if ( $products->have_posts() ) : $products->the_post(); 
         ?>
-            <div class="card__peresadka">
             <?php woocommerce_template_loop_add_to_cart();
             woocommerce_quantity_input();?>
-            
-            </div>
-
         <?php endif;
     }
     wp_reset_query();
