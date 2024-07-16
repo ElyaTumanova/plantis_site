@@ -44,6 +44,10 @@ if( !empty ($crosssell_ids) ){
         
         //echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
         //echo $post->ID;
+        add_filter( 'woocommerce_product_single_add_to_cart_text', 'woo_custom_cart_button_txt' ); // 
+        function woo_custom_cart_button_txt() {
+                return __( 'Новая подпись кнопки В корзину', 'woocommerce' );
+        }
         ?>
             <div class="card__peresadka">
             <?php woocommerce_template_loop_add_to_cart();?>
@@ -53,10 +57,7 @@ if( !empty ($crosssell_ids) ){
 
     }
 
-    add_filter( 'woocommerce_product_single_add_to_cart_text', 'woo_custom_cart_button_txt' ); // 
-    function woo_custom_cart_button_txt() {
-            return __( 'Новая подпись кнопки В корзину', 'woocommerce' );
-    }
+    
 
     wp_reset_query();
     wp_reset_postdata();
