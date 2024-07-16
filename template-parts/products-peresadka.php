@@ -5,7 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // global $product;
 $product = $args[ 'product' ];
-$is_out_of_stock = $product->get_stock_status() ==='outofstock';
+echo $product;
+//$is_out_of_stock = $product->get_stock_status() ==='outofstock';
 
 
 $crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
