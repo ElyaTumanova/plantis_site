@@ -49,18 +49,6 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 // FOR DEV
 
-add_filter( 'woocommerce_loop_add_to_cart_args', 'wp_kama_woocommerce_loop_add_to_cart_args_filter', 10, 2 );
-
-        function wp_kama_woocommerce_loop_add_to_cart_args_filter( $array, $product ){
-
-            array(
-                'quantity'   => 120,
-                'attributes' => array(
-                    'data-quantity'  => '120',
-                ));
-            return $array;
-        }
-
 function plnt_check_page() {
 	// global $gorshki_cat_id;
 	// if ( term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) ) {

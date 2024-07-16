@@ -41,18 +41,15 @@ if( !empty ($crosssell_ids) ){
 
         $products = new WP_Query( $args );
         if ( $products->have_posts() ) : $products->the_post(); 
-        
-        //echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
-        //echo $post->ID;
         ?>
             <div class="card__peresadka">
-            <?php woocommerce_template_loop_add_to_cart();?>
+            <?php woocommerce_template_loop_add_to_cart();
+            woocommerce_quantity_input();?>
+            
             </div>
 
         <?php endif;
     }
-
-
     wp_reset_query();
     wp_reset_postdata();
 
