@@ -46,7 +46,8 @@ if( !empty ($crosssell_ids) ){
         //echo $post->ID;
         ?>
             <div class="card__peresadka">
-            <a href="<?php echo get_site_url()?>/?add-to-cart=<?php echo $post->ID?>" data-quantity="1" class="button"><?php echo get_the_title() ?></a>
+            <!-- <a href="<?php// echo get_site_url()?>/?add-to-cart=<?php //echo $post->ID?>" data-quantity="1" class="button"><?php //echo get_the_title() ?></a> -->
+            <a href="?add-to-cart=8495" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="8495" data-product_sku="P00194" aria-label="Добавить в корзину “Сансевиерия Трёхполосная Лауренти 17/60”" aria-describedby="" rel="nofollow" data-product-name="Сансевиерия Трёхполосная Лауренти 17/60" data-product-price="3810" data-category-name="Комнатные растения" data-remove_link="http://new.plantis.shop/cart/?remove_item=3488330ba18d83e3d0ab177178ca66eb&amp;_wpnonce=94d13f3c9b" data-cart_item_key="3488330ba18d83e3d0ab177178ca66eb">В корзину</a>
             </div>
 
         <?php endif;
