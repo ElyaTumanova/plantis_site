@@ -58,7 +58,7 @@ if( !empty ($crosssell_ids) ){
             array(
                 'attributes' => array(
                     'data-quantity'  => '120',
-                ))
+                ));
             return $array;
         }
     }
