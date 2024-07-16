@@ -118,7 +118,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						?>
 						<div>
 						<?php 
-						get_template_part('template-parts/products-peresadka',
+						get_template_part('template-parts/products-peresadka',null,
 								array( // массив с параметрами
 									'product_id' => $product_id
 								)); 

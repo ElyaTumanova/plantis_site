@@ -226,7 +226,7 @@ function plnt_get_peresadka_add_to_cart() {
     global $product; 
     $product_id = $product->get_id();
     ?><div class="card__peresadka"><?php 
-    get_template_part('template-parts/products-peresadka', 
+    get_template_part('template-parts/products-peresadka',null, 
         array( // массив с параметрами
             'product_id' => $product_id
         ));
