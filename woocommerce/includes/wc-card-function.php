@@ -222,9 +222,13 @@ function plnt_price_wrap(){
     <?php 
 };
 
-function plnt_get_peresadka_add_to_cart() {   
+function plnt_get_peresadka_add_to_cart() {
+    global $product; 
     ?><div class="card__peresadka"><?php 
-    get_template_part('template-parts/products-peresadka');
+    get_template_part('template-parts/products-peresadka', 
+        array( // массив с параметрами
+            'product' => $product
+        ));
     ?></div><?php
 };
 

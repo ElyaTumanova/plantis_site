@@ -3,7 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-global $product;
+// global $product;
+$product = $args[ 'product' ];
 $is_out_of_stock = $product->get_stock_status() ==='outofstock';
 
 
