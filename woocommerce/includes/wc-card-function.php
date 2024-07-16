@@ -222,6 +222,7 @@ function plnt_price_wrap(){
     <?php 
 };
 
+// peresadka_init
 function plnt_get_peresadka_add_to_cart() {
     global $product; 
     $product_id = $product->get_id();
