@@ -5,7 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 //global $product;
 $product_id = $args[ 'product_id' ];
-echo 'hihihi'.$product_id.'hohoho';
 $product = wc_get_product( $product_id );
 
 //$crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
@@ -42,7 +41,6 @@ if( !empty ($crosssell_ids) ){
         );
 
         $products = new WP_Query( $args );
-        print_r( $products );
         if ( $products->have_posts() ) : $products->the_post(); 
             woocommerce_template_loop_add_to_cart();
             woocommerce_quantity_input();
