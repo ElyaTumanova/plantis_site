@@ -43,10 +43,10 @@ if( !empty ($crosssell_ids) ){
         if ( $products->have_posts() ) : $products->the_post(); 
         
         //echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
-        echo $post->ID;
+        //echo $post->ID;
         ?>
             <div class="card__peresadka">
-            <a href="#" class="button product_type_simple add_to_cart_button ajax_add_to_cart"><?php echo get_the_title() ?></a>
+            <a href="<?php echo get_site_url()?>/?add-to-cart=<?php echo $post->ID?>&quantity=1" class="button product_type_simple add_to_cart_button ajax_add_to_cart"><?php echo get_the_title() ?></a>
             </div>
 
         <?php endif;
