@@ -216,13 +216,14 @@ function plnt_price_wrap(){
         <?php
         plnt_outofstock_info();
         get_template_part('template-parts/delivery-info'); // delivery info for card
+        // peresadka_init
         plnt_get_peresadka_add_to_cart();
         ?>
     </div>
     <?php 
 };
 
-// peresadka_init
+// peresadka
 function plnt_get_peresadka_add_to_cart() {
     global $product; 
     $product_id = $product->get_id();
