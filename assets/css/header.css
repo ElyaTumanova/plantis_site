@@ -308,10 +308,11 @@
 .woocommerce-mini-cart-item {
     display: grid;
     grid-template-columns: 100px 150px auto;
-    grid-template-rows: repeat(2,auto);
+    grid-template-rows: repeat(3,auto);
     grid-template-areas: 
     "image name remove"
-    "image price x";
+    "image price x"
+    "peresadka peresadka peresadka";
     column-gap: 10px;
     margin-bottom: 10px;
 }
@@ -336,6 +337,14 @@
 
 .woocommerce-mini-cart-item .quantity {
     grid-area: price;
+}
+
+.woocommerce-mini-cart-item .cart__peresadka {
+    grid-area: peresadka;
+}
+
+.woocommerce-mini-cart-item .cart__peresadka .quantity {
+    display: none;
 }
 
 .woocommerce-mini-cart-item .quantity .woocommerce-Price-amount  {
