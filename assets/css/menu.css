@@ -342,7 +342,7 @@
   }
   
   .burger-menu .menu__item_arrow::after {
-    content: "!"
+    content: url(https://plantis.shop/wp-content/uploads/2024/07/arrow.svg)
   }
 
   .catalog-menu__wrap {
