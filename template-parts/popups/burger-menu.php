@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="menu__item"> <a href="<?php echo site_url()?>/pokupka-komnatnyh-rastenij-optom/">Оптовая покупка растений</a></div>
     <?php get_template_part('template-parts/info-pages-list');?>
     <div class="menu__item_accent ">Контакты</div>
-    <div class="menu__item"><a href="https://yandex.ru/maps/-/CXQ-ErQ" target="blank">Москва, ул. Мещерякова, д.3 </a></div>
+    <div class="menu__item menu__item_arrow"><a href="https://yandex.ru/maps/-/CXQ-ErQ" target="blank">Москва, ул. Мещерякова, д.3 </a></div>
     <div class="menu__item"><a href="tel:+78002015790">8 800 201 57 90</a> | <a href="tel:+79647687944">8 964 768 79 44</a></div>
     <div class="menu__item">Прием заказов круглосуточно</div>
     <div class="menu__item">Шоурум ежедневно с 10 до 20</div>

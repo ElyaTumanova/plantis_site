@@ -301,7 +301,7 @@
     width: 100vw;
     height: var(--vh);
     overflow-y: scroll;
-    padding: 45px 0;
+    padding: 55px 0;
     background-color: var(--background);
     position: fixed;
     top: 0;
@@ -314,8 +314,10 @@
     top: 5px;
     right: 0;
     border: none;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
+    padding-right: 22px;
+    padding-top: 12px;
   }
 
   .modal-mob_active {
