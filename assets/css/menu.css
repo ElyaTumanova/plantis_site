@@ -341,7 +341,7 @@
     font-size: 16px;
   }
   
-  .burger-menu .menu__item_arrow::after {
+  .burger-menu .menu__item_arrow a::after {
     content: url(https://plantis.shop/wp-content/uploads/2024/07/arrow.svg);
     width: 5px;
   }
