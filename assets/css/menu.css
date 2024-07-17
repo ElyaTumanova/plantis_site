@@ -340,6 +340,10 @@
     padding: 15px 55px 15px 30px;
     font-size: 16px;
   }
+  
+  .burger-menu .menu__item_arrow::after {
+    content: "!"
+  }
 
   .catalog-menu__wrap {
     font-weight: 600;
