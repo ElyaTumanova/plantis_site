@@ -26,6 +26,10 @@
     row-gap: 0;
 }
 
+.wishlist-title-container {
+    display: none;
+}
+
 .woocommerce .wishlist-title h2 {
     padding: 0;
 }
