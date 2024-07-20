@@ -344,7 +344,7 @@
 
 .card__price-wrap .quantity {
     grid-area: quantity;
-    width: fit-content;
+    /* width: fit-content; */
     border-radius: 5px;
     display: flex;
     /* box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.15); */
@@ -741,6 +741,7 @@ input[type="number"] {
 
     .card__price-btns-wrap {
         margin-bottom: 0;
+        margin-left: auto;
     }
 
     .product .card__price-wrap .price, .sale .card__price-wrap .price {
@@ -762,7 +763,7 @@ input[type="number"] {
     }
 
     .card__grid .add-to-cart-wrap {
-        grid-template-columns: 92px 55px auto;
+        grid-template-columns: 110px 55px 55px;
         grid-template-rows: 52px;
         grid-template-areas:
         "quantity wish cart";
