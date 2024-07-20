@@ -61,6 +61,7 @@
     }
     .catalog__filter-wrap .woocommerce-ordering select {
         display: block;
+        border: solid 2px;
     }
 
     .woocommerce-ordering {
