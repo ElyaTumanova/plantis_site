@@ -96,9 +96,6 @@ function plnt_catalog_filters_main_area() {
 			<?php echo do_shortcode('[br_filter_single filter_id=56536]') //Подборки //56536 //10989?>  
 		</div>
 		<div class = "catalog__mob-filter-wrap"> 
-			<div class="catalog__instock-filter">
-				<?php echo do_shortcode('[br_filter_single filter_id=56537]') //Товары в наличии для моб //56537 // 10996?>
-			</div>
 			<div class="catalog__mob-filter-btn"><img src="<?php echo $filter_icon ?>" alt="Фильтр"></div>
 		</div>
 		<div class="catalog__filter-active">

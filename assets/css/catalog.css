@@ -72,7 +72,7 @@
     .catalog__mob-filter-wrap {
         grid-area: filters;
         display: flex;
-        justify-content: space-between;
+        justify-content: end;
         margin-bottom: 0;
         align-items: center;
         padding: 0;
