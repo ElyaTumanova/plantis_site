@@ -55,16 +55,6 @@
         display: none;
     }
 
-    .catalog__sidebar-ordering .woocommerce-ordering {
-        display: block;
-        margin-top: 10px;
-    }
-
-    .catalog__sidebar-ordering .woocommerce-ordering select{
-        display: block;
-        width: 100%;
-    }
-
     .catalog__filter-wrap .woocommerce-ordering {
         display: block;
     }
@@ -138,10 +128,6 @@
         margin-top: 27px;
     }
 
-    .catalog__sidebar-ordering {
-        margin-top: 27px;
-    }
-
     .catalog-sidebar__close {
         top: 35px;
     }
@@ -163,14 +149,6 @@
         display: none;
     }
 
-    .catalog__sidebar-ordering {
-        display: none;
-    }
-
-    .catalog__sidebar-ordering {
-        display: none;
-    }
-
     .catalog__sidebar-filters-heading {
         display: none;
     }
@@ -187,14 +165,6 @@
     color: var(--text);
     margin-bottom: 30px;
 }
-
-.catalog__sidebar-ordering-heading {
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: var(--text);
-}
-
 
 .catalog__products-wrap {
     grid-area: catalog;
