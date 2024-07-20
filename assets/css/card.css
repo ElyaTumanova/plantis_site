@@ -404,6 +404,10 @@
         background-size: 50%;
         order: 1;
     }
+
+    .card__grid .add-to-cart-wrap .added {
+        background-image: url(https://plantis.shop/wp-content/uploads/2024/03/check_white.svg);
+    }
 }
 
 .card__grid .add-to-cart-wrap .added {
