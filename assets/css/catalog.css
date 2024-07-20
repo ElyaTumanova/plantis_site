@@ -55,11 +55,11 @@
         display: none;
     }
 
-    .catalog__filter-wrap .woocommerce-ordering {
+    .catalog__mob-filter-wrap .woocommerce-ordering {
         display: block;
         margin-bottom: 0;
     }
-    .catalog__filter-wrap .woocommerce-ordering select {
+    .catalog__mob-filter-wrap .woocommerce-ordering select {
         display: block;
         border: solid 2px;
     }
