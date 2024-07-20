@@ -57,6 +57,7 @@
 
     .catalog__filter-wrap .woocommerce-ordering {
         display: block;
+        margin-bottom: 0;
     }
     .catalog__filter-wrap .woocommerce-ordering select {
         display: block;
