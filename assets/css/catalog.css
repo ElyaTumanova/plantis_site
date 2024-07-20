@@ -128,11 +128,6 @@
     .catalog-sidebar__close {
         top: 35px;
     }
-    
-    .catalog__mob-filter-btn {
-        padding-bottom: 7px;
-        border: solid 2px var(--accent-color);
-    }
 }
 
 @media (min-width: 767px) {         /* убираем все мобильные свойства начиная с экранов 767px */
