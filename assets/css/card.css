@@ -750,7 +750,7 @@ input[type="number"] {
 
     .product .card__price-wrap .price {
         font-size: 30px;
-        font-weight: 600;
+        /* font-weight: 600; */
         color: var(--accent-color);
     }
 
@@ -761,7 +761,7 @@ input[type="number"] {
 
     .sale .card__price-wrap ins .woocommerce-Price-amount {
         font-size: 30px;
-        font-weight: 600;
+        /* font-weight: 600; */
     }
 
     .card__grid .add-to-cart-wrap {
