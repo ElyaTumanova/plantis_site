@@ -82,9 +82,9 @@
         /* box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.1); */
     }
     
-    .catalog__instock-filter {
+    /* .catalog__instock-filter {
         padding-bottom: 10px;
-    }
+    } */
 
     .catalog__filter-wrap {
         position: sticky;
