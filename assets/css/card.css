@@ -756,6 +756,7 @@ input[type="number"] {
 
     .sale .card__price-wrap .price {
         font-size: 18px;
+        color: var(--text);
     }
 
     .sale .card__price-wrap ins .woocommerce-Price-amount {
