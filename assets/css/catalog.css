@@ -1001,6 +1001,18 @@ ul.products {
 }
 
 .catalog__filter-metki li:has(input[data-name="Неприхотливые"]) {
+    order: -4;
+}
+
+.catalog__filter-metki li:has(input[data-name="Напольные"]) {
+    order: -3;
+}
+
+.catalog__filter-metki li:has(input[data-name="Скидки"]) {
+    order: -2;
+}
+
+.catalog__filter-metki li:has(input[data-name="Компактные"]) {
     order: -1;
 }
 
