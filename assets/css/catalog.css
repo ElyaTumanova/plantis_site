@@ -1000,6 +1000,10 @@ ul.products {
     row-gap: 10px;
 }
 
+.catalog__filter-metki li:has(input[data-name="Неприхотливые"]) {
+    order: -1;
+}
+
 @media (max-width:767px) {
     .catalog__filter-metki ul {
         flex-wrap: nowrap;
