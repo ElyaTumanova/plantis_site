@@ -34,19 +34,21 @@ add_action( 'woocommerce_checkout_order_review', 'my_delivery_small_oder_info', 
 function my_delivery_small_oder_info () {
     $min_free_delivery = carbon_get_theme_option('min_free_delivery');
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-	if ( WC()->cart->subtotal < str_replace(" ","",$min_small_delivery)) {
-		$cart = str_replace(" ","",$min_small_delivery) - WC()->cart->subtotal;
-		echo '<div class="checkout__free-delivery-text">
-        Добавьте товаров на <span>'.$cart,'</span> рублей, чтобы стоимость доставки уменьшилась!</div>';
-	} else {
-        if(WC()->cart->subtotal > (str_replace(" ","",$min_free_delivery)-10000)) {
-            if ( WC()->cart->subtotal < str_replace(" ","",$min_free_delivery)) {
-                $cart = str_replace(" ","",$min_free_delivery) - WC()->cart->subtotal;
-                echo '<div class="checkout__text">
-                До бесплатной доставки внутри МКАД осталось <span>'.$cart,'</span> рублей!</div>';
+    if ($min_free_delivery) {
+        if ( WC()->cart->subtotal < str_replace(" ","",$min_small_delivery)) {
+            $cart = str_replace(" ","",$min_small_delivery) - WC()->cart->subtotal;
+            echo '<div class="checkout__free-delivery-text">
+            Добавьте товаров на <span>'.$cart,'</span> рублей, чтобы стоимость доставки уменьшилась!</div>';
+        } else {
+            if(WC()->cart->subtotal > (str_replace(" ","",$min_free_delivery)-10000)) {
+                if ( WC()->cart->subtotal < str_replace(" ","",$min_free_delivery)) {
+                    $cart = str_replace(" ","",$min_free_delivery) - WC()->cart->subtotal;
+                    echo '<div class="checkout__text">
+                    До бесплатной доставки внутри МКАД осталось <span>'.$cart,'</span> рублей!</div>';
+                }
             }
-        }
-	}	
+        }	
+    }
 }
 
 add_action( 'woocommerce_checkout_order_review', 'my_delivery_large_products_oder_info', 25 );
