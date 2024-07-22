@@ -25,10 +25,13 @@ if ( ! defined( 'ABSPATH' ) ) {
             ул. Мещерякова, д. 3</a></div>
             <div>бесплатно</div>
         </div>
-        <div class="delivery_table__row">
-            <div>При заказе от <?php echo $min_free_delivery?>₽</div>
-            <div>бесплатно</div>
-        </div>
+        <?php if($min_free_delivery) { 
+            echo '
+                <div class="delivery_table__row">
+                    <div>При заказе от '.$min_free_delivery.'₽</div>
+                    <div>бесплатно</div>
+                </div>
+            ';}?>	
         <div class="delivery_table__row">
             <div>В пределах МКАД</div>
             <div><?php echo $in_mkad?>₽</div>
