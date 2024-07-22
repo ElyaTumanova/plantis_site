@@ -29,7 +29,9 @@ $template_content['template']['content']['header']['content']['title']['content'
 $template_content['template']['content']['filter']['content']['list']                       = array(
     'type'          => 'tag',
     'tag'           => 'ul',
-    'attributes'    => array(),
+    'attributes'    => array(
+        'class' => 'lalala'
+    ),
     'content'       => array()
 );
 $terms_content = array();
@@ -39,7 +41,7 @@ foreach( $terms as $i => $term ) {
         'type'          => 'tag',
         'tag'           => 'li',
         'attributes'    => array(
-            'class' => 'lalala',
+            'class' => 'lalala'
         ),
         'content'       => array(
             'checkbox'  => array(
