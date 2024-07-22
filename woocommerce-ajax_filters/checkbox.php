@@ -38,7 +38,9 @@ foreach( $terms as $i => $term ) {
     $terms_content['element_'.$i] = apply_filters('BeRocket_AAPF_template_single_item', array(
         'type'          => 'tag',
         'tag'           => 'li',
-        'attributes'    => array(),
+        'attributes'    => array(
+            'class' => 'lalala',
+        ),
         'content'       => array(
             'checkbox'  => array(
                 'type'          => 'tag_open',
