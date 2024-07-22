@@ -78,6 +78,14 @@ function plnt_check_page() {
 //add_action( 'wp_footer', 'plnt_check_page' );
 
 
+add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
+add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
+function some_custom_berocket_aapf_template_full_content($template_content) {
+    $template_content['template']['content']['filter']['content']['list']['attributes']['class'] = 'lalalal';
+    return $template_content;
+}
+
+
 
 
 
