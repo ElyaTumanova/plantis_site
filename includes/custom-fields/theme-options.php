@@ -82,7 +82,7 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'out_mkad_small', 'Доставка за пределы МКАД на след день до мин суммы'),
 			Field::make( 'text', 'in_mkad_small_urg', 'Доставка в пределах МКАД срочная до мин суммы'),
 			Field::make( 'text', 'out_mkad_small_urg', 'Доставка за пределы МКАД срочная до мин суммы'),
-			Field::make( 'text', 'min_free_delivery', 'Минимальная сумма заказа для бесплатной доставки'),
+			Field::make( 'text', 'min_free_delivery', 'Минимальная сумма заказа для бесплатной доставки (текст с пробелом)'),
 			Field::make( 'text', 'min_small_delivery', 'Сумма заказа для более дорогой доставки'),
 			Field::make( 'text', 'min_treez_delivery', 'Сумма заказа для доставки кашпо Treez'),
 	   ))
