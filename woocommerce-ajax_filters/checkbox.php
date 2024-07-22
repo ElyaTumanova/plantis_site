@@ -29,12 +29,7 @@ $template_content['template']['content']['header']['content']['title']['content'
 $template_content['template']['content']['filter']['content']['list']                       = array(
     'type'          => 'tag',
     'tag'           => 'ul',
-    'attributes'    => array(
-        ["class"]         => array(2) {
-            [0]               => string(12) "bapf_sfilter"
-            ["filter_type"]   => string(10) "bapf_ckbox"
-          }
-    ),
+    'attributes'    => array(),
     'content'       => array()
 );
 $terms_content = array();
