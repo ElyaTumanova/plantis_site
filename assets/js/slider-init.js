@@ -271,7 +271,7 @@ const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
 # Filter Metki
 --------------------------------------------------------------*/
 
-const swiper_filter_metki = new Swiper('.catalog__filter-metki .bapf_body', {
+const swiper_filter_metki = new Swiper('.bapf_body', {
     wrapperClass: '.catalog__filter-metki .bapf_body ul',
     slideClass: '.catalog__filter-metki .bapf_body ul li',
     // pagination: {
