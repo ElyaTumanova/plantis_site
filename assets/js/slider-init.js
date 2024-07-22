@@ -272,8 +272,8 @@ const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
 --------------------------------------------------------------*/
 
 const swiper_filter_metki = new Swiper('.bapf_body', {
-    wrapperClass: 'ul',
-    slideClass: 'li',
+    wrapperClass: ul,
+    slideClass: li,
     // pagination: {
     //     el: '.swiper-pagination',
     //     clickable: true,
