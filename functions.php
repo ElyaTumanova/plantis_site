@@ -85,40 +85,13 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
     return $template_content;
 }
 
-if( ! class_exists('BAPF_Custom_checkbox_style') ) {
-    class BAPF_Custom_checkbox_style extends BeRocket_AAPF_Template_Style {
-        function __construct() {
-            $this->data = array(
-                'slug'          => 'dev_custom_checkbox',
-                'template'      => 'checkbox',
-                'name'          => 'Dev Custom Checkbox',
-                'name_price'    => 'Dev Custom Price Ranges',
-                'file'          => __FILE__,
-                'style_file'    => plugin_dir_url( __FILE__ ) . 'checkbox_your_style.css',
-                'script_file'   => plugin_dir_url( __FILE__ ) . 'checkbox_your_script.js',
-                'image'         => plugin_dir_url( __FILE__ ) . 'checkbox_preview_image.png',
-                'image_price'   => plugin_dir_url( __FILE__ ) . 'checkbox_preview_image-price.png',
-                'version'       => '1.0',
-                'sort_pos'      => '10000',
-            );
-            parent::__construct();
-        }
-        function template_single_item( $template, $term, $i, $berocket_query_var_title ) {
-            $template = parent::template_single_item($template, $term, $i, $berocket_query_var_title);
-            $this->array_set( $template, array('attributes', 'class') );
-            $template['attributes']['class'][] = 'some_custom_class_item';
 
-            return $template;
-        }
-        function template_full($template, $terms, $berocket_query_var_title) {
-            $template = parent::template_full($template, $terms, $berocket_query_var_title);
-            $this->array_set( $template, array('template', 'attributes', 'class') );
-            $template['template']['attributes']['class'][] = 'some_custom_class';
-            return $template;
-        }
-    }
-    new BAPF_Custom_checkbox_style();
+add_filter('BeRocket_AAPF_template_single_item', 'some_custom_berocket_aapf_template_single_item', 4000, 1);
+function some_custom_berocket_aapf_template_single_item($template_content) {
+    $template_content['template']['content']['filter']['content']['element']['attributes']['class'] = 'hohoho';
+    return $template_content;
 }
+
 
 
 
