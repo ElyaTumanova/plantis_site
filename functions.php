@@ -82,18 +82,22 @@ add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_tem
 add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
 function some_custom_berocket_aapf_template_full_content($template_content) {
     $template_content['template']['content']['filter']['content']['list']['attributes']['class'] = 'lalalal';
+	$elements = $template_content['template']['content']['filter']['content']['list']['content'];
+	foreach($elements as $element) {
+		$element['attributes']['class'] = 'hohoho';
+	}
     return $template_content;
 }
 
 
-add_filter('BeRocket_AAPF_template_single_item', 'some_custom_berocket_aapf_template_single_item', 4000, 1);
-function some_custom_berocket_aapf_template_single_item($element) {
-	$element['attributes']['class'] = 'hohoho';
-	// echo '<pre>';
-	// print_r( $element );
-	// echo '</pre>';
-	return $element;
-}
+// add_filter('BeRocket_AAPF_template_single_item', 'some_custom_berocket_aapf_template_single_item', 4000, 1);
+// function some_custom_berocket_aapf_template_single_item($element) {
+// 	$element['attributes']['class'] = 'hohoho';
+// 	// echo '<pre>';
+// 	// print_r( $element );
+// 	// echo '</pre>';
+// 	return $element;
+// }
 
 
 
