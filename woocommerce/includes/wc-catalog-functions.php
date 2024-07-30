@@ -522,6 +522,10 @@ function some_custom_berocket_aapf_template_full_content_pagination($template_co
 		array(
 			'custom_content' => '<div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>'
 		),
+		array(
+			'custom_content' => '<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>'
+		),
+		
 		true
 	);
 	// echo '<pre>';
