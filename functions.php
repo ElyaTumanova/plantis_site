@@ -91,13 +91,13 @@ function some_custom_berocket_aapf_template_full_content_element($template_conte
 	$elements = $template_content['template']['content']['filter']['content']['list']['content'];
 	foreach($elements as $element) {
 		$element['attributes']['class'] = 'hohoho';
-		echo '<pre>';
-		print_r( $element['attributes']);
-		echo '</pre>';
+		// echo '<pre>';
+		// print_r( $element['attributes']);
+		// echo '</pre>';
 	}
-	// echo '<pre>';
-	// print_r( $elements );
-	// echo '</pre>';
+	echo '<pre>';
+	print_r( $elements );
+	echo '</pre>';
 	// $template_content['template']['content']['filter']['content']['list']['content'] = $elements;
     // return $template_content;
 }
