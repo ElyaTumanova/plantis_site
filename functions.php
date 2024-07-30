@@ -94,10 +94,11 @@ function some_custom_berocket_aapf_template_full_content_element($template_conte
 		// echo '<pre>';
 		// print_r( $element);
 		// echo '</pre>';
-		return $elements;
+		// return $elements;
 	}
 	echo '<pre>';
-	print_r( $elements );
+	// print_r( $elements );
+	print_r( $template_content );
 	echo '</pre>';
 	// $template_content['template']['content']['filter']['content']['list']['content'] = $elements;
     // return $template_content;
