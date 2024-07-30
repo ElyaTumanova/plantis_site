@@ -512,6 +512,22 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
     return $template_content;
 }
 
+add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content_pagination', 4000, 1);
+add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content_pagination', 4000, 1);
+function some_custom_berocket_aapf_template_full_content_pagination($template_content) {
+
+	$template_content['template']['content']['filter']['content'] = berocket_insert_to_array(
+		$template_content['template']['content']['filter']['content'],
+		'list',
+		array(
+			'custom_content' => '<div><h1>SOME CUSTOM HTML</h1><p>Display there anything after title</p></div>'
+		),
+		true
+	);
+
+    return $template_content;
+}
+
 add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content_element', 4000, 1);
 add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content_element', 4000, 1);
 function some_custom_berocket_aapf_template_full_content_element($template_content) {
