@@ -93,7 +93,9 @@ function some_custom_berocket_aapf_template_single_item($element) {
 	// 	$terms_content['template']['content']['filter']['content']['list']['element_'.$i]['attributes']['class'] = 'hohoho';
 	// }
     // return $terms_content;
-	echo $element;
+	echo '<pre>';
+	print_r( $element );
+	echo '</pre>';
 	return $element;
 }
 
