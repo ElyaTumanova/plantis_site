@@ -88,7 +88,10 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 
 add_filter('BeRocket_AAPF_template_single_item', 'some_custom_berocket_aapf_template_single_item', 4000, 1);
 function some_custom_berocket_aapf_template_single_item($terms_content) {
-    $terms_content['template']['content']['filter']['content']['element']['attributes']['class'] = 'hohoho';
+	$terms_content = array();
+	foreach( $terms as $i => $term ) {
+		$terms_content['template']['content']['filter']['content']['list']['element_'.$i]['attributes']['class'] = 'hohoho';
+	}
     return $terms_content;
 }
 
