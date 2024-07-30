@@ -94,6 +94,7 @@ function some_custom_berocket_aapf_template_single_item($element, $term, $i, $be
 	// }
     // return $terms_content;
 	echo $element;
+	return $element;
 }
 
 
