@@ -509,6 +509,9 @@ add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_tem
 add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
 function some_custom_berocket_aapf_template_full_content($template_content) {
 	if ($template_content['template']['attributes']['data-name']==='Подборки') {
+
+		$template_content['template']['content']['filter']['attributes']['class'] = 'metki_swiper_wrap';
+		
 		$template_content['template']['content']['filter']['content']['list']['attributes']['class'] = 'plnt_filter';
 
 		$elements = $template_content['template']['content']['filter']['content']['list']['content'];
