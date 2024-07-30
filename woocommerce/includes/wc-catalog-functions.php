@@ -508,7 +508,7 @@ function plnt_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
 add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
 function some_custom_berocket_aapf_template_full_content($template_content) {
-    $template_content['template']['content']['filter']['content']['list']['attributes']['class'] = 'lalalal';
+    $template_content['template']['content']['filter']['content']['list']['attributes']['class'] = 'plnt_filter';
     return $template_content;
 }
 
@@ -519,7 +519,7 @@ function some_custom_berocket_aapf_template_full_content_element($template_conte
 	$new_elements = [];
 	$i = 0;
 	foreach($elements as $element) {
-		$element['attributes']['class'] = 'hohoho';
+		$element['attributes']['class'] = 'plnt_filter_el';
 		$new_elements[$i] = $element;
 		$i++;
 	}
