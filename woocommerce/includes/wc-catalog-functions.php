@@ -511,7 +511,6 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 	if ($template_content['template']['attributes']['data-name']==='Подборки') {
 
 		array_push($template_content['template']['content']['filter']['attributes']['class'],'metki_swiper_wrap');
-		//$template_content['template']['content']['filter']['attributes']['class'] = 'metki_swiper_wrap';
 		
 		$template_content['template']['content']['filter']['content']['list']['attributes']['class'] = 'plnt_filter';
 
