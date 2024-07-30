@@ -100,12 +100,12 @@ function some_custom_berocket_aapf_template_full_content_element($template_conte
 		// echo '</pre>';
 		// return $elements;
 	}
-	echo '<pre>';
-	print_r( $new_elements);
-	// print_r( $template_content );
-	echo '</pre>';
-	// $template_content['template']['content']['filter']['content']['list']['content'] = $elements;
-    // return $template_content;
+	// echo '<pre>';
+	// print_r( $new_elements);
+	// // print_r( $template_content );
+	// echo '</pre>';
+	$template_content['template']['content']['filter']['content']['list']['content'] = $new_elements;
+    return $template_content;
 }
 
 
