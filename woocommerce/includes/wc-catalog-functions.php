@@ -517,6 +517,17 @@ add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_
 function some_custom_berocket_aapf_template_full_content_pagination($template_content) {
 	if ($template_content['template']['attributes']['data-name']==='Подборки') {
 		$template_content['template']['content']['filter']['content']['list']['attributes']['class'] = 'plnt_filter';
+
+		$elements = $template_content['template']['content']['filter']['content']['list']['content'];
+		$new_elements = [];
+		$i = 0;
+		foreach($elements as $element) {
+			$element['attributes']['class'] = 'plnt_filter_el';
+			$new_elements[$i] = $element;
+			$i++;
+		}
+		$template_content['template']['content']['filter']['content']['list']['content'] = $new_elements;
+
 		$template_content['template']['content']['filter']['content'] = berocket_insert_to_array(
 			$template_content['template']['content']['filter']['content'],
 			'list',
@@ -527,23 +538,23 @@ function some_custom_berocket_aapf_template_full_content_pagination($template_co
 			true
 		);
 	}
-	echo '<pre>';
-	print_r( $template_content );
-	echo '</pre>';
+	// echo '<pre>';
+	// print_r( $template_content );
+	// echo '</pre>';
     return $template_content;
 }
 
-add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content_element', 4000, 1);
-add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content_element', 4000, 1);
-function some_custom_berocket_aapf_template_full_content_element($template_content) {
-	$elements = $template_content['template']['content']['filter']['content']['list']['content'];
-	$new_elements = [];
-	$i = 0;
-	foreach($elements as $element) {
-		$element['attributes']['class'] = 'plnt_filter_el';
-		$new_elements[$i] = $element;
-		$i++;
-	}
-	$template_content['template']['content']['filter']['content']['list']['content'] = $new_elements;
-    return $template_content;
-}
+// add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content_element', 4000, 1);
+// add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content_element', 4000, 1);
+// function some_custom_berocket_aapf_template_full_content_element($template_content) {
+// 	$elements = $template_content['template']['content']['filter']['content']['list']['content'];
+// 	$new_elements = [];
+// 	$i = 0;
+// 	foreach($elements as $element) {
+// 		$element['attributes']['class'] = 'plnt_filter_el';
+// 		$new_elements[$i] = $element;
+// 		$i++;
+// 	}
+// 	$template_content['template']['content']['filter']['content']['list']['content'] = $new_elements;
+//     return $template_content;
+// }
