@@ -91,7 +91,6 @@ function some_custom_berocket_aapf_template_full_content_element($template_conte
 	$elements = $template_content['template']['content']['filter']['content']['list']['content'];
 	foreach($elements as $element) {
 		$element['attributes']['class'] = 'hohoho';
-		return $element;
 	}
 	echo '<pre>';
 	print_r( $elements );
