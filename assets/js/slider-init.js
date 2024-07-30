@@ -271,36 +271,36 @@ const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
 # Filter Metki
 --------------------------------------------------------------*/
 
-// const swiper_filter_metki = new Swiper('.bapf_body', {
-//     wrapperClass: 'plnt_filter',
-//     slideClass: 'plnt_filter_el',
-//     pagination: {
-//         el: '.swiper-pagination',
-//         clickable: true,
-//     },
-//     navigation: {
-//         nextEl: '.swiper-button-next',
-//         prevEl: '.swiper-button-prev',
-//     },
-//     slidesPerView: 1,
-//     slidesPerGroup: 1,
-//     spaceBetween: 10,
-//     loop: true,
-//     breakpoints: {
-//         320: {
-//         slidesPerView: 1,
-//         slidesPerGroup: 1,
-//         navigation: {
-//             enabled: false,
-//         },
-//         },
-//         768: {
-//         slidesPerView: 2,
-//         slidesPerGroup: 2,
-//         },
-//         1023: {
-//         slidesPerView: 1,
-//         slidesPerGroup: 1,
-//         }
-//     }
-// });
+const swiper_filter_metki = new Swiper('.bapf_body', {
+    wrapperClass: 'plnt_filter',
+    slideClass: 'plnt_filter_el',
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    spaceBetween: 10,
+    loop: true,
+    breakpoints: {
+        320: {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        navigation: {
+            enabled: false,
+        },
+        },
+        768: {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        },
+        1023: {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        }
+    }
+});
