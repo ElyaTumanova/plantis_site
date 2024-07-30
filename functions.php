@@ -89,12 +89,12 @@ add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_tem
 add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content_element', 4000, 1);
 function some_custom_berocket_aapf_template_full_content_element($template_content) {
 	$elements = $template_content['template']['content']['filter']['content']['list']['content'];
-	echo '<pre>';
-	print_r( $element['attributes']);
-	echo '</pre>';
-	// foreach($elements as $element) {
-	// 	return $element = array_replace ($element['attributes'], $element['attributes']['class'] = 'hohoho');
-	// }
+	foreach($elements as $element) {
+		echo '<pre>';
+		print_r( $element['attributes']);
+		echo '</pre>';
+		return $element = array_replace ($element['attributes'], ['class'] = 'hohoho');
+	}
 	// echo '<pre>';
 	// print_r( $elements );
 	// echo '</pre>';
