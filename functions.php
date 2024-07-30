@@ -90,7 +90,7 @@ add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_
 function some_custom_berocket_aapf_template_full_content_element($template_content) {
 	$elements = $template_content['template']['content']['filter']['content']['list']['content'];
 	foreach($elements as $element) {
-		$element['attributes']['class'] = 'hohoho';
+		return $element['attributes']['class'] = 'hohoho';
 	}
 	echo '<pre>';
 	print_r( $elements );
