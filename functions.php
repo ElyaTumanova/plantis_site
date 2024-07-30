@@ -94,7 +94,7 @@ function some_custom_berocket_aapf_template_full_content_element($template_conte
 		print_r( $element['attributes']);
 		echo '</pre>';
 		$new_element = [];
-		$new_element = array_replace ($element['attributes'], ['class'] = 'hohoho');
+		$new_element = array_replace ($new_element['attributes'], ['class'] = 'hohoho');
 
 		echo '<pre>';
 		print_r( 'hi');
