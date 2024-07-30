@@ -524,9 +524,9 @@ function some_custom_berocket_aapf_template_full_content_pagination($template_co
 		),
 		true
 	);
-	echo '<pre>';
-	print_r( $template_content );
-	echo '</pre>';
+	// echo '<pre>';
+	// print_r( $template_content );
+	// echo '</pre>';
     return $template_content;
 }
 
