@@ -93,7 +93,12 @@ function some_custom_berocket_aapf_template_full_content_element($template_conte
 		echo '<pre>';
 		print_r( $element['attributes']);
 		echo '</pre>';
-		// return $element = array_replace ($element['attributes'], ['class'] = 'hohoho');
+		$element['attributes'] = array_replace ($element['attributes'], ['class'] = 'hohoho');
+
+		echo '<pre>';
+		print_r( 'hi');
+		print_r( $element['attributes']);
+		echo '</pre>';
 	}
 	// echo '<pre>';
 	// print_r( $elements );
