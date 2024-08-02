@@ -85,7 +85,7 @@ function true_custom_checkout_field() {
 	woocommerce_form_field( 
 		'billing_contactmethod', 
 		array(
-			'type'          => 'datetime', // text, textarea, select, radio, checkbox, password
+			'type'          => 'date', // text, textarea, select, radio, checkbox, password
 			'required'	=> true, // по сути только добавляет значок "*" и всё
 			'class'         => array( 'true-field', 'form-row-wide' ), // массив классов поля
 			'label'         => 'Предпочитаемый метод связи',
