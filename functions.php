@@ -85,16 +85,11 @@ function true_custom_checkout_field() {
 	woocommerce_form_field( 
 		'billing_contactmethod', 
 		array(
-			'type'          => 'select', // text, textarea, select, radio, checkbox, password
+			'type'          => 'datetime', // text, textarea, select, radio, checkbox, password
 			'required'	=> true, // по сути только добавляет значок "*" и всё
 			'class'         => array( 'true-field', 'form-row-wide' ), // массив классов поля
 			'label'         => 'Предпочитаемый метод связи',
 			'label_class'   => 'true-label', // класс лейбла
-			'options'	=> array( // options for  or 
-				''		=> 'Выберите', // пустое значение
-				'По телефону'	=> 'По телефону', // 'значение' => 'заголовок'
-				'По email'	=> 'По email'
-			)
 		)
 	);
 }
