@@ -90,6 +90,10 @@ function true_custom_checkout_field() {
 			'class'         => array( 'true-field', 'form-row-wide' ), // массив классов поля
 			'label'         => 'Предпочитаемый метод связи',
 			'label_class'   => 'true-label', // класс лейбла
+			'custom_attributes' => array(
+				'min' => date('Y-m-d'), // Set minimum date to today
+				'max' => date('Y-m-d', strtotime('+1 year')) // Set maximum date to one year from today
+			)
 		)
 	);
 }
