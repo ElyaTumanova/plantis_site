@@ -95,8 +95,7 @@ function true_custom_checkout_field() {
 				'По телефону'	=> 'По телефону', // 'значение' => 'заголовок'
 				'По email'	=> 'По email'
 			)
-		),
-		$checkout->get_value( 'contactmethod' )
+		)
 	);
 }
 
