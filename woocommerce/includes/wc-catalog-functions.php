@@ -505,8 +505,8 @@ function plnt_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 
 // #filters добавляем классы к фильтрам #berocket для работы слайдера #swiper
 
-add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
-add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
+//add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
+//add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
 function some_custom_berocket_aapf_template_full_content($template_content) {
 	if ($template_content['template']['attributes']['data-name']==='Подборки') {
 
@@ -534,9 +534,6 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 			true
 		);
 	}
-	// echo '<pre>';
-	// print_r( $template_content );
-	// echo '</pre>';
     return $template_content;
 }
 
