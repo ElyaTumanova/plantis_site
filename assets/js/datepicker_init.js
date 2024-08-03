@@ -3,7 +3,7 @@ var datepicker = new Datepicker('#datepicker', {
     min: (function(){
       var date = new Date();
       date.setDate(date.getDate());
-      console.log(date);
+      console.log(toValue([date]));
       return date;
     })(),
 
@@ -16,5 +16,5 @@ var datepicker = new Datepicker('#datepicker', {
 
     openOn: "today",
 
-    without: [deserialize('05.08.2024')]
+    // without: [deserialize('05.08.2024')]
   });
