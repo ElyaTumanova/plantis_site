@@ -337,7 +337,7 @@ function new_custom_checkout_field_script() {
 
             var shipping_method = $(ism).val();
 
-            Datepicker init
+            // Datepicker init
             setTimeout(function(){
                 datepicker_init ();
             }, 100);
