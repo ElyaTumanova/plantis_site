@@ -16,8 +16,7 @@ var datepicker = new Datepicker('#datepicker', {
     openOn: "today",
 
     without: [(function(){
-        var date = new Date();
-        date.setDate('05/08/2024');
+        var date = new Date(2024,8,5);
         return date;
       })(),]
   });
