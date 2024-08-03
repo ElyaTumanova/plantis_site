@@ -300,9 +300,9 @@ function new_custom_checkout_field_script() {
                 console.log($(ismc).val());
                 console.log(localPickup);
                 if ($(ismc).val() == localPickup) {
-                    var startDate = 1;
-                } else {
                     var startDate = 0;
+                } else {
+                    var startDate = 1;
                 }
 
                 console.log(startDate);
@@ -311,7 +311,7 @@ function new_custom_checkout_field_script() {
 
                     min: (function(){
                     var date = new Date();
-                    date.setDate(date.getDate()-startDate);
+                    date.setDate(date.getDate()+startDate);
                     console.log(startDate);
                     console.log(date);
                     return date;
