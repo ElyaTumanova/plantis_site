@@ -15,11 +15,11 @@ var datepicker = new Datepicker('#datepicker', {
 
     openOn: "today",
 
-    serialize: (function(){
-        var date = new Date();
-        date.setDate(date.getDate());
-        return date;
-    })(),
+    // serialize: (function(){
+    //     var date = new Date();
+    //     date.setDate(date.getDate());
+    //     return date;
+    // })(),
 
     without: [(function(){
         var date = new Date();
