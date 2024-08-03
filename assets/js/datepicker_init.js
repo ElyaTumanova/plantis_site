@@ -3,16 +3,17 @@ jQuery(function($){
     var ism = 'input[name^="shipping_method"]', ismc = ism+':checked';
 
     setTimeout(function(){
-        datepicker_init ();
+        datepicker_init (ism);
     }, 100);
 
     $( 'form.checkout' ).on( 'change', ism, function() {
-        datepicker_init ();
+        datepicker_init (ism);
     })
 
 })
 
-function datepicker_init () {
+function datepicker_init (shipping_method) {
+    console.log(shipping_method);
     var datepicker = new Datepicker('#datepicker', {
 
         min: (function(){
