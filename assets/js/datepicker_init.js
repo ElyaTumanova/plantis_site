@@ -16,5 +16,5 @@ var datepicker = new Datepicker('#datepicker', {
 
     openOn: "today",
 
-    without: [deserialize:'05.08.2024']
+    without: [deserialize('05.08.2024')]
   });
