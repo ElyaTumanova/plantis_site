@@ -296,14 +296,14 @@ function new_custom_checkout_field_script() {
 	
             //DATEPICKER
             // Utility function for datepicker init
-            function datepicker_init (shipping_method) {
-                console.log(shipping_method);
+            function datepicker_init (ismc) {
+                console.log(ismc);
                 if ($(ismc).val() == localPickup) {
                     var startDate = 1;
                 } else {
                     var startDate = 0;
                 }
-                
+
                 var datepicker = new Datepicker('#datepicker', {
 
                     min: (function(){
