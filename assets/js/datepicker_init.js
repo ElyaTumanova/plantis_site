@@ -17,7 +17,7 @@ var datepicker = new Datepicker('#datepicker', {
 
     openOn: "today",
 
-    onRender: (function(){console.log('hi')}),
+    onInit: (function(){console.log('hi')}),
 
     without: [(function(){
         var date = new Date(2024,7,5);
