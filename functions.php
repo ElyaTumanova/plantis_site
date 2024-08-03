@@ -80,19 +80,36 @@ function plnt_check_page() {
 
 add_action( 'woocommerce_before_order_notes', 'true_custom_checkout_field' );
  
+// function true_custom_checkout_field() {
+// 	// выводим поле функцией woocommerce_form_field()
+// 	woocommerce_form_field( 
+// 		'billing_contactmethod', 
+// 		array(
+// 			'type'          => 'date', // text, textarea, select, radio, checkbox, password
+// 			'required'	=> true, // по сути только добавляет значок "*" и всё
+// 			'class'         => array( 'true-field', 'form-row-wide' ), // массив классов поля
+// 			'label'         => 'Предпочитаемый метод связи',
+// 			'label_class'   => 'true-label', // класс лейбла
+// 			'custom_attributes' => array(
+// 				'min' => date('Y-m-d'), // Set minimum date to today
+// 				'max' => date('Y-m-d', strtotime('+1 year')) // Set maximum date to one year from today
+// 			)
+// 		)
+// 	);
+// }
+
 function true_custom_checkout_field() {
 	// выводим поле функцией woocommerce_form_field()
 	woocommerce_form_field( 
 		'billing_contactmethod', 
 		array(
-			'type'          => 'date', // text, textarea, select, radio, checkbox, password
+			'type'          => 'text', // text, textarea, select, radio, checkbox, password
 			'required'	=> true, // по сути только добавляет значок "*" и всё
 			'class'         => array( 'true-field', 'form-row-wide' ), // массив классов поля
-			'label'         => 'Предпочитаемый метод связи',
+			'label'         => 'Date',
 			'label_class'   => 'true-label', // класс лейбла
 			'custom_attributes' => array(
-				'min' => date('Y-m-d'), // Set minimum date to today
-				'max' => date('Y-m-d', strtotime('+1 year')) // Set maximum date to one year from today
+				'id' => 'datepicker'
 			)
 		)
 	);
