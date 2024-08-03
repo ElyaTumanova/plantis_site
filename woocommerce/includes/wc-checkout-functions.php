@@ -312,6 +312,7 @@ function new_custom_checkout_field_script() {
                     min: (function(){
                     var date = new Date();
                     date.setDate(date.getDate()-startDate);
+                    console.log(startDate);
                     return date;
                     })(),
                 
