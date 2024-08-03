@@ -1,13 +1,14 @@
 jQuery(function($){
 
     var ism = 'input[name^="shipping_method"]', ismc = ism+':checked';
+    var shipping_method = $(ism).val();
 
     setTimeout(function(){
-        datepicker_init (ism);
+        datepicker_init (shipping_method);
     }, 100);
 
     $( 'form.checkout' ).on( 'change', ism, function() {
-        datepicker_init (ism);
+        datepicker_init (shipping_method);
     })
 
 })
