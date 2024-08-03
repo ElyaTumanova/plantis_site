@@ -24,3 +24,5 @@
 //         return date;
 //     })(),]
 // });
+
+var datepicker = new AirDatepicker('#datepicker')

@@ -338,13 +338,13 @@ function new_custom_checkout_field_script() {
             var shipping_method = $(ism).val();
 
             // Datepicker init
-            setTimeout(function(){
-                datepicker_init ();
-            }, 100);
+            // setTimeout(function(){
+            //     datepicker_init ();
+            // }, 100);
 
-            $( 'form.checkout' ).on( 'change', ism, function() {
-                datepicker_init ();
-            })
+            // $( 'form.checkout' ).on( 'change', ism, function() {
+            //     datepicker_init ();
+            // })
         });
     </script>
     <?php
