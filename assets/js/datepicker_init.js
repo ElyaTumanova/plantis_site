@@ -1,6 +1,6 @@
 jQuery(function($){
 
-    var ism = 'input[name^="shipping_method"]', ismc = ism+':checked',;
+    var ism = 'input[name^="shipping_method"]', ismc = ism+':checked';
 
     $( 'form.checkout' ).on( 'change', ism, function() {
         // if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
