@@ -304,7 +304,7 @@ function new_custom_checkout_field_script() {
                         var date = new Date();
                         date.setDate(date.getDate() + 30);
                         return date;
-                    }),
+                    })(),
                 });
                 // console.log($(ismc).val());
                 // console.log(localPickup);
