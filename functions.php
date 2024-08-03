@@ -101,7 +101,7 @@ add_action( 'woocommerce_before_order_notes', 'true_custom_checkout_field' );
 function true_custom_checkout_field() {
 	// выводим поле функцией woocommerce_form_field()
 	woocommerce_form_field( 
-		'billing_contactmethod', 
+		'datepicker', 
 		array(
 			'type'          => 'text', // text, textarea, select, radio, checkbox, password
 			'required'	=> true, // по сути только добавляет значок "*" и всё
@@ -110,6 +110,13 @@ function true_custom_checkout_field() {
 			'label_class'   => 'true-label', // класс лейбла
 		)
 	);
+}
+
+add_action( 'woocommerce_before_order_notes', 'datepicker_init' );
+function datepicker_init() {
+	?>
+	<script> var datepicker = new Datepicker('#datepicker'); </script> 
+	<?php
 }
 
 
