@@ -297,9 +297,6 @@ function new_custom_checkout_field_script() {
             //DATEPICKER
             // Utility function for datepicker init
             function datepicker_init () {
-
-                console.log($(ismc).val());
-                console.log(localPickup);
                 if ($(ismc).val() == localPickup) {
                     var startDate = 0;
                 } else {
@@ -325,35 +322,6 @@ function new_custom_checkout_field_script() {
                 });
                 
                 datepicker.disableDate([new Date(2024,7,5)]);
-
-                // console.log(startDate);
-
-                // var datepicker = new Datepicker('#datepicker', {
-
-                //     min: (function(){
-                //     var date = new Date();
-                //     date.setDate(date.getDate()+1);
-                //     // console.log(startDate);
-                //     // console.log(date);
-                //     return date;
-                //     })(),
-                
-                //     // 30 days in the future
-                //     max: (function(){
-                //     var date = new Date();
-                //     date.setDate(date.getDate() + 30);
-                //     return date;
-                //     })(),
-                
-                //     openOn: "today",
-
-                //     onInit: (function(){console.log('hi')}),
-                
-                //     without: [(function(){
-                //         var date = new Date(2024,7,5);
-                //         return date;
-                //     })(),]
-                // });
             }
 
             var shipping_method = $(ism).val();
@@ -650,7 +618,7 @@ function plnt_check_cart_item_stock() {
 --------------------------------------------------------------*/
 
 
-add_action( 'woocommerce_before_order_notes', 'true_custom_checkout_field' );
+//add_action( 'woocommerce_before_order_notes', 'true_custom_checkout_field' );
 
 function true_custom_checkout_field() {
 	// выводим поле функцией woocommerce_form_field()
@@ -666,7 +634,7 @@ function true_custom_checkout_field() {
 	);
 }
 
-add_action( 'woocommerce_checkout_update_order_meta', 'true_save_field', 25 );
+//add_action( 'woocommerce_checkout_update_order_meta', 'true_save_field', 25 );
  
 function true_save_field( $order_id ){
  
@@ -675,7 +643,7 @@ function true_save_field( $order_id ){
 	}
 }
 
-add_action( 'woocommerce_admin_order_data_after_billing_address', 'true_print_field_value', 25 );
+//add_action( 'woocommerce_admin_order_data_after_billing_address', 'true_print_field_value', 25 );
  
 function true_print_field_value( $order ) {
  
