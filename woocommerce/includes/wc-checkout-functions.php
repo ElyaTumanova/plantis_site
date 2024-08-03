@@ -666,6 +666,14 @@ function true_custom_checkout_field() {
 	);
 }
 
+add_action( 'woocommerce_checkout_update_order_meta', 'true_save_field', 25 );
+ 
+function true_save_field( $order_id ){
+ 
+	if( ! empty( $_POST[ 'datepicker' ] ) ) {
+		update_post_meta( $order_id, 'datepicker', sanitize_text_field( $_POST[ 'datepicker' ] ) );
+	}
+}
 /*--------------------------------------------------------------
 # Thankyou page
 --------------------------------------------------------------*/
