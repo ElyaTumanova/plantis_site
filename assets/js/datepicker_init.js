@@ -17,7 +17,7 @@ var datepicker = new Datepicker('#datepicker', {
 
     without: [(function(){
         var date = new Date();
-        date.setDate(date.deserialize('05/08/2024'));
+        date.setDate('05/08/2024');
         return date;
       })(),]
   });
