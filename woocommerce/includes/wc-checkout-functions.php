@@ -294,6 +294,45 @@ function new_custom_checkout_field_script() {
                 }
             });
 	
+            //DATEPICKER
+            // Utility function for datepicker init
+            function datepicker_init (shipping_method) {
+                console.log(shipping_method);
+                var startDate = 1;
+                var datepicker = new Datepicker('#datepicker', {
+
+                    min: (function(){
+                    var date = new Date();
+                    date.setDate(date.getDate()-startDate);
+                    return date;
+                    })(),
+                
+                    // 30 days in the future
+                    max: (function(){
+                    var date = new Date();
+                    date.setDate(date.getDate() + 30);
+                    return date;
+                    })(),
+                
+                    openOn: "today",
+                
+                    without: [(function(){
+                        var date = new Date(2024,7,5);
+                        return date;
+                    })(),]
+                });
+            }
+
+            var shipping_method = $(ism).val();
+
+            //Datepicker init
+            setTimeout(function(){
+                datepicker_init (shipping_method);
+            }, 100);
+
+            $( 'form.checkout' ).on( 'change', ism, function() {
+                datepicker_init (shipping_method);
+            })
         });
     </script>
     <?php
