@@ -297,6 +297,8 @@ function new_custom_checkout_field_script() {
             //DATEPICKER
             // Utility function for datepicker init
             function datepicker_init () {
+
+                var datepicker = new AirDatepicker('#datepicker');
                 // console.log($(ismc).val());
                 // console.log(localPickup);
                 // if ($(ismc).val() == localPickup) {
@@ -307,44 +309,44 @@ function new_custom_checkout_field_script() {
 
                 // console.log(startDate);
 
-                var datepicker = new Datepicker('#datepicker', {
+                // var datepicker = new Datepicker('#datepicker', {
 
-                    min: (function(){
-                    var date = new Date();
-                    date.setDate(date.getDate()+1);
-                    // console.log(startDate);
-                    // console.log(date);
-                    return date;
-                    })(),
+                //     min: (function(){
+                //     var date = new Date();
+                //     date.setDate(date.getDate()+1);
+                //     // console.log(startDate);
+                //     // console.log(date);
+                //     return date;
+                //     })(),
                 
-                    // 30 days in the future
-                    max: (function(){
-                    var date = new Date();
-                    date.setDate(date.getDate() + 30);
-                    return date;
-                    })(),
+                //     // 30 days in the future
+                //     max: (function(){
+                //     var date = new Date();
+                //     date.setDate(date.getDate() + 30);
+                //     return date;
+                //     })(),
                 
-                    openOn: "today",
+                //     openOn: "today",
 
-                    onInit: (function(){console.log('hi')}),
+                //     onInit: (function(){console.log('hi')}),
                 
-                    without: [(function(){
-                        var date = new Date(2024,7,5);
-                        return date;
-                    })(),]
-                });
+                //     without: [(function(){
+                //         var date = new Date(2024,7,5);
+                //         return date;
+                //     })(),]
+                // });
             }
 
             var shipping_method = $(ism).val();
 
             // Datepicker init
-            // setTimeout(function(){
-            //     datepicker_init ();
-            // }, 100);
+            setTimeout(function(){
+                datepicker_init ();
+            }, 100);
 
-            // $( 'form.checkout' ).on( 'change', ism, function() {
-            //     datepicker_init ();
-            // })
+            $( 'form.checkout' ).on( 'change', ism, function() {
+                datepicker_init ();
+            })
         });
     </script>
     <?php

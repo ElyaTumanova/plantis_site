@@ -25,4 +25,4 @@
 //     })(),]
 // });
 
-var datepicker = new AirDatepicker('#datepicker')
+// var datepicker = new AirDatepicker('#datepicker')
