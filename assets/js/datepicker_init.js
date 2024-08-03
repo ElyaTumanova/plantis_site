@@ -1,1 +1,1 @@
-<script> var datepicker = new Datepicker('#datepicker'); </script> 
+var datepicker = new Datepicker('#datepicker');
