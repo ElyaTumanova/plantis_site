@@ -299,7 +299,8 @@ function new_custom_checkout_field_script() {
             function datepicker_init () {
 
                 var datepicker = new AirDatepicker('#datepicker', {
-                    minDate: new Date()
+                    minDate: new Date(),
+                    maxDate: new Date() + 30,
                 });
                 // console.log($(ismc).val());
                 // console.log(localPickup);
