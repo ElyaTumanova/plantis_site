@@ -11,5 +11,7 @@ var datepicker = new Datepicker('#datepicker', {
       var date = new Date();
       date.setDate(date.getDate() + 30);
       return date;
-    })()
+    })(),
+
+    without: [08/05/2024]()
   });
