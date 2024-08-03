@@ -3,8 +3,6 @@ var datepicker = new Datepicker('#datepicker', {
     min: (function(){
       var date = new Date();
       date.setDate(date.getDate());
-      date_string = toValue([date]);
-      console.log(date_string);
       return date;
     })(),
 
