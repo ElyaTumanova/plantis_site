@@ -298,7 +298,9 @@ function new_custom_checkout_field_script() {
             // Utility function for datepicker init
             function datepicker_init () {
 
-                var datepicker = new AirDatepicker('#datepicker');
+                var datepicker = new AirDatepicker('#datepicker', {
+                    minDate: new Date();
+                });
                 // console.log($(ismc).val());
                 // console.log(localPickup);
                 // if ($(ismc).val() == localPickup) {
