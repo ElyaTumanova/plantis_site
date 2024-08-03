@@ -112,12 +112,7 @@ function true_custom_checkout_field() {
 	);
 }
 
-add_action( 'woocommerce_before_order_notes', 'datepicker_init' );
-function datepicker_init() {
-	?>
-	<script> var datepicker = new Datepicker('#datepicker'); </script> 
-	<?php
-}
+
 
 
 

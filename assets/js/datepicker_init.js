@@ -1,0 +1,1 @@
+<script> var datepicker = new Datepicker('#datepicker'); </script> 
