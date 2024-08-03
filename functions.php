@@ -78,22 +78,6 @@ function plnt_check_page() {
 //add_action( 'wp_footer', 'plnt_check_page' );
 
 
-add_action( 'woocommerce_before_order_notes', 'true_custom_checkout_field' );
-
-function true_custom_checkout_field() {
-	// выводим поле функцией woocommerce_form_field()
-	woocommerce_form_field( 
-		'datepicker', 
-		array(
-			'type'          => 'text', // text, textarea, select, radio, checkbox, password
-			'required'	=> true, // по сути только добавляет значок "*" и всё
-			'class'         => array( 'true-field', 'form-row-wide' ), // массив классов поля
-			'label'         => 'Date',
-			'label_class'   => 'true-label', // класс лейбла
-		)
-	);
-}
-
 
 
 
