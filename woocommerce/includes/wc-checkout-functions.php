@@ -296,22 +296,22 @@ function new_custom_checkout_field_script() {
 	
             //DATEPICKER
             // Utility function for datepicker init
-            function datepicker_init (ismc) {
-                console.log($(ismc).val());
-                console.log(localPickup);
-                if ($(ismc).val() == localPickup) {
-                    var startDate = 0;
-                } else {
-                    var startDate = 1;
-                }
+            function datepicker_init () {
+                // console.log($(ismc).val());
+                // console.log(localPickup);
+                // if ($(ismc).val() == localPickup) {
+                //     var startDate = 0;
+                // } else {
+                //     var startDate = 1;
+                // }
 
-                console.log(startDate);
+                // console.log(startDate);
 
                 var datepicker = new Datepicker('#datepicker', {
 
                     min: (function(){
                     var date = new Date();
-                    date.setDate(date.getDate()+startDate);
+                    date.setDate(date.getDate()+1);
                     console.log(startDate);
                     console.log(date);
                     return date;
@@ -337,11 +337,11 @@ function new_custom_checkout_field_script() {
 
             //Datepicker init
             setTimeout(function(){
-                datepicker_init (ismc);
+                datepicker_init ();
             }, 100);
 
             $( 'form.checkout' ).on( 'change', ism, function() {
-                datepicker_init (ismc);
+                datepicker_init ();
             })
         });
     </script>
