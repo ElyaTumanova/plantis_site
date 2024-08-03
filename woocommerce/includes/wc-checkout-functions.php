@@ -313,7 +313,7 @@ function new_custom_checkout_field_script() {
                     var date = new Date();
                     date.setDate(date.getDate()+1);
                     // console.log(startDate);
-                    console.log(date);
+                    // console.log(date);
                     return date;
                     })(),
                 
