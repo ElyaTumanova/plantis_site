@@ -298,7 +298,12 @@ function new_custom_checkout_field_script() {
             // Utility function for datepicker init
             function datepicker_init (shipping_method) {
                 console.log(shipping_method);
-                var startDate = 1;
+                if ($(ismc).val() == localPickup) {
+                    var startDate = 1;
+                } else {
+                    var startDate = 0;
+                }
+                
                 var datepicker = new Datepicker('#datepicker', {
 
                     min: (function(){
@@ -323,15 +328,15 @@ function new_custom_checkout_field_script() {
                 });
             }
 
-            var shipping_method = $(ism).val();
+            // var shipping_method = $(ism).val();
 
             //Datepicker init
             setTimeout(function(){
-                datepicker_init (shipping_method);
+                datepicker_init (ismc);
             }, 100);
 
             $( 'form.checkout' ).on( 'change', ism, function() {
-                datepicker_init (shipping_method);
+                datepicker_init (ismc);
             })
         });
     </script>
