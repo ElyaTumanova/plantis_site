@@ -13,5 +13,7 @@ var datepicker = new Datepicker('#datepicker', {
       return date;
     })(),
 
-    without: [08/05/2024]()
+    openOn: "today",
+
+    without: [05.08.2024]
   });
