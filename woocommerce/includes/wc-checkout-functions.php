@@ -298,21 +298,27 @@ function new_custom_checkout_field_script() {
             // Utility function for datepicker init
             function datepicker_init () {
 
+                console.log($(ismc).val());
+                console.log(localPickup);
+                if ($(ismc).val() == localPickup) {
+                    var startDate = 0;
+                } else {
+                    var startDate = 1;
+                }
+
                 var datepicker = new AirDatepicker('#datepicker', {
-                    minDate: new Date(),
+                    minDate: (function(){
+                        var date = new Date();
+                        date.setDate(date.getDate() + startDate);
+                        return date;
+                    })(),
                     maxDate: (function(){
                         var date = new Date();
                         date.setDate(date.getDate() + 30);
                         return date;
                     })(),
                 });
-                // console.log($(ismc).val());
-                // console.log(localPickup);
-                // if ($(ismc).val() == localPickup) {
-                //     var startDate = 0;
-                // } else {
-                //     var startDate = 1;
-                // }
+                
 
                 // console.log(startDate);
 
