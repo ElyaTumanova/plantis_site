@@ -674,6 +674,15 @@ function true_save_field( $order_id ){
 		update_post_meta( $order_id, 'datepicker', sanitize_text_field( $_POST[ 'datepicker' ] ) );
 	}
 }
+
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'true_print_field_value', 25 );
+ 
+function true_print_field_value( $order ) {
+ 
+	if( $method = get_post_meta( $order->get_id(), 'datepicker', true ) ) {
+		echo '<p><strong>Дата доставки (самовывоза):</strong><br>' . esc_html( $method ) . '</p>';
+	}
+}
 /*--------------------------------------------------------------
 # Thankyou page
 --------------------------------------------------------------*/
