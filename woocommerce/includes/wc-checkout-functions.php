@@ -305,7 +305,7 @@ function new_custom_checkout_field_script() {
                     var startDate = 1;
                 }
 
-                var weekday = new Date('2024-08-05');
+                var weekday = new Date('2024-08-06');
 
                 var datepicker = new AirDatepicker('#datepicker', {
                     selectedDates: (function(){
