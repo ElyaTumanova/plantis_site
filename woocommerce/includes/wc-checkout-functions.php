@@ -312,10 +312,10 @@ function new_custom_checkout_field_script() {
                         var date = new Date();
                         date.setDate(date.getDate() + startDate);
                         console.log(date);
-                        // if date = weekday {
-                        //     console.log('hi');
-                        //     //date = date + 1;
-                        // }
+                        if (date = weekday) {
+                            console.log('hi');
+                            date.setDate(date.getDate() + 1);
+                        }
                         return date;
                     })(),
                     minDate: (function(){
