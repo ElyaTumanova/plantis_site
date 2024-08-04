@@ -121,8 +121,8 @@ function new_custom_checkout_field_script() {
     $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';
     ?>
     <script>
-		deliveryDate = document.querySelector('#e_deliverydate_field');
-		deliveryInterval = document.querySelector('#orddd_time_slot_field');
+		deliveryDate = document.querySelector('#datepicker_field');
+		deliveryInterval = document.querySelector('#additional_delivery_interval_field');
         additionalAddress = document.querySelector('.additional-address-field');
 
         inn_field = document.querySelector('#<?php echo $inn_field; ?>');
