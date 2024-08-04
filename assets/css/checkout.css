@@ -391,16 +391,6 @@ label[for=additional_inn] {
     text-align: center;
 }
 
-#additional_delivery_interval_field .woocommerce-input-wrapper input[type=radio] {
-    position: relative;
-    z-index: 1;
-    opacity: 1;
-}
-
-#additional_delivery_interval_field .woocommerce-input-wrapper input[type=radio]:checked {
-    opacity: 0;
-}
-
 #additional_delivery_interval_field .woocommerce-input-wrapper input[type=radio]:checked + label {
     background-color: #3a3a3a;
     color: #fff;
