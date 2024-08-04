@@ -437,9 +437,10 @@ function true_fields( $field, $key, $args, $value ) {
  
 		$field = '<p class="form-row address-field additional-address-field form-row-wide" data-priority="60">
 			<span class="woocommerce-input-wrapper true-wrapper woocommerce-address-wrapper">
-				<input type="text" name="billing_address_2" id="billing_address_2" placeholder="Подъезд" value="">
-				<input type="text" name="billing_address_3" id="billing_address_3" placeholder="Этаж" value="">
-				<input type="text" name="billing_address_4" id="billing_address_4" placeholder="Дополнительная информация" value="">
+				<input type="text" name="billing_address_2" id="billing_address_2" placeholder="Квартира" value="">
+				<input type="text" name="billing_address_3" id="billing_address_3" placeholder="Подъезд" value="">
+				<input type="text" name="billing_address_4" id="billing_address_4" placeholder="Этаж" value="">
+				<input type="text" name="billing_address_5" id="billing_address_5" placeholder="Дополнительная информация" value="">
 			</span>
 		</p>';
  
@@ -459,16 +460,20 @@ function true_process_fields( $data ) {
  
 	// получаем данные из глобального $_POST, сначала парадную (подъезд)
 	if( ! empty( $_POST[ 'billing_address_2' ] ) ) {
-		$fields[] = 'подъезд ' . $_POST[ 'billing_address_2' ];
+		$fields[] = 'квартира ' . $_POST[ 'billing_address_2' ];
+	}
+
+	if( ! empty( $_POST[ 'billing_address_3' ] ) ) {
+		$fields[] = 'подъезд ' . $_POST[ 'billing_address_3' ];
 	}
 	// затем этаж
-	if( ! empty( $_POST[ 'billing_address_3' ] ) ) {
-		$fields[] = 'этаж ' . $_POST[ 'billing_address_3' ];
+	if( ! empty( $_POST[ 'billing_address_4' ] ) ) {
+		$fields[] = 'этаж ' . $_POST[ 'billing_address_4' ];
 	}
 
 	// затем доп поля
-	if( ! empty( $_POST[ 'billing_address_4' ] ) ) {
-		$fields[] = ' ' . $_POST[ 'billing_address_4' ];
+	if( ! empty( $_POST[ 'billing_address_5' ] ) ) {
+		$fields[] = ' ' . $_POST[ 'billing_address_5' ];
 	}
 
 	// объединяем все заполненные данные запятой
