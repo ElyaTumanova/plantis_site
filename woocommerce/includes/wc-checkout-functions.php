@@ -312,7 +312,8 @@ function new_custom_checkout_field_script() {
                         var date = new Date();
                         date.setDate(date.getDate() + startDate);
                         console.log(date);
-                        if (date == weekday) {
+                        console.log(weekday);
+                        if (date = weekday) {
                             console.log('hi');
                             date.setDate(date.getDate() + 1);
                         }
