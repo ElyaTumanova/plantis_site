@@ -294,7 +294,9 @@ function new_custom_checkout_field_script() {
                 }
             });
 	
-            //DATEPICKER
+            /*--------------------------------------------------------------
+            # Datepicker
+            --------------------------------------------------------------*/
             // Utility function for datepicker init
             function datepicker_init () {
                 if ($(ismc).val() == localPickup) {
@@ -319,6 +321,7 @@ function new_custom_checkout_field_script() {
                         date.setDate(date.getDate() + 30);
                         return date;
                     })(),
+                    isMobile: true,
                 });
                 
                 datepicker.disableDate([new Date(2024,7,5)]);
@@ -612,45 +615,6 @@ function plnt_check_cart_item_stock() {
 }
 
 
-
-/*--------------------------------------------------------------
-# Datepicker
---------------------------------------------------------------*/
-
-
-//add_action( 'woocommerce_before_order_notes', 'true_custom_checkout_field' );
-
-function true_custom_checkout_field() {
-	// выводим поле функцией woocommerce_form_field()
-	woocommerce_form_field( 
-		'datepicker', 
-		array(
-			'type'          => 'text', // text, textarea, select, radio, checkbox, password
-			'required'	=> false, // по сути только добавляет значок "*" и всё
-			'class'         => array( 'true-field', 'form-row-wide' ), // массив классов поля
-			'label'         => 'Дата доставки (самовывоза)',
-			'label_class'   => 'true-label', // класс лейбла
-		)
-	);
-}
-
-//add_action( 'woocommerce_checkout_update_order_meta', 'true_save_field', 25 );
- 
-function true_save_field( $order_id ){
- 
-	if( ! empty( $_POST[ 'datepicker' ] ) ) {
-		update_post_meta( $order_id, 'datepicker', sanitize_text_field( $_POST[ 'datepicker' ] ) );
-	}
-}
-
-//add_action( 'woocommerce_admin_order_data_after_billing_address', 'true_print_field_value', 25 );
- 
-function true_print_field_value( $order ) {
- 
-	if( $method = get_post_meta( $order->get_id(), 'datepicker', true ) ) {
-		echo '<p><strong>Дата доставки (самовывоза):</strong><br>' . esc_html( $method ) . '</p>';
-	}
-}
 /*--------------------------------------------------------------
 # Thankyou page
 --------------------------------------------------------------*/
