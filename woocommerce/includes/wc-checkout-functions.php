@@ -305,6 +305,8 @@ function new_custom_checkout_field_script() {
                     var startDate = 1;
                 }
 
+                var weekday = '2024-08-05';
+
                 var datepicker = new AirDatepicker('#datepicker', {
                     selectedDates: (function(){
                         var date = new Date();
@@ -324,7 +326,7 @@ function new_custom_checkout_field_script() {
                     isMobile: true,
                 });
                 
-                datepicker.disableDate([new Date('2024-08-05')]);
+                datepicker.disableDate([new Date(weekday)]);
 
                 console.log (datepicker.viewDate);
             }
