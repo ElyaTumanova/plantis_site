@@ -310,9 +310,10 @@ function new_custom_checkout_field_script() {
                 var datepicker = new AirDatepicker('#datepicker', {
                     selectedDates: (function(){
                         var date = new Date();
-                        date.setDate(date.getDate() + startDate);
+                        //date.setDate(date.getDate() + startDate);
                         if date = weekday {
-                            date = date + 1;
+                            console.log('hi');
+                            //date = date + 1;
                         }
                         return date;
                     })(),
