@@ -311,10 +311,10 @@ function new_custom_checkout_field_script() {
                     selectedDates: (function(){
                         var date = new Date();
                         date.setDate(date.getDate() + startDate);
-                        console.log(date.getDate());
-                        console.log(weekday.getDate());
+                        // console.log(date.getDate());
+                        // console.log(weekday.getDate());
                         if (date.getDate() === weekday.getDate()) {
-                            console.log('hi');
+                            // console.log('hi');
                             date.setDate(date.getDate() + 1);
                         }
                         return date;
