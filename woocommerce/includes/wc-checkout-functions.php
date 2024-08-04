@@ -324,7 +324,7 @@ function new_custom_checkout_field_script() {
                     isMobile: true,
                 });
                 
-                datepicker.disableDate([new Date(2024,7,5)]);
+                datepicker.disableDate([new Date('2021-08-05')]);
             }
 
             var shipping_method = $(ism).val();
