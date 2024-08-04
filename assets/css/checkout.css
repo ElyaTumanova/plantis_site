@@ -325,10 +325,6 @@
     border: 1px solid #ccc;
 }
 
-label[for=additional_inn] {
-    display: none;
-}
-
 #billing_country_field {
     display:none; 
 }
@@ -417,6 +413,10 @@ label[for=additional_inn] {
     display: block;
     border-radius: 5px;
 } 
+
+label[for=additional_inn] {
+    display: none;
+}
 
 label.list-view {
     margin: 0 !important;
