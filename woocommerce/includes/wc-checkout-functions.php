@@ -311,9 +311,9 @@ function new_custom_checkout_field_script() {
                     selectedDates: (function(){
                         var date = new Date();
                         date.setDate(date.getDate() + startDate);
-                        console.log(date);
-                        console.log(weekday);
-                        if (date = weekday) {
+                        console.log(date.getDate());
+                        console.log(weekday.getDate());
+                        if (date.getDate() === weekday.getDate()) {
                             console.log('hi');
                             date.setDate(date.getDate() + 1);
                         }
