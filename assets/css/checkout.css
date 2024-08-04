@@ -370,6 +370,17 @@ label[for=additional_inn] {
     grid-area: comment;
 }
 
+#additional_delivery_interval_field label::before{
+    display: none;
+}
+
+#additional_delivery_interval_field .woocommerce-input-wrapper {
+    display: grid;
+    grid-template-columns: repeat( 2, 1fr);
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
 #orddd-checkout-fields {
     display: flex;
     column-gap: 30px;
