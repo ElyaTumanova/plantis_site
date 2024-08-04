@@ -313,7 +313,7 @@
 .woocommerce-additional-fields__field-wrapper textarea {
     padding: 14px 20px;
     width: 100%;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     border: 1px solid #ccc;
 }
 
@@ -352,6 +352,7 @@
     "comment comment";
     column-gap: 30px;
     row-gap: 30px;
+    margin-bottom: 30px;
 }
 
 #datepicker_field {
