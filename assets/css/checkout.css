@@ -397,6 +397,10 @@ label[for=additional_inn] {
     opacity: 1;
 }
 
+#additional_delivery_interval_field .woocommerce-input-wrapper input[type=radio]:checked {
+    opacity: 0;
+}
+
 #additional_delivery_interval_field .woocommerce-input-wrapper input[type=radio]:checked+#additional_delivery_interval_field .woocommerce-input-wrapper label {
     background: #3a3a3a;
     color: #fff;
