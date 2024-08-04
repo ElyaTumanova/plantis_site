@@ -397,7 +397,7 @@ label[for=additional_inn] {
     border: 1px solid #ccc;
 }
 
-#orddd-checkout-fields label, #datepicker_field label {
+#orddd-checkout-fields label, .woocommerce-additional-fields__field-wrapper label {
     margin-bottom: 10px;
     display: block;
     border-radius: 5px;
