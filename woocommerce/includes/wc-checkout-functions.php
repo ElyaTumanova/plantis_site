@@ -305,15 +305,13 @@ function new_custom_checkout_field_script() {
                     var startDate = 1;
                 }
 
-                var weekday = new Date('2024-08-06');
+                var weekend = new Date('2024-08-06');
 
                 var datepicker = new AirDatepicker('#datepicker', {
                     selectedDates: (function(){
                         var date = new Date();
                         date.setDate(date.getDate() + startDate);
-                        // console.log(date.getDate());
-                        // console.log(weekday.getDate());
-                        if (date.getDate() === weekday.getDate()) {
+                        if (date.getDate() === weekend.getDate()) {
                             // console.log('hi');
                             date.setDate(date.getDate() + 1);
                         }
@@ -332,9 +330,7 @@ function new_custom_checkout_field_script() {
                     isMobile: true,
                 });
                 
-                datepicker.disableDate([weekday]);
-
-                // console.log (datepicker.viewDate);
+                datepicker.disableDate([weekend]);
             }
 
             var shipping_method = $(ism).val();

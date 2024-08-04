@@ -89,7 +89,8 @@ Container::make('theme_options', 'Настройки темы')
 		->add_tab( __('Header notice'), array(
 			Field::make( 'text', 'notice', 'Уведомление' ),
 			Field::make( 'checkbox', 'show_notice', __( 'Показать уведомление' ) )
-    				->set_option_value( 'yes' )
+    				->set_option_value( 'yes' ),
+			Field::make( 'text', 'weekend', 'Выходной (формат ГГГГ-ММ-ДД)' ),
 	   ));
 
 // Add second options page under 'Basic Options'
