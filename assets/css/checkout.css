@@ -396,7 +396,7 @@ label[for=additional_inn] {
     color: #fff;
 }
 
-#orddd-checkout-fields {
+/* #orddd-checkout-fields {
     display: flex;
     column-gap: 30px;
 }
@@ -416,13 +416,13 @@ label[for=additional_inn] {
     margin-bottom: 10px;
     display: block;
     border-radius: 5px;
-}
+} */
 
 label.list-view {
     margin: 0 !important;
 }
 
-div#orddd_list_view_select {
+/* div#orddd_list_view_select {
     grid-template-columns: repeat( 2, 1fr) !important;
     column-gap: 10px !important;
     row-gap: 10px !important;
@@ -434,7 +434,7 @@ div#orddd_list_view_select {
 
 #orddd_time_slot_field .optional {
     display: none;
-}
+} */
 
 /* время доставки #adaptive*/
 
