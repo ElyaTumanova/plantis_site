@@ -334,11 +334,11 @@
 }
 
 #billing_address_2, #billing_address_3 {
-    margin-right: 30px;
+    margin-right: 15px;
 }
 
 #billing_address_2, #billing_address_3, #billing_address_4 {
-    max-width: calc(33% - 20px);
+    max-width: calc(33% - 10px);
     border-radius: 3px;
 }
 
