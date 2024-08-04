@@ -560,6 +560,7 @@ label.list-view {
     position: absolute;
     z-index: -1;
     opacity: 0;
+    width: fit-content;
   }
 
   /* для элемента label связанного с .order_wrap input[type=radio] */
