@@ -350,7 +350,7 @@ label[for=additional_inn] {
 
 .woocommerce-additional-fields__field-wrapper {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat( 2, 1fr);
     grid-template-rows: auto auto;
     grid-template-areas: "date interval"
     "comment comment";
