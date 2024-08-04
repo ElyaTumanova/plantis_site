@@ -312,7 +312,7 @@ function new_custom_checkout_field_script() {
                         var date = new Date();
                         date.setDate(date.getDate() + startDate);
                         console.log(date);
-                        if (date = weekday) {
+                        if (date === weekday) {
                             console.log('hi');
                             date.setDate(date.getDate() + 1);
                         }
@@ -333,7 +333,7 @@ function new_custom_checkout_field_script() {
                 
                 datepicker.disableDate([weekday]);
 
-                console.log (datepicker.viewDate);
+                // console.log (datepicker.viewDate);
             }
 
             var shipping_method = $(ism).val();
