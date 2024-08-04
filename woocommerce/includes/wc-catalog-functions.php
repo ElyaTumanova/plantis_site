@@ -62,7 +62,7 @@ function plnt_catalog_sidebar() {
 			<?php 
 			echo do_shortcode('[br_filter_single filter_id=56529]'); // цена  \\56529 //6055
 			if (!is_shop()) {
-				echo do_shortcode('[br_filter_single filter_id=6056]'); // высота //56530 //6056
+				echo do_shortcode('[br_filter_single filter_id=56530]'); // высота //56530 //6056
 				echo do_shortcode('[br_filter_single filter_id=56533]'); //	полив //56533 //6109
 				echo do_shortcode('[br_filter_single filter_id=56538]'); // освещение //56538 //11115
 				echo do_shortcode('[br_filter_single filter_id=56539]'); // влажность //56539 //11116
@@ -89,7 +89,7 @@ function plnt_catalog_filters_main_area() {
 	?>
     <div class="catalog__filter-wrap">
 		<div class="catalog__filter-metki">
-			<?php echo do_shortcode('[br_filter_single filter_id=10989]') //Подборки //56536 //10989?>  
+			<?php echo do_shortcode('[br_filter_single filter_id=56536]') //Подборки //56536 //10989?>  
 		</div>
 		<div class = "catalog__mob-filter-wrap"> 
 			<?php woocommerce_catalog_ordering() ?>
