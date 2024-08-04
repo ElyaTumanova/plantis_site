@@ -353,7 +353,7 @@ label[for=additional_inn] {
     column-gap: 30px;
 }
 
-#orddd-checkout-fields p {
+#orddd-checkout-fields p, #datepicker_field {
     width: calc(50% - 15px);
     margin-bottom: 30px;
 }
@@ -364,7 +364,7 @@ label[for=additional_inn] {
     border: 1px solid #ccc;
 }
 
-#orddd-checkout-fields label {
+#orddd-checkout-fields label, #datepicker_field label {
     margin-bottom: 10px;
     display: block;
     border-radius: 5px;
