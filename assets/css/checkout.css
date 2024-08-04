@@ -348,12 +348,34 @@ label[for=additional_inn] {
 
 /* время доставки */
 
+.woocommerce-additional-fields__field-wrapper {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: "date interval"
+    "comment comment";
+    column-gap: 30px;
+    row-gap: 30px;
+}
+
+#datepicker_field {
+    grid-area: date;
+}
+
+#additional_delivery_interval_field {
+    grid-area: interval;
+}
+
+#order_comments_field {
+    grid-area: comment;
+}
+
 #orddd-checkout-fields {
     display: flex;
     column-gap: 30px;
 }
 
-#orddd-checkout-fields p, #datepicker_field {
+#orddd-checkout-fields p {
     width: calc(50% - 15px);
     margin-bottom: 30px;
 }
