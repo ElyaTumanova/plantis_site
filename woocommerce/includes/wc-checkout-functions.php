@@ -326,7 +326,7 @@ function new_custom_checkout_field_script() {
                 
                 datepicker.disableDate([new Date('2024-08-05')]);
 
-                console.log (viewDate);
+                console.log (datepicker.viewDate);
             }
 
             var shipping_method = $(ism).val();
