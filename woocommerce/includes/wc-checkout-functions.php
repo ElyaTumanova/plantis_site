@@ -305,12 +305,15 @@ function new_custom_checkout_field_script() {
                     var startDate = 1;
                 }
 
-                var weekday = '2024-08-05';
+                var weekday = new Date('2024-08-05');
 
                 var datepicker = new AirDatepicker('#datepicker', {
                     selectedDates: (function(){
                         var date = new Date();
                         date.setDate(date.getDate() + startDate);
+                        if date = weekday {
+                            date = date + 1;
+                        }
                         return date;
                     })(),
                     minDate: (function(){
@@ -326,7 +329,7 @@ function new_custom_checkout_field_script() {
                     isMobile: true,
                 });
                 
-                datepicker.disableDate([new Date(weekday)]);
+                datepicker.disableDate([weekday]);
 
                 console.log (datepicker.viewDate);
             }
