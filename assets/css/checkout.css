@@ -410,13 +410,13 @@ label[for=additional_inn] {
     padding: 14px 20px;
     width: 100%;
     border: 1px solid #ccc;
-}
+}*/
 
-#orddd-checkout-fields label, .woocommerce-additional-fields__field-wrapper label {
+.woocommerce-additional-fields__field-wrapper label {
     margin-bottom: 10px;
     display: block;
     border-radius: 5px;
-} */
+} 
 
 label.list-view {
     margin: 0 !important;
@@ -458,8 +458,8 @@ label.list-view {
         grid-template-areas: "date"
         "interval"
         "comment";
-        column-gap: 30px;
-        row-gap: 30px;
+        column-gap: 15px;
+        row-gap: 15px;
     }
 
     #additional_delivery_interval_field .woocommerce-input-wrapper {
@@ -487,8 +487,8 @@ label.list-view {
         grid-template-areas: "date"
         "interval"
         "comment";
-        column-gap: 30px;
-        row-gap: 30px;
+        column-gap: 15px;
+        row-gap: 15px;
     }
 
     #additional_delivery_interval_field .woocommerce-input-wrapper {
