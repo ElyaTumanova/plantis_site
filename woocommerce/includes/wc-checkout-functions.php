@@ -109,7 +109,7 @@ function truemisha_shipping_by_weight( $rates, $package ) {
 
     if ($cart_weight >= 10) {
        foreach( $rates as $rate) {
-        $rate->cost = 500++;
+        $rate->cost = $rate->cost + 500;
        }
     }
  
