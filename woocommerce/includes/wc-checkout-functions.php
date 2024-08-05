@@ -307,7 +307,7 @@ function new_custom_checkout_field_script() {
                 } else {
                     var startDate = 1;
                 }
-                var weekend_str = <?php echo $weekend_string; ?>;
+                var weekend_str = '<?php echo $weekend_string; ?>';
                 console.log(weekend_str);
                 var weekend = new Date('2024-08-06');
 
