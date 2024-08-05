@@ -98,7 +98,7 @@ function checkout_validation_unique_error( $data, $errors ){
 
 /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
 
-//add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 30, 2 );
+add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 30, 2 );
  
 function truemisha_shipping_by_weight( $rates, $package ) {
     global $local_pickup;
