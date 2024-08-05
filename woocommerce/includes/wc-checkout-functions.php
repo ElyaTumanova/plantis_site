@@ -311,7 +311,7 @@ function new_custom_checkout_field_script() {
                 var weekend = new Date(weekend_str);
 
                 let button = {
-                    content: 'Ok',
+                    content: 'OK',
                     className: 'custom-button-classname',
                     onClick: (datepicker) => {
                         datepicker.hide();
