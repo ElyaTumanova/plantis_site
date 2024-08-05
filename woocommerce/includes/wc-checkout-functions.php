@@ -333,11 +333,11 @@ function new_custom_checkout_field_script() {
                     })(),
                     isMobile: true,
                 });
-                console.log(weekend);
-                datepicker.disableDate([weekend]);
+                
+                if (weekend_str) {
+                    datepicker.disableDate([weekend]);
+                }
             }
-
-            var shipping_method = $(ism).val();
 
             // Datepicker init
             setTimeout(function(){
