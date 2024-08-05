@@ -310,6 +310,14 @@ function new_custom_checkout_field_script() {
                 var weekend_str = '<?php echo $weekend_string; ?>';
                 var weekend = new Date(weekend_str);
 
+                let button = {
+                    content: 'Ok',
+                    className: 'custom-button-classname',
+                    onClick: (datepicker) => {
+                        datepicker.hide();
+                    }
+                }
+
                 var datepicker = new AirDatepicker('#datepicker', {
                     selectedDates: (function(){
                         var date = new Date();
@@ -331,6 +339,8 @@ function new_custom_checkout_field_script() {
                         return date;
                     })(),
                     isMobile: true,
+
+                    buttons: [button] 
                 });
                 
                 if (weekend) {
