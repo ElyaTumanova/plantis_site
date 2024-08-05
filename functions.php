@@ -73,9 +73,18 @@ function plnt_check_page() {
 		print_r( $canon_url );
 		echo '</pre>';
 	}
+
+	// вес товаров в корзине
+	$cart_weight = WC()->cart->cart_contents_weight;
+    echo '<pre>';
+	print_r( $cart_weight );
+	echo '</pre>';
+    if ($cart_weight >= 10) {
+        echo '<script>console.log("hi")</script>';
+    }
 }
 
-//add_action( 'wp_footer', 'plnt_check_page' );
+add_action( 'wp_footer', 'plnt_check_page' );
 
 
 
