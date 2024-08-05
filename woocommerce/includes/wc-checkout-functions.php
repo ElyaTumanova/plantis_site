@@ -333,7 +333,7 @@ function new_custom_checkout_field_script() {
                     })(),
                     isMobile: true,
                 });
-                
+                console.log(weekend);
                 datepicker.disableDate([weekend]);
             }
 
