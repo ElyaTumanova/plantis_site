@@ -98,7 +98,7 @@ function checkout_validation_unique_error( $data, $errors ){
 
 /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
 
-add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 30, 2 );
+add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 10, 2 );
  
 function truemisha_shipping_by_weight( $rates, $package ) {
     global $local_pickup;
@@ -413,7 +413,7 @@ function new_truemisha_remove_shipping_method( $rates, $package ) {
 
 /* стоимость доставки в зависимости от суммы заказа*/
 	
-//add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
+add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
  
 function new_truemisha_remove_shipping_on_price( $rates, $package ) {
 
