@@ -299,12 +299,16 @@ function new_custom_checkout_field_script() {
             --------------------------------------------------------------*/
             // Utility function for datepicker init
             function datepicker_init () {
+
+                <?php $weekend_string = carbon_get_theme_option('weekend')?>
+                
                 if ($(ismc).val() == localPickup) {
                     var startDate = 0;
                 } else {
                     var startDate = 1;
                 }
-
+                var weekend_str = <?php echo $weekend_string; ?>;
+                console.log(weekend_str);
                 var weekend = new Date('2024-08-06');
 
                 var datepicker = new AirDatepicker('#datepicker', {
