@@ -102,6 +102,7 @@ add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 25, 2 )
  
 function truemisha_shipping_by_weight( $rates, $package ) {
     global $local_pickup;
+    global $delivery_inMKAD;
 
 	// вес товаров в корзине
 	$cart_weight = WC()->cart->cart_contents_weight;
@@ -113,7 +114,7 @@ function truemisha_shipping_by_weight( $rates, $package ) {
     }
  
 	// ID метода доставки
-	$method_id = $local_pickup;
+	$method_id = $delivery_inMKAD;
  
 	if ( isset( $rates[ $method_id ] ) ) {
 		// тут должна быть ваша собственная формула, моя это:
