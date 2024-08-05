@@ -334,7 +334,7 @@ function new_custom_checkout_field_script() {
                     isMobile: true,
                 });
                 
-                if (weekend_str) {
+                if (weekend) {
                     datepicker.disableDate([weekend]);
                 }
             }
