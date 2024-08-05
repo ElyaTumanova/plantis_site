@@ -76,7 +76,9 @@ function plnt_check_page() {
 
 	// вес товаров в корзине
 	$cart_weight = WC()->cart->cart_contents_weight;
-	pr( $cart_weight );
+    echo '<pre>';
+	print_r( $cart_weight );
+	echo '</pre>';
     if ($cart_weight >= 10) {
         echo '<script>console.log("hi")</script>';
     }
