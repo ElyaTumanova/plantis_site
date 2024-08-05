@@ -98,7 +98,7 @@ function checkout_validation_unique_error( $data, $errors ){
 
 /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
 
-add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 25, 2 );
+add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 30, 2 );
  
 function truemisha_shipping_by_weight( $rates, $package ) {
     global $local_pickup;
@@ -121,7 +121,7 @@ function truemisha_shipping_by_weight( $rates, $package ) {
 		// стоимость доставки = 5 * вес товаров в корзине
 		$rates[ $method_id ]->cost = 5 * round ( $cart_weight );
 	}
- 
+
 	return $rates;
  
 }
