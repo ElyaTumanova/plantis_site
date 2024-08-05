@@ -310,6 +310,7 @@ function new_custom_checkout_field_script() {
                 var weekend_str = '<?php echo $weekend_string; ?>';
                 console.log(weekend_str);
                 var weekend = new Date(weekend_str);
+                console.log(typeof weekend);
 
                 var datepicker = new AirDatepicker('#datepicker', {
                     selectedDates: (function(){
