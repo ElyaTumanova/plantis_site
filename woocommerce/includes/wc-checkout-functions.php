@@ -101,7 +101,8 @@ function checkout_validation_unique_error( $data, $errors ){
 add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 25, 2 );
  
 function truemisha_shipping_by_weight( $rates, $package ) {
- 
+    global $local_pickup;
+
 	// вес товаров в корзине
 	$cart_weight = WC()->cart->cart_contents_weight;
     echo $cart_weight;
@@ -111,7 +112,7 @@ function truemisha_shipping_by_weight( $rates, $package ) {
     }
  
 	// ID метода доставки
-	$method_id = 'flat_rate:84';
+	$method_id = $local_pickup;
  
 	if ( isset( $rates[ $method_id ] ) ) {
 		// тут должна быть ваша собственная формула, моя это:
