@@ -413,7 +413,7 @@ function new_truemisha_remove_shipping_method( $rates, $package ) {
 
 /* стоимость доставки в зависимости от суммы заказа*/
 	
-add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
+//add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
  
 function new_truemisha_remove_shipping_on_price( $rates, $package ) {
 
