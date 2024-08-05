@@ -124,7 +124,7 @@ function truemisha_shipping_by_weight( $rates, $package ) {
 	// 	$rates[ $method_id ]->cost = 5 * round ( $cart_weight );
 	// }
 
-    echo '<pre>';
+        echo '<pre>';
         print_r( $rates );
         echo '</pre>';
 
