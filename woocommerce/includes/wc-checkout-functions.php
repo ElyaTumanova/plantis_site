@@ -108,9 +108,9 @@ function truemisha_shipping_by_weight( $rates, $package ) {
 
     if ($cart_weight >= 10) {
        foreach( $rates as $rate) {
-        if (!$rate[$local_pickup]) {
+        // if (!$rate[$local_pickup]) {
             $rate->cost = $rate->cost + 500;
-        }
+        // }
        }
     }
  
@@ -122,6 +122,10 @@ function truemisha_shipping_by_weight( $rates, $package ) {
 	// 	// стоимость доставки = 5 * вес товаров в корзине
 	// 	$rates[ $method_id ]->cost = 5 * round ( $cart_weight );
 	// }
+
+    echo '<pre>';
+	print_r( $rates );
+	echo '</pre>';
 
 	return $rates;
  
