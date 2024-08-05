@@ -106,21 +106,21 @@ function truemisha_shipping_by_weight( $rates, $package ) {
 
 	// вес товаров в корзине
 	$cart_weight = WC()->cart->cart_contents_weight;
-    echo '<pre>';
-	print_r( $local_pickup );
-	echo '</pre>';
+
     if ($cart_weight >= 10) {
-        echo '<script>console.log("hi")</script>';
+       foreach( $rates as $rate) {
+        $rate->cost = 500++;
+       }
     }
  
 	// ID метода доставки
-	$method_id = $delivery_inMKAD;
+	//$method_id = $delivery_inMKAD;
  
-	if ( isset( $rates[ $method_id ] ) ) {
-		// тут должна быть ваша собственная формула, моя это:
-		// стоимость доставки = 5 * вес товаров в корзине
-		$rates[ $method_id ]->cost = 5 * round ( $cart_weight );
-	}
+	// if ( isset( $rates[ $method_id ] ) ) {
+	// 	// тут должна быть ваша собственная формула, моя это:
+	// 	// стоимость доставки = 5 * вес товаров в корзине
+	// 	$rates[ $method_id ]->cost = 5 * round ( $cart_weight );
+	// }
 
 	return $rates;
  
