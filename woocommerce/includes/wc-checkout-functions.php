@@ -102,14 +102,15 @@ add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 30, 2 )
  
 function truemisha_shipping_by_weight( $rates, $package ) {
     global $local_pickup;
-    global $delivery_inMKAD;
 
 	// вес товаров в корзине
 	$cart_weight = WC()->cart->cart_contents_weight;
 
     if ($cart_weight >= 10) {
        foreach( $rates as $rate) {
-        $rate->cost = $rate->cost + 500;
+        if (!$rate[$local_pickup]) {
+            $rate->cost = $rate->cost + 500;
+        }
        }
     }
  
