@@ -104,7 +104,7 @@ function truemisha_shipping_by_weight( $rates, $package ) {
  
 	// вес товаров в корзине
 	$cart_weight = WC()->cart->cart_contents_weight;
-
+    echo $cart_weight;
     if ($cart_weight >= 10) {
         echo '<script>conasole.log("hi")</script>';
     }
