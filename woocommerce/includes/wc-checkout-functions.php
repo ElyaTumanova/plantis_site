@@ -96,6 +96,33 @@ function checkout_validation_unique_error( $data, $errors ){
     }
 }
 
+/*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
+
+add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 25, 2 );
+ 
+function truemisha_shipping_by_weight( $rates, $package ) {
+ 
+	// вес товаров в корзине
+	$cart_weight = WC()->cart->cart_contents_weight;
+
+    if ($cart_weight >= 10) {
+        echo '<script>conasole.log("hi")</script>';
+    }
+ 
+	// ID метода доставки
+	$method_id = 'flat_rate:84';
+ 
+	if ( isset( $rates[ $method_id ] ) ) {
+		// тут должна быть ваша собственная формула, моя это:
+		// стоимость доставки = 5 * вес товаров в корзине
+		$rates[ $method_id ]->cost = 5 * round ( $cart_weight );
+	}
+ 
+	return $rates;
+ 
+}
+
+
 /* ПОЛЯ ФОРМЫ ОФОРМЛЕНИЯ ЗАКАЗА*/
 
 // Conditional Show hide checkout fields based on chosen shipping methods*/
@@ -236,15 +263,6 @@ function new_custom_checkout_field_script() {
                 } else {
 					if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
 				};
-
-                // setTimeout(function(){
-                //      if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
-                // {
-                //     if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'};
-                // } else {
-				// 	if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
-				// }
-                // }, 500);
             });
 			
 			 $( 'form.checkout' ).on( 'change', ism, function() {
@@ -254,15 +272,6 @@ function new_custom_checkout_field_script() {
                 } else {
 					if (deliveryInterval) {deliveryInterval.classList.remove('d-none'); deliveryInterval.style.display='block'};
 				}
-                
-                // setTimeout(function(){
-                //      if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
-                // {
-				// 	if (deliveryInterval) {deliveryInterval.classList.add('d-none'); deliveryInterval.style.display='none'};
-                // } else {
-				// 	if (deliveryInterval) {deliveryInterval.classList.remove('d-none'); deliveryInterval.style.display='block'};
-				// }
-                // }, 500);
             });
 
             // When shipping method is changed (Live event)
