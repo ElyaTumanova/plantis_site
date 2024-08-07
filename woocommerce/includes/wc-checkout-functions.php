@@ -101,8 +101,6 @@ function checkout_validation_unique_error( $data, $errors ){
 add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 30, 2 );
  
 function truemisha_shipping_by_weight( $rates, $package ) {
-    global $local_pickup;
-
 	// вес товаров в корзине
 	$cart_weight = WC()->cart->cart_contents_weight;
 
