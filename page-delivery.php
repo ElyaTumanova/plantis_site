@@ -12,6 +12,7 @@ get_header(); ?>
     $out_mkad_small_urg = carbon_get_theme_option('out_mkad_small_urg');
     $min_free_delivery = carbon_get_theme_option('min_free_delivery');
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+    $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
 ?>
 
 <div class="content-area">
@@ -49,6 +50,7 @@ get_header(); ?>
                     <p class="info__note">В итоговой стоимости заказа не учитывается цена доставки!</p>
                     <p>Мы работаем без выходных, поэтому <strong>доставка осуществляется каждый день.</strong></p>
                     <?php if($min_free_delivery) { echo '<p>При заказе товаров на сумму <strong>свыше '.$min_free_delivery.' рублей</strong> доставка осуществляется бесплатно.</p>';}?>				
+                    <?php if($large_delivery_markup) { echo '<p>При заказе <strong>крупногабаритного товара</strong> стоимость доставки увеличивается на '.$large_delivery_markup.' рублей.</p>';}?>				
                 </div>
 
                 <h3 class="info__heading heading-2">Интервалы доставки</h3>
