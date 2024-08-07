@@ -114,19 +114,6 @@ function truemisha_shipping_by_weight( $rates, $package ) {
         }
        }
     }
- 
-	// ID метода доставки
-	//$method_id = $delivery_inMKAD;
- 
-	// if ( isset( $rates[ $method_id ] ) ) {
-	// 	// тут должна быть ваша собственная формула, моя это:
-	// 	// стоимость доставки = 5 * вес товаров в корзине
-	// 	$rates[ $method_id ]->cost = 5 * round ( $cart_weight );
-	// }
-
-    echo '<pre>';
-    print_r( $rates );
-    echo '</pre>';
 
 	return $rates;
  
