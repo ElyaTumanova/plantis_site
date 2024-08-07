@@ -101,6 +101,7 @@ function checkout_validation_unique_error( $data, $errors ){
 add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 30, 2 );
  
 function truemisha_shipping_by_weight( $rates, $package ) {
+    $large_delivery_markup = carbon_get_theme_option('large_delivery_markup')
 	// вес товаров в корзине
 	$cart_weight = WC()->cart->cart_contents_weight;
 
@@ -108,7 +109,7 @@ function truemisha_shipping_by_weight( $rates, $package ) {
        foreach( $rates as $rate) {
         
         if ( 'local_pickup' !== $rate->method_id ) {
-            $rate->cost = $rate->cost + 500;
+            $rate->cost = $rate->cost + $large_delivery_markup;
         }
        }
     }
