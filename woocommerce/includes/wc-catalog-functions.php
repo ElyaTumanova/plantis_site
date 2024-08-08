@@ -553,11 +553,11 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
     return $template_content;
 }
 
-add_filter('BeRocket_AAPF_template_full_content', 'plnt_berocket_gift_filter_header', 4000, 1);
-add_filter('BeRocket_AAPF_template_full_element_content', 'plnt_berocket_gift_filter_header', 4000, 1);
+//add_filter('BeRocket_AAPF_template_full_content', 'plnt_berocket_gift_filter_header', 4000, 1);
+//add_filter('BeRocket_AAPF_template_full_element_content', 'plnt_berocket_gift_filter_header', 4000, 1);
 function plnt_berocket_gift_filter_header($template_content) {
 	if ($template_content['template']['attributes']['data-name']==='Подборки') {
-    //$template_content['template']['content']['header']['content']['title']['content'] = 'В подарок';
+    //$template_content['template']['content']['header']['content']['title']['content']['title'] = 'В подарок';
 	echo '<pre>';
 	print_r( $template_content );
 	echo '</pre>';
