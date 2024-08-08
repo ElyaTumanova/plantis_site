@@ -309,16 +309,30 @@ function new_custom_checkout_field_script() {
 
                 <?php $weekend_string = carbon_get_theme_option('weekend')?>
                 
-                //определяем первую доступную дату
-                if ($(ismc).val() == localPickup) {
-                    var startDate = 0;
-                } else {
-                    var startDate = 1;
-                }
-                
                 //выходной
                 var weekend_str = '<?php echo $weekend_string; ?>';
                 var weekend = new Date(weekend_str);
+
+                
+                //определяем первую доступную дату
+                var startDate;
+
+                if ($(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 ||$(ismc).val() == urgentPickup3 ||$(ismc).val() == urgentPickup4) {
+                    startDate = []
+                } else {
+                    var date = new Date();                    
+                    if ($(ismc).val() == localPickup) {   
+                        startDate = date.setDate(date.getDate() + 0);
+                    } else {
+                        startDate = date.setDate(date.getDate() + 1);
+                    }
+                    if (startDate === weekend.getDate()) {
+                        // console.log('hi');
+                        startDate = startDate + 1;
+                    }
+                    cosole.log (startDate);
+                }
+                
 
                 //кнопка ОК
                 let button = {
