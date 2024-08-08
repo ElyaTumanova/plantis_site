@@ -46,25 +46,23 @@ function plnt_catalog_grid_end() {
     <?php 
 };
 
-// // #filters ID's
-global $filter_podborki_id;
-global $filter_in_stock_id;
-global $filter_price_id;
-global $filter_height_id;
-global $filter_poliv_id;
-global $filter_svet_id;
-global $filter_vlaga_id;
-global $filter_diametr_id;
-global $filter_color_id;
-global $filter_forma_id;
-global $filter_materilal_id;
-global $filter_volume_id;
-global $filter_gift_id; 
-global $filter_active_id; 
 
 // // вывод меню и фильтров в сайд баре  #filters #berocket
 add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar',20);
 function plnt_catalog_sidebar() {
+	// // #filters ID's
+	global $filter_in_stock_id;
+	global $filter_price_id;
+	global $filter_height_id;
+	global $filter_poliv_id;
+	global $filter_svet_id;
+	global $filter_vlaga_id;
+	global $filter_diametr_id;
+	global $filter_color_id;
+	global $filter_forma_id;
+	global $filter_materilal_id;
+	global $filter_volume_id;
+	global $filter_gift_id; 
 	?>
     <div class="catalog__sidebar modal-mob">
 		<p class="catalog__sidebar-filters-heading">Фильтры</p>
@@ -101,6 +99,9 @@ add_action('woocommerce_before_shop_loop','plnt_catalog_filters_main_area', 20);
 
 function plnt_catalog_filters_main_area() {
 	global $filter_icon;
+	// // #filters ID's
+	global $filter_podborki_id;
+	global $filter_active_id;
 	?>
     <div class="catalog__filter-wrap">
 		<div class="catalog__filter-metki">
