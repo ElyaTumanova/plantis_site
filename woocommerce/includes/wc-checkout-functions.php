@@ -316,7 +316,7 @@ function new_custom_checkout_field_script() {
                 
                 //определяем первую доступную дату
                 var startDate = new Date();
-                var selectedDate;
+                var selectedDate = false;
 
                 var date = new Date();                    
                 if ($(ismc).val() == localPickup) {   
@@ -330,12 +330,12 @@ function new_custom_checkout_field_script() {
                     document.querySelector('#datepicker').value= "";
                 } else {
                     console.log(startDate);
-                    if (startDate.getDate() === weekend.getDate()) {
-                    console.log(weekend.getDate());
-                    selectedDate = startDate.setDate(startDate.getDate() + 1);
-                    } else {
-                        selectedDate = startDate;
-                    }
+                    // if (startDate.getDate() === weekend.getDate()) {
+                    // console.log(weekend.getDate());
+                    // selectedDate = startDate.setDate(startDate.getDate() + 1);
+                    // } else {
+                    //     selectedDate = startDate;
+                    // }
                 }
                 
 
