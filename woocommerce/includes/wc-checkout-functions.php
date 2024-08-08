@@ -321,6 +321,7 @@ function new_custom_checkout_field_script() {
                 
                 if ($(ismc).val() == localPickup) {  
                     startDate = date.setDate(date.getDate() + 0);
+                    $('input[name=additional_delivery_interval]').prop('checked',false);
                 } else {
                     startDate = date.setDate(date.getDate() + 1);
                 }
