@@ -319,10 +319,11 @@ function new_custom_checkout_field_script() {
                 var selectedDate = false;
                 var date = new Date();                    
                 
-                if ($(ismc).val() == localPickup) {   
-                    startDate = date.setDate(date.getDate() + 0);
+                if ($(ismc).val() == localPickup) { 
+                    console.log (startDate);  
+                    startDate = new Date().setDate(date.getDate() + 0);
                 } else {
-                    startDate = date.setDate(date.getDate() + 1);
+                    startDate = new Date().setDate(date.getDate() + 1);
                 }
                 console.log (startDate);
 
