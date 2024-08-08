@@ -325,7 +325,7 @@ function new_custom_checkout_field_script() {
                     startDate = date.setDate(date.getDate() + 1);
                 }
                 if (startDate === weekend.getDate()) {
-                    // console.log('hi');
+                    console.log('hi');
                     startDate = startDate + 1;
                 }
 
