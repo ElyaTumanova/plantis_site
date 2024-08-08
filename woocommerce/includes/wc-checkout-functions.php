@@ -317,14 +317,14 @@ function new_custom_checkout_field_script() {
                 //определяем первую доступную дату
                 var startDate = new Date();
                 var selectedDate = false;
-                console.log (startDate.toDateString());
-
                 var date = new Date();                    
+                
                 if ($(ismc).val() == localPickup) {   
                     startDate = date.setDate(date.getDate() + 0);
                 } else {
                     startDate = date.setDate(date.getDate() + 1);
                 }
+                console.log (startDate.toDateString());
 
                 if ($(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 ||$(ismc).val() == urgentPickup3 ||$(ismc).val() == urgentPickup4) {
                     selectedDate = false;
