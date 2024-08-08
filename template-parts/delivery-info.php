@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     $out_mkad_small_urg = carbon_get_theme_option('out_mkad_small_urg');
     $min_free_delivery = carbon_get_theme_option('min_free_delivery');
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+    $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
 ?>
 
 <div class="delivery-info">
@@ -52,5 +53,12 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div>За пределы МКАД (от 5км)</div>
             <div>индивидуально</div>
         </div>
+        <?php if($large_delivery_markup) { 
+            echo '
+                <div class="delivery_table__row">
+                    <div>Крупногабаритная доставка</div>
+                    <div>+ '.$large_delivery_markup.'₽</div>
+                </div>
+            ';}?>
     </div>
 </div>
