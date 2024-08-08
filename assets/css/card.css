@@ -470,8 +470,8 @@ input[type="number"] {
     justify-content: space-between;
     padding-bottom: 5px;
     padding-top: 5px;
-    column-gap: 10px;
-    font-weight: 500;
+    column-gap: 7px;
+    font-weight: 600;
 }
 
 .delivery_table__row {
@@ -483,7 +483,7 @@ input[type="number"] {
 }
 
 .delivery_table__row div:last-child {
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .delivery_table__header {
@@ -491,7 +491,7 @@ input[type="number"] {
     line-height: 16px;
     margin: 0;
     margin-bottom: 7px;
-    font-weight: 600;
+    font-weight: 800;
 }
 
 @media (max-width: 767px) {
