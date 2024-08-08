@@ -317,7 +317,7 @@ function new_custom_checkout_field_script() {
                 //определяем первую доступную дату
                 var startDate = new Date();
                 var selectedDate = false;
-                console.log (startDate);
+                console.log (startDate.toDateString());
 
                 var date = new Date();                    
                 if ($(ismc).val() == localPickup) {   
