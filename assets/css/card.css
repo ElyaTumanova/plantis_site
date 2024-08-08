@@ -201,12 +201,18 @@
 }
 
 .product_title {
-    font-size: 24px;
+    font-size: 40px;
     font-weight: 700;
     text-transform: none;
     line-height: 1.1;
     margin-bottom: 15px;
     color: var(--text);
+}
+
+@media (max-width: 767px) {
+    .product_title {
+        font-size: 24px;
+    }
 }
 
 .card__grid .summary .woocommerce-product-details__short-description {
