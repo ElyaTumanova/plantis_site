@@ -309,14 +309,18 @@ function new_custom_checkout_field_script() {
 
                 <?php $weekend_string = carbon_get_theme_option('weekend')?>
                 
+                //определяем первую доступную дату
                 if ($(ismc).val() == localPickup) {
                     var startDate = 0;
                 } else {
                     var startDate = 1;
                 }
+                
+                //выходной
                 var weekend_str = '<?php echo $weekend_string; ?>';
                 var weekend = new Date(weekend_str);
 
+                //кнопка ОК
                 let button = {
                     content: 'OK',
                     className: 'custom-button-classname',
@@ -326,15 +330,16 @@ function new_custom_checkout_field_script() {
                 }
 
                 var datepicker = new AirDatepicker('#datepicker', {
-                    selectedDates: (function(){
-                        var date = new Date();
-                        date.setDate(date.getDate() + startDate);
-                        if (date.getDate() === weekend.getDate()) {
-                            // console.log('hi');
-                            date.setDate(date.getDate() + 1);
-                        }
-                        return date;
-                    })(),
+                    // selectedDates: (function(){
+                    //     var date = new Date();
+                    //     date.setDate(date.getDate() + startDate);
+                    //     if (date.getDate() === weekend.getDate()) {
+                    //         // console.log('hi');
+                    //         date.setDate(date.getDate() + 1);
+                    //     }
+                    //     return date;
+                    // })(),
+                    selectedDates: [];
                     minDate: (function(){
                         var date = new Date();
                         date.setDate(date.getDate() + startDate);
