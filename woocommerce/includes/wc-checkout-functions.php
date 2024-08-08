@@ -316,11 +316,9 @@ function new_custom_checkout_field_script() {
                 
                 //определяем первую доступную дату
                 var startDate;
-                console.log ('hi');
 
                 if ($(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 ||$(ismc).val() == urgentPickup3 ||$(ismc).val() == urgentPickup4) {
                     startDate = [];
-                    console.log (startDate);
                 } else {
                     var date = new Date();                    
                     if ($(ismc).val() == localPickup) {   
@@ -332,7 +330,7 @@ function new_custom_checkout_field_script() {
                         // console.log('hi');
                         startDate = startDate + 1;
                     }
-                    console.log (startDate);
+                    console.log (startDate.getDate());
                 }
                 
 
