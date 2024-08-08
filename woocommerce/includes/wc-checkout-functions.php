@@ -316,24 +316,26 @@ function new_custom_checkout_field_script() {
                 
                 //определяем первую доступную дату
                 var startDate;
+                var selectedDate;
+
+                var date = new Date();                    
+                if ($(ismc).val() == localPickup) {   
+                    startDate = date.setDate(date.getDate() + 0);
+                } else {
+                    startDate = date.setDate(date.getDate() + 1);
+                }
+                if (startDate === weekend.getDate()) {
+                    // console.log('hi');
+                    startDate = startDate + 1;
+                }
 
                 if ($(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 ||$(ismc).val() == urgentPickup3 ||$(ismc).val() == urgentPickup4) {
-                    startDate = false;
+                    selectedDate = false;
                     document.querySelector('#datepicker').value= "";
                     console.log('hihi');
                 } else {
-                    var date = new Date();                    
-                    if ($(ismc).val() == localPickup) {   
-                        startDate = date.setDate(date.getDate() + 0);
-                    } else {
-                        startDate = date.setDate(date.getDate() + 1);
-                    }
-                    if (startDate === weekend.getDate()) {
-                        // console.log('hi');
-                        startDate = startDate + 1;
-                    }
+                    selectedDate = startDate;
                 }
-                console.log (startDate);
                 
 
                 //кнопка ОК
@@ -355,7 +357,9 @@ function new_custom_checkout_field_script() {
                     //     }
                     //     return date;
                     // })(),
-                    selectedDates: startDate,
+                    selectedDates: selectedDate,
+                    minDate: startDate,
+                    maxDate: startDate+30,
                     // minDate: (function(){
                     //     var date = new Date();
                     //     date.setDate(date.getDate() + startDate);
