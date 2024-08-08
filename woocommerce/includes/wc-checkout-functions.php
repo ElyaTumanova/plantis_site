@@ -330,8 +330,8 @@ function new_custom_checkout_field_script() {
                         // console.log('hi');
                         startDate = startDate + 1;
                     }
-                    console.log (startDate);
                 }
+                console.log (startDate);
                 
 
                 //кнопка ОК
