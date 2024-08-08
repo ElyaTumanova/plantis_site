@@ -328,8 +328,8 @@ function new_custom_checkout_field_script() {
                 if ($(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 ||$(ismc).val() == urgentPickup3 ||$(ismc).val() == urgentPickup4) {
                     selectedDate = false;
                     document.querySelector('#datepicker').value= "";
-                    console.log('hihi');
                 } else {
+                    console.log(weekend);
                     if (startDate.getDate() === weekend.getDate()) {
                     console.log(weekend.getDate());
                     selectedDate = startDate.setDate(startDate.getDate() + 1);
