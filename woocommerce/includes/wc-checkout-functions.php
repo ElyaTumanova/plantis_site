@@ -356,16 +356,16 @@ function new_custom_checkout_field_script() {
                     //     return date;
                     // })(),
                     selectedDates: [];
-                    minDate: (function(){
-                        var date = new Date();
-                        date.setDate(date.getDate() + startDate);
-                        return date;
-                    })(),
-                    maxDate: (function(){
-                        var date = new Date();
-                        date.setDate(date.getDate() + 30);
-                        return date;
-                    })(),
+                    // minDate: (function(){
+                    //     var date = new Date();
+                    //     date.setDate(date.getDate() + startDate);
+                    //     return date;
+                    // })(),
+                    // maxDate: (function(){
+                    //     var date = new Date();
+                    //     date.setDate(date.getDate() + 30);
+                    //     return date;
+                    // })(),
                     isMobile: true,
 
                     buttons: [button] 
