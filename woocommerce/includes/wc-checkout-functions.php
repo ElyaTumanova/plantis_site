@@ -516,7 +516,7 @@ function true_process_fields( $data ) {
 /*минимальная сумма заказа для кашпо Teez*/
 add_action( 'woocommerce_checkout_process', 'min_amount_for_category' );
 // add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category' );
- 
+
 function min_amount_for_category(){
     global $treez_cat_id;
     $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
