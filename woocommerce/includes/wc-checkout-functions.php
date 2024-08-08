@@ -330,7 +330,7 @@ function new_custom_checkout_field_script() {
                         // console.log('hi');
                         startDate = startDate + 1;
                     }
-                    console.log (startDate.getDate());
+                    console.log (startDate);
                 }
                 
 
@@ -353,7 +353,7 @@ function new_custom_checkout_field_script() {
                     //     }
                     //     return date;
                     // })(),
-                    selectedDates: [],
+                    selectedDates: startDate,
                     // minDate: (function(){
                     //     var date = new Date();
                     //     date.setDate(date.getDate() + startDate);
