@@ -471,6 +471,7 @@ input[type="number"] {
     padding-bottom: 5px;
     padding-top: 5px;
     column-gap: 10px;
+    font-weight: 500;
 }
 
 .delivery_table__row {
@@ -482,7 +483,7 @@ input[type="number"] {
 }
 
 .delivery_table__row div:last-child {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .delivery_table__header {
