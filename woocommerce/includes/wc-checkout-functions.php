@@ -217,21 +217,21 @@ function new_custom_checkout_field_script() {
                 }        
             }, 100);
 			
-			// setTimeout(function(){
-            //          if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
-            //     {
-            //         if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'};
-            //     } else {
-			// 		if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
-			// 	}
-            // }, 100);
+			setTimeout(function(){
+                     if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
+                {
+                    if (deliveryDate) {deliveryDate.classList.add('d-none')};
+                } else {
+					if (deliveryDate) {deliveryDate.classList.remove('d-none')};
+				}
+            }, 100);
 			
 			setTimeout(function(){
                      if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
                 {
-					if (deliveryInterval) {deliveryInterval.classList.add('d-none'); deliveryInterval.style.display='none'};
+					if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
                 } else {
-					if (deliveryInterval) {deliveryInterval.classList.remove('d-none'); deliveryInterval.style.display='block'};
+					if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
 				}
             }, 100);
 
@@ -254,21 +254,21 @@ function new_custom_checkout_field_script() {
 				};
             });
 
-            // $( 'form.checkout' ).on( 'change', ism, function() {
-			// 	if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
-            //     {
-            //         if (deliveryDate) {deliveryDate.classList.add('d-none'); deliveryDate.style.display='none'};
-            //     } else {
-			// 		if (deliveryDate) {deliveryDate.classList.remove('d-none'); deliveryDate.style.display='block'};
-			// 	};
-            // });
+            $( 'form.checkout' ).on( 'change', ism, function() {
+				if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
+                {
+                    if (deliveryDate) {deliveryDate.classList.add('d-none')};
+                } else {
+					if (deliveryDate) {deliveryDate.classList.remove('d-none')};
+				};
+            });
 			
 			 $( 'form.checkout' ).on( 'change', ism, function() {
 				if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
                 {
-					if (deliveryInterval) {deliveryInterval.classList.add('d-none'); deliveryInterval.style.display='none'};
+					if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
                 } else {
-					if (deliveryInterval) {deliveryInterval.classList.remove('d-none'); deliveryInterval.style.display='block'};
+					if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
 				}
             });
 
@@ -347,22 +347,8 @@ function new_custom_checkout_field_script() {
                 }
 
                 var datepicker = new AirDatepicker('#datepicker', {
-                    // selectedDates: (function(){
-                    //     var date = new Date();
-                    //     date.setDate(date.getDate() + startDate);
-                    //     if (date.getDate() === weekend.getDate()) {
-                    //         // console.log('hi');
-                    //         date.setDate(date.getDate() + 1);
-                    //     }
-                    //     return date;
-                    // })(),
                     selectedDates: selectedDate,
                     minDate: startDate,
-                    // minDate: (function(){
-                    //     var date = new Date();
-                    //     date.setDate(date.getDate() + startDate);
-                    //     return date;
-                    // })(),
                     maxDate: (function(){
                         var date = new Date();
                         date.setDate(date.getDate() + 30);
