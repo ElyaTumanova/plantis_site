@@ -329,7 +329,7 @@ function new_custom_checkout_field_script() {
                     selectedDate = false;
                     document.querySelector('#datepicker').value= "";
                 } else {
-                    console.log(weekend);
+                    console.log(startDate);
                     if (startDate.getDate() === weekend.getDate()) {
                     console.log(weekend.getDate());
                     selectedDate = startDate.setDate(startDate.getDate() + 1);
