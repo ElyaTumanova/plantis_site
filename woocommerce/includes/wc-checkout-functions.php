@@ -359,7 +359,11 @@ function new_custom_checkout_field_script() {
                     // })(),
                     selectedDates: selectedDate,
                     minDate: startDate,
-                    maxDate: startDate+30,
+                    maxDate: startDate + 30,
+                    // maxDate: (function(){
+                    //     startDate + 30;
+                    //     return startDate;
+                    // })(),
                     // minDate: (function(){
                     //     var date = new Date();
                     //     date.setDate(date.getDate() + startDate);
