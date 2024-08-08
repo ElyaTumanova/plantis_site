@@ -242,6 +242,10 @@
     opacity: 0.7;
 }
 
+.woocommerce-product-attributes-item--weight {
+    display: none;
+}
+
 @media (max-width:1024px) {
     .woocommerce-product-attributes  {
         font-size: 14px;
