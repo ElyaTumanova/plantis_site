@@ -315,7 +315,7 @@ function new_custom_checkout_field_script() {
 
                 
                 //определяем первую доступную дату
-                var startDate;
+                var startDate = new Date();
                 var selectedDate;
 
                 var date = new Date();                    
