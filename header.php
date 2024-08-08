@@ -20,10 +20,11 @@
 			webvisor:true,
 			ecommerce:"dataLayer"
 	});
+	window.dataLayer = window.dataLayer || [];
 	</script>
 	<noscript><div><img src="https://mc.yandex.ru/watch/87781741" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 	<!-- /Yandex.Metrika counter -->
-	<!-- window.dataLayer = window.dataLayer || []; -->
+	
 	<!-- Top.Mail.Ru counter -->
 	<script type="text/javascript">
 	var _tmr = window._tmr || (window._tmr = []);
