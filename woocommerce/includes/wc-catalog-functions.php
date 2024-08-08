@@ -46,6 +46,21 @@ function plnt_catalog_grid_end() {
     <?php 
 };
 
+// // #filters ID's
+global $filter_podborki_id;
+global $filter_in_stock_id;
+global $filter_price_id;
+global $filter_height_id;
+global $filter_poliv_id;
+global $filter_svet_id;
+global $filter_vlaga_id;
+global $filter_diametr_id;
+global $filter_color_id;
+global $filter_forma_id;
+global $filter_materilal_id;
+global $filter_volume_id;
+global $filter_gift_id; 
+global $filter_active_id; 
 
 // // вывод меню и фильтров в сайд баре  #filters #berocket
 add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar',20);
@@ -57,23 +72,23 @@ function plnt_catalog_sidebar() {
 		<?php plnt_catalog_menu() ?>
 		<div class="catalog__sidebar-filters">
 			<div class="catalog__instock-filter">
-				<?php echo do_shortcode('[br_filter_single filter_id=56534]') //товары в наличии //56534 //6110?>
+				<?php echo do_shortcode('[br_filter_single filter_id='.$filter_in_stock_id.']') //товары в наличии //56534 //6110?>
 			</div>
 			<?php 
-			echo do_shortcode('[br_filter_single filter_id=56529]'); // цена  \\56529 //6055
+			echo do_shortcode('[br_filter_single filter_id='.$filter_price_id.']'); // цена  \\56529 //6055
 			if (!is_shop()) {
-				echo do_shortcode('[br_filter_single filter_id=56530]'); // высота //56530 //6056
-				echo do_shortcode('[br_filter_single filter_id=56533]'); //	полив //56533 //6109
-				echo do_shortcode('[br_filter_single filter_id=56538]'); // освещение //56538 //11115
-				echo do_shortcode('[br_filter_single filter_id=56539]'); // влажность //56539 //11116
+				echo do_shortcode('[br_filter_single filter_id='.$filter_height_id.']'); // высота //56530 //6056
+				echo do_shortcode('[br_filter_single filter_id='.$filter_poliv_id.']'); //	полив //56533 //6109
+				echo do_shortcode('[br_filter_single filter_id='.$filter_svet_id.']'); // освещение //56538 //11115
+				echo do_shortcode('[br_filter_single filter_id='.$filter_vlaga_id.']'); // влажность //56539 //11116
 				//echo do_shortcode('[br_filter_single filter_id=12018]'); // автополив
-				echo do_shortcode('[br_filter_single filter_id=56540]'); // диаметр горшка //56540 //11117
+				echo do_shortcode('[br_filter_single filter_id='.$filter_diametr_id.']'); // диаметр горшка //56540 //11117
 				//echo do_shortcode('[br_filter_single filter_id=56545]'); // диаметр кашпо Treez //56545 //12017
-				echo do_shortcode('[br_filter_single filter_id=56532]'); // цвет //56532 //6108
-				echo do_shortcode('[br_filter_single filter_id=56541]'); // форма //56541 //12013
-				echo do_shortcode('[br_filter_single filter_id=56543]'); // материал //56543 //12015
-				echo do_shortcode('[br_filter_single filter_id=56544]'); // Объем //56544 //12016
-				echo do_shortcode('[br_filter_single filter_id=56535]'); // в подарок //56535 //10988
+				echo do_shortcode('[br_filter_single filter_id='.$filter_color_id.']'); // цвет //56532 //6108
+				echo do_shortcode('[br_filter_single filter_id='.$filter_forma_id.']'); // форма //56541 //12013
+				echo do_shortcode('[br_filter_single filter_id='.$filter_materilal_id.']'); // материал //56543 //12015
+				echo do_shortcode('[br_filter_single filter_id='.$filter_volume_id.']'); // Объем //56544 //12016
+				echo do_shortcode('[br_filter_single filter_id='.$filter_gift_id.']'); // в подарок //56535 //10988
 			}
 			?>
 		</div>
@@ -86,7 +101,6 @@ add_action('woocommerce_before_shop_loop','plnt_catalog_filters_main_area', 20);
 
 function plnt_catalog_filters_main_area() {
 	global $filter_icon;
-	global $filter_podborki_id;
 	?>
     <div class="catalog__filter-wrap">
 		<div class="catalog__filter-metki">
@@ -97,7 +111,7 @@ function plnt_catalog_filters_main_area() {
 			<div class="catalog__mob-filter-btn"><img src="<?php echo $filter_icon ?>" alt="Фильтр"></div>
 		</div>
 		<div class="catalog__filter-active">
-			<?php echo do_shortcode('[br_filter_single filter_id=56531]') //Активные фильтры //56531 //6057?>
+			<?php echo do_shortcode('[br_filter_single filter_id='.$filter_active_id.']') //Активные фильтры //56531 //6057?>
 		</div>
     </div>
     <?php 	

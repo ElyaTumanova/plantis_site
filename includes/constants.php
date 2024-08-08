@@ -98,6 +98,19 @@ if($site === 'http://new.plantis.shop') {
 
 	//#filters ID's
 	$filter_podborki_id = 10989;
+	$filter_in_stock_id = 6110;
+	$filter_price_id = 6055;
+	$filter_height_id = 6056;
+	$filter_poliv_id = 6109;
+	$filter_svet_id = 11115;
+	$filter_vlaga_id = 11116;
+	$filter_diametr_id = 11117;
+	$filter_color_id = 6108;
+	$filter_forma_id = 12013;
+	$filter_materilal_id = 12015;
+	$filter_volume_id = 12016;
+	$filter_gift_id = 10988;
+	$filter_active_id = 6057;
 
 
 } else {
@@ -119,6 +132,22 @@ if($site === 'http://new.plantis.shop') {
 
 	$payment_inn_chekbox = 'cheque';
 	$inn_field = 'additional_inn';
+
+	//#filters ID's
+	$filter_podborki_id = 56536;
+	$filter_in_stock_id = 56534;
+	$filter_price_id = 56529;
+	$filter_height_id = 56530;
+	$filter_poliv_id = 56533;
+	$filter_svet_id = 56538;
+	$filter_vlaga_id = 56539;
+	$filter_diametr_id = 56540;
+	$filter_color_id = 56532;
+	$filter_forma_id = 56541;
+	$filter_materilal_id = 56543;
+	$filter_volume_id = 56544;
+	$filter_gift_id = 56535;
+	$filter_active_id = 56531;
 }
 
 
