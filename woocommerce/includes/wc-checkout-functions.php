@@ -316,6 +316,7 @@ function new_custom_checkout_field_script() {
                 
                 //определяем первую доступную дату
                 var startDate;
+                console.log ('hi');
 
                 if ($(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 ||$(ismc).val() == urgentPickup3 ||$(ismc).val() == urgentPickup4) {
                     startDate = [];
