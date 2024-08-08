@@ -107,7 +107,7 @@ function truemisha_shipping_by_weight( $rates, $package ) {
         // вес товаров в корзине
         $cart_weight = WC()->cart->cart_contents_weight;
     
-        if ($cart_weight >= 10) {
+        if ($cart_weight >= 11) {
            foreach( $rates as $rate) {
             
             if ( 'local_pickup' !== $rate->method_id ) {

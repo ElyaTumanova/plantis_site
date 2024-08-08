@@ -86,10 +86,11 @@ add_action('woocommerce_before_shop_loop','plnt_catalog_filters_main_area', 20);
 
 function plnt_catalog_filters_main_area() {
 	global $filter_icon;
+	global $filter_podborki_id;
 	?>
     <div class="catalog__filter-wrap">
 		<div class="catalog__filter-metki">
-			<?php echo do_shortcode('[br_filter_single filter_id=56536]') //Подборки //56536 //10989?>  
+			<?php echo do_shortcode('[br_filter_single filter_id='.$filter_podborki_id.']') //Подборки //56536 //10989?>  
 		</div>
 		<div class = "catalog__mob-filter-wrap"> 
 			<?php woocommerce_catalog_ordering() ?>

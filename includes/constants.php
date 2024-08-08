@@ -96,6 +96,9 @@ if($site === 'http://new.plantis.shop') {
 	$payment_inn_chekbox = 'cheque'; //ID for payment checkbox
 	$inn_field = 'additional_inn'; //ID for INN field
 
+	//#filters ID's
+	$filter_podborki_id = 10989;
+
 
 } else {
 	// PLANTIS SHOP
