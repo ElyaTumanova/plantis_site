@@ -12,11 +12,11 @@
     }
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .woocommerce-breadcrumb {
         padding: 10px 10px 0px;
     }
-}
+} */
 
 
 @media (max-width: 1279px) {
