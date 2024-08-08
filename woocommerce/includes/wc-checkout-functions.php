@@ -324,7 +324,7 @@ function new_custom_checkout_field_script() {
                 } else {
                     startDate = date.setDate(date.getDate() + 1);
                 }
-                console.log (startDate.toDateString());
+                console.log (startDate);
 
                 if ($(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 ||$(ismc).val() == urgentPickup3 ||$(ismc).val() == urgentPickup4) {
                     selectedDate = false;
