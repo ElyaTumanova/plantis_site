@@ -324,17 +324,18 @@ function new_custom_checkout_field_script() {
                 } else {
                     startDate = date.setDate(date.getDate() + 1);
                 }
-                if (startDate === weekend.getDate()) {
-                    console.log('hi');
-                    startDate = startDate + 1;
-                }
 
                 if ($(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 ||$(ismc).val() == urgentPickup3 ||$(ismc).val() == urgentPickup4) {
                     selectedDate = false;
                     document.querySelector('#datepicker').value= "";
                     console.log('hihi');
                 } else {
-                    selectedDate = startDate;
+                    if (startDate.getDate() === weekend.getDate()) {
+                    console.log(weekend.getDate());
+                    selectedDate = startDate.setDate(startDate.getDate() + 1);
+                    } else {
+                        selectedDate = startDate;
+                    }
                 }
                 
 
