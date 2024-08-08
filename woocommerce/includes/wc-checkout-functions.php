@@ -318,7 +318,7 @@ function new_custom_checkout_field_script() {
                 var startDate;
 
                 if ($(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 ||$(ismc).val() == urgentPickup3 ||$(ismc).val() == urgentPickup4) {
-                    startDate = [];
+                    startDate = false;
                 } else {
                     var date = new Date();                    
                     if ($(ismc).val() == localPickup) {   
