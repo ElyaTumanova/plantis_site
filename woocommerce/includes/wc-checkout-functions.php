@@ -319,25 +319,21 @@ function new_custom_checkout_field_script() {
                 var selectedDate = false;
                 var date = new Date();                    
                 
-                if ($(ismc).val() == localPickup) { 
-                    console.log (startDate);  
-                    startDate = new Date().setDate(date.getDate() + 0);
+                if ($(ismc).val() == localPickup) {  
+                    startDate = date.setDate(date.getDate() + 0);
                 } else {
-                    startDate = new Date().setDate(date.getDate() + 1);
+                    startDate = date.setDate(date.getDate() + 1);
                 }
-                console.log (startDate);
 
                 if ($(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 ||$(ismc).val() == urgentPickup3 ||$(ismc).val() == urgentPickup4) {
                     selectedDate = false;
                     document.querySelector('#datepicker').value= "";
                 } else {
-                    console.log(startDate.toDateString());
-                    // if (startDate.getDate() === weekend.getDate()) {
-                    // console.log(weekend.getDate());
-                    // selectedDate = startDate.setDate(startDate.getDate() + 1);
-                    // } else {
-                    //     selectedDate = startDate;
-                    // }
+                    if (new Date(startDate).getDate() === weekend.getDate()) {
+                    selectedDate = new Date(startDate).setDate(new Date(startDate).getDate() + 1);
+                    } else {
+                        selectedDate = new Date(startDate);
+                    }
                 }
                 
 
