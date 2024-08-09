@@ -521,10 +521,10 @@ function plnt_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 
 // #filters добавляем классы к фильтрам #berocket для работы слайдера #swiper
 
-add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content', 4000, 2);
-add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content', 4000, 2);
+add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
+add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
 function some_custom_berocket_aapf_template_full_content($template_content) {
-	if ($template_content['template']['attributes']['data-name']==='Подборки') {
+	if ($template_content['template']['attributes']['id']==='bapf_13') {
 
 		array_push($template_content['template']['content']['filter']['attributes']['class'],'metki_swiper_wrap');
 		array_push($template_content['template']['content']['filter']['attributes']['class'],'swiper');
