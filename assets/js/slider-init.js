@@ -272,16 +272,9 @@ const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
 --------------------------------------------------------------*/
 
 const swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
-    // wrapperClass: 'plnt_filter',
-    // slideClass: 'plnt_filter_el',
-    // pagination: {
-    //     el: '.swiper-pagination',
-    //     clickable: true,
-    // },
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
-        // enabled: false,
     },
     // freeMode: true,
     slidesPerView: 'auto',
