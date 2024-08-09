@@ -541,26 +541,26 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 		}
 		$template_content['template']['content']['filter']['content']['list']['content'] = $new_elements;
 
-		// $template_content['template']['content'] = berocket_insert_to_array(
-		// 	$template_content['template']['content'],
-		// 	'filter',
-		// 	array(
-		// 		'custom_content' => '<div class="myslider-prev swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
-		// 		<div class="myslider-next swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>'
-		// 	),		
-		// 	true
-		// );
-
-
-		$template_content['template']['content']['filter']['content'] = berocket_insert_to_array(
-			$template_content['template']['content']['filter']['content'],
-			'list',
+		$template_content['template']['content'] = berocket_insert_to_array(
+			$template_content['template']['content'],
+			'filter',
 			array(
-				'custom_content' => '<div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
-				<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>'
+				'custom_content' => '<div class="myslider-prev swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+				<div class="myslider-next swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>'
 			),		
 			true
 		);
+
+
+		// $template_content['template']['content']['filter']['content'] = berocket_insert_to_array(
+		// 	$template_content['template']['content']['filter']['content'],
+		// 	'list',
+		// 	array(
+		// 		'custom_content' => '<div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+		// 		<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>'
+		// 	),		
+		// 	true
+		// );
 
 		// $template_content['template']['content']['filter']['content'] = berocket_insert_to_array(
 		// 	$template_content['template']['content']['filter']['content'],
