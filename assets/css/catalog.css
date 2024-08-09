@@ -998,7 +998,7 @@ ul.products {
     column-gap: 15px;
     /* flex-wrap: wrap; */
     row-gap: 10px;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
 }
 
 .catalog__filter-metki li:has(input[data-name="Неприхотливые"]) {
