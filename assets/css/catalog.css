@@ -996,7 +996,7 @@ ul.products {
 .catalog__filter-metki ul {
     display: flex;
     column-gap: 15px;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     row-gap: 10px;
 }
 
