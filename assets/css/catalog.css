@@ -996,8 +996,8 @@ ul.products {
 
 .metki_swiper_wrap {
     position: relative;
-    margin: 0 60px;
-    /* padding: 0 60px; */
+    /* margin: 0 60px; */
+    padding: 0 60px;
 }
 
 /* .metki_swiper_wrap:hover{
