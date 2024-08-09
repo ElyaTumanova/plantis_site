@@ -541,15 +541,15 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 		}
 		$template_content['template']['content']['filter']['content']['list']['content'] = $new_elements;
 
-		$template_content['template']['content'] = berocket_insert_to_array(
-			$template_content['template']['content'],
-			'filter',
-			array(
-				'custom_content' => '<div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
-				<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>'
-			),		
-			true
-		);
+		// $template_content['template']['content'] = berocket_insert_to_array(
+		// 	$template_content['template']['content'],
+		// 	'filter',
+		// 	array(
+		// 		'custom_content' => '<div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+		// 		<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>'
+		// 	),		
+		// 	true
+		// );
 		// $template_content['template']['content']['filter']['content'] = berocket_insert_to_array(
 		// 	$template_content['template']['content']['filter']['content'],
 		// 	'list',
@@ -560,9 +560,9 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 		// 	true
 		// );
 
-		echo '<pre>';
-		print_r( $template_content );
-		echo '</pre>';
+		// echo '<pre>';
+		// print_r( $template_content );
+		// echo '</pre>';
 	}
     return $template_content;
 }
@@ -570,7 +570,7 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 //add_filter('BeRocket_AAPF_template_full_content', 'plnt_berocket_gift_filter_header', 4000, 1);
 //add_filter('BeRocket_AAPF_template_full_element_content', 'plnt_berocket_gift_filter_header', 4000, 1);
 function plnt_berocket_gift_filter_header($template_content) {
-	if ($template_content['template']['attributes']['data-name']==='Подборки') {
+	if ($template_content['template']['attributes']['id']==='bapf_12') {
     //$template_content['template']['content']['header']['content']['title']['content']['title'] = 'В подарок';
 	echo '<pre>';
 	print_r( $template_content );
