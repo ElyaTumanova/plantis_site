@@ -1051,6 +1051,10 @@ ul.products {
     color: var(--accent-color) !important;
 }
 
+.metki_swiper_wrap {
+    position: relative;
+}
+
 /* активные фильтры */
 
 .catalog__filter-active {
