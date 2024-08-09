@@ -284,7 +284,7 @@ const swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
     },
     slidesPerView: 'auto',
     // slidesPerGroup: 7,
-    spaceBetween: 10,
+    spaceBetween: 5,
     loop: false,
     // breakpoints: {
     //     320: {
