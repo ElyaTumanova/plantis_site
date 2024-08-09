@@ -279,14 +279,11 @@ const swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
     //     clickable: true,
     // },
     navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-        // nextEl: '.myslider-next',
-        // prevEl: '.myslider-prev',
-        // navigation: {
-        //     enabled: true,
-        // },
+        // nextEl: '.swiper-button-next',
+        // prevEl: '.swiper-button-prev',
+        enabled: false,
     },
+    freeMode: true,
     slidesPerView: 'auto',
     // slidesPerGroup: 7,
     spaceBetween: 5,
