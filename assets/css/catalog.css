@@ -1000,6 +1000,10 @@ ul.products {
     /* padding: 0 60px; */
 }
 
+.metki_swiper_wrap:hover{
+    cursor: pointer;
+}
+
 .catalog__filter-metki  .bapf_head  {
     display: none;
 }
