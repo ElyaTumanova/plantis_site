@@ -528,13 +528,13 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 
 		array_push($template_content['template']['content']['filter']['attributes']['class'],'metki_swiper_wrap');
 		
-		$template_content['template']['content']['filter']['content']['list']['attributes']['class'] = 'plnt_filter';
+		$template_content['template']['content']['filter']['content']['list']['attributes']['class'] = 'swiper-wrapper';
 
 		$elements = $template_content['template']['content']['filter']['content']['list']['content'];
 		$new_elements = [];
 		$i = 0;
 		foreach($elements as $element) {
-			$element['attributes']['class'] = 'plnt_filter_el';
+			$element['attributes']['class'] = 'swiper-slide';
 			$new_elements[$i] = $element;
 			$i++;
 		}
