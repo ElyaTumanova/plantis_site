@@ -989,6 +989,10 @@ ul.products {
 
 /* метки */
 
+.catalog__filter-metki {
+    position: relative;
+}
+
 .catalog__filter-metki  .bapf_head  {
     display: none;
 }
@@ -1056,6 +1060,7 @@ ul.products {
 
 .metki_swiper_wrap {
     position: relative;
+    margin: 0 60px;
 }
 
 /* активные фильтры */
