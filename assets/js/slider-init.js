@@ -294,10 +294,13 @@ const swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
             enabled: false,
         },
         },
-        // 768: {
+        768: {
         // slidesPerView: 2,
         // slidesPerGroup: 2,
-        // },
+        navigation: {
+            enabled: false,
+        },
+        },
         // 1023: {
         // slidesPerView: 1,
         // slidesPerGroup: 1,
