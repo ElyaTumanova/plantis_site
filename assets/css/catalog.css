@@ -1031,17 +1031,18 @@ ul.products {
     }
 }
 
-.catalog__filter-metki  ul li input{
+.catalog__filter-metki ul li input{
     visibility: hidden;
 }
 
-.catalog__filter-metki  ul li {
-    border: solid 2px var(--accent-color);
-    padding: 3px 8px !important;
+.catalog__filter-metki ul li {
+    /* border: solid 2px var(--accent-color); */
+    padding: 6px 10px !important;
     border-radius: 20px;
     font-size: 16px;
     font-weight: 700;
     width: fit-content;
+    background-color: #ecedf2;
 }
 
 .catalog__filter-metki  ul li label{
