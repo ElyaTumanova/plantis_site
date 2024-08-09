@@ -282,7 +282,7 @@ const swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
-    slidesPerView: 1,
+    slidesPerView: 10,
     slidesPerGroup: 1,
     spaceBetween: 10,
     loop: false,
