@@ -562,6 +562,15 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 		// 	true
 		// );
 
+		$template_content['template']['content']['filter']['content'] = berocket_insert_to_array(
+			$template_content['template']['content']['filter']['content'],
+			'list',
+			array(
+				'custom_content' => '<div class="swiper-scrollbar"></div>'
+			),		
+			true
+		);
+
 		// echo '<pre>';
 		// print_r( $template_content );
 		// echo '</pre>';
