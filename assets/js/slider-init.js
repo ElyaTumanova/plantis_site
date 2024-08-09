@@ -283,24 +283,24 @@ const swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
         prevEl: '.swiper-button-prev',
     },
     slidesPerView: 7,
-    slidesPerGroup: 7,
+    // slidesPerGroup: 7,
     spaceBetween: 10,
     loop: false,
-    breakpoints: {
-        320: {
-        slidesPerView: 1,
-        slidesPerGroup: 1,
-        navigation: {
-            enabled: false,
-        },
-        },
-        768: {
-        slidesPerView: 2,
-        slidesPerGroup: 2,
-        },
-        1023: {
-        slidesPerView: 1,
-        slidesPerGroup: 1,
-        }
-    }
+    // breakpoints: {
+    //     320: {
+    //     slidesPerView: 1,
+    //     slidesPerGroup: 1,
+    //     navigation: {
+    //         enabled: false,
+    //     },
+    //     },
+    //     768: {
+    //     slidesPerView: 2,
+    //     slidesPerGroup: 2,
+    //     },
+    //     1023: {
+    //     slidesPerView: 1,
+    //     slidesPerGroup: 1,
+    //     }
+    // }
 });
