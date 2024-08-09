@@ -572,9 +572,9 @@ add_filter('BeRocket_AAPF_template_full_element_content', 'plnt_berocket_gift_fi
 function plnt_berocket_gift_filter_header($template_content) {
 	if ($template_content['template']['attributes']['id']==='bapf_12') {
     $template_content['template']['attributes']['data-name'] = 'В подарок';
-	echo '<pre>';
-	print_r( $template_content );
-	echo '</pre>';
+	// echo '<pre>';
+	// print_r( $template_content );
+	// echo '</pre>';
 	}
     return $template_content;
 }
