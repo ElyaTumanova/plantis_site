@@ -281,7 +281,7 @@ const swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
     navigation: {
         // nextEl: '.swiper-button-next',
         // prevEl: '.swiper-button-prev',
-        enabled: false,
+        // enabled: false,
     },
     freeMode: true,
     slidesPerView: 'auto',

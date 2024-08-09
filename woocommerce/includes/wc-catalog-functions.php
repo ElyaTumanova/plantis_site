@@ -552,15 +552,15 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 		// );
 
 
-		// $template_content['template']['content']['filter']['content'] = berocket_insert_to_array(
-		// 	$template_content['template']['content']['filter']['content'],
-		// 	'list',
-		// 	array(
-		// 		'custom_content' => '<div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
-		// 		<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>'
-		// 	),		
-		// 	true
-		// );
+		$template_content['template']['content']['filter']['content'] = berocket_insert_to_array(
+			$template_content['template']['content']['filter']['content'],
+			'list',
+			array(
+				'custom_content' => '<div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+				<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>'
+			),		
+			true
+		);
 
 		// echo '<pre>';
 		// print_r( $template_content );
