@@ -272,11 +272,11 @@ const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
 --------------------------------------------------------------*/
 
 const swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    // freeMode: true,
+    // navigation: {
+    //     nextEl: '.swiper-button-next',
+    //     prevEl: '.swiper-button-prev',
+    // },
+    freeMode: true,
     slidesPerView: 'auto',
     // slidesPerGroup: 7,
     spaceBetween: 5,
