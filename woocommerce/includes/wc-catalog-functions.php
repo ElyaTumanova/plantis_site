@@ -570,3 +570,14 @@ function plnt_berocket_gift_filter_header($template_content) {
 	}
     return $template_content;
 }
+add_filter('BeRocket_AAPF_template_full_content', 'plnt_berocket_active_filter', 4000, 1);
+add_filter('BeRocket_AAPF_template_full_element_content', 'plnt_berocket_active_filter', 4000, 1);
+function plnt_berocket_active_filter($template_content) {
+	if ($template_content['template']['attributes']['data-name']==='Активные фильтры') {
+    $template_content['template']['attributes']['id'] = 'active_id';
+	// echo '<pre>';
+	// print_r( $template_content );
+	// echo '</pre>';
+	}
+    return $template_content;
+}
