@@ -96,7 +96,7 @@ function plnt_catalog_sidebar() {
 
 // // вывод фильтров над каталогом  #filters #berocket
 add_action('woocommerce_before_shop_loop','plnt_catalog_filters_main_area', 20);
-add_action('woocommerce_before_product_loop_end','plnt_filter_metki_swiper_init', 20);
+//add_action('woocommerce_before_product_loop_end','plnt_filter_metki_swiper_init', 20);
 
 function plnt_catalog_filters_main_area() {
 	global $filter_icon;
@@ -119,34 +119,34 @@ function plnt_catalog_filters_main_area() {
     <?php 	
 };
 
-function plnt_filter_metki_swiper_init () {
-	?>
-	<script>
-		swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
-			navigation: {
-				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev',
-			},
-			slidesPerView: 'auto',
-			spaceBetween: 5,
-			loop: false,
-			breakpoints: {
-				320: {
-				navigation: {
-					enabled: false,
-				},
-				},
-				767: {
-				navigation: {
-					enabled: true,
-				},
-				}
-			}
-		});
-		console.log('hihihh')
-	</script>
-	<?php
-}
+// function plnt_filter_metki_swiper_init () {
+// 	?>
+// 	<script>
+// 		swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
+// 			navigation: {
+// 				nextEl: '.swiper-button-next',
+// 				prevEl: '.swiper-button-prev',
+// 			},
+// 			slidesPerView: 'auto',
+// 			spaceBetween: 5,
+// 			loop: false,
+// 			breakpoints: {
+// 				320: {
+// 				navigation: {
+// 					enabled: false,
+// 				},
+// 				},
+// 				767: {
+// 				navigation: {
+// 					enabled: true,
+// 				},
+// 				}
+// 			}
+// 		});
+// 		console.log('hihihh')
+// 	</script>
+// 	<?php
+// }
 
 // // заголовок каталога 
 
@@ -257,6 +257,29 @@ function plnt_img_gallery_swiper_init() {
 			}
 		});
 		console.log('hohohoh')
+
+		swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			slidesPerView: 'auto',
+			spaceBetween: 5,
+			loop: false,
+			breakpoints: {
+				320: {
+				navigation: {
+					enabled: false,
+				},
+				},
+				767: {
+				navigation: {
+					enabled: true,
+				},
+				}
+			}
+		});
+		console.log('hihihh')
 	</script>
 	<?php
 }
