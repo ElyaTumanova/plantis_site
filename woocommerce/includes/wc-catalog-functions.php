@@ -119,34 +119,34 @@ function plnt_catalog_filters_main_area() {
     <?php 	
 };
 
-// function plnt_filter_metki_swiper_init () {
-// 	?>
-// 	<script>
-// 		swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
-// 			navigation: {
-// 				nextEl: '.swiper-button-next',
-// 				prevEl: '.swiper-button-prev',
-// 			},
-// 			slidesPerView: 'auto',
-// 			spaceBetween: 5,
-// 			loop: false,
-// 			breakpoints: {
-// 				320: {
-// 				navigation: {
-// 					enabled: false,
-// 				},
-// 				},
-// 				767: {
-// 				navigation: {
-// 					enabled: true,
-// 				},
-// 				}
-// 			}
-// 		});
-// 		console.log('hihihh')
-// 	</script>
-// 	<?php
-// }
+function plnt_filter_metki_swiper_init () {
+	?>
+	<script>
+		swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			slidesPerView: 'auto',
+			spaceBetween: 5,
+			loop: false,
+			breakpoints: {
+				320: {
+				navigation: {
+					enabled: false,
+				},
+				},
+				767: {
+				navigation: {
+					enabled: true,
+				},
+				}
+			}
+		});
+		console.log('hihihh')
+	</script>
+	<?php
+}
 
 // // заголовок каталога 
 
