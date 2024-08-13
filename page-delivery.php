@@ -13,6 +13,10 @@ get_header(); ?>
     $min_free_delivery = carbon_get_theme_option('min_free_delivery');
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
     $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
+
+    $in_mkad_large = $in_mkad + $large_delivery_markup;
+    $out_mkad_large = $out_mkad + $large_delivery_markup;
+
 ?>
 
 <div class="content-area">
@@ -53,15 +57,17 @@ get_header(); ?>
                     </ul>
                     <p class="info__note">В итоговой стоимости заказа не учитывается цена доставки!</p>
 
-                    <?php if($large_delivery_markup) { echo '<h3 class="info__heading heading-2">Крупногабаритная доставка</h3>
+                    <?php if($large_delivery_markup) { 
+                        echo '<h3 class="info__heading heading-2">Крупногабаритная доставка</h3>
                         <p>Доставка крупномерных растений (от 100см), больших заказов, высоких или тяжелых кашпо осуществляется грузовым автомобилем.</p>
                         <p><strong>Крупногабаритная доставка на следующий день или позже:</strong></p>
                         <ul>
-                            <li>в пределах МКАД — '.$in_mkad + $large_delivery_markup.' рублей;</li>
+                            <li>в пределах МКАД — '.$in_mkad_large.' рублей;</li>
                             <li>за пределы МКАД (до 5 км) — <?php echo $out_mkad_small ?> рублей;</li>
                             <li>за пределы МКАД (от 5 км) - по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
                         </ul>
-                        <p>При заказе <strong>крупногабаритного товара</strong> стоимость доставки увеличивается на '.$large_delivery_markup.' рублей.</p>';}?>				
+                        <p>При заказе <strong>крупногабаритного товара</strong> стоимость доставки увеличивается на '.$large_delivery_markup.' рублей.</p>';
+                        }?>				
                     
                     <?php if($min_free_delivery) { echo '<p>При заказе товаров на сумму <strong>свыше '.$min_free_delivery.' рублей</strong> доставка осуществляется бесплатно.</p>';}?>				
                     
