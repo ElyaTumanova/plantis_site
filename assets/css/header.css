@@ -140,7 +140,7 @@
 .header__notice {
     padding: 7px 0;
     text-align: center;
-    background-color: #f3afaf;
+    background-color: var(--notice-red);
     font-weight: 600;
 }
 
