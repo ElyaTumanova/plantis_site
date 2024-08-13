@@ -279,7 +279,7 @@ function plnt_img_gallery_swiper_init() {
 				}
 			}
 		});
-		console.log('hihihh')
+		console.log(swiper_filter_metki);
 	</script>
 	<?php
 }
