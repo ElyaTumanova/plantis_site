@@ -1070,24 +1070,20 @@ ul.products {
     color: var(--text) !important;
 }
 
-.catalog__filter-metki ul li:hover{
-    background-color:var(--accent-color);
-    color: var(--white) !important;
-}
-
 .catalog__filter-metki  ul li label{
     color: inherit !important;
     white-space: nowrap;
 }
-.catalog__filter-metki  ul li label:hover{
-    color: inherit !important;
-}
 
 @media (hover: hover) {
     .catalog__filter-metki ul li:hover{
-        background-color:inherit;
+        background-color:var(--accent-color);
+        color: var(--white) !important;
+    }
+
+    .catalog__filter-metki  ul li label:hover{
         color: inherit !important;
-    }    
+    }
 }
 
 /* активные фильтры */
