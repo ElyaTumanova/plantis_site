@@ -998,6 +998,7 @@ ul.products {
     position: relative;
     margin: 0 60px;
     /* padding: 0 60px; */
+    border-radius: 20px;
 }
 
 /* .metki_swiper_wrap:hover{
@@ -1060,13 +1061,17 @@ ul.products {
     background-color: #ecedf2;
 }
 
+.catalog__filter-metki ul li:hover{
+    background-color:var(--accent-color);
+}
+
 .catalog__filter-metki  ul li label{
     color: var(--text) !important;
     white-space: nowrap;
 }
 
 .catalog__filter-metki  ul li label:hover{
-    color: var(--accent-color) !important;
+    color: var(--white) !important;
 }
 
 /* активные фильтры */
