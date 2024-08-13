@@ -130,7 +130,7 @@ function plnt_large_delivery_notice() {
         $cart_weight = WC()->cart->cart_contents_weight;
     
         if ($cart_weight >= 11) {
-           echo '<p>text</p>';
+           echo '<div class=large_delivery_notice>Для заказа предусмотрена крупногабаритная доставка!</div>';
         }
     }
 }

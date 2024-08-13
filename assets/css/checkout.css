@@ -203,6 +203,10 @@
     text-align: right;
 }
 
+.large_delivery_notice {
+    background-color: var(--red-color);
+}
+
 /* способы оплаты */
 
 .wc_payment_methods li .payment_box {
