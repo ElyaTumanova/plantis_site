@@ -270,25 +270,4 @@ const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
 /*--------------------------------------------------------------
 # Filter Metki
 --------------------------------------------------------------*/
-
-const swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    slidesPerView: 'auto',
-    spaceBetween: 5,
-    loop: false,
-    breakpoints: {
-        320: {
-        navigation: {
-            enabled: false,
-        },
-        },
-        767: {
-        navigation: {
-            enabled: true,
-        },
-        }
-    }
-});
+// слайдер инициирован в wc-catalog-functions, чтобы повторно инициироваться при аякс обновлении каталога при приминении фильтров
