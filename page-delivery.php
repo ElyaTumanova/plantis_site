@@ -14,10 +14,10 @@ get_header(); ?>
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
     $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
 
-    var $in_mkad_large = $in_mkad + $large_delivery_markup;
-    var $out_mkad_large = $out_mkad + $large_delivery_markup;
-    var $in_mkad_urg_large = $in_mkad_urg + $large_delivery_markup;
-    var $out_mkad_urg_large = $out_mkad_urg + $large_delivery_markup;
+    $in_mkad_large = $in_mkad + $large_delivery_markup;
+    $out_mkad_large = $out_mkad + $large_delivery_markup;
+    $in_mkad_urg_large = $in_mkad_urg + $large_delivery_markup;
+    $out_mkad_urg_large = $out_mkad_urg + $large_delivery_markup;
 
 ?>
 
