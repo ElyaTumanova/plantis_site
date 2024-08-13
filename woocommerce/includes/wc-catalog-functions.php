@@ -260,29 +260,6 @@ function plnt_img_gallery_swiper_init() {
 				}
 			}
 		});
-
-		// swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
-		// 	navigation: {
-		// 		nextEl: '.swiper-button-next',
-		// 		prevEl: '.swiper-button-prev',
-		// 	},
-		// 	slidesPerView: 'auto',
-		// 	spaceBetween: 5,
-		// 	loop: false,
-		// 	breakpoints: {
-		// 		320: {
-		// 		navigation: {
-		// 			enabled: false,
-		// 		},
-		// 		},
-		// 		767: {
-		// 		navigation: {
-		// 			enabled: true,
-		// 		},
-		// 		}
-		// 	}
-		// });
-		// console.log(swiper_filter_metki);
 	</script>
 	<?php
 }

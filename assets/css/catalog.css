@@ -1083,6 +1083,13 @@ ul.products {
     color: inherit !important;
 }
 
+@media (hover: hover) {
+    .catalog__filter-metki ul li:hover{
+        background-color:inherit;
+        color: inherit !important;
+    }    
+}
+
 /* активные фильтры */
 
 .catalog__filter-active {
