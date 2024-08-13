@@ -143,6 +143,7 @@ function plnt_filter_metki_swiper_init () {
 						navigation: {
 							enabled: true,
 						},
+						loop: false,
 						}
 					}
 				});
