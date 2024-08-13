@@ -1045,6 +1045,14 @@ ul.products {
     .catalog__filter-metki .bapf_sfilter {
         margin-bottom: 10px;
     }
+
+    .catalog__filter-metki .swiper-button-next, .catalog__filter-metki .swiper-button-prev {
+        display: none;
+    }
+
+    .metki_swiper_wrap {
+        margin: 0;
+    }
 }
 
 .catalog__filter-metki ul li input{
