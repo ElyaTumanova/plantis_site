@@ -284,6 +284,11 @@ const swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
         navigation: {
             enabled: false,
         },
+        },
+        768: {
+        navigation: {
+            enabled: true,
+        },
         }
     }
 });
