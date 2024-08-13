@@ -1059,19 +1059,17 @@ ul.products {
     font-weight: 700;
     width: fit-content;
     background-color: #ecedf2;
+    color: var(--text) !important;
 }
 
 .catalog__filter-metki ul li:hover{
     background-color:var(--accent-color);
+    color: var(--white) !important;
 }
 
 .catalog__filter-metki  ul li label{
-    color: var(--text) !important;
+    color: inherit;
     white-space: nowrap;
-}
-
-.catalog__filter-metki  ul li label:hover{
-    color: var(--white) !important;
 }
 
 /* активные фильтры */
