@@ -137,6 +137,7 @@ function plnt_filter_metki_swiper_init () {
 						navigation: {
 							enabled: false,
 						},
+						loop: true,
 						},
 						767: {
 						navigation: {
