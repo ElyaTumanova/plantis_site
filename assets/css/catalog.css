@@ -1068,8 +1068,11 @@ ul.products {
 }
 
 .catalog__filter-metki  ul li label{
-    color: inherit;
+    color: inherit !important;
     white-space: nowrap;
+}
+.catalog__filter-metki  ul li label:hover{
+    color: inherit !important;
 }
 
 /* активные фильтры */
