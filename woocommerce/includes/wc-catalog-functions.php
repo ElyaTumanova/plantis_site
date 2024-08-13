@@ -256,6 +256,7 @@ function plnt_img_gallery_swiper_init() {
 				}
 			}
 		});
+		console.log('hohohoh')
 	</script>
 	<?php
 }
