@@ -280,7 +280,7 @@ const swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
     spaceBetween: 5,
     loop: true,
     breakpoints: {
-        768: {
+        320: {
         navigation: {
             enabled: false,
         },
