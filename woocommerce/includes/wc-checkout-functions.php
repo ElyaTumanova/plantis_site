@@ -120,6 +120,21 @@ function truemisha_shipping_by_weight( $rates, $package ) {
 	return $rates;
 }
 
+add_action('plnt_large_delivery_notice', 'plnt_large_delivery_notice');
+
+function plnt_large_delivery_notice() {
+    $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
+
+    if ($large_delivery_markup) {
+        // вес товаров в корзине
+        $cart_weight = WC()->cart->cart_contents_weight;
+    
+        if ($cart_weight >= 11) {
+           echo '<p>text</p>';
+        }
+    }
+}
+
 
 /* ПОЛЯ ФОРМЫ ОФОРМЛЕНИЯ ЗАКАЗА*/
 

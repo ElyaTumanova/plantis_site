@@ -30,6 +30,7 @@ $calculator_text          = '';
 	<!-- <th><?php //echo wp_kses_post( $package_name ); ?></th> -->
 	<td colspan="2" data-title="<?php echo esc_attr( $package_name ); ?>">
         <strong><?php echo wp_kses_post( $package_name ); ?></strong>
+		<?php do_action ('plnt_large_delivery_notice')?>
 		<?php if ( isset( $available_methods ) && is_array( $available_methods ) ) : ?>
 			<ul id="shipping_method" class="woocommerce-shipping-methods">
 				<?php foreach ( $available_methods as $method ) : ?>
