@@ -551,6 +551,10 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 			true
 		);
 
+		echo '<pre>';
+		print_r( $template_content );
+		echo '</pre>';
+
 	}
     return $template_content;
 }
