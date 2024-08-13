@@ -524,60 +524,64 @@ function plnt_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
 add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
 function some_custom_berocket_aapf_template_full_content($template_content) {
-	if ($template_content['template']['attributes']['id']==='bapf_13') {
-
-		array_push($template_content['template']['content']['filter']['attributes']['class'],'metki_swiper_wrap');
-		array_push($template_content['template']['content']['filter']['attributes']['class'],'swiper');
-		
-		$template_content['template']['content']['filter']['content']['list']['attributes']['class'] = 'swiper-wrapper';
-
-		$elements = $template_content['template']['content']['filter']['content']['list']['content'];
-		$new_elements = [];
-		$i = 0;
-		foreach($elements as $element) {
-			$element['attributes']['class'] = 'swiper-slide';
-			$new_elements[$i] = $element;
-			$i++;
+	if ($template_content['template']['attributes']['data-name']==='Подборки') {
+		if ($template_content['template']['attributes']['id']==='bapf_13') {
+	
+			array_push($template_content['template']['content']['filter']['attributes']['class'],'metki_swiper_wrap');
+			array_push($template_content['template']['content']['filter']['attributes']['class'],'swiper');
+			
+			$template_content['template']['content']['filter']['content']['list']['attributes']['class'] = 'swiper-wrapper';
+	
+			$elements = $template_content['template']['content']['filter']['content']['list']['content'];
+			$new_elements = [];
+			$i = 0;
+			foreach($elements as $element) {
+				$element['attributes']['class'] = 'swiper-slide';
+				$new_elements[$i] = $element;
+				$i++;
+			}
+			$template_content['template']['content']['filter']['content']['list']['content'] = $new_elements;
+	
+			$template_content['template']['content'] = berocket_insert_to_array(
+				$template_content['template']['content'],
+				'filter',
+				array(
+					'custom_content' => '<div class="myslider-prev swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+					<div class="myslider-next swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>'
+				),		
+				true
+			);
+	
+			// echo '<pre>';
+			// print_r( $template_content );
+			// echo '</pre>';
+	
 		}
-		$template_content['template']['content']['filter']['content']['list']['content'] = $new_elements;
-
-		$template_content['template']['content'] = berocket_insert_to_array(
-			$template_content['template']['content'],
-			'filter',
-			array(
-				'custom_content' => '<div class="myslider-prev swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
-				<div class="myslider-next swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>'
-			),		
-			true
-		);
-
-		// echo '<pre>';
-		// print_r( $template_content );
-		// echo '</pre>';
-
 	}
     return $template_content;
 }
 
-add_filter('BeRocket_AAPF_template_full_content', 'plnt_berocket_gift_filter_header', 4000, 1);
-add_filter('BeRocket_AAPF_template_full_element_content', 'plnt_berocket_gift_filter_header', 4000, 1);
-function plnt_berocket_gift_filter_header($template_content) {
-	if ($template_content['template']['attributes']['id']==='bapf_12') {
-    $template_content['template']['attributes']['data-name'] = 'В подарок';
-	// echo '<pre>';
-	// print_r( $template_content );
-	// echo '</pre>';
-	}
-    return $template_content;
-}
-add_filter('BeRocket_AAPF_template_full_content', 'plnt_berocket_active_filter', 4000, 1);
-add_filter('BeRocket_AAPF_template_full_element_content', 'plnt_berocket_active_filter', 4000, 1);
-function plnt_berocket_active_filter($template_content) {
-	if ($template_content['template']['attributes']['data-name']==='Активные фильтры') {
-    $template_content['template']['attributes']['id'] = 'active_id';
-	// echo '<pre>';
-	// print_r( $template_content );
-	// echo '</pre>';
-	}
-    return $template_content;
-}
+// add_filter('BeRocket_AAPF_template_full_content', 'plnt_berocket_gift_filter_header', 4000, 1);
+// add_filter('BeRocket_AAPF_template_full_element_content', 'plnt_berocket_gift_filter_header', 4000, 1);
+// function plnt_berocket_gift_filter_header($template_content) {
+// 	if ($template_content['template']['attributes']['id']==='bapf_12') {
+//     $template_content['template']['attributes']['data-name'] = 'В подарок';
+// 	// echo '<pre>';
+// 	// print_r( $template_content );
+// 	// echo '</pre>';
+// 	}
+//     return $template_content;
+// }
+
+
+// add_filter('BeRocket_AAPF_template_full_content', 'plnt_berocket_active_filter', 4000, 1);
+// add_filter('BeRocket_AAPF_template_full_element_content', 'plnt_berocket_active_filter', 4000, 1);
+// function plnt_berocket_active_filter($template_content) {
+// 	if ($template_content['template']['attributes']['data-name']==='Активные фильтры') {
+//     $template_content['template']['attributes']['id'] = 'active_id';
+// 	// echo '<pre>';
+// 	// print_r( $template_content );
+// 	// echo '</pre>';
+// 	}
+//     return $template_content;
+// }
