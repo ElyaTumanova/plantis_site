@@ -207,12 +207,13 @@
     /* background-color: var(--notice-red); */
     /* width: fit-content; */
     padding: 5px;
-    margin: 0px auto 10px;
+    margin: 10px auto 20px;
     border-radius: 5px;
     font-weight: 700;
     text-align: center;
     display: flex;
     align-items: center;
+    /* justify-content: center; */
 }
 
 .large_delivery_notice::before {
@@ -222,7 +223,7 @@
     width: 27px;
     display: block;
     background-repeat: no-repeat;
-    background-size: 25px 27px;
+    background-size: 27px 24px;
     margin-right: 10px;
 }
 
