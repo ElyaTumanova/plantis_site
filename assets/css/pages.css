@@ -146,12 +146,14 @@
 } */
 
 .delivery__header {
-
+    display: flex;
+    position: relative;
 }
 
 .delivery__dropdown-arrow {
     display: inline;
     position: absolute;
+    right: 0;
     content: "next";
     font-family: swiper-icons;
     font-size: 16px;
