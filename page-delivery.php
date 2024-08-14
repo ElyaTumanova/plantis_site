@@ -27,9 +27,11 @@ get_header(); ?>
 	<main id="main" class="site-main" role="main">
         <div class="delivery info__list">
             <div>
-                <h1 class="entry-header">Доставка</h1>
-                <span class="delivery__dropdown-arrow">next</span>
-                <div>
+                <div class="delivery__header">
+                    <h1 class="entry-header">Доставка</h1>
+                    <span class="delivery__dropdown-arrow">next</span>
+                </div>
+                <div class="delivery__dropdown">
                     <div>
                         <h3 class="info__heading heading-2">Если ваш заказ <b>от <?php echo $min_small_delivery ?></b> рублей:</h3>
                         <p><strong>Доставка на следующий день или позже:</strong></p>
