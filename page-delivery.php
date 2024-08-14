@@ -84,7 +84,6 @@ get_header(); ?>
                     
                     <?php if($min_free_delivery) { echo '<p>При заказе товаров на сумму <strong>свыше '.$min_free_delivery.' рублей</strong> доставка осуществляется бесплатно.</p>';}?>				
                     
-                </div>
                 
                 <h3 class="info__heading heading-2">Интервалы доставки</h3>
                 <div>
