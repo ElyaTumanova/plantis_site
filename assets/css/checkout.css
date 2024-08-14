@@ -204,18 +204,26 @@
 }
 
 .large_delivery_notice {
-    background-color: var(--notice-red);
+    /* background-color: var(--notice-red); */
     /* width: fit-content; */
     padding: 5px;
     margin: 0px auto 10px;
     border-radius: 5px;
     font-weight: 700;
     text-align: center;
+    display: flex;
+    align-items: center;
 }
 
 .large_delivery_notice::before {
     content: "";
     background-image: url(https://plantis.shop/wp-content/uploads/2024/08/car.svg);
+    height: 25px;
+    width: 27px;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: 25px 27px;
+    margin-right: 10px;
 }
 
 

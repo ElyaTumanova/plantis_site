@@ -349,7 +349,6 @@
     height: 20px;
     display: inline-block;
     content: "";
-    background-repeat: no-repeat;
     margin-left: 8px;
     rotate: -45deg;
   }
