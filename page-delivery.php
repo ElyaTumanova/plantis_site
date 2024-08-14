@@ -28,6 +28,7 @@ get_header(); ?>
         <div class="delivery info__list">
             <div>
                 <h1 class="entry-header">Доставка</h1>
+                <span class="delivery__dropdown-arrow">next</span>
                 <div>
                     <div>
                         <h3 class="info__heading heading-2">Если ваш заказ <b>от <?php echo $min_small_delivery ?></b> рублей:</h3>
