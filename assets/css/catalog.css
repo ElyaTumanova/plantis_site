@@ -996,14 +996,9 @@ ul.products {
 
 .metki_swiper_wrap {
     position: relative;
-    margin: 0 60px;
-    /* padding: 0 60px; */
+    margin: 0 50px;
     border-radius: 20px;
 }
-
-/* .metki_swiper_wrap:hover{
-    cursor: pointer;
-} */
 
 .catalog__filter-metki  .bapf_head  {
     display: none;
@@ -1084,6 +1079,18 @@ ul.products {
     .catalog__filter-metki  ul li label:hover{
         color: inherit !important;
     }
+}
+
+.catalog__filter-metki .swiper-button-prev {
+    height: 30px;
+    width: 30px;
+    margin-top: -15px;
+}
+
+.catalog__filter-metki .swiper-button-next {
+    height: 30px;
+    width: 30px;
+    margin-top: -15px;
 }
 
 /* активные фильтры */

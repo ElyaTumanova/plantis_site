@@ -213,6 +213,12 @@
     text-align: center;
 }
 
+.large_delivery_notice::before {
+    content: "";
+    background-image: url(https://plantis.shop/wp-content/uploads/2024/08/car.svg);
+}
+
+
 /* способы оплаты */
 
 .wc_payment_methods li .payment_box {
