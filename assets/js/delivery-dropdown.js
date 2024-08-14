@@ -1,6 +1,6 @@
-const dropdown = document.querySelectorAll('.delivery__block');
+const del_dropdown = document.querySelectorAll('.delivery__block');
 
-dropdown.forEach((el) => {
+del_dropdown.forEach((el) => {
 	const menu = el.querySelector('.delivery__dropdown');
 	const btn = el.querySelector('.delivery__dropdown-arrow');
 	btn.addEventListener('click', function (event) {
