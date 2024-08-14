@@ -26,6 +26,7 @@ get_header(); ?>
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
         <div class="delivery info__list">
+            <div>
                 <h1 class="entry-header">Доставка</h1>
 
                 <div>
@@ -60,8 +61,10 @@ get_header(); ?>
                     </ul>
                     <p class="info__note">В итоговой стоимости заказа не учитывается цена доставки!</p>
                 </div>
+            </div>
                 <?php if($large_delivery_markup) { 
-                    echo '<h3 class="info__heading heading-2">Крупногабаритная доставка</h3>
+                    echo '<div>
+                    <h3 class="info__heading heading-2">Крупногабаритная доставка</h3>
                     <p>Доставка крупномерных растений (от 100см), больших заказов, высоких или тяжелых кашпо осуществляется грузовым автомобилем.</p>
                     <p><strong>Крупногабаритная доставка на следующий день или позже:</strong></p>
                     <ul>
@@ -74,7 +77,8 @@ get_header(); ?>
                         <li>в пределах МКАД — '.$in_mkad_urg_large.' рублей;</li>
                         <li>за пределы МКАД (до 5 км) — '.$out_mkad_urg_large.' рублей;</li>
                         <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
-                    </ul>';
+                    </ul>
+                    </div>';
                 }?>				
                     
                 <?php if($min_free_delivery) { echo '<p>При заказе товаров на сумму <strong>свыше '.$min_free_delivery.' рублей</strong> доставка осуществляется бесплатно.</p>';}?>				
@@ -93,23 +97,26 @@ get_header(); ?>
                     <p>При оформлении срочной доставки “день в день” менеджер согласует с вами удобный интервал доставки.</p>					
                 </div>
 
-                <h3 class="info__heading heading-2">Связаться с нами</h3>
-                <p>Ничего страшного, если вы не можете принять заказ в согласованные дату и время. В таком случае просим связаться с нами удобным для вас способом.</p>
+                <div>
+                    <h3 class="info__heading heading-2">Связаться с нами</h3>
+                    <p>Ничего страшного, если вы не можете принять заказ в согласованные дату и время. В таком случае просим связаться с нами удобным для вас способом.</p>
 
-                <?php get_template_part('template-parts/contacts-part');?>
-          
-     
-                <h2 class="entry-header">Самовывоз</h2>
+                    <?php get_template_part('template-parts/contacts-part');?>
+                </div>
                 
-                <h3 class="info__heading heading-2">Где</h3>
-                <p>Вы можете бесплатно забрать товары из нашего шоурума по адресу г. Москва, ул. Мещерякова, д.3 (от м. Тушинская или м. Сокол).</p>
-                <div class="info__map">
-					<iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=237252555639" width="560" height="400" frameborder="0"></iframe>
-				</div>
+                <div>
+                    <h2 class="entry-header">Самовывоз</h2>
+                    
+                    <h3 class="info__heading heading-2">Где</h3>
+                    <p>Вы можете бесплатно забрать товары из нашего шоурума по адресу г. Москва, ул. Мещерякова, д.3 (от м. Тушинская или м. Сокол).</p>
+                    <div class="info__map">
+                        <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=237252555639" width="560" height="400" frameborder="0"></iframe>
+                    </div>
 
-                <h3 class="info__heading heading-2">Когда</h3>
-                    <p>Мы ждем Вас ежедневно в рабочие часы.</p>
-                    <p>Необходимо предварительно связаться с нами и договорится о времени Вашего прибытия.</p>
+                    <h3 class="info__heading heading-2">Когда</h3>
+                        <p>Мы ждем Вас ежедневно в рабочие часы.</p>
+                        <p>Необходимо предварительно связаться с нами и договорится о времени Вашего прибытия.</p>
+                </div>
         			
 		</div>
 	</main><!-- #main -->
