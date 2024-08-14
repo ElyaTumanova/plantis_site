@@ -155,6 +155,19 @@
     overflow: hidden;
 }
 
+.delivery__dropdown_show {
+    display: block;
+    max-height: 9999px;
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -moz-transition: max-height 1s ease-in-out;
+    -o-transition: max-height 1s ease-in-out;
+    -webkit-transition: max-height 1s ease-in-out;
+    transition: max-height 1s ease-in-out;
+}
+
 .delivery__dropdown-arrow {
     display: inline;
     position: absolute;
