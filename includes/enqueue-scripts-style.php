@@ -53,6 +53,9 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		wp_enqueue_script( 'catalog-menu', get_template_directory_uri() .
 		                                     '/assets/js/catalog-menu.js', array( 'jquery' ), null, true );
 
+		wp_enqueue_script( 'delivery-dropdown', get_template_directory_uri() .
+		                                     '/assets/js/delivery-dropdown.js', array( 'jquery' ), null, true );
+
 		wp_enqueue_script( 'metrikaGoal', get_template_directory_uri() .
 		                                     '/assets/js/metrikaGoal.js', array( 'jquery' ), null, true );  //metrikaGoal Яндекс Метрика Yandex Metrika
 
