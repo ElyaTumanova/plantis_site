@@ -92,46 +92,57 @@ get_header(); ?>
                 }?>				
                     
                 <?php if($min_free_delivery) { echo '<p>При заказе товаров на сумму <strong>свыше '.$min_free_delivery.' рублей</strong> доставка осуществляется бесплатно.</p>';}?>				
-                    
                 
-                
-                <div>
-                    <h3 class="info__heading heading-2">Интервалы доставки</h3>
-                    <ul>
-                        <li>с 11:00 до 21:00;</li>
-                        <li>с 11:00 до 16:00;</li>
-                        <li>с 14:00 до 18:00;</li>
-                        <li>с 18:00 до 21:00.</li>
-                    </ul>
-                    <p>Мы работаем без выходных, поэтому <strong>доставка осуществляется каждый день.</strong></p>
-                    <p>При оформлении срочной доставки “день в день” менеджер согласует с вами удобный интервал доставки.</p>					
-                </div>
-
-                <div>
-                    <h3 class="info__heading heading-2">Связаться с нами</h3>
-                    <p>Ничего страшного, если вы не можете принять заказ в согласованные дату и время. В таком случае просим связаться с нами удобным для вас способом.</p>
-
-                    <?php get_template_part('template-parts/contacts-part');?>
-                </div>
-            </div>
-
-            <div class="delivery__block">
-                <div class="delivery__header">
-                    <h2 class="entry-header">Самовывоз</h2>
-                    <span class="delivery__dropdown-arrow">next</span>
-                </div>
-                <div class="delivery__dropdown">
-                    <h3 class="info__heading heading-2">Где</h3>
-                    <p>Вы можете бесплатно забрать товары из нашего шоурума по адресу г. Москва, ул. Мещерякова, д.3 (от м. Тушинская или м. Сокол).</p>
-                    <div class="info__map">
-                        <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=237252555639" width="560" height="400" frameborder="0"></iframe>
+                <div class="delivery__block">
+                    <div class="delivery__header">
+                        <h2 class="entry-header">Самовывоз</h2>
+                        <span class="delivery__dropdown-arrow">next</span>
                     </div>
+                    <div class="delivery__dropdown">
+                        <h3 class="info__heading heading-2">Где</h3>
+                        <p>Вы можете бесплатно забрать товары из нашего шоурума по адресу г. Москва, ул. Мещерякова, д.3 (от м. Тушинская или м. Сокол).</p>
+                        <div class="info__map">
+                            <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=237252555639" width="560" height="400" frameborder="0"></iframe>
+                        </div>
 
-                    <h3 class="info__heading heading-2">Когда</h3>
-                        <p>Мы ждем Вас ежедневно в рабочие часы.</p>
-                        <p>Необходимо предварительно связаться с нами и договорится о времени Вашего прибытия.</p>
+                        <h3 class="info__heading heading-2">Когда</h3>
+                            <p>Мы ждем Вас ежедневно в рабочие часы.</p>
+                            <p>Необходимо предварительно связаться с нами и договорится о времени Вашего прибытия.</p>
+                    </div>
+                </div>
+                
+                
+                <div class="delivery__block">
+                    <div class="delivery__header">
+                        <h3 class="entry-header">Интервалы доставки</h3>
+                        <span class="delivery__dropdown-arrow">next</span>
+                    </div>
+                    <div class="delivery__dropdown">
+                        <ul>
+                            <li>с 11:00 до 21:00;</li>
+                            <li>с 11:00 до 16:00;</li>
+                            <li>с 14:00 до 18:00;</li>
+                            <li>с 18:00 до 21:00.</li>
+                        </ul>
+                        <p>Мы работаем без выходных, поэтому <strong>доставка осуществляется каждый день.</strong></p>
+                        <p>При оформлении срочной доставки “день в день” менеджер согласует с вами удобный интервал доставки.</p>					
+                    </div>
+                </div>
+
+                <div class="delivery__block">
+                    <div class="delivery__header">
+                        <h3 class="entry-header">Связаться с нами</h3>
+                        <span class="delivery__dropdown-arrow">next</span>
+                    </div>
+                    <div class="delivery__dropdown">
+                        <p>Ничего страшного, если вы не можете принять заказ в согласованные дату и время. В таком случае просим связаться с нами удобным для вас способом.</p>
+
+                        <?php get_template_part('template-parts/contacts-part');?>
+                    </div>
                 </div>
             </div>
+
+           
 
 		</div>
 	</main><!-- #main -->
