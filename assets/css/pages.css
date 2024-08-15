@@ -190,7 +190,7 @@
     color: var(--accent-color);
 }
 
-.delivery__dropdown_open > .delivery__dropdown-arrow {
+.delivery__dropdown_open .delivery__dropdown-arrow {
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
