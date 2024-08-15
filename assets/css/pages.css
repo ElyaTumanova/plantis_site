@@ -133,17 +133,17 @@
 # Delivery
 --------------------------------------------------------------*/
 
-/* .delivery {
+.delivery {
     display: flex;
-    column-gap: 60px;
+    flex-direction: column;
     row-gap: 30px;
 }
 
 @media (max-width: 767px) {
     .delivery {
-        flex-direction: column;
+        row-gap: 20px;
     }
-} */
+}
 
 .delivery__header {
     display: flex;
