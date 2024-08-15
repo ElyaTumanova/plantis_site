@@ -136,14 +136,14 @@
 .delivery {
     display: flex;
     flex-direction: column;
-    row-gap: 30px;
+    /* row-gap: 30px; */
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .delivery {
         row-gap: 20px;
     }
-}
+} */
 
 .delivery__header {
     display: flex;
