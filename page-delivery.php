@@ -26,6 +26,7 @@ get_header(); ?>
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
         <div class="delivery info__list">
+            <div>
             <div class="delivery__block">
                 <div class="delivery__header">
                     <h1 class="entry-header">Доставка</h1>
@@ -107,7 +108,8 @@ get_header(); ?>
 
                     <?php get_template_part('template-parts/contacts-part');?>
                 </div>
-                
+            </div>
+            <div>
                 <div>
                     <h2 class="entry-header">Самовывоз</h2>
                     
@@ -121,7 +123,7 @@ get_header(); ?>
                         <p>Мы ждем Вас ежедневно в рабочие часы.</p>
                         <p>Необходимо предварительно связаться с нами и договорится о времени Вашего прибытия.</p>
                 </div>
-        			
+            </div>	
 		</div>
 	</main><!-- #main -->
 </div><!-- #primary -->
