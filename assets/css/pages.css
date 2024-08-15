@@ -153,6 +153,10 @@
     padding: 20px 0;
 }
 
+.delivery__header:last-child {
+    border-bottom: solid 1px var(--accent-color);
+}
+
 .delivery__heading {
     margin-bottom: 10px;
     color: var(--accent-color);
@@ -179,7 +183,7 @@
 .delivery__dropdown-arrow {
     display: inline;
     position: absolute;
-    right: 0;
+    right: 20px;
     content: "next";
     font-family: swiper-icons;
     font-size: 20px;
