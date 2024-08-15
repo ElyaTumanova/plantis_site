@@ -114,10 +114,13 @@ get_header(); ?>
                     <?php get_template_part('template-parts/contacts-part');?>
                 </div>
             </div>
-            <div>
-                <div>
+
+            <div class="delivery__block">
+                <div class="delivery__header">
                     <h2 class="entry-header">Самовывоз</h2>
-                    
+                    <span class="delivery__dropdown-arrow">next</span>
+                </div>
+                <div class="delivery__dropdown">
                     <h3 class="info__heading heading-2">Где</h3>
                     <p>Вы можете бесплатно забрать товары из нашего шоурума по адресу г. Москва, ул. Мещерякова, д.3 (от м. Тушинская или м. Сокол).</p>
                     <div class="info__map">
@@ -128,7 +131,8 @@ get_header(); ?>
                         <p>Мы ждем Вас ежедневно в рабочие часы.</p>
                         <p>Необходимо предварительно связаться с нами и договорится о времени Вашего прибытия.</p>
                 </div>
-            </div>	
+            </div>
+
 		</div>
 	</main><!-- #main -->
 </div><!-- #primary -->
