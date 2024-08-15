@@ -541,17 +541,18 @@ function min_amount_for_category(){
 	foreach ( WC()->cart->get_cart() as $cart_item ) {
 			$_product = $cart_item['data'];
             $_product_id = $_product->id;
-            $terms = get_the_terms( $_product_id, 'product_cat' );
-			foreach ($terms as $term) {
-                    $_categoryid = $term->term_id;
-                }
-                // your products categories
-                if ( $_categoryid === $treez_cat_id ) {
-                    $products_min = true;
-					$qty = $cart_item[ 'quantity' ];
-					$price = $cart_item['data']->get_price();
-					$cat_amount = $cat_amount + $price*$qty;
-                }	
+            $parentCat = check_category ($_product);
+            // $terms = get_the_terms( $_product_id, 'product_cat' );
+			// foreach ($terms as $term) {
+            //         $_categoryid = $term->term_id;
+            //     }
+            // your products categories
+            if ( $parentCat === $treez_cat_id ) {
+                $products_min = true;
+                $qty = $cart_item[ 'quantity' ];
+                $price = $cart_item['data']->get_price();
+                $cat_amount = $cat_amount + $price*$qty;
+            }	
 	}
  
     if( ( is_cart() || is_checkout() ) && $cat_amount < $min_treez_delivery && $products_min) {
