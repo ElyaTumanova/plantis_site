@@ -149,6 +149,13 @@
     display: flex;
     position: relative;
     align-items: center;
+    border-top: solid 1px var(--accent-color);
+    padding: 20px 0;
+}
+
+.delivery__heading {
+    margin-bottom: 10px;
+    color: var(--accent-color);
 }
 
 .delivery__dropdown {

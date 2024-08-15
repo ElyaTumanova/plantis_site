@@ -34,7 +34,7 @@ get_header(); ?>
                 </div>
                 <div class="delivery__dropdown">
                     <div>
-                        <h3 class="info__heading heading-2">Если ваш заказ <b>от <?php echo $min_small_delivery ?></b> рублей:</h3>
+                        <h3 class="delivery__heading heading-2">Если ваш заказ <b>от <?php echo $min_small_delivery ?></b> рублей:</h3>
                         <p><strong>Доставка на следующий день или позже:</strong></p>
                             <ul>
                                 <li>в пределах МКАД — <?php echo $in_mkad ?> рублей;</li>
@@ -50,7 +50,7 @@ get_header(); ?>
                     </div>
                 
                     <div>
-                        <h3 class="info__heading heading-2">Если ваш заказ <b>до <?php echo $min_small_delivery ?></b> рублей:</h3>
+                        <h3 class="delivery__heading heading-2">Если ваш заказ <b>до <?php echo $min_small_delivery ?></b> рублей:</h3>
                         <p><strong>Доставка на следующий день или позже:</strong></p>
                         <ul>
                             <li>в пределах МКАД — <?php echo $in_mkad_small ?> рублей;</li>
@@ -99,13 +99,13 @@ get_header(); ?>
                         <span class="delivery__dropdown-arrow">next</span>
                     </div>
                     <div class="delivery__dropdown">
-                        <h3 class="info__heading heading-2">Где</h3>
+                        <h3 class="delivery__heading heading-2">Где</h3>
                         <p>Вы можете бесплатно забрать товары из нашего шоурума по адресу г. Москва, ул. Мещерякова, д.3 (от м. Тушинская или м. Сокол).</p>
                         <div class="info__map">
                             <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=237252555639" width="560" height="400" frameborder="0"></iframe>
                         </div>
 
-                        <h3 class="info__heading heading-2">Когда</h3>
+                        <h3 class="delivery__heading heading-2">Когда</h3>
                             <p>Мы ждем Вас ежедневно в рабочие часы.</p>
                             <p>Необходимо предварительно связаться с нами и договорится о времени Вашего прибытия.</p>
                     </div>
