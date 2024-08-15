@@ -68,8 +68,11 @@ get_header(); ?>
                 </div>
             </div>
                 <?php if($large_delivery_markup) { 
-                    echo '<div>
-                    <h3 class="info__heading heading-2">Крупногабаритная доставка</h3>
+                    echo '<div class="delivery__block">
+                    <div class="delivery__header">
+                    <h2 class="entry-header">Крупногабаритная доставка</h2>
+                    <span class="delivery__dropdown-arrow">next</span>
+                    </div>
                     <p>Доставка крупномерных растений (от 100см), больших заказов, высоких или тяжелых кашпо осуществляется грузовым автомобилем.</p>
                     <p><strong>Крупногабаритная доставка на следующий день или позже:</strong></p>
                     <ul>
