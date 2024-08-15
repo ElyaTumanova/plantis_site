@@ -29,7 +29,7 @@ get_header(); ?>
             <div class="delivery__block">
                 <div class="delivery__header">
                     <h1 class="entry-header">Доставка</h1>
-                    <span class="delivery__dropdown-arrow">next</span>
+                    <!-- <span class="delivery__dropdown-arrow">next</span> -->
                 </div>
                 <div class="delivery__dropdown">
                     <div>

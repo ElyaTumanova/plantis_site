@@ -133,7 +133,7 @@
 # Delivery
 --------------------------------------------------------------*/
 
-/* .delivery {
+.delivery {
     display: flex;
     column-gap: 60px;
     row-gap: 30px;
@@ -143,9 +143,9 @@
     .delivery {
         flex-direction: column;
     }
-} */
+}
 
-.delivery__header {
+/* .delivery__header {
     display: flex;
     position: relative;
 }
@@ -188,7 +188,7 @@
 .delivery__dropdown-arrow:hover {
     cursor: pointer;
     color: var(--accent-color);
-}
+} */
 
 .delivery p {
     margin-bottom: 15px;
