@@ -126,8 +126,8 @@ function plnt_filter_metki_swiper_init () {
 			setTimeout(function(){
 				swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
 					navigation: {
-						nextEl: '.swiper-button-next',
-						prevEl: '.swiper-button-prev',
+						nextEl: '.myslider-next',
+						prevEl: '.myslider-prev',
 					},
 					slidesPerView: 'auto',
 					spaceBetween: 5,
