@@ -153,7 +153,7 @@
     padding: 20px 0;
 }
 
-.delivery__header:last-child {
+.delivery__header:last-of-type {
     border-bottom: solid 1px var(--accent-color);
 }
 
