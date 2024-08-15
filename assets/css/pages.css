@@ -140,11 +140,11 @@
     border-bottom: solid 1px var(--accent-color);
 }
 
-/* @media (max-width: 767px) {
-    .delivery {
-        row-gap: 20px;
+@media (max-width: 767px) {
+    .delivery .entry-header{
+        font-size: 25px;
     }
-} */
+}
 
 .delivery__header {
     display: flex;
