@@ -168,6 +168,10 @@
     margin-bottom: 10px;
 }
 
+.catalog__grid_buttons {
+    grid-area: sorting; 
+}
+
 .woocommerce-ordering select {
     border-radius: 5px;
     border: none;
