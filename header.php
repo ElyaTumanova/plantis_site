@@ -80,7 +80,7 @@
 						<?php $search_icon = carbon_get_theme_option('search_icon')?>
 						<button class="header-btn__wrap">
 							<img class="header-btn__icon" src="<?php echo $search_icon ?>" alt="search" width="21" height="21">
-							<!-- <span class="header-btn__label">Поиск</span>		 -->
+							<span class="header-btn__label">Поиск</span>		
 						</button>
 					</div>
 				</div>
@@ -97,7 +97,7 @@
 						<?php $account_icon = carbon_get_theme_option('account_icon')?>
 						<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="header-btn__wrap">
 							<img class="header-btn__icon" src="<?php echo $account_icon ?>" alt="account" width="25" height="25">
-							<!-- <span class="header-btn__label">Войти</span>		 -->
+							<span class="header-btn__label">Войти</span>		
 						</a>
 					</div>
 					<div class="header__wishlist">
@@ -105,7 +105,7 @@
 							<div class="header__count"><?php echo do_shortcode('[yith_wcwl_items_count]')?></div>
 							<a href="<?php echo get_site_url()?>/wishlist" class="header-btn__wrap">		
 								<img class="header-btn__icon" src="<?php echo $whishlist_icon ?>" alt="wishlist" width="25" height="25">
-								<!-- <span class="header-btn__label">Избранное</span>		 -->
+								<span class="header-btn__label">Избранное</span>		
 							</a>
 						</a>
 					</div>
