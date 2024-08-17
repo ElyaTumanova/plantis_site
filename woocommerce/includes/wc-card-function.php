@@ -215,7 +215,9 @@ function plnt_price_wrap(){
         </div>
         <?php
         plnt_outofstock_info();
-        get_template_part('template-parts/delivery-info'); // delivery info for card
+        if ( $product->get_stock_status() !=='outofstock') {
+            get_template_part('template-parts/delivery-info'); // delivery info for card
+        }
         // peresadka_init
         //plnt_get_peresadka_add_to_cart();
         ?>
