@@ -122,4 +122,5 @@ if (gridButton3) {
 function toggle_grid_columns () {
     catalogGrid.classList.toggle ('columns-2');
     catalogGrid.classList.toggle ('columns-3');
+    gridButton2.disabled = true;
 };
