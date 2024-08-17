@@ -53,6 +53,10 @@
     flex-direction: column;
 }
 
+.card__grid_outofstock .card__price-wrap {
+    height: fit-content;
+}
+
 .card__price-wrap .social-media__buttons {
     margin: 0 auto;
 }
