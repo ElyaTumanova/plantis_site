@@ -110,17 +110,25 @@ const catalogGrid = document.querySelector('.catalog__products-wrap').querySelec
 
 if (gridButton2) {
     gridButton2.addEventListener ("click", (evt)=>{
-        toggle_grid_columns();
+        make_2_grid_columns();
     });
 }
 if (gridButton3) {
     gridButton3.addEventListener ("click", (evt)=>{
-        toggle_grid_columns();
+        make_3_grid_columns();
     });
 }
 
-function toggle_grid_columns () {
-    catalogGrid.classList.toggle ('columns-2');
-    catalogGrid.classList.toggle ('columns-3');
+function make_2_grid_columns () {
+    catalogGrid.classList.add ('columns-2');
+    catalogGrid.classList.remove ('columns-3');
     gridButton2.disabled = true;
+    gridButton3.disabled = false;
+};
+
+function make_3_grid_columns () {
+    catalogGrid.classList.remove ('columns-2');
+    catalogGrid.classList.add ('columns-3');
+    gridButton2.disabled = false;
+    gridButton3.disabled = true;
 };
