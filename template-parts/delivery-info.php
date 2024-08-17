@@ -37,11 +37,11 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div><?php echo $out_mkad?>₽</div>
         </div>
         <div class="delivery_table__row">
-            <div>В пределах МКАД в день заказа</div>
+            <div>В пределах МКАД <strong>в день заказа</strong></div>
             <div><?php echo $in_mkad_urg?>₽</div>
         </div>
         <div class="delivery_table__row">
-            <div>За пределы МКАД (до 5км) в день заказа</div>
+            <div>За пределы МКАД (до 5км) <strong>в день заказа</strong></div>
             <div><?php echo $out_mkad_urg?>₽</div>
         </div>
         <div class="delivery_table__row">
