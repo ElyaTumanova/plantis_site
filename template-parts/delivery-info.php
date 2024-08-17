@@ -21,11 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="delivery-info">
     <h4 class="delivery_table__header">Доставка</h4>
     <div class="delivery_table">
-        <div class="delivery_table__row">
-            <div>Самовывоз – <a style="text-decoration: underline;" href="https://yandex.ru/maps/-/CXQ-ErQ" target="_blank" rel="noopener">
-            ул. Мещерякова, д. 3</a></div>
-            <div>бесплатно</div>
-        </div>
         <?php if($min_free_delivery) { 
             echo '
                 <div class="delivery_table__row">
@@ -60,5 +55,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <div>+ '.$large_delivery_markup.'₽</div>
                 </div>
             ';}?>
+        <div class="delivery_table__row">
+            <div>Самовывоз – <a style="text-decoration: underline;" href="https://yandex.ru/maps/-/CXQ-ErQ" target="_blank" rel="noopener">
+            ул. Мещерякова, д. 3</a></div>
+            <div>бесплатно</div>
+        </div>
     </div>
 </div>
