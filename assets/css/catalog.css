@@ -164,12 +164,19 @@
 
 .woocommerce-ordering {
     grid-area: sorting;
-    justify-self: end;
+    /* justify-self: end; */
     margin-bottom: 10px;
 }
 
 .catalog__grid_buttons {
     grid-area: sorting; 
+    justify-self: end;
+}
+
+@media (max-width: 1279px) {
+    .catalog__grid_buttons {
+        display: none;
+    }
 }
 
 .woocommerce-ordering select {
