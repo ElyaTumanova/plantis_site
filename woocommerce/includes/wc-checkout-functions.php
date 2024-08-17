@@ -130,8 +130,9 @@ function plnt_large_delivery_notice() {
         $cart_weight = WC()->cart->cart_contents_weight;
     
         if ($cart_weight >= 11) {
-           echo '<img class=large_delivery_img src="https://plantis.shop/wp-content/uploads/2024/08/car.svg" alt="car">
-           <div class=large_delivery_notice>Для заказа предусмотрена крупногабаритная доставка!</div>';
+           echo '<div class=large_delivery_notice>
+           <img class=large_delivery_img src="https://plantis.shop/wp-content/uploads/2024/08/car.svg" alt="car">
+           <p>Для заказа предусмотрена крупногабаритная доставка!</p></div>';
         }
     }
 }
