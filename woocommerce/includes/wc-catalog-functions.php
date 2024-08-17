@@ -154,6 +154,23 @@ function plnt_filter_metki_swiper_init () {
 	<?php
 }
 
+// // переключатель сетки
+add_action('woocommerce_before_shop_loop','plnt_catalog_grid_columns', 30);
+
+function plnt_catalog_grid_columns () {
+	?>
+    <div class="catalog__grid_buttons">
+		<button>
+			1
+		</button>
+		<button>
+			2
+		</button>
+    </div>
+    <?php 	
+}
+
+
 // // заголовок каталога 
 
 add_filter( 'woocommerce_page_title', 'plnt_woocommerce_page_title');
