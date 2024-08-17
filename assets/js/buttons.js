@@ -108,4 +108,18 @@ const gridButton2 = document.querySelector('.catalog__grid-button-2');
 const gridButton3 = document.querySelector('.catalog__grid-button-3');
 const catalogGrid = document.querySelector('.catalog__products-wrap').querySelector('.products');
 
-console.log(catalogGrid);
+if (gridButton2) {
+    gridButton2.addEventListener ("click", (evt)=>{
+        toggle_grid_columns();
+    });
+}
+if (gridButton3) {
+    gridButton3.addEventListener ("click", (evt)=>{
+        toggle_grid_columns();
+    });
+}
+
+function toggle_grid_columns () {
+    catalogGrid.classList.toggle ('columns-2');
+    catalogGrid.classList.toggle ('columns-3');
+};

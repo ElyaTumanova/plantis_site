@@ -171,6 +171,8 @@
 .catalog__grid-buttons {
     grid-area: sorting; 
     justify-self: end;
+    display: flex;
+    column-gap: 10px;
 }
 
 @media (max-width: 1279px) {

@@ -147,7 +147,6 @@ function plnt_filter_metki_swiper_init () {
 						}
 					}
 				});
-				console.log('hihihh');
 			},100)
 		})
 	</script>
