@@ -104,8 +104,8 @@ if (filtersMob) {
 # Buttons to change grid columns in catalog
 --------------------------------------------------------------*/
 
-const gridButton2 = document.getElementById('.catalog__grid-button-2');
-const gridButton3 = document.getElementById('.catalog__grid-button-3');
+const gridButton2 = document.getElementById('catalog__grid-button-2');
+const gridButton3 = document.getElementById('catalog__grid-button-3');
 const catalogGrid = document.querySelector('.catalog__products-wrap').querySelector('.products');
 
 if (gridButton2) {
