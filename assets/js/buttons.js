@@ -98,3 +98,14 @@ if (filtersMob) {
         contentArea.classList.toggle ('no-padding');
     };
 }
+
+
+/*--------------------------------------------------------------
+# Buttons to change grid columns in catalog
+--------------------------------------------------------------*/
+
+const gridButton2 = document.querySelector('.catalog__grid-button-2');
+const gridButton3 = document.querySelector('.catalog__grid-button-3');
+const catalogGrid = document.querySelector('.catalog__products-wrap').querySelector('.products');
+
+console.log(catalogGrid);
