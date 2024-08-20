@@ -164,7 +164,7 @@
 
 .woocommerce-ordering {
     grid-area: sorting;
-    /* justify-self: end; */
+    justify-self: end;
     margin-bottom: 10px;
 }
 
