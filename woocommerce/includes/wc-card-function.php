@@ -180,7 +180,7 @@ function plnt_product_gallery( $options ) {
  
 	$options[ 'directionNav' ] = true;
 	$options[ 'controlNav' ] = true;
-	$options[ 'animationLoop' ] = true;
+	$options[ 'animationLoop' ] = false;
 	return $options;
 };
 
