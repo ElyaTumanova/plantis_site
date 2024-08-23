@@ -181,9 +181,18 @@
     }
 }
 
-#catalog__grid-button-2 {
-    background-image: url(https://plantis.shop/wp-content/uploads/2024/08/grid1.svg);
+.catalog__grid-button {
     background-repeat: no-repeat;
+    width: 22px;
+    height: 22px;
+    background-size: 20px;
+    border: none;
+}
+#catalog__grid-button-3 {
+    background-image: url(https://plantis.shop/wp-content/uploads/2024/08/grid1.svg);
+}
+#catalog__grid-button-2 {
+    background-image: url(https://plantis.shop/wp-content/uploads/2024/08/grid2.svg);
 }
 
 .woocommerce-ordering select {
