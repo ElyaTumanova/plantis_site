@@ -154,7 +154,7 @@ function plnt_filter_metki_swiper_init () {
 }
 
 // // переключатель сетки
-//add_action('woocommerce_before_shop_loop','plnt_catalog_grid_columns', 30);
+add_action('woocommerce_before_shop_loop','plnt_catalog_grid_columns', 30);
 
 function plnt_catalog_grid_columns () {
 	?>
