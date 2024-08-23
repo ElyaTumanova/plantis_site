@@ -189,9 +189,15 @@
     border: none;
     background-color: transparent;
 }
+
+.catalog__grid-button:disabled {
+    opacity: 50%;
+}
+
 #catalog__grid-button-3 {
     background-image: url(https://plantis.shop/wp-content/uploads/2024/08/grid1.svg);
 }
+
 #catalog__grid-button-2 {
     background-image: url(https://plantis.shop/wp-content/uploads/2024/08/grid2.svg);
 }
