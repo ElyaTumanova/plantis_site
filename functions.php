@@ -61,30 +61,15 @@ function plnt_check_page() {
 	// print_r( get_queried_object_id() );
 	// print_r( $gorshki_cat_id );
 	// echo '</pre>';
-	// if ( is_cart() ) {
-	// 	echo 'Это корзина!';
-	// }
-	// else {
-	// 	echo 'Это какая-то другая страница.';
-	// }
-	if( is_paged() ){
-		$canon_url = get_pagenum_link(1);
-		echo '<pre>';
-		print_r( $canon_url );
-		echo '</pre>';
+	if ( is_search() ) {
+		echo 'Это поиск!';
 	}
-
-	// вес товаров в корзине
-	$cart_weight = WC()->cart->cart_contents_weight;
-    echo '<pre>';
-	print_r( $cart_weight );
-	echo '</pre>';
-    if ($cart_weight >= 10) {
-        echo '<script>console.log("hi")</script>';
-    }
+	else {
+		echo 'Это какая-то другая страница.';
+	}
 }
 
-//add_action( 'wp_footer', 'plnt_check_page' );
+add_action( 'wp_footer', 'plnt_check_page' );
 
 
 
