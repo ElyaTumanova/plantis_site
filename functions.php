@@ -80,12 +80,6 @@ function plnt_check_page() {
 
 add_action( 'wp_footer', 'plnt_check_page' );
 
-add_filter('posts_search', function( $search, \WP_Query $q ) {
-    if (empty($search) ) {
-		echo ' не нашлось';
-	}
-}, 10, 2);
-
 
 
 
