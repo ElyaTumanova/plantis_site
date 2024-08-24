@@ -61,15 +61,23 @@ function plnt_check_page() {
 	// print_r( get_queried_object_id() );
 	// print_r( $gorshki_cat_id );
 	// echo '</pre>';
-	if ( is_search() ) {
-		echo 'Это поиск!';
+	// if ( is_search() ) {
+	// 	echo 'Это поиск!';
+	// }
+	// else {
+	// 	echo 'Это какая-то другая страница.';
+	// }
+
+	if(is_page_template('no-products-found.php')) {
+		echo 'Это то что нужно';
 	}
 	else {
 		echo 'Это какая-то другая страница.';
 	}
+	
 }
 
-//add_action( 'wp_footer', 'plnt_check_page' );
+add_action( 'wp_footer', 'plnt_check_page' );
 
 
 
