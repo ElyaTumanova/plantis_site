@@ -75,10 +75,12 @@ function plnt_check_page() {
 	// 	echo 'Это какая-то другая страница.';
 	// }
 	
-	echo   get_template_part( 'template-parts/content', 'none' );
+	echo  basename( get_page_template() );
 }
 
-add_action( 'wp_footer', 'plnt_check_page' );
+//add_action( 'wp_footer', 'plnt_check_page' );
+
+
 
 
 
