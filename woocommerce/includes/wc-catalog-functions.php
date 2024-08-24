@@ -244,42 +244,40 @@ function plnt_catalog_gallery() {
 };
 
 function plnt_img_gallery_swiper_init() {
-	if (!is_search()){
-		?>
-		<script>
-			swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
-				pagination: {
-					el: '.swiper-pagination',
-					clickable: true,
-				},
-				navigation: {
-					nextEl: '.swiper-button-next',
-					prevEl: '.swiper-button-prev',
-				},
-				slidesPerView: 1,
-				slidesPerGroup: 1,
-				spaceBetween: 0,
-				loop: true,
-				freeMode: false,
-				observer: true,
-				observeParents: true,
-				observeSlideChildren: true,
-				breakpoints: {
-					320: {
-						navigation: {
-							enabled: false,
-						},
+	?>
+	<script>
+		swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			slidesPerView: 1,
+			slidesPerGroup: 1,
+			spaceBetween: 0,
+			loop: true,
+			freeMode: false,
+			observer: true,
+			observeParents: true,
+			observeSlideChildren: true,
+			breakpoints: {
+				320: {
+					navigation: {
+						enabled: false,
 					},
-					768: {
-						navigation: {
-							enabled: true,
-						},
-					}
+				},
+				768: {
+					navigation: {
+						enabled: true,
+					},
 				}
-			});
-		</script>
-		<?php	
-	}
+			}
+		});
+	</script>
+	<?php	
 }
 
 // добавляем класс для swiper к изображениям товара 
