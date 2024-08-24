@@ -220,7 +220,7 @@ add_action('woocommerce_before_product_loop_end','plnt_img_gallery_swiper_init',
 
 function plnt_catalog_gallery() {
 
-	if (!is_search() && (is_shop() || is_product_category() || is_product_tag() )) {
+	if (is_shop() || is_product_category() || is_product_tag() ) {
 		global $product;
 		$image = $product->get_image();	
 		$attachment_ids = $product->get_gallery_attachment_ids();
