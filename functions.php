@@ -75,7 +75,7 @@ function plnt_check_page() {
 	// 	echo 'Это какая-то другая страница.';
 	// }
 	
-	echo   get_template_part();
+	echo   get_template_part( 'template-parts/content', 'none' );
 }
 
 add_action( 'wp_footer', 'plnt_check_page' );
