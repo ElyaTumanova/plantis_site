@@ -80,6 +80,13 @@ function plnt_check_page() {
 
 add_action( 'wp_footer', 'plnt_check_page' );
 
+add_filter('posts_search', function( $search, \WP_Query $q ) {
+    if (!is_admin() && empty($search) && $q->is_search() && $q->is_main_query())
+        $search .=" AND 0=1 ";
+
+    return $search;
+}, 10, 2);
+
 
 
 
