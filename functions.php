@@ -68,7 +68,7 @@ function plnt_check_page() {
 	// 	echo 'Это какая-то другая страница.';
 	// }
 
-	if(is_page_template('no-products-found.php')) {
+	if(is_page_template('templates/loop/no-products-found.php')) {
 		echo 'Это то что нужно';
 	}
 	else {
