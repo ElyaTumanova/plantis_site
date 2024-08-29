@@ -53,12 +53,12 @@
     flex-direction: column;
 }
 
-/* .card__grid_outofstock .card__price-wrap {
+.card__grid_outofstock .card__price-wrap {
     height: fit-content;
-} */
+}
 
 .card__price-wrap .social-media__buttons {
-    margin: 0 auto;
+    margin: 0 auto 25px;
 }
 
 .card__grid .card__ukhod-wrap {
@@ -549,11 +549,11 @@ input[type="number"] {
 }
 
 .card__outofstock-info {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
-    padding-bottom: 15px;
+    padding-bottom: 25px;
     color: var(--red-color);
-    line-height: 1.1;
+    line-height: 1.2;
 }
 
 @media (max-width: 767px) {
