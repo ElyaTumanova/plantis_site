@@ -106,9 +106,9 @@ if (filtersMob) {
 
 const gridButton2 = document.getElementById('catalog__grid-button-2');
 const gridButton3 = document.getElementById('catalog__grid-button-3');
-const catalogGrid = document.querySelector('.catalog__products-wrap').querySelector('.products');
-
-if (catalogGrid) {
+const catalogWrap = document.querySelector('.catalog__products-wrap');
+if(catalogWrap) {
+    const catalogGrid = catalogWrap.querySelector('.products');
     if (gridButton2) {
         gridButton2.addEventListener ("click", (evt)=>{
             make_2_grid_columns();
@@ -134,4 +134,6 @@ if (catalogGrid) {
         gridButton3.disabled = true;
     };
 }
+
+
 
