@@ -255,6 +255,7 @@ function plnt_img_gallery_swiper_init() {
 				nextEl: '.swiper-button-next',
 				prevEl: '.swiper-button-prev',
 			},
+			grabCursor: true,
 			slidesPerView: 1,
 			slidesPerGroup: 1,
 			spaceBetween: 0,
