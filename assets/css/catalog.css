@@ -176,7 +176,7 @@
 }
 
 @media (max-width: 1279px) {
-    .catalog__grid_buttons {
+    .catalog__grid-buttons {
         display: none;
     }
 }
