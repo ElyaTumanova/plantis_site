@@ -255,6 +255,10 @@ function plnt_img_gallery_swiper_init() {
 				nextEl: '.swiper-button-next',
 				prevEl: '.swiper-button-prev',
 			},
+			autoplay: {
+				delay: 1000,
+				disableOnInteraction: false,
+			},
 			grabCursor: true,
 			slidesPerView: 1,
 			slidesPerGroup: 1,
