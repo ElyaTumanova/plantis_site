@@ -285,6 +285,18 @@ function plnt_img_gallery_swiper_init() {
 		swiper_catalog_card_imgs.forEach((element) => {
         	element.autoplay.stop();
       	});
+
+		const sliders = document.querySelectorAll(".product__image-slider-wrap");
+
+		sliders.forEach((slider) => {
+			slider.addEventListener("mouseenter", function () {
+			slider.swiper_catalog_card_imgs.autoplay.resume();
+			slider.swiper_catalog_card_imgs.autoplay.start();
+			});
+			slider.addEventListener("mouseleave", function () {
+			slider.swiper_catalog_card_imgs.autoplay.pause();
+			});
+		});
 	</script>
 	<?php	
 }
