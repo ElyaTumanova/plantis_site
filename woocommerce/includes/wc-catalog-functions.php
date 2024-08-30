@@ -281,6 +281,10 @@ function plnt_img_gallery_swiper_init() {
 				}
 			}
 		});
+
+		swiper_catalog_card_imgs.forEach((element) => {
+        	element.autoplay.stop();
+      	});
 	</script>
 	<?php	
 }
