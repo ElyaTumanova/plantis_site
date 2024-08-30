@@ -235,8 +235,8 @@ function plnt_catalog_gallery() {
 			echo '
 			</div>
 			<div class="swiper-pagination"></div>
-			<div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div>
+			<!-- <div class="swiper-button-prev"></div> -->
+			<!-- <div class="swiper-button-next"></div> -->
 		</div>';
 	} else {
 		woocommerce_template_loop_product_thumbnail();
@@ -252,9 +252,12 @@ function plnt_img_gallery_swiper_init() {
 				clickable: true,
 			},
 			navigation: {
-				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev',
-			},
+						enabled: false,
+					},
+			// navigation: {
+			// 	nextEl: '.swiper-button-next',
+			// 	prevEl: '.swiper-button-prev',
+			// },
 			autoplay: {
 				delay: 1000,
 				disableOnInteraction: false,
