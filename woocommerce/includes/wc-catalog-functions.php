@@ -287,16 +287,16 @@ function plnt_img_gallery_swiper_init() {
       	});
 
 		const sliders = document.querySelectorAll(".product__image-slider-wrap");
-
-		sliders.forEach((slider) => {
-			slider.addEventListener("mouseenter", function () {
-			slider.swiper_catalog_card_imgs.autoplay.resume();
-			slider.swiper_catalog_card_imgs.autoplay.start();
-			});
-			slider.addEventListener("mouseleave", function () {
-			slider.swiper_catalog_card_imgs.autoplay.pause();
-			});
-		});
+		console.log(sliders);
+		// sliders.forEach((slider) => {
+		// 	slider.addEventListener("mouseenter", function () {
+		// 	slider.swiper_catalog_card_imgs.autoplay.resume();
+		// 	slider.swiper_catalog_card_imgs.autoplay.start();
+		// 	});
+		// 	slider.addEventListener("mouseleave", function () {
+		// 	slider.swiper_catalog_card_imgs.autoplay.pause();
+		// 	});
+		// });
 	</script>
 	<?php	
 }
