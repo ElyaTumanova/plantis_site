@@ -258,6 +258,14 @@ ul.products {
     }
 }
 
+.catalog__grid .term-description {
+    margin-top: 30px;
+}
+
+.catalog__grid .advantages {
+    margin-top: 30px;
+}
+
 /*--------------------------------------------------------------
 # Card in Catalog
 --------------------------------------------------------------*/
