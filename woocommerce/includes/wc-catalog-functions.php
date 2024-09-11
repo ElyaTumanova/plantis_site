@@ -10,7 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // // убираем лишнее
 //remove_action('woocommerce_archive_description','woocommerce_taxonomy_archive_description',10);
-add_action('woocommerce_after_shop_loop','woocommerce_taxonomy_archive_description',15);
+add_action('woocommerce_after_shop_loop','plnt_woocommerce_taxonomy_archive_description',15);
+
+function plnt_woocommerce_taxonomy_archive_description() {
+	if ( is_paged() ) {
+		woocommerce_taxonomy_archive_description();
+	}
+}
+
 remove_action('woocommerce_before_shop_loop','woocommerce_result_count', 20);
 remove_action('woocommerce_before_shop_loop','woocommerce_output_all_notices', 10);
 remove_action('woocommerce_sidebar','woocommerce_get_sidebar', 10);
