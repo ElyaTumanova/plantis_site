@@ -298,18 +298,15 @@ function plnt_img_gallery_swiper_init() {
 
 		swiper_catalog_card_imgs.forEach((element) => {
         	element.autoplay.stop();
-			// console.log('stop');
       	});
 
 		const sliders = document.querySelectorAll(".product__image-slider-wrap");
 		console.log(sliders);
 		sliders.forEach((slider) => {
 			slider.addEventListener("mouseenter", function () {
-				// slider.swiper.autoplay.resume();
 				slider.swiper.autoplay.start();
 			});
 			slider.addEventListener("mouseleave", function () {
-				// slider.swiper.autoplay.pause();
 				slider.swiper.autoplay.stop();
 				slider.swiper.slideTo(0, 0, false);
 			});
