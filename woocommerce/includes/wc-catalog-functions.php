@@ -531,7 +531,7 @@ add_filter( 'wpseo_robots', 'filter_wpseo_robots' );
 /* Yoast SEO -  add noindex, follow for paginated pages */
 function filter_wpseo_robots( $robotsstr ) {
     if ( is_paged() ) {
-        return 'noindex, follow';
+        return 'index, follow';
     }
  
     return $robotsstr;
