@@ -267,10 +267,10 @@ function plnt_img_gallery_swiper_init() {
 				nextEl: '.swiper-button-next',
 				prevEl: '.swiper-button-prev',
 			},
-			// autoplay: {
-			// 	delay: 1000,
-			// 	disableOnInteraction: false,
-			// },
+			autoplay: {
+				delay: 1000,
+				disableOnInteraction: false,
+			},
 			grabCursor: true,
 			slidesPerView: 1,
 			slidesPerGroup: 1,
@@ -294,21 +294,23 @@ function plnt_img_gallery_swiper_init() {
 			}
 		});
 
-		// swiper_catalog_card_imgs.forEach((element) => {
-        // 	element.autoplay.stop();
-      	// });
+		swiper_catalog_card_imgs.forEach((element) => {
+        	element.autoplay.stop();
+			// console.log('stop');
+      	});
 
-		// const sliders = document.querySelectorAll(".product__image-slider-wrap");
-		// console.log(sliders);
-		// sliders.forEach((slider) => {
-		// 	slider.addEventListener("mouseenter", function () {
-		// 		slider.swiper.autoplay.resume();
-		// 		slider.swiper.autoplay.start();
-		// 	});
-		// 	slider.addEventListener("mouseleave", function () {
-		// 		slider.swiper.autoplay.pause();
-		// 	});
-		// });
+		const sliders = document.querySelectorAll(".product__image-slider-wrap");
+		console.log(sliders);
+		sliders.forEach((slider) => {
+			slider.addEventListener("mouseenter", function () {
+				// slider.swiper.autoplay.resume();
+				slider.swiper.autoplay.start();
+			});
+			slider.addEventListener("mouseleave", function () {
+				// slider.swiper.autoplay.pause();
+				slider.swiper.autoplay.stop();
+			});
+		});
 	</script>
 	<?php	
 }
@@ -526,7 +528,7 @@ function move_to_top_on_pagination() {
 add_action('wp_footer', 'move_to_top_on_pagination');
 
 // добавляем директивы ноиндекс, фоллоу для страниц пагинации, начиная со 2 #SEO
-//add_filter( 'wpseo_robots', 'filter_wpseo_robots' );
+add_filter( 'wpseo_robots', 'filter_wpseo_robots' );
 
 /* Yoast SEO -  add noindex, follow for paginated pages */
 function filter_wpseo_robots( $robotsstr ) {
@@ -537,7 +539,7 @@ function filter_wpseo_robots( $robotsstr ) {
     return $robotsstr;
 }
 
-// add_filter( 'wpseo_canonical', 'yoast_remove_canonical_items' );
+// add_filter( 'wpseo_canonical', 'yoast_remove_canonical_items' ); // если нужно убрать canonical на отдельных страницах
 
 // function yoast_remove_canonical_items( $canonical ) {
 //   if ( is_paged() ) {
@@ -589,7 +591,7 @@ function add_custom_canonical_tags() {
 }
 
 // Добавляем действие в WordPress, чтобы выполнить функцию при выводе тегов в head
-//add_action('wp_head', 'add_custom_canonical_tags');
+add_action('wp_head', 'add_custom_canonical_tags');
 
 // изменяем названия меток на подборки для хлебных крошек #breadcrumb
 add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
