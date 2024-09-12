@@ -278,6 +278,7 @@ function plnt_img_gallery_swiper_init() {
 			loop: true,
 			freeMode: false,
 			effect: "fade",
+			crossFade: true,
 			observer: true,
 			observeParents: true,
 			observeSlideChildren: true,
