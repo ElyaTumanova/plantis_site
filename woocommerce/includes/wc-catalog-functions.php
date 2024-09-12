@@ -277,6 +277,7 @@ function plnt_img_gallery_swiper_init() {
 			spaceBetween: 0,
 			loop: true,
 			freeMode: false,
+			effect: "fade",
 			observer: true,
 			observeParents: true,
 			observeSlideChildren: true,
