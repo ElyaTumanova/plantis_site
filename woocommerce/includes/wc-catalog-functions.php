@@ -268,7 +268,7 @@ function plnt_img_gallery_swiper_init() {
 				prevEl: '.swiper-button-prev',
 			},
 			autoplay: {
-				delay: 1000,
+				delay: 500,
 				disableOnInteraction: false,
 			},
 			grabCursor: true,
