@@ -309,7 +309,7 @@ function plnt_img_gallery_swiper_init() {
 			slider.addEventListener("mouseleave", function () {
 				// slider.swiper.autoplay.pause();
 				slider.swiper.autoplay.stop();
-				slider.swiper.slideTo(0, 100, false);
+				slider.swiper.slideTo(0);
 			});
 		});
 	</script>
