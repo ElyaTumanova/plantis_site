@@ -18,3 +18,9 @@ function misha_remove_my_account_links( $menu_links ){
  
 	return $menu_links;
 }
+
+add_action ('woocommerce_login_form_end','plnt_login_form');
+
+function plnt_login_form () {
+	echo '<div>HIHI</div>';
+}
