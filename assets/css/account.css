@@ -29,7 +29,7 @@
     color: var(--accent-color);
 }
 
-#customer_login .h2_opened {
+#customer_login .h2_opened:hover {
     color: var(--text);
 }
 
