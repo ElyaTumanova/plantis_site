@@ -7,6 +7,9 @@
     margin-top: 30px;
     column-gap: 50px;
     row-gap: 30px;
+
+    flex-direction: column;
+    align-items: center;
 }
 
 #customer_login > div {
@@ -19,6 +22,7 @@
 
 #customer_login form p {
     margin-bottom: 10px;
+    line-height: 1.2;
 }
 
 #customer_login form .woocommerce-form-row--wide {
@@ -59,7 +63,12 @@
     font-weight: 300;
     color: #a7a7a7;
     display: flex;
-    align-items: end;
+    align-items: flex-start;
+}
+
+#customer_login form .woocommerce-LostPassword {
+    font-weight: 600;
+    text-decoration: underline;
 }
 
 #customer_login form .woocommerce-privacy-policy-text p {
