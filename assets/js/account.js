@@ -7,6 +7,8 @@ if (customerLoginForm) {
     const loginHeader = customerLoginForm.querySelector ('.col-1').querySelector('h2');
     const registerHeader = customerLoginForm.querySelector ('.col-2').querySelector('h2');
 
+    registerForm.classList.add("d-none");
+
     console.log(loginForm);
     console.log(registerForm);
     console.log(loginHeader);
