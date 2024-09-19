@@ -59,13 +59,8 @@
 }
 
 #customer_login form input, .plnt-customer-login form input {
-    /* height: 35px; */
     padding: 14px 20px;
-    /* background: var(--background); */
     border: 1px solid #ccc;
-    /* color: #222;
-    border-bottom: 1px solid #ededed;
-    border-radius: 0; */
     width: 100%
 }
 
@@ -98,15 +93,12 @@
     text-decoration: underline;
 }
 
-/* #customer_login form .woocommerce-LostPassword {
-    float: right;
-} */
 
 #customer_login form .woocommerce-privacy-policy-text p {
     display: block;
 }
 
-#customer_login form button, .plnt-customer-login form button {
+#customer_login form button, .plnt-customer-login form .button {
     color: var(--white);
     background-color: var(--accent-color);
     border-color: var(--accent-color);
