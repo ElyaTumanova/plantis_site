@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="login-popup popup">
-    <div class="plnt-customer-login">
+    <div class="plnt-customer-login page-popup__containe">
         <?php wp_login_form( $args ); ?>
         <div class="login__close">✖</div>
     </div>
