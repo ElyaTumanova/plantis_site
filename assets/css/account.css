@@ -42,6 +42,9 @@
     width: fit-content;
     height: fit-content;
     margin-right: 6px;
+}
+
+#customer_login form .woocommerce-form-login__rememberme {
     text-transform: none;
     font-size: 14px;
     color: black;
