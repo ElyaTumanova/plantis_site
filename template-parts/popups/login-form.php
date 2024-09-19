@@ -4,7 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div class="plnt-customer-login popup">
-    hello
-    <?php wp_login_form( $args ); ?>
+<div class="login-popup popup">
+    <div class="plnt-customer-login">
+        <?php wp_login_form( $args ); ?>
+        <div class="search__close">✖</div>
+    </div>
+    <div class="login__popup-overlay popup-overlay"></div>
 </div>
