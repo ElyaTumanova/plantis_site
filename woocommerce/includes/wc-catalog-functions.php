@@ -301,7 +301,7 @@ function plnt_img_gallery_swiper_init() {
       	});
 
 		const sliders = document.querySelectorAll(".product__image-slider-wrap");
-		console.log(sliders);
+		// console.log(sliders);
 		sliders.forEach((slider) => {
 			slider.addEventListener("mouseenter", function () {
 				slider.swiper.autoplay.start();
