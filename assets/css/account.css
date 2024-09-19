@@ -9,6 +9,11 @@
     
 }
 
+.login__close {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+}
 
 
 #customer_login {
