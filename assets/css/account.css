@@ -18,6 +18,11 @@
 
 #customer_login h2 {
     margin-bottom: 20px;
+    cursor: pointer;
+}
+
+#customer_login h2:hover {
+    color: var(--accent-color);
 }
 
 #customer_login form p {
