@@ -2,6 +2,12 @@
 # My Account
 --------------------------------------------------------------*/
 
+.plnt-customer-login {
+    display: flex;
+}
+
+
+
 #customer_login {
     display: flex;
     margin-top: 30px;
