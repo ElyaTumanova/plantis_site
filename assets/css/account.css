@@ -5,6 +5,7 @@
 .plnt-customer-login {
     display: flex;
     background: var(--background);
+    justify-content: center;
     
 }
 
@@ -100,7 +101,7 @@
     display: block;
 }
 
-#customer_login form button {
+#customer_login form button, .plnt-customer-login form button {
     color: var(--white);
     background-color: var(--accent-color);
     border-color: var(--accent-color);
