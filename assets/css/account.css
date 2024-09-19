@@ -21,8 +21,16 @@
     cursor: pointer;
 }
 
+#customer_login .h2_opened {
+    cursor: default;
+}
+
 #customer_login h2:hover {
     color: var(--accent-color);
+}
+
+#customer_login .h2_opened {
+    color: var(--text);
 }
 
 #customer_login form p {
