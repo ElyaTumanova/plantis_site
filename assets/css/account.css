@@ -5,6 +5,8 @@
 #customer_login {
     display: flex;
     margin-top: 30px;
+    column-gap: 50px;
+    row-gap: 30px;
 }
 
 #customer_login > div {
@@ -17,6 +19,21 @@
 
 #customer_login form p {
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#customer_login form p label {
+    margin-bottom: 8px;
+    line-height: 100%;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 300;
+    color: #a7a7a7;
+}
+
+#customer_login form .woocommerce-privacy-policy-text p {
+    display: block;
 }
 
 #customer_login form button {
