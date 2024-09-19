@@ -17,7 +17,7 @@
     margin-bottom: 20px;
 }
 
-#customer_login form p {
+#customer_login form .woocommerce-form-row--wide {
     margin-bottom: 40px;
     display: flex;
     flex-direction: column;
