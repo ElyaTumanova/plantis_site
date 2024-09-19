@@ -93,9 +93,9 @@
 					<?php endif; ?>
 				</div><!-- .description -->
 				<div class="header__wrap">
-					<div class="header__account">
+					<div class="header__account login-btn">
 						<?php $account_icon = carbon_get_theme_option('account_icon')?>
-						<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="header-btn__wrap">
+						<a href="#<?php //echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="header-btn__wrap">
 							<img class="header-btn__icon" src="<?php echo $account_icon ?>" alt="account" width="25" height="25">
 							<span class="header-btn__label">Войти</span>		
 						</a>
