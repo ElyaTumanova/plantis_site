@@ -244,8 +244,8 @@ function plnt_catalog_gallery() {
 			echo '
 			</div>
 			<div class="swiper-pagination"></div>
-			<!-- <div class="swiper-button-prev"></div> -->
-			<!-- <div class="swiper-button-next"></div> -->
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
 		</div>';
 	} else {
 		woocommerce_template_loop_product_thumbnail();
@@ -261,23 +261,23 @@ function plnt_img_gallery_swiper_init() {
 				clickable: true,
 			},
 			navigation: {
-						enabled: false,
+						enabled: true,
 					},
 			navigation: {
 				nextEl: '.swiper-button-next',
 				prevEl: '.swiper-button-prev',
 			},
-			autoplay: {
-				delay: 500,
-				disableOnInteraction: false,
-			},
+			// autoplay: {
+			// 	delay: 500,
+			// 	disableOnInteraction: false,
+			// },
 			grabCursor: true,
 			slidesPerView: 1,
 			slidesPerGroup: 1,
 			spaceBetween: 0,
 			loop: true,
 			freeMode: false,
-			effect: "fade",
+			// effect: "fade",
 			crossFade: true,
 			observer: true,
 			observeParents: true,
@@ -296,21 +296,20 @@ function plnt_img_gallery_swiper_init() {
 			}
 		});
 
-		swiper_catalog_card_imgs.forEach((element) => {
-        	element.autoplay.stop();
-      	});
+		// swiper_catalog_card_imgs.forEach((element) => {
+        // 	element.autoplay.stop();
+      	// });
 
-		const sliders = document.querySelectorAll(".product__image-slider-wrap");
-		// console.log(sliders);
-		sliders.forEach((slider) => {
-			slider.addEventListener("mouseenter", function () {
-				slider.swiper.autoplay.start();
-			});
-			slider.addEventListener("mouseleave", function () {
-				slider.swiper.autoplay.stop();
-				slider.swiper.slideTo(0, 0, false);
-			});
-		});
+		// const sliders = document.querySelectorAll(".product__image-slider-wrap");
+		// sliders.forEach((slider) => {
+		// 	slider.addEventListener("mouseenter", function () {
+		// 		slider.swiper.autoplay.start();
+		// 	});
+		// 	slider.addEventListener("mouseleave", function () {
+		// 		slider.swiper.autoplay.stop();
+		// 		slider.swiper.slideTo(0, 0, false);
+		// 	});
+		// });
 	</script>
 	<?php	
 }
