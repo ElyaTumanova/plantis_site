@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div class="plnt-customer-login modal-mob">
+<div class="plnt-customer-login popup">
     hello
     <?php wp_login_form( $args ); ?>
 </div>
