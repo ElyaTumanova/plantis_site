@@ -11,7 +11,8 @@
 }
 
 :root {
-    --accent-color: #146F41;
+    /* --accent-color: #146F41; */
+    --accent-color: yellow;
     --red-color: #F93D05;
     --white: #fff;
     --background: #FDFDFD;
