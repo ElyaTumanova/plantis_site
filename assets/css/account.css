@@ -79,7 +79,7 @@
     align-items: flex-start;
 }
 
-#customer_login form .woocommerce-LostPassword {
+#customer_login form .woocommerce-LostPassword, #customer_login form .login-form__registration-btn {
     font-weight: 600;
     text-decoration: underline;
 }
