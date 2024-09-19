@@ -244,8 +244,8 @@ function plnt_catalog_gallery() {
 			echo '
 			</div>
 			<div class="swiper-pagination"></div>
-			<div class="swiper-button-prev"></div> 
-			<div class="swiper-button-next"></div>
+			<!-- <div class="swiper-button-prev"></div> -->
+			<!-- <div class="swiper-button-next"></div> -->
 		</div>';
 	} else {
 		woocommerce_template_loop_product_thumbnail();
