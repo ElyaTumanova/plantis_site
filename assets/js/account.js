@@ -9,6 +9,16 @@ if (customerLoginForm) {
 
     registerForm.classList.add("d-none");
 
+    loginHeader.addEventListener('click', function (e) {
+        registerForm.classList.add("d-none");
+        loginForm.classList.remove("d-none");
+    })
+
+    registerHeader.addEventListener('click', function (e) {
+        registerForm.classList.remove("d-none");
+        loginForm.classList.add("d-none");
+    })
+
     console.log(loginForm);
     console.log(registerForm);
     console.log(loginHeader);
