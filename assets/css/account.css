@@ -11,8 +11,8 @@
 
 .login__close {
     position: absolute;
-    top: -30px;
-    right: -30px;
+    top: 40px;
+    right: 40px;
 }
 
 
@@ -24,11 +24,13 @@
 
     flex-direction: column;
     align-items: center;
+
+    width: 100%;
 }
 
-#customer_login > div {
+/* #customer_login > div {
     width: 50%;
-}
+} */
 
 #customer_login h2 {
     margin-bottom: 20px;
