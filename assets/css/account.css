@@ -35,6 +35,16 @@
     min-width: 400px;
 }
 
+.woocommerce-form-login {
+    display: grid;
+    grid-template-areas: 
+    "name"
+    "password"
+    "forgot"
+    "button"
+    "registartion";
+}
+
 #customer_login h2 {
     margin-bottom: 20px;
     cursor: pointer;
@@ -96,8 +106,12 @@
 #customer_login form .woocommerce-LostPassword, #customer_login form .login-form__registration-btn {
     font-weight: 600;
     text-decoration: underline;
+    grid-area: password;
 }
 
+.form-row:nth-child(3) {
+    grid-area: button;
+}
 
 #customer_login form .woocommerce-privacy-policy-text p {
     display: block;
