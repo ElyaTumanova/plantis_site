@@ -5,9 +5,11 @@
 .plnt-customer-login {
     display: flex;
     background: var(--background);
-    justify-content: center;
+    justify-content: center; 
+}
+
+.login-popup .page-popup__container {
     max-width: 600px;
-    
 }
 
 .login__close {
