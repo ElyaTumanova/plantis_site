@@ -6,6 +6,7 @@
     display: flex;
     background: var(--background);
     justify-content: center;
+    max-width: 600px;
     
 }
 
@@ -28,9 +29,9 @@
     width: 100%;
 }
 
-/* #customer_login > div {
-    width: 50%;
-} */
+#customer_login > div {
+    min-width: 400px;
+}
 
 #customer_login h2 {
     margin-bottom: 20px;
