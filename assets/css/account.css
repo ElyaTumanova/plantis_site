@@ -103,10 +103,16 @@
     align-items: flex-start;
 }
 
-#customer_login form .woocommerce-LostPassword, #customer_login form .login-form__registration-btn {
+#customer_login form .woocommerce-LostPassword {
     font-weight: 600;
     text-decoration: underline;
     grid-area: forgot;
+}
+
+#customer_login form .login-form__registration-btn {
+    font-weight: 600;
+    text-decoration: underline;
+    grid-area: registration;
 }
 
 .form-row:nth-child(1) {
