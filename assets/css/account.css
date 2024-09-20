@@ -47,37 +47,37 @@
     color: var(--text);
 }
 
-#customer_login form p, .plnt-customer-login form p {
+#customer_login form p {
     margin-bottom: 10px;
     line-height: 1.2;
 }
 
-#customer_login form .woocommerce-form-row--wide, .plnt-customer-login form .woocommerce-form-row--wide {
+#customer_login form .woocommerce-form-row--wide {
     margin-bottom: 40px;
     display: flex;
     flex-direction: column;
 }
 
-#customer_login form input, .plnt-customer-login form input {
+#customer_login form input {
     padding: 14px 20px;
     border: 1px solid #ccc;
     width: 100%
 }
 
-#customer_login form input[name="rememberme"], .plnt-customer-login form input[name="rememberme"] {
+#customer_login form input[name="rememberme"] {
     width: fit-content;
     height: fit-content;
     margin-right: 6px;
 }
 
-#customer_login form .woocommerce-form-login__rememberme, .plnt-customer-login .woocommerce-form-login__rememberme {
+#customer_login form .woocommerce-form-login__rememberme {
     text-transform: none;
     font-size: 14px;
     color: black;
     font-weight: 500;
 }
 
-#customer_login form p label, .plnt-customer-login form p label {
+#customer_login form p label {
     margin-bottom: 8px;
     line-height: 100%;
     text-transform: uppercase;
@@ -88,7 +88,7 @@
     align-items: flex-start;
 }
 
-#customer_login form .woocommerce-LostPassword, .plnt-customer-login .woocommerce-LostPassword, #customer_login form .login-form__registration-btn {
+#customer_login form .woocommerce-LostPassword, #customer_login form .login-form__registration-btn {
     font-weight: 600;
     text-decoration: underline;
 }
@@ -98,7 +98,7 @@
     display: block;
 }
 
-#customer_login form button, .plnt-customer-login form .button {
+#customer_login form button {
     color: var(--white);
     background-color: var(--accent-color);
     border-color: var(--accent-color);
