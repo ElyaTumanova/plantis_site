@@ -8,6 +8,13 @@
     justify-content: center; 
 }
 
+
+.plnt-customer-login .u-column2 {
+    display: none;
+}
+
+
+
 .login-popup .page-popup__container {
     max-width: 600px;
 }
@@ -70,9 +77,13 @@
 }
 
 #customer_login form .woocommerce-form-row--wide {
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
     display: flex;
     flex-direction: column;
+}
+
+#customer_login form .woocommerce-form-row--wide:first-child {
+    margin-bottom: 40px;
 }
 
 #customer_login form input {
@@ -109,12 +120,14 @@
     font-weight: 600;
     text-decoration: underline;
     grid-area: forgot;
+    justify-self: end;
 }
 
 #customer_login form .login-form__registration-btn {
-    font-weight: 600;
-    text-decoration: underline;
+    font-weight: 800;
     grid-area: registartion;
+    justify-self: center;
+    color: var(--accent-color);
 }
 
 .form-row:nth-child(1) {
