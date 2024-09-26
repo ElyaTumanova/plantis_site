@@ -2,8 +2,7 @@
 # My Account
 --------------------------------------------------------------*/
 
-.plnt-customer-login {
-    /* display: flex; */
+.plnt-customer-login, .plnt-customer-register {
     background: var(--background);
     justify-content: center; 
 }
@@ -13,18 +12,20 @@
     display: none;
 }
 
+.plnt-customer-register .u-column1 {
+    display: none;
+}
 
-
-.login-popup .page-popup__container {
+.login-popup .page-popup__container, .register-popup .page-popup__container {
     max-width: 600px;
 }
 
-.login__close {
+.login__close, .register__close {
     position: absolute;
     top: 40px;
     right: 40px;
 }
-.login__close:hover {
+.login__close:hover, .register__close:hover {
     cursor: pointer;
 }
 
