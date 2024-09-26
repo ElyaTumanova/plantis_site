@@ -133,12 +133,14 @@
     grid-area: registartion;
     justify-self: center;
     color: var(--accent-color);
+    cursor: pointer;
 }
 
 .register-form__login-btn {
     font-weight: 800;
     color: var(--accent-color);
     text-align: center;
+    cursor: pointer;
 }
 
 .form-row:nth-child(1) {
