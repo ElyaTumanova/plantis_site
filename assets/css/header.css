@@ -142,7 +142,7 @@
     text-align: center;
     font-weight: 600;
 }
-.header__notice-wrap {
+.header__notice-wrap, .header__notice-wrap_mob {
     background-color: var(--notice-red);
 }
 
