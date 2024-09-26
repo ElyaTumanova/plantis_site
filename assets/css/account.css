@@ -30,7 +30,7 @@
 }
 
 
-#customer_login {
+#customer_login, .u-column2 {
     display: flex;
     margin-top: 30px;
     column-gap: 50px;
@@ -42,7 +42,7 @@
     width: 100%;
 }
 
-#customer_login > div {
+#customer_login > div, .u-column2 > div {
     min-width: 400px;
 }
 
@@ -58,12 +58,12 @@
     "registartion";
 }
 
-#customer_login h2 {
+#customer_login h2, .u-column2 h2 {
     margin-bottom: 20px;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
-#customer_login .h2_opened {
+/* #customer_login .h2_opened {
     cursor: default;
 }
 
@@ -73,14 +73,14 @@
 
 #customer_login .h2_opened:hover {
     color: var(--text);
-}
+} */
 
-#customer_login form p {
+#customer_login form p, .u-column2 form p  {
     margin-bottom: 10px;
     line-height: 1.2;
 }
 
-#customer_login form .woocommerce-form-row--wide {
+#customer_login form .woocommerce-form-row--wide, .u-column2 form .woocommerce-form-row--wide {
     /* margin-bottom: 40px; */
     display: flex;
     flex-direction: column;
@@ -90,7 +90,7 @@
     margin-bottom: 40px;
 }
 
-#customer_login form input {
+#customer_login form input, .u-column2 form input {
     padding: 14px 20px;
     border: 1px solid #ccc;
     width: 100%
@@ -109,7 +109,7 @@
     font-weight: 500;
 }
 
-#customer_login form p label {
+#customer_login form p label, .u-column2 form p label {
     margin-bottom: 8px;
     line-height: 100%;
     text-transform: uppercase;
@@ -145,11 +145,11 @@
     grid-area: button;
 }
 
-#customer_login form .woocommerce-privacy-policy-text p {
+.u-column2 form .woocommerce-privacy-policy-text p {
     display: block;
 }
 
-#customer_login form button {
+#customer_login form button, .u-column2 form button {
     color: var(--white);
     background-color: var(--accent-color);
     border-color: var(--accent-color);
@@ -159,12 +159,12 @@
 
 
 @media (max-width: 767px) {
-    #customer_login {
+    #customer_login, .u-column2 {
         display: flex;
         flex-direction: column;
     }
     
-    #customer_login div {
+    #customer_login div, .u-column2 div {
         width: 100%;
     }
 }
