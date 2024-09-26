@@ -23,6 +23,8 @@
     position: absolute;
     top: 40px;
     right: 40px;
+}
+.login__close:hover {
     cursor: pointer;
 }
 
