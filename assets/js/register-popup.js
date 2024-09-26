@@ -31,3 +31,6 @@ function toggle_reg_popup () {
     body.classList.toggle ('fix-body');
 };
 
+console.log(regOpenPopupBtn);
+console.log(regPopup);
+console.log(regClosePopupBtn);
