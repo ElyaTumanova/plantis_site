@@ -8,7 +8,7 @@ $show_notice = carbon_get_theme_option('show_notice');
 
 if ($show_notice) {
 ?>
-<div class="header__notice">
+<div class="header__notice container">
     <?php echo $notice ?>
 </div> 
 <?php

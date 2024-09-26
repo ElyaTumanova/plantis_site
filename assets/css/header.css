@@ -144,11 +144,6 @@
     font-weight: 600;
 }
 
-.fix-body .header__notice {
-    max-width: calc(1300px + var(--scrollWidth));
-    padding-right: var(--scrollWidth);
-}
-
 @media (max-width: 1279px) {
     .header__notice-wrap {
         display: none;
