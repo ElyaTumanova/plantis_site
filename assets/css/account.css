@@ -22,9 +22,17 @@
 
 .login__close, .register__close {
     position: absolute;
-    top: 45px;
-    right: 15px;
+    top: 50px;
+    right: 50px;
 }
+
+@media (max-width: 767px) {
+    .login__close, .register__close {
+        top: 45px;
+        right: 15px;
+    }
+}
+
 .login__close:hover, .register__close:hover {
     cursor: pointer;
 }
