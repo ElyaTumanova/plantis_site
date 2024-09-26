@@ -30,6 +30,7 @@ document.addEventListener('keydown', function(e){
 function toggle_login_popup () {
     loginPopup.classList.toggle ('popup_active');
     body.classList.toggle ('fix-body');
+    console.log('toggle login');
 };
 
 
