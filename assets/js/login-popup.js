@@ -39,11 +39,19 @@ const regOpenPopupBtn = document.querySelectorAll('.login-form__registration-btn
 const regPopup = document.querySelector('.register-popup');
 const regClosePopupBtn = document.querySelector('.register__close');
 const regPopupOverlay = document.querySelector('.register__popup-overlay');
+const loginOnRegPopupBtn = document.querySelectorAll('.register-form__login-btn');
 
 regOpenPopupBtn.forEach((btn)=>
     btn.addEventListener ("click", (evt)=>{
         toggle_login_popup ();
         toggle_reg_popup ();
+    })
+);
+
+loginOnRegPopupBtn.forEach((btn)=>
+    btn.addEventListener ("click", (evt)=>{
+        toggle_reg_popup ();
+        toggle_login_popup ();
     })
 );
 
