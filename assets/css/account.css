@@ -22,8 +22,8 @@
 
 .login__close, .register__close {
     position: absolute;
-    top: 40px;
-    right: 40px;
+    top: 45px;
+    right: 15px;
 }
 .login__close:hover, .register__close:hover {
     cursor: pointer;
@@ -34,10 +34,10 @@
     display: flex;
     margin-top: 30px;
     column-gap: 50px;
-    row-gap: 30px;
+    /* row-gap: 30px; */
 
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
 
     width: 100%;
 }
