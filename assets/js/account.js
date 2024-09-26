@@ -1,4 +1,3 @@
-// login popup
 const customerLoginForm = document.getElementById('customer_login');
 
 const loginForm = document.querySelector('.login');
@@ -30,7 +29,9 @@ if (customerLoginForm) {
     console.log(registerForm);
     console.log(loginHeader);
     console.log(registerHeader);
+
 }
 
 
-// register popup
+
+
