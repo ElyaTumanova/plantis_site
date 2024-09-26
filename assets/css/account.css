@@ -128,7 +128,7 @@
     justify-self: end;
 }
 
-#customer_login form .login-form__registration-btn {
+.login-form__registration-btn, .register-form__login-btn {
     font-weight: 800;
     grid-area: registartion;
     justify-self: center;

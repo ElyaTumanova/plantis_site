@@ -55,6 +55,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <button type="submit" class="woocommerce-Button woocommerce-button button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?> woocommerce-form-register__submit" name="register" value="<?php esc_attr_e( 'Register', 'woocommerce' ); ?>"><?php esc_html_e( 'Register', 'woocommerce' ); ?></button>
                 </p>
 
+                <div class=register-form__login-btn>Вход</div>
+
                 <?php do_action( 'woocommerce_register_form_end' ); ?>
 
             </form>
