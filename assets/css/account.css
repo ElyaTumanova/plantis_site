@@ -3,7 +3,7 @@
 --------------------------------------------------------------*/
 
 .plnt-customer-login {
-    display: flex;
+    /* display: flex; */
     background: var(--background);
     justify-content: center; 
 }
