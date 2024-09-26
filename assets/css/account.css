@@ -3,7 +3,7 @@
 --------------------------------------------------------------*/
 
 .plnt-customer-login {
-    display: flex;
+    /* display: flex; */
     background: var(--background);
     justify-content: center; 
 }
@@ -117,7 +117,8 @@
 }
 
 #customer_login form .woocommerce-LostPassword {
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 14px;
     text-decoration: underline;
     grid-area: forgot;
     justify-self: end;
