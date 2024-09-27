@@ -13,6 +13,8 @@ Container::make('theme_options', 'Настройки темы')
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'account_icon', 'Personal Account' )
 			 ->set_value_type( 'url' ),
+			 Field::make( 'image', 'account_logged_icon', 'Personal Account LoggedIn' )
+			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'whishlist_icon', 'Wishlist' )
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'cart_icon', 'Cart' )

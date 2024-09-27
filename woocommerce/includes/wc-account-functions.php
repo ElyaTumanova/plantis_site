@@ -31,11 +31,11 @@ function remove_wc_password_meter() {
 	wp_dequeue_script('wc-password-strength-meter');
 }
 
-add_filter( 'woocommerce_login_redirect', 'truemisha_login_redirect', 25, 2 );
+// add_filter( 'woocommerce_login_redirect', 'truemisha_login_redirect', 25, 2 );
  
-function truemisha_login_redirect( $redirect, $user ) {
+// function truemisha_login_redirect( $redirect, $user ) {
  
-	$redirect = site_url();
-	return $redirect;
+// 	$redirect = site_url();
+// 	return $redirect;
  
-}
+// }
