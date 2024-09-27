@@ -39,3 +39,5 @@ function remove_wc_password_meter() {
 // 	return $redirect;
  
 // }
+
+add_action('plnt_header_notice','woocommerce_output_all_notices', 10 );
