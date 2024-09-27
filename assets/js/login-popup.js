@@ -88,3 +88,11 @@ mobOpenBtn.addEventListener ("click", (evt)=>{
     toggle_mob_menu ();
     toggle_login_popup ();
 });
+
+// уведомление об ошибке
+
+const errorMsg = loginPopup.querySelector('.woocommerce-error'); 
+
+if (errorMsg) {
+    toggle_login_popup ();
+};
