@@ -57,6 +57,10 @@
     margin: 0;
 }
 
+.header__account:hover {
+    cursor: pointer;
+}
+
 .header__wishlist {
     position: relative;
 }
