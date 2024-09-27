@@ -76,6 +76,11 @@ function toggle_reg_popup () {
     body.classList.toggle ('fix-body');
 };
 
-console.log(regOpenPopupBtn);
-console.log(regPopup);
-console.log(regClosePopupBtn);
+// переменные для управления через мобильное меню
+
+const mobOpenBtn = document.querySelector('.burger-menu__account'); 
+
+mobOpenBtn.addEventListener ("click", (evt)=>{
+    toggle_mob_menu ();
+    toggle_login_popup ();
+});
