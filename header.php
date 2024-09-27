@@ -93,12 +93,14 @@
 					<?php endif; ?>
 				</div><!-- .description -->
 				<div class="header__wrap">
-					<div class="header__account login-btn">
+					<div class="header__account">
 						<?php $account_icon = carbon_get_theme_option('account_icon')?>
-						<div class="header-btn__wrap">
-							<img class="header-btn__icon" src="<?php echo $account_icon ?>" alt="account" width="25" height="25">
-							<span class="header-btn__label">Войти</span>		
-						</div>
+						<?php if (!is_user_logged_in()) : ?> 
+							<div class="header-btn__wrap login-btn">
+								<img class="header-btn__icon" src="<?php echo $account_icon ?>" alt="account" width="25" height="25">
+								<span class="header-btn__label">Войти</span>		
+							</div>
+						<?php endif; ?>
 					</div>
 					<div class="header__wishlist">
 						<?php $whishlist_icon = carbon_get_theme_option('whishlist_icon')?>
