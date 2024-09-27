@@ -24,3 +24,9 @@ function misha_remove_my_account_links( $menu_links ){
 // function plnt_login_form () {
 // 	echo '<div class=login-form__registration-btn>Регистрация</div>';
 // }
+
+//убираем требования к сложности пароля при регистрации
+add_action( 'wp_print_scripts', 'remove_wc_password_meter', 100 );
+function remove_wc_password_meter() {
+	wp_dequeue_script('wc-password-strength-meter');
+}
