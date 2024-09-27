@@ -41,6 +41,7 @@
 #customer_login, .u-column2 {
     display: flex;
     margin-top: 30px;
+    margin-bottom: 30px;
     column-gap: 50px;
     /* row-gap: 30px; */
 
@@ -142,6 +143,7 @@
     justify-self: center;
     color: var(--accent-color);
     cursor: pointer;
+    text-align: center;
 }
 
 .register-form__login-btn {
