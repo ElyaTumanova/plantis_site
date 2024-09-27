@@ -10,22 +10,24 @@ loginOpenPopupBtn.forEach((btn)=>
     })
 );
 
+if(loginPopup) {
+    loginClosePopupBtn.addEventListener ("click", (evt)=>{
+        toggle_login_popup ();
+    });
+    
+    loginPopupOverlay.addEventListener ("click", (evt)=>{
+        toggle_login_popup ();
+    });
+    
+    document.addEventListener('keydown', function(e){
+        if((e.key=='Escape'||e.key=='Esc')){
+            if(loginPopup.classList.contains('popup_active')) {
+                toggle_login_popup ();
+            } 
+        }
+    }, true);
+}
 
-loginClosePopupBtn.addEventListener ("click", (evt)=>{
-    toggle_login_popup ();
-});
-
-loginPopupOverlay.addEventListener ("click", (evt)=>{
-    toggle_login_popup ();
-});
-
-document.addEventListener('keydown', function(e){
-    if((e.key=='Escape'||e.key=='Esc')){
-        if(loginPopup.classList.contains('popup_active')) {
-            toggle_login_popup ();
-        } 
-    }
-}, true);
 
 function toggle_login_popup () {
     loginPopup.classList.toggle ('popup_active');
@@ -41,35 +43,37 @@ const regClosePopupBtn = document.querySelector('.register__close');
 const regPopupOverlay = document.querySelector('.register__popup-overlay');
 const loginOnRegPopupBtn = document.querySelectorAll('.register-form__login-btn');
 
-regOpenPopupBtn.forEach((btn)=>
-    btn.addEventListener ("click", (evt)=>{
-        toggle_login_popup ();
-        toggle_reg_popup ();
-    })
-);
-
-loginOnRegPopupBtn.forEach((btn)=>
-    btn.addEventListener ("click", (evt)=>{
-        toggle_reg_popup ();
-        toggle_login_popup ();
-    })
-);
-
-regClosePopupBtn.addEventListener ("click", (evt)=>{
-    toggle_reg_popup ();
-});
-
-regPopupOverlay.addEventListener ("click", (evt)=>{
-    toggle_reg_popup ();
-});
-
-document.addEventListener('keydown', function(e){
-    if((e.key=='Escape'||e.key=='Esc')){
-        if(regPopup.classList.contains('popup_active')) {
+if(regPopup) {
+    regOpenPopupBtn.forEach((btn)=>
+        btn.addEventListener ("click", (evt)=>{
+            toggle_login_popup ();
             toggle_reg_popup ();
-        } 
-    }
-}, true);
+        })
+    );
+    
+    loginOnRegPopupBtn.forEach((btn)=>
+        btn.addEventListener ("click", (evt)=>{
+            toggle_reg_popup ();
+            toggle_login_popup ();
+        })
+    );
+    
+    regClosePopupBtn.addEventListener ("click", (evt)=>{
+        toggle_reg_popup ();
+    });
+    
+    regPopupOverlay.addEventListener ("click", (evt)=>{
+        toggle_reg_popup ();
+    });
+    
+    document.addEventListener('keydown', function(e){
+        if((e.key=='Escape'||e.key=='Esc')){
+            if(regPopup.classList.contains('popup_active')) {
+                toggle_reg_popup ();
+            } 
+        }
+    }, true);    
+}
 
 function toggle_reg_popup () {
     regPopup.classList.toggle ('popup_active');
