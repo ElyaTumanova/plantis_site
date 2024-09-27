@@ -53,14 +53,10 @@
 <?php get_template_part('template-parts/popups/catalog-menu');?>
 
 <?php 
-if (!is_page('my-account') {
+if (!is_page('my-account')) {
     get_template_part('template-parts/popups/register-form');
-})
-?>
-<?php 
-if (!is_page('my-account') {
     get_template_part('template-parts/popups/login-form');
-})
+}
 ?>
 
 <?php wp_footer(); ?>
