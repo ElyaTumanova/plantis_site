@@ -101,7 +101,10 @@
 								<span class="header-btn__label">Войти</span>		
 							</div>
 						<?php else :?>
-							<div>lalla</div>
+							<a href ="<?php echo esc_url( home_url( '/my-account' ) ); ?>" class="header-btn__wrap">
+								<img class="header-btn__icon" src="<?php echo $account_icon ?>" alt="account" width="25" height="25">
+								<span class="header-btn__label">Войти</span>		
+							</a>
 						<?php endif; ?>
 					</div>
 					<div class="header__wishlist">
