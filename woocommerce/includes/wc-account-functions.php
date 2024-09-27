@@ -31,8 +31,11 @@ function remove_wc_password_meter() {
 	wp_dequeue_script('wc-password-strength-meter');
 }
 
-function my_login_redirect( $redirect_to, $request, $user ) {
-    $redirect_to = 'http://new.plantis.shop/my-account';
-    return $redirect_to;
+add_filter( 'woocommerce_login_redirect', 'truemisha_login_redirect', 25, 2 );
+ 
+function truemisha_login_redirect( $redirect, $user ) {
+ 
+	$redirect = site_url();
+	return $redirect;
+ 
 }
-add_filter( 'woocommerce_login_redirect', 'my_login_redirect', 10, 3 );
