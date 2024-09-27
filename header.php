@@ -100,6 +100,8 @@
 								<img class="header-btn__icon" src="<?php echo $account_icon ?>" alt="account" width="25" height="25">
 								<span class="header-btn__label">Войти</span>		
 							</div>
+						<?php else :?>
+							<div>lalla</div>
 						<?php endif; ?>
 					</div>
 					<div class="header__wishlist">
