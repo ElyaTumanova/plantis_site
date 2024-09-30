@@ -296,6 +296,11 @@
     .woocommerce-MyAccount-orders th {
         display: none;
     }
+    .woocommerce-MyAccount-orders tr {
+        display: grid;
+        grid-template-columns: 60% 40%;
+        grid-template-rows: repeat(3,auto);
+    }
 }
 
 .woocommerce-MyAccount-content .woocommerce-table--order-details th, .woocommerce-MyAccount-content .woocommerce-table--order-details td {
