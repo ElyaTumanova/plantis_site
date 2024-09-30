@@ -228,7 +228,7 @@
     border: none;
     text-transform: capitalize;
     font-size: inherit;
-    padding: inherit;
+    padding: 0;
     
 }
 
@@ -259,21 +259,26 @@
 
 /* список заказов */
 
+.woocommerce-MyAccount-orders {
+    margin-bottom: 35px;
+}
+
 .woocommerce-MyAccount-orders th {
     text-align: left;
     max-width: 100px;
     vertical-align: top;
-    padding: 5px;
-    padding-bottom: 15px;
+    padding: 0 0 15px;
     text-transform: uppercase;
+}
+
+.woocommerce-MyAccount-orders tr {
+    border-bottom: solid 1px rgba(216, 216, 216, 1);
 }
 
 .woocommerce-MyAccount-orders thead {
     border-bottom: solid 1px rgb(60, 59, 59);
 }
-.woocommerce-MyAccount-orders tr {
-    border-bottom: solid 1px rgba(216, 216, 216, 1);
-}
+
 .woocommerce-MyAccount-orders td {
     padding: 25px 0;
 }
