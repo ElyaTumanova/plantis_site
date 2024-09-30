@@ -227,7 +227,15 @@
     color: var(--accent-color);
     border: none;
     text-transform: capitalize;
+    font-size: inherit;
+    padding: inherit;
     
+}
+
+.woocommerce-MyAccount-content a:hover{
+    text-decoration: underline;
+    box-shadow: none;
+
 }
 
 .woocommerce-Address-title h3 {
