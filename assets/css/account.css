@@ -293,7 +293,7 @@
     .woocommerce-orders-table__header-order-actions, .woocommerce-orders-table__cell-order-actions {
         display: none;
     }
-    .woocommerce-MyAccount-orders tr {
+    .woocommerce-MyAccount-orders th {
         display: none;
     }
 }
