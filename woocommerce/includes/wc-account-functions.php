@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // убираем ненужные пункты меню из личного кабинета
 
-add_filter ( 'woocommerce_account_menu_items', 'misha_remove_my_account_links' );
+//add_filter ( 'woocommerce_account_menu_items', 'misha_remove_my_account_links' );
 function misha_remove_my_account_links( $menu_links ){
  
 	//unset( $menu_links['edit-address'] ); // Addresses
