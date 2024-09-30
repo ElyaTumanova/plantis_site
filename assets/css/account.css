@@ -290,6 +290,9 @@
     .woocommerce-orders-table__header-order-total, .woocommerce-orders-table__cell-order-total {
         display: none;
     }
+    .woocommerce-orders-table__header-order-actions, .woocommerce-orders-table__cell-order-actions {
+        display: none;
+    }
 }
 
 .woocommerce-MyAccount-content .woocommerce-table--order-details th, .woocommerce-MyAccount-content .woocommerce-table--order-details td {
