@@ -66,7 +66,6 @@
 					<div class="header__working-hours">Eжедневно с 10 до 20</div>
 				</div>
 			</div>
-			<?php do_action('plnt_header_notice');?>
 			<div class="header__notice-wrap">
 				<?php get_template_part( 'template-parts/header-notice' );?>
 			</div>

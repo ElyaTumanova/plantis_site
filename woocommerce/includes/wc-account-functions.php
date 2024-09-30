@@ -40,4 +40,4 @@ function remove_wc_password_meter() {
  
 // }
 
-add_action('plnt_header_notice','woocommerce_output_all_notices', 10 );
+//add_action('plnt_header_notice','woocommerce_output_all_notices', 10 );
