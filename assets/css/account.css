@@ -223,7 +223,11 @@
 }
 
 .woocommerce-MyAccount-content a{
-    text-decoration: underline;
+    /* text-decoration: underline; */
+    color: var(--accent-color);
+    border: none;
+    text-transform: capitalize;
+    
 }
 
 .woocommerce-Address-title h3 {
