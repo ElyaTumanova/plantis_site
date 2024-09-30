@@ -284,7 +284,7 @@
 }
 
 @media (max-width:767px) {
-    .woocommerce-orders-table__header-order-delivery-date, .woocommerce-orders-table__cell-order-delivery-date {
+    /* .woocommerce-orders-table__header-order-delivery-date, .woocommerce-orders-table__cell-order-delivery-date {
         display: none;
     }
     .woocommerce-orders-table__header-order-total, .woocommerce-orders-table__cell-order-total {
@@ -292,7 +292,7 @@
     }
     .woocommerce-orders-table__header-order-actions, .woocommerce-orders-table__cell-order-actions {
         display: none;
-    }
+    } */
     .woocommerce-MyAccount-orders th {
         display: none;
     }
