@@ -209,6 +209,11 @@
     align-items: baseline;
     justify-content: space-between;
     max-width: 400px;
+    color: var(--gray-text);
+}
+
+.woocommerce-MyAccount-navigation ul .is-active {
+    color: var(--text);
 }
 
 .woocommerce-MyAccount-navigation ul li:last-of-type{
@@ -293,13 +298,17 @@
     .woocommerce-orders-table__header-order-actions, .woocommerce-orders-table__cell-order-actions {
         display: none;
     } */
-    .woocommerce-MyAccount-orders th {
+    .woocommerce-MyAccount-orders th, .woocommerce-MyAccount-orders thead  {
         display: none;
     }
     .woocommerce-MyAccount-orders tr {
         display: grid;
-        grid-template-columns: 60% 40%;
+        grid-template-columns: 40% 60%;
         grid-template-rows: repeat(3,auto);
+        padding: 12px 0;
+    }
+    .woocommerce-MyAccount-orders td {
+        padding: 10px 0;
     }
 }
 
