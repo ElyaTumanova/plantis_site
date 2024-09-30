@@ -256,7 +256,7 @@
     text-transform: uppercase;
 }
 
-.woocommerce-MyAccount-orders tr {
+.woocommerce-MyAccount-orders thead {
     border-bottom: solid 1px rgb(60, 59, 59);
 }
 
