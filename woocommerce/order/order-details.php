@@ -29,6 +29,10 @@ if ( ! $order ) {
 	return;
 }
 
+    echo '<pre>';
+	print_r( $order );
+	echo '</pre>';
+
 $order_items        = $order->get_items( apply_filters( 'woocommerce_purchase_order_item_types', 'line_item' ) );
 $show_purchase_note = $order->has_status( apply_filters( 'woocommerce_purchase_note_order_statuses', array( 'completed', 'processing' ) ) );
 $downloads          = $order->get_downloadable_items();
