@@ -25,12 +25,18 @@ defined( 'ABSPATH' ) || exit;
 
 $order = wc_get_order( $order_id ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 
+$order_number = $order->get_order_number();
+$order_status = $order->get_status();
+$order_date = $order->get_date_created();
+
 if ( ! $order ) {
 	return;
 }
 
     echo '<pre>';
-	print_r( $order );
+	print_r( $order_number );
+	print_r( $order_status );
+	print_r( $order_date );
 	echo '</pre>';
 
 $order_items        = $order->get_items( apply_filters( 'woocommerce_purchase_order_item_types', 'line_item' ) );
