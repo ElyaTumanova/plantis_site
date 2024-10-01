@@ -52,7 +52,7 @@ if ( $show_downloads ) {
 	<h2 class="woocommerce-order-details__title"><?php esc_html_e( 'Order details', 'woocommerce' ); ?></h2>
 
     <!-- new code -->
-    <div>
+    <div class=plnt-order__items>
         <?php
         do_action( 'woocommerce_order_details_before_order_table_items', $order );
 
