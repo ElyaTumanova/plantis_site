@@ -345,5 +345,29 @@
     border-radius: 5px;
 }
 
+.plnt-order__items>div {
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-areas: "name price qty";
+}
+
+.plnt-order__items a {
+    font-size: 18px;
+    font-weight: 700;
+    grid-area: name;
+}
+
+.plnt-order__items .woocommerce-Price-amount {
+    font-size: 25px;
+    font-weight: 700;
+    grid-area: price;
+}
+.plnt-order__items .product-quantity {
+    grid-area: qty;
+}
+
+
+
 
 

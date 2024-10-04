@@ -69,7 +69,7 @@ if ( $show_downloads ) {
 
             foreach ( $order_items as $item_id => $item ) {
                 $product = $item->get_product();
-                echo '<div>';
+                echo '<div class=plnt-order__item>';
                 wc_get_template(
                     'order/order-details-item.php',
                     array(
