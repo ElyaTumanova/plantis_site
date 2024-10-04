@@ -330,11 +330,19 @@
     display: grid;
     grid-template-columns: 70% 30%;
     column-gap: 30px;
+    margin-bottom: 50px;
 }
 
 .plnt-order__totals>div {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.plnt-order__totals {
+    padding: 15px;
+    background-color: var(--gray);
+    border-radius: 5px;
 }
 
 
