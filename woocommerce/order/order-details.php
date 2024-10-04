@@ -91,7 +91,7 @@ if ( $show_downloads ) {
             <?php
             foreach ( $order->get_order_item_totals() as $key => $total ) {
                 echo '<pre>';
-                print_r( $total );
+                print_r( $order );
                 echo '</pre>';
                 if ($total['label']==='Подытог:') {
                     ?>
