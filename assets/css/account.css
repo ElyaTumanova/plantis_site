@@ -329,8 +329,13 @@
 .plnt-order__details {
     display: grid;
     grid-template-columns: auto 370px;
-    column-gap: 30px;
+    column-gap: 100px;
     margin-bottom: 50px;
+    padding-top: 15px;
+}
+
+.plnt-order__items {
+    padding-top: 15px;
 }
 
 .plnt-order__totals>div {
@@ -357,6 +362,7 @@
     font-weight: 700;
     grid-area: name;
     align-self: end;
+    color: var(--text);
 }
 
 .plnt-order__items .woocommerce-Price-amount {
