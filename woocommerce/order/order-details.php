@@ -62,7 +62,7 @@ if ( $show_downloads ) {
 	<h2 class="woocommerce-order-details__title"><?php esc_html_e( 'Order details', 'woocommerce' ); ?></h2>
 
     <!-- new code -->
-    <tbody class=plnt-order__items>
+    <div class=plnt-order__items>
         <?php
         do_action( 'woocommerce_order_details_before_order_table_items', $order );
 
@@ -84,7 +84,7 @@ if ( $show_downloads ) {
 
         do_action( 'woocommerce_order_details_after_order_table_items', $order );
         ?>
-    </tbody>
+    </div>
     <div>
         <?php
         foreach ( $order->get_order_item_totals() as $key => $total ) {
