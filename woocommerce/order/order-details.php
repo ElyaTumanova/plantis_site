@@ -90,9 +90,9 @@ if ( $show_downloads ) {
         <div class="plnt-order__totals">
             <?php
             foreach ( $order->get_order_item_totals() as $key => $total ) {
-                echo '<pre>';
-                print_r( $order->get_order_item_totals() );
-                echo '</pre>';
+                // echo '<pre>';
+                // print_r( $order->get_order_item_totals() );
+                // echo '</pre>';
                 if ($total['label']==='Подытог:') {
                     ?>
                     <div>
