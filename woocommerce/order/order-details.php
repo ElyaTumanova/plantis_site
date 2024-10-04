@@ -104,7 +104,7 @@ if ( $show_downloads ) {
                 </div>
                 <div class='plnt-order__totals-row'>
                     <div class='plnt-order__totals-label' scope="row">Итого:</div>
-                    <div class='plnt-order__totals-value plnt-order__totals-value_total'><?php echo wp_kses_post( $plnt_order_totals['shipping']['order_total'] ); ?></div>
+                    <div class='plnt-order__totals-value plnt-order__totals-value_total'><?php echo wp_kses_post( $plnt_order_totals['order_total']['value'] ); ?></div>
                 </div>
                 
                 <?php
