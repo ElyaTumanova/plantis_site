@@ -353,7 +353,7 @@
 .plnt-order__item {
     margin-bottom: 10px;
     display: grid;
-    grid-template-columns: auto 140px 50px;
+    grid-template-columns: 500px 140px 50px;
     grid-template-areas: "name price qty";
 }
 

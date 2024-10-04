@@ -90,6 +90,13 @@ if ( $show_downloads ) {
         <div class="plnt-order__totals">
             <?php
             foreach ( $order->get_order_item_totals() as $key => $total ) {
+                if ($total['label']==='cart_subtotal') {
+                    ?>
+                    <div>lalal
+                        
+                    </div>
+                    <?php
+                }
                 ?>
                     <div>
                         <div scope="row"><?php echo esc_html( $total['label'] ); ?></div>
