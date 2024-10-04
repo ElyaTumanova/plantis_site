@@ -89,10 +89,14 @@ if ( $show_downloads ) {
         </div>
         <div class="plnt-order__totals">
             <?php
+            $plnt_order_totals = $order->get_order_item_totals();
+                echo '<pre>';
+                print_r( $plnt_order_totals );
+                print_r( $plnt_order_totals['payment_method'] );
+                
+                echo '</pre>';
             foreach ( $order->get_order_item_totals() as $key => $total ) {
-                // echo '<pre>';
-                // print_r( $order->get_order_item_totals() );
-                // echo '</pre>';
+                
                 if ($total['label']==='Подытог:') {
                     ?>
                     <div>
