@@ -375,20 +375,23 @@
 
 .plnt-order__items a {
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     grid-area: name;
     align-self: end;
     color: var(--text);
 }
 
 .plnt-order__items .woocommerce-Price-amount {
-    font-size: 25px;
-    font-weight: 700;
+    font-size: 22px;
+    font-weight: 600;
     grid-area: price;
+    text-align: end;
+    padding-right: 13px;
 }
+
 .plnt-order__items .product-quantity {
     grid-area: qty;
-    align-self: end;
+    align-self: center;
 }
 
 
