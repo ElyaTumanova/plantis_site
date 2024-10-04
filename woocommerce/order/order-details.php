@@ -62,47 +62,49 @@ if ( $show_downloads ) {
 	<h2 class="woocommerce-order-details__title"><?php esc_html_e( 'Order details', 'woocommerce' ); ?></h2>
 
     <!-- new code -->
-    <div class=plnt-order__items>
-        <?php
-        do_action( 'woocommerce_order_details_before_order_table_items', $order );
+    <div class="plnt-order__details">
+        <div class=plnt-order__items>
+            <?php
+            do_action( 'woocommerce_order_details_before_order_table_items', $order );
 
-        foreach ( $order_items as $item_id => $item ) {
-            $product = $item->get_product();
-            echo '<div class=plnt-order__item>';
-            wc_get_template(
-                'order/order-details-item.php',
-                array(
-                    'order'              => $order,
-                    'item_id'            => $item_id,
-                    'item'               => $item,
-                    'show_purchase_note' => $show_purchase_note,
-                    'purchase_note'      => $product ? $product->get_purchase_note() : '',
-                    'product'            => $product,
-                )
-            );
-            echo '</div>';
-        }
+            foreach ( $order_items as $item_id => $item ) {
+                $product = $item->get_product();
+                echo '<div>';
+                wc_get_template(
+                    'order/order-details-item.php',
+                    array(
+                        'order'              => $order,
+                        'item_id'            => $item_id,
+                        'item'               => $item,
+                        'show_purchase_note' => $show_purchase_note,
+                        'purchase_note'      => $product ? $product->get_purchase_note() : '',
+                        'product'            => $product,
+                    )
+                );
+                echo '</div>';
+            }
 
-        do_action( 'woocommerce_order_details_after_order_table_items', $order );
-        ?>
-    </div>
-    <div class='plnt-order__totals'>
-        <?php
-        foreach ( $order->get_order_item_totals() as $key => $total ) {
+            do_action( 'woocommerce_order_details_after_order_table_items', $order );
             ?>
+        </div>
+        <div class="plnt-order__totals">
+            <?php
+            foreach ( $order->get_order_item_totals() as $key => $total ) {
+                ?>
+                    <div>
+                        <div scope="row"><?php echo esc_html( $total['label'] ); ?></div>
+                        <div><?php echo wp_kses_post( $total['value'] ); ?></div>
+                    </div>
+                    <?php
+            }
+            ?>
+            <?php if ( $order->get_customer_note() ) : ?>
                 <div>
-                    <div scope="row"><?php echo esc_html( $total['label'] ); ?></div>
-                    <div><?php echo wp_kses_post( $total['value'] ); ?></div>
+                    <div><?php esc_html_e( 'Note:', 'woocommerce' ); ?></div>
+                    <div><?php echo wp_kses( nl2br( wptexturize( $order->get_customer_note() ) ), array() ); ?></div>
                 </div>
-                <?php
-        }
-        ?>
-        <?php if ( $order->get_customer_note() ) : ?>
-            <div>
-                <div><?php esc_html_e( 'Note:', 'woocommerce' ); ?></div>
-                <div><?php echo wp_kses( nl2br( wptexturize( $order->get_customer_note() ) ), array() ); ?></div>
-            </div>
-        <?php endif; ?>
+            <?php endif; ?>
+        </div>
     </div>
     <!-- //new code -->
 
