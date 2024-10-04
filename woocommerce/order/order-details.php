@@ -90,19 +90,21 @@ if ( $show_downloads ) {
         <div class="plnt-order__totals">
             <?php
             foreach ( $order->get_order_item_totals() as $key => $total ) {
-                if ($total['label']==='cart_subtotal') {
+                if ($total['key']==='cart_subtotal') {
                     ?>
                     <div>lalal
                         
                     </div>
                     <?php
-                }
-                ?>
+                } else {
+                    ?>
                     <div>
                         <div scope="row"><?php echo esc_html( $total['label'] ); ?></div>
                         <div><?php echo wp_kses_post( $total['value'] ); ?></div>
                     </div>
                     <?php
+                }
+                
             }
             ?>
             <?php if ( $order->get_customer_note() ) : ?>
