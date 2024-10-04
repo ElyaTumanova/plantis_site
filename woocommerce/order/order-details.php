@@ -93,7 +93,7 @@ if ( $show_downloads ) {
                 echo '<pre>';
                 print_r( $total );
                 echo '</pre>';
-                if ($total['key']==='cart_subtotal') {
+                if ($total['label']==='Подытог:') {
                     ?>
                     <div>lalal
                         
