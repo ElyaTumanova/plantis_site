@@ -100,27 +100,24 @@ if ( $show_downloads ) {
                     <div class='plnt-order__totals-label' scope="row">Товары:</div>
                     <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['cart_subtotal']['value'] ); ?></div>
                 </div>
+                <div class='plnt-order__totals-row'>
+                    <div class='plnt-order__totals-label' scope="row">Доставка:</div>
+                    <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['shipping']['value'] ); ?></div>
+                </div>
+                <div class='plnt-order__totals-row'>
+                    <div class='plnt-order__totals-label' scope="row">Итого:</div>
+                    <div class='plnt-order__totals-value plnt-order__totals-value_total'><?php echo wp_kses_post( $plnt_order_totals['shipping']['order_total'] ); ?></div>
+                </div>
                 
                 <?php
-            foreach ( $order->get_order_item_totals() as $key => $total ) {
-                
-                if ($total['label']==='Подытог:') {
-                    ?>
-                    <div>
-                        <div class='plnt-order__totals-label' scope="row">Товары:</div>
-                        <div class='plnt-order__totals-value'><?php echo wp_kses_post( $total['value'] ); ?></div>
-                    </div>
-                    <?php
-                } else {
-                    ?>
-                    <div>
-                        <div class='plnt-order__totals-label' scope="row"><?php echo esc_html( $total['label'] ); ?></div>
-                        <div class='plnt-order__totals-value'><?php echo wp_kses_post( $total['value'] ); ?></div>
-                    </div>
-                    <?php
-                }
-                
-            }
+           // foreach ( $order->get_order_item_totals() as $key => $total ) {
+               ?>
+                <!-- <div>
+                    <div class='plnt-order__totals-label' scope="row"><?php //echo esc_html( $total['label'] ); ?></div>
+                    <div class='plnt-order__totals-value'><?php //echo wp_kses_post( $total['value'] ); ?></div>
+                </div> -->
+                <?php   
+            //}
             ?>
             <?php if ( $order->get_customer_note() ) : ?>
                 <div>
