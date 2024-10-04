@@ -338,15 +338,16 @@
     padding-top: 15px;
 }
 
-.plnt-order__totals>div {
+.plnt-order__totals-row {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
 }
 
 .plnt-order__totals {
     display: flex;
     flex-direction: column;
-    row-gap: 12px;
+    row-gap: 17px;
     padding: 15px;
     background-color: var(--gray);
     border-radius: 5px;
@@ -359,6 +360,10 @@
 .plnt-order__totals-value {
     font-size: 18px;
     font-weight: 700;
+}
+
+.plnt-order__totals-value_total {
+    font-size: 25px;
 }
 
 .plnt-order__item {
