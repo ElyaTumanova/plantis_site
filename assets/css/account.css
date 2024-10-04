@@ -341,13 +341,24 @@
 .plnt-order__totals>div {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
 }
 
 .plnt-order__totals {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
     padding: 15px;
     background-color: var(--gray);
     border-radius: 5px;
+}
+
+.plnt-order__totals-label {
+    font-size: 14px;
+}
+
+.plnt-order__totals-value {
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .plnt-order__item {
