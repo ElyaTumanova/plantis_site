@@ -90,10 +90,13 @@ if ( $show_downloads ) {
         <div class="plnt-order__totals">
             <?php
             foreach ( $order->get_order_item_totals() as $key => $total ) {
+                echo '<pre>';
+                print_r( $total );
+                echo '</pre>';
                 if ($total['label']==='Подытог:') {
                     ?>
                     <div>
-                        <div scope="row">Товары</div>
+                        <div scope="row">Товары:</div>
                         <div><?php echo wp_kses_post( $total['value'] ); ?></div>
                     </div>
                     <?php
