@@ -68,7 +68,7 @@ if ( $show_downloads ) {
 
         foreach ( $order_items as $item_id => $item ) {
             $product = $item->get_product();
-
+            echo '<div>';
             wc_get_template(
                 'order/order-details-item.php',
                 array(
@@ -80,6 +80,7 @@ if ( $show_downloads ) {
                     'product'            => $product,
                 )
             );
+            echo '</div>';
         }
 
         do_action( 'woocommerce_order_details_after_order_table_items', $order );
