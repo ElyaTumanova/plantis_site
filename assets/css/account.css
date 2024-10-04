@@ -345,10 +345,10 @@
     border-radius: 5px;
 }
 
-.plnt-order__items>div {
+.plnt-order__item {
     margin-bottom: 10px;
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: auto 140px 50px;
     grid-template-areas: "name price qty";
 }
 
@@ -356,6 +356,7 @@
     font-size: 18px;
     font-weight: 700;
     grid-area: name;
+    align-self: end;
 }
 
 .plnt-order__items .woocommerce-Price-amount {
@@ -365,6 +366,7 @@
 }
 .plnt-order__items .product-quantity {
     grid-area: qty;
+    align-self: end;
 }
 
 
