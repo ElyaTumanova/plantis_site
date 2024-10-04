@@ -289,6 +289,9 @@
 .woocommerce-MyAccount-orders td {
     padding: 25px 0;
 }
+.woocommerce-orders-table__header-order-actions, .woocommerce-orders-table__cell-order-actions {
+    display: none;
+} 
 
 @media (max-width:767px) {
     /* .woocommerce-orders-table__header-order-delivery-date, .woocommerce-orders-table__cell-order-delivery-date {
