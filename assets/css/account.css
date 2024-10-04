@@ -326,7 +326,15 @@
 
 /* станица просмотра заказа */
 
+.plnt-order__details {
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
 
+.plnt-order__totals>div {
+    display: flex;
+    justify-content: space-between;
+}
 
 
 
