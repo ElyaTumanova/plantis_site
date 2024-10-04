@@ -68,7 +68,7 @@ if ( $show_downloads ) {
 
         foreach ( $order_items as $item_id => $item ) {
             $product = $item->get_product();
-            echo '<div>';
+            echo '<div class=plnt-order__item>';
             wc_get_template(
                 'order/order-details-item.php',
                 array(
@@ -86,7 +86,7 @@ if ( $show_downloads ) {
         do_action( 'woocommerce_order_details_after_order_table_items', $order );
         ?>
     </div>
-    <div>
+    <div class='plnt-order__totals'>
         <?php
         foreach ( $order->get_order_item_totals() as $key => $total ) {
             ?>

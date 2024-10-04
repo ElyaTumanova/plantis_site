@@ -326,10 +326,7 @@
 
 /* станица просмотра заказа */
 
-.plnt-order__items {
-    display: grid;
-    grid-template-columns: auto 20% 20%;
-}
+
 
 
 
