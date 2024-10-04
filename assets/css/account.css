@@ -328,7 +328,7 @@
 
 .plnt-order__details {
     display: grid;
-    grid-template-columns: calc(50% - 30px) 50%;
+    grid-template-columns: auto 370px;
     column-gap: 30px;
     margin-bottom: 50px;
 }
