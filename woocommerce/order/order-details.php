@@ -95,6 +95,13 @@ if ( $show_downloads ) {
                 print_r( $plnt_order_totals['payment_method'] );
                 
                 echo '</pre>';
+                ?> 
+                <div class='plnt-order__totals-row'>
+                    <div class='plnt-order__totals-label' scope="row">Товары:</div>
+                    <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['cart_subtotal ']['value'] ); ?></div>
+                </div>
+                
+                <?php
             foreach ( $order->get_order_item_totals() as $key => $total ) {
                 
                 if ($total['label']==='Подытог:') {
