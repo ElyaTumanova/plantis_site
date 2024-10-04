@@ -96,15 +96,15 @@ if ( $show_downloads ) {
                 if ($total['label']==='Подытог:') {
                     ?>
                     <div>
-                        <div scope="row">Товары:</div>
-                        <div><?php echo wp_kses_post( $total['value'] ); ?></div>
+                        <div class='plnt-order__totals-label' scope="row">Товары:</div>
+                        <div class='plnt-order__totals-value'><?php echo wp_kses_post( $total['value'] ); ?></div>
                     </div>
                     <?php
                 } else {
                     ?>
                     <div>
-                        <div scope="row"><?php echo esc_html( $total['label'] ); ?></div>
-                        <div><?php echo wp_kses_post( $total['value'] ); ?></div>
+                        <div class='plnt-order__totals-label' scope="row"><?php echo esc_html( $total['label'] ); ?></div>
+                        <div class='plnt-order__totals-value'><?php echo wp_kses_post( $total['value'] ); ?></div>
                     </div>
                     <?php
                 }
