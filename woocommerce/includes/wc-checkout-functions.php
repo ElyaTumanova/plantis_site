@@ -394,7 +394,7 @@ function new_custom_checkout_field_script() {
                     })(),
                     isMobile: true,
 
-                    buttons: [button] 
+                    //buttons: [button] 
                 });
                 
                 if (weekend) {
