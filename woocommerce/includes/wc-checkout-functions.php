@@ -329,12 +329,12 @@ function new_custom_checkout_field_script() {
                 //выходной
                 var weekend_str = '<?php echo $weekend_string; ?>';
                 var weekend_arr = weekend_str.split(',');
-                console.log(weekend_arr);
+                // console.log(weekend_arr);
                 var weekend = [];
                 weekend_arr.forEach(element => {
                     weekend.push(new Date(element));
                 });
-                console.log(weekend);
+                // console.log(weekend);
                 //var weekend = new Date(weekend_str);
 
                 
@@ -354,7 +354,7 @@ function new_custom_checkout_field_script() {
                     selectedDate = false;
                     document.querySelector('#datepicker').value= "";
                     $('input[name=additional_delivery_interval]').prop('checked',false);
-                } else {
+                } //else {
                     // console.log(weekend.includes(new Date(startDate).getDate()));
                     // weekend.forEach(element => {
                     //     if (new Date(startDate).getDate() === element.getDate()){
@@ -372,7 +372,7 @@ function new_custom_checkout_field_script() {
                     // } else {
                     //     selectedDate = new Date(startDate);
                     // }
-                }
+                //}
                 
 
                 //кнопка ОК

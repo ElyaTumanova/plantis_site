@@ -91,7 +91,7 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'notice', 'Уведомление' ),
 			Field::make( 'checkbox', 'show_notice', __( 'Показать уведомление' ) )
     				->set_option_value( 'yes' ),
-			Field::make( 'text', 'weekend', 'Выходной (формат ГГГГ-ММ-ДД)' ),
+			Field::make( 'text', 'weekend', 'Выходной (формат ГГГГ-ММ-ДД, разделитель - запятая без пробелов)' ),
 	   ));
 
 // Add second options page under 'Basic Options'
