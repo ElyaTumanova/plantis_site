@@ -361,7 +361,7 @@ function new_custom_checkout_field_script() {
                         } else {
                             selectedDate = new Date(startDate);
                         }
-                        console.log(selectedDate);
+                        console.log(new Date(selectedDate));
                     });
 
 
