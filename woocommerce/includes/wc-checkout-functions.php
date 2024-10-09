@@ -355,7 +355,7 @@ function new_custom_checkout_field_script() {
                     document.querySelector('#datepicker').value= "";
                     $('input[name=additional_delivery_interval]').prop('checked',false);
                 } else {
-                    console.log(weekend.includes(new Date(startDate).getDate()));
+                    // console.log(weekend.includes(new Date(startDate).getDate()));
                     // weekend.forEach(element => {
                     //     if (new Date(startDate).getDate() === element.getDate()){
                     //         selectedDate = new Date(startDate).setDate(new Date(element).getDate() + 1);
@@ -385,7 +385,7 @@ function new_custom_checkout_field_script() {
                 }
 
                 var datepicker = new AirDatepicker('#datepicker', {
-                    selectedDates: selectedDate,
+                    //selectedDates: selectedDate,
                     minDate: startDate,
                     maxDate: (function(){
                         var date = new Date();
