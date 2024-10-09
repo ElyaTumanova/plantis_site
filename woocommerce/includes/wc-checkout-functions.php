@@ -381,7 +381,6 @@ function new_custom_checkout_field_script() {
                     className: 'custom-button-classname',
                     onClick: (datepicker) => {
                         datepicker.hide();
-                        selectedDate = false;
                     }
                 }
 
@@ -395,7 +394,7 @@ function new_custom_checkout_field_script() {
                     })(),
                     isMobile: true,
 
-                    buttons: [button] 
+                    //buttons: [button] 
                 });
                 
                 if (weekend) {
