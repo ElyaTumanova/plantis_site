@@ -385,7 +385,7 @@ function new_custom_checkout_field_script() {
                 }
 
                 var datepicker = new AirDatepicker('#datepicker', {
-                    //selectedDates: selectedDate,
+                    selectedDates: selectedDate,
                     minDate: startDate,
                     maxDate: (function(){
                         var date = new Date();
