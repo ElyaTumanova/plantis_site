@@ -330,7 +330,12 @@ function new_custom_checkout_field_script() {
                 var weekend_str = '<?php echo $weekend_string; ?>';
                 var weekend_arr = weekend_str.split(',');
                 console.log(weekend_arr);
-                var weekend = new Date(weekend_str);
+                var weekend = [];
+                weekend_arr.forEach(element => {
+                    weekend.push(new Date(element));
+                });
+                console.log(weekend);
+                //var weekend = new Date(weekend_str);
 
                 
                 //определяем первую доступную дату
