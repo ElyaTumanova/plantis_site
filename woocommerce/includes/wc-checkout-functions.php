@@ -324,10 +324,13 @@ function new_custom_checkout_field_script() {
             // Utility function for datepicker init
             function datepicker_init () {
 
-                <?php $weekend_string = carbon_get_theme_option('weekend')?>
+                <?php $weekend_string = carbon_get_theme_option('weekend')
+                $weekend_array = explode( ',', $weekend_string)?>
                 
                 //выходной
                 var weekend_str = '<?php echo $weekend_string; ?>';
+                var weekend_arr = '<?php echo $weekend_array; ?>';
+                console.log(weekend_arr);
                 var weekend = new Date(weekend_str);
 
                 
