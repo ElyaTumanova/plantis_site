@@ -355,15 +355,16 @@ function new_custom_checkout_field_script() {
                     document.querySelector('#datepicker').value= "";
                     $('input[name=additional_delivery_interval]').prop('checked',false);
                 } else {
-                    weekend.forEach(element => {
-                        if (new Date(startDate).getDate() === element.getDate()){
-                            selectedDate = new Date(startDate).setDate(new Date(element).getDate() + 1);
-                            return;
-                        } else {
-                            selectedDate = new Date(startDate);
-                        }
-                        console.log(new Date(selectedDate));
-                    });
+                    console.log(weekend.includes(new Date(startDate).getDate()));
+                    // weekend.forEach(element => {
+                    //     if (new Date(startDate).getDate() === element.getDate()){
+                    //         selectedDate = new Date(startDate).setDate(new Date(element).getDate() + 1);
+                    //         return;
+                    //     } else {
+                    //         selectedDate = new Date(startDate);
+                    //     }
+                    //     console.log(new Date(selectedDate));
+                    // });
 
 
                     // if (new Date(startDate).getDate() === weekend.getDate()) {
