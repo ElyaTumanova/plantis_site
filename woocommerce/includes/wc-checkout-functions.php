@@ -358,6 +358,7 @@ function new_custom_checkout_field_script() {
                     weekend.forEach(element => {
                         if (new Date(startDate).getDate() === element.getDate()){
                             selectedDate = new Date(startDate).setDate(new Date(element).getDate() + 1);
+                            return;
                         } else {
                             selectedDate = new Date(startDate);
                         }
