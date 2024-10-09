@@ -396,7 +396,7 @@ function new_custom_checkout_field_script() {
                 });
                 
                 if (weekend) {
-                    datepicker.disableDate([weekend]);
+                    datepicker.disableDate(weekend);
                 }
             }
 
