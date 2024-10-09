@@ -329,8 +329,8 @@ function new_custom_checkout_field_script() {
                 
                 //выходной
                 var weekend_str = '<?php echo $weekend_string; ?>';
-                var weekend_arr = '<?php echo $weekend_array; ?>';
-                console.log(weekend_arr);
+                //var weekend_arr = '<?php echo $weekend_array; ?>';
+                //console.log(weekend_arr);
                 var weekend = new Date(weekend_str);
 
                 
