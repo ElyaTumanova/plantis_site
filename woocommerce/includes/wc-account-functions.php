@@ -24,8 +24,8 @@ add_action ('woocommerce_order_details_after_order_table','plnt_order_adress_hea
 
 
 function plnt_order_adress_header () {
-	echo '<h2 class="woocommerce-order-details__title">Информация о доставке</h2>'
-};
+	echo '<h2 class="woocommerce-order-details__title">Информация о доставке</h2>';
+}
 
 
 // add_action ('woocommerce_login_form_end','plnt_login_form');
