@@ -691,6 +691,7 @@ label.list-view {
 
 .woocommerce-order-details .woocommerce-table--custom-fields {
     width: fit-content;
+    margin-top: 25px;
 }
 .woocommerce-order-details .woocommerce-table--custom-fields th {
     padding-right: 15px;
@@ -749,8 +750,11 @@ label.list-view {
     display: none;
 }
 
-.woocommerce-customer-details .address{
+.woocommerce-customer-details address{
     line-height: 1.4;
+    font-size: 18px;
+    font-style: normal;
+    margin-bottom: 0;
 }
 
 .thankyou__adress-heading {
