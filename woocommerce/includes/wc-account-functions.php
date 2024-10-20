@@ -50,3 +50,14 @@ function remove_wc_password_meter() {
 // }
 
 //add_action('plnt_header_notice','woocommerce_output_all_notices', 10 );
+
+
+// перевод текстов
+
+function plnt_change_text_order_1( $translated_text ) {
+    if ( $translated_text == 'Платёжный адрес' ) {
+      $translated_text = 'Адрес доставки';
+    }
+    return $translated_text;
+  }
+  add_filter( 'gettext', 'plnt_change_text_order_1', 20 );

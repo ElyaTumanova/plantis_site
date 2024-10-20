@@ -482,10 +482,11 @@
 } */
 
 /* адрес клиента */ 
-/* скрываем адрес из формы по умолчанию */
-/* .woocommerce-customer-details .woocommerce-column__title {
-    display: none;
-} */
+
+.woocommerce-customer-details .woocommerce-column__title {
+    font-size: 18px;
+    margin-top: 10px;
+}
 
 .woocommerce-customer-details address{
     line-height: 1.4;
