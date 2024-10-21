@@ -29,8 +29,8 @@ function truemisha_rename_menu( $menu_links ){
  
 }
 
-add_filter( 'woocommerce_endpoint_edit-account_title', 'change_my_account_edit-account_title', 10, 2 );
-function change_my_account_edit-account_title( $title, $endpoint ) {
+add_filter( 'woocommerce_endpoint_edit-account_title', 'change_my_account_editaccount_title', 10, 2 );
+function change_my_account_editaccount_title( $title, $endpoint ) {
     $title = __( "Профиль", "woocommerce" );
 
     return $title;
