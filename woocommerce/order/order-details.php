@@ -138,7 +138,7 @@ if ( $show_customer_details ) {
 }
 
 if ( $order->get_customer_note() ) : ?>
-    <div class='woocommerce-customer-details'>
+    <div class='woocommerce-customer-details__note'>
         <div><?php esc_html_e( 'Note:', 'woocommerce' ); ?></div>
         <div><?php echo wp_kses( nl2br( wptexturize( $order->get_customer_note() ) ), array() ); ?></div>
     </div>
