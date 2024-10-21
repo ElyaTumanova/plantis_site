@@ -370,6 +370,15 @@
     margin-bottom: 50px;
 }
 
+@media (max-width:840px) {
+    .plnt-order__details {
+        grid-template-columns: auto;
+    }
+    .plnt-order__totals {
+        max-width: 100%;
+    }
+}
+
 .plnt-order__items {
     padding-top: 15px;
 }
@@ -409,6 +418,7 @@
     display: grid;
     grid-template-columns: auto 140px 50px;
     grid-template-areas: "name price qty";
+    align-items: center;
 }
 
 .plnt-order__items a {
