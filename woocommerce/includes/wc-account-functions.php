@@ -18,24 +18,21 @@ function misha_remove_my_account_links( $menu_links ){
  
 	return $menu_links;
 }
-
+//изменяем название вкладки Профиль (Анкета)
 add_filter( 'woocommerce_account_menu_items', 'truemisha_rename_menu', 25 );
  
 function truemisha_rename_menu( $menu_links ){
- 
 	$menu_links[ 'edit-account' ] = 'Профиль'; 
- 
-	return $menu_links;
- 
+	return $menu_links; 
 }
 
 add_filter( 'woocommerce_endpoint_edit-account_title', 'change_my_account_editaccount_title', 10, 2 );
 function change_my_account_editaccount_title( $title, $endpoint ) {
     $title = __( "Профиль", "woocommerce" );
-
     return $title;
 }
 
+//добавляем заголовок
 
 add_action ('woocommerce_order_details_after_order_table','plnt_order_adress_header');
 
