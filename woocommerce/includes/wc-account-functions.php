@@ -19,9 +19,18 @@ function misha_remove_my_account_links( $menu_links ){
 	return $menu_links;
 }
 
+add_filter( 'woocommerce_account_menu_items', 'truemisha_rename_menu', 25 );
+ 
+function truemisha_rename_menu( $menu_links ){
+ 
+	$menu_links[ 'edit-account' ] = 'Профиль'; 
+ 
+	return $menu_links;
+ 
+}
+
 
 add_action ('woocommerce_order_details_after_order_table','plnt_order_adress_header');
-
 
 function plnt_order_adress_header () {
 	echo '<h2 class="woocommerce-order-details__title">Информация о доставке</h2>';
