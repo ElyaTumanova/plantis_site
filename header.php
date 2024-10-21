@@ -102,7 +102,7 @@
 								<span class="header-btn__label">Войти</span>		
 							</div>
 						<?php else :?>
-							<a href ="<?php echo esc_url( home_url( '/my-account' ) ); ?>" class="header-btn__wrap">
+							<a href ="<?php echo esc_url( home_url( '/my-account/orders' ) ); ?>" class="header-btn__wrap">
 								<img class="header-btn__icon" src="<?php echo $account_logged_icon ?>" alt="account" width="25" height="25">
 								<span class="header-btn__label">Войти</span>		
 							</a>
