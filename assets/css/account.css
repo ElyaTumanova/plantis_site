@@ -8,6 +8,18 @@
     margin-top: 30px;
 }
 
+@media (max-width:1024px) {
+    .woocommerce-account .woocommerce{
+        grid-template-columns: 140px auto;
+    }
+}
+
+@media (max-width:840px) {
+    .woocommerce-account .woocommerce{
+        grid-template-columns: auto;
+    }
+}
+
 
 /*форма регистрации и входа */
 
@@ -224,6 +236,18 @@
     color: var(--gray-text);
 }
 
+@media (max-width:840px) {
+    .woocommerce-MyAccount-navigation {
+        margin-bottom: 50px;
+        border-bottom: 1px solid var(--text);
+        padding-bottom: 20px;
+    }
+
+    .woocommerce-MyAccount-navigation ul {
+        flex-direction: row;
+    }
+}
+
 .woocommerce-MyAccount-navigation ul .is-active {
     color: var(--text);
 }
@@ -341,7 +365,7 @@
 
 .plnt-order__details {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: 690px;
     column-gap: 100px;
     margin-bottom: 50px;
 }
@@ -383,7 +407,7 @@
 .plnt-order__item {
     margin-bottom: 10px;
     display: grid;
-    grid-template-columns: 500px 140px 50px;
+    grid-template-columns: auto 140px 50px;
     grid-template-areas: "name price qty";
 }
 
