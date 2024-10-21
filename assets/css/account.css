@@ -504,6 +504,7 @@
     line-height: 1.4;
     font-size: 18px;
     font-style: normal;
+    margin: 0;
 }
 .woocommerce-customer-details p{
     margin-bottom: 0;
