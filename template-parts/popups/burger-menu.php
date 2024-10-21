@@ -31,8 +31,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php if (!is_user_logged_in()) : ?> 
         <div class="menu__item_accent burger-menu__account">Личный кабинет</div>
     <?php else :?>
-        <a href ="<?php echo esc_url( home_url( '/my-account/orders' ) ); ?>" class="menu__item_accent burger-menu__account">
-        Личный кабинет
-        </a>
+        <div class="menu__item_accent burger-menu__account">
+            <a href ="<?php echo esc_url( home_url( '/my-account/orders' ) ); ?>" >Личный кабинет</a>
+        </div>
     <?php endif; ?>
 </div>
