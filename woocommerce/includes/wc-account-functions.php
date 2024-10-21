@@ -56,7 +56,7 @@ function remove_wc_password_meter() {
 
 function plnt_change_text_order_1( $translated_text ) {
     if ( $translated_text == 'Платёжный адрес' ) {
-      $translated_text = 'Контактная информация';
+      $translated_text = 'Контактная информация:';
     }
     return $translated_text;
   }
