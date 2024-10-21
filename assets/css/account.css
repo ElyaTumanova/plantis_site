@@ -209,6 +209,15 @@
     padding-bottom: 20px;
 }
 
+.woocommerce-MyAccount-navigation-link::after {
+    display: block;  /* превращаем его в блочный элемент */
+    content: "";  /* контента в данном блоке не будет, поэтому в кавычках ничего не ставим */
+    height: 3px;  /* задаём высоту линии */
+    width: 0%;  /* задаём начальную ширину элемента (линии) */
+    background-color: #225384;  /* цвет фона элемента */
+    transition: width 0.4s ease-in-out;  /* данное свойство отвечает за плавное изменение ширины */
+}
+
 .woocommerce-MyAccount-navigation ul {
     display: flex;
     column-gap: 5px;
@@ -364,7 +373,7 @@
 }
 
 .plnt-order__totals-label {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .plnt-order__totals-value {
@@ -431,6 +440,10 @@
 
 .woocommerce-thankyou-order-details li{
     margin-bottom: 5px;
+}
+
+.woocommerce-order-details {
+    margin-top: 40px;
 }
 
 .woocommerce-order-details .woocommerce-table--custom-fields {
