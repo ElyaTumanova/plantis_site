@@ -117,12 +117,6 @@ if ( $show_downloads ) {
                 <?php   
             //}
             ?>
-            <?php if ( $order->get_customer_note() ) : ?>
-                <div>
-                    <div><?php esc_html_e( 'Note:', 'woocommerce' ); ?></div>
-                    <div><?php echo wp_kses( nl2br( wptexturize( $order->get_customer_note() ) ), array() ); ?></div>
-                </div>
-            <?php endif; ?>
         </div>
     </div>
     <!-- //new code -->
@@ -142,3 +136,10 @@ do_action( 'woocommerce_after_order_details', $order );
 if ( $show_customer_details ) {
 	wc_get_template( 'order/order-details-customer.php', array( 'order' => $order ) );
 }
+
+if ( $order->get_customer_note() ) : ?>
+    <div>
+        <div><?php esc_html_e( 'Note:', 'woocommerce' ); ?></div>
+        <div><?php echo wp_kses( nl2br( wptexturize( $order->get_customer_note() ) ), array() ); ?></div>
+    </div>
+<?php endif; ?>
