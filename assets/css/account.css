@@ -337,7 +337,7 @@
 
 .plnt-order__details {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
     column-gap: 100px;
     margin-bottom: 50px;
 }
@@ -359,6 +359,8 @@
     padding: 15px;
     background-color: var(--gray);
     border-radius: 5px;
+    max-width: 680px;
+    margin-top: 30px;
 }
 
 .plnt-order__totals-label {
