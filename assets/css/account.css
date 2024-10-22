@@ -241,7 +241,6 @@
 }
 
 
-
 /* личный кабинет */
 
 .woocommerce-MyAccount-navigation {
@@ -549,16 +548,6 @@
     padding: 5px 0;
 }
 
-/* прячем строку с подитогом и способом доставки*/
-
-/* .woocommerce-order-received .woocommerce-order .woocommerce-table--order-details tfoot tr:first-child {
-    display: none;
-}
-
-.woocommerce-order-received .woocommerce-order .woocommerce-table--order-details tfoot tr:nth-child(3) {
-    display: none;
-} */
-
 /* адрес клиента */ 
 
 .woocommerce-customer-details .woocommerce-column__title {
@@ -580,7 +569,3 @@
     color: var(--accent-color);
     margin: 20px 0 10px;    
 }
-
-
-
-
