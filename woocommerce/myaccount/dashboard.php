@@ -32,7 +32,7 @@ $allowed_html = array(
 
 <p>
 	<?php
-    echo ('Добро пожаловать на сайт Plantis, 'esc_html( $current_user->display_name ));
+    echo ('Добро пожаловать на сайт Plantis, '.esc_html( $current_user->display_name ));
 	?>
 </p>
 
