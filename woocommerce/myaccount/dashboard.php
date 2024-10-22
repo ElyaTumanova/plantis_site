@@ -32,13 +32,7 @@ $allowed_html = array(
 
 <p>
 	<?php
-    echo (esc_html( $current_user->display_name ));
-	printf(
-		/* translators: 1: user display name 2: logout url */
-		wp_kses( __( 'Hello %1$s (not %1$s? <a href="%2$s">Log out</a>)', 'woocommerce' ), $allowed_html ),
-		'<strong>' . esc_html( $current_user->display_name ) . '</strong>',
-		esc_url( wc_logout_url() )
-	);
+    echo ('Добро пожаловать на сайт Plantis, 'esc_html( $current_user->display_name ));
 	?>
 </p>
 
