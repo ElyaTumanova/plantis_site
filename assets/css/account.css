@@ -216,6 +216,19 @@
     font-weight: 700;
 }
 
+/* заюыли пароль? */
+
+.woocommerce-lost-password .button {
+    background-color: var(--accent-color);
+}
+.woocommerce-lost-password form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+
+
 /* личный кабинет */
 
 .woocommerce-MyAccount-navigation {
