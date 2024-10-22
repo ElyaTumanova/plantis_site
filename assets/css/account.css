@@ -218,7 +218,7 @@
 
 /* заюыли пароль? */
 
-.woocommerce-lost-password .button {
+.woocommerce-lost-password form .button {
     background-color: var(--accent-color);
     color: var(--white);
     border: none;
