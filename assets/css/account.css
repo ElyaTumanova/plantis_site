@@ -220,6 +220,8 @@
 
 .woocommerce-lost-password .button {
     background-color: var(--accent-color);
+    color: var(--white);
+    border: none;
 }
 .woocommerce-lost-password form {
     display: flex;
