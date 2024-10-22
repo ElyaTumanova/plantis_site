@@ -385,7 +385,7 @@
 }
 
 .woocommerce-MyAccount-content mark {
-    background: var(--accent-back);
+    background: none;
 }
 
 /* станица просмотра заказа */
