@@ -73,9 +73,9 @@
     margin-right: auto;
 }
 
-#customer_login > div, .u-column2 > div {
+/* #customer_login > div, .u-column2 > div {
     min-width: 400px;
-}
+} */
 
 .woocommerce-form-login {
     display: grid;
