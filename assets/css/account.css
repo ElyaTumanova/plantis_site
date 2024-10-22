@@ -138,6 +138,8 @@
     font-size: 14px;
     color: black;
     font-weight: 500;
+    display: flex;
+    align-items: center;
 }
 
 #customer_login form p label, .u-column2 form p label {
