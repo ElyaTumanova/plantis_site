@@ -17,6 +17,7 @@
 @media (max-width:840px) {
     .woocommerce-account .woocommerce{
         grid-template-columns: auto;
+        margin-top: 15px;
     }
 }
 
