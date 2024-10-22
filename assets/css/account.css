@@ -229,6 +229,10 @@
     row-gap: 15px;
 }
 
+.woocommerce-lost-password .woocommerce {
+    grid-template-columns: auto;
+}
+
 
 
 /* личный кабинет */
