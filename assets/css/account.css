@@ -223,6 +223,11 @@
     color: var(--white);
     border: none;
 }
+
+.woocommerce-lost-password form input {
+    margin-top: 10px;
+}
+
 .woocommerce-lost-password form {
     display: flex;
     flex-direction: column;
