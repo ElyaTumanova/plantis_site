@@ -362,12 +362,17 @@ function new_custom_checkout_field_script() {
                 // console.log(new Date ((new Date(selectedDate)).setHours(3,0,0,0)));
                 // console.log((new Date(selectedDate)).setHours(3,0,0,0));
                 //const first5 = weekend.find(findWeekendDate);
-                const first5 = weekend.includes(new Date((new Date(selectedDate)).setHours(3,0,0,0)));
 
-                function findWeekendDate(element, index, array) {
+                const weekendTimeStamps = weekend.map(function (element) {
+                    return element.getTime();
+                })
 
-                    return element.getTime() === new Date((new Date(selectedDate)).setHours(3,0,0,0)).getTime()
-                }
+                const first5 = weekendTimeStamps.includes(new Date((new Date(selectedDate)).setHours(3,0,0,0)));
+
+                // function findWeekendDate(element, index, array) {
+
+                //     return element.getTime() === new Date((new Date(selectedDate)).setHours(3,0,0,0)).getTime()
+                // }
                 console.log(first5);
 
                 //кнопка ОК
