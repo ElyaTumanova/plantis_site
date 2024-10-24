@@ -376,6 +376,8 @@ function new_custom_checkout_field_script() {
                     // }
                 //}
                 
+                console.log(weekend);
+                console.log(selectedDate);
                 const first5 = weekend.find((element) => element === selectedDate);
                 console.log(first5);
 
@@ -387,7 +389,7 @@ function new_custom_checkout_field_script() {
                         datepicker.hide();
                     }
                 }
-                console.log(selectedDate);
+
                 var datepicker = new AirDatepicker('#datepicker', {
                     selectedDates: selectedDate,
                     minDate: startDate,
