@@ -359,7 +359,7 @@ function new_custom_checkout_field_script() {
                 } 
                 
                 console.log(weekend);
-                console.log(new Date(selectedDate));
+                console.log(new Date(selectedDate).setHours(0,0,0,0));
                 const first5 = weekend.find((element) => element === new Date(selectedDate));
                 console.log(first5);
 
