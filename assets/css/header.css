@@ -131,6 +131,7 @@
 @media (max-width: 1279px) {
     .header__wishlist .header__count {
         right: 11px;
+        left: auto;
     }
 }
 
@@ -141,6 +142,7 @@
 @media (max-width: 1279px) {
     .header-cart .header__count {
         right: 3px;
+        left: auto;
     }
 }
 
