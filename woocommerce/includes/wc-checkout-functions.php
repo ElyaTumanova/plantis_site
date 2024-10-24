@@ -367,19 +367,20 @@ function new_custom_checkout_field_script() {
                 console.log(weekendTimeStamps);
                 console.log((new Date(selectedDate)).setHours(3,0,0,0));  
                 
-                let isSelectedDayWeekend;
+                let isSelectedDayWeekend = false;
                 function checkSelectedDay (selectedDate) {
                     isSelectedDayWeekend = weekendTimeStamps.includes((new Date(selectedDate)).setHours(3,0,0,0));
                     if (isSelectedDayWeekend) {
                         selectedDate = date.setDate(new Date(selectedDate).getDate() + 1);
+                        console.log(selectedDate);
                         checkSelectedDay (selectedDate);
                     }
                     return selectedDate;
                 };
                 
                 checkSelectedDay (selectedDate);
-                console.log(isSelectedDayWeekend);
-                console.log(selectedDate);
+                // console.log(isSelectedDayWeekend);
+                // console.log(selectedDate);
 
                 // if (isSelectedDayWeekend) {
                 //     selectedDate = date.setDate(new Date(selectedDate).getDate() + 1);
