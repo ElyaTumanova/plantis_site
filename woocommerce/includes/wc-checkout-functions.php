@@ -365,9 +365,14 @@ function new_custom_checkout_field_script() {
                 })
 
                 console.log(weekendTimeStamps);
-                console.log((new Date(selectedDate)).setHours(3,0,0,0));               
-                const isSelectedDayWeekend = weekendTimeStamps.includes((new Date(selectedDate)).setHours(3,0,0,0));
+                console.log((new Date(selectedDate)).setHours(3,0,0,0));  
                 
+                let isSelectedDayWeekend;
+                function checkSelectedDay (selectedDate) {
+                    return isSelectedDayWeekend = weekendTimeStamps.includes((new Date(selectedDate)).setHours(3,0,0,0));
+                };
+                
+                checkSelectedDay (selectedDate);
                 console.log(isSelectedDayWeekend);
 
                 if (isSelectedDayWeekend) {
