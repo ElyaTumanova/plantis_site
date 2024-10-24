@@ -358,14 +358,13 @@ function new_custom_checkout_field_script() {
                     $('input[name=additional_delivery_interval]').prop('checked',false);
                 } 
                 
-                console.log(weekend);
-                console.log(new Date ((new Date(selectedDate)).setHours(3,0,0,0)));
-                console.log((new Date(selectedDate)).setHours(3,0,0,0));
-                const first5 = weekend.find(isMyFavoriteHobby);
+                // console.log(weekend);
+                // console.log(new Date ((new Date(selectedDate)).setHours(3,0,0,0)));
+                // console.log((new Date(selectedDate)).setHours(3,0,0,0));
+                //const first5 = weekend.find(findWeekendDate);
+                const first5 = weekend.includes(new Date((new Date(selectedDate)).setHours(3,0,0,0)));
 
-                function isMyFavoriteHobby(element, index, array) {
-                    console.log(element);
-                    console.log(element.getTime());
+                function findWeekendDate(element, index, array) {
 
                     return element.getTime() === new Date((new Date(selectedDate)).setHours(3,0,0,0)).getTime()
                 }
