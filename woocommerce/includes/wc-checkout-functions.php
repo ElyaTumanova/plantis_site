@@ -349,6 +349,8 @@ function new_custom_checkout_field_script() {
                     $('input[name=additional_delivery_interval]').prop('checked',false);
                 } else {
                     startDate = date.setDate(date.getDate() + 1);
+                    console.log(startDate);
+                    
                     document.querySelector('#datepicker').value= "";
                 }
 
