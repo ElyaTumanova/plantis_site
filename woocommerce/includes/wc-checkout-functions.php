@@ -364,6 +364,7 @@ function new_custom_checkout_field_script() {
                 //const first5 = weekend.find(findWeekendDate);
 
                 const weekendTimeStamps = weekend.map(function (element) {
+                    console.log(element.getTime());
                     return element.getTime();
                 })
 
