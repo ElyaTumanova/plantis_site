@@ -29,4 +29,9 @@ if (customerLoginForm) {
     console.log(registerForm);
     console.log(loginHeader);
     console.log(registerHeader);
+
 }
+
+
+
+

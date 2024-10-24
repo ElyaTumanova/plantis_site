@@ -2,26 +2,101 @@
 # My Account
 --------------------------------------------------------------*/
 
-#customer_login {
-    display: flex;
+.woocommerce-account .woocommerce{
+    display: grid;
+    grid-template-columns: 200px auto;
     margin-top: 30px;
-    column-gap: 50px;
-    row-gap: 30px;
-
-    flex-direction: column;
-    align-items: center;
+    color: var(--text);
 }
 
-#customer_login > div {
-    width: 50%;
+@media (max-width:1024px) {
+    .woocommerce-account .woocommerce{
+        grid-template-columns: 140px auto;
+    }
 }
 
-#customer_login h2 {
-    margin-bottom: 20px;
+@media (max-width:840px) {
+    .woocommerce-account .woocommerce{
+        grid-template-columns: auto;
+        margin-top: 15px;
+    }
+}
+
+
+/*форма регистрации и входа */
+
+.plnt-customer-login, .plnt-customer-register {
+    background: var(--background);
+    justify-content: center; 
+}
+
+
+.plnt-customer-login .u-column2 {
+    display: none;
+}
+
+.plnt-customer-register .u-column1 {
+    display: none;
+}
+
+.login-popup .page-popup__container, .register-popup .page-popup__container {
+    max-width: 600px;
+}
+
+.login__close, .register__close {
+    position: absolute;
+    top: 80px;
+    right: 50px;
+}
+
+@media (max-width: 767px) {
+    .login__close, .register__close {
+        top: 45px;
+        right: 15px;
+    }
+}
+
+.login__close:hover, .register__close:hover {
     cursor: pointer;
 }
 
-#customer_login .h2_opened {
+
+#customer_login, .u-column2 {
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    column-gap: 50px;
+    flex-direction: column;
+    width: 100%;
+
+    /* for my-account page */
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* #customer_login > div, .u-column2 > div {
+    min-width: 400px;
+} */
+
+.woocommerce-form-login {
+    display: grid;
+    grid-template-rows: repeat(5, auto);
+    grid-template-columns: repeat(1, auto);
+    grid-template-areas: 
+    "name"
+    "password"
+    "forgot"
+    "button"
+    "registartion";
+}
+
+#customer_login h2, .u-column2 h2 {
+    margin-bottom: 20px;
+    /* cursor: pointer; */
+}
+
+/* #customer_login .h2_opened {
     cursor: default;
 }
 
@@ -31,27 +106,26 @@
 
 #customer_login .h2_opened:hover {
     color: var(--text);
-}
+} */
 
-#customer_login form p {
+#customer_login form p, .u-column2 form p  {
     margin-bottom: 10px;
     line-height: 1.2;
 }
 
-#customer_login form .woocommerce-form-row--wide {
-    margin-bottom: 40px;
+#customer_login form .woocommerce-form-row--wide, .u-column2 form .woocommerce-form-row--wide {
+    /* margin-bottom: 40px; */
     display: flex;
     flex-direction: column;
 }
 
-#customer_login form input {
-    /* height: 35px; */
+#customer_login form .woocommerce-form-row--wide:first-child {
+    margin-bottom: 40px;
+}
+
+#customer_login form input, .u-column2 form input {
     padding: 14px 20px;
-    /* background: var(--background); */
     border: 1px solid #ccc;
-    /* color: #222;
-    border-bottom: 1px solid #ededed;
-    border-radius: 0; */
     width: 100%
 }
 
@@ -66,9 +140,11 @@
     font-size: 14px;
     color: black;
     font-weight: 500;
+    display: flex;
+    align-items: center;
 }
 
-#customer_login form p label {
+#customer_login form p label, .u-column2 form p label {
     margin-bottom: 8px;
     line-height: 100%;
     text-transform: uppercase;
@@ -79,20 +155,45 @@
     align-items: flex-start;
 }
 
-#customer_login form .woocommerce-LostPassword, #customer_login form .login-form__registration-btn {
-    font-weight: 600;
+#customer_login form .woocommerce-LostPassword {
+    font-weight: 500;
+    font-size: 14px;
     text-decoration: underline;
+    grid-area: forgot;
+    justify-self: end;
 }
 
-/* #customer_login form .woocommerce-LostPassword {
-    float: right;
-} */
+.login-form__registration-btn {
+    font-weight: 800;
+    grid-area: registartion;
+    justify-self: center;
+    color: var(--accent-color);
+    cursor: pointer;
+    text-align: center;
+}
 
-#customer_login form .woocommerce-privacy-policy-text p {
+.register-form__login-btn {
+    font-weight: 800;
+    color: var(--accent-color);
+    text-align: center;
+    cursor: pointer;
+}
+
+.form-row:nth-child(1) {
+    grid-area: name;
+}
+.form-row:nth-child(2) {
+    grid-area: password;
+}
+.form-row:nth-child(3) {
+    grid-area: button;
+}
+
+.u-column2 form .woocommerce-privacy-policy-text p {
     display: block;
 }
 
-#customer_login form button {
+#customer_login form button, .u-column2 form button {
     color: var(--white);
     background-color: var(--accent-color);
     border-color: var(--accent-color);
@@ -102,12 +203,12 @@
 
 
 @media (max-width: 767px) {
-    #customer_login {
+    #customer_login, .u-column2 {
         display: flex;
         flex-direction: column;
     }
     
-    #customer_login div {
+    #customer_login div, .u-column2 div {
         width: 100%;
     }
 }
@@ -117,19 +218,65 @@
     font-weight: 700;
 }
 
+/* заюыли пароль? */
+
+.woocommerce-lost-password form .button {
+    background-color: var(--accent-color);
+    color: var(--white);
+    border: none;
+}
+
+.woocommerce-lost-password form input {
+    margin-top: 10px;
+}
+
+.woocommerce-lost-password form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+.woocommerce-lost-password .woocommerce {
+    grid-template-columns: auto;
+}
+
+
+/* личный кабинет */
+
 .woocommerce-MyAccount-navigation {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    /* margin-bottom: 50px;
+    border-bottom: 1px solid var(--text);
+    padding-bottom: 20px; */
 }
 
 .woocommerce-MyAccount-navigation ul {
     display: flex;
+    flex-direction: column;
     column-gap: 5px;
+    row-gap: 30px;
     text-transform: uppercase;
     font-weight: 700;
     align-items: baseline;
     justify-content: space-between;
     max-width: 400px;
+    color: var(--gray-text);
+}
+
+@media (max-width:840px) {
+    .woocommerce-MyAccount-navigation {
+        margin-bottom: 30px;
+        border-bottom: 1px solid var(--text);
+        padding-bottom: 20px;
+    }
+
+    .woocommerce-MyAccount-navigation ul {
+        flex-direction: row;
+    }
+}
+
+.woocommerce-MyAccount-navigation ul .is-active {
+    color: var(--text);
 }
 
 .woocommerce-MyAccount-navigation ul li:last-of-type{
@@ -144,7 +291,19 @@
 }
 
 .woocommerce-MyAccount-content a{
+    /* text-decoration: underline; */
+    color: var(--accent-color);
+    border: none;
+    text-transform: capitalize;
+    font-size: inherit;
+    padding: 0;
+    
+}
+
+.woocommerce-MyAccount-content a:hover{
     text-decoration: underline;
+    box-shadow: none;
+
 }
 
 .woocommerce-Address-title h3 {
@@ -168,19 +327,54 @@
 
 /* список заказов */
 
+.woocommerce-MyAccount-orders {
+    margin-bottom: 35px;
+}
+
 .woocommerce-MyAccount-orders th {
     text-align: left;
     max-width: 100px;
     vertical-align: top;
-    padding: 5px;
+    padding: 0 0 15px;
+    text-transform: uppercase;
 }
 
+.woocommerce-MyAccount-orders tr {
+    border-bottom: solid 1px rgba(216, 216, 216, 1);
+}
+
+.woocommerce-MyAccount-orders thead {
+    border-bottom: solid 1px rgb(60, 59, 59);
+}
+
+.woocommerce-MyAccount-orders td {
+    padding: 25px 0;
+}
+.woocommerce-orders-table__header-order-actions, .woocommerce-orders-table__cell-order-actions {
+    display: none;
+} 
+
 @media (max-width:767px) {
-    .woocommerce-orders-table__header-order-delivery-date, .woocommerce-orders-table__cell-order-delivery-date {
+    /* .woocommerce-orders-table__header-order-delivery-date, .woocommerce-orders-table__cell-order-delivery-date {
         display: none;
     }
     .woocommerce-orders-table__header-order-total, .woocommerce-orders-table__cell-order-total {
         display: none;
+    }
+    .woocommerce-orders-table__header-order-actions, .woocommerce-orders-table__cell-order-actions {
+        display: none;
+    } */
+    .woocommerce-MyAccount-orders th, .woocommerce-MyAccount-orders thead  {
+        display: none;
+    }
+    .woocommerce-MyAccount-orders tr {
+        display: grid;
+        grid-template-columns: 40% 60%;
+        grid-template-rows: repeat(3,auto);
+        padding: 12px 0;
+    }
+    .woocommerce-MyAccount-orders td {
+        padding: 10px 0;
     }
 }
 
@@ -191,8 +385,187 @@
 }
 
 .woocommerce-MyAccount-content mark {
-    background: var(--accent-back);
+    background: none;
+}
+
+/* станица просмотра заказа */
+
+.plnt-order__details {
+    display: grid;
+    grid-template-columns: 690px;
+    column-gap: 100px;
+    margin-bottom: 50px;
+}
+
+@media (max-width:840px) {
+    .plnt-order__details {
+        grid-template-columns: auto;
+    }
+    .plnt-order__totals {
+        max-width: 100%;
+    }
+}
+
+.plnt-order__items {
+    padding-top: 15px;
+}
+
+.plnt-order__totals-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.plnt-order__totals {
+    display: flex;
+    flex-direction: column;
+    row-gap: 17px;
+    padding: 15px;
+    background-color: var(--gray);
+    border-radius: 5px;
+    max-width: 680px;
+    margin-top: 30px;
+}
+
+.plnt-order__totals-label {
+    font-size: 16px;
+}
+
+.plnt-order__totals-value {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.plnt-order__totals-value_total {
+    font-size: 25px;
+}
+
+.plnt-order__item {
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: auto 140px 50px;
+    grid-template-areas: "name price qty";
+    align-items: center;
+}
+
+.plnt-order__items a {
+    font-size: 18px;
+    font-weight: 600;
+    grid-area: name;
+    align-self: end;
+    color: var(--text);
+}
+
+.plnt-order__items .woocommerce-Price-amount {
+    font-size: 22px;
+    font-weight: 600;
+    grid-area: price;
+    text-align: end;
+    padding-right: 13px;
+}
+
+.plnt-order__items .product-quantity {
+    grid-area: qty;
+    align-self: center;
+}
+
+/*--------------------------------------------------------------
+# Thankyou page
+--------------------------------------------------------------*/
+
+/* сообщение Спасибо за ваш заказ! */
+.woocommerce-order-received .woocommerce-order .woocommerce-notice {
+    font-size: 20px;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    position: relative;
+}
+
+.woocommerce-order-received .woocommerce-order .woocommerce-notice img{
+    position: absolute;
+    bottom: 4px;
+    margin-left: 10px;
 }
 
 
 
+/* детали заказа */
+.woocommerce-thankyou-order-details {
+    margin-bottom: 20px;
+}
+
+.woocommerce-thankyou-order-details li{
+    margin-bottom: 5px;
+}
+
+.woocommerce-order-details {
+    margin-top: 40px;
+}
+
+.woocommerce-order-details .woocommerce-table--custom-fields {
+    width: fit-content;
+    margin-top: 25px;
+    font-size: 18px;
+}
+.woocommerce-order-details .woocommerce-table--custom-fields th {
+    padding-right: 15px;
+    text-align: left;
+    padding-bottom: 10px;
+    vertical-align: top;
+}
+
+.woocommerce-order-details .woocommerce-table--custom-fields td {
+    text-align: left;
+    padding-bottom: 10px;
+    vertical-align: top;
+}
+
+
+/* товары в заказе*/
+.woocommerce-order-details__title {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--accent-color);
+    margin: 20px 0 10px;    
+}
+
+.woocommerce-order-received .woocommerce-order .woocommerce-table--order-details {
+    width: 100%;
+    border-top: 1px solid #ebeced;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.woocommerce-order-received .woocommerce-order .woocommerce-table--order-details tr {
+    border-bottom: 1px solid #ebeced;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.woocommerce-order-received .woocommerce-order .woocommerce-table--order-details td {
+    padding: 5px 0;
+}
+
+/* адрес клиента */ 
+
+.woocommerce-customer-details .woocommerce-column__title {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.woocommerce-customer-details address, .woocommerce-customer-details__note{
+    line-height: 1.4;
+    font-size: 18px;
+    font-style: normal;
+    margin: 10px 0 0;
+}
+.woocommerce-customer-details p{
+    margin-bottom: 0;
+}
+
+.thankyou__adress-heading {
+    color: var(--accent-color);
+    margin: 20px 0 10px;    
+}

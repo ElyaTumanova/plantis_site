@@ -52,6 +52,13 @@
 <?php get_template_part('template-parts/popups/burger-menu');?>
 <?php get_template_part('template-parts/popups/catalog-menu');?>
 
+<?php 
+if (!is_page('my-account')) {
+    get_template_part('template-parts/popups/register-form');
+    get_template_part('template-parts/popups/login-form');
+}
+?>
+
 <?php wp_footer(); ?>
 
 

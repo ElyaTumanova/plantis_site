@@ -32,8 +32,11 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		wp_enqueue_script( 'buttons', get_template_directory_uri() .
 											 '/assets/js/buttons.js', array( 'jquery' ), null, true );	
 
-		wp_enqueue_script( 'account', get_template_directory_uri() .
-											 '/assets/js/account.js', array( 'jquery' ), null, true );	
+		// wp_enqueue_script( 'account', get_template_directory_uri() .
+		// 									 '/assets/js/account.js', array( 'jquery' ), null, true );	
+
+		wp_enqueue_script( 'login-popup', get_template_directory_uri() .
+											 '/assets/js/login-popup.js', array( 'jquery' ), null, true );
 											 
 		wp_enqueue_script( 'slider-init', get_template_directory_uri() .
 											 '/assets/js/slider-init.js', array( 'jquery', 'swiper' ), null, true );	

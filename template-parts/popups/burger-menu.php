@@ -27,5 +27,12 @@ if ( ! defined( 'ABSPATH' ) ) {
             <span class="header__telegram-text">Telegram канал</span>
         </a>
     </div>
-    <div class="menu__item_accent "><a href="<?php echo site_url()?>/my-account/">Личный кабинет </a></div>
+
+    <?php if (!is_user_logged_in()) : ?> 
+        <div class="menu__item_accent burger-menu__account">Личный кабинет</div>
+    <?php else :?>
+        <div class="menu__item_accent">
+            <a href ="<?php echo esc_url( home_url( '/my-account/orders' ) ); ?>" >Личный кабинет</a>
+        </div>
+    <?php endif; ?>
 </div>
