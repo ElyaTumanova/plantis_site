@@ -376,6 +376,8 @@ function new_custom_checkout_field_script() {
                     // }
                 //}
                 
+                const first5 = weekend.find((element) => element === selectedDate);
+                console.log(first5);
 
                 //кнопка ОК
                 let button = {
