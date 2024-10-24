@@ -359,6 +359,7 @@ function new_custom_checkout_field_script() {
                 } 
                 
                 console.log(weekend);
+                console.log(new Date ((new Date(selectedDate)).setHours(0,0,0,0)));
                 console.log((new Date(selectedDate)).setHours(0,0,0,0));
                 const first5 = weekend.find(isMyFavoriteHobby);
 
