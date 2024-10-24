@@ -360,7 +360,7 @@ function new_custom_checkout_field_script() {
                 
                 console.log(weekend);
                 console.log(new Date((new Date(selectedDate)).setHours(0,0,0,0)));
-                const first5 = weekend.find((element) => element === new Date(selectedDate));
+                const first5 = weekend.find((element) => element === new Date((new Date(selectedDate)).setHours(0,0,0,0)));
                 console.log(first5);
 
                 //кнопка ОК
