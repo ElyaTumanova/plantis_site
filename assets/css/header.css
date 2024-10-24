@@ -125,10 +125,23 @@
     color: var(--white);
 }
 .header__wishlist .header__count {
-    right: 11px;
+   left: 25px;
 }
+
+@media (max-width: 1279px) {
+    .header__wishlist .header__count {
+        right: 11px;
+    }
+}
+
 .header-cart .header__count {
-    right: 3px;
+    left: 26px;
+}
+
+@media (max-width: 1279px) {
+    .header-cart .header__count {
+        right: 3px;
+    }
 }
 
 /* header__info styles */
