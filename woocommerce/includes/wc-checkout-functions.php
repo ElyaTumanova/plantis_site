@@ -378,7 +378,7 @@ function new_custom_checkout_field_script() {
                 
                 console.log(weekend);
                 console.log(selectedDate);
-                const first5 = weekend.find((element) => element === selectedDate);
+                const first5 = weekend.find((element) => element === new Date(selectedDate));
                 console.log(first5);
 
                 //кнопка ОК
