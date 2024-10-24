@@ -358,10 +358,6 @@ function new_custom_checkout_field_script() {
                     $('input[name=additional_delivery_interval]').prop('checked',false);
                 } 
                 
-                // console.log(weekend);
-                // console.log(new Date ((new Date(selectedDate)).setHours(3,0,0,0)));
-                // console.log((new Date(selectedDate)).setHours(3,0,0,0));
-                //const first5 = weekend.find(findWeekendDate);
 
                 const weekendTimeStamps = weekend.map(function (element) {
                     console.log(element.getTime());
@@ -369,16 +365,15 @@ function new_custom_checkout_field_script() {
                 })
 
                 console.log(weekendTimeStamps);
-                console.log((new Date(selectedDate)).setHours(3,0,0,0));
-
+                console.log((new Date(selectedDate)).setHours(3,0,0,0));               
+                const isSelectedDayWeekend = weekendTimeStamps.includes((new Date(selectedDate)).setHours(3,0,0,0));
                 
-                const first5 = weekendTimeStamps.includes((new Date(selectedDate)).setHours(3,0,0,0));
+                console.log(isSelectedDayWeekend);
 
-                // function findWeekendDate(element, index, array) {
-
-                //     return element.getTime() === new Date((new Date(selectedDate)).setHours(3,0,0,0)).getTime()
-                // }
-                console.log(first5);
+                if (isSelectedDayWeekend) {
+                    selectedDate = date.setDate(selectedDate.getDate() + 1);
+                    console.log(selectedDate);
+                }
 
                 //кнопка ОК
                 let button = {
