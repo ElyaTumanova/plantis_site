@@ -345,7 +345,6 @@ function new_custom_checkout_field_script() {
                 
                 if ($(ismc).val() == localPickup) {  
                     startDate = date.setDate(date.getDate() + 0);
-                    console.log(startDate);
                     selectedDate = startDate;
                     $('input[name=additional_delivery_interval]').prop('checked',false);
                 } else {
@@ -357,27 +356,10 @@ function new_custom_checkout_field_script() {
                     selectedDate = false;
                     document.querySelector('#datepicker').value= "";
                     $('input[name=additional_delivery_interval]').prop('checked',false);
-                } //else {
-                    // console.log(weekend.includes(new Date(startDate).getDate()));
-                    // weekend.forEach(element => {
-                    //     if (new Date(startDate).getDate() === element.getDate()){
-                    //         selectedDate = new Date(startDate).setDate(new Date(element).getDate() + 1);
-                    //         return;
-                    //     } else {
-                    //         selectedDate = new Date(startDate);
-                    //     }
-                    //     console.log(new Date(selectedDate));
-                    // });
-
-
-                    // if (new Date(startDate).getDate() === weekend.getDate()) {
-                    // selectedDate = new Date(startDate).setDate(new Date(startDate).getDate() + 1);
-                    // } else {
-                    //     selectedDate = new Date(startDate);
-                    // }
-                //}
+                } 
                 
                 console.log(weekend);
+                console.log(new Date(selectedDate));
                 const first5 = weekend.find((element) => element === new Date(selectedDate));
                 console.log(first5);
 
