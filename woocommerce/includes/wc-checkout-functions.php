@@ -364,6 +364,7 @@ function new_custom_checkout_field_script() {
                 const first5 = weekend.find(isMyFavoriteHobby);
 
                 function isMyFavoriteHobby(element, index, array) {
+                    console.log(element);
                     console.log(element.getTime());
 
                     return element.getTime() === new Date((new Date(selectedDate)).setHours(0,0,0,0)).getTime()
