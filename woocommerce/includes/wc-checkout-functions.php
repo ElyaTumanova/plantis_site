@@ -369,16 +369,22 @@ function new_custom_checkout_field_script() {
                 
                 let isSelectedDayWeekend;
                 function checkSelectedDay (selectedDate) {
-                    return isSelectedDayWeekend = weekendTimeStamps.includes((new Date(selectedDate)).setHours(3,0,0,0));
+                    isSelectedDayWeekend = weekendTimeStamps.includes((new Date(selectedDate)).setHours(3,0,0,0));
+                    if (isSelectedDayWeekend) {
+                        selectedDate = date.setDate(new Date(selectedDate).getDate() + 1);
+                        checkSelectedDay (selectedDate);
+                    }
+                    return selectedDate;
                 };
                 
                 checkSelectedDay (selectedDate);
                 console.log(isSelectedDayWeekend);
+                console.log(selectedDate);
 
-                if (isSelectedDayWeekend) {
-                    selectedDate = date.setDate(new Date(selectedDate).getDate() + 1);
-                    console.log(selectedDate);
-                }
+                // if (isSelectedDayWeekend) {
+                //     selectedDate = date.setDate(new Date(selectedDate).getDate() + 1);
+                //     console.log(selectedDate);
+                // }
 
                 //кнопка ОК
                 let button = {
