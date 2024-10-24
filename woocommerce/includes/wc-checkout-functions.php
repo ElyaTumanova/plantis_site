@@ -369,7 +369,9 @@ function new_custom_checkout_field_script() {
                 })
 
                 console.log(weekendTimeStamps);
+                console.log(new Date((new Date(selectedDate)).setHours(3,0,0,0)));
 
+                
                 const first5 = weekendTimeStamps.includes(new Date((new Date(selectedDate)).setHours(3,0,0,0)));
 
                 // function findWeekendDate(element, index, array) {
