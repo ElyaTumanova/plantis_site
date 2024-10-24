@@ -345,9 +345,11 @@ function new_custom_checkout_field_script() {
                 
                 if ($(ismc).val() == localPickup) {  
                     startDate = date.setDate(date.getDate() + 0);
+                    document.querySelector('#datepicker').value= "";
                     $('input[name=additional_delivery_interval]').prop('checked',false);
                 } else {
                     startDate = date.setDate(date.getDate() + 1);
+                    document.querySelector('#datepicker').value= "";
                 }
 
                 if ($(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 ||$(ismc).val() == urgentPickup3 ||$(ismc).val() == urgentPickup4) {
