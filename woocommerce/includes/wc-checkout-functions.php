@@ -387,8 +387,6 @@ function new_custom_checkout_field_script() {
                     content: 'OK',
                     className: 'custom-button-classname',
                     onClick: (datepicker) => {
-                        console.log('ok');
-                        // console.log(new Date(SelectedDate));
                         datepicker.hide();
                     }
                 }
@@ -411,26 +409,18 @@ function new_custom_checkout_field_script() {
                 }
 
                 return datePickerOpts;
-                
             }
 
             // Datepicker init
             var datepickerCal = new AirDatepicker('#datepicker');
             setTimeout(function(){
-                console.log('hi');
                 var datePickerOpts = datepicker_init ();
                 datepickerCal.update(datePickerOpts);
-                //var datepickerCal = new AirDatepicker('#datepicker', datePickerOpts);
-                console.log(datepickerCal);
             }, 100);
 
             $( 'form.checkout' ).on( 'change', ism, function() {
-                console.log('hello');
                 var datePickerOpts = datepicker_init ();
                 datepickerCal.update(datePickerOpts);
-                console.log(datepickerCal);
-                //var datepicker = new AirDatepicker('#datepicker', datePickerOpts);
-                //datepicker.update(datePickerOpts);
 
             })
         });

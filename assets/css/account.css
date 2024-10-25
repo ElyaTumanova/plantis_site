@@ -22,6 +22,9 @@
     }
 }
 
+.woocommerce-account .woocommerce .woocommerce-notices-wrapper {
+    grid-column: 2;
+}
 
 /*форма регистрации и входа */
 
