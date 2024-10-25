@@ -383,6 +383,8 @@ function new_custom_checkout_field_script() {
                 };
                 
                 checkSelectedDay (selectedDate);
+                console.log('finally');
+                console.log(selectedDate);
                 // console.log(isSelectedDayWeekend);
                 // console.log(selectedDate);
 
