@@ -360,21 +360,21 @@ function new_custom_checkout_field_script() {
                 
 
                 const weekendTimeStamps = weekend.map(function (element) {
-                    console.log(element.getTime());
+                    // console.log(element.getTime());
                     return element.getTime();
                 })
 
-                console.log(weekendTimeStamps);
-                console.log((new Date(selectedDate)).setHours(3,0,0,0));  
+                // console.log(weekendTimeStamps);
+                // console.log((new Date(selectedDate)).setHours(3,0,0,0));  
                 
                 let isSelectedDayWeekend = false;
                 function checkSelectedDay (selectedDate) {
                     isSelectedDayWeekend = weekendTimeStamps.includes((new Date(selectedDate)).setHours(3,0,0,0));
-                    // if (isSelectedDayWeekend) {
-                    //     selectedDate = date.setDate(new Date(selectedDate).getDate() + 1);
-                    //     console.log(selectedDate);
-                    //     checkSelectedDay (selectedDate);
-                    // }
+                    if (isSelectedDayWeekend) {
+                        selectedDate = date.setDate(new Date(selectedDate).getDate() + 1);
+                        console.log(new Date(selectedDate));
+                        //checkSelectedDay (selectedDate);
+                    }
                     return selectedDate;
                 };
                 
