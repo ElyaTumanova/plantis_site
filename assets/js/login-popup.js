@@ -83,11 +83,12 @@ function toggle_reg_popup () {
 // переменные для управления через мобильное меню
 
 const mobOpenBtn = document.querySelector('.burger-menu__account'); 
-
-mobOpenBtn.addEventListener ("click", (evt)=>{
-    toggle_mob_menu ();
-    toggle_login_popup ();
-});
+if(mobOpenBtn) {
+    mobOpenBtn.addEventListener ("click", (evt)=>{
+        toggle_mob_menu ();
+        toggle_login_popup ();
+    });
+}
 
 // уведомление об ошибке
 
