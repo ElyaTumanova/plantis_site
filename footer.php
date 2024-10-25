@@ -53,7 +53,6 @@
 <?php get_template_part('template-parts/popups/catalog-menu');?>
 
 <?php 
-//if (!is_page('my-account')) {
 if (!is_account_page()) {
     get_template_part('template-parts/popups/register-form');
     get_template_part('template-parts/popups/login-form');
