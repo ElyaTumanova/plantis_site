@@ -415,15 +415,13 @@ function new_custom_checkout_field_script() {
             // Datepicker init
             setTimeout(function(){
                 console.log('hi');
-                destroy();
                 datepicker_init ();
             }, 100);
 
-            $( 'form.checkout' ).on( 'change', ism, function() {
-                console.log('hello');
-                destroy();
-                datepicker_init ();
-            })
+            // $( 'form.checkout' ).on( 'change', ism, function() {
+            //     console.log('hello');
+            //     datepicker_init ();
+            // })
         });
     </script>
     <?php
