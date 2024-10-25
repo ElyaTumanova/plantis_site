@@ -360,40 +360,26 @@ function new_custom_checkout_field_script() {
                 
 
                 const weekendTimeStamps = weekend.map(function (element) {
-                    // console.log(element.getTime());
                     return element.getTime();
                 })
-
-                // console.log(weekendTimeStamps);
-                // console.log((new Date(selectedDate)).setHours(3,0,0,0));  
-                
+               // проверяем, что первая доступная дата не попадает на выходной
                 let isSelectedDayWeekend = false;
                 function checkSelectedDay (checkDate) {
                     isSelectedDayWeekend = weekendTimeStamps.includes((new Date(checkDate)).setHours(3,0,0,0));
-                    //var newSelectedDay = selectedDate;
                     if (isSelectedDayWeekend) {
                         newSelectedDate = date.setDate(new Date(checkDate).getDate() + 1);
-                        console.log('new date')
-                        console.log(new Date(newSelectedDate));
-                        //selectedDate = newSelectedDay;
-                        //console.log(new Date(selectedDate));
+                        // console.log('new date')
+                        // console.log(new Date(newSelectedDate));
                         return checkSelectedDay (newSelectedDate);
                     }
-                    console.log('after if');
-                    console.log(new Date(newSelectedDate));
+                    // console.log('after if');
+                    // console.log(new Date(newSelectedDate));
                     return selectedDate = newSelectedDate;
                 };
                 
                 checkSelectedDay (selectedDate);
-                console.log('finally');
-                console.log(new Date(selectedDate));
-                // console.log(isSelectedDayWeekend);
-                // console.log(selectedDate);
-
-                // if (isSelectedDayWeekend) {
-                //     selectedDate = date.setDate(new Date(selectedDate).getDate() + 1);
-                //     console.log(selectedDate);
-                // }
+                // console.log('finally');
+                // console.log(new Date(selectedDate));
 
                 //кнопка ОК
                 let button = {
@@ -414,7 +400,7 @@ function new_custom_checkout_field_script() {
                     })(),
                     isMobile: true,
 
-                    //buttons: [button] 
+                    buttons: [button] 
                 });
                 
                 if (weekend) {
