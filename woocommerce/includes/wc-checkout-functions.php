@@ -374,6 +374,7 @@ function new_custom_checkout_field_script() {
                     if (isSelectedDayWeekend) {
                         newSelectedDay = date.setDate(new Date(selectedDate).getDate() + 1);
                         console.log(new Date(newSelectedDay));
+                        selectedDate = newSelectedDay;
                         return checkSelectedDay (newSelectedDay);
                     }   
                     return selectedDate = newSelectedDay;
