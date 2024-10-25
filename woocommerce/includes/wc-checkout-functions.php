@@ -368,11 +368,11 @@ function new_custom_checkout_field_script() {
                 // console.log((new Date(selectedDate)).setHours(3,0,0,0));  
                 
                 let isSelectedDayWeekend = false;
-                function checkSelectedDay (selectedDate) {
-                    isSelectedDayWeekend = weekendTimeStamps.includes((new Date(selectedDate)).setHours(3,0,0,0));
+                function checkSelectedDay (checkDate) {
+                    isSelectedDayWeekend = weekendTimeStamps.includes((new Date(checkDate)).setHours(3,0,0,0));
                     //var newSelectedDay = selectedDate;
                     if (isSelectedDayWeekend) {
-                        newSelectedDate = date.setDate(new Date(selectedDate).getDate() + 1);
+                        newSelectedDate = date.setDate(new Date(checkDate).getDate() + 1);
                         console.log('new date')
                         console.log(new Date(newSelectedDate));
                         //selectedDate = newSelectedDay;
