@@ -430,7 +430,7 @@ function new_custom_checkout_field_script() {
             // Datepicker init
             setTimeout(function(){
                 console.log('hi');
-                ver datePickerOpts = datepicker_init ();
+                var datePickerOpts = datepicker_init ();
                 var datepicker = new AirDatepicker('#datepicker', datePickerOpts);
             }, 100);
 
