@@ -382,17 +382,7 @@ function new_custom_checkout_field_script() {
                 // console.log('finally');
                 // console.log(new Date(selectedDate));
 
-                //кнопка ОК
-                let button = {
-                    content: 'OK',
-                    className: 'custom-button-classname',
-                    onClick: (datepicker) => {
-                        console.log('ok');
-                        console.log(new Date(SelectedDate));
-                        datepicker.hide();
-                    }
-                }
-
+                
                 var datepicker = new AirDatepicker('#datepicker', {
                     selectedDates: selectedDate,
                     minDate: startDate,
@@ -409,6 +399,17 @@ function new_custom_checkout_field_script() {
                 
                 if (weekend) {
                     datepicker.disableDate(weekend);
+                }
+
+                //кнопка ОК
+                let button = {
+                    content: 'OK',
+                    className: 'custom-button-classname',
+                    onClick: (datepicker) => {
+                        console.log('ok');
+                        console.log(new Date(SelectedDate));
+                        datepicker.hide();
+                    }
                 }
             }
 
