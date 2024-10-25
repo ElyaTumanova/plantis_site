@@ -389,7 +389,8 @@ function new_custom_checkout_field_script() {
                     onClick: (datepicker) => {
                         console.log('ok');
                         // console.log(new Date(SelectedDate));
-                        datepicker.hide();
+                        //datepicker.hide();
+                        datepicker.destroy();
                     }
                 }
                 
@@ -420,7 +421,6 @@ function new_custom_checkout_field_script() {
 
             $( 'form.checkout' ).on( 'change', ism, function() {
                 console.log('hello');
-                datepicker.destroy();
                 datepicker_init ();
                 // update({
                 //     selectedDates: selectedDate,
