@@ -381,7 +381,7 @@ function new_custom_checkout_field_script() {
                     }
                     console.log('after if');
                     console.log(new Date(selectedDate));
-                    return selectedDate;
+                    return selectedDate = selectedDate;
                 };
                 
                 checkSelectedDay (selectedDate);
