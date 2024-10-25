@@ -406,29 +406,16 @@ function new_custom_checkout_field_script() {
                     buttons: [button] 
                 }
 
+                if (weekend) {
+                    datepickerCal.disableDate(weekend);
+                }
+
                 return datePickerOpts;
                 
-                // var datepicker = new AirDatepicker('#datepicker', {
-                //     selectedDates: selectedDate,
-                //     minDate: startDate,
-                //     maxDate: (function(){
-                //         var date = new Date();
-                //         date.setDate(date.getDate() + 30);
-                //         return date;
-                //     })(),
-                //     isMobile: true,
-                //     //autoClose: true,
-
-                //     buttons: [button] 
-                // });
-                
-                // if (weekend) {
-                //     datepicker.disableDate(weekend);
-                // }
             }
 
-            var datepickerCal = new AirDatepicker('#datepicker');
             // Datepicker init
+            var datepickerCal = new AirDatepicker('#datepicker');
             setTimeout(function(){
                 console.log('hi');
                 var datePickerOpts = datepicker_init ();
