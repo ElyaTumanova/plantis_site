@@ -370,11 +370,14 @@ function new_custom_checkout_field_script() {
                 let isSelectedDayWeekend = false;
                 function checkSelectedDay (selectedDate) {
                     isSelectedDayWeekend = weekendTimeStamps.includes((new Date(selectedDate)).setHours(3,0,0,0));
+                    var newSelectedDay = selectedDate;
                     if (isSelectedDayWeekend) {
-                        return selectedDate = date.setDate(new Date(selectedDate).getDate() + 1);
-                        console.log(new Date(selectedDate));
+                        newSelectedDay = date.setDate(new Date(selectedDate).getDate() + 1);
+                        console.log(new Date(newSelectedDay));
+                        checkSelectedDay (newSelectedDay);
+                    }   
+                        return selectedDate = newSelectedDay;
                     }
-                    return checkSelectedDay (selectedDate);
                 };
                 
                 checkSelectedDay (selectedDate);
