@@ -92,8 +92,10 @@ if(mobOpenBtn) {
 
 // уведомление об ошибке
 
-const errorMsg = loginPopup.querySelector('.woocommerce-error'); 
-
-if (errorMsg) {
-    toggle_login_popup ();
-};
+if (loginPopup) {
+    const errorMsg = loginPopup.querySelector('.woocommerce-error'); 
+    
+    if (errorMsg) {
+        toggle_login_popup ();
+    };
+}
