@@ -388,7 +388,7 @@ function new_custom_checkout_field_script() {
                     className: 'custom-button-classname',
                     onClick: (datepicker) => {
                         console.log('ok');
-                        console.log(new Date(SelectedDate));
+                        // console.log(new Date(SelectedDate));
                         datepicker.hide();
                     }
                 }
@@ -402,7 +402,7 @@ function new_custom_checkout_field_script() {
                         return date;
                     })(),
                     isMobile: true,
-                    //autoClose: true,
+                    autoClose: true,
 
                     buttons: [button] 
                 });
