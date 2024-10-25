@@ -400,7 +400,7 @@ function new_custom_checkout_field_script() {
                         return date;
                     })(),
                     isMobile: true,
-                    autoClose: true,
+                    //autoClose: true,
 
                     //buttons: [button] 
                 });
