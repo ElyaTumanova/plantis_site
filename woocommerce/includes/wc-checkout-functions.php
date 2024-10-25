@@ -365,6 +365,7 @@ function new_custom_checkout_field_script() {
                // проверяем, что первая доступная дата не попадает на выходной
                 let isSelectedDayWeekend = false;
                 function checkSelectedDay (checkDate) {
+                    let newSelectedDate = checkDate;
                     isSelectedDayWeekend = weekendTimeStamps.includes((new Date(checkDate)).setHours(3,0,0,0));
                     if (isSelectedDayWeekend) {
                         newSelectedDate = date.setDate(new Date(checkDate).getDate() + 1);
