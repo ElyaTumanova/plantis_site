@@ -418,10 +418,10 @@ function new_custom_checkout_field_script() {
                 datepicker_init ();
             }, 100);
 
-            // $( 'form.checkout' ).on( 'change', ism, function() {
-            //     console.log('hello');
-            //     datepicker_init ();
-            // })
+            $( 'form.checkout' ).on( 'change', ism, function() {
+                console.log('hello');
+                datepicker_init ();
+            })
         });
     </script>
     <?php
