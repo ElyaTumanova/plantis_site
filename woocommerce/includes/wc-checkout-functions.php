@@ -322,7 +322,7 @@ function new_custom_checkout_field_script() {
             # Datepicker
             --------------------------------------------------------------*/
             // Utility function for datepicker init
-            function datepicker_init () {
+            function datepicker_init (datepicker) {
 
                 <?php $weekend_string = carbon_get_theme_option('weekend');?>
                 
@@ -415,13 +415,13 @@ function new_custom_checkout_field_script() {
             // Datepicker init
             setTimeout(function(){
                 console.log('hi');
-                datepicker_init ();
+                datepicker_init (datepicker1);
             }, 100);
 
             $( 'form.checkout' ).on( 'change', ism, function() {
                 console.log('hello');
-                datepicker.destroy();
-                datepicker_init ();
+                datepicker1.destroy();
+                datepicker_init (datepicker2);
                 // update({
                 //     selectedDates: selectedDate,
                 //     minDate: startDate,
