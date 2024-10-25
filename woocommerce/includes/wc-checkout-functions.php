@@ -373,7 +373,7 @@ function new_custom_checkout_field_script() {
                     if (isSelectedDayWeekend) {
                         selectedDate = date.setDate(new Date(selectedDate).getDate() + 1);
                         console.log(new Date(selectedDate));
-                        //checkSelectedDay (selectedDate);
+                        return checkSelectedDay (selectedDate);
                     }
                     return selectedDate;
                 };
