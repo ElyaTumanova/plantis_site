@@ -25,9 +25,9 @@
 .woocommerce-account .woocommerce .woocommerce-notices-wrapper {
     grid-column: 1 / span 2;
 }
-.woocommerce-account .woocommerce .woocommerce-message {
+/* .woocommerce-account .woocommerce .woocommerce-message {
     text-align: center;
-}
+} */
 
 /*форма регистрации и входа */
 
