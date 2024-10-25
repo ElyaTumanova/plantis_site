@@ -415,14 +415,27 @@ function new_custom_checkout_field_script() {
             // Datepicker init
             setTimeout(function(){
                 console.log('hi');
-                console.log(new Date(SelectedDate));
                 datepicker_init ();
             }, 100);
 
             $( 'form.checkout' ).on( 'change', ism, function() {
                 console.log('hello');
-                console.log(new Date(SelectedDate));
-                datepicker_init ();
+                //datepicker_init ();
+                update({
+                    selectedDates: selectedDate,
+                    minDate: startDate,
+                    maxDate: (function(){
+                        var date = new Date();
+                        date.setDate(date.getDate() + 30);
+                        return date;
+                    })(),
+                    isMobile: true,
+                    //autoClose: true,
+
+                    buttons: [button]
+
+                })
+
             })
         });
     </script>
