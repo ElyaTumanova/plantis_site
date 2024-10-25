@@ -432,14 +432,16 @@ function new_custom_checkout_field_script() {
             setTimeout(function(){
                 console.log('hi');
                 var datePickerOpts = datepicker_init ();
+                datepickerCal.update(datePickerOpts);
                 //var datepickerCal = new AirDatepicker('#datepicker', datePickerOpts);
                 console.log(datepickerCal);
             }, 100);
 
             $( 'form.checkout' ).on( 'change', ism, function() {
                 console.log('hello');
-                console.log(datepickerCal);
                 var datePickerOpts = datepicker_init ();
+                datepickerCal.update(datePickerOpts);
+                console.log(datepickerCal);
                 //var datepicker = new AirDatepicker('#datepicker', datePickerOpts);
                 //datepicker.update(datePickerOpts);
 
