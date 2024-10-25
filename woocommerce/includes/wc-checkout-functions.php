@@ -431,15 +431,15 @@ function new_custom_checkout_field_script() {
             setTimeout(function(){
                 console.log('hi');
                 var datePickerOpts = datepicker_init ();
-                var datepicker1 = new AirDatepicker('#datepicker', datePickerOpts);
-                console.log(datepicker);
+                var datepickerCal = new AirDatepicker('#datepicker', datePickerOpts);
+                console.log(datepickerCal);
             }, 100);
 
             $( 'form.checkout' ).on( 'change', ism, function() {
                 console.log('hello');
-                datepicker1.destroy();
+                console.log(datepickerCal);
                 var datePickerOpts = datepicker_init ();
-                var datepicker2 = new AirDatepicker('#datepicker', datePickerOpts);
+                //var datepicker = new AirDatepicker('#datepicker', datePickerOpts);
                 //datepicker.update(datePickerOpts);
 
             })
