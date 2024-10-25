@@ -420,21 +420,22 @@ function new_custom_checkout_field_script() {
 
             $( 'form.checkout' ).on( 'change', ism, function() {
                 console.log('hello');
-                //datepicker_init ();
-                update({
-                    selectedDates: selectedDate,
-                    minDate: startDate,
-                    maxDate: (function(){
-                        var date = new Date();
-                        date.setDate(date.getDate() + 30);
-                        return date;
-                    })(),
-                    isMobile: true,
-                    //autoClose: true,
+                datepicker.destroy();
+                datepicker_init ();
+                // update({
+                //     selectedDates: selectedDate,
+                //     minDate: startDate,
+                //     maxDate: (function(){
+                //         var date = new Date();
+                //         date.setDate(date.getDate() + 30);
+                //         return date;
+                //     })(),
+                //     isMobile: true,
+                //     //autoClose: true,
 
-                    buttons: [button]
+                //     buttons: [button]
 
-                })
+                // })
 
             })
         });
