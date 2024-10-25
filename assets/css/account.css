@@ -22,9 +22,9 @@
     }
 }
 
-/* .woocommerce-account .woocommerce .woocommerce-notices-wrapper {
-    grid-column: 2;
-} */
+.woocommerce-account .woocommerce .woocommerce-notices-wrapper {
+    grid-column: 1 / span 2;
+}
 
 /*форма регистрации и входа */
 
@@ -76,6 +76,7 @@
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    grid-column: 1 / span 2;
 }
 
 /* #customer_login > div, .u-column2 > div {
