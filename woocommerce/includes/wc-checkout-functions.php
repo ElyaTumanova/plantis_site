@@ -434,26 +434,12 @@ function new_custom_checkout_field_script() {
                 var datepicker = new AirDatepicker('#datepicker', datePickerOpts);
             }, 100);
 
-            // $( 'form.checkout' ).on( 'change', ism, function() {
-            //     console.log('hello');
-            //     //datepicker.destroy();
-            //     datepicker_init ();
-            //     // update({
-            //     //     selectedDates: selectedDate,
-            //     //     minDate: startDate,
-            //     //     maxDate: (function(){
-            //     //         var date = new Date();
-            //     //         date.setDate(date.getDate() + 30);
-            //     //         return date;
-            //     //     })(),
-            //     //     isMobile: true,
-            //     //     //autoClose: true,
+            $( 'form.checkout' ).on( 'change', ism, function() {
+                console.log('hello');
+                var datePickerOpts = datepicker_init ();
+                datepicker.update(datePickerOpts);
 
-            //     //     buttons: [button]
-
-            //     // })
-
-            // })
+            })
         });
     </script>
     <?php
