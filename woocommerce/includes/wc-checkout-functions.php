@@ -386,6 +386,7 @@ function new_custom_checkout_field_script() {
                     content: 'OK',
                     className: 'custom-button-classname',
                     onClick: (datepicker) => {
+                        console.log('ok');
                         datepicker.hide();
                     }
                 }
