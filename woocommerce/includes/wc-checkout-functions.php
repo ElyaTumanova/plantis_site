@@ -375,8 +375,10 @@ function new_custom_checkout_field_script() {
                         newSelectedDay = date.setDate(new Date(selectedDate).getDate() + 1);
                         console.log(new Date(newSelectedDay));
                         selectedDate = newSelectedDay;
+                        console.log(selectedDate);
                         return checkSelectedDay (newSelectedDay);
                     }   
+                    console.log(selectedDate);
                     return selectedDate = newSelectedDay;
                 };
                 
