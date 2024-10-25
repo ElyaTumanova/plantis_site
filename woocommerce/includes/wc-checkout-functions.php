@@ -376,8 +376,7 @@ function new_custom_checkout_field_script() {
                         console.log(new Date(newSelectedDay));
                         checkSelectedDay (newSelectedDay);
                     }   
-                        return selectedDate = newSelectedDay;
-                    }
+                    return selectedDate = newSelectedDay;
                 };
                 
                 checkSelectedDay (selectedDate);
