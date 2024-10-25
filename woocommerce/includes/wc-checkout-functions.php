@@ -427,11 +427,12 @@ function new_custom_checkout_field_script() {
                 // }
             }
 
+            var datepickerCal = new AirDatepicker('#datepicker');
             // Datepicker init
             setTimeout(function(){
                 console.log('hi');
                 var datePickerOpts = datepicker_init ();
-                var datepickerCal = new AirDatepicker('#datepicker', datePickerOpts);
+                //var datepickerCal = new AirDatepicker('#datepicker', datePickerOpts);
                 console.log(datepickerCal);
             }, 100);
 
