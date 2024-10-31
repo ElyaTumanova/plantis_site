@@ -6,7 +6,7 @@ get_header(); ?>
 ?>
 
 <div class="content-area">
-	<main id="main" class="site-main" role="main">
+
 		<header class="entry-header container">
 			<h1 class="entry-title">О нас</h1>                
 		</header>
@@ -121,7 +121,7 @@ get_header(); ?>
 
         
 		</div>
-	</main><!-- #main -->
+
 </div><!-- #primary -->
 
 <?php get_footer(); ?>
