@@ -330,10 +330,10 @@ function new_custom_checkout_field_script() {
                 <?php $weekend_string = carbon_get_theme_option('weekend');?>
                 
                 //выходной
-                var weekend_str = '<?php echo $weekend_string; ?>';
-                var weekend_arr = weekend_str.split(',');
+                let weekend_str = '<?php echo $weekend_string; ?>';
+                let weekend_arr = weekend_str.split(',');
                 // console.log(weekend_arr);
-                var weekend = [];
+                let weekend = [];
                 weekend_arr.forEach(element => {
                     weekend.push(new Date(element));
                 });
@@ -342,9 +342,9 @@ function new_custom_checkout_field_script() {
 
                 
                 //определяем первую доступную дату
-                var startDate = new Date();
-                var selectedDate = false;
-                var date = new Date();                    
+                let startDate = new Date();
+                let selectedDate = false;
+                let date = new Date();                    
                 
                 if ($(ismc).val() == localPickup) {  
                     startDate = date.setDate(date.getDate() + 0);
@@ -357,12 +357,14 @@ function new_custom_checkout_field_script() {
 
                 if ($(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 ||$(ismc).val() == urgentPickup3 ||$(ismc).val() == urgentPickup4) {
                     selectedDate = false;
+                    console.log('sd ',selectedDate);
                     console.log('input ',document.querySelector('#datepicker').value);
                     document.querySelector('#datepicker').value= "";
                     $('input[name=additional_delivery_interval]').prop('checked',false);
                     console.log('input ',document.querySelector('#datepicker').value);
                 } 
                 
+                console.log('finally sd ',selectedDate);
 
                 const weekendTimeStamps = weekend.map(function (element) {
                     return element.getTime();
@@ -395,7 +397,7 @@ function new_custom_checkout_field_script() {
                         datepicker.hide();
                     }
                 }
-                var datePickerOpts = {
+                let datePickerOpts = {
                     selectedDates: selectedDate,
                     minDate: startDate,
                     maxDate: (function(){
