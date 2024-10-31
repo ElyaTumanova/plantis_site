@@ -345,7 +345,7 @@ function new_custom_checkout_field_script() {
                 
                 //определяем первую доступную дату
                 let startDate = new Date();
-                let selectedDate = false;
+                let selectedDate = [];
                 let date = new Date();                    
                 
                 if ($(ismc).val() == localPickup) {  
@@ -431,8 +431,8 @@ function new_custom_checkout_field_script() {
 
             $( 'form.checkout' ).on( 'change', ism, function() {
                 var datePickerOpts = datepicker_init ();
-                datepickerCal.update(datePickerOpts);
                 console.log(datepickerCal.selectedDates);
+                datepickerCal.update(datePickerOpts);
             })
         });
     </script>
