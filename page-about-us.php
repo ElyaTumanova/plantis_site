@@ -5,7 +5,7 @@ get_header(); ?>
     $min_free_delivery = carbon_get_theme_option('min_free_delivery');
 ?>
 
-<div class="content-area-full-width">
+<div class="content-area">
 	<main id="main" class="site-main" role="main">
 		<header class="entry-header container">
 			<h1 class="entry-title">О нас</h1>                
