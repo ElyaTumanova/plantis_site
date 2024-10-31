@@ -327,6 +327,8 @@ function new_custom_checkout_field_script() {
             // Utility function for datepicker init
             function datepicker_init () {
 
+                console.log('datepicker_init');
+
                 <?php $weekend_string = carbon_get_theme_option('weekend');?>
                 
                 //выходной
@@ -415,6 +417,7 @@ function new_custom_checkout_field_script() {
                     datepickerCal.disableDate(weekend);
                 }
 
+                console.log('dpopts ',datePickerOpts.selectedDates);
                 return datePickerOpts;
             }
 
