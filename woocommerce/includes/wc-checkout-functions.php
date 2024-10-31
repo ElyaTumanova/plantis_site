@@ -385,7 +385,7 @@ function new_custom_checkout_field_script() {
                 
                 checkSelectedDay (selectedDate);
                 // console.log('finally');
-                // console.log(new Date(selectedDate));
+                console.log(new Date(selectedDate));
 
                 //кнопка ОК
                 let button = {
