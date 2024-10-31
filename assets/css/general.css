@@ -48,7 +48,7 @@
     margin: auto;
 }
 
-.content-area {
+.content-area, .content-area-full-width {
     max-width: 1300px;
     margin: auto;
     margin-top: 10px;
