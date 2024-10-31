@@ -327,8 +327,6 @@ function new_custom_checkout_field_script() {
             // Utility function for datepicker init
             function datepicker_init () {
 
-                console.log('datepicker_init');
-
                 <?php $weekend_string = carbon_get_theme_option('weekend');?>
                 
                 //выходной
@@ -359,14 +357,8 @@ function new_custom_checkout_field_script() {
 
                 if ($(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 ||$(ismc).val() == urgentPickup3 ||$(ismc).val() == urgentPickup4) {
                     selectedDate = [];
-                    console.log('sd ',selectedDate);
-                    //console.log('input ',document.querySelector('#datepicker').value);
-                    document.querySelector('#datepicker').value= "";
                     $('input[name=additional_delivery_interval]').prop('checked',false);
-                    //console.log('input ',document.querySelector('#datepicker').value);
                 } 
-                
-                console.log('finally sd ',selectedDate);
 
                 const weekendTimeStamps = weekend.map(function (element) {
                     return element.getTime();
@@ -417,7 +409,6 @@ function new_custom_checkout_field_script() {
                     datepickerCal.disableDate(weekend);
                 }
 
-                console.log('dpopts ',datePickerOpts.selectedDates);
                 return datePickerOpts;
             }
 
@@ -426,12 +417,10 @@ function new_custom_checkout_field_script() {
             setTimeout(function(){
                 var datePickerOpts = datepicker_init ();
                 datepickerCal.update(datePickerOpts);
-                console.log(datepickerCal.selectedDates);
             }, 100);
 
             $( 'form.checkout' ).on( 'change', ism, function() {
                 var datePickerOpts = datepicker_init ();
-                console.log(datepickerCal.selectedDates);
                 datepickerCal.update(datePickerOpts);
             })
         });
