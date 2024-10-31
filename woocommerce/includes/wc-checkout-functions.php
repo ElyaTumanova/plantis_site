@@ -358,12 +358,12 @@ function new_custom_checkout_field_script() {
                 }
 
                 if ($(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 ||$(ismc).val() == urgentPickup3 ||$(ismc).val() == urgentPickup4) {
-                    selectedDate = false;
+                    selectedDate = [];
                     console.log('sd ',selectedDate);
-                    console.log('input ',document.querySelector('#datepicker').value);
+                    //console.log('input ',document.querySelector('#datepicker').value);
                     document.querySelector('#datepicker').value= "";
                     $('input[name=additional_delivery_interval]').prop('checked',false);
-                    console.log('input ',document.querySelector('#datepicker').value);
+                    //console.log('input ',document.querySelector('#datepicker').value);
                 } 
                 
                 console.log('finally sd ',selectedDate);
