@@ -80,6 +80,9 @@ function plnt_change_text_checkout_1( $translated_text ) {
 
 // доп функции
 
+/* скрываем Уже покупали? и форму логирования на странице оформления заказа*/
+remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+
 /* Уведомление об ошибке в оформлении заказа */
 add_action( 'woocommerce_after_checkout_validation', 'checkout_validation_unique_error', 9999, 2 );
 function checkout_validation_unique_error( $data, $errors ){
