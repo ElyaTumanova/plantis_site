@@ -385,7 +385,7 @@ function new_custom_checkout_field_script() {
                 
                 checkSelectedDay (selectedDate);
                 // console.log('finally');
-                console.log(new Date(selectedDate));
+                //console.log(new Date(selectedDate));
 
                 //кнопка ОК
                 let button = {
@@ -421,12 +421,13 @@ function new_custom_checkout_field_script() {
             setTimeout(function(){
                 var datePickerOpts = datepicker_init ();
                 datepickerCal.update(datePickerOpts);
+                console.log(datePickerOpts.selectedDates);
             }, 100);
 
             $( 'form.checkout' ).on( 'change', ism, function() {
                 var datePickerOpts = datepicker_init ();
                 datepickerCal.update(datePickerOpts);
-
+                console.log(datePickerOpts.selectedDates);
             })
         });
     </script>
