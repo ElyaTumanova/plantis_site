@@ -427,6 +427,7 @@ function new_custom_checkout_field_script() {
             $( 'form.checkout' ).on( 'change', ism, function() {
                 var datePickerOpts = datepicker_init ();
                 datepickerCal.update(datePickerOpts);
+                console.log(datepickerCal.viewDate);
             })
         });
     </script>
