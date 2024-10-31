@@ -421,13 +421,11 @@ function new_custom_checkout_field_script() {
             setTimeout(function(){
                 var datePickerOpts = datepicker_init ();
                 datepickerCal.update(datePickerOpts);
-                console.log(datePickerOpts.selectedDates);
             }, 100);
 
             $( 'form.checkout' ).on( 'change', ism, function() {
                 var datePickerOpts = datepicker_init ();
                 datepickerCal.update(datePickerOpts);
-                console.log(datePickerOpts.selectedDates);
             })
         });
     </script>
