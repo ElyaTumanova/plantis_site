@@ -109,6 +109,19 @@
     max-width: 100%;
 }
 
+@media (max-width: 767px) {
+    .contacts__wrap {
+        grid-template-columns: 100%;
+        row-gap: 20px;
+        grid-template-areas: 
+        "phones"
+        "mail" 
+        "hours"
+        "adress";
+        max-width: 100%;
+    }
+}
+
 .contacts__phones {
     grid-area: phones;
 }
