@@ -184,6 +184,9 @@
     -webkit-transition: max-height 1s ease-in-out;
     transition: max-height 1s ease-in-out;
 }
+.delivery__block_show {
+    border-bottom: solid 1px rgba(0, 0, 0, .3);
+}
 
 .delivery__dropdown-arrow {
     display: inline;
@@ -193,7 +196,7 @@
     font-family: swiper-icons;
     font-size: 20px;
     font-weight: 800;
-    color: var(--accent-color);
+    color: var(--text);
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
@@ -209,11 +212,7 @@
     color: var(--accent-color);
 }
 
-.delivery__dropdown_open {
-    border-bottom: solid 1px var(--accent-color);
-}
-
-.delivery__dropdown_open .delivery__dropdown-arrow {
+.delivery__block_show .delivery__dropdown-arrow {
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);

@@ -7,7 +7,7 @@ del_dropdown.forEach((el) => {
 	btn.addEventListener('click', function (event) {
 		dropdown.classList.toggle('delivery__dropdown_show');
 		header.classList.toggle('delivery__header_show');
-		el.classList.toggle('delivery__dropdown_open');
+		el.classList.toggle('delivery__block_show');
 		event.stopPropagation();
 	})
 })
