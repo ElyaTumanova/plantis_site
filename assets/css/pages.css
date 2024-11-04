@@ -99,12 +99,13 @@
 
 .contacts__wrap {
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: 30% 70%;
     column-gap: 20px;
     row-gap: 70px;
     grid-template-areas: 
-    "phones mail hours"
-    "adress adress adress";
+    "phones adress"
+    "mail adress" 
+    "hours adress";
     max-width: 100%;
 }
 
