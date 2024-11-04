@@ -154,6 +154,10 @@
     padding: 20px 0;
 }
 
+.delivery__header .entry-header {
+    color: var(--text);
+}
+
 .delivery__header_show {
     border-bottom: none;
 }
