@@ -25,7 +25,7 @@ get_header(); ?>
 
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
-        <div class="delivery info__content info__list">
+        <div class="delivery info__list">
 
             <div class="delivery__block">
                 <div class="delivery__header">
