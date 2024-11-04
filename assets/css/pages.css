@@ -156,12 +156,15 @@
 
 .delivery__header:hover {
     cursor: pointer;
-    color: var(--accent-color);
 }
 
 .delivery__header .entry-header {
     color: var(--text);
     font-size: 30px;
+}
+
+.delivery__header:hover .entry-header {
+    color: var(--accent-color);
 }
 
 .delivery__header_show {
