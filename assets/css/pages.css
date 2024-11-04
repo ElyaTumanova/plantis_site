@@ -112,7 +112,7 @@
 @media (max-width: 767px) {
     .contacts__wrap {
         grid-template-columns: 100%;
-        row-gap: 20px;
+        row-gap: 40px;
         grid-template-areas: 
         "phones"
         "mail" 
