@@ -167,6 +167,10 @@
     color: var(--accent-color);
 }
 
+.delivery__header:hover .delivery__dropdown-arrow {
+    color: var(--accent-color);
+}
+
 .delivery__header_show {
     border-bottom: none;
 }
