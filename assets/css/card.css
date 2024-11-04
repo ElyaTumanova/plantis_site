@@ -197,6 +197,7 @@
 
 .card__image-wrap img {
     border-radius: 5px;
+    border: solid 2px var(--background);
 }
 
 .card__image-wrap .flex-direction-nav {
