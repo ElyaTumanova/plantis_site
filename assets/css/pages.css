@@ -164,7 +164,7 @@
 
 .delivery__heading {
     margin-bottom: 10px;
-    color: var(--text);
+    color: var(--accent-color);
 }
 
 .delivery__dropdown {
