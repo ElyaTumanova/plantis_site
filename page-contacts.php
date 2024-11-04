@@ -28,8 +28,7 @@ get_header(); ?>
 		
 			<div class="contacts__adress">
 				<h2 class="heading-2">Адрес</h2>
-				<p>г. Москва, ул. Мещерякова, д.3</p>
-				<p>м. Тушинская</p>
+				<p>г. Москва, ул. Мещерякова, д.3. м. Тушинская</p>
 				<div class="contacts__map">
 					<iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=237252555639" width="560" height="400" frameborder="0"></iframe>
 				</div>		
