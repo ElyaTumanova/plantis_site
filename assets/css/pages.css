@@ -156,6 +156,7 @@
 
 .delivery__header .entry-header {
     color: var(--text);
+    font-size: 30px;
 }
 
 .delivery__header_show {
