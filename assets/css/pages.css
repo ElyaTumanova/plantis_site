@@ -205,6 +205,10 @@
     color: var(--accent-color);
 }
 
+.delivery__dropdown_open {
+    border-bottom: solid 1px var(--accent-color);
+}
+
 .delivery__dropdown_open .delivery__dropdown-arrow {
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
