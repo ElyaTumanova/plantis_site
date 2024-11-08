@@ -1,6 +1,9 @@
 /*--------------------------------------------------------------
 # Header for desktop
 --------------------------------------------------------------*/
+.header {
+    position: sticky;
+}
 
 .header__breadcrumb, .woocommerce-breadcrumb {
     font-size: 14px;
