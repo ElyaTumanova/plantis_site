@@ -32,14 +32,17 @@
 }
 
 .header__main {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     color: var(--accent-color);
     padding-top: 15px;
     padding-bottom: 10px;
     position: relative;
     background-color: var(--background);
+}
+
+.header__main .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .header__wrap {
