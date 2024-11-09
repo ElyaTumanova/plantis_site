@@ -325,12 +325,7 @@ ul.products {
         position: absolute;
         top: 0;
         right: 0;
-        
-        /* position: relative;
-        height: 0;
-        margin-left: auto;
-        margin-top: 10px;
-        margin-right: 10px; */
+        height: fit-content;
     }
 
     .catalog__products-wrap .yith-wcwl-add-to-wishlist {
