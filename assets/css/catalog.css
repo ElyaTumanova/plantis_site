@@ -313,11 +313,11 @@ ul.products {
         top: 0;
         right: 0; */
         
-        position: relative !important;
-        height: 0 !important;
-        margin-left: auto !important;
-        margin-top: 10px !important;
-        margin-right: 10px !important;
+        position: relative;
+        height: 0;
+        margin-left: auto;
+        margin-top: 10px;
+        margin-right: 10px;
     }
 
     .catalog__products-wrap .yith-wcwl-add-to-wishlist {
