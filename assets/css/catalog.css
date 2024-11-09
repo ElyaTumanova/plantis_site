@@ -294,6 +294,19 @@ ul.products {
 
 /* wish */
 
+.catalog__products-wrap .add-to-wishlist-before_image .yith-wcwl-add-to-wishlist {
+    border: none;
+    /* position: absolute;
+    top: 0;
+    right: 0; */
+    
+    position: relative;
+    height: 0;
+    margin-left: auto;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
 @media (max-width:767px) {
         
     .catalog__products-wrap .yith-wcwl-add-button {
@@ -309,15 +322,15 @@ ul.products {
 
     .catalog__products-wrap .add-to-wishlist-before_image .yith-wcwl-add-to-wishlist {
         border: none;
-        /* position: absolute;
+        position: absolute;
         top: 0;
-        right: 0; */
+        right: 0;
         
-        position: relative;
+        /* position: relative;
         height: 0;
         margin-left: auto;
         margin-top: 10px;
-        margin-right: 10px;
+        margin-right: 10px; */
     }
 
     .catalog__products-wrap .yith-wcwl-add-to-wishlist {
