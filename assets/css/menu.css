@@ -365,9 +365,9 @@
   .burger-menu .menu__item_enter::after {
     background-image: url(https://plantis.shop/wp-content/uploads/2024/11/lk-enter_white.svg);
     background-repeat: no-repeat;
-    background-size: 21px 25px;
-    width: 21px;
-    height: 25px;
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px;
     display: inline-block;
     content: "";
     margin-left: 8px;
