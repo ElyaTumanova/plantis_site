@@ -320,13 +320,13 @@ ul.products {
         max-width: 24px;
     }
 
-    .catalog__products-wrap .add-to-wishlist-before_image .yith-wcwl-add-to-wishlist {
+    /* .catalog__products-wrap .yith-wcwl-add-to-wishlist {
         border: none;
         position: absolute;
         top: 0;
         right: 0;
         height: fit-content;
-    }
+    } */
 
     .catalog__products-wrap .yith-wcwl-add-to-wishlist {
         /* position: absolute;
@@ -341,6 +341,7 @@ ul.products {
         margin-top: -53px;
         margin-left: auto;
         margin-right: 70px;
+        height: fit-content;
         
         /* option 1 */
         /* border: solid 3px var(--accent-color); */
