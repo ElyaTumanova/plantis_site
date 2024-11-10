@@ -325,7 +325,6 @@ ul.products {
         position: absolute;
         top: 0;
         right: 0;
-        height: fit-content;
     } */
 
     .catalog__products-wrap .yith-wcwl-add-to-wishlist {
@@ -338,7 +337,7 @@ ul.products {
         padding: 11px 10px 9px 10px;
         position: relative;
         order: 2;
-        margin-top: -53px;
+        margin-top: -62px;
         margin-left: auto;
         margin-right: 70px;
         height: fit-content;
