@@ -105,7 +105,7 @@ function stock_changed( $product ) {
 }
 
 
-add_action( 'wp_footer', 'plnt_get_api' );
+//add_action( 'wp_footer', 'plnt_get_api' );
 
 function plnt_get_api () {
 	$args = array(
@@ -114,7 +114,9 @@ function plnt_get_api () {
 			'x-kontur-apikey'=> '2b4db688-d645-5f3c-e995-1dc93fc114b4'
 		));
 	$response = wp_remote_request( 'https://api.kontur.ru/market/v1/shops/', $args );
+	echo '<pre>';
 	print_r( $response );
+	echo '</pre>';
 }
 
 
