@@ -105,7 +105,7 @@ function stock_changed( $product ) {
 }
 
 
-//add_action( 'wp_footer', 'plnt_get_api' );
+add_action( 'wp_footer', 'plnt_get_api' );
 
 function plnt_get_api () {
 	$args = array(
