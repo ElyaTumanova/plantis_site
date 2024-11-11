@@ -115,7 +115,7 @@ function plnt_get_api () {
 		));
 	$response = wp_remote_request( 'https://api.kontur.ru/market/v1/shops/', $args );
 	echo '<pre>';
-	print_r( $response );
+	print_r( $response["body"] );
 	echo '</pre>';
 }
 
