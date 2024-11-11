@@ -82,7 +82,7 @@ function plnt_check_page() {
 
 
 
-add_action( 'woocommerce_product_before_set_stock', 'stock_changed' );
+//add_action( 'woocommerce_product_before_set_stock', 'stock_changed' );
 
 function stock_changed( $product ) {
     // echo '<pre>';
@@ -102,6 +102,19 @@ function stock_changed( $product ) {
 			}
 		)
 	</script>";
+}
+
+
+add_action( 'wp_footer', 'plnt_get_api' );
+
+function plnt_get_api () {
+	$args = array(
+		'method'=> 'GET',
+		'headers'  array(
+			'x-kontur-apikey'=> '2b4db688-d645-5f3c-e995-1dc93fc114b4'
+		))
+	$response = wp_remote_request( 'https://api.kontur.ru/market/v1/shops/', $args );
+	print_r( $response );
 }
 
 
