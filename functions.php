@@ -112,7 +112,7 @@ function plnt_get_api () {
 		'method'=> 'GET',
 		'headers' => array(
 			'x-kontur-apikey'=> '2b4db688-d645-5f3c-e995-1dc93fc114b4'
-		))
+		));
 	$response = wp_remote_request( 'https://api.kontur.ru/market/v1/shops/', $args );
 	print_r( $response );
 }
