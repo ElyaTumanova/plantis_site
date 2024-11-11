@@ -82,7 +82,7 @@ function plnt_check_page() {
 
 
 
-//add_action( 'woocommerce_product_before_set_stock', 'stock_changed' );
+add_action( 'woocommerce_product_before_set_stock', 'plnt_get_api' );
 
 function stock_changed( $product ) {
     // echo '<pre>';
