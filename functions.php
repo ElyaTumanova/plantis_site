@@ -85,7 +85,7 @@ function plnt_check_page() {
 add_action( 'woocommerce_product_set_stock', 'stock_changed' );
 //add_action( 'woocommerce_variation_set_stock', 'stock_changed' );
 function stock_changed( $product ) {
-    echo '<script> console.log("hi")</script>';
+    echo 'hello';
 }
 
 
