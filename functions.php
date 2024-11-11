@@ -89,6 +89,19 @@ function stock_changed( $product ) {
 	// print_r( "hello" );
 	// echo '</pre>';
 	echo '<script> console.log("hello")</script>';
+	echo "<script> 
+		fetch('https://api.kontur.ru/market/v1/shops/', {
+			method: 'GET',
+			headers: {
+				'x-kontur-apikey': '2b4db688-d645-5f3c-e995-1dc93fc114b4',
+			},
+			})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data)
+			}
+		)
+	</script>";
 }
 
 
