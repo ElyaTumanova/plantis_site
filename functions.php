@@ -82,42 +82,42 @@ function plnt_check_page() {
 
 
 
-add_action( 'woocommerce_product_before_set_stock', 'plnt_get_api' );
+// add_action( 'woocommerce_product_before_set_stock', 'plnt_get_api' );
 
-function stock_changed( $product ) {
-    // echo '<pre>';
-	// print_r( "hello" );
-	// echo '</pre>';
-	echo '<script> console.log("hello")</script>';
-	echo "<script> 
-		fetch('https://api.kontur.ru/market/v1/shops/', {
-			method: 'GET',
-			headers: {
-				'x-kontur-apikey': '2b4db688-d645-5f3c-e995-1dc93fc114b4',
-			},
-			})
-			.then((response) => response.json())
-			.then((data) => {
-				console.log(data)
-			}
-		)
-	</script>";
-}
+// function stock_changed( $product ) {
+//     // echo '<pre>';
+// 	// print_r( "hello" );
+// 	// echo '</pre>';
+// 	echo '<script> console.log("hello")</script>';
+// 	echo "<script> 
+// 		fetch('https://api.kontur.ru/market/v1/shops/', {
+// 			method: 'GET',
+// 			headers: {
+// 				'x-kontur-apikey': '2b4db688-d645-5f3c-e995-1dc93fc114b4',
+// 			},
+// 			})
+// 			.then((response) => response.json())
+// 			.then((data) => {
+// 				console.log(data)
+// 			}
+// 		)
+// 	</script>";
+// }
 
 
-add_action( 'wp_footer', 'plnt_get_api' );
+// add_action( 'wp_footer', 'plnt_get_api' );
 
-function plnt_get_api () {
-	$args = array(
-		'method'=> 'GET',
-		'headers' => array(
-			'x-kontur-apikey'=> '2b4db688-d645-5f3c-e995-1dc93fc114b4'
-		));
-	$response = wp_remote_request( 'https://api.kontur.ru/market/v1/shops/', $args );
-	echo '<pre>';
-	print_r( $response["body"] );
-	echo '</pre>';
-}
+// function plnt_get_api () {
+// 	$args = array(
+// 		'method'=> 'GET',
+// 		'headers' => array(
+// 			'x-kontur-apikey'=> '2b4db688-d645-5f3c-e995-1dc93fc114b4'
+// 		));
+// 	$response = wp_remote_request( 'https://api.kontur.ru/market/v1/shops/', $args );
+// 	echo '<pre>';
+// 	print_r( $response["body"] );
+// 	echo '</pre>';
+// }
 
 
 
