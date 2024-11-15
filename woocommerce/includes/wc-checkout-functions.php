@@ -186,7 +186,7 @@ function new_custom_checkout_field_script() {
             console.log(myInput);
         }
 
-        setTimeout(diasable_pickup_method(), 10000);
+        setTimeout(diasable_pickup_method(), 50000);
         //diasable_pickup_method();
 
         jQuery(function($){
