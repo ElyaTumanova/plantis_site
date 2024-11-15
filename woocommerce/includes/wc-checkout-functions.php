@@ -186,7 +186,8 @@ function new_custom_checkout_field_script() {
             console.log(myInput);
         }
 
-        diasable_pickup_method();
+        setTimeout(diasable_pickup_method(), 10000);
+        //diasable_pickup_method();
 
         jQuery(function($){
             var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
