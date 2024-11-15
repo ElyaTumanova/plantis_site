@@ -85,7 +85,7 @@ function plnt_check_page() {
 add_action( 'wp_footer', 'plnt_date' );
 
 function plnt_date() {
-	echo date('H')
+	echo date('H');
 }
 
 
