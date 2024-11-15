@@ -210,7 +210,7 @@ function new_custom_checkout_field_script() {
 
             function diasable_pickup_method () {
                 console.log(urgentPickup3);
-                let element = document.querySelector('[value="${urgentPickup3}"]');
+                let element = document.querySelector('[value="flat_rate:17"]');
                 console.log(element);
             }
 
