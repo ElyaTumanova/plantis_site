@@ -212,7 +212,7 @@ function new_custom_checkout_field_script() {
                 console.log(urgentPickup3);
                 let element = document.querySelector(`[value="${urgentPickup3}"]`);
                 //element.setAttribute("disabled", "");
-                element.disabled = true;
+                //element.disabled = true;
                 console.log(element);
             }
 
