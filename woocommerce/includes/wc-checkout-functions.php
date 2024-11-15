@@ -345,10 +345,12 @@ function new_custom_checkout_field_script() {
                 let startDate = new Date();
                 let selectedDate = [];
                 let date = new Date();
+
+                let hour = date.getHours();
+
+                console.log(hour);
                 
-                console.log (date.getHours().typeof());
-                
-                if ($(ismc).val() == localPickup) {  
+                if ($(ismc).val() == localPickup && hour < 18) {  
                     startDate = date.setDate(date.getDate() + 0);
                     selectedDate = startDate;
                     $('input[name=additional_delivery_interval]').prop('checked',false);
