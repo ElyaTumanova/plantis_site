@@ -482,9 +482,6 @@ function new_truemisha_remove_shipping_method( $rates, $package ) {
 		unset( $rates[ $urgent_delivery_outMKAD_small ] );
 	}
  
-    echo '<pre>';
-	print_r( $rates );
-	echo '</pre>';
 	return $rates;
 }
 
@@ -522,6 +519,10 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
 		unset( $rates[ $urgent_delivery_inMKAD_small ] );
 		unset( $rates[ $urgent_delivery_outMKAD_small ] );
 	}
+
+    echo '<pre>';
+	print_r( $rates );
+	echo '</pre>';
  
 	return $rates;
  
