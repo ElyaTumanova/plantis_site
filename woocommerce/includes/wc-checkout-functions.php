@@ -166,11 +166,17 @@ function new_custom_checkout_field_script() {
     $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';
     ?>
     <script>
-		deliveryDate = document.querySelector('#datepicker_field');
-		deliveryInterval = document.querySelector('#additional_delivery_interval_field');
-        additionalAddress = document.querySelector('.additional-address-field');
+		let deliveryDate = document.querySelector('#datepicker_field');
+		let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
+        let additionalAddress = document.querySelector('.additional-address-field');
 
-        inn_field = document.querySelector('#<?php echo $inn_field; ?>');
+        let inn_field = document.querySelector('#<?php echo $inn_field; ?>');
+
+        let localPickup = '<?php echo $local_pickup; ?>';
+        let urgentPickup1 = '<?php echo $urgent_delivery_inMKAD; ?>';
+        let urgentPickup2 = '<?php echo $urgent_delivery_outMKAD; ?>';
+        let urgentPickup3 = '<?php echo $urgent_delivery_inMKAD_small; ?>';
+        let urgentPickup4 = '<?php echo $urgent_delivery_outMKAD_small; ?>';
 
         let myInput = document.querySelector(`[value="${urgentPickup3}"]`);
         function diasable_pickup_method () {
@@ -190,10 +196,6 @@ function new_custom_checkout_field_script() {
                 a1 = 'country',     a2 = 'address_1',   a3 = 'address_2',   a4 = 'postcode',    a5 = 'state', a6 = 'city', a7 = 'address_3', a8 = 'address_4'
                 b1 = b+a1+f,        b2 = b+a2+f,        b3 = b+a3+f,        b4 = b+a4+f,        b5 = b+a5+f, b6 = b+a6+f, b7 = b+a7+f, b8 = b+a8+f,
                 s1 = s+a1+f,        s2 = s+a2+f,        s3 = s+a3+f,        s4 = s+a4+f,        s5 = s+a5+f,
-                localPickup = '<?php echo $local_pickup; ?>',
-				urgentPickup1 = '<?php echo $urgent_delivery_inMKAD; ?>',urgentPickup2 = '<?php echo $urgent_delivery_outMKAD; ?>',
-				urgentPickup3 = '<?php echo $urgent_delivery_inMKAD_small; ?>',urgentPickup4 = '<?php echo $urgent_delivery_outMKAD_small; ?>';
-
                 payment_method = 'input[name^="payment_method"]', payment_method_checked = payment_method+':checked';
                 payment_inn_chekbox = '<?php echo $payment_inn_chekbox; ?>'
 
