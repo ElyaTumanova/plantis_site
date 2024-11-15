@@ -196,17 +196,17 @@ function new_custom_checkout_field_script() {
 
 
         //for dev
-        // let myInput = document.querySelector(`[value="${urgentPickup3}"]`);
-        // function diasable_pickup_method () {
-        //     console.log(urgentPickup3);
-        //     //myInput.setAttribute("disabled", "disabled");
-        //     myInput.setAttribute('style', 'pointer-events:none');
-        //     //myInput.classList.add('d-none');
-        //     console.log(myInput);
-        // }
+        let myInput = document.querySelector(`[value="${urgentPickup3}"]`);
+        function diasable_pickup_method () {
+            console.log(urgentPickup3);
+            //myInput.setAttribute("disabled", "disabled");
+            myInput.setAttribute('style', 'pointer-events:none');
+            //myInput.classList.add('d-none');
+            console.log(myInput);
+        }
 
-        // //setTimeout(diasable_pickup_method(), 50000);
-        // diasable_pickup_method();
+        //setTimeout(diasable_pickup_method(), 50000);
+        //diasable_pickup_method();
 
         jQuery(function($){
             var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
@@ -313,6 +313,8 @@ function new_custom_checkout_field_script() {
                 } else {
 					if (deliveryDate) {deliveryDate.classList.remove('d-none')};
 				};
+
+                diasable_pickup_method();
             });
 			
 			$( 'form.checkout' ).on( 'change', ism, function() {
