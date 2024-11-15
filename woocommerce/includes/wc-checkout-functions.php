@@ -209,8 +209,8 @@ function new_custom_checkout_field_script() {
             }
 
             function diasable_pickup_method () {
-                console.log(urgentPickup1);
-                let element = document.querySelector('[value="${urgentPickup1}"]');
+                console.log(urgentPickup3);
+                let element = document.querySelector('[value="${urgentPickup3}"]');
                 console.log(element);
             }
 
