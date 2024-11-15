@@ -164,12 +164,6 @@ function new_custom_checkout_field_script() {
 
     $required_text = esc_attr__( 'required', 'woocommerce' );
     $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';
-
-    // Get the WC_Order object from the Order ID
-    $order = wc_get_order( $order_id );
-
-    // Output the shipping method(s) formatted method title(s)
-    echo $order->get_shipping_method();
     ?>
     <script>
 		let deliveryDate = document.querySelector('#datepicker_field');
