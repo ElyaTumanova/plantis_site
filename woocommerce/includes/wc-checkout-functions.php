@@ -188,9 +188,6 @@ function new_custom_checkout_field_script() {
                 payment_method = 'input[name^="payment_method"]', payment_method_checked = payment_method+':checked';
                 payment_inn_chekbox = '<?php echo $payment_inn_chekbox; ?>'
 
-            
-                console.log(ism);
-
             // Utility function to shows or hide checkout fields
             function showHide( action='show', selector='' ){
                 if( action == 'show' )
@@ -211,6 +208,7 @@ function new_custom_checkout_field_script() {
                     });
             }
 
+            console.log($(ismc).val());
             // Initializing at start after checkout init (Based on the chosen shipping method)
             setTimeout(function(){
                 if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
