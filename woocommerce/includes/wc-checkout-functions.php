@@ -172,11 +172,11 @@ function new_custom_checkout_field_script() {
 
         inn_field = document.querySelector('#<?php echo $inn_field; ?>');
 
-        let element = document.querySelector(`[value="${urgentPickup3}"]`);
+        let myInput = document.querySelector(`[value="${urgentPickup3}"]`);
         function diasable_pickup_method () {
             console.log(urgentPickup3);
-            element.setAttribute("disabled", "disabled");
-            console.log(element);
+            myInput.setAttribute("disabled", "disabled");
+            console.log(myInput);
         }
 
         diasable_pickup_method();
