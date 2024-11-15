@@ -156,9 +156,6 @@ function add_shipping_classes_to_body_class( $classes ) {
     if( 'В день заказа в пределах МКАД' === $shipping_rates[$chosen_method]->label ){
         $classes[] = 'weekend-selected';
     }
-    echo '<pre>';
-	print_r( $classes);
-	echo '</pre>';
     return $classes;
 }
 
