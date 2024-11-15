@@ -181,8 +181,9 @@ function new_custom_checkout_field_script() {
         let myInput = document.querySelector(`[value="${urgentPickup3}"]`);
         function diasable_pickup_method () {
             console.log(urgentPickup3);
-            myInput.setAttribute("disabled", "disabled");
-            myInput.classList.add('d-none');
+            //myInput.setAttribute("disabled", "disabled");
+            myInput.setAttribute('style', 'pointer-events:none');
+            //myInput.classList.add('d-none');
             console.log(myInput);
         }
 
