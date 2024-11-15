@@ -82,17 +82,10 @@ function plnt_check_page() {
 
 
 
-// add_action( 'wp_footer', 'plnt_check_shipping' );
+add_action( 'wp_footer', 'plnt_date' );
 
-// function plnt_check_shipping() {
-// 	if( ! ( is_checkout() && ! is_wc_endpoint_url() ) ) 
-//         return; 
-        
-//     $chosen_method  = WC()->session->get('chosen_shipping_methods')[0];
-//     $shipping_rates = WC()->session->get('shipping_for_package_0')['rates'];
-// 	echo '<pre>';
-// 	print_r( $shipping_rates);
-// 	echo '</pre>';
-// }
+function plnt_date() {
+	echo date('H')
+}
 
 
