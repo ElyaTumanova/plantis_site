@@ -188,6 +188,9 @@ function new_custom_checkout_field_script() {
                 payment_method = 'input[name^="payment_method"]', payment_method_checked = payment_method+':checked';
                 payment_inn_chekbox = '<?php echo $payment_inn_chekbox; ?>'
 
+            
+                console.log(ism);
+
             // Utility function to shows or hide checkout fields
             function showHide( action='show', selector='' ){
                 if( action == 'show' )
@@ -350,7 +353,7 @@ function new_custom_checkout_field_script() {
 
                 console.log(hour);
                 
-                if ($(ismc).val() == localPickup && hour < 19) {  
+                if ($(ismc).val() == localPickup && hour < 18) {  
                     startDate = date.setDate(date.getDate() + 0);
                     selectedDate = startDate;
                     $('input[name=additional_delivery_interval]').prop('checked',false);
@@ -359,15 +362,16 @@ function new_custom_checkout_field_script() {
                     selectedDate = startDate;                   
                 }
 
+                //очищаем дату и интервал для срочной доставки
                 if ($(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 ||$(ismc).val() == urgentPickup3 ||$(ismc).val() == urgentPickup4) {
                     selectedDate = [];
                     $('input[name=additional_delivery_interval]').prop('checked',false);
                 } 
 
+                // проверяем, что первая доступная дата не попадает на выходной
                 const weekendTimeStamps = weekend.map(function (element) {
                     return element.getTime();
                 })
-               // проверяем, что первая доступная дата не попадает на выходной
                 let isSelectedDayWeekend = false;
                 function checkSelectedDay (checkDate) {
                     let newSelectedDate = checkDate;
