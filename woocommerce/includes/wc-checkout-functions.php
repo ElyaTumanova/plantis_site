@@ -161,7 +161,44 @@ function plnt_large_delivery_notice() {
 
 // Conditional Show hide checkout fields based on chosen shipping methods*/
 
-add_action( 'wp_footer', 'new_custom_checkout_field_script' );
+add_action( 'wp_footer', 'plnt_disable_shipping_test' );
+
+function plnt_disable_shipping_test () {
+    if( !is_page( 'checkout' ) ) {
+		return;
+	}
+
+    global $local_pickup;
+	global $urgent_delivery_inMKAD;
+	global $urgent_delivery_outMKAD;
+	global $urgent_delivery_inMKAD_small;
+	global $urgent_delivery_outMKAD_small;
+    ?>
+    <script> 
+        let localPickup = '<?php echo $local_pickup; ?>';
+        let urgentPickup1 = '<?php echo $urgent_delivery_inMKAD; ?>';
+        let urgentPickup2 = '<?php echo $urgent_delivery_outMKAD; ?>';
+        let urgentPickup3 = '<?php echo $urgent_delivery_inMKAD_small; ?>';
+        let urgentPickup4 = '<?php echo $urgent_delivery_outMKAD_small; ?>';
+
+
+        //for dev
+        let myInput = document.querySelector(`[value="${urgentPickup3}"]`);
+        function diasable_pickup_method () {
+            console.log(urgentPickup3);
+            myInput.setAttribute("disabled", "disabled");
+            //myInput.setAttribute('style', 'pointer-events:none');
+            //myInput.classList.add('d-none');
+            console.log(myInput);
+        }
+
+        //setTimeout(diasable_pickup_method(), 50000);
+        diasable_pickup_method();
+    </script>
+    <?php
+}
+
+//add_action( 'wp_footer', 'new_custom_checkout_field_script' );
 function new_custom_checkout_field_script() {
 	
 	if( !is_page( 'checkout' ) ) {
