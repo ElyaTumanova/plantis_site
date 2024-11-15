@@ -82,11 +82,9 @@ function plnt_check_page() {
 
 
 
-add_action( 'wp_footer', 'plnt_date' );
+//add_action( 'wp_footer', 'plnt_date' );
 
 function plnt_date() {
-	$timezone = date_default_timezone_get();
-	echo "The current server timezone is: " . $timezone;
 	date_default_timezone_set('Europe/Moscow');
 	echo date('H');
 }
