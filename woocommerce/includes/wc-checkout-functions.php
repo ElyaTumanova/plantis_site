@@ -144,20 +144,20 @@ function plnt_large_delivery_notice() {
 /* ПОЛЯ ФОРМЫ ОФОРМЛЕНИЯ ЗАКАЗА*/
 
 //FOR DEV
-add_filter( 'body_class', 'add_shipping_classes_to_body_class' );
-function add_shipping_classes_to_body_class( $classes ) {
-    // only on checkout page
-    if( ! ( is_checkout() && ! is_wc_endpoint_url() ) ) 
-        return; 
+// add_filter( 'body_class', 'add_shipping_classes_to_body_class' );
+// function add_shipping_classes_to_body_class( $classes ) {
+//     // only on checkout page
+//     if( ! ( is_checkout() && ! is_wc_endpoint_url() ) ) 
+//         return; 
         
-    $chosen_method  = WC()->session->get('chosen_shipping_methods')[0];
-    $shipping_rates = WC()->session->get('shipping_for_package_0')['rates'];
+//     $chosen_method  = WC()->session->get('chosen_shipping_methods')[0];
+//     $shipping_rates = WC()->session->get('shipping_for_package_0')['rates'];
    
-    if( 'В день заказа в пределах МКАД' === $shipping_rates[$chosen_method]->label ){
-        $classes[] = 'weekend-selected';
-    }
-    return $classes;
-}
+//     if( 'В день заказа в пределах МКАД' === $shipping_rates[$chosen_method]->label ){
+//         $classes[] = 'weekend-selected';
+//     }
+//     return $classes;
+// }
 
 // Conditional Show hide checkout fields based on chosen shipping methods*/
 
@@ -194,6 +194,8 @@ function new_custom_checkout_field_script() {
         let urgentPickup3 = '<?php echo $urgent_delivery_inMKAD_small; ?>';
         let urgentPickup4 = '<?php echo $urgent_delivery_outMKAD_small; ?>';
 
+
+        //for dev
         let myInput = document.querySelector(`[value="${urgentPickup3}"]`);
         function diasable_pickup_method () {
             console.log(urgentPickup3);
@@ -203,8 +205,8 @@ function new_custom_checkout_field_script() {
             console.log(myInput);
         }
 
-        setTimeout(diasable_pickup_method(), 50000);
-        //diasable_pickup_method();
+        //setTimeout(diasable_pickup_method(), 50000);
+        diasable_pickup_method();
 
         jQuery(function($){
             var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
