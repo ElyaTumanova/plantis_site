@@ -346,7 +346,7 @@ function new_custom_checkout_field_script() {
                 let selectedDate = [];
                 let date = new Date();
                 
-                console.log (date);
+                console.log (date.getHours());
                 
                 if ($(ismc).val() == localPickup) {  
                     startDate = date.setDate(date.getDate() + 0);
