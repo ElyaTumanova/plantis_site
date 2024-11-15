@@ -243,8 +243,6 @@ function new_custom_checkout_field_script() {
 					//showHide('show',b8);
                     if (additionalAddress) {additionalAddress.classList.remove('d-none');}
                 } 
-                
-                diasable_pickup_method();
             }, 100);
 			
 			setTimeout(function(){
@@ -272,6 +270,8 @@ function new_custom_checkout_field_script() {
                 } else {
 					if (inn_field) {inn_field.classList.add('d-none')};
 				}
+
+                diasable_pickup_method();
             }, 100);
 			
 			// Initializing at start after checkout init (Based on the chosen shipping method)
