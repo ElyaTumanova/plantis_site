@@ -161,7 +161,7 @@ function plnt_large_delivery_notice() {
 
 // Conditional Show hide checkout fields based on chosen shipping methods*/
 
-add_action( 'wp_footer', 'plnt_disable_shipping_test' );
+add_action( 'woocommerce_after_checkout_form', 'plnt_disable_shipping_test' );
 
 function plnt_disable_shipping_test () {
     if( !is_page( 'checkout' ) ) {
