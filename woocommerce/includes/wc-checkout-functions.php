@@ -435,6 +435,9 @@ function new_custom_checkout_field_script() {
                 var datePickerOpts = datepicker_init ();
                 datepickerCal.update(datePickerOpts);
             }, 100);
+            setTimeout(function(){
+                diasable_pickup_method();
+            }, 100);
 
             $( 'form.checkout' ).on( 'change', ism, function() {
                 var datePickerOpts = datepicker_init ();
