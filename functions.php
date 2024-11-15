@@ -95,19 +95,4 @@ function plnt_check_page() {
 // 	echo '</pre>';
 // }
 
-add_filter( 'woocommerce_shipping_methods', 'wp_kama_woocommerce_shipping_methods_filter' );
 
-/**
- * Function for `woocommerce_shipping_methods` filter-hook.
- * 
- * @param  $shipping_methods 
- *
- * @return 
- */
-function wp_kama_woocommerce_shipping_methods_filter( $shipping_methods ){
-
-	echo '<pre>';
-	print_r( $shipping_methods['flat_rate']);
-	echo '</pre>';
-	return $shipping_methods;
-}
