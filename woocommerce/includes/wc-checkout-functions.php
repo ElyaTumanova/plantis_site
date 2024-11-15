@@ -172,6 +172,15 @@ function new_custom_checkout_field_script() {
 
         inn_field = document.querySelector('#<?php echo $inn_field; ?>');
 
+        let element = document.querySelector(`[value="${urgentPickup3}"]`);
+        function diasable_pickup_method () {
+            console.log(urgentPickup3);
+            element.setAttribute("disabled", "disabled");
+            console.log(element);
+        }
+
+        diasable_pickup_method();
+
         jQuery(function($){
             var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
                 csa = 'input#ship-to-different-address-checkbox',
@@ -206,13 +215,6 @@ function new_custom_checkout_field_script() {
                         if( $(selector+' > label > abbr').html() != undefined )
                             $(selector+' label > .required').remove();
                     });
-            }
-
-            let element = document.querySelector(`[value="${urgentPickup3}"]`);
-            function diasable_pickup_method () {
-                console.log(urgentPickup3);
-                element.setAttribute("disabled", "disabled");
-                console.log(element);
             }
 
             // Initializing at start after checkout init (Based on the chosen shipping method)
@@ -269,8 +271,6 @@ function new_custom_checkout_field_script() {
                 } else {
 					if (inn_field) {inn_field.classList.add('d-none')};
 				}
-
-                diasable_pickup_method();
             }, 100);
 			
 			// Initializing at start after checkout init (Based on the chosen shipping method)
