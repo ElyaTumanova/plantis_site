@@ -82,42 +82,33 @@ function plnt_check_page() {
 
 
 
-// add_action( 'woocommerce_product_before_set_stock', 'plnt_get_api' );
+add_filter( 'body_class', 'add_shipping_classes_to_body_class' );
+function add_shipping_classes_to_body_class( $classes ) {
+    // only on checkout page
+    if( ! ( is_checkout() && ! is_wc_endpoint_url() ) ) 
+        return; 
+        
+    $chosen_method  = WC()->session->get('chosen_shipping_methods')[0];
+    $shipping_rates = WC()->session->get('shipping_for_package_0')['rates'];
+    echo $shipping_rates;
+   
+    // if( 'Saturdays DPD' === $shipping_rates[$chosen_method]->label ){
+    //     $classes[] = 'weekend-selected';
+    // }
+    return $classes;
+}
 
-// function stock_changed( $product ) {
-//     // echo '<pre>';
-// 	// print_r( "hello" );
-// 	// echo '</pre>';
-// 	echo '<script> console.log("hello")</script>';
-// 	echo "<script> 
-// 		fetch('https://api.kontur.ru/market/v1/shops/', {
-// 			method: 'GET',
-// 			headers: {
-// 				'x-kontur-apikey': '2b4db688-d645-5f3c-e995-1dc93fc114b4',
-// 			},
-// 			})
-// 			.then((response) => response.json())
-// 			.then((data) => {
-// 				console.log(data)
-// 			}
-// 		)
-// 	</script>";
-// }
+add_action( 'wp_footer', 'plnt_check_shipping' );
 
-
-// add_action( 'wp_footer', 'plnt_get_api' );
-
-// function plnt_get_api () {
-// 	$args = array(
-// 		'method'=> 'GET',
-// 		'headers' => array(
-// 			'x-kontur-apikey'=> '2b4db688-d645-5f3c-e995-1dc93fc114b4'
-// 		));
-// 	$response = wp_remote_request( 'https://api.kontur.ru/market/v1/shops/', $args );
-// 	echo '<pre>';
-// 	print_r( $response["body"] );
-// 	echo '</pre>';
-// }
-
+function plnt_check_shipping() {
+	if( ! ( is_checkout() && ! is_wc_endpoint_url() ) ) 
+        return; 
+        
+    $chosen_method  = WC()->session->get('chosen_shipping_methods')[0];
+    $shipping_rates = WC()->session->get('shipping_for_package_0')['rates'];
+	echo '<pre>';
+	print_r( $shipping_rates );
+	echo '</pre>';
+}
 
 

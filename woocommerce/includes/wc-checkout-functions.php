@@ -152,7 +152,7 @@ function add_shipping_classes_to_body_class( $classes ) {
         
     $chosen_method  = WC()->session->get('chosen_shipping_methods')[0];
     $shipping_rates = WC()->session->get('shipping_for_package_0')['rates'];
-    echo $shipping_rates;
+    echo $shipping_rates
    
     // if( 'Saturdays DPD' === $shipping_rates[$chosen_method]->label ){
     //     $classes[] = 'weekend-selected';
