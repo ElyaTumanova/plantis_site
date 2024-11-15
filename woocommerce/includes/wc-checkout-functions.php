@@ -208,11 +208,10 @@ function new_custom_checkout_field_script() {
                     });
             }
 
+            let element = document.querySelector(`[value="${urgentPickup3}"]`);
             function diasable_pickup_method () {
                 console.log(urgentPickup3);
-                let element = document.querySelector(`[value="${urgentPickup3}"]`);
                 element.setAttribute("disabled", "disabled");
-                //element.disabled = true;
                 console.log(element);
             }
 
@@ -434,9 +433,6 @@ function new_custom_checkout_field_script() {
             setTimeout(function(){
                 var datePickerOpts = datepicker_init ();
                 datepickerCal.update(datePickerOpts);
-            }, 100);
-            setTimeout(function(){
-                diasable_pickup_method();
             }, 100);
 
             $( 'form.checkout' ).on( 'change', ism, function() {
