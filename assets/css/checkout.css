@@ -4,7 +4,7 @@
 
 
 .weekend-selected .shipping_method {
-    color: red;
+    pointer-events: none;
 }
 
 /* скрываем Уже покупали? */
