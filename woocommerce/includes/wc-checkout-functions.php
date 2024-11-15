@@ -208,7 +208,10 @@ function new_custom_checkout_field_script() {
                     });
             }
 
-            console.log($(ismc).val());
+            function diasable_pickup_method () {
+                console.log(urgentPickup1);
+            }
+
             // Initializing at start after checkout init (Based on the chosen shipping method)
             setTimeout(function(){
                 if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
@@ -235,7 +238,9 @@ function new_custom_checkout_field_script() {
 					//showHide('show',b7);
 					//showHide('show',b8);
                     if (additionalAddress) {additionalAddress.classList.remove('d-none');}
-                }        
+                } 
+                
+                diasable_pickup_method();
             }, 100);
 			
 			setTimeout(function(){
