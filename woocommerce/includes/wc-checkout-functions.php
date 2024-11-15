@@ -211,7 +211,8 @@ function new_custom_checkout_field_script() {
             function diasable_pickup_method () {
                 console.log(urgentPickup3);
                 let element = document.querySelector(`[value="${urgentPickup3}"]`);
-                element.setAttribute("disabled", "")
+                //element.setAttribute("disabled", "");
+                element.disabled = true;
                 console.log(element);
             }
 
