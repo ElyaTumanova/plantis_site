@@ -91,7 +91,7 @@ function plnt_check_shipping() {
     $chosen_method  = WC()->session->get('chosen_shipping_methods')[0];
     $shipping_rates = WC()->session->get('shipping_for_package_0')['rates'];
 	echo '<pre>';
-	print_r( $shipping_rates['flat_rate:17']->input );
+	print_r( $shipping_rates['flat_rate:17'] );
 	echo '</pre>';
 }
 
