@@ -183,9 +183,9 @@ function plnt_disable_shipping_test () {
 
 
         //for dev
-        let myInput = document.querySelector(`[value="${urgentPickup3}"]`);
+        let myInput = document.querySelector(`[value="${localPickup}"]`);
         function diasable_pickup_method () {
-            console.log(urgentPickup3);
+            //console.log(urgentPickup3);
             myInput.setAttribute("disabled", "disabled");
             //myInput.setAttribute('style', 'pointer-events:none');
             //myInput.classList.add('d-none');
