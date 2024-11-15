@@ -107,7 +107,7 @@ add_filter( 'woocommerce_shipping_methods', 'wp_kama_woocommerce_shipping_method
 function wp_kama_woocommerce_shipping_methods_filter( $shipping_methods ){
 
 	echo '<pre>';
-	print_r( $shipping_methods);
+	print_r( $shipping_methods['flat_rate']);
 	echo '</pre>';
 	return $shipping_methods;
 }
