@@ -1,6 +1,12 @@
 /*--------------------------------------------------------------
 # Checkout page
 --------------------------------------------------------------*/
+
+
+.weekend-selected .shipping_method {
+    color: red;
+}
+
 /* скрываем Уже покупали? */
 .woocommerce-form-login-toggle {
     display: none;
