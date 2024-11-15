@@ -182,6 +182,7 @@ function new_custom_checkout_field_script() {
         function diasable_pickup_method () {
             console.log(urgentPickup3);
             myInput.setAttribute("disabled", "disabled");
+            myInput.classList.add('d-none');
             console.log(myInput);
         }
 
