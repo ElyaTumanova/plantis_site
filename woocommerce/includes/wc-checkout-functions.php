@@ -210,6 +210,8 @@ function new_custom_checkout_field_script() {
 
             function diasable_pickup_method () {
                 console.log(urgentPickup1);
+                let element = document.querySelector('[value="${urgentPickup1}"]');
+                console.log(element);
             }
 
             // Initializing at start after checkout init (Based on the chosen shipping method)
