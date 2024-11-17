@@ -201,7 +201,8 @@ function new_custom_checkout_field_script() {
             let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
             console.log(checkedShippingMethod);
             if( checkedShippingMethod == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
-                {
+            {
+                    console.log(deliveryInterval);
                     if (addressFields) {addressFields.classList.add('d-none');}
                     if (additionalAddress) {additionalAddress.classList.add('d-none');}
                     if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
