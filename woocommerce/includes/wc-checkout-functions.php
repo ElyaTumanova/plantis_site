@@ -182,6 +182,8 @@ function new_custom_checkout_field_script() {
     $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';
     ?>
     <script>
+        let shipingMethods = document.querySelector('.woocommerce-shipping-methods');
+    
 		let deliveryDate = document.querySelector('#datepicker_field');
 		let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
 
@@ -198,40 +200,32 @@ function new_custom_checkout_field_script() {
         let urgentPickups = [urgentPickup1, urgentPickup2, urgentPickup3, urgentPickup4];
 
 
-        function plnt_hide_adress_fields() {
+        function plnt_hide_checkout_fields(){
             let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
-            console.log(checkedShippingMethod);
-            if( checkedShippingMethod == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
-            {
-                    if (addressFields) {addressFields.classList.add('d-none');}
-                    if (additionalAddress) {additionalAddress.classList.add('d-none');}
-                }
-        
-            else
-                {
-                    if (addressFields) {addressFields.classList.remove('d-none');}
-                    if (additionalAddress) {additionalAddress.classList.remove('d-none');}
-                } 
-        }
-
-        function plnt_hide_deliverydate_fields(){
-            let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
-            //if( checkedShippingMethod == urgentPickup1 || checkedShippingMethod == urgentPickup2 || checkedShippingMethod == urgentPickup3 || checkedShippingMethod == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
             if (urgentPickups.includes(checkedShippingMethod))
             {
                 if (deliveryDate) {deliveryDate.classList.add('d-none')};
                 if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
+                if (addressFields) {addressFields.classList.remove('d-none');}
+                if (additionalAddress) {additionalAddress.classList.remove('d-none');}
             } else if ( checkedShippingMethod == localPickup) {
                 if (deliveryDate) {deliveryDate.classList.remove('d-none')};
                 if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
+                if (addressFields) {addressFields.classList.add('d-none');}
+                if (additionalAddress) {additionalAddress.classList.add('d-none');}
             } else {
                 if (deliveryDate) {deliveryDate.classList.remove('d-none')};
                 if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
+                if (addressFields) {addressFields.classList.remove('d-none');}
+                if (additionalAddress) {additionalAddress.classList.remove('d-none');}
             }
         };
 
-        plnt_hide_adress_fields();
-        plnt_hide_deliverydate_fields();
+        plnt_hide_checkout_fields();
+        
+
+        shipingMethods.addEventListener('change', plnt_hide_checkout_fields);
+        
 
         jQuery(function($){
             var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
