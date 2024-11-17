@@ -200,17 +200,19 @@ function new_custom_checkout_field_script() {
         function plnt_hide_fields_localpickup() {
             let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
             console.log(checkedShippingMethod);
-            // if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
-            //     {
-            //         showHide('hide',b2);    //#billing_adress_1_field
-            //         if (additionalAddress) {additionalAddress.classList.add('d-none');}
-            //     }
+            if( checkedShippingMethod == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
+                {
+                    //showHide('hide',b2);    //#billing_adress_1_field
+                    if (addressFields) {addressFields.classList.add('d-none');}
+                    if (additionalAddress) {additionalAddress.classList.add('d-none');}
+                }
         
-            // else
-            //     {
-            //         showHide('show',b2);
-            //         if (additionalAddress) {additionalAddress.classList.remove('d-none');}
-            //     } 
+            else
+                {
+                    //showHide('show',b2);
+                    if (addressFields) {addressFields.classList.remove('d-none');}
+                    if (additionalAddress) {additionalAddress.classList.remove('d-none');}
+                } 
         }
 
         plnt_hide_fields_localpickup();
