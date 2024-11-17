@@ -195,6 +195,7 @@ function new_custom_checkout_field_script() {
         let urgentPickup2 = '<?php echo $urgent_delivery_outMKAD; ?>';
         let urgentPickup3 = '<?php echo $urgent_delivery_inMKAD_small; ?>';
         let urgentPickup4 = '<?php echo $urgent_delivery_outMKAD_small; ?>';
+        let urgentPickups = [urgentPickup1, urgentPickup2, urgentPickup3, urgentPickup4];
 
 
         function plnt_hide_adress_fields() {
@@ -215,7 +216,8 @@ function new_custom_checkout_field_script() {
 
         function plnt_hide_deliverydate_fields(){
             let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
-            if( checkedShippingMethod == urgentPickup1 || checkedShippingMethod == urgentPickup2 || checkedShippingMethod == urgentPickup3 || checkedShippingMethod == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
+            //if( checkedShippingMethod == urgentPickup1 || checkedShippingMethod == urgentPickup2 || checkedShippingMethod == urgentPickup3 || checkedShippingMethod == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
+            if (urgentPickups.includes(checkedShippingMethod))
             {
                 if (deliveryDate) {deliveryDate.classList.add('d-none')};
                 if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
