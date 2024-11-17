@@ -227,6 +227,7 @@ function new_custom_checkout_field_script() {
             }
 
             function plnt_hide_fields_localpickup() {
+                console.log($(ismc).val());
                 if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
                     {
                         // showHide('hide',b1);    //#billing_country_field - always hidden
@@ -313,33 +314,35 @@ function new_custom_checkout_field_script() {
             });
 
             // When shipping method is changed (Live event)
-            $( 'form.checkout' ).on( 'change', ism, function() {
-                if( $(ismc).val() == localPickup )
-                {
-                    // showHide('hide',b1);
-                    showHide('hide',b2);
-                    // showHide('hide',b3);
-                    // showHide('hide',b4);
-                    // showHide('hide',b5);
-					// showHide('hide',b6);
-					// showHide('hide',b7);
-					// showHide('hide',b8);
-                    if (additionalAddress) {additionalAddress.classList.add('d-none');}
-                }
+            $( 'form.checkout' ).on( 'change', ism, plnt_hide_fields_localpickup());
+
+            // $( 'form.checkout' ).on( 'change', ism, function() {
+            //     if( $(ismc).val() == localPickup )
+            //     {
+            //         // showHide('hide',b1);
+            //         showHide('hide',b2);
+            //         // showHide('hide',b3);
+            //         // showHide('hide',b4);
+            //         // showHide('hide',b5);
+			// 		// showHide('hide',b6);
+			// 		// showHide('hide',b7);
+			// 		// showHide('hide',b8);
+            //         if (additionalAddress) {additionalAddress.classList.add('d-none');}
+            //     }
              
-                else
-                {
-                    // showHide('show',b1);
-                    showHide('show',b2);
-                    // showHide('show',b3);
-                    // showHide('show',b4);
-                    // showHide('show',b5);
-					// showHide('show',b6);
-					// showHide('show',b7);
-					// showHide('show',b8);
-                    if (additionalAddress) {additionalAddress.classList.remove('d-none');}
-                }
-            });
+            //     else
+            //     {
+            //         // showHide('show',b1);
+            //         showHide('show',b2);
+            //         // showHide('show',b3);
+            //         // showHide('show',b4);
+            //         // showHide('show',b5);
+			// 		// showHide('show',b6);
+			// 		// showHide('show',b7);
+			// 		// showHide('show',b8);
+            //         if (additionalAddress) {additionalAddress.classList.remove('d-none');}
+            //     }
+            // });
 	
             /*--------------------------------------------------------------
             # Datepicker
