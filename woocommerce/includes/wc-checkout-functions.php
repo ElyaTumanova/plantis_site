@@ -224,8 +224,8 @@ function new_custom_checkout_field_script() {
 
         plnt_hide_checkout_fields();
         
-
-        shipingMethods.forEach(element => {
+        console.log(shipingMethods);
+        shipingMethods.forEach((element) => {
             element.addEventListener('change', plnt_hide_checkout_fields);
         });
         
