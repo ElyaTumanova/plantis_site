@@ -197,30 +197,30 @@ function new_custom_checkout_field_script() {
         let urgentPickup4 = '<?php echo $urgent_delivery_outMKAD_small; ?>';
 
 
-        function plnt_hide_fields_localpickup() {
+        function plnt_hide_adress_fields() {
             let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
             console.log(checkedShippingMethod);
             if( checkedShippingMethod == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
             {
-                    console.log(deliveryInterval);
                     if (addressFields) {addressFields.classList.add('d-none');}
                     if (additionalAddress) {additionalAddress.classList.add('d-none');}
-                    if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
                 }
         
             else
                 {
                     if (addressFields) {addressFields.classList.remove('d-none');}
                     if (additionalAddress) {additionalAddress.classList.remove('d-none');}
-                    if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
                 } 
         }
 
-        function plnt_hide_fields_urgentpickup(){
+        function plnt_hide_deliverydate_fields(){
             let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
             if( checkedShippingMethod == urgentPickup1 || checkedShippingMethod == urgentPickup2 || checkedShippingMethod == urgentPickup3 || checkedShippingMethod == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
             {
                 if (deliveryDate) {deliveryDate.classList.add('d-none')};
+                if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
+            } else if ( checkedShippingMethod == localPickup) {
+                if (deliveryDate) {deliveryDate.classList.remove('d-none')};
                 if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
             } else {
                 if (deliveryDate) {deliveryDate.classList.remove('d-none')};
@@ -228,8 +228,8 @@ function new_custom_checkout_field_script() {
             }
         };
 
-        plnt_hide_fields_localpickup();
-        plnt_hide_fields_urgentpickup();
+        plnt_hide_adress_fields();
+        plnt_hide_deliverydate_fields();
 
         jQuery(function($){
             var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
