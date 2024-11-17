@@ -198,7 +198,7 @@ function new_custom_checkout_field_script() {
 
 
         function plnt_hide_fields_localpickup() {
-            let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value();
+            let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
             console.log(checkedShippingMethod);
             // if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
             //     {
