@@ -184,6 +184,8 @@ function new_custom_checkout_field_script() {
     <script>
 		let deliveryDate = document.querySelector('#datepicker_field');
 		let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
+
+        let addressFields = document.querySelector('#billing_address_1_field');
         let additionalAddress = document.querySelector('.additional-address-field');
 
         let inn_field = document.querySelector('#<?php echo $inn_field; ?>');
@@ -193,6 +195,25 @@ function new_custom_checkout_field_script() {
         let urgentPickup2 = '<?php echo $urgent_delivery_outMKAD; ?>';
         let urgentPickup3 = '<?php echo $urgent_delivery_inMKAD_small; ?>';
         let urgentPickup4 = '<?php echo $urgent_delivery_outMKAD_small; ?>';
+
+
+        function plnt_hide_fields_localpickup() {
+            let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
+            console.log(checkedShippingMethod);
+            // if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
+            //     {
+            //         showHide('hide',b2);    //#billing_adress_1_field
+            //         if (additionalAddress) {additionalAddress.classList.add('d-none');}
+            //     }
+        
+            // else
+            //     {
+            //         showHide('show',b2);
+            //         if (additionalAddress) {additionalAddress.classList.remove('d-none');}
+            //     } 
+        }
+
+        plnt_hide_fields_localpickup();
 
         jQuery(function($){
             var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
@@ -226,36 +247,36 @@ function new_custom_checkout_field_script() {
                     });
             }
 
-            function plnt_hide_fields_localpickup() {
-                console.log($(ismc).val());
-                if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
-                    {
-                        // showHide('hide',b1);    //#billing_country_field - always hidden
-                        showHide('hide',b2);    //#billing_adress_1_field
-                        //showHide('hide',b3);    //#billing_adress_2_field  
-                        //showHide('hide',b4);    //postcode
-                        //showHide('hide',b5);    //state
-                        //showHide('hide',b6);    //city
-                        //showHide('hide',b7);    //#billing_adress_3_field
-                        //showHide('hide',b8);    //#billing_adress_4_field
-                        if (additionalAddress) {additionalAddress.classList.add('d-none');}
-                    }
+            // function plnt_hide_fields_localpickup() {
+            //     console.log($(ismc).val());
+            //     if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
+            //         {
+            //             // showHide('hide',b1);    //#billing_country_field - always hidden
+            //             showHide('hide',b2);    //#billing_adress_1_field
+            //             //showHide('hide',b3);    //#billing_adress_2_field  
+            //             //showHide('hide',b4);    //postcode
+            //             //showHide('hide',b5);    //state
+            //             //showHide('hide',b6);    //city
+            //             //showHide('hide',b7);    //#billing_adress_3_field
+            //             //showHide('hide',b8);    //#billing_adress_4_field
+            //             if (additionalAddress) {additionalAddress.classList.add('d-none');}
+            //         }
             
-                else
-                    {
-                        // showHide('show',b1);
-                        showHide('show',b2);
-                        //showHide('show',b3);
-                        //showHide('show',b4);
-                        //showHide('show',b5);
-                        //showHide('show',b6);
-                        //showHide('show',b7);
-                        //showHide('show',b8);
-                        if (additionalAddress) {additionalAddress.classList.remove('d-none');}
-                    } 
-            }
+            //     else
+            //         {
+            //             // showHide('show',b1);
+            //             showHide('show',b2);
+            //             //showHide('show',b3);
+            //             //showHide('show',b4);
+            //             //showHide('show',b5);
+            //             //showHide('show',b6);
+            //             //showHide('show',b7);
+            //             //showHide('show',b8);
+            //             if (additionalAddress) {additionalAddress.classList.remove('d-none');}
+            //         } 
+            // }
             // Initializing at start after checkout init (Based on the chosen shipping method)
-            setTimeout(plnt_hide_fields_localpickup(), 100);
+            //setTimeout(plnt_hide_fields_localpickup(), 100);
 			
 			setTimeout(function(){
                      if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
@@ -314,7 +335,7 @@ function new_custom_checkout_field_script() {
             });
 
             // When shipping method is changed (Live event)
-            $( 'form.checkout' ).on( 'change', ism, plnt_hide_fields_localpickup());
+            //$( 'form.checkout' ).on( 'change', ism, plnt_hide_fields_localpickup());
 
             // $( 'form.checkout' ).on( 'change', ism, function() {
             //     if( $(ismc).val() == localPickup )
