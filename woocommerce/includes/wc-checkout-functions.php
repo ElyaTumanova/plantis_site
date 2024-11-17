@@ -202,20 +202,33 @@ function new_custom_checkout_field_script() {
             console.log(checkedShippingMethod);
             if( checkedShippingMethod == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
                 {
-                    //showHide('hide',b2);    //#billing_adress_1_field
                     if (addressFields) {addressFields.classList.add('d-none');}
                     if (additionalAddress) {additionalAddress.classList.add('d-none');}
+                    if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
                 }
         
             else
                 {
-                    //showHide('show',b2);
                     if (addressFields) {addressFields.classList.remove('d-none');}
                     if (additionalAddress) {additionalAddress.classList.remove('d-none');}
+                    if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
                 } 
         }
 
+        function plnt_hide_fields_urgentpickup(){
+            let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
+            if( checkedShippingMethod == urgentPickup1 || checkedShippingMethod == urgentPickup2 || checkedShippingMethod == urgentPickup3 || checkedShippingMethod == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
+            {
+                if (deliveryDate) {deliveryDate.classList.add('d-none')};
+                if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
+            } else {
+                if (deliveryDate) {deliveryDate.classList.remove('d-none')};
+                if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
+            }
+        };
+
         plnt_hide_fields_localpickup();
+        plnt_hide_fields_urgentpickup();
 
         jQuery(function($){
             var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
