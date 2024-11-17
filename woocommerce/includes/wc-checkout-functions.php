@@ -226,7 +226,7 @@ function new_custom_checkout_field_script() {
                     });
             }
 
-            function plnt_hide_fields_localpickup() {
+            function plnt_hide_fields_localpickup(ismc) {
                 if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
                     {
                         // showHide('hide',b1);    //#billing_country_field - always hidden
@@ -254,7 +254,7 @@ function new_custom_checkout_field_script() {
                     } 
             }
             // Initializing at start after checkout init (Based on the chosen shipping method)
-            setTimeout(plnt_hide_fields_localpickup(), 100);
+            setTimeout(plnt_hide_fields_localpickup(ismc), 100);
 			
 			setTimeout(function(){
                      if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
@@ -313,7 +313,7 @@ function new_custom_checkout_field_script() {
             });
 
             // When shipping method is changed (Live event)
-            $( 'form.checkout' ).on( 'change', ism, plnt_hide_fields_localpickup());
+            $( 'form.checkout' ).on( 'change', ism, plnt_hide_fields_localpickup(ismc));
 	
             /*--------------------------------------------------------------
             # Datepicker
