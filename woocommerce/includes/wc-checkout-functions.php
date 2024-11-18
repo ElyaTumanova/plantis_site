@@ -185,9 +185,10 @@ function new_custom_checkout_field_script() {
 
         let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
         function plnt_hide_checkout_fields(event){
+            console.log('hi plnt_hide_checkout_fields');
             // if (event) {console.log(event)};
             if(event && event.target.className == "shipping_method") {
-                console.log(event);
+                // console.log(event);
                 checkedShippingMethod = event.target.value;
             }
             if (urgentPickups.includes(checkedShippingMethod))
@@ -218,7 +219,7 @@ function new_custom_checkout_field_script() {
 
         plnt_hide_checkout_fields(event);
         
-        checkoutForm.addEventListener('input', plnt_hide_checkout_fields);
+        checkoutForm.addEventListener('change', plnt_hide_checkout_fields);
 
         /*--------------------------------------------------------------
         # Datepicker
@@ -235,7 +236,8 @@ function new_custom_checkout_field_script() {
         });
         // console.log(weekend);
         //var weekend = new Date(weekend_str);
-        function datepicker_init () {          
+        function datepicker_options () {  
+            console.log('hi datepicker_options');     
 
             //определяем первую доступную дату
             let startDate = new Date();
@@ -246,7 +248,7 @@ function new_custom_checkout_field_script() {
 
             let deliveryIntervalInput = document.querySelector('input[name=additional_delivery_interval]');
 
-            console.log(hour);
+            //console.log(hour);
 
             if (checkedShippingMethod == localPickup && hour < 18) {  
                 startDate = date.setDate(date.getDate() + 0);
@@ -313,25 +315,24 @@ function new_custom_checkout_field_script() {
 
             return datePickerOpts;
         }
+        // Datepicker init
         let datepickerCal;
         let datePickerOpts;
-        // Datepicker init
+
+        function datepicker_init () {
+            datePickerOpts = datepicker_options ();
+            datepickerCal.update(datePickerOpts);
+            if (weekend) {
+                datepickerCal.disableDate(weekend);
+            }
+        }
+
         setTimeout(() => {
             datepickerCal = new AirDatepicker('#datepicker');
-            datePickerOpts = datepicker_init ();
-            datepickerCal.update(datePickerOpts);
-            if (weekend) {
-                datepickerCal.disableDate(weekend);
-            }
+            datepicker_init ();
         }, 1000);  
    
-        checkoutForm.addEventListener('input', function() {
-            datePickerOpts = datepicker_init ();
-            datepickerCal.update(datePickerOpts);
-            if (weekend) {
-                datepickerCal.disableDate(weekend);
-            }
-        });
+        checkoutForm.addEventListener('input', datepicker_init);
     </script>
     <?php
 }
