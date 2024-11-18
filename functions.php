@@ -89,5 +89,7 @@ function plnt_date() {
 	echo date('H');
 }
 
-add_action( 'wp_footer', 'get_refreshed_fragments' );
+//add_action( 'wp_footer', 'get_refreshed_fragments' );
+
+var_dump( wp_using_ext_object_cache() ); // bool(true)
 
