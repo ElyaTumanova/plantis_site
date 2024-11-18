@@ -89,4 +89,5 @@ function plnt_date() {
 	echo date('H');
 }
 
+add_action( 'wp_footer', 'get_refreshed_fragments' );
 
