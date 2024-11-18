@@ -101,7 +101,7 @@ add_filter( 'wp_ajax_nopriv_mode_theme_update_mini_cart', 'mode_theme_update_min
 add_filter( 'wp_ajax_mode_theme_update_mini_cart', 'mode_theme_update_mini_cart' );
 
 function mode_theme_update_side_cart_count() {
-	plnt_side_cart_count();
+	echo wp_kses_data(WC()->cart->get_cart_contents_count());
 	die();
 }
 add_filter( 'wp_ajax_nopriv_mode_theme_update_side_cart_count', 'mode_theme_update_side_cart_count' );
