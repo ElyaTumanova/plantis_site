@@ -149,7 +149,7 @@ if(catalogWrap) {
    woocommerce_params.ajax_url, // The AJAX URL
    data, // Send our PHP function
    function(response){
-     $('.mini-cart').html(response); // Repopulate the specific element with the new content
+     $('.side-cart__count').html(response); // Repopulate the specific element with the new content
    }
  );
 // Close anon function.
