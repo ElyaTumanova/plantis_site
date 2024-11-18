@@ -224,20 +224,18 @@ function new_custom_checkout_field_script() {
         # Datepicker
         --------------------------------------------------------------*/
         // Utility function for datepicker init
-        function datepicker_init () {
-
-            <?php $weekend_string = carbon_get_theme_option('weekend');?>
-
-            //выходной
-            let weekend_str = '<?php echo $weekend_string; ?>';
-            let weekend_arr = weekend_str.split(',');
-            // console.log(weekend_arr);
-            let weekend = [];
-            weekend_arr.forEach(element => {
-                weekend.push(new Date(element));
-            });
-            // console.log(weekend);
-            //var weekend = new Date(weekend_str);
+        <?php $weekend_string = carbon_get_theme_option('weekend');?>
+        //выходной
+        let weekend_str = '<?php echo $weekend_string; ?>';
+        let weekend_arr = weekend_str.split(',');
+        // console.log(weekend_arr);
+        let weekend = [];
+        weekend_arr.forEach(element => {
+            weekend.push(new Date(element));
+        });
+        // console.log(weekend);
+        //var weekend = new Date(weekend_str);
+        function datepicker_init () {          
 
             //определяем первую доступную дату
             let startDate = new Date();
@@ -313,10 +311,6 @@ function new_custom_checkout_field_script() {
                 buttons: [button] 
             }
 
-            if (weekend) {
-                datepickerCal.disableDate(weekend);
-            }
-
             return datePickerOpts;
         }
 
@@ -325,11 +319,17 @@ function new_custom_checkout_field_script() {
             let datepickerCal = new AirDatepicker('#datepicker');
             let datePickerOpts = datepicker_init ();
             datepickerCal.update(datePickerOpts);
+            if (weekend) {
+                datepickerCal.disableDate(weekend);
+            }
         }, 1000);  
    
         checkoutForm.addEventListener('input', function() {
             let datePickerOpts = datepicker_init ();
             datepickerCal.update(datePickerOpts);
+            if (weekend) {
+                datepickerCal.disableDate(weekend);
+            }
         });
     </script>
     <?php
