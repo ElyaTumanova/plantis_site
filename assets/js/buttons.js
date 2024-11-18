@@ -183,3 +183,20 @@ jQuery( function( $ ) {
     );
    // Close anon function.
    }( jQuery ) );
+
+( function ( $ ) {
+    "use strict";
+    console.log('lallalal');
+   // Define the PHP function to call from here
+    var data = {
+      'action': 'mode_theme_update_header_cart_count'
+    };
+    $.post(
+      woocommerce_params.ajax_url, // The AJAX URL
+      data, // Send our PHP function
+      function(response){
+        $('.header-cart__link .header__count').html(response); // Repopulate the specific element with the new content
+      }
+    );
+   // Close anon function.
+   }( jQuery ) );
