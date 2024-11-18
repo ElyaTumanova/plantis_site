@@ -158,10 +158,10 @@ if(catalogWrap) {
 
 jQuery( function( $ ) {
     $(document).ready( function() {
-      $.get( yith_wcwl_l10n.ajax_url, {
+        $.get( yith_wcwl_l10n.ajax_url, {
         action: 'yith_wcwl_update_wishlist_count'
-      }, function( data ) {
+        }, function( data ) {
         $('.yith-wcwl-items-count').children('i').html( data.count );
-      } );
+        } );
     } );
-  })
+})
