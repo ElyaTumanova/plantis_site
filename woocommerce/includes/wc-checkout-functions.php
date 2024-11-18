@@ -166,8 +166,8 @@ function new_custom_checkout_field_script() {
     $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';
     ?>
     <script>
-        let shipingMethods = document.querySelectorAll('.shipping_method');
-        //let shipingMethods = document.querySelectorAll('form[name="checkout"]');
+        //let shipingMethods = document.querySelectorAll('.shipping_method');
+        let shipingMethods = document.querySelectorAll('form[name="checkout"]');
     
 		let deliveryDate = document.querySelector('#datepicker_field');
 		let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
@@ -212,7 +212,7 @@ function new_custom_checkout_field_script() {
         
         console.log(shipingMethods);
         shipingMethods.forEach((element) => {
-            console.log(element);
+            //console.log(element);
             element.addEventListener('input', plnt_hide_checkout_fields);
         });
         
