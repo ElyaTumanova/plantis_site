@@ -213,7 +213,7 @@ function new_custom_checkout_field_script() {
         console.log(shipingMethods);
         shipingMethods.forEach((element) => {
             console.log(element);
-            element.addEventListener('click', plnt_hide_checkout_fields);
+            element.addEventListener('input', plnt_hide_checkout_fields);
         });
         
 
