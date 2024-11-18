@@ -232,155 +232,155 @@ function new_custom_checkout_field_script() {
         });
         
 
-        jQuery(function($){
-            var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
-                csa = 'input#ship-to-different-address-checkbox',
-                rq = '-required',       vr = 'validate'+rq,     w = 'woocommerce',      wv = w+'-validated',
-                iv = '-invalid',        fi = '-field',          wir = w+iv+' '+w+iv+rq+fi,
-                b = '#billing_',        s = '#shipping_',       f = '_field',
-                a1 = 'country',     a2 = 'address_1',   a3 = 'address_2',   a4 = 'postcode',    a5 = 'state', a6 = 'city', a7 = 'address_3', a8 = 'address_4'
-                b1 = b+a1+f,        b2 = b+a2+f,        b3 = b+a3+f,        b4 = b+a4+f,        b5 = b+a5+f, b6 = b+a6+f, b7 = b+a7+f, b8 = b+a8+f,
-                s1 = s+a1+f,        s2 = s+a2+f,        s3 = s+a3+f,        s4 = s+a4+f,        s5 = s+a5+f,
-                payment_method = 'input[name^="payment_method"]', payment_method_checked = payment_method+':checked';
-                payment_inn_chekbox = '<?php echo $payment_inn_chekbox; ?>'
+        // jQuery(function($){
+        //     var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
+        //         csa = 'input#ship-to-different-address-checkbox',
+        //         rq = '-required',       vr = 'validate'+rq,     w = 'woocommerce',      wv = w+'-validated',
+        //         iv = '-invalid',        fi = '-field',          wir = w+iv+' '+w+iv+rq+fi,
+        //         b = '#billing_',        s = '#shipping_',       f = '_field',
+        //         a1 = 'country',     a2 = 'address_1',   a3 = 'address_2',   a4 = 'postcode',    a5 = 'state', a6 = 'city', a7 = 'address_3', a8 = 'address_4'
+        //         b1 = b+a1+f,        b2 = b+a2+f,        b3 = b+a3+f,        b4 = b+a4+f,        b5 = b+a5+f, b6 = b+a6+f, b7 = b+a7+f, b8 = b+a8+f,
+        //         s1 = s+a1+f,        s2 = s+a2+f,        s3 = s+a3+f,        s4 = s+a4+f,        s5 = s+a5+f,
+        //         payment_method = 'input[name^="payment_method"]', payment_method_checked = payment_method+':checked';
+        //         payment_inn_chekbox = '<?php //echo $payment_inn_chekbox; ?>'
 
-            // Utility function to shows or hide checkout fields
-            function showHide( action='show', selector='' ){
-                if( action == 'show' )
-                    $(selector).show(function(){
-                        $(this).addClass(vr);
-                        $(this).removeClass(wv);
-                        $(this).removeClass(wir);
-                        if( $(selector+' > label > abbr').html() == undefined )
-                            $(selector+' label').append('<?php echo $required_html; ?>');
-                    });
-                else
-                    $(selector).hide(function(){
-                        $(this).removeClass(vr);
-                        $(this).removeClass(wv);
-                        $(this).removeClass(wir);
-                        if( $(selector+' > label > abbr').html() != undefined )
-                            $(selector+' label > .required').remove();
-                    });
-            }
+        //     // Utility function to shows or hide checkout fields
+        //     function showHide( action='show', selector='' ){
+        //         if( action == 'show' )
+        //             $(selector).show(function(){
+        //                 $(this).addClass(vr);
+        //                 $(this).removeClass(wv);
+        //                 $(this).removeClass(wir);
+        //                 if( $(selector+' > label > abbr').html() == undefined )
+        //                     $(selector+' label').append('<?php //echo $required_html; ?>');
+        //             });
+        //         else
+        //             $(selector).hide(function(){
+        //                 $(this).removeClass(vr);
+        //                 $(this).removeClass(wv);
+        //                 $(this).removeClass(wir);
+        //                 if( $(selector+' > label > abbr').html() != undefined )
+        //                     $(selector+' label > .required').remove();
+        //             });
+        //     }
 
-            // function plnt_hide_fields_localpickup() {
-            //     console.log($(ismc).val());
-            //     if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
-            //         {
-            //             // showHide('hide',b1);    //#billing_country_field - always hidden
-            //             showHide('hide',b2);    //#billing_adress_1_field
-            //             //showHide('hide',b3);    //#billing_adress_2_field  
-            //             //showHide('hide',b4);    //postcode
-            //             //showHide('hide',b5);    //state
-            //             //showHide('hide',b6);    //city
-            //             //showHide('hide',b7);    //#billing_adress_3_field
-            //             //showHide('hide',b8);    //#billing_adress_4_field
-            //             if (additionalAddress) {additionalAddress.classList.add('d-none');}
-            //         }
+        //     // function plnt_hide_fields_localpickup() {
+        //     //     console.log($(ismc).val());
+        //     //     if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
+        //     //         {
+        //     //             // showHide('hide',b1);    //#billing_country_field - always hidden
+        //     //             showHide('hide',b2);    //#billing_adress_1_field
+        //     //             //showHide('hide',b3);    //#billing_adress_2_field  
+        //     //             //showHide('hide',b4);    //postcode
+        //     //             //showHide('hide',b5);    //state
+        //     //             //showHide('hide',b6);    //city
+        //     //             //showHide('hide',b7);    //#billing_adress_3_field
+        //     //             //showHide('hide',b8);    //#billing_adress_4_field
+        //     //             if (additionalAddress) {additionalAddress.classList.add('d-none');}
+        //     //         }
             
-            //     else
-            //         {
-            //             // showHide('show',b1);
-            //             showHide('show',b2);
-            //             //showHide('show',b3);
-            //             //showHide('show',b4);
-            //             //showHide('show',b5);
-            //             //showHide('show',b6);
-            //             //showHide('show',b7);
-            //             //showHide('show',b8);
-            //             if (additionalAddress) {additionalAddress.classList.remove('d-none');}
-            //         } 
-            // }
-            // Initializing at start after checkout init (Based on the chosen shipping method)
-            //setTimeout(plnt_hide_fields_localpickup(), 100);
+        //     //     else
+        //     //         {
+        //     //             // showHide('show',b1);
+        //     //             showHide('show',b2);
+        //     //             //showHide('show',b3);
+        //     //             //showHide('show',b4);
+        //     //             //showHide('show',b5);
+        //     //             //showHide('show',b6);
+        //     //             //showHide('show',b7);
+        //     //             //showHide('show',b8);
+        //     //             if (additionalAddress) {additionalAddress.classList.remove('d-none');}
+        //     //         } 
+        //     // }
+        //     // Initializing at start after checkout init (Based on the chosen shipping method)
+        //     //setTimeout(plnt_hide_fields_localpickup(), 100);
 			
-			// setTimeout(function(){
-            //          if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
-            //     {
-            //         if (deliveryDate) {deliveryDate.classList.add('d-none')};
-            //     } else {
-			// 		if (deliveryDate) {deliveryDate.classList.remove('d-none')};
-			// 	}
-            // }, 100);
+		// 	// setTimeout(function(){
+        //     //          if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
+        //     //     {
+        //     //         if (deliveryDate) {deliveryDate.classList.add('d-none')};
+        //     //     } else {
+		// 	// 		if (deliveryDate) {deliveryDate.classList.remove('d-none')};
+		// 	// 	}
+        //     // }, 100);
 			
-			// setTimeout(function(){
-            //          if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
-            //     {
-			// 		if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
-            //     } else {
-			// 		if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
-			// 	}
-            // }, 100);
+		// 	// setTimeout(function(){
+        //     //          if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
+        //     //     {
+		// 	// 		if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
+        //     //     } else {
+		// 	// 		if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
+		// 	// 	}
+        //     // }, 100);
 
-            setTimeout(function(){
-                     if( $(payment_method_checked).val() == payment_inn_chekbox) // Chosen "INN payment" (Show "INN")
-                {
-                    if (inn_field) {inn_field.classList.remove('d-none')};
-                } else {
-					if (inn_field) {inn_field.classList.add('d-none')};
-				}
-            }, 100);
+        //     setTimeout(function(){
+        //              if( $(payment_method_checked).val() == payment_inn_chekbox) // Chosen "INN payment" (Show "INN")
+        //         {
+        //             if (inn_field) {inn_field.classList.remove('d-none')};
+        //         } else {
+		// 			if (inn_field) {inn_field.classList.add('d-none')};
+		// 		}
+        //     }, 100);
 			
-			// Initializing at start after checkout init (Based on the chosen shipping method)
-            $( 'form.checkout' ).on( 'change', payment_method, function() {	
-				if( $(payment_method_checked).val() == payment_inn_chekbox) // Chosen "INN payment" (Show "INN")
-                {
-                    if (inn_field) {inn_field.classList.remove('d-none')};
-                } else {
-					if (inn_field) {inn_field.classList.add('d-none')};
-				};
-            });
+		// 	// Initializing at start after checkout init (Based on the chosen shipping method)
+        //     $( 'form.checkout' ).on( 'change', payment_method, function() {	
+		// 		if( $(payment_method_checked).val() == payment_inn_chekbox) // Chosen "INN payment" (Show "INN")
+        //         {
+        //             if (inn_field) {inn_field.classList.remove('d-none')};
+        //         } else {
+		// 			if (inn_field) {inn_field.classList.add('d-none')};
+		// 		};
+        //     });
 
-            // $( 'form.checkout' ).on( 'change', ism, function() {
-			// 	if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
-            //     {
-            //         if (deliveryDate) {deliveryDate.classList.add('d-none')};
-            //     } else {
-			// 		if (deliveryDate) {deliveryDate.classList.remove('d-none')};
-			// 	};
+        //     // $( 'form.checkout' ).on( 'change', ism, function() {
+		// 	// 	if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
+        //     //     {
+        //     //         if (deliveryDate) {deliveryDate.classList.add('d-none')};
+        //     //     } else {
+		// 	// 		if (deliveryDate) {deliveryDate.classList.remove('d-none')};
+		// 	// 	};
 
-            // });
+        //     // });
 			
-			// $( 'form.checkout' ).on( 'change', ism, function() {
-			// 	if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
-            //     {
-			// 		if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
-            //     } else {
-			// 		if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
-			// 	}
-            // });
+		// 	// $( 'form.checkout' ).on( 'change', ism, function() {
+		// 	// 	if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
+        //     //     {
+		// 	// 		if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
+        //     //     } else {
+		// 	// 		if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
+		// 	// 	}
+        //     // });
 
-            // When shipping method is changed (Live event)
-            //$( 'form.checkout' ).on( 'change', ism, plnt_hide_fields_localpickup());
+        //     // When shipping method is changed (Live event)
+        //     //$( 'form.checkout' ).on( 'change', ism, plnt_hide_fields_localpickup());
 
-            // $( 'form.checkout' ).on( 'change', ism, function() {
-            //     if( $(ismc).val() == localPickup )
-            //     {
-            //         // showHide('hide',b1);
-            //         showHide('hide',b2);
-            //         // showHide('hide',b3);
-            //         // showHide('hide',b4);
-            //         // showHide('hide',b5);
-			// 		// showHide('hide',b6);
-			// 		// showHide('hide',b7);
-			// 		// showHide('hide',b8);
-            //         if (additionalAddress) {additionalAddress.classList.add('d-none');}
-            //     }
+        //     // $( 'form.checkout' ).on( 'change', ism, function() {
+        //     //     if( $(ismc).val() == localPickup )
+        //     //     {
+        //     //         // showHide('hide',b1);
+        //     //         showHide('hide',b2);
+        //     //         // showHide('hide',b3);
+        //     //         // showHide('hide',b4);
+        //     //         // showHide('hide',b5);
+		// 	// 		// showHide('hide',b6);
+		// 	// 		// showHide('hide',b7);
+		// 	// 		// showHide('hide',b8);
+        //     //         if (additionalAddress) {additionalAddress.classList.add('d-none');}
+        //     //     }
              
-            //     else
-            //     {
-            //         // showHide('show',b1);
-            //         showHide('show',b2);
-            //         // showHide('show',b3);
-            //         // showHide('show',b4);
-            //         // showHide('show',b5);
-			// 		// showHide('show',b6);
-			// 		// showHide('show',b7);
-			// 		// showHide('show',b8);
-            //         if (additionalAddress) {additionalAddress.classList.remove('d-none');}
-            //     }
-            // });
+        //     //     else
+        //     //     {
+        //     //         // showHide('show',b1);
+        //     //         showHide('show',b2);
+        //     //         // showHide('show',b3);
+        //     //         // showHide('show',b4);
+        //     //         // showHide('show',b5);
+		// 	// 		// showHide('show',b6);
+		// 	// 		// showHide('show',b7);
+		// 	// 		// showHide('show',b8);
+        //     //         if (additionalAddress) {additionalAddress.classList.remove('d-none');}
+        //     //     }
+        //     // });
 	
             /*--------------------------------------------------------------
             # Datepicker
