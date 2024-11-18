@@ -198,6 +198,7 @@ function new_custom_checkout_field_script() {
             let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
             console.log(checkedShippingMethod);
             if(event) {
+                console.log(event);
                 checkedShippingMethod = event.target.value;
             }
             console.log(checkedShippingMethod);
