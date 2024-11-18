@@ -143,22 +143,6 @@ function plnt_large_delivery_notice() {
 
 /* ПОЛЯ ФОРМЫ ОФОРМЛЕНИЯ ЗАКАЗА*/
 
-//FOR DEV
-// add_filter( 'body_class', 'add_shipping_classes_to_body_class' );
-// function add_shipping_classes_to_body_class( $classes ) {
-//     // only on checkout page
-//     if( ! ( is_checkout() && ! is_wc_endpoint_url() ) ) 
-//         return; 
-        
-//     $chosen_method  = WC()->session->get('chosen_shipping_methods')[0];
-//     $shipping_rates = WC()->session->get('shipping_for_package_0')['rates'];
-   
-//     if( 'В день заказа в пределах МКАД' === $shipping_rates[$chosen_method]->label ){
-//         $classes[] = 'weekend-selected';
-//     }
-//     return $classes;
-// }
-
 // Conditional Show hide checkout fields based on chosen shipping methods*/
 
 add_action( 'wp_footer', 'new_custom_checkout_field_script' );
@@ -182,8 +166,7 @@ function new_custom_checkout_field_script() {
     $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';
     ?>
     <script>
-        let shipingMethods = document.querySelectorAll('.shipping_method');
-        //let shipingMethods = document.querySelectorAll('form[name="checkout"]');
+        let shipingMethods = document.querySelectorAll('form[name="checkout"]');
     
 		let deliveryDate = document.querySelector('#datepicker_field');
 		let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
@@ -226,10 +209,7 @@ function new_custom_checkout_field_script() {
         plnt_hide_checkout_fields();
         
         console.log(shipingMethods);
-        shipingMethods.forEach((element) => {
-            console.log(element);
-            element.addEventListener('change', plnt_hide_checkout_fields);
-        });
+        shipingMethods.addEventListener('change', plnt_hide_checkout_fields);
         
 
         // jQuery(function($){
