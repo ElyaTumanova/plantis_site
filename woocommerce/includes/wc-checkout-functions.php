@@ -185,8 +185,8 @@ function new_custom_checkout_field_script() {
         let urgentPickups = [urgentPickup1, urgentPickup2, urgentPickup3, urgentPickup4];
 
 
-        function plnt_hide_checkout_fields(evt){
-            console.log(evt);
+        function plnt_hide_checkout_fields(event){
+            console.log(event);
             let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
             console.log(checkedShippingMethod);
             if (urgentPickups.includes(checkedShippingMethod))
@@ -208,7 +208,7 @@ function new_custom_checkout_field_script() {
             }
         };
 
-        plnt_hide_checkout_fields(evt);
+        plnt_hide_checkout_fields(event);
         
         console.log(shipingMethods);
         shipingMethods.forEach((element) => {
