@@ -184,14 +184,14 @@ function new_custom_checkout_field_script() {
         let urgentPickup4 = '<?php echo $urgent_delivery_outMKAD_small; ?>';
         let urgentPickups = [urgentPickup1, urgentPickup2, urgentPickup3, urgentPickup4];
 
-        setTimeout(function(){
-                     if( $(payment_method_checked).val() == payment_inn_chekbox) // Chosen "INN payment" (Show "INN")
-                {
-                    if (inn_field) {inn_field.classList.remove('d-none')};
-                } else {
-					if (inn_field) {inn_field.classList.add('d-none')};
-				}
-            }, 100);
+        // setTimeout(function(){
+        //              if( $(payment_method_checked).val() == payment_inn_chekbox) // Chosen "INN payment" (Show "INN")
+        //         {
+        //             if (inn_field) {inn_field.classList.remove('d-none')};
+        //         } else {
+		// 			if (inn_field) {inn_field.classList.add('d-none')};
+		// 		}
+        //     }, 100);
 
 
         function plnt_hide_checkout_fields(event){
