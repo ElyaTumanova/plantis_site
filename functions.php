@@ -91,5 +91,5 @@ function plnt_date() {
 
 //add_action( 'wp_footer', 'get_refreshed_fragments' );
 
-var_dump( wp_using_ext_object_cache() ); // bool(true)
+//var_dump( wp_using_ext_object_cache() ); // bool(true)
 
