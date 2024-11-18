@@ -164,7 +164,7 @@ jQuery( function( $ ) {
         $('.yith-wcwl-items-count').children('i').html( data.count );
         } );
     } );
-})
+});
 
 
 ( function ( $ ) {
