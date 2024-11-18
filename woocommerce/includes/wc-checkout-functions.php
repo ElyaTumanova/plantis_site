@@ -220,7 +220,14 @@ function new_custom_checkout_field_script() {
                 if (addressFields) {addressFields.classList.remove('d-none');}
                 if (additionalAddress) {additionalAddress.classList.remove('d-none');}
             }
-        };
+
+            if(event && event.target.id == "payment_method_cheque") {
+                console.log(event);
+                if (inn_field) {inn_field.classList.remove('d-none')};
+            } else {
+                if (inn_field) {inn_field.classList.add('d-none')};
+            };
+        }
 
         plnt_hide_checkout_fields(event);
         
