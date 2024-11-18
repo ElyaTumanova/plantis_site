@@ -1,12 +1,6 @@
 /*--------------------------------------------------------------
 # Header for desktop
 --------------------------------------------------------------*/
-.header {
-    position: sticky;
-    top:0;
-    z-index: 9990;
-    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
-}
 
 .header__breadcrumb, .woocommerce-breadcrumb {
     font-size: 14px;
@@ -32,17 +26,13 @@
 }
 
 .header__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: var(--accent-color);
     padding-top: 15px;
     padding-bottom: 10px;
     position: relative;
-    background-color: var(--background);
-}
-
-.header__main .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .header__wrap {
@@ -401,6 +391,3 @@
         padding-bottom: 130px;
     }
 }
-
-
-
