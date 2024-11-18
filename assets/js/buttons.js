@@ -140,6 +140,7 @@ if(catalogWrap) {
 
 ( function ( $ ) {
  "use strict";
+ console.log('hihihi');
 // Define the PHP function to call from here
  var data = {
    'action': 'mode_theme_update_mini_cart'
