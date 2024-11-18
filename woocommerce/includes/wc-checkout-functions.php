@@ -2,6 +2,26 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+//переменные
+global $local_pickup;
+	
+global $delivery_inMKAD;
+global $delivery_outMKAD;
+global $delivery_inMKAD_small;
+global $delivery_outMKAD_small;
+
+
+global $urgent_delivery_inMKAD; 
+global $urgent_delivery_outMKAD; 
+global $urgent_delivery_inMKAD_small; 
+global $urgent_delivery_outMKAD_small;
+
+global $urgent_delivery_inMKAD_late; 
+global $urgent_delivery_outMKAD_late; 
+global $urgent_delivery_inMKAD_small_late; 
+global $urgent_delivery_outMKAD_small_late;
+
+global $delivery_free;
 
 // структура страницы
 
@@ -258,23 +278,17 @@ function new_custom_checkout_field_script() {
             } else {
                 startDate = date.setDate(date.getDate() + 1);
                 selectedDate = startDate;                   
-            }
+            };
 
-            //очищаем дату и интервал для срочной доставки
+            //очищаем дату для срочной доставки
             if (urgentPickups.includes(checkedShippingMethod)) {
                 selectedDate = [];
-                //deliveryIntervalInput.checked = false;
-            } 
-            // //очищаем интервал для самовывоза
-            // if (checkedShippingMethod == localPickup) {
-            //     deliveryIntervalInput.checked = false;
-            //     console.log(deliveryIntervalInput);
-            // }
+            };
 
             // проверяем, что первая доступная дата не попадает на выходной
             const weekendTimeStamps = weekend.map(function (element) {
                 return element.getTime();
-            })
+            });
             let isSelectedDayWeekend = false;
             function checkSelectedDay (checkDate) {
                 let newSelectedDate = checkDate;
@@ -384,21 +398,6 @@ function new_truemisha_remove_shipping_method( $rates, $package ) {
 add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
  
 function new_truemisha_remove_shipping_on_price( $rates, $package ) {
-
-    global $local_pickup;
-	
-	global $delivery_inMKAD;
-	global $delivery_outMKAD;
-	global $delivery_inMKAD_small;
-	global $delivery_outMKAD_small;
-
-
-	global $urgent_delivery_inMKAD; 
-	global $urgent_delivery_outMKAD; 
-	global $urgent_delivery_inMKAD_small; 
-	global $urgent_delivery_outMKAD_small;
-	
-	global $delivery_free;
  
 	// если сумма всех товаров в корзине меньше 2000, отключаем способ доставки
 	if ( WC()->cart->subtotal < 2000 ) {
