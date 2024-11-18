@@ -113,3 +113,10 @@ function mode_theme_update_header_cart_count() {
 }
 add_filter( 'wp_ajax_nopriv_mode_theme_update_header_cart_count', 'mode_theme_update_header_cart_count' );
 add_filter( 'wp_ajax_mode_theme_update_header_cart_count', 'mode_theme_update_header_cart_count' );
+
+function mode_theme_update_add_to_cart_btn() {
+	echo wc_get_template( 'loop/add-t-cart.php' );
+	die();
+}
+add_filter( 'wp_ajax_nopriv_mode_theme_update_add_to_cart_btn', 'mode_theme_update_add_to_cart_btn' );
+add_filter( 'wp_ajax_mode_theme_update_add_to_cart_btn', 'mode_theme_update_add_to_cart_btn' );
