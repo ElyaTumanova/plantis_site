@@ -121,4 +121,11 @@ function plnt_check_page() {
 // }
 
 
+// // Fragment Cache
+// add_filter( 'render_block', function( $content, $data ) {
+// 	if( get_prop( $data, [ 'blockName' ] ) === 'woocommerce/mini-cart' ) {
+// 		do_action( 'litespeed_control_set_nocache' );
+// 	}
 
+// 	return $content;
+// }, 10, 2 );
