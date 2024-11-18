@@ -101,9 +101,10 @@ function plnt_side_cart_count () {
 
 
 function plnt_side_cart_count_fragment( $fragments ) {
-	ob_start();
-	plnt_side_cart_count();
-	$fragments[ 'span.side-cart__count'] = ob_get_clean();
+	//ob_start();
+	//plnt_side_cart_count();
+	//$fragments[ 'span.side-cart__count'] = ob_get_clean();
+	$fragments[ 'span.side-cart__count'] = '<span class="side-cart__count"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>'
 	return $fragments;
 }
 
