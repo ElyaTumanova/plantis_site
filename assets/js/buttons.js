@@ -208,7 +208,7 @@ jQuery( function( $ ) {
     var data = {
       'action': 'mode_theme_update_add_to_cart_btn'
     };
-    $.post(
+    $.get(
       woocommerce_params.ajax_url, // The AJAX URL
       data, // Send our PHP function
       function(response){
