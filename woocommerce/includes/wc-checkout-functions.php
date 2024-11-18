@@ -197,7 +197,7 @@ function new_custom_checkout_field_script() {
         function plnt_hide_checkout_fields(event){
             let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
             console.log(checkedShippingMethod);
-            if(event.className == "shipping_method") {
+            if(event.target.className == "shipping_method") {
                 console.log(event);
                 checkedShippingMethod = event.target.value;
             }
