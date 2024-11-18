@@ -156,19 +156,12 @@ if(catalogWrap) {
 }( jQuery ) );
 
 
-( function ( $ ) {
- "use strict";
- console.log('hohoho');
-// Define the PHP function to call from here
- var data = {
-   'action': 'yith_wcwl_ajax_update_count'
- };
- $.post(
-    yith_wcwl_l10n.ajax_url, // The AJAX URL
-   data, // Send our PHP function
-   function(response){
-     $('.yith-wcwl-items-count').html(response); // Repopulate the specific element with the new content
-   }
- );
-// Close anon function.
-}( jQuery ) );
+jQuery( function( $ ) {
+    $( document ).on( 'click', function() {
+      $.get( yith_wcwl_l10n.ajax_url, {
+        action: 'yith_wcwl_update_wishlist_count'
+      }, function( data ) {
+        $('.yith-wcwl-items-count').children('i').html( data.count );
+      } );
+    } );
+  })
