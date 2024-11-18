@@ -167,7 +167,7 @@ function new_custom_checkout_field_script() {
     ?>
     <script>
         //let shipingMethods = document.querySelectorAll('.shipping_method');
-        let shipingMethods = document.querySelectorAll('form[name="checkout"]');
+        let shipingMethods = document.querySelector('form[name="checkout"]');
     
 		let deliveryDate = document.querySelector('#datepicker_field');
 		let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
@@ -186,6 +186,7 @@ function new_custom_checkout_field_script() {
 
 
         function plnt_hide_checkout_fields(event){
+            console.log(event);
             console.log(event.target);
             let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
             console.log(checkedShippingMethod);
@@ -211,10 +212,11 @@ function new_custom_checkout_field_script() {
         plnt_hide_checkout_fields(event);
         
         console.log(shipingMethods);
-        shipingMethods.forEach((element) => {
-            //console.log(element);
-            element.addEventListener('input', plnt_hide_checkout_fields);
-        });
+        shipingMethods.addEventListener('input', plnt_hide_checkout_fields);
+        // shipingMethods.forEach((element) => {
+        //     //console.log(element);
+        //     element.addEventListener('input', plnt_hide_checkout_fields);
+        // });
         
 
         // jQuery(function($){
