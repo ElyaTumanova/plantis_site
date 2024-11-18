@@ -491,7 +491,7 @@ function new_custom_checkout_field_script() {
                 var datePickerOpts = datepicker_init ();
                 datepickerCal.update(datePickerOpts);
             })
-        });
+        //});
     </script>
     <?php
 }
