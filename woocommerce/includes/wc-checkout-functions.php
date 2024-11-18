@@ -209,7 +209,7 @@ function new_custom_checkout_field_script() {
         plnt_hide_checkout_fields();
         
         console.log(shipingMethods);
-        shipingMethods.addEventListener('change', plnt_hide_checkout_fields);
+        shipingMethods[0].addEventListener('change', plnt_hide_checkout_fields);
         
 
         // jQuery(function($){
