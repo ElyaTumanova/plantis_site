@@ -149,7 +149,25 @@ if(catalogWrap) {
    woocommerce_params.ajax_url, // The AJAX URL
    data, // Send our PHP function
    function(response){
-     $('.side-cart__count').html(response); // Repopulate the specific element with the new content
+     $('.mini-cart').html(response); // Repopulate the specific element with the new content
+   }
+ );
+// Close anon function.
+}( jQuery ) );
+
+
+( function ( $ ) {
+ "use strict";
+ console.log('hohoho');
+// Define the PHP function to call from here
+ var data = {
+   'action': 'yith_wcwl_ajax_update_count'
+ };
+ $.post(
+   woocommerce_params.ajax_url, // The AJAX URL
+   data, // Send our PHP function
+   function(response){
+     $('.yith-wcwl-items-count').html(response); // Repopulate the specific element with the new content
    }
  );
 // Close anon function.
