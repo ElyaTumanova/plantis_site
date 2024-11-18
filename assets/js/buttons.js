@@ -157,7 +157,7 @@ if(catalogWrap) {
 
 
 jQuery( function( $ ) {
-    $( document ).on( 'click', function() {
+    $(document).ready( function() {
       $.get( yith_wcwl_l10n.ajax_url, {
         action: 'yith_wcwl_update_wishlist_count'
       }, function( data ) {
