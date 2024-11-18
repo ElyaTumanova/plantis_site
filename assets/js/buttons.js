@@ -164,7 +164,7 @@ if(catalogWrap) {
    'action': 'yith_wcwl_ajax_update_count'
  };
  $.post(
-   woocommerce_params.ajax_url, // The AJAX URL
+    yith_wcwl_l10n.ajax_url, // The AJAX URL
    data, // Send our PHP function
    function(response){
      $('.yith-wcwl-items-count').html(response); // Repopulate the specific element with the new content
