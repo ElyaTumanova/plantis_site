@@ -96,26 +96,11 @@
 							</button>
 						</div>
 						<div class="header__account">
-							<?php $account_icon = carbon_get_theme_option('account_icon');
-							$account_logged_icon = carbon_get_theme_option('account_logged_icon')?>
-							<?php if (!is_user_logged_in()) : 
-								if (is_account_page()) :?>
-									<a href ="<?php echo esc_url( home_url( '/my-account' ) ); ?>" class="header-btn__wrap">
-										<img class="header-btn__icon" src="<?php echo $account_icon ?>" alt="account" width="25" height="25">
-									<span class="header-btn__label">Войти</span>		
-								</a>
-								<?php else :?> 
-									<div class="header-btn__wrap login-btn">
-										<img class="header-btn__icon" src="<?php echo $account_icon ?>" alt="account" width="25" height="25">
-										<span class="header-btn__label">Войти</span>		
-									</div>
-								<?php endif; ?>
-							<?php else :?>
-								<a href ="<?php echo esc_url( home_url( '/my-account/orders' ) ); ?>" class="header-btn__wrap">
-									<img class="header-btn__icon" src="<?php echo $account_logged_icon ?>" alt="account" width="25" height="25">
-									<span class="header-btn__label">Войти</span>		
-								</a>
-							<?php endif; ?>
+							<?php $account_icon = carbon_get_theme_option('account_icon')?>
+							<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="header-btn__wrap">
+								<img class="header-btn__icon" src="<?php echo $account_icon ?>" alt="account" width="25" height="25">
+								<span class="header-btn__label">Войти</span>		
+							</a>
 						</div>
 						<div class="header__wishlist">
 							<?php $whishlist_icon = carbon_get_theme_option('whishlist_icon')?>
