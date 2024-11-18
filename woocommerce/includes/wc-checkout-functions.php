@@ -313,11 +313,12 @@ function new_custom_checkout_field_script() {
 
             return datePickerOpts;
         }
-
+        let datepickerCal;
+        let datePickerOpts;
         // Datepicker init
         setTimeout(() => {
-            let datepickerCal = new AirDatepicker('#datepicker');
-            let datePickerOpts = datepicker_init ();
+            datepickerCal = new AirDatepicker('#datepicker');
+            datePickerOpts = datepicker_init ();
             datepickerCal.update(datePickerOpts);
             if (weekend) {
                 datepickerCal.disableDate(weekend);
@@ -325,7 +326,7 @@ function new_custom_checkout_field_script() {
         }, 1000);  
    
         checkoutForm.addEventListener('input', function() {
-            let datePickerOpts = datepicker_init ();
+            datePickerOpts = datepicker_init ();
             datepickerCal.update(datePickerOpts);
             if (weekend) {
                 datepickerCal.disableDate(weekend);
