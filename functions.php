@@ -79,7 +79,7 @@ function plnt_check_page() {
 	echo wp_kses_data(WC()->cart->get_cart_contents_count());
 }
 
-//add_action( 'wp_footer', 'plnt_check_page' );
+add_action( 'wp_footer', 'plnt_check_page' );
 
 
 
