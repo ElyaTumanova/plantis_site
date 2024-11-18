@@ -66,5 +66,3 @@ echo apply_filters(
 	$product,
 	$args
 );
-
-echo wp_kses_data(WC()->cart->get_cart_contents_count());
