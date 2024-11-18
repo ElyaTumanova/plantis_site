@@ -209,7 +209,7 @@ jQuery( function( $ ) {
       'action': 'mode_theme_update_add_to_cart_btn'
     };
     $.post(
-        wc_add_to_cart_params.wc_ajax_url, // The AJAX URL
+        woocommerce_params.ajax_url, // The AJAX URL
       data, // Send our PHP function
       function(response){
         console.log(response);
