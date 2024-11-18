@@ -166,7 +166,8 @@ function new_custom_checkout_field_script() {
     $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';
     ?>
     <script>
-        let shipingMethods = document.querySelectorAll('form[name="checkout"]');
+        let shipingMethods = document.querySelectorAll('.shipping_method');
+        //let shipingMethods = document.querySelectorAll('form[name="checkout"]');
     
 		let deliveryDate = document.querySelector('#datepicker_field');
 		let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
@@ -184,7 +185,8 @@ function new_custom_checkout_field_script() {
         let urgentPickups = [urgentPickup1, urgentPickup2, urgentPickup3, urgentPickup4];
 
 
-        function plnt_hide_checkout_fields(){
+        function plnt_hide_checkout_fields(evt){
+            console.log(evt);
             let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
             console.log(checkedShippingMethod);
             if (urgentPickups.includes(checkedShippingMethod))
@@ -206,10 +208,13 @@ function new_custom_checkout_field_script() {
             }
         };
 
-        plnt_hide_checkout_fields();
+        plnt_hide_checkout_fields(evt);
         
         console.log(shipingMethods);
-        shipingMethods[0].addEventListener('change', plnt_hide_checkout_fields);
+        shipingMethods.forEach((element) => {
+            console.log(element);
+            element.addEventListener('click', plnt_hide_checkout_fields);
+        });
         
 
         // jQuery(function($){
