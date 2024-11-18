@@ -213,7 +213,7 @@ jQuery( function( $ ) {
       data, // Send our PHP function
       function(response){
         console.log(response);
-        //$('.woocommerce_loop_add_to_cart_link').html(response); // Repopulate the specific element with the new content
+        $('.woocommerce_loop_add_to_cart_link').html(response); // Repopulate the specific element with the new content
       }
     );
    // Close anon function.
