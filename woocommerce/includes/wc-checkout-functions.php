@@ -170,6 +170,7 @@ function new_custom_checkout_field_script() {
     
 		let deliveryDate = document.querySelector('#datepicker_field');
 		let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
+        let deliveryIntervalInput = document.querySelector('input[name=additional_delivery_interval]');
 
         let addressFields = document.querySelector('#billing_address_1_field');
         let additionalAddress = document.querySelector('.additional-address-field');
@@ -186,6 +187,7 @@ function new_custom_checkout_field_script() {
         let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
         function plnt_hide_checkout_fields(event){
             console.log('hi plnt_hide_checkout_fields');
+            console.log(deliveryIntervalInput)
             // if (event) {console.log(event)};
             if(event && event.target.className == "shipping_method") {
                 // console.log(event);
@@ -195,11 +197,13 @@ function new_custom_checkout_field_script() {
             {
                 if (deliveryDate) {deliveryDate.classList.add('d-none')};
                 if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
+                if (deliveryIntervalInput) {deliveryIntervalInput.checked = false};
                 if (addressFields) {addressFields.classList.remove('d-none');}
                 if (additionalAddress) {additionalAddress.classList.remove('d-none');}
             } else if ( checkedShippingMethod == localPickup) {
                 if (deliveryDate) {deliveryDate.classList.remove('d-none')};
                 if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
+                if (deliveryIntervalInput) {deliveryIntervalInput.checked = false};
                 if (addressFields) {addressFields.classList.add('d-none');}
                 if (additionalAddress) {additionalAddress.classList.add('d-none');}
             } else {
@@ -246,15 +250,11 @@ function new_custom_checkout_field_script() {
 
             let hour = date.getHours();
 
-            let deliveryIntervalInput = document.querySelector('input[name=additional_delivery_interval]');
-
             //console.log(hour);
 
             if (checkedShippingMethod == localPickup && hour < 18) {  
                 startDate = date.setDate(date.getDate() + 0);
                 selectedDate = startDate;
-                deliveryIntervalInput.checked = true;
-                console.log(deliveryIntervalInput);
             } else {
                 startDate = date.setDate(date.getDate() + 1);
                 selectedDate = startDate;                   
@@ -263,8 +263,13 @@ function new_custom_checkout_field_script() {
             //очищаем дату и интервал для срочной доставки
             if (urgentPickups.includes(checkedShippingMethod)) {
                 selectedDate = [];
-                deliveryIntervalInput.checked = false;
+                //deliveryIntervalInput.checked = false;
             } 
+            // //очищаем интервал для самовывоза
+            // if (checkedShippingMethod == localPickup) {
+            //     deliveryIntervalInput.checked = false;
+            //     console.log(deliveryIntervalInput);
+            // }
 
             // проверяем, что первая доступная дата не попадает на выходной
             const weekendTimeStamps = weekend.map(function (element) {
@@ -332,7 +337,7 @@ function new_custom_checkout_field_script() {
             datepicker_init ();
         }, 1000);  
    
-        checkoutForm.addEventListener('input', datepicker_init);
+        checkoutForm.addEventListener('change', datepicker_init);
     </script>
     <?php
 }
