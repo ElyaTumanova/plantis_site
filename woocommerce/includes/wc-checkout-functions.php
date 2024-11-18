@@ -187,7 +187,7 @@ function new_custom_checkout_field_script() {
 
         function plnt_hide_checkout_fields(event){
             console.log(event);
-            console.log(event.target);
+            //console.log(event.target);
             let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
             console.log(checkedShippingMethod);
             if (urgentPickups.includes(checkedShippingMethod))
