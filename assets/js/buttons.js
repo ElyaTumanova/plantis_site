@@ -134,3 +134,9 @@ if(catalogWrap) {
         gridButton3.disabled = true;
     };
 };
+
+let checkoutErrorMsg = document.querySelector('.woocommerce-NoticeGroup-checkout');
+
+if (checkoutErrorMsg) {
+    console.log(checkoutErrorMsg)
+};
