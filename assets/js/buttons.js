@@ -226,11 +226,16 @@ jQuery( function( $ ) {
 
 let miniCartItems = document.querySelectorAll('.mini-cart__wrap .woocommerce-mini-cart-item .remove_from_cart_button');
 let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
+let productsInCartIds = [];
 
 console.log(addToCartBtns);
 
 
 miniCartItems.forEach(element => {
-  console.log(element.dataset.product_id);
+  //console.log(element.dataset.product_id);
+  productsInCartIds.push(element.dataset.product_id);
+
 });
+
+console.log(productsInCartIds);
 
