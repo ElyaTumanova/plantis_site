@@ -140,7 +140,6 @@ if(catalogWrap) {
 
 ( function ( $ ) {
  "use strict";
- console.log('hihihi');
 // Define the PHP function to call from here
  var data = {
    'action': 'mode_theme_update_mini_cart'
@@ -169,7 +168,6 @@ jQuery( function( $ ) {
 
 ( function ( $ ) {
     "use strict";
-    console.log('hohoho');
    // Define the PHP function to call from here
     var data = {
       'action': 'mode_theme_update_side_cart_count'
@@ -186,7 +184,6 @@ jQuery( function( $ ) {
 
 ( function ( $ ) {
     "use strict";
-    console.log('lallalal');
    // Define the PHP function to call from here
     var data = {
       'action': 'mode_theme_update_header_cart_count'
