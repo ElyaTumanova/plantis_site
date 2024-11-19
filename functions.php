@@ -88,35 +88,3 @@ function plnt_date() {
 	date_default_timezone_set('Europe/Moscow');
 	echo date('H');
 }
-
-//add_action( 'wp_footer', 'get_refreshed_fragments' );
-
-//var_dump( wp_using_ext_object_cache() ); // bool(true)
-
-function mode_theme_update_mini_cart() {
-	echo wc_get_template( 'cart/mini-cart.php' );
-	die();
-}
-add_filter( 'wp_ajax_nopriv_mode_theme_update_mini_cart', 'mode_theme_update_mini_cart' );
-add_filter( 'wp_ajax_mode_theme_update_mini_cart', 'mode_theme_update_mini_cart' );
-
-function mode_theme_update_side_cart_count() {
-	echo wp_kses_data(WC()->cart->get_cart_contents_count());
-	die();
-}
-add_filter( 'wp_ajax_nopriv_mode_theme_update_side_cart_count', 'mode_theme_update_side_cart_count' );
-add_filter( 'wp_ajax_mode_theme_update_side_cart_count', 'mode_theme_update_side_cart_count' );
-
-function mode_theme_update_header_cart_count() {
-	echo wp_kses_data(WC()->cart->get_cart_contents_count());
-	die();
-}
-add_filter( 'wp_ajax_nopriv_mode_theme_update_header_cart_count', 'mode_theme_update_header_cart_count' );
-add_filter( 'wp_ajax_mode_theme_update_header_cart_count', 'mode_theme_update_header_cart_count' );
-
-function mode_theme_update_add_to_cart_btn() {
-	echo wc_get_template( 'loop/add-to-cart.php' );
-	die();
-}
-add_filter( 'wp_ajax_nopriv_mode_theme_update_add_to_cart_btn', 'mode_theme_update_add_to_cart_btn' );
-add_filter( 'wp_ajax_mode_theme_update_add_to_cart_btn', 'mode_theme_update_add_to_cart_btn' );
