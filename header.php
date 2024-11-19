@@ -70,53 +70,71 @@
 				<?php get_template_part( 'template-parts/header-notice' );?>
 			</div>
 
-			<div class="header__main container">
-				<div class="header__wrap">
-					<div class="logo">
-						<?php $logo = carbon_get_theme_option('logo');?>
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
-					</div><!-- .logo -->
-					<div class="search-btn">
-						<?php $search_icon = carbon_get_theme_option('search_icon')?>
-						<button class="header-btn__wrap">
-							<img class="header-btn__icon" src="<?php echo $search_icon ?>" alt="search" width="21" height="21">
-							<span class="header-btn__label">Поиск</span>		
-						</button>
+			<div class="header__main">
+				<div class="container">
+					<div class="header__wrap">
+						<div class="logo">
+							<?php $logo = carbon_get_theme_option('logo');?>
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
+						</div><!-- .logo -->
+						
 					</div>
-				</div>
-				<div class="header__description">
-					<?php $site_title = carbon_get_theme_option('site_title')?>
-					<?php if ( is_front_page()) : ?>
-						<h1 class="site-title"><?php echo $site_title ?></h1>
-					<?php else : ?>
-						<p class="site-title"><?php echo $site_title ?></p>
-					<?php endif; ?>
-				</div><!-- .description -->
-				<div class="header__wrap">
-					<div class="header__account">
-						<?php $account_icon = carbon_get_theme_option('account_icon')?>
-						<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="header-btn__wrap">
-							<img class="header-btn__icon" src="<?php echo $account_icon ?>" alt="account" width="25" height="25">
-							<span class="header-btn__label">Войти</span>		
-						</a>
-					</div>
-					<div class="header__wishlist">
-						<?php $whishlist_icon = carbon_get_theme_option('whishlist_icon')?>
-							<div class="header__count"><?php echo do_shortcode('[yith_wcwl_items_count]')?></div>
-							<a href="<?php echo get_site_url()?>/wishlist" class="header-btn__wrap">		
-								<img class="header-btn__icon" src="<?php echo $whishlist_icon ?>" alt="wishlist" width="25" height="25">
-								<span class="header-btn__label">Избранное</span>		
+					<div class="header__description">
+						<?php $site_title = carbon_get_theme_option('site_title')?>
+						<?php if ( is_front_page()) : ?>
+							<h1 class="site-title"><?php echo $site_title ?></h1>
+						<?php else : ?>
+							<p class="site-title"><?php echo $site_title ?></p>
+						<?php endif; ?>
+					</div><!-- .description -->
+					<div class="header__wrap">
+						<div class="search-btn">
+							<?php $search_icon = carbon_get_theme_option('search_icon')?>
+							<button class="header-btn__wrap">
+								<img class="header-btn__icon" src="<?php echo $search_icon ?>" alt="search" width="21" height="21">
+								<span class="header-btn__label">Поиск</span>		
+							</button>
+						</div>
+						<div class="header__account">
+							<?php $account_icon = carbon_get_theme_option('account_icon');
+							$account_logged_icon = carbon_get_theme_option('account_logged_icon')?>
+							<?php if (!is_user_logged_in()) : 
+								if (is_account_page()) :?>
+									<a href ="<?php echo esc_url( home_url( '/my-account' ) ); ?>" class="header-btn__wrap">
+										<img class="header-btn__icon" src="<?php echo $account_icon ?>" alt="account" width="25" height="25">
+									<span class="header-btn__label">Войти</span>		
+								</a>
+								<?php else :?> 
+									<div class="header-btn__wrap login-btn">
+										<img class="header-btn__icon" src="<?php echo $account_icon ?>" alt="account" width="25" height="25">
+										<span class="header-btn__label">Войти</span>		
+									</div>
+								<?php endif; ?>
+							<?php else :?>
+								<a href ="<?php echo esc_url( home_url( '/my-account/orders' ) ); ?>" class="header-btn__wrap">
+									<img class="header-btn__icon" src="<?php echo $account_logged_icon ?>" alt="account" width="25" height="25">
+									<span class="header-btn__label">Войти</span>		
+								</a>
+							<?php endif; ?>
+						</div>
+						<div class="header__wishlist">
+							<?php $whishlist_icon = carbon_get_theme_option('whishlist_icon')?>
+								<div class="header__count"><?php echo do_shortcode('[yith_wcwl_items_count]')?></div>
+								<a href="<?php echo get_site_url()?>/wishlist" class="header-btn__wrap">		
+									<img class="header-btn__icon" src="<?php echo $whishlist_icon ?>" alt="wishlist" width="25" height="25">
+									<span class="header-btn__label">Избранное</span>		
+								</a>
 							</a>
-						</a>
+						</div>
+						
+						<div class="header-cart">
+							<?php 
+								plnt_woocommerce_cart_header(); 
+								?><div class="mini-cart__wrap"> <?php
+									plnt_woocommerce_mini_cart(); 
+								?></div>
+						</div><!-- .header-cart -->
 					</div>
-					
-					<div class="header-cart">
-						<?php 
-							plnt_woocommerce_cart_header(); 
-							?><div class="mini-cart__wrap"> <?php
-								plnt_woocommerce_mini_cart(); 
-							?></div>
-					</div><!-- .header-cart -->
 				</div>
 			</div>
 			
