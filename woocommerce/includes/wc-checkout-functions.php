@@ -2,26 +2,6 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-//переменные
-global $local_pickup;
-	
-global $delivery_inMKAD;
-global $delivery_outMKAD;
-global $delivery_inMKAD_small;
-global $delivery_outMKAD_small;
-
-
-global $urgent_delivery_inMKAD; 
-global $urgent_delivery_outMKAD; 
-global $urgent_delivery_inMKAD_small; 
-global $urgent_delivery_outMKAD_small;
-
-global $urgent_delivery_inMKAD_late; 
-global $urgent_delivery_outMKAD_late; 
-global $urgent_delivery_inMKAD_small_late; 
-global $urgent_delivery_outMKAD_small_late;
-
-global $delivery_free;
 
 // структура страницы
 
