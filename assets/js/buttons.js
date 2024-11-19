@@ -233,11 +233,11 @@ jQuery( function( $ ) {
 //   console.log('Страница готова!')
 // })
 
-// let miniCartItems = document.querySelectorAll('.mini-cart__wrap .woocommerce-mini-cart-item .remove_from_cart_button');
-// let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
-// let productsInCartIds = [];
+//let miniCartItems = document.querySelectorAll('.mini-cart__wrap .woocommerce-mini-cart-item .remove_from_cart_button');
+let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
+//let productsInCartIds = [];
 
-// console.log(addToCartBtns);
+console.log(addToCartBtns);
 
 
 // miniCartItems.forEach(item => {
