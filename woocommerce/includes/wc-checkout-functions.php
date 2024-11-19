@@ -361,21 +361,6 @@ function new_custom_checkout_field_script() {
 add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_method', 20, 2 );
  
 function new_truemisha_remove_shipping_method( $rates, $package ) {
-
-    global $local_pickup;
-	
-	global $delivery_inMKAD;
-	global $delivery_outMKAD;
-	global $delivery_inMKAD_small;
-	global $delivery_outMKAD_small;
-
-
-	global $urgent_delivery_inMKAD; 
-	global $urgent_delivery_outMKAD; 
-	global $urgent_delivery_inMKAD_small; 
-	global $urgent_delivery_outMKAD_small;
-	
-	global $delivery_free;
  
 	// удаляем способ доставки, если доступна бесплатная
 	if ( isset( $rates[ $delivery_free ] ) ) { 
