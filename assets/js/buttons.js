@@ -135,33 +135,41 @@ if(catalogWrap) {
     };
 };
 
-let responseText;
-let miniCartDiv = document.createElement('div');
-console.log('empty ' + miniCartDiv);
 
-( function ( $ ) {
- "use strict";
-// Define the PHP function to call from here
-console.log('ajax');
- var data = {
-   'action': 'mode_theme_update_mini_cart'
- };
- $.post(
-   woocommerce_params.ajax_url, // The AJAX URL
-   data, // Send our PHP function
-   function(response){
-     $('.mini-cart').html(response); // Repopulate the specific element with the new content
-     responseText = response;
-    }
- );
-// Close anon function.
-}( jQuery ) );
 
-setTimeout(() => {
-  miniCartDiv.innerHTML = responseText;
+function getMiniCart() {
+  let responseText;
+  let miniCartDiv = document.createElement('div');
   console.log(miniCartDiv);
-  updateCatalogButtons(miniCartDiv);
-}, 1000);
+
+  ( function ( $ ) {
+   "use strict";
+  // Define the PHP function to call from here
+  console.log('ajax');
+   var data = {
+     'action': 'mode_theme_update_mini_cart'
+   };
+   $.post(
+     woocommerce_params.ajax_url, // The AJAX URL
+     data, // Send our PHP function
+     function(response){
+       $('.mini-cart').html(response); // Repopulate the specific element with the new content
+       responseText = response;
+      }
+   );
+  // Close anon function.
+  }( jQuery ) );
+
+  setTimeout(() => {
+    miniCartDiv.innerHTML = responseText;
+    console.log(miniCartDiv);
+    updateCatalogButtons(miniCartDiv);
+  }, 1000);
+}
+
+getMiniCart();
+
+
 
 
 jQuery( function( $ ) {
