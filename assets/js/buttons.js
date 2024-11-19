@@ -179,9 +179,10 @@ jQuery( function( $ ) {
       function(response){
         $('.side-cart__count').html(response); // Repopulate the specific element with the new content
         resp = response;
+        console.log(resp);
       }
     );
-    console.log(resp);
+    
    // Close anon function.
    }( jQuery ) );
 
