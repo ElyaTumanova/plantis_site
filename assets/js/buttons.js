@@ -140,3 +140,11 @@ if(catalogWrap) {
 // if (checkoutErrorMsg) {
 //     console.log(checkoutErrorMsg)
 // };
+
+function scrollToTop () {
+    window.scrollTo({
+        top: 100,
+        left: 0,
+        behavior: 'smooth'
+      })
+}
