@@ -239,3 +239,6 @@ miniCartItems.forEach(element => {
 
 console.log(productsInCartIds);
 
+addToCartBtns.forEach(element => {
+  console.log(element.dataset.product_id);
+});
