@@ -121,6 +121,7 @@ if($site === 'http://new.plantis.shop') {
 	$filter_volume_id = 12016;
 	$filter_gift_id = 10988;
 	$filter_active_id = 6057;
+	$filter_razmer_id = 60247; //to be updated
 
 
 } else {
@@ -163,6 +164,8 @@ if($site === 'http://new.plantis.shop') {
 	$filter_volume_id = 56544;
 	$filter_gift_id = 56535;
 	$filter_active_id = 56531;
+	$filter_razmer_id = 60247;
+
 }
 
 
