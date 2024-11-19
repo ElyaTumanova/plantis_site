@@ -47,6 +47,7 @@ jQuery( function( $ ) {
   }( jQuery ) );
 
   function getMiniCart() {
+    console.log('hi get minicart');
     let responseText;
     let miniCartDiv = document.createElement('div');
     console.log(miniCartDiv);
