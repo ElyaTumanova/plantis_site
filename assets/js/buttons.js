@@ -141,6 +141,7 @@ if(catalogWrap) {
 ( function ( $ ) {
  "use strict";
 // Define the PHP function to call from here
+let resp;
  var data = {
    'action': 'mode_theme_update_mini_cart'
  };
@@ -149,7 +150,9 @@ if(catalogWrap) {
    data, // Send our PHP function
    function(response){
      $('.mini-cart').html(response); // Repopulate the specific element with the new content
-   }
+     resp = response;
+     console.log(resp);
+    }
  );
 // Close anon function.
 }( jQuery ) );
@@ -169,7 +172,6 @@ jQuery( function( $ ) {
 ( function ( $ ) {
     "use strict";
    // Define the PHP function to call from here
-   let resp;
     var data = {
       'action': 'mode_theme_update_side_cart_count'
     };
@@ -178,8 +180,6 @@ jQuery( function( $ ) {
       data, // Send our PHP function
       function(response){
         $('.side-cart__count').html(response); // Repopulate the specific element with the new content
-        resp = response;
-        console.log(resp);
       }
     );
     
