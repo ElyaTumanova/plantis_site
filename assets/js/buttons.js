@@ -137,7 +137,7 @@ if(catalogWrap) {
 
 let responseText;
 let miniCartDiv = document.createElement('div');
-console.log(miniCartDiv);
+console.log('empty ' + miniCartDiv);
 
 ( function ( $ ) {
  "use strict";
