@@ -156,7 +156,10 @@ let resp;
 // Close anon function.
 }( jQuery ) );
 
-console.log(resp);
+setTimeout(() => {
+  console.log(resp);
+}, 1000);
+
 
 jQuery( function( $ ) {
     $(document).ready( function() {
