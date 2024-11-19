@@ -218,16 +218,21 @@ function new_custom_checkout_field_script() {
 
             //console.log(hour);
 
-            if (checkedShippingMethod == localPickup && hour < 15) {  
-                startDate = date.setDate(date.getDate() + 0);
-                selectedDate = startDate;
-            } else if ( hour > 15) {
-                startDate = date.setDate(date.getDate() + 2);
-                selectedDate = startDate;
-            } else {
-                startDate = date.setDate(date.getDate() + 1);
-                selectedDate = startDate;                   
-            };
+            if (hour < 15) {
+                if (checkedShippingMethod == localPickup) {  
+                    startDate = date.setDate(date.getDate() + 0);
+                    selectedDate = startDate;
+                } else {
+                    startDate = date.setDate(date.getDate() + 1);
+                    selectedDate = startDate;                   
+            }} else {
+                if (checkedShippingMethod == localPickup) {  
+                    startDate = date.setDate(date.getDate() + 1);
+                    selectedDate = startDate;
+                } else {
+                    startDate = date.setDate(date.getDate() + 2);
+                    selectedDate = startDate;                   
+            }};
 
             //очищаем дату для срочной доставки
             if (urgentPickups.includes(checkedShippingMethod)) {
