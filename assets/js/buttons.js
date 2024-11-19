@@ -135,12 +135,7 @@ if(catalogWrap) {
     };
 };
 
-// let checkoutErrorMsg = document.querySelector('.woocommerce-NoticeGroup-checkout');
-
-// if (checkoutErrorMsg) {
-//     console.log(checkoutErrorMsg)
-// };
-
+//функция прокрутки до начала страницы - добавлена в checkout.min.js
 function scrollToTop () {
     console.log('top');
     window.scrollTo({
