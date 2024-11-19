@@ -30,7 +30,7 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		                                     '/assets/js/swiper.js', array( 'jquery' ), null, false ); //swiper
 
 		wp_enqueue_script( 'buttons', get_template_directory_uri() .
-											 '/assets/js/buttons.js', array( 'jquery' ), filemtime( get_theme_file_path('/assets/js/buttons.js') ), true );	
+											 '/assets/js/buttons.js', array( 'jquery' ), null, true );	
 
 		// wp_enqueue_script( 'account', get_template_directory_uri() .
 		// 									 '/assets/js/account.js', array( 'jquery' ), null, true );	
