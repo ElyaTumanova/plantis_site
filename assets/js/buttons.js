@@ -225,8 +225,12 @@ jQuery( function( $ ) {
 --------------------------------------------------------------*/
 
 let miniCartItems = document.querySelectorAll('.mini-cart__wrap .woocommerce-mini-cart-item .remove_from_cart_button');
+let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
+
+console.log(addToCartBtns);
+
 
 miniCartItems.forEach(element => {
-  console.log(element.dataset);
+  console.log(element.dataset.product_id);
 });
 
