@@ -494,6 +494,7 @@
     margin-bottom: 20px;
     line-height: 1.4;
     position: relative;
+    margin-top: 20px;
 }
 
 .woocommerce-order-received .woocommerce-order .woocommerce-notice img{
