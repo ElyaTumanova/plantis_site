@@ -116,10 +116,6 @@ function new_custom_checkout_field_script() {
 	global $urgent_delivery_outMKAD;
 	global $urgent_delivery_inMKAD_small;
 	global $urgent_delivery_outMKAD_small;
-    global $urgent_delivery_inMKAD_late; 
-	global $urgent_delivery_outMKAD_late; 
-	global $urgent_delivery_inMKAD_small_late; 
-	global $urgent_delivery_outMKAD_small_late;
 
     global $payment_inn_chekbox;
     global $inn_field;
@@ -144,11 +140,8 @@ function new_custom_checkout_field_script() {
         let urgentPickup2 = '<?php echo $urgent_delivery_outMKAD; ?>';
         let urgentPickup3 = '<?php echo $urgent_delivery_inMKAD_small; ?>';
         let urgentPickup4 = '<?php echo $urgent_delivery_outMKAD_small; ?>';
-        let urgentPickup5 = '<?php echo $urgent_delivery_inMKAD_late; ?>';
-        let urgentPickup6 = '<?php echo $urgent_delivery_outMKAD_late; ?>';
-        let urgentPickup7 = '<?php echo $urgent_delivery_inMKAD_small_late; ?>';
-        let urgentPickup8 = '<?php echo $urgent_delivery_outMKAD_small_late; ?>';
-        let urgentPickups = [urgentPickup1, urgentPickup2, urgentPickup3, urgentPickup4, urgentPickup5, urgentPickup6, urgentPickup7, urgentPickup8];
+      
+        let urgentPickups = [urgentPickup1, urgentPickup2, urgentPickup3, urgentPickup4];
 
         let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
         function plnt_hide_checkout_fields(event){
@@ -214,25 +207,18 @@ function new_custom_checkout_field_script() {
             let selectedDate = [];
             let date = new Date();
 
-            let hour = date.getHours();
+            //let hour = date.getHours();
 
             //console.log(hour);
 
-            if (hour < 18) {
-                if (checkedShippingMethod == localPickup) {  
-                    startDate = date.setDate(date.getDate() + 0);
-                    selectedDate = startDate;
-                } else {
-                    startDate = date.setDate(date.getDate() + 1);
-                    selectedDate = startDate;                   
-            }} else {
-                if (checkedShippingMethod == localPickup) {  
-                    startDate = date.setDate(date.getDate() + 1);
-                    selectedDate = startDate;
-                } else {
-                    startDate = date.setDate(date.getDate() + 2);
-                    selectedDate = startDate;                   
-            }};
+          
+            if (checkedShippingMethod == localPickup) {  
+                startDate = date.setDate(date.getDate() + 0);
+                selectedDate = startDate;
+            } else {
+                startDate = date.setDate(date.getDate() + 1);
+                selectedDate = startDate;                   
+            };
 
             //очищаем дату для срочной доставки
             if (urgentPickups.includes(checkedShippingMethod)) {
@@ -331,11 +317,6 @@ function truemisha_shipping_by_weight( $rates, $package ) {
     global $urgent_delivery_inMKAD_small; 
     global $urgent_delivery_outMKAD_small;
 
-    global $urgent_delivery_inMKAD_late; 
-    global $urgent_delivery_outMKAD_late; 
-    global $urgent_delivery_inMKAD_small_late; 
-    global $urgent_delivery_outMKAD_small_late;
-
     global $delivery_free;
 
     $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
@@ -394,11 +375,6 @@ function new_truemisha_remove_shipping_method( $rates, $package ) {
     global $urgent_delivery_inMKAD_small; 
     global $urgent_delivery_outMKAD_small;
 
-    global $urgent_delivery_inMKAD_late; 
-    global $urgent_delivery_outMKAD_late; 
-    global $urgent_delivery_inMKAD_small_late; 
-    global $urgent_delivery_outMKAD_small_late;
-
     global $delivery_free;
  
 	// удаляем способ доставки, если доступна бесплатная
@@ -437,11 +413,6 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
     global $urgent_delivery_inMKAD_small; 
     global $urgent_delivery_outMKAD_small;
 
-    global $urgent_delivery_inMKAD_late; 
-    global $urgent_delivery_outMKAD_late; 
-    global $urgent_delivery_inMKAD_small_late; 
-    global $urgent_delivery_outMKAD_small_late;
-
     global $delivery_free;
  
 	// если сумма всех товаров в корзине меньше 2000, отключаем способ доставки
@@ -449,58 +420,10 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
 	    unset( $rates[ $delivery_inMKAD ] );
 		unset( $rates[ $delivery_outMKAD ] );
 		unset( $rates[ $urgent_delivery_inMKAD ] );
-		unset( $rates[ $urgent_delivery_outMKAD ] );		
-		unset( $rates[ $urgent_delivery_inMKAD_late ] );		
-		unset( $rates[ $urgent_delivery_outMKAD_late ] );		
+		unset( $rates[ $urgent_delivery_outMKAD ] );			
 	} else {
 		unset( $rates[ $delivery_inMKAD_small ] );
 		unset( $rates[ $delivery_outMKAD_small ] );
-		unset( $rates[ $urgent_delivery_inMKAD_small ] );
-		unset( $rates[ $urgent_delivery_outMKAD_small ] );
-		unset( $rates[ $urgent_delivery_inMKAD_small_late ] );
-		unset( $rates[ $urgent_delivery_outMKAD_small_late ] );
-	}
- 
-	return $rates;
- 
-}
-
-//УБИРАЕМ СПОСОБЫ ДОСТАВКИ В ЗАВИСИМОСТИ ОТ ЧАСА
-add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_hour', 35, 2 );
- 
-function new_truemisha_remove_shipping_on_hour( $rates, $package ) {
-
-    //переменные
-    global $local_pickup;
-        
-    global $delivery_inMKAD;
-    global $delivery_outMKAD;
-    global $delivery_inMKAD_small;
-    global $delivery_outMKAD_small;
-
-
-    global $urgent_delivery_inMKAD; 
-    global $urgent_delivery_outMKAD; 
-    global $urgent_delivery_inMKAD_small; 
-    global $urgent_delivery_outMKAD_small;
-
-    global $urgent_delivery_inMKAD_late; 
-    global $urgent_delivery_outMKAD_late; 
-    global $urgent_delivery_inMKAD_small_late; 
-    global $urgent_delivery_outMKAD_small_late;
-
-    global $delivery_free;
- 
-	date_default_timezone_set('Europe/Moscow');
-	//echo date('H');
-	if ( date('H') < 18 ) {
-		unset( $rates[ $urgent_delivery_inMKAD_late ] );
-		unset( $rates[ $urgent_delivery_outMKAD_late ] );		
-		unset( $rates[ $urgent_delivery_inMKAD_small_late ] );		
-		unset( $rates[ $urgent_delivery_outMKAD_small_late ] );		
-	} else {
-		unset( $rates[ $urgent_delivery_inMKAD ] );
-		unset( $rates[ $urgent_delivery_outMKAD ] );
 		unset( $rates[ $urgent_delivery_inMKAD_small ] );
 		unset( $rates[ $urgent_delivery_outMKAD_small ] );
 	}

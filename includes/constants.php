@@ -92,14 +92,6 @@ if($site === 'http://new.plantis.shop') {
 	$urgent_delivery_outMKAD = 'flat_rate:14'; 
 	$urgent_delivery_inMKAD_small = 'flat_rate:17'; 
 	$urgent_delivery_outMKAD_small = 'flat_rate:18';
-
-
-	$urgent_delivery_inMKAD_late = 'flat_rate:19'; 
-	$urgent_delivery_outMKAD_late = 'flat_rate:20'; 
-	$urgent_delivery_inMKAD_small_late = 'flat_rate:21'; 
-	$urgent_delivery_outMKAD_small_late = 'flat_rate:22';
-
-
 	
 	$delivery_free = 'free_shipping:5';
 
@@ -138,11 +130,6 @@ if($site === 'http://new.plantis.shop') {
 	$urgent_delivery_outMKAD = 'flat_rate:6'; 
 	$urgent_delivery_inMKAD_small = 'flat_rate:11'; 
 	$urgent_delivery_outMKAD_small = 'flat_rate:12';
-
-	$urgent_delivery_inMKAD_late = 'flat_rate:13'; 
-	$urgent_delivery_outMKAD_late = 'flat_rate:14'; 
-	$urgent_delivery_inMKAD_small_late = 'flat_rate:15'; 
-	$urgent_delivery_outMKAD_small_late = 'flat_rate:16';
 	
 	$delivery_free = 'free_shipping:4';
 
