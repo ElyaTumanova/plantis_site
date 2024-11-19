@@ -231,14 +231,17 @@ let productsInCartIds = [];
 console.log(addToCartBtns);
 
 
-miniCartItems.forEach(element => {
+miniCartItems.forEach(item => {
   //console.log(element.dataset.product_id);
-  productsInCartIds.push(element.dataset.product_id);
+  productsInCartIds.push(item.dataset.product_id);
 
 });
 
 console.log(productsInCartIds);
 
-addToCartBtns.forEach(element => {
-  console.log(element.dataset.product_id);
+addToCartBtns.forEach(button => {
+  console.log(button.dataset.product_id);
+  if(productsInCartIds.includes(button.dataset.product_id)) {
+    console.log(button);
+  };
 });
