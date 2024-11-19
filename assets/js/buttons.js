@@ -222,21 +222,20 @@ jQuery( function( $ ) {
 
 function updateCatalogButtons(miniCartDiv) {
 
-console.log('hiho');
-console.log(miniCartDiv);
+// console.log('hiho');
+// console.log(miniCartDiv);
 let miniCartItems = miniCartDiv.querySelectorAll('.woocommerce-mini-cart-item .remove_from_cart_button');
 let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
+let removeCartBtns = document.querySelectorAll('.remove_from_cart_button');
 let productsInCartIds = [];
 
 console.log(addToCartBtns.length);
-
 console.log(miniCartItems.length);
 
 
 miniCartItems.forEach(item => {
   //console.log(element.dataset.product_id);
   productsInCartIds.push(item.dataset.product_id);
-
 });
 
 console.log(productsInCartIds);
@@ -248,6 +247,17 @@ addToCartBtns.forEach(button => {
     button.innerHTML = 'Добавлен';
     button.setAttribute('href', button.dataset.remove_link);
     button.setAttribute('class', 'button product_type_simple remove_from_cart_button added');
+  };
+});
+
+removeCartBtns.forEach(button => {
+  if(productsInCartIds.includes(button.dataset.product_id)) {
+    return
+  } else {
+    console.log(button);
+    button.innerHTML = 'В корзину';
+    button.setAttribute('href', '?add-to-cart='.button.dataset.product_id);
+    button.setAttribute('class', 'button product_type_simple add_to_cart_button ajax_add_to_cart');
   };
 });
 }
