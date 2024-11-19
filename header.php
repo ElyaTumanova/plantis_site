@@ -47,7 +47,7 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/87781741" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <div id="page" class="site">
 
-	<header id="header" class="header" role="banner">
+<header id="header" class="header" role="banner">
 		<div class="header__desktop">
 			<div class="header__info">
 				<div class="header__info-wrap container">

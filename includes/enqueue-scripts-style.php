@@ -13,6 +13,9 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		// wp_enqueue_script( 'owl-script', get_template_directory_uri() .
 		//                                  '/assets/js/owl.carousel.min.js', array( 'jquery' ), null, true );
 		
+		wp_enqueue_script( 'ajax-update-cart', get_template_directory_uri() .
+											 '/assets/js/ajax-update-cart.js', array( 'jquery' ), null, true );									 
+		
 		wp_enqueue_script( 'ajax-search', get_template_directory_uri() .
 		                                 '/assets/js/ajax-search.js', array( 'jquery' ), null, true );
 		wp_localize_script ('ajax-search', 'search_form', array(
