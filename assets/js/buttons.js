@@ -135,7 +135,7 @@ if(catalogWrap) {
     };
 };
 
-
+let responseText;
 let miniCartItems = document.createElement('div');
 
 ( function ( $ ) {
@@ -150,15 +150,16 @@ let miniCartItems = document.createElement('div');
    data, // Send our PHP function
    function(response){
      $('.mini-cart').html(response); // Repopulate the specific element with the new content
-     miniCartItems.html(response);
+     responseText = response;
     }
  );
 // Close anon function.
 }( jQuery ) );
 
 setTimeout(() => {
+  miniCartItems.innerHTML = responseText;
   console.log(miniCartItems);
-  updateCatalogBauutons(miniCartItems);
+  updateCatalogButtons(miniCartItems);
 }, 1000);
 
 
@@ -212,7 +213,7 @@ jQuery( function( $ ) {
 # Update catalog add-to-cart buttons
 --------------------------------------------------------------*/
 
-function updateCatalogBauutons(miniCartItems) {
+function updateCatalogButtons(miniCartItems) {
 
 console.log('hiho')
 //let miniCartItems = document.querySelectorAll('.mini-cart__wrap .woocommerce-mini-cart-item .remove_from_cart_button');
