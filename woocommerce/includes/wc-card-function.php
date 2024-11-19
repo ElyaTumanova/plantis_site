@@ -491,6 +491,7 @@ function check_category ($product) {
     global $ukhod_cat_id;
     global $peresadka_cat_id;
     global $misc_cat_id;
+    global $plants_treez_cat_id;
 	$idCats = $product->get_category_ids();
     if (in_array($plants_cat_id, $idCats)) {
         return $parentCatId = $plants_cat_id;
@@ -504,6 +505,8 @@ function check_category ($product) {
         return $parentCatId = $ukhod_cat_id;
     } else if (in_array($peresadka_cat_id, $idCats)) {
         return $parentCatId = $peresadka_cat_id;
+    } else if (in_array($plants_treez_cat_id, $idCats)) {
+        return $parentCatId = $plants_treez_cat_id;
     } else {
         return $parentCatId = $misc_cat_id;
     }
