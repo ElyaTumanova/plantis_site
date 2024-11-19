@@ -135,8 +135,8 @@ if(catalogWrap) {
     };
 };
 
-let checkoutErrorMsg = document.querySelector('.woocommerce-NoticeGroup-checkout');
+// let checkoutErrorMsg = document.querySelector('.woocommerce-NoticeGroup-checkout');
 
-if (checkoutErrorMsg) {
-    console.log(checkoutErrorMsg)
-};
+// if (checkoutErrorMsg) {
+//     console.log(checkoutErrorMsg)
+// };
