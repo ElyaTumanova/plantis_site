@@ -245,6 +245,9 @@ addToCartBtns.forEach(button => {
   console.log(button.dataset.product_id);
   if(productsInCartIds.includes(button.dataset.product_id)) {
     console.log(button);
+    button.innerHTML = 'Добавлен';
+    button.setAttribute('href', button.dataset.data-remove_link);
+    button.setAttribute('class', 'button product_type_simple remove_from_cart_button');
   };
 });
 }
