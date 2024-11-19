@@ -170,8 +170,6 @@ function getMiniCart() {
 getMiniCart();
 
 
-
-
 jQuery( function( $ ) {
     $(document).ready( function() {
         $.get( yith_wcwl_l10n.ajax_url, {
@@ -230,24 +228,24 @@ let miniCartItems = miniCartDiv.querySelectorAll('.woocommerce-mini-cart-item .r
 let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
 let productsInCartIds = [];
 
-console.log(addToCartBtns);
+console.log(addToCartBtns.length);
 
-console.log(miniCartItems);
+console.log(miniCartItems.length);
 
 
-// miniCartItems.forEach(item => {
-//   //console.log(element.dataset.product_id);
-//   productsInCartIds.push(item.dataset.product_id);
+miniCartItems.forEach(item => {
+  //console.log(element.dataset.product_id);
+  productsInCartIds.push(item.dataset.product_id);
 
-// });
+});
 
-// console.log(productsInCartIds);
+console.log(productsInCartIds);
 
-// addToCartBtns.forEach(button => {
-//   console.log(button.dataset.product_id);
-//   if(productsInCartIds.includes(button.dataset.product_id)) {
-//     console.log(button);
-//   };
-// });
+addToCartBtns.forEach(button => {
+  console.log(button.dataset.product_id);
+  if(productsInCartIds.includes(button.dataset.product_id)) {
+    console.log(button);
+  };
+});
 }
 
