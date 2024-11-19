@@ -224,6 +224,10 @@ jQuery( function( $ ) {
 # Update catalog add-to-cart buttons
 --------------------------------------------------------------*/
 
+window.addEventListener('load', function () {
+  console.log('Страница готова!')
+})
+
 let miniCartItems = document.querySelectorAll('.mini-cart__wrap .woocommerce-mini-cart-item .remove_from_cart_button');
 let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
 let productsInCartIds = [];
