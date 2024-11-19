@@ -142,6 +142,7 @@ if(catalogWrap) {
 // };
 
 function scrollToTop () {
+    console.log('top');
     window.scrollTo({
         top: 100,
         left: 0,
