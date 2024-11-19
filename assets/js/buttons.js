@@ -136,7 +136,7 @@ if(catalogWrap) {
 };
 
 let responseText;
-let miniCartItems = document.createElement('div');
+let miniCartDiv = document.createElement('div');
 
 ( function ( $ ) {
  "use strict";
@@ -157,9 +157,9 @@ let miniCartItems = document.createElement('div');
 }( jQuery ) );
 
 setTimeout(() => {
-  miniCartItems.innerHTML = responseText;
-  console.log(miniCartItems);
-  updateCatalogButtons(miniCartItems);
+  miniCartDiv.innerHTML = responseText;
+  console.log(miniCartDiv);
+  updateCatalogButtons(miniCartDiv);
 }, 1000);
 
 
@@ -213,10 +213,10 @@ jQuery( function( $ ) {
 # Update catalog add-to-cart buttons
 --------------------------------------------------------------*/
 
-function updateCatalogButtons(miniCartItems) {
+function updateCatalogButtons(miniCartDiv) {
 
 console.log('hiho')
-//let miniCartItems = document.querySelectorAll('.mini-cart__wrap .woocommerce-mini-cart-item .remove_from_cart_button');
+let miniCartItems = miniCartDiv.querySelectorAll('.woocommerce-mini-cart-item .remove_from_cart_button');
 let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
 let productsInCartIds = [];
 
