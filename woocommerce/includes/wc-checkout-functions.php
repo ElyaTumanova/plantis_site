@@ -449,6 +449,50 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
  
 }
 
+//УБИРАЕМ СПОСОБЫ ДОСТАВКИ В ЗАВИСИМОСТИ ОТ ЧАСА
+add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_hour', 35, 2 );
+ 
+function new_truemisha_remove_shipping_on_hour( $rates, $package ) {
+
+    //переменные
+    global $local_pickup;
+        
+    global $delivery_inMKAD;
+    global $delivery_outMKAD;
+    global $delivery_inMKAD_small;
+    global $delivery_outMKAD_small;
+
+
+    global $urgent_delivery_inMKAD; 
+    global $urgent_delivery_outMKAD; 
+    global $urgent_delivery_inMKAD_small; 
+    global $urgent_delivery_outMKAD_small;
+
+    global $urgent_delivery_inMKAD_late; 
+    global $urgent_delivery_outMKAD_late; 
+    global $urgent_delivery_inMKAD_small_late; 
+    global $urgent_delivery_outMKAD_small_late;
+
+    global $delivery_free;
+ 
+	date_default_timezone_set('Europe/Moscow');
+	//echo date('H');
+	if ( date('H') < 18 ) {
+		unset( $rates[ $urgent_delivery_inMKAD_late ] );
+		unset( $rates[ $urgent_delivery_outMKAD_late ] );		
+		unset( $rates[ $urgent_delivery_inMKAD_small_late ] );		
+		unset( $rates[ $urgent_delivery_outMKAD_small_late ] );		
+	} else {
+		unset( $rates[ $urgent_delivery_inMKAD ] );
+		unset( $rates[ $urgent_delivery_outMKAD ] );
+		unset( $rates[ $urgent_delivery_inMKAD_small ] );
+		unset( $rates[ $urgent_delivery_outMKAD_small ] );
+	}
+ 
+	return $rates;
+ 
+}
+
 // делим поле billing_address_2 на несколько полей//
 
 add_filter( 'woocommerce_form_field_text', 'true_fields', 25, 4 );
