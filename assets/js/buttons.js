@@ -254,9 +254,9 @@ removeCartBtns.forEach(button => {
   if(productsInCartIds.includes(button.dataset.product_id)) {
     return
   } else {
-    console.log(button);
+    console.log(button.dataset.product_id);
     button.innerHTML = 'В корзину';
-    button.setAttribute('href', '?add-to-cart='.button.dataset.product_id);
+    button.setAttribute('href', `?add-to-cart=${button.dataset.product_id}`);
     button.setAttribute('class', 'button product_type_simple add_to_cart_button ajax_add_to_cart');
   };
 });
