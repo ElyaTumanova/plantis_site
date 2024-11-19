@@ -229,10 +229,11 @@ jQuery( function( $ ) {
 # Update catalog add-to-cart buttons
 --------------------------------------------------------------*/
 
+function updateCatalogBauutons() {
 // window.addEventListener('load', function () {
 //   console.log('Страница готова!')
 // })
-
+console.log('hiho')
 //let miniCartItems = document.querySelectorAll('.mini-cart__wrap .woocommerce-mini-cart-item .remove_from_cart_button');
 let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
 //let productsInCartIds = [];
@@ -254,3 +255,6 @@ console.log(addToCartBtns);
 //     console.log(button);
 //   };
 // });
+}
+
+updateCatalogBauutons();
