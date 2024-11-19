@@ -136,7 +136,7 @@ if(catalogWrap) {
 };
 
 
-let resp;
+let miniCartItems;
 
 ( function ( $ ) {
  "use strict";
@@ -150,14 +150,15 @@ let resp;
    data, // Send our PHP function
    function(response){
      $('.mini-cart').html(response); // Repopulate the specific element with the new content
-     resp = response;
+     miniCartItems = response;
     }
  );
 // Close anon function.
 }( jQuery ) );
 
 setTimeout(() => {
-  console.log(resp);
+  //console.log(miniCartItems);
+  updateCatalogBauutons(miniCartItems);
 }, 1000);
 
 
@@ -229,16 +230,16 @@ jQuery( function( $ ) {
 # Update catalog add-to-cart buttons
 --------------------------------------------------------------*/
 
-function updateCatalogBauutons() {
-// window.addEventListener('load', function () {
-//   console.log('Страница готова!')
-// })
+function updateCatalogBauutons(miniCartItems) {
+
 console.log('hiho')
 //let miniCartItems = document.querySelectorAll('.mini-cart__wrap .woocommerce-mini-cart-item .remove_from_cart_button');
 let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
-//let productsInCartIds = [];
+let productsInCartIds = [];
 
 console.log(addToCartBtns);
+
+console.log(miniCartItems);
 
 
 // miniCartItems.forEach(item => {
@@ -257,4 +258,3 @@ console.log(addToCartBtns);
 // });
 }
 
-updateCatalogBauutons();
