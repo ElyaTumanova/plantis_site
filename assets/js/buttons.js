@@ -133,7 +133,4 @@ if(catalogWrap) {
         gridButton2.disabled = false;
         gridButton3.disabled = true;
     };
-}
-
-
-
+};

@@ -99,11 +99,245 @@ function checkout_validation_unique_error( $data, $errors ){
     }
 }
 
+/* ПОЛЯ ФОРМЫ ОФОРМЛЕНИЯ ЗАКАЗА*/
+
+// Conditional Show hide checkout fields based on chosen shipping methods*/
+
+add_action( 'wp_footer', 'new_custom_checkout_field_script' );
+function new_custom_checkout_field_script() {
+	
+	if( !is_page( 'checkout' ) ) {
+		return;
+	}
+
+    // HERE your shipping methods rate IDs
+    global $local_pickup;
+	global $urgent_delivery_inMKAD;
+	global $urgent_delivery_outMKAD;
+	global $urgent_delivery_inMKAD_small;
+	global $urgent_delivery_outMKAD_small;
+    global $urgent_delivery_inMKAD_late; 
+	global $urgent_delivery_outMKAD_late; 
+	global $urgent_delivery_inMKAD_small_late; 
+	global $urgent_delivery_outMKAD_small_late;
+
+    global $payment_inn_chekbox;
+    global $inn_field;
+
+    $required_text = esc_attr__( 'required', 'woocommerce' );
+    $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';
+    ?>
+    <script>
+        let checkoutForm = document.querySelector('form[name="checkout"]');
+    
+		let deliveryDate = document.querySelector('#datepicker_field');
+		let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
+        let deliveryIntervalInput = document.querySelector('input[name=additional_delivery_interval]');
+
+        let addressFields = document.querySelector('#billing_address_1_field');
+        let additionalAddress = document.querySelector('.additional-address-field');
+
+        let inn_field = document.querySelector('#<?php echo $inn_field; ?>');
+
+        let localPickup = '<?php echo $local_pickup; ?>';
+        let urgentPickup1 = '<?php echo $urgent_delivery_inMKAD; ?>';
+        let urgentPickup2 = '<?php echo $urgent_delivery_outMKAD; ?>';
+        let urgentPickup3 = '<?php echo $urgent_delivery_inMKAD_small; ?>';
+        let urgentPickup4 = '<?php echo $urgent_delivery_outMKAD_small; ?>';
+        let urgentPickup5 = '<?php echo $urgent_delivery_inMKAD_late; ?>';
+        let urgentPickup6 = '<?php echo $urgent_delivery_outMKAD_late; ?>';
+        let urgentPickup7 = '<?php echo $urgent_delivery_inMKAD_small_late; ?>';
+        let urgentPickup8 = '<?php echo $urgent_delivery_outMKAD_small_late; ?>';
+        let urgentPickups = [urgentPickup1, urgentPickup2, urgentPickup3, urgentPickup4, urgentPickup5, urgentPickup6, urgentPickup7, urgentPickup8];
+
+        let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
+        function plnt_hide_checkout_fields(event){
+            //console.log('hi plnt_hide_checkout_fields');
+            //console.log(deliveryIntervalInput)
+            // if (event) {console.log(event)};
+            if(event && event.target.className == "shipping_method") {
+                // console.log(event);
+                checkedShippingMethod = event.target.value;
+            }
+            if (urgentPickups.includes(checkedShippingMethod))
+            {
+                if (deliveryDate) {deliveryDate.classList.add('d-none')};
+                if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
+                if (deliveryIntervalInput) {deliveryIntervalInput.checked = false};
+                if (addressFields) {addressFields.classList.remove('d-none');}
+                if (additionalAddress) {additionalAddress.classList.remove('d-none');}
+            } else if ( checkedShippingMethod == localPickup) {
+                if (deliveryDate) {deliveryDate.classList.remove('d-none')};
+                if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
+                if (deliveryIntervalInput) {deliveryIntervalInput.checked = false};
+                if (addressFields) {addressFields.classList.add('d-none');}
+                if (additionalAddress) {additionalAddress.classList.add('d-none');}
+            } else {
+                if (deliveryDate) {deliveryDate.classList.remove('d-none')};
+                if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
+                if (addressFields) {addressFields.classList.remove('d-none');}
+                if (additionalAddress) {additionalAddress.classList.remove('d-none');}
+            }
+
+            if(event && event.target.id == "payment_method_cheque") {
+                //console.log(event);
+                if (inn_field) {inn_field.classList.remove('d-none')};
+            } else {
+                if (inn_field) {inn_field.classList.add('d-none')};
+            };
+        }
+
+        plnt_hide_checkout_fields(event);
+        
+        checkoutForm.addEventListener('change', plnt_hide_checkout_fields);
+
+        /*--------------------------------------------------------------
+        # Datepicker
+        --------------------------------------------------------------*/
+        // Utility function for datepicker init
+        <?php $weekend_string = carbon_get_theme_option('weekend');?>
+        //выходной
+        let weekend_str = '<?php echo $weekend_string; ?>';
+        let weekend_arr = weekend_str.split(',');
+        // console.log(weekend_arr);
+        let weekend = [];
+        weekend_arr.forEach(element => {
+            weekend.push(new Date(element));
+        });
+        // console.log(weekend);
+        //var weekend = new Date(weekend_str);
+        function datepicker_options () {  
+            //console.log('hi datepicker_options');     
+
+            //определяем первую доступную дату
+            let startDate = new Date();
+            let selectedDate = [];
+            let date = new Date();
+
+            let hour = date.getHours();
+
+            //console.log(hour);
+
+            if (hour < 18) {
+                if (checkedShippingMethod == localPickup) {  
+                    startDate = date.setDate(date.getDate() + 0);
+                    selectedDate = startDate;
+                } else {
+                    startDate = date.setDate(date.getDate() + 1);
+                    selectedDate = startDate;                   
+            }} else {
+                if (checkedShippingMethod == localPickup) {  
+                    startDate = date.setDate(date.getDate() + 1);
+                    selectedDate = startDate;
+                } else {
+                    startDate = date.setDate(date.getDate() + 2);
+                    selectedDate = startDate;                   
+            }};
+
+            //очищаем дату для срочной доставки
+            if (urgentPickups.includes(checkedShippingMethod)) {
+                selectedDate = [];
+            };
+
+            // проверяем, что первая доступная дата не попадает на выходной
+            const weekendTimeStamps = weekend.map(function (element) {
+                return element.getTime();
+            });
+            let isSelectedDayWeekend = false;
+            function checkSelectedDay (checkDate) {
+                let newSelectedDate = checkDate;
+                isSelectedDayWeekend = weekendTimeStamps.includes((new Date(checkDate)).setHours(3,0,0,0));
+                if (isSelectedDayWeekend) {
+                    newSelectedDate = date.setDate(new Date(checkDate).getDate() + 1);
+                    // console.log('new date')
+                    // console.log(new Date(newSelectedDate));
+                    return checkSelectedDay (newSelectedDate);
+                }
+                // console.log('after if');
+                // console.log(new Date(newSelectedDate));
+                return selectedDate = newSelectedDate;
+            };
+
+            checkSelectedDay (selectedDate);
+            // console.log('finally');
+            //console.log(new Date(selectedDate));
+
+            //кнопка ОК
+            let button = {
+                content: 'OK',
+                className: 'custom-button-classname',
+                onClick: (datepicker) => {
+                    datepicker.hide();
+                }
+            }
+
+            // datepicker options
+            let datePickerOpts = {
+                selectedDates: selectedDate,
+                minDate: startDate,
+                maxDate: (function(){
+                    var date = new Date();
+                    date.setDate(date.getDate() + 30);
+                    return date;
+                })(),
+                isMobile: true,
+                //autoClose: true,
+
+                buttons: [button] 
+            }
+
+            return datePickerOpts;
+        }
+        // Datepicker init
+        let datepickerCal;
+        let datePickerOpts;
+
+        function datepicker_init () {
+            datePickerOpts = datepicker_options ();
+            datepickerCal.update(datePickerOpts);
+            if (weekend) {
+                datepickerCal.disableDate(weekend);
+            }
+        }
+
+        setTimeout(() => {
+            datepickerCal = new AirDatepicker('#datepicker');
+            datepicker_init ();
+        }, 1000);  
+   
+        checkoutForm.addEventListener('change', datepicker_init);
+    </script>
+    <?php
+}
+
+//СПОСОБЫ ДОСТАВКИ
 /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
 
 add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 30, 2 );
  
 function truemisha_shipping_by_weight( $rates, $package ) {
+
+    //переменные
+    global $local_pickup;
+        
+    global $delivery_inMKAD;
+    global $delivery_outMKAD;
+    global $delivery_inMKAD_small;
+    global $delivery_outMKAD_small;
+
+
+    global $urgent_delivery_inMKAD; 
+    global $urgent_delivery_outMKAD; 
+    global $urgent_delivery_inMKAD_small; 
+    global $urgent_delivery_outMKAD_small;
+
+    global $urgent_delivery_inMKAD_late; 
+    global $urgent_delivery_outMKAD_late; 
+    global $urgent_delivery_inMKAD_small_late; 
+    global $urgent_delivery_outMKAD_small_late;
+
+    global $delivery_free;
+
     $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
 
     if ($large_delivery_markup) {
@@ -140,314 +374,32 @@ function plnt_large_delivery_notice() {
     }
 }
 
-
-/* ПОЛЯ ФОРМЫ ОФОРМЛЕНИЯ ЗАКАЗА*/
-
-// Conditional Show hide checkout fields based on chosen shipping methods*/
-
-add_action( 'wp_footer', 'new_custom_checkout_field_script' );
-function new_custom_checkout_field_script() {
-	
-	if( !is_page( 'checkout' ) ) {
-		return;
-	}
-
-    // HERE your shipping methods rate IDs
-    global $local_pickup;
-	global $urgent_delivery_inMKAD;
-	global $urgent_delivery_outMKAD;
-	global $urgent_delivery_inMKAD_small;
-	global $urgent_delivery_outMKAD_small;
-
-    global $payment_inn_chekbox;
-    global $inn_field;
-
-    $required_text = esc_attr__( 'required', 'woocommerce' );
-    $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';
-    ?>
-    <script>
-		deliveryDate = document.querySelector('#datepicker_field');
-		deliveryInterval = document.querySelector('#additional_delivery_interval_field');
-        additionalAddress = document.querySelector('.additional-address-field');
-
-        inn_field = document.querySelector('#<?php echo $inn_field; ?>');
-
-        jQuery(function($){
-            var ism = 'input[name^="shipping_method"]',         ismc = ism+':checked',
-                csa = 'input#ship-to-different-address-checkbox',
-                rq = '-required',       vr = 'validate'+rq,     w = 'woocommerce',      wv = w+'-validated',
-                iv = '-invalid',        fi = '-field',          wir = w+iv+' '+w+iv+rq+fi,
-                b = '#billing_',        s = '#shipping_',       f = '_field',
-                a1 = 'country',     a2 = 'address_1',   a3 = 'address_2',   a4 = 'postcode',    a5 = 'state', a6 = 'city', a7 = 'address_3', a8 = 'address_4'
-                b1 = b+a1+f,        b2 = b+a2+f,        b3 = b+a3+f,        b4 = b+a4+f,        b5 = b+a5+f, b6 = b+a6+f, b7 = b+a7+f, b8 = b+a8+f,
-                s1 = s+a1+f,        s2 = s+a2+f,        s3 = s+a3+f,        s4 = s+a4+f,        s5 = s+a5+f,
-                localPickup = '<?php echo $local_pickup; ?>',
-				urgentPickup1 = '<?php echo $urgent_delivery_inMKAD; ?>',urgentPickup2 = '<?php echo $urgent_delivery_outMKAD; ?>',
-				urgentPickup3 = '<?php echo $urgent_delivery_inMKAD_small; ?>',urgentPickup4 = '<?php echo $urgent_delivery_outMKAD_small; ?>';
-
-                payment_method = 'input[name^="payment_method"]', payment_method_checked = payment_method+':checked';
-                payment_inn_chekbox = '<?php echo $payment_inn_chekbox; ?>'
-
-            // Utility function to shows or hide checkout fields
-            function showHide( action='show', selector='' ){
-                if( action == 'show' )
-                    $(selector).show(function(){
-                        $(this).addClass(vr);
-                        $(this).removeClass(wv);
-                        $(this).removeClass(wir);
-                        if( $(selector+' > label > abbr').html() == undefined )
-                            $(selector+' label').append('<?php echo $required_html; ?>');
-                    });
-                else
-                    $(selector).hide(function(){
-                        $(this).removeClass(vr);
-                        $(this).removeClass(wv);
-                        $(this).removeClass(wir);
-                        if( $(selector+' > label > abbr').html() != undefined )
-                            $(selector+' label > .required').remove();
-                    });
-            }
-
-            // Initializing at start after checkout init (Based on the chosen shipping method)
-            setTimeout(function(){
-                if( $(ismc).val() == localPickup ) // Chosen "Local pickup" (Hiding "Delivery")
-                {
-                    // showHide('hide',b1);    //#billing_country_field - always hidden
-                    showHide('hide',b2);    //#billing_adress_1_field
-                    //showHide('hide',b3);    //#billing_adress_2_field  
-                    //showHide('hide',b4);    //postcode
-                    //showHide('hide',b5);    //state
-					//showHide('hide',b6);    //city
-                    //showHide('hide',b7);    //#billing_adress_3_field
-                    //showHide('hide',b8);    //#billing_adress_4_field
-                    if (additionalAddress) {additionalAddress.classList.add('d-none');}
-                }
-        
-                else
-                {
-                    // showHide('show',b1);
-                    showHide('show',b2);
-                    //showHide('show',b3);
-                    //showHide('show',b4);
-                    //showHide('show',b5);
-					//showHide('show',b6);
-					//showHide('show',b7);
-					//showHide('show',b8);
-                    if (additionalAddress) {additionalAddress.classList.remove('d-none');}
-                }        
-            }, 100);
-			
-			setTimeout(function(){
-                     if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
-                {
-                    if (deliveryDate) {deliveryDate.classList.add('d-none')};
-                } else {
-					if (deliveryDate) {deliveryDate.classList.remove('d-none')};
-				}
-            }, 100);
-			
-			setTimeout(function(){
-                     if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
-                {
-					if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
-                } else {
-					if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
-				}
-            }, 100);
-
-            setTimeout(function(){
-                     if( $(payment_method_checked).val() == payment_inn_chekbox) // Chosen "INN payment" (Show "INN")
-                {
-                    if (inn_field) {inn_field.classList.remove('d-none')};
-                } else {
-					if (inn_field) {inn_field.classList.add('d-none')};
-				}
-            }, 100);
-			
-			// Initializing at start after checkout init (Based on the chosen shipping method)
-            $( 'form.checkout' ).on( 'change', payment_method, function() {	
-				if( $(payment_method_checked).val() == payment_inn_chekbox) // Chosen "INN payment" (Show "INN")
-                {
-                    if (inn_field) {inn_field.classList.remove('d-none')};
-                } else {
-					if (inn_field) {inn_field.classList.add('d-none')};
-				};
-            });
-
-            $( 'form.checkout' ).on( 'change', ism, function() {
-				if( $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Urgent pickup" (Hiding "Date")
-                {
-                    if (deliveryDate) {deliveryDate.classList.add('d-none')};
-                } else {
-					if (deliveryDate) {deliveryDate.classList.remove('d-none')};
-				};
-            });
-			
-			$( 'form.checkout' ).on( 'change', ism, function() {
-				if( $(ismc).val() == localPickup || $(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 || $(ismc).val() == urgentPickup3 || $(ismc).val() == urgentPickup4) // Chosen "Local pickup or Urgent pickup" (Hiding "Interval")
-                {
-					if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
-                } else {
-					if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
-				}
-            });
-
-            // When shipping method is changed (Live event)
-            $( 'form.checkout' ).on( 'change', ism, function() {
-                if( $(ismc).val() == localPickup )
-                {
-                    // showHide('hide',b1);
-                    showHide('hide',b2);
-                    // showHide('hide',b3);
-                    // showHide('hide',b4);
-                    // showHide('hide',b5);
-					// showHide('hide',b6);
-					// showHide('hide',b7);
-					// showHide('hide',b8);
-                    if (additionalAddress) {additionalAddress.classList.add('d-none');}
-                }
-             
-                else
-                {
-                    // showHide('show',b1);
-                    showHide('show',b2);
-                    // showHide('show',b3);
-                    // showHide('show',b4);
-                    // showHide('show',b5);
-					// showHide('show',b6);
-					// showHide('show',b7);
-					// showHide('show',b8);
-                    if (additionalAddress) {additionalAddress.classList.remove('d-none');}
-                }
-            });
-	
-            /*--------------------------------------------------------------
-            # Datepicker
-            --------------------------------------------------------------*/
-            // Utility function for datepicker init
-            function datepicker_init () {
-
-                <?php $weekend_string = carbon_get_theme_option('weekend');?>
-                
-                //выходной
-                let weekend_str = '<?php echo $weekend_string; ?>';
-                let weekend_arr = weekend_str.split(',');
-                // console.log(weekend_arr);
-                let weekend = [];
-                weekend_arr.forEach(element => {
-                    weekend.push(new Date(element));
-                });
-                // console.log(weekend);
-                //var weekend = new Date(weekend_str);
-
-                
-                //определяем первую доступную дату
-                let startDate = new Date();
-                let selectedDate = [];
-                let date = new Date();                    
-                
-                if ($(ismc).val() == localPickup) {  
-                    startDate = date.setDate(date.getDate() + 0);
-                    selectedDate = startDate;
-                    $('input[name=additional_delivery_interval]').prop('checked',false);
-                } else {
-                    startDate = date.setDate(date.getDate() + 1);
-                    selectedDate = startDate;                   
-                }
-
-                if ($(ismc).val() == urgentPickup1 || $(ismc).val() == urgentPickup2 ||$(ismc).val() == urgentPickup3 ||$(ismc).val() == urgentPickup4) {
-                    selectedDate = [];
-                    $('input[name=additional_delivery_interval]').prop('checked',false);
-                } 
-
-                const weekendTimeStamps = weekend.map(function (element) {
-                    return element.getTime();
-                })
-               // проверяем, что первая доступная дата не попадает на выходной
-                let isSelectedDayWeekend = false;
-                function checkSelectedDay (checkDate) {
-                    let newSelectedDate = checkDate;
-                    isSelectedDayWeekend = weekendTimeStamps.includes((new Date(checkDate)).setHours(3,0,0,0));
-                    if (isSelectedDayWeekend) {
-                        newSelectedDate = date.setDate(new Date(checkDate).getDate() + 1);
-                        // console.log('new date')
-                        // console.log(new Date(newSelectedDate));
-                        return checkSelectedDay (newSelectedDate);
-                    }
-                    // console.log('after if');
-                    // console.log(new Date(newSelectedDate));
-                    return selectedDate = newSelectedDate;
-                };
-                
-                checkSelectedDay (selectedDate);
-                // console.log('finally');
-                //console.log(new Date(selectedDate));
-
-                //кнопка ОК
-                let button = {
-                    content: 'OK',
-                    className: 'custom-button-classname',
-                    onClick: (datepicker) => {
-                        datepicker.hide();
-                    }
-                }
-                let datePickerOpts = {
-                    selectedDates: selectedDate,
-                    minDate: startDate,
-                    maxDate: (function(){
-                        var date = new Date();
-                        date.setDate(date.getDate() + 30);
-                        return date;
-                    })(),
-                    isMobile: true,
-                    //autoClose: true,
-
-                    buttons: [button] 
-                }
-
-                if (weekend) {
-                    datepickerCal.disableDate(weekend);
-                }
-
-                return datePickerOpts;
-            }
-
-            // Datepicker init
-            var datepickerCal = new AirDatepicker('#datepicker');
-            setTimeout(function(){
-                var datePickerOpts = datepicker_init ();
-                datepickerCal.update(datePickerOpts);
-            }, 100);
-
-            $( 'form.checkout' ).on( 'change', ism, function() {
-                var datePickerOpts = datepicker_init ();
-                datepickerCal.update(datePickerOpts);
-            })
-        });
-    </script>
-    <?php
-}
-
 /* скрываем лишние способы доставки если доступна доставка бесплатная*/
 
 add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_method', 20, 2 );
  
 function new_truemisha_remove_shipping_method( $rates, $package ) {
 
+    //переменные
     global $local_pickup;
-	
-	global $delivery_inMKAD;
-	global $delivery_outMKAD;
-	global $delivery_inMKAD_small;
-	global $delivery_outMKAD_small;
+        
+    global $delivery_inMKAD;
+    global $delivery_outMKAD;
+    global $delivery_inMKAD_small;
+    global $delivery_outMKAD_small;
 
 
-	global $urgent_delivery_inMKAD; 
-	global $urgent_delivery_outMKAD; 
-	global $urgent_delivery_inMKAD_small; 
-	global $urgent_delivery_outMKAD_small;
-	
-	global $delivery_free;
+    global $urgent_delivery_inMKAD; 
+    global $urgent_delivery_outMKAD; 
+    global $urgent_delivery_inMKAD_small; 
+    global $urgent_delivery_outMKAD_small;
+
+    global $urgent_delivery_inMKAD_late; 
+    global $urgent_delivery_outMKAD_late; 
+    global $urgent_delivery_inMKAD_small_late; 
+    global $urgent_delivery_outMKAD_small_late;
+
+    global $delivery_free;
  
 	// удаляем способ доставки, если доступна бесплатная
 	if ( isset( $rates[ $delivery_free ] ) ) { 
@@ -471,20 +423,26 @@ add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price
  
 function new_truemisha_remove_shipping_on_price( $rates, $package ) {
 
+    //переменные
     global $local_pickup;
-	
-	global $delivery_inMKAD;
-	global $delivery_outMKAD;
-	global $delivery_inMKAD_small;
-	global $delivery_outMKAD_small;
+        
+    global $delivery_inMKAD;
+    global $delivery_outMKAD;
+    global $delivery_inMKAD_small;
+    global $delivery_outMKAD_small;
 
 
-	global $urgent_delivery_inMKAD; 
-	global $urgent_delivery_outMKAD; 
-	global $urgent_delivery_inMKAD_small; 
-	global $urgent_delivery_outMKAD_small;
-	
-	global $delivery_free;
+    global $urgent_delivery_inMKAD; 
+    global $urgent_delivery_outMKAD; 
+    global $urgent_delivery_inMKAD_small; 
+    global $urgent_delivery_outMKAD_small;
+
+    global $urgent_delivery_inMKAD_late; 
+    global $urgent_delivery_outMKAD_late; 
+    global $urgent_delivery_inMKAD_small_late; 
+    global $urgent_delivery_outMKAD_small_late;
+
+    global $delivery_free;
  
 	// если сумма всех товаров в корзине меньше 2000, отключаем способ доставки
 	if ( WC()->cart->subtotal < 2000 ) {
@@ -492,9 +450,57 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
 		unset( $rates[ $delivery_outMKAD ] );
 		unset( $rates[ $urgent_delivery_inMKAD ] );
 		unset( $rates[ $urgent_delivery_outMKAD ] );		
+		unset( $rates[ $urgent_delivery_inMKAD_late ] );		
+		unset( $rates[ $urgent_delivery_outMKAD_late ] );		
 	} else {
 		unset( $rates[ $delivery_inMKAD_small ] );
 		unset( $rates[ $delivery_outMKAD_small ] );
+		unset( $rates[ $urgent_delivery_inMKAD_small ] );
+		unset( $rates[ $urgent_delivery_outMKAD_small ] );
+		unset( $rates[ $urgent_delivery_inMKAD_small_late ] );
+		unset( $rates[ $urgent_delivery_outMKAD_small_late ] );
+	}
+ 
+	return $rates;
+ 
+}
+
+//УБИРАЕМ СПОСОБЫ ДОСТАВКИ В ЗАВИСИМОСТИ ОТ ЧАСА
+add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_hour', 35, 2 );
+ 
+function new_truemisha_remove_shipping_on_hour( $rates, $package ) {
+
+    //переменные
+    global $local_pickup;
+        
+    global $delivery_inMKAD;
+    global $delivery_outMKAD;
+    global $delivery_inMKAD_small;
+    global $delivery_outMKAD_small;
+
+
+    global $urgent_delivery_inMKAD; 
+    global $urgent_delivery_outMKAD; 
+    global $urgent_delivery_inMKAD_small; 
+    global $urgent_delivery_outMKAD_small;
+
+    global $urgent_delivery_inMKAD_late; 
+    global $urgent_delivery_outMKAD_late; 
+    global $urgent_delivery_inMKAD_small_late; 
+    global $urgent_delivery_outMKAD_small_late;
+
+    global $delivery_free;
+ 
+	date_default_timezone_set('Europe/Moscow');
+	//echo date('H');
+	if ( date('H') < 18 ) {
+		unset( $rates[ $urgent_delivery_inMKAD_late ] );
+		unset( $rates[ $urgent_delivery_outMKAD_late ] );		
+		unset( $rates[ $urgent_delivery_inMKAD_small_late ] );		
+		unset( $rates[ $urgent_delivery_outMKAD_small_late ] );		
+	} else {
+		unset( $rates[ $urgent_delivery_inMKAD ] );
+		unset( $rates[ $urgent_delivery_outMKAD ] );
 		unset( $rates[ $urgent_delivery_inMKAD_small ] );
 		unset( $rates[ $urgent_delivery_outMKAD_small ] );
 	}
