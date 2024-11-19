@@ -476,7 +476,7 @@ function new_truemisha_remove_shipping_on_hour( $rates, $package ) {
     global $delivery_free;
  
 	date_default_timezone_set('Europe/Moscow');
-	//echo date('H');
+	echo date('H');
 	if ( date('H') < 15 ) {
 		unset( $rates[ $urgent_delivery_inMKAD_late ] );
 		unset( $rates[ $urgent_delivery_outMKAD_late ] );		
