@@ -116,6 +116,10 @@ function new_custom_checkout_field_script() {
 	global $urgent_delivery_outMKAD;
 	global $urgent_delivery_inMKAD_small;
 	global $urgent_delivery_outMKAD_small;
+    global $urgent_delivery_inMKAD_late; 
+	global $urgent_delivery_outMKAD_late; 
+	global $urgent_delivery_inMKAD_small_late; 
+	global $urgent_delivery_outMKAD_small_late;
 
     global $payment_inn_chekbox;
     global $inn_field;
@@ -140,12 +144,16 @@ function new_custom_checkout_field_script() {
         let urgentPickup2 = '<?php echo $urgent_delivery_outMKAD; ?>';
         let urgentPickup3 = '<?php echo $urgent_delivery_inMKAD_small; ?>';
         let urgentPickup4 = '<?php echo $urgent_delivery_outMKAD_small; ?>';
-        let urgentPickups = [urgentPickup1, urgentPickup2, urgentPickup3, urgentPickup4];
+        let urgentPickup5 = '<?php echo $urgent_delivery_inMKAD_late; ?>';
+        let urgentPickup6 = '<?php echo $urgent_delivery_outMKAD_late; ?>';
+        let urgentPickup7 = '<?php echo $urgent_delivery_inMKAD_small_late; ?>';
+        let urgentPickup8 = '<?php echo $urgent_delivery_outMKAD_small_late; ?>';
+        let urgentPickups = [urgentPickup1, urgentPickup2, urgentPickup3, urgentPickup4, urgentPickup5, urgentPickup6, urgentPickup7, urgentPickup8];
 
         let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
         function plnt_hide_checkout_fields(event){
-            console.log('hi plnt_hide_checkout_fields');
-            console.log(deliveryIntervalInput)
+            //console.log('hi plnt_hide_checkout_fields');
+            //console.log(deliveryIntervalInput)
             // if (event) {console.log(event)};
             if(event && event.target.className == "shipping_method") {
                 // console.log(event);
@@ -172,7 +180,7 @@ function new_custom_checkout_field_script() {
             }
 
             if(event && event.target.id == "payment_method_cheque") {
-                console.log(event);
+                //console.log(event);
                 if (inn_field) {inn_field.classList.remove('d-none')};
             } else {
                 if (inn_field) {inn_field.classList.add('d-none')};
@@ -199,7 +207,7 @@ function new_custom_checkout_field_script() {
         // console.log(weekend);
         //var weekend = new Date(weekend_str);
         function datepicker_options () {  
-            console.log('hi datepicker_options');     
+            //console.log('hi datepicker_options');     
 
             //определяем первую доступную дату
             let startDate = new Date();
@@ -210,7 +218,7 @@ function new_custom_checkout_field_script() {
 
             //console.log(hour);
 
-            if (checkedShippingMethod == localPickup && hour < 18) {  
+            if (checkedShippingMethod == localPickup && hour < 15) {  
                 startDate = date.setDate(date.getDate() + 0);
                 selectedDate = startDate;
             } else {
@@ -477,7 +485,7 @@ function new_truemisha_remove_shipping_on_hour( $rates, $package ) {
  
 	date_default_timezone_set('Europe/Moscow');
 	//echo date('H');
-	if ( date('H') < 18 ) {
+	if ( date('H') < 15 ) {
 		unset( $rates[ $urgent_delivery_inMKAD_late ] );
 		unset( $rates[ $urgent_delivery_outMKAD_late ] );		
 		unset( $rates[ $urgent_delivery_inMKAD_small_late ] );		
