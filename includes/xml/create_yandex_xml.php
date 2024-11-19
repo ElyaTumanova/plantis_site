@@ -11,6 +11,7 @@ function create_yandex_xml_btn () {
 		<?php 
         global $treez_cat_id;
         global $treez_poliv_cat_id;
+        global $plants_treez_cat_id;
 		$yandex_xml = "<?xml version='1.0' encoding='UTF-8'?>
         <yml_catalog date='".date('Y-m-d H:i')."'>
         <shop>
@@ -27,7 +28,7 @@ function create_yandex_xml_btn () {
         $args=array(
             'taxonomy'   => 'product_cat',
             'hide_empty' => true,
-            'exclude_tree'    => array($treez_cat_id, $treez_poliv_cat_id),
+            'exclude_tree'    => array($treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id),
         );
         $terms=get_terms($args);
         foreach($terms as $item){
@@ -61,7 +62,7 @@ function create_yandex_xml_btn () {
                     'taxonomy' => 'product_cat',
                     'field' => 'id',
                     'operator' => 'NOT IN',
-                    'terms' => [$treez_cat_id, $treez_poliv_cat_id],
+                    'terms' => [$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id],
                     'include_children' => 1,
                 )
             )
