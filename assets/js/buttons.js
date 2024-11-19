@@ -136,7 +136,7 @@ if(catalogWrap) {
 };
 
 
-let miniCartItems;
+let miniCartItems = document.createElement('div');
 
 ( function ( $ ) {
  "use strict";
@@ -150,14 +150,14 @@ let miniCartItems;
    data, // Send our PHP function
    function(response){
      $('.mini-cart').html(response); // Repopulate the specific element with the new content
-     miniCartItems = response;
+     miniCartItems.html(response);
     }
  );
 // Close anon function.
 }( jQuery ) );
 
 setTimeout(() => {
-  //console.log(miniCartItems);
+  console.log(miniCartItems);
   updateCatalogBauutons(miniCartItems);
 }, 1000);
 
@@ -206,24 +206,6 @@ jQuery( function( $ ) {
     );
    // Close anon function.
    }( jQuery ) );
-
-// ( function ( $ ) {
-//     "use strict";
-//     console.log('zazazaza');
-//    // Define the PHP function to call from here
-//     var data = {
-//       'action': 'mode_theme_update_add_to_cart_btn'
-//     };
-//     $.post(
-//         woocommerce_params.ajax_url, // The AJAX URL
-//       data, // Send our PHP function
-//       function(response){
-//         console.log(response);
-//         $('.woocommerce_loop_add_to_cart_link').html(response); // Repopulate the specific element with the new content
-//       }
-//     );
-//    // Close anon function.
-//    }( jQuery ) );
 
 
 /*--------------------------------------------------------------
