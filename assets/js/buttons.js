@@ -216,13 +216,13 @@ jQuery( function( $ ) {
 function updateCatalogButtons(miniCartDiv) {
 
 console.log('hiho')
-let miniCartItems = miniCartDiv.querySelectorAll('.woocommerce-mini-cart-item .remove_from_cart_button');
+//let miniCartItems = miniCartDiv.querySelectorAll('.woocommerce-mini-cart-item .remove_from_cart_button');
 let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
 let productsInCartIds = [];
 
 console.log(addToCartBtns);
 
-console.log(miniCartItems);
+//console.log(miniCartItems);
 
 
 // miniCartItems.forEach(item => {
