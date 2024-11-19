@@ -180,6 +180,7 @@ jQuery( function( $ ) {
       data, // Send our PHP function
       function(response){
         $('.side-cart__count').html(response); // Repopulate the specific element with the new content
+        console.log(response);
       }
     );
     
