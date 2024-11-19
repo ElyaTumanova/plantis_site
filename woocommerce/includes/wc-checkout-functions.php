@@ -124,6 +124,28 @@ function checkout_validation_unique_error( $data, $errors ){
 add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 30, 2 );
  
 function truemisha_shipping_by_weight( $rates, $package ) {
+
+    //переменные
+    global $local_pickup;
+        
+    global $delivery_inMKAD;
+    global $delivery_outMKAD;
+    global $delivery_inMKAD_small;
+    global $delivery_outMKAD_small;
+
+
+    global $urgent_delivery_inMKAD; 
+    global $urgent_delivery_outMKAD; 
+    global $urgent_delivery_inMKAD_small; 
+    global $urgent_delivery_outMKAD_small;
+
+    global $urgent_delivery_inMKAD_late; 
+    global $urgent_delivery_outMKAD_late; 
+    global $urgent_delivery_inMKAD_small_late; 
+    global $urgent_delivery_outMKAD_small_late;
+
+    global $delivery_free;
+
     $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
 
     if ($large_delivery_markup) {
@@ -361,6 +383,27 @@ function new_custom_checkout_field_script() {
 add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_method', 20, 2 );
  
 function new_truemisha_remove_shipping_method( $rates, $package ) {
+
+    //переменные
+    global $local_pickup;
+        
+    global $delivery_inMKAD;
+    global $delivery_outMKAD;
+    global $delivery_inMKAD_small;
+    global $delivery_outMKAD_small;
+
+
+    global $urgent_delivery_inMKAD; 
+    global $urgent_delivery_outMKAD; 
+    global $urgent_delivery_inMKAD_small; 
+    global $urgent_delivery_outMKAD_small;
+
+    global $urgent_delivery_inMKAD_late; 
+    global $urgent_delivery_outMKAD_late; 
+    global $urgent_delivery_inMKAD_small_late; 
+    global $urgent_delivery_outMKAD_small_late;
+
+    global $delivery_free;
  
 	// удаляем способ доставки, если доступна бесплатная
 	if ( isset( $rates[ $delivery_free ] ) ) { 
@@ -383,6 +426,27 @@ function new_truemisha_remove_shipping_method( $rates, $package ) {
 add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
  
 function new_truemisha_remove_shipping_on_price( $rates, $package ) {
+
+    //переменные
+    global $local_pickup;
+        
+    global $delivery_inMKAD;
+    global $delivery_outMKAD;
+    global $delivery_inMKAD_small;
+    global $delivery_outMKAD_small;
+
+
+    global $urgent_delivery_inMKAD; 
+    global $urgent_delivery_outMKAD; 
+    global $urgent_delivery_inMKAD_small; 
+    global $urgent_delivery_outMKAD_small;
+
+    global $urgent_delivery_inMKAD_late; 
+    global $urgent_delivery_outMKAD_late; 
+    global $urgent_delivery_inMKAD_small_late; 
+    global $urgent_delivery_outMKAD_small_late;
+
+    global $delivery_free;
  
 	// если сумма всех товаров в корзине меньше 2000, отключаем способ доставки
 	if ( WC()->cart->subtotal < 2000 ) {
