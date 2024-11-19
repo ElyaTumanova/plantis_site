@@ -224,7 +224,7 @@ jQuery( function( $ ) {
 # Update catalog add-to-cart buttons
 --------------------------------------------------------------*/
 
-let miniCartItems = document.querySelectorAll('.mini-cart__wrap .woocommerce-mini-cart-item remove_from_cart_button');
+let miniCartItems = document.querySelectorAll('.mini-cart__wrap .woocommerce-mini-cart-item .remove_from_cart_button');
 
 miniCartItems.forEach(element => {
   console.log(element.dataset);
