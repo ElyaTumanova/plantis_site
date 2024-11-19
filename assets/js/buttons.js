@@ -224,6 +224,9 @@ jQuery( function( $ ) {
 # Update catalog add-to-cart buttons
 --------------------------------------------------------------*/
 
-let miniCartItems = document.querySelectorAll('.mini-cart__wrap .woocommerce-mini-cart-item');
+let miniCartItems = document.querySelectorAll('.mini-cart__wrap .woocommerce-mini-cart-item a');
 
-console.log(miniCartItems);
+miniCartItems.forEach(element => {
+  console.log(element);
+});
+
