@@ -574,6 +574,7 @@ add_action( 'woocommerce_checkout_process', 'min_amount_for_category' );
 
 function min_amount_for_category(){
     global $treez_cat_id;
+    global $plants_treez_cat_id;
     $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
 	$qty = 0; // обязательно сначала ставим 0
  	$cat_amount = 0;
@@ -587,7 +588,7 @@ function min_amount_for_category(){
             //         $_categoryid = $term->term_id;
             //     }
             // your products categories
-            if ( $parentCat === $treez_cat_id ) {
+            if ( $parentCat === $treez_cat_id || $parentCat === $plants_treez_cat_id ) {
                 $products_min = true;
                 $qty = $cart_item[ 'quantity' ];
                 $price = $cart_item['data']->get_price();
@@ -597,7 +598,7 @@ function min_amount_for_category(){
  
     if( ( is_cart() || is_checkout() ) && $cat_amount < $min_treez_delivery && $products_min) {
         wc_print_notice(
-            sprintf( 'Минимальная сумма заказа для кашпо Treez %s (без учета стоимости других товаров).'  ,
+            sprintf( 'Минимальная сумма заказа для кашпо и искусственных растений Treez %s (без учета стоимости других товаров).'  ,
                 wc_price( $min_treez_delivery ),
                 wc_price( WC()->cart->total )
             ), 'error'
@@ -608,7 +609,7 @@ function min_amount_for_category(){
 
         wc_add_notice( 
             sprintf( 
-                'Минимальная сумма заказа для кашпо Treez %s (без учета стоимости других товаров).',
+                'Минимальная сумма заказа для кашпо и искусственных растений Treez %s (без учета стоимости других товаров).',
                 wc_price( $min_treez_delivery ),
                 wc_price( WC()->cart->subtotal )
             ),
@@ -623,6 +624,7 @@ add_action( 'woocommerce_checkout_order_review', 'min_amount_for_category_info',
 
 function min_amount_for_category_info(){
     global $treez_cat_id;
+    global $plants_treez_cat_id;
     $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
 	$qty = 0; // обязательно сначала ставим 0
  	$cat_amount = 0;
@@ -632,7 +634,7 @@ function min_amount_for_category_info(){
             $_product_id = $_product->id;
             $parentCat = check_category ($_product);
 
-            if ( $parentCat === $treez_cat_id ) {
+            if ( $parentCat === $treez_cat_id || $parentCat === $plants_treez_cat_id ) {
                 $products_min = true;
                 $qty = $cart_item[ 'quantity' ];
                 $price = $cart_item['data']->get_price();
@@ -642,11 +644,11 @@ function min_amount_for_category_info(){
 
     if( $cat_amount < $min_treez_delivery && $products_min) {
         echo '<div class="checkout__text checkout__text_alarm">
-        Минимальная сумма заказа для кашпо Treez <span>'.$min_treez_delivery,'</span> рублей (без учета стоимости других товаров).</div>';
+        Минимальная сумма заказа для кашпо и искусственных растений Treez <span>'.$min_treez_delivery,'</span> рублей (без учета стоимости других товаров).</div>';
     }   
     if( $products_min) {
         echo '<div class="checkout__text checkout__text_alarm">
-        Оплатить заказ с кашпо Treez можно будет после подтверждения наличия кашпо. Наш менеджер свяжется с Вами после оформления заказа.</div>';
+        Оплатить заказ с кашпо и искусственными растениями Treez можно будет после подтверждения их наличия. Наш менеджер свяжется с Вами после оформления заказа.</div>';
     }   
 }
 
@@ -654,6 +656,7 @@ add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_tree
 
 function plnt_disable_payment_treez( $available_gateways ) {
     global $treez_cat_id;
+    global $plants_treez_cat_id;
     // $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
 	// $qty = 0; // обязательно сначала ставим 0
  	// $cat_amount = 0;
@@ -666,7 +669,7 @@ function plnt_disable_payment_treez( $available_gateways ) {
                 $_product_id = $_product->id;
                 $parentCat = check_category ($_product);
     
-                if ( $parentCat === $treez_cat_id ) {
+                if ( $parentCat === $treez_cat_id || $parentCat === $plants_treez_cat_id  ) {
                     $products_min = true;
                     // $qty = $cart_item[ 'quantity' ];
                     // $price = $cart_item['data']->get_price();

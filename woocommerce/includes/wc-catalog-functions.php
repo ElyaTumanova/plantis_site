@@ -426,6 +426,7 @@ function shop_only_instock_products( $meta_query, $query ) {
 	global $plants_cat_id;
 	global $gorshki_cat_id;
     global $treez_cat_id;
+	global $plants_treez_cat_id;
     global $ukhod_cat_id;
     global $avtopoliv_tag_id;
 
@@ -434,6 +435,8 @@ function shop_only_instock_products( $meta_query, $query ) {
 	term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) || 
 	is_product_category($treez_cat_id) || 
 	term_is_ancestor_of( $treez_cat_id, get_queried_object_id(), 'product_cat' )|| 
+	is_product_category($plants_treez_cat_id) || 
+	term_is_ancestor_of( $plants_treez_cat_id, get_queried_object_id(), 'product_cat' )||
 	is_product_category($ukhod_cat_id) || 
 	term_is_ancestor_of( $ukhod_cat_id, get_queried_object_id(), 'product_cat' ) ||
 	is_product_tag ($avtopoliv_tag_id) ||
