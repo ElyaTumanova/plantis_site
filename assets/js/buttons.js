@@ -137,11 +137,12 @@ if(catalogWrap) {
 
 let responseText;
 let miniCartDiv = document.createElement('div');
+console.log(miniCartDiv);
 
 ( function ( $ ) {
  "use strict";
 // Define the PHP function to call from here
-
+console.log('ajax');
  var data = {
    'action': 'mode_theme_update_mini_cart'
  };
