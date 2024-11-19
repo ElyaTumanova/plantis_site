@@ -218,7 +218,7 @@ function new_custom_checkout_field_script() {
 
             //console.log(hour);
 
-            if (hour < 15) {
+            if (hour < 18) {
                 if (checkedShippingMethod == localPickup) {  
                     startDate = date.setDate(date.getDate() + 0);
                     selectedDate = startDate;
@@ -493,7 +493,7 @@ function new_truemisha_remove_shipping_on_hour( $rates, $package ) {
  
 	date_default_timezone_set('Europe/Moscow');
 	//echo date('H');
-	if ( date('H') < 15 ) {
+	if ( date('H') < 18 ) {
 		unset( $rates[ $urgent_delivery_inMKAD_late ] );
 		unset( $rates[ $urgent_delivery_outMKAD_late ] );		
 		unset( $rates[ $urgent_delivery_inMKAD_small_late ] );		
