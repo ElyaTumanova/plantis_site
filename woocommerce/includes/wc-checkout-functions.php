@@ -221,7 +221,7 @@ function new_custom_checkout_field_script() {
             if (checkedShippingMethod == localPickup && hour < 15) {  
                 startDate = date.setDate(date.getDate() + 0);
                 selectedDate = startDate;
-            } else if (checkedShippingMethod != localPickup && hour > 15) {
+            } else if ( hour > 15) {
                 startDate = date.setDate(date.getDate() + 2);
                 selectedDate = startDate;
             } else {
