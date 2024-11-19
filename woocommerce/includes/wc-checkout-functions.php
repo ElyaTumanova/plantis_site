@@ -99,70 +99,6 @@ function checkout_validation_unique_error( $data, $errors ){
     }
 }
 
-/*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
-
-add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 30, 2 );
- 
-function truemisha_shipping_by_weight( $rates, $package ) {
-
-    //переменные
-    global $local_pickup;
-        
-    global $delivery_inMKAD;
-    global $delivery_outMKAD;
-    global $delivery_inMKAD_small;
-    global $delivery_outMKAD_small;
-
-
-    global $urgent_delivery_inMKAD; 
-    global $urgent_delivery_outMKAD; 
-    global $urgent_delivery_inMKAD_small; 
-    global $urgent_delivery_outMKAD_small;
-
-    global $urgent_delivery_inMKAD_late; 
-    global $urgent_delivery_outMKAD_late; 
-    global $urgent_delivery_inMKAD_small_late; 
-    global $urgent_delivery_outMKAD_small_late;
-
-    global $delivery_free;
-
-    $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
-
-    if ($large_delivery_markup) {
-        // вес товаров в корзине
-        $cart_weight = WC()->cart->cart_contents_weight;
-    
-        if ($cart_weight >= 11) {
-           foreach( $rates as $rate) {
-            
-            if ( 'local_pickup' !== $rate->method_id ) {
-                $rate->cost = $rate->cost + $large_delivery_markup;
-            }
-           }
-        }
-    }
-
-	return $rates;
-}
-
-add_action('plnt_large_delivery_notice', 'plnt_large_delivery_notice');
-
-function plnt_large_delivery_notice() {
-    $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
-
-    if ($large_delivery_markup) {
-        // вес товаров в корзине
-        $cart_weight = WC()->cart->cart_contents_weight;
-    
-        if ($cart_weight >= 11) {
-           echo '<div class=large_delivery_notice>
-           <img class=large_delivery_img src="https://plantis.shop/wp-content/uploads/2024/08/car.svg" alt="car">
-           <p>Для заказа предусмотрена крупногабаритная доставка!</p></div>';
-        }
-    }
-}
-
-
 /* ПОЛЯ ФОРМЫ ОФОРМЛЕНИЯ ЗАКАЗА*/
 
 // Conditional Show hide checkout fields based on chosen shipping methods*/
@@ -358,6 +294,70 @@ function new_custom_checkout_field_script() {
     <?php
 }
 
+//СПОСОБЫ ДОСТАВКИ
+/*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
+
+add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 30, 2 );
+ 
+function truemisha_shipping_by_weight( $rates, $package ) {
+
+    //переменные
+    global $local_pickup;
+        
+    global $delivery_inMKAD;
+    global $delivery_outMKAD;
+    global $delivery_inMKAD_small;
+    global $delivery_outMKAD_small;
+
+
+    global $urgent_delivery_inMKAD; 
+    global $urgent_delivery_outMKAD; 
+    global $urgent_delivery_inMKAD_small; 
+    global $urgent_delivery_outMKAD_small;
+
+    global $urgent_delivery_inMKAD_late; 
+    global $urgent_delivery_outMKAD_late; 
+    global $urgent_delivery_inMKAD_small_late; 
+    global $urgent_delivery_outMKAD_small_late;
+
+    global $delivery_free;
+
+    $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
+
+    if ($large_delivery_markup) {
+        // вес товаров в корзине
+        $cart_weight = WC()->cart->cart_contents_weight;
+    
+        if ($cart_weight >= 11) {
+           foreach( $rates as $rate) {
+            
+            if ( 'local_pickup' !== $rate->method_id ) {
+                $rate->cost = $rate->cost + $large_delivery_markup;
+            }
+           }
+        }
+    }
+
+	return $rates;
+}
+
+add_action('plnt_large_delivery_notice', 'plnt_large_delivery_notice');
+
+function plnt_large_delivery_notice() {
+    $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
+
+    if ($large_delivery_markup) {
+        // вес товаров в корзине
+        $cart_weight = WC()->cart->cart_contents_weight;
+    
+        if ($cart_weight >= 11) {
+           echo '<div class=large_delivery_notice>
+           <img class=large_delivery_img src="https://plantis.shop/wp-content/uploads/2024/08/car.svg" alt="car">
+           <p>Для заказа предусмотрена крупногабаритная доставка!</p></div>';
+        }
+    }
+}
+
 /* скрываем лишние способы доставки если доступна доставка бесплатная*/
 
 add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_method', 20, 2 );
@@ -434,11 +434,15 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
 		unset( $rates[ $delivery_outMKAD ] );
 		unset( $rates[ $urgent_delivery_inMKAD ] );
 		unset( $rates[ $urgent_delivery_outMKAD ] );		
+		unset( $rates[ $urgent_delivery_inMKAD_late ] );		
+		unset( $rates[ $urgent_delivery_outMKAD_late ] );		
 	} else {
 		unset( $rates[ $delivery_inMKAD_small ] );
 		unset( $rates[ $delivery_outMKAD_small ] );
 		unset( $rates[ $urgent_delivery_inMKAD_small ] );
 		unset( $rates[ $urgent_delivery_outMKAD_small ] );
+		unset( $rates[ $urgent_delivery_inMKAD_small_late ] );
+		unset( $rates[ $urgent_delivery_outMKAD_small_late ] );
 	}
  
 	return $rates;
