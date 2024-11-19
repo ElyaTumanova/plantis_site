@@ -136,12 +136,12 @@ if(catalogWrap) {
 };
 
 
-
+let resp;
 
 ( function ( $ ) {
  "use strict";
 // Define the PHP function to call from here
-let resp;
+
  var data = {
    'action': 'mode_theme_update_mini_cart'
  };
@@ -151,12 +151,12 @@ let resp;
    function(response){
      $('.mini-cart').html(response); // Repopulate the specific element with the new content
      resp = response;
-     console.log(resp);
     }
  );
 // Close anon function.
 }( jQuery ) );
 
+console.log(resp);
 
 jQuery( function( $ ) {
     $(document).ready( function() {
