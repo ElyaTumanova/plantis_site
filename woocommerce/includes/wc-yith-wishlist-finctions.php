@@ -69,7 +69,7 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
   }
 
 
-//
+// for dev
 
 if ( defined( 'YITH_WCWL' ) && ! function_exists( 'plnt_yith_wcwl_ajax_get_wishlist' ) ) {
   function plnt_yith_wcwl_ajax_get_wishlist() {
@@ -82,6 +82,17 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'plnt_yith_wcwl_ajax_get_wishl
   add_action( 'wp_ajax_nopriv_plnt_yith_wcwl_get_wishlist', 'plnt_yith_wcwl_ajax_get_wishlist' );
 }
 
+/////////
+
+function plnt_get_wishlists_test() {
+  global $user_id;
+  $wishlist_ids = YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) );
+  echo '<pre>';
+	print_r( $wishlist_ids );
+	echo '</pre>';
+}
+
+add_action ('wp_footer','plnt_get_wishlists_test');
 //
 
 
