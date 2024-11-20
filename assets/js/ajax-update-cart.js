@@ -3,8 +3,8 @@
 --------------------------------------------------------------*/
 //обновляем мини корзину и количество в корзине с помошью ajax при загрузке страницы, чтобы решить проблему кешрования
 
-function plnt_ajax_update_wish() {
-  console.log('hi plnt_ajax_update_wish');
+function plnt_ajax_update_wish_count() {
+  console.log('hi plnt_ajax_update_wish_count');
   jQuery( function( $ ) {
       $(document).ready( function() {
           $.get( yith_wcwl_l10n.ajax_url, {
@@ -16,7 +16,7 @@ function plnt_ajax_update_wish() {
   });
 };
 
-plnt_ajax_update_wish();
+plnt_ajax_update_wish_count();
 
 function plnt_ajax_get_wishlist() {
   console.log('hi plnt_ajax_get_wishlist');
