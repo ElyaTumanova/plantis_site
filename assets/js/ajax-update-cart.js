@@ -22,7 +22,7 @@ function plnt_ajax_get_wishlist() {
   console.log('hi plnt_ajax_get_wishlist');
   jQuery( function( $ ) {
       $(document).ready( function() {
-          $.post( yith_wcwl_l10n.ajax_url, {
+          $.get( yith_wcwl_l10n.ajax_url, {
           action: 'plnt_yith_wcwl_get_wishlist'
           }, function( data ) {
           console.log(data.wish);
