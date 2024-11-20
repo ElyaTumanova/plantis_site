@@ -18,33 +18,20 @@ function plnt_ajax_update_wish() {
 
 plnt_ajax_update_wish();
 
-function get_wish_frahments() {
-    
-    $.ajax( {
-        data: {
-            action: yith_wcwl_l10n.actions.load_fragments,
-            nonce: yith_wcwl_l10n.nonce.load_fragments_nonce,
-            context: 'frontend',
-            fragments: fragments
-        },
-        method: 'post',
-        success: function( data ){
-            if( typeof data.fragments !== 'undefined' ){
-                replace_fragments( data.fragments );
-
-                init_handling_after_ajax();
-
-                $(document).trigger( 'yith_wcwl_fragments_loaded', [ fragments, data.fragments, search.firstLoad ] );
-
-            }
-        },
-        url: yith_wcwl_l10n.ajax_url
-    } );
-
+function plnt_ajax_get_wishlist() {
+  console.log('hi plnt_ajax_get_wishlist');
+  jQuery( function( $ ) {
+      $(document).ready( function() {
+          $.get( yith_wcwl_l10n.ajax_url, {
+          action: 'plnt_yith_wcwl_get_wishlist'
+          }, function( data ) {
+          console.log(data);
+          } );
+      } );
+  });
 };
 
-
-
+plnt_ajax_get_wishlist();
 
 ( function ( $ ) {
     "use strict";

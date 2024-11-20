@@ -69,6 +69,22 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
   }
 
 
+//
+
+if ( defined( 'YITH_WCWL' ) && ! function_exists( 'plnt_yith_wcwl_ajax_get_wishlist' ) ) {
+  function plnt_yith_wcwl_ajax_get_wishlist() {
+    wp_send_json( array(
+      'wish' => yith_wcwl_get_wishlist()
+    ) );
+  }
+
+  add_action( 'wp_ajax_plnt_yith_wcwl_get_wishlist', 'plnt_yith_wcwl_ajax_get_wishlist' );
+  add_action( 'wp_ajax_nopriv_plnt_yith_wcwl_get_wishlist', 'plnt_yith_wcwl_ajax_get_wishlist' );
+}
+
+//
+
+
 
 add_action('yith_wcwl_wishlist_after_wishlist_content','plnt_cart_popular', 40);
 
