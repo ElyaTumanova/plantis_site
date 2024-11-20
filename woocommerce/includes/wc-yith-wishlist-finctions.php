@@ -84,24 +84,48 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'plnt_yith_wcwl_ajax_get_wishl
 
 /////////
 
-function plnt_get_wishlists_test() {
+// function plnt_get_wishlists_test() {
+//   global $user_id;
+//   $wishlist_ids = YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) );
+
+//   foreach ($wishlist_ids as $wishlist_id) {
+//     $wish_id = $wishlist_id['id'];
+                
+//     $wish_products = YITH_WCWL()->get_products( [ 'wishlist_id' => 'all' ] );
+
+//             foreach ($wish_products as $wish_product) {
+//             $product_id = $wish_product['prod_id'];
+//             print($product_id . ',');
+//     }
+// }
+// }
+
+//add_action ('wp_footer','plnt_get_wishlists_test');
+
+add_action( 'wp_footer', 'plnt_get_wishlist_script' );
+function plnt_get_wishlist_script() {
   global $user_id;
   $wishlist_ids = YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) );
 
   foreach ($wishlist_ids as $wishlist_id) {
     $wish_id = $wishlist_id['id'];
+    $wish_list_items = [];
                 
     $wish_products = YITH_WCWL()->get_products( [ 'wishlist_id' => 'all' ] );
-
             foreach ($wish_products as $wish_product) {
             $product_id = $wish_product['prod_id'];
+            array_push($wish_list_items, $product_id);
             print($product_id . ',');
-            print($wish_product . ',');
+            print($wish_list_items . ',');
     }
+  }
+  ?>
+  <script>
+    let wishListItems = <?php echo $wish_list_items; ?>;
+    console.log(wishListItems);
+  </script>
+  <?php
 }
-}
-
-add_action ('wp_footer','plnt_get_wishlists_test');
 //
 
 
