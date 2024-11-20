@@ -96,11 +96,9 @@ function plnt_get_wishlists_test() {
             foreach ($wish_products as $wish_product) {
             $product_id = $wish_product['prod_id'];
             print($product_id . ',');
+            print($wish_product . ',');
     }
 }
-  // echo '<pre>';
-	// print_r( $wishlist_ids );
-	// echo '</pre>';
 }
 
 add_action ('wp_footer','plnt_get_wishlists_test');
