@@ -5,6 +5,7 @@
 
 function plnt_ajax_update_wish() {
   console.log('hi plnt_ajax_update_wish');
+  init_handling_after_ajax();
   jQuery( function( $ ) {
       $(document).ready( function() {
           $.get( yith_wcwl_l10n.ajax_url, {
@@ -17,6 +18,8 @@ function plnt_ajax_update_wish() {
 };
 
 plnt_ajax_update_wish();
+
+
 
 
 ( function ( $ ) {
