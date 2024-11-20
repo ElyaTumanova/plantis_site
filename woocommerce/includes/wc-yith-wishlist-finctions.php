@@ -115,15 +115,15 @@ function plnt_get_wishlist_script() {
     foreach ($wish_products as $wish_product) {
       $product_id = $wish_product['prod_id'];
       array_push($wish_list_items, $product_id);
-      print($product_id . ',');
+      //print($product_id . ',');
     }
     $wish_list_items_string = implode(",", $wish_list_items);
-    print($wish_list_items_string . ',');
+    print($wish_list_items_string);
   }
   ?>
   <script>
-    let wishListItemsStr = <?php echo $wish_list_items_string; ?>;
-    console.log(wishListItemsStr);
+    //let wishListItemsStr = <?php //echo $wish_list_items_string; ?>;
+    //console.log(wishListItemsStr);
   </script>
   <?php
 }
