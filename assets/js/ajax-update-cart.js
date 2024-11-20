@@ -2,16 +2,21 @@
 # CART UPDATE 
 --------------------------------------------------------------*/
 //обновляем мини корзину и количество в корзине с помошью ajax при загрузке страницы, чтобы решить проблему кешрования
-   
-jQuery( function( $ ) {
-    $(document).ready( function() {
-        $.get( yith_wcwl_l10n.ajax_url, {
-        action: 'yith_wcwl_update_wishlist_count'
-        }, function( data ) {
-        $('.yith-wcwl-items-count').children('i').html( data.count );
-        } );
-    } );
-});
+
+function plnt_ajax_update_wish() {
+  console.log('hi plnt_ajax_update_wish');
+  jQuery( function( $ ) {
+      $(document).ready( function() {
+          $.get( yith_wcwl_l10n.ajax_url, {
+          action: 'yith_wcwl_update_wishlist_count'
+          }, function( data ) {
+          $('.yith-wcwl-items-count').children('i').html( data.count );
+          } );
+      } );
+  });
+};
+
+plnt_ajax_update_wish();
 
 
 ( function ( $ ) {
