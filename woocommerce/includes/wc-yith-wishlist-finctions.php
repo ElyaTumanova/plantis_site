@@ -87,9 +87,20 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'plnt_yith_wcwl_ajax_get_wishl
 function plnt_get_wishlists_test() {
   global $user_id;
   $wishlist_ids = YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) );
-  echo '<pre>';
-	print_r( $wishlist_ids );
-	echo '</pre>';
+
+  foreach ($wishlist_ids as $wishlist_id) {
+    $wish_id = $wishlist_id['id'];
+                
+    $wish_products = YITH_WCWL()->get_products( [ 'wishlist_id' => 'all' ] );
+
+            foreach ($wish_products as $wish_product) {
+            $product_id = $wish_product['prod_id'];
+            print($product_id . ',');
+    }
+}
+  // echo '<pre>';
+	// print_r( $wishlist_ids );
+	// echo '</pre>';
 }
 
 add_action ('wp_footer','plnt_get_wishlists_test');
