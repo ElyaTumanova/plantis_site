@@ -55,12 +55,12 @@ plnt_ajax_update_wish();
     console.log('hi get minicart');
     let responseText;
     let miniCartDiv = document.createElement('div');
-    console.log(miniCartDiv);
+    //console.log(miniCartDiv);
   
     ( function ( $ ) {
       "use strict";
     // Define the PHP function to call from here
-    console.log('ajax');
+    console.log('ajax mini cart');
       var data = {
         'action': 'mode_theme_update_mini_cart'
       };
@@ -77,7 +77,7 @@ plnt_ajax_update_wish();
   
     setTimeout(() => {
       miniCartDiv.innerHTML = responseText;
-      console.log(miniCartDiv);
+      //console.log(miniCartDiv);
       updateCatalogButtons(miniCartDiv);
     }, 1000);
   }
@@ -106,10 +106,10 @@ function updateCatalogButtons(miniCartDiv) {
     productsInCartIds.push(item.dataset.product_id);
   });
   
-  console.log(productsInCartIds);
+  //console.log(productsInCartIds);
   
   addToCartBtns.forEach(button => {
-    console.log(button.dataset.product_id);
+    //console.log(button.dataset.product_id);
     if(productsInCartIds.includes(button.dataset.product_id)) {
       console.log(button);
       button.innerHTML = 'Добавлен';
@@ -122,7 +122,7 @@ function updateCatalogButtons(miniCartDiv) {
     if(productsInCartIds.includes(button.dataset.product_id)) {
       return
     } else {
-      console.log(button.dataset.product_id);
+      //console.log(button.dataset.product_id);
       button.innerHTML = 'В корзину';
       button.setAttribute('href', `?add-to-cart=${button.dataset.product_id}`);
       button.setAttribute('class', 'button product_type_simple add_to_cart_button ajax_add_to_cart');
