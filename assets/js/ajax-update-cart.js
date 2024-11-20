@@ -25,7 +25,7 @@ function plnt_ajax_get_wishlist() {
           $.post( yith_wcwl_l10n.ajax_url, {
           action: 'plnt_yith_wcwl_get_wishlist'
           }, function( data ) {
-          console.log(data);
+          console.log(data.wish);
           } );
       } );
   });
