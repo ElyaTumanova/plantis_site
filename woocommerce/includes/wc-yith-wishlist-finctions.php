@@ -123,7 +123,9 @@ function plnt_get_wishlist_script() {
   ?>
   <script>
     let wishListItemsStr = '<?php echo $wish_list_items_string; ?>';
-    console.log(wishListItemsStr);
+    let wishListItems = wishListItemsStr.split(',');
+    console.log(wishListItems);
+    
   </script>
   <?php
 }
