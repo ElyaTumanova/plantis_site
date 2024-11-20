@@ -75,7 +75,7 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'plnt_yith_wcwl_ajax_get_wishl
   function plnt_yith_wcwl_ajax_get_wishlist() {
     global $user_id;
     wp_send_json( array(
-      'wish' => YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) );
+      'wish' => YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) )
     ) );
   }
 
