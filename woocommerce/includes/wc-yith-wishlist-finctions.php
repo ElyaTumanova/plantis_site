@@ -73,8 +73,9 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
 
 if ( defined( 'YITH_WCWL' ) && ! function_exists( 'plnt_yith_wcwl_ajax_get_wishlist' ) ) {
   function plnt_yith_wcwl_ajax_get_wishlist() {
+    global $user_id;
     wp_send_json( array(
-      'wish' => yith_wcwl_get_wishlist()
+      'wish' => YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) );
     ) );
   }
 
@@ -84,23 +85,6 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'plnt_yith_wcwl_ajax_get_wishl
 
 /////////
 
-// function plnt_get_wishlists_test() {
-//   global $user_id;
-//   $wishlist_ids = YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) );
-
-//   foreach ($wishlist_ids as $wishlist_id) {
-//     $wish_id = $wishlist_id['id'];
-                
-//     $wish_products = YITH_WCWL()->get_products( [ 'wishlist_id' => 'all' ] );
-
-//             foreach ($wish_products as $wish_product) {
-//             $product_id = $wish_product['prod_id'];
-//             print($product_id . ',');
-//     }
-// }
-// }
-
-//add_action ('wp_footer','plnt_get_wishlists_test');
 
 add_action( 'wp_footer', 'plnt_get_wishlist_script' );
 function plnt_get_wishlist_script() {
@@ -121,7 +105,7 @@ function plnt_get_wishlist_script() {
     print($wish_list_items_string);
   }
   ?>
-  <script>
+  <!-- <script>
     let wishListItemsStr = '<?php echo $wish_list_items_string; ?>';
     let wishListItems = wishListItemsStr.split(',');
     console.log(wishListItems);
@@ -138,7 +122,7 @@ function plnt_get_wishlist_script() {
       img.setAttribute('src','https://plantis.shop/wp-content/uploads/2024/03/heart-red.svg');
     };
   });
-  </script>
+  </script> -->
   <?php
 }
 //

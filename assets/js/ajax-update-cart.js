@@ -18,20 +18,20 @@ function plnt_ajax_update_wish() {
 
 plnt_ajax_update_wish();
 
-// function plnt_ajax_get_wishlist() {
-//   console.log('hi plnt_ajax_get_wishlist');
-//   jQuery( function( $ ) {
-//       $(document).ready( function() {
-//           $.post( yith_wcwl_l10n.ajax_url, {
-//           action: 'plnt_yith_wcwl_get_wishlist'
-//           }, function( data ) {
-//           console.log(data);
-//           } );
-//       } );
-//   });
-// };
+function plnt_ajax_get_wishlist() {
+  console.log('hi plnt_ajax_get_wishlist');
+  jQuery( function( $ ) {
+      $(document).ready( function() {
+          $.post( yith_wcwl_l10n.ajax_url, {
+          action: 'plnt_yith_wcwl_get_wishlist'
+          }, function( data ) {
+          console.log(data);
+          } );
+      } );
+  });
+};
 
-// plnt_ajax_get_wishlist();
+plnt_ajax_get_wishlist();
 
 ( function ( $ ) {
     "use strict";
