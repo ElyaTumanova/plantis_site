@@ -126,7 +126,7 @@ function plnt_get_wishlist_script() {
     let wishListItems = wishListItemsStr.split(',');
     console.log(wishListItems);
     let wishBtns = document.querySelectorAll('.yith-wcwl-add-button .add_to_wishlist');
-    
+    console.log(wishBtns);
     wishBtns.forEach(button => {
     console.log(button.dataset.product_id);
     if(wishListItems.includes(button.dataset.product_id)) {
