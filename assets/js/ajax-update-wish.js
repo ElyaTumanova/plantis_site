@@ -35,18 +35,34 @@ function updateWishBtns(wishListItemsStr) {
     console.log('hi updateWishBtns');
     console.log(wishListItemsStr);
     let wishListItems = wishListItemsStr.split(',');
-    console.log(wishListItems);
-    let wishBtns = document.querySelectorAll('.yith-wcwl-add-button .add_to_wishlist');
-    console.log(wishBtns);
-    wishBtns.forEach(button => {
-        console.log(button);
-        console.log(button.dataset.productId);
+    //console.log(wishListItems);
+    let addToWishBtns = document.querySelectorAll('.yith-wcwl-add-button .add_to_wishlist');
+    let removeToWishBtns = document.querySelectorAll('.yith-wcwl-add-button .delete_item');
+
+    //console.log(wishBtns);
+    addToWishBtns.forEach(button => {
+        //console.log(button);
+        //console.log(button.dataset.productId);
         if(wishListItems.includes(button.dataset.productId)) {
-        console.log(button);
+        //console.log(button);
         button.setAttribute('href', `?remove_from_wishlist=${button.dataset.productId}`);
         button.setAttribute('class', 'delete_item');
         let img = button.querySelector('img');
         img.setAttribute('src','https://plantis.shop/wp-content/uploads/2024/03/heart-red.svg');
+        };
+    });
+
+    removeToWishBtns.forEach(button => {
+        console.log(button);
+        console.log(button.dataset.productId);
+        if(wishListItems.includes(button.dataset.productId)) {
+            return;
+        } else {
+            console.log(button);
+            button.setAttribute('href', `?add_to_wishlist=${button.dataset.productId}`);
+            button.setAttribute('class', 'add_to_wishlist single_add_to_wishlist');
+            let img = button.querySelector('img');
+            img.setAttribute('src','https://plantis.shop/wp-content/uploads/2024/03/heart_green.svg');
         };
     });
 }
