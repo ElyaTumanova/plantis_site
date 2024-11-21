@@ -16,18 +16,16 @@ plntAjaxUpdateWishCount();
 
 function plntAjaxGetWishlist() {
 console.log('hi plntAjaxGetWishlist');
-let wishListItemsStr;
 jQuery( function( $ ) {
     $(document).ready( function() {
         $.get( yith_wcwl_l10n.ajax_url, {
         action: 'plnt_yith_wcwl_get_wishlist'
         }, function( data ) {
         console.log(data.wish);
-        wishListItemsStr = data.wish;
+        updateWishBtns(data.wish);
         } );
     } );
 });
-updateWishBtns(wishListItemsStr);
 };
 
 plntAjaxGetWishlist();
