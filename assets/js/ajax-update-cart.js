@@ -69,7 +69,7 @@ function getMiniCart() {
   }, 1000);
 }
   
-getMiniCart(); //функция используется в плагнах Load More и BeRocket filters
+plntAjaxGetMiniCart(); //функция используется в плагнах Load More и BeRocket filters
 
 /*--------------------------------------------------------------
 # Update catalog add-to-cart buttons

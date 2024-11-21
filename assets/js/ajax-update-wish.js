@@ -28,7 +28,7 @@ jQuery( function( $ ) {
 });
 };
 
-plntAjaxGetWishlist();
+plntAjaxGetWishlist(); //функция используется в плагнах Load More и BeRocket filters
 
 
 function updateWishBtns(wishListItemsStr) {
