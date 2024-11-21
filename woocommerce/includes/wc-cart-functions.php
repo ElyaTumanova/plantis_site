@@ -126,26 +126,26 @@ function plnt_woocommerce_widget_shopping_cart_subtotal() {
 # CART UPDATE 
 --------------------------------------------------------------*/
 //обновляем мини корзину и количество в корзине с помошью ajax при загрузке страницы, чтобы решить проблему кешрования
-function mode_theme_update_mini_cart() {
+function plnt_update_mini_cart() {
 	echo wc_get_template( 'cart/mini-cart.php' );
 	die();
 }
-add_filter( 'wp_ajax_nopriv_mode_theme_update_mini_cart', 'mode_theme_update_mini_cart' );
-add_filter( 'wp_ajax_mode_theme_update_mini_cart', 'mode_theme_update_mini_cart' );
+add_filter( 'wp_ajax_nopriv_plnt_update_mini_cart', 'plnt_update_mini_cart' );
+add_filter( 'wp_ajax_plnt_update_mini_cart', 'plnt_update_mini_cart' );
 
-function mode_theme_update_side_cart_count() {
+function plnt_update_side_cart_count() {
 	echo wp_kses_data(WC()->cart->get_cart_contents_count());
 	die();
 }
-add_filter( 'wp_ajax_nopriv_mode_theme_update_side_cart_count', 'mode_theme_update_side_cart_count' );
-add_filter( 'wp_ajax_mode_theme_update_side_cart_count', 'mode_theme_update_side_cart_count' );
+add_filter( 'wp_ajax_nopriv_plnt_update_side_cart_count', 'plnt_update_side_cart_count' );
+add_filter( 'wp_ajax_plnt_update_side_cart_count', 'plnt_update_side_cart_count' );
 
-function mode_theme_update_header_cart_count() {
+function plnt_update_header_cart_count() {
 	echo wp_kses_data(WC()->cart->get_cart_contents_count());
 	die();
 }
-add_filter( 'wp_ajax_nopriv_mode_theme_update_header_cart_count', 'mode_theme_update_header_cart_count' );
-add_filter( 'wp_ajax_mode_theme_update_header_cart_count', 'mode_theme_update_header_cart_count' );
+add_filter( 'wp_ajax_nopriv_plnt_update_header_cart_count', 'plnt_update_header_cart_count' );
+add_filter( 'wp_ajax_plnt_update_header_cart_count', 'plnt_update_header_cart_count' );
 
 /*--------------------------------------------------------------
 # CART FUNCTIONS 

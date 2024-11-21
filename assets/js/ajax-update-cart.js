@@ -1,43 +1,14 @@
 /*--------------------------------------------------------------
-# CART UPDATE 
+# CART UPDATE  #CASH
 --------------------------------------------------------------*/
 //обновляем мини корзину и количество в корзине с помошью ajax при загрузке страницы, чтобы решить проблему кешрования
 
-function plnt_ajax_update_wish_count() {
-  console.log('hi plnt_ajax_update_wish_count');
-  jQuery( function( $ ) {
-      $(document).ready( function() {
-          $.get( yith_wcwl_l10n.ajax_url, {
-          action: 'yith_wcwl_update_wishlist_count'
-          }, function( data ) {
-          $('.yith-wcwl-items-count').children('i').html( data.count );
-          } );
-      } );
-  });
-};
-
-plnt_ajax_update_wish_count();
-
-function plnt_ajax_get_wishlist() {
-  console.log('hi plnt_ajax_get_wishlist');
-  jQuery( function( $ ) {
-      $(document).ready( function() {
-          $.get( yith_wcwl_l10n.ajax_url, {
-          action: 'plnt_yith_wcwl_get_wishlist'
-          }, function( data ) {
-          console.log(data.wish);
-          } );
-      } );
-  });
-};
-
-plnt_ajax_get_wishlist();
-
+// обновляем кол-во товаров в боковой корзине
 ( function ( $ ) {
     "use strict";
   // Define the PHP function to call from here
     var data = {
-      'action': 'mode_theme_update_side_cart_count'
+      'action': 'plnt_update_side_cart_count'
     };
     $.post(
       woocommerce_params.ajax_url, // The AJAX URL
@@ -49,11 +20,12 @@ plnt_ajax_get_wishlist();
   // Close anon function.
   }( jQuery ) );
 
+// обновляем кол-во товаров в корзине в хедере
 ( function ( $ ) {
     "use strict";
   // Define the PHP function to call from here
     var data = {
-      'action': 'mode_theme_update_header_cart_count'
+      'action': 'plnt_update_header_cart_count'
     };
     $.post(
       woocommerce_params.ajax_url, // The AJAX URL
@@ -62,43 +34,44 @@ plnt_ajax_get_wishlist();
         $('.header-cart__link .header__count').html(response); // Repopulate the specific element with the new content
       }
     );
+// Close anon function.
+}( jQuery ) );
+
+// получаем корзину для обновления кнопок добавления в корзину
+function getMiniCart() {
+  console.log('hi get minicart');
+  let responseText;
+  let miniCartDiv = document.createElement('div');
+  //console.log(miniCartDiv);
+
+  ( function ( $ ) {
+    "use strict";
+  // Define the PHP function to call from here
+  console.log('ajax mini cart');
+    var data = {
+      'action': 'plnt_update_mini_cart'
+    };
+    $.post(
+      woocommerce_params.ajax_url, // The AJAX URL
+      data, // Send our PHP function
+      function(response){
+        $('.mini-cart').html(response); // Repopulate the specific element with the new content
+        responseText = response;
+      }
+    );
   // Close anon function.
   }( jQuery ) );
 
-  function getMiniCart() {
-    console.log('hi get minicart');
-    let responseText;
-    let miniCartDiv = document.createElement('div');
+  setTimeout(() => {
+    miniCartDiv.innerHTML = responseText;
     //console.log(miniCartDiv);
+    updateCatalogButtons(miniCartDiv);
+  }, 1000);
+}
   
-    ( function ( $ ) {
-      "use strict";
-    // Define the PHP function to call from here
-    console.log('ajax mini cart');
-      var data = {
-        'action': 'mode_theme_update_mini_cart'
-      };
-      $.post(
-        woocommerce_params.ajax_url, // The AJAX URL
-        data, // Send our PHP function
-        function(response){
-          $('.mini-cart').html(response); // Repopulate the specific element with the new content
-          responseText = response;
-        }
-      );
-    // Close anon function.
-    }( jQuery ) );
-  
-    setTimeout(() => {
-      miniCartDiv.innerHTML = responseText;
-      //console.log(miniCartDiv);
-      updateCatalogButtons(miniCartDiv);
-    }, 1000);
-  }
-  
-  getMiniCart();
+getMiniCart(); //функция используется в плагнах Load More и BeRocket filters
 
-  /*--------------------------------------------------------------
+/*--------------------------------------------------------------
 # Update catalog add-to-cart buttons
 --------------------------------------------------------------*/
 
