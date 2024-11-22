@@ -411,7 +411,7 @@
 # Side cart
 --------------------------------------------------------------*/
 @media (max-width:767px) {
-    .side-cart__wrap {
+    .side-cart__wrap .side-cart__open-btn{
         display: none;
     }
 }
