@@ -69,12 +69,11 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
   }
 
 
-// for dev
+// получаем ИД товаров в wishlist для аякса
 
 function plnt_get_wish_list_ids() {
   global $user_id;
   $wishlist_ids = YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) );
-  //print($wishlist_ids);
 
   foreach ($wishlist_ids as $wishlist_id) {
     $wish_id = $wishlist_id['id'];
@@ -84,10 +83,8 @@ function plnt_get_wish_list_ids() {
     foreach ($wish_products as $wish_product) {
       $product_id = $wish_product['prod_id'];
       array_push($wish_list_items, $product_id);
-      //print($product_id . ',');
     }
     return $wish_list_items_string = implode(",", $wish_list_items);
-    //print($wish_list_items_string);
   }
 };
 
@@ -95,7 +92,6 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'plnt_yith_wcwl_ajax_get_wishl
   function plnt_yith_wcwl_ajax_get_wishlist() {
     global $user_id;
     wp_send_json( array(
-      //'wish' => YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) )
       'wish' =>  plnt_get_wish_list_ids()
     ));
   }
@@ -103,36 +99,6 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'plnt_yith_wcwl_ajax_get_wishl
   add_action( 'wp_ajax_plnt_yith_wcwl_get_wishlist', 'plnt_yith_wcwl_ajax_get_wishlist' );
   add_action( 'wp_ajax_nopriv_plnt_yith_wcwl_get_wishlist', 'plnt_yith_wcwl_ajax_get_wishlist' );
 }
-
-/////////
-
-
-//add_action( 'wp_footer', 'plnt_get_wishlist_script' );
-function plnt_get_wishlist_script() {
-
-  ?>
-  <script>
-    // let wishListItemsStr = '<?php echo $wish_list_items_string; ?>';
-    // let wishListItems = wishListItemsStr.split(',');
-    // console.log(wishListItems);
-    // let wishBtns = document.querySelectorAll('.yith-wcwl-add-button .add_to_wishlist');
-    // console.log(wishBtns);
-    // wishBtns.forEach(button => {
-    //   console.log(button);
-    //   console.log(button.dataset.productId);
-    //   if(wishListItems.includes(button.dataset.productId)) {
-    //     console.log(button);
-    //     button.setAttribute('href', `?remove_from_wishlist=${button.dataset.productId}`);
-    //     button.setAttribute('class', 'delete_item');
-    //     let img = button.querySelector('img');
-    //     img.setAttribute('src','https://plantis.shop/wp-content/uploads/2024/03/heart-red.svg');
-    //   };
-    // });
-  </script>
-  <?php
-}
-//
-
 
 
 add_action('yith_wcwl_wishlist_after_wishlist_content','plnt_cart_popular', 40);
