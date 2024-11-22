@@ -40,7 +40,7 @@
 // получаем корзину для обновления кнопок добавления в корзину
 function plntAjaxGetMiniCart() {
   console.log('hi get minicart');
-  let responseText;
+  //let responseText;
   let miniCartDiv = document.createElement('div');
   //console.log(miniCartDiv);
 
@@ -56,24 +56,21 @@ function plntAjaxGetMiniCart() {
       data, // Send our PHP function
       function(response){
         $('.mini-cart').html(response); // Repopulate the specific element with the new content
-        responseText = response;
+        miniCartDiv.innerHTML = response;
+        updateCatalogButtons(miniCartDiv);
       }
     );
   // Close anon function.
   }( jQuery ) );
 
-  setTimeout(() => {
-    miniCartDiv.innerHTML = responseText;
-    //console.log(miniCartDiv);
-    updateCatalogButtons(miniCartDiv);
-  }, 1000);
+  // setTimeout(() => {
+  //   miniCartDiv.innerHTML = responseText;
+  //   //console.log(miniCartDiv);
+  //   updateCatalogButtons(miniCartDiv);
+  // }, 1000);
 }
   
 plntAjaxGetMiniCart(); //функция используется в плагнах Load More и BeRocket filters
-
-function plntHiTest() {
-  console.log('hi test');
-};
 
 /*--------------------------------------------------------------
 # Update catalog add-to-cart buttons

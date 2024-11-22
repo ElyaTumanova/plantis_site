@@ -21,7 +21,7 @@ jQuery( function( $ ) {
         $.get( yith_wcwl_l10n.ajax_url, {
         action: 'plnt_yith_wcwl_get_wishlist'
         }, function( data ) {
-        console.log(data.wish);
+        //console.log(data.wish);
         updateWishBtns(data.wish);
         } );
     } );
@@ -32,8 +32,8 @@ plntAjaxGetWishlist(); //функция используется в плагна
 
 
 function updateWishBtns(wishListItemsStr) {
-    console.log('hi updateWishBtns');
-    console.log(wishListItemsStr);
+    //console.log('hi updateWishBtns');
+   // console.log(wishListItemsStr);
     let wishListItems = wishListItemsStr.split(',');
     //console.log(wishListItems);
     let addToWishBtns = document.querySelectorAll('.yith-wcwl-add-button .add_to_wishlist');
@@ -53,8 +53,8 @@ function updateWishBtns(wishListItemsStr) {
     });
 
     removeToWishBtns.forEach(button => {
-        console.log(button);
-        console.log(button.dataset.productId);
+        //console.log(button);
+        //console.log(button.dataset.productId);
         if(wishListItems.includes(button.dataset.productId)) {
             return;
         } else {
