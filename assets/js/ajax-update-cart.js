@@ -39,15 +39,13 @@
 
 // получаем корзину для обновления кнопок добавления в корзину
 function plntAjaxGetMiniCart() {
-  console.log('hi get minicart');
-  //let responseText;
+  //console.log('hi get minicart');
   let miniCartDiv = document.createElement('div');
   //console.log(miniCartDiv);
 
   ( function ( $ ) {
     "use strict";
   // Define the PHP function to call from here
-  console.log('ajax mini cart');
     var data = {
       'action': 'plnt_update_mini_cart'
     };
@@ -62,12 +60,6 @@ function plntAjaxGetMiniCart() {
     );
   // Close anon function.
   }( jQuery ) );
-
-  // setTimeout(() => {
-  //   miniCartDiv.innerHTML = responseText;
-  //   //console.log(miniCartDiv);
-  //   updateCatalogButtons(miniCartDiv);
-  // }, 1000);
 }
   
 plntAjaxGetMiniCart(); //функция используется в плагнах Load More и BeRocket filters
@@ -85,8 +77,8 @@ function updateCatalogButtons(miniCartDiv) {
   let removeCartBtns = document.querySelectorAll('.remove_from_cart_button');
   let productsInCartIds = [];
   
-  console.log(addToCartBtns.length);
-  console.log(miniCartItems.length);
+  // console.log(addToCartBtns.length);
+  // console.log(miniCartItems.length);
   
   
   miniCartItems.forEach(item => {
@@ -99,7 +91,7 @@ function updateCatalogButtons(miniCartDiv) {
   addToCartBtns.forEach(button => {
     //console.log(button.dataset.product_id);
     if(productsInCartIds.includes(button.dataset.product_id)) {
-      console.log(button);
+      //console.log(button);
       button.innerHTML = 'Добавлен';
       button.setAttribute('href', button.dataset.remove_link);
       button.setAttribute('class', 'button product_type_simple remove_from_cart_button added');

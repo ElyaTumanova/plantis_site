@@ -1,5 +1,5 @@
 function plntAjaxUpdateWishCount() {
-    console.log('hi plntAjaxUpdateWishCount');
+    //console.log('hi plntAjaxUpdateWishCount');
     jQuery( function( $ ) {
         $(document).ready( function() {
             $.get( yith_wcwl_l10n.ajax_url, {
@@ -15,7 +15,7 @@ plntAjaxUpdateWishCount();
 
 
 function plntAjaxGetWishlist() {
-console.log('hi plntAjaxGetWishlist');
+//console.log('hi plntAjaxGetWishlist');
 jQuery( function( $ ) {
     $(document).ready( function() {
         $.get( yith_wcwl_l10n.ajax_url, {
@@ -58,7 +58,7 @@ function updateWishBtns(wishListItemsStr) {
         if(wishListItems.includes(button.dataset.productId)) {
             return;
         } else {
-            console.log(button);
+            //console.log(button);
             button.setAttribute('href', `?add_to_wishlist=${button.dataset.productId}`);
             button.setAttribute('class', 'add_to_wishlist single_add_to_wishlist');
             let img = button.querySelector('img');
