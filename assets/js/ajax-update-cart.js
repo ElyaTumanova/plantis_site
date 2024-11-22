@@ -71,6 +71,10 @@ function getMiniCart() {
   
 plntAjaxGetMiniCart(); //функция используется в плагнах Load More и BeRocket filters
 
+function plntHiTest() {
+  console.log('hi test');
+};
+
 /*--------------------------------------------------------------
 # Update catalog add-to-cart buttons
 --------------------------------------------------------------*/
