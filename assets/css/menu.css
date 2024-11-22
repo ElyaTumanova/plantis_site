@@ -320,6 +320,10 @@
     padding-top: 12px;
   }
 
+  .side-cart .modal-mob__close {
+    position: absolute;
+  }
+
   .modal-mob_active {
     display: block;
   }
