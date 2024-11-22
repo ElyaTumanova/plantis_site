@@ -410,11 +410,11 @@
 /*--------------------------------------------------------------
 # Side cart
 --------------------------------------------------------------*/
-@media (max-width:767px) {
-    .side-cart__wrap .side-cart__open-btn{
+/* @media (max-width:767px) {
+    .side-cart__wrap {
         display: none;
     }
-}
+} */
 
 .side-cart__wrap .popup {
     display: block;
@@ -461,7 +461,8 @@
 
 @media (max-width:1279px) {
     .side-cart__open-btn {
-        bottom: 95px;
+        /* bottom: 95px; */
+        display: none;
     }
 }
 
