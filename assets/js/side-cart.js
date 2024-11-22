@@ -1,11 +1,17 @@
 //переменные для управления попапом
 const sideCartOpenPopupBtn = document.querySelector('.side-cart__open-btn');
+const sideCartOpenPopupBtnMob = document.querySelector('.side-cart__open-btn');
+
 const sideCartPopup = document.querySelector('.side-cart__popup');
 const sideCartPopupOverlay = document.querySelector('.side-cart__popup-overlay');
 
-if (sideCartPopup != null && sideCartOpenPopupBtn != null) {
+if (sideCartPopup != null && sideCartOpenPopupBtn != null || sideCartOpenPopupBtnMob !=null) {
     
     sideCartOpenPopupBtn.addEventListener ("click", (evt)=>{
+        toggle_side_cart_popup ();
+    });
+
+    sideCartOpenPopupBtnMob.addEventListener ("click", (evt)=>{
         toggle_side_cart_popup ();
     });
 
