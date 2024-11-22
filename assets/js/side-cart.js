@@ -1,6 +1,6 @@
 //переменные для управления попапом
 const sideCartOpenPopupBtn = document.querySelector('.side-cart__open-btn');
-const sideCartOpenPopupBtnMob = document.querySelector('.side-cart__open-btn');
+const sideCartOpenPopupBtnMob = document.querySelector('.header__nav-wrap .header-cart');
 
 const sideCartPopup = document.querySelector('.side-cart__popup');
 const sideCartPopupOverlay = document.querySelector('.side-cart__popup-overlay');
