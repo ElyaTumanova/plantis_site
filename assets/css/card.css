@@ -216,6 +216,11 @@
     font-size: 0;
 }
 
+/*попап просмотра фотографии*/
+.pswp {
+    z-index: 9999;
+}
+
 .product_title {
     font-size: 30px;
     font-weight: 700;
