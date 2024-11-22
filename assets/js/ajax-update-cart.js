@@ -38,7 +38,7 @@
 }( jQuery ) );
 
 // получаем корзину для обновления кнопок добавления в корзину
-function getMiniCart() {
+function plntAjaxGetMiniCart() {
   console.log('hi get minicart');
   let responseText;
   let miniCartDiv = document.createElement('div');
