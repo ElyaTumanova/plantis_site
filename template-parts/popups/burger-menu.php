@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="modal-mob burger-menu">
     <div class="modal-mob__close burger-menu__close button">&#10006;</div>
-
+    <!-- контакты -->
     <div class="menu__item_accent ">Контакты</div>
     <div class="menu__item menu__item_geo"><a href="https://yandex.ru/maps/-/CXQ-ErQ" target="blank">Москва, ул. Мещерякова, д.3 </a></div>
     <div class="menu__item"><a href="tel:+78002015790">8 800 201 57 90</a> | <a href="tel:+79647687944">8 964 768 79 44</a></div>
@@ -27,14 +27,16 @@ if ( ! defined( 'ABSPATH' ) ) {
         </a>
     </div>
 
+    <!-- услуги -->
     <div class="menu__item_accent ">Услуги</div>
     <div class="menu__item"> <a href="<?php echo site_url()?>/usluga-peresadki-komnatnyh-rastenij/">Пересадка</a></div>
     <div class="menu__item"> <a href="<?php echo site_url()?>/landscaping/">Озеленение</a></div>
     <div class="menu__item"> <a href="<?php echo site_url()?>/pokupka-komnatnyh-rastenij-optom/">Оптовая покупка растений</a></div>
-    
+
+    <!-- информация -->
     <?php get_template_part('template-parts/info-pages-list');?>
     
-
+    <!-- личный кабинет -->
     <?php if (!is_user_logged_in()) : ?> 
         <div class="menu__item_accent menu__item_enter burger-menu__account">Личный кабинет</div>
     <?php else :?>
