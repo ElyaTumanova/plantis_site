@@ -113,8 +113,8 @@ function updateCatalogButtons(miniCartDiv) {
 
   function plntAjaxGetCheckot() {
 
-    let date = document.querySelector('#datepicker').value;
-    console.log(date)
+    let date = document.querySelector('#datepicker');
+    console.log(date);
     jQuery( function($){
           $.ajax({
               type: 'POST',
