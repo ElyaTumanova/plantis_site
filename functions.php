@@ -99,9 +99,9 @@ function plnt_check_page() {
 function plnt_get_checkout_fields() {
 	$order = WC()->session->get('order_awaiting_pay');
 	$order = new WC_Order($order);
-	$first_name = $order->get_meta('billing_first_name');
+	$id = $order->get_id()
 	echo '<pre>';
-	print_r( $order );
+	print_r( $id );
 	echo '</pre>';
 }
 
