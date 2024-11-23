@@ -81,3 +81,15 @@ function plnt_check_page() {
 }
 
 //add_action( 'wp_footer', 'plnt_check_page' );
+
+
+
+add_action( 'woocommerce_checkout_update_order_review', 'refresh_shipping_methods', 10, 1 );
+function refresh_shipping_methods( $post_data ){
+	echo '<pre>';
+	print_r( $post_data );
+	echo '</pre>';
+
+    
+    WC()->cart->calculate_shipping();
+}
