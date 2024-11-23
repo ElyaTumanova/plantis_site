@@ -101,7 +101,7 @@ function plnt_get_checkout_fields() {
 	$order = new WC_Order($order);
 	$first_name = $order->get_meta('billing_first_name');
 	echo '<pre>';
-	print_r( $first_name );
+	print_r( $order );
 	echo '</pre>';
 }
 
