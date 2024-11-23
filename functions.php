@@ -94,14 +94,21 @@ function plnt_check_page() {
 //     WC()->cart->calculate_shipping();
 // }
 
- add_action( 'wp_footer', 'plnt_get_checkout_fields' );
+//add_action( 'wp_footer', 'plnt_get_checkout_fields' );
 
 function plnt_get_checkout_fields() {
-	$order = WC()->session->get();
-	$order = new WC_Order($order);
+	$order = WC()->session->get('order_awaiting_pay');
+	// $order = new WC_Order($order);
 	$id = $order->get_id();
 	echo '<pre>';
 	print_r( $id );
 	echo '</pre>';
 }
 
+
+add_action('woocommerce_checkout_order_processed', 'action_checkout_order_processed', 10, 3);
+function action_checkout_order_processed( $order_id, $posted_data, $order ) {
+	echo '<pre>';
+	print_r( $order );
+	echo '</pre>';
+}
