@@ -94,11 +94,12 @@ function plnt_check_page() {
 //     WC()->cart->calculate_shipping();
 // }
 
-add_action( 'wp_footer', 'plnt_show_post_data' );
+ add_action( 'wp_footer', 'plnt_show_post_data' );
 
 function plnt_show_post_data() {
-	global  $post_data;
+	global  $_POST;
 	echo '<pre>';
-	print_r( $post_data );
+	print_r( $_POST );
 	echo '</pre>';
 }
+

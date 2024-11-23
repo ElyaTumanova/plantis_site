@@ -109,3 +109,21 @@ function updateCatalogButtons(miniCartDiv) {
     };
   });
   }
+
+
+  // function plntAjaxGetCheckot() {
+  //   jQuery( function($){
+  //         $.ajax({
+  //             type: 'POST',
+  //             url: wc_checkout_params.ajax_url,
+  //             data: {
+  //                 'action': 'get_customer_company',
+  //             },
+  //             success: function (result) {
+  //                 // Trigger refresh checkout
+  //                 $('body').trigger('update_checkout');
+  //                 console.log(result);
+  //             }
+  //         });
+  //   });
+  // }
