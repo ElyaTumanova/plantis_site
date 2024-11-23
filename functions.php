@@ -97,7 +97,7 @@ function plnt_check_page() {
 add_action( 'wp_footer', 'plnt_get_checkout_fields' );
 
 function plnt_get_checkout_fields() {
-	$field = WC()->session->get('first_name');
+	$field = WC()->session->get('billing_first_name');
 
 	echo '<pre>';
 	print_r( $field );
