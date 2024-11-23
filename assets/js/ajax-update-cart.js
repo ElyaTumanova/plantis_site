@@ -108,29 +108,26 @@ function updateCatalogButtons(miniCartDiv) {
       button.setAttribute('class', 'button product_type_simple add_to_cart_button ajax_add_to_cart');
     };
   });
-  }
+}
 
-
-  function plntAjaxGetCheckot() {
-    console.log('hohoho');
-    let date = document.querySelector('#datepicker');
-    
-    console.log(date);
-    jQuery( function($){
-          $.ajax({
-              type: 'POST',
-              url: wc_checkout_params.ajax_url,
-              data: {
-                  'action': 'get_checkout_date',
-                  'date': date,
-              },
-              success: function (result) {
-                  // Trigger refresh checkout
-                  //$('body').trigger('update_checkout');
-                  console.log(result);
-              }
-          });
-    });
-  }
-
-  plntAjaxGetCheckot();
+function plntAjaxGetCheckout(date) {
+  console.log('hohoho');
+  //let date = document.querySelector('#datepicker');
+  
+  console.log(date);
+  jQuery( function($){
+        $.ajax({
+            type: 'POST',
+            url: wc_checkout_params.ajax_url,
+            data: {
+                'action': 'get_checkout_date',
+                'date': date,
+            },
+            success: function (result) {
+                // Trigger refresh checkout
+                //$('body').trigger('update_checkout');
+                console.log(result);
+            }
+        });
+  });
+}
