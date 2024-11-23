@@ -97,9 +97,9 @@ function plnt_check_page() {
  add_action( 'wp_footer', 'plnt_show_post_data' );
 
 function plnt_show_post_data() {
-	global  $_POST;
+	$fields = WC()->checkout()->checkout_fields;
 	echo '<pre>';
-	print_r( $_POST );
+	print_r( $fields );
 	echo '</pre>';
 }
 
