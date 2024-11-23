@@ -94,16 +94,15 @@ function plnt_check_page() {
 //     WC()->cart->calculate_shipping();
 // }
 
-//add_action( 'wp_footer', 'plnt_get_checkout_fields' );
+add_action( 'wp_footer', 'plnt_get_checkout_fields' );
 
-// function plnt_get_checkout_fields() {
-// 	$order = WC()->session->get('order_awaiting_pay');
-// 	// $order = new WC_Order($order);
-// 	$id = $order->get_id();
-// 	echo '<pre>';
-// 	print_r( $id );
-// 	echo '</pre>';
-// }
+function plnt_get_checkout_fields() {
+	$field = WC()->session->get('first_name');
+
+	echo '<pre>';
+	print_r( $field );
+	echo '</pre>';
+}
 
 
 // add_action('woocommerce_checkout_order_processed', 'action_checkout_order_processed', 10, 3);
@@ -114,7 +113,7 @@ function plnt_check_page() {
 // }
 
 // Conditionally show/hide shipping methods
-add_filter( 'woocommerce_package_rates', 'shipping_package_rates_filter_callback', 100, 2 );
+//add_filter( 'woocommerce_package_rates', 'shipping_package_rates_filter_callback', 100, 2 );
 function shipping_package_rates_filter_callback( $rates, $package ) {
     // The defined rate id
     $company_rate_id = 'flat_rate:23';
