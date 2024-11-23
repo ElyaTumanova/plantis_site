@@ -97,7 +97,7 @@ function plnt_check_page() {
  add_action( 'wp_footer', 'plnt_get_checkout_fields' );
 
 function plnt_get_checkout_fields() {
-	$order = WC()->session->get('order_awaiting_pay');
+	$order = WC()->session->get();
 	$order = new WC_Order($order);
 	$id = $order->get_id();
 	echo '<pre>';
