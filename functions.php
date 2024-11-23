@@ -96,19 +96,33 @@ function plnt_check_page() {
 
 //add_action( 'wp_footer', 'plnt_get_checkout_fields' );
 
-function plnt_get_checkout_fields() {
-	$order = WC()->session->get('order_awaiting_pay');
-	// $order = new WC_Order($order);
-	$id = $order->get_id();
-	echo '<pre>';
-	print_r( $id );
-	echo '</pre>';
-}
+// function plnt_get_checkout_fields() {
+// 	$order = WC()->session->get('order_awaiting_pay');
+// 	// $order = new WC_Order($order);
+// 	$id = $order->get_id();
+// 	echo '<pre>';
+// 	print_r( $id );
+// 	echo '</pre>';
+// }
 
 
-add_action('woocommerce_checkout_order_processed', 'action_checkout_order_processed', 10, 3);
-function action_checkout_order_processed( $order_id, $posted_data, $order ) {
-	echo '<pre>';
-	print_r( $order );
-	echo '</pre>';
+// add_action('woocommerce_checkout_order_processed', 'action_checkout_order_processed', 10, 3);
+// function action_checkout_order_processed( $order_id, $posted_data, $order ) {
+// 	echo '<pre>';
+// 	print_r( $order );
+// 	echo '</pre>';
+// }
+
+// Conditionally show/hide shipping methods
+add_filter( 'woocommerce_package_rates', 'shipping_package_rates_filter_callback', 100, 2 );
+function shipping_package_rates_filter_callback( $rates, $package ) {
+    // The defined rate id
+    $company_rate_id = 'flat_rate:23';
+
+    if( WC()->session->get('first_name' ) === '1' ) {
+        $rates = array( $company_rate_id => $rates[ $company_rate_id ] );
+    } else {
+        unset( $rates[ $company_rate_id ] );
+    }
+    return $rates;
 }
