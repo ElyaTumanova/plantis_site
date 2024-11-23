@@ -111,19 +111,25 @@ function updateCatalogButtons(miniCartDiv) {
   }
 
 
-  // function plntAjaxGetCheckot() {
-  //   jQuery( function($){
-  //         $.ajax({
-  //             type: 'POST',
-  //             url: wc_checkout_params.ajax_url,
-  //             data: {
-  //                 'action': 'get_customer_company',
-  //             },
-  //             success: function (result) {
-  //                 // Trigger refresh checkout
-  //                 $('body').trigger('update_checkout');
-  //                 console.log(result);
-  //             }
-  //         });
-  //   });
-  // }
+  function plntAjaxGetCheckot() {
+
+    let date = document.querySelector('#datepicker').value;
+    console.log(date)
+    jQuery( function($){
+          $.ajax({
+              type: 'POST',
+              url: wc_checkout_params.ajax_url,
+              data: {
+                  'action': 'get_checkout_date',
+                  'date': date,
+              },
+              success: function (result) {
+                  // Trigger refresh checkout
+                  //$('body').trigger('update_checkout');
+                  console.log(result);
+              }
+          });
+    });
+  }
+
+  plntAjaxGetCheckot();

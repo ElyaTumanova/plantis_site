@@ -94,7 +94,7 @@ function plnt_check_page() {
 //     WC()->cart->calculate_shipping();
 // }
 
-add_action( 'wp_footer', 'plnt_get_checkout_fields' );
+//add_action( 'wp_footer', 'plnt_get_checkout_fields' );
 
 function plnt_get_checkout_fields() {
 	$field = WC()->session->get('chosen_payment_method'); 
