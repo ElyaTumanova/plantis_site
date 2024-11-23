@@ -84,45 +84,40 @@ function plnt_check_page() {
 
 
 
-// add_action( 'woocommerce_checkout_update_order_review', 'refresh_shipping_methods', 10, 1 );
-// function refresh_shipping_methods( $post_data ){
-// 	echo '<pre>';
-// 	print_r( $post_data );
-// 	echo '</pre>';
-
-    
-//     WC()->cart->calculate_shipping();
-// }
-
-//add_action( 'wp_footer', 'plnt_get_checkout_fields' );
+add_action( 'wp_footer', 'plnt_get_checkout_fields' );
 
 function plnt_get_checkout_fields() {
-	$field = WC()->session->get('chosen_payment_method'); 
-	$fields = WC()->checkout->get_checkout_fields();
+	$field = WC()->session->get('date'); 
 	echo '<pre>';
 	print_r( $field );
-	//print_r( $fields );
 	echo '</pre>';
 }
 
 
-// add_action('woocommerce_checkout_order_processed', 'action_checkout_order_processed', 10, 3);
-// function action_checkout_order_processed( $order_id, $posted_data, $order ) {
-// 	echo '<pre>';
-// 	print_r( $order );
-// 	echo '</pre>';
-// }
+
 
 // Conditionally show/hide shipping methods
-//add_filter( 'woocommerce_package_rates', 'shipping_package_rates_filter_callback', 100, 2 );
+add_filter( 'woocommerce_package_rates', 'shipping_package_rates_filter_callback', 100, 2 );
 function shipping_package_rates_filter_callback( $rates, $package ) {
     // The defined rate id
     $company_rate_id = 'flat_rate:23';
 
-    if( WC()->session->get('first_name' ) === 'll' ) {
+    if( WC()->session->get('date' ) === '11' ) {
         $rates = array( $company_rate_id => $rates[ $company_rate_id ] );
     } else {
         unset( $rates[ $company_rate_id ] );
     }
     return $rates;
+}
+
+
+add_action( 'wp_ajax_get_checkout_date', 'plnt_get_checkout_date' );
+add_action( 'wp_ajax_nopriv_get_checkout_date', 'plnt_get_checkout_date' );
+function plnt_get_checkout_date() {
+    if ( isset($_POST['date']) && ! empty($_POST['date']) ){
+        WC()->session->set('date', '11' );
+    } else {
+        WC()->session->set('date', '0' );
+    }
+    die(); // (required)
 }
