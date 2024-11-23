@@ -119,7 +119,7 @@ function shipping_package_rates_filter_callback( $rates, $package ) {
     // The defined rate id
     $company_rate_id = 'flat_rate:23';
 
-    if( WC()->session->get('first_name' ) === '1' ) {
+    if( WC()->session->get('first_name' ) === '' ) {
         $rates = array( $company_rate_id => $rates[ $company_rate_id ] );
     } else {
         unset( $rates[ $company_rate_id ] );
