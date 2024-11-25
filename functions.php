@@ -131,9 +131,9 @@ add_action( 'wp_ajax_get_checkout_date', 'plnt_get_checkout_date' );
 add_action( 'wp_ajax_nopriv_get_checkout_date', 'plnt_get_checkout_date' );
 function plnt_get_checkout_date() {
     if ( isset($_POST['date']) && ! empty($_POST['date']) ){
-        WC()->session->set('date', 'lol' );
+        WC()->session->set('date', 'lolol' );
     } else {
-        WC()->session->set('date', '0' );
+        WC()->session->set('date', 'lol' );
     }
 
     die(); // (required)
