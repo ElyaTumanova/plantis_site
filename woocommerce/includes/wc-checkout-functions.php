@@ -279,6 +279,7 @@ function new_custom_checkout_field_script() {
         let datePickerOpts;
 
         function datepicker_init () {
+            console.log('datepicker_init');
             datePickerOpts = datepicker_options ();
             datepickerCal.update(datePickerOpts);
             if (weekend) {
