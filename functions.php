@@ -84,7 +84,7 @@ function plnt_check_page() {
 
 
 
-//add_action( 'wp_footer', 'plnt_get_checkout_fields' );
+add_action( 'wp_footer', 'plnt_get_checkout_fields' );
 
 function plnt_get_checkout_fields() {
 	$field = WC()->session->get('date'); 
@@ -145,4 +145,4 @@ function action_woocommerce_checkout_update_order_review($array, $int){
 
 }
 
-add_action('woocommerce_checkout_update_order_review', 'action_woocommerce_checkout_update_order_review', 10, 2);
+//add_action('woocommerce_checkout_update_order_review', 'action_woocommerce_checkout_update_order_review', 10, 2);
