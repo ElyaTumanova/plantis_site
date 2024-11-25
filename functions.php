@@ -97,7 +97,7 @@ function plnt_get_checkout_fields() {
 
 
 // Conditionally show/hide shipping methods
-add_filter( 'woocommerce_package_rates', 'shipping_package_rates_filter_callback', 100, 2 );
+//add_filter( 'woocommerce_package_rates', 'shipping_package_rates_filter_callback', 100, 2 );
 function shipping_package_rates_filter_callback( $rates, $package ) {
     // The defined rate id
     $company_rate_id = 'flat_rate:23';
