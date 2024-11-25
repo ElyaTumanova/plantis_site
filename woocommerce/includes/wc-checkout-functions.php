@@ -145,6 +145,10 @@ function new_custom_checkout_field_script() {
         let urgentPickups = [urgentPickup1, urgentPickup2, urgentPickup3, urgentPickup4];
 
         let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
+
+        /*--------------------------------------------------------------
+        # Hiding fields
+        --------------------------------------------------------------*/
         function plnt_hide_checkout_fields(event){
             //console.log('hi plnt_hide_checkout_fields');
             //console.log(deliveryIntervalInput)
@@ -200,11 +204,13 @@ function new_custom_checkout_field_script() {
         });
         // console.log(weekend);
         //var weekend = new Date(weekend_str);
+
         function datepicker_options () {  
             //console.log('hi datepicker_options');     
 
             //определяем первую доступную дату
-            let startDate = new Date();
+            //let startDate = new Date();
+            let startDate = date.setDate(date.getDate() + 0);
             let selectedDate = [];
             let date = new Date();
 
@@ -214,11 +220,11 @@ function new_custom_checkout_field_script() {
 
           
             if (checkedShippingMethod == localPickup) {  
-                startDate = date.setDate(date.getDate() + 0);
+                //startDate = date.setDate(date.getDate() + 0);
                 selectedDate = startDate;
             } else {
-                startDate = date.setDate(date.getDate() + 1);
-                selectedDate = startDate;                   
+               // startDate = date.setDate(date.getDate() + 1);
+                selectedDate = startDate + 1;                   
             };
 
             //очищаем дату для срочной доставки
