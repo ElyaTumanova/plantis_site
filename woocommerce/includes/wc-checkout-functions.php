@@ -227,7 +227,7 @@ function new_custom_checkout_field_script() {
                 selectedDate = startDate + 1;                   
             };
 
-            console.log(selectedDate);
+            console.log(new Date(selectedDate));
 
             //очищаем дату для срочной доставки
             if (urgentPickups.includes(checkedShippingMethod)) {
