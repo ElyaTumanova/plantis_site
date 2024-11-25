@@ -123,6 +123,6 @@ function plnt_get_checkout_date() {
     //     WC()->session->set('date', '0' );
     // }
 
-	WC()->session->set('date', '11' );
+	WC()->session->set('date', '12' );
     die(); // (required)
 }
