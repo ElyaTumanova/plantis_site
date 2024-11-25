@@ -292,7 +292,15 @@ function new_custom_checkout_field_script() {
             datepicker_init ();
         }, 1000);  
    
-        checkoutForm.addEventListener('change', datepicker_init);
+        checkoutForm.addEventListener('change', changeShippingMethod);
+
+        function changeShippingMethod(event) {
+            if(event && event.target.className == "shipping_method") {
+                console.log('hello');
+                datepicker_init();
+            }
+        }
+        
     </script>
     <?php
 }
