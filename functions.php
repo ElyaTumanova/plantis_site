@@ -89,7 +89,7 @@ add_action( 'wp_footer', 'plnt_get_checkout_fields' );
 function plnt_get_checkout_fields() {
 	$field = WC()->session->get('date'); 
 	echo '<pre>';
-	print_r( $_POST['date'] );
+	print_r( $field );
 	echo '</pre>';
 }
 
@@ -101,6 +101,9 @@ add_filter( 'woocommerce_package_rates', 'shipping_package_rates_filter_callback
 function shipping_package_rates_filter_callback( $rates, $package ) {
     // The defined rate id
     $company_rate_id = 'flat_rate:23';
+	echo '<pre>';
+	print_r( WC()->session->get('date' ) );
+	echo '</pre>';
 
     if( WC()->session->get('date' ) === '11' ) {
         $rates = array( $company_rate_id => $rates[ $company_rate_id ] );
