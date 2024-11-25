@@ -112,6 +112,7 @@ function updateCatalogButtons(miniCartDiv) {
 
 function plntAjaxGetUrgent(date) {
   console.log('hohoho');
+  console.log(isUrgent);
   //let date = document.querySelector('#datepicker');
   
   console.log(date);
