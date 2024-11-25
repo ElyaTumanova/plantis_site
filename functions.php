@@ -114,10 +114,12 @@ function shipping_package_rates_filter_callback( $rates, $package ) {
 add_action( 'wp_ajax_get_checkout_date', 'plnt_get_checkout_date' );
 add_action( 'wp_ajax_nopriv_get_checkout_date', 'plnt_get_checkout_date' );
 function plnt_get_checkout_date() {
-    if ( isset($_POST['date']) && ! empty($_POST['date']) ){
-        WC()->session->set('date', '11' );
-    } else {
-        WC()->session->set('date', '0' );
-    }
+    // if ( isset($_POST['date']) && ! empty($_POST['date']) ){
+    //     WC()->session->set('date', '11' );
+    // } else {
+    //     WC()->session->set('date', '0' );
+    // }
+
+	WC()->session->set('date', '11' );
     die(); // (required)
 }

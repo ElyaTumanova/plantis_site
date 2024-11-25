@@ -126,7 +126,7 @@ function plntAjaxGetCheckout(date) {
             success: function (result) {
                 // Trigger refresh checkout
                 //$('body').trigger('update_checkout');
-                console.log(result);
+                console.log(date);
             }
         });
   });
