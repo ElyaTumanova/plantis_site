@@ -300,11 +300,11 @@ function new_custom_checkout_field_script() {
         setTimeout(() => {
             datepickerCal = new AirDatepicker('#datepicker');
             datepicker_init ();
-            plntAjaxGetUrgent(isUrgent);
+            plntAjaxGetUrgent();
         }, 1000);  
    
         checkoutForm.addEventListener('change', datepicker_init);
-       // checkoutForm.addEventListener('change', plntAjaxGetUrgent);
+        checkoutForm.addEventListener('change', plntAjaxGetUrgent);
     </script>
     <?php
 }

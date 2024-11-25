@@ -110,24 +110,24 @@ function updateCatalogButtons(miniCartDiv) {
   });
 }
 
-function plntAjaxGetUrgent(date) {
-  console.log('hohoho');
+function plntAjaxGetUrgent() {
+  //console.log('hohoho');
   console.log(isUrgent);
   //let date = document.querySelector('#datepicker');
   
-  console.log(date);
+  //console.log(date);
   jQuery( function($){
         $.ajax({
             type: 'POST',
             url: wc_checkout_params.ajax_url,
             data: {
                 'action': 'get_checkout_date',
-                'date': date,
+                'date': isUrgent,
             },
             success: function (result) {
                 // Trigger refresh checkout
                 $('body').trigger('update_checkout');
-                console.log(date);
+                //console.log(isUrgent);
             }
         });
   });
