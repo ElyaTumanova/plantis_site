@@ -130,26 +130,25 @@ function shipping_package_rates_filter_callback( $rates, $package ) {
 add_action( 'wp_ajax_get_checkout_date', 'plnt_get_checkout_date' );
 add_action( 'wp_ajax_nopriv_get_checkout_date', 'plnt_get_checkout_date' );
 function plnt_get_checkout_date() {
-    // if ( isset($_POST['date']) && ! empty($_POST['date']) ){
-    //     WC()->session->set('date', '11' );
-    // } else {
-    //     WC()->session->set('date', '0' );
-    // }
+    if ( isset($_POST['date']) && ! empty($_POST['date']) ){
+        WC()->session->set('date', 'lol' );
+    } else {
+        WC()->session->set('date', '0' );
+    }
 
-	WC()->session->set('date', 'lol' );
     die(); // (required)
 }
 
-function action_woocommerce_checkout_update_order_review($array, $int){
+add_action( 'woocommerce_checkout_update_order_review', 'refresh_shipping_methods', 10, 1 );
+function refresh_shipping_methods( $post_data ){
+    $bool = true;
 
-	$field = WC()->session->get('date');
+    if ( WC()->session->get('data' ) === 'lol' )
+        $bool = false;
 
-
-
+    // Mandatory to make it work with shipping methods
+    foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
+        WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
+    }
     WC()->cart->calculate_shipping();
-
-    return;
-
 }
-
-//add_action('woocommerce_checkout_update_order_review', 'action_woocommerce_checkout_update_order_review', 10, 2);
