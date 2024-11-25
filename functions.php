@@ -115,7 +115,7 @@ function shipping_package_rates_filter_callback( $rates, $package ) {
     //     unset( $rates[ $company_rate_id ] );
     // }
 
-	if (WC()->session->get('date' ) === 'lol') {
+	if (WC()->session->get('date' ) === 'lolol') {
 		foreach( $rates as $rate) {
 
 		$rate->cost = $rate->cost + 2000;
