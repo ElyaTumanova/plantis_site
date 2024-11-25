@@ -288,6 +288,7 @@ function new_custom_checkout_field_script() {
         function datepicker_init () {
             console.log('hi datepicker_init');
             datePickerOpts = datepicker_options ();
+            console.log(datePickerOpts.selectedDates);
             datepickerCal.update(datePickerOpts);
             if (weekend) {
                 datepickerCal.disableDate(weekend);
