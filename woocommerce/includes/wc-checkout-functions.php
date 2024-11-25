@@ -286,22 +286,21 @@ function new_custom_checkout_field_script() {
             if (weekend) {
                 datepickerCal.disableDate(weekend);
             }
-            chosenDeliveryDate = new Date(datePickerOpts.selectedDates).toISOString().slice(0, 10);
-            if (chosenDeliveryDate == '2024-11-26') {
-                isUrgent = '1'
-            } else (
-                isUrgent = '0'
-            );
-
-            console.log(chosenDeliveryDate);
-            console.log(isUrgent);
         }
 
         setTimeout(() => {
             datepickerCal = new AirDatepicker('#datepicker', {
                 onSelect({date, formattedDate, datepicker}) {
                     console.log('hi date');
-                    plntAjaxGetUrgent()
+                    chosenDeliveryDate = new Date(datePickerOpts.selectedDates).toISOString().slice(0, 10);
+                    if (chosenDeliveryDate == '2024-11-26') {
+                        isUrgent = '1'
+                    } else (
+                        isUrgent = '0'
+                    );
+                    console.log(chosenDeliveryDate);
+                    console.log(isUrgent);
+                    plntAjaxGetUrgent();
                 }});
             datepicker_init ();
             plntAjaxGetUrgent();
