@@ -299,6 +299,9 @@ function new_custom_checkout_field_script() {
 
         setTimeout(() => {
             datepickerCal = new AirDatepicker('#datepicker');
+            datepickerCal.onSelect({date, formattedDate, datepicker}) {
+                console.log('hi date');
+            }
             datepicker_init ();
             plntAjaxGetUrgent();
         }, 1000);  
