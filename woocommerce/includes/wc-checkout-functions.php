@@ -291,9 +291,9 @@ function new_custom_checkout_field_script() {
             datepicker_init ();
         }, 1000);  
    
-        checkoutForm.addEventListener('change', changeShippingMethod);
+        checkoutForm.addEventListener('change', onChangeShippingMethod);
 
-        function changeShippingMethod(event) {
+        function onChangeShippingMethod(event) {
             if(event && event.target.className == "shipping_method") {
                 datepicker_init();
             }
