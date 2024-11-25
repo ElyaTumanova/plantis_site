@@ -210,9 +210,9 @@ function new_custom_checkout_field_script() {
 
             //определяем первую доступную дату
             //let startDate = new Date();
+            let date = new Date();
             let startDate = date.setDate(date.getDate() + 0);
             let selectedDate = [];
-            let date = new Date();
 
             //let hour = date.getHours();
 
