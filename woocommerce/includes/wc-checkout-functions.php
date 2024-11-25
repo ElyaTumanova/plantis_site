@@ -304,7 +304,10 @@ function new_custom_checkout_field_script() {
         }, 1000);  
    
         checkoutForm.addEventListener('change', datepicker_init);
-        checkoutForm.addEventListener('change', plntAjaxGetUrgent);
+        setTimeout(() => {
+            checkoutForm.addEventListener('change', plntAjaxGetUrgent);
+        }, 1000);  
+      
     </script>
     <?php
 }
