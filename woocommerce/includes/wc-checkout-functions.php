@@ -302,6 +302,7 @@ function new_custom_checkout_field_script() {
                 console.log('yes');
                 isUrgent = '1'
             } else {
+                console.log('no');
                 isUrgent = '0'
             }
 
