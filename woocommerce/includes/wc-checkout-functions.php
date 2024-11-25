@@ -307,7 +307,7 @@ function new_custom_checkout_field_script() {
         setTimeout(() => {
             checkoutForm.addEventListener('change', plntAjaxGetUrgent);
         }, 1000);  
-      
+        checkoutForm.addEventListener('change', function(){console.log('hi form')});
     </script>
     <?php
 }
