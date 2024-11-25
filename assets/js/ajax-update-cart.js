@@ -122,7 +122,7 @@ function plntAjaxGetUrgent() {
             url: wc_checkout_params.ajax_url,
             data: {
                 'action': 'get_checkout_date',
-                'date': isUrgent,
+                'isUrgent': isUrgent,
             },
             success: function (result) {
                 // Trigger refresh checkout
