@@ -277,7 +277,7 @@ function new_custom_checkout_field_script() {
         // Datepicker init
         let datepickerCal;
         let datePickerOpts;
-        let deliveryDate;
+        let chosenDeliveryDate;
 
         function datepicker_init () {
             datePickerOpts = datepicker_options ();
@@ -285,14 +285,14 @@ function new_custom_checkout_field_script() {
             if (weekend) {
                 datepickerCal.disableDate(weekend);
             }
-            deliveryDate = new Date(datePickerOpts.selectedDates).toISOString().slice(0, 10);;
-            console.log(deliveryDate);
+            chosenDeliveryDate = new Date(datePickerOpts.selectedDates).toISOString().slice(0, 10);;
+            console.log(chosenDeliveryDate);
         }
 
         setTimeout(() => {
             datepickerCal = new AirDatepicker('#datepicker');
             datepicker_init ();
-            plntAjaxGetCheckout(deliveryDate);
+            plntAjaxGetCheckout(chosenDeliveryDate);
         }, 1000);  
    
         checkoutForm.addEventListener('change', datepicker_init);
