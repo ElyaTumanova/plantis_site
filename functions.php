@@ -92,7 +92,7 @@ function plnt_get_checkout_fields() {
 	print_r( $field );
 	echo '</pre>';
 
-	if (WC()->session->get('date' ) === true) {
+	if (WC()->session->get('date' ) === '1') {
 		echo '<pre>';
 		print_r( 'true' );
 		echo '</pre>';
@@ -107,7 +107,7 @@ function plnt_get_checkout_fields() {
 add_filter( 'woocommerce_package_rates', 'shipping_package_rates_filter_callback', 100, 2 );
 function shipping_package_rates_filter_callback( $rates, $package ) {
 
-	if (WC()->session->get('date' ) === true) {
+	if (WC()->session->get('date' ) === '1') {
 		foreach( $rates as $rate) {
 
 		$rate->cost = $rate->cost + 2000;
@@ -124,9 +124,9 @@ add_action( 'wp_ajax_nopriv_get_checkout_date', 'plnt_get_checkout_date' );
 function plnt_get_checkout_date() {
     //if ( isset($_POST['date']) && ! empty($_POST['date']) ){
     if ( $_POST['date'] === true){
-        WC()->session->set('date', true );
+        WC()->session->set('date', '1' );
     } else {
-        WC()->session->set('date', false );
+        WC()->session->set('date', '0' );
     }
 	// $whatever = intval( $_POST['date'] );
 	// echo $whatever;
@@ -138,7 +138,7 @@ add_action( 'woocommerce_checkout_update_order_review', 'refresh_shipping_method
 function refresh_shipping_methods( $post_data ){
     $bool = true;
 
-    if ( WC()->session->get('data' ) === true )
+    if ( WC()->session->get('data' ) === '1' )
         $bool = false;
 
     // Mandatory to make it work with shipping methods

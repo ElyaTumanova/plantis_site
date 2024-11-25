@@ -110,7 +110,7 @@ function updateCatalogButtons(miniCartDiv) {
   });
 }
 
-function plntAjaxGetCheckout(date) {
+function plntAjaxGetUrgent(date) {
   console.log('hohoho');
   //let date = document.querySelector('#datepicker');
   
