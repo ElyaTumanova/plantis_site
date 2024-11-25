@@ -124,6 +124,7 @@ function new_custom_checkout_field_script() {
     $required_html = '<abbr class="required" title="' . $required_text . '">*</abbr>';
     ?>
     <script>
+        //все переменные
         let checkoutForm = document.querySelector('form[name="checkout"]');
     
 		let deliveryDate = document.querySelector('#datepicker_field');
@@ -277,7 +278,6 @@ function new_custom_checkout_field_script() {
         // Datepicker init
         let datepickerCal;
         let datePickerOpts;
-       // let chosenDeliveryDate;
         let isUrgent = '0';
 
         function datepicker_init () {
@@ -291,8 +291,8 @@ function new_custom_checkout_field_script() {
         setTimeout(() => {
             datepickerCal = new AirDatepicker('#datepicker', {
                 onSelect({date, formattedDate, datepicker}) {
-                    console.log('hi date');
-                    console.log(formattedDate);
+                    // console.log('hi date');
+                    // console.log(formattedDate);
                     let dd = new Date().getDate();
                     let mm = new Date().getUTCMonth() + 1;
                     let yyyy = new Date().getUTCFullYear();
@@ -304,9 +304,9 @@ function new_custom_checkout_field_script() {
                         isUrgent = '0'
                     );
                     //console.log(chosenDeliveryDate);
-                    console.log(new Date());
-                    console.log(today);
-                    console.log(isUrgent);
+                    // console.log(new Date());
+                    // console.log(today);
+                    // console.log(isUrgent);
                     plntAjaxGetUrgent();
                 }});
             datepicker_init ();
@@ -314,30 +314,13 @@ function new_custom_checkout_field_script() {
         }, 1000);  
    
         checkoutForm.addEventListener('change', datepicker_init);
-        // setTimeout(() => {
-        //     checkoutForm.addEventListener('change', plntAjaxGetUrgent);
-        // }, 1000);  
-        checkoutForm.addEventListener('change', function(){console.log('hi form')});
+
     </script>
     <?php
 }
 
 //СПОСОБЫ ДОСТАВКИ
 // СТОИМОСТЬ ДОСТАВКИ ПО ДАТЕ
-// 
-add_filter( 'woocommerce_package_rates', 'plnt_shipping_rates_for_urgent', 100, 2 );
-function plnt_shipping_rates_for_urgent( $rates, $package ) {
-
-	if (WC()->session->get('isUrgent' ) === '1') {
-		foreach( $rates as $rate) {
-
-		$rate->cost = $rate->cost + 2000;
-		 
-		}
-	 }
-
-    return $rates;
-}
 
 add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
@@ -362,6 +345,49 @@ function plnt_refresh_shipping_methods_for_urgent( $post_data ){
         WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
     }
     WC()->cart->calculate_shipping();
+}
+
+add_filter( 'woocommerce_package_rates', 'plnt_shipping_rates_for_urgent', 100, 2 );
+function plnt_shipping_rates_for_urgent( $rates, $package ) {
+
+    //переменные
+    global $local_pickup;
+        
+    global $delivery_inMKAD;
+    global $delivery_outMKAD;
+    global $delivery_inMKAD_small;
+    global $delivery_outMKAD_small;
+
+
+    global $urgent_delivery_inMKAD; 
+    global $urgent_delivery_outMKAD; 
+    global $urgent_delivery_inMKAD_small; 
+    global $urgent_delivery_outMKAD_small;
+
+    global $delivery_free;
+
+	// if (WC()->session->get('isUrgent' ) === '1') {
+	// 	foreach( $rates as $rate) {
+
+	// 	$rate->cost = $rate->cost + 2000;
+		 
+	// 	}
+	//  }
+    // return $rates;
+
+	if (WC()->session->get('isUrgent' ) === '1') {
+		unset( $rates[ $delivery_inMKAD ] );
+		unset( $rates[ $delivery_outMKAD ] );
+		unset( $rates[ $delivery_inMKAD_small ] );
+		unset( $rates[ $delivery_outMKAD_small ] );
+	} else {
+        unset( $rates[ $urgent_delivery_inMKAD ] );
+        unset( $rates[ $urgent_delivery_outMKAD ] );
+        unset( $rates[ $urgent_delivery_inMKAD_small ] );
+        unset( $rates[ $urgent_delivery_outMKAD_small ] );
+    }
+
+    return $rates;
 }
 
 /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
