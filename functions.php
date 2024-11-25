@@ -91,6 +91,13 @@ function plnt_get_checkout_fields() {
 	echo '<pre>';
 	print_r( $field );
 	echo '</pre>';
+
+	if (WC()->session->get('date' ) === 'lol') {
+		echo '<pre>';
+		print_r( 'true' );
+		echo '</pre>';
+	}
+	
 }
 
 
