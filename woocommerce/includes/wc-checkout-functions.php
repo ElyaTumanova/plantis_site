@@ -285,16 +285,14 @@ function new_custom_checkout_field_script() {
         let datepickerCal;
         let datePickerOpts;
 
-        let dd = new Date().getDate();
-        let mm = new Date().getUTCMonth() + 1;
-        let yyyy = new Date().getUTCFullYear();
-        let today = `${dd}.${mm}.${yyyy}`;
+        let today = `${new Date().getDate()}.${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
 
         let isUrgent = '0';
 
         function datepicker_init () {
             console.log('hi datepicker_init');
             datePickerOpts = datepicker_options ();
+            
             console.log(new Date(datePickerOpts.selectedDates));
             let selectedDateFormatted = `${new Date(datePickerOpts.selectedDates).getDate()}.${new Date(datePickerOpts.selectedDates).getUTCMonth() + 1}.${new Date(datePickerOpts.selectedDates).getUTCFullYear()}`
             console.log(selectedDateFormatted)
@@ -305,6 +303,7 @@ function new_custom_checkout_field_script() {
                 console.log('no');
                 isUrgent = '0'
             }
+            plntAjaxGetUrgent();
 
             datepickerCal.update(datePickerOpts);
             if (weekend) {
@@ -326,7 +325,6 @@ function new_custom_checkout_field_script() {
                     plntAjaxGetUrgent();
                 }});
             datepicker_init ();
-            plntAjaxGetUrgent();
         }, 1000);  
    
         checkoutForm.addEventListener('change', datepicker_init);
