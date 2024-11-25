@@ -211,7 +211,7 @@ function new_custom_checkout_field_script() {
             //определяем первую доступную дату
             //let startDate = new Date();
             let date = new Date();
-            let startDate = date.setDate(date.getDate() + 0);
+            let startDate;
             let selectedDate = [];
 
             //let hour = date.getHours();
@@ -221,14 +221,12 @@ function new_custom_checkout_field_script() {
             console.log(checkedShippingMethod);
             console.log(localPickup);
             if (checkedShippingMethod == localPickup) {  
-                //startDate = date.setDate(date.getDate() + 0);
+                startDate = date.setDate(date.getDate() + 0);
                 selectedDate = startDate;
             } else {
-               // startDate = date.setDate(date.getDate() + 1);
+                startDate = date.setDate(date.getDate() + 1);
                 selectedDate = startDate + 1;                   
             };
-
-            console.log(new Date(selectedDate));
 
             //очищаем дату для срочной доставки
             if (urgentPickups.includes(checkedShippingMethod)) {
@@ -255,8 +253,8 @@ function new_custom_checkout_field_script() {
             };
 
             checkSelectedDay (selectedDate);
-            // console.log('finally');
-            //console.log(new Date(selectedDate));
+            console.log('finally');
+            console.log(new Date(selectedDate));
 
             //кнопка ОК
             let button = {
@@ -270,9 +268,9 @@ function new_custom_checkout_field_script() {
             // datepicker options
             let datePickerOpts = {
                 selectedDates: selectedDate,
-                minDate: startDate,
+                minDate: date,
                 maxDate: (function(){
-                    var date = new Date();
+                    //let date = new Date();
                     date.setDate(date.getDate() + 30);
                     return date;
                 })(),
