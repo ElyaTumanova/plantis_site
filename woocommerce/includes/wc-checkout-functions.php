@@ -286,6 +286,7 @@ function new_custom_checkout_field_script() {
         let isUrgent = '0';
 
         function datepicker_init () {
+            console.log('hi datepicker_init');
             datePickerOpts = datepicker_options ();
             datepickerCal.update(datePickerOpts);
             if (weekend) {
@@ -296,8 +297,7 @@ function new_custom_checkout_field_script() {
         setTimeout(() => {
             datepickerCal = new AirDatepicker('#datepicker', {
                 onSelect({date, formattedDate, datepicker}) {
-                    // console.log('hi date');
-                    // console.log(formattedDate);
+                    console.log('hi date');
                     let dd = new Date().getDate();
                     let mm = new Date().getUTCMonth() + 1;
                     let yyyy = new Date().getUTCFullYear();
@@ -308,10 +308,6 @@ function new_custom_checkout_field_script() {
                     } else (
                         isUrgent = '0'
                     );
-                    //console.log(chosenDeliveryDate);
-                    // console.log(new Date());
-                    // console.log(today);
-                    // console.log(isUrgent);
                     plntAjaxGetUrgent();
                 }});
             datepicker_init ();
@@ -380,19 +376,6 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
 	 }
     return $rates;
 
-	// if (WC()->session->get('isUrgent' ) === '1') {
-	// 	unset( $rates[ $delivery_inMKAD ] );
-	// 	unset( $rates[ $delivery_outMKAD ] );
-	// 	unset( $rates[ $delivery_inMKAD_small ] );
-	// 	unset( $rates[ $delivery_outMKAD_small ] );
-	// } else {
-    //     unset( $rates[ $urgent_delivery_inMKAD ] );
-    //     unset( $rates[ $urgent_delivery_outMKAD ] );
-    //     unset( $rates[ $urgent_delivery_inMKAD_small ] );
-    //     unset( $rates[ $urgent_delivery_outMKAD_small ] );
-    // }
-
-    // return $rates;
 }
 
 /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
