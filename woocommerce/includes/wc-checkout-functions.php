@@ -218,7 +218,8 @@ function new_custom_checkout_field_script() {
 
             //console.log(hour);
 
-          
+            console.log(checkedShippingMethod);
+            console.log(localPickup);
             if (checkedShippingMethod == localPickup) {  
                 //startDate = date.setDate(date.getDate() + 0);
                 selectedDate = startDate;
