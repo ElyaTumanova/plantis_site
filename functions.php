@@ -84,13 +84,12 @@ function plnt_check_page() {
 
 
 
-add_action( 'wp_footer', 'plnt_get_checkout_fields' );
+//add_action( 'wp_footer', 'plnt_get_checkout_fields' );
 
 function plnt_get_checkout_fields() {
 	$field = WC()->session->get('date'); 
-	global $post_data;
 	echo '<pre>';
-	print_r( $post_data );
+	print_r( $field );
 	echo '</pre>';
 }
 
@@ -101,16 +100,22 @@ function plnt_get_checkout_fields() {
 //add_filter( 'woocommerce_package_rates', 'shipping_package_rates_filter_callback', 100, 2 );
 function shipping_package_rates_filter_callback( $rates, $package ) {
     // The defined rate id
-    $company_rate_id = 'flat_rate:23';
-	echo '<pre>';
-	print_r( WC()->session->get('date' ) );
-	echo '</pre>';
+    // $company_rate_id = 'flat_rate:23';
 
-    if( WC()->session->get('date' ) === '11' ) {
-        $rates = array( $company_rate_id => $rates[ $company_rate_id ] );
-    } else {
-        unset( $rates[ $company_rate_id ] );
-    }
+    // if( WC()->session->get('date' ) === '11' ) {
+    //     $rates = array( $company_rate_id => $rates[ $company_rate_id ] );
+    // } else {
+    //     unset( $rates[ $company_rate_id ] );
+    // }
+
+	if (WC()->session->get('date' ) === '11') {
+		foreach( $rates as $rate) {
+
+		$rate->cost = $rate->cost + 1000;
+		 
+		}
+	 }
+
     return $rates;
 }
 
@@ -124,6 +129,20 @@ function plnt_get_checkout_date() {
     //     WC()->session->set('date', '0' );
     // }
 
-	WC()->session->set('date', '12' );
+	WC()->session->set('date', '11' );
     die(); // (required)
 }
+
+function action_woocommerce_checkout_update_order_review($array, $int){
+
+	$field = WC()->session->get('date');
+
+
+
+    WC()->cart->calculate_shipping();
+
+    return;
+
+}
+
+add_action('woocommerce_checkout_update_order_review', 'action_woocommerce_checkout_update_order_review', 10, 2);
