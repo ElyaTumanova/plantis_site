@@ -279,7 +279,6 @@ function new_custom_checkout_field_script() {
         let datePickerOpts;
 
         function datepicker_init () {
-            console.log('datepicker_init');
             datePickerOpts = datepicker_options ();
             datepickerCal.update(datePickerOpts);
             if (weekend) {
@@ -296,7 +295,6 @@ function new_custom_checkout_field_script() {
 
         function changeShippingMethod(event) {
             if(event && event.target.className == "shipping_method") {
-                console.log('hello');
                 datepicker_init();
             }
         }
