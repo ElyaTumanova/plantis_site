@@ -121,7 +121,7 @@ function plntAjaxGetUrgent() {
             type: 'POST',
             url: wc_checkout_params.ajax_url,
             data: {
-                'action': 'get_checkout_date',
+                'action': 'get_urgent_shipping',
                 'isUrgent': isUrgent,
             },
             success: function (result) {

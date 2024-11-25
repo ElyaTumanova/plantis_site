@@ -325,8 +325,8 @@ function new_custom_checkout_field_script() {
 //СПОСОБЫ ДОСТАВКИ
 // СТОИМОСТЬ ДОСТАВКИ ПО ДАТЕ
 // 
-add_filter( 'woocommerce_package_rates', 'shipping_package_rates_filter_callback', 100, 2 );
-function shipping_package_rates_filter_callback( $rates, $package ) {
+add_filter( 'woocommerce_package_rates', 'plnt_shipping_rates_for_urgent', 100, 2 );
+function plnt_shipping_rates_for_urgent( $rates, $package ) {
 
 	if (WC()->session->get('isUrgent' ) === '1') {
 		foreach( $rates as $rate) {
@@ -339,10 +339,9 @@ function shipping_package_rates_filter_callback( $rates, $package ) {
     return $rates;
 }
 
-
-add_action( 'wp_ajax_get_checkout_date', 'plnt_get_checkout_date' );
-add_action( 'wp_ajax_nopriv_get_checkout_date', 'plnt_get_checkout_date' );
-function plnt_get_checkout_date() {
+add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
+add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
+function plnt_get_urgent_shipping() {
     if ( $_POST['isUrgent'] === '1'){
         WC()->session->set('isUrgent', '1' );
     } else {
@@ -351,8 +350,8 @@ function plnt_get_checkout_date() {
     die(); // (required)
 }
 
-add_action( 'woocommerce_checkout_update_order_review', 'refresh_shipping_methods', 10, 1 );
-function refresh_shipping_methods( $post_data ){
+add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_urgent', 10, 1 );
+function plnt_refresh_shipping_methods_for_urgent( $post_data ){
     $bool = true;
 
     if ( WC()->session->get('isUrgent' ) === '1' )
