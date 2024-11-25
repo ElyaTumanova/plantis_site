@@ -270,7 +270,7 @@ function new_custom_checkout_field_script() {
                 selectedDates: selectedDate,
                 minDate: date,
                 maxDate: (function(){
-                    //let date = new Date();
+                    let date = new Date();
                     date.setDate(date.getDate() + 30);
                     return date;
                 })(),
