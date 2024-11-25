@@ -372,28 +372,28 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
 
     global $delivery_free;
 
-	// if (WC()->session->get('isUrgent' ) === '1') {
-	// 	foreach( $rates as $rate) {
-
-	// 	$rate->cost = $rate->cost + 2000;
-		 
-	// 	}
-	//  }
-    // return $rates;
-
 	if (WC()->session->get('isUrgent' ) === '1') {
-		unset( $rates[ $delivery_inMKAD ] );
-		unset( $rates[ $delivery_outMKAD ] );
-		unset( $rates[ $delivery_inMKAD_small ] );
-		unset( $rates[ $delivery_outMKAD_small ] );
-	} else {
-        unset( $rates[ $urgent_delivery_inMKAD ] );
-        unset( $rates[ $urgent_delivery_outMKAD ] );
-        unset( $rates[ $urgent_delivery_inMKAD_small ] );
-        unset( $rates[ $urgent_delivery_outMKAD_small ] );
-    }
+		foreach( $rates as $rate) {
 
+		$rate->cost = $rate->cost + 2000;
+		 
+		}
+	 }
     return $rates;
+
+	// if (WC()->session->get('isUrgent' ) === '1') {
+	// 	unset( $rates[ $delivery_inMKAD ] );
+	// 	unset( $rates[ $delivery_outMKAD ] );
+	// 	unset( $rates[ $delivery_inMKAD_small ] );
+	// 	unset( $rates[ $delivery_outMKAD_small ] );
+	// } else {
+    //     unset( $rates[ $urgent_delivery_inMKAD ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_small ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_small ] );
+    // }
+
+    // return $rates;
 }
 
 /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
