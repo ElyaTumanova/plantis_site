@@ -218,8 +218,6 @@ function new_custom_checkout_field_script() {
 
             //console.log(hour);
 
-            console.log(checkedShippingMethod);
-            console.log(localPickup);
             if (checkedShippingMethod == localPickup) {  
                 startDate = date.setDate(date.getDate() + 0);
                 selectedDate = startDate;
@@ -375,9 +373,9 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
 
 	if (WC()->session->get('isUrgent' ) === '1') {
 		foreach( $rates as $rate) {
-
-		$rate->cost = $rate->cost + 2000;
-		 
+            if ( 'local_pickup' !== $rate->method_id ) {
+                $rate->cost = $rate->cost + 2000;
+            }	
 		}
 	 }
     return $rates;
