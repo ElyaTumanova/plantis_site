@@ -108,10 +108,10 @@ function shipping_package_rates_filter_callback( $rates, $package ) {
     //     unset( $rates[ $company_rate_id ] );
     // }
 
-	if (WC()->session->get('date' ) === '11') {
+	if (WC()->session->get('date' ) === 'lol') {
 		foreach( $rates as $rate) {
 
-		$rate->cost = $rate->cost + 1000;
+		$rate->cost = $rate->cost + 2000;
 		 
 		}
 	 }
@@ -129,7 +129,7 @@ function plnt_get_checkout_date() {
     //     WC()->session->set('date', '0' );
     // }
 
-	WC()->session->set('date', '11' );
+	WC()->session->set('date', 'lol' );
     die(); // (required)
 }
 
