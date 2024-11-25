@@ -277,7 +277,7 @@ function new_custom_checkout_field_script() {
         // Datepicker init
         let datepickerCal;
         let datePickerOpts;
-        let chosenDeliveryDate;
+       // let chosenDeliveryDate;
         let isUrgent = '0';
 
         function datepicker_init () {
@@ -293,13 +293,18 @@ function new_custom_checkout_field_script() {
                 onSelect({date, formattedDate, datepicker}) {
                     console.log('hi date');
                     console.log(formattedDate);
-                    chosenDeliveryDate = formattedDate;
-                    if (chosenDeliveryDate == '27.11.2024') {
+                    let dd = new Date().getUTCDay();
+                    let mm = new Date().getUTCMonth() + 1;
+                    let yyyy = new Date().getUTCFullYear();
+                    let today = `${dd}.${mm}.${yyyy}`
+                    //chosenDeliveryDate = formattedDate;
+                    if (formattedDate == today) {
                         isUrgent = '1'
                     } else (
                         isUrgent = '0'
                     );
-                    console.log(chosenDeliveryDate);
+                    //console.log(chosenDeliveryDate);
+                    console.log(today);
                     console.log(isUrgent);
                     plntAjaxGetUrgent();
                 }});
