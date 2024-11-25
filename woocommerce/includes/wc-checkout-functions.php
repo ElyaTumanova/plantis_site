@@ -288,10 +288,10 @@ function new_custom_checkout_field_script() {
             }
             chosenDeliveryDate = new Date(datePickerOpts.selectedDates).toISOString().slice(0, 10);
             if (chosenDeliveryDate == '2024-11-26') {
-                isUrgent = '1';
+                isUrgent = '1'
             } else (
-                isUrgent = '0';
-            )
+                isUrgent = '0'
+            );
 
             console.log(chosenDeliveryDate);
             console.log(isUrgent);
