@@ -253,8 +253,8 @@ function new_custom_checkout_field_script() {
             };
 
             checkSelectedDay (selectedDate);
-            console.log('finally');
-            console.log(new Date(selectedDate));
+            //console.log('finally');
+            //console.log(new Date(selectedDate));
 
             //кнопка ОК
             let button = {
@@ -268,7 +268,7 @@ function new_custom_checkout_field_script() {
             // datepicker options
             let datePickerOpts = {
                 selectedDates: selectedDate,
-                minDate: date,
+                minDate: new Date(),
                 maxDate: (function(){
                     let date = new Date();
                     date.setDate(date.getDate() + 30);
