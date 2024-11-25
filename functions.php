@@ -88,6 +88,7 @@ add_action( 'wp_footer', 'plnt_get_checkout_fields' );
 
 function plnt_get_checkout_fields() {
 	$field = WC()->session->get('date'); 
+	global $post_data;
 	echo '<pre>';
 	print_r( $post_data );
 	echo '</pre>';
