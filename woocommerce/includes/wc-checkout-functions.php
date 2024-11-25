@@ -292,7 +292,7 @@ function new_custom_checkout_field_script() {
             datepickerCal = new AirDatepicker('#datepicker', {
                 onSelect({date, formattedDate, datepicker}) {
                     console.log('hi date');
-                    console.log(datePickerOpts);
+                    console.log(formattedDate);
                     chosenDeliveryDate = new Date(datePickerOpts.selectedDates).toISOString().slice(0, 10);
                     if (chosenDeliveryDate == '2024-11-26') {
                         isUrgent = '1'
