@@ -123,7 +123,7 @@ add_action( 'wp_ajax_get_checkout_date', 'plnt_get_checkout_date' );
 add_action( 'wp_ajax_nopriv_get_checkout_date', 'plnt_get_checkout_date' );
 function plnt_get_checkout_date() {
     //if ( isset($_POST['date']) && ! empty($_POST['date']) ){
-    if ( $_POST['date'] === true){
+    if ( $_POST['date'] === '1'){
         WC()->session->set('date', '1' );
     } else {
         WC()->session->set('date', '0' );
@@ -138,7 +138,7 @@ add_action( 'woocommerce_checkout_update_order_review', 'refresh_shipping_method
 function refresh_shipping_methods( $post_data ){
     $bool = true;
 
-    if ( WC()->session->get('data' ) === '1' )
+    if ( WC()->session->get('date' ) === '1' )
         $bool = false;
 
     // Mandatory to make it work with shipping methods
