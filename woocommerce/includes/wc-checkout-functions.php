@@ -298,6 +298,13 @@ function new_custom_checkout_field_script() {
             console.log(new Date(datePickerOpts.selectedDates));
             console.log(new Date());
 
+            if (new Date(datePickerOpts.selectedDates) == new Date()) {
+                console.log('yes');
+                isUrgent = '1'
+            } else {
+                isUrgent = '0'
+            }
+
             datepickerCal.update(datePickerOpts);
             if (weekend) {
                 datepickerCal.disableDate(weekend);
