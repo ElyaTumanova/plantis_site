@@ -301,15 +301,16 @@ function new_custom_checkout_field_script() {
             datepickerCal = new AirDatepicker('#datepicker', {
                 onSelect({date, formattedDate, datepicker}) {
                     console.log('hi date');
+                    plntAjaxGetUrgent()
                 }});
             datepicker_init ();
             plntAjaxGetUrgent();
         }, 1000);  
    
         checkoutForm.addEventListener('change', datepicker_init);
-        setTimeout(() => {
-            checkoutForm.addEventListener('change', plntAjaxGetUrgent);
-        }, 1000);  
+        // setTimeout(() => {
+        //     checkoutForm.addEventListener('change', plntAjaxGetUrgent);
+        // }, 1000);  
         checkoutForm.addEventListener('change', function(){console.log('hi form')});
     </script>
     <?php
