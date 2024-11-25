@@ -293,8 +293,8 @@ function new_custom_checkout_field_script() {
                 onSelect({date, formattedDate, datepicker}) {
                     console.log('hi date');
                     console.log(formattedDate);
-                    chosenDeliveryDate = new Date(datePickerOpts.selectedDates).toISOString().slice(0, 10);
-                    if (chosenDeliveryDate == '2024-11-26') {
+                    chosenDeliveryDate = formattedDate;
+                    if (chosenDeliveryDate == '27.11.2024') {
                         isUrgent = '1'
                     } else (
                         isUrgent = '0'
