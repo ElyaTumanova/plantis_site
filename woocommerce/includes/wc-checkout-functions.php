@@ -293,7 +293,7 @@ function new_custom_checkout_field_script() {
                 onSelect({date, formattedDate, datepicker}) {
                     console.log('hi date');
                     console.log(formattedDate);
-                    let dd = new Date().getUTCDay();
+                    let dd = new Date().getDate();
                     let mm = new Date().getUTCMonth() + 1;
                     let yyyy = new Date().getUTCFullYear();
                     let today = `${dd}.${mm}.${yyyy}`
@@ -304,6 +304,7 @@ function new_custom_checkout_field_script() {
                         isUrgent = '0'
                     );
                     //console.log(chosenDeliveryDate);
+                    console.log(new Date());
                     console.log(today);
                     console.log(isUrgent);
                     plntAjaxGetUrgent();
