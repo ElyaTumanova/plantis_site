@@ -296,9 +296,9 @@ function new_custom_checkout_field_script() {
             console.log('hi datepicker_init');
             datePickerOpts = datepicker_options ();
             console.log(new Date(datePickerOpts.selectedDates));
-            console.log(new Date());
-
-            if (new Date(datePickerOpts.selectedDates) == new Date()) {
+            let selectedDateFormatted = `${new Date(datePickerOpts.selectedDates).getDate()}.${new Date(datePickerOpts.selectedDates).getUTCMonth() + 1}.${new Date(datePickerOpts.selectedDates).getUTCFullYear()}`
+            console.log(selectedDateFormatted)
+            if (selectedDateFormatted == today) {
                 console.log('yes');
                 isUrgent = '1'
             } else {
