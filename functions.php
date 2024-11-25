@@ -145,7 +145,7 @@ add_action( 'woocommerce_checkout_update_order_review', 'refresh_shipping_method
 function refresh_shipping_methods( $post_data ){
     $bool = true;
 
-    if ( WC()->session->get('data' ) === 'lol' )
+    if ( WC()->session->get('data' ) === 'lolol' )
         $bool = false;
 
     // Mandatory to make it work with shipping methods
