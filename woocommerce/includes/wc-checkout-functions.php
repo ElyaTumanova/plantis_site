@@ -280,15 +280,24 @@ function new_custom_checkout_field_script() {
 
             return datePickerOpts;
         }
+
         // Datepicker init
         let datepickerCal;
         let datePickerOpts;
+
+        let dd = new Date().getDate();
+        let mm = new Date().getUTCMonth() + 1;
+        let yyyy = new Date().getUTCFullYear();
+        let today = `${dd}.${mm}.${yyyy}`;
+
         let isUrgent = '0';
 
         function datepicker_init () {
             console.log('hi datepicker_init');
             datePickerOpts = datepicker_options ();
             console.log(new Date(datePickerOpts.selectedDates));
+            console.log(new Date());
+
             datepickerCal.update(datePickerOpts);
             if (weekend) {
                 datepickerCal.disableDate(weekend);
@@ -299,10 +308,7 @@ function new_custom_checkout_field_script() {
             datepickerCal = new AirDatepicker('#datepicker', {
                 onSelect({date, formattedDate, datepicker}) {
                     console.log('hi date');
-                    let dd = new Date().getDate();
-                    let mm = new Date().getUTCMonth() + 1;
-                    let yyyy = new Date().getUTCFullYear();
-                    let today = `${dd}.${mm}.${yyyy}`
+                    
                     //chosenDeliveryDate = formattedDate;
                     if (formattedDate == today) {
                         isUrgent = '1'
