@@ -92,7 +92,7 @@ function plnt_get_checkout_fields() {
 	print_r( $field );
 	echo '</pre>';
 
-	if (WC()->session->get('date' ) === 'lol') {
+	if (WC()->session->get('date' ) === true) {
 		echo '<pre>';
 		print_r( 'true' );
 		echo '</pre>';
@@ -106,16 +106,8 @@ function plnt_get_checkout_fields() {
 // Conditionally show/hide shipping methods
 add_filter( 'woocommerce_package_rates', 'shipping_package_rates_filter_callback', 100, 2 );
 function shipping_package_rates_filter_callback( $rates, $package ) {
-    // The defined rate id
-    // $company_rate_id = 'flat_rate:23';
 
-    // if( WC()->session->get('date' ) === '11' ) {
-    //     $rates = array( $company_rate_id => $rates[ $company_rate_id ] );
-    // } else {
-    //     unset( $rates[ $company_rate_id ] );
-    // }
-
-	if (WC()->session->get('date' ) === 'lolol') {
+	if (WC()->session->get('date' ) === true) {
 		foreach( $rates as $rate) {
 
 		$rate->cost = $rate->cost + 2000;
@@ -130,10 +122,11 @@ function shipping_package_rates_filter_callback( $rates, $package ) {
 add_action( 'wp_ajax_get_checkout_date', 'plnt_get_checkout_date' );
 add_action( 'wp_ajax_nopriv_get_checkout_date', 'plnt_get_checkout_date' );
 function plnt_get_checkout_date() {
-    if ( isset($_POST['date']) && ! empty($_POST['date']) ){
-        WC()->session->set('date', 'lolol' );
+    //if ( isset($_POST['date']) && ! empty($_POST['date']) ){
+    if ( $_POST['date'] === true){
+        WC()->session->set('date', true );
     } else {
-        WC()->session->set('date', 'lol' );
+        WC()->session->set('date', false );
     }
 	// $whatever = intval( $_POST['date'] );
 	// echo $whatever;
@@ -145,7 +138,7 @@ add_action( 'woocommerce_checkout_update_order_review', 'refresh_shipping_method
 function refresh_shipping_methods( $post_data ){
     $bool = true;
 
-    if ( WC()->session->get('data' ) === 'lolol' )
+    if ( WC()->session->get('data' ) === true )
         $bool = false;
 
     // Mandatory to make it work with shipping methods
