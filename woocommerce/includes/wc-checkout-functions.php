@@ -327,7 +327,7 @@ function new_custom_checkout_field_script() {
                     //console.log('hi date');
                     
                     // проверяем срочная ли доставка и запускам аякс
-                    if (formattedDate == today) {
+                    if (formattedDate == today || formattedDate == tomorrow && hour >= 18) {
                         isUrgent = '1'
                     } else (
                         isUrgent = '0'
