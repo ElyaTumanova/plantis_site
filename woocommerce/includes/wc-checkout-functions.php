@@ -368,25 +368,27 @@ add_filter( 'woocommerce_package_rates', 'plnt_shipping_rates_for_urgent', 100, 
 function plnt_shipping_rates_for_urgent( $rates, $package ) {
 
     //переменные
-    global $local_pickup;
+    // global $local_pickup;
         
-    global $delivery_inMKAD;
-    global $delivery_outMKAD;
-    global $delivery_inMKAD_small;
-    global $delivery_outMKAD_small;
+    // global $delivery_inMKAD;
+    // global $delivery_outMKAD;
+    // global $delivery_inMKAD_small;
+    // global $delivery_outMKAD_small;
 
 
-    global $urgent_delivery_inMKAD; 
-    global $urgent_delivery_outMKAD; 
-    global $urgent_delivery_inMKAD_small; 
-    global $urgent_delivery_outMKAD_small;
+    // global $urgent_delivery_inMKAD; 
+    // global $urgent_delivery_outMKAD; 
+    // global $urgent_delivery_inMKAD_small; 
+    // global $urgent_delivery_outMKAD_small;
 
-    global $delivery_free;
+    // global $delivery_free;
+
+    $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
 
 	if (WC()->session->get('isUrgent' ) === '1') {
 		foreach( $rates as $rate) {
             if ( 'local_pickup' !== $rate->method_id ) {
-                $rate->cost = $rate->cost + 2000;
+                $rate->cost = $rate->cost + $urgent_delivery_markup;
             }	
 		}
 	 }
@@ -497,29 +499,28 @@ add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price
 function new_truemisha_remove_shipping_on_price( $rates, $package ) {
 
     //переменные
-    global $local_pickup;
+     // TO BE DELETED
+    // global $local_pickup;
         
-    global $delivery_inMKAD;
-    global $delivery_outMKAD;
-    global $delivery_inMKAD_small;
-    global $delivery_outMKAD_small;
+    // global $delivery_inMKAD;
+    // global $delivery_outMKAD;
+    // global $delivery_inMKAD_small;
+    // global $delivery_outMKAD_small;
 
 
-    global $urgent_delivery_inMKAD; 
-    global $urgent_delivery_outMKAD; 
-    global $urgent_delivery_inMKAD_small; 
-    global $urgent_delivery_outMKAD_small;
+    // global $urgent_delivery_inMKAD; 
+    // global $urgent_delivery_outMKAD; 
+    // global $urgent_delivery_inMKAD_small; 
+    // global $urgent_delivery_outMKAD_small;
 
-    global $delivery_free;
+    // global $delivery_free;
 
     $small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
 
 	// если сумма всех товаров в корзине меньше min_small_delivery, отключаем способ доставки
-
     if ($small_delivery_markup) {
         // стоимость товаров в корзине
-    
         if (WC()->cart->subtotal < $min_small_delivery) {
            foreach( $rates as $rate) {
             
