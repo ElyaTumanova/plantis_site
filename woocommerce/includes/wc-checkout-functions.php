@@ -211,19 +211,23 @@ function new_custom_checkout_field_script() {
             weekend.push(new Date(element));
         });
 
+        let date = new Date();
+        let hour = date.getHours();
+
+        console.log(hour);
+
         function datepicker_options () {  
             //console.log('hi datepicker_options');     
 
             //определяем первую доступную дату
             //let startDate = new Date();
-            let date = new Date();
+            
             //let startDate;
+
+            // определяем дату, которая будет выбрана по умолчанию
             let selectedDate = date.setDate(date.getDate() + 1);
 
-            //let hour = date.getHours();
-
-            //console.log(hour);
-
+            //TO BE DELETED
             // if (checkedShippingMethod == localPickup) {  
             //     startDate = date.setDate(date.getDate() + 0);
             //     selectedDate = startDate;
@@ -274,7 +278,7 @@ function new_custom_checkout_field_script() {
                 selectedDates: selectedDate,
                 minDate: new Date(),
                 maxDate: (function(){
-                    let date = new Date();
+                    //let date = new Date();
                     date.setDate(date.getDate() + 30);
                     return date;
                 })(),
@@ -307,7 +311,7 @@ function new_custom_checkout_field_script() {
 
             // проверяем срочная ли доставка и запускам аякс
             let selectedDateFormatted = `${new Date(datePickerOpts.selectedDates).getDate()}.${new Date(datePickerOpts.selectedDates).getUTCMonth() + 1}.${new Date(datePickerOpts.selectedDates).getUTCFullYear()}`;
-            if (selectedDateFormatted == today) {
+            if (selectedDateFormatted == today || selectedDateFormatted == today+1 && hour > 18 ) {
                 isUrgent = '1'
             } else {
                 isUrgent = '0'
