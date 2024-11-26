@@ -51,6 +51,7 @@ function my_delivery_small_oder_info () {
     }
 }
 
+// выбрана крупногабартная доставка
 add_action( 'woocommerce_checkout_order_review', 'my_delivery_large_products_oder_info', 25 );
 
 function my_delivery_large_products_oder_info () {
@@ -65,25 +66,10 @@ function my_delivery_large_products_oder_info () {
     }
 }
 
-
-
-// перевод текстов
-
-//TO BE DELETED
-
-// function plnt_change_text_checkout_1( $translated_text ) {
-//     if ( $translated_text == 'Select a date to view time slots' ) {
-//       $translated_text = 'Сначала выберите дату доставки';
-//     }
-//     return $translated_text;
-//   }
-//   add_filter( 'gettext', 'plnt_change_text_checkout_1', 20 );
-
-
-// доп функции
-
 /* скрываем Уже покупали? и форму логирования на странице оформления заказа*/
 remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+
+// доп функции
 
 /* Уведомление об ошибке в оформлении заказа */
 add_action( 'woocommerce_after_checkout_validation', 'checkout_validation_unique_error', 9999, 2 );
@@ -222,19 +208,21 @@ function new_custom_checkout_field_script() {
             //определяем первую доступную дату
             //let startDate = new Date();
             
-            //let startDate;
+            let startDate;
 
             // определяем дату, которая будет выбрана по умолчанию
-            let selectedDate = date.setDate(date.getDate() + 1);
+            //let selectedDate = [];
 
-            //TO BE DELETED
-            // if (checkedShippingMethod == localPickup) {  
-            //     startDate = date.setDate(date.getDate() + 0);
-            //     selectedDate = startDate;
-            // } else {
-            //     startDate = date.setDate(date.getDate() + 1);
-            //     selectedDate = startDate + 1;                   
-            // };
+            
+            if (hour >= 18) {  
+                startDate = date.setDate(date.getDate() + 1);
+                //selectedDate = startDate;
+            } else {
+                startDate = date;
+                //selectedDate = startDate + 1;                   
+            };
+
+            let selectedDate = startDate + 1;
 
             //очищаем дату для срочной доставки  TO BE DELETED
             // if (urgentPickups.includes(checkedShippingMethod)) {
