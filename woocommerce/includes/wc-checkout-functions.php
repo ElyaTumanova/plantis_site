@@ -223,6 +223,8 @@ function new_custom_checkout_field_script() {
             };
 
             let selectedDate = startDate + 1;
+            console.log('initial');
+            console.log(new Date(selectedDate));
 
             //очищаем дату для срочной доставки  TO BE DELETED
             // if (urgentPickups.includes(checkedShippingMethod)) {
@@ -249,8 +251,8 @@ function new_custom_checkout_field_script() {
             };
 
             checkSelectedDay (selectedDate);
-            //console.log('finally');
-            //console.log(new Date(selectedDate));
+            console.log('finally');
+            console.log(new Date(selectedDate));
 
             //кнопка ОК
             let button = {
