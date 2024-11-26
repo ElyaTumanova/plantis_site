@@ -511,19 +511,37 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
     global $urgent_delivery_outMKAD_small;
 
     global $delivery_free;
- 
-	// если сумма всех товаров в корзине меньше 2000, отключаем способ доставки
-	if ( WC()->cart->subtotal < 2000 ) {
-	    unset( $rates[ $delivery_inMKAD ] );
-		unset( $rates[ $delivery_outMKAD ] );
-		unset( $rates[ $urgent_delivery_inMKAD ] );
-		unset( $rates[ $urgent_delivery_outMKAD ] );			
-	} else {
-		unset( $rates[ $delivery_inMKAD_small ] );
-		unset( $rates[ $delivery_outMKAD_small ] );
-		unset( $rates[ $urgent_delivery_inMKAD_small ] );
-		unset( $rates[ $urgent_delivery_outMKAD_small ] );
-	}
+
+    $small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
+    $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+
+	// если сумма всех товаров в корзине меньше min_small_delivery, отключаем способ доставки
+
+    if ($small_delivery_markup) {
+        // стоимость товаров в корзине
+    
+        if (WC()->cart->subtotal < $min_small_delivery) {
+           foreach( $rates as $rate) {
+            
+            if ( 'local_pickup' !== $rate->method_id ) {
+                $rate->cost = $rate->cost + $small_delivery_markup;
+            }
+           }
+        }
+    }
+
+    // TO BE DELETED
+	// if ( WC()->cart->subtotal < $min_small_delivery ) {
+	//     unset( $rates[ $delivery_inMKAD ] );
+	// 	unset( $rates[ $delivery_outMKAD ] );
+	// 	unset( $rates[ $urgent_delivery_inMKAD ] );
+	// 	unset( $rates[ $urgent_delivery_outMKAD ] );			
+	// } else {
+	// 	unset( $rates[ $delivery_inMKAD_small ] );
+	// 	unset( $rates[ $delivery_outMKAD_small ] );
+	// 	unset( $rates[ $urgent_delivery_inMKAD_small ] );
+	// 	unset( $rates[ $urgent_delivery_outMKAD_small ] );
+	// }
  
 	return $rates;
  
