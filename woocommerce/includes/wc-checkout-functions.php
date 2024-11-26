@@ -69,13 +69,15 @@ function my_delivery_large_products_oder_info () {
 
 // перевод текстов
 
-function plnt_change_text_checkout_1( $translated_text ) {
-    if ( $translated_text == 'Select a date to view time slots' ) {
-      $translated_text = 'Сначала выберите дату доставки';
-    }
-    return $translated_text;
-  }
-  add_filter( 'gettext', 'plnt_change_text_checkout_1', 20 );
+//TO BE DELETED
+
+// function plnt_change_text_checkout_1( $translated_text ) {
+//     if ( $translated_text == 'Select a date to view time slots' ) {
+//       $translated_text = 'Сначала выберите дату доставки';
+//     }
+//     return $translated_text;
+//   }
+//   add_filter( 'gettext', 'plnt_change_text_checkout_1', 20 );
 
 
 // доп функции
@@ -368,6 +370,7 @@ add_filter( 'woocommerce_package_rates', 'plnt_shipping_rates_for_urgent', 100, 
 function plnt_shipping_rates_for_urgent( $rates, $package ) {
 
     //переменные
+    // TO BE DELETED
     // global $local_pickup;
         
     // global $delivery_inMKAD;
@@ -403,20 +406,21 @@ add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 30, 2 )
 function truemisha_shipping_by_weight( $rates, $package ) {
 
     //переменные
-    global $local_pickup;
+    // TO BE DELETED
+    // global $local_pickup;
         
-    global $delivery_inMKAD;
-    global $delivery_outMKAD;
-    global $delivery_inMKAD_small;
-    global $delivery_outMKAD_small;
+    // global $delivery_inMKAD;
+    // global $delivery_outMKAD;
+    // global $delivery_inMKAD_small;
+    // global $delivery_outMKAD_small;
 
 
-    global $urgent_delivery_inMKAD; 
-    global $urgent_delivery_outMKAD; 
-    global $urgent_delivery_inMKAD_small; 
-    global $urgent_delivery_outMKAD_small;
+    // global $urgent_delivery_inMKAD; 
+    // global $urgent_delivery_outMKAD; 
+    // global $urgent_delivery_inMKAD_small; 
+    // global $urgent_delivery_outMKAD_small;
 
-    global $delivery_free;
+    // global $delivery_free;
 
     $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
 
