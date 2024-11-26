@@ -112,10 +112,11 @@ function new_custom_checkout_field_script() {
 
     // HERE your shipping methods rate IDs
     global $local_pickup;
-	global $urgent_delivery_inMKAD;
-	global $urgent_delivery_outMKAD;
-	global $urgent_delivery_inMKAD_small;
-	global $urgent_delivery_outMKAD_small;
+    //TO BE DELETED
+	// global $urgent_delivery_inMKAD;
+	// global $urgent_delivery_outMKAD;
+	// global $urgent_delivery_inMKAD_small;
+	// global $urgent_delivery_outMKAD_small;
 
     global $payment_inn_chekbox;
     global $inn_field;
@@ -137,12 +138,13 @@ function new_custom_checkout_field_script() {
         let inn_field = document.querySelector('#<?php echo $inn_field; ?>');
 
         let localPickup = '<?php echo $local_pickup; ?>';
-        let urgentPickup1 = '<?php echo $urgent_delivery_inMKAD; ?>';
-        let urgentPickup2 = '<?php echo $urgent_delivery_outMKAD; ?>';
-        let urgentPickup3 = '<?php echo $urgent_delivery_inMKAD_small; ?>';
-        let urgentPickup4 = '<?php echo $urgent_delivery_outMKAD_small; ?>';
-      
-        let urgentPickups = [urgentPickup1, urgentPickup2, urgentPickup3, urgentPickup4];
+
+        //TO BE DELETED
+        //let urgentPickup1 = '<?php //echo $urgent_delivery_inMKAD; ?>';
+        //let urgentPickup2 = '<?php //echo $urgent_delivery_outMKAD; ?>';
+        //let urgentPickup3 = '<?php //echo $urgent_delivery_inMKAD_small; ?>';
+        //let urgentPickup4 = '<?php //echo $urgent_delivery_outMKAD_small; ?>';
+        //let urgentPickups = [urgentPickup1, urgentPickup2, urgentPickup3, urgentPickup4];
 
         let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
 
@@ -157,14 +159,18 @@ function new_custom_checkout_field_script() {
                 // console.log(event);
                 checkedShippingMethod = event.target.value;
             }
-            if (urgentPickups.includes(checkedShippingMethod))
-            {
-                if (deliveryDate) {deliveryDate.classList.add('d-none')};
-                if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
-                if (deliveryIntervalInput) {deliveryIntervalInput.checked = false};
-                if (addressFields) {addressFields.classList.remove('d-none');}
-                if (additionalAddress) {additionalAddress.classList.remove('d-none');}
-            } else if ( checkedShippingMethod == localPickup) {
+
+            //TO BE DELETED
+            // if (urgentPickups.includes(checkedShippingMethod))  
+            // {
+            //     if (deliveryDate) {deliveryDate.classList.add('d-none')};
+            //     if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
+            //     if (deliveryIntervalInput) {deliveryIntervalInput.checked = false};
+            //     if (addressFields) {addressFields.classList.remove('d-none');}
+            //     if (additionalAddress) {additionalAddress.classList.remove('d-none');}
+            // } else 
+
+            if ( checkedShippingMethod == localPickup) {
                 if (deliveryDate) {deliveryDate.classList.remove('d-none')};
                 if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
                 if (deliveryIntervalInput) {deliveryIntervalInput.checked = false};
@@ -202,8 +208,6 @@ function new_custom_checkout_field_script() {
         weekend_arr.forEach(element => {
             weekend.push(new Date(element));
         });
-        // console.log(weekend);
-        //var weekend = new Date(weekend_str);
 
         function datepicker_options () {  
             //console.log('hi datepicker_options');     
@@ -226,10 +230,10 @@ function new_custom_checkout_field_script() {
                 selectedDate = startDate + 1;                   
             };
 
-            //очищаем дату для срочной доставки
-            if (urgentPickups.includes(checkedShippingMethod)) {
-                selectedDate = [];
-            };
+            //очищаем дату для срочной доставки  TO BE DELETED
+            // if (urgentPickups.includes(checkedShippingMethod)) {
+            //     selectedDate = [];
+            // };
 
             // проверяем, что первая доступная дата не попадает на выходной
             const weekendTimeStamps = weekend.map(function (element) {
@@ -290,33 +294,31 @@ function new_custom_checkout_field_script() {
         let isUrgent = '0';
 
         function datepicker_init () {
-            console.log('hi datepicker_init');
-            datePickerOpts = datepicker_options ();
-            
-            console.log(new Date(datePickerOpts.selectedDates));
-            let selectedDateFormatted = `${new Date(datePickerOpts.selectedDates).getDate()}.${new Date(datePickerOpts.selectedDates).getUTCMonth() + 1}.${new Date(datePickerOpts.selectedDates).getUTCFullYear()}`
-            console.log(selectedDateFormatted)
-            if (selectedDateFormatted == today) {
-                console.log('yes');
-                isUrgent = '1'
-            } else {
-                console.log('no');
-                isUrgent = '0'
-            }
-            plntAjaxGetUrgent();
+            //console.log('hi datepicker_init');
 
+            //определяем параметры календаря
+            datePickerOpts = datepicker_options ();
             datepickerCal.update(datePickerOpts);
             if (weekend) {
                 datepickerCal.disableDate(weekend);
             }
+
+            // проверяем срочная ли доставка и запускам аякс
+            let selectedDateFormatted = `${new Date(datePickerOpts.selectedDates).getDate()}.${new Date(datePickerOpts.selectedDates).getUTCMonth() + 1}.${new Date(datePickerOpts.selectedDates).getUTCFullYear()}`;
+            if (selectedDateFormatted == today) {
+                isUrgent = '1'
+            } else {
+                isUrgent = '0'
+            }
+            plntAjaxGetUrgent();           
         }
 
         setTimeout(() => {
             datepickerCal = new AirDatepicker('#datepicker', {
                 onSelect({date, formattedDate, datepicker}) {
-                    console.log('hi date');
+                    //console.log('hi date');
                     
-                    //chosenDeliveryDate = formattedDate;
+                    // проверяем срочная ли доставка и запускам аякс
                     if (formattedDate == today) {
                         isUrgent = '1'
                     } else (
@@ -324,6 +326,7 @@ function new_custom_checkout_field_script() {
                     );
                     plntAjaxGetUrgent();
                 }});
+
             datepicker_init ();
         }, 1000);  
    

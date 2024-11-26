@@ -88,6 +88,7 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'min_small_delivery', 'Сумма заказа для более дорогой доставки'),
 			Field::make( 'text', 'min_treez_delivery', 'Сумма заказа для доставки кашпо Treez'),
 			Field::make( 'text', 'large_delivery_markup', 'Надбавка для крупногабаритной доставки'),
+			Field::make( 'text', 'small_delivery_markup', 'Надбавка для доставки ниже минимальной суммы'),
 	   ))
 		->add_tab( __('Header notice'), array(
 			Field::make( 'text', 'notice', 'Уведомление' ),
