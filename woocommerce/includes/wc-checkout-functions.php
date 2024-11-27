@@ -211,7 +211,7 @@ function new_custom_checkout_field_script() {
             let startDate;
 
             // определяем дату, которая будет выбрана по умолчанию
-            //let selectedDate = [];
+            let selectedDate = [];
 
             
             if (hour >= 20) {  
@@ -222,7 +222,7 @@ function new_custom_checkout_field_script() {
                 //selectedDate = startDate + 1;                   
             };
 
-            let selectedDate = startDate + 1;
+            selectedDate = startDate + 1;
             console.log('initial');
             console.log(new Date(selectedDate));
             console.log(new Date(startDate));
