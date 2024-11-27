@@ -378,6 +378,22 @@
 
 /* время доставки */
 
+.delivery_wrap {
+    display: flex;
+    margin-top: 35px;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.delivery_wrap span {
+    margin-top: 10px;
+}
+
+.delivery_wrap .optional {
+    display: none;
+}
+
+
 .woocommerce-additional-fields__field-wrapper {
     display: grid;
     grid-template-columns: repeat( 2, 1fr);
