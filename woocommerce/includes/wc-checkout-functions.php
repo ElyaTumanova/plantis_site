@@ -116,7 +116,7 @@ function plnt_print_editable_delivery_interval_field_value( $order ){
  
 	echo '<div class="address">
 		<p' . ( ! $method ? ' class="none_set"' : '' ) . '>
-			<strong>Дата доставки (самовывоза)</strong>
+			<strong>Интервал доставки</strong>
 			' . ( $method ? $method : 'Не указан.' ) . '
 		</p>
 	</div>
@@ -144,6 +144,31 @@ function plnt_save_delivery_field_value( $order_id ){
 	update_post_meta( $order_id, 'additional_delivery_interval_field', wc_clean( $_POST[ 'additional_delivery_interval_field' ] ) );
 }
 
+
+// // добавляем новые поля в письма
+
+add_filter( 'woocommerce_get_order_item_totals', 'plnt_delivery_fields_in_email', 25, 2 );
+ 
+function plnt_delivery_fields_in_email( $rows, $order ) {
+ 
+ 	// удалите это условие, если хотите добавить значение поля и на страницу "Заказ принят"
+	// if( is_order_received_page() ) {
+	// 	return $rows;
+	// }
+ 
+	$rows[ 'datepicker' ] = array(
+		'label' => 'Дата доставки (самовывоза)',
+		'value' => get_post_meta( $order->get_id(), 'datepicker', true )
+	);
+
+	$rows[ 'additional_delivery_interval_field' ] = array(
+		'label' => 'Интервал доставки',
+		'value' => get_post_meta( $order->get_id(), 'additional_delivery_interval_field', true )
+	);
+ 
+	return $rows;
+ 
+}
 
 
 // // до бесплатной доставки осталось
