@@ -19,7 +19,7 @@ function plnt_checkout_peresadka_info(){
 }
 
 // // информация об условиях доставки
-add_action( 'woocommerce_checkout_order_review', 'plnt_delivery_condition_info', 30 );
+add_action( 'woocommerce_checkout_order_review', 'plnt_delivery_condition_info', 40 );
 
 function plnt_delivery_condition_info () {
 	echo '<div class="checkout__text">
@@ -579,6 +579,20 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
 	return $rates;
 }
 
+//уведомление о маленькой сумме заказа
+
+add_action( 'woocommerce_checkout_order_review', 'min_amount_delivery_info', 30 );
+
+function min_amount_delivery_info(){
+    $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+
+    if ( WC()->cart->subtotal < $min_small_delivery ) {
+        echo '<div class="checkout__text checkout__text_alarm">
+        При заказе на сумму менее <span>'.$min_small_delivery,'</span> доставка осуществляется по тарифам курьерской службы. 
+        Наш менеджер свяжется с Вами после оформления заказа и произведет расчет стоимости доставки.</div>';
+    }
+}
+
 // делим поле billing_address_2 на несколько полей//
 
 add_filter( 'woocommerce_form_field_text', 'true_fields', 25, 4 );
@@ -689,10 +703,9 @@ function min_amount_for_category(){
     }
 }
 
-//add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category_info' );
-add_action( 'woocommerce_checkout_order_review', 'min_amount_for_category_info', 10 );
+add_action( 'woocommerce_checkout_order_review', 'min_amount_for_treez_info', 10 );
 
-function min_amount_for_category_info(){
+function min_amount_for_treez_info(){
     global $treez_cat_id;
     global $plants_treez_cat_id;
     $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
