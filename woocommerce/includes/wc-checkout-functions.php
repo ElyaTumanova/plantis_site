@@ -503,8 +503,6 @@ function plnt_refresh_shipping_methods_for_urgent( $post_data ){
         WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
     }
     WC()->cart->calculate_shipping();
-
-    plnt_urgent_delivery_info();
 }
 
 add_filter( 'woocommerce_package_rates', 'plnt_shipping_rates_for_urgent', 100, 2 );
@@ -547,7 +545,7 @@ add_action( 'woocommerce_checkout_order_review', 'plnt_urgent_delivery_info', 45
 function plnt_urgent_delivery_info(){
 
     if (WC()->session->get('isUrgent' ) === '1') {
-            echo '<div class="checkout__text checkout__text_alarm">
+            echo '<div class="checkout__text checkout__text_alarm checkout__urgent-text">
             Вы выбрали срочную доставку, поэтому стоимость доставки увеличена.</div>'; 
     }
 }
