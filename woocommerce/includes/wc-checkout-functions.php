@@ -76,7 +76,9 @@ function plnt_add_delivery_interval_field() {
 add_action( 'woocommerce_checkout_order_review', 'plnt_add_new_delivery_fields', 60 );
 
 function plnt_add_new_delivery_fields() {
-    $today = date("d.m.y");  
+    $today = date("d.m.y"); 
+    $tomorrow = date('d.m.y', time() + 86400); 
+    $fith_day = date('d.m.y', time() + 86400*5); 
 	// выводим поле функцией woocommerce_form_field()
 	woocommerce_form_field( 
 		'delivery_fields', 
@@ -88,12 +90,8 @@ function plnt_add_new_delivery_fields() {
 			'label_class'   => '', // класс лейбла
             'options'	=> array( // options for  or 
 				$today		=> $today  , // 'значение' => 'заголовок'
-				$today + 1	=> $today + 1,
-				$today + 2	=> $today + 2,
-				$today + 3	=> $today + 3,
-				$today + 4	=> $today + 4,
-				$today + 5	=> $today + 5,
-
+				$tomorrow 	=> $tomorrow,
+				$fith_day	=> $fith_day,
 			)
 		),
 	);
