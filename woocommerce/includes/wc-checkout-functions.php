@@ -60,8 +60,8 @@ function plnt_add_delivery_interval_field() {
 			'label'         => 'Интервал',
 			'label_class'   => '', // класс лейбла
             'options'	=> array( // options for  or 
-				'11:00 - 21:00'		=> '11:00 - 21:00', // пустое значение
-				'11:00 - 16:00'	=> '11:00 - 16:00', // 'значение' => 'заголовок'
+				'11:00 - 21:00'		=> '11:00 - 21:00', // 'значение' => 'заголовок'
+				'11:00 - 16:00'	=> '11:00 - 16:00', // 
 				'14:00 - 18:00'	=> '14:00 - 18:00',
 				'18:00 - 21:00'	=> '18:00 - 21:00',
 			)
@@ -72,29 +72,20 @@ function plnt_add_delivery_interval_field() {
 
 // // сохряняем новое поле в заказе
 
-add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_delivery_date_field', 25 );
+add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_delivery_fields', 25 );
  
-function plnt_save_delivery_date_field( $order_id ){
+function plnt_save_delivery_fields( $order_id ){
  
 	if( ! empty( $_POST[ 'datepicker' ] ) ) {
 		update_post_meta( $order_id, 'datepicker', sanitize_text_field( $_POST[ 'datepicker' ] ) );
 	}
-    
+
     if( ! empty( $_POST[ 'additional_delivery_interval_field' ] ) ) {
 		update_post_meta( $order_id, 'additional_delivery_interval_field', $_POST[ 'additional_delivery_interval_field' ] );
 	}
 }
 
-// add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_delivery_interval_field', 25 );
- 
-// function plnt_save_delivery_interval_field( $order_id ){
- 
-// 	if( ! empty( $_POST[ 'additional_delivery_interval_field' ] ) ) {
-// 		update_post_meta( $order_id, 'additional_delivery_interval_field', $_POST[ 'additional_delivery_interval_field' ] );
-// 	}
-// }
-
-// // добавляем новые поля в админку
+// // добавляем поле дата доставки в админку
 
 add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_editable_delivery_field_value', 25 );
  
@@ -115,14 +106,43 @@ function plnt_print_editable_delivery_field_value( $order ){
     ) );
 	echo '</div>';
 }
+
+// // добавляем поле интервал доставки в админку
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_editable_delivery_interval_field_value', 25 );
  
-// и сохраняем
+function plnt_print_editable_delivery_interval_field_value( $order ){
+ 
+	$method = get_post_meta( $order->get_id(), 'additional_delivery_interval_field', true );
+ 
+	echo '<div class="address">
+		<p' . ( ! $method ? ' class="none_set"' : '' ) . '>
+			<strong>Дата доставки (самовывоза)</strong>
+			' . ( $method ? $method : 'Не указан.' ) . '
+		</p>
+	</div>
+	<div class="edit_address">';
+	woocommerce_wp_select( array(
+		'id' => 'additional_delivery_interval_field',
+		'label' => 'Интервал доставки',
+		'wrapper_class' => 'form-field-wide',
+		'value' => $method,
+		'options' => array(
+			'11:00 - 21:00'		=> '11:00 - 21:00', // 'значение' => 'заголовок'
+            '11:00 - 16:00'	=> '11:00 - 16:00', 
+            '14:00 - 18:00'	=> '14:00 - 18:00',
+            '18:00 - 21:00'	=> '18:00 - 21:00',
+		)
+	) );
+	echo '</div>';
+}
+ 
+// и сохраняем поля доставки в заказе после редактирования
 add_action( 'woocommerce_process_shop_order_meta', 'plnt_save_delivery_field_value' );
  
 function plnt_save_delivery_field_value( $order_id ){
 	update_post_meta( $order_id, 'datepicker', wc_clean( $_POST[ 'datepicker' ] ) );
+	update_post_meta( $order_id, 'additional_delivery_interval_field', wc_clean( $_POST[ 'additional_delivery_interval_field' ] ) );
 }
-
 
 
 
