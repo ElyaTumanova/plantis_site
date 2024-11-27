@@ -265,12 +265,7 @@ function new_custom_checkout_field_script() {
 
             // datepicker options
             let datePickerOpts = {
-                //selectedDates: selectedDate,
-                selectedDates: (function(){
-                    let date = new Date();
-                    date.setDate(startDate.getDate() + 1),
-                    return date;
-                })(),
+                selectedDates: selectedDate,
                 minDate: startDate,
                 maxDate: (function(){
                     let date = new Date();
