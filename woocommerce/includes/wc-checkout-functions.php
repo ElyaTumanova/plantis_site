@@ -213,7 +213,7 @@ function new_custom_checkout_field_script() {
             let selectedDate = [];
 
             
-            if (hour >= 20) {  
+            if (hour >= 10) {  
                 startDate = date.setDate(date.getDate() + 1);
                 //selectedDate = startDate;
             } else {
