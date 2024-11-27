@@ -30,14 +30,10 @@ function plnt_delivery_condition_info () {
 
 // // добавляемм новые поля для нтервала и даты доставки
 
-// add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_wrap', 50 );
-
-// function
-
-add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_date_field', 51 );
+add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_date_field', 50 );
 
 function plnt_add_delivery_date_field() {
-    echo 'lalala';
+    echo "<div class='delivery_wrap'>";
 	// выводим поле функцией woocommerce_form_field()
 	woocommerce_form_field( 
 		'datepicker', 
@@ -71,6 +67,7 @@ function plnt_add_delivery_interval_field() {
 			)
 		),
 	);
+    echo "</div>";
 }
 
 
