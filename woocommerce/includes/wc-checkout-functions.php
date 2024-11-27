@@ -500,11 +500,9 @@ add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_smal
 function plnt_disable_payment_small_order( $available_gateways ) {
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
 
-    if ($min_small_delivery) {
-        // стоимость товаров в корзине
-        if (WC()->cart->subtotal < $min_small_delivery) {
-            unset( $available_gateways['tinkoff'] );
-        }
+    // стоимость товаров в корзине
+    if (WC()->cart->subtotal < $min_small_delivery) {
+        unset( $available_gateways['bacs'] ); //to be updated - chenge to tinkoff
     }
 
     return $available_gateways;
