@@ -546,8 +546,7 @@ function plnt_urgent_delivery_info(){
 
     if (WC()->session->get('isUrgent' ) === '1') {
             echo '<div class="checkout__text checkout__text_alarm">
-            Вы выбрали срочную доставку, поэтому стоимость доставки увеличена. 
-            <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></div>'; 
+            Вы выбрали срочную доставку, поэтому стоимость доставки увеличена.</div>'; 
     }
 }
 
