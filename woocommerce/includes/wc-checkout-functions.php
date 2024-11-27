@@ -94,7 +94,6 @@ function plnt_add_new_delivery_fields() {
 			)
 		),
 	);
-    echo "</div>";
 }
 
 // // сохряняем новое поле в заказе
