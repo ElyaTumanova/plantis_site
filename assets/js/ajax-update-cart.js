@@ -137,9 +137,9 @@ function plntAjaxGetUrgent() {
   if (urgentText) {
     if (isUrgent == '1') {
       console.log('hi text');
-      urgentText.replaceWith('<div class="checkout__text checkout__text_alarm checkout__urgent-text">Вы выбрали срочную доставку, поэтому стоимость доставки увеличена.</div>');
+      urgentText.innerHTML = "Вы выбрали срочную доставку, поэтому стоимость доставки увеличена.";
       } else {
-      urgentText.replaceWith('<div class="checkout__text checkout__text_alarm checkout__urgent-text"></div>');
+      urgentText.innerHTML = "";
     }
   }
 };
