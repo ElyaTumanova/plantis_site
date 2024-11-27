@@ -213,7 +213,7 @@ function new_custom_checkout_field_script() {
             let selectedDate = [];
 
             
-            if (hour >= 10) {  
+            if (hour >= 20) {  
                 startDate = date.setDate(date.getDate() + 1);
                 //selectedDate = startDate;
             } else {
@@ -222,7 +222,8 @@ function new_custom_checkout_field_script() {
             };
 
             console.log(new Date(startDate));
-            selectedDate = startDate + 1;
+            //selectedDate = startDate + 1;
+            selectedDate = new Date().setDate(startDate.getDate() + 1);
             console.log('initial');
             console.log(new Date(selectedDate));
 
