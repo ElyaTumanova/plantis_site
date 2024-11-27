@@ -84,18 +84,3 @@ function plnt_check_page() {
 
 
 
-add_action( 'wp_footer', 'plnt_get_checkout_fields' );
-
-function plnt_get_checkout_fields() {
-	$field = WC()->session->get('isUrgent'); 
-	echo '<pre>';
-	print_r( $field );
-	echo '</pre>';
-
-	if (WC()->session->get('isUrgent' ) === '1') {
-		echo '<pre>';
-		print_r( 'true' );
-		echo '</pre>';
-	}
-	
-}

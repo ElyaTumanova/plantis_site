@@ -70,6 +70,33 @@ function plnt_add_delivery_interval_field() {
     echo "</div>";
 }
 
+
+// FOR DEV
+
+add_action( 'woocommerce_checkout_order_review', 'plnt_add_new_delivery_fields', 55 );
+
+function plnt_add_new_delivery_fields() {
+    $today = date("m.d.y");  
+	// выводим поле функцией woocommerce_form_field()
+	woocommerce_form_field( 
+		'delivery_fields', 
+		array(
+			'type'          => 'radio', // text, textarea, select, radio, checkbox, password
+			'required'	=> false, // по сути только добавляет значок "*" и всё
+			'class'         => array( 'delivery_fields' ), // массив классов поля
+			'label'         => 'Даты доставки',
+			'label_class'   => '', // класс лейбла
+            'options'	=> array( // options for  or 
+				$today		=> $today  , // 'значение' => 'заголовок'
+				'11:00 - 16:00'	=> '11:00 - 16:00', // 
+				'14:00 - 18:00'	=> '14:00 - 18:00',
+				'18:00 - 21:00'	=> '18:00 - 21:00',
+			)
+		),
+	);
+    echo "</div>";
+}
+
 // // сохряняем новое поле в заказе
 
 add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_delivery_fields', 25 );
