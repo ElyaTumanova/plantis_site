@@ -39,7 +39,7 @@ function plnt_add_delivery_date_field() {
 		'datepicker', 
 		array(
 			'type'          => 'text', // text, textarea, select, radio, checkbox, password
-			'required'	=> true, // по сути только добавляет значок "*" и всё
+			'required'	=> false, // по сути только добавляет значок "*" и всё
 			'class'         => array( 'input-text' ), // массив классов поля
 			'label'         => 'Дата доставки (самовывоза)',
 			'label_class'   => '', // класс лейбла
@@ -52,10 +52,10 @@ add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_interval_fie
 function plnt_add_delivery_interval_field() {
 	// выводим поле функцией woocommerce_form_field()
 	woocommerce_form_field( 
-		'delivery_interval', 
+		'additional_delivery_interval_field', 
 		array(
 			'type'          => 'radio', // text, textarea, select, radio, checkbox, password
-			'required'	=> true, // по сути только добавляет значок "*" и всё
+			'required'	=> false, // по сути только добавляет значок "*" и всё
 			'class'         => array( 'additional_delivery_interval_field' ), // массив классов поля
 			'label'         => 'Интервал',
 			'label_class'   => '', // класс лейбла
@@ -70,7 +70,19 @@ function plnt_add_delivery_interval_field() {
     echo "</div>";
 }
 
+// добавляем новые поля в админку
 
+add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_delivery_field', 25 );
+ 
+function plnt_save_delivery_field( $order_id ){
+ 
+	if( ! empty( $_POST[ 'datepicker' ] ) ) {
+		update_post_meta( $order_id, 'datepicker', sanitize_text_field( $_POST[ 'datepicker' ] ) );
+	}
+	if( ! empty( $_POST[ 'additional_delivery_interval_field' ] ) ) {
+		update_post_meta( $order_id, 'additional_delivery_interval_field' );
+	}
+}
 
 // // до бесплатной доставки осталось
 add_action( 'woocommerce_checkout_order_review', 'my_delivery_small_oder_info', 20 );
