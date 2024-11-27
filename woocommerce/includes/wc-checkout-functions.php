@@ -391,11 +391,12 @@ function new_custom_checkout_field_script() {
                 //selectedDate = startDate + 1;                   
             };
 
-            if (hour >= 18 && hour <20) {  
-                selectedDate = new Date().setDate(startDate.getDate() + 2);
-            } else {
-                selectedDate = new Date().setDate(startDate.getDate() + 1);       
-            };
+            // if (hour >= 18 && hour <20) {  
+            //     selectedDate = new Date().setDate(startDate.getDate() + 2);
+            // } else {
+            //     selectedDate = new Date().setDate(startDate.getDate() + 1);       
+            // };
+            selectedDate = date.setDate(date.getDate() + 1);
             
             //console.log('initial');
             //console.log(new Date(selectedDate));
