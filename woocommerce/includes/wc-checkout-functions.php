@@ -72,14 +72,27 @@ function plnt_add_delivery_interval_field() {
 
 // // сохряняем новое поле в заказе
 
-add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_delivery_field', 25 );
+add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_delivery_date_field', 25 );
  
-function plnt_save_delivery_field( $order_id ){
+function plnt_save_delivery_date_field( $order_id ){
  
 	if( ! empty( $_POST[ 'datepicker' ] ) ) {
 		update_post_meta( $order_id, 'datepicker', sanitize_text_field( $_POST[ 'datepicker' ] ) );
 	}
+    
+    if( ! empty( $_POST[ 'additional_delivery_interval_field' ] ) ) {
+		update_post_meta( $order_id, 'additional_delivery_interval_field', $_POST[ 'additional_delivery_interval_field' ] );
+	}
 }
+
+// add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_delivery_interval_field', 25 );
+ 
+// function plnt_save_delivery_interval_field( $order_id ){
+ 
+// 	if( ! empty( $_POST[ 'additional_delivery_interval_field' ] ) ) {
+// 		update_post_meta( $order_id, 'additional_delivery_interval_field', $_POST[ 'additional_delivery_interval_field' ] );
+// 	}
+// }
 
 // // добавляем новые поля в админку
 
