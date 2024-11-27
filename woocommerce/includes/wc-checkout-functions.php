@@ -89,9 +89,9 @@ function plnt_add_new_delivery_fields() {
 			'label'         => 'Даты доставки',
 			'label_class'   => '', // класс лейбла
             'options'	=> array( // options for  or 
-				$today		=> $today  , // 'значение' => 'заголовок'
-				$tomorrow 	=> $tomorrow,
-				$fith_day	=> $fith_day,
+				'1'		=> $today . " <br /> 790 рублей"  , // 'значение' => 'заголовок'
+				'2' 	=> $tomorrow,
+				'3'	=> $fith_day,
 			)
 		),
 	);
