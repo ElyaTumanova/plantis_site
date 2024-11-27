@@ -538,6 +538,19 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
 
 }
 
+// уведомление о срочной доставке
+
+add_action( 'woocommerce_checkout_order_review', 'plnt_urgent_delivery_info', 45 );
+
+function plnt_urgent_delivery_info(){
+
+    if (WC()->session->get('isUrgent' ) === '1') {
+            echo '<div class="checkout__text checkout__text_alarm">
+            Вы выбрали срочную доставку, поэтому стоимость доставки увеличена. 
+            <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></div>'; 
+    }
+}
+
 /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
 
 add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 30, 2 );
