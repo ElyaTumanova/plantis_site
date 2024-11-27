@@ -214,7 +214,7 @@ function new_custom_checkout_field_script() {
             //let selectedDate = [];
 
             
-            if (hour >= 18) {  
+            if (hour >= 20) {  
                 startDate = date.setDate(date.getDate() + 1);
                 //selectedDate = startDate;
             } else {
@@ -225,6 +225,7 @@ function new_custom_checkout_field_script() {
             let selectedDate = startDate + 1;
             console.log('initial');
             console.log(new Date(selectedDate));
+            console.log(new Date(startDate));
 
             //очищаем дату для срочной доставки  TO BE DELETED
             // if (urgentPickups.includes(checkedShippingMethod)) {
@@ -268,7 +269,7 @@ function new_custom_checkout_field_script() {
                 selectedDates: selectedDate,
                 minDate: startDate,
                 maxDate: (function(){
-                    //let date = new Date();
+                    let date = new Date();
                     date.setDate(date.getDate() + 30);
                     return date;
                 })(),
