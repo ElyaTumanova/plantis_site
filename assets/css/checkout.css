@@ -19,11 +19,11 @@
 	font-weight: 600;
 }
 
-#customer_details input {
+#customer_details input, .delivery_wrap input {
 	font-weight: 500 !important;
 }
 
-#customer_details span {
+#customer_details span, .delivery_wrap span {
 	font-weight: 500 !important;
 }
 

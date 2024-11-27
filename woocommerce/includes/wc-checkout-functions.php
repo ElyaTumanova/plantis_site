@@ -52,11 +52,11 @@ add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_interval_fie
 function plnt_add_delivery_interval_field() {
 	// выводим поле функцией woocommerce_form_field()
 	woocommerce_form_field( 
-		'additional_delivery_interval_field', 
+		'additional_delivery_interval', 
 		array(
 			'type'          => 'radio', // text, textarea, select, radio, checkbox, password
 			'required'	=> false, // по сути только добавляет значок "*" и всё
-			'class'         => array( 'additional_delivery_interval_field' ), // массив классов поля
+			'class'         => array( 'additional_delivery_interval' ), // массив классов поля
 			'label'         => 'Интервал',
 			'label_class'   => '', // класс лейбла
             'options'	=> array( // options for  or 
@@ -80,8 +80,8 @@ function plnt_save_delivery_fields( $order_id ){
 		update_post_meta( $order_id, 'datepicker', sanitize_text_field( $_POST[ 'datepicker' ] ) );
 	}
 
-    if( ! empty( $_POST[ 'additional_delivery_interval_field' ] ) ) {
-		update_post_meta( $order_id, 'additional_delivery_interval_field', $_POST[ 'additional_delivery_interval_field' ] );
+    if( ! empty( $_POST[ 'additional_delivery_interval' ] ) ) {
+		update_post_meta( $order_id, 'additional_delivery_interval', $_POST[ 'additional_delivery_interval' ] );
 	}
 }
 
@@ -112,7 +112,7 @@ add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_ed
  
 function plnt_print_editable_delivery_interval_field_value( $order ){
  
-	$method = get_post_meta( $order->get_id(), 'additional_delivery_interval_field', true );
+	$method = get_post_meta( $order->get_id(), 'additional_delivery_interval', true );
  
 	echo '<div class="address">
 		<p' . ( ! $method ? ' class="none_set"' : '' ) . '>
@@ -122,7 +122,7 @@ function plnt_print_editable_delivery_interval_field_value( $order ){
 	</div>
 	<div class="edit_address">';
 	woocommerce_wp_select( array(
-		'id' => 'additional_delivery_interval_field',
+		'id' => 'additional_delivery_interval',
 		'label' => 'Интервал доставки',
 		'wrapper_class' => 'form-field-wide',
 		'value' => $method,
@@ -141,7 +141,7 @@ add_action( 'woocommerce_process_shop_order_meta', 'plnt_save_delivery_field_val
  
 function plnt_save_delivery_field_value( $order_id ){
 	update_post_meta( $order_id, 'datepicker', wc_clean( $_POST[ 'datepicker' ] ) );
-	update_post_meta( $order_id, 'additional_delivery_interval_field', wc_clean( $_POST[ 'additional_delivery_interval_field' ] ) );
+	update_post_meta( $order_id, 'additional_delivery_interval', wc_clean( $_POST[ 'additional_delivery_interval' ] ) );
 }
 
 
@@ -161,9 +161,9 @@ function plnt_delivery_fields_in_email( $rows, $order ) {
 		'value' => get_post_meta( $order->get_id(), 'datepicker', true )
 	);
 
-	$rows[ 'additional_delivery_interval_field' ] = array(
+	$rows[ 'additional_delivery_interval' ] = array(
 		'label' => 'Интервал доставки',
-		'value' => get_post_meta( $order->get_id(), 'additional_delivery_interval_field', true )
+		'value' => get_post_meta( $order->get_id(), 'additional_delivery_interval', true )
 	);
  
 	return $rows;
