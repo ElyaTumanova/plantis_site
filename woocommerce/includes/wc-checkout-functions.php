@@ -552,7 +552,7 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
             if ( WC()->cart->subtotal < $min_small_delivery ) {
                 unset( $rates[ $delivery_inMKAD ] );
                 unset( $rates[ $delivery_outMKAD ] );
-                isset ($rates[ $delivery_courier ]);
+                isset($rates[ $delivery_courier ]);
                 // unset( $rates[ $urgent_delivery_inMKAD ] );
                 // unset( $rates[ $urgent_delivery_outMKAD ] );			
             } 
