@@ -30,18 +30,40 @@ function plnt_delivery_condition_info () {
 
 // // добавляемм новые поля
 
-add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_date_fields', 50 );
+add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_date_field', 50 );
 
-function plnt_add_delivery_date_fields() {
+function plnt_add_delivery_date_field() {
 	// выводим поле функцией woocommerce_form_field()
 	woocommerce_form_field( 
 		'datepicker', 
 		array(
 			'type'          => 'text', // text, textarea, select, radio, checkbox, password
-			'required'	=> false, // по сути только добавляет значок "*" и всё
+			'required'	=> true, // по сути только добавляет значок "*" и всё
 			'class'         => array( 'input-text' ), // массив классов поля
 			'label'         => 'Дата доставки (самовывоза)',
 			'label_class'   => '', // класс лейбла
+		),
+	);
+}
+
+add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_interval_field', 55 );
+
+function plnt_add_delivery_interval_field() {
+	// выводим поле функцией woocommerce_form_field()
+	woocommerce_form_field( 
+		'delivery_interval', 
+		array(
+			'type'          => 'radio', // text, textarea, select, radio, checkbox, password
+			'required'	=> true, // по сути только добавляет значок "*" и всё
+			'class'         => array( 'additional_delivery_interval_field' ), // массив классов поля
+			'label'         => 'Интервал',
+			'label_class'   => '', // класс лейбла
+            'options'	=> array( // options for  or 
+				'11:00 - 21:00'		=> '11:00 - 21:00', // пустое значение
+				'11:00 - 16:00'	=> '11:00 - 16:00', // 'значение' => 'заголовок'
+				'14:00 - 18:00'	=> '14:00 - 18:00',
+				'18:00 - 21:00'	=> '18:00 - 21:00',
+			)
 		),
 	);
 }
