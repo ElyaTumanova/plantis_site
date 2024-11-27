@@ -134,6 +134,10 @@ function plntAjaxGetUrgent() {
 
   let urgentText = document.querySelector('.checkout__urgent-text');
   if (urgentText) {
-    urgentText.append("Вы выбрали срочную доставку, поэтому стоимость доставки увеличена.");
+    if (isUrgent == '1') {
+      urgentText.append("Вы выбрали срочную доставку, поэтому стоимость доставки увеличена.");
+    } else {
+      urgentText.append("");
+    }
   }
-}
+};
