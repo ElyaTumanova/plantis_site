@@ -287,7 +287,7 @@
     display: none;
 }
 
-.woocommerce-billing-fields__field-wrapper input {
+.woocommerce-billing-fields__field-wrapper input, .delivery_wrap input {
     padding: 14px 20px;
     width: 100%;
     margin-bottom: 30px;
@@ -295,7 +295,7 @@
 }
 
 @media (max-width: 767px) {
-    .woocommerce-billing-fields__field-wrapper input {
+    .woocommerce-billing-fields__field-wrapper input, .delivery_wrap input {
         margin-bottom: 15px;
     }
     
