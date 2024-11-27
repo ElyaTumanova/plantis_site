@@ -501,6 +501,10 @@ function plnt_disable_payment_small_order( $available_gateways ) {
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
     global $delivery_courier;
 
+    if( is_admin() ) {
+		return $available_gateways;
+	}
+
     if( is_wc_endpoint_url( 'order-pay' ) ) {
 		return $available_gateways;
 	}
