@@ -544,10 +544,9 @@ add_action( 'woocommerce_checkout_order_review', 'plnt_urgent_delivery_info', 45
 
 function plnt_urgent_delivery_info(){
 
-    if (WC()->session->get('isUrgent' ) === '1') {
-            echo '<div class="checkout__text checkout__text_alarm checkout__urgent-text">
-            Вы выбрали срочную доставку, поэтому стоимость доставки увеличена.</div>'; 
-    }
+
+            echo '<div class="checkout__text checkout__text_alarm checkout__urgent-text"></div>'; 
+
 }
 
 /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
