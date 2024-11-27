@@ -499,9 +499,16 @@ add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_smal
 
 function plnt_disable_payment_small_order( $available_gateways ) {
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+    global $delivery_courier;
+
+    if( is_wc_endpoint_url( 'order-pay' ) ) {
+		return $available_gateways;
+	}
+
+    $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
 
     // стоимость товаров в корзине
-    if (WC()->cart->subtotal < $min_small_delivery) {
+    if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
         unset( $available_gateways['bacs'] ); //to be updated - chenge to tinkoff
     }
 
