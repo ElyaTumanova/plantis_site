@@ -76,7 +76,7 @@ function plnt_add_delivery_interval_field() {
 add_action( 'woocommerce_checkout_order_review', 'plnt_add_new_delivery_fields', 60 );
 
 function plnt_add_new_delivery_fields() {
-    $today = date("m.d.y");  
+    $today = date("d.m.y");  
 	// выводим поле функцией woocommerce_form_field()
 	woocommerce_form_field( 
 		'delivery_fields', 
