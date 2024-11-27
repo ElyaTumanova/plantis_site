@@ -88,9 +88,12 @@ function plnt_add_new_delivery_fields() {
 			'label_class'   => '', // класс лейбла
             'options'	=> array( // options for  or 
 				$today		=> $today  , // 'значение' => 'заголовок'
-				$today + 1	=> $today + 1, // 
-				'14:00 - 18:00'	=> '14:00 - 18:00',
-				'18:00 - 21:00'	=> '18:00 - 21:00',
+				$today + 1	=> $today + 1,
+				$today + 2	=> $today + 2,
+				$today + 3	=> $today + 3,
+				$today + 4	=> $today + 4,
+				$today + 5	=> $today + 5,
+
 			)
 		),
 	);
