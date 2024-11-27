@@ -137,7 +137,7 @@ function plntAjaxGetUrgent() {
   if (urgentText) {
     if (isUrgent == '1') {
       console.log('hi text');
-      urgentText.innerHTML = "Вы выбрали срочную доставку, поэтому стоимость доставки увеличена.";
+      urgentText.innerHTML = "Доставка для выбранной даты является срочной, поэтому стоимотсь доставки увеличена.";
       } else {
       urgentText.innerHTML = "";
     }
