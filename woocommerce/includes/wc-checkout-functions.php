@@ -543,10 +543,7 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
 add_action( 'woocommerce_checkout_order_review', 'plnt_urgent_delivery_info', 45 );
 
 function plnt_urgent_delivery_info(){
-
-
-            echo '<div class="checkout__text checkout__text_alarm checkout__urgent-text"></div>'; 
-
+    echo '<div class="checkout__text checkout__text_alarm checkout__urgent-text"></div>'; 
 }
 
 /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
