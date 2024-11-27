@@ -95,6 +95,8 @@ if($site === 'http://new.plantis.shop') {
 	
 	$delivery_free = 'free_shipping:5';
 
+	$delivery_courier = 'free_shipping:26';
+
 	$payment_inn_chekbox = 'cheque'; //ID for payment checkbox
 	$inn_field = 'additional_inn'; //ID for INN field
 
@@ -132,6 +134,7 @@ if($site === 'http://new.plantis.shop') {
 	$urgent_delivery_outMKAD_small = 'flat_rate:12';
 	
 	$delivery_free = 'free_shipping:4';
+	$delivery_courier = 'free_shipping:26'; //TO BE UDATETD
 
 	$payment_inn_chekbox = 'cheque';
 	$inn_field = 'additional_inn';

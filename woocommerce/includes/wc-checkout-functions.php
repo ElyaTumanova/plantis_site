@@ -221,11 +221,10 @@ function new_custom_checkout_field_script() {
                 //selectedDate = startDate + 1;                   
             };
 
-            console.log(new Date(startDate));
-            //selectedDate = startDate + 1;
+
             selectedDate = new Date().setDate(startDate.getDate() + 1);
-            console.log('initial');
-            console.log(new Date(selectedDate));
+            //console.log('initial');
+            //console.log(new Date(selectedDate));
 
             //очищаем дату для срочной доставки  TO BE DELETED
             // if (urgentPickups.includes(checkedShippingMethod)) {
@@ -531,6 +530,7 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
     // global $urgent_delivery_outMKAD_small;
 
     // global $delivery_free;
+    global $delivery_courier;
 
     $small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
@@ -548,10 +548,11 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
         }
     } else {
         // если сумма всех товаров в корзине меньше min_small_delivery, отключаем способ доставки
-        if ($min_small_delivery) {
+        
             if ( WC()->cart->subtotal < $min_small_delivery ) {
                 unset( $rates[ $delivery_inMKAD ] );
                 unset( $rates[ $delivery_outMKAD ] );
+                isset ($rates[ $delivery_courier ]);
                 // unset( $rates[ $urgent_delivery_inMKAD ] );
                 // unset( $rates[ $urgent_delivery_outMKAD ] );			
             } 
@@ -560,9 +561,8 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
             //     unset( $rates[ $delivery_outMKAD_small ] );
             //     unset( $rates[ $urgent_delivery_inMKAD_small ] );
             //     unset( $rates[ $urgent_delivery_outMKAD_small ] );
+            unset( $rates[ $delivery_courier ] );
             // }
-            
-        } 
     }
  
 	return $rates;
