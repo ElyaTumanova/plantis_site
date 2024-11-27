@@ -493,17 +493,33 @@ function new_truemisha_remove_shipping_method( $rates, $package ) {
 
 
 /* стоимость доставки в зависимости от суммы заказа*/
+
+//убираем способ онлайн-оплаты, если маленькая сумма заказа
+add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_small_order' );
+
+function plnt_disable_payment_small_order( $available_gateways ) {
+    $min_small_delivery = carbon_get_theme_option('min_small_delivery')
+
+    if ($min_small_delivery) {
+        // стоимость товаров в корзине
+        if (WC()->cart->subtotal < $min_small_delivery) {
+            unset( $available_gateways['tinkoff'] );
+        }
+    }
+
+    return $available_gateways;
+}
 	
 add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
  
 function new_truemisha_remove_shipping_on_price( $rates, $package ) {
 
     //переменные
-     // TO BE DELETED
-    // global $local_pickup;
+    // TO BE DELETED
+    global $local_pickup;
         
-    // global $delivery_inMKAD;
-    // global $delivery_outMKAD;
+    global $delivery_inMKAD;
+    global $delivery_outMKAD;
     // global $delivery_inMKAD_small;
     // global $delivery_outMKAD_small;
 
@@ -518,8 +534,8 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
     $small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
 
-	// если сумма всех товаров в корзине меньше min_small_delivery, отключаем способ доставки
-    if ($small_delivery_markup) {
+	// если сумма всех товаров в корзине меньше min_small_delivery, увеличиваем стоимость доставки
+    if ($small_delivery_markup) { //если наценка не задана, то будет запущен второй вариант алгоритма с отключением способов доставки
         // стоимость товаров в корзине
         if (WC()->cart->subtotal < $min_small_delivery) {
            foreach( $rates as $rate) {
@@ -529,20 +545,22 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
             }
            }
         }
-    }
-
-    // TO BE DELETED
-	// if ( WC()->cart->subtotal < $min_small_delivery ) {
-	//     unset( $rates[ $delivery_inMKAD ] );
-	// 	unset( $rates[ $delivery_outMKAD ] );
-	// 	unset( $rates[ $urgent_delivery_inMKAD ] );
-	// 	unset( $rates[ $urgent_delivery_outMKAD ] );			
-	// } else {
-	// 	unset( $rates[ $delivery_inMKAD_small ] );
-	// 	unset( $rates[ $delivery_outMKAD_small ] );
-	// 	unset( $rates[ $urgent_delivery_inMKAD_small ] );
-	// 	unset( $rates[ $urgent_delivery_outMKAD_small ] );
-	// }
+    } else {
+        // если сумма всех товаров в корзине меньше min_small_delivery, отключаем способ доставки
+        if ($min_small_delivery) {
+            if ( WC()->cart->subtotal < $min_small_delivery ) {
+                unset( $rates[ $delivery_inMKAD ] );
+                unset( $rates[ $delivery_outMKAD ] );
+                // unset( $rates[ $urgent_delivery_inMKAD ] );
+                // unset( $rates[ $urgent_delivery_outMKAD ] );			
+            // } else {
+            //     unset( $rates[ $delivery_inMKAD_small ] );
+            //     unset( $rates[ $delivery_outMKAD_small ] );
+            //     unset( $rates[ $urgent_delivery_inMKAD_small ] );
+            //     unset( $rates[ $urgent_delivery_outMKAD_small ] );
+            // }
+        }
+    } 
  
 	return $rates;
  
