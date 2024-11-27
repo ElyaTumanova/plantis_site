@@ -98,20 +98,20 @@ function plnt_print_editable_delivery_field_value( $order ){
 	<div class="edit_address">';
 	woocommerce_wp_text_input( array(
         'id' => 'datepicker',
-        'label' => 'Какой-то текст',
-        'desc_tip' => true,
-        'description' => 'Тут вы можете добавить какой-то текст, но не слишком много',
+        'label' => 'Дата доставки (самовывоза)',
     ) );
 	echo '</div>';
- 
 }
  
 // и сохраняем
-add_action( 'woocommerce_process_shop_order_meta', 'true_save_billing_details' );
+add_action( 'woocommerce_process_shop_order_meta', 'plnt_save_delivery_field_value' );
  
-function true_save_billing_details( $order_id ){
-	update_post_meta( $order_id, 'billing_contactmethod', wc_clean( $_POST[ 'billing_contactmethod' ] ) );
+function plnt_save_delivery_field_value( $order_id ){
+	update_post_meta( $order_id, 'datepicker', wc_clean( $_POST[ 'datepicker' ] ) );
 }
+
+
+
 
 // // до бесплатной доставки осталось
 add_action( 'woocommerce_checkout_order_review', 'my_delivery_small_oder_info', 20 );
