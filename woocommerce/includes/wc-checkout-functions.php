@@ -207,7 +207,6 @@ function new_custom_checkout_field_script() {
 
             //определяем первую доступную дату
             //let startDate = new Date();
-            
             let startDate;
 
             // определяем дату, которая будет выбрана по умолчанию
@@ -222,10 +221,10 @@ function new_custom_checkout_field_script() {
                 //selectedDate = startDate + 1;                   
             };
 
+            console.log(new Date(startDate));
             selectedDate = startDate + 1;
             console.log('initial');
             console.log(new Date(selectedDate));
-            console.log(new Date(startDate));
 
             //очищаем дату для срочной доставки  TO BE DELETED
             // if (urgentPickups.includes(checkedShippingMethod)) {
