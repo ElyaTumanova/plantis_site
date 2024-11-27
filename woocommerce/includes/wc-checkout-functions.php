@@ -70,7 +70,7 @@ function plnt_add_delivery_interval_field() {
     echo "</div>";
 }
 
-// добавляем новые поля в админку
+// // сохряняем новое поле в заказе
 
 add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_delivery_field', 25 );
  
@@ -79,6 +79,38 @@ function plnt_save_delivery_field( $order_id ){
 	if( ! empty( $_POST[ 'datepicker' ] ) ) {
 		update_post_meta( $order_id, 'datepicker', sanitize_text_field( $_POST[ 'datepicker' ] ) );
 	}
+}
+
+// // добавляем новые поля в админку
+
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_editable_delivery_field_value', 25 );
+ 
+function plnt_print_editable_delivery_field_value( $order ){
+ 
+	$method = get_post_meta( $order->get_id(), 'datepicker', true );
+ 
+	echo '<div class="address">
+		<p' . ( ! $method ? ' class="none_set"' : '' ) . '>
+			<strong>Дата доставки (самовывоза)</strong>
+			' . ( $method ? $method : 'Не указан.' ) . '
+		</p>
+	</div>
+	<div class="edit_address">';
+	woocommerce_wp_text_input( array(
+        'id' => 'datepicker',
+        'label' => 'Какой-то текст',
+        'desc_tip' => true,
+        'description' => 'Тут вы можете добавить какой-то текст, но не слишком много',
+    ) );
+	echo '</div>';
+ 
+}
+ 
+// и сохраняем
+add_action( 'woocommerce_process_shop_order_meta', 'true_save_billing_details' );
+ 
+function true_save_billing_details( $order_id ){
+	update_post_meta( $order_id, 'billing_contactmethod', wc_clean( $_POST[ 'billing_contactmethod' ] ) );
 }
 
 // // до бесплатной доставки осталось
