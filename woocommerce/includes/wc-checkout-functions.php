@@ -33,7 +33,17 @@ function plnt_delivery_condition_info () {
 add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_date_fields', 50 );
 
 function plnt_add_delivery_date_fields() {
-	echo 'Однажды тут будет поле.';
+	// выводим поле функцией woocommerce_form_field()
+	woocommerce_form_field( 
+		'datepicker', 
+		array(
+			'type'          => 'text', // text, textarea, select, radio, checkbox, password
+			'required'	=> false, // по сути только добавляет значок "*" и всё
+			'class'         => array( 'input-text' ), // массив классов поля
+			'label'         => 'Дата доставки (самовывоза)',
+			'label_class'   => '', // класс лейбла
+		),
+	);
 }
 
 
