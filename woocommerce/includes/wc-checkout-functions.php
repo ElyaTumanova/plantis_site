@@ -398,7 +398,6 @@ function new_custom_checkout_field_script() {
             // } else {
             //     selectedDate = new Date().setDate(startDate.getDate() + 1);       
             // };
-            selectedDate = date.setDate(date.getDate() + 1);
 
             //console.log('initial');
             //console.log(new Date(selectedDate));
