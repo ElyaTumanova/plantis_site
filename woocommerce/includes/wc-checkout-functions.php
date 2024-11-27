@@ -498,7 +498,7 @@ function new_truemisha_remove_shipping_method( $rates, $package ) {
 add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_small_order' );
 
 function plnt_disable_payment_small_order( $available_gateways ) {
-    $min_small_delivery = carbon_get_theme_option('min_small_delivery')
+    $min_small_delivery = carbon_get_theme_option('min_small_delivery');
 
     if ($min_small_delivery) {
         // стоимость товаров в корзине
@@ -553,17 +553,18 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
                 unset( $rates[ $delivery_outMKAD ] );
                 // unset( $rates[ $urgent_delivery_inMKAD ] );
                 // unset( $rates[ $urgent_delivery_outMKAD ] );			
-            // } else {
+            } 
+            //else {
             //     unset( $rates[ $delivery_inMKAD_small ] );
             //     unset( $rates[ $delivery_outMKAD_small ] );
             //     unset( $rates[ $urgent_delivery_inMKAD_small ] );
             //     unset( $rates[ $urgent_delivery_outMKAD_small ] );
             // }
-        }
-    } 
+            
+        } 
+    }
  
 	return $rates;
- 
 }
 
 // делим поле billing_address_2 на несколько полей//
