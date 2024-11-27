@@ -79,9 +79,6 @@ function plnt_save_delivery_field( $order_id ){
 	if( ! empty( $_POST[ 'datepicker' ] ) ) {
 		update_post_meta( $order_id, 'datepicker', sanitize_text_field( $_POST[ 'datepicker' ] ) );
 	}
-	if( ! empty( $_POST[ 'additional_delivery_interval_field' ] ) ) {
-		update_post_meta( $order_id, 'additional_delivery_interval_field' );
-	}
 }
 
 // // до бесплатной доставки осталось
