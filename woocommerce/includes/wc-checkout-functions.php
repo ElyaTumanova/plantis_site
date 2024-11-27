@@ -546,6 +546,8 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
 
 	// если сумма всех товаров в корзине меньше min_small_delivery, увеличиваем стоимость доставки
     if ($small_delivery_markup) { //если наценка не задана, то будет запущен второй вариант алгоритма с отключением способов доставки
+        // отключаем опцию доставики по тарифам курьерской службы
+        unset( $rates[ $delivery_courier ] );
         // стоимость товаров в корзине
         if (WC()->cart->subtotal < $min_small_delivery) {
            foreach( $rates as $rate) {
