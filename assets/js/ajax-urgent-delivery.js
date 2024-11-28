@@ -12,9 +12,9 @@ function plntChekUrgentDelivery() {
         isUrgent = '0';
       }
       console.log(isUrgent);
+      plntAjaxGetUrgent();
       });
 
-      plntAjaxGetUrgent();
   })
 };
 
