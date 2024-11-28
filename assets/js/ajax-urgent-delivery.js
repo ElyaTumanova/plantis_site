@@ -6,7 +6,7 @@ let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerc
 
 
 console.log(deliveryDatesLables);
-console.log(deliveryInMKAD);
+//console.log(deliveryInMKAD);
 
 function plntChekUrgentDelivery() {
   // console.log(deliveryDates);
@@ -43,7 +43,9 @@ function onChangeShippingMethod(event) {
 function renderDeliveryDates(event) {
   console.log(event.target.value);
   if(event.target.value == deliveryInMKAD) {
-
+    deliveryDatesLables.forEach((label) => {
+      console.log(label.for)
+    })
   }
 }
 
