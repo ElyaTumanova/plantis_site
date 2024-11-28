@@ -2,7 +2,7 @@ let isUrgent = '0';
 
 function plntChekUrgentDelivery() {
   let deliveryDates = document.querySelectorAll('.delivery_dates input');
-  console.log(deliveryDates);
+  console.log(deliveryDates.value);
   deliveryDates.forEach((date) => {
     date.addEventListener('click', function(event){
       console.log(event.target.value);
