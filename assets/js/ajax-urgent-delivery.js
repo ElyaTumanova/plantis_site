@@ -44,7 +44,7 @@ function renderDeliveryDates(event) {
   console.log(event.target.value);
   if(event.target.value == deliveryInMKAD) {
     deliveryDatesLables.forEach((label) => {
-      console.log(label.for)
+      console.log(label)
     })
   }
 }
