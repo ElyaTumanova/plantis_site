@@ -10,6 +10,8 @@ function plntChekUrgentDelivery() {
 };
 
 
+plntChekUrgentDelivery();
+
 
 function plntAjaxGetUrgent() {
     console.log('hi ajax');
