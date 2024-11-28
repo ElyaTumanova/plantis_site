@@ -3,8 +3,8 @@ let isUrgent = '0';
 function plntChekUrgentDelivery() {
   let deliveryDates = document.querySelectorAll('.delivery_dates input');
   console.log(deliveryDates);
-  console.log(deliveryDates[0]);
-  deliveryDates[0].setAttribute('checked','checked');
+  console.log(deliveryDates[1]);
+  deliveryDates[1].setAttribute('checked','checked');
 
   deliveryDates.forEach((date) => {
     date.addEventListener('click', function(event){
