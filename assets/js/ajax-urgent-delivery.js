@@ -44,13 +44,28 @@ function renderDeliveryDates(event) {
   console.log(event.target.value);
   if(event.target.value == deliveryInMKAD) {
     deliveryDatesLables.forEach((label) => {
-      let text = label.textContent;
-      console.log(label);
-      console.log(text);
       if(label.htmlFor == 'delivery_dates_today') {
-        label.innerHTML('lalal');
+        label.innerHTML=`${label.textContent} 1190 рублей`;
       } else {
-        label.innerHTML ('hohoho');
+        label.innerHTML =`${label.textContent} 590 рублей`;
+      }
+    })
+  }
+  if(event.target.value == deliveryOutMKAD) {
+    deliveryDatesLables.forEach((label) => {
+      if(label.htmlFor == 'delivery_dates_today') {
+        label.innerHTML=`${label.textContent} 1590 рублей`;
+      } else {
+        label.innerHTML =`${label.textContent} 790 рублей`;
+      }
+    })
+  }
+  if(event.target.value == localPickup) {
+    deliveryDatesLables.forEach((label) => {
+      if(label.htmlFor == 'delivery_dates_today') {
+        label.innerHTML=`${label.textContent}`;
+      } else {
+        label.innerHTML =`${label.textContent}`;
       }
     })
   }

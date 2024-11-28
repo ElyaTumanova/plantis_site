@@ -89,10 +89,12 @@ add_action( 'wp_footer', 'plnt_set_constants_script' );
 function plnt_set_constants_script() {
 	global $delivery_inMKAD;
 	global $delivery_outMKAD;
+	global $local_pickup;
 	?>
 	<script>
 		let deliveryInMKAD = '<?php echo $delivery_inMKAD; ?>';
 		let deliveryOutMKAD = '<?php echo $delivery_outMKAD; ?>';
+		let localPickup = '<?php echo $local_pickup; ?>';
 	</script>
 	<?php
 }
