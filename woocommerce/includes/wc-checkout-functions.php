@@ -92,7 +92,7 @@ function plnt_add_delivery_dates() {
 			'label'         => 'Даты доставки (самовывоза)',
 			'label_class'   => '', // класс лейбла
             'options'	=> array( // options for  or 
-				'today'		=> $today . " 790 рублей"  , // 'значение' => 'заголовок'
+				'today'		=> $today  , // 'значение' => 'заголовок'
 				'tomorrow' 	=> $tomorrow,
 				'tomorrow+1'=> $fith_day,
 			)
