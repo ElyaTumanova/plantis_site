@@ -159,6 +159,16 @@ if($site === 'http://new.plantis.shop') {
 }
 
 
+add_action( 'wp_footer', 'plnt_set_conctants_script' );
+function plnt_set_conctants_script() {
+	?>
+	<script>
+		let deliveryInMKAD = '<?php echo $delivery_inMKAD; ?>';
+		let deliveryOutMKAD = '<?php echo $delivery_outMKAD; ?>';
+	</script>
+	<?php
+}
+
 /* Изображения и иконки */
 
 $filter_icon = "https://plantis.shop/wp-content/uploads/2024/07/filter_new.svg";

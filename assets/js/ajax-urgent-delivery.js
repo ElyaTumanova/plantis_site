@@ -3,7 +3,10 @@ let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates label');
 
+
+
 console.log(deliveryDatesLables);
+console.log(deliveryInMKAD);
 
 function plntChekUrgentDelivery() {
   // console.log(deliveryDates);
