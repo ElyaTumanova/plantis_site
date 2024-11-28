@@ -44,7 +44,9 @@ function renderDeliveryDates(event) {
   console.log(event.target.value);
   if(event.target.value == deliveryInMKAD) {
     deliveryDatesLables.forEach((label) => {
-      console.log(label)
+      let text = label.textContent;
+      console.log(label);
+      console.log(text);
       if(label.htmlFor == 'delivery_dates_today') {
         //label.innerHTML('lalal')
       } else {
