@@ -2,9 +2,21 @@ let isUrgent = '0';
 let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
+let deliveryDatesInfo = [];
+
+deliveryDatesLables.forEach((label) => {
+  let dateInfo = {
+    label: label,
+    for: label.htmlFor,
+    text: label.textContent};
+  console.log(dateInfo);
+  deliveryDatesInfo.push(dateInfo);
+})
 
 
 
+
+console.log(deliveryDatesInfo);
 console.log(deliveryDatesLables);
 //console.log(deliveryInMKAD);
 
