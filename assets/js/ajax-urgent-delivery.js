@@ -55,29 +55,29 @@ function onChangeShippingMethod(event) {
 function renderDeliveryDates(event) {
   console.log(event.target.value);
   if(event.target.value == deliveryInMKAD) {
-    deliveryDatesLables.forEach((label) => {
-      if(label.htmlFor == 'delivery_dates_today') {
-        label.innerHTML=`${label.textContent} 1190 рублей`;
+    deliveryDatesInfo.forEach((info) => {
+      if(info.for == 'delivery_dates_today') {
+        info.label.innerHTML=`${info.text} 1190 рублей`;
       } else {
-        label.innerHTML =`${label.textContent} 590 рублей`;
+        info.label.innerHTML=`${info.text} 590 рублей`;
       }
     })
   }
   if(event.target.value == deliveryOutMKAD) {
-    deliveryDatesLables.forEach((label) => {
-      if(label.htmlFor == 'delivery_dates_today') {
-        label.innerHTML=`${label.textContent} 1590 рублей`;
+    deliveryDatesInfo.forEach((info) => {
+      if(info.for == 'delivery_dates_today') {
+        info.label.innerHTML=`${info.text} 1590 рублей`;
       } else {
-        label.innerHTML =`${label.textContent} 790 рублей`;
+        info.label.innerHTML=`${info.text} 790 рублей`;
       }
     })
   }
   if(event.target.value == localPickup) {
-    deliveryDatesLables.forEach((label) => {
-      if(label.htmlFor == 'delivery_dates_today') {
-        label.innerHTML=`${label.textContent}`;
+    deliveryDatesInfo.forEach((info) => {
+      if(info.for == 'delivery_dates_today') {
+        info.label.innerHTML=`${info.text}`;
       } else {
-        label.innerHTML =`${label.textContent}`;
+        info.label.innerHTML=`${info.text}`;
       }
     })
   }
