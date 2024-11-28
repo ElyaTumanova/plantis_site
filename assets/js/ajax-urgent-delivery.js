@@ -48,13 +48,13 @@ checkoutForm.addEventListener('change', onChangeShippingMethod);
 
 function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
-        renderDeliveryDates(event);
+        renderDeliveryDates(event.target.value);
     }
 }
 
-function renderDeliveryDates(event) {
-  console.log(event.target.value);
-  if(event.target.value == deliveryInMKAD) {
+function renderDeliveryDates(dateFieldValue) {
+  console.log(dateFieldValue);
+  if(dateFieldValue == deliveryInMKAD) {
     deliveryDatesInfo.forEach((info) => {
       if(info.for == 'delivery_dates_today') {
         info.label.innerHTML=`${info.text} 1190 рублей`;
@@ -63,7 +63,7 @@ function renderDeliveryDates(event) {
       }
     })
   }
-  if(event.target.value == deliveryOutMKAD) {
+  if(dateFieldValue == deliveryOutMKAD) {
     deliveryDatesInfo.forEach((info) => {
       if(info.for == 'delivery_dates_today') {
         info.label.innerHTML=`${info.text} 1590 рублей`;
@@ -72,7 +72,7 @@ function renderDeliveryDates(event) {
       }
     })
   }
-  if(event.target.value == localPickup) {
+  if(dateFieldValue == localPickup) {
     deliveryDatesInfo.forEach((info) => {
       if(info.for == 'delivery_dates_today') {
         info.label.innerHTML=`${info.text}`;
