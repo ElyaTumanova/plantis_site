@@ -14,8 +14,9 @@ deliveryDatesLables.forEach((label) => {
     text: label.textContent};
   console.log(dateInfo);
   deliveryDatesInfo.push(dateInfo);
-})
+});
 
+renderDeliveryDates(checkedShippingMethod);
 
 
 
