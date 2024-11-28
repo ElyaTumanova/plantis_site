@@ -48,9 +48,9 @@ function renderDeliveryDates(event) {
       console.log(label);
       console.log(text);
       if(label.htmlFor == 'delivery_dates_today') {
-        //label.innerHTML('lalal')
+        label.innerHTML('lalal');
       } else {
-        //label.innerHTML ('hohoho')
+        label.innerHTML ('hohoho');
       }
     })
   }
