@@ -30,7 +30,7 @@ function plnt_delivery_condition_info () {
 
 // // добавляемм новые поля для нтервала и даты доставки
 
-add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_date_field', 50 );
+//add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_date_field', 50 );
 
 function plnt_add_delivery_date_field() {
     echo "<div class='delivery_wrap'>";
@@ -67,13 +67,13 @@ function plnt_add_delivery_interval_field() {
 			)
 		),
 	);
-    //echo "</div>";
+    echo "</div>";
 }
 
 
 // FOR DEV
 
-add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 60 );
+add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 50 );
 
 function plnt_add_delivery_dates() {
 
@@ -81,6 +81,7 @@ function plnt_add_delivery_dates() {
     $tomorrow = date('d.m.y', time() + 86400); 
     $fith_day = date('d.m.y', time() + 86400*5); 
 
+    echo "<div class='delivery_wrap'>";
 	// выводим поле функцией woocommerce_form_field()
 	woocommerce_form_field( 
 		'delivery_dates', 
@@ -97,7 +98,6 @@ function plnt_add_delivery_dates() {
 			)
 		),
 	);
-    echo "</div>";
 }
 
 // // сохряняем новое поле в заказе
