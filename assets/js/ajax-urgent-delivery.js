@@ -1,7 +1,7 @@
 let isUrgent = '0';
 let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelectorAll('.delivery_dates input');
-let deliveryDatesLables = document.querySelectorAll('.delivery_dates label');
+let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
 
 
 
@@ -42,6 +42,9 @@ function onChangeShippingMethod(event) {
 
 function renderDeliveryDates(event) {
   console.log(event.target.value);
+  if(event.target.value == deliveryInMKAD) {
+
+  }
 }
 
 
