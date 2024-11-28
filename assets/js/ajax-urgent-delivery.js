@@ -1,3 +1,9 @@
+function plntChekUrgentDelivery() {
+  
+}
+
+
+
 function plntAjaxGetUrgent() {
     console.log('hi ajax');
     console.log(isUrgent);

@@ -73,19 +73,21 @@ function plnt_add_delivery_interval_field() {
 
 // FOR DEV
 
-add_action( 'woocommerce_checkout_order_review', 'plnt_add_new_delivery_fields', 60 );
+add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 60 );
 
-function plnt_add_new_delivery_fields() {
+function plnt_add_delivery_dates() {
+    
     $today = date("d.m.y"); 
     $tomorrow = date('d.m.y', time() + 86400); 
     $fith_day = date('d.m.y', time() + 86400*5); 
+
 	// выводим поле функцией woocommerce_form_field()
 	woocommerce_form_field( 
-		'delivery_fields', 
+		'delivery_dates', 
 		array(
 			'type'          => 'radio', // text, textarea, select, radio, checkbox, password
 			'required'	=> false, // по сути только добавляет значок "*" и всё
-			'class'         => array( 'delivery_fields' ), // массив классов поля
+			'class'         => array( 'delivery_dates' ), // массив классов поля
 			'label'         => 'Даты доставки',
 			'label_class'   => '', // класс лейбла
             'options'	=> array( // options for  or 
