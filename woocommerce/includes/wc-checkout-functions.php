@@ -76,7 +76,7 @@ function plnt_add_delivery_interval_field() {
 add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 60 );
 
 function plnt_add_delivery_dates() {
-    
+
     $today = date("d.m.y"); 
     $tomorrow = date('d.m.y', time() + 86400); 
     $fith_day = date('d.m.y', time() + 86400*5); 
@@ -91,9 +91,9 @@ function plnt_add_delivery_dates() {
 			'label'         => 'Даты доставки',
 			'label_class'   => '', // класс лейбла
             'options'	=> array( // options for  or 
-				'1'		=> $today . " 790 рублей"  , // 'значение' => 'заголовок'
-				'2' 	=> $tomorrow,
-				'3'	=> $fith_day,
+				'today'		=> $today . " 790 рублей"  , // 'значение' => 'заголовок'
+				'tomorrow' 	=> $tomorrow,
+				'tomorrow+1'=> $fith_day,
 			)
 		),
 	);

@@ -1,10 +1,19 @@
 function plntChekUrgentDelivery() {
   let deliveryDates = document.querySelectorAll('.delivery_dates input');
+  let isUrgent = '0';
+
   console.log(deliveryDates);
 
   deliveryDates.forEach((date) => {
     date.addEventListener('click', function(event){
-      console.log(event.target);
+      
+      console.log(event.target.value);
+      if(event.target.value == 'today') {
+        isUrgent = '1';
+      } else {
+        isUrgent = '0';
+      }
+      console.log(isUrgent);
     })
   })
 };
