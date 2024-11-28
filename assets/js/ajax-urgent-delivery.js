@@ -3,6 +3,9 @@ let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
 let deliveryDatesInfo = [];
+let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
+
+console.log(checkedShippingMethod);
 
 deliveryDatesLables.forEach((label) => {
   let dateInfo = {
@@ -16,8 +19,8 @@ deliveryDatesLables.forEach((label) => {
 
 
 
-console.log(deliveryDatesInfo);
-console.log(deliveryDatesLables);
+// console.log(deliveryDatesInfo);
+// console.log(deliveryDatesLables);
 //console.log(deliveryInMKAD);
 
 function plntChekUrgentDelivery() {
