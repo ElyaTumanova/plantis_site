@@ -85,3 +85,14 @@ function plnt_check_page() {
 
 
 
+add_action( 'wp_footer', 'plnt_set_constants_script' );
+function plnt_set_constants_script() {
+	global $delivery_inMKAD;
+	global $delivery_outMKAD;
+	?>
+	<script>
+		let deliveryInMKAD = '<?php echo $delivery_inMKAD; ?>';
+		let deliveryOutMKAD = '<?php echo $delivery_outMKAD; ?>';
+	</script>
+	<?php
+}
