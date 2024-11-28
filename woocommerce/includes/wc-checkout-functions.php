@@ -73,7 +73,7 @@ function plnt_add_delivery_interval_field() {
 
 // FOR DEV
 
-add_action( 'woocommerce_checkout_order_review', 'plnt_add_new_delivery_fields', 60 );
+//add_action( 'woocommerce_checkout_order_review', 'plnt_add_new_delivery_fields', 60 );
 
 function plnt_add_new_delivery_fields() {
     $today = date("d.m.y"); 
@@ -393,11 +393,11 @@ function new_custom_checkout_field_script() {
             };
 
             // тут ошибка
-            // if (hour >= 18 && hour <20) {  
-            //     selectedDate = new Date().setDate(startDate.getDate() + 2);
-            // } else {
-            //     selectedDate = new Date().setDate(startDate.getDate() + 1);       
-            // };
+            if (hour >= 18 && hour <20) {  
+                selectedDate = new Date().setDate(startDate.getDate() + 2);
+            } else {
+                selectedDate = new Date().setDate(startDate.getDate() + 1);       
+            };
 
             //console.log('initial');
             //console.log(new Date(selectedDate));
