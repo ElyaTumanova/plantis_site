@@ -84,7 +84,7 @@ function plnt_check_page() {
 //add_action( 'wp_footer', 'plnt_check_page' );
 
 
-
+//ЗАДАЕМ КОНСТАНТЫ ДЛЯ JS
 add_action( 'wp_footer', 'plnt_set_constants_script' );
 function plnt_set_constants_script() {
 	global $delivery_inMKAD;

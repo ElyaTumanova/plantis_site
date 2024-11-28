@@ -41,7 +41,7 @@ function onChangeShippingMethod(event) {
 }
 
 function renderDeliveryDates(event) {
-  console.log(event.target.className);
+  console.log(event.target.value);
 }
 
 
