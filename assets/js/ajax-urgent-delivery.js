@@ -1,20 +1,24 @@
 let isUrgent = '0';
+let checkoutForm = document.querySelector('form[name="checkout"]');
+let deliveryDates = document.querySelectorAll('.delivery_dates input');
+let deliveryDatesLables = document.querySelectorAll('.delivery_dates label');
+
+console.log(deliveryDatesLables);
 
 function plntChekUrgentDelivery() {
-  let deliveryDates = document.querySelectorAll('.delivery_dates input');
-  console.log(deliveryDates);
-  console.log(deliveryDates[1]);
+  // console.log(deliveryDates);
+  // console.log(deliveryDates[1]);
   deliveryDates[1].setAttribute('checked','checked');
 
   deliveryDates.forEach((date) => {
     date.addEventListener('click', function(event){
-      console.log(event.target.value);
+      //console.log(event.target.value);
       if(event.target.value == 'today') {
         isUrgent = '1';
       } else {
         isUrgent = '0';
       }
-      console.log(isUrgent);
+      //console.log(isUrgent);
       plntAjaxGetUrgent();
       });
 
@@ -23,6 +27,19 @@ function plntChekUrgentDelivery() {
 
 
 plntChekUrgentDelivery();
+
+
+checkoutForm.addEventListener('change', onChangeShippingMethod);
+
+function onChangeShippingMethod(event) {
+    if(event && event.target.className == "shipping_method") {
+        renderDeliveryDates(event);
+    }
+}
+
+function renderDeliveryDates(event) {
+  console.log(event.target.className);
+}
 
 
 function plntAjaxGetUrgent() {
