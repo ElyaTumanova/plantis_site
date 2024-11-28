@@ -62,7 +62,8 @@ function renderDeliveryDates(dateFieldValue) {
     deliveryDatesInfo.forEach((info) => {
       if(info.for == 'delivery_dates_today') {
         info.label.innerHTML=`${info.text} 
-        1190 рублей`;
+        1190 
+        рублей`;
       } else {
         info.label.innerHTML=`${info.text} 
         590 рублей`;
