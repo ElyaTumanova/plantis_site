@@ -434,8 +434,10 @@
 }
 
 #additional_delivery_interval_field .woocommerce-input-wrapper {
-    display: grid;
-    grid-template-columns: repeat( 2, 1fr);
+    /* display: grid;
+    grid-template-columns: repeat( 2, 1fr); */
+    display: flex;
+    justify-content: space-between;
     column-gap: 10px;
     row-gap: 10px;
 }
@@ -457,6 +459,9 @@
 
 #delivery_dates_field .woocommerce-input-wrapper label {
     width: 95px;
+}
+#additional_delivery_interval_field .woocommerce-input-wrapper label {
+    width: 130px;
 }
 
 #delivery_dates_field .woocommerce-input-wrapper label span {
