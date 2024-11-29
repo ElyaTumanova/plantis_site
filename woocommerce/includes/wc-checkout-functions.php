@@ -100,7 +100,7 @@ function plnt_add_delivery_dates() {
 			'type'          => 'radio', // text, textarea, select, radio, checkbox, password
 			'required'	=> false, // по сути только добавляет значок "*" и всё
 			'class'         => array( 'delivery_dates', 'swiper' ), // массив классов поля
-			//'label'         => 'Дата доставки (самовывоза)',
+			'label'         => 'Дата доставки (самовывоза)',
 			'label_class'   => array( 'delivery_dates_label', 'swiper-slide' ), // класс лейбла
             'options'	=> array( // options for  or 
 				'today'		=> $today, // 'значение' => 'заголовок'

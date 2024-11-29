@@ -281,16 +281,8 @@ deliveryWrapper.classList.add('swiper-wrapper');
 console.log(deliveryWrapper);
 
 const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
-    // pagination: {
-    //     el: '.swiper-pagination',
-    //     clickable: true,
-    // },
-    // navigation: {
-    //     nextEl: '.swiper-button-next',
-    //     prevEl: '.swiper-button-prev',
-    // },
-    //wrapperClass: 'woocommerce-input-wrapper',
-    slidesPerView: 'auto',
+
+    slidesPerView: 6,
     spaceBetween: 0,
     loop: false,
     // slidesPerView: 1,
