@@ -469,6 +469,7 @@
     font-weight: 500;
 
     min-width: 95px;
+    min-height: 28px;
 }
 
 #delivery_dates_field .woocommerce-input-wrapper label span {
