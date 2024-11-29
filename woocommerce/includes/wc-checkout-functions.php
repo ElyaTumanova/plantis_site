@@ -337,7 +337,7 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
     $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
 
     if ( isset( $rates[ $delivery_courier ] ) ) { 
-        return;
+        return $rates;
     } else {
 	    if (WC()->session->get('isUrgent' ) === '1') {
             foreach( $rates as $rate) {
