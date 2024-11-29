@@ -192,6 +192,10 @@
     justify-content: end;
 }
 
+#shipping_method {
+    display: flex;
+}
+
 #shipping_method li label {
     width: 100%;
     justify-content: flex-start;
@@ -199,9 +203,10 @@
 }
 
 #shipping_method li span {
-    margin-left: auto;
+    /* margin-left: auto;
     min-width: 85px;
-    text-align: right;
+    text-align: right; */
+    display: none;
 }
 
 .large_delivery_notice {
@@ -455,7 +460,9 @@
     scrollbar-width: none;
 } */
 
-#additional_delivery_interval_field .woocommerce-input-wrapper label, #delivery_dates_field .woocommerce-input-wrapper label {
+#additional_delivery_interval_field .woocommerce-input-wrapper label, 
+#delivery_dates_field .woocommerce-input-wrapper label, 
+#shipping_method label {
     background-color: #f5f5f5;
     border: 1px solid #D0D0D0;
     display: flex;
