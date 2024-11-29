@@ -442,12 +442,12 @@
 #additional_delivery_interval_field .woocommerce-input-wrapper label, #delivery_dates_field .woocommerce-input-wrapper label {
     background-color: #f5f5f5;
     border: 1px solid #D0D0D0;
-    display: block;
+    display: flex;
+    flex-direction: column;
     border-radius: 5px;
     margin: 5px;
     padding: 5px;
     text-align: center;
-    white-space: break-spaces;
 }
 
 #additional_delivery_interval_field .woocommerce-input-wrapper input[type=radio]:checked + label {

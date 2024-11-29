@@ -60,12 +60,15 @@ function renderDeliveryDates(dateFieldValue) {
   console.log(dateFieldValue);
   if(dateFieldValue == deliveryInMKAD) {
     deliveryDatesInfo.forEach((info) => {
+      let priceEl = document.createElement('span');
       if(info.for == 'delivery_dates_today') {
-        info.label.innerHTML=`${info.text} 
-        1190 рублей`;
+        info.label.innerHTML=`${info.text}`;
+        info.label.appendChild(priceEl);
+        priceEl.innerHTML = `1190 рублей`
       } else {
-        info.label.innerHTML=`${info.text} 
-        590 рублей`;
+        info.label.innerHTML=`${info.text}`;
+        info.label.appendChild(priceEl);
+        priceEl.innerHTML = `590 рублей`
       }
     })
   }
@@ -77,8 +80,9 @@ function renderDeliveryDates(dateFieldValue) {
         info.label.appendChild(priceEl);
         priceEl.innerHTML = `1590 рублей`
       } else {
-        info.label.innerHTML=`${info.text} 
-        790 рублей`;
+        info.label.innerHTML=`${info.text}`;
+        info.label.appendChild(priceEl);
+        priceEl.innerHTML = `790 рублей`
       }
     })
   }
