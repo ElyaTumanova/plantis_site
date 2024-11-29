@@ -501,6 +501,10 @@
     background-color: #3a3a3a;
     color: #fff;
 }
+#shipping_method label input[type=radio]:checked + label {
+    background-color: #3a3a3a;
+    color: #fff;
+}
 
 #delivery_dates_field .woocommerce-input-wrapper input[type=radio]:checked + label span {
     color: #fff;
