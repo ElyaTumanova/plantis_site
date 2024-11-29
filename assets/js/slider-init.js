@@ -285,7 +285,6 @@ const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
     //     nextEl: '.swiper-button-next',
     //     prevEl: '.swiper-button-prev',
     // },
-    slideClass: 'delivery_dates_label',
     wrapperClass: 'woocommerce-input-wrapper',
     slidesPerView: 1,
     slidesPerGroup: 1,
