@@ -104,19 +104,19 @@ function plnt_add_delivery_dates() {
 			'label_class'   => array( 'delivery_dates_label', 'swiper-slide' ), // класс лейбла
             'options'	=> array( // options for  or 
 				$today		=> $today, // 'значение' => 'заголовок'
-				'tomorrow' 	=> $tomorrow,
-				'day3'=> $day3,
-				'day4'=> $day4,
-				'day5'=> $day5,
-				'day6'=> $day6,
-				'day7'=> $day7,
-				'day8'=> $day8,
-				'day9'=> $day9,
-				'day10'=> $day10,
-				'day11'=> $day11,
-				'day12'=> $day12,
-				'day13'=> $day13,
-				'day14'=> $day14,
+				$tomorrow 	=> $tomorrow,
+				$day3=> $day3,
+				$day4=> $day4,
+				$day5=> $day5,
+				$day6=> $day6,
+				$day7=> $day7,
+				$day8=> $day8,
+				$day9=> $day9,
+				$day10=> $day10,
+				$day11=> $day11,
+				$day12=> $day12,
+				$day13=> $day13,
+				$day14 => $day14,
 			)
 		),
 	);
