@@ -444,7 +444,8 @@
     scrollbar-width: none;
 }
 
-#delivery_dates_field {
+/* для работы слайдера */
+#delivery_dates_field {  
     box-sizing: border-box;
     width: 100%;
     overflow: hidden;
@@ -459,7 +460,7 @@
     border: 1px solid #D0D0D0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
     border-radius: 5px;
     margin: 5px;
     padding: 5px;

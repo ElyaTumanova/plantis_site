@@ -108,7 +108,7 @@ if ( $show_downloads ) {
                 </div>
                 <div class='plnt-order__totals-row'>
                     <div class='plnt-order__totals-label' scope="row">Дата доставки (самовывоза):</div>
-                    <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['datepicker']['value'] ); ?></div>
+                    <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['delivery_dates']['value'] ); ?></div>
                 </div>
                 <div class='plnt-order__totals-row'>
                     <div class='plnt-order__totals-label' scope="row">Интервал доставки:</div>

@@ -128,8 +128,8 @@ add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_delivery_fields
  
 function plnt_save_delivery_fields( $order_id ){
  
-	if( ! empty( $_POST[ 'datepicker' ] ) ) {
-		update_post_meta( $order_id, 'datepicker', sanitize_text_field( $_POST[ 'datepicker' ] ) );
+	if( ! empty( $_POST[ 'delivery_dates' ] ) ) {
+		update_post_meta( $order_id, 'delivery_dates', sanitize_text_field( $_POST[ 'delivery_dates' ] ) );
 	}
 
     if( ! empty( $_POST[ 'additional_delivery_interval' ] ) ) {
@@ -143,7 +143,7 @@ add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_ed
  
 function plnt_print_editable_delivery_field_value( $order ){
  
-	$method = get_post_meta( $order->get_id(), 'datepicker', true );
+	$method = get_post_meta( $order->get_id(), 'delivery_dates', true );
  
 	echo '<div class="address">
 		<p' . ( ! $method ? ' class="none_set"' : '' ) . '>
@@ -153,7 +153,7 @@ function plnt_print_editable_delivery_field_value( $order ){
 	</div>
 	<div class="edit_address">';
 	woocommerce_wp_text_input( array(
-        'id' => 'datepicker',
+        'id' => 'delivery_dates',
         'label' => 'Дата доставки (самовывоза)',
     ) );
 	echo '</div>';
@@ -192,7 +192,7 @@ function plnt_print_editable_delivery_interval_field_value( $order ){
 add_action( 'woocommerce_process_shop_order_meta', 'plnt_save_delivery_field_value' );
  
 function plnt_save_delivery_field_value( $order_id ){
-	update_post_meta( $order_id, 'datepicker', wc_clean( $_POST[ 'datepicker' ] ) );
+	update_post_meta( $order_id, 'delivery_dates', wc_clean( $_POST[ 'delivery_dates' ] ) );
 	update_post_meta( $order_id, 'additional_delivery_interval', wc_clean( $_POST[ 'additional_delivery_interval' ] ) );
 }
 
@@ -208,9 +208,9 @@ function plnt_delivery_fields_in_email( $rows, $order ) {
 	// 	return $rows;
 	// }
  
-	$rows[ 'datepicker' ] = array(
+	$rows[ 'delivery_dates' ] = array(
 		'label' => 'Дата доставки (самовывоза)',
-		'value' => get_post_meta( $order->get_id(), 'datepicker', true )
+		'value' => get_post_meta( $order->get_id(), 'delivery_dates', true )
 	);
 
 	$rows[ 'additional_delivery_interval' ] = array(

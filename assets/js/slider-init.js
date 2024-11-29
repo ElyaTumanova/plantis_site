@@ -285,22 +285,7 @@ const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
     slidesPerView: 6,
     slidesPerGroup: 1,
     spaceBetween: 0,
-    //loop: false,
-    // slidesPerView: 1,
     slidesPerGroup: 1,
     slidesPerGroupAuto: true,
-    // spaceBetween: 0,
-    //loop: true,
-    // breakpoints: {
-    //     320: {
-    //         navigation: {
-    //             enabled: false,
-    //         },
-    //     },
-    //     767: {
-    //         navigation: {
-    //             enabled: true,
-    //         },
-    //     }
-    // }
+
 });
