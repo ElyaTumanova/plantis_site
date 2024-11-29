@@ -90,9 +90,9 @@ if ( $show_downloads ) {
         <div class="plnt-order__totals">
             <?php
             $plnt_order_totals = $order->get_order_item_totals();
-                echo '<pre>';
-                print_r( $plnt_order_totals );
-                echo '</pre>';
+                // echo '<pre>';
+                // print_r( $plnt_order_totals );
+                // echo '</pre>';
                 ?> 
                 <div class='plnt-order__totals-row'>
                     <div class='plnt-order__totals-label' scope="row">Товары:</div>
@@ -112,7 +112,7 @@ if ( $show_downloads ) {
                 </div>
                 <div class='plnt-order__totals-row'>
                     <div class='plnt-order__totals-label' scope="row">Интервал доставки:</div>
-                    <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['additional_delivery_interval_field']['value'] ); ?></div>
+                    <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['additional_delivery_interval']['value'] ); ?></div>
                 </div>
                 
                 <?php
