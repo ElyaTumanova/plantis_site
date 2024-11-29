@@ -332,16 +332,21 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
     // global $urgent_delivery_outMKAD_small;
 
     // global $delivery_free;
+    global $delivery_courier;
 
     $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
 
-	if (WC()->session->get('isUrgent' ) === '1') {
-		foreach( $rates as $rate) {
-            if ( 'local_pickup' !== $rate->method_id ) {
-                $rate->cost = $rate->cost + $urgent_delivery_markup;
-            }	
-		}
-	 }
+    if ( isset( $rates[ $delivery_courier ] ) ) { 
+        return;
+    } else {
+	    if (WC()->session->get('isUrgent' ) === '1') {
+            foreach( $rates as $rate) {
+                if ( 'local_pickup' !== $rate->method_id ) {
+                    $rate->cost = $rate->cost + $urgent_delivery_markup;
+                }	
+            }
+        }
+    }
     return $rates;
 
 }
