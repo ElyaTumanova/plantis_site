@@ -15,7 +15,7 @@ deliveryDatesLables.forEach((label) => {
     label: label,
     for: label.htmlFor,
     text: label.textContent};
-  console.log(dateInfo);
+  //console.log(dateInfo);
   deliveryDatesInfo.push(dateInfo);
 });
 
@@ -34,8 +34,8 @@ function plntChekUrgentDelivery() {
 
   deliveryDates.forEach((date) => {
     date.addEventListener('click', function(event){
-      //console.log(event.target.value);
-      if(event.target.value == 'today') {
+      console.log(event.target.value);
+      if(event.target.value == today) {
         isUrgent = '1';
       } else {
         isUrgent = '0';
