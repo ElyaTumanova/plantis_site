@@ -47,7 +47,7 @@ function plnt_add_delivery_date_field() {
 	);
 }
 
-add_action( 'plnt_checkout_before_order_total', 'plnt_add_delivery_interval_field', 20 );
+add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_interval_field', 55 );
 
 function plnt_add_delivery_interval_field() {
 	// выводим поле функцией woocommerce_form_field()
@@ -70,7 +70,17 @@ function plnt_add_delivery_interval_field() {
     echo "</div>";
 }
 
-add_action( 'plnt_checkout_before_order_total', 'plnt_add_delivery_dates', 10 );
+
+// FOR DEV
+
+add_action( 'plnt_checkout_before_order_total', 'plnt_checkout_before_order_total_callback', 10 );
+
+function plnt_checkout_before_order_total_callback() {
+    echo 'here!';
+}
+
+
+add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 50 );
 
 function plnt_add_delivery_dates() {
 
