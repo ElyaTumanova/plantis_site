@@ -501,7 +501,7 @@
     background-color: #3a3a3a;
     color: #fff;
 }
-#shipping_method label input[type=radio]:checked + label {
+#shipping_method input[type=radio]:checked + label {
     background-color: #3a3a3a;
     color: #fff;
 }
