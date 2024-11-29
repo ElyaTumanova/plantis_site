@@ -276,6 +276,10 @@ const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
 /*--------------------------------------------------------------
 # Checkout
 --------------------------------------------------------------*/
+let deliveryWrapper = document.querySelector('#delivery_dates_field .woocommerce-input-wrapper');
+deliveryWrapper.classList.add('swiper-wrapper');
+console.log(deliveryWrapper);
+
 const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
     // pagination: {
     //     el: '.swiper-pagination',
@@ -285,7 +289,7 @@ const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
     //     nextEl: '.swiper-button-next',
     //     prevEl: '.swiper-button-prev',
     // },
-    wrapperClass: 'woocommerce-input-wrapper',
+    //wrapperClass: 'woocommerce-input-wrapper',
     slidesPerView: 6,
     spaceBetween: 0,
     loop: false,
