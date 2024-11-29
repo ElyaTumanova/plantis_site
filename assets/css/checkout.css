@@ -447,6 +447,7 @@
     margin: 5px;
     padding: 5px;
     text-align: center;
+    white-space: break-spaces;
 }
 
 #additional_delivery_interval_field .woocommerce-input-wrapper input[type=radio]:checked + label {
