@@ -82,7 +82,7 @@ function plnt_add_delivery_dates() {
     $third_day = date('d.m.y', time() + 86400*2); 
     $forth_day = date('d.m.y', time() + 86400*3); 
     $fith_day = date('d.m.y', time() + 86400*4); 
-    $sixth_day = date('d.m.y', time() + 86400*5); 
+    // $sixth_day = date('d.m.y', time() + 86400*5); 
 
     echo "<div class='delivery_wrap'>";
 	// выводим поле функцией woocommerce_form_field()
@@ -100,7 +100,6 @@ function plnt_add_delivery_dates() {
 				'tomorrow+1'=> $third_day,
 				'tomorrow+2'=> $forth_day,
 				'tomorrow+3'=> $fith_day,
-				'tomorrow+4'=> $sixth_day,
 			)
 		),
 	);
