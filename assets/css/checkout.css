@@ -196,6 +196,10 @@
     display: flex;
 }
 
+#shipping_method label::before {
+    display: none;
+}
+
 #shipping_method li label {
     width: 100%;
     justify-content: flex-start;
@@ -627,6 +631,7 @@ label.list-view {
     user-select: none;
   }
 
+  
   /* создание в label псевдоэлемента  before со следующими стилями */
   .order_wrap input[type=radio]+label::before {
     content: '';
