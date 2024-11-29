@@ -72,8 +72,8 @@ function renderDeliveryDates(dateFieldValue) {
   if(dateFieldValue == deliveryOutMKAD) {
     deliveryDatesInfo.forEach((info) => {
       if(info.for == 'delivery_dates_today') {
-        info.label.innerHTML=`${info.text}
-        1590 рублей`;
+        info.label.innerHTML=`${info.text}`+ <span></span> +
+        `1590 рублей`;
       } else {
         info.label.innerHTML=`${info.text} 
         790 рублей`;
