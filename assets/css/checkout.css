@@ -399,7 +399,6 @@
     border: 1px solid #ccc;
 }
 
-
 .woocommerce-additional-fields__field-wrapper {
     display: grid;
     grid-template-columns: repeat( 2, 1fr);
@@ -428,6 +427,8 @@
     grid-area: inn;
 }
 
+
+
 #additional_delivery_interval_field label::before, #delivery_dates_field label::before{
     display: none;
 }
@@ -448,6 +449,17 @@
     margin: 5px;
     padding: 5px;
     text-align: center;
+
+    font-size: 13px;
+    line-height: 14px;
+    font-weight: 500;
+}
+
+#delivery_dates_field .woocommerce-input-wrapper label span {
+    font-size: 11px;
+    line-height: 13px;
+    font-weight: 400;
+    color: var(--gray-text);
 }
 
 #additional_delivery_interval_field .woocommerce-input-wrapper input[type=radio]:checked + label {
@@ -476,19 +488,14 @@ label.list-view {
 
 /* время доставки #adaptive*/
 
+@media (max-width: 768px) {
+    .delivery_dates .woocommerce-input-wrapper {
+        overflow: scroll;
+        scrollbar-width: none;
+    }
+}
+
 @media (min-width: 768px ) and (max-width: 1024px) {
-    /* #orddd-checkout-fields {
-        display: flex;
-        flex-direction: column;
-    }
-
-    #orddd-checkout-fields p {
-        width: 100%;
-    }
-
-    div#orddd_list_view_select {
-        grid-template-columns: repeat( 4, 1fr) !important;
-    } */
 
     .woocommerce-additional-fields__field-wrapper {
         grid-template-columns: 100%;
@@ -506,18 +513,7 @@ label.list-view {
 }
 
 @media (max-width: 540px) {
-    /* #orddd-checkout-fields {
-        display: flex;
-        flex-direction: column;
-    }
 
-    #orddd-checkout-fields p {
-        width: 100%;
-    }
-
-    div#orddd_list_view_select {
-        grid-template-columns: repeat( 4, 1fr) !important;
-    } */
 
     .woocommerce-additional-fields__field-wrapper {
         grid-template-columns: 100%;
