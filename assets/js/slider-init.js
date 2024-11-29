@@ -282,8 +282,8 @@ console.log(deliveryWrapper);
 
 const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
 
-    slidesPerView: 7,
-    slidesPerGroup: 1,
+    slidesPerView: 10,
+    slidesPerGroup: 3,
     spaceBetween: 0,
     //slidesPerGroupAuto: true,
 
