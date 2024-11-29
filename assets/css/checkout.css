@@ -462,15 +462,15 @@
     flex-direction: column;
     justify-content: center;
     border-radius: 5px;
-    /* margin: 5px;
-    padding: 5px; */
+    margin: 5px;
+    padding: 5px;
     text-align: center;
 
     font-size: 13px;
     line-height: 14px;
     font-weight: 500;
 
-    min-width: 95px;
+    width: 95px;
     min-height: 28px;
 }
 
