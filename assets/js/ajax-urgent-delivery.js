@@ -71,9 +71,11 @@ function renderDeliveryDates(dateFieldValue) {
   }
   if(dateFieldValue == deliveryOutMKAD) {
     deliveryDatesInfo.forEach((info) => {
+      let priceEl = document.createElement('span');
       if(info.for == 'delivery_dates_today') {
-        info.label.innerHTML=`${info.text}`+ <span></span> +
-        `1590 рублей`;
+        info.label.innerHTML=`${info.text}`;
+        info.label.appendChild(priceEl);
+        priceEl.innerHTML = `1590 рублей`
       } else {
         info.label.innerHTML=`${info.text} 
         790 рублей`;
