@@ -73,11 +73,11 @@ function plnt_add_delivery_interval_field() {
 
 // FOR DEV
 
-// add_action( 'plnt_checkout_before_order_total', 'plnt_checkout_before_order_total_callback', 10 );
+add_action( 'woocommerce_review_order_after_shipping', 'plnt_checkout_before_order_total_callback', 10 );
 
-// function plnt_checkout_before_order_total_callback() {
-//     echo 'here!';
-// };
+function plnt_checkout_before_order_total_callback() {
+    echo 'here!';
+};
 
 
 add_action( 'plnt_checkout_before_order_total', 'plnt_add_delivery_dates', 10 );
