@@ -444,6 +444,11 @@
     scrollbar-width: none;
 }
 
+#delivery_dates_field {
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+}
 /* #delivery_dates_field .woocommerce-input-wrapper {
     overflow: scroll;
     scrollbar-width: none;
