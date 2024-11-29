@@ -282,9 +282,9 @@ console.log(deliveryWrapper);
 
 const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
 
-    slidesPerView: 'auto',
+    slidesPerView: 6,
     //slidesPerGroup: 1,
-    spaceBetween: 0,
+    spaceBetween: 10,
     //slidesPerGroupAuto: true,
 
 });
