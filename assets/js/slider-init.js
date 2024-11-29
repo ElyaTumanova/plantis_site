@@ -290,7 +290,7 @@ const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
     //     prevEl: '.swiper-button-prev',
     // },
     //wrapperClass: 'woocommerce-input-wrapper',
-    slidesPerView: 6,
+    slidesPerView: 'auto',
     spaceBetween: 0,
     loop: false,
     // slidesPerView: 1,
