@@ -440,6 +440,13 @@
     justify-content: start;
     /* column-gap: 10px;
     row-gap: 10px; */
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+#delivery_dates_field .woocommerce-input-wrapper {
+    overflow: scroll;
+    scrollbar-width: none;
 }
 
 #additional_delivery_interval_field .woocommerce-input-wrapper label, #delivery_dates_field .woocommerce-input-wrapper label {
@@ -496,13 +503,6 @@ label.list-view {
 
 
 /* время доставки #adaptive*/
-
-@media (max-width: 1000px) {
-    .delivery_dates .woocommerce-input-wrapper {
-        overflow: scroll;
-        scrollbar-width: none;
-    }
-}
 
 @media (min-width: 768px ) and (max-width: 1024px) {
 
