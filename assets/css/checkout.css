@@ -462,8 +462,8 @@
     flex-direction: column;
     justify-content: center;
     border-radius: 5px;
-    margin: 5px;
-    padding: 5px;
+    /* margin: 5px;
+    padding: 5px; */
     text-align: center;
 
     font-size: 13px;
