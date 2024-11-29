@@ -444,10 +444,10 @@
     scrollbar-width: none;
 }
 
-#delivery_dates_field .woocommerce-input-wrapper {
+/* #delivery_dates_field .woocommerce-input-wrapper {
     overflow: scroll;
     scrollbar-width: none;
-}
+} */
 
 #additional_delivery_interval_field .woocommerce-input-wrapper label, #delivery_dates_field .woocommerce-input-wrapper label {
     background-color: #f5f5f5;
