@@ -97,7 +97,7 @@ $calculator_text          = '';
 		<?php if ( $show_shipping_calculator ) : ?>
 			<?php woocommerce_shipping_calculator( $calculator_text ); ?>
 		<?php endif; ?>
+		<?php do_action('plnt_checkout_before_order_total'); ?>
 	</td>
-	<?php do_action('plnt_checkout_before_order_total'); ?>
 	
 </tr>
