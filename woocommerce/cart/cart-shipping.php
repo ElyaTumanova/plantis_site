@@ -26,9 +26,9 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 $show_shipping_calculator = ! empty( $show_shipping_calculator );
 $calculator_text          = '';
 ?>
-<tr class="woocommerce-shipping-totals shipping">
+<div class="woocommerce-shipping-totals shipping">
 	<!-- <th><?php //echo wp_kses_post( $package_name ); ?></th> -->
-	<td colspan="2" data-title="<?php echo esc_attr( $package_name ); ?>">
+	<div colspan="2" data-title="<?php echo esc_attr( $package_name ); ?>">
         <strong><?php echo wp_kses_post( $package_name ); ?></strong>
 		<?php do_action ('plnt_large_delivery_notice')?>
 		<?php if ( isset( $available_methods ) && is_array( $available_methods ) ) : ?>
@@ -98,6 +98,6 @@ $calculator_text          = '';
 			<?php woocommerce_shipping_calculator( $calculator_text ); ?>
 		<?php endif; ?>
 		<?php do_action('plnt_checkout_before_order_total'); ?>
-	</td>
+		</div>
 	
-</tr>
+		</div>
