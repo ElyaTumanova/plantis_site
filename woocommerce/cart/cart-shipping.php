@@ -98,4 +98,6 @@ $calculator_text          = '';
 			<?php woocommerce_shipping_calculator( $calculator_text ); ?>
 		<?php endif; ?>
 	</td>
+	<?php do_action('plnt_checkout_before_order_total'); ?>
+	
 </tr>
