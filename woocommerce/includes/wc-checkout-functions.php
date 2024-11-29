@@ -79,10 +79,18 @@ function plnt_add_delivery_dates() {
 
     $today = date("d.m.y"); 
     $tomorrow = date('d.m.y', time() + 86400); 
-    $third_day = date('d.m.y', time() + 86400*2); 
-    $forth_day = date('d.m.y', time() + 86400*3); 
-    $fith_day = date('d.m.y', time() + 86400*4); 
-    // $sixth_day = date('d.m.y', time() + 86400*5); 
+    $day3 = date('d.m.y', time() + 86400*2); 
+    $day4 = date('d.m.y', time() + 86400*3); 
+    $day5 = date('d.m.y', time() + 86400*4); 
+    $day6 = date('d.m.y', time() + 86400*5); 
+    $day7 = date('d.m.y', time() + 86400*6); 
+    $day8 = date('d.m.y', time() + 86400*7); 
+    $day9 = date('d.m.y', time() + 86400*8); 
+    $day10 = date('d.m.y', time() + 86400*9); 
+    $day11 = date('d.m.y', time() + 86400*10); 
+    $day12 = date('d.m.y', time() + 86400*11); 
+    $day13 = date('d.m.y', time() + 86400*12); 
+    $day14 = date('d.m.y', time() + 86400*13); 
 
     echo "<div class='delivery_wrap'>";
 	// выводим поле функцией woocommerce_form_field()
@@ -97,9 +105,18 @@ function plnt_add_delivery_dates() {
             'options'	=> array( // options for  or 
 				'today'		=> $today, // 'значение' => 'заголовок'
 				'tomorrow' 	=> $tomorrow,
-				'tomorrow+1'=> $third_day,
-				'tomorrow+2'=> $forth_day,
-				'tomorrow+3'=> $fith_day,
+				'day3'=> $day3,
+				'day4'=> $day4,
+				'day5'=> $day5,
+				'day6'=> $day6,
+				'day7'=> $day7,
+				'day8'=> $day8,
+				'day9'=> $day9,
+				'day10'=> $day10,
+				'day11'=> $day11,
+				'day12'=> $day12,
+				'day13'=> $day13,
+				'day14'=> $day14,
 			)
 		),
 	);
