@@ -28,6 +28,18 @@ function plnt_delivery_condition_info () {
 		Важно! Срочную доставку "день в день" можно оформить до 18 часов.</div>';
 }
 
+add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 60 );
+
+function plnt_order_total() {
+    ?>
+    <div class="order-total">
+        <div>Итого</div>
+        <div><?php wc_cart_totals_order_total_html(); ?></div>
+    </div>
+
+    <?php 
+}
+
 // // добавляемм новые поля для нтервала и даты доставки
 
 //add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_date_field', 50 );
@@ -71,14 +83,11 @@ function plnt_add_delivery_interval_field() {
 }
 
 
-// FOR DEV
+// add_action( 'plnt_checkout_before_order_total', 'plnt_checkout_before_order_total_callback', 10 );
 
-add_action( 'plnt_checkout_before_order_total', 'plnt_checkout_before_order_total_callback', 10 );
-
-function plnt_checkout_before_order_total_callback() {
-    echo 'here!';
-};
-
+// function plnt_checkout_before_order_total_callback() {
+//     echo 'here!';
+// };
 
 add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 50 );
 
