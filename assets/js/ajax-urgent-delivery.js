@@ -8,7 +8,7 @@ let checkedShippingMethod = document.querySelector('.woocommerce-shipping-method
 let today = `${new Date().getDate()}.${new Date().getUTCMonth() + 1}`;
 console.log(today);
 
-console.log(checkedShippingMethod);
+//console.log(checkedShippingMethod);
 
 deliveryDatesLables.forEach((label) => {
   let dateInfo = {
@@ -60,11 +60,11 @@ function onChangeShippingMethod(event) {
 }
 
 function renderDeliveryDates(dateFieldValue) {
-  console.log(dateFieldValue);
+  //console.log(dateFieldValue);
   if(dateFieldValue == deliveryInMKAD) {
     deliveryDatesInfo.forEach((info) => {
       let priceEl = document.createElement('span');
-      if(info.for == 'delivery_dates_today') {
+      if(info.for == `delivery_dates_${today}`) {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
         priceEl.innerHTML = `1190 рублей`
@@ -78,7 +78,7 @@ function renderDeliveryDates(dateFieldValue) {
   if(dateFieldValue == deliveryOutMKAD) {
     deliveryDatesInfo.forEach((info) => {
       let priceEl = document.createElement('span');
-      if(info.for == 'delivery_dates_today') {
+      if(info.for == `delivery_dates_${today}`) {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
         priceEl.innerHTML = `1590 рублей`
@@ -91,7 +91,7 @@ function renderDeliveryDates(dateFieldValue) {
   }
   if(dateFieldValue == localPickup) {
     deliveryDatesInfo.forEach((info) => {
-      if(info.for == 'delivery_dates_today') {
+      if(info.for == `delivery_dates_${today}`) {
         info.label.innerHTML=`${info.text}`;
       } else {
         info.label.innerHTML=`${info.text}`;
