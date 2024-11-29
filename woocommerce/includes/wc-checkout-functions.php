@@ -19,7 +19,7 @@ function plnt_checkout_peresadka_info(){
 }
 
 // // информация об условиях доставки
-add_action( 'woocommerce_checkout_order_review', 'plnt_delivery_condition_info', 40 );
+add_action( 'woocommerce_checkout_order_review', 'plnt_delivery_condition_info', 70 );
 
 function plnt_delivery_condition_info () {
 	echo '<div class="checkout__text">
