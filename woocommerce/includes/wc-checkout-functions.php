@@ -77,7 +77,7 @@ add_action( 'plnt_checkout_before_order_total', 'plnt_checkout_before_order_tota
 
 function plnt_checkout_before_order_total_callback() {
     echo 'here!';
-}
+};
 
 
 add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 50 );
