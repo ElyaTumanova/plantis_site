@@ -77,20 +77,20 @@ add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 50 )
 
 function plnt_add_delivery_dates() {
 
-    $today = date("d.m.y"); 
-    $tomorrow = date('d.m.y', time() + 86400); 
-    $day3 = date('d.m.y', time() + 86400*2); 
-    $day4 = date('d.m.y', time() + 86400*3); 
-    $day5 = date('d.m.y', time() + 86400*4); 
-    $day6 = date('d.m.y', time() + 86400*5); 
-    $day7 = date('d.m.y', time() + 86400*6); 
-    $day8 = date('d.m.y', time() + 86400*7); 
-    $day9 = date('d.m.y', time() + 86400*8); 
-    $day10 = date('d.m.y', time() + 86400*9); 
-    $day11 = date('d.m.y', time() + 86400*10); 
-    $day12 = date('d.m.y', time() + 86400*11); 
-    $day13 = date('d.m.y', time() + 86400*12); 
-    $day14 = date('d.m.y', time() + 86400*13); 
+    $today = date("d.m"); 
+    $tomorrow = date('d.m', time() + 86400); 
+    $day3 = date('d.m', time() + 86400*2); 
+    $day4 = date('d.m', time() + 86400*3); 
+    $day5 = date('d.m', time() + 86400*4); 
+    $day6 = date('d.m', time() + 86400*5); 
+    $day7 = date('d.m', time() + 86400*6); 
+    $day8 = date('d.m', time() + 86400*7); 
+    $day9 = date('d.m', time() + 86400*8); 
+    $day10 = date('d.m', time() + 86400*9); 
+    $day11 = date('d.m', time() + 86400*10); 
+    $day12 = date('d.m', time() + 86400*11); 
+    $day13 = date('d.m', time() + 86400*12); 
+    $day14 = date('d.m', time() + 86400*13); 
 
     echo "<div class='delivery_wrap'>";
 	// выводим поле функцией woocommerce_form_field()
