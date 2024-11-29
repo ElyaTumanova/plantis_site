@@ -179,9 +179,9 @@
     display: none;
 }
 
-.woocommerce-checkout .woocommerce-checkout-review-order table tr th:last-child, .woocommerce-checkout .woocommerce-checkout-review-order table tr td:last-child {
+/* .woocommerce-checkout .woocommerce-checkout-review-order table tr th:last-child, .woocommerce-checkout .woocommerce-checkout-review-order table tr td:last-child {
     width: 140px;
-}
+} */
 
 #order_review table > tbody > tr > td.product-total {
     text-align: right;
