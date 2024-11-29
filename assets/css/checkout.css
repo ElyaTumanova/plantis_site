@@ -501,7 +501,7 @@ label.list-view {
 
 /* время доставки #adaptive*/
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .delivery_dates .woocommerce-input-wrapper {
         overflow: scroll;
         scrollbar-width: none;
