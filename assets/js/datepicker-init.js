@@ -1,7 +1,3 @@
-//все переменные
-
-let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
-
 /*--------------------------------------------------------------
 # Datepicker
 --------------------------------------------------------------*/

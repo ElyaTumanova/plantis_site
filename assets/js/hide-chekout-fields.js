@@ -9,7 +9,6 @@ let additionalAddress = document.querySelector('.additional-address-field');
 
 let inn_field = document.querySelector('#additional_inn');
 
-let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
 
 /*--------------------------------------------------------------
 # Hiding fields
