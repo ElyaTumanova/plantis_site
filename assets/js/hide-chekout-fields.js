@@ -1,13 +1,13 @@
 //все переменные
 
-let deliveryDate = document.querySelector('#datepicker_field');
+//let deliveryDate = document.querySelector('#datepicker_field');
 let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
 let deliveryIntervalInput = document.querySelector('input[name=additional_delivery_interval]');
 
 let addressFields = document.querySelector('#billing_address_1_field');
 let additionalAddress = document.querySelector('.additional-address-field');
 
-let inn_field = document.querySelector('#additional_inn');
+let innField = document.querySelector('#additional_inn');
 
 
 /*--------------------------------------------------------------
@@ -34,13 +34,13 @@ function plnt_hide_checkout_fields(event){
     // } else 
 
     if ( checkedShippingMethod == localPickupId) {
-        if (deliveryDate) {deliveryDate.classList.remove('d-none')};
+        //if (deliveryDate) {deliveryDate.classList.remove('d-none')};
         if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
         if (deliveryIntervalInput) {deliveryIntervalInput.checked = false};
         if (addressFields) {addressFields.classList.add('d-none');}
         if (additionalAddress) {additionalAddress.classList.add('d-none');}
     } else {
-        if (deliveryDate) {deliveryDate.classList.remove('d-none')};
+        //if (deliveryDate) {deliveryDate.classList.remove('d-none')};
         if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
         if (addressFields) {addressFields.classList.remove('d-none');}
         if (additionalAddress) {additionalAddress.classList.remove('d-none');}
@@ -48,9 +48,9 @@ function plnt_hide_checkout_fields(event){
 
     if(event && event.target.id == "payment_method_cheque") {
         //console.log(event);
-        if (inn_field) {inn_field.classList.remove('d-none')};
+        if (innField) {innField.classList.remove('d-none')};
     } else {
-        if (inn_field) {inn_field.classList.add('d-none')};
+        if (innField) {innField.classList.add('d-none')};
     };
 }
 
