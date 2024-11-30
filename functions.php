@@ -90,12 +90,31 @@ function plnt_set_constants_script() {
 	global $delivery_inMKAD;
 	global $delivery_outMKAD;
 	global $local_pickup;
+
+	$in_mkad = carbon_get_theme_option('in_mkad');
+    $out_mkad = carbon_get_theme_option('out_mkad');
+    $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
+
+    // $in_mkad_urg = carbon_get_theme_option('in_mkad_urg');
+    // $out_mkad_urg = carbon_get_theme_option('out_mkad_urg');
+    // $in_mkad_small = carbon_get_theme_option('in_mkad_small');
+    // $out_mkad_small = carbon_get_theme_option('out_mkad_small');
+    // $in_mkad_small_urg = carbon_get_theme_option('in_mkad_small_urg');
+    // $out_mkad_small_urg = carbon_get_theme_option('out_mkad_small_urg');
+    // $min_free_delivery = carbon_get_theme_option('min_free_delivery');
+    // $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+    // $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
 	?>
 	<script>
 		let deliveryInMKAD = '<?php echo $delivery_inMKAD; ?>';
 		let deliveryOutMKAD = '<?php echo $delivery_outMKAD; ?>';
 		let localPickup = '<?php echo $local_pickup; ?>';
 		let deliveryCourier = '<?php echo $delivery_courier; ?>';
+
+		let deliveryCostInMkad = '<?php echo $in_mkad; ?>';
+		let deliveryCostOutMkad = '<?php echo $out_mkad; ?>';
+		let deliveryUrgentMarkup = '<?php echo $urgent_delivery_markup; ?>';
+
 	</script>
 	<?php
 }

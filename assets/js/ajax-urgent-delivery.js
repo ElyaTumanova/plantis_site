@@ -67,11 +67,11 @@ function renderDeliveryDates(dateFieldValue) {
       if(info.for == `delivery_dates_${today}`) {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `1190 рублей`
+        priceEl.innerHTML = `${deliveryCostInMkad+deliveryUrgentMarkup} ₽`
       } else {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `590 рублей`
+        priceEl.innerHTML = `${deliveryCostInMkad} ₽`
       }
     })
   }
@@ -81,11 +81,11 @@ function renderDeliveryDates(dateFieldValue) {
       if(info.for == `delivery_dates_${today}`) {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `1590 рублей`
+        priceEl.innerHTML = `${deliveryCostOutMkad+deliveryUrgentMarkup} ₽`
       } else {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `790 рублей`
+        priceEl.innerHTML = `${deliveryCostOutMkad} ₽`
       }
     })
   }
