@@ -440,33 +440,35 @@
 }
 
 .woocommerce-additional-fields__field-wrapper {
-    display: grid;
-    grid-template-columns: repeat( 2, 1fr);
+    /* display: grid; */
+    /* grid-template-columns: repeat( 2, 1fr);
     grid-template-rows: auto auto auto;
-    grid-template-areas: "date interval"
+    grid-template-areas: 
+    "date interval"
     "comment comment"
-    "inn inn";
+    "inn inn"; */
+    display: flex;
+    flex-direction: column;
     column-gap: 30px;
     row-gap: 30px;
     margin-bottom: 30px;
 }
 
-#datepicker_field {
+/* #datepicker_field {
     grid-area: date;
-}
-
+} */
+/* 
 #additional_delivery_interval_field {
     grid-area: interval;
-}
+} */
 
-#order_comments_field {
+/* #order_comments_field {
     grid-area: comment;
 }
 
 #additional_inn_field {
     grid-area: inn;
-}
-
+} */
 
 
 #additional_delivery_interval_field label::before, #delivery_dates_field label::before{
