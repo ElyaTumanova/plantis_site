@@ -40,6 +40,8 @@
     margin-bottom: 15px;
     min-height: 20px;
     align-items: center;
+    flex-basis: 170px;
+    min-height: 100%;
 }
 
 .woocommerce-input-wrapper {
@@ -203,7 +205,8 @@
 #shipping_method li label {
     width: 100%;
     justify-content: flex-start;
-    align-items: flex-start;
+    /* align-items: flex-start; */
+    height: 100%;
 }
 
 #shipping_method li span {

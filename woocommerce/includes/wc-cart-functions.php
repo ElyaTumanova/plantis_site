@@ -241,7 +241,7 @@ function ajax_button_text_js_script() {
  
 }
 
-
+// переписана стандартная функция wc_cart_totals_shipping_method_label, которая лежит в woocommerce/plugins/woocommerce/includes/wc-cart-functions.php, чтобы убрать : из названия метода доставки
 function plnt_wc_cart_totals_shipping_method_label( $method ) {
 	$label     = $method->get_label();
 	$has_cost  = 0 < $method->cost;
