@@ -1,5 +1,5 @@
 //все переменные
-let checkoutForm = document.querySelector('form[name="checkout"]');
+
 let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
 
 /*--------------------------------------------------------------

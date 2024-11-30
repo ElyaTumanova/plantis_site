@@ -1,5 +1,4 @@
 //все переменные
-let checkoutForm = document.querySelector('form[name="checkout"]');
 
 let deliveryDate = document.querySelector('#datepicker_field');
 let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
