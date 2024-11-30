@@ -115,7 +115,7 @@ function plnt_set_constants_script() {
 		let deliveryCostOutMkad = '<?php echo $out_mkad; ?>';
 		let deliveryUrgentMarkup = '<?php echo $urgent_delivery_markup; ?>';
 
-		console.log(deliveryCostInMkad);
+		console.log(Number(deliveryCostInMkad));
 		console.log(deliveryUrgentMarkup);
 
 	</script>
