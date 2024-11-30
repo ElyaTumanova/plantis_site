@@ -242,7 +242,7 @@ function ajax_button_text_js_script() {
 }
 
 
-function wc_cart_totals_shipping_method_label( $method ) {
+function plnt_wc_cart_totals_shipping_method_label( $method ) {
 	$label     = $method->get_label();
 	$has_cost  = 0 < $method->cost;
 	$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
