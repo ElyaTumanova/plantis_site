@@ -37,6 +37,7 @@ require get_template_directory() . '/includes/xml/create_yandex_xml.php';
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 	require get_template_directory() . '/woocommerce/includes/wc-cart-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-checkout-functions.php';
+	require get_template_directory() . '/woocommerce/includes/wc-shipping-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-custom-fields.php';
 	require get_template_directory() . '/woocommerce/includes/wc-function.php';
 	require get_template_directory() . '/woocommerce/includes/wc-remove-functions.php';
@@ -44,7 +45,6 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	require get_template_directory() . '/woocommerce/includes/wc-catalog-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-yith-wishlist-finctions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-account-functions.php';
-	//require get_template_directory() . '/woocommerce/includes/wc-datepicker-functions.php';
 }
 
 
@@ -104,6 +104,9 @@ function plnt_set_constants_script() {
     // $min_free_delivery = carbon_get_theme_option('min_free_delivery');
     // $min_small_delivery = carbon_get_theme_option('min_small_delivery');
     // $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
+
+	global $local_pickup;
+   
 	?>
 	<script>
 		let deliveryInMKAD = '<?php echo $delivery_inMKAD; ?>';
@@ -114,6 +117,8 @@ function plnt_set_constants_script() {
 		let deliveryCostInMkad = '<?php echo $in_mkad; ?>';
 		let deliveryCostOutMkad = '<?php echo $out_mkad; ?>';
 		let deliveryUrgentMarkup = '<?php echo $urgent_delivery_markup; ?>';
+
+		let localPickupId = '<?php echo $local_pickup; ?>';
 
 	</script>
 	<?php

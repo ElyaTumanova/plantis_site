@@ -97,8 +97,6 @@ if($site === 'http://new.plantis.shop') {
 
 	$delivery_courier = 'free_shipping:26';
 
-	$payment_inn_chekbox = 'cheque'; //ID for payment checkbox
-	$inn_field = 'additional_inn'; //ID for INN field
 
 	//#filters ID's
 	$filter_podborki_id = 10989;
@@ -135,9 +133,6 @@ if($site === 'http://new.plantis.shop') {
 	
 	$delivery_free = 'free_shipping:4';
 	$delivery_courier = 'free_shipping:26'; //TO BE UDATETD
-
-	$payment_inn_chekbox = 'cheque';
-	$inn_field = 'additional_inn';
 
 	//#filters ID's
 	$filter_podborki_id = 56536;
