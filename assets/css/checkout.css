@@ -428,7 +428,7 @@
 
 .delivery_wrap {
     display: flex;
-    margin-top: 35px;
+    /* margin-top: 35px; */
     flex-direction: column;
     row-gap: 20px;
     padding: 0 5px;

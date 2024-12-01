@@ -242,36 +242,3 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
  
 	return $rates;
 }
-
-// итоговая стоимость
-add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 60 );
-
-function plnt_order_total() {
-    //if (WC()->session->get('isUrgent' ) === '1') {
-        ?>
-        <div class="plnt-order-total">
-            <div>Итого</div>
-            <div class="plnt-order-total_price"><?php wc_cart_totals_order_total_html(); ?></div>
-        </div>
-        <?php 
-    //}
-};
-
-// add_action( 'wp_ajax_get_order_total', 'plnt_get_order_total' );
-// add_action( 'wp_ajax_nopriv_get_order_total', 'plnt_get_order_total' );
-// function plnt_get_order_total() {
-//     //$plnt_order_totals_checkout = $order->get_order_item_totals();
-//     //wc_cart_totals_order_total_html();
-//     plnt_order_total();
-//     //die(); // (required)
-// }
-
-
-
-add_action( 'woocommerce_update_order_review_fragments', 'my_update_order_review_fragments', 10, 1 );
-function my_update_order_review_fragments( $fragments ) {
-    ob_start();
-    plnt_order_total();
-    $fragments[ 'div.plnt-order-total'] = ob_get_clean();
-    return $fragments;
-}

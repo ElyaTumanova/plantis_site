@@ -31,6 +31,27 @@ function plnt_delivery_condition_info () {
 		Важно! Срочную доставку "день в день" можно оформить до 18 часов.</div>';
 }
 
+// итоговая стоимость
+add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 60 );
+
+function plnt_order_total() {
+        ?>
+        <div class="plnt-order-total">
+            <div>Итого</div>
+            <div class="plnt-order-total_price"><?php wc_cart_totals_order_total_html(); ?></div>
+        </div>
+        <?php 
+};
+
+// добавляем фрагмент, чтобы апдейтить итоговую стоимость
+add_action( 'woocommerce_update_order_review_fragments', 'my_update_order_review_fragments', 10, 1 );
+function my_update_order_review_fragments( $fragments ) {
+    ob_start();
+    plnt_order_total();
+    $fragments[ 'div.plnt-order-total'] = ob_get_clean();
+    return $fragments;
+}
+
 // // добавляемм новые поля для нтервала и даты доставки
 
 //add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_date_field', 50 );
