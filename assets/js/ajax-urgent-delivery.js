@@ -67,11 +67,11 @@ function renderDeliveryDates(dateFieldValue) {
       if(info.for == `delivery_dates_${today}`) {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `${Number(deliveryCostInMkad) + Number(deliveryUrgentMarkup)} ₽`
+        priceEl.innerHTML = `${Number(deliveryCostInMkad) + Number(deliveryUrgentMarkup)}₽`
       } else {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `${deliveryCostInMkad} ₽`
+        priceEl.innerHTML = `${deliveryCostInMkad}₽`
       }
     })
   }
@@ -81,11 +81,11 @@ function renderDeliveryDates(dateFieldValue) {
       if(info.for == `delivery_dates_${today}`) {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `${Number(deliveryCostOutMkad) + Number(deliveryUrgentMarkup)} ₽`
+        priceEl.innerHTML = `${Number(deliveryCostOutMkad) + Number(deliveryUrgentMarkup)}₽`
       } else {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `${deliveryCostOutMkad} ₽`
+        priceEl.innerHTML = `${deliveryCostOutMkad}₽`
       }
     })
   }

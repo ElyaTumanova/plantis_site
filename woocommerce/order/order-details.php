@@ -105,16 +105,7 @@ if ( $show_downloads ) {
                 <div class='plnt-order__totals-row'>
                     <div class='plnt-order__totals-label' scope="row">Итого:</div>
                     <div class='plnt-order__totals-value plnt-order__totals-value_total'><?php echo wp_kses_post( $plnt_order_totals['order_total']['value'] ); ?></div>
-                </div>
-                <div class='plnt-order__totals-row'>
-                    <div class='plnt-order__totals-label' scope="row">Дата доставки (самовывоза):</div>
-                    <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['delivery_dates']['value'] ); ?></div>
-                </div>
-                <div class='plnt-order__totals-row'>
-                    <div class='plnt-order__totals-label' scope="row">Интервал доставки:</div>
-                    <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['additional_delivery_interval']['value'] ); ?></div>
-                </div>
-                
+                </div>                
                 <?php
            // foreach ( $order->get_order_item_totals() as $key => $total ) {
                ?>
@@ -140,7 +131,16 @@ if ( $show_downloads ) {
  * @param WC_Order $order Order data.
  */
 do_action( 'woocommerce_after_order_details', $order );
-
+?>
+<div class='plnt-order__totals-row'>
+    <div class='plnt-order__totals-label' scope="row">Дата доставки (самовывоза):</div>
+    <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['delivery_dates']['value'] ); ?></div>
+</div>
+<div class='plnt-order__totals-row'>
+    <div class='plnt-order__totals-label' scope="row">Интервал доставки:</div>
+    <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['additional_delivery_interval']['value'] ); ?></div>
+</div>
+<?php
 if ( $show_customer_details ) {
 	wc_get_template( 'order/order-details-customer.php', array( 'order' => $order ) );
 }

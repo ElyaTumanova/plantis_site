@@ -421,6 +421,9 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+
+    border-bottom: solid 1px var(--gray);
+    padding-bottom: 15px;
 }
 
 .plnt-order__totals {
@@ -447,9 +450,9 @@
     align-items: end;
 }
 
-.plnt-order__totals-value .shipped_via {
+/* .plnt-order__totals-value .shipped_via {
     max-width: 60%;
-}
+} */
 
 .plnt-order__totals-value_total {
     font-size: 25px;
@@ -508,10 +511,20 @@
 /* детали заказа */
 .woocommerce-thankyou-order-details {
     margin-bottom: 20px;
+    display: flex;
+    column-gap: 15px;
+    justify-content: space-between;
+    max-width: 600px;
 }
 
 .woocommerce-thankyou-order-details li{
     margin-bottom: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 220px;
+    row-gap: 5px;
 }
 
 .woocommerce-order-details {
