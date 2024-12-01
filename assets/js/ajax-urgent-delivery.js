@@ -113,7 +113,7 @@ function plntAjaxGetUrgent() {
                   // Trigger refresh checkout
                   $('body').trigger('update_checkout');
                   //console.log(isUrgent);
-                  plntAjaxGetTotal();
+                  // plntAjaxGetTotal();
               }
           });
     });
@@ -129,21 +129,21 @@ function plntAjaxGetUrgent() {
     // }
   };
 
-function plntAjaxGetTotal() {
-  jQuery( function($){
-        $.ajax({
-            type: 'POST',
-            url: wc_checkout_params.ajax_url,
-            data: {
-                'action': 'get_order_total',
-            },
-            success: function (result) {
-                // Trigger refresh checkout
-                //$('body').trigger('update_checkout');
-                console.log('get total');
-                console.log(result);
-                //$('.plnt-order-total_price').html(result.out);
-            }
-        });
-  });
-}
+// function plntAjaxGetTotal() {
+//   jQuery( function($){
+//         $.ajax({
+//             type: 'POST',
+//             url: wc_checkout_params.ajax_url,
+//             data: {
+//                 'action': 'get_order_total',
+//             },
+//             success: function (result) {
+//                 // Trigger refresh checkout
+//                 //$('body').trigger('update_checkout');
+//                 console.log('get total');
+//                 console.log(result);
+//                 //$('.plnt-order-total_price').html(result.out);
+//             }
+//         });
+//   });
+// }
