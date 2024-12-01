@@ -30,7 +30,9 @@ plntChekUrgentDelivery();
 renderDeliveryDates(checkedShippingMethod);
 
 function plntChekUrgentDelivery() {
+  console.log('hi plntChekUrgentDelivery');
   deliveryDates[1].setAttribute('checked','checked');
+  plntAjaxGetUrgent();
 
   deliveryDates.forEach((date) => {
     date.addEventListener('click', function(event){
