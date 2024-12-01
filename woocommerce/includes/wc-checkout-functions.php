@@ -79,12 +79,11 @@ function plnt_add_delivery_interval_field() {
 }
 
 add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 10 );
-//add_action( 'plnt_woocommerce_review_order_in_order_total', 'plnt_add_delivery_dates', 50 );
 
 function plnt_add_delivery_dates() {
 
-    $today = date("d.m"); 
-    $tomorrow = date('d.m', time() + 86400); 
+    $day1 = date("d.m"); 
+    $day2 = date('d.m', time() + 86400); 
     $day3 = date('d.m', time() + 86400*2); 
     $day4 = date('d.m', time() + 86400*3); 
     $day5 = date('d.m', time() + 86400*4); 
@@ -109,8 +108,8 @@ function plnt_add_delivery_dates() {
 			'label'         => 'Дата доставки (самовывоза)',
 			'label_class'   => array( 'delivery_dates_label', 'swiper-slide' ), // класс лейбла
             'options'	=> array( // options for  or 
-				$today		=> $today, // 'значение' => 'заголовок'
-				$tomorrow 	=> $tomorrow,
+				$day1		=> $day1, // 'значение' => 'заголовок'
+				$day2 	=> $day2,
 				$day3=> $day3,
 				$day4=> $day4,
 				$day5=> $day5,
