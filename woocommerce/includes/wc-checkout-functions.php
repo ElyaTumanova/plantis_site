@@ -35,12 +35,14 @@ function plnt_delivery_condition_info () {
 add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 60 );
 
 function plnt_order_total() {
-    ?>
-    <div class="plnt-order-total">
-        <div>Итого</div>
-        <div class="plnt-order-total_price"><?php wc_cart_totals_order_total_html(); ?></div>
-    </div>
-    <?php 
+    if (WC()->session->get('isUrgent' ) === '1') {
+        ?>
+        <div class="plnt-order-total">
+            <div>Итого</div>
+            <div class="plnt-order-total_price"><?php wc_cart_totals_order_total_html(); ?></div>
+        </div>
+        <?php 
+    }
 }
 
 add_action( 'wp_ajax_get_order_total', 'plnt_get_order_total' );
