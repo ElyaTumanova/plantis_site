@@ -128,6 +128,7 @@ function plntAjaxGetUrgent() {
                   // Trigger refresh checkout
                   //$('body').trigger('update_checkout');
                   console.log('get total');
+                  console.log(result);
               }
           });
     });
