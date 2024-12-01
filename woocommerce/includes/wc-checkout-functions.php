@@ -31,7 +31,6 @@ function plnt_delivery_condition_info () {
 		Важно! Срочную доставку "день в день" можно оформить до 18 часов.</div>';
 }
 
-
 // // добавляемм новые поля для нтервала и даты доставки
 
 //add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_date_field', 50 );
