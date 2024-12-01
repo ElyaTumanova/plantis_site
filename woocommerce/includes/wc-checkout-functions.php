@@ -87,9 +87,15 @@ function plnt_add_delivery_dates() {
     $weekend_string = carbon_get_theme_option('weekend');
     $weekend_array = explode( ",", $weekend_string);
 
-    $days_amount = 13;
+    if ($hour >=19) {
+        $days_start = 1;
+        $days_amount = 14;
+    } else {
+        $days_start = 0;
+        $days_amount = 13;
+    }
 
-    for ($i = 0; $i <= $days_amount;  $i++) {
+    for ($i = $days_start; $i <= $days_amount;  $i++) {
         $day = date('d.m', time() + 86400*$i);
         if (in_array($day, $weekend_array)) {
             $days_amount ++;

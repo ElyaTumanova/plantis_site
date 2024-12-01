@@ -173,6 +173,7 @@
     font-size: 16px;
     padding: 10px 5px;
     text-align: left;
+    width: 70%;
 }
 
 #order_review > table > thead > tr > th.product-total {
