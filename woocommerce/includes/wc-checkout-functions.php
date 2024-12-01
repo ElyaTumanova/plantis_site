@@ -32,7 +32,7 @@ function plnt_delivery_condition_info () {
 }
 
 // итоговая стоимость
-add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 60 );
+//add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 60 );
 
 function plnt_order_total() {
     ?>

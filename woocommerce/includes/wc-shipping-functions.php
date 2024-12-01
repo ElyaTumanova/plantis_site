@@ -36,7 +36,6 @@ function plnt_refresh_shipping_methods_for_urgent( $post_data ){
         WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
     }
     WC()->cart->calculate_shipping();
-    WC()->cart->calculate_totals();
 }
 
 add_filter( 'woocommerce_package_rates', 'plnt_shipping_rates_for_urgent', 100, 2 );
