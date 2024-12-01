@@ -5,58 +5,46 @@ let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerc
 let deliveryDatesInfo = [];
 let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
 let checkedShippingMethod;
-if (checkedShippingMethodInput) {
-  checkedShippingMethod = checkedShippingMethodInput.value;
-}
 
 let today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${new Date().getUTCMonth() + 1}`;
 console.log(today);
 
 //console.log(checkedShippingMethod);
 
-deliveryDatesLables.forEach((label) => {
-  let dateInfo = {
-    label: label,
-    for: label.htmlFor,
-    text: label.textContent};
-  //console.log(dateInfo);
-  deliveryDatesInfo.push(dateInfo);
-});
+if(checkoutForm) {
+  checkedShippingMethod = checkedShippingMethodInput.value;
 
-renderDeliveryDates(checkedShippingMethod);
+  deliveryDatesLables.forEach((label) => {
+    let dateInfo = {
+      label: label,
+      for: label.htmlFor,
+      text: label.textContent};
+    //console.log(dateInfo);
+    deliveryDatesInfo.push(dateInfo);
+  });
+  
+  plntChekUrgentDelivery();
+  renderDeliveryDates(checkedShippingMethod);
+  checkoutForm.addEventListener('change', onChangeShippingMethod);
+}
 
-
-
-// console.log(deliveryDatesInfo);
-// console.log(deliveryDatesLables);
-//console.log(deliveryInMKAD);
 
 function plntChekUrgentDelivery() {
-  // console.log(deliveryDates);
-  // console.log(deliveryDates[1]);
-  if(deliveryDates) {
-    deliveryDates[1].setAttribute('checked','checked');
-  
-    deliveryDates.forEach((date) => {
-      date.addEventListener('click', function(event){
-        console.log(event.target.value);
-        if(event.target.value == today) {
-          isUrgent = '1';
-        } else {
-          isUrgent = '0';
-        }
-        //console.log(isUrgent);
-        plntAjaxGetUrgent();
-        });
-    })
-  }
+  deliveryDates[1].setAttribute('checked','checked');
+
+  deliveryDates.forEach((date) => {
+    date.addEventListener('click', function(event){
+      console.log(event.target.value);
+      if(event.target.value == today) {
+        isUrgent = '1';
+      } else {
+        isUrgent = '0';
+      }
+      //console.log(isUrgent);
+      plntAjaxGetUrgent();
+      });
+  })
 };
-
-
-plntChekUrgentDelivery();
-
-
-checkoutForm.addEventListener('change', onChangeShippingMethod);
 
 function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
@@ -104,7 +92,6 @@ function renderDeliveryDates(dateFieldValue) {
     })
   }
 }
-
 
 function plntAjaxGetUrgent() {
     console.log('hi ajax');
