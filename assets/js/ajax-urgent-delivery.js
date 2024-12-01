@@ -13,7 +13,7 @@ if (hour >= 19) {
 } else {
   today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${new Date().getUTCMonth() + 1}`;
 };
-//console.log(today);
+console.log(today);
 
 //console.log(checkedShippingMethod);
 
