@@ -54,6 +54,8 @@ function plnt_hide_checkout_fields(event){
     };
 }
 
-plnt_hide_checkout_fields(event);
-
-checkoutForm.addEventListener('change', plnt_hide_checkout_fields);
+if(checkoutForm) {
+    plnt_hide_checkout_fields(event);
+    
+    checkoutForm.addEventListener('change', plnt_hide_checkout_fields);
+}
