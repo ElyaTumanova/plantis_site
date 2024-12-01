@@ -514,7 +514,7 @@
     display: flex;
     column-gap: 15px;
     justify-content: space-between;
-    max-width: 600px;
+    max-width: 650px;
 }
 
 .woocommerce-thankyou-order-details li{

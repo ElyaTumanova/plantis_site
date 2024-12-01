@@ -132,13 +132,13 @@ if ( $show_downloads ) {
  */
 do_action( 'woocommerce_after_order_details', $order );
 ?>
-<div class='plnt-order__totals-row'>
-    <div class='plnt-order__totals-label' scope="row">Дата доставки (самовывоза):</div>
-    <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['delivery_dates']['value'] ); ?></div>
+<div class='plnt-order__delivery-row'>
+    <div class='plnt-order__delivery-label' scope="row">Дата доставки (самовывоза):</div>
+    <div class='plnt-order__delivery-value'><?php echo wp_kses_post( $plnt_order_totals['delivery_dates']['value'] ); ?></div>
 </div>
-<div class='plnt-order__totals-row'>
-    <div class='plnt-order__totals-label' scope="row">Интервал доставки:</div>
-    <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['additional_delivery_interval']['value'] ); ?></div>
+<div class='plnt-order__delivery-row'>
+    <div class='plnt-order__delivery-label' scope="row">Интервал доставки:</div>
+    <div class='plnt-order__delivery-value'><?php echo wp_kses_post( $plnt_order_totals['additional_delivery_interval']['value'] ); ?></div>
 </div>
 <?php
 if ( $show_customer_details ) {
