@@ -7,24 +7,24 @@ let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-m
 let checkedShippingMethod;
 
 let today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${new Date().getUTCMonth() + 1}`;
-console.log(today);
+//console.log(today);
 
 //console.log(checkedShippingMethod);
 
-if(checkoutForm) {
-  checkedShippingMethod = checkedShippingMethodInput.value;
 
-  deliveryDatesLables.forEach((label) => {
-    let dateInfo = {
-      label: label,
-      for: label.htmlFor,
-      text: label.textContent};
-    //console.log(dateInfo);
-    deliveryDatesInfo.push(dateInfo);
-  });
-  
-  checkoutForm.addEventListener('change', onChangeShippingMethod);
-}
+checkedShippingMethod = checkedShippingMethodInput.value;
+
+deliveryDatesLables.forEach((label) => {
+  let dateInfo = {
+    label: label,
+    for: label.htmlFor,
+    text: label.textContent};
+  //console.log(dateInfo);
+  deliveryDatesInfo.push(dateInfo);
+});
+
+checkoutForm.addEventListener('change', onChangeShippingMethod);
+
 
 plntChekUrgentDelivery();
 renderDeliveryDates(checkedShippingMethod);
