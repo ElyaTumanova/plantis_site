@@ -94,8 +94,7 @@ function plnt_add_delivery_dates() {
         if (in_array($day, $weekend_array)) {
             $days_amount ++;
         } else {
-        array_push($days, $day);
-        echo $day;
+            array_push($days, $day);
         }
     }
 
