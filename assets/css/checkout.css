@@ -7,6 +7,10 @@
     display: none;
 }
 
+.woocommerce-checkout-review-order-table {
+    table-layout:fixed;
+}
+
 @media (min-width: 768px) {
 	.order_wrap {
         display: grid;
@@ -114,6 +118,7 @@
 .woocommerce-shipping-totals.shipping {
     border-top: 2px solid var(--accent-color); 
     /* background-color: var(--accent-back); */
+
 }
 
 #order_review .order-total {
