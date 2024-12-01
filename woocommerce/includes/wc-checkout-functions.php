@@ -38,13 +38,13 @@ function plnt_order_total() {
     ?>
     <div class="plnt-order-total">
         <div>Итого</div>
-        <div class="plnt-order-total_price"></div>
+        <div class="plnt-order-total_price"><?php plnt_get_order_total(); ?></div>
     </div>
     <?php 
 }
 
-add_action( 'wp_ajax_get_order_total', 'plnt_get_order_total' );
-add_action( 'wp_ajax_nopriv_get_order_total', 'plnt_get_order_total' );
+//add_action( 'wp_ajax_get_order_total', 'plnt_get_order_total' );
+//add_action( 'wp_ajax_nopriv_get_order_total', 'plnt_get_order_total' );
 function plnt_get_order_total() {
     //$plnt_order_totals_checkout = $order->get_order_item_totals();
     wc_cart_totals_order_total_html();
