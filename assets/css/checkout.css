@@ -164,7 +164,7 @@
 #order_review > table > tfoot > tr:nth-child(3) > th {
     font-weight: 500;
     font-size: 16px;
-    padding: 10px 20px;
+    padding: 10px 5px;
     text-align: left;
 }
 
@@ -428,7 +428,7 @@
 
 .delivery_wrap {
     display: flex;
-    /* margin-top: 35px; */
+    margin-top: 35px;
     flex-direction: column;
     row-gap: 20px;
     padding: 0 5px;
