@@ -48,7 +48,7 @@ add_action( 'wp_ajax_nopriv_get_order_total', 'plnt_get_order_total' );
 function plnt_get_order_total() {
     //$plnt_order_totals_checkout = $order->get_order_item_totals();
     wc_cart_totals_order_total_html();
-    die(); // (required)
+    //die(); // (required)
 }
 
 
