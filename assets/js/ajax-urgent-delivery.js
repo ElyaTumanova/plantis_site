@@ -113,7 +113,7 @@ function plntAjaxGetUrgent() {
                   // Trigger refresh checkout
                   $('body').trigger('update_checkout');
                   //console.log(isUrgent);
-                  setTimeout(plntAjaxGetTotal(), 1000);
+                  setTimeout(plntAjaxGetTotal(), 10000);
               }
           });
     });
