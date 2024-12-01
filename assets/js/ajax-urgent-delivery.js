@@ -23,11 +23,11 @@ if(checkoutForm) {
     deliveryDatesInfo.push(dateInfo);
   });
   
-  plntChekUrgentDelivery();
-  renderDeliveryDates(checkedShippingMethod);
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 }
 
+plntChekUrgentDelivery();
+renderDeliveryDates(checkedShippingMethod);
 
 function plntChekUrgentDelivery() {
   deliveryDates[1].setAttribute('checked','checked');
