@@ -87,6 +87,9 @@ function plnt_add_delivery_dates() {
     $weekend_string = carbon_get_theme_option('weekend');
     $weekend_array = explode( ",", $weekend_string);
 
+    date_default_timezone_set('Europe/Moscow');
+    $hour = date("H");
+    
     if ($hour >=19) {
         $days_start = 1;
         $days_amount = 14;
