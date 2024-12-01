@@ -435,6 +435,8 @@
     border-radius: 5px; */
     max-width: 680px;
     margin-top: 30px;
+
+    color: var(--text);
 }
 
 .plnt-order__totals-label {
@@ -456,7 +458,7 @@
 } */
 
 .plnt-order__totals-value_total {
-    font-size: 25px;
+    font-size: 22px;
 }
 
 .plnt-order__item {
