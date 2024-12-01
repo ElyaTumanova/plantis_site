@@ -60,7 +60,7 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
 	    if (WC()->session->get('isUrgent' ) === '1') {
             foreach( $rates as $rate) {
                 if ( 'local_pickup' !== $rate->method_id ) {
-                    $rate->cost = $rate->cost + $urgent_delivery_markup;
+                    $rate->cost = $rate->cost + 230;
                 }	
             }
         }
