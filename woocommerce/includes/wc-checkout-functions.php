@@ -22,7 +22,7 @@ function plnt_checkout_peresadka_info(){
 }
 
 // // информация об условиях доставки
-add_action( 'woocommerce_checkout_order_review', 'plnt_delivery_condition_info', 70 );
+add_action( 'woocommerce_checkout_order_review', 'plnt_delivery_condition_info', 30 );
 
 function plnt_delivery_condition_info () {
 	echo '<div class="checkout__text">
@@ -32,7 +32,7 @@ function plnt_delivery_condition_info () {
 }
 
 // итоговая стоимость
-add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 60 );
+add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 20 );
 
 function plnt_order_total() {
         ?>
@@ -52,26 +52,9 @@ function my_update_order_review_fragments( $fragments ) {
     return $fragments;
 }
 
-// // добавляемм новые поля для нтервала и даты доставки
+// // добавляем новые поля для нтервала и даты доставки
 
-//add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_date_field', 50 );
-
-function plnt_add_delivery_date_field() {
-    echo "<div class='delivery_wrap'>";
-	// выводим поле функцией woocommerce_form_field()
-	woocommerce_form_field( 
-		'datepicker', 
-		array(
-			'type'          => 'text', // text, textarea, select, radio, checkbox, password
-			'required'	=> false, // по сути только добавляет значок "*" и всё
-			'class'         => array( 'input-text' ), // массив классов поля
-			'label'         => 'Дата доставки (самовывоза)',
-			'label_class'   => '', // класс лейбла
-		),
-	);
-}
-
-add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_interval_field', 55 );
+add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_interval_field', 15 );
 //add_action( 'plnt_woocommerce_review_order_in_order_total', 'plnt_add_delivery_interval_field', 55 );
 
 function plnt_add_delivery_interval_field() {
@@ -95,7 +78,7 @@ function plnt_add_delivery_interval_field() {
     echo "</div>";
 }
 
-add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 50 );
+add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 10 );
 //add_action( 'plnt_woocommerce_review_order_in_order_total', 'plnt_add_delivery_dates', 50 );
 
 function plnt_add_delivery_dates() {
@@ -247,7 +230,7 @@ function plnt_delivery_fields_in_email( $rows, $order ) {
 
 
 // // до бесплатной доставки осталось
-add_action( 'woocommerce_checkout_order_review', 'my_delivery_small_oder_info', 20 );
+add_action( 'woocommerce_checkout_order_review', 'my_delivery_small_oder_info', 40 );
 
 function my_delivery_small_oder_info () {
     $min_free_delivery = carbon_get_theme_option('min_free_delivery');
@@ -270,7 +253,7 @@ function my_delivery_small_oder_info () {
 }
 
 // выбрана крупногабартная доставка
-add_action( 'woocommerce_checkout_order_review', 'my_delivery_large_products_oder_info', 25 );
+add_action( 'woocommerce_checkout_order_review', 'my_delivery_large_products_oder_info', 40 );
 
 function my_delivery_large_products_oder_info () {
     $class_slug = 'delivery_large';
@@ -331,7 +314,7 @@ function plnt_large_delivery_notice() {
 
 //уведомление о маленькой сумме заказа
 
-add_action( 'woocommerce_checkout_order_review', 'min_amount_delivery_info', 30 );
+add_action( 'woocommerce_checkout_order_review', 'min_amount_delivery_info', 40 );
 
 function min_amount_delivery_info(){
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
@@ -458,7 +441,7 @@ function min_amount_for_category(){
     }
 }
 
-add_action( 'woocommerce_checkout_order_review', 'min_amount_for_treez_info', 10 );
+add_action( 'woocommerce_checkout_order_review', 'min_amount_for_treez_info', 40 );
 
 function min_amount_for_treez_info(){
     global $treez_cat_id;
