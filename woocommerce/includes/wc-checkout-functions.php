@@ -36,9 +36,9 @@ add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 60 );
 
 function plnt_order_total() {
     ?>
-    <div class="woocommerce-shipping-totals order-total">
+    <div class="plnt-order-total">
         <div>Итого</div>
-        <div><?php plnt_get_order_total(); ?></div>
+        <div class="plnt-order-total_price"></div>
     </div>
     <?php 
 }

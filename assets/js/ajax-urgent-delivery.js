@@ -129,6 +129,7 @@ function plntAjaxGetUrgent() {
                   //$('body').trigger('update_checkout');
                   console.log('get total');
                   console.log(result);
+                  $('.plnt-order-total_price').html(result.out);
               }
           });
     });
