@@ -52,6 +52,8 @@ function plnt_get_order_total() {
 }
 
 
+add_action( 'woocommerce_checkout_update_order_review', 'plnt_get_order_total', 20, 1 );
+
 
 // // добавляемм новые поля для нтервала и даты доставки
 
