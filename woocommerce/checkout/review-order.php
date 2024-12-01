@@ -107,14 +107,14 @@ defined( 'ABSPATH' ) || exit;
 		<?php endif; ?>
 
 		<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
-
-		<tr class="order-total">
+		</tfoot>
+		<div class="order-total">
 			<?php do_action( 'plnt_woocommerce_review_order_in_order_total' ); ?>
-			<th><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
-			<td><?php wc_cart_totals_order_total_html(); ?></td>
-		</tr>
+			<div><?php esc_html_e( 'Total', 'woocommerce' ); ?></div>
+			<div><?php wc_cart_totals_order_total_html(); ?></div>
+		</div>
 
 		<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
 
-	</tfoot>
+	<!-- </tfoot> -->
 </table>
