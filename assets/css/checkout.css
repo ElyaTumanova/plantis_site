@@ -121,7 +121,7 @@
 
 }
 
-/* #order_review .order-total {
+#order_review .order-total {
     display: flex;
     justify-content: space-between;
     padding: 0 5px;
@@ -136,7 +136,7 @@
     font-size: 20px;
     line-height: 1;
     font-weight: 600;
-} */
+}
 
 #order_review > table > tfoot > tr.order-total {background-color:var(--accent-color);
 	color: #ffffff; }
