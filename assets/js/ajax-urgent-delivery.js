@@ -9,7 +9,7 @@ let today;
 
 let hour = new Date().getHours();
 if (hour >= 19) {
-  today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate() + 1}.${new Date().getUTCMonth() + 1}`;
+  today = `${(new Date().getDate()< 10 ? '0' : '') + (new Date().getDate() + 1)}.${new Date().getUTCMonth() + 1}`;
 } else {
   today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${new Date().getUTCMonth() + 1}`;
 };
