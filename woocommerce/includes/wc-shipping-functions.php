@@ -268,9 +268,7 @@ function plnt_get_order_total() {
 
 
 
-// вывод корзины в хедере и мини корзины
-
-add_action( 'woocommerce_update_order_review', 'my_update_order_review_fragments', 10, 1 );
+add_action( 'woocommerce_update_order_review_fragments', 'my_update_order_review_fragments', 10, 1 );
 function my_update_order_review_fragments( $fragments ) {
     ob_start();
     plnt_order_total();
