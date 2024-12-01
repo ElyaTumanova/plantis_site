@@ -454,6 +454,12 @@
     margin-bottom: 30px;
 }
 
+@media (max-width: 767px) {
+    .woocommerce-additional-fields__field-wrapper {
+        row-gap: 15px;
+    }
+}
+
 /* #datepicker_field {
     grid-area: date;
 } */
