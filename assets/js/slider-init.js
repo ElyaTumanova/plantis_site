@@ -277,6 +277,7 @@ const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
 # Checkout
 --------------------------------------------------------------*/
 let deliveryWrapper = document.querySelector('#delivery_dates_field .woocommerce-input-wrapper');
+console.log(deliveryWrapper);
 if(deliveryWrapper){deliveryWrapper.classList.add('swiper-wrapper');}
 
 const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
