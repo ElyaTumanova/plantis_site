@@ -162,7 +162,7 @@
 #order_review > table > tfoot > tr.fee > td > span > bdi {color: #000000; } 
 
 #order_review > table > tfoot > tr:nth-child(3) > th {
-    font-weight: 500;
+    font-weight: 700;
     font-size: 16px;
     padding: 10px 5px;
     text-align: left;
