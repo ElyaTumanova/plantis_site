@@ -5,8 +5,14 @@ let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerc
 let deliveryDatesInfo = [];
 let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
 let checkedShippingMethod;
+let today;
 
-let today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${new Date().getUTCMonth() + 1}`;
+let hour = date.getHours();
+if (hour >= 19) {
+  today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate() + 1}.${new Date().getUTCMonth() + 1}`;
+} else {
+  today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${new Date().getUTCMonth() + 1}`;
+};
 //console.log(today);
 
 //console.log(checkedShippingMethod);
