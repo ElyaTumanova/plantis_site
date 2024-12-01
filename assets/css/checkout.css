@@ -138,10 +138,20 @@
     font-weight: 600;
 } */
 
-#order_review > table > tfoot > tr.order-total {background-color:var(--accent-color);
-	color: #ffffff; }
+#order_review > table > tfoot > tr.order-total {
+    /* background-color:var(--accent-color);
+	color: #ffffff;  */
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 32px;
+    border-bottom: solid 2px var(--accent-color);
+    padding-bottom: 10px;
+}
 
-#order_review > table > tfoot > tr.order-total > td > strong > span {color: var(--white); font-size:20px; font-weight: 600;}
+#order_review > table > tfoot > tr.order-total > td > strong > span {
+    /* color: var(--white);  */
+    font-size:20px; 
+    font-weight: 600;}
 
 #order_review > table > thead {background-color:var(--accent-color); color: var(--white);}
 

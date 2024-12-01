@@ -17,11 +17,11 @@ function plnt_get_urgent_shipping() {
     die(); // (required)
 }
 
-add_action( 'wp_footer', 'plnt_check_session' );
+// add_action( 'wp_footer', 'plnt_check_session' );
 
-function plnt_check_session () {
-    echo WC()->session->get('isUrgent');
-}
+// function plnt_check_session () {
+//     echo WC()->session->get('isUrgent');
+// }
 
 
 add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_urgent', 10, 1 );
