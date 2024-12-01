@@ -121,7 +121,7 @@
 
 }
 
-#order_review .order-total {
+#order_review .plnt-order-total {
     display: flex;
     justify-content: space-between;
     padding: 0 5px;
@@ -132,7 +132,7 @@
     border-bottom: solid 2px var(--accent-color);
     padding-bottom: 10px;
 }
-#order_review .order-total span {
+#order_review .plnt-order-total span {
     font-size: 20px;
     line-height: 1;
     font-weight: 600;
