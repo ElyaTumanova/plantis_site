@@ -5,7 +5,7 @@ let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerc
 let deliveryDatesInfo = [];
 let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
 
-let today = `${new Date().getDate()}.${new Date().getUTCMonth() + 1}`;
+let today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${new Date().getUTCMonth() + 1}`;
 console.log(today);
 
 //console.log(checkedShippingMethod);
