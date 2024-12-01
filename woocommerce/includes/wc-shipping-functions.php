@@ -24,31 +24,18 @@ function plnt_get_urgent_shipping() {
 // }
 
 
-// add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_urgent', 10, 1 );
-// function plnt_refresh_shipping_methods_for_urgent( $post_data ){
-//     $bool = true;
+add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_urgent', 10, 1 );
+function plnt_refresh_shipping_methods_for_urgent( $post_data ){
+    $bool = true;
 
-//     if ( WC()->session->get('isUrgent' ) === '1' )
-//         $bool = false;
+    if ( WC()->session->get('isUrgent' ) === '1' )
+        $bool = false;
 
-//     // Mandatory to make it work with shipping methods
-//     foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
-//         WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
-//     }
-//     WC()->cart->calculate_shipping();
-// }
-
-add_action('woocommerce_update_order_review', 'custom_update_order_review');
-function custom_update_order_review() {
-    // Retrieve the updated order total and other order details
-    $order_total = WC()->cart->get_total();
-    $shipping_method = WC()->session->get('chosen_shipping_methods')[0];
-    // Output the updated order review fragment
-    wc_get_template('checkout/review-order.php', array(
-        'order_total' => $order_total,
-        'shipping_method' => $shipping_method
-    ));
-    exit;
+    // Mandatory to make it work with shipping methods
+    foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
+        WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
+    }
+    WC()->cart->calculate_shipping();
 }
 
 
@@ -277,4 +264,11 @@ function plnt_get_order_total() {
     //wc_cart_totals_order_total_html();
     plnt_order_total();
     //die(); // (required)
+}
+
+
+add_action( 'woocommerce_update_order_review', 'my_update_order_review_fragments', 10, 1 );
+function my_update_order_review_fragments( $fragments ) {
+    $fragments['#order_review_totals'] = '<div>Updated order review</div>';
+    return $fragments;
 }
