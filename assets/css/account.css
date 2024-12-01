@@ -577,6 +577,17 @@
     padding: 5px 0;
 }
 
+/* дата доставки */
+
+.plnt-order__delivery-row {
+    display: flex;
+    column-gap: 15px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    font-size: 18px;
+    font-style: normal;
+}
+
 /* адрес клиента */ 
 
 .woocommerce-customer-details .woocommerce-column__title {
