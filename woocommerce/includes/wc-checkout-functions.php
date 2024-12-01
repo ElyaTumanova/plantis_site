@@ -82,20 +82,22 @@ add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 10 )
 
 function plnt_add_delivery_dates() {
 
-    $day1 = date("d.m"); 
-    $day2 = date('d.m', time() + 86400); 
-    $day3 = date('d.m', time() + 86400*2); 
-    $day4 = date('d.m', time() + 86400*3); 
-    $day5 = date('d.m', time() + 86400*4); 
-    $day6 = date('d.m', time() + 86400*5); 
-    $day7 = date('d.m', time() + 86400*6); 
-    $day8 = date('d.m', time() + 86400*7); 
-    $day9 = date('d.m', time() + 86400*8); 
-    $day10 = date('d.m', time() + 86400*9); 
-    $day11 = date('d.m', time() + 86400*10); 
-    $day12 = date('d.m', time() + 86400*11); 
-    $day13 = date('d.m', time() + 86400*12); 
-    $day14 = date('d.m', time() + 86400*13); 
+    $days = array();
+
+    $weekend_string = carbon_get_theme_option('weekend');
+    $weekend_array = explode( ",", $weekend_string);
+
+    $days_amount = 13;
+
+    for ($i = 0; $i <= $days_amount;  $i++) {
+        $day = date('d.m', time() + 86400*$i);
+        if (in_array($day, $weekend_array)) {
+            $days_amount ++;
+        } else {
+        array_push($days, $day);
+        echo $day;
+        }
+    }
 
     echo "<div class='delivery_wrap'>";
 	// выводим поле функцией woocommerce_form_field()
@@ -108,20 +110,22 @@ function plnt_add_delivery_dates() {
 			'label'         => 'Дата доставки (самовывоза)',
 			'label_class'   => array( 'delivery_dates_label', 'swiper-slide' ), // класс лейбла
             'options'	=> array( // options for  or 
-				$day1		=> $day1, // 'значение' => 'заголовок'
-				$day2 	=> $day2,
-				$day3=> $day3,
-				$day4=> $day4,
-				$day5=> $day5,
-				$day6=> $day6,
-				$day7=> $day7,
-				$day8=> $day8,
-				$day9=> $day9,
-				$day10=> $day10,
-				$day11=> $day11,
-				$day12=> $day12,
-				$day13=> $day13,
-				$day14 => $day14,
+				$days[0]		=> $days[0], // 'значение' => 'заголовок'
+				$days[1]		=> $days[1], // 'значение' => 'заголовок'
+				$days[2]		=> $days[2], // 'значение' => 'заголовок'
+				$days[3]		=> $days[3], // 'значение' => 'заголовок'
+				$days[4]		=> $days[4], // 'значение' => 'заголовок'
+				$days[5]		=> $days[5], // 'значение' => 'заголовок'
+				$days[6]		=> $days[6], // 'значение' => 'заголовок'
+				$days[7]		=> $days[7], // 'значение' => 'заголовок'
+				$days[8]		=> $days[8], // 'значение' => 'заголовок'
+				$days[9]		=> $days[9], // 'значение' => 'заголовок'
+				$days[10]		=> $days[10], // 'значение' => 'заголовок'
+				$days[11]		=> $days[11], // 'значение' => 'заголовок'
+				$days[12]		=> $days[12], // 'значение' => 'заголовок'
+				$days[13]		=> $days[13], // 'значение' => 'заголовок'
+				$days[14]		=> $days[14], // 'значение' => 'заголовок'
+				
 			)
 		),
 	);
