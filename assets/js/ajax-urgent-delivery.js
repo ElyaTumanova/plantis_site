@@ -3,7 +3,11 @@ let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
 let deliveryDatesInfo = [];
-let checkedShippingMethod = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]').value;
+let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
+let checkedShippingMethod;
+if (checkedShippingMethodInput) {
+  checkedShippingMethod = checkedShippingMethodInput.value;
+}
 
 let today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${new Date().getUTCMonth() + 1}`;
 console.log(today);
