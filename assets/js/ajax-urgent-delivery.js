@@ -7,7 +7,7 @@ let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-m
 let checkedShippingMethod;
 let today;
 
-let hour = date.getHours();
+let hour = new Date().getHours();
 if (hour >= 19) {
   today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate() + 1}.${new Date().getUTCMonth() + 1}`;
 } else {
