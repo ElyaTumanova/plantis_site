@@ -125,7 +125,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0 5px;
-    margin-top: 35px;
+    margin-top: 20px;
     font-weight: 700;
     text-transform: uppercase;
     line-height: 32px;
@@ -186,6 +186,7 @@
     padding: 17px 5px;
     border-bottom: 1px solid #ebeced;
     font-size: 16px;
+    line-height: 1.2;
 }
 
 #order_review > table > tfoot > tr.woocommerce-shipping-totals.shipping > td > strong {

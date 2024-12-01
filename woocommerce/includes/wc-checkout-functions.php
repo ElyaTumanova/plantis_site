@@ -323,11 +323,11 @@ function min_amount_delivery_info(){
     if (WC()->cart->subtotal < $min_small_delivery) {
         if ($small_delivery_markup) {
             echo '<div class="checkout__text checkout__text_alarm">
-            При заказе на сумму менее <span>'.$min_small_delivery,'</span> стоимость доставки увеличена. 
+            При заказе на сумму менее <span>'.$min_small_delivery,'</span> рублей стоимость доставки увеличена. 
             <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></div>';
         } else {
             echo '<div class="checkout__text checkout__text_alarm">
-            При заказе на сумму менее <span>'.$min_small_delivery,'</span> доставка осуществляется по тарифам курьерской службы. 
+            При заказе на сумму менее <span>'.$min_small_delivery,'</span> рублей доставка осуществляется по тарифам курьерской службы. 
             Наш менеджер свяжется с Вами после оформления заказа и произведет расчет стоимости доставки.</div>';
         }  
     }
