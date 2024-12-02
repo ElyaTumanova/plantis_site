@@ -17,13 +17,6 @@ function plnt_get_urgent_shipping() {
     die(); // (required)
 }
 
-// add_action( 'wp_footer', 'plnt_check_session' );
-
-// function plnt_check_session () {
-//     echo WC()->session->get('isUrgent');
-// }
-
-
 add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_urgent', 10, 1 );
 function plnt_refresh_shipping_methods_for_urgent( $post_data ){
     $bool = true;
@@ -44,23 +37,7 @@ add_filter( 'woocommerce_package_rates', 'plnt_shipping_rates_for_urgent', 100, 
 function plnt_shipping_rates_for_urgent( $rates, $package ) {
 
     //переменные
-    // TO BE DELETED
-    // global $local_pickup;
-        
-    // global $delivery_inMKAD;
-    // global $delivery_outMKAD;
-    // global $delivery_inMKAD_small;
-    // global $delivery_outMKAD_small;
-
-
-    // global $urgent_delivery_inMKAD; 
-    // global $urgent_delivery_outMKAD; 
-    // global $urgent_delivery_inMKAD_small; 
-    // global $urgent_delivery_outMKAD_small;
-
-    // global $delivery_free;
     global $delivery_courier;
-
     $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
 
     if ( isset( $rates[ $delivery_courier ] ) ) { 
@@ -84,21 +61,6 @@ add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 30, 2 )
 function truemisha_shipping_by_weight( $rates, $package ) {
 
     //переменные
-    // TO BE DELETED
-    // global $local_pickup;
-        
-    // global $delivery_inMKAD;
-    // global $delivery_outMKAD;
-    // global $delivery_inMKAD_small;
-    // global $delivery_outMKAD_small;
-
-
-    // global $urgent_delivery_inMKAD; 
-    // global $urgent_delivery_outMKAD; 
-    // global $urgent_delivery_inMKAD_small; 
-    // global $urgent_delivery_outMKAD_small;
-
-    // global $delivery_free;
 
     $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
 
@@ -130,27 +92,15 @@ function new_truemisha_remove_shipping_method( $rates, $package ) {
         
     global $delivery_inMKAD;
     global $delivery_outMKAD;
-    global $delivery_inMKAD_small;
-    global $delivery_outMKAD_small;
-
-
-    global $urgent_delivery_inMKAD; 
-    global $urgent_delivery_outMKAD; 
-    global $urgent_delivery_inMKAD_small; 
-    global $urgent_delivery_outMKAD_small;
 
     global $delivery_free;
+    global $delivery_courier;
  
 	// удаляем способ доставки, если доступна бесплатная
 	if ( isset( $rates[ $delivery_free ] ) ) { 
 	    unset( $rates[ $delivery_inMKAD ] );
 // 		unset( $rates[ $delivery_outMKAD ] );
-		unset( $rates[ $urgent_delivery_inMKAD ] );
-// 		unset( $rates[ $urgent_delivery_outMKAD ] );
-		unset( $rates[ $delivery_inMKAD_small ] );
-		unset( $rates[ $delivery_outMKAD_small ] );
-		unset( $rates[ $urgent_delivery_inMKAD_small ] );
-		unset( $rates[ $urgent_delivery_outMKAD_small ] );
+		unset( $rates[ $delivery_courier ] );
 	}
  
 	return $rates;
@@ -193,16 +143,6 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
         
     global $delivery_inMKAD;
     global $delivery_outMKAD;
-    // global $delivery_inMKAD_small;
-    // global $delivery_outMKAD_small;
-
-
-    // global $urgent_delivery_inMKAD; 
-    // global $urgent_delivery_outMKAD; 
-    // global $urgent_delivery_inMKAD_small; 
-    // global $urgent_delivery_outMKAD_small;
-
-    // global $delivery_free;
     global $delivery_courier;
 
     $small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
@@ -227,15 +167,9 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
             if ( WC()->cart->subtotal < $min_small_delivery ) {
                 unset( $rates[ $delivery_inMKAD ] );
                 unset( $rates[ $delivery_outMKAD ] );
-                isset($rates[ $delivery_courier ]);
-                // unset( $rates[ $urgent_delivery_inMKAD ] );
-                // unset( $rates[ $urgent_delivery_outMKAD ] );			
+                isset($rates[ $delivery_courier ]);		
             } 
             else {
-            //     unset( $rates[ $delivery_inMKAD_small ] );
-            //     unset( $rates[ $delivery_outMKAD_small ] );
-            //     unset( $rates[ $urgent_delivery_inMKAD_small ] );
-            //     unset( $rates[ $urgent_delivery_outMKAD_small ] );
                 unset( $rates[ $delivery_courier ] );
             }
     }
