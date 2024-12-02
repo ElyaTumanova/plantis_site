@@ -14,17 +14,23 @@ get_header(); ?>
     $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
     $small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
 
+    if($large_delivery_markup) {
+        $in_mkad_large = $in_mkad + $large_delivery_markup;
+        $out_mkad_large = $out_mkad + $large_delivery_markup;
+        if($urgent_delivery_markup) {
+            $in_mkad_urg_large = $in_mkad + $large_delivery_markup + $urgent_delivery_markup;
+            $out_mkad_urg_large = $out_mkad + $large_delivery_markup + $urgent_delivery_markup;
+        }
+    }
 
-    $in_mkad_large = $in_mkad + $large_delivery_markup;
-    $out_mkad_large = $out_mkad + $large_delivery_markup;
-    $in_mkad_urg_large = $in_mkad_urg + $large_delivery_markup;
-    $out_mkad_urg_large = $out_mkad_urg + $large_delivery_markup;
-
-
-    $in_mkad_small = $in_mkad + $small_delivery_markup;
-    $out_mkad_small = $out_mkad + $small_delivery_markup;
-    $in_mkad_small_urg = $in_mkad + $small_delivery_markup + $urgent_delivery_markup;
-    $out_mkad_small_urg = $out_mkad + $small_delivery_markup + $urgent_delivery_markup;
+    if($small_delivery_markup) {
+        $in_mkad_small = $in_mkad + $small_delivery_markup;
+        $out_mkad_small = $out_mkad + $small_delivery_markup;
+        if($urgent_delivery_markup) {
+            $in_mkad_small_urg = $in_mkad + $small_delivery_markup + $urgent_delivery_markup;
+            $out_mkad_small_urg = $out_mkad + $small_delivery_markup + $urgent_delivery_markup;
+        }
+    }
     
 
 ?>
