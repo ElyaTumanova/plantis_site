@@ -5,25 +5,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <?php 
-      global $in_mkad;
-      global $out_mkad;
-  
-      global $min_free_delivery;
-      global $min_small_delivery;
-  
-      global $large_delivery_markup;
-      global $urgent_delivery_markup;
-      global $small_delivery_markup;
-      
-      global $in_mkad_large;
-      global $out_mkad_large;
-      global $in_mkad_urg_large;
-      global $out_mkad_urg_large;
-  
-      global $in_mkad_small;
-      global $out_mkad_small;
-      global $in_mkad_small_urg;
-      global $out_mkad_small_urg;
+    global $in_mkad;
+    global $out_mkad;
+
+    global $min_free_delivery;
+    global $min_small_delivery;
+
+    global $large_delivery_markup;
+    global $urgent_delivery_markup;
+    global $small_delivery_markup;
+    
+    global $in_mkad_large;
+    global $out_mkad_large;
+    global $in_mkad_urg_large;
+    global $out_mkad_urg_large;
+
+    global $in_mkad_small;
+    global $out_mkad_small;
+    global $in_mkad_small_urg;
+    global $out_mkad_small_urg;
 ?>
 
 <div class="delivery-info">
