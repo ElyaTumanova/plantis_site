@@ -2,36 +2,26 @@
 get_header(); ?>
 
 <?php 
-    $in_mkad = carbon_get_theme_option('in_mkad');
-    $out_mkad = carbon_get_theme_option('out_mkad');
-    // $in_mkad_urg = carbon_get_theme_option('in_mkad_urg');
-    // $out_mkad_urg = carbon_get_theme_option('out_mkad_urg');
-    // $in_mkad_small = carbon_get_theme_option('in_mkad_small');
-    // $out_mkad_small = carbon_get_theme_option('out_mkad_small');
-    // $in_mkad_small_urg = carbon_get_theme_option('in_mkad_small_urg');
-    // $out_mkad_small_urg = carbon_get_theme_option('out_mkad_small_urg');
+    global $in_mkad;
+    global $out_mkad;
 
-    $min_free_delivery = carbon_get_theme_option('min_free_delivery');
-    $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+    global $min_free_delivery;
+    global $min_small_delivery;
 
-    $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
-    $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
-    $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
+    global $large_delivery_markup;
+    global $urgent_delivery_markup;
+    global $small_delivery_markup;
     
+    global $in_mkad_large;
+    global $out_mkad_large;
+    global $in_mkad_urg_large;
+    global $out_mkad_urg_large;
 
-    if($large_delivery_markup) {
-        $in_mkad_large = $in_mkad + $large_delivery_markup;
-        $out_mkad_large = $out_mkad + $large_delivery_markup;
-        $in_mkad_urg_large = $in_mkad_urg + $large_delivery_markup;
-        $out_mkad_urg_large = $out_mkad_urg + $large_delivery_markup;
-    }
+    global $in_mkad_small;
+    global $out_mkad_small;
+    global $in_mkad_small_urg;
+    global $out_mkad_small_urg;
     
-    if($small_delivery_markup) {
-        $in_mkad_small = $in_mkad + $small_delivery_markup;
-        $out_mkad_small = $out_mkad + $small_delivery_markup;
-        $in_mkad_small_urg = $in_mkad + $small_delivery_markup + $urgent_delivery_markup;
-        $out_mkad_small_urg = $out_mkad + $small_delivery_markup + $urgent_delivery_markup;
-    }
 
 ?>
 
