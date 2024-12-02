@@ -95,21 +95,5 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'notice', 'Уведомление' ),
 			Field::make( 'checkbox', 'show_notice', __( 'Показать уведомление' ) )
     				->set_option_value( 'yes' ),
-			Field::make( 'text', 'weekend', 'Выходной (формат ГГГГ-ММ-ДД, разделитель - запятая без пробелов)' ),
+			Field::make( 'text', 'weekend', 'Выходной (формат ДД.ММ, разделитель - запятая без пробелов)' ),
 	   ));
-
-// Add second options page under 'Basic Options'
-// Container::make('theme_options', 'Social Links')
-//          ->set_page_parent('Настройки темы')  // title of a top level Theme Options page
-//          ->add_fields(array(
-// 		Field::make('text', 'crb_facebook_link', 'попр'),
-// 		Field::make('text', 'crb_twitter_link')
-// 	));
-
-// Add third options page under "Appearance"
-// Container::make('theme_options', 'Customize Background')
-// 			->set_page_parent('themes.php')
-//             ->add_fields(array(
-// 		Field::make('color', 'crb_background_color'),
-// 		Field::make('image', 'crb_background_image')
-// 	));

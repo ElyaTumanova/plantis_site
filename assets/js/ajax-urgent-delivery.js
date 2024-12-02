@@ -7,13 +7,21 @@ let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-m
 let checkedShippingMethod;
 let today;
 
+let isLargeDelivery = document.querySelector('.checkout__text_large');
+let getDeliveryLargeMarkup
+if (isLargeDelivery) {
+  getDeliveryLargeMarkup = deliveryLargeMarkup;
+} else {
+  getDeliveryLargeMarkup = 0;
+}
+
 let hour = new Date().getHours();
 if (hour >= 19) {
   today = `${(new Date().getDate()< 10 ? '0' : '') + (new Date().getDate() + 1)}.${new Date().getUTCMonth() + 1}`;
 } else {
   today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${new Date().getUTCMonth() + 1}`;
 };
-console.log(today);
+//console.log(today);
 
 //console.log(checkedShippingMethod);
 
@@ -68,11 +76,11 @@ function renderDeliveryDates(dateFieldValue) {
       if(info.for == `delivery_dates_${today}`) {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `${Number(deliveryCostInMkad) + Number(deliveryUrgentMarkup)}₽`
+        priceEl.innerHTML = `${Number(deliveryCostInMkad) + Number(deliveryUrgentMarkup) + Number(getDeliveryLargeMarkup)}₽`
       } else {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `${deliveryCostInMkad}₽`
+        priceEl.innerHTML = `${Number(deliveryCostInMkad) + + Number(getDeliveryLargeMarkup)}₽`
       }
     })
   }
@@ -82,11 +90,11 @@ function renderDeliveryDates(dateFieldValue) {
       if(info.for == `delivery_dates_${today}`) {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `${Number(deliveryCostOutMkad) + Number(deliveryUrgentMarkup)}₽`
+        priceEl.innerHTML = `${Number(deliveryCostOutMkad) + Number(deliveryUrgentMarkup) + + Number(getDeliveryLargeMarkup)}₽`
       } else {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `${deliveryCostOutMkad}₽`
+        priceEl.innerHTML = `${Number(deliveryCostOutMkad) + Number(getDeliveryLargeMarkup)}₽`
       }
     })
   }
@@ -134,22 +142,3 @@ function plntAjaxGetUrgent() {
     //   }
     // }
   };
-
-// function plntAjaxGetTotal() {
-//   jQuery( function($){
-//         $.ajax({
-//             type: 'POST',
-//             url: wc_checkout_params.ajax_url,
-//             data: {
-//                 'action': 'get_order_total',
-//             },
-//             success: function (result) {
-//                 // Trigger refresh checkout
-//                 //$('body').trigger('update_checkout');
-//                 console.log('get total');
-//                 console.log(result);
-//                 //$('.plnt-order-total_price').html(result.out);
-//             }
-//         });
-//   });
-// }

@@ -89,7 +89,7 @@ function plnt_add_delivery_dates() {
 
     date_default_timezone_set('Europe/Moscow');
     $hour = date("H");
-    
+
     if ($hour >=19) {
         $days_start = 1;
         $days_amount = 14;
@@ -132,8 +132,6 @@ function plnt_add_delivery_dates() {
 				$days[11]		=> $days[11], // 'значение' => 'заголовок'
 				$days[12]		=> $days[12], // 'значение' => 'заголовок'
 				$days[13]		=> $days[13], // 'значение' => 'заголовок'
-				$days[14]		=> $days[14], // 'значение' => 'заголовок'
-				
 			)
 		),
 	);
@@ -271,7 +269,7 @@ function my_delivery_large_products_oder_info () {
 
     foreach ( WC()->cart->get_cart() as $cart_item ) {
         if( $cart_item['data']->get_shipping_class() == $class_slug ){
-            echo '<div class="checkout__text">
+            echo '<div class="checkout__text checkout__text_large">
 			Вы выбрали крупногабаритный товар. Стоимость доставки увеличена. <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></div>';
             break; // Stop the loop
         } 	
