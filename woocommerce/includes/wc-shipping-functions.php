@@ -101,6 +101,7 @@ function truemisha_shipping_by_weight( $rates, $package ) {
     // global $delivery_free;
 
     $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
+    echo $large_delivery_markup;
 
     if ($large_delivery_markup) {
         // вес товаров в корзине

@@ -96,16 +96,6 @@ function plnt_set_constants_script() {
     $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
 	$large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
 
-    // $in_mkad_urg = carbon_get_theme_option('in_mkad_urg');
-    // $out_mkad_urg = carbon_get_theme_option('out_mkad_urg');
-    // $in_mkad_small = carbon_get_theme_option('in_mkad_small');
-    // $out_mkad_small = carbon_get_theme_option('out_mkad_small');
-    // $in_mkad_small_urg = carbon_get_theme_option('in_mkad_small_urg');
-    // $out_mkad_small_urg = carbon_get_theme_option('out_mkad_small_urg');
-    // $min_free_delivery = carbon_get_theme_option('min_free_delivery');
-    // $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-    // $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
-
 	global $local_pickup;
    
 	?>
