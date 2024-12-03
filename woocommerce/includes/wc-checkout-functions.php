@@ -25,7 +25,7 @@ function plnt_checkout_peresadka_info(){
 add_action( 'woocommerce_checkout_order_review', 'plnt_delivery_condition_info', 30 );
 
 function plnt_delivery_condition_info () {
-	echo '<div class="checkout__text">
+	echo '<div class="checkout__text checkout__text_delivery-info">
         После оформления заказа мы свяжемся с вами в <a href="https://plantis.shop/contacts/">рабочее время</a> и согласуем время доставки.
         <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a> <br>
 		Важно! Срочную доставку "день в день" можно оформить до 18 часов.</div>';
@@ -331,11 +331,11 @@ function min_amount_delivery_info(){
 
     if (WC()->cart->subtotal < $min_small_delivery) {
         if ($small_delivery_markup) {
-            echo '<div class="checkout__text checkout__text_alarm">
+            echo '<div class="checkout__text checkout__text_small-order checkout__text_alarm">
             При заказе на сумму менее <span>'.$min_small_delivery,'</span> рублей стоимость доставки увеличена. 
             <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></div>';
         } else {
-            echo '<div class="checkout__text checkout__text_alarm">
+            echo '<div class="checkout__text checkout__text_small-order checkout__text_alarm">
             При заказе на сумму менее <span>'.$min_small_delivery,'</span> рублей доставка осуществляется по тарифам курьерской службы. 
             Наш менеджер свяжется с Вами после оформления заказа и произведет расчет стоимости доставки.</div>';
         }  
@@ -473,11 +473,11 @@ function min_amount_for_treez_info(){
 	}
 
     if( $cat_amount < $min_treez_delivery && $products_min) {
-        echo '<div class="checkout__text checkout__text_alarm">
+        echo '<div class="checkout__text checkout__text_treez checkout__text_alarm">
         Минимальная сумма заказа для кашпо и искусственных растений Treez <span>'.$min_treez_delivery,'</span> рублей (без учета стоимости других товаров).</div>';
     }   
     if( $products_min) {
-        echo '<div class="checkout__text checkout__text_alarm">
+        echo '<div class="checkout__text checkout__text_treez checkout__text_alarm">
         Оплатить заказ с кашпо и искусственными растениями Treez можно будет после подтверждения их наличия. Наш менеджер свяжется с Вами после оформления заказа.</div>';
     }   
 }

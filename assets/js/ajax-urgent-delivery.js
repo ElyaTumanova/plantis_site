@@ -8,7 +8,7 @@ let checkedShippingMethod;
 let today;
 
 let isLargeDelivery = document.querySelector('.checkout__text_large');
-let getDeliveryLargeMarkup
+let getDeliveryLargeMarkup;
 if (isLargeDelivery) {
   getDeliveryLargeMarkup = deliveryLargeMarkup;
 } else {
@@ -25,8 +25,9 @@ if (hour >= 19) {
 
 //console.log(checkedShippingMethod);
 
-
-checkedShippingMethod = checkedShippingMethodInput.value;
+if (checkedShippingMethodInput) {
+  checkedShippingMethod = checkedShippingMethodInput.value;
+}
 
 deliveryDatesLables.forEach((label) => {
   let dateInfo = {
