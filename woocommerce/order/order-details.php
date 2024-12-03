@@ -95,12 +95,12 @@ if ( $show_downloads ) {
                 // echo '</pre>';
                 ?> 
                 <div class='plnt-order__totals-row'>
-                    <div class='plnt-order__totals-label' scope="row">Товары:</div>
+                    <div class='plnt-order__totals-label' scope="row">Итого товары:</div>
                     <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['cart_subtotal']['value'] ); ?></div>
                 </div>
                 <div class='plnt-order__totals-row'>
                     <div class='plnt-order__totals-label' scope="row">Доставка:</div>
-                    <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['shipping']['value'] ); ?></div>
+                    <div class='plnt-order__totals-value plnt-order__totals-value_delivery'><?php echo wp_kses_post( $plnt_order_totals['shipping']['value'] ); ?></div>
                 </div>
                 <div class='plnt-order__totals-row'>
                     <div class='plnt-order__totals-label' scope="row">Итого:</div>
