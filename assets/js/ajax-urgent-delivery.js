@@ -6,43 +6,9 @@ let deliveryDatesInfo = [];
 let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
 let checkedShippingMethod;
 let today;
-
 let isLargeDelivery = document.querySelector('.checkout__text_large');
 let getDeliveryLargeMarkup;
-if (isLargeDelivery) {
-  getDeliveryLargeMarkup = deliveryLargeMarkup;
-} else {
-  getDeliveryLargeMarkup = 0;
-}
 
-let hour = new Date().getHours();
-if (hour >= 19) {
-  today = `${(new Date().getDate()< 10 ? '0' : '') + (new Date().getDate() + 1)}.${new Date().getUTCMonth() + 1}`;
-} else {
-  today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${new Date().getUTCMonth() + 1}`;
-};
-//console.log(today);
-
-//console.log(checkedShippingMethod);
-
-if (checkedShippingMethodInput) {
-  checkedShippingMethod = checkedShippingMethodInput.value;
-}
-
-deliveryDatesLables.forEach((label) => {
-  let dateInfo = {
-    label: label,
-    for: label.htmlFor,
-    text: label.textContent};
-  //console.log(dateInfo);
-  deliveryDatesInfo.push(dateInfo);
-});
-
-checkoutForm.addEventListener('change', onChangeShippingMethod);
-
-
-plntChekUrgentDelivery();
-renderDeliveryDates(checkedShippingMethod);
 
 function plntChekUrgentDelivery() {
   console.log('hi plntChekUrgentDelivery');
@@ -111,33 +77,70 @@ function renderDeliveryDates(dateFieldValue) {
 }
 
 function plntAjaxGetUrgent() {
-    console.log('hi ajax');
-    console.log(isUrgent);
-    //let date = document.querySelector('#datepicker');
-    
-    //console.log(date);
-    jQuery( function($){
-          $.ajax({
-              type: 'POST',
-              url: wc_checkout_params.ajax_url,
-              data: {
-                  'action': 'get_urgent_shipping',
-                  'isUrgent': isUrgent,
-              },
-              success: function (result) {
-                  // Trigger refresh checkout
-                  $('body').trigger('update_checkout');
-              }
-          });
-    });
+  console.log('hi ajax');
+  console.log(isUrgent);
+  //let date = document.querySelector('#datepicker');
   
-    // let urgentText = document.querySelector('.checkout__urgent-text');
-    // if (urgentText) {
-    //   if (isUrgent == '1') {
-    //     console.log('hi text');
-    //     urgentText.innerHTML = "Доставка для выбранной даты является срочной, поэтому стоимость доставки увеличена.";
-    //     } else {
-    //     urgentText.innerHTML = "";
-    //   }
-    // }
+  //console.log(date);
+  jQuery( function($){
+        $.ajax({
+            type: 'POST',
+            url: wc_checkout_params.ajax_url,
+            data: {
+                'action': 'get_urgent_shipping',
+                'isUrgent': isUrgent,
+            },
+            success: function (result) {
+                // Trigger refresh checkout
+                $('body').trigger('update_checkout');
+            }
+        });
+  });
+
+  // let urgentText = document.querySelector('.checkout__urgent-text');
+  // if (urgentText) {
+  //   if (isUrgent == '1') {
+  //     console.log('hi text');
+  //     urgentText.innerHTML = "Доставка для выбранной даты является срочной, поэтому стоимость доставки увеличена.";
+  //     } else {
+  //     urgentText.innerHTML = "";
+  //   }
+  // }
+};
+
+
+if (checkoutForm) {
+
+  if (isLargeDelivery) {
+    getDeliveryLargeMarkup = deliveryLargeMarkup;
+  } else {
+    getDeliveryLargeMarkup = 0;
+  }
+
+  let hour = new Date().getHours();
+  if (hour >= 19) {
+    today = `${(new Date().getDate()< 10 ? '0' : '') + (new Date().getDate() + 1)}.${new Date().getUTCMonth() + 1}`;
+  } else {
+    today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${new Date().getUTCMonth() + 1}`;
   };
+  //console.log(today);
+
+  //console.log(checkedShippingMethod);
+
+  checkedShippingMethod = checkedShippingMethodInput.value;
+
+
+  deliveryDatesLables.forEach((label) => {
+    let dateInfo = {
+      label: label,
+      for: label.htmlFor,
+      text: label.textContent};
+    //console.log(dateInfo);
+    deliveryDatesInfo.push(dateInfo);
+  });
+
+  checkoutForm.addEventListener('change', onChangeShippingMethod);
+
+  plntChekUrgentDelivery();
+  renderDeliveryDates(checkedShippingMethod);
+}
