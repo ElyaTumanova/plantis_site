@@ -404,7 +404,7 @@
     margin-bottom: 50px;
 }
 
-@media (max-width:840px) {
+@media (max-width:690px) {
     .plnt-order__details {
         grid-template-columns: auto;
     }
@@ -436,7 +436,7 @@
     /* padding: 15px;
     background-color: var(--gray);
     border-radius: 5px; */
-    max-width: 680px;
+    /* max-width: 680px; */
 
     color: var(--text);
 }
@@ -458,6 +458,7 @@
 .plnt-order__totals-value_delivery {
     flex-direction: row-reverse;
     column-gap: 5px;
+    align-items: center;
 }
 
 /* .plnt-order__totals-value .shipped_via {
@@ -497,7 +498,7 @@
 .plnt-order__items .product-quantity {
     grid-area: qty;
     align-self: center;
-    text-align: center;
+    text-align: end;
 }
 
 /*--------------------------------------------------------------
