@@ -11,13 +11,13 @@ let getDeliveryLargeMarkup;
 
 
 function plntChekUrgentDelivery() {
-  console.log('hi plntChekUrgentDelivery');
+  //console.log('hi plntChekUrgentDelivery');
   deliveryDates[1].setAttribute('checked','checked');
   plntAjaxGetUrgent();
 
   deliveryDates.forEach((date) => {
     date.addEventListener('click', function(event){
-      console.log(event.target.value);
+      //console.log(event.target.value);
       if(event.target.value == today) {
         isUrgent = '1';
       } else {
@@ -77,8 +77,8 @@ function renderDeliveryDates(dateFieldValue) {
 }
 
 function plntAjaxGetUrgent() {
-  console.log('hi ajax');
-  console.log(isUrgent);
+  //console.log('hi ajax');
+  //console.log(isUrgent);
   //let date = document.querySelector('#datepicker');
   
   //console.log(date);

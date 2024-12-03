@@ -415,6 +415,8 @@
 
 .plnt-order__items {
     padding-top: 15px;
+    padding-bottom: 17px;
+    border-bottom: solid 1px var(--gray-text);
 }
 
 .plnt-order__totals-row {
@@ -430,11 +432,11 @@
     display: flex;
     flex-direction: column;
     row-gap: 17px;
+    margin-top: 17px;
     /* padding: 15px;
     background-color: var(--gray);
     border-radius: 5px; */
     max-width: 680px;
-    margin-top: 30px;
 
     color: var(--text);
 }
@@ -462,11 +464,13 @@
 }
 
 .plnt-order__item {
-    margin-bottom: 10px;
     display: grid;
     grid-template-columns: auto 140px 50px;
     grid-template-areas: "name price qty";
     align-items: center;
+}
+.plnt-order__item:not(:last-child) {
+    margin-bottom: 10px;
 }
 
 .plnt-order__items a {
