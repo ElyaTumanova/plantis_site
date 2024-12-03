@@ -456,7 +456,7 @@
 }
 
 .plnt-order__totals-value_delivery {
-    flex-direction: column-reverse;
+    flex-direction: row-reverse;
     column-gap: 5px;
 }
 
