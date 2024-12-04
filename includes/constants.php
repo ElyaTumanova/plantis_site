@@ -159,5 +159,3 @@ if($site === 'http://new.plantis.shop') {
 /* Изображения и иконки */
 
 $filter_icon = "https://plantis.shop/wp-content/uploads/2024/07/filter_new.svg";
-
-$in_mkad = carbon_get_theme_option('in_mkad');
