@@ -57,7 +57,6 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
         }
     }
 
-    echo $rates;
     return $rates;
 }
 
