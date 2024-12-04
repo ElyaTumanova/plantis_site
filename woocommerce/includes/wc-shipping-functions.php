@@ -38,9 +38,9 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
     global $delivery_courier;
     $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
 
-    if ( isset( $rates[ $delivery_courier ] ) ) { 
-        return $rates;
-    } else {
+    // if ( isset( $rates[ $delivery_courier ] ) ) { 
+    //     return $rates;
+    // } else {
 	    if (WC()->session->get('isUrgent' ) === '1') {
             unset( $rates[ $delivery_inMKAD ] );
             unset( $rates[ $delivery_outMKAD ] );
@@ -49,7 +49,7 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
             unset( $rates[ $delivery_inMKAD_large ] );
             unset( $rates[ $delivery_outMKAD_large ] );
         }
-    }
+    // }
 
     return $rates;
 }
