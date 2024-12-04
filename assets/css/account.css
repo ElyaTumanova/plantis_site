@@ -428,6 +428,10 @@
     padding-bottom: 15px;
 }
 
+.plnt-order__totals-row_total {
+    text-transform: uppercase;
+}
+
 .plnt-order__totals {
     display: flex;
     flex-direction: column;
@@ -471,7 +475,7 @@
 
 .plnt-order__item {
     display: grid;
-    grid-template-columns: auto 140px 50px;
+    grid-template-columns: auto 140px 40px;
     grid-template-areas: "name price qty";
     align-items: center;
 }
