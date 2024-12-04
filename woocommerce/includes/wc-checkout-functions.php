@@ -567,7 +567,7 @@ Contents
             }
         
             if( $products_min) {
-                unset( $available_gateways['tinkoff'] );
+                unset( $available_gateways['bacs'] ); //tinkoff
             }
             return $available_gateways;
         }
