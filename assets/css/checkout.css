@@ -391,7 +391,7 @@
     border-radius: 3px;
 }
 
-/* время доставки */
+/* дата и время доставки */
 
 .delivery_wrap {
     display: flex;
@@ -422,13 +422,6 @@
 }
 
 .woocommerce-additional-fields__field-wrapper {
-    /* display: grid; */
-    /* grid-template-columns: repeat( 2, 1fr);
-    grid-template-rows: auto auto auto;
-    grid-template-areas: 
-    "date interval"
-    "comment comment"
-    "inn inn"; */
     display: flex;
     flex-direction: column;
     column-gap: 30px;
@@ -441,22 +434,6 @@
         row-gap: 15px;
     }
 }
-
-/* #datepicker_field {
-    grid-area: date;
-} */
-/* 
-#additional_delivery_interval_field {
-    grid-area: interval;
-} */
-
-/* #order_comments_field {
-    grid-area: comment;
-}
-
-#additional_inn_field {
-    grid-area: inn;
-} */
 
 
 #additional_delivery_interval_field label::before, #delivery_dates_field label::before{
@@ -517,7 +494,7 @@
     font-size: 11px;
     line-height: 13px;
     font-weight: 400;
-    color: var(--gray-text);
+    color: var(--accent-color);
     margin:0;
 }
 
