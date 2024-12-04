@@ -84,20 +84,26 @@ if($site === 'http://new.plantis.shop') {
 	
 	$delivery_inMKAD = 'flat_rate:1';
 	$delivery_outMKAD = 'flat_rate:12';
-	// $delivery_inMKAD_small = 'flat_rate:15';
-	// $delivery_outMKAD_small = 'flat_rate:16';
+	$delivery_inMKAD_small = 'flat_rate:15';
+	$delivery_outMKAD_small = 'flat_rate:16';
+	$delivery_inMKAD_large = 'flat_rate:29';
+	$delivery_outMKAD_large = 'flat_rate:30';
 
 
-	// $urgent_delivery_inMKAD = 'flat_rate:13'; 
-	// $urgent_delivery_outMKAD = 'flat_rate:14'; 
-	// $urgent_delivery_inMKAD_small = 'flat_rate:17'; 
-	// $urgent_delivery_outMKAD_small = 'flat_rate:18';
+	$urgent_delivery_inMKAD = 'flat_rate:13'; 
+	$urgent_delivery_outMKAD = 'flat_rate:14'; 
+	$urgent_delivery_inMKAD_small = 'flat_rate:17'; 
+	$urgent_delivery_outMKAD_small = 'flat_rate:18';
+	$urgent_delivery_inMKAD_large = 'flat_rate:31'; 
+	$urgent_delivery_outMKAD_large = 'flat_rate:32';
 	
 	$delivery_free = 'free_shipping:5';
 
 	$delivery_courier = 'free_shipping:26';
 
 	$delivery_long_dist = 'free_shipping:28';
+
+	
 
 
 	//#filters ID's
@@ -126,12 +132,16 @@ if($site === 'http://new.plantis.shop') {
 	$delivery_outMKAD = 'flat_rate:3';
 	// $delivery_inMKAD_small = 'flat_rate:9';
 	// $delivery_outMKAD_small = 'flat_rate:10';
+	$delivery_inMKAD_large = 'flat_rate:29'; //TO BE UDATETD
+	$delivery_outMKAD_large = 'flat_rate:30';//TO BE UDATETD
 
 
 	// $urgent_delivery_inMKAD = 'flat_rate:5'; 
 	// $urgent_delivery_outMKAD = 'flat_rate:6'; 
 	// $urgent_delivery_inMKAD_small = 'flat_rate:11'; 
 	// $urgent_delivery_outMKAD_small = 'flat_rate:12';
+	$urgent_delivery_inMKAD_large = 'flat_rate:31'; //TO BE UDATETD
+	$urgent_delivery_outMKAD_large = 'flat_rate:32';//TO BE UDATETD
 	
 	$delivery_free = 'free_shipping:4';
 	$delivery_courier = 'free_shipping:26'; //TO BE UDATETD
