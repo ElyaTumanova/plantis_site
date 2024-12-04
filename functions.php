@@ -90,6 +90,9 @@ function plnt_set_constants_script() {
 	global $delivery_inMKAD;
 	global $delivery_outMKAD;
 	global $local_pickup;
+	global $delivery_free;
+	global $delivery_courier;
+	global $delivery_long_dist;
 
 	$in_mkad = carbon_get_theme_option('in_mkad');
     $out_mkad = carbon_get_theme_option('out_mkad');
@@ -113,6 +116,9 @@ function plnt_set_constants_script() {
 		let deliverySmallMarkup = '<?php echo $small_delivery_markup; ?>';
 
 		let localPickupId = '<?php echo $local_pickup; ?>';
+		let deliveyFreeId = '<?php echo $delivery_free; ?>';
+		let deliveyCourierId = '<?php echo $delivery_courier; ?>';
+		let deliveyLongId = '<?php echo $delivery_long_dist; ?>';
 
 	</script>
 	<?php

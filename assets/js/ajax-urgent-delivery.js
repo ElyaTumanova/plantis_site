@@ -36,9 +36,9 @@ function onChangeShippingMethod(event) {
     }
 }
 
-function renderDeliveryDates(dateFieldValue) {
-  //console.log(dateFieldValue);
-  if(dateFieldValue == deliveryInMKAD) {
+function renderDeliveryDates(shippingValue) {
+  //console.log(shippingValue);
+  if(shippingValue == deliveryInMKAD) {
     deliveryDatesInfo.forEach((info) => {
       let priceEl = document.createElement('span');
       if(info.for == `delivery_dates_${today}`) {
@@ -52,7 +52,7 @@ function renderDeliveryDates(dateFieldValue) {
       }
     })
   }
-  if(dateFieldValue == deliveryOutMKAD) {
+  if(shippingValue == deliveryOutMKAD) {
     deliveryDatesInfo.forEach((info) => {
       let priceEl = document.createElement('span');
       if(info.for == `delivery_dates_${today}`) {
@@ -66,7 +66,7 @@ function renderDeliveryDates(dateFieldValue) {
       }
     })
   }
-  if(dateFieldValue == localPickup) {
+  if(shippingValue == localPickup || shippingValue == deliveyFreeId || shippingValue == deliveyCourierId || shippingValue == deliveyLongId) {
     deliveryDatesInfo.forEach((info) => {
       if(info.for == `delivery_dates_${today}`) {
         info.label.innerHTML=`${info.text}`;
