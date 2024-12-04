@@ -8,7 +8,7 @@ let checkedShippingMethod;
 let today;
 let isLargeDelivery = document.querySelector('.checkout__text_large');
 let isSmallDelivery = document.querySelector('.checkout__text_small-order');
-let getDeliveryLargeMarkup;
+let getdeliveryLargeMarkupInMkad;
 
 
 function plntChekUrgentDelivery() {
@@ -44,11 +44,11 @@ function renderDeliveryDates(shippingValue) {
       if(info.for == `delivery_dates_${today}`) {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `${Number(deliveryCostInMkad) + Number(deliveryUrgentMarkup) + Number(getDeliveryLargeMarkup) + Number(getDeliverySmallMarkup)}₽`
+        priceEl.innerHTML = `${Number(deliveryCostInMkad) + Number(deliveryUrgentMarkup) + Number(getdeliveryLargeMarkupInMkad) + Number(getDeliverySmallMarkup)}₽`
       } else {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `${Number(deliveryCostInMkad) + Number(getDeliveryLargeMarkup) + Number(getDeliverySmallMarkup)}₽`
+        priceEl.innerHTML = `${Number(deliveryCostInMkad) + Number(getdeliveryLargeMarkupInMkad) + Number(getDeliverySmallMarkup)}₽`
       }
     })
   }
@@ -58,11 +58,11 @@ function renderDeliveryDates(shippingValue) {
       if(info.for == `delivery_dates_${today}`) {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `${Number(deliveryCostOutMkad) + Number(deliveryUrgentMarkup) + Number(getDeliveryLargeMarkup) + Number(getDeliverySmallMarkup)}₽`
+        priceEl.innerHTML = `${Number(deliveryCostOutMkad) + Number(deliveryUrgentMarkup) + Number(getdeliveryLargeMarkupInMkad) + Number(getDeliverySmallMarkup)}₽`
       } else {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `${Number(deliveryCostOutMkad) + Number(getDeliveryLargeMarkup) + Number(getDeliverySmallMarkup)}₽`
+        priceEl.innerHTML = `${Number(deliveryCostOutMkad) + Number(getdeliveryLargeMarkupInMkad) + Number(getDeliverySmallMarkup)}₽`
       }
     })
   }
@@ -112,9 +112,9 @@ function plntAjaxGetUrgent() {
 if (checkoutForm) {
 
   if (isLargeDelivery) {
-    getDeliveryLargeMarkup = deliveryLargeMarkup;
+    getdeliveryLargeMarkupInMkad = deliveryLargeMarkupInMkad;
   } else {
-    getDeliveryLargeMarkup = 0;
+    getdeliveryLargeMarkupInMkad = 0;
   }
 
   if (isSmallDelivery) {

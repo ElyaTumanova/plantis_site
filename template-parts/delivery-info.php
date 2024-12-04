@@ -7,13 +7,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php 
 // стоимость доставки
 
-$in_mkad = carbon_get_theme_option('in_mkad');
+// $in_mkad = carbon_get_theme_option('in_mkad');
+global $in_mkad;
 $out_mkad = carbon_get_theme_option('out_mkad');
 
 $min_free_delivery = carbon_get_theme_option('min_free_delivery');
 $min_small_delivery = carbon_get_theme_option('min_small_delivery');
 
 $large_delivery_markup_in_mkad = carbon_get_theme_option('large_delivery_markup_in_mkad');
+$large_delivery_markup_out_mkad = carbon_get_theme_option('large_delivery_markup_out_mkad');
 $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
 $small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
 
@@ -24,10 +26,10 @@ if($urgent_delivery_markup) {
 
 if($large_delivery_markup_in_mkad) {
     $in_mkad_large = $in_mkad + $large_delivery_markup_in_mkad;
-    $out_mkad_large = $out_mkad + $large_delivery_markup_in_mkad;
+    $out_mkad_large = $out_mkad + $large_delivery_markup_out_mkad;
     if($urgent_delivery_markup) {
         $in_mkad_urg_large = $in_mkad + $large_delivery_markup_in_mkad + $urgent_delivery_markup;
-        $out_mkad_urg_large = $out_mkad + $large_delivery_markup_in_mkad + $urgent_delivery_markup;
+        $out_mkad_urg_large = $out_mkad + $large_delivery_markup_out_mkad + $urgent_delivery_markup;
     }
 }
 
