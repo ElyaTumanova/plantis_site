@@ -94,12 +94,6 @@ Contents
         }
         echo '</div>';
     }
-
-
-    add_action('woocommerce_after_shipping_rate','plnt_shipping_price');
-    function plnt_shipping_price() {
-        echo 'here';
-    }
 /*--------------------------------------------------------------
 # Billing adress field
 --------------------------------------------------------------*/

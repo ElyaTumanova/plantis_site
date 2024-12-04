@@ -108,7 +108,6 @@ function plntAjaxGetUrgent() {
   // }
 };
 
-
 if (checkoutForm) {
 
   if (isLargeDelivery) {
