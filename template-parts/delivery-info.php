@@ -7,8 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php 
 // стоимость доставки
 
-// $in_mkad = carbon_get_theme_option('in_mkad');
-global $in_mkad;
+$in_mkad = carbon_get_theme_option('in_mkad');
 $out_mkad = carbon_get_theme_option('out_mkad');
 
 $min_free_delivery = carbon_get_theme_option('min_free_delivery');
