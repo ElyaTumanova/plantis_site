@@ -150,6 +150,7 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
     global $delivery_inMKAD;
     global $delivery_outMKAD;
     global $delivery_courier;
+    global $delivery_long_dist;
 
     $small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
@@ -162,7 +163,7 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
         if (WC()->cart->subtotal < $min_small_delivery) {
            foreach( $rates as $rate) {
             
-            if ( 'local_pickup' !== $rate->method_id ) {
+            if ( 'local_pickup' !== $rate->method_id || 'free_shipping' !== $rate->method_id) {
                 $rate->cost = $rate->cost + $small_delivery_markup;
             }
            }
@@ -173,6 +174,7 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
             if ( WC()->cart->subtotal < $min_small_delivery ) {
                 unset( $rates[ $delivery_inMKAD ] );
                 unset( $rates[ $delivery_outMKAD ] );
+                unset( $rates[ $delivery_long_dist ] );
                 isset($rates[ $delivery_courier ]);		
             } 
             else {
