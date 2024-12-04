@@ -435,12 +435,15 @@ Contents
         $min_small_delivery = carbon_get_theme_option('min_small_delivery');
         $small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
 
+        global $delivery_courier;
+        $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+
         if (WC()->cart->subtotal < $min_small_delivery) {
             if ($small_delivery_markup) {
                 echo '<tr> <td colspan="2" class="checkout__text checkout__text_small-order checkout__text_alarm">
                 При заказе на сумму менее <span>'.$min_small_delivery,'</span> рублей стоимость доставки увеличена. 
                 <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></td></tr>';
-            } else {
+            } else if ( $delivery_long_dist == $chosen_methods[0])  {
                 echo '<tr> <td colspan="2" class="checkout__text checkout__text_small-order checkout__text_alarm">
                 При заказе на сумму менее <span>'.$min_small_delivery,'</span> рублей доставка осуществляется по тарифам курьерской службы. 
                 Наш менеджер свяжется с Вами после оформления заказа и произведет расчет стоимости доставки.</td></tr>';
