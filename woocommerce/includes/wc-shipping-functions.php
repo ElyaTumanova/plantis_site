@@ -138,12 +138,12 @@ function plnt_disable_payment_small_order( $available_gateways ) {
 
     // стоимость товаров в корзине
     if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
-        unset( $available_gateways['bacs'] ); //to be updated - change to tinkoff
+        unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
     }
 
     // дальняя доставка
     if ( $delivery_long_dist == $chosen_methods[0]) {
-        unset( $available_gateways['bacs'] ); //to be updated - change to tinkoff
+        unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
     }
 
     return $available_gateways;

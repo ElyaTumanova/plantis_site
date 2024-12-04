@@ -411,7 +411,21 @@ Contents
         }
     }
 
+    //уведомление о дальней доставке
 
+    add_action( 'woocommerce_review_order_before_shipping', 'long_distance_delivery_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
+
+    function long_distance_delivery_info() {
+        global $delivery_long_dist;
+        $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+  
+        if ( $delivery_long_dist == $chosen_methods[0]) {
+            echo '<tr> <td colspan="2" class="checkout__text checkout__text_long-dist checkout__text_alarm">
+                Доставка на расстояние свыше 5км за МКАД осуществляется по тарифам курьерской службы. 
+                Наш менеджер свяжется с Вами после оформления заказа и произведет расчет стоимости доставки.</td></tr>';
+        }
+
+    }
     //уведомление о маленькой сумме заказа
 
     //add_action( 'woocommerce_checkout_order_review', 'min_amount_delivery_info', 40 );
