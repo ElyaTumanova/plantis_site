@@ -35,8 +35,39 @@ add_filter( 'woocommerce_package_rates', 'plnt_shipping_rates_for_urgent', 100, 
 function plnt_shipping_rates_for_urgent( $rates, $package ) {
 
     //переменные
+    global $local_pickup;
+        
+    global $delivery_inMKAD;
+    global $delivery_outMKAD;
     global $delivery_courier;
+    global $delivery_long_dist;
+
+    global $delivery_inMKAD_small;
+	global $delivery_outMKAD_small;
+	global $delivery_inMKAD_large;
+	global $delivery_outMKAD_large;
+
+    global $urgent_delivery_inMKAD; 
+	global $urgent_delivery_outMKAD; 
+	global $urgent_delivery_inMKAD_small; 
+	global $urgent_delivery_outMKAD_small;
+	global $urgent_delivery_inMKAD_large; 
+	global $urgent_delivery_outMKAD_large;
+
+
     $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
+
+    unset( $rates[ $delivery_inMKAD_small ] );
+    unset( $rates[ $delivery_outMKAD_small ] );
+    unset( $rates[ $delivery_inMKAD_large ] );
+    unset( $rates[ $delivery_outMKAD_large ] );
+
+    unset( $rates[ $urgent_delivery_inMKAD ] );
+    unset( $rates[ $urgent_delivery_outMKAD ] );
+    unset( $rates[ $urgent_delivery_inMKAD_small ] );
+    unset( $rates[ $urgent_delivery_outMKAD_small ] );
+    unset( $rates[ $urgent_delivery_inMKAD_large ] );
+    unset( $rates[ $urgent_delivery_outMKAD_large ] );
 
     // if ( isset( $rates[ $delivery_courier ] ) ) { 
     //     return $rates;
@@ -87,7 +118,7 @@ function plnt_disable_payment_small_order( $available_gateways ) {
     return $available_gateways;
 }
 	
-add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
+//add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
  
 function new_truemisha_remove_shipping_on_price( $rates, $package ) {
 
@@ -98,6 +129,18 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
     global $delivery_outMKAD;
     global $delivery_courier;
     global $delivery_long_dist;
+
+    global $delivery_inMKAD_small;
+	global $delivery_outMKAD_small;
+	global $delivery_inMKAD_large;
+	global $delivery_outMKAD_large;
+
+    global $urgent_delivery_inMKAD; 
+	global $urgent_delivery_outMKAD; 
+	global $urgent_delivery_inMKAD_small; 
+	global $urgent_delivery_outMKAD_small;
+	global $urgent_delivery_inMKAD_large; 
+	global $urgent_delivery_outMKAD_large;
 
     $small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
@@ -127,6 +170,11 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
             if ( WC()->cart->subtotal < $min_small_delivery ) {
                 unset( $rates[ $delivery_inMKAD ] );
                 unset( $rates[ $delivery_outMKAD ] );
+                unset( $rates[ $delivery_long_dist ] );
+                unset( $rates[ $delivery_inMKAD_small ] );
+                unset( $rates[ $delivery_outMKAD_small ] );
+                unset( $rates[ $delivery_inMKAD_large ] );
+                unset( $rates[ $delivery_outMKAD_large ] );
                 unset( $rates[ $delivery_long_dist ] );
                 isset($rates[ $delivery_courier ]);		
             } 
