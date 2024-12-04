@@ -169,7 +169,7 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
             if ( 'local_pickup' === $rate->method_id ) {
                 $rate->cost = $rate->cost;
             }
-            else if ($delivery_long_dist === $rate->method_id) {
+            else if ('free_shipping' === $rate->method_id) {
                 $rate->cost = $rate->cost ;
             } else {
                 $rate->cost = $rate->cost + $small_delivery_markup;
