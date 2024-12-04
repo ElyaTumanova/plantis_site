@@ -42,12 +42,12 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
         return $rates;
     } else {
 	    if (WC()->session->get('isUrgent' ) === '1') {
-            unset( $rates[ $delivery_inMKAD ] )
-            unset( $rates[ $delivery_outMKAD ] )
-            unset( $rates[ $delivery_inMKAD_small ] )
-            unset( $rates[ $delivery_outMKAD_small ] )
-            unset( $rates[ $delivery_inMKAD_large ] )
-            unset( $rates[ $delivery_outMKAD_large ] )
+            unset( $rates[ $delivery_inMKAD ] );
+            unset( $rates[ $delivery_outMKAD ] );
+            unset( $rates[ $delivery_inMKAD_small ] );
+            unset( $rates[ $delivery_outMKAD_small ] );
+            unset( $rates[ $delivery_inMKAD_large ] );
+            unset( $rates[ $delivery_outMKAD_large ] );
         }
     }
 
