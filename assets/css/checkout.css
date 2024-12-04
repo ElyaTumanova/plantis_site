@@ -115,11 +115,11 @@
 
 /*офорление блока доставка и итого*/
 
-.woocommerce-shipping-totals.shipping {
+/* .woocommerce-shipping-totals.shipping {
     border-top: 2px solid var(--accent-color); 
-    /* background-color: var(--accent-back); */
+    background-color: var(--accent-back);
 
-}
+} */
 
 #order_review .plnt-order-total {
     display: flex;
@@ -155,7 +155,7 @@
 
 #order_review > table > thead {background-color:var(--accent-color); color: var(--white);}
 
-#order_review > table > tbody {font-weight: 600}
+#order_review > table > tbody {font-weight: 600; border-bottom: 2px solid var(--accent-color);}
 
 #order_review > table > tfoot > tr.fee > td {background-color:#F1F6F3; color: #000000; } 
 
@@ -197,7 +197,7 @@
 }
 
 .woocommerce-checkout .woocommerce-checkout-review-order table tfoot tr td {
-    padding: 10px 5px;
+    padding: 20px 5px 0;
 }
 
 .woocommerce-checkout .woocommerce-checkout-review-order table tfoot tr:last-child td.product-total {
@@ -433,7 +433,7 @@
     /* margin-top: 35px; */
     flex-direction: column;
     row-gap: 20px;
-    padding: 0 5px;
+    padding: 20px 5px 0;
 }
 
 .delivery_wrap > p > label {

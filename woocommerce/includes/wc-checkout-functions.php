@@ -361,7 +361,8 @@ function my_delivery_small_oder_info () {
 }
 
 // выбрана крупногабартная доставка
-add_action( 'woocommerce_checkout_order_review', 'my_delivery_large_products_oder_info', 40 );
+//add_action( 'woocommerce_checkout_order_review', 'my_delivery_large_products_oder_info', 40 );
+add_action( 'woocommerce_review_order_before_shipping', 'my_delivery_large_products_oder_info', 10 );
 
 function my_delivery_large_products_oder_info () {
     $class_slug = 'delivery_large';
@@ -405,7 +406,7 @@ function plnt_large_delivery_notice() {
 //уведомление о маленькой сумме заказа
 
 //add_action( 'woocommerce_checkout_order_review', 'min_amount_delivery_info', 40 );
-add_action( 'woocommerce_review_order_before_shipping', 'min_amount_delivery_info', 40 );
+add_action( 'woocommerce_review_order_before_shipping', 'min_amount_delivery_info', 10 );
 
 function min_amount_delivery_info(){
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
@@ -559,8 +560,6 @@ function plnt_disable_payment_treez( $available_gateways ) {
         return $available_gateways;
     }
 }
-
-
 
 /*--------------------------------------------------------------
 # Thankyou page
