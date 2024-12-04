@@ -280,8 +280,15 @@ let deliveryWrapper = document.querySelector('#delivery_dates_field .woocommerce
 if(deliveryWrapper){deliveryWrapper.classList.add('swiper-wrapper');}
 
 let deliverySwiper = document.querySelector('.swiper');
-deliverySwiper.append('<div class="swiper-button-prev"></div>');
-deliverySwiper.append('<div class="swiper-button-next"></div>');
+
+let deliverySwiperPrev = document.createElement('div');
+deliverySwiperPrev.classList.add('swiper-button-prev');
+deliverySwiper.appendChild(deliverySwiperPrev);
+
+let deliverySwiperNext = document.createElement('div');
+deliverySwiperNext.classList.add('swiper-button-next');
+deliverySwiper.appendChild(deliverySwiperNext);
+
 
 const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
 
