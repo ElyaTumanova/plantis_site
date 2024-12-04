@@ -3,7 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-// структура страницы
+/*--------------------------------------------------------------
+#  Checkout page adjustments
+--------------------------------------------------------------*/
 
 /* скрываем Уже покупали? и форму логирования на странице оформления заказа*/
 remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
@@ -51,6 +53,101 @@ function my_update_order_review_fragments( $fragments ) {
     $fragments[ 'div.plnt-order-total'] = ob_get_clean();
     return $fragments;
 }
+
+// выводим в форме оформления заказа информацию, о товарах, которые закончились
+add_action ('woocommerce_cart_has_errors', 'plnt_check_cart_item_stock');
+
+function plnt_check_cart_item_stock() {
+
+    $isOutOfStock = false;
+
+    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+        $product = $cart_item['data'];
+
+        if ( $product->get_stock_status() ==='outofstock') {
+            $isOutOfStock = true;
+        } 
+    }
+    
+    if ($isOutOfStock) {
+        echo '<div class="cart-error-list"> Товары, недоступные для заказа:';
+    }
+
+    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+        $product = $cart_item['data'];
+
+        if ( $product->get_stock_status() ==='outofstock') {
+            echo '<p class="cart-error-list__name">';
+            print_r( $product->get_name() );
+            echo '</p>';
+        } 
+    }
+    echo '</div>';
+}
+
+/*--------------------------------------------------------------
+# Billing adress field
+--------------------------------------------------------------*/
+// делим поле billing_address_2 на несколько полей//
+
+add_filter( 'woocommerce_form_field_text', 'true_fields', 25, 4 );
+ 
+function true_fields( $field, $key, $args, $value ) {
+ 
+	if( 'billing_address_2' === $key ) {
+ 
+		$field = '<p class="form-row address-field additional-address-field form-row-wide" data-priority="60">
+			<span class="woocommerce-input-wrapper true-wrapper woocommerce-address-wrapper">
+				<input type="text" name="billing_address_2" id="billing_address_2" placeholder="Квартира" value="">
+				<input type="text" name="billing_address_3" id="billing_address_3" placeholder="Подъезд" value="">
+				<input type="text" name="billing_address_4" id="billing_address_4" placeholder="Этаж" value="">
+				<input type="text" name="billing_address_5" id="billing_address_5" placeholder="Дополнительная информация" value="">
+			</span>
+		</p>';
+ 
+	}
+ 
+	return $field;
+ 
+}
+
+add_filter( 'woocommerce_checkout_posted_data', 'true_process_fields' );
+ 
+function true_process_fields( $data ) {
+ 
+	// в поле billing_address_2 мы и будем записывать новые значения полей
+	$data[ 'billing_address_2' ] = '';
+	$fields = array();
+ 
+	// получаем данные из глобального $_POST, сначала парадную (подъезд)
+	if( ! empty( $_POST[ 'billing_address_2' ] ) ) {
+		$fields[] = 'квартира ' . $_POST[ 'billing_address_2' ];
+	}
+
+	if( ! empty( $_POST[ 'billing_address_3' ] ) ) {
+		$fields[] = 'подъезд ' . $_POST[ 'billing_address_3' ];
+	}
+	// затем этаж
+	if( ! empty( $_POST[ 'billing_address_4' ] ) ) {
+		$fields[] = 'этаж ' . $_POST[ 'billing_address_4' ];
+	}
+
+	// затем доп поля
+	if( ! empty( $_POST[ 'billing_address_5' ] ) ) {
+		$fields[] = ' ' . $_POST[ 'billing_address_5' ];
+	}
+
+	// объединяем все заполненные данные запятой
+	$data[ 'billing_address_2' ] = join( ', ', $fields );
+ 
+	// возвращаем результат
+	return $data;
+ 
+}
+
+/*--------------------------------------------------------------
+# Delivery date & Interval fields
+--------------------------------------------------------------*/
 
 // // добавляем новые поля для нтервала и даты доставки
 
@@ -237,7 +334,9 @@ function plnt_delivery_fields_in_email( $rows, $order ) {
  
 }
 
-
+/*--------------------------------------------------------------
+# Notificatios
+--------------------------------------------------------------*/
 // // до бесплатной доставки осталось
 add_action( 'woocommerce_checkout_order_review', 'my_delivery_small_oder_info', 40 );
 
@@ -277,24 +376,6 @@ function my_delivery_large_products_oder_info () {
 }
 
 
-// доп функции
-
-/* Уведомление об ошибке в оформлении заказа */
-add_action( 'woocommerce_after_checkout_validation', 'checkout_validation_unique_error', 9999, 2 );
-function checkout_validation_unique_error( $data, $errors ){
-    // Check for any validation errors
-    if( ! empty( $errors->get_error_codes() ) ) {
-
-        // Remove all validation errors
-        foreach( $errors->get_error_codes() as $code ) {
-            $errors->remove( $code );
-        }
-
-        // Add a unique custom one
-        $errors->add( 'validation', 'Упс! Не все обязательные поля были заполнены' );
-    }
-}
-
 // уведомление о срочной доставке
 
 //add_action( 'woocommerce_checkout_order_review', 'plnt_urgent_delivery_info', 45 );
@@ -323,7 +404,8 @@ function plnt_large_delivery_notice() {
 
 //уведомление о маленькой сумме заказа
 
-add_action( 'woocommerce_checkout_order_review', 'min_amount_delivery_info', 40 );
+//add_action( 'woocommerce_checkout_order_review', 'min_amount_delivery_info', 40 );
+add_action( 'woocommerce_review_order_before_shipping', 'min_amount_delivery_info', 40 );
 
 function min_amount_delivery_info(){
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
@@ -342,62 +424,26 @@ function min_amount_delivery_info(){
     }
 }
 
-// делим поле billing_address_2 на несколько полей//
+/* Уведомление об ошибке в оформлении заказа */
+add_action( 'woocommerce_after_checkout_validation', 'checkout_validation_unique_error', 9999, 2 );
+function checkout_validation_unique_error( $data, $errors ){
+    // Check for any validation errors
+    if( ! empty( $errors->get_error_codes() ) ) {
 
-add_filter( 'woocommerce_form_field_text', 'true_fields', 25, 4 );
- 
-function true_fields( $field, $key, $args, $value ) {
- 
-	if( 'billing_address_2' === $key ) {
- 
-		$field = '<p class="form-row address-field additional-address-field form-row-wide" data-priority="60">
-			<span class="woocommerce-input-wrapper true-wrapper woocommerce-address-wrapper">
-				<input type="text" name="billing_address_2" id="billing_address_2" placeholder="Квартира" value="">
-				<input type="text" name="billing_address_3" id="billing_address_3" placeholder="Подъезд" value="">
-				<input type="text" name="billing_address_4" id="billing_address_4" placeholder="Этаж" value="">
-				<input type="text" name="billing_address_5" id="billing_address_5" placeholder="Дополнительная информация" value="">
-			</span>
-		</p>';
- 
-	}
- 
-	return $field;
- 
+        // Remove all validation errors
+        foreach( $errors->get_error_codes() as $code ) {
+            $errors->remove( $code );
+        }
+
+        // Add a unique custom one
+        $errors->add( 'validation', 'Упс! Не все обязательные поля были заполнены' );
+    }
 }
 
-add_filter( 'woocommerce_checkout_posted_data', 'true_process_fields' );
- 
-function true_process_fields( $data ) {
- 
-	// в поле billing_address_2 мы и будем записывать новые значения полей
-	$data[ 'billing_address_2' ] = '';
-	$fields = array();
- 
-	// получаем данные из глобального $_POST, сначала парадную (подъезд)
-	if( ! empty( $_POST[ 'billing_address_2' ] ) ) {
-		$fields[] = 'квартира ' . $_POST[ 'billing_address_2' ];
-	}
 
-	if( ! empty( $_POST[ 'billing_address_3' ] ) ) {
-		$fields[] = 'подъезд ' . $_POST[ 'billing_address_3' ];
-	}
-	// затем этаж
-	if( ! empty( $_POST[ 'billing_address_4' ] ) ) {
-		$fields[] = 'этаж ' . $_POST[ 'billing_address_4' ];
-	}
-
-	// затем доп поля
-	if( ! empty( $_POST[ 'billing_address_5' ] ) ) {
-		$fields[] = ' ' . $_POST[ 'billing_address_5' ];
-	}
-
-	// объединяем все заполненные данные запятой
-	$data[ 'billing_address_2' ] = join( ', ', $fields );
- 
-	// возвращаем результат
-	return $data;
- 
-}
+/*--------------------------------------------------------------
+# Treez notifications
+--------------------------------------------------------------*/
 
 /*минимальная сумма заказа для кашпо Teez*/
 add_action( 'woocommerce_checkout_process', 'min_amount_for_category' );
@@ -514,36 +560,7 @@ function plnt_disable_payment_treez( $available_gateways ) {
     }
 }
 
-// выводим в форме оформления заказа информацию, о товарах, которые закончились
-add_action ('woocommerce_cart_has_errors', 'plnt_check_cart_item_stock');
 
-function plnt_check_cart_item_stock() {
-
-    $isOutOfStock = false;
-
-    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-        $product = $cart_item['data'];
-
-        if ( $product->get_stock_status() ==='outofstock') {
-            $isOutOfStock = true;
-        } 
-    }
-    
-    if ($isOutOfStock) {
-        echo '<div class="cart-error-list"> Товары, недоступные для заказа:';
-    }
-
-    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-        $product = $cart_item['data'];
-
-        if ( $product->get_stock_status() ==='outofstock') {
-            echo '<p class="cart-error-list__name">';
-            print_r( $product->get_name() );
-            echo '</p>';
-        } 
-    }
-    echo '</div>';
-}
 
 /*--------------------------------------------------------------
 # Thankyou page
