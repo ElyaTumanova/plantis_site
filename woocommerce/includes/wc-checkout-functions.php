@@ -372,15 +372,15 @@ Contents
 
     // выбрана крупногабартная доставка
     //add_action( 'woocommerce_checkout_order_review', 'my_delivery_large_products_oder_info', 40 );
-    add_action( 'woocommerce_review_order_before_shipping', 'my_delivery_large_products_oder_info', 10 );
+    add_action( 'woocommerce_review_order_before_shipping', 'my_delivery_large_products_oder_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
 
     function my_delivery_large_products_oder_info () {
         $class_slug = 'delivery_large';
 
         foreach ( WC()->cart->get_cart() as $cart_item ) {
             if( $cart_item['data']->get_shipping_class() == $class_slug ){
-                echo '<div class="checkout__text checkout__text_large">
-                Вы выбрали крупногабаритный товар. Стоимость доставки увеличена. <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></div>';
+                echo '<tr> <td colspan="2" class="checkout__text checkout__text_large">
+                Вы выбрали крупногабаритный товар. Стоимость доставки увеличена. <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></td></tr>';
                 break; // Stop the loop
             } 	
         }
@@ -416,7 +416,7 @@ Contents
     //уведомление о маленькой сумме заказа
 
     //add_action( 'woocommerce_checkout_order_review', 'min_amount_delivery_info', 40 );
-    add_action( 'woocommerce_review_order_before_shipping', 'min_amount_delivery_info', 10 );
+    add_action( 'woocommerce_review_order_before_shipping', 'min_amount_delivery_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
 
     function min_amount_delivery_info(){
         $min_small_delivery = carbon_get_theme_option('min_small_delivery');
@@ -509,7 +509,7 @@ Contents
 
     //уведомление о минимальной сумме заказа для Treez
     //add_action( 'woocommerce_checkout_order_review', 'min_amount_for_treez_info', 40 );
-    add_action( 'woocommerce_review_order_before_shipping', 'min_amount_for_treez_info', 10 );
+    add_action( 'woocommerce_review_order_before_shipping', 'min_amount_for_treez_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
 
     function min_amount_for_treez_info(){
         global $treez_cat_id;
@@ -532,12 +532,12 @@ Contents
         }
 
         if( $cat_amount < $min_treez_delivery && $products_min) {
-            echo '<div class="checkout__text checkout__text_treez checkout__text_alarm">
-            Минимальная сумма заказа для кашпо и искусственных растений Treez <span>'.$min_treez_delivery,'</span> рублей (без учета стоимости других товаров).</div>';
+            echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
+            Минимальная сумма заказа для кашпо и искусственных растений Treez <span>'.$min_treez_delivery,'</span> рублей (без учета стоимости других товаров).</td></tr>';
         }   
         if( $products_min) {
-            echo '<div class="checkout__text checkout__text_treez checkout__text_alarm">
-            Оплатить заказ с кашпо и искусственными растениями Treez можно будет после подтверждения их наличия. Наш менеджер свяжется с Вами после оформления заказа.</div>';
+            echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
+            Оплатить заказ с кашпо и искусственными растениями Treez можно будет после подтверждения их наличия. Наш менеджер свяжется с Вами после оформления заказа.</td></tr>';
         }   
     }
 
