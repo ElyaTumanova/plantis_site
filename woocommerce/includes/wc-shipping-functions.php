@@ -108,12 +108,13 @@ function new_truemisha_remove_shipping_method( $rates, $package ) {
 
 /* стоимость доставки в зависимости от суммы заказа*/
 
-//убираем способ онлайн-оплаты, если маленькая сумма заказа
+//убираем способ онлайн-оплаты, если маленькая сумма заказа или далекая доставка
 add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_small_order' );
 
 function plnt_disable_payment_small_order( $available_gateways ) {
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
     global $delivery_courier;
+    global $delivery_long_dist;
 
     if( is_admin() ) {
 		return $available_gateways;
@@ -127,7 +128,12 @@ function plnt_disable_payment_small_order( $available_gateways ) {
 
     // стоимость товаров в корзине
     if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
-        unset( $available_gateways['bacs'] ); //to be updated - chenge to tinkoff
+        unset( $available_gateways['bacs'] ); //to be updated - change to tinkoff
+    }
+
+    // дальняя доставка
+    if ( $delivery_long_dist == $chosen_methods[0]) {
+        unset( $available_gateways['bacs'] ); //to be updated - change to tinkoff
     }
 
     return $available_gateways;
