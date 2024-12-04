@@ -7,6 +7,7 @@ let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-m
 let checkedShippingMethod;
 let today;
 let isLargeDelivery = document.querySelector('.checkout__text_large');
+let isSmallDelivery = document.querySelector('.checkout__text_small-order');
 let getDeliveryLargeMarkup;
 
 
@@ -43,11 +44,11 @@ function renderDeliveryDates(dateFieldValue) {
       if(info.for == `delivery_dates_${today}`) {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `${Number(deliveryCostInMkad) + Number(deliveryUrgentMarkup) + Number(getDeliveryLargeMarkup)}₽`
+        priceEl.innerHTML = `${Number(deliveryCostInMkad) + Number(deliveryUrgentMarkup) + Number(getDeliveryLargeMarkup) + Number(getDeliverySmallMarkup)}₽`
       } else {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `${Number(deliveryCostInMkad) + + Number(getDeliveryLargeMarkup)}₽`
+        priceEl.innerHTML = `${Number(deliveryCostInMkad) + Number(getDeliveryLargeMarkup) + Number(getDeliverySmallMarkup)}₽`
       }
     })
   }
@@ -57,11 +58,11 @@ function renderDeliveryDates(dateFieldValue) {
       if(info.for == `delivery_dates_${today}`) {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `${Number(deliveryCostOutMkad) + Number(deliveryUrgentMarkup) + + Number(getDeliveryLargeMarkup)}₽`
+        priceEl.innerHTML = `${Number(deliveryCostOutMkad) + Number(deliveryUrgentMarkup) + Number(getDeliveryLargeMarkup) + Number(getDeliverySmallMarkup)}₽`
       } else {
         info.label.innerHTML=`${info.text}`;
         info.label.appendChild(priceEl);
-        priceEl.innerHTML = `${Number(deliveryCostOutMkad) + Number(getDeliveryLargeMarkup)}₽`
+        priceEl.innerHTML = `${Number(deliveryCostOutMkad) + Number(getDeliveryLargeMarkup) + Number(getDeliverySmallMarkup)}₽`
       }
     })
   }
@@ -114,6 +115,12 @@ if (checkoutForm) {
     getDeliveryLargeMarkup = deliveryLargeMarkup;
   } else {
     getDeliveryLargeMarkup = 0;
+  }
+
+  if (isSmallDelivery) {
+    getDeliverySmallMarkup = deliverySmallMarkup;
+  } else {
+    getDeliverySmallMarkup = 0;
   }
 
   let hour = new Date().getHours();
