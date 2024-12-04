@@ -650,13 +650,15 @@ label.list-view {
 
 .checkout__text {
 	font-weight: 500;
-    padding-top:20px;
     line-height: 1.2;
+    padding: 10px !important;
+    background-color: var(--gray);
+    border-radius: 5px;
 }
 
-.checkout__text_alarm {
+/* .checkout__text_alarm {
 	color: var(--red-color);
-}
+} */
 
 .checkout__text span{
 	font-weight: 700;
