@@ -67,9 +67,9 @@ function truemisha_shipping_by_weight( $rates, $package ) {
 
     //переменные
 
-    $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
+    $large_delivery_markup_in_mkad = carbon_get_theme_option('large_delivery_markup_in_mkad');
 
-    if ($large_delivery_markup) {
+    if ($large_delivery_markup_in_mkad) {
         // вес товаров в корзине
         $cart_weight = WC()->cart->cart_contents_weight;
     
@@ -82,7 +82,7 @@ function truemisha_shipping_by_weight( $rates, $package ) {
             else if ('free_shipping' === $rate->method_id) {
                 $rate->cost = $rate->cost ;
             } else {
-                $rate->cost = $rate->cost + $large_delivery_markup;
+                $rate->cost = $rate->cost + $large_delivery_markup_in_mkad;
             }
            }
         }

@@ -87,7 +87,8 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'min_free_delivery', 'Минимальная сумма заказа для бесплатной доставки (текст с пробелом)'),
 			Field::make( 'text', 'min_small_delivery', 'Сумма заказа для более дорогой доставки'),
 			Field::make( 'text', 'min_treez_delivery', 'Сумма заказа для доставки кашпо Treez'),
-			Field::make( 'text', 'large_delivery_markup', 'Надбавка для крупногабаритной доставки'),
+			Field::make( 'text', 'large_delivery_markup_in_mkad', 'Надбавка для крупногабаритной доставки в пределах МКАД'),
+			Field::make( 'text', 'large_delivery_markup_out_mkad', 'Надбавка для крупногабаритной доставки за пределами МКАД'),
 			Field::make( 'text', 'small_delivery_markup', 'Надбавка для доставки ниже минимальной суммы'),
 			Field::make( 'text', 'urgent_delivery_markup', 'Надбавка для срочной доставки день в день'),
 	   ))

@@ -97,7 +97,7 @@ function plnt_set_constants_script() {
 	$in_mkad = carbon_get_theme_option('in_mkad');
     $out_mkad = carbon_get_theme_option('out_mkad');
     $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
-	$large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
+	$large_delivery_markup_in_mkad = carbon_get_theme_option('large_delivery_markup_in_mkad');
 	$small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
 
 	global $local_pickup;
@@ -112,7 +112,7 @@ function plnt_set_constants_script() {
 		let deliveryCostInMkad = '<?php echo $in_mkad; ?>';
 		let deliveryCostOutMkad = '<?php echo $out_mkad; ?>';
 		let deliveryUrgentMarkup = '<?php echo $urgent_delivery_markup; ?>';
-		let deliveryLargeMarkup = '<?php echo $large_delivery_markup; ?>';
+		let deliveryLargeMarkup = '<?php echo $large_delivery_markup_in_mkad; ?>';
 		let deliverySmallMarkup = '<?php echo $small_delivery_markup; ?>';
 
 		let localPickupId = '<?php echo $local_pickup; ?>';

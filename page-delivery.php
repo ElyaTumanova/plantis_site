@@ -10,7 +10,7 @@ get_header(); ?>
     $min_free_delivery = carbon_get_theme_option('min_free_delivery');
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
 
-    $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
+    $large_delivery_markup_in_mkad = carbon_get_theme_option('large_delivery_markup_in_mkad');
     $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
     $small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
 
@@ -19,12 +19,12 @@ get_header(); ?>
         $out_mkad_urg = $out_mkad + $urgent_delivery_markup;
     }
 
-    if($large_delivery_markup) {
-        $in_mkad_large = $in_mkad + $large_delivery_markup;
-        $out_mkad_large = $out_mkad + $large_delivery_markup;
+    if($large_delivery_markup_in_mkad) {
+        $in_mkad_large = $in_mkad + $large_delivery_markup_in_mkad;
+        $out_mkad_large = $out_mkad + $large_delivery_markup_in_mkad;
         if($urgent_delivery_markup) {
-            $in_mkad_urg_large = $in_mkad + $large_delivery_markup + $urgent_delivery_markup;
-            $out_mkad_urg_large = $out_mkad + $large_delivery_markup + $urgent_delivery_markup;
+            $in_mkad_urg_large = $in_mkad + $large_delivery_markup_in_mkad + $urgent_delivery_markup;
+            $out_mkad_urg_large = $out_mkad + $large_delivery_markup_in_mkad + $urgent_delivery_markup;
         }
     }
 
@@ -86,7 +86,7 @@ get_header(); ?>
                     </div>
                 </div>
             </div>
-                <?php if($large_delivery_markup) { 
+                <?php if($large_delivery_markup_in_mkad) { 
                     echo '<div class="delivery__block">
                         <div class="delivery__header">
                             <h2 class="entry-header">Крупногабаритная доставка</h2>

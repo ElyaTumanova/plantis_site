@@ -397,9 +397,9 @@ Contents
     add_action('plnt_large_delivery_notice', 'plnt_large_delivery_notice');
 
     function plnt_large_delivery_notice() {
-        $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
+        $large_delivery_markup_in_mkad = carbon_get_theme_option('large_delivery_markup_in_mkad');
 
-        if ($large_delivery_markup) {
+        if ($large_delivery_markup_in_mkad) {
             // вес товаров в корзине
             $cart_weight = WC()->cart->cart_contents_weight;
         
