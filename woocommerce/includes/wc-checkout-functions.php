@@ -443,7 +443,7 @@ Contents
                 echo '<tr> <td colspan="2" class="checkout__text checkout__text_small-order checkout__text_alarm">
                 При заказе на сумму менее <span>'.$min_small_delivery,'</span> рублей стоимость доставки увеличена. 
                 <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></td></tr>';
-            } else if ( $delivery_long_dist == $chosen_methods[0])  {
+            } else if ( $delivery_courier == $chosen_methods[0])  {
                 echo '<tr> <td colspan="2" class="checkout__text checkout__text_small-order checkout__text_alarm">
                 При заказе на сумму менее <span>'.$min_small_delivery,'</span> рублей доставка осуществляется по тарифам курьерской службы. 
                 Наш менеджер свяжется с Вами после оформления заказа и произведет расчет стоимости доставки.</td></tr>';
