@@ -507,7 +507,9 @@ Contents
         }
     }
 
-    add_action( 'woocommerce_checkout_order_review', 'min_amount_for_treez_info', 40 );
+    //уведомление о минимальной сумме заказа для Treez
+    //add_action( 'woocommerce_checkout_order_review', 'min_amount_for_treez_info', 40 );
+    add_action( 'woocommerce_review_order_before_shipping', 'min_amount_for_treez_info', 10 );
 
     function min_amount_for_treez_info(){
         global $treez_cat_id;
@@ -539,6 +541,7 @@ Contents
         }   
     }
 
+    //отключаем способ оплаты для Treez
     add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_treez' );
 
     function plnt_disable_payment_treez( $available_gateways ) {
