@@ -163,9 +163,18 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
         if (WC()->cart->subtotal < $min_small_delivery) {
            foreach( $rates as $rate) {
             
-            if ( 'local_pickup' !== $rate->method_id || $delivery_long_dist !== $rate->method_id) {
+            // if ( 'local_pickup' !== $rate->method_id || $delivery_long_dist !== $rate->method_id) {
+            //     $rate->cost = $rate->cost + $small_delivery_markup;
+            // }
+            if ( 'local_pickup' === $rate->method_id ) {
+                $rate->cost = $rate->cost;
+            }
+            else if ($delivery_long_dist !== $rate->method_id) {
+                $rate->cost = $rate->cost ;
+            } else {
                 $rate->cost = $rate->cost + $small_delivery_markup;
             }
+            
            }
         }
     } else {
