@@ -32,7 +32,6 @@ function plnt_refresh_shipping_methods_for_urgent( $post_data ){
 }
 
 
-
 add_filter( 'woocommerce_package_rates', 'plnt_shipping_rates_for_urgent', 100, 2 );
 function plnt_shipping_rates_for_urgent( $rates, $package ) {
 
@@ -45,9 +44,15 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
     } else {
 	    if (WC()->session->get('isUrgent' ) === '1') {
             foreach( $rates as $rate) {
-                if ( 'local_pickup' !== $rate->method_id ) {
+                if ( 'local_pickup' === $rate->method_id ) {
+                    $rate->cost = $rate->cost;
+                }
+                else if ('free_shipping' === $rate->method_id) {
+                    $rate->cost = $rate->cost ;
+                } else {
                     $rate->cost = $rate->cost + $urgent_delivery_markup;
-                }	
+                }
+                
             }
         }
     }
@@ -71,7 +76,12 @@ function truemisha_shipping_by_weight( $rates, $package ) {
         if ($cart_weight >= 11) {
            foreach( $rates as $rate) {
             
-            if ( 'local_pickup' !== $rate->method_id ) {
+            if ( 'local_pickup' === $rate->method_id ) {
+                $rate->cost = $rate->cost;
+            }
+            else if ('free_shipping' === $rate->method_id) {
+                $rate->cost = $rate->cost ;
+            } else {
                 $rate->cost = $rate->cost + $large_delivery_markup;
             }
            }
@@ -144,7 +154,6 @@ add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price
 function new_truemisha_remove_shipping_on_price( $rates, $package ) {
 
     //переменные
-    // TO BE DELETED
     global $local_pickup;
         
     global $delivery_inMKAD;
@@ -163,9 +172,6 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
         if (WC()->cart->subtotal < $min_small_delivery) {
            foreach( $rates as $rate) {
             
-            // if ( 'local_pickup' !== $rate->method_id || $delivery_long_dist !== $rate->method_id) {
-            //     $rate->cost = $rate->cost + $small_delivery_markup;
-            // }
             if ( 'local_pickup' === $rate->method_id ) {
                 $rate->cost = $rate->cost;
             }
