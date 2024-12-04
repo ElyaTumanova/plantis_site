@@ -57,7 +57,7 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
 
     $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
 
-    unset( $rates[ $delivery_long_dist ] );
+    unset( $rates[ $delivery_courier ] );
 
     unset( $rates[ $delivery_inMKAD_small ] );
     unset( $rates[ $delivery_outMKAD_small ] );
