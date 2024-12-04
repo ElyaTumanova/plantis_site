@@ -66,7 +66,7 @@ function renderDeliveryDates(shippingValue) {
       }
     })
   }
-  if(shippingValue == localPickup || shippingValue == deliveyFreeId || shippingValue == deliveyCourierId || shippingValue == deliveyLongId) {
+  if(shippingValue == localPickup || shippingValue == deliveryFreeId || shippingValue == deliveryCourierId || shippingValue == deliveryLongId) {
     deliveryDatesInfo.forEach((info) => {
       if(info.for == `delivery_dates_${today}`) {
         info.label.innerHTML=`${info.text}`;
