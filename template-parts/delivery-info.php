@@ -49,6 +49,8 @@ $out_mkad_small_urg = $shipping_costs[$urgent_delivery_outMKAD_small];
 
 $large_delivery_markup_in_mkad =  floatval($in_mkad_large) - floatval($in_mkad);
 
+print_r($large_delivery_markup_in_mkad);
+
 $min_free_delivery = carbon_get_theme_option('min_free_delivery');
 ?>
 
