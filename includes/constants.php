@@ -199,8 +199,8 @@ function plnt_get_shiping_costs() {
 
     global $delivery_inMKAD;
     print_r($shipping_costs); 
-    print_r($delivery_inMKAD); 
-    print_r($shipping_costs[$delivery_inMKAD]); 
+    //print_r($delivery_inMKAD); 
+    //print_r($shipping_costs[$delivery_inMKAD]); 
 
 
 	$in_mkad = $shipping_costs[$delivery_inMKAD];
@@ -223,7 +223,7 @@ function plnt_get_shiping_costs() {
 	$in_mkad_small_urg = $shipping_costs[$urgent_delivery_inMKAD_small];
 	$out_mkad_small_urg = $shipping_costs[$urgent_delivery_outMKAD_small];
 
-	print_r($in_mkad_small_urg); 
+	print_r($in_mkad); 
 
 
 }
