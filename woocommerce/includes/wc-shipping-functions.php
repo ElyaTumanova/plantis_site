@@ -160,36 +160,3 @@ function plnt_disable_payment_small_order( $available_gateways ) {
 
     return $available_gateways;
 }
-
-add_action( 'wp_footer', 'plnt_get_shiping_costs' );
-
-function plnt_get_shiping_costs() {
-    $shipping_costs = [];
-    $shipping_zones = WC_Shipping_Zones::get_zones();
- 
-	if( $shipping_zones ) {
- 
-		// для каждой зоны доставки
-		foreach ( $shipping_zones as $shipping_zone_id => $shipping_zone ) {
- 
-			// получаем объект зоны доставки
-			$shipping_zone = new WC_Shipping_Zone( $shipping_zone_id );
- 
-			// получаем доступные способы доставки для этой зоны
-			$shipping_methods = $shipping_zone->get_shipping_methods( true, 'values' );
- 
-			if( $shipping_methods ) {
-				foreach ( $shipping_methods as $shipping_method_id => $shipping_method ) {
-                    $shipping_id = $shipping_method->id.":".$shipping_method_id;
-                    $shipping_costs[$shipping_id]=$shipping_method->cost;
-				}
-			}
-        }
-    }
-
-    global $delivery_inMKAD;
-    print_r($shipping_costs); 
-    print_r($delivery_inMKAD); 
-    print_r($shipping_costs[$delivery_inMKAD]); 
-
-}
