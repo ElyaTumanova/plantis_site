@@ -81,6 +81,13 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
             unset( $rates[ $delivery_outMKAD_small ] );
             unset( $rates[ $delivery_inMKAD_large ] );
             unset( $rates[ $delivery_outMKAD_large ] );
+
+            isset( $rates[ $urgent_delivery_inMKAD ] );
+            isset( $rates[ $urgent_delivery_outMKAD ] );
+            isset( $rates[ $urgent_delivery_inMKAD_small ] );
+            isset( $rates[ $urgent_delivery_outMKAD_small ] );
+            isset( $rates[ $urgent_delivery_inMKAD_large ] );
+            isset( $rates[ $urgent_delivery_outMKAD_large ] );
         }
     // }
 
