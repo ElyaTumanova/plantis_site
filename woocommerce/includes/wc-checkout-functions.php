@@ -397,18 +397,16 @@ Contents
     add_action('plnt_large_delivery_notice', 'plnt_large_delivery_notice');
 
     function plnt_large_delivery_notice() {
-        $large_delivery_markup_in_mkad = carbon_get_theme_option('large_delivery_markup_in_mkad');
+      
+        // вес товаров в корзине
+        $cart_weight = WC()->cart->cart_contents_weight;
 
-        if ($large_delivery_markup_in_mkad) {
-            // вес товаров в корзине
-            $cart_weight = WC()->cart->cart_contents_weight;
-        
-            if ($cart_weight >= 11) {
+        if ($cart_weight >= 11) {
             echo '<div class=large_delivery_notice>
             <img class=large_delivery_img src="https://plantis.shop/wp-content/uploads/2024/08/car.svg" alt="car">
             <p>Для заказа предусмотрена крупногабаритная доставка!</p></div>';
-            }
         }
+        
     }
 
     //уведомление о дальней доставке
@@ -433,13 +431,14 @@ Contents
 
     function min_amount_delivery_info(){
         $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-        $small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
+        // $small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
+        $shipping_costs = plnt_get_shiping_costs();
 
         global $delivery_courier;
         $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
 
         if (WC()->cart->subtotal < $min_small_delivery) {
-            if ($small_delivery_markup) {
+            if(array_key_exists($delivery_courier,$shipping_costs)) {
                 echo '<tr> <td colspan="2" class="checkout__text checkout__text_small-order checkout__text_alarm">
                 При заказе на сумму менее <span>'.$min_small_delivery,'</span> рублей стоимость доставки увеличена. 
                 <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></td></tr>';
