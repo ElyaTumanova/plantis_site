@@ -113,7 +113,7 @@ function plnt_disable_payment_small_order( $available_gateways ) {
     return $available_gateways;
 }
 	
-//add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
+add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
  
 function new_truemisha_remove_shipping_on_price( $rates, $package ) {
 
