@@ -126,7 +126,7 @@ function plnt_set_constants_script() {
 	<?php
 }
 
-add_action( 'wp_head', 'plnt_get_shiping_costs' );
+//add_action( 'wp_head', 'plnt_get_shiping_costs' );
 
 function plnt_get_shiping_costs() {
     $shipping_costs = [];
@@ -152,9 +152,10 @@ function plnt_get_shiping_costs() {
         }
     }
 
-    global $delivery_inMKAD;
-    print_r($shipping_costs); 
+    //global $delivery_inMKAD;
+    //print_r($shipping_costs); 
     //print_r($delivery_inMKAD); 
     //print_r($shipping_costs[$delivery_inMKAD]); 
+	return $shipping_costs;
 
 }

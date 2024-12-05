@@ -55,7 +55,7 @@ get_header(); ?>
 
 	// global $in_mkad_small_urg;
 	// global $out_mkad_small_urg;
-    global $shipping_costs;
+    $shipping_costs = plnt_get_shiping_costs();
     $in_mkad = $shipping_costs[$delivery_inMKAD];
     $out_mkad = $shipping_costs[$delivery_outMKAD];
 
