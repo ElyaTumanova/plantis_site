@@ -180,7 +180,7 @@ function plnt_get_shiping_costs() {
  
 			if( $shipping_methods ) {
 				foreach ( $shipping_methods as $shipping_method_id => $shipping_method ) {
-                    array_push($shipping_costs, array($shipping_method->title => $shipping_method->cost));
+                    array_push($shipping_costs, array($shipping_method => $shipping_method->cost));
 				}
 			}
         }
