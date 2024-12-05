@@ -57,39 +57,25 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
 
     $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
 
-    unset( $rates[ $delivery_courier ] );
+   // unset( $rates[ $delivery_courier ] );
+    
+    if (WC()->session->get('isUrgent' ) === '0') {
+        unset( $rates[ $urgent_delivery_inMKAD ] );
+        unset( $rates[ $urgent_delivery_outMKAD ] );
+        unset( $rates[ $urgent_delivery_inMKAD_small ] );
+        unset( $rates[ $urgent_delivery_outMKAD_small ] );
+        unset( $rates[ $urgent_delivery_inMKAD_large ] );
+        unset( $rates[ $urgent_delivery_outMKAD_large ] );
+    }   
 
-    unset( $rates[ $delivery_inMKAD_small ] );
-    unset( $rates[ $delivery_outMKAD_small ] );
-    unset( $rates[ $delivery_inMKAD_large ] );
-    unset( $rates[ $delivery_outMKAD_large ] );
-
-    unset( $rates[ $urgent_delivery_inMKAD ] );
-    unset( $rates[ $urgent_delivery_outMKAD ] );
-    unset( $rates[ $urgent_delivery_inMKAD_small ] );
-    unset( $rates[ $urgent_delivery_outMKAD_small ] );
-    unset( $rates[ $urgent_delivery_inMKAD_large ] );
-    unset( $rates[ $urgent_delivery_outMKAD_large ] );
-
-    // if ( isset( $rates[ $delivery_courier ] ) ) { 
-    //     return $rates;
-    // } else {
-	    if (WC()->session->get('isUrgent' ) === '1') {
-            unset( $rates[ $delivery_inMKAD ] );
-            unset( $rates[ $delivery_outMKAD ] );
-            unset( $rates[ $delivery_inMKAD_small ] );
-            unset( $rates[ $delivery_outMKAD_small ] );
-            unset( $rates[ $delivery_inMKAD_large ] );
-            unset( $rates[ $delivery_outMKAD_large ] );
-
-            set( $rates[ $urgent_delivery_inMKAD ] );
-            set( $rates[ $urgent_delivery_outMKAD ] );
-            set( $rates[ $urgent_delivery_inMKAD_small ] );
-            set( $rates[ $urgent_delivery_outMKAD_small ] );
-            set( $rates[ $urgent_delivery_inMKAD_large ] );
-            set( $rates[ $urgent_delivery_outMKAD_large ] );
-        }
-    // }
+    if (WC()->session->get('isUrgent' ) === '1') {
+        unset( $rates[ $delivery_inMKAD ] );
+        unset( $rates[ $delivery_outMKAD ] );
+        unset( $rates[ $delivery_inMKAD_small ] );
+        unset( $rates[ $delivery_outMKAD_small ] );
+        unset( $rates[ $delivery_inMKAD_large ] );
+        unset( $rates[ $delivery_outMKAD_large ] );
+    }
 
     return $rates;
 }
