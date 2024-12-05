@@ -47,10 +47,9 @@ $out_mkad_small = $shipping_costs[$delivery_outMKAD_small];
 $in_mkad_small_urg = $shipping_costs[$urgent_delivery_inMKAD_small];
 $out_mkad_small_urg = $shipping_costs[$urgent_delivery_outMKAD_small];
 
-$large_delivery_markup_in_mkad =  floatval(str_replace(' ', '', $in_mkad_large)) - floatval($in_mkad);
+$large_delivery_markup_in_mkad =  floatval(str_replace(' ', '', $in_mkad_large)) - floatval(str_replace(' ', '', $in_mkad));
+$large_delivery_markup_out_mkad =  floatval(str_replace(' ', '', $out_mkad_large)) - floatval(str_replace(' ', '', $out_mkad));
 
-//print_r(floatval(trim($in_mkad_large)));
-print_r(str_replace(' ', '', $in_mkad_large));
 
 $min_free_delivery = carbon_get_theme_option('min_free_delivery');
 ?>
@@ -89,7 +88,7 @@ $min_free_delivery = carbon_get_theme_option('min_free_delivery');
             echo '
                 <div class="delivery_table__row">
                     <div>Крупногабаритная доставка</div>
-                    <div>+ '.$large_delivery_markup_in_mkad.'₽</div>
+                    <div>+ '.$large_delivery_markup_in_mkad.'₽ / '.$large_delivery_markup_out_mkad.'₽</div>
                 </div>
             ';}?>
         <div class="delivery_table__row">
