@@ -4,9 +4,10 @@ get_header(); ?>
 <?php 
     // стоимость доставки
    
+    $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+    $min_free_delivery = carbon_get_theme_option('min_free_delivery');
+    
     $shipping_costs = plnt_get_shiping_costs();
-
-    print_r($shipping_costs);
 
     $in_mkad = $shipping_costs[$delivery_inMKAD];
     $out_mkad = $shipping_costs[$delivery_outMKAD];

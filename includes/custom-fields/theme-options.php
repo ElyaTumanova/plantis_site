@@ -76,8 +76,8 @@ Container::make('theme_options', 'Настройки темы')
 			 ->set_value_type( 'url' ),
 		))
 		->add_tab( __('Delivery'), array(
-			Field::make( 'text', 'in_mkad', 'Доставка в пределах МКАД на след день более мин суммы' ),
-			Field::make( 'text', 'out_mkad', 'Доставка за пределы МКАД на след день более мин суммы'),
+			// Field::make( 'text', 'in_mkad', 'Доставка в пределах МКАД на след день более мин суммы' ),
+			// Field::make( 'text', 'out_mkad', 'Доставка за пределы МКАД на след день более мин суммы'),
 			// Field::make( 'text', 'in_mkad_urg', 'Доставка в пределах МКАД срочная более мин суммы'),
 			// Field::make( 'text', 'out_mkad_urg', 'Доставка за пределы МКАД срочная более мин суммы'),
 			// Field::make( 'text', 'in_mkad_small', 'Доставка в пределах МКАД на след день до мин суммы'),
@@ -87,10 +87,10 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'min_free_delivery', 'Минимальная сумма заказа для бесплатной доставки (текст с пробелом)'),
 			Field::make( 'text', 'min_small_delivery', 'Сумма заказа для более дорогой доставки'),
 			Field::make( 'text', 'min_treez_delivery', 'Сумма заказа для доставки кашпо Treez'),
-			Field::make( 'text', 'large_delivery_markup_in_mkad', 'Надбавка для крупногабаритной доставки в пределах МКАД'),
-			Field::make( 'text', 'large_delivery_markup_out_mkad', 'Надбавка для крупногабаритной доставки за пределами МКАД'),
-			Field::make( 'text', 'small_delivery_markup', 'Надбавка для доставки ниже минимальной суммы'),
-			Field::make( 'text', 'urgent_delivery_markup', 'Надбавка для срочной доставки день в день'),
+			// Field::make( 'text', 'large_delivery_markup_in_mkad', 'Надбавка для крупногабаритной доставки в пределах МКАД'),
+			// Field::make( 'text', 'large_delivery_markup_out_mkad', 'Надбавка для крупногабаритной доставки за пределами МКАД'),
+			// Field::make( 'text', 'small_delivery_markup', 'Надбавка для доставки ниже минимальной суммы'),
+			// Field::make( 'text', 'urgent_delivery_markup', 'Надбавка для срочной доставки день в день'),
 	   ))
 		->add_tab( __('Header notice'), array(
 			Field::make( 'text', 'notice', 'Уведомление' ),
