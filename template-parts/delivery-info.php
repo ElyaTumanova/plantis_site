@@ -28,9 +28,7 @@ global $urgent_delivery_inMKAD_large;
 global $urgent_delivery_outMKAD_large;
 
 $shipping_costs = plnt_get_shiping_costs();
-
-print_r($shipping_costs) ;
-    
+   
 $in_mkad = $shipping_costs[$delivery_inMKAD];
 $out_mkad = $shipping_costs[$delivery_outMKAD];
 
