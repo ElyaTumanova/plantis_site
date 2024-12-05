@@ -149,6 +149,8 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
                 unset( $rates[ $urgent_delivery_outMKAD_small ] );
                 unset( $rates[ $delivery_inMKAD_large ] );
                 unset( $rates[ $delivery_outMKAD_large ] );
+                unset( $rates[ $urgent_delivery_inMKAD_large ] );
+                unset( $rates[ $urgent_delivery_outMKAD_large ] );
             }
     }
  
