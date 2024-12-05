@@ -180,3 +180,34 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
  
 	return $rates;
 }
+
+/*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
+
+add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 30, 2 );
+ 
+function truemisha_shipping_by_weight( $rates, $package ) {
+
+    //переменные
+
+    $large_delivery_markup_in_mkad = carbon_get_theme_option('large_delivery_markup_in_mkad');
+
+    if ($large_delivery_markup_in_mkad) {
+        // вес товаров в корзине
+        $cart_weight = WC()->cart->cart_contents_weight;
+    
+        if ($cart_weight >= 11) {
+            unset( $rates[ $delivery_inMKAD ] );
+            unset( $rates[ $delivery_outMKAD ] );
+            unset( $rates[ $delivery_inMKAD_small ] );
+            unset( $rates[ $delivery_outMKAD_small ] );
+        } else {
+            unset( $rates[ $delivery_inMKAD_large ] );
+            unset( $rates[ $delivery_outMKAD_large ] );
+            //unset( $rates[ $urgent_delivery_inMKAD_large ] );
+            //unset( $rates[ $urgent_delivery_outMKAD_large ] );
+
+        }
+    }
+
+	return $rates;
+}
