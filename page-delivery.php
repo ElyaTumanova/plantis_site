@@ -38,23 +38,45 @@ get_header(); ?>
     //     }
     // }
 
-    global $in_mkad;
-    global $out_mkad;
+    // global $in_mkad;
+    // global $out_mkad;
 
-	global $in_mkad_urg;
-	global $out_mkad_urg;
+	// global $in_mkad_urg;
+	// global $out_mkad_urg;
 
-	global $in_mkad_large;
-	global $out_mkad_large;
+	// global $in_mkad_large;
+	// global $out_mkad_large;
 
-	global $in_mkad_urg_large;
-	global $out_mkad_urg_large;
+	// global $in_mkad_urg_large;
+	// global $out_mkad_urg_large;
     
-    global $in_mkad_small;
-	global $out_mkad_small;
+    // global $in_mkad_small;
+	// global $out_mkad_small;
 
-	global $in_mkad_small_urg;
-	global $out_mkad_small_urg;
+	// global $in_mkad_small_urg;
+	// global $out_mkad_small_urg;
+    global $shipping_costs;
+    $in_mkad = $shipping_costs[$delivery_inMKAD];
+    $out_mkad = $shipping_costs[$delivery_outMKAD];
+
+
+	$in_mkad_urg = $shipping_costs[$urgent_delivery_inMKAD];
+	$out_mkad_urg = $shipping_costs[$urgent_delivery_outMKAD];
+
+	$in_mkad_large = $shipping_costs[$delivery_inMKAD_large];
+	$out_mkad_large = $shipping_costs[$delivery_outMKAD_large];
+
+	$in_mkad_urg_large = $shipping_costs[$urgent_delivery_inMKAD_large];
+	$out_mkad_urg_large = $shipping_costs[$urgent_delivery_outMKAD_large];
+    
+ 
+	$in_mkad_small = $shipping_costs[$delivery_inMKAD_small];
+	$out_mkad_small = $shipping_costs[$delivery_outMKAD_small];
+
+	$in_mkad_small_urg = $shipping_costs[$urgent_delivery_inMKAD_small];
+	$out_mkad_small_urg = $shipping_costs[$urgent_delivery_outMKAD_small];
+
+
 ?>
 
 <div class="content-area">
