@@ -189,7 +189,7 @@ function plnt_get_shiping_costs() {
     }
 
     global $delivery_inMKAD;
-    //print_r($shipping_costs); 
+    print_r($shipping_costs); 
     print_r($shipping_costs[$delivery_inMKAD]); 
 
 }
