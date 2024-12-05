@@ -7,39 +7,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php 
 // стоимость доставки
 
-$in_mkad = carbon_get_theme_option('in_mkad');
-$out_mkad = carbon_get_theme_option('out_mkad');
+$shipping_costs = plnt_get_shiping_costs();
+    
+$in_mkad = $shipping_costs[$delivery_inMKAD];
+$out_mkad = $shipping_costs[$delivery_outMKAD];
 
-$min_free_delivery = carbon_get_theme_option('min_free_delivery');
-$min_small_delivery = carbon_get_theme_option('min_small_delivery');
+$in_mkad_urg = $shipping_costs[$urgent_delivery_inMKAD];
+$out_mkad_urg = $shipping_costs[$urgent_delivery_outMKAD];
 
-$large_delivery_markup_in_mkad = carbon_get_theme_option('large_delivery_markup_in_mkad');
-$large_delivery_markup_out_mkad = carbon_get_theme_option('large_delivery_markup_out_mkad');
-$urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
-$small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
+$in_mkad_large = $shipping_costs[$delivery_inMKAD_large];
+$out_mkad_large = $shipping_costs[$delivery_outMKAD_large];
 
-if($urgent_delivery_markup) {
-    $in_mkad_urg = $in_mkad + $urgent_delivery_markup;
-    $out_mkad_urg = $out_mkad + $urgent_delivery_markup;
-}
+$in_mkad_urg_large = $shipping_costs[$urgent_delivery_inMKAD_large];
+$out_mkad_urg_large = $shipping_costs[$urgent_delivery_outMKAD_large];
 
-if($large_delivery_markup_in_mkad) {
-    $in_mkad_large = $in_mkad + $large_delivery_markup_in_mkad;
-    $out_mkad_large = $out_mkad + $large_delivery_markup_out_mkad;
-    if($urgent_delivery_markup) {
-        $in_mkad_urg_large = $in_mkad + $large_delivery_markup_in_mkad + $urgent_delivery_markup;
-        $out_mkad_urg_large = $out_mkad + $large_delivery_markup_out_mkad + $urgent_delivery_markup;
-    }
-}
+$in_mkad_small = $shipping_costs[$delivery_inMKAD_small];
+$out_mkad_small = $shipping_costs[$delivery_outMKAD_small];
 
-if($small_delivery_markup) {
-    $in_mkad_small = $in_mkad + $small_delivery_markup;
-    $out_mkad_small = $out_mkad + $small_delivery_markup;
-    if($urgent_delivery_markup) {
-        $in_mkad_small_urg = $in_mkad + $small_delivery_markup + $urgent_delivery_markup;
-        $out_mkad_small_urg = $out_mkad + $small_delivery_markup + $urgent_delivery_markup;
-    }
-}
+$in_mkad_small_urg = $shipping_costs[$urgent_delivery_inMKAD_small];
+$out_mkad_small_urg = $shipping_costs[$urgent_delivery_outMKAD_small];
+
+$large_delivery_markup_in_mkad = $in_mkad_large - $in_mkad;
 ?>
 
 <div class="delivery-info">
