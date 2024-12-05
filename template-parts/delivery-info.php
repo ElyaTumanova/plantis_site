@@ -7,7 +7,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php 
 // стоимость доставки
 
+global $local_pickup;
+        
+global $delivery_inMKAD;
+global $delivery_outMKAD;
+
+global $delivery_courier;
+global $delivery_long_dist;
+
+global $delivery_inMKAD_small;
+global $delivery_outMKAD_small;
+global $delivery_inMKAD_large;
+global $delivery_outMKAD_large;
+
+global $urgent_delivery_inMKAD; 
+global $urgent_delivery_outMKAD; 
+global $urgent_delivery_inMKAD_small; 
+global $urgent_delivery_outMKAD_small;
+global $urgent_delivery_inMKAD_large; 
+global $urgent_delivery_outMKAD_large;
+
 $shipping_costs = plnt_get_shiping_costs();
+
+print_r($shipping_costs) ;
     
 $in_mkad = $shipping_costs[$delivery_inMKAD];
 $out_mkad = $shipping_costs[$delivery_outMKAD];
