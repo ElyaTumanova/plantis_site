@@ -438,7 +438,7 @@ Contents
         $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
 
         if (WC()->cart->subtotal < $min_small_delivery) {
-            if(array_key_exists($delivery_courier,$shipping_costs)) {
+            if(!array_key_exists($delivery_courier,$shipping_costs)) {
                 echo '<tr> <td colspan="2" class="checkout__text checkout__text_small-order checkout__text_alarm">
                 При заказе на сумму менее <span>'.$min_small_delivery,'</span> рублей стоимость доставки увеличена. 
                 <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></td></tr>';
