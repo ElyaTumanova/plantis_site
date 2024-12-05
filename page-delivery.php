@@ -3,7 +3,7 @@ get_header(); ?>
 
 <?php 
     // стоимость доставки
-    
+   
     $shipping_costs = plnt_get_shiping_costs();
 
     $in_mkad = $shipping_costs[$delivery_inMKAD];
