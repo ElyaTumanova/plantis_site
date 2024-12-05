@@ -185,5 +185,5 @@ function plnt_get_shiping_costs() {
 			}
         }
     }
-    echo $shipping_costs;
+    print_r($shipping_costs); 
 }
