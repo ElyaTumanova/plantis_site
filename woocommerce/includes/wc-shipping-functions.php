@@ -31,60 +31,12 @@ function plnt_refresh_shipping_methods_for_urgent( $post_data ){
     WC()->cart->calculate_shipping();
 }
 
-//add_filter( 'woocommerce_package_rates', 'plnt_shipping_rates_for_urgent', 100, 2 );
-function plnt_shipping_rates_for_urgent( $rates, $package ) {
-
-    //переменные
-    global $local_pickup;
-        
-    global $delivery_inMKAD;
-    global $delivery_outMKAD;
-    global $delivery_courier;
-    global $delivery_long_dist;
-
-    global $delivery_inMKAD_small;
-	global $delivery_outMKAD_small;
-	global $delivery_inMKAD_large;
-	global $delivery_outMKAD_large;
-
-    global $urgent_delivery_inMKAD; 
-	global $urgent_delivery_outMKAD; 
-	global $urgent_delivery_inMKAD_small; 
-	global $urgent_delivery_outMKAD_small;
-	global $urgent_delivery_inMKAD_large; 
-	global $urgent_delivery_outMKAD_large;
-
-
-    $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
-
-   // unset( $rates[ $delivery_courier ] );
-    
-    if (WC()->session->get('isUrgent' ) === '0') {
-        unset( $rates[ $urgent_delivery_inMKAD ] );
-        unset( $rates[ $urgent_delivery_outMKAD ] );
-        unset( $rates[ $urgent_delivery_inMKAD_small ] );
-        unset( $rates[ $urgent_delivery_outMKAD_small ] );
-        unset( $rates[ $urgent_delivery_inMKAD_large ] );
-        unset( $rates[ $urgent_delivery_outMKAD_large ] );
-    }   
-
-    if (WC()->session->get('isUrgent' ) === '1') {
-        unset( $rates[ $delivery_inMKAD ] );
-        unset( $rates[ $delivery_outMKAD ] );
-        unset( $rates[ $delivery_inMKAD_small ] );
-        unset( $rates[ $delivery_outMKAD_small ] );
-        unset( $rates[ $delivery_inMKAD_large ] );
-        unset( $rates[ $delivery_outMKAD_large ] );
-    }
-
-    return $rates;
-}
 
 /* стоимость доставки в зависимости от суммы заказа*/
 
-add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
+add_filter( 'woocommerce_package_rates', 'plnt_shipping_conditions', 25, 2 );
  
-function new_truemisha_remove_shipping_on_price( $rates, $package ) {
+function plnt_shipping_conditions( $rates, $package ) {
 
     //переменные
     global $local_pickup;
@@ -207,4 +159,31 @@ function plnt_disable_payment_small_order( $available_gateways ) {
     }
 
     return $available_gateways;
+}
+
+add_action( 'wp_footer', 'plnt_get_shiping_costs' );
+
+function plnt_get_shiping_costs() {
+    $shipping_costs = [];
+    $shipping_zones = WC_Shipping_Zones::get_zones();
+ 
+	if( $shipping_zones ) {
+ 
+		// для каждой зоны доставки
+		foreach ( $shipping_zones as $shipping_zone_id => $shipping_zone ) {
+ 
+			// получаем объект зоны доставки
+			$shipping_zone = new WC_Shipping_Zone( $shipping_zone_id );
+ 
+			// получаем доступные способы доставки для этой зоны
+			$shipping_methods = $shipping_zone->get_shipping_methods( true, 'values' );
+ 
+			if( $shipping_methods ) {
+				foreach ( $shipping_methods as $shipping_method_id => $shipping_method ) {
+                    array_push($shipping_costs, array([$shipping_method->title] => $shipping_method->cost));
+				}
+			}
+        }
+    }
+    echo $shipping_costs;
 }
