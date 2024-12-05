@@ -126,7 +126,7 @@ function plnt_set_constants_script() {
 	<?php
 }
 
-add_action( 'wp_footer', 'plnt_get_shiping_costs' );
+add_action( 'wp_head', 'plnt_get_shiping_costs' );
 
 function plnt_get_shiping_costs() {
     $shipping_costs = [];
