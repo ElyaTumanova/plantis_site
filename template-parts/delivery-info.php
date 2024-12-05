@@ -27,7 +27,7 @@ $out_mkad_small = $shipping_costs[$delivery_outMKAD_small];
 $in_mkad_small_urg = $shipping_costs[$urgent_delivery_inMKAD_small];
 $out_mkad_small_urg = $shipping_costs[$urgent_delivery_outMKAD_small];
 
-$large_delivery_markup_in_mkad = $in_mkad_large - $in_mkad;
+$large_delivery_markup_in_mkad = intval($in_mkad_large) - intval($in_mkad);
 ?>
 
 <div class="delivery-info">
