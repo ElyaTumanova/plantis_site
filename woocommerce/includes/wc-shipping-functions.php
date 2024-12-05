@@ -189,6 +189,6 @@ function plnt_get_shiping_costs() {
     }
 
     print_r($shipping_costs); 
-    print_r($shipping_costs['local_pickup:9']); 
+    print_r($shipping_costs['flat_rate:1']); 
 
 }
