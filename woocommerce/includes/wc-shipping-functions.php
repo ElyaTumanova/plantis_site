@@ -181,9 +181,7 @@ function plnt_get_shiping_costs() {
 			if( $shipping_methods ) {
 				foreach ( $shipping_methods as $shipping_method_id => $shipping_method ) {
                     $shipping_id = "'".$shipping_method->id.":".$shipping_method_id."'";
-                    //array_push($shipping_costs, $shipping_id => $shipping_method->cost);
-                    //$shipping_costs[$shipping_id]=$shipping_method->cost;
-                    array_push($shipping_costs, $shipping_id => $shipping_method->cost);
+                    $shipping_costs[$shipping_id]=$shipping_method->cost;
 				}
 			}
         }
@@ -191,6 +189,7 @@ function plnt_get_shiping_costs() {
 
     global $delivery_inMKAD;
     print_r($shipping_costs); 
+    print_r($delivery_inMKAD); 
     print_r($shipping_costs[$delivery_inMKAD]); 
 
 }
