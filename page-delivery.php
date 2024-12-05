@@ -75,7 +75,7 @@ get_header(); ?>
                     </div>
                 </div>
             </div>
-                <?php if($large_delivery_markup_in_mkad) { 
+                <?php if(array_key_exists($delivery_inMKAD_large,$shipping_costs)) { 
                     echo '<div class="delivery__block">
                         <div class="delivery__header">
                             <h2 class="entry-header">Крупногабаритная доставка</h2>
