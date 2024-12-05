@@ -113,21 +113,28 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
     if ($small_delivery_markup) { //если наценка не задана, то будет запущен второй вариант алгоритма с отключением способов доставки
         // отключаем опцию доставики по тарифам курьерской службы
         unset( $rates[ $delivery_courier ] );
-        // стоимость товаров в корзине
-        if (WC()->cart->subtotal < $min_small_delivery) {
-           foreach( $rates as $rate) {
-            
-            if ( 'local_pickup' === $rate->method_id ) {
-                $rate->cost = $rate->cost;
-            }
-            else if ('free_shipping' === $rate->method_id) {
-                $rate->cost = $rate->cost ;
-            } else {
-                $rate->cost = $rate->cost + $small_delivery_markup;
-            }
-            
-           }
+        
+        if ( WC()->cart->subtotal < $min_small_delivery ) { // стоимость товаров в корзине
+            unset( $rates[ $delivery_inMKAD ] );
+            unset( $rates[ $delivery_outMKAD ] );
+            unset( $rates[ $delivery_inMKAD_large ] );
+            unset( $rates[ $delivery_outMKAD_large ] );
+            unset( $rates[ $urgent_delivery_inMKAD_large ] );
+            unset( $rates[ $urgent_delivery_outMKAD_large ] );
+            isset($rates[ $delivery_courier ]);		
+        } 
+        else {
+            unset( $rates[ $delivery_courier ] );
+            unset( $rates[ $delivery_inMKAD_small ] );
+            unset( $rates[ $delivery_outMKAD_small ] );
+            unset( $rates[ $urgent_delivery_inMKAD_small ] );
+            unset( $rates[ $urgent_delivery_outMKAD_small ] );
+            unset( $rates[ $delivery_inMKAD_large ] );
+            unset( $rates[ $delivery_outMKAD_large ] );
+            unset( $rates[ $urgent_delivery_inMKAD_large ] );
+            unset( $rates[ $urgent_delivery_outMKAD_large ] );
         }
+
     } else {
         // если сумма всех товаров в корзине меньше min_small_delivery, отключаем способ доставки
         
@@ -145,12 +152,12 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
                 unset( $rates[ $delivery_courier ] );
                 unset( $rates[ $delivery_inMKAD_small ] );
                 unset( $rates[ $delivery_outMKAD_small ] );
-                unset( $rates[ $urgent_delivery_inMKAD_small ] );
-                unset( $rates[ $urgent_delivery_outMKAD_small ] );
+                //unset( $rates[ $urgent_delivery_inMKAD_small ] );
+               //unset( $rates[ $urgent_delivery_outMKAD_small ] );
                 unset( $rates[ $delivery_inMKAD_large ] );
                 unset( $rates[ $delivery_outMKAD_large ] );
-                unset( $rates[ $urgent_delivery_inMKAD_large ] );
-                unset( $rates[ $urgent_delivery_outMKAD_large ] );
+                //unset( $rates[ $urgent_delivery_inMKAD_large ] );
+                //unset( $rates[ $urgent_delivery_outMKAD_large ] );
             }
     }
  
