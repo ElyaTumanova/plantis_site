@@ -82,37 +82,6 @@ function plnt_shipping_rates_for_urgent( $rates, $package ) {
 
 /* стоимость доставки в зависимости от суммы заказа*/
 
-//убираем способ онлайн-оплаты, если маленькая сумма заказа или далекая доставка
-add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_small_order' );
-
-function plnt_disable_payment_small_order( $available_gateways ) {
-    $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-    global $delivery_courier;
-    global $delivery_long_dist;
-
-    if( is_admin() ) {
-		return $available_gateways;
-	}
-
-    if( is_wc_endpoint_url( 'order-pay' ) ) {
-		return $available_gateways;
-	}
-
-    $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
-
-    // стоимость товаров в корзине
-    if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
-        unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
-    }
-
-    // дальняя доставка
-    if ( $delivery_long_dist == $chosen_methods[0]) {
-        unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
-    }
-
-    return $available_gateways;
-}
-	
 add_filter( 'woocommerce_package_rates', 'new_truemisha_remove_shipping_on_price', 25, 2 );
  
 function new_truemisha_remove_shipping_on_price( $rates, $package ) {
@@ -165,7 +134,6 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
             if ( WC()->cart->subtotal < $min_small_delivery ) {
                 unset( $rates[ $delivery_inMKAD ] );
                 unset( $rates[ $delivery_outMKAD ] );
-                unset( $rates[ $delivery_long_dist ] );
                 unset( $rates[ $delivery_inMKAD_small ] );
                 unset( $rates[ $delivery_outMKAD_small ] );
                 unset( $rates[ $delivery_inMKAD_large ] );
@@ -210,4 +178,35 @@ function truemisha_shipping_by_weight( $rates, $package ) {
     }
 
 	return $rates;
+}
+
+//убираем способ онлайн-оплаты, если маленькая сумма заказа или далекая доставка
+add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_small_order' );
+
+function plnt_disable_payment_small_order( $available_gateways ) {
+    $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+    global $delivery_courier;
+    global $delivery_long_dist;
+
+    if( is_admin() ) {
+		return $available_gateways;
+	}
+
+    if( is_wc_endpoint_url( 'order-pay' ) ) {
+		return $available_gateways;
+	}
+
+    $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+
+    // стоимость товаров в корзине
+    if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
+        unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+    }
+
+    // дальняя доставка
+    if ( $delivery_long_dist == $chosen_methods[0]) {
+        unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+    }
+
+    return $available_gateways;
 }
