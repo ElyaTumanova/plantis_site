@@ -91,6 +91,7 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
         
     global $delivery_inMKAD;
     global $delivery_outMKAD;
+
     global $delivery_courier;
     global $delivery_long_dist;
 
@@ -106,85 +107,56 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
 	global $urgent_delivery_inMKAD_large; 
 	global $urgent_delivery_outMKAD_large;
 
-    $small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
+    /*СТОИМОСТЬ ДОСТАВКИ ПО СУММЕ*/
+
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
 
-	// если сумма всех товаров в корзине меньше min_small_delivery, увеличиваем стоимость доставки
-    if ($small_delivery_markup) { //если наценка не задана, то будет запущен второй вариант алгоритма с отключением способов доставки
-        // отключаем опцию доставики по тарифам курьерской службы
-        unset( $rates[ $delivery_courier ] );
-        
-        if ( WC()->cart->subtotal < $min_small_delivery ) { // стоимость товаров в корзине
-            unset( $rates[ $delivery_inMKAD ] );
-            unset( $rates[ $delivery_outMKAD ] );
-            unset( $rates[ $delivery_inMKAD_large ] );
-            unset( $rates[ $delivery_outMKAD_large ] );
-            unset( $rates[ $urgent_delivery_inMKAD_large ] );
-            unset( $rates[ $urgent_delivery_outMKAD_large ] );
-            isset($rates[ $delivery_courier ]);		
-        } 
-        else {
-            unset( $rates[ $delivery_courier ] );
+    if ( WC()->cart->subtotal < $min_small_delivery ) {
+        unset( $rates[ $delivery_inMKAD ] );
+        unset( $rates[ $delivery_outMKAD ] );
+        unset( $rates[ $urgent_delivery_inMKAD ] );
+        unset( $rates[ $urgent_delivery_outMKAD ] );
+        unset( $rates[ $delivery_inMKAD_large ] );
+        unset( $rates[ $delivery_outMKAD_large ] );
+        unset( $rates[ $urgent_delivery_inMKAD_large ] );
+        unset( $rates[ $urgent_delivery_outMKAD_large ] );
+        if(isset($rates[ $delivery_courier ])) {
             unset( $rates[ $delivery_inMKAD_small ] );
             unset( $rates[ $delivery_outMKAD_small ] );
             unset( $rates[ $urgent_delivery_inMKAD_small ] );
             unset( $rates[ $urgent_delivery_outMKAD_small ] );
-            unset( $rates[ $delivery_inMKAD_large ] );
-            unset( $rates[ $delivery_outMKAD_large ] );
-            unset( $rates[ $urgent_delivery_inMKAD_large ] );
-            unset( $rates[ $urgent_delivery_outMKAD_large ] );
+            unset( $rates[ $delivery_long_dist ] );
         }
-
     } else {
-        // если сумма всех товаров в корзине меньше min_small_delivery, отключаем способ доставки
-        
-            if ( WC()->cart->subtotal < $min_small_delivery ) {
-                unset( $rates[ $delivery_inMKAD ] );
-                unset( $rates[ $delivery_outMKAD ] );
-                unset( $rates[ $delivery_inMKAD_small ] );
-                unset( $rates[ $delivery_outMKAD_small ] );
-                unset( $rates[ $delivery_inMKAD_large ] );
-                unset( $rates[ $delivery_outMKAD_large ] );
-                unset( $rates[ $delivery_long_dist ] );
-                isset($rates[ $delivery_courier ]);		
-            } 
-            else {
-                unset( $rates[ $delivery_courier ] );
-                unset( $rates[ $delivery_inMKAD_small ] );
-                unset( $rates[ $delivery_outMKAD_small ] );
-                unset( $rates[ $urgent_delivery_inMKAD_small ] );
-                unset( $rates[ $urgent_delivery_outMKAD_small ] );
-                unset( $rates[ $delivery_inMKAD_large ] );
-                unset( $rates[ $delivery_outMKAD_large ] );
-                unset( $rates[ $urgent_delivery_inMKAD_large ] );
-                unset( $rates[ $urgent_delivery_outMKAD_large ] );
-            }
+        unset( $rates[ $delivery_inMKAD_small ] );
+        unset( $rates[ $delivery_outMKAD_small ] );
+        unset( $rates[ $urgent_delivery_inMKAD_small ] );
+        unset( $rates[ $urgent_delivery_outMKAD_small ] );
+        unset( $rates[ $delivery_courier ] );
     }
  
-    $large_delivery_markup_in_mkad = carbon_get_theme_option('large_delivery_markup_in_mkad');
-
-    if ($large_delivery_markup_in_mkad) {
-        // вес товаров в корзине
-        $cart_weight = WC()->cart->cart_contents_weight;
+    /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
     
-        if ($cart_weight >= 11) {
-            unset( $rates[ $delivery_inMKAD ] );
-            unset( $rates[ $delivery_outMKAD ] );
-            unset( $rates[ $urgent_delivery_inMKAD ] );
-            unset( $rates[ $urgent_delivery_outMKAD ] );
-            unset( $rates[ $delivery_inMKAD_small ] );
-            unset( $rates[ $delivery_outMKAD_small ] );
-            unset( $rates[ $urgent_delivery_inMKAD_small ] );
-            unset( $rates[ $urgent_delivery_outMKAD_small ] );
-        } else {
-            unset( $rates[ $delivery_inMKAD_large ] );
-            unset( $rates[ $delivery_outMKAD_large ] );
-            unset( $rates[ $urgent_delivery_inMKAD_large ] );
-            unset( $rates[ $urgent_delivery_outMKAD_large ] );
+    $cart_weight = WC()->cart->cart_contents_weight; // вес товаров в корзине
 
-        }
+    if ($cart_weight >= 11) {
+        unset( $rates[ $delivery_inMKAD ] );
+        unset( $rates[ $delivery_outMKAD ] );
+        unset( $rates[ $urgent_delivery_inMKAD ] );
+        unset( $rates[ $urgent_delivery_outMKAD ] );
+        unset( $rates[ $delivery_inMKAD_small ] );
+        unset( $rates[ $delivery_outMKAD_small ] );
+        unset( $rates[ $urgent_delivery_inMKAD_small ] );
+        unset( $rates[ $urgent_delivery_outMKAD_small ] );
+    } else {
+        unset( $rates[ $delivery_inMKAD_large ] );
+        unset( $rates[ $delivery_outMKAD_large ] );
+        unset( $rates[ $urgent_delivery_inMKAD_large ] );
+        unset( $rates[ $urgent_delivery_outMKAD_large ] );
+
     }
 
+    /*СРОЧНАЯ ДОСТАВКА*/
     if (WC()->session->get('isUrgent' ) === '0') {
         unset( $rates[ $urgent_delivery_inMKAD ] );
         unset( $rates[ $urgent_delivery_outMKAD ] );
@@ -201,41 +173,6 @@ function new_truemisha_remove_shipping_on_price( $rates, $package ) {
         unset( $rates[ $delivery_outMKAD_small ] );
         unset( $rates[ $delivery_inMKAD_large ] );
         unset( $rates[ $delivery_outMKAD_large ] );
-    }
-    
-	return $rates;
-}
-
-/*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
-
-//add_filter( 'woocommerce_package_rates', 'truemisha_shipping_by_weight', 30, 2 );
- 
-function truemisha_shipping_by_weight( $rates, $package ) {
-
-    //переменные
-
-    $large_delivery_markup_in_mkad = carbon_get_theme_option('large_delivery_markup_in_mkad');
-
-    if ($large_delivery_markup_in_mkad) {
-        // вес товаров в корзине
-        $cart_weight = WC()->cart->cart_contents_weight;
-    
-        if ($cart_weight >= 11) {
-            unset( $rates[ $delivery_inMKAD ] );
-            unset( $rates[ $delivery_outMKAD ] );
-            unset( $rates[ $urgent_delivery_inMKAD ] );
-            unset( $rates[ $urgent_delivery_outMKAD ] );
-            unset( $rates[ $delivery_inMKAD_small ] );
-            unset( $rates[ $delivery_outMKAD_small ] );
-            unset( $rates[ $urgent_delivery_inMKAD_small ] );
-            unset( $rates[ $urgent_delivery_outMKAD_small ] );
-        } else {
-            unset( $rates[ $delivery_inMKAD_large ] );
-            unset( $rates[ $delivery_outMKAD_large ] );
-            unset( $rates[ $urgent_delivery_inMKAD_large ] );
-            unset( $rates[ $urgent_delivery_outMKAD_large ] );
-
-        }
     }
 
 	return $rates;
