@@ -99,9 +99,10 @@ function plntAjaxGetUrgent() {
 
 function onChangeShippingDate() {
   let shippingMethodInputs = document.querySelectorAll('.woocommerce-shipping-methods input');
-  //console.log(shippingMethodInputs);
+  console.log(shippingMethodInputs);
   destination = window.sessionStorage.getItem('destination');
-  console.log(destination);
+  //console.log(destination);
+  shippingMethodInputs[4].setAttribute('checked','checked');
 
 }
 
