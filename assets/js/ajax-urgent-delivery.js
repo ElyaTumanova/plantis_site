@@ -102,7 +102,7 @@ function onChangeShippingDate() {
   console.log(shippingMethodInputs);
   destination = window.sessionStorage.getItem('destination');
   //console.log(destination);
-  shippingMethodInputs[4].setAttribute('checked','checked');
+  shippingMethodInputs[3].setAttribute('checked','checked');
 
 }
 
