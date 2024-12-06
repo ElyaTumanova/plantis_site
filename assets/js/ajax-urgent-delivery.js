@@ -8,8 +8,8 @@ let shippingMethodValues = [];
 let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
 let checkedShippingMethod;
 let today;
+let sessionShippingId;
 let destination;
-
 
 
 function plntChekUrgentDelivery() {
@@ -36,7 +36,7 @@ function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
         renderDeliveryDates(event.target.value);
         console.log(event.target.value);
-        window.sessionStorage.setItem('destination', event.target.value);
+        window.sessionStorage.setItem('sessionShippingId', event.target.value);
     }
 }
 
@@ -101,14 +101,28 @@ function plntAjaxGetUrgent() {
 
 function onChangeShippingDate() {
   console.log(shippingMethodInputs);
-  destination = window.sessionStorage.getItem('destination');
-  console.log(destination);
+  sessionShippingId = window.sessionStorage.getItem('sessionShippingId');
+  console.log(sessionShippingId);
+  if (deliveryIdsInMkad.includes(sessionShippingId)) {
+    destination = 'inMkad';
+    shippingMethodInputs.forEach((input) => {
+      if (deliveryIdsInMkad.incledes(input.value)) {
+        console.log(input.value);
+      };
+    });
+  } else if (deliveryIdsOutMkad.includes(sessionShippingId)) {
+    destination = 'outMkad';
+  } else {
+    destination = 'other';
+  }
   // shippingMethodInputs[3].setAttribute('checked','checked');
-  shippingMethodInputs.forEach((input) => {
-    shippingMethodValues.push(input.value);
-  });
+  
   console.log(shippingMethodValues);
 }
+
+// function checkShippingMethod() {
+
+// }
 
 if (checkoutForm) {
 
@@ -121,7 +135,7 @@ if (checkoutForm) {
   //console.log(today);
 
   checkedShippingMethod = checkedShippingMethodInput.value;
-  window.sessionStorage.setItem('destination', checkedShippingMethod);
+  window.sessionStorage.setItem('sessionShippingId', checkedShippingMethod);
   
   console.log(checkedShippingMethod);
 

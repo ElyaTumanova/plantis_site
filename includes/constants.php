@@ -103,9 +103,6 @@ if($site === 'http://new.plantis.shop') {
 
 	$delivery_long_dist = 'free_shipping:28';
 
-	
-
-
 	//#filters ID's
 	$filter_podborki_id = 10989;
 	$filter_in_stock_id = 6110;
