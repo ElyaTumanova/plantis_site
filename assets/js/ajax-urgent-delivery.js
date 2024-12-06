@@ -97,18 +97,6 @@ function plntAjaxGetUrgent() {
 
 if (checkoutForm) {
 
-  if (isLargeDelivery) {
-    isDeliveryLarge = deliveryLargeMarkupInMkad;
-  } else {
-    getdeliveryLargeMarkupInMkad = 0;
-  }
-
-  if (isSmallDelivery) {
-    getDeliverySmallMarkup = deliverySmallMarkup;
-  } else {
-    getDeliverySmallMarkup = 0;
-  }
-
   let hour = new Date().getHours();
   if (hour >= 18) {
     today = `${(new Date().getDate()< 10 ? '0' : '') + (new Date().getDate() + 1)}.${new Date().getUTCMonth() + 1}`;
@@ -117,10 +105,9 @@ if (checkoutForm) {
   };
   //console.log(today);
 
-  //console.log(checkedShippingMethod);
-
   checkedShippingMethod = checkedShippingMethodInput.value;
-
+  
+  console.log(checkedShippingMethod);
 
   deliveryDatesLables.forEach((label) => {
     let dateInfo = {
