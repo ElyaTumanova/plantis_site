@@ -102,7 +102,7 @@ function onChangeShippingDate() {
   setTimeout(() => {
     let shippingMethodInputs = document.querySelectorAll('.woocommerce-shipping-methods input');
     console.log(shippingMethodInputs);
-  }, 1000)
+
   
   sessionShippingId = window.sessionStorage.getItem('sessionShippingId');
   console.log(sessionShippingId);
@@ -122,12 +122,8 @@ function onChangeShippingDate() {
   }
   // shippingMethodInputs[3].setAttribute('checked','checked');
   
-
+}, 1000)
 }
-
-// function checkShippingMethod() {
-
-// }
 
 if (checkoutForm) {
 
