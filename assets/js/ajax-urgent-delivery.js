@@ -108,7 +108,7 @@ function onChangeShippingDate() {
     shippingMethodInputs.forEach((input) => {
       
       if (deliveryIdsInMkad.includes(input.value)) {
-        console.log(document.querySelector(`input[value=${input.value}]`));
+        //console.log(document.querySelector(`input[value=${input.value}]`));
         //document.querySelector(`#${input.value}`);
       };
     });
