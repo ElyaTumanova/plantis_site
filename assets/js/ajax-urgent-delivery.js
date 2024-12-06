@@ -106,7 +106,7 @@ function onChangeShippingDate() {
   if (deliveryIdsInMkad.includes(sessionShippingId)) {
     destination = 'inMkad';
     shippingMethodInputs.forEach((input) => {
-      if (deliveryIdsInMkad.incledes(input.value)) {
+      if (deliveryIdsInMkad.includes(input.value)) {
         console.log(input.value);
       };
     });
