@@ -42,19 +42,12 @@ function renderDeliveryDates(shippingValue) {
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
     info.label.appendChild(priceEl);
-      if(shippingValue == deliveryInMKAD) {
-        console.log(info.for);
-        console.log(`delivery_dates_${today}`);
-
+      if(shippingValue == deliveryInMKAD || shippingValue == deliveryInMKADUrg) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadUrg}₽` : `${deliveryCostInMkad}₽` ;
       }
-      if(shippingValue == deliveryOutMKAD) {
-        priceEl.innerHTML = `${Number(deliveryCostOutMkadUrg)}₽`;
+      if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadUrg}₽` : `${deliveryCostOutMkad}₽` ;
       }
-      if(shippingValue == deliveryOutMKAD) {
-        priceEl.innerHTML = `${Number(deliveryCostOutMkadUrg)}₽`;
-      }
-  
    
   })
 
