@@ -188,15 +188,3 @@ function plnt_get_shiping_costs() {
 
 	return $shipping_costs;
 }
-
-
-
-function oley_reset_default_shipping_method( $method, $available_methods ) {
-
-    $method = key($available_methods);
-    print_r($method);
-    print_r($available_methods);
-    return $method;
-
-}
-add_filter('woocommerce_shipping_chosen_method', 'oley_reset_default_shipping_method', 10, 2);

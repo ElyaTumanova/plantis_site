@@ -99,8 +99,11 @@ function plntAjaxGetUrgent() {
 };
 
 function onChangeShippingDate() {
-  let shippingMethodInputs = document.querySelectorAll('.woocommerce-shipping-methods input');
-  console.log(shippingMethodInputs);
+  setTimeout(() => {
+    let shippingMethodInputs = document.querySelectorAll('.woocommerce-shipping-methods input');
+    console.log(shippingMethodInputs);
+  }, 1000)
+  
   sessionShippingId = window.sessionStorage.getItem('sessionShippingId');
   console.log(sessionShippingId);
   if (deliveryIdsInMkad.includes(sessionShippingId)) {
