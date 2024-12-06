@@ -6,9 +6,7 @@ let deliveryDatesInfo = [];
 let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
 let checkedShippingMethod;
 let today;
-let isLargeDelivery = document.querySelector('.checkout__text_large');
-let isSmallDelivery = document.querySelector('.checkout__text_small-order');
-let getdeliveryLargeMarkupInMkad;
+
 
 
 function plntChekUrgentDelivery() {
@@ -95,6 +93,13 @@ function plntAjaxGetUrgent() {
   //   }
   // }
 };
+
+function onChangeShippingDate() {
+  let isInMkad = true;
+  let shippingMethodInputs = document.querySelector('.woocommerce-shipping-methods input');
+  console.log(shippingMethodInputs);
+  
+}
 
 if (checkoutForm) {
 
