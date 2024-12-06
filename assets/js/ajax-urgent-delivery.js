@@ -118,7 +118,7 @@ function onChangeShippingDate() {
   } else {
     destination = 'other';
   }
-  // shippingMethodInputs[3].setAttribute('checked','checked');
+  shippingMethodInputs[2].setAttribute('checked','checked');
   
 }, 1000)
 }
