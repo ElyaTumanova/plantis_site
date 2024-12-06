@@ -116,6 +116,7 @@ if (checkoutForm) {
   //console.log(today);
 
   checkedShippingMethod = checkedShippingMethodInput.value;
+  window.sessionStorage.setItem('destination', checkedShippingMethod);
   
   console.log(checkedShippingMethod);
 
