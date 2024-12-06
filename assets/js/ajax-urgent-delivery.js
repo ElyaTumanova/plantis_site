@@ -43,6 +43,9 @@ function renderDeliveryDates(shippingValue) {
     info.label.innerHTML=`${info.text}`;
     info.label.appendChild(priceEl);
       if(shippingValue == deliveryInMKAD) {
+        console.log(info.for);
+        console.log(`delivery_dates_${today}`);
+
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadUrg}₽` : `${deliveryCostInMkad}₽` ;
       }
       if(shippingValue == deliveryOutMKAD) {
