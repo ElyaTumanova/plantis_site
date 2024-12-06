@@ -107,7 +107,8 @@ function onChangeShippingDate() {
     destination = 'inMkad';
     shippingMethodInputs.forEach((input) => {
       if (deliveryIdsInMkad.includes(input.value)) {
-        console.log(input.value);
+        console.log(shippingMethodInputs.querySelector(`#${input.value}`));
+        shippingMethodInputs.querySelector(`#${input.value}`);
       };
     });
   } else if (deliveryIdsOutMkad.includes(sessionShippingId)) {
@@ -117,7 +118,7 @@ function onChangeShippingDate() {
   }
   // shippingMethodInputs[3].setAttribute('checked','checked');
   
-  console.log(shippingMethodValues);
+
 }
 
 // function checkShippingMethod() {
