@@ -108,7 +108,7 @@ function onChangeShippingDate() {
     shippingMethodInputs.forEach((input) => {
       if (deliveryIdsInMkad.includes(input.value)) {
         console.log(shippingMethodInputs.querySelector(`#${input.value}`));
-        shippingMethodInputs.querySelector(`#${input.value}`);
+        document.querySelector(`#${input.value}`);
       };
     });
   } else if (deliveryIdsOutMkad.includes(sessionShippingId)) {
