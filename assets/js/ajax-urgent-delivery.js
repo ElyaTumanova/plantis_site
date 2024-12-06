@@ -24,6 +24,7 @@ function plntChekUrgentDelivery() {
       }
       //console.log(isUrgent);
       plntAjaxGetUrgent();
+      onChangeShippingDate();
       });
   })
 };
@@ -98,7 +99,7 @@ function onChangeShippingDate() {
   let isInMkad = true;
   let shippingMethodInputs = document.querySelector('.woocommerce-shipping-methods input');
   console.log(shippingMethodInputs);
-  
+
 }
 
 if (checkoutForm) {
