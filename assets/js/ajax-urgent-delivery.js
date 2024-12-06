@@ -48,47 +48,19 @@ function renderDeliveryDates(shippingValue) {
       if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadUrg}₽` : `${deliveryCostOutMkad}₽` ;
       }
-   
+      if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadSmallUrg}₽` : `${deliveryCostInMkadSmall}₽` ;
+      }
+      if(shippingValue == deliveryOutMKADSmall || shippingValue == deliveryOutMKADSmallUrg) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadSmallUrg}₽` : `${deliveryCostOutMkadSmall}₽` ;
+      }
+      if(shippingValue == deliveryInMKADLarge || shippingValue == deliveryInMKADLargeUrg) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadLargeUrg}₽` : `${deliveryCostInMkadLarge}₽` ;
+      }
+      if(shippingValue == deliveryOutMKADLarge || shippingValue == deliveryOutMKADLargeUrg) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadLargeUrg}₽` : `${deliveryCostOutMkadLarge}₽` ;
+      }
   })
-
-
-
-  ///////////////////////
-  // if(shippingValue == deliveryInMKAD) {
-  //   deliveryDatesInfo.forEach((info) => {
-  //     let priceEl = document.createElement('span');
-  //     info.label.innerHTML=`${info.text}`;
-  //     info.label.appendChild(priceEl);
-  //     if(info.for == `delivery_dates_${today}`) {
-  //       priceEl.innerHTML = `${Number(deliveryCostInMkadUrg) + Number(getdeliveryLargeMarkupInMkad) + Number(getDeliverySmallMarkup)}₽`
-  //     } else {
-  //       priceEl.innerHTML = `${Number(deliveryCostInMkad) + Number(getdeliveryLargeMarkupInMkad) + Number(getDeliverySmallMarkup)}₽`
-  //     }
-  //   })
-  // }
-  // if(shippingValue == deliveryOutMKAD) {
-  //   deliveryDatesInfo.forEach((info) => {
-  //     let priceEl = document.createElement('span');
-  //     if(info.for == `delivery_dates_${today}`) {
-  //       info.label.innerHTML=`${info.text}`;
-  //       info.label.appendChild(priceEl);
-  //       priceEl.innerHTML = `${Number(deliveryCostOutMkadUrg) + Number(getdeliveryLargeMarkupInMkad) + Number(getDeliverySmallMarkup)}₽`
-  //     } else {
-  //       info.label.innerHTML=`${info.text}`;
-  //       info.label.appendChild(priceEl);
-  //       priceEl.innerHTML = `${Number(deliveryCostOutMkad) + Number(getdeliveryLargeMarkupInMkad) + Number(getDeliverySmallMarkup)}₽`
-  //     }
-  //   })
-  // }
-  // if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryCourierId || shippingValue == deliveryLongId) {
-  //   deliveryDatesInfo.forEach((info) => {
-  //     if(info.for == `delivery_dates_${today}`) {
-  //       info.label.innerHTML=`${info.text}`;
-  //     } else {
-  //       info.label.innerHTML=`${info.text}`;
-  //     }
-  //   })
-  // }
 }
 
 function plntAjaxGetUrgent() {
