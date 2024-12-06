@@ -6,6 +6,7 @@ let deliveryDatesInfo = [];
 let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
 let checkedShippingMethod;
 let today;
+let destination;
 
 
 
@@ -33,6 +34,7 @@ function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
         renderDeliveryDates(event.target.value);
         console.log(event.target.value);
+        window.sessionStorage.setItem('destination', event.target.value);
     }
 }
 
@@ -96,9 +98,10 @@ function plntAjaxGetUrgent() {
 };
 
 function onChangeShippingDate() {
-  let isInMkad = true;
   let shippingMethodInputs = document.querySelectorAll('.woocommerce-shipping-methods input');
-  console.log(shippingMethodInputs);
+  //console.log(shippingMethodInputs);
+  destination = window.sessionStorage.getItem('destination');
+  console.log(destination);
 
 }
 
