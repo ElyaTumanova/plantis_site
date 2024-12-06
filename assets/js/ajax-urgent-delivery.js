@@ -3,7 +3,6 @@ let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
 let deliveryDatesInfo = [];
-let shippingMethodInputs = document.querySelectorAll('.woocommerce-shipping-methods input');
 let shippingMethodValues = [];
 let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
 let checkedShippingMethod;
@@ -100,15 +99,17 @@ function plntAjaxGetUrgent() {
 };
 
 function onChangeShippingDate() {
+  let shippingMethodInputs = document.querySelectorAll('.woocommerce-shipping-methods input');
   console.log(shippingMethodInputs);
   sessionShippingId = window.sessionStorage.getItem('sessionShippingId');
   console.log(sessionShippingId);
   if (deliveryIdsInMkad.includes(sessionShippingId)) {
     destination = 'inMkad';
     shippingMethodInputs.forEach((input) => {
+      
       if (deliveryIdsInMkad.includes(input.value)) {
         console.log(document.querySelector(`input[value=${input.value}]`));
-        document.querySelector(`#${input.value}`);
+        //document.querySelector(`#${input.value}`);
       };
     });
   } else if (deliveryIdsOutMkad.includes(sessionShippingId)) {
