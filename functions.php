@@ -89,38 +89,98 @@ add_action( 'wp_footer', 'plnt_set_constants_script' );
 function plnt_set_constants_script() {
 	global $delivery_inMKAD;
 	global $delivery_outMKAD;
+	global $delivery_inMKAD_small;
+	global $delivery_outMKAD_small;
+	global $delivery_inMKAD_large;
+	global $delivery_outMKAD_large;
+
+
+	global $urgent_delivery_inMKAD; 
+	global $urgent_delivery_outMKAD; 
+	global $urgent_delivery_inMKAD_small; 
+	global $urgent_delivery_outMKAD_small;
+	global $urgent_delivery_inMKAD_large; 
+	global $urgent_delivery_outMKAD_large;
+
+
 	global $local_pickup;
 	global $delivery_free;
 	global $delivery_courier;
 	global $delivery_long_dist;
 
-	$in_mkad = carbon_get_theme_option('in_mkad');
-    $out_mkad = carbon_get_theme_option('out_mkad');
-    $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
-	$large_delivery_markup_in_mkad = carbon_get_theme_option('large_delivery_markup_in_mkad');
-	$large_delivery_markup_out_mkad = carbon_get_theme_option('large_delivery_markup_out_mkad');
-	$small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
+	// $in_mkad = carbon_get_theme_option('in_mkad');
+    // $out_mkad = carbon_get_theme_option('out_mkad');
+    // $urgent_delivery_markup = carbon_get_theme_option('urgent_delivery_markup');
+	// $large_delivery_markup_in_mkad = carbon_get_theme_option('large_delivery_markup_in_mkad');
+	// $large_delivery_markup_out_mkad = carbon_get_theme_option('large_delivery_markup_out_mkad');
+	// $small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
 
-	global $local_pickup;
+	$shipping_costs = plnt_get_shiping_costs();
+
+    $in_mkad = $shipping_costs[$delivery_inMKAD];
+    $out_mkad = $shipping_costs[$delivery_outMKAD];
+
+	$in_mkad_urg = $shipping_costs[$urgent_delivery_inMKAD];
+	$out_mkad_urg = $shipping_costs[$urgent_delivery_outMKAD];
+
+	$in_mkad_large = $shipping_costs[$delivery_inMKAD_large];
+	$out_mkad_large = $shipping_costs[$delivery_outMKAD_large];
+
+	$in_mkad_urg_large = $shipping_costs[$urgent_delivery_inMKAD_large];
+	$out_mkad_urg_large = $shipping_costs[$urgent_delivery_outMKAD_large];
+ 
+	$in_mkad_small = $shipping_costs[$delivery_inMKAD_small];
+	$out_mkad_small = $shipping_costs[$delivery_outMKAD_small];
+
+	$in_mkad_small_urg = $shipping_costs[$urgent_delivery_inMKAD_small];
+	$out_mkad_small_urg = $shipping_costs[$urgent_delivery_outMKAD_small];
+
    
 	?>
 	<script>
 		let deliveryInMKAD = '<?php echo $delivery_inMKAD; ?>';
 		let deliveryOutMKAD = '<?php echo $delivery_outMKAD; ?>';
-		let localPickup = '<?php echo $local_pickup; ?>';
-		let deliveryCourier = '<?php echo $delivery_courier; ?>';
+		let deliveryInMKADSmall = '<?php echo $delivery_inMKAD_small; ?>';
+		let deliveryOutMKADSmall = '<?php echo $delivery_outMKAD_small; ?>';
+		let deliveryInMKADLarge = '<?php echo $delivery_inMKAD_large; ?>';
+		let deliveryOutMKADLarge = '<?php echo $delivery_outMKAD_large; ?>';
 
-		let deliveryCostInMkad = '<?php echo $in_mkad; ?>';
-		let deliveryCostOutMkad = '<?php echo $out_mkad; ?>';
-		let deliveryUrgentMarkup = '<?php echo $urgent_delivery_markup; ?>';
-		let deliveryLargeMarkupInMkad = '<?php echo $large_delivery_markup_in_mkad; ?>';
-		let deliveryLargeMarkupOutMkad = '<?php echo $large_delivery_markup_out_mkad; ?>';
-		let deliverySmallMarkup = '<?php echo $small_delivery_markup; ?>';
+		let deliveryInMKADUrg = '<?php echo $urgent_delivery_inMKAD; ?>';
+		let deliveryOutMKADUrg = '<?php echo $urgent_delivery_outMKAD; ?>';
+		let deliveryInMKADSmallUrg = '<?php echo $urgent_delivery_inMKAD_small; ?>';
+		let deliveryOutMKADSmallUrg = '<?php echo $urgent_delivery_outMKAD_small; ?>';
+		let deliveryInMKADLargeUrg = '<?php echo $urgent_delivery_inMKAD_large; ?>';
+		let deliveryOutMKADLargeUrg = '<?php echo $urgent_delivery_outMKAD_large; ?>';
+
 
 		let localPickupId = '<?php echo $local_pickup; ?>';
 		let deliveryFreeId = '<?php echo $delivery_free; ?>';
 		let deliveryCourierId = '<?php echo $delivery_courier; ?>';
 		let deliveryLongId = '<?php echo $delivery_long_dist; ?>';
+
+		let deliveryCostInMkad = '<?php echo $in_mkad; ?>';
+		let deliveryCostOutMkad = '<?php echo $out_mkad; ?>';
+		let deliveryCostInMkadUrg = '<?php echo $in_mkad_urg; ?>';
+		let deliveryCostOutMkadUrg = '<?php echo $out_mkad_urg; ?>';
+
+		let deliveryCostInMkadLarge = '<?php echo $in_mkad_large; ?>';
+		let deliveryCostOutMkadLarge = '<?php echo $out_mkad_large; ?>';
+		let deliveryCostInMkadLargeUrg = '<?php echo $in_mkad_urg_large; ?>';
+		let deliveryCostOutMkadLargeUrg = '<?php echo $out_mkad_urg_large; ?>';
+
+		let deliveryCostInMkadSmall = '<?php echo $in_mkad_small; ?>';
+		let deliveryCostOutMkadSmall = '<?php echo $out_mkad_small; ?>';
+		let deliveryCostInMkadSmallUrg = '<?php echo $in_mkad_small_urg; ?>';
+		let deliveryCostOutMkadSmallUrg = '<?php echo $out_mkad_small_urg; ?>';
+
+
+
+
+		let deliveryUrgentMarkup = '<?php echo $urgent_delivery_markup; ?>';
+		let deliveryLargeMarkupInMkad = '<?php echo $large_delivery_markup_in_mkad; ?>';
+		let deliveryLargeMarkupOutMkad = '<?php echo $large_delivery_markup_out_mkad; ?>';
+		let deliverySmallMarkup = '<?php echo $small_delivery_markup; ?>';
+
 
 	</script>
 	<?php

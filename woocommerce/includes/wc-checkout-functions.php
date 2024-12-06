@@ -431,9 +431,7 @@ Contents
 
     function min_amount_delivery_info(){
         $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-        // $small_delivery_markup = carbon_get_theme_option('small_delivery_markup');
         $shipping_costs = plnt_get_shiping_costs();
-
         global $delivery_courier;
         $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
 
