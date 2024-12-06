@@ -3,6 +3,8 @@ let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
 let deliveryDatesInfo = [];
+let shippingMethodInputs = document.querySelectorAll('.woocommerce-shipping-methods input');
+let shippingMethodValues = [];
 let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
 let checkedShippingMethod;
 let today;
@@ -98,12 +100,14 @@ function plntAjaxGetUrgent() {
 };
 
 function onChangeShippingDate() {
-  let shippingMethodInputs = document.querySelectorAll('.woocommerce-shipping-methods input');
   console.log(shippingMethodInputs);
   destination = window.sessionStorage.getItem('destination');
-  //console.log(destination);
-  shippingMethodInputs[3].setAttribute('checked','checked');
-
+  console.log(destination);
+  // shippingMethodInputs[3].setAttribute('checked','checked');
+  shippingMethodInputs.forEach((input) => {
+    shippingMethodValues.push(input.value);
+  });
+  console.log(shippingMethodValues);
 }
 
 if (checkoutForm) {
