@@ -97,7 +97,7 @@ function plntAjaxGetUrgent() {
 
 function onChangeShippingDate() {
   let isInMkad = true;
-  let shippingMethodInputs = document.querySelector('.woocommerce-shipping-methods input');
+  let shippingMethodInputs = document.querySelectorAll('.woocommerce-shipping-methods input');
   console.log(shippingMethodInputs);
 
 }
