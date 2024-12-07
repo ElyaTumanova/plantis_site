@@ -192,46 +192,76 @@ function plnt_get_shiping_costs() {
 }
 
 
-// add_action( 'woocommerce_before_checkout_shipping_form', 'before_shipping');
-
-// function before_shipping( $checkout ) {
-
-//     // check the user credentials here and if the condition is met set the shipping method
-
-//     WC()->session->set('chosen_shipping_methods', array( 'free_shipping:28' ) );
-
-// };
-
-//add_action('wp_footer','get_session_shipping');
-
-function get_session_shipping() {
-   $shipping_method =  WC()->session->get('chosen_shipping_methods');
-   $is_urgent =  WC()->session->get('isUrgent');
-
-   print_r($shipping_method);
-   echo '<br>';
-   echo $is_urgent;
-
-   echo'<script>
-   console.log('.$shipping_method.');
-   </script>';
-};
-
 add_filter( 'woocommerce_shipping_chosen_method', 'wp_kama_woocommerce_shipping_chosen_method_filter', 10, 3 );
 
-/**
- * Function for `woocommerce_shipping_chosen_method` filter-hook.
- * 
- * @param string $default       Default shipping method.
- * @param array  $rates         Shipping rates.
- * @param string $chosen_method Chosen method id.
- *
- * @return string
- */
 function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $chosen_method ){
-    if( $chosen_method === 'flat_rate:1') {
-        $default = 'flat_rate:13';
+
+    global $local_pickup;
+        
+    global $delivery_inMKAD;
+    global $delivery_outMKAD;
+
+    global $delivery_inMKAD_small;
+	global $delivery_outMKAD_small;
+	global $delivery_inMKAD_large;
+	global $delivery_outMKAD_large;
+
+    global $urgent_delivery_inMKAD; 
+	global $urgent_delivery_outMKAD; 
+	global $urgent_delivery_inMKAD_small; 
+	global $urgent_delivery_outMKAD_small;
+	global $urgent_delivery_inMKAD_large; 
+	global $urgent_delivery_outMKAD_large;
+
+
+    if( $chosen_method === $delivery_inMKAD) {
+        $default = $urgent_delivery_inMKAD;
     }
+
+    if( $chosen_method === $urgent_delivery_inMKAD) {
+        $default = $delivery_inMKAD;
+    }
+
+    if( $chosen_method === $delivery_outMKAD) {
+        $default = $urgent_delivery_outMKAD;
+    }
+
+    if( $chosen_method === $urgent_delivery_outMKAD) {
+        $default = $delivery_outMKAD;
+    }
+
+    if( $chosen_method === $delivery_inMKAD_small) {
+        $default = $urgent_delivery_inMKAD_small;
+    }
+
+    if( $chosen_method === $urgent_delivery_inMKAD_small) {
+        $default = $delivery_inMKAD_small;
+    }
+
+    if( $chosen_method === $delivery_outMKAD_small) {
+        $default = $urgent_delivery_outMKAD_small;
+    }
+
+    if( $chosen_method === $urgent_delivery_outMKAD_small) {
+        $default = $delivery_outMKAD_small;
+    }
+
+    if( $chosen_method === $delivery_inMKAD_large) {
+        $default = $urgent_delivery_inMKAD_large;
+    }
+
+    if( $chosen_method === $urgent_delivery_inMKAD_large) {
+        $default = $delivery_inMKAD_large;
+    }
+
+    if( $chosen_method === $delivery_outMKAD_large) {
+        $default = $urgent_delivery_outMKAD_large;
+    }
+
+    if( $chosen_method === $urgent_delivery_outMKAD_large) {
+        $default = $delivery_outMKAD_large;
+    }
+    
     return $default;
 }
 
