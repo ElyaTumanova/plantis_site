@@ -209,4 +209,8 @@ function get_session_shipping() {
    print_r($shipping_method);
    echo '<br>';
    echo $is_urgent;
+
+   echo'<script>
+   console.log('.$shipping_method.');
+   </script>'
 }
