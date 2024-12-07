@@ -76,38 +76,13 @@ Container::make('theme_options', 'Настройки темы')
 			 ->set_value_type( 'url' ),
 		))
 		->add_tab( __('Delivery'), array(
-			Field::make( 'text', 'in_mkad', 'Доставка в пределах МКАД на след день более мин суммы' ),
-			Field::make( 'text', 'out_mkad', 'Доставка за пределы МКАД на след день более мин суммы'),
-			Field::make( 'text', 'in_mkad_urg', 'Доставка в пределах МКАД срочная более мин суммы'),
-			Field::make( 'text', 'out_mkad_urg', 'Доставка за пределы МКАД срочная более мин суммы'),
-			Field::make( 'text', 'in_mkad_small', 'Доставка в пределах МКАД на след день до мин суммы'),
-			Field::make( 'text', 'out_mkad_small', 'Доставка за пределы МКАД на след день до мин суммы'),
-			Field::make( 'text', 'in_mkad_small_urg', 'Доставка в пределах МКАД срочная до мин суммы'),
-			Field::make( 'text', 'out_mkad_small_urg', 'Доставка за пределы МКАД срочная до мин суммы'),
 			Field::make( 'text', 'min_free_delivery', 'Минимальная сумма заказа для бесплатной доставки (текст с пробелом)'),
 			Field::make( 'text', 'min_small_delivery', 'Сумма заказа для более дорогой доставки'),
 			Field::make( 'text', 'min_treez_delivery', 'Сумма заказа для доставки кашпо Treez'),
-			Field::make( 'text', 'large_delivery_markup', 'Надбавка для крупногабаритной доставки'),
 	   ))
 		->add_tab( __('Header notice'), array(
 			Field::make( 'text', 'notice', 'Уведомление' ),
 			Field::make( 'checkbox', 'show_notice', __( 'Показать уведомление' ) )
     				->set_option_value( 'yes' ),
-			Field::make( 'text', 'weekend', 'Выходной (формат ГГГГ-ММ-ДД, разделитель - запятая без пробелов)' ),
+			Field::make( 'text', 'weekend', 'Выходной (формат ДД.ММ, разделитель - запятая без пробелов)' ),
 	   ));
-
-// Add second options page under 'Basic Options'
-// Container::make('theme_options', 'Social Links')
-//          ->set_page_parent('Настройки темы')  // title of a top level Theme Options page
-//          ->add_fields(array(
-// 		Field::make('text', 'crb_facebook_link', 'попр'),
-// 		Field::make('text', 'crb_twitter_link')
-// 	));
-
-// Add third options page under "Appearance"
-// Container::make('theme_options', 'Customize Background')
-// 			->set_page_parent('themes.php')
-//             ->add_fields(array(
-// 		Field::make('color', 'crb_background_color'),
-// 		Field::make('image', 'crb_background_image')
-// 	));

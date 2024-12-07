@@ -2,25 +2,30 @@
 get_header(); ?>
 
 <?php 
-    $in_mkad = carbon_get_theme_option('in_mkad');
-    $out_mkad = carbon_get_theme_option('out_mkad');
-    $in_mkad_urg = carbon_get_theme_option('in_mkad_urg');
-    $out_mkad_urg = carbon_get_theme_option('out_mkad_urg');
-    $in_mkad_small = carbon_get_theme_option('in_mkad_small');
-    $out_mkad_small = carbon_get_theme_option('out_mkad_small');
-    $in_mkad_small_urg = carbon_get_theme_option('in_mkad_small_urg');
-    $out_mkad_small_urg = carbon_get_theme_option('out_mkad_small_urg');
-    $min_free_delivery = carbon_get_theme_option('min_free_delivery');
+    // стоимость доставки
+   
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-    $large_delivery_markup = carbon_get_theme_option('large_delivery_markup');
+    $min_free_delivery = carbon_get_theme_option('min_free_delivery');
+    
+    $shipping_costs = plnt_get_shiping_costs();
 
-    if($large_delivery_markup) {
-        $in_mkad_large = $in_mkad + $large_delivery_markup;
-        $out_mkad_large = $out_mkad + $large_delivery_markup;
-        $in_mkad_urg_large = $in_mkad_urg + $large_delivery_markup;
-        $out_mkad_urg_large = $out_mkad_urg + $large_delivery_markup;
-    }
+    $in_mkad = $shipping_costs[$delivery_inMKAD];
+    $out_mkad = $shipping_costs[$delivery_outMKAD];
 
+	$in_mkad_urg = $shipping_costs[$urgent_delivery_inMKAD];
+	$out_mkad_urg = $shipping_costs[$urgent_delivery_outMKAD];
+
+	$in_mkad_large = $shipping_costs[$delivery_inMKAD_large];
+	$out_mkad_large = $shipping_costs[$delivery_outMKAD_large];
+
+	$in_mkad_urg_large = $shipping_costs[$urgent_delivery_inMKAD_large];
+	$out_mkad_urg_large = $shipping_costs[$urgent_delivery_outMKAD_large];
+ 
+	$in_mkad_small = $shipping_costs[$delivery_inMKAD_small];
+	$out_mkad_small = $shipping_costs[$delivery_outMKAD_small];
+
+	$in_mkad_small_urg = $shipping_costs[$urgent_delivery_inMKAD_small];
+	$out_mkad_small_urg = $shipping_costs[$urgent_delivery_outMKAD_small];
 ?>
 
 <div class="content-area">
@@ -51,23 +56,27 @@ get_header(); ?>
                 
                     <div>
                         <h3 class="delivery__heading heading-2">Если ваш заказ <b>до <?php echo $min_small_delivery ?></b> рублей:</h3>
-                        <p><strong>Доставка на следующий день или позже:</strong></p>
-                        <ul>
-                            <li>в пределах МКАД — <?php echo $in_mkad_small ?> рублей;</li>
-                            <li>за пределы МКАД (до 5 км) — <?php echo $out_mkad_small ?> рублей;</li>
-                            <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
-                        </ul>
-                        <p><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
-                        <ul>
-                            <li>в пределах МКАД — <?php echo $in_mkad_small_urg ?> рублей;</li>
-                            <li>за пределы МКАД (до 5 км) — <?php echo $out_mkad_small_urg ?> рублей;</li>
-                            <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
-                        </ul>
-                        <p class="info__note">В итоговой стоимости заказа не учитывается цена доставки!</p>
+                        <?php if(array_key_exists($delivery_courier,$shipping_costs)) :?>
+                            <p>Доставка осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</p>
+                        <?php else :?>
+                            <p><strong>Доставка на следующий день или позже:</strong></p>
+                            <ul>
+                                <li>в пределах МКАД — <?php echo $in_mkad_small ?> рублей;</li>
+                                <li>за пределы МКАД (до 5 км) — <?php echo $out_mkad_small ?> рублей;</li>
+                                <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
+                            </ul>
+                            <p><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
+                            <ul>
+                                <li>в пределах МКАД — <?php echo $in_mkad_small_urg ?> рублей;</li>
+                                <li>за пределы МКАД (до 5 км) — <?php echo $out_mkad_small_urg ?> рублей;</li>
+                                <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
+                            </ul>
+                            <p class="info__note">В итоговой стоимости заказа не учитывается цена доставки!</p>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
-                <?php if($large_delivery_markup) { 
+                <?php if(array_key_exists($delivery_inMKAD_large,$shipping_costs)) { 
                     echo '<div class="delivery__block">
                         <div class="delivery__header">
                             <h2 class="entry-header">Крупногабаритная доставка</h2>

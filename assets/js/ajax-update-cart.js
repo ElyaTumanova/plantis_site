@@ -108,4 +108,4 @@ function updateCatalogButtons(miniCartDiv) {
       button.setAttribute('class', 'button product_type_simple add_to_cart_button ajax_add_to_cart');
     };
   });
-  }
+}

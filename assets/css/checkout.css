@@ -7,11 +7,15 @@
     display: none;
 }
 
+.woocommerce-checkout-review-order-table {
+    table-layout:fixed;
+}
+
 @media (min-width: 768px) {
 	.order_wrap {
         display: grid;
         grid-template-columns: 45% auto;
-        column-gap: 40px;
+        column-gap: 60px;
 	}
 }
 
@@ -19,11 +23,11 @@
 	font-weight: 600;
 }
 
-#customer_details input {
+#customer_details input, .delivery_wrap input {
 	font-weight: 500 !important;
 }
 
-#customer_details span {
+#customer_details span, .delivery_wrap span {
 	font-weight: 500 !important;
 }
 
@@ -40,6 +44,8 @@
     margin-bottom: 15px;
     min-height: 20px;
     align-items: center;
+    flex-basis: 200px;
+    min-height: 100%;
 }
 
 .woocommerce-input-wrapper {
@@ -58,41 +64,6 @@
   line-height: 1.3;
 }
 
-.checkout__text {
-	font-weight: 500;
-    padding-top:20px;
-    line-height: 1.2;
-}
-
-.checkout__text_alarm {
-	color: var(--red-color);
-}
-
-.checkout__text span{
-	font-weight: 700;
-    font-size: 20px;
-}
-
-.checkout__text a{
-	color: var(--accent-color);
-}
-
-.checkout__free-delivery-text {
-    margin-top:20px; 
-    font-size:16px; 
-    font-weight:700; 
-    line-height: 1.3;
-    background-color: var(--accent-back); 
-    border-radius:10px; 
-    padding:10px; 
-    text-align:center;
-}
-
-.checkout__free-delivery-text span{
-   font-weight:700;
-   font-size: 20px;
-}
-
 .checkout__title {
 	text-transform: uppercase;
 	font-size: 16px;
@@ -109,46 +80,79 @@
 
 /*офорление блока доставка и итого*/
 
-.woocommerce-shipping-totals.shipping {border-top: 2px solid var(--accent-color); background-color: var(--accent-back);}
+/* .woocommerce-shipping-totals.shipping {
+    border-top: 2px solid var(--accent-color); 
+    background-color: var(--accent-back);
 
-#order_review > table > tfoot > tr.order-total {background-color:var(--accent-color);
-	color: #ffffff; }
+} */
 
-#order_review > table > tfoot > tr.order-total > td > strong > span {color: var(--white); font-size:20px; font-weight: 600;}
+#order_review .plnt-order-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+    margin-top: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 32px;
+    border-bottom: solid 2px var(--accent-color);
+    padding-bottom: 10px;
+}
+#order_review .plnt-order-total span {
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 600;
+}
+
+#order_review > table > tfoot > tr.order-total {
+    /* background-color:var(--accent-color);
+	color: #ffffff;  */
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 32px;
+    border-bottom: solid 2px var(--accent-color);
+    padding-bottom: 10px;
+}
+
+#order_review > table > tfoot > tr.order-total > td > strong > span {
+    /* color: var(--white);  */
+    font-size:20px; 
+    font-weight: 600;}
 
 #order_review > table > thead {background-color:var(--accent-color); color: var(--white);}
 
-#order_review > table > tbody {font-weight: 600}
+#order_review > table > tbody {font-weight: 600; border-bottom: 2px solid var(--accent-color);}
 
 #order_review > table > tfoot > tr.fee > td {background-color:#F1F6F3; color: #000000; } 
 
 #order_review > table > tfoot > tr.fee > td > span > bdi {color: #000000; } 
 
 #order_review > table > tfoot > tr:nth-child(3) > th {
-    font-weight: 500;
+    font-weight: 700;
     font-size: 16px;
-    padding: 10px 20px;
+    padding: 10px 5px;
     text-align: left;
 }
 
 #order_review > table > thead > tr > th.product-name {
     font-weight: 500;
     font-size: 16px;
-    padding: 10px 20px;
+    padding: 10px 5px;
     text-align: left;
+    width: 70%;
 }
 
 #order_review > table > thead > tr > th.product-total {
     font-weight: 500;
     font-size: 16px;
-    padding: 10px 20px;
+    padding: 10px 5px;
     text-align: right;
 }
 
 .woocommerce-checkout .woocommerce-checkout-review-order table tbody tr td {
-    padding: 17px 20px;
+    padding: 17px 5px;
     border-bottom: 1px solid #ebeced;
     font-size: 16px;
+    line-height: 1.2;
 }
 
 #order_review > table > tfoot > tr.woocommerce-shipping-totals.shipping > td > strong {
@@ -158,7 +162,7 @@
 }
 
 .woocommerce-checkout .woocommerce-checkout-review-order table tfoot tr td {
-    padding: 10px 20px;
+    padding: 20px 5px 0;
 }
 
 .woocommerce-checkout .woocommerce-checkout-review-order table tfoot tr:last-child td.product-total {
@@ -179,9 +183,9 @@
     display: none;
 }
 
-.woocommerce-checkout .woocommerce-checkout-review-order table tr th:last-child, .woocommerce-checkout .woocommerce-checkout-review-order table tr td:last-child {
+/* .woocommerce-checkout .woocommerce-checkout-review-order table tr th:last-child, .woocommerce-checkout .woocommerce-checkout-review-order table tr td:last-child {
     width: 140px;
-}
+} */
 
 #order_review table > tbody > tr > td.product-total {
     text-align: right;
@@ -192,16 +196,27 @@
     justify-content: end;
 }
 
+#shipping_method {
+    display: flex;
+    min-height: 85px;
+}
+
+#shipping_method label::before {
+    display: none;
+}
+
 #shipping_method li label {
     width: 100%;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    /* align-items: flex-start; */
+    height: 100%;
 }
 
 #shipping_method li span {
-    margin-left: auto;
+    /* margin-left: auto;
     min-width: 85px;
-    text-align: right;
+    text-align: right; */
+    display: none;
 }
 
 .large_delivery_notice {
@@ -376,77 +391,143 @@
     border-radius: 3px;
 }
 
-/* время доставки */
+/* дата и время доставки */
+
+.delivery_wrap {
+    display: flex;
+    /* margin-top: 35px; */
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 20px 5px 0;
+}
+
+.delivery_wrap > p > label {
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 32px;
+}
+
+.delivery_wrap span {
+    margin-bottom: 10px;
+}
+
+.delivery_wrap .optional {
+    display: none;
+}
+
+.delivery_wrap input {
+    padding: 14px 20px;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+.delivery_wrap .swiper-button-next {
+    height: 30px;
+    width: 30px;
+    margin-top: -5px;
+    right: 3px;
+}
+
+.delivery_wrap .swiper-button-prev {
+    height: 30px;
+    width: 30px;
+    margin-top: -5px;
+    left: 3px;
+}
 
 .woocommerce-additional-fields__field-wrapper {
-    display: grid;
-    grid-template-columns: repeat( 2, 1fr);
-    grid-template-rows: auto auto auto;
-    grid-template-areas: "date interval"
-    "comment comment"
-    "inn inn";
+    display: flex;
+    flex-direction: column;
     column-gap: 30px;
     row-gap: 30px;
     margin-bottom: 30px;
 }
 
-#datepicker_field {
-    grid-area: date;
+@media (max-width: 767px) {
+    .woocommerce-additional-fields__field-wrapper {
+        row-gap: 15px;
+    }
 }
 
-#additional_delivery_interval_field {
-    grid-area: interval;
-}
 
-#order_comments_field {
-    grid-area: comment;
-}
-
-#additional_inn_field {
-    grid-area: inn;
-}
-
-#additional_delivery_interval_field label::before{
+#additional_delivery_interval_field label::before, #delivery_dates_field label::before{
     display: none;
 }
 
 #additional_delivery_interval_field .woocommerce-input-wrapper {
-    display: grid;
-    grid-template-columns: repeat( 2, 1fr);
-    column-gap: 10px;
-    row-gap: 10px;
+    /* display: grid;
+    grid-template-columns: repeat( 2, 1fr); */
+    display: flex;
+    justify-content: start;
+    /* column-gap: 10px;
+    row-gap: 10px; */
+    overflow: scroll;
+    scrollbar-width: none;
 }
 
-#additional_delivery_interval_field .woocommerce-input-wrapper label {
+/* для работы слайдера */
+#delivery_dates_field {  
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+}
+/* #delivery_dates_field .woocommerce-input-wrapper {
+    overflow: scroll;
+    scrollbar-width: none;
+} */
+
+#additional_delivery_interval_field > label {
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 32px;
+}
+
+#additional_delivery_interval_field .woocommerce-input-wrapper label, 
+#delivery_dates_field .woocommerce-input-wrapper label, 
+#shipping_method label {
     background-color: #f5f5f5;
     border: 1px solid #D0D0D0;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     border-radius: 5px;
-    margin: 5px;
+    /* margin: 5px; */
     padding: 5px;
+    margin-right: 10px;
     text-align: center;
+
+    font-size: 13px;
+    line-height: 14px;
+    font-weight: 500;
+
+    width: 95px;
+    min-height: 28px;
+}
+
+#delivery_dates_field .woocommerce-input-wrapper label span {
+    font-size: 11px;
+    line-height: 13px;
+    font-weight: 400;
+    color: var(--accent-color);
+    margin:0;
 }
 
 #additional_delivery_interval_field .woocommerce-input-wrapper input[type=radio]:checked + label {
     background-color: #3a3a3a;
     color: #fff;
 }
-
-/* #orddd-checkout-fields {
-    display: flex;
-    column-gap: 30px;
+#delivery_dates_field .woocommerce-input-wrapper input[type=radio]:checked + label {
+    background-color: #3a3a3a;
+    color: #fff;
+}
+#shipping_method input[type=radio]:checked + label {
+    background-color: #3a3a3a;
+    color: #fff;
 }
 
-#orddd-checkout-fields p {
-    width: calc(50% - 15px);
-    margin-bottom: 30px;
+#delivery_dates_field .woocommerce-input-wrapper input[type=radio]:checked + label span {
+    color: #fff;
 }
-
-#orddd-checkout-fields input {
-    padding: 14px 20px;
-    width: 100%;
-    border: 1px solid #ccc;
-}*/
 
 .woocommerce-additional-fields__field-wrapper label {
     margin-bottom: 10px;
@@ -462,35 +543,10 @@ label.list-view {
     margin: 0 !important;
 }
 
-/* div#orddd_list_view_select {
-    grid-template-columns: repeat( 2, 1fr) !important;
-    column-gap: 10px !important;
-    row-gap: 10px !important;
-}
-
-#e_deliverydate_field .optional {
-    display: none;
-}
-
-#orddd_time_slot_field .optional {
-    display: none;
-} */
 
 /* время доставки #adaptive*/
 
 @media (min-width: 768px ) and (max-width: 1024px) {
-    /* #orddd-checkout-fields {
-        display: flex;
-        flex-direction: column;
-    }
-
-    #orddd-checkout-fields p {
-        width: 100%;
-    }
-
-    div#orddd_list_view_select {
-        grid-template-columns: repeat( 4, 1fr) !important;
-    } */
 
     .woocommerce-additional-fields__field-wrapper {
         grid-template-columns: 100%;
@@ -508,18 +564,7 @@ label.list-view {
 }
 
 @media (max-width: 540px) {
-    /* #orddd-checkout-fields {
-        display: flex;
-        flex-direction: column;
-    }
 
-    #orddd-checkout-fields p {
-        width: 100%;
-    }
-
-    div#orddd_list_view_select {
-        grid-template-columns: repeat( 4, 1fr) !important;
-    } */
 
     .woocommerce-additional-fields__field-wrapper {
         grid-template-columns: 100%;
@@ -592,6 +637,45 @@ label.list-view {
     border-color: var(--accent-color);
 }
 
+/* уведомления */
+
+.checkout__text {
+	font-weight: 500;
+    line-height: 1.2;
+    padding: 10px !important;
+    background-color: var(--gray);
+    border-radius: 5px;
+}
+
+/* .checkout__text_alarm {
+	color: var(--red-color);
+} */
+
+.checkout__text span{
+	font-weight: 700;
+    font-size: 20px;
+}
+
+.checkout__text a{
+	color: var(--accent-color);
+}
+
+.checkout__free-delivery-text {
+    margin-top:20px; 
+    font-size:16px; 
+    font-weight:700; 
+    line-height: 1.3;
+    background-color: var(--accent-back); 
+    border-radius:10px; 
+    padding:10px; 
+    text-align:center;
+}
+
+.checkout__free-delivery-text span{
+   font-weight:700;
+   font-size: 20px;
+}
+
 /* radio button */
 
 /* для элемента input c type="radio" */
@@ -609,6 +693,7 @@ label.list-view {
     user-select: none;
   }
 
+  
   /* создание в label псевдоэлемента  before со следующими стилями */
   .order_wrap input[type=radio]+label::before {
     content: '';

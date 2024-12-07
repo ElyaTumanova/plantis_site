@@ -271,3 +271,34 @@ const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
 # Filter Metki
 --------------------------------------------------------------*/
 // слайдер инициирован в wc-catalog-functions, чтобы повторно инициироваться при аякс обновлении каталога при приминении фильтров
+
+
+/*--------------------------------------------------------------
+# Checkout
+--------------------------------------------------------------*/
+let deliveryWrapper = document.querySelector('#delivery_dates_field .woocommerce-input-wrapper');
+if(deliveryWrapper){deliveryWrapper.classList.add('swiper-wrapper');}
+
+let deliverySwiper = document.querySelector('.swiper');
+
+let deliverySwiperPrev = document.createElement('div');
+deliverySwiperPrev.classList.add('swiper-button-prev');
+deliverySwiper.appendChild(deliverySwiperPrev);
+
+let deliverySwiperNext = document.createElement('div');
+deliverySwiperNext.classList.add('swiper-button-next');
+deliverySwiper.appendChild(deliverySwiperNext);
+
+
+const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
+
+    slidesPerView: 'auto',
+    slidesPerGroup: 1,
+    spaceBetween: 0,
+    
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+
+});

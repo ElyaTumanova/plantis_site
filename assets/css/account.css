@@ -404,7 +404,7 @@
     margin-bottom: 50px;
 }
 
-@media (max-width:840px) {
+@media (max-width:690px) {
     .plnt-order__details {
         grid-template-columns: auto;
     }
@@ -415,52 +415,72 @@
 
 .plnt-order__items {
     padding-top: 15px;
+    padding-bottom: 17px;
+    border-bottom: solid 1px var(--gray-text);
 }
 
 .plnt-order__totals-row {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+
+    border-bottom: solid 1px var(--gray-text);
+    padding-bottom: 15px;
+}
+
+.plnt-order__totals-row_total {
+    text-transform: uppercase;
 }
 
 .plnt-order__totals {
     display: flex;
     flex-direction: column;
     row-gap: 17px;
-    padding: 15px;
+    margin-top: 17px;
+    /* padding: 15px;
     background-color: var(--gray);
-    border-radius: 5px;
-    max-width: 680px;
-    margin-top: 30px;
+    border-radius: 5px; */
+    /* max-width: 680px; */
+
+    color: var(--text);
 }
 
 .plnt-order__totals-label {
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .plnt-order__totals-value {
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     text-align: end;
     align-items: end;
 }
 
-.plnt-order__totals-value .shipped_via {
-    max-width: 60%;
+.plnt-order__totals-value_delivery {
+    flex-direction: row-reverse;
+    column-gap: 5px;
+    align-items: center;
 }
 
+/* .plnt-order__totals-value .shipped_via {
+    max-width: 60%;
+} */
+
 .plnt-order__totals-value_total {
-    font-size: 25px;
+    font-size: 22px;
 }
 
 .plnt-order__item {
-    margin-bottom: 10px;
     display: grid;
-    grid-template-columns: auto 140px 50px;
+    grid-template-columns: auto 140px 40px;
     grid-template-areas: "name price qty";
     align-items: center;
+}
+.plnt-order__item:not(:last-child) {
+    margin-bottom: 10px;
 }
 
 .plnt-order__items a {
@@ -482,6 +502,7 @@
 .plnt-order__items .product-quantity {
     grid-area: qty;
     align-self: center;
+    text-align: end;
 }
 
 /*--------------------------------------------------------------
@@ -508,10 +529,20 @@
 /* детали заказа */
 .woocommerce-thankyou-order-details {
     margin-bottom: 20px;
+    display: flex;
+    column-gap: 15px;
+    justify-content: space-between;
+    max-width: 650px;
 }
 
 .woocommerce-thankyou-order-details li{
     margin-bottom: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 220px;
+    row-gap: 5px;
 }
 
 .woocommerce-order-details {
@@ -562,6 +593,17 @@
 
 .woocommerce-order-received .woocommerce-order .woocommerce-table--order-details td {
     padding: 5px 0;
+}
+
+/* дата доставки */
+
+.plnt-order__delivery-row {
+    display: flex;
+    column-gap: 15px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    font-size: 18px;
+    font-style: normal;
 }
 
 /* адрес клиента */ 
