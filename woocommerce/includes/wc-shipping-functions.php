@@ -205,7 +205,7 @@ function reset_default_shipping_method( $method, $available_methods ) {
 
 //add_filter('woocommerce_shipping_chosen_method', 'reset_default_shipping_method', 10, 2);
 
-add_action( 'woocommerce_before_checkout_form', 'ts_uncheck_default_shipping_method' );
+//add_action( 'woocommerce_before_checkout_form', 'ts_uncheck_default_shipping_method' );
 
 function ts_uncheck_default_shipping_method() {
     WC()->session->set( 'chosen_shipping_methods', 'free_shipping:28' );
