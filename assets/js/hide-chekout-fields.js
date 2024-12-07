@@ -51,7 +51,6 @@ function plnt_hide_checkout_fields(event){
             if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
         }
         //if (deliveryDate) {deliveryDate.classList.remove('d-none')};
-        if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
         if (addressFields) {addressFields.classList.remove('d-none');}
         if (additionalAddress) {additionalAddress.classList.remove('d-none');}
     }
