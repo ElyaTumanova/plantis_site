@@ -188,3 +188,14 @@ function plnt_get_shiping_costs() {
 
 	return $shipping_costs;
 }
+
+
+add_action( 'woocommerce_before_checkout_shipping_form', 'before_shipping');
+
+function before_shipping( $checkout ) {
+
+    // check the user credentials here and if the condition is met set the shipping method
+
+    WC()->session->set('chosen_shipping_methods', array( 'free_shipping:28' ) );
+
+}ж
