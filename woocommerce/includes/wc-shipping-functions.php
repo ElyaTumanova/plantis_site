@@ -188,3 +188,19 @@ function plnt_get_shiping_costs() {
 
 	return $shipping_costs;
 }
+
+function reset_default_shipping_method( $method, $available_methods ) {
+
+    // If the shipping method has been chosen don't do anything
+    if ( ! empty( $method ) ) {
+        return $method;
+    }        
+
+    // add code to set 'Table Rate' as the default shipping method 
+
+    $method = 'free_shipping:28';
+
+    return $method;    
+}
+
+add_filter('woocommerce_shipping_chosen_method', 'reset_default_shipping_method', 10, 2)
