@@ -206,6 +206,7 @@ function get_session_shipping() {
    $shipping_method =  WC()->session->get('chosen_shipping_methods');
    $is_urgent =  WC()->session->get('isUrgent');
 
-   echo $shipping_method;
+   print_r($shipping_method);
+   echo '<br>';
    echo $is_urgent;
 }
