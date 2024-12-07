@@ -215,7 +215,7 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
 	global $urgent_delivery_outMKAD_large;
 
     $default = $chosen_method;
-    
+
     if( $chosen_method === $delivery_inMKAD) {
         $default = $urgent_delivery_inMKAD;
     }
@@ -269,18 +269,18 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
 
 // новое поле для способов доставки в админке
 
-// add_action('woocommerce_init', 'woocommerce_shipping_instances_form_fields_filters');
-// function woocommerce_shipping_instances_form_fields_filters(){
-//     foreach( WC()->shipping->get_shipping_methods() as $shipping_method ) {
-//         add_filter('woocommerce_shipping_instance_form_fields_' . $shipping_method->id, 'shipping_methods_additional_custom_field');
-//     }
-// }
+add_action('woocommerce_init', 'woocommerce_shipping_instances_form_fields_filters');
+function woocommerce_shipping_instances_form_fields_filters(){
+    foreach( WC()->shipping->get_shipping_methods() as $shipping_method ) {
+        add_filter('woocommerce_shipping_instance_form_fields_' . $shipping_method->id, 'shipping_methods_additional_custom_field');
+    }
+}
 
-// function shipping_methods_additional_custom_field( $settings ) {
-//     $settings['shipping_comment'] = array(
-//         'title'         => __('Shipping Comment', 'woocommerce'),
-//         'type'          => 'text', 
-//         'placeholder'   => __( 'Enter any additional comments for this shipping method.', 'woocommerce' ),
-//     );
-//     return $settings;
-// } 
+function shipping_methods_additional_custom_field( $settings ) {
+    $settings['shipping_comment'] = array(
+        'title'         => __('Shipping Comment', 'woocommerce'),
+        'type'          => 'text', 
+        'placeholder'   => __( 'Enter any additional comments for this shipping method.', 'woocommerce' ),
+    );
+    return $settings;
+} 
