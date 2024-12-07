@@ -188,32 +188,3 @@ function plnt_get_shiping_costs() {
 
 	return $shipping_costs;
 }
-
-function reset_default_shipping_method( $method, $available_methods ) {
-
-    // If the shipping method has been chosen don't do anything
-    // if ( ! empty( $method ) ) {
-    //     return $method;
-    // }        
-
-    // add code to set 'Table Rate' as the default shipping method 
-
-    $method = 'free_shipping:28';
-
-    return $method;    
-}
-
-//add_filter('woocommerce_shipping_chosen_method', 'reset_default_shipping_method', 10, 2);
-
-//add_action( 'woocommerce_before_checkout_form', 'ts_uncheck_default_shipping_method' );
-
-function ts_uncheck_default_shipping_method() {
-    WC()->session->set( 'chosen_shipping_methods', 'free_shipping:28' );
-    // wc_enqueue_js( "
-    // $( document.body ).one( 'updated_checkout', function() {
-    // $('input.shipping_method').prop('checked', false);
-    // });
-    // " );
-}
-
-//add_filter( 'woocommerce_shipping_chosen_method', '__return_null' );
