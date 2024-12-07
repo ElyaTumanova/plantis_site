@@ -46,6 +46,14 @@ function plnt_hide_checkout_fields(event){
         if (additionalAddress) {additionalAddress.classList.remove('d-none');}
     }
 
+    if (isUrgent === '1') {
+        if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
+    }
+    
+    if (isUrgent === '0') {
+        if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
+    }
+
     if(event && event.target.id == "payment_method_cheque") {
         //console.log(event);
         if (innField) {innField.classList.remove('d-none')};
