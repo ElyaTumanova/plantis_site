@@ -61,6 +61,26 @@ function plnt_shipping_conditions( $rates, $package ) {
 	global $urgent_delivery_inMKAD_large; 
 	global $urgent_delivery_outMKAD_large;
 
+    
+    /*СРОЧНАЯ ДОСТАВКА*/
+    if (WC()->session->get('isUrgent' ) === '0') {
+        unset( $rates[ $urgent_delivery_inMKAD ] );
+        unset( $rates[ $urgent_delivery_outMKAD ] );
+        unset( $rates[ $urgent_delivery_inMKAD_small ] );
+        unset( $rates[ $urgent_delivery_outMKAD_small ] );
+        unset( $rates[ $urgent_delivery_inMKAD_large ] );
+        unset( $rates[ $urgent_delivery_outMKAD_large ] );
+    }   
+
+    if (WC()->session->get('isUrgent' ) === '1') {
+        unset( $rates[ $delivery_inMKAD ] );
+        unset( $rates[ $delivery_outMKAD ] );
+        unset( $rates[ $delivery_inMKAD_small ] );
+        unset( $rates[ $delivery_outMKAD_small ] );
+        unset( $rates[ $delivery_inMKAD_large ] );
+        unset( $rates[ $delivery_outMKAD_large ] );
+    }
+
     /*СТОИМОСТЬ ДОСТАВКИ ПО СУММЕ*/
 
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
@@ -108,25 +128,6 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $urgent_delivery_inMKAD_large ] );
         unset( $rates[ $urgent_delivery_outMKAD_large ] );
 
-    }
-
-    /*СРОЧНАЯ ДОСТАВКА*/
-    if (WC()->session->get('isUrgent' ) === '0') {
-        unset( $rates[ $urgent_delivery_inMKAD ] );
-        unset( $rates[ $urgent_delivery_outMKAD ] );
-        unset( $rates[ $urgent_delivery_inMKAD_small ] );
-        unset( $rates[ $urgent_delivery_outMKAD_small ] );
-        unset( $rates[ $urgent_delivery_inMKAD_large ] );
-        unset( $rates[ $urgent_delivery_outMKAD_large ] );
-    }   
-
-    if (WC()->session->get('isUrgent' ) === '1') {
-        unset( $rates[ $delivery_inMKAD ] );
-        unset( $rates[ $delivery_outMKAD ] );
-        unset( $rates[ $delivery_inMKAD_small ] );
-        unset( $rates[ $delivery_outMKAD_small ] );
-        unset( $rates[ $delivery_inMKAD_large ] );
-        unset( $rates[ $delivery_outMKAD_large ] );
     }
 
 	return $rates;
