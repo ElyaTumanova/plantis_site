@@ -9,6 +9,7 @@ let additionalAddress = document.querySelector('.additional-address-field');
 
 let innField = document.querySelector('#additional_inn');
 
+console.log(isUrgent);
 
 /*--------------------------------------------------------------
 # Hiding fields
