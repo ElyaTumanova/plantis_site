@@ -245,6 +245,7 @@ Contents
 
     // // сохряняем новое поле в заказе
 
+
     add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_delivery_fields', 25 );
     
     function plnt_save_delivery_fields( $order_id ){
@@ -252,6 +253,7 @@ Contents
         if( ! empty( $_POST[ 'delivery_dates' ] ) ) {
             update_post_meta( $order_id, 'delivery_dates', sanitize_text_field( $_POST[ 'delivery_dates' ] ) );
         }
+
 
         if( ! empty( $_POST[ 'additional_delivery_interval' ] ) ) {
             update_post_meta( $order_id, 'additional_delivery_interval', $_POST[ 'additional_delivery_interval' ] );
