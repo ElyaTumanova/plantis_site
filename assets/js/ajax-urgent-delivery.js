@@ -7,8 +7,6 @@ let shippingMethodValues = [];
 let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
 let checkedShippingMethod;
 let today;
-let sessionShippingId;
-let destination;
 
 
 function plntChekUrgentDelivery() {
@@ -33,12 +31,12 @@ function plntChekUrgentDelivery() {
 function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
         renderDeliveryDates(event.target.value);
-        console.log(event.target.value);
+        // console.log(event.target.value);
     }
 }
 
 function renderDeliveryDates(shippingValue) {
-  console.log(shippingValue);
+  // console.log(shippingValue);
   deliveryDatesInfo.forEach((info) => {
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
@@ -108,7 +106,7 @@ if (checkoutForm) {
 
   checkedShippingMethod = checkedShippingMethodInput.value;
   
-  console.log(checkedShippingMethod);
+ // console.log(checkedShippingMethod);
 
   deliveryDatesLables.forEach((label) => {
     let dateInfo = {
