@@ -14,7 +14,7 @@ let innField = document.querySelector('#additional_inn');
 --------------------------------------------------------------*/
 
 function plnt_hide_checkout_fields(event){
-    console.log(isUrgent);
+    
     //console.log('hi plnt_hide_checkout_fields');
     //console.log(deliveryIntervalInput)
     // if (event) {console.log(event)};
@@ -22,7 +22,7 @@ function plnt_hide_checkout_fields(event){
         // console.log(event);
         checkedShippingMethod = event.target.value;
     }
-    console.log(checkedShippingMethod);
+    
     //TO BE DELETED
     // if (urgentPickups.includes(checkedShippingMethod))  
     // {
@@ -40,12 +40,14 @@ function plnt_hide_checkout_fields(event){
         if (addressFields) {addressFields.classList.add('d-none');}
         if (additionalAddress) {additionalAddress.classList.add('d-none');}
     } else {
-        if (isUrgent === '1') {
+        console.log(checkedShippingMethod);
+        console.log(isUrgent);
+        if (isUrgent == '1') {
             if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
             if (deliveryIntervalInput) {deliveryIntervalInput.checked = false};
         }
     
-        if (isUrgent === '0') {
+        if (isUrgent == '0') {
             if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
         }
         //if (deliveryDate) {deliveryDate.classList.remove('d-none')};
