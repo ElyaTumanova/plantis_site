@@ -41,20 +41,20 @@ function plnt_hide_checkout_fields(event){
         if (addressFields) {addressFields.classList.add('d-none');}
         if (additionalAddress) {additionalAddress.classList.add('d-none');}
     } else {
+        if (isUrgent === '1') {
+            if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
+            if (deliveryIntervalInput) {deliveryIntervalInput.checked = false};
+        }
+    
+        if (isUrgent === '0') {
+            if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
+        }
         //if (deliveryDate) {deliveryDate.classList.remove('d-none')};
         if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
         if (addressFields) {addressFields.classList.remove('d-none');}
         if (additionalAddress) {additionalAddress.classList.remove('d-none');}
     }
 
-    if (isUrgent === '1') {
-        if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
-        if (deliveryIntervalInput) {deliveryIntervalInput.checked = false};
-    }
-
-    if (isUrgent === '0') {
-        if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
-    }
 
     if(event && event.target.id == "payment_method_cheque") {
         //console.log(event);
