@@ -38,7 +38,7 @@ function onChangeShippingMethod(event) {
 }
 
 function renderDeliveryDates(shippingValue) {
-  //console.log(shippingValue);
+  console.log(shippingValue);
   deliveryDatesInfo.forEach((info) => {
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
