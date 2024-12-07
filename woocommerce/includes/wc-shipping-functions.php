@@ -202,7 +202,7 @@ function plnt_get_shiping_costs() {
 
 // };
 
-add_action('wp_footer','get_session_shipping');
+//add_action('wp_footer','get_session_shipping');
 
 function get_session_shipping() {
    $shipping_method =  WC()->session->get('chosen_shipping_methods');
