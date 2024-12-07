@@ -203,4 +203,17 @@ function reset_default_shipping_method( $method, $available_methods ) {
     return $method;    
 }
 
-add_filter('woocommerce_shipping_chosen_method', 'reset_default_shipping_method', 10, 2);
+//add_filter('woocommerce_shipping_chosen_method', 'reset_default_shipping_method', 10, 2);
+
+add_action( 'woocommerce_before_checkout_form', 'ts_uncheck_default_shipping_method' );
+
+function ts_uncheck_default_shipping_method() {
+    WC()->session->set( 'chosen_shipping_methods', null );
+    wc_enqueue_js( "
+    $( document.body ).one( 'updated_checkout', function() {
+    $('input.shipping_method').prop('checked', false);
+    });
+    " );
+}
+
+add_filter( 'woocommerce_shipping_chosen_method', '__return_null' );
