@@ -213,4 +213,4 @@ function get_session_shipping() {
    echo'<script>
    console.log('.$shipping_method.');
    </script>'
-}
+};
