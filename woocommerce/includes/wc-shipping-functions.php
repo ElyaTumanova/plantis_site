@@ -203,4 +203,4 @@ function reset_default_shipping_method( $method, $available_methods ) {
     return $method;    
 }
 
-add_filter('woocommerce_shipping_chosen_method', 'reset_default_shipping_method', 10, 2)
+add_filter('woocommerce_shipping_chosen_method', 'reset_default_shipping_method', 10, 2);
