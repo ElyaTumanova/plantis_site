@@ -192,7 +192,7 @@ function plnt_get_shiping_costs() {
 }
 
 
-add_filter( 'woocommerce_shipping_chosen_method', 'wp_kama_woocommerce_shipping_chosen_method_filter', 10, 3 );
+//add_filter( 'woocommerce_shipping_chosen_method', 'wp_kama_woocommerce_shipping_chosen_method_filter', 10, 3 );
 
 function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $chosen_method ){
 
