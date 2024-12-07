@@ -199,3 +199,13 @@ function before_shipping( $checkout ) {
     WC()->session->set('chosen_shipping_methods', array( 'free_shipping:28' ) );
 
 };
+
+add_action('wp_footer','get_session_shipping');
+
+function get_session_shipping() {
+   $shipping_method =  WC()->session->get('chosen_shipping_methods');
+   $is_urgent =  WC()->session->get('isUrgent');
+
+   echo $shipping_method;
+   echo $is_urgent;
+}
