@@ -22,7 +22,7 @@ function plnt_hide_checkout_fields(event){
         // console.log(event);
         checkedShippingMethod = event.target.value;
     }
-
+    console.log(checkedShippingMethod);
     //TO BE DELETED
     // if (urgentPickups.includes(checkedShippingMethod))  
     // {
