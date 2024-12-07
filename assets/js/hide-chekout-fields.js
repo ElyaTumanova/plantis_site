@@ -9,13 +9,12 @@ let additionalAddress = document.querySelector('.additional-address-field');
 
 let innField = document.querySelector('#additional_inn');
 
-console.log(isUrgent);
-
 /*--------------------------------------------------------------
 # Hiding fields
 --------------------------------------------------------------*/
 
 function plnt_hide_checkout_fields(event){
+    console.log(isUrgent);
     //console.log('hi plnt_hide_checkout_fields');
     //console.log(deliveryIntervalInput)
     // if (event) {console.log(event)};
