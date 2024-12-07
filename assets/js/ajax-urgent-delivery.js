@@ -34,7 +34,6 @@ function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
         renderDeliveryDates(event.target.value);
         console.log(event.target.value);
-        window.sessionStorage.setItem('sessionShippingId', event.target.value);
     }
 }
 
@@ -109,7 +108,7 @@ if (checkoutForm) {
 
   checkedShippingMethod = checkedShippingMethodInput.value;
   
-  //console.log(checkedShippingMethod);
+  console.log(checkedShippingMethod);
 
   deliveryDatesLables.forEach((label) => {
     let dateInfo = {
