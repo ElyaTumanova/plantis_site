@@ -281,14 +281,15 @@ if(deliveryWrapper){deliveryWrapper.classList.add('swiper-wrapper');}
 
 let deliverySwiper = document.querySelector('.delivery_dates');
 
-let deliverySwiperPrev = document.createElement('div');
-deliverySwiperPrev.classList.add('swiper-button-prev');
-deliverySwiper.appendChild(deliverySwiperPrev);
-
-let deliverySwiperNext = document.createElement('div');
-deliverySwiperNext.classList.add('swiper-button-next');
-deliverySwiper.appendChild(deliverySwiperNext);
-
+if (deliverySwiper) {
+    let deliverySwiperPrev = document.createElement('div');
+    deliverySwiperPrev.classList.add('swiper-button-prev');
+    deliverySwiper.appendChild(deliverySwiperPrev);
+    
+    let deliverySwiperNext = document.createElement('div');
+    deliverySwiperNext.classList.add('swiper-button-next');
+    deliverySwiper.appendChild(deliverySwiperNext);
+}
 
 const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
 
