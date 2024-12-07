@@ -26,7 +26,7 @@ function plntChekUrgentDelivery() {
       }
       //console.log(isUrgent);
       plntAjaxGetUrgent();
-      onChangeShippingDate();
+      //onChangeShippingDate();
       });
   })
 };

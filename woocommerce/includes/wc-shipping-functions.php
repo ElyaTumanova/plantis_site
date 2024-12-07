@@ -192,9 +192,9 @@ function plnt_get_shiping_costs() {
 function reset_default_shipping_method( $method, $available_methods ) {
 
     // If the shipping method has been chosen don't do anything
-    if ( ! empty( $method ) ) {
-        return $method;
-    }        
+    // if ( ! empty( $method ) ) {
+    //     return $method;
+    // }        
 
     // add code to set 'Table Rate' as the default shipping method 
 
