@@ -133,10 +133,10 @@ if (checkoutForm) {
   };
   //console.log(today);
 
-  checkedShippingMethod = checkedShippingMethodInput.value;
-  window.sessionStorage.setItem('sessionShippingId', checkedShippingMethod);
+  //checkedShippingMethod = checkedShippingMethodInput.value;
+  //window.sessionStorage.setItem('sessionShippingId', checkedShippingMethod);
   
-  console.log(checkedShippingMethod);
+  //console.log(checkedShippingMethod);
 
   deliveryDatesLables.forEach((label) => {
     let dateInfo = {
