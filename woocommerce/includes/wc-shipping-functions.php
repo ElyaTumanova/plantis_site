@@ -214,7 +214,11 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
 	global $urgent_delivery_inMKAD_large; 
 	global $urgent_delivery_outMKAD_large;
 
-    $default = $chosen_method;
+    if($chosen_method) {
+        $default = $chosen_method;
+    } else {
+        $default = $local_pickup;
+    }
 
     if( $chosen_method === $delivery_inMKAD) {
         $default = $urgent_delivery_inMKAD;
