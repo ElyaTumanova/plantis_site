@@ -229,8 +229,8 @@ add_filter( 'woocommerce_shipping_chosen_method', 'wp_kama_woocommerce_shipping_
  * @return string
  */
 function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $chosen_method ){
-    if( WC()->session->get('destination') == 'inMkad') {
-        $default = 'flat_rate:12';
+    if( WC()->session->get('destination') === 'inMkad') {
+        $default = 'free_shipping:28';
     }
     return $default;
 }
