@@ -26,7 +26,6 @@ function plntChekUrgentDelivery() {
       }
       //console.log(isUrgent);
       plntAjaxGetUrgent();
-      //onChangeShippingDate();
       });
   })
 };
@@ -79,7 +78,6 @@ function plntAjaxGetUrgent() {
             data: {
                 'action': 'get_urgent_shipping',
                 'isUrgent': isUrgent,
-                'destination':'inMkad',
             },
             success: function (result) {
                 // Trigger refresh checkout
@@ -99,31 +97,6 @@ function plntAjaxGetUrgent() {
   // }
 };
 
-function onChangeShippingDate() {
-  setTimeout(() => {
-    let shippingMethodInputs = document.querySelectorAll('.woocommerce-shipping-methods input');
-    console.log(shippingMethodInputs);
-
-  
-  sessionShippingId = window.sessionStorage.getItem('sessionShippingId');
-  console.log(sessionShippingId);
-  if (deliveryIdsInMkad.includes(sessionShippingId)) {
-    destination = 'inMkad';
-    shippingMethodInputs.forEach((input) => {
-      if (deliveryIdsInMkad.includes(input.value)) {
-        console.log(input);
-      };
-    });
-  } else if (deliveryIdsOutMkad.includes(sessionShippingId)) {
-    destination = 'outMkad';
-  } else {
-    destination = 'other';
-  }
-  shippingMethodInputs[2].setAttribute('checked','checked');
-  
-}, 1000)
-}
-
 if (checkoutForm) {
 
   let hour = new Date().getHours();
@@ -134,8 +107,7 @@ if (checkoutForm) {
   };
   //console.log(today);
 
-  //checkedShippingMethod = checkedShippingMethodInput.value;
-  //window.sessionStorage.setItem('sessionShippingId', checkedShippingMethod);
+  checkedShippingMethod = checkedShippingMethodInput.value;
   
   //console.log(checkedShippingMethod);
 
