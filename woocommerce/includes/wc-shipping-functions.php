@@ -229,7 +229,9 @@ add_filter( 'woocommerce_shipping_chosen_method', 'wp_kama_woocommerce_shipping_
  * @return string
  */
 function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $chosen_method ){
-
-	$default = 'flat_rate:12';
-	return $default;
+    if( WC()->session->get('destination') == 'outMkad') {
+        $default = 'flat_rate:12';
+    }
+    return $default;
 }
+

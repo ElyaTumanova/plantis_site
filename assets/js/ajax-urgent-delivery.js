@@ -79,7 +79,7 @@ function plntAjaxGetUrgent() {
             data: {
                 'action': 'get_urgent_shipping',
                 'isUrgent': isUrgent,
-                'destination':'flat_rate:12',
+                'destination':'inMkad',
             },
             success: function (result) {
                 // Trigger refresh checkout
