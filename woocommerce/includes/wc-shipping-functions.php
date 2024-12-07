@@ -216,3 +216,20 @@ function get_session_shipping() {
    console.log('.$shipping_method.');
    </script>';
 };
+
+add_filter( 'woocommerce_shipping_chosen_method', 'wp_kama_woocommerce_shipping_chosen_method_filter', 10, 3 );
+
+/**
+ * Function for `woocommerce_shipping_chosen_method` filter-hook.
+ * 
+ * @param string $default       Default shipping method.
+ * @param array  $rates         Shipping rates.
+ * @param string $chosen_method Chosen method id.
+ *
+ * @return string
+ */
+function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $chosen_method ){
+
+	$default = 'flat_rate:12';
+	return $default;
+}
