@@ -198,4 +198,4 @@ function before_shipping( $checkout ) {
 
     WC()->session->set('chosen_shipping_methods', array( 'free_shipping:28' ) );
 
-}ж
+};
