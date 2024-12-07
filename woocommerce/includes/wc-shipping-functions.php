@@ -11,8 +11,10 @@ add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
     if ( $_POST['isUrgent'] === '1'){
         WC()->session->set('isUrgent', '1' );
+        WC()->session->set('chosen_shipping_methods', $_POST['destination'] );
     } else {
         WC()->session->set('isUrgent', '0' );
+        WC()->session->set('chosen_shipping_methods', 'local_pickup:9' );
     }
     die(); // (required)
 }
@@ -190,15 +192,15 @@ function plnt_get_shiping_costs() {
 }
 
 
-add_action( 'woocommerce_before_checkout_shipping_form', 'before_shipping');
+// add_action( 'woocommerce_before_checkout_shipping_form', 'before_shipping');
 
-function before_shipping( $checkout ) {
+// function before_shipping( $checkout ) {
 
-    // check the user credentials here and if the condition is met set the shipping method
+//     // check the user credentials here and if the condition is met set the shipping method
 
-    WC()->session->set('chosen_shipping_methods', array( 'free_shipping:28' ) );
+//     WC()->session->set('chosen_shipping_methods', array( 'free_shipping:28' ) );
 
-};
+// };
 
 add_action('wp_footer','get_session_shipping');
 
