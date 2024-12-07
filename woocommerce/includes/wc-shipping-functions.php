@@ -191,6 +191,7 @@ function plnt_get_shiping_costs() {
 	return $shipping_costs;
 }
 
+// задаем способ доставки по умолчанию для доставок внутри и за пределы МКАД
 
 add_filter( 'woocommerce_shipping_chosen_method', 'wp_kama_woocommerce_shipping_chosen_method_filter', 10, 3 );
 
@@ -265,3 +266,20 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
     return $default;
 }
 
+// новое поле для способов доставки в админке
+
+add_action('woocommerce_init', 'woocommerce_shipping_instances_form_fields_filters');
+function woocommerce_shipping_instances_form_fields_filters(){
+    foreach( WC()->shipping->get_shipping_methods() as $shipping_method ) {
+        add_filter('woocommerce_shipping_instance_form_fields_' . $shipping_method->id, 'shipping_methods_additional_custom_field');
+    }
+}
+
+function shipping_methods_additional_custom_field( $settings ) {
+    $settings['shipping_comment'] = array(
+        'title'         => __('Shipping Comment', 'woocommerce'),
+        'type'          => 'text', 
+        'placeholder'   => __( 'Enter any additional comments for this shipping method.', 'woocommerce' ),
+    );
+    return $settings;
+} 
