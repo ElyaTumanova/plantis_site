@@ -326,11 +326,11 @@ function truemisha_quantity_plus() {
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
         if ($quantity > 1 || !$product->get_manage_stock()) {
-            echo '<div class="plus">&#43;</div>';
+            echo '<div class="plus ajax_add_to_cart">&#43;</div>';
         }
     } 
     else {
-        echo '<div class="plus">&#43;</div>';
+        echo '<div class="plus ajax_add_to_cart">&#43;</div>';
     }
 };
  
@@ -339,11 +339,11 @@ function truemisha_quantity_minus() {
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
         if ($quantity > 1 || !$product->get_manage_stock()) {
-            echo '<div class="minus">&#8722;</div>';
+            echo '<div class="minus remove">&#8722;</div>';
         }
     } 
     else {
-        echo '<div class="minus">&#8722;</div>';
+        echo '<div class="minus remove">&#8722;</div>';
     }
 };
 
