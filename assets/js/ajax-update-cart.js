@@ -43,7 +43,7 @@ function plntAjaxUpdateHeaderCart () {
   }( jQuery ) );
 }
 
-plntAjaxUpdateHeaderCart ();
+plntAjaxUpdateHeaderCart();
 
 // получаем корзину для обновления кнопок добавления в корзину
 function plntAjaxGetMiniCart() {
