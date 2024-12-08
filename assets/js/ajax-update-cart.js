@@ -18,7 +18,6 @@ function plntAjaxUpdateSideCart () {
           $('.side-cart__count').html(response); // Repopulate the specific element with the new content
         }
       );
-      console.log('hi plntAjaxUpdateSideCart');
     // Close anon function.
     }( jQuery ) );
 }
@@ -42,7 +41,6 @@ function plntAjaxUpdateHeaderCart () {
       );
   // Close anon function.
   }( jQuery ) );
-  console.log('hi plntAjaxUpdateHeaderCart');
 }
 
 plntAjaxUpdateHeaderCart();
