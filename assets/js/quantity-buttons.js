@@ -2,8 +2,7 @@ jQuery(function ($){
     $( 'body' ).on( 'click', 'div.plus, div.minus', function() {
 
 		console.log('hihihi');
-		plntAjaxUpdateSideCart();
-		plntAjaxUpdateHeaderCart();
+
  
 	var qty = $(this).parent().find( 'input' ),
 	val = parseInt( qty.val() ),
