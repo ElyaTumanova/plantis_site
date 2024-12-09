@@ -217,7 +217,7 @@ function create_yandex_xml_btn () {
          print_r('<br>');
          $attribute_values = get_the_terms( $allproducts[0]->ID, $product_attribute['name']);
          foreach ($attribute_values as $value) {
-            print_r($value[name]);
+            print_r($value);
             print_r('<br>');
          }
     }
