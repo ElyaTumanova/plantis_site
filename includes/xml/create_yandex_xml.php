@@ -16,6 +16,7 @@ function create_yandex_xml_btn () {
             <yml_catalog date='".date('Y-m-d H:i')."'>
             <shop>
             <name>".get_bloginfo('name')."</name>
+            <company>Plantis.shop</company>
             <url>".get_bloginfo('url')."</url>
             <currencies>
             <currency id='RUB' rate='1'/>
@@ -41,6 +42,57 @@ function create_yandex_xml_btn () {
                 ";
             }
             $yandex_xml .= "</categories>
+            <delivery>true</delivery>
+            ";
+            //списоск опций доставки
+            global $delivery_inMKAD;
+            global $delivery_outMKAD;
+            global $delivery_inMKAD_small;
+            global $delivery_outMKAD_small;
+            global $delivery_inMKAD_large;
+            global $delivery_outMKAD_large;
+        
+            global $urgent_delivery_inMKAD; 
+            global $urgent_delivery_outMKAD; 
+            global $urgent_delivery_inMKAD_small; 
+            global $urgent_delivery_outMKAD_small;
+            global $urgent_delivery_inMKAD_large; 
+            global $urgent_delivery_outMKAD_large;
+        
+            global $local_pickup;
+            global $delivery_free;
+            global $delivery_courier;
+            global $delivery_long_dist;
+
+            $shipping_costs = plnt_get_shiping_costs();
+
+            $in_mkad = $shipping_costs[$delivery_inMKAD];
+            $out_mkad = $shipping_costs[$delivery_outMKAD];
+
+            $in_mkad_urg = $shipping_costs[$urgent_delivery_inMKAD];
+            $out_mkad_urg = $shipping_costs[$urgent_delivery_outMKAD];
+
+            $in_mkad_large = $shipping_costs[$delivery_inMKAD_large];
+            $out_mkad_large = $shipping_costs[$delivery_outMKAD_large];
+
+            $in_mkad_urg_large = $shipping_costs[$urgent_delivery_inMKAD_large];
+            $out_mkad_urg_large = $shipping_costs[$urgent_delivery_outMKAD_large];
+        
+            $in_mkad_small = $shipping_costs[$delivery_inMKAD_small];
+            $out_mkad_small = $shipping_costs[$delivery_outMKAD_small];
+
+            $in_mkad_small_urg = $shipping_costs[$urgent_delivery_inMKAD_small];
+            $out_mkad_small_urg = $shipping_costs[$urgent_delivery_outMKAD_small];
+
+            $yandex_xml .= 
+            "<delivery-options>
+                <option cost='".$out_mkad."' days = '1' order-before='24'/>
+                <option cost='".$out_mkad_urg."' days = '0' order-before='18'/>
+            </delivery-options>
+
+            <pickup-options>
+                <option cost='0' days='0' order-before='18'/>
+            </pickup-options>
             ";
 
             // Список товаров. В примере участвует кастомный тип записи 'products', его замените на тот, который создан у вас.
@@ -105,14 +157,12 @@ function create_yandex_xml_btn () {
                     }
                 }  
                 
-                // Получаем картинку товара. Если она у вас хранится в мета поле, берите из него.
-                $product_img=wp_get_attachment_image_src(get_post_thumbnail_id($allproduct->ID),'full');  
-
                 $yandex_xml .= 
                 "
                 <offer id='".$allproduct->ID."' available='true'>
                 <url>".get_permalink($allproduct->ID)."</url>";
 
+                // Получаем цену товара
                 $sale = get_post_meta($allproduct->ID, '_sale_price', true);
                 if ($sale>0) {
                     $yandex_xml .= "<price>".get_post_meta($allproduct->ID,'_sale_price',true)."</price>
@@ -126,8 +176,19 @@ function create_yandex_xml_btn () {
                 <categoryId>".$lastcateg."</categoryId>
                 ";
 
+                // Получаем картинку товара. Если она у вас хранится в мета поле, берите из него.
+                $product_img=wp_get_attachment_image_src(get_post_thumbnail_id($allproduct->ID),'full');  
+
                 if($product_img[0])
                 $yandex_xml .= "<picture>".$product_img[0]."</picture>
+                ";
+
+                // Способы доставки для групногабаритного товара
+
+                $yandex_xml .= "<delivery-options>
+                    <option cost='".$out_mkad."' days = '1' order-before='24'/>
+                    <option cost='".$out_mkad_urg."' days = '0' order-before='18'/>
+                </delivery-options>
                 ";
 
                 $yandex_xml .= "<name>".htmlspecialchars($allproduct->post_title)."</name>
@@ -162,6 +223,9 @@ function create_yandex_xml_btn () {
         });
 	</script>
 	<?php
+
+    
+    print_r($allproducts);
 }
 
 add_action( 'wp_footer', 'create_yandex_xml_btn' );
