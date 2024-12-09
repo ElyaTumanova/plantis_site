@@ -214,18 +214,14 @@ function create_yandex_xml_btn () {
          //print_r($product_attribute);
          print_r('<br>');
          print_r(wc_attribute_label( $product_attribute['name'] ));
-         $values = array_map( 'trim', explode( WC_DELIMITER, $product_attribute['value'] ) );
-         print_r($values);
-         //print_r(wp_kses_post( $product_attribute['value'] ));
-         foreach ($values as $value) {
-            print_r($value);
-            print_r('<br>');
-         }   
-       
          print_r('<br>');
+         $attribute_values = get_the_terms( $allproducts[0]->ID, $product_attribute['name']);
+         foreach ($attribute_values as $value) {
+            print_r($value[name]);
+            print_r('<br>');
+         }
     }
-    $subheadingvalues = get_the_terms( $allproducts[0]->ID, 'pa_poliv');
-    print_r($subheadingvalues);
+
 }
 
 add_action( 'wp_footer', 'create_yandex_xml_btn' );
