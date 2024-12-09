@@ -3,28 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-// function get_product_params($product_attributes) {
-//     $params;
-//     foreach ($product_attributes as $product_attribute) {
-//         if($product_attribute['is_visible']) {
-//             $param_name = wc_attribute_label( $product_attribute['name'] );
-//             if($product_attribute['is_taxonomy']) {
-//                 $attribute_values = get_the_terms( $allproducts[0]->ID, $product_attribute['name']);
-//                 $values = [];
-//                 foreach ($attribute_values as $value) {
-//                     $values[] = $value->name;
-//                 };
-//                 $param_value = implode(',', $values);
-//             } else {
-//                 $param_value =  $product_attribute['value'];
-//             }
-//         };
-//         $params .= "<param name ='".$param_name."'>".$param_value."</param>";
-//     }
-//     print_r($params);
-//     return $params;
-// }
-
 function create_yandex_xml_btn () {
 	?>
 	<button class="xml_button">Создать фид</button>
@@ -129,6 +107,7 @@ function create_yandex_xml_btn () {
             $allproductscount = count($allproducts);
 
             foreach($allproducts as $allproduct){
+                $prodId = $allproduct->ID;
                
                 // Определяем последую категорию в дереве, к которой присвоен конкретный товар в текущем цикле. В примере участвует кастомная таксономия 'products_category', её замените на ту, которая создана у вас.
                 $lastcateg='';
@@ -199,7 +178,7 @@ function create_yandex_xml_btn () {
 
                 //Параметры товара
 
-                $product_attributes = get_post_meta($allproduct->ID, '_product_attributes', true);
+                $product_attributes = get_post_meta($prodId, '_product_attributes', true);
                 foreach ($product_attributes as $product_attribute) {
                     if($product_attribute['is_visible']) {
                         $param_name = wc_attribute_label( $product_attribute['name'] );
@@ -250,6 +229,28 @@ function create_yandex_xml_btn () {
 	</script>
 	<?php
 }
+
+// function get_product_params($product_attributes) {
+//     $params;
+//     foreach ($product_attributes as $product_attribute) {
+//         if($product_attribute['is_visible']) {
+//             $param_name = wc_attribute_label( $product_attribute['name'] );
+//             if($product_attribute['is_taxonomy']) {
+//                 $attribute_values = get_the_terms( $allproducts[0]->ID, $product_attribute['name']);
+//                 $values = [];
+//                 foreach ($attribute_values as $value) {
+//                     $values[] = $value->name;
+//                 };
+//                 $param_value = implode(',', $values);
+//             } else {
+//                 $param_value =  $product_attribute['value'];
+//             }
+//         };
+//         $params .= "<param name ='".$param_name."'>".$param_value."</param>";
+//     }
+//     print_r($params);
+//     return $params;
+// }
 
 add_action( 'wp_footer', 'create_yandex_xml_btn' );
 ?>
