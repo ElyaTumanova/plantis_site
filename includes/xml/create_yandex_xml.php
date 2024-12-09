@@ -236,6 +236,7 @@ function create_yandex_xml_btn () {
             if($product_attribute['is_taxonomy']) {
                 $attribute_values = get_the_terms( $allproducts[0]->ID, $product_attribute['name']);
                 $values = [];
+                print_r($attribute_values);
                 foreach ($attribute_values as $value) {
                     $values[] = $value->name;
                 };
