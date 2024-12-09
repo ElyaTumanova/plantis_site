@@ -25,11 +25,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 //     return $params;
 // }
 
-// function create_yandex_xml_btn () {
-// ?>
-<!-- // 	<button class="xml_button">Создать фид</button> -->
-<!-- // 	<script> -->
-<!-- //         function create_yandex_xml(){ -->
+function create_yandex_xml_btn () {
+	?>
+	<button class="xml_button">Создать фид</button>
+	<script>
+        function create_yandex_xml(){
             <?php 
             global $treez_cat_id;
             global $treez_poliv_cat_id;
@@ -199,24 +199,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                 //Параметры товара
 
-                // $product_attributes = get_post_meta($allproduct->ID, '_product_attributes', true);
-                // foreach ($product_attributes as $product_attribute) {
-                //     print_r($product_attribute);
-                //     if($product_attribute['is_visible']) {
-                //         $param_name = wc_attribute_label( $product_attribute['name'] );
-                //         if($product_attribute['is_taxonomy']) {
-                //             $attribute_values = get_the_terms( $allproducts[0]->ID, $product_attribute['name']);
-                //             $values = [];
-                //             foreach ($attribute_values as $value) {
-                //                 $values[] = $value->name;
-                //             };
-                //             $param_value = implode(',', $values);
-                //         } else {
-                //             $param_value =  $product_attribute['value'];
-                //         }
-                //     };
-                //     $yandex_xml .= "<param name ='".$param_name."'>".$param_value."</param>";
-                // }
+                $product_attributes = get_post_meta($allproduct->ID, '_product_attributes', true);
+                foreach ($product_attributes as $product_attribute) {
+                    if($product_attribute['is_visible']) {
+                        $param_name = wc_attribute_label( $product_attribute['name'] );
+                        if($product_attribute['is_taxonomy']) {
+                            $attribute_values = get_the_terms( $allproducts[0]->ID, $product_attribute['name']);
+                            $values = [];
+                            foreach ($attribute_values as $value) {
+                                $values[] = $value->name;
+                            };
+                            $param_value = implode(',', $values);
+                        } else {
+                            $param_value =  $product_attribute['value'];
+                        }
+                    };
+                    $yandex_xml .= '<param name ="'.$param_name.'">'.$param_value.'</param>';
+                }
                 
 
                 //Закрыли тег оффер
@@ -233,24 +232,24 @@ if ( ! defined( 'ABSPATH' ) ) {
             $fp = fopen( ABSPATH . "/wp-content/yandex-xml/feed-yml-0.xml", 'w' ); 
             fwrite( $fp, $yandex_xml );
             fclose( $fp );
-            // ?>
-<!-- // 		} -->
+            ?>
+		}
 
-<!-- //         const intervalId = setInterval(function() {
-//         create_yandex_xml();
-//         }, 21600000);
+        const intervalId = setInterval(function() {
+        create_yandex_xml();
+        }, 21600000);
 
-// 		const element = document.querySelector('.xml_button');
+		const element = document.querySelector('.xml_button');
 
-//         element.addEventListener('click', function (event) {
-//             create_yandex_xml();
-//             console.log('YML фид создан');
-//             const allproductscount = <?php //echo $allproductscount; ?>;
-//             console.log(allproductscount);
-//         });
-// 	</script>-->
-<!-- // 	<?php  
-// }
+        element.addEventListener('click', function (event) {
+            create_yandex_xml();
+            console.log('YML фид создан');
+            const allproductscount = <?php echo $allproductscount; ?>;
+            console.log(allproductscount);
+        });
+	</script>
+	<?php
+}
 
-//add_action( 'wp_footer', 'create_yandex_xml_btn' );
+add_action( 'wp_footer', 'create_yandex_xml_btn' );
 ?>
