@@ -225,7 +225,7 @@ function create_yandex_xml_btn () {
 	<?php
 
     
-    // print_r($allproducts);
+     print_r($allproducts[0]);
 }
 
 add_action( 'wp_footer', 'create_yandex_xml_btn' );
