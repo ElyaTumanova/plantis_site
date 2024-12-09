@@ -25,11 +25,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 //     return $params;
 // }
 
-function create_yandex_xml_btn () {
-	?>
-	<button class="xml_button">Создать фид</button>
-	<script>
-        function create_yandex_xml(){
+// function create_yandex_xml_btn () {
+// ?>
+<!-- // 	<button class="xml_button">Создать фид</button> -->
+<!-- // 	<script> -->
+<!-- //         function create_yandex_xml(){ -->
             <?php 
             global $treez_cat_id;
             global $treez_poliv_cat_id;
@@ -233,24 +233,24 @@ function create_yandex_xml_btn () {
             $fp = fopen( ABSPATH . "/wp-content/yandex-xml/feed-yml-0.xml", 'w' ); 
             fwrite( $fp, $yandex_xml );
             fclose( $fp );
-            ?>
-		}
+            // ?>
+<!-- // 		} -->
 
-        const intervalId = setInterval(function() {
-        create_yandex_xml();
-        }, 21600000);
+<!-- //         const intervalId = setInterval(function() {
+//         create_yandex_xml();
+//         }, 21600000);
 
-		const element = document.querySelector('.xml_button');
+// 		const element = document.querySelector('.xml_button');
 
-        element.addEventListener('click', function (event) {
-            create_yandex_xml();
-            console.log('YML фид создан');
-            const allproductscount = <?php echo $allproductscount; ?>;
-            console.log(allproductscount);
-        });
-	</script>
-	<?php
-}
+//         element.addEventListener('click', function (event) {
+//             create_yandex_xml();
+//             console.log('YML фид создан');
+//             const allproductscount = <?php //echo $allproductscount; ?>;
+//             console.log(allproductscount);
+//         });
+// 	</script>-->
+<!-- // 	<?php  
+// }
 
-add_action( 'wp_footer', 'create_yandex_xml_btn' );
+//add_action( 'wp_footer', 'create_yandex_xml_btn' );
 ?>
