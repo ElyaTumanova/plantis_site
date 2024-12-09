@@ -199,24 +199,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                 //Параметры товара
 
-                $product_attributes = get_post_meta($allproduct->ID, '_product_attributes', true);
-                foreach ($product_attributes as $product_attribute) {
-                    print_r($product_attribute);
-                    if($product_attribute['is_visible']) {
-                        $param_name = wc_attribute_label( $product_attribute['name'] );
-                        if($product_attribute['is_taxonomy']) {
-                            $attribute_values = get_the_terms( $allproducts[0]->ID, $product_attribute['name']);
-                            $values = [];
-                            foreach ($attribute_values as $value) {
-                                $values[] = $value->name;
-                            };
-                            $param_value = implode(',', $values);
-                        } else {
-                            $param_value =  $product_attribute['value'];
-                        }
-                    };
-                    $yandex_xml .= "<param name ='".$param_name."'>".$param_value."</param>";
-                }
+                // $product_attributes = get_post_meta($allproduct->ID, '_product_attributes', true);
+                // foreach ($product_attributes as $product_attribute) {
+                //     print_r($product_attribute);
+                //     if($product_attribute['is_visible']) {
+                //         $param_name = wc_attribute_label( $product_attribute['name'] );
+                //         if($product_attribute['is_taxonomy']) {
+                //             $attribute_values = get_the_terms( $allproducts[0]->ID, $product_attribute['name']);
+                //             $values = [];
+                //             foreach ($attribute_values as $value) {
+                //                 $values[] = $value->name;
+                //             };
+                //             $param_value = implode(',', $values);
+                //         } else {
+                //             $param_value =  $product_attribute['value'];
+                //         }
+                //     };
+                //     $yandex_xml .= "<param name ='".$param_name."'>".$param_value."</param>";
+                // }
                 
 
                 //Закрыли тег оффер
