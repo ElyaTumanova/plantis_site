@@ -225,7 +225,7 @@ function create_yandex_xml_btn () {
 	<?php
 
     
-     print_r($allproducts[0]->get_weight());
+     print_r(get_post_meta($allproducts[0]->ID,'_weight',true));
 }
 
 add_action( 'wp_footer', 'create_yandex_xml_btn' );
