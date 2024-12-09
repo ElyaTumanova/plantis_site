@@ -192,7 +192,7 @@ function create_yandex_xml_btn () {
                     //         $param_value =  $product_attribute['value'];
                     //     }
                     // };
-                    $yandex_xml .= "<param name ='".$param_name."'>".$param_value."</param>";
+                    //$yandex_xml .= "<param name ='".$param_name."'>".$param_value."</param>";
                 }
                 
 
