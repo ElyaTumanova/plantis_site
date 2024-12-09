@@ -107,9 +107,9 @@ function create_yandex_xml_btn () {
             $allproductscount = count($allproducts);
 
             foreach($allproducts as $allproduct){
-                $prodid = $allproduct->ID;
+                //$prodid = $allproduct->ID;
                 ?>
-                var prodid = <?php echo $prodid; ?>;
+                //var prodid = <?php echo $prodid; ?>;
                 <?php
                 // Определяем последую категорию в дереве, к которой присвоен конкретный товар в текущем цикле. В примере участвует кастомная таксономия 'products_category', её замените на ту, которая создана у вас.
                 $lastcateg='';
@@ -195,7 +195,7 @@ function create_yandex_xml_btn () {
                             $param_value =  $product_attribute['value'];
                         }
                     };
-                    // $yandex_xml .= "<param name ='".$param_name."'>".$param_value."</param>";
+                    $yandex_xml .= "<param name ='".$param_name."'>".$param_value."</param>";
                 }
 
                 //Закрыли тег оффер
