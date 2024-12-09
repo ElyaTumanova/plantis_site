@@ -208,7 +208,7 @@ function create_yandex_xml_btn () {
 	<?php
 
     print_r($allproducts[0]);
-    print_r(get_post_meta($allproducts[0]->ID, '_product_attributes', false));
+    print_r(get_post_meta($allproducts[0]->ID, '_product_attributes', true));
 }
 
 add_action( 'wp_footer', 'create_yandex_xml_btn' );
