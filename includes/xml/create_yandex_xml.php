@@ -16,7 +16,7 @@ function create_yandex_xml_btn () {
             <yml_catalog date='".date('Y-m-d H:i')."'>
             <shop>
             <name>".get_bloginfo('name')."</name>
-            <company>Plantis.shop</company>
+            <company>ИП Туманов В.В.</company>
             <url>".get_bloginfo('url')."</url>
             <currencies>
             <currency id='RUB' rate='1'/>
@@ -45,25 +45,7 @@ function create_yandex_xml_btn () {
             <delivery>true</delivery>
             ";
             //списоск опций доставки
-            global $delivery_inMKAD;
-            global $delivery_outMKAD;
-            global $delivery_inMKAD_small;
-            global $delivery_outMKAD_small;
-            global $delivery_inMKAD_large;
-            global $delivery_outMKAD_large;
-        
-            global $urgent_delivery_inMKAD; 
-            global $urgent_delivery_outMKAD; 
-            global $urgent_delivery_inMKAD_small; 
-            global $urgent_delivery_outMKAD_small;
-            global $urgent_delivery_inMKAD_large; 
-            global $urgent_delivery_outMKAD_large;
-        
-            global $local_pickup;
-            global $delivery_free;
-            global $delivery_courier;
-            global $delivery_long_dist;
-
+      
             $shipping_costs = plnt_get_shiping_costs();
 
             $in_mkad = $shipping_costs[$delivery_inMKAD];
@@ -224,6 +206,9 @@ function create_yandex_xml_btn () {
         });
 	</script>
 	<?php
+
+    print_r($allproducts[0]);
+    print_r(get_post_meta($allproducts[0]->ID, 'custom_attribute', false););
 }
 
 add_action( 'wp_footer', 'create_yandex_xml_btn' );
