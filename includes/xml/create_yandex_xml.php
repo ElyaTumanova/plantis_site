@@ -209,8 +209,10 @@ function create_yandex_xml_btn () {
 
     //print_r($allproducts[0]);
     $product_attributes = get_post_meta($allproducts[0]->ID, '_product_attributes', true);
-    foreach ($product_attributes as $attribite) {
-         print_r($attribite);
+    foreach ($product_attributes as $product_attribute) {
+         print_r(wp_kses_post( $product_attribute['name'] ));
+         print_r(wp_kses_post( $product_attribute['value'] ));
+         print_r('<br>');
     }
 }
 
