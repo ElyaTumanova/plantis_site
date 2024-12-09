@@ -216,7 +216,11 @@ function create_yandex_xml_btn () {
          print_r(wc_attribute_label( $product_attribute['name'] ));
          $values = wc_get_product_terms( $allproducts[0]->ID, $attribute['name'], array( 'fields' => 'names' ) );
          //print_r(wp_kses_post( $product_attribute['value'] ));
-        print_r($values);
+         foreach ($values as $value) {
+            print_r($value);
+            print_r('<br>');
+         }   
+       
          print_r('<br>');
     }
 }
