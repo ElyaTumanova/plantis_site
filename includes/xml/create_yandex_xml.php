@@ -224,6 +224,8 @@ function create_yandex_xml_btn () {
        
          print_r('<br>');
     }
+    $subheadingvalues = get_the_terms( $allproducts[0]->ID, 'pa_poliv');
+    print_r($subheadingvalues);
 }
 
 add_action( 'wp_footer', 'create_yandex_xml_btn' );
