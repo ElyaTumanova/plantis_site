@@ -207,11 +207,11 @@ function create_yandex_xml_btn () {
 	</script>
 	<?php
 
-    //print_r($allproducts[0]);
-    print_r('<br>');
+
+
     $product_attributes = get_post_meta($allproducts[0]->ID, '_product_attributes', true);
     foreach ($product_attributes as $product_attribute) {
-         //print_r($product_attribute);
+         print_r($product_attribute);
          print_r('<br>');
          print_r(wc_attribute_label( $product_attribute['name'] ));
          print_r('<br>');
