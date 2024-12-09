@@ -229,7 +229,7 @@ function create_yandex_xml_btn () {
 	</script>
 	<?php
 
-    print_r($product_attributes);
+    //print_r($product_attributes);
     foreach ($product_attributes as $product_attribute) {
         if($product_attribute['is_visible']) {
             $param_name = wc_attribute_label( $product_attribute['name'] );
