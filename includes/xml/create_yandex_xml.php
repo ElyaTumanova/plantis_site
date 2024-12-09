@@ -232,25 +232,25 @@ function create_yandex_xml_btn () {
 
 
 
-    $product_attributes = get_post_meta($allproducts[0]->ID, '_product_attributes', true);
-    foreach ($product_attributes as $product_attribute) {
-         print_r($product_attribute);
-         print_r($product_attribute['is_visible']);
-         if($product_attribute['is_visible']) {
-             print_r('<br>');
-             print_r(wc_attribute_label( $product_attribute['name'] ));
-             print_r('<br>');
-             if($product_attribute['is_taxonomy']) {
-                 $attribute_values = get_the_terms( $allproducts[0]->ID, $product_attribute['name']);
-                 foreach ($attribute_values as $value) {
-                    print_r($value->name);
-                    print_r('<br>');
-                 }
-             } else {
-                print_r( $product_attribute['value'] );
-             }
-         }
-    }
+    // $product_attributes = get_post_meta($allproducts[0]->ID, '_product_attributes', true);
+    // foreach ($product_attributes as $product_attribute) {
+    //      print_r($product_attribute);
+    //      print_r($product_attribute['is_visible']);
+    //      if($product_attribute['is_visible']) {
+    //          print_r('<br>');
+    //          print_r(wc_attribute_label( $product_attribute['name'] ));
+    //          print_r('<br>');
+    //          if($product_attribute['is_taxonomy']) {
+    //              $attribute_values = get_the_terms( $allproducts[0]->ID, $product_attribute['name']);
+    //              foreach ($attribute_values as $value) {
+    //                 print_r($value->name);
+    //                 print_r('<br>');
+    //              }
+    //          } else {
+    //             print_r( $product_attribute['value'] );
+    //          }
+    //      }
+    // }
 
 }
 
