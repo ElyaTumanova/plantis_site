@@ -184,12 +184,13 @@ function create_yandex_xml_btn () {
                 ";
 
                 // Способы доставки для групногабаритного товара
-
-                $yandex_xml .= "<delivery-options>
-                    <option cost='".$out_mkad."' days = '1' order-before='24'/>
-                    <option cost='".$out_mkad_urg."' days = '0' order-before='18'/>
-                </delivery-options>
-                ";
+                if(get_post_meta($allproduct->ID,'_weight',true)>=11) {
+                    $yandex_xml .= "<delivery-options>
+                        <option cost='".$out_mkad_large."' days = '1' order-before='24'/>
+                        <option cost='".$out_mkad_urg_large."' days = '0' order-before='18'/>
+                    </delivery-options>
+                    ";
+                }
 
                 $yandex_xml .= "<name>".htmlspecialchars($allproduct->post_title)."</name>
                 <description><![CDATA['".htmlspecialchars(strip_tags($allproduct->post_content))."]]></description>
@@ -223,9 +224,6 @@ function create_yandex_xml_btn () {
         });
 	</script>
 	<?php
-
-    
-     print_r(get_post_meta($allproducts[0]->ID,'_weight',true));
 }
 
 add_action( 'wp_footer', 'create_yandex_xml_btn' );
