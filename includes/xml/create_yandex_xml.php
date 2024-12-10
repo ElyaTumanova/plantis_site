@@ -231,23 +231,25 @@ function create_yandex_xml_btn () {
 
     $product_attributes = get_post_meta($allproducts[1]->ID, '_product_attributes', true);
     print_r($product_attributes);
-    foreach ($product_attributes as $product_attribute) {
-        if($product_attribute['is_visible']) {
-            $param_name = wc_attribute_label( $product_attribute['name'] );
-            if($product_attribute['is_taxonomy']) {
-                $attribute_values = get_the_terms( $allproducts[0]->ID, $product_attribute['name']);
-                $values = [];
-                print_r($attribute_values);
-                print_r('<br>');
-                foreach ($attribute_values as $value) {
-                    $values[] = $value->name;
-                };
-                $param_value = implode(',', $values);
-            } else {
-                $param_value =  $product_attribute['value'];
-            }
-        };
-        // $params .= "<param name ='".$param_name."'>".$param_value."</param>";
+    if (is_array($values)) {
+        foreach ($product_attributes as $product_attribute) {
+            if($product_attribute['is_visible']) {
+                $param_name = wc_attribute_label( $product_attribute['name'] );
+                if($product_attribute['is_taxonomy']) {
+                    $attribute_values = get_the_terms( $allproducts[0]->ID, $product_attribute['name']);
+                    $values = [];
+                    print_r($attribute_values);
+                    print_r('<br>');
+                    foreach ($attribute_values as $value) {
+                        $values[] = $value->name;
+                    };
+                    $param_value = implode(',', $values);
+                } else {
+                    $param_value =  $product_attribute['value'];
+                }
+            };
+            $params .= "<param name ='".$param_name."'>".$param_value."</param>";
+        }
     }
     print_r($params);
 }
