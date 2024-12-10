@@ -229,7 +229,7 @@ function create_yandex_xml_btn () {
 	</script>
 	<?php
 
-    $product_attributes = get_post_meta($allproducts[0]->ID, '_product_attributes', true);
+    $product_attributes = get_post_meta($allproducts[1]->ID, '_product_attributes', true);
     print_r($product_attributes);
     foreach ($product_attributes as $product_attribute) {
         if($product_attribute['is_visible']) {
