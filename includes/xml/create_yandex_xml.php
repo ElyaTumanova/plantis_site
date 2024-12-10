@@ -236,7 +236,7 @@ function create_yandex_xml_btn () {
             if($product_attribute['is_visible']) {
                 $param_name = wc_attribute_label( $product_attribute['name'] );
                 if($product_attribute['is_taxonomy']) {
-                    $attribute_values = get_the_terms( $allproducts[0]->ID, $product_attribute['name']);
+                    $attribute_values = get_the_terms( $allproducts[1]->ID, $product_attribute['name']);
                     $values = [];
                     print_r($attribute_values);
                     print_r('<br>');
