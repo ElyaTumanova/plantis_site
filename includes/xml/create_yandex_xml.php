@@ -107,7 +107,6 @@ function create_yandex_xml_btn () {
             $allproductscount = count($allproducts);
 
             foreach($allproducts as $allproduct){
-                $prodId = $allproduct->ID;
                
                 // Определяем последую категорию в дереве, к которой присвоен конкретный товар в текущем цикле. В примере участвует кастомная таксономия 'products_category', её замените на ту, которая создана у вас.
                 $lastcateg='';
@@ -138,8 +137,7 @@ function create_yandex_xml_btn () {
                 }  
                 
                 $yandex_xml .= 
-                "
-                <offer id='".$allproduct->ID."' available='true'>
+                "<offer id='".$allproduct->ID."' available='true'>
                 <url>".get_permalink($allproduct->ID)."</url>";
 
                 // Получаем цену товара
@@ -151,8 +149,7 @@ function create_yandex_xml_btn () {
                     $yandex_xml .= "<price>".get_post_meta($allproduct->ID,'_price',true)."</price>";
                 };
                 $yandex_xml .= 
-                "
-                <currencyId>RUR</currencyId>
+                "<currencyId>RUR</currencyId>
                 <categoryId>".$lastcateg."</categoryId>
                 ";
 
@@ -178,13 +175,13 @@ function create_yandex_xml_btn () {
 
                 //Параметры товара
 
-                $product_attributes = get_post_meta($prodId, '_product_attributes', true);
+                $product_attributes = get_post_meta($allproduct->ID, '_product_attributes', true);
                 if(is_array($product_attributes)) {
                     foreach ($product_attributes as $product_attribute) {
                         if($product_attribute['is_visible']) {
                             $param_name = wc_attribute_label( $product_attribute['name'] );
                             if($product_attribute['is_taxonomy']) {
-                                $attribute_values = get_the_terms( $prodId, $product_attribute['name']);
+                                $attribute_values = get_the_terms( $allproduct->ID, $product_attribute['name']);
                                 $values = [];
                                 foreach ($attribute_values as $value) {
                                     $values[] = $value->name;
@@ -202,7 +199,7 @@ function create_yandex_xml_btn () {
                 $yandex_xml .= "</offer>
                 ";
             }
-
+            //Конец файла
             $yandex_xml .= "</offers>
             ";
             $yandex_xml .= "</shop>
@@ -224,35 +221,11 @@ function create_yandex_xml_btn () {
         element.addEventListener('click', function (event) {
             create_yandex_xml();
             console.log('YML фид создан');
-            const allproductscount = <?php echo $allproductscount; ?>;
+            let allproductscount = <?php echo $allproductscount; ?>;
             console.log(allproductscount);
         });
 	</script>
 	<?php
-
-    $product_attributes = get_post_meta('57002', '_product_attributes', true);
-    print_r($product_attributes);
-    if (is_array($product_attributes)) {
-        foreach ($product_attributes as $product_attribute) {
-            if($product_attribute['is_visible']) {
-                $param_name = wc_attribute_label( $product_attribute['name'] );
-                if($product_attribute['is_taxonomy']) {
-                    $attribute_values = get_the_terms('57002', $product_attribute['name']);
-                    $values = [];
-                    print_r($attribute_values);
-                    print_r('<br>');
-                    foreach ($attribute_values as $value) {
-                        $values[] = $value->name;
-                    };
-                    $param_value = implode(',', $values);
-                } else {
-                    $param_value =  $product_attribute['value'];
-                }
-            };
-            $params .= "<param name ='".$param_name."'>".$param_value."</param>";
-        }
-    }
-    print_r($params);
 }
 
 add_action( 'wp_footer', 'create_yandex_xml_btn' );
