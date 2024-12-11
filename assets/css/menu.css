@@ -5,15 +5,15 @@
 /* primary & secondary menu styles */
 
 .header__menu {
-    background-color: var(--accent-color);
-    color: var(--white);
+    background-color: var(--background);
+    color: var(--text);
 
     position: absolute;
     z-index: 1000;
     max-width: 100vw;
     width: 100%;
     height: 700px;
-    top: 130px;
+    top: var(--headerHeight);
     left: 0px;
     box-shadow: rgba(20, 20, 20, 0.03) 0px 6px 8px 0px;
 

@@ -31,15 +31,13 @@ window.addEventListener('resize', () => {
 # Высота хедера в десктопе
 --------------------------------------------------------------*/
 let headerDiv = document.querySelector('.header__desktop');
-console.log(headerDiv);
 let headerHeight= headerDiv.offsetHeight;
-console.log(headerHeight);
 // слушаем событие resize
 window.addEventListener('resize', () => {
     // получаем текущее значение высоты
     let headerHeight= headerDiv.offsetHeight;;
     document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
-    console.log(headerHeight);
+    //console.log(headerHeight);
 });
 
 
