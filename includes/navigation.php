@@ -86,7 +86,7 @@ function filter_wp_menu_args_primary( $args ) {
 	if ( $args['theme_location'] === 'primary' ) {
 		$args['container']  = false;
 		$args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
-		$args['menu_class'] = 'menu menu--main menu-horizontal';
+		$args['menu_class'] = 'menu menu--main';
 	}
 
 	return $args;
