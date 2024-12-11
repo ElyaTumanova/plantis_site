@@ -25,6 +25,7 @@
     text-transform: uppercase;
     /* line-height: 14px; */
     letter-spacing: 0.01em;
+    margin: 12px 17px;
 }
 
 .menu--main .menu-node_lvl_2, .menu-node_lvl_3 {
