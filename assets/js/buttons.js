@@ -52,7 +52,7 @@ function toggle_mob_menu () {
 # Catalog for mobile
 --------------------------------------------------------------*/
 const catalogMob = document.querySelector('.catalog-menu__wrap');
-const catalogMobOpen = document.querySelector('.header__catalog');
+const catalogMobOpen = document.querySelector('.header__catalog_mob');
 const catalogMobClose = document.querySelector('.catalog-menu__close');
 
 // для разворачивая пункта меню с растениями

@@ -77,7 +77,11 @@
 							<?php $logo = carbon_get_theme_option('logo');?>
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
 						</div><!-- .logo -->
-						
+					</div>
+					<div class="header__wrap">
+						<div class="header__catalog button"> Каталог
+
+						</div>
 					</div>
 					<div class="header__description">
 						<?php $site_title = carbon_get_theme_option('site_title')?>
@@ -180,7 +184,7 @@
 				</a>
 			</div>
 
-			<div class="header__catalog">
+			<div class="header__catalog_mob">
 				<?php $catalog_icon = carbon_get_theme_option('catalog_icon')?>
 					<div class="header-btn__wrap">		
 						<img class="header-btn__icon" src="<?php echo $catalog_icon ?>" alt="catalog" width="25" height="25">
