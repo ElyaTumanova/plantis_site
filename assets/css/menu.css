@@ -33,6 +33,11 @@
     position: absolute;
     top: 0;
     left: 300px;
+    visibility: hidden;
+}
+
+.menu--onside:first-of-type{
+    visibility: visible;
 }
 
 .menu--main .menu-node_lvl_2, .menu-node_lvl_3 {
