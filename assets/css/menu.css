@@ -26,6 +26,13 @@
     /* line-height: 14px; */
     letter-spacing: 0.01em;
     margin: 12px 17px;
+    position: relative;
+}
+
+.menu--onside {
+    position: absolute;
+    top: 0;
+    left: 300px;
 }
 
 .menu--main .menu-node_lvl_2, .menu-node_lvl_3 {

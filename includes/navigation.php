@@ -127,7 +127,7 @@ function filter_nav_menu_css_classes( $classes, $item, $args, $depth ) {
 add_filter( 'nav_menu_submenu_css_class', 'filter_nav_menu_submenu_css_class', 10, 3 );
 function filter_nav_menu_submenu_css_class( $classes, $args, $depth ) {
 	if ( $args->theme_location === 'primary' ) {
-		array_push($classes, 'menu', 'menu--onside', 'menu--vertical', 'menu--onside_lvl_' . ( $depth + 1 ));
+		array_push($classes, 'menu', 'menu--onside', 'menu--onside_lvl_' . ( $depth + 1 ));
 	}
 	if ( $args->theme_location === 'secondary' ) {
 		array_push($classes, 'menu', 'menu--dropdown', 'menu--vertical', 'menu--dropdown_lvl_' . ( $depth + 1 ));
