@@ -39,7 +39,6 @@ add_action('wp_footer','plnt_check');
 
 function plnt_check() {
     echo (WC()->session->get('isUrgent' ));
-
 }
 
 

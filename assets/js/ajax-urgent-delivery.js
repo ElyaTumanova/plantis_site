@@ -13,6 +13,8 @@ function plntChekUrgentDelivery() {
   //console.log('hi plntChekUrgentDelivery');
   deliveryDates[1].setAttribute('checked','checked');
   plntAjaxGetUrgent();
+  console.log(isUrgent);
+  hideUrgentShipping();
 
   deliveryDates.forEach((date) => {
     date.addEventListener('click', function(event){
@@ -22,7 +24,7 @@ function plntChekUrgentDelivery() {
       } else {
         isUrgent = '0';
       }
-      //console.log(isUrgent);
+      console.log(isUrgent);
       plntAjaxGetUrgent();
       });
   })
@@ -92,6 +94,12 @@ function plntAjaxGetUrgent() {
   //     urgentText.innerHTML = "";
   //   }
   // }
+};
+
+function hideUrgentShipping () {
+  let urgentShippingMethod = document.querySelector('input[value="flat_rate:3"]').parent();
+  console.log(urgentShippingMethod);
+
 };
 
 if (checkoutForm) {
