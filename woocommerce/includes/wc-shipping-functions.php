@@ -274,7 +274,7 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
 
 // новое поле для способов доставки в админке
 
-//add_action('woocommerce_init', 'woocommerce_shipping_instances_form_fields_filters');
+add_action('woocommerce_init', 'woocommerce_shipping_instances_form_fields_filters');
 function woocommerce_shipping_instances_form_fields_filters(){
     foreach( WC()->shipping->get_shipping_methods() as $shipping_method ) {
         add_filter('woocommerce_shipping_instance_form_fields_' . $shipping_method->id, 'shipping_methods_additional_custom_field');
