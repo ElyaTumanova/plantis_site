@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="main__banners main__banners-swiper swiper">
 	<div class="swiper-wrapper">
-		<img class="swiper-slide" src="<?php echo $banner_3 ?>" class="main__banner-img" alt="<?php echo $banner_3_name?>" loading=" lazy">
+		<a class="swiper-slide" href="#"><img src="<?php echo $banner_3 ?>" class="main__banner-img" alt="<?php echo $banner_3_name?>" loading=" lazy"></a>
 		<img class="swiper-slide" src="<?php echo $banner_1 ?>" class="main__banner-img" alt="<?php echo $banner_1_name?>" loading=" lazy">
 		<img class="swiper-slide" src="<?php echo $banner_2 ?>" class="main__banner-img" alt="<?php echo $banner_2_name?>" loading=" lazy">
 	</div>
