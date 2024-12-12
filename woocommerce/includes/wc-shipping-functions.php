@@ -87,12 +87,12 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $delivery_inMKAD_large ] );
         unset( $rates[ $delivery_outMKAD_large ] );
 
-        isset( $rates[ $urgent_delivery_inMKAD ] );
-        isset( $rates[ $urgent_delivery_outMKAD ] );
-        isset( $rates[ $urgent_delivery_inMKAD_small ] );
-        isset( $rates[ $urgent_delivery_outMKAD_small ] );
-        isset( $rates[ $urgent_delivery_inMKAD_large ] );
-        isset( $rates[ $urgent_delivery_outMKAD_large ] );
+        set( $rates[ $urgent_delivery_inMKAD ] );
+        set( $rates[ $urgent_delivery_outMKAD ] );
+        set( $rates[ $urgent_delivery_inMKAD_small ] );
+        set( $rates[ $urgent_delivery_outMKAD_small ] );
+        set( $rates[ $urgent_delivery_inMKAD_large ] );
+        set( $rates[ $urgent_delivery_outMKAD_large ] );
     }
 
     /*СТОИМОСТЬ ДОСТАВКИ ПО СУММЕ*/
