@@ -45,6 +45,20 @@ function create_yandex_xml_btn () {
             <delivery>true</delivery>
             ";
             //списоск опций доставки
+
+            global $delivery_inMKAD;
+            global $delivery_outMKAD;
+            global $delivery_inMKAD_small;
+            global $delivery_outMKAD_small;
+            global $delivery_inMKAD_large;
+            global $delivery_outMKAD_large;
+        
+            global $urgent_delivery_inMKAD; 
+            global $urgent_delivery_outMKAD; 
+            global $urgent_delivery_inMKAD_small; 
+            global $urgent_delivery_outMKAD_small;
+            global $urgent_delivery_inMKAD_large; 
+            global $urgent_delivery_outMKAD_large;
       
             $shipping_costs = plnt_get_shiping_costs();
 
