@@ -165,10 +165,10 @@ function plnt_set_constants_script() {
 		let deliveryCostInMkadSmallUrg = '<?php echo $in_mkad_small_urg; ?>';
 		let deliveryCostOutMkadSmallUrg = '<?php echo $out_mkad_small_urg; ?>';
 
-		// let deliveryUrgentMarkup = '<?php echo $urgent_delivery_markup; ?>';
-		// let deliveryLargeMarkupInMkad = '<?php echo $large_delivery_markup_in_mkad; ?>';
-		// let deliveryLargeMarkupOutMkad = '<?php echo $large_delivery_markup_out_mkad; ?>';
-		// let deliverySmallMarkup = '<?php echo $small_delivery_markup; ?>';
+		// let deliveryUrgentMarkup = '<?php //echo $urgent_delivery_markup; ?>';
+		// let deliveryLargeMarkupInMkad = '<?php //echo $large_delivery_markup_in_mkad; ?>';
+		// let deliveryLargeMarkupOutMkad = '<?php //echo $large_delivery_markup_out_mkad; ?>';
+		// let deliverySmallMarkup = '<?php //echo $small_delivery_markup; ?>';
 	</script>
 	<?php
 }
