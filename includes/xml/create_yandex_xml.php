@@ -170,7 +170,7 @@ function create_yandex_xml_btn () {
                 // Получаем картинку товара. Если она у вас хранится в мета поле, берите из него.
                 $product_img=wp_get_attachment_image_src(get_post_thumbnail_id($allproduct->ID),'full');  
 
-                if($product_img[0])
+                if(is_array($product_img) && $product_img[0])
                 $yandex_xml .= "<picture>".$product_img[0]."</picture>
                 ";
 
