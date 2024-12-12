@@ -141,9 +141,9 @@ if($site === 'http://new.plantis.shop') {
 	$urgent_delivery_outMKAD_large = 'flat_rate:20';
 	
 	$delivery_free = 'free_shipping:4';
-	$delivery_courier = 'free_shipping:26'; //TO BE UDATETD
-	$delivery_long_dist = 'free_shipping:28';//TO BE UDATETD
-
+	$delivery_courier = 'free_shipping:21';
+	$delivery_long_dist = 'free_shipping:22';
+	
 	//#filters ID's
 	$filter_podborki_id = 56536;
 	$filter_in_stock_id = 56534;
