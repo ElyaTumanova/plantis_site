@@ -249,7 +249,7 @@ function plnt_wc_cart_totals_shipping_method_label( $method ) {
 
 	if ( $has_cost && ! $hide_cost ) {
 		if ( WC()->cart->display_prices_including_tax() ) {
-			$label .= ': ' . wc_price( $method->cost + $method->get_shipping_tax() );
+			$label .= wc_price( $method->cost + $method->get_shipping_tax() );
 			if ( $method->get_shipping_tax() > 0 && ! wc_prices_include_tax() ) {
 				$label .= ' <small class="tax_label">' . WC()->countries->inc_tax_or_vat() . '</small>';
 			}
