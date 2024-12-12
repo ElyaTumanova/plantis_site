@@ -511,6 +511,8 @@ input[type="number"] {
 
 .delivery_table__row div:last-child {
     font-weight: 800;
+    min-width: 42px;
+    text-align: end;
 }
 
 .delivery_table__header {
