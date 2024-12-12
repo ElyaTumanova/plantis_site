@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="main__banners_mob main__banners-swiper swiper">
 	<div class="swiper-wrapper">
-		<img class="swiper-slide" src="<?php echo $banner_3_mob ?>" class="main__banner-img_mob" alt="<?php echo $banner_3_name?>" loading=" lazy">
+		<a class="swiper-slide" href="https://plantis.shop/product-category/product_of_week/"> <img src="<?php echo $banner_3_mob ?>" class="main__banner-img_mob" alt="<?php echo $banner_3_name?>" loading=" lazy"></a>
 		<img class="swiper-slide" src="<?php echo $banner_1_mob ?>" class="main__banner-img_mob" alt="<?php echo $banner_1_name?>" loading=" lazy">
 		<img class="swiper-slide" src="<?php echo $banner_2_mob ?>" class="main__banner-img_mob" alt="<?php echo $banner_2_name?>" loading=" lazy">
 	</div>
