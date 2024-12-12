@@ -33,6 +33,15 @@ function plnt_refresh_shipping_methods_for_urgent( $post_data ){
     WC()->cart->calculate_shipping();
 }
 
+//for dev
+
+add_action('wp_footer','plnt_check');
+
+function plnt_check() {
+    echo (WC()->session->get('isUrgent' ));
+
+}
+
 
 /* стоимость доставки в зависимости от суммы заказа*/
 
