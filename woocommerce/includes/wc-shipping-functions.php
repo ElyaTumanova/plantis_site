@@ -272,7 +272,7 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
     return $default;
 }
 
-// новое поле для способов доставки в админке
+// новое поле для способов доставки в админке - вылезает ошибка!
 
 //add_action('woocommerce_init', 'woocommerce_shipping_instances_form_fields_filters');
 function woocommerce_shipping_instances_form_fields_filters(){
