@@ -35,14 +35,14 @@ function plnt_refresh_shipping_methods_for_urgent( $post_data ){
 
 //for dev
 
-add_action('wp_footer','plnt_check');
+add_action('woocommerce_review_order_before_shipping','plnt_check');
 
 function plnt_check() {
     echo (WC()->session->get('isUrgent' ));
 }
 
 
-/* стоимость доставки в зависимости от суммы заказа*/
+/* выбираем способ доставки в зависимости от условий*/
 
 add_filter( 'woocommerce_package_rates', 'plnt_shipping_conditions', 25, 2 );
  
