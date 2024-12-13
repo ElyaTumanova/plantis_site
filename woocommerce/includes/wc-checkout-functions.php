@@ -428,8 +428,8 @@ Contents
     }
     //уведомление о маленькой сумме заказа
 
-    //add_action( 'woocommerce_checkout_order_review', 'min_amount_delivery_info', 40 );
-    add_action( 'woocommerce_review_order_before_shipping', 'min_amount_delivery_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
+    add_action( 'woocommerce_checkout_order_review', 'min_amount_delivery_info', 5 );
+    //add_action( 'woocommerce_review_order_before_shipping', 'min_amount_delivery_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
 
     function min_amount_delivery_info(){
         $min_small_delivery = carbon_get_theme_option('min_small_delivery');
@@ -439,13 +439,13 @@ Contents
 
         if (WC()->cart->subtotal < $min_small_delivery) {
             if(!array_key_exists($delivery_courier,$shipping_costs)) {
-                echo '<tr> <td colspan="2" class="checkout__text checkout__text_small-order checkout__text_alarm">
+                echo '<div class="checkout__text checkout__text_small-order checkout__text_alarm">
                 При заказе на сумму менее <span>'.$min_small_delivery,'</span> рублей стоимость доставки увеличена. 
-                <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></td></tr>';
+                <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></div';
             } else if ( $delivery_courier == $chosen_methods[0])  {
-                echo '<tr> <td colspan="2" class="checkout__text checkout__text_small-order checkout__text_alarm">
+                echo '<div class="checkout__text checkout__text_small-order checkout__text_alarm">
                 В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью ниже <span>'.$min_small_delivery,'</span> рублей доставляются в любой день по тарифу курьерской службы. 
-                Наш менеджер свяжется с Вами после оформления заказа и произведет расчет стоимости доставки.</td></tr>';
+                Наш менеджер свяжется с Вами после оформления заказа и произведет расчет стоимости доставки.</div>';
             }  
         }
 
