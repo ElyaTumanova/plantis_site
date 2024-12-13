@@ -83,8 +83,8 @@ function create_yandex_xml_btn () {
 
             $yandex_xml .= 
             "<delivery-options>
-                <option cost='".$out_mkad."' days = '1' order-before='20'/>
-                <option cost='".$out_mkad_urg."' days = '0' order-before='18'/>
+                <option cost='".$out_mkad.replace(' ', '')."' days = '1' order-before='20'/>
+                <option cost='".$out_mkad_urg.replace(' ', '')."' days = '0' order-before='18'/>
             </delivery-options>
 
             <pickup-options>
