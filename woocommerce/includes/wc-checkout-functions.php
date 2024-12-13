@@ -436,7 +436,7 @@ Contents
         $shipping_costs = plnt_get_shiping_costs();
         global $delivery_courier;
         $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
-
+        echo '<div> class="checkout__comment"';
         if (WC()->cart->subtotal < $min_small_delivery) {
             if(!array_key_exists($delivery_courier,$shipping_costs)) {
                 echo '<div class="checkout__text checkout__text_small-order checkout__text_alarm">
@@ -448,6 +448,7 @@ Contents
                 Наш менеджер свяжется с Вами после оформления заказа и произведет расчет стоимости доставки.</div>';
             }  
         }
+        echo '</div>';
 
     }
 
@@ -456,7 +457,7 @@ Contents
     function update_order_review_notifications_fragments( $fragments ) {
         ob_start();
         min_amount_delivery_info();
-        $fragments[ 'div.checkout__text_small-order'] = ob_get_clean();
+        $fragments[ 'div.checkout__comment'] = ob_get_clean();
         return $fragments;
     }
 
