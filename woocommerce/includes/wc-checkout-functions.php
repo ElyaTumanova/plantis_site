@@ -426,7 +426,7 @@ Contents
     //     }
 
     // }
-    
+
     //уведомление о маленькой сумме заказа
 
     add_action( 'woocommerce_checkout_order_review', 'min_amount_delivery_info', 10 );
@@ -439,8 +439,7 @@ Contents
         global $delivery_long_dist;
         global $urgent_deliveries;
         global $normal_deliveries;
-
-        $cart_weight = WC()->cart->cart_contents_weight;
+        global $local_pickup;
 
         $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
 
