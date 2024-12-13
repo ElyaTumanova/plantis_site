@@ -99,7 +99,7 @@ function plntAjaxGetUrgent() {
 function hideUrgentShipping () {
   urgentDeliveries.forEach((id)=>{
     console.log(id);
-    let urgentShippingMethodInput = document.querySelector(`input[value="${id}"]`);
+    let urgentShippingMethodInput = document.querySelector(`input[value="flat_rate:13"]`);
     console.log(urgentShippingMethodInput);
     let urgentShippingMethod = urgentShippingMethodInput.parentElement;
     console.log(urgentShippingMethod);
