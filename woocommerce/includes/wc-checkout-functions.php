@@ -436,7 +436,7 @@ Contents
         $shipping_costs = plnt_get_shiping_costs();
         global $delivery_courier;
         $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
-        echo '<div> class="checkout__comment"';
+        echo '<div class="checkout__comment">';
         if (WC()->cart->subtotal < $min_small_delivery) {
             if(!array_key_exists($delivery_courier,$shipping_costs)) {
                 echo '<div class="checkout__text checkout__text_small-order checkout__text_alarm">
