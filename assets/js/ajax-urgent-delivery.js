@@ -100,9 +100,12 @@ function hideUrgentShipping () {
   urgentDeliveries.forEach((id)=>{
     console.log(id);
     let urgentShippingMethodInput = document.querySelector(`input[value="${id}"]`);
-    console.log(urgentShippingMethodInput);
-    let urgentShippingMethod = urgentShippingMethodInput.parentElement;
-    console.log(urgentShippingMethod);
+    if(urgentShippingMethodInput) {
+      console.log(urgentShippingMethodInput);
+      let urgentShippingMethod = urgentShippingMethodInput.parentElement;
+      console.log(urgentShippingMethod);
+      urgentShippingMethod.classList.add('d-none');
+    }
   })
   
 
