@@ -4,8 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 //СПОСОБЫ ДОСТАВКИ
-// СТОИМОСТЬ ДОСТАВКИ ПО ДАТЕ
 
+//задаем по умолчанию срочную доставку
 add_action('wp_head','plnt_set_urgent');
 
 function plnt_set_urgent() {
@@ -17,10 +17,8 @@ add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
     if ( $_POST['isUrgent'] === '1'){
         WC()->session->set('isUrgent', '1' );
-        //WC()->session->set('chosen_shipping_methods', $_POST['destination'] );
     } else {
         WC()->session->set('isUrgent', '0' );
-        //WC()->session->set('chosen_shipping_methods', 'local_pickup:9' );
     }
     die(); // (required)
 }

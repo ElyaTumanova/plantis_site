@@ -13,11 +13,7 @@ function plntChekUrgentDelivery() {
   //console.log('hi plntChekUrgentDelivery');
   deliveryDates[0].setAttribute('checked','checked');
   plntAjaxGetUrgent();
-  console.log(isUrgent);
-
-  // setTimeout(() => {
-  //   hideUrgentShipping();
-  // }, 1000);
+  //console.log(isUrgent);
   
 
   deliveryDates.forEach((date) => {
@@ -99,21 +95,6 @@ function plntAjaxGetUrgent() {
   //   }
   // }
 };
-
-// function hideUrgentShipping () {
-//   urgentDeliveries.forEach((id)=>{
-//     console.log(id);
-//     let urgentShippingMethodInput = document.querySelector(`input[value="${id}"]`);
-//     if(urgentShippingMethodInput) {
-//       console.log(urgentShippingMethodInput);
-//       let urgentShippingMethod = urgentShippingMethodInput.parentElement;
-//       console.log(urgentShippingMethod);
-//       urgentShippingMethod.classList.add('d-none');
-//     }
-//   })
-  
-
-// };
 
 if (checkoutForm) {
 

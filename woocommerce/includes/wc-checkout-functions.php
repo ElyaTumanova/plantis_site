@@ -444,7 +444,7 @@ Contents
                 <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></td></tr>';
             } else if ( $delivery_courier == $chosen_methods[0])  {
                 echo '<tr> <td colspan="2" class="checkout__text checkout__text_small-order checkout__text_alarm">
-                При заказе на сумму менее <span>'.$min_small_delivery,'</span> рублей доставка осуществляется по тарифам курьерской службы. 
+                В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью ниже <span>'.$min_small_delivery,'</span> рублей доставляются в любой день по тарифу курьерской службы. 
                 Наш менеджер свяжется с Вами после оформления заказа и произведет расчет стоимости доставки.</td></tr>';
             }  
         }
