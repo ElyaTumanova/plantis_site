@@ -6,6 +6,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 //СПОСОБЫ ДОСТАВКИ
 // СТОИМОСТЬ ДОСТАВКИ ПО ДАТЕ
 
+add_action('wp_head','plnt_set_urgent');
+
+function plnt_set_urgent() {
+    WC()->session->set('isUrgent', '1' );
+};
+
 add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
