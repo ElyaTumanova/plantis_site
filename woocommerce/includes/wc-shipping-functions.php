@@ -19,7 +19,7 @@ add_action('woocommerce_review_order_before_shipping','plnt_check');
 function plnt_check() {
     //echo (WC()->session->get('isUrgent' ));
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
-    echo $chosen_methods;
+    echo $chosen_methods[0];
 }
 
 add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
