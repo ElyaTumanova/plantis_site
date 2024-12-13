@@ -456,7 +456,7 @@ Contents
     function update_order_review_notifications_fragments( $fragments ) {
         ob_start();
         min_amount_delivery_info();
-        $fragments[ 'div.checkout__text'] = ob_get_clean();
+        $fragments[ 'div.checkout__text_small-order'] = ob_get_clean();
         return $fragments;
     }
 
