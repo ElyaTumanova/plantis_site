@@ -11,10 +11,10 @@ let today;
 
 function plntChekUrgentDelivery() {
   //console.log('hi plntChekUrgentDelivery');
-  deliveryDates[1].setAttribute('checked','checked');
+  deliveryDates[0].setAttribute('checked','checked');
   plntAjaxGetUrgent();
   console.log(isUrgent);
-  hideUrgentShipping();
+
 
   deliveryDates.forEach((date) => {
     date.addEventListener('click', function(event){
@@ -94,21 +94,6 @@ function plntAjaxGetUrgent() {
   //     urgentText.innerHTML = "";
   //   }
   // }
-};
-
-function hideUrgentShipping () {
-  urgentDeliveries.forEach((id)=>{
-    console.log(id);
-    let urgentShippingMethodInput = document.querySelector(`input[value="${id}"]`);
-    if(urgentShippingMethodInput) {
-      console.log(urgentShippingMethodInput);
-      let urgentShippingMethod = urgentShippingMethodInput.parentElement;
-      console.log(urgentShippingMethod);
-      urgentShippingMethod.classList.add('d-none');
-    }
-  })
-  
-
 };
 
 if (checkoutForm) {
