@@ -44,7 +44,7 @@ Contents
     }
 
     // итоговая стоимость
-    add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 20 );
+    add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 25 );
 
     function plnt_order_total() {
             ?>
@@ -160,7 +160,7 @@ Contents
 
     // // добавляем новые поля для нтервала и даты доставки
 
-    add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_interval_field', 15 );
+    add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_interval_field', 20 );
     //add_action( 'plnt_woocommerce_review_order_in_order_total', 'plnt_add_delivery_interval_field', 55 );
 
     function plnt_add_delivery_interval_field() {
@@ -184,7 +184,7 @@ Contents
         echo "</div>";
     }
 
-    add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 10 );
+    add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 15 );
 
     function plnt_add_delivery_dates() {
 
@@ -428,7 +428,7 @@ Contents
     }
     //уведомление о маленькой сумме заказа
 
-    add_action( 'woocommerce_checkout_order_review', 'min_amount_delivery_info', 5 );
+    add_action( 'woocommerce_checkout_order_review', 'min_amount_delivery_info', 10 );
     //add_action( 'woocommerce_review_order_before_shipping', 'min_amount_delivery_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
 
     function min_amount_delivery_info(){
