@@ -442,7 +442,7 @@ Contents
                 echo '<div class="checkout__text checkout__text_small-order checkout__text_alarm">
                 При заказе на сумму менее <span>'.$min_small_delivery,'</span> рублей стоимость доставки увеличена. 
                 <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></div';
-            } else if ( $delivery_courier == $chosen_methods[0])  {
+            } else {
                 echo '<div class="checkout__text checkout__text_small-order checkout__text_alarm">
                 В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью ниже <span>'.$min_small_delivery,'</span> рублей доставляются в любой день по тарифу курьерской службы. 
                 Наш менеджер свяжется с Вами после оформления заказа и произведет расчет стоимости доставки.</div>';
