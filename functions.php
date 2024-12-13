@@ -143,7 +143,10 @@ function plnt_set_constants_script() {
 		let deliveryOutMKADSmallUrg = '<?php echo $urgent_delivery_outMKAD_small; ?>';
 		let deliveryInMKADLargeUrg = '<?php echo $urgent_delivery_inMKAD_large; ?>';
 		let deliveryOutMKADLargeUrg = '<?php echo $urgent_delivery_outMKAD_large; ?>';
-
+		
+		let normalDeliveries = [deliveryInMKAD, deliveryOutMKAD, deliveryInMKADSmall, deliveryOutMKADSmall, deliveryInMKADLarge, deliveryOutMKADLarge];
+		let urgentDeliveries = [deliveryInMKADUrg, deliveryOutMKADUrg, deliveryInMKADSmallUrg, deliveryOutMKADSmallUrg, deliveryInMKADLargeUrg, deliveryOutMKADLargeUrg];
+		
 		let localPickupId = '<?php echo $local_pickup; ?>';
 		let deliveryFreeId = '<?php echo $delivery_free; ?>';
 		let deliveryCourierId = '<?php echo $delivery_courier; ?>';

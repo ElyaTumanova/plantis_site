@@ -97,9 +97,12 @@ function plntAjaxGetUrgent() {
 };
 
 function hideUrgentShipping () {
-  let urgentShippingMethodInput = document.querySelector('input[value="flat_rate:3"]');
-  let urgentShippingMethod = urgentShippingMethodInput.parentElement;
-  console.log(urgentShippingMethod);
+  urgentDeliveries.forEach((id)=>{
+    let urgentShippingMethodInput = document.querySelector(`input[value="${id}"]`);
+    let urgentShippingMethod = urgentShippingMethodInput.parentElement;
+    console.log(urgentShippingMethod);
+  })
+  
 
 };
 
