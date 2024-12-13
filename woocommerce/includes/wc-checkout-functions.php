@@ -452,7 +452,7 @@ Contents
     }
 
     // добавляем фрагмент, чтобы апдейтить итоговую стоимость
-    add_action( 'woocommerce_update_order_review_fragments', 'update_order_review_notifications_fragments', 10, 1 );
+    add_action( 'woocommerce_update_order_review_fragments', 'update_order_review_notifications_fragments', 20, 1 );
     function update_order_review_notifications_fragments( $fragments ) {
         ob_start();
         min_amount_delivery_info();
