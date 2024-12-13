@@ -178,8 +178,8 @@ function create_yandex_xml_btn () {
                 // Способы доставки для групногабаритного товара
                 if(get_post_meta($allproduct->ID,'_weight',true)>=11) {
                     $yandex_xml .= "<delivery-options>
-                        <option cost='".$out_mkad_large."' days = '1' order-before='20'/>
-                        <option cost='".$out_mkad_urg_large."' days = '0' order-before='18'/>
+                        <option cost='".$out_mkad_large.replace(' ', '')."' days = '1' order-before='20'/>
+                        <option cost='".$out_mkad_urg_large.replace(' ', '')."' days = '0' order-before='18'/>
                     </delivery-options>
                     ";
                 }
