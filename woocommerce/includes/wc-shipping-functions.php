@@ -12,6 +12,14 @@ function plnt_set_urgent() {
     WC()->session->set('isUrgent', '1' );
 };
 
+//for dev
+
+// add_action('woocommerce_review_order_before_shipping','plnt_check');
+
+// function plnt_check() {
+//     echo (WC()->session->get('isUrgent' ));
+// }
+
 add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
@@ -35,14 +43,6 @@ function plnt_refresh_shipping_methods_for_urgent( $post_data ){
         WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
     }
     WC()->cart->calculate_shipping();
-}
-
-//for dev
-
-add_action('woocommerce_review_order_before_shipping','plnt_check');
-
-function plnt_check() {
-    echo (WC()->session->get('isUrgent' ));
 }
 
 
