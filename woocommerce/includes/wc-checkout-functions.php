@@ -429,10 +429,10 @@ Contents
 
     //уведомление о маленькой сумме заказа
 
-    add_action( 'woocommerce_checkout_order_review', 'min_amount_delivery_info', 10 );
+    add_action( 'woocommerce_checkout_order_review', 'delivery_info', 10 );
     //add_action( 'woocommerce_review_order_before_shipping', 'min_amount_delivery_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
 
-    function min_amount_delivery_info(){
+    function delivery_info(){
         $min_small_delivery = carbon_get_theme_option('min_small_delivery');
         $shipping_costs = plnt_get_shiping_costs();
         global $delivery_courier;
@@ -477,11 +477,11 @@ Contents
         if (WC()->cart->subtotal < $min_small_delivery) {
             if(!array_key_exists($delivery_courier,$shipping_costs)) {
                 echo '<div class="checkout__text checkout__text_small-order">
-                При заказе на сумму менее <span>'.$min_small_delivery,'</span> рублей стоимость доставки увеличена. 
+                При заказе на сумму менее '.$min_small_delivery,'рублей стоимость доставки увеличена. 
                 <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></div';
             } else if ($delivery_courier == $chosen_methods[0]) {
                 echo '<div class="checkout__text checkout__text_small-order-holiday">
-                В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью до <span>'.$min_small_delivery,'</span> рублей доставляются в любой день по тарифу курьерской службы. 
+                В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью до '.$min_small_delivery,'рублей доставляются в любой день по тарифу курьерской службы. 
                 Мы свяжемся с Вами после оформления заказа и произведем расчет стоимости доставки. 
                 Также, вы можете самостоятельно бесплатно забрать заказ в нашем магазине, оформив самовывоз.
                 <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
@@ -514,7 +514,7 @@ Contents
     add_action( 'woocommerce_update_order_review_fragments', 'update_order_review_notifications_fragments', 20, 1 );
     function update_order_review_notifications_fragments( $fragments ) {
         ob_start();
-        min_amount_delivery_info();
+        delivery_info();
         $fragments[ 'div.checkout__comment'] = ob_get_clean();
         return $fragments;
     }
