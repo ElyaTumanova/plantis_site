@@ -14,11 +14,13 @@ function plnt_set_urgent() {
 
 //for dev
 
-// add_action('woocommerce_review_order_before_shipping','plnt_check');
+add_action('woocommerce_review_order_before_shipping','plnt_check');
 
-// function plnt_check() {
-//     echo (WC()->session->get('isUrgent' ));
-// }
+function plnt_check() {
+    //echo (WC()->session->get('isUrgent' ));
+    $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+    echo $chosen_methods;
+}
 
 add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
