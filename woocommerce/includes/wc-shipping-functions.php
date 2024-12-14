@@ -20,14 +20,15 @@ function plnt_set_urgent() {
 
 //for dev
 
-add_action('woocommerce_review_order_before_shipping','plnt_check');
+//add_action('woocommerce_review_order_before_shipping','plnt_check');
+add_action('wp_head','plnt_check');
 
 function plnt_check() {
-    echo (WC()->session->get('isUrgent' ));
+    //echo (WC()->session->get('isUrgent' ));
     //echo '<br>';
-    //$chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
-    //echo $chosen_methods[0];
-    //echo '<br>';
+    $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+    echo $chosen_methods[0];
+    echo '<br>';
 }
 
 add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
