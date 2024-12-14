@@ -13,7 +13,7 @@ function plntChekUrgentDelivery() {
   //console.log('hi plntChekUrgentDelivery');
   deliveryDates[0].setAttribute('checked','checked');
   plntAjaxGetUrgent();
-  //console.log(isUrgent);
+  console.log(isUrgent);
   
 
   deliveryDates.forEach((date) => {
