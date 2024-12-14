@@ -100,7 +100,7 @@ if (checkoutForm) {
 
   let hour = new Date().getHours();
 
-  if (hour >= 12 && hour <20) {
+  if (hour >= 18 && hour <20) {
     isUrgent = 0;
   } else {
     isUrgent = 1;
