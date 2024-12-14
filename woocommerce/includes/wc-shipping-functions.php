@@ -241,13 +241,16 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
 	global $urgent_delivery_inMKAD_large; 
 	global $urgent_delivery_outMKAD_large;
 
+    date_default_timezone_set('Europe/Moscow');
+    $hour = date("H");
+
     if($chosen_method && in_array($chosen_method, $rates)) {
         $default = $chosen_method;
     } else {
         $default = $local_pickup;
     }
 
-    if ( is_checkout() ) {
+    if ( is_checkout() && ($hour<18 || $hour>=20)) {
         if( $chosen_method === $delivery_inMKAD) {
             $default = $urgent_delivery_inMKAD;
         }
@@ -295,10 +298,6 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
         if( $chosen_method === $urgent_delivery_outMKAD_large) {
             $default = $delivery_outMKAD_large;
         }
-    }
-
-    if(!in_array($default, $rates)) {
-        $default = $local_pickup;
     }
     
     return $default;
