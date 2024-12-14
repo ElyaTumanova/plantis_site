@@ -258,7 +258,7 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
         $default = $local_pickup;
     }
 
-    if ( is_checkout() && ($hour<18 || $hour>=20)) {
+    if ( is_checkout()) {
         if( $chosen_method === $delivery_inMKAD) {
             $default = $urgent_delivery_inMKAD;
         }
