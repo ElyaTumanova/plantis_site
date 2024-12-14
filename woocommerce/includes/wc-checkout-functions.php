@@ -196,7 +196,7 @@ Contents
         date_default_timezone_set('Europe/Moscow');
         $hour = date("H");
 
-        if ($hour >=12) {
+        if ($hour >=18) {
             $days_start = 1;
             $days_amount = 14;
         } else {
@@ -461,7 +461,7 @@ Contents
         
         if ( in_array($chosen_methods[0],$normal_deliveries) ) {
             //при оформлении до 20:00
-            if ($hour > 18) {
+            if ($hour >= 18) {
                 echo '<div class="checkout__text checkout__text_normal">
                     После оформления заказа мы свяжемся с вами в рабочее время с 10:00 до 20:00 для его подтверждения. 
                     <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';

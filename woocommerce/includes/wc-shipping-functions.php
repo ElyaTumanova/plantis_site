@@ -11,7 +11,7 @@ add_action('wp_head','plnt_set_urgent');
 function plnt_set_urgent() {
     date_default_timezone_set('Europe/Moscow');
     $hour = date("H");
-    if ($hour > 11 && $hour <20) {
+    if ($hour >= 18 && $hour <20) {
         WC()->session->set('isUrgent', '0' );
     } else {
         WC()->session->set('isUrgent', '1' );
@@ -229,7 +229,6 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
         
     global $delivery_inMKAD;
     global $delivery_outMKAD;
-
     global $delivery_inMKAD_small;
 	global $delivery_outMKAD_small;
 	global $delivery_inMKAD_large;
@@ -296,6 +295,12 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
         if( $chosen_method === $urgent_delivery_outMKAD_large) {
             $default = $delivery_outMKAD_large;
         }
+    }
+
+    if(in_array($default, $rates)) {
+        return $default;
+    } else {
+        $default = $local_pickup;
     }
     
     return $default;
