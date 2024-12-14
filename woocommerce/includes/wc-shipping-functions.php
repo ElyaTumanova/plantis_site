@@ -11,7 +11,7 @@ add_action('wp_head','plnt_set_urgent');
 function plnt_set_urgent() {
     date_default_timezone_set('Europe/Moscow');
     $hour = date("H");
-    if ($hour > 12 && $hour <20) {
+    if ($hour > 11 && $hour <20) {
         WC()->session->set('isUrgent', '0' );
     } else {
         WC()->session->set('isUrgent', '1' );
