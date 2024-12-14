@@ -371,7 +371,7 @@ Contents
         }
     }
 
-    // выбрана крупногабартная доставка
+    // выбрана крупногабартная доставка (с использованием класса доставки - не применяем)
     //add_action( 'woocommerce_checkout_order_review', 'my_delivery_large_products_oder_info', 40 );
     //add_action( 'woocommerce_review_order_before_shipping', 'my_delivery_large_products_oder_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
 
@@ -388,13 +388,7 @@ Contents
     }
 
 
-    // уведомление о срочной доставке
-
-    //add_action( 'woocommerce_checkout_order_review', 'plnt_urgent_delivery_info', 45 );
-
-    // function plnt_urgent_delivery_info(){
-    //     echo '<div class="checkout__text checkout__text_alarm checkout__urgent-text"></div>'; 
-    // }
+    // сообщение о крупногабартной доставке (с машинкой)
 
     add_action('plnt_large_delivery_notice', 'plnt_large_delivery_notice');
 
@@ -411,27 +405,11 @@ Contents
         
     }
 
-    //уведомление о дальней доставке
-
-    // add_action( 'woocommerce_review_order_before_shipping', 'long_distance_delivery_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
-
-    // function long_distance_delivery_info() {
-    //     global $delivery_long_dist;
-    //     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
-  
-    //     if ( $delivery_long_dist == $chosen_methods[0]) {
-    //         echo '<tr> <td colspan="2" class="checkout__text checkout__text_long-dist checkout__text_alarm">
-    //             Доставка на расстояние свыше 5км за МКАД осуществляется по тарифам курьерской службы. 
-    //             Наш менеджер свяжется с Вами после оформления заказа и произведет расчет стоимости доставки.</td></tr>';
-    //     }
-
-    // }
-
-    //уведомление о маленькой сумме заказа
+    
+    //комментарий к выбранному способу доставки
 
     add_action( 'woocommerce_checkout_order_review', 'delivery_info', 10 );
-    //add_action( 'woocommerce_review_order_before_shipping', 'min_amount_delivery_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
-
+   
     function delivery_info(){
         $min_small_delivery = carbon_get_theme_option('min_small_delivery');
         $shipping_costs = plnt_get_shiping_costs();
@@ -500,7 +478,7 @@ Contents
 
         //Самовывоз
         if ( $local_pickup == $chosen_methods[0]) {
-            echo '<div class="checkout__text checkout__text_long-dist">
+            echo '<div class="checkout__text checkout__text_local-pickup">
                 После оформления заказа мы свяжемся с вами в рабочее время с 10:00 до 20:00 для его подтверждения.
                 <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
                 </div>';
