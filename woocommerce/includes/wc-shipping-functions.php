@@ -29,6 +29,13 @@ function plnt_check() {
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
     echo $chosen_methods[0];
     echo '<br>';
+
+    date_default_timezone_set('Europe/Moscow');
+    $hour = date("H");
+    if ( is_checkout() && ($hour<18 || $hour>=20)) {
+        echo $hour;
+    }
+
 }
 
 add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
