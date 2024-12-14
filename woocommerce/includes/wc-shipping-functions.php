@@ -297,9 +297,7 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
         }
     }
 
-    if(in_array($default, $rates)) {
-        return $default;
-    } else {
+    if(!in_array($default, $rates)) {
         $default = $local_pickup;
     }
     
