@@ -196,7 +196,7 @@ Contents
         date_default_timezone_set('Europe/Moscow');
         $hour = date("H");
 
-        if ($hour >=18) {
+        if ($hour >=19) {
             $days_start = 1;
             $days_amount = 14;
         } else {
