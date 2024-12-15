@@ -232,7 +232,7 @@ function plnt_get_shiping_costs() {
 
 // задаем способ доставки по умолчанию для доставок внутри и за пределы МКАД
 
-//add_filter( 'woocommerce_shipping_chosen_method', 'wp_kama_woocommerce_shipping_chosen_method_filter', 10, 3 );
+add_filter( 'woocommerce_shipping_chosen_method', 'wp_kama_woocommerce_shipping_chosen_method_filter', 10, 3 );
 
 function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $chosen_method ){
 
@@ -252,8 +252,8 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
 	global $urgent_delivery_inMKAD_large; 
 	global $urgent_delivery_outMKAD_large;
 
-    date_default_timezone_set('Europe/Moscow');
-    $hour = date("H");
+    // date_default_timezone_set('Europe/Moscow');
+    // $hour = date("H");
 
     if($chosen_method && in_array($chosen_method, $rates)) {
         $default = $chosen_method;
@@ -312,87 +312,6 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
     }
     
     return $default;
-}
-
-do_action( 'woocommerce_shipping_method_chosen', 'wp_kama_woocommerce_shipping_method_chosen_filter', 10 );
-function wp_kama_woocommerce_shipping_method_chosen_filter( $chosen_method ){
-
-    global $local_pickup;
-        
-    global $delivery_inMKAD;
-    global $delivery_outMKAD;
-    global $delivery_inMKAD_small;
-	global $delivery_outMKAD_small;
-	global $delivery_inMKAD_large;
-	global $delivery_outMKAD_large;
-
-    global $urgent_delivery_inMKAD; 
-	global $urgent_delivery_outMKAD; 
-	global $urgent_delivery_inMKAD_small; 
-	global $urgent_delivery_outMKAD_small;
-	global $urgent_delivery_inMKAD_large; 
-	global $urgent_delivery_outMKAD_large;
-
-    // date_default_timezone_set('Europe/Moscow');
-    // $hour = date("H");
-
-    if($chosen_method && in_array($chosen_method, $rates)) {
-        $chosen_method = $chosen_method;
-    } else {
-        $chosen_method = $local_pickup;
-    }
-
-    if ( is_checkout()) {
-        if( $chosen_method === $delivery_inMKAD) {
-            $chosen_method = $urgent_delivery_inMKAD;
-        }
-    
-        if( $chosen_method === $urgent_delivery_inMKAD) {
-            $chosen_method = $delivery_inMKAD;
-        }
-    
-        if( $chosen_method === $delivery_outMKAD) {
-            $chosen_method = $urgent_delivery_outMKAD;
-        }
-    
-        if( $chosen_method === $urgent_delivery_outMKAD) {
-            $chosen_method = $delivery_outMKAD;
-        }
-    
-        if( $chosen_method === $delivery_inMKAD_small) {
-            $chosen_method = $urgent_delivery_inMKAD_small;
-        }
-    
-        if( $chosen_method === $urgent_delivery_inMKAD_small) {
-            $chosen_method = $delivery_inMKAD_small;
-        }
-    
-        if( $chosen_method === $delivery_outMKAD_small) {
-            $chosen_method = $urgent_delivery_outMKAD_small;
-        }
-    
-        if( $chosen_method === $urgent_delivery_outMKAD_small) {
-            $chosen_method = $delivery_outMKAD_small;
-        }
-    
-        if( $chosen_method === $delivery_inMKAD_large) {
-            $chosen_method = $urgent_delivery_inMKAD_large;
-        }
-    
-        if( $chosen_method === $urgent_delivery_inMKAD_large) {
-            $chosen_method = $delivery_inMKAD_large;
-        }
-    
-        if( $chosen_method === $delivery_outMKAD_large) {
-            $chosen_method = $urgent_delivery_outMKAD_large;
-        }
-    
-        if( $chosen_method === $urgent_delivery_outMKAD_large) {
-            $chosen_method = $delivery_outMKAD_large;
-        }
-    }
-    
-    return $chosen_method;
 }
 
 // новое поле для способов доставки в админке - вылезает ошибка!
