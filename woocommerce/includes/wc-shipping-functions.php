@@ -252,6 +252,9 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
 	global $urgent_delivery_inMKAD_large; 
 	global $urgent_delivery_outMKAD_large;
 
+    global $urgent_deliveries;
+    global $normal_deliveries;
+
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
 
@@ -261,55 +264,67 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
         $default = $local_pickup;
     }
 
-    if ( is_checkout()) {
-        if( $chosen_method === $delivery_inMKAD) {
-            $default = $urgent_delivery_inMKAD;
+    if(is_checkout()) {
+        $isUrgent = WC()->session->get('isUrgent' );
+        if (in_array($chosen_method, $urgent_deliveries) &&  $isUrgent === '0') {
+            $default_array = array_intersect($normal_deliveries, $rates);
+            $default = $default_array[0];
         }
-    
-        if( $chosen_method === $urgent_delivery_inMKAD) {
-            $default = $delivery_inMKAD;
-        }
-    
-        if( $chosen_method === $delivery_outMKAD) {
-            $default = $urgent_delivery_outMKAD;
-        }
-    
-        if( $chosen_method === $urgent_delivery_outMKAD) {
-            $default = $delivery_outMKAD;
-        }
-    
-        if( $chosen_method === $delivery_inMKAD_small) {
-            $default = $urgent_delivery_inMKAD_small;
-        }
-    
-        if( $chosen_method === $urgent_delivery_inMKAD_small) {
-            $default = $delivery_inMKAD_small;
-        }
-    
-        if( $chosen_method === $delivery_outMKAD_small) {
-            $default = $urgent_delivery_outMKAD_small;
-        }
-    
-        if( $chosen_method === $urgent_delivery_outMKAD_small) {
-            $default = $delivery_outMKAD_small;
-        }
-    
-        if( $chosen_method === $delivery_inMKAD_large) {
-            $default = $urgent_delivery_inMKAD_large;
-        }
-    
-        if( $chosen_method === $urgent_delivery_inMKAD_large) {
-            $default = $delivery_inMKAD_large;
-        }
-    
-        if( $chosen_method === $delivery_outMKAD_large) {
-            $default = $urgent_delivery_outMKAD_large;
-        }
-    
-        if( $chosen_method === $urgent_delivery_outMKAD_large) {
-            $default = $delivery_outMKAD_large;
+        if (in_array($chosen_method, $normal_deliveries) &&  $isUrgent === '1') {
+            $default_array = array_intersect($urgent_deliveries, $rates);
+            $default = $default_array[0];
         }
     }
+
+    // if ( is_checkout()) {
+    //     if( $chosen_method === $delivery_inMKAD) {
+    //         $default = $urgent_delivery_inMKAD;
+    //     }
+    
+    //     if( $chosen_method === $urgent_delivery_inMKAD) {
+    //         $default = $delivery_inMKAD;
+    //     }
+    
+    //     if( $chosen_method === $delivery_outMKAD) {
+    //         $default = $urgent_delivery_outMKAD;
+    //     }
+    
+    //     if( $chosen_method === $urgent_delivery_outMKAD) {
+    //         $default = $delivery_outMKAD;
+    //     }
+    
+    //     if( $chosen_method === $delivery_inMKAD_small) {
+    //         $default = $urgent_delivery_inMKAD_small;
+    //     }
+    
+    //     if( $chosen_method === $urgent_delivery_inMKAD_small) {
+    //         $default = $delivery_inMKAD_small;
+    //     }
+    
+    //     if( $chosen_method === $delivery_outMKAD_small) {
+    //         $default = $urgent_delivery_outMKAD_small;
+    //     }
+    
+    //     if( $chosen_method === $urgent_delivery_outMKAD_small) {
+    //         $default = $delivery_outMKAD_small;
+    //     }
+    
+    //     if( $chosen_method === $delivery_inMKAD_large) {
+    //         $default = $urgent_delivery_inMKAD_large;
+    //     }
+    
+    //     if( $chosen_method === $urgent_delivery_inMKAD_large) {
+    //         $default = $delivery_inMKAD_large;
+    //     }
+    
+    //     if( $chosen_method === $delivery_outMKAD_large) {
+    //         $default = $urgent_delivery_outMKAD_large;
+    //     }
+    
+    //     if( $chosen_method === $urgent_delivery_outMKAD_large) {
+    //         $default = $delivery_outMKAD_large;
+    //     }
+    // }
     
     return $default;
 }
