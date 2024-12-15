@@ -32,6 +32,8 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 			'nonce' => wp_create_nonce('search-nonce')
 		));
 		
+		wp_enqueue_script( 'header-catalog-menu', get_template_directory_uri() .
+		                                     '/assets/js/header-catalog-menu.js', array( 'jquery' ), null, true );
 		wp_enqueue_script( 'search-popup', get_template_directory_uri() .
 		                                     '/assets/js/search-popup.js', array( 'jquery' ), null, true );
 		wp_enqueue_script( 'page-popup', get_template_directory_uri() .
