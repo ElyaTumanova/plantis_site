@@ -24,9 +24,12 @@ function plnt_set_urgent() {
 //add_action('wp_head','plnt_check');
 
 function plnt_check() {
-    echo (WC()->session->get('isUrgent' ));
-    echo '<br>';
+    // echo (WC()->session->get('isUrgent' ));
+    // echo '<br>';
+    $packages = WC()->shipping()->get_packages();
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+    echo $packages;
+    echo '<br>';
     echo $chosen_methods[0];
     echo '<br>';
 
