@@ -20,8 +20,8 @@ function plnt_set_urgent() {
 
 //for dev
 
-//add_action('woocommerce_review_order_before_shipping','plnt_check');
-//add_action('wp_head','plnt_check');
+add_action('woocommerce_review_order_before_shipping','plnt_check');
+add_action('wp_head','plnt_check');
 
 function plnt_check() {
     // echo (WC()->session->get('isUrgent' ));
