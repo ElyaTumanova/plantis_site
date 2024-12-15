@@ -84,16 +84,6 @@ function plntAjaxGetUrgent() {
             }
         });
   });
-
-  // let urgentText = document.querySelector('.checkout__urgent-text');
-  // if (urgentText) {
-  //   if (isUrgent == '1') {
-  //     console.log('hi text');
-  //     urgentText.innerHTML = "Доставка для выбранной даты является срочной, поэтому стоимость доставки увеличена.";
-  //     } else {
-  //     urgentText.innerHTML = "";
-  //   }
-  // }
 };
 
 if (checkoutForm) {
