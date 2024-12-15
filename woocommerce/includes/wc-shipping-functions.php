@@ -314,7 +314,7 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
     return $default;
 }
 
-add_filter( 'woocommerce_shipping_method_chosen', 'wp_kama_woocommerce_shipping_method_chosen_filter', 10, 3 );
+do_action( 'woocommerce_shipping_method_chosen', 'wp_kama_woocommerce_shipping_method_chosen_filter', 10 );
 function wp_kama_woocommerce_shipping_method_chosen_filter( $chosen_method ){
 
     global $local_pickup;
