@@ -17,6 +17,12 @@
     left: 0px;
     box-shadow: rgba(20, 20, 20, 0.03) 0px 6px 8px 0px;
 
+    visibility: hidden;
+
+}
+
+.header__menu_open {
+    visibility: visible;
 }
 
 .menu--main {
