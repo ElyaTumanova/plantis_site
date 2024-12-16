@@ -152,7 +152,7 @@
     margin-right: 20px;
 }
 
-.menu-item-has-children.menu-node_lvl_2> a:after {
+.menu-item-has-children.menu-node_lvl_1> a:after {
     /* content: "\276F"; */
     content: "next";
     font-family: swiper-icons;
@@ -164,7 +164,7 @@
     right: 13px;
     margin-top: 2px;
 }
-.menu-item-has-children.menu-node_lvl_2> a:after:hover {
+.menu-item-has-children.menu-node_lvl_1> a:after:hover {
     text-decoration: none;
 }
 
