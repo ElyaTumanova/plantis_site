@@ -6,13 +6,21 @@ let firstSubMenues = majorCats[0].querySelectorAll('.sub-menu');
 console.log(firstSubMenues)
 console.log(subMenues)
 
-function toggleHeaderCatalog () {
-    headerCatalogWrap.classList.toggle('header__menu_open');
+function openHeaderCatalog () {
+    headerCatalogWrap.classList.add('header__menu_open');
     closeAllSubmenu();
 
     firstSubMenues.forEach((el) => {
-        el.classList.toggle('menu--onside_show');
+        el.classList.add('menu--onside_show');
     });
+
+    catalogBtn.addEventListener('click',closeHeaderCatalog,{once:true})
+}
+
+function closeHeaderCatalog () {
+    headerCatalogWrap.classList.remove('header__menu_open');
+    closeAllSubmenu();
+    catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 }
 
 function showSubmenu(event) {
@@ -32,7 +40,7 @@ function closeAllSubmenu() {
     })
 }
 
-catalogBtn.addEventListener('click',toggleHeaderCatalog);
+catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 
 
 
