@@ -76,7 +76,7 @@
     max-height: 600px;
 }
 
-.menu--main .short-sub-menu {
+.menu--main .short-sub-menu .menu--onside_lvl_1{
     row-gap: 20px;
 }
 
