@@ -14,15 +14,21 @@ function showSubmenu(event) {
     })
 }
 
-function closeSubmenu() {
+function closeAllSubmenu() {
     subMenues.forEach((el) => {
        // console.log(el);
         el.classList.remove('menu--onside_show');
     })
 }
 
+closeAllSubmenu();
+
+firstSubMenues.forEach((el) => {
+    el.classList.add('menu--onside_show');
+});
+
 majorCats.forEach((el) => {
 	//console.log(el);
-    el.addEventListener('mouseenter',closeSubmenu);
+    el.addEventListener('mouseenter',closeAllSubmenu);
     el.addEventListener('mouseenter',showSubmenu);
 })
