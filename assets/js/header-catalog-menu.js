@@ -1,5 +1,11 @@
 let majorCats = document.querySelectorAll('.menu--main .menu-node_lvl_1');
 
-majorCats.forEach(element => {
-    console.log(element);
-});
+function showSubmenu(event) {
+    console.log(event.target);
+
+}
+
+majorCats.forEach((el) => {
+	console.log(el);
+    el.addEventListener('hover',showSubmenu);
+})
