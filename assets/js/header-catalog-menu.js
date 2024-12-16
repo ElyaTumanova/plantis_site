@@ -1,5 +1,5 @@
 let majorCats = document.querySelectorAll('.menu--main .menu-item-has-children.menu-node_lvl_1');
-let subMenues = document.querySelectorAll('.sub-menu');
+let subMenues = majorCats.querySelectorAll('.sub-menu');
 console.log(subMenues)
 
 function showSubmenu(event) {
