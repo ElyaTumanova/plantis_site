@@ -35,7 +35,7 @@
     position: relative;
 }
 
-.menu--onside {
+.menu--onside_lvl_1 {
     position: absolute;
     top: 0;
     left: 300px;
@@ -152,7 +152,7 @@
     margin-right: 20px;
 }
 
-.menu-item-has-children.menu-node_lvl_1> a:after {
+.menu--main .menu-item-has-children.menu-node_lvl_1> a:after {
     /* content: "\276F"; */
     content: "next";
     font-family: swiper-icons;
@@ -161,10 +161,11 @@
     font-weight: 600;
     font-size: 13px;
     position: absolute;
-    right: 13px;
-    margin-top: 2px;
+    /* right: 13px;
+    margin-top: 2px; */
+    left: 250px;
 }
-.menu-item-has-children.menu-node_lvl_1> a:after:hover {
+.menu--main .menu-item-has-children.menu-node_lvl_1> a:after:hover {
     text-decoration: none;
 }
 
