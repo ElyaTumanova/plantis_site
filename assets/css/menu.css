@@ -27,8 +27,8 @@
 
 .menu--main {
     font-size: 16px;
-    font-weight: 600; 
-    text-transform: uppercase;
+    font-weight: 400; 
+    /* text-transform: uppercase; */
     /* line-height: 14px; */
     letter-spacing: 0.01em;
     margin: 12px 17px;
@@ -106,6 +106,10 @@
 
 .menu--main .menu-node_lvl_1 {
     padding: 15px 0;
+}
+
+.menu--main .menu-node_lvl_1:hover{
+    background-color: var(--gray);
 }
 
 .menu--info .menu-node_lvl_1 {
