@@ -80,6 +80,10 @@
     font-weight: 600;
 }
 
+.menu--onside_lvl_2 a {
+    font-weight: 400;
+}
+
 .menu--onside_show {
     visibility: visible;
 }
