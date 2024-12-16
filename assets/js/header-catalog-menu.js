@@ -8,6 +8,11 @@ console.log(subMenues)
 
 function toggleHeaderCatalog () {
     headerCatalogWrap.classList.toggle('header__menu_open');
+    closeAllSubmenu();
+
+    firstSubMenues.forEach((el) => {
+        el.classList.toggle('menu--onside_show');
+    });
 }
 
 function showSubmenu(event) {
@@ -29,11 +34,7 @@ function closeAllSubmenu() {
 
 catalogBtn.addEventListener('click',toggleHeaderCatalog);
 
-closeAllSubmenu();
 
-firstSubMenues.forEach((el) => {
-    el.classList.add('menu--onside_show');
-});
 
 majorCats.forEach((el) => {
 	//console.log(el);
