@@ -76,6 +76,10 @@
     max-height: 600px;
 }
 
+.menu--main .menu-podborki {
+    row-gap: 20px;
+}
+
 .menu--onside_lvl_1 a {
     font-weight: 600;
 }
@@ -96,7 +100,6 @@
 
     font-size: 14px;
 }
-
 
 
 .menu--main .menu-node_lvl_2 {
