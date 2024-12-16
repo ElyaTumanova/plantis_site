@@ -45,6 +45,10 @@
     position: relative;
 }
 
+.main__banners-wrap a {
+    height: 0;
+}
+
 @media (max-width:1279px) {
     .main__banners-wrap {
         margin-right: 0;
