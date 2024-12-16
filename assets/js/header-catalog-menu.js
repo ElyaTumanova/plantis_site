@@ -4,6 +4,10 @@ function showSubmenu(event) {
     console.log(event.target);
     let menu = event.target;
     let subMenues = menu.querySelectorAll('.sub-menu');
+    subMenues.forEach((el) => {
+        console.log(el);
+        el.classList.add('menu--onside_show');
+    })
 
 }
 

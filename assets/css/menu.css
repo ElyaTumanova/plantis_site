@@ -36,6 +36,10 @@
     visibility: hidden;
 }
 
+.menu--onside_show {
+    visibility: visible;
+}
+
 .menu--main .menu-node_lvl_2, .menu-node_lvl_3 {
     padding: 10px 25px;
     display: block;
