@@ -11,7 +11,7 @@ const swiper_main_banners = new Swiper('.main__banners-swiper', {
         prevEl: '.swiper-button-prev',
     },
     slidesPerView: 1,
-    slidesPerGroup: 1,
+    slidesPerGroup: 0,
     spaceBetween: 0,
     loop: true,
     breakpoints: {
