@@ -58,6 +58,8 @@
 
 .menu--main a:hover {
     text-decoration: none;
+}
+.menu--main .sub-menu a:hover {
     color: var(--gray-text);
 }
   
@@ -66,19 +68,33 @@
     top: 0;
     left: 300px;
     visibility: hidden;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 600px;
 }
 
 .menu--onside_show {
     visibility: visible;
 }
 
-.menu--main .menu-node_lvl_2, .menu-node_lvl_3 {
+.menu--onside_lvl_2 {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+
+
+.menu--main .menu-node_lvl_2 {
     padding: 10px 25px;
     display: block;
     position: relative;
 }
 
-.menu--info .menu-node_lvl_2, .menu-node_lvl_3 {
+.menu--info .menu-node_lvl_2{
     padding: 8px 15px;
     display: block;
 }
