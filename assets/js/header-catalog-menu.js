@@ -1,17 +1,18 @@
 let majorCats = document.querySelectorAll('.menu--main .menu-item-has-children.menu-node_lvl_1');
+let subMenues = document.querySelectorAll('.sub-menu');
+console.log(subMenues)
 
 function showSubmenu(event) {
     console.log(event.target);
     let menu = event.target;
-    let subMenues = menu.querySelectorAll('.sub-menu');
-    subMenues.forEach((el) => {
-        console.log(el);
+    let menuSubMenues = menu.querySelectorAll('.sub-menu');
+    menuSubMenues.forEach((el) => {
+       //console.log(el);
         el.classList.add('menu--onside_show');
     })
 }
 
 function closeSubmenu() {
-    let subMenues = document.querySelectorAll('.sub-menu');
     subMenues.forEach((el) => {
        // console.log(el);
         el.classList.remove('menu--onside_show');
@@ -19,7 +20,7 @@ function closeSubmenu() {
 }
 
 majorCats.forEach((el) => {
-	console.log(el);
+	//console.log(el);
     el.addEventListener('mouseenter',closeSubmenu);
     el.addEventListener('mouseenter',showSubmenu);
 })
