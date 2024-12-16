@@ -6,6 +6,6 @@ function showSubmenu(event) {
 }
 
 majorCats.forEach((el) => {
-	console.log(el);
-    el.addEventListener('hover',showSubmenu);
+	//console.log(el);
+    el.addEventListener('mouseenter',showSubmenu);
 })
