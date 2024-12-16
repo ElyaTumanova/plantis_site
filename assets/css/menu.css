@@ -35,6 +35,18 @@
     position: relative;
 }
 
+.menu--main:after {
+    border-left: 1px solid black;
+    content: "";
+    display: block;
+    height: 67px;
+    left: 32px;
+    position: absolute;
+    top: 123px;
+    width: 1px;
+    z-index: 0;
+}
+  
 .menu--onside_lvl_1 {
     position: absolute;
     top: 0;
