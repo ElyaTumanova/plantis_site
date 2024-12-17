@@ -24,7 +24,7 @@ if ( ! function_exists( 'plnt_primary_menu' ) ) {
 			'container'      => 'nav',
 			'menu_class'     => 'primary-menu',
 			'theme_location' => 'primary',
-			'depth'          => 3,
+			'depth'          => 4,
 			'fallback_cb'     => '__return_empty_string',
 		));
 	}
