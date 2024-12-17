@@ -5,6 +5,11 @@
 /* primary & secondary menu styles */
 
 /* кнопка каталога в хедере */
+
+.header__catalog:hover {
+    cursor: pointer;
+}
+
 .header__catalog_icon {
     box-sizing: border-box;
     display: flex;
