@@ -8,6 +8,8 @@ console.log(subMenues)
 
 function openHeaderCatalog () {
     headerCatalogWrap.classList.add('header__menu_open');
+    catalogBtn.classList.add('header__catalog_open');
+
     closeAllSubmenu();
 
     firstSubMenues.forEach((el) => {
@@ -19,6 +21,7 @@ function openHeaderCatalog () {
 
 function closeHeaderCatalog () {
     headerCatalogWrap.classList.remove('header__menu_open');
+    catalogBtn.classList.remove('header__catalog_open');
     closeAllSubmenu();
     catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 }

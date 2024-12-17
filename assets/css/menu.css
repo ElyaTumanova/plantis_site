@@ -4,6 +4,7 @@
 
 /* primary & secondary menu styles */
 
+/* кнопка каталога в хедере */
 .header__catalog_icon {
     box-sizing: border-box;
     display: flex;
@@ -14,6 +15,27 @@
     padding: 2px 0;
     width: 18px;
 }
+
+.header__catalog_icon .header__catalog_icon-svg{
+    height: 2px;
+    transition: .3s;
+    width: 18px;
+}
+
+.header__catalog_open .header__catalog_icon .header__catalog_icon-svg{
+    opacity: 0;
+    width: 20px;
+}
+.header__catalog_open .header__catalog_icon .header__catalog_icon-svg:first-child{
+    opacity: 1;
+    transform: translateY(6px) rotate(45deg);
+}
+.header__catalog_open .header__catalog_icon .header__catalog_icon-svg:last-child{
+    opacity: 1;
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+
 
 
 .header__menu {
