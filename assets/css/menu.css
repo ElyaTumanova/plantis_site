@@ -73,7 +73,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     row-gap: 50px;
-    max-height: 600px;
+    max-height: calc(var(--vh) - var(--headerHeight) - 20px);;
 }
 
 .menu--main .short-sub-menu .menu--onside_lvl_1{
