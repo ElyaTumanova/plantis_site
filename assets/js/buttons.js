@@ -37,7 +37,7 @@ window.addEventListener('resize', () => {
     // получаем текущее значение высоты
     let headerHeight= headerDiv.offsetHeight;;
     document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
-    //console.log(headerHeight);
+    console.log(headerHeight);
 });
 
 
