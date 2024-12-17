@@ -49,6 +49,17 @@ function closeAllSubmenu() {
     })
 }
 
+function openTreezSubMenues(event) {
+    let menu = event.target;
+    let menuSubMenues = menu.querySelectorAll('.sub-menu');
+    treezSubMenues.forEach((el) => {
+        el.classList.remove('menu--onside_show');
+    })
+    menuSubMenues.forEach((el) => {
+        el.classList.add('menu--onside_show');
+    })
+}
+
 catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 
 majorCats.forEach((el) => {
@@ -56,7 +67,6 @@ majorCats.forEach((el) => {
     el.addEventListener('mouseenter',showSubmenu);
 })
 
-// treezCollectionsCats.forEach((el) => {
-//     //el.addEventListener('mouseenter',closeAllSubmenu);
-//     el.addEventListener('mouseenter',showSubmenu);
-// })
+treezCollectionsCats.forEach((el) => {
+    el.addEventListener('mouseenter',closeAllSubmenu);
+})
