@@ -4,6 +4,9 @@ let majorCats = document.querySelectorAll('.menu--main .menu-node_lvl_1');
 let subMenues = document.querySelectorAll('.menu--main .sub-menu');
 let firstSubMenues = majorCats[0].querySelectorAll('.sub-menu');
 
+let treezCollectionsCats = document.querySelectorAll('.menu_item_treez');
+let treezSubMenues = document.querySelectorAll('.menu_item_treez .sub-menu');
+
 function openHeaderCatalog () {
     headerCatalogWrap.classList.add('header__menu_open');
     catalogBtn.classList.add('header__catalog_open');
@@ -45,9 +48,12 @@ function closeAllSubmenu() {
 
 catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 
-
-
 majorCats.forEach((el) => {
+    el.addEventListener('mouseenter',closeAllSubmenu);
+    el.addEventListener('mouseenter',showSubmenu);
+})
+
+treezCollectionsCats.forEach((el) => {
     el.addEventListener('mouseenter',closeAllSubmenu);
     el.addEventListener('mouseenter',showSubmenu);
 })

@@ -282,11 +282,9 @@
     left: 250px;
 }
 
-/* .menu_item_treez .menu_item_treez-cat {
-    padding-left: 15px;
-    font-weight: 700;
-    text-decoration: underline;
-} */
+.menu_item_treez .sub-menu {
+    visibility: hidden;
+}
 
 /* последнее выпадающее меню выравниваем по правому краю, чтобы не было горизонтального скролла */
 @media (max-width: 1600px) {
