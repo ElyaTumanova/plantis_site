@@ -68,6 +68,8 @@
     top: 0;
     left: 300px;
     visibility: hidden;
+    opacity: 0;
+    transition: all 200ms ease-out;
 
     display: flex;
     flex-direction: column;
@@ -90,6 +92,7 @@
 
 .menu--onside_show {
     visibility: visible;
+    opacity: 100%;
 }
 
 .menu--onside_lvl_2 {
