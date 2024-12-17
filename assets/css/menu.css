@@ -89,7 +89,7 @@
     width: 289px;
 }
 
-.menu--main .menu-node_lvl_1:hover{
+.menu_active{
     background-color: var(--gray);
 }
 
