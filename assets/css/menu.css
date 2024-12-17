@@ -18,11 +18,14 @@
     box-shadow: rgba(20, 20, 20, 0.03) 0px 6px 8px 0px;
 
     visibility: hidden;
+    opacity: 0;
+    transition: all 200ms ease-out;
 
 }
 
 .header__menu_open {
     visibility: visible;
+    opacity: 100%;
 }
 
 .menu--main {
@@ -68,8 +71,6 @@
     top: 0;
     left: 300px;
     visibility: hidden;
-    opacity: 0;
-    transition: all 200ms ease-out;
 
     display: flex;
     flex-direction: column;
@@ -92,7 +93,6 @@
 
 .menu--onside_show {
     visibility: visible;
-    opacity: 100%;
 }
 
 .menu--onside_lvl_2 {
