@@ -68,5 +68,5 @@ majorCats.forEach((el) => {
 })
 
 treezCollectionsCats.forEach((el) => {
-    el.addEventListener('mouseenter',closeAllSubmenu);
+    el.addEventListener('mouseenter',openTreezSubMenues);
 })
