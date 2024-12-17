@@ -159,4 +159,4 @@ function scrollToTop () {
       })
 }
 
-console.log('hello dev2');
+console.log('hello redesign');
