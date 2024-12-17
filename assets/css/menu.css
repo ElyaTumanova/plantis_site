@@ -133,6 +133,24 @@
     font-weight: 400;
 }
 
+.menu--main .menu_item_treez> a:after {
+    /* content: "\276F"; */
+    content: "next";
+    font-family: swiper-icons;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+    font-size: 13px;
+    position: absolute;
+    /* right: 13px;
+    margin-top: 2px; */
+    left: 250px;
+}
+
+.menu_item_treez .sub-menu {
+    visibility: hidden;
+}
+
 .menu--onside_show {
     visibility: visible;
 }
@@ -268,23 +286,7 @@
     margin-right: 20px;
 }
 
-.menu--main .menu_item_treez> a:after {
-    /* content: "\276F"; */
-    content: "next";
-    font-family: swiper-icons;
-    text-transform: none;
-    letter-spacing: 0;
-    font-weight: 600;
-    font-size: 13px;
-    position: absolute;
-    /* right: 13px;
-    margin-top: 2px; */
-    left: 250px;
-}
 
-.menu_item_treez .sub-menu {
-    visibility: hidden;
-}
 
 /* последнее выпадающее меню выравниваем по правому краю, чтобы не было горизонтального скролла */
 @media (max-width: 1600px) {
