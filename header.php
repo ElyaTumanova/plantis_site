@@ -79,8 +79,13 @@
 						</div><!-- .logo -->
 					</div>
 					<div class="header__wrap">
-						<div class="header__catalog button"> Каталог
-
+						<div class="header__catalog button"> 
+							<div class="header__catalog_icon">
+							<svg class="header__catalog_icon-svg" width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 1H0" stroke="black" stroke-width="1.5" stroke-miterlimit="10"></path></svg>
+							<svg class="header__catalog_icon-svg" width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 1H0" stroke="black" stroke-width="1.5" stroke-miterlimit="10"></path></svg>
+							<svg class="header__catalog_icon-svg" width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 1H0" stroke="black" stroke-width="1.5" stroke-miterlimit="10"></path></svg>
+							</div>
+							Каталог
 						</div>
 					</div>
 					<div class="header__description">
