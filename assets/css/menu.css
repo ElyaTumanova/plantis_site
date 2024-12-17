@@ -157,6 +157,10 @@
 }
 
 
+.menu_item_treez .menu--onside_show {
+    visibility: visible;
+}
+
 .menu--onside_show {
     visibility: visible;
 }
