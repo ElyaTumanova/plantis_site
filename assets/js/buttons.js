@@ -27,6 +27,22 @@ window.addEventListener('resize', () => {
 });
 
 
+/*--------------------------------------------------------------
+# Высота хедера в десктопе
+--------------------------------------------------------------*/
+let headerDiv = document.querySelector('.header__desktop');
+let headerHeight= headerDiv.offsetHeight;
+document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
+// слушаем событие resize
+window.addEventListener('resize', () => {
+    // получаем текущее значение высоты
+    let headerHeight= headerDiv.offsetHeight;;
+    document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
+    console.log(headerHeight);
+});
+console.log(headerHeight);
+
+
 
 /*--------------------------------------------------------------
 # Menu in header for mobile
@@ -52,7 +68,7 @@ function toggle_mob_menu () {
 # Catalog for mobile
 --------------------------------------------------------------*/
 const catalogMob = document.querySelector('.catalog-menu__wrap');
-const catalogMobOpen = document.querySelector('.header__catalog');
+const catalogMobOpen = document.querySelector('.header__catalog_mob');
 const catalogMobClose = document.querySelector('.catalog-menu__close');
 
 // для разворачивая пункта меню с растениями
@@ -145,4 +161,4 @@ function scrollToTop () {
       })
 }
 
-console.log('hello master');
+console.log('hello redesign');

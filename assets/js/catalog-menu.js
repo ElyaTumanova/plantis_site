@@ -1,6 +1,7 @@
-const dropdown = document.querySelectorAll('.catalog__dropdown');
+//раскрывает пункты меню в категориях на страницах каталога
+const dropdownCatalog = document.querySelectorAll('.catalog__dropdown');
 
-dropdown.forEach((el) => {
+dropdownCatalog.forEach((el) => {
 	const menu = el.querySelector('.catalog__dropdown-menu');
 	const btn = el.querySelector('.menu__dropdown-arrow');
 	btn.addEventListener('click', function (event) {
