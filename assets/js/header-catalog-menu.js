@@ -53,7 +53,7 @@ majorCats.forEach((el) => {
     el.addEventListener('mouseenter',showSubmenu);
 })
 
-treezCollectionsCats.forEach((el) => {
-    //el.addEventListener('mouseenter',closeAllSubmenu);
-    el.addEventListener('mouseenter',showSubmenu);
-})
+// treezCollectionsCats.forEach((el) => {
+//     //el.addEventListener('mouseenter',closeAllSubmenu);
+//     el.addEventListener('mouseenter',showSubmenu);
+// })

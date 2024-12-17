@@ -161,6 +161,7 @@
 }
 
 .menu--onside_lvl_2 {
+    position: relative;
     padding-top: 20px;
     display: flex;
     flex-direction: column;
