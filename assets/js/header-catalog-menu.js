@@ -1,8 +1,8 @@
 let catalogBtn = document.querySelector('.header__catalog');
 let headerCatalogWrap = document.querySelector('.header__menu');
 let majorCats = document.querySelectorAll('.menu--main .menu-node_lvl_1');
-let subMenues = document.querySelectorAll('.menu--main .menu--onside_lvl_2');
-let firstSubMenues = majorCats[0].querySelectorAll('.menu--onside_lvl_2');
+let subMenues = document.querySelectorAll('.menu--main .sub-menu');
+let firstSubMenues = majorCats[0].querySelectorAll('.sub-menu');
 
 let treezCollectionsCats = document.querySelectorAll('.menu_item_treez');
 let treezSubMenues = document.querySelectorAll('.menu_item_treez .sub-menu');
@@ -34,6 +34,9 @@ function showSubmenu(event) {
     let menuSubMenues = menu.querySelectorAll('.sub-menu');
     menuSubMenues.forEach((el) => {
         el.classList.add('menu--onside_show');
+    })
+    treezSubMenues.forEach((el) => {
+        el.classList.remove('menu--onside_show');
     })
 }
 
