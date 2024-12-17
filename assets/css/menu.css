@@ -121,10 +121,10 @@
     max-height: calc(var(--vh) - var(--headerHeight) - 20px);
 }
 
-.menu--onside_lvl_3 {
+.menu_item_treez .menu--onside_lvl_3 {
     position: absolute;
     top: 0;
-    left: 300px;
+    left: 200px;
     visibility: hidden;
 }
 
@@ -150,9 +150,10 @@
     font-weight: 600;
     font-size: 13px;
     position: absolute;
+    top: 3px;
     /* right: 13px;
     margin-top: 2px; */
-    left: 250px;
+    left: 150px;
 }
 
 
@@ -202,6 +203,7 @@
 
 .menu-node_lvl_3 {
     white-space: nowrap;
+    position: relative;
 }
 
 .menu--main .sub-menu, .menu--info .sub-menu {
