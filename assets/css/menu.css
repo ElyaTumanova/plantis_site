@@ -6,6 +6,11 @@
 
 /* кнопка каталога в хедере */
 
+.header__catalog {
+    background-color: var(--accent-color);
+    color: var(--white);
+}
+
 .header__catalog:hover {
     cursor: pointer;
 }
@@ -25,6 +30,7 @@
     height: 2px;
     transition: .3s;
     width: 18px;
+    color: var(--white);
 }
 
 .header__catalog_open .header__catalog_icon .header__catalog_icon-svg{
