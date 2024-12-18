@@ -4,10 +4,11 @@ let catsSliders = document.querySelectorAll('.main__cats-slider');
 console.log(navItems);
 console.log(catsSliders);
 
-navItems.forEach(el => {
+navItems.forEach((el,index) => {
     el.addEventListener('click',showSlider);
 });
 
-function showSlider(event) {
-    console.log(event.target);
+function showSlider(index) {
+    //console.log(event.target);
+    console.log(index);
 }
