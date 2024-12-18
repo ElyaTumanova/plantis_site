@@ -800,7 +800,7 @@ ul.products {
 .main__sale-gallery-title {
     text-align: center;
     color: var(--sale);
-    margin-bottom: 20px;
+    margin-bottom: 6px;
 }
 
 .main__sale-button {
