@@ -110,7 +110,7 @@
     color: var(--gray-text);
 }
 
-.menu--main .menu_active_lvl_2 a {
+.menu--main .menu_active_lvl_2 >a {
     color: var(--gray-text);
 }
   
