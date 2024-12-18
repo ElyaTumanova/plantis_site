@@ -41,6 +41,9 @@ function showSubmenu(event) {
     treezSubMenues.forEach((el) => {
         el.classList.remove('menu--onside_show');
     })
+    plantsSubMenues.forEach((el) => {
+        el.classList.remove('menu--onside_show');
+    })
 }
 
 function closeAllSubmenu() {
