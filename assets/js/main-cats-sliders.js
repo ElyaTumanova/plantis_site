@@ -5,7 +5,7 @@ console.log(navItems);
 console.log(catsSliders);
 
 navItems.forEach(el => {
-    el.addEventListener('mousenter',showSlider);
+    el.addEventListener('click',showSlider);
 });
 
 function showSlider(event) {
