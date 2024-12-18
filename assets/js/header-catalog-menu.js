@@ -10,7 +10,7 @@ let treezSubMenues = document.querySelectorAll('.menu_item_treez .menu-node_lvl_
 let plantsCats = document.querySelectorAll('.menu_item_plants .menu-node_lvl_2');
 let plantsSubMenues = document.querySelectorAll('.menu_item_plants .menu-node_lvl_2 .sub-menu');
 
-let gorshkiCats = document.querySelectorAll('.menu_item_gorshki .menu-node_lvl_2');
+let gorshkiCats = document.querySelectorAll('.menu_item_gorshki .menu-node_lvl_2 a');
 
 function openHeaderCatalog () {
     headerCatalogWrap.classList.add('header__menu_open');
