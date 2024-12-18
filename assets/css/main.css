@@ -466,3 +466,9 @@
         left: 13px;
     }
 }
+
+/* categories sliders */
+
+.main__cats-nav {
+    display: flex;
+}

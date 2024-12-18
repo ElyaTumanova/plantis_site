@@ -29,6 +29,11 @@ global $skidki_cat_id;
 		</div>
 	</div>
 	<div class="main__cats-wrap main__row container">
+		<div class="main__cats-nav">
+			<span class = "main__cats-nav-title">Скидки</span>
+			<span class = "main__cats-nav-title">Популярные</span>
+		</div>
+
 		<?php get_template_part('template-parts/products-popular');?>
 		<?php get_template_part('template-parts/products-ukhod');?>
 		<?php //get_template_part('template-parts/plants-cats-grid');?>
