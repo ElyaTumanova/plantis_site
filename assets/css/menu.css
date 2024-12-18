@@ -46,6 +46,7 @@
     transform: translateY(-6px) rotate(-45deg);
 }
 
+/* меню каталога в хедере */
 .header__menu {
     background-color: var(--background);
     color: var(--text);
@@ -104,6 +105,7 @@
 .menu--main a:hover {
     text-decoration: none;
 }
+
 .menu--main .sub-menu a:hover {
     color: var(--gray-text);
 }
@@ -145,7 +147,7 @@
     font-weight: 400;
 }
 
-.menu--main .menu_item_treez> a:after {
+.menu--main .menu_item_treez .menu-node_lvl_3> a:after {
     /* content: "\276F"; */
     content: "next";
     font-family: swiper-icons;
