@@ -40,9 +40,10 @@ function showSubmenu(event) {
     menuSubMenues.forEach((el) => {
         el.classList.add('menu--onside_show');
     })
-    treezSubMenues.forEach((el) => {
-        el.classList.remove('menu--onside_show');
-    })
+    // treezSubMenues.forEach((el) => {
+    //     el.classList.remove('menu--onside_show');
+    // })
+    closeTreezSubMenues ();
     plantsSubMenues.forEach((el) => {
         el.classList.remove('menu--onside_show');
     })
@@ -55,9 +56,10 @@ function closeAllSubmenu() {
     plantsCats.forEach((el) => {
         el.classList.remove('menu_active_lvl_2');
     })
-    treezCollectionsCats.forEach((el) => {
-        el.classList.remove('menu_active_lvl_2');
-    })
+    closeTreezSubMenues ();
+    // treezCollectionsCats.forEach((el) => {
+    //     el.classList.remove('menu_active_lvl_2');
+    // })
     subMenues.forEach((el) => {
         el.classList.remove('menu--onside_show');
     })
