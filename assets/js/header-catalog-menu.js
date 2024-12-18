@@ -53,6 +53,9 @@ function closeAllSubmenu() {
     plantsCats.forEach((el) => {
         el.classList.remove('menu_active_lvl_2');
     })
+    treezCollectionsCats.forEach((el) => {
+        el.classList.remove('menu_active_lvl_2');
+    })
     subMenues.forEach((el) => {
         el.classList.remove('menu--onside_show');
     })
