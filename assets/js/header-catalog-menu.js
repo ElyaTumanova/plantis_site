@@ -85,6 +85,6 @@ treezCollectionsCats.forEach((el) => {
     el.addEventListener('mouseenter',openTreezSubMenues);
 })
 
-plantsCatsCats.forEach((el) => {
+plantsCats.forEach((el) => {
     el.addEventListener('mouseenter',openPlantsSubMenues);
 })
