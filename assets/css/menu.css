@@ -46,7 +46,7 @@
     transform: translateY(-6px) rotate(-45deg);
 }
 
-/* меню каталога в хедере */
+/* меню каталога в хедере main menu*/
 .header__menu {
     background-color: var(--background);
     color: var(--text);
@@ -81,6 +81,18 @@
     position: relative;
 }
 
+.menu--main .sub-menu {
+    line-height: 1.2;
+}
+
+.menu--main a:hover {
+    text-decoration: none;
+}
+
+.menu--main .sub-menu a:hover {
+    color: var(--gray-text);
+}
+
 .menu--main:after {
     border-left: 1px solid var(--gray);
     content: "";
@@ -98,16 +110,14 @@
     width: 289px;
 }
 
+.menu--main .menu-node_lvl_2 {
+    padding: 10px 25px;
+    display: block;
+    position: relative;
+}
+
 .menu_active{
     background-color: var(--gray);
-}
-
-.menu--main a:hover {
-    text-decoration: none;
-}
-
-.menu--main .sub-menu a:hover {
-    color: var(--gray-text);
 }
 
 .menu--main .menu_active_lvl_2 >a {
@@ -125,6 +135,18 @@
     flex-wrap: wrap;
     row-gap: 5px;
     column-gap: 150px;
+    max-height: calc(var(--vh) - var(--headerHeight) - 20px);
+}
+
+.menu--onside_lvl_2 {
+    position: relative;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+
+    font-size: 14px;
+
     max-height: calc(var(--vh) - var(--headerHeight) - 20px);
 }
 
@@ -202,7 +224,6 @@
     left: 250px;
 }
 
-
 .menu_item_treez .menu--onside_show {
     visibility: visible;
 }
@@ -215,29 +236,12 @@
     visibility: visible;
 }
 
-.menu--onside_lvl_2 {
-    position: relative;
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 15px;
 
-    font-size: 14px;
-
-    max-height: calc(var(--vh) - var(--headerHeight) - 20px);
-}
-
-
-.menu--main .menu-item-has-children.menu-node_lvl_1> a:after:hover {
+/* .menu--main .menu-item-has-children.menu-node_lvl_1> a:after:hover {
     text-decoration: none;
-}
+} */
 
-.menu--main .menu-node_lvl_2 {
-    padding: 10px 25px;
-    display: block;
-    position: relative;
-}
-
+/* info menu */
 .menu--info .menu-node_lvl_2{
     padding: 8px 15px;
     display: block;
@@ -248,7 +252,7 @@
     position: relative;
 }
 
-.menu--main .sub-menu, .menu--info .sub-menu {
+.menu--info .sub-menu {
     line-height: 1.2;
 }
 
@@ -268,10 +272,10 @@
     border-radius: 5px;
 }
 
-.menu--main .menu--vertical {
+/* .menu--main .menu--vertical {
     min-width: 210px;
     width: fit-content;
-}
+} */
 
 .menu--info .menu--vertical {
     max-width: 190px;
@@ -283,9 +287,9 @@
     z-index: 9900;
 }
 
-.menu--main .menu--dropdown_lvl_1 {
+/* .menu--main .menu--dropdown_lvl_1 {
     margin-top: 10px;
-}
+} */
 
 .menu--info .menu--dropdown_lvl_1 {
     margin-top: 5px;
@@ -325,10 +329,10 @@
     top: 0;
 }
 
-.menu_podarok .menu--dropdown_lvl_2 {
+/* .menu_podarok .menu--dropdown_lvl_2 {
     top: auto;
     bottom: -50px;
-}
+} */
 
 .menu-item-has-children.menu-node_lvl_2> a {
     display: flex;
@@ -339,11 +343,11 @@
 
 
 /* последнее выпадающее меню выравниваем по правому краю, чтобы не было горизонтального скролла */
-@media (max-width: 1600px) {
+/* @media (max-width: 1600px) {
     .menu--main .menu-item:last-of-type .menu--dropdown {
         right: 30px;
     }
-}
+} */
 
 /*--------------------------------------------------------------
 # Menu in catalog for cats
@@ -574,4 +578,3 @@
   .catalog-menu__wrap .menu-catalog-container {
     padding: 15px 30px 15px 30px;
   }
-
