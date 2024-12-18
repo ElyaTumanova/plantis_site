@@ -486,3 +486,11 @@
     white-space: nowrap;
     min-width: max-content;
 }
+
+.main__cats-slider {
+    display: none;
+}
+
+.main__cats-slider_open {
+    display: block;
+}

@@ -11,4 +11,5 @@ navItems.forEach((el,index) => {
 function showSlider(event,index) {
     console.log(event.target);
     console.log(index);
+    catsSliders[index].classList.add('main__cats-slider_open');
 }
