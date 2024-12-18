@@ -50,6 +50,9 @@ function closeAllSubmenu() {
     majorCats.forEach((el) => {
         el.classList.remove('menu_active');
     })
+    plantsCats.forEach((el) => {
+        el.classList.remove('menu_active_lvl_2');
+    })
     subMenues.forEach((el) => {
         el.classList.remove('menu--onside_show');
     })
@@ -68,6 +71,7 @@ function openTreezSubMenues(event) {
 
 function openPlantsSubMenues(event) {
     let menu = event.target;
+    menu.classList.add('menu_active_lvl_2');
     let menuSubMenues = menu.querySelectorAll('.sub-menu');
     plantsSubMenues.forEach((el) => {
         el.classList.remove('menu--onside_show');

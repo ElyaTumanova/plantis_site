@@ -109,6 +109,10 @@
 .menu--main .sub-menu a:hover {
     color: var(--gray-text);
 }
+
+.menu--main .menu_active_lvl_2 a {
+    color: var(--gray-text);
+}
   
 .menu--onside_lvl_1 {
     position: absolute;
@@ -137,7 +141,7 @@
 
 .menu_item_plants .menu--onside_lvl_2 {
     position: absolute;
-    top: -10px;
+    top: -6px;
     left: 300px;
     visibility: hidden;
 
