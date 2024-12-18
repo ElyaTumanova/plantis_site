@@ -112,3 +112,5 @@ plantsCats.forEach((el) => {
 gorshkiCats.forEach((el) => {
     el.addEventListener('mouseenter',closeTreezSubMenues);
 })
+
+console.log(gorshkiCats);
