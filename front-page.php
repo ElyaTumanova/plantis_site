@@ -29,7 +29,8 @@ global $skidki_cat_id;
 		</div>
 	</div>
 	<div class="main__cats-wrap main__row container">
-		<?php get_template_part('template-parts/plants-cats-grid');?>
+		<?php get_template_part('template-parts/products-popular');?>
+		<?php //get_template_part('template-parts/plants-cats-grid');?>
 	</div>
 	<div class="main__wrap container main__row">
 		<?php
