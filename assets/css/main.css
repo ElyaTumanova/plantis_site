@@ -471,4 +471,18 @@
 
 .main__cats-nav {
     display: flex;
+    column-gap: 24px;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.main__cats-nav-title {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--gray-text);
+    cursor: pointer;
+    white-space: nowrap;
+    min-width: max-content;
 }
