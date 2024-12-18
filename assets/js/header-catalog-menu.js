@@ -4,8 +4,8 @@ let majorCats = document.querySelectorAll('.menu--main .menu-node_lvl_1');
 let subMenues = document.querySelectorAll('.menu--main .sub-menu');
 let firstSubMenues = majorCats[0].querySelectorAll('.sub-menu');
 
-let treezCollectionsCats = document.querySelectorAll('.menu_item_treez');
-let treezSubMenues = document.querySelectorAll('.menu_item_treez .sub-menu');
+let treezCollectionsCats = document.querySelectorAll('.menu_item_treez .menu-node_lvl_3');
+let treezSubMenues = document.querySelectorAll('.menu_item_treez .menu-node_lvl_3 .sub-menu');
 
 function openHeaderCatalog () {
     headerCatalogWrap.classList.add('header__menu_open');
