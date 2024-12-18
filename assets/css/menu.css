@@ -134,6 +134,16 @@
     flex-direction: column;
 }
 
+.menu_item_plants .menu--onside_lvl_2 {
+    position: absolute;
+    top: 0;
+    left: 200px;
+    visibility: hidden;
+
+    row-gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
 
 .menu--main .short-sub-menu .menu--onside_lvl_1{
     row-gap: 5px;
@@ -147,7 +157,36 @@
     font-weight: 400;
 }
 
+.menu--main .menu-item-has-children.menu-node_lvl_1> a:after {
+    /* content: "\276F"; */
+    content: "next";
+    font-family: swiper-icons;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+    font-size: 13px;
+    position: absolute;
+    /* right: 13px;
+    margin-top: 2px; */
+    left: 250px;
+}
+
 .menu--main .menu_item_treez .menu-node_lvl_3> a:after {
+    /* content: "\276F"; */
+    content: "next";
+    font-family: swiper-icons;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+    font-size: 13px;
+    position: absolute;
+    top: 3px;
+    /* right: 13px;
+    margin-top: 2px; */
+    left: 150px;
+}
+
+.menu--main .menu_item_plants .menu-node_lvl_2> a:after {
     /* content: "\276F"; */
     content: "next";
     font-family: swiper-icons;
@@ -183,19 +222,7 @@
     max-height: calc(var(--vh) - var(--headerHeight) - 20px);
 }
 
-.menu--main .menu-item-has-children.menu-node_lvl_1> a:after {
-    /* content: "\276F"; */
-    content: "next";
-    font-family: swiper-icons;
-    text-transform: none;
-    letter-spacing: 0;
-    font-weight: 600;
-    font-size: 13px;
-    position: absolute;
-    /* right: 13px;
-    margin-top: 2px; */
-    left: 250px;
-}
+
 .menu--main .menu-item-has-children.menu-node_lvl_1> a:after:hover {
     text-decoration: none;
 }
