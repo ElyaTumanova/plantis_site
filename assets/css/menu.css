@@ -136,8 +136,8 @@
 
 .menu_item_plants .menu--onside_lvl_2 {
     position: absolute;
-    top: 0;
-    left: 200px;
+    top: -10px;
+    left: 300px;
     visibility: hidden;
 
     row-gap: 10px;
