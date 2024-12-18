@@ -40,26 +40,16 @@ function showSubmenu(event) {
     menuSubMenues.forEach((el) => {
         el.classList.add('menu--onside_show');
     })
-    // treezSubMenues.forEach((el) => {
-    //     el.classList.remove('menu--onside_show');
-    // })
     closeTreezSubMenues ();
-    plantsSubMenues.forEach((el) => {
-        el.classList.remove('menu--onside_show');
-    })
+    closePlantsSubMenues();
 }
 
 function closeAllSubmenu() {
+    closePlantsSubMenues();
+    closeTreezSubMenues ();
     majorCats.forEach((el) => {
         el.classList.remove('menu_active');
     })
-    plantsCats.forEach((el) => {
-        el.classList.remove('menu_active_lvl_2');
-    })
-    closeTreezSubMenues ();
-    // treezCollectionsCats.forEach((el) => {
-    //     el.classList.remove('menu_active_lvl_2');
-    // })
     subMenues.forEach((el) => {
         el.classList.remove('menu--onside_show');
     })
@@ -86,18 +76,21 @@ function closeTreezSubMenues () {
 }
 
 function openPlantsSubMenues(event) {
+    closePlantsSubMenues();
     let menu = event.target;
+    menu.classList.add('menu_active_lvl_2');
+    let menuSubMenues = menu.querySelectorAll('.sub-menu');
+    menuSubMenues.forEach((el) => {
+        el.classList.add('menu--onside_show');
+    })
+}
+
+function closePlantsSubMenues() {
     plantsCats.forEach((el) => {
         el.classList.remove('menu_active_lvl_2');
     })
-    menu.classList.add('menu_active_lvl_2');
-
-    let menuSubMenues = menu.querySelectorAll('.sub-menu');
     plantsSubMenues.forEach((el) => {
         el.classList.remove('menu--onside_show');
-    })
-    menuSubMenues.forEach((el) => {
-        el.classList.add('menu--onside_show');
     })
 }
 
