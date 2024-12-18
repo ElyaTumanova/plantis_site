@@ -148,6 +148,8 @@
     row-gap: 10px;
     display: flex;
     flex-direction: column;
+    max-height: calc(var(--vh) - var(--headerHeight) - 30px);
+    flex-flow: column wrap;
 }
 
 /* .menu--main .short-sub-menu .menu--onside_lvl_1{
