@@ -60,6 +60,11 @@ function closeAllSubmenu() {
 
 function openTreezSubMenues(event) {
     let menu = event.target;
+    treezCollectionsCats.forEach((el) => {
+        el.classList.remove('menu_active_lvl_2');
+    })
+    menu.classList.add('menu_active_lvl_2');
+
     let menuSubMenues = menu.querySelectorAll('.sub-menu');
     treezSubMenues.forEach((el) => {
         el.classList.remove('menu--onside_show');
@@ -75,7 +80,7 @@ function openPlantsSubMenues(event) {
         el.classList.remove('menu_active_lvl_2');
     })
     menu.classList.add('menu_active_lvl_2');
-    
+
     let menuSubMenues = menu.querySelectorAll('.sub-menu');
     plantsSubMenues.forEach((el) => {
         el.classList.remove('menu--onside_show');
