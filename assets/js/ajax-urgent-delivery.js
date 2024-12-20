@@ -159,7 +159,7 @@ if (checkoutForm) {
     priceEl.innerHTML = `+${deliveryLateMarkup}₽`;
     deliveryLateIntervalLabel.appendChild(priceEl);
     deliveryIntervalInput.forEach(el =>{
-      el.addEventListener('change', ajaxGetLateDelivery);
+      el.addEventListener('click', ajaxGetLateDelivery);
     })
   }
 }
