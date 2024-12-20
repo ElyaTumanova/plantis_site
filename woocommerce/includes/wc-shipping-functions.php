@@ -26,8 +26,7 @@ add_action('woocommerce_review_order_before_shipping','plnt_check');
 //add_action('wp_head','plnt_check');
 
 function plnt_check() {
-    echo (WC()->session->get('isUrgent' ));
-    echo (WC()->session->get('isLate' ));
+  
     // echo '<br>';
     //$packages = WC()->shipping()->get_packages();
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
@@ -39,7 +38,8 @@ function plnt_check() {
     if($local_pickup == $chosen_methods[0]) {
         WC()->session->set('isLate', '0' );  
     }
-
+    echo (WC()->session->get('isUrgent' ));
+    echo (WC()->session->get('isLate' ));
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
     // if ( is_checkout() && ($hour<18 || $hour>=20)) {
