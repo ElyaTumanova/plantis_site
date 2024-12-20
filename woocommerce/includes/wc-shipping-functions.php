@@ -40,7 +40,7 @@ function plnt_check() {
     // }
 
 }
-
+// срочная доставка
 add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
@@ -57,6 +57,32 @@ function plnt_refresh_shipping_methods_for_urgent( $post_data ){
     $bool = true;
 
     if ( WC()->session->get('isUrgent' ) === '1' )
+        $bool = false;
+
+    // Mandatory to make it work with shipping methods
+    foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
+        WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
+    }
+    WC()->cart->calculate_shipping();
+}
+
+// поздняя доставка
+add_action( 'wp_ajax_get_late_shipping', 'plnt_get_late_shipping' );
+add_action( 'wp_ajax_nopriv_get_late_shipping', 'plnt_get_late_shipping' );
+function plnt_get_late_shipping() {
+    if ( $_POST['isLate'] === '1'){
+        WC()->session->set('isLate', '1' );
+    } else {
+        WC()->session->set('isLate', '0' );
+    }
+    die(); // (required)
+}
+
+add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_late', 10, 1 );
+function plnt_refresh_shipping_methods_for_urgent( $post_data ){
+    $bool = true;
+
+    if ( WC()->session->get('isLate' ) === '1' )
         $bool = false;
 
     // Mandatory to make it work with shipping methods
@@ -93,6 +119,8 @@ function plnt_shipping_conditions( $rates, $package ) {
 	global $urgent_delivery_outMKAD_small;
 	global $urgent_delivery_inMKAD_large; 
 	global $urgent_delivery_outMKAD_large;
+
+    $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
 
     
     /*СРОЧНАЯ ДОСТАВКА*/
@@ -163,6 +191,13 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     }
 
+    if (WC()->session->get('isLate' ) === '1') {
+        foreach( $rates as $rate) {
+            if ( 'local_pickup' !== $rate->method_id ) {
+                $rate->cost = $rate->cost + $late_markup_delivery;
+            }	
+        }
+    }
 	return $rates;
 }
 

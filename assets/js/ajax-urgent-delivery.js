@@ -95,15 +95,28 @@ function plntAjaxGetUrgent() {
   });
 };
 
-function setLateDelivery(event) {
-  let input = event.target;
-  console.log(input.value);
+function ajaxGetLateDelivery(event) {
   if(event.target.value == '18:00 - 21:00') {
     isLate = '1'
   } else {
     isLate = '0'
   }
   console.log(isLate);
+
+  jQuery( function($){
+    $.ajax({
+        type: 'POST',
+        url: wc_checkout_params.ajax_url,
+        data: {
+            'action': 'get_late_shipping',
+            'isLate': isLate,
+        },
+        success: function (result) {
+            // Trigger refresh checkout
+            $('body').trigger('update_checkout');
+        }
+    });
+});
 }
 
 if (checkoutForm) {
@@ -146,7 +159,7 @@ if (checkoutForm) {
     priceEl.innerHTML = `+${deliveryLateMarkup}₽`;
     deliveryLateIntervalLabel.appendChild(priceEl);
     deliveryIntervalInput.forEach(el =>{
-      el.addEventListener('click', setLateDelivery);
+      el.addEventListener('click', ajaxGetLateDelivery);
     })
   }
 }
