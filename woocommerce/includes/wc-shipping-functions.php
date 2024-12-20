@@ -193,7 +193,7 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     if (WC()->session->get('isLate' ) === '1') {
         foreach( $rates as $rate) {
-            if ( 'local_pickup' !== $rate->method_id ) {
+            if ( 'local_pickup' !== $rate->method_id || 'free_shipping' !== $rate->method_id ) {
                 $rate->cost = $rate->cost + $late_markup_delivery;
             }	
         }
