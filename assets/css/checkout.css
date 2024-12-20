@@ -537,6 +537,10 @@
     color: #fff;
 }
 
+#additional_delivery_interval_field .woocommerce-input-wrapper input[type=radio]:checked + label span {
+    color: #fff;
+}
+
 .woocommerce-additional-fields__field-wrapper label {
     margin-bottom: 10px;
     display: block;

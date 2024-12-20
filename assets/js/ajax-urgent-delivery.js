@@ -7,12 +7,12 @@ let deliveryDatesInfo = [];
 let shippingMethodValues = [];
 let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
 let checkedShippingMethod;
-let deliveryLateInterval = document.querySelector('#additional_delivery_interval_field input[value="18:00 - 21:00"]');
+let deliveryInterval = document.querySelectorAll('#additional_delivery_interval_field input');
 let deliveryLateIntervalLabel = document.querySelector('#additional_delivery_interval_field label[for="additional_delivery_interval_18:00 - 21:00"]');
 let today;
 
 console.log(deliveryLateMarkup);
-console.log(deliveryLateInterval);
+console.log(deliveryInterval);
 console.log(deliveryLateIntervalLabel);
 
 
@@ -93,6 +93,10 @@ function plntAjaxGetUrgent() {
   });
 };
 
+function setLateDelivery(event) {
+  console.log(event.target);
+}
+
 if (checkoutForm) {
 
   let hour = new Date().getHours();
@@ -132,5 +136,6 @@ if (checkoutForm) {
     priceEl = document.createElement('span');
     priceEl.innerHTML = `+${deliveryLateMarkup}₽`;
     deliveryLateIntervalLabel.appendChild(priceEl);
+    deliveryInterval.addEventListener('click', setLateDelivery);
   }
 }
