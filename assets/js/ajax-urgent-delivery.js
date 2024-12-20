@@ -4,18 +4,19 @@ let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
 let deliveryDatesInfo = [];
+let deliveryIntervalsInfo = []
 let shippingMethodValues = [];
 let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
 let checkedShippingMethod;
 
 let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
 //let deliveryInterval = document.querySelectorAll('#additional_delivery_interval_field input');
-let deliveryLateIntervalLabel = document.querySelector('#additional_delivery_interval_field label[for="additional_delivery_interval_18:00 - 21:00"]');
+let deliveryIntervalLabels = document.querySelector('#additional_delivery_interval_field label');
 let today;
 
 console.log(deliveryLateMarkup);
 console.log(deliveryIntervalInput);
-console.log(deliveryLateIntervalLabel);
+console.log(deliveryIntervalLabels);
 
 
 function plntChekUrgentDelivery() {
@@ -69,6 +70,19 @@ function renderDeliveryDates(shippingValue) {
       }
       if(shippingValue == deliveryOutMKADLarge || shippingValue == deliveryOutMKADLargeUrg) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadLargeUrg}₽` : `${deliveryCostOutMkadLarge}₽` ;
+      }
+  })
+}
+
+function renderDeliveryIntervals(shippingValue) {
+  // console.log(shippingValue);
+  deliveryIntervalsInfo.forEach((info) => {
+    let priceEl = document.createElement('span');
+    info.label.innerHTML=`${info.text}`;
+    info.label.appendChild(priceEl);
+      if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryCourierId || shippingValue == deliveryLongId) {
+      } else {
+        priceEl.innerHTML = info.for == `additional_delivery_interval_18:00 - 21:00` ? `+${deliveryLateMarkup}₽` : `+0₽` ;
       }
   })
 }
@@ -149,15 +163,27 @@ if (checkoutForm) {
     deliveryDatesInfo.push(dateInfo);
   });
 
+  
+
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 
   plntChekUrgentDelivery();
   renderDeliveryDates(checkedShippingMethod);
 
   if(deliveryLateMarkup) {
-    priceEl = document.createElement('span');
-    priceEl.innerHTML = `+${deliveryLateMarkup}₽`;
-    deliveryLateIntervalLabel.appendChild(priceEl);
+    deliveryIntervalLabels.forEach((label) => {
+      let intervalInfo = {
+        label: label,
+        for: label.htmlFor,
+        text: label.textContent
+        };
+      console.log(intervalInfo);
+      deliveryIntervalsInfo.push(intervalInfo);
+    });
+    renderDeliveryIntervals(checkedShippingMethod);
+    // priceEl = document.createElement('span');
+    // priceEl.innerHTML = `+${deliveryLateMarkup}₽`;
+    // deliveryLateIntervalLabel.appendChild(priceEl);
     deliveryIntervalInput.forEach(el =>{
       el.addEventListener('click', ajaxGetLateDelivery);
     })
