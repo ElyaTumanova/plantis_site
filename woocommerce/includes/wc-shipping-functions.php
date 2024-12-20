@@ -195,9 +195,9 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     }
 
-    // if(isset($rates[ $delivery_courier ]) || isset($rates[ $local_pickup ])) {
-    //     WC()->session->set('isLate', '0' );
-    // }
+    if(isset($rates[ $delivery_courier ]) || isset($rates[ $local_pickup ])) {
+        WC()->session->set('isLate', '0' );
+    }
 
     if (WC()->session->get('isLate' ) === '1') {
         foreach( $rates as $rate) {
