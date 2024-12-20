@@ -89,9 +89,9 @@ function plnt_get_late_shipping() {
 
 add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_late', 10, 1 );
 function plnt_refresh_shipping_methods_for_late( $post_data ){
-    // $bool = true;
+    $bool = true;
 
-    // if ( WC()->session->get('isLate' ) === '1' )
+    if ( WC()->session->get('isLate' ) === '1' )
         $bool = false;
 
     // Mandatory to make it work with shipping methods
@@ -203,9 +203,9 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     }
 
-    // if($local_pickup == $chosen_methods[0]) {
-    //     WC()->session->set('isLate', '0' );  
-    // }
+    if($local_pickup == $chosen_methods[0]) {
+        WC()->session->set('isLate', '0' );  
+    }
 
     if (WC()->session->get('isLate' ) === '1') {
         foreach( $rates as $rate) {
