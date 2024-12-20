@@ -69,12 +69,6 @@ function renderDeliveryDates(shippingValue) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadLargeUrg}₽` : `${deliveryCostOutMkadLarge}₽` ;
       }
   })
-
-  if(deliveryLateMarkup) {
-    priceEl = document.createElement('span');
-    priceEl.innerHTML = deliveryLateMarkup;
-    deliveryLateIntervalLabel.appendChild(`+${priceEl}₽`);
-  }
 }
 
 function plntAjaxGetUrgent() {
@@ -133,4 +127,10 @@ if (checkoutForm) {
 
   plntChekUrgentDelivery();
   renderDeliveryDates(checkedShippingMethod);
+
+  if(deliveryLateMarkup) {
+    priceEl = document.createElement('span');
+    priceEl.innerHTML = deliveryLateMarkup;
+    deliveryLateIntervalLabel.appendChild(`+${priceEl}₽`);
+  }
 }
