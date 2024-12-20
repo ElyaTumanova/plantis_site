@@ -106,6 +106,8 @@ function plnt_set_constants_script() {
 	global $delivery_courier;
 	global $delivery_long_dist;
 
+	$late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+
 
 	$shipping_costs = plnt_get_shiping_costs();
 
@@ -168,7 +170,7 @@ function plnt_set_constants_script() {
 		let deliveryCostInMkadSmallUrg = '<?php echo $in_mkad_small_urg; ?>';
 		let deliveryCostOutMkadSmallUrg = '<?php echo $out_mkad_small_urg; ?>';
 
-		// let deliveryUrgentMarkup = '<?php //echo $urgent_delivery_markup; ?>';
+		let deliveryLateMarkup = '<?php echo $$late_markup_delivery; ?>';
 		// let deliveryLargeMarkupInMkad = '<?php //echo $large_delivery_markup_in_mkad; ?>';
 		// let deliveryLargeMarkupOutMkad = '<?php //echo $large_delivery_markup_out_mkad; ?>';
 		// let deliverySmallMarkup = '<?php //echo $small_delivery_markup; ?>';

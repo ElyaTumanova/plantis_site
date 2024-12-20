@@ -1,4 +1,5 @@
 let isUrgent;
+let isLate;
 let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
@@ -6,7 +7,13 @@ let deliveryDatesInfo = [];
 let shippingMethodValues = [];
 let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
 let checkedShippingMethod;
+let deliveryLateInterval = document.querySelector('#additional_delivery_interval_18:00 - 21:00');
+let deliveryLateIntervalLabel = document.querySelector('#additional_delivery_interval_field label[for="additional_delivery_interval_18:00 - 21:00"]');
 let today;
+
+console.log(deliveryLateMarkup);
+console.log(deliveryLateInterval);
+console.log(deliveryLateIntervalLabel);
 
 
 function plntChekUrgentDelivery() {
@@ -62,6 +69,12 @@ function renderDeliveryDates(shippingValue) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadLargeUrg}₽` : `${deliveryCostOutMkadLarge}₽` ;
       }
   })
+
+  if(deliveryLateMarkup) {
+    priceEl = document.createElement('span');
+    priceEl.innerHTML = deliveryLateMarkup;
+    deliveryLateIntervalLabel.appendChild(priceEl);
+  }
 }
 
 function plntAjaxGetUrgent() {
