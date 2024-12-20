@@ -130,7 +130,7 @@ if (checkoutForm) {
 
   if(deliveryLateMarkup) {
     priceEl = document.createElement('span');
-    priceEl.innerHTML = deliveryLateMarkup;
-    deliveryLateIntervalLabel.appendChild(`+${priceEl}₽`);
+    priceEl.innerHTML = `+${deliveryLateMarkup}₽`;
+    deliveryLateIntervalLabel.appendChild(priceEl);
   }
 }
