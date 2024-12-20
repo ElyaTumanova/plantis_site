@@ -35,7 +35,8 @@ function plnt_check() {
     echo $chosen_methods[0];
     echo '<br>';
 
-    if($local_pickup == $chosen_methods[0]) {
+    if($local_pickup === $chosen_methods[0]) {
+        echo 'hi';
         WC()->session->set('isLate', '0' );  
     }
     echo (WC()->session->get('isUrgent' ));
