@@ -14,9 +14,9 @@ let deliveryIntervalInput = document.querySelectorAll('input[name=additional_del
 let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
 let today;
 
-console.log(deliveryLateMarkup);
-console.log(deliveryIntervalInput);
-console.log(deliveryIntervalLabels);
+// console.log(deliveryLateMarkup);
+// console.log(deliveryIntervalInput);
+// console.log(deliveryIntervalLabels);
 
 
 function plntChekUrgentDelivery() {
@@ -34,7 +34,7 @@ function plntChekUrgentDelivery() {
       } else {
         isUrgent = '0';
       }
-      console.log(isUrgent);
+     // console.log(isUrgent);
       plntAjaxGetUrgent();
       });
   })
@@ -116,7 +116,7 @@ function ajaxGetLateDelivery(event) {
   } else {
     isLate = '0'
   }
-  console.log(isLate);
+  //console.log(isLate);
 
   jQuery( function($){
     $.ajax({
@@ -178,13 +178,10 @@ if (checkoutForm) {
         for: label.htmlFor,
         text: label.textContent
         };
-      console.log(intervalInfo);
+      //console.log(intervalInfo);
       deliveryIntervalsInfo.push(intervalInfo);
     });
     renderDeliveryIntervals(checkedShippingMethod);
-    // priceEl = document.createElement('span');
-    // priceEl.innerHTML = `+${deliveryLateMarkup}₽`;
-    // deliveryLateIntervalLabel.appendChild(priceEl);
     deliveryIntervalInput.forEach(el =>{
       el.addEventListener('click', ajaxGetLateDelivery);
     })
