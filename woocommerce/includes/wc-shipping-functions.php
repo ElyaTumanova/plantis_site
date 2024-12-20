@@ -33,8 +33,12 @@ function plnt_check() {
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
     //print_r( $packages);
     //echo '<br>';
-    //echo $chosen_methods[0];
+    echo $chosen_methods[0];
     echo '<br>';
+
+    if($local_pickup == $chosen_methods[0]) {
+        WC()->session->set('isLate', '0' );  
+    }
 
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
@@ -197,9 +201,9 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     }
 
-    if($local_pickup == $chosen_methods[0]) {
-        WC()->session->set('isLate', '0' );
-    }
+    // if($local_pickup == $chosen_methods[0]) {
+    //     WC()->session->set('isLate', '0' );  
+    // }
 
     if (WC()->session->get('isLate' ) === '1') {
         foreach( $rates as $rate) {
