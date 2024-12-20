@@ -125,6 +125,8 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
 
+    $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+
     
     /*СРОЧНАЯ ДОСТАВКА*/
     if (WC()->session->get('isUrgent' ) === '0') {
@@ -195,7 +197,7 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     }
 
-    if(isset($rates[ $delivery_courier ]) || isset($rates[ $local_pickup ])) {
+    if('local_pickup' === $rate->method_id || 'free_shipping' === $rate->method_id) {
         WC()->session->set('isLate', '0' );
     }
 
