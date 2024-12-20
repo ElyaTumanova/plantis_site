@@ -98,7 +98,12 @@ function plntAjaxGetUrgent() {
 function setLateDelivery(event) {
   let input = event.target;
   console.log(input.value);
-  
+  if(event.target.value == '18:00 - 21:00') {
+    isLate = '1'
+  } else {
+    isLate = '0'
+  }
+  console.log(isLate);
 }
 
 if (checkoutForm) {
