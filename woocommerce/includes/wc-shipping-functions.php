@@ -26,7 +26,7 @@ add_action('woocommerce_review_order_before_shipping','plnt_check');
 //add_action('wp_head','plnt_check');
 
 function plnt_check() {
-    // echo (WC()->session->get('isUrgent' ));
+    echo (WC()->session->get('isUrgent' ));
     echo (WC()->session->get('isLate' ));
     // echo '<br>';
     //$packages = WC()->shipping()->get_packages();
@@ -195,9 +195,9 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     }
 
-    if(isset($rates[ $delivery_courier ]) || isset($rates[ $local_pickup ])) {
-        WC()->session->set('isLate', '0' );
-    }
+    // if(isset($rates[ $delivery_courier ]) || isset($rates[ $local_pickup ])) {
+    //     WC()->session->set('isLate', '0' );
+    // }
 
     if (WC()->session->get('isLate' ) === '1') {
         foreach( $rates as $rate) {
