@@ -7,7 +7,7 @@ let deliveryDatesInfo = [];
 let shippingMethodValues = [];
 let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
 let checkedShippingMethod;
-let deliveryLateInterval = document.querySelector('#additional_delivery_interval_18:00 - 21:00');
+let deliveryLateInterval = document.querySelector('#additional_delivery_interval_field input[value="18:00 - 21:00"]');
 let deliveryLateIntervalLabel = document.querySelector('#additional_delivery_interval_field label[for="additional_delivery_interval_18:00 - 21:00"]');
 let today;
 
