@@ -27,6 +27,7 @@ add_action('woocommerce_review_order_before_shipping','plnt_check');
 
 function plnt_check() {
   
+    global $local_pickup;
     // echo '<br>';
     //$packages = WC()->shipping()->get_packages();
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
