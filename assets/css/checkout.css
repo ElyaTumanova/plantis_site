@@ -511,7 +511,8 @@
     color: var(--accent-color);
     margin:0;
 }
-#additional_delivery_interval .woocommerce-input-wrapper label span {
+
+#additional_delivery_interval_field .woocommerce-input-wrapper label span {
     font-size: 11px;
     line-height: 13px;
     font-weight: 400;
