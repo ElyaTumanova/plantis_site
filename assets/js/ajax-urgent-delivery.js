@@ -73,7 +73,7 @@ function renderDeliveryDates(shippingValue) {
   if(deliveryLateMarkup) {
     priceEl = document.createElement('span');
     priceEl.innerHTML = deliveryLateMarkup;
-    deliveryLateIntervalLabel.appendChild(priceEl);
+    deliveryLateIntervalLabel.appendChild(`+${priceEl}₽`);
   }
 }
 

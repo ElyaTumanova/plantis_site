@@ -511,6 +511,13 @@
     color: var(--accent-color);
     margin:0;
 }
+#additional_delivery_interval .woocommerce-input-wrapper label span {
+    font-size: 11px;
+    line-height: 13px;
+    font-weight: 400;
+    color: var(--accent-color);
+    margin:0;
+}
 
 #additional_delivery_interval_field .woocommerce-input-wrapper input[type=radio]:checked + label {
     background-color: #3a3a3a;
