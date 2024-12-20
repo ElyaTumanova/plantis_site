@@ -11,7 +11,7 @@ let checkedShippingMethod;
 
 let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
 //let deliveryInterval = document.querySelectorAll('#additional_delivery_interval_field input');
-let deliveryIntervalLabels = document.querySelector('#additional_delivery_interval_field label');
+let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field label');
 let today;
 
 console.log(deliveryLateMarkup);
