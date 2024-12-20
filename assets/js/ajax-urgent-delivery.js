@@ -14,7 +14,7 @@ let deliveryLateIntervalLabel = document.querySelector('#additional_delivery_int
 let today;
 
 console.log(deliveryLateMarkup);
-console.log(deliveryInterval);
+console.log(deliveryIntervalInput);
 console.log(deliveryLateIntervalLabel);
 
 
