@@ -36,10 +36,10 @@ function plnt_check() {
     echo $chosen_methods[0];
     echo '<br>';
 
-    if($local_pickup === $chosen_methods[0]) {
-        echo 'hi';
-        WC()->session->set('isLate', '0' );  
-    }
+    // if($local_pickup === $chosen_methods[0]) {
+    //     echo 'hi';
+    //     WC()->session->set('isLate', '0' );  
+    // }
     echo (WC()->session->get('isUrgent' ));
     echo (WC()->session->get('isLate' ));
     // date_default_timezone_set('Europe/Moscow');
@@ -209,8 +209,10 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     if (WC()->session->get('isLate' ) === '1') {
         foreach( $rates as $rate) {
-            if ( 'local_pickup' !== $rate->method_id || 'free_shipping' !== $rate->method_id) {
-                $rate->cost = $rate->cost + $late_markup_delivery;
+            if ( 'local_pickup' !== $rate->method_id) {
+                if('free_shipping' !== $rate->method_id) {
+                    $rate->cost = $rate->cost + $late_markup_delivery;
+                }
             }	
         }
     }
