@@ -43,6 +43,7 @@ function plntChekUrgentDelivery() {
 function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
         renderDeliveryDates(event.target.value);
+        renderDeliveryIntervals(event.target.value);
         // console.log(event.target.value);
     }
 }
