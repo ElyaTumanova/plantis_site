@@ -79,7 +79,7 @@ function plnt_get_late_shipping() {
 }
 
 add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_late', 10, 1 );
-function plnt_refresh_shipping_methods_for_urgent( $post_data ){
+function plnt_refresh_shipping_methods_for_late( $post_data ){
     $bool = true;
 
     if ( WC()->session->get('isLate' ) === '1' )
