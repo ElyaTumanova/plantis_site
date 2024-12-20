@@ -151,7 +151,7 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $delivery_outMKAD_small ] );
         unset( $rates[ $delivery_inMKAD_large ] );
         unset( $rates[ $delivery_outMKAD_large ] );
-        WC()->session->set('isLate', '0' );
+        // WC()->session->set('isLate', '0' );
     }
 
     /*СТОИМОСТЬ ДОСТАВКИ ПО СУММЕ*/
@@ -203,7 +203,7 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     }
 
-    // if($local_pickup == $chosen_methods[0]) {
+    // if($local_pickup == $chosen_methods[0] || $delivery_courier == $chosen_methods[0] || $delivery_long_dist == $chosen_methods[0]) {
     //     WC()->session->set('isLate', '0' );  
     // }
 
