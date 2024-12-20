@@ -197,7 +197,7 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     }
 
-    if('local_pickup' === $rate->method_id || 'free_shipping' === $rate->method_id) {
+    if($local_pickup == $chosen_methods[0]) {
         WC()->session->set('isLate', '0' );
     }
 
