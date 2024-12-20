@@ -16,6 +16,8 @@ function plnt_set_urgent() {
     } else {
         WC()->session->set('isUrgent', '1' );
     }
+
+    WC()->session->set('isLate', '0' );
 };
 
 //for dev
@@ -24,7 +26,8 @@ function plnt_set_urgent() {
 //add_action('wp_head','plnt_check');
 
 function plnt_check() {
-    // echo (WC()->session->get('isUrgent' ));
+  
+    global $local_pickup;
     // echo '<br>';
     //$packages = WC()->shipping()->get_packages();
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
@@ -33,6 +36,12 @@ function plnt_check() {
     echo $chosen_methods[0];
     echo '<br>';
 
+    // if($local_pickup === $chosen_methods[0]) {
+    //     echo 'hi';
+    //     WC()->session->set('isLate', '0' );  
+    // }
+    echo (WC()->session->get('isUrgent' ));
+    echo (WC()->session->get('isLate' ));
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
     // if ( is_checkout() && ($hour<18 || $hour>=20)) {
@@ -40,7 +49,7 @@ function plnt_check() {
     // }
 
 }
-
+// срочная доставка
 add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
@@ -57,6 +66,32 @@ function plnt_refresh_shipping_methods_for_urgent( $post_data ){
     $bool = true;
 
     if ( WC()->session->get('isUrgent' ) === '1' )
+        $bool = false;
+
+    // Mandatory to make it work with shipping methods
+    foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
+        WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
+    }
+    WC()->cart->calculate_shipping();
+}
+
+// поздняя доставка
+add_action( 'wp_ajax_get_late_shipping', 'plnt_get_late_shipping' );
+add_action( 'wp_ajax_nopriv_get_late_shipping', 'plnt_get_late_shipping' );
+function plnt_get_late_shipping() {
+    if ( $_POST['isLate'] === '1'){
+        WC()->session->set('isLate', '1' );
+    } else {
+        WC()->session->set('isLate', '0' );
+    }
+    die(); // (required)
+}
+
+add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_late', 10, 1 );
+function plnt_refresh_shipping_methods_for_late( $post_data ){
+    $bool = true;
+
+    if ( WC()->session->get('isLate' ) === '1' )
         $bool = false;
 
     // Mandatory to make it work with shipping methods
@@ -94,6 +129,10 @@ function plnt_shipping_conditions( $rates, $package ) {
 	global $urgent_delivery_inMKAD_large; 
 	global $urgent_delivery_outMKAD_large;
 
+    $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+
+    $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+
     
     /*СРОЧНАЯ ДОСТАВКА*/
     if (WC()->session->get('isUrgent' ) === '0') {
@@ -112,6 +151,7 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $delivery_outMKAD_small ] );
         unset( $rates[ $delivery_inMKAD_large ] );
         unset( $rates[ $delivery_outMKAD_large ] );
+        WC()->session->set('isLate', '0' );
     }
 
     /*СТОИМОСТЬ ДОСТАВКИ ПО СУММЕ*/
@@ -163,6 +203,19 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     }
 
+    if($local_pickup == $chosen_methods[0] || $delivery_courier == $chosen_methods[0] || $delivery_long_dist == $chosen_methods[0]) {
+        WC()->session->set('isLate', '0' );  
+    }
+
+    if (WC()->session->get('isLate' ) === '1') {
+        foreach( $rates as $rate) {
+            if ( 'local_pickup' !== $rate->method_id) {
+                if('free_shipping' !== $rate->method_id) {
+                    $rate->cost = $rate->cost + $late_markup_delivery;
+                }
+            }	
+        }
+    }
 	return $rates;
 }
 

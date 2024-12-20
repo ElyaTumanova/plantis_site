@@ -5,7 +5,7 @@
     //все переменные
 
     let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
-    let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
+    
     let addressFields = document.querySelector('#billing_address_1_field');
     let additionalAddress = document.querySelector('.additional-address-field');
     let innField = document.querySelector('#additional_inn');
