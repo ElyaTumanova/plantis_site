@@ -70,15 +70,15 @@ $min_free_delivery = carbon_get_theme_option('min_free_delivery');
         </div>
         <div class="delivery_table__row">
             <div>За пределы МКАД (до 5км)</div>
-            <div><?php echo $out_mkad?>₽</div>
+            <div>от <?php echo $out_mkad?>₽</div>
         </div>
         <div class="delivery_table__row">
             <div>В пределах МКАД <strong>в день заказа</strong></div>
-            <div><?php echo $in_mkad_urg?>₽</div>
+            <div>от <?php echo $in_mkad_urg?>₽</div>
         </div>
         <div class="delivery_table__row">
             <div>За пределы МКАД (до 5км) <strong>в день заказа</strong></div>
-            <div><?php echo $out_mkad_urg?>₽</div>
+            <div>от <?php echo $out_mkad_urg?>₽</div>
         </div>
         <div class="delivery_table__row">
             <div>За пределы МКАД (от 5км)</div>
