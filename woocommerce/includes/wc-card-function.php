@@ -246,6 +246,9 @@ function plnt_get_add_to_card() {
         if ($product->get_stock_status() ==='instock') {
             woocommerce_template_loop_add_to_cart(); //заменили обычную не яакс кнопку на аякс кнопку из каталога
         }
+        if ($product->get_stock_status() ==='onbackorder') {
+            woocommerce_template_loop_add_to_cart(); //заменили обычную не яакс кнопку на аякс кнопку из каталога
+        }
         if ($quantity > 1 || !$product->get_manage_stock()) {
             woocommerce_quantity_input(array(
                 'min_value' => 1,
