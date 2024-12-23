@@ -676,9 +676,8 @@ Contents
                     $_product = $cart_item['data'];
                     $_product_id = $_product->id;
                     $qty = $cart_item[ 'quantity' ];
-                    $stock_qty = $_product->get_stock_quantity()
+                    $stock_qty = $_product->get_stock_quantity();
                     
-        
                     if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
                         $isbackorders = true;
                     }	
