@@ -329,7 +329,7 @@ function truemisha_quantity_plus() {
     global $product;
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
-        if ($quantity > 1 || !$product->get_manage_stock()) {
+        if ($quantity > 1 || !$product->get_manage_stock() || $product->backorders_allowed()) {
             echo '<div class="plus">&#43;</div>';
         }
     } 
