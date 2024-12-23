@@ -11,6 +11,7 @@ Contents
 # Notifications
 # Treez notifications
 # Thankyou page
+# Backorders
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -657,4 +658,35 @@ Contents
             $thank_you_msg =  'Спасибо за ваш заказ! Наши менеджеры пляшут от радости! Как закончат танцевать, сразу вам перезвонят ' . $emoji ;
 
         return $thank_you_msg;
+    }
+
+/*--------------------------------------------------------------
+# Backorders
+--------------------------------------------------------------*/
+    //отключаем способ оплаты для Backorders
+    add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_backorders' );
+
+    function plnt_disable_payment_backorders( $available_gateways ) {
+        $qty = 0; // обязательно сначала ставим 0
+        $isbackorders = false;
+        if (is_admin()) {
+            return $available_gateways;
+        } else {
+            foreach ( WC()->cart->get_cart() as $cart_item ) {
+                    $_product = $cart_item['data'];
+                    $_product_id = $_product->id;
+                    $qty = $cart_item[ 'quantity' ];
+                    $stock_qty = $_product->get_stock_quantity()
+                    
+        
+                    if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
+                        $isbackorders = true;
+                    }	
+            }
+        
+            if( $isbackorders) {
+                unset( $available_gateways['bacs'] ); //to do change to tinkoff
+            }
+            return $available_gateways;
+        }
     }

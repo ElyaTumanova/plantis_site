@@ -420,15 +420,6 @@ function order_by_stock_status($posts_clauses) {
     return $posts_clauses;
 }
 
-// FOR DEV
-// add_action('wp_footer','plnt_wpdb');
-
-// function plnt_wpdb() {
-// 	global $wpdb;
-
-// }
-
-
 // // скрываем товары не в наличии для определенных страниц и категорий 
 
 add_filter( 'woocommerce_product_query_meta_query', 'shop_only_instock_products', 10, 2 );
