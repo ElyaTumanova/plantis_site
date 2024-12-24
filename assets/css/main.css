@@ -473,6 +473,10 @@
     display: none;
 }
 
+.main__cats-wrap .product-slider-wrap {
+    margin: 40px 0;
+}
+
 .main__cats-nav {
     display: flex;
     column-gap: 24px;
