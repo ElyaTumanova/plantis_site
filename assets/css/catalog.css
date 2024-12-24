@@ -929,6 +929,20 @@ ul.products {
 
 .product-slider-wrap .add_to_cart_button, .product-slider-wrap .product_type_simple {
     margin: 10px 0 15px;
+
+    font-size: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    margin-bottom: 0;
+    margin-top: -67px;
+    margin-left: auto;
+    background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0;
+    background-size: 50%;
+    order: 1;
 }
 
 .product-slider-wrap .swiper-button-prev, .product-slider-wrap .swiper-button-next {
