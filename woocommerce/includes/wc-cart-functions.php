@@ -20,7 +20,7 @@ add_action( 'woocommerce_after_cart', 'plnt_cart_popular', 10);
 add_action( 'woocommerce_cart_is_empty', 'plnt_cart_popular', 30);
 
 function plnt_cart_popular() {
-	get_template_part('template-parts/products-popular'); 
+	get_template_part('template-parts/products/products-popular'); 
 };
 
 
