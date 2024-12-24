@@ -231,7 +231,7 @@ function plnt_get_peresadka_add_to_cart() {
     global $product; 
     $product_id = $product->get_id();
     ?><div class="card__peresadka"><?php 
-    get_template_part('template-parts/products-peresadka',null, 
+    get_template_part('template-parts/products/products-peresadka',null, 
         array( // массив с параметрами
             'product_id' => $product_id
         ));
@@ -450,7 +450,7 @@ function plnt_get_cross_sells(){
 add_action('woocommerce_after_single_product_summary','plnt_card_ukhod_loop',40);
 
 function plnt_card_ukhod_loop() {
-    get_template_part('template-parts/products-ukhod');
+    get_template_part('template-parts/products/products-ukhod');
 }
 
 // ссылка "назад" для карточки товара
