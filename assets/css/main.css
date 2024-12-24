@@ -487,6 +487,10 @@
     min-width: max-content;
 }
 
+.main__cats-nav-title_active {
+    color: var(--text);
+}
+
 .main__cats-slider {
     display: none;
 }
