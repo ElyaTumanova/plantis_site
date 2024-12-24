@@ -3,8 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-global $listvennye_cat_id;
-
 $args = array(
     'post_type' => 'product',
     'ignore_sticky_posts' => 1,
