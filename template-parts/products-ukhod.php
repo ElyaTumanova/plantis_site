@@ -11,7 +11,6 @@ $args = array(
     'no_found_rows' => 1,
     'posts_per_page' => 8,
     'orderby' => 'rand',
-    // 'post__in' => $product_ids_on_sale,
     'meta_query' => array( 
         array(
             'key'       => '_stock_status',

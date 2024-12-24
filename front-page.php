@@ -40,6 +40,9 @@ global $skidki_cat_id;
 		<div class=main__cats-slider>
 			<?php get_template_part('template-parts/products-popular');?>
 		</div>
+		<div class=main__cats-slider>
+			<?php get_template_part('template-parts/products-listvennye');?>
+		</div>
 		<?php //get_template_part('template-parts/plants-cats-grid');?>
 	</div>
 	<div class="main__wrap container main__row">
