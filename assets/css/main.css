@@ -504,8 +504,7 @@
 }
 
 .main__cats-slider_open {
-    display: flex;
-    column-gap: 25px;
+    display: block;
 }
 
 .main__cats-all {
