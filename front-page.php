@@ -40,6 +40,7 @@ global $skidki_cat_id;
 		</div>
 		<div class=main__cats-slider>
 			<?php get_template_part('template-parts/products-on-sale');?>
+			<a class="button" href="<?php echo get_term_link( $skidki_cat_id, 'product_cat' );?>">Все товары категории</a>
 		</div>
 		<div class=main__cats-slider>
 			<?php get_template_part('template-parts/products-popular');?>
