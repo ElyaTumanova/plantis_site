@@ -32,10 +32,10 @@ global $skidki_cat_id;
 		<div class="main__cats-nav">
 			<span class = "main__cats-nav-title">Скидки</span>
 			<span class = "main__cats-nav-title">Популярные</span>
-			<span class = "main__cats-nav-title">декоративно-лиственные</span>
+			<span class = "main__cats-nav-title">Декоративно-лиственные</span>
 		</div>
 		<div class=main__cats-slider>
-			<?php get_template_part('template-parts/products-ukhod');?>
+			<?php get_template_part('template-parts/products-on-sale');?>
 		</div>
 		<div class=main__cats-slider>
 			<?php get_template_part('template-parts/products-popular');?>
