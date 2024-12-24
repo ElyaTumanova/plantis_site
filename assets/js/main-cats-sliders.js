@@ -10,14 +10,16 @@ function closeSliders(sliderNmber) {
         if(index === sliderNmber) {
             el.classList.add('main__cats-nav-title_active');
         } else {
-            el.classList.add('main__cats-nav-title');
+            el.classList.remove('main__cats-nav-title_active');
+            //el.classList.add('main__cats-nav-title');
         }
     });
     catsSliders.forEach((el,index) => {
         if(index === sliderNmber) {
             el.classList.add('main__cats-slider_open');
         } else {
-            el.classList.add('main__cats-slider');
+            el.classList.remove('main__cats-slider_open');
+            //el.classList.add('main__cats-slider');
         }
     });
 }
