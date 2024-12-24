@@ -469,6 +469,10 @@
 
 /* categories sliders */
 
+.main__cats-wrap .my_header__title {
+    display: none;
+}
+
 .main__cats-nav {
     display: flex;
     column-gap: 24px;
