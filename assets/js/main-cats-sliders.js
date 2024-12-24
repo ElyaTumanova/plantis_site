@@ -1,10 +1,11 @@
 let navItems = document.querySelectorAll('.main__cats-nav-title');
 let catsSliders = document.querySelectorAll('.main__cats-slider');
 
-console.log(navItems);
-console.log(catsSliders);
+// console.log(navItems);
+// console.log(catsSliders);
 
 function closeSliders(all) {
+    console.log(all);
     navItems.forEach((el,index) => {
         if(index === 0 && !all) {
             el.classList.add('main__cats-nav-title_active');
