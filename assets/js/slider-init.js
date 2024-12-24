@@ -160,19 +160,19 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
 # Products slider
 --------------------------------------------------------------*/
 const swiper_product_slider = new Swiper('.product-slider-swiper', {
-    // pagination: {
-    //     el: '.swiper-pagination',
-    //     clickable: true,
-    //     type: 'progressbar'
-    // },
-    // navigation: {
-    //     nextEl: '.swiper-button-next',
-    //     prevEl: '.swiper-button-prev',
-    // },
-    scrollbar: {
-        el: '.swiper-scrollbar',
-        draggable: true,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        type: 'progressbar'
     },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    // scrollbar: {
+    //     el: '.swiper-scrollbar',
+    //     draggable: true,
+    // },
     slidesPerView: 6,
     slidesPerGroup: 1,
     spaceBetween: 15,
