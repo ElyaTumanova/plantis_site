@@ -1,4 +1,4 @@
-/*--------------------------------------------------------------
+product-slider-swiper/*--------------------------------------------------------------
 # Front Page
 --------------------------------------------------------------*/
 const swiper_main_banners = new Swiper('.main__banners-swiper', {
@@ -157,9 +157,9 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
 });
 
 /*--------------------------------------------------------------
-# Cart
+# Products slider
 --------------------------------------------------------------*/
-const swiper_cart_popular = new Swiper('.cart-popular-swiper', {
+const swiper_product_slider = new Swiper('.product-slider-swiper', {
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
