@@ -33,7 +33,7 @@ if( !empty ($product_ids_on_sale) ){
 
         $products = new WP_Query( $args );
         if ( $products->have_posts() ) : ?>   
-                <div class="product-slider-wrap cart-popular-swiper swiper">
+                <div class="product-slider-wrap popular-products-wrap cart-popular-swiper swiper">
                     <ul class="products columns-3 swiper-wrapper"> 
                         <?php while ( $products->have_posts() ) : $products->the_post(); ?>
 
