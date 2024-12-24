@@ -18,14 +18,14 @@ global $skidki_cat_id;
 				<a class="main__gorshki-button button" href="<?php echo get_term_link( $gorshki_cat_id, 'product_cat' );?>">Горшки и кашпо</a>
 			</div>
 	
-			<div class="main__sale-gallery-wrap">
+			<!-- <div class="main__sale-gallery-wrap">
 				<h2 class="main__sale-gallery-title heading-2">Спецпредложения</h2>
 				<div class="main__sale-gallery">
-					<?php get_template_part('template-parts/products/products-on-sale');
+					<?php //get_template_part('template-parts/products/products-on-sale');
 					?>
 				</div>
-				<a class="main__sale-button button" href="<?php echo get_term_link( $skidki_cat_id, 'product_cat' );?>">Все комнатные растения со скидкой</a>			
-			</div>
+				<a class="main__sale-button button" href="<?php //echo get_term_link( $skidki_cat_id, 'product_cat' );?>">Все комнатные растения со скидкой</a>			
+			</div> -->
 		</div>
 	</div>
 	<div class="main__cats-wrap main__row container">
