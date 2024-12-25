@@ -518,6 +518,7 @@
     font-weight: 600;
     width: fit-content;
     margin-left: auto;
+    color: var(--text);
 }
 .main__cats-all:hover { text-decoration: none; }
 
