@@ -962,7 +962,7 @@ ul.products {
     box-sizing: border-box;
 }
 
-.product-slider-wrap .woocommerce-LoopProduct-link {
+.product-slider-wrap .woocommerce-LoopProduct-link:first-of-type {
     order: -2;
 }
 
