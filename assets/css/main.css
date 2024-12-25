@@ -516,6 +516,8 @@
     position: relative;
     text-decoration: none;
     font-weight: 600;
+    width: fit-content;
+    margin-left: auto;
 }
 .main__cats-all:hover { text-decoration: none; }
 
@@ -524,7 +526,7 @@
     position: absolute; 
     display: block; 
     width: 100%; 
-    height: 2px; 
+    height: 1px; 
     bottom: 0; 
     left: 0; 
     background-color: var(--text); 
