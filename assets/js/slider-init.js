@@ -175,7 +175,7 @@ const swiper_product_slider = new Swiper('.product-slider-swiper', {
     // },
     slidesPerView: 6,
     slidesPerGroup: 1,
-    spaceBetween: 15,
+    spaceBetween: 20,
     loop: true,
     freeMode: true,
     breakpoints: {
@@ -196,7 +196,7 @@ const swiper_product_slider = new Swiper('.product-slider-swiper', {
         },
         1024: {
             slidesPerView: 6,
-            spaceBetween: 15,
+            spaceBetween: 20,
             navigation: {
                 enabled: true,
             },
