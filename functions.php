@@ -81,7 +81,7 @@ function plnt_check_page() {
 	//echo rand(5, 150);
 }
 
-add_action( 'wp_footer', 'plnt_check_page' );
+//add_action( 'wp_footer', 'plnt_check_page' );
 
 
 //ЗАДАЕМ КОНСТАНТЫ ДЛЯ JS
