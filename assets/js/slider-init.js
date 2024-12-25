@@ -173,7 +173,7 @@ const swiper_product_slider = new Swiper('.product-slider-swiper', {
     //     el: '.swiper-scrollbar',
     //     draggable: true,
     // },
-    slidesPerView: 6,
+    slidesPerView: 5,
     slidesPerGroup: 1,
     spaceBetween: 20,
     loop: true,
@@ -195,7 +195,7 @@ const swiper_product_slider = new Swiper('.product-slider-swiper', {
             },
         },
         1024: {
-            slidesPerView: 6,
+            slidesPerView: 5,
             spaceBetween: 20,
             navigation: {
                 enabled: true,
