@@ -1,5 +1,6 @@
 let isUrgent;
 let isLate = 0;
+let isHideInterval;
 let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
@@ -149,6 +150,12 @@ if (checkoutForm) {
   } else {
     today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${new Date().getUTCMonth() + 1}`;
   };
+
+  if(hour >=12 && hour<24) {
+    isHideInterval = false;
+  } else {
+    isHideInterval = true;
+  }
   //console.log(today);
 
   checkedShippingMethod = checkedShippingMethodInput.value;

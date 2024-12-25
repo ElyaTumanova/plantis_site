@@ -28,7 +28,7 @@
             if (addressFields) {addressFields.classList.add('d-none');}
             if (additionalAddress) {additionalAddress.classList.add('d-none');}
         } else {
-            if (isUrgent == '1') {
+            if (isUrgent == '1' && isHideInterval) {
                 if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
                 if (deliveryIntervalInput) {
                     deliveryIntervalInput.forEach((input)=>{
