@@ -535,14 +535,12 @@
 .main__cats-all:hover::before { transform: scaleX(1); }
 
 .main__cats-all:after {
-    /* content: "\276F"; */
     content: "next";
     font-family: swiper-icons;
     text-transform: none;
     letter-spacing: 0;
     font-weight: 600;
     font-size: 13px;
-    position: absolute;
-    top: 13px;
-    left: 250px;
+    margin-left: 10px;
+    margin-top: 3px;
 }
