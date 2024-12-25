@@ -454,6 +454,26 @@ function shop_only_instock_products( $meta_query, $query ) {
 	}
 }
 
+// // скрываем Treez Plnats из результатов поиска 
+
+add_action( 'woocommerce_product_query', 'truemisha_exclude_category', 25 );
+ 
+function truemisha_exclude_category( $query ) {
+	if(is_search()) {
+		$tax_query = (array) $query->get( 'tax_query' );
+	
+		$tax_query[] = array(
+			'taxonomy' => 'product_cat',
+			'field' => 'slug',
+			'terms' => array( 'iskusstvennye-rasteniya-treez' ),
+			'operator' => 'NOT IN'
+		);
+	
+	
+		$query->set( 'tax_query', $tax_query );
+	}
+}
+
 // // варианты сортировки товаров в каталоге
 
 add_filter( 'woocommerce_catalog_orderby', 'truemisha_remove_orderby_options' );
