@@ -955,6 +955,11 @@ ul.products {
 
 .product-slider-wrap .product {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    box-sizing: border-box;
 }
 
 .product-slider-wrap .yith-wcwl-add-to-wishlist {
