@@ -971,7 +971,15 @@ ul.products {
     z-index: 10;
     margin: 0;
     top: 10px;
-    right: 10px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+}
+
+.product-slider-wrap .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, 
+.product-slider-wrap .yith-wcwl-add-to-wishlist a.delete_item>img, 
+.product-slider-wrap .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
+    max-width: 20px;
 }
 
 .product-slider-wrap .sale_badge {
@@ -1055,13 +1063,6 @@ ul.products {
         font-weight: 700;
         color: var(--red-color);
     }
-}
-
-
-.product-slider-wrap .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, 
-.product-slider-wrap .yith-wcwl-add-to-wishlist a.delete_item>img, 
-.product-slider-wrap .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
-    max-width: 25px;
 }
 
 /*--------------------------------------------------------------
