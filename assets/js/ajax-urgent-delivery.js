@@ -151,7 +151,7 @@ if (checkoutForm) {
     today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${new Date().getUTCMonth() + 1}`;
   };
 
-  if(hour >=12 && hour<24) {
+  if(hour >=20 && hour<24) {
     isHideInterval = false;
   } else {
     isHideInterval = true;
