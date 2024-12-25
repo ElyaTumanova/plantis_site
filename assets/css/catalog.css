@@ -950,7 +950,10 @@ ul.products {
 }
 
 .product-slider-wrap .woocommerce-loop-product__title {
-    font-size: 16px;
+    font-size: 14px;
+}
+.product-slider-wrap .woocommerce-product-details__short-description {
+    font-size: 13px;
 }
 
 .product-slider-wrap .product {
