@@ -970,6 +970,15 @@ ul.products {
     right: 10px;
 }
 
+.product-slider-wrap .sale_badge {
+    font-size: 13px;
+    padding: 0 3px 0 0;
+}
+
+.product-slider-wrap .sale_badge .sale_badge-skidka{
+    padding: 3px;
+}
+
 /* стили цены */
 .product-slider-wrap .product .price {
     font-size: 24px;
