@@ -78,10 +78,10 @@ function plnt_check_page() {
 	
 	//echo  basename( get_page_template() );
 	//echo wp_kses_data(WC()->cart->get_cart_contents_count());
-	echo rand(5, 150);
+	//echo rand(5, 150);
 }
 
-//add_action( 'wp_footer', 'plnt_check_page' );
+add_action( 'wp_footer', 'plnt_check_page' );
 
 
 //ЗАДАЕМ КОНСТАНТЫ ДЛЯ JS
