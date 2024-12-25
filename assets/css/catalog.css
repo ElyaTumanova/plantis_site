@@ -931,8 +931,8 @@ ul.products {
     margin: 10px 0 15px;
 
     font-size: 0;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     border-radius: 100%;
     margin-bottom: 0;
     margin-top: -67px;
@@ -955,11 +955,11 @@ ul.products {
 
 .product-slider-wrap .product {
     position: relative;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: flex-start;
-    box-sizing: border-box;
+    box-sizing: border-box; */
 }
 
 .product-slider-wrap .yith-wcwl-add-to-wishlist {
