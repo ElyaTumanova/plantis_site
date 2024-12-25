@@ -954,6 +954,7 @@ ul.products {
 }
 .product-slider-wrap .woocommerce-product-details__short-description {
     font-size: 13px;
+    width: 100%;
 }
 
 .product-slider-wrap .product {
