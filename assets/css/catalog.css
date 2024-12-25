@@ -964,6 +964,8 @@ ul.products {
     justify-content: start;
     align-items: flex-start;
     box-sizing: border-box;
+    flex-grow: 1;
+    flex-basis: 0;
 }
 
 .product-slider-wrap .woocommerce-LoopProduct-link:first-of-type {
