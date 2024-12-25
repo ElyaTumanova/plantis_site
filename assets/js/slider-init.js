@@ -175,7 +175,7 @@ const swiper_product_slider = new Swiper('.product-slider-swiper', {
     // },
     slidesPerView: 5,
     slidesPerGroup: 1,
-    spaceBetween: 20,
+    spaceBetween: 30,
     loop: true,
     freeMode: true,
     breakpoints: {
