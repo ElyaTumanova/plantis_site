@@ -996,19 +996,19 @@ ul.products {
 
 /* стили цены */
 .product-slider-wrap .product .price {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.1;
     font-weight: 700;
 }
 
 .product-slider-wrap .sale .price {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 1.1;
 }
 
 .product-slider-wrap .sale ins .woocommerce-Price-amount {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.1;
     font-weight: 700;
     color: var(--red-color);
