@@ -196,7 +196,7 @@ const swiper_product_slider = new Swiper('.product-slider-swiper', {
         },
         1024: {
             slidesPerView: 5,
-            spaceBetween: 20,
+            spaceBetween: 30,
             navigation: {
                 enabled: true,
             },
