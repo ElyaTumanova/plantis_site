@@ -39,6 +39,9 @@
             if (isUrgent == '0') {
                 if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
             }
+            if (!isHideInterval) {
+                if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
+            }
             if (addressFields) {addressFields.classList.remove('d-none');}
             if (additionalAddress) {additionalAddress.classList.remove('d-none');}
         }
