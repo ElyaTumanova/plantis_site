@@ -54,18 +54,22 @@
 
         if (isHoliday === '1') {
             deliveryIntervalInput.forEach(el =>{
-                console.log(el.defaultValue);
-                console.log(el);
                 if(el.defaultValue !== '11:00 - 16:00') {
                     el.classList.add('d-none');
                 }
             })
             deliveryIntervalLabels.forEach(el =>{
-                console.log(el.htmlFor);
-                console.log(el);
                 if(el.htmlFor !== 'additional_delivery_interval_11:00 - 16:00') {
                     el.classList.add('d-none');
                 }
+            })
+        }
+        if (isHoliday === '0') {
+            deliveryIntervalInput.forEach(el =>{
+                el.classList.remove('d-none');
+            })
+            deliveryIntervalLabels.forEach(el =>{
+                el.classList.remove('d-none');
             })
         }
     }
