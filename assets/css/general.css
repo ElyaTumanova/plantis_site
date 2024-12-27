@@ -7,7 +7,7 @@
 } */
 
 .xml_button {
-    display: none;
+    display: none !important;
 }
 
 :root {
