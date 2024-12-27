@@ -31,7 +31,7 @@ function plntChekUrgentDelivery() {
     } else {
       isHoliday = '0'
     };
-    ajaxGetHolidayDelivery();
+    //ajaxGetHolidayDelivery();
   }
   plntAjaxGetUrgent();
 
@@ -56,7 +56,7 @@ function plntChekUrgentDelivery() {
         };
 
         console.log(isHoliday);
-        ajaxGetHolidayDelivery();
+        //ajaxGetHolidayDelivery();
       }
     });
   })
