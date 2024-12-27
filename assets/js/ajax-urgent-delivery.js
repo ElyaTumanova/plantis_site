@@ -18,7 +18,7 @@ let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_int
 let today;
 
 // console.log(deliveryLateMarkup);
-console.log(deliveryDates[0].value);
+//console.log(deliveryDates[0].value);
 //console.log(deliveryIntervalLabels);
 
 
@@ -55,7 +55,7 @@ function plntChekUrgentDelivery() {
           isHoliday = '0'
         };
 
-        console.log(isHoliday);
+        //console.log(isHoliday);
         //ajaxGetHolidayDelivery();
       }
     });
@@ -127,22 +127,22 @@ function plntAjaxGetUrgent() {
   });
 };
 
-function ajaxGetHolidayDelivery() {
-  jQuery( function($){
-        $.ajax({
-            type: 'POST',
-            url: wc_checkout_params.ajax_url,
-            data: {
-                'action': 'get_holiday_shipping',
-                'isHoliday': isHoliday,
-            },
-            success: function (result) {
-                // Trigger refresh checkout
-                $('body').trigger('update_checkout');
-            }
-        });
-  });
-};
+// function ajaxGetHolidayDelivery() {
+//   jQuery( function($){
+//         $.ajax({
+//             type: 'POST',
+//             url: wc_checkout_params.ajax_url,
+//             data: {
+//                 'action': 'get_holiday_shipping',
+//                 'isHoliday': isHoliday,
+//             },
+//             success: function (result) {
+//                 // Trigger refresh checkout
+//                 $('body').trigger('update_checkout');
+//             }
+//         });
+//   });
+// };
 
 function ajaxGetLateDelivery(event) {
   if(event.target.value == '18:00 - 21:00') {
