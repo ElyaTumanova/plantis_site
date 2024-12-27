@@ -18,7 +18,7 @@ let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_int
 let today;
 
 // console.log(deliveryLateMarkup);
-console.log(deliveryDates[0]);
+console.log(deliveryDates[0].value);
 //console.log(deliveryIntervalLabels);
 
 
@@ -40,11 +40,18 @@ function plntChekUrgentDelivery() {
       plntAjaxGetUrgent();
 
       if (holidays) {
+        if (holidays.includes(deliveryDates[0].value)) {
+          isHoliday = '1'
+        } else {
+          isHoliday = '0'
+        };
+
         if(holidays.includes(event.target.value)) {
           isHoliday = '1'
         } else {
           isHoliday = '0'
-        }
+        };
+        
         console.log(isHoliday);
         ajaxGetHolidayDelivery();
       }
