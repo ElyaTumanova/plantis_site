@@ -18,8 +18,8 @@ let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_int
 let today;
 
 // console.log(deliveryLateMarkup);
-// console.log(deliveryIntervalInput);
-// console.log(deliveryIntervalLabels);
+console.log(deliveryIntervalInput);
+console.log(deliveryIntervalLabels);
 
 
 function plntChekUrgentDelivery() {
@@ -37,16 +37,18 @@ function plntChekUrgentDelivery() {
       } else {
         isUrgent = '0';
       }
-
-      if(holidays.includes(event.target.value)) {
-        isHoliday = '1'
-      } else {
-        isHoliday = '0'
-      }
-    
-      console.log(isHoliday);
       plntAjaxGetUrgent();
-      });
+
+      if (holidays) {
+        if(holidays.includes(event.target.value)) {
+          isHoliday = '1'
+        } else {
+          isHoliday = '0'
+        }
+        console.log(isHoliday);
+        ajaxGetHolidayDelivery();
+      }
+    });
   })
 };
 
@@ -99,11 +101,6 @@ function renderDeliveryIntervals(shippingValue) {
 }
 
 function plntAjaxGetUrgent() {
-  //console.log('hi ajax');
-  //console.log(isUrgent);
-  //let date = document.querySelector('#datepicker');
-  
-  //console.log(date);
   jQuery( function($){
         $.ajax({
             type: 'POST',
@@ -111,6 +108,23 @@ function plntAjaxGetUrgent() {
             data: {
                 'action': 'get_urgent_shipping',
                 'isUrgent': isUrgent,
+            },
+            success: function (result) {
+                // Trigger refresh checkout
+                $('body').trigger('update_checkout');
+            }
+        });
+  });
+};
+
+function ajaxGetHolidayDelivery() {
+  jQuery( function($){
+        $.ajax({
+            type: 'POST',
+            url: wc_checkout_params.ajax_url,
+            data: {
+                'action': 'get_holiday_shipping',
+                'isHoliday': isHoliday,
             },
             success: function (result) {
                 // Trigger refresh checkout
@@ -143,6 +157,7 @@ function ajaxGetLateDelivery(event) {
     });
 });
 }
+
 
 if (checkoutForm) {
 
