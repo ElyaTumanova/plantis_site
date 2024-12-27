@@ -25,8 +25,15 @@ console.log(deliveryDates[0].value);
 function plntChekUrgentDelivery() {
   //console.log('hi plntChekUrgentDelivery');
   deliveryDates[0].setAttribute('checked','checked');
+  if (holidays) {
+    if (holidays.includes(deliveryDates[0].value)) {
+      isHoliday = '1'
+    } else {
+      isHoliday = '0'
+    };
+  }
   plntAjaxGetUrgent();
-  console.log(isUrgent);
+  //console.log(isUrgent);
   
 
   deliveryDates.forEach((date) => {
@@ -40,12 +47,6 @@ function plntChekUrgentDelivery() {
       plntAjaxGetUrgent();
 
       if (holidays) {
-        if (holidays.includes(deliveryDates[0].value)) {
-          isHoliday = '1'
-        } else {
-          isHoliday = '0'
-        };
-
         if(holidays.includes(event.target.value)) {
           isHoliday = '1'
         } else {
