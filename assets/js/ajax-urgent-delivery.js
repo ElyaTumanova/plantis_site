@@ -54,7 +54,7 @@ function plntChekUrgentDelivery() {
         };
 
         console.log(isHoliday);
-        //ajaxGetHolidayDelivery();
+        ajaxGetHolidayDelivery();
       }
     });
   })
