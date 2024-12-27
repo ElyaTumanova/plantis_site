@@ -60,6 +60,13 @@
                     el.classList.add('d-none');
                 }
             })
+            deliveryIntervalLabels.forEach(el =>{
+                console.log(el.htmlFor);
+                console.log(el);
+                if(el.htmlFor !== 'additional_delivery_interval_11:00 - 16:00') {
+                    el.classList.add('d-none');
+                }
+            })
         }
     }
 
