@@ -51,6 +51,12 @@
         } else {
             if (innField) {innField.classList.add('d-none')};
         };
+
+        if (isHoliday === '1') {
+            deliveryIntervalInput.forEach(el =>{
+                console.log(el.defaultValue)
+            })
+        }
     }
 
     if(checkoutForm) {
