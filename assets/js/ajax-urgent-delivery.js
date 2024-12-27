@@ -1,6 +1,8 @@
 let isUrgent;
 let isLate = 0;
 let isHideInterval;
+let isHoliday;
+let holidays = ["01.01","02.01","31.12"];
 let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
@@ -35,7 +37,14 @@ function plntChekUrgentDelivery() {
       } else {
         isUrgent = '0';
       }
-     // console.log(isUrgent);
+
+      if(holidays.includes(event.target.value)) {
+        isHoliday = '1'
+      } else {
+        isHoliday = '0'
+      }
+    
+      console.log(isHoliday);
       plntAjaxGetUrgent();
       });
   })
