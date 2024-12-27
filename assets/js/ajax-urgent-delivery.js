@@ -31,8 +31,10 @@ function plntChekUrgentDelivery() {
     } else {
       isHoliday = '0'
     };
+    ajaxGetHolidayDelivery();
   }
   plntAjaxGetUrgent();
+
   //console.log(isUrgent);
   
 
