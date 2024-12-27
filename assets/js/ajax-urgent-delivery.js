@@ -18,8 +18,8 @@ let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_int
 let today;
 
 // console.log(deliveryLateMarkup);
-console.log(deliveryIntervalInput);
-console.log(deliveryIntervalLabels);
+console.log(deliveryDates[0]);
+//console.log(deliveryIntervalLabels);
 
 
 function plntChekUrgentDelivery() {
