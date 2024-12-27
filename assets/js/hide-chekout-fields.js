@@ -54,7 +54,9 @@
 
         if (isHoliday === '1') {
             deliveryIntervalInput.forEach(el =>{
-                console.log(el.defaultValue)
+                if(el.defaultValue !== '11:00 - 16:00') {
+                    el.classList.add('d-none');
+                }
             })
         }
     }
