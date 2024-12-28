@@ -1,6 +1,5 @@
 let navItems = document.querySelectorAll('.main__cats-nav-title');
 let catsTerm;
-//let catsSliders = document.querySelectorAll('.main__cats-slider');
 
 function showSlider(sliderNmber) {
     // console.log(event.target);
@@ -16,13 +15,6 @@ function showSlider(sliderNmber) {
         }
 
     });
-    // catsSliders.forEach((el,index) => {
-    //     if(index === sliderNmber) {
-    //         el.classList.add('main__cats-slider_open');
-    //     } else {
-    //         el.classList.remove('main__cats-slider_open');
-    //     }
-    // });
 
 }
 
@@ -44,7 +36,7 @@ function ajaxGetMainCatTerm() {
                 $('.main__cats-slider .products').html(data.out);
                 let slider = document.querySelectorAll(".product-slider-swiper .product");
                 slider.forEach((slide) => {
-                    console.log(slide);
+                    //console.log(slide);
                     slide.classList.add('swiper-slide');
                 });
                 swiper_product_slider_init();

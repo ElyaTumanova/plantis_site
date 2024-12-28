@@ -34,13 +34,13 @@ global $skidki_cat_id;
 			<!-- <span class = "main__cats-nav-title">Популярные</span> -->
 			<span class = "main__cats-nav-title" id="dekorativno-listvennye">Декоративно-лиственные</span>
 			<span class = "main__cats-nav-title" id="palms">Пальмы</span>
-			<span class = "main__cats-nav-title">Фикусы</span>
-			<span class = "main__cats-nav-title">Лианы</span>
-			<span class = "main__cats-nav-title">Цветущие</span>
-			<span class = "main__cats-nav-title">Суккуленты</span>
-			<span class = "main__cats-nav-title">Неприхотливые</span>
-			<span class = "main__cats-nav-title">Напольные</span>
-			<span class = "main__cats-nav-title">Pet friendly</span>
+			<span class = "main__cats-nav-title" id="fikusy">Фикусы</span>
+			<span class = "main__cats-nav-title" id="lianas">Лианы</span>
+			<span class = "main__cats-nav-title" id="dekorativno-cvetushchie">Цветущие</span>
+			<span class = "main__cats-nav-title" id="succulent">Суккуленты</span>
+			<span class = "main__cats-nav-title" id="fikusy">Неприхотливые</span>
+			<span class = "main__cats-nav-title" id="fikusy">Напольные</span>
+			<span class = "main__cats-nav-title" id="fikusy">Pet friendly</span>
 		</div>
 		<div class=main__cats-slider>
 			<div class="product-slider-wrap product-slider-swiper swiper">
