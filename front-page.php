@@ -56,7 +56,7 @@ global $skidki_cat_id;
 		</div>
 		<div class=main__cats-slider>
 			<?php get_template_part('template-parts/products/palms');?>
-			<a class="main__cats-all" href="<?php echo get_term_link($term->slug, 'palms');?>">Все товары категории</a>
+			<a class="main__cats-all" href="<?php echo esc_url(get_term_link('palms', 'product_cat'));?>">Все товары категории</a>
 		</div>
 		<?php //get_template_part('template-parts/plants-cats-grid');?>
 	</div>
