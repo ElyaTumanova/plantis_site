@@ -208,7 +208,7 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
     });
 
     function swiper_product_slider_update() {
-        swiper_product_slider.swiper.update();
+        swiper_product_slider.update();
     }
 
 
