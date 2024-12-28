@@ -27,6 +27,8 @@ function showSlider(sliderNmber) {
 }
 
 function ajaxGetMainCatTerm() {
+
+    let slides_test = ['<li>lalala</li>']
     jQuery( function($){
         $.ajax({
             type: 'POST',
@@ -46,6 +48,7 @@ function ajaxGetMainCatTerm() {
                 swiper_product_sliders.forEach((slider) => {
                     slider.swiper.update();
                     console.log(swiper_product_slider.slides);
+                    console.log(slides_test);
                 });
 
             }
