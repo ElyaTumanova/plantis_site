@@ -31,7 +31,7 @@ global $skidki_cat_id;
 	<div class="main__cats-wrap main__row container">
 		<div class="main__cats-nav">
 			<span class = "main__cats-nav-title">Скидки</span>
-			<span class = "main__cats-nav-title">Популярные</span>
+			<!-- <span class = "main__cats-nav-title">Популярные</span> -->
 			<span class = "main__cats-nav-title">Декоративно-лиственные</span>
 			<span class = "main__cats-nav-title">Пальмы</span>
 			<span class = "main__cats-nav-title">Фикусы</span>
@@ -46,10 +46,10 @@ global $skidki_cat_id;
 			<?php get_template_part('template-parts/products/products-on-sale');?>
 			<a class="main__cats-all" href="<?php echo get_term_link( $skidki_cat_id, 'product_cat' );?>">Все товары категории</a>
 		</div>
-		<div class=main__cats-slider>
-			<?php get_template_part('template-parts/products/products-popular');?>
-			<a class="main__cats-all" href="<?php echo get_term_link( $skidki_cat_id, 'product_cat' );?>">Все товары категории</a>
-		</div>
+		<!-- <div class=main__cats-slider>
+			<?php //get_template_part('template-parts/products/products-popular');?>
+			<a class="main__cats-all" href="<?php //echo get_term_link( $skidki_cat_id, 'product_cat' );?>">Все товары категории</a>
+		</div> -->
 		<div class=main__cats-slider>
 			<?php get_template_part('template-parts/products/products-listvennye');?>
 			<a class="main__cats-all" href="https://plantis.shop/product-category/komnatnye-rasteniya/dekorativno-listvennye/">Все товары категории</a>

@@ -527,15 +527,15 @@
     position: absolute; 
     display: block; 
     width: 0%; 
-    height: 1px; 
-    bottom: -2px; 
+    height: 2px; 
+    bottom: -3px; 
     left: 0; 
     background-color: var(--text); 
     transition: width 0.3s ease; 
 }
 
 .main__cats-all:hover::before { 
-    width: 100%; 
+    width: 213px; 
 }
 
 .main__cats-all:after {
