@@ -205,9 +205,14 @@ const swiper_product_slider = new Swiper('.product-slider-swiper', {
     }
 });
 
-swiper.on('slidesUpdated', function () {
-    console.log('slidesUpdated');
+const swiper_product_sliders = document.querySelectorAll(".product-slider-swiper");
+swiper_product_sliders.forEach((slider) => {
+    slider.on('slidesUpdated', function () {
+        console.log('slidesUpdated');
     });
+    
+});
+
 
 function swiper_product_slider_update() {
     swiper_product_slider.update();
