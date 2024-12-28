@@ -473,11 +473,11 @@
 
 /* categories sliders */
 
-@media (max-width:767px) {
+/* @media (max-width:767px) {
     .main__cats-wrap {
         display: none;
     }
-}
+} */
 
 .main__cats-wrap .my_header__title {
     display: none;
