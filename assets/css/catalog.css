@@ -868,8 +868,14 @@ ul.products {
     padding-bottom: 10px;
 }
 
-.main__sale-gallery .swiper-pagination, .card__grid .swiper-pagination, .product-slider-wrap .swiper-pagination {
+.main__sale-gallery .swiper-pagination, .card__grid .swiper-pagination {
     bottom: 0;
+    top: auto;
+    height: 2px;
+}
+
+.product-slider-wrap .swiper-pagination {
+    bottom: 35px;
     top: auto;
     height: 2px;
 }

@@ -528,6 +528,7 @@
     width: fit-content;
     margin-left: auto;
     color: var(--text);
+    margin-top: 10px;
 }
 .main__cats-all:hover { text-decoration: none; }
 
