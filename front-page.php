@@ -8,7 +8,7 @@ global $skidki_cat_id;
 <div class="content-area-full-width">
 	<main id="main" class="site-main" role="main">
 	<div class="main__wrap-colored-bg main__row">
-		<div class="main__wrap container">
+		<div class="container">
 			<div class="main__banners-wrap">
 				<?php get_template_part('template-parts/main-banners-gallery');?>
 			</div>
