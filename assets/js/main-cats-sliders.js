@@ -47,6 +47,7 @@ function ajaxGetMainCatTerm() {
                     console.log(slider);
                     slider.swiper.update();
                     console.log(slider);
+                    console.log(swiper_product_slider);
                 });
 
             }
