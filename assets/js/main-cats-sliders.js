@@ -8,8 +8,8 @@ function showSlider(sliderNmber) {
     navItems.forEach((el,index) => {
         if(index === sliderNmber) {
             el.classList.add('main__cats-nav-title_active');
-            console.log(el.data-term);
-            console.log(el.data-type);
+            console.log(el.dataset);
+            //console.log(el.data-type);
             catsTerm = el.data-term;
             taxonomyType = el.data-type;
             ajaxGetMainCatTerm();
