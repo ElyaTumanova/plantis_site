@@ -164,12 +164,15 @@ const swiper_product_slider = new Swiper('.product-slider-swiper', {
     on: {
         init: function () {
           console.log('swiper initialized');
+          console.log(swiper_product_slider);
+
         },
         slidesUpdated: function () {
           console.log('slidesUpdated');
         },
         update: function () {
           console.log('swiperUpdated');
+          console.log(swiper_product_slider);
         },
     },
     pagination: {
