@@ -951,9 +951,11 @@ ul.products {
 
 .product-slider-wrap .woocommerce-loop-product__title {
     font-size: 15px;
+    min-height: 35px;
 }
 .product-slider-wrap .woocommerce-product-details__short-description {
     font-size: 13px;
+    display: none;
 }
 
 .product-slider-wrap .product {
