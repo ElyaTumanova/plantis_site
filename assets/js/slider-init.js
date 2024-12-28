@@ -216,8 +216,8 @@ const swiper_product_slider = new Swiper('.product-slider-swiper', {
     }
 });
 
-console.log(swiper_product_slider);
-console.log(swiper_product_slider.slides);
+// console.log(swiper_product_slider);
+// console.log(swiper_product_slider.slides);
 
 
 /*--------------------------------------------------------------
