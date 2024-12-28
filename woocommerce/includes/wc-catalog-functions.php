@@ -699,7 +699,7 @@ function plnt_main_cats_slider_action_callback() {
 				'field' => 'slug',
 				'terms' => $term_slug,
 			)
-		)
+		);
 	};        
 	if ($term_type = 'tag') {
 		$qyery_parametrs = array(
@@ -708,7 +708,7 @@ function plnt_main_cats_slider_action_callback() {
 				'field' => 'slug',
 				'terms' => $term_slug,
 			)
-		)
+		);
 	};
 	
     $args = array(
