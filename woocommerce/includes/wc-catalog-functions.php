@@ -728,7 +728,7 @@ function plnt_main_cats_slider_action_callback() {
                 <div class="swiper-button-next"></div>
             </div>
 
-		<script>
+		<!-- <script>
 			let swiper_product_slider;
 			if(swiper_product_slider) {
 				console.log('yes');
@@ -779,7 +779,7 @@ function plnt_main_cats_slider_action_callback() {
 					}
 				}
 			});
-		</script>
+		</script> -->
     
     <?php endif;
 

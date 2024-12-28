@@ -40,8 +40,8 @@ function ajaxGetMainCatTerm() {
             },
             success: function (data) {
                 $('.main__cats-slider').html(data.out);
-                console.log('hello');
-                //swiper_product_slider_init();
+                console.log('hihhiih');
+                swiper_product_slider_init();
             }
         });
     });
