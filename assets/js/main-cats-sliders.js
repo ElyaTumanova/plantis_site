@@ -10,8 +10,8 @@ function showSlider(sliderNmber) {
             el.classList.add('main__cats-nav-title_active');
             console.log(el.dataset);
             //console.log(el.data-type);
-            catsTerm = el.el.dataset.term;
-            taxonomyType = el.el.dataset.type;
+            catsTerm = el.dataset.term;
+            taxonomyType = el.dataset.type;
             ajaxGetMainCatTerm();
         } else {
             el.classList.remove('main__cats-nav-title_active');
