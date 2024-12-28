@@ -535,7 +535,7 @@
 }
 
 .main__cats-all:hover::before { 
-    width: 213px; 
+    width: 180px; 
 }
 
 .main__cats-all:after {
