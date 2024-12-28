@@ -159,9 +159,10 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
 /*--------------------------------------------------------------
 # Products slider
 --------------------------------------------------------------*/
+let swiper_product_slider;
 function swiper_product_slider_init() {
     console.log('hello');
-    const swiper_product_slider = new Swiper('.product-slider-swiper', {
+    swiper_product_slider = new Swiper('.product-slider-swiper', {
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
