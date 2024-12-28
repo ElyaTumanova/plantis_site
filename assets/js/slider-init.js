@@ -159,10 +159,10 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
 /*--------------------------------------------------------------
 # Products slider
 --------------------------------------------------------------*/
-let swiper_product_slider;
-function swiper_product_slider_init() {
+
+
     console.log('hello');
-    swiper_product_slider = new Swiper('.product-slider-swiper', {
+    const swiper_product_slider = new Swiper('.product-slider-swiper', {
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
@@ -206,13 +206,15 @@ function swiper_product_slider_init() {
             }
         }
     });
-}
 
-swiper_product_slider_init();
+    function swiper_product_slider_update() {
+        swiper_product_slider.swiper.update();
+    }
 
-function swiper_product_slider_update() {
-    swiper_product_slider.update();
-}
+
+// swiper_product_slider_init();
+
+
 
 
 
