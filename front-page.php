@@ -32,7 +32,7 @@ global $skidki_cat_id;
 		<div class="main__cats-nav">
 			<span class = "main__cats-nav-title">Скидки</span>
 			<!-- <span class = "main__cats-nav-title">Популярные</span> -->
-			<span class = "main__cats-nav-title">Декоративно-лиственные</span>
+			<span class = "main__cats-nav-title" id="dekorativno-listvennye">Декоративно-лиственные</span>
 			<span class = "main__cats-nav-title">Пальмы</span>
 			<span class = "main__cats-nav-title">Фикусы</span>
 			<span class = "main__cats-nav-title">Лианы</span>
@@ -54,10 +54,10 @@ global $skidki_cat_id;
 			<?php get_template_part('template-parts/products/products-listvennye');?>
 			<a class="main__cats-all" href="<?php echo esc_url(get_term_link('dekorativno-listvennye', 'product_cat'));?>">Все товары категории</a>
 		</div>
-		<div class=main__cats-slider>
-			<?php get_template_part('template-parts/products/products-palms');?>
+		<!-- <div class=main__cats-slider>
+			<?php //get_template_part('template-parts/products/products-palms');?>
 			<a class="main__cats-all" href="<?php echo esc_url(get_term_link('palms', 'product_cat'));?>">Все товары категории</a>
-		</div>
+		</div> -->
 		<?php //get_template_part('template-parts/plants-cats-grid');?>
 	</div>
 	<div class="main__wrap container main__row">
