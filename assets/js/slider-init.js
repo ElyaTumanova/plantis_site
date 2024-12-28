@@ -207,7 +207,7 @@ const swiper_product_slider = new Swiper('.product-slider-swiper', {
 
 const swiper_product_sliders = document.querySelectorAll(".product-slider-swiper");
 swiper_product_sliders.forEach((slider) => {
-    slider.on('slidesUpdated', function () {
+    slider.swiper.on('slidesUpdated', function () {
         console.log('slidesUpdated');
     });
     
