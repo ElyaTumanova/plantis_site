@@ -686,11 +686,6 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 // }
 
 
-<?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
-
 add_action('wp_ajax_get_main_cats_term', 'plnt_main_cats_slider_action_callback');
 add_action('wp_ajax_nopriv_get_main_cats_term', 'plnt_main_cats_slider_action_callback');
 
@@ -721,4 +716,4 @@ function plnt_main_cats_slider_action_callback() {
     echo $args;
   
     wp_die();
-}
+};
