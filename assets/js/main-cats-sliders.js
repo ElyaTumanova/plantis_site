@@ -32,7 +32,7 @@ function ajaxGetMainCatTerm() {
             beforeSend: function(xhr){
             },
             success: function (data) {
-                $('.main__cats-slider .products').html(data.out);
+                $('.main__cats-slider').html(data.out);
                 let slider = document.querySelectorAll(".product-slider-swiper .product");
                 slider.forEach((slide) => {
                     slide.classList.add('swiper-slide');
