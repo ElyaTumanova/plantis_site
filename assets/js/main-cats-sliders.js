@@ -39,7 +39,7 @@ function ajaxGetMainCatTerm() {
             beforeSend: function(xhr){
             },
             success: function (data) {
-                $('.main__cats-slider').html(data.out);
+                $('.main__cats-slider .products').html(data.out);
                 console.log('hihhiih');
                 swiper_product_slider_init();
             }
