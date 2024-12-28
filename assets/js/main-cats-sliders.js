@@ -34,7 +34,6 @@ function ajaxGetMainCatTerm() {
                 let slider = document.querySelectorAll(".product-slider-swiper .product");
                 slider.forEach((slide) => {
                     slide.classList.add('swiper-slide');
-                    console.log('heheh')
                 });
                 swiper_product_slider_init();
             }
