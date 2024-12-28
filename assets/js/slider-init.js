@@ -159,7 +159,7 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
 /*--------------------------------------------------------------
 # Products slider
 --------------------------------------------------------------*/
-
+function swiper_product_slider_init() {
 const swiper_product_slider = new Swiper('.product-slider-swiper', {
     on: {
         init: function () {
@@ -215,7 +215,7 @@ const swiper_product_slider = new Swiper('.product-slider-swiper', {
         }
     }
 });
-
+}
 // console.log(swiper_product_slider);
 // console.log(swiper_product_slider.slides);
 

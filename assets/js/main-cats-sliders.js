@@ -47,13 +47,15 @@ function ajaxGetMainCatTerm() {
                 let swiper_product_sliders = document.querySelectorAll(".product-slider-swiper");
                 swiper_product_sliders.forEach((slider) => {
                     //slider.swiper.update();
-                    console.log(swiper_product_slider);
-                    console.log(swiper_product_slider.slides);
+                    
                     // console.log(slides_test);
-                    swiper_product_slider.slides.push('<li>lalala</li>');
+                    //swiper_product_slider.slides.push('<li>lalala</li>');
                     //slider.swiper.update();
-                    console.log(swiper_product_slider.slides);
+                    //console.log(swiper_product_slider.slides);
+                    //console.log(swiper_product_slider);
+                    swiper_product_slider_init();
                     console.log(swiper_product_slider);
+                    console.log(swiper_product_slider.slides);
                 });
 
             }
