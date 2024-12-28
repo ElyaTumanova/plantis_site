@@ -53,6 +53,7 @@ function ajaxGetMainCatTerm() {
                     swiper_product_slider.slides.push('<li>lalala</li>');
                     //slider.swiper.update();
                     console.log(swiper_product_slider.slides);
+                    console.log(swiper_product_slider);
                 });
 
             }
