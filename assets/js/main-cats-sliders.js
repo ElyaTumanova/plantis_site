@@ -42,7 +42,7 @@ function ajaxGetMainCatTerm() {
             },
             success: function (data) {
                 $('.main__cats-slider .products').html(data.out);
-                console.log('hihhiih');
+                console.log(data.out);
 
             }
         });
