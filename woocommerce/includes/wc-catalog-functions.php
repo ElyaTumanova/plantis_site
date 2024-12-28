@@ -734,3 +734,55 @@ function plnt_main_cats_slider_action_callback() {
     wp_send_json($json_data);
     wp_die();
 };
+
+add_action('wp_footer','swiper_product_slider_init', 10);
+function swiper_product_slider_init() {
+	?>
+	<script>
+		const swiper_product_slider = new Swiper('.product-slider-swiper', {
+				pagination: {
+					el: '.swiper-pagination',
+					clickable: true,
+					type: 'progressbar'
+				},
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				},
+				// scrollbar: {
+				//     el: '.swiper-scrollbar',
+				//     draggable: true,
+				// },
+				slidesPerView: 5,
+				slidesPerGroup: 1,
+				spaceBetween: 30,
+				loop: true,
+				freeMode: true,
+				breakpoints: {
+					320: {
+						slidesPerView: 2,
+						spaceBetween: 10,
+						navigation: {
+							enabled: false,
+						},
+						freeMode: true,
+					},
+					768: {
+						slidesPerView: 4,
+						spaceBetween: 10,
+						navigation: {
+							enabled: true,
+						},
+					},
+					1024: {
+						slidesPerView: 5,
+						spaceBetween: 30,
+						navigation: {
+							enabled: true,
+						},
+					}
+				}
+			});
+	</script>
+	<?php	
+}
