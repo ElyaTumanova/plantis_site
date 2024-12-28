@@ -49,8 +49,10 @@ function ajaxGetMainCatTerm() {
                     //slider.swiper.update();
                     console.log(swiper_product_slider);
                     console.log(swiper_product_slider.slides);
+                    // console.log(slides_test);
+                    swiper_product_slider.slides.push('<li>lalala</li>');
                     slider.swiper.update();
-                   // console.log(slides_test);
+                    console.log(swiper_product_slider.slides);
                 });
 
             }
