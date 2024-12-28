@@ -168,7 +168,7 @@ const swiper_product_slider = new Swiper('.product-slider-swiper', {
         slidesUpdated: function () {
           console.log('slidesUpdated');
         },
-    }
+    },
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
