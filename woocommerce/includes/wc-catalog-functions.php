@@ -715,71 +715,13 @@ function plnt_main_cats_slider_action_callback() {
     $products = new WP_Query( $args );
 	$json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
     if ( $products->have_posts() ) : ?>   
-            <!-- <div class="product-slider-wrap product-slider-swiper swiper">
-                <ul class="products columns-3 swiper-wrapper">  -->
+
                     <?php while ( $products->have_posts() ) : $products->the_post(); ?>
     
                     <?php wc_get_template_part( 'content', 'product' ); ?>
     
                     <?php endwhile; // end of the loop. ?>
-                <!-- </ul>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-            </div> -->
-
-		<!-- <script>
-			let swiper_product_slider;
-			if(swiper_product_slider) {
-				console.log('yes');
-				swiper_product_slider.destroy();
-			}
-			console.log('hello');
-			swiper_product_slider = new Swiper('.product-slider-swiper', {
-				pagination: {
-					el: '.swiper-pagination',
-					clickable: true,
-					type: 'progressbar'
-				},
-				navigation: {
-					nextEl: '.swiper-button-next',
-					prevEl: '.swiper-button-prev',
-				},
-				// scrollbar: {
-				//     el: '.swiper-scrollbar',
-				//     draggable: true,
-				// },
-				slidesPerView: 5,
-				slidesPerGroup: 1,
-				spaceBetween: 30,
-				loop: true,
-				freeMode: true,
-				breakpoints: {
-					320: {
-						slidesPerView: 2,
-						spaceBetween: 10,
-						navigation: {
-							enabled: false,
-						},
-						freeMode: true,
-					},
-					768: {
-						slidesPerView: 4,
-						spaceBetween: 10,
-						navigation: {
-							enabled: true,
-						},
-					},
-					1024: {
-						slidesPerView: 5,
-						spaceBetween: 30,
-						navigation: {
-							enabled: true,
-						},
-					}
-				}
-			});
-		</script> -->
+ 
     
     <?php endif;
 
