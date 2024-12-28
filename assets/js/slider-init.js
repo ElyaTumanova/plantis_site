@@ -160,63 +160,58 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
 # Products slider
 --------------------------------------------------------------*/
 
-
-    console.log('hello');
-    const swiper_product_slider = new Swiper('.product-slider-swiper', {
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-            type: 'progressbar'
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        // scrollbar: {
-        //     el: '.swiper-scrollbar',
-        //     draggable: true,
-        // },
-        slidesPerView: 5,
-        slidesPerGroup: 1,
-        spaceBetween: 30,
-        loop: true,
-        freeMode: true,
-        breakpoints: {
-            320: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-                navigation: {
-                    enabled: false,
-                },
-                freeMode: true,
+const swiper_product_slider = new Swiper('.product-slider-swiper', {
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        type: 'progressbar'
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    // scrollbar: {
+    //     el: '.swiper-scrollbar',
+    //     draggable: true,
+    // },
+    slidesPerView: 5,
+    slidesPerGroup: 1,
+    spaceBetween: 30,
+    loop: true,
+    freeMode: true,
+    breakpoints: {
+        320: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+            navigation: {
+                enabled: false,
             },
-            768: {
-                slidesPerView: 4,
-                spaceBetween: 10,
-                navigation: {
-                    enabled: true,
-                },
+            freeMode: true,
+        },
+        768: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+            navigation: {
+                enabled: true,
             },
-            1024: {
-                slidesPerView: 5,
-                spaceBetween: 30,
-                navigation: {
-                    enabled: true,
-                },
-            }
+        },
+        1024: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+            navigation: {
+                enabled: true,
+            },
         }
+    }
+});
+
+swiper_product_slider.on('slidesUpdated', function () {
+    console.log('slidesUpdated');
     });
 
-    function swiper_product_slider_update() {
-        swiper_product_slider.update();
-    }
-
-
-// swiper_product_slider_init();
-
-
-
-
+function swiper_product_slider_update() {
+    swiper_product_slider.update();
+}
 
 /*--------------------------------------------------------------
 # About Us
