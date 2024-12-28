@@ -41,8 +41,8 @@ function ajaxGetMainCatTerm() {
             success: function (data) {
                 $('.main__cats-slider .products').html(data.out);
                 console.log('hihhiih');
-                swiper_product_slider.swiper.update()
-                //swiper_product_slider_init();
+                
+                swiper_product_slider_update();
             }
         });
     });

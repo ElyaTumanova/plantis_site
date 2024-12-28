@@ -209,6 +209,13 @@ function swiper_product_slider_init() {
 }
 
 swiper_product_slider_init();
+
+function swiper_product_slider_update() {
+    swiper_product_slider.swiper.update();
+}
+
+
+
 /*--------------------------------------------------------------
 # About Us
 --------------------------------------------------------------*/
