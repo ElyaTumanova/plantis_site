@@ -3,13 +3,9 @@ let catsTerm;
 let taxonomyType;
 
 function showSlider(sliderNmber) {
-    // console.log(event.target);
-    // console.log(sliderNmber);
     navItems.forEach((el,index) => {
         if(index === sliderNmber) {
             el.classList.add('main__cats-nav-title_active');
-            console.log(el.dataset);
-            //console.log(el.data-type);
             catsTerm = el.dataset.term;
             taxonomyType = el.dataset.type;
             ajaxGetMainCatTerm();
@@ -22,8 +18,6 @@ function showSlider(sliderNmber) {
 }
 
 function ajaxGetMainCatTerm() {
-
-    let slides_test = ['<li>lalala</li>'];
     jQuery( function($){
         $.ajax({
             type: 'POST',
@@ -40,7 +34,6 @@ function ajaxGetMainCatTerm() {
                 $('.main__cats-slider .products').html(data.out);
                 let slider = document.querySelectorAll(".product-slider-swiper .product");
                 slider.forEach((slide) => {
-                    //console.log(slide);
                     slide.classList.add('swiper-slide');
                 });
                 swiper_product_slider_init();
@@ -49,7 +42,7 @@ function ajaxGetMainCatTerm() {
     });
 
 }
-//showSlider(0);
+showSlider(0);
 navItems.forEach((el,index) => {
     el.addEventListener('click',() => showSlider(index));
 });
