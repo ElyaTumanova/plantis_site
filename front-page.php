@@ -52,10 +52,10 @@ global $skidki_cat_id;
 		</div> -->
 		<div class=main__cats-slider>
 			<?php get_template_part('template-parts/products/products-listvennye');?>
-			<a class="main__cats-all" href="https://plantis.shop/product-category/komnatnye-rasteniya/dekorativno-listvennye/">Все товары категории</a>
+			<a class="main__cats-all" href="<?php echo esc_url(get_term_link('dekorativno-listvennye', 'product_cat'));?>">Все товары категории</a>
 		</div>
 		<div class=main__cats-slider>
-			<?php get_template_part('template-parts/products/palms');?>
+			<?php get_template_part('template-parts/products/products-palms');?>
 			<a class="main__cats-all" href="<?php echo esc_url(get_term_link('palms', 'product_cat'));?>">Все товары категории</a>
 		</div>
 		<?php //get_template_part('template-parts/plants-cats-grid');?>
