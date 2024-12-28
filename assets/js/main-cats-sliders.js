@@ -42,28 +42,25 @@ function ajaxGetMainCatTerm() {
             },
             success: function (data) {
                 $('.main__cats-slider .products').html(data.out);
-                console.log(data.out);
+                let swiper_product_sliders = document.querySelectorAll(".product-slider-swiper");
+                swiper_product_sliders.forEach((slider) => {
+                    console.log(slider);
+                });
 
             }
         });
     });
 
-    setTimeout(() => {
-        console.log('Прошла 1 секунда');
-        swiper_product_slider_init();
-        let swiper_product_sliders = document.querySelectorAll(".product-slider-swiper");
-            swiper_product_sliders.forEach((slider) => {
-                //slider.swiper.update();
-                
-                // console.log(slides_test);
-                //swiper_product_slider.slides.push('<li>lalala</li>');
-                //slider.swiper.update();
-                //console.log(swiper_product_slider.slides);
-                //console.log(swiper_product_slider);
-                console.log(swiper_product_slider);
-                console.log(swiper_product_slider.slides);
-            });
-    }, 1000)
+    // setTimeout(() => {
+    //     console.log('Прошла 1 секунда');
+    //     swiper_product_slider_init();
+    //     let swiper_product_sliders = document.querySelectorAll(".product-slider-swiper");
+    //         swiper_product_sliders.forEach((slider) => {
+    //             console.log(slider);
+    //             console.log(swiper_product_slider);
+    //             console.log(swiper_product_slider.slides);
+    //         });
+    // }, 1000)
 }
 //showSlider(0);
 navItems.forEach((el,index) => {
