@@ -42,9 +42,11 @@ function ajaxGetMainCatTerm() {
             },
             success: function (data) {
                 $('.main__cats-slider .products').html(data.out);
-                let swiper_product_sliders = document.querySelectorAll(".product-slider-swiper");
+                let swiper_product_sliders = document.querySelectorAll(".product-slider-swiper .product");
                 swiper_product_sliders.forEach((slider) => {
                     console.log(slider);
+                    slider.classList.add('swiper-slide');
+                    swiper_product_slider_init();
                 });
 
             }
