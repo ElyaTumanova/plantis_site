@@ -1,4 +1,5 @@
 let navItems = document.querySelectorAll('.main__cats-nav-title');
+let catsTerm;
 //let catsSliders = document.querySelectorAll('.main__cats-slider');
 
 function showSlider(sliderNmber) {
@@ -7,10 +8,13 @@ function showSlider(sliderNmber) {
     navItems.forEach((el,index) => {
         if(index === sliderNmber) {
             el.classList.add('main__cats-nav-title_active');
+            console.log(el.id);
+            catsTerm = el.id;
+            ajaxGetMainCatTerm();
         } else {
             el.classList.remove('main__cats-nav-title_active');
         }
-        console.log(el.id);
+
     });
     // catsSliders.forEach((el,index) => {
     //     if(index === sliderNmber) {
@@ -22,6 +26,23 @@ function showSlider(sliderNmber) {
 
 }
 
+function ajaxGetMainCatTerm() {
+    jQuery( function($){
+        $.ajax({
+            type: 'POST',
+            url: woocommerce_params.ajax_url,
+            data: {
+                'action': 'get_main_cats_term',
+                'term': catsTerm,
+            },
+            success: function (result) {
+                // Trigger refresh checkout
+                //$('body').trigger('update_checkout');
+                $('.main__cats-slider').html(data.out);
+            }
+        });
+    });
+}
 showSlider(0);
 navItems.forEach((el,index) => {
     el.addEventListener('click',() => showSlider(index));
