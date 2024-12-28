@@ -690,6 +690,7 @@ add_action('wp_ajax_get_main_cats_term', 'plnt_main_cats_slider_action_callback'
 add_action('wp_ajax_nopriv_get_main_cats_term', 'plnt_main_cats_slider_action_callback');
 
 function plnt_main_cats_slider_action_callback() {
+	$term_slug = $_POST['term'];
     $args = array(
         'post_type' => 'product',
         'ignore_sticky_posts' => 1,
@@ -707,7 +708,7 @@ function plnt_main_cats_slider_action_callback() {
             array(
                 'taxonomy' => 'product_cat',
                 'field' => 'slug',
-                'terms' => 'dekorativno-listvennye'
+                'terms' => $term_slug,
             )
         )
     );

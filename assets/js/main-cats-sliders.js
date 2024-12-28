@@ -42,27 +42,16 @@ function ajaxGetMainCatTerm() {
             },
             success: function (data) {
                 $('.main__cats-slider .products').html(data.out);
-                let swiper_product_sliders = document.querySelectorAll(".product-slider-swiper .product");
-                swiper_product_sliders.forEach((slider) => {
-                    console.log(slider);
-                    slider.classList.add('swiper-slide');
-                    swiper_product_slider_init();
+                let slider = document.querySelectorAll(".product-slider-swiper .product");
+                slider.forEach((slide) => {
+                    console.log(slide);
+                    slide.classList.add('swiper-slide');
                 });
-
+                swiper_product_slider_init();
             }
         });
     });
 
-    // setTimeout(() => {
-    //     console.log('Прошла 1 секунда');
-    //     swiper_product_slider_init();
-    //     let swiper_product_sliders = document.querySelectorAll(".product-slider-swiper");
-    //         swiper_product_sliders.forEach((slider) => {
-    //             console.log(slider);
-    //             console.log(swiper_product_slider);
-    //             console.log(swiper_product_slider.slides);
-    //         });
-    // }, 1000)
 }
 //showSlider(0);
 navItems.forEach((el,index) => {

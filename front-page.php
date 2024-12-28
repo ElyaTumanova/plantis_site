@@ -33,7 +33,7 @@ global $skidki_cat_id;
 			<span class = "main__cats-nav-title">Скидки</span>
 			<!-- <span class = "main__cats-nav-title">Популярные</span> -->
 			<span class = "main__cats-nav-title" id="dekorativno-listvennye">Декоративно-лиственные</span>
-			<span class = "main__cats-nav-title">Пальмы</span>
+			<span class = "main__cats-nav-title" id="palms">Пальмы</span>
 			<span class = "main__cats-nav-title">Фикусы</span>
 			<span class = "main__cats-nav-title">Лианы</span>
 			<span class = "main__cats-nav-title">Цветущие</span>
