@@ -500,13 +500,13 @@
     color: var(--text);
 }
 
-.main__cats-slider {
+/* .main__cats-slider {
     display: none;
 }
 
 .main__cats-slider_open {
     display: block;
-}
+} */
 
 .main__cats-all {
     display: flex;
