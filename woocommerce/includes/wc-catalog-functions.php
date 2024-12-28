@@ -730,7 +730,7 @@ function plnt_main_cats_slider_action_callback() {
 
 		<script>
 			console.log('hello');
-			const swiper_product_slider = new Swiper('.product-slider-swiper', {
+			let swiper_product_slider = new Swiper('.product-slider-swiper', {
 				pagination: {
 					el: '.swiper-pagination',
 					clickable: true,
