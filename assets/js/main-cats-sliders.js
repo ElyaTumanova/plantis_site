@@ -48,7 +48,7 @@ function ajaxGetMainCatTerm() {
                 swiper_product_sliders.forEach((slider) => {
                     slider.swiper.update();
                     console.log(swiper_product_slider);
-                    console.log(swiper_product_slider.slides);
+                    console.log(swiper_product_slider[1].slides);
                    // console.log(slides_test);
                 });
 
