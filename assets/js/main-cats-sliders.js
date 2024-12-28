@@ -30,7 +30,7 @@ function ajaxGetMainCatTerm() {
     jQuery( function($){
         $.ajax({
             type: 'POST',
-            url: woocommerce_params.ajax_url,
+            url: admin_url('admin-ajax.php'),
             data: {
                 'action': 'get_main_cats_term',
                 'term': catsTerm,
