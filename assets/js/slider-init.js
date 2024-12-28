@@ -205,7 +205,7 @@ const swiper_product_slider = new Swiper('.product-slider-swiper', {
     }
 });
 
-swiper_product_slider.on('slidesUpdated', function () {
+swiper.on('slidesUpdated', function () {
     console.log('slidesUpdated');
     });
 
