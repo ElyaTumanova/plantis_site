@@ -354,12 +354,12 @@
 
 /* categories grid */
 
+.cats-grid-wrap {display: none;}
 .cats-grid {
-    display: none;
-    /* display: grid; */
+    display: grid;
     /* column-gap: 10px;
     row-gap: 10px; */
-    /* grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
     grid-template-areas:
     "palms lisv lisv neprikhotliv"
@@ -368,10 +368,11 @@
     "palms napol cvetush succulent"
     "fikus napol lianas petfriendly"
     "fikus napol lianas petfriendly"
-    ; */
+    ;
 }
 
 @media (max-width:767px) {
+    .cats-grid-wrap {display: block;}
     .cats-grid {
         display: grid;
         grid-template-columns: repeat(2, 50%);
@@ -472,6 +473,12 @@
 
 /* categories sliders */
 
+@media (max-width:767px) {
+    .main__cats-wrap {
+        display: none;
+    }
+}
+
 .main__cats-wrap .my_header__title {
     display: none;
 }
@@ -486,12 +493,6 @@
     max-width: 100%;
     width: 100%;
     overflow: hidden;
-}
-
-@media (max-width:1279px) {
-    .main__cats-nav {
-        display: none;
-    }
 }
 
 .main__cats-nav-title {

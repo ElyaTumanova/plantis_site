@@ -51,7 +51,8 @@ global $skidki_cat_id;
 			<div class="swiper-button-next"></div>
 		</div>
 		<a class="main__cats-all" href="<?php echo get_term_link( $skidki_cat_id, 'product_cat' );?>">Все товары категории</a>
-		
+	</div>
+	<div class="cats-grid-wrap main__row">
 		<?php get_template_part('template-parts/plants-cats-grid');?>
 	</div>
 	<div class="main__wrap container main__row">
