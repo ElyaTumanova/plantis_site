@@ -713,7 +713,8 @@ function plnt_main_cats_slider_action_callback() {
 				'taxonomy' => $term_type,
 				'field' => 'slug',
 				'terms' => $term_slug,
-			);),
+			)
+		),
     );
     
     $products = new WP_Query( $args );
