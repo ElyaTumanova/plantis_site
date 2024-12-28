@@ -43,15 +43,15 @@ global $skidki_cat_id;
 			<span class = "main__cats-nav-title" data-type="product_tag" data-term="pet-friendly">Pet friendly</span>
 		</div>
 		<div class=main__cats-slider>
-			<div class="product-slider-wrap product-slider-swiper swiper">
+			<!-- <div class="product-slider-wrap product-slider-swiper swiper">
 				<ul class="products columns-3 swiper-wrapper"> 
 				</ul>
 				<div class="swiper-pagination"></div>
 				<div class="swiper-button-prev"></div>
 				<div class="swiper-button-next"></div>
-			</div>
+			</div> -->
 		</div>
-		<a class="main__cats-all" >Все товары категории</a>
+		<a class="main__cats-all">Все товары категории</a>
 	</div>
 	<div class="cats-grid-wrap main__row">
 		<?php get_template_part('template-parts/plants-cats-grid');?>

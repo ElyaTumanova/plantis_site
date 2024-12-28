@@ -13,7 +13,7 @@ function showSlider(sliderNmber) {
         } else {
             el.classList.remove('main__cats-nav-title_active');
         }
-        linkCatsAll.setAttribute("href","<?php echo get_term_link( catsTerm, taxonomyType );?>")
+        //linkCatsAll.setAttribute("href","<?php echo get_term_link( catsTerm, taxonomyType );?>")
     });
 
 }
