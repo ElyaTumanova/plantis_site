@@ -29,8 +29,8 @@ function plnt_main_cats_slider_action_callback() {
         )
     );
     
-    $products = new WP_Query( $args );
-    echo $products;
+    //$products = new WP_Query( $args );
+    echo $args;
   
     wp_die();
 }
