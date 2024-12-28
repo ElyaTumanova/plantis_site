@@ -719,22 +719,21 @@ function plnt_main_cats_slider_action_callback() {
 	$json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
     if ( $products->have_posts() ) : ?>  
 	
-	<div class="product-slider-wrap product-slider-swiper swiper">
-				<ul class="products columns-3 swiper-wrapper">
+		<div class="product-slider-wrap product-slider-swiper swiper">
+			<ul class="products columns-3 swiper-wrapper">
 				<?php while ( $products->have_posts() ) : $products->the_post(); ?>
-    
-	<?php wc_get_template_part( 'content', 'product' ); ?>
 
-	<?php endwhile; // end of the loop. ?> 
-				</ul>
-				<div class="swiper-pagination"></div>
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-button-next"></div>
-			</div>
+				<?php wc_get_template_part( 'content', 'product' ); ?>
 
-                    
- 
-    
+				<?php endwhile; // end of the loop. ?> 
+			</ul>
+			<div class="swiper-pagination"></div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+
+			<a class="main__cats-all" href="<?php echo get_term_link( $term_slug, $term_type );?>">Все товары категории</a>
+		</div>
+
     <?php endif;
 
     
