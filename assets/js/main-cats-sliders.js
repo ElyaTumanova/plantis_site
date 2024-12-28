@@ -1,4 +1,5 @@
 let navItems = document.querySelectorAll('.main__cats-nav-title');
+let linkCatsAll = document.querySelector('.main__cats-all');
 let catsTerm;
 let taxonomyType;
 
@@ -12,7 +13,7 @@ function showSlider(sliderNmber) {
         } else {
             el.classList.remove('main__cats-nav-title_active');
         }
-
+        linkCatsAll.setAttribute("href","<?php echo get_term_link( catsTerm, taxonomyType );?>")
     });
 
 }
