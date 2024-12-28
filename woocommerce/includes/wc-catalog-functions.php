@@ -692,8 +692,6 @@ add_action('wp_ajax_nopriv_get_main_cats_term', 'plnt_main_cats_slider_action_ca
 function plnt_main_cats_slider_action_callback() {
 	$term_slug = $_POST['term'];
 	$term_type = $_POST['type'];
-	echo $term_slug;
-	echo $term_type;
 
     $args = array(
         'post_type' => 'product',
