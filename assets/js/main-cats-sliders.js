@@ -10,7 +10,7 @@ function showSlider(sliderNmber) {
         } else {
             el.classList.remove('main__cats-nav-title_active');
         }
-        console.log(el);
+        console.log(el.id);
     });
     // catsSliders.forEach((el,index) => {
     //     if(index === sliderNmber) {
