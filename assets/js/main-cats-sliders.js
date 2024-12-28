@@ -44,7 +44,7 @@ function ajaxGetMainCatTerm() {
 
                 let swiper_product_sliders = document.querySelectorAll(".product-slider-swiper");
                 swiper_product_sliders.forEach((slider) => {
-                    consiloe.log(slider);
+                    console.log(slider);
                     slider.swiper.update();
                 });
 
