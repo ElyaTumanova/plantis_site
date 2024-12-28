@@ -44,10 +44,8 @@ function ajaxGetMainCatTerm() {
 
                 let swiper_product_sliders = document.querySelectorAll(".product-slider-swiper");
                 swiper_product_sliders.forEach((slider) => {
-                    // slider.swiper.on('slidesUpdated', function () {
-                    //     console.log('slidesUpdated');
-                    // });
-                    slider.swiper.updateSlides();
+                    consiloe.log(slider);
+                    slider.swiper.update();
                 });
 
             }
