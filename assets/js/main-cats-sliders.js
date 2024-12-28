@@ -1,5 +1,4 @@
 let navItems = document.querySelectorAll('.main__cats-nav-title');
-let linkCatsAll = document.querySelector('.main__cats-all');
 let catsTerm;
 let taxonomyType;
 
@@ -13,7 +12,6 @@ function showSlider(sliderNmber) {
         } else {
             el.classList.remove('main__cats-nav-title_active');
         }
-        //linkCatsAll.setAttribute("href","<?php echo get_term_link( catsTerm, taxonomyType );?>")
     });
 
 }
@@ -36,6 +34,7 @@ function ajaxGetMainCatTerm() {
                 let slider = document.querySelectorAll(".product-slider-swiper .product");
                 slider.forEach((slide) => {
                     slide.classList.add('swiper-slide');
+                    console.log('heheh')
                 });
                 swiper_product_slider_init();
             }
