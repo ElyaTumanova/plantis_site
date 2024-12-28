@@ -685,7 +685,7 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 //     return $template_content;
 // }
 
-
+// вывод слайдеров товаров на главной
 add_action('wp_ajax_get_main_cats_term', 'plnt_main_cats_slider_action_callback');
 add_action('wp_ajax_nopriv_get_main_cats_term', 'plnt_main_cats_slider_action_callback');
 

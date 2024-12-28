@@ -11,6 +11,7 @@ function showSlider(sliderNmber) {
             console.log(el.id);
             catsTerm = el.id;
             ajaxGetMainCatTerm();
+            swiper_product_slider_init();
         } else {
             el.classList.remove('main__cats-nav-title_active');
         }

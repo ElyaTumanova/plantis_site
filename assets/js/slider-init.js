@@ -159,50 +159,52 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
 /*--------------------------------------------------------------
 # Products slider
 --------------------------------------------------------------*/
-const swiper_product_slider = new Swiper('.product-slider-swiper', {
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        type: 'progressbar'
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    // scrollbar: {
-    //     el: '.swiper-scrollbar',
-    //     draggable: true,
-    // },
-    slidesPerView: 5,
-    slidesPerGroup: 1,
-    spaceBetween: 30,
-    loop: true,
-    freeMode: true,
-    breakpoints: {
-        320: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-            navigation: {
-                enabled: false,
-            },
-            freeMode: true,
+function swiper_product_slider_init() {
+    const swiper_product_slider = new Swiper('.product-slider-swiper', {
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            type: 'progressbar'
         },
-        768: {
-            slidesPerView: 4,
-            spaceBetween: 10,
-            navigation: {
-                enabled: true,
-            },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
         },
-        1024: {
-            slidesPerView: 5,
-            spaceBetween: 30,
-            navigation: {
-                enabled: true,
+        // scrollbar: {
+        //     el: '.swiper-scrollbar',
+        //     draggable: true,
+        // },
+        slidesPerView: 5,
+        slidesPerGroup: 1,
+        spaceBetween: 30,
+        loop: true,
+        freeMode: true,
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+                navigation: {
+                    enabled: false,
+                },
+                freeMode: true,
             },
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 10,
+                navigation: {
+                    enabled: true,
+                },
+            },
+            1024: {
+                slidesPerView: 5,
+                spaceBetween: 30,
+                navigation: {
+                    enabled: true,
+                },
+            }
         }
-    }
-});
+    });
+}
 
 /*--------------------------------------------------------------
 # About Us
