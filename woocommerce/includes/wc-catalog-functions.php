@@ -692,6 +692,25 @@ add_action('wp_ajax_nopriv_get_main_cats_term', 'plnt_main_cats_slider_action_ca
 function plnt_main_cats_slider_action_callback() {
 	$term_slug = $_POST['term'];
 	$term_type = $_POST['type'];
+	if ($term_type = 'category') {
+		$qyery_parametrs =  array(
+			array(
+				'taxonomy' => 'product_cat',
+				'field' => 'slug',
+				'terms' => $term_slug,
+			)
+		)
+	};        
+	if ($term_type = 'tag') {
+		$qyery_parametrs = array(
+			array(
+				'taxonomy' => 'product_tag',
+				'field' => 'slug',
+				'terms' => $term_slug,
+			)
+		)
+	};
+	
     $args = array(
         'post_type' => 'product',
         'ignore_sticky_posts' => 1,
@@ -705,26 +724,7 @@ function plnt_main_cats_slider_action_callback() {
                 'compare'   => 'NOT IN'
             )
         ),
-		if ($term_type = 'category') {
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'product_cat',
-					'field' => 'slug',
-					'terms' => $term_slug,
-				)
-			)
-		}
-        
-		if ($term_type = 'tag') {
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'product_tag',
-					'field' => 'slug',
-					'terms' => $term_slug,
-				)
-			)
-		}
-       
+		'tax_query' => $qyery_parametrs,
     );
     
     $products = new WP_Query( $args );
