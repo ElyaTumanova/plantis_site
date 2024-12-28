@@ -44,11 +44,12 @@ global $skidki_cat_id;
 		</div>
 		<div class=main__cats-slider>
 			<div class="product-slider-wrap product-slider-swiper swiper">
-			<ul class="products columns-3 swiper-wrapper"> 
-			</ul>
-			<div class="swiper-pagination"></div>
-			<div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div>
+				<ul class="products columns-3 swiper-wrapper"> 
+				</ul>
+				<div class="swiper-pagination"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+			</div>
 		</div>
 		<a class="main__cats-all" href="<?php echo get_term_link( $skidki_cat_id, 'product_cat' );?>">Все товары категории</a>
 	</div>
