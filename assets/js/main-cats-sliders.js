@@ -35,9 +35,10 @@ function ajaxGetMainCatTerm() {
                 'action': 'get_main_cats_term',
                 'term': catsTerm,
             },
-            success: function (result) {
-                // Trigger refresh checkout
-                //$('body').trigger('update_checkout');
+            dataType: 'json',
+            beforeSend: function(xhr){
+            },
+            success: function (data) {
                 $('.main__cats-slider').html(data.out);
             }
         });
