@@ -41,12 +41,12 @@ function ajaxGetMainCatTerm() {
             success: function (data) {
                 $('.main__cats-slider .products').html(data.out);
                 console.log('hihhiih');
-                swiper_product_slider_init();
+                //swiper_product_slider_init();
             }
         });
     });
 }
-showSlider(0);
+//showSlider(0);
 navItems.forEach((el,index) => {
     el.addEventListener('click',() => showSlider(index));
 });

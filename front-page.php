@@ -50,10 +50,10 @@ global $skidki_cat_id;
 			<div class="swiper-button-prev"></div>
 			<div class="swiper-button-next"></div>
 		</div>
-		<!-- <div class=main__cats-slider>
-			<?php //get_template_part('template-parts/products/products-on-sale');?>
-			<a class="main__cats-all" href="<?php //echo get_term_link( $skidki_cat_id, 'product_cat' );?>">Все товары категории</a>
-		</div> -->
+		<div class=main__cats-slider>
+			<?php get_template_part('template-parts/products/products-on-sale');?>
+			<a class="main__cats-all" href="<?php echo get_term_link( $skidki_cat_id, 'product_cat' );?>">Все товары категории</a>
+		</div>
 		<!-- <div class=main__cats-slider>
 			<?php //get_template_part('template-parts/products/products-popular');?>
 			<a class="main__cats-all" href="<?php //echo get_term_link( $skidki_cat_id, 'product_cat' );?>">Все товары категории</a>
