@@ -34,7 +34,6 @@ function plnt_card_grid_start () {
             <?php
         }
     } 
-    echo $product;
 };
 
 add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',50);
