@@ -47,8 +47,8 @@ function ajaxGetMainCatTerm() {
                 let swiper_product_sliders = document.querySelectorAll(".product-slider-swiper");
                 swiper_product_sliders.forEach((slider) => {
                     slider.swiper.update();
-                    console.log(swiper_product_slider.slides);
-                    console.log(slides_test);
+                    console.log(swiper_product_slider);
+                   // console.log(slides_test);
                 });
 
             }
