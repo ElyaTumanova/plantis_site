@@ -161,6 +161,10 @@ const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
 --------------------------------------------------------------*/
 
 const swiper_product_slider = new Swiper('.product-slider-swiper', {
+    on: {
+        init: function () {
+          console.log('swiper initialized');
+        },
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
@@ -205,18 +209,7 @@ const swiper_product_slider = new Swiper('.product-slider-swiper', {
     }
 });
 
-// const swiper_product_sliders = document.querySelectorAll(".product-slider-swiper");
-// swiper_product_sliders.forEach((slider) => {
-//     slider.swiper.on('slidesUpdated', function () {
-//         console.log('slidesUpdated');
-//     });
-    
-// });
 
-
-// function swiper_product_slider_update() {
-//     swiper_product_slider.update();
-// }
 
 /*--------------------------------------------------------------
 # About Us
