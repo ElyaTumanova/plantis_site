@@ -935,6 +935,7 @@ ul.products {
     border-radius: 100%;
     margin-bottom: 15px;
     margin-top: -40px;
+    margin-right: 3px;
     margin-left: auto;
     background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg);
     background-repeat: no-repeat;
@@ -976,7 +977,7 @@ ul.products {
     z-index: 10;
     margin: 0;
     top: 10px;
-    right: 0;
+    right: 3px;
     width: 40px;
     height: 40px;
 }
