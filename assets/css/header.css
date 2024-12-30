@@ -61,6 +61,9 @@
     font-weight: 700;
     text-transform: uppercase;
     margin: 0;
+    position: absolute;
+    left: -9999rem;
+    top: -9999rem;
 }
 
 .header__account:hover {
