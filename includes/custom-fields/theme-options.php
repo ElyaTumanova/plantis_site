@@ -57,15 +57,21 @@ Container::make('theme_options', 'Настройки темы')
 		))
 		 ->add_tab( __('Main Page Banners2'), array(
 		
-				Field::make( 'complex', 'fio', 'Соавторы статьи' )
+				Field::make( 'complex', 'banners', 'Баннеры для главной страницы' )
 					->add_fields( array(
-						Field::make( 'text', 'name', 'ФИО' )
+						Field::make( 'image', 'banner_desktop', 'Баннер для десктопа' )
 							 ->set_width( 33 ),
-						Field::make( 'text', 'spec', 'Специальность' )
+							 ->set_value_type( 'url' ),
+						Field::make( 'image', 'banner_mob', 'Баннер для мобильного' )
 							 ->set_width( 33 ),
+							 ->set_value_type( 'url' ),
+						Field::make( 'text', 'banner_name', 'Описание баннера для alt' )
+							 ->set_width( 33 ),
+						Field::make( 'text', 'banner_link', 'Ссылка при клике не баннер (не обязательно)' )
+							 ->set_width( 33 ),
+							 ->set_value_type( 'url' ),
 					 )
 					)
-					->help_text( 'Перечислите всех, кто помогал Вам написать статью.' )
 		))
 		 ->add_tab( __('Main Page Categories'), array(
 			Field::make( 'image', 'cats_palms', 'Пальмы' )
