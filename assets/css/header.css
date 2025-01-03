@@ -51,6 +51,10 @@
     column-gap: 15px;
 }
 
+.header__wrap svg {
+    fill: var(--accent-color);
+}
+
 .logo {
     display: flex;
     align-items: center;

@@ -22,7 +22,7 @@ Container::make('theme_options', 'Настройки темы')
 			//  Field::make( 'image', 'search_icon', 'Search' )
 			//  ->set_value_type( 'url' ),
 			Field::make( 'textarea', 'search_icon', 'Search' )
-			->set_rows( 4 ),
+			->set_rows( 8 ),
 			 Field::make( 'image', 'catalog_icon', 'Catalog' )
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'search_icon_mob', 'Search for mob' )
