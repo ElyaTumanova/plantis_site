@@ -60,15 +60,15 @@ Container::make('theme_options', 'Настройки темы')
 				Field::make( 'complex', 'banners', 'Баннеры для главной страницы' )
 					->add_fields( array(
 						Field::make( 'image', 'banner_desktop', 'Баннер для десктопа' )
-							 ->set_width( 33 ),
+							 ->set_width( 33 )
 							 ->set_value_type( 'url' ),
 						Field::make( 'image', 'banner_mob', 'Баннер для мобильного' )
-							 ->set_width( 33 ),
+							 ->set_width( 33 )
 							 ->set_value_type( 'url' ),
 						Field::make( 'text', 'banner_name', 'Описание баннера для alt' )
 							 ->set_width( 33 ),
 						Field::make( 'text', 'banner_link', 'Ссылка при клике не баннер (не обязательно)' )
-							 ->set_width( 33 ),
+							 ->set_width( 33 )
 							 ->set_value_type( 'url' ),
 					 )
 					)
