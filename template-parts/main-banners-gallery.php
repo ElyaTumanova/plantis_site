@@ -31,7 +31,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="main__banners main__banners-swiper swiper">
 	<div class="swiper-wrapper">
 	<?php
-		foreach ($banners_arr as &$banner) {
+		foreach ($banners_arr as $banner) {
+			print_r($banner);
 			?>
 			<a class="swiper-slide" href="<?php echo $banner['banner_link'] ?>"><img src="<?php echo $banner['banner_desktop'] ?>" class="main__banner-img" alt="<?php echo $banner['banner_name']?>" loading=" lazy"></a>
 			<?php 
