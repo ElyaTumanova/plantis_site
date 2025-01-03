@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php
 		foreach ($banners_arr as &$banner) {
 			?>
-			<a class="swiper-slide" href="<?php echo $banner['banner_link'] ?>"><img src="<?php echo $banner['banner_mob'] ?>" class="main__banner-img" alt="<?php echo $banner['banner_name']?>" loading=" lazy"></a>
+			<a class="swiper-slide <?php if(!$banner['banner_link']) : ?> main__banners_no-link <?php endif; ?>" href="<?php echo $banner['banner_link'] ?>"><img src="<?php echo $banner['banner_mob'] ?>" class="main__banner-img" alt="<?php echo $banner['banner_name']?>" loading=" lazy"></a>
 			<?php 
 		}
 	?>

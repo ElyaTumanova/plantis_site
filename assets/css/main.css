@@ -62,7 +62,7 @@
 }
 
 .main__banners_no-link:hover {
-    cursor: none;
+    cursor: default ;
 }
 
 .main__banners_mob {
