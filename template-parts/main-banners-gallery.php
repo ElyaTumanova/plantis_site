@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$banner_3_name = carbon_get_theme_option('main_banner_3_name');
 	$banner_4_name = carbon_get_theme_option('main_banner_4_name');
 
-	$banners_arr = carbon_get_theme_option('banners', 'complex');
+	$banners_arr = carbon_get_theme_option('banners');
 
 	print_r($banners_arr);
 ?>
