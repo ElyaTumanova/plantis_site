@@ -11,8 +11,10 @@ Container::make('theme_options', 'Настройки темы')
 		 ->add_tab( __('Icons'), array(
 			 Field::make( 'image', 'logo', 'Logo' )
 			 ->set_value_type( 'url' ),
-			 Field::make( 'image', 'account_icon', 'Personal Account' )
-			 ->set_value_type( 'url' ),
+			//  Field::make( 'image', 'account_icon', 'Personal Account' )
+			//  ->set_value_type( 'url' ),
+			 Field::make( 'textarea', 'account_icon', 'Personal Account' )
+			->set_rows( 6 ),
 			 Field::make( 'image', 'account_logged_icon', 'Personal Account LoggedIn' )
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'whishlist_icon', 'Wishlist' )
@@ -22,7 +24,7 @@ Container::make('theme_options', 'Настройки темы')
 			//  Field::make( 'image', 'search_icon', 'Search' )
 			//  ->set_value_type( 'url' ),
 			Field::make( 'textarea', 'search_icon', 'Search' )
-			->set_rows( 8 ),
+			->set_rows( 6 ),
 			 Field::make( 'image', 'catalog_icon', 'Catalog' )
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'search_icon_mob', 'Search for mob' )
