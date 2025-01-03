@@ -107,14 +107,14 @@
     stroke: var(--icons-color) !important;
 }
 
-.header-btn__wrap:active, .header-btn__wrap:focus, .header-btn__wrap:hover {
+.header-btn__wrap:active svg path, .header-btn__wrap:focus svg path, .header-btn__wrap:hover svg path {
     fill: var(--icons-color-active) !important;
     stroke: var(--icons-color-active) !important;
 }
-.search-btn:hover {
+/* .search-btn:hover {
     fill: var(--icons-color-active) !important;
     stroke: var(--icons-color-active) !important;
-}
+} */
 
 .header-btn__icon {
     height: 25px;
