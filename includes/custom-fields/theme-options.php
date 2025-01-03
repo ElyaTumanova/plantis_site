@@ -69,7 +69,6 @@ Container::make('theme_options', 'Настройки темы')
 							 ->set_width( 33 ),
 						Field::make( 'text', 'banner_link', 'Ссылка при клике не баннер (не обязательно)' )
 							 ->set_width( 33 )
-							 ->set_value_type( 'url' ),
 					 )
 					)
 		))
