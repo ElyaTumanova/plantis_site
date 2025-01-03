@@ -22,7 +22,7 @@ Container::make('theme_options', 'Настройки темы')
 			//  Field::make( 'image', 'search_icon', 'Search' )
 			//  ->set_value_type( 'url' ),
 			 Field::make( 'html', 'search_icon', __( 'Search' ) )
-			->set_html( sprintf( '<p>$1</p>', __( 'Here, you can add some useful description for the fields below / above this text.' ) ) )
+			->set_html( sprintf( '<p>$1</p>', __( 'Here, you can add some useful description for the fields below / above this text.' ) ) ),
 			 Field::make( 'image', 'catalog_icon', 'Catalog' )
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'search_icon_mob', 'Search for mob' )
