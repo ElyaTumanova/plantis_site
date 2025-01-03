@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	$banners_arr = carbon_get_theme_option('banners');
 
-	print_r($banners_arr);
+	print_r($banners_arr[0]['banner_desktop']);
 ?>
 
 <div class="main__banners main__banners-swiper swiper">
