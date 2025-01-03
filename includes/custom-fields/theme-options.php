@@ -56,7 +56,7 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'main_banner_4_name', 'Banner 4 Name' ),
 		))
 		 ->add_tab( __('Main Page Banners2'), array(
-			->add_fields( array(
+		
 				Field::make( 'complex', 'fio', 'Соавторы статьи' )
 					->add_fields( array(
 						Field::make( 'text', 'name', 'ФИО' )
@@ -65,8 +65,7 @@ Container::make('theme_options', 'Настройки темы')
 							 ->set_width( 33 ),
 					 )
 					)
-					->help_text( 'Перечислите всех, кто помогал Вам написать статью.' )
-			) );
+					->help_text( 'Перечислите всех, кто помогал Вам написать статью.' );
 		))
 		 ->add_tab( __('Main Page Categories'), array(
 			Field::make( 'image', 'cats_palms', 'Пальмы' )
