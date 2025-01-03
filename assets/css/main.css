@@ -46,8 +46,8 @@
     position: relative;
 }
 
-.main__banners-wrap a {
-    height: 250px;  /* высота баннера*/
+.main__banners a {
+    min-height: 245px;  /* высота баннера*/
 }
 
 /* @media (max-width:1279px) {
