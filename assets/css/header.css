@@ -51,11 +51,6 @@
     column-gap: 15px;
 }
 
-.header__wrap svg path{
-    fill: var(--icons-color) !important;
-    stroke: var(--icons-color) !important;
-}
-
 .logo {
     display: flex;
     align-items: center;
@@ -105,6 +100,16 @@
     color: inherit;
     padding: 0;
     text-decoration: none;
+}
+
+.header-btn__wrap svg path{
+    fill: var(--icons-color) !important;
+    stroke: var(--icons-color) !important;
+}
+
+.header-btn__wrap:active, .header-btn__wrap:focus, .header-btn__wrap:hover {
+    fill: var(--icons-color-active) !important;
+    stroke: var(--icons-color-active) !important;
 }
 
 .header-btn__icon {

@@ -12,7 +12,8 @@
 
 :root {
     --accent-color: #146F41;
-    --icons-color: rgb(184, 184, 184);
+    --icons-color-active: rgb(184, 184, 184);
+    --icons-color: rgb(143, 143, 143);
     --red-color: #F93D05;
     --white: #fff;
     --background: #FDFDFD;
