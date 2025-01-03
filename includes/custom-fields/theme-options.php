@@ -34,28 +34,6 @@ Container::make('theme_options', 'Настройки темы')
 			 Field::make( 'text', 'site_title', 'Site title in header' )
          ))
 		 ->add_tab( __('Main Page Banners'), array(
-			Field::make( 'image', 'main_banner_1', 'Banner 1' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'main_banner_1_mob', 'Banner 1 for mob' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'text', 'main_banner_1_name', 'Banner 1 Name' ),
-			Field::make( 'image', 'main_banner_2', 'Banner 2' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'main_banner_2_mob', 'Banner 2 for mob' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'text', 'main_banner_2_name', 'Banner 2 Name' ),
-			Field::make( 'image', 'main_banner_3', 'Banner 3' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'main_banner_3_mob', 'Banner 3 for mob' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'text', 'main_banner_3_name', 'Banner 3 Name' ),
-			Field::make( 'image', 'main_banner_4', 'Banner 4' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'main_banner_4_mob', 'Banner 4 for mob' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'text', 'main_banner_4_name', 'Banner 4 Name' ),
-		))
-		 ->add_tab( __('Main Page Banners2'), array(
 		
 				Field::make( 'complex', 'banners', 'Баннеры для главной страницы' )
 					->add_fields( array(
