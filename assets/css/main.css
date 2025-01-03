@@ -61,6 +61,10 @@
     height: 100%;
 }
 
+.main__banners_no-link:hover {
+    cursor: none;
+}
+
 .main__banners_mob {
     display: none;
 }
