@@ -20,6 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$banner_2_name = carbon_get_theme_option('main_banner_2_name');
 	$banner_3_name = carbon_get_theme_option('main_banner_3_name');
 	$banner_4_name = carbon_get_theme_option('main_banner_4_name');
+
+	$banners_arr = carbon_get_theme_option('banners', 'complex');
+
+	print_r($banners_arr);
 ?>
 
 <div class="main__banners main__banners-swiper swiper">
