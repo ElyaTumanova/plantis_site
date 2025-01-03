@@ -19,8 +19,10 @@ Container::make('theme_options', 'Настройки темы')
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'cart_icon', 'Cart' )
 			 ->set_value_type( 'url' ),
-			 Field::make( 'image', 'search_icon', 'Search' )
-			 ->set_value_type( 'url' ),
+			//  Field::make( 'image', 'search_icon', 'Search' )
+			//  ->set_value_type( 'url' ),
+			 Field::make( 'html', 'search_icon', __( 'Search' ) )
+			->set_html( sprintf( '<p>$1</p>', __( 'Here, you can add some useful description for the fields below / above this text.' ) ) )
 			 Field::make( 'image', 'catalog_icon', 'Catalog' )
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'search_icon_mob', 'Search for mob' )
@@ -34,21 +36,20 @@ Container::make('theme_options', 'Настройки темы')
 			 Field::make( 'text', 'site_title', 'Site title in header' )
          ))
 		 ->add_tab( __('Main Page Banners'), array(
-		
-				Field::make( 'complex', 'banners', 'Баннеры для главной страницы' )
-					->add_fields( array(
-						Field::make( 'image', 'banner_desktop', 'Баннер для десктопа' )
-							 ->set_width( 33 )
-							 ->set_value_type( 'url' ),
-						Field::make( 'image', 'banner_mob', 'Баннер для мобильного' )
-							 ->set_width( 33 )
-							 ->set_value_type( 'url' ),
-						Field::make( 'text', 'banner_name', 'Описание баннера для alt' )
-							 ->set_width( 33 ),
-						Field::make( 'text', 'banner_link', 'Ссылка при клике не баннер (не обязательно)' )
-							 ->set_width( 33 )
-					 )
+			Field::make( 'complex', 'banners', 'Баннеры для главной страницы' )
+				->add_fields( array(
+					Field::make( 'image', 'banner_desktop', 'Баннер для десктопа' )
+							->set_width( 33 )
+							->set_value_type( 'url' ),
+					Field::make( 'image', 'banner_mob', 'Баннер для мобильного' )
+							->set_width( 33 )
+							->set_value_type( 'url' ),
+					Field::make( 'text', 'banner_name', 'Описание баннера для alt' )
+							->set_width( 33 ),
+					Field::make( 'text', 'banner_link', 'Ссылка при клике не баннер (не обязательно)' )
+							->set_width( 33 )
 					)
+				)
 		))
 		 ->add_tab( __('Main Page Categories'), array(
 			Field::make( 'image', 'cats_palms', 'Пальмы' )

@@ -31,7 +31,6 @@ global $skidki_cat_id;
 	<div class="main__cats-wrap main__row container">
 		<div class="main__cats-nav">
 			<span class = "main__cats-nav-title" data-type="product_tag" data-term="skidki">Скидки</span>
-			<!-- <span class = "main__cats-nav-title">Популярные</span> -->
 			<span class = "main__cats-nav-title" data-type="product_cat" data-term="dekorativno-listvennye">Декоративно-лиственные</span>
 			<span class = "main__cats-nav-title" data-type="product_cat" data-term="palms">Пальмы</span>
 			<span class = "main__cats-nav-title" data-type="product_cat" data-term="fikusy">Фикусы</span>
