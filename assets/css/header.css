@@ -51,8 +51,9 @@
     column-gap: 15px;
 }
 
-.header__wrap svg {
+.header__wrap svg path{
     fill: var(--accent-color);
+    stroke: var(--accent-color);
 }
 
 .logo {
