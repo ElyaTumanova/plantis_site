@@ -24,6 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$banners_arr = carbon_get_theme_option('banners');
 
 	print_r($banners_arr[0]['banner_desktop']);
+	print_r(count($banners_arr));
 ?>
 
 <div class="main__banners main__banners-swiper swiper">
