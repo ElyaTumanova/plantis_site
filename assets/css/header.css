@@ -111,6 +111,10 @@
     fill: var(--icons-color-active) !important;
     stroke: var(--icons-color-active) !important;
 }
+.search-btn:active, .search-btn:focus, .search-btn:hover {
+    fill: var(--icons-color-active) !important;
+    stroke: var(--icons-color-active) !important;
+}
 
 .header-btn__icon {
     height: 25px;
