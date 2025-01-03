@@ -21,7 +21,7 @@ Container::make('theme_options', 'Настройки темы')
 			 ->set_value_type( 'url' ),
 			//  Field::make( 'image', 'search_icon', 'Search' )
 			//  ->set_value_type( 'url' ),
-			Field::make( 'html', 'search_icon' )
+			Field::make( 'text', 'search_icon', 'Search' ),
 			->set_html( '<h2>Lorem ipsum</h2><p>Quisque mattis ligula.</p>' ),
 			 Field::make( 'image', 'catalog_icon', 'Catalog' )
 			 ->set_value_type( 'url' ),
