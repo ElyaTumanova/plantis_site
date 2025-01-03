@@ -25,12 +25,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	print_r($banners_arr[0]['banner_desktop']);
 	print_r(count($banners_arr));
-?>
 
+	
+?>
 <div class="main__banners main__banners-swiper swiper">
 	<div class="swiper-wrapper">
-		<a class="swiper-slide" href="https://plantis.shop/product-category/product_of_week/"><img src="<?php echo $banner_3 ?>" class="main__banner-img" alt="<?php echo $banner_3_name?>" loading=" lazy"></a>
-		<img class="swiper-slide" src="<?php echo $banner_2 ?>" class="main__banner-img" alt="<?php echo $banner_2_name?>" loading=" lazy">
+	<?php
+		foreach ($banners_arr as &$banner) {
+			?>
+			<a class="swiper-slide" href="<?php echo $banner['banner_link'] ?>"><img src="<?php echo $banner['banner_desktop'] ?>" class="main__banner-img" alt="<?php echo $banner['banner_name']?>" loading=" lazy"></a>
+			<?php 
+		}
+	?>
 	</div>
 	<div class="swiper-pagination"></div>
 	<div class="swiper-button-prev"></div>
@@ -39,8 +45,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="main__banners_mob main__banners-swiper swiper">
 	<div class="swiper-wrapper">
-		<a class="swiper-slide" href="https://plantis.shop/product-category/product_of_week/"> <img src="<?php echo $banner_3_mob ?>" class="main__banner-img_mob" alt="<?php echo $banner_3_name?>" loading=" lazy"></a>
-		<img class="swiper-slide" src="<?php echo $banner_2_mob ?>" class="main__banner-img_mob" alt="<?php echo $banner_2_name?>" loading=" lazy">
+	<?php
+		foreach ($banners_arr as &$banner) {
+			?>
+			<a class="swiper-slide" href="<?php echo $banner['banner_link'] ?>"><img src="<?php echo $banner['banner_mob'] ?>" class="main__banner-img" alt="<?php echo $banner['banner_name']?>" loading=" lazy"></a>
+			<?php 
+		}
+	?>
 	</div>
 	<div class="swiper-pagination"></div>
 	<div class="swiper-button-prev"></div>
