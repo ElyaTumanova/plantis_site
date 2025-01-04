@@ -34,7 +34,7 @@
     <button class="side-cart__open-btn">
         <?php plnt_side_cart_count ();?>
         <?php echo $cart_icon ?>
-        <!-- <img class="side-cart__icon" src="<?php echo //$cart_icon ?>" alt="cart" width="35" height="35"> -->
+        <!-- <img class="side-cart__icon" src="<?php //echo //$cart_icon ?>" alt="cart" width="35" height="35"> -->
     </button>
     <div class="side-cart__popup popup">
         <div class="side-cart">
