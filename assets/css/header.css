@@ -139,11 +139,15 @@
     position: absolute;
     top: -7px;
     font-size: 10px;
-    background: var(--red-color);
+    background: var(--icons-color);
     padding: 2px 4px;
     border-radius: 10px;
     line-height: 10px;
     color: var(--white);
+}
+
+.header__count_active {
+    background: var(--black-color);
 }
 .header__wishlist .header__count {
    left: 25px;

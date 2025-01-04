@@ -462,13 +462,13 @@
 }
 
 .side-cart__open-btn svg path{
-    fill: var(--icons-color) !important;
-    stroke: var(--icons-color) !important;
+    fill: var(--accent-color) !important;
+    stroke: var(--accent-color) !important;
 }
 
 .side-cart__open-btn:active svg path, .side-cart__open-btn:focus svg path, .side-cart__open-btn:hover svg path {
-    fill: var(--icons-color-active) !important;
-    stroke: var(--icons-color-active) !important;
+    fill: var(--accent-color) !important;
+    stroke: var(--accent-color) !important;
 }
 
 .side-cart__open-btn_active {

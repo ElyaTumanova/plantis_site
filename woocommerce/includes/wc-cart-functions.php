@@ -57,7 +57,11 @@ function plnt_empty_cart_message_filter( $message ){
 function plnt_woocommerce_cart_header() {
 	$cart_icon = carbon_get_theme_option('cart_icon')?>
 		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="header-btn__wrap header-cart__link">
-			<span class="header__count"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
+			<?php if (echo wp_kses_data(WC()->cart->get_cart_contents_count()) == 0) :?>
+				<span class="header__count"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
+			<?php else : ?>
+				<span class="header__count header__count_active"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
+			<?php endif;?>
 			<?php echo $cart_icon ?>
 			<span class="header-btn__label">Корзина</span>		
 		</a>
