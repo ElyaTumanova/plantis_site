@@ -297,6 +297,11 @@
         background-color: var(--accent-color);
         border-radius: 5px;
     }
+    .header-btn__wrap_mob svg path {
+        fill: var(--white);
+        stroke: var(--white);
+    }
+
 }
 
 /*--------------------------------------------------------------
