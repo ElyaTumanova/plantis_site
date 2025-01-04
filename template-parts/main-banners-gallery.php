@@ -18,6 +18,8 @@ $banners_arr = carbon_get_theme_option('banners');
 			<?php 
 		}
 	?>
+
+
 	</div>
 	<div class="swiper-pagination"></div>
 	<div class="swiper-button-prev"></div>
