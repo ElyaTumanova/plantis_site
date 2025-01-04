@@ -507,7 +507,7 @@
     overflow-x: hidden;
 }
 
-.side-cart__open-btn .side-cart__count {
+.side-cart__open-btn .header__count {
     position: absolute;
     top: -10px;
     left: 0;
