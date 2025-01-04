@@ -215,7 +215,7 @@
 				?>
 
 				<?php $cart_icon = carbon_get_theme_option('cart_icon')?>
-				<div class="header-btn__wrap">
+				<div class="header-btn__wrap header__nav_cart">
 					<?php plnt_side_cart_count ();?>
 					<?php echo $cart_icon ?>
 					<span class="header-btn__label">Корзина</span>		

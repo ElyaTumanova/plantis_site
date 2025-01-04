@@ -113,7 +113,7 @@ function plnt_side_cart_count () {
 function plnt_side_cart_count_fragment( $fragments ) {
 	ob_start();
 	plnt_side_cart_count();
-	$fragments[ 'span.side-cart__count'] = ob_get_clean();
+	$fragments[ 'div.header__nav_cart'] = ob_get_clean();
 	return $fragments;
 }
 
