@@ -1047,6 +1047,7 @@ ul.products {
         line-height: 1.1;
         margin-bottom: 5px;
         margin-top: 10px;
+        min-height: 31px;
     }
 
     .product-slider-wrap .woocommerce-product-details__short-description {
