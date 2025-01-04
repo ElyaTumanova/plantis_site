@@ -100,9 +100,9 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_mini_cart_fra
 
 function plnt_side_cart_count () {
 	if (WC()->cart->get_cart_contents_count() == 0) :?>
-		<div class="header__count">
+		<div class="header__count header__nav_cart">
 	<?php else : ?>
-		<div class="header__count header__count_active">
+		<div class="header__count header__nav_cart header__count_active">
 	<?php endif;?>
 			<span class="side-cart__count"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
 		</div>
