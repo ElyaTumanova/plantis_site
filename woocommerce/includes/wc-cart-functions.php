@@ -59,7 +59,6 @@ function plnt_woocommerce_cart_header() {
 		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="header-btn__wrap header-cart__link">
 			<span class="header__count"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
 			<?php echo $cart_icon ?>
-			<!-- <img class="header-btn__icon" src="<?php echo //$cart_icon ?>" alt="cart" width="28" height="28"> -->
 			<span class="header-btn__label">Корзина</span>		
 		</a>
 	<?php
