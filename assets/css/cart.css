@@ -457,8 +457,13 @@
 }
 
 .side-cart__open-btn svg {
-    width: 35px !important;
-    height: 35px !important;
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.side-cart__open-btn svg{
+    fill: var(--icons-color) !important;
+    stroke: var(--icons-color) !important;
 }
 
 .side-cart__open-btn_active {
