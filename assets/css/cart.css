@@ -456,6 +456,11 @@
     padding: 22px 17px 18px;
 }
 
+.side-cart__open-btn svg {
+    width: 35px !important;
+    height: 35px !important;
+}
+
 .side-cart__open-btn_active {
     right: 360px;
 }
