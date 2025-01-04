@@ -401,7 +401,8 @@ ul.products {
         /* position: absolute;
         top: calc(var(--imgH) + 60px);
         right: 10px; */
-        background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg);
+        /* background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg); */
+        background-image: url(https://plantis.shop/wp-content/uploads/2025/01/cart_white_new.svg);
         background-repeat: no-repeat;
         background-position: center;
         padding: 0;
