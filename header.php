@@ -183,8 +183,8 @@
 		<div class="header__nav-wrap container">
 			<div class="header__phone">
 				<?php $phone_icon = carbon_get_theme_option('phone_icon')?>
-					<a href="tel:+79647687944" class="header-btn__wrap">		
-						<img class="header-btn__icon_large" src="<?php echo $phone_icon ?>" alt="phone" width="50" height="50">
+					<a href="tel:+79647687944" class="header-btn__wrap">	
+						<?php echo $phone_icon ?>
 					</a>
 				</a>
 			</div>
@@ -203,7 +203,6 @@
 					<?php echo do_shortcode('[yith_wcwl_items_count]')?>
 					<a href="<?php echo get_site_url()?>/wishlist" class="header-btn__wrap">
 						<?php echo $whishlist_icon ?>			
-						<!-- <img class="header-btn__icon" src="<?php //echo //$whishlist_icon ?>" alt="wishlist" width="25" height="25"> -->
 						<span class="header-btn__label">Избранное</span>		
 					</a>
 				</a>
@@ -216,11 +215,8 @@
 
 				<?php $cart_icon = carbon_get_theme_option('cart_icon')?>
 				<div class="header-btn__wrap">
-			
-						<?php plnt_side_cart_count ();?>
-	
+					<?php plnt_side_cart_count ();?>
 					<?php echo $cart_icon ?>
-					<!-- <img class="header-btn__icon" src="<?php //echo //$cart_icon ?>" alt="cart" width="28" height="28"> -->
 					<span class="header-btn__label">Корзина</span>		
 				</div>
 
