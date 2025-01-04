@@ -24,11 +24,15 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
     function yith_wcwl_get_items_count() {
       ob_start();
       ?>
-        <!-- <a href="<?php //echo esc_url( YITH_WCWL()->get_wishlist_url() ); ?>"> -->
-          <span class="yith-wcwl-items-count header__count_active">
+      <?php if (yith_wcwl_count_all_products() == 0) :?>
+        <div class="header__count">
+      <?php else : ?>
+				<div class="header__count header__count_active ">
+			<?php endif;?>
+          <span class="yith-wcwl-items-count">
             <i class="yith-wcwl-icon fa fa-heart-o"><?php echo esc_html( yith_wcwl_count_all_products() ); ?></i>
           </span>
-        </a>
+      </div>
       <?php
       return ob_get_clean();
     }
