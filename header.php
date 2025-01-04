@@ -191,8 +191,8 @@
 
 			<div class="header__catalog_mob">
 				<?php $catalog_icon = carbon_get_theme_option('catalog_icon')?>
-					<div class="header-btn__wrap">		
-						<img class="header-btn__icon" src="<?php echo $catalog_icon ?>" alt="catalog" width="25" height="25">
+					<div class="header-btn__wrap">	
+						<?php echo $catalog_icon ?>	
 						<span class="header-btn__label">Каталог</span>		
 					</div>
 				</a>
