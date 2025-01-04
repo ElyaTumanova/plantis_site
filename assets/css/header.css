@@ -166,7 +166,7 @@
 
 @media (max-width: 1279px) {
     .header-cart .header__count {
-        right: -2px;
+        right: 3px;
         left: auto;
     }
 }

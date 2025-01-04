@@ -21,8 +21,8 @@ Container::make('theme_options', 'Настройки темы')
 			 	->set_rows( 6 ),
 			Field::make( 'textarea', 'search_icon', 'Search' )
 				->set_rows( 6 ),
-			 Field::make( 'image', 'catalog_icon', 'Catalog' )
-			 ->set_value_type( 'url' ),
+			 Field::make( 'textarea', 'catalog_icon', 'Catalog' )
+				->set_rows( 6 ),
 			 Field::make( 'image', 'search_icon_mob', 'Search for mob' )
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'menu_icon_mob', 'Menu for mob' )
