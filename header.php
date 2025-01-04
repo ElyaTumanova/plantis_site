@@ -185,6 +185,7 @@
 				<?php $phone_icon = carbon_get_theme_option('phone_icon')?>
 					<a href="tel:+79647687944" class="header-btn__wrap">	
 						<?php echo $phone_icon ?>
+						<span class="header-btn__label">Позвонить</span>	
 					</a>
 				</a>
 			</div>
