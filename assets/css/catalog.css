@@ -948,7 +948,7 @@ ul.products {
     z-index: 2;
 }
 
-.product-slider-wrap .add_to_cart_button .added, .product-slider-wrap .product_type_simple .added {
+.product-slider-wrap .added {
     background-image: url(https://plantis.shop/wp-content/uploads/2024/03/check_white.svg);
 }
 
