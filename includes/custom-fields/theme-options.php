@@ -10,50 +10,42 @@ use Carbon_Fields\Field;
 Container::make('theme_options', 'Настройки темы')
 		 ->add_tab( __('Icons'), array(
 			 Field::make( 'image', 'logo', 'Logo' )
-			 ->set_value_type( 'url' ),
-			 Field::make( 'image', 'account_icon', 'Personal Account' )
-			 ->set_value_type( 'url' ),
-			 Field::make( 'image', 'account_logged_icon', 'Personal Account LoggedIn' )
-			 ->set_value_type( 'url' ),
-			 Field::make( 'image', 'whishlist_icon', 'Wishlist' )
-			 ->set_value_type( 'url' ),
-			 Field::make( 'image', 'cart_icon', 'Cart' )
-			 ->set_value_type( 'url' ),
-			 Field::make( 'image', 'search_icon', 'Search' )
-			 ->set_value_type( 'url' ),
-			 Field::make( 'image', 'catalog_icon', 'Catalog' )
-			 ->set_value_type( 'url' ),
+			 	->set_value_type( 'url' ),
+			 Field::make( 'textarea', 'account_icon', 'Personal Account' )
+				->set_rows( 6 ),
+			 Field::make( 'textarea', 'account_logged_icon', 'Personal Account LoggedIn' )
+				->set_rows( 6 ),
+			 Field::make( 'textarea', 'whishlist_icon', 'Wishlist' )
+				->set_rows( 6 ),
+			 Field::make( 'textarea', 'cart_icon', 'Cart' )
+			 	->set_rows( 6 ),
+			Field::make( 'textarea', 'search_icon', 'Search' )
+				->set_rows( 6 ),
+			 Field::make( 'textarea', 'catalog_icon', 'Catalog' )
+				->set_rows( 6 ),
 			 Field::make( 'image', 'search_icon_mob', 'Search for mob' )
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'menu_icon_mob', 'Menu for mob' )
 			 ->set_value_type( 'url' ),
-			 Field::make( 'image', 'phone_icon', 'Phone button for mob' )
-			 ->set_value_type( 'url' ),
-			//  Field::make( 'image', 'filter_icon', 'Filter button for mob in catalog' )
-			//  ->set_value_type( 'url' ),
+			 Field::make( 'textarea', 'phone_icon', 'Phone button for mob' )
+				->set_rows( 6 ),
 			 Field::make( 'text', 'site_title', 'Site title in header' )
          ))
 		 ->add_tab( __('Main Page Banners'), array(
-			Field::make( 'image', 'main_banner_1', 'Banner 1' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'main_banner_1_mob', 'Banner 1 for mob' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'text', 'main_banner_1_name', 'Banner 1 Name' ),
-			Field::make( 'image', 'main_banner_2', 'Banner 2' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'main_banner_2_mob', 'Banner 2 for mob' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'text', 'main_banner_2_name', 'Banner 2 Name' ),
-			Field::make( 'image', 'main_banner_3', 'Banner 3' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'main_banner_3_mob', 'Banner 3 for mob' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'text', 'main_banner_3_name', 'Banner 3 Name' ),
-			Field::make( 'image', 'main_banner_4', 'Banner 4' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'main_banner_4_mob', 'Banner 4 for mob' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'text', 'main_banner_4_name', 'Banner 4 Name' ),
+			Field::make( 'complex', 'banners', 'Баннеры для главной страницы' )
+				->add_fields( array(
+					Field::make( 'image', 'banner_desktop', 'Баннер для десктопа' )
+							->set_width( 33 )
+							->set_value_type( 'url' ),
+					Field::make( 'image', 'banner_mob', 'Баннер для мобильного' )
+							->set_width( 33 )
+							->set_value_type( 'url' ),
+					Field::make( 'text', 'banner_name', 'Описание баннера для alt' )
+							->set_width( 33 ),
+					Field::make( 'text', 'banner_link', 'Ссылка при клике не баннер (не обязательно)' )
+							->set_width( 33 )
+					)
+				)
 		))
 		 ->add_tab( __('Main Page Categories'), array(
 			Field::make( 'image', 'cats_palms', 'Пальмы' )

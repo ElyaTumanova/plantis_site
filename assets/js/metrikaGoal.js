@@ -28,12 +28,12 @@ jQuery(document).ready(function() {
         return true;
 	});
 
-    // Клик по кнопке «Положить в корзину», спецпредложения
-	jQuery('.main__sale-gallery .add_to_cart_button').click(function(){
-		//yaCounter87781741.reachGoal('click-button-cart-sale');
-		 ym(87781741, 'reachGoal', 'click-button-cart-sale'); 
-        return true;
-	});
+    // Клик по кнопке «Положить в корзину», спецпредложения - убрать из метрики #TODO
+	// jQuery('.main__sale-gallery .add_to_cart_button').click(function(){
+	// 	//yaCounter87781741.reachGoal('click-button-cart-sale');
+	// 	 ym(87781741, 'reachGoal', 'click-button-cart-sale'); 
+    //     return true;
+	// });
 
     // Клик по кнопке «Положить в корзину», деталка
 	jQuery('.card__price-wrap .add_to_cart_button').click(function(){

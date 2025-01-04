@@ -3,8 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-global $ukhod_cat_id;
-
 $args = array(
     'post_type' => 'product',
     'ignore_sticky_posts' => 1,
@@ -32,7 +30,7 @@ $products = new WP_Query( $args );
 if ( $products->have_posts() ) : ?>   
         <div class="product-slider-wrap popular-products-wrap">
             <h2 class="my_header__title">Популярные товары</h2>
-            <div class="cart-popular-swiper swiper">
+            <div class="product-slider-swiper popular-slider-swiper swiper">
                 <ul class="products columns-3 swiper-wrapper"> 
                     <?php while ( $products->have_posts() ) : $products->the_post(); ?>
                     <?php wc_get_template_part( 'content', 'product' ); ?>
@@ -41,6 +39,7 @@ if ( $products->have_posts() ) : ?>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
+                <!-- <div class="swiper-scrollbar"></div> -->
             </div>
         </div>
 

@@ -98,10 +98,7 @@
 						<div class="search-btn">
 							<?php $search_icon = carbon_get_theme_option('search_icon')?>
 							<button class="header-btn__wrap">
-								<!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-								<path d="M19 19L13 13M1 8C1 8.91925 1.18106 9.82951 1.53284 10.6788C1.88463 11.5281 2.40024 12.2997 3.05025 12.9497C3.70026 13.5998 4.47194 14.1154 5.32122 14.4672C6.1705 14.8189 7.08075 15 8 15C8.91925 15 9.82951 14.8189 10.6788 14.4672C11.5281 14.1154 12.2997 13.5998 12.9497 12.9497C13.5998 12.2997 14.1154 11.5281 14.4672 10.6788C14.8189 9.82951 15 8.91925 15 8C15 7.08075 14.8189 6.1705 14.4672 5.32122C14.1154 4.47194 13.5998 3.70026 12.9497 3.05025C12.2997 2.40024 11.5281 1.88463 10.6788 1.53284C9.82951 1.18106 8.91925 1 8 1C7.08075 1 6.1705 1.18106 5.32122 1.53284C4.47194 1.88463 3.70026 2.40024 3.05025 3.05025C2.40024 3.70026 1.88463 4.47194 1.53284 5.32122C1.18106 6.1705 1 7.08075 1 8Z" stroke="#146F41" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-								</svg> -->
-								<img class="header-btn__icon" src="<?php echo $search_icon ?>" alt="search" width="21" height="21">
+								<?php echo $search_icon ?>
 								<span class="header-btn__label">Поиск</span>		
 							</button>
 						</div>
@@ -111,27 +108,29 @@
 							<?php if (!is_user_logged_in()) : 
 								if (is_account_page()) :?>
 									<a href ="<?php echo esc_url( home_url( '/my-account' ) ); ?>" class="header-btn__wrap">
-										<img class="header-btn__icon" src="<?php echo $account_icon ?>" alt="account" width="25" height="25">
-									<span class="header-btn__label">Войти</span>		
-								</a>
+										<?php echo $account_icon ?>	
+										<span class="header-btn__label">Войти</span>		
+									</a>
 								<?php else :?> 
 									<div class="header-btn__wrap login-btn">
-										<img class="header-btn__icon" src="<?php echo $account_icon ?>" alt="account" width="25" height="25">
+										<?php echo $account_icon ?>	
 										<span class="header-btn__label">Войти</span>		
 									</div>
 								<?php endif; ?>
 							<?php else :?>
 								<a href ="<?php echo esc_url( home_url( '/my-account/orders' ) ); ?>" class="header-btn__wrap">
-									<img class="header-btn__icon" src="<?php echo $account_logged_icon ?>" alt="account" width="25" height="25">
+									<?php echo $account_logged_icon ?>		
+									<!-- <img class="header-btn__icon" src="<?php //echo $account_logged_icon ?>" alt="account" width="25" height="25"> -->
 									<span class="header-btn__label">Войти</span>		
 								</a>
 							<?php endif; ?>
 						</div>
 						<div class="header__wishlist">
 							<?php $whishlist_icon = carbon_get_theme_option('whishlist_icon')?>
-								<div class="header__count"><?php echo do_shortcode('[yith_wcwl_items_count]')?></div>
-								<a href="<?php echo get_site_url()?>/wishlist" class="header-btn__wrap">		
-									<img class="header-btn__icon" src="<?php echo $whishlist_icon ?>" alt="wishlist" width="25" height="25">
+								<?php echo do_shortcode('[yith_wcwl_items_count]')?>
+								<a href="<?php echo get_site_url()?>/wishlist" class="header-btn__wrap">	
+									<?php echo $whishlist_icon ?>		
+									<!-- <img class="header-btn__icon" src="<?php //echo //$whishlist_icon ?>" alt="wishlist" width="25" height="25"> -->
 									<span class="header-btn__label">Избранное</span>		
 								</a>
 							</a>
@@ -161,7 +160,8 @@
 			<div class="search-btn">
 				<?php $search_icon_mob = carbon_get_theme_option('search_icon_mob')?>
 				<button class="header-btn__wrap header-btn__wrap_mob">
-					<img class="header-btn__icon" src="<?php echo $search_icon_mob ?>" alt="search" width="21" height="21">		
+					<?php echo $search_icon ?>
+					<!-- <img class="header-btn__icon" src="<?php //echo $search_icon_mob ?>" alt="search" width="21" height="21">		 -->
 				</button>
 			</div>
 			<div class="logo">
@@ -184,16 +184,17 @@
 		<div class="header__nav-wrap container">
 			<div class="header__phone">
 				<?php $phone_icon = carbon_get_theme_option('phone_icon')?>
-					<a href="tel:+79647687944" class="header-btn__wrap">		
-						<img class="header-btn__icon_large" src="<?php echo $phone_icon ?>" alt="phone" width="50" height="50">
+					<a href="tel:+79647687944" class="header-btn__wrap">	
+						<?php echo $phone_icon ?>
+						<span class="header-btn__label">Позвонить</span>	
 					</a>
 				</a>
 			</div>
 
 			<div class="header__catalog_mob">
 				<?php $catalog_icon = carbon_get_theme_option('catalog_icon')?>
-					<div class="header-btn__wrap">		
-						<img class="header-btn__icon" src="<?php echo $catalog_icon ?>" alt="catalog" width="25" height="25">
+					<div class="header-btn__wrap">	
+						<?php echo $catalog_icon ?>	
 						<span class="header-btn__label">Каталог</span>		
 					</div>
 				</a>
@@ -201,9 +202,9 @@
 
 			<div class="header__wishlist">
 				<?php $whishlist_icon = carbon_get_theme_option('whishlist_icon')?>
-					<div class="header__count"><?php echo do_shortcode('[yith_wcwl_items_count]')?></div>
-					<a href="<?php echo get_site_url()?>/wishlist" class="header-btn__wrap">		
-						<img class="header-btn__icon" src="<?php echo $whishlist_icon ?>" alt="wishlist" width="25" height="25">
+					<?php echo do_shortcode('[yith_wcwl_items_count]')?>
+					<a href="<?php echo get_site_url()?>/wishlist" class="header-btn__wrap">
+						<?php echo $whishlist_icon ?>			
 						<span class="header-btn__label">Избранное</span>		
 					</a>
 				</a>
@@ -216,10 +217,8 @@
 
 				<?php $cart_icon = carbon_get_theme_option('cart_icon')?>
 				<div class="header-btn__wrap">
-					<div class="header__count">
-						<?php plnt_side_cart_count ();?>
-					</div>
-					<img class="header-btn__icon" src="<?php echo $cart_icon ?>" alt="cart" width="28" height="28">
+					<?php plnt_side_cart_count ();?>
+					<?php echo $cart_icon ?>
 					<span class="header-btn__label">Корзина</span>		
 				</div>
 

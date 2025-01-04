@@ -48,42 +48,6 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 }
 
 
-// FOR DEV
-
-function plnt_check_page() {
-	// global $gorshki_cat_id;
-	// if ( term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) ) {
-	// 	echo 'подкатегория';
-	// }
-	// else {
-	// 	echo 'Это какая-то другая страница.';
-	// }
-	// echo '<pre>';
-	// print_r( get_queried_object_id() );
-	// print_r( $gorshki_cat_id );
-	// echo '</pre>';
-	if ( is_search() ) {
-		echo 'Это поиск!';
-	}
-	else {
-		echo 'Это какая-то другая страница.';
-	}
-
-	// if(is_page_template('themes/plantis_site/woocommerce/loop/no-products-found.php')) {
-	// 	echo 'Это то что нужно';
-	// }
-	// else {
-	// 	echo 'Это какая-то другая страница.';
-	// }
-	
-	//echo  basename( get_page_template() );
-	//echo wp_kses_data(WC()->cart->get_cart_contents_count());
-	//echo rand(5, 150);
-}
-
-//add_action( 'wp_footer', 'plnt_check_page' );
-
-
 //ЗАДАЕМ КОНСТАНТЫ ДЛЯ JS
 add_action( 'wp_footer', 'plnt_set_constants_script' );
 function plnt_set_constants_script() {
@@ -176,3 +140,41 @@ function plnt_set_constants_script() {
 	</script>
 	<?php
 }
+
+
+// FOR DEV
+
+function plnt_check_page() {
+	// global $gorshki_cat_id;
+	// if ( term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) ) {
+	// 	echo 'подкатегория';
+	// }
+	// else {
+	// 	echo 'Это какая-то другая страница.';
+	// }
+	// echo '<pre>';
+	// print_r( get_queried_object_id() );
+	// print_r( $gorshki_cat_id );
+	// echo '</pre>';
+	if ( is_search() ) {
+		echo 'Это поиск!';
+	}
+	else {
+		echo 'Это какая-то другая страница.';
+	}
+
+	// if(is_page_template('themes/plantis_site/woocommerce/loop/no-products-found.php')) {
+	// 	echo 'Это то что нужно';
+	// }
+	// else {
+	// 	echo 'Это какая-то другая страница.';
+	// }
+	
+	//echo  basename( get_page_template() );
+	//echo wp_kses_data(WC()->cart->get_cart_contents_count());
+	echo rand(5, 150);
+}
+
+//add_action( 'wp_footer', 'plnt_check_page' );
+
+

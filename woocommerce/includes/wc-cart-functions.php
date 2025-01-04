@@ -20,7 +20,7 @@ add_action( 'woocommerce_after_cart', 'plnt_cart_popular', 10);
 add_action( 'woocommerce_cart_is_empty', 'plnt_cart_popular', 30);
 
 function plnt_cart_popular() {
-	get_template_part('template-parts/products-popular'); 
+	get_template_part('template-parts/products/products-popular'); 
 };
 
 
@@ -57,8 +57,13 @@ function plnt_empty_cart_message_filter( $message ){
 function plnt_woocommerce_cart_header() {
 	$cart_icon = carbon_get_theme_option('cart_icon')?>
 		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="header-btn__wrap header-cart__link">
-			<span class="header__count"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
-			<img class="header-btn__icon" src="<?php echo $cart_icon ?>" alt="cart" width="28" height="28">
+			<?php if (WC()->cart->get_cart_contents_count() == 0) :?>
+				<span class="header__count">
+			<?php else : ?>
+				<span class="header__count header__count_active">
+			<?php endif;?>
+			<?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
+			<?php echo $cart_icon ?>
 			<span class="header-btn__label">Корзина</span>		
 		</a>
 	<?php
@@ -94,8 +99,13 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_mini_cart_fra
 // вывод кол-ва товаров в корзине side cart
 
 function plnt_side_cart_count () {
-	?>		
-	<span class="side-cart__count"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
+	if (WC()->cart->get_cart_contents_count() == 0) :?>
+		<div class="header__count header__nav_cart">
+	<?php else : ?>
+		<div class="header__count header__nav_cart header__count_active">
+	<?php endif;?>
+			<span class="side-cart__count"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
+		</div>
 	<?php
 }
 
@@ -103,7 +113,7 @@ function plnt_side_cart_count () {
 function plnt_side_cart_count_fragment( $fragments ) {
 	ob_start();
 	plnt_side_cart_count();
-	$fragments[ 'span.side-cart__count'] = ob_get_clean();
+	$fragments[ 'div.header__nav_cart'] = ob_get_clean();
 	return $fragments;
 }
 

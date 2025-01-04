@@ -1,79 +1,79 @@
 /*--------------------------------------------------------------
 # Front Page
 --------------------------------------------------------------*/
-const swiper_main_banners = new Swiper('.main__banners-swiper', {
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    slidesPerView: 1,
-    slidesPerGroup: 1,
-    spaceBetween: 0,
-    loop: true,
-    breakpoints: {
-        320: {
-            navigation: {
-                enabled: false,
-            },
+    const swiper_main_banners = new Swiper('.main__banners-swiper', {
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
         },
-        767: {
-            navigation: {
-                enabled: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        spaceBetween: 0,
+        loop: true,
+        breakpoints: {
+            320: {
+                navigation: {
+                    enabled: false,
+                },
             },
+            767: {
+                navigation: {
+                    enabled: true,
+                },
+            }
         }
-    }
-});
+    });
 
-const swiper_main_sale = new Swiper('.main__sale-swiper', {
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        type: 'progressbar'
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    slidesPerView: 1,
-    slidesPerGroup: 1,
-    spaceBetween: 0,
-    loop: true,
-    freeMode: true,
-    observer: true,
-    observeParents: true,
-    observeSlideChildren: true,
-    breakpoints: {
-        320: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-            navigation: {
-                enabled: false,
-            },
+    const swiper_main_sale = new Swiper('.main__sale-swiper', {
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            type: 'progressbar'
         },
-        767: {
-            navigation: {
-                enabled: true,
-            },
-            slidesPerView: 2,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
         },
-        1125: {
-            navigation: {
-                enabled: true,
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        spaceBetween: 0,
+        loop: true,
+        freeMode: true,
+        observer: true,
+        observeParents: true,
+        observeSlideChildren: true,
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+                navigation: {
+                    enabled: false,
+                },
             },
-            slidesPerView: 3,
-        },
-        1279: {
-            navigation: {
-                enabled: true,
+            767: {
+                navigation: {
+                    enabled: true,
+                },
+                slidesPerView: 2,
             },
-            slidesPerView: 1,
+            1125: {
+                navigation: {
+                    enabled: true,
+                },
+                slidesPerView: 3,
+            },
+            1279: {
+                navigation: {
+                    enabled: true,
+                },
+                slidesPerView: 1,
+            }
         }
-    }
-});
+    });
 
 /*--------------------------------------------------------------
 # Catalog
@@ -84,82 +84,145 @@ const swiper_main_sale = new Swiper('.main__sale-swiper', {
 /*--------------------------------------------------------------
 # Card
 --------------------------------------------------------------*/
-const swiper_card_cross_upsells = new Swiper('.cross-upsells-swiper', {
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        type: 'progressbar'
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    slidesPerView: 3,
-    slidesPerGroup: 1,
-    spaceBetween: 15,
-    loop: true,
-    freeMode: true,
-    breakpoints: {
-        320: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-            navigation: {
-                enabled: false,
-            },
+    const swiper_card_cross_upsells = new Swiper('.cross-upsells-swiper', {
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            type: 'progressbar'
         },
-        768: {
-            navigation: {
-                enabled: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        slidesPerView: 3,
+        slidesPerGroup: 1,
+        spaceBetween: 15,
+        loop: true,
+        freeMode: true,
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+                navigation: {
+                    enabled: false,
+                },
             },
+            768: {
+                navigation: {
+                    enabled: true,
+                },
+            }
         }
-    }
-});
+    });
 
-const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        type: 'progressbar'
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    slidesPerView: 6,
-    slidesPerGroup: 1,
-    spaceBetween: 15,
-    loop: true,
-    freeMode: true,
-    breakpoints: {
-        320: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-            navigation: {
-                enabled: false,
-            },
-            freeMode: true,
+    const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            type: 'progressbar'
         },
-        768: {
-            slidesPerView: 4,
-            spaceBetween: 10,
-            navigation: {
-                enabled: true,
-            },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
         },
-        1024: {
-            slidesPerView: 6,
-            spaceBetween: 15,
-            navigation: {
-                enabled: true,
+        slidesPerView: 6,
+        slidesPerGroup: 1,
+        spaceBetween: 15,
+        loop: true,
+        freeMode: true,
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+                navigation: {
+                    enabled: false,
+                },
+                freeMode: true,
             },
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 10,
+                navigation: {
+                    enabled: true,
+                },
+            },
+            1024: {
+                slidesPerView: 6,
+                spaceBetween: 15,
+                navigation: {
+                    enabled: true,
+                },
+            }
         }
-    }
-});
+    });
 
 /*--------------------------------------------------------------
-# Cart
+# Products slider
 --------------------------------------------------------------*/
-const swiper_cart_popular = new Swiper('.cart-popular-swiper', {
+    let swiper_product_slider;
+    function swiper_product_slider_init() {
+    swiper_product_slider = new Swiper('.product-slider-swiper', {
+        // on: {
+        //     init: function () {
+        //       console.log('swiper initialized');
+        //     },
+        //     slidesUpdated: function () {
+        //       console.log('slidesUpdated');
+        //     },
+        //     update: function () {
+        //       console.log('swiperUpdated');
+        //     },
+        // },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            type: 'progressbar'
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        // scrollbar: {
+        //     el: '.swiper-scrollbar',
+        //     draggable: true,
+        // },
+        slidesPerView: 5,
+        slidesPerGroup: 1,
+        spaceBetween: 30,
+        loop: true,
+        freeMode: true,
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+                navigation: {
+                    enabled: false,
+                },
+                freeMode: true,
+            },
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+                navigation: {
+                    enabled: true,
+                },
+            },
+            1024: {
+                slidesPerView: 5,
+                spaceBetween: 30,
+                navigation: {
+                    enabled: true,
+                },
+            }
+        }
+    });
+    }
+
+/*--------------------------------------------------------------
+# Popular slider
+--------------------------------------------------------------*/
+
+const swiper_popular_slider = new Swiper('.popular-slider-swiper', {
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
@@ -169,9 +232,13 @@ const swiper_cart_popular = new Swiper('.cart-popular-swiper', {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
-    slidesPerView: 6,
+    // scrollbar: {
+    //     el: '.swiper-scrollbar',
+    //     draggable: true,
+    // },
+    slidesPerView: 5,
     slidesPerGroup: 1,
-    spaceBetween: 15,
+    spaceBetween: 30,
     loop: true,
     freeMode: true,
     breakpoints: {
@@ -191,14 +258,15 @@ const swiper_cart_popular = new Swiper('.cart-popular-swiper', {
             },
         },
         1024: {
-            slidesPerView: 6,
-            spaceBetween: 15,
+            slidesPerView: 5,
+            spaceBetween: 30,
             navigation: {
                 enabled: true,
             },
         }
     }
 });
+
 
 /*--------------------------------------------------------------
 # About Us

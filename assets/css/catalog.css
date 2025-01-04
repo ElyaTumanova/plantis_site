@@ -401,7 +401,8 @@ ul.products {
         /* position: absolute;
         top: calc(var(--imgH) + 60px);
         right: 10px; */
-        background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg);
+        /* background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg); */
+        background-image: url(https://plantis.shop/wp-content/uploads/2025/01/cart_white_new.svg);
         background-repeat: no-repeat;
         background-position: center;
         padding: 0;
@@ -864,11 +865,11 @@ ul.products {
 /* стили для swiper */
 
 .main__sale-gallery .swiper-wrapper, 
-.card__grid .swiper-wrapper, .popular-products-wrap .swiper-wrapper {
+.card__grid .swiper-wrapper, .product-slider-wrap .swiper-wrapper {
     padding-bottom: 10px;
 }
 
-.main__sale-gallery .swiper-pagination, .card__grid .swiper-pagination, .popular-products-wrap .swiper-pagination {
+.main__sale-gallery .swiper-pagination, .card__grid .swiper-pagination, .product-slider-wrap .swiper-pagination {
     bottom: 0;
     top: auto;
     height: 2px;
@@ -929,6 +930,26 @@ ul.products {
 
 .product-slider-wrap .add_to_cart_button, .product-slider-wrap .product_type_simple {
     margin: 10px 0 15px;
+    font-size: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin-bottom: 15px;
+    margin-top: -40px;
+    margin-right: 3px;
+    margin-left: auto;
+    /* background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg); */
+    background-image: url(https://plantis.shop/wp-content/uploads/2025/01/cart_white_new.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0;
+    background-size: 50%;
+    order: -1;
+    z-index: 2;
+}
+
+.product-slider-wrap .added {
+    background-image: url(https://plantis.shop/wp-content/uploads/2024/03/check_white.svg);
 }
 
 .product-slider-wrap .swiper-button-prev, .product-slider-wrap .swiper-button-next {
@@ -936,11 +957,25 @@ ul.products {
 }
 
 .product-slider-wrap .woocommerce-loop-product__title {
-    font-size: 16px;
+    font-size: 15px;
+    min-height: 35px;
+}
+.product-slider-wrap .woocommerce-product-details__short-description {
+    font-size: 13px;
+    display: none;
 }
 
 .product-slider-wrap .product {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.product-slider-wrap .woocommerce-LoopProduct-link:first-of-type {
+    order: -2;
 }
 
 .product-slider-wrap .yith-wcwl-add-to-wishlist {
@@ -948,24 +983,41 @@ ul.products {
     z-index: 10;
     margin: 0;
     top: 10px;
-    right: 10px;
+    right: 3px;
+    width: 40px;
+    height: 40px;
+}
+
+.product-slider-wrap .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, 
+.product-slider-wrap .yith-wcwl-add-to-wishlist a.delete_item>img, 
+.product-slider-wrap .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
+    max-width: 20px;
+}
+
+.product-slider-wrap .sale_badge {
+    font-size: 13px;
+    padding: 0 3px 0 0;
+}
+
+.product-slider-wrap .sale_badge .sale_badge-skidka{
+    padding: 3px;
 }
 
 /* стили цены */
 .product-slider-wrap .product .price {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.1;
     font-weight: 700;
 }
 
 .product-slider-wrap .sale .price {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 1.1;
 }
 
 .product-slider-wrap .sale ins .woocommerce-Price-amount {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.1;
     font-weight: 700;
     color: var(--red-color);
@@ -973,21 +1025,21 @@ ul.products {
 
 
 @media (max-width:767px) {
-    .product-slider-wrap .yith-wcwl-add-to-wishlist {
+    /* .product-slider-wrap .yith-wcwl-add-to-wishlist {
         position: absolute;
         top: 10px;
         right: 10px;
         border: none;
-    }
+    } */
 
     .product-slider-wrap .yith-wcwl-add-button img {
         width: 25px;
         margin: 5px;
     }
 
-    .product-slider-wrap .add_to_cart_button, .product-slider-wrap .product_type_simple {
+    /* .product-slider-wrap .add_to_cart_button, .product-slider-wrap .product_type_simple {
         margin: 0;
-    }
+    } */
 
     .product-slider-wrap .woocommerce-loop-product__title {
         font-size: 14px;
@@ -995,6 +1047,7 @@ ul.products {
         line-height: 1.1;
         margin-bottom: 5px;
         margin-top: 10px;
+        min-height: 31px;
     }
 
     .product-slider-wrap .woocommerce-product-details__short-description {
@@ -1023,13 +1076,6 @@ ul.products {
         font-weight: 700;
         color: var(--red-color);
     }
-}
-
-
-.product-slider-wrap .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, 
-.product-slider-wrap .yith-wcwl-add-to-wishlist a.delete_item>img, 
-.product-slider-wrap .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
-    max-width: 25px;
 }
 
 /*--------------------------------------------------------------

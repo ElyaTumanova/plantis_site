@@ -8,7 +8,7 @@ global $skidki_cat_id;
 <div class="content-area-full-width">
 	<main id="main" class="site-main" role="main">
 	<div class="main__wrap-colored-bg main__row">
-		<div class="main__wrap container">
+		<div class="container">
 			<div class="main__banners-wrap">
 				<?php get_template_part('template-parts/main-banners-gallery');?>
 			</div>
@@ -18,19 +18,35 @@ global $skidki_cat_id;
 				<a class="main__gorshki-button button" href="<?php echo get_term_link( $gorshki_cat_id, 'product_cat' );?>">Горшки и кашпо</a>
 			</div>
 	
-			<div class="main__sale-gallery-wrap">
+			<!-- <div class="main__sale-gallery-wrap">
 				<h2 class="main__sale-gallery-title heading-2">Спецпредложения</h2>
 				<div class="main__sale-gallery">
-					<?php get_template_part('template-parts/products-on-sale');
+					<?php //get_template_part('template-parts/products/products-on-sale');
 					?>
 				</div>
-				<a class="main__sale-button button" href="<?php echo get_term_link( $skidki_cat_id, 'product_cat' );?>">Все комнатные растения со скидкой</a>			
-			</div>
+				<a class="main__sale-button button" href="<?php //echo get_term_link( $skidki_cat_id, 'product_cat' );?>">Все комнатные растения со скидкой</a>			
+			</div> -->
 		</div>
 	</div>
 	<div class="main__cats-wrap main__row container">
-		<?php get_template_part('template-parts/plants-cats-grid');?>
+		<div class="main__cats-nav">
+			<span class = "main__cats-nav-title" data-type="product_tag" data-term="skidki">Скидки</span>
+			<span class = "main__cats-nav-title" data-type="product_cat" data-term="dekorativno-listvennye">Декоративно-лиственные</span>
+			<span class = "main__cats-nav-title" data-type="product_cat" data-term="palms">Пальмы</span>
+			<span class = "main__cats-nav-title" data-type="product_cat" data-term="fikusy">Фикусы</span>
+			<span class = "main__cats-nav-title" data-type="product_cat" data-term="lianas">Лианы</span>
+			<span class = "main__cats-nav-title" data-type="product_cat" data-term="dekorativno-cvetushchie">Цветущие</span>
+			<span class = "main__cats-nav-title" data-type="product_cat" data-term="succulent">Суккуленты</span>
+			<span class = "main__cats-nav-title" data-type="product_tag" data-term="novichkam">Неприхотливые</span>
+			<span class = "main__cats-nav-title" data-type="product_tag" data-term="napolnye">Напольные</span>
+			<span class = "main__cats-nav-title" data-type="product_tag" data-term="pet-friendly">Pet friendly</span>
+		</div>
+		<div class=main__cats-slider>
+		</div>
 	</div>
+	<!-- <div class="cats-grid-wrap main__row">
+		<?php //get_template_part('template-parts/plants-cats-grid');?>
+	</div> -->
 	<div class="main__wrap container main__row">
 		<?php
 			get_template_part( 'template-parts/advantages' );

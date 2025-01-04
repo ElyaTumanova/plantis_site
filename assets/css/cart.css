@@ -453,7 +453,22 @@
     color: var(--accent-color);
     box-shadow: 0 1px 4px 0;
     border-radius: 50%;
-    padding: 22px 17px 18px;
+    padding: 22px 22px 18px;
+}
+
+.side-cart__open-btn svg {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.side-cart__open-btn svg path{
+    fill: var(--accent-color) !important;
+    stroke: var(--accent-color) !important;
+}
+
+.side-cart__open-btn:active svg path, .side-cart__open-btn:focus svg path, .side-cart__open-btn:hover svg path {
+    fill: var(--accent-color) !important;
+    stroke: var(--accent-color) !important;
 }
 
 .side-cart__open-btn_active {
@@ -492,7 +507,7 @@
     overflow-x: hidden;
 }
 
-.side-cart__open-btn .side-cart__count {
+.side-cart__open-btn .header__count {
     position: absolute;
     top: -10px;
     left: 0;
