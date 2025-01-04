@@ -938,13 +938,18 @@ ul.products {
     margin-top: -40px;
     margin-right: 3px;
     margin-left: auto;
-    background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg);
+    /* background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg); */
+    background-image: url(https://plantis.shop/wp-content/uploads/2025/01/cart_white_new.svg);
     background-repeat: no-repeat;
     background-position: center;
     padding: 0;
     background-size: 50%;
     order: -1;
     z-index: 2;
+}
+
+.product-slider-wrap .add_to_cart_button .added, .product-slider-wrap .product_type_simple .added {
+    background-image: url(https://plantis.shop/wp-content/uploads/2024/03/check_white.svg);
 }
 
 .product-slider-wrap .swiper-button-prev, .product-slider-wrap .swiper-button-next {
