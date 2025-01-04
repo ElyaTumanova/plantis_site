@@ -298,8 +298,8 @@
         border-radius: 5px;
     }
     .header-btn__wrap_mob svg path {
-        fill: var(--white);
-        stroke: var(--white);
+        fill: var(--white) !important;
+        stroke: var(--white) !important;
     }
 
 }
