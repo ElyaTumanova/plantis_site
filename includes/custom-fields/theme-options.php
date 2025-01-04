@@ -10,21 +10,17 @@ use Carbon_Fields\Field;
 Container::make('theme_options', 'Настройки темы')
 		 ->add_tab( __('Icons'), array(
 			 Field::make( 'image', 'logo', 'Logo' )
-			 ->set_value_type( 'url' ),
-			//  Field::make( 'image', 'account_icon', 'Personal Account' )
-			//  ->set_value_type( 'url' ),
+			 	->set_value_type( 'url' ),
 			 Field::make( 'textarea', 'account_icon', 'Personal Account' )
-			->set_rows( 6 ),
-			 Field::make( 'image', 'account_logged_icon', 'Personal Account LoggedIn' )
-			 ->set_value_type( 'url' ),
-			 Field::make( 'image', 'whishlist_icon', 'Wishlist' )
-			 ->set_value_type( 'url' ),
-			 Field::make( 'image', 'cart_icon', 'Cart' )
-			 ->set_value_type( 'url' ),
-			//  Field::make( 'image', 'search_icon', 'Search' )
-			//  ->set_value_type( 'url' ),
+				->set_rows( 6 ),
+			 Field::make( 'textarea', 'account_logged_icon', 'Personal Account LoggedIn' )
+				->set_rows( 6 ),
+			 Field::make( 'textarea', 'whishlist_icon', 'Wishlist' )
+				->set_rows( 6 ),
+			 Field::make( 'textarea', 'cart_icon', 'Cart' )
+			 	->set_rows( 6 ),
 			Field::make( 'textarea', 'search_icon', 'Search' )
-			->set_rows( 6 ),
+				->set_rows( 6 ),
 			 Field::make( 'image', 'catalog_icon', 'Catalog' )
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'search_icon_mob', 'Search for mob' )
@@ -33,8 +29,6 @@ Container::make('theme_options', 'Настройки темы')
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'phone_icon', 'Phone button for mob' )
 			 ->set_value_type( 'url' ),
-			//  Field::make( 'image', 'filter_icon', 'Filter button for mob in catalog' )
-			//  ->set_value_type( 'url' ),
 			 Field::make( 'text', 'site_title', 'Site title in header' )
          ))
 		 ->add_tab( __('Main Page Banners'), array(
