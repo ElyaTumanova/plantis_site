@@ -27,8 +27,8 @@ Container::make('theme_options', 'Настройки темы')
 			 ->set_value_type( 'url' ),
 			 Field::make( 'image', 'menu_icon_mob', 'Menu for mob' )
 			 ->set_value_type( 'url' ),
-			 Field::make( 'image', 'phone_icon', 'Phone button for mob' )
-			 ->set_value_type( 'url' ),
+			 Field::make( 'textarea', 'phone_icon', 'Phone button for mob' )
+				->set_rows( 6 ),
 			 Field::make( 'text', 'site_title', 'Site title in header' )
          ))
 		 ->add_tab( __('Main Page Banners'), array(
