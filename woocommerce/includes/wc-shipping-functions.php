@@ -225,33 +225,32 @@ function plnt_shipping_conditions( $rates, $package ) {
             unset( $rates[ $urgent_delivery_outMKAD_medium ] );
             unset( $rates[ $delivery_long_dist ] );
         }
-    } else if {
-        if ($min_medium_delivery) {
-            if ( WC()->cart->subtotal < $min_medium_delivery ) {
-                unset( $rates[ $delivery_inMKAD ] );
-                unset( $rates[ $delivery_outMKAD ] );
-                unset( $rates[ $urgent_delivery_inMKAD ] );
-                unset( $rates[ $urgent_delivery_outMKAD ] );
-                unset( $rates[ $delivery_inMKAD_large ] );
-                unset( $rates[ $delivery_outMKAD_large ] );
-                unset( $rates[ $urgent_delivery_inMKAD_large ] );
-                unset( $rates[ $urgent_delivery_outMKAD_large ] );
+    } else if ($min_medium_delivery) {
+        if ( WC()->cart->subtotal < $min_medium_delivery ) {
+            unset( $rates[ $delivery_inMKAD ] );
+            unset( $rates[ $delivery_outMKAD ] );
+            unset( $rates[ $urgent_delivery_inMKAD ] );
+            unset( $rates[ $urgent_delivery_outMKAD ] );
+            unset( $rates[ $delivery_inMKAD_large ] );
+            unset( $rates[ $delivery_outMKAD_large ] );
+            unset( $rates[ $urgent_delivery_inMKAD_large ] );
+            unset( $rates[ $urgent_delivery_outMKAD_large ] );
+            unset( $rates[ $delivery_inMKAD_small ] );
+            unset( $rates[ $delivery_outMKAD_small ] );
+            unset( $rates[ $urgent_delivery_inMKAD_small ] );
+            unset( $rates[ $urgent_delivery_outMKAD_small ] );
+            if(isset($rates[ $delivery_courier ])) {
                 unset( $rates[ $delivery_inMKAD_small ] );
                 unset( $rates[ $delivery_outMKAD_small ] );
                 unset( $rates[ $urgent_delivery_inMKAD_small ] );
                 unset( $rates[ $urgent_delivery_outMKAD_small ] );
-                if(isset($rates[ $delivery_courier ])) {
-                    unset( $rates[ $delivery_inMKAD_small ] );
-                    unset( $rates[ $delivery_outMKAD_small ] );
-                    unset( $rates[ $urgent_delivery_inMKAD_small ] );
-                    unset( $rates[ $urgent_delivery_outMKAD_small ] );
-                    unset( $rates[ $delivery_inMKAD_medium ] );
-                    unset( $rates[ $delivery_outMKAD_medium ] );
-                    unset( $rates[ $urgent_delivery_inMKAD_medium ] );
-                    unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-                    unset( $rates[ $delivery_long_dist ] );
-                }
+                unset( $rates[ $delivery_inMKAD_medium ] );
+                unset( $rates[ $delivery_outMKAD_medium ] );
+                unset( $rates[ $urgent_delivery_inMKAD_medium ] );
+                unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+                unset( $rates[ $delivery_long_dist ] );
             }
+            
         }
     } else {
         unset( $rates[ $delivery_inMKAD_small ] );
