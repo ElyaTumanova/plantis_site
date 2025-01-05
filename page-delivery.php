@@ -80,19 +80,22 @@ get_header(); ?>
                                 доставка осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</p>
                             <?php else :?>    
                                 <small>1 - если стоимость вашего заказа меньше 
-                                    <?php if($min_small_delivery)
-                                    {echo $min_small_delivery.' рублей, стоимость доставки будет увеличена на '.$small_delivery_markup_in_mkad; } ?>
-                                    <?php if($small_delivery_markup_in_mkad !== $small_delivery_markup_out_mkad ) 
-                                    {echo ' / '.$small_delivery_markup_out_mkad.' рублей в пределах и за пределами МКАД соответственно.'; }
-                                    else {echo ' рублей.';} ?> 
+                                    <?php 
+                                    if($min_small_delivery) {
+                                        echo $min_small_delivery.' рублей, стоимость доставки будет увеличена на '.$small_delivery_markup_in_mkad;  
+                                            if($small_delivery_markup_in_mkad !== $small_delivery_markup_out_mkad ) {
+                                                echo ' / '.$small_delivery_markup_out_mkad.' рублей в пределах и за пределами МКАД соответственно.'; }
+                                            else {echo ' рублей.';} 
+                                    } 
                                     
-                                    <?php if($min_medium_delivery)
-                                    {echo '<br>Если стоимость меньше '.$min_medium_delivery.' рублей, стоимость доставки будет увеличена на '.$medium_delivery_markup_in_mkad; } ?>
-                                    <?php if($medium_delivery_markup_in_mkad !== $medium_delivery_markup_out_mkad ) 
-                                    {echo ' / '.$small_delivery_markup_out_mkad.' рублей в пределах и за пределами МКАД соответственно.'; }
-                                    else {echo ' рублей.';} ?> 
+                                    if($min_medium_delivery) {
+                                        echo '<br>Если стоимость меньше '.$min_medium_delivery.' рублей, стоимость доставки будет увеличена на '.$medium_delivery_markup_in_mkad; 
+                                            if($medium_delivery_markup_in_mkad !== $medium_delivery_markup_out_mkad ) { 
+                                                echo ' / '.$small_delivery_markup_out_mkad.' рублей в пределах и за пределами МКАД соответственно.'; }
+                                            else {echo ' рублей.';}
+                                    } ?> 
                                 </small>  
-                                
+
                                 <small>2 - если стоимость вашего заказа меньше 
                                     <?php if($min_small_delivery)
                                     {echo $min_small_delivery.' рублей, стоимость доставки будет увеличена на '.$small_delivery_markup_in_mkad_urg; } ?>
