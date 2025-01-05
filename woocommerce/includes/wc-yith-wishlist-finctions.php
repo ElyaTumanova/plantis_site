@@ -24,15 +24,34 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
     function yith_wcwl_get_items_count() {
       ob_start();
       ?>
-      <?php if (yith_wcwl_count_all_products() == 0) :?>
-        <div class="header__count">
-      <?php else : ?>
-				<div class="header__count header__count_active ">
-			<?php endif;?>
-          <span class="yith-wcwl-items-count">
-            <i class="yith-wcwl-icon fa fa-heart-o"><?php echo esc_html( yith_wcwl_count_all_products() ); ?></i>
-          </span>
-      </div>
+        <div class="header__wishlist">
+          <?php $whishlist_icon = carbon_get_theme_option('whishlist_icon')?>
+          <?php if (yith_wcwl_count_all_products() == 0) :?>
+            <div class="header__count">
+          <?php else : ?>
+            <div class="header__count header__count_active ">
+          <?php endif;?>
+              <span class="yith-wcwl-items-count">
+                <i class="yith-wcwl-icon fa fa-heart-o"><?php echo esc_html( yith_wcwl_count_all_products() ); ?></i>
+              </span>
+          </div>
+
+          <?php if (yith_wcwl_count_all_products() == 0) :?>
+            <a href="<?php echo get_site_url()?>/wishlist" class="header-btn__wrap">	
+          <?php else : ?>
+            <a href="<?php echo get_site_url()?>/wishlist" class="header-btn__wrap header-btn__wrap_active">	
+          <?php endif;?>
+
+            
+              <?php echo $whishlist_icon ?>		
+              <span class="header-btn__label">Избранное</span>		
+            </a>
+          </a>
+        </div>
+
+
+
+      
       <?php
       return ob_get_clean();
     }
