@@ -56,10 +56,11 @@ function plnt_empty_cart_message_filter( $message ){
 // вывод корзины в хедере и мини корзины
 function plnt_woocommerce_cart_header() {
 	$cart_icon = carbon_get_theme_option('cart_icon')?>
-		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="header-btn__wrap header-cart__link">
 			<?php if (WC()->cart->get_cart_contents_count() == 0) :?>
+				<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="header-btn__wrap header-cart__link">
 				<span class="header__count">
 			<?php else : ?>
+				<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="header-btn__wrap header-btn__wrap_active header-cart__link">
 				<span class="header__count header__count_active">
 			<?php endif;?>
 			<?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>

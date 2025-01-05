@@ -112,6 +112,11 @@
     stroke: var(--icons-color-active) !important;
 }
 
+.header-btn__wrap_active svg path{
+    fill: var(--black-color) !important;
+    stroke: var(--black-color) !important;
+}
+
 .header-btn__icon {
     height: 25px;
 }
