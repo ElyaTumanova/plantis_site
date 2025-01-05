@@ -81,13 +81,11 @@ get_header(); ?>
                                     else {echo ' рублей.';} ?> 
                                     
                                     <?php if($min_medium_delivery)
-                                    {echo $min_medium_delivery.' рублей, стоимость доставки будет увеличена на '.$medium_delivery_markup_in_mkad; } ?>
+                                    {echo 'Если стоимость меньше '.$min_medium_delivery.' рублей, стоимость доставки будет увеличена на '.$medium_delivery_markup_in_mkad; } ?>
                                     <?php if($medium_delivery_markup_in_mkad !== $medium_delivery_markup_out_mkad ) 
                                     {echo ' / '.$small_delivery_markup_out_mkad.' рублей в пределах и за пределами МКАД соответственно.'; }
                                     else {echo ' рублей.';} ?> 
-                                    
-
-                                
+                                </small>                                  
                             <?php endif; ?>			
                         <?php
 
