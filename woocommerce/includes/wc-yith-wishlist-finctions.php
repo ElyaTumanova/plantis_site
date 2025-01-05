@@ -113,11 +113,11 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
                 console.log(wishListBtns);
                 wishListBtns.forEach((el)=>{
                     if (data.count > 0) {
-                        document.querySelector('.header__count').classList.add('header__count_active');
-                        document.querySelector('.header-btn__wrap').classList.add('header-btn__wrap_active');
+                        el.querySelector('.header__count').classList.add('header__count_active');
+                        el.querySelector('.header-btn__wrap').classList.add('header-btn__wrap_active');
                     } else {
-                        document.querySelector('.header__count').classList.remove('header__count_active');
-                        document.querySelector('.header-btn__wrap').classList.remove('header-btn__wrap_active');
+                        el.querySelector('.header__count').classList.remove('header__count_active');
+                        el.querySelector('.header-btn__wrap').classList.remove('header-btn__wrap_active');
                     }
                 });
               } );
