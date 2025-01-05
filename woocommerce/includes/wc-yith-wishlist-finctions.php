@@ -110,7 +110,6 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
               }, function( data ) {
                 $('.yith-wcwl-items-count').children('i').html( data.count );
                 let wishListBtns = document.querySelectorAll ('.header__wishlist');
-                console.log(wishListBtns);
                 wishListBtns.forEach((el)=>{
                     if (data.count > 0) {
                         el.querySelector('.header__count').classList.add('header__count_active');
