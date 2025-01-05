@@ -31,15 +31,15 @@ global $skidki_cat_id;
 	<div class="main__cats-wrap main__row container">
 		<div class="main__cats-nav">
 			<span class = "main__cats-nav-title" data-type="product_tag" data-term="skidki">Скидки</span>
-			<span class = "main__cats-nav-title" data-type="product_cat" data-term="dekorativno-listvennye">Декоративно-лиственные</span>
-			<span class = "main__cats-nav-title" data-type="product_cat" data-term="palms">Пальмы</span>
-			<span class = "main__cats-nav-title" data-type="product_cat" data-term="fikusy">Фикусы</span>
-			<span class = "main__cats-nav-title" data-type="product_cat" data-term="lianas">Лианы</span>
 			<span class = "main__cats-nav-title" data-type="product_cat" data-term="dekorativno-cvetushchie">Цветущие</span>
-			<span class = "main__cats-nav-title" data-type="product_cat" data-term="succulent">Суккуленты</span>
-			<span class = "main__cats-nav-title" data-type="product_tag" data-term="novichkam">Неприхотливые</span>
+			<span class = "main__cats-nav-title" data-type="product_cat" data-term="fikusy">Фикусы</span>
 			<span class = "main__cats-nav-title" data-type="product_tag" data-term="napolnye">Напольные</span>
+			<span class = "main__cats-nav-title" data-type="product_cat" data-term="palms">Пальмы</span>
+			<span class = "main__cats-nav-title" data-type="product_tag" data-term="novichkam">Неприхотливые</span>
+			<span class = "main__cats-nav-title" data-type="product_cat" data-term="dekorativno-listvennye">Декоративно-лиственные</span>
+			<span class = "main__cats-nav-title" data-type="product_cat" data-term="succulent">Суккуленты</span>
 			<span class = "main__cats-nav-title" data-type="product_tag" data-term="pet-friendly">Pet friendly</span>
+			<span class = "main__cats-nav-title" data-type="product_cat" data-term="lianas">Лианы</span>
 		</div>
 		<div class=main__cats-slider>
 		</div>
