@@ -46,13 +46,13 @@ get_header(); ?>
                 <div class="delivery__dropdown">
                     <div>
                         <!-- <h3 class="delivery__heading heading-2">Если ваш заказ <b>от <?php //echo $min_small_delivery ?></b> рублей:</h3> -->
-                        <p><strong>Доставка на следующий день или позже:</strong></p>
+                        <p><strong>Доставка на следующий день или позже<sup>1</sup>:</strong></p>
                             <ul>
                                 <li>в пределах МКАД — от <?php echo $in_mkad ?> рублей;</li>
                                 <li>за пределы МКАД (до 5 км) — от <?php echo $out_mkad ?> рублей;</li>
                                 <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
                             </ul>
-                        <p><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
+                        <p><strong>Срочная “день в день”<sup>2</sup></strong>. Можно оформить до 18:00:</p>
                         <ul>
                             <li>в пределах МКАД — от <?php echo $in_mkad_urg ?> рублей;</li>
                             <li>за пределы МКАД (до 5 км) — от <?php echo $out_mkad_urg ?> рублей;</li>
