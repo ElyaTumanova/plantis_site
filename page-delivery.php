@@ -62,7 +62,7 @@ get_header(); ?>
                         <?php if($min_small_delivery || $min_medium_delivery) {
                             if(array_key_exists($delivery_courier,$shipping_costs)) :?>
                                 <p>Если ваш заказ <b>до 
-                                <?php  ($min_medium_delivery) ? echo $min_medium_delivery : echo $min_small_delivery?></b> рублей 
+                                <?php  if($min_medium_delivery) {echo $min_medium_delivery} else{echo $min_small_delivery}?></b> рублей 
                                 доставка осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</p>
                             <?php else :?>    
                                 <small>1 - если стоимость вашего заказа меньше 
