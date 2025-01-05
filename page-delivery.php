@@ -66,7 +66,7 @@ get_header(); ?>
                                 доставка осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</p>
                             <?php else :?>    
                                 <small>1 - если стоимость вашего заказа меньше 
-                                    <?php if($min_small_delivery){echo $min_small_delivery.'стоимость доставки будет увеличена на '. echo ($in_mkad_small - $in_mkad_) } ?>
+                                    <?php if($min_small_delivery){echo $min_small_delivery.'стоимость доставки будет увеличена на '.($in_mkad_small - $in_mkad_) } ?>
                                     <?php if($min_medium_delivery){echo $min_medium_delivery} ?>
                             <?php endif; ?>			
                         <?php
