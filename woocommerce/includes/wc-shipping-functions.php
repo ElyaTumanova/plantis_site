@@ -225,43 +225,41 @@ function plnt_shipping_conditions( $rates, $package ) {
             unset( $rates[ $urgent_delivery_outMKAD_medium ] );
             unset( $rates[ $delivery_long_dist ] );
         }
-    } else if ($min_medium_delivery) {
-        if ( WC()->cart->subtotal < $min_medium_delivery ) {
-            unset( $rates[ $delivery_inMKAD ] );
-            unset( $rates[ $delivery_outMKAD ] );
-            unset( $rates[ $urgent_delivery_inMKAD ] );
-            unset( $rates[ $urgent_delivery_outMKAD ] );
-            unset( $rates[ $delivery_inMKAD_large ] );
-            unset( $rates[ $delivery_outMKAD_large ] );
-            unset( $rates[ $urgent_delivery_inMKAD_large ] );
-            unset( $rates[ $urgent_delivery_outMKAD_large ] );
-            unset( $rates[ $delivery_inMKAD_small ] );
-            unset( $rates[ $delivery_outMKAD_small ] );
-            unset( $rates[ $urgent_delivery_inMKAD_small ] );
-            unset( $rates[ $urgent_delivery_outMKAD_small ] );
-            if(isset($rates[ $delivery_courier ])) {
-                unset( $rates[ $delivery_inMKAD_small ] );
-                unset( $rates[ $delivery_outMKAD_small ] );
-                unset( $rates[ $urgent_delivery_inMKAD_small ] );
-                unset( $rates[ $urgent_delivery_outMKAD_small ] );
-                unset( $rates[ $delivery_inMKAD_medium ] );
-                unset( $rates[ $delivery_outMKAD_medium ] );
-                unset( $rates[ $urgent_delivery_inMKAD_medium ] );
-                unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-                unset( $rates[ $delivery_long_dist ] );
-            }
-            
-        }
-    } else {
+    } else if ( WC()->cart->subtotal < $min_medium_delivery ) {
+        unset( $rates[ $delivery_inMKAD ] );
+        unset( $rates[ $delivery_outMKAD ] );
+        unset( $rates[ $urgent_delivery_inMKAD ] );
+        unset( $rates[ $urgent_delivery_outMKAD ] );
+        unset( $rates[ $delivery_inMKAD_large ] );
+        unset( $rates[ $delivery_outMKAD_large ] );
+        unset( $rates[ $urgent_delivery_inMKAD_large ] );
+        unset( $rates[ $urgent_delivery_outMKAD_large ] );
         unset( $rates[ $delivery_inMKAD_small ] );
         unset( $rates[ $delivery_outMKAD_small ] );
         unset( $rates[ $urgent_delivery_inMKAD_small ] );
         unset( $rates[ $urgent_delivery_outMKAD_small ] );
-        unset( $rates[ $delivery_inMKAD_medium ] );
-        unset( $rates[ $delivery_outMKAD_medium ] );
-        unset( $rates[ $urgent_delivery_inMKAD_medium ] );
-        unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-        unset( $rates[ $delivery_courier ] );
+        if(isset($rates[ $delivery_courier ])) {
+            unset( $rates[ $delivery_inMKAD_small ] );
+            unset( $rates[ $delivery_outMKAD_small ] );
+            unset( $rates[ $urgent_delivery_inMKAD_small ] );
+            unset( $rates[ $urgent_delivery_outMKAD_small ] );
+            unset( $rates[ $delivery_inMKAD_medium ] );
+            unset( $rates[ $delivery_outMKAD_medium ] );
+            unset( $rates[ $urgent_delivery_inMKAD_medium ] );
+            unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+            unset( $rates[ $delivery_long_dist ] );
+        }
+            
+    } else {
+    unset( $rates[ $delivery_inMKAD_small ] );
+    unset( $rates[ $delivery_outMKAD_small ] );
+    unset( $rates[ $urgent_delivery_inMKAD_small ] );
+    unset( $rates[ $urgent_delivery_outMKAD_small ] );
+    unset( $rates[ $delivery_inMKAD_medium ] );
+    unset( $rates[ $delivery_outMKAD_medium ] );
+    unset( $rates[ $urgent_delivery_inMKAD_medium ] );
+    unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+    unset( $rates[ $delivery_courier ] );
     }
  
     /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
@@ -328,11 +326,11 @@ function plnt_disable_payment_small_order( $available_gateways ) {
         unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
     }
 
-    if ($min_medium_delivery) {
-        if (WC()->cart->subtotal < $min_medium_delivery && $delivery_courier == $chosen_methods[0]) {
-            unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
-        }
+    
+    if (WC()->cart->subtotal < $min_medium_delivery && $delivery_courier == $chosen_methods[0]) {
+        unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
     }
+    
 
     // дальняя доставка
     if ( $delivery_long_dist == $chosen_methods[0]) {
