@@ -73,8 +73,11 @@ get_header(); ?>
                             <?php else :?>    
                                 <small>1 - если стоимость вашего заказа меньше 
                                     <?php if($min_small_delivery)
-                                    {echo $min_small_delivery.' рублей, стоимость доставки будет увеличена на '.$small_delivery_markup_in_mkad.' / '.$small_delivery_markup_out_mkad.' в пределах и за пределами МКАД соответственно'; } ?>
-                                    <?php if($min_medium_delivery){echo $min_medium_delivery;} ?>
+                                    {echo $min_small_delivery.' рублей, стоимость доставки будет увеличена на '.$small_delivery_markup_in_mkad; } ?>
+                                    <?php if($small_delivery_markup_in_mkad !== $small_delivery_markup_out_mkad ) 
+                                    {echo ' / '.$small_delivery_markup_out_mkad.' в пределах и за пределами МКАД соответственно'; } ?>  
+
+                                    <?php //if($min_medium_delivery){echo $min_medium_delivery;} ?>
                             <?php endif; ?>			
                         <?php
 
