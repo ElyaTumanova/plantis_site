@@ -24,7 +24,7 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
     function yith_wcwl_get_items_count() {
       ob_start();
       ?>
-        <div class="header__wishlist">
+       
           <?php $whishlist_icon = carbon_get_theme_option('whishlist_icon')?>
           <?php if (yith_wcwl_count_all_products() == 0) :?>
             <div class="header__count">
@@ -44,7 +44,7 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
               <?php echo $whishlist_icon ?>		
               <span class="header-btn__label">Избранное</span>		
             </a>
-        </div>
+       
       <?php
       return ob_get_clean();
     }
