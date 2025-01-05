@@ -69,7 +69,8 @@ Container::make('theme_options', 'Настройки темы')
 		))
 		->add_tab( __('Delivery'), array(
 			Field::make( 'text', 'min_free_delivery', 'Минимальная сумма заказа для бесплатной доставки (текст с пробелом)'),
-			Field::make( 'text', 'min_small_delivery', 'Сумма заказа для более дорогой доставки'),
+			Field::make( 'text', 'min_small_delivery', 'Сумма заказа для более дорогой доставки - самая минимальная'),
+			Field::make( 'text', 'min_medium_delivery', 'Сумма заказа для более дорогой доставки - средняя (не обязательно)'),
 			Field::make( 'text', 'min_treez_delivery', 'Сумма заказа для доставки кашпо Treez'),
 			Field::make( 'text', 'late_markup_delivery', 'Надбавка к стоимости поздней доставки'),
 	   ))

@@ -88,6 +88,8 @@ if($site === 'http://new.plantis.shop') {
 	$delivery_outMKAD_small = 'flat_rate:35';
 	$delivery_inMKAD_large = 'flat_rate:29';
 	$delivery_outMKAD_large = 'flat_rate:30';
+	$delivery_inMKAD_medium = 'flat_rate:38';
+	$delivery_outMKAD_medium = 'flat_rate:40';
 
 
 	$urgent_delivery_inMKAD = 'flat_rate:13'; 
@@ -96,6 +98,8 @@ if($site === 'http://new.plantis.shop') {
 	$urgent_delivery_outMKAD_small = 'flat_rate:37';
 	$urgent_delivery_inMKAD_large = 'flat_rate:31'; 
 	$urgent_delivery_outMKAD_large = 'flat_rate:32';
+	$urgent_delivery_inMKAD_medium = 'flat_rate:39'; 
+	$urgent_delivery_outMKAD_medium = 'flat_rate:41';
 	
 	$delivery_free = 'free_shipping:5';
 
@@ -130,7 +134,9 @@ if($site === 'http://new.plantis.shop') {
 	$delivery_inMKAD_small = 'flat_rate:9';
 	$delivery_outMKAD_small = 'flat_rate:10';
 	$delivery_inMKAD_large = 'flat_rate:17'; 
-	$delivery_outMKAD_large = 'flat_rate:18';
+	$delivery_outMKAD_large = 'flat_rate:18'; 
+	$delivery_inMKAD_medium = 'flat_rate:38';  //TO BE UPDATED
+	$delivery_outMKAD_medium = 'flat_rate:40'; //TO BE UPDATED
 
 
 	$urgent_delivery_inMKAD = 'flat_rate:5'; 
@@ -139,6 +145,8 @@ if($site === 'http://new.plantis.shop') {
 	$urgent_delivery_outMKAD_small = 'flat_rate:12';
 	$urgent_delivery_inMKAD_large = 'flat_rate:19'; 
 	$urgent_delivery_outMKAD_large = 'flat_rate:20';
+	$urgent_delivery_inMKAD_medium = 'flat_rate:39'; //TO BE UPDATED
+	$urgent_delivery_outMKAD_medium = 'flat_rate:41'; //TO BE UPDATED
 	
 	$delivery_free = 'free_shipping:4';
 	$delivery_courier = 'free_shipping:21';
@@ -163,8 +171,8 @@ if($site === 'http://new.plantis.shop') {
 
 }
 
-$urgent_deliveries = [$urgent_delivery_inMKAD, $urgent_delivery_outMKAD, $urgent_delivery_inMKAD_small, $urgent_delivery_outMKAD_small, $urgent_delivery_inMKAD_large, $urgent_delivery_outMKAD_large];
-$normal_deliveries = [$delivery_inMKAD, $delivery_outMKAD, $delivery_inMKAD_small, $delivery_outMKAD_small, $delivery_inMKAD_large, $delivery_outMKAD_large];
+$urgent_deliveries = [$urgent_delivery_inMKAD, $urgent_delivery_outMKAD, $urgent_delivery_inMKAD_small, $urgent_delivery_outMKAD_small, $urgent_delivery_inMKAD_large, $urgent_delivery_outMKAD_large, $urgent_delivery_inMKAD_medium, $urgent_delivery_outMKAD_medium];
+$normal_deliveries = [$delivery_inMKAD, $delivery_outMKAD, $delivery_inMKAD_small, $delivery_outMKAD_small, $delivery_inMKAD_large, $delivery_outMKAD_large, $delivery_inMKAD_medium, $urgent_delivery_outMKAD_medium];
 
 /* Изображения и иконки */
 

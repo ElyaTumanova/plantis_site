@@ -57,6 +57,8 @@ function plnt_set_constants_script() {
 	global $delivery_outMKAD_small;
 	global $delivery_inMKAD_large;
 	global $delivery_outMKAD_large;
+	global $delivery_inMKAD_medium;
+	global $delivery_outMKAD_medium;
 
 	global $urgent_delivery_inMKAD; 
 	global $urgent_delivery_outMKAD; 
@@ -64,6 +66,8 @@ function plnt_set_constants_script() {
 	global $urgent_delivery_outMKAD_small;
 	global $urgent_delivery_inMKAD_large; 
 	global $urgent_delivery_outMKAD_large;
+	global $urgent_delivery_inMKAD_medium;
+	global $urgent_delivery_outMKAD_medium;
 
 	global $local_pickup;
 	global $delivery_free;
@@ -91,6 +95,12 @@ function plnt_set_constants_script() {
 
 	$in_mkad_small_urg = $shipping_costs[$urgent_delivery_inMKAD_small];
 	$out_mkad_small_urg = $shipping_costs[$urgent_delivery_outMKAD_small];
+
+	$in_mkad_medium = $shipping_costs[$delivery_inMKAD_medium];
+	$out_mkad_medium = $shipping_costs[$delivery_outMKAD_medium];
+
+	$in_mkad_medium_urg = $shipping_costs[$urgent_delivery_inMKAD_medium];
+	$out_mkad_medium_urg = $shipping_costs[$urgent_delivery_outMKAD_medium];
    
 	?>
 	<script>
@@ -101,6 +111,8 @@ function plnt_set_constants_script() {
 		let deliveryOutMKADSmall = '<?php echo $delivery_outMKAD_small; ?>';
 		let deliveryInMKADLarge = '<?php echo $delivery_inMKAD_large; ?>';
 		let deliveryOutMKADLarge = '<?php echo $delivery_outMKAD_large; ?>';
+		let deliveryInMKADMedium = '<?php echo $delivery_inMKAD_medium; ?>';
+		let deliveryOutMKADMedium = '<?php echo $delivery_outMKAD_medium; ?>';
 
 		let deliveryInMKADUrg = '<?php echo $urgent_delivery_inMKAD; ?>';
 		let deliveryOutMKADUrg = '<?php echo $urgent_delivery_outMKAD; ?>';
@@ -108,9 +120,9 @@ function plnt_set_constants_script() {
 		let deliveryOutMKADSmallUrg = '<?php echo $urgent_delivery_outMKAD_small; ?>';
 		let deliveryInMKADLargeUrg = '<?php echo $urgent_delivery_inMKAD_large; ?>';
 		let deliveryOutMKADLargeUrg = '<?php echo $urgent_delivery_outMKAD_large; ?>';
+		let deliveryInMKADMediumUrg = '<?php echo $urgent_delivery_inMKAD_medium; ?>';
+		let deliveryOutMKADMediumUrg = '<?php echo $urgent_delivery_outMKAD_medium; ?>';
 		
-		//let normalDeliveries = [deliveryInMKAD, deliveryOutMKAD, deliveryInMKADSmall, deliveryOutMKADSmall, deliveryInMKADLarge, deliveryOutMKADLarge];
-		//let urgentDeliveries = [deliveryInMKADUrg, deliveryOutMKADUrg, deliveryInMKADSmallUrg, deliveryOutMKADSmallUrg, deliveryInMKADLargeUrg, deliveryOutMKADLargeUrg];
 		
 		let localPickupId = '<?php echo $local_pickup; ?>';
 		let deliveryFreeId = '<?php echo $delivery_free; ?>';
@@ -132,6 +144,11 @@ function plnt_set_constants_script() {
 		let deliveryCostOutMkadSmall = '<?php echo $out_mkad_small; ?>';
 		let deliveryCostInMkadSmallUrg = '<?php echo $in_mkad_small_urg; ?>';
 		let deliveryCostOutMkadSmallUrg = '<?php echo $out_mkad_small_urg; ?>';
+
+		let deliveryCostInMkadMedium = '<?php echo $in_mkad_medium; ?>';
+		let deliveryCostOutMkadMedium = '<?php echo $out_mkad_medium; ?>';
+		let deliveryCostInMkadMediumUrg = '<?php echo $in_mkad_medium_urg; ?>';
+		let deliveryCostOutMkadMediumUrg = '<?php echo $out_mkad_medium_urg; ?>';
 
 		let deliveryLateMarkup = '<?php echo $late_markup_delivery; ?>';
 		// let deliveryLargeMarkupInMkad = '<?php //echo $large_delivery_markup_in_mkad; ?>';
