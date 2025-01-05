@@ -33,6 +33,12 @@ get_header(); ?>
 
 	$in_mkad_medium_urg = $shipping_costs[$urgent_delivery_inMKAD_medium];
 	$out_mkad_medium_urg = $shipping_costs[$urgent_delivery_outMKAD_medium];
+
+    $small_delivery_markup_in_mkad =  floatval(str_replace(' ', '', $in_mkad_small)) - floatval(str_replace(' ', '', $in_mkad));
+    $small_delivery_markup_out_mkad =  floatval(str_replace(' ', '', $out_mkad_small)) - floatval(str_replace(' ', '', $out_mkad));
+
+    $medium_delivery_markup_in_mkad =  floatval(str_replace(' ', '', $in_mkad_medium)) - floatval(str_replace(' ', '', $in_mkad));
+    $medium_delivery_markup_out_mkad =  floatval(str_replace(' ', '', $out_mkad_medium)) - floatval(str_replace(' ', '', $out_mkad));
 ?>
 
 <div class="content-area">
@@ -66,7 +72,8 @@ get_header(); ?>
                                 доставка осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</p>
                             <?php else :?>    
                                 <small>1 - если стоимость вашего заказа меньше 
-                                    <?php if($min_small_delivery){echo $min_small_delivery.'стоимость доставки будет увеличена на '.($in_mkad_small - $in_mkad_); } ?>
+                                    <?php if($min_small_delivery)
+                                    {echo $min_small_delivery.' рублей, стоимость доставки будет увеличена на '.$small_delivery_markup_in_mkad.' / '.$small_delivery_markup_out_mkad.' в пределах и за пределами МКАД соответственно'; } ?>
                                     <?php if($min_medium_delivery){echo $min_medium_delivery;} ?>
                             <?php endif; ?>			
                         <?php
