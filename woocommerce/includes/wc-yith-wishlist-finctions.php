@@ -74,6 +74,7 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
                 action: 'yith_wcwl_update_wishlist_count'
               }, function( data ) {
                 $('.yith-wcwl-items-count').children('i').html( data.count );
+                test (data.count);
               } );
             } );
           } );
@@ -82,6 +83,10 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
     }
   
     add_action( 'wp_enqueue_scripts', 'yith_wcwl_enqueue_custom_script', 20 );
+  }
+
+  function test (count) {
+    print_r(count);
   }
 
 
