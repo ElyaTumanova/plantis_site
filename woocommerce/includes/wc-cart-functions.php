@@ -79,6 +79,32 @@ function plnt_woocommerce_cart_header_fragment( $fragments ) {
 
 add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_fragment', 25 );
 
+// вывод корзины в хедере для мобилки
+function plnt_woocommerce_cart_header_mob() {
+	$cart_icon = carbon_get_theme_option('cart_icon')?>
+			<?php if (WC()->cart->get_cart_contents_count() == 0) :?>
+				<div class="header-btn__wrap header-cart__mob">
+				<span class="header__count">
+			<?php else : ?>
+				<div class="header-btn__wrap header-btn__wrap_active header-cart__mob">
+				<span class="header__count header__count_active">
+			<?php endif;?>
+			<?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
+			<?php echo $cart_icon ?>
+			<span class="header-btn__label">Корзина</span>		
+			</div>
+	<?php
+}
+
+function plnt_woocommerce_cart_header_mob_fragment( $fragments ) {
+	ob_start();
+	plnt_woocommerce_cart_header_mob();
+	$fragments[ 'div.header-cart__mob'] = ob_get_clean();
+	return $fragments;
+}
+
+add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_mob_fragment', 25 );
+
 // вывод мини корзины в хедере и side cart
 function plnt_woocommerce_mini_cart() {
 	?>		

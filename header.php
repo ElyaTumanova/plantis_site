@@ -212,7 +212,7 @@
 			
 			<div class="header-cart">
 				<?php 
-					plnt_woocommerce_cart_header(); 
+					plnt_woocommerce_cart_header_mob(); 
 				?>
 
 				<?php $cart_icon = carbon_get_theme_option('cart_icon')?>
