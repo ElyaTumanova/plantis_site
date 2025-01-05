@@ -5,6 +5,7 @@ get_header(); ?>
     // стоимость доставки
    
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+    $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
     $min_free_delivery = carbon_get_theme_option('min_free_delivery');
     
     $shipping_costs = plnt_get_shiping_costs();
@@ -57,7 +58,21 @@ get_header(); ?>
                             <li>в пределах МКАД — от <?php echo $in_mkad_urg ?> рублей;</li>
                             <li>за пределы МКАД (до 5 км) — от <?php echo $out_mkad_urg ?> рублей;</li>
                             <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
-                        </ul>				
+                        </ul>	
+                        <?php if($min_small_delivery || $min_medium_delivery) {
+                            if(array_key_exists($delivery_courier,$shipping_costs)) :?>
+                                <p>Если ваш заказ <b>до 
+                                <?php  ($min_medium_delivery) ? echo $min_medium_delivery : echo $min_small_delivery?></b> рублей 
+                                доставка осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</p>
+                            <?php else :?>    
+                                <small>1 - если стоимость вашего заказа меньше 
+                                    <?php if($min_small_delivery){echo $min_small_delivery.'стоимость доставки будет увеличена на '. echo ($in_mkad_small - $in_mkad_) } ?>
+                                    <?php if($min_medium_delivery){echo $min_medium_delivery} ?>
+                            <?php endif; ?>			
+                        <?php
+
+                        } ?>
+                        
                     </div>
                 
                     <!-- <div>
