@@ -212,15 +212,15 @@
 			
 			<div class="header-cart">
 				<?php 
-					//plnt_woocommerce_cart_header(); 
+					plnt_woocommerce_cart_header(); 
 				?>
 
 				<?php $cart_icon = carbon_get_theme_option('cart_icon')?>
-				<div class="header-btn__wrap">
-					<?php plnt_side_cart_count ();?>
-					<?php echo $cart_icon ?>
+				<!-- <div class="header-btn__wrap">
+					<?php //plnt_side_cart_count ();?>
+					<?php //echo $cart_icon ?>
 					<span class="header-btn__label">Корзина</span>		
-				</div>
+				</div> -->
 
 			</div><!-- .header-cart -->
 		</div>
