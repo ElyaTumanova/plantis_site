@@ -45,3 +45,4 @@ showSlider(0);
 navItems.forEach((el,index) => {
     el.addEventListener('click',() => showSlider(index));
 });
+

@@ -52,21 +52,10 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
     add_shortcode( 'yith_wcwl_items_count', 'yith_wcwl_get_items_count' );
   }
   
-  // if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_ajax_update_count' ) ) {
-  //   function yith_wcwl_ajax_update_count() {
-  //     wp_send_json( array(
-  //       'count' => yith_wcwl_count_all_products()
-  //     ) );
-  //   }
-  
-  //   add_action( 'wp_ajax_yith_wcwl_update_wishlist_count', 'yith_wcwl_ajax_update_count' );
-  //   add_action( 'wp_ajax_nopriv_yith_wcwl_update_wishlist_count', 'yith_wcwl_ajax_update_count' );
-  // }
-  
   if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_ajax_update_count' ) ) {
     function yith_wcwl_ajax_update_count() {
       wp_send_json( array(
-        'count' => yith_wcwl_get_items_count()
+        'count' => yith_wcwl_count_all_products()
       ) );
     }
   
@@ -74,29 +63,18 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
     add_action( 'wp_ajax_nopriv_yith_wcwl_update_wishlist_count', 'yith_wcwl_ajax_update_count' );
   }
   
-
-
-  if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_enqueue_custom_script' ) ) {
-    function yith_wcwl_enqueue_custom_script() {
-      wp_add_inline_script(
-        'jquery-yith-wcwl',
-        "
-          jQuery( function( $ ) {
-            $( document ).on( 'added_to_wishlist removed_from_wishlist', function() {
-              $.get( yith_wcwl_l10n.ajax_url, {
-                action: 'yith_wcwl_update_wishlist_count'
-              }, function( data ) {
-                $('.header__wishlist').html( data.count );
-                console.log (data.count);
-              } );
-            } );
-          } );
-        "
-      );
-    }
+  // if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_ajax_update_count' ) ) {
+  //   function yith_wcwl_ajax_update_count() {
+  //     wp_send_json( array(
+  //       'count' => yith_wcwl_get_items_count()
+  //     ) );
+  //   }
   
-    add_action( 'wp_enqueue_scripts', 'yith_wcwl_enqueue_custom_script', 20 );
-  }
+  //   add_action( 'wp_ajax_yith_wcwl_update_wishlist_count', 'yith_wcwl_ajax_update_count' );
+  //   add_action( 'wp_ajax_nopriv_yith_wcwl_update_wishlist_count', 'yith_wcwl_ajax_update_count' );
+  // }
+  
+
 
   // if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_enqueue_custom_script' ) ) {
   //   function yith_wcwl_enqueue_custom_script() {
@@ -108,7 +86,8 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
   //             $.get( yith_wcwl_l10n.ajax_url, {
   //               action: 'yith_wcwl_update_wishlist_count'
   //             }, function( data ) {
-  //               $('.yith-wcwl-items-count').children('i').html( data.count );
+  //               $('.header__wishlist').html( data.count );
+  //               console.log (data.count);
   //             } );
   //           } );
   //         } );
@@ -118,6 +97,38 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
   
   //   add_action( 'wp_enqueue_scripts', 'yith_wcwl_enqueue_custom_script', 20 );
   // }
+
+  if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_enqueue_custom_script' ) ) {
+    function yith_wcwl_enqueue_custom_script() {
+      wp_add_inline_script(
+        'jquery-yith-wcwl',
+        "
+          jQuery( function( $ ) {
+            $( document ).on( 'added_to_wishlist removed_from_wishlist', function() {
+              $.get( yith_wcwl_l10n.ajax_url, {
+                action: 'yith_wcwl_update_wishlist_count'
+              }, function( data ) {
+                $('.yith-wcwl-items-count').children('i').html( data.count );
+                let wishListBtns = document.querySelectorAll ('.header__wishlist');
+                console.log(wishListBtns);
+                wishListBtns.forEach((el)=>{
+                    if (data.count > 0) {
+                        document.querySelector('.header__count').classList.add('header__count_active');
+                        document.querySelector('.header-btn__wrap').classList.add('header-btn__wrap_active');
+                    } else {
+                        document.querySelector('.header__count').classList.remove('header__count_active');
+                        document.querySelector('.header-btn__wrap').classList.remove('header-btn__wrap_active');
+                    }
+                });
+              } );
+            } );
+          } );
+        "
+      );
+    }
+  
+    add_action( 'wp_enqueue_scripts', 'yith_wcwl_enqueue_custom_script', 20 );
+  }
 
  
 
