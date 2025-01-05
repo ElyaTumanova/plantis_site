@@ -39,6 +39,8 @@ get_header(); ?>
 
     $medium_delivery_markup_in_mkad =  floatval(str_replace(' ', '', $in_mkad_medium)) - floatval(str_replace(' ', '', $in_mkad));
     $medium_delivery_markup_out_mkad =  floatval(str_replace(' ', '', $out_mkad_medium)) - floatval(str_replace(' ', '', $out_mkad));
+
+    
 ?>
 
 <div class="content-area">
@@ -75,10 +77,17 @@ get_header(); ?>
                                     <?php if($min_small_delivery)
                                     {echo $min_small_delivery.' рублей, стоимость доставки будет увеличена на '.$small_delivery_markup_in_mkad; } ?>
                                     <?php if($small_delivery_markup_in_mkad !== $small_delivery_markup_out_mkad ) 
-                                    {echo ' / '.$small_delivery_markup_out_mkad.' рублей в пределах и за пределами МКАД соответственно'; }
-                                    else {echo ' рублей.';} ?>  
+                                    {echo ' / '.$small_delivery_markup_out_mkad.' рублей в пределах и за пределами МКАД соответственно.'; }
+                                    else {echo ' рублей.';} ?> 
+                                    
+                                    <?php if($min_medium_delivery)
+                                    {echo $min_medium_delivery.' рублей, стоимость доставки будет увеличена на '.$medium_delivery_markup_in_mkad; } ?>
+                                    <?php if($medium_delivery_markup_in_mkad !== $medium_delivery_markup_out_mkad ) 
+                                    {echo ' / '.$small_delivery_markup_out_mkad.' рублей в пределах и за пределами МКАД соответственно.'; }
+                                    else {echo ' рублей.';} ?> 
+                                    
 
-                                    <?php //if($min_medium_delivery){echo $min_medium_delivery;} ?>
+                                
                             <?php endif; ?>			
                         <?php
 
