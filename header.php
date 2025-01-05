@@ -119,7 +119,7 @@
 								<?php endif; ?>
 							<?php else :?>
 								<a href ="<?php echo esc_url( home_url( '/my-account/orders' ) ); ?>" class="header-btn__wrap header-btn__wrap_active">
-									<?php echo $account_logged_icon ?>		
+									<?php echo $account_icon ?>		
 									<span class="header-btn__label">Войти</span>		
 								</a>
 							<?php endif; ?>
