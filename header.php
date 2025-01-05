@@ -118,9 +118,8 @@
 									</div>
 								<?php endif; ?>
 							<?php else :?>
-								<a href ="<?php echo esc_url( home_url( '/my-account/orders' ) ); ?>" class="header-btn__wrap">
+								<a href ="<?php echo esc_url( home_url( '/my-account/orders' ) ); ?>" class="header-btn__wrap header-btn__wrap_active">
 									<?php echo $account_logged_icon ?>		
-									<!-- <img class="header-btn__icon" src="<?php //echo $account_logged_icon ?>" alt="account" width="25" height="25"> -->
 									<span class="header-btn__label">Войти</span>		
 								</a>
 							<?php endif; ?>
@@ -201,13 +200,6 @@
 				<?php 
 					plnt_woocommerce_cart_header_mob(); 
 				?>
-
-				<?php $cart_icon = carbon_get_theme_option('cart_icon')?>
-				<!-- <div class="header-btn__wrap">
-					<?php //plnt_side_cart_count ();?>
-					<?php //echo $cart_icon ?>
-					<span class="header-btn__label">Корзина</span>		
-				</div> -->
 
 			</div><!-- .header-cart -->
 		</div>
