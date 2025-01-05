@@ -172,7 +172,7 @@ if($site === 'http://new.plantis.shop') {
 }
 
 $urgent_deliveries = [$urgent_delivery_inMKAD, $urgent_delivery_outMKAD, $urgent_delivery_inMKAD_small, $urgent_delivery_outMKAD_small, $urgent_delivery_inMKAD_large, $urgent_delivery_outMKAD_large, $urgent_delivery_inMKAD_medium, $urgent_delivery_outMKAD_medium];
-$normal_deliveries = [$delivery_inMKAD, $delivery_outMKAD, $delivery_inMKAD_small, $delivery_outMKAD_small, $delivery_inMKAD_large, $delivery_outMKAD_large, $delivery_inMKAD_medium, $urgent_delivery_outMKAD_medium];
+$normal_deliveries = [$delivery_inMKAD, $delivery_outMKAD, $delivery_inMKAD_small, $delivery_outMKAD_small, $delivery_inMKAD_large, $delivery_outMKAD_large, $delivery_inMKAD_medium, $delivery_outMKAD_medium];
 
 /* Изображения и иконки */
 
