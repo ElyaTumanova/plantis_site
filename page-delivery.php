@@ -45,7 +45,7 @@ get_header(); ?>
                 </div>
                 <div class="delivery__dropdown">
                     <div>
-                        <!-- <h3 class="delivery__heading heading-2">Если ваш заказ <b>от <?php echo //$min_small_delivery ?></b> рублей:</h3> -->
+                        <!-- <h3 class="delivery__heading heading-2">Если ваш заказ <b>от <?php //echo $min_small_delivery ?></b> рублей:</h3> -->
                         <p><strong>Доставка на следующий день или позже:</strong></p>
                             <ul>
                                 <li>в пределах МКАД — от <?php echo $in_mkad ?> рублей;</li>
@@ -61,7 +61,7 @@ get_header(); ?>
                     </div>
                 
                     <!-- <div>
-                        <h3 class="delivery__heading heading-2">Если ваш заказ <b>до <?php echo $min_small_delivery ?></b> рублей:</h3>
+                        <h3 class="delivery__heading heading-2">Если ваш заказ <b>до <?php //echo $min_small_delivery ?></b> рублей:</h3>
                         <?php if(array_key_exists($delivery_courier,$shipping_costs)) :?>
                             <p>Доставка осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</p>
                         <?php else :?>
