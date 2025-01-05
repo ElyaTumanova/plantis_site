@@ -39,6 +39,12 @@ get_header(); ?>
 
     $medium_delivery_markup_in_mkad =  floatval(str_replace(' ', '', $in_mkad_medium)) - floatval(str_replace(' ', '', $in_mkad));
     $medium_delivery_markup_out_mkad =  floatval(str_replace(' ', '', $out_mkad_medium)) - floatval(str_replace(' ', '', $out_mkad));
+    
+    $small_delivery_markup_in_mkad_urg =  floatval(str_replace(' ', '', $in_mkad_small_urg)) - floatval(str_replace(' ', '', $in_mkad_urg));
+    $small_delivery_markup_out_mkad_urg =  floatval(str_replace(' ', '', $out_mkad_small_urg)) - floatval(str_replace(' ', '', $out_mkad_urg));
+
+    $medium_delivery_markup_in_mkad_urg =  floatval(str_replace(' ', '', $in_mkad_medium_urg)) - floatval(str_replace(' ', '', $in_mkad_urg));
+    $medium_delivery_markup_out_mkad_urg =  floatval(str_replace(' ', '', $out_mkad_medium_urg)) - floatval(str_replace(' ', '', $out_mkad_urg));
 
     
 ?>
@@ -85,7 +91,21 @@ get_header(); ?>
                                     <?php if($medium_delivery_markup_in_mkad !== $medium_delivery_markup_out_mkad ) 
                                     {echo ' / '.$small_delivery_markup_out_mkad.' рублей в пределах и за пределами МКАД соответственно.'; }
                                     else {echo ' рублей.';} ?> 
-                                </small>                                  
+                                </small>  
+
+                                <small>2 - если стоимость вашего заказа меньше 
+                                    <?php if($min_small_delivery)
+                                    {echo $min_small_delivery.' рублей, стоимость доставки будет увеличена на '.$small_delivery_markup_in_mkad_urg; } ?>
+                                    <?php if($small_delivery_markup_in_mkad_urg !== $small_delivery_markup_out_mkad_urg ) 
+                                    {echo ' / '.$small_delivery_markup_out_mkad_urg.' рублей в пределах и за пределами МКАД соответственно.'; }
+                                    else {echo ' рублей.';} ?> 
+                                    
+                                    <?php if($min_medium_delivery)
+                                    {echo '<br>Если стоимость меньше '.$min_medium_delivery.' рублей, стоимость доставки будет увеличена на '.$medium_delivery_markup_in_mkad_urg; } ?>
+                                    <?php if($medium_delivery_markup_in_mkad_urg !== $medium_delivery_markup_out_mkad_urg ) 
+                                    {echo ' / '.$small_delivery_markup_out_mkad_urg.' рублей в пределах и за пределами МКАД соответственно.'; }
+                                    else {echo ' рублей.';} ?> 
+                                </small>                                
                             <?php endif; ?>			
                         <?php
 
