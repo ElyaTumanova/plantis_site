@@ -93,6 +93,7 @@ get_header(); ?>
                                     else {echo ' рублей.';} ?> 
                                 </small>  
 
+                                <br>
                                 <small>2 - если стоимость вашего заказа меньше 
                                     <?php if($min_small_delivery)
                                     {echo $min_small_delivery.' рублей, стоимость доставки будет увеличена на '.$small_delivery_markup_in_mkad_urg; } ?>
