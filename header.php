@@ -126,9 +126,9 @@
 							<?php endif; ?>
 						</div>
 						<div class="header__wishlist">
-							<!-- <?php //$whishlist_icon = carbon_get_theme_option('whishlist_icon')?>
+							<?php //$whishlist_icon = carbon_get_theme_option('whishlist_icon')?>
 								<?php echo do_shortcode('[yith_wcwl_items_count]')?>
-								<a href="<?php //echo get_site_url()?>/wishlist" class="header-btn__wrap">	
+								<!-- <a href="<?php //echo get_site_url()?>/wishlist" class="header-btn__wrap">	
 									<?php //echo $whishlist_icon ?>		
 									<span class="header-btn__label">Избранное</span>		
 								</a>
