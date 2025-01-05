@@ -252,6 +252,7 @@
 .delivery small {
     margin-bottom: 15px;
     line-height: 1.4;
+    display: block;
 }
 
 /*--------------------------------------------------------------
