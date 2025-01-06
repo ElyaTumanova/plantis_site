@@ -1,6 +1,5 @@
 let isUrgent;
 let isLate = 0;
-let isAllday = 1;
 let isHideInterval;
 let isHoliday;
 let holidays = [];
@@ -114,7 +113,6 @@ function renderDeliveryIntervals(shippingValue) {
       if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryCourierId || shippingValue == deliveryLongId) {
       } else {
         priceEl.innerHTML = info.for == `additional_delivery_interval_18:00 - 21:00` ? `+${deliveryLateMarkup}₽` : `+0₽` ;
-        priceEl.innerHTML = info.for == `additional_delivery_interval_11:00 - 21:00` ? `-${deliveryAlldayMarkup}₽` : `+0₽` ;
       }
   })
 }
@@ -162,13 +160,6 @@ function ajaxGetLateDelivery(event) {
   }
   //console.log(isLate);
 
-  if(event.target.value == '11:00 - 21:00') {
-    isAllday = '1'
-  } else {
-    isAllday = '0'
-  }
-  console.log(isAllday);
-
   jQuery( function($){
     $.ajax({
         type: 'POST',
@@ -176,7 +167,6 @@ function ajaxGetLateDelivery(event) {
         data: {
             'action': 'get_late_shipping',
             'isLate': isLate,
-            'isAllday': isAllday,
         },
         success: function (result) {
             // Trigger refresh checkout
@@ -230,9 +220,8 @@ if (checkoutForm) {
   plntChekUrgentDelivery();
   renderDeliveryDates(checkedShippingMethod);
 
-  if(deliveryLateMarkup || deliveryAlldayMarkup) {
+  if(deliveryLateMarkup) {
     deliveryIntervalInput[0].setAttribute('checked','checked');
-    console.log(deliveryIntervalInput);
     
     deliveryIntervalLabels.forEach((label) => {
       let intervalInfo = {

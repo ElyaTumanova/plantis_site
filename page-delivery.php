@@ -50,7 +50,6 @@ get_header(); ?>
     $min_medium_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_medium_delivery)) - 1;
 
     $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
-    $allday_markup_delivery = carbon_get_theme_option('allday_markup_delivery');
     
 ?>
 
@@ -200,7 +199,7 @@ get_header(); ?>
                     </div>
                     <div class="delivery__dropdown">
                         <ul>
-                            <li>с 11:00 до 21:00 - <?php echo $allday_markup_delivery?> рублей от стоимости доставки;</li>
+                            <li>с 11:00 до 21:00;</li>
                             <li>с 11:00 до 16:00;</li>
                             <li>с 14:00 до 18:00;</li>
                             <li>с 18:00 до 21:00 + <?php echo $late_markup_delivery?> рублей к стоимости доставки.</li>

@@ -18,7 +18,6 @@ function plnt_set_urgent() {
     }
 
     WC()->session->set('isLate', '0' );
-    WC()->session->set('isAllday', '1' );
 };
 
 //for dev
@@ -86,12 +85,6 @@ function plnt_get_late_shipping() {
     } else {
         WC()->session->set('isLate', '0' );
     }
-
-    if ( $_POST['isAllday'] === '1'){
-        WC()->session->set('isAllday', '1' );
-    } else {
-        WC()->session->set('isAllday', '0' );
-    }
     die(); // (required)
 }
 
@@ -99,7 +92,7 @@ add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_m
 function plnt_refresh_shipping_methods_for_late( $post_data ){
     $bool = true;
 
-    if ( WC()->session->get('isLate' ) === '1' || WC()->session->get('isAllday' ) === '1')
+    if ( WC()->session->get('isLate' ) === '1')
         $bool = false;
 
     // Mandatory to make it work with shipping methods
@@ -169,7 +162,6 @@ function plnt_shipping_conditions( $rates, $package ) {
 	global $urgent_delivery_outMKAD_medium;
 
     $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
-    $allday_markup_delivery = carbon_get_theme_option('allday_markup_delivery');
 
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
 
@@ -196,7 +188,6 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $delivery_inMKAD_medium ] );
         unset( $rates[ $delivery_outMKAD_medium ] );
         WC()->session->set('isLate', '0' );
-        WC()->session->set('isAllday', '0' );
     }
 
     // ДОСТАВКА В ПРАЗДНИКИ
@@ -299,7 +290,6 @@ function plnt_shipping_conditions( $rates, $package ) {
     //поздняя доставка
     if($local_pickup == $chosen_methods[0] || $delivery_courier == $chosen_methods[0] || $delivery_long_dist == $chosen_methods[0]) {
         WC()->session->set('isLate', '0' );  
-        WC()->session->set('isAllday', '0' );  
     }
 
     if (WC()->session->get('isLate' ) === '1') {
@@ -312,15 +302,6 @@ function plnt_shipping_conditions( $rates, $package ) {
         }
     }
 
-    if (WC()->session->get('isAllday' ) === '1') {
-        foreach( $rates as $rate) {
-            if ( 'local_pickup' !== $rate->method_id) {
-                if('free_shipping' !== $rate->method_id) {
-                    $rate->cost = $rate->cost - $allday_markup_delivery;
-                }
-            }	
-        }
-    }
 	return $rates;
 }
 
