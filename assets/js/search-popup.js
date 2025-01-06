@@ -8,6 +8,8 @@ const searchPopupOverlay = document.querySelector('.search__popup-overlay');
 const searchResult = document.querySelector('.search-result');
 const searchInput = document.querySelector('.search-field');
 
+searchInput.focus();
+
 searchOpenPopupBtn.forEach((btn)=>
     btn.addEventListener ("click", (evt)=>{
         toggle_search_popup ();
