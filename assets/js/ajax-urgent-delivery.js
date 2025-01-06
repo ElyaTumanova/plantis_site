@@ -2,7 +2,7 @@ let isUrgent;
 let isLate = 0;
 let isHideInterval;
 let isHoliday;
-let holidays = ["01.01","02.01","31.12"];
+let holidays = [];
 let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
@@ -35,7 +35,7 @@ function plntChekUrgentDelivery() {
   }
   plntAjaxGetUrgent();
 
-  //console.log(isUrgent);
+  console.log(isUrgent);
   
 
   deliveryDates.forEach((date) => {
