@@ -222,6 +222,7 @@ if (checkoutForm) {
 
   if(deliveryLateMarkup) {
     deliveryIntervalInput[0].setAttribute('checked','checked');
+    console.log(deliveryIntervalInput[0]);
     
     deliveryIntervalLabels.forEach((label) => {
       let intervalInfo = {
