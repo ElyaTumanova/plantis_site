@@ -154,8 +154,6 @@ function plntAjaxGetUrgent() {
 // };
 
 function ajaxGetLateDelivery(event) {
-  deliveryIntervalInput[0].setAttribute('checked','checked');
-  console.log(deliveryIntervalInput);
 
   if(event.target.value == '18:00 - 21:00') {
     isLate = '1'
@@ -233,6 +231,9 @@ if (checkoutForm) {
   renderDeliveryDates(checkedShippingMethod);
 
   if(deliveryLateMarkup || deliveryAlldayMarkup) {
+    deliveryIntervalInput[0].setAttribute('checked','checked');
+    console.log(deliveryIntervalInput);
+    
     deliveryIntervalLabels.forEach((label) => {
       let intervalInfo = {
         label: label,
@@ -243,7 +244,6 @@ if (checkoutForm) {
       deliveryIntervalsInfo.push(intervalInfo);
     });
     renderDeliveryIntervals(checkedShippingMethod);
-    ajaxGetLateDelivery();
     deliveryIntervalInput.forEach(el =>{
       el.addEventListener('click', ajaxGetLateDelivery);
     })
