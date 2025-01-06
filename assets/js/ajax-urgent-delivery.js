@@ -24,7 +24,6 @@ let today;
 
 function plntChekUrgentDelivery() {
   //console.log('hi plntChekUrgentDelivery');
-  deliveryDates[0].setAttribute('checked','checked');
   if (holidays) {
     if (holidays.includes(deliveryDates[0].value)) {
       isHoliday = '1'
@@ -213,6 +212,9 @@ if (checkoutForm) {
     deliveryDatesInfo.push(dateInfo);
   });
 
+  deliveryDates[0].setAttribute('checked','checked');
+  deliveryIntervalInput[0].setAttribute('checked','checked');
+  // console.log(deliveryIntervalInput[0]);
   
 
   checkoutForm.addEventListener('change', onChangeShippingMethod);
@@ -220,10 +222,7 @@ if (checkoutForm) {
   plntChekUrgentDelivery();
   renderDeliveryDates(checkedShippingMethod);
 
-  if(deliveryLateMarkup) {
-    // deliveryIntervalInput[0].setAttribute('checked','checked');
-    // console.log(deliveryIntervalInput[0]);
-    
+  if(deliveryLateMarkup) {    
     deliveryIntervalLabels.forEach((label) => {
       let intervalInfo = {
         label: label,
