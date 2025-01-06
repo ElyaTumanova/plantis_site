@@ -8,8 +8,6 @@ const searchPopupOverlay = document.querySelector('.search__popup-overlay');
 const searchResult = document.querySelector('.search-result');
 const searchInput = document.querySelector('.search-field');
 
-searchInput.focus();
-
 searchOpenPopupBtn.forEach((btn)=>
     btn.addEventListener ("click", (evt)=>{
         toggle_search_popup ();
@@ -36,7 +34,8 @@ document.addEventListener('keydown', function(e){
 function toggle_search_popup () {
     searchPopup.classList.toggle ('popup_active');
     body.classList.toggle ('fix-body');
-
+    searchInput.focus();
+    console.log(searchInput);
     // для поиска
     const searchPopupResultBtn = document.querySelector('.search-result__btn');
     const deleteElement = searchResult.querySelectorAll('div');
