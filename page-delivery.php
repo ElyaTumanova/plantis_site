@@ -98,7 +98,7 @@ get_header(); ?>
                                                 echo ' / '.$small_delivery_markup_out_mkad.' рублей в пределах и за пределами МКАД соответственно.'; }
                                             else {echo ' рублей.';}
                                     } ?> 
-                                <strong></p>  
+                                </strong></p>  
 
                                 <!-- <small>2 - если стоимость вашего заказа меньше 
                                    <?php 
