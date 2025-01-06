@@ -91,7 +91,7 @@ get_header(); ?>
                                     } 
                                     
                                     if($min_medium_delivery) {
-                                        echo '<br>Цена доставки для заказов стоимостью от'.$min_small_delivery.' до '.$min_medium_delivery_minus_1.' рублей, увеличена на '.$medium_delivery_markup_in_mkad; 
+                                        echo '<br>Цена доставки для заказов стоимостью от '.$min_small_delivery.' до '.$min_medium_delivery_minus_1.' рублей, увеличена на '.$medium_delivery_markup_in_mkad; 
                                             if($medium_delivery_markup_in_mkad !== $medium_delivery_markup_out_mkad ) { 
                                                 echo ' / '.$small_delivery_markup_out_mkad.' рублей в пределах и за пределами МКАД соответственно.'; }
                                             else {echo ' рублей.';}
