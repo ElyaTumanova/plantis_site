@@ -35,13 +35,13 @@ function plntChekUrgentDelivery() {
   }
   plntAjaxGetUrgent();
 
-  console.log(isUrgent);
+  // console.log(isUrgent);
   
 
   deliveryDates.forEach((date) => {
     date.addEventListener('click', function(event){
-      console.log(event.target.value);
-      console.log(today);
+      // console.log(event.target.value);
+      // console.log(today);
       if(event.target.value == today) {
         isUrgent = '1';
       } else {
