@@ -63,13 +63,13 @@ get_header(); ?>
                 <div class="delivery__dropdown">
                     <div>
                         <!-- <h3 class="delivery__heading heading-2">Если ваш заказ <b>от <?php //echo $min_small_delivery ?></b> рублей:</h3> -->
-                        <p><strong>Доставка на следующий день или позже<sup>1</sup>:</strong></p>
+                        <p><strong>Доставка на следующий день или позже:</strong></p>
                             <ul>
                                 <li>в пределах МКАД — от <?php echo $in_mkad ?> рублей;</li>
                                 <li>за пределы МКАД (до 5 км) — от <?php echo $out_mkad ?> рублей;</li>
                                 <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
                             </ul>
-                        <p><strong>Срочная “день в день”<sup>2</sup></strong>. Можно оформить до 18:00:</p>
+                        <p><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
                         <ul>
                             <li>в пределах МКАД — от <?php echo $in_mkad_urg ?> рублей;</li>
                             <li>за пределы МКАД (до 5 км) — от <?php echo $out_mkad_urg ?> рублей;</li>
@@ -81,22 +81,22 @@ get_header(); ?>
                                 <?php  if($min_medium_delivery) {echo $min_medium_delivery;} else {echo $min_small_delivery;}?></b> рублей 
                                 доставка осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</p>
                             <?php else :?>    
-                                <p>Цена доставки для заказов стоимостью до 
+                                <p><strong>Цена доставки для заказов стоимостью до 
                                     <?php 
                                     if($min_small_delivery) {
-                                        echo $min_small_delivery_minus_1.' рублей, увеличена на '.$small_delivery_markup_in_mkad;  
+                                        echo $min_small_delivery_minus_1.' рублей увеличена на '.$small_delivery_markup_in_mkad;  
                                             if($small_delivery_markup_in_mkad !== $small_delivery_markup_out_mkad ) {
                                                 echo ' / '.$small_delivery_markup_out_mkad.' рублей в пределах и за пределами МКАД соответственно.'; }
                                             else {echo ' рублей.';} 
                                     } 
                                     
                                     if($min_medium_delivery) {
-                                        echo '<br>Цена доставки для заказов стоимостью от '.$min_small_delivery.' до '.$min_medium_delivery_minus_1.' рублей, увеличена на '.$medium_delivery_markup_in_mkad; 
+                                        echo '<br>Цена доставки для заказов стоимостью от '.$min_small_delivery.' до '.$min_medium_delivery_minus_1.' рублей увеличена на '.$medium_delivery_markup_in_mkad; 
                                             if($medium_delivery_markup_in_mkad !== $medium_delivery_markup_out_mkad ) { 
                                                 echo ' / '.$small_delivery_markup_out_mkad.' рублей в пределах и за пределами МКАД соответственно.'; }
                                             else {echo ' рублей.';}
                                     } ?> 
-                                </p>  
+                                <strong></p>  
 
                                 <!-- <small>2 - если стоимость вашего заказа меньше 
                                    <?php 
