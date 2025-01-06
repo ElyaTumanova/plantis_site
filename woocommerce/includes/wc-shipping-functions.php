@@ -287,6 +287,7 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     }
 
+    //поздняя доставка
     if($local_pickup == $chosen_methods[0] || $delivery_courier == $chosen_methods[0] || $delivery_long_dist == $chosen_methods[0]) {
         WC()->session->set('isLate', '0' );  
     }
