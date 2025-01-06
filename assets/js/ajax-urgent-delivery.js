@@ -40,7 +40,8 @@ function plntChekUrgentDelivery() {
 
   deliveryDates.forEach((date) => {
     date.addEventListener('click', function(event){
-      //console.log(event.target.value);
+      console.log(event.target.value);
+      console.log(today);
       if(event.target.value == today) {
         isUrgent = '1';
       } else {
