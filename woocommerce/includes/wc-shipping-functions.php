@@ -309,6 +309,7 @@ add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_smal
 
 function plnt_disable_payment_small_order( $available_gateways ) {
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+    $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
     global $delivery_courier;
     global $delivery_long_dist;
 
