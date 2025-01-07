@@ -359,7 +359,7 @@
 
 /* categories grid */
 
-.cats-grid-wrap {display: none;}
+/* .cats-grid-wrap {display: none;} */
 .cats-grid {
     display: grid;
     /* column-gap: 10px;
@@ -377,7 +377,7 @@
 }
 
 @media (max-width:767px) {
-    .cats-grid-wrap {display: block;}
+    /* .cats-grid-wrap {display: block;} */
     .cats-grid {
         display: grid;
         grid-template-columns: repeat(2, 50%);
