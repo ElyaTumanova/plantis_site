@@ -64,10 +64,11 @@ function plnt_catalog_sidebar() {
 	global $filter_volume_id;
 	global $filter_gift_id; 
 	global $filter_razmer_id;
+	$close_icon = carbon_get_theme_option('close_icon')
 	?>
     <div class="catalog__sidebar modal-mob">
 		<p class="catalog__sidebar-filters-heading">Фильтры</p>
-		<div class="modal-mob__close catalog-sidebar__close button">&#10006;</div>
+		<div class="modal-mob__close catalog-sidebar__close button"><?php echo $close_icon ?></div>
 		<?php plnt_catalog_menu() ?>
 		<div class="catalog__sidebar-filters">
 			<div class="catalog__instock-filter">
