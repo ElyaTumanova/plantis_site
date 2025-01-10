@@ -559,16 +559,14 @@
     align-items: center;
   }
 
-  /* .burger-menu .menu__item_enter::after {
-    background-image: url(https://plantis.shop/wp-content/uploads/2024/11/lk-enter_white.svg);
-    background-repeat: no-repeat;
-    background-size: 27px 27px;
+  
+  .burger-menu .menu__item_enter svg {
     width: 27px;
     height: 27px;
     display: inline-block;
-    content: "";
     margin-left: 8px;
-  } */
+    color: var(--white);
+  }
 
   .catalog-menu__wrap {
     font-weight: 600;
