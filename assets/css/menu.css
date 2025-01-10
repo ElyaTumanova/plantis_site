@@ -554,17 +554,6 @@
   .burger-menu .menu__item_geo path {
     stroke: var(--gray-text);
   }
-  
-  /* .burger-menu .menu__item_geo a::after {
-    background-image: url(https://plantis.shop/wp-content/uploads/2023/12/geo-1.svg);
-    background-repeat: no-repeat;
-    background-size: 21px 25px;
-    width: 21px;
-    height: 25px;
-    display: inline-block;
-    content: "";
-    margin-left: 8px;
-  } */
 
   .burger-menu .menu__item_enter {
     display: flex;

@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="modal-mob burger-menu">
     <div class="modal-mob__close burger-menu__close button">&#10006;</div>
+    <div class="menu__item_accent header__catalog_mob">Каталог</div>
     <!-- контакты -->
     <div class="menu__item_accent ">Контакты</div>
     <div class="menu__item menu__item_geo"><a href="https://yandex.ru/maps/-/CXQ-ErQ" target="blank">Москва, ул. Мещерякова, д.3 </a> 
