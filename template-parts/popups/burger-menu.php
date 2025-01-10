@@ -2,11 +2,13 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+
+$close_icon = carbon_get_theme_option('close_icon')
 ?>
 
 <div class="modal-mob burger-menu">
     <div class="modal-mob__close burger-menu__close button">
-        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.00045 24L24 0.999999M23.9995 24L0.999999 1" stroke="currentColor" stroke-miterlimit="10"></path></svg>
+        <?php echo $close_icon ?>
     </div>
     <div class="menu__item_accent header__catalog_mob">Каталог</div>
     <!-- контакты -->
