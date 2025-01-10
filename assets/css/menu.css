@@ -529,12 +529,12 @@
   .burger-menu .menu__item_accent,  .catalog-menu__wrap .menu__item_accent{
     /* background-color: var(--accent-color);
     color: var(--white); */
-    padding: 15px 55px 15px 30px;
+    padding: 25px 55px 15px 30px;
     font-size: 22px;
   }
 
   .burger-menu .menu__item {
-    padding: 15px 55px 15px 30px;
+    padding: 10px 55px 10px 30px;
     font-size: 16px;
   }
 
