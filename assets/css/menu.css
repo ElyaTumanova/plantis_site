@@ -530,12 +530,13 @@
     /* background-color: var(--accent-color);
     color: var(--white); */
     padding: 25px 55px 15px 30px;
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .burger-menu .menu__item {
     padding: 10px 55px 10px 30px;
-    font-size: 16px;
+    font-size: 14px;
+    color: var(--gray-text);
   }
 
   .burger-menu .menu__item_geo a {
@@ -559,13 +560,15 @@
     align-items: center;
   }
 
-  
   .burger-menu .menu__item_enter svg {
-    width: 27px;
+    width: 28px;
     height: 27px;
     display: inline-block;
     margin-left: 8px;
-    color: var(--white);
+  }
+
+  .burger-menu .menu__item_enter path {
+    stroke: var(--black-color);
   }
 
   .catalog-menu__wrap {
