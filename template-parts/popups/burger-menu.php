@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $close_icon = carbon_get_theme_option('close_icon')
 ?>
 
-<div class="modal-mob burger-menu">
+<div class="">
     <div class="modal-mob__close burger-menu__close button"><?php echo $close_icon ?></div>
     <div class="menu__item_accent header__catalog_mob">Каталог</div>
     <!-- контакты -->
