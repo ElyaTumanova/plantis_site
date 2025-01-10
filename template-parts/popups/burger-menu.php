@@ -5,7 +5,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="modal-mob burger-menu">
-    <div class="modal-mob__close burger-menu__close button">&#10006;</div>
+    <div class="modal-mob__close burger-menu__close button">
+        <svg viewBox="0 0 19 18" width="16" height="16" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M14.394 4L4.39404 14" stroke="#212121" stroke-width="1.3"></path><path d="M4.39404 4L14.394 14" stroke="#212121" stroke-width="1.3"></path></svg>
+    </div>
     <div class="menu__item_accent header__catalog_mob">Каталог</div>
     <!-- контакты -->
     <div class="menu__item_accent ">Контакты</div>
