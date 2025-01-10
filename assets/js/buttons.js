@@ -66,16 +66,20 @@ function toggle_mob_menu () {
 # Catalog for mobile
 --------------------------------------------------------------*/
 const catalogMob = document.querySelector('.catalog-menu__wrap');
-const catalogMobOpen = document.querySelector('.header__catalog_mob');
+const catalogMobOpen = document.querySelectorAll('.header__catalog_mob');
 const catalogMobClose = document.querySelector('.catalog-menu__close');
+
+console.log(catalogMobOpen);
 
 // для разворачивая пункта меню с растениями
 const dropdownPlants = catalogMob.querySelector('.catalog__dropdown');
 const menuPlants = dropdownPlants.querySelector('.catalog__dropdown-menu');
+catalogMobOpen.forEach ((el)=>{
+    el.addEventListener ("click", (evt)=>{
+        toggle_mob_catalog ();
+    });
+})
 
-catalogMobOpen.addEventListener ("click", (evt)=>{
-    toggle_mob_catalog ();
-});
 catalogMobClose.addEventListener ("click", (evt)=>{
     toggle_mob_catalog ();
 });
