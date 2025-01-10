@@ -527,10 +527,10 @@
   }
 
   .burger-menu .menu__item_accent,  .catalog-menu__wrap .menu__item_accent{
-    background-color: var(--accent-color);
-    color: var(--white);
+    /* background-color: var(--accent-color);
+    color: var(--white); */
     padding: 15px 55px 15px 30px;
-    font-size: 16px;
+    font-size: 22px;
   }
 
   .burger-menu .menu__item {
