@@ -142,7 +142,7 @@
 .search-form {
     display: flex;
     justify-content: space-between;
-    width: calc(100% - 35px);
+    width: calc(100% - 35px); /*ширина close button и column gap*/
 }
 
 input[type="search"], input[type="search"]:focus-visible {
