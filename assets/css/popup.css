@@ -142,6 +142,7 @@
 .search-form {
     display: flex;
     justify-content: space-between;
+    width: calc(100% - 35px);
 }
 
 input[type="search"], input[type="search"]:focus-visible {
@@ -156,6 +157,7 @@ input[type="search"], input[type="search"]:focus-visible {
 .search__wrap {
     display: flex;
     justify-content: space-between;
+    column-gap: 10px;
 }
   
 .search__close {
