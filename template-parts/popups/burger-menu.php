@@ -2,13 +2,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-
-$close_icon = carbon_get_theme_option('close_icon')
 ?>
 
 <div class="burger-menu__wrap">
-    <!-- <div class="modal-mob__close burger-menu__close button"><?php //echo $close_icon ?></div> -->
-    <!-- <div class="menu__item_accent header__catalog_mob">Каталог</div> -->
     <!-- контакты -->
     <div class="menu__item_accent ">Контакты</div>
     <div class="menu__item menu__item_geo"><a href="https://yandex.ru/maps/-/CXQ-ErQ" target="blank">Москва, ул. Мещерякова, д.3 </a> 
