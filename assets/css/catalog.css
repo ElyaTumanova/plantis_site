@@ -130,6 +130,7 @@
         z-index: 1;
         padding-top: 0;
         overflow: hidden;
+        left: 0;
     }
 
     .catalog-sidebar__close {
