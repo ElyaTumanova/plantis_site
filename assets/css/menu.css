@@ -592,3 +592,8 @@
 .burger-menu__wrap_open {
     display: block;
 }
+
+.burger-menu__nav {
+    display: flex;
+    justify-content: space-around;
+}
