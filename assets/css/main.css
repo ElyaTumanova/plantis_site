@@ -286,30 +286,30 @@
     height: 50px;
     border-radius: 100%;
     border: none;
-    padding: 0;
+    /* padding: 0; */
 }
 
-/* .social-media__button-telegram {
+.social-media__button-telegram {
     background-color: var(--telegram);
 }
 
 .social-media__button-whatsapp {
     background-color: var(--whatsapp);
-} */
+}
 
 .social-media__button-icon {
-    /* height: 30px; */
+    height: 30px;
     fill: white;
     margin: auto; 
 }
 
-.social-media__button-telegram .social-media__button-icon path {
+/* .social-media__button-telegram .social-media__button-icon path {
     stroke: var(--gray-text);
 }
 
 .social-media__button-whatsapp .social-media__button-icon path {
     fill: var(--gray-text);
-}
+} */
 
 @media (max-width:767px) {
     .main__contacts {
