@@ -487,7 +487,6 @@
     }
     .modal-mob_active {
         display: none;
-        left: 0;
     }
 }  
 
@@ -530,6 +529,7 @@
 
 .modal-mob_active {
     display: block;
+    left: 0;
 }
 
 .burger-menu {
