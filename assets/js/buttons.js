@@ -98,7 +98,7 @@ function open_catalog () {
 # Catalog for mobile
 --------------------------------------------------------------*/
 const catalogMob = document.querySelector('.catalog-menu__wrap');
-const catalogMobOpen = document.querySelectorAll('.header__catalog_mob');
+const catalogMobOpen = document.querySelector('.header__catalog_mob');
 // const catalogMobClose = document.querySelector('.catalog-menu__close');
 
 console.log(catalogMobOpen);
