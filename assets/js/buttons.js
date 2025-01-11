@@ -57,6 +57,16 @@ const menuMobCatalogBtn = document.querySelector('.burger-menu__nav_catalog');
 const menuMobMenu = document.querySelector('.burger-menu__wrap');
 const menuMobCatalog = document.querySelector('.catalog-menu__wrap');
 
+const catalogMob = document.querySelector('.catalog-menu__wrap');
+const catalogMobOpen = document.querySelector('.header__catalog_mob');
+// const catalogMobClose = document.querySelector('.catalog-menu__close');
+
+//console.log(catalogMobOpen);
+
+// для разворачивая пункта меню с растениями
+const dropdownPlants = catalogMob.querySelector('.catalog__dropdown');
+const menuPlants = dropdownPlants.querySelector('.catalog__dropdown-menu');
+
 menuMobOpen.addEventListener ("click", (evt)=>{
     toggle_mob_menu ();
     open_menu ();
@@ -99,28 +109,19 @@ function open_catalog () {
     menuMobCatalog.classList.add('catalog-menu__wrap_open');
     menuMobCatalogBtn.classList.add('burger-menu__nav-btn_active');
 
+     // для разворачивая пункта меню с растениями
+     menuPlants.classList.add('catalog__dropdown-menu_show');
+     dropdownPlants.classList.add('catalog__dropdown_open');
+
 }
 
 /*--------------------------------------------------------------
 # Catalog for mobile
 --------------------------------------------------------------*/
-const catalogMob = document.querySelector('.catalog-menu__wrap');
-const catalogMobOpen = document.querySelector('.header__catalog_mob');
-// const catalogMobClose = document.querySelector('.catalog-menu__close');
-
-//console.log(catalogMobOpen);
-
-// для разворачивая пункта меню с растениями
-const dropdownPlants = catalogMob.querySelector('.catalog__dropdown');
-const menuPlants = dropdownPlants.querySelector('.catalog__dropdown-menu');
-
 
 catalogMobOpen.addEventListener ("click", (evt)=>{
     toggle_mob_menu ();
     open_catalog ();
-    // для разворачивая пункта меню с растениями
-    menuPlants.classList.add('catalog__dropdown-menu_show');
-	dropdownPlants.classList.add('catalog__dropdown_open');
 });
 
 
