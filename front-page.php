@@ -51,10 +51,11 @@ global $skidki_cat_id;
 		<?php
 			get_template_part( 'template-parts/advantages' );
 		?>
-		<div class="main__contacts">
+		<!-- <div class="main__contacts">
 			<p class="main__contacts-text">Не знаете, какое комнатное растение подойдёт именно вам?<br>Спросите нас об этом!</p>
-			<?php get_template_part('template-parts/social-media-btns');?>
-		</div>
+			<?php //get_template_part('template-parts/social-media-btns');?>
+		</div> -->
+		<div class="main__telegram"></div>
 	</div>
 	<div class="main__about container main__row">
 		<h2 class="main__about-heading">ИНТЕРНЕТ МАГАЗИН КОМНАТНЫХ РАСТЕНИЙ и цветов PLANTIS.SHOP</h2>		
