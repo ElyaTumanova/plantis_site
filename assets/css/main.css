@@ -303,8 +303,12 @@
     margin: auto; 
 }
 
-.social-media__button-icon path {
+.social-media__button-telegram .social-media__button-icon path {
     stroke: var(--gray-text);
+}
+
+.social-media__button-whatsapp .social-media__button-icon path {
+    fill: var(--gray-text);
 }
 
 @media (max-width:767px) {
