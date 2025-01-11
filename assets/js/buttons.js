@@ -91,7 +91,7 @@ function toggle_mob_menu () {
     menuMob.classList.toggle ('modal-mob_active');
     body.classList.toggle ('fix-body');
     menuMobWrap.classList.toggle('popup_active');
-    menuMob.scrollTo(0, 100)
+    menuMob.scrollTo(0, 0)
 };
 
 function open_menu () {
