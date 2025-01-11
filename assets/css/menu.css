@@ -616,6 +616,8 @@
     font-size: 20px;
     font-weight: 700;
     color: var(--gray-text);
+    border-bottom: 1px solid var(--gray);
+    padding-bottom: 10px;
 }
 
 .burger-menu__nav-btn_active {
