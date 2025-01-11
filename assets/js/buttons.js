@@ -45,7 +45,7 @@ window.addEventListener('resize', () => {
 /*--------------------------------------------------------------
 # Menu in header for mobile
 --------------------------------------------------------------*/
-const menuMob = document.querySelector('.burger-menu');
+const menuMob = document.querySelector('.burger-menu .modal-mob');
 const menuMobOpen = document.querySelector('.header__mob-menu');
 const menuMobClose = document.querySelector('.burger-menu__close');
 const body = document.querySelector('body');
