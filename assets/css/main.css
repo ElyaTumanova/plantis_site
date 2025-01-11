@@ -325,6 +325,18 @@
     background-size: contain;
 }
 
+@media (min-width:1279px) {
+    .main__telegram {
+        background-image: url(http://new.plantis.shop/wp-content/uploads/2025/01/telegram_mob_squarenorm.png), radial-gradient(#4AB0E9, #ABDAF5);
+    }
+}
+
+@media (min-width:767px) {
+    .main__telegram {
+        min-height: 200px;
+    }
+}
+
 /* about section */
 
 .main__about-heading {
