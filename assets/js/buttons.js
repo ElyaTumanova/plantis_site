@@ -84,6 +84,7 @@ function open_menu () {
     menuMobCatalogBtn.classList.remove('burger-menu__nav-btn_active');
 
 }
+
 function open_catalog () {
     menuMobMenu.classList.remove('burger-menu__wrap_open');
     menuMobMenuBtn.classList.remove('burger-menu__nav-btn_active');
@@ -96,32 +97,34 @@ function open_catalog () {
 /*--------------------------------------------------------------
 # Catalog for mobile
 --------------------------------------------------------------*/
-const catalogMob = document.querySelector('.catalog-menu__wrap');
+// const catalogMob = document.querySelector('.catalog-menu__wrap');
 const catalogMobOpen = document.querySelectorAll('.header__catalog_mob');
-const catalogMobClose = document.querySelector('.catalog-menu__close');
+// const catalogMobClose = document.querySelector('.catalog-menu__close');
 
-console.log(catalogMobOpen);
+//console.log(catalogMobOpen);
 
 // для разворачивая пункта меню с растениями
 const dropdownPlants = catalogMob.querySelector('.catalog__dropdown');
 const menuPlants = dropdownPlants.querySelector('.catalog__dropdown-menu');
-catalogMobOpen.forEach ((el)=>{
-    el.addEventListener ("click", (evt)=>{
-        toggle_mob_catalog ();
-    });
-})
 
-catalogMobClose.addEventListener ("click", (evt)=>{
-    toggle_mob_catalog ();
+
+catalogMobOpen.addEventListener ("click", (evt)=>{
+    toggle_mob_menu ();
+    open_catalog ();
 });
 
-function toggle_mob_catalog () {
-    catalogMob.classList.toggle ('modal-mob_active');
-    body.classList.toggle ('fix-body');
-    // для разворачивая пункта меню с растениями
-    menuPlants.classList.add('catalog__dropdown-menu_show');
-	dropdownPlants.classList.add('catalog__dropdown_open');
-};
+
+// catalogMobClose.addEventListener ("click", (evt)=>{
+//     toggle_mob_catalog ();
+// });
+
+// function toggle_mob_catalog () {
+//     catalogMob.classList.toggle ('modal-mob_active');
+//     body.classList.toggle ('fix-body');
+//     // для разворачивая пункта меню с растениями
+//     menuPlants.classList.add('catalog__dropdown-menu_show');
+// 	dropdownPlants.classList.add('catalog__dropdown_open');
+// };
 
 
 
