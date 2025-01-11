@@ -303,6 +303,10 @@
     margin: auto; 
 }
 
+.social-media__button-icon path {
+    stroke: var(--gray-text);
+}
+
 @media (max-width:767px) {
     .main__contacts {
         width: 270px;
