@@ -61,7 +61,10 @@ $close_icon = carbon_get_theme_option('close_icon')
 <?php get_template_part('template-parts/popups/search-popup');?>
 <div class="modal-mob burger-menu">
     <div class="modal-mob__close burger-menu__close button"><?php echo $close_icon ?></div>
-    <div>Меню</div>
+    <div class="burger-menu__nav container">
+        <div>Меню</div>
+        <div>Каталог</div>
+    </div>
     <?php get_template_part('template-parts/popups/burger-menu');?>
     <?php get_template_part('template-parts/popups/catalog-menu');?>
 </div>
