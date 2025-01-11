@@ -41,55 +41,6 @@ window.addEventListener('resize', () => {
 });
 
 
-
-/*--------------------------------------------------------------
-# Menu in header for mobile
---------------------------------------------------------------*/
-const menuMob = document.querySelector('.burger-menu');
-const menuMobOpen = document.querySelector('.header__mob-menu');
-const menuMobClose = document.querySelector('.burger-menu__close');
-const body = document.querySelector('body');
-
-menuMobOpen.addEventListener ("click", (evt)=>{
-    toggle_mob_menu ();
-});
-menuMobClose.addEventListener ("click", (evt)=>{
-    toggle_mob_menu ();
-});
-
-function toggle_mob_menu () {
-    menuMob.classList.toggle ('modal-mob_active');
-    body.classList.toggle ('fix-body');
-};
-
-/*--------------------------------------------------------------
-# Catalog for mobile
---------------------------------------------------------------*/
-const catalogMob = document.querySelector('.catalog-menu__wrap');
-const catalogMobOpen = document.querySelector('.header__catalog_mob');
-const catalogMobClose = document.querySelector('.catalog-menu__close');
-
-// для разворачивая пункта меню с растениями
-const dropdownPlants = catalogMob.querySelector('.catalog__dropdown');
-const menuPlants = dropdownPlants.querySelector('.catalog__dropdown-menu');
-
-catalogMobOpen.addEventListener ("click", (evt)=>{
-    toggle_mob_catalog ();
-});
-catalogMobClose.addEventListener ("click", (evt)=>{
-    toggle_mob_catalog ();
-});
-
-function toggle_mob_catalog () {
-    catalogMob.classList.toggle ('modal-mob_active');
-    body.classList.toggle ('fix-body');
-    // для разворачивая пункта меню с растениями
-    menuPlants.classList.add('catalog__dropdown-menu_show');
-	dropdownPlants.classList.add('catalog__dropdown_open');
-};
-
-
-
 /*--------------------------------------------------------------
 # Filters for mobile in catalog
 --------------------------------------------------------------*/
@@ -159,4 +110,4 @@ function scrollToTop () {
       })
 }
 
-console.log('hello master');
+console.log('hello redesign');

@@ -63,6 +63,9 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 
 		wp_enqueue_script( 'quantity-buttons', get_template_directory_uri() .
 		                                     '/assets/js/quantity-buttons.js', array( 'jquery' ), null, true );
+
+		wp_enqueue_script( 'menu-mob', get_template_directory_uri() .
+		                                     '/assets/js/menu-mob.js', array( 'jquery' ), null, true );
 											 
 		// wp_enqueue_script( 'jquery.flexisel', get_template_directory_uri() .
 		//                                      '/assets/js/jquery.flexisel.js', array( 'jquery' ), null, true );

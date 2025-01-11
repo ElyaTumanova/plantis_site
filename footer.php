@@ -1,3 +1,11 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
+$close_icon = carbon_get_theme_option('close_icon')
+?>
+
 <footer id="footer" class="footer" role="contentinfo">
 
 <div class="footer__nav container">
@@ -39,7 +47,7 @@
     <div class="side-cart__popup popup">
         <div class="side-cart">
             <h4 class="side-cart__title heading-2">Корзина</h4>
-            <div class="modal-mob__close side-cart__close button">&#10006;</div>      
+            <div class="modal-mob__close side-cart__close button"><?php echo $close_icon ?></div>      
             <?php plnt_woocommerce_mini_cart();?> 
         </div>
         <div class="side-cart__popup-overlay popup-overlay"></div>
@@ -51,8 +59,20 @@
 </div><!-- #page -->
 
 <?php get_template_part('template-parts/popups/search-popup');?>
-<?php get_template_part('template-parts/popups/burger-menu');?>
-<?php get_template_part('template-parts/popups/catalog-menu');?>
+<div class="burger-menu"> 
+    <div class="modal-mob">
+        <div class="modal-mob__close burger-menu__close button"><?php echo $close_icon ?></div>
+        <div class="burger-menu__nav container">
+            <div class="burger-menu__nav-btn burger-menu__nav_menu">Меню</div>
+            <div class="burger-menu__nav-btn burger-menu__nav_catalog">Каталог</div>
+        </div>
+        <?php get_template_part('template-parts/popups/burger-menu');?>
+        <div class="catalog-menu__wrap">
+            <?php plnt_catalog_menu() ?>
+        </div>
+    </div>
+    <div class="modal-mob__overlay"></div>
+</div>
 
 <?php 
 if (!is_account_page()) {

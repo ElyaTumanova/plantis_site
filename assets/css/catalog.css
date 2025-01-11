@@ -104,7 +104,7 @@
     .catalog__sidebar {
         padding-right: 40px;
         padding-left: 40px;
-        width: 100vw;
+        /* width: 100vw; */
     }  
 
     .catalog__grid .menu-catalog-container {
@@ -130,6 +130,7 @@
         z-index: 1;
         padding-top: 0;
         overflow: hidden;
+        left: 0;
     }
 
     .catalog-sidebar__close {
@@ -159,7 +160,7 @@
 
 .catalog__sidebar {
     grid-area: sidebar;
-    padding-right: 10px;
+    /* padding-right: 10px; */
 }
 
 .woocommerce-ordering {

@@ -384,7 +384,7 @@
     display: block;
     /* color: var(--text); */
     padding: 10px 0;
-    border-bottom: solid 1px #6f6f6f;
+    border-bottom: solid 1px var(--gray);
     margin-left: 5px;
 }
 
@@ -435,7 +435,7 @@
 }
 
 .catalog__node_lvl_1 > .menu__dropdown-arrow {
-    right: 0;
+    right: 0;  
 }
 .catalog__node_lvl_2 > .menu__dropdown-arrow {
     right: 5px;
@@ -456,7 +456,7 @@
     cursor: pointer;
     color: var(--accent-color);
 }
- 
+
 .catalog__dropdown .catalog__dropdown-menu {
     max-height: 0;
     overflow: hidden;
@@ -464,7 +464,7 @@
     padding: 0;
     margin: 0;
 }
-  
+
 .catalog__dropdown .catalog__dropdown-menu_show {
     display: block;
     max-height: 9999px;
@@ -487,23 +487,24 @@
     }
     .modal-mob_active {
         display: none;
-      }
+    }
 }  
 
 .modal-mob {
-    width: 100vw;
+    width: 350px;
     height: var(--vh);
     overflow-y: scroll;
     padding: 55px 0;
     background-color: var(--background);
     position: fixed;
     top: 0;
+    left: -350px;
     z-index: 9999;
-    display: none;
-  }
+    transition: left 0.5s;
+}
 
-  .modal-mob__close {
-    position: fixed;
+.modal-mob__close {
+    position: absolute;
     top: 5px;
     right: 0;
     border: none;
@@ -511,70 +512,120 @@
     font-weight: 700;
     padding-right: 22px;
     padding-top: 12px;
-  }
+}
 
-  .side-cart .modal-mob__close {
+.modal-mob__overlay {
+    background: transparent;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    position: fixed;
+}
+
+/* .burger-menu .modal-mob__close {
     position: absolute;
-  }
+}
 
-  .modal-mob_active {
-    display: block;
-  }
+.side-cart .modal-mob__close {
+    position: absolute;
+} */
 
-  .burger-menu {
+.modal-mob_active {
+    left: 0;
+}
+
+.burger-menu {
     font-weight: 600;
     line-height: 1.3;
-  }
+}
 
-  .burger-menu .menu__item_accent,  .catalog-menu__wrap .menu__item_accent{
-    background-color: var(--accent-color);
-    color: var(--white);
-    padding: 15px 55px 15px 30px;
-    font-size: 16px;
-  }
+.burger-menu .menu__item_accent,  .catalog-menu__wrap .menu__item_accent{
+    /* background-color: var(--accent-color);
+    color: var(--white); */
+    padding: 25px 55px 10px 30px;
+    font-size: 18px;
+}
 
-  .burger-menu .menu__item {
-    padding: 15px 55px 15px 30px;
-    font-size: 16px;
-  }
+.burger-menu .menu__item_accent:not(:first-of-type) {
+    margin-top: 20px;
+    border-top: 1px solid var(--gray);
+}
 
-  .burger-menu .menu__item_geo a {
+.burger-menu .menu__item {
+    padding: 10px 55px 10px 30px;
+    font-size: 14px;
+    color: var(--gray-text);
+}
+
+.burger-menu .menu__item_geo {
     display: flex;
     align-items: center;
-  }
-  
-  .burger-menu .menu__item_geo a::after {
-    background-image: url(https://plantis.shop/wp-content/uploads/2023/12/geo-1.svg);
-    background-repeat: no-repeat;
-    background-size: 21px 25px;
-    width: 21px;
-    height: 25px;
+}
+
+.burger-menu .menu__item_geo svg {
+    width: 22px;
+    height: 22px;
     display: inline-block;
-    content: "";
     margin-left: 8px;
-  }
+}
 
-  .burger-menu .menu__item_enter {
+.burger-menu .menu__item_geo path {
+    fill: var(--gray-text);
+}
+
+.burger-menu .menu__item_enter {
     display: flex;
     align-items: center;
-  }
+}
 
-  .burger-menu .menu__item_enter::after {
-    background-image: url(https://plantis.shop/wp-content/uploads/2024/11/lk-enter_white.svg);
-    background-repeat: no-repeat;
-    background-size: 27px 27px;
-    width: 27px;
+.burger-menu .menu__item_enter svg {
+    width: 28px;
     height: 27px;
     display: inline-block;
-    content: "";
     margin-left: 8px;
-  }
+}
 
-  .catalog-menu__wrap {
+.burger-menu .menu__item_enter path {
+    stroke: var(--black-color);
+}
+
+.catalog-menu__wrap {
     font-weight: 600;
     line-height: 1.3;
-  }
+}
 
-  .catalog-menu__wrap .menu-catalog-container {
-    padding: 15px 30px 15px 30px;
-  }
+.catalog-menu__wrap .menu-catalog-container {
+    padding: 25px 30px 15px 30px;
+}
+
+.catalog-menu__wrap .menu-catalog-container .catalog__node {
+    font-size: 18px;
+}
+
+.catalog-menu__wrap {
+    display: none;
+}
+.burger-menu__wrap {
+    display: none;
+}
+.catalog-menu__wrap_open {
+    display: block;
+}
+.burger-menu__wrap_open {
+    display: block;
+}
+
+.burger-menu__nav {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gray-text);
+    border-bottom: 1px solid var(--gray);
+    padding-bottom: 10px;
+}
+
+.burger-menu__nav-btn_active {
+    color: var(--text);
+}
+
