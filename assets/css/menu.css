@@ -384,7 +384,7 @@
     display: block;
     /* color: var(--text); */
     padding: 10px 0;
-    border-bottom: solid 1px #6f6f6f;
+    border-bottom: solid 1px var(--gray);
     margin-left: 5px;
 }
 
