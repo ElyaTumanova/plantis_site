@@ -435,7 +435,7 @@
 }
 
 .catalog__node_lvl_1 > .menu__dropdown-arrow {
-    right: 0;
+    right: 0;  
 }
 .catalog__node_lvl_2 > .menu__dropdown-arrow {
     right: 5px;
@@ -456,7 +456,7 @@
     cursor: pointer;
     color: var(--accent-color);
 }
- 
+
 .catalog__dropdown .catalog__dropdown-menu {
     max-height: 0;
     overflow: hidden;
@@ -464,7 +464,7 @@
     padding: 0;
     margin: 0;
 }
-  
+
 .catalog__dropdown .catalog__dropdown-menu_show {
     display: block;
     max-height: 9999px;
@@ -487,7 +487,7 @@
     }
     .modal-mob_active {
         display: none;
-      }
+        }
 }  
 
 .modal-mob {
@@ -500,9 +500,9 @@
     top: 0;
     z-index: 9999;
     display: none;
-  }
+}
 
-  .modal-mob__close {
+.modal-mob__close {
     position: fixed;
     top: 5px;
     right: 0;
@@ -511,71 +511,84 @@
     font-weight: 700;
     padding-right: 22px;
     padding-top: 12px;
-  }
+}
 
-  .side-cart .modal-mob__close {
+.side-cart .modal-mob__close {
     position: absolute;
-  }
+}
 
-  .modal-mob_active {
+.modal-mob_active {
     display: block;
-  }
+}
 
-  .burger-menu {
+.burger-menu {
     font-weight: 600;
     line-height: 1.3;
-  }
+}
 
-  .burger-menu .menu__item_accent,  .catalog-menu__wrap .menu__item_accent{
+.burger-menu .menu__item_accent,  .catalog-menu__wrap .menu__item_accent{
     /* background-color: var(--accent-color);
     color: var(--white); */
     padding: 25px 55px 10px 30px;
     font-size: 18px;
-  }
+}
 
-  .burger-menu .menu__item {
+.burger-menu .menu__item {
     padding: 10px 55px 10px 30px;
     font-size: 14px;
     color: var(--gray-text);
-  }
+}
 
-  .burger-menu .menu__item_geo {
+.burger-menu .menu__item_geo {
     display: flex;
     align-items: center;
-  }
+}
 
-  .burger-menu .menu__item_geo svg {
+.burger-menu .menu__item_geo svg {
     width: 22px;
     height: 22px;
     display: inline-block;
     margin-left: 8px;
-  }
+}
 
-  .burger-menu .menu__item_geo path {
+.burger-menu .menu__item_geo path {
     fill: var(--gray-text);
-  }
+}
 
-  .burger-menu .menu__item_enter {
+.burger-menu .menu__item_enter {
     display: flex;
     align-items: center;
-  }
+}
 
-  .burger-menu .menu__item_enter svg {
+.burger-menu .menu__item_enter svg {
     width: 28px;
     height: 27px;
     display: inline-block;
     margin-left: 8px;
-  }
+}
 
-  .burger-menu .menu__item_enter path {
+.burger-menu .menu__item_enter path {
     stroke: var(--black-color);
-  }
+}
 
-  .catalog-menu__wrap {
+.catalog-menu__wrap {
     font-weight: 600;
     line-height: 1.3;
-  }
+}
 
-  .catalog-menu__wrap .menu-catalog-container {
+.catalog-menu__wrap .menu-catalog-container {
     padding: 15px 30px 15px 30px;
-  }
+}
+
+.catalog-menu__wrap {
+    display: none;
+}
+.burger-menu__wrap {
+    display: none;
+}
+.catalog-menu__wrap_open {
+    display: block;
+}
+.burger-menu__wrap_open {
+    display: block;
+}
