@@ -213,6 +213,7 @@
         /* overflow-y: scroll; */
         padding-bottom: 10px;
         margin: 0;
+        row-gap: 20px;
     }
 
     .advantages__wrap {
