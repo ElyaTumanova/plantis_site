@@ -55,7 +55,7 @@ global $skidki_cat_id;
 			<p class="main__contacts-text">Не знаете, какое комнатное растение подойдёт именно вам?<br>Спросите нас об этом!</p>
 			<?php //get_template_part('template-parts/social-media-btns');?>
 		</div> -->
-		<div class="main__telegram"></div>
+		<a class="main__telegram" href="https://t.me/plantis"></a>
 	</div>
 	<div class="main__about container main__row">
 		<h2 class="main__about-heading">ИНТЕРНЕТ МАГАЗИН КОМНАТНЫХ РАСТЕНИЙ и цветов PLANTIS.SHOP</h2>		
