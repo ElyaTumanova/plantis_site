@@ -45,7 +45,9 @@ window.addEventListener('resize', () => {
 /*--------------------------------------------------------------
 # Menu in header for mobile
 --------------------------------------------------------------*/
+const menuMobWrap = document.querySelector('.burger-menu');
 const menuMob = document.querySelector('.burger-menu .modal-mob');
+const menuMobOverlay = document.querySelector('.burger-menu .modal-mob__overlay');
 const menuMobOpen = document.querySelector('.header__mob-menu');
 const menuMobClose = document.querySelector('.burger-menu__close');
 const body = document.querySelector('body');
@@ -71,9 +73,14 @@ menuMobCatalogBtn.addEventListener ("click", (evt)=>{
     open_catalog ();
 });
 
+menuMobOverlay.addEventListener ("click", (evt)=>{
+    toggle_mob_menu ();
+});
+
 function toggle_mob_menu () {
     menuMob.classList.toggle ('modal-mob_active');
     body.classList.toggle ('fix-body');
+    menuMobWrap.classList.toggle('popup_active');
 };
 
 function open_menu () {
