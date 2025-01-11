@@ -546,6 +546,12 @@
     font-size: 18px;
 }
 
+.burger-menu .menu__item_accent:not(:first-of-type) {
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid var(--gray);
+}
+
 .burger-menu .menu__item {
     padding: 10px 55px 10px 30px;
     font-size: 14px;
