@@ -491,20 +491,20 @@
 }  
 
 .modal-mob {
-    width: 350px;
+    width: 400px;
     height: var(--vh);
     overflow-y: scroll;
     padding: 55px 0;
     background-color: var(--background);
     position: fixed;
     top: 0;
-    left: -350px;
+    left: -400px;
     z-index: 9999;
     transition: left 0.5s;
 }
 
 .modal-mob__close {
-    position: fixed;
+    position: absolute;
     top: 5px;
     right: 0;
     border: none;
@@ -522,13 +522,13 @@
     position: fixed;
 }
 
-.burger-menu .modal-mob__close {
+/* .burger-menu .modal-mob__close {
     position: absolute;
 }
 
 .side-cart .modal-mob__close {
     position: absolute;
-}
+} */
 
 .modal-mob_active {
     left: 0;
