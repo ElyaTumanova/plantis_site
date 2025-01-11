@@ -590,7 +590,11 @@
 }
 
 .catalog-menu__wrap .menu-catalog-container {
-    padding: 15px 30px 15px 30px;
+    padding: 25px 30px 15px 30px;
+}
+
+.catalog-menu__wrap .menu-catalog-container .catalog__node {
+    font-size: 18px;
 }
 
 .catalog-menu__wrap {
