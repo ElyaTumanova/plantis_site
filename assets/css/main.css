@@ -321,6 +321,9 @@
     border-radius: 10px;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
     background-image: url(http://new.plantis.shop/wp-content/uploads/2025/01/telegram_mobnorm-1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
 /* about section */
