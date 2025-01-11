@@ -118,6 +118,9 @@ const menuPlants = dropdownPlants.querySelector('.catalog__dropdown-menu');
 catalogMobOpen.addEventListener ("click", (evt)=>{
     toggle_mob_menu ();
     open_catalog ();
+    // для разворачивая пункта меню с растениями
+    menuPlants.classList.add('catalog__dropdown-menu_show');
+	dropdownPlants.classList.add('catalog__dropdown_open');
 });
 
 
