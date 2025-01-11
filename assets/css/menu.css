@@ -547,7 +547,6 @@
 }
 
 .burger-menu .menu__item_accent:not(:first-of-type) {
-    padding-top: 20px;
     margin-top: 20px;
     border-top: 1px solid var(--gray);
 }
