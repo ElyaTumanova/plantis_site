@@ -101,7 +101,7 @@ const catalogMob = document.querySelector('.catalog-menu__wrap');
 const catalogMobOpen = document.querySelector('.header__catalog_mob');
 // const catalogMobClose = document.querySelector('.catalog-menu__close');
 
-console.log(catalogMobOpen);
+//console.log(catalogMobOpen);
 
 // для разворачивая пункта меню с растениями
 const dropdownPlants = catalogMob.querySelector('.catalog__dropdown');
