@@ -159,7 +159,7 @@
 
 .catalog__sidebar {
     grid-area: sidebar;
-    padding-right: 10px;
+    /* padding-right: 10px; */
 }
 
 .woocommerce-ordering {
