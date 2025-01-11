@@ -491,14 +491,14 @@
 }  
 
 .modal-mob {
-    width: 400px;
+    width: 350px;
     height: var(--vh);
     overflow-y: scroll;
     padding: 55px 0;
     background-color: var(--background);
     position: fixed;
     top: 0;
-    left: -400px;
+    left: -350px;
     z-index: 9999;
     transition: left 0.5s;
 }
