@@ -85,6 +85,7 @@
 
 .main__banners img, .main__banners_mob img {
     border-radius: 5px;
+    width: 100%;
 }
 
 /* catalog buttons */
