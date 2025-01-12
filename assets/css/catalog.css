@@ -363,10 +363,17 @@ ul.products {
 /* кнопка добавления в корзину */
 
 .add_to_cart_button, .product_type_simple {
-    /* width: 100%; */
+    width: 100%;
     color: var(--white);
     background-color: var(--accent-color);
     border-color: var(--accent-color);
+}
+
+.catalog-grid .add_to_cart_button, .catelog-grid .product_type_simple {
+    /* width: 100%; */
+    /* color: var(--white);
+    background-color: var(--accent-color);
+    border-color: var(--accent-color); */
 
     margin: 10px 0 15px;
     font-size: 0;
