@@ -359,10 +359,10 @@ ul.products {
 /* кнопка добавления в корзину */
 
 .add_to_cart_button, .product_type_simple {
-    /* width: 100%;
+    /* width: 100%; */
     color: var(--white);
     background-color: var(--accent-color);
-    border-color: var(--accent-color); */
+    border-color: var(--accent-color);
 
     font-size: 0;
     width: 60px;
