@@ -5,14 +5,90 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /*--------------------------------------------------------------
 Contents
+# Backorders
 # Checkout page adjustments
 # Billing adress field
 # Delivery date & Interval fields
 # Notifications
 # Treez notifications
 # Thankyou page
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
 # Backorders
 --------------------------------------------------------------*/
+
+    // проверка наличия товара Backorders
+
+    function plnt_is_backorder() {
+        $qty = 0; // обязательно сначала ставим 0
+        $isbackorders = false;
+        foreach ( WC()->cart->get_cart() as $cart_item ) {
+            $_product = $cart_item['data'];
+            $_product_id = $_product->id;
+            $qty = $cart_item[ 'quantity' ];
+            $stock_qty = $_product->get_stock_quantity();
+            
+            if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
+                $isbackorders = true;
+            }	
+        }
+        return $isbackorders;
+    }
+
+    //отключаем способ оплаты для Backorders
+    add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_backorders' );
+
+    function plnt_disable_payment_backorders( $available_gateways ) {
+        // $qty = 0; // обязательно сначала ставим 0
+        // $isbackorders = false;
+        if (is_admin()) {
+            return $available_gateways;
+        } else {
+            // foreach ( WC()->cart->get_cart() as $cart_item ) {
+            //         $_product = $cart_item['data'];
+            //         $_product_id = $_product->id;
+            //         $qty = $cart_item[ 'quantity' ];
+            //         $stock_qty = $_product->get_stock_quantity();
+                    
+            //         if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
+            //             $isbackorders = true;
+            //         }	
+            // }
+            $isbackorders = plnt_is_backorder();
+            if( $isbackorders) {
+                unset( $available_gateways['bacs'] ); //to do change to tinkoff
+            }
+            return $available_gateways;
+        }
+    }
+
+    // меняем название и описание способа оплаты для Backorders
+    add_filter( 'woocommerce_gateway_title', 'change_payment_gateway_title_backorders', 100, 2 );
+
+    function change_payment_gateway_title_backorders( $title, $payment_id ){
+        $targeted_payment_id = 'cod'; // Задайте идентификатор вашего способа оплаты
+        $qty = 0; // обязательно сначала ставим 0
+        $isbackorders = false;
+        // Только на странице оформления заказа для определённого идентификатора способа оплаты
+        if( is_checkout( ) && ! is_wc_endpoint_url() && $payment_id === $targeted_payment_id ) {
+
+            foreach ( WC()->cart->get_cart() as $cart_item ) {
+                $_product = $cart_item['data'];
+                $_product_id = $_product->id;
+                $qty = $cart_item[ 'quantity' ];
+                $stock_qty = $_product->get_stock_quantity();
+                
+                if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
+                    $isbackorders = true;
+                }	
+            }
+            if( $isbackorders) {
+                return __("Оплата после подтверждения заказа менеджером", "woocommerce" );
+            }
+        }
+        return $title;
+    }
 
 /*--------------------------------------------------------------
 # Checkout page adjustments
@@ -660,60 +736,4 @@ Contents
         return $thank_you_msg;
     }
 
-/*--------------------------------------------------------------
-# Backorders
---------------------------------------------------------------*/
-    //отключаем способ оплаты для Backorders
-    add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_backorders' );
-
-    function plnt_disable_payment_backorders( $available_gateways ) {
-        $qty = 0; // обязательно сначала ставим 0
-        $isbackorders = false;
-        if (is_admin()) {
-            return $available_gateways;
-        } else {
-            foreach ( WC()->cart->get_cart() as $cart_item ) {
-                    $_product = $cart_item['data'];
-                    $_product_id = $_product->id;
-                    $qty = $cart_item[ 'quantity' ];
-                    $stock_qty = $_product->get_stock_quantity();
-                    
-                    if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
-                        $isbackorders = true;
-                    }	
-            }
-        
-            if( $isbackorders) {
-                unset( $available_gateways['bacs'] ); //to do change to tinkoff
-            }
-            return $available_gateways;
-        }
-    }
-
-    // меняем название способа оплаты для Backorders
-    add_filter( 'woocommerce_gateway_title', 'change_payment_gateway_title_backorders', 100, 2 );
-
-    function change_payment_gateway_title_backorders( $title, $payment_id ){
-        $targeted_payment_id = 'cod'; // Задайте идентификатор вашего способа оплаты
-        $qty = 0; // обязательно сначала ставим 0
-        $isbackorders = false;
-        // Только на странице оформления заказа для определённого идентификатора способа оплаты
-        if( is_checkout( ) && ! is_wc_endpoint_url() && $payment_id === $targeted_payment_id ) {
-
-            foreach ( WC()->cart->get_cart() as $cart_item ) {
-                $_product = $cart_item['data'];
-                $_product_id = $_product->id;
-                $qty = $cart_item[ 'quantity' ];
-                $stock_qty = $_product->get_stock_quantity();
-                
-                if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
-                    $isbackorders = true;
-                }	
-            }
-            if( $isbackorders) {
-                return __("Оплата после подтверждения заказа менеджером", "woocommerce" );
-            }
-        }
-        return $title;
-    }
 
