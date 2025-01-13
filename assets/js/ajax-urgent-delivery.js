@@ -191,7 +191,7 @@ function checkHoliday(date) {
     } else {
       isHoliday = '0'
     };
-    //ajaxGetHolidayDelivery();
+    console.log(isHoliday);
   }
 }
 
