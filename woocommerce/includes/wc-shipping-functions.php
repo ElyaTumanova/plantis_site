@@ -28,7 +28,7 @@ function plnt_set_initials() {
 
     ?>
     <script>
-        let isBackorder = <?php echo $isbackorders; ?>;
+        let isBackorder = <?php echo $isbackorders; ?>
     </script>
     <?php
 
