@@ -165,7 +165,7 @@ add_action( 'wp_footer', 'plnt_set_backorders_date' );
 function plnt_set_backorders_date() {
 	$backorderdate = '12/01';
 
-	$nextWednesday = strtotime('next wednesday');
+	$nextWednesday = strtotime('next wednesday +1 week');
 	$week = strtotime('+1 week', time());
 	echo date( "Y-m-d", $nextWednesday );
 	echo ('<br>');
