@@ -166,15 +166,15 @@ function plnt_set_backorders_date() {
 	$backorderdate = '12/01';
 
 	if (date("N") < 3) {
-		$nextWednesday = strtotime('next wednesday +1 week');
-	} else {
 		$nextWednesday = strtotime('next wednesday +2 week');
+	} else {
+		$nextWednesday = strtotime('next wednesday +3 week');
 	}
 
 
 	$backorderdate = date( "Y-m-d", $nextWednesday );
 
-	echo date( "Y-m-d", strtotime('next wednesday +2 week'));
+	echo date( "Y-m-d", strtotime('next wednesday +3 week'));
 
 	return $backorderdate;
 }
