@@ -50,6 +50,7 @@ function plnt_check() {
     echo 'isback '.$isbackorders;
     echo 'isUrgent '.(WC()->session->get('isUrgent' ));
     echo 'hiAjax '.(WC()->session->get('hiAjax' ));
+    echo 'isback2 '.(WC()->session->get('isBackorder' ));
     echo '<br>';
     //echo (WC()->session->get('isLate' ));
     // date_default_timezone_set('Europe/Moscow');
