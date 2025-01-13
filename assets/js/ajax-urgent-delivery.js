@@ -2,7 +2,7 @@ let isUrgent;
 let isLate = 0;
 let isHideInterval;
 let isHoliday;
-let holidays = [];
+let holidays = [13.01]; //format dd.mm
 let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
