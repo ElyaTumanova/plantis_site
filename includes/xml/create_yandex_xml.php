@@ -102,7 +102,7 @@ function create_yandex_xml_btn () {
                 'meta_query' => array( 
                     array(
                         'key'       => '_stock_status',
-                        'value'     => 'outofstock',
+                        'value'     => array('outofstock', 'onbackorder'),
                         'compare'   => 'NOT IN'
                     )
                 ),
