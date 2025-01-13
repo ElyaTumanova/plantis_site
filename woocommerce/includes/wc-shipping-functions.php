@@ -11,21 +11,22 @@ add_action('wp_head','plnt_set_urgent');
 function plnt_set_urgent() {
     date_default_timezone_set('Europe/Moscow');
     $hour = date("H");
-    if ($hour >= 18 && $hour <20) {
-        WC()->session->set('isUrgent', '0' );
-    } else {
-        WC()->session->set('isUrgent', '1' );
-    }
-
-    WC()->session->set('isLate', '0' );
-
     $isbackorders = plnt_is_backorder();
-
     if($isbackorders) {
         echo $isbackorders;
         WC()->session->set('isUrgent', '0' );
         WC()->session->set('isBackorder', '1' );
+    } else {
+        WC()->session->set('isBackorder', '0' );
+        if ($hour >= 18 && $hour <20) {
+            WC()->session->set('isUrgent', '0' );
+        } else {
+            WC()->session->set('isUrgent', '1' );
+        }    
     }
+   
+    WC()->session->set('isLate', '0' );
+
 };
 
 //for dev
