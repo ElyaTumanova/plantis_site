@@ -63,13 +63,14 @@ function plnt_check() {
 add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
-    WC()->session->set('hiAjax', 'hiAjax' );
 
     $isbackorders = plnt_is_backorder();
     if($isbackorders) {
         WC()->session->set('isUrgent', '0' );
+        WC()->session->set('hiAjax', 'hiAjax' );
     } 
     else {
+        WC()->session->set('hiAjax', 'hiAjaxElse' );
         if ( $_POST['isUrgent'] === '1'){
             WC()->session->set('isUrgent', '1' );
         } else {
