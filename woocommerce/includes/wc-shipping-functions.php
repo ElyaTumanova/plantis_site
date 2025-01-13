@@ -48,6 +48,7 @@ function plnt_check() {
     $isbackorders = plnt_is_backorder();
     echo 'isback '.$isbackorders;
     echo 'isUrgent '.(WC()->session->get('isUrgent' ));
+    echo 'hiAjax '.(WC()->session->get('hiAjax' ));
     echo '<br>';
     //echo (WC()->session->get('isLate' ));
     // date_default_timezone_set('Europe/Moscow');
@@ -62,6 +63,7 @@ function plnt_check() {
 add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
+    WC()->session->set('hiAjax', 'hiAjax' );
 
     $isbackorders = plnt_is_backorder();
     if($isbackorders) {
