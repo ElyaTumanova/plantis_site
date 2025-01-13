@@ -201,7 +201,6 @@ if (checkoutForm) {
   checkHoliday(deliveryDates[0].value);
   setDatesIntervals();
 
-
   checkedShippingMethod = checkedShippingMethodInput.value;
 
   renderDeliveryIntervals(checkedShippingMethod);
@@ -211,5 +210,6 @@ if (checkoutForm) {
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 
   ajaxGetUrgent();
+  console.log(isUrgent);
   
 }

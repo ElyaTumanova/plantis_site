@@ -70,10 +70,10 @@ function plnt_get_urgent_shipping() {
 
     if(WC()->session->get('isBackorder') === '1') {
         WC()->session->set('isUrgent', '0' );
-        WC()->session->set('hiAjax', 'hiAjax' );
+        // WC()->session->set('hiAjax', 'hiAjax' );
     } 
     else {
-        WC()->session->set('hiAjax', 'hiAjaxElse' );
+        // WC()->session->set('hiAjax', 'hiAjaxElse' );
         if ( $_POST['isUrgent'] === '1'){
             WC()->session->set('isUrgent', '1' );
         } else {
