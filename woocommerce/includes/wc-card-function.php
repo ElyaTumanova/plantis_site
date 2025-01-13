@@ -517,3 +517,9 @@ function check_category ($product) {
     }
 };
 
+function plnt_set_backorders_date() {
+	$backorderdate = date( "Y-m-d", strtotime('next wednesday +2 week') );
+
+	return $backorderdate;
+}
+

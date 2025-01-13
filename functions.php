@@ -160,13 +160,6 @@ function plnt_set_constants_script() {
 	<?php
 }
 
-add_action( 'wp_footer', 'plnt_set_backorders_date' );
-
-function plnt_set_backorders_date() {
-	$backorderdate = date( "Y-m-d", strtotime('next wednesday +2 week') );
-
-	return $backorderdate;
-}
 
 // FOR DEV
 
