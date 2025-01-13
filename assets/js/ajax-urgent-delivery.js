@@ -34,7 +34,7 @@ function plntChekUrgentDelivery() {
   }
   plntAjaxGetUrgent();
 
-  // console.log(isUrgent);
+  console.log(isUrgent);
   
 
   deliveryDates.forEach((date) => {
@@ -132,23 +132,6 @@ function plntAjaxGetUrgent() {
         });
   });
 };
-
-// function ajaxGetHolidayDelivery() {
-//   jQuery( function($){
-//         $.ajax({
-//             type: 'POST',
-//             url: wc_checkout_params.ajax_url,
-//             data: {
-//                 'action': 'get_holiday_shipping',
-//                 'isHoliday': isHoliday,
-//             },
-//             success: function (result) {
-//                 // Trigger refresh checkout
-//                 $('body').trigger('update_checkout');
-//             }
-//         });
-//   });
-// };
 
 function ajaxGetLateDelivery(event) {
 
