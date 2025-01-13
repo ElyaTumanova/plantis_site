@@ -46,9 +46,9 @@ function plnt_check() {
     //     WC()->session->set('isLate', '0' );  
     // }
     $isbackorders = plnt_is_backorder();
-    echo $isbackorders;
-    echo ($_POST['isUrgent']);
-    echo (WC()->session->get('isUrgent' ));
+    echo 'isback '.$isbackorders;
+    echo 'isUrgent '.(WC()->session->get('isUrgent' ));
+    echo '<br>';
     //echo (WC()->session->get('isLate' ));
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
