@@ -166,9 +166,10 @@ function plnt_set_backorders_date() {
 	$backorderdate = '12/01';
 
 	$nextWednesday = strtotime('next wednesday');
+	$week = strtotime('+1 week', time());
 	echo date( "Y-m-d", $nextWednesday );
 	echo ('<br>');
-	echo strtotime('+1 week', time());
+	echo date ("Y-m-d", $week);
 	echo ('<br>');
 
 	echo date("N");
