@@ -160,6 +160,13 @@ function plnt_set_constants_script() {
 	<?php
 }
 
+add_action( 'wp_footer', 'plnt_set_backorders_date' );
+
+function plnt_set_backorders_date() {
+	$backorderdate = '12/01';
+
+	return $backorderdate;
+}
 
 // FOR DEV
 
