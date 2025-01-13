@@ -22,6 +22,7 @@ function plnt_set_urgent() {
     $isbackorders = plnt_is_backorder();
     if($isbackorders) {
         WC()->session->set('isUrgent', '0' );
+        WC()->session->set('isBackorder', '1' );
     }
 };
 
@@ -64,8 +65,7 @@ add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
 
-    $isbackorders = plnt_is_backorder();
-    if($isbackorders) {
+    if(WC()->session->get('isBackorder') === '1') {
         WC()->session->set('isUrgent', '0' );
         WC()->session->set('hiAjax', 'hiAjax' );
     } 
