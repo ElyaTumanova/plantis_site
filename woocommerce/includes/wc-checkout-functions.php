@@ -695,6 +695,7 @@ Contents
 
     function change_payment_gateway_title_backorders( $title, $payment_id ){
         $targeted_payment_id = 'cod'; // Задайте идентификатор вашего способа оплаты
+        $qty = 0; // обязательно сначала ставим 0
         $isbackorders = false;
         // Только на странице оформления заказа для определённого идентификатора способа оплаты
         if( is_checkout( ) && ! is_wc_endpoint_url() && $payment_id === $targeted_payment_id ) {
