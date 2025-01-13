@@ -46,6 +46,7 @@ Contents
             $isbackorders = plnt_is_backorder();
             if( $isbackorders) {
                 unset( $available_gateways['bacs'] ); //to do change to tinkoff
+                unset( $available_gateways['cop'] ); 
             }
             return $available_gateways;
         }
@@ -64,6 +65,20 @@ Contents
             }
         }
         return $title;
+    }
+
+    add_filter( 'woocommerce_gateway_description', 'change_payment_gateway_description_backorders', 100, 2 );
+
+    function change_payment_gateway_description_backorders( $description, $payment_id ){
+        $targeted_payment_id = 'cod'; // Задайте идентификатор вашего способа оплаты
+        // Только на странице оформления заказа для определённого идентификатора способа оплаты
+        if( is_checkout( ) && ! is_wc_endpoint_url() && $payment_id === $targeted_payment_id ) {
+            $isbackorders = plnt_is_backorder();
+            if( $isbackorders) {
+                return __("Наш менеджер свяжется с Вами для подтверждения заказа и направит ссылку для оплаты картой", "woocommerce" );
+            }
+        }
+        return $description;
     }
 
 /*--------------------------------------------------------------
