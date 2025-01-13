@@ -2,7 +2,7 @@ let isUrgent;
 let isLate = 0;
 let isHideInterval;
 let isHoliday;
-let holidays = ["14.01"]; //format dd.mm
+let holidays = []; //format dd.mm
 let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
@@ -184,14 +184,12 @@ function setDatesIntervals() {
 }
 
 function checkHoliday(date) {
-  console.log(date);
   if (holidays) {
     if (holidays.includes(date)) {
       isHoliday = '1'
     } else {
       isHoliday = '0'
     };
-    console.log(isHoliday);
   }
 }
 
@@ -204,12 +202,10 @@ if (checkoutForm) {
   checkedShippingMethod = checkedShippingMethodInput.value;
 
   renderDeliveryIntervals(checkedShippingMethod);
-  
   renderDeliveryDates(checkedShippingMethod);
 
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 
   ajaxGetUrgent();
-  console.log(isUrgent);
   
 }
