@@ -61,16 +61,18 @@ function plnt_check() {
 add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
-    if ( $_POST['isUrgent'] === '1'){
-        WC()->session->set('isUrgent', '1' );
-    } else {
-        WC()->session->set('isUrgent', '0' );
-    }
 
     $isbackorders = plnt_is_backorder();
     if($isbackorders) {
         WC()->session->set('isUrgent', '0' );
+    } else {
+        if ( $_POST['isUrgent'] === '1'){
+            WC()->session->set('isUrgent', '1' );
+        } else {
+            WC()->session->set('isUrgent', '0' );
+        }
     }
+    
     die(); // (required)
 }
 
