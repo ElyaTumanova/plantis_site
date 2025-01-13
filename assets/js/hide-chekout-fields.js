@@ -23,8 +23,6 @@
             deliveryInterval.classList.add('d-none');
             deliveryDatesWrap.classList.add('d-none');
         } else {
-            deliveryInterval.classList.remove('d-none');
-            deliveryDatesWrap.classList.remove('d-none');
             if ( checkedShippingMethod == localPickupId) {
                 if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
                 if (deliveryIntervalInput) {
