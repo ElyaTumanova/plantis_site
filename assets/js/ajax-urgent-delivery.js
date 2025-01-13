@@ -4,6 +4,7 @@ let isHideInterval;
 let isHoliday;
 let holidays = []; //format dd.mm
 let checkoutForm = document.querySelector('form[name="checkout"]');
+let deliveryDatesWrap = document.querySelectorAll('.delivery_dates');
 let deliveryDates = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
 let deliveryDatesInfo = [];
