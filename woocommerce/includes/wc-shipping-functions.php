@@ -26,12 +26,6 @@ function plnt_set_initials() {
    
     WC()->session->set('isLate', '0' );
 
-    ?>
-    <script>
-        let isBackorder = <?php echo $isbackorders; ?>
-    </script>
-    <?php
-
 };
 
 //for dev

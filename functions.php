@@ -101,6 +101,8 @@ function plnt_set_constants_script() {
 
 	$in_mkad_medium_urg = $shipping_costs[$urgent_delivery_inMKAD_medium];
 	$out_mkad_medium_urg = $shipping_costs[$urgent_delivery_outMKAD_medium];
+
+	$isbackorders = plnt_is_backorder();
    
 	?>
 	<script>
@@ -151,6 +153,9 @@ function plnt_set_constants_script() {
 		let deliveryCostOutMkadMediumUrg = '<?php echo $out_mkad_medium_urg; ?>';
 
 		let deliveryLateMarkup = '<?php echo $late_markup_delivery; ?>';
+
+        let isBackorder = <?php echo $isbackorders; ?>
+
 	</script>
 	<?php
 }
