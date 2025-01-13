@@ -35,8 +35,6 @@ Contents
         }
         return $isbackorders;
     }
-    
-    $isbackorders = plnt_is_backorder();
 
     //отключаем способ оплаты для Backorders
     add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_backorders' );
@@ -45,7 +43,7 @@ Contents
         if (is_admin()) {
             return $available_gateways;
         } else {
-            // $isbackorders = plnt_is_backorder();
+            $isbackorders = plnt_is_backorder();
             if( $isbackorders) {
                 unset( $available_gateways['bacs'] ); //to do change to tinkoff
             }
@@ -60,7 +58,7 @@ Contents
         $targeted_payment_id = 'cod'; // Задайте идентификатор вашего способа оплаты
         // Только на странице оформления заказа для определённого идентификатора способа оплаты
         if( is_checkout( ) && ! is_wc_endpoint_url() && $payment_id === $targeted_payment_id ) {
-            // $isbackorders = plnt_is_backorder();
+            $isbackorders = plnt_is_backorder();
             if( $isbackorders) {
                 return __("Оплата после подтверждения заказа менеджером", "woocommerce" );
             }
