@@ -40,8 +40,6 @@ Contents
         return $isbackorders;
     }
 
-    plnt_is_backorder();
-
     //отключаем способ оплаты для Backorders
     add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_backorders' );
 
@@ -49,8 +47,7 @@ Contents
         if (is_admin()) {
             return $available_gateways;
         } else {
-            // $isbackorders = plnt_is_backorder();
-            global $isbackorders;
+            $isbackorders = plnt_is_backorder();
             if( $isbackorders) {
                 unset( $available_gateways['bacs'] ); //to do change to tinkoff
                 unset( $available_gateways['cop'] ); 
