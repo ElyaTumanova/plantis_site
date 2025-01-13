@@ -63,6 +63,11 @@ function plnt_get_urgent_shipping() {
     } else {
         WC()->session->set('isUrgent', '0' );
     }
+
+    $isbackorders = plnt_is_backorder();
+    if($isbackorders) {
+        WC()->session->set('isUrgent', '0' );
+    }
     die(); // (required)
 }
 
@@ -105,33 +110,6 @@ function plnt_refresh_shipping_methods_for_late( $post_data ){
     }
     WC()->cart->calculate_shipping();
 }
-
-// выходные 
-
-// add_action( 'wp_ajax_get_holiday_shipping', 'plnt_get_holiday_shipping' );
-// add_action( 'wp_ajax_nopriv_get_holiday_shipping', 'plnt_get_holiday_shipping' );
-// function plnt_get_holiday_shipping() {
-//     if ( $_POST['isHoliday'] === '1'){
-//         WC()->session->set('isHoliday', '1' );
-//     } else {
-//         WC()->session->set('isHoliday', '0' );
-//     }
-//     die(); // (required)
-// }
-
-// add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_holiday', 10, 1 );
-// function plnt_refresh_shipping_methods_for_holiday( $post_data ){
-//     $bool = true;
-
-//     if ( WC()->session->get('isHoliday' ) === '1' )
-//         $bool = false;
-
-//     // Mandatory to make it work with shipping methods
-//     foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
-//         WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
-//     }
-//     WC()->cart->calculate_shipping();
-// }
 
 
 /* выбираем способ доставки в зависимости от условий*/
@@ -193,12 +171,7 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $delivery_outMKAD_medium ] );
         WC()->session->set('isLate', '0' );
     }
-
-    // ДОСТАВКА В ПРАЗДНИКИ
-
-    // if (WC()->session->get('isHoliday' ) === '1') {
-    //     unset( $rates[ $local_pickup ] );
-    // } 
+ 
 
     /*СТОИМОСТЬ ДОСТАВКИ ПО СУММЕ*/
 
