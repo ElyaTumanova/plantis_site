@@ -47,6 +47,7 @@ function plnt_check() {
     // }
     $isbackorders = plnt_is_backorder();
     echo $isbackorders;
+    echo ($_POST['isUrgent']);
     echo (WC()->session->get('isUrgent' ));
     //echo (WC()->session->get('isLate' ));
     // date_default_timezone_set('Europe/Moscow');
@@ -66,13 +67,13 @@ function plnt_get_urgent_shipping() {
     if($isbackorders) {
         WC()->session->set('isUrgent', '0' );
     } 
-    // else {
-    //     if ( $_POST['isUrgent'] === '1'){
-    //         WC()->session->set('isUrgent', '1' );
-    //     } else {
-    //         WC()->session->set('isUrgent', '0' );
-    //     }
-    // }
+    else {
+        if ( $_POST['isUrgent'] === '1'){
+            WC()->session->set('isUrgent', '1' );
+        } else {
+            WC()->session->set('isUrgent', '0' );
+        }
+    }
     
     die(); // (required)
 }
