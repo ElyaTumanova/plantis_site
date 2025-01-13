@@ -165,6 +165,8 @@ add_action( 'wp_footer', 'plnt_set_backorders_date' );
 function plnt_set_backorders_date() {
 	$backorderdate = '12/01';
 
+	echo date("W");
+
 	return $backorderdate;
 }
 
