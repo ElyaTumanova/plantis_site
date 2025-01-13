@@ -184,6 +184,7 @@ function setDatesIntervals() {
 }
 
 function checkHoliday(date) {
+  console.log(date);
   if (holidays) {
     if (holidays.includes(date)) {
       isHoliday = '1'
