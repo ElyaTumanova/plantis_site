@@ -23,18 +23,24 @@ Contents
     function plnt_is_backorder() {
         $qty = 0; // обязательно сначала ставим 0
         $isbackorders = false;
-        foreach ( WC()->cart->get_cart() as $cart_item ) {
-            $_product = $cart_item['data'];
-            $_product_id = $_product->id;
-            $qty = $cart_item[ 'quantity' ];
-            $stock_qty = $_product->get_stock_quantity();
-            
-            if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
-                $isbackorders = true;
-            }	
-        }
+        
+        if( is_checkout( ) && ! is_wc_endpoint_url()) {
+            foreach ( WC()->cart->get_cart() as $cart_item ) {
+                $_product = $cart_item['data'];
+                $_product_id = $_product->id;
+                $qty = $cart_item[ 'quantity' ];
+                $stock_qty = $_product->get_stock_quantity();
+                
+                if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
+                    $isbackorders = true;
+                }	
+            }
+        }      
+        
         return $isbackorders;
     }
+
+    plnt_is_backorder();
 
     //отключаем способ оплаты для Backorders
     add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_backorders' );
@@ -229,7 +235,6 @@ Contents
     // // добавляем новые поля для нтервала и даты доставки
 
     add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_interval_field', 20 );
-    //add_action( 'plnt_woocommerce_review_order_in_order_total', 'plnt_add_delivery_interval_field', 55 );
 
     function plnt_add_delivery_interval_field() {
         // выводим поле функцией woocommerce_form_field()
