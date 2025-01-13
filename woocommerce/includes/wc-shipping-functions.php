@@ -20,7 +20,9 @@ function plnt_set_urgent() {
     WC()->session->set('isLate', '0' );
 
     $isbackorders = plnt_is_backorder();
+
     if($isbackorders) {
+        echo $isbackorders;
         WC()->session->set('isUrgent', '0' );
         WC()->session->set('isBackorder', '1' );
     }
