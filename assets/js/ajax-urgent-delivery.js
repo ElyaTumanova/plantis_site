@@ -72,11 +72,9 @@ function renderDeliveryIntervals(shippingValue) {
   })
 }
 
-function ajaxGetUrgent(event) {
-  if (event) {
-    console.log(event);
-    console.log(event.target);
-    if(event.target.value == today) {
+function ajaxGetUrgent(date) {
+  if (date) {
+    if(date == today) {
       isUrgent = '1';
     } else {
       isUrgent = '0';
@@ -165,7 +163,6 @@ function setDatesIntervals() {
   deliveryDates.forEach((date) => {
     date.addEventListener('click', function(event){
       ajaxGetUrgent(event.target.value);
-      console.log(isUrgent);
       checkHoliday(event.target.value);
     });
   })
