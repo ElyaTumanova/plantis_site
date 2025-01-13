@@ -13,7 +13,6 @@ function plnt_set_urgent() {
     $hour = date("H");
     $isbackorders = plnt_is_backorder();
     if($isbackorders) {
-        echo $isbackorders;
         WC()->session->set('isUrgent', '0' );
         WC()->session->set('isBackorder', '1' );
     } else {
@@ -31,7 +30,7 @@ function plnt_set_urgent() {
 
 //for dev
 
-//add_action('woocommerce_review_order_before_shipping','plnt_check');
+add_action('woocommerce_review_order_before_shipping','plnt_check');
 //add_action('wp_head','plnt_check');
 
 function plnt_check() {
