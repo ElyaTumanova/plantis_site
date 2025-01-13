@@ -17,51 +17,6 @@ let deliveryIntervalInput = document.querySelectorAll('input[name=additional_del
 let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
 let today;
 
-// console.log(deliveryLateMarkup);
-//console.log(deliveryDates[0].value);
-//console.log(deliveryIntervalLabels);
-
-
-function plntChekUrgentDelivery() {
-  //console.log('hi plntChekUrgentDelivery');
-  if (holidays) {
-    if (holidays.includes(deliveryDates[0].value)) {
-      isHoliday = '1'
-    } else {
-      isHoliday = '0'
-    };
-    //ajaxGetHolidayDelivery();
-  }
-  plntAjaxGetUrgent();
-
-  console.log(isUrgent);
-  
-
-  deliveryDates.forEach((date) => {
-    date.addEventListener('click', function(event){
-      // console.log(event.target.value);
-      // console.log(today);
-      if(event.target.value == today) {
-        isUrgent = '1';
-      } else {
-        isUrgent = '0';
-      }
-      console.log(isUrgent);
-      plntAjaxGetUrgent();
-
-      if (holidays) {
-        if(holidays.includes(event.target.value)) {
-          isHoliday = '1'
-        } else {
-          isHoliday = '0'
-        };
-
-        //console.log(isHoliday);
-        //ajaxGetHolidayDelivery();
-      }
-    });
-  })
-};
 
 function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
@@ -117,7 +72,15 @@ function renderDeliveryIntervals(shippingValue) {
   })
 }
 
-function plntAjaxGetUrgent() {
+function ajaxGetUrgent(event) {
+
+  if(event.target.value == today) {
+    isUrgent = '1';
+  } else {
+    isUrgent = '0';
+  }
+  
+
   jQuery( function($){
         $.ajax({
             type: 'POST',
@@ -159,9 +122,7 @@ function ajaxGetLateDelivery(event) {
 });
 }
 
-
-if (checkoutForm) {
-
+function setInitalState() {
   let hour = new Date().getHours();
 
   if (hour >= 18 && hour <20) {
@@ -176,17 +137,16 @@ if (checkoutForm) {
     today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${(new Date().getUTCMonth()< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
   };
 
+  //console.log(today);
+
   if(hour >=20 && hour<24) {
     isHideInterval = false;
   } else {
     isHideInterval = true;
   }
-  //console.log(today);
+}
 
-  checkedShippingMethod = checkedShippingMethodInput.value;
-  
- // console.log(checkedShippingMethod);
-
+function setDatesIntervals() {
   deliveryDatesLables.forEach((label) => {
     let dateInfo = {
       label: label,
@@ -198,13 +158,14 @@ if (checkoutForm) {
 
   deliveryDates[0].setAttribute('checked','checked');
   deliveryIntervalInput[0].setAttribute('checked','checked');
-  // console.log(deliveryIntervalInput[0]);
-  
 
-  checkoutForm.addEventListener('change', onChangeShippingMethod);
-
-  plntChekUrgentDelivery();
-  renderDeliveryDates(checkedShippingMethod);
+  deliveryDates.forEach((date) => {
+    date.addEventListener('click', function(event){
+      ajaxGetUrgent(event.target.value);
+      console.log(isUrgent);
+      checkHoliday(event.target.value);
+    });
+  })
 
   if(deliveryLateMarkup) {    
     deliveryIntervalLabels.forEach((label) => {
@@ -216,9 +177,38 @@ if (checkoutForm) {
       //console.log(intervalInfo);
       deliveryIntervalsInfo.push(intervalInfo);
     });
-    renderDeliveryIntervals(checkedShippingMethod);
     deliveryIntervalInput.forEach(el =>{
       el.addEventListener('click', ajaxGetLateDelivery);
     })
   }
+}
+
+function checkHoliday(date) {
+  if (holidays) {
+    if (holidays.includes(date)) {
+      isHoliday = '1'
+    } else {
+      isHoliday = '0'
+    };
+    //ajaxGetHolidayDelivery();
+  }
+}
+
+if (checkoutForm) {
+
+  setInitalState();
+  checkHoliday(deliveryDates[0].value);
+  setDatesIntervals();
+
+
+  checkedShippingMethod = checkedShippingMethodInput.value;
+
+  renderDeliveryIntervals(checkedShippingMethod);
+  
+  renderDeliveryDates(checkedShippingMethod);
+
+  checkoutForm.addEventListener('change', onChangeShippingMethod);
+
+  ajaxGetUrgent();
+  
 }
