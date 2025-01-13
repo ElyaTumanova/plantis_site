@@ -73,11 +73,12 @@ function renderDeliveryIntervals(shippingValue) {
 }
 
 function ajaxGetUrgent(event) {
-
-  if(event.target.value == today) {
-    isUrgent = '1';
-  } else {
-    isUrgent = '0';
+  if (event) {
+    if(event.target.value == today) {
+      isUrgent = '1';
+    } else {
+      isUrgent = '0';
+    }
   }
   
 
