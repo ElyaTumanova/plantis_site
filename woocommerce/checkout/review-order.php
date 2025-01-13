@@ -51,7 +51,7 @@ defined( 'ABSPATH' ) || exit;
 							$qty = $cart_item[ 'quantity' ];
 							$stock_qty = $_product->get_stock_quantity();
 							if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
-								?><span>xoxoxo <?php echo plnt_set_backorders_date();?></span>
+								?><span>Доставка после <?php echo plnt_set_backorders_date();?></span>
 								<?php
 							}	
 						?>
