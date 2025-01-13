@@ -21,6 +21,7 @@
         
         if (isBackorder) {
             deliveryInterval.classList.add('d-none');
+            console.log(deliveryDatesWrap);
             deliveryDatesWrap.classList.add('d-none');
         } else {
             if ( checkedShippingMethod == localPickupId) {
