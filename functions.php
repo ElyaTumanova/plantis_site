@@ -165,14 +165,16 @@ add_action( 'wp_footer', 'plnt_set_backorders_date' );
 function plnt_set_backorders_date() {
 	$backorderdate = '12/01';
 
-	$nextWednesday = strtotime('next wednesday +1 week');
-	$week = strtotime('+1 week', time());
-	echo date( "Y-m-d", $nextWednesday );
-	echo ('<br>');
-	echo date ("Y-m-d", $week);
-	echo ('<br>');
+	if (date("N") < 3) {
+		$nextWednesday = strtotime('next wednesday +1 week');
+	} else {
+		$nextWednesday = strtotime('next wednesday +2 week');
+	}
 
-	echo date("N");
+
+	$backorderdate = date( "Y-m-d", $nextWednesday );
+
+	echo date( "Y-m-d", strtotime('next wednesday +2 week'));
 
 	return $backorderdate;
 }
