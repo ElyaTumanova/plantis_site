@@ -280,7 +280,7 @@ function plnt_check_stock_status() {
     if ($parentCatId === $plants_cat_id) {
         if ( $product->get_stock_status() ==='instock' ) {
             ?>
-            <div class="card__stockstatus card__stockstatus_in">Экспресс-доставка</div>
+            <div class="card__stockstatus card__stockstatus_in">В наличии</div>
             <?php
         } else if ($product->backorders_allowed() && $product->get_stock_quantity() === 0) {
             ?>
