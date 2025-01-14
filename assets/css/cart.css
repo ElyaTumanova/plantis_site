@@ -180,8 +180,8 @@
 
     tr.woocommerce-cart-form__cart-item {
         display: grid;
-        grid-template-columns:20px 80px 120px calc(100% - 235px);
-        grid-template-rows: repeat(2, auto);
+        grid-template-columns:80px 120px calc(100% - 235px);
+        grid-template-rows: repeat(3, auto);
         grid-template-areas:
         "img name price"
         "img name qty"
