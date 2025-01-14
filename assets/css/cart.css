@@ -69,7 +69,7 @@
 /* таблица корзины */
 
 .woocommerce-cart-form {
-    max-width: calc(80% - 30px);
+    max-width: 75%;
 }
 
 @media (max-width: 767px) {
@@ -254,7 +254,7 @@
 
     tr.woocommerce-cart-form__cart-item {
         display: grid;
-        grid-template-columns:160px 320px auto;
+        grid-template-columns:160px auto 150px;
         grid-template-rows: 35px 50px auto;
         grid-template-areas:
         "img name price"
