@@ -278,9 +278,13 @@ function plnt_check_stock_status() {
     global $plants_cat_id;
     $parentCatId = check_category ($product);
     if ($parentCatId === $plants_cat_id) {
-        if ( $product->get_stock_status() ==='instock' || $product->backorders_allowed()) {
+        if ( $product->get_stock_status() ==='instock' ) {
             ?>
-            <div class="card__stockstatus card__stockstatus_in">В наличии</div>
+            <div class="card__stockstatus card__stockstatus_in">Доставим за один день</div>
+            <?php
+        } else if ($product->backorders_allowed() && $product->get_stock_quantity() === 0) {
+            ?>
+            <div class="card__stockstatus card__stockstatus_in">Доставим после <?php echo plnt_set_backorders_date();?></div>
             <?php
         } else {
             ?>

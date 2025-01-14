@@ -16,6 +16,7 @@
     background-color: var(--accent-color);
     border-radius: 7px;
     color: var(--white);
+    white-space: nowrap;
 }
 
 @media (min-width: 768px) {
