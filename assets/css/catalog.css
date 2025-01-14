@@ -600,6 +600,12 @@ ul.products {
     margin: 0;
     top: 10px;
     right: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+.cross-upsells-swiper .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, .cross-upsells-swiper .yith-wcwl-add-to-wishlist a.delete_item>img, .cross-upsells-swiper .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
+    max-width: 20px;
 }
 
 /*cross sells & up sells #adaptive*/
@@ -710,17 +716,6 @@ ul.products {
     box-sizing: border-box;
 }
 
-/* wish */
-
-.card__sliders-wrap .yith-wcwl-add-to-wishlist {
-    position: absolute;
-    z-index: 10;
-    margin: 0;
-    top: 10px;
-    right: 3px;
-    width: 40px;
-    height: 40px;
-}
 
 /*--------------------------------------------------------------
 # Horizontal catalog slider for front-page
