@@ -73,7 +73,7 @@ function renderDeliveryIntervals(shippingValue) {
     info.label.appendChild(priceEl);
       if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryCourierId || shippingValue == deliveryLongId) {
       } else {
-        if (isUrgent === '1') {
+        if (isUrgent == '1') {
           console.log(isUrgent);
           priceEl.innerHTML = `+0₽`;
         } else {
