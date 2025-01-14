@@ -10,7 +10,7 @@ let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerc
 let deliveryDatesInfo = [];
 let deliveryIntervalsInfo = []
 let shippingMethodValues = [];
-let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
+let checkedShippingMethodInput;
 let checkedShippingMethod;
 
 let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
@@ -25,6 +25,11 @@ function onChangeShippingMethod(event) {
         renderDeliveryIntervals(event.target.value);
         // console.log(event.target.value);
     }
+}
+
+function getCheckedShippingMethod (){
+  checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
+  return checkedShippingMethodInput.value;
 }
 
 function renderDeliveryDates(shippingValue) {
@@ -68,7 +73,11 @@ function renderDeliveryIntervals(shippingValue) {
     info.label.appendChild(priceEl);
       if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryCourierId || shippingValue == deliveryLongId) {
       } else {
-        priceEl.innerHTML = info.for == `additional_delivery_interval_18:00 - 21:00` ? `+${deliveryLateMarkup}₽` : `+0₽` ;
+        if (isUrgent) {
+          priceEl.innerHTML = `+0₽`;
+        } else {
+          priceEl.innerHTML = info.for == `additional_delivery_interval_18:00 - 21:00` ? `+${deliveryLateMarkup}₽` : `+0₽` ;
+        }
       }
   })
 }
@@ -165,6 +174,9 @@ function setDatesIntervals() {
     date.addEventListener('click', function(event){
       ajaxGetUrgent(event.target.value);
       checkHoliday(event.target.value);
+      shippingValue = getCheckedShippingMethod();
+      console.log(shippingValue);
+      renderDeliveryIntervals(shippingValue);
       console.log(isUrgent);
     });
   })
@@ -201,7 +213,7 @@ if (checkoutForm) {
   checkHoliday(deliveryDates[0].value);
   setDatesIntervals();
 
-  checkedShippingMethod = checkedShippingMethodInput.value;
+  checkedShippingMethod = getCheckedShippingMethod();
 
   renderDeliveryIntervals(checkedShippingMethod);
   renderDeliveryDates(checkedShippingMethod);
