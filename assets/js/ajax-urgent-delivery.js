@@ -106,7 +106,7 @@ function ajaxGetLateDelivery(event) {
   } else {
     isLate = '0'
   }
-  console.log(isLate);
+  // console.log(isLate);
 
   jQuery( function($){
     $.ajax({
@@ -165,6 +165,7 @@ function setDatesIntervals() {
     date.addEventListener('click', function(event){
       ajaxGetUrgent(event.target.value);
       checkHoliday(event.target.value);
+      console.log(isUrgent);
     });
   })
 
@@ -208,7 +209,5 @@ if (checkoutForm) {
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 
   ajaxGetUrgent();
-
-  console.log(isUrgent);
   
 }
