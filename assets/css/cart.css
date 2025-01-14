@@ -255,7 +255,7 @@
     tr.woocommerce-cart-form__cart-item {
         display: grid;
         grid-template-columns:160px 320px auto;
-        grid-template-rows: repeat(3, auto);
+        grid-template-rows: 35px 50px auto;
         grid-template-areas:
         "img name price"
         "img name qty"
@@ -279,6 +279,14 @@
         align-self: flex-start;
         padding: 0;
         justify-self: end;
+    }
+
+    td.product-name {
+        grid-area: name;
+        font-size: 14px;
+        text-align: left;
+        align-self: flex-start;
+        padding-top: 15px;
     }
 }
 
