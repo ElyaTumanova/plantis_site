@@ -92,9 +92,9 @@
         padding: 0 10px 5px 0;
     } */ 
 
-    td {
+    /* td {
         padding: 20px 10px 0 0;
-    }
+    } */
 
     /* th.product-remove {
         width: fit-content;
@@ -180,13 +180,13 @@
 
     tr.woocommerce-cart-form__cart-item {
         display: grid;
-        grid-template-columns:180px 320px calc(100% - 500px);
+        grid-template-columns:160px 320px auto;
         grid-template-rows: repeat(3, auto);
         grid-template-areas:
         "img name price"
         "img name qty"
         "img name remove";
-        column-gap: 5px;
+        column-gap: 25px;
         margin-top: 5px;
     }
 
@@ -257,9 +257,9 @@
             }
         }
 
-        td {
+        /* td {
             padding: 10px 2px 0 0;
-        }
+        } */
 
     /* } */
 }
