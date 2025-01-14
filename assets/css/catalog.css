@@ -672,6 +672,7 @@ ul.products {
      column-gap: 5px;
 } */
 
+/* кнопка добавить в корзину */
 .card__sliders-wrap .add_to_cart_button, .product-slider-wrap .product_type_simple {
     margin: 10px 0 15px;
     font-size: 0;
@@ -698,6 +699,15 @@ ul.products {
 
 .card__sliders-wrap .woocommerce-LoopProduct-link:first-of-type {
     order: -2;
+}
+
+.card__sliders-wrap .product {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    box-sizing: border-box;
 }
 
 /*--------------------------------------------------------------
