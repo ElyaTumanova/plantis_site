@@ -177,7 +177,7 @@
         }
     }
 
-    @media (max-width: 767px) {
+    /* @media (max-width: 767px) { */
         td.product-price, th.product-price {
             display: none;
         }
@@ -248,7 +248,7 @@
             padding: 10px 2px 0 0;
         }
 
-    }
+    /* } */
 }
 
 /*empty cart*/
