@@ -12,7 +12,10 @@
 }
 
 .woocommerce-checkout-review-order-table .product-name sup {
-
+    padding: 0.2em;
+    background-color: var(--accent-color);
+    border-radius: 7px;
+    color: var(--white);
 }
 
 @media (min-width: 768px) {
@@ -156,7 +159,7 @@
     padding: 17px 5px;
     border-bottom: 1px solid #ebeced;
     font-size: 16px;
-    line-height: 1.2;
+    line-height: 1.4;
 }
 
 #order_review > table > tfoot > tr.woocommerce-shipping-totals.shipping > td > strong {
