@@ -11,7 +11,7 @@
     table-layout:fixed;
 }
 
-.woocommerce-checkout-review-order-table .product-name sup {
+.backorder_date-info {
     padding: 0.2em;
     background-color: var(--accent-color);
     border-radius: 7px;
