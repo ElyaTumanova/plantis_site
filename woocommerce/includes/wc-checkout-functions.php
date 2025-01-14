@@ -5,6 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /*--------------------------------------------------------------
 Contents
+# Backorders
 # Checkout page adjustments
 # Billing adress field
 # Delivery date & Interval fields
@@ -12,6 +13,77 @@ Contents
 # Treez notifications
 # Thankyou page
 --------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Backorders
+--------------------------------------------------------------*/
+
+    // проверка наличия товара Backorders
+
+    function plnt_is_backorder() {
+        $qty = 0; // обязательно сначала ставим 0
+        $isbackorders = false;
+        
+        if( is_checkout( ) && ! is_wc_endpoint_url()) {
+            foreach ( WC()->cart->get_cart() as $cart_item ) {
+                $_product = $cart_item['data'];
+                $_product_id = $_product->id;
+                $qty = $cart_item[ 'quantity' ];
+                $stock_qty = $_product->get_stock_quantity();
+                
+                if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
+                    $isbackorders = true;
+                }	
+            }
+        }      
+        
+        return $isbackorders;
+    }
+
+    //отключаем способ оплаты для Backorders
+    add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_backorders' );
+
+    function plnt_disable_payment_backorders( $available_gateways ) {
+        if (is_admin()) {
+            return $available_gateways;
+        } else {
+            $isbackorders = plnt_is_backorder();
+            if( $isbackorders) {
+                unset( $available_gateways['tinkoff'] ); //to do change to tinkoff
+                unset( $available_gateways['cop'] ); 
+            }
+            return $available_gateways;
+        }
+    }
+
+    // меняем название и описание способа оплаты для Backorders
+    add_filter( 'woocommerce_gateway_title', 'change_payment_gateway_title_backorders', 100, 2 );
+
+    function change_payment_gateway_title_backorders( $title, $payment_id ){
+        $targeted_payment_id = 'cod'; // Задайте идентификатор вашего способа оплаты
+        // Только на странице оформления заказа для определённого идентификатора способа оплаты
+        if( is_checkout( ) && ! is_wc_endpoint_url() && $payment_id === $targeted_payment_id ) {
+            $isbackorders = plnt_is_backorder();
+            if( $isbackorders) {
+                return __("Оплата после подтверждения заказа менеджером", "woocommerce" );
+            }
+        }
+        return $title;
+    }
+
+    add_filter( 'woocommerce_gateway_description', 'change_payment_gateway_description_backorders', 100, 2 );
+
+    function change_payment_gateway_description_backorders( $description, $payment_id ){
+        $targeted_payment_id = 'cod'; // Задайте идентификатор вашего способа оплаты
+        // Только на странице оформления заказа для определённого идентификатора способа оплаты
+        if( is_checkout( ) && ! is_wc_endpoint_url() && $payment_id === $targeted_payment_id ) {
+            $isbackorders = plnt_is_backorder();
+            if( $isbackorders) {
+                return __("Наш менеджер свяжется с Вами для подтверждения заказа и направит ссылку для оплаты картой", "woocommerce" );
+            }
+        }
+        return $description;
+    }
 
 /*--------------------------------------------------------------
 # Checkout page adjustments
@@ -161,7 +233,6 @@ Contents
     // // добавляем новые поля для нтервала и даты доставки
 
     add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_interval_field', 20 );
-    //add_action( 'plnt_woocommerce_review_order_in_order_total', 'plnt_add_delivery_interval_field', 55 );
 
     function plnt_add_delivery_interval_field() {
         // выводим поле функцией woocommerce_form_field()
@@ -658,3 +729,5 @@ Contents
 
         return $thank_you_msg;
     }
+
+

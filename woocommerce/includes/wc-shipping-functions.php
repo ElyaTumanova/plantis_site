@@ -6,18 +6,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 //СПОСОБЫ ДОСТАВКИ
 
 //задаем по умолчанию срочную доставку
-add_action('wp_head','plnt_set_urgent');
+add_action('wp_head','plnt_set_initials');
 
-function plnt_set_urgent() {
+function plnt_set_initials() {
     date_default_timezone_set('Europe/Moscow');
     $hour = date("H");
-    if ($hour >= 18 && $hour <20) {
+    $isbackorders = plnt_is_backorder();
+    if($isbackorders) {
         WC()->session->set('isUrgent', '0' );
+        WC()->session->set('isBackorder', '1' );
     } else {
-        WC()->session->set('isUrgent', '1' );
+        WC()->session->set('isBackorder', '0' );
+        if ($hour >= 18 && $hour <20) {
+            WC()->session->set('isUrgent', '0' );
+        } else {
+            WC()->session->set('isUrgent', '1' );
+        }    
     }
-
+   
     WC()->session->set('isLate', '0' );
+
 };
 
 //for dev
@@ -33,15 +41,20 @@ function plnt_check() {
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
     //print_r( $packages);
     //echo '<br>';
-    echo $chosen_methods[0];
-    echo '<br>';
+    // echo $chosen_methods[0];
+    // echo '<br>';
 
     // if($local_pickup === $chosen_methods[0]) {
     //     echo 'hi';
     //     WC()->session->set('isLate', '0' );  
     // }
-    echo (WC()->session->get('isUrgent' ));
-    echo (WC()->session->get('isLate' ));
+    $isbackorders = plnt_is_backorder();
+    echo 'isback '.$isbackorders;
+    echo 'isUrgent '.(WC()->session->get('isUrgent' ));
+    echo 'hiAjax '.(WC()->session->get('hiAjax' ));
+    echo 'isback2 '.(WC()->session->get('isBackorder' ));
+    echo '<br>';
+    //echo (WC()->session->get('isLate' ));
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
     // if ( is_checkout() && ($hour<18 || $hour>=20)) {
@@ -54,11 +67,20 @@ function plnt_check() {
 add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
-    if ( $_POST['isUrgent'] === '1'){
-        WC()->session->set('isUrgent', '1' );
-    } else {
+
+    if(WC()->session->get('isBackorder') === '1') {
         WC()->session->set('isUrgent', '0' );
+        // WC()->session->set('hiAjax', 'hiAjax' );
+    } 
+    else {
+        // WC()->session->set('hiAjax', 'hiAjaxElse' );
+        if ( $_POST['isUrgent'] === '1'){
+            WC()->session->set('isUrgent', '1' );
+        } else {
+            WC()->session->set('isUrgent', '0' );
+        }
     }
+    
     die(); // (required)
 }
 
@@ -101,33 +123,6 @@ function plnt_refresh_shipping_methods_for_late( $post_data ){
     }
     WC()->cart->calculate_shipping();
 }
-
-// выходные 
-
-// add_action( 'wp_ajax_get_holiday_shipping', 'plnt_get_holiday_shipping' );
-// add_action( 'wp_ajax_nopriv_get_holiday_shipping', 'plnt_get_holiday_shipping' );
-// function plnt_get_holiday_shipping() {
-//     if ( $_POST['isHoliday'] === '1'){
-//         WC()->session->set('isHoliday', '1' );
-//     } else {
-//         WC()->session->set('isHoliday', '0' );
-//     }
-//     die(); // (required)
-// }
-
-// add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_holiday', 10, 1 );
-// function plnt_refresh_shipping_methods_for_holiday( $post_data ){
-//     $bool = true;
-
-//     if ( WC()->session->get('isHoliday' ) === '1' )
-//         $bool = false;
-
-//     // Mandatory to make it work with shipping methods
-//     foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
-//         WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
-//     }
-//     WC()->cart->calculate_shipping();
-// }
 
 
 /* выбираем способ доставки в зависимости от условий*/
@@ -189,12 +184,7 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $delivery_outMKAD_medium ] );
         WC()->session->set('isLate', '0' );
     }
-
-    // ДОСТАВКА В ПРАЗДНИКИ
-
-    // if (WC()->session->get('isHoliday' ) === '1') {
-    //     unset( $rates[ $local_pickup ] );
-    // } 
+ 
 
     /*СТОИМОСТЬ ДОСТАВКИ ПО СУММЕ*/
 

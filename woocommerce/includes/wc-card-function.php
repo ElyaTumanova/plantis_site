@@ -243,7 +243,7 @@ function plnt_get_add_to_card() {
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
         ?><div class="add-to-cart-wrap"> <?php
-        if ($product->get_stock_status() ==='instock') {
+        if ($product->get_stock_status() ==='instock' || $product->backorders_allowed()) {
             woocommerce_template_loop_add_to_cart(); //заменили обычную не яакс кнопку на аякс кнопку из каталога
         }
         if ($quantity > 1 || !$product->get_manage_stock()) {
@@ -252,7 +252,12 @@ function plnt_get_add_to_card() {
                 'max_value'    => $quantity,    // почему-то пришлось передавать заново, проверить на PLANTIS #TODO
             ),);           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
         }
-        if ($product->get_stock_status() ==='instock') {
+        if ($product->backorders_allowed()) {
+            woocommerce_quantity_input(array(
+                'min_value' => 1,
+            ),);           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
+        }
+        if ($product->get_stock_status() ==='instock' || $product->backorders_allowed()) {
             plnt_card_wishlist_btn();
         }
         ?></div>
@@ -273,9 +278,13 @@ function plnt_check_stock_status() {
     global $plants_cat_id;
     $parentCatId = check_category ($product);
     if ($parentCatId === $plants_cat_id) {
-        if ( $product->get_stock_status() ==='instock') {
+        if ( $product->get_stock_status() ==='instock' ) {
             ?>
-            <div class="card__stockstatus card__stockstatus_in">В наличии</div>
+            <div class="card__stockstatus card__stockstatus_in">Экспресс-доставка</div>
+            <?php
+        } else if ($product->backorders_allowed() && $product->get_stock_quantity() === 0) {
+            ?>
+            <div class="card__stockstatus card__stockstatus_in">Доставка после <?php echo plnt_set_backorders_date();?></div>
             <?php
         } else {
             ?>
@@ -325,7 +334,7 @@ function truemisha_quantity_plus() {
     global $product;
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
-        if ($quantity > 1 || !$product->get_manage_stock()) {
+        if ($quantity > 1 || !$product->get_manage_stock() || $product->backorders_allowed()) {
             echo '<div class="plus">&#43;</div>';
         }
     } 
@@ -338,7 +347,7 @@ function truemisha_quantity_minus() {
     global $product;
     if(is_product()) {
         $quantity =  $product->get_stock_quantity();
-        if ($quantity > 1 || !$product->get_manage_stock()) {
+        if ($quantity > 1 || !$product->get_manage_stock() || $product->backorders_allowed()) {
             echo '<div class="minus">&#8722;</div>';
         }
     } 
@@ -511,4 +520,10 @@ function check_category ($product) {
         return $parentCatId = $misc_cat_id;
     }
 };
+
+function plnt_set_backorders_date() {
+	$backorderdate = date( "d-m-Y", strtotime('next wednesday +2 week') );
+
+	return $backorderdate;
+}
 

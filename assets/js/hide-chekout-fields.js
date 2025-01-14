@@ -9,6 +9,7 @@
     let addressFields = document.querySelector('#billing_address_1_field');
     let additionalAddress = document.querySelector('.additional-address-field');
     let innField = document.querySelector('#additional_inn');
+    console.log(isBackorder);
 
     function plnt_hide_checkout_fields(event){
         
@@ -18,34 +19,39 @@
             checkedShippingMethod = event.target.value;
         }
         
-    
-        if ( checkedShippingMethod == localPickupId) {
-            if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
-            if (deliveryIntervalInput) {
-                deliveryIntervalInput.forEach((input)=>{
-                    input.checked = false;
-            })};
-            if (addressFields) {addressFields.classList.add('d-none');}
-            if (additionalAddress) {additionalAddress.classList.add('d-none');}
+        if (isBackorder) {
+            deliveryInterval.classList.add('d-none');
+            deliveryDatesWrap.classList.add('d-none');
         } else {
-            if (isUrgent == '1' && isHideInterval) {
+            if ( checkedShippingMethod == localPickupId) {
                 if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
                 if (deliveryIntervalInput) {
                     deliveryIntervalInput.forEach((input)=>{
                         input.checked = false;
                 })};
-            }
-        
-            if (isUrgent == '0') {
-                if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
-            }
-            if (!isHideInterval) {
-                if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
-            }
-            if (addressFields) {addressFields.classList.remove('d-none');}
-            if (additionalAddress) {additionalAddress.classList.remove('d-none');}
+                if (addressFields) {addressFields.classList.add('d-none');}
+                if (additionalAddress) {additionalAddress.classList.add('d-none');}
+            } else {
+                if (isUrgent == '1' && isHideInterval) {
+                    if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
+                    if (deliveryIntervalInput) {
+                        deliveryIntervalInput.forEach((input)=>{
+                            input.checked = false;
+                    })};
+                }
+            
+                if (isUrgent == '0') {
+                    if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
+                }
+                if (!isHideInterval) {
+                    if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
+                }
+                if (addressFields) {addressFields.classList.remove('d-none');}
+                if (additionalAddress) {additionalAddress.classList.remove('d-none');}
+            }    
         }
-
+    
+        
         if(event && event.target.id == "payment_method_cheque") {
             if (innField) {innField.classList.remove('d-none')};
         } else {

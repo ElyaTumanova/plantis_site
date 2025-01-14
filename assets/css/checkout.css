@@ -11,6 +11,15 @@
     table-layout:fixed;
 }
 
+.backorder_date-info {
+    padding: 0.2em;
+    background-color: var(--accent-color);
+    border-radius: 7px;
+    color: var(--white);
+    white-space: nowrap;
+    top: -0.3em;
+}
+
 @media (min-width: 768px) {
 	.order_wrap {
         display: grid;
@@ -152,7 +161,7 @@
     padding: 17px 5px;
     border-bottom: 1px solid #ebeced;
     font-size: 16px;
-    line-height: 1.2;
+    line-height: 1.4;
 }
 
 #order_review > table > tfoot > tr.woocommerce-shipping-totals.shipping > td > strong {
