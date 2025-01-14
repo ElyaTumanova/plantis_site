@@ -50,11 +50,11 @@ function plnt_check() {
     // }
     // $isbackorders = plnt_is_backorder();
     // echo 'isback '.$isbackorders;
-    // echo 'isUrgent '.(WC()->session->get('isUrgent' ));
+    echo 'isUrgent '.(WC()->session->get('isUrgent' ));
     // echo 'hiAjax '.(WC()->session->get('hiAjax' ));
     // echo 'isback2 '.(WC()->session->get('isBackorder' ));
-    // echo '<br>';
-    echo (WC()->session->get('isLate' ));
+    echo 'isLate '.(WC()->session->get('isLate' ));
+    echo '<br>';
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
     // if ( is_checkout() && ($hour<18 || $hour>=20)) {
