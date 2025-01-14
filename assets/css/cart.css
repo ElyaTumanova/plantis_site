@@ -178,18 +178,7 @@
         }
     }
 
-    tr.woocommerce-cart-form__cart-item {
-        display: grid;
-        grid-template-columns:160px 320px auto;
-        grid-template-rows: repeat(3, auto);
-        grid-template-areas:
-        "img name price"
-        "img name qty"
-        "img name remove";
-        column-gap: 25px;
-        margin-top: 5px;
-    }
-
+   
     /* @media (max-width: 767px) { */
         td.product-price, th.product-price {
             display: none;
@@ -262,6 +251,35 @@
         } */
 
     /* } */
+
+    tr.woocommerce-cart-form__cart-item {
+        display: grid;
+        grid-template-columns:160px 320px auto;
+        grid-template-rows: repeat(3, auto);
+        grid-template-areas:
+        "img name price"
+        "img name qty"
+        "img name remove";
+        column-gap: 25px;
+        margin-top: 5px;
+    }
+
+    td.product-subtotal {
+        grid-area: price;
+        font-size: 20px;
+        text-align: left;
+        align-self: flex-start;
+        padding: 0;
+        justify-self: end;
+    }
+
+    td.plnt_product-remove {
+        grid-area: remove;
+        font-size: 18px;
+        align-self: flex-start;
+        padding: 0;
+        justify-self: end;
+    }
 }
 
 /*empty cart*/
