@@ -696,6 +696,10 @@ ul.products {
     background-image: url(https://plantis.shop/wp-content/uploads/2024/03/check_white.svg);
 }
 
+.card__sliders-wrap .woocommerce-LoopProduct-link:first-of-type {
+    order: -2;
+}
+
 /*--------------------------------------------------------------
 # Horizontal catalog slider for front-page
 --------------------------------------------------------------*/
