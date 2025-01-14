@@ -73,9 +73,11 @@ function renderDeliveryIntervals(shippingValue) {
     info.label.appendChild(priceEl);
       if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryCourierId || shippingValue == deliveryLongId) {
       } else {
-        if (isUrgent) {
+        if (isUrgent === '1') {
+          console.log(isUrgent);
           priceEl.innerHTML = `+0₽`;
         } else {
+          console.log(isUrgent);
           priceEl.innerHTML = info.for == `additional_delivery_interval_18:00 - 21:00` ? `+${deliveryLateMarkup}₽` : `+0₽` ;
         }
       }
