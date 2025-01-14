@@ -30,7 +30,7 @@ function plnt_set_initials() {
 
 //for dev
 
-//add_action('woocommerce_review_order_before_shipping','plnt_check');
+add_action('woocommerce_review_order_before_shipping','plnt_check');
 //add_action('wp_head','plnt_check');
 
 function plnt_check() {
@@ -48,13 +48,13 @@ function plnt_check() {
     //     echo 'hi';
     //     WC()->session->set('isLate', '0' );  
     // }
-    $isbackorders = plnt_is_backorder();
-    echo 'isback '.$isbackorders;
-    echo 'isUrgent '.(WC()->session->get('isUrgent' ));
-    echo 'hiAjax '.(WC()->session->get('hiAjax' ));
-    echo 'isback2 '.(WC()->session->get('isBackorder' ));
-    echo '<br>';
-    //echo (WC()->session->get('isLate' ));
+    // $isbackorders = plnt_is_backorder();
+    // echo 'isback '.$isbackorders;
+    // echo 'isUrgent '.(WC()->session->get('isUrgent' ));
+    // echo 'hiAjax '.(WC()->session->get('hiAjax' ));
+    // echo 'isback2 '.(WC()->session->get('isBackorder' ));
+    // echo '<br>';
+    echo (WC()->session->get('isLate' ));
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
     // if ( is_checkout() && ($hour<18 || $hour>=20)) {
