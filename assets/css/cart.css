@@ -7,7 +7,7 @@
 /* блок итого */
 
 .cart_totals {
-    margin: 15px 0 35px;
+    margin: 0px 0 35px;
     display: flex;
     flex-wrap: wrap;
     column-gap: 20px;
@@ -43,6 +43,7 @@
         column-gap: 5px;
         position: relative;
         max-width: 100%;
+        margin-top: 15px;
     }
 
     .cart_totals .order-total {
@@ -80,8 +81,9 @@
 .woocommerce-cart-form .shop_table {
 
     thead {
-        text-transform: uppercase;
-        text-align: left;
+        /* text-transform: uppercase;
+        text-align: left; */
+        display: none;
     }
 
     th {
@@ -180,9 +182,9 @@
             display: none;
         }
 
-        thead {
+        /* thead {
             display: none;
-        }
+        } */
 
         tr.woocommerce-cart-form__cart-item {
             display: grid;
