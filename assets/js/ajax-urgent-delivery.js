@@ -106,7 +106,7 @@ function ajaxGetLateDelivery(event) {
   } else {
     isLate = '0'
   }
-  //console.log(isLate);
+  console.log(isLate);
 
   jQuery( function($){
     $.ajax({
