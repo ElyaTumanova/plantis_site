@@ -11,6 +11,10 @@
     table-layout:fixed;
 }
 
+.woocommerce-checkout-review-order-table .product-name sup {
+
+}
+
 @media (min-width: 768px) {
 	.order_wrap {
         display: grid;
