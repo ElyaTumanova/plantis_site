@@ -49,7 +49,7 @@ Contents
         } else {
             $isbackorders = plnt_is_backorder();
             if( $isbackorders) {
-                unset( $available_gateways['bacs'] ); //to do change to tinkoff
+                unset( $available_gateways['tinkoff'] ); //to do change to tinkoff
                 unset( $available_gateways['cop'] ); 
             }
             return $available_gateways;
