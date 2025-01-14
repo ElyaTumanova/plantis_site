@@ -18,7 +18,6 @@
             // console.log(event);
             checkedShippingMethod = event.target.value;
         }
-        console.log(isBackorder);
         if (isBackorder) {
             deliveryInterval.classList.add('d-none');
             deliveryDatesWrap.classList.add('d-none');
@@ -32,7 +31,6 @@
                 if (addressFields) {addressFields.classList.add('d-none');}
                 if (additionalAddress) {additionalAddress.classList.add('d-none');}
             } else {
-                console.log(isHideInterval);
                 if (isUrgent == '1' && isHideInterval) {
                     if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
                     if (deliveryIntervalInput) {
