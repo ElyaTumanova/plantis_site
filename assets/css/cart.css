@@ -69,7 +69,7 @@
 /* таблица корзины */
 
 .woocommerce-cart-form {
-    max-width: 70%;
+    max-width: calc(80% - 30px);
 }
 
 @media (max-width: 767px) {
@@ -283,7 +283,7 @@
 
     td.product-name {
         grid-area: name;
-        font-size: 14px;
+        font-size: 16px;
         text-align: left;
         align-self: flex-start;
         padding-top: 15px;
