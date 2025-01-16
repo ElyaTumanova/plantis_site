@@ -35,7 +35,7 @@ function toggle_search_popup () {
     searchPopup.classList.toggle ('popup_active');
     body.classList.toggle ('fix-body');
     searchInput.focus();
-    console.log(searchInput);
+
     // для поиска
     const searchPopupResultBtn = document.querySelector('.search-result__btn');
     const deleteElement = searchResult.querySelectorAll('div');

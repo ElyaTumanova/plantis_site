@@ -9,7 +9,6 @@
     let addressFields = document.querySelector('#billing_address_1_field');
     let additionalAddress = document.querySelector('.additional-address-field');
     let innField = document.querySelector('#additional_inn');
-    console.log(isBackorder);
 
     function plnt_hide_checkout_fields(event){
         
