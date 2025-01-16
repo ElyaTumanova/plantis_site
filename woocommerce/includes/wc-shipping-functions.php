@@ -316,21 +316,24 @@ function plnt_disable_payment_small_order( $available_gateways ) {
 
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
 
-    // стоимость товаров в корзине
-    if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
-        unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+    if (isset($chosen_methods)) {
+        // стоимость товаров в корзине
+        if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
+            unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+        }
+    
+        
+        if (WC()->cart->subtotal < $min_medium_delivery && $delivery_courier == $chosen_methods[0]) {
+            unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+        }
+        
+    
+        // дальняя доставка
+        if ( $delivery_long_dist == $chosen_methods[0]) {
+            unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+        }
     }
 
-    
-    if (WC()->cart->subtotal < $min_medium_delivery && $delivery_courier == $chosen_methods[0]) {
-        unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
-    }
-    
-
-    // дальняя доставка
-    if ( $delivery_long_dist == $chosen_methods[0]) {
-        unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
-    }
 
     return $available_gateways;
 }
