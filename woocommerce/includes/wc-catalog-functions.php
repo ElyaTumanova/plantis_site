@@ -125,34 +125,7 @@ function plnt_catalog_filters_main_area() {
 function plnt_filter_metki_swiper_init () {
 	?>
 	<script>
-		jQuery(function($){
-			setTimeout(function(){
-				swiper_filter_metki_init();
-				// swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
-				// 	navigation: {
-				// 		nextEl: '.myslider-next',
-				// 		prevEl: '.myslider-prev',
-				// 	},
-				// 	slidesPerView: 'auto',
-				// 	spaceBetween: 5,
-				// 	loop: false,
-				// 	breakpoints: {
-				// 		320: {
-				// 		navigation: {
-				// 			enabled: false,
-				// 		},
-				// 		loop: true,
-				// 		},
-				// 		767: {
-				// 		navigation: {
-				// 			enabled: true,
-				// 		},
-				// 		loop: false,
-				// 		}
-				// 	}
-				// });
-			},100)
-		})
+		setTimeout(swiper_filter_metki_init(),100)
 	</script>
 	<?php
 }
