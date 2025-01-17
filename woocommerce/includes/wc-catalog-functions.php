@@ -236,61 +236,7 @@ function plnt_catalog_gallery() {
 function plnt_img_gallery_swiper_init() {
 	?>
 	<script>
-		swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-			navigation: {
-						enabled: true,
-					},
-			navigation: {
-				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev',
-			},
-			// autoplay: {
-			// 	delay: 500,
-			// 	disableOnInteraction: false,
-			// },
-			grabCursor: true,
-			slidesPerView: 1,
-			slidesPerGroup: 1,
-			spaceBetween: 0,
-			loop: true,
-			freeMode: false,
-			// effect: "fade",
-			crossFade: true,
-			observer: true,
-			observeParents: true,
-			observeSlideChildren: true,
-			breakpoints: {
-				320: {
-					navigation: {
-						enabled: false,
-					},
-				},
-				768: {
-					navigation: {
-						enabled: true,
-					},
-				}
-			}
-		});
-
-		// swiper_catalog_card_imgs.forEach((element) => {
-        // 	element.autoplay.stop();
-      	// });
-
-		// const sliders = document.querySelectorAll(".product__image-slider-wrap");
-		// sliders.forEach((slider) => {
-		// 	slider.addEventListener("mouseenter", function () {
-		// 		slider.swiper.autoplay.start();
-		// 	});
-		// 	slider.addEventListener("mouseleave", function () {
-		// 		slider.swiper.autoplay.stop();
-		// 		slider.swiper.slideTo(0, 0, false);
-		// 	});
-		// });
+		swiper_catalog_card_imgs_init ();
 	</script>
 	<?php	
 }
