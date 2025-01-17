@@ -10,7 +10,7 @@
     let innField = document.querySelector('#additional_inn');
     console.log(isBackorder);
 
-    function plnt_hide_checkout_fields(event){
+    function plnt_hide_checkout_fields(event){[]
         
         //console.log('hi plnt_hide_checkout_fields');
         if(event && event.target.className == "shipping_method") {
@@ -18,48 +18,54 @@
             checkedShippingMethod = event.target.value;
         }
 
-        // for backorder
-        if (isBackorder) {
-            deliveryInterval.classList.add('d-none');
-            deliveryDates.classList.add('d-none');
-            if (deliveryIntervalInput) {
+        //for delivery intervals
+        if (deliveryInterval) {
+            if (isBackorder) {
+                deliveryInterval.classList.add('d-none');
                 deliveryIntervalInput.forEach((input)=>{
                     input.checked = false;
-            })};
-            if (deliveryDatesInput) {
-                deliveryDatesInput.forEach((input)=>{
-                    input.checked = false;
-            })};
-
-        } else {
-            if ( checkedShippingMethod == localPickupId) {
-                if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
-                if (deliveryIntervalInput) {
+                })
+            } else { 
+                if ( checkedShippingMethod == localPickupId) {
+                    deliveryInterval.classList.add('d-none');
                     deliveryIntervalInput.forEach((input)=>{
                         input.checked = false;
-                })};
-                if (addressFields) {addressFields.classList.add('d-none');}
-                if (additionalAddress) {additionalAddress.classList.add('d-none');}
-            } else {
-                if (isUrgent == '1' && isHideInterval) {
-                    if (deliveryInterval) {deliveryInterval.classList.add('d-none')};
-                    if (deliveryIntervalInput) {
+                    });
+                } else {
+                    if (isUrgent == '1' && isHideInterval) {
+                        deliveryInterval.classList.add('d-none');
                         deliveryIntervalInput.forEach((input)=>{
                             input.checked = false;
-                    })};
+                        });
+                    }
+                    if (isUrgent == '0') {
+                        deliveryInterval.classList.remove('d-none');
+                    }
+                    if (!isHideInterval) {
+                        deliveryInterval.classList.remove('d-none');
+                    }
                 }
-            
-                if (isUrgent == '0') {
-                    if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
-                }
-                if (!isHideInterval) {
-                    if (deliveryInterval) {deliveryInterval.classList.remove('d-none')};
-                }
-                if (addressFields) {addressFields.classList.remove('d-none');}
-                if (additionalAddress) {additionalAddress.classList.remove('d-none');}
-            }    
+            }
         }
-    
+
+        //for delivery dates
+        if (deliveryDates) {
+            if (isBackorder) {
+                deliveryDates.classList.add('d-none');
+                deliveryDatesInput.forEach((input)=>{
+                    input.checked = false;
+                })
+            } 
+        }
+
+        //for address 
+        if (checkedShippingMethod == localPickupId) {
+            if (addressFields) {addressFields.classList.add('d-none');}
+            if (additionalAddress) {additionalAddress.classList.add('d-none');}
+        } else {
+            if (addressFields) {addressFields.classList.remove('d-none');}
+            if (additionalAddress) {additionalAddress.classList.remove('d-none');}
+        }
         
         // for INN
         if(event && event.target.id == "payment_method_cheque") {
@@ -67,7 +73,6 @@
         } else {
             if (innField) {innField.classList.add('d-none')};
         };
-
 
         // for holidays
         if (isHoliday === '1') {
@@ -97,3 +102,6 @@
         
         checkoutForm.addEventListener('change', plnt_hide_checkout_fields);
     }
+
+
+    
