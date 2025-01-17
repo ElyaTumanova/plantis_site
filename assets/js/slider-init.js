@@ -340,6 +340,31 @@ const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
 --------------------------------------------------------------*/
 // слайдер инициирован в wc-catalog-functions, чтобы повторно инициироваться при аякс обновлении каталога при приминении фильтров
 
+function swiper_filter_metki_init() {
+    swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
+        navigation: {
+            nextEl: '.myslider-next',
+            prevEl: '.myslider-prev',
+        },
+        slidesPerView: 'auto',
+        spaceBetween: 5,
+        loop: false,
+        breakpoints: {
+            320: {
+            navigation: {
+                enabled: false,
+            },
+            loop: true,
+            },
+            767: {
+            navigation: {
+                enabled: true,
+            },
+            loop: false,
+            }
+        }
+    });
+}
 
 /*--------------------------------------------------------------
 # Checkout
