@@ -125,7 +125,11 @@ function plnt_catalog_filters_main_area() {
 function plnt_filter_metki_swiper_init () {
 	?>
 	<script>
-		setTimeout(swiper_filter_metki_init(),100)
+
+			setTimeout(function(){
+				swiper_filter_metki_init();
+			},100)
+
 	</script>
 	<?php
 }
