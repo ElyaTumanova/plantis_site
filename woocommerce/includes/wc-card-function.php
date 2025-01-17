@@ -255,6 +255,7 @@ function plnt_get_add_to_card() {
         if ($product->backorders_allowed()) {
             woocommerce_quantity_input(array(
                 'min_value' => 1,
+                'stock_value'    => $quantity,
             ),);           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
         }
         if ($product->get_stock_status() ==='instock' || $product->backorders_allowed()) {
