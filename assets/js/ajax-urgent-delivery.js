@@ -4,8 +4,8 @@ let isHideInterval;
 let isHoliday;
 let holidays = []; //format dd.mm
 let checkoutForm = document.querySelector('form[name="checkout"]');
-let deliveryDatesWrap = document.querySelector('.delivery_dates');
-let deliveryDates = document.querySelectorAll('.delivery_dates input');
+let deliveryDates = document.querySelector('.delivery_dates');
+let deliveryDatesInput = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
 let deliveryDatesInfo = [];
 let deliveryIntervalsInfo = []
@@ -167,10 +167,10 @@ function setDatesIntervals() {
     deliveryDatesInfo.push(dateInfo);
   });
 
-  deliveryDates[0].setAttribute('checked','checked');
+  deliveryDatesInput[0].setAttribute('checked','checked');
   deliveryIntervalInput[0].setAttribute('checked','checked');
 
-  deliveryDates.forEach((date) => {
+  deliveryDatesInput.forEach((date) => {
     date.addEventListener('click', function(event){
       ajaxGetUrgent(event.target.value);
       checkHoliday(event.target.value);
@@ -208,7 +208,7 @@ function checkHoliday(date) {
 if (checkoutForm) {
 
   setInitalState();
-  checkHoliday(deliveryDates[0].value);
+  checkHoliday(deliveryDatesInput[0].value);
   setDatesIntervals();
 
   checkedShippingMethod = getCheckedShippingMethod();
