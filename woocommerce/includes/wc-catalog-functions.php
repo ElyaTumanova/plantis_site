@@ -236,7 +236,9 @@ function plnt_catalog_gallery() {
 function plnt_img_gallery_swiper_init() {
 	?>
 	<script>
-		swiper_catalog_card_imgs_init ();
+		jQuery(function($){
+			swiper_catalog_card_imgs_init ();
+		})
 	</script>
 	<?php	
 }
