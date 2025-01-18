@@ -439,6 +439,7 @@
         padding: 10px;
         transform: translateX(0px);
         transform: translateY(50px);
+        z-index: 9997;
     }
 
     .card__price-wrap .backorder-info_active {
