@@ -424,17 +424,27 @@
     color: var(--red-color);
 }
 
-@media (max-width: 767px) {
-    .card__price-wrap .backorder-info {
-        left: 10px;
-        position: absolute;
-        bottom: -6px;
-    }
-}
-
 .card__price-wrap .backorder-info_active {
     opacity: 100%;
     transform: translateX(0px);
+}
+
+@media (max-width: 767px) {
+    .card__price-wrap .backorder-info {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 72px;
+        background: var(--background);
+        padding: 10px;
+        transform: translateX(0px);
+        transform: translateY(-50px);
+    }
+
+    .card__price-wrap .backorder-info_active {
+        transform: translateX(0px);
+        transform: translateY(0px);
+    }
 }
 
 .card__grid .add-to-cart-wrap .button {
@@ -443,6 +453,9 @@
     margin: 4px 0;
     white-space: nowrap;
 }
+
+
+
 
 @media (max-width: 767px) {
 
