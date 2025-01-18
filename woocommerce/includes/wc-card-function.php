@@ -213,8 +213,8 @@ function plnt_price_wrap(){
                 }
                 ?>
             </div>
+            <span class = "backorder-info">Сейчас в наличии <?php echo $product->get_stock_quantity();?>. Доставка после <?php echo plnt_set_backorders_date();?></span>
         </div>
-        <span class = "backorder-info">Сейчас в наличии <?php echo $product->get_stock_quantity();?>. Доставка после <?php echo plnt_set_backorders_date();?></span>
         <?php
         plnt_outofstock_info();
         if ( $product->get_stock_status() !=='outofstock') {
