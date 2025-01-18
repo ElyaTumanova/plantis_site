@@ -52,9 +52,10 @@ jQuery(function ($){
 	//уведомление для backorder
 
 	if (newVal > stock) {
-		console.log('hoho');
+		qty.parent().parent().parent();
+		console.log(qty.parent().parent().parent());
 	}
-	
+
 	// определеям товар, для которого изменили кол-во и находим его параметры, записанные в кнопку удаления remove - для Yandex Metrika E-commerce
 	var $productRemove = $(this).parent().parent().parent().find('.plnt_product-remove > a')[0];
 	if ($productRemove) {
