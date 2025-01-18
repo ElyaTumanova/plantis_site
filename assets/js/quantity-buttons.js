@@ -51,9 +51,9 @@ jQuery(function ($){
 
 	//уведомление для backorder
 
+	var backorderInfo = document.createElement('span');
+	backorderInfo.innerHTML='hohoho';
 	if (newVal == (stock + 1)) {
-		var backorderInfo = document.createElement('span');
-		backorderInfo.innerHTML='hohoho';
 		qty.parent().parent().parent()[0].append(backorderInfo);
 	}
 
