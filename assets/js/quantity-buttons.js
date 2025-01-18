@@ -6,6 +6,10 @@ jQuery(function ($){
 	min = parseInt( qty.attr( 'min' ) ),
 	max = parseInt( qty.attr( 'max' ) ),
 	step = parseInt( qty.attr( 'step' ) );
+
+	var stock = qty.parent().parent().find(".add_to_cart_button").attr( 'data-stock-quantity');
+
+	console.log(stock);
  
 	// дальше определяем новое значение количества в зависимости от нажатия кнопки
 	var newVal;
