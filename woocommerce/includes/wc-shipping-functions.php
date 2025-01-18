@@ -15,14 +15,14 @@ function plnt_set_initials() {
     if($isbackorders) {
         // echo 'isBackoerder';
         // WC()->session->set('hiInit', 'hiInit' );
-        WC()->session->set('isUrgent', '0' );
+        WC()->session->set('isUrgent', 'A' );
         // WC()->session->set('isBackorder', '1' );
     } else {
         // echo 'notBackoerder';
         // WC()->session->set('hiInit', 'hiInitElse' );
         // WC()->session->set('isBackorder', '0' );
         if ($hour >= 18 && $hour <20) {
-            WC()->session->set('isUrgent', '0' );
+            WC()->session->set('isUrgent', 'B' );
         } else {
             WC()->session->set('isUrgent', '1' );
         }    
