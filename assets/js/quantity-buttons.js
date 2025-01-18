@@ -54,10 +54,10 @@ jQuery(function ($){
 	var backorderInfo = qty.parent().parent().parent().parent().parent().find(".backorder-info");
 	console.log(backorderInfo);
 	if (newVal == (stock + 1)) {
-		backorderInfo.removeClass('d-none');
+		backorderInfo.addClass('backorder-info_active');
 	} 
 	if (newVal <= (stock)) {
-		backorderInfo.addClass('d-none');
+		backorderInfo.removeClass('backorder-info_active');
 	} 
 
 
