@@ -48,7 +48,7 @@ function plnt_check() {
     // echo 'hiAjax '.(WC()->session->get('hiAjax' )).'  ';
     // echo 'hiInit '.(WC()->session->get('hiInit' )).'  ';
     // echo 'isback2 '.(WC()->session->get('isBackorder' )).'  ';
-    //echo 'isLate '.(WC()->session->get('isLate' ));
+    echo 'isLate '.(WC()->session->get('isLate' )).'  ';
     echo '<br>';
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
