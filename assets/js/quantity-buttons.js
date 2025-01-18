@@ -9,7 +9,7 @@ jQuery(function ($){
 
 	var stock = qty.parent().parent().find(".add_to_cart_button").attr( 'data-stock-quantity');
 
-	console.log(stock);
+	console.log(stock+1);
  
 	// дальше определяем новое значение количества в зависимости от нажатия кнопки
 	var newVal;
