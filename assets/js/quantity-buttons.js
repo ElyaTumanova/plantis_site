@@ -56,7 +56,7 @@ jQuery(function ($){
 	if (newVal == (stock + 1)) {
 		backorderInfo.removeClass('d-none');
 	} 
-	if (newVal < (stock)) {
+	if (newVal <= (stock)) {
 		backorderInfo.addClass('d-none');
 	} 
 
