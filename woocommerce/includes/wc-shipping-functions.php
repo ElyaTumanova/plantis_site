@@ -15,16 +15,16 @@ function plnt_set_initials() {
     if($isbackorders) {
         // echo 'isBackoerder';
         // WC()->session->set('hiInit', 'hiInit' );
-        WC()->session->set('isUrgent', 'A' );
+        WC()->session->set('isUrgent', 'A' ); //0
         // WC()->session->set('isBackorder', '1' );
     } else {
         // echo 'notBackoerder';
         // WC()->session->set('hiInit', 'hiInitElse' );
         // WC()->session->set('isBackorder', '0' );
         if ($hour >= 18 && $hour <20) {
-            WC()->session->set('isUrgent', 'B' );
+            WC()->session->set('isUrgent', 'B' ); //0
         } else {
-            WC()->session->set('isUrgent', '1' );
+            WC()->session->set('isUrgent', 'C' ); //1
         }    
     }
    
@@ -80,9 +80,9 @@ function plnt_get_urgent_shipping() {
     // else {
         // WC()->session->set('hiAjax', 'hiAjaxElse' );
         if ( $_POST['isUrgent'] === '1'){
-            WC()->session->set('isUrgent', '1' );
+            WC()->session->set('isUrgent', 'D' ); //1
         } else {
-            WC()->session->set('isUrgent', '0' );
+            WC()->session->set('isUrgent', 'F' ); //0
         }
     // }
     
