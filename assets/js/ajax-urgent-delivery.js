@@ -26,7 +26,6 @@ function onChangeShippingMethod(event) {
         // console.log(event.target.value);
         // ajaxGetUrgent();
     }
-    console.log(isUrgent);
 }
 
 function getCheckedShippingMethod (){
@@ -85,19 +84,16 @@ function renderDeliveryIntervals(shippingValue) {
 }
 
 function ajaxGetUrgent(date) {
-  console.log('hi ajaxGetUrgent');
-  console.log(date);
   if (date) {
     if(date == today) {
       isUrgent = '1';
     } else {
       isUrgent = '0';
-      console.log('zero?')
     }
   }
   
   
-  console.log(isUrgent);
+  // console.log(isUrgent);
 
   jQuery( function($){
         $.ajax({
@@ -143,7 +139,7 @@ function ajaxGetLateDelivery(event) {
 function setInitalState() {
   let hour = new Date().getHours();
 
-  console.log(isBackorder);
+  // console.log(isBackorder);
   if (isBackorder) {
     isUrgent = 0;
   } else {
@@ -220,7 +216,6 @@ function checkHoliday(date) {
 if (checkoutForm) {
 
   setInitalState();
-  console.log(isUrgent);
   checkHoliday(deliveryDatesInput[0].value);
   setDatesIntervals();
 
