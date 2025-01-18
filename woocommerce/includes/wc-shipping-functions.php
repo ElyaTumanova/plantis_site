@@ -11,23 +11,24 @@ add_action('wp_head','plnt_set_initials');
 function plnt_set_initials() {
     date_default_timezone_set('Europe/Moscow');
     $hour = date("H");
-    $isbackorders = plnt_is_backorder();
-    if($isbackorders) {
-        // echo 'isBackoerder';
-        // WC()->session->set('hiInit', 'hiInit' );
-        WC()->session->set('isUrgent', 'A' ); //0
-        // WC()->session->set('isBackorder', '1' );
-    } else {
-        // echo 'notBackoerder';
-        // WC()->session->set('hiInit', 'hiInitElse' );
-        // WC()->session->set('isBackorder', '0' );
-        if ($hour >= 18 && $hour <20) {
-            WC()->session->set('isUrgent', 'B' ); //0
-        } else {
-            WC()->session->set('isUrgent', 'C' ); //1
-        }    
-    }
+    // $isbackorders = plnt_is_backorder();
+    // if($isbackorders) {
+    //     // echo 'isBackoerder';
+    //     // WC()->session->set('hiInit', 'hiInit' );
+    //     WC()->session->set('isUrgent', 'A' ); //0
+    //     // WC()->session->set('isBackorder', '1' );
+    // } else {
+    //     // echo 'notBackoerder';
+    //     // WC()->session->set('hiInit', 'hiInitElse' );
+    //     // WC()->session->set('isBackorder', '0' );
+    //     if ($hour >= 18 && $hour <20) {
+    //         WC()->session->set('isUrgent', 'B' ); //0
+    //     } else {
+    //         WC()->session->set('isUrgent', 'C' ); //1
+    //     }    
+    // }
    
+    WC()->session->set('isUrgent', 'K' );
     WC()->session->set('isLate', '0' );
 
 };
