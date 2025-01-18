@@ -438,8 +438,8 @@
         background: var(--background);
         padding: 10px;
         transform: translateX(0px);
-        transform: translateY(50px);
-        z-index: 9997;
+        transform: translateY(-50px);
+        z-index: -1;
     }
 
     .card__price-wrap .backorder-info_active {
