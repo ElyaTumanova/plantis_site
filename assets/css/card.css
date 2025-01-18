@@ -415,12 +415,14 @@
 .card__price-wrap .backorder-info {
     opacity: 0%;
     width: 0px;
+    height: 0px;
     transform: translateX(50px);
     transition: all 2s;
 }
 
 .card__price-wrap .backorder-info_active {
     width: fit-content;
+    height: fit-content;
     opacity: 100%;
     transform: translateX(0px);
 }
