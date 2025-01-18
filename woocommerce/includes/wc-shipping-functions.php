@@ -48,8 +48,8 @@ function plnt_check() {
     //     echo 'hi';
     //     WC()->session->set('isLate', '0' );  
     // }
-    // $isbackorders = plnt_is_backorder();
-    // echo 'isback '.$isbackorders;
+    $isbackorders = plnt_is_backorder();
+    echo 'isback '.$isbackorders;
     echo 'isUrgent '.(WC()->session->get('isUrgent' ));
     // echo 'hiAjax '.(WC()->session->get('hiAjax' ));
     echo 'isback2 '.(WC()->session->get('isBackorder' ));

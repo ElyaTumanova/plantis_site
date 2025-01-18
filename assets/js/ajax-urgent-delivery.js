@@ -25,6 +25,7 @@ function onChangeShippingMethod(event) {
         renderDeliveryIntervals(event.target.value);
         // console.log(event.target.value);
     }
+    console.log(isUrgent);
 }
 
 function getCheckedShippingMethod (){
