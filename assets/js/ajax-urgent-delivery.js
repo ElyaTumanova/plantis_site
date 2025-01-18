@@ -24,7 +24,7 @@ function onChangeShippingMethod(event) {
         renderDeliveryDates(event.target.value);
         renderDeliveryIntervals(event.target.value);
         // console.log(event.target.value);
-        ajaxGetUrgent();
+        // ajaxGetUrgent();
     }
     console.log(isUrgent);
 }
@@ -143,10 +143,15 @@ function ajaxGetLateDelivery(event) {
 function setInitalState() {
   let hour = new Date().getHours();
 
-  if (hour >= 18 && hour <20) {
+  console.log(isBackorder);
+  if (isBackorder) {
     isUrgent = 0;
   } else {
-    isUrgent = 1;
+    if (hour >= 18 && hour <20) {
+      isUrgent = 0;
+    } else {
+      isUrgent = 1;
+    }
   }
 
   if (hour >= 20) {

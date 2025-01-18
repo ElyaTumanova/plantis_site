@@ -13,14 +13,14 @@ function plnt_set_initials() {
     $hour = date("H");
     $isbackorders = plnt_is_backorder();
     if($isbackorders) {
-        echo 'isBackoerder';
-        WC()->session->set('hiInit', 'hiInit' );
+        // echo 'isBackoerder';
+        // WC()->session->set('hiInit', 'hiInit' );
         WC()->session->set('isUrgent', '0' );
-        WC()->session->set('isBackorder', '1' );
+        // WC()->session->set('isBackorder', '1' );
     } else {
-        echo 'notBackoerder';
-        WC()->session->set('hiInit', 'hiInitElse' );
-        WC()->session->set('isBackorder', '0' );
+        // echo 'notBackoerder';
+        // WC()->session->set('hiInit', 'hiInitElse' );
+        // WC()->session->set('isBackorder', '0' );
         if ($hour >= 18 && $hour <20) {
             WC()->session->set('isUrgent', '0' );
         } else {
@@ -52,12 +52,12 @@ function plnt_check() {
     //     echo 'hi';
     //     WC()->session->set('isLate', '0' );  
     // }
-    $isbackorders = plnt_is_backorder();
-    echo 'isback '.$isbackorders.'  ';
+    // $isbackorders = plnt_is_backorder();
+    // echo 'isback '.$isbackorders.'  ';
     echo 'isUrgent '.(WC()->session->get('isUrgent' )).'  ';
-    echo 'hiAjax '.(WC()->session->get('hiAjax' )).'  ';
-    echo 'hiInit '.(WC()->session->get('hiInit' )).'  ';
-    echo 'isback2 '.(WC()->session->get('isBackorder' )).'  ';
+    // echo 'hiAjax '.(WC()->session->get('hiAjax' )).'  ';
+    // echo 'hiInit '.(WC()->session->get('hiInit' )).'  ';
+    // echo 'isback2 '.(WC()->session->get('isBackorder' )).'  ';
     //echo 'isLate '.(WC()->session->get('isLate' ));
     echo '<br>';
     // date_default_timezone_set('Europe/Moscow');
@@ -73,18 +73,18 @@ add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
 
-    if(WC()->session->get('isBackorder') === '1') {
-        WC()->session->set('isUrgent', '0' );
-        WC()->session->set('hiAjax', 'hiAjax' );
-    } 
-    else {
-        WC()->session->set('hiAjax', 'hiAjaxElse' );
+    // if(WC()->session->get('isBackorder') === '1') {
+    //     WC()->session->set('isUrgent', '0' );
+    //     WC()->session->set('hiAjax', 'hiAjax' );
+    // } 
+    // else {
+        // WC()->session->set('hiAjax', 'hiAjaxElse' );
         if ( $_POST['isUrgent'] === '1'){
             WC()->session->set('isUrgent', '1' );
         } else {
             WC()->session->set('isUrgent', '0' );
         }
-    }
+    // }
     
     die(); // (required)
 }
