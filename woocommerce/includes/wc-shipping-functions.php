@@ -28,7 +28,7 @@ function plnt_set_initials() {
     //     }    
     // }
    
-    WC()->session->set('isUrgent', 'K' );
+    WC()->session->set('isUrgent', '0' );
     WC()->session->set('isLate', '0' );
 
 };
@@ -81,9 +81,9 @@ function plnt_get_urgent_shipping() {
     // else {
         // WC()->session->set('hiAjax', 'hiAjaxElse' );
         if ( $_POST['isUrgent'] === '1'){
-            WC()->session->set('isUrgent', 'D' ); //1
+            WC()->session->set('isUrgent', '1' ); //1
         } else {
-            WC()->session->set('isUrgent', 'F' ); //0
+            WC()->session->set('isUrgent', '0' ); //0
         }
     // }
     
