@@ -91,9 +91,12 @@ function ajaxGetUrgent(date) {
       isUrgent = '1';
     } else {
       isUrgent = '0';
+      console.log('zero?')
     }
   // }
   
+  
+  console.log(isUrgent);
 
   jQuery( function($){
         $.ajax({
