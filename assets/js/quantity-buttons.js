@@ -52,9 +52,9 @@ jQuery(function ($){
 	//уведомление для backorder
 
 	var backorderInfo = document.createElement('span');
-	backorderInfo.innerHTML='hohoho';
+	qty.parent().parent().parent()[0].append(backorderInfo);
 	if (newVal == (stock + 1)) {
-		qty.parent().parent().parent()[0].append(backorderInfo);
+		backorderInfo.innerHTML='hohoho';
 	}
 
 	// определеям товар, для которого изменили кол-во и находим его параметры, записанные в кнопку удаления remove - для Yandex Metrika E-commerce
