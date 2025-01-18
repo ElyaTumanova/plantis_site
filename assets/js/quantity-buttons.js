@@ -53,7 +53,7 @@ jQuery(function ($){
 
 	if (newVal > stock) {
 		qty.parent().parent().parent();
-		console.log(qty.parent().parent().parent()[0]);
+		console.log(qty.parent().parent().parent()[0].append('<li>C#</li>'));
 	}
 
 	// определеям товар, для которого изменили кол-во и находим его параметры, записанные в кнопку удаления remove - для Yandex Metrika E-commerce
