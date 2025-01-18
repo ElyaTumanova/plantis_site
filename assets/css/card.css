@@ -414,6 +414,7 @@
 }
 
 .card__price-wrap .backorder-info {
+    display: block;
     opacity: 0%;
     transform: translateX(50px);
     transition: all 2s;
