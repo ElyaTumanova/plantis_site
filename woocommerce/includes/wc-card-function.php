@@ -246,13 +246,13 @@ function plnt_get_add_to_card() {
         if ($product->get_stock_status() ==='instock' || $product->backorders_allowed()) {
             woocommerce_template_loop_add_to_cart(); //заменили обычную не яакс кнопку на аякс кнопку из каталога
         }
-        if ($quantity > 1 || !$product->get_manage_stock()) {
+        if ($quantity > 1 && !$product->backorders_allowed()) {
             woocommerce_quantity_input(array(
                 'min_value' => 1,
                 'max_value'    => $quantity,    // почему-то пришлось передавать заново, проверить на PLANTIS #TODO
             ),);           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
         }
-        if ($product->backorders_allowed()) {
+        if ($product->backorders_allowed() || !$product->get_manage_stock()) {
             woocommerce_quantity_input(array(
                 'min_value' => 1,
             ),);           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
