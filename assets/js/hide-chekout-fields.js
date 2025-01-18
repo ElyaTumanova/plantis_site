@@ -8,14 +8,23 @@
     let addressFields = document.querySelector('#billing_address_1_field');
     let additionalAddress = document.querySelector('.additional-address-field');
     let innField = document.querySelector('#additional_inn');
+    let shippingMethodPrice = document.querySelectorAll('#shipping_method li span');
+    console.log(shippingMethodPrice);
     console.log(isBackorder);
 
-    function plnt_hide_checkout_fields(event){[]
+    function plnt_hide_checkout_fields(event){
         
         //console.log('hi plnt_hide_checkout_fields');
         if(event && event.target.className == "shipping_method") {
             // console.log(event);
             checkedShippingMethod = event.target.value;
+        }
+
+        //for shiping method price
+        if (!isBackorder) {
+            shippingMethodPrice.forEach((el) =>{
+                el.classList.add('d-none');
+            })
         }
 
         //for delivery intervals
