@@ -49,6 +49,12 @@ jQuery(function ($){
 
 	qty.parent().parent().find(".add_to_cart_button").attr( 'data-quantity', newVal ); //устанавливаем новое значение для атрибута кнопки добавить в корзину. div "quantity" должен находится в одном родительском узле с кнопкой в корзирну
 
+	//уведомление для backorder
+
+	if (newVal > stock) {
+		console.log('hoho');
+	}
+	
 	// определеям товар, для которого изменили кол-во и находим его параметры, записанные в кнопку удаления remove - для Yandex Metrika E-commerce
 	var $productRemove = $(this).parent().parent().parent().find('.plnt_product-remove > a')[0];
 	if ($productRemove) {
