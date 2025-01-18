@@ -55,7 +55,11 @@ jQuery(function ($){
 	console.log(backorderInfo);
 	if (newVal == (stock + 1)) {
 		backorderInfo.removeClass('d-none');
-	}
+	} 
+	if (newVal < (stock)) {
+		backorderInfo.addClass('d-none');
+	} 
+
 
 	// определеям товар, для которого изменили кол-во и находим его параметры, записанные в кнопку удаления remove - для Yandex Metrika E-commerce
 	var $productRemove = $(this).parent().parent().parent().find('.plnt_product-remove > a')[0];
