@@ -51,7 +51,7 @@ jQuery(function ($){
 
 	//уведомление для backorder
 
-	if (newVal === (stock + 1)) {
+	if (newVal == (stock + 1)) {
 		qty.parent().parent().parent();
 		console.log(qty.parent().parent().parent()[0].append('<li>C#</li>'));
 	}
