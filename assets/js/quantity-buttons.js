@@ -7,9 +7,9 @@ jQuery(function ($){
 	max = parseInt( qty.attr( 'max' ) ),
 	step = parseInt( qty.attr( 'step' ) );
 
-	var stock = qty.parent().parent().find(".add_to_cart_button").attr( 'data-stock-quantity');
+	var stock = parseInt(qty.parent().parent().find(".add_to_cart_button").attr( 'data-stock-quantity'));
 
-	console.log(stock+1);
+	console.log(stock);
  
 	// дальше определяем новое значение количества в зависимости от нажатия кнопки
 	var newVal;
