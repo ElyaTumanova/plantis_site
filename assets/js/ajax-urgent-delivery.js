@@ -220,6 +220,7 @@ function checkHoliday(date) {
 if (checkoutForm) {
 
   setInitalState();
+  console.log(isUrgent);
   checkHoliday(deliveryDatesInput[0].value);
   setDatesIntervals();
 
