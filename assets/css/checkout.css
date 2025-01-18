@@ -226,6 +226,10 @@
     min-width: 85px;
     text-align: right; */
     display: none;
+    font-size: 11px;
+    line-height: 13px;
+    font-weight: 400;
+    color: var(--accent-color);
 }
 
 .large_delivery_notice {
