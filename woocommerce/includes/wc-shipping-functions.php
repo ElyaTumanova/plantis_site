@@ -53,7 +53,7 @@ function plnt_check() {
     $isbackorders = plnt_is_backorder();
     echo 'isback '.$isbackorders;
     echo 'isUrgent '.(WC()->session->get('isUrgent' ));
-    // echo 'hiAjax '.(WC()->session->get('hiAjax' ));
+    echo 'hiAjax '.(WC()->session->get('hiAjax' ));
     echo 'isback2 '.(WC()->session->get('isBackorder' ));
     //echo 'isLate '.(WC()->session->get('isLate' ));
     echo '<br>';
@@ -72,10 +72,10 @@ function plnt_get_urgent_shipping() {
 
     if(WC()->session->get('isBackorder') === '1') {
         WC()->session->set('isUrgent', '0' );
-        // WC()->session->set('hiAjax', 'hiAjax' );
+        WC()->session->set('hiAjax', 'hiAjax' );
     } 
     else {
-        // WC()->session->set('hiAjax', 'hiAjaxElse' );
+        WC()->session->set('hiAjax', 'hiAjaxElse' );
         if ( $_POST['isUrgent'] === '1'){
             WC()->session->set('isUrgent', '1' );
         } else {
@@ -372,7 +372,7 @@ function plnt_get_shiping_costs() {
 
 // задаем способ доставки по умолчанию для доставок внутри и за пределы МКАД
 
-//add_filter( 'woocommerce_shipping_chosen_method', 'wp_kama_woocommerce_shipping_chosen_method_filter', 10, 3 );
+add_filter( 'woocommerce_shipping_chosen_method', 'wp_kama_woocommerce_shipping_chosen_method_filter', 10, 3 );
 
 function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $chosen_method ){
 
