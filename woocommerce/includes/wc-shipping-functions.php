@@ -13,9 +13,11 @@ function plnt_set_initials() {
     $hour = date("H");
     $isbackorders = plnt_is_backorder();
     if($isbackorders) {
+        echo 'isBackoerder';
         WC()->session->set('isUrgent', '0' );
         WC()->session->set('isBackorder', '1' );
     } else {
+        echo 'notBackoerder';
         WC()->session->set('isBackorder', '0' );
         if ($hour >= 18 && $hour <20) {
             WC()->session->set('isUrgent', '0' );
