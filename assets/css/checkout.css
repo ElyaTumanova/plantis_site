@@ -222,7 +222,7 @@
 }
 
 #shipping_method li span {
-    display: none;
+    /* display: none; */
     font-size: 11px;
     line-height: 13px;
     font-weight: 500;
