@@ -214,7 +214,7 @@ function plnt_price_wrap(){
                 ?>
             </div>
         </div>
-        <span class = "backorder-info"></span>
+        <span class = "backorder-info d-none">hohoho</span>
         <?php
         plnt_outofstock_info();
         if ( $product->get_stock_status() !=='outofstock') {

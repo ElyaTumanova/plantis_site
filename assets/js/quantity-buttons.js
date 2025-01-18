@@ -54,7 +54,7 @@ jQuery(function ($){
 	var backorderInfo = qty.parent().parent().parent().parent().parent().find(".backorder-info");
 	console.log(backorderInfo);
 	if (newVal == (stock + 1)) {
-		backorderInfo.innerHTML='hohoho';
+		backorderInfo.removeClass('d-none');
 	}
 
 	// определеям товар, для которого изменили кол-во и находим его параметры, записанные в кнопку удаления remove - для Yandex Metrika E-commerce
