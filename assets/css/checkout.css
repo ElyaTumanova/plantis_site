@@ -221,7 +221,7 @@
     height: 100%;
 }
 
-.woocommerce-shipping-methods li span {
+#shipping_method li span {
     display: none;
     font-size: 11px;
     line-height: 13px;
@@ -230,10 +230,13 @@
     padding-top: 5px;
 }
 
-.woocommerce-shipping-methods input[type=radio]:checked + label span {
+#shipping_method input[type=radio]:checked + label span {
     color: var(--white);
 }
 
+.woocommerce-shipping-methods li span {
+    display: none;
+}
 .woocommerce-shipping-backorder li span {
     display: block;
 }
