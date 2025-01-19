@@ -65,7 +65,9 @@ do_action( 'woocommerce_before_cart' ); ?>
 									'woocommerce_cart_item_remove_link',
 									sprintf(
 										//заменила класс remove на remove_from_cart_button, чтобы использовать аякс обновление корзины
-										'<a href="%s" class="remove_from_cart_button" aria-label="%s" data-product_id="%s" data-product_sku="%s" data-product_name="%s" data-product_category="%s" data-product_quantity="%s" data-product_price="%s">&times;</a>',
+										'<a href="%s" class="remove_from_cart_button" aria-label="%s" data-product_id="%s" data-product_sku="%s" data-product_name="%s" data-product_category="%s" data-product_quantity="%s" data-product_price="%s">
+										<svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.07921 1.5H12.9125M1.24609 5H18.7461M16.8016 5L16.1196 16.3957C16.0173 17.9301 15.9662 18.6973 15.6348 19.279C15.343 19.7912 14.9029 20.2029 14.3725 20.46C13.77 20.752 13.0011 20.752 11.4633 20.752H8.52846C6.99065 20.752 6.22174 20.752 5.61926 20.46C5.08883 20.2029 4.64874 19.7912 4.35697 19.279C4.02557 18.6973 3.97442 17.9301 3.87213 16.3957L3.19054 5M8.05143 10.1389V15M11.9403 10.1389V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+										</a>',
 										esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
 										/* translators: %s is the product name */
 										esc_attr( sprintf( __( 'Remove %s from cart', 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),
