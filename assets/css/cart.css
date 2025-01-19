@@ -37,6 +37,10 @@
     flex-wrap: wrap;
     align-items: baseline;
     column-gap: 10px;
+    border: solid 1px var(--gray);
+    padding: 10px;
+    border-radius: 3px;
+    width: 100%;
 }
 
 .cart_totals .woocommerce-Price-amount {
