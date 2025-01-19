@@ -324,7 +324,7 @@
         tr.woocommerce-cart-form__cart-item {
             display: grid;
             /* grid-template-columns:80px auto 20px; */
-            grid-template-columns:80px auto 140px 20px;
+            grid-template-columns:80px auto 130px 20px;
             grid-template-rows: repeat(2, auto);
             grid-template-areas:
             "img name price price "
@@ -332,7 +332,7 @@
             /* "img name name "
             "img price price "
             "img qty remove"; */
-            column-gap: 10px;
+            column-gap: 7px;
             margin-top: 5px;
             row-gap: 10px;
             padding: 10px 10px 10px 0;
@@ -346,7 +346,7 @@
             justify-self: flex-start;
             /* justify-self: center; */
             margin-left: 0;
-            
+
             .quantity {
                 padding: 5px;
             }
