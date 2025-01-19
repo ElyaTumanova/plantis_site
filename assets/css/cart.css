@@ -262,6 +262,10 @@
         "img name remove";
         column-gap: 25px;
         margin-top: 5px;
+
+        border: solid 1px var(--gray);
+        border-radius: 3px;
+        padding: 10px;
     }
 
     td.product-subtotal {
