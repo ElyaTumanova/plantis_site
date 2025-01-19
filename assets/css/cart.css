@@ -323,12 +323,15 @@
     .woocommerce-cart-form .shop_table {
         tr.woocommerce-cart-form__cart-item {
             display: grid;
-            grid-template-columns:80px auto 20px;
-            grid-template-rows: repeat(3, auto);
+            /* grid-template-columns:80px auto 20px; */
+            grid-template-columns:80px auto 140px 20px;
+            grid-template-rows: repeat(2, auto);
             grid-template-areas:
-            "img name name "
+            "img name price price "
+            "img name qty remove ";
+            /* "img name name "
             "img price price "
-            "img qty remove";
+            "img qty remove"; */
             column-gap: 10px;
             margin-top: 5px;
             row-gap: 10px;
