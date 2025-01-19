@@ -346,6 +346,10 @@
             justify-self: flex-start;
             /* justify-self: center; */
             margin-left: 0;
+            
+            .quantity {
+                padding: 5px;
+            }
         }
         td.product-name {
             overflow-wrap: anywhere;
