@@ -332,14 +332,14 @@
             /* "img name name "
             "img price price "
             "img qty remove"; */
-            column-gap: 10px;
+            column-gap: 5px;
             margin-top: 5px;
-            row-gap: 5px;
+            row-gap: 10px;
             padding: 10px 10px 10px 0;
         }
         td.product-subtotal {
-            /* justify-self: flex-start; */
-            justify-self: center;
+            justify-self: flex-start;
+            /* justify-self: center; */
         }
         td.product-quantity {
             /* justify-self: flex-start; */
