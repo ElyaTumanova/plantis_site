@@ -328,6 +328,7 @@
         }
         td.product-quantity {
             justify-self: flex-start;
+            margin-left: 0;
         }
     }
 }
