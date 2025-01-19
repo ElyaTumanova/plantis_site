@@ -316,8 +316,9 @@
             grid-template-columns:20px 80px 120px calc(100% - 235px);
             grid-template-rows: repeat(2, auto);
             grid-template-areas:
-            "remove img name name"
-            "remove img price qty";
+            "img name remove"
+            "x price x"
+            "x qty x";
             column-gap: 5px;
             margin-top: 5px;
         }
