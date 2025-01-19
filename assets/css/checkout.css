@@ -237,7 +237,7 @@
     display: none;
 }
 .woocommerce-shipping-backorder li span {
-    display: block;
+    display: inline;
 }
 
 .large_delivery_notice {
