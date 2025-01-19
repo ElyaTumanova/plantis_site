@@ -234,7 +234,7 @@
     color: var(--white);
 }
 
-.woocommerce-shipping-backorder #shipping_method li span {
+.woocommerce-shipping-backorder li span {
     display: block;
 }
 
