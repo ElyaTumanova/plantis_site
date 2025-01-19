@@ -285,7 +285,6 @@
         "img name qty"
         "img name remove";
         column-gap: 25px;
-        margin-top: 5px;
 
         border: solid 1px var(--gray);
         border-radius: 3px;
@@ -326,12 +325,13 @@
             grid-template-columns:80px auto 20px;
             grid-template-rows: repeat(3, auto);
             grid-template-areas:
-            "img name remove"
-            "img price remove"
+            "img name name "
+            "img price price "
             "img qty remove";
             column-gap: 10px;
             margin-top: 5px;
             row-gap: 10px;
+            padding: 10px;
         }
         td.product-subtotal {
             justify-self: flex-start;
