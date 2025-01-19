@@ -17,6 +17,12 @@
     right: 0;
 }
 
+@media (max-width:100px) {
+    .cart_totals {
+        max-width: 200px;
+    }
+}
+
 .cart_totals .checkout-button {
     color: var(--white);
     background-color: var(--accent-color);
@@ -70,6 +76,12 @@
 
 .woocommerce-cart-form {
     max-width: calc(100% - 350px);
+}
+
+@media (max-width:100px) {
+    .cart_totals {
+        max-width: calc(100% - 250px);
+    }
 }
 
 @media (max-width: 767px) {
