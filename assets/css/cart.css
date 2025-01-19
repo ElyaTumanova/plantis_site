@@ -327,7 +327,7 @@
             grid-template-columns:80px auto 140px 20px;
             grid-template-rows: repeat(2, auto);
             grid-template-areas:
-            "img name price price "
+            "img name price remove "
             "img name qty remove ";
             /* "img name name "
             "img price price "
@@ -338,12 +338,12 @@
             padding: 10px 10px 10px 0;
         }
         td.product-subtotal {
-            justify-self: flex-start;
-            /* justify-self: center; */
+            /* justify-self: flex-start; */
+            justify-self: center;
         }
         td.product-quantity {
-            justify-self: flex-start;
-            /* justify-self: center; */
+            /* justify-self: flex-start; */
+            justify-self: center;
             margin-left: 0;
         }
         td.product-name {
