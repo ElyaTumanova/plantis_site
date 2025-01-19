@@ -14,7 +14,7 @@ function plnt_card_grid_start () {
     global $plants_treez_cat_id;
     $parentCatId = check_category ($product);
     if ($parentCatId === $plants_cat_id) {
-        if ( $product->get_stock_status() ==='outofstock' && $product->backorders_allowed()) {
+        if ( $product->get_stock_status() ==='onbackorder' && $product->backorders_allowed()) {
             ?>
             <div class="card__grid card__grid_backorder">
             <?php
