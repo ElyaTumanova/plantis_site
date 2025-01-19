@@ -71,6 +71,12 @@
     }
 }
 
+.wc-proceed-to-checkout {
+    width: 100%;
+}
+.wc-proceed-to-checkout a {
+    width: 100%;
+}
 
 /* таблица корзины */
 
