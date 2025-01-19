@@ -120,7 +120,7 @@
         width: 400px;
     } */
 
-    @media (max-width:1024px) {
+    /* @media (max-width:1024px) {
         th.product-thumbnail {
             width: 150px;
         }
@@ -128,7 +128,7 @@
         th.product-name {
             width: 200px;
         }
-    }
+    } */
 
     th.product-quantity, th.product-price, th.product-subtotal {
         text-align: center;
@@ -307,6 +307,19 @@
         align-self: center;
         /* padding-top: 15px; */
     }
+}
+
+@media  (max-width: 767px) {
+    tr.woocommerce-cart-form__cart-item {
+            display: grid;
+            grid-template-columns:20px 80px 120px calc(100% - 235px);
+            grid-template-rows: repeat(2, auto);
+            grid-template-areas:
+            "remove img name name"
+            "remove img price qty";
+            column-gap: 5px;
+            margin-top: 5px;
+        }
 }
 
 /*empty cart*/
