@@ -79,7 +79,7 @@
 }
 
 @media (max-width:1024px) {
-    .cart_totals {
+    .woocommerce-cart-form {
         max-width: calc(100% - 250px);
     }
 }
