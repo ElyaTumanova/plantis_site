@@ -153,7 +153,7 @@
 }
 
 .card__grid_backorder #card_banner_backorder {
-    display: block;
+    display: flex;
 }
 
 .card_banner {
