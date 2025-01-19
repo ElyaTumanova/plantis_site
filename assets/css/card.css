@@ -114,7 +114,7 @@
     grid-area: banner2;
 }
 
-.card__grid_outofstock #card_banner_photo,  .card__grid_not-plant #card_banner_photo {
+.card__grid_outofstock #card_banner_photo,  .card__grid_not-plant #card_banner_photo, .card__grid_backorder #card_banner_photo {
     display: none;
 }
 
@@ -146,6 +146,14 @@
 
 #card_banner_treez p:first-child {
     color: var(--red-color);
+}
+
+#card_banner_backorder {
+    display: none;
+}
+
+.card__grid_backorder #card_banner_backorder {
+    display: block;
 }
 
 .card_banner {

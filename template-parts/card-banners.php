@@ -9,6 +9,9 @@ $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
     <p>Напишите нам, и мы пришлём вам “живые” фотографии этого растения</p>
     <?php get_template_part('template-parts/social-media-btns');?>
 </div>
+<div class="card_banner" id="card_banner_backorder">
+    <p>Везем к Вам из Европы. Скоро будет!</p>
+</div>
 <div class="card_banner" id="card_banner_peresadka">
     <p>При покупке <a href="<?php echo get_site_url()?>/product-category/gorshki_i_kashpo/" target="_blank" rel="noopener">горшка </a>— пересадка в подарок!</p>
 </div>
