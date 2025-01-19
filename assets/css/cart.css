@@ -334,7 +334,7 @@
             "img qty remove"; */
             column-gap: 10px;
             margin-top: 5px;
-            row-gap: 10px;
+            row-gap: 5px;
             padding: 10px 10px 10px 0;
         }
         td.product-subtotal {
