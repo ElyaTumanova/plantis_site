@@ -327,7 +327,7 @@
             grid-template-columns:80px auto 140px 20px;
             grid-template-rows: repeat(2, auto);
             grid-template-areas:
-            "img name price remove "
+            "img name price x "
             "img name qty remove ";
             /* "img name name "
             "img price price "
