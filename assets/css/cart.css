@@ -342,8 +342,8 @@
             /* justify-self: center; */
         }
         td.product-quantity {
-            /* justify-self: flex-start; */
-            justify-self: center;
+            justify-self: flex-start;
+            /* justify-self: center; */
             margin-left: 0;
         }
     }
