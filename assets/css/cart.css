@@ -17,7 +17,7 @@
     right: 0;
 }
 
-@media (max-width:100px) {
+@media (max-width:1024px) {
     .cart_totals {
         max-width: 200px;
     }
@@ -78,7 +78,7 @@
     max-width: calc(100% - 350px);
 }
 
-@media (max-width:100px) {
+@media (max-width:1024px) {
     .cart_totals {
         max-width: calc(100% - 250px);
     }
