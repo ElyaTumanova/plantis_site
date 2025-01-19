@@ -234,6 +234,10 @@
     color: var(--white);
 }
 
+.woocommerce-shipping-backorder #shipping_method li span {
+    display: block;
+}
+
 .large_delivery_notice {
     /* background-color: var(--notice-red); */
     /* width: fit-content; */
