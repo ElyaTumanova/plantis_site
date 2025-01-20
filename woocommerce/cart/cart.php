@@ -169,7 +169,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 						echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item ); // PHPCS: XSS ok.
 						?>
-						<div class="plus">&#43;</div>
+						<div class="plus" <?php if($cart_item['quantity']=$max_quantity) :?> style="opacity:50%" <?php endif;?>>&#43;</div>
 						</div>
 						</td>
 
