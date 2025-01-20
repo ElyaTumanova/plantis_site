@@ -81,8 +81,8 @@ jQuery(function ($){
 	$(this).parent().parent().find(".add_to_cart_button").attr( 'data-quantity', qty );
 
 	//уведомление для backorder
-	var stock = parseInt(this.parent().parent().find(".product_type_simple").attr( 'data-stock-quantity'));
-	var backorderInfo = this.parent().parent().parent().parent().find(".backorder-info");
+	var stock = parseInt($(this).parent().parent().find(".product_type_simple").attr( 'data-stock-quantity'));
+	var backorderInfo = $(this).parent().parent().parent().parent().find(".backorder-info");
 	if (qty == (stock + 1)) {
 		backorderInfo.addClass('backorder-info_active');
 	} 
