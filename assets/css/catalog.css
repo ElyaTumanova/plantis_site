@@ -297,11 +297,11 @@ ul.products {
 
 .catalog__products-wrap .yith-wcwl-add-to-wishlist {
     border: none;
-    /* position: absolute;
-    top: 0;
+    position: absolute;
+    /* top: 0;
     right: 0; */
     
-    position: relative;
+    /* position: relative; */
     height: 0;
     margin-left: auto;
     margin-top: 10px;
@@ -351,11 +351,13 @@ ul.products {
     }
 }
 
-
-
 .woocommerce-LoopProduct-link {
     position: relative;
     width: 100%;
+}
+
+.catalog__grid .woocommerce-LoopProduct-link:first-of-type {
+    order: -2;
 }
 
 /* кнопка добавления в корзину */
@@ -378,7 +380,29 @@ ul.products {
 }
 
 .catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple {
-    margin: 10px 0 10px;
+    margin: 10px 0 15px;
+    font-size: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 100%;
+    margin-bottom: 15px;
+    margin-top: -62px;
+    margin-right: 20px;
+    margin-left: auto;
+    /* background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg); */
+    background-image: url(https://plantis.shop/wp-content/uploads/2025/01/cart_white_new.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0;
+    background-size: 50%;
+    order: -1;
+    z-index: 2;
+    
+    /* margin: 10px 0 10px; */
+}
+
+.catalog__grid .added {
+    background-image: url(https://plantis.shop/wp-content/uploads/2024/03/check_white.svg);
 }
 
 .catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple:active, .catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple:focus {
@@ -399,6 +423,7 @@ ul.products {
         margin-bottom: 0;
         margin-top: -67px;
         margin-left: auto;
+        margin-right: 0;
         /* position: absolute;
         top: calc(var(--imgH) + 60px);
         right: 10px; */
@@ -431,6 +456,7 @@ ul.products {
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 5px;
+    margin-top: 15px;
 }
 
 @media (max-width: 767px) {
@@ -574,6 +600,12 @@ ul.products {
     margin: 0;
     top: 10px;
     right: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+.cross-upsells-swiper .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, .cross-upsells-swiper .yith-wcwl-add-to-wishlist a.delete_item>img, .cross-upsells-swiper .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
+    max-width: 20px;
 }
 
 /*cross sells & up sells #adaptive*/
@@ -645,6 +677,45 @@ ul.products {
     display: flex;
      column-gap: 5px;
 } */
+
+/* кнопка добавить в корзину */
+.card__sliders-wrap .add_to_cart_button, .product-slider-wrap .product_type_simple {
+    margin: 10px 0 15px;
+    font-size: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin-bottom: 15px;
+    margin-top: -40px;
+    margin-right: 13px;
+    margin-left: auto;
+    /* background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg); */
+    background-image: url(https://plantis.shop/wp-content/uploads/2025/01/cart_white_new.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0;
+    background-size: 50%;
+    order: -1;
+    z-index: 2;
+}
+
+.card__sliders-wrap .added {
+    background-image: url(https://plantis.shop/wp-content/uploads/2024/03/check_white.svg);
+}
+
+.card__sliders-wrap .woocommerce-LoopProduct-link:first-of-type {
+    order: -2;
+}
+
+.card__sliders-wrap .product {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
 
 /*--------------------------------------------------------------
 # Horizontal catalog slider for front-page
