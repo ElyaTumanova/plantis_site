@@ -400,10 +400,10 @@ const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
 
 function swiper_filter_metki_init() {
     swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
-        navigation: {
-            nextEl: '.myslider-next',
-            prevEl: '.myslider-prev',
-        },
+        // navigation: {
+        //     nextEl: '.myslider-next',
+        //     prevEl: '.myslider-prev',
+        // },
         scrollbar: {
             el: ".swiper-scrollbar",
             hide: false,

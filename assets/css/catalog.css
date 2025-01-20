@@ -1181,8 +1181,9 @@ ul.products {
 
 .metki_swiper_wrap {
     position: relative;
-    margin: 0 50px;
+    /* margin: 0 50px; */
     border-radius: 20px;
+    padding-bottom: 15px;
 }
 
 .catalog__filter-metki  .bapf_head  {
