@@ -61,7 +61,7 @@
     }
     .catalog__mob-filter-wrap .woocommerce-ordering select {
         display: block;
-        border: solid 2px;
+        /* border: solid 2px; */
     }
 
     .catalog__products-wrap {
@@ -210,6 +210,9 @@
     -moz-appearance: none; /* Для Firefox */
     appearance: none; /* Для всех современных браузеров */
     background-color: white; /* Это очень важно */ 
+}
+.woocommerce-ordering select:before {
+    content: 'hi';
 }
 
 /* стили для сетки каталога */
