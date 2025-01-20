@@ -206,6 +206,10 @@
 .woocommerce-ordering select {
     border-radius: 5px;
     border: none;
+    -webkit-appearance: none; /* Для Chrome и Safari */
+    -moz-appearance: none; /* Для Firefox */
+    appearance: none; /* Для всех современных браузеров */
+    background-color: white; /* Это очень важно */ 
 }
 
 /* стили для сетки каталога */
