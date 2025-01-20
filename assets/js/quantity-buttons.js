@@ -7,7 +7,7 @@ jQuery(function ($){
 	max = parseInt( qty.attr( 'max' ) ),
 	step = parseInt( qty.attr( 'step' ) );
 
-	var stock = parseInt(qty.parent().parent().find(".add_to_cart_button").attr( 'data-stock-quantity'));
+	var stock = parseInt(qty.parent().parent().find(".product_type_simple").attr( 'data-stock-quantity'));
 
 	console.log(stock);
  
