@@ -408,7 +408,7 @@ function swiper_filter_metki_init() {
             el: ".swiper-scrollbar",
             hide: false,
             draggable: true,
-          }
+        },
         slidesPerView: 'auto',
         spaceBetween: 5,
         loop: false,
