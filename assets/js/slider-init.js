@@ -417,6 +417,9 @@ function swiper_filter_metki_init() {
             navigation: {
                 enabled: false,
             },
+            scrollbar: {
+                enabled: false,
+            },
             loop: true,
             },
             767: {
