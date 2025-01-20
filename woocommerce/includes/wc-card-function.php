@@ -344,7 +344,7 @@ function truemisha_quantity_plus() {
         }
     } 
     else {
-        echo '<div class="plus">&#43;</div>';
+        // echo '<div class="plus">&#43;</div>';
     }
 };
  
