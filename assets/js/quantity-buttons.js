@@ -35,15 +35,15 @@ jQuery(function ($){
 
 	// меняем стили кнопок на активные/неактивные
 	if (newVal === max) {
-		$(".plus").attr('style','opacity:50%');
+		$(".plus").attr('style','opacity:50%;cursor: default;');
 	} else {
-		$(".plus").attr('style','opacity:100%');
+		$(".plus").attr('style','opacity:100%;cursor: pointer;');
 	}
 
 	if (newVal === min) {
-		$(".minus").attr('style','opacity:50%');
+		$(".minus").attr('style','opacity:50%;cursor: default;');
 	} else {
-		$(".minus").attr('style','opacity:100%');
+		$(".minus").attr('style','opacity:100%;cursor: pointer;');
 	}
 
 	qty.parent().parent().find(".add_to_cart_button").attr( 'data-quantity', newVal ); //устанавливаем новое значение для атрибута кнопки добавить в корзину. div "quantity" должен находится в одном родительском узле с кнопкой в корзирну
