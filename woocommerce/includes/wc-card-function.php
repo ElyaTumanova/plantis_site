@@ -357,7 +357,7 @@ function truemisha_quantity_minus() {
         }
     } 
     else {
-        echo '<div class="minus">&#8722;</div>';
+        // echo '<div class="minus">&#8722;</div>';
     }
 };
 
