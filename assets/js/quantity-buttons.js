@@ -79,15 +79,15 @@ jQuery(function ($){
 	$( 'div.quantity .qty' ).change( function() {
 	const qty = $(this).val();
 	$(this).parent().parent().find(".add_to_cart_button").attr( 'data-quantity', qty );
-	console.log(qty);
+	console.log(this);
 
 	//уведомление для backorder
 	// var stock = parseInt(qty.parent().parent().find(".product_type_simple").attr( 'data-stock-quantity'));
 	// var backorderInfo = qty.parent().parent().parent().parent().find(".backorder-info");
-	// if (newVal == (stock + 1)) {
+	// if (qty == (stock + 1)) {
 	// 	backorderInfo.addClass('backorder-info_active');
 	// } 
-	// if (newVal <= (stock)) {
+	// if (qty <= (stock)) {
 	// 	backorderInfo.removeClass('backorder-info_active');
 	// } 
 
