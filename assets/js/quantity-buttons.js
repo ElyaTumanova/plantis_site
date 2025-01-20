@@ -7,9 +7,6 @@ jQuery(function ($){
 	max = parseInt( qty.attr( 'max' ) ),
 	step = parseInt( qty.attr( 'step' ) );
 
-	var stock = parseInt(qty.parent().parent().find(".product_type_simple").attr( 'data-stock-quantity'));
-
-	console.log(stock);
  
 	// дальше определяем новое значение количества в зависимости от нажатия кнопки
 	var newVal;
@@ -50,7 +47,7 @@ jQuery(function ($){
 	qty.parent().parent().find(".add_to_cart_button").attr( 'data-quantity', newVal ); //устанавливаем новое значение для атрибута кнопки добавить в корзину. div "quantity" должен находится в одном родительском узле с кнопкой в корзирну
 
 	//уведомление для backorder
-
+	var stock = parseInt(qty.parent().parent().find(".product_type_simple").attr( 'data-stock-quantity'));
 	var backorderInfo = qty.parent().parent().parent().parent().find(".backorder-info");
 	console.log(backorderInfo);
 	if (newVal == (stock + 1)) {
@@ -83,5 +80,6 @@ jQuery(function ($){
 	$( 'div.quantity .qty' ).change( function() {
 	const qty = $(this).val();
 	$(this).parent().parent().find(".add_to_cart_button").attr( 'data-quantity', qty );
+	console.log(stock);
 	} )
 });
