@@ -212,7 +212,7 @@
 .woocommerce-ordering__wrap {
     display: flex;
     align-items: center;
-    column-gap: 5px;
+    column-gap: 3px;
 }
 
 .woocommerce-ordering select {
