@@ -58,6 +58,9 @@
         display: none;
     }
 
+    .catalog__mob-filter-wrap .woocommerce-ordering__wrap {
+        display: flex;
+    }
     .catalog__mob-filter-wrap .woocommerce-ordering {
         display: block;
         margin-bottom: 0;
