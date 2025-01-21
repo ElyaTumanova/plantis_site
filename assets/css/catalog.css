@@ -60,10 +60,10 @@
 
     .catalog__mob-filter-wrap .woocommerce-ordering__wrap {
         display: flex;
+        margin-bottom: 0;
     }
     .catalog__mob-filter-wrap .woocommerce-ordering {
         display: block;
-        margin-bottom: 0;
     }
     .catalog__mob-filter-wrap .woocommerce-ordering select {
         display: block;
@@ -172,7 +172,7 @@
 .woocommerce-ordering__wrap {
     grid-area: sorting;
     /* justify-self: end; */
-    /* margin-bottom: 10px; */
+    margin-bottom: 10px;
 }
 
 .catalog__grid-buttons {
