@@ -605,8 +605,6 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 				$template_content['template']['content'],
 				'filter',
 				array(
-
-
 					'custom_content' => '<div class="swiper-scrollbar"></div>'
 				),
 				true
