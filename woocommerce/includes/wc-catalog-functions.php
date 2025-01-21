@@ -605,10 +605,10 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 				$template_content['template']['content'],
 				'filter',
 				array(
-					// 'custom_content' => '<div class="myslider-prev swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
-					// <div class="myslider-next swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>'
+
+
 					'custom_content' => '<div class="swiper-scrollbar"></div>'
-				),		
+				),
 				true
 			);
 	
