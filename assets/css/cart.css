@@ -324,7 +324,7 @@
         tr.woocommerce-cart-form__cart-item {
             display: grid;
             /* grid-template-columns:80px auto 20px; */
-            grid-template-columns:80px auto 130px 20px;
+            grid-template-columns:80px auto 150px 20px;
             grid-template-rows: repeat(2, auto);
             grid-template-areas:
             "img name price price "
