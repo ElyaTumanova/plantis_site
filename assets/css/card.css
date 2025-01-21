@@ -734,6 +734,19 @@ input[type="number"] {
         row-gap: 30px;
     }
 
+    .card__grid_backorder {
+        grid-template-areas:
+        "image"
+        "info"
+        "banner1"
+        "crossells"
+        "descr"
+        "banner2"
+        "upsells"
+        "ukhod"
+        "tohide";
+    }
+
     .card__grid_outofstock {
         grid-template-areas:
         "image"
