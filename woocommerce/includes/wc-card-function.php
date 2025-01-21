@@ -287,7 +287,7 @@ function plnt_check_stock_status() {
             ?>
             <div class="card__stockstatus card__stockstatus_in">Экспресс-доставка</div>
             <?php
-        } else if ($product->backorders_allowed() && $product->get_stock_quantity() === 0) {
+        } else if ($product->backorders_allowed() && $product->get_stock_quantity() <= 0) {
             ?>
             <div class="card__stockstatus card__stockstatus_in">Доставка 10 — 14 дней</div>
             <?php
