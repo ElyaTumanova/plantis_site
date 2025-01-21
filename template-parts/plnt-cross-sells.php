@@ -26,7 +26,7 @@ if( !empty ($crosssell_ids) ){
             'meta_query' => array( 
                 array(
                     'key'       => '_stock_status',
-                    'value'     => array('outofstock', 'onbackorder'),
+                    'value'     => array('outofstock'),
                     'compare'   => 'NOT IN'
                 )
             ),
