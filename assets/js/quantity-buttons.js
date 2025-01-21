@@ -51,11 +51,13 @@ jQuery(function ($){
 	//уведомление для backorder
 	var stock = parseInt(qty.parent().parent().find(".product_type_simple").attr( 'data-stock-quantity'));
 	var backorderInfo = qty.parent().parent().parent().parent().find(".backorder-info");
-	if (newVal == (stock + 1)) {
-		backorderInfo.addClass('backorder-info_active');
-	} 
-	if (newVal <= (stock)) {
-		backorderInfo.removeClass('backorder-info_active');
+	if (stock >0) {
+		if (newVal == (stock + 1)) {
+			backorderInfo.addClass('backorder-info_active');
+		} 
+		if (newVal <= (stock)) {
+			backorderInfo.removeClass('backorder-info_active');
+		}
 	} 
 
 
@@ -85,12 +87,14 @@ jQuery(function ($){
 	//уведомление для backorder
 	var stock = parseInt($(this).parent().parent().find(".product_type_simple").attr( 'data-stock-quantity'));
 	var backorderInfo = $(this).parent().parent().parent().parent().find(".backorder-info");
-	if (qty == (stock + 1)) {
-		backorderInfo.addClass('backorder-info_active');
-	} 
-	if (qty <= (stock)) {
-		backorderInfo.removeClass('backorder-info_active');
-	} 
+	if (stock >0) {
+		if (qty == (stock + 1)) {
+			backorderInfo.addClass('backorder-info_active');
+		} 
+		if (qty <= (stock)) {
+			backorderInfo.removeClass('backorder-info_active');
+		} 
+	}
 
 	} )
 });
