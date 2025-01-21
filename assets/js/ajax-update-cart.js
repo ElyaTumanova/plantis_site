@@ -37,6 +37,7 @@
       function(response){
         console.log('hi plnt_update_header_cart_count');
         $('.header-cart__link .header__count').html(response); // Repopulate the specific element with the new content
+        $('.header-cart__mob .header__count').html(response); // Repopulate the specific element with the new content
       }
     );
 // Close anon function.
