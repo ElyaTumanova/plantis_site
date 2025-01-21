@@ -112,9 +112,7 @@ function plnt_catalog_filters_main_area() {
 			<?php echo do_shortcode('[br_filter_single filter_id='.$filter_podborki_id.']') //Подборки //56536 //10989?>  
 		</div>
 		<div class = "catalog__mob-filter-wrap"> 
-			<div class="woocommerce-ordering__wrap">
-				<?php woocommerce_catalog_ordering() ?>
-			</div>
+			<?php plnt_woocommerce_catalog_ordering() //сортировка с дополнительной оберткой?>  
 			<div class="catalog__mob-filter-btn"><img src="<?php echo $filter_icon ?>" alt="Фильтр"></div>
 		</div>
 		<div class="catalog__filter-active">
