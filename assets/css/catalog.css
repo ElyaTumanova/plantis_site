@@ -695,7 +695,7 @@ ul.products {
 } */
 
 /* кнопка добавить в корзину */
-.card__sliders-wrap .add_to_cart_button, .product-slider-wrap .product_type_simple {
+.card__sliders-wrap .add_to_cart_button, .card__sliders-wrap .product_type_simple {
     margin: 10px 0 15px;
     font-size: 0;
     width: 40px;
