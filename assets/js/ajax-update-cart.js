@@ -5,22 +5,22 @@
 
 // обновляем кол-во товаров в боковой корзине
 
-( function ( $ ) {
-    "use strict";
-  // Define the PHP function to call from here
-    var data = {
-      'action': 'plnt_update_side_cart_count'
-    };
-    $.post(
-      woocommerce_params.ajax_url, // The AJAX URL
-      data, // Send our PHP function
-      function(response){
-        console.log('hi plnt_update_side_cart_count');
-        $('.side-cart__count').html(response); // Repopulate the specific element with the new content
-      }
-    );
-  // Close anon function.
-  }( jQuery ) );
+// ( function ( $ ) {
+//     "use strict";
+//   // Define the PHP function to call from here
+//     var data = {
+//       'action': 'plnt_update_side_cart_count'
+//     };
+//     $.post(
+//       woocommerce_params.ajax_url, // The AJAX URL
+//       data, // Send our PHP function
+//       function(response){
+//         console.log('hi plnt_update_side_cart_count');
+//         $('.side-cart__count').html(response); // Repopulate the specific element with the new content
+//       }
+//     );
+//   // Close anon function.
+//   }( jQuery ) );
 
 
 // обновляем кол-во товаров в корзине в хедере
@@ -38,6 +38,7 @@
         console.log('hi plnt_update_header_cart_count');
         $('.header-cart__link .header__count').html(response); // Repopulate the specific element with the new content
         $('.header-cart__mob .header__count').html(response); // Repopulate the specific element with the new content
+        $('.side-cart__count').html(response);
       }
     );
 // Close anon function.
