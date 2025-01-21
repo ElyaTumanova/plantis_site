@@ -460,7 +460,7 @@ ul.products {
 
 .catalog__grid .product_out_of_stock {
     background-image: none;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
 }
 
