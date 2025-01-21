@@ -211,6 +211,8 @@
 
 .woocommerce-ordering__wrap {
     display: flex;
+    align-items: center;
+    column-gap: 5px;
 }
 
 .woocommerce-ordering select {
