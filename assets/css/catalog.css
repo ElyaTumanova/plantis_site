@@ -455,13 +455,13 @@ ul.products {
     .catalog__grid .added {
         background-image: url(https://plantis.shop/wp-content/uploads/2024/03/check_white.svg);
     }
-
-    .catalog__grid .product_out_of_stock {
-        background-image: none;
-        font-size: 10px;
-        font-weight: 700;
-    }
     
+}
+
+.catalog__grid .product_out_of_stock {
+    background-image: none;
+    font-size: 10px;
+    font-weight: 700;
 }
 
 
