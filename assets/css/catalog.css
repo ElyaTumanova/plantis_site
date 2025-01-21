@@ -48,6 +48,9 @@
         margin-top: 20px;
     }
 
+    .catalog__grid .woocommerce-ordering__wrap {
+        display: none;
+    }
     .catalog__grid .woocommerce-ordering {
         display: none;
     }
@@ -163,7 +166,7 @@
     /* padding-right: 10px; */
 }
 
-.woocommerce-ordering {
+.woocommerce-ordering__wrap {
     grid-area: sorting;
     /* justify-self: end; */
     margin-bottom: 10px;
@@ -204,7 +207,7 @@
 }
 
 .woocommerce-ordering__wrap {
-    position: relative;
+    display: flex;
 }
 
 .woocommerce-ordering select {
