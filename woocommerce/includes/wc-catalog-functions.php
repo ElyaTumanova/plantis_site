@@ -136,6 +136,19 @@ function plnt_filter_metki_swiper_init () {
 	<?php
 }
 
+// // сортировка - добавляем обертку
+
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+add_action( 'woocommerce_before_shop_loop', 'plnt_woocommerce_catalog_ordering', 30 );
+
+function plnt_woocommerce_catalog_ordering() {
+	?>
+	<div class="woocommerce-ordering__wrap">
+		<?php woocommerce_catalog_ordering() ?>
+	</div>
+	<?php
+}
+
 // // переключатель сетки
 add_action('woocommerce_before_shop_loop','plnt_catalog_grid_columns', 30);
 
