@@ -223,12 +223,6 @@
     appearance: none; /* Для всех современных браузеров */
     background-color: white; /* Это очень важно */ 
 }
-/* .woocommerce-ordering__wrap ::before {
-    position: absolute;
-    left: 0;
-    top: -5px;
-
-} */
 
 /* стили для сетки каталога */
 .catalog__grid 
