@@ -1,8 +1,6 @@
 jQuery(function ($){
     $( 'body' ).on( 'click', 'div.plus, div.minus', function() {
 
-	console.log(this);
-
 	var qty = $(this).parent().find( 'input' ),
 	val = parseInt( qty.val() ),
 	min = parseInt( qty.attr( 'min' ) ),

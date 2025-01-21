@@ -10,7 +10,7 @@ $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
     <?php get_template_part('template-parts/social-media-btns');?>
 </div>
 <div class="card_banner" id="card_banner_backorder">
-    <p>Везем к Вам из Европы. Скоро будет!</p>
+    <p>Растение под заказ из Европы, ориентировочная дата доставки <?php echo plnt_set_backorders_date();?>. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</p>
 </div>
 <div class="card_banner" id="card_banner_peresadka">
     <p>При покупке <a href="<?php echo get_site_url()?>/product-category/gorshki_i_kashpo/" target="_blank" rel="noopener">горшка </a>— пересадка в подарок!</p>
