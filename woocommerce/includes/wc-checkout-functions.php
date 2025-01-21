@@ -79,7 +79,7 @@ Contents
         if( is_checkout( ) && ! is_wc_endpoint_url() && $payment_id === $targeted_payment_id ) {
             $isbackorders = plnt_is_backorder();
             if( $isbackorders) {
-                return __("Наш менеджер свяжется с Вами для подтверждения заказа и направит ссылку для оплаты картой", "woocommerce" );
+                return __("Наш менеджер свяжется с Вами для подтверждения заказа и направит ссылку для оплаты картой.", "woocommerce" );
             }
         }
         return $description;

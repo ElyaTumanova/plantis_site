@@ -112,7 +112,7 @@ function plnt_catalog_filters_main_area() {
 			<?php echo do_shortcode('[br_filter_single filter_id='.$filter_podborki_id.']') //Подборки //56536 //10989?>  
 		</div>
 		<div class = "catalog__mob-filter-wrap"> 
-			<?php woocommerce_catalog_ordering() ?>
+			<?php plnt_woocommerce_catalog_ordering() //сортировка с дополнительной оберткой?>  
 			<div class="catalog__mob-filter-btn"><img src="<?php echo $filter_icon ?>" alt="Фильтр"></div>
 		</div>
 		<div class="catalog__filter-active">
@@ -127,32 +127,24 @@ function plnt_filter_metki_swiper_init () {
 	<script>
 		jQuery(function($){
 			setTimeout(function(){
-				swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
-					navigation: {
-						nextEl: '.myslider-next',
-						prevEl: '.myslider-prev',
-					},
-					slidesPerView: 'auto',
-					spaceBetween: 5,
-					loop: false,
-					breakpoints: {
-						320: {
-						navigation: {
-							enabled: false,
-						},
-						loop: true,
-						},
-						767: {
-						navigation: {
-							enabled: true,
-						},
-						loop: false,
-						}
-					}
-				});
+				swiper_filter_metki_init();
 			},100)
 		})
 	</script>
+	<?php
+}
+
+// // сортировка - добавляем обертку
+
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+add_action( 'woocommerce_before_shop_loop', 'plnt_woocommerce_catalog_ordering', 30 );
+
+function plnt_woocommerce_catalog_ordering() {
+	?>
+	<div class="woocommerce-ordering__wrap">
+		<svg viewBox="0 0 24 24" width="30" height="30" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M16.3066 8.30859V18.3086" stroke="#212121" stroke-width="1.3"></path><path d="M20 15.3086L16.3077 19.0009L12.6154 15.3086" stroke="#212121" stroke-width="1.3" stroke-linejoin="round"></path><path d="M7.69336 15V5" stroke="#212121" stroke-width="1.3"></path><path d="M4 8L7.69231 4.30769L11.3846 8" stroke="#212121" stroke-width="1.3" stroke-linejoin="round"></path></svg>
+		<?php woocommerce_catalog_ordering() ?>
+	</div>
 	<?php
 }
 
@@ -187,7 +179,6 @@ function plnt_woocommerce_page_title($page_title) {
 		return $page_title;
 	}
 }
-
 
 // меняем название заголовка для shop
 function plnt_change_my_title( $title ){
@@ -258,61 +249,9 @@ function plnt_catalog_gallery() {
 function plnt_img_gallery_swiper_init() {
 	?>
 	<script>
-		swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-			navigation: {
-						enabled: true,
-					},
-			navigation: {
-				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev',
-			},
-			// autoplay: {
-			// 	delay: 500,
-			// 	disableOnInteraction: false,
-			// },
-			grabCursor: true,
-			slidesPerView: 1,
-			slidesPerGroup: 1,
-			spaceBetween: 0,
-			loop: true,
-			freeMode: false,
-			// effect: "fade",
-			crossFade: true,
-			observer: true,
-			observeParents: true,
-			observeSlideChildren: true,
-			breakpoints: {
-				320: {
-					navigation: {
-						enabled: false,
-					},
-				},
-				768: {
-					navigation: {
-						enabled: true,
-					},
-				}
-			}
-		});
-
-		// swiper_catalog_card_imgs.forEach((element) => {
-        // 	element.autoplay.stop();
-      	// });
-
-		// const sliders = document.querySelectorAll(".product__image-slider-wrap");
-		// sliders.forEach((slider) => {
-		// 	slider.addEventListener("mouseenter", function () {
-		// 		slider.swiper.autoplay.start();
-		// 	});
-		// 	slider.addEventListener("mouseleave", function () {
-		// 		slider.swiper.autoplay.stop();
-		// 		slider.swiper.slideTo(0, 0, false);
-		// 	});
-		// });
+		jQuery(function($){
+			swiper_catalog_card_imgs_init ();
+		})
 	</script>
 	<?php	
 }
@@ -666,8 +605,9 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 				$template_content['template']['content'],
 				'filter',
 				array(
-					'custom_content' => '<div class="myslider-prev swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
-					<div class="myslider-next swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>'
+					// 'custom_content' => '<div class="myslider-prev swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+					// <div class="myslider-next swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>'
+					'custom_content' => '<div class="swiper-scrollbar"></div>'
 				),		
 				true
 			);

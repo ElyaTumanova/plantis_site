@@ -58,9 +58,11 @@ function filter_woocommerce_loop_add_to_cart_args( $args, $product ) {
     $price = $product->get_price();
     $parentCatId = check_category($product);
     $catName = get_the_category_by_ID($parentCatId);
+    $quantity =  $product->get_stock_quantity();
     $args['attributes']['data-product-name'] = $productName;
     $args['attributes']['data-product-price'] = $price;
     $args['attributes']['data-category-name'] = $catName;
+    $args['attributes']['data-stock-quantity'] = $quantity;
 
     //for Add/Remove from cart
 

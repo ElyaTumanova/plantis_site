@@ -1,11 +1,14 @@
 jQuery(function ($){
     $( 'body' ).on( 'click', 'div.plus, div.minus', function() {
 
+	console.log(this);
+
 	var qty = $(this).parent().find( 'input' ),
 	val = parseInt( qty.val() ),
 	min = parseInt( qty.attr( 'min' ) ),
 	max = parseInt( qty.attr( 'max' ) ),
 	step = parseInt( qty.attr( 'step' ) );
+
  
 	// дальше определяем новое значение количества в зависимости от нажатия кнопки
 	var newVal;
@@ -32,18 +35,29 @@ jQuery(function ($){
 
 	// меняем стили кнопок на активные/неактивные
 	if (newVal === max) {
-		$(".plus").attr('style','opacity:50%');
+		$(".plus").attr('style','opacity:50%; cursor: default;');
 	} else {
-		$(".plus").attr('style','opacity:100%');
+		$(".plus").attr('style','opacity:100%; cursor: pointer;');
 	}
 
 	if (newVal === min) {
-		$(".minus").attr('style','opacity:50%');
+		$(".minus").attr('style','opacity:50%; cursor: default;');
 	} else {
-		$(".minus").attr('style','opacity:100%');
+		$(".minus").attr('style','opacity:100%; cursor: pointer;');
 	}
 
 	qty.parent().parent().find(".add_to_cart_button").attr( 'data-quantity', newVal ); //устанавливаем новое значение для атрибута кнопки добавить в корзину. div "quantity" должен находится в одном родительском узле с кнопкой в корзирну
+
+	//уведомление для backorder
+	var stock = parseInt(qty.parent().parent().find(".product_type_simple").attr( 'data-stock-quantity'));
+	var backorderInfo = qty.parent().parent().parent().parent().find(".backorder-info");
+	if (newVal == (stock + 1)) {
+		backorderInfo.addClass('backorder-info_active');
+	} 
+	if (newVal <= (stock)) {
+		backorderInfo.removeClass('backorder-info_active');
+	} 
+
 
 	// определеям товар, для которого изменили кол-во и находим его параметры, записанные в кнопку удаления remove - для Yandex Metrika E-commerce
 	var $productRemove = $(this).parent().parent().parent().find('.plnt_product-remove > a')[0];
@@ -67,5 +81,16 @@ jQuery(function ($){
 	$( 'div.quantity .qty' ).change( function() {
 	const qty = $(this).val();
 	$(this).parent().parent().find(".add_to_cart_button").attr( 'data-quantity', qty );
+
+	//уведомление для backorder
+	var stock = parseInt($(this).parent().parent().find(".product_type_simple").attr( 'data-stock-quantity'));
+	var backorderInfo = $(this).parent().parent().parent().parent().find(".backorder-info");
+	if (qty == (stock + 1)) {
+		backorderInfo.addClass('backorder-info_active');
+	} 
+	if (qty <= (stock)) {
+		backorderInfo.removeClass('backorder-info_active');
+	} 
+
 	} )
 });

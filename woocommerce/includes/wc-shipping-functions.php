@@ -6,24 +6,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 //СПОСОБЫ ДОСТАВКИ
 
 //задаем по умолчанию срочную доставку
-add_action('wp_head','plnt_set_initials');
+//add_action('wp_head','plnt_set_initials');
 
 function plnt_set_initials() {
     date_default_timezone_set('Europe/Moscow');
     $hour = date("H");
-    $isbackorders = plnt_is_backorder();
-    if($isbackorders) {
-        WC()->session->set('isUrgent', '0' );
-        WC()->session->set('isBackorder', '1' );
-    } else {
-        WC()->session->set('isBackorder', '0' );
-        if ($hour >= 18 && $hour <20) {
-            WC()->session->set('isUrgent', '0' );
-        } else {
-            WC()->session->set('isUrgent', '1' );
-        }    
-    }
    
+    if ($hour >= 18 && $hour <20) {
+        WC()->session->set('isUrgent', '0' ); //0
+    } else {
+        WC()->session->set('isUrgent', '1' ); //1
+    }
+
     WC()->session->set('isLate', '0' );
 
 };
@@ -49,11 +43,12 @@ function plnt_check() {
     //     WC()->session->set('isLate', '0' );  
     // }
     // $isbackorders = plnt_is_backorder();
-    // echo 'isback '.$isbackorders;
-    echo 'isUrgent '.(WC()->session->get('isUrgent' ));
-    // echo 'hiAjax '.(WC()->session->get('hiAjax' ));
-    // echo 'isback2 '.(WC()->session->get('isBackorder' ));
-    echo 'isLate '.(WC()->session->get('isLate' ));
+    // echo 'isback '.$isbackorders.'  ';
+    echo 'isUrgent '.(WC()->session->get('isUrgent' )).'  ';
+    // echo 'hiAjax '.(WC()->session->get('hiAjax' )).'  ';
+    // echo 'hiInit '.(WC()->session->get('hiInit' )).'  ';
+    // echo 'isback2 '.(WC()->session->get('isBackorder' )).'  ';
+    echo 'isLate '.(WC()->session->get('isLate' )).'  ';
     echo '<br>';
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
@@ -68,18 +63,18 @@ add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
 
-    if(WC()->session->get('isBackorder') === '1') {
-        WC()->session->set('isUrgent', '0' );
-        // WC()->session->set('hiAjax', 'hiAjax' );
-    } 
-    else {
+    // if(WC()->session->get('isBackorder') === '1') {
+    //     WC()->session->set('isUrgent', '0' );
+    //     WC()->session->set('hiAjax', 'hiAjax' );
+    // } 
+    // else {
         // WC()->session->set('hiAjax', 'hiAjaxElse' );
         if ( $_POST['isUrgent'] === '1'){
-            WC()->session->set('isUrgent', '1' );
+            WC()->session->set('isUrgent', '1' ); //1
         } else {
-            WC()->session->set('isUrgent', '0' );
+            WC()->session->set('isUrgent', '0' ); //0
         }
-    }
+    // }
     
     die(); // (required)
 }
@@ -452,7 +447,6 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
             $default = $delivery_outMKAD_large;
         }
 
-        
         if( $chosen_method === $delivery_inMKAD_medium) {
             $default = $urgent_delivery_inMKAD_medium;
         }
@@ -467,9 +461,9 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
     
         if( $chosen_method === $urgent_delivery_outMKAD_medium) {
             $default = $delivery_outMKAD_medium;
-        }
+        } 
     }
-    
+
     return $default;
 }
 

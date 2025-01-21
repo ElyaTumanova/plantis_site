@@ -210,11 +210,15 @@ function nav_remove_empty_category_menu_item ( $items, $menu) {
 
         $posts         = get_posts( array( 'post_type' => 'product', 'posts_per_page' => -1, 'product_cat' => $category->slug, 'fields' => 'ids' ) );
         $show_category = false;
+        $visible_product = false;
 
         foreach ( $posts as $post ) {
 
             $product         = new WC_Product( $post );
-            $visible_product = $product->get_stock_status() == 'instock';
+			
+			if($product->get_stock_status() == 'instock' || $product->backorders_allowed()) {
+				$visible_product = true;
+			}
 
             if ( true === $visible_product ) {
                 $show_category = true;

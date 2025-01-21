@@ -14,7 +14,11 @@ function plnt_card_grid_start () {
     global $plants_treez_cat_id;
     $parentCatId = check_category ($product);
     if ($parentCatId === $plants_cat_id) {
-        if ( $product->get_stock_status() ==='outofstock') {
+        if ( $product->get_stock_status() ==='onbackorder' && $product->backorders_allowed()) {
+            ?>
+            <div class="card__grid card__grid_backorder">
+            <?php
+        } elseif ($product->get_stock_status() ==='outofstock') {
             ?>
             <div class="card__grid card__grid_outofstock">
             <?php
@@ -213,6 +217,7 @@ function plnt_price_wrap(){
                 }
                 ?>
             </div>
+            <span class = "backorder-info">Сейчас в наличии <?php echo $product->get_stock_quantity();?>. Доставка после <?php echo plnt_set_backorders_date();?></span>
         </div>
         <?php
         plnt_outofstock_info();
@@ -246,13 +251,13 @@ function plnt_get_add_to_card() {
         if ($product->get_stock_status() ==='instock' || $product->backorders_allowed()) {
             woocommerce_template_loop_add_to_cart(); //заменили обычную не яакс кнопку на аякс кнопку из каталога
         }
-        if ($quantity > 1 || !$product->get_manage_stock()) {
+        if ($quantity > 1 && !$product->backorders_allowed()) {
             woocommerce_quantity_input(array(
                 'min_value' => 1,
                 'max_value'    => $quantity,    // почему-то пришлось передавать заново, проверить на PLANTIS #TODO
             ),);           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
         }
-        if ($product->backorders_allowed()) {
+        if ($product->backorders_allowed() || !$product->get_manage_stock()) {
             woocommerce_quantity_input(array(
                 'min_value' => 1,
             ),);           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
@@ -339,7 +344,7 @@ function truemisha_quantity_plus() {
         }
     } 
     else {
-        echo '<div class="plus">&#43;</div>';
+        // echo '<div class="plus">&#43;</div>';
     }
 };
  
@@ -352,7 +357,7 @@ function truemisha_quantity_minus() {
         }
     } 
     else {
-        echo '<div class="minus">&#8722;</div>';
+        // echo '<div class="minus">&#8722;</div>';
     }
 };
 
