@@ -4,7 +4,7 @@
 .card__grid {
     display: grid;
     grid-template-columns: 45% 30% calc(25% - 40px);
-    grid-template-rows: minmax(219px, auto), repeat(5, auto);
+    grid-template-rows: minmax(210px, auto) repeat(5, auto); /*card-grid heihts*/
     grid-template-areas:
     "image info price"
     "image tabs banner1"
@@ -32,7 +32,7 @@
     position: relative;
     height: fit-content;
     /* чтобы не было смещения пока грузится слайдер*/
-    max-height: 585px;
+    max-height: 585px; /*card-grid heihts*/
     overflow: hidden;
 }
 
@@ -707,7 +707,7 @@ input[type="number"] {
 }
 
 .card__grid .woocommerce-Tabs-panel {
-    height: 300px;
+    height: 355px;  /*card-grid heihts*/
 }
 
 .card__grid .woocommerce-Tabs-panel--description {
