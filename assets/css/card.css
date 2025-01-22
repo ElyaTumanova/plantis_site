@@ -101,8 +101,10 @@
     grid-area: upsells;
 }
 
+/* #cardredesign */
 .card__grid .wc-tabs-wrapper {
-    display: none;
+    /* display: none; */
+    grid-area: info;
 }
 
 /* card banners */
@@ -257,9 +259,10 @@
     margin-bottom: 35px;
 }
 
-.product__attributes .heading-2 {
+  /* #cardredesign */
+/* .product__attributes .heading-2 {
     margin-bottom: 10px;
-}
+} */
 
 .woocommerce-product-attributes {
     text-align: left;
@@ -571,11 +574,12 @@ input[type="number"] {
     font-weight: 800;
 }
 
-@media (max-width: 767px) {
+/* #cardredesign */
+/* @media (max-width: 767px) {
     .card__price-wrap .delivery-info {
         display: none;
     }
-}
+} */ 
 
 /* out of stock info */
 
@@ -791,9 +795,10 @@ input[type="number"] {
 
     }
 
-    .card__grid .product__attributes {
+    /* #cardredesign */
+    /* .card__grid .product__attributes {
         display: none;
-    }
+    } */
 
     .product__artikul {
         margin-bottom: 0;

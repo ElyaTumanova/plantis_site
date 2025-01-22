@@ -221,9 +221,11 @@ function plnt_price_wrap(){
         </div>
         <?php
         plnt_outofstock_info();
-        if ( $product->get_stock_status() !=='outofstock') {
-            get_template_part('template-parts/delivery-info'); // delivery info for card
-        }
+        // #cardredesign
+        // if ( $product->get_stock_status() !=='outofstock') {
+        //     get_template_part('template-parts/delivery-info'); // delivery info for card
+        // } #cardredesign
+
         // peresadka_init
         //plnt_get_peresadka_add_to_cart();
         ?>
@@ -364,7 +366,7 @@ function truemisha_quantity_minus() {
 // мета данные товара и атрибуты
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 add_action( 'woocommerce_single_product_summary', 'plnt_product_artikul', 40 );
-add_action( 'woocommerce_single_product_summary', 'plnt_product_attributes', 50 );
+// add_action( 'woocommerce_single_product_summary', 'plnt_product_attributes', 50 ); /* #cardredesign */
 
 function plnt_product_artikul() {
     global $product;
@@ -375,27 +377,28 @@ function plnt_product_artikul() {
 	}
 };
 
-function plnt_product_attributes(){
-    global $product;
-    global $plants_cat_id;
-    ?>
-    <div class="product__attributes">
-    <?php
-        $attributes = $product->get_attributes();
-        if(!empty($attributes)){
-            $parentCatId = check_category($product);
-            if( $parentCatId === $plants_cat_id )
-                {
-                echo  '<h2 class="heading-2">Уход и характеристики</h2>';
-                } else {
-                echo '<h2 class="heading-2">Характеристики</h2>';
-                }
-        }
-        wc_display_product_attributes($product);
-    ?>
-    </div>
-    <?php 
-};
+/* #cardredesign */
+// function plnt_product_attributes(){
+//     global $product;
+//     global $plants_cat_id;
+//     ?>
+//     <div class="product__attributes">
+//     <?php
+//         $attributes = $product->get_attributes();
+//         if(!empty($attributes)){
+//             $parentCatId = check_category($product);
+//             if( $parentCatId === $plants_cat_id )
+//                 {
+//                 echo  '<h2 class="heading-2">Уход и характеристики</h2>';
+//                 } else {
+//                 echo '<h2 class="heading-2">Характеристики</h2>';
+//                 }
+//         }
+//         wc_display_product_attributes($product);
+//     ?>
+//     </div>
+//     <?php 
+// };
 
 //upsells & cross sells
 
