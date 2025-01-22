@@ -628,6 +628,9 @@ input[type="number"] {
 
 .card__outofstock-info_wrap {
     grid-area: outofstockinfo;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .card__outofstock-info {
     font-size: 18px;
