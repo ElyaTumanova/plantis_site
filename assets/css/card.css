@@ -4,7 +4,7 @@
 .card__grid {
     display: grid;
     grid-template-columns: 45% 30% calc(25% - 40px);
-    grid-template-rows: minmax(210px, auto) repeat(5, auto); /*card-grid heihts*/
+    grid-template-rows: minmax(180px, auto) repeat(5, auto); /*card-grid heihts*/
     grid-template-areas:
     "image info price"
     "image tabs banner1"
@@ -722,7 +722,7 @@ input[type="number"] {
 }
 
 .card__grid .woocommerce-Tabs-panel {
-    height: 355px;  /*card-grid heihts*/
+    height: 339px;  /*card-grid heihts*/
 }
 
 .card__grid .woocommerce-Tabs-panel--description {
