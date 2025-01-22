@@ -36,8 +36,34 @@ document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`
 // слушаем событие resize
 window.addEventListener('resize', () => {
     // получаем текущее значение высоты
-    let headerHeight= headerDiv.offsetHeight;;
+    let headerHeight= headerDiv.offsetHeight;
     document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
+});
+
+/*--------------------------------------------------------------
+# Высота woocommerce-tabs wc-tabs-wrapper
+--------------------------------------------------------------*/
+let tabsWrap = document.querySelector('.wc-tabs-wrapper');
+let tabsWrapHeight= tabsWrap.offsetHeight;
+
+document.documentElement.style.setProperty('--tabsWrapHeight', `${tabsWrapHeight}px`);
+// слушаем событие resize
+window.addEventListener('resize', () => {
+    // получаем текущее значение высоты
+    let tabsWrapHeight= tabsWrap.offsetHeight;
+    document.documentElement.style.setProperty('--tabsWrapHeight', `${tabsWrapHeight}px`);
+});
+
+
+let tabs = document.querySelector('.wc-tabs');
+let tabsHeight= tabs.offsetHeight;
+
+document.documentElement.style.setProperty('--tabsHeight', `${tabsHeight}px`);
+// слушаем событие resize
+window.addEventListener('resize', () => {
+    // получаем текущее значение высоты
+    let tabsHeight= tabs.offsetHeight;
+    document.documentElement.style.setProperty('--tabsHeight', `${tabsHeight}px`);
 });
 
 

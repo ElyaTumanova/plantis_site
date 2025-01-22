@@ -110,6 +110,7 @@
 .card__grid .wc-tabs-wrapper {
     /* display: none; */
     grid-area: tabs;
+    align-self: stretch;
 }
 
 /* card banners */
@@ -707,6 +708,7 @@ input[type="number"] {
 
 .card__grid .woocommerce-Tabs-panel {
     height: 300px;
+    min-height: calc(var(--tabsWrapHeight) - var(--tabsHeight));
 }
 
 .card__grid .woocommerce-Tabs-panel--description {
