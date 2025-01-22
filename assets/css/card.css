@@ -767,6 +767,7 @@ input[type="number"] {
 
     .card__grid {
         grid-template-columns: 100%;
+        grid-template-rows: repeat(9, auto);
         grid-auto-rows:auto;
         grid-template-areas:
         "image"
