@@ -708,7 +708,6 @@ input[type="number"] {
 
 .card__grid .woocommerce-Tabs-panel {
     height: 300px;
-    min-height: calc(var(--tabsWrapHeight) - var(--tabsHeight));
 }
 
 .card__grid .woocommerce-Tabs-panel--description {
