@@ -4,7 +4,7 @@
 .card__grid {
     display: grid;
     grid-template-columns: 45% 30% calc(25% - 40px);
-    grid-template-rows: repeat(6, auto);
+    grid-template-rows: minmax(219px, auto), repeat(5, auto);
     grid-template-areas:
     "image info price"
     "image tabs banner1"
