@@ -645,7 +645,6 @@ input[type="number"] {
 
 .card__grid .wc-tabs {
     display: flex;
-    height: 300px;
     /* border-bottom: solid 1px white; */
     /* background-color: var(--gray); */
 }
@@ -706,15 +705,21 @@ input[type="number"] {
     display: none;
 }
 
+.card__grid .woocommerce-Tabs-panel {
+    height: 300px;
+}
+
+.card__grid .woocommerce-Tabs-panel--description {
+    overflow-y: scroll;
+ }
+
 .card__grid .woocommerce-Tabs-panel--description p {
     font-size: 14px;
     font-weight: 500;
     line-height: 1.3;
     margin: 0 0 10px;
 }
-.card__grid .woocommerce-Tabs-panel--description {
-   overflow-y: scroll;
-}
+
 
 /*--------------------------------------------------------------
 # Adaptive General
