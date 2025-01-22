@@ -551,6 +551,12 @@ input[type="number"] {
     hyphens: none;
 }
 
+@media(min-width:767px) {
+    .delivery_table {
+        font-size: 14px;
+    }
+}
+
 .delivery_table__row {
     display: flex;
     justify-content: space-between;
