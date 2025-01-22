@@ -21,8 +21,9 @@
     grid-template-rows: repeat(5, auto);
     grid-template-areas:
     "image info price"
-    "image tabs banner2"
+    "image tabs outofstockinfo"
     "descr crossells crossells"
+    "descr banner1 banner2"
     "descr upsells upsells"
     "ukhod ukhod ukhod";
 }
@@ -625,6 +626,9 @@ input[type="number"] {
     width: fit-content;
 }
 
+.card__outofstock-info_wrap {
+    grid-area: outofstockinfo;
+}
 .card__outofstock-info {
     font-size: 18px;
     font-weight: 700;

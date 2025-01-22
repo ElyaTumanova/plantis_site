@@ -220,7 +220,7 @@ function plnt_price_wrap(){
             <span class = "backorder-info">В наличии <?php echo $product->get_stock_quantity();?> шт. Если вы хотите заказать большее количество, то ориентировочная дата доставки из Европы <?php echo plnt_set_backorders_date();?>. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</span>
         </div>
         <?php
-        plnt_outofstock_info();
+        // plnt_outofstock_info();
         // #cardredesign
         // if ( $product->get_stock_status() !=='outofstock') {
         //     get_template_part('template-parts/delivery-info'); // delivery info for card
@@ -230,7 +230,8 @@ function plnt_price_wrap(){
         //plnt_get_peresadka_add_to_cart();
         ?>
     </div>
-    <?php 
+    <?php
+        plnt_outofstock_info();
 };
 
 // peresadka
