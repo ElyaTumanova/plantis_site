@@ -377,28 +377,28 @@ function plnt_product_artikul() {
 	}
 };
 
-/* #cardredesign */
-// function plnt_product_attributes(){
-//     global $product;
-//     global $plants_cat_id;
-//     ?>
-//     <div class="product__attributes">
-//     <?php
-//         $attributes = $product->get_attributes();
-//         if(!empty($attributes)){
-//             $parentCatId = check_category($product);
-//             if( $parentCatId === $plants_cat_id )
-//                 {
-//                 echo  '<h2 class="heading-2">Уход и характеристики</h2>';
-//                 } else {
-//                 echo '<h2 class="heading-2">Характеристики</h2>';
-//                 }
-//         }
-//         wc_display_product_attributes($product);
-//     ?>
-//     </div>
-//     <?php 
-// };
+/* #cardredesign - to be deleted*/ 
+function plnt_product_attributes(){
+    global $product;
+    global $plants_cat_id;
+    ?>
+    <div class="product__attributes">
+    <?php
+        $attributes = $product->get_attributes();
+        if(!empty($attributes)){
+            $parentCatId = check_category($product);
+            if( $parentCatId === $plants_cat_id )
+                {
+                echo  '<h2 class="heading-2">Уход и характеристики</h2>';
+                } else {
+                echo '<h2 class="heading-2">Характеристики</h2>';
+                }
+        }
+        wc_display_product_attributes($product);
+    ?>
+    </div>
+    <?php 
+};
 
 //upsells & cross sells
 
