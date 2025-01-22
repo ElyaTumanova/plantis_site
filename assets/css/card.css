@@ -551,11 +551,11 @@ input[type="number"] {
     hyphens: none;
 }
 
-@media(min-width:767px) {
+/* @media(min-width:767px) {
     .delivery_table {
         font-size: 14px;
     }
-}
+} */
 
 .delivery_table__row {
     display: flex;
@@ -564,10 +564,13 @@ input[type="number"] {
     padding-top: 5px;
     column-gap: 7px;
     font-weight: 600;
+    border-bottom: 1px solid #E7D7CB;
 }
 
-.delivery_table__row {
-    border-bottom: 1px solid #E7D7CB;
+@media(min-width:767px) and (max-width: 965px){
+    .delivery_table__row {
+        word-break: break-word;
+    }
 }
 
 .delivery_table__row:last-child {
@@ -673,6 +676,12 @@ input[type="number"] {
     background-color: var(--gray);
 }
 
+@media (max-width: 965px) and (min-width:767px) {
+    .card__grid .wc-tabs li {
+        word-break: break-word;
+    }
+}
+
 .card__grid .wc-tabs li:not(:first-child):not(:last-child) {
     /* border-left: solid 2px var(--background);
     border-right: solid 2px var(--background); */
@@ -718,6 +727,16 @@ input[type="number"] {
 
 .card__grid .woocommerce-Tabs-panel--description {
     overflow-y: scroll;
+}
+
+ @media (max-width:767px) {
+    .card__grid .woocommerce-Tabs-panel {
+        height: auto;
+    }
+    
+    .card__grid .woocommerce-Tabs-panel--description {
+        overflow-y: auto;
+    }
  }
 
  /* стили для скролла scroll */
