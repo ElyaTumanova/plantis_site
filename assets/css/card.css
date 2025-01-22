@@ -9,8 +9,8 @@
     "image info price"
     "image tabs banner1"
     "image tabs banner2"
-    "descr upsells upsells"
-    "descr crossells crossells"
+    "image upsells upsells"
+    "image crossells crossells"
     "ukhod ukhod ukhod";
     column-gap: 20px;
     row-gap: 20px;
@@ -22,9 +22,9 @@
     grid-template-areas:
     "image info price"
     "image tabs outofstockinfo"
-    "descr crossells crossells"
-    "descr banner1 banner2"
-    "descr upsells upsells"
+    "image crossells crossells"
+    "image banner1 banner2"
+    "image upsells upsells"
     "ukhod ukhod ukhod";
 }
 
