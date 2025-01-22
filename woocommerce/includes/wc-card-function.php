@@ -121,8 +121,8 @@ function truemisha_remove_product_tabs( $tabs ) {
  
 }
 
-// описание
-add_action('woocommerce_before_single_product_summary', 'plnt_product_description', 10);
+// описание /* #cardredesign - to be deleted*/ 
+//add_action('woocommerce_before_single_product_summary', 'plnt_product_description', 10);
 
 function plnt_product_description () {
 

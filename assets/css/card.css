@@ -68,7 +68,8 @@
     grid-area: ukhod;
 }
 
-.card__description {
+/* #cardredesign*/ 
+/* .card__description {
     grid-area: descr;
     padding: 0 30px 0 0;
 }
@@ -87,7 +88,7 @@
 .card__description ul {
     list-style-type: disc;
     padding-left: 20px;
-}
+} */
 
 
 
@@ -783,11 +784,12 @@ input[type="number"] {
         text-align: center;
     }
  
-    .card__description {
+    /* #cardredesign*/ 
+    /* .card__description {
         grid-area: tohide;
         padding: 0;
         display: none;
-    }
+    } */
 
     .card__grid .wc-tabs-wrapper {
         grid-area: descr; 
