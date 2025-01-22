@@ -1,13 +1,14 @@
 /* сетка карточки и расположение элементов */
 
+/* #cardredesign*/ 
 .card__grid {
     display: grid;
     grid-template-columns: 45% 30% calc(25% - 40px);
     grid-template-rows: repeat(5, auto);
     grid-template-areas:
     "image info price"
-    "image tabs price"
-    "image banner1 banner2"
+    "image tabs banner1"
+    "image tabs banner2"
     "descr upsells upsells"
     "descr crossells crossells"
     "ukhod ukhod ukhod";
@@ -18,9 +19,8 @@
 .card__grid_outofstock {
     grid-template-areas:
     "image info price"
-    "image tabs price"
+    "image tabs banner2"
     "descr crossells crossells"
-    "descr banner1 banner2"
     "descr upsells upsells"
     "ukhod ukhod ukhod";
 }
