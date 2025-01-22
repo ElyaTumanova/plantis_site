@@ -6,6 +6,7 @@
     grid-template-rows: repeat(5, auto);
     grid-template-areas:
     "image info price"
+    "image tabs price"
     "image banner1 banner2"
     "descr upsells upsells"
     "descr crossells crossells"
@@ -104,7 +105,7 @@
 /* #cardredesign */
 .card__grid .wc-tabs-wrapper {
     /* display: none; */
-    grid-area: info;
+    grid-area: tabs;
 }
 
 /* card banners */
