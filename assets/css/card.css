@@ -735,9 +735,6 @@ input[type="number"] {
 
 .card__grid .woocommerce-Tabs-panel {
     height: 250px;  /*card-grid heihts*/
-}
-
-.card__grid .woocommerce-Tabs-panel--description {
     overflow-y: auto;
 }
 

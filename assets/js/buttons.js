@@ -53,7 +53,6 @@ window.addEventListener('resize', () => {
 let marginTopOffset = headerMainHeight - headerHeight;
 window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset;
-    console.log(scrollTop);
     if(scrollTop >0){
         headerMainDiv.setAttribute('style', `margin-top:${marginTopOffset}px`);
     } else{
