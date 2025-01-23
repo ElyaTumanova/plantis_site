@@ -50,12 +50,9 @@ window.addEventListener('resize', () => {
 });
 
 //скрываем меню при скролле
-// let headerInfoDiv = document.querySelector('.header__info');
-// let headerNoticeWrap = document.querySelector('.header__notice-wrap');
 
 let marginTopOffset = headerMainHeight - headerHeight - 1;
 window.addEventListener('scroll', function() {
-   
     let scrollTop = window.pageYOffset;
     console.log(scrollTop);
     if(scrollTop >0){
@@ -64,6 +61,14 @@ window.addEventListener('scroll', function() {
         headerMainDiv.removeAttribute('style');
     }
   });
+  document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
+
+  window.addEventListener('resize', () => {
+    let marginTopOffset = headerMainHeight - headerHeight - 1;
+    document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
+    console.log(marginTopOffset);
+});
+
 /*--------------------------------------------------------------
 # Filters for mobile in catalog
 --------------------------------------------------------------*/
