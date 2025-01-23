@@ -40,6 +40,10 @@ window.addEventListener('resize', () => {
     document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
 });
 
+
+window.addEventListener('scroll', function() {
+    console.log('hi');
+  });
 /*--------------------------------------------------------------
 # Filters for mobile in catalog
 --------------------------------------------------------------*/
