@@ -30,7 +30,7 @@
 
 .card__image-wrap {
     grid-area: image;
-    position: relative;
+    position: sticky;
     height: fit-content;
     /* чтобы не было смещения пока грузится слайдер*/
     max-height: 585px; /*card-grid heihts*/
