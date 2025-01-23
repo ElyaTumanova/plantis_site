@@ -53,7 +53,7 @@ window.addEventListener('resize', () => {
 // let headerInfoDiv = document.querySelector('.header__info');
 // let headerNoticeWrap = document.querySelector('.header__notice-wrap');
 
-let marginTopOffset = headerMainHeight - headerHeight;
+let marginTopOffset = headerMainHeight - headerHeight - 1;
 window.addEventListener('scroll', function() {
    
     let scrollTop = window.pageYOffset;
