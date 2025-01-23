@@ -36,6 +36,11 @@
     overflow: hidden;
 }
 
+@media (max-width:767px) {
+    .card__image-wrap {
+        position: relative;
+    }
+}
 .woocommerce-product-gallery__trigger {
     position: absolute;
     z-index: 2;
@@ -65,10 +70,6 @@
 .card__price-wrap .social-media__buttons {
     margin: 0 auto 25px;
 }
-
-/* .card__grid .card__ukhod-wrap {
-    grid-area: ukhod;
-} */
 
 /* #cardredesign*/ 
 /* .card__description {
