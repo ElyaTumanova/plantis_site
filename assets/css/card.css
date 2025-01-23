@@ -43,6 +43,7 @@
 @media (max-width:767px) {
     .card__image-wrap {
         position: relative;
+        top: 0;
     }
 }
 .woocommerce-product-gallery__trigger {
