@@ -41,14 +41,18 @@ window.addEventListener('resize', () => {
 });
 
 
+let headerInfoDiv = document.querySelector('.header__info');
+let headerNoticeWrap = document.querySelector('.header__notice-wrap');
 window.addEventListener('scroll', function() {
    
     let scrollTop = window.pageYOffset;
     console.log(scrollTop);
     if(scrollTop >0){
-        console.log('hi');
+        headerInfoDiv.classList.add('d-none');
+        headerNoticeWrap.classList.add('d-none');
     } else{
-        console.log('ho');
+        headerInfoDiv.classList.remove('d-none');
+        headerNoticeWrap.classList.remove('d-none');
     }
   });
 /*--------------------------------------------------------------
