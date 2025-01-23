@@ -29,7 +29,7 @@
 .card__image-wrap {
     grid-area: image;
     position: sticky;
-    top: calc(var(--headerHeight) + var(--marginTopOffset));
+    top: calc(var(--headerHeight) + var(--marginTopOffset) + 2px);
     height: fit-content;
     /* чтобы не было смещения пока грузится слайдер*/
     max-height: 585px; /*card-grid heihts*/
