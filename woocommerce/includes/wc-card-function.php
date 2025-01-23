@@ -40,7 +40,7 @@ function plnt_card_grid_start () {
     } 
 };
 
-add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',50);
+add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',40);
 
 function plnt_card_grid_end () {
     ?>
@@ -467,7 +467,7 @@ function plnt_get_cross_sells(){
 
 // товары для ухода
 
-add_action('woocommerce_after_single_product_summary','plnt_card_ukhod_loop',40);
+add_action('woocommerce_after_single_product_summary','plnt_card_ukhod_loop',50);
 
 function plnt_card_ukhod_loop() {
     get_template_part('template-parts/products/products-ukhod');

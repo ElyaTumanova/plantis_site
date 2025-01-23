@@ -10,8 +10,7 @@
     "image tabs banner1"
     "image tabs banner2"
     "image upsells upsells"
-    "image crossells crossells"
-    "ukhod ukhod ukhod";
+    "image crossells crossells";
     column-gap: 20px;
     row-gap: 20px;
     align-items: flex-start;
@@ -24,13 +23,13 @@
     "image tabs outofstockinfo"
     "image crossells crossells"
     "image banner1 banner2"
-    "image upsells upsells"
-    "ukhod ukhod ukhod";
+    "image upsells upsells";
 }
 
 .card__image-wrap {
     grid-area: image;
     position: sticky;
+    top: var(--headerHeight);
     height: fit-content;
     /* чтобы не было смещения пока грузится слайдер*/
     max-height: 585px; /*card-grid heihts*/
@@ -67,9 +66,9 @@
     margin: 0 auto 25px;
 }
 
-.card__grid .card__ukhod-wrap {
+/* .card__grid .card__ukhod-wrap {
     grid-area: ukhod;
-}
+} */
 
 /* #cardredesign*/ 
 /* .card__description {
@@ -803,7 +802,6 @@ input[type="number"] {
         "descr"
         "banner2"
         "upsells"
-        "ukhod"
         "tohide";
         column-gap: 0;
         row-gap: 30px;
@@ -818,7 +816,6 @@ input[type="number"] {
         "descr"
         "banner2"
         "upsells"
-        "ukhod"
         "tohide";
     }
 
@@ -831,7 +828,6 @@ input[type="number"] {
         "descr"
         "banner1"
         "upsells"
-        "ukhod"
         "tohide";
     }
 
