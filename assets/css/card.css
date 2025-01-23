@@ -733,7 +733,7 @@ input[type="number"] {
 }
 
 .card__grid .woocommerce-Tabs-panel--description {
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
  @media (max-width:767px) {
