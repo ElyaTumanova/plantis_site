@@ -59,7 +59,7 @@ window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset;
     console.log(scrollTop);
     if(scrollTop >0){
-        headerMainDiv.setAttribute('margin-top', marginTopOffset);
+        headerMainDiv.setAttribute('margin-top', `${marginTopOffset}px`);
     } else{
         headerMainDiv.removeAttribute('margin-top');
     }
