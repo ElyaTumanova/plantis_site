@@ -47,6 +47,8 @@ window.addEventListener('scroll', function() {
     console.log(scrollTop);
     if(scrollTop >0){
         console.log('hi');
+    } else{
+        console.log('ho');
     }
   });
 /*--------------------------------------------------------------
