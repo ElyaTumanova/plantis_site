@@ -42,7 +42,12 @@ window.addEventListener('resize', () => {
 
 
 window.addEventListener('scroll', function() {
-    console.log('hi');
+   
+    let scrollTop = body.scrollHeight;
+    console.log(scrollTop);
+    if(scrollTop >0){
+        console.log('hi');
+    }
   });
 /*--------------------------------------------------------------
 # Filters for mobile in catalog
