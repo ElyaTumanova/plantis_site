@@ -35,7 +35,11 @@
     max-height: 585px; /*card-grid heihts*/
     overflow: hidden;
 }
-
+@media (max-width: 1279px) {
+    .card__image-wrap {
+        top: 55px;
+    }
+}
 @media (max-width:767px) {
     .card__image-wrap {
         position: relative;
