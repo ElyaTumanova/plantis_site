@@ -50,7 +50,7 @@ window.addEventListener('resize', () => {
 });
 
 //скрываем меню при скролле
-let marginTopOffset = headerMainHeight - headerHeight - 1;
+let marginTopOffset = headerMainHeight - headerHeight;
 window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset;
     console.log(scrollTop);
