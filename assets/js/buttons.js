@@ -40,19 +40,28 @@ window.addEventListener('resize', () => {
     document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
 });
 
+let headerMainDiv = document.querySelector('.header__main');
+let headerMainHeight= headerMainDiv.offsetHeight;
 
-let headerInfoDiv = document.querySelector('.header__info');
-let headerNoticeWrap = document.querySelector('.header__notice-wrap');
+// слушаем событие resize
+window.addEventListener('resize', () => {
+    // получаем текущее значение высоты
+    let headerMainHeight= headerMainDiv.offsetHeight;
+});
+
+//скрываем меню при скролле
+// let headerInfoDiv = document.querySelector('.header__info');
+// let headerNoticeWrap = document.querySelector('.header__notice-wrap');
+
+let marginTopOffset = headerHeight - headerMainHeight;
 window.addEventListener('scroll', function() {
    
     let scrollTop = window.pageYOffset;
     console.log(scrollTop);
     if(scrollTop >0){
-        headerInfoDiv.classList.add('hide');
-        headerNoticeWrap.classList.add('hide');
+        headerMainDiv.setAttribute('margin-top', marginTopOffset);
     } else{
-        headerInfoDiv.classList.remove('hide');
-        headerNoticeWrap.classList.remove('hide');
+        headerMainDiv.removeAttribute('margin-top');
     }
   });
 /*--------------------------------------------------------------

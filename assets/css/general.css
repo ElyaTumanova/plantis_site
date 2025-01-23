@@ -35,14 +35,6 @@
     display: none !important;
 }
 
-.hide {
-    z-index: -9999;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-}
-
 .fix-body {
     height: 100vh;
     /* width: calc(100vw - var(--scrollWidth)); */
