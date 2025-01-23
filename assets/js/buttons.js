@@ -48,11 +48,11 @@ window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset;
     console.log(scrollTop);
     if(scrollTop >0){
-        headerInfoDiv.classList.add('d-none');
-        headerNoticeWrap.classList.add('d-none');
+        headerInfoDiv.classList.add('hide');
+        headerNoticeWrap.classList.add('hide');
     } else{
-        headerInfoDiv.classList.remove('d-none');
-        headerNoticeWrap.classList.remove('d-none');
+        headerInfoDiv.classList.remove('hide');
+        headerNoticeWrap.classList.remove('hide');
     }
   });
 /*--------------------------------------------------------------
