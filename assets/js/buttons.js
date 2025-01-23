@@ -40,10 +40,10 @@ window.addEventListener('resize', () => {
     document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
 });
 
-let hoho = document.querySelector('body');
+
 window.addEventListener('scroll', function() {
    
-    let scrollTop = hoho.scrollHeight;
+    let scrollTop = window.pageYOffset;
     console.log(scrollTop);
     if(scrollTop >0){
         console.log('hi');
