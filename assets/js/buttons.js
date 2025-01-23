@@ -43,7 +43,7 @@ window.addEventListener('resize', () => {
 
 window.addEventListener('scroll', function() {
    
-    let scrollTop = body.scrollHeight;
+    let scrollTop = window.scrollHeight;
     console.log(scrollTop);
     if(scrollTop >0){
         console.log('hi');
