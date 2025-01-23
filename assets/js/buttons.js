@@ -61,7 +61,7 @@ window.addEventListener('scroll', function() {
     if(scrollTop >0){
         headerMainDiv.setAttribute('style', `margin-top:${marginTopOffset}px`);
     } else{
-        headerMainDiv.removeAttribute('margin-top');
+        headerMainDiv.removeAttribute('style');
     }
   });
 /*--------------------------------------------------------------
