@@ -472,7 +472,7 @@
     transform: translateX(-101%);
 }
 
-/* .text-ani-show::before{
+.text-ani-show::before{
     content: '';
     position: absolute;
     top: 0;
@@ -482,9 +482,9 @@
     background: var(--bg-color);
     animation: a-ltr-before 2s cubic-bezier(.77,0,.18,1) forwards;
     transform: translateX(0);
-} */
+}
 
-/* .text-ani-show::before, */
+.text-ani-show::before,
 .text-ani-show::after{
     animation-delay: 1s;
 }
