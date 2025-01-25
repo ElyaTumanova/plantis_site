@@ -453,14 +453,14 @@
     transform: translateX(0px);
 }
 
-.text-ani p{
+.text-ani {
     position: relative;
     overflow: hidden;
     display: block;
     line-height: 1.2;
 }
 
-.text-ani p::after{
+.text-ani::after{
     content: '';
     position: absolute;
     top: 0;
@@ -472,7 +472,7 @@
     transform: translateX(-101%);
 }
 
-.text-ani p::before{
+.text-ani::before{
     content: '';
     position: absolute;
     top: 0;
@@ -484,8 +484,8 @@
     transform: translateX(0);
 }
 
-.text-ani p:nth-of-type(1)::before,
-.text-ani p:nth-of-type(1)::after{
+.text-ani::before,
+.text-ani::after{
     animation-delay: 1s;
 }
 
