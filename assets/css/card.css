@@ -450,7 +450,6 @@
 
     position: absolute;
     bottom: -164px;
-    z-index: -1;
     background-color: var(--background);
 }
 
