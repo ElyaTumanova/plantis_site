@@ -453,14 +453,14 @@
     transform: translateX(0px);
 }
 
-.text-ani {
+.text-ani-show {
     position: relative;
     overflow: hidden;
     display: block;
     line-height: 1.2;
 }
 
-.text-ani::after{
+.text-ani-show::after{
     content: '';
     position: absolute;
     top: 0;
@@ -472,7 +472,7 @@
     transform: translateX(-101%);
 }
 
-.text-ani::before{
+/* .text-ani-show::before{
     content: '';
     position: absolute;
     top: 0;
@@ -482,10 +482,10 @@
     background: var(--bg-color);
     animation: a-ltr-before 2s cubic-bezier(.77,0,.18,1) forwards;
     transform: translateX(0);
-}
+} */
 
-.text-ani::before,
-.text-ani::after{
+/* .text-ani-show::before, */
+.text-ani-show::after{
     animation-delay: 1s;
 }
 
