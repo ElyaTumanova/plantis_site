@@ -450,6 +450,8 @@
     bottom: -164px;
     height: 100%;
     background-color: var(--background);
+    display: flex;
+    align-items: center;
 }
 
 .backorder-info_active {
