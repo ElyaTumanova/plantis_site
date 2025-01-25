@@ -2,12 +2,14 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+global $product;
 $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
 ?>
 
 <div class="card_banner" id="card_banner_photo">
     <p>Напишите нам, и мы пришлём вам “живые” фотографии этого растения</p>
     <?php get_template_part('template-parts/social-media-btns');?>
+    <span class = "backorder-info">В наличии <?php echo $product->get_stock_quantity();?> шт. Если вы хотите заказать большее количество, то ориентировочная дата доставки из Европы <?php echo plnt_set_backorders_date();?>. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</span>
 </div>
 <div class="card_banner" id="card_banner_backorder">
     <p>Растение под заказ из Европы, ориентировочная дата доставки <?php echo plnt_set_backorders_date();?>. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</p>

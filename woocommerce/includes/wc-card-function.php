@@ -217,7 +217,6 @@ function plnt_price_wrap(){
                 }
                 ?>
             </div>
-            <span class = "backorder-info">В наличии <?php echo $product->get_stock_quantity();?> шт. Если вы хотите заказать большее количество, то ориентировочная дата доставки из Европы <?php echo plnt_set_backorders_date();?>. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</span>
         </div>
         <?php
         // plnt_outofstock_info();
