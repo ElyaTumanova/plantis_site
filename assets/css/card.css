@@ -186,6 +186,7 @@
     font-weight: 700;
     /* margin-bottom: 4px; */
     align-self: stretch;
+    position: relative;
 }
 
 .card_banner a {
