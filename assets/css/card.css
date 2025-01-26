@@ -86,6 +86,8 @@
 .card__grid .wc-tabs-wrapper {
     grid-area: tabs;
     align-self: stretch;
+    max-height: 316px;
+    overflow: hidden;
 }
 
 /* card banners */
@@ -812,8 +814,6 @@ input[type="number"] {
         /* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15); */
         border-radius: 5px;
         /* padding: 10px; */
-        max-height: 316px;
-        overflow: hidden;
     }
 
     .card__grid .up-sells, .card__grid .cross-sells {
