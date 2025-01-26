@@ -689,8 +689,9 @@ input[type="number"] {
 }
 
 .card__grid .woocommerce-Tabs-panel {
-    height: 250px;  /*card-grid heihts*/
+    height: 270px;  /*card-grid heihts*/
     overflow-y: auto;
+    font-size: 14px;
 }
 
  @media (max-width:767px) {
