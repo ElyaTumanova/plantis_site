@@ -467,24 +467,19 @@
     }
 }
 
-/* @media (max-width: 767px) {
+@media (max-width: 767px) {
     .card__price-wrap .backorder-info {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 72px;
-        background: var(--background);
-        padding: 10px;
-        transform: translateX(0px);
-        transform: translateY(-50px);
-        z-index: -1;
+        top: 200%;
+        bottom: auto;
+        transition: top 2s, opacity 0s 1.8s;
     }
 
     .card__price-wrap .backorder-info_active {
-        transform: translateX(0px);
-        transform: translateY(0px);
+        top: -100%;
+        bottom: auto;
+        transition: top 2s, opacity 0s;
     }
-} */
+}
 
 .card__grid .add-to-cart-wrap .button {
     grid-area: cart;
