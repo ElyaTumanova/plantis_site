@@ -12,7 +12,7 @@ $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
     <span class = "backorder-info">В наличии <?php echo $product->get_stock_quantity();?> шт. Если вы хотите заказать большее количество, то ориентировочная дата доставки из Европы <?php echo plnt_set_backorders_date();?>. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</span>
 </div>
 <div class="card_banner" id="card_banner_backorder">
-    <p>Растение под заказ из Европы, ориентировочная дата доставки <?php echo plnt_set_backorders_date();?>. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</p>
+    <p>Растение под заказ из Европы, ориентировочная дата доставки <?php echo plnt_set_backorders_date();?>. <br>После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</p>
 </div>
 <div class="card_banner" id="card_banner_peresadka">
     <p>При покупке <a href="<?php echo get_site_url()?>/product-category/gorshki_i_kashpo/" target="_blank" rel="noopener">горшка </a>— пересадка в подарок!</p>
