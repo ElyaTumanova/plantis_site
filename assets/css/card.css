@@ -481,6 +481,12 @@
     }
 }
 
+@media (min-width: 767px) {
+    .card__price-wrap .backorder-info {
+        display: none;
+    }
+}
+
 .card__grid .add-to-cart-wrap .button {
     grid-area: cart;
     /* padding: 12px 10px; */
