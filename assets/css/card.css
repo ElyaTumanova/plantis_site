@@ -439,9 +439,9 @@
     /* margin: 0 14px; */
 }
 
-.backorder-info {
+.card_banner .backorder-info {
     display: block;
-    transition: all 2s;
+    transition: bottom 2s, opacity 0s 1.8s;
     font-size: 14px;
     font-weight: 600;
     padding: 10px;
@@ -452,10 +452,13 @@
     background-color: var(--background);
     display: flex;
     align-items: center;
+    opacity: 0%;
 }
 
-.backorder-info_active {
+.card_banner .backorder-info_active {
     bottom: 0;
+    opacity: 100%;
+    transition: bottom 2s, opacity 0s;
 }
 
 @media (max-width: 767px) {
