@@ -49,6 +49,8 @@ jQuery(function ($){
 	//уведомление для backorder
 	var stock = parseInt(qty.parent().parent().find(".product_type_simple").attr( 'data-stock-quantity'));
 	var backorderInfo = qty.parent().parent().parent().parent().parent().parent().find(".backorder-info");
+	var backorderInfoMob = qty.parent().parent().parent().parent().find(".backorder-info");
+	console.log(backorderInfoMob);
 	if (stock >0) {
 		if (newVal == (stock + 1)) {
 			backorderInfo.addClass('backorder-info_active');
