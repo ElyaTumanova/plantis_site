@@ -121,27 +121,6 @@ function truemisha_remove_product_tabs( $tabs ) {
  
 }
 
-// описание /* #cardredesign - to be deleted*/ 
-//add_action('woocommerce_before_single_product_summary', 'plnt_product_description', 10);
-
-function plnt_product_description () {
-
-    ?>
-    <div class="card__description">
-    <?php
-    if( '' !== get_post()->post_content ) {
-        ?>
-            <h2 class="heading-2">Описание</h2>
-        <?php
-        }
-    the_content();
-    ?>
-    </div>
-    <?php 
-
-};
-
-
 // фото товара, бейдж распродажа
 remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
 remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20 );
@@ -221,11 +200,6 @@ function plnt_price_wrap(){
         </div>
         <?php
         // plnt_outofstock_info();
-        // #cardredesign
-        // if ( $product->get_stock_status() !=='outofstock') {
-        //     get_template_part('template-parts/delivery-info'); // delivery info for card
-        // } #cardredesign
-
         // peresadka_init
         //plnt_get_peresadka_add_to_cart();
         ?>
@@ -272,14 +246,6 @@ function plnt_get_add_to_card() {
         <?php
     } 
 };
-
-// function plnt_wish_wrap() {
-//     global $product;
-//     $id = $product->get_id();
-//     echo '
-//     <div class="br_wish_wait_block br_wish_wait_'. $id .'" data-id='. $id .'><span class="br_ww_button br_wish_button br_wish_add button" data-type="wish" href="#add_to_wish_list"><i class="fa fa-heart-o"></i></span></div>
-//     ';
-// };
 
 function plnt_check_stock_status() {
     global $product;
@@ -348,9 +314,6 @@ function truemisha_quantity_plus() {
             echo '<div class="plus">&#43;</div>';
         }
     } 
-    else {
-        // echo '<div class="plus">&#43;</div>';
-    }
 };
  
 function truemisha_quantity_minus() {
@@ -361,15 +324,11 @@ function truemisha_quantity_minus() {
             echo '<div class="minus">&#8722;</div>';
         }
     } 
-    else {
-        // echo '<div class="minus">&#8722;</div>';
-    }
 };
 
-// мета данные товара и атрибуты
+// мета данные товара
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 add_action( 'woocommerce_single_product_summary', 'plnt_product_artikul', 40 );
-// add_action( 'woocommerce_single_product_summary', 'plnt_product_attributes', 50 ); /* #cardredesign */
 
 function plnt_product_artikul() {
     global $product;
@@ -378,29 +337,6 @@ function plnt_product_artikul() {
 	if( $sku ) { // если заполнен, то выводим
 		echo '<p class="product__artikul">Артикул: ' . $sku . '</p>';
 	}
-};
-
-/* #cardredesign - to be deleted*/ 
-function plnt_product_attributes(){
-    global $product;
-    global $plants_cat_id;
-    ?>
-    <div class="product__attributes">
-    <?php
-        $attributes = $product->get_attributes();
-        if(!empty($attributes)){
-            $parentCatId = check_category($product);
-            if( $parentCatId === $plants_cat_id )
-                {
-                echo  '<h2 class="heading-2">Уход и характеристики</h2>';
-                } else {
-                echo '<h2 class="heading-2">Характеристики</h2>';
-                }
-        }
-        wc_display_product_attributes($product);
-    ?>
-    </div>
-    <?php 
 };
 
 //upsells & cross sells
