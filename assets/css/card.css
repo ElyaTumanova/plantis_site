@@ -855,7 +855,8 @@ input[type="number"] {
 
     .product .card__price-wrap .price {
         font-size: 30px;
-        color: var(--accent-color);
+        /* color: var(--accent-color); */
+        color: var(--text);
     }
 
     .sale .card__price-wrap .price {
