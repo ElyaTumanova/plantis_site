@@ -527,7 +527,7 @@ ul.products {
     font-size: 24px;
     line-height: 1.1;
     font-weight: 700;
-    color: var(--red-color);
+    /* color: var(--red-color); */
 }
 
 /* метки */
@@ -676,7 +676,7 @@ ul.products {
     font-size: 20px;
     line-height: 1.1;
     font-weight: 700;
-    color: var(--red-color);
+    /* color: var(--red-color); */
 }
 
 /* слайдер для прокручивания галереи товаров горизонтальным скроллом */
@@ -989,11 +989,18 @@ ul.products {
 /*--------------------------------------------------------------
 # Ukhod
 --------------------------------------------------------------*/
+.card__ukhod-wrap {
+    margin-top: 50px;
+}
+
 .card__ukhod-wrap .my_header__title {
     margin-bottom: 20px;
 }
 
 @media (max-width: 767px) {
+    .card__ukhod-wrap {
+        margin-top: 30px;
+    }
     .card__ukhod-wrap .my_header__title {
         margin-bottom: 15px;
         font-size: 18px;
@@ -1108,7 +1115,7 @@ ul.products {
     font-size: 20px;
     line-height: 1.1;
     font-weight: 700;
-    color: var(--red-color);
+    /* color: var(--red-color); */
 }
 
 
@@ -1162,7 +1169,7 @@ ul.products {
         font-size: 20px;
         line-height: 1.1;
         font-weight: 700;
-        color: var(--red-color);
+        /* color: var(--red-color); */
     }
 }
 

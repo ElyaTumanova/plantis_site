@@ -37,6 +37,8 @@
     padding-bottom: 10px;
     position: relative;
     background-color: var(--background);
+    margin-top: 0;
+    transition: all .3s;
 }
 
 .header__main .container {

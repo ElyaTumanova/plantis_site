@@ -36,10 +36,37 @@ document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`
 // слушаем событие resize
 window.addEventListener('resize', () => {
     // получаем текущее значение высоты
-    let headerHeight= headerDiv.offsetHeight;;
+    let headerHeight= headerDiv.offsetHeight;
     document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
 });
 
+let headerMainDiv = document.querySelector('.header__main');
+let headerMainHeight= headerMainDiv.offsetHeight;
+
+// слушаем событие resize
+window.addEventListener('resize', () => {
+    // получаем текущее значение высоты
+    let headerMainHeight= headerMainDiv.offsetHeight;
+});
+
+//скрываем меню при скролле
+let marginTopOffset = headerMainHeight - headerHeight;
+window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset;
+    if(scrollTop >0){
+        headerMainDiv.setAttribute('style', `margin-top:${marginTopOffset}px`);
+    } else{
+        headerMainDiv.removeAttribute('style');
+    }
+});
+document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
+
+//это не обязательно
+// window.addEventListener('resize', () => {
+//     let marginTopOffset = headerMainHeight - headerHeight - 1;
+//     document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
+//     console.log(marginTopOffset);
+// });
 
 /*--------------------------------------------------------------
 # Filters for mobile in catalog
