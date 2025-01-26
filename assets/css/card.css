@@ -1,6 +1,5 @@
 /* сетка карточки и расположение элементов */
 
-/* #cardredesign*/ 
 .card__grid {
     display: grid;
     grid-template-columns: 45% 30% calc(25% - 40px);
@@ -76,34 +75,6 @@
     margin: 0 auto 25px;
 }
 
-/* #cardredesign*/ 
-/* .card__description {
-    grid-area: descr;
-    padding: 0 30px 0 0;
-}
-
-.card__description .heading-2 {
-    margin-bottom: 15px;
-}
-
-.card__description p {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.3;
-    margin: 0 0 10px;
-}
-
-.card__description ul {
-    list-style-type: disc;
-    padding-left: 20px;
-} */
-
-
-
-/* .card__sliders-wrap {
-    grid-area: sliders;
-} */
-
 .card__grid .cross-sells {
     grid-area: crossells;
 }
@@ -112,9 +83,7 @@
     grid-area: upsells;
 }
 
-/* #cardredesign */
 .card__grid .wc-tabs-wrapper {
-    /* display: none; */
     grid-area: tabs;
     align-self: stretch;
 }
@@ -143,14 +112,10 @@
 }
 
 .card__grid_treez #card_banner_peresadka {
-    /* grid-column: span 1;
-    grid-area: banner2; */
     display: none;
 }
 
 .product_cat-kashpo-treez #card_banner_peresadka {
-    /* grid-column: span 1;
-    grid-area: banner2; */
     display: none;
 }
 
@@ -282,13 +247,7 @@
     font-weight: 600;
     line-height: 26px;
     opacity: 0.7;
-    /* margin-bottom: 35px; */
 }
-
-  /* #cardredesign */
-/* .product__attributes .heading-2 {
-    margin-bottom: 10px;
-} */
 
 .woocommerce-product-attributes {
     text-align: left;
@@ -500,7 +459,6 @@
 
 .card__grid .add-to-cart-wrap .button {
     grid-area: cart;
-    /* padding: 12px 10px; */
     margin: 4px 0;
     white-space: nowrap;
 }
@@ -517,7 +475,6 @@
         border-radius: 100%;
         margin: 0;
         margin-left: auto;
-        /* background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg); */
         background-image: url(https://plantis.shop/wp-content/uploads/2025/01/cart_white_new.svg);
         background-repeat: no-repeat;
         background-position: center;
@@ -582,12 +539,6 @@ input[type="number"] {
     hyphens: none;
 }
 
-/* @media(min-width:767px) {
-    .delivery_table {
-        font-size: 14px;
-    }
-} */
-
 .delivery_table__row {
     display: flex;
     justify-content: space-between;
@@ -621,13 +572,6 @@ input[type="number"] {
     margin-bottom: 7px;
     font-weight: 800;
 }
-
-/* #cardredesign */
-/* @media (max-width: 767px) {
-    .card__price-wrap .delivery-info {
-        display: none;
-    }
-} */ 
 
 /* out of stock info */
 
@@ -692,24 +636,18 @@ input[type="number"] {
 
 .card__grid .wc-tabs {
     display: flex;
-    /* border-bottom: solid 1px white; */
-    /* background-color: var(--gray); */
 }
 
 .card__grid .wc-tabs li{
     padding: 7px;
-    /* border-bottom: solid 2px white; */
     flex: 1;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 700;
     line-height: 1.2;
     text-align: center;
-    /* opacity: 50%; */
     border-radius: 5px 5px 0 0;
     border: solid 2px var(--gray);
-    /* border-bottom: solid 2px var(--gray);
-    border-top: solid 2px var(--gray); */
     background-color: var(--gray);
 }
 
@@ -720,16 +658,9 @@ input[type="number"] {
 }
 
 .card__grid .wc-tabs li:not(:first-child):not(:last-child) {
-    /* border-left: solid 2px var(--background);
-    border-right: solid 2px var(--background); */
     margin-right: 2px;
     margin-left: 2px;
 }
-
-/* .card__grid .wc-tabs .active:not(:first-child):not(:last-child) {
-    border-left: solid 2px var(--gray);
-    border-right: solid 2px var(--gray);
-} */
 
 .card__grid .wc-tabs .active{
     background-color: var(--background);
@@ -742,7 +673,6 @@ input[type="number"] {
 }
 
 .card__grid .wc-tab {
-    /* background-color: var(--gray); */
     padding: 7px;
     border-radius: 0 0 5px 5px;
     border-bottom: solid 2px var(--gray);
@@ -874,13 +804,6 @@ input[type="number"] {
     .card__grid_outofstock .card__outofstock-info {
         text-align: center;
     }
- 
-    /* #cardredesign*/ 
-    /* .card__description {
-        grid-area: tohide;
-        padding: 0;
-        display: none;
-    } */
 
     .card__grid .wc-tabs-wrapper {
         grid-area: descr; 
@@ -890,15 +813,6 @@ input[type="number"] {
         /* padding: 10px; */
 
     }
-
-    /* #cardredesign */
-    /* .card__grid .product__attributes {
-        display: none;
-    } */
-
-    /* .product__artikul {
-        margin-bottom: 0;
-    } */
 
     .card__grid .up-sells, .card__grid .cross-sells {
         margin-bottom: 0;
@@ -917,27 +831,10 @@ input[type="number"] {
         padding: 10px;
         display: grid;
         grid-template-columns: repeat(2, auto);
-        /* grid-template-areas:
-        "price buttons"
-        "stock buttons"
-        ; */
         row-gap: 10px;
         align-items: center;
         z-index: 9998;
     }
-
-    /* .card__add-to-cart-wrap .price {
-        grid-area: price;
-    }
-
-    .card__add-to-cart-wrap .card__stockstatus {
-        grid-area: stock;
-        margin-bottom: 5px;
-    }
-
-    .card__add-to-cart-wrap .card__price-btns-wrap {
-        grid-area: buttons;
-    } */
 
     .card__price-btns-wrap {
         margin-bottom: 0;
@@ -950,7 +847,6 @@ input[type="number"] {
 
     .product .card__price-wrap .price {
         font-size: 30px;
-        /* font-weight: 600; */
         color: var(--accent-color);
     }
 
@@ -961,7 +857,6 @@ input[type="number"] {
 
     .sale .card__price-wrap ins .woocommerce-Price-amount {
         font-size: 30px;
-        /* font-weight: 600; */
     }
 
     .card__grid .add-to-cart-wrap {
@@ -982,7 +877,6 @@ input[type="number"] {
 
     .card__price-wrap .quantity div {
         font-size: 24px;
-        /* max-width: 27px; */
     }
 
     /* стили элементов */
