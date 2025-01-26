@@ -467,7 +467,7 @@
     }
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .card__price-wrap .backorder-info {
         position: absolute;
         left: 0;
@@ -484,7 +484,7 @@
         transform: translateX(0px);
         transform: translateY(0px);
     }
-}
+} */
 
 .card__grid .add-to-cart-wrap .button {
     grid-area: cart;
