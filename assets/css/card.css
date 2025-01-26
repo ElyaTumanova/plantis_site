@@ -86,8 +86,13 @@
 .card__grid .wc-tabs-wrapper {
     grid-area: tabs;
     align-self: stretch;
-    max-height: 316px;
-    overflow: hidden;
+}
+
+@media(min-width:965px) {
+    .card__grid .wc-tabs-wrapper {
+        max-height: 316px;
+        overflow: hidden;
+    }
 }
 
 /* card banners */
