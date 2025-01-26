@@ -462,6 +462,12 @@
 }
 
 @media (max-width: 767px) {
+    .card_banner .backorder-info {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
     .card__price-wrap .backorder-info {
         position: absolute;
         left: 0;
