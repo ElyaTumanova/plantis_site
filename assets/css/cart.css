@@ -627,7 +627,7 @@
     margin-bottom: 20px;
 }
 .side-cart .woocommerce-mini-cart {
-    max-height: calc(100vh - 230px);
+    max-height: calc(var(--vh) - 230px);
     overflow-y: auto;
     overflow-x: hidden;
 }
