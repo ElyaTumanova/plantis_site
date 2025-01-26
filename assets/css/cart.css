@@ -56,19 +56,9 @@
         margin-top: 15px;
     }
 
-    .cart_totals .order-total {
-        /* font-size: 18px; */
-        /* max-width: 55%; */
-    }
-
     .cart_totals .order-total div {
         width: fit-content;
     }
-
-    /* .cart_totals .order-total strong {
-        display: block;
-        width: fit-content;
-    } */
 
     .cart_totals .checkout-button {
         min-width: fit-content;
