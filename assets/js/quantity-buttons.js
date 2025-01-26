@@ -54,9 +54,11 @@ jQuery(function ($){
 	if (stock >0) {
 		if (newVal == (stock + 1)) {
 			backorderInfo.addClass('backorder-info_active');
+			backorderInfo.addClass('backorder-info_active');
 		} 
 		if (newVal <= (stock)) {
-			backorderInfo.removeClass('backorder-info_active');
+			backorderInfoMob.removeClass('backorder-info_active');
+			backorderInfoMob.removeClass('backorder-info_active');
 		}
 	} 
 

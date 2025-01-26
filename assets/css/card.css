@@ -439,7 +439,7 @@
     /* margin: 0 14px; */
 }
 
-.card_banner .backorder-info {
+.backorder-info {
     display: block;
     transition: bottom 2s, opacity 0s 1.8s;
     font-size: 14px;
@@ -455,7 +455,7 @@
     opacity: 0%;
 }
 
-.card_banner .backorder-info_active {
+.backorder-info_active {
     bottom: 0;
     opacity: 100%;
     transition: bottom 2s, opacity 0s;
