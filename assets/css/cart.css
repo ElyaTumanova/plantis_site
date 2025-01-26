@@ -106,119 +106,9 @@
         display: none;
     }
 
-    th.product-quantity, th.product-price, th.product-subtotal {
+    /* th.product-quantity, th.product-price, th.product-subtotal {
         text-align: center;
-    }
-
-    td.product-price, td.product-subtotal {
-        text-align: center;
-    }
-    
-    td.plnt_product-remove {
-        font-size: 30px;
-        font-weight: 700;
-        text-align: left;
-    }
-
-    td.plnt_product-remove a:hover, td.plnt_product-remove a:active, td.plnt_product-remove a:focus  {
-        text-decoration: none;
-        color: var(--accent-color);
-    }
-
-    td.product-name, td.product-price, td.product-subtotal {
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 1.4;
-    }
-
-    td.product-quantity {
-
-      .quantity {
-            width: fit-content;
-            border-radius: 5px;
-            display: flex;
-            margin: auto;
-            /* box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.15); */
-        }
-        
-        .quantity div {
-            border: none;
-            background-color: var(--background);
-            line-height: 1;
-            border-radius: 5px;
-            font-size: 30px;
-            font-weight: 600;
-            margin: 10px;
-        }
-
-        .quantity div:hover {
-            cursor: pointer;
-        }
-        
-        .quantity input {
-            border: none;
-            font-size: 20px;
-            font-weight: 700;
-            line-height: 1;
-            text-align: center;
-            background-color: var(--background);
-            max-width: 100px;
-            padding: 0 10px;
-        }
-    }
-
-    td.product-price, th.product-price {
-        display: none;
-    }
-
-    td.plnt_product-remove {
-        grid-area: remove;
-        font-size: 18px;
-    }
-    td.product-thumbnail {
-        grid-area: img;
-        align-self: center;
-    }
-    td.product-name {
-        grid-area: name;
-        font-size: 14px;
-        text-align: left;
-        align-self: flex-start;
-    }
-
-    td.product-subtotal {
-        grid-area: price;
-        font-size: 20px;
-        text-align: left;
-        align-self: center;
-        padding: 0;
-    }
-
-    td.product-quantity {
-        grid-area: qty;
-        margin-left: auto;
-        margin-right: 0;
-        padding: 0;
-        align-self: center;
-        
-        .quantity {
-            border: 1px solid var(--gray);
-            margin: 0;
-            padding: 10px;
-        }
-            
-        .quantity div {
-            font-size: 25px;
-            padding: 0 10px;
-            text-align: center;
-            margin: 0;
-        }
-        
-        .quantity input {
-            font-size: 16px;
-            max-width: 50px;
-        }
-    }
+    } */
 
     tr.woocommerce-cart-form__cart-item {
         display: grid;
@@ -236,6 +126,93 @@
         margin-bottom: 20px;
     }
 
+    td.product-price, td.product-subtotal {
+        text-align: center;
+    }
+    
+    td.plnt_product-remove {
+        grid-area: remove;
+        align-self: center;
+        padding: 0;
+        justify-self: end;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: left;
+    }
+
+    td.plnt_product-remove a:hover, td.plnt_product-remove a:active, td.plnt_product-remove a:focus  {
+        text-decoration: none;
+        color: var(--accent-color);
+    }
+
+    td.product-name, td.product-price, td.product-subtotal {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+
+    td.product-quantity {
+
+        grid-area: qty;
+        margin-left: auto;
+        margin-right: 0;
+        padding: 0;
+        align-self: center;
+
+      .quantity {
+            width: fit-content;
+            border-radius: 5px;
+            display: flex;
+            border: 1px solid var(--gray);
+            margin: 0;
+            padding: 10px;
+        }
+        
+        .quantity div {
+            border: none;
+            background-color: var(--background);
+            line-height: 1;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 25px;
+            padding: 0 10px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .quantity div:hover {
+            cursor: pointer;
+        }
+        
+        .quantity input {
+            border: none;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            background-color: var(--background);
+            padding: 0 10px;
+            font-size: 16px;
+            max-width: 50px;
+        }
+    }
+
+    td.product-price, th.product-price {
+        display: none;
+    }
+
+  
+    td.product-thumbnail {
+        grid-area: img;
+        align-self: center;
+    }
+
+    td.product-name {
+        grid-area: name;
+        font-size: 16px;
+        text-align: left;
+        align-self: center;
+    }
+
     td.product-subtotal {
         grid-area: price;
         font-size: 20px;
@@ -245,49 +222,29 @@
         justify-self: end;
     }
 
-    td.plnt_product-remove {
-        grid-area: remove;
-        font-size: 18px;
-        align-self: center;
-        padding: 0;
-        justify-self: end;
-    }
-
-    td.product-name {
-        grid-area: name;
-        font-size: 16px;
-        text-align: left;
-        align-self: center;
-        /* padding-top: 15px; */
-    }
 }
 
 @media  (max-width: 767px) {
     .woocommerce-cart-form .shop_table {
         tr.woocommerce-cart-form__cart-item {
             display: grid;
-            /* grid-template-columns:80px auto 20px; */
             grid-template-columns:80px auto 150px 20px;
             grid-template-rows: repeat(2, auto);
             grid-template-areas:
             "img name price price "
             "img name qty remove ";
-            /* "img name name "
-            "img price price "
-            "img qty remove"; */
+
             column-gap: 7px;
             margin-top: 5px;
             row-gap: 10px;
             padding: 10px 10px 10px 0;
         }
         td.product-subtotal {
-            /* justify-self: flex-start; */
             justify-self: center;
             font-size: 24px;
         }
         td.product-quantity {
             justify-self: flex-start;
-            /* justify-self: center; */
             margin-left: 0;
 
             .quantity {
