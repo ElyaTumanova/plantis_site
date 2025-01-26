@@ -155,7 +155,8 @@
 .card__grid_treez #card_banner_treez {
     display: flex;
     grid-area: banner1;
-    grid-column: span 2;
+    /* grid-column: span 2; */
+    grid-row: sapn 2;
 }
 
 #card_banner_treez p:first-child {
