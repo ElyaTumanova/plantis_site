@@ -55,7 +55,8 @@
     z-index: 1000;
     max-width: 100vw;
     width: 100%;
-    height: calc(var(--vh) - var(--headerHeight));
+    /* height: calc(var(--vh) - var(--headerHeight)); */
+    height: 100vh;
     top: calc(var(--headerHeight));
     left: 0px;
     box-shadow: rgba(20, 20, 20, 0.03) 0px 6px 8px 0px;
