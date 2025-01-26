@@ -88,6 +88,7 @@
     align-self: stretch;
 }
 
+/* чтобы не скакало при загрузке страницы */
 @media(min-width:965px) {
     .card__grid .wc-tabs-wrapper {
         max-height: 316px;
