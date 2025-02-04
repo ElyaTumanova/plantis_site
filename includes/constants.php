@@ -131,8 +131,8 @@ if($site === 'http://new.plantis.shop') {
 	
 	$delivery_inMKAD = 'flat_rate:2';
 	$delivery_outMKAD = 'flat_rate:3';
-	$delivery_inMKAD_small = 'flat_rate:23';//TO BE UPDATED
-	$delivery_outMKAD_small = 'flat_rate:24';//TO BE UPDATED
+	$delivery_inMKAD_small = 'flat_rate:23';
+	$delivery_outMKAD_small = 'flat_rate:24';
 	$delivery_inMKAD_large = 'flat_rate:17'; 
 	$delivery_outMKAD_large = 'flat_rate:18'; 
 	$delivery_inMKAD_medium = 'flat_rate:9';  
@@ -141,8 +141,8 @@ if($site === 'http://new.plantis.shop') {
 
 	$urgent_delivery_inMKAD = 'flat_rate:5'; 
 	$urgent_delivery_outMKAD = 'flat_rate:6'; 
-	$urgent_delivery_inMKAD_small = 'flat_rate:25'; //TO BE UPDATED
-	$urgent_delivery_outMKAD_small = 'flat_rate:26'; //TO BE UPDATED
+	$urgent_delivery_inMKAD_small = 'flat_rate:25'; 
+	$urgent_delivery_outMKAD_small = 'flat_rate:26'; 
 	$urgent_delivery_inMKAD_large = 'flat_rate:19'; 
 	$urgent_delivery_outMKAD_large = 'flat_rate:20';
 	$urgent_delivery_inMKAD_medium = 'flat_rate:11'; 

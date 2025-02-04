@@ -102,11 +102,4 @@
         checkoutForm.addEventListener('change', plnt_hide_checkout_fields);
     }
 
-
-    let shippingMethod = document.querySelector('[value="flat_rate:36"]').parentElement;
-    shippingMethod.classList.add('d-none');
-    console.log(shippingMethod);
-
-    console.log(deliveryInMKADSmallUrg);
-
     
