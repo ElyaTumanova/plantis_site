@@ -398,7 +398,7 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
         $default = $local_pickup;
     }
 
-    if ( is_checkout()) {
+    if ( is_checkout() && !plnt_is_backorder() ) {
         if( $chosen_method === $delivery_inMKAD) {
             $default = $urgent_delivery_inMKAD;
         }
