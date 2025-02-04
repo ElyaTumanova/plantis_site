@@ -409,59 +409,59 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
             $default = $delivery_inMKAD;
         }
     
-        if( $chosen_method === $delivery_outMKAD) {
+        if( $chosen_method === $delivery_outMKAD && $isUrgent === '1') {
             $default = $urgent_delivery_outMKAD;
         }
     
-        if( $chosen_method === $urgent_delivery_outMKAD) {
+        if( $chosen_method === $urgent_delivery_outMKAD && $isUrgent === '0') {
             $default = $delivery_outMKAD;
         }
     
-        if( $chosen_method === $delivery_inMKAD_small) {
+        if( $chosen_method === $delivery_inMKAD_small && $isUrgent === '1') {
             $default = $urgent_delivery_inMKAD_small;
         }
     
-        if( $chosen_method === $urgent_delivery_inMKAD_small) {
+        if( $chosen_method === $urgent_delivery_inMKAD_small && $isUrgent === '0') {
             $default = $delivery_inMKAD_small;
         }
     
-        if( $chosen_method === $delivery_outMKAD_small) {
+        if( $chosen_method === $delivery_outMKAD_small && $isUrgent === '1') {
             $default = $urgent_delivery_outMKAD_small;
         }
     
-        if( $chosen_method === $urgent_delivery_outMKAD_small) {
+        if( $chosen_method === $urgent_delivery_outMKAD_small && $isUrgent === '0') {
             $default = $delivery_outMKAD_small;
         }
     
-        if( $chosen_method === $delivery_inMKAD_large) {
+        if( $chosen_method === $delivery_inMKAD_large && $isUrgent === '1') {
             $default = $urgent_delivery_inMKAD_large;
         }
     
-        if( $chosen_method === $urgent_delivery_inMKAD_large) {
+        if( $chosen_method === $urgent_delivery_inMKAD_large && $isUrgent === '0') {
             $default = $delivery_inMKAD_large;
         }
     
-        if( $chosen_method === $delivery_outMKAD_large) {
+        if( $chosen_method === $delivery_outMKAD_large && $isUrgent === '1') {
             $default = $urgent_delivery_outMKAD_large;
         }
     
-        if( $chosen_method === $urgent_delivery_outMKAD_large) {
+        if( $chosen_method === $urgent_delivery_outMKAD_large && $isUrgent === '0') {
             $default = $delivery_outMKAD_large;
         }
 
-        if( $chosen_method === $delivery_inMKAD_medium) {
+        if( $chosen_method === $delivery_inMKAD_medium && $isUrgent === '1') {
             $default = $urgent_delivery_inMKAD_medium;
         }
     
-        if( $chosen_method === $urgent_delivery_inMKAD_medium) {
+        if( $chosen_method === $urgent_delivery_inMKAD_medium && $isUrgent === '0') {
             $default = $delivery_inMKAD_medium;
         }
     
-        if( $chosen_method === $delivery_outMKAD_medium) {
+        if( $chosen_method === $delivery_outMKAD_medium && $isUrgent === '1') {
             $default = $urgent_delivery_outMKAD_medium;
         }
     
-        if( $chosen_method === $urgent_delivery_outMKAD_medium) {
+        if( $chosen_method === $urgent_delivery_outMKAD_medium && $isUrgent === '0') {
             $default = $delivery_outMKAD_medium;
         } 
     }
