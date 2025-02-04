@@ -283,7 +283,6 @@ Contents
                 array_push($days, $day);
             }
         }
-        echo 'lalala';
         echo "<div class='delivery_wrap'>";
         // выводим поле функцией woocommerce_form_field()
         woocommerce_form_field( 
