@@ -241,10 +241,28 @@
 }
 
 /*прячем срочную доставку для предзаказа*/
-.woocommerce-shipping-backorder li:has([value="flat_rate:36"]) {
+.woocommerce-shipping-backorder li:has([value="flat_rate:5"]) {
     display: none;
 }
-.woocommerce-shipping-backorder li:has([value="flat_rate:37"]) {
+.woocommerce-shipping-backorder li:has([value="flat_rate:6"]) {
+    display: none;
+}
+.woocommerce-shipping-backorder li:has([value="flat_rate:25"]) {
+    display: none;
+}
+.woocommerce-shipping-backorder li:has([value="flat_rate:26"]) {
+    display: none;
+}
+.woocommerce-shipping-backorder li:has([value="flat_rate:19"]) {
+    display: none;
+}
+.woocommerce-shipping-backorder li:has([value="flat_rate:20"]) {
+    display: none;
+}
+.woocommerce-shipping-backorder li:has([value="flat_rate:11"]) {
+    display: none;
+}
+.woocommerce-shipping-backorder li:has([value="flat_rate:12"]) {
     display: none;
 }
 
