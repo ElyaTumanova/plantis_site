@@ -103,7 +103,7 @@
     }
 
 
-    let shippingMethod = document.querySelector('[value="flat_rate:36"]');
+    let shippingMethod = document.querySelector('[value="flat_rate:36"]').parentElement;
     console.log(shippingMethod);
 
     console.log(deliveryInMKADSmallUrg);
