@@ -24,17 +24,17 @@ function plnt_set_initials() {
 
 //for dev
 
-//add_action('woocommerce_review_order_before_shipping','plnt_check');
+add_action('woocommerce_review_order_before_shipping','plnt_check');
 //add_action('wp_head','plnt_check');
 
 function plnt_check() {
   
     global $local_pickup;
     // echo '<br>';
-    //$packages = WC()->shipping()->get_packages();
+    $packages = WC()->shipping()->get_packages();
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
-    //print_r( $packages);
-    //echo '<br>';
+    print_r( $packages);
+    echo '<br>';
     echo $chosen_methods[0];
     echo '<br>';
 
