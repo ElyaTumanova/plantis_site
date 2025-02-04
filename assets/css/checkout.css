@@ -240,7 +240,7 @@
     display: inline;
 }
 
-.woocommerce-shipping-backorder li input [value="flat_rate:36"] {
+.woocommerce-shipping-backorder li [value="flat_rate:36"] {
     display: none;
 }
 
