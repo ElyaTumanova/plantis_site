@@ -31,10 +31,10 @@ function plnt_check() {
   
     global $local_pickup;
     // echo '<br>';
-    $packages = WC()->shipping()->get_packages();
+    // $packages = WC()->shipping()->get_packages();
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
-    print_r( $packages);
-    echo '<br>';
+    // print_r( $packages);
+    // echo '<br>';
     echo $chosen_methods[0];
     echo '<br>';
 
