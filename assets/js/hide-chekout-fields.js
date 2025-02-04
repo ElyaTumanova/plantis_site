@@ -103,4 +103,8 @@
     }
 
 
+    let shippingMethod = document.querySelector('[value="flat_rate:36"]')
+
+    console.log(deliveryInMKADSmallUrg);
+
     
