@@ -1,5 +1,5 @@
 let isUrgent;
-let isLate = 0;
+let isLate;
 let isHideInterval;
 let isHoliday;
 let holidays = []; //format dd.mm
@@ -161,6 +161,8 @@ function setInitalState() {
   } else {
     isHideInterval = true;
   }
+
+  isLate = 0;
 }
 
 function setDatesIntervals() {
