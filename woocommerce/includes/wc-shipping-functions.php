@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 //СПОСОБЫ ДОСТАВКИ
 
 //задаем по умолчанию срочную доставку
-//add_action('wp_head','plnt_set_initials');
+add_action('wp_head','plnt_set_initials');
 
 function plnt_set_initials() {
     date_default_timezone_set('Europe/Moscow');
@@ -48,7 +48,7 @@ function plnt_check() {
     // echo 'hiAjax '.(WC()->session->get('hiAjax' )).'  ';
     // echo 'hiInit '.(WC()->session->get('hiInit' )).'  ';
     // echo 'isback2 '.(WC()->session->get('isBackorder' )).'  ';
-    echo 'isLate '.(WC()->session->get('isLate' )).'  ';
+    //echo 'isLate '.(WC()->session->get('isLate' )).'  ';
     echo '<br>';
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");

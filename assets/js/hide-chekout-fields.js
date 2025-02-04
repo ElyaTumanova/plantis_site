@@ -102,5 +102,4 @@
         checkoutForm.addEventListener('change', plnt_hide_checkout_fields);
     }
 
-
     
