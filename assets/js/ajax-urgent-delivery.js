@@ -91,8 +91,6 @@ function ajaxGetUrgent(date) {
       isUrgent = '0';
     }
   }
-  
-  
   // console.log(isUrgent);
 
   jQuery( function($){
