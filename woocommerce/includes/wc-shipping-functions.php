@@ -392,6 +392,8 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
     global $urgent_delivery_inMKAD_medium;
 	global $urgent_delivery_outMKAD_medium;
 
+    $isUrgent = WC()->session->get('isUrgent' );
+
     if($chosen_method && in_array($chosen_method, $rates)) {
         $default = $chosen_method;
     } else {
@@ -399,11 +401,11 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
     }
 
     if ( is_checkout() ) {
-        if( $chosen_method === $delivery_inMKAD) {
+        if( $chosen_method === $delivery_inMKAD && $isUrgent === '1') {
             $default = $urgent_delivery_inMKAD;
         }
     
-        if( $chosen_method === $urgent_delivery_inMKAD) {
+        if( $chosen_method === $urgent_delivery_inMKAD && $isUrgent === '0') {
             $default = $delivery_inMKAD;
         }
     
