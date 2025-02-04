@@ -240,6 +240,10 @@
     display: inline;
 }
 
+.woocommerce-shipping-backorder li input [value="flat_rate:36"] {
+    display: none;
+}
+
 .large_delivery_notice {
     /* background-color: var(--notice-red); */
     /* width: fit-content; */
