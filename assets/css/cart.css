@@ -347,7 +347,7 @@
     grid-template-areas: 
     "image name remove"
     "image price x"
-    "image status x"
+    "image status status"
     "peresadka peresadka peresadka";
     column-gap: 10px;
     margin-bottom: 10px;

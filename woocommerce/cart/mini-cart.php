@@ -80,7 +80,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 						$qty = $cart_item[ 'quantity' ];
 						$stock_qty = $_product->get_stock_quantity();
 						if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
-							?><sup class="backorder_date-info">Доставка после <?php echo plnt_set_backorders_date();?></sup>
+							?><div class="backorder_date-info">Доставка после <?php echo plnt_set_backorders_date();?></div>
 							<?php
 						}	
 					?>	
