@@ -354,7 +354,7 @@
 }
 .woocommerce-mini-cart-item .backorder_date-info {
     grid-area: status;
-    font-size: 14px;
+    font-size: 12px;
     width: fit-content;
 }
 
