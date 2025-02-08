@@ -347,9 +347,13 @@
     grid-template-areas: 
     "image name remove"
     "image price x"
+    "image status x"
     "peresadka peresadka peresadka";
     column-gap: 10px;
     margin-bottom: 10px;
+}
+.woocommerce-mini-cart-item .backorder_date-info {
+    grid-area: status;
 }
 
 .woocommerce-mini-cart-item .remove {
