@@ -107,6 +107,9 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 								<?php echo wp_kses_post( $product->get_image() ); ?>
 							</a>
 						</div>
+						<?php
+							plnt_check_stock_status();
+						?>
 
 						<div class="item-details">
 							<div class="product-name">

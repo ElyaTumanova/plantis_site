@@ -5,6 +5,11 @@
 /*--------------------------------------------------------------
 # Desktop
 --------------------------------------------------------------*/
+
+.wishlist_table {
+    margin-top: 30px;
+}
+
 .wishlist-items-wrapper {
     display: flex;
     align-items: stretch;
