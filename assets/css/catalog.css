@@ -579,11 +579,15 @@ ul.products {
 
 .product-slider-wrap .card__stockstatus, .card__sliders-wrap .card__stockstatus {
     display: none;
-  }
+}
 
-  .main__sale-gallery .card__stockstatus {
+.main__sale-gallery .card__stockstatus {
     display: none;
-  }
+}
+
+.popular-products-wrap .card__stockstatus {
+    display: block;
+}
 
 
 /* фото товара */
