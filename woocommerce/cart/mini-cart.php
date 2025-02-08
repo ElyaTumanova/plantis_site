@@ -76,7 +76,14 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 					<?php endif; ?>
 					<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					<?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $cart_item['quantity'], $product_price ) . '</span>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-						
+					<?php 
+						$qty = $cart_item[ 'quantity' ];
+						$stock_qty = $_product->get_stock_quantity();
+						if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
+							?><sup class="backorder_date-info">Доставка после <?php echo plnt_set_backorders_date();?></sup>
+							<?php
+						}	
+					?>	
 					<!-- peresadka_init -->
 					<!-- <div class="cart__peresadka">
 						<?php 
