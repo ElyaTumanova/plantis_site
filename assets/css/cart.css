@@ -356,6 +356,8 @@
     grid-area: status;
     font-size: 12px;
     width: fit-content;
+    padding-top: 4px;
+    padding-bottom: 1px;
 }
 
 .woocommerce-mini-cart-item .remove {
