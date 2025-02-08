@@ -294,9 +294,11 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 						?>
 					</td>
 
+					<td class="stock-status">
 					<?php
 						plnt_check_stock_status();
 					?>
+					</td>
 
 					<td class="product-name">
 						<?php
