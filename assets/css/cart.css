@@ -356,8 +356,9 @@
     grid-area: status;
     font-size: 12px;
     width: fit-content;
+    height: fit-content;
     padding-top: 4px;
-    padding-bottom: 1px;
+    padding-bottom: 4px;
     padding-left: 5px;
     padding-right: 5px;
 }
