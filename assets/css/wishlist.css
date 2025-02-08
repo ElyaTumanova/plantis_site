@@ -123,6 +123,7 @@ table.wishlist_table tbody td.product-add-to-cart {
 .wishlist_table.mobile li .item-wrapper {
     max-width: 100% !important;
     width: 100% !important;
+    position: relative;
 }
 
 .wishlist_table.mobile li .item-wrapper .product-remove{
