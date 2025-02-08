@@ -358,6 +358,8 @@
     width: fit-content;
     padding-top: 4px;
     padding-bottom: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .woocommerce-mini-cart-item .remove {
