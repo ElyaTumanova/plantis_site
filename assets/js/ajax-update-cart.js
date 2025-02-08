@@ -21,7 +21,9 @@
         $('.side-cart__count').html(response);
         if (response >0) {
           $('.header__main .header-cart .header-btn__wrap').addClass("header-btn__wrap_active");
+          $('.header__main .header-cart .header__count').addClass("header__count_active");
           $('.header__nav-wrap .header-cart .header-btn__wrap').addClass("header-btn__wrap_active");
+          $('.header__nav-wrap .header-cart .header__count').addClass("header__count_active");
         }
       }
     );
