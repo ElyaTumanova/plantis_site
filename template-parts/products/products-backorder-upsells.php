@@ -37,10 +37,34 @@ if( !empty ($upsells_ids) ){
         );
 
         $products = new WP_Query( $args );
-        if ( $products->have_posts() ) : $products->the_post(); 
-            woocommerce_template_loop_add_to_cart();
-            woocommerce_quantity_input();
-        endif;
+        $products = new WP_Query( $args );
+        if ( $products->have_posts() ) : ?>
+
+            <div class="card__sliders-wrap up-sells upsells">
+
+                <?php
+                $heading = apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) );
+
+                if ( $heading ) :
+                    ?>
+                    <h2 class="heading-2"><?php echo esc_html( $heading ); ?></h2>
+                <?php endif; ?>    
+                    
+                <div class="cross-upsells-swiper swiper">
+                    <ul class="products columns-3 swiper-wrapper"> 
+                        <?php while ( $products->have_posts() ) : $products->the_post(); ?>
+
+                        <?php wc_get_template_part( 'content', 'product' ); ?>
+
+                        <?php endwhile; // end of the loop. ?>
+                    </ul>
+                    <div class="swiper-pagination"></div>
+	                <div class="swiper-button-prev"></div>
+	                <div class="swiper-button-next"></div>
+                </div>
+            </div>
+
+        <?php endif;
     }
     wp_reset_query();
     wp_reset_postdata();
