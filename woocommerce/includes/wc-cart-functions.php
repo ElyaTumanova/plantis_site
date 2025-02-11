@@ -200,7 +200,10 @@ function truemisha_single_product_btn_text( $text ) {
 add_action('plnt_cart_item','plnt_backorder_upsale', 10);
 
 function plnt_backorder_upsale() {
+	echo '<div>';
 	echo 'hi';
+	get_template_part('template-parts/plnt-upsells');
+	echo '</div>';
 }
 
 
