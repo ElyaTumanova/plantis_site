@@ -5,9 +5,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 //global $product;
 $product_id = $args[ 'product_id' ];
-echo $product_id;
+//echo $product_id;
 $product = wc_get_product( $product_id );
-echo $product;
+//echo $product;
 
 //$crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
 //$crosssell_ids = get_post_meta( $product_id, '_crosssell_ids' );
