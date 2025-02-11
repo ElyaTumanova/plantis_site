@@ -178,7 +178,14 @@ do_action( 'woocommerce_before_cart' ); ?>
 								echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 							?>
 						</td>
-						<?php do_action( 'plnt_cart_item' ); ?>
+						<td>
+						<?php 
+							get_template_part('template-parts/products/products-backorder-upsells',null,
+								array( // массив с параметрами
+									'product_id' => $product_id
+							)); 
+						?>
+						</td>
 					</tr>
 					<?php
 				}
