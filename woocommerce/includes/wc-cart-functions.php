@@ -197,7 +197,7 @@ function truemisha_single_product_btn_text( $text ) {
 
 // аналоги для товаров в статусе backorder в корзине
 
-add_action('plnt_cart_item','plnt_backorder_upsale', 10)
+add_action('plnt_cart_item','plnt_backorder_upsale', 10);
 
 function plnt_backorder_upsale() {
 	echo 'hi';
