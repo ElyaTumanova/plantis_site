@@ -49,7 +49,7 @@ if( !empty ($crosssell_ids) ){
             array_push($post_IDS, $post_ID);
             endwhile;
 
-            echo $post_IDS;
+            print_r($post_IDS);
             // $i = 1;
             // while($i <= 4) {
             //     echo $products->the_post();
