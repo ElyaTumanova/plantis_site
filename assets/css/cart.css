@@ -334,6 +334,15 @@
 
 .backorder-crossells__sliders-wrap {
     max-width: 800px;
+    height: 0;
+    opacity: 0;
+    transition: all 0.9s;
+}
+
+.product-backorder-upsells_active .backorder-crossells__sliders-wrap {
+    height: 100%;
+    opacity: 100%;
+
 }
 
 /*--------------------------------------------------------------
