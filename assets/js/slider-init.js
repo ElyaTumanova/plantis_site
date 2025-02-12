@@ -490,14 +490,9 @@ const swiper_backorder_crossells = new Swiper('.backorder-crossells-swiper', {
         320: {
             slidesPerView: 2,
             spaceBetween: 10,
-            navigation: {
-                enabled: false,
-            },
         },
         768: {
-            navigation: {
-                enabled: true,
-            },
+            slidesPerView: 3,
         }
     }
 });
