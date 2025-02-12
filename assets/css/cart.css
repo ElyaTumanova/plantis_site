@@ -303,7 +303,7 @@
     display: flex;
     column-gap: 7px;
     opacity: 100%;
-    transition: all 0.9s;
+    transition: all 0.6s;
 }
 
 .backorder-crossells__preview-img {
@@ -316,6 +316,8 @@
     color: var(--gray-text);
     margin-right: 20px;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .backorder-crossells__preview-arrow {
@@ -339,6 +341,10 @@
     height: 0px;
     opacity: 0;
     transition: opacity 0.9s, height 0.8s 0.1s;
+}
+
+.backorder-crossells__sliders-wrap .swiper-wrapper {
+    margin-bottom: 15px;
 }
 
 .product-backorder-upsells_active .backorder-crossells__sliders-wrap {
