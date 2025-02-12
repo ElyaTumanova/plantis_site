@@ -357,10 +357,6 @@
     .woocommerce-product-details__short-description {
         display: none;
     }
-    .add_to_cart_button, .product_type_simple {
-        background-color: var(--background);
-        columns: var(--accent-color);
-    }
     .woocommerce-loop-product__title {
         font-size: 16px;
     }

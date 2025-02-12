@@ -60,7 +60,7 @@ if( !empty ($crosssell_ids) ){
                 <div class="backorder-crossells__preview-down"><span>Развернуть</span><span class="backorder-crossells__preview-arrow">next</span></div>
             </div>
      
-          <div class="backorder-crossells__sliders-wrap">
+          <div class="backorder-crossells__sliders-wrap product-slider-wrap">
                   <div class="backorder-crossells-swiper swiper">
                     <ul class="products columns-3 swiper-wrapper"> 
                         <?php while ( $products->have_posts() ) : $products->the_post(); ?>
