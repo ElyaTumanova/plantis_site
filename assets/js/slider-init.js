@@ -484,8 +484,8 @@ const swiper_backorder_crossells = new Swiper('.backorder-crossells-swiper', {
     slidesPerView: 4,
     slidesPerGroup: 1,
     spaceBetween: 15,
-    loop: true,
-    freeMode: true,
+    loop: false,
+    freeMode: false,
     breakpoints: {
         320: {
             slidesPerView: 2,
