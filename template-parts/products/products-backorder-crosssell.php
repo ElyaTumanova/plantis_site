@@ -63,7 +63,6 @@ if( !empty ($crosssell_ids) ){
           <div class="backorder-crossells__sliders-wrap">
                   <div class="backorder-crossells-swiper swiper">
                     <ul class="products columns-3 swiper-wrapper"> 
-                    <ul class="products columns-3"> 
                         <?php while ( $products->have_posts() ) : $products->the_post(); ?>
 
                         <?php wc_get_template_part( 'content', 'product' ); ?>
