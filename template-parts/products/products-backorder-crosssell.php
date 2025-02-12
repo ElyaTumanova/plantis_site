@@ -37,7 +37,8 @@ if( !empty ($crosssell_ids) ){
         );
 
         $products = new WP_Query( $args );
-        print_r( $products );
+        //print_r( $products );
+        echo $products[0];
         if ( $products->have_posts() ) : ?>
 
         <?php
