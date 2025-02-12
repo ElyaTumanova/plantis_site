@@ -287,6 +287,7 @@
 .cart__peresadka .quantity {
     display: none;
 }
+
 .cart__peresadka {
     display: flex;
     align-items: center;
