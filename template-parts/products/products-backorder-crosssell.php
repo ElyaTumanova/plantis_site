@@ -49,7 +49,7 @@ if( !empty ($crosssell_ids) ){
             while($i <= 4) {
                 echo $post_ID;
                 //$my_product = wc_get_product($post_IDS[$i] );
-                print_r($product);
+                //print_r($product);
                 $i++;
             }
             //array_push($post_IDS, $post_ID);
