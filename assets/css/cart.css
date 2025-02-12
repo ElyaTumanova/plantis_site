@@ -284,7 +284,7 @@
 
 /* peresadka */
 
-.woocommerce-cart-form .cart__peresadka .quantity {
+.cart__peresadka .quantity {
     display: none;
 }
 .cart__peresadka {
