@@ -6,6 +6,5 @@ backorderWrap.forEach((el) =>{
 });
 
 function toggleBackorderDropdown(evt, el) {
-    console.log(el);
     el.classList.toggle('product-backorder-upsells_active');
 }

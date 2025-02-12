@@ -343,8 +343,27 @@
     transition: opacity 0.9s, height 0.8s 0.1s;
 }
 
-.backorder-crossells__sliders-wrap .swiper-wrapper {
-    margin-bottom: 15px;
+.backorder-crossells__sliders-wrap {
+    .swiper-wrapper {
+        margin-bottom: 15px;
+    }
+
+    .card__stockstatus {
+        display: none;
+    }
+    .yith-wcwl-add-to-wishlist {
+        display: none;
+    }
+    .woocommerce-product-details__short-description {
+        display: none;
+    }
+    .add_to_cart_button, .product_type_simple {
+        background-color: var(--background);
+        columns: var(--accent-color);
+    }
+    .woocommerce-loop-product__title {
+        font-size: 16px;
+    }
 }
 
 .product-backorder-upsells_active .backorder-crossells__sliders-wrap {
