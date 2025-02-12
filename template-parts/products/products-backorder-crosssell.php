@@ -40,8 +40,7 @@ if( !empty ($crosssell_ids) ){
         $products = new WP_Query( $args );
         if ( $products->have_posts() ) : ?>
 
-            <div class="card__sliders-wrap up-sells upsells">
-                    
+            <div class="backorder-crossells__sliders-wrap">
                 <div class="backorder-crossells-swiper swiper">
                     <ul class="products columns-3 swiper-wrapper"> 
                         <?php while ( $products->have_posts() ) : $products->the_post(); ?>
