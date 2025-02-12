@@ -44,7 +44,7 @@ if( !empty ($crosssell_ids) ){
             $i = 1;
             ?>
             <div class="backorder-crossells__preview-wrap">
-                <div class="backorder-crossells__preview-title">Похожие в наличии</div>
+                <div class="backorder-crossells__preview-title">Похожие растения в наличии</div>
                 <!-- <div class="backorder-crossells__preview"> -->
                     <?php
                         // while ( $products->have_posts() ) : $products->the_post();
