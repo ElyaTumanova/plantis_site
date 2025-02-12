@@ -292,8 +292,14 @@
     align-items: center;
     color: var(--gray-text);
 }
+.woocommerce-cart-form .cart__peresadka svg path{
+    stroke: var(--gray-text);
+}
 .woocommerce-cart-form .cart__peresadka:hover{
     color: var(--text);
+}
+.woocommerce-cart-form .cart__peresadka:hover svg path{
+    stroke: var(--text);
 }
 
 .woocommerce-cart-form .cart__peresadka .add_to_cart_button, .woocommerce-cart-form .cart__peresadka .product_type_simple {
