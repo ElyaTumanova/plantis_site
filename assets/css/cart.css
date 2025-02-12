@@ -119,6 +119,19 @@
 
     td.product-backorder-upsells {
         grid-area: upsells;
+        max-width: calc(100% - 350px);
+    }
+    
+    @media (max-width:1024px) {
+        td.product-backorder-upsells {
+            max-width: calc(100% - 250px);
+        }
+    }
+    
+    @media (max-width: 767px) {
+        td.product-backorder-upsells {
+            max-width: 100%;
+        }
     }
 
     td.product-price, td.product-subtotal {
