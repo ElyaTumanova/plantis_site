@@ -53,6 +53,8 @@ if( !empty ($crosssell_ids) ){
             $i = 1;
             while($i <= 4) {
                 echo $post_IDS[$i];
+                $my_product = wc_get_product($post_IDS[$i] );
+                print_r($my_product);
                 $i++;
             }
         ?>
