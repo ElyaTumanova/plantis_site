@@ -42,25 +42,24 @@ if( !empty ($crosssell_ids) ){
 
         <?php
             $i = 1;
-            while ( $products->have_posts() ) : $products->the_post();
             ?>
-                <div class="backorder-crossells__preview-wrap">
+            <div class="backorder-crossells__preview-wrap">
                 <div class="backorder-crossells__preview-title">Вам может подойти</div>
-                <div class="backorder-crossells__preview"><?php
-                    if($i <= 4) {
-                        ?>
-                        <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );?>" class="backorder-crossells__preview-img" alt="<?php echo get_the_title();?>">
-                        <?php
-                    }
+                <div class="backorder-crossells__preview">
+                    <?php
+                        while ( $products->have_posts() ) : $products->the_post();
+                            if($i <= 4) {
+                                ?>
+                                <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );?>" class="backorder-crossells__preview-img" alt="<?php echo get_the_title();?>">
+                                <?php
+                            }
+                            $i++;
+                        endwhile;
                     ?>
                 </div>
                 <div><span>Развернуть</span><span class="backorder-crossells__preview-arrow">next</span></div>
-                </div>
-            <?php
-            $i++;
-            endwhile;    
-        ?>
-
+            </div>
+     
             <div class="backorder-crossells__sliders-wrap">
                 <div class="backorder-crossells-swiper swiper">
                     <ul class="products columns-3 swiper-wrapper"> 
