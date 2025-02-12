@@ -45,18 +45,18 @@ if( !empty ($crosssell_ids) ){
             ?>
             <div class="backorder-crossells__preview-wrap">
                 <div class="backorder-crossells__preview-title">Похожие в наличии</div>
-                <div class="backorder-crossells__preview">
+                <!-- <div class="backorder-crossells__preview"> -->
                     <?php
-                        while ( $products->have_posts() ) : $products->the_post();
-                            if($i <= 4) {
+                        // while ( $products->have_posts() ) : $products->the_post();
+                        //     if($i <= 4) {
                                 ?>
-                                <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );?>" class="backorder-crossells__preview-img" alt="<?php echo get_the_title();?>">
+                                <!-- <img src="<?php //echo get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );?>" class="backorder-crossells__preview-img" alt="<?php //echo get_the_title();?>"> -->
                                 <?php
                             }
-                            $i++;
-                        endwhile;
+                        //     $i++;
+                        // endwhile;
                     ?>
-                </div>
+                <!-- </div> -->
                 <div class="backorder-crossells__preview-down"><span>Развернуть</span><span class="backorder-crossells__preview-arrow">next</span></div>
             </div>
      
