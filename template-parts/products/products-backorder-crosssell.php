@@ -37,14 +37,15 @@ if( !empty ($crosssell_ids) ){
         );
 
         $products = new WP_Query( $args );
+        echo $products;
         if ( $products->have_posts() ) : ?>
 
         <?php
-        $i = 1;
-        while($i <= 4) {
-            echo $products->the_post();
-            $i++;
-        }
+        // $i = 1;
+        // while($i <= 4) {
+        //     echo $products->the_post();
+        //     $i++;
+        // }
         ?>
 
             <div class="backorder-crossells__sliders-wrap">
