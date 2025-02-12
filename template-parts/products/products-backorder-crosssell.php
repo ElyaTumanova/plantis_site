@@ -61,8 +61,8 @@ if( !empty ($crosssell_ids) ){
             </div>
      
           <div class="backorder-crossells__sliders-wrap">
-                  <!-- <div class="backorder-crossells-swiper swiper"> -->
-                    <!-- <ul class="products columns-3 swiper-wrapper">  -->
+                  <div class="backorder-crossells-swiper swiper">
+                    <ul class="products columns-3 swiper-wrapper"> 
                     <ul class="products columns-3"> 
                         <?php while ( $products->have_posts() ) : $products->the_post(); ?>
 
@@ -70,11 +70,8 @@ if( !empty ($crosssell_ids) ){
 
                         <?php endwhile; // end of the loop. ?>
                     </ul>
-                    <!-- <div class="swiper-pagination"></div> -->
-                    <!-- <div class="swiper-scrollbar"></div> -->
-	                <!-- <div class="swiper-button-prev"></div>
-	                <div class="swiper-button-next"></div> -->
-                <!-- </div>-->
+                    <div class="swiper-scrollbar"></div>
+                </div>
             </div> 
 
         <?php endif;
