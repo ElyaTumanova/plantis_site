@@ -337,7 +337,7 @@
     height: 0;
     opacity: 0;
     transition: opacity 0.9s;
-    transition: height 0.8s 0.1s;
+    /* transition: height 0.8s 0.1s; */
 }
 
 .product-backorder-upsells_active .backorder-crossells__sliders-wrap {
