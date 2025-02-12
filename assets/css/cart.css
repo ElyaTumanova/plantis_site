@@ -333,7 +333,7 @@
 }
 
 .backorder-crossells__sliders-wrap {
-    max-width: calc(100% - 350px);
+    max-width: 800px;
 }
 
 /*--------------------------------------------------------------
