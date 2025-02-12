@@ -298,6 +298,8 @@
 .woocommerce-cart-form .cart__peresadka .add_to_cart_button:hover, .woocommerce-cart-form .cart__peresadka .product_type_simple:hover  {
     background: none;
     border: none;
+    box-shadow: none;
+    color: var(--text);
 }
 
 
