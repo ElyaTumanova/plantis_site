@@ -43,14 +43,14 @@ if( !empty ($crosssell_ids) ){
         <?php
             $i = 1;
             while ( $products->have_posts() ) : $products->the_post();
-            $post_ID = get_the_ID();
+            //$post_ID = get_the_ID();
             if($i <= 4) {
-                echo $post_ID;
-
+                //echo $post_ID;
+                ?>
+                <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );?>" class="backorder-crossells__preview" alt="<?php echo get_the_title();?>">
+                <?php
             }
-            $i++;?>
-            <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );?>" class="backorder-crossells__preview" alt="<?php echo get_the_title();?>">
-            <?php
+            $i++;
             endwhile;    
         ?>
 
