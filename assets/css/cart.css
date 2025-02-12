@@ -103,17 +103,22 @@
     tr.woocommerce-cart-form__cart-item {
         display: grid;
         grid-template-columns:160px auto 150px;
-        grid-template-rows: repeat(3, auto);
+        grid-template-rows: repeat(4, auto);
         grid-template-areas:
         "img name price"
         "img name qty"
-        "img name remove";
+        "img name remove"
+        "upsells upsells upsells";
         column-gap: 25px;
 
         border: solid 1px var(--gray);
         border-radius: 3px;
         padding: 20px;
         margin-bottom: 20px;
+    }
+
+    td.product-backorder-upsells {
+        grid-area: upsells;
     }
 
     td.product-price, td.product-subtotal {
