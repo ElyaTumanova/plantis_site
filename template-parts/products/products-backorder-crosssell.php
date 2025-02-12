@@ -50,11 +50,11 @@ if( !empty ($crosssell_ids) ){
             endwhile;
 
             print_r($post_IDS);
-            // $i = 1;
-            // while($i <= 4) {
-            //     echo $products->the_post();
-            //     $i++;
-            // }
+            $i = 1;
+            while($i <= 4) {
+                echo $post_IDS[$i];
+                $i++;
+            }
         ?>
 
             <div class="backorder-crossells__sliders-wrap">
