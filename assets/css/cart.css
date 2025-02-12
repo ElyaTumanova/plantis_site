@@ -296,7 +296,6 @@
     border-top: solid 1px var(--gray);
     padding-top: 10px;
     margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 .backorder-crossells__preview {
@@ -338,12 +337,11 @@
 
 .backorder-crossells__sliders-wrap {
     max-width: 800px;
+    margin-top: 25px;
     height: 0px;
     opacity: 0;
     transition: opacity 0.9s, height 0.8s 0.1s;
-}
 
-.backorder-crossells__sliders-wrap {
     .swiper-wrapper {
         margin-bottom: 15px;
     }
