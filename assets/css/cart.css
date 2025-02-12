@@ -336,7 +336,8 @@
     max-width: 800px;
     height: 0;
     opacity: 0;
-    transition: all 0.9s;
+    transition: height 0.9s;
+    transition: opacity 0.4s;
 }
 
 .product-backorder-upsells_active .backorder-crossells__sliders-wrap {
