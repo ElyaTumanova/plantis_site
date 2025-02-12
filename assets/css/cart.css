@@ -287,6 +287,11 @@
 .woocommerce-cart-form .cart__peresadka .quantity {
     display: none;
 }
+.woocommerce-cart-form .cart__peresadka {
+    display: flex;
+    align-items: center;
+}
+
 .woocommerce-cart-form .cart__peresadka .add_to_cart_button, .woocommerce-cart-form .cart__peresadka .product_type_simple {
     width: fit-content;
     color: var(--gray-text);
