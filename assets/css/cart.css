@@ -359,6 +359,7 @@
     }
     .woocommerce-loop-product__title {
         font-size: 16px;
+        margin-top: 0;
     }
 }
 
