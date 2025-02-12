@@ -302,7 +302,7 @@
 .backorder-crossells__preview {
     display: flex;
     column-gap: 7px;
-    opacity: 0;
+    opacity: 100%;
     transition: all 0.9s;
 }
 
