@@ -10,23 +10,23 @@ $product = wc_get_product( $product_id );
 //echo $product;
 
 //$crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
-//$crosssell_ids = get_post_meta( $product_id, '_crosssell_ids' );
-$upsells_ids = $product->get_upsell_ids();
+$crosssell_ids = get_post_meta( $product_id, '_crosssell_ids' );
+//$upsells_ids = $product->get_upsell_ids();
 
 
-if( !empty ($upsells_ids) ){
+if( !empty ($crosssell_ids) ){
 
-   // $crosssell_ids = $crosssell_ids[0];
+   $crosssell_ids = $crosssell_ids[0];
 
-    if(count($upsells_ids)>0){
+    if(count($crosssell_ids)>0){
 
         $args = array(
             'post_type' => 'product',
             'ignore_sticky_posts' => 1,
             'no_found_rows' => 1,
-            'posts_per_page' => 8,
+            'posts_per_page' => 6,
             'orderby' => 'rand',
-            'post__in' => $upsells_ids,
+            'post__in' => $crosssell_ids,
             'meta_query' => array( 
                 array(
                     'key'       => '_stock_status',
@@ -42,7 +42,7 @@ if( !empty ($upsells_ids) ){
 
             <div class="card__sliders-wrap up-sells upsells">
                     
-                <div class="cross-upsells-swiper swiper">
+                <!-- <div class="cross-upsells-swiper swiper"> -->
                     <ul class="products columns-3 swiper-wrapper"> 
                         <?php while ( $products->have_posts() ) : $products->the_post(); ?>
 
@@ -50,10 +50,10 @@ if( !empty ($upsells_ids) ){
 
                         <?php endwhile; // end of the loop. ?>
                     </ul>
-                    <div class="swiper-pagination"></div>
+                    <!-- <div class="swiper-pagination"></div>
 	                <div class="swiper-button-prev"></div>
-	                <div class="swiper-button-next"></div>
-                </div>
+	                <div class="swiper-button-next"></div> -->
+                <!-- </div> -->
             </div>
 
         <?php endif;
