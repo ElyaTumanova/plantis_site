@@ -311,12 +311,16 @@
 
 .backorder-crossells__preview-down {
     margin-left: auto;
+    color: var(--gray-text);
+    margin-right: 20px;
+    position: relative;
 }
 
 .backorder-crossells__preview-arrow {
+    position: absolute;
     font-family: swiper-icons;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 12px;
+    right: -20px;
 
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
