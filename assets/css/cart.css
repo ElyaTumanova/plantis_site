@@ -289,10 +289,17 @@
 /* backorder */
 .backorder-crossells__preview-wrap {
     display: flex;
+    column-gap: 10px;
 }
 
 .backorder-crossells__preview {
     display: flex;
+    column-gap: 7px;
+}
+
+.backorder-crossells__preview-img {
+    width: 100px;
+    height: 100px;
 }
 
 .backorder-crossells__preview-arrow {
