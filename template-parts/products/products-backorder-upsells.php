@@ -5,9 +5,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 //global $product;
 $product_id = $args[ 'product_id' ];
-echo $product_id;
+//echo $product_id;
 $product = wc_get_product( $product_id );
-echo $product;
+//echo $product;
 
 //$crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
 //$crosssell_ids = get_post_meta( $product_id, '_crosssell_ids' );
@@ -41,14 +41,6 @@ if( !empty ($upsells_ids) ){
         if ( $products->have_posts() ) : ?>
 
             <div class="card__sliders-wrap up-sells upsells">
-
-                <?php
-                $heading = apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) );
-
-                if ( $heading ) :
-                    ?>
-                    <h2 class="heading-2"><?php echo esc_html( $heading ); ?></h2>
-                <?php endif; ?>    
                     
                 <div class="cross-upsells-swiper swiper">
                     <ul class="products columns-3 swiper-wrapper"> 
