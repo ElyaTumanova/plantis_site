@@ -343,6 +343,7 @@
 
     .swiper-wrapper {
         margin-bottom: 15px;
+        margin-top: 25px;
     }
 
     .card__stockstatus {
@@ -364,7 +365,6 @@
     height: 400px;
     opacity: 100%;
     transition: height 0.9s, opacity 0.8s 0.1s;
-    margin-top: 25px;
 }
 .product-backorder-upsells_active .backorder-crossells__preview {
     opacity: 0;
