@@ -119,19 +119,6 @@
 
     td.product-backorder-upsells {
         grid-area: upsells;
-        max-width: 800px;
-    }
-    
-    @media (max-width:1024px) {
-        td.product-backorder-upsells {
-            max-width: calc(100% - 250px);
-        }
-    }
-    
-    @media (max-width: 767px) {
-        td.product-backorder-upsells {
-            max-width: 100%;
-        }
     }
 
     td.product-price, td.product-subtotal {
@@ -299,6 +286,33 @@
     display: none;
 }
 
+/* backorder */
+.backorder-crossells__preview-wrap {
+    display: flex;
+}
+
+.backorder-crossells__preview {
+    display: flex;
+}
+
+.backorder-crossells__preview-arrow {
+    font-family: swiper-icons;
+    font-size: 16px;
+    font-weight: 600;
+
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -moz-transition: -moz-transform 0.6s;
+    -o-transition: -o-transform 0.6s;
+    -webkit-transition: -webkit-transform 0.6s;
+    transition: transform 0.6s;
+}
+
+.backorder-crossells__sliders-wrap {
+    max-width: 800px;
+}
 
 /*--------------------------------------------------------------
 # Mini cart
