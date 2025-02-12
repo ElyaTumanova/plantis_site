@@ -1,11 +1,11 @@
 let backorderWrap = document.querySelectorAll('.product-backorder-upsells');
 
 backorderWrap.forEach((el) =>{
-    let dropDown = el.querySelector('.backorder-crossells__preview-down');
+    let dropDownBtn = el.querySelector('.backorder-crossells__preview-down');
     console.log(el);
-    console.log(dropDown);
+    console.log(dropDownBtn);
 
-    dropDown.addEventListener('click','toggleBackorderDropdown');
+    dropDownBtn.addEventListener('click', toggleBackorderDropdown);
 });
 
 function toggleBackorderDropdown(evt) {
