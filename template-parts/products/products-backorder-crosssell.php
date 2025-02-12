@@ -42,21 +42,22 @@ if( !empty ($crosssell_ids) ){
 
         <?php
 
-            $post_IDS = array();
-
+            //$post_IDS = array();
+            $i = 1;
             while ( $products->have_posts() ) : $products->the_post();
             $post_ID = get_the_ID();
-            array_push($post_IDS, $post_ID);
-            endwhile;
-
-            print_r($post_IDS);
-            $i = 1;
             while($i <= 4) {
-                echo $post_IDS[$i];
-                $my_product = wc_get_product($post_IDS[$i] );
-                print_r($my_product);
+                echo $post_ID;
+                //$my_product = wc_get_product($post_IDS[$i] );
+                print_r($product);
                 $i++;
             }
+            //array_push($post_IDS, $post_ID);
+            endwhile;
+
+            //print_r($post_IDS);
+          
+            
         ?>
 
             <div class="backorder-crossells__sliders-wrap">
