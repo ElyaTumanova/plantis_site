@@ -5,9 +5,9 @@ backorderWrap.forEach((el) =>{
     console.log(el);
     console.log(dropDownBtn);
 
-    dropDownBtn.addEventListener('click', toggleBackorderDropdown);
+    dropDownBtn.addEventListener('click', (el)=>{toggleBackorderDropdown(el)});
 });
 
-function toggleBackorderDropdown(evt) {
-    console.log(evt.target);
+function toggleBackorderDropdown(el) {
+    console.log(el);
 }
