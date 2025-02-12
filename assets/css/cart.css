@@ -317,6 +317,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .backorder-crossells__preview-arrow {
