@@ -287,7 +287,7 @@
 .woocommerce-cart-form .cart__peresadka .quantity {
     display: none;
 }
-.woocommerce-cart-form .cart__peresadka {
+.woocommerce-cart-form .cart__peresadka .add_to_cart_button, .woocommerce-cart-form .cart__peresadka .product_type_simple {
     width: fit-content;
     color: var(--gray-text);
     background: none;
@@ -295,7 +295,7 @@
     padding: 10px 0;
     text-transform: none;
 }
-.woocommerce-cart-form .cart__peresadka:hover {
+.woocommerce-cart-form .cart__peresadka .add_to_cart_button:hover, .woocommerce-cart-form .cart__peresadka .product_type_simple:hover  {
     background: none;
     border: none;
 }
