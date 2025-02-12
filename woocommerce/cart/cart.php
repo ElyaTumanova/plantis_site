@@ -180,7 +180,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						</td>
 						<td class="product-backorder-upsells">
 						<?php 
-							get_template_part('template-parts/products/products-backorder-upsells',null,
+							get_template_part('template-parts/products/products-backorder-crosssell',null,
 								array( // массив с параметрами
 									'product_id' => $product_id
 							)); 
