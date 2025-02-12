@@ -52,7 +52,7 @@ if( !empty ($crosssell_ids) ){
                                 ?>
                                 <!-- <img src="<?php //echo get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );?>" class="backorder-crossells__preview-img" alt="<?php //echo get_the_title();?>"> -->
                                 <?php
-                            }
+                        //    }
                         //     $i++;
                         // endwhile;
                     ?>
