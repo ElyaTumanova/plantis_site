@@ -57,7 +57,7 @@ if( !empty ($crosssell_ids) ){
                         endwhile;
                     ?>
                 </div>
-                <div><span>Развернуть</span><span class="backorder-crossells__preview-arrow">next</span></div>
+                <div class="backorder-crossells__preview-down"><span>Развернуть</span><span class="backorder-crossells__preview-arrow">next</span></div>
             </div>
      
             <div class="backorder-crossells__sliders-wrap">
