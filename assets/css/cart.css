@@ -119,6 +119,7 @@
 
     td.product-backorder-upsells {
         grid-area: upsells;
+        overflow: hidden;
     }
 
     td.product-price, td.product-subtotal {
@@ -224,10 +225,11 @@
         tr.woocommerce-cart-form__cart-item {
             display: grid;
             grid-template-columns:80px auto 150px 20px;
-            grid-template-rows: repeat(2, auto);
+            grid-template-rows: repeat(3, auto);
             grid-template-areas:
             "img name price price "
-            "img name qty remove ";
+            "img name qty remove "
+            "upsells upsells upsells upsells";
 
             column-gap: 7px;
             margin-top: 5px;
@@ -337,7 +339,6 @@
 }
 
 .backorder-crossells__sliders-wrap {
-    max-width: 800px;
     height: 0px;
     opacity: 0;
     transition: opacity 0.9s, height 0.8s 0.1s;
