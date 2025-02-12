@@ -322,6 +322,17 @@
     cursor: pointer;
 }
 
+.backorder-crossells__preview-down-close{
+    display: none;
+}
+
+.product-backorder-upsells_active .backorder-crossells__preview-down-close{
+    display: inline;
+}
+.product-backorder-upsells_active .backorder-crossells__preview-down-open{
+    display: none;
+}
+
 .backorder-crossells__preview-arrow {
     position: absolute;
     font-family: swiper-icons;
