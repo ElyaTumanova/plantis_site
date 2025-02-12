@@ -180,10 +180,12 @@ do_action( 'woocommerce_before_cart' ); ?>
 						</td>
 						<td class="product-backorder-upsells">
 						<?php 
+						if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
 							get_template_part('template-parts/products/products-backorder-crosssell',null,
 								array( // массив с параметрами
 									'product_id' => $product_id
-							)); 
+							));
+						}	 
 						?>
 						</td>
 					</tr>
