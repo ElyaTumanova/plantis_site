@@ -42,7 +42,7 @@ if( !empty ($crosssell_ids) ){
         <?php
         $i = 1;
         while($i <= 4) {
-            echo $products[$i];
+            echo $products->the_post();
             $i++;
         }
         ?>
