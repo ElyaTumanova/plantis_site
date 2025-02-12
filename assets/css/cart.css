@@ -287,6 +287,20 @@
 .woocommerce-cart-form .cart__peresadka .quantity {
     display: none;
 }
+.woocommerce-cart-form .cart__peresadka {
+    width: fit-content;
+    color: var(--gray-text);
+    background: none;
+    border: none;
+    padding: 10px 0;
+    text-transform: none;
+}
+.woocommerce-cart-form .cart__peresadka:hover {
+    background: none;
+    border: none;
+}
+
+
 
 /* backorder */
 .backorder-crossells__preview-wrap {
