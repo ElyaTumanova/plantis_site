@@ -185,7 +185,7 @@ add_filter( 'wp_ajax_plnt_update_header_cart_count', 'plnt_update_header_cart_co
 // изменяем кнопку "в корзину" после добавления товара в корзину
 
 
-add_filter( 'woocommerce_product_single_add_to_cart_text', 'truemisha_single_product_btn_text' ); // текст для страницы самого товара
+//add_filter( 'woocommerce_product_single_add_to_cart_text', 'truemisha_single_product_btn_text' ); // текст для страницы самого товара
  
 function truemisha_single_product_btn_text( $text ) {
 	if( WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( get_the_ID() ) ) ) {
