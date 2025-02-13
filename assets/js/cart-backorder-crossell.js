@@ -16,6 +16,7 @@ if(backorderWrap) {
         el.classList.toggle('product-backorder-upsells_active');
     }
     function replaceBackorderProduct(evt, btn) {
-        console.log(btn);
+        let prodId = btn.getAttribute('data-product_id');
+        console.log(prodId);
     }
 }
