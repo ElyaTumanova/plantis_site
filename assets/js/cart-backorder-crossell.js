@@ -5,8 +5,8 @@ if(backorderWrap) {
         let dropDownBtn = el.querySelector('.backorder-crossells__preview-down');
         dropDownBtn.addEventListener('click', (evt)=>{toggleBackorderDropdown(evt,el)});
 
-        let replaceBtns = el.querySelector('.backorder_replace_btn');
-
+        let replaceBtns = el.querySelectorAll('.backorder_replace_btn');
+        
         replaceBtns.forEach((btn)=>{
             btn.addEventListener('click', (evt,btn)=>{console.log(btn)});
         })
