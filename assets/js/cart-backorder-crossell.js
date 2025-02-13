@@ -12,11 +12,29 @@ if(backorderWrap) {
         })
     });
     
-    function toggleBackorderDropdown(evt, el) {
-        el.classList.toggle('product-backorder-upsells_active');
-    }
-    function replaceBackorderProduct(evt, btn) {
-        let prodId = btn.getAttribute('data-product_id');
-        console.log(prodId);
-    }
+}
+
+function toggleBackorderDropdown(evt, el) {
+    el.classList.toggle('product-backorder-upsells_active');
+}
+
+function replaceBackorderProduct(evt, btn) {
+    let prodId = btn.getAttribute('data-product_id');
+    console.log(prodId);
+
+    jQuery( function($){
+        $.ajax({
+            type: 'POST',
+            url: woocommerce_params.ajax_url,
+            data: {
+                'action': 'replace_backorder_product',
+                'backorder_replace_prodId': prodId,
+            },
+            success: function (result) {
+                // Trigger refresh checkout
+                //$('body').trigger('update_checkout');
+                console.log('hi replaceBackorderProduct')
+            }
+        });
+  });
 }

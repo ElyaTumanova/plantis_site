@@ -31,6 +31,18 @@ function plnt_cart_dev() {
 	echo 'hi';
 }
 
+add_action( 'wp_ajax_replace_backorder_product', 'plnt_replace_backorder_product' );
+add_action( 'wp_ajax_nopriv_replace_backorder_product', 'plnt_replace_backorder_product' );
+function plnt_replace_backorder_product() {
+
+	if (isset($_POST['backorder_replace_prodId'])){
+		global $woocommerce;
+		$replaceproductid = $_POST['backorder_replace_prodId']; 
+		$woocommerce->cart->add_to_cart( $replaceproductid );
+	}    
+    die(); // (required)
+}
+
 
 // empty cart
 
