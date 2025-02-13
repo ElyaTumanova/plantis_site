@@ -24,6 +24,14 @@ function plnt_cart_popular() {
 };
 
 
+// for dev
+add_action('woocommerce_before_cart', 'plnt_cart_dev', 30);
+
+function plnt_cart_dev() {
+	echo 'hi';
+}
+
+
 // empty cart
 
 add_action( 'woocommerce_cart_is_empty', 'plnt_empty_cart_btns',15 );
