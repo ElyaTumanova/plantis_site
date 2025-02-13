@@ -67,7 +67,7 @@ if( !empty ($crosssell_ids) ){
 
                         <?php wc_get_template_part( 'content', 'product' ); ?>
                         <?php $prod_id = get_the_ID(); ?>
-                        <div class='backorder_replace_btn'>lalala<?php echo $prod_id; ?></div>
+                        <div class='backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>">lalala<?php echo $prod_id; ?></div>
 
                         <?php endwhile; // end of the loop. ?>
                     </ul>
