@@ -106,6 +106,7 @@ function plnt_set_constants_script() {
 	$isbackorders = plnt_is_backorder();
 
 	echo $in_mkad_large;
+	echo $in_mkad_urg_large;
    
 	?>
 	<script>
