@@ -244,17 +244,6 @@ function checkShortDays(date) {
   }
 }
 
-// function checkHoliday(date) {
-//   if (holidays) {
-//     if (holidays.includes(date)) {
-//       isHoliday = '1'
-//     } else {
-//       isHoliday = '0'
-//     };
-//   }
-//   console.log(isHoliday);
-// }
-
 if (checkoutForm) {
 
   setInitalState();
@@ -270,5 +259,7 @@ if (checkoutForm) {
 
   ajaxGetUrgent();
   ajaxGetHoliday(deliveryDatesInput[0].value);
+
+  console.log(deliveryCostInMkadLarge);
   
 }
