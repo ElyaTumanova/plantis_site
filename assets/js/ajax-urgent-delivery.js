@@ -52,13 +52,13 @@ function renderDeliveryDates(shippingValue) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadUrg + deliveryHolidayMarkup*isHolidayMarkup}₽` : `${deliveryCostInMkad + deliveryHolidayMarkup*isHolidayMarkup}₽` ;
       }
       if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadUrg}₽` : `${deliveryCostOutMkad}₽` ;
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadUrg + deliveryHolidayMarkup*isHolidayMarkup}₽` : `${deliveryCostOutMkad + deliveryHolidayMarkup*isHolidayMarkup}₽` ;
       }
       if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadSmallUrg}₽` : `${deliveryCostInMkadSmall}₽` ;
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadSmallUrg + deliveryHolidayMarkup*isHolidayMarkup}₽` : `${deliveryCostInMkadSmall + deliveryHolidayMarkup*isHolidayMarkup}₽` ;
       }
       if(shippingValue == deliveryOutMKADSmall || shippingValue == deliveryOutMKADSmallUrg) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadSmallUrg}₽` : `${deliveryCostOutMkadSmall}₽` ;
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadSmallUrg + deliveryHolidayMarkup*isHolidayMarkup}₽` : `${deliveryCostOutMkadSmall + deliveryHolidayMarkup*isHolidayMarkup}₽` ;
       }
       if(shippingValue == deliveryInMKADLarge || shippingValue == deliveryInMKADLargeUrg) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadLargeUrg}₽` : `${deliveryCostInMkadLarge}₽` ;
@@ -67,7 +67,7 @@ function renderDeliveryDates(shippingValue) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadLargeUrg}₽` : `${deliveryCostOutMkadLarge}₽` ;
       }
       if(shippingValue == deliveryInMKADMedium || shippingValue == deliveryInMKADMediumUrg) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadMediumUrg}₽` : `${deliveryCostInMkadMedium}₽` ;
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadMediumUrg + deliveryHolidayMarkup*isHolidayMarkup}₽` : `${deliveryCostInMkadMedium + deliveryHolidayMarkup*isHolidayMarkup}₽` ;
       }
       if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadMediumUrg + deliveryHolidayMarkup*isHolidayMarkup}₽` : `${deliveryCostOutMkadMedium + deliveryHolidayMarkup*isHolidayMarkup}₽` ;
