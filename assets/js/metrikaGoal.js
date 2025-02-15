@@ -112,6 +112,12 @@ jQuery(document).ready(function() {
 		 ym(87781741, 'reachGoal', 'click-button-favorites-remove'); 
 		return true;
 	});	
+
+    //Скачивание оптового прайс-листа
+    jQuery('.optom__button_pricelist').click(function(){
+		 ym(87781741, 'reachGoal', 'load-price-list'); 
+		return true;
+	});	
 });
 
 //Отправка формы «Предзаказ»
