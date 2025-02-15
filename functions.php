@@ -75,6 +75,7 @@ function plnt_set_constants_script() {
 	global $delivery_long_dist;
 
 	$late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+	$holiday_markup_delivery = carbon_get_theme_option('holiday_markup_delivery');
 
 	$shipping_costs = plnt_get_shiping_costs();
 
@@ -152,7 +153,8 @@ function plnt_set_constants_script() {
 		let deliveryCostInMkadMediumUrg = '<?php echo $in_mkad_medium_urg; ?>';
 		let deliveryCostOutMkadMediumUrg = '<?php echo $out_mkad_medium_urg; ?>';
 
-		let deliveryLateMarkup = '<?php echo $late_markup_delivery; ?>';
+		let deliveryLateMarkup = '<?php echo $late_markup_delivery; ?>'; 
+		let deliveryHolidayMarkup = '<?php echo $holiday_markup_delivery; ?>'; 
 
         let isBackorder = '<?php echo $isbackorders; ?>';
 

@@ -1,7 +1,9 @@
 let isUrgent;
 let isLate;
 let isHideInterval;
-let isHoliday;
+let isShortDay; //скрываем подние интервалы доставки
+let shortDays = []; //format dd.mm
+let isHoliday; //увеличиваем стоимость доставки
 let holidays = []; //format dd.mm
 let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelector('.delivery_dates');
@@ -63,6 +65,7 @@ function renderDeliveryDates(shippingValue) {
       if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadMediumUrg}₽` : `${deliveryCostOutMkadMedium}₽` ;
       }
+      console.log(priceEl.innerHTML);
   })
 }
 
@@ -181,6 +184,7 @@ function setDatesIntervals() {
   deliveryDatesInput.forEach((date) => {
     date.addEventListener('click', function(event){
       ajaxGetUrgent(event.target.value);
+      checkShortDays(event.target.value);
       checkHoliday(event.target.value);
       shippingValue = getCheckedShippingMethod();
       renderDeliveryIntervals(shippingValue);
@@ -203,6 +207,16 @@ function setDatesIntervals() {
   }
 }
 
+function checkShortDays(date) {
+  if (shortDays) {
+    if (shortDays.includes(date)) {
+      isShortDay = '1'
+    } else {
+      isShortDay = '0'
+    };
+  }
+}
+
 function checkHoliday(date) {
   if (holidays) {
     if (holidays.includes(date)) {
@@ -216,6 +230,7 @@ function checkHoliday(date) {
 if (checkoutForm) {
 
   setInitalState();
+  checkShortDays(deliveryDatesInput[0].value);
   checkHoliday(deliveryDatesInput[0].value);
   setDatesIntervals();
 

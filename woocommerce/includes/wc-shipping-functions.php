@@ -152,6 +152,7 @@ function plnt_shipping_conditions( $rates, $package ) {
 	global $urgent_delivery_outMKAD_medium;
 
     $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+    $holiday_markup_delivery = carbon_get_theme_option('holiday_markup_delivery');
 
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
 
