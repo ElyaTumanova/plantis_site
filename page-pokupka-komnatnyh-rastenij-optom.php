@@ -1,5 +1,8 @@
 <?php
-get_header(); ?>
+get_header(); 
+
+$pricelist_link = carbon_get_theme_option('pricelist_link');
+?>
 
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
@@ -33,7 +36,7 @@ get_header(); ?>
                 ?>" 
                 class="optom__button optom__button_cats button">Каталог растений</a>
                 <a class="optom__button optom__button_pricelist button" 
-                href="https://plantis.shop/wp-content/uploads/2025/02/wc-product-export-15-2-2025-1739611988886-wc-product-export-15-2-2025-1739611988886.csv">
+                href="<?php echo $pricelist_link;?>">
                 Скачать оптовый прайс-лист</a>
                 <!-- <button class="optom__button optom__button_pricelist button page-popup-open-btn">Получить оптовый прайс-лист</button> -->
             </div>
