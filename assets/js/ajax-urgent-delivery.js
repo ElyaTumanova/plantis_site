@@ -4,7 +4,7 @@ let isHideInterval;
 let isShortDay; //скрываем подние интервалы доставки
 let shortDays = []; //format dd.mm
 let isHoliday; //увеличиваем стоимость доставки
-let holidays = [18.02, 19.02]; //format dd.mm
+let holidays = ['18.02', '19.02']; //format dd.mm
 let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelector('.delivery_dates');
 let deliveryDatesInput = document.querySelectorAll('.delivery_dates input');
