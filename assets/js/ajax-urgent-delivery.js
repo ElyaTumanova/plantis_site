@@ -248,5 +248,7 @@ if (checkoutForm) {
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 
   ajaxGetUrgent();
+
+  console.log(isHoliday);
   
 }
