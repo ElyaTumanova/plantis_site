@@ -82,6 +82,7 @@ function plnt_get_urgent_shipping() {
 
     if ( $_POST['isHoliday'] === '1'){
         WC()->session->set('isHoliday', '1' );
+        WC()->session->set('date', $_POST['date'] );
     } else {
         WC()->session->set('isHoliday', '0' );
     }
