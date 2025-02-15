@@ -67,7 +67,7 @@ function renderDeliveryDates(shippingValue) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadMediumUrg}₽` : `${deliveryCostOutMkadMedium}₽` ;
       }
       console.log(info.text);
-      if(holidays.includes(info.text)) {
+      if(!holidays.includes(info.text)) {
         //priceEl.innerHTML = priceEl.innerHTML 
         console.log(priceEl.innerHTML);
         console.log('hi');
