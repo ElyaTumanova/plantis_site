@@ -104,6 +104,7 @@ function ajaxGetUrgent(date) {
   }
   console.log(isUrgent);
   console.log(isHoliday);
+  console.log(date);
 
   jQuery( function($){
         $.ajax({
@@ -113,6 +114,8 @@ function ajaxGetUrgent(date) {
                 'action': 'get_urgent_shipping',
                 'isUrgent': isUrgent,
                 'isHoliday': isHoliday,
+                'date': date,
+
             },
             success: function (result) {
                 // Trigger refresh checkout

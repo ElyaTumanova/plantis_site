@@ -474,8 +474,9 @@ Contents
         }
 
         if (WC()->session->get('isHoliday' ) === '1') {
+            $date = WC()->session->get('date' )
             echo '<div class=large_delivery_notice>
-            <p>8-го марта доставка осуществляется по повышенному тарифу!</p></div>';
+            <p>'.$date.' доставка осуществляется по повышенному тарифу!</p></div>';
         }
         
     }
