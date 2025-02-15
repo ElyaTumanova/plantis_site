@@ -39,7 +39,6 @@ function renderDeliveryDates(shippingValue) {
   // console.log(shippingValue);
   console.log(holidays);
   deliveryDatesInfo.forEach((info) => {
-    console.log(info.text);
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
     info.label.appendChild(priceEl);
@@ -67,7 +66,7 @@ function renderDeliveryDates(shippingValue) {
       if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadMediumUrg}₽` : `${deliveryCostOutMkadMedium}₽` ;
       }
-
+      console.log(info.text);
       if(holidays.includes(info.text)) {
         //priceEl.innerHTML = priceEl.innerHTML 
         console.log(priceEl.innerHTML);
