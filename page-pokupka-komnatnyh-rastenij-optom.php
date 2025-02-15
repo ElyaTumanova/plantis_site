@@ -32,7 +32,10 @@ get_header(); ?>
                 echo get_term_link( $plants_cat_id, 'product_cat' );
                 ?>" 
                 class="optom__button optom__button_cats button">Каталог растений</a>
-                <button class="optom__button optom__button_pricelist button page-popup-open-btn">Получить оптовый прайс-лист</button>
+                <a class="optom__button optom__button_pricelist button" 
+                href="https://plantis.shop/wp-content/uploads/2025/02/wc-product-export-15-2-2025-1739611988886-wc-product-export-15-2-2025-1739611988886.csv">
+                Скачать оптовый прайс-лист</a>
+                <!-- <button class="optom__button optom__button_pricelist button page-popup-open-btn">Получить оптовый прайс-лист</button> -->
             </div>
             <h2 class="info__heading heading-2">Остались вопросы?</h2>
             <p>Позвоните нам или напишите, любым удобным способом!</p>
