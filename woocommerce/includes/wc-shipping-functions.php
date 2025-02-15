@@ -127,32 +127,6 @@ function plnt_refresh_shipping_methods_for_late( $post_data ){
     WC()->cart->calculate_shipping();
 }
 
-// доставка в праздничный день
-// add_action( 'wp_ajax_get_holiday_shipping', 'plnt_get_holiday_shipping' );
-// add_action( 'wp_ajax_nopriv_get_holiday_shipping', 'plnt_get_holiday_shipping' );
-// function plnt_get_holiday_shipping() {
-//     if ( $_POST['isHoliday'] === '1'){
-//         WC()->session->set('isHoliday', '1' );
-//     } else {
-//         WC()->session->set('isHoliday', '0' );
-//     }
-//     die(); // (required)
-// }
-
-// add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_holiday', 10, 1 );
-// function plnt_refresh_shipping_methods_for_holiday( $post_data ){
-//     $bool = true;
-
-//     if ( WC()->session->get('isHoliday' ) === '1')
-//         $bool = false;
-
-//     // Mandatory to make it work with shipping methods
-//     foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
-//         WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
-//     }
-//     WC()->cart->calculate_shipping();
-// }
-
 
 /* выбираем способ доставки в зависимости от условий*/
 
@@ -324,17 +298,20 @@ function plnt_shipping_conditions( $rates, $package ) {
         }
     }
 
-    if (isset($chosen_methods)) {
-        if($local_pickup == $chosen_methods[0] || $delivery_courier == $chosen_methods[0] || $delivery_long_dist == $chosen_methods[0] || $delivery_inMKAD_large == $chosen_methods[0] || $delivery_outMKAD_large == $chosen_methods[0] || $urgent_delivery_inMKAD_large == $chosen_methods[0] || $urgent_delivery_outMKAD_large == $chosen_methods[0]) {
-            WC()->session->set('isHoliday', '0' );  
-        }
-    }
+    // if (isset($chosen_methods)) {
+    //     if($local_pickup == $chosen_methods[0] || $delivery_courier == $chosen_methods[0] || $delivery_long_dist == $chosen_methods[0] || $delivery_inMKAD_large == $chosen_methods[0] || $delivery_outMKAD_large == $chosen_methods[0] || $urgent_delivery_inMKAD_large == $chosen_methods[0] || $urgent_delivery_outMKAD_large == $chosen_methods[0]) {
+    //         WC()->session->set('isHoliday', '0' );  
+    //     }
+    // }
 
     if (WC()->session->get('isHoliday' ) === '1') {
         foreach( $rates as $rate) {
             if ( 'local_pickup' !== $rate->method_id) {
                 if('free_shipping' !== $rate->method_id) {
-                    $rate->cost = $rate->cost + $holiday_markup_delivery;
+                    if( !($delivery_inMKAD_large == $chosen_methods[0] || $delivery_outMKAD_large == $chosen_methods[0] || $urgent_delivery_inMKAD_large == $chosen_methods[0] || $urgent_delivery_outMKAD_large == $chosen_methods[0])) {
+                        $rate->cost = $rate->cost + $holiday_markup_delivery;
+                    }
+                    
                 }
             }	
         }
