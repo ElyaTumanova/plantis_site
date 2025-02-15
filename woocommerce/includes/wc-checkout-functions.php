@@ -478,7 +478,6 @@ Contents
             echo '<div class=large_delivery_notice>
             <p>'.$date.' доставка осуществляется по повышенному тарифу!</p></div>';
         }
-        
     }
 
     
