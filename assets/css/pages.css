@@ -420,6 +420,12 @@
     row-gap: 20px;
     align-items: center;
 }
+.optom__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 15px;
+}
 
 .optom__button {
     color: var(--white);
