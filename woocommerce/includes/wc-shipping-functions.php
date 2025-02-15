@@ -46,6 +46,8 @@ function plnt_check() {
     // echo 'isback '.$isbackorders.'  ';
     echo 'isHoliday '.(WC()->session->get('isHoliday' )).'  ';
     echo '<br>';
+    echo 'date '.(WC()->session->get('date')).'  ';
+    echo '<br>';
     echo 'isUrgent '.(WC()->session->get('isUrgent' )).'  ';
     // echo 'hiAjax '.(WC()->session->get('hiAjax' )).'  ';
     // echo 'hiInit '.(WC()->session->get('hiInit' )).'  ';
