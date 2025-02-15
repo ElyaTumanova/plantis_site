@@ -75,6 +75,7 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'min_medium_delivery', 'Сумма заказа для более дорогой доставки - средняя (не обязательно)'),
 			Field::make( 'text', 'min_treez_delivery', 'Сумма заказа для доставки кашпо Treez'),
 			Field::make( 'text', 'late_markup_delivery', 'Надбавка к стоимости поздней доставки'),
+			Field::make( 'text', 'holiday_markup_delivery', 'Надбавка к стоимости доставки в праздники'),
 	   ))
 		->add_tab( __('General'), array(
 			Field::make( 'text', 'notice', 'Уведомление' ),
