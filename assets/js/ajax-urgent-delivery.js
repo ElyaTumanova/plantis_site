@@ -4,7 +4,7 @@ let isHideInterval;
 let isShortDay; //скрываем подние интервалы доставки
 let shortDays = []; //format dd.mm
 let isHoliday; //увеличиваем стоимость доставки
-let holidays = ['18.02', '19.02']; //format dd.mm
+let holidays = ['18.02', '19.02']; //format 'dd.mm'
 let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelector('.delivery_dates');
 let deliveryDatesInput = document.querySelectorAll('.delivery_dates input');
@@ -39,11 +39,15 @@ function renderDeliveryDates(shippingValue) {
   // console.log(shippingValue);
   console.log(holidays);
   deliveryDatesInfo.forEach((info) => {
+    let isHolidayMarkup = 0;
+    if(holidays.includes(info.text)) { 
+      isHolidayMarkup = 1;
+    }
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
     info.label.appendChild(priceEl);
       if(shippingValue == deliveryInMKAD || shippingValue == deliveryInMKADUrg) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadUrg}₽` : `${deliveryCostInMkad}₽` ;
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadUrg + deliveryHolidayMarkup*isHolidayMarkup}₽` : `${deliveryCostInMkad + deliveryHolidayMarkup*isHolidayMarkup}₽` ;
       }
       if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadUrg}₽` : `${deliveryCostOutMkad}₽` ;
@@ -65,12 +69,6 @@ function renderDeliveryDates(shippingValue) {
       }
       if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadMediumUrg}₽` : `${deliveryCostOutMkadMedium}₽` ;
-      }
-      console.log(info.text);
-      if(!holidays.includes(info.text)) {
-        //priceEl.innerHTML = priceEl.innerHTML 
-        console.log(priceEl.innerHTML);
-        console.log('hi');
       }
   })
 }
@@ -231,6 +229,7 @@ function checkHoliday(date) {
       isHoliday = '0'
     };
   }
+  console.log(isHoliday);
 }
 
 if (checkoutForm) {
@@ -248,7 +247,5 @@ if (checkoutForm) {
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 
   ajaxGetUrgent();
-
-  console.log(isHoliday);
   
 }
