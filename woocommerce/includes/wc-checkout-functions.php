@@ -473,8 +473,8 @@ Contents
             <p>Для заказа предусмотрена крупногабаритная доставка!</p></div>';
         }
 
-        if (WC()->session->get('isHoliday' ) === '1') {
-            $date = $_POST['date'];
+        if (WC()->session->get('isHoliday') === '1') {
+            $date = WC()->session->get('date');
             echo '<div class=large_delivery_notice>
             <p>'.$date.' доставка осуществляется по повышенному тарифу!</p></div>';
         }
