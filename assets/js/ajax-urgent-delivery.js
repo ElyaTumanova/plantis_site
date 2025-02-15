@@ -96,7 +96,7 @@ function ajaxGetUrgent(date) {
       isUrgent = '0';
     }
   }
-  // console.log(isUrgent);
+  console.log(isUrgent);
 
   jQuery( function($){
         $.ajax({
@@ -259,7 +259,5 @@ if (checkoutForm) {
 
   ajaxGetUrgent();
   ajaxGetHoliday(deliveryDatesInput[0].value);
-
-  console.log(deliveryCostInMkadLarge);
   
 }
