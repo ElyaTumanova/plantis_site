@@ -250,6 +250,6 @@ if (checkoutForm) {
 
   ajaxGetUrgent();
 
-  console.log(deliveryHolidayMarkup);
+  console.log(deliveryCostInMkadUrg);
   
 }
