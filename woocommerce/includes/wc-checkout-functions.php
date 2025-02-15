@@ -472,6 +472,11 @@ Contents
             <img class=large_delivery_img src="https://plantis.shop/wp-content/uploads/2024/08/car.svg" alt="car">
             <p>Для заказа предусмотрена крупногабаритная доставка!</p></div>';
         }
+
+        if (WC()->session->get('isHoliday' ) === '1') {
+            echo '<div class=large_delivery_notice>
+            <p>8-го марта доставка осуществляется по повышенному тарифу!</p></div>';
+        }
         
     }
 
