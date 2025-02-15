@@ -270,7 +270,5 @@ if (checkoutForm) {
 
   ajaxGetUrgent();
   ajaxGetHoliday(deliveryDatesInput[0].value);
-
-  console.log(deliveryCostInMkad);
   
 }
