@@ -38,6 +38,7 @@ function getCheckedShippingMethod (){
 function renderDeliveryDates(shippingValue) {
   // console.log(shippingValue);
   deliveryDatesInfo.forEach((info) => {
+    console.log(info);
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
     info.label.appendChild(priceEl);
@@ -65,7 +66,11 @@ function renderDeliveryDates(shippingValue) {
       if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadMediumUrg}₽` : `${deliveryCostOutMkadMedium}₽` ;
       }
-      console.log(priceEl.innerHTML);
+
+      // if() {
+
+      //   console.log(priceEl.innerHTML);
+      // }
   })
 }
 
