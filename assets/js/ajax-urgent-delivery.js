@@ -43,6 +43,8 @@ function renderDeliveryDates(shippingValue) {
     if(holidays.includes(info.text)) { 
       isHolidayMarkup = 1;
     }
+    console.log(info.text);
+    console.log(isHolidayMarkup);
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
     info.label.appendChild(priceEl);
