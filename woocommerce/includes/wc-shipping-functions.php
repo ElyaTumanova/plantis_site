@@ -44,6 +44,8 @@ function plnt_check() {
     // }
     // $isbackorders = plnt_is_backorder();
     // echo 'isback '.$isbackorders.'  ';
+    echo 'isHoliday '.(WC()->session->get('isHoliday' )).'  ';
+    echo '<br>';
     echo 'isUrgent '.(WC()->session->get('isUrgent' )).'  ';
     // echo 'hiAjax '.(WC()->session->get('hiAjax' )).'  ';
     // echo 'hiInit '.(WC()->session->get('hiInit' )).'  ';
