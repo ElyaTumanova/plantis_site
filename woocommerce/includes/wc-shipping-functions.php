@@ -75,6 +75,12 @@ function plnt_get_urgent_shipping() {
             WC()->session->set('isUrgent', '0' ); //0
         }
     // }
+
+    if ( $_POST['isHoliday'] === '1'){
+        WC()->session->set('isHoliday', '1' );
+    } else {
+        WC()->session->set('isHoliday', '0' );
+    }
     
     die(); // (required)
 }
@@ -83,7 +89,7 @@ add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_m
 function plnt_refresh_shipping_methods_for_urgent( $post_data ){
     $bool = true;
 
-    if ( WC()->session->get('isUrgent' ) === '1' )
+    if ( WC()->session->get('isUrgent' ) === '1' || WC()->session->get('isHoliday' ) === '1' )
         $bool = false;
 
     // Mandatory to make it work with shipping methods
@@ -120,30 +126,30 @@ function plnt_refresh_shipping_methods_for_late( $post_data ){
 }
 
 // доставка в праздничный день
-add_action( 'wp_ajax_get_holiday_shipping', 'plnt_get_holiday_shipping' );
-add_action( 'wp_ajax_nopriv_get_holiday_shipping', 'plnt_get_holiday_shipping' );
-function plnt_get_holiday_shipping() {
-    if ( $_POST['isHoliday'] === '1'){
-        WC()->session->set('isHoliday', '1' );
-    } else {
-        WC()->session->set('isHoliday', '0' );
-    }
-    die(); // (required)
-}
+// add_action( 'wp_ajax_get_holiday_shipping', 'plnt_get_holiday_shipping' );
+// add_action( 'wp_ajax_nopriv_get_holiday_shipping', 'plnt_get_holiday_shipping' );
+// function plnt_get_holiday_shipping() {
+//     if ( $_POST['isHoliday'] === '1'){
+//         WC()->session->set('isHoliday', '1' );
+//     } else {
+//         WC()->session->set('isHoliday', '0' );
+//     }
+//     die(); // (required)
+// }
 
-add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_holiday', 10, 1 );
-function plnt_refresh_shipping_methods_for_holiday( $post_data ){
-    $bool = true;
+// add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_holiday', 10, 1 );
+// function plnt_refresh_shipping_methods_for_holiday( $post_data ){
+//     $bool = true;
 
-    if ( WC()->session->get('isHoliday' ) === '1')
-        $bool = false;
+//     if ( WC()->session->get('isHoliday' ) === '1')
+//         $bool = false;
 
-    // Mandatory to make it work with shipping methods
-    foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
-        WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
-    }
-    WC()->cart->calculate_shipping();
-}
+//     // Mandatory to make it work with shipping methods
+//     foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
+//         WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
+//     }
+//     WC()->cart->calculate_shipping();
+// }
 
 
 /* выбираем способ доставки в зависимости от условий*/

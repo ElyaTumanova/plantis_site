@@ -95,8 +95,15 @@ function ajaxGetUrgent(date) {
     } else {
       isUrgent = '0';
     }
+
+    if (holidays.includes(date)) {
+      isHoliday = '1'
+    } else {
+      isHoliday = '0'
+    };
   }
   console.log(isUrgent);
+  console.log(isHoliday);
 
   jQuery( function($){
         $.ajax({
@@ -105,28 +112,6 @@ function ajaxGetUrgent(date) {
             data: {
                 'action': 'get_urgent_shipping',
                 'isUrgent': isUrgent,
-            },
-            success: function (result) {
-                // Trigger refresh checkout
-                $('body').trigger('update_checkout');
-            }
-        });
-  });
-};
-
-function ajaxGetHoliday(date) {
-  if (holidays.includes(date)) {
-    isHoliday = '1'
-  } else {
-    isHoliday = '0'
-  };
-
-  jQuery( function($){
-        $.ajax({
-            type: 'POST',
-            url: wc_checkout_params.ajax_url,
-            data: {
-                'action': 'get_holiday_shipping',
                 'isHoliday': isHoliday,
             },
             success: function (result) {
@@ -135,9 +120,32 @@ function ajaxGetHoliday(date) {
             }
         });
   });
-
-  console.log(isHoliday);
 };
+
+// function ajaxGetHoliday(date) {
+//   if (holidays.includes(date)) {
+//     isHoliday = '1'
+//   } else {
+//     isHoliday = '0'
+//   };
+
+//   jQuery( function($){
+//         $.ajax({
+//             type: 'POST',
+//             url: wc_checkout_params.ajax_url,
+//             data: {
+//                 'action': 'get_holiday_shipping',
+//                 'isHoliday': isHoliday,
+//             },
+//             success: function (result) {
+//                 // Trigger refresh checkout
+//                 $('body').trigger('update_checkout');
+//             }
+//         });
+//   });
+
+//   console.log(isHoliday);
+// };
 
 function ajaxGetLateDelivery(event) {
 
@@ -193,6 +201,13 @@ function setInitalState() {
   }
 
   isLate = 0;
+
+  if (holidays.includes(deliveryDatesInput[0].value)) {
+    isHoliday = '1'
+  } else {
+    isHoliday = '0'
+  };
+
 }
 
 function setDatesIntervals() {
@@ -212,7 +227,7 @@ function setDatesIntervals() {
     date.addEventListener('click', function(event){
       ajaxGetUrgent(event.target.value);
       checkShortDays(event.target.value);
-      ajaxGetHoliday(event.target.value);
+      //ajaxGetHoliday(event.target.value);
       shippingValue = getCheckedShippingMethod();
       renderDeliveryIntervals(shippingValue);
     });
@@ -258,6 +273,6 @@ if (checkoutForm) {
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 
   ajaxGetUrgent();
-  ajaxGetHoliday(deliveryDatesInput[0].value);
+  //ajaxGetHoliday(deliveryDatesInput[0].value);
   
 }
