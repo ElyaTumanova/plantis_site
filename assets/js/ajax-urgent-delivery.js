@@ -71,6 +71,7 @@ function renderDeliveryDates(shippingValue) {
       if(holidays.includes(info.text)) {
         //priceEl.innerHTML = priceEl.innerHTML 
         console.log(priceEl.innerHTML);
+        console.log('hi');
       }
   })
 }
