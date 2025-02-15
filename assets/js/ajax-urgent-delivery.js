@@ -36,15 +36,11 @@ function getCheckedShippingMethod (){
 }
 
 function renderDeliveryDates(shippingValue) {
-  // console.log(shippingValue);
-  console.log(holidays);
   deliveryDatesInfo.forEach((info) => {
     let isHolidayMarkup = 0;
     if(holidays.includes(info.text)) { 
       isHolidayMarkup = 1;
     }
-    console.log(info.text);
-    console.log(isHolidayMarkup);
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
     info.label.appendChild(priceEl);
@@ -116,6 +112,31 @@ function ajaxGetUrgent(date) {
             }
         });
   });
+};
+
+function ajaxGetHoliday(date) {
+  if (holidays.includes(date)) {
+    isHoliday = '1'
+  } else {
+    isHoliday = '0'
+  };
+
+  jQuery( function($){
+        $.ajax({
+            type: 'POST',
+            url: wc_checkout_params.ajax_url,
+            data: {
+                'action': 'get_holiday_shipping',
+                'isHoliday': isHoliday,
+            },
+            success: function (result) {
+                // Trigger refresh checkout
+                $('body').trigger('update_checkout');
+            }
+        });
+  });
+
+  console.log(isHoliday);
 };
 
 function ajaxGetLateDelivery(event) {
@@ -191,7 +212,7 @@ function setDatesIntervals() {
     date.addEventListener('click', function(event){
       ajaxGetUrgent(event.target.value);
       checkShortDays(event.target.value);
-      checkHoliday(event.target.value);
+      ajaxGetHoliday(event.target.value);
       shippingValue = getCheckedShippingMethod();
       renderDeliveryIntervals(shippingValue);
     });
@@ -223,22 +244,21 @@ function checkShortDays(date) {
   }
 }
 
-function checkHoliday(date) {
-  if (holidays) {
-    if (holidays.includes(date)) {
-      isHoliday = '1'
-    } else {
-      isHoliday = '0'
-    };
-  }
-  console.log(isHoliday);
-}
+// function checkHoliday(date) {
+//   if (holidays) {
+//     if (holidays.includes(date)) {
+//       isHoliday = '1'
+//     } else {
+//       isHoliday = '0'
+//     };
+//   }
+//   console.log(isHoliday);
+// }
 
 if (checkoutForm) {
 
   setInitalState();
   checkShortDays(deliveryDatesInput[0].value);
-  checkHoliday(deliveryDatesInput[0].value);
   setDatesIntervals();
 
   checkedShippingMethod = getCheckedShippingMethod();
@@ -249,6 +269,7 @@ if (checkoutForm) {
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 
   ajaxGetUrgent();
+  ajaxGetHoliday(deliveryDatesInput[0].value);
 
   console.log(deliveryCostInMkad);
   
