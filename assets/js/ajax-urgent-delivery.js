@@ -68,7 +68,7 @@ function renderDeliveryDates(shippingValue) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadMediumUrg}₽` : `${deliveryCostInMkadMedium}₽` ;
       }
       if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadMediumUrg}₽` : `${deliveryCostOutMkadMedium}₽` ;
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadMediumUrg + deliveryHolidayMarkup*isHolidayMarkup}₽` : `${deliveryCostOutMkadMedium + deliveryHolidayMarkup*isHolidayMarkup}₽` ;
       }
   })
 }
@@ -138,7 +138,7 @@ function ajaxGetLateDelivery(event) {
             $('body').trigger('update_checkout');
         }
     });
-});
+  });
 }
 
 function setInitalState() {
