@@ -74,7 +74,7 @@
         };
 
         // for shortDays
-        if (isShortDay === '1') {
+        if (isShortDay == '1') {
             deliveryIntervalInput.forEach(el =>{
                 if(el.defaultValue !== '11:00 - 16:00') {
                     el.classList.add('d-none');
@@ -86,7 +86,7 @@
                 }
             })
         }
-        if (isShortDay === '0') {
+        if (isShortDay == '0') {
             deliveryIntervalInput.forEach(el =>{
                 el.classList.remove('d-none');
             })

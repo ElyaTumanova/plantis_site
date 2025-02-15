@@ -152,12 +152,12 @@ function setInitalState() {
 
   // console.log(isBackorder);
   if (isBackorder) {
-    isUrgent = 0;
+    isUrgent = '0';
   } else {
     if (hour >= 18 && hour <20) {
-      isUrgent = 0;
+      isUrgent = '0';
     } else {
-      isUrgent = 1;
+      isUrgent = '1';
     }
   }
 
@@ -178,7 +178,7 @@ function setInitalState() {
   isLate = 0;
 
   if (isBackorder) {
-    isUrgent = 0;
+    isHoliday = '0';
   } else {
     if (holidays.includes(deliveryDatesInput[0].value)) {
       isHoliday = '1'
