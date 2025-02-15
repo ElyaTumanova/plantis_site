@@ -122,31 +122,6 @@ function ajaxGetUrgent(date) {
   });
 };
 
-// function ajaxGetHoliday(date) {
-//   if (holidays.includes(date)) {
-//     isHoliday = '1'
-//   } else {
-//     isHoliday = '0'
-//   };
-
-//   jQuery( function($){
-//         $.ajax({
-//             type: 'POST',
-//             url: wc_checkout_params.ajax_url,
-//             data: {
-//                 'action': 'get_holiday_shipping',
-//                 'isHoliday': isHoliday,
-//             },
-//             success: function (result) {
-//                 // Trigger refresh checkout
-//                 $('body').trigger('update_checkout');
-//             }
-//         });
-//   });
-
-//   console.log(isHoliday);
-// };
-
 function ajaxGetLateDelivery(event) {
 
   if(event.target.value == '18:00 - 21:00') {
@@ -202,12 +177,15 @@ function setInitalState() {
 
   isLate = 0;
 
-  if (holidays.includes(deliveryDatesInput[0].value)) {
-    isHoliday = '1'
+  if (isBackorder) {
+    isUrgent = 0;
   } else {
-    isHoliday = '0'
-  };
-
+    if (holidays.includes(deliveryDatesInput[0].value)) {
+      isHoliday = '1'
+    } else {
+      isHoliday = '0'
+    };
+  } 
 }
 
 function setDatesIntervals() {
@@ -227,7 +205,6 @@ function setDatesIntervals() {
     date.addEventListener('click', function(event){
       ajaxGetUrgent(event.target.value);
       checkShortDays(event.target.value);
-      //ajaxGetHoliday(event.target.value);
       shippingValue = getCheckedShippingMethod();
       renderDeliveryIntervals(shippingValue);
     });
@@ -273,6 +250,5 @@ if (checkoutForm) {
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 
   ajaxGetUrgent();
-  //ajaxGetHoliday(deliveryDatesInput[0].value);
   
 }

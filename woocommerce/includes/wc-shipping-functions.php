@@ -298,12 +298,6 @@ function plnt_shipping_conditions( $rates, $package ) {
         }
     }
 
-    // if (isset($chosen_methods)) {
-    //     if($local_pickup == $chosen_methods[0] || $delivery_courier == $chosen_methods[0] || $delivery_long_dist == $chosen_methods[0] || $delivery_inMKAD_large == $chosen_methods[0] || $delivery_outMKAD_large == $chosen_methods[0] || $urgent_delivery_inMKAD_large == $chosen_methods[0] || $urgent_delivery_outMKAD_large == $chosen_methods[0]) {
-    //         WC()->session->set('isHoliday', '0' );  
-    //     }
-    // }
-
     if (WC()->session->get('isHoliday' ) === '1') {
         foreach( $rates as $rate) {
             if ( 'local_pickup' !== $rate->method_id) {
