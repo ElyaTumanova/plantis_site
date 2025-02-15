@@ -133,7 +133,7 @@ function plnt_set_constants_script() {
 		let deliveryLongId = '<?php echo $delivery_long_dist; ?>';
 
 		// shipping methods costs
-		let deliveryCostInMkad = '<?php echo $in_mkad; ?>';
+		let deliveryCostInMkad = Number('<?php echo $in_mkad; ?>');
 		let deliveryCostOutMkad = '<?php echo $out_mkad; ?>';
 		let deliveryCostInMkadUrg = '<?php echo $in_mkad_urg; ?>';
 		let deliveryCostOutMkadUrg = '<?php echo $out_mkad_urg; ?>';

@@ -250,6 +250,6 @@ if (checkoutForm) {
 
   ajaxGetUrgent();
 
-  console.log(deliveryCostInMkadUrg);
+  console.log(deliveryCostInMkad);
   
 }
