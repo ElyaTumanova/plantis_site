@@ -159,9 +159,7 @@
     }
 }
 
-
-
-.product_cat-kashpo-treez #card_banner_peresadka {
+.product_cat-kashpo-treez #card_banner_peresadka, .product_cat-iskusstvennye-rasteniya-treez #card_banner_peresadka {
     display: none;
 }
 
@@ -181,52 +179,6 @@
     flex-direction: column;
     align-items: center;
 }
-
-/* .card__grid_outofstock #card_banner_photo,  .card__grid_not-plant #card_banner_photo, .card__grid_backorder #card_banner_photo {
-    display: none;
-} */
-
-/* .card__grid_outofstock #card_banner_peresadka, .card__grid_not-plant #card_banner_peresadka {
-    grid-area: banner2;
-} */
-
-
-
-/* @media (max-width: 767px) {
-    .card__grid_outofstock #card_banner_peresadka, .card__grid_not-plant #card_banner_peresadka {
-        grid-area: banner2;
-    }
-} */
-
-/* .card__grid_treez #card_banner_peresadka {
-    display: none;
-} */
-
-
-
-/* #card_banner_treez {
-    display: none;
-} */
-
-/* .card__grid_treez #card_banner_treez {
-    grid-area: banner1 / banner1 / banner2 / banner2;
-} */
-
-/* @media (max-width: 767px) {
-    .card__grid_treez #card_banner_treez {
-        grid-area: banner1;
-    }
-} */
-
-
-
-/* #card_banner_backorder {
-    display: none;
-} */
-
-/* .card__grid_backorder #card_banner_backorder {
-    display: flex;
-} */
 
 .card_banner {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
