@@ -70,7 +70,7 @@ if( !empty ($crosssell_ids) ){
                         <?php wc_get_template_part( 'content', 'product' ); ?>
                         <?php $prod_id = get_the_ID(); ?>
                         <li class="swiper-slide product">
-                            <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );?>" class="backorder-crossells__preview-img" alt="<?php echo get_the_title();?>">
+                            <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );?>" class="backorder-crossells__img attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="<?php echo get_the_title();?>">
                             <a href="<?php echo get_permalink();?>" class="backorder-crossells__link" target="blank">
                                 <div class="backorder-crossells__title woocommerce-loop-product__title"><?php echo get_the_title();?></div>
                             </a>
