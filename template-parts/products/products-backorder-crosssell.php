@@ -92,7 +92,6 @@ if( !empty ($crosssell_ids) ){
                                 <?php 
                             }
                             ?>
-                            <span class="price backorder-crossells__price"><?php echo get_post_meta( get_the_ID(), '_price', true);?>&#8381;</span>
                             <button class='backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>" data-cart_item="<?php echo $replace_cart_item_key; ?>">Заменить</button>
                         </li>
                         <?php endif;?>
