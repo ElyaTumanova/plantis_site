@@ -575,7 +575,7 @@
 
   .swiper-scrollbar-drag:hover, .swiper-scrollbar-drag:active{
     height: 5px;
-    top: -2px;
+    top: -1px;
   }
   .swiper-scrollbar-cursor-drag {
     cursor: move;
