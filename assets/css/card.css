@@ -3,10 +3,11 @@
 .card__grid {
     display: grid;
     grid-template-columns: 45% 30% calc(25% - 40px);
-    grid-template-rows: minmax(160px, auto) repeat(4, auto); /*card-grid heihts*/
+    grid-template-rows: minmax(160px, auto) repeat(5, auto); /*card-grid heihts*/
     grid-template-areas:
     "image info price"
-    "image tabs banner-wrap"
+    "image tabs banner1"
+    "image tabs banner2"
     "image upsells upsells"
     "image crossells crossells";
     column-gap: 20px;
@@ -20,7 +21,7 @@
     "image info price"
     "image tabs outofstockinfo"
     "image crossells crossells"
-    "image banner-wrap"
+    "image banner1"
     "image upsells upsells";
 }
 
@@ -96,16 +97,12 @@
 }
 
 /* card banners */
-/* .card_banner:first-of-type {
+.card_banner:first-of-type {
     grid-area: banner1;
 }
 
 .card_banner:last-of-type {
     grid-area: banner2;
-} */
-
-.card_banner__wrap {
-    grid-area: banner-wrap;
 }
 
 .card_banner cite {
@@ -132,9 +129,9 @@
     display: none;
 } */
 
-/* .product_cat-kashpo-treez #card_banner_peresadka {
+.product_cat-kashpo-treez #card_banner_peresadka {
     display: none;
-} */
+}
 
 /* #card_banner_treez {
     display: none;
