@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $product_id = $args[ 'product_id' ];
-$cart_item = $args[ 'cart_item' ];
+$replace_cart_item_key = $args[ 'cart_item' ];
 $product = wc_get_product( $product_id );
 $crosssell_ids = get_post_meta( $product_id, '_crosssell_ids' );
 
@@ -81,7 +81,7 @@ if( !empty ($crosssell_ids) ){
                                 <div class="backorder-crossells__title woocommerce-loop-product__title"><?php echo get_the_title();?></div>
                             </a>
                             <span class="price backorder-crossells__price"><?php echo get_post_meta( get_the_ID(), '_price', true);?>&#8381;</span>
-                            <button class='backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>" data-cart_item="<?php echo $cart_item; ?>">Заменить</button>
+                            <button class='backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>" data-cart_item="<?php echo $replace_cart_item_key; ?>">Заменить</button>
                         </li>
                         <?php endif;?>
                         <?php endwhile; // end of the loop. ?>
