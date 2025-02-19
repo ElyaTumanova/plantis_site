@@ -81,17 +81,19 @@ if( !empty ($crosssell_ids) ){
                             <a href="<?php echo get_permalink();?>" class="backorder-crossells__link" target="blank">
                                 <div class="backorder-crossells__title woocommerce-loop-product__title"><?php echo get_the_title();?></div>
                             </a>
+                            <div class="price">
                             <?php if ($sale) {
                                 ?>
-                                <span class="price backorder-crossells__reg-price"><?php echo get_post_meta( get_the_ID(), '_regular_price', true);?>&#8381;</span>
-                                <span class="price backorder-crossells__price"><?php echo get_post_meta( get_the_ID(), '_sale_price', true);?>&#8381;</span>
+                                <span class="backorder-crossells__reg-price"><?php echo get_post_meta( get_the_ID(), '_regular_price', true);?>&#8381;</span>
+                                <span class="backorder-crossells__price"><?php echo get_post_meta( get_the_ID(), '_sale_price', true);?>&#8381;</span>
                                 <?php
                             } else {
                                 ?>
-                                <span class="price backorder-crossells__price"><?php echo get_post_meta( get_the_ID(), '_price', true);?>&#8381;</span>
+                                <span class="backorder-crossells__price"><?php echo get_post_meta( get_the_ID(), '_price', true);?>&#8381;</span>
                                 <?php 
                             }
                             ?>
+                            </div>
                             <button class='backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>" data-cart_item="<?php echo $replace_cart_item_key; ?>">Заменить</button>
                         </li>
                         <?php endif;?>
