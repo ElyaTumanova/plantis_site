@@ -184,7 +184,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 							?><td class="product-backorder-upsells"><?php
 							get_template_part('template-parts/products/products-backorder-crosssell',null,
 								array( // массив с параметрами
-									'product_id' => $product_id
+									'product_id' => $product_id,
+									'cart_item'=>$cart_item
 							));
 							?></td><?php
 						}	 

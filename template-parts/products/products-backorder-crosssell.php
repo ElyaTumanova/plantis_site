@@ -3,16 +3,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-//global $product;
 $product_id = $args[ 'product_id' ];
-//echo $product_id;
+$cart_item = $args[ '$cart_item' ];
 $product = wc_get_product( $product_id );
-//echo $product;
-
-//$crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
 $crosssell_ids = get_post_meta( $product_id, '_crosssell_ids' );
-//$upsells_ids = $product->get_upsell_ids();
-
 
 if( !empty ($crosssell_ids) ){
 
@@ -67,7 +61,7 @@ if( !empty ($crosssell_ids) ){
 
                         <?php wc_get_template_part( 'content', 'product' ); ?>
                         <?php $prod_id = get_the_ID(); ?>
-                        <div class='backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>">lalala<?php echo $prod_id; ?></div>
+                        <div class='backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>" data-cart_item="<?php echo $cart_item; ?>">lalala<?php echo $prod_id; ?></div>
 
                         <?php endwhile; // end of the loop. ?>
                     </ul>

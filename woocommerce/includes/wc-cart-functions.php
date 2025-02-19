@@ -41,7 +41,9 @@ function plnt_replace_backorder_product() {
 	if (isset($_POST['backorder_replace_prodId'])){
 		global $woocommerce;
 		$replaceproductid = $_POST['backorder_replace_prodId']; 
+		$replacecartitem = $_POST['backorder_replace_cart_item']; 
 		$woocommerce->cart->add_to_cart( $replaceproductid );
+		$woocommerce->cart->remove_cart_item( $replacecartitem);
 	}    
     die(); // (required)
 }
