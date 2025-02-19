@@ -38,4 +38,14 @@ $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
     </div>
 <?php endif; ?>
 
+<?php if ( $product->get_stock_status() ==='outofstock') {
+        ?>
+        <div class="card__outofstock-info_wrap card_banner">
+        <div class="card__outofstock-info">К сожалению, данный товар закончился!<br>Вы можете оставить предзаказ на сайте или связаться с нами удобным способом, и мы привезём его под заказ.</div>
+        <?php
+        get_template_part('template-parts/social-media-btns');
+        ?></div><?php
+    }
+
+
 

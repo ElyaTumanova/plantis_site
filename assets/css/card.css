@@ -25,6 +25,60 @@
     "image upsells upsells";
 }
 
+/* #adaptive for grid*/
+@media (max-width: 1024px) {
+    .card__grid {
+        grid-template-columns: 35% 35% calc(30% - 20px);
+        column-gap: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    /* #adaptive for grid*/
+
+    .card__grid {
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(8, auto);
+        grid-auto-rows:auto;
+        grid-template-areas:
+        "image"
+        "info"
+        "crossells"
+        "banner1"
+        "descr"
+        "banner2"
+        "upsells"
+        "tohide";
+        column-gap: 0;
+        row-gap: 30px;
+    }
+
+    .card__grid_backorder {
+        grid-template-areas:
+        "image"
+        "info"
+        "banner1"
+        "crossells"
+        "descr"
+        "banner2"
+        "upsells"
+        "tohide";
+    }
+
+    .card__grid_outofstock {
+        grid-template-areas:
+        "image"
+        "info"
+        "outofstockinfo"
+        "crossells"
+        "descr"
+        "banner1"
+        "upsells"
+        "tohide";
+    }
+}
+
 .card__image-wrap {
     grid-area: image;
     position: sticky;
@@ -491,9 +545,6 @@
     white-space: nowrap;
 }
 
-
-
-
 @media (max-width: 767px) {
 
     .card__grid .add-to-cart-wrap .button {
@@ -765,58 +816,8 @@ input[type="number"] {
 # Adaptive General
 --------------------------------------------------------------*/
 
-/* #adaptive for grid*/
-@media (max-width: 1024px) {
-    .card__grid {
-        grid-template-columns: 35% 35% calc(30% - 20px);
-        column-gap: 10px;
-    }
-}
 
 @media (max-width: 767px) {
-
-    /* #adaptive for grid*/
-
-    .card__grid {
-        grid-template-columns: 100%;
-        grid-template-rows: repeat(8, auto);
-        grid-auto-rows:auto;
-        grid-template-areas:
-        "image"
-        "info"
-        "crossells"
-        "banner1"
-        "descr"
-        "banner2"
-        "upsells"
-        "tohide";
-        column-gap: 0;
-        row-gap: 30px;
-    }
-
-    .card__grid_backorder {
-        grid-template-areas:
-        "image"
-        "info"
-        "banner1"
-        "crossells"
-        "descr"
-        "banner2"
-        "upsells"
-        "tohide";
-    }
-
-    .card__grid_outofstock {
-        grid-template-areas:
-        "image"
-        "info"
-        "outofstockinfo"
-        "crossells"
-        "descr"
-        "banner1"
-        "upsells"
-        "tohide";
-    }
 
     .card__grid .card__price-wrap {
         grid-area: tohide;

@@ -205,7 +205,7 @@ function plnt_price_wrap(){
         ?>
     </div>
     <?php
-        plnt_outofstock_info();
+        //plnt_outofstock_info();
 };
 
 // peresadka
