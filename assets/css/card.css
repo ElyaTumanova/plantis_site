@@ -105,6 +105,10 @@
     grid-area: banner2;
 }
 
+#card_banner_peresadka {
+    grid-area: banner2; 
+}
+
 .card_banner cite {
     text-transform: none;
     font-weight: 500;
@@ -765,7 +769,7 @@ input[type="number"] {
 
     .card__grid {
         grid-template-columns: 100%;
-        grid-template-rows: repeat(9, auto);
+        grid-template-rows: repeat(8, auto);
         grid-auto-rows:auto;
         grid-template-areas:
         "image"
