@@ -178,16 +178,18 @@ do_action( 'woocommerce_before_cart' ); ?>
 								echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 							?>
 						</td>
-						<td class="product-backorder-upsells">
-							<?php 
-							if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
-								get_template_part('template-parts/products/products-backorder-crosssell',null,
-									array( // массив с параметрами
-										'product_id' => $product_id
-								));
-							}	 
-							?>
-						</td>
+						
+						<?php 
+						if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
+							?><td class="product-backorder-upsells"><?php
+							get_template_part('template-parts/products/products-backorder-crosssell',null,
+								array( // массив с параметрами
+									'product_id' => $product_id
+							));
+							?></td><?php
+						}	 
+						?>
+						
 					</tr>
 					<?php
 				}
