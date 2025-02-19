@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $product_id = $args[ 'product_id' ];
-$cart_item = $args[ '$cart_item' ];
+$cart_item = $args[ 'cart_item' ];
 $product = wc_get_product( $product_id );
 $crosssell_ids = get_post_meta( $product_id, '_crosssell_ids' );
 
