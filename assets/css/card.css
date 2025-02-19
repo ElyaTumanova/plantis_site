@@ -3,11 +3,10 @@
 .card__grid {
     display: grid;
     grid-template-columns: 45% 30% calc(25% - 40px);
-    grid-template-rows: minmax(160px, auto) repeat(5, auto); /*card-grid heihts*/
+    grid-template-rows: minmax(160px, auto) repeat(4, auto); /*card-grid heihts*/
     grid-template-areas:
     "image info price"
-    "image tabs banner1"
-    "image tabs banner2"
+    "image tabs banner-wrap"
     "image upsells upsells"
     "image crossells crossells";
     column-gap: 20px;
@@ -21,7 +20,7 @@
     "image info price"
     "image tabs outofstockinfo"
     "image crossells crossells"
-    "image banner1 banner2"
+    "image banner-wrap"
     "image upsells upsells";
 }
 
@@ -97,12 +96,16 @@
 }
 
 /* card banners */
-.card_banner:first-of-type {
+/* .card_banner:first-of-type {
     grid-area: banner1;
 }
 
 .card_banner:last-of-type {
     grid-area: banner2;
+} */
+
+.card_banner__wrap {
+    grid-area: banner-wrap;
 }
 
 .card_banner cite {
@@ -111,54 +114,54 @@
     font-style: normal;
 }
 
-.card__grid_outofstock #card_banner_photo,  .card__grid_not-plant #card_banner_photo, .card__grid_backorder #card_banner_photo {
+/* .card__grid_outofstock #card_banner_photo,  .card__grid_not-plant #card_banner_photo, .card__grid_backorder #card_banner_photo {
     display: none;
-}
+} */
 
-.card__grid_outofstock #card_banner_peresadka, .card__grid_not-plant #card_banner_peresadka {
+/* .card__grid_outofstock #card_banner_peresadka, .card__grid_not-plant #card_banner_peresadka {
     grid-area: banner1 / banner1 / banner2 / banner2;
-}
+} */
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .card__grid_outofstock #card_banner_peresadka, .card__grid_not-plant #card_banner_peresadka {
         grid-area: banner1;
     }
-}
+} */
 
-.card__grid_treez #card_banner_peresadka {
+/* .card__grid_treez #card_banner_peresadka {
     display: none;
-}
+} */
 
-.product_cat-kashpo-treez #card_banner_peresadka {
+/* .product_cat-kashpo-treez #card_banner_peresadka {
     display: none;
-}
+} */
 
-#card_banner_treez {
+/* #card_banner_treez {
     display: none;
-}
+} */
 
-.card__grid_treez #card_banner_treez {
+/* .card__grid_treez #card_banner_treez {
     display: flex;
     grid-area: banner1 / banner1 / banner2 / banner2;
-}
+} */
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .card__grid_treez #card_banner_treez {
         grid-area: banner1;
     }
-}
+} */
 
 #card_banner_treez p:first-child {
     color: var(--red-color);
 }
 
-#card_banner_backorder {
+/* #card_banner_backorder {
     display: none;
-}
+} */
 
-.card__grid_backorder #card_banner_backorder {
+/* .card__grid_backorder #card_banner_backorder {
     display: flex;
-}
+} */
 
 .card_banner {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
