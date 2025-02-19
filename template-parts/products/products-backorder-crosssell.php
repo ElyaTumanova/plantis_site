@@ -16,11 +16,14 @@ foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 print_r($cart_item_ids);
 print_r($crosssell_ids);
 
+$crosssell_ids_clean =array_diff($crosssell_ids[0],$cart_item_ids)
+print_r($crosssell_ids_clean);
+
 if( !empty ($crosssell_ids) ){
 
-   $crosssell_ids = $crosssell_ids[0];
+//    $crosssell_ids = $crosssell_ids[0];
 
-    if(count($crosssell_ids)>0){
+    if(count($crosssell_ids_clean)>0){
 
         $args = array(
             'post_type' => 'product',
@@ -28,8 +31,7 @@ if( !empty ($crosssell_ids) ){
             'no_found_rows' => 1,
             'posts_per_page' => 6,
             'orderby' => 'rand',
-            'post__in' => $crosssell_ids,
-            'post__not_in' => $cart_item_ids,
+            'post__in' => $crosssell_ids_clean,
             'meta_query' => array( 
                 array(
                     'key'       => '_stock_status',
