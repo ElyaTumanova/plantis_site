@@ -8,6 +8,13 @@ $replace_cart_item_key = $args[ 'cart_item' ];
 $product = wc_get_product( $product_id );
 $crosssell_ids = get_post_meta( $product_id, '_crosssell_ids' );
 
+$cart_item_ids = [];
+foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+    $product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
+    array_push($cart_item_ids, $product_id);
+}
+// print_r($cart_item_ids);
+
 if( !empty ($crosssell_ids) ){
 
    $crosssell_ids = $crosssell_ids[0];
@@ -35,16 +42,11 @@ if( !empty ($crosssell_ids) ){
                     'terms' => 'komnatnye-rasteniya',
                     'operator' => 'IN'
                 )
-            )
+                ),
+            'post__not_in' => $cart_item_ids
         );
 
         $products = new WP_Query( $args );
-        $cart_item_ids = [];
-        foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-            $product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
-            array_push($cart_item_ids, $product_id);
-        }
-        // print_r($cart_item_ids);
     
         if ( $products->have_posts() ) : ?>
 
@@ -74,7 +76,7 @@ if( !empty ($crosssell_ids) ){
                         <?php while ( $products->have_posts() ) : $products->the_post(); ?>
 
                         <?php $prod_id = get_the_ID(); ?>
-                        <?php if (!in_array($prod_id, $cart_item_ids)):?>
+                        <?php //if (!in_array($prod_id, $cart_item_ids)):?>
                         <?php $sale = get_post_meta( get_the_ID(), '_sale_price', true);?>
                         <li class="swiper-slide product">
                             <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'medium' );?>" class="backorder-crossells__img attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="<?php echo get_the_title();?>">
@@ -96,7 +98,7 @@ if( !empty ($crosssell_ids) ){
                             </div>
                             <button class='backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>" data-cart_item="<?php echo $replace_cart_item_key; ?>">Заменить</button>
                         </li>
-                        <?php endif;?>
+                        <?php //endif;?>
                         <?php endwhile; // end of the loop. ?>
                     </ul>
                     <div class="swiper-scrollbar"></div>
