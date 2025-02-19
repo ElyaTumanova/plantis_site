@@ -370,8 +370,18 @@
     }
     .woocommerce-loop-product__title {
         font-size: 16px;
-        margin-top: 0;
     }
+}
+
+.backorder_replace_btn {
+    width: 100%;
+    padding: 5px 10px 4px;
+    border-radius: 5px;
+    background-color: var(--text);
+    border: 2px solid var(--text);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--white);
 }
 
 .product-backorder-upsells_active .backorder-crossells__sliders-wrap {
