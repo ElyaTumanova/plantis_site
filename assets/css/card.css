@@ -119,8 +119,11 @@
     display: none;
 } */
 
-.card__grid_outofstock #card_banner_peresadka, .card__grid_not-plant #card_banner_peresadka, .card__grid_not-plant #card_banner_treez {
+.card__grid_outofstock #card_banner_peresadka, .card__grid_not-plant #card_banner_peresadka {
     grid-area: banner1 / banner1 / banner2 / banner2;
+}
+.card__grid_not-plant #card_banner_treez {
+    grid-area: banner2 / banner2;
 }
 
 @media (max-width: 767px) {
