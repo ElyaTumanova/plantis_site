@@ -149,9 +149,9 @@
     grid-area: banner2;
 }
 
-/* #card_banner_peresadka {
+#card_banner_peresadka {
     grid-area: banner2; 
-} */
+}
 
 @media (min-width: 767px) {
     .card__grid_not-plant #card_banner_peresadka {
