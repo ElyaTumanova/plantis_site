@@ -38,7 +38,8 @@ function replaceBackorderProduct(evt, btn) {
                 console.log('hi replaceBackorderProduct')
             }
         });
+        
+        $( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
     });
 
-    $( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
 }
