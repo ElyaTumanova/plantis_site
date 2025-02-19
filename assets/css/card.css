@@ -153,6 +153,14 @@
     grid-area: banner2; 
 }
 
+@media (min-width: 767px) {
+    .card__grid_not-plant #card_banner_peresadka {
+        grid-area: banner1 / banner1 / banner2 / banner2;
+    }
+}
+
+
+
 .product_cat-kashpo-treez #card_banner_peresadka {
     display: none;
 }
