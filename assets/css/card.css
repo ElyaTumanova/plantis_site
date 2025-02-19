@@ -54,19 +54,7 @@
         row-gap: 30px;
     }
 
-    .card__grid_backorder {
-        grid-template-areas:
-        "image"
-        "info"
-        "banner1"
-        "crossells"
-        "descr"
-        "banner2"
-        "upsells"
-        "tohide";
-    }
-
-    .card__grid_outofstock {
+    .card__grid_backorder, .card__grid_outofstock {
         grid-template-areas:
         "image"
         "info"
@@ -88,11 +76,13 @@
     max-height: 585px; /*card-grid heihts*/
     overflow: hidden;
 }
+
 @media (max-width: 1279px) {
     .card__image-wrap {
         top: 65px;
     }
 }
+
 @media (max-width:767px) {
     .card__image-wrap {
         position: relative;
@@ -163,19 +153,9 @@
     grid-area: banner2; 
 }
 
-.card_banner cite {
-    text-transform: none;
-    font-weight: 500;
-    font-style: normal;
-}
-
-/* .card__grid_outofstock #card_banner_photo,  .card__grid_not-plant #card_banner_photo, .card__grid_backorder #card_banner_photo {
+.product_cat-kashpo-treez #card_banner_peresadka {
     display: none;
-} */
-
-/* .card__grid_outofstock #card_banner_peresadka, .card__grid_not-plant #card_banner_peresadka {
-    grid-area: banner2;
-} */
+}
 
 #card_banner_treez {
     grid-area: banner1 / banner1 / banner2 / banner2;
@@ -187,6 +167,23 @@
     }
 }
 
+.card__outofstock-info_wrap {
+    grid-area: banner1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* .card__grid_outofstock #card_banner_photo,  .card__grid_not-plant #card_banner_photo, .card__grid_backorder #card_banner_photo {
+    display: none;
+} */
+
+/* .card__grid_outofstock #card_banner_peresadka, .card__grid_not-plant #card_banner_peresadka {
+    grid-area: banner2;
+} */
+
+
+
 /* @media (max-width: 767px) {
     .card__grid_outofstock #card_banner_peresadka, .card__grid_not-plant #card_banner_peresadka {
         grid-area: banner2;
@@ -197,9 +194,7 @@
     display: none;
 } */
 
-.product_cat-kashpo-treez #card_banner_peresadka {
-    display: none;
-}
+
 
 /* #card_banner_treez {
     display: none;
@@ -215,9 +210,7 @@
     }
 } */
 
-#card_banner_treez p:first-child {
-    color: var(--red-color);
-}
+
 
 /* #card_banner_backorder {
     display: none;
@@ -254,6 +247,16 @@
 .card_banner a:hover {
     color: var(--accent-color);
     cursor: pointer;
+}
+
+.card_banner cite {
+    text-transform: none;
+    font-weight: 500;
+    font-style: normal;
+}
+
+#card_banner_treez p:first-child {
+    color: var(--red-color);
 }
 
 /* стили элементов */
@@ -678,12 +681,6 @@ input[type="number"] {
     width: fit-content;
 }
 
-.card__outofstock-info_wrap {
-    grid-area: banner1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 .card__outofstock-info {
     font-size: 18px;
     font-weight: 700;
