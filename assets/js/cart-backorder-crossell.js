@@ -2,9 +2,7 @@ let backorderWrap = document.querySelectorAll('.product-backorder-upsells');
 
 if(backorderWrap) {
     backorderWrap.forEach((el) =>{
-        console.log(el);
         let dropDownBtn = el.querySelector('.backorder-crossells__preview-down');
-        console.log(dropDownBtn);
         dropDownBtn.addEventListener('click', (evt)=>{toggleBackorderDropdown(evt,el)});
 
         let replaceBtns = el.querySelectorAll('.backorder_replace_btn');

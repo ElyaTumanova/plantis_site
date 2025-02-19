@@ -24,15 +24,7 @@ function plnt_cart_popular() {
 };
 
 
-// for dev
-add_action('woocommerce_before_cart', 'plnt_cart_dev', 30);
-
-function plnt_cart_dev() {
-	echo 'hi';
-	$WC_Cart = new WC_Cart();
-	print_r($WC_Cart->get_cart());
-	
-}
+// замена товара в корзине для регулярного ассортимента backorder
 
 add_action( 'wp_ajax_replace_backorder_product', 'plnt_replace_backorder_product' );
 add_action( 'wp_ajax_nopriv_replace_backorder_product', 'plnt_replace_backorder_product' );

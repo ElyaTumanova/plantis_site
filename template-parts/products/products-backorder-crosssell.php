@@ -59,10 +59,16 @@ if( !empty ($crosssell_ids) ){
                     <ul class="products columns-3 swiper-wrapper"> 
                         <?php while ( $products->have_posts() ) : $products->the_post(); ?>
 
-                        <?php wc_get_template_part( 'content', 'product' ); ?>
+                        <?php //wc_get_template_part( 'content', 'product' ); ?>
                         <?php $prod_id = get_the_ID(); ?>
-                        <div class='backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>" data-cart_item="<?php echo $cart_item; ?>">lalala<?php echo $prod_id; ?></div>
-
+                        <li class="swiper-slide product">
+                            <a href="<?php echo get_permalink();?>" class="backorder-crossells__link" target="blank">
+                                <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );?>" class="backorder-crossells__preview-img" alt="<?php echo get_the_title();?>">
+                                <div class="backorder-crossells__title woocommerce-loop-product__title"><?php echo get_the_title();?></div>
+                                <span class="price backorder-crossells__price"><?php echo get_post_meta( get_the_ID(), '_price', true);?>&#8381;</span>
+                                <button class='backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>" data-cart_item="<?php echo $cart_item; ?>">lalala<?php echo $prod_id; ?></button>
+                            </a>
+                        </li>
                         <?php endwhile; // end of the loop. ?>
                     </ul>
                     <div class="swiper-scrollbar"></div>
