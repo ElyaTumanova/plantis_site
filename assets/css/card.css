@@ -800,7 +800,7 @@ input[type="number"] {
         grid-template-areas:
         "image"
         "info"
-        "outofstock"
+        "outofstockinfo"
         "crossells"
         "descr"
         "banner1"
@@ -814,11 +814,11 @@ input[type="number"] {
         height: 0;
     }
 
-    .card__grid_outofstock .card__price-wrap {
-        grid-area: outofstock;
+    /* .card__grid_outofstock .card__price-wrap {
+        grid-area: outofstockinfo;
         padding: 10px;
         height: fit-content;
-    }
+    } */
 
     .card__grid_outofstock .card__outofstock-info {
         text-align: center;
