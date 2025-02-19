@@ -13,7 +13,7 @@ foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
     $product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
     array_push($cart_item_ids, $product_id);
 }
-// print_r($cart_item_ids);
+print_r($cart_item_ids);
 
 if( !empty ($crosssell_ids) ){
 
@@ -28,6 +28,7 @@ if( !empty ($crosssell_ids) ){
             'posts_per_page' => 6,
             'orderby' => 'rand',
             'post__in' => $crosssell_ids,
+            'post__not_in' => $cart_item_ids,
             'meta_query' => array( 
                 array(
                     'key'       => '_stock_status',
@@ -42,8 +43,7 @@ if( !empty ($crosssell_ids) ){
                     'terms' => 'komnatnye-rasteniya',
                     'operator' => 'IN'
                 )
-                ),
-            'post__not_in' => $cart_item_ids
+                )
         );
 
         $products = new WP_Query( $args );
