@@ -15,7 +15,8 @@ $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
     <p>Растение под заказ из Европы, ориентировочная дата доставки <?php echo plnt_set_backorders_date();?>. <br>После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</p>
 </div>
 <div class="card_banner" id="card_banner_peresadka">
-    <p>При покупке <a href="<?php echo get_site_url()?>/product-category/gorshki_i_kashpo/" target="_blank" rel="noopener">горшка </a>— пересадка в подарок!</p>
+    <p>При покупке <a href="<?php echo get_site_url()?>/product-category/gorshki_i_kashpo/" target="_blank" rel="noopener">горшка </a>— пересадка в подарок!*</p>
+    <p>* кроме кашпо Treez и Lechuza диаметром больше 26 см</p>
 </div>
 <div class="card_banner" id="card_banner_treez">
     <p> Минимальная сумма заказа для кашпо и искусственных растений Treez <span><?php echo $min_treez_delivery?></span> рублей (без учета стоимости других товаров)</p>
