@@ -14,6 +14,7 @@ foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
     array_push($cart_item_ids, $product_id);
 }
 print_r($cart_item_ids);
+print_r($crosssell_ids);
 
 if( !empty ($crosssell_ids) ){
 
