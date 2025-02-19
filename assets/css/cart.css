@@ -371,6 +371,18 @@
     .woocommerce-loop-product__title {
         font-size: 16px;
     }
+    .backorder-crossells__reg-price {
+        font-size: 20px;
+        font-weight: 400;
+        color: red;
+        text-decoration: line-through;
+        margin-right: 10px;
+    }
+    
+    .backorder-crossells__price {
+        font-size: 30px;
+        font-weight: 400;
+    }    
 }
 
 .backorder_replace_btn {
