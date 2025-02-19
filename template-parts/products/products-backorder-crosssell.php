@@ -74,6 +74,7 @@ if( !empty ($crosssell_ids) ){
                         <?php while ( $products->have_posts() ) : $products->the_post(); ?>
 
                         <?php $prod_id = get_the_ID(); ?>
+                        <?php if (!in_array($prod_id, $cart_item_ids))?>
                         <li class="swiper-slide product">
                             <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'medium' );?>" class="backorder-crossells__img attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="<?php echo get_the_title();?>">
                             <a href="<?php echo get_permalink();?>" class="backorder-crossells__link" target="blank">
@@ -82,6 +83,7 @@ if( !empty ($crosssell_ids) ){
                             <span class="price backorder-crossells__price"><?php echo get_post_meta( get_the_ID(), '_price', true);?>&#8381;</span>
                             <button class='backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>" data-cart_item="<?php echo $cart_item; ?>">Заменить</button>
                         </li>
+                        <?php endif;?>
                         <?php endwhile; // end of the loop. ?>
                     </ul>
                     <div class="swiper-scrollbar"></div>
