@@ -105,6 +105,12 @@
     grid-area: banner2;
 }
 
+.card_banner cite {
+    text-transform: none;
+    font-weight: 500;
+    font-style: normal;
+}
+
 .card__grid_outofstock #card_banner_photo,  .card__grid_not-plant #card_banner_photo, .card__grid_backorder #card_banner_photo {
     display: none;
 }
