@@ -601,18 +601,13 @@ Contents
     // add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category' );
 
     function min_amount_for_category(){
-        global $treez_cat_id;
-        global $plants_treez_cat_id;
         $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
         $qty = 0; // обязательно сначала ставим 0
         $cat_amount = 0;
         $products_min = false;
         foreach ( WC()->cart->get_cart() as $cart_item ) {
                 $_product = $cart_item['data'];
-                $_product_id = $_product->id;
                 $isTreez = check_is_treez($_product);
-                $parentCat = check_category ($_product);
-                //if ( $parentCat === $treez_cat_id || $parentCat === $plants_treez_cat_id ) {
                 if ( $isTreez) {
                     $products_min = true;
                     $qty = $cart_item[ 'quantity' ];
@@ -649,18 +644,14 @@ Contents
     add_action( 'woocommerce_review_order_before_shipping', 'min_amount_for_treez_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
 
     function min_amount_for_treez_info(){
-        global $treez_cat_id;
-        global $plants_treez_cat_id;
         $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
         $qty = 0; // обязательно сначала ставим 0
         $cat_amount = 0;
         $products_min = false;
         foreach ( WC()->cart->get_cart() as $cart_item ) {
                 $_product = $cart_item['data'];
-                $_product_id = $_product->id;
-                $parentCat = check_category ($_product);
-
-                if ( $parentCat === $treez_cat_id || $parentCat === $plants_treez_cat_id ) {
+                $isTreez = check_is_treez($_product);
+                if ( $isTreez) {
                     $products_min = true;
                     $qty = $cart_item[ 'quantity' ];
                     $price = $cart_item['data']->get_price();
@@ -682,25 +673,16 @@ Contents
     add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_treez' );
 
     function plnt_disable_payment_treez( $available_gateways ) {
-        global $treez_cat_id;
-        global $plants_treez_cat_id;
-        // $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
-        // $qty = 0; // обязательно сначала ставим 0
-        // $cat_amount = 0;
         $products_min = false;
         if (is_admin()) {
             return $available_gateways;
         } else {
             foreach ( WC()->cart->get_cart() as $cart_item ) {
                     $_product = $cart_item['data'];
-                    $_product_id = $_product->id;
-                    $parentCat = check_category ($_product);
+                    $isTreez = check_is_treez($_product);
         
-                    if ( $parentCat === $treez_cat_id || $parentCat === $plants_treez_cat_id  ) {
+                    if ( $isTreez) {
                         $products_min = true;
-                        // $qty = $cart_item[ 'quantity' ];
-                        // $price = $cart_item['data']->get_price();
-                        // $cat_amount = $cat_amount + $price*$qty;
                     }	
             }
         
