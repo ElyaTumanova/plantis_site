@@ -183,6 +183,7 @@ function for_dev() {
     global $product;
     $isTreez = check_is_treez($product);
     echo 'is Treez '.$isTreez.'hi';
+    print_r($isTreez);
 }
 
 function plnt_price_wrap(){
