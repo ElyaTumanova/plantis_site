@@ -465,6 +465,7 @@ function check_category ($product) {
 
 function check_is_treez($product) {
     $parentCatId = check_category ($product);
+    echo $parentCatId;
     $isTreez = $parentCatId === $treez_cat_id || $parentCatId === $plants_treez_cat_id || ($product->get_stock_status() ==='onbackorder' && $parentCatId === $gorshki_cat_id );
     return $isTreez;
 }
