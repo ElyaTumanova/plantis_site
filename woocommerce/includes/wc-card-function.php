@@ -182,8 +182,7 @@ add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 5);
 function for_dev() {
     global $product;
     $isTreez = check_is_treez($product);
-    echo 'is Treez '.$isTreez.'hi';
-    print_r($isTreez);
+    echo 'is Treez '.$isTreez;
 }
 
 function plnt_price_wrap(){
@@ -472,8 +471,8 @@ function check_is_treez($product) {
     global $peresadka_cat_id;
     global $misc_cat_id;
     global $plants_treez_cat_id;
+    
     $parentCatId = check_category ($product);
-    echo $parentCatId;
     $isTreez = $parentCatId === $treez_cat_id || $parentCatId === $plants_treez_cat_id || ($product->get_stock_status() ==='onbackorder' && $parentCatId === $gorshki_cat_id );
     return $isTreez;
 }
