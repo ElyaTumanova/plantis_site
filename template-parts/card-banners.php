@@ -10,7 +10,7 @@ global $plants_treez_cat_id;
 $parentCatId = check_category ($product);
 $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
 
-$isTreez = $parentCatId === $treez_cat_id || $parentCatId === $plants_treez_cat_id || ($product->get_stock_status() ==='onbackorder' && $parentCatId === $gorshki_cat_id );
+$isTreez = check_is_treez($product);
 ?>
 
 

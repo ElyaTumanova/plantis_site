@@ -199,13 +199,11 @@ function plnt_price_wrap(){
             <span class = "backorder-info">В наличии <?php echo $product->get_stock_quantity();?> шт. Если вы хотите заказать большее количество, то ориентировочная дата доставки из Европы <?php echo plnt_set_backorders_date();?>. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</span>
         </div>
         <?php
-        // plnt_outofstock_info();
         // peresadka_init
         //plnt_get_peresadka_add_to_cart();
         ?>
     </div>
     <?php
-        //plnt_outofstock_info();
 };
 
 // peresadka
@@ -268,17 +266,6 @@ function plnt_check_stock_status() {
     }
 }
 
-function plnt_outofstock_info() {
-    global $product;
-    if ( $product->get_stock_status() ==='outofstock') {
-        ?>
-        <div class="card__outofstock-info_wrap card_banner">
-        <div class="card__outofstock-info">К сожалению, данный товар закончился!<br>Вы можете оставить предзаказ на сайте или связаться с нами удобным способом, и мы привезём его под заказ.</div>
-        <?php
-        get_template_part('template-parts/social-media-btns');
-        ?></div><?php
-    }
-}
 function plnt_outofstock_btn() {
     global $product;
     if ( $product->get_stock_status() ==='outofstock') {
@@ -467,6 +454,12 @@ function check_category ($product) {
         return $parentCatId = $misc_cat_id;
     }
 };
+
+function check_is_treez($product) {
+    $parentCatId = check_category ($product);
+    $isTreez = $parentCatId === $treez_cat_id || $parentCatId === $plants_treez_cat_id || ($product->get_stock_status() ==='onbackorder' && $parentCatId === $gorshki_cat_id );
+    return $isTreez;
+}
 
 function plnt_set_backorders_date() {
 	$backorderdate = date( "d.m", strtotime('next wednesday +2 week') );
