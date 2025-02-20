@@ -28,7 +28,7 @@ if($site === 'http://new.plantis.shop') {
 	$plants_cat_id = 90;
 	$gorshki_cat_id = 86;
 	$treez_cat_id = 379;
-	$treez_poliv_cat_id = 229;
+	$treez_poliv_cat_id = 632;
 	$ukhod_cat_id = 378;
 	$misc_cat_id = 16;
 	$skidki_cat_id = 105;
