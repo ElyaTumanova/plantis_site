@@ -610,13 +610,10 @@ Contents
         foreach ( WC()->cart->get_cart() as $cart_item ) {
                 $_product = $cart_item['data'];
                 $_product_id = $_product->id;
+                $isTreez = check_is_treez($_product);
                 $parentCat = check_category ($_product);
-                // $terms = get_the_terms( $_product_id, 'product_cat' );
-                // foreach ($terms as $term) {
-                //         $_categoryid = $term->term_id;
-                //     }
-                // your products categories
-                if ( $parentCat === $treez_cat_id || $parentCat === $plants_treez_cat_id ) {
+                //if ( $parentCat === $treez_cat_id || $parentCat === $plants_treez_cat_id ) {
+                if ( $isTreez) {
                     $products_min = true;
                     $qty = $cart_item[ 'quantity' ];
                     $price = $cart_item['data']->get_price();
