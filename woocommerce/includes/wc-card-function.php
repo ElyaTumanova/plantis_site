@@ -10,8 +10,6 @@ add_action('woocommerce_before_single_product_summary','plnt_card_grid_start',5)
 function plnt_card_grid_start () {
     global $product;
     global $plants_cat_id;
-    global $treez_cat_id;
-    global $plants_treez_cat_id;
     $parentCatId = check_category ($product);
     $isTreez = check_is_treez($product);
     if ($parentCatId === $plants_cat_id) {
@@ -191,7 +189,7 @@ function plnt_price_wrap(){
     <div class="card__price-wrap">
         <div class = "card__add-to-cart-wrap">
             <?php
-            echo for_dev();
+            //echo for_dev();
             woocommerce_template_single_price();
             ?> 
             <div class="card__price-btns-wrap">
