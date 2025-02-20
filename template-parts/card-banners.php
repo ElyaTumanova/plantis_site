@@ -11,6 +11,7 @@ $parentCatId = check_category ($product);
 $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
 
 $isTreez = check_is_treez($product);
+echo $isTreez;
 ?>
 
 
