@@ -159,9 +159,9 @@
     }
 }
 
-.product_cat-kashpo-treez #card_banner_peresadka, .product_cat-iskusstvennye-rasteniya-treez #card_banner_peresadka {
+/* .product_cat-kashpo-treez #card_banner_peresadka, .product_cat-iskusstvennye-rasteniya-treez #card_banner_peresadka {
     display: none;
-}
+} */
 
 #card_banner_treez {
     grid-area: banner1 / banner1 / banner2 / banner2;

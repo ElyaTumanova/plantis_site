@@ -9,6 +9,8 @@ global $treez_cat_id;
 global $plants_treez_cat_id;
 $parentCatId = check_category ($product);
 $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
+
+$isTreez = $parentCatId === $treez_cat_id || $parentCatId === $plants_treez_cat_id || ($product->get_stock_status() ==='onbackorder' && $parentCatId === $gorshki_cat_id );
 ?>
 
 
@@ -26,12 +28,13 @@ $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
         </div>
     <?php endif; ?>
 <?php endif; ?>
-<div class="card_banner" id="card_banner_peresadka">
-    <p>При покупке <a href="<?php echo get_site_url()?>/product-category/gorshki_i_kashpo/" target="_blank" rel="noopener">горшка </a>— пересадка в подарок!*</p>
-    <cite>*кроме кашпо Treez и Lechuza диаметром больше 26 см</cite>
-</div>
-<?php if ($parentCatId === $treez_cat_id || $parentCatId === $plants_treez_cat_id || 
-($product->get_stock_status() ==='onbackorder' && $parentCatId === $gorshki_cat_id )) :?>
+<?php if (!$isTreez) :?>
+    <div class="card_banner" id="card_banner_peresadka">
+        <p>При покупке <a href="<?php echo get_site_url()?>/product-category/gorshki_i_kashpo/" target="_blank" rel="noopener">горшка </a>— пересадка в подарок!*</p>
+        <cite>*кроме кашпо Treez и Lechuza диаметром больше 26 см</cite>
+    </div>
+<?php endif; ?>
+<?php if ($isTreez) :?>
     <div class="card_banner" id="card_banner_treez">
         <p> Минимальная сумма заказа для кашпо и искусственных растений Treez <span><?php echo $min_treez_delivery?></span> рублей (без учета стоимости других товаров)</p>
         <p> Оплатить заказ с кашпо и/или искусственными растениями Treez можно будет после подтверждения их наличия. Наш менеджер свяжется с Вами после оформления заказа.</p>
