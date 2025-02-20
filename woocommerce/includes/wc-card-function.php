@@ -13,6 +13,7 @@ function plnt_card_grid_start () {
     global $treez_cat_id;
     global $plants_treez_cat_id;
     $parentCatId = check_category ($product);
+    $isTreez = check_is_treez($product);
     if ($parentCatId === $plants_cat_id) {
         if ( $product->get_stock_status() ==='onbackorder' && $product->backorders_allowed()) {
             ?>
@@ -28,7 +29,7 @@ function plnt_card_grid_start () {
             <?php
         }
     } else {
-        if ($parentCatId === $treez_cat_id || $parentCatId === $plants_treez_cat_id) {
+        if ($isTreez) {
             ?>
             <div class="card__grid card__grid_not-plant card__grid_treez ">
             <?php
@@ -471,9 +472,10 @@ function check_is_treez($product) {
     global $peresadka_cat_id;
     global $misc_cat_id;
     global $plants_treez_cat_id;
-    
+    $idCats = $product->get_category_ids();
+
     $parentCatId = check_category ($product);
-    $isTreez = $parentCatId === $treez_cat_id || $parentCatId === $plants_treez_cat_id || ($product->get_stock_status() ==='onbackorder' && $parentCatId === $gorshki_cat_id );
+    $isTreez = $parentCatId === $treez_cat_id || $parentCatId === $plants_treez_cat_id || $parentCatId === $treez_poliv_cat_id || ($product->get_stock_status() ==='onbackorder' && in_array($treez_cat_id, $idCats));
     return $isTreez;
 }
 
