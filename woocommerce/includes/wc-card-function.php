@@ -464,6 +464,14 @@ function check_category ($product) {
 };
 
 function check_is_treez($product) {
+    global $plants_cat_id;
+    global $gorshki_cat_id;
+    global $treez_cat_id;
+    global $treez_poliv_cat_id;
+    global $ukhod_cat_id;
+    global $peresadka_cat_id;
+    global $misc_cat_id;
+    global $plants_treez_cat_id;
     $parentCatId = check_category ($product);
     echo $parentCatId;
     $isTreez = $parentCatId === $treez_cat_id || $parentCatId === $plants_treez_cat_id || ($product->get_stock_status() ==='onbackorder' && $parentCatId === $gorshki_cat_id );
