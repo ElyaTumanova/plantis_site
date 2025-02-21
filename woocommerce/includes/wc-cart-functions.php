@@ -36,7 +36,7 @@ function plnt_replace_backorder_product() {
 		$replacecartitem = $_POST['backorder_replace_cart_item']; 
 		$woocommerce->cart->remove_cart_item( $replacecartitem);
 		//$woocommerce->cart->add_to_cart( $replaceproductid );
-		echo wc_get_template( 'cart/mini-cart.php' )
+		echo wc_get_template( 'cart/mini-cart.php' );
 	}    
     die(); // (required)
 }
