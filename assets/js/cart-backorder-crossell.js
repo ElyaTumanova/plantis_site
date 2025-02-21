@@ -38,12 +38,13 @@ function replaceBackorderProduct(evt, btn) {
                 //$('body').trigger('update_checkout');
                 console.log('hi replaceBackorderProduct');
                 console.log($( '[name="update_cart"]' ));
+                //$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
             }
         });
-        setTimeout(() => {
-            console.log('hi update cart');
-            $( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
-        }, 1000); 
     });
-
+    
+    setTimeout(() => {
+        console.log('hi update cart');
+        document.querySelector('[name="update_cart"]').click();
+    }, 1000); 
 }
