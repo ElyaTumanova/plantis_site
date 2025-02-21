@@ -35,7 +35,7 @@ plntAjaxUpdateCartCount();
 
 // получаем корзину для обновления кнопок добавления в корзину
 function plntAjaxGetMiniCart() {
-  console.log('hi get minicart');
+  //console.log('hi get minicart');
   let miniCartDiv = document.createElement('div');
   //console.log(miniCartDiv);
 
@@ -50,7 +50,7 @@ function plntAjaxGetMiniCart() {
       data, // Send our PHP function
       function(response){
         $('.mini-cart').html(response); // Repopulate the specific element with the new content
-        console.log(response);
+        //console.log(response);
         miniCartDiv.innerHTML = response;
         updateCatalogButtons(miniCartDiv);
       }
