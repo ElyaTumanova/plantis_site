@@ -35,8 +35,7 @@ function replaceBackorderProduct(evt, btn) {
             },
             success: function (result) {
                 // Trigger refresh checkout
-                $('body').trigger('update_checkout');
-                $(document.body).trigger('update_cart_totals');
+                $('body').trigger('update_cart');
                 console.log('hi update cart');
                 //$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
 
