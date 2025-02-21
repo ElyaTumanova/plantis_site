@@ -35,13 +35,11 @@ function replaceBackorderProduct(evt, btn) {
             },
             success: function (result) {
                 // Trigger refresh checkout
-                //$('body').trigger('update_checkout');
-                console.log('hi replaceBackorderProduct');
-                console.log($( '[name="update_cart"]' ));
-                setTimeout(function() {
-                    console.log('hi update cart');
-                    $( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
-                }, 1000); 
+                $('body').trigger('update_checkout');
+                $(document.body).trigger('update_cart_totals');
+                console.log('hi update cart');
+                //$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
+
             }
         });
     });
