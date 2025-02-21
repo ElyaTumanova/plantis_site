@@ -5,7 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $product_id = $args[ 'product_id' ];
 $replace_cart_item_key = $args[ 'cart_item' ];
-$remove_btn = $args[ 'remove_btn' ];
 $product = wc_get_product( $product_id );
 $crosssell_ids = get_post_meta( $product_id, '_crosssell_ids' );
 
@@ -98,7 +97,6 @@ if( !empty ($crosssell_ids) ){
                             ?>
                             </div>
                             <button class='backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>" data-cart_item="<?php echo $replace_cart_item_key; ?>">Заменить</button>
-                            <?php echo $remove_btn;?>
                         </li>
                         <?php endwhile; // end of the loop. ?>
                     </ul>
