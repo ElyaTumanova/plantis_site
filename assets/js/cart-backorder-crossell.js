@@ -27,7 +27,7 @@ function replaceBackorderProduct(evt, btn) {
     jQuery( function($){
         $.ajax({
             type: 'POST',
-            url: woocommerce_params.ajax_url,
+            url: cart_ajax.ajaxurl,
             data: {
                 'action': 'replace_backorder_product',
                 'backorder_replace_prodId': prodId,
