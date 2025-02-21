@@ -25,22 +25,22 @@ function replaceBackorderProduct(evt, btn) {
     console.log(cartItem);
 
     jQuery( function($){
-        // $.ajax({
-        //     type: 'POST',
-        //     url: woocommerce_params.ajax_url,
-        //     data: {
-        //         'action': 'replace_backorder_product',
-        //         'backorder_replace_prodId': prodId,
-        //         'backorder_replace_cart_item': cartItem,
-        //     },
-        //     success: function (result) {
-        //         // Trigger refresh checkout
-        //         //$('body').trigger('update_checkout');
-        //         console.log('hi replaceBackorderProduct');
-        //         console.log($( '[name="update_cart"]' ));
-        //     }
-        // });
-        $( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
+        $.ajax({
+            type: 'POST',
+            url: woocommerce_params.ajax_url,
+            data: {
+                'action': 'replace_backorder_product',
+                'backorder_replace_prodId': prodId,
+                'backorder_replace_cart_item': cartItem,
+            },
+            success: function (result) {
+                // Trigger refresh checkout
+                //$('body').trigger('update_checkout');
+                console.log('hi replaceBackorderProduct');
+                console.log($( '[name="update_cart"]' ));
+            }
+        });
+        //$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
     });
 
 }
