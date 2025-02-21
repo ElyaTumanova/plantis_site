@@ -96,7 +96,7 @@ if( !empty ($crosssell_ids) ){
                             }
                             ?>
                             </div>
-                            <button class='remove_from_cart_button backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>" data-cart_item="<?php echo $replace_cart_item_key; ?>">Заменить</button>
+                            <button class='button product_type_simple add_to_cart_button ajax_add_to_cart backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>" data-cart_item="<?php echo $replace_cart_item_key; ?>">Заменить</button>
                         </li>
                         <?php endwhile; // end of the loop. ?>
                     </ul>
