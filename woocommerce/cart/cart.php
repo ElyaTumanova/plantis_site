@@ -180,7 +180,9 @@ do_action( 'woocommerce_before_cart' ); ?>
 						</td>
 						
 						<?php 
-						if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
+						global $plants_cat_id;
+						$parentCatId = check_category ($_product);
+						if ( $_product->backorders_allowed() && $qty > $stock_qty && $parentCatId === $plants_cat_id) {
 							?><td class="product-backorder-upsells"><?php
 							get_template_part('template-parts/products/products-backorder-crosssell',null,
 								array( // массив с параметрами
