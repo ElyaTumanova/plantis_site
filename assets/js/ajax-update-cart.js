@@ -5,31 +5,33 @@
 
 
 // обновляем кол-во товаров в корзине в хедере в десктопе и в моб и боковой корзины - код повторяется в cart.min.js
-
-( function ( $ ) {
-    "use strict";
-  // Define the PHP function to call from here
-    var data = {
-      'action': 'plnt_update_header_cart_count'
-    };
-    $.post(
-      woocommerce_params.ajax_url, // The AJAX URL
-      data, // Send our PHP function
-      function(response){
-        $('.header-cart__link .header__count').html(response); // Repopulate the specific element with the new content
-        $('.header-cart__mob .header__count').html(response); // Repopulate the specific element with the new content
-        $('.side-cart__count').html(response);
-        if (response >0) {
-          $('.header__main .header-cart .header-btn__wrap').addClass("header-btn__wrap_active");
-          $('.header__main .header-cart .header__count').addClass("header__count_active");
-          $('.header__nav-wrap .header-cart .header-btn__wrap').addClass("header-btn__wrap_active");
-          $('.header__nav-wrap .header-cart .header__count').addClass("header__count_active");
+function plntAjaxUpdateCartCount() {
+  ( function ( $ ) {
+      "use strict";
+    // Define the PHP function to call from here
+      var data = {
+        'action': 'plnt_update_header_cart_count'
+      };
+      $.post(
+        woocommerce_params.ajax_url, // The AJAX URL
+        data, // Send our PHP function
+        function(response){
+          $('.header-cart__link .header__count').html(response); // Repopulate the specific element with the new content
+          $('.header-cart__mob .header__count').html(response); // Repopulate the specific element with the new content
+          $('.side-cart__count').html(response);
+          if (response >0) {
+            $('.header__main .header-cart .header-btn__wrap').addClass("header-btn__wrap_active");
+            $('.header__main .header-cart .header__count').addClass("header__count_active");
+            $('.header__nav-wrap .header-cart .header-btn__wrap').addClass("header-btn__wrap_active");
+            $('.header__nav-wrap .header-cart .header__count').addClass("header__count_active");
+          }
         }
-      }
-    );
-// Close anon function.
-}( jQuery ) );
+      );
+  // Close anon function.
+  }( jQuery ) );
+}
 
+plntAjaxUpdateCartCount();
 
 // получаем корзину для обновления кнопок добавления в корзину
 function plntAjaxGetMiniCart() {
