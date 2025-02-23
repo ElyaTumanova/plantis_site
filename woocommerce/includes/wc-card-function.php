@@ -370,6 +370,7 @@ function plnt_upsells_heading () {
     global $plants_cat_id;
     global $gorshki_cat_id;
     global $treez_cat_id;
+    global $lechuza_cat_id;
     $parentCatId = check_category ($product);
     switch ($parentCatId) {
         case $plants_cat_id:				//category ID for plants
@@ -378,7 +379,7 @@ function plnt_upsells_heading () {
         case $gorshki_cat_id:				//category ID for gorshki
             return 'Другие цвета';
             break;
-        case $treez_cat_id:				//category ID for treez
+        case $treez_cat_id || $lechuza_cat_id:				//category ID for treez
             return 'Другие цвета и сопутствующие';
             break;
         default:
