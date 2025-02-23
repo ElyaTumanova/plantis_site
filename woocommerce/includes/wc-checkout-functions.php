@@ -10,7 +10,7 @@ Contents
 # Billing adress field
 # Delivery date & Interval fields
 # Notifications
-# Treez notifications
+# Treez & Lechuza notifications
 # Thankyou page
 --------------------------------------------------------------*/
 
@@ -593,14 +593,15 @@ Contents
 
 
 /*--------------------------------------------------------------
-# Treez notifications
+# Treez & Lechuza notifications
 --------------------------------------------------------------*/
 
     /*минимальная сумма заказа для кашпо Teez*/
-    add_action( 'woocommerce_checkout_process', 'min_amount_for_category' );
+    add_action( 'woocommerce_checkout_process', 'min_amount_for_category_treez' );
+    add_action( 'woocommerce_checkout_process', 'min_amount_for_category_lechuza' );
     // add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category' );
 
-    function min_amount_for_category(){
+    function min_amount_for_category_treez(){
         $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
         $qty = 0; // обязательно сначала ставим 0
         $cat_amount = 0;
@@ -639,9 +640,49 @@ Contents
         }
     }
 
-    //уведомление о минимальной сумме заказа для Treez
+    function min_amount_for_category_lechuza(){
+        $min_lechuza_delivery = carbon_get_theme_option('min_lechuza_delivery');
+        $qty = 0; // обязательно сначала ставим 0
+        $cat_amount = 0;
+        $products_min = false;
+        foreach ( WC()->cart->get_cart() as $cart_item ) {
+                $_product = $cart_item['data'];
+                $isLechuza = check_is_lechuza($_product);
+                if ( $isLechuza) {
+                    $products_min = true;
+                    $qty = $cart_item[ 'quantity' ];
+                    $price = $cart_item['data']->get_price();
+                    $cat_amount = $cat_amount + $price*$qty;
+                }	
+        }
+    
+        if( ( is_cart() || is_checkout() ) && $cat_amount < $min_lechuza_delivery && $products_min) {
+            wc_print_notice(
+                sprintf( 'Минимальная сумма заказа для кашпо Lechuza %s (без учета стоимости других товаров).'  ,
+                    wc_price( $min_lechuza_delivery ),
+                    wc_price( WC()->cart->total )
+                ), 'error'
+            );
+        } 
+
+        if ( $cat_amount < $min_lechuza_delivery && $products_min) {
+
+            wc_add_notice( 
+                sprintf( 
+                    'Минимальная сумма заказа для кашпо Lechuza %s (без учета стоимости других товаров).',
+                    wc_price( $min_lechuza_delivery ),
+                    wc_price( WC()->cart->subtotal )
+                ),
+                'error'
+            );
+
+        }
+    }
+
+    //уведомление о минимальной сумме заказа для Treez & Lechuza
     //add_action( 'woocommerce_checkout_order_review', 'min_amount_for_treez_info', 40 );
     add_action( 'woocommerce_review_order_before_shipping', 'min_amount_for_treez_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
+    add_action( 'woocommerce_review_order_before_shipping', 'min_amount_for_lechuza_info', 20 ); //встраиваем в таблицу, использовать теги таблицы
 
     function min_amount_for_treez_info(){
         $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
@@ -669,8 +710,36 @@ Contents
         }   
     }
 
-    //отключаем способ оплаты для Treez
+    function min_amount_for_lechuza_info(){
+        $min_lechuza_delivery = carbon_get_theme_option('min_lechuza_delivery');
+        $qty = 0; // обязательно сначала ставим 0
+        $cat_amount = 0;
+        $products_min = false;
+        foreach ( WC()->cart->get_cart() as $cart_item ) {
+                $_product = $cart_item['data'];
+                $isLechuza = check_is_lechuza($_product);
+                if ( $isLechuza) {
+                    $products_min = true;
+                    $qty = $cart_item[ 'quantity' ];
+                    $price = $cart_item['data']->get_price();
+                    $cat_amount = $cat_amount + $price*$qty;
+                }	
+        }
+
+        if( $cat_amount < $min_lechuza_delivery && $products_min) {
+            echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
+            Минимальная сумма заказа для кашпо Lechuza <span>'.$min_treez_delivery,'</span> рублей (без учета стоимости других товаров).</td></tr>';
+        }   
+        if( $products_min) {
+            echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
+            Оплатить заказ с кашпо Lechuza можно будет после подтверждения их наличия. Наш менеджер свяжется с Вами после оформления заказа.</td></tr>';
+        }   
+    }
+
+
+    //отключаем способ оплаты для Treez & Lechuza
     add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_treez' );
+    add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_lechuza' );
 
     function plnt_disable_payment_treez( $available_gateways ) {
         $products_min = false;
@@ -682,6 +751,27 @@ Contents
                     $isTreez = check_is_treez($_product);
         
                     if ( $isTreez) {
+                        $products_min = true;
+                    }	
+            }
+        
+            if( $products_min) {
+                unset( $available_gateways['tinkoff'] );
+            }
+            return $available_gateways;
+        }
+    }
+
+    function plnt_disable_payment_lechuza( $available_gateways ) {
+        $products_min = false;
+        if (is_admin()) {
+            return $available_gateways;
+        } else {
+            foreach ( WC()->cart->get_cart() as $cart_item ) {
+                    $_product = $cart_item['data'];
+                    $isLechuza = check_is_treez($_product);
+        
+                    if ( $isLechuza) {
                         $products_min = true;
                     }	
             }

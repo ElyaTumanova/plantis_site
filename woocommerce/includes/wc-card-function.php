@@ -12,6 +12,7 @@ function plnt_card_grid_start () {
     global $plants_cat_id;
     $parentCatId = check_category ($product);
     $isTreez = check_is_treez($product);
+    $isLechuza = check_is_lechuza($product);
     if ($parentCatId === $plants_cat_id) {
         if ( $product->get_stock_status() ==='onbackorder' && $product->backorders_allowed()) {
             ?>
@@ -27,7 +28,7 @@ function plnt_card_grid_start () {
             <?php
         }
     } else {
-        if ($isTreez) {
+        if ($isTreez || $isLechuza) {
             ?>
             <div class="card__grid card__grid_not-plant card__grid_treez ">
             <?php
@@ -376,10 +377,10 @@ function plnt_upsells_heading () {
         case $plants_cat_id:				//category ID for plants
             return 'Этому растению подойдет';
             break;
-        case $gorshki_cat_id:				//category ID for gorshki
+        case $gorshki_cat_id || $lechuza_cat_id:				//category ID for gorshki
             return 'Другие цвета';
             break;
-        case $treez_cat_id || $lechuza_cat_id:				//category ID for treez
+        case $treez_cat_id:				//category ID for treez
             return 'Другие цвета и сопутствующие';
             break;
         default:
@@ -442,6 +443,7 @@ function check_category ($product) {
     global $peresadka_cat_id;
     global $misc_cat_id;
     global $plants_treez_cat_id;
+    global $lechuza_cat_id;
 	$idCats = $product->get_category_ids();
     if (in_array($plants_cat_id, $idCats)) {
         return $parentCatId = $plants_cat_id;
@@ -457,19 +459,16 @@ function check_category ($product) {
         return $parentCatId = $peresadka_cat_id;
     } else if (in_array($plants_treez_cat_id, $idCats)) {
         return $parentCatId = $plants_treez_cat_id;
+    } else if (in_array($lechuza_cat_id, $idCats)) {
+        return $parentCatId = $lechuza_cat_id;
     } else {
         return $parentCatId = $misc_cat_id;
     }
 };
 
 function check_is_treez($product) {
-    global $plants_cat_id;
-    global $gorshki_cat_id;
     global $treez_cat_id;
     global $treez_poliv_cat_id;
-    global $ukhod_cat_id;
-    global $peresadka_cat_id;
-    global $misc_cat_id;
     global $plants_treez_cat_id;
 
     $idCats = $product->get_category_ids();
@@ -478,6 +477,17 @@ function check_is_treez($product) {
     
     $isTreez = $parentCatId === $treez_cat_id || $parentCatId === $plants_treez_cat_id || $parentCatId === $treez_poliv_cat_id || ($product->get_stock_status() ==='onbackorder' && in_array($treez_cat_id, $idCats));
     return $isTreez;
+}
+
+function check_is_lechuza($product) {
+    global $lechuza_cat_id;
+
+    $idCats = $product->get_category_ids();
+
+    $parentCatId = check_category ($product);
+    
+    $isLechuza = $parentCatId === $lechuza_cat_id || ($product->get_stock_status() ==='onbackorder' && in_array($lechuza_cat_id, $idCats));
+    return $isLechuza;
 }
 
 function plnt_set_backorders_date() {
