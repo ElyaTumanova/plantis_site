@@ -35,6 +35,7 @@ if($site === 'http://new.plantis.shop') {
 	$avtopoliv_tag_id = 1050;
 	$peresadka_cat_id = 740;
 	$plants_treez_cat_id = 768;
+	$lechuza_cat_id = 770;
 	
 	$tags_podarki = array(
 		374,
@@ -60,6 +61,7 @@ if($site === 'http://new.plantis.shop') {
 	$avtopoliv_tag_id = 1050;
 	$peresadka_cat_id = 740; // to do update
 	$plants_treez_cat_id = 1152;
+	$lechuza_cat_id = 1261;
 
 	$tags_podarki = array(
 		1084,
