@@ -728,7 +728,7 @@ Contents
 
         if( $cat_amount < $min_lechuza_delivery && $products_min) {
             echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
-            Минимальная сумма заказа для кашпо Lechuza <span>'.$min_treez_delivery,'</span> рублей (без учета стоимости других товаров).</td></tr>';
+            Минимальная сумма заказа для кашпо Lechuza <span>'.$min_lechuza_delivery,'</span> рублей (без учета стоимости других товаров).</td></tr>';
         }   
         if( $products_min) {
             echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
