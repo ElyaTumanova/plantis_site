@@ -159,8 +159,20 @@
     }
 }
 
-.product_cat-kashpo-treez #card_banner_peresadka, .product_cat-iskusstvennye-rasteniya-treez #card_banner_peresadka {
+.product_cat-iskusstvennye-rasteniya-treez #card_banner_peresadka {
     display: none;
+}
+.product_cat-kashpo-treez #card_banner_peresadka p, .product_cat-kashpo-treez #card_banner_peresadka cite {
+    display: none;
+}
+.product_cat-kashpo-treez #card_banner_peresadka {
+   box-shadow: none;
+}
+.product_cat--lechuza #card_banner_peresadka p, .product_cat--lechuza #card_banner_peresadka cite {
+    display: none;
+}
+.product_cat--lechuza #card_banner_peresadka {
+   box-shadow: none;
 }
 
 #card_banner_treez {
