@@ -121,8 +121,9 @@ do_action( 'woocommerce_before_cart' ); ?>
 							<?php 
 								$qty = $cart_item[ 'quantity' ];
 								$stock_qty = $_product->get_stock_quantity();
+								global $plants_cat_id;
 								if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
-									if (!check_is_treez($_product)) {
+									if (check_category($_product) === $plants_cat_id) {
 									?><sup class="backorder_date-info">Доставка после <?php echo plnt_set_backorders_date();?></sup>
 									<?php }
 								}	
