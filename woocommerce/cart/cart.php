@@ -126,7 +126,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 									if (check_category($_product) === $plants_cat_id) {
 									?><sup class="backorder_date-info">Доставка после <?php echo plnt_set_backorders_date();?></sup>
 									<?php } else {
-										?><sup class="backorder_date-info">Доставка кашпо по прездаказу;?></sup>
+										?><sup class="backorder_date-info">Доставка кашпо по прездаказу</sup>
 										<?php
 									}
 								}	
