@@ -30,7 +30,7 @@ $isLechuza = check_is_lechuza($product)
         </div>
     <?php endif; ?>
 <?php endif; ?>
-<?php if (!$isTreez || !$isLechuza) :?>
+<?php if (!$isTreez && !$isLechuza) :?>
     <div class="card_banner" id="card_banner_peresadka">
         <p>При покупке <a href="<?php echo get_site_url()?>/product-category/gorshki_i_kashpo/" target="_blank" rel="noopener">горшка </a>— пересадка в подарок!*</p>
         <cite>*кроме кашпо Treez и Lechuza диаметром больше 26 см</cite>
