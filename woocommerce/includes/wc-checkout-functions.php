@@ -769,7 +769,7 @@ Contents
         } else {
             foreach ( WC()->cart->get_cart() as $cart_item ) {
                     $_product = $cart_item['data'];
-                    $isLechuza = check_is_treez($_product);
+                    $isLechuza = check_is_lechuza($_product);
         
                     if ( $isLechuza) {
                         $products_min = true;
