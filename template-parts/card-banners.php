@@ -34,7 +34,7 @@ $isLechuza = check_is_lechuza($product)
     <div class="card_banner" id="card_banner_peresadka">
         <p>При покупке <a href="<?php echo get_site_url()?>/product-category/gorshki_i_kashpo/" target="_blank" rel="noopener">горшка </a>— пересадка в подарок!*</p>
         <cite>*кроме кашпо Treez и Lechuza диаметром больше 26 см</cite>
-        <span class = "backorder-info">В наличии <?php echo $product->get_stock_quantity();?> шт.После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</span>
+        <span class = "backorder-info">В наличии <?php echo $product->get_stock_quantity();?> шт. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</span>
     </div>
 <?php endif; ?>
 <?php if ($isTreez) :?>
