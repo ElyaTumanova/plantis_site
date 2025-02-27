@@ -42,7 +42,7 @@ function replaceBackorderProduct(evt, btn) {
                 //plntAjaxUpdateCartCount();
                 //plntAjaxGetMiniCart();
                 // $( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
-                console.log($( this ).next());
+                console.log(addToCartBtn);
                 
                 //$('.backorder_replace_btn').next().trigger( 'click' );
             }
