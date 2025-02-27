@@ -42,9 +42,9 @@ function replaceBackorderProduct(evt, btn) {
                 //plntAjaxUpdateCartCount();
                 //plntAjaxGetMiniCart();
                 // $( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
-                console.log($('.backorder_replace_btn').next());
+                console.log($( this ).next());
                 
-                $('.backorder_replace_btn').next().trigger( 'click' );
+                //$('.backorder_replace_btn').next().trigger( 'click' );
             }
         });
     });
