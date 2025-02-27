@@ -97,7 +97,7 @@ if( !empty ($crosssell_ids) ){
                             ?>
                             </div>
                             <!-- <button class='backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>" data-cart_item="<?php echo $replace_cart_item_key; ?>">Заменить</button> -->
-                            <a href='http://new.plantis.shop/?add-to-cart=8724' class='backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>" data-cart_item="<?php echo $replace_cart_item_key; ?>">Заменить</a>
+                            <a href='http://new.plantis.shop/cart/?add-to-cart=8724' class='backorder_replace_btn' data-product_id="<?php echo $prod_id; ?>" data-cart_item="<?php echo $replace_cart_item_key; ?>">Заменить</a>
                             <!-- <?php woocommerce_template_loop_add_to_cart(); ?> -->
                         </li>
                         <?php endwhile; // end of the loop. ?>
