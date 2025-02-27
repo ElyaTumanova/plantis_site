@@ -24,8 +24,8 @@ function replaceBackorderProduct(evt, btn) {
     let addToCartBtn = document.querySelector(`.ajax_add_to_cart[data-product_id="${prodId}"]`);
     console.log(btn);
     console.log(addToCartBtn);
-    // console.log(prodId);
-    // console.log(cartItem);
+    console.log(prodId);
+    console.log(cartItem);
 
     // jQuery( function($){
     //     $.ajax({
