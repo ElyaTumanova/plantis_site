@@ -9,6 +9,8 @@ if(backorderWrap) {
         
         replaceBtns.forEach((btn)=>{
             btn.addEventListener('click', (evt)=>{replaceBackorderProduct(evt,btn)});
+            let addToCartBtn = btn.nextElementSibling;
+            console.log(addToCartBtn);
         })
     });
     
