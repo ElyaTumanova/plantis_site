@@ -21,7 +21,8 @@ function toggleBackorderDropdown(evt, el) {
 function replaceBackorderProduct(evt, btn) {
     let prodId = btn.getAttribute('data-product_id');
     let cartItem = btn.getAttribute('data-cart_item');
-    let addToCartBtn = btn.nextElementSibling;
+    let addToCartBtn = document.querySelector(`.ajax_add_to_cart [data-product_id=${prodId}]`);
+    console.log(btn);
     console.log(addToCartBtn);
     // console.log(prodId);
     // console.log(cartItem);
@@ -45,6 +46,7 @@ function replaceBackorderProduct(evt, btn) {
     //             console.log(addToCartBtn);
                 
     //             //$('.backorder_replace_btn').next().trigger( 'click' );
+
     //         }
     //     });
     // });
