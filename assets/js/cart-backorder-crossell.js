@@ -41,7 +41,7 @@ function replaceBackorderProduct(evt, btn) {
                 //plntAjaxUpdateCartCount();
                 //plntAjaxGetMiniCart();
                 $( '[name="update_cart"]').on( "click", function( event ) {
-                    console.log('hi update cart');
+                    console.log('hello update cart');
                 });
                 $( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
 
