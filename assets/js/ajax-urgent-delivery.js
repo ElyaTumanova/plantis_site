@@ -4,6 +4,7 @@ let isHideInterval;
 let isHoliday;
 let holidays = []; //format dd.mm
 let checkoutForm = document.querySelector('form[name="checkout"]');
+let shippingMethod = document.querySelector('#shipping_method');
 let deliveryDates = document.querySelector('.delivery_dates');
 let deliveryDatesInput = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
@@ -17,6 +18,8 @@ let deliveryIntervalInput = document.querySelectorAll('input[name=additional_del
 //let deliveryInterval = document.querySelectorAll('#additional_delivery_interval_field input');
 let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
 let today;
+
+console.log(shippingMethod);
 
 
 function onChangeShippingMethod(event) {
@@ -91,6 +94,8 @@ function ajaxGetUrgent(date) {
       isUrgent = '0';
     }
   }
+
+  setUrgentClass();
   // console.log(isUrgent);
 
   jQuery( function($){
@@ -147,6 +152,8 @@ function setInitalState() {
       isUrgent = 1;
     }
   }
+
+  setUrgentClass();
 
   if (hour >= 20) {
     today = `${(new Date().getDate()< 10 ? '0' : '') + (new Date().getDate() + 1)}.${(new Date().getUTCMonth()< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
@@ -210,6 +217,14 @@ function checkHoliday(date) {
     } else {
       isHoliday = '0'
     };
+  }
+}
+
+function setUrgentClass() {
+  if (isUrgent == 1) {
+    shippingMethod.classList.add('woocommerce-shipping-urgent');
+  } else {
+    shippingMethod.classList.remove('woocommerce-shipping-urgent');
   }
 }
 

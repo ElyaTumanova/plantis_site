@@ -157,6 +157,7 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     
     /*СРОЧНАЯ ДОСТАВКА*/
+
     if (WC()->session->get('isUrgent' ) === '0') {
         unset( $rates[ $urgent_delivery_inMKAD ] );
         unset( $rates[ $urgent_delivery_outMKAD ] );
