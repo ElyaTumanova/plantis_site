@@ -228,7 +228,6 @@ function setUrgentClass() {
   }
 }
 
-
 if (checkoutForm) {
 
   setInitalState();
