@@ -226,6 +226,7 @@ function setUrgentClass() {
   } else {
     shippingMethod.classList.remove('woocommerce-shipping-urgent');
   }
+  console.log(shippingMethod);
 }
 
 if (checkoutForm) {
