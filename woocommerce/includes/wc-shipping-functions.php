@@ -158,16 +158,26 @@ function plnt_shipping_conditions( $rates, $package ) {
     
     /*СРОЧНАЯ ДОСТАВКА*/
 
-    // if (WC()->session->get('isUrgent' ) === '0') {
-    //     unset( $rates[ $urgent_delivery_inMKAD ] );
-    //     unset( $rates[ $urgent_delivery_outMKAD ] );
-    //     unset( $rates[ $urgent_delivery_inMKAD_small ] );
-    //     unset( $rates[ $urgent_delivery_outMKAD_small ] );
-    //     unset( $rates[ $urgent_delivery_inMKAD_large ] );
-    //     unset( $rates[ $urgent_delivery_outMKAD_large ] );
-    //     unset( $rates[ $urgent_delivery_inMKAD_medium ] );
-    //     unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-    // }   
+    if (WC()->session->get('isUrgent' ) === '0') {
+        unset( $rates[ $urgent_delivery_inMKAD ] );
+        unset( $rates[ $urgent_delivery_outMKAD ] );
+        unset( $rates[ $urgent_delivery_inMKAD_small ] );
+        unset( $rates[ $urgent_delivery_outMKAD_small ] );
+        unset( $rates[ $urgent_delivery_inMKAD_large ] );
+        unset( $rates[ $urgent_delivery_outMKAD_large ] );
+        unset( $rates[ $urgent_delivery_inMKAD_medium ] );
+        unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+    }  else {
+        unset( $rates[ $delivery_inMKAD ] );
+        unset( $rates[ $delivery_outMKAD ] );
+        unset( $rates[ $delivery_inMKAD_small ] );
+        unset( $rates[ $delivery_outMKAD_small ] );
+        unset( $rates[ $delivery_inMKAD_large ] );
+        unset( $rates[ $delivery_outMKAD_large ] );
+        unset( $rates[ $delivery_inMKAD_medium ] );
+        unset( $rates[ $delivery_outMKAD_medium ] );
+        WC()->session->set('isLate', '0' );
+    }
 
     // if (WC()->session->get('isUrgent' ) === '1') {
     //     unset( $rates[ $delivery_inMKAD ] );
