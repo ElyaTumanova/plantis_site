@@ -146,7 +146,7 @@ function setInitalState() {
   if (isBackorder) {
     isUrgent = 0;
   } else {
-    if (hour >= 18 && hour <20) {
+    if (hour >= 19 && hour <20) { //here!
       isUrgent = 0;
     } else {
       isUrgent = 1;
