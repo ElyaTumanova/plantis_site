@@ -91,7 +91,6 @@ function ajaxGetUrgent(date) {
       isUrgent = '0';
     }
   }
-  // console.log(isUrgent);
 
   jQuery( function($){
         $.ajax({
@@ -141,7 +140,7 @@ function setInitalState() {
   if (isBackorder) {
     isUrgent = 0;
   } else {
-    if (hour >= 18 && hour <20) {
+    if (hour >= 18 && hour <20) { 
       isUrgent = 0;
     } else {
       isUrgent = 1;
