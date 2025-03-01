@@ -266,14 +266,6 @@
     display: none;
 }
 
-/*прячем обычную доставку и срочную для обычных заказов*/
-.woocommerce-shipping-urgent li:has([value="flat_rate:1"]) {
-    display: none;
-}
-.woocommerce-shipping-urgent li:has([value="flat_rate:12"]) {
-    display: none;
-}
-
 .large_delivery_notice {
     /* background-color: var(--notice-red); */
     /* width: fit-content; */
