@@ -98,9 +98,4 @@ jQuery(function ($){
 	}
 
 	} )
-
-	$( 'body' ).on('updated_cart_totals', function(){
-        console.log('updated_cart_totals');
-        cart_backorder_crossell_init ();
-    })
 });

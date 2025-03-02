@@ -48,7 +48,7 @@ function plnt_cart_backorder_crossell_init() {
 		jQuery(function($){
 			setTimeout(function(){
 				cart_backorder_crossell_init ();
-			},100)
+			},1000)
 		})
 	</script>
 	<?php
