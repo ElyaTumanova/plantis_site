@@ -40,7 +40,7 @@ function plnt_replace_backorder_product() {
     die(); // (required)
 }
 
-add_action('woocommerce_before_cart','plnt_cart_backorder_crossell_init', 20);
+//add_action('woocommerce_before_cart','plnt_cart_backorder_crossell_init', 20);
 
 function plnt_cart_backorder_crossell_init() {	
 	?>
