@@ -39,21 +39,6 @@ function plnt_replace_backorder_product() {
 	}    
     die(); // (required)
 }
-
-//add_action('woocommerce_before_cart','plnt_cart_backorder_crossell_init', 20);
-
-function plnt_cart_backorder_crossell_init() {	
-	?>
-	<script>
-		jQuery(function($){
-			setTimeout(function(){
-				cart_backorder_crossell_init ();
-			},1000)
-		})
-	</script>
-	<?php
-}
-
 // empty cart
 
 add_action( 'woocommerce_cart_is_empty', 'plnt_empty_cart_btns',15 );
