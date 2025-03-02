@@ -63,9 +63,4 @@ function replaceBackorderProduct(evt, btn) {
     
 }
 
-//cart_backorder_crossell_init ();
-
-jQuery('body').on('cart_page_refreshed', function(){
-    console.log('cart_page_refreshed');
-    cart_backorder_crossell_init ();
-});
+cart_backorder_crossell_init ();
