@@ -50,7 +50,7 @@ function replaceBackorderProduct(evt, btn) {
                 //plntAjaxGetMiniCart();
                 //$( '[name="update_cart"]' ).attr("data-metrika_action",'remove'); //для Yandex Metrika E-commerce в корзине
                 $( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
-               
+                cart_backorder_crossell_init ();
                 //console.log(addToCartBtn);
                 //addToCartBtn.click();
                 //$('.backorder_replace_btn').next().trigger( 'click' );
