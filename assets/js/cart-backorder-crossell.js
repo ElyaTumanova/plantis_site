@@ -1,3 +1,4 @@
+console.log('hi crossell js');
 let backorderWrap = document.querySelectorAll('.product-backorder-upsells');
 
 if(backorderWrap) {
@@ -10,8 +11,7 @@ if(backorderWrap) {
         replaceBtns.forEach((btn)=>{
             btn.addEventListener('click', (evt)=>{replaceBackorderProduct(evt,btn)});
         })
-    });
-    
+    }); 
 }
 
 function toggleBackorderDropdown(evt, el) {

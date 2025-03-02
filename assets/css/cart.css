@@ -394,6 +394,7 @@
     font-weight: 600;
     text-transform: uppercase;
     color: var(--white);
+    text-align: center;
 }
 
 .product-backorder-upsells_active .backorder-crossells__sliders-wrap {
