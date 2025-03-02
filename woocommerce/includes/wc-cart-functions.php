@@ -40,6 +40,15 @@ function plnt_replace_backorder_product() {
     die(); // (required)
 }
 
+add_action('woocommerce_before_cart_contents','plnt_cart_backorder_crossell_init');
+
+function plnt_cart_backorder_crossell_init() {
+	?>
+	<script>
+		cart_backorder_crossell_init ();
+	</script>
+	<?php
+}
 
 // empty cart
 

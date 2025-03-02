@@ -1,17 +1,20 @@
-console.log('hi crossell js');
-let backorderWrap = document.querySelectorAll('.product-backorder-upsells');
+function cart_backorder_crossell_init () {
+    console.log('hi crossell js');
 
-if(backorderWrap) {
-    backorderWrap.forEach((el) =>{
-        let dropDownBtn = el.querySelector('.backorder-crossells__preview-down');
-        dropDownBtn.addEventListener('click', (evt)=>{toggleBackorderDropdown(evt,el)});
-
-        let replaceBtns = el.querySelectorAll('.backorder_replace_btn');
-        
-        replaceBtns.forEach((btn)=>{
-            btn.addEventListener('click', (evt)=>{replaceBackorderProduct(evt,btn)});
-        })
-    }); 
+    let backorderWrap = document.querySelectorAll('.product-backorder-upsells');
+    
+    if(backorderWrap) {
+        backorderWrap.forEach((el) =>{
+            let dropDownBtn = el.querySelector('.backorder-crossells__preview-down');
+            dropDownBtn.addEventListener('click', (evt)=>{toggleBackorderDropdown(evt,el)});
+    
+            let replaceBtns = el.querySelectorAll('.backorder_replace_btn');
+            
+            replaceBtns.forEach((btn)=>{
+                btn.addEventListener('click', (evt)=>{replaceBackorderProduct(evt,btn)});
+            })
+        }); 
+    }    
 }
 
 function toggleBackorderDropdown(evt, el) {
@@ -59,3 +62,5 @@ function replaceBackorderProduct(evt, btn) {
     document.querySelector('[name="update_cart"]').click();
     
 }
+
+cart_backorder_crossell_init ();
