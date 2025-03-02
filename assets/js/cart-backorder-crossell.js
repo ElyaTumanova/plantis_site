@@ -6,9 +6,7 @@ function cart_backorder_crossell_init () {
     if(backorderWrap) {
         backorderWrap.forEach((el) =>{
             let dropDownBtn = el.querySelector('.backorder-crossells__preview-down');
-            console.log(getEventListeners(dropDownBtn));
             dropDownBtn.addEventListener('click', (evt)=>{toggleBackorderDropdown(evt,el)});
-            console.log(getEventListeners(dropDownBtn));
             console.log('hi event')
     
             let replaceBtns = el.querySelectorAll('.backorder_replace_btn');
@@ -65,4 +63,4 @@ function replaceBackorderProduct(evt, btn) {
     
 }
 
-cart_backorder_crossell_init ();
+//cart_backorder_crossell_init ();
