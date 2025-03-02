@@ -42,10 +42,14 @@ function plnt_replace_backorder_product() {
 
 add_action('woocommerce_before_cart_contents','plnt_cart_backorder_crossell_init');
 
-function plnt_cart_backorder_crossell_init() {
+function plnt_cart_backorder_crossell_init() {	
 	?>
 	<script>
-		cart_backorder_crossell_init ();
+		jQuery(function($){
+			setTimeout(function(){
+				cart_backorder_crossell_init ();
+			},100)
+		})
 	</script>
 	<?php
 }
