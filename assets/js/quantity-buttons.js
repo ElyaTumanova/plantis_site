@@ -99,8 +99,8 @@ jQuery(function ($){
 
 	} )
 
-	$( 'body' ).on('cart_page_refreshed', function(){
-        console.log('cart_page_refreshed');
+	$( 'body' ).on('updated_cart_totals', function(){
+        console.log('updated_cart_totals');
         cart_backorder_crossell_init ();
     })
 });
