@@ -378,7 +378,7 @@
         font-size: 16px;
     }
     .backorder-crossells__reg-price {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 400;
         color: red;
         text-decoration: line-through;
@@ -386,8 +386,8 @@
     }
     
     .backorder-crossells__price {
-        font-size: 30px;
-        font-weight: 400;
+        font-size: 20px;
+        font-weight: 600;
     }    
 }
 
