@@ -365,11 +365,12 @@
     .swiper-wrapper {
         margin-bottom: 15px;
         margin-top: 25px;
+        max-width: calc(100% - 50px);
     }
 
-    li {
+    /* li {
         max-width: calc((100vw - 50px)/2);
-    }
+    } */
 
     .card__stockstatus {
         display: none;
