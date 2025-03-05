@@ -19,10 +19,52 @@
     grid-template-rows: repeat(5, auto);
     grid-template-areas:
     "image info price"
-    "image tabs outofstockinfo"
+    "image tabs banner1"
     "image crossells crossells"
-    "image banner1 banner2"
+    "image banner2 banner2"
     "image upsells upsells";
+}
+
+/* #adaptive for grid*/
+@media (max-width: 1024px) {
+    .card__grid {
+        grid-template-columns: 35% 35% calc(30% - 20px);
+        column-gap: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    /* #adaptive for grid*/
+
+    .card__grid {
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(8, auto);
+        grid-auto-rows:auto;
+        grid-template-areas:
+        "image"
+        "info"
+        "crossells"
+        "banner1"
+        "descr"
+        "banner2"
+        "upsells"
+        "tohide";
+        column-gap: 0;
+        row-gap: 30px;
+    }
+
+    .card__grid_backorder, .card__grid_outofstock {
+        grid-template-areas:
+        "image"
+        "info"
+        "banner1"
+        "crossells"
+        "descr"
+        "banner2"
+        "upsells"
+        "tohide";
+    }
 }
 
 .card__image-wrap {
@@ -34,11 +76,13 @@
     max-height: 585px; /*card-grid heihts*/
     overflow: hidden;
 }
+
 @media (max-width: 1279px) {
     .card__image-wrap {
         top: 65px;
     }
 }
+
 @media (max-width:767px) {
     .card__image-wrap {
         position: relative;
@@ -105,53 +149,47 @@
     grid-area: banner2;
 }
 
-.card__grid_outofstock #card_banner_photo,  .card__grid_not-plant #card_banner_photo, .card__grid_backorder #card_banner_photo {
-    display: none;
+#card_banner_peresadka {
+    grid-area: banner2; 
 }
 
-.card__grid_outofstock #card_banner_peresadka, .card__grid_not-plant #card_banner_peresadka {
-    grid-area: banner1 / banner1 / banner2 / banner2;
-}
-
-@media (max-width: 767px) {
-    .card__grid_outofstock #card_banner_peresadka, .card__grid_not-plant #card_banner_peresadka {
-        grid-area: banner1;
+@media (min-width: 767px) {
+    .card__grid_not-plant #card_banner_peresadka {
+        grid-area: banner1 / banner1 / banner2 / banner2;
     }
 }
 
-.card__grid_treez #card_banner_peresadka {
+.product_cat-iskusstvennye-rasteniya-treez #card_banner_peresadka {
     display: none;
 }
-
-.product_cat-kashpo-treez #card_banner_peresadka {
+.product_cat-kashpo-treez #card_banner_peresadka p, .product_cat-kashpo-treez #card_banner_peresadka cite {
     display: none;
+}
+.product_cat-kashpo-treez #card_banner_peresadka {
+   box-shadow: none;
+}
+.product_cat--lechuza #card_banner_peresadka p, .product_cat--lechuza #card_banner_peresadka cite {
+    display: none;
+}
+.product_cat--lechuza #card_banner_peresadka {
+   box-shadow: none;
 }
 
 #card_banner_treez {
-    display: none;
-}
-
-.card__grid_treez #card_banner_treez {
-    display: flex;
     grid-area: banner1 / banner1 / banner2 / banner2;
 }
 
 @media (max-width: 767px) {
-    .card__grid_treez #card_banner_treez {
+    #card_banner_treez {
         grid-area: banner1;
     }
 }
 
-#card_banner_treez p:first-child {
-    color: var(--red-color);
-}
-
-#card_banner_backorder {
-    display: none;
-}
-
-.card__grid_backorder #card_banner_backorder {
+.card__outofstock-info_wrap {
+    grid-area: banner1;
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card_banner {
@@ -181,6 +219,16 @@
 .card_banner a:hover {
     color: var(--accent-color);
     cursor: pointer;
+}
+
+.card_banner cite {
+    text-transform: none;
+    font-weight: 500;
+    font-style: normal;
+}
+
+#card_banner_treez p:first-child {
+    color: var(--red-color);
 }
 
 /* стили элементов */
@@ -471,9 +519,6 @@
     white-space: nowrap;
 }
 
-
-
-
 @media (max-width: 767px) {
 
     .card__grid .add-to-cart-wrap .button {
@@ -483,7 +528,7 @@
         border-radius: 100%;
         margin: 0;
         margin-left: auto;
-        background-image: url(https://plantis.shop/wp-content/uploads/2025/01/cart_white_new.svg);
+        background-image: url(https://plantis.shop/wp-content/uploads/2025/02/cart_white_new2.svg);
         background-repeat: no-repeat;
         background-position: center;
         padding: 0;
@@ -608,12 +653,6 @@ input[type="number"] {
     width: fit-content;
 }
 
-.card__outofstock-info_wrap {
-    grid-area: outofstockinfo;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 .card__outofstock-info {
     font-size: 18px;
     font-weight: 700;
@@ -745,58 +784,8 @@ input[type="number"] {
 # Adaptive General
 --------------------------------------------------------------*/
 
-/* #adaptive for grid*/
-@media (max-width: 1024px) {
-    .card__grid {
-        grid-template-columns: 35% 35% calc(30% - 20px);
-        column-gap: 10px;
-    }
-}
 
 @media (max-width: 767px) {
-
-    /* #adaptive for grid*/
-
-    .card__grid {
-        grid-template-columns: 100%;
-        grid-template-rows: repeat(9, auto);
-        grid-auto-rows:auto;
-        grid-template-areas:
-        "image"
-        "info"
-        "crossells"
-        "banner1"
-        "descr"
-        "banner2"
-        "upsells"
-        "tohide";
-        column-gap: 0;
-        row-gap: 30px;
-    }
-
-    .card__grid_backorder {
-        grid-template-areas:
-        "image"
-        "info"
-        "banner1"
-        "crossells"
-        "descr"
-        "banner2"
-        "upsells"
-        "tohide";
-    }
-
-    .card__grid_outofstock {
-        grid-template-areas:
-        "image"
-        "info"
-        "outofstock"
-        "crossells"
-        "descr"
-        "banner1"
-        "upsells"
-        "tohide";
-    }
 
     .card__grid .card__price-wrap {
         grid-area: tohide;
@@ -804,11 +793,11 @@ input[type="number"] {
         height: 0;
     }
 
-    .card__grid_outofstock .card__price-wrap {
-        grid-area: outofstock;
+    /* .card__grid_outofstock .card__price-wrap {
+        grid-area: outofstockinfo;
         padding: 10px;
         height: fit-content;
-    }
+    } */
 
     .card__grid_outofstock .card__outofstock-info {
         text-align: center;

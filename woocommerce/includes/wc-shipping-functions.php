@@ -35,8 +35,8 @@ function plnt_check() {
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
     // print_r( $packages);
     // echo '<br>';
-    echo $chosen_methods[0];
-    echo '<br>';
+    // echo $chosen_methods[0];
+    // echo '<br>';
 
     // if($local_pickup === $chosen_methods[0]) {
     //     echo 'hi';
@@ -157,7 +157,11 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     
     /*СРОЧНАЯ ДОСТАВКА*/
-    if (WC()->session->get('isUrgent' ) === '0') {
+
+    date_default_timezone_set('Europe/Moscow');
+    $hour = date("H");
+
+    if (WC()->session->get('isUrgent' ) === '0' || ($hour >= 18 && $hour <20)) {
         unset( $rates[ $urgent_delivery_inMKAD ] );
         unset( $rates[ $urgent_delivery_outMKAD ] );
         unset( $rates[ $urgent_delivery_inMKAD_small ] );
@@ -166,9 +170,7 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $urgent_delivery_outMKAD_large ] );
         unset( $rates[ $urgent_delivery_inMKAD_medium ] );
         unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-    }   
-
-    if (WC()->session->get('isUrgent' ) === '1') {
+    }  else {
         unset( $rates[ $delivery_inMKAD ] );
         unset( $rates[ $delivery_outMKAD ] );
         unset( $rates[ $delivery_inMKAD_small ] );
@@ -178,8 +180,7 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $delivery_inMKAD_medium ] );
         unset( $rates[ $delivery_outMKAD_medium ] );
         WC()->session->set('isLate', '0' );
-    }
- 
+    } 
 
     /*СТОИМОСТЬ ДОСТАВКИ ПО СУММЕ*/
 

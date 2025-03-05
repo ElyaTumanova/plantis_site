@@ -28,13 +28,14 @@ if($site === 'http://new.plantis.shop') {
 	$plants_cat_id = 90;
 	$gorshki_cat_id = 86;
 	$treez_cat_id = 379;
-	$treez_poliv_cat_id = 229;
+	$treez_poliv_cat_id = 632;
 	$ukhod_cat_id = 378;
 	$misc_cat_id = 16;
 	$skidki_cat_id = 105;
 	$avtopoliv_tag_id = 1050;
 	$peresadka_cat_id = 740;
 	$plants_treez_cat_id = 768;
+	$lechuza_cat_id = 770;
 	
 	$tags_podarki = array(
 		374,
@@ -60,6 +61,7 @@ if($site === 'http://new.plantis.shop') {
 	$avtopoliv_tag_id = 1050;
 	$peresadka_cat_id = 740; // to do update
 	$plants_treez_cat_id = 1152;
+	$lechuza_cat_id = 1261;
 
 	$tags_podarki = array(
 		1084,

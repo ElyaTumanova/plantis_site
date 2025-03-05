@@ -370,6 +370,7 @@ function shop_only_instock_products( $meta_query, $query ) {
     global $treez_cat_id;
 	global $plants_treez_cat_id;
     global $ukhod_cat_id;
+    global $lechuza_cat_id;
     global $avtopoliv_tag_id;
 
 	if( is_shop() || 
@@ -381,6 +382,8 @@ function shop_only_instock_products( $meta_query, $query ) {
 	term_is_ancestor_of( $plants_treez_cat_id, get_queried_object_id(), 'product_cat' )||
 	is_product_category($ukhod_cat_id) || 
 	term_is_ancestor_of( $ukhod_cat_id, get_queried_object_id(), 'product_cat' ) ||
+	is_product_category($lechuza_cat_id) || 
+	term_is_ancestor_of( $lechuza_cat_id, get_queried_object_id(), 'product_cat' ) ||
 	is_product_tag ($avtopoliv_tag_id) ||
 	is_search()) { 		//где хотим срыть товары не в наличии
 		$meta_query[] = array(

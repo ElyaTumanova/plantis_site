@@ -74,11 +74,13 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'min_small_delivery', 'Сумма заказа для более дорогой доставки - самая минимальная'),
 			Field::make( 'text', 'min_medium_delivery', 'Сумма заказа для более дорогой доставки - средняя (не обязательно)'),
 			Field::make( 'text', 'min_treez_delivery', 'Сумма заказа для доставки кашпо Treez'),
+			Field::make( 'text', 'min_lechuza_delivery', 'Сумма заказа для доставки кашпо Lechuza'),
 			Field::make( 'text', 'late_markup_delivery', 'Надбавка к стоимости поздней доставки'),
 	   ))
-		->add_tab( __('Header notice'), array(
+		->add_tab( __('General'), array(
 			Field::make( 'text', 'notice', 'Уведомление' ),
 			Field::make( 'checkbox', 'show_notice', __( 'Показать уведомление' ) )
     				->set_option_value( 'yes' ),
 			Field::make( 'text', 'weekend', 'Выходной (формат ДД.ММ, разделитель - запятая без пробелов)' ),
+			Field::make( 'text', 'pricelist_link', 'Ссылка на скачивание оптового прйс-листа' ),
 	   ));

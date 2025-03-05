@@ -1,5 +1,8 @@
 <?php
-get_header(); ?>
+get_header(); 
+
+$pricelist_link = carbon_get_theme_option('pricelist_link');
+?>
 
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
@@ -24,15 +27,20 @@ get_header(); ?>
                 <table class="info__table"><tbody><tr><td><b>Сумма заказа</b></td><td><b>Размер скидки</b></td></tr><tr><td>От 50 000 рублей</td><td>5%</td></tr><tr><td>От 100 000 рублей</td><td>10%</td></tr><tr><td>От 200 000 рублей</td><td>15%</td></tr></tbody></table>
                 <p>Скидка распространяется только на покупку горшечных растений.</p>
             </div>
-            <h2 class="info__heading heading-2">Категории растений от А до Я</h2>
-            <div class="optom__plants-cats-az">
-                <?php get_template_part('template-parts/plant-cats-az');?>
+            <div class="optom__buttons">
                 <a href="<?php 
                 global $plants_cat_id;
                 echo get_term_link( $plants_cat_id, 'product_cat' );
                 ?>" 
                 class="optom__button optom__button_cats button">Каталог растений</a>
-                <button class="optom__button optom__button_pricelist button page-popup-open-btn">Получить оптовый прайс-лист</button>
+                <a class="optom__button optom__button_pricelist button" 
+                href="<?php echo $pricelist_link;?>">
+                Скачать оптовый прайс-лист</a>
+                <!-- <button class="optom__button optom__button_pricelist button page-popup-open-btn">Получить оптовый прайс-лист</button> -->
+            </div>
+            <h2 class="info__heading heading-2">Категории растений от А до Я</h2>
+            <div class="optom__plants-cats-az">
+                <?php get_template_part('template-parts/plant-cats-az');?>
             </div>
             <h2 class="info__heading heading-2">Остались вопросы?</h2>
             <p>Позвоните нам или напишите, любым удобным способом!</p>
