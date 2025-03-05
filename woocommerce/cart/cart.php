@@ -126,7 +126,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 									if (check_category($_product) === $plants_cat_id) {
 									?><sup class="backorder_date-info">Доставка после <?php echo plnt_set_backorders_date();?></sup>
 									<?php } else {
-										?><sup class="backorder_date-info">Доставка кашпо по прездаказу</sup>
+										?><p class="backorder_date-info">Доставка кашпо по прездаказу</p>
 										<?php
 									}
 								}	
@@ -149,33 +149,33 @@ do_action( 'woocommerce_before_cart' ); ?>
 						</td>
 
 						<td class="product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'woocommerce' ); ?>">
-						<div class="quantity">
-						<div class="minus">&#8722;</div>
-						<?php
-						if ( $_product->is_sold_individually() ) {
-							$min_quantity = 1;
-							$max_quantity = 1;
-						} else {
-							$min_quantity = 0;
-							$max_quantity = $_product->get_max_purchase_quantity();
-						}
+							<div class="quantity">
+							<div class="minus">&#8722;</div>
+							<?php
+							if ( $_product->is_sold_individually() ) {
+								$min_quantity = 1;
+								$max_quantity = 1;
+							} else {
+								$min_quantity = 0;
+								$max_quantity = $_product->get_max_purchase_quantity();
+							}
 
-						$product_quantity = woocommerce_quantity_input(
-							array(
-								'input_name'   => "cart[{$cart_item_key}][qty]",
-								'input_value'  => $cart_item['quantity'],
-								'max_value'    => $max_quantity,
-								'min_value'    => $min_quantity,
-								'product_name' => $product_name,
-							),
-							$_product,
-							false
-						);
+							$product_quantity = woocommerce_quantity_input(
+								array(
+									'input_name'   => "cart[{$cart_item_key}][qty]",
+									'input_value'  => $cart_item['quantity'],
+									'max_value'    => $max_quantity,
+									'min_value'    => $min_quantity,
+									'product_name' => $product_name,
+								),
+								$_product,
+								false
+							);
 
-						echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item ); // PHPCS: XSS ok.
-						?>
-						<div class="plus" <?php if($cart_item['quantity'] === $max_quantity) :?> style="opacity:50%; cursor: default;" <?php endif;?>>&#43;</div>
-						</div>
+							echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item ); // PHPCS: XSS ok.
+							?>
+							<div class="plus" <?php if($cart_item['quantity'] === $max_quantity) :?> style="opacity:50%; cursor: default;" <?php endif;?>>&#43;</div>
+							</div>
 						</td>
 
 						<td class="product-subtotal" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>">
@@ -183,6 +183,21 @@ do_action( 'woocommerce_before_cart' ); ?>
 								echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 							?>
 						</td>
+						
+						<?php 
+						global $plants_cat_id;
+						$parentCatId = check_category ($_product);
+						if ( $_product->backorders_allowed() && $qty > $stock_qty && $parentCatId === $plants_cat_id) {
+							?><td class="product-backorder-upsells"><?php
+							get_template_part('template-parts/products/products-backorder-crosssell',null,
+								array( // массив с параметрами
+									'product_id' => $product_id,
+									'cart_item'=>$cart_item_key
+							));
+							?></td><?php
+						}	 
+						?>
+						
 					</tr>
 					<?php
 				}

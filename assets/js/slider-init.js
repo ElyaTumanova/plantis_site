@@ -462,3 +462,67 @@ const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
     },
 
 });
+
+/*--------------------------------------------------------------
+# Cart
+--------------------------------------------------------------*/
+const swiper_backorder_crossells = new Swiper('.backorder-crossells-swiper', {
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        type: 'progressbar'
+    },
+    scrollbar: {
+        el: ".swiper-scrollbar",
+        hide: false,
+        draggable: true,
+    },
+    // navigation: {
+    //     nextEl: '.swiper-button-next',
+    //     prevEl: '.swiper-button-prev',
+    // },
+    slidesPerView: 4,
+    slidesPerGroup: 1,
+    spaceBetween: 15,
+    loop: false,
+    freeMode: false,
+    breakpoints: {
+        320: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+            pagination: {
+                enabled: true,
+            },
+            scrollbar: {
+                enabled: false,
+            },
+        },
+        520: {
+            slidesPerView: 3,
+            pagination: {
+                enabled: true,
+            },
+            scrollbar: {
+                enabled: false,
+            },
+        },
+        768: {
+            slidesPerView: 4,
+            pagination: {
+                enabled: false,
+            },
+            scrollbar: {
+                enabled: true,
+            },
+        },
+        1024: {
+            slidesPerView: 4,
+            pagination: {
+                enabled: false,
+            },
+            scrollbar: {
+                enabled: true,
+            },
+        }
+    }
+});

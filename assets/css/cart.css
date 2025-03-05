@@ -103,17 +103,24 @@
     tr.woocommerce-cart-form__cart-item {
         display: grid;
         grid-template-columns:160px auto 150px;
-        grid-template-rows: repeat(3, auto);
+        grid-template-rows: repeat(4, auto);
         grid-template-areas:
         "img name price"
         "img name qty"
-        "img name remove";
+        "img name remove"
+        "upsells upsells upsells";
         column-gap: 25px;
 
         border: solid 1px var(--gray);
         border-radius: 3px;
         padding: 20px;
         margin-bottom: 20px;
+    }
+
+    td.product-backorder-upsells {
+        grid-area: upsells;
+        overflow: hidden;
+        max-width: fit-content;
     }
 
     td.product-price, td.product-subtotal {
@@ -219,15 +226,16 @@
         tr.woocommerce-cart-form__cart-item {
             display: grid;
             grid-template-columns:80px auto 150px 20px;
-            grid-template-rows: repeat(2, auto);
+            grid-template-rows: repeat(3, auto);
             grid-template-areas:
             "img name price price "
-            "img name qty remove ";
+            "img name qty remove "
+            "upsells upsells upsells upsells";
 
             column-gap: 7px;
             margin-top: 5px;
             row-gap: 10px;
-            padding: 10px 10px 10px 0;
+            padding: 10px;
         }
         td.product-subtotal {
             justify-self: center;
@@ -281,6 +289,147 @@
     display: none;
 }
 
+/* backorder */
+.backorder-crossells__preview-wrap {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border-top: solid 1px var(--gray);
+    padding: 10px 5px 0px;
+    margin-top: 10px;
+}
+
+@media  (max-width: 767px) {
+    .backorder-crossells__preview-wrap {
+        font-size: 14px;
+    }
+}
+
+.backorder-crossells__preview {
+    display: flex;
+    column-gap: 7px;
+    opacity: 100%;
+    transition: all 0.6s;
+}
+
+.backorder-crossells__preview-img {
+    width: 100px;
+    height: 100px;
+}
+
+.backorder-crossells__preview-down {
+    margin-left: auto;
+    color: var(--gray-text);
+    margin-right: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.backorder-crossells__preview-down-close{
+    display: none;
+}
+
+.product-backorder-upsells_active .backorder-crossells__preview-down-close{
+    display: inline;
+}
+.product-backorder-upsells_active .backorder-crossells__preview-down-open{
+    display: none;
+}
+
+.backorder-crossells__preview-arrow {
+    position: absolute;
+    font-family: swiper-icons;
+    font-size: 12px;
+    right: -15px;
+
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -moz-transition: -moz-transform 0.6s;
+    -o-transition: -o-transform 0.6s;
+    -webkit-transition: -webkit-transform 0.6s;
+    transition: transform 0.6s;
+}
+
+.backorder-crossells__sliders-wrap {
+    height: 0px;
+    opacity: 0;
+    transition: opacity 0.9s, height 0.8s 0.1s;
+    padding: 0px 5px;
+
+    .swiper-wrapper {
+        margin-bottom: 15px;
+        margin-top: 25px;
+        max-width: calc(100vw - 50px);
+    }
+
+    /* li {
+        max-width: calc((100vw - 50px)/2);
+    } */
+
+    .card__stockstatus {
+        display: none;
+    }
+    .yith-wcwl-add-to-wishlist {
+        display: none;
+    }
+    .woocommerce-product-details__short-description {
+        display: none;
+    }
+    .woocommerce-loop-product__title {
+        font-size: 16px;
+    }
+    .backorder-crossells__reg-price {
+        font-size: 18px;
+        font-weight: 400;
+        color: red;
+        text-decoration: line-through;
+        margin-right: 10px;
+    }
+    
+    .backorder-crossells__price {
+        font-size: 20px;
+        font-weight: 600;
+    }    
+}
+
+.backorder_replace_btn {
+    width: 100%;
+    padding: 5px 10px 4px;
+    border-radius: 5px;
+    background-color: var(--text);
+    border: 2px solid var(--text);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--white);
+    text-align: center;
+}
+
+.backorder_replace_btn:hover{
+    cursor: pointer;
+}
+
+.product-backorder-upsells_active .backorder-crossells__sliders-wrap {
+    height: 400px;
+    opacity: 100%;
+    transition: height 0.9s, opacity 0.8s 0.1s;
+}
+.product-backorder-upsells_active .backorder-crossells__preview {
+    opacity: 0;
+}
+
+.product-backorder-upsells_active .backorder-crossells__preview-arrow {
+
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
 
 /*--------------------------------------------------------------
 # Mini cart

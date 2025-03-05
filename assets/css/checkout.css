@@ -12,12 +12,15 @@
 }
 
 .backorder_date-info {
-    padding: 0.2em;
+    padding: 0.2em 0.4em;
     background-color: var(--accent-color);
     border-radius: 7px;
     color: var(--white);
-    white-space: nowrap;
-    top: -0.3em;
+    white-space: normal;
+    font-size: 10px;
+    text-align: center;
+    max-width: fit-content;
+
 }
 
 @media (min-width: 768px) {
