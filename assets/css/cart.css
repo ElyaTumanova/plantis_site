@@ -120,6 +120,7 @@
     td.product-backorder-upsells {
         grid-area: upsells;
         overflow: hidden;
+        max-width: fit-content;
     }
 
     td.product-price, td.product-subtotal {
