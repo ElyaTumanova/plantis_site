@@ -124,7 +124,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 								global $plants_cat_id;
 								if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
 									if (check_category($_product) === $plants_cat_id) {
-									?><sup class="backorder_date-info">Доставка после <?php echo plnt_set_backorders_date();?></sup>
+									?><p class="backorder_date-info">Доставка после <?php echo plnt_set_backorders_date();?></p>
 									<?php } else {
 										?><p class="backorder_date-info">Доставка кашпо по прездаказу</p>
 										<?php
