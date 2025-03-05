@@ -234,7 +234,7 @@
             column-gap: 7px;
             margin-top: 5px;
             row-gap: 10px;
-            padding: 10px 10px 10px 0;
+            padding: 10px;
         }
         td.product-subtotal {
             justify-self: center;
@@ -359,10 +359,15 @@
     height: 0px;
     opacity: 0;
     transition: opacity 0.9s, height 0.8s 0.1s;
+    padding: 0px 5px;
 
     .swiper-wrapper {
         margin-bottom: 15px;
         margin-top: 25px;
+    }
+
+    li {
+        max-width: calc((100vw - 50px)/2);
     }
 
     .card__stockstatus {
