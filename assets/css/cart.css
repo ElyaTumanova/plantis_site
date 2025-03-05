@@ -383,6 +383,7 @@
     }
     .woocommerce-loop-product__title {
         font-size: 16px;
+        min-height: 53px;
     }
     .backorder-crossells__reg-price {
         font-size: 18px;
