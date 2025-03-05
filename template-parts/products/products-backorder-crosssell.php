@@ -14,7 +14,9 @@ foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
     array_push($cart_item_ids, $product_id);
 }
 
-$crosssell_ids_clean =array_diff($crosssell_ids[0],$cart_item_ids);
+if( !empty ($crosssell_ids[0]) ){
+    $crosssell_ids_clean =array_diff($crosssell_ids[0],$cart_item_ids);
+}
 
 
 if( !empty ($crosssell_ids) ){
