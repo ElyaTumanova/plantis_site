@@ -16,8 +16,10 @@
     background-color: var(--accent-color);
     border-radius: 7px;
     color: var(--white);
-    white-space: nowrap;
-    top: -0.3em;
+    white-space: normal;
+    font-size: 10px;
+    text-align: center;
+
 }
 
 @media (min-width: 768px) {
