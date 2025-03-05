@@ -120,7 +120,6 @@
     td.product-backorder-upsells {
         grid-area: upsells;
         overflow: hidden;
-        max-width: fit-content;
     }
 
     td.product-price, td.product-subtotal {
@@ -367,10 +366,6 @@
         margin-top: 25px;
         max-width: calc(100vw - 50px);
     }
-
-    /* li {
-        max-width: calc((100vw - 50px)/2);
-    } */
 
     .card__stockstatus {
         display: none;
