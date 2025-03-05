@@ -103,6 +103,7 @@ if( !empty ($crosssell_ids) ){
                         <?php endwhile; // end of the loop. ?>
                     </ul>
                     <div class="swiper-scrollbar"></div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div> 
 
