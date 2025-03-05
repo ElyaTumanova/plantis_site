@@ -365,7 +365,7 @@
     .swiper-wrapper {
         margin-bottom: 15px;
         margin-top: 25px;
-        max-width: calc(100% - 50px);
+        max-width: calc(100vw - 50px);
     }
 
     /* li {
