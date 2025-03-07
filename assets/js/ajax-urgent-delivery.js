@@ -22,7 +22,7 @@ let today;
 function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
         renderDeliveryDates(event.target.value);
-        renderDeliveryIntervals(event.target.value);
+        renderDeliveryIntervals(event.target.value,'');
         // console.log(event.target.value);
         // ajaxGetUrgent();
     }
@@ -67,21 +67,24 @@ function renderDeliveryDates(shippingValue) {
   })
 }
 
-function renderDeliveryIntervals(shippingValue) {
+function renderDeliveryIntervals(shippingValue,date) {
   console.log(shippingValue);
-  deliveryIntervalsInfo.forEach((info) => {
-    let priceEl = document.createElement('span');
-    info.label.innerHTML=`${info.text}`;
-    info.label.appendChild(priceEl);
-      if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryCourierId || shippingValue == deliveryLongId) {
-      } else {
-        if (isUrgent == '1') {
-          priceEl.innerHTML = `+0₽`;
+  console.log(date);
+  if(date !== '08.03') {
+    deliveryIntervalsInfo.forEach((info) => {
+      let priceEl = document.createElement('span');
+      info.label.innerHTML=`${info.text}`;
+      info.label.appendChild(priceEl);
+        if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryCourierId || shippingValue == deliveryLongId) {
         } else {
-          priceEl.innerHTML = info.for == `additional_delivery_interval_18:00 - 21:00` ? `+${deliveryLateMarkup}₽` : `+0₽` ;
+          if (isUrgent == '1') {
+            priceEl.innerHTML = `+0₽`;
+          } else {
+            priceEl.innerHTML = info.for == `additional_delivery_interval_18:00 - 21:00` ? `+${deliveryLateMarkup}₽` : `+0₽` ;
+          }
         }
-      }
-  })
+    })
+  }
 }
 
 function ajaxGetUrgent(date) {
@@ -187,7 +190,7 @@ function setDatesIntervals() {
       checkHoliday(event.target.value);
       shippingValue = getCheckedShippingMethod();
       console.log(shippingValue);
-      renderDeliveryIntervals(shippingValue);
+      renderDeliveryIntervals(shippingValue,event.target.value);
     });
   })
 
@@ -225,7 +228,7 @@ if (checkoutForm) {
 
   checkedShippingMethod = getCheckedShippingMethod();
 
-  renderDeliveryIntervals(checkedShippingMethod);
+  renderDeliveryIntervals(checkedShippingMethod,deliveryDatesInput[0].value);
   renderDeliveryDates(checkedShippingMethod);
 
   checkoutForm.addEventListener('change', onChangeShippingMethod);
