@@ -467,7 +467,6 @@ const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
 # Cart
 --------------------------------------------------------------*/
 function swiper_backorder_crossells_init(){
-    console.log('hi swiper_backorder_crossells_init');
     swiper_backorder_crossells = new Swiper('.backorder-crossells-swiper', {
         pagination: {
             el: '.swiper-pagination',

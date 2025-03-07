@@ -1,6 +1,4 @@
 function backorderCrossellInit() {
-
-    console.log('lallalalal');
     let backorderWrap = document.querySelectorAll('.product-backorder-upsells');
 
     if(backorderWrap) {
