@@ -24,17 +24,15 @@ function plnt_cart_popular() {
 };
 
 //инициируем слайдер для backorder crossells
-add_action('woocommerce_before_cart_table', 'plnt_backorder_crossells_swiper_init', 30);
+//add_action('woocommerce_before_cart_table', 'plnt_backorder_crossells_swiper_init', 30);
 function plnt_backorder_crossells_swiper_init () {
 	?>
 	<script>
 		jQuery(function($){
 			$( document.body ).on( 'updated_cart_totals', function(){
 				console.log('hi updated_cart_totals');
-			});
-			setTimeout(function(){
 				swiper_backorder_crossells_init();
-			},100)
+			});
 		})
 	</script>
 	<?php
