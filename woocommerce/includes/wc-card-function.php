@@ -201,7 +201,7 @@ function plnt_price_wrap(){
         <?php
         // plnt_outofstock_info();
         // peresadka_init
-        plnt_get_peresadka_add_to_cart();
+        //plnt_get_peresadka_add_to_cart();
         ?>
     </div>
     <?php
