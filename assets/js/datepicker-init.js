@@ -111,7 +111,7 @@ let datePickerOpts;
 let todayDP = `${new Date().getDate()}.${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
 let tomorrowDP = `${new Date().getDate() + 1}.${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
 
-let isUrgent = '0';
+//let isUrgent = '0';
 
 function datepicker_init () {
     console.log('hi datepicker_init');
