@@ -22,7 +22,8 @@ let urgentDate;
 let maxDate;
 
 
-console.log(hour);
+//console.log(hour);
+console.log(date);
 
 function datepicker_options () {  
     console.log('hi datepicker_options');     
