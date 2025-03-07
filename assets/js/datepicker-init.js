@@ -23,10 +23,11 @@ let maxDate;
 
 
 //console.log(hour);
-console.log(date);
+
 
 function datepicker_options () {  
-    console.log('hi datepicker_options');     
+    console.log('hi datepicker_options');   
+    console.log(date);  
 
     // задаем даты
     if (hour >= 20) {  
