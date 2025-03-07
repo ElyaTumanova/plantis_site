@@ -28,7 +28,7 @@ add_action('woocommerce_before_cart_table', 'plnt_backorder_crossells_swiper_ini
 function plnt_backorder_crossells_swiper_init () {
 	?>
 	<script>
-		cosole.log('this hook');
+		console.log('this hook');
 		// jQuery(function($){
 		// 	setTimeout(function(){
 		// 		swiper_backorder_crossells_init();
