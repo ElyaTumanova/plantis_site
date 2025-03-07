@@ -181,7 +181,7 @@ function setDatesIntervals() {
 
   deliveryDatesInput.forEach((date) => {
     date.addEventListener('click', function(event){
-      console.log(event.target.value);
+      //console.log(event.target.value);
       // console.log(isUrgent);
       ajaxGetUrgent(event.target.value);
       checkHoliday(event.target.value);
@@ -223,7 +223,7 @@ function setIsHideInterval(date) {
   } else {
     isHideInterval = false;
   }
-  console.log(isHideInterval);
+  //console.log(isHideInterval);
 }
 
 if (checkoutForm) {
