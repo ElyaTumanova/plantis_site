@@ -70,21 +70,21 @@ function renderDeliveryDates(shippingValue) {
 function renderDeliveryIntervals(shippingValue,date) {
   console.log(shippingValue);
   console.log(date);
-  if(date !== '08.03') {
-    deliveryIntervalsInfo.forEach((info) => {
-      let priceEl = document.createElement('span');
-      info.label.innerHTML=`${info.text}`;
-      info.label.appendChild(priceEl);
-        if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryCourierId || shippingValue == deliveryLongId) {
+
+  deliveryIntervalsInfo.forEach((info) => {
+    let priceEl = document.createElement('span');
+    info.label.innerHTML=`${info.text}`;
+    info.label.appendChild(priceEl);
+      if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryCourierId || shippingValue == deliveryLongId || date === '08.03') {
+      } else {
+        if (isUrgent == '1') {
+          priceEl.innerHTML = `+0₽`;
         } else {
-          if (isUrgent == '1') {
-            priceEl.innerHTML = `+0₽`;
-          } else {
-            priceEl.innerHTML = info.for == `additional_delivery_interval_18:00 - 21:00` ? `+${deliveryLateMarkup}₽` : `+0₽` ;
-          }
+          priceEl.innerHTML = info.for == `additional_delivery_interval_18:00 - 21:00` ? `+${deliveryLateMarkup}₽` : `+0₽` ;
         }
-    })
-  }
+      }
+  })
+  
 }
 
 function ajaxGetUrgent(date) {
