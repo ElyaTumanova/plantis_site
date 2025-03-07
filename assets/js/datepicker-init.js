@@ -151,7 +151,7 @@ setTimeout(() => {
 
         onRenderCell({date, cellType}) {
             return {
-                html: date + 'lalala'   ,
+                html: 'lalala'   ,
             }
         }
     });
