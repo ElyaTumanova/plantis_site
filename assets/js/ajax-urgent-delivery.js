@@ -68,9 +68,6 @@ function renderDeliveryDates(shippingValue) {
 }
 
 function renderDeliveryIntervals(shippingValue,date) {
-  console.log(shippingValue);
-  console.log(date);
-
   deliveryIntervalsInfo.forEach((info) => {
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
@@ -95,7 +92,6 @@ function ajaxGetUrgent(date) {
       isUrgent = '0';
     }
   }
-  console.log(date);
 
   jQuery( function($){
         $.ajax({
@@ -186,10 +182,15 @@ function setDatesIntervals() {
   deliveryDatesInput.forEach((date) => {
     date.addEventListener('click', function(event){
       console.log(event.target.value);
+      console.log(isUrgent);
+      if(event.target.value === '08.03') {
+        isHideInterval = true;
+      } else {
+        isHideInterval = false;
+      }
       ajaxGetUrgent(event.target.value);
       checkHoliday(event.target.value);
       shippingValue = getCheckedShippingMethod();
-      console.log(shippingValue);
       renderDeliveryIntervals(shippingValue,event.target.value);
     });
   })
