@@ -183,11 +183,6 @@ function setDatesIntervals() {
     date.addEventListener('click', function(event){
       console.log(event.target.value);
       console.log(isUrgent);
-      if(event.target.value === '08.03') {
-        deliveryInterval.classList.add('d-none');
-      } else {
-        deliveryInterval.classList.remove('d-none');
-      }
       ajaxGetUrgent(event.target.value);
       checkHoliday(event.target.value);
       shippingValue = getCheckedShippingMethod();
