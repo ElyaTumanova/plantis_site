@@ -85,7 +85,7 @@ function datepicker_options () {
             datepicker.hide();
         }
     }
-
+    console.log(startDate);
     // datepicker options
     let datePickerOpts = {
         selectedDates: [startDate],
