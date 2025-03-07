@@ -529,3 +529,5 @@ function swiper_backorder_crossells_init(){
         }
     });
 }
+
+swiper_backorder_crossells_init();

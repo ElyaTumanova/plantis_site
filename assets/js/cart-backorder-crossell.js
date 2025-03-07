@@ -1,27 +1,31 @@
-let backorderWrap = document.querySelectorAll('.product-backorder-upsells');
+function backorderCrossellInit() {
 
-if(backorderWrap) {
-    backorderWrap.forEach((el) =>{
-        let dropDownBtn = el.querySelector('.backorder-crossells__preview-down');
-        if(dropDownBtn) {
-            dropDownBtn.addEventListener('click', (evt)=>{toggleBackorderDropdown(evt,el)});
-        }
+    console.log('lallalalal');
+    let backorderWrap = document.querySelectorAll('.product-backorder-upsells');
 
-        let replaceBtns = el.querySelectorAll('.backorder_replace_btn');
-        if(replaceBtns) {
-            replaceBtns.forEach((btn)=>{
-                btn.addEventListener('click', (evt)=>{replaceBackorderProduct(evt,btn)});
-            })
-        }
-    }); 
-}    
+    if(backorderWrap) {
+        backorderWrap.forEach((el) =>{
+            let dropDownBtn = el.querySelector('.backorder-crossells__preview-down');
+            if(dropDownBtn) {
+                dropDownBtn.addEventListener('click', (evt)=>{toggleBackorderDropdown(evt,el)});
+            }
+    
+            let replaceBtns = el.querySelectorAll('.backorder_replace_btn');
+            if(replaceBtns) {
+                replaceBtns.forEach((btn)=>{
+                    btn.addEventListener('click', (evt)=>{replaceBackorderProduct(evt,btn)});
+                })
+            }
+        }); 
+    }        
+};
 
 function toggleBackorderDropdown(evt, el) {
     el.classList.toggle('product-backorder-upsells_active');
 }
 
 function replaceBackorderProduct(evt, btn) {
-    console.log(evt.target);
+    //console.log(evt.target);
     let prodId = btn.getAttribute('data-product_id');
     let cartItem = btn.getAttribute('data-cart_item');
     
@@ -40,3 +44,5 @@ function replaceBackorderProduct(evt, btn) {
         });
     });
 }
+
+backorderCrossellInit();
