@@ -268,7 +268,7 @@ Contents
                 'class'         => array( 'delivery_dates' ), // массив классов поля
                 'label'         => 'Дата доставки (самовывоза)',
                 'label_class'   => array( 'delivery_dates_label' ), // класс лейбл
-                'id' => '#datepicker'
+                'id' => 'datepicker'
             ),
         );
     }
