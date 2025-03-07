@@ -21,7 +21,7 @@ let hour = date.getHours();
 console.log(hour);
 
 function datepicker_options () {  
-    //console.log('hi datepicker_options');     
+    console.log('hi datepicker_options');     
 
     //определяем первую доступную дату
     //let startDate = new Date();
@@ -114,7 +114,7 @@ let tomorrow = `${new Date().getDate() + 1}.${new Date().getUTCMonth() + 1}.${ne
 let isUrgent = '0';
 
 function datepicker_init () {
-    //console.log('hi datepicker_init');
+    console.log('hi datepicker_init');
 
     //определяем параметры календаря
     datePickerOpts = datepicker_options ();
@@ -137,7 +137,7 @@ function datepicker_init () {
 setTimeout(() => {
     datepickerCal = new AirDatepicker('#datepicker', {
         onSelect({date, formattedDate, datepicker}) {
-            //console.log('hi date');
+            console.log('hi date');
             
             // проверяем срочная ли доставка и запускам аякс
             if (formattedDate == today || formattedDate == tomorrow && hour >= 18) {
