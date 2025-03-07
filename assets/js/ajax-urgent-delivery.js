@@ -184,9 +184,9 @@ function setDatesIntervals() {
       console.log(event.target.value);
       console.log(isUrgent);
       if(event.target.value === '08.03') {
-        isHideInterval = true;
+        deliveryInterval.classList.add('d-none');
       } else {
-        isHideInterval = false;
+        deliveryInterval.classList.remove('d-none');
       }
       ajaxGetUrgent(event.target.value);
       checkHoliday(event.target.value);
