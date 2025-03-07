@@ -119,7 +119,7 @@ function datepicker_init () {
     //определяем параметры календаря
     datePickerOpts = datepicker_options ();
     console.log(datePickerOpts);
-    //datepickerCal.update(datePickerOpts);
+    datepickerCal.update(datePickerOpts);
     if (weekend) {
         datepickerCal.disableDate(weekend);
     }
