@@ -17,42 +17,32 @@ weekend_arr.forEach(element => {
 
 let date = new Date();
 let hour = date.getHours();
+let startDate;
+let urgentDate;
+let maxDate;
+
 
 console.log(hour);
 
 function datepicker_options () {  
     console.log('hi datepicker_options');     
 
-    //определяем первую доступную дату
-    //let startDate = new Date();
-    let startDate;
-
-    // определяем дату, которая будет выбрана по умолчанию
-    let selectedDate = [];
-
-    
+    // задаем даты
     if (hour >= 20) {  
         startDate = date.setDate(date.getDate() + 1);
-        //selectedDate = startDate;
     } else {
-        startDate = date;
-        //selectedDate = startDate + 1;                   
+        startDate = date;               
     };
 
-    // тут ошибка??
-    if (hour >= 18 && hour <20) {  
-        selectedDate = new Date().setDate(startDate.getDate() + 2);
+    if (hour >= 18 && hour <20) { 
+        urgentDate = {};
     } else {
-        selectedDate = new Date().setDate(startDate.getDate() + 1);       
-    };
+        urgentDate = startDate;
+    }
+
+    maxDate = date.setDate(date.getDate() + 30);
 
     //console.log('initial');
-    //console.log(new Date(selectedDate));
-
-    //очищаем дату для срочной доставки  TO BE DELETED
-    // if (urgentPickups.includes(checkedShippingMethod)) {
-    //     selectedDate = [];
-    // };
 
     // проверяем, что первая доступная дата не попадает на выходной
     const weekendTimeStamps = weekend.map(function (element) {
@@ -85,16 +75,14 @@ function datepicker_options () {
             datepicker.hide();
         }
     }
-    console.log(startDate)
+    console.log(startDate);
+    console.log(urgentDate);
+
     // datepicker options
     let datePickerOpts = {
         selectedDates: [startDate],
         minDate: startDate,
-        maxDate: (function(){
-            let date = new Date();
-            date.setDate(date.getDate() + 30);
-            return date;
-        })(),
+        maxDate: maxDate,
         isMobile: true,
         //autoClose: true,
 
