@@ -75,6 +75,8 @@ jQuery(function ($){
 
 	
 	$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
+
+	$( document.body ).on( 'trigger','added_to_cart', function() {console.log('hoho')});
 });
 })
 
