@@ -149,11 +149,11 @@ setTimeout(() => {
             //plntAjaxGetUrgent();
         },
 
-        // onRenderCell({date, cellType}) {
-        //     return {
-        //         html: 'lalala'   ,
-        //     }
-        // }
+        onRenderCell({date, cellType}) {
+            return {
+                html: date.getDate()'<span>lalala</span>'   ,
+            }
+        }
     });
 
     datepicker_init ();
