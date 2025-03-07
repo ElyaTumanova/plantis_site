@@ -182,6 +182,7 @@ function setDatesIntervals() {
 
   deliveryDatesInput.forEach((date) => {
     date.addEventListener('click', function(event){
+      console.log(event.target.value);
       ajaxGetUrgent(event.target.value);
       checkHoliday(event.target.value);
       shippingValue = getCheckedShippingMethod();
