@@ -50,7 +50,7 @@ function plnt_check() {
     // echo 'isback2 '.(WC()->session->get('isBackorder' )).'  ';
     //echo 'isLate '.(WC()->session->get('isLate' )).'  ';
     echo '<br>';
-    echo 'mydate '.(WC()->session->get('mydate' )).'  ';
+    echo 'date '.(WC()->session->get('date' )).'  ';
     echo '<br>';
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
@@ -76,6 +76,8 @@ function plnt_get_urgent_shipping() {
         } else {
             WC()->session->set('isUrgent', '0' ); //0
         }
+
+        WC()->session->set('date', $_POST['date'] );
     // }
     
     die(); // (required)

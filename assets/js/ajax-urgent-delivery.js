@@ -102,7 +102,7 @@ function ajaxGetUrgent(date) {
             data: {
                 'action': 'get_urgent_shipping',
                 'isUrgent': isUrgent,
-                'mydate': date,
+                'date': date,
             },
             success: function (result) {
                 // Trigger refresh checkout
