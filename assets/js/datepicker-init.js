@@ -55,27 +55,27 @@ function datepicker_options () {
     // };
 
     // проверяем, что первая доступная дата не попадает на выходной
-    // const weekendTimeStamps = weekend.map(function (element) {
-    //     return element.getTime();
-    // });
-    // let isSelectedDayWeekend = false;
-    // function checkSelectedDay (checkDate) {
-    //     let newSelectedDate = checkDate;
-    //     isSelectedDayWeekend = weekendTimeStamps.includes((new Date(checkDate)).setHours(3,0,0,0));
-    //     if (isSelectedDayWeekend) {
-    //         newSelectedDate = date.setDate(new Date(checkDate).getDate() + 1);
-    //         // console.log('new date')
-    //         // console.log(new Date(newSelectedDate));
-    //         return checkSelectedDay (newSelectedDate);
-    //     }
-    //     // console.log('after if');
-    //     // console.log(new Date(newSelectedDate));
-    //     return selectedDate = newSelectedDate;
-    // };
+    const weekendTimeStamps = weekend.map(function (element) {
+        return element.getTime();
+    });
+    let isSelectedDayWeekend = false;
+    function checkSelectedDay (checkDate) {
+        let newSelectedDate = checkDate;
+        isSelectedDayWeekend = weekendTimeStamps.includes((new Date(checkDate)).setHours(3,0,0,0));
+        if (isSelectedDayWeekend) {
+            newSelectedDate = date.setDate(new Date(checkDate).getDate() + 1);
+            // console.log('new date')
+            // console.log(new Date(newSelectedDate));
+            return checkSelectedDay (newSelectedDate);
+        }
+        // console.log('after if');
+        // console.log(new Date(newSelectedDate));
+        return selectedDate = newSelectedDate;
+    };
 
-    // checkSelectedDay (selectedDate);
+    //checkSelectedDay (selectedDate);
     //console.log('finally');
-    //console.log(new Date(selectedDate));
+   //console.log(new Date(selectedDate));
 
     //кнопка ОК
     let button = {
@@ -88,7 +88,7 @@ function datepicker_options () {
 
     // datepicker options
     let datePickerOpts = {
-        selectedDates: selectedDate,
+        selectedDates: startDate,
         minDate: startDate,
         maxDate: (function(){
             let date = new Date();
