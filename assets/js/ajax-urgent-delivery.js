@@ -187,6 +187,7 @@ function setDatesIntervals() {
       checkHoliday(event.target.value);
       shippingValue = getCheckedShippingMethod();
       renderDeliveryIntervals(shippingValue,event.target.value);
+      setIsHideInterval(event.target.value)
     });
   })
 
@@ -214,6 +215,15 @@ function checkHoliday(date) {
       isHoliday = '0'
     };
   }
+}
+
+function setIsHideInterval(date) {
+  if (date === '08.03') {
+    isHideInterval = true;
+  } else {
+    isHideInterval = false;
+  }
+  console.log(isHideInterval);
 }
 
 if (checkoutForm) {
