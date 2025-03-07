@@ -29,11 +29,11 @@ function plnt_backorder_crossells_swiper_init () {
 	?>
 	<script>
 		console.log('this hook');
-		// jQuery(function($){
-		// 	setTimeout(function(){
-		// 		swiper_backorder_crossells_init();
-		// 	},100)
-		// })
+		jQuery(function($){
+			setTimeout(function(){
+				swiper_backorder_crossells_init();
+			},100)
+		})
 	</script>
 	<?php
 }
