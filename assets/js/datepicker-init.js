@@ -85,11 +85,11 @@ function datepicker_options () {
             datepicker.hide();
         }
     }
-console.log(startDate)
+    console.log(startDate)
     // datepicker options
     let datePickerOpts = {
-        selectedDates: [startDate],
-        minDate: startDate,
+        //selectedDates: [startDate],
+        //minDate: startDate,
         maxDate: (function(){
             let date = new Date();
             date.setDate(date.getDate() + 30);
