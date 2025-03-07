@@ -88,8 +88,8 @@ function datepicker_options () {
     console.log(startDate)
     // datepicker options
     let datePickerOpts = {
-        //selectedDates: [startDate],
-        //minDate: startDate,
+        selectedDates: [startDate],
+        minDate: startDate,
         maxDate: (function(){
             let date = new Date();
             date.setDate(date.getDate() + 30);
@@ -126,13 +126,13 @@ function datepicker_init () {
 
     
     // проверяем срочная ли доставка и запускам аякс
-    let selectedDateFormatted = `${new Date(datePickerOpts.selectedDates).getDate()}.${new Date(datePickerOpts.selectedDates).getUTCMonth() + 1}.${new Date(datePickerOpts.selectedDates).getUTCFullYear()}`;
-    if (selectedDateFormatted == todayDP || selectedDateFormatted == tomorrowDP && hour >= 18 ) {
-        isUrgent = '1'
-    } else {
-        isUrgent = '0'
-    }
-    plntAjaxGetUrgent();           
+    // let selectedDateFormatted = `${new Date(datePickerOpts.selectedDates).getDate()}.${new Date(datePickerOpts.selectedDates).getUTCMonth() + 1}.${new Date(datePickerOpts.selectedDates).getUTCFullYear()}`;
+    // if (selectedDateFormatted == todayDP || selectedDateFormatted == tomorrowDP && hour >= 18 ) {
+    //     isUrgent = '1'
+    // } else {
+    //     isUrgent = '0'
+    // }
+    // plntAjaxGetUrgent();           
 }
 
 setTimeout(() => {
