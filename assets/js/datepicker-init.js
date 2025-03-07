@@ -77,12 +77,16 @@ function datepicker_options () {
     }
     console.log(startDate);
     console.log(urgentDate);
-
+    
     // datepicker options
     let datePickerOpts = {
         selectedDates: [startDate],
         minDate: startDate,
-        maxDate: maxDate,
+        maxDate: (function(){
+            let date = new Date();
+            date.setDate(date.getDate() + 30);
+            return date;
+        })(),
         isMobile: true,
         //autoClose: true,
 
