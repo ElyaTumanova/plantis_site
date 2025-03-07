@@ -204,7 +204,7 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $delivery_outMKAD_medium ] );
         unset( $rates[ $urgent_delivery_inMKAD_medium ] );
         unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-        if(isset($rates[ $delivery_courier ])) {
+        if(isset($rates[ $delivery_courier ]) && WC()->session->get('date' ) === '08.03') {
             unset( $rates[ $delivery_inMKAD_small ] );
             unset( $rates[ $delivery_outMKAD_small ] );
             unset( $rates[ $urgent_delivery_inMKAD_small ] );
@@ -317,6 +317,8 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $urgent_delivery_outMKAD_medium ] );
 
         unset( $rates[ $delivery_long_dist ] );
+    } else {
+        unset( $rates[ $delivery_courier ] );
     }
 
 	return $rates;
