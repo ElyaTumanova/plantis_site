@@ -14,7 +14,6 @@ foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
     }
 }
 
-echo $is_plants_in_cart;
 if($is_plants_in_cart) {
     $product_id = $args[ 'product_id' ];
     $product = wc_get_product( $product_id );
