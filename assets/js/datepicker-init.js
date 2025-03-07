@@ -108,8 +108,8 @@ function datepicker_options () {
 let datepickerCal;
 let datePickerOpts;
 
-let today = `${new Date().getDate()}.${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
-let tomorrow = `${new Date().getDate() + 1}.${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
+let todayDP = `${new Date().getDate()}.${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
+let tomorrowDP = `${new Date().getDate() + 1}.${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
 
 let isUrgent = '0';
 
@@ -126,7 +126,7 @@ function datepicker_init () {
     
     // проверяем срочная ли доставка и запускам аякс
     let selectedDateFormatted = `${new Date(datePickerOpts.selectedDates).getDate()}.${new Date(datePickerOpts.selectedDates).getUTCMonth() + 1}.${new Date(datePickerOpts.selectedDates).getUTCFullYear()}`;
-    if (selectedDateFormatted == today || selectedDateFormatted == tomorrow && hour >= 18 ) {
+    if (selectedDateFormatted == todayDP || selectedDateFormatted == tomorrowDP && hour >= 18 ) {
         isUrgent = '1'
     } else {
         isUrgent = '0'
@@ -140,7 +140,7 @@ setTimeout(() => {
             console.log('hi date');
             
             // проверяем срочная ли доставка и запускам аякс
-            if (formattedDate == today || formattedDate == tomorrow && hour >= 18) {
+            if (formattedDate == todayDP || formattedDate == tomorrowDP && hour >= 18) {
                 isUrgent = '1'
             } else (
                 isUrgent = '0'
