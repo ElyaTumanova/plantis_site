@@ -185,6 +185,7 @@ function setDatesIntervals() {
       ajaxGetUrgent(event.target.value);
       checkHoliday(event.target.value);
       shippingValue = getCheckedShippingMethod();
+      console.log(shippingValue);
       renderDeliveryIntervals(shippingValue);
     });
   })
