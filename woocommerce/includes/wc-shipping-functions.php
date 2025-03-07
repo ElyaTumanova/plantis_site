@@ -249,7 +249,9 @@ function plnt_shipping_conditions( $rates, $package ) {
     unset( $rates[ $delivery_outMKAD_medium ] );
     unset( $rates[ $urgent_delivery_inMKAD_medium ] );
     unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-    unset( $rates[ $delivery_courier ] );
+        if (WC()->session->get('date' ) !== '08.03') {
+            unset( $rates[ $delivery_courier ] );
+        }
     }
  
     /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
@@ -293,6 +295,11 @@ function plnt_shipping_conditions( $rates, $package ) {
             }	
         }
     }
+
+    //исключения из доставки
+    // if (WC()->session->get('date' ) === '08.03') {
+
+    // }
 
 	return $rates;
 }

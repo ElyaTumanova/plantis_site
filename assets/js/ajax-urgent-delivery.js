@@ -13,8 +13,6 @@ let shippingMethodValues = [];
 let checkedShippingMethodInput;
 let checkedShippingMethod;
 
-let noDeliveryDay = '08.03'; //включаем другую доставку
-
 let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
 //let deliveryInterval = document.querySelectorAll('#additional_delivery_interval_field input');
 let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
