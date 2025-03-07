@@ -146,7 +146,7 @@ setTimeout(() => {
             } else (
                 isUrgent = '0'
             );
-            plntAjaxGetUrgent();
+            //plntAjaxGetUrgent();
         }});
 
     datepicker_init ();
