@@ -297,9 +297,25 @@ function plnt_shipping_conditions( $rates, $package ) {
     }
 
     //исключения из доставки
-    // if (WC()->session->get('date' ) === '08.03') {
+    if (WC()->session->get('date' ) === '08.03') {
+        unset( $rates[ $delivery_inMKAD ] );
+        unset( $rates[ $delivery_outMKAD ] );
+        unset( $rates[ $delivery_inMKAD_small ] );
+        unset( $rates[ $delivery_outMKAD_small ] );
+        unset( $rates[ $delivery_inMKAD_large ] );
+        unset( $rates[ $delivery_outMKAD_large ] );
+        unset( $rates[ $delivery_inMKAD_medium ] );
+        unset( $rates[ $delivery_outMKAD_medium ] );
 
-    // }
+        unset( $rates[ $urgent_delivery_inMKAD ] );
+        unset( $rates[ $urgent_delivery_outMKAD ] );
+        unset( $rates[ $urgent_delivery_inMKAD_small ] );
+        unset( $rates[ $urgent_delivery_outMKAD_small ] );
+        unset( $rates[ $urgent_delivery_inMKAD_large ] );
+        unset( $rates[ $urgent_delivery_outMKAD_large ] );
+        unset( $rates[ $urgent_delivery_inMKAD_medium ] );
+        unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+    }
 
 	return $rates;
 }
