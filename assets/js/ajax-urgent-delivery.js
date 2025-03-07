@@ -34,8 +34,9 @@ function getCheckedShippingMethod (){
 }
 
 function renderDeliveryDates(shippingValue) {
-  console.log(info);
+ 
   deliveryDatesInfo.forEach((info) => {
+    console.log(info);
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
     info.label.appendChild(priceEl);
