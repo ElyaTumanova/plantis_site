@@ -23,6 +23,19 @@ function plnt_cart_popular() {
 	get_template_part('template-parts/products/products-popular'); 
 };
 
+//инициируем слайдер для backorder crossells
+add_action('woocommerce_before_cart', 'plnt_backorder_crossells_swiper_init', 30);
+function plnt_backorder_crossells_swiper_init () {
+	?>
+	<script>
+		jQuery(function($){
+			setTimeout(function(){
+				swiper_backorder_crossells_init();
+			},100)
+		})
+	</script>
+	<?php
+}
 
 // замена товара в корзине для регулярного ассортимента backorder
 
