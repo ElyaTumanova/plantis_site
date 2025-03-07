@@ -1,7 +1,7 @@
 let isUrgent;
 let isLate;
 let isHideInterval;
-let isHoliday;
+let isHoliday; //скрываем подние интервалы доставки
 let holidays = []; //format dd.mm
 let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelector('.delivery_dates');
@@ -12,6 +12,8 @@ let deliveryIntervalsInfo = []
 let shippingMethodValues = [];
 let checkedShippingMethodInput;
 let checkedShippingMethod;
+
+let noDeliveryDay = '08.03'; //включаем другую доставку
 
 let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
 //let deliveryInterval = document.querySelectorAll('#additional_delivery_interval_field input');
@@ -203,6 +205,7 @@ function setDatesIntervals() {
 }
 
 function checkHoliday(date) {
+  console.log(date);
   if (holidays) {
     if (holidays.includes(date)) {
       isHoliday = '1'
