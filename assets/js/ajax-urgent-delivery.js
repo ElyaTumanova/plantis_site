@@ -187,12 +187,6 @@ function setDatesIntervals() {
       checkHoliday(event.target.value);
       shippingValue = getCheckedShippingMethod();
       renderDeliveryIntervals(shippingValue,event.target.value);
-      
-      if(event.target.value = '08.03') {
-        isHideInterval = true
-      } else {
-        isHideInterval = false
-      }
     });
   })
 
