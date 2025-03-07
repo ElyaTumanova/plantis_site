@@ -147,7 +147,14 @@ setTimeout(() => {
                 isUrgent = '0'
             );
             //plntAjaxGetUrgent();
-        }});
+        }
+
+        onRenderCell({date, cellType}) {
+            return {
+                html:'lalala'   ,
+            }
+        }
+    });
 
     datepicker_init ();
 }, 1000);  
