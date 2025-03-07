@@ -85,10 +85,10 @@ function datepicker_options () {
             datepicker.hide();
         }
     }
-    console.log(startDate);
+console.log(startDate)
     // datepicker options
     let datePickerOpts = {
-        //selectedDates: [],
+        selectedDates: [startDate],
         minDate: startDate,
         maxDate: (function(){
             let date = new Date();
@@ -118,6 +118,7 @@ function datepicker_init () {
 
     //определяем параметры календаря
     datePickerOpts = datepicker_options ();
+    console.log(datePickerOpts);
     datepickerCal.update(datePickerOpts);
     if (weekend) {
         datepickerCal.disableDate(weekend);
