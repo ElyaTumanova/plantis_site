@@ -70,7 +70,7 @@ function renderDeliveryDates(shippingValue) {
 }
 
 function renderDeliveryIntervals(shippingValue) {
-  // console.log(shippingValue);
+  console.log(shippingValue);
   deliveryIntervalsInfo.forEach((info) => {
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
