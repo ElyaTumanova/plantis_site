@@ -182,12 +182,12 @@ function setDatesIntervals() {
   deliveryDatesInput.forEach((date) => {
     date.addEventListener('click', function(event){
       console.log(event.target.value);
-      console.log(isUrgent);
-      if(event.target.value = '08.03') {
-        isHideInterval = true
-      } else {
-        isHideInterval = false
-      }
+      // console.log(isUrgent);
+      // if(event.target.value = '08.03') {
+      //   isHideInterval = true
+      // } else {
+      //   isHideInterval = false
+      // }
       ajaxGetUrgent(event.target.value);
       checkHoliday(event.target.value);
       shippingValue = getCheckedShippingMethod();
