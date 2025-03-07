@@ -315,6 +315,8 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $urgent_delivery_outMKAD_large ] );
         unset( $rates[ $urgent_delivery_inMKAD_medium ] );
         unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+
+        unset( $rates[ $delivery_long_dist ] );
     }
 
 	return $rates;
