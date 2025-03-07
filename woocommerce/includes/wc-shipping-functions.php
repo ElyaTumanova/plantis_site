@@ -51,6 +51,7 @@ function plnt_check() {
     //echo 'isLate '.(WC()->session->get('isLate' )).'  ';
     echo '<br>';
     echo 'date '.(WC()->session->get('date' )).'  ';
+    echo '<br>';
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
     // if ( is_checkout() && ($hour<18 || $hour>=20)) {

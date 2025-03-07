@@ -93,6 +93,7 @@ function ajaxGetUrgent(date) {
       isUrgent = '0';
     }
   }
+  console.log(date);
 
   jQuery( function($){
         $.ajax({
@@ -206,7 +207,6 @@ function setDatesIntervals() {
 }
 
 function checkHoliday(date) {
-  console.log(date);
   if (holidays) {
     if (holidays.includes(date)) {
       isHoliday = '1'
