@@ -148,6 +148,7 @@ setTimeout(() => {
 
         onRenderCell({date, cellType}) {
             console.log(date);
+            console.log(datePickerOpts.minDate);
             if (date === datePickerOpts.minDate ) {
                 return {
                     html: date.getDate() + '<br>' + 'lalala'   ,
