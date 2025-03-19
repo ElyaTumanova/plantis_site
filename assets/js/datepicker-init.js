@@ -147,10 +147,9 @@ setTimeout(() => {
         },
 
         onRenderCell({date, cellType}) {
-            console.log(date);
-            console.log(datePickerOpts.minDate);
-            if (date == datePickerOpts.minDate ) {
-                console.log('hohohoh');
+            let date1UTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+            let date2UTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate());
+            if (date1UTC === date2UTC ) {
                 return {
                     html: date.getDate() + '<br>' + 'lalala'   ,
                 }
