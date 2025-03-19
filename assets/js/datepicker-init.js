@@ -21,33 +21,34 @@ let startDate;
 let urgentDate;
 let maxDate;
 
+console.log(date);  
+
+// задаем даты
+if (hour >= 20) {  
+    startDate = date.setDate(date.getDate() + 1);
+} else {
+    startDate = date;               
+};
+
+if (hour >= 18 && hour <20) { 
+    urgentDate = {};
+} else {
+    urgentDate = startDate;
+}
+
+console.log(startDate);
+console.log(urgentDate);
+
+maxDate = new Date(date.setDate(date.getDate() + 30));
+console.log(maxDate);
+
 
 //console.log(hour);
 
 
 function datepicker_options () {  
     console.log('hi datepicker_options');   
-    console.log(date);  
-
-    // задаем даты
-    if (hour >= 20) {  
-        startDate = date.setDate(date.getDate() + 1);
-    } else {
-        startDate = date;               
-    };
-
-    if (hour >= 18 && hour <20) { 
-        urgentDate = {};
-    } else {
-        urgentDate = startDate;
-    }
-
-    console.log(date);
-    console.log(startDate);
-    console.log(urgentDate);
-
-    maxDate = new Date(date.setDate(date.getDate() + 30));
-    console.log(maxDate);
+    
     
 
     //console.log('initial');
