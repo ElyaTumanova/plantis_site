@@ -39,7 +39,7 @@ if (hour >= 18 && hour <20) {
 console.log(startDate);
 console.log(urgentDate);
 
-maxDate = new Date(startDate.setDate(startDate.getDate() + 30));
+maxDate = startDate.setDate(startDate.getDate() + 30);
 console.log(maxDate);
 
 
