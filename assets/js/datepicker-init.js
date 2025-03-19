@@ -146,17 +146,17 @@ setTimeout(() => {
             //plntAjaxGetUrgent();
         },
 
-        // onRenderCell({date, cellType}) {
-        //     if (date >= startDate && date <=  startDate.setDate(startDate.getDate() + 30)) {
-        //         return {
-        //             html: date.getDate() + '<br>' + 'lalala'   ,
-        //         }
-        //     } else {
-        //         return {
-        //             html: date.getDate(),
-        //         }
-        //     }
-        // }
+        onRenderCell({date, cellType}) {
+            if (date.getDate() === 12 ) {
+                return {
+                    html: date.getDate() + '<br>' + 'lalala'   ,
+                }
+            } else {
+                return {
+                    html: date.getDate(),
+                }
+            }
+        }
     });
 
     datepicker_init ();
