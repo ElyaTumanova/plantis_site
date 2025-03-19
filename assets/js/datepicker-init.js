@@ -20,6 +20,9 @@ let hour = date.getHours();
 let startDate;
 let urgentDate;
 
+let deliveryCost;
+let deliveryCostUrg;
+
 
 //console.log(hour);
 
@@ -147,10 +150,10 @@ setTimeout(() => {
         },
 
         onRenderCell({date, cellType}) {
-            let date1UTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
-            let date2UTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate());
-            let date3UTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
-            if (date1UTC >= date2UTC && date1UTC <= date3UTC) {
+            let dateUTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+            let dateMinUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate());
+            let dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
+            if (dateUTC >= dateMinUTC && dateUTC <= dateMaxUTC) {
                 return {
                     html: date.getDate() + '<br>' + 'lalala'   ,
                 }
@@ -171,4 +174,40 @@ function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
         datepicker_init();
     }
+}
+
+function getDeliveryCosts(shippingValue) {
+
+    let deliveryCost;
+    let deliveryCostUrg;
+
+    if (urgentDate) {
+        if(shippingValue == deliveryInMKAD || shippingValue == deliveryInMKADUrg) {
+            deliveryCostUrg = deliveryCostInMkadUrg;
+        }
+        if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
+            deliveryCostUrg = deliveryCostOutMkadUrg;
+        }
+        if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadSmallUrg}₽` : `${deliveryCostInMkadSmall}₽` ;
+        }
+        if(shippingValue == deliveryOutMKADSmall || shippingValue == deliveryOutMKADSmallUrg) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadSmallUrg}₽` : `${deliveryCostOutMkadSmall}₽` ;
+        }
+        if(shippingValue == deliveryInMKADLarge || shippingValue == deliveryInMKADLargeUrg) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadLargeUrg}₽` : `${deliveryCostInMkadLarge}₽` ;
+        }
+        if(shippingValue == deliveryOutMKADLarge || shippingValue == deliveryOutMKADLargeUrg) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadLargeUrg}₽` : `${deliveryCostOutMkadLarge}₽` ;
+        }
+        if(shippingValue == deliveryInMKADMedium || shippingValue == deliveryInMKADMediumUrg) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadMediumUrg}₽` : `${deliveryCostInMkadMedium}₽` ;
+        }
+        if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadMediumUrg}₽` : `${deliveryCostOutMkadMedium}₽` ;
+        }
+    }
+
+
+    
 }
