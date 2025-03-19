@@ -132,7 +132,7 @@ setTimeout(() => {
     //определяем параметры календаря
     datePickerOpts = datepicker_options ();
     console.log(datePickerOpts);
-    
+
     datepickerCal = new AirDatepicker('#datepicker', {
         onSelect({date, formattedDate, datepicker}) {
             console.log('hi date');
@@ -146,17 +146,17 @@ setTimeout(() => {
             //plntAjaxGetUrgent();
         },
 
-        onRenderCell({date, cellType}) {
-            if (date >= startDate && date <=  startDate.setDate(startDate.getDate() + 30)) {
-                return {
-                    html: date.getDate() + '<br>' + 'lalala'   ,
-                }
-            } else {
-                return {
-                    html: date.getDate(),
-                }
-            }
-        }
+        // onRenderCell({date, cellType}) {
+        //     if (date >= startDate && date <=  startDate.setDate(startDate.getDate() + 30)) {
+        //         return {
+        //             html: date.getDate() + '<br>' + 'lalala'   ,
+        //         }
+        //     } else {
+        //         return {
+        //             html: date.getDate(),
+        //         }
+        //     }
+        // }
     });
 
     datepicker_init ();
