@@ -19,28 +19,6 @@ let date = new Date();
 let hour = date.getHours();
 let startDate;
 let urgentDate;
-let maxDate;
-
-console.log(date);  
-
-// задаем даты
-if (hour >= 20) {  
-    startDate = date.setDate(date.getDate() + 1);
-} else {
-    startDate = date;               
-};
-
-if (hour >= 18 && hour <20) { 
-    urgentDate = {};
-} else {
-    urgentDate = startDate;
-}
-
-console.log(startDate);
-console.log(urgentDate);
-
-maxDate = startDate.setDate(startDate.getDate() + 30);
-console.log(maxDate);
 
 
 //console.log(hour);
@@ -48,29 +26,47 @@ console.log(maxDate);
 
 function datepicker_options () {  
     console.log('hi datepicker_options');   
-    
+    console.log(date);  
+
+    // задаем даты
+    if (hour >= 20) {  
+        startDate = date.setDate(date.getDate() + 1);
+    } else {
+        startDate = date;               
+    };
+
+    if (hour >= 18 && hour <20) { 
+        urgentDate = {};
+    } else {
+        urgentDate = startDate;
+    }
+
+    startDate = date;  
+    console.log(date);
+    console.log(startDate);
+    console.log(urgentDate);
     
 
     //console.log('initial');
 
     // проверяем, что первая доступная дата не попадает на выходной
-    // const weekendTimeStamps = weekend.map(function (element) {
-    //     return element.getTime();
-    // });
-    // let isSelectedDayWeekend = false;
-    // function checkSelectedDay (checkDate) {
-    //     let newSelectedDate = checkDate;
-    //     isSelectedDayWeekend = weekendTimeStamps.includes((new Date(checkDate)).setHours(3,0,0,0));
-    //     if (isSelectedDayWeekend) {
-    //         newSelectedDate = date.setDate(new Date(checkDate).getDate() + 1);
-    //         // console.log('new date')
-    //         // console.log(new Date(newSelectedDate));
-    //         return checkSelectedDay (newSelectedDate);
-    //     }
-    //     // console.log('after if');
-    //     // console.log(new Date(newSelectedDate));
-    //     return selectedDate = newSelectedDate;
-    // };
+    const weekendTimeStamps = weekend.map(function (element) {
+        return element.getTime();
+    });
+    let isSelectedDayWeekend = false;
+    function checkSelectedDay (checkDate) {
+        let newSelectedDate = checkDate;
+        isSelectedDayWeekend = weekendTimeStamps.includes((new Date(checkDate)).setHours(3,0,0,0));
+        if (isSelectedDayWeekend) {
+            newSelectedDate = date.setDate(new Date(checkDate).getDate() + 1);
+            // console.log('new date')
+            // console.log(new Date(newSelectedDate));
+            return checkSelectedDay (newSelectedDate);
+        }
+        // console.log('after if');
+        // console.log(new Date(newSelectedDate));
+        return selectedDate = newSelectedDate;
+    };
 
     //checkSelectedDay (selectedDate);
     //console.log('finally');
@@ -85,17 +81,15 @@ function datepicker_options () {
         }
     }
   
-    console.log(startDate);
     // datepicker options
     let datePickerOpts = {
         selectedDates: [startDate],
         minDate: startDate,
-        maxDate: maxDate,
-        // maxDate: (function(){
-        //     let date = new Date();
-        //     date.setDate(date.getDate() + 30);
-        //     return date;
-        // })(),
+        maxDate: (function(){
+            let date = new Date();
+            date.setDate(date.getDate() + 30);
+            return date;
+        })(),
         isMobile: true,
         //autoClose: true,
 
@@ -150,17 +144,17 @@ setTimeout(() => {
             //plntAjaxGetUrgent();
         },
 
-        // onRenderCell({date, cellType}) {
-        //     if (date >= startDate && date <= maxDate) {
-        //         return {
-        //             html: date.getDate() + '<br>' + 'lalala'   ,
-        //         }
-        //     } else {
-        //         return {
-        //             html: date.getDate(),
-        //         }
-        //     }
-        // }
+        onRenderCell({date, cellType}) {
+            if (date >= startDate && date <=  startDate.setDate(startDate.getDate() + 30)) {
+                return {
+                    html: date.getDate() + '<br>' + 'lalala'   ,
+                }
+            } else {
+                return {
+                    html: date.getDate(),
+                }
+            }
+        }
     });
 
     datepicker_init ();
