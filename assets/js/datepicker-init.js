@@ -150,7 +150,7 @@ setTimeout(() => {
             let date1UTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
             let date2UTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate());
             let date3UTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
-            if (date1UTC >== date2UTC && date1UTC <== date3UTC) {
+            if (date1UTC >= date2UTC && date1UTC <= date3UTC) {
                 return {
                     html: date.getDate() + '<br>' + 'lalala'   ,
                 }
