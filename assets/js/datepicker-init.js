@@ -109,9 +109,9 @@ let tomorrowDP = `${new Date().getDate() + 1}.${new Date().getUTCMonth() + 1}.${
 function datepicker_init () {
     console.log('hi datepicker_init');
 
-    //определяем параметры календаря
-    datePickerOpts = datepicker_options ();
-    console.log(datePickerOpts);
+    // //определяем параметры календаря
+    // datePickerOpts = datepicker_options ();
+    // console.log(datePickerOpts);
     datepickerCal.update(datePickerOpts);
     if (weekend) {
         datepickerCal.disableDate(weekend);
@@ -129,6 +129,10 @@ function datepicker_init () {
 }
 
 setTimeout(() => {
+    //определяем параметры календаря
+    datePickerOpts = datepicker_options ();
+    console.log(datePickerOpts);
+    
     datepickerCal = new AirDatepicker('#datepicker', {
         onSelect({date, formattedDate, datepicker}) {
             console.log('hi date');
