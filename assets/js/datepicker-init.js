@@ -42,7 +42,7 @@ function datepicker_options () {
         urgentDate = startDate;
     }
 
-    maxDate = date.setDate(date.getDate() + 30);
+    maxDate = new Date(date.setDate(date.getDate() + 30));
 
     //console.log('initial');
 
