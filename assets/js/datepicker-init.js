@@ -150,17 +150,17 @@ setTimeout(() => {
             //plntAjaxGetUrgent();
         },
 
-        onRenderCell({date, cellType}) {
-            if (date >= startDate && date <= maxDate) {
-                return {
-                    html: date.getDate() + '<br>' + 'lalala'   ,
-                }
-            } else {
-                return {
-                    html: date.getDate(),
-                }
-            }
-        }
+        // onRenderCell({date, cellType}) {
+        //     if (date >= startDate && date <= maxDate) {
+        //         return {
+        //             html: date.getDate() + '<br>' + 'lalala'   ,
+        //         }
+        //     } else {
+        //         return {
+        //             html: date.getDate(),
+        //         }
+        //     }
+        // }
     });
 
     datepicker_init ();
