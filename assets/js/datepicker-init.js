@@ -25,8 +25,7 @@ let urgentDate;
 
 
 function datepicker_options () {  
-    console.log('hi datepicker_options');   
-    console.log(date);  
+    console.log('hi datepicker_options');    
 
     // задаем даты
     if (hour >= 20) {  
@@ -39,9 +38,8 @@ function datepicker_options () {
         urgentDate = {};
     } else {
         urgentDate = startDate;
-    }
+    } 
 
-    startDate = date;  
     console.log(date);
     console.log(startDate);
     console.log(urgentDate);
