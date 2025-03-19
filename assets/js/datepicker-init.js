@@ -44,6 +44,11 @@ function datepicker_options () {
 
     maxDate = new Date(date.setDate(date.getDate() + 30));
 
+    console.log(startDate);
+    console.log(urgentDate);
+    console.log(maxDate);
+    
+
     //console.log('initial');
 
     // проверяем, что первая доступная дата не попадает на выходной
@@ -77,10 +82,7 @@ function datepicker_options () {
             datepicker.hide();
         }
     }
-    console.log(startDate);
-    console.log(urgentDate);
-    console.log(maxDate);
-    
+  
     // datepicker options
     let datePickerOpts = {
         selectedDates: [startDate],
