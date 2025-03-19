@@ -79,6 +79,7 @@ function datepicker_options () {
     }
     console.log(startDate);
     console.log(urgentDate);
+    console.log(maxDate);
     
     // datepicker options
     let datePickerOpts = {
