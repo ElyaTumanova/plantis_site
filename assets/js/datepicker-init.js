@@ -42,10 +42,12 @@ function datepicker_options () {
     //     urgentDate = startDate;
     // }
 
-    maxDate = new Date(date.setDate(date.getDate() + 30));
     startDate = date;  
+    console.log(date);
     console.log(startDate);
     console.log(urgentDate);
+    
+    maxDate = new Date(date.setDate(date.getDate() + 30));
     console.log(maxDate);
     
 
