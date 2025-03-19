@@ -144,8 +144,14 @@ setTimeout(() => {
         },
 
         onRenderCell({date, cellType}) {
-            return {
-                html: date.getDate() + '<br>' + 'lalala'   ,
+            if (date >= startDate && date <= maxDate) {
+                return {
+                    html: date.getDate() + '<br>' + 'lalala'   ,
+                }
+            } else {
+                return {
+                    html: date.getDate(),
+                }
             }
         }
     });
