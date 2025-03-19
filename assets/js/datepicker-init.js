@@ -150,8 +150,8 @@ setTimeout(() => {
             console.log(date);
             console.log(datePickerOpts.minDate);
             if (date === datePickerOpts.minDate.setHours(0,0,0,0) ) {
+                console.log('hohohoh');
                 return {
-                    console.log('hohohoh');
                     html: date.getDate() + '<br>' + 'lalala'   ,
                 }
             } else {
