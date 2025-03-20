@@ -131,6 +131,9 @@ function plnt_set_constants_script() {
 		let deliveryCourierId = '<?php echo $delivery_courier; ?>';
 		let deliveryLongId = '<?php echo $delivery_long_dist; ?>';
 
+		let normalDeliveries = [deliveryInMKAD, deliveryOutMKAD, deliveryInMKADSmall, deliveryOutMKADSmall, deliveryInMKADLarge, deliveryOutMKADLarge, deliveryInMKADMedium, deliveryOutMKADMedium];
+		let urgentDeliveries = [deliveryInMKADUrg, deliveryOutMKADUrg, deliveryInMKADSmallUrg, deliveryOutMKADSmallUrg, deliveryInMKADLargeUrg, deliveryOutMKADLargeUrg, deliveryInMKADMediumUrg, deliveryOutMKADMediumUrg];
+
 		// shipping methods costs
 		let deliveryCostInMkad = '<?php echo $in_mkad; ?>';
 		let deliveryCostOutMkad = '<?php echo $out_mkad; ?>';

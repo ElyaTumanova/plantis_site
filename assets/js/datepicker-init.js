@@ -107,8 +107,6 @@ let datePickerOpts;
 let todayDP = `${new Date().getDate()< 10 ? '0' : ''}${new Date().getDate()}.${(new Date().getUTCMonth()+1) < 10 ? '0' : ''}${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
 let tomorrowDP = `${(new Date().getDate() + 1)< 10 ? '0' : ''}${new Date().getDate() + 1}.${(new Date().getUTCMonth()+1) < 10 ? '0' : ''}${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
 
-//let isUrgent = '0';
-
 function datepicker_init () {
     console.log('hi datepicker_init');
 
@@ -118,17 +116,7 @@ function datepicker_init () {
     datepickerCal.update(datePickerOpts);
     if (weekend) {
         datepickerCal.disableDate(weekend);
-    }
-
-    
-    // проверяем срочная ли доставка и запускам аякс
-    // let selectedDateFormatted = `${new Date(datePickerOpts.selectedDates).getDate()}.${new Date(datePickerOpts.selectedDates).getUTCMonth() + 1}.${new Date(datePickerOpts.selectedDates).getUTCFullYear()}`;
-    // if (selectedDateFormatted == todayDP || selectedDateFormatted == tomorrowDP && hour >= 18 ) {
-    //     isUrgent = '1'
-    // } else {
-    //     isUrgent = '0'
-    // }
-    // plntAjaxGetUrgent();           
+    }         
 }
 
 setTimeout(() => {
@@ -156,24 +144,27 @@ setTimeout(() => {
             let dateUTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
             let dateMinUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate());
             let dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
-            if (dateUTC == dateMinUTC) {
-                if (urgentDate) {
-                    return {
-                        html: date.getDate() + '<p>' + deliveryCostUrg + '₽' + '</p>' ,
+            console.log(checkedShippingMethod);
+            if(checkedShippingMethod) {
+                if (dateUTC == dateMinUTC) {
+                    if (urgentDate) {
+                        return {
+                            html: date.getDate() + '<p>' + deliveryCostUrg + '₽' + '</p>' ,
+                        }
+                    } else {
+                        return {
+                            html: date.getDate() + '<p>' + deliveryCost + '₽'  + '</p>' ,
+                        }
                     }
-                } else {
+                }
+                if (dateUTC > dateMinUTC && dateUTC <= dateMaxUTC) {
                     return {
                         html: date.getDate() + '<p>' + deliveryCost + '₽'  + '</p>' ,
                     }
-                }
-            }
-            if (dateUTC > dateMinUTC && dateUTC <= dateMaxUTC) {
-                return {
-                    html: date.getDate() + '<p>' + deliveryCost + '₽'  + '</p>' ,
-                }
-            } else {
-                return {
-                    html: date.getDate(),
+                } else {
+                    return {
+                        html: date.getDate(),
+                    }
                 }
             }
         }
@@ -187,6 +178,8 @@ checkoutForm.addEventListener('change', onChangeShippingMethod);
 function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
         getDeliveryCosts(event.target.value);
+        checkedShippingMethod = event.target.value;
+        console.log(checkedShippingMethod);
         datepicker_init();
     }
 }
