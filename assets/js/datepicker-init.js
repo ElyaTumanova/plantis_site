@@ -127,17 +127,12 @@ setTimeout(() => {
     datepickerCal = new AirDatepicker('#datepicker', {
         onSelect({date, formattedDate, datepicker}) {
             console.log('hi date');
+            console.log(date);
             console.log(formattedDate);
             console.log(todayDP);
             console.log(tomorrowDP);
-            
-            // проверяем срочная ли доставка и запускам аякс
-            if (formattedDate == todayDP || formattedDate == tomorrowDP && hour >= 18) {
-                isUrgent = '1'
-            } else (
-                isUrgent = '0'
-            );
-            ajaxGetUrgent();
+
+            chekIfUrgent(formattedDate);
         },
 
         onRenderCell({date, cellType}) {
@@ -230,6 +225,16 @@ function getDeliveryCosts(shippingValue) {
 
 
     
+}
+
+function chekIfUrgent(date) {
+    // проверяем срочная ли доставка и запускам аякс
+    if (date == todayDP || date == tomorrowDP && hour >= 18) {
+        isUrgent = '1'
+    } else (
+        isUrgent = '0'
+    );
+    ajaxGetUrgent();
 }
 
 if (checkoutForm) {
