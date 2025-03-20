@@ -808,3 +808,11 @@ label.list-view {
 .payment_method_tinkoff img {
     display: none;
 }
+
+/* air-datepicker */
+
+.air-datepicker-cell {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3px;
+}

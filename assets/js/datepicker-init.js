@@ -146,7 +146,7 @@ setTimeout(() => {
             } else (
                 isUrgent = '0'
             );
-            //plntAjaxGetUrgent();
+            ajaxGetUrgent();
         },
 
         onRenderCell({date, cellType}) {
@@ -183,8 +183,8 @@ checkoutForm.addEventListener('change', onChangeShippingMethod);
 
 function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
-        datepicker_init();
         getDeliveryCosts(event.target.value);
+        datepicker_init();
     }
 }
 
