@@ -153,7 +153,18 @@ setTimeout(() => {
             let dateUTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
             let dateMinUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate());
             let dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
-            if (dateUTC >= dateMinUTC && dateUTC <= dateMaxUTC) {
+            if (dateUTC == dateMinUTC) {
+                if (urgentDate) {
+                    return {
+                        html: date.getDate() + '<br>' + 'ururu'   ,
+                    }
+                } else {
+                    return {
+                        html: date.getDate() + '<br>' + 'lalala'   ,
+                    }
+                }
+            }
+            if (dateUTC > dateMinUTC && dateUTC <= dateMaxUTC) {
                 return {
                     html: date.getDate() + '<br>' + 'lalala'   ,
                 }
