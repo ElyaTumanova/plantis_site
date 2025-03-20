@@ -108,8 +108,8 @@ function datepicker_options () {
 let datepickerCal;
 let datePickerOpts;
 
-let todayDP = `${new Date().getDate()< 10 ? '0' : ''}${new Date().getDate()}.${(new Date().getUTCMonth()+1) < 10 ? '0' : ''}${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
-let tomorrowDP = `${(new Date().getDate() + 1)< 10 ? '0' : ''}${new Date().getDate() + 1}.${(new Date().getUTCMonth()+1) < 10 ? '0' : ''}${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
+//let todayDP = `${new Date().getDate()< 10 ? '0' : ''}${new Date().getDate()}.${(new Date().getUTCMonth()+1) < 10 ? '0' : ''}${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
+//let tomorrowDP = `${(new Date().getDate() + 1)< 10 ? '0' : ''}${new Date().getDate() + 1}.${(new Date().getUTCMonth()+1) < 10 ? '0' : ''}${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
 
 function datepicker_init () {
     console.log('hi datepicker_init');
@@ -129,16 +129,16 @@ setTimeout(() => {
     dateMinUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate());
     dateTomorrowUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate()+1);
     dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
-    console.log(datePickerOpts);
-    console.log(dateTomorrowUTC);
+    // console.log(datePickerOpts);
+    // console.log(dateTomorrowUTC);
 
     datepickerCal = new AirDatepicker('#datepicker', {
         onSelect({date, formattedDate, datepicker}) {
-            console.log('hi date');
-            console.log(date);
-            console.log(formattedDate);
-            console.log(todayDP);
-            console.log(tomorrowDP);
+            // console.log('hi date');
+            // console.log(date);
+            // console.log(formattedDate);
+            // console.log(todayDP);
+            // console.log(tomorrowDP);
 
             chekIfUrgent(date);
         },
@@ -148,7 +148,7 @@ setTimeout(() => {
             console.log(checkedShippingMethod);
             if(normalDeliveries.includes(checkedShippingMethod) || urgentDeliveries.includes(checkedShippingMethod)) {
                 if (dateUTC == dateMinUTC) {
-                    if (urgentDate) {
+                    if (isUrgent == '1') {
                         return {
                             html: date.getDate() + '<p>' + deliveryCostUrg + '₽' + '</p>' ,
                         }
@@ -227,10 +227,6 @@ function getDeliveryCosts(shippingValue) {
     
     console.log(deliveryCost);
     console.log(deliveryCostUrg);
-    
-
-
-    
 }
 
 function chekIfUrgent(date) {
