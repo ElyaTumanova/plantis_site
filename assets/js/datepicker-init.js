@@ -20,6 +20,10 @@ let hour = date.getHours();
 let startDate;
 let urgentDate;
 
+let dateMinUTC;
+let dateTomorrowUTC;
+let dateMaxUTC;
+
 let deliveryCost;
 let deliveryCostUrg;
 
@@ -122,9 +126,9 @@ function datepicker_init () {
 setTimeout(() => {
     //определяем параметры календаря
     datePickerOpts = datepicker_options ();
-    let dateMinUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate());
-    let dateTomorrowUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate()+1);
-    let dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
+    dateMinUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate());
+    dateTomorrowUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate()+1);
+    dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
     console.log(datePickerOpts);
     console.log(dateTomorrowUTC);
 
@@ -233,7 +237,7 @@ function chekIfUrgent(date) {
     // проверяем срочная ли доставка и запускам аякс
     let dateUTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
     //if (date == todayDP || date == tomorrowDP && hour >= 18) {
-    if (date == dateMinUTC || date == dateTomorrowUTC && hour >= 18) {
+    if (dateUTC == dateMinUTC || dateUTC == dateTomorrowUTC && hour >= 18) {
         isUrgent = '1'
     } else (
         isUrgent = '0'
