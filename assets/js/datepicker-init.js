@@ -139,6 +139,9 @@ setTimeout(() => {
     datepickerCal = new AirDatepicker('#datepicker', {
         onSelect({date, formattedDate, datepicker}) {
             console.log('hi date');
+            console.log(formattedDate);
+            console.log(todayDP);
+            console.log(tomorrowDP);
             
             // проверяем срочная ли доставка и запускам аякс
             if (formattedDate == todayDP || formattedDate == tomorrowDP && hour >= 18) {
