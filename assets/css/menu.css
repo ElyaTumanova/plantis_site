@@ -212,7 +212,7 @@
     left: 150px;
 }
 
-.menu--main .menu_item_plants .menu-node_lvl_2> a:after {
+.menu--main .menu_item_plants .menu-node_lvl_2.menu-item-has-children> a:after {
     /* content: "\276F"; */
     content: "next";
     font-family: swiper-icons;
@@ -231,6 +231,7 @@
 
 .menu_item_plants .menu--onside_show {
     visibility: visible;
+    max-width: 290px;
 }
 
 .menu--onside_show {
