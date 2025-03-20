@@ -156,17 +156,17 @@ setTimeout(() => {
             if (dateUTC == dateMinUTC) {
                 if (urgentDate) {
                     return {
-                        html: date.getDate() + '<br>' + deliveryCostUrg + '₽'  ,
+                        html: date.getDate() + '<p>' + deliveryCostUrg + '₽' + '</p>' ,
                     }
                 } else {
                     return {
-                        html: date.getDate() + '<br>' + deliveryCost + '₽'  ,
+                        html: date.getDate() + '<p>' + deliveryCost + '₽'  + '</p>' ,
                     }
                 }
             }
             if (dateUTC > dateMinUTC && dateUTC <= dateMaxUTC) {
                 return {
-                    html: date.getDate() + '<br>' + deliveryCost + '₽'  ,
+                    html: date.getDate() + '<p>' + deliveryCost + '₽'  + '</p>' ,
                 }
             } else {
                 return {
@@ -184,7 +184,6 @@ checkoutForm.addEventListener('change', onChangeShippingMethod);
 function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
         datepicker_init();
-        console.log(event.target.value);
         getDeliveryCosts(event.target.value);
     }
 }
@@ -200,28 +199,39 @@ function getDeliveryCosts(shippingValue) {
         deliveryCostUrg = urgentDate ? deliveryCostOutMkadUrg : deliveryCostOutMkad;
     }
 
+    if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
+        deliveryCost = deliveryCostInMkadSmall;
+        deliveryCostUrg = urgentDate ? deliveryCostInMkadSmallUrg : deliveryCostInMkadSmall;
+    }
+    if(shippingValue == deliveryOutMKADSmall || shippingValue == deliveryOutMKADSmallUrg) {
+        deliveryCost = deliveryCostOutMkadSmall;
+        deliveryCostUrg = urgentDate ? deliveryCostOutMkadSmallUrg : deliveryCostOutMkadSmall;
+    }
+    if(shippingValue == deliveryInMKADLarge || shippingValue == deliveryInMKADLargeUrg) {
+        deliveryCost = deliveryCostInMkadLarge;
+        deliveryCostUrg = urgentDate ? deliveryCostInMkadLargeUrg : deliveryCostInMkadLarge;
+    }
+    if(shippingValue == deliveryOutMKADLarge || shippingValue == deliveryOutMKADLargeUrg) {
+        deliveryCost = deliveryCostOutMkadLarge;
+        deliveryCostUrg = urgentDate ? deliveryCostOutMkadLargeUrg : deliveryCostOutMkadLarge;
+    }
+    if(shippingValue == deliveryInMKADMedium || shippingValue == deliveryInMKADMediumUrg) {
+        deliveryCost = deliveryCostInMkadMedium;
+        deliveryCostUrg = urgentDate ? deliveryCostInMkadMediumUrg : deliveryCostInMkadMedium;
+    }
+    if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
+        deliveryCost = deliveryCostOutMkadMedium;
+        deliveryCostUrg = urgentDate ? deliveryCostOutMkadMediumUrg : deliveryCostOutMkadMedium;
+    }
+    
     console.log(deliveryCost);
     console.log(deliveryCostUrg);
-    // if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
-    // priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadSmallUrg}₽` : `${deliveryCostInMkadSmall}₽` ;
-    // }
-    // if(shippingValue == deliveryOutMKADSmall || shippingValue == deliveryOutMKADSmallUrg) {
-    // priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadSmallUrg}₽` : `${deliveryCostOutMkadSmall}₽` ;
-    // }
-    // if(shippingValue == deliveryInMKADLarge || shippingValue == deliveryInMKADLargeUrg) {
-    // priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadLargeUrg}₽` : `${deliveryCostInMkadLarge}₽` ;
-    // }
-    // if(shippingValue == deliveryOutMKADLarge || shippingValue == deliveryOutMKADLargeUrg) {
-    // priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadLargeUrg}₽` : `${deliveryCostOutMkadLarge}₽` ;
-    // }
-    // if(shippingValue == deliveryInMKADMedium || shippingValue == deliveryInMKADMediumUrg) {
-    // priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadMediumUrg}₽` : `${deliveryCostInMkadMedium}₽` ;
-    // }
-    // if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
-    // priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadMediumUrg}₽` : `${deliveryCostOutMkadMedium}₽` ;
-    // }
     
 
 
+    
+}
+
+if (checkoutForm) {
     
 }
