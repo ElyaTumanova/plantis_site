@@ -16,12 +16,12 @@ let checkedShippingMethod;
 let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
 //let deliveryInterval = document.querySelectorAll('#additional_delivery_interval_field input');
 let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
-let today;
+//let today;
 
 
 function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
-        renderDeliveryDates(event.target.value);
+        //renderDeliveryDates(event.target.value);
         renderDeliveryIntervals(event.target.value);
         // console.log(event.target.value);
         // ajaxGetUrgent();
@@ -33,38 +33,38 @@ function getCheckedShippingMethod (){
   return checkedShippingMethodInput.value;
 }
 
-function renderDeliveryDates(shippingValue) {
-  // console.log(shippingValue);
-  deliveryDatesInfo.forEach((info) => {
-    let priceEl = document.createElement('span');
-    info.label.innerHTML=`${info.text}`;
-    info.label.appendChild(priceEl);
-      if(shippingValue == deliveryInMKAD || shippingValue == deliveryInMKADUrg) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadUrg}₽` : `${deliveryCostInMkad}₽` ;
-      }
-      if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadUrg}₽` : `${deliveryCostOutMkad}₽` ;
-      }
-      if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadSmallUrg}₽` : `${deliveryCostInMkadSmall}₽` ;
-      }
-      if(shippingValue == deliveryOutMKADSmall || shippingValue == deliveryOutMKADSmallUrg) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadSmallUrg}₽` : `${deliveryCostOutMkadSmall}₽` ;
-      }
-      if(shippingValue == deliveryInMKADLarge || shippingValue == deliveryInMKADLargeUrg) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadLargeUrg}₽` : `${deliveryCostInMkadLarge}₽` ;
-      }
-      if(shippingValue == deliveryOutMKADLarge || shippingValue == deliveryOutMKADLargeUrg) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadLargeUrg}₽` : `${deliveryCostOutMkadLarge}₽` ;
-      }
-      if(shippingValue == deliveryInMKADMedium || shippingValue == deliveryInMKADMediumUrg) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadMediumUrg}₽` : `${deliveryCostInMkadMedium}₽` ;
-      }
-      if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadMediumUrg}₽` : `${deliveryCostOutMkadMedium}₽` ;
-      }
-  })
-}
+// function renderDeliveryDates(shippingValue) {
+//   // console.log(shippingValue);
+//   deliveryDatesInfo.forEach((info) => {
+//     let priceEl = document.createElement('span');
+//     info.label.innerHTML=`${info.text}`;
+//     info.label.appendChild(priceEl);
+//       if(shippingValue == deliveryInMKAD || shippingValue == deliveryInMKADUrg) {
+//         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadUrg}₽` : `${deliveryCostInMkad}₽` ;
+//       }
+//       if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
+//         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadUrg}₽` : `${deliveryCostOutMkad}₽` ;
+//       }
+//       if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
+//         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadSmallUrg}₽` : `${deliveryCostInMkadSmall}₽` ;
+//       }
+//       if(shippingValue == deliveryOutMKADSmall || shippingValue == deliveryOutMKADSmallUrg) {
+//         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadSmallUrg}₽` : `${deliveryCostOutMkadSmall}₽` ;
+//       }
+//       if(shippingValue == deliveryInMKADLarge || shippingValue == deliveryInMKADLargeUrg) {
+//         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadLargeUrg}₽` : `${deliveryCostInMkadLarge}₽` ;
+//       }
+//       if(shippingValue == deliveryOutMKADLarge || shippingValue == deliveryOutMKADLargeUrg) {
+//         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadLargeUrg}₽` : `${deliveryCostOutMkadLarge}₽` ;
+//       }
+//       if(shippingValue == deliveryInMKADMedium || shippingValue == deliveryInMKADMediumUrg) {
+//         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadMediumUrg}₽` : `${deliveryCostInMkadMedium}₽` ;
+//       }
+//       if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
+//         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadMediumUrg}₽` : `${deliveryCostOutMkadMedium}₽` ;
+//       }
+//   })
+// }
 
 function renderDeliveryIntervals(shippingValue) {
   // console.log(shippingValue);
@@ -149,13 +149,12 @@ function setInitalState() {
     }
   }
 
-  if (hour >= 20) {
-    today = `${(new Date().getDate()< 10 ? '0' : '') + (new Date().getDate() + 1)}.${(new Date().getUTCMonth()< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
-  } else {
-    today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${(new Date().getUTCMonth()< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
-  };
+  // if (hour >= 20) {
+  //   today = `${(new Date().getDate()< 10 ? '0' : '') + (new Date().getDate() + 1)}.${(new Date().getUTCMonth()< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
+  // } else {
+  //   today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${(new Date().getUTCMonth()< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
+  // };
 
-  //console.log(today);
 
   if(hour >=20 && hour<24) {
     isHideInterval = false;
@@ -182,7 +181,7 @@ function setDatesIntervals() {
   deliveryDatesInput.forEach((date) => {
     date.addEventListener('click', function(event){
       ajaxGetUrgent(event.target.value);
-      checkHoliday(event.target.value);
+      //checkHoliday(event.target.value);
       shippingValue = getCheckedShippingMethod();
       renderDeliveryIntervals(shippingValue);
     });
@@ -204,26 +203,69 @@ function setDatesIntervals() {
   }
 }
 
-function checkHoliday(date) {
-  if (holidays) {
-    if (holidays.includes(date)) {
-      isHoliday = '1'
-    } else {
-      isHoliday = '0'
-    };
+// function checkHoliday(date) {
+//   if (holidays) {
+//     if (holidays.includes(date)) {
+//       isHoliday = '1'
+//     } else {
+//       isHoliday = '0'
+//     };
+//   }
+// }
+
+function getDeliveryCosts(shippingValue) {
+
+  if(shippingValue == deliveryInMKAD || shippingValue == deliveryInMKADUrg) {
+      deliveryCost = deliveryCostInMkad;
+      deliveryCostUrg = isUrgent == '1' ? deliveryCostInMkadUrg : deliveryCostInMkad;
   }
+  if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
+      deliveryCost = deliveryCostOutMkad;
+      deliveryCostUrg = isUrgent == '1' ? deliveryCostOutMkadUrg : deliveryCostOutMkad;
+  }
+
+  if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
+      deliveryCost = deliveryCostInMkadSmall;
+      deliveryCostUrg = isUrgent == '1' ? deliveryCostInMkadSmallUrg : deliveryCostInMkadSmall;
+  }
+  if(shippingValue == deliveryOutMKADSmall || shippingValue == deliveryOutMKADSmallUrg) {
+      deliveryCost = deliveryCostOutMkadSmall;
+      deliveryCostUrg = isUrgent == '1' ? deliveryCostOutMkadSmallUrg : deliveryCostOutMkadSmall;
+  }
+  if(shippingValue == deliveryInMKADLarge || shippingValue == deliveryInMKADLargeUrg) {
+      deliveryCost = deliveryCostInMkadLarge;
+      deliveryCostUrg = isUrgent == '1' ? deliveryCostInMkadLargeUrg : deliveryCostInMkadLarge;
+  }
+  if(shippingValue == deliveryOutMKADLarge || shippingValue == deliveryOutMKADLargeUrg) {
+      deliveryCost = deliveryCostOutMkadLarge;
+      deliveryCostUrg = isUrgent == '1' ? deliveryCostOutMkadLargeUrg : deliveryCostOutMkadLarge;
+  }
+  if(shippingValue == deliveryInMKADMedium || shippingValue == deliveryInMKADMediumUrg) {
+      deliveryCost = deliveryCostInMkadMedium;
+      deliveryCostUrg = isUrgent == '1' ? deliveryCostInMkadMediumUrg : deliveryCostInMkadMedium;
+  }
+  if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
+      deliveryCost = deliveryCostOutMkadMedium;
+      deliveryCostUrg = isUrgent == '1' ? deliveryCostOutMkadMediumUrg : deliveryCostOutMkadMedium;
+  }
+  
+  // console.log(deliveryCost);
+  // console.log(deliveryCostUrg);
 }
 
 if (checkoutForm) {
 
+  console.log(checkedShippingMethod);
+  getDeliveryCosts(checkedShippingMethod);
+
   setInitalState();
-  checkHoliday(deliveryDatesInput[0].value);
+  //checkHoliday(deliveryDatesInput[0].value);
   setDatesIntervals();
 
   checkedShippingMethod = getCheckedShippingMethod();
 
   renderDeliveryIntervals(checkedShippingMethod);
-  renderDeliveryDates(checkedShippingMethod);
+  //renderDeliveryDates(checkedShippingMethod);
 
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 

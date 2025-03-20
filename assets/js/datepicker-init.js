@@ -189,45 +189,7 @@ function onChangeShippingMethod(event) {
     }
 }
 
-function getDeliveryCosts(shippingValue) {
 
-    if(shippingValue == deliveryInMKAD || shippingValue == deliveryInMKADUrg) {
-        deliveryCost = deliveryCostInMkad;
-        deliveryCostUrg = isUrgent == '1' ? deliveryCostInMkadUrg : deliveryCostInMkad;
-    }
-    if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
-        deliveryCost = deliveryCostOutMkad;
-        deliveryCostUrg = isUrgent == '1' ? deliveryCostOutMkadUrg : deliveryCostOutMkad;
-    }
-
-    if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
-        deliveryCost = deliveryCostInMkadSmall;
-        deliveryCostUrg = isUrgent == '1' ? deliveryCostInMkadSmallUrg : deliveryCostInMkadSmall;
-    }
-    if(shippingValue == deliveryOutMKADSmall || shippingValue == deliveryOutMKADSmallUrg) {
-        deliveryCost = deliveryCostOutMkadSmall;
-        deliveryCostUrg = isUrgent == '1' ? deliveryCostOutMkadSmallUrg : deliveryCostOutMkadSmall;
-    }
-    if(shippingValue == deliveryInMKADLarge || shippingValue == deliveryInMKADLargeUrg) {
-        deliveryCost = deliveryCostInMkadLarge;
-        deliveryCostUrg = isUrgent == '1' ? deliveryCostInMkadLargeUrg : deliveryCostInMkadLarge;
-    }
-    if(shippingValue == deliveryOutMKADLarge || shippingValue == deliveryOutMKADLargeUrg) {
-        deliveryCost = deliveryCostOutMkadLarge;
-        deliveryCostUrg = isUrgent == '1' ? deliveryCostOutMkadLargeUrg : deliveryCostOutMkadLarge;
-    }
-    if(shippingValue == deliveryInMKADMedium || shippingValue == deliveryInMKADMediumUrg) {
-        deliveryCost = deliveryCostInMkadMedium;
-        deliveryCostUrg = isUrgent == '1' ? deliveryCostInMkadMediumUrg : deliveryCostInMkadMedium;
-    }
-    if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
-        deliveryCost = deliveryCostOutMkadMedium;
-        deliveryCostUrg = isUrgent == '1' ? deliveryCostOutMkadMediumUrg : deliveryCostOutMkadMedium;
-    }
-    
-    console.log(deliveryCost);
-    console.log(deliveryCostUrg);
-}
 
 function chekIfUrgent(date) {
     // проверяем срочная ли доставка и запускам аякс
@@ -239,9 +201,4 @@ function chekIfUrgent(date) {
         isUrgent = '0'
     );
     ajaxGetUrgent();
-}
-
-if (checkoutForm) {
-    console.log(checkedShippingMethod);
-    getDeliveryCosts(checkedShippingMethod);
 }
