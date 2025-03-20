@@ -171,7 +171,7 @@
     row-gap: 10px;
     display: flex;
     flex-direction: column;
-    max-height: calc(var(--vh) - var(--headerHeight) - 30px);
+    max-height: calc(var(--vh) - var(--headerHeight) - 150px);
     flex-flow: column wrap;
 }
 
