@@ -184,6 +184,8 @@ checkoutForm.addEventListener('change', onChangeShippingMethod);
 function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
         datepicker_init();
+        console.log(event.target.value);
+        getDeliveryCosts(event.target.value);
     }
 }
 
@@ -199,6 +201,9 @@ function getDeliveryCosts(shippingValue) {
     if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
         deliveryCostUrg = deliveryCostOutMkadUrg;
     }
+
+    console.log(deliveryCost);
+    console.log(deliveryCostUrg);
     // if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
     // priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadSmallUrg}₽` : `${deliveryCostInMkadSmall}₽` ;
     // }
