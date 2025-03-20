@@ -41,15 +41,15 @@ function datepicker_options () {
         startDate = date;               
     };
 
-    if (hour >= 18 && hour <20) { 
-        urgentDate = {};
-    } else {
-        urgentDate = startDate;
-    } 
+    // if (hour >= 18 && hour <20) { 
+    //     urgentDate = {};
+    // } else {
+    //     urgentDate = startDate;
+    // } 
 
     console.log(date);
     console.log(startDate);
-    console.log(urgentDate);
+    //console.log(urgentDate);
     
 
     //console.log('initial');
@@ -193,36 +193,36 @@ function getDeliveryCosts(shippingValue) {
 
     if(shippingValue == deliveryInMKAD || shippingValue == deliveryInMKADUrg) {
         deliveryCost = deliveryCostInMkad;
-        deliveryCostUrg = urgentDate ? deliveryCostInMkadUrg : deliveryCostInMkad;
+        deliveryCostUrg = isUrgent == '1' ? deliveryCostInMkadUrg : deliveryCostInMkad;
     }
     if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
         deliveryCost = deliveryCostOutMkad;
-        deliveryCostUrg = urgentDate ? deliveryCostOutMkadUrg : deliveryCostOutMkad;
+        deliveryCostUrg = isUrgent == '1' ? deliveryCostOutMkadUrg : deliveryCostOutMkad;
     }
 
     if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
         deliveryCost = deliveryCostInMkadSmall;
-        deliveryCostUrg = urgentDate ? deliveryCostInMkadSmallUrg : deliveryCostInMkadSmall;
+        deliveryCostUrg = isUrgent == '1' ? deliveryCostInMkadSmallUrg : deliveryCostInMkadSmall;
     }
     if(shippingValue == deliveryOutMKADSmall || shippingValue == deliveryOutMKADSmallUrg) {
         deliveryCost = deliveryCostOutMkadSmall;
-        deliveryCostUrg = urgentDate ? deliveryCostOutMkadSmallUrg : deliveryCostOutMkadSmall;
+        deliveryCostUrg = isUrgent == '1' ? deliveryCostOutMkadSmallUrg : deliveryCostOutMkadSmall;
     }
     if(shippingValue == deliveryInMKADLarge || shippingValue == deliveryInMKADLargeUrg) {
         deliveryCost = deliveryCostInMkadLarge;
-        deliveryCostUrg = urgentDate ? deliveryCostInMkadLargeUrg : deliveryCostInMkadLarge;
+        deliveryCostUrg = isUrgent == '1' ? deliveryCostInMkadLargeUrg : deliveryCostInMkadLarge;
     }
     if(shippingValue == deliveryOutMKADLarge || shippingValue == deliveryOutMKADLargeUrg) {
         deliveryCost = deliveryCostOutMkadLarge;
-        deliveryCostUrg = urgentDate ? deliveryCostOutMkadLargeUrg : deliveryCostOutMkadLarge;
+        deliveryCostUrg = isUrgent == '1' ? deliveryCostOutMkadLargeUrg : deliveryCostOutMkadLarge;
     }
     if(shippingValue == deliveryInMKADMedium || shippingValue == deliveryInMKADMediumUrg) {
         deliveryCost = deliveryCostInMkadMedium;
-        deliveryCostUrg = urgentDate ? deliveryCostInMkadMediumUrg : deliveryCostInMkadMedium;
+        deliveryCostUrg = isUrgent == '1' ? deliveryCostInMkadMediumUrg : deliveryCostInMkadMedium;
     }
     if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
         deliveryCost = deliveryCostOutMkadMedium;
-        deliveryCostUrg = urgentDate ? deliveryCostOutMkadMediumUrg : deliveryCostOutMkadMedium;
+        deliveryCostUrg = isUrgent == '1' ? deliveryCostOutMkadMediumUrg : deliveryCostOutMkadMedium;
     }
     
     console.log(deliveryCost);
