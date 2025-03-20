@@ -122,7 +122,11 @@ function datepicker_init () {
 setTimeout(() => {
     //определяем параметры календаря
     datePickerOpts = datepicker_options ();
+    let dateMinUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate());
+    let dateTomorrowUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate()+1);
+    let dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
     console.log(datePickerOpts);
+    console.log(dateTomorrowUTC);
 
     datepickerCal = new AirDatepicker('#datepicker', {
         onSelect({date, formattedDate, datepicker}) {
@@ -132,13 +136,11 @@ setTimeout(() => {
             console.log(todayDP);
             console.log(tomorrowDP);
 
-            chekIfUrgent(formattedDate);
+            chekIfUrgent(date);
         },
 
         onRenderCell({date, cellType}) {
             let dateUTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
-            let dateMinUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate());
-            let dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
             console.log(checkedShippingMethod);
             if(normalDeliveries.includes(checkedShippingMethod) || urgentDeliveries.includes(checkedShippingMethod)) {
                 if (dateUTC == dateMinUTC) {
@@ -229,7 +231,9 @@ function getDeliveryCosts(shippingValue) {
 
 function chekIfUrgent(date) {
     // проверяем срочная ли доставка и запускам аякс
-    if (date == todayDP || date == tomorrowDP && hour >= 18) {
+    let dateUTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+    //if (date == todayDP || date == tomorrowDP && hour >= 18) {
+    if (date == dateMinUTC || date == dateTomorrowUTC && hour >= 18) {
         isUrgent = '1'
     } else (
         isUrgent = '0'
