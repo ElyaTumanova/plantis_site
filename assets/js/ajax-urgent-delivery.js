@@ -254,7 +254,7 @@ function getDeliveryCosts(shippingValue) {
 }
 
 if (checkoutForm) {
-
+  checkedShippingMethod = getCheckedShippingMethod();
   console.log(checkedShippingMethod);
   getDeliveryCosts(checkedShippingMethod);
 
@@ -262,7 +262,7 @@ if (checkoutForm) {
   //checkHoliday(deliveryDatesInput[0].value);
   setDatesIntervals();
 
-  checkedShippingMethod = getCheckedShippingMethod();
+
 
   renderDeliveryIntervals(checkedShippingMethod);
   //renderDeliveryDates(checkedShippingMethod);
