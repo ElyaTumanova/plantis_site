@@ -249,8 +249,8 @@ function getDeliveryCosts(shippingValue) {
       deliveryCostUrg = isUrgent == '1' ? deliveryCostOutMkadMediumUrg : deliveryCostOutMkadMedium;
   }
   
-  // console.log(deliveryCost);
-  // console.log(deliveryCostUrg);
+  console.log(deliveryCost);
+  console.log(deliveryCostUrg);
 }
 
 if (checkoutForm) {
