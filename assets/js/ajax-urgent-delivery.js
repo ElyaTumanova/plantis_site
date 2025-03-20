@@ -268,6 +268,6 @@ if (checkoutForm) {
 
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 
-  ajaxGetUrgent();
+  //ajaxGetUrgent();
   
 }
