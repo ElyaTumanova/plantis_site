@@ -145,7 +145,7 @@ setTimeout(() => {
             let dateMinUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate());
             let dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
             console.log(checkedShippingMethod);
-            if(checkedShippingMethod) {
+            if(normalDeliveries.includes(checkedShippingMethod) || urgentDeliveries.includes(checkedShippingMethod)) {
                 if (dateUTC == dateMinUTC) {
                     if (urgentDate) {
                         return {
@@ -165,6 +165,10 @@ setTimeout(() => {
                     return {
                         html: date.getDate(),
                     }
+                }
+            } else {
+                return {
+                    html: date.getDate(),
                 }
             }
         }
