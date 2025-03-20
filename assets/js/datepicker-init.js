@@ -104,7 +104,7 @@ function datepicker_options () {
 let datepickerCal;
 let datePickerOpts;
 
-let todayDP = `${new Date().getDate()< 10 ? '0' : ''}.${new Date().getDate()}.${(new Date().getUTCMonth()+1) < 10 ? '0' : ''}.${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
+let todayDP = `${new Date().getDate()< 10 ? '0' : ''}${new Date().getDate()}.${(new Date().getUTCMonth()+1) < 10 ? '0' : ''}${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
 let tomorrowDP = `${new Date().getDate() + 1}.${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
 
 //let isUrgent = '0';
