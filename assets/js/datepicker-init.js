@@ -233,5 +233,5 @@ function getDeliveryCosts(shippingValue) {
 }
 
 if (checkoutForm) {
-    
+    console.log(checkedShippingMethod);
 }
