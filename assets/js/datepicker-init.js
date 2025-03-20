@@ -156,17 +156,17 @@ setTimeout(() => {
             if (dateUTC == dateMinUTC) {
                 if (urgentDate) {
                     return {
-                        html: date.getDate() + '<br>' + 'ururu'   ,
+                        html: date.getDate() + '<br>' + deliveryCostUrg + '₽'  ,
                     }
                 } else {
                     return {
-                        html: date.getDate() + '<br>' + 'lalala'   ,
+                        html: date.getDate() + '<br>' + deliveryCost + '₽'  ,
                     }
                 }
             }
             if (dateUTC > dateMinUTC && dateUTC <= dateMaxUTC) {
                 return {
-                    html: date.getDate() + '<br>' + 'lalala'   ,
+                    html: date.getDate() + '<br>' + deliveryCost + '₽'  ,
                 }
             } else {
                 return {
@@ -191,15 +191,13 @@ function onChangeShippingMethod(event) {
 
 function getDeliveryCosts(shippingValue) {
 
-    let deliveryCost;
-    let deliveryCostUrg;
-
     if(shippingValue == deliveryInMKAD || shippingValue == deliveryInMKADUrg) {
         deliveryCost = deliveryCostInMkad;
         deliveryCostUrg = urgentDate ? deliveryCostInMkadUrg : deliveryCostInMkad;
     }
     if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
-        deliveryCostUrg = deliveryCostOutMkadUrg;
+        deliveryCost = deliveryCostOutMkad;
+        deliveryCostUrg = urgentDate ? deliveryCostOutMkadUrg : deliveryCostOutMkad;
     }
 
     console.log(deliveryCost);
