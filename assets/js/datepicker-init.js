@@ -8,7 +8,8 @@
 //<?php $weekend_string = carbon_get_theme_option('weekend');?>
 //выходной
 let weekend_str = '<?php echo $weekend_string; ?>';
-let weekend_arr = weekend_str.split(',');
+//let weekend_arr = weekend_str.split(',');
+let weekend_arr = [21/03/2025]
 // console.log(weekend_arr);
 let weekend = [];
 weekend_arr.forEach(element => {
@@ -16,7 +17,7 @@ weekend_arr.forEach(element => {
 });
 
 
-console.log(new Date (21.03.2025));
+console.log(weekend);
 let date = new Date();
 let hour = date.getHours();
 let startDate;
