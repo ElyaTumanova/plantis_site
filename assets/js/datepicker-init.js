@@ -9,10 +9,11 @@
 //выходной
 let weekend_str = '<?php echo $weekend_string; ?>';
 //let weekend_arr = weekend_str.split(',');
-let weekend_arr = [2025-03-21]
+let weekend_arr = ['2025-03-21']
 // console.log(weekend_arr);
 let weekend = [];
 weekend_arr.forEach(element => {
+    console.log(element);
     weekend.push(new Date(element));
 });
 
