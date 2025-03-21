@@ -10,7 +10,6 @@
 let date = new Date();
 let hour = date.getHours();
 let startDate;
-let urgentDelivery;
 
 let dateMinUTC;
 let dateTomorrowUTC;
@@ -47,15 +46,8 @@ function datepicker_options () {
         startDate = date;               
     };
 
-    if (hour >= 18 && hour <20) { 
-        urgentDelivery = false;
-    } else {
-        urgentDelivery = true;
-    } 
-
     // console.log(date);
     // console.log(startDate);
-    //console.log(urgentDelivery);
     
 
     // console.log('initial');

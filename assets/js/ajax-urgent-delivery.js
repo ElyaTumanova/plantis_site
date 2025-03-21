@@ -1,6 +1,7 @@
 let isUrgent;
 let isLate;
 let isHideInterval;
+let urgentDelivery;
 let isHoliday;
 let holidays = []; //format dd.mm
 let checkoutForm = document.querySelector('form[name="checkout"]');
@@ -159,6 +160,17 @@ function setInitalState() {
   // } else {
   //   today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${(new Date().getUTCMonth()< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
   // };
+
+  if (isBackorder) {
+    urgentDelivery = false;
+  } else {
+    if (hour >= 18 && hour <20) { 
+      urgentDelivery = false;
+    } else {
+      urgentDelivery = true;
+    }
+  }
+   
 
 
   if(hour >=20 && hour<24) {
