@@ -103,6 +103,8 @@ function plnt_set_constants_script() {
 	$out_mkad_medium_urg = $shipping_costs[$urgent_delivery_outMKAD_medium];
 
 	$isbackorders = plnt_is_backorder();
+
+	$weekend_string = carbon_get_theme_option('weekend'); //выходные для datepicker
    
 	?>
 	<script>
@@ -158,6 +160,8 @@ function plnt_set_constants_script() {
 		let deliveryLateMarkup = '<?php echo $late_markup_delivery; ?>';
 
         let isBackorder = '<?php echo $isbackorders; ?>';
+
+		let weekend_str = '<?php echo $weekend_string; ?>';
 
 	</script>
 	<?php

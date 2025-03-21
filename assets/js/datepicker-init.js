@@ -5,12 +5,11 @@
 
 //ДОБАВИТЬ В FUNCTIONS.PHP ПЕРЕМЕННЫЕ ДЛЯ ИСПОЛЬЗОВАНИЯ ДАННОГО СКРИПТА
 
-//<?php $weekend_string = carbon_get_theme_option('weekend');?>
+
 //выходной
-let weekend_str = '<?php echo $weekend_string; ?>';
-//let weekend_arr = weekend_str.split(',');
-let weekend_arr = ['2025-03-21']
-// console.log(weekend_arr);
+
+let weekend_arr = weekend_str.split(',');
+//let weekend_arr = ['2025-03-21']
 let weekend = [];
 weekend_arr.forEach(element => {
     console.log(element);
