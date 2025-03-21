@@ -132,7 +132,7 @@ setTimeout(() => {
     dateMinUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate());
     dateTomorrowUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate()+1);
     dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
-    // console.log(datePickerOpts);
+    console.log(datePickerOpts);
     // console.log(dateTomorrowUTC);
 
     datepickerCal = new AirDatepicker('#datepicker', {
