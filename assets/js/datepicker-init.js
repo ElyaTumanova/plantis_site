@@ -4,30 +4,32 @@
 // Utility function for datepicker init
 
 // переменные
-let date = new Date();
-let hour = date.getHours();
-let startDate;
 
-let dateMinUTC;
-let dateTomorrowUTC;
-let dateMaxUTC;
+    // Datepicker init
+    let datepickerCal;
+    let datePickerOpts;
 
-//выходной
-let weekend_arr = weekend_str.split(',');
-let weekend = [];
-weekend_arr.forEach(element => {
-    weekend.push(new Date(element));
-});
+    let date = new Date();
+    let hour = date.getHours();
+    let startDate;
 
-const weekendTimeStamps = weekend.map(function (element) {
-    return element.getTime();
-});
-let isSelectedDayWeekend = false;
+    let dateMinUTC;
+    let dateTomorrowUTC;
+    let dateMaxUTC;
 
-console.log(weekend);
+    //выходной
+    let weekend_arr = weekend_str.split(',');
+    let weekend = [];
+    weekend_arr.forEach(element => {
+        weekend.push(new Date(element));
+    });
 
+    const weekendTimeStamps = weekend.map(function (element) {
+        return element.getTime();
+    });
+    let isSelectedDayWeekend = false;
 
-//console.log(hour);
+    console.log(weekend);
 
 
 function datepicker_options () {  
@@ -93,26 +95,12 @@ function checkSelectedDay (checkDate) {
     return selectedDate = newSelectedDate;
 };
 
-// Datepicker init
-let datepickerCal;
-let datePickerOpts;
-
 //let todayDP = `${new Date().getDate()< 10 ? '0' : ''}${new Date().getDate()}.${(new Date().getUTCMonth()+1) < 10 ? '0' : ''}${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
 //let tomorrowDP = `${(new Date().getDate() + 1)< 10 ? '0' : ''}${new Date().getDate() + 1}.${(new Date().getUTCMonth()+1) < 10 ? '0' : ''}${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
 
 function datepicker_init () {
     console.log('hi datepicker_init');
 
-    // //определяем параметры календаря
-    // datePickerOpts = datepicker_options ();
-    // console.log(datePickerOpts);
-    datepickerCal.update(datePickerOpts);
-    if (weekend) {
-        datepickerCal.disableDate(weekend);
-    }         
-}
-
-setTimeout(() => {
     //определяем параметры календаря
     datePickerOpts = datepicker_options ();
     dateMinUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate());
@@ -120,7 +108,13 @@ setTimeout(() => {
     dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
     console.log(datePickerOpts);
     // console.log(dateTomorrowUTC);
+    datepickerCal.update(datePickerOpts);
+    if (weekend) {
+        datepickerCal.disableDate(weekend);
+    }         
+}
 
+function datepicker_create () {
     datepickerCal = new AirDatepicker('#datepicker', {
         onSelect({date, formattedDate, datepicker}) {
             // console.log('hi date');
@@ -162,10 +156,8 @@ setTimeout(() => {
                 }
             }
         }
-    });
-
-    datepicker_init ();
-}, 1000);  
+    })
+} 
 
 // checkoutForm.addEventListener('change', onChangeShippingMethod);
 

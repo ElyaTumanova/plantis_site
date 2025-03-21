@@ -286,6 +286,9 @@ if (checkoutForm) {
   //renderDeliveryDates(checkedShippingMethod);
 
   checkoutForm.addEventListener('change', onChangeShippingMethod);
+  
+  datepicker_create ();
+  datepicker_init ();
 
   //ajaxGetUrgent();
   
