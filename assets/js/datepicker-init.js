@@ -15,6 +15,8 @@ weekend_arr.forEach(element => {
     weekend.push(new Date(element));
 });
 
+
+console.log(new Date (21.03.2025));
 let date = new Date();
 let hour = date.getHours();
 let startDate;
