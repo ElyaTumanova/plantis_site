@@ -3,9 +3,6 @@
 --------------------------------------------------------------*/
 // Utility function for datepicker init
 
-//ДОБАВИТЬ В FUNCTIONS.PHP ПЕРЕМЕННЫЕ ДЛЯ ИСПОЛЬЗОВАНИЯ ДАННОГО СКРИПТА
-
-
 // переменные
 let date = new Date();
 let hour = date.getHours();
@@ -14,9 +11,6 @@ let startDate;
 let dateMinUTC;
 let dateTomorrowUTC;
 let dateMaxUTC;
-
-let deliveryCost;
-let deliveryCostUrg;
 
 //выходной
 let weekend_arr = weekend_str.split(',');

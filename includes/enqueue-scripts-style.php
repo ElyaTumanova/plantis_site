@@ -20,7 +20,7 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 											 '/assets/js/ajax-update-wish.js', array( 'jquery' ), null, true );	
 		
 		wp_enqueue_script( 'ajax-urgent-delivery', get_template_directory_uri() .
-											 '/assets/js/ajax-urgent-delivery.js', array( 'jquery' ), null, true );	
+											 '/assets/js/ajax-urgent-delivery.js', array( 'jquery', 'datepicker', 'datepicker-init' ), null, true );	
 		
 		wp_enqueue_script( 'hide-chekout-fields', get_template_directory_uri() .
 											 '/assets/js/hide-chekout-fields.js', array( 'jquery' ), null, true );	
