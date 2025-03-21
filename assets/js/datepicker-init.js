@@ -6,18 +6,7 @@
 //ДОБАВИТЬ В FUNCTIONS.PHP ПЕРЕМЕННЫЕ ДЛЯ ИСПОЛЬЗОВАНИЯ ДАННОГО СКРИПТА
 
 
-//выходной
-
-let weekend_arr = weekend_str.split(',');
-//let weekend_arr = ['2025-03-21']
-let weekend = [];
-weekend_arr.forEach(element => {
-    console.log(element);
-    weekend.push(new Date(element));
-});
-
-
-console.log(weekend);
+// переменные
 let date = new Date();
 let hour = date.getHours();
 let startDate;
@@ -29,6 +18,20 @@ let dateMaxUTC;
 
 let deliveryCost;
 let deliveryCostUrg;
+
+//выходной
+let weekend_arr = weekend_str.split(',');
+let weekend = [];
+weekend_arr.forEach(element => {
+    weekend.push(new Date(element));
+});
+
+const weekendTimeStamps = weekend.map(function (element) {
+    return element.getTime();
+});
+let isSelectedDayWeekend = false;
+
+console.log(weekend);
 
 
 //console.log(hour);
@@ -50,35 +53,16 @@ function datepicker_options () {
         urgentDelivery = true;
     } 
 
-    console.log(date);
-    console.log(startDate);
+    // console.log(date);
+    // console.log(startDate);
     //console.log(urgentDelivery);
     
 
-    //console.log('initial');
+    // console.log('initial');
 
-    // проверяем, что первая доступная дата не попадает на выходной
-    const weekendTimeStamps = weekend.map(function (element) {
-        return element.getTime();
-    });
-    let isSelectedDayWeekend = false;
-    function checkSelectedDay (checkDate) {
-        let newSelectedDate = checkDate;
-        isSelectedDayWeekend = weekendTimeStamps.includes((new Date(checkDate)).setHours(3,0,0,0));
-        if (isSelectedDayWeekend) {
-            newSelectedDate = date.setDate(new Date(checkDate).getDate() + 1);
-            // console.log('new date')
-            // console.log(new Date(newSelectedDate));
-            return checkSelectedDay (newSelectedDate);
-        }
-        // console.log('after if');
-        // console.log(new Date(newSelectedDate));
-        return selectedDate = newSelectedDate;
-    };
-
-    //checkSelectedDay (selectedDate);
-    //console.log('finally');
-   //console.log(new Date(selectedDate));
+    // checkSelectedDay (selectedDate);
+    // console.log('finally');
+    // console.log(new Date(selectedDate));
 
     //кнопка ОК
     let button = {
@@ -89,9 +73,10 @@ function datepicker_options () {
         }
     }
   
+    let selectedDate = startDate;
     // datepicker options
     let datePickerOpts = {
-        selectedDates: [startDate],
+        selectedDates: [selectedDate],
         minDate: startDate,
         maxDate: (function(){
             let date = new Date();
@@ -106,6 +91,21 @@ function datepicker_options () {
 
     return datePickerOpts;
 }
+
+// проверяем, что первая доступная дата не попадает на выходной
+function checkSelectedDay (checkDate) {
+    let newSelectedDate = checkDate;
+    isSelectedDayWeekend = weekendTimeStamps.includes((new Date(checkDate)).setHours(3,0,0,0));
+    if (isSelectedDayWeekend) {
+        newSelectedDate = date.setDate(new Date(checkDate).getDate() + 1);
+        // console.log('new date')
+        // console.log(new Date(newSelectedDate));
+        return checkSelectedDay (newSelectedDate);
+    }
+    // console.log('after if');
+    // console.log(new Date(newSelectedDate));
+    return selectedDate = newSelectedDate;
+};
 
 // Datepicker init
 let datepickerCal;
