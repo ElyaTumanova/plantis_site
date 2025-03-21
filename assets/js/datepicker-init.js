@@ -18,7 +18,7 @@ weekend_arr.forEach(element => {
 let date = new Date();
 let hour = date.getHours();
 let startDate;
-let urgentDate;
+let urgentDelivery;
 
 let dateMinUTC;
 let dateTomorrowUTC;
@@ -41,15 +41,15 @@ function datepicker_options () {
         startDate = date;               
     };
 
-    // if (hour >= 18 && hour <20) { 
-    //     urgentDate = {};
-    // } else {
-    //     urgentDate = startDate;
-    // } 
+    if (hour >= 18 && hour <20) { 
+        urgentDelivery = false;
+    } else {
+        urgentDelivery = true;
+    } 
 
     console.log(date);
     console.log(startDate);
-    //console.log(urgentDate);
+    //console.log(urgentDelivery);
     
 
     //console.log('initial');
@@ -148,7 +148,7 @@ setTimeout(() => {
             console.log(checkedShippingMethod);
             if(normalDeliveries.includes(checkedShippingMethod) || urgentDeliveries.includes(checkedShippingMethod)) {
                 if (dateUTC == dateMinUTC) {
-                    if (isUrgent == '1') {
+                    if (urgentDelivery) {
                         return {
                             html: date.getDate() + '<p>' + deliveryCostUrg + '₽' + '</p>' ,
                         }
