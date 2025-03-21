@@ -76,7 +76,7 @@ function datepicker_options () {
     let selectedDate = startDate;
     // datepicker options
     let datePickerOpts = {
-        selectedDates: [startDate],
+        selectedDates: [selectedDate],
         minDate: startDate,
         maxDate: (function(){
             let date = new Date();
