@@ -178,23 +178,22 @@ setTimeout(() => {
     datepicker_init ();
 }, 1000);  
 
-checkoutForm.addEventListener('change', onChangeShippingMethod);
+// checkoutForm.addEventListener('change', onChangeShippingMethod);
 
-function onChangeShippingMethod(event) {
-    if(event && event.target.className == "shipping_method") {
-        getDeliveryCosts(event.target.value);
-        checkedShippingMethod = event.target.value;
-        console.log(checkedShippingMethod);
-        datepicker_init();
-    }
-}
+// function onChangeShippingMethod(event) {
+//     if(event && event.target.className == "shipping_method") {
+//         getDeliveryCosts(event.target.value);
+//         checkedShippingMethod = event.target.value;
+//         console.log(checkedShippingMethod);
+//         datepicker_init();
+//     }
+// }
 
 
 
 function chekIfUrgent(date) {
     // проверяем срочная ли доставка и запускам аякс
     let dateUTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
-    //if (date == todayDP || date == tomorrowDP && hour >= 18) {
     if (dateUTC == dateMinUTC || dateUTC == dateTomorrowUTC && hour >= 18) {
         isUrgent = '1'
     } else (

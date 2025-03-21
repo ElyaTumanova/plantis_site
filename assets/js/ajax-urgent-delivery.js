@@ -6,8 +6,8 @@ let holidays = []; //format dd.mm
 let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryDates = document.querySelector('.delivery_dates');
 let deliveryDatesInput = document.querySelectorAll('.delivery_dates input');
-let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
-let deliveryDatesInfo = [];
+//let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
+//let deliveryDatesInfo = [];
 let deliveryIntervalsInfo = []
 let shippingMethodValues = [];
 let checkedShippingMethodInput;
@@ -25,6 +25,11 @@ function onChangeShippingMethod(event) {
         renderDeliveryIntervals(event.target.value);
         // console.log(event.target.value);
         // ajaxGetUrgent();
+
+        getDeliveryCosts(event.target.value);
+        checkedShippingMethod = event.target.value;
+        console.log(checkedShippingMethod);
+        datepicker_init();
     }
 }
 
@@ -166,26 +171,26 @@ function setInitalState() {
 }
 
 function setDatesIntervals() {
-  deliveryDatesLables.forEach((label) => {
-    let dateInfo = {
-      label: label,
-      for: label.htmlFor,
-      text: label.textContent};
-    //console.log(dateInfo);
-    deliveryDatesInfo.push(dateInfo);
-  });
+  // deliveryDatesLables.forEach((label) => {
+  //   let dateInfo = {
+  //     label: label,
+  //     for: label.htmlFor,
+  //     text: label.textContent};
+  //   //console.log(dateInfo);
+  //   deliveryDatesInfo.push(dateInfo);
+  // });
 
-  deliveryDatesInput[0].setAttribute('checked','checked');
+  // deliveryDatesInput[0].setAttribute('checked','checked');
   deliveryIntervalInput[0].setAttribute('checked','checked');
 
-  deliveryDatesInput.forEach((date) => {
-    date.addEventListener('click', function(event){
-      ajaxGetUrgent(event.target.value);
-      //checkHoliday(event.target.value);
-      shippingValue = getCheckedShippingMethod();
-      renderDeliveryIntervals(shippingValue);
-    });
-  })
+  // deliveryDatesInput.forEach((date) => {
+  //   date.addEventListener('click', function(event){
+  //     ajaxGetUrgent(event.target.value);
+  //     //checkHoliday(event.target.value);
+  //     shippingValue = getCheckedShippingMethod();
+  //     renderDeliveryIntervals(shippingValue);
+  //   });
+  // })
 
   if(deliveryLateMarkup) {    
     deliveryIntervalLabels.forEach((label) => {
