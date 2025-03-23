@@ -99,7 +99,6 @@ function plnt_catalog_sidebar() {
 
 // // вывод фильтров над каталогом  #filters #berocket
 add_action('woocommerce_before_shop_loop','plnt_catalog_filters_main_area', 20);
-//add_action('woocommerce_before_shop_loop','plnt_filter_metki_swiper_init', 20);
 
 function plnt_catalog_filters_main_area() {
 	global $filter_icon;
@@ -121,18 +120,6 @@ function plnt_catalog_filters_main_area() {
     </div>
     <?php 	
 };
-
-function plnt_filter_metki_swiper_init () {
-	?>
-	<script>
-		jQuery(function($){
-			setTimeout(function(){
-				swiper_filter_metki_init();
-			},100)
-		})
-	</script>
-	<?php
-}
 
 // // сортировка - добавляем обертку
 

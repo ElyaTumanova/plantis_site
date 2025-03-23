@@ -396,10 +396,9 @@ const swiper_about_feedback = new Swiper('.about__swiper-feedback', {
 /*--------------------------------------------------------------
 # Filter Metki
 --------------------------------------------------------------*/
-// слайдер инициирован в wc-catalog-functions, чтобы повторно инициироваться при аякс обновлении каталога при приминении фильтров
+// функция используется в плагнах Load More и BeRocket filters, чтобы повторно инициироваться при аякс обновлении каталога при приминении фильтров
 
 function swiper_filter_metki_init() {
-    console.log('hi swiper metki');
     swiper_filter_metki = new Swiper('.metki_swiper_wrap', {
         // navigation: {
         //     nextEl: '.myslider-next',
