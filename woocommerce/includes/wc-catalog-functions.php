@@ -558,7 +558,7 @@ function add_custom_canonical_tags() {
 }
 
 // Добавляем действие в WordPress, чтобы выполнить функцию при выводе тегов в head
-add_action('wp_head', 'add_custom_canonical_tags');
+//add_action('wp_head', 'add_custom_canonical_tags');
 
 // изменяем названия меток на подборки для хлебных крошек #breadcrumb
 add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
