@@ -106,7 +106,7 @@ if($site === 'http://new.plantis.shop') {
 	
 	$delivery_free = 'free_shipping:5';
 
-	$delivery_pochta = 'free_shipping:44';
+	$delivery_pochta = 'flat_rate:45';
 
 	$delivery_courier = 'free_shipping:26';
 
