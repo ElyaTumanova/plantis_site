@@ -138,6 +138,7 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     global $delivery_courier;
     global $delivery_long_dist;
+    global $delivery_pochta;
 
     global $delivery_inMKAD_small;
 	global $delivery_outMKAD_small;
@@ -281,7 +282,7 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     //поздняя доставка
     if (isset($chosen_methods)) {
-        if($local_pickup == $chosen_methods[0] || $delivery_courier == $chosen_methods[0] || $delivery_long_dist == $chosen_methods[0]) {
+        if($local_pickup == $chosen_methods[0] || $delivery_courier == $chosen_methods[0] || $delivery_long_dist == $chosen_methods[0] || $delivery_pochta == $chosen_methods[0]) {
             WC()->session->set('isLate', '0' );  
         }
     }
@@ -293,6 +294,15 @@ function plnt_shipping_conditions( $rates, $package ) {
                     $rate->cost = $rate->cost + $late_markup_delivery;
                 }
             }	
+        }
+    }
+
+    // почта России
+
+    if (isset($chosen_methods)) {
+        if($delivery_pochta == $chosen_methods[0]) {
+            $pochta_cost_delivery = 300;
+            $rate->cost = $rate->cost + $pochta_cost_delivery;
         }
     }
 
