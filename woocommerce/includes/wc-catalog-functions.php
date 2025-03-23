@@ -516,9 +516,16 @@ function filter_wpseo_robots( $robotsstr ) {
 // 	return $canonical; /* Do not remove this line */
 // }
 
-add_filter( 'wpseo_canonical', '__return_false', 10 );
+// add_filter( 'wpseo_canonical', '__return_false', 10 );
 
-// add_filter( 'wpseo_canonical', 'add_custom_canonical_tags', 20 );
+function remove_canonical() {
+    
+    add_filter( 'wpseo_canonical', '__return_false', 10 );
+
+}
+add_action( 'wpseo_head', 'remove_canonical', 4);
+
+add_filter( 'wpseo_canonical', 'add_custom_canonical_tags', 20 );
 
 // изменяем canonical для страниц пагинации #SEO
 
@@ -530,7 +537,7 @@ function remove_my_theme_canonical() {
 add_action('init', 'remove_my_theme_canonical');
 
 function add_custom_canonical_tags() {
-    if (is_paged()) {
+    // if (is_paged()) {
         // Получаем URL первой страницы текущего архива
         $first_page_url = get_pagenum_link(1);
 		
@@ -559,7 +566,7 @@ function add_custom_canonical_tags() {
             $next_page_url = get_pagenum_link($paged + 1);
             echo '<link rel="next" href="' . esc_url($next_page_url) . '" />' . "\n";
         }
-    }
+    // }
 }
 
 // Добавляем действие в WordPress, чтобы выполнить функцию при выводе тегов в head
