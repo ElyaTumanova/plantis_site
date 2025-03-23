@@ -305,7 +305,7 @@ function plnt_shipping_conditions( $rates, $package ) {
         foreach( $rates as $rate) {
             if ( $delivery_pochta == $chosen_methods[0]) {
                 
-                    $rate->cost = $rate->cost + $late_markup_delivery;
+                $rate->cost = 450;
 
             }	
         }
