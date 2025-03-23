@@ -30,11 +30,13 @@ add_action('woocommerce_review_order_before_shipping','plnt_check');
 function plnt_check() {
   
     global $local_pickup;
+    global $delivery_pochta;
     // echo '<br>';
     // $packages = WC()->shipping()->get_packages();
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
     // print_r( $packages);
     // echo '<br>';
+    echo $delivery_pochta;
     echo $chosen_methods[0];
     echo '<br>';
 
@@ -301,7 +303,6 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     if (isset($chosen_methods)) {
         if($delivery_pochta == $chosen_methods[0]) {
-            echo $delivery_pochta;
             $pochta_cost_delivery = 200;
             $rate->cost = $rate->cost + $late_markup_delivery;
         }
