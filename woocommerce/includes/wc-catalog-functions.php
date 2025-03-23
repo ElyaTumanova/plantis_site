@@ -516,7 +516,7 @@ function filter_wpseo_robots( $robotsstr ) {
 // 	return $canonical; /* Do not remove this line */
 // }
 
-// add_filter( 'wpseo_canonical', '__return_false', 10 );
+add_filter( 'wpseo_canonical', '__return_false', 10 );
 
 // add_filter( 'wpseo_canonical', 'add_custom_canonical_tags', 20 );
 
