@@ -78,7 +78,8 @@ function plnt_search_ajax_action_callback (){
             $product = wc_get_product( $product_sku_id );
             //print_r($product);
             $short_descr = $product->get_short_description();
-            //$title = $product->get_the_title();
+            $title = $product->get_the_title();
+            echo $title;
             $sale = get_post_meta( $product_sku_id, '_sale_price', true);
             ?>
             <div class="search-result__item">
