@@ -696,6 +696,9 @@ input[type="number"] {
     border-radius: 5px 5px 0 0;
     border: solid 2px var(--gray);
     background-color: var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 965px) and (min-width:767px) {
