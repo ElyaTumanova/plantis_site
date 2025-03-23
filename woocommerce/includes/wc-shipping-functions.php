@@ -24,7 +24,7 @@ function plnt_set_initials() {
 
 //for dev
 
-//add_action('woocommerce_review_order_before_shipping','plnt_check');
+add_action('woocommerce_review_order_before_shipping','plnt_check');
 //add_action('wp_head','plnt_check');
 
 function plnt_check() {
@@ -35,8 +35,8 @@ function plnt_check() {
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
     // print_r( $packages);
     // echo '<br>';
-    // echo $chosen_methods[0];
-    // echo '<br>';
+    echo $chosen_methods[0];
+    echo '<br>';
 
     // if($local_pickup === $chosen_methods[0]) {
     //     echo 'hi';
@@ -44,14 +44,14 @@ function plnt_check() {
     // }
     // $isbackorders = plnt_is_backorder();
     // echo 'isback '.$isbackorders.'  ';
-    echo 'isUrgent '.(WC()->session->get('isUrgent' )).'  ';
+    //echo 'isUrgent '.(WC()->session->get('isUrgent' )).'  ';
     // echo 'hiAjax '.(WC()->session->get('hiAjax' )).'  ';
     // echo 'hiInit '.(WC()->session->get('hiInit' )).'  ';
     // echo 'isback2 '.(WC()->session->get('isBackorder' )).'  ';
     //echo 'isLate '.(WC()->session->get('isLate' )).'  ';
-    echo '<br>';
-    echo 'date '.(WC()->session->get('date' )).'  ';
-    echo '<br>';
+    //echo '<br>';
+    //echo 'date '.(WC()->session->get('date' )).'  ';
+    //echo '<br>';
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
     // if ( is_checkout() && ($hour<18 || $hour>=20)) {
