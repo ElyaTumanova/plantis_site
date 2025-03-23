@@ -187,7 +187,8 @@ function create_yandex_xml_btn () {
 
                 //Название и описание
                 $yandex_xml .= "<name>".htmlspecialchars($allproduct->post_title)."</name>
-                <description><![CDATA['".htmlspecialchars(strip_tags($allproduct->post_content))."]]></description>";
+                <description><![CDATA['".htmlspecialchars(strip_tags($allproduct->post_content))."]]></description>
+                <vendor>Plantis</vendor>";
 
                 //Параметры товара
 
