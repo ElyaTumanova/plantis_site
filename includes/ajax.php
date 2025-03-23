@@ -36,6 +36,8 @@ function plnt_search_ajax_action_callback (){
         )
     );
     $query_ajax = new WP_Query($arg);
+    $product_sku_id = wc_get_product_id_by_sku( $wp_query->query_vars[ 's' ] );
+    print_r($product_sku_id);
     $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
     if ($query_ajax->have_posts()) {
         // echo '<pre>';
