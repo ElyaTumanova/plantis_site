@@ -506,15 +506,15 @@ function filter_wpseo_robots( $robotsstr ) {
     return $robotsstr;
 }
 
-// add_filter( 'wpseo_canonical', 'yoast_remove_canonical_items' ); // если нужно убрать canonical на отдельных страницах
+add_filter( 'wpseo_canonical', 'yoast_remove_canonical_items' ); // если нужно убрать canonical на отдельных страницах
 
-// function yoast_remove_canonical_items( $canonical ) {
-//   if ( is_paged() ) {
-//     return false;
-//   }
-//   /* Use a second if statement here when needed */
-// 	return $canonical; /* Do not remove this line */
-// }
+function yoast_remove_canonical_items( $canonical ) {
+  //if ( is_paged() ) {
+    return false;
+  //}
+  /* Use a second if statement here when needed */
+	//return $canonical; /* Do not remove this line */
+}
 
 // изменяем canonical для страниц пагинации #SEO
 
