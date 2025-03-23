@@ -36,7 +36,7 @@ function plnt_check() {
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
     // print_r( $packages);
     // echo '<br>';
-    echo $delivery_pochta;
+    //echo $delivery_pochta;
     echo $chosen_methods[0];
     echo '<br>';
 
@@ -303,6 +303,7 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     if (isset($chosen_methods)) {
         if($delivery_pochta == $chosen_methods[0]) {
+            echo 'hi';
             $pochta_cost_delivery = 200;
             $rate->cost = $rate->cost + $late_markup_delivery;
         }
