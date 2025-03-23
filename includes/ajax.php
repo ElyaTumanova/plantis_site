@@ -37,9 +37,6 @@ function plnt_search_ajax_action_callback (){
     );
     $query_ajax = new WP_Query($arg);
     $product_sku_id = wc_get_product_id_by_sku( $query_ajax->query_vars[ 's' ] );
-
-    print_r($product_sku_id);
-    print_r($query_ajax->query_vars[ 's' ]);
     $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
     if ($query_ajax->have_posts() || $product_sku_id) {
         // echo '<pre>';
@@ -79,7 +76,6 @@ function plnt_search_ajax_action_callback (){
             //print_r($product);
             $short_descr = $product->get_short_description();
             $title = $product->get_title();
-            echo $title;
             $sale = get_post_meta( $product_sku_id, '_sale_price', true);
             ?>
             <div class="search-result__item">
