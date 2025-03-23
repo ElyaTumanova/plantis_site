@@ -74,7 +74,11 @@ function plnt_search_ajax_action_callback (){
             </div>
             <?php
         }
-     
+        if ($product_sku_id) {
+            $product = wc_get_product( $product_sku_id );
+            print_r($product);
+            
+        }
         ?>
         <input class="search-result__btn button" type="submit" form ="searchform" value="Посмотреть все" />
         <?php
