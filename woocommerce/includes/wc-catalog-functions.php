@@ -128,6 +128,7 @@ function plnt_filter_metki_swiper_init () {
 		jQuery(function($){
 			setTimeout(function(){
 				swiper_filter_metki_init();
+				console.log('hi swiper metki');
 			},100)
 		})
 	</script>
