@@ -516,11 +516,7 @@ function filter_wpseo_robots( $robotsstr ) {
 // 	return $canonical; /* Do not remove this line */
 // }
 
-add_action('init', function() {
-
-	add_filter( 'wpseo_canonical', '__return_false', 10 );
- 
-});
+add_filter( 'wpseo_canonical', '__return_false', 20 );
 
 // изменяем canonical для страниц пагинации #SEO
 
