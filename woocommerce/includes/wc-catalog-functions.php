@@ -99,7 +99,6 @@ function plnt_catalog_sidebar() {
 
 // // вывод фильтров над каталогом  #filters #berocket
 add_action('woocommerce_before_shop_loop','plnt_catalog_filters_main_area', 20);
-add_action('woocommerce_before_shop_loop','plnt_filter_metki_swiper_init', 20);
 
 function plnt_catalog_filters_main_area() {
 	global $filter_icon;
@@ -121,18 +120,6 @@ function plnt_catalog_filters_main_area() {
     </div>
     <?php 	
 };
-
-function plnt_filter_metki_swiper_init () {
-	?>
-	<script>
-		jQuery(function($){
-			setTimeout(function(){
-				swiper_filter_metki_init();
-			},100)
-		})
-	</script>
-	<?php
-}
 
 // // сортировка - добавляем обертку
 
@@ -516,6 +503,17 @@ function filter_wpseo_robots( $robotsstr ) {
 // 	return $canonical; /* Do not remove this line */
 // }
 
+// add_filter( 'wpseo_canonical', '__return_false', 10 );
+
+// function remove_canonical() {
+    
+//     add_filter( 'wpseo_canonical', '__return_false', 10 );
+
+// }
+// add_action( 'wpseo_head', 'remove_canonical', 4);
+
+// add_filter( 'wpseo_canonical', 'add_custom_canonical_tags', 20 );
+
 // изменяем canonical для страниц пагинации #SEO
 
 //убирем канонакал, который выводит Load More плагин
@@ -532,6 +530,7 @@ function add_custom_canonical_tags() {
 		
 		// Разбираем URL на составляющие
 		$parsedUrl = parse_url($first_page_url);
+		// print_r($parsedUrl);
 
 		// Строим новый URL без query-параметров
 		$first_page_url = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . $parsedUrl['path'];
@@ -587,7 +586,7 @@ add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_tem
 add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
 function some_custom_berocket_aapf_template_full_content($template_content) {
 	if ($template_content['template']['attributes']['data-name']==='Подборки') {
-		if ($template_content['template']['attributes']['id']==='bapf_13') {
+		if ($template_content['template']['attributes']['id']==='bapf_13' || $template_content['template']['attributes']['id']==='bapf_3') {
 	
 			array_push($template_content['template']['content']['filter']['attributes']['class'],'metki_swiper_wrap');
 			array_push($template_content['template']['content']['filter']['attributes']['class'],'swiper');

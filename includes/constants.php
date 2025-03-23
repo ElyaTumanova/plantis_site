@@ -74,7 +74,8 @@ if($site === 'http://new.plantis.shop') {
 		1081,
 		1077,
 		1078,
-		1074);
+		1074,
+		1195); //tag pegular assortiment
 }
 
 
