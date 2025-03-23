@@ -532,6 +532,7 @@ function add_custom_canonical_tags() {
 		
 		// Разбираем URL на составляющие
 		$parsedUrl = parse_url($first_page_url);
+		print_r($parsedUrl);
 
 		// Строим новый URL без query-параметров
 		$first_page_url = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . $parsedUrl['path'];
