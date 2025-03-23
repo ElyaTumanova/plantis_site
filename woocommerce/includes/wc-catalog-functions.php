@@ -543,13 +543,13 @@ function add_custom_canonical_tags() {
 		
 		// Разбираем URL на составляющие
 		$parsedUrl = parse_url($first_page_url);
-		print_r($parsedUrl);
+		// print_r($parsedUrl);
 
 		// Строим новый URL без query-параметров
 		$first_page_url = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . $parsedUrl['path'];
 				
         // Добавляем canonical тег
-        echo '<link rel="canonical" title="test" href="' . esc_url($first_page_url) . '" />' . "\n";
+        echo '<link rel="canonical" href="' . esc_url($first_page_url) . '" />' . "\n";
 
         // Получаем номер текущей страницы
         $paged = get_query_var('paged') ? get_query_var('paged') : 1;
