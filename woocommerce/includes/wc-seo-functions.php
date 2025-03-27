@@ -24,37 +24,37 @@ function wp_kama_document_title_filter( $title ){
 
 // ПРОИЗВОЛЬНЫЕ ПОЛЯ НА СТРАНИЦАХ ТАКСОНОМИИ
 
-add_action( 'product-category_edit_form_fields', 'true_edit_term_fields', 10, 2 );
+// add_action( 'product-category_edit_form_fields', 'true_edit_term_fields', 10, 2 );
  
-function true_edit_term_fields( $term, $taxonomy ) {
+// function true_edit_term_fields( $term, $taxonomy ) {
  
-	// сначала получаем значения этих полей
-	// заголовок
-	$seo_title = get_term_meta( $term->term_id, 'seo_title', true );
+// 	// сначала получаем значения этих полей
+// 	// заголовок
+// 	$seo_title = get_term_meta( $term->term_id, 'seo_title', true );
  
-	echo '<tr class="form-field">
-	<th>
-		<label for="seo_title">SEO-заголовок</label>
-	</th>
-	<td>
-		<input name="seo_title" id="seo_title" type="text" value="' . esc_attr( $seo_title ) .'" />
-	</td>
-	</tr>';
+// 	echo '<tr class="form-field">
+// 	<th>
+// 		<label for="seo_title">SEO-заголовок</label>
+// 	</th>
+// 	<td>
+// 		<input name="seo_title" id="seo_title" type="text" value="' . esc_attr( $seo_title ) .'" />
+// 	</td>
+// 	</tr>';
  
-}
+// }
 
-add_action( 'created_product-category', 'true_save_term_fields' );
-add_action( 'edited_product-category', 'true_save_term_fields' );
+// add_action( 'created_product-category', 'true_save_term_fields' );
+// add_action( 'edited_product-category', 'true_save_term_fields' );
  
-function true_save_term_fields( $term_id ) {
+// function true_save_term_fields( $term_id ) {
  
-	if( isset( $_POST[ 'seo_title' ] ) ) {
-		update_term_meta( $term_id, 'seo_title', sanitize_text_field( $_POST[ 'seo_title' ] ) );
-	} else {
-		delete_term_meta( $term_id, 'seo_title' );
-	}
+// 	if( isset( $_POST[ 'seo_title' ] ) ) {
+// 		update_term_meta( $term_id, 'seo_title', sanitize_text_field( $_POST[ 'seo_title' ] ) );
+// 	} else {
+// 		delete_term_meta( $term_id, 'seo_title' );
+// 	}
  
-}
+// }
 
 
 // добавляем директивы ноиндекс, фоллоу для страниц пагинации, начиная со 2 #SEO
