@@ -32,7 +32,7 @@ function onChangeShippingMethod(event) {
         getDeliveryCosts(event.target.value);
         checkedShippingMethod = event.target.value;
         console.log(checkedShippingMethod);
-        datepicker_init();
+        //datepicker_init();
     }
 }
 

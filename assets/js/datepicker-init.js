@@ -107,8 +107,8 @@ function checkSelectedDay (checkDate) {
 function datepicker_init () {
     console.log('hi datepicker_init');
 
-    //определяем параметры календаря
-    datePickerOpts = datepicker_options ();
+    // //определяем параметры календаря
+    // datePickerOpts = datepicker_options ();
     // dateMinUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
     // dateTomorrowUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()+1);
     dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
@@ -162,7 +162,10 @@ function datepicker_create () {
                 }
             }
         }
-    })
+    });
+
+    //определяем параметры календаря
+    datePickerOpts = datepicker_options ();
 } 
 
 // checkoutForm.addEventListener('change', onChangeShippingMethod);
