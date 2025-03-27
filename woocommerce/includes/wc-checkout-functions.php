@@ -577,8 +577,10 @@ Contents
 
         //Доставка Почтой России
         if ( $delivery_pochta == $chosen_methods[0]) {
+            $shipping_costs = plnt_get_shiping_costs();
+            $delivery_pochta_cost = $shipping_costs[$delivery_pochta]
             echo '<div class="checkout__text checkout__text_long-dist">
-                Доставка Почтой России. 
+                Доставка Почтой России '.$delivery_pochta_cost,'. рублей.
                 Мы свяжемся с Вами после оформления заказа в рабочее время с 10:00 до 20:00 и рассчитаем стоимость доставки.
                 <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
                 </div>';
