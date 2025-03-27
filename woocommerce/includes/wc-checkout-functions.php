@@ -489,6 +489,7 @@ Contents
         global $urgent_deliveries;
         global $normal_deliveries;
         global $local_pickup;
+        global $delivery_pochta;
 
         $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
 
@@ -574,6 +575,20 @@ Contents
                 </div>';
         }
 
+        //Доставка Почтой России
+        if ( $delivery_pochta == $chosen_methods[0]) {
+            $shipping_costs = plnt_get_shiping_costs();
+            $delivery_pochta_cost = $shipping_costs[$delivery_pochta];
+            echo '<div class="checkout__text checkout__text_long-dist">
+                Стоимость упаковки и доставки до отделения почты — '.$delivery_pochta_cost,' рублей за каждое растение. 
+                Получатель также оплачивает услугу пересылки. 
+                Рассчитать стоимость и срок доставки вы можете на <a href="https://www.pochta.ru/shipment?type=PARCEL">сайте</a> "Почты России".
+                Оплатить заказ можно будет после его оформления.
+                Мы свяжемся с Вами после оформления заказа в рабочее время с 10:00 до 20:00.
+                <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
+                </div>';
+        }
+
         //Самовывоз
         if ( $local_pickup == $chosen_methods[0]) {
             echo '<div class="checkout__text checkout__text_local-pickup">
@@ -620,6 +635,67 @@ Contents
         }
     }
 
+    //уведомление для доставки Почтой России
+    add_action( 'woocommerce_checkout_process', 'delivery_pochta_error_notification');
+
+    function delivery_pochta_error_notification() {
+        global $delivery_pochta;
+        global $plants_cat_id;
+        $notOnlyPlantsInCart = false;
+        $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+
+        foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+            $_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+            $parentCatId = check_category($_product);
+            if ($parentCatId !== $plants_cat_id ){
+                $notOnlyPlantsInCart = true;
+                break;
+            } 
+        }
+
+        if( ( is_cart() || is_checkout() ) && $notOnlyPlantsInCart && $delivery_pochta == $chosen_methods[0]) {
+            wc_print_notice(
+                sprintf( 'Почтой России мы доставляем только комнатные растения.'  ,
+                    // wc_price( $min_treez_delivery ),
+                    // wc_price( WC()->cart->total )
+                ), 'error'
+            );
+        }
+
+        if( $notOnlyPlantsInCart && $delivery_pochta == $chosen_methods[0]) {
+            wc_add_notice( 
+                sprintf( 
+                    'Почтой России мы доставляем только комнатные растения.',
+                    // wc_price( $min_treez_delivery ),
+                    // wc_price( WC()->cart->subtotal )
+                ),
+                'error'
+            );
+        }
+    }
+
+    add_action( 'woocommerce_review_order_before_shipping', 'delivery_pochta_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
+
+    function delivery_pochta_info() {
+        global $delivery_pochta;
+        global $plants_cat_id;
+        $notOnlyPlantsInCart = false;
+        $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+
+        foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+            $_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+            $parentCatId = check_category($_product);
+            if ($parentCatId !== $plants_cat_id ){
+                $notOnlyPlantsInCart = true;
+                break;
+            } 
+        }
+
+        if( $notOnlyPlantsInCart && $delivery_pochta == $chosen_methods[0]) {
+            echo '<tr> <td colspan="2" class="checkout__text checkout__text_pochta checkout__text_alarm">
+            Почтой России мы доставляем только комнатные растения.</td></tr>';
+        }
+    }
 
 /*--------------------------------------------------------------
 # Treez & Lechuza notifications

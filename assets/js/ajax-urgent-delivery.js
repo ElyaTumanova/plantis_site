@@ -72,7 +72,7 @@ function renderDeliveryIntervals(shippingValue,date) {
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
     info.label.appendChild(priceEl);
-      if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryCourierId || shippingValue == deliveryLongId || date === '08.03') {
+      if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryPochtaId ||shippingValue == deliveryCourierId || shippingValue == deliveryLongId || date === '08.03') {
       } else {
         if (isUrgent == '1') {
           priceEl.innerHTML = `+0₽`;
