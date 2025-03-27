@@ -9,11 +9,8 @@ let shortdays = [];
 
 shortdaystext.forEach(element => {
     let shortTimestamp = new Date(element).setHours(3,0,0,0);
-    console.log(shortTimestamp);
     shortdays.push(shortTimestamp);
 });
-
-console.log(shortdays);
 
 let deliveryCost;
 let deliveryCostUrg;
