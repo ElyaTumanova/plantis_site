@@ -258,6 +258,22 @@ Contents
     add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 15 );
 
     function plnt_add_delivery_dates() {
+        echo "<div class='delivery_wrap'>";
+        // выводим поле функцией woocommerce_form_field()
+        woocommerce_form_field( 
+            'delivery_dates', 
+            array(
+                'type'          => 'text', // text, textarea, select, radio, checkbox, password
+                'required'	=> false, // по сути только добавляет значок "*" и всё
+                'class'         => array( 'delivery_dates' ), // массив классов поля
+                'label'         => 'Дата доставки (самовывоза)',
+                'label_class'   => array( 'delivery_dates_label' ), // класс лейбл
+                'id' => 'datepicker'
+            ),
+        );
+    }
+
+    function plnt_add_delivery_dates_old() {
 
         $days = array();
 

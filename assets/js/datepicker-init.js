@@ -3,79 +3,52 @@
 --------------------------------------------------------------*/
 // Utility function for datepicker init
 
-//ДОБАВИТЬ В FUNCTIONS.PHP ПЕРЕМЕННЫЕ ДЛЯ ИСПОЛЬЗОВАНИЯ ДАННОГО СКРИПТА
+// переменные
 
-//<?php $weekend_string = carbon_get_theme_option('weekend');?>
+// Datepicker init
+let datepickerCal;
+let datePickerOpts;
+
+let date = new Date();
+let hour = date.getHours();
+let startDate;
+let dateMinUTC;
+let dateTomorrowUTC;
+let dateMaxUTC;
+
 //выходной
-let weekend_str = '<?php echo $weekend_string; ?>';
 let weekend_arr = weekend_str.split(',');
-// console.log(weekend_arr);
 let weekend = [];
 weekend_arr.forEach(element => {
     weekend.push(new Date(element));
 });
 
-let date = new Date();
-let hour = date.getHours();
+const weekendTimeStamps = weekend.map(function (element) {
+    return element.getTime();
+});
+let isSelectedDayWeekend = false;
 
-console.log(hour);
+//console.log(weekend);
+
 
 function datepicker_options () {  
-    //console.log('hi datepicker_options');     
+    console.log('hi datepicker_options');    
 
-    //определяем первую доступную дату
-    //let startDate = new Date();
-    let startDate;
-
-    // определяем дату, которая будет выбрана по умолчанию
-    let selectedDate = [];
-
-    
+    // задаем даты
     if (hour >= 20) {  
-        startDate = date.setDate(date.getDate() + 1);
-        //selectedDate = startDate;
+       startDate = date.setDate(date.getDate() + 1);
     } else {
-        startDate = date;
-        //selectedDate = startDate + 1;                   
+       startDate = date;               
     };
 
-    // тут ошибка??
-    if (hour >= 18 && hour <20) {  
-        selectedDate = new Date().setDate(startDate.getDate() + 2);
-    } else {
-        selectedDate = new Date().setDate(startDate.getDate() + 1);       
-    };
+    dateMinUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+    dateTomorrowUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()+1);
 
-    //console.log('initial');
-    //console.log(new Date(selectedDate));
-
-    //очищаем дату для срочной доставки  TO BE DELETED
-    // if (urgentPickups.includes(checkedShippingMethod)) {
-    //     selectedDate = [];
-    // };
-
-    // проверяем, что первая доступная дата не попадает на выходной
-    const weekendTimeStamps = weekend.map(function (element) {
-        return element.getTime();
-    });
-    let isSelectedDayWeekend = false;
-    function checkSelectedDay (checkDate) {
-        let newSelectedDate = checkDate;
-        isSelectedDayWeekend = weekendTimeStamps.includes((new Date(checkDate)).setHours(3,0,0,0));
-        if (isSelectedDayWeekend) {
-            newSelectedDate = date.setDate(new Date(checkDate).getDate() + 1);
-            // console.log('new date')
-            // console.log(new Date(newSelectedDate));
-            return checkSelectedDay (newSelectedDate);
-        }
-        // console.log('after if');
-        // console.log(new Date(newSelectedDate));
-        return selectedDate = newSelectedDate;
-    };
-
-    checkSelectedDay (selectedDate);
-    //console.log('finally');
-    //console.log(new Date(selectedDate));
+    let selectedDate = startDate;
+    checkSelectedDay (startDate);
+    // console.log('finally');
+    // console.log(new Date(selectedDate));
+    // console.log(new Date(startDate));
 
     //кнопка ОК
     let button = {
@@ -85,10 +58,10 @@ function datepicker_options () {
             datepicker.hide();
         }
     }
-
+   
     // datepicker options
     let datePickerOpts = {
-        selectedDates: selectedDate,
+        selectedDates: [selectedDate],
         minDate: startDate,
         maxDate: (function(){
             let date = new Date();
@@ -104,57 +77,96 @@ function datepicker_options () {
     return datePickerOpts;
 }
 
-// Datepicker init
-let datepickerCal;
-let datePickerOpts;
+// проверяем, что первая доступная дата не попадает на выходной
+function checkSelectedDay (checkDate) {
+    let newSelectedDate = checkDate;
+    isSelectedDayWeekend = weekendTimeStamps.includes((new Date(checkDate)).setHours(3,0,0,0));
+    if (isSelectedDayWeekend) {
+        newSelectedDate = date.setDate(new Date(checkDate).getDate() + 1);
+        // console.log('new date')
+        // console.log(new Date(newSelectedDate));
+        return checkSelectedDay (newSelectedDate);
+    }
+    // console.log('after if');
+    // console.log(new Date(newSelectedDate));
+    console.log(new Date(startDate));
+    return selectedDate = newSelectedDate;
+};
 
-let today = `${new Date().getDate()}.${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
-let tomorrow = `${new Date().getDate() + 1}.${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
+function datepicker_create () {
+    datepickerCal = new AirDatepicker('#datepicker', {
+        onSelect({date, formattedDate, datepicker}) {
+            chekIfUrgent(date);
+            checkShortDay(date);
+            checkedShippingMethod = getCheckedShippingMethod();
+            renderDeliveryIntervals(checkedShippingMethod);
+            plnt_hide_checkout_fields();
+        },
 
-let isUrgent = '0';
-
-function datepicker_init () {
-    //console.log('hi datepicker_init');
+        onRenderCell({date, cellType}) {
+            let dateUTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+            if(normalDeliveries.includes(checkedShippingMethod) || urgentDeliveries.includes(checkedShippingMethod)) {
+                if (dateUTC == dateMinUTC) {
+                    if (urgentDelivery) {
+                        return {
+                            html: date.getDate() + '<p>' + deliveryCostUrg + '₽' + '</p>' ,
+                        }
+                    } else {
+                        return {
+                            html: date.getDate() + '<p>' + deliveryCost + '₽'  + '</p>' ,
+                        }
+                    }
+                }
+                if (dateUTC > dateMinUTC && dateUTC <= dateMaxUTC) {
+                    return {
+                        html: date.getDate() + '<p>' + deliveryCost + '₽'  + '</p>' ,
+                    }
+                } else {
+                    return {
+                        html: date.getDate(),
+                    }
+                }
+            } else {
+                return {
+                    html: date.getDate(),
+                }
+            }
+        }
+    });
 
     //определяем параметры календаря
     datePickerOpts = datepicker_options ();
+    console.log(datePickerOpts);
+
+    dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
+    checkShortDay(datePickerOpts.selectedDates[0]);
     datepickerCal.update(datePickerOpts);
     if (weekend) {
         datepickerCal.disableDate(weekend);
-    }
+    }  
+} 
 
-    
+function chekIfUrgent(date) {
     // проверяем срочная ли доставка и запускам аякс
-    let selectedDateFormatted = `${new Date(datePickerOpts.selectedDates).getDate()}.${new Date(datePickerOpts.selectedDates).getUTCMonth() + 1}.${new Date(datePickerOpts.selectedDates).getUTCFullYear()}`;
-    if (selectedDateFormatted == today || selectedDateFormatted == tomorrow && hour >= 18 ) {
+    let dateUTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+
+    if (dateUTC == dateMinUTC || dateUTC == dateTomorrowUTC && hour >= 18) {
         isUrgent = '1'
-    } else {
+    } else (
         isUrgent = '0'
-    }
-    plntAjaxGetUrgent();           
+    );
+
+    console.log(isUrgent);
+    ajaxGetUrgent();
 }
 
-setTimeout(() => {
-    datepickerCal = new AirDatepicker('#datepicker', {
-        onSelect({date, formattedDate, datepicker}) {
-            //console.log('hi date');
-            
-            // проверяем срочная ли доставка и запускам аякс
-            if (formattedDate == today || formattedDate == tomorrow && hour >= 18) {
-                isUrgent = '1'
-            } else (
-                isUrgent = '0'
-            );
-            plntAjaxGetUrgent();
-        }});
-
-    datepicker_init ();
-}, 1000);  
-
-checkoutForm.addEventListener('change', onChangeShippingMethod);
-
-function onChangeShippingMethod(event) {
-    if(event && event.target.className == "shipping_method") {
-        datepicker_init();
+function checkShortDay(date) {
+    if (shortdays) {
+        if (shortdays.includes(date.setHours(3,0,0,0))) {
+            isShortDay = '1';
+            ajaxGetLateDelivery();
+        } else {
+            isShortDay = '0'
+        };
     }
 }

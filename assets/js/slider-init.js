@@ -435,33 +435,33 @@ swiper_filter_metki_init();
 /*--------------------------------------------------------------
 # Checkout
 --------------------------------------------------------------*/
-let deliveryWrapper = document.querySelector('#delivery_dates_field .woocommerce-input-wrapper');
-if(deliveryWrapper){deliveryWrapper.classList.add('swiper-wrapper');}
+// let deliveryWrapper = document.querySelector('#delivery_dates_field .woocommerce-input-wrapper');
+// if(deliveryWrapper){deliveryWrapper.classList.add('swiper-wrapper');}
 
-let deliverySwiper = document.querySelector('.delivery_dates');
+// let deliverySwiper = document.querySelector('.delivery_dates');
 
-if (deliverySwiper) {
-    let deliverySwiperPrev = document.createElement('div');
-    deliverySwiperPrev.classList.add('swiper-button-prev');
-    deliverySwiper.appendChild(deliverySwiperPrev);
+// if (deliverySwiper) {
+//     let deliverySwiperPrev = document.createElement('div');
+//     deliverySwiperPrev.classList.add('swiper-button-prev');
+//     deliverySwiper.appendChild(deliverySwiperPrev);
     
-    let deliverySwiperNext = document.createElement('div');
-    deliverySwiperNext.classList.add('swiper-button-next');
-    deliverySwiper.appendChild(deliverySwiperNext);
-}
+//     let deliverySwiperNext = document.createElement('div');
+//     deliverySwiperNext.classList.add('swiper-button-next');
+//     deliverySwiper.appendChild(deliverySwiperNext);
+// }
 
-const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
+// const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
 
-    slidesPerView: 'auto',
-    slidesPerGroup: 1,
-    spaceBetween: 0,
+//     slidesPerView: 'auto',
+//     slidesPerGroup: 1,
+//     spaceBetween: 0,
     
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
+//     navigation: {
+//         nextEl: '.swiper-button-next',
+//         prevEl: '.swiper-button-prev',
+//     },
 
-});
+// });
 
 /*--------------------------------------------------------------
 # Cart
