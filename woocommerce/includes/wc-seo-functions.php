@@ -24,7 +24,7 @@ function wp_kama_document_title_filter( $title ){
 
 // ПРОИЗВОЛЬНЫЕ ПОЛЯ НА СТРАНИЦАХ ТАКСОНОМИИ
 
-add_action( 'category_edit_form_fields', 'true_edit_term_fields', 10, 2 );
+add_action( 'product-category_edit_form_fields', 'true_edit_term_fields', 10, 2 );
  
 function true_edit_term_fields( $term, $taxonomy ) {
  
@@ -43,8 +43,8 @@ function true_edit_term_fields( $term, $taxonomy ) {
  
 }
 
-add_action( 'created_category', 'true_save_term_fields' );
-add_action( 'edited_category', 'true_save_term_fields' );
+add_action( 'created_product-category', 'true_save_term_fields' );
+add_action( 'edited_product-category', 'true_save_term_fields' );
  
 function true_save_term_fields( $term_id ) {
  
