@@ -11,6 +11,7 @@ function add_seo_tags() {
 add_filter( 'document_title', 'wp_kama_document_title_filter' );
 
 function wp_kama_document_title_filter( $title ){
+    print_r($title);
     if (is_product()) {
         global $product;
         print_r($product);
