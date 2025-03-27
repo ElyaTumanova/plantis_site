@@ -11,8 +11,8 @@ function add_seo_tags() {
 add_filter( 'document_title', 'wp_kama_document_title_filter' );
 
 function wp_kama_document_title_filter( $title ){
-    global $product;
     if (is_product()) {
+        global $product;
         $title = $product->get_title().' – купить в Москве с доставкой – Plantis';
     } else {
         $title = 'Интернет магазин комнатных растений с доставкой - Plantis';
