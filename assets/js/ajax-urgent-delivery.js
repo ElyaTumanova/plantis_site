@@ -32,7 +32,7 @@ function onChangeShippingMethod(event) {
         getDeliveryCosts(event.target.value);
         checkedShippingMethod = event.target.value;
         console.log(checkedShippingMethod);
-        //datepicker_init();
+        console.log(isHideInterval);
     }
 }
 
@@ -140,7 +140,7 @@ function ajaxGetLateDelivery(event) {
             $('body').trigger('update_checkout');
         }
     });
-});
+  });
 }
 
 function setInitalState() {
@@ -288,7 +288,8 @@ if (checkoutForm) {
   checkoutForm.addEventListener('change', onChangeShippingMethod);
   
   datepicker_create ();
-  //datepicker_init ();
+
+  console.log(isHideInterval);
 
   //ajaxGetUrgent();
   
