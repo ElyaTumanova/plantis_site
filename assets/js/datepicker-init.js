@@ -104,8 +104,8 @@ function datepicker_init () {
 
     //определяем параметры календаря
     datePickerOpts = datepicker_options ();
-    dateMinUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate());
-    dateTomorrowUTC = Date.UTC(datePickerOpts.minDate.getFullYear(), datePickerOpts.minDate.getMonth(), datePickerOpts.minDate.getDate()+1);
+    dateMinUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+    dateTomorrowUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()+1);
     dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
     console.log(datePickerOpts);
     // console.log(dateTomorrowUTC);
