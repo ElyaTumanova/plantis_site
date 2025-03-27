@@ -304,9 +304,11 @@ function plnt_shipping_conditions( $rates, $package ) {
     if (isset($chosen_methods)) {
 
         if ( $delivery_pochta == $chosen_methods[0]) {
-            if ($rate->id == $delivery_pochta){
-                $rate->cost = 450;
-            }
+            foreach ($rates as $rate) {
+                if ($rate->id == $delivery_pochta){
+                    $rate->cost = 450;
+                }
+             }
         }	
 
         
