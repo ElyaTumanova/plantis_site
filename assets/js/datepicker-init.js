@@ -163,9 +163,10 @@ function chekIfUrgent(date) {
 function checkShortDay(date) {
     if (shortdays) {
         if (shortdays.includes(date.setHours(3,0,0,0))) {
-        isShortDay = '1'
+            isShortDay = '1';
+            ajaxGetLateDelivery();
         } else {
-        isShortDay = '0'
+            isShortDay = '0'
         };
     }
 }

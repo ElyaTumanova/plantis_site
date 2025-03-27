@@ -71,6 +71,7 @@
             deliveryIntervalInput.forEach(el =>{
                 if(el.defaultValue !== '11:00 - 16:00') {
                     el.classList.add('d-none');
+                    input.checked = false;
                 }
             })
             deliveryIntervalLabels.forEach(el =>{
