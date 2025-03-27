@@ -3,6 +3,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+add_action('wp_head', 'add_seo_tags');
+
+function add_seo_tags() {
+    echo '<title>Интернет магазин комнатных растений с доставкой - Plantis</title>';
+};
+
+
 // добавляем директивы ноиндекс, фоллоу для страниц пагинации, начиная со 2 #SEO
 add_filter( 'wpseo_robots', 'filter_wpseo_robots' );
 
