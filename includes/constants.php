@@ -74,7 +74,8 @@ if($site === 'http://new.plantis.shop') {
 		1081,
 		1077,
 		1078,
-		1074);
+		1074,
+		1195); //tag pegular assortiment
 }
 
 
@@ -104,6 +105,8 @@ if($site === 'http://new.plantis.shop') {
 	$urgent_delivery_outMKAD_medium = 'flat_rate:41';
 	
 	$delivery_free = 'free_shipping:5';
+
+	$delivery_pochta = 'flat_rate:45';
 
 	$delivery_courier = 'free_shipping:26';
 
@@ -151,6 +154,7 @@ if($site === 'http://new.plantis.shop') {
 	$urgent_delivery_outMKAD_medium = 'flat_rate:12'; 
 	
 	$delivery_free = 'free_shipping:4';
+	$delivery_pochta = 'flat_rate:27';
 	$delivery_courier = 'free_shipping:21';
 	$delivery_long_dist = 'free_shipping:22';
 	

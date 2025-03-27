@@ -1,7 +1,9 @@
+
 function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
         //renderDeliveryDates(event.target.value);
         renderDeliveryIntervals(event.target.value);
+
         // console.log(event.target.value);
         // ajaxGetUrgent();
 
@@ -12,6 +14,7 @@ function onChangeShippingMethod(event) {
         console.log(isUrgent);
     }
 }
+
 
 // function renderDeliveryDates(shippingValue) {
 //   // console.log(shippingValue);
@@ -46,13 +49,13 @@ function onChangeShippingMethod(event) {
 //   })
 // }
 
-function renderDeliveryIntervals(shippingValue) {
-  // console.log(shippingValue);
+
+function renderDeliveryIntervals(shippingValue,date) {
   deliveryIntervalsInfo.forEach((info) => {
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
     info.label.appendChild(priceEl);
-      if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryCourierId || shippingValue == deliveryLongId) {
+      if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryPochtaId ||shippingValue == deliveryCourierId || shippingValue == deliveryLongId || date === '08.03') {
       } else {
         if (isUrgent == '1') {
           priceEl.innerHTML = `+0₽`;
@@ -61,6 +64,7 @@ function renderDeliveryIntervals(shippingValue) {
         }
       }
   })
+  
 }
 
 function ajaxGetUrgent(date) {
@@ -74,6 +78,7 @@ function ajaxGetUrgent(date) {
             data: {
                 'action': 'get_urgent_shipping',
                 'isUrgent': isUrgent,
+                'date': date,
             },
             success: function (result) {
                 // Trigger refresh checkout
@@ -147,6 +152,7 @@ function setInitalState() {
 function setDatesIntervals() {
   deliveryIntervalInput[0].setAttribute('checked','checked');
 
+
   // deliveryDatesInput.forEach((date) => {
   //   date.addEventListener('click', function(event){
   //     ajaxGetUrgent(event.target.value);
@@ -155,6 +161,7 @@ function setDatesIntervals() {
   //     renderDeliveryIntervals(shippingValue);
   //   });
   // })
+
 
   if(deliveryLateMarkup) {    
     deliveryIntervalLabels.forEach((label) => {
@@ -174,6 +181,15 @@ function setDatesIntervals() {
 
 
 
+function setIsHideInterval(date) {
+  if (date === '08.03') {
+    isHideInterval = true;
+  } else {
+    isHideInterval = false;
+  }
+  //console.log(isHideInterval);
+}
+
 if (checkoutForm) {
   setInitalState();
   checkedShippingMethod = getCheckedShippingMethod();
@@ -184,8 +200,10 @@ if (checkoutForm) {
   // checkShortDay(deliveryDatesInput[0].value);
   setDatesIntervals();
 
+
   renderDeliveryIntervals(checkedShippingMethod);
   //renderDeliveryDates(checkedShippingMethod);
+
 
   checkoutForm.addEventListener('change', onChangeShippingMethod);
   
@@ -195,5 +213,6 @@ if (checkoutForm) {
   console.log(isUrgent);
 
   //ajaxGetUrgent();
+
   
 }

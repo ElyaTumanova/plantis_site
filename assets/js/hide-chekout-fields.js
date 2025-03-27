@@ -18,7 +18,7 @@
                     input.checked = false;
                 })
             } else { 
-                if ( checkedShippingMethod == localPickupId) {
+                if ( checkedShippingMethod == localPickupId || checkedShippingMethod == deliveryPochtaId) {
                     deliveryInterval.classList.add('d-none');
                     deliveryIntervalInput.forEach((input)=>{
                         input.checked = false;

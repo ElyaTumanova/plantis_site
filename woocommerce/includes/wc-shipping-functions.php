@@ -30,13 +30,15 @@ function plnt_set_initials() {
 function plnt_check() {
   
     global $local_pickup;
+    global $delivery_pochta;
     // echo '<br>';
     // $packages = WC()->shipping()->get_packages();
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
     // print_r( $packages);
     // echo '<br>';
-    // echo $chosen_methods[0];
-    // echo '<br>';
+    //echo $delivery_pochta;
+    echo $chosen_methods[0];
+    echo '<br>';
 
     // if($local_pickup === $chosen_methods[0]) {
     //     echo 'hi';
@@ -44,12 +46,14 @@ function plnt_check() {
     // }
     // $isbackorders = plnt_is_backorder();
     // echo 'isback '.$isbackorders.'  ';
-    echo 'isUrgent '.(WC()->session->get('isUrgent' )).'  ';
+    //echo 'isUrgent '.(WC()->session->get('isUrgent' )).'  ';
     // echo 'hiAjax '.(WC()->session->get('hiAjax' )).'  ';
     // echo 'hiInit '.(WC()->session->get('hiInit' )).'  ';
     // echo 'isback2 '.(WC()->session->get('isBackorder' )).'  ';
     //echo 'isLate '.(WC()->session->get('isLate' )).'  ';
-    echo '<br>';
+    //echo '<br>';
+    //echo 'date '.(WC()->session->get('date' )).'  ';
+    //echo '<br>';
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
     // if ( is_checkout() && ($hour<18 || $hour>=20)) {
@@ -74,6 +78,8 @@ function plnt_get_urgent_shipping() {
         } else {
             WC()->session->set('isUrgent', '0' ); //0
         }
+
+        WC()->session->set('date', $_POST['date'] );
     // }
     
     die(); // (required)
@@ -134,6 +140,7 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     global $delivery_courier;
     global $delivery_long_dist;
+    global $delivery_pochta;
 
     global $delivery_inMKAD_small;
 	global $delivery_outMKAD_small;
@@ -200,7 +207,7 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $delivery_outMKAD_medium ] );
         unset( $rates[ $urgent_delivery_inMKAD_medium ] );
         unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-        if(isset($rates[ $delivery_courier ])) {
+        if(isset($rates[ $delivery_courier ]) && WC()->session->get('date' ) === '08.03') {
             unset( $rates[ $delivery_inMKAD_small ] );
             unset( $rates[ $delivery_outMKAD_small ] );
             unset( $rates[ $urgent_delivery_inMKAD_small ] );
@@ -224,7 +231,7 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $delivery_outMKAD_small ] );
         unset( $rates[ $urgent_delivery_inMKAD_small ] );
         unset( $rates[ $urgent_delivery_outMKAD_small ] );
-        if(isset($rates[ $delivery_courier ])) {
+        if(isset($rates[ $delivery_courier ]) && WC()->session->get('date' ) === '08.03') {
             unset( $rates[ $delivery_inMKAD_small ] );
             unset( $rates[ $delivery_outMKAD_small ] );
             unset( $rates[ $urgent_delivery_inMKAD_small ] );
@@ -245,7 +252,9 @@ function plnt_shipping_conditions( $rates, $package ) {
     unset( $rates[ $delivery_outMKAD_medium ] );
     unset( $rates[ $urgent_delivery_inMKAD_medium ] );
     unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-    unset( $rates[ $delivery_courier ] );
+        if (WC()->session->get('date' ) !== '08.03') {
+            unset( $rates[ $delivery_courier ] );
+        }
     }
  
     /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
@@ -275,7 +284,7 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     //поздняя доставка
     if (isset($chosen_methods)) {
-        if($local_pickup == $chosen_methods[0] || $delivery_courier == $chosen_methods[0] || $delivery_long_dist == $chosen_methods[0]) {
+        if($local_pickup == $chosen_methods[0] || $delivery_courier == $chosen_methods[0] || $delivery_long_dist == $chosen_methods[0] || $delivery_pochta == $chosen_methods[0]) {
             WC()->session->set('isLate', '0' );  
         }
     }
@@ -290,6 +299,52 @@ function plnt_shipping_conditions( $rates, $package ) {
         }
     }
 
+    // почта России
+    global $plants_cat_id;
+    $plantsQty = 0;
+    $notPlantsInCartQty = 0;
+    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+        $_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+		$parentCatId = check_category($_product);
+        if ($parentCatId == $plants_cat_id ){
+            $plantsQty =  $plantsQty + $cart_item['quantity'];
+        } else {
+            $notPlantsInCartQty++;
+        }
+    }
+
+    foreach ($rates as $rate) {
+        if ($rate->id == $delivery_pochta){
+            $rate->cost = $rate->cost * $plantsQty;
+        }
+    }      
+    
+
+    //исключения из доставки
+    if (WC()->session->get('date' ) === '08.03') {
+        unset( $rates[ $delivery_inMKAD ] );
+        unset( $rates[ $delivery_outMKAD ] );
+        unset( $rates[ $delivery_inMKAD_small ] );
+        unset( $rates[ $delivery_outMKAD_small ] );
+        unset( $rates[ $delivery_inMKAD_large ] );
+        unset( $rates[ $delivery_outMKAD_large ] );
+        unset( $rates[ $delivery_inMKAD_medium ] );
+        unset( $rates[ $delivery_outMKAD_medium ] );
+
+        unset( $rates[ $urgent_delivery_inMKAD ] );
+        unset( $rates[ $urgent_delivery_outMKAD ] );
+        unset( $rates[ $urgent_delivery_inMKAD_small ] );
+        unset( $rates[ $urgent_delivery_outMKAD_small ] );
+        unset( $rates[ $urgent_delivery_inMKAD_large ] );
+        unset( $rates[ $urgent_delivery_outMKAD_large ] );
+        unset( $rates[ $urgent_delivery_inMKAD_medium ] );
+        unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+
+        unset( $rates[ $delivery_long_dist ] );
+    } else {
+        unset( $rates[ $delivery_courier ] );
+    }
+
 	return $rates;
 }
 
@@ -301,6 +356,7 @@ function plnt_disable_payment_small_order( $available_gateways ) {
     $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
     global $delivery_courier;
     global $delivery_long_dist;
+    global $delivery_pochta;
 
     if( is_admin() ) {
 		return $available_gateways;
@@ -326,6 +382,11 @@ function plnt_disable_payment_small_order( $available_gateways ) {
     
         // дальняя доставка
         if ( $delivery_long_dist == $chosen_methods[0]) {
+            unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+        }
+
+        // почта России
+        if ( $delivery_pochta == $chosen_methods[0]) {
             unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
         }
     }

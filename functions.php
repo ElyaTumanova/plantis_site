@@ -71,6 +71,7 @@ function plnt_set_constants_script() {
 
 	global $local_pickup;
 	global $delivery_free;
+	global $delivery_pochta;
 	global $delivery_courier;
 	global $delivery_long_dist;
 
@@ -130,6 +131,7 @@ function plnt_set_constants_script() {
 		
 		let localPickupId = '<?php echo $local_pickup; ?>';
 		let deliveryFreeId = '<?php echo $delivery_free; ?>';
+		let deliveryPochtaId = '<?php echo $delivery_pochta; ?>';
 		let deliveryCourierId = '<?php echo $delivery_courier; ?>';
 		let deliveryLongId = '<?php echo $delivery_long_dist; ?>';
 
