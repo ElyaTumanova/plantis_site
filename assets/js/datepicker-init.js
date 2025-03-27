@@ -48,9 +48,9 @@ function datepicker_options () {
 
     // console.log('initial');
 
-    let checkedDate = checkSelectedDay (startDate);
-    console.log('finally');
-    console.log(new Date(checkedDate));
+    // let checkedDate = checkSelectedDay (startDate);
+    // console.log('finally');
+    // console.log(new Date(checkedDate));
 
     //кнопка ОК
     let button = {
