@@ -4,7 +4,13 @@ let isLate;
 let isHideInterval;
 let urgentDelivery;
 let isShortDay; //для короткого рабочего дня, чтобы скрыть поздний интервал доставки
-let shortdays = [new Date('2025-03-30').setHours(3,0,0,0).getTime()]; //format YYYY-MM-DD
+let shortdaystext = ['2025-03-30'];//format 'YYYY-MM-DD'
+let shortdays = []; 
+
+shortdaystext.forEach(element => {
+    let shortdate = new Date(element).setHours(3,0,0,0);
+    shortdays.push(shortdate.getTime());
+});
 
 console.log(shortdays);
 
