@@ -47,10 +47,11 @@ function datepicker_options () {
     
 
     // console.log('initial');
-
-    // let checkedDate = checkSelectedDay (startDate);
-    // console.log('finally');
-    // console.log(new Date(checkedDate));
+    let selectedDate = startDate;
+    console.log(new Date(selectedDate));
+    checkSelectedDay (startDate);
+    console.log('finally');
+    console.log(new Date(selectedDate));
 
     //кнопка ОК
     let button = {
@@ -61,7 +62,7 @@ function datepicker_options () {
         }
     }
   
-    let selectedDate = startDate;
+   
     // datepicker options
     let datePickerOpts = {
         selectedDates: [selectedDate],
