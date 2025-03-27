@@ -94,6 +94,7 @@ function checkSelectedDay (checkDate) {
     }
     // console.log('after if');
     // console.log(new Date(newSelectedDate));
+    console.log(new Date(startDate));
     return selectedDate = newSelectedDate;
 };
 
