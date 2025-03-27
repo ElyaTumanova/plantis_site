@@ -4,9 +4,6 @@ let isHideInterval;
 let urgentDelivery;
 let isShortDay; //для короткого рабочего дня, чтобы скрыть поздний интервал доставки
 let shortdays = []; //format dd.mm
-let checkoutForm = document.querySelector('form[name="checkout"]');
-let deliveryDates = document.querySelector('.delivery_dates');
-let deliveryDatesInput = document.querySelectorAll('.delivery_dates input');
 //let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
 //let deliveryDatesInfo = [];
 let deliveryIntervalsInfo = []

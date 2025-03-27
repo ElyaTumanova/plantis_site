@@ -3,7 +3,9 @@
 --------------------------------------------------------------*/
 
     //все переменные
-
+    let checkoutForm = document.querySelector('form[name="checkout"]');
+    let deliveryDates = document.querySelector('.delivery_dates');
+    let deliveryDatesInput = document.querySelectorAll('.delivery_dates input');
     let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
     let addressFields = document.querySelector('#billing_address_1_field');
     let additionalAddress = document.querySelector('.additional-address-field');
