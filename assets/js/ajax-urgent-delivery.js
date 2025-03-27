@@ -33,6 +33,7 @@ function onChangeShippingMethod(event) {
         checkedShippingMethod = event.target.value;
         console.log(checkedShippingMethod);
         console.log(isHideInterval);
+        console.log(isUrgent);
     }
 }
 
@@ -290,6 +291,7 @@ if (checkoutForm) {
   datepicker_create ();
 
   console.log(isHideInterval);
+  console.log(isUrgent);
 
   //ajaxGetUrgent();
   
