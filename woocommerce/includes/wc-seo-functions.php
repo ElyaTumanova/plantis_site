@@ -6,8 +6,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_action('wp_head', 'add_seo_tags');
 
 function add_seo_tags() {
-    echo '<title>Интернет магазин комнатных растений с доставкой - Plantis</title>';
 };
+
+add_filter( 'document_title', 'wp_kama_document_title_filter' );
+
+function wp_kama_document_title_filter( $title ){
+
+	$title = 'Интернет магазин комнатных растений с доставкой - Plantis';
+	return $title;
+}
 
 
 // добавляем директивы ноиндекс, фоллоу для страниц пагинации, начиная со 2 #SEO
