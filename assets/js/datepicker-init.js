@@ -161,7 +161,7 @@ function chekIfUrgent(date) {
 }
 
 function checkShortDay(date) {
-    console.log(date);
+    console.log(date.getTime());
     if (shortdays) {
         if (shortdays.includes(date)) {
         isShortDay = '1'
