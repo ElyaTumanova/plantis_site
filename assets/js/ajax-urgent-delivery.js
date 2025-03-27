@@ -13,11 +13,6 @@ function onChangeShippingMethod(event) {
     }
 }
 
-function getCheckedShippingMethod (){
-  checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
-  return checkedShippingMethodInput.value;
-}
-
 // function renderDeliveryDates(shippingValue) {
 //   // console.log(shippingValue);
 //   deliveryDatesInfo.forEach((info) => {
@@ -149,22 +144,12 @@ function setInitalState() {
 }
 
 function setDatesIntervals() {
-  // deliveryDatesLables.forEach((label) => {
-  //   let dateInfo = {
-  //     label: label,
-  //     for: label.htmlFor,
-  //     text: label.textContent};
-  //   //console.log(dateInfo);
-  //   deliveryDatesInfo.push(dateInfo);
-  // });
-
-  // deliveryDatesInput[0].setAttribute('checked','checked');
   deliveryIntervalInput[0].setAttribute('checked','checked');
 
   // deliveryDatesInput.forEach((date) => {
   //   date.addEventListener('click', function(event){
   //     ajaxGetUrgent(event.target.value);
-  //     //checkShortDay(event.target.value);
+  //     checkShortDay(event.target.value);
   //     shippingValue = getCheckedShippingMethod();
   //     renderDeliveryIntervals(shippingValue);
   //   });
@@ -196,45 +181,7 @@ function checkShortDay(date) {
   }
 }
 
-function getDeliveryCosts(shippingValue) {
 
-  if(shippingValue == deliveryInMKAD || shippingValue == deliveryInMKADUrg) {
-      deliveryCost = deliveryCostInMkad;
-      deliveryCostUrg = urgentDelivery ? deliveryCostInMkadUrg : deliveryCostInMkad;
-  }
-  if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
-      deliveryCost = deliveryCostOutMkad;
-      deliveryCostUrg = urgentDelivery ? deliveryCostOutMkadUrg : deliveryCostOutMkad;
-  }
-
-  if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
-      deliveryCost = deliveryCostInMkadSmall;
-      deliveryCostUrg = urgentDelivery ? deliveryCostInMkadSmallUrg : deliveryCostInMkadSmall;
-  }
-  if(shippingValue == deliveryOutMKADSmall || shippingValue == deliveryOutMKADSmallUrg) {
-      deliveryCost = deliveryCostOutMkadSmall;
-      deliveryCostUrg = urgentDelivery ? deliveryCostOutMkadSmallUrg : deliveryCostOutMkadSmall;
-  }
-  if(shippingValue == deliveryInMKADLarge || shippingValue == deliveryInMKADLargeUrg) {
-      deliveryCost = deliveryCostInMkadLarge;
-      deliveryCostUrg = urgentDelivery ? deliveryCostInMkadLargeUrg : deliveryCostInMkadLarge;
-  }
-  if(shippingValue == deliveryOutMKADLarge || shippingValue == deliveryOutMKADLargeUrg) {
-      deliveryCost = deliveryCostOutMkadLarge;
-      deliveryCostUrg = urgentDelivery ? deliveryCostOutMkadLargeUrg : deliveryCostOutMkadLarge;
-  }
-  if(shippingValue == deliveryInMKADMedium || shippingValue == deliveryInMKADMediumUrg) {
-      deliveryCost = deliveryCostInMkadMedium;
-      deliveryCostUrg = urgentDelivery ? deliveryCostInMkadMediumUrg : deliveryCostInMkadMedium;
-  }
-  if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
-      deliveryCost = deliveryCostOutMkadMedium;
-      deliveryCostUrg = urgentDelivery ? deliveryCostOutMkadMediumUrg : deliveryCostOutMkadMedium;
-  }
-  
-  console.log(deliveryCost);
-  console.log(deliveryCostUrg);
-}
 
 if (checkoutForm) {
   setInitalState();

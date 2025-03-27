@@ -98,6 +98,7 @@ function datepicker_create () {
         onSelect({date, formattedDate, datepicker}) {
             chekIfUrgent(date);
             plnt_hide_checkout_fields();
+            checkShortDay(date);
             checkedShippingMethod = getCheckedShippingMethod();
             renderDeliveryIntervals(checkedShippingMethod);
         },
