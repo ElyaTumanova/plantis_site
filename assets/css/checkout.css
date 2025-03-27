@@ -816,3 +816,6 @@ label.list-view {
     flex-direction: column;
     row-gap: 3px;
 }
+.air-datepicker-cell p {
+    font-size: 12px;
+}
