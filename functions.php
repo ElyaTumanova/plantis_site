@@ -4,6 +4,7 @@ add_action( 'carbon_fields_register_fields', 'ast_register_custom_fields' );
 function ast_register_custom_fields() {
 	require get_template_directory() . '/includes/custom-fields/post-meta.php';
 	require get_template_directory() . '/includes/custom-fields/theme-options.php';
+	require get_template_directory() . '/includes/custom-fields/term-meta.php';
 }
 
 add_action( 'after_setup_theme', 'crb_load' );
