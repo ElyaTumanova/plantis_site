@@ -11,7 +11,7 @@
 
     let date = new Date();
     let hour = date.getHours();
-    let startDate;
+    // let startDate;
 
     let dateMinUTC;
     let dateTomorrowUTC;
@@ -37,9 +37,9 @@ function datepicker_options () {
 
     // задаем даты
     if (hour >= 20) {  
-        startDate = date.setDate(date.getDate() + 1);
+       const startDate = date.setDate(date.getDate() + 1);
     } else {
-        startDate = date;               
+        const startDate = date;               
     };
 
     // console.log(date);
