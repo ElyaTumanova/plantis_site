@@ -15,41 +15,6 @@ function onChangeShippingMethod(event) {
     }
 }
 
-
-// function renderDeliveryDates(shippingValue) {
-//   // console.log(shippingValue);
-//   deliveryDatesInfo.forEach((info) => {
-//     let priceEl = document.createElement('span');
-//     info.label.innerHTML=`${info.text}`;
-//     info.label.appendChild(priceEl);
-//       if(shippingValue == deliveryInMKAD || shippingValue == deliveryInMKADUrg) {
-//         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadUrg}₽` : `${deliveryCostInMkad}₽` ;
-//       }
-//       if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
-//         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadUrg}₽` : `${deliveryCostOutMkad}₽` ;
-//       }
-//       if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
-//         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadSmallUrg}₽` : `${deliveryCostInMkadSmall}₽` ;
-//       }
-//       if(shippingValue == deliveryOutMKADSmall || shippingValue == deliveryOutMKADSmallUrg) {
-//         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadSmallUrg}₽` : `${deliveryCostOutMkadSmall}₽` ;
-//       }
-//       if(shippingValue == deliveryInMKADLarge || shippingValue == deliveryInMKADLargeUrg) {
-//         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadLargeUrg}₽` : `${deliveryCostInMkadLarge}₽` ;
-//       }
-//       if(shippingValue == deliveryOutMKADLarge || shippingValue == deliveryOutMKADLargeUrg) {
-//         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadLargeUrg}₽` : `${deliveryCostOutMkadLarge}₽` ;
-//       }
-//       if(shippingValue == deliveryInMKADMedium || shippingValue == deliveryInMKADMediumUrg) {
-//         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadMediumUrg}₽` : `${deliveryCostInMkadMedium}₽` ;
-//       }
-//       if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
-//         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadMediumUrg}₽` : `${deliveryCostOutMkadMedium}₽` ;
-//       }
-//   })
-// }
-
-
 function renderDeliveryIntervals(shippingValue,date) {
   deliveryIntervalsInfo.forEach((info) => {
     let priceEl = document.createElement('span');
@@ -67,7 +32,7 @@ function renderDeliveryIntervals(shippingValue,date) {
   
 }
 
-function ajaxGetUrgent(date) {
+function ajaxGetUrgent() {
 
   console.log(isUrgent);
 
@@ -78,7 +43,6 @@ function ajaxGetUrgent(date) {
             data: {
                 'action': 'get_urgent_shipping',
                 'isUrgent': isUrgent,
-                'date': date,
             },
             success: function (result) {
                 // Trigger refresh checkout
@@ -152,17 +116,6 @@ function setInitalState() {
 function setDatesIntervals() {
   deliveryIntervalInput[0].setAttribute('checked','checked');
 
-
-  // deliveryDatesInput.forEach((date) => {
-  //   date.addEventListener('click', function(event){
-  //     ajaxGetUrgent(event.target.value);
-  //     checkShortDay(event.target.value);
-  //     shippingValue = getCheckedShippingMethod();
-  //     renderDeliveryIntervals(shippingValue);
-  //   });
-  // })
-
-
   if(deliveryLateMarkup) {    
     deliveryIntervalLabels.forEach((label) => {
       let intervalInfo = {
@@ -179,31 +132,16 @@ function setDatesIntervals() {
   }
 }
 
-
-
-function setIsHideInterval(date) {
-  if (date === '08.03') {
-    isHideInterval = true;
-  } else {
-    isHideInterval = false;
-  }
-  //console.log(isHideInterval);
-}
-
 if (checkoutForm) {
   setInitalState();
   checkedShippingMethod = getCheckedShippingMethod();
   console.log(checkedShippingMethod);
   getDeliveryCosts(checkedShippingMethod);
 
-
-  // checkShortDay(deliveryDatesInput[0].value);
   setDatesIntervals();
 
 
   renderDeliveryIntervals(checkedShippingMethod);
-  //renderDeliveryDates(checkedShippingMethod);
-
 
   checkoutForm.addEventListener('change', onChangeShippingMethod);
   
@@ -211,8 +149,6 @@ if (checkoutForm) {
 
   console.log(isHideInterval);
   console.log(isUrgent);
-
-  //ajaxGetUrgent();
 
   
 }

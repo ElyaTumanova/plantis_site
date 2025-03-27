@@ -78,8 +78,6 @@ function plnt_get_urgent_shipping() {
         } else {
             WC()->session->set('isUrgent', '0' ); //0
         }
-
-        WC()->session->set('date', $_POST['date'] );
     // }
     
     die(); // (required)
@@ -207,15 +205,11 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $delivery_outMKAD_medium ] );
         unset( $rates[ $urgent_delivery_inMKAD_medium ] );
         unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-        if(isset($rates[ $delivery_courier ]) && WC()->session->get('date' ) === '08.03') {
+        if(isset($rates[ $delivery_courier ])) {
             unset( $rates[ $delivery_inMKAD_small ] );
             unset( $rates[ $delivery_outMKAD_small ] );
             unset( $rates[ $urgent_delivery_inMKAD_small ] );
             unset( $rates[ $urgent_delivery_outMKAD_small ] );
-            unset( $rates[ $delivery_inMKAD_medium ] );
-            unset( $rates[ $delivery_outMKAD_medium ] );
-            unset( $rates[ $urgent_delivery_inMKAD_medium ] );
-            unset( $rates[ $urgent_delivery_outMKAD_medium ] );
             unset( $rates[ $delivery_long_dist ] );
         }
     } else if ( WC()->cart->subtotal < $min_medium_delivery ) {
@@ -231,30 +225,23 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $delivery_outMKAD_small ] );
         unset( $rates[ $urgent_delivery_inMKAD_small ] );
         unset( $rates[ $urgent_delivery_outMKAD_small ] );
-        if(isset($rates[ $delivery_courier ]) && WC()->session->get('date' ) === '08.03') {
-            unset( $rates[ $delivery_inMKAD_small ] );
-            unset( $rates[ $delivery_outMKAD_small ] );
-            unset( $rates[ $urgent_delivery_inMKAD_small ] );
-            unset( $rates[ $urgent_delivery_outMKAD_small ] );
+        if(isset($rates[ $delivery_courier ])) {
             unset( $rates[ $delivery_inMKAD_medium ] );
             unset( $rates[ $delivery_outMKAD_medium ] );
             unset( $rates[ $urgent_delivery_inMKAD_medium ] );
             unset( $rates[ $urgent_delivery_outMKAD_medium ] );
             unset( $rates[ $delivery_long_dist ] );
-        }
-            
+        }       
     } else {
-    unset( $rates[ $delivery_inMKAD_small ] );
-    unset( $rates[ $delivery_outMKAD_small ] );
-    unset( $rates[ $urgent_delivery_inMKAD_small ] );
-    unset( $rates[ $urgent_delivery_outMKAD_small ] );
-    unset( $rates[ $delivery_inMKAD_medium ] );
-    unset( $rates[ $delivery_outMKAD_medium ] );
-    unset( $rates[ $urgent_delivery_inMKAD_medium ] );
-    unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-        if (WC()->session->get('date' ) !== '08.03') {
-            unset( $rates[ $delivery_courier ] );
-        }
+        unset( $rates[ $delivery_inMKAD_small ] );
+        unset( $rates[ $delivery_outMKAD_small ] );
+        unset( $rates[ $urgent_delivery_inMKAD_small ] );
+        unset( $rates[ $urgent_delivery_outMKAD_small ] );
+        unset( $rates[ $delivery_inMKAD_medium ] );
+        unset( $rates[ $delivery_outMKAD_medium ] );
+        unset( $rates[ $urgent_delivery_inMKAD_medium ] );
+        unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+        unset( $rates[ $delivery_courier ] );
     }
  
     /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
@@ -319,32 +306,6 @@ function plnt_shipping_conditions( $rates, $package ) {
         }
     }      
     
-
-    //исключения из доставки
-    if (WC()->session->get('date' ) === '08.03') {
-        unset( $rates[ $delivery_inMKAD ] );
-        unset( $rates[ $delivery_outMKAD ] );
-        unset( $rates[ $delivery_inMKAD_small ] );
-        unset( $rates[ $delivery_outMKAD_small ] );
-        unset( $rates[ $delivery_inMKAD_large ] );
-        unset( $rates[ $delivery_outMKAD_large ] );
-        unset( $rates[ $delivery_inMKAD_medium ] );
-        unset( $rates[ $delivery_outMKAD_medium ] );
-
-        unset( $rates[ $urgent_delivery_inMKAD ] );
-        unset( $rates[ $urgent_delivery_outMKAD ] );
-        unset( $rates[ $urgent_delivery_inMKAD_small ] );
-        unset( $rates[ $urgent_delivery_outMKAD_small ] );
-        unset( $rates[ $urgent_delivery_inMKAD_large ] );
-        unset( $rates[ $urgent_delivery_outMKAD_large ] );
-        unset( $rates[ $urgent_delivery_inMKAD_medium ] );
-        unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-
-        unset( $rates[ $delivery_long_dist ] );
-    } else {
-        unset( $rates[ $delivery_courier ] );
-    }
-
 	return $rates;
 }
 
