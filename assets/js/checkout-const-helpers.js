@@ -8,9 +8,9 @@ let shortdaystext = ['2025-03-30'];//format 'YYYY-MM-DD'
 let shortdays = []; 
 
 shortdaystext.forEach(element => {
-    let shortdate = new Date(element).setHours(3,0,0,0);
-    console.log(shortdate);
-    // shortdays.push(shortdate.getTime());
+    let shortTimestamp = new Date(element).setHours(3,0,0,0);
+    console.log(shortTimestamp);
+    shortdays.push(shortTimestamp);
 });
 
 console.log(shortdays);
