@@ -15,6 +15,7 @@ function wp_kama_document_title_filter( $title ){
     if (is_product()) {
         $product = wc_get_product( get_the_ID() );
         $seo_title = carbon_get_post_meta( get_the_ID(), 'seo-title' );
+        echo $seo_title;
         if ($seo_title) {
             $title = $seo_title;
         } else {
