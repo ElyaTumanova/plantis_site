@@ -5,31 +5,30 @@
 
 // переменные
 
-    // Datepicker init
-    let datepickerCal;
-    let datePickerOpts;
+// Datepicker init
+let datepickerCal;
+let datePickerOpts;
 
-    let date = new Date();
-    let hour = date.getHours();
-    let startDate;
+let date = new Date();
+let hour = date.getHours();
+let startDate;
+let dateMinUTC;
+let dateTomorrowUTC;
+let dateMaxUTC;
 
-    let dateMinUTC;
-    let dateTomorrowUTC;
-    let dateMaxUTC;
+//выходной
+let weekend_arr = weekend_str.split(',');
+let weekend = [];
+weekend_arr.forEach(element => {
+    weekend.push(new Date(element));
+});
 
-    //выходной
-    let weekend_arr = weekend_str.split(',');
-    let weekend = [];
-    weekend_arr.forEach(element => {
-        weekend.push(new Date(element));
-    });
+const weekendTimeStamps = weekend.map(function (element) {
+    return element.getTime();
+});
+let isSelectedDayWeekend = false;
 
-    const weekendTimeStamps = weekend.map(function (element) {
-        return element.getTime();
-    });
-    let isSelectedDayWeekend = false;
-
-    console.log(weekend);
+//console.log(weekend);
 
 
 function datepicker_options () {  
@@ -45,17 +44,11 @@ function datepicker_options () {
     dateMinUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
     dateTomorrowUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()+1);
 
-    // console.log(date);
-    // console.log(startDate);
-    
-
-    // console.log('initial');
     let selectedDate = startDate;
-    console.log(new Date(selectedDate));
     checkSelectedDay (startDate);
-    console.log('finally');
-    console.log(new Date(selectedDate));
-    console.log(new Date(startDate));
+    // console.log('finally');
+    // console.log(new Date(selectedDate));
+    // console.log(new Date(startDate));
 
     //кнопка ОК
     let button = {
@@ -65,7 +58,6 @@ function datepicker_options () {
             datepicker.hide();
         }
     }
-  
    
     // datepicker options
     let datePickerOpts = {
@@ -101,40 +93,14 @@ function checkSelectedDay (checkDate) {
     return selectedDate = newSelectedDate;
 };
 
-//let todayDP = `${new Date().getDate()< 10 ? '0' : ''}${new Date().getDate()}.${(new Date().getUTCMonth()+1) < 10 ? '0' : ''}${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
-//let tomorrowDP = `${(new Date().getDate() + 1)< 10 ? '0' : ''}${new Date().getDate() + 1}.${(new Date().getUTCMonth()+1) < 10 ? '0' : ''}${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
-
-// function datepicker_init () {
-//     console.log('hi datepicker_init');
-
-//     // //определяем параметры календаря
-//     // datePickerOpts = datepicker_options ();
-//     // dateMinUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
-//     // dateTomorrowUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()+1);
-//     // dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
-//     // console.log(datePickerOpts);
-//     // // console.log(dateTomorrowUTC);
-//     // datepickerCal.update(datePickerOpts);
-//     // if (weekend) {
-//     //     datepickerCal.disableDate(weekend);
-//     // }         
-// }
-
 function datepicker_create () {
     datepickerCal = new AirDatepicker('#datepicker', {
         onSelect({date, formattedDate, datepicker}) {
-            // console.log('hi date');
-            // console.log(date);
-            // console.log(formattedDate);
-            // console.log(todayDP);
-            // console.log(tomorrowDP);
-
             chekIfUrgent(date);
         },
 
         onRenderCell({date, cellType}) {
             let dateUTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
-            console.log(checkedShippingMethod);
             if(normalDeliveries.includes(checkedShippingMethod) || urgentDeliveries.includes(checkedShippingMethod)) {
                 if (dateUTC == dateMinUTC) {
                     if (urgentDelivery) {
@@ -166,40 +132,26 @@ function datepicker_create () {
 
     //определяем параметры календаря
     datePickerOpts = datepicker_options ();
+    console.log(datePickerOpts);
 
     dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
-    console.log(datePickerOpts);
-    // console.log(dateTomorrowUTC);
+
     datepickerCal.update(datePickerOpts);
     if (weekend) {
         datepickerCal.disableDate(weekend);
     }  
 } 
 
-// checkoutForm.addEventListener('change', onChangeShippingMethod);
-
-// function onChangeShippingMethod(event) {
-//     if(event && event.target.className == "shipping_method") {
-//         getDeliveryCosts(event.target.value);
-//         checkedShippingMethod = event.target.value;
-//         console.log(checkedShippingMethod);
-//         datepicker_init();
-//     }
-// }
-
-
-
 function chekIfUrgent(date) {
     // проверяем срочная ли доставка и запускам аякс
     let dateUTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
-    console.log(new Date(dateUTC));
-    console.log(new Date(dateMinUTC));
-    console.log(new Date(dateTomorrowUTC));
 
     if (dateUTC == dateMinUTC || dateUTC == dateTomorrowUTC && hour >= 18) {
         isUrgent = '1'
     } else (
         isUrgent = '0'
     );
+
+    console.log(isUrgent);
     ajaxGetUrgent();
 }
