@@ -288,7 +288,7 @@ if (checkoutForm) {
   checkoutForm.addEventListener('change', onChangeShippingMethod);
   
   datepicker_create ();
-  datepicker_init ();
+  //datepicker_init ();
 
   //ajaxGetUrgent();
   

@@ -104,21 +104,21 @@ function checkSelectedDay (checkDate) {
 //let todayDP = `${new Date().getDate()< 10 ? '0' : ''}${new Date().getDate()}.${(new Date().getUTCMonth()+1) < 10 ? '0' : ''}${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
 //let tomorrowDP = `${(new Date().getDate() + 1)< 10 ? '0' : ''}${new Date().getDate() + 1}.${(new Date().getUTCMonth()+1) < 10 ? '0' : ''}${new Date().getUTCMonth() + 1}.${new Date().getUTCFullYear()}`;
 
-function datepicker_init () {
-    console.log('hi datepicker_init');
+// function datepicker_init () {
+//     console.log('hi datepicker_init');
 
-    // //определяем параметры календаря
-    // datePickerOpts = datepicker_options ();
-    // dateMinUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
-    // dateTomorrowUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()+1);
-    dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
-    console.log(datePickerOpts);
-    // console.log(dateTomorrowUTC);
-    datepickerCal.update(datePickerOpts);
-    if (weekend) {
-        datepickerCal.disableDate(weekend);
-    }         
-}
+//     // //определяем параметры календаря
+//     // datePickerOpts = datepicker_options ();
+//     // dateMinUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+//     // dateTomorrowUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()+1);
+//     // dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
+//     // console.log(datePickerOpts);
+//     // // console.log(dateTomorrowUTC);
+//     // datepickerCal.update(datePickerOpts);
+//     // if (weekend) {
+//     //     datepickerCal.disableDate(weekend);
+//     // }         
+// }
 
 function datepicker_create () {
     datepickerCal = new AirDatepicker('#datepicker', {
@@ -166,6 +166,14 @@ function datepicker_create () {
 
     //определяем параметры календаря
     datePickerOpts = datepicker_options ();
+
+    dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
+    console.log(datePickerOpts);
+    // console.log(dateTomorrowUTC);
+    datepickerCal.update(datePickerOpts);
+    if (weekend) {
+        datepickerCal.disableDate(weekend);
+    }  
 } 
 
 // checkoutForm.addEventListener('change', onChangeShippingMethod);
