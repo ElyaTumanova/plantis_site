@@ -302,11 +302,13 @@ function plnt_shipping_conditions( $rates, $package ) {
     // почта России
 
     if (isset($chosen_methods)) {
-        foreach( $rates as $rate) {
-            if ( $delivery_pochta == $chosen_methods[0]) {
+
+        if ( $delivery_pochta == $chosen_methods[0]) {
+            if ($rate->id == $delivery_pochta){
                 $rate->cost = 450;
-            }	
-        }
+            }
+        }	
+
         
     }
 
