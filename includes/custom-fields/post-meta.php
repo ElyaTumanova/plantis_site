@@ -13,7 +13,7 @@ Container::make( 'post_meta', 'SEO Data' )
 	->set_context( 'advanced' )
 	// ->show_on_template( 'templates/main-page.php' )
 	->add_fields( array(
-		Field::make( 'image', 'crb_photo' ),
+		Field::make( 'text', 'seo-title', __( 'seo-title' ) ),
 	) );
 
 
