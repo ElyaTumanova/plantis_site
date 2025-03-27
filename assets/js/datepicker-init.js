@@ -97,10 +97,10 @@ function datepicker_create () {
     datepickerCal = new AirDatepicker('#datepicker', {
         onSelect({date, formattedDate, datepicker}) {
             chekIfUrgent(date);
-            plnt_hide_checkout_fields();
             checkShortDay(date);
             checkedShippingMethod = getCheckedShippingMethod();
             renderDeliveryIntervals(checkedShippingMethod);
+            plnt_hide_checkout_fields();
         },
 
         onRenderCell({date, cellType}) {
