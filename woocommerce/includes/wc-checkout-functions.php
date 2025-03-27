@@ -489,6 +489,7 @@ Contents
         global $urgent_deliveries;
         global $normal_deliveries;
         global $local_pickup;
+        global $delivery_pochta;
 
         $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
 
@@ -569,6 +570,15 @@ Contents
         if ( $delivery_long_dist == $chosen_methods[0]) {
             echo '<div class="checkout__text checkout__text_long-dist">
                 Доставка на расстояние свыше 5км от МКАД осуществляется по тарифам курьерской службы. 
+                Мы свяжемся с Вами после оформления заказа в рабочее время с 10:00 до 20:00 и рассчитаем стоимость доставки.
+                <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
+                </div>';
+        }
+
+        //Доставка Почтой России
+        if ( $delivery_pochta == $chosen_methods[0]) {
+            echo '<div class="checkout__text checkout__text_long-dist">
+                Доставка Почтой России. 
                 Мы свяжемся с Вами после оформления заказа в рабочее время с 10:00 до 20:00 и рассчитаем стоимость доставки.
                 <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
                 </div>';

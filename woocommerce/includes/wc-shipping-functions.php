@@ -312,10 +312,10 @@ function plnt_shipping_conditions( $rates, $package ) {
             $notPlantsInCartQty++;
         }
     }
-    
+
     foreach ($rates as $rate) {
         if ($rate->id == $delivery_pochta){
-            $rate->cost = 450 * $plantsQty;
+            $rate->cost = $rate->cost * $plantsQty;
         }
     }      
     
@@ -356,6 +356,7 @@ function plnt_disable_payment_small_order( $available_gateways ) {
     $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
     global $delivery_courier;
     global $delivery_long_dist;
+    global $delivery_pochta;
 
     if( is_admin() ) {
 		return $available_gateways;
@@ -381,6 +382,11 @@ function plnt_disable_payment_small_order( $available_gateways ) {
     
         // дальняя доставка
         if ( $delivery_long_dist == $chosen_methods[0]) {
+            unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+        }
+
+        // почта России
+        if ( $delivery_pochta == $chosen_methods[0]) {
             unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
         }
     }
