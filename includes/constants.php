@@ -154,7 +154,7 @@ if($site === 'http://new.plantis.shop') {
 	$urgent_delivery_outMKAD_medium = 'flat_rate:12'; 
 	
 	$delivery_free = 'free_shipping:4';
-	$delivery_pochta = 'free_shipping:27';
+	$delivery_pochta = 'flat_rate:27';
 	$delivery_courier = 'free_shipping:21';
 	$delivery_long_dist = 'free_shipping:22';
 	
