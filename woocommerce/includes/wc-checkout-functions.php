@@ -653,7 +653,7 @@ Contents
 
         if( ( is_cart() || is_checkout() ) && $notOnlyPlantsInCart && $delivery_pochta == $chosen_methods[0]) {
             wc_print_notice(
-                sprintf( 'Почтой России мы доставляем только расений.'  ,
+                sprintf( 'Почтой России мы доставляем только комнатные растения.'  ,
                     // wc_price( $min_treez_delivery ),
                     // wc_price( WC()->cart->total )
                 ), 'error'
@@ -663,7 +663,7 @@ Contents
         if( $notOnlyPlantsInCart && $delivery_pochta == $chosen_methods[0]) {
             wc_add_notice( 
                 sprintf( 
-                    'Почтой России мы доставляем только расений.',
+                    'Почтой России мы доставляем только комнатные растения.',
                     // wc_price( $min_treez_delivery ),
                     // wc_price( WC()->cart->subtotal )
                 ),
@@ -691,7 +691,7 @@ Contents
 
         if( $notOnlyPlantsInCart && $delivery_pochta == $chosen_methods[0]) {
             echo '<tr> <td colspan="2" class="checkout__text checkout__text_pochta checkout__text_alarm">
-            Почтой России мы доставляем только расений.</td></tr>';
+            Почтой России мы доставляем только комнатные растения.</td></tr>';
         }
     }
 
