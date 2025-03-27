@@ -54,7 +54,6 @@ function getCheckedShippingMethod (){
 function renderDeliveryIntervals(shippingValue) {
   // console.log(shippingValue);
   deliveryIntervalsInfo.forEach((info) => {
-    console.log(deliveryLateMarkup);
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
     info.label.appendChild(priceEl);

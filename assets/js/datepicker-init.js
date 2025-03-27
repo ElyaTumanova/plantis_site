@@ -98,6 +98,8 @@ function datepicker_create () {
         onSelect({date, formattedDate, datepicker}) {
             chekIfUrgent(date);
             plnt_hide_checkout_fields();
+            checkedShippingMethod = getCheckedShippingMethod();
+            renderDeliveryIntervals(checkedShippingMethod);
         },
 
         onRenderCell({date, cellType}) {
