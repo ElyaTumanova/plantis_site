@@ -73,8 +73,8 @@
             if (innField) {innField.classList.add('d-none')};
         };
 
-        // for holidays
-        if (isHoliday === '1') {
+        // for short days
+        if (isShortDay === '1') {
             deliveryIntervalInput.forEach(el =>{
                 if(el.defaultValue !== '11:00 - 16:00') {
                     el.classList.add('d-none');
@@ -86,7 +86,7 @@
                 }
             })
         }
-        if (isHoliday === '0') {
+        if (isShortDay === '0') {
             deliveryIntervalInput.forEach(el =>{
                 el.classList.remove('d-none');
             })
