@@ -3,6 +3,27 @@
 --------------------------------------------------------------*/
 
     //все переменные
+    let isUrgent;
+    let isLate;
+    let isHideInterval;
+    let urgentDelivery;
+    let isShortDay; //для короткого рабочего дня, чтобы скрыть поздний интервал доставки
+    let shortdays = []; //format dd.mm
+    //let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
+    //let deliveryDatesInfo = [];
+    let deliveryIntervalsInfo = []
+    let shippingMethodValues = [];
+    let checkedShippingMethodInput;
+    let checkedShippingMethod;
+
+    let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
+    //let deliveryInterval = document.querySelectorAll('#additional_delivery_interval_field input');
+    let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
+    //let today;
+
+    let deliveryCost;
+    let deliveryCostUrg;
+    
     let checkoutForm = document.querySelector('form[name="checkout"]');
     let deliveryDates = document.querySelector('.delivery_dates');
     let deliveryDatesInput = document.querySelectorAll('.delivery_dates input');
