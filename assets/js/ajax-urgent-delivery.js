@@ -54,6 +54,7 @@ function getCheckedShippingMethod (){
 function renderDeliveryIntervals(shippingValue) {
   // console.log(shippingValue);
   deliveryIntervalsInfo.forEach((info) => {
+    console.log(deliveryLateMarkup);
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
     info.label.appendChild(priceEl);
@@ -69,13 +70,6 @@ function renderDeliveryIntervals(shippingValue) {
 }
 
 function ajaxGetUrgent(date) {
-  // if (date) {
-  //   if(date == today) {
-  //     isUrgent = '1';
-  //   } else {
-  //     isUrgent = '0';
-  //   }
-  // }
 
   console.log(isUrgent);
 
@@ -133,12 +127,6 @@ function setInitalState() {
       isUrgent = 1;
     }
   }
-
-  // if (hour >= 20) {
-  //   today = `${(new Date().getDate()< 10 ? '0' : '') + (new Date().getDate() + 1)}.${(new Date().getUTCMonth()< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
-  // } else {
-  //   today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${(new Date().getUTCMonth()< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
-  // };
 
   if (isBackorder) {
     urgentDelivery = false;
