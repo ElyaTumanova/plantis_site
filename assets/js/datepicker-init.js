@@ -11,14 +11,7 @@
 
     let date = new Date();
     let hour = date.getHours();
-    //let startDate;
-
-    // задаем даты
-    if (hour >= 20) {  
-       const startDate = date.setDate(date.getDate() + 1);
-     } else {
-        const startDate = date;               
-     };
+    let startDate;
 
     let dateMinUTC;
     let dateTomorrowUTC;
@@ -42,12 +35,15 @@
 function datepicker_options () {  
     console.log('hi datepicker_options');    
 
-    // // задаем даты
-    // if (hour >= 20) {  
-    //    startDate = date.setDate(date.getDate() + 1);
-    // } else {
-    //    startDate = date;               
-    // };
+    // задаем даты
+    if (hour >= 20) {  
+       startDate = date.setDate(date.getDate() + 1);
+    } else {
+       startDate = date;               
+    };
+
+    dateMinUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+    dateTomorrowUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()+1);
 
     // console.log(date);
     // console.log(startDate);
@@ -113,8 +109,8 @@ function datepicker_init () {
 
     //определяем параметры календаря
     datePickerOpts = datepicker_options ();
-    dateMinUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
-    dateTomorrowUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()+1);
+    // dateMinUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+    // dateTomorrowUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()+1);
     dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
     console.log(datePickerOpts);
     // console.log(dateTomorrowUTC);
