@@ -84,8 +84,7 @@ function ajaxGetUrgent(date) {
 };
 
 function ajaxGetLateDelivery(event) {
-
-  if(event.target.value == '18:00 - 21:00') {
+  if(if event && event.target.value == '18:00 - 21:00') {
     isLate = '1'
   } else {
     isLate = '0'
