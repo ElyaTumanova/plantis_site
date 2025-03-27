@@ -8,8 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
-Container::make( 'post_meta', 'Custom Data' )
+Container::make( 'post_meta', 'SEO Data' )
 	->show_on_post_type('product')
+	->set_context( 'advanced' )
 	// ->show_on_template( 'templates/main-page.php' )
 	->add_fields( array(
 		Field::make( 'image', 'crb_photo' ),
