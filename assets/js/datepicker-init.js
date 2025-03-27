@@ -169,4 +169,5 @@ function checkShortDay(date) {
         isShortDay = '0'
         };
     }
+    console.log(isShortDay);
 }
