@@ -139,7 +139,7 @@ function datepicker_create () {
     console.log(datePickerOpts);
 
     dateMaxUTC = Date.UTC(datePickerOpts.maxDate.getFullYear(), datePickerOpts.maxDate.getMonth(), datePickerOpts.maxDate.getDate());
-
+    checkShortDay(datePickerOpts.selectedDates[0]);
     datepickerCal.update(datePickerOpts);
     if (weekend) {
         datepickerCal.disableDate(weekend);
@@ -158,4 +158,15 @@ function chekIfUrgent(date) {
 
     console.log(isUrgent);
     ajaxGetUrgent();
+}
+
+function checkShortDay(date) {
+    console.log(date);
+    if (shortdays) {
+        if (shortdays.includes(date)) {
+        isShortDay = '1'
+        } else {
+        isShortDay = '0'
+        };
+    }
 }

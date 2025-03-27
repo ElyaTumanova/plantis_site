@@ -171,16 +171,6 @@ function setDatesIntervals() {
   }
 }
 
-function checkShortDay(date) {
-  if (shortdays) {
-    if (shortdays.includes(date)) {
-      isShortDay = '1'
-    } else {
-      isShortDay = '0'
-    };
-  }
-}
-
 
 
 if (checkoutForm) {
@@ -190,7 +180,7 @@ if (checkoutForm) {
   getDeliveryCosts(checkedShippingMethod);
 
 
-  checkShortDay(deliveryDatesInput[0].value);
+  // checkShortDay(deliveryDatesInput[0].value);
   setDatesIntervals();
 
   renderDeliveryIntervals(checkedShippingMethod);

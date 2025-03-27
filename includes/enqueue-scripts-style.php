@@ -23,11 +23,15 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 											 '/assets/js/checkout-const-helpers.js', array( 'jquery' ), null, true );	
 		
 		wp_enqueue_script( 'ajax-urgent-delivery', get_template_directory_uri() .
-											 '/assets/js/ajax-urgent-delivery.js', array( 'jquery', 'datepicker', 'datepicker-init','checkout-const-helpers' ), null, true );	
+											 '/assets/js/ajax-urgent-delivery.js', array( 'jquery', 'datepicker-init','checkout-const-helpers' ), null, true );	
 		
 		wp_enqueue_script( 'hide-chekout-fields', get_template_directory_uri() .
 											 '/assets/js/hide-chekout-fields.js', array( 'jquery','checkout-const-helpers' ), null, true );	
-		
+		wp_enqueue_script( 'datepicker', get_template_directory_uri() .
+		                                     '/assets/js/datepicker.js', array( 'jquery' ), null, true );  // datepicker
+		wp_enqueue_script( 'datepicker-init', get_template_directory_uri() .
+		                                     '/assets/js/datepicker-init.js', array( 'jquery','datepicker', 'hide-chekout-fields','checkout-const-helpers' ), null, true );  // datepicker
+
 		wp_enqueue_script( 'ajax-search', get_template_directory_uri() .
 		                                 '/assets/js/ajax-search.js', array( 'jquery' ), null, true );
 		wp_localize_script ('ajax-search', 'search_form', array(
@@ -86,11 +90,6 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 
 		wp_enqueue_script( 'metrikaGoal', get_template_directory_uri() .
 		                                     '/assets/js/metrikaGoal.js', array( 'jquery' ), null, true );  //metrikaGoal Яндекс Метрика Yandex Metrika
-
-		wp_enqueue_script( 'datepicker', get_template_directory_uri() .
-		                                     '/assets/js/datepicker.js', array( 'jquery' ), null, true );  // datepicker
-		wp_enqueue_script( 'datepicker-init', get_template_directory_uri() .
-		                                     '/assets/js/datepicker-init.js', array( 'jquery','datepicker', 'hide-chekout-fields','checkout-const-helpers' ), null, true );  // datepicker
 
 		// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		// 	wp_enqueue_script( 'comment-reply' );
