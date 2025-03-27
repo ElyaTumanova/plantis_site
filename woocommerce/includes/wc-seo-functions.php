@@ -14,7 +14,12 @@ function wp_kama_document_title_filter( $title ){
     print_r($title);
     if (is_product()) {
         $product = wc_get_product( get_the_ID() );
-        $title = $product->get_title().' – купить в Москве с доставкой – Plantis';
+        $seo_title = carbon_get_post_meta( get_the_ID(), 'seo-title' );
+        if ($seo_title) {
+            $title = $seo_title;
+        } else {
+            $title = $product->get_title().' – купить в Москве с доставкой – Plantis';
+        }
     } else {
         $title = 'Интернет магазин комнатных растений с доставкой - Plantis';
     }
