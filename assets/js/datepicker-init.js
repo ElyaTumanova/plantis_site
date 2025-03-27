@@ -52,6 +52,7 @@ function datepicker_options () {
     checkSelectedDay (startDate);
     console.log('finally');
     console.log(new Date(selectedDate));
+    console.log(new Date(startDate));
 
     //кнопка ОК
     let button = {
