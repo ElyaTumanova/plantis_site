@@ -184,6 +184,7 @@ function datepicker_create () {
 function chekIfUrgent(date) {
     // проверяем срочная ли доставка и запускам аякс
     let dateUTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+    console.log(new Date(dateUTC));
     console.log(new Date(dateMinUTC));
     console.log(new Date(dateTomorrowUTC));
 
