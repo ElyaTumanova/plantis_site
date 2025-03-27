@@ -580,9 +580,9 @@ Contents
             $shipping_costs = plnt_get_shiping_costs();
             $delivery_pochta_cost = $shipping_costs[$delivery_pochta];
             echo '<div class="checkout__text checkout__text_long-dist">
-                Стоимость упаковки и доставки до отделения - '.$delivery_pochta_cost,' рублей за каждое растение. 
+                Стоимость упаковки и доставки до отделения почты - '.$delivery_pochta_cost,' рублей за каждое растение. 
                 Получатель также оплачивает услугу пересылки. 
-                Рассчитать стоимость и срок доставки вы можете на <a href="https://www.pochta.ru/shipment?type=PARCEL">сайте "Почты России"</a>.
+                Рассчитать стоимость и срок доставки вы можете на <a href="https://www.pochta.ru/shipment?type=PARCEL">сайте</a>"Почты России".
                 Оплатить заказ можно будет после его оформления.
                 Мы свяжемся с Вами после оформления заказа в рабочее время с 10:00 до 20:00.
                 <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
