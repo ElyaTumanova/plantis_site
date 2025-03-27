@@ -9,7 +9,8 @@ let shortdays = [];
 
 shortdaystext.forEach(element => {
     let shortdate = new Date(element).setHours(3,0,0,0);
-    shortdays.push(shortdate.getTime());
+    console.log(shortdate);
+    // shortdays.push(shortdate.getTime());
 });
 
 console.log(shortdays);
