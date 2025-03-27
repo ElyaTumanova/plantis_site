@@ -580,7 +580,7 @@ Contents
             $shipping_costs = plnt_get_shiping_costs();
             $delivery_pochta_cost = $shipping_costs[$delivery_pochta];
             echo '<div class="checkout__text checkout__text_long-dist">
-                Доставка Почтой России осуществляется по тарифу'.$delivery_pochta_cost,' рублей за каждое растений. 
+                Доставка Почтой России осуществляется по тарифу '.$delivery_pochta_cost,' рублей за каждое растений. 
                 Оплатить заказ можно будет после его оформления.
                 Мы свяжемся с Вами после оформления заказа в рабочее время с 10:00 до 20:00.
                 <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
