@@ -580,8 +580,9 @@ Contents
             $shipping_costs = plnt_get_shiping_costs();
             $delivery_pochta_cost = $shipping_costs[$delivery_pochta];
             echo '<div class="checkout__text checkout__text_long-dist">
-                Доставка Почтой России '.$delivery_pochta_cost,'. рублей.
-                Мы свяжемся с Вами после оформления заказа в рабочее время с 10:00 до 20:00 и рассчитаем стоимость доставки.
+                Доставка Почтой России осуществляется по тарифу'.$delivery_pochta_cost,' рублей за каждое растений. 
+                Оплатить заказ можно будет после его оформления.
+                Мы свяжемся с Вами после оформления заказа в рабочее время с 10:00 до 20:00.
                 <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
                 </div>';
         }
@@ -652,7 +653,7 @@ Contents
 
         if( ( is_cart() || is_checkout() ) && $notOnlyPlantsInCart && $delivery_pochta == $chosen_methods[0]) {
             wc_print_notice(
-                sprintf( 'Почтой России осуществляется дотсавка только растений.'  ,
+                sprintf( 'Почтой России мы доставляем только расений.'  ,
                     // wc_price( $min_treez_delivery ),
                     // wc_price( WC()->cart->total )
                 ), 'error'
@@ -662,7 +663,7 @@ Contents
         if( $notOnlyPlantsInCart && $delivery_pochta == $chosen_methods[0]) {
             wc_add_notice( 
                 sprintf( 
-                    'Почтой России осуществляется дотсавка только растений.',
+                    'Почтой России мы доставляем только расений.',
                     // wc_price( $min_treez_delivery ),
                     // wc_price( WC()->cart->subtotal )
                 ),
@@ -690,7 +691,7 @@ Contents
 
         if( $notOnlyPlantsInCart && $delivery_pochta == $chosen_methods[0]) {
             echo '<tr> <td colspan="2" class="checkout__text checkout__text_pochta checkout__text_alarm">
-            Почтой России осуществляется дотсавка только растений.</td></tr>';
+            Почтой России мы доставляем только расений.</td></tr>';
         }
     }
 
