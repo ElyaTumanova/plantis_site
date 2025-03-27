@@ -302,16 +302,17 @@ function plnt_shipping_conditions( $rates, $package ) {
     // почта России
     global $plants_cat_id;
     $plantsQty = 0;
-    $isOnlyPlantsInCart = true;
+    $notPlantsInCartQty = 0;
     foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
         $_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 		$parentCatId = check_category($_product);
         if ($parentCatId == $plants_cat_id ){
-            $plantsQty++;
+            $plantsQty =  $plantsQty + $cart_item['quantity'];
         } else {
-            $isOnlyPlantsInCart = false;
+            $notPlantsInCartQty++;
         }
     }
+    
     foreach ($rates as $rate) {
         if ($rate->id == $delivery_pochta){
             $rate->cost = 450 * $plantsQty;
