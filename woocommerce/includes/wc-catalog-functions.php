@@ -496,10 +496,10 @@ function filter_wpseo_robots( $robotsstr ) {
 // изменяем canonical для страниц пагинации #SEO
 
 // Disable Canonical for - ALL pages
-// function remove_canonical() {
-//     add_filter( 'wpseo_canonical', '__return_false');
-// }
-// add_action('wp', 'remove_canonical', -19999);
+function remove_canonical() {
+    add_filter( 'wpseo_canonical', '__return_false');
+}
+add_action('wp', 'remove_canonical', -19999);
 
 
 //убирем канонакал, который выводит Load More плагин
