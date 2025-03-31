@@ -500,6 +500,7 @@ function remove_canonical() {
     add_filter( 'wpseo_canonical', '__return_false');
 }
 add_action('wp', 'remove_canonical', -19999);
+add_action('init', 'remove_canonical');
 
 //убирем канонакал, который выводит Load More плагин
 function remove_my_theme_canonical() {
