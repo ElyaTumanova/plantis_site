@@ -3,6 +3,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+// Disable Canonical for - ALL pages
+function remove_canonical() {
+    add_filter( 'wpseo_canonical', '__return_false',  10, 1 );
+}
+add_action('wp', 'remove_canonical');
+
 add_action('wp_head', 'add_seo_tags');
 
 function add_seo_tags() {
