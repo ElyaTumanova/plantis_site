@@ -12,6 +12,12 @@ function crb_load() {
 	\Carbon_Fields\Carbon_Fields::boot();
 }
 
+// Disable Canonical for - ALL pages
+function remove_canonical() {
+    add_filter( 'wpseo_canonical', '__return_false');
+}
+add_action('wp', 'remove_canonical', -19999);
+
 /** Add theme support */
 require get_template_directory() . '/includes/theme-support.php';
 /** Enqueue scripts */
@@ -199,8 +205,3 @@ function plnt_check_page() {
 //add_action( 'wp_footer', 'plnt_check_page' );
 
 
-// Disable Canonical for - ALL pages
-function remove_canonical() {
-    add_filter( 'wpseo_canonical', '__return_false');
-}
-add_action('wp', 'remove_canonical', -19999);
