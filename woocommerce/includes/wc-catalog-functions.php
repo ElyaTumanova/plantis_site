@@ -482,7 +482,7 @@ function move_to_top_on_pagination() {
 add_action('wp_footer', 'move_to_top_on_pagination');
 
 // добавляем директивы ноиндекс, фоллоу для страниц пагинации, начиная со 2 #SEO
-//add_filter( 'wpseo_robots', 'filter_wpseo_robots' );
+add_filter( 'wpseo_robots', 'filter_wpseo_robots' );
 
 /* Yoast SEO -  add noindex, follow for paginated pages */
 function filter_wpseo_robots( $robotsstr ) {
@@ -500,6 +500,7 @@ function remove_canonical() {
 	add_filter( 'wpseo_canonical', '__return_false');
 }
 add_action('wp', 'remove_canonical', -19999);
+add_action('woocommerce_before_main_content', 'remove_canonical', 10);
 
 
 //убирем канонакал, который выводит Load More плагин
