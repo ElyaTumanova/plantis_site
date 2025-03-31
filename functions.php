@@ -199,3 +199,8 @@ function plnt_check_page() {
 //add_action( 'wp_footer', 'plnt_check_page' );
 
 
+// Disable Canonical for - ALL pages
+function remove_canonical() {
+    add_filter( 'wpseo_canonical', '__return_false');
+}
+add_action('wp', 'remove_canonical', -19999);
