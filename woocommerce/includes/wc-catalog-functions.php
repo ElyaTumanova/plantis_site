@@ -497,10 +497,7 @@ function filter_wpseo_robots( $robotsstr ) {
 
 // Disable Canonical for - ALL pages
 function remove_canonical() {
-	if( is_product_category() ) {
-		print_r('hi catalog');
-		add_filter( 'wpseo_canonical', '__return_false');
-	}
+	add_filter( 'wpseo_canonical', '__return_false');
 }
 add_action('wp', 'remove_canonical', -19999);
 
