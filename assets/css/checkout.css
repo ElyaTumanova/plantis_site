@@ -211,7 +211,7 @@
 #shipping_method {
     display: flex;
     min-height: 85px;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 #shipping_method label::before {
