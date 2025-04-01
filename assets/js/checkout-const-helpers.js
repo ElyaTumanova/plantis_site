@@ -32,7 +32,6 @@ let addressFields = document.querySelector('#billing_address_1_field');
 let additionalAddress = document.querySelector('.additional-address-field');
 let innField = document.querySelector('#additional_inn');
 
-let checkoutComment = document.querySelector('.checkout__comment');
 
 function getDeliveryCosts(shippingValue) {
 
