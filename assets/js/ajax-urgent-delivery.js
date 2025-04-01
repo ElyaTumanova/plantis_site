@@ -43,6 +43,7 @@ function ajaxGetUrgent() {
     deliveryWrap.append(urgentComent);
   } else {
     let urgentComentEl = document.querySelector('.checkout__comment_urgent');
+    console.log(urgentComentEl);
     urgentComentEl.remove();
   }
 
