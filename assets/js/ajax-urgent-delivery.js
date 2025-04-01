@@ -42,8 +42,8 @@ function ajaxGetUrgent() {
     urgentComent.append('Это срочная доставка');
     deliveryWrap.append(urgentComent);
   } else {
-    console.log(urgentComent);
-    urgentComent.remove();
+    let urgentComentEl = document.querySelector('.checkout__comment_urgent');
+    urgentComentEl.remove();
   }
 
   jQuery( function($){
