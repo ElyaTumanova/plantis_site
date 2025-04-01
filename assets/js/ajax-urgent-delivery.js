@@ -53,6 +53,7 @@ function ajaxGetUrgent() {
 };
 
 function ajaxGetLateDelivery(event) {
+  console.log('hi ajaxGetLateDelivery');
   if (event) {
     if(event.target.value == '18:00 - 21:00') {
       isLate = '1'
@@ -60,7 +61,7 @@ function ajaxGetLateDelivery(event) {
   } else {
     isLate = '0'
   }
-  // console.log(isLate);
+  console.log(isLate);
 
   jQuery( function($){
     $.ajax({
