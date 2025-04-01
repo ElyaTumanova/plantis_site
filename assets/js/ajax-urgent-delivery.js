@@ -39,7 +39,7 @@ function ajaxGetUrgent() {
   if (isUrgent == '1') {
     let urgentComent = document.createElement("div");
     urgentComent.classList.add('checkout__comment_urgent');
-    urgentComent.append('Это срочная доставка');
+    urgentComent.append('Выбрана срочная доставка на завтрашний день - стоимость доставкЭто срочная доставка');
     deliveryWrap.prepend(urgentComent);
   } else {
     let urgentComentEl = document.querySelector('.checkout__comment_urgent');
