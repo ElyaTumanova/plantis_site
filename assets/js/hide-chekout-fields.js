@@ -2,13 +2,6 @@
 # Hiding fields
 --------------------------------------------------------------*/
 
-    //все переменные
-
-    let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
-    let addressFields = document.querySelector('#billing_address_1_field');
-    let additionalAddress = document.querySelector('.additional-address-field');
-    let innField = document.querySelector('#additional_inn');
-
     function plnt_hide_checkout_fields(event){
         
         //console.log('hi plnt_hide_checkout_fields');
@@ -73,11 +66,12 @@
             if (innField) {innField.classList.add('d-none')};
         };
 
-        // for holidays
-        if (isHoliday === '1') {
+        // for short days
+        if (isShortDay === '1') {
             deliveryIntervalInput.forEach(el =>{
                 if(el.defaultValue !== '11:00 - 16:00') {
                     el.classList.add('d-none');
+                    el.checked = false;
                 }
             })
             deliveryIntervalLabels.forEach(el =>{
@@ -86,7 +80,7 @@
                 }
             })
         }
-        if (isHoliday === '0') {
+        if (isShortDay === '0') {
             deliveryIntervalInput.forEach(el =>{
                 el.classList.remove('d-none');
             })
