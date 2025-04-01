@@ -56,7 +56,9 @@ function ajaxGetLateDelivery(event) {
   console.log('hi ajaxGetLateDelivery');
   if (event) {
     if(event.target.value == '18:00 - 21:00') {
-      isLate = '1'
+      isLate = '1';
+    } else {
+      isLate = '0';
     }
   } else {
     isLate = '0'
