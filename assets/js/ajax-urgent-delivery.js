@@ -36,6 +36,13 @@ function ajaxGetUrgent() {
 
   console.log(isUrgent);
 
+  if (isUrgent == '1') {
+    let urgentComent = document.createElement("div");
+    urgentComent.classList.add('checkout__comment_urgent');
+    urgentComent.append('Это срочная доставка');
+    checkoutComment.append(urgentComent);
+  }
+
   jQuery( function($){
         $.ajax({
             type: 'POST',
