@@ -25,14 +25,13 @@ let checkoutForm = document.querySelector('form[name="checkout"]');
 let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
 let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
 
+let deliveryWrap = document.querySelector('.delivery_wrap');
 let deliveryDates = document.querySelector('.delivery_dates');
 let deliveryDatesInput = document.querySelectorAll('.delivery_dates input');
 let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
 let addressFields = document.querySelector('#billing_address_1_field');
 let additionalAddress = document.querySelector('.additional-address-field');
 let innField = document.querySelector('#additional_inn');
-
-let checkoutComment = document.querySelector('.checkout__comment');
 
 function getDeliveryCosts(shippingValue) {
 

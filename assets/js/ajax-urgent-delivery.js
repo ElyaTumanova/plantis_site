@@ -40,7 +40,7 @@ function ajaxGetUrgent() {
     let urgentComent = document.createElement("div");
     urgentComent.classList.add('checkout__comment_urgent');
     urgentComent.append('Это срочная доставка');
-    checkoutComment.append(urgentComent);
+    deliveryWrap.append(urgentComent);
   }
 
   jQuery( function($){
