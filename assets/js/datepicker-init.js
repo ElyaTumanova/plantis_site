@@ -41,6 +41,8 @@ function datepicker_options () {
        startDate = date;               
     };
 
+    console.log(startDate);
+
     dateMinUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
     dateTomorrowUTC = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()+1);
 
