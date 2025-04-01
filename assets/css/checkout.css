@@ -244,7 +244,8 @@
     display: inline;
 }
 
-.woocommerce-shipping-backorder li:has([value="flat_rate:45"]) span {
+/*прячем цену для почты россии*/
+.woocommerce-shipping-backorder li:has([value="flat_rate:27"]) span {
     display: none;
 }
 
