@@ -147,7 +147,8 @@ if (checkoutForm) {
   
   datepicker_create ();
 
-  console.log(isHideInterval);
+  //console.log(isHideInterval);
+  console.log(isBackorder);
   console.log(isUrgent);
 
   
