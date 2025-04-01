@@ -244,6 +244,10 @@
     display: inline;
 }
 
+.woocommerce-shipping-backorder li:has([value="flat_rate:45"]) span {
+    display: inline;
+}
+
 /*прячем срочную доставку для предзаказа*/
 .woocommerce-shipping-backorder li:has([value="flat_rate:5"]) {
     display: none;
