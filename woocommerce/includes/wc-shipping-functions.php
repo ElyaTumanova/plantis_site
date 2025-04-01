@@ -274,6 +274,7 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $delivery_outMKAD_medium ] );
         unset( $rates[ $urgent_delivery_inMKAD_medium ] );
         unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+        unset( $rates[ $delivery_pochta ] );
     } else {
         unset( $rates[ $delivery_inMKAD_large ] );
         unset( $rates[ $delivery_outMKAD_large ] );
