@@ -150,11 +150,15 @@ function chekIfUrgent(date) {
     // проверяем срочная ли доставка и запускам аякс
     let dateUTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
 
-    if (dateUTC == dateMinUTC || dateUTC == dateTomorrowUTC && hour >= 18) {
-        isUrgent = '1'
-    } else (
-        isUrgent = '0'
-    );
+    if (isBackorder) {
+        isUrgent = 0;
+    } else {
+        if (dateUTC == dateMinUTC || dateUTC == dateTomorrowUTC && hour >= 18) {
+            isUrgent = '1'
+        } else (
+            isUrgent = '0'
+        );
+    }
 
     console.log(isUrgent);
     ajaxGetUrgent();
