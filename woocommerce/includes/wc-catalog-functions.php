@@ -501,7 +501,9 @@ function remove_canonical() {
 }
 //add_action('wp', 'remove_canonical', -19999);
 
-add_action( 'wpseo_head', 'remove_canonical', 4);
+//add_action( 'wpseo_head', 'remove_canonical', 4);
+
+add_filter( 'wpseo_canonical', '__return_false', 20);
 
 
 //убирем канонакал, который выводит Load More плагин
