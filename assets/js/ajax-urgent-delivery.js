@@ -85,11 +85,15 @@ function renderDeliveryIntervals(shippingValue,date) {
 }
 
 function ajaxGetUrgent(date) {
-  if (date) {
-    if(date == today) {
-      isUrgent = '1';
-    } else {
-      isUrgent = '0';
+  if (isBackorder) {
+    isUrgent = 0;
+  } else {
+    if (date) {
+      if(date == today) {
+        isUrgent = '1';
+      } else {
+        isUrgent = '0';
+      }
     }
   }
 
