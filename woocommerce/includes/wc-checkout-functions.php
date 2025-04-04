@@ -259,6 +259,8 @@ Contents
 
     function plnt_add_delivery_dates() {
 
+        echo 'hihi';
+
         $days = array();
 
         $weekend_string = carbon_get_theme_option('weekend');
