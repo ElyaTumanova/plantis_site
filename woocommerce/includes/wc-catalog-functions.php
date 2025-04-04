@@ -519,7 +519,7 @@ function wpse282643()
 
    
         // Remove canonical URL
-        remove_action( 'wpseo_head', [ \WPSEO_Frontend::get_instance(), 'canonical' ], 20 );
+        remove_action( 'wpseo_head', [ WPSEO_Frontend::get_instance(), 'canonical' ], 20 );
 }
 
 add_action( 'template_redirect', 'wpse282643', 99 );
