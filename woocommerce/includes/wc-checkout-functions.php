@@ -255,7 +255,7 @@ Contents
         echo "</div>";
     }
 
-    //add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 15 );
+    add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 15 );
 
     function plnt_add_delivery_dates() {
 
