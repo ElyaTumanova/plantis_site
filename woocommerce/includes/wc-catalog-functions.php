@@ -508,21 +508,16 @@ add_filter( 'wpseo_canonical', '__return_false', 9999);
 // add_filter( 'wpseo_next_rel_link', '__return_false' );
 // add_filter( 'wpseo_prev_rel_link', '__return_false' );
 
-function wpse282643()
-{
-    global $post;
+add_filter( 'wpseo_canonical', 'joe_remove_yoast_meta' );
+add_filter( 'wpseo_metadesc', 'joe_remove_yoast_meta' );
+function joe_remove_yoast_meta( $filter ){
+	// Добавьте сюда свои условия
+	if( is_archive() ){
+		return false;
+	}
 
-    // Check if WPSEO plugin is active and bail immediately if not (this is just a sample check)
-    if ( ! defined( 'WPSEO_VERSION' ) ) {
-        return;
-    }
-
-   
-        // Remove canonical URL
-        remove_action( 'wpseo_head', [ WPSEO_Frontend::get_instance(), 'canonical' ], 20 );
+	return $filter;
 }
-
-add_action( 'template_redirect', 'wpse282643', 99 );
 
 
 //убирем канонакал, который выводит Load More плагин
