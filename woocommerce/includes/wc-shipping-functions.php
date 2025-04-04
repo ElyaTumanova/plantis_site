@@ -168,8 +168,6 @@ function plnt_shipping_conditions( $rates, $package ) {
     date_default_timezone_set('Europe/Moscow');
     $hour = date("H");
 
-    unset( $rates[ $urgent_delivery_inMKAD ] );
-    
     if (WC()->session->get('isUrgent' ) === '0' || ($hour >= 18 && $hour <20)) {
         unset( $rates[ $urgent_delivery_inMKAD ] );
         unset( $rates[ $urgent_delivery_outMKAD ] );
