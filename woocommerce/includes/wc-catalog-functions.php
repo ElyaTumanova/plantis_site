@@ -503,7 +503,7 @@ function remove_canonical() {
 
 //add_action( 'wpseo_head', 'remove_canonical', 4);
 
-add_filter( 'wpseo_canonical', '__return_false', 20);
+//add_filter( 'wpseo_canonical', '__return_false', 20);
 
 // add_filter( 'wpseo_next_rel_link', '__return_false' );
 // add_filter( 'wpseo_prev_rel_link', '__return_false' );
