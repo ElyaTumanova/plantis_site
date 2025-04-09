@@ -517,7 +517,7 @@ function remove_my_theme_canonical() {
 add_action('init', 'remove_my_theme_canonical');
 
 function add_custom_canonical_tags() {
-    // if (is_paged()) {
+    if (is_paged()) {
         // Получаем URL первой страницы текущего архива
         $first_page_url = get_pagenum_link(1);
 		
@@ -546,7 +546,7 @@ function add_custom_canonical_tags() {
             $next_page_url = get_pagenum_link($paged + 1);
             echo '<link rel="next" href="' . esc_url($next_page_url) . '" />' . "\n";
         }
-    // }
+    }
 }
 
 // Добавляем действие в WordPress, чтобы выполнить функцию при выводе тегов в head
