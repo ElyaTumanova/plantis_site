@@ -159,7 +159,7 @@ function setInitalState() {
     today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${(new Date().getUTCMonth()< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
   };
 
-  //console.log(today);
+  console.log(today);
 
   if(hour >=20 && hour<24) {
     isHideInterval = false;
@@ -244,5 +244,6 @@ if (checkoutForm) {
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 
   ajaxGetUrgent(deliveryDatesInput[0].value);
+  console.log(isUrgent);
   
 }
