@@ -86,10 +86,10 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 
 		wp_enqueue_script( 'datepicker', get_template_directory_uri() .
 		                                     '/assets/js/datepicker.js', array( 'jquery' ), null, true );  // datepicker
-		wp_enqueue_script( 'pts.lazyload', get_template_directory_uri() .
-		                                     '/assets/js/pts.lazyload.js', array( 'jquery' ), null, true );  // antibot
-		wp_enqueue_script( 'pts.lazyload-init', get_template_directory_uri() .
-		                                     '/assets/js/pts.lazyload-init.js', array( 'jquery' ), null, true );  // antibot
+		// wp_enqueue_script( 'pts.lazyload', get_template_directory_uri() .
+		//                                      '/assets/js/pts.lazyload.js', array( 'jquery' ), null, true );  // antibot
+		// wp_enqueue_script( 'pts.lazyload-init', get_template_directory_uri() .
+		//                                      '/assets/js/pts.lazyload-init.js', array( 'jquery' ), null, true );  // antibot
 
 
 		// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
