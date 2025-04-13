@@ -99,7 +99,7 @@ if (!is_account_page()) {
     </div>
 </div>
 
-<script src="<?php get_template_directory_uri() .'/assets/js/pts.lazyload.js';?>"></script>
+<script src="/assets/js/pts.lazyload.js"></script>
 <script>
     let dataLazyLoadingJS = {
         data: {
