@@ -49,13 +49,14 @@ class ptsLazyLoad {
         ];
         let sBrowser = false, sUsrAg = navigator.userAgent,  referer = document.referrer;
         for (let i = 0; i < uaList.length; i += 1) {
-            if (sUsrAg.indexOf(uaList[i]) > -1 || referer.indexOf(referrerList[i])) {
+            if (sUsrAg.indexOf(uaList[i]) > -1 || referer.indexOf(referrerList)) {
                 sBrowser = true;
                 break;
             }
         }
 
-        console.log(referer.indexOf(referrerList[i]));
+        console.log(referer.indexOf(referrerList[1]));
+        console.log(sBrowser);
 
         return sBrowser;
     }
