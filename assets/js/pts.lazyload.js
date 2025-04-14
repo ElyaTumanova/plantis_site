@@ -49,7 +49,7 @@ class ptsLazyLoad {
         ];
         let sBrowser = false, sUsrAg = navigator.userAgent,  referer = document.referrer;
         for (let i = 0; i < uaList.length; i += 1) {
-            if (sUsrAg.indexOf(uaList[i]) > -1 || referer.indexOf(referrerList)) {
+            if (sUsrAg.indexOf(uaList[i]) > -1 || referer.indexOf(referrerList[i]) > -1) {
                 sBrowser = true;
                 break;
             }
