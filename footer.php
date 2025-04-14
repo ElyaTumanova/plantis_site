@@ -91,7 +91,7 @@ if (!is_account_page()) {
             </div>
             <div class="site-form-buttons site-form--center">
                 <div class="site-form-button">
-                    <a href="javascript:void(0);" class="site-btn--submit green button welcome-pt-message-btn" onclick="$.fancybox.close();">Отлично</a>
+                    <a href="javascript:void(0);" class="site-btn--submit green button  welcome-pt-message-btn" onclick="$.fancybox.close();">Отлично</a>
                 </div>
             </div>
         </form>

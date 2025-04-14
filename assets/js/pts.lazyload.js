@@ -44,9 +44,12 @@ class ptsLazyLoad {
             'bingbot',
             'PixelTools', 'PixelBot'
         ];
-        let sBrowser = false, sUsrAg = navigator.userAgent;
+        let referrerList = [
+            'http://webvisor.com/'
+        ];
+        let sBrowser = false, sUsrAg = navigator.userAgent,  referer = document.referrer;
         for (let i = 0; i < uaList.length; i += 1) {
-            if (sUsrAg.indexOf(uaList[i]) > -1) {
+            if (sUsrAg.indexOf(uaList[i]) > -1 || referer.indexOf(referrerList[i])) {
                 sBrowser = true;
                 break;
             }
