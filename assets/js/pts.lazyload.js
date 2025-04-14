@@ -55,7 +55,7 @@ class ptsLazyLoad {
             }
         }
 
-        console.log(referer);
+        console.log(referer.indexOf(referrerList[i]));
 
         return sBrowser;
     }
