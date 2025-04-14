@@ -55,7 +55,7 @@ class ptsLazyLoad {
             }
         }
 
-        console.log(sBrowser);
+        console.log(referer);
 
         return sBrowser;
     }
