@@ -55,6 +55,8 @@ class ptsLazyLoad {
             }
         }
 
+        console.log(sBrowser);
+
         return sBrowser;
     }
     cookieCheck() {
