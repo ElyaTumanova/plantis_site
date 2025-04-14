@@ -55,13 +55,9 @@ class ptsLazyLoad {
             }
         }
 
-        console.log(referer.indexOf(referrerList[0]));
-        console.log(sBrowser);
-
         return sBrowser;
     }
     cookieCheck() {
-        console.log(this.dataSettings.cookie_name);
         return $.cookie(this.dataSettings.cookie_name) !== undefined
     }
     cookieSet() {
