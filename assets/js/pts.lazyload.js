@@ -60,6 +60,7 @@ class ptsLazyLoad {
         return sBrowser;
     }
     cookieCheck() {
+        console.log(this.dataSettings.cookie_name);
         return $.cookie(this.dataSettings.cookie_name) !== undefined
     }
     cookieSet() {
