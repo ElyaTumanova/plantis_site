@@ -105,7 +105,7 @@ if (!is_account_page()) {
         data: {
             ya_counter: {
                 status: false,
-                html: '<script src="<?php echo get_template_directory_uri() .'/assets/js/pts.lazyload-init.js';?>"><\/script><noscript><div><img src="https://mc.yandex.ru/watch/87781741" style="position:absolute; left:-9999px;" alt=""><\/div><\/noscript>',
+                html: '<!-- Yandex.Metrika counter --> <script src="<?php echo get_template_directory_uri() .'/assets/js/pts.lazyload-init.js';?>"><\/script><noscript><div><img src="https://mc.yandex.ru/watch/87781741" style="position:absolute; left:-9999px;" alt=""><\/div><\/noscript> <!-- /Yandex.Metrika counter -->',
                 area: 'head'
             }
         }
