@@ -299,5 +299,13 @@
 /*antibot cookie*/
 
 .welcome-pt-message-btn {
-    
+
+}
+
+.fancybox-wrap {
+
+}
+
+.fancybox-overlay {
+    position: relative !important;
 }
