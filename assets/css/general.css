@@ -228,6 +228,7 @@
     padding: 0 5px 0 0;
     font-size: 14px;
     line-height: 1;
+    word-break: normal;
 }
 
 .sale_badge-skidka {
