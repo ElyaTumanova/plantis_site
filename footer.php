@@ -87,11 +87,11 @@ if (!is_account_page()) {
     <div class="site-popup-inner welcome-pt-message" style="display: none;">
         <form method="post" enctype="multipart/form-data" action="">
             <div class="site-row">
-                <p class="site-form-text">Мы используем куки, чтобы пользоваться сайтом было удобно.</p>
+                <p class="site-form-text">Мы используем cookies для быстрой и удобной работы сайта. Продолжая пользоваться сайтом, вы принимаете условия обработки </p>
             </div>
             <div class="site-form-buttons site-form--center">
                 <div class="site-form-button">
-                    <a href="javascript:void(0);" class="site-btn--submit green button  welcome-pt-message-btn" onclick="$.fancybox.close();">Отлично</a>
+                    <a href="javascript:void(0);" class="site-btn--submit green button  welcome-pt-message-btn" onclick="$.fancybox.close();">OK</a>
                 </div>
             </div>
         </form>
