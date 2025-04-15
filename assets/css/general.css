@@ -295,3 +295,48 @@
 
 }
 }
+
+/*antibot cookie*/
+
+.welcome-pt-message-btn {
+    background-color: black;
+    color: white;
+    font-weight: 700;
+}
+
+.fancybox-wrap {
+    position: fixed !important;
+    bottom: 30px;
+    z-index: 9999;
+    top: auto !important;
+    width: calc(100vw - 160px) !important;
+    left: 20px !important;
+    right: auto !important;
+}
+
+@media (max-width: 1279px) {
+    .fancybox-wrap {
+        bottom: 85px;
+        width: calc(100vw - 50px) !important;
+    } 
+}
+
+.fancybox-skin {
+    padding: 15px 30px !important;
+}
+
+.fancybox-overlay {
+    position: relative !important;
+}
+
+.fancybox-inner {
+    height: fit-content !important;
+    width: 100% !important;
+}
+
+.welcome-pt-message form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 15px;
+}
