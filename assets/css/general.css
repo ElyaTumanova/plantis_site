@@ -341,4 +341,5 @@
     align-items: center;
     justify-content: space-between;
     column-gap: 15px;
+    overflow: hidden;
 }
