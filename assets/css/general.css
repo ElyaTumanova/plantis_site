@@ -320,3 +320,9 @@
     height: fit-content !important;
     width: 100% !important;
 }
+
+.welcome-pt-message form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
