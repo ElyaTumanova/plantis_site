@@ -307,9 +307,9 @@
     bottom: 77px;
     z-index: 9999;
     top: auto !important;
-    width: calc(100vw - 40px) !important;
-    left: auto !important;
-    right: auto !important;
+    width: calc(100vw - 50px) !important;
+    left: 25px !important;
+    right: 25px !important;
 }
 
 .fancybox-overlay {
