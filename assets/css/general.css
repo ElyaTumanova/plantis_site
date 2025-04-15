@@ -304,7 +304,7 @@
 
 .fancybox-wrap {
     position: fixed !important;
-    bottom: 77px;
+    bottom: 30px;
     z-index: 9999;
     top: auto !important;
     width: calc(100vw - 60px) !important;
