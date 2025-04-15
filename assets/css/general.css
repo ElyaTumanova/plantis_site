@@ -316,6 +316,7 @@
 
 @media (max-width: 1279px) {
     .fancybox-wrap {
+        bottom: 85px;
         width: calc(100vw - 50px) !important;
     } 
 }
