@@ -87,7 +87,7 @@ if (!is_account_page()) {
     <div class="site-popup-inner welcome-pt-message" style="display: none;">
         <form method="post" enctype="multipart/form-data" action="">
             <div class="site-row">
-                <p class="site-form-text">Мы используем cookies для быстрой и удобной работы сайта. Продолжая пользоваться сайтом, вы принимаете условия обработки персональных данных.</p>
+                <p class="site-form-text">Мы используем cookies для быстрой и удобной работы сайта.</p>
             </div>
             <div class="site-form-buttons site-form--center">
                 <div class="site-form-button">
