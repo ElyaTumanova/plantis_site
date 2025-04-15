@@ -312,12 +312,14 @@
     width: calc(100vw - 160px) !important;
     left: 20px !important;
     right: auto !important;
+    font-size: 20px;
 }
 
 @media (max-width: 1279px) {
     .fancybox-wrap {
         bottom: 85px;
         width: calc(100vw - 50px) !important;
+        font-size: 16px;
     } 
 }
 
