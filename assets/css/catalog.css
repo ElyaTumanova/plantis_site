@@ -252,6 +252,9 @@ ul.products {
     }
 
     li.product {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
         display: flex;
         flex-direction: column;
         justify-content: start;
