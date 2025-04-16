@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 $close_icon = carbon_get_theme_option('close_icon')
 ?>
-<div class="page-popup popup">
+<div class="page-popup popup preorder-popup">
     <div class="page-popup__container">
         <div class="page-popup__wrap">
             <h2 class="page-popup__heading heading-2">Предзаказ товара</h2>

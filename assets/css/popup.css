@@ -41,6 +41,10 @@
     margin: auto;
 }
 
+.preorder-popup .page-popup__container {
+    max-width: 700px;
+}
+
 @media (max-width: 1300px) {
     .page-popup__container {
         right: 0;
