@@ -225,6 +225,29 @@
 }
 
 /* стили для сетки каталога */
+
+.catalog__grid .products {
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    word-break: break-word;
+    min-width: 12vw;
+    column-gap: 16px;
+    row-gap: 26px;
+}
+
+.catalog__grid .products.columns-2 .product {
+    width: calc(100% / 2 - 8px);
+}
+
+.catalog__grid .products.columns-3 .product {
+    width: calc(100% / 3 - 16px);
+}
+
+
+/*
 .catalog__grid 
 ul.products {
     display: flex;
@@ -250,19 +273,8 @@ ul.products {
             width: calc(100% / 3 - 16px);
         }
     }
+}*/
 
-    /* li.product {
-        /* display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex; */
-        /* flex-direction: column;
-        justify-content: start;
-        align-items: flex-start;
-        box-sizing: border-box;
-        position: relative; 
-    } */
-}
 .catalog__grid .products .product {
     display: flex;
     flex-direction: column;
