@@ -97,6 +97,10 @@ function ajaxGetUrgent(date) {
     }
   }
 
+  console.log('hi ajaxGetUrgent');
+  console.log('isUrgent ajax', isUrgent);
+  console.log('isBackorder ajax', isBackorder);
+
   jQuery( function($){
         $.ajax({
             type: 'POST',
