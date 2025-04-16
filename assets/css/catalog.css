@@ -256,7 +256,7 @@
     position: relative;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
     .catalog__grid .products {
         row-gap: 30px;
     }
