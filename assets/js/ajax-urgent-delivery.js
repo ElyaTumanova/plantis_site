@@ -244,6 +244,6 @@ if (checkoutForm) {
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 
   ajaxGetUrgent(deliveryDatesInput[0].value);
-  //console.log(isUrgent);
+  console.log(isUrgent);
   
 }
