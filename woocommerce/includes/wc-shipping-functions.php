@@ -11,12 +11,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 function plnt_set_initials() {
     date_default_timezone_set('Europe/Moscow');
     $hour = date("H");
-   
-    if ($hour >= 18 && $hour <20) {
+
+    $isBackorder = plnt_is_backorder();
+
+    if ($isBackorder) {
         WC()->session->set('isUrgent', '0' ); //0
     } else {
-        WC()->session->set('isUrgent', '1' ); //1
+        if ($hour >= 18 && $hour <20) {
+            WC()->session->set('isUrgent', '0' ); //0
+        } else {
+            WC()->session->set('isUrgent', '1' ); //1
+        }
     }
+   
 
     WC()->session->set('isLate', '0' );
 
@@ -24,7 +31,7 @@ function plnt_set_initials() {
 
 //for dev
 
-//add_action('woocommerce_review_order_before_shipping','plnt_check');
+add_action('woocommerce_review_order_before_shipping','plnt_check');
 //add_action('wp_head','plnt_check');
 
 function plnt_check() {
