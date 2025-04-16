@@ -263,6 +263,9 @@ ul.products {
         position: relative;
     }
 }
+.catalog__grid .products .product {
+    display: flex;
+}
 
 @media (max-width: 767px) {
     .catalog__grid 
