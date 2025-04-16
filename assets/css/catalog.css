@@ -251,20 +251,25 @@ ul.products {
         }
     }
 
-    li.product {
+    /* li.product {
         /* display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex; */
-        flex-direction: column;
+        /* flex-direction: column;
         justify-content: start;
         align-items: flex-start;
         box-sizing: border-box;
-        position: relative;
-    }
+        position: relative; 
+    } */
 }
 .catalog__grid .products .product {
     display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    box-sizing: border-box;
+    position: relative;
 }
 
 @media (max-width: 767px) {
