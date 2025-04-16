@@ -19,6 +19,8 @@
 
         //for delivery intervals
         if (deliveryInterval) {
+            console.log(deliveryInterval);
+            console.log('isHideInterval', isHideInterval);
             if (isBackorder) {
                 deliveryInterval.classList.add('d-none');
                 deliveryIntervalInput.forEach((input)=>{

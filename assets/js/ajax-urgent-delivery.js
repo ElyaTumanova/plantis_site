@@ -226,12 +226,13 @@ function checkHoliday(date) {
 }
 
 function setIsHideInterval(date) {
+  console.log('hi setIsHideInterval');
   if (date === '08.03') {
     isHideInterval = true;
   } else {
     isHideInterval = false;
   }
-  //console.log(isHideInterval);
+  console.log(isHideInterval);
 }
 
 if (checkoutForm) {
