@@ -533,6 +533,9 @@ function plnt_change_canonical() {
 		return $canonical;
 	})
 }
+
+add_filter( 'wpseo_canonical', 'plnt_change_canonical');
+
 //убирем канонакал, который выводит Load More плагин
 function remove_my_theme_canonical() {
     $br_aapf_paid_instance = BeRocket_AAPF_paid::getInstance();
