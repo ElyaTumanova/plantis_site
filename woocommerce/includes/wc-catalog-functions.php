@@ -517,7 +517,22 @@ function remove_canonical() {
 // add_filter( 'wpseo_next_rel_link', '__return_false' );
 // add_filter( 'wpseo_prev_rel_link', '__return_false' );
 
+function plnt_change_canonical() {
+	if (is_shop() {
+		// Получаем URL первой страницы текущего архива
+        $first_page_url = get_pagenum_link(1);
+		
+		// Разбираем URL на составляющие
+		$parsedUrl = parse_url($first_page_url);
 
+		// Строим новый URL без query-параметров
+		$first_page_url = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . $parsedUrl['path'];
+
+		$canonical = $first_page_url;
+
+		return $canonical;
+	})
+}
 //убирем канонакал, который выводит Load More плагин
 function remove_my_theme_canonical() {
     $br_aapf_paid_instance = BeRocket_AAPF_paid::getInstance();
