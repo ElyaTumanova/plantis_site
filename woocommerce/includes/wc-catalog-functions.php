@@ -141,9 +141,9 @@ add_action('woocommerce_before_shop_loop','plnt_catalog_grid_columns', 30);
 function plnt_catalog_grid_columns () {
 	?>
     <div class="catalog__grid-buttons">
-		<button class="catalog__grid-button" id="catalog__grid-button-2" disabled>
+		<button class="catalog__grid-button" id="catalog__grid-button-3" disabled>
 		</button>
-		<button class="catalog__grid-button" id="catalog__grid-button-3">
+		<button class="catalog__grid-button" id="catalog__grid-button-2" >
 		</button>
     </div>
     <?php 	
