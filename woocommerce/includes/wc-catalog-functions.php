@@ -518,7 +518,7 @@ function remove_canonical() {
 // add_filter( 'wpseo_prev_rel_link', '__return_false' );
 
 function plnt_change_canonical() {
-	if (is_shop() {
+	if (is_shop()) {
 		// Получаем URL первой страницы текущего архива
         $first_page_url = get_pagenum_link(1);
 		
@@ -531,7 +531,7 @@ function plnt_change_canonical() {
 		$canonical = $first_page_url;
 
 		return $canonical;
-	})
+	}
 }
 
 add_filter( 'wpseo_canonical', 'plnt_change_canonical');
