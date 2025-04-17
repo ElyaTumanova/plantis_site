@@ -115,7 +115,7 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		wp_enqueue_style( 'card', get_template_directory_uri() .
 		                             '/assets/css/card.css', array(), null, 'all' );
 		wp_enqueue_style( 'catalog', get_template_directory_uri() .
-		                             '/assets/css/catalog.css', array(), null, 'all' );
+		                             '/assets/css/catalog.css', array(), filemtime(get_template_directory_uri() .'/assets/css/catalog.css'), 'all' );
 		wp_enqueue_style( 'cart', get_template_directory_uri() .
 		                             '/assets/css/cart.css', array(), null, 'all' );
 		wp_enqueue_style( 'checkout', get_template_directory_uri() .
