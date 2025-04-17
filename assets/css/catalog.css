@@ -226,6 +226,7 @@
 
 /* стили для сетки каталога */
 
+/*new code*/
 .catalog__grid .products {
     display: flex;
     align-items: stretch;
@@ -246,6 +247,34 @@
     width: calc(100% / 3 - 16px);
 }
 
+/*old code*/
+/* .catalog__grid 
+ul.products {
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    word-break: break-word;
+    min-width: 12vw;
+    column-gap: 16px;
+    row-gap: 26px;
+
+    &.columns-2 {
+
+        li.product {
+            width: calc(100% / 2 - 8px);
+        }
+    }
+
+    &.columns-3 {
+
+        li.product {
+            width: calc(100% / 3 - 16px);
+        }
+    }
+} */
+/*/old code*/
 
 .catalog__grid .products .product {
     display: flex;
@@ -256,6 +285,7 @@
     position: relative;
 }
 
+/*new code*/
 @media (max-width: 1300px) {
     .catalog__grid .products {
         row-gap: 30px;
@@ -274,8 +304,14 @@
     .catalog__grid .products.columns-2 .product {
         width: 100%;
     }
+    .catalog__grid .products.columns-3 .product {
+        width: 100%;
+    }
+}
 
-    /* .catalog__grid 
+/*old code*/
+/* @media (max-width: 767px) {
+    .catalog__grid 
     ul.products {
         row-gap: 30px;
 
@@ -285,8 +321,9 @@
                 width: 100%;
             }
         }
-    } */
-}
+    }
+} */
+/*/old code*/
 
 .catalog__grid .term-description {
     margin-top: 30px;
