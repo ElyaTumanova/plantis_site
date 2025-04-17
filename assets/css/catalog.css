@@ -275,9 +275,17 @@
         width: 100%;
     }
 
-    .catalog__grid .products.columns-3 .product {
-        width: 100%;
-    }
+    /* .catalog__grid 
+    ul.products {
+        row-gap: 30px;
+
+        &.columns-2 {
+
+            li.product {
+                width: 100%;
+            }
+        }
+    } */
 }
 
 .catalog__grid .term-description {
