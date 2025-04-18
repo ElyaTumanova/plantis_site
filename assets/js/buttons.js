@@ -75,12 +75,21 @@ document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffs
 
 let catalogFilterWrap = document.querySelector('.catalog__filter-wrap');
 window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset;
-    if(scrollTop >0){
-        catalogFilterWrap.classList.add('.catalog__filter-wrap_up');
-    } else{
-        catalogFilterWrap.classList.remove('.catalog__filter-wrap_up');
-    }
+    let scrollTopPosition = window.pageYOffset;
+
+    if (scrollTopPosition > lastScrollTop) {
+        console.log('scrolling down');
+      } else if (scrollTopPosition < lastScrollTop) {
+        console.log('scrolling up');
+      }
+      lastScrollTop =
+        scrollTopPosition <= 0 ? 0 : scrollTopPosition;
+
+    // if(scrollTop >0){
+    //     catalogFilterWrap.classList.add('catalog__filter-wrap_up');
+    // } else{
+    //     catalogFilterWrap.classList.remove('catalog__filter-wrap_up');
+    // }
 });
 
 /*--------------------------------------------------------------
