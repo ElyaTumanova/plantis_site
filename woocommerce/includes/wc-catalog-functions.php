@@ -531,6 +531,8 @@ function plnt_change_canonical() {
 		$canonical = $first_page_url;
 
 		return $canonical;
+	} else {
+		return $canonical;
 	}
 }
 
