@@ -335,12 +335,12 @@ function plnt_add_class_loop_item_swiper($clasess){
 
 // // количетсво товаров и кол-во колонок в каталоге
 
-add_filter('loop_shop_columns', 'plnt_loop_columns');
-if (!function_exists('plnt_loop_columns')) {
-    function plnt_loop_columns() {
-    	return 3;
-    }
-}
+// add_filter('loop_shop_columns', 'plnt_loop_columns');
+// if (!function_exists('plnt_loop_columns')) {
+//     function plnt_loop_columns() {
+//     	return 3;
+//     }
+// }
 
 // // вывод товаров в каталоге с учетом наличия - instock products first 
 
