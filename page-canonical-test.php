@@ -1,10 +1,6 @@
 
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
-
 // require wordpress
 define('DOING_AJAX', false);
 define('WP_USE_THEMES', true);
