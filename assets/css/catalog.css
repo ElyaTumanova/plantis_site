@@ -106,6 +106,7 @@
 
     .catalog__filter-wrap_up {
         top: -80px;
+        transition: top 0.4s;
     }
 }
 
