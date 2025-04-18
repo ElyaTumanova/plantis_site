@@ -74,6 +74,8 @@ document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffs
 //скрываем панель с фльтрами в моб каталоге при скролле
 
 let catalogFilterWrap = document.querySelector('.catalog__filter-wrap');
+let lastScrollTop = window.pageYOffset;
+
 window.addEventListener('scroll', function() {
     let scrollTopPosition = window.pageYOffset;
 
