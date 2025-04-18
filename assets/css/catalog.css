@@ -103,6 +103,10 @@
         box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
         margin-bottom: 10px;
     }
+
+    .catalog__filter-wrap_up {
+        top: -80px;
+    }
 }
 
 /* #adaptive for sidebar modal*/
