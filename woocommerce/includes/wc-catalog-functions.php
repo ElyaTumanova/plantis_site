@@ -531,11 +531,12 @@ function plnt_change_canonical() {
 		$canonical = $first_page_url;
 
 		return $canonical;
-	} else {
-		$current_page_url = get_page_link();
-		$canonical = $current_page_url;
-		return $canonical;
-	}
+	} 
+	// else {
+	// 	$current_page_url = get_page_link();
+	// 	$canonical = $current_page_url;
+	// 	return $canonical;
+	// }
 }
 
 function plnt_change_canonical_init() {
