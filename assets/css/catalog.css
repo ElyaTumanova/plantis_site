@@ -45,7 +45,7 @@
             "filters"
             "catalog"
             "pagination";
-        margin-top: 20px;
+        margin-top: 5px;
     }
 
     .catalog__grid .woocommerce-ordering__wrap {
@@ -1315,6 +1315,7 @@ ul.products {
 
     .metki_swiper_wrap {
         margin: 0;
+        padding-bottom: 0px;
     }
 }
 
@@ -1402,7 +1403,7 @@ ul.products {
 @media (max-width:767px) {
     .catalog__filter-active {
         overflow-x: scroll;
-        margin-top: 10px;
+        /* margin-top: 10px; */
     }
     .catalog__filter-active .berocket_aapf_widget_selected_filter {
         flex-wrap: nowrap;
