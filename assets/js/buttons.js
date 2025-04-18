@@ -81,10 +81,10 @@ window.addEventListener('scroll', function() {
 
     if (scrollTopPosition > lastScrollTop) {
         console.log('scrolling down');
-        catalogFilterWrap.classList.remove('catalog__filter-wrap_up');
+        catalogFilterWrap.classList.add('catalog__filter-wrap_up');
     } else if (scrollTopPosition < lastScrollTop) {
         console.log('scrolling up');
-        catalogFilterWrap.classList.add('catalog__filter-wrap_up');
+        catalogFilterWrap.classList.remove('catalog__filter-wrap_up');
     }
     lastScrollTop = scrollTopPosition <= 0 ? 0 : scrollTopPosition;
 });
