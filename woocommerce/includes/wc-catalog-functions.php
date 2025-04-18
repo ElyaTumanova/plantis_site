@@ -534,8 +534,11 @@ function plnt_change_canonical() {
 	}
 }
 
-add_filter( 'wpseo_canonical', 'plnt_change_canonical');
+function plnt_change_canonical_init() {
+	add_filter( 'wpseo_canonical', 'plnt_change_canonical');
+}
 
+add_action('init', 'plnt_change_canonical_init');
 
 //убирем канонакал, который выводит Load More плагин
 function remove_my_theme_canonical() {
