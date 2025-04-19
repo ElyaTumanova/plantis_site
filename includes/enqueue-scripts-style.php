@@ -33,7 +33,7 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		));
 		
 		wp_enqueue_script( 'buttons', get_template_directory_uri() .
-											 '/assets/js/buttons.js', array( 'jquery' ), null, true );	
+											 '/assets/js/buttons.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/buttons.js'), true );	
 		wp_enqueue_script( 'slider-init', get_template_directory_uri() .
 											 '/assets/js/slider-init.js', array( 'jquery', 'swiper' ), null, true );
 		wp_enqueue_script( 'main-cats-sliders', get_template_directory_uri() .
