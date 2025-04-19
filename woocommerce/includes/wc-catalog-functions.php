@@ -342,6 +342,17 @@ function plnt_add_class_loop_item_swiper($clasess){
 //     }
 // }
 
+add_filter( 'loop_shop_per_page', 'truemisha_products_per_page', 20 );
+ 
+function truemisha_products_per_page( $per_page ) {
+ 
+	$per_page = 24;
+	// по умолчанию wc_get_default_products_per_row() * wc_get_default_product_rows_per_page()
+ 
+	return $per_page;
+ 
+}
+
 // // вывод товаров в каталоге с учетом наличия - instock products first 
 
 add_filter('posts_clauses', 'order_by_stock_status', 9999);
