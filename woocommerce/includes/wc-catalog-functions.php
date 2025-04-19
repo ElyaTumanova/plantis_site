@@ -344,12 +344,12 @@ function plnt_add_class_loop_item_swiper($clasess){
 
 add_filter( 'loop_shop_per_page', 'truemisha_products_per_page', 20 );
  
-function truemisha_products_per_page( $per_page ) {
+function truemisha_products_per_page( $products ) {
  
-	$per_page = 24;
+	$products = 24;
 	// по умолчанию wc_get_default_products_per_row() * wc_get_default_product_rows_per_page()
  
-	return $per_page;
+	return $products;
  
 }
 
