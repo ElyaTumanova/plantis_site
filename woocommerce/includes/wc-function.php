@@ -8,7 +8,7 @@ if ( ! function_exists( 'ast_breadrumbs_yoast' ) ) {
 	function ast_breadrumbs_yoast() {
 		if ( is_product() || is_product_category() ||is_product_tag() || is_shop() ) {
 			if ( function_exists( 'yoast_breadcrumb' ) ) {
-				$before      = '<div id="breadcrumbs">';
+				$before      = '<div class="woocommerce-breadcrumb" id="breadcrumbs">';
 				$after       = '</div>';
 				$breadcrumbs = yoast_breadcrumb( $before, $after, true );
 				
