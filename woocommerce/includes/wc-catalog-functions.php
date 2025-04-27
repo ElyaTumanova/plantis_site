@@ -411,11 +411,6 @@ function shop_only_instock_products( $meta_query, $query ) {
 		term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) 
 	) {
 		$meta_query = array(
-			// array(
-			// 	'key' => '_stock_status',
-			// 	'value' => 'outofstock',
-			// 	'compare' => '!='
-			// ),
 			array(
 				'key' => '_stock',
 				'type'    => 'numeric',
