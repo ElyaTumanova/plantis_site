@@ -418,8 +418,8 @@ function shop_only_instock_products( $meta_query, $query ) {
 			// ),
 			array(
 				'key' => '_manage_stock',
-				'value' => 1,
-				'compare' => '='
+				'value' => array('1'),
+				'compare' => 'IN'
 			)
 		);
 
