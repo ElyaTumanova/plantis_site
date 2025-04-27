@@ -702,9 +702,8 @@ Contents
 --------------------------------------------------------------*/
 
 /*минимальная сумма заказа для кашпо Treez & Lechuza*/
-    add_action( 'woocommerce_checkout_process', 'min_amount_for_category_treez' );
-    add_action( 'woocommerce_checkout_process', 'min_amount_for_category_lechuza' );
-    // add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category' );
+    //add_action( 'woocommerce_checkout_process', 'min_amount_for_category_treez' );
+    //add_action( 'woocommerce_checkout_process', 'min_amount_for_category_lechuza' );
 
     function min_amount_for_category_treez(){
         $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
@@ -805,13 +804,13 @@ Contents
                 }	
         }
 
-        if( $cat_amount < $min_treez_delivery && $products_min) {
-            echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
-            Минимальная сумма заказа для кашпо и искусственных растений Treez <span>'.$min_treez_delivery,'</span> рублей (без учета стоимости других товаров).</td></tr>';
-        }   
+        // if( $cat_amount < $min_treez_delivery && $products_min) {
+        //     echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
+        //     Минимальная сумма заказа для кашпо и искусственных растений Treez <span>'.$min_treez_delivery,'</span> рублей (без учета стоимости других товаров).</td></tr>';
+        // }   
         if( $products_min) {
             echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
-            Оплатить заказ с кашпо и искусственными растениями Treez можно будет после подтверждения их наличия. Наш менеджер свяжется с Вами после оформления заказа.</td></tr>';
+            Доставка кашпо и искусственных растений Treez осуществляется со склада в течение 3-7 дней. <br>Оплатить заказ с кашпо и искусственными растениями Treez можно будет после подтверждения их наличия. Наш менеджер свяжется с Вами после оформления заказа.</td></tr>';
         }   
     }
 
@@ -831,18 +830,17 @@ Contents
                 }	
         }
 
-        if( $cat_amount < $min_lechuza_delivery && $products_min) {
-            echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
-            Минимальная сумма заказа для кашпо Lechuza <span>'.$min_lechuza_delivery,'</span> рублей (без учета стоимости других товаров).</td></tr>';
-        }   
+        // if( $cat_amount < $min_lechuza_delivery && $products_min) {
+        //     echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
+        //     Минимальная сумма заказа для кашпо Lechuza <span>'.$min_lechuza_delivery,'</span> рублей (без учета стоимости других товаров).</td></tr>';
+        // }   
         if( $products_min) {
             echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
-            Оплатить заказ с кашпо Lechuza можно будет после подтверждения их наличия. Наш менеджер свяжется с Вами после оформления заказа.</td></tr>';
+            Доставка кашпо Lechuza осуществляется со склада в течение 3-7 дней. <br> Оплатить заказ с кашпо Lechuza можно будет после подтверждения их наличия. Наш менеджер свяжется с Вами после оформления заказа.</td></tr>';
         }   
     }
 
-
-//отключаем способ оплаты для Treez & Lechuza
+    //отключаем способ оплаты для Treez & Lechuza
     add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_treez' );
     add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_lechuza' );
 
