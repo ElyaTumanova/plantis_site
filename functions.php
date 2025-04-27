@@ -243,6 +243,7 @@ function plnt_dev_functions() {
 		'taxonomy'   => 'product_cat',
 		'hide_empty' => true,
 		'include' => $cats_for_include_clean,
+		'child_of' => [$plants_treez_cat_id, $gorshki_cat_id, $ukhod_cat_id],
 	);
 
 	$terms=get_terms($args_cats);
