@@ -85,7 +85,7 @@ function renderDeliveryIntervals(shippingValue,date) {
 }
 
 function ajaxGetUrgent(date) {
-  if (isBackorder) {
+  if (isBackorder || isTreezBackorders) {
     isUrgent = 0;
   } else {
     if (date) {
@@ -100,6 +100,7 @@ function ajaxGetUrgent(date) {
   console.log('hi ajaxGetUrgent');
   console.log('isUrgent ajax', isUrgent);
   console.log('isBackorder ajax', isBackorder);
+  console.log('isTreezBackorders ajax', isTreezBackorders);
 
   jQuery( function($){
         $.ajax({
@@ -147,7 +148,8 @@ function setInitalState() {
   let hour = new Date().getHours();
 
   // console.log(isBackorder);
-  if (isBackorder) {
+  console.log('isTreezBackorders '.isTreezBackorders);
+  if (isBackorder || isTreezBackorders) {
     isUrgent = 0;
   } else {
     if (hour >= 18 && hour <20) { 

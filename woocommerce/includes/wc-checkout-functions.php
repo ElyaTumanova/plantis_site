@@ -18,7 +18,7 @@ Contents
 # Backorders
 --------------------------------------------------------------*/
 
-    // проверка наличия товара Backorders
+    // проверка наличия товара Backorders в корзине
 
     function plnt_is_backorder() {
         $qty = 0; // обязательно сначала ставим 0
@@ -840,7 +840,7 @@ Contents
         }   
     }
 
-    //отключаем способ оплаты для Treez & Lechuza
+//отключаем способ оплаты для Treez & Lechuza
     add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_treez' );
     add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_lechuza' );
 
@@ -859,8 +859,8 @@ Contents
             }
         
             if( $products_min) {
-                //unset( $available_gateways['tinkoff'] );
-                unset( $available_gateways['bacs'] );
+                unset( $available_gateways['tinkoff'] );
+                //unset( $available_gateways['bacs'] );
             }
             return $available_gateways;
         }
@@ -885,6 +885,28 @@ Contents
             }
             return $available_gateways;
         }
+    }
+
+     // проверка наличия товара treez & Lechuza под заказ в корзине
+
+     function plnt_is_treez_backorder() {
+        //$qty = 0; // обязательно сначала ставим 0
+        $isTreezBackorders = false;
+        
+        if( is_checkout( ) && ! is_wc_endpoint_url()) {
+            foreach ( WC()->cart->get_cart() as $cart_item ) {
+                $_product = $cart_item['data'];
+                //$_product_id = $_product->id;
+                //$qty = $cart_item[ 'quantity' ];
+                //$stock_qty = $_product->get_stock_quantity();
+                
+                if (check_is_treez($_product) || check_is_lechuza($_product)) {
+                    $isTreezBackorders = true;
+                }	
+            }
+        }      
+        
+        return $isTreezBackorders;
     }
 
 /*--------------------------------------------------------------

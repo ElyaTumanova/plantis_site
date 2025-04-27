@@ -104,6 +104,7 @@ function plnt_set_constants_script() {
 	$out_mkad_medium_urg = $shipping_costs[$urgent_delivery_outMKAD_medium];
 
 	$isbackorders = plnt_is_backorder();
+	$isTreezBackorders = plnt_is_treez_backorder();
    
 	?>
 	<script>
@@ -157,6 +158,7 @@ function plnt_set_constants_script() {
 		let deliveryLateMarkup = '<?php echo $late_markup_delivery; ?>';
 
         let isBackorder = '<?php echo $isbackorders; ?>';
+        let isTreezBackorders = '<?php echo $isTreezBackorders; ?>';
 
 	</script>
 	<?php
