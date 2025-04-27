@@ -176,6 +176,9 @@ function plnt_dev_functions() {
 	global $misc_cat_id;
 
 	$args = array(
+		'post_type'      => 'product',
+		'posts_per_page' => -1,
+		'post_status'    => 'publish',
 		'meta_query' => array( 
 			array(
 				'key' => '_stock',
