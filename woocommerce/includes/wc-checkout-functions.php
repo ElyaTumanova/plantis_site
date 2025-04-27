@@ -701,7 +701,7 @@ Contents
 # Treez & Lechuza notifications
 --------------------------------------------------------------*/
 
-    /*минимальная сумма заказа для кашпо Teez*/
+/*минимальная сумма заказа для кашпо Treez & Lechuza*/
     add_action( 'woocommerce_checkout_process', 'min_amount_for_category_treez' );
     add_action( 'woocommerce_checkout_process', 'min_amount_for_category_lechuza' );
     // add_action( 'woocommerce_before_checkout_form', 'min_amount_for_category' );
@@ -784,7 +784,7 @@ Contents
         }
     }
 
-    //уведомление о минимальной сумме заказа для Treez & Lechuza
+//уведомление о минимальной сумме заказа для Treez & Lechuza
     //add_action( 'woocommerce_checkout_order_review', 'min_amount_for_treez_info', 40 );
     add_action( 'woocommerce_review_order_before_shipping', 'min_amount_for_treez_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
     add_action( 'woocommerce_review_order_before_shipping', 'min_amount_for_lechuza_info', 20 ); //встраиваем в таблицу, использовать теги таблицы
@@ -842,7 +842,7 @@ Contents
     }
 
 
-    //отключаем способ оплаты для Treez & Lechuza
+//отключаем способ оплаты для Treez & Lechuza
     add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_treez' );
     add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_lechuza' );
 
@@ -861,7 +861,8 @@ Contents
             }
         
             if( $products_min) {
-                unset( $available_gateways['tinkoff'] );
+                //unset( $available_gateways['tinkoff'] );
+                unset( $available_gateways['bacs'] );
             }
             return $available_gateways;
         }
