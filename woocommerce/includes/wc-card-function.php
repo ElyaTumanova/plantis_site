@@ -181,6 +181,7 @@ add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 5);
 
 function for_dev() {
     global $product;
+    print_r($product);
     $isTreez = check_is_treez($product);
     echo 'is Treez '.$isTreez;
 }
@@ -190,7 +191,7 @@ function plnt_price_wrap(){
     <div class="card__price-wrap">
         <div class = "card__add-to-cart-wrap">
             <?php
-            //echo for_dev();
+            echo for_dev();
             woocommerce_template_single_price();
             ?> 
             <div class="card__price-btns-wrap">
