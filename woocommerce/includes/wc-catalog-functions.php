@@ -419,8 +419,8 @@ function shop_only_instock_products( $meta_query, $query ) {
 			'key' => '_manage_stock',
 			'value' => '1',
 			'compare' => '=='
-			);
-		)
+			)
+		);
 
 		return $meta_query;
 	}
