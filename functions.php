@@ -202,13 +202,13 @@ function plnt_dev_functions() {
 			)
 		);
 		$query = new WP_Query;
-		$testproducts = $query->query($args);
+		$checkproducts = $query->query($args);
 
-		$testproductscount = count($testproducts);
+		$checkproductscount = count($checkproducts);
 
-		echo $item.' '.$testproductscount;
+		echo $item.' '.$checkproductscount;
 		echo '<br>';
-		if($testproductscount == 0) {
+		if($checkproductscount == 0) {
 			array_push($cats_for_exclude, $item);
 		};
 

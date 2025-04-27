@@ -29,11 +29,45 @@ function create_yandex_xml_btn () {
             $yandex_xml .="<categories>
             ";
 
+            $cats_for_check = [$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
+            $cats_for_exclude = [];
+            foreach($cats_for_check as $item){
+                $args = array(
+                    'post_type'      => 'product',
+                    'posts_per_page' => -1,
+                    'post_status'    => 'publish',
+                    'meta_query' => array( 
+                        array(
+                            'key' => '_stock',
+                            'type'    => 'numeric',
+                            'value' => '0',
+                            'compare' => '>'
+                        )
+                    ),
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'product_cat',
+                            'field' => 'id',
+                            'terms' => [$item],
+                            'operator' => 'IN',
+                            'include_children' => 1,
+                        )
+                    )
+                );
+                $query = new WP_Query;
+                $checkproducts = $query->query($args);
+
+                if(count($checkproducts) == 0) {
+                    array_push($cats_for_exclude, $item);
+                };
+            }
+
             $args=array(
                 'taxonomy'   => 'product_cat',
                 'hide_empty' => true,
-                'exclude_tree'    => array($treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id),
+                'exclude_tree'    => $cats_for_exclude,
             );
+
             $terms=get_terms($args);
             foreach($terms as $item){
                 $yandex_xml .="<category id='".$item->term_id."'";
