@@ -448,7 +448,7 @@ function check_category ($product) {
 	$idCats = $product->get_category_ids();
     if (in_array($plants_cat_id, $idCats)) {
         return $parentCatId = $plants_cat_id;
-    } else if (in_array($treez_cat_id, $idCats)) {
+    } else if (in_array($treez_cat_id, $idCats) && !$product->get_manage_stock()) {
         return $parentCatId = $treez_cat_id;
     } else if (in_array($treez_poliv_cat_id, $idCats)) {
         return $parentCatId = $treez_poliv_cat_id;
@@ -458,7 +458,7 @@ function check_category ($product) {
         return $parentCatId = $peresadka_cat_id;
     } else if (in_array($plants_treez_cat_id, $idCats)) {
         return $parentCatId = $plants_treez_cat_id;
-    } else if (in_array($lechuza_cat_id, $idCats)) {
+    } else if (in_array($lechuza_cat_id, $idCats) && !$product->get_manage_stock()) {
         return $parentCatId = $lechuza_cat_id;
     } else if (in_array($gorshki_cat_id, $idCats)) {
         return $parentCatId = $gorshki_cat_id;
@@ -486,9 +486,10 @@ function check_is_lechuza($product) {
 
     $idCats = $product->get_category_ids();
 
-    $parentCatId = check_category ($product);
+    //$parentCatId = check_category ($product);
     
-    $isLechuza = $parentCatId === $lechuza_cat_id || ($product->get_stock_status() ==='onbackorder' && in_array($lechuza_cat_id, $idCats));
+    //$isLechuza = $parentCatId === $lechuza_cat_id || ($product->get_stock_status() ==='onbackorder' && in_array($lechuza_cat_id, $idCats));
+    $isLechuza = (!$product->get_manage_stock() && in_array($lechuza_cat_id, $idCats)) ;
     return $isLechuza;
 }
 
