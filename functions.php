@@ -187,8 +187,10 @@ function plnt_dev_functions() {
 		'tax_query' => array(
 			array(
 				'taxonomy' => 'product_cat',
-				'term_id' => $treez_cat_id,
-				'operator' => 'IN'
+				'field' => 'id',
+				'term_id' => [$treez_cat_id],
+				'operator' => 'IN',
+				'include_children' => 1,
 			)
 			)
 	);
