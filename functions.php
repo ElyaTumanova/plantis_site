@@ -187,6 +187,12 @@ function plnt_dev_functions() {
 	// 		)
 	// );
 
+	global $treez_cat_id;
+	global $treez_poliv_cat_id;
+	global $plants_treez_cat_id;
+	global $lechuza_cat_id;
+	global $misc_cat_id;
+	
 	$args_cats=array(
 		'taxonomy'   => 'product_cat',
 		'hide_empty' => true,
