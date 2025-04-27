@@ -168,31 +168,40 @@ function plnt_set_constants_script() {
 // FOR DEV
 
 function plnt_dev_functions() {
-	// $args = array(
-	// 	'meta_query' => array( 
-	// 		array(
-	// 			'key' => '_stock',
-	// 			'type'    => 'numeric',
-	// 			'value' => '0',
-	// 			'compare' => '>'
-	// 		)
-	// 	),
-	// 	'tax_query' => array(
-	// 		array(
-	// 			'taxonomy' => 'product_cat',
-	// 			'field' => 'slug',
-	// 			'terms' => 'komnatnye-rasteniya',
-	// 			'operator' => 'IN'
-	// 		)
-	// 		)
-	// );
 
 	global $treez_cat_id;
 	global $treez_poliv_cat_id;
 	global $plants_treez_cat_id;
 	global $lechuza_cat_id;
 	global $misc_cat_id;
+
+	$args = array(
+		'meta_query' => array( 
+			array(
+				'key' => '_stock',
+				'type'    => 'numeric',
+				'value' => '0',
+				'compare' => '>'
+			)
+		),
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'product_cat',
+				'term_id' => $treez_cat_id,
+				'operator' => 'IN'
+			)
+			)
+	);
+
+
+	$query = new WP_Query;
+	$testproducts = $query->query($args);
+
+	$testproductscount = count($allproducts);
+
+	echo $testproductscount;
 	
+
 	$args_cats=array(
 		'taxonomy'   => 'product_cat',
 		'hide_empty' => true,
@@ -201,10 +210,10 @@ function plnt_dev_functions() {
 
 	$terms=get_terms($args_cats);
 
-	foreach($terms as $item){
-		echo $item->name;
-		echo '<br>';
-	}
+	// foreach($terms as $item){
+	// 	echo $item->name;
+	// 	echo '<br>';
+	// }
 
 	//print_r($terms);
 }
