@@ -178,6 +178,7 @@ function plnt_dev_functions() {
 
 	$cats_for_check = [$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
 	$cats_for_exclude = [];
+	$cats_for_include = [];
 	foreach($cats_for_check as $item){
 		$args = array(
 			'post_type'      => 'product',
@@ -211,6 +212,10 @@ function plnt_dev_functions() {
 			print_r($item);
 			echo '<br>';
 			$product = wc_get_product($item);
+			$prod_cats = $product->get_category_ids();
+			foreach ($prod_cats as $cat) {
+				array_push($cats_for_include, $cat);
+			}
 			echo ('cat ids ');
 			print_r($product->get_category_ids());
 			echo '<br>';
@@ -222,8 +227,11 @@ function plnt_dev_functions() {
 		// };
 
 	}
-	// echo 'cats_for_exclude ';
-	// print_r($cats_for_exclude); 
+	echo 'cats_for_include ';
+	print_r($cats_for_include);
+	echo '<br>';
+	echo 'cats_for_exclude ';
+	print_r($cats_for_exclude); 
 	
 
 	// $args_cats=array(
