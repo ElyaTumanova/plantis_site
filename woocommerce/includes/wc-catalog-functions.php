@@ -410,15 +410,15 @@ function shop_only_instock_products( $meta_query, $query ) {
 	} else if (is_product_category($gorshki_cat_id) || 
 		term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) 
 	) {
-		$meta_query[] = array(array(
-			'key' => '_stock_status',
-			'value' => 'outofstock',
-			'compare' => '!='
-		),
-		array(
-			'key' => '_manage_stock',
-			'value' => '1',
-			'compare' => '=='
+		$meta_query = array(
+			array(
+				'key' => '_stock_status',
+				'value' => 'outofstock',
+				'compare' => '!='
+			),
+			array(
+				'key' => 'manage_stock',
+				'value' => '1',
 			)
 		);
 
