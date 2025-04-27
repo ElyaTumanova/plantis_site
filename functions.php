@@ -179,6 +179,7 @@ function plnt_dev_functions() {
 	$cats_for_check = [$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
 	$cats_for_exclude = [];
 	$cats_for_include = [];
+	$cats_for_include_clean = [];
 	foreach($cats_for_check as $item){
 		$args = array(
 			'post_type'      => 'product',
@@ -206,29 +207,31 @@ function plnt_dev_functions() {
 		$checkproducts = $query->query($args);
 
 		$checkproductscount = count($checkproducts);
-
-		//print_r($checkproducts);
-		foreach ($checkproducts as $item) {
-			print_r($item);
-			echo '<br>';
-			$product = wc_get_product($item);
-			$prod_cats = $product->get_category_ids();
-			foreach ($prod_cats as $cat) {
-				array_push($cats_for_include, $cat);
+		echo $item.' '.$checkproductscount;
+		echo '<br>';
+		if($checkproductscount == 0) {
+			array_push($cats_for_exclude, $item);
+		} else {
+			//print_r($checkproducts);
+			foreach ($checkproducts as $item) {
+				print_r($item);
+				echo '<br>';
+				$product = wc_get_product($item);
+				$prod_cats = $product->get_category_ids();
+				foreach ($prod_cats as $cat) {
+					array_push($cats_for_include, $cat);
+				}
+				echo ('cat ids ');
+				print_r($product->get_category_ids());
+				echo '<br>';
 			}
-			echo ('cat ids ');
-			print_r($product->get_category_ids());
-			echo '<br>';
-		}
-		// echo $item.' '.$checkproductscount;
-		// echo '<br>';
-		// if($checkproductscount == 0) {
-		// 	array_push($cats_for_exclude, $item);
-		// };
-
+		};
 	}
 	echo 'cats_for_include ';
+	$cats_for_include_clean = array_unique($cats_for_include);
 	print_r($cats_for_include);
+	echo '<br>';
+	print_r($cats_for_include_clean);
 	echo '<br>';
 	echo 'cats_for_exclude ';
 	print_r($cats_for_exclude); 
