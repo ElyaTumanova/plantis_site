@@ -207,7 +207,9 @@ function plnt_dev_functions() {
 		$checkproductscount = count($checkproducts);
 
 		print_r($checkproducts);
-
+		foreach ($checkproducts as $product) {
+			echo ('cat ids '.$product -> get_category_ids());
+		}
 		// echo $item.' '.$checkproductscount;
 		// echo '<br>';
 		// if($checkproductscount == 0) {
