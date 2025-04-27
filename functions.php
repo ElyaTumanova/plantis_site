@@ -180,7 +180,6 @@ function plnt_dev_functions() {
 	global $peresadka_cat_id;
 
 	$cats_for_check = [$plants_cat_id, $gorshki_cat_id, $ukhod_cat_id,$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
-	$cats_for_exclude = [];
 	$cats_for_include = [];
 	$cats_for_include_clean = [];
 	foreach($cats_for_check as $item){
@@ -212,9 +211,7 @@ function plnt_dev_functions() {
 		$checkproductscount = count($checkproducts);
 		// echo $item.' '.$checkproductscount;
 		// echo '<br>';
-		if($checkproductscount == 0) {
-			array_push($cats_for_exclude, $item);
-		} else {
+		if($checkproductscount != 0) {
 			//print_r($checkproducts);
 			foreach ($checkproducts as $item) {
 				// print_r($item);

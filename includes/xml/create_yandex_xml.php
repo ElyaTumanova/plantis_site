@@ -9,6 +9,9 @@ function create_yandex_xml_btn () {
 	<script>
         function create_yandex_xml(){
             <?php 
+            global $plants_cat_id;
+            global $gorshki_cat_id;
+            global $ukhod_cat_id;
             global $treez_cat_id;
             global $treez_poliv_cat_id;
             global $plants_treez_cat_id;
@@ -29,8 +32,7 @@ function create_yandex_xml_btn () {
             $yandex_xml .="<categories>
             ";
 
-            $cats_for_check = [$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
-            $cats_for_exclude = [];
+            $cats_for_check = [$plants_cat_id, $gorshki_cat_id, $ukhod_cat_id, $treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
             $cats_for_include = [];
             $cats_for_include_clean = [];
             foreach($cats_for_check as $item){
@@ -58,10 +60,7 @@ function create_yandex_xml_btn () {
                 );
                 $query = new WP_Query;
                 $checkproducts = $query->query($args);
-        
-                if(count($checkproducts) == 0) {
-                    array_push($cats_for_exclude, $item);
-                } else {
+                if(count($checkproducts) != 0) {
                     foreach ($checkproducts as $item) {
                         $product = wc_get_product($item);
                         $prod_cats = $product->get_category_ids();
@@ -76,7 +75,6 @@ function create_yandex_xml_btn () {
             $args=array(
                 'taxonomy'   => 'product_cat',
                 'hide_empty' => true,
-                'exclude_tree'    => $cats_for_exclude,
                 'include' => $cats_for_include_clean,
             );
 
