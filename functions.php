@@ -206,13 +206,14 @@ function plnt_dev_functions() {
 
 		$testproductscount = count($testproducts);
 
-		echo $testproductscount;
+		echo $item.' '.$testproductscount;
 		echo '<br>';
 		if($testproductscount = 0) {
 			array_push($cats_for_exclude, $item);
 		};
 
 	}
+	echo 'cats_for_exclude';
 	print_r($cats_for_exclude); 
 	
 
