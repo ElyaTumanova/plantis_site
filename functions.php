@@ -191,7 +191,7 @@ function plnt_dev_functions() {
 			array(
 				'taxonomy' => 'product_cat',
 				'field' => 'id',
-				'term_id' => [$treez_cat_id],
+				'terms' => [$treez_cat_id],
 				'operator' => 'IN',
 				'include_children' => 1,
 			)
