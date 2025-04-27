@@ -212,17 +212,17 @@ function plnt_dev_functions() {
 			array_push($cats_for_exclude, $item);
 		};
 
-		print_r($cats_for_exclude); 
 	}
+	print_r($cats_for_exclude); 
 	
 
-	$args_cats=array(
-		'taxonomy'   => 'product_cat',
-		'hide_empty' => true,
-		'exclude_tree'    => array($treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $misc_cat_id),
-	);
+	// $args_cats=array(
+	// 	'taxonomy'   => 'product_cat',
+	// 	'hide_empty' => true,
+	// 	'exclude_tree'    => array($treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $misc_cat_id),
+	// );
 
-	$terms=get_terms($args_cats);
+	// $terms=get_terms($args_cats);
 
 	// foreach($terms as $item){
 	// 	echo $item->name;
