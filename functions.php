@@ -197,6 +197,7 @@ function plnt_dev_functions() {
 
 	foreach($terms as $item){
 		echo $item->name;
+		echo '<br>';
 	}
 
 	//print_r($terms);
