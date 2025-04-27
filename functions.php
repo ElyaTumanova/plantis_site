@@ -211,7 +211,8 @@ function plnt_dev_functions() {
 			print_r($item);
 			echo '<br>';
 			$product = wc_get_product($item);
-			echo ('cat ids '.$product->get_category_ids());
+			echo ('cat ids ');
+			print_r($product->get_category_ids());
 		}
 		// echo $item.' '.$checkproductscount;
 		// echo '<br>';
