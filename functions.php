@@ -214,8 +214,8 @@ function plnt_dev_functions() {
 		} else {
 			//print_r($checkproducts);
 			foreach ($checkproducts as $item) {
-				print_r($item);
-				echo '<br>';
+				// print_r($item);
+				// echo '<br>';
 				$product = wc_get_product($item);
 				$prod_cats = $product->get_category_ids();
 				foreach ($prod_cats as $cat) {
