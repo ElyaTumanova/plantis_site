@@ -206,10 +206,12 @@ function plnt_dev_functions() {
 
 		$checkproductscount = count($checkproducts);
 
-		print_r($checkproducts);
+		//print_r($checkproducts);
 		foreach ($checkproducts as $item) {
+			print_r($item);
+			echo '<br>';
 			$product = wc_get_product($item);
-			echo ('cat ids '.$product->get_id());
+			echo ('cat ids '.$product->get_category_ids());
 		}
 		// echo $item.' '.$checkproductscount;
 		// echo '<br>';
