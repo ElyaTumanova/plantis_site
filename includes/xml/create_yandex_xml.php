@@ -31,6 +31,8 @@ function create_yandex_xml_btn () {
 
             $cats_for_check = [$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
             $cats_for_exclude = [];
+            $cats_for_include = [];
+            $cats_for_include_clean = [];
             foreach($cats_for_check as $item){
                 $args = array(
                     'post_type'      => 'product',
@@ -56,16 +58,26 @@ function create_yandex_xml_btn () {
                 );
                 $query = new WP_Query;
                 $checkproducts = $query->query($args);
-
+        
                 if(count($checkproducts) == 0) {
                     array_push($cats_for_exclude, $item);
+                } else {
+                    foreach ($checkproducts as $item) {
+                        $product = wc_get_product($item);
+                        $prod_cats = $product->get_category_ids();
+                        foreach ($prod_cats as $cat) {
+                            array_push($cats_for_include, $cat);
+                        }
+                    }
                 };
             }
+            $cats_for_include_clean = array_unique($cats_for_include);
 
             $args=array(
                 'taxonomy'   => 'product_cat',
                 'hide_empty' => true,
                 'exclude_tree'    => $cats_for_exclude,
+                'include' => $cats_for_include_clean,
             );
 
             $terms=get_terms($args);

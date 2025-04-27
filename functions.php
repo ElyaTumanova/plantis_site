@@ -207,8 +207,8 @@ function plnt_dev_functions() {
 		$checkproducts = $query->query($args);
 
 		$checkproductscount = count($checkproducts);
-		echo $item.' '.$checkproductscount;
-		echo '<br>';
+		// echo $item.' '.$checkproductscount;
+		// echo '<br>';
 		if($checkproductscount == 0) {
 			array_push($cats_for_exclude, $item);
 		} else {
@@ -221,34 +221,35 @@ function plnt_dev_functions() {
 				foreach ($prod_cats as $cat) {
 					array_push($cats_for_include, $cat);
 				}
-				echo ('cat ids ');
-				print_r($product->get_category_ids());
-				echo '<br>';
+				// echo ('cat ids ');
+				// print_r($product->get_category_ids());
+				// echo '<br>';
 			}
 		};
 	}
 	echo 'cats_for_include ';
 	$cats_for_include_clean = array_unique($cats_for_include);
-	print_r($cats_for_include);
-	echo '<br>';
+	// print_r($cats_for_include);
+	// echo '<br>';
 	print_r($cats_for_include_clean);
 	echo '<br>';
 	echo 'cats_for_exclude ';
 	print_r($cats_for_exclude); 
 	
 
-	// $args_cats=array(
-	// 	'taxonomy'   => 'product_cat',
-	// 	'hide_empty' => true,
-	// 	'exclude_tree'    => array($treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $misc_cat_id),
-	// );
+	$args_cats=array(
+		'taxonomy'   => 'product_cat',
+		'hide_empty' => true,
+		'exclude_tree'    => $cats_for_exclude,
+		'include' => $cats_for_include_clean,
+	);
 
-	// $terms=get_terms($args_cats);
+	$terms=get_terms($args_cats);
 
-	// foreach($terms as $item){
-	// 	echo $item->name;
-	// 	echo '<br>';
-	// }
+	foreach($terms as $item){
+		echo $item->name;
+		echo '<br>';
+	}
 
 	//print_r($terms);
 }
