@@ -179,9 +179,9 @@ function plnt_dev_functions() {
 	global $misc_cat_id;
 	global $peresadka_cat_id;
 
-	$cats_for_check = [$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
+	$cats_for_check = [$plants_cat_id, $gorshki_cat_id, $ukhod_cat_id,$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
 	$cats_for_exclude = [];
-	$cats_for_include = [$plants_cat_id, $gorshki_cat_id, $ukhod_cat_id];
+	$cats_for_include = [];
 	$cats_for_include_clean = [];
 	foreach($cats_for_check as $item){
 		$args = array(
