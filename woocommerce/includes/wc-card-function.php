@@ -181,6 +181,8 @@ add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 5);
 
 function for_dev() {
     global $product;
+    echo 'stock qty '.$product->get_stock_quantity();
+    echo 'parent cat '.check_category ($product);
     //print_r($product);
     $isTreez = check_is_treez($product);
     echo 'is Treez '.$isTreez;
