@@ -195,7 +195,11 @@ function plnt_dev_functions() {
 
 	$terms=get_terms($args_cats);
 
-	print_r($terms);
+	foreach($terms as $item){
+		echo $item->name;
+	}
+
+	//print_r($terms);
 }
 
 function plnt_check_page() {
