@@ -167,6 +167,35 @@ function plnt_set_constants_script() {
 
 // FOR DEV
 
+function plnt_dev_functions() {
+	// $args = array(
+	// 	'meta_query' => array( 
+	// 		array(
+	// 			'key' => '_stock',
+	// 			'type'    => 'numeric',
+	// 			'value' => '0',
+	// 			'compare' => '>'
+	// 		)
+	// 	),
+	// 	'tax_query' => array(
+	// 		array(
+	// 			'taxonomy' => 'product_cat',
+	// 			'field' => 'slug',
+	// 			'terms' => 'komnatnye-rasteniya',
+	// 			'operator' => 'IN'
+	// 		)
+	// 		)
+	// );
+
+	$args_cats=array(
+		'taxonomy'   => 'product_cat',
+		'hide_empty' => true,
+		'exclude_tree'    => array($treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $misc_cat_id),
+	);
+
+	print_r($args_cats);
+}
+
 function plnt_check_page() {
 	// global $gorshki_cat_id;
 	// if ( term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) ) {
@@ -199,5 +228,6 @@ function plnt_check_page() {
 }
 
 //add_action( 'wp_footer', 'plnt_check_page' );
+add_action( 'wp_footer', 'plnt_dev_functions' );
 
 
