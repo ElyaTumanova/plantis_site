@@ -174,37 +174,46 @@ function plnt_dev_functions() {
 	global $plants_treez_cat_id;
 	global $lechuza_cat_id;
 	global $misc_cat_id;
+	global $peresadka_cat_id;
 
-	$args = array(
-		'post_type'      => 'product',
-		'posts_per_page' => -1,
-		'post_status'    => 'publish',
-		'meta_query' => array( 
-			array(
-				'key' => '_stock',
-				'type'    => 'numeric',
-				'value' => '0',
-				'compare' => '>'
+	$cats_for_check = [$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
+	$cats_for_exclude = [];
+	foreach($cats_for_check as $item){
+		$args = array(
+			'post_type'      => 'product',
+			'posts_per_page' => -1,
+			'post_status'    => 'publish',
+			'meta_query' => array( 
+				array(
+					'key' => '_stock',
+					'type'    => 'numeric',
+					'value' => '0',
+					'compare' => '>'
+				)
+			),
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'product_cat',
+					'field' => 'id',
+					'terms' => [$item],
+					'operator' => 'IN',
+					'include_children' => 1,
+				)
 			)
-		),
-		'tax_query' => array(
-			array(
-				'taxonomy' => 'product_cat',
-				'field' => 'id',
-				'terms' => [$treez_cat_id],
-				'operator' => 'IN',
-				'include_children' => 1,
-			)
-			)
-	);
+		);
+		$query = new WP_Query;
+		$testproducts = $query->query($args);
 
+		$testproductscount = count($testproducts);
 
-	$query = new WP_Query;
-	$testproducts = $query->query($args);
+		echo $testproductscount;
+		echo '<br>';
+		if($testproductscount = 0) {
+			array_push($cats_for_exclude, $item);
+		};
 
-	$testproductscount = count($testproducts);
-
-	echo $testproductscount;
+		print_r($cats_for_exclude); 
+	}
 	
 
 	$args_cats=array(
