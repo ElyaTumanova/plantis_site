@@ -206,7 +206,7 @@ function plnt_dev_functions() {
 
 		$testproductscount = count($testproducts);
 
-		echo $item->name.' '.$testproductscount;
+		echo $item.' '.$testproductscount;
 		echo '<br>';
 		if($testproductscount = 0) {
 			array_push($cats_for_exclude, $item);
@@ -214,7 +214,7 @@ function plnt_dev_functions() {
 
 	}
 	echo 'cats_for_exclude ';
-	print_r($cats_for_exclude); 
+	print_r(count($cats_for_exclude)); 
 	
 
 	// $args_cats=array(
