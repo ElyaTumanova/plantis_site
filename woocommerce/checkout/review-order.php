@@ -57,6 +57,10 @@ defined( 'ABSPATH' ) || exit;
 									<?php
 								}
 							}	
+							if ( check_is_treez($_product) || check_is_lechuza($_product) ) {
+								?><p class="backorder_date-info">Доставка со склада 3 - 7 дней</p>
+								<?php
+							}
 						?>
 					</td>
 					<td class="product-total">

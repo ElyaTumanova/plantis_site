@@ -79,13 +79,18 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 					<?php 
 						$qty = $cart_item[ 'quantity' ];
 						$stock_qty = $_product->get_stock_quantity();
-						if ( $_product->backorders_allowed() && $qty > $stock_qty ) {if (check_category($_product) === $plants_cat_id) {
+						if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
+							if (check_category($_product) === $plants_cat_id) {
 							?><p class="backorder_date-info">Доставка после <?php echo plnt_set_backorders_date();?></p>
 							<?php } else {
 								?><p class="backorder_date-info">Доставка со склада 3 - 7 дней</p>
 								<?php
 							}
 						}	
+						if ( check_is_treez($_product) || check_is_lechuza($_product) ) {
+							?><p class="backorder_date-info">Доставка со склада 3 - 7 дней</p>
+							<?php
+						}
 					?>	
 					<!-- peresadka_init -->
 					<!-- <div class="cart__peresadka">
