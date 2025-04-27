@@ -214,7 +214,7 @@ function plnt_dev_functions() {
 
 	}
 	echo 'cats_for_exclude ';
-	print_r(count($cats_for_exclude)); 
+	print_r($cats_for_exclude); 
 	
 
 	// $args_cats=array(
