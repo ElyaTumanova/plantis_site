@@ -197,7 +197,7 @@ function plnt_dev_functions() {
 	$query = new WP_Query;
 	$testproducts = $query->query($args);
 
-	$testproductscount = count($allproducts);
+	$testproductscount = count($testproducts);
 
 	echo $testproductscount;
 	
