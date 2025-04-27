@@ -193,7 +193,9 @@ function plnt_dev_functions() {
 		'exclude_tree'    => array($treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $misc_cat_id),
 	);
 
-	print_r($args_cats);
+	$terms=get_terms($args_cats);
+
+	print_r($terms);
 }
 
 function plnt_check_page() {
