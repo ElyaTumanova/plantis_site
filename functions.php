@@ -206,15 +206,17 @@ function plnt_dev_functions() {
 
 		$checkproductscount = count($checkproducts);
 
-		echo $item.' '.$checkproductscount;
-		echo '<br>';
-		if($checkproductscount == 0) {
-			array_push($cats_for_exclude, $item);
-		};
+		print_r($checkproducts);
+
+		// echo $item.' '.$checkproductscount;
+		// echo '<br>';
+		// if($checkproductscount == 0) {
+		// 	array_push($cats_for_exclude, $item);
+		// };
 
 	}
-	echo 'cats_for_exclude ';
-	print_r($cats_for_exclude); 
+	// echo 'cats_for_exclude ';
+	// print_r($cats_for_exclude); 
 	
 
 	// $args_cats=array(
