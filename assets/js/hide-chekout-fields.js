@@ -51,7 +51,7 @@
 
         //for delivery dates
         if (deliveryDates) {
-            if (isBackorder) {
+            if (isBackorder || isTreezBackorders) {
                 deliveryDates.classList.add('d-none');
                 deliveryDatesInput.forEach((input)=>{
                     input.checked = false;
