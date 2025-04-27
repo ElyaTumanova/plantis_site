@@ -208,7 +208,7 @@ function plnt_dev_functions() {
 
 		echo $item.' '.$testproductscount;
 		echo '<br>';
-		if($testproductscount = 0) {
+		if($testproductscount == 0) {
 			array_push($cats_for_exclude, $item);
 		};
 
