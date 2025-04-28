@@ -83,7 +83,7 @@ if (!is_account_page()) {
 
 <?php wp_footer(); ?>
 
-<div class="site-row">
+<!-- <div class="site-row">
     <div class="site-popup-inner welcome-pt-message" style="display: none;">
         <form method="post" enctype="multipart/form-data" action="">
             <div class="site-row">
@@ -96,7 +96,7 @@ if (!is_account_page()) {
             </div>
         </form>
     </div>
-</div>
+</div> -->
 
 </body>
 </html>
