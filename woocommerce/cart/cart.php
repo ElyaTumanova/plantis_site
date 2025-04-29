@@ -126,9 +126,13 @@ do_action( 'woocommerce_before_cart' ); ?>
 									if (check_category($_product) === $plants_cat_id) {
 									?><p class="backorder_date-info">Доставка после <?php echo plnt_set_backorders_date();?></p>
 									<?php } else {
-										?><p class="backorder_date-info">Доставка кашпо по прездаказу</p>
+										?><p class="backorder_date-info">Доставка со склада 3 - 7 дней</p>
 										<?php
 									}
+								}	
+								if ( check_is_treez($_product) || check_is_lechuza($_product) ) {
+									?><p class="backorder_date-info">Доставка со склада 3 - 7 дней</p>
+									<?php
 								}	
 							?>
 							<!-- peresadka_init -->

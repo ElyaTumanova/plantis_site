@@ -21,7 +21,7 @@
         if (deliveryInterval) {
             console.log(deliveryInterval);
             console.log('isHideInterval', isHideInterval);
-            if (isBackorder) {
+            if (isBackorder || isTreezBackorders) {
                 deliveryInterval.classList.add('d-none');
                 deliveryIntervalInput.forEach((input)=>{
                     input.checked = false;
@@ -51,7 +51,7 @@
 
         //for delivery dates
         if (deliveryDates) {
-            if (isBackorder) {
+            if (isBackorder || isTreezBackorders) {
                 deliveryDates.classList.add('d-none');
                 deliveryDatesInput.forEach((input)=>{
                     input.checked = false;

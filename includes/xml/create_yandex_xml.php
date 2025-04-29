@@ -9,11 +9,15 @@ function create_yandex_xml_btn () {
 	<script>
         function create_yandex_xml(){
             <?php 
+            global $plants_cat_id;
+            global $gorshki_cat_id;
+            global $ukhod_cat_id;
             global $treez_cat_id;
             global $treez_poliv_cat_id;
             global $plants_treez_cat_id;
             global $lechuza_cat_id;
             global $misc_cat_id;
+            global $peresadka_cat_id;
             $yandex_xml = "<?xml version='1.0' encoding='UTF-8'?>
             <yml_catalog date='".date('Y-m-d H:i')."'>
             <shop>
@@ -28,11 +32,52 @@ function create_yandex_xml_btn () {
             $yandex_xml .="<categories>
             ";
 
+            $cats_for_check = [$plants_cat_id, $gorshki_cat_id, $ukhod_cat_id, $treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
+            $cats_for_include = [];
+            $cats_for_include_clean = [];
+            foreach($cats_for_check as $item){
+                $args = array(
+                    'post_type'      => 'product',
+                    'posts_per_page' => -1,
+                    'post_status'    => 'publish',
+                    'meta_query' => array( 
+                        array(
+                            'key' => '_stock',
+                            'type'    => 'numeric',
+                            'value' => '0',
+                            'compare' => '>'
+                        )
+                    ),
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'product_cat',
+                            'field' => 'id',
+                            'terms' => [$item],
+                            'operator' => 'IN',
+                            'include_children' => 1,
+                        )
+                    )
+                );
+                $query = new WP_Query;
+                $checkproducts = $query->query($args);
+                if(count($checkproducts) != 0) {
+                    foreach ($checkproducts as $item) {
+                        $product = wc_get_product($item);
+                        $prod_cats = $product->get_category_ids();
+                        foreach ($prod_cats as $cat) {
+                            array_push($cats_for_include, $cat);
+                        }
+                    }
+                };
+            }
+            $cats_for_include_clean = array_unique($cats_for_include);
+
             $args=array(
                 'taxonomy'   => 'product_cat',
                 'hide_empty' => true,
-                'exclude_tree'    => array($treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $misc_cat_id),
+                'include' => $cats_for_include_clean,
             );
+
             $terms=get_terms($args);
             foreach($terms as $item){
                 $yandex_xml .="<category id='".$item->term_id."'";
@@ -102,9 +147,10 @@ function create_yandex_xml_btn () {
                 'post_status'    => 'publish',
                 'meta_query' => array( 
                     array(
-                        'key'       => '_stock_status',
-                        'value'     => array('outofstock', 'onbackorder'),
-                        'compare'   => 'NOT IN'
+                        'key' => '_stock',
+                        'type'    => 'numeric',
+                        'value' => '0',
+                        'compare' => '>'
                     )
                 ),
                 'tax_query' => array(
@@ -112,7 +158,7 @@ function create_yandex_xml_btn () {
                         'taxonomy' => 'product_cat',
                         'field' => 'id',
                         'operator' => 'NOT IN',
-                        'terms' => [$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $misc_cat_id],
+                        'terms' => [$treez_poliv_cat_id, $plants_treez_cat_id, $peresadka_cat_id, $misc_cat_id],
                         'include_children' => 1,
                     )
                 )
