@@ -98,7 +98,8 @@
     border-left: 1px solid var(--gray);
     content: "";
     display: block;
-    height: 271px;
+    /* height: 271px; */
+    height: calc(var(--vh) - var(--headerHeight));;
     left: 289px;
     position: absolute;
     top: 0;
@@ -179,12 +180,17 @@
     row-gap: 5px;
 } */
 
+.menu--onside_lvl_1 {
+  max-width: 306px;
+  width: 306px;
+}
+
 .menu--onside_lvl_1:after {
   border-left: 1px solid var(--gray);
   content: "";
   display: block;
-  height: 271px;
-  left: 289px;
+  height: calc(var(--vh) - var(--headerHeight));
+  left: 280px;
   position: absolute;
   top: 0;
   width: 1px;
@@ -235,7 +241,7 @@
     /* position: absolute;
     top: 13px;
     left: 250px; */
-    margin: 2px 0 0 9px;
+    margin: 2px 0 0 25px;
 }
 
 .menu_item_treez .menu--onside_show {
@@ -244,7 +250,7 @@
 
 .menu_item_plants .menu--onside_show {
     visibility: visible;
-    max-width: 290px;
+    /* max-width: 290px; */
 }
 
 .menu--onside_show {
