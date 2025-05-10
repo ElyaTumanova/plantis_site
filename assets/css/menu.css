@@ -114,7 +114,7 @@
 .menu--main .menu-node_lvl_2 {
     padding: 10px 25px;
     display: block;
-    position: relative;
+    /* position: relative; */
 }
 
 .menu_active{
@@ -179,6 +179,18 @@
     row-gap: 5px;
 } */
 
+.menu--onside_lvl_1:after {
+  border-left: 1px solid var(--gray);
+  content: "";
+  display: block;
+  height: 271px;
+  left: 289px;
+  position: absolute;
+  top: 0;
+  width: 1px;
+  z-index: 0;
+}
+
 .menu--onside_lvl_1 a {
     font-weight: 600;
 }
@@ -220,9 +232,10 @@
     letter-spacing: 0;
     font-weight: 600;
     font-size: 13px;
-    position: absolute;
+    /* position: absolute;
     top: 13px;
-    left: 250px;
+    left: 250px; */
+    margin: 2px 0 0 9px;
 }
 
 .menu_item_treez .menu--onside_show {
