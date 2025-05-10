@@ -181,8 +181,8 @@
 } */
 
 .menu--onside_lvl_1 {
-  max-width: 278px;
-  width: 278px;
+  max-width: 290px;
+  width: 290px;
 }
 
 .menu--onside_lvl_1:after {
@@ -190,7 +190,7 @@
   content: "";
   display: block;
   height: calc(var(--vh) - var(--headerHeight));
-  left: 280px;
+  left: 290px;
   position: absolute;
   top: 0;
   width: 1px;
@@ -362,7 +362,7 @@
 .menu-item-has-children.menu-node_lvl_2> a {
     display: flex;
     justify-content: space-between;
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 
 
