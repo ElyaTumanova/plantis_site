@@ -141,7 +141,7 @@
 }
 
 .menu--onside_lvl_2 {
-    position: relative;
+    /* position: relative; */
     padding-top: 20px;
     display: flex;
     flex-direction: column;
@@ -155,7 +155,7 @@
 .menu_item_treez .menu--onside_lvl_3 {
     position: absolute;
     top: 0;
-    left: 200px;
+    left: 300px;
     visibility: hidden;
 
     row-gap: 10px;
@@ -203,6 +203,9 @@
 
 .menu--onside_lvl_2 a {
     font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
 }
 
 .menu--main .menu-item-has-children.menu-node_lvl_1> a:after {
@@ -225,9 +228,10 @@
     letter-spacing: 0;
     font-weight: 600;
     font-size: 13px;
-    position: absolute;
+    /* position: absolute;
     top: 3px;
-    left: 150px;
+    left: 150px; */
+    margin: 2px 0 0 25px;
 }
 
 .menu--main .menu_item_plants .menu-node_lvl_2.menu-item-has-children> a:after {
