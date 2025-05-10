@@ -181,8 +181,8 @@
 } */
 
 .menu--onside_lvl_1 {
-  max-width: 306px;
-  width: 306px;
+  max-width: 278px;
+  width: 278px;
 }
 
 .menu--onside_lvl_1:after {
@@ -205,7 +205,7 @@
     font-weight: 400;
     display: flex;
     justify-content: space-between;
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 
 .menu--main .menu-item-has-children.menu-node_lvl_1> a:after {
@@ -274,7 +274,7 @@
 
 .menu-node_lvl_3 {
     white-space: nowrap;
-    position: relative;
+    /* position: relative; */
 }
 
 .menu--info .sub-menu {
