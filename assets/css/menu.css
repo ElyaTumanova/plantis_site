@@ -269,6 +269,10 @@
     visibility: visible;
 }
 
+.menu_item_lechuza .menu--onside_show {
+    visibility: visible;
+}
+
 .menu_item_plants .menu--onside_show {
     visibility: visible;
     /* max-width: 290px; */
