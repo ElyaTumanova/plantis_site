@@ -13,9 +13,6 @@ let plantsSubMenues = document.querySelectorAll('.menu_item_plants .menu-node_lv
 let lechuzaCat = document.querySelectorAll('.menu_item_lechuza');
 let lechuzaSubMenues = document.querySelectorAll('.menu_item_lechuza .sub-menu');
 
-console.log(lechuzaCat)
-console.log(lechuzaSubMenues)
-
 let gorshkiCats = document.querySelectorAll('.menu_item_gorshki .menu-node_lvl_2 > a');
 
 function openHeaderCatalog () {
@@ -88,13 +85,11 @@ function openLechuzaSubMenues(event) {
     closeLechuzaSubMenues();  
     closeTreezSubMenues();     
     let menu = event.target;
-    console.log(menu)
     menu.classList.add('menu_active_lvl_2');
     let menuSubMenues = menu.querySelectorAll('.sub-menu');
     menuSubMenues.forEach((el) => {
         el.classList.add('menu--onside_show');
     })
-    console.log(menuSubMenues)
 }
 
 function closeLechuzaSubMenues () {
