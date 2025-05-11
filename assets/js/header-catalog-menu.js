@@ -64,6 +64,7 @@ function closeAllSubmenu() {
 }
 
 function openTreezSubMenues(event) {
+    closeLechuzaSubMenues();
     closeTreezSubMenues();    
     let menu = event.target;
     menu.classList.add('menu_active_lvl_2');
@@ -84,7 +85,8 @@ function closeTreezSubMenues () {
 }
 
 function openLechuzaSubMenues(event) {
-    closeLechuzaSubMenues();    
+    closeLechuzaSubMenues();  
+    closeTreezSubMenues();     
     let menu = event.target;
     console.log(menu)
     menu.classList.add('menu_active_lvl_2');
