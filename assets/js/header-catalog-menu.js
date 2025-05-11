@@ -10,7 +10,11 @@ let treezSubMenues = document.querySelectorAll('.menu_item_treez .menu-node_lvl_
 let plantsCats = document.querySelectorAll('.menu_item_plants .menu-node_lvl_2');
 let plantsSubMenues = document.querySelectorAll('.menu_item_plants .menu-node_lvl_2 .sub-menu');
 
-console.log(plantsSubMenues)
+let lechuzaCat = document.querySelectorAll('.menu_item_lechuza .menu-node_lvl_2');
+let lechuzaSubMenues = document.querySelectorAll('.menu_item_lechuza .menu-node_lvl_2 .sub-menu');
+
+console.log(lechuzaCat)
+console.log(lechuzaSubMenues)
 
 let gorshkiCats = document.querySelectorAll('.menu_item_gorshki .menu-node_lvl_2 > a');
 
@@ -44,11 +48,13 @@ function showSubmenu(event) {
     })
     closeTreezSubMenues ();
     closePlantsSubMenues();
+    closeLechuzaSubMenues();
 }
 
 function closeAllSubmenu() {
     closePlantsSubMenues();
     closeTreezSubMenues ();
+    closeLechuzaSubMenues();
     majorCats.forEach((el) => {
         el.classList.remove('menu_active');
     })
@@ -73,6 +79,26 @@ function closeTreezSubMenues () {
     })
     
     treezSubMenues.forEach((el) => {
+        el.classList.remove('menu--onside_show');
+    })
+}
+
+function openLechuzaSubMenues(event) {
+    closeLechuzaSubMenues();    
+    let menu = event.target;
+    menu.classList.add('menu_active_lvl_2');
+    let menuSubMenues = menu.querySelectorAll('.sub-menu');
+    menuSubMenues.forEach((el) => {
+        el.classList.add('menu--onside_show');
+    })
+}
+
+function closeLechuzaSubMenues () {
+    lechuzaCat.forEach((el) => {
+        el.classList.remove('menu_active_lvl_2');
+    })
+    
+    lechuzaSubMenues.forEach((el) => {
         el.classList.remove('menu--onside_show');
     })
 }
@@ -107,10 +133,15 @@ treezCollectionsCats.forEach((el) => {
     el.addEventListener('mouseenter',openTreezSubMenues);
 })
 
+lechuzaCat.forEach((el) => {
+    el.addEventListener('mouseenter',openLechuzaSubMenues);
+})
+
 plantsCats.forEach((el) => {
     el.addEventListener('mouseenter',openPlantsSubMenues);
 })
 
 gorshkiCats.forEach((el) => {
     el.addEventListener('mouseenter',closeTreezSubMenues);
+    el.addEventListener('mouseenter',closeLechuzaSubMenues);
 })
