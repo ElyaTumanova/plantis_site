@@ -82,7 +82,6 @@ function closeTreezSubMenues () {
 }
 
 function openLechuzaSubMenues(event) {
-    closeLechuzaSubMenues();  
     closeTreezSubMenues();     
     let menu = event.target;
     menu.classList.add('menu_active_lvl_2');
