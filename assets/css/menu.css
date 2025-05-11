@@ -152,6 +152,10 @@
     max-height: calc(var(--vh) - var(--headerHeight) - 20px);
 }
 
+.menu--onside_lvl_3 {
+ padding-top: 20px;
+}
+
 .menu_item_treez .menu--onside_lvl_3 {
     position: absolute;
     top: 0;
