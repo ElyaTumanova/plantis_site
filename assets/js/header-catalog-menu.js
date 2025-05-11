@@ -86,11 +86,13 @@ function closeTreezSubMenues () {
 function openLechuzaSubMenues(event) {
     closeLechuzaSubMenues();    
     let menu = event.target;
+    console.log(menu)
     menu.classList.add('menu_active_lvl_2');
     let menuSubMenues = menu.querySelectorAll('.sub-menu');
     menuSubMenues.forEach((el) => {
         el.classList.add('menu--onside_show');
     })
+    console.log(menuSubMenues)
 }
 
 function closeLechuzaSubMenues () {
