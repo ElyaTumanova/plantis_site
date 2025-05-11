@@ -169,6 +169,17 @@
     flex-direction: column;
 }
 
+.menu_item_lechuza .menu--onside_lvl_2 {
+    position: absolute;
+    top: 0;
+    left: 300px;
+    visibility: hidden;
+
+    row-gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
 .menu_item_plants .menu--onside_lvl_2 {
     position: absolute;
     top: -6px;
