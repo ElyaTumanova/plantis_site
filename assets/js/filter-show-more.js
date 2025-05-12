@@ -1,6 +1,6 @@
 let filterValuesDefault = ['d22', 'd15', 'd18', 'd26', 'd30', 'd34', 'd37', '20x20', '30x30'];
 let diametrFilter = document.querySelector('.filter_diametr_gorshka');
-// let diametrFilterWrap;
+let diametrFilterWrap;
 let diametrFilterItems;
 let showMoreBtn;
 
@@ -12,7 +12,7 @@ function hideFilterItems() {
         }
     });
 
-    // diametrFilterWrap.classList.add('hidden');
+    diametrFilterWrap.classList.add('hidden');
     showMoreBtn.addEventListener('click', showAllFilterItems, {once:true});
     showMoreBtn.textContent = 'Показать все';
 }
@@ -22,7 +22,7 @@ function showAllFilterItems() {
     diametrFilterItems.forEach((item, index, arr) => {
         item.classList.remove('d-none');
     })
-    // diametrFilterWrap.classList.remove('hidden');
+    diametrFilterWrap.classList.remove('hidden');
     showMoreBtn.addEventListener('click', hideFilterItems, {once:true});
     showMoreBtn.addEventListener('click', (event) => {
         let sidebar = document.querySelector('.catalog__sidebar-filters');
@@ -32,7 +32,7 @@ function showAllFilterItems() {
 }
 
 if(diametrFilter) {
-    // diametrFilterWrap = diametrFilter.querySelector('.bapf_body');
+    diametrFilterWrap = diametrFilter.querySelector('.bapf_body');
     diametrFilterItems = Array.from(diametrFilter.querySelectorAll('li'));
 
     showMoreBtn = document.createElement("button");
