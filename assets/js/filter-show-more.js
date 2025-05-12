@@ -9,3 +9,9 @@ const newBtn = document.createElement("button");
 newBtn.textContent = 'Показать все';
 
 diametrFilter.appendChild(newBtn);
+
+diametrFilterItems.forEach((item, index, arr) => {
+if (index > 5) {
+   item.classList.add('.d-none');
+  }
+})
