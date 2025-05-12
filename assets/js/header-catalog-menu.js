@@ -143,7 +143,7 @@ gorshkiCats.forEach((el) => {
     el.addEventListener('mouseenter',closeTreezSubMenues);
     let classList = el.parentElement.classList;
     console.log(classList)
-    if(!classList.includes('menu_item_lechuza')) {
+    if(!classList.contains('menu_item_lechuza')) {
         el.addEventListener('mouseenter',closeLechuzaSubMenues);
     }
 })
