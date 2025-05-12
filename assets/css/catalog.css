@@ -1531,11 +1531,11 @@ ul.products {
 
 .filter_diametr_gorshka .bapf_body {
     height: fit-content;
-    transition: all 0.3ms;
 }
 
 .filter_diametr_gorshka .bapf_body.hidden {
     height: 100px;
+    transition: all 0.3ms;
 }
 
 .filter-show-more-btn {
