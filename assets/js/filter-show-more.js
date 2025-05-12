@@ -7,7 +7,7 @@ function hideFilterItems() {
     diametrFilterItems.forEach((item, index, arr) => {
         let filterValue = item.querySelector('input').value;
         if (!filterValuesDefault.includes(filterValue)) {
-            item.classList.add('d-none');
+            item.classList.add('no-visibility');
         }
     });
     showMoreBtn.addEventListener('click', showAllFilterItems, {once:true});
@@ -17,7 +17,7 @@ function hideFilterItems() {
 function showAllFilterItems() {
     console.log('hi showAllFilterItems')
     diametrFilterItems.forEach((item, index, arr) => {
-        item.classList.remove('d-none');
+        item.classList.remove('no-visibility');
     })
     showMoreBtn.addEventListener('click', hideFilterItems, {once:true});
     showMoreBtn.addEventListener('click', (event) => {
