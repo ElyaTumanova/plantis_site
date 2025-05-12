@@ -4,12 +4,11 @@ let diametrFilterItems = Array.from(diametrFilter.querySelectorAll('li'));
 
 console.log(diametrFilterItems);
 
-const showMoreBtn = document.createElement("button");
-
+let showMoreBtn = document.createElement("button");
+showMoreBtn.classList.add('show-more-btn');
 showMoreBtn.textContent = 'Показать все';
-
 diametrFilter.appendChild(showMoreBtn);
-
+showMoreBtn.querySelector('.show-more-btn');
 
 function hideFilterItems() {
     diametrFilterItems.forEach((item, index, arr) => {
