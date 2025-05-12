@@ -6,6 +6,7 @@ console.log(diametrFilterItems);
 
 let showMoreBtn = document.createElement("button");
 showMoreBtn.classList.add('show-more-btn');
+console.log(showMoreBtn);
 showMoreBtn.textContent = 'Показать все';
 diametrFilter.appendChild(showMoreBtn);
 showMoreBtn = document.querySelector('.show-more-btn');
