@@ -364,10 +364,25 @@ function truemisha_products_per_page( $products ) {
 // // вывод товаров в каталоге с учетом наличия - instock products first 
 
 add_filter('posts_clauses', 'order_by_stock_status', 9999);
+// function order_by_stock_status($posts_clauses) {
+//     global $wpdb;
+//     // only change query on WooCommerce loops
+//     if (is_woocommerce() && (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy())) {
+//         $posts_clauses['join'] .= " INNER JOIN $wpdb->postmeta istockstatus ON ($wpdb->posts.ID = istockstatus.post_id) ";
+//         $posts_clauses['orderby'] = " istockstatus.meta_value ASC, " . $posts_clauses['orderby'];
+//         $posts_clauses['where'] = " AND istockstatus.meta_key = '_stock_status' AND istockstatus.meta_value <> '' " . $posts_clauses['where'];
+//     }
+//     return $posts_clauses;
+// }
+
 function order_by_stock_status($posts_clauses) {
     global $wpdb;
+	global $plants_cat_id;
+
     // only change query on WooCommerce loops
-    if (is_woocommerce() && (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy())) {
+    if (is_woocommerce() && (is_product_category($plants_cat_id) || 
+	term_is_ancestor_of( $plants_cat_id, get_queried_object_id(), 'product_cat' )
+	|| is_product_tag())) {
         $posts_clauses['join'] .= " INNER JOIN $wpdb->postmeta istockstatus ON ($wpdb->posts.ID = istockstatus.post_id) ";
         $posts_clauses['orderby'] = " istockstatus.meta_value ASC, " . $posts_clauses['orderby'];
         $posts_clauses['where'] = " AND istockstatus.meta_key = '_stock_status' AND istockstatus.meta_value <> '' " . $posts_clauses['where'];
@@ -400,7 +415,7 @@ function shop_only_instock_products( $meta_query, $query ) {
 	is_product_category($lechuza_cat_id) || 
 	term_is_ancestor_of( $lechuza_cat_id, get_queried_object_id(), 'product_cat' ) ||
 	is_product_tag ($avtopoliv_tag_id) ||
-	is_search()) { 		//где хотим срыть товары не в наличии
+	is_search()) { 		//где хотим срыть товары не в наличии, товары в статусе onbackorder выводятся
 		$meta_query[] = array(
 			'key' => '_stock_status',
 			'value' => 'outofstock',
