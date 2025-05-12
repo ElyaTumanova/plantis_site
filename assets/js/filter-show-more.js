@@ -1,6 +1,8 @@
 let diametrFilter = document.querySelector('.filter_diametr_gorshka');
 
-console.log(diametrFilter);
+let diametrFilterItems = document.querySelectorAll('li');
+
+console.log(diametrFilterItems);
 
 const newBtn = document.createElement("button");
 
