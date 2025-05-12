@@ -128,6 +128,7 @@ if($site === 'http://new.plantis.shop') {
 	$filter_gift_id = 10988;
 	$filter_active_id = 6057;
 	$filter_razmer_id = 60247; //to be updated
+	$filter_razmer_kashpo_id = 56545; //to be updated
 
 
 } else {
@@ -174,6 +175,7 @@ if($site === 'http://new.plantis.shop') {
 	$filter_gift_id = 56535;
 	$filter_active_id = 56531;
 	$filter_razmer_id = 60247;
+	$filter_razmer_kashpo_id = 56545;
 
 }
 
