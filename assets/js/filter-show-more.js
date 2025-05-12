@@ -7,7 +7,6 @@ function hideFilterItems() {
     diametrFilterItems.forEach((item, index, arr) => {
         let filterValue = item.querySelector('input').value;
         if (!filterValuesDefault.includes(filterValue)) {
-            item.classList.add('no-visibility');
             item.classList.add('d-none');
         }
     });
@@ -19,12 +18,11 @@ function showAllFilterItems() {
     console.log('hi showAllFilterItems')
     diametrFilterItems.forEach((item, index, arr) => {
         item.classList.remove('d-none');
-        item.classList.remove('no-visibility');
     })
     showMoreBtn.addEventListener('click', hideFilterItems, {once:true});
     showMoreBtn.addEventListener('click', (event) => {
         let sidebar = document.querySelector('.catalog__sidebar-filters');
-        sidebar.scrollIntoView(true, {behavior: "smooth"});
+        sidebar.scrollIntoView({behavior: "smooth"});
     }, {once:true});
     showMoreBtn.textContent = 'Свернуть';
 }

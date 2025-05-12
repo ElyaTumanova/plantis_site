@@ -35,11 +35,6 @@
     display: none !important;
 }
 
-.no-visibility {
-    visibility: hidden !important;
-    height: 0px !important;
-}
-
 .fix-body {
     height: 100vh;
     /* width: calc(100vw - var(--scrollWidth)); */
