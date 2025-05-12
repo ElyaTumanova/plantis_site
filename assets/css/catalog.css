@@ -1527,6 +1527,12 @@ ul.products {
     font-weight: 600;
 }
 
+/*фильтр с диаметром горшка*/
+
+#bapf_7 ul {
+    
+}
+
 /*стили для switch чекбокса в наличии*/
 
 .catalog__instock-filter input:not(checked) { position: absolute; opacity: 0;} 
