@@ -1,4 +1,4 @@
-let filterValuesDefault = ['D22', 'D15', 'D18', 'D26', 'D30', 'D34', 'D37', '20x20', '30x30'];
+let filterValuesDefault = ['d22', 'd15', 'd18', 'd26', 'd30', 'd34', 'd37', '20x20', '30x30'];
 let diametrFilter = document.querySelector('.filter_diametr_gorshka');
 
 let diametrFilterItems = Array.from(diametrFilter.querySelectorAll('li'));
