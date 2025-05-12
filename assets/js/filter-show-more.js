@@ -6,7 +6,7 @@ console.log(diametrFilterItems);
 
 const showMoreBtn = document.createElement("button");
 
-showMoreBtn.textContent = 'Показать все';
+//showMoreBtn.textContent = 'Показать все';
 
 diametrFilter.appendChild(showMoreBtn);
 
@@ -18,6 +18,7 @@ function hideFilterItems() {
         }
     });
     showMoreBtn.addEventListener('click', showAllFilterItems, {once:true});
+    showMoreBtn.innerText('Показать все');
 }
 
 function showAllFilterItems() {
@@ -26,6 +27,7 @@ function showAllFilterItems() {
         item.classList.remove('d-none');
     })
     showMoreBtn.addEventListener('click', hideFilterItems, {once:true});
+    showMoreBtn.innerText('Свернуть');
 }
 
 
