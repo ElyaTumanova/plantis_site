@@ -1529,10 +1529,13 @@ ul.products {
 
 /*фильтр с диаметром горшка*/
 
-.filter_diametr_gorshka li {
-    visibility: visible;
-    height: auto;
+.filter_diametr_gorshka .bapf_body {
+    height: fit-content;
     transition: all 0.3ms;
+}
+
+.filter_diametr_gorshka .bapf_body.hidden {
+    height: 100px;
 }
 
 .filter-show-more-btn {
