@@ -1531,6 +1531,7 @@ ul.products {
 
 .filter_diametr_gorshka li {
     visibility: visible;
+    height: auto;
     transition: all 0.3ms;
 }
 

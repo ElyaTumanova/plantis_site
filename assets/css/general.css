@@ -37,6 +37,7 @@
 
 .no-visibility {
     visibility: hidden !important;
+    height: 0px;
 }
 
 .fix-body {
