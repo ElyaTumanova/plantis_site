@@ -27,7 +27,7 @@ function showAllFilterItems() {
         item.classList.remove('d-none');
     })
     showMoreBtn.addEventListener('click', hideFilterItems, {once:true});
-    //showMoreBtn.textContent('Свернуть');
+    showMoreBtn.textContent('Свернуть');
     console.log(showMoreBtn);
 }
 
