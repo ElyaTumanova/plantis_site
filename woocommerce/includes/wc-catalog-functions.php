@@ -422,6 +422,7 @@ function shop_only_instock_products( $meta_query, $query ) {
 			'compare' => '!='
 			);
 		return $meta_query;
+	//если хотим выводить товары в наличии без статуса onbackorder
 	// } else if (is_product_category($gorshki_cat_id) || 
 	// 	term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) 
 	// ) {
