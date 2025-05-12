@@ -1529,6 +1529,10 @@ ul.products {
 
 /*фильтр с диаметром горшка*/
 
+.filter_diametr_gorshka li {
+    display: block;
+    transition: all 0.3ms;
+}
 .filter-show-more-btn {
     border: none;
     background-color: snow;
