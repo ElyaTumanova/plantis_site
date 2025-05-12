@@ -230,7 +230,8 @@
     font-weight: 600;
     font-size: 13px;
     position: absolute;
-    left: 250px;
+    left: 260px;
+    margin-top: 3px;
 }
 
 .menu_item_plants .menu-node_lvl_2.menu-item-has-children> a:after {
