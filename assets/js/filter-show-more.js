@@ -18,7 +18,7 @@ function hideFilterItems() {
         }
     });
     showMoreBtn.addEventListener('click', showAllFilterItems, {once:true});
-    showMoreBtn.innerText('Показать все');
+    showMoreBtn.textContent('Показать все');
 }
 
 function showAllFilterItems() {
@@ -27,7 +27,7 @@ function showAllFilterItems() {
         item.classList.remove('d-none');
     })
     showMoreBtn.addEventListener('click', hideFilterItems, {once:true});
-    showMoreBtn.innerText('Свернуть');
+    showMoreBtn.textContent('Свернуть');
 }
 
 
