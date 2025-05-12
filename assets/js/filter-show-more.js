@@ -17,6 +17,7 @@ function hideFilterItems() {
     });
     showMoreBtn.addEventListener('click', showAllFilterItems, {once:true});
     showMoreBtn.textContent = 'Показать все';
+    diametrFilter.scrollIntoView(true)
 }
 
 function showAllFilterItems() {
