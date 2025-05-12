@@ -17,7 +17,6 @@ function hideFilterItems() {
     });
     showMoreBtn.addEventListener('click', showAllFilterItems, {once:true});
     showMoreBtn.textContent = 'Показать все';
-    //diametrFilter.scrollIntoView(true)
 }
 
 function showAllFilterItems() {
@@ -26,6 +25,9 @@ function showAllFilterItems() {
         item.classList.remove('d-none');
     })
     showMoreBtn.addEventListener('click', hideFilterItems, {once:true});
+    showMoreBtn.addEventListener('click', (event) => {
+        diametrFilter.scrollIntoView(true)
+    }, {once:true});
     showMoreBtn.textContent = 'Свернуть';
 }
 
