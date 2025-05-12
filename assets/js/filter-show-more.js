@@ -1,6 +1,6 @@
 let diametrFilter = document.querySelector('.filter_diametr_gorshka');
 
-let diametrFilterItems = document.querySelectorAll('li');
+let diametrFilterItems = diametrFilter.querySelectorAll('li');
 
 console.log(diametrFilterItems);
 
