@@ -141,6 +141,6 @@ plantsCats.forEach((el) => {
 
 gorshkiCats.forEach((el) => {
     el.addEventListener('mouseenter',closeTreezSubMenues);
-    console.log(el)
+    console.log(el.parentElement)
     //el.addEventListener('mouseenter',closeLechuzaSubMenues);
 })
