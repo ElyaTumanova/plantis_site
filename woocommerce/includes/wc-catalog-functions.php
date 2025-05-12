@@ -389,8 +389,8 @@ function shop_only_instock_products( $meta_query, $query ) {
     global $avtopoliv_tag_id;
 
 	if( is_shop() || 
-	// is_product_category($gorshki_cat_id) || 
-	// term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) || 
+	is_product_category($gorshki_cat_id) || 
+	term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) || 
 	is_product_category($treez_cat_id) || 
 	term_is_ancestor_of( $treez_cat_id, get_queried_object_id(), 'product_cat' )|| 
 	is_product_category($plants_treez_cat_id) || 
@@ -407,19 +407,19 @@ function shop_only_instock_products( $meta_query, $query ) {
 			'compare' => '!='
 			);
 		return $meta_query;
-	} else if (is_product_category($gorshki_cat_id) || 
-		term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) 
-	) {
-		$meta_query = array(
-			array(
-				'key' => '_stock',
-				'type'    => 'numeric',
-				'value' => '0',
-				'compare' => '>'
-			)
-		);
+	// } else if (is_product_category($gorshki_cat_id) || 
+	// 	term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) 
+	// ) {
+	// 	$meta_query = array(
+	// 		array(
+	// 			'key' => '_stock',
+	// 			'type'    => 'numeric',
+	// 			'value' => '0',
+	// 			'compare' => '>'
+	// 		)
+	// 	);
 
-		return $meta_query;
+	// 	return $meta_query;
 	}
 	else {
 		return $meta_query;
