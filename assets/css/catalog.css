@@ -1533,6 +1533,14 @@ ul.products {
     
 }
 
+#bapf_7 input {
+
+}
+
+#bapf_7 label {
+
+}
+
 /*стили для switch чекбокса в наличии*/
 
 .catalog__instock-filter input:not(checked) { position: absolute; opacity: 0;} 
