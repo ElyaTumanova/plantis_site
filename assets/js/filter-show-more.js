@@ -8,7 +8,7 @@ const showMoreBtn = document.createElement("button");
 
 showMoreBtn.textContent = 'Показать все';
 
-diametrFilter.appendChild(newBtn);
+diametrFilter.appendChild(showMoreBtn);
 
 
 function hideFilterItems() {
