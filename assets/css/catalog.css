@@ -1530,7 +1530,7 @@ ul.products {
 /*фильтр с диаметром горшка*/
 
 .filter_diametr_gorshka .bapf_body {
-    height: fit-content;
+    height: 500px;
 }
 
 .filter_diametr_gorshka .bapf_body.hidden {
