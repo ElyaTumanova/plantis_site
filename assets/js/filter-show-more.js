@@ -26,6 +26,7 @@ function showAllFilterItems() {
 }
 
 if(diametrFilter) {
+    console.log(diametrFilter);
     let diametrFilterItems = Array.from(diametrFilter.querySelectorAll('li'));
 
     let showMoreBtn = document.createElement("button");
