@@ -7,9 +7,8 @@ console.log(diametrFilterItems);
 let showMoreBtn = document.createElement("button");
 showMoreBtn.classList.add('show-more-btn');
 console.log(showMoreBtn);
-showMoreBtn.textContent = 'Показать все';
 diametrFilter.appendChild(showMoreBtn);
-showMoreBtn = document.querySelector('.show-more-btn');
+//showMoreBtn = document.querySelector('.show-more-btn');
 
 function hideFilterItems() {
     diametrFilterItems.forEach((item, index, arr) => {
@@ -19,7 +18,7 @@ function hideFilterItems() {
     });
     showMoreBtn.addEventListener('click', showAllFilterItems, {once:true});
     console.log(showMoreBtn)
-    //showMoreBtn.textContent('Показать все');
+    showMoreBtn.textContent = 'Показать все';
 }
 
 function showAllFilterItems() {
@@ -29,7 +28,7 @@ function showAllFilterItems() {
     })
     showMoreBtn.addEventListener('click', hideFilterItems, {once:true});
     console.log(showMoreBtn);
-    showMoreBtn.textContent('Свернуть');
+    showMoreBtn.textContent = 'Свернуть';
 }
 
 
