@@ -1546,6 +1546,17 @@ ul.products {
     border-radius: 3px;
 }
 
+.filter-show-more-btn {
+    border: none;
+    background-color: snow;
+    color: var(--gray-text);
+    margin-top: 10px;
+}
+
+.filter-show-more-btn:hover {
+    color: var(--text);
+}
+
 /*стили для switch чекбокса в наличии*/
 
 .catalog__instock-filter input:not(checked) { position: absolute; opacity: 0;} 
