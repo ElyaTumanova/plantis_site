@@ -86,26 +86,6 @@
     line-height: 1.2;
 }
 
-.menu--main a:hover {
-    text-decoration: none;
-}
-
-.menu--main .sub-menu a:hover {
-    color: var(--gray-text);
-}
-
-.menu--main:after {
-    border-left: 1px solid var(--gray);
-    content: "";
-    display: block;
-    height: 271px;
-    left: 289px;
-    position: absolute;
-    top: 0;
-    width: 1px;
-    z-index: 0;
-}
-
 .menu--main .menu-node_lvl_1 {
     padding: 15px 0 15px 9px;
     width: 289px;
@@ -114,10 +94,9 @@
 .menu--main .menu-node_lvl_2 {
     padding: 10px 25px;
     display: block;
-    position: relative;
 }
 
-.menu_active{
+.menu_active {
     background-color: var(--gray);
 }
 
@@ -131,6 +110,9 @@
     left: 300px;
     visibility: hidden;
 
+    max-width: 290px;
+    width: 290px;
+
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -140,8 +122,9 @@
 }
 
 .menu--onside_lvl_2 {
-    position: relative;
+    /* position: relative; */
     padding-top: 20px;
+    padding-left: 20px;
     display: flex;
     flex-direction: column;
     row-gap: 15px;
@@ -151,10 +134,26 @@
     max-height: calc(var(--vh) - var(--headerHeight) - 20px);
 }
 
+.menu--onside_lvl_3 {
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
 .menu_item_treez .menu--onside_lvl_3 {
     position: absolute;
     top: 0;
-    left: 200px;
+    left: 300px;
+    visibility: hidden;
+
+    row-gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu_item_lechuza .menu--onside_lvl_2 {
+    position: absolute;
+    top: 0;
+    left: 300px;
     visibility: hidden;
 
     row-gap: 10px;
@@ -175,9 +174,40 @@
     flex-flow: column wrap;
 }
 
-/* .menu--main .short-sub-menu .menu--onside_lvl_1{
-    row-gap: 5px;
-} */
+/*border line*/
+.menu--main:after {
+    border-left: 1px solid var(--gray);
+    content: "";
+    display: block;
+    height: calc(var(--vh) - var(--headerHeight) - 12px); /*12px - .menu--main margin*/
+    left: 289px;
+    position: absolute;
+    top: 0;
+    width: 1px;
+    z-index: 0;
+}
+
+.menu--onside_lvl_1:after {
+  border-left: 1px solid var(--gray);
+  content: "";
+  display: block;
+  height: calc(var(--vh) - var(--headerHeight) - 12px); /*12px - .menu--main margin*/
+  left: 290px;
+  position: absolute;
+  top: 0;
+  width: 1px;
+  z-index: 0;
+}
+
+/*links*/
+
+.menu--main a:hover {
+    text-decoration: none;
+}
+
+.menu--main .sub-menu a:hover {
+    color: var(--gray-text);
+}
 
 .menu--onside_lvl_1 a {
     font-weight: 600;
@@ -185,8 +215,12 @@
 
 .menu--onside_lvl_2 a {
     font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    /* margin-right: 20px; */
 }
 
+/* link arrow style*/
 .menu--main .menu-item-has-children.menu-node_lvl_1> a:after {
     /* content: "\276F"; */
     content: "next";
@@ -196,10 +230,11 @@
     font-weight: 600;
     font-size: 13px;
     position: absolute;
-    left: 250px;
+    left: 260px;
+    margin-top: 3px;
 }
 
-.menu--main .menu_item_treez .menu-node_lvl_3> a:after {
+.menu_item_plants .menu-node_lvl_2.menu-item-has-children> a:after {
     /* content: "\276F"; */
     content: "next";
     font-family: swiper-icons;
@@ -207,41 +242,54 @@
     letter-spacing: 0;
     font-weight: 600;
     font-size: 13px;
-    position: absolute;
-    top: 3px;
-    left: 150px;
-}
-
-.menu--main .menu_item_plants .menu-node_lvl_2.menu-item-has-children> a:after {
-    /* content: "\276F"; */
-    content: "next";
-    font-family: swiper-icons;
-    text-transform: none;
-    letter-spacing: 0;
-    font-weight: 600;
-    font-size: 13px;
-    position: absolute;
+    /* position: absolute;
     top: 13px;
-    left: 250px;
+    left: 250px; */
+    margin: 2px 0 0 25px;
 }
+
+.menu_item_treez .menu-node_lvl_3> a:after {
+    /* content: "\276F"; */
+    content: "next";
+    font-family: swiper-icons;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+    font-size: 13px;
+    /* position: absolute;
+    top: 3px;
+    left: 150px; */
+    margin: 2px 0 0 25px;
+}
+
+.menu_item_lechuza > a:after {
+    /* content: "\276F"; */
+    content: "next";
+    font-family: swiper-icons;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+    font-size: 13px;
+    margin: 2px 0 0 25px;
+}
+
+/*visibility styles*/
 
 .menu_item_treez .menu--onside_show {
     visibility: visible;
 }
 
+.menu_item_lechuza .menu--onside_show {
+    visibility: visible;
+}
+
 .menu_item_plants .menu--onside_show {
     visibility: visible;
-    max-width: 290px;
 }
 
 .menu--onside_show {
     visibility: visible;
 }
-
-
-/* .menu--main .menu-item-has-children.menu-node_lvl_1> a:after:hover {
-    text-decoration: none;
-} */
 
 /* info menu */
 .menu--info .menu-node_lvl_2{
@@ -251,7 +299,12 @@
 
 .menu-node_lvl_3 {
     white-space: nowrap;
-    position: relative;
+    /* position: relative; */
+    padding: 0 30px 0 0;
+}
+
+.menu_item_treez .menu-node_lvl_3 {
+    padding: 0;
 }
 
 .menu--info .sub-menu {
@@ -339,7 +392,7 @@
 .menu-item-has-children.menu-node_lvl_2> a {
     display: flex;
     justify-content: space-between;
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 
 
