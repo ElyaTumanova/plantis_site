@@ -8,7 +8,7 @@ let showMoreBtn = document.createElement("button");
 showMoreBtn.classList.add('show-more-btn');
 showMoreBtn.textContent = 'Показать все';
 diametrFilter.appendChild(showMoreBtn);
-showMoreBtn.querySelector('.show-more-btn');
+showMoreBtn = document.querySelector('.show-more-btn');
 
 function hideFilterItems() {
     diametrFilterItems.forEach((item, index, arr) => {
