@@ -22,13 +22,12 @@ function showAllFilterItems() {
     showMoreBtn.addEventListener('click', hideFilterItems, {once:true});
     showMoreBtn.addEventListener('click', (event) => {
         let sidebar = document.querySelector('.catalog__sidebar-filters');
-        sidebar.scrollIntoView(true);
+        sidebar.scrollIntoView(true, {behavior: "smooth"});
     }, {once:true});
     showMoreBtn.textContent = 'Свернуть';
 }
 
 if(diametrFilter) {
-    console.log(diametrFilter);
     diametrFilterItems = Array.from(diametrFilter.querySelectorAll('li'));
 
     showMoreBtn = document.createElement("button");
