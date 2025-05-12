@@ -1,6 +1,7 @@
 let filterValuesDefault = ['d22', 'd15', 'd18', 'd26', 'd30', 'd34', 'd37', '20x20', '30x30'];
 let diametrFilter = document.querySelector('.filter_diametr_gorshka');
 let diametrFilterItems;
+let showMoreBtn;
 
 function hideFilterItems() {
     diametrFilterItems.forEach((item, index, arr) => {
@@ -30,7 +31,7 @@ if(diametrFilter) {
     console.log(diametrFilter);
     diametrFilterItems = Array.from(diametrFilter.querySelectorAll('li'));
 
-    let showMoreBtn = document.createElement("button");
+    showMoreBtn = document.createElement("button");
     showMoreBtn.classList.add('filter-show-more-btn');
     diametrFilter.appendChild(showMoreBtn);
 
