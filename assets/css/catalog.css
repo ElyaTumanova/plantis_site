@@ -1536,7 +1536,7 @@ ul.products {
 }
 
 .filter_diametr_gorshka .bapf_body.hidden {
-    max-height: 150px;
+    max-height: fit-content;
     transition: all 0.3s;
 }
 
