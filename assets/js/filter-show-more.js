@@ -26,9 +26,14 @@ function hideFilterItems() {
 }
 
 function showAllFilterItems() {
+    let itemsCount = 0;
     diametrFilterItems.forEach((item, index, arr) => {
         item.classList.remove('d-none');
+        itemsCount++;
     })
+    diametrFilterWrapHeight = 16 * itemsCount + 10 * (itemsCount - 1);
+    console.log(itemsCount);
+    document.documentElement.style.setProperty('--diametrFilterWrapHeight', `${diametrFilterWrapHeight}px`);
     diametrFilterWrap.classList.remove('hidden');
     showMoreBtn.addEventListener('click', hideFilterItems, {once:true});
     showMoreBtn.addEventListener('click', (event) => {
