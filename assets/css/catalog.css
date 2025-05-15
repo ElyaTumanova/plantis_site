@@ -1531,15 +1531,12 @@ ul.products {
 
 .filter_diametr_gorshka .bapf_body {
     height: 350px;
-    /* height: fit-content; */
     overflow-y: auto;
     transition: all 0.3s;
 }
 
 .filter_diametr_gorshka .bapf_body.hidden {
     height: var(--diametrFilterWrapHeight);
-    /* max-height: fit-content; */
-    /* transition: all 0.3s; */
     overflow-y: hidden;
 
 }
