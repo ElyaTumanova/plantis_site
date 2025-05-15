@@ -67,8 +67,10 @@ echo apply_filters(
 	$args
 );
 
-add_filter( 'woocommerce_loop_add_to_cart_link', 'truemisha_product_btn_html', 20, 3 );
+
  
-function truemisha_product_btn_html( $html, $product, $args ) {
+function plnt_product_btn_html( $html, $product, $args ) {
 	print_r($args);
 }
+
+add_filter( 'woocommerce_loop_add_to_cart_link', 'plnt_product_btn_html', 20, 3 );
