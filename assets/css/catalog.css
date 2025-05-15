@@ -1537,10 +1537,11 @@ ul.products {
 }
 
 .filter_diametr_gorshka .bapf_body.hidden {
-    height: fit-content;
-    min-height: 150px;
-    transition: all 0.3s;
-    overflow-y: auto;
+    /* height: fit-content;
+    min-height: 150px; */
+    /* transition: all 0.3s;
+    overflow-y: auto; */
+    transform: scaleY(0.5);
 }
 
 .filter-show-more-btn {
