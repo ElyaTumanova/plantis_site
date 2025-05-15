@@ -75,6 +75,7 @@ if($site === 'http://new.plantis.shop') {
 		1077,
 		1078,
 		1074,
+		837,	//tag skidki
 		1195); //tag pegular assortiment
 }
 

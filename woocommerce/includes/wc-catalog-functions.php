@@ -303,7 +303,7 @@ add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product
 add_action('woocommerce_shop_loop_item_title','woocommerce_template_single_excerpt', 20);
 
 
-// // вывод меток 
+// // вывод меток под карточкой товара в каталоге
 add_action('woocommerce_after_shop_loop_item', 'plnt_get_product_tags', 20);
 
 function plnt_get_product_tags() {
