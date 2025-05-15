@@ -18,6 +18,7 @@ function plnt_search_ajax_action_callback (){
         's' => $_POST['s'],
         'orderby' => 'meta_value',
 	    'meta_key' => '_stock_status',
+        'order' => 'ASC',
         // 'posts_per_page' => -1,
         'meta_query' => array( 
             array(
