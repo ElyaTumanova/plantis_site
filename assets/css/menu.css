@@ -490,7 +490,7 @@
 }
 
 .catalog__node_lvl_1 > .menu__dropdown-arrow {
-    right: 0;  
+    right: -5px;  
 }
 .catalog__node_lvl_2 > .menu__dropdown-arrow {
     right: 5px;
