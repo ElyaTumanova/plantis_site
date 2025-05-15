@@ -1546,7 +1546,7 @@ ul.products {
 
 .filter-show-more-btn {
     border: none;
-    background-color: snow;
+    background-color: none;
     color: var(--gray-text);
     margin-top: 10px;
 }
