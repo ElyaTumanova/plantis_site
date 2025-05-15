@@ -66,11 +66,3 @@ echo apply_filters(
 	$product,
 	$args
 );
-
-
- 
-function plnt_product_btn_html( $html, $product, $args ) {
-	print_r($args);
-}
-
-add_filter( 'woocommerce_loop_add_to_cart_link', 'plnt_product_btn_html', 20, 3 );

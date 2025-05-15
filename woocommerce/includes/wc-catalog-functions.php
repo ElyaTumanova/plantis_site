@@ -645,6 +645,14 @@ function plnt_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 	return $crumbs;
 }
 
+// меняем rel для ссылки добавления товаров в корзину #ceo
+
+add_filter( 'woocommerce_loop_add_to_cart_link', 'plnt_change_rel', 10, 2); 
+function plnt_change_rel( $html, $product ) {
+ $html = str_replace( 'rel="nofollow"', 'rel="nofollow noindex"', $html );
+ return $html;
+}
+
 // #filters добавляем классы к фильтрам #berocket для работы слайдера #swiper
 
 add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
