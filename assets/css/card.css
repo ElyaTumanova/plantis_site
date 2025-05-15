@@ -406,6 +406,12 @@
     min-width: 107px;
 }
 
+
+.search-result__item .card__stockstatus {
+    font-size: 12px;
+    top: 12px;
+}
+
 /* кнопка в коризину и инпут изменения количетсва */
 
 .card__grid .add-to-cart-wrap {
