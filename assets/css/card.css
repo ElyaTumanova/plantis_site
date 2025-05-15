@@ -404,13 +404,13 @@
 .card__image-wrap .card__stockstatus {
     font-size: 17px;
     min-width: 107px;
-    z-index: 0;
 }
 
 
 .search-result__item .card__stockstatus {
     font-size: 12px;
     top: 12px;
+    z-index: 0;
 }
 
 .search-result__item:first-child .card__stockstatus {
