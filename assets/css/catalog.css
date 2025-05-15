@@ -1540,7 +1540,7 @@ ul.products {
     height: var(--diametrFilterWrapHeight);
     /* max-height: fit-content; */
     /* transition: all 0.3s; */
-    /* overflow-y: auto; */
+    overflow-y: hidden;
 
 }
 
