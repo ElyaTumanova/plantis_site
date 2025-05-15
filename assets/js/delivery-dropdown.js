@@ -1,3 +1,4 @@
+// for page https://plantis.shop/delivery/
 const del_dropdown = document.querySelectorAll('.delivery__block');
 
 del_dropdown.forEach((el) => {
