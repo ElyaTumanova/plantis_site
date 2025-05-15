@@ -1530,8 +1530,8 @@ ul.products {
 /*фильтр с диаметром горшка*/
 
 .filter_diametr_gorshka .bapf_body {
-    height: 450px;
-    min-height: 450px;
+    height: 350px;
+    min-height: 350px;
     transition: all 0.3s;
     overflow-y: auto;
 }
@@ -1540,7 +1540,7 @@ ul.products {
     height: fit-content;
     min-height: 150px;
     transition: all 0.3s;
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 .filter-show-more-btn {
