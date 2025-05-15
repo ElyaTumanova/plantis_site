@@ -3,14 +3,22 @@ let diametrFilter = document.querySelector('.filter_diametr_gorshka');
 let diametrFilterWrap;
 let diametrFilterItems;
 let showMoreBtn;
+let diametrFilterWrapHeight = 150;
+
 
 function hideFilterItems() {
+    let itemsCount = 0;
     diametrFilterItems.forEach((item, index, arr) => {
         let filterValue = item.querySelector('input').value;
         if (!filterValuesDefault.includes(filterValue)) {
             item.classList.add('d-none');
+        } else {
+            itemsCount++;
         }
     });
+
+    console.log(itemsCount);
+    document.documentElement.style.setProperty('--diametrFilterWrapHeight', `${diametrFilterWrapHeight}px`);
 
     diametrFilterWrap.classList.add('hidden');
     showMoreBtn.addEventListener('click', showAllFilterItems, {once:true});
@@ -18,7 +26,6 @@ function hideFilterItems() {
 }
 
 function showAllFilterItems() {
-    console.log('hi showAllFilterItems')
     diametrFilterItems.forEach((item, index, arr) => {
         item.classList.remove('d-none');
     })
