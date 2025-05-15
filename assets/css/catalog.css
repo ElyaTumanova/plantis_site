@@ -1532,13 +1532,13 @@ ul.products {
 .filter_diametr_gorshka .bapf_body {
     height: 450px;
     transition: all 0.3s;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 .filter_diametr_gorshka .bapf_body.hidden {
     height: fit-content;
     transition: all 0.3s;
-    overflow: hidden;
+    overflow-y: hidden;
 }
 
 .filter-show-more-btn {
