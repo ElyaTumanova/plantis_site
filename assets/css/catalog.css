@@ -1532,16 +1532,16 @@ ul.products {
 .filter_diametr_gorshka .bapf_body {
     height: 350px;
     min-height: 350px;
-    /* transition: all 0.3s; */
     overflow-y: auto;
+    transition: all 0.3s;
 }
 
 .filter_diametr_gorshka .bapf_body.hidden {
-    /* height: fit-content;
-    min-height: 150px; */
-    /* transition: all 0.3s;
-    overflow-y: auto; */
-    transform: scaleY(0.5);
+    height: 150px;
+    max-height: fit-content;
+    /* transition: all 0.3s; */
+    /* overflow-y: auto; */
+
 }
 
 .filter-show-more-btn {
