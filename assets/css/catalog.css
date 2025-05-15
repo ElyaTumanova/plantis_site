@@ -1531,7 +1531,7 @@ ul.products {
 
 .filter_diametr_gorshka .bapf_body {
     height: 350px;
-    height: fit-content;
+    /* height: fit-content; */
     overflow-y: auto;
     transition: all 0.3s;
 }
