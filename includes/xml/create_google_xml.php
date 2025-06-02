@@ -31,20 +31,20 @@ function create_google_xml_btn () {
                 'post_type'      => 'product',
                 'posts_per_page' => -1,
                 'post_status'    => 'publish',
-                'meta_query' => array( 
-                    array(
-                        'key' => '_stock',
-                        'type'    => 'numeric',
-                        'value' => '0',
-                        'compare' => '>'
-                    )
-                ),
+                // 'meta_query' => array( 
+                //     array(
+                //         'key' => '_stock',
+                //         'type'    => 'numeric',
+                //         'value' => '0',
+                //         'compare' => '>'
+                //     )
+                // ),
                 'tax_query' => array(
                     array(
                         'taxonomy' => 'product_cat',
                         'field' => 'id',
                         'operator' => 'NOT IN',
-                        'terms' => [$treez_poliv_cat_id, $plants_treez_cat_id, $peresadka_cat_id, $misc_cat_id],
+                        'terms' => [$treez_poliv_cat_id, $peresadka_cat_id, $misc_cat_id],
                         'include_children' => 1,
                     )
                 )
@@ -55,6 +55,7 @@ function create_google_xml_btn () {
             $allproductscount = count($allproducts);
 
             foreach($allproducts as $allproduct){
+                $product = new WC_product($allproduct->ID);
                
                 // Определяем последую категорию в дереве, к которой присвоен конкретный товар в текущем цикле. В примере участвует кастомная таксономия 'products_category', её замените на ту, которая создана у вас.
                 $lastcateg='';
@@ -99,7 +100,6 @@ function create_google_xml_btn () {
                 $google_xml .= "<g:image_link>".$product_img[0]."</g:image_link>";
 
                 //дополнительные изображения товара
-                $product = new WC_product($allproduct->ID);
                 $attachment_ids = $product->get_gallery_image_ids();
 
                 foreach( $attachment_ids as $attachment_id ){
@@ -108,8 +108,23 @@ function create_google_xml_btn () {
                     <g:additional_image_link>".wp_get_attachment_url( $attachment_id )."</g:additional_image_link>";
 	            };
 
-                $google_xml .= "<g:condition>new</g:condition>
-                <g:availability>in stock</g:availability>";
+                $google_xml .= "<g:condition>new</g:condition>";
+                
+                $stock_status = $product->get_stock_status();
+                $stock_qty = $product->get_stock_quantity();
+                if ($stock_status == 'instock') {
+                    if($stock_qty > 0) {
+                        $google_xml .= "<g:availability>in_stock</g:availability>";
+                    } else {
+                        $google_xml .= "<g:availability>preorder</g:availability>";
+                    }
+                }
+                if ($stock_status == 'outofstock') {
+                    $google_xml .= "<g:availability>out_of_stock</g:availability>";
+                }
+                if ($stock_status == 'onbackorder') {
+                    $google_xml .= "<g:availability>preorder</g:availability>";
+                }
 
 
                 // Получаем цену товара
@@ -146,7 +161,7 @@ function create_google_xml_btn () {
                 //     }
                 // }
 
-                //Закрыли тег оффер
+                //Закрыли тег item
                 $google_xml .= "</item>
                 ";
             }

@@ -81,10 +81,10 @@ if(catalogFilterWrap) {
         let scrollTopPosition = window.pageYOffset;
     
         if (scrollTopPosition > lastScrollTop) {
-            console.log('scrolling down');
+            // console.log('scrolling down');
             catalogFilterWrap.classList.add('catalog__filter-wrap_up');
         } else if (scrollTopPosition < lastScrollTop) {
-            console.log('scrolling up');
+            // console.log('scrolling up');
             catalogFilterWrap.classList.remove('catalog__filter-wrap_up');
         }
         lastScrollTop = scrollTopPosition <= 0 ? 0 : scrollTopPosition;
