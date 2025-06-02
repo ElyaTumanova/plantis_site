@@ -111,7 +111,7 @@ function create_google_xml_btn () {
                 $google_xml .= "<g:condition>new</g:condition>";
                 
                 $stock_status = $product->get_stock_status();
-                $google_xml .= "<g:condition>".$stock_status."</g:condition>";
+                $google_xml .= "<g:availability>".$stock_status."</g:availability>";
 
 
                 // Получаем цену товара
