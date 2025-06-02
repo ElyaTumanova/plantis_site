@@ -119,13 +119,13 @@ function create_google_xml_btn () {
                 } else {
                     $backorderdate = date( "d.m.Y H:i:s", strtotime('+1 week') );
                 }
-                $backorderdate_formatte = date(DATE_ISO8601, strtotime($backorderdate));
+                $backorderdate_formatted = date(DATE_ISO8601, strtotime($backorderdate));
                 if ($stock_status == 'instock') {
                     if($stock_qty > 0) {
                         $google_xml .= "<g:availability>in_stock</g:availability>";
                     } else {
                         $google_xml .= "<g:availability>preorder</g:availability>";
-                        $google_xml .= "<g:availability_date>".$backorderdate_formatte."</g:availability_date>";
+                        $google_xml .= "<g:availability_date>".$backorderdate_formatted."</g:availability_date>";
                     }
                 }
                 if ($stock_status == 'outofstock') {
@@ -133,7 +133,7 @@ function create_google_xml_btn () {
                 }
                 if ($stock_status == 'onbackorder') {
                     $google_xml .= "<g:availability>preorder</g:availability>";
-                    $google_xml .= "<g:availability_date>".$backorderdate_formatte."</g:availability_date>";
+                    $google_xml .= "<g:availability_date>".$backorderdate_formatted."</g:availability_date>";
                 }
 
 

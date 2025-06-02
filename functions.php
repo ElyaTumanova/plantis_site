@@ -294,7 +294,7 @@ function plnt_check_page() {
 	echo date(DATE_ISO8601, strtotime($backorderdate));
 }
 
-add_action( 'wp_footer', 'plnt_check_page' );
+//add_action( 'wp_footer', 'plnt_check_page' );
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 
 
