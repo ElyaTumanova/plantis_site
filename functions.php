@@ -288,8 +288,13 @@ function plnt_check_page() {
     $product = new WC_product($product_id);
     $attachment_ids = $product->get_gallery_image_ids();
 
-	$product_img=get_post_gallery_images(8710);  
-	print_r($attachment_ids);
+	foreach( $attachment_ids as $attachment_id )
+        {
+          // Display the image URL
+          echo $Original_image_url = wp_get_attachment_url( $attachment_id );
+          // Display Image instead of URL
+          echo wp_get_attachment_image($attachment_id, 'full');
+        }
 }
 
 add_action( 'wp_footer', 'plnt_check_page' );
