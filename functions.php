@@ -266,12 +266,12 @@ function plnt_check_page() {
 	// print_r( get_queried_object_id() );
 	// print_r( $gorshki_cat_id );
 	// echo '</pre>';
-	if ( is_search() ) {
-		echo 'Это поиск!';
-	}
-	else {
-		echo 'Это какая-то другая страница.';
-	}
+	// if ( is_search() ) {
+	// 	echo 'Это поиск!';
+	// }
+	// else {
+	// 	echo 'Это какая-то другая страница.';
+	// }
 
 	// if(is_page_template('themes/plantis_site/woocommerce/loop/no-products-found.php')) {
 	// 	echo 'Это то что нужно';
@@ -282,7 +282,16 @@ function plnt_check_page() {
 	
 	//echo  basename( get_page_template() );
 	//echo wp_kses_data(WC()->cart->get_cart_contents_count());
-	echo rand(5, 150);
+	//echo rand(5, 150);
+ 	date_default_timezone_set('Europe/Moscow');
+	$backorderdate = date( "d.m.Y H:i:s", strtotime('next wednesday +2 week') );
+	echo ($backorderdate);
+	echo ('<br>');
+	// echo (strtotime($backorderdate));
+	// echo ('<br>');
+	// echo date('d.m.Y H:i:s', (strtotime($backorderdate)));
+	// echo ('<br>');
+	echo date(DATE_ISO8601, strtotime($backorderdate));
 }
 
 //add_action( 'wp_footer', 'plnt_check_page' );
