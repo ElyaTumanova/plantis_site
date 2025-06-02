@@ -117,7 +117,7 @@ function create_google_xml_btn () {
                 } else {
                     $backorderdate = date( "yyyy.mm.dd", strtotime('+1 week') );;
                 }
-                $backorderdate->format(DateTime::ATOM)
+                $backorderdate->format(DateTime::ATOM);
                 if ($stock_status == 'instock') {
                     if($stock_qty > 0) {
                         $google_xml .= "<g:availability>in_stock</g:availability>";
