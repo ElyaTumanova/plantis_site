@@ -96,8 +96,9 @@ function create_google_xml_btn () {
                 $product_img=wp_get_attachment_image_src(get_post_thumbnail_id($allproduct->ID),'full');  
 
                 if(is_array($product_img) && $product_img[0])
-                $google_xml .= "<g:image_link>".$product_img[0]."</g:image_link>
-                <g:condition>new</g:condition>
+                $google_xml .= "<g:image_link>".$product_img[0]."</g:image_link>";
+
+                $google_xml .= "<g:condition>new</g:condition>
                 <g:availability>in stock</g:availability>";
 
 
