@@ -284,7 +284,7 @@ function plnt_check_page() {
 	//echo wp_kses_data(WC()->cart->get_cart_contents_count());
 	echo rand(5, 150);
 
-	$gallery_image_ids = get_gallery_image_ids(8710);
+	//$gallery_image_ids = get_gallery_image_ids(8710);
 
 
 	$product_img=get_post_gallery_images(8710);  
