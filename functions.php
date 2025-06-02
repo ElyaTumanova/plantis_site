@@ -283,15 +283,6 @@ function plnt_check_page() {
 	//echo  basename( get_page_template() );
 	//echo wp_kses_data(WC()->cart->get_cart_contents_count());
 	echo rand(5, 150);
-
-	$product_id = '8710';
-    $product = new WC_product($product_id);
-    $attachment_ids = $product->get_gallery_image_ids();
-
-	foreach( $attachment_ids as $attachment_id ){
-		// Display the image URL
-		echo $Original_image_url = wp_get_attachment_url( $attachment_id );
-	}
 }
 
 //add_action( 'wp_footer', 'plnt_check_page' );
