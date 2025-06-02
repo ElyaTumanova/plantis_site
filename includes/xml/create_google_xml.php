@@ -111,8 +111,13 @@ function create_google_xml_btn () {
                 $google_xml .= "<g:condition>new</g:condition>";
                 
                 $stock_status = $product->get_stock_status();
+                $stock_qty = $product->get_stock_quantity();
                 if ($stock_status == 'instock') {
-                    $google_xml .= "<g:availability>in_stock</g:availability>";
+                    if($stock_qty > 0) {
+                        $google_xml .= "<g:availability>in_stock</g:availability>";
+                    } else {
+                        $google_xml .= "<g:availability>preorder</g:availability>";
+                    }
                 }
                 if ($stock_status == 'outofstock') {
                     $google_xml .= "<g:availability>out_of_stock</g:availability>";
