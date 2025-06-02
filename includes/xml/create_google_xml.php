@@ -31,14 +31,14 @@ function create_google_xml_btn () {
                 'post_type'      => 'product',
                 'posts_per_page' => -1,
                 'post_status'    => 'publish',
-                'meta_query' => array( 
-                    array(
-                        'key' => '_stock',
-                        'type'    => 'numeric',
-                        'value' => '0',
-                        'compare' => '>'
-                    )
-                ),
+                // 'meta_query' => array( 
+                //     array(
+                //         'key' => '_stock',
+                //         'type'    => 'numeric',
+                //         'value' => '0',
+                //         'compare' => '>'
+                //     )
+                // ),
                 'tax_query' => array(
                     array(
                         'taxonomy' => 'product_cat',
@@ -55,6 +55,7 @@ function create_google_xml_btn () {
             $allproductscount = count($allproducts);
 
             foreach($allproducts as $allproduct){
+                $product = new WC_product($allproduct->ID);
                
                 // Определяем последую категорию в дереве, к которой присвоен конкретный товар в текущем цикле. В примере участвует кастомная таксономия 'products_category', её замените на ту, которая создана у вас.
                 $lastcateg='';
@@ -99,7 +100,6 @@ function create_google_xml_btn () {
                 $google_xml .= "<g:image_link>".$product_img[0]."</g:image_link>";
 
                 //дополнительные изображения товара
-                $product = new WC_product($allproduct->ID);
                 $attachment_ids = $product->get_gallery_image_ids();
 
                 foreach( $attachment_ids as $attachment_id ){
@@ -108,8 +108,10 @@ function create_google_xml_btn () {
                     <g:additional_image_link>".wp_get_attachment_url( $attachment_id )."</g:additional_image_link>";
 	            };
 
-                $google_xml .= "<g:condition>new</g:condition>
-                <g:availability>in stock</g:availability>";
+                $google_xml .= "<g:condition>new</g:condition>";
+                
+                $stock_status = $product->get_stock_status();
+                $google_xml .= "<g:condition>".$stock_status."</g:condition>";
 
 
                 // Получаем цену товара
@@ -146,7 +148,7 @@ function create_google_xml_btn () {
                 //     }
                 // }
 
-                //Закрыли тег оффер
+                //Закрыли тег item
                 $google_xml .= "</item>
                 ";
             }
