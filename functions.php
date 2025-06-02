@@ -284,7 +284,7 @@ function plnt_check_page() {
 	//echo wp_kses_data(WC()->cart->get_cart_contents_count());
 	//echo rand(5, 150);
 
-	$backorderdate = date( "y.m.d", strtotime('+1 week') );
+	$backorderdate = date( "d.m.y", strtotime('+1 week') );
 	echo ($backorderdate);
 	echo ('<br>');
 	echo date(DATE_ISO8601, strtotime($backorderdate));
