@@ -44,7 +44,7 @@ function create_google_xml_btn () {
                         'taxonomy' => 'product_cat',
                         'field' => 'id',
                         'operator' => 'NOT IN',
-                        'terms' => [$treez_poliv_cat_id, $plants_treez_cat_id, $peresadka_cat_id, $misc_cat_id],
+                        'terms' => [$treez_poliv_cat_id, $peresadka_cat_id, $misc_cat_id],
                         'include_children' => 1,
                     )
                 )
