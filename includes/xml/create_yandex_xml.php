@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function create_yandex_xml_btn () {
 	?>
-	<button class="xml_button">Создать фид</button>
+	<button class="xml_button xml_button_yandex">Создать фид для Яндекса</button>
 	<script>
         function create_yandex_xml(){
             <?php 
@@ -275,13 +275,13 @@ function create_yandex_xml_btn () {
             ?>
 		}
 
-        const intervalId = setInterval(function() {
+        const intervalIdY = setInterval(function() {
         create_yandex_xml();
         }, 21600000);
 
-		const element = document.querySelector('.xml_button');
+		const elementY = document.querySelector('.xml_button_yandex');
 
-        element.addEventListener('click', function (event) {
+        elementY.addEventListener('click', function (event) {
             create_yandex_xml();
             console.log('YML фид создан');
             let allproductscount = <?php echo $allproductscount; ?>;
