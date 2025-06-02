@@ -229,6 +229,10 @@ input[type="search"], input[type="search"]:focus-visible {
     left: 10px;
 }
 
+.search-result__item {
+    position: relative;
+}
+
 .search-result__item:first-child {
     padding-top: 20px;
 }

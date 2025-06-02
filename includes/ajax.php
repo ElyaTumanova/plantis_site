@@ -16,6 +16,9 @@ function plnt_search_ajax_action_callback (){
         'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
         'post_status' => 'publish',
         's' => $_POST['s'],
+        'orderby' => 'meta_value',
+	    'meta_key' => '_stock_status',
+        'order' => 'ASC',
         // 'posts_per_page' => -1,
         'meta_query' => array( 
             array(
@@ -51,6 +54,7 @@ function plnt_search_ajax_action_callback (){
             ?>
             <div class="search-result__item">
                 <a href="<?php echo get_permalink();?>" class="search-result__link" target="blank">
+                    <?php plnt_check_stock_status();?>
                     <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );?>" class="search-result__image" alt="<?php echo get_the_title();?>">
                     <div class="search-result__info">
                         <span class="search-result__title"><?php echo get_the_title();?></span>
