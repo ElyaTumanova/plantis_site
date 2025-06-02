@@ -113,11 +113,11 @@ function create_google_xml_btn () {
                 $stock_status = $product->get_stock_status();
                 $stock_qty = $product->get_stock_quantity();
                 if(check_category($product) === $plants_cat_id) {
-                    $backorderdate = date( "d.m", strtotime('next wednesday +2 week') );
+                    $backorderdate = date( "yyyy.mm.dd", strtotime('next wednesday +2 week') );
                 } else {
-                    $backorderdate = date( "d.m", strtotime('+1 week') );;
+                    $backorderdate = date( "yyyy.mm.dd", strtotime('+1 week') );;
                 }
-                //$backorderdate_formatted = $backorderdate->format(DateTime::ATOM);
+                $backorderdate->format(DateTime::ATOM)
                 if ($stock_status == 'instock') {
                     if($stock_qty > 0) {
                         $google_xml .= "<g:availability>in_stock</g:availability>";
