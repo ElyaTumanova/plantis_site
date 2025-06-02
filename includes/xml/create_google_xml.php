@@ -155,9 +155,9 @@ function create_google_xml_btn () {
         create_google_xml();
         }, 21600000);
 
-		const element = document.querySelector('.xml_button_google');
+		const elementG = document.querySelector('.xml_button_google');
 
-        element.addEventListener('click', function (event) {
+        elementG.addEventListener('click', function (event) {
             create_google_xml();
             console.log('Google фид создан');
             let allproductscount = <?php echo $allproductscount; ?>;

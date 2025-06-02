@@ -279,9 +279,9 @@ function create_yandex_xml_btn () {
         create_yandex_xml();
         }, 21600000);
 
-		const element = document.querySelector('.xml_button_yandex');
+		const elementY = document.querySelector('.xml_button_yandex');
 
-        element.addEventListener('click', function (event) {
+        elementY.addEventListener('click', function (event) {
             create_yandex_xml();
             console.log('YML фид создан');
             let allproductscount = <?php echo $allproductscount; ?>;
