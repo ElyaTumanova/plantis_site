@@ -284,11 +284,12 @@ function plnt_check_page() {
 	//echo wp_kses_data(WC()->cart->get_cart_contents_count());
 	echo rand(5, 150);
 
-	//$gallery_image_ids = get_gallery_image_ids(8710);
-
+	$product_id = '8710';
+    $product = new WC_product($product_id);
+    $attachment_ids = $product->get_gallery_image_ids();
 
 	$product_img=get_post_gallery_images(8710);  
-	print_r($product_img);
+	print_r($attachment_ids);
 }
 
 add_action( 'wp_footer', 'plnt_check_page' );
