@@ -112,17 +112,20 @@ function create_google_xml_btn () {
                 
                 $stock_status = $product->get_stock_status();
                 $stock_qty = $product->get_stock_quantity();
+                date_default_timezone_set('Europe/Moscow');
+	            
                 if(check_category($product) === $plants_cat_id) {
-                    $backorderdate = date( "yyyy.mm.dd", strtotime('next wednesday +2 week') );
+                    $backorderdate = date( "d.m.Y H:i:s", strtotime('next wednesday +2 week') );
                 } else {
-                    $backorderdate = date( "yyyy.mm.dd", strtotime('+1 week') );
+                    $backorderdate = date( "d.m.Y H:i:s", strtotime('+1 week') );
                 }
+                $backorderdate_formatte = date(DATE_ISO8601, strtotime($backorderdate));
                 if ($stock_status == 'instock') {
                     if($stock_qty > 0) {
                         $google_xml .= "<g:availability>in_stock</g:availability>";
                     } else {
                         $google_xml .= "<g:availability>preorder</g:availability>";
-                        $google_xml .= "<g:availability_date>".$backorderdate."</g:availability_date>";
+                        $google_xml .= "<g:availability_date>".$backorderdate_formatte."</g:availability_date>";
                     }
                 }
                 if ($stock_status == 'outofstock') {
@@ -130,7 +133,7 @@ function create_google_xml_btn () {
                 }
                 if ($stock_status == 'onbackorder') {
                     $google_xml .= "<g:availability>preorder</g:availability>";
-                    $google_xml .= "<g:availability_date>".$backorderdate."</g:availability_date>";
+                    $google_xml .= "<g:availability_date>".$backorderdate_formatte."</g:availability_date>";
                 }
 
 
