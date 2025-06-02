@@ -151,7 +151,7 @@ function create_google_xml_btn () {
             ?>
 		}
 
-        const intervalId = setInterval(function() {
+        const intervalIdG = setInterval(function() {
         create_google_xml();
         }, 21600000);
 

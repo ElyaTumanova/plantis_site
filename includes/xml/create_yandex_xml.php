@@ -275,7 +275,7 @@ function create_yandex_xml_btn () {
             ?>
 		}
 
-        const intervalId = setInterval(function() {
+        const intervalIdY = setInterval(function() {
         create_yandex_xml();
         }, 21600000);
 
