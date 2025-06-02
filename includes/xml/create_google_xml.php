@@ -120,7 +120,7 @@ function create_google_xml_btn () {
                         if(check_category($product) === $plants_cat_id) {
                             $backorderdate = date( "d.m", strtotime('next wednesday +2 week') );
                             $backorderdate_formatted = $backorderdate->format(DateTime::ATOM);
-                            $google_xml .= "<g:availability_date>".$backorderdate_formatted."</g:availability_date>";
+                            $google_xml .= "<g:availability_date>".$backorderdate."</g:availability_date>";
                         }
                     }
                 }
