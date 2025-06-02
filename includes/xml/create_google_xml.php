@@ -104,7 +104,7 @@ function create_google_xml_btn () {
                 // Получаем цену товара
                 $sale = get_post_meta($allproduct->ID, '_sale_price', true);
                 if ($sale>0) {
-                    $google_xml .= "<g:sale_price>".get_post_meta($allproduct->ID,'_sale_price',true)." RUB</g:sale_price>
+                    $google_xml .= "<g:sale_price>".number_format(get_post_meta($allproduct->ID,'_sale_price',true),2,'.','')." RUB</g:sale_price>
                     <g:price>".get_post_meta($allproduct->ID,'_regular_price',true)." RUB</g:price>";
                 } else {
                     $google_xml .= "<g:price>".get_post_meta($allproduct->ID,'_price',true)." RUB</g:price>";
