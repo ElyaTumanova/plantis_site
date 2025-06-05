@@ -170,19 +170,14 @@ function plnt_product_gallery( $options ) {
 
 //цена и кнопка в корзину, кнопка в избранное
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
-//remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 remove_action('woocommerce_before_single_product','woocommerce_output_all_notices', 10); /* убрать уведомления woocommerce*/
 
 add_filter( 'woocommerce_cart_redirect_after_error', '__return_false' );  //остановка перезагрузки страницы (перадресации) при ошибке добаления товара в корзину
 add_filter( 'wc_add_to_cart_message_html', '__return_false' ); //Удалить сообщение «Товар добавлен в корзину..»
 
-global $product;
-if ($product->get_type() == 'gift-card') {
-  add_action('woocommerce_after_single_product_summary', 'woocommerce_template_single_add_to_cart', 5);
-} else {
-  add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 5);
-}
 
+add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 5);
 
 function for_dev() {
     global $product;
@@ -197,31 +192,32 @@ function for_dev() {
 }
 
 function plnt_price_wrap(){
-  ?>
-  <div class="card__price-wrap">
-      <div class = "card__add-to-cart-wrap">
-          <?php
-          //echo for_dev();
-          woocommerce_template_single_price();
-          ?> 
-          <div class="card__price-btns-wrap">
-              <?php
+  woocommerce_template_single_add_to_cart();
+    ?>
+    <div class="card__price-wrap">
+        <div class = "card__add-to-cart-wrap">
+            <?php
+            //echo for_dev();
+            woocommerce_template_single_price();
+            ?> 
+            <div class="card__price-btns-wrap">
+                <?php
                 global $product;
-              if ( $product->get_stock_status() ==='outofstock') {
-                  plnt_outofstock_btn();
-              } else {
-                  plnt_get_add_to_card();
-              }
-              ?>
-          </div>
-          <span class = "backorder-info">В наличии <?php echo $product->get_stock_quantity();?> шт. Если вы хотите заказать большее количество, то ориентировочная дата доставки из Европы <?php echo plnt_set_backorders_date();?>. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</span>
-      </div>
-      <?php
-      // peresadka_init
-      //plnt_get_peresadka_add_to_cart();
-      ?>
-  </div>
-  <?php
+                if ( $product->get_stock_status() ==='outofstock') {
+                    plnt_outofstock_btn();
+                } else {
+                    plnt_get_add_to_card();
+                }
+                ?>
+            </div>
+            <span class = "backorder-info">В наличии <?php echo $product->get_stock_quantity();?> шт. Если вы хотите заказать большее количество, то ориентировочная дата доставки из Европы <?php echo plnt_set_backorders_date();?>. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</span>
+        </div>
+        <?php
+        // peresadka_init
+        //plnt_get_peresadka_add_to_cart();
+        ?>
+    </div>
+    <?php
 };
 
 // peresadka
