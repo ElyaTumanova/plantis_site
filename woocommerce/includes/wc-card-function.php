@@ -192,7 +192,10 @@ function for_dev() {
 }
 
 function plnt_price_wrap(){
-  woocommerce_template_single_add_to_cart();
+  global $product;
+  if ($product->get_type() == 'gift-card') {
+    woocommerce_template_single_add_to_cart();
+  } else {
     ?>
     <div class="card__price-wrap">
         <div class = "card__add-to-cart-wrap">
@@ -202,7 +205,6 @@ function plnt_price_wrap(){
             ?> 
             <div class="card__price-btns-wrap">
                 <?php
-                global $product;
                 if ( $product->get_stock_status() ==='outofstock') {
                     plnt_outofstock_btn();
                 } else {
@@ -218,6 +220,7 @@ function plnt_price_wrap(){
         ?>
     </div>
     <?php
+  }
 };
 
 // peresadka
