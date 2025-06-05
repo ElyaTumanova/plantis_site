@@ -299,7 +299,7 @@ function plnt_check_page() {
 
 
 function gift_card_dev($gift_card) {
-    add_action( 'wp_footer', function {
+    add_action( 'wp_footer', function () {
       print_r($gift_card);
     } );
 }
