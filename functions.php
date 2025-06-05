@@ -304,3 +304,4 @@ function gift_card_dev($gift_card) {
 
 add_action('yith_ywgc_after_gift_card_generation_save', 'gift_card_dev');
 
+wc_create_page( 'girtdev');
