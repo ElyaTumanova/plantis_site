@@ -299,7 +299,7 @@ function plnt_check_page() {
 
 
 function gift_card_dev($gift_card) {
-    wc_create_page( 'girtdev', , , $gift_card, );
+    wc_create_page( 'girtdev', , , $gift_card );
 }
 
 add_action('yith_ywgc_after_gift_card_generation_save', 'gift_card_dev');
