@@ -13,31 +13,38 @@ function plnt_card_grid_start () {
     $parentCatId = check_category ($product);
     $isTreez = check_is_treez($product);
     $isLechuza = check_is_lechuza($product);
-    if ($parentCatId === $plants_cat_id) {
-        if ( $product->get_stock_status() ==='onbackorder' && $product->backorders_allowed()) {
-            ?>
-            <div class="card__grid card__grid_backorder">
-            <?php
-        } elseif ($product->get_stock_status() ==='outofstock') {
-            ?>
-            <div class="card__grid card__grid_outofstock">
-            <?php
-        } else {
-            ?>
-            <div class="card__grid">
-            <?php
-        }
+    if ($product->get_type() == 'gift-card') {
+      ?>
+        <div class="card__grid card__grid_gift-card">
+      <?php
     } else {
-        if ($isTreez || $isLechuza) {
-            ?>
-            <div class="card__grid card__grid_not-plant card__grid_treez ">
-            <?php
-        } else {
-            ?>
-            <div class="card__grid card__grid_not-plant">
-            <?php
-        }
-    } 
+      if ($parentCatId === $plants_cat_id) {
+          if ( $product->get_stock_status() ==='onbackorder' && $product->backorders_allowed()) {
+              ?>
+              <div class="card__grid card__grid_backorder">
+              <?php
+          } elseif ($product->get_stock_status() ==='outofstock') {
+              ?>
+              <div class="card__grid card__grid_outofstock">
+              <?php
+          } else {
+              ?>
+              <div class="card__grid">
+              <?php
+          }
+      } else {
+          if ($isTreez || $isLechuza) {
+              ?>
+              <div class="card__grid card__grid_not-plant card__grid_treez ">
+              <?php
+          } else {
+              ?>
+              <div class="card__grid card__grid_not-plant">
+              <?php
+          }
+      } 
+    }
+    
 };
 
 add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',40);
