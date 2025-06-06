@@ -283,7 +283,7 @@ function plnt_check_page() {
 	//echo  basename( get_page_template() );
 	//echo wp_kses_data(WC()->cart->get_cart_contents_count());
 	//echo rand(5, 150);
-  print_r(wc_get_product( 57313 );)
+  print_r(wc_get_product( 57313 ));
 }
 
 add_action( 'wp_footer', 'plnt_check_page' );
