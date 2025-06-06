@@ -312,3 +312,9 @@ function email_gftcard_link($apply_discount_url, $args, $gift_card) {
 
 add_action('yith_ywgc_after_gift_card_generation_save', 'gift_card_dev');
 
+add_action ('ywgc_gift_card_email_after_preview', 'gift_card_email_dev');
+
+function gift_card_email_dev() {
+  echo 'lalala';
+}
+
