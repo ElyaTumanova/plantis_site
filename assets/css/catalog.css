@@ -245,11 +245,11 @@
 }
 
 .catalog__grid .products.columns-2 .product { /*количетсво столбцов по умолчанию на классе columns-2*/
-    width: calc(100% / 2 - 16px);
+    width: calc(100% / 2 - 8px);
 }
 
 .catalog__grid .products.columns-2_other .product {
-    width: calc(100% / 3 - 8px);
+    width: calc(100% / 3 - 18px);
 }
 
 .catalog__grid .products.columns-3 .product { /* to be deleted*/
