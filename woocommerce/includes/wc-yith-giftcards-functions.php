@@ -38,6 +38,6 @@ function add_email_gift_card_link($gift_card) {
 }
 
 //
-add_filter( 'ywgc_gift_card_code_form_cart_hook', 'woocommerce_checkout_order_review');
+add_action( 'woocommerce_checkout_order_review', 'show_field_for_gift_code', 25);
 
 
