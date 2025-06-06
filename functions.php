@@ -45,6 +45,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	require get_template_directory() . '/woocommerce/includes/wc-card-function.php';
 	require get_template_directory() . '/woocommerce/includes/wc-catalog-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-yith-wishlist-finctions.php';
+	require get_template_directory() . '/woocommerce/includes/wc-yith-giftcards-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-account-functions.php';
 }
 
@@ -288,37 +289,3 @@ function plnt_check_page() {
 
 //add_action( 'wp_footer', 'plnt_check_page' );
 //add_action( 'wp_footer', 'plnt_dev_functions' );
-
-
-function gift_card_dev($gift_card) {
-    $post_data = array(
-    'post_title'    => wp_strip_all_tags( 'title' ),
-    'post_content'  => $gift_card->gift_card_number ,
-    'post_name' => 'gift-card-'.$gift_card->gift_card_number,
-    'post_status'   => 'publish',
-    'post_author'   => 1,
-  );
-
-  // Вставляем запись в базу данных
-  $post_id = wp_insert_post( $post_data );
-
-}
-add_action('yith_ywgc_after_gift_card_generation_save', 'gift_card_dev');
-
-
-add_filter( 'yith_ywgc_email_automatic_cart_discount_url', 'email_gftcard_link', 10, 3);
-
-function email_gftcard_link($apply_discount_url, $args, $gift_card) {
-    $apply_discount_url = 'http://new.plantis.shop/lalalal';
-    return $apply_discount_url;
-}
-
-
-
-add_action ('plnt_gift_card_email_after_preview', 'gift_card_email_dev');
-
-function gift_card_email_dev($gift_card) {
-  $link = 'http://new.plantis.shop/gift-card-'.$gift_card->gift_card_number;
-  echo $link;
-}
-
