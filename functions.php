@@ -286,7 +286,7 @@ function plnt_check_page() {
   print_r(wc_get_product( 57313 ));
 }
 
-add_action( 'wp_footer', 'plnt_check_page' );
+//add_action( 'wp_footer', 'plnt_check_page' );
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 
 
