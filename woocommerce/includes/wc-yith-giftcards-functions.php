@@ -38,7 +38,7 @@ function add_email_gift_card_link($gift_card) {
 }
 
 //
-add_filter( 'ywgc_gift_card_code_form_checkout_hook', 'woocommerce_checkout_order_review');
+add_filter( 'ywgc_gift_card_code_form_checkout_hook', 'set_gift_card_hook');
 
 function set_gift_card_hook() {
   return  'woocommerce_checkout_order_review';
