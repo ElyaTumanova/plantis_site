@@ -301,6 +301,8 @@ function gift_card_dev($gift_card) {
 
   // Вставляем запись в базу данных
   $post_id = wp_insert_post( $post_data );
+
+  add_filter( 'yith_ywgc_email_automatic_cart_discount_url', 'https://plantis.shop/lalala', $gift_card);
 }
 
 add_action('yith_ywgc_after_gift_card_generation_save', 'gift_card_dev');
