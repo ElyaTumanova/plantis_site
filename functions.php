@@ -303,18 +303,21 @@ function gift_card_dev($gift_card) {
   $post_id = wp_insert_post( $post_data );
 
 }
-//add_filter( 'yith_ywgc_email_automatic_cart_discount_url', 'email_gftcard_link');
+add_action('yith_ywgc_after_gift_card_generation_save', 'gift_card_dev');
+
+
+add_filter( 'yith_ywgc_email_automatic_cart_discount_url', 'email_gftcard_link', 10, 3);
 
 function email_gftcard_link($apply_discount_url, $args, $gift_card) {
     $apply_discount_url = 'http://new.plantis.shop/lalalal';
     return $apply_discount_url;
 }
 
-add_action('yith_ywgc_after_gift_card_generation_save', 'gift_card_dev');
 
-add_action ('ywgc_gift_card_email_after_preview', 'gift_card_email_dev');
+
+add_action ('plnt_gift_card_email_after_preview', 'gift_card_email_dev');
 
 function gift_card_email_dev() {
-  echo 'lalala';
+  echo 'hohoho';
 }
 
