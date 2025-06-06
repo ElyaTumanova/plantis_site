@@ -299,18 +299,17 @@ function plnt_check_page() {
 
 
 function gift_card_dev($gift_card) {
-    wc_create_page( 'girtdev','','', $gift_card );
+    $post_data = array(
+    'post_title'    => wp_strip_all_tags( 'title' ),
+    'post_content'  =>'post_content',
+    'post_name' => 'gift',
+    'post_status'   => 'publish',
+    'post_author'   => 1,
+  );
+
+  // Вставляем запись в базу данных
+  $post_id = wp_insert_post( $post_data );
 }
 
 add_action('yith_ywgc_after_gift_card_generation_save', 'gift_card_dev');
 
-// $post_data = array(
-// 	'post_title'    => wp_strip_all_tags( 'title' ),
-// 	'post_content'  =>'post_content',
-//   'post_name' => 'gift',
-// 	'post_status'   => 'publish',
-// 	'post_author'   => 1,
-// );
-
-// // Вставляем запись в базу данных
-// $post_id = wp_insert_post( $post_data );
