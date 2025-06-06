@@ -50,5 +50,5 @@ function set_gift_card_hook() {
 
 add_filter('ywgc_remove_gift_card_text', function (){
   return 'Удалить';
-})
+});
 
