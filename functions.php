@@ -303,7 +303,7 @@ function gift_card_dev($gift_card) {
   $post_id = wp_insert_post( $post_data );
 
 }
-add_filter( 'yith_ywgc_email_automatic_cart_discount_url', 'email_gftcard_link');
+//add_filter( 'yith_ywgc_email_automatic_cart_discount_url', 'email_gftcard_link');
 
 function email_gftcard_link($apply_discount_url, $args, $gift_card) {
     $apply_discount_url = 'http://new.plantis.shop/lalalal';
