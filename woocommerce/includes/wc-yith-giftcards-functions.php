@@ -36,3 +36,8 @@ function add_email_gift_card_link($gift_card) {
   $giftcard_link = 'http://new.plantis.shop/gift-card-'.$gift_card->gift_card_number;
   echo $giftcard_link;
 }
+
+//
+add_filter( 'ywgc_gift_card_code_form_cart_hook', 'woocommerce_checkout_order_review');
+
+
