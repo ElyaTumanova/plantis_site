@@ -318,7 +318,7 @@ function email_gftcard_link($apply_discount_url, $args, $gift_card) {
 add_action ('plnt_gift_card_email_after_preview', 'gift_card_email_dev');
 
 function gift_card_email_dev($gift_card) {
-  $link = 'http://new.plantis.shop/gift-card-'.$gift_card->gift_card_number
+  $link = 'http://new.plantis.shop/gift-card-'.$gift_card->gift_card_number;
   echo $link;
 }
 
