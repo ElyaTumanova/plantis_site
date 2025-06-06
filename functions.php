@@ -283,15 +283,7 @@ function plnt_check_page() {
 	//echo  basename( get_page_template() );
 	//echo wp_kses_data(WC()->cart->get_cart_contents_count());
 	//echo rand(5, 150);
- 	date_default_timezone_set('Europe/Moscow');
-	$backorderdate = date( "d.m.Y H:i:s", strtotime('next wednesday +2 week') );
-	echo ($backorderdate);
-	echo ('<br>');
-	// echo (strtotime($backorderdate));
-	// echo ('<br>');
-	// echo date('d.m.Y H:i:s', (strtotime($backorderdate)));
-	// echo ('<br>');
-	echo date(DATE_ISO8601, strtotime($backorderdate));
+  print_r(wc_get_product( 57313 );)
 }
 
 //add_action( 'wp_footer', 'plnt_check_page' );
@@ -301,7 +293,7 @@ function plnt_check_page() {
 function gift_card_dev($gift_card) {
     $post_data = array(
     'post_title'    => wp_strip_all_tags( 'title' ),
-    'post_content'  => $gift_card,
+    'post_content'  => $gift_card->gift_card_number ,
     'post_name' => 'gift',
     'post_status'   => 'publish',
     'post_author'   => 1,
