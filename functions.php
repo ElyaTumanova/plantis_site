@@ -294,7 +294,7 @@ function gift_card_dev($gift_card) {
     $post_data = array(
     'post_title'    => wp_strip_all_tags( 'title' ),
     'post_content'  => $gift_card->gift_card_number ,
-    'post_name' => 'gift',
+    'post_name' => 'gift-card-'.$gift_card->gift_card_number,
     'post_status'   => 'publish',
     'post_author'   => 1,
   );
@@ -317,7 +317,8 @@ function email_gftcard_link($apply_discount_url, $args, $gift_card) {
 
 add_action ('plnt_gift_card_email_after_preview', 'gift_card_email_dev');
 
-function gift_card_email_dev() {
-  echo 'hohoho';
+function gift_card_email_dev($gift_card) {
+  $link = 'http://new.plantis.shop/gift-card-'.$gift_card->gift_card_number
+  echo $link;
 }
 
