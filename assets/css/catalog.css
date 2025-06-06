@@ -244,12 +244,12 @@
     row-gap: 26px;
 }
 
-.catalog__grid .products.columns-2 .product {
-    width: calc(100% / 3 - 16px);
+.catalog__grid .products.columns-2 .product { /*количетсво столбцов по умолчанию на классе columns-2*/
+    width: calc(100% / 2 - 16px);
 }
 
-.catalog__grid .products.columns-2_large .product {
-    width: calc(100% / 2 - 8px);
+.catalog__grid .products.columns-2_other .product {
+    width: calc(100% / 3 - 8px);
 }
 
 .catalog__grid .products.columns-3 .product { /* to be deleted*/

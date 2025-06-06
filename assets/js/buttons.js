@@ -136,15 +136,15 @@ if(catalogWrap) {
     }
     
     function make_2_grid_columns () {
-        catalogGrid.classList.add ('columns-2_large');
-        catalogGrid.classList.remove ('columns-2');
+        catalogGrid.classList.add ('columns-2');
+        catalogGrid.classList.remove ('columns-2_other');
         gridButton2.disabled = true;
         gridButton3.disabled = false;
     };
     
     function make_3_grid_columns () {
-        catalogGrid.classList.remove ('columns-2_large');
-        catalogGrid.classList.add ('columns-2');
+        catalogGrid.classList.remove ('columns-2');
+        catalogGrid.classList.add ('columns-2_other');
         gridButton2.disabled = false;
         gridButton3.disabled = true;
     };
