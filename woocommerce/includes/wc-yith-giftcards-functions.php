@@ -44,7 +44,11 @@ function set_gift_card_hook() {
   return  'woocommerce_checkout_order_review';
 }
 
-remove_action( 'woocommerce_review_order_before_order_total', 'show_gift_card_amount_on_cart_totals');
+// remove_action( 'woocommerce_review_order_before_order_total', 'show_gift_card_amount_on_cart_totals');
 
-add_action('woocommerce_checkout_order_review','show_gift_card_amount_on_cart_totals',25);
+// add_action('woocommerce_checkout_order_review','show_gift_card_amount_on_cart_totals',25);
+
+add_filter('ywgc_remove_gift_card_text', function (){
+  return 'Удалить';
+})
 
