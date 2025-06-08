@@ -744,6 +744,12 @@ label.list-view {
    font-size: 20px;
 }
 
+/*gift card*/
+
+.ywgc_apply_gift_card_button {
+    background-color: var(--accent-color) !important;
+}
+
 /* radio button */
 
 /* для элемента input c type="radio" */
