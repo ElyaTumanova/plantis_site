@@ -119,6 +119,7 @@ Contents
     add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 25 );
 
     function plnt_order_total() {
+            do_action( 'plnt_woocommerce_checkout_gift_card' );
             ?>
             <div class="plnt-order-total">
                 <div>Итого</div>
