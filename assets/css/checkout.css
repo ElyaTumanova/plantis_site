@@ -753,6 +753,7 @@ label.list-view {
     display: flex;
     align-items: center;
     color: var(--text);
+    box-shadow: none;
 }
 
 .ywgc-gift-card-applied {
@@ -782,7 +783,6 @@ label.list-view {
 .ywgc_enter_code {
     margin: 0;
     padding: 10px 0;
-    box-shadow: none;
 }
 
 .ywgc_enter_code input{
