@@ -123,8 +123,15 @@ Contents
         do_action( 'plnt_woocommerce_checkout_gift_card' );
     }
 
+    // хук перед итоговой стоимостью
+    add_action( 'woocommerce_checkout_order_review', 'plnt_set_before_order_total_hook', 30 );
+
+    function plnt_set_before_order_total_hook() {
+        do_action( 'woocommerce_review_order_before_order_total' );
+    }
+
     // итоговая стоимость
-    add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 30 );
+    add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 35 );
 
     function plnt_order_total() {
             ?>

@@ -126,7 +126,7 @@ defined( 'ABSPATH' ) || exit;
 			<?php endif; ?>
 		<?php endif; ?>
 
-		<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
+		<!-- <?php //do_action( 'woocommerce_review_order_before_order_total' ); ?> перенесла этот хук в другое место--> 
 
 		<!-- <tr class="order-total">
 			<th><?php //esc_html_e( 'Total', 'woocommerce' ); ?></th>
