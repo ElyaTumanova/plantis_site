@@ -782,6 +782,7 @@ label.list-view {
 .ywgc_enter_code {
     margin: 0;
     padding: 10px 0;
+    box-shadow: none;
 }
 
 .ywgc_enter_code input{
