@@ -496,6 +496,8 @@ Contents
         date_default_timezone_set('Europe/Moscow');
         $hour = date("H");
 
+        do_action( 'plnt_woocommerce_checkout_gift_card' );
+
         echo '<div class="checkout__comment">';
 
         //Срочная доставка "День в день"
