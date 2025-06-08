@@ -114,9 +114,17 @@ Contents
     //         <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a> <br>
     //         Важно! Срочную доставку "день в день" можно оформить до 18 часов.</div>';
     // }
+    
+    // хук для подарчной карты #giftcard
+
+    add_action( 'woocommerce_checkout_order_review', 'plnt_set_giftcard_hook', 25 );
+
+    function plnt_set_giftcard_hook() {
+        do_action( 'plnt_woocommerce_checkout_gift_card' );
+    }
 
     // итоговая стоимость
-    add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 25 );
+    add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 30 );
 
     function plnt_order_total() {
             ?>
@@ -349,7 +357,6 @@ Contents
             'id' => 'delivery_dates',
             'label' => 'Дата доставки (самовывоза)',
         ) );
-        do_action( 'plnt_woocommerce_checkout_gift_card' );
         echo '</div>';
     }
 
