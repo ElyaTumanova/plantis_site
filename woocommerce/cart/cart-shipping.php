@@ -101,3 +101,7 @@ $calculator_text          = '';
 	</td>
 	
 </tr>
+
+<tr class="woocommerce-shipping-gift-card">
+	<?php do_action( 'plnt_woocommerce_checkout_gift_card' ); ?>
+</tr>
