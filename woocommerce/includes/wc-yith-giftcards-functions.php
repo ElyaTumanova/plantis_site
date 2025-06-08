@@ -51,6 +51,6 @@ add_filter('ywgc_remove_gift_card_text', function (){
 });
 
 
-add_filter('yith_ywgc_cart_totals_gift_card_label',function (){
-  return 'Подарочный сертификат';
-});
+// add_filter('yith_ywgc_cart_totals_gift_card_label',function (){
+//   return 'Подарочный сертификат';
+// });
