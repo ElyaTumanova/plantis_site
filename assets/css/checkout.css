@@ -798,6 +798,9 @@ label.list-view {
     width: fit-content;
 }
 
+.ywgc_enter_code + .woocommerce-message {
+    display: none;
+}
 
 .ywgc_apply_gift_card_button {
     background-color: var(--accent-color) !important;
