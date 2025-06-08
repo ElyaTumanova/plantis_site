@@ -127,7 +127,12 @@ Contents
     add_action( 'woocommerce_checkout_order_review', 'plnt_set_before_order_total_hook', 30 );
 
     function plnt_set_before_order_total_hook() {
+        echo '<table>
+        <tbody>' ;
         do_action( 'woocommerce_review_order_before_order_total' );
+        echo '
+        </tbody>
+        </table>' ;
     }
 
     // итоговая стоимость
