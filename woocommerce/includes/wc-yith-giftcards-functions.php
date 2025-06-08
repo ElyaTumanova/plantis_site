@@ -38,8 +38,11 @@ function add_email_gift_card_link($gift_card) {
 }
 
 //
+// add_filter( 'ywgc_gift_card_code_form_checkout_hook', function (){
+//   return 'plnt_woocommerce_checkout_gift_card';
+// });
 add_filter( 'ywgc_gift_card_code_form_checkout_hook', function (){
-  return 'plnt_woocommerce_checkout_gift_card';
+  return 'woocommerce_checkout_order_review';
 });
 
 // function set_gift_card_hook() {
