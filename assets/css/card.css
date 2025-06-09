@@ -1019,5 +1019,8 @@ input[type="number"] {
   color: var(--white);
 }
 
+.ywgc-manual-amount-error {
+  float: none;
+}
 
 
