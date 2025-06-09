@@ -964,7 +964,17 @@ input[type="number"] {
   grid-area: message;
 }
 
-#ywgc-manual-amount, .gift-cards_form .selected_button  {
+.selected_button #ywgc-manual-amount  {
+  background-color: var(--background) !important;
+  height: auto;
+  margin: 0 !important;
+  border: none !important;
+}
+
+.selected_button #ywgc-manual-amount-div-wrapper  {
+  height: auto;
+}
+.gift-cards_form .selected_button  {
   background-color: var(--background) !important;
 }
 
