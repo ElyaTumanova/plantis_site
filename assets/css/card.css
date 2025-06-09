@@ -935,9 +935,11 @@ input[type="number"] {
 
 .gift-cards_form input {
   margin: 10px 0 0 !important;
+  outline: none;
 }
 .gift-cards_form textarea {
   margin: 10px 0 0 !important;
+  outline: none;
 }
 
 .gift-card-content-editor {
@@ -972,7 +974,7 @@ input[type="number"] {
 }
 
 .ywgc_select_amount_title, .gift-cards_form label {
-    font-size: 18px;
+    font-size: 18px !important;
     font-weight: 600;
 }
 
@@ -996,13 +998,22 @@ input[type="number"] {
 }
 .gift-cards_form .selected_button  {
   background-color: var(--background) !important;
+  margin-top: 10px;
 }
 
 .selected_button .ywgc-manual-currency-symbol {
   color: var(--text) !important;
   top: 0;
+  background-color: var(--background);
 }
 
+.gift_card_template_button {
+  margin-top: 5px;
+  width: 100%;
+  border: none;
+  background-color: var(--accent-color);
+  color: var(--white);
+}
 
 
 

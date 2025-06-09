@@ -99,5 +99,5 @@ add_filter('ywgc_edit_message_label', function (){
   return 'Поздравление';
 });
 add_filter('yith_wcgc_manual_amount_option_text', function (){
-  return 'Номинал';
+  return '';
 });
