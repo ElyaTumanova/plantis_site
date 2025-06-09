@@ -896,3 +896,23 @@ input[type="number"] {
         display: none;
     }
 }
+
+
+/* gift card page */
+
+.card__grid_gift-card {
+  display: flex;
+  flex-direction: column;
+}
+.card__grid_gift-card .card__image-wrap{
+  display: none;
+}
+.card__grid_gift-card .woocommerce-tabs{
+  display: none;
+}
+.card__grid_gift-card .card_banner{
+  display: none;
+}
+
+
+

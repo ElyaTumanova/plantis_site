@@ -77,5 +77,4 @@ global $skidki_cat_id;
 	</main><!-- #main -->
 </div><!-- #primary -->
 
-<?php echo do_shortcode('[add_to_cart id="57313"]');?>
 <?php get_footer(); ?>

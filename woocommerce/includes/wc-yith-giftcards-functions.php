@@ -3,6 +3,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/*--------------------------------------------------------------
+Contents
+#GENERAL DEV
+#EMAILS
+#CHECKOUT PAGE
+#PRODUCT PAGE
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+#GENERAL DEV
+--------------------------------------------------------------*/
+
 // создаем запись со станицей с подарочной картой
 function create_gift_card_page($gift_card) {
     $post_data = array(
@@ -20,7 +33,10 @@ function create_gift_card_page($gift_card) {
 
 add_action('yith_ywgc_after_gift_card_generation_save', 'create_gift_card_page');
 
-//
+/*--------------------------------------------------------------
+#EMAILS
+--------------------------------------------------------------*/
+
 add_filter( 'yith_ywgc_email_automatic_cart_discount_url', 'change_email_discount_link', 10, 3);
 
 function change_email_discount_link($apply_discount_url, $args, $gift_card) {
@@ -37,7 +53,10 @@ function add_email_gift_card_link($gift_card) {
   echo $giftcard_link;
 }
 
-// Checkout page
+/*--------------------------------------------------------------
+#CHECKOUT PAGE
+--------------------------------------------------------------*/
+
 // поменяли хук, на котором висит поле ввода подарочной карты на странице Checkout
 add_filter( 'ywgc_gift_card_code_form_checkout_hook', function (){
   return 'plnt_woocommerce_checkout_gift_card';
@@ -52,3 +71,19 @@ add_filter('ywgc_remove_gift_card_text', function (){
 // add_filter('yith_ywgc_cart_totals_gift_card_label',function (){
 //   return 'Подарочный сертификат';
 // });
+
+/*--------------------------------------------------------------
+#PRODUCT PAGE
+--------------------------------------------------------------*/
+
+add_action('woocommerce_before_single_product_summary','plnt_gift_card_info', 6);
+
+function plnt_gift_card_info() {
+  global $product;
+  if ($product->get_type() == 'gift-card') {
+    ?>
+      <div class="card__gift-card-info"> lalala
+      </div>
+    <?php
+  }
+}
