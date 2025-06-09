@@ -89,7 +89,10 @@ function plnt_gift_card_info() {
 }
 
 add_filter('ywgc_recipient_name_label', function (){
-  return 'Имя';
+  return 'Для кого подарок';
+});
+add_filter('ywgc_sender_name_label', function (){
+  return 'От кого подарок';
 });
 
 add_filter('ywgc_edit_message_label', function (){
