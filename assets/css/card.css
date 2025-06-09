@@ -907,6 +907,9 @@ input[type="number"] {
 .card__grid_gift-card .card__image-wrap{
   display: none;
 }
+.card__grid_gift-card .summary {
+  display: none;
+}
 .card__grid_gift-card .woocommerce-tabs{
   display: none;
 }
@@ -925,7 +928,10 @@ input[type="number"] {
 }
 
 .gift-cards_form input {
-  margin: 0 !important;
+  margin: 10px 0 0 !important;
+}
+.gift-cards_form textarea {
+  margin: 10px 0 0 !important;
 }
 
 .gift-card-content-editor {
@@ -957,5 +963,11 @@ input[type="number"] {
 .ywgc-message {
   grid-area: message;
 }
+
+#ywgc-manual-amount, .gift-cards_form .selected_button  {
+  background-color: var(--background) !important;
+}
+
+
 
 
