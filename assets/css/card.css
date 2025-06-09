@@ -938,7 +938,7 @@ input[type="number"] {
   row-gap: 20px;
   column-gap: 20px;
   padding: 30px;
-  background-color: aliceblue;
+  background-color: var(--accent-back);
   border-radius: 20px;
 }
 
