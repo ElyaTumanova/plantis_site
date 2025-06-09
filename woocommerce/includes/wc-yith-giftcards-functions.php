@@ -37,15 +37,13 @@ function add_email_gift_card_link($gift_card) {
   echo $giftcard_link;
 }
 
-//
+// Checkout page
+// поменяли хук, на котором висит поле ввода подарочной карты на странице Checkout
 add_filter( 'ywgc_gift_card_code_form_checkout_hook', function (){
   return 'plnt_woocommerce_checkout_gift_card';
 });
 
-//remove_action( 'woocommerce_review_order_before_order_total', 'show_gift_card_amount_on_cart_totals');
-
-// add_action('woocommerce_checkout_order_review','show_gift_card_amount_on_cart_totals',25);
-
+//изменили название поля для удаления кода карты
 add_filter('ywgc_remove_gift_card_text', function (){
   return '×';
 });
