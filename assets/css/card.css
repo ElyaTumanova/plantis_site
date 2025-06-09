@@ -922,6 +922,9 @@ input[type="number"] {
 .card__grid_gift-card .quantity{
   display: none;
 }
+.card__grid_gift-card .ywgc_delivery_info_title{
+  display: none;
+}
 
 .gift-cards_form {
   width: 100%;
@@ -969,10 +972,12 @@ input[type="number"] {
   height: auto;
   margin: 0 !important;
   border: none !important;
+  outline: none;
 }
 
 .selected_button #ywgc-manual-amount:focus, .selected_button #ywgc-manual-amount:active {
   border: none !important;
+  outline: none;
 }
 
 .selected_button #ywgc-manual-amount-div-wrapper  {
