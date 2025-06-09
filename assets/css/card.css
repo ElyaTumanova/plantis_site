@@ -971,6 +971,10 @@ input[type="number"] {
   border: none !important;
 }
 
+.selected_button #ywgc-manual-amount:focus, .selected_button #ywgc-manual-amount:active {
+  border: none !important;
+}
+
 .selected_button #ywgc-manual-amount-div-wrapper  {
   height: auto;
 }
