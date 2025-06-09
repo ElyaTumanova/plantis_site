@@ -932,12 +932,15 @@ input[type="number"] {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: auto auto;
+  grid-template-areas: 
+  "recepient sender"
+  "message message";
   row-gap: 20px;
   column-gap: 20px;
 }
 
 .ywgc-single-recipient {
-  order: 1;
+  grid-area: recepient;
   width: 49%;
   float: left;
 }
@@ -945,11 +948,11 @@ input[type="number"] {
   width: 100%;
 }
 .ywgc-send-and-delivery-container {
-  order: 2;
+  grid-area: sender;
   width: 49%;
 }
 .ywgc-message {
-  order: 3;
+  grid-area: message;
   width: 100%;
 }
 
