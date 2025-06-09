@@ -930,18 +930,26 @@ input[type="number"] {
 
 .gift-card-content-editor {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   row-gap: 20px;
+  column-gap: 20px;
 }
 
 .ywgc-single-recipient {
   order: 1;
+  width: 49%;
+  float: left;
+}
+.ywgc-single-recipient .ywgc-recipient-name{
+  width: 100%;
 }
 .ywgc-send-and-delivery-container {
   order: 2;
+  width: 49%;
 }
 .ywgc-message {
   order: 3;
+  width: 100%;
 }
 
 
