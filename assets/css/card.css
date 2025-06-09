@@ -928,6 +928,9 @@ input[type="number"] {
 
 .gift-cards_form {
   width: 100%;
+  padding: 30px;
+  background-color: var(--accent-back);
+  border-radius: 20px;
 }
 
 .gift-cards_form input {
@@ -946,9 +949,6 @@ input[type="number"] {
   "message message";
   row-gap: 20px;
   column-gap: 20px;
-  padding: 30px;
-  background-color: var(--accent-back);
-  border-radius: 20px;
 }
 
 .ywgc-single-recipient {
@@ -967,17 +967,28 @@ input[type="number"] {
   grid-area: message;
 }
 
+.gift-cards-list {
+  margin-bottom: 20px;
+}
+
+.ywgc_select_amount_title, .gift-cards_form label {
+    font-size: 18px;
+    font-weight: 600;
+}
+
 .selected_button #ywgc-manual-amount  {
   background-color: var(--background) !important;
   height: auto;
   margin: 0 !important;
   border: none !important;
   outline: none;
+  color: var(--text) !important;
 }
 
 .selected_button #ywgc-manual-amount:focus, .selected_button #ywgc-manual-amount:active {
   border: none !important;
   outline: none;
+  color: var(--text) !important;
 }
 
 .selected_button #ywgc-manual-amount-div-wrapper  {
@@ -985,6 +996,11 @@ input[type="number"] {
 }
 .gift-cards_form .selected_button  {
   background-color: var(--background) !important;
+}
+
+.selected_button .ywgc-manual-currency-symbol {
+  color: var(--text) !important;
+  top: 0;
 }
 
 
