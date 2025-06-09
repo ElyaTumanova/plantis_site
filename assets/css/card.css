@@ -916,6 +916,9 @@ input[type="number"] {
 .card__grid_gift-card .ywgc-recipient-email{
   display: none;
 }
+.card__grid_gift-card .quantity{
+  display: none;
+}
 
 
 
