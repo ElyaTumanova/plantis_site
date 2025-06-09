@@ -999,12 +999,14 @@ input[type="number"] {
 .gift-cards_form .selected_button  {
   background-color: var(--background) !important;
   margin-top: 10px;
+  height: 50px;
+  border-radius: 5px !important;
 }
 
 .selected_button .ywgc-manual-currency-symbol {
   color: var(--text) !important;
   top: 0;
-  background-color: var(--background);
+  background-color: var(--background) !important;
 }
 
 .gift_card_template_button {
