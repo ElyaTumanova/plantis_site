@@ -87,3 +87,11 @@ function plnt_gift_card_info() {
     <?php
   }
 }
+
+add_filter('ywgc_recipient_name_label', function (){
+  return 'Имя';
+});
+
+add_filter('ywgc_edit_message_label', function (){
+  return 'Поздравление';
+});
