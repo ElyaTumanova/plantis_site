@@ -102,14 +102,14 @@ function plnt_get_giftcard_popup() {
   }
 }
 
-// add_action('yith_gift_cards_template_before_add_to_cart_form', function (){
-//   echo '<div class="page-popup popup giftcard-popup">';
-// }, 10);
+add_action('yith_gift_cards_template_before_add_to_cart_form', function (){
+  echo '<div class="page-popup__container page-popup__container_giftcard">
+  <span class="page-popup__close heading-2"><svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.00045 24L24 0.999999M23.9995 24L0.999999 1" stroke="currentColor" stroke-miterlimit="10"></path></svg></span>';
+}, 10);
 
-// add_action('yith_gift_cards_template_after_add_to_cart_form', function (){
-//   echo '<div class="page-popup__popup-overlay popup-overlay"></div>
-//   </div>';
-// }, 10);
+add_action('yith_gift_cards_template_after_add_to_cart_form', function (){
+  echo '</div>';
+}, 10);
 
 add_filter('ywgc_recipient_name_label', function (){
   return 'Для кого подарок';
