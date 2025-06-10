@@ -12,7 +12,7 @@ function plntAjaxUpdateCartCount() {
       var data = {
         'action': 'plnt_update_header_cart_count'
       };
-      $.post(
+      $.get(
         woocommerce_params.ajax_url, // The AJAX URL
         data, // Send our PHP function
         function(response){
