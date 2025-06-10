@@ -936,10 +936,12 @@ input[type="number"] {
 .gift-cards_form input {
   margin: 10px 0 0 !important;
   outline: none;
+  padding: 3px 15px;
 }
 .gift-cards_form textarea {
   margin: 10px 0 0 !important;
   outline: none;
+  padding: 3px 15px;
 }
 
 .gift-card-content-editor {
@@ -997,7 +999,7 @@ input[type="number"] {
   height: auto;
 }
 .gift-cards_form .selected_button  {
-  background-color: var(--background) !important;
+  /* background-color: var(--background) !important; */
   margin-top: 10px;
   height: 50px;
   border-radius: 5px !important;
