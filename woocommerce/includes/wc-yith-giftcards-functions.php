@@ -82,7 +82,8 @@ function plnt_gift_card_info() {
   global $product;
   if ($product->get_type() == 'gift-card') {
     ?>
-      <div class="card__gift-card-info"> lalala
+      <div class="card__gift-card-info"> 
+        <?php get_template_part( 'template-parts/gift-card-info' );?>
         <button class='card__gift-card-buy button page-popup-open-btn'>Купить подарочную карту</button>
       </div>
     <?php
