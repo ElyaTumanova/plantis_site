@@ -88,6 +88,10 @@ function plnt_gift_card_info() {
   }
 }
 
+add_action('woocommerce_after_single_product_summary', function (){
+  echo '<div class="page-popup__popup-overlay popup-overlay"></div>';
+}, 4);
+
 add_filter('ywgc_recipient_name_label', function (){
   return 'Для кого подарок';
 });
@@ -101,3 +105,8 @@ add_filter('ywgc_edit_message_label', function (){
 add_filter('yith_wcgc_manual_amount_option_text', function (){
   return '';
 });
+add_filter('ywgc_add_to_cart_button_text', function (){
+  return 'В корзину';
+});
+
+
