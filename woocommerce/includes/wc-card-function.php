@@ -418,6 +418,7 @@ function plnt_get_cross_sells(){
 add_action('woocommerce_after_single_product_summary','plnt_card_ukhod_loop',50);
 
 function plnt_card_ukhod_loop() {
+    global $product;
     if ($product->get_type() != 'gift-card') {
         get_template_part('template-parts/products/products-ukhod');
     }
@@ -429,14 +430,16 @@ add_action('woocommerce_before_single_product','plnt_category_link',20);
 
 function plnt_category_link () {
     global $product;
-    $parentCat = check_category ($product);
-    $term = get_term($parentCat);
-    $link = get_term_link( $parentCat, 'product_cat' );
-    $name = $term->name;
-	echo '<div class="card__toback-link">
-	<span>prev</span>
-	<a href="' . $link . '">Каталог: '.$name.'</a>
-    </div>';
+    if ($product->get_type() != 'gift-card') {
+        $parentCat = check_category ($product);
+        $term = get_term($parentCat);
+        $link = get_term_link( $parentCat, 'product_cat' );
+        $name = $term->name;
+        echo '<div class="card__toback-link">
+        <span>prev</span>
+        <a href="' . $link . '">Каталог: '.$name.'</a>
+        </div>';
+    }
 }
 
 // поп-ап предзаказ preoprder popup
