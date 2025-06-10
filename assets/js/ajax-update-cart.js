@@ -45,7 +45,7 @@ function plntAjaxGetMiniCart() {
     var data = {
       'action': 'plnt_update_mini_cart'
     };
-    $.post(
+    $.get(
       woocommerce_params.ajax_url, // The AJAX URL
       data, // Send our PHP function
       function(response){
@@ -127,7 +127,7 @@ function plntAjaxUpdateWishCount() {
     //console.log('hi plntAjaxUpdateWishCount');
     jQuery( function( $ ) {
         $(document).ready( function() {
-            $.get( yith_wcwl_l10n.ajax_url, {
+            $.get( woocommerce_params.ajax_url, {
             action: 'yith_wcwl_update_wishlist_count'
             }, function( data ) {
             $('.yith-wcwl-items-count').children('i').html( data.count );
