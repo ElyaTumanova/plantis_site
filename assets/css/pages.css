@@ -490,3 +490,43 @@
     align-items: center;
     row-gap: 20px;
 }
+
+/*--------------------------------------------------------------
+# Gift card info
+--------------------------------------------------------------*/
+.giftcard-advantages {
+    display: grid;
+    grid-template: repeat(2, auto) / repeat(3,auto);
+    row-gap: 30px;
+    column-gap: 30px;
+    margin-right: 20px;
+}
+
+.giftcard-advantages__wrap {
+    row-gap: 15px;
+    display: grid;
+    grid-template:auto / 70px auto;
+    grid-template-areas: "photo desrc";
+}
+
+/* .giftcard-advantages__title {
+    grid-area: title;
+    margin: auto 0 auto 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 18px;
+} */
+
+.giftcard-advantages__image {
+    grid-area: photo;
+    width: 70px;
+    height: 70px;
+    margin: auto 10px auto 0;
+}
+
+.giftcard-advantages__descr {
+    grid-area: desrc;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+}
