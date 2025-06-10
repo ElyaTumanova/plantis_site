@@ -89,14 +89,27 @@ function plnt_gift_card_info() {
   }
 }
 
-add_action('yith_gift_cards_template_before_add_to_cart_form', function (){
-  echo '<div class="page-popup popup giftcard-popup">';
-}, 10);
+add_action('woocommerce_after_main_content','plnt_get_giftcard_popup',20);
 
-add_action('yith_gift_cards_template_after_add_to_cart_form', function (){
-  echo '<div class="page-popup__popup-overlay popup-overlay"></div>
-  </div>';
-}, 10);
+function plnt_get_giftcard_popup() {
+  global $product;
+  if ($product->get_type() == 'gift-card') {
+    ?>
+      <div class="page-popup popup giftcard-popup">
+        <div class="page-popup__popup-overlay popup-overlay"></div>
+      </div>
+    <?php
+  }
+}
+
+// add_action('yith_gift_cards_template_before_add_to_cart_form', function (){
+//   echo '<div class="page-popup popup giftcard-popup">';
+// }, 10);
+
+// add_action('yith_gift_cards_template_after_add_to_cart_form', function (){
+//   echo '<div class="page-popup__popup-overlay popup-overlay"></div>
+//   </div>';
+// }, 10);
 
 add_filter('ywgc_recipient_name_label', function (){
   return 'Для кого подарок';
