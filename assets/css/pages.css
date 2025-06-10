@@ -505,22 +505,21 @@
 .giftcard-advantages__wrap {
     row-gap: 15px;
     display: grid;
-    grid-template:auto / 70px auto;
+    grid-template:auto / 45px auto;
     grid-template-areas: "photo desrc";
+    align-items: center;
 }
 
-/* .giftcard-advantages__title {
-    grid-area: title;
+.giftcard-advantages__title {
     margin: auto 0 auto 10px;
-    text-transform: uppercase;
     font-weight: 600;
-    font-size: 18px;
-} */
+    font-size: 22px;
+}
 
 .giftcard-advantages__image {
     grid-area: photo;
-    width: 70px;
-    height: 70px;
+    width: 45px;
+    height: 45px;
     margin: auto 10px auto 0;
 }
 

@@ -5,6 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="giftcard-advantages">
+    <h2 class="giftcard-advantages__title">Преимущества подарочного сертификата</h2>
   <div class="giftcard-advantages__wrap">
     <img width="111" height="100" src="https://plantis.shop/wp-content/uploads/2023/11/фото_зел.svg" class="giftcard-advantages__image" alt="" loading="lazy">														
     <!-- <div class="giftcard-advantages__title">“Живые” фотографии</div>	 -->
