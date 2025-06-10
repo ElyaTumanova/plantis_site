@@ -88,9 +88,9 @@ function plnt_gift_card_info() {
   }
 }
 
-add_action('woocommerce_after_single_product_summary', function (){
+add_action('yith_gift_cards_template_before_add_to_cart_form', function (){
   echo '<div class="page-popup__popup-overlay popup-overlay"></div>';
-}, 4);
+}, 20);
 
 add_filter('ywgc_recipient_name_label', function (){
   return 'Для кого подарок';
