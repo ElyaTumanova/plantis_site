@@ -138,8 +138,6 @@ do_action( 'woocommerce_before_cart' ); ?>
 										<?php
 									}
 								}
-								
-								
 							?>
 							<!-- peresadka_init -->
 							<!-- <div class="cart__peresadka">
