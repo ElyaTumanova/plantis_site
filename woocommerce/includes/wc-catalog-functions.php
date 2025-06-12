@@ -523,7 +523,7 @@ function move_to_top_on_pagination() {
 	<?php
 	}
 
-add_action('wp_footer', 'move_to_top_on_pagination');
+add_action('woocommerce_after_main_content', 'move_to_top_on_pagination');
 
 // добавляем директивы ноиндекс, фоллоу для страниц пагинации, начиная со 2 #SEO
 add_filter( 'wpseo_robots', 'filter_wpseo_robots' );
