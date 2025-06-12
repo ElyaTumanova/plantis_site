@@ -507,7 +507,6 @@ function plnt_woocommerce_pagination_args_filter( $array ){
 }
 
 function move_to_top_on_pagination() {
-  echo 'hi move_to_top_on_pagination';
 	?>
 		<script>
 			jQuery(function ($) {
