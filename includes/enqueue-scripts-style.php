@@ -147,16 +147,15 @@ if ( ! function_exists( 'ast_styles' ) ) {
 }
 
 
-// add_action( 'wp_enqueue_scripts', 'plnt_no_filter_css', 999 );
+add_action( 'wp_enqueue_scripts', 'plnt_no_filter_css', 999 );
  
-// function plnt_no_filter_css() {
+function plnt_no_filter_css() {
  
-// 	// находимся на странице каталога сразу выходим из функции
-// 	// if( is_shop() || is_product_category() || is_product_tag() ) {
-// 	// 	return;
-// 	// }
+	// находимся на странице каталога сразу выходим из функции
+	// if( is_shop() || is_product_category() || is_product_tag() ) {
+	// 	return;
+	// }
  
-// 	wp_dequeue_style( 'berocket_aapf_widget-style' );
-// 	// wp_dequeue_script( 'contact-form-7' );
- 
-// }
+	wp_dequeue_style( 'yith-wcwl-font-awesome' );
+	// wp_dequeue_script( 'contact-form-7' );
+}
