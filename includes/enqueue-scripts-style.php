@@ -147,7 +147,7 @@ if ( ! function_exists( 'ast_styles' ) ) {
 }
 
 
-add_action( 'wp_enqueue_scripts', 'plnt_no_filter_css', 999 );
+add_action( 'wp_enqueue_scripts', 'plnt_no_filter_css', 9999 );
  
 function plnt_no_filter_css() {
  
