@@ -156,6 +156,6 @@ function plnt_no_filter_css() {
 	// 	return;
 	// }
  
-	wp_dequeue_style( 'yith-wcwl-font-awesome' );
+	wp_dequeue_style( 'font-awesome' );
 	// wp_dequeue_script( 'contact-form-7' );
 }
