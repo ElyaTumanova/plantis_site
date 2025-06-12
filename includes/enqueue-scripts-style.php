@@ -156,7 +156,7 @@ function plnt_no_filter_css() {
 	// 	return;
 	// }
  
-	//wp_dequeue_style( 'yith-wcwl-user-main' );
-	//wp_dequeue_style( 'yith-wcwl-main' );
+	wp_dequeue_style( 'yith-wcwl-user-main' ); //отключаем стили YITH wishlist так как font-awesome на критическом пути
+	wp_dequeue_style( 'yith-wcwl-main' ); //отключаем стили YITH wishlist так как font-awesome на критическом пути
 	// wp_dequeue_script( 'contact-form-7' );
 }
