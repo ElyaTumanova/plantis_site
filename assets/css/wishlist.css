@@ -29,6 +29,7 @@
     width: calc(100% / 3 - 32px);
     justify-content: space-between;
     row-gap: 0;
+    position: relative;
 }
 
 .wishlist-title-container {
@@ -124,11 +125,16 @@ table.wishlist_table tbody td.product-add-to-cart {
     max-width: 100% !important;
     width: 100% !important;
     position: relative;
+    margin-bottom: 7px;
 }
 
 .wishlist_table.mobile li .item-wrapper .product-remove{
     text-align: right;
     font-size: 25px;
+}
+
+.wishlist_table.mobile li .item-wrapper .product-remove a i{
+    font-style: normal;
 }
 
 .wishlist_table.mobile li .item-details {
@@ -168,6 +174,12 @@ table.wishlist_table tbody td.product-add-to-cart {
     font-size: 20px;
     font-weight: 700;
     line-height: 1.1;
+    margin-bottom: 7px;
+}
+
+.wishlist_table.mobile .item-details-table {
+  border: none;
+  margin-bottom: 7px;
 }
 
 .yith_wcwl_wishlist_footer .wishlist-actions>* {
