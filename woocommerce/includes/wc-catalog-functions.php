@@ -532,6 +532,9 @@ function filter_wpseo_robots( $robotsstr ) {
     if ( is_paged() ) {
         return 'noindex, follow';
     }
+    if ( is_page( 'wishlist' )  ) {
+        return 'noindex';
+    }
  
     return $robotsstr;
 }
