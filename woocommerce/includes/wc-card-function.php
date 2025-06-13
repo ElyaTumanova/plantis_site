@@ -6,9 +6,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 //определяем переменные
 add_action('woocommerce_before_single_product_summary','plnt_set_constants',4);
 function plnt_set_constants() {
-   global $product;
-   global $parentCatId;
-   $parentCatId = check_category ($product);
+  global $product;
+  global $parentCatId;
+  global  $isTreez;
+  global $isLechuza;
+  $parentCatId = check_category ($product);
+  $isTreez = check_is_treez($product);
+  $isLechuza = check_is_lechuza($product);
 
 }
 
@@ -97,9 +101,10 @@ function truemisha_reorder_tabs( $tabs ) {
 add_filter( 'woocommerce_product_tabs', 'truemisha_rename_tabs', 25 );
  
 function truemisha_rename_tabs( $tabs ) {
-    global $product;
+    // global $product;
+    global $parentCatId;
     global $plants_cat_id;
-    $parentCatId = check_category($product);
+    // $parentCatId = check_category($product);
     if( $parentCatId === $plants_cat_id ) {
         $tabs[ 'additional_information' ][ 'title' ] = 'Уход и характеристики';
     } else {
@@ -190,9 +195,10 @@ add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 5);
 
 function for_dev() {
     global $product;
+    global $parentCatId;
     echo 'stock qty '.$product->get_stock_quantity();
     echo '<br>';
-    echo 'parent cat '.check_category ($product);
+    echo 'parent cat '.$parentCatId;
     echo '<br>';
     //print_r($product);
     $isTreez = check_is_treez($product);
@@ -269,8 +275,9 @@ function plnt_get_add_to_card() {
 
 function plnt_check_stock_status() {
     global $product;
+    global $parentCatId
     global $plants_cat_id;
-    $parentCatId = check_category ($product);
+    //$parentCatId = check_category ($product);
     if ($parentCatId === $plants_cat_id) {
         if ( $product->get_stock_status() ==='instock' ) {
             ?>
@@ -387,7 +394,8 @@ function plnt_upsells_heading () {
     global $gorshki_cat_id;
     global $treez_cat_id;
     global $lechuza_cat_id;
-    $parentCatId = check_category ($product);
+    global $parentCatId;
+    //$parentCatId = check_category ($product);
     switch ($parentCatId) {
         case $plants_cat_id:				//category ID for plants
             return 'Этому растению подойдет';
@@ -425,9 +433,10 @@ add_action('woocommerce_before_single_product','plnt_category_link',20);
 
 function plnt_category_link () {
     global $product;
-    $parentCat = check_category ($product);
-    $term = get_term($parentCat);
-    $link = get_term_link( $parentCat, 'product_cat' );
+    global $parentCatId;
+    //$parentCat = check_category ($product);
+    $term = get_term($parentCatId);
+    $link = get_term_link( $parentCatId, 'product_cat' );
     $name = $term->name;
 	echo '<div class="card__toback-link">
 	<span>prev</span>
@@ -487,8 +496,6 @@ function check_is_treez($product) {
     global $plants_treez_cat_id;
 
     $idCats = $product->get_category_ids();
-
-    //$parentCatId = check_category ($product);
     
     //$isTreez = $parentCatId === $treez_cat_id || $parentCatId === $plants_treez_cat_id || $parentCatId === $treez_poliv_cat_id || ($product->get_stock_status() ==='onbackorder' && in_array($treez_cat_id, $idCats));
     $isTreez = (!$product->get_manage_stock() && in_array($treez_cat_id, $idCats)) || in_array($plants_treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats);
@@ -499,8 +506,6 @@ function check_is_lechuza($product) {
     global $lechuza_cat_id;
 
     $idCats = $product->get_category_ids();
-
-    //$parentCatId = check_category ($product);
     
     //$isLechuza = $parentCatId === $lechuza_cat_id || ($product->get_stock_status() ==='onbackorder' && in_array($lechuza_cat_id, $idCats));
     $isLechuza = (!$product->get_manage_stock() && in_array($lechuza_cat_id, $idCats)) ;
