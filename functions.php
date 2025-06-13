@@ -273,6 +273,7 @@ function plnt_check_page() {
 		echo 'Это какая-то другая страница.';
 	}
 
+  echo yith_wcwl_count_all_products();
 	// if(is_page_template('themes/plantis_site/woocommerce/loop/no-products-found.php')) {
 	// 	echo 'Это то что нужно';
 	// }
