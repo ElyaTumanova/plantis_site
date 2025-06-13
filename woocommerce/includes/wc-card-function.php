@@ -438,8 +438,8 @@ function plnt_category_link () {
     $term = get_term($parentCat);
     $link = get_term_link( $parentCat, 'product_cat' );
     $name = $term->name;
-    echo $parentCatId;
-    echo $parentCat;
+    echo 'parentCatId'.$parentCatId;
+    echo 'parentCat'.$parentCat;
 
     echo '<div class="card__toback-link">
     <span>prev</span>
