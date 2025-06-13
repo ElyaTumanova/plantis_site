@@ -70,11 +70,11 @@ add_filter( 'woocommerce_product_tabs', 'plnt_new_product_tab', 25 );
 function plnt_new_product_tab($tabs) {
   $tabs[ 'delivery' ] = array(
 		'title' 	=> 'Доставка и самовывоз',
-		'priority' 	=> 25,
+		'priority' 	=> 20,
 		'callback' 	=> 'truemisha_new_tab_content'
 	);
 
-  $tabs[ 'delivery' ][ 'priority' ] = 20;
+  //$tabs[ 'delivery' ][ 'priority' ] = 20;
   $tabs[ 'additional_information' ][ 'priority' ] = 10;
   $tabs[ 'description' ][ 'priority' ] = 30;
 
