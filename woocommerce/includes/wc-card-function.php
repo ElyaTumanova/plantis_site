@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 //определяем переменные
-add_action('woocommerce_before_single_product_summary','plnt_set_constants',4);
+add_action('woocommerce_before_single_product','plnt_set_constants',5);
 function plnt_set_constants() {
   global $product;
   global $parentCatId;
@@ -434,12 +434,12 @@ add_action('woocommerce_before_single_product','plnt_category_link',20);
 function plnt_category_link () {
     global $product;
     global $parentCatId;
-    $parentCat = check_category ($product);
-    $term = get_term($parentCat);
-    $link = get_term_link( $parentCat, 'product_cat' );
+    //$parentCat = check_category ($product);
+    $term = get_term($parentCatId);
+    $link = get_term_link( $parentCatId, 'product_cat' );
     $name = $term->name;
-    echo 'parentCatId'.$parentCatId;
-    echo 'parentCat'.$parentCat;
+    // echo 'parentCatId'.$parentCatId;
+    // echo 'parentCat'.$parentCat;
 
     echo '<div class="card__toback-link">
     <span>prev</span>
