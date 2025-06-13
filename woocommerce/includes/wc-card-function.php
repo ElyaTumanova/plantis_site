@@ -8,7 +8,7 @@ add_action('woocommerce_before_single_product','plnt_set_constants',5);
 function plnt_set_constants() {
   global $product;
   global $parentCatId;
-  global  $isTreez;
+  global $isTreez;
   global $isLechuza;
   $parentCatId = check_category ($product);
   $isTreez = check_is_treez($product);
@@ -22,10 +22,12 @@ add_action('woocommerce_before_single_product_summary','plnt_card_grid_start',5)
 function plnt_card_grid_start () {
     global $product;
     global $parentCatId;
+    global $isTreez;
+    global $isLechuza;
     global $plants_cat_id;
     //$parentCatId = check_category ($product);
-    $isTreez = check_is_treez($product);
-    $isLechuza = check_is_lechuza($product);
+    //$isTreez = check_is_treez($product);
+    //$isLechuza = check_is_lechuza($product);
     if ($parentCatId === $plants_cat_id) {
         if ( $product->get_stock_status() ==='onbackorder' && $product->backorders_allowed()) {
             ?>
@@ -196,12 +198,13 @@ add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 5);
 function for_dev() {
     global $product;
     global $parentCatId;
+    global $isTreez;
     echo 'stock qty '.$product->get_stock_quantity();
     echo '<br>';
     echo 'parent cat '.$parentCatId;
     echo '<br>';
     //print_r($product);
-    $isTreez = check_is_treez($product);
+    //$isTreez = check_is_treez($product);
     echo 'is Treez '.$isTreez;
     echo '<br>';
 }
@@ -347,7 +350,7 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 add_action( 'woocommerce_single_product_summary', 'plnt_product_artikul', 40 );
 
 function plnt_product_artikul() {
-    global $product;
+  global $product;
 	$sku = $product->get_sku();
  
 	if( $sku ) { // если заполнен, то выводим
@@ -432,7 +435,7 @@ function plnt_card_ukhod_loop() {
 add_action('woocommerce_before_single_product','plnt_category_link',20);
 
 function plnt_category_link () {
-    global $product;
+    // global $product;
     global $parentCatId;
     //$parentCat = check_category ($product);
     $term = get_term($parentCatId);
