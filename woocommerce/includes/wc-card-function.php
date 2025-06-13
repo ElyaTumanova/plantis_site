@@ -113,7 +113,7 @@ function truemisha_reorder_tabs( $tabs ) {
 }
 
 // //редактируем стандартные табы
-add_filter( 'woocommerce_product_tabs', 'truemisha_rename_tabs', 25 );
+//add_filter( 'woocommerce_product_tabs', 'truemisha_rename_tabs', 25 );
  
 function truemisha_rename_tabs( $tabs ) {
     // global $product;
@@ -128,7 +128,7 @@ function truemisha_rename_tabs( $tabs ) {
 	return $tabs;
 }
 
-add_filter( 'woocommerce_product_tabs', 'truemisha_remove_product_tabs', 25 );
+//add_filter( 'woocommerce_product_tabs', 'truemisha_remove_product_tabs', 25 );
  
 function truemisha_remove_product_tabs( $tabs ) {
 
