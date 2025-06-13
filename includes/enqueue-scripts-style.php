@@ -158,7 +158,6 @@ function plnt_no_filter_css() {
  
 	wp_dequeue_style( 'yith-wcwl-user-main' ); //отключаем стили YITH wishlist так как font-awesome на критическом пути
 	wp_dequeue_style( 'yith-wcwl-main' ); //отключаем стили YITH wishlist так как font-awesome на критическом пути
-	wp_dequeue_style( 'berocket_aapf_widget-style' ); //отключаем стили YITH wishlist так как font-awesome на критическом пути
 	//wp_dequeue_style( 'wc-blocks-style' ); //отключаем стили WC так как font-awesome на критическом пути
 	// wp_dequeue_script( 'contact-form-7' );
 }
@@ -167,5 +166,5 @@ add_action( 'init', 'remove_my_style_stylesheet', 99 );
 function remove_my_style_stylesheet() {
 
 	wp_deregister_style( 'wc-blocks-style' ); //отключаем стили WC так как font-awesome на критическом пути
-
+	wp_deregister_style( 'berocket_aapf_widget-style' ); 
 }
