@@ -66,9 +66,22 @@ function plnt_card_grid_end () {
 // табы
 
 // remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
+add_filter( 'woocommerce_product_tabs', 'plnt_new_product_tab', 25 );
+function plnt_new_product_tab($tabs) {
+  $tabs[ 'delivery' ] = array(
+		'title' 	=> 'Доставка и самовывоз',
+		'priority' 	=> 25,
+		'callback' 	=> 'truemisha_new_tab_content'
+	);
+
+  $tabs[ 'delivery' ][ 'priority' ] = 20;
+  $tabs[ 'additional_information' ][ 'priority' ] = 10;
+  $tabs[ 'description' ][ 'priority' ] = 30;
+
+}
 
 // // таб доставка
-add_filter( 'woocommerce_product_tabs', 'truemisha_new_product_tab', 25 );
+//add_filter( 'woocommerce_product_tabs', 'truemisha_new_product_tab', 25 );
  
 function truemisha_new_product_tab( $tabs ) {
  
@@ -88,13 +101,13 @@ function truemisha_new_tab_content() {
  
 }
 
-add_filter( 'woocommerce_product_tabs', 'truemisha_reorder_tabs', 25 );
+//add_filter( 'woocommerce_product_tabs', 'truemisha_reorder_tabs', 25 );
  
 function truemisha_reorder_tabs( $tabs ) {
  
 	$tabs[ 'delivery' ][ 'priority' ] = 20;
-    $tabs[ 'additional_information' ][ 'priority' ] = 10;
-    $tabs[ 'description' ][ 'priority' ] = 30;
+  $tabs[ 'additional_information' ][ 'priority' ] = 10;
+  $tabs[ 'description' ][ 'priority' ] = 30;
 	return $tabs;
  
 }
