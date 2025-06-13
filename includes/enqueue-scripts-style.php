@@ -88,8 +88,8 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		wp_enqueue_script( 'metrikaGoal', get_template_directory_uri() .
 		                                     '/assets/js/metrikaGoal.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/metrikaGoal.js'), true );  //metrikaGoal Яндекс Метрика Yandex Metrika
 
-		wp_enqueue_script( 'datepicker', get_template_directory_uri() .
-		                                     '/assets/js/datepicker.js', array( 'jquery' ), null, true );  // datepicker
+		// wp_enqueue_script( 'datepicker', get_template_directory_uri() .
+		//                                      '/assets/js/datepicker.js', array( 'jquery' ), null, true );  // datepicker
 		// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		// 	wp_enqueue_script( 'comment-reply' );
 		// }
@@ -136,8 +136,8 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		//                              '/assets/css/progressive-image.css', array(), null, 'all' ); // for lazy load
 		wp_enqueue_style( 'FlexSlider', get_template_directory_uri() .
 		                             '/assets/css/FlexSlider.css', array(), null, 'all' );
-		wp_enqueue_style( 'datepicker', get_template_directory_uri() .
-		                             '/assets/css/datepicker.material.css', array(), null, 'all' ); //datepicker
+		// wp_enqueue_style( 'datepicker', get_template_directory_uri() .
+		//                              '/assets/css/datepicker.material.css', array(), null, 'all' ); //datepicker
 		// wp_enqueue_style( 'flexisel', get_template_directory_uri() .
 		//                              '/assets/css/flexisel.css', array(), null, 'all' );
 		// wp_enqueue_style( 'nivo-slider', get_template_directory_uri() .
@@ -166,5 +166,4 @@ add_action( 'init', 'remove_my_style_stylesheet', 99 );
 function remove_my_style_stylesheet() {
 
 	wp_deregister_style( 'wc-blocks-style' ); //отключаем стили WC так как font-awesome на критическом пути
-	wp_deregister_style( 'berocket_aapf_widget-style' ); 
 }
