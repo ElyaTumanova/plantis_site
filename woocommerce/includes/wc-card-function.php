@@ -66,22 +66,9 @@ function plnt_card_grid_end () {
 // табы
 
 // remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
-add_filter( 'woocommerce_product_tabs', 'plnt_new_product_tab', 25 );
-function plnt_new_product_tab($tabs) {
-  $tabs[ 'delivery' ] = array(
-		'title' 	=> 'Доставка и самовывоз',
-		'priority' 	=> 20,
-		'callback' 	=> 'truemisha_new_tab_content'
-	);
-
-  //$tabs[ 'delivery' ][ 'priority' ] = 20;
-  $tabs[ 'additional_information' ][ 'priority' ] = 10;
-  $tabs[ 'description' ][ 'priority' ] = 30;
-
-}
 
 // // таб доставка
-//add_filter( 'woocommerce_product_tabs', 'truemisha_new_product_tab', 25 );
+add_filter( 'woocommerce_product_tabs', 'truemisha_new_product_tab', 25 );
  
 function truemisha_new_product_tab( $tabs ) {
  
@@ -101,7 +88,7 @@ function truemisha_new_tab_content() {
  
 }
 
-//add_filter( 'woocommerce_product_tabs', 'truemisha_reorder_tabs', 25 );
+add_filter( 'woocommerce_product_tabs', 'truemisha_reorder_tabs', 25 );
  
 function truemisha_reorder_tabs( $tabs ) {
  
@@ -113,13 +100,11 @@ function truemisha_reorder_tabs( $tabs ) {
 }
 
 // //редактируем стандартные табы
-//add_filter( 'woocommerce_product_tabs', 'truemisha_rename_tabs', 25 );
+add_filter( 'woocommerce_product_tabs', 'truemisha_rename_tabs', 25 );
  
 function truemisha_rename_tabs( $tabs ) {
-    // global $product;
     global $parentCatId;
     global $plants_cat_id;
-    // $parentCatId = check_category($product);
     if( $parentCatId === $plants_cat_id ) {
         $tabs[ 'additional_information' ][ 'title' ] = 'Уход и характеристики';
     } else {
@@ -128,7 +113,7 @@ function truemisha_rename_tabs( $tabs ) {
 	return $tabs;
 }
 
-//add_filter( 'woocommerce_product_tabs', 'truemisha_remove_product_tabs', 25 );
+add_filter( 'woocommerce_product_tabs', 'truemisha_remove_product_tabs', 25 );
  
 function truemisha_remove_product_tabs( $tabs ) {
 
