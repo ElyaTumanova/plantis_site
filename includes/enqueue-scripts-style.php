@@ -161,11 +161,3 @@ function plnt_no_filter_css() {
 	//wp_dequeue_style( 'wc-blocks-style' ); //отключаем стили WC так как font-awesome на критическом пути
 	// wp_dequeue_script( 'contact-form-7' );
 }
-
-
-add_action( 'wp_print_styles', function()
-{
-    // Remove previous inline style
-    wpse_remove_inline_style( 'wc-blocks-style' );    
-
-} );
