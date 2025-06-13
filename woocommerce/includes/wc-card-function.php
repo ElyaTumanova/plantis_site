@@ -275,7 +275,7 @@ function plnt_get_add_to_card() {
 
 function plnt_check_stock_status() {
     global $product;
-    global $parentCatId
+    global $parentCatId;
     global $plants_cat_id;
     //$parentCatId = check_category ($product);
     if ($parentCatId === $plants_cat_id) {
