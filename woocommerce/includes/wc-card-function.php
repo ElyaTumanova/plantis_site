@@ -434,14 +434,17 @@ add_action('woocommerce_before_single_product','plnt_category_link',20);
 function plnt_category_link () {
     global $product;
     global $parentCatId;
-    //$parentCat = check_category ($product);
-    $term = get_term($parentCatId);
-    $link = get_term_link( $parentCatId, 'product_cat' );
+    $parentCat = check_category ($product);
+    $term = get_term($parentCat);
+    $link = get_term_link( $parentCat, 'product_cat' );
     $name = $term->name;
-	echo '<div class="card__toback-link">
-	<span>prev</span>
-	<a href="' . $link . '">Каталог: '.$name.'</a>
-    </div>';
+    echo $parentCatId;
+    echo $parentCat;
+
+    echo '<div class="card__toback-link">
+    <span>prev</span>
+    <a href="' . $link . '">Каталог: '.$name.'</a>
+      </div>';
 }
 
 // поп-ап предзаказ preoprder popup
