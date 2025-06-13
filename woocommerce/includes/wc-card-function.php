@@ -3,14 +3,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+//определяем переменные
+add_action('woocommerce_before_single_product_summary','plnt_set_constants',4);
+function plnt_set_constants() {
+   global $product;
+   global $parentCatId;
+   $parentCatId = check_category ($product);
+
+}
 
 //обертки для card grid
 add_action('woocommerce_before_single_product_summary','plnt_card_grid_start',5);
 
 function plnt_card_grid_start () {
-    global $product;
+    //global $product;
+    global $parentCatId;
     global $plants_cat_id;
-    $parentCatId = check_category ($product);
+    //$parentCatId = check_category ($product);
     $isTreez = check_is_treez($product);
     $isLechuza = check_is_lechuza($product);
     if ($parentCatId === $plants_cat_id) {
