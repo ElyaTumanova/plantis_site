@@ -38,6 +38,37 @@ Text Domain: art-starter-theme
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
+@font-face {
+  font-family: 'Nunito';
+  src: local("Nunito"),
+    url('/wp-content/fonts/nunito/Nunito-Light.ttf') format("ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: local("Nunito"),
+    url('/wp-content/fonts/nunito/Nunito-Regular.ttf') format("ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: local("Nunito"),
+    url('/wp-content/fonts/nunito/Nunito-Medium.ttf') format("ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: local("Nunito"),
+    url('/wp-content/fonts/nunito/Nunito-SemiBold.ttf') format("ttf");
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: local("Nunito"),
+    url('/wp-content/fonts/nunito/Nunito-Bold.ttf') format("ttf");
+  font-weight: 700;
+}
+
 html {
     font-family: 'Nunito', sans-serif;
     -webkit-text-size-adjust: 100%;
