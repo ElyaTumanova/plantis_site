@@ -116,10 +116,10 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		                             '/assets/css/header.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/header.css'), 'all' );
 		wp_enqueue_style( 'menu', get_template_directory_uri() .
 		                             '/assets/css/menu.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/menu.css'), 'all' );
-		wp_enqueue_style( 'card', get_template_directory_uri() .
-		                             '/assets/css/card.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/card.css'), 'all' );
-		wp_enqueue_style( 'catalog', get_template_directory_uri() .
-		                             '/assets/css/catalog.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/catalog.css'), 'all' );
+		// wp_enqueue_style( 'card', get_template_directory_uri() .
+		//                              '/assets/css/card.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/card.css'), 'all' );
+		// wp_enqueue_style( 'catalog', get_template_directory_uri() .
+		//                              '/assets/css/catalog.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/catalog.css'), 'all' );
 		wp_enqueue_style( 'cart', get_template_directory_uri() .
 		                             '/assets/css/cart.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/cart.css'), 'all' );
 		wp_enqueue_style( 'checkout', get_template_directory_uri() .

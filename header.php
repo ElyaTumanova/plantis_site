@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+  <link rel='stylesheet' href='assets/css/all.php' />
 	
 	<!-- Yandex.Metrika counter -->
 	<script async type="text/javascript" >
