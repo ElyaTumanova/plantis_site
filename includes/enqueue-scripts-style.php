@@ -173,7 +173,7 @@ function plnt_no_filter_css() {
   wp_dequeue_style('woocommerce-product-filter-price-slider-style');
   wp_dequeue_style('brands-styles');
 
-  if( is_checkout()) {
+  if( !is_checkout()) {
     wp_dequeue_style('suggestions');
   }
 
