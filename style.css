@@ -41,13 +41,13 @@ Text Domain: art-starter-theme
 @font-face {
   font-family: 'Nunito';
   src: local("Nunito"),
-    url('/fonts/nunito/Nunito-Light.ttf') format("ttf");
+    url('../../fonts/nunito/Nunito-Light.ttf') format("ttf");
   font-weight: 300;
 }
 @font-face {
-  font-family: 'Nunito', sans-serif;
-  src: url('/fonts/nunito/Nunito-Regular.woff2') format("woff2"),
-  url('/fonts/nunito/Nunito-Regular.ttf') format("ttf");
+  font-family: 'Nunito';
+  src: url('../../fonts/nunito/Nunito-Regular.woff2') format("woff2"),
+  url('../../fonts/nunito/Nunito-Regular.ttf') format("ttf");
   font-weight: 400;
   font-style: normal;
 }
