@@ -18,7 +18,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-//get_header( 'shop' ); ?>
+get_header( 'shop' ); ?>
 
 <?php
 /**
@@ -54,5 +54,5 @@ do_action( 'woocommerce_after_main_content' );
 do_action( 'woocommerce_sidebar' );
 ?>
 
-<?php //get_footer( 'shop' );
+<?php get_footer( 'shop' );
 /* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */
