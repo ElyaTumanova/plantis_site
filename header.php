@@ -80,12 +80,6 @@
 						</div>
 					</div>
 					<div class="header__description">
-						<?php //$site_title = carbon_get_theme_option('site_title')?>
-						<?php //if ( is_front_page()) : ?>
-							<h1 class="site-title"><?php //echo $site_title ?></h1>
-						<?php //else : ?>
-							<p class="site-title"><?php//echo $site_title ?></p>
-						<?php //endif; ?>
 					</div>
 					<div class="header__wrap">
 						<div class="search-btn">
