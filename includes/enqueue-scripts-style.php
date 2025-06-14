@@ -139,7 +139,7 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		                             '/assets/css/popup.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/popup.css'), 'all' );
 		
     
-                                 wp_enqueue_style( 'progressive-image', get_template_directory_uri() .
+    wp_enqueue_style( 'progressive-image', get_template_directory_uri() .
 		                             '/assets/css/progressive-image.css', array(), null, 'all' ); // for lazy load
 		wp_enqueue_style( 'FlexSlider', get_template_directory_uri() .
 		                             '/assets/css/FlexSlider.css', array(), null, 'all' );
@@ -171,9 +171,10 @@ function plnt_no_filter_css() {
   wp_dequeue_style( 'global-styles' ); 
   wp_dequeue_style('woocommerce-product-filters-style');
   wp_dequeue_style('woocommerce-product-filter-price-slider-style');
+  wp_dequeue_style('brands-styles');
 
   if (is_product() || is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
-        wp_dequeue_style('brands-styles');
+        
         wp_dequeue_style('woocommerce_prettyPhoto_css');
         wp_dequeue_script('photoswipe');
         //wp_dequeue_style('woocommerce-product-filter-removable-chips-style');
