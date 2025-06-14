@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     header( 'Content-Type: text/css' );
 
     $css=array( 'css/card.css', 'css/catalog.css' );
+    pint_r($css);
     $output=array();
 
     foreach( $css as $file ){
