@@ -375,7 +375,7 @@ function plnt_sliders_wrap_end () {
 
 
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
-add_action('woocommerce_after_single_product_summary','plnt_get_upsells', 15);
+//add_action('woocommerce_after_single_product_summary','plnt_get_upsells', 15);
 
 function plnt_get_upsells(){
     get_template_part('template-parts/plnt-upsells');
