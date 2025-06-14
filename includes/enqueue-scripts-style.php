@@ -176,8 +176,8 @@ function plnt_no_filter_css() {
         wp_dequeue_style('brands-styles');
         wp_dequeue_style('woocommerce_prettyPhoto_css');
         wp_dequeue_script('photoswipe');
-        wp_dequeue_style('woocommerce-product-filter-removable-chips-style');
-        wp_dequeue_style('woocommerce-product-gallery-style');
+        //wp_dequeue_style('woocommerce-product-filter-removable-chips-style');
+        //wp_dequeue_style('woocommerce-product-gallery-style');
     }
   // if (is_product()) {
         
@@ -194,4 +194,6 @@ function remove_my_style_stylesheet() {
 
 	wp_deregister_style( 'wc-blocks-style' ); //отключаем стили WC так как font-awesome на критическом пути
 	wp_deregister_style( 'wp-block-library' ); 
+	wp_deregister_style( 'woocommerce-product-filter-removable-chips-style' ); 
+	wp_deregister_style( 'woocommerce-product-gallery-style' ); 
 }
