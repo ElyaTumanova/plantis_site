@@ -41,6 +41,8 @@ Text Domain: art-starter-theme
 @font-face {
   font-family: 'Nunito';
   src: url('fonts/nunito/Nunito-Light.woff') format("woff"),
+    url('fonts/nunito/Nunito-Light.woff2') format("woff2"),
+    url('fonts/nunito/Nunito-Light.svg') format("svg"),
     url('fonts/nunito/Nunito-Light.ttf') format("ttf");
   font-weight: 300;
 }
@@ -56,18 +58,24 @@ Text Domain: art-starter-theme
 @font-face {
   font-family: 'Nunito';
   src: url('fonts/nunito/Nunito-Medium.woff') format("woff"),
+    url('fonts/nunito/Nunito-Medium.woff2') format("woff2"),
+    url('fonts/nunito/Nunito-Medium.svg') format("svg"),
     url('fonts/nunito/Nunito-Medium.ttf') format("ttf");
   font-weight: 500;
 }
 @font-face {
   font-family: 'Nunito';
   src: url('fonts/nunito/Nunito-SemiBold.woff') format("woff"),
+  url('fonts/nunito/Nunito-SemiBold.woff2') format("woff2"),
+    url('fonts/nunito/Nunito-SemiBold.svg') format("svg"),
     url('fonts/nunito/Nunito-SemiBold.ttf') format("ttf");
   font-weight: 600;
 }
 @font-face {
   font-family: 'Nunito';
   src: url('fonts/nunito/Nunito-Bold.woff') format("woff"),
+  url('fonts/nunito/Nunito-Bold.woff2') format("woff2"),
+    url('fonts/nunito/Nunito-Bold.svg') format("svg"),
     url('fonts/nunito/Nunito-Bold.ttf') format("ttf");
   font-weight: 700;
 }
