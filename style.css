@@ -47,6 +47,8 @@ Text Domain: art-starter-theme
 @font-face {
   font-family: 'Nunito';
   src: url('fonts/nunito/Nunito-Regular.woff2') format("woff2"),
+  url('fonts/nunito/Nunito-Regular.woff') format("woff"),
+  url('fonts/nunito/Nunito-Regular.svg') format("svg"),
   url('fonts/nunito/Nunito-Regular.ttf') format("ttf");
   font-weight: 400;
   font-style: normal;
