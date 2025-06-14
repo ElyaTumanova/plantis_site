@@ -14,6 +14,7 @@ Text Domain: art-starter-theme
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
+# Fonts
 # Normalize
 # Typography
 # Elements
@@ -36,9 +37,9 @@ Text Domain: art-starter-theme
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
-# Normalize
+# Fonts
 --------------------------------------------------------------*/
-@font-face {
+/* @font-face {
   font-family: 'Nunito';
   src: url('fonts/nunito/Nunito-Light.woff') format("woff"),
     url('fonts/nunito/Nunito-Light.woff2') format("woff2"),
@@ -78,8 +79,11 @@ Text Domain: art-starter-theme
     url('fonts/nunito/Nunito-Bold.svg') format("svg"),
     url('fonts/nunito/Nunito-Bold.ttf') format("ttf");
   font-weight: 700;
-}
+} */
 
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
 html {
     font-family: 'Nunito', sans-serif;
     -webkit-text-size-adjust: 100%;
