@@ -175,6 +175,7 @@ function plnt_no_filter_css() {
 
   if( !is_checkout()) {
     wp_dequeue_style('suggestions');
+    wp_dequeue_style('custom-css');
     wp_dequeue_script('jquery.suggestions.min');
   }
 
