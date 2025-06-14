@@ -153,6 +153,15 @@ function plnt_no_filter_css() {
  
 	wp_dequeue_style( 'yith-wcwl-user-main' ); //отключаем стили YITH wishlist так как font-awesome на критическом пути
 	wp_dequeue_style( 'yith-wcwl-main' ); //отключаем стили YITH wishlist так как font-awesome на критическом пути
+	
+  wp_dequeue_style( 'classic-theme-styles' ); 
+  wp_dequeue_style( 'woocommerce-add-to-cart-form-style' ); 
+  wp_dequeue_style( 'woocommerce-product-button-style' ); 
+  wp_dequeue_style( 'woocommerce-product-collection-style' ); 
+  wp_dequeue_style( 'woocommerce-product-filter-checkbox-list-style' ); 
+  wp_dequeue_style( 'woocommerce-product-filter-chips-style' ); 
+  wp_dequeue_style( 'woocommerce-product-template-style' ); 
+  wp_dequeue_style( 'global-styles' ); 
 
   if (is_product() || is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
         wp_dequeue_style('woocommerce-product-filters-style');
@@ -177,4 +186,5 @@ add_action( 'init', 'remove_my_style_stylesheet', 99 );
 function remove_my_style_stylesheet() {
 
 	wp_deregister_style( 'wc-blocks-style' ); //отключаем стили WC так как font-awesome на критическом пути
+	wp_deregister_style( 'wp-block-library' ); 
 }
