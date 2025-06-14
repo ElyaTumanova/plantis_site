@@ -7,8 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     header( 'Content-Type: text/css' );
 
-    $css=array( '/css/card.css', '/css/catalog.css' );
-    print_r($css);
+    $css=array( get_template_directory() .'assets/css/card.css', get_template_directory() .'assets/css/catalog.css' );
     $output=array();
 
     foreach( $css as $file ){
