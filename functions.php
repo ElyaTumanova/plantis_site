@@ -298,15 +298,15 @@ function plnt_check_page() {
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 
 
-add_filter( 'woocommerce_product_get_image', 'wp_kama_woocommerce_product_get_image_filter', 10, 5 );
+// add_filter( 'woocommerce_product_get_image', 'wp_kama_woocommerce_product_get_image_filter', 10, 5 );
 
-function wp_kama_woocommerce_product_get_image_filter( $image, $that, $size, $attr, $placeholder ){
+// function wp_kama_woocommerce_product_get_image_filter( $image, $that, $size, $attr, $placeholder ){
 
-	$attr      = wp_parse_args(
-			$attr,
-			array(
-				'fetchpriority' => 'high',
-			)
-		);
-	return $attr;
-}
+// 	$attr      = wp_parse_args(
+// 			$attr,
+// 			array(
+// 				'fetchpriority' => 'high',
+// 			)
+// 		);
+// 	return $attr;
+// }
