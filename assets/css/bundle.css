@@ -1211,9 +1211,9 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0; 
 }
 
-input[type="number"] {
+/* input[type="number"] {
     -moz-appearance: textfield;
-}
+} */
 
 /* ссылка на просмотр корзины после добавления */
 .add-to-cart-wrap .wc-forward, .card__peresadka .wc-forward {
