@@ -106,38 +106,38 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		//                              '/assets/css/magnific-popup.css', array(), null, 'all' );
 		// wp_enqueue_style( 'owl-css', get_template_directory_uri() .
 		//                              '/assets/css/owl.carousel.min.css', array(), null, 'all' );
-    
-		wp_enqueue_style( 'bundle', get_template_directory_uri() .
-									'/assets/css/bundle.css', array(), null, 'all' ); //bundle
+
+		// wp_enqueue_style( 'bundle', get_template_directory_uri() .
+		// 							'/assets/css/bundle.css', array(), null, 'all' ); //bundle
 
 		wp_enqueue_style( 'swiper', get_template_directory_uri() .
 									'/assets/css/swiper.css', array(), null, 'all' ); //swiper
-		// wp_enqueue_style( 'general', get_template_directory_uri() .
-		//                              '/assets/css/general.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/general.css'), 'all' );
-		// wp_enqueue_style( 'main', get_template_directory_uri() .
-		//                              '/assets/css/main.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/main.css'), 'all' );
-		// wp_enqueue_style( 'header', get_template_directory_uri() .
-		//                              '/assets/css/header.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/header.css'), 'all' );
-		// wp_enqueue_style( 'menu', get_template_directory_uri() .
-		//                              '/assets/css/menu.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/menu.css'), 'all' );
-		// wp_enqueue_style( 'card', get_template_directory_uri() .
-		//                              '/assets/css/card.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/card.css'), 'all' );
-		// wp_enqueue_style( 'catalog', get_template_directory_uri() .
-		//                              '/assets/css/catalog.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/catalog.css'), 'all' );
-		// wp_enqueue_style( 'cart', get_template_directory_uri() .
-		//                              '/assets/css/cart.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/cart.css'), 'all' );
-		// wp_enqueue_style( 'checkout', get_template_directory_uri() .
-		//                              '/assets/css/checkout.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/checkout.css'), 'all' );
-		// wp_enqueue_style( 'pages', get_template_directory_uri() .
-		//                              '/assets/css/pages.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/pages.css'), 'all' );
-		// wp_enqueue_style( 'wishlist', get_template_directory_uri() .
-		//                              '/assets/css/wishlist.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/wishlist.css'), 'all' );
-		// wp_enqueue_style( 'account', get_template_directory_uri() .
-		//                              '/assets/css/account.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/account.css'), 'all' );
-		// wp_enqueue_style( 'popup', get_template_directory_uri() .
-		//                              '/assets/css/popup.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/popup.css'), 'all' );
-		// wp_enqueue_style( 'progressive-image', get_template_directory_uri() .
-		//                              '/assets/css/progressive-image.css', array(), null, 'all' ); // for lazy load
+		wp_enqueue_style( 'general', get_template_directory_uri() .
+		                             '/assets/css/general.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/general.css'), 'all' );
+		wp_enqueue_style( 'main', get_template_directory_uri() .
+		                             '/assets/css/main.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/main.css'), 'all' );
+		wp_enqueue_style( 'header', get_template_directory_uri() .
+		                             '/assets/css/header.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/header.css'), 'all' );
+		wp_enqueue_style( 'menu', get_template_directory_uri() .
+		                             '/assets/css/menu.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/menu.css'), 'all' );
+		wp_enqueue_style( 'card', get_template_directory_uri() .
+		                             '/assets/css/card.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/card.css'), 'all' );
+		wp_enqueue_style( 'catalog', get_template_directory_uri() .
+		                             '/assets/css/catalog.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/catalog.css'), 'all' );
+		wp_enqueue_style( 'cart', get_template_directory_uri() .
+		                             '/assets/css/cart.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/cart.css'), 'all' );
+		wp_enqueue_style( 'checkout', get_template_directory_uri() .
+		                             '/assets/css/checkout.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/checkout.css'), 'all' );
+		wp_enqueue_style( 'pages', get_template_directory_uri() .
+		                             '/assets/css/pages.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/pages.css'), 'all' );
+		wp_enqueue_style( 'wishlist', get_template_directory_uri() .
+		                             '/assets/css/wishlist.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/wishlist.css'), 'all' );
+		wp_enqueue_style( 'account', get_template_directory_uri() .
+		                             '/assets/css/account.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/account.css'), 'all' );
+		wp_enqueue_style( 'popup', get_template_directory_uri() .
+		                             '/assets/css/popup.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/popup.css'), 'all' );
+		wp_enqueue_style( 'progressive-image', get_template_directory_uri() .
+		                             '/assets/css/progressive-image.css', array(), null, 'all' ); // for lazy load
 		wp_enqueue_style( 'FlexSlider', get_template_directory_uri() .
 		                             '/assets/css/FlexSlider.css', array(), null, 'all' );
 		// wp_enqueue_style( 'datepicker', get_template_directory_uri() .
