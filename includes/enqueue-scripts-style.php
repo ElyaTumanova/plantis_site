@@ -153,15 +153,16 @@ add_action( 'wp_enqueue_scripts', 'plnt_no_filter_css', 9999 );
  
 function plnt_no_filter_css() {
  
-	// находимся на странице каталога сразу выходим из функции
-	// if( is_shop() || is_product_category() || is_product_tag() ) {
-	// 	return;
-	// }
- 
 	wp_dequeue_style( 'yith-wcwl-user-main' ); //отключаем стили YITH wishlist так как font-awesome на критическом пути
 	wp_dequeue_style( 'yith-wcwl-main' ); //отключаем стили YITH wishlist так как font-awesome на критическом пути
-	//wp_dequeue_style( 'wc-blocks-style' ); //отключаем стили WC так как font-awesome на критическом пути
-	// wp_dequeue_script( 'contact-form-7' );
+
+  if (is_product()) {
+        wp_dequeue_style('woocommerce-product-filters-style');
+        wp_dequeue_style('woocommerce-product-filter-price-slider-style');
+        wp_dequeue_style('brands-styles');
+        wp_dequeue_style('woocommerce_prettyPhoto_css');
+    }
+
 }
 add_action( 'init', 'remove_my_style_stylesheet', 99 );
 
