@@ -13,7 +13,6 @@ function plnt_set_constants() {
   $parentCatId = check_category ($product);
   $isTreez = check_is_treez($product);
   $isLechuza = check_is_lechuza($product);
-
 }
 
 //обертки для card grid
