@@ -136,7 +136,7 @@ function truemisha_remove_product_tabs( $tabs ) {
 remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
 remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20 );
 
-add_action('woocommerce_before_single_product_summary', 'plnt_product_image_wrap', 10);
+//add_action('woocommerce_before_single_product_summary', 'plnt_product_image_wrap', 10);
 
 function plnt_product_image_wrap () {
     ?>
