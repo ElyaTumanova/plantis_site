@@ -302,6 +302,11 @@ add_filter( 'woocommerce_product_get_image', 'wp_kama_woocommerce_product_get_im
 
 function wp_kama_woocommerce_product_get_image_filter( $image, $that, $size, $attr, $placeholder ){
 
-	print_r($attr);
+	$attr      = wp_parse_args(
+			$attr,
+			array(
+				'fetchpriority' => 'high',
+			)
+		);
 	return $attr;
 }
