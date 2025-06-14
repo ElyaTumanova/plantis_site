@@ -50,7 +50,7 @@ $wrapper_classes   = apply_filters(
 				'woocommerce-product-gallery__image woocommerce-product-gallery__image--placeholder' :
 				'woocommerce-product-gallery__image--placeholder';
 			$html              = sprintf( '<div class="%s">', esc_attr( $wrapper_classname ) );
-			$html             .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" fetchpriority="high"/>', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
+			$html             .= sprintf( '<img fetchpriority="high" src="%s" alt="%s" class="wp-post-image"/>', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
 			$html             .= '</div>';
 		}
 
