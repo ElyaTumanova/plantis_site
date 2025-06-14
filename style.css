@@ -40,7 +40,7 @@ Text Domain: art-starter-theme
 --------------------------------------------------------------*/
 @font-face {
   font-family: 'Nunito';
-  src: local("Nunito"),
+  src: url('fonts/nunito/Nunito-Light.woff') format("woff"),
     url('fonts/nunito/Nunito-Light.ttf') format("ttf");
   font-weight: 300;
 }
@@ -55,19 +55,19 @@ Text Domain: art-starter-theme
 }
 @font-face {
   font-family: 'Nunito';
-  src: local("Nunito"),
+  src: url('fonts/nunito/Nunito-Medium.woff') format("woff"),
     url('fonts/nunito/Nunito-Medium.ttf') format("ttf");
   font-weight: 500;
 }
 @font-face {
   font-family: 'Nunito';
-  src: local("Nunito"),
+  src: url('fonts/nunito/Nunito-SemiBold.woff') format("woff"),
     url('fonts/nunito/Nunito-SemiBold.ttf') format("ttf");
   font-weight: 600;
 }
 @font-face {
   font-family: 'Nunito';
-  src: local("Nunito"),
+  src: url('fonts/nunito/Nunito-Bold.woff') format("woff"),
     url('fonts/nunito/Nunito-Bold.ttf') format("ttf");
   font-weight: 700;
 }
