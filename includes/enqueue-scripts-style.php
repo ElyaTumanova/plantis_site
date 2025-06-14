@@ -156,7 +156,7 @@ function plnt_no_filter_css() {
 	wp_dequeue_style( 'yith-wcwl-user-main' ); //отключаем стили YITH wishlist так как font-awesome на критическом пути
 	wp_dequeue_style( 'yith-wcwl-main' ); //отключаем стили YITH wishlist так как font-awesome на критическом пути
 
-  if (is_product() || is_shop()) {
+  if (is_product() || is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
         wp_dequeue_style('woocommerce-product-filters-style');
         wp_dequeue_style('woocommerce-product-filter-price-slider-style');
         wp_dequeue_style('brands-styles');
