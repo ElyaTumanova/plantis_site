@@ -172,6 +172,7 @@ function plnt_no_filter_css() {
   wp_dequeue_style('woocommerce-product-filters-style');
   wp_dequeue_style('woocommerce-product-filter-price-slider-style');
   wp_dequeue_style('brands-styles');
+  wp_dequeue_style('suggestions');
 
   if (is_product() || is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
         
