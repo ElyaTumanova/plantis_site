@@ -169,10 +169,10 @@ function plnt_no_filter_css() {
   wp_dequeue_style( 'woocommerce-product-filter-chips-style' ); 
   wp_dequeue_style( 'woocommerce-product-template-style' ); 
   wp_dequeue_style( 'global-styles' ); 
+  wp_dequeue_style('woocommerce-product-filters-style');
+  wp_dequeue_style('woocommerce-product-filter-price-slider-style');
 
   if (is_product() || is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
-        wp_dequeue_style('woocommerce-product-filters-style');
-        wp_dequeue_style('woocommerce-product-filter-price-slider-style');
         wp_dequeue_style('brands-styles');
         wp_dequeue_style('woocommerce_prettyPhoto_css');
         wp_dequeue_script('photoswipe');
