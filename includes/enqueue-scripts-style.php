@@ -166,7 +166,7 @@ function plnt_no_filter_css() {
         wp_dequeue_style('woocommerce-product-filter-removable-chips-style-inline');
         wp_dequeue_style('woocommerce-product-gallery-style');
         //wp_dequeue_script('flexslider');
-        wp_dequeue_script('photoswipe');
+        //wp_dequeue_script('photoswipe');
         wp_dequeue_script('photoswipe-ui-default');
 
     }
