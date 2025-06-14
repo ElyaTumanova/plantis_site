@@ -49,5 +49,5 @@
 <div id="page" class="site">
 
 <?php
-  get_template_part( 'template-parts/heading' );
+  //get_template_part( 'template-parts/heading' );
 ?>
