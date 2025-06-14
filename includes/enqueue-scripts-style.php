@@ -175,12 +175,14 @@ function plnt_no_filter_css() {
 
   if( !is_checkout()) {
     wp_dequeue_style('suggestions');
+    wp_dequeue_script('jquery.suggestions.min');
   }
 
   if (is_product() || is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
         
         wp_dequeue_style('woocommerce_prettyPhoto_css');
         wp_dequeue_script('photoswipe');
+        
         //wp_dequeue_style('woocommerce-product-filter-removable-chips-style');
         //wp_dequeue_style('woocommerce-product-gallery-style');
     }
