@@ -107,7 +107,7 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		// wp_enqueue_style( 'owl-css', get_template_directory_uri() .
 		//                              '/assets/css/owl.carousel.min.css', array(), null, 'all' );
 		wp_enqueue_style( 'bundle', get_template_directory_uri() .
-									'/assets/css/bundle.min.css', array(), null, 'all' ); //bundle
+									'/assets/css/bundle.css', array(), null, 'all' ); //bundle
 		wp_enqueue_style( 'swiper', get_template_directory_uri() .
 									'/assets/css/swiper.css', array(), null, 'all' ); //swiper
 		// wp_enqueue_style( 'general', get_template_directory_uri() .
