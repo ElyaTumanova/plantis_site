@@ -24,9 +24,7 @@ function plnt_card_grid_start () {
     global $isTreez;
     global $isLechuza;
     global $plants_cat_id;
-    //$parentCatId = check_category ($product);
-    //$isTreez = check_is_treez($product);
-    //$isLechuza = check_is_lechuza($product);
+
     if ($parentCatId === $plants_cat_id) {
         if ( $product->get_stock_status() ==='onbackorder' && $product->backorders_allowed()) {
             ?>
@@ -277,7 +275,7 @@ function plnt_check_stock_status() {
     global $product;
     global $parentCatId;
     global $plants_cat_id;
-    //$parentCatId = check_category ($product);
+
     if ($parentCatId === $plants_cat_id) {
         if ( $product->get_stock_status() ==='instock' ) {
             ?>
@@ -357,34 +355,12 @@ function plnt_product_artikul() {
 
 //upsells & cross sells
 
-//add_action('woocommerce_after_single_product_summary','plnt_sliders_wrap_start', 10);
-
-function plnt_sliders_wrap_start() {
-    ?>
-	<div class="card__sliders-wrap">
-    <?php 
-};
-
-//add_action('woocommerce_after_single_product_summary','plnt_sliders_wrap_end',30);
-
-function plnt_sliders_wrap_end () {
-    ?>
-	</div>
-    <?php 
-};
-
-
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
-//add_action('woocommerce_after_single_product_summary','plnt_get_upsells', 15);
+add_action('woocommerce_after_single_product_summary','plnt_get_upsells', 15);
 
 function plnt_get_upsells(){
     get_template_part('template-parts/plnt-upsells');
 }
-
-// add_filter('woocommerce_upsell_display_args', function ($args) {
-//     $args['posts_per_page'] = 8;
-//     return $args;
-// });
 
 add_filter( 'woocommerce_product_upsells_products_heading' , 'plnt_upsells_heading' );
 
@@ -395,7 +371,6 @@ function plnt_upsells_heading () {
     global $treez_cat_id;
     global $lechuza_cat_id;
     global $parentCatId;
-    //$parentCatId = check_category ($product);
     switch ($parentCatId) {
         case $plants_cat_id:				//category ID for plants
             return 'Этому растению подойдет';
@@ -413,7 +388,7 @@ function plnt_upsells_heading () {
 };
         
 remove_action('woocommerce_after_single_product_summary','woocommerce_output_related_products', 20);
-//add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 20);
+add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 20);
 
 function plnt_get_cross_sells(){
     get_template_part('template-parts/plnt-cross-sells');
