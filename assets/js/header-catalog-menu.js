@@ -85,8 +85,6 @@ function primaryMenuInit() {
 }
 
 
-
-
 function openHeaderCatalog () {
     headerCatalogWrap.classList.add('header__menu_open');
     catalogBtn.classList.add('header__catalog_open');
@@ -194,4 +192,5 @@ function closePlantsSubMenues() {
 
 //catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 catalogBtn.addEventListener('click',plntAjaxShowPrimaryMenu,{once:true});
+catalogBtn.addEventListener('click',plntAjaxShowCatalogMobMenu,{once:true});
 
