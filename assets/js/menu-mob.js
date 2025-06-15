@@ -49,6 +49,8 @@ function catalogMenuInit() {
   // для разворачивая пункта меню с растениями
   menuPlants.classList.add('catalog__dropdown-menu_show');
   dropdownPlants.classList.add('catalog__dropdown_open');
+
+  setCatalogDropdown();
 }
 
 
