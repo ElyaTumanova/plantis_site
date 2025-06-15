@@ -18,6 +18,7 @@ function showSlider(sliderNmber) {
 
 function ajaxGetMainCatTerm() {
     jQuery( function($){
+        console.log('ajaxGetMainCatTerm init');
         $.ajax({
             type: 'POST',
             url: woocommerce_params.ajax_url,
@@ -30,6 +31,7 @@ function ajaxGetMainCatTerm() {
             beforeSend: function(xhr){
             },
             success: function (data) {
+                console.log('ajaxGetMainCatTerm success');
                 $('.main__cats-slider').html(data.out);
                 let slider = document.querySelectorAll(".product-slider-swiper .product");
                 slider.forEach((slide) => {

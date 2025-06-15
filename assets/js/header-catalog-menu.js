@@ -18,6 +18,7 @@ let gorshkiCats;
 
 function plntAjaxShowPrimaryMenu() {
   ( function ( $ ) {
+    console.log('plntAjaxShowPrimaryMenu init');
       "use strict";
     // Define the PHP function to call from here
       var data = {
@@ -29,6 +30,7 @@ function plntAjaxShowPrimaryMenu() {
         function(response){
           //console.log(response);
           primaryMenuDiv.innerHTML = response;
+          console.log('plntAjaxShowPrimaryMenu success')
           primaryMenuInit();
           openHeaderCatalog();
         }
@@ -191,5 +193,5 @@ function closePlantsSubMenues() {
 }
 
 //catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
-catalogBtn.addEventListener('click',plntAjaxShowPrimaryMenu);
+catalogBtn.addEventListener('click',plntAjaxShowPrimaryMenu,{once:true});
 
