@@ -1,4 +1,5 @@
 let catalogBtn = document.querySelector('.header__catalog');
+let headerCatalogWrap = document.querySelector('.header__menu');
 let primaryMenuDiv = document.querySelector('.main-navigation');
 
 function plntAjaxShowPrimaryMenu() {
@@ -14,6 +15,8 @@ function plntAjaxShowPrimaryMenu() {
         function(response){
           console.log(response);
           primaryMenuDiv.innerHTML = response;
+          primaryMenuInit();
+          openHeaderCatalog();
         }
       );
   // Close anon function.
@@ -21,24 +24,52 @@ function plntAjaxShowPrimaryMenu() {
 }
 
 
+function primaryMenuInit() {
+
+  let majorCats = document.querySelectorAll('.menu--main .menu-node_lvl_1');
+  let subMenues = document.querySelectorAll('.menu--main .sub-menu');
+  let firstSubMenues = majorCats[0].querySelectorAll('.menu--onside_lvl_1');
+
+  let treezCollectionsCats = document.querySelectorAll('.menu_item_treez .menu-node_lvl_3');
+  let treezSubMenues = document.querySelectorAll('.menu_item_treez .menu-node_lvl_3 .sub-menu');
+
+  let plantsCats = document.querySelectorAll('.menu_item_plants .menu-node_lvl_2');
+  let plantsSubMenues = document.querySelectorAll('.menu_item_plants .menu-node_lvl_2 .sub-menu');
+
+  let lechuzaCat = document.querySelectorAll('.menu_item_lechuza');
+  let lechuzaSubMenues = document.querySelectorAll('.menu_item_lechuza .sub-menu');
+
+  let gorshkiCats = document.querySelectorAll('.menu_item_gorshki .menu-node_lvl_2 > a');
+
+  majorCats.forEach((el) => {
+      el.addEventListener('mouseenter',closeAllSubmenu);
+      el.addEventListener('mouseenter',showSubmenu);
+  })
+
+  treezCollectionsCats.forEach((el) => {
+      el.addEventListener('mouseenter',openTreezSubMenues);
+  })
+
+  lechuzaCat.forEach((el) => {
+      el.addEventListener('mouseenter',openLechuzaSubMenues);
+  })
+
+  plantsCats.forEach((el) => {
+      el.addEventListener('mouseenter',openPlantsSubMenues);
+  })
+
+  gorshkiCats.forEach((el) => {
+    el.addEventListener('mouseenter',closeTreezSubMenues);
+    let classList = el.parentElement.classList;
+    // console.log(classList)
+    if(!classList.contains('menu_item_lechuza')) {
+        el.addEventListener('mouseenter',closeLechuzaSubMenues);
+    }
+  })
+}
 
 
 
-// let headerCatalogWrap = document.querySelector('.header__menu');
-// let majorCats = document.querySelectorAll('.menu--main .menu-node_lvl_1');
-// let subMenues = document.querySelectorAll('.menu--main .sub-menu');
-// let firstSubMenues = majorCats[0].querySelectorAll('.menu--onside_lvl_1');
-
-// let treezCollectionsCats = document.querySelectorAll('.menu_item_treez .menu-node_lvl_3');
-// let treezSubMenues = document.querySelectorAll('.menu_item_treez .menu-node_lvl_3 .sub-menu');
-
-// let plantsCats = document.querySelectorAll('.menu_item_plants .menu-node_lvl_2');
-// let plantsSubMenues = document.querySelectorAll('.menu_item_plants .menu-node_lvl_2 .sub-menu');
-
-// let lechuzaCat = document.querySelectorAll('.menu_item_lechuza');
-// let lechuzaSubMenues = document.querySelectorAll('.menu_item_lechuza .sub-menu');
-
-// let gorshkiCats = document.querySelectorAll('.menu_item_gorshki .menu-node_lvl_2 > a');
 
 function openHeaderCatalog () {
     headerCatalogWrap.classList.add('header__menu_open');
@@ -148,28 +179,3 @@ function closePlantsSubMenues() {
 //catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 catalogBtn.addEventListener('click',plntAjaxShowPrimaryMenu,{once:true});
 
-// majorCats.forEach((el) => {
-//     el.addEventListener('mouseenter',closeAllSubmenu);
-//     el.addEventListener('mouseenter',showSubmenu);
-// })
-
-// treezCollectionsCats.forEach((el) => {
-//     el.addEventListener('mouseenter',openTreezSubMenues);
-// })
-
-// lechuzaCat.forEach((el) => {
-//     el.addEventListener('mouseenter',openLechuzaSubMenues);
-// })
-
-// plantsCats.forEach((el) => {
-//     el.addEventListener('mouseenter',openPlantsSubMenues);
-// })
-
-// gorshkiCats.forEach((el) => {
-//     el.addEventListener('mouseenter',closeTreezSubMenues);
-//     let classList = el.parentElement.classList;
-//     // console.log(classList)
-//     if(!classList.contains('menu_item_lechuza')) {
-//         el.addEventListener('mouseenter',closeLechuzaSubMenues);
-//     }
-// })
