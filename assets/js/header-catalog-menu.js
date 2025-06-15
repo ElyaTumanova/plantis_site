@@ -192,5 +192,3 @@ function closePlantsSubMenues() {
 
 //catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 catalogBtn.addEventListener('click',plntAjaxShowPrimaryMenu,{once:true});
-catalogBtn.addEventListener('click',plntAjaxShowCatalogMobMenu,{once:true});
-
