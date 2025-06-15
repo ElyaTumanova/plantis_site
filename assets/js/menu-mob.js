@@ -16,6 +16,9 @@ const menuMobCatalog = document.querySelector('.catalog-menu__wrap');
 //const catalogMob = document.querySelector('.catalog-menu__wrap');
 const catalogMobOpen = document.querySelector('.header__catalog_mob');
 
+let dropdownPlants;
+let menuPlants;
+
 function plntAjaxShowCatalogMobMenu() {
   ( function ( $ ) {
     console.log('plntAjaxShowCatalogMobMenu init');
@@ -38,11 +41,11 @@ function plntAjaxShowCatalogMobMenu() {
   // Close anon function.
   }( jQuery ) );
 }
-
+plntAjaxShowCatalogMobMenu();
 function catalogMenuInit() {
 // для разворачивая пункта меню с растениями
-  const dropdownPlants = menuMobCatalog.querySelector('.catalog__dropdown');
-  const menuPlants = dropdownPlants.querySelector('.catalog__dropdown-menu');
+  dropdownPlants = menuMobCatalog.querySelector('.catalog__dropdown');
+  menuPlants = dropdownPlants.querySelector('.catalog__dropdown-menu');
 }
 
 
