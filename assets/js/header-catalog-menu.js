@@ -191,5 +191,5 @@ function closePlantsSubMenues() {
 }
 
 //catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
-catalogBtn.addEventListener('click',plntAjaxShowPrimaryMenu);
+catalogBtn.addEventListener('click',plntAjaxShowPrimaryMenu,{once:true});
 
