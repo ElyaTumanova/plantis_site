@@ -68,7 +68,8 @@ $close_icon = carbon_get_theme_option('close_icon')
         </div>
         <?php get_template_part('template-parts/popups/burger-menu');?>
         <div class="catalog-menu__wrap">
-            <?php plnt_catalog_menu() ?>
+          <div>lalalal</div>
+            <?php //plnt_catalog_menu() ?>
         </div>
     </div>
     <div class="modal-mob__overlay"></div>
