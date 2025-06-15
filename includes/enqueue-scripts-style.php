@@ -176,7 +176,7 @@ function plnt_no_filter_css() {
   if( !is_checkout()) {
     wp_dequeue_style('suggestions');
     wp_dequeue_style('custom-css');
-    wp_dequeue_script('jquery.suggestions.min');
+    // wp_dequeue_script('jquery.suggestions.min');
   }
 
   if (is_product() || is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
