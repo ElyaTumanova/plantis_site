@@ -1,6 +1,20 @@
 let catalogBtn = document.querySelector('.header__catalog');
 let headerCatalogWrap = document.querySelector('.header__menu');
 let primaryMenuDiv = document.querySelector('.main-navigation');
+let majorCats;
+let subMenues;
+let firstSubMenues;
+
+let treezCollectionsCats;
+let treezSubMenues;
+
+let plantsCats;
+let plantsSubMenues;
+
+let lechuzaCat;
+let lechuzaSubMenues;
+
+let gorshkiCats;
 
 function plntAjaxShowPrimaryMenu() {
   ( function ( $ ) {
@@ -13,7 +27,7 @@ function plntAjaxShowPrimaryMenu() {
         woocommerce_params.ajax_url, // The AJAX URL
         data, // Send our PHP function
         function(response){
-          console.log(response);
+          //console.log(response);
           primaryMenuDiv.innerHTML = response;
           primaryMenuInit();
           openHeaderCatalog();
@@ -26,20 +40,20 @@ function plntAjaxShowPrimaryMenu() {
 
 function primaryMenuInit() {
 
-  let majorCats = document.querySelectorAll('.menu--main .menu-node_lvl_1');
-  let subMenues = document.querySelectorAll('.menu--main .sub-menu');
-  let firstSubMenues = majorCats[0].querySelectorAll('.menu--onside_lvl_1');
+  majorCats = document.querySelectorAll('.menu--main .menu-node_lvl_1');
+  subMenues = document.querySelectorAll('.menu--main .sub-menu');
+  firstSubMenues = majorCats[0].querySelectorAll('.menu--onside_lvl_1');
 
-  let treezCollectionsCats = document.querySelectorAll('.menu_item_treez .menu-node_lvl_3');
-  let treezSubMenues = document.querySelectorAll('.menu_item_treez .menu-node_lvl_3 .sub-menu');
+  treezCollectionsCats = document.querySelectorAll('.menu_item_treez .menu-node_lvl_3');
+  treezSubMenues = document.querySelectorAll('.menu_item_treez .menu-node_lvl_3 .sub-menu');
 
-  let plantsCats = document.querySelectorAll('.menu_item_plants .menu-node_lvl_2');
-  let plantsSubMenues = document.querySelectorAll('.menu_item_plants .menu-node_lvl_2 .sub-menu');
+  plantsCats = document.querySelectorAll('.menu_item_plants .menu-node_lvl_2');
+  plantsSubMenues = document.querySelectorAll('.menu_item_plants .menu-node_lvl_2 .sub-menu');
 
-  let lechuzaCat = document.querySelectorAll('.menu_item_lechuza');
-  let lechuzaSubMenues = document.querySelectorAll('.menu_item_lechuza .sub-menu');
+  lechuzaCat = document.querySelectorAll('.menu_item_lechuza');
+  lechuzaSubMenues = document.querySelectorAll('.menu_item_lechuza .sub-menu');
 
-  let gorshkiCats = document.querySelectorAll('.menu_item_gorshki .menu-node_lvl_2 > a');
+  gorshkiCats = document.querySelectorAll('.menu_item_gorshki .menu-node_lvl_2 > a');
 
   majorCats.forEach((el) => {
       el.addEventListener('mouseenter',closeAllSubmenu);
