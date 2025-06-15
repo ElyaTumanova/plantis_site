@@ -254,3 +254,20 @@ function nav_remove_empty_category_menu_item ( $items, $menu) {
 }
 
 add_filter( 'wp_get_nav_menu_items', 'nav_remove_empty_category_menu_item', 10, 3 );
+
+// AJAX for menu
+function plnt_show_primary_menu() {
+	echo plnt_primary_menu();
+	die();
+}
+
+add_filter( 'wp_ajax_nopriv_plnt_show_primary_menu', 'plnt_show_primary_menu' );
+add_filter( 'wp_ajax_plnt_show_primary_menu', 'plnt_show_primary_menu' );
+
+function plnt_show_catalog_menu() {
+	echo plnt_catalog_menu();
+	die();
+}
+
+add_filter( 'wp_ajax_nopriv_plnt_show_catalog_menu', 'plnt_show_catalog_menu' );
+add_filter( 'wp_ajax_plnt_show_catalog_menu', 'plnt_show_catalog_menu' );

@@ -68,7 +68,8 @@ $close_icon = carbon_get_theme_option('close_icon')
         </div>
         <?php get_template_part('template-parts/popups/burger-menu');?>
         <div class="catalog-menu__wrap">
-            <?php plnt_catalog_menu() ?>
+          <div>lalalal</div>
+            <?php //plnt_catalog_menu() ?>
         </div>
     </div>
     <div class="modal-mob__overlay"></div>
@@ -76,27 +77,12 @@ $close_icon = carbon_get_theme_option('close_icon')
 
 <?php 
 if (!is_account_page()) {
-   get_template_part('template-parts/popups/register-form');
-    get_template_part('template-parts/popups/login-form');
+  get_template_part('template-parts/popups/register-form');
+  get_template_part('template-parts/popups/login-form');
 }
 ?>
 
 <?php wp_footer(); ?>
-
-<!-- <div class="site-row">
-    <div class="site-popup-inner welcome-pt-message" style="display: none;">
-        <form method="post" enctype="multipart/form-data" action="">
-            <div class="site-row">
-                <p class="site-form-text">Мы используем cookies для быстрой и удобной работы сайта.</p>
-            </div>
-            <div class="site-form-buttons site-form--center">
-                <div class="site-form-button">
-                    <a href="javascript:void(0);" class="site-btn--submit green button  welcome-pt-message-btn" onclick="$.fancybox.close();">OK</a>
-                </div>
-            </div>
-        </form>
-    </div>
-</div> -->
 
 </body>
 </html>

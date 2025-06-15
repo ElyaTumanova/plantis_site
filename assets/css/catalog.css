@@ -374,14 +374,13 @@ ul.products {
 .catalog__products-wrap .yith-wcwl-add-to-wishlist {
     border: none;
     position: absolute;
-    /* top: 0;
-    right: 0; */
-    
-    /* position: relative; */
     height: 0;
     margin-left: auto;
     margin-top: 10px;
     margin-right: 10px;
+    z-index: 2;
+    top: 10px;
+    right: 10px;
 }
 
 @media (max-width:767px) {

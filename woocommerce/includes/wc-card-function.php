@@ -3,16 +3,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+//определяем переменные
+add_action('woocommerce_before_single_product','plnt_set_constants',5);
+function plnt_set_constants() {
+  global $product;
+  global $parentCatId;
+  global $isTreez;
+  global $isLechuza;
+  $parentCatId = check_category ($product);
+  $isTreez = check_is_treez($product);
+  $isLechuza = check_is_lechuza($product);
+}
 
 //обертки для card grid
 add_action('woocommerce_before_single_product_summary','plnt_card_grid_start',5);
 
 function plnt_card_grid_start () {
     global $product;
+    global $parentCatId;
+    global $isTreez;
+    global $isLechuza;
     global $plants_cat_id;
-    $parentCatId = check_category ($product);
-    $isTreez = check_is_treez($product);
-    $isLechuza = check_is_lechuza($product);
+
     if ($parentCatId === $plants_cat_id) {
         if ( $product->get_stock_status() ==='onbackorder' && $product->backorders_allowed()) {
             ?>
@@ -78,8 +90,8 @@ add_filter( 'woocommerce_product_tabs', 'truemisha_reorder_tabs', 25 );
 function truemisha_reorder_tabs( $tabs ) {
  
 	$tabs[ 'delivery' ][ 'priority' ] = 20;
-    $tabs[ 'additional_information' ][ 'priority' ] = 10;
-    $tabs[ 'description' ][ 'priority' ] = 30;
+  $tabs[ 'additional_information' ][ 'priority' ] = 10;
+  $tabs[ 'description' ][ 'priority' ] = 30;
 	return $tabs;
  
 }
@@ -88,9 +100,8 @@ function truemisha_reorder_tabs( $tabs ) {
 add_filter( 'woocommerce_product_tabs', 'truemisha_rename_tabs', 25 );
  
 function truemisha_rename_tabs( $tabs ) {
-    global $product;
+    global $parentCatId;
     global $plants_cat_id;
-    $parentCatId = check_category($product);
     if( $parentCatId === $plants_cat_id ) {
         $tabs[ 'additional_information' ][ 'title' ] = 'Уход и характеристики';
     } else {
@@ -181,12 +192,14 @@ add_action('woocommerce_after_single_product_summary', 'plnt_price_wrap', 5);
 
 function for_dev() {
     global $product;
+    global $parentCatId;
+    global $isTreez;
     echo 'stock qty '.$product->get_stock_quantity();
     echo '<br>';
-    echo 'parent cat '.check_category ($product);
+    echo 'parent cat '.$parentCatId;
     echo '<br>';
     //print_r($product);
-    $isTreez = check_is_treez($product);
+    //$isTreez = check_is_treez($product);
     echo 'is Treez '.$isTreez;
     echo '<br>';
 }
@@ -260,8 +273,9 @@ function plnt_get_add_to_card() {
 
 function plnt_check_stock_status() {
     global $product;
+    global $parentCatId;
     global $plants_cat_id;
-    $parentCatId = check_category ($product);
+
     if ($parentCatId === $plants_cat_id) {
         if ( $product->get_stock_status() ==='instock' ) {
             ?>
@@ -331,7 +345,7 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 add_action( 'woocommerce_single_product_summary', 'plnt_product_artikul', 40 );
 
 function plnt_product_artikul() {
-    global $product;
+  global $product;
 	$sku = $product->get_sku();
  
 	if( $sku ) { // если заполнен, то выводим
@@ -341,34 +355,12 @@ function plnt_product_artikul() {
 
 //upsells & cross sells
 
-//add_action('woocommerce_after_single_product_summary','plnt_sliders_wrap_start', 10);
-
-function plnt_sliders_wrap_start() {
-    ?>
-	<div class="card__sliders-wrap">
-    <?php 
-};
-
-//add_action('woocommerce_after_single_product_summary','plnt_sliders_wrap_end',30);
-
-function plnt_sliders_wrap_end () {
-    ?>
-	</div>
-    <?php 
-};
-
-
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
 add_action('woocommerce_after_single_product_summary','plnt_get_upsells', 15);
 
 function plnt_get_upsells(){
     get_template_part('template-parts/plnt-upsells');
 }
-
-// add_filter('woocommerce_upsell_display_args', function ($args) {
-//     $args['posts_per_page'] = 8;
-//     return $args;
-// });
 
 add_filter( 'woocommerce_product_upsells_products_heading' , 'plnt_upsells_heading' );
 
@@ -378,7 +370,7 @@ function plnt_upsells_heading () {
     global $gorshki_cat_id;
     global $treez_cat_id;
     global $lechuza_cat_id;
-    $parentCatId = check_category ($product);
+    global $parentCatId;
     switch ($parentCatId) {
         case $plants_cat_id:				//category ID for plants
             return 'Этому растению подойдет';
@@ -415,15 +407,19 @@ function plnt_card_ukhod_loop() {
 add_action('woocommerce_before_single_product','plnt_category_link',20);
 
 function plnt_category_link () {
-    global $product;
-    $parentCat = check_category ($product);
-    $term = get_term($parentCat);
-    $link = get_term_link( $parentCat, 'product_cat' );
+    // global $product;
+    global $parentCatId;
+    //$parentCat = check_category ($product);
+    $term = get_term($parentCatId);
+    $link = get_term_link( $parentCatId, 'product_cat' );
     $name = $term->name;
-	echo '<div class="card__toback-link">
-	<span>prev</span>
-	<a href="' . $link . '">Каталог: '.$name.'</a>
-    </div>';
+    // echo 'parentCatId'.$parentCatId;
+    // echo 'parentCat'.$parentCat;
+
+    echo '<div class="card__toback-link">
+    <span>prev</span>
+    <a href="' . $link . '">Каталог: '.$name.'</a>
+      </div>';
 }
 
 // поп-ап предзаказ preoprder popup
@@ -478,8 +474,6 @@ function check_is_treez($product) {
     global $plants_treez_cat_id;
 
     $idCats = $product->get_category_ids();
-
-    //$parentCatId = check_category ($product);
     
     //$isTreez = $parentCatId === $treez_cat_id || $parentCatId === $plants_treez_cat_id || $parentCatId === $treez_poliv_cat_id || ($product->get_stock_status() ==='onbackorder' && in_array($treez_cat_id, $idCats));
     $isTreez = (!$product->get_manage_stock() && in_array($treez_cat_id, $idCats)) || in_array($plants_treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats);
@@ -490,8 +484,6 @@ function check_is_lechuza($product) {
     global $lechuza_cat_id;
 
     $idCats = $product->get_category_ids();
-
-    //$parentCatId = check_category ($product);
     
     //$isLechuza = $parentCatId === $lechuza_cat_id || ($product->get_stock_status() ==='onbackorder' && in_array($lechuza_cat_id, $idCats));
     $isLechuza = (!$product->get_manage_stock() && in_array($lechuza_cat_id, $idCats)) ;

@@ -4,12 +4,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 /*--------------------------------------------------------------
 Contents
+#Init
 #Catalog design
 #Card in Catalog design
 #Catalog Functions
 --------------------------------------------------------------*/
-
-
+/*--------------------------------------------------------------
+#Init
+--------------------------------------------------------------*/
+add_action('woocommerce_before_shop_loop','plnt_set_constants',5);
 
 /*--------------------------------------------------------------
 #Catalog design
@@ -522,7 +525,7 @@ function move_to_top_on_pagination() {
 	<?php
 	}
 
-add_action('wp_footer', 'move_to_top_on_pagination');
+add_action('woocommerce_after_main_content', 'move_to_top_on_pagination');
 
 // добавляем директивы ноиндекс, фоллоу для страниц пагинации, начиная со 2 #SEO
 add_filter( 'wpseo_robots', 'filter_wpseo_robots' );
@@ -725,6 +728,8 @@ add_action('wp_ajax_nopriv_get_main_cats_term', 'plnt_main_cats_slider_action_ca
 function plnt_main_cats_slider_action_callback() {
 	$term_slug = $_POST['term'];
 	$term_type = $_POST['type'];
+  // WC()->session->set('term_slug', $_POST['term'] );
+  // WC()->session->set('term_type', $_POST['type'] );
 
     $args = array(
         'post_type' => 'product',
@@ -739,17 +744,17 @@ function plnt_main_cats_slider_action_callback() {
                 'compare'   => 'NOT IN'
             )
         ),
-		'tax_query' => array(
-			array(
-				'taxonomy' => $term_type,
-				'field' => 'slug',
-				'terms' => $term_slug,
-			)
-		),
+        'tax_query' => array(
+          array(
+            'taxonomy' => $term_type,
+            'field' => 'slug',
+            'terms' => $term_slug,
+          )
+        ),
     );
     
     $products = new WP_Query( $args );
-	$json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
+	  $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
     if ( $products->have_posts() ) : ?>  
 	
 		<div class="product-slider-wrap product-slider-swiper swiper">
@@ -765,13 +770,21 @@ function plnt_main_cats_slider_action_callback() {
 			<div class="swiper-button-next"></div>
 		</div>
 		<a class="main__cats-all" href="<?php echo get_term_link( $term_slug, $term_type );?>">Все товары категории</a>
-
+    
     <?php endif;
-
+    ?>
+    <!-- <div><?php //echo $term_slug.' '.$term_type ;?></div> -->
+    <?php
     
     $json_data['out'] = ob_get_clean();
     wp_send_json($json_data);
     wp_die();
 };
 
+//add_action('wp_head','plnt_debug');
+
+function plnt_debug() {
+  echo 'term '.(WC()->session->get('term_slug' )).'  ';
+  echo 'term '.(WC()->session->get('term_type' )).'  ';
+}
 
