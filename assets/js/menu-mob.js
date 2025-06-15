@@ -45,6 +45,10 @@ function catalogMenuInit() {
 // для разворачивая пункта меню с растениями
   dropdownPlants = menuMobCatalog.querySelector('.catalog__dropdown');
   menuPlants = dropdownPlants.querySelector('.catalog__dropdown-menu');
+
+  // для разворачивая пункта меню с растениями
+  menuPlants.classList.add('catalog__dropdown-menu_show');
+  dropdownPlants.classList.add('catalog__dropdown_open');
 }
 
 
@@ -96,9 +100,9 @@ function open_catalog () {
     menuMobCatalog.classList.add('catalog-menu__wrap_open');
     menuMobCatalogBtn.classList.add('burger-menu__nav-btn_active');
 
-     // для разворачивая пункта меню с растениями
-     menuPlants.classList.add('catalog__dropdown-menu_show');
-     dropdownPlants.classList.add('catalog__dropdown_open');
+    //  // для разворачивая пункта меню с растениями
+    //  menuPlants.classList.add('catalog__dropdown-menu_show');
+    //  dropdownPlants.classList.add('catalog__dropdown_open');
 
 }
 
