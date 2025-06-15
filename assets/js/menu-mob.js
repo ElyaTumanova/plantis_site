@@ -41,7 +41,7 @@ function plntAjaxShowCatalogMobMenu() {
   // Close anon function.
   }( jQuery ) );
 }
-plntAjaxShowCatalogMobMenu();
+
 function catalogMenuInit() {
 // для разворачивая пункта меню с растениями
   dropdownPlants = menuMobCatalog.querySelector('.catalog__dropdown');
@@ -105,6 +105,11 @@ function open_catalog () {
 /*--------------------------------------------------------------
 # Catalog for mobile
 --------------------------------------------------------------*/
+
+
+catalogMobOpen.addEventListener ("click", (evt)=>{
+    plntAjaxShowCatalogMobMenu();
+},{once:true});
 
 catalogMobOpen.addEventListener ("click", (evt)=>{
     toggle_mob_menu ();
