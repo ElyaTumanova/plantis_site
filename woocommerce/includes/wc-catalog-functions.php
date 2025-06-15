@@ -729,8 +729,8 @@ add_action('wp_ajax_nopriv_get_main_cats_term', 'plnt_main_cats_slider_action_ca
 function plnt_main_cats_slider_action_callback() {
 	$term_slug = $_POST['term'];
 	$term_type = $_POST['type'];
-  WC()->session->set('term_slug', $_POST['term'] );
-  WC()->session->set('term_type', $_POST['type'] );
+  // WC()->session->set('term_slug', $_POST['term'] );
+  // WC()->session->set('term_type', $_POST['type'] );
 
     $args = array(
         'post_type' => 'product',
@@ -774,7 +774,7 @@ function plnt_main_cats_slider_action_callback() {
     
     <?php endif;
     ?>
-    <div><?php echo $term_slug.' '.$term_type ;?></div>
+    <!-- <div><?php //echo $term_slug.' '.$term_type ;?></div> -->
     <?php
     
     $json_data['out'] = ob_get_clean();
@@ -782,7 +782,7 @@ function plnt_main_cats_slider_action_callback() {
     wp_die();
 };
 
-add_action('wp_head','plnt_debug');
+//add_action('wp_head','plnt_debug');
 
 function plnt_debug() {
   echo 'term '.(WC()->session->get('term_slug' )).'  ';
