@@ -20,7 +20,7 @@ function showSlider(sliderNmber) {
 
 function ajaxGetMainCatTerm() {
     jQuery( function($){
-        console.log('ajaxGetMainCatTerm init');
+        //console.log('ajaxGetMainCatTerm init');
         // console.log('catsTerm ajax',catsTerm);
         // console.log('taxonomyType ajax',taxonomyType);
         $.ajax({
@@ -35,9 +35,9 @@ function ajaxGetMainCatTerm() {
             beforeSend: function(xhr){
             },
             success: function (data) {
-                console.log('ajaxGetMainCatTerm success');
+                //console.log('ajaxGetMainCatTerm success');
                 $('.main__cats-slider').html(data.out);
-                console.log(data.out);
+                //console.log(data.out);
                 let slider = document.querySelectorAll(".product-slider-swiper .product");
                 slider.forEach((slide) => {
                     slide.classList.add('swiper-slide');
