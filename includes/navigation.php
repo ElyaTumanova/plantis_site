@@ -263,3 +263,11 @@ function plnt_show_primary_menu() {
 
 add_filter( 'wp_ajax_nopriv_plnt_show_primary_menu', 'plnt_show_primary_menu' );
 add_filter( 'wp_ajax_plnt_show_primary_menu', 'plnt_show_primary_menu' );
+
+function plnt_show_catalog_menu() {
+	echo plnt_catalog_menu()();
+	die();
+}
+
+add_filter( 'wp_ajax_nopriv_plnt_show_catalog_menu', 'plnt_show_catalog_menu' );
+add_filter( 'wp_ajax_plnt_show_catalog_menu', 'plnt_show_catalog_menu' );

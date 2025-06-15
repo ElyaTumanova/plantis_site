@@ -13,12 +13,34 @@ const menuMobCatalogBtn = document.querySelector('.burger-menu__nav_catalog');
 const menuMobMenu = document.querySelector('.burger-menu__wrap');
 const menuMobCatalog = document.querySelector('.catalog-menu__wrap');
 
-const catalogMob = document.querySelector('.catalog-menu__wrap');
+//const catalogMob = document.querySelector('.catalog-menu__wrap');
 const catalogMobOpen = document.querySelector('.header__catalog_mob');
 
+function plntAjaxShowCatalogMobMenu() {
+  ( function ( $ ) {
+    console.log('plntAjaxShowCatalogMobMenu init');
+      "use strict";
+    // Define the PHP function to call from here
+      var data = {
+        'action': 'plnt_show_catalog_menu'
+      };
+      $.get(
+        woocommerce_params.ajax_url, // The AJAX URL
+        data, // Send our PHP function
+        function(response){
+          //console.log(response);
+          menuMobCatalog.innerHTML = response;
+          console.log('plntAjaxShowCatalogMobMenu success')
+          catalogMenuInit();
+          openHeaderCatalog();
+        }
+      );
+  // Close anon function.
+  }( jQuery ) );
+}
 
 // для разворачивая пункта меню с растениями
-const dropdownPlants = catalogMob.querySelector('.catalog__dropdown');
+const dropdownPlants = menuMobCatalog.querySelector('.catalog__dropdown');
 const menuPlants = dropdownPlants.querySelector('.catalog__dropdown-menu');
 
 menuMobOpen.addEventListener ("click", (evt)=>{
