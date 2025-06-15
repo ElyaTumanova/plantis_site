@@ -51,6 +51,9 @@ function catalogMenuInit() {
 
 menuMobOpen.addEventListener ("click", (evt)=>{
     plntAjaxShowCatalogMobMenu();
+},{once:true});
+
+menuMobOpen.addEventListener ("click", (evt)=>{
     toggle_mob_menu ();
     open_menu ();
 });
