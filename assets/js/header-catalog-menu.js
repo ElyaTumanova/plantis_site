@@ -32,7 +32,7 @@ function plntAjaxShowPrimaryMenu() {
           primaryMenuDiv.innerHTML = response;
           console.log('plntAjaxShowPrimaryMenu success')
           primaryMenuInit();
-          openHeaderCatalog();
+          //openHeaderCatalog();
         }
       );
   // Close anon function.
@@ -190,5 +190,5 @@ function closePlantsSubMenues() {
     })
 }
 
-//catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 catalogBtn.addEventListener('click',plntAjaxShowPrimaryMenu,{once:true});
+catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
