@@ -771,10 +771,11 @@ function plnt_main_cats_slider_action_callback() {
 			<div class="swiper-button-next"></div>
 		</div>
 		<a class="main__cats-all" href="<?php echo get_term_link( $term_slug, $term_type );?>">Все товары категории</a>
-    <div><?php echo $term_slug.' '.$term_type ;?></div>
-
+    
     <?php endif;
-
+    ?>
+    <div><?php echo $term_slug.' '.$term_type ;?></div>
+    <?php
     
     $json_data['out'] = ob_get_clean();
     wp_send_json($json_data);
