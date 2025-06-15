@@ -32,18 +32,22 @@ function plntAjaxShowCatalogMobMenu() {
           menuMobCatalog.innerHTML = response;
           console.log('plntAjaxShowCatalogMobMenu success')
           catalogMenuInit();
-          openHeaderCatalog();
+          //openHeaderCatalog();
         }
       );
   // Close anon function.
   }( jQuery ) );
 }
 
+function catalogMenuInit() {
 // для разворачивая пункта меню с растениями
-const dropdownPlants = menuMobCatalog.querySelector('.catalog__dropdown');
-const menuPlants = dropdownPlants.querySelector('.catalog__dropdown-menu');
+  const dropdownPlants = menuMobCatalog.querySelector('.catalog__dropdown');
+  const menuPlants = dropdownPlants.querySelector('.catalog__dropdown-menu');
+}
+
 
 menuMobOpen.addEventListener ("click", (evt)=>{
+    plntAjaxShowCatalogMobMenu();
     toggle_mob_menu ();
     open_menu ();
 });
