@@ -20,7 +20,7 @@ function ajaxGetMainCatTerm() {
     jQuery( function($){
         console.log('ajaxGetMainCatTerm init');
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: woocommerce_params.ajax_url,
             data: {
                 'action': 'get_main_cats_term',
