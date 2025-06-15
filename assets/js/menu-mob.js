@@ -35,7 +35,6 @@ function plntAjaxShowCatalogMobMenu() {
           menuMobCatalog.innerHTML = response;
           console.log('plntAjaxShowCatalogMobMenu success')
           catalogMenuInit();
-          //openHeaderCatalog();
         }
       );
   // Close anon function.
