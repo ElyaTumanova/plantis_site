@@ -2,18 +2,21 @@
 
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
-      <div class="page-ukhod">
-			<h1 class="entry-title">Профессиональный уход за растениями</h1> 
-      <img class="page-ukhod__photo" src="https://plantis.shop/wp-content/uploads/2022/01/16.10-2.jpg" alt="Профессиональный уход за растениями">               
-      <div class="page-ukhod__intro">
-        Мир растений – неизведанный прекрасный мир. Уход за растениями –наука. Иногда, перекинуть задачу по уходу за растениями в офисе или кафе на сотрудников или клининг – это значит пожертвовать растениями. Ущерб от такого экономического решения превышают сэкономленные деньги, вплоть до того, что придется все создавать заново. 
+    <div class="page-ukhod">
+      <div class="page-ukhod__first-screen">
+        <h1 class="entry-title">Профессиональный уход за растениями</h1> 
+        <img class="page-ukhod__photo" src="https://plantis.shop/wp-content/uploads/2022/01/16.10-2.jpg" alt="Профессиональный уход за растениями">               
+        <p class="page-ukhod__intro">
+          Мир растений – неизведанный прекрасный мир. Уход за растениями –наука. Иногда, перекинуть задачу по уходу за растениями в офисе или кафе на сотрудников или клининг – это значит пожертвовать растениями. Ущерб от такого экономического решения превышают сэкономленные деньги, вплоть до того, что придется все создавать заново. 
+        </p>
+        <button class="page-ukhod__rasschet button">Расчитать стоимость</button>
+        <?php get_template_part('template-parts/social-media-btns');?>
+        <div class="page-ukhod__intro_small">
+          Если вы не хотите взваливать на свои плечи и плечи своих сотрудников дополнительную ответственность, то можно делегировать ее нам! Уход за растениями – наша работа, наше хобби, наша наука. 
+        </div>
+      
       </div>
-      <button class="page-ukhod__rasschet button">Расчитать стоимость</button>
-      <?php get_template_part('template-parts/social-media-btns');?>
-      <div class="page-ukhod__intro_small">
-        Если вы не хотите взваливать на свои плечи и плечи своих сотрудников дополнительную ответственность, то можно делегировать ее нам! Уход за растениями – наша работа, наше хобби, наша наука. 
-      </div>
-      <div class="page-ukhod__services">
+			<div class="page-ukhod__services">
         <h2 class="page-ukhod__services-title">Этапы оказания услуги:</h2>
         <ul class="page-ukhod__services-list">
           <li>Наш специалист приезжает к вам, внимательно осматривает растения и оценивает их состояние.</li>
@@ -64,7 +67,7 @@
       </div>
 
       <div class="page-ukhod__advantages">
-        <h2 class="page-ukhod__advantages-title"></h2>
+        <h2 class="page-ukhod__advantages-title">Почему уход за растениями стоит доверить нам?</h2>
         <ul class="page-ukhod__advantages-item">
           <li>Ваша задача — бизнес. Наша — забота о растениях. Уберём все хлопоты и контроль за уходом на себя.</li>
           <li>Поддерживаем имидж — ухоженные растения подчёркивают статус и заботу о деталях в вашем бизнесе.</li>
