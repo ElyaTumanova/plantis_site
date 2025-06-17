@@ -555,7 +555,7 @@
 .page-ukhod__services {
   display: grid;
   column-gap: 200px;
-  grid-template-columns: 400px auto;
+  grid-template-columns: 400px 600px;
   margin-bottom: 60px;
 }
 
@@ -572,7 +572,6 @@
 }
 
 .page-ukhod__services-title {
-  width: 50%;
   font-size: 28px;
   text-transform: uppercase;
 }
