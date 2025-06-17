@@ -580,7 +580,7 @@
   display: grid;
   grid-template-columns: 200px 250px 600px;
   grid-template-rows: repeat(3,auto);
-  column-gap: 200px;
+  column-gap: 50px;
   grid-template-areas: "title cost description"
   "title period description"
   "button button button";
