@@ -506,9 +506,26 @@
   column-gap: 100px;
   row-gap: 40px;
   padding: 50px;
-  background-color: var(--gray);;
+  background-color: var(--gray);
   border-radius: 40px;
   margin-bottom: 50px;
+}
+
+@media (max-width: 767px) {
+    .page-ukhod__first-screen {
+        grid-template-columns: 300px auto;
+        grid-template-rows: auto auto 50px auto auto;
+        grid-template-areas: "title title"
+        "intro intro"
+        "rasschet social"
+        "smallintro smallintro"
+        "photo photo";
+        column-gap: 100px;
+        row-gap: 40px;
+        padding: 50px;
+        border-radius: 40px;
+        margin-bottom: 50px;
+    }
 }
 
 .page-ukhod__entry-title {
