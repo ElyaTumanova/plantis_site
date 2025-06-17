@@ -508,10 +508,12 @@
   padding: 50px;
   background-color: #f4f5f6;
   border-radius: 40px;
+  margin-bottom: 50px;
 }
 
 .page-ukhod__entry-title {
   grid-area: title;
+  color: var(--text);
 }
 .page-ukhod__photo {
   grid-area: photo;
@@ -541,4 +543,9 @@
   max-width: 1000px;
   margin: auto;
   line-height: 1.2;
+  margin-top: 20px;
+}
+
+.page-ukhod__intro_small p:first-child {
+  margin-bottom: 10px;
 }
