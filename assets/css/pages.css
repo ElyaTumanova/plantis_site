@@ -501,8 +501,8 @@
   grid-template-rows: repeat(4, auto);
   grid-template-areas: "title title photo"
   "intro intro photo"
-  "rasschet social phpto"
-  "smallintro smallintro smallintro";
+  "rasschet social photo"
+  "smallintro smallintro photo";
 }
 
 .page-ukhod__entry-title {
