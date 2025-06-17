@@ -576,7 +576,7 @@
   text-transform: uppercase;
 }
 
-.page-ukhod__service-item {
+/* .page-ukhod__service-item {
   display: grid;
   grid-template-columns: 400px 600px;
   grid-template-rows: repeat(4,auto);
@@ -585,6 +585,19 @@
   "title period"
   "description description"
   "button button";
+  margin-bottom: 90px;
+  row-gap: 30px;
+} */
+.page-ukhod__service-item {
+  display: grid;
+  grid-template-columns: 400px 300px 400px;
+  grid-template-rows: repeat(3,auto);
+  column-gap: 200px;
+  grid-template-areas: "title cost description"
+  "title period description"
+  "button button";
+  margin-bottom: 90px;
+  row-gap: 30px;
 }
 
 .page-ukhod__service-item-title {
