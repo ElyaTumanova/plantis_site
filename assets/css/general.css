@@ -20,7 +20,8 @@
     --white: #fff;
     --background: #FDFDFD;
     --text:#000;
-    --gray:#F2F2F2;
+    /* --gray:#F2F2F2; */
+    --gray:#f4f5f6;
     --gray-text:#767676;
     --telegram:#0886C4;
     --whatsapp:#25d366;

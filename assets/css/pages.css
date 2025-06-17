@@ -599,6 +599,8 @@
   margin-bottom: 90px;
   row-gap: 30px;
   padding: 50px;
+  background-color: lightblue;
+  border-radius: 40px;
 }
 
 .page-ukhod__service-item-title {
