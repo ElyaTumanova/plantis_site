@@ -29,7 +29,7 @@
         </ul>
       </div>
       <div class="page-ukhod__services">
-        <h2 class="page-ukhod__services-title">Что включает в себя обслуживание:</h2>
+        <h2 class="page-ukhod__services-title">Что включает в себя обслуживание</h2>
         <ul class="page-ukhod__services-list">
           <li>Полив по потребностям каждого растения, опрыскивание;</li>
           <li>Санитарная и формовочная обрезка;</li>

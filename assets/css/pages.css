@@ -553,20 +553,26 @@
 
 
 .page-ukhod__services {
-  display: flex;
-  column-gap: 100px;
+  display: grid;
+  column-gap: 200px;
+  grid-template-columns: 400px auto;
+  margin-bottom: 60px;
 }
 
-.page-ukhod__services-list {
+/* .page-ukhod__services-list {
   list-style: decimal;
-}
+} */
 .page-ukhod__services-list li {
-  margin-bottom: 10px;
   font-size: 18px;
+  padding: 15px 0;
+  border-bottom: solid 1px var(--text);
+}
+.page-ukhod__services-list li:first-child {
+  padding-top: 0;
 }
 
 .page-ukhod__services-title {
   width: 50%;
-  font-size: 30px;
+  font-size: 28px;
   text-transform: uppercase;
 }
