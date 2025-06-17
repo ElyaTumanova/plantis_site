@@ -599,9 +599,8 @@
   grid-area: cost;
 }
 
-.page-ukhod__service-item-cost p:first-child {
+.page-ukhod__service-item-cost p:first-of-type {
   font-weight: 700;
-  color: var(--gray-text);
 }
 
 .page-ukhod__service-item-period {
