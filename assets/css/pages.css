@@ -497,7 +497,7 @@
 
 .page-ukhod__first-screen {
   display: grid;
-  grid-template-columns: auto auto 400px;
+  grid-template-columns: 300px auto 400px;
   grid-template-rows: auto auto 50px auto;
   grid-template-areas: "title title photo"
   "intro intro photo"
@@ -532,7 +532,8 @@
 
 .page-ukhod .social-media__buttons {
   grid-area: social;
-  justify-content: space-around;
+  justify-content: start;
+  column-gap: 100px;
 }
 
 .page-ukhod__intro_small {
