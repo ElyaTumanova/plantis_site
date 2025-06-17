@@ -502,9 +502,9 @@
   grid-template-areas: "title title photo"
   "intro intro photo"
   "rasschet social photo"
-  "smallintro smallintro photo";
+  "smallintro smallintro smallintro";
   column-gap: 100px;
-  row-gap: 20px;
+  row-gap: 40px;
   padding: 50px;
   background-color: #f4f5f6;
   border-radius: 40px;
@@ -518,6 +518,7 @@
 }
 .page-ukhod__intro {
   grid-area: intro;
+  font-size: 24px;
 }
 .page-ukhod__rasschet {
   grid-area: rasschet;
@@ -529,4 +530,5 @@
 
 .page-ukhod__intro_small {
   grid-area: smallintro;
+  font-size: 18px;
 }
