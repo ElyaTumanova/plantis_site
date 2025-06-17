@@ -606,6 +606,11 @@
 .page-ukhod__service-item-period {
   grid-area: period;
 }
+
+.page-ukhod__service-item-period p:first-of-type {
+  font-weight: 700;
+}
+
 .page-ukhod__service-item-descr {
   grid-area: description;
 }
