@@ -656,7 +656,7 @@
 @media(max-width:767px) {
     .page-ukhod__service-item {
         grid-template-columns: 200px auto;
-        grid-template-rows: auto auto 50px auto;
+        grid-template-rows: auto auto auto 50px;
         column-gap: 30px;
         grid-template-areas: "title cost"
         "title period"
@@ -667,8 +667,6 @@
         padding: 30px;
     }
 }
-
-
 
 .page-ukhod__service-item-title {
   grid-area: title;
@@ -708,20 +706,28 @@
   line-height: 1.5;
 }
 
-.page-ukhod__advantages-title {
-    margin-bottom: 35px;
-    font-size: 28px;
-    text-transform: uppercase;
-    line-height: 1.2;
-    text-align: center;
-}
-
 .page-ukhod__advantages {
   padding: 50px;
   background-color: #262626;
   color: white;
   border-radius: 40px;
   margin-bottom: 90px;
+}
+
+@media(max-width:767px) {
+    .page-ukhod__advantages {
+      padding: 30px;
+      margin-bottom: 60px;
+    }
+}
+
+
+.page-ukhod__advantages-title {
+    margin-bottom: 35px;
+    font-size: 28px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: center;
 }
 
 .page-ukhod__advantages-item {
@@ -731,6 +737,14 @@
   row-gap: 55px;
   justify-content: center;
 }
+
+@media(max-width:767px) {
+    .page-ukhod__advantages-item {
+      column-gap: 30px;
+      row-gap: 30px;
+    }
+}
+
 
 .page-ukhod__advantages-item li{
   text-align: center;
