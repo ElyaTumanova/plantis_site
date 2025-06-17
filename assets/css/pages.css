@@ -523,10 +523,14 @@
 }
 .page-ukhod__rasschet {
   grid-area: rasschet;
+  background-color: var(--text);
+  color: var(--white);
+  border-radius: 50px;
 }
 
 .page-ukhod .social-media__buttons {
   grid-area: social;
+  justify-content: space-around;
 }
 
 .page-ukhod__intro_small {
