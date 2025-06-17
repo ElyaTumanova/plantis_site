@@ -595,7 +595,7 @@
   column-gap: 200px;
   grid-template-areas: "title cost description"
   "title period description"
-  "button button";
+  "button button button";
   margin-bottom: 90px;
   row-gap: 30px;
 }
