@@ -490,3 +490,38 @@
     align-items: center;
     row-gap: 20px;
 }
+
+/*--------------------------------------------------------------
+# Services
+--------------------------------------------------------------*/
+
+.page-ukhod__first-screen {
+  display: grid;
+  grid-template-columns: auto auto 400px;
+  grid-template-rows: repeat(4, auto);
+  grid-template-areas: "title title photo"
+  "intro intro photo"
+  "rasschet social phpto"
+  "smallintro smallintro smallintro";
+}
+
+.page-ukhod__entry-title {
+  grid-area: title;
+}
+.page-ukhod__photo {
+  grid-area: photo;
+}
+.page-ukhod__intro {
+  grid-area: intro;
+}
+.page-ukhod__rasschet {
+  grid-area: rasschet;
+}
+
+.page-ukhod .social-media__buttons {
+  grid-area: social;
+}
+
+.page-ukhod__intro_small {
+  grid-area: smallintro;
+}
