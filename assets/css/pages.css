@@ -506,7 +506,7 @@
   column-gap: 100px;
   row-gap: 40px;
   padding: 50px;
-  background-color: #f4f5f6;
+  background-color: var(--gray);;
   border-radius: 40px;
   margin-bottom: 50px;
 }
@@ -576,21 +576,9 @@
   text-transform: uppercase;
 }
 
-/* .page-ukhod__service-item {
-  display: grid;
-  grid-template-columns: 400px 600px;
-  grid-template-rows: repeat(4,auto);
-  column-gap: 200px;
-  grid-template-areas: "title cost"
-  "title period"
-  "description description"
-  "button button";
-  margin-bottom: 90px;
-  row-gap: 30px;
-} */
 .page-ukhod__service-item {
   display: grid;
-  grid-template-columns: 200px 250px 500px;
+  grid-template-columns: 200px 250px 600px;
   grid-template-rows: repeat(3,auto);
   column-gap: 200px;
   grid-template-areas: "title cost description"
@@ -599,7 +587,7 @@
   margin-bottom: 90px;
   row-gap: 30px;
   padding: 50px;
-  background-color: #f4f5f6;
+  background-color: var(--gray);
   border-radius: 40px;
 }
 
