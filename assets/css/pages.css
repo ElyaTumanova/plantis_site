@@ -574,6 +574,7 @@
 .page-ukhod__services-title {
   font-size: 28px;
   text-transform: uppercase;
+  line-height: 1.2;
 }
 
 .page-ukhod__service-item {
@@ -583,7 +584,7 @@
   column-gap: 50px;
   grid-template-areas: "title cost description"
   "title period description"
-  "button button button";
+  "button button description";
   margin-bottom: 90px;
   row-gap: 30px;
   padding: 50px;
@@ -605,9 +606,16 @@
 }
 .page-ukhod__service-item-order {
   grid-area: button;
+  background-color: var(--text);
+  color: var(--white);
+  border-radius: 40px;
 }
 
 .page-ukhod__service-item p {
   margin-bottom: 7px;
   line-height: 1.4;
+}
+
+.page-ukhod__service-item-descr {
+  line-height: 1.5;
 }
