@@ -606,3 +606,8 @@
 .page-ukhod__service-item-order {
   grid-area: button;
 }
+
+.page-ukhod__service-item p {
+  margin-bottom: 7px;
+  line-height: 1.4;
+}
