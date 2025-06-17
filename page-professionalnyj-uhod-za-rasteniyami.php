@@ -18,7 +18,7 @@
       
       </div>
 			<div class="page-ukhod__services">
-        <h2 class="page-ukhod__services-title">Этапы оказания услуги:</h2>
+        <h2 class="page-ukhod__services-title">Этапы оказания услуги</h2>
         <ul class="page-ukhod__services-list">
           <li>Наш специалист приезжает к вам, внимательно осматривает растения и оценивает их состояние.</li>
           <li>Вместе обсуждаем все детали, согласовываем условия и подписываем договор.</li>

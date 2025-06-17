@@ -550,3 +550,23 @@
 .page-ukhod__intro_small p:first-child {
   margin-bottom: 10px;
 }
+
+
+.page-ukhod__services {
+  display: flex;
+  column-gap: 100px;
+}
+
+.page-ukhod__services-list {
+  list-style: decimal;
+}
+.page-ukhod__services-list li {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.page-ukhod__services-title {
+  width: 50%;
+  font-size: 30px;
+  text-transform: uppercase;
+}
