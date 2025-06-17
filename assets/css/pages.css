@@ -590,7 +590,7 @@
 } */
 .page-ukhod__service-item {
   display: grid;
-  grid-template-columns: 400px 300px 400px;
+  grid-template-columns: 200px 250px 500px;
   grid-template-rows: repeat(3,auto);
   column-gap: 200px;
   grid-template-areas: "title cost description"
@@ -598,6 +598,7 @@
   "button button button";
   margin-bottom: 90px;
   row-gap: 30px;
+  padding: 50px;
 }
 
 .page-ukhod__service-item-title {
