@@ -556,7 +556,7 @@
   display: grid;
   column-gap: 200px;
   grid-template-columns: 400px 600px;
-  margin-bottom: 60px;
+  margin-bottom: 120px;
 }
 
 /* .page-ukhod__services-list {
@@ -574,4 +574,31 @@
 .page-ukhod__services-title {
   font-size: 28px;
   text-transform: uppercase;
+}
+
+.page-ukhod__service-item {
+  display: grid;
+  grid-template-columns: 400px 600px;
+  grid-template-rows: repeat(4,auto);
+  column-gap: 200px;
+  grid-template-areas: "title cost"
+  "title period"
+  "description description"
+  "button button";
+}
+
+.page-ukhod__service-item-title {
+  grid-area: title;
+}
+.page-ukhod__service-item-cost {
+  grid-area: cost;
+}
+.page-ukhod__service-item-period {
+  grid-area: period;
+}
+.page-ukhod__service-item-descr {
+  grid-area: description;
+}
+.page-ukhod__service-item-order {
+  grid-area: button;
 }
