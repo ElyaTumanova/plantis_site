@@ -34,6 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <!-- услуги -->
     <div class="menu__item_accent ">Услуги</div>
     <div class="menu__item"> <a href="<?php echo site_url()?>/usluga-peresadki-komnatnyh-rastenij/">Пересадка</a></div>
+    <div class="menu__item"> <a href="<?php echo site_url()?>/professionalnyj-uhod-za-rasteniyami/">Профессиональный уход за растениями</a></div>
     <div class="menu__item"> <a href="<?php echo site_url()?>/landscaping/">Озеленение</a></div>
     <div class="menu__item"> <a href="<?php echo site_url()?>/pokupka-komnatnyh-rastenij-optom/">Оптовая покупка растений</a></div>
 
