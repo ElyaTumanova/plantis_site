@@ -135,7 +135,7 @@ function plnt_refresh_shipping_methods_for_late( $post_data ){
 
 /* выбираем способ доставки в зависимости от условий*/
 
-//add_filter( 'woocommerce_package_rates', 'plnt_shipping_conditions', 25, 2 );
+add_filter( 'woocommerce_package_rates', 'plnt_shipping_conditions', 25, 2 );
  
 function plnt_shipping_conditions( $rates, $package ) {
 
