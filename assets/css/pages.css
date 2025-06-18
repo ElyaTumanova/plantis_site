@@ -826,6 +826,10 @@
   }
 }
 
+.page-peresadka .info__table {
+  border: none;
+}
+
 .page-peresadka .info__table td {
   border: none;
   border-bottom: 1px solid #dddddd;
