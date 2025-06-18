@@ -53,7 +53,7 @@ if(pagePopup != null && ukhodButtons != null) {
 function setServiceName(evt) {
   console.log(evt.target.name);
   if(serviceNameInput != null) {
-    serviceNameInput.setAttribute(value,evt.target.name);
+    serviceNameInput.setAttribute('value',evt.target.name);
   }
 }
 
