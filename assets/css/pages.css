@@ -659,6 +659,10 @@
   padding: 0 50px;
 }
 
+.page-peresadka .page-ukhod__services {
+  column-gap: 100px;
+}
+
 @media(max-width:1200px) {
     .page-ukhod__services {         
         grid-template-columns: 300px auto;
