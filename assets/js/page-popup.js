@@ -51,6 +51,6 @@ if(pagePopup != null && ukhodButtons != null) {
 }
 
 function setServiceName(evt) {
-  console.log(evt.target);
+  console.log(evt.target.name);
 }
 
