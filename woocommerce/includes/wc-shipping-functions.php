@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 //СПОСОБЫ ДОСТАВКИ
 
 //задаем по умолчанию срочную доставку
-//add_action('wp_head','plnt_set_initials');
+add_action('wp_head','plnt_set_initials');
 
 function plnt_set_initials() {
     date_default_timezone_set('Europe/Moscow');
@@ -24,7 +24,6 @@ function plnt_set_initials() {
         }
     }
    
-
     WC()->session->set('isLate', '0' );
 
 };
