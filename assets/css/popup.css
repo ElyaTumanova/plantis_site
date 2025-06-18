@@ -55,7 +55,7 @@
 @media (max-width: 767px) {
     .page-popup__container {
         top: 100px;
-        padding: 15px;
+        padding: 25px 15px;
         max-width: 1300px;
         margin: auto;
         border-radius: 20px;
