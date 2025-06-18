@@ -277,3 +277,9 @@ input[type="search"], input[type="search"]:focus-visible {
     font-size: 30px;
     font-weight: 400;
 }
+
+/* ukhod-popup */
+.ukhod-popup .page-popup__container {
+    max-width: 700px;
+    display: block;
+}
