@@ -24,7 +24,6 @@ function plnt_set_initials() {
         }
     }
    
-
     WC()->session->set('isLate', '0' );
 
 };
@@ -175,7 +174,7 @@ function plnt_shipping_conditions( $rates, $package ) {
     date_default_timezone_set('Europe/Moscow');
     $hour = date("H");
 
-    if (WC()->session->get('isUrgent' ) === '0' || ($hour >= 18 && $hour <20)) {
+    if (plnt_is_backorder()) {
         unset( $rates[ $urgent_delivery_inMKAD ] );
         unset( $rates[ $urgent_delivery_outMKAD ] );
         unset( $rates[ $urgent_delivery_inMKAD_small ] );
@@ -184,7 +183,17 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $urgent_delivery_outMKAD_large ] );
         unset( $rates[ $urgent_delivery_inMKAD_medium ] );
         unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-    }  else {
+    } else {
+      if (WC()->session->get('isUrgent' ) === '0' || ($hour >= 18 && $hour <20)) {
+        unset( $rates[ $urgent_delivery_inMKAD ] );
+        unset( $rates[ $urgent_delivery_outMKAD ] );
+        unset( $rates[ $urgent_delivery_inMKAD_small ] );
+        unset( $rates[ $urgent_delivery_outMKAD_small ] );
+        unset( $rates[ $urgent_delivery_inMKAD_large ] );
+        unset( $rates[ $urgent_delivery_outMKAD_large ] );
+        unset( $rates[ $urgent_delivery_inMKAD_medium ] );
+        unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+      }  else {
         unset( $rates[ $delivery_inMKAD ] );
         unset( $rates[ $delivery_outMKAD ] );
         unset( $rates[ $delivery_inMKAD_small ] );
@@ -194,7 +203,8 @@ function plnt_shipping_conditions( $rates, $package ) {
         unset( $rates[ $delivery_inMKAD_medium ] );
         unset( $rates[ $delivery_outMKAD_medium ] );
         WC()->session->set('isLate', '0' );
-    } 
+      } 
+    }
 
     /*СТОИМОСТЬ ДОСТАВКИ ПО СУММЕ*/
 
