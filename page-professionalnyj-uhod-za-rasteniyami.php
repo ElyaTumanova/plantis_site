@@ -1,4 +1,21 @@
-<?php get_header(); ?>
+<?php 
+
+add_shortcode( 'ukhod_button', 'create_button' );
+
+function create_button( $atts ) {
+	$atts = shortcode_atts( [
+		'name'   => 'Рассчитать стоимость',
+	], $atts );
+
+	return strtr( '
+		<button class="page-ukhod__rasschet button">{name}</button>', 
+		[
+			'{name}'    => esc_attr( $atts['name'] ),
+		]
+	);
+}
+
+get_header(); ?>
 
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
@@ -9,7 +26,8 @@
         <div class="page-ukhod__intro">
           Мир растений – неизведанный прекрасный мир. Уход за растениями – наука. Иногда, перекинуть задачу по уходу за растениями в офисе или кафе на сотрудников или клининг – это&nbsp;значит пожертвовать растениями. Ущерб от такого экономического решения превышают сэкономленные деньги, вплоть до того, что придется все создавать заново. 
         </div>
-        <button class="page-ukhod__rasschet button">Расчитать стоимость</button>
+        <?php echo do_shortcode( '[ukhod_button name="lalala"]');?>
+        <!-- <button class="page-ukhod__rasschet button">Расчитать стоимость</button> -->
         <?php get_template_part('template-parts/social-media-btns');?>
         <div class="page-ukhod__intro_small">
           <p>Если вы не хотите взваливать на свои плечи и плечи своих сотрудников дополнительную ответственность, то можно делегировать ее нам!</p>
@@ -99,3 +117,6 @@
 </div><!-- #primary -->
 
 <?php get_footer(); ?>
+
+<?php 
+
