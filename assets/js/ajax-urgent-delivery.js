@@ -97,10 +97,10 @@ function ajaxGetUrgent(date) {
     }
   }
 
-  console.log('hi ajaxGetUrgent');
-  console.log('isUrgent ajax', isUrgent);
-  console.log('isBackorder ajax', isBackorder);
-  console.log('isTreezBackorders ajax', isTreezBackorders);
+  console.debug('hi ajaxGetUrgent');
+  console.debug('isUrgent ajax', isUrgent);
+  console.debug('isBackorder ajax', isBackorder);
+  console.debug('isTreezBackorders ajax', isTreezBackorders);
 
   jQuery( function($){
         $.ajax({
@@ -147,8 +147,8 @@ function ajaxGetLateDelivery(event) {
 function setInitalState() {
   let hour = new Date().getHours();
 
-  console.log('isBackorders ', isBackorder);
-  console.log('isTreezBackorders ',isTreezBackorders);
+  console.debug('isBackorders ', isBackorder);
+  console.debug('isTreezBackorders ',isTreezBackorders);
   if (isBackorder || isTreezBackorders) {
     isUrgent = 0;
   } else {
@@ -240,6 +240,6 @@ if (checkoutForm) {
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 
   ajaxGetUrgent(deliveryDatesInput[0].value);
-  console.log(isUrgent);
+  console.debug(isUrgent);
   
 }
