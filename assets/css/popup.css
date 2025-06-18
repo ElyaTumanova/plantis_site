@@ -287,3 +287,14 @@ input[type="search"], input[type="search"]:focus-visible {
   display: flex;
   flex-direction: column;
 }
+.ukhod-popup-list .wpcf7-list-item{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: end;
+}
+
+.ukhod-popup-list input {
+  width: fit-content;
+  margin-right: 5px;
+}
