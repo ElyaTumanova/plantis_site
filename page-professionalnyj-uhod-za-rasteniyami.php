@@ -1,19 +1,19 @@
 <?php 
+$close_icon = carbon_get_theme_option('close_icon')
+// add_shortcode( 'ukhod_button', 'create_button' );
 
-add_shortcode( 'ukhod_button', 'create_button' );
+// function create_button( $atts ) {
+// 	$atts = shortcode_atts( [
+// 		'name'   => '',
+// 	], $atts );
 
-function create_button( $atts ) {
-	$atts = shortcode_atts( [
-		'name'   => '',
-	], $atts );
-
-	return strtr( '
-		{name}', 
-		[
-			'{name}'    => esc_attr( $atts['name'] ),
-		]
-	);
-}
+// 	return strtr( '
+// 		{name}', 
+// 		[
+// 			'{name}'    => esc_attr( $atts['name'] ),
+// 		]
+// 	);
+// }
 
 get_header(); ?>
 
@@ -26,7 +26,7 @@ get_header(); ?>
         <div class="page-ukhod__intro">
           Мир растений – неизведанный прекрасный мир. Уход за растениями – наука. Иногда, перекинуть задачу по уходу за растениями в офисе или кафе на сотрудников или клининг – это&nbsp;значит пожертвовать растениями. Ущерб от такого экономического решения превышают сэкономленные деньги, вплоть до того, что придется все создавать заново. 
         </div>
-        <button class="page-ukhod__rasschet button"><?php echo do_shortcode( '[ukhod_button name="Рассчитать стоимость"]');?></button>
+        <button class="page-ukhod__rasschet button">Рассчитать стоимость</button>
         <?php get_template_part('template-parts/social-media-btns');?>
         <div class="page-ukhod__intro_small">
           <p>Если вы не хотите взваливать на свои плечи и плечи своих сотрудников дополнительную ответственность, то можно делегировать ее нам!</p>
@@ -115,9 +115,19 @@ get_header(); ?>
 	</main><!-- #main -->
 </div><!-- #primary -->
 
-<?php get_footer(); 
+<div class="page-popup popup ukhod-popup">
+    <div class="page-popup__container">
+        <div class="page-popup__wrap">
+            <h2 class="page-popup__heading heading-2">Предзаказ товара</h2>
+            <span class="page-popup__close heading-2"><?php echo $close_icon ?></span>
+            <div class="page-popup__form"><?php echo do_shortcode('[contact-form-7 id="64535" title="Уход за растениями"]')?></div>
+            <p class="page-popup__text">Нажимая кнопку "Отправить", вы даете согласие на обработку своих персональных данных и соглашаетесь с положениями, 
+                описанными в нашей <a class="page-popup__link" target="blank" href="<?php get_site_url()?>/privacy-policy/">политике конфиденциальности</a>.</p>
+        </div>
+    </div>
+    <div class="page-popup__popup-overlay popup-overlay"></div>
+</div>	
 
-echo do_shortcode('[contact-form-7 id="64535" title="Уход за растениями"]')
-?>
+<?php get_footer();?>
 
 
