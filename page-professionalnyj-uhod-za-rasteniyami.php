@@ -1,5 +1,5 @@
 <?php 
-$close_icon = carbon_get_theme_option('close_icon')
+$close_icon = carbon_get_theme_option('close_icon');
 // add_shortcode( 'ukhod_button', 'create_button' );
 
 // function create_button( $atts ) {
