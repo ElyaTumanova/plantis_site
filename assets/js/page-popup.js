@@ -1,15 +1,16 @@
 //переменные для управления попапом
-const pageOpenPopupBtn = document.querySelector('.page-popup-open-btn');
+const pageOpenPopupBtn = document.querySelectorAll('.page-popup-open-btn');
 const pagePopup = document.querySelector('.page-popup');
 const pageClosePopupBtn = document.querySelector('.page-popup__close');
 const pagePopupOverlay = document.querySelector('.page-popup__popup-overlay');
 
 if (pagePopup != null && pageOpenPopupBtn != null) {
-    
-    pageOpenPopupBtn.addEventListener ("click", (evt)=>{
-        toggle_page_popup ();
+    pageOpenPopupBtn.forEach(button => {
+      button.addEventListener ("click", (evt)=>{
+          toggle_page_popup ();
+      });
     });
-
+    
     if (pageClosePopupBtn) {
         pageClosePopupBtn.addEventListener ("click", (evt)=>{
             toggle_page_popup ();

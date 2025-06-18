@@ -26,7 +26,7 @@ get_header(); ?>
         <div class="page-ukhod__intro">
           Мир растений – неизведанный прекрасный мир. Уход за растениями – наука. Иногда, перекинуть задачу по уходу за растениями в офисе или кафе на сотрудников или клининг – это&nbsp;значит пожертвовать растениями. Ущерб от такого экономического решения превышают сэкономленные деньги, вплоть до того, что придется все создавать заново. 
         </div>
-        <button class="page-ukhod__rasschet button">Рассчитать стоимость</button>
+        <button class="page-ukhod__rasschet button page-popup-open-btn">Рассчитать стоимость</button>
         <?php get_template_part('template-parts/social-media-btns');?>
         <div class="page-ukhod__intro_small">
           <p>Если вы не хотите взваливать на свои плечи и плечи своих сотрудников дополнительную ответственность, то можно делегировать ее нам!</p>
@@ -70,7 +70,7 @@ get_header(); ?>
           <p>1 раз в неделю</p>
         </div>
         <p class="page-ukhod__service-item-descr">Стандартный тариф — это комплексный уход за вашими комнатными растениями. Мы обеспечим регулярный полив, опрыскивание, обрезку, уберём лишнюю пыль с листьев. Проведём профилактику и лечение болезней, подкормим удобрениями по сезону и обновим верхний слой грунта. Вы получаете профессиональный уход, сохраняющий здоровье и внешний вид растений. Тариф идеально подходит для растений в офисах, кафе, ресторанах, где созданы постоянные условия.</p>
-        <button class="page-ukhod__service-item-order button">Заказать</button>
+        <button class="page-ukhod__service-item-order button page-popup-open-btn">Заказать</button>
       </div>
 
       <div class="page-ukhod__service-item">
@@ -88,7 +88,7 @@ get_header(); ?>
           <p>Данная услуга доступна только в том случае, если озеленение проводили специалисты нашей компании.</p>
           <p>Гарантийное обслуживание можно оформить только до дня поставки растений.</p>
         </div>
-        <button class="page-ukhod__service-item-order button">Заказать</button>
+        <button class="page-ukhod__service-item-order button page-popup-open-btn">Заказать</button>
       </div>
 
       <div class="page-ukhod__service-item">
@@ -98,7 +98,7 @@ get_header(); ?>
           <p>от 6 000 рублей/выезд</p>
         </div>
         <p class="page-ukhod__service-item-descr">Комплексный уход за растениями за один визит. Подойдёт для офисов, кафе, салонов, которые хотят привести растения в порядок без регулярного обслуживания. Консультация, полив, обрезка, обработка от вредителей, подкормка — ваши растения будут здоровы и ухожены после одной встречи.</p>
-        <button class="page-ukhod__service-item-order button">Заказать</button>
+        <button class="page-ukhod__service-item-order button page-popup-open-btn">Заказать</button>
       </div>
 
       <div class="page-ukhod__advantages">
@@ -118,7 +118,7 @@ get_header(); ?>
 <div class="page-popup popup ukhod-popup">
     <div class="page-popup__container">
         <div class="page-popup__wrap">
-            <h2 class="page-popup__heading heading-2">Предзаказ товара</h2>
+            <h2 class="page-popup__heading heading-2">Уход за растениями</h2>
             <span class="page-popup__close heading-2"><?php echo $close_icon ?></span>
             <div class="page-popup__form"><?php echo do_shortcode('[contact-form-7 id="64535" title="Уход за растениями"]')?></div>
             <p class="page-popup__text">Нажимая кнопку "Отправить", вы даете согласие на обработку своих персональных данных и соглашаетесь с положениями, 
