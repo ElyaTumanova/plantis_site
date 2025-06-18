@@ -282,3 +282,8 @@ input[type="search"], input[type="search"]:focus-visible {
 .ukhod-popup .page-popup__container {
     max-width: 700px;
 }
+
+.ukhod-popup-list {
+  display: flex;
+  flex-direction: column;
+}
