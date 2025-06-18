@@ -520,7 +520,7 @@
 
 @media(max-width:1200px) {
   .page-ukhod__first-screen {
-    column-gap: 600px;
+    column-gap: 60px;
     padding: 40px;
   }
 }
@@ -591,7 +591,7 @@
 
 @media(max-width:1200px) {
   .page-ukhod .social-media__buttons {
-    column-gap: 600px;
+    column-gap: 60px;
   }
 }
 
