@@ -39,6 +39,7 @@
     /* right: 0; */
     max-width: 1300px;
     margin: auto;
+    border-radius: 40px;
 }
 
 .preorder-popup .page-popup__container {
@@ -57,6 +58,7 @@
         padding: 15px;
         max-width: 1300px;
         margin: auto;
+        border-radius: 20px;
     }
 }
 
