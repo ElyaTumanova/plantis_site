@@ -147,8 +147,8 @@ function ajaxGetLateDelivery(event) {
 function setInitalState() {
   let hour = new Date().getHours();
 
-  console.log('isBackorders '.isBackorder);
-  console.log('isTreezBackorders '.isTreezBackorders);
+  console.log('isBackorders ', isBackorder);
+  console.log('isTreezBackorders ',isTreezBackorders);
   if (isBackorder || isTreezBackorders) {
     isUrgent = 0;
   } else {

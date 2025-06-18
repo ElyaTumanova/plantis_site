@@ -160,7 +160,7 @@ function plnt_set_constants_script() {
 
         let isBackorder = '<?php echo $isbackorders; ?>';
         let isTreezBackorders = '<?php echo $isTreezBackorders; ?>';
-    console.log('isBackorder in functions '. isBackorder);
+    console.log('isBackorder in functions ', isBackorder);
 	</script>
 	<?php
 }
