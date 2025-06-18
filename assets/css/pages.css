@@ -604,7 +604,6 @@
 .page-ukhod__intro_small {
   grid-area: smallintro;
   font-size: 24px;
-  /* text-align: center; */
   font-weight: 600;
   margin: auto;
   line-height: 1.2;
@@ -699,7 +698,7 @@
         "button button button";
         margin-bottom: 60px;
         row-gap: 20px;
-        padding: 30px;
+        padding: 40px;
     }
 }
 
@@ -765,6 +764,11 @@
   margin-bottom: 90px;
 }
 
+@media(max-width:1200px) {
+    .page-ukhod__advantages {
+      padding: 40px;
+    }
+}
 @media(max-width:767px) {
     .page-ukhod__advantages {
       padding: 30px;
