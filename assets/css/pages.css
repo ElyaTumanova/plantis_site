@@ -650,12 +650,14 @@
   column-gap: 200px;
   grid-template-columns: 400px 600px;
   margin-bottom: 120px;
+  padding: 0 50px;
 }
 
 @media(max-width:1200px) {
     .page-ukhod__services {         
         grid-template-columns: 300px auto;
         column-gap: 100px;
+        padding: 0 40px;
     }
 }
 
@@ -665,6 +667,7 @@
         flex-direction: column;
         row-gap: 30px;
         margin-bottom: 60px;
+        padding: 0 30px;
     }
 }
 
