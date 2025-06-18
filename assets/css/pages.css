@@ -780,6 +780,33 @@
   line-height: 1.5;
 }
 
+.page-peresadka__service-item {
+  display: flex;
+  column-gap: 50px;
+  padding: 50px;
+  margin-bottom: 90px;
+  background-color: var(--gray);
+  border-radius: 40px;
+}
+
+@media(max-width:1080px) {
+  .page-peresadka__service-item {
+      column-gap: 30px;
+      margin-bottom: 60px;
+      row-gap: 20px;
+      padding: 40px;
+  }
+}
+
+@media(max-width:767px) {
+  .page-peresadka__service-item {
+      column-gap: 30px;
+      margin-bottom: 60px;
+      row-gap: 20px;
+      padding: 30px;
+  }
+}
+
 .page-ukhod__advantages {
   padding: 50px;
   background-color: #262626;
