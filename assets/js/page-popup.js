@@ -10,9 +10,6 @@ let serviceNameInput = document.querySelector('.ukhod-popup-service-name');
 //let ukhodClosePopupBtn = document.querySelector('.ukhod-popup .page-popup__close');
 let ukhodContactForm = document.querySelector('.ukhod-popup form');
 
-console.log(ukhodContactForm);
-
-
 if (pagePopup != null && pageOpenPopupBtn != null) {
     pageOpenPopupBtn.forEach(button => {
       button.addEventListener ("click", (evt)=>{
