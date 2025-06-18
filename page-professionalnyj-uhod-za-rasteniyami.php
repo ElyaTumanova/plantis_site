@@ -120,7 +120,7 @@ get_header(); ?>
         <div class="page-popup__wrap">
             <h2 class="page-popup__heading heading-2">Уход за растениями</h2>
             <span class="page-popup__close heading-2"><?php echo $close_icon ?></span>
-            <div class="page-popup__form"><?php echo do_shortcode('[contact-form-7 id="64535" title="Уход за растениями"]')?></div>
+            <div class="page-popup__form"><?php echo do_shortcode('[contact-form-7 id="64580" title="Уход за растениями"]')?></div>
             <p class="page-popup__text">Нажимая кнопку "Отправить", вы даете согласие на обработку своих персональных данных и соглашаетесь с положениями, 
                 описанными в нашей <a class="page-popup__link" target="blank" href="<?php get_site_url()?>/privacy-policy/">политике конфиденциальности</a>.</p>
         </div>
