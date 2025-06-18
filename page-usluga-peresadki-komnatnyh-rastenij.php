@@ -30,8 +30,9 @@ get_header(); ?>
       </div>
       <div class="page-peresadka__service-item">
         <h2 class="page-peresadka__service-item-title">У вас уже есть горшок или кашпо?</h2>
-        <p class="page-peresadka__service-item-descr">Никаких проблем! Пересадка в ваш горшок, который вы приобрели не у нас, будет стоить:</p>
-         <table class="info__table">
+        <div class="page-peresadka__service-item-descr">
+          <p >Никаких проблем! Пересадка в ваш горшок, который вы приобрели не у нас, будет стоить:</p>
+          <table class="info__table">
             <tbody>
             <tr>
             <td><b>Диаметр горшка/кашпо</b></td>
@@ -61,6 +62,8 @@ get_header(); ?>
           </table>
           <p>В стоимость включена работа, грунт и дренаж. Дополнительно ничего платить не нужно.</p>
       </div>
+        </div>
+        
 
    
       <div class="page-ukhod__advantages">
