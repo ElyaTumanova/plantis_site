@@ -5,8 +5,8 @@ get_header(); ?>
 
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
-    <div class="page-ukhod">
-      <div class="page-ukhod__first-screen">
+    <div class="page-ukhod service-page">
+      <div class="service-page__first-screen">
         <h1 class="page-ukhod__entry-title entry-title">Профессиональный уход за&nbsp;растениями</h1> 
         <img class="page-ukhod__photo" src="https://plantis.shop/wp-content/uploads/2022/01/16.10-2.jpg" alt="Профессиональный уход за растениями">               
         <div class="page-ukhod__intro">
