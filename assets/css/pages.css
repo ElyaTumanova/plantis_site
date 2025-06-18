@@ -600,6 +600,11 @@
   font-size: 22px;
   line-height: 1.3;
 }
+
+.page-peresadka .page-ukhod__intro {
+  max-width: 500px;
+}
+
 @media (max-width: 767px) {
    .page-ukhod__intro {
         font-size: 18px;
