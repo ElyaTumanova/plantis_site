@@ -69,26 +69,19 @@ function plnt_check() {
 }
 
 // срочная доставка
-//add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
-//add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
+add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
+add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
 
-    // if(WC()->session->get('isBackorder') === '1') {
-    //     WC()->session->set('isUrgent', '0' );
-    //     WC()->session->set('hiAjax', 'hiAjax' );
-    // } 
-    // else {
-        // WC()->session->set('hiAjax', 'hiAjaxElse' );
-        if ( $_POST['isUrgent'] === '1'){
-            WC()->session->set('isUrgent', '1' ); //1
-        } else {
-            WC()->session->set('isUrgent', '0' ); //0
-        }
+  if ( $_POST['isUrgent'] === '1'){
+      WC()->session->set('isUrgent', '1' ); //1
+  } else {
+      WC()->session->set('isUrgent', '0' ); //0
+  }
 
-        WC()->session->set('date', $_POST['date'] );
-    // }
-    
-    die(); // (required)
+  WC()->session->set('date', $_POST['date'] );
+
+  die(); // (required)
 }
 
 add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_urgent', 10, 1 );
