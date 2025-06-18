@@ -519,7 +519,7 @@
 
 .page-peresadka .service-page__first-screen {
       display: grid;
-    grid-template-columns: 300px auto 400px;
+    grid-template-columns: 400px auto 300px;
     grid-template-rows: auto auto 50px;
     grid-template-areas:
         "title title photo"
@@ -572,6 +572,12 @@
 .page-ukhod__photo {
   grid-area: photo;
   border-radius: 40px;
+}
+
+.page-peresadka .page-ukhod__photo {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
 }
 
 @media (max-width: 1080px) {
@@ -784,8 +790,9 @@
 }
 
 .page-peresadka__service-item {
-  display: flex;
-  column-gap: 50px;
+  display: grid;
+  grid-template-columns: 400px 600px;
+  column-gap: 100px;
   padding: 50px;
   margin-bottom: 90px;
   background-color: var(--gray);
