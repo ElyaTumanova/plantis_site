@@ -10,7 +10,6 @@ let serviceNameInput = document.querySelector('.ukhod-popup-service-name');
 //let ukhodClosePopupBtn = document.querySelector('.ukhod-popup .page-popup__close');
 let ukhodContactForm = document.querySelector('.ukhod-popup form');
 
-console.log(ukhodClosePopupBtn);
 console.log(ukhodContactForm);
 
 
