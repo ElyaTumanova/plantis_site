@@ -39,6 +39,7 @@
     /* right: 0; */
     max-width: 1300px;
     margin: auto;
+    border-radius: 40px;
 }
 
 .preorder-popup .page-popup__container {
@@ -54,9 +55,10 @@
 @media (max-width: 767px) {
     .page-popup__container {
         top: 100px;
-        padding: 15px;
+        padding: 25px 15px;
         max-width: 1300px;
         margin: auto;
+        border-radius: 20px;
     }
 }
 
@@ -277,3 +279,27 @@ input[type="search"], input[type="search"]:focus-visible {
     font-size: 30px;
     font-weight: 400;
 }
+
+/* ukhod-popup */
+.ukhod-popup .page-popup__container {
+    max-width: 700px;
+}
+
+.ukhod-popup-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+/* .ukhod-popup-list .wpcf7-list-item{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: end;
+  width: fit-content;
+}
+
+.ukhod-popup-list input {
+  width: fit-content;
+  margin-right: 5px;
+} */
