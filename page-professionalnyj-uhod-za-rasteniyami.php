@@ -3,9 +3,9 @@
 add_shortcode( 'ukhod_button', 'create_button' );
 
 function create_button( $atts ) {
-	$atts = shortcode_atts( [
-		'name'   => 'Рассчитать стоимость',
-	], $atts );
+	// $atts = shortcode_atts( [
+	// 	'name'   => 'Рассчитать стоимость',
+	// ], $atts );
 
 	return strtr( '
 		{name}', 
