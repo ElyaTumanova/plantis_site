@@ -518,7 +518,14 @@
   margin-bottom: 50px;
 }
 
-@media (max-width: 767px) {
+@media(max-width:1200px) {
+  .page-ukhod__first-screen {
+    column-gap: 600px;
+    padding: 40px;
+  }
+}
+
+@media (max-width: 1080px) {
     .page-ukhod__first-screen {
         grid-template-columns: auto;
         grid-template-rows: auto auto 50px 50px auto auto;
@@ -580,6 +587,12 @@
   grid-area: social;
   justify-content: start;
   column-gap: 100px;
+}
+
+@media(max-width:1200px) {
+  .page-ukhod .social-media__buttons {
+    column-gap: 600px;
+  }
 }
 
 @media (max-width: 767px) {
