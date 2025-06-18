@@ -39,11 +39,6 @@ function toggle_page_popup () {
 //для попапа на странице усуги по уходу
 let ukhodButtons = document.querySelectorAll('.page-ukhod .page-popup-open-btn');
 let serviceNameInput = document.querySelector('.ukhod-popup-service-name');
-let ukhodClosePopupBtn = document.querySelector('.page-ukhod .page-popup__close');
-
-console.log(ukhodButtons);
-console.log(serviceNameInput);
-
 
 if(pagePopup != null && ukhodButtons != null) {
   ukhodButtons.forEach(btn => {
@@ -54,15 +49,5 @@ if(pagePopup != null && ukhodButtons != null) {
       }
     });
   });
-}
-
-
-if(ukhodClosePopupBtn != null) {
-  ukhodClosePopupBtn.addEventListener('click', (evt) => {
-    if(serviceNameInput != null) {
-      serviceNameInput.setAttribute('value','');
-      console.log(serviceNameInput);
-    }
-  })
 }
 

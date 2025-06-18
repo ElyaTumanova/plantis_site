@@ -98,7 +98,7 @@ get_header(); ?>
           <p>от 6 000 рублей/выезд</p>
         </div>
         <p class="page-ukhod__service-item-descr">Комплексный уход за растениями за один визит. Подойдёт для офисов, кафе, салонов, которые хотят привести растения в порядок без регулярного обслуживания. Консультация, полив, обрезка, обработка от вредителей, подкормка — ваши растения будут здоровы и ухожены после одной встречи.</p>
-        <button class="page-ukhod__service-item-order button page-popup-open-btn" name="Заказать разовый выезд">>Заказать</button>
+        <button class="page-ukhod__service-item-order button page-popup-open-btn" name="Заказать разовый выезд">Заказать</button>
       </div>
 
       <div class="page-ukhod__advantages">
