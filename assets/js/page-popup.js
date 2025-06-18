@@ -44,6 +44,13 @@ console.log(ukhodButtons);
 console.log(serviceNameInput);
 
 
+if(pagePopup != null && ukhodButtons != null) {
+  ukhodButtons.forEach(btn => {
+    btn.addEventListener('click', 'setServiceName');
+  });
+}
 
-
+function setServiceName(evt) {
+  console.log(evt);
+}
 
