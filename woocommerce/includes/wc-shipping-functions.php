@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 //СПОСОБЫ ДОСТАВКИ
 
 //задаем по умолчанию срочную доставку
-//add_action('wp_head','plnt_set_initials');
+add_action('wp_head','plnt_set_initials');
 
 function plnt_set_initials() {
     date_default_timezone_set('Europe/Moscow');
@@ -73,22 +73,15 @@ add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
 
-    // if(WC()->session->get('isBackorder') === '1') {
-    //     WC()->session->set('isUrgent', '0' );
-    //     WC()->session->set('hiAjax', 'hiAjax' );
-    // } 
-    // else {
-        // WC()->session->set('hiAjax', 'hiAjaxElse' );
-        if ( $_POST['isUrgent'] === '1'){
-            WC()->session->set('isUrgent', '1' ); //1
-        } else {
-            WC()->session->set('isUrgent', '0' ); //0
-        }
+  if ( $_POST['isUrgent'] === '1'){
+      WC()->session->set('isUrgent', '1' ); //1
+  } else {
+      WC()->session->set('isUrgent', '0' ); //0
+  }
 
-        WC()->session->set('date', $_POST['date'] );
-    // }
-    
-    die(); // (required)
+  WC()->session->set('date', $_POST['date'] );
+
+  die(); // (required)
 }
 
 add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_urgent', 10, 1 );
@@ -149,20 +142,20 @@ function plnt_shipping_conditions( $rates, $package ) {
     global $delivery_pochta;
 
     global $delivery_inMKAD_small;
-	global $delivery_outMKAD_small;
-	global $delivery_inMKAD_large;
-	global $delivery_outMKAD_large;
+	  global $delivery_outMKAD_small;
+	  global $delivery_inMKAD_large;
+	  global $delivery_outMKAD_large;
     global $delivery_inMKAD_medium;
-	global $delivery_outMKAD_medium;
+	  global $delivery_outMKAD_medium;
 
     global $urgent_delivery_inMKAD; 
-	global $urgent_delivery_outMKAD; 
-	global $urgent_delivery_inMKAD_small; 
-	global $urgent_delivery_outMKAD_small;
-	global $urgent_delivery_inMKAD_large; 
-	global $urgent_delivery_outMKAD_large;
+	  global $urgent_delivery_outMKAD; 
+	  global $urgent_delivery_inMKAD_small; 
+	  global $urgent_delivery_outMKAD_small;
+	  global $urgent_delivery_inMKAD_large; 
+	  global $urgent_delivery_outMKAD_large;
     global $urgent_delivery_inMKAD_medium;
-	global $urgent_delivery_outMKAD_medium;
+	  global $urgent_delivery_outMKAD_medium;
 
     $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
 
@@ -457,20 +450,20 @@ function wp_kama_woocommerce_shipping_chosen_method_filter( $default, $rates, $c
     global $delivery_inMKAD;
     global $delivery_outMKAD;
     global $delivery_inMKAD_small;
-	global $delivery_outMKAD_small;
-	global $delivery_inMKAD_large;
-	global $delivery_outMKAD_large;
+	  global $delivery_outMKAD_small;
+	  global $delivery_inMKAD_large;
+	  global $delivery_outMKAD_large;
     global $delivery_inMKAD_medium;
-	global $delivery_outMKAD_medium;
+	  global $delivery_outMKAD_medium;
 
     global $urgent_delivery_inMKAD; 
-	global $urgent_delivery_outMKAD; 
-	global $urgent_delivery_inMKAD_small; 
-	global $urgent_delivery_outMKAD_small;
-	global $urgent_delivery_inMKAD_large; 
-	global $urgent_delivery_outMKAD_large;
+    global $urgent_delivery_outMKAD; 
+    global $urgent_delivery_inMKAD_small; 
+    global $urgent_delivery_outMKAD_small;
+    global $urgent_delivery_inMKAD_large; 
+    global $urgent_delivery_outMKAD_large;
     global $urgent_delivery_inMKAD_medium;
-	global $urgent_delivery_outMKAD_medium;
+	  global $urgent_delivery_outMKAD_medium;
 
     $isUrgent = WC()->session->get('isUrgent' );
 
