@@ -607,7 +607,7 @@
   border-radius: 50px;
 }
 
-.page-ukhod .social-media__buttons {
+.service-page .social-media__buttons {
   grid-area: social;
   justify-content: start;
   column-gap: 100px;
