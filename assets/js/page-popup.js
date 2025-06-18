@@ -36,6 +36,14 @@ function toggle_page_popup () {
 };
 
 
+//для попапа на странице усуги по уходу
+let ukhodButtons = document.querySelectorAll('.page-ukhod .page-popup-open-btn');
+let serviceNameInput = document.querySelector('.ukhod-popup-service-name');
+
+console.log(ukhodButtons);
+console.log(serviceNameInput);
+
+
 
 
 
