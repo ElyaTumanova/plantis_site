@@ -559,9 +559,18 @@
   border-radius: 40px;
 }
 
+@media (max-width: 1080px) {
+   .page-ukhod__photo {
+        height: 400px;
+        width: 100%;
+        object-fit: cover;
+    }
+}
 @media (max-width: 767px) {
    .page-ukhod__photo {
         height: 200px;
+        width: 100%;
+        object-fit: cover;
     }
 }
 
