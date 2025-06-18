@@ -26,7 +26,7 @@ get_header(); ?>
         <div class="page-ukhod__intro">
           Мир растений – неизведанный прекрасный мир. Уход за растениями – наука. Иногда, перекинуть задачу по уходу за растениями в офисе или кафе на сотрудников или клининг – это&nbsp;значит пожертвовать растениями. Ущерб от такого экономического решения превышают сэкономленные деньги, вплоть до того, что придется все создавать заново. 
         </div>
-        <?php echo do_shortcode( '[ukhod_button name="lalala"]');?>
+        <?php echo do_shortcode( '[ukhod_button name="Рассчитать стоимость"]');?>
         <!-- <button class="page-ukhod__rasschet button">Расчитать стоимость</button> -->
         <?php get_template_part('template-parts/social-media-btns');?>
         <div class="page-ukhod__intro_small">
@@ -116,7 +116,9 @@ get_header(); ?>
 	</main><!-- #main -->
 </div><!-- #primary -->
 
-<?php get_footer(); ?>
+<?php get_footer(); 
 
-<?php 
+echo do_shortcode('[contact-form-7 id="64535" title="Уход за растениями"]')
+?>
+
 
