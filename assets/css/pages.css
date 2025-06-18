@@ -616,6 +616,13 @@
   margin-bottom: 120px;
 }
 
+@media(max-width:1200px) {
+    .page-ukhod__services {         
+        grid-template-columns: 300px auto;
+        column-gap: 100px;
+    }
+}
+
 @media(max-width:767px) {
     .page-ukhod__services {         
         display: flex;
