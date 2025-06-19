@@ -573,6 +573,10 @@
         padding: 30px;
         margin-bottom: 35px;
     }
+
+    .page-peresadka .page-ukhod__intro {
+        max-width: 100%;
+    }
 }
 
 .page-ukhod__entry-title {
@@ -613,6 +617,15 @@
         object-fit: cover;
     }
 }
+
+@media (max-width: 1000px) {
+   .page-peresadka .page-ukhod__photo {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
 
 .page-ukhod__intro {
   grid-area: intro;
