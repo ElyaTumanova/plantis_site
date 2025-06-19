@@ -909,3 +909,20 @@
   line-height: 1.4;
 }
 
+.page-peresadka__example {
+    display: grid;
+    grid-template-columns: 400px auto;
+    grid-template-rows: repeat(2,auto);
+    grid-template-areas: "heading heading"
+    "description rasschet";
+}
+
+.page-peresadka__example-heading {
+    grid-area: heading;
+}
+.page-peresadka__example-descr {
+    grid-area: description;
+}
+.page-peresadka__example-rasschet {
+    grid-area: rasschet;
+}
