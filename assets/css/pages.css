@@ -793,6 +793,14 @@
   margin-bottom: 7px;
   line-height: 1.4;
 }
+.page-peresadka__service-item p {
+  margin-bottom: 7px;
+  line-height: 1.4;
+}
+.page-peresadka__service-item li {
+  margin-bottom: 7px;
+  line-height: 1.4;
+}
 
 .page-ukhod__service-item-descr {
   line-height: 1.5;
