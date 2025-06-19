@@ -797,6 +797,10 @@
   margin-bottom: 7px;
   line-height: 1.4;
 }
+.page-peresadka__service-item ul {
+  list-style: disc;
+  padding-left: 20px;
+}
 .page-peresadka__service-item li {
   margin-bottom: 7px;
   line-height: 1.4;
