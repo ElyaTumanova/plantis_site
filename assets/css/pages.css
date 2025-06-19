@@ -863,6 +863,16 @@
   border-radius: 40px;
 }
 
+@media(max-width:1200px) {
+  .page-peresadka__service-item {
+      grid-template-columns: auto;
+      row-gap: 30px;
+      margin-bottom: 60px;
+      padding: 30px;
+  }
+}
+
+/* 
 @media(max-width:1080px) {
   .page-peresadka__service-item {
       column-gap: 30px;
@@ -879,7 +889,7 @@
       row-gap: 20px;
       padding: 30px;
   }
-}
+} */
 
 .page-peresadka .info__table {
   border: none;
