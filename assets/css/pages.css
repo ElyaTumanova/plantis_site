@@ -916,6 +916,7 @@
     grid-template-rows: repeat(2,auto);
     grid-template-areas: "heading heading"
     "description rasschet";
+    padding: 50px;
 }
 
 .page-peresadka__example-heading {
