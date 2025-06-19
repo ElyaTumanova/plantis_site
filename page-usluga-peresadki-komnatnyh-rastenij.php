@@ -12,8 +12,11 @@ get_header(); ?>
         <div class="page-ukhod__intro">
           Вы хотите купить комнатное растение. И теперь перед вами стоит задача его пересадить. Но вы не знаете с чего начать?
         </div>
-        <button class="page-ukhod__rasschet button page-popup-open-btn" name="Заявка на пересадку">Оставить заявку</button>
-        <?php get_template_part('template-parts/social-media-btns');?>      
+        <div class="page-peresadka__buttons">
+          <button class="page-ukhod__rasschet button page-popup-open-btn" name="Заявка на пересадку">Оставить заявку</button>
+          <?php get_template_part('template-parts/social-media-btns');?> 
+        </div>
+             
       </div>
 			<div class="page-ukhod__services">
         <h2 class="page-ukhod__services-title">Это просто!</h2>
