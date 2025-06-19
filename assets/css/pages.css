@@ -731,8 +731,8 @@
 
 @media(max-width:1200px) {
     .page-peresadka .page-ukhod__services {         
-        grid-template-columns: 300px auto;
-        column-gap: 50px;
+        grid-template-columns: 400px auto;
+        column-gap: 100px;
         padding: 0 40px;
     }
 }
@@ -873,8 +873,8 @@
 
 @media(max-width:1200px) {
   .page-peresadka__service-item {
-      grid-template-columns: 300px auto;
-      column-gap: 50px;
+      grid-template-columns: 400px auto;
+      column-gap: 100px;
       row-gap: 30px;
       margin-bottom: 60px;
       padding: 40px;
@@ -991,6 +991,18 @@
     "description rasschet"
     "button x";
     padding: 0 50px;
+}
+
+@media(max-width:1200px) {
+    .page-peresadka__example {
+
+    }
+}
+
+@media(max-width:767px) {
+    .page-peresadka__example {
+
+    }
 }
 
 .page-peresadka__example-heading {
