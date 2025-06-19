@@ -128,7 +128,7 @@ get_header(); ?>
               </table>
         </div>
       </div>
-
+      <button class="page-ukhod__rasschet button page-popup-open-btn" name="Заявка на пересадку">Оставить заявку</button>
 		</div>
 
     
