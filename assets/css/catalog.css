@@ -1525,6 +1525,7 @@ ul.products {
     font-family: swiper-icons !important;
     text-transform: none;
     font-weight: 600;
+    font-style: normal;
 }
 
 /*фильтр с диаметром горшка*/
