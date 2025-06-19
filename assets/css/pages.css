@@ -707,10 +707,6 @@
   padding: 0 50px;
 }
 
-.page-peresadka .page-ukhod__services {
-  column-gap: 100px;
-}
-
 @media(max-width:1200px) {
     .page-ukhod__services {         
         grid-template-columns: 300px auto;
@@ -726,6 +722,18 @@
         row-gap: 30px;
         margin-bottom: 60px;
         padding: 0 30px;
+    }
+}
+
+.page-peresadka .page-ukhod__services {
+  column-gap: 100px;
+}
+
+@media(max-width:1200px) {
+    .page-peresadka .page-ukhod__services {         
+        grid-template-columns: 300px auto;
+        column-gap: 50px;
+        padding: 0 40px;
     }
 }
 
@@ -865,12 +873,23 @@
 
 @media(max-width:1200px) {
   .page-peresadka__service-item {
+      grid-template-columns: 300px auto;
+      column-gap: 50px;
+      row-gap: 30px;
+      margin-bottom: 60px;
+      padding: 40px;
+  }
+}
+
+@media(max-width:767px) {
+  .page-peresadka__service-item {
       grid-template-columns: auto;
       row-gap: 30px;
       margin-bottom: 60px;
-      padding: 30px;
+      padding: 40px;
   }
 }
+
 
 /* 
 @media(max-width:1080px) {
