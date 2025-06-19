@@ -912,6 +912,7 @@
 .page-peresadka__example {
     display: grid;
     grid-template-columns: 400px auto;
+    column-gap: 100px;
     grid-template-rows: repeat(2,auto);
     grid-template-areas: "heading heading"
     "description rasschet";
