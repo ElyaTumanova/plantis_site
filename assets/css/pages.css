@@ -503,12 +503,13 @@
 
 .page-ukhod .service-page__first-screen {
   display: grid;
-  grid-template-columns: 300px auto 400px;
+  grid-template-columns: 300px 200px auto;
   grid-template-rows: auto auto 50px auto;
-  grid-template-areas: "title title photo"
-  "intro intro photo"
-  "rasschet social photo"
-  "smallintro smallintro X";
+  grid-template-areas:
+    "title title photo"
+    "intro intro photo"
+    "rasschet social photo"
+    "smallintro smallintro photo";
   column-gap: 100px;
   row-gap: 40px;
   padding: 50px;
@@ -572,6 +573,8 @@
 .page-ukhod__photo {
   grid-area: photo;
   border-radius: 40px;
+  height: 100%;
+  object-fit: cover;
 }
 
 .page-peresadka .page-ukhod__photo {
@@ -618,10 +621,10 @@
   border-radius: 50px;
 }
 
-.service-page .social-media__buttons {
+.ukhod-page .social-media__buttons {
   grid-area: social;
   justify-content: start;
-  column-gap: 100px;
+  column-gap: 50px;
 }
 
 @media(max-width:1200px) {
@@ -667,7 +670,7 @@
 
 .page-ukhod__services {
   display: grid;
-  column-gap: 200px;
+  column-gap: 150px;
   grid-template-columns: 400px 600px;
   margin-bottom: 120px;
   padding: 0 50px;
