@@ -913,8 +913,9 @@
     display: grid;
     grid-template-columns: 400px auto;
     column-gap: 100px;
+    row-gap: 25px;
     grid-template-rows: repeat(2,auto);
-    grid-template-areas: "heading heading"
+    grid-template-areas: "heading rasschet"
     "description rasschet";
     padding: 50px;
 }
