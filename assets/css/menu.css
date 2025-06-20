@@ -192,17 +192,17 @@
 }
 
 /*border line*/
-.menu--main:after {
+/* .menu--main:after {
     border-left: 1px solid var(--gray);
     content: "";
     display: block;
-    height: calc(var(--vh) - var(--headerHeight) - 12px); /*12px - .menu--main margin*/
+    height: calc(var(--vh) - var(--headerHeight) - 12px); /*12px - .menu--main margin
     left: 289px;
     position: absolute;
     top: 0;
     width: 1px;
     z-index: 0;
-}
+} */
 
 .menu--onside_lvl_1:after {
   border-left: 1px solid var(--gray);

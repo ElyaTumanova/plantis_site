@@ -95,15 +95,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<nav class="header__main-menu-item">Услуги</nav>
 						<nav class="header__main-menu-item">Скидки</nav>
 						<nav class="header__main-menu-item">Подарочная карта</nav>
+					</div>
+					<div class="header__menu">
+						<div class="container">
+							<nav id="site-navigation" class="main-navigation" role="navigation">
+								<?php plnt_primary_menu(); ?>
+							</nav><!-- #site-navigation -->
+						</div>
 					</div>	
-				</div>
-			</div>
-			
-			<div class="header__menu">
-				<div class="container">
-					<nav id="site-navigation" class="main-navigation" role="navigation">
-						<?php plnt_primary_menu(); ?>
-					</nav><!-- #site-navigation -->
 				</div>
 			</div>
 		</div>

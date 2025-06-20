@@ -1,6 +1,7 @@
 let catalogBtn = document.querySelector('.header__catalog');
 let headerCatalogWrap = document.querySelector('.header__menu');
 let primaryMenuDiv = document.querySelector('.main-navigation');
+let headerMenuWrap = document.querySelector('.header__main-menu-wrap');
 let headerMenuItems = document.querySelectorAll('.header__main-menu-item');
 let majorCats;
 let subMenues;
