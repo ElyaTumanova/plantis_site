@@ -5,7 +5,7 @@ let headerMenuWrap = document.querySelector('.header__main-menu-wrap');
 let headerMenuItems = document.querySelectorAll('.header__main-menu-item');
 let majorCats;
 let subMenues;
-let firstSubMenues;
+// let firstSubMenues;
 
 let treezCollectionsCats;
 let treezSubMenues;
@@ -48,7 +48,7 @@ function primaryMenuInit() {
 
   majorCats = document.querySelectorAll('.menu--main .menu-node_lvl_1');
   subMenues = document.querySelectorAll('.menu--main .sub-menu');
-  firstSubMenues = majorCats[0].querySelectorAll('.menu--onside_lvl_1');
+//   firstSubMenues = majorCats[0].querySelectorAll('.menu--onside_lvl_1');
 
   treezCollectionsCats = document.querySelectorAll('.menu_item_treez .menu-node_lvl_3');
   treezSubMenues = document.querySelectorAll('.menu_item_treez .menu-node_lvl_3 .sub-menu');
@@ -61,7 +61,11 @@ function primaryMenuInit() {
 
   gorshkiCats = document.querySelectorAll('.menu_item_gorshki .menu-node_lvl_2 > a');
 
-  majorCats.forEach((el) => {
+//   majorCats.forEach((el) => {
+//       el.addEventListener('mouseenter',closeAllSubmenu);
+//       el.addEventListener('mouseenter',showSubmenu);
+//   })
+  headerMenuItems.forEach((el) => {
       el.addEventListener('mouseenter',closeAllSubmenu);
       el.addEventListener('mouseenter',showSubmenu);
   })
@@ -95,9 +99,9 @@ function openHeaderCatalog () {
 
     closeAllSubmenu();
 
-    firstSubMenues.forEach((el) => {
-        el.classList.add('menu--onside_show');
-    });
+    // firstSubMenues.forEach((el) => {
+    //     el.classList.add('menu--onside_show');
+    // });
     majorCats[0].classList.add('menu_active');
 
     // catalogBtn.addEventListener('click',closeHeaderCatalog,{once:true})
@@ -112,6 +116,7 @@ function closeHeaderCatalog () {
 
 function showSubmenu(event) {
     let menu = event.target;
+    console.log(menu);
     menu.classList.add('menu_active');
     let menuSubMenues = menu.querySelectorAll('.sub-menu');
     menuSubMenues.forEach((el) => {
