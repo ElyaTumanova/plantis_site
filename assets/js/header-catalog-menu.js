@@ -196,5 +196,5 @@ function closePlantsSubMenues() {
 
 headerMenuItems.forEach(menu => {
     menu.addEventListener('mouseenter',openHeaderCatalog);
-    menu.addEventListener('mouseleave',closeHeaderCatalog);
+    //menu.addEventListener('mouseleave',closeHeaderCatalog);
 });
