@@ -85,14 +85,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 								?></div>
 						</div><!-- .header-cart -->
 					</div>
-					<div calss="header__main-menu-wrap">
-						<nav calss="header__main-menu-item">Комнатные растения</nav>
-						<nav calss="header__main-menu-item">Горшки и кашпо</nav>
-						<nav calss="header__main-menu-item">Популярные подборки</nav>
-						<nav calss="header__main-menu-item">Все для ухода</nav>
-						<nav calss="header__main-menu-item">Искусственные растения Treez</nav>
-						<nav calss="header__main-menu-item">Услуги</nav>
-					</div>
+				</div>
+				<div calss="header__main-menu-wrap container">
+					<nav calss="header__main-menu-item">Комнатные растения</nav>
+					<nav calss="header__main-menu-item">Горшки и кашпо</nav>
+					<nav calss="header__main-menu-item">Популярные подборки</nav>
+					<nav calss="header__main-menu-item">Все для ухода</nav>
+					<nav calss="header__main-menu-item">Искусственные растения Treez</nav>
+					<nav calss="header__main-menu-item">Услуги</nav>
 				</div>
 			</div>
 			
