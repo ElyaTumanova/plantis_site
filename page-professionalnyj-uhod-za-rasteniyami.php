@@ -1,25 +1,11 @@
 <?php 
 $close_icon = carbon_get_theme_option('close_icon');
-// add_shortcode( 'ukhod_button', 'create_button' );
-
-// function create_button( $atts ) {
-// 	$atts = shortcode_atts( [
-// 		'name'   => '',
-// 	], $atts );
-
-// 	return strtr( '
-// 		{name}', 
-// 		[
-// 			'{name}'    => esc_attr( $atts['name'] ),
-// 		]
-// 	);
-// }
 
 get_header(); ?>
 
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
-    <div class="page-ukhod">
+    <div class="page-ukhod service-page">
       <div class="page-ukhod__first-screen">
         <h1 class="page-ukhod__entry-title entry-title">Профессиональный уход за&nbsp;растениями</h1> 
         <img class="page-ukhod__photo" src="https://plantis.shop/wp-content/uploads/2022/01/16.10-2.jpg" alt="Профессиональный уход за растениями">               
@@ -115,19 +101,8 @@ get_header(); ?>
 	</main><!-- #main -->
 </div><!-- #primary -->
 
-<div class="page-popup popup ukhod-popup">
-    <div class="page-popup__container">
-        <div class="page-popup__wrap">
-            <h2 class="page-popup__heading heading-2">Уход за растениями</h2>
-            <span class="page-popup__close heading-2"><?php echo $close_icon ?></span>
-            <div class="page-popup__form"><?php echo do_shortcode('[contact-form-7 id="64580" title="Уход за растениями"]')?></div>
-            <p class="page-popup__text">Нажимая кнопку "Отправить", вы даете согласие на обработку своих персональных данных и соглашаетесь с положениями, 
-                описанными в нашей <a class="page-popup__link" target="blank" href="<?php get_site_url()?>/privacy-policy/">политике конфиденциальности</a>.</p>
-        </div>
-    </div>
-    <div class="page-popup__popup-overlay popup-overlay"></div>
-</div>	
-
-<?php get_footer();?>
+<?php 
+get_template_part('template-parts/popups/service-popup');
+get_footer();?>
 
 

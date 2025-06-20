@@ -5,10 +5,9 @@ const pageClosePopupBtn = document.querySelector('.page-popup__close');
 const pagePopupOverlay = document.querySelector('.page-popup__popup-overlay');
 
 //для попапа на странице усуги по уходу
-let ukhodButtons = document.querySelectorAll('.page-ukhod .page-popup-open-btn');
+let serviceButtons = document.querySelectorAll('.service-page .page-popup-open-btn');
 let serviceNameInput = document.querySelector('.ukhod-popup-service-name');
-//let ukhodClosePopupBtn = document.querySelector('.ukhod-popup .page-popup__close');
-let ukhodContactForm = document.querySelector('.ukhod-popup form');
+let serviceContactForm = document.querySelector('.service-popup form');
 
 if (pagePopup != null && pageOpenPopupBtn != null) {
     pageOpenPopupBtn.forEach(button => {
@@ -45,8 +44,8 @@ function toggle_page_popup () {
 };
 
 
-if(pagePopup != null && ukhodButtons != null) {
-  ukhodButtons.forEach(btn => {
+if(pagePopup != null && serviceButtons != null) {
+  serviceButtons.forEach(btn => {
     btn.addEventListener('click', (evt) => {
       if(serviceNameInput != null) {
         serviceNameInput.setAttribute('value',evt.target.name);
@@ -57,13 +56,8 @@ if(pagePopup != null && ukhodButtons != null) {
 }
 
 function cleanUkhodForm() {
-  if(ukhodContactForm != null) {
-    ukhodContactForm.reset();
-    // if(serviceNameInput != null) {
-    //   serviceNameInput.setAttribute('value','');
-    //   ukhodContactForm.reset();
-    //   console.log(serviceNameInput);
-    // }
+  if(serviceContactForm != null) {
+    serviceContactForm.reset();
   }
 }
 
