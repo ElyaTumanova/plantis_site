@@ -118,7 +118,7 @@ function showSubmenu(event) {
     let menu = event.target.getAttribute('data-menu');
     console.log(menu);
     //menu.classList.add('menu_active');
-    let menuSubMenues = document.querySelectorAll(`.${menu}`);
+    let menuSubMenues = document.querySelectorAll(`.${menu} .sub-menu`);
     console.log(menuSubMenues);
     menuSubMenues.forEach((el) => {
         el.classList.add('menu--onside_show');
