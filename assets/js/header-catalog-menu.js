@@ -117,10 +117,10 @@ function closeHeaderCatalog () {
 function showSubmenu(event) {
     console.log(event);
     let menu = event.target.getAttribute('data-menu');
-    console.log(menu);
+    //console.log(menu);
     //menu.classList.add('menu_active');
     let menuSubMenues = document.querySelectorAll(`.${menu} .sub-menu`);
-    console.log(menuSubMenues);
+    //console.log(menuSubMenues);
     menuSubMenues.forEach((el) => {
         el.classList.add('menu--onside_show');
     })
