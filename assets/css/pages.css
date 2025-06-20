@@ -749,7 +749,7 @@
 
 .page-peresadka__services {
   display: grid;
-  grid-template-columns: 400px 600px;
+  grid-template-columns: 500px 600px;
   margin-bottom: 120px;
   padding: 0 50px;
   column-gap: 100px;
