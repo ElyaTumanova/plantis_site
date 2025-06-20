@@ -106,6 +106,10 @@
 .menu--main .menu-node_lvl_1 {
     padding: 15px 0 15px 9px;
     width: 289px;
+    visibility: hidden;
+}
+.menu--main .menu-node_lvl_1 > a{
+    display: none;
 }
 
 .menu--main .menu-node_lvl_2 {
@@ -124,7 +128,7 @@
 .menu--onside_lvl_1 {
     position: absolute;
     top: 0;
-    left: 300px;
+    /* left: 300px; */
     visibility: hidden;
 
     max-width: 290px;
