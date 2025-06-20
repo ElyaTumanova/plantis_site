@@ -45,7 +45,7 @@ function plntAjaxShowPrimaryMenu() {
 function primaryMenuInit() {
 
   headerMenuWrap.addEventListener('mouseenter', openHeaderCatalog);
-  
+
   majorCats = document.querySelectorAll('.menu--main .menu-node_lvl_1');
   subMenues = document.querySelectorAll('.menu--main .sub-menu');
   firstSubMenues = majorCats[0].querySelectorAll('.menu--onside_lvl_1');
@@ -93,12 +93,12 @@ function openHeaderCatalog () {
     headerCatalogWrap.classList.add('header__menu_open');
     // catalogBtn.classList.add('header__catalog_open');
 
-    // closeAllSubmenu();
+    closeAllSubmenu();
 
-    // firstSubMenues.forEach((el) => {
-    //     el.classList.add('menu--onside_show');
-    // });
-    // majorCats[0].classList.add('menu_active');
+    firstSubMenues.forEach((el) => {
+        el.classList.add('menu--onside_show');
+    });
+    majorCats[0].classList.add('menu_active');
 
     // catalogBtn.addEventListener('click',closeHeaderCatalog,{once:true})
 }
@@ -106,7 +106,7 @@ function openHeaderCatalog () {
 function closeHeaderCatalog () {
     headerCatalogWrap.classList.remove('header__menu_open');
     // catalogBtn.classList.remove('header__catalog_open');
-    // closeAllSubmenu();
+    closeAllSubmenu();
     // catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 }
 
@@ -196,8 +196,6 @@ function closePlantsSubMenues() {
 
 //catalogBtn.addEventListener('click',plntAjaxShowPrimaryMenu,{once:true});
 //catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
-
-
 
 headerMenuWrap.addEventListener('mouseenter', plntAjaxShowPrimaryMenu,{once:true});
 headerMenuWrap.addEventListener('mouseleave', closeHeaderCatalog);
