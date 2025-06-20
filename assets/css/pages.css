@@ -789,6 +789,22 @@
   padding-top: 0;
 }
 
+.page-peresadka__services-list li {
+  font-size: 18px;
+  padding: 15px 0;
+  border-bottom: solid 1px var(--gray-text);
+}
+
+@media(max-width:767px) {
+    .page-peresadka__services-list li {         
+        font-size: 16px;
+    }
+}
+
+.page-peresadka__services-list li:first-child {
+  padding-top: 0;
+}
+
 .page-ukhod__services-title {
   font-size: 28px;
   text-transform: uppercase;
@@ -797,6 +813,17 @@
 
 @media(max-width:767px) {
     .page-ukhod__services-title {         
+        font-size: 24px;
+    }
+}
+.page-peresadka__services-title {
+  font-size: 28px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+@media(max-width:767px) {
+    .page-peresadka__services-title {         
         font-size: 24px;
     }
 }
