@@ -1,6 +1,7 @@
 let catalogBtn = document.querySelector('.header__catalog');
 let headerCatalogWrap = document.querySelector('.header__menu');
 let primaryMenuDiv = document.querySelector('.main-navigation');
+let headerMenuItems = document.querySelectorAll('.header__main-menu-item');
 let majorCats;
 let subMenues;
 let firstSubMenues;
@@ -87,16 +88,16 @@ function primaryMenuInit() {
 
 function openHeaderCatalog () {
     headerCatalogWrap.classList.add('header__menu_open');
-    catalogBtn.classList.add('header__catalog_open');
+    // catalogBtn.classList.add('header__catalog_open');
 
-    closeAllSubmenu();
+    // closeAllSubmenu();
 
-    firstSubMenues.forEach((el) => {
-        el.classList.add('menu--onside_show');
-    });
-    majorCats[0].classList.add('menu_active');
+    // firstSubMenues.forEach((el) => {
+    //     el.classList.add('menu--onside_show');
+    // });
+    // majorCats[0].classList.add('menu_active');
 
-    catalogBtn.addEventListener('click',closeHeaderCatalog,{once:true})
+    // catalogBtn.addEventListener('click',closeHeaderCatalog,{once:true})
 }
 
 function closeHeaderCatalog () {
@@ -192,3 +193,7 @@ function closePlantsSubMenues() {
 
 catalogBtn.addEventListener('click',plntAjaxShowPrimaryMenu,{once:true});
 //catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
+
+headerMenuItems.forEach(menu => {
+    menu.addEventListener('hover',openHeaderCatalog);
+});
