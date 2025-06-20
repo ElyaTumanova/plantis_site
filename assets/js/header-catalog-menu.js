@@ -115,6 +115,7 @@ function closeHeaderCatalog () {
 }
 
 function showSubmenu(event) {
+    console.log(event);
     let menu = event.target.getAttribute('data-menu');
     console.log(menu);
     //menu.classList.add('menu_active');
