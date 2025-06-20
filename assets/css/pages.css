@@ -928,7 +928,7 @@
 
 .page-peresadka__service-item {
   display: grid;
-  grid-template-columns: 400px 600px;
+  grid-template-columns: 500px 600px;
   column-gap: 100px;
   padding: 50px;
   margin-bottom: 90px;
@@ -1047,7 +1047,7 @@
 
 .page-peresadka__example {
     display: grid;
-    grid-template-columns: 400px auto;
+    grid-template-columns: 500px auto;
     column-gap: 100px;
     row-gap: 25px;
     grid-template-rows: auto auto 50px;
