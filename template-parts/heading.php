@@ -99,7 +99,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<div class="header__menu">
 						<div class="container">
 							<nav id="site-navigation" class="main-navigation" role="navigation">
-								<?php plnt_primary_menu(); ?>
+								<?php //plnt_primary_menu(); ?>
 							</nav><!-- #site-navigation -->
 						</div>
 					</div>	

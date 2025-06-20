@@ -44,6 +44,8 @@ function plntAjaxShowPrimaryMenu() {
 
 function primaryMenuInit() {
 
+  headerMenuWrap.addEventListener('mouseenter', openHeaderCatalog);
+  
   majorCats = document.querySelectorAll('.menu--main .menu-node_lvl_1');
   subMenues = document.querySelectorAll('.menu--main .sub-menu');
   firstSubMenues = majorCats[0].querySelectorAll('.menu--onside_lvl_1');
@@ -195,10 +197,7 @@ function closePlantsSubMenues() {
 //catalogBtn.addEventListener('click',plntAjaxShowPrimaryMenu,{once:true});
 //catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 
-headerMenuItems.forEach(menu => {
-    menu.addEventListener('mouseenter',openHeaderCatalog);
-    //menu.addEventListener('mouseleave',closeHeaderCatalog);
-});
 
-headerMenuWrap.addEventListener('mouseenter',openHeaderCatalog);
-headerMenuWrap.addEventListener('mouseleave',closeHeaderCatalog);
+
+headerMenuWrap.addEventListener('mouseenter', plntAjaxShowPrimaryMenu,{once:true});
+headerMenuWrap.addEventListener('mouseleave', closeHeaderCatalog);
