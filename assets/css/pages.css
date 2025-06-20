@@ -1075,7 +1075,7 @@
     .page-peresadka__example {
         display: flex;
         flex-direction: column;
-        padding: 0 30px;
+        padding: 0 10px;
     }
 }
 
