@@ -1073,7 +1073,7 @@
 .page-peresadka__example .button {
     grid-area: button;
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
 }
 
 @media(max-width:767px) {
