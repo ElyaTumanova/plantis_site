@@ -1043,6 +1043,7 @@
 @media(max-width:1300px) {
     .page-peresadka__example {
         grid-template-columns: 300px auto;
+        padding: 0 40px;
     }
 }
 
@@ -1050,6 +1051,7 @@
     .page-peresadka__example {
         display: flex;
         flex-direction: column;
+        padding: 0 30px;
     }
 }
 
