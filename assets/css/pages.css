@@ -594,6 +594,8 @@
 }
 
 .page-peresadka__photo {
+  grid-area: photo;
+  border-radius: 40px;
   height: 300px;
   width: 100%;
   object-fit: cover;
@@ -656,11 +658,14 @@
     }
 }
 
-.page-ukhod__rasschet {
-  grid-area: rasschet;
+.service-page .button {
   background-color: var(--text);
   color: var(--white);
   border-radius: 50px;
+}
+
+.page-ukhod__rasschet {
+  grid-area: rasschet;
 }
 
 .page-ukhod .social-media__buttons {
