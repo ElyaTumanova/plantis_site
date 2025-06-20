@@ -658,14 +658,19 @@
     }
 }
 
-.service-page .button {
+
+.page-ukhod__rasschet {
+  grid-area: rasschet;
   background-color: var(--text);
   color: var(--white);
   border-radius: 50px;
 }
 
-.page-ukhod__rasschet {
-  grid-area: rasschet;
+.page-peresadka__rasschet {
+
+  background-color: var(--text);
+  color: var(--white);
+  border-radius: 50px;
 }
 
 .page-ukhod .social-media__buttons {
