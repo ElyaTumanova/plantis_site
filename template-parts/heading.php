@@ -88,12 +88,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 				<div class="header__main-menu-wrap">
 					<div class="container">
-						<nav calss="header__main-menu-item">Комнатные растения</nav>
-						<nav calss="header__main-menu-item">Горшки и кашпо</nav>
-						<nav calss="header__main-menu-item">Популярные подборки</nav>
-						<nav calss="header__main-menu-item">Все для ухода</nav>
-						<nav calss="header__main-menu-item">Искусственные растения Treez</nav>
-						<nav calss="header__main-menu-item">Услуги</nav>
+						<nav class="header__main-menu-item">Комнатные растения</nav>
+						<nav class="header__main-menu-item">Горшки и кашпо</nav>
+						<nav class="header__main-menu-item">Все для ухода</nav>
+						<nav class="header__main-menu-item">Искусственные растения Treez</nav>
+						<nav class="header__main-menu-item">Услуги</nav>
+						<nav class="header__main-menu-item">Скидки</nav>
+						<nav class="header__main-menu-item">Подарочная карта</nav>
 					</div>	
 				</div>
 			</div>
