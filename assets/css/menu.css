@@ -46,9 +46,18 @@
     transform: translateY(-6px) rotate(-45deg);
 }
 /* меню каталога в хедере main menu - new*/
+.header__main .container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
+}
 
 .header__main-menu-wrap {
-    
+    display: flex;
+    /* column-gap: 25px; */
+    width: 100%;
+    justify-content: space-between;
+    grid-column: 1 / span 3;
 }
 /* меню каталога в хедере main menu - old*/
 .header__menu {

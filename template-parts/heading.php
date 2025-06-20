@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<div class="header__main">
 				<div class="container">
-					<div class="header__wrap">
+					<div class="header__wrap_logo">
 						<div class="logo">
 							<?php $logo = carbon_get_theme_option('logo');?>
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
