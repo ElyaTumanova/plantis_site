@@ -102,9 +102,9 @@ function openHeaderCatalog () {
 
 function closeHeaderCatalog () {
     headerCatalogWrap.classList.remove('header__menu_open');
-    catalogBtn.classList.remove('header__catalog_open');
-    closeAllSubmenu();
-    catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
+    // catalogBtn.classList.remove('header__catalog_open');
+    // closeAllSubmenu();
+    // catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 }
 
 function showSubmenu(event) {
@@ -195,5 +195,6 @@ function closePlantsSubMenues() {
 //catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 
 headerMenuItems.forEach(menu => {
-    menu.addEventListener('hover',openHeaderCatalog);
+    menu.addEventListener('mouseenter',openHeaderCatalog);
+    menu.addEventListener('mouseleave',closeHeaderCatalog);
 });
