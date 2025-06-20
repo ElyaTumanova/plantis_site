@@ -124,9 +124,9 @@ function showSubmenu(event) {
     menuSubMenues.forEach((el) => {
         el.classList.add('menu--onside_show');
     })
-    closeTreezSubMenues ();
-    closePlantsSubMenues();
-    closeLechuzaSubMenues();
+    // closeTreezSubMenues ();
+    // closePlantsSubMenues();
+    // closeLechuzaSubMenues();
 }
 
 function closeAllSubmenu() {
