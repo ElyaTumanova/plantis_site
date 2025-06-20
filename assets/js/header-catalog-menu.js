@@ -199,3 +199,6 @@ headerMenuItems.forEach(menu => {
     menu.addEventListener('mouseenter',openHeaderCatalog);
     //menu.addEventListener('mouseleave',closeHeaderCatalog);
 });
+
+headerMenuWrap.addEventListener('mouseenter',openHeaderCatalog);
+headerMenuWrap.addEventListener('mouseleave',closeHeaderCatalog);
