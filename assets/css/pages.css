@@ -1046,7 +1046,7 @@
     }
 }
 
-@media(max-width:767px) {
+@media(max-width:1000px) {
     .page-peresadka__example {
         display: flex;
         flex-direction: column;
