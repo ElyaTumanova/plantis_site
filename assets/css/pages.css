@@ -574,6 +574,11 @@
         margin-bottom: 35px;
     }
 }
+@media (max-width: 767px) {
+    .page-peresadka__first-screen {
+        grid-template-rows: auto auto auto auto;
+    }
+}
 
 .service-page .entry-title {
   grid-area: title;
@@ -697,8 +702,27 @@
     column-gap: 30px;
 }
 
+@media (max-width: 767px) {
+   .page-peresadka__buttons {
+        flex-direction: column;
+        row-gap: 25px;
+    }
+}
+
+
 .page-peresadka__buttons button {
     width: 100%;
+}
+
+@media (max-width: 767px) {
+   .page-peresadka__buttons button {
+        height: 50px;
+    }
+}
+@media (max-width: 767px) {
+   .page-peresadka__buttons .social-media__buttons {
+        margin: auto;
+    }
 }
 
 .page-ukhod__intro_small {
