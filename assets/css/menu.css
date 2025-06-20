@@ -45,8 +45,12 @@
     opacity: 1;
     transform: translateY(-6px) rotate(-45deg);
 }
+/* меню каталога в хедере main menu - new*/
 
-/* меню каталога в хедере main menu*/
+.header__main-menu-wrap {
+    
+}
+/* меню каталога в хедере main menu - old*/
 .header__menu {
     background-color: var(--background);
     color: var(--text);
