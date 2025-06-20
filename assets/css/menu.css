@@ -46,11 +46,6 @@
     transform: translateY(-6px) rotate(-45deg);
 }
 /* меню каталога в хедере main menu - new*/
-.header__main .container {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-template-rows: repeat(2, auto);
-}
 
 .header__main-menu-wrap {
     display: flex;

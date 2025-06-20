@@ -86,7 +86,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</div><!-- .header-cart -->
 					</div>
 				</div>
-				<div calss="header__main-menu-wrap container">
+				<div class="header__main-menu-wrap container">
 					<nav calss="header__main-menu-item">Комнатные растения</nav>
 					<nav calss="header__main-menu-item">Горшки и кашпо</nav>
 					<nav calss="header__main-menu-item">Популярные подборки</nav>
