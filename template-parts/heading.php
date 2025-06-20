@@ -88,7 +88,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 				<div class="header__main-menu-wrap">
 					<div class="container">
-						<nav class="header__main-menu-item">Комнатные растения</nav>
+						<nav class="header__main-menu-item" data-menu = "menu_item_plants">Комнатные растения</nav>
 						<nav class="header__main-menu-item">Горшки и кашпо</nav>
 						<nav class="header__main-menu-item">Все для ухода</nav>
 						<nav class="header__main-menu-item">Искусственные растения Treez</nav>
