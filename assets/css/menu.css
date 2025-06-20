@@ -48,11 +48,8 @@
 /* меню каталога в хедере main menu - new*/
 
 .header__main-menu-wrap {
-    display: flex;
-    /* column-gap: 25px; */
-    width: 100%;
-    justify-content: space-between;
-    grid-column: 1 / span 3;
+    background-color: var(--black-color);
+    color: var(white);
 }
 
 /* меню каталога в хедере main menu - old*/
