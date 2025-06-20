@@ -48,10 +48,14 @@
 /* меню каталога в хедере main menu - new*/
 
 .header__main-menu-wrap {
-    background-color: var(--black-color);
+    background-color: var(--dark-bg);
     color: var(--white);
     text-transform: uppercase;
     font-weight: 600;
+}
+
+.header__main-menu-wrap .container {
+    margin-bottom: 0;
 }
 
 .header__main-menu-item {
