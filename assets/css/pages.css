@@ -757,7 +757,7 @@
 
 @media(max-width:1300px) {
     .page-peresadka__services {         
-        grid-template-columns: 400px auto;
+        grid-template-columns: 300px auto;
         column-gap: 100px;
         padding: 0 40px;
     }
@@ -938,7 +938,7 @@
 
 @media(max-width:1300px) {
   .page-peresadka__service-item {
-      grid-template-columns: 400px auto;
+      grid-template-columns: 300px auto;
       column-gap: 100px;
       row-gap: 30px;
       margin-bottom: 60px;
@@ -955,25 +955,6 @@
   }
 }
 
-
-/* 
-@media(max-width:1080px) {
-  .page-peresadka__service-item {
-      column-gap: 30px;
-      margin-bottom: 60px;
-      row-gap: 20px;
-      padding: 40px;
-  }
-}
-
-@media(max-width:767px) {
-  .page-peresadka__service-item {
-      column-gap: 30px;
-      margin-bottom: 60px;
-      row-gap: 20px;
-      padding: 30px;
-  }
-} */
 
 .page-peresadka .info__table {
   border: none;
@@ -1061,7 +1042,7 @@
 
 @media(max-width:1300px) {
     .page-peresadka__example {
-        grid-template-columns: 400px auto;
+        grid-template-columns: 300px auto;
     }
 }
 
