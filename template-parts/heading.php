@@ -34,14 +34,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 							</div>
 							Каталог
 						</div> -->
-						<div calss="header__main-menu-wrap">
-							<nav calss="header__main-menu-item">Комнатные растения</nav>
-							<nav calss="header__main-menu-item">Горшки и кашпо</nav>
-							<nav calss="header__main-menu-item">Популярные подборки</nav>
-							<nav calss="header__main-menu-item">Все для ухода</nav>
-							<nav calss="header__main-menu-item">Искусственные растения Treez</nav>
-							<nav calss="header__main-menu-item">Услуги</nav>
-						</div>
 					</div>
 					<div class="header__description">
 						<?php $site_title = carbon_get_theme_option('site_title')?>
@@ -92,6 +84,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 									plnt_woocommerce_mini_cart(); 
 								?></div>
 						</div><!-- .header-cart -->
+					</div>
+					<div calss="header__main-menu-wrap">
+						<nav calss="header__main-menu-item">Комнатные растения</nav>
+						<nav calss="header__main-menu-item">Горшки и кашпо</nav>
+						<nav calss="header__main-menu-item">Популярные подборки</nav>
+						<nav calss="header__main-menu-item">Все для ухода</nav>
+						<nav calss="header__main-menu-item">Искусственные растения Treez</nav>
+						<nav calss="header__main-menu-item">Услуги</nav>
 					</div>
 				</div>
 			</div>
