@@ -755,7 +755,7 @@
   column-gap: 100px;
 }
 
-@media(max-width:1200px) {
+@media(max-width:1300px) {
     .page-peresadka__services {         
         grid-template-columns: 400px auto;
         column-gap: 100px;
@@ -936,7 +936,7 @@
   border-radius: 40px;
 }
 
-@media(max-width:1200px) {
+@media(max-width:1300px) {
   .page-peresadka__service-item {
       grid-template-columns: 400px auto;
       column-gap: 100px;
@@ -977,6 +977,8 @@
 
 .page-peresadka .info__table {
   border: none;
+  margin-bottom: 7px;
+  margin-top: 0;
 }
 
 .page-peresadka .info__table td {
@@ -1057,9 +1059,9 @@
     padding: 0 50px;
 }
 
-@media(max-width:1200px) {
+@media(max-width:1300px) {
     .page-peresadka__example {
-
+        grid-template-columns: 400px auto;
     }
 }
 
