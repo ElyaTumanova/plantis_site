@@ -6,21 +6,21 @@ get_header(); ?>
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
     <div class="page-peresadka service-page">
-      <div class="service-page__first-screen">
-        <h1 class="page-ukhod__entry-title entry-title">Услуги по пересадке комнатных растений</h1> 
-        <img class="page-ukhod__photo" src="https://plantis.shop/wp-content/uploads/2022/01/16.10-2.jpg" alt="Профессиональный уход за растениями">               
-        <div class="page-ukhod__intro">
+      <div class="page-peresadka__first-screen">
+        <h1 class="page-peresadka__entry-title entry-title">Услуги по пересадке комнатных растений</h1> 
+        <img class="page-peresadka__photo" src="https://plantis.shop/wp-content/uploads/2022/01/16.10-2.jpg" alt="Профессиональный уход за растениями">               
+        <div class="page-peresadka__intro">
           Вы хотите купить комнатное растение. И теперь перед вами стоит задача его пересадить. Но вы не знаете с чего начать?
         </div>
         <div class="page-peresadka__buttons">
-          <button class="page-ukhod__rasschet button page-popup-open-btn" name="Заявка на пересадку">Оставить заявку</button>
+          <button class="page-peresadka__rasschet button page-popup-open-btn" name="Заявка на пересадку">Оставить заявку</button>
           <?php get_template_part('template-parts/social-media-btns');?> 
         </div>
              
       </div>
-			<div class="page-ukhod__services">
-        <h2 class="page-ukhod__services-title">Это просто!</h2>
-        <ul class="page-ukhod__services-list">
+			<div class="page-peresadka__services">
+        <h2 class="page-peresadka__services-title">Это просто!</h2>
+        <ul class="page-peresadka__services-list">
           <li>Мы абсолютно бесплатно пересадим вашего нового друга при одновременной покупке горшка и растения в нашем интернет-магазине;</li>
           <li>Поможем подобрать оптимальный размер горшка, и цветок приедет к вам сразу в хорошем грунте.</li>
           <li>У вас дома не будет никакой грязи, вам не нужно искать рецепт “идеального” грунта, ходить в гипермаркет за ним и смотреть видео-инструкции по пересадке. Мы всё сделаем сами!</li>
@@ -130,7 +130,7 @@ get_header(); ?>
                 </tbody>
               </table>
         </div>
-        <button class="page-ukhod__rasschet button page-popup-open-btn" name="Заявка на пересадку">Оставить заявку</button>
+        <button class="page-peresadka__rasschet button page-popup-open-btn" name="Заявка на пересадку">Оставить заявку</button>
       </div>
 		</div>
 
