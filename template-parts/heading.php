@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php plnt_secondary_menu(); ?>
 					</nav>
 					<div class="header__phones"><a href="tel:+78002015790">8 800 201 57 90</a> | <a href="tel:+79647687944">8 964 768 79 44</a></div>
-					<div class="header__working-hours">Eжедневно с 10 до 20</div>
+					<!-- <div class="header__working-hours">Eжедневно с 10 до 20</div> -->
 				</div>
 			</div>
 			<div class="header__notice-wrap">
