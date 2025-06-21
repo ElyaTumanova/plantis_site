@@ -167,6 +167,8 @@ function closeLechuzaSubMenues () {
 function openPlantsSubMenues(event) {
     closePlantsSubMenues();
     let menu = event.target;
+
+    console.log(menu);
     menu.classList.add('menu_active_lvl_2');
     let menuSubMenues = menu.querySelectorAll('.sub-menu');
     menuSubMenues.forEach((el) => {
