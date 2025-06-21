@@ -63,6 +63,11 @@
     font-size: 14px;
 }
 
+.header__main-menu-item:hover {
+    cursor: pointer;
+    
+}
+
 /* меню каталога в хедере main menu - old*/
 .header__menu {
     background-color: var(--background);
