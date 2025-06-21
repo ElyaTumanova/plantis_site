@@ -21,8 +21,6 @@ let gorshkiCats;
 
 function plntAjaxShowPrimaryMenu(event) {
   ( function ( $ ) {
-    console.log('plntAjaxShowPrimaryMenu init');
-    console.log(event);
       "use strict";
     // Define the PHP function to call from here
       var data = {
@@ -34,7 +32,6 @@ function plntAjaxShowPrimaryMenu(event) {
         function(response){
           //console.log(response);
           primaryMenuDiv.innerHTML = response;
-          console.log('plntAjaxShowPrimaryMenu success')
           primaryMenuInit();
           openHeaderCatalog();
           showSubmenu(event);
@@ -117,16 +114,14 @@ function openHeaderCatalog () {
 function closeHeaderCatalog () {
     headerCatalogWrap.classList.remove('header__menu_open');
     // catalogBtn.classList.remove('header__catalog_open');
-    if(primaryMenu) {
+
         closeAllSubmenu();
-    }
+
     // catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 }
 
 function showSubmenu(event) {
-    console.log(event);
     let menu = event.target.getAttribute('data-menu');
-    console.log(menu);
     //menu.classList.add('menu_active');
     let menuSubMenues = document.querySelectorAll(`.${menu} .sub-menu`);
     //console.log(menuSubMenues);
@@ -139,6 +134,7 @@ function showSubmenu(event) {
 }
 
 function closeAllSubmenu() {
+    console.log('hi closeAllSubmenu')
     closePlantsSubMenues();
     closeTreezSubMenues ();
     closeLechuzaSubMenues();
