@@ -80,6 +80,10 @@ headerMenuItems.forEach(menu => {
       el.addEventListener('mouseenter',openPlantsSubMenues);
   })
 
+  plantsTreezCats.forEach((el) => {
+      el.addEventListener('mouseenter',openPlantsSubMenues);
+  })
+
   gorshkiCats.forEach((el) => {
     el.addEventListener('mouseenter',closeTreezSubMenues);
     let classList = el.parentElement.classList;
@@ -185,15 +189,6 @@ function closePlantsSubMenues() {
         el.classList.remove('menu--onside_show');
     })
 }
-
-// function closePlantsTreezSubMenues() {
-//     plantsTreezCats.forEach((el) => {
-//         el.classList.remove('menu_active_lvl_2');
-//     })
-//     plantsTreezSubMenues.forEach((el) => {
-//         el.classList.remove('menu--onside_show');
-//     })
-// }
 
 
 headerMenuItems.forEach(menu => {

@@ -292,6 +292,20 @@
     margin: 2px 0 0 25px;
 }
 
+.menu_item_treez_plants .menu-node_lvl_2.menu-item-has-children> a:after {
+    /* content: "\276F"; */
+    content: "next";
+    font-family: swiper-icons;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+    font-size: 13px;
+    /* position: absolute;
+    top: 13px;
+    left: 250px; */
+    margin: 2px 0 0 25px;
+}
+
 .menu_item_treez .menu-node_lvl_3> a:after {
     /* content: "\276F"; */
     content: "next";
