@@ -123,7 +123,7 @@ function closeHeaderCatalog () {
 function showSubmenu(event) {
     console.log(event);
     let menu = event.target.getAttribute('data-menu');
-    //console.log(menu);
+    console.log(menu);
     //menu.classList.add('menu_active');
     let menuSubMenues = document.querySelectorAll(`.${menu} .sub-menu`);
     //console.log(menuSubMenues);
@@ -210,5 +210,7 @@ function closePlantsSubMenues() {
 //catalogBtn.addEventListener('click',plntAjaxShowPrimaryMenu,{once:true});
 //catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 
-headerMenuWrap.addEventListener('mouseenter', (event) => {plntAjaxShowPrimaryMenu(event)},{once:true});
+headerMenuItems.forEach(menu => {
+    menu.addEventListener('mouseenter', (event) => {plntAjaxShowPrimaryMenu(event)},{once:true});
+});
 headerMenuWrap.addEventListener('mouseleave', closeHeaderCatalog);
