@@ -1,6 +1,7 @@
 let catalogBtn = document.querySelector('.header__catalog');
 let headerCatalogWrap = document.querySelector('.header__menu');
 let primaryMenuDiv = document.querySelector('.main-navigation');
+let primaryMenu;
 let headerMenuWrap = document.querySelector('.header__main-menu-wrap');
 let headerMenuItems = document.querySelectorAll('.header__main-menu-item');
 let majorCats;
@@ -46,7 +47,9 @@ function primaryMenuInit() {
 
   headerMenuWrap.addEventListener('mouseenter', openHeaderCatalog);
 
-  majorCats = document.querySelectorAll('.menu--main .menu-node_lvl_1');
+  primaryMenu = document.querySelector('.menu--main');
+
+//   majorCats = document.querySelectorAll('.menu--main .menu-node_lvl_1');
   subMenues = document.querySelectorAll('.menu--main .sub-menu');
 //   firstSubMenues = majorCats[0].querySelectorAll('.menu--onside_lvl_1');
 
@@ -96,21 +99,22 @@ function primaryMenuInit() {
 function openHeaderCatalog () {
     headerCatalogWrap.classList.add('header__menu_open');
     // catalogBtn.classList.add('header__catalog_open');
-
-    closeAllSubmenu();
+    if (primaryMenu) {
+        closeAllSubmenu();
+    }
 
     // firstSubMenues.forEach((el) => {
     //     el.classList.add('menu--onside_show');
     // });
-    majorCats[0].classList.add('menu_active');
-
-    // catalogBtn.addEventListener('click',closeHeaderCatalog,{once:true})
+    // majorCats[0].classList.add('menu_active');
 }
 
 function closeHeaderCatalog () {
     headerCatalogWrap.classList.remove('header__menu_open');
     // catalogBtn.classList.remove('header__catalog_open');
-    closeAllSubmenu();
+    if(primaryMenu) {
+        closeAllSubmenu();
+    }
     // catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 }
 
@@ -133,9 +137,9 @@ function closeAllSubmenu() {
     closePlantsSubMenues();
     closeTreezSubMenues ();
     closeLechuzaSubMenues();
-    majorCats.forEach((el) => {
-        el.classList.remove('menu_active');
-    })
+    // majorCats.forEach((el) => {
+    //     el.classList.remove('menu_active');
+    // })
     subMenues.forEach((el) => {
         el.classList.remove('menu--onside_show');
     })
