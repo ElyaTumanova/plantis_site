@@ -123,8 +123,8 @@ function closeHeaderCatalog () {
 function showSubmenu(event) {
     let menu = event.target.getAttribute('data-menu');
     //menu.classList.add('menu_active');
-    let menuSubMenues = document.querySelectorAll(`.${menu} .sub-menu`);
-    //console.log(menuSubMenues);
+    let menuSubMenues = document.querySelectorAll(`.${menu} .menu--onside_lvl_1`);
+    console.log(menuSubMenues);
     menuSubMenues.forEach((el) => {
         el.classList.add('menu--onside_show');
     })
