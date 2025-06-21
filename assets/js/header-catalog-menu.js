@@ -99,7 +99,7 @@ function closeHeaderCatalog () {
 
 function showSubmenu(event) {
     let menu = event.target.getAttribute('data-menu');
-    menu.classList.add('menu_active');
+    event.target.classList.add('menu_active');
     let menuSubMenues = document.querySelectorAll(`.${menu} .menu--onside_lvl_1`);
     console.log(menuSubMenues);
     menuSubMenues.forEach((el) => {
