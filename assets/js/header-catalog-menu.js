@@ -178,7 +178,7 @@ function closePlantsSubMenues() {
         el.classList.remove('menu--onside_show');
     })
 
-     plantsTreezCats.forEach((el) => {
+    plantsTreezCats.forEach((el) => {
         el.classList.remove('menu_active_lvl_2');
     })
     plantsTreezSubMenues.forEach((el) => {

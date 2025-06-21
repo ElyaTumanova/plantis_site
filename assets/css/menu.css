@@ -205,6 +205,19 @@
     flex-flow: column wrap;
 }
 
+.menu_item_trrez_plants .menu--onside_lvl_2 {
+    position: absolute;
+    top: -6px;
+    left: 300px;
+    visibility: hidden;
+
+    row-gap: 10px;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(var(--vh) - var(--headerHeight) - 150px);
+    flex-flow: column wrap;
+}
+
 /*border line*/
 /* .menu--main:after {
     border-left: 1px solid var(--gray);
