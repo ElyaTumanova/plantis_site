@@ -345,6 +345,10 @@
     visibility: visible;
 }
 
+.menu_item_treez_plants .menu--onside_show {
+    visibility: visible;
+}
+
 .menu--onside_show {
     visibility: visible;
 }
