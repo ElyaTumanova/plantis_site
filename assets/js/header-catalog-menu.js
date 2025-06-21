@@ -55,6 +55,9 @@ headerMenuItems.forEach(menu => {
   plantsCats = document.querySelectorAll('.menu_item_plants .menu-node_lvl_2');
   plantsSubMenues = document.querySelectorAll('.menu_item_plants .menu-node_lvl_2 .sub-menu');
 
+  plantsTreezCats = document.querySelectorAll('.menu_item_treez_plants .menu-node_lvl_2');
+  plantsTreezSubMenues = document.querySelectorAll('.menu_item_treez_plants .menu-node_lvl_2 .sub-menu');
+
   lechuzaCat = document.querySelectorAll('.menu_item_lechuza');
   lechuzaSubMenues = document.querySelectorAll('.menu_item_lechuza .sub-menu');
 
@@ -108,6 +111,7 @@ function showSubmenu(event) {
 
 function closeAllSubmenu() {
     closePlantsSubMenues();
+    //closePlantsTreezSubMenues();
     closeTreezSubMenues ();
     closeLechuzaSubMenues();
     subMenues.forEach((el) => {
@@ -173,7 +177,23 @@ function closePlantsSubMenues() {
     plantsSubMenues.forEach((el) => {
         el.classList.remove('menu--onside_show');
     })
+
+     plantsTreezCats.forEach((el) => {
+        el.classList.remove('menu_active_lvl_2');
+    })
+    plantsTreezSubMenues.forEach((el) => {
+        el.classList.remove('menu--onside_show');
+    })
 }
+
+// function closePlantsTreezSubMenues() {
+//     plantsTreezCats.forEach((el) => {
+//         el.classList.remove('menu_active_lvl_2');
+//     })
+//     plantsTreezSubMenues.forEach((el) => {
+//         el.classList.remove('menu--onside_show');
+//     })
+// }
 
 
 headerMenuItems.forEach(menu => {
