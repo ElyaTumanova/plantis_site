@@ -65,7 +65,7 @@
 
 .header__main-menu-item:hover {
     cursor: pointer;
-    
+
 }
 
 /* меню каталога в хедере main menu - old*/
@@ -147,6 +147,10 @@
     max-height: calc(var(--vh) - var(--headerHeight) - 20px);
 }
 
+.menu_item_treez_plants .menu--onside_lvl_1 {
+    column-gap: 10px;
+}
+
 .menu--onside_lvl_2 {
     /* position: relative; */
     padding-top: 20px;
@@ -154,6 +158,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 15px;
+    flex-wrap: wrap;
 
     font-size: 14px;
 

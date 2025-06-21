@@ -101,14 +101,12 @@ function showSubmenu(event) {
     let menu = event.target.getAttribute('data-menu');
     //event.target.classList.add('menu_active');
     let menuSubMenues = document.querySelectorAll(`.${menu} .menu--onside_lvl_1`);
-    console.log(menuSubMenues);
     menuSubMenues.forEach((el) => {
         el.classList.add('menu--onside_show');
     })
 }
 
 function closeAllSubmenu() {
-    console.log('hi closeAllSubmenu')
     closePlantsSubMenues();
     closeTreezSubMenues ();
     closeLechuzaSubMenues();
