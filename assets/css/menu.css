@@ -118,7 +118,7 @@
 }
 
 .menu_active {
-    background-color: var(--gray);
+    background-color: var(--black-color);
 }
 
 .menu--main .menu_active_lvl_2 >a {
