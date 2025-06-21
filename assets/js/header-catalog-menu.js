@@ -47,7 +47,9 @@ function plntAjaxShowPrimaryMenu(event) {
 
 function primaryMenuInit() {
 
-  headerMenuWrap.addEventListener('mouseenter', openHeaderCatalog);
+headerMenuItems.forEach(menu => {
+    menu.addEventListener('mouseenter', openHeaderCatalog);
+});
 
   primaryMenu = document.querySelector('.menu--main');
 
