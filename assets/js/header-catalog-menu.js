@@ -19,9 +19,10 @@ let lechuzaSubMenues;
 
 let gorshkiCats;
 
-function plntAjaxShowPrimaryMenu() {
+function plntAjaxShowPrimaryMenu(event) {
   ( function ( $ ) {
     console.log('plntAjaxShowPrimaryMenu init');
+    console.log(event);
       "use strict";
     // Define the PHP function to call from here
       var data = {
@@ -36,6 +37,7 @@ function plntAjaxShowPrimaryMenu() {
           console.log('plntAjaxShowPrimaryMenu success')
           primaryMenuInit();
           openHeaderCatalog();
+          showSubmenu(event);
         }
       );
   // Close anon function.
@@ -208,5 +210,5 @@ function closePlantsSubMenues() {
 //catalogBtn.addEventListener('click',plntAjaxShowPrimaryMenu,{once:true});
 //catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 
-headerMenuWrap.addEventListener('mouseenter', plntAjaxShowPrimaryMenu,{once:true});
+headerMenuWrap.addEventListener('mouseenter', plntAjaxShowPrimaryMenu(event),{once:true});
 headerMenuWrap.addEventListener('mouseleave', closeHeaderCatalog);
