@@ -169,7 +169,6 @@ function openPlantsSubMenues(event) {
     let menu = event.target;
     menu.classList.add('menu_active_lvl_2');
     let menuSubMenues = menu.querySelectorAll('.sub-menu');
-    console.log(menuSubMenues);
     menuSubMenues.forEach((el) => {
         el.classList.add('menu--onside_show');
     })
