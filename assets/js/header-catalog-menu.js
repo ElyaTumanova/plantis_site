@@ -101,11 +101,12 @@ headerMenuItems.forEach(menu => {
 
 
 function openHeaderCatalog () {
+    closeAllSubmenu();
     headerCatalogWrap.classList.add('header__menu_open');
     // catalogBtn.classList.add('header__catalog_open');
-    if (primaryMenu) {
-        closeAllSubmenu();
-    }
+
+        
+ 
 
     // firstSubMenues.forEach((el) => {
     //     el.classList.add('menu--onside_show');
