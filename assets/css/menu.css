@@ -272,7 +272,7 @@
     /* margin-right: 20px; */
 }
 
-.menu_podarok a {
+.menu_podarok > a {
     font-weight: 600;
 }
 
