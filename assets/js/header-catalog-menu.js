@@ -210,5 +210,5 @@ function closePlantsSubMenues() {
 //catalogBtn.addEventListener('click',plntAjaxShowPrimaryMenu,{once:true});
 //catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 
-headerMenuWrap.addEventListener('mouseenter', plntAjaxShowPrimaryMenu(event),{once:true});
+headerMenuWrap.addEventListener('mouseenter', (event) => {plntAjaxShowPrimaryMenu(event)},{once:true});
 headerMenuWrap.addEventListener('mouseleave', closeHeaderCatalog);
