@@ -46,7 +46,7 @@ get_header(); ?>
       </div>
 
       <div class="page-ukhod__service-item">
-        <h2 class="page-ukhod__service-item-title">Стандартное обслуживание</h2>
+        <h2 class="page-ukhod__service-item-title">Стандартное обслуживание растений</h2>
         <div class="page-ukhod__service-item-cost">
           <p>Стоимость:</p> 
           <p>от 18 000 рублей/месяц</p>
@@ -60,7 +60,7 @@ get_header(); ?>
       </div>
 
       <div class="page-ukhod__service-item">
-        <h2 class="page-ukhod__service-item-title">Гарантийное обслуживание</h2>
+        <h2 class="page-ukhod__service-item-title">Гарантийное обслуживание растений</h2>
         <div class="page-ukhod__service-item-cost">
           <p>Стоимость:</p> 
           <p>от 26 000 рублей/месяц</p>
@@ -78,7 +78,7 @@ get_header(); ?>
       </div>
 
       <div class="page-ukhod__service-item">
-        <h2 class="page-ukhod__service-item-title">Разовый выезд</h2>
+        <h2 class="page-ukhod__service-item-title">Разовый выезд биолога</h2>
          <div class="page-ukhod__service-item-cost">
           <p>Стоимость:</p> 
           <p>от 6 000 рублей/выезд</p>
