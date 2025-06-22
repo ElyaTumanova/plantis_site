@@ -200,6 +200,7 @@
     visibility: hidden;
 
     row-gap: 10px;
+    column-gap: 30px;
     display: flex;
     flex-direction: column;
     flex-flow: column wrap;
