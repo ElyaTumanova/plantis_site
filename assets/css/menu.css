@@ -202,6 +202,8 @@
     row-gap: 10px;
     display: flex;
     flex-direction: column;
+
+    max-height: calc(70vh - 30px);
 }
 
 .menu_item_lechuza .menu--onside_lvl_2 {
@@ -213,6 +215,8 @@
     row-gap: 10px;
     display: flex;
     flex-direction: column;
+
+    max-height: calc(70vh - 30px);
 }
 
 .menu_item_plants .menu--onside_lvl_2 {
@@ -225,6 +229,7 @@
     display: flex;
     flex-direction: column;
     /* max-height: calc(var(--vh) - var(--headerHeight) - 150px); */
+    max-height: calc(70vh - 30px);
     flex-flow: column wrap;
 }
 
@@ -238,6 +243,7 @@
     display: flex;
     flex-direction: column;
     /* max-height: calc(var(--vh) - var(--headerHeight) - 150px); */
+    max-height: calc(70vh - 30px);
     flex-flow: column wrap;
 }
 
