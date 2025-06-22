@@ -96,7 +96,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<nav class="header__main-menu-item">Скидки</nav>
 						<nav class="header__main-menu-item">Подарочный сертификат</nav>
 					</div>
-					<div class="header__menu">
+					<div class="header__menu header__menu_open"> 
 						<div class="container">
 							<nav id="site-navigation" class="main-navigation" role="navigation">
 								<?php //plnt_primary_menu(); ?>
