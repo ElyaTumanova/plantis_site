@@ -43,9 +43,9 @@ function plntAjaxShowPrimaryMenu(event) {
 
 function primaryMenuInit() {
 
-headerMenuItems.forEach(menu => {
-    menu.addEventListener('mouseover', openHeaderCatalog);
-});
+    headerMenuItems.forEach(menu => {
+        menu.addEventListener('mouseenter', openHeaderCatalog);
+    });
 
   subMenues = document.querySelectorAll('.menu--main .sub-menu');
 
@@ -64,31 +64,31 @@ headerMenuItems.forEach(menu => {
   gorshkiCats = document.querySelectorAll('.menu_item_gorshki .menu-node_lvl_2 > a');
 
   headerMenuItems.forEach((el) => {
-      el.addEventListener('mouseover',closeAllSubmenu);
-      el.addEventListener('mouseover',showSubmenu);
+      el.addEventListener('mouseenter',closeAllSubmenu);
+      el.addEventListener('mouseenter',showSubmenu);
   })
 
   treezCollectionsCats.forEach((el) => {
-      el.addEventListener('mouseover',openTreezSubMenues);
+      el.addEventListener('mouseenter',openTreezSubMenues);
   })
 
   lechuzaCat.forEach((el) => {
-      el.addEventListener('mouseover',openLechuzaSubMenues);
+      el.addEventListener('mouseenter',openLechuzaSubMenues);
   })
 
   plantsCats.forEach((el) => {
-      el.addEventListener('mouseover',openPlantsSubMenues);
+      el.addEventListener('mouseenter',openPlantsSubMenues);
   })
 
   plantsTreezCats.forEach((el) => {
-      el.addEventListener('mouseover',openPlantsSubMenues);
+      el.addEventListener('mouseenter',openPlantsSubMenues);
   })
 
   gorshkiCats.forEach((el) => {
-    el.addEventListener('mouseover',closeTreezSubMenues);
+    el.addEventListener('mouseenter',closeTreezSubMenues);
     let classList = el.parentElement.classList;
     if(!classList.contains('menu_item_lechuza')) {
-        el.addEventListener('mouseover',closeLechuzaSubMenues);
+        el.addEventListener('mouseenter',closeLechuzaSubMenues);
     }
   })
 }
@@ -192,6 +192,6 @@ function closePlantsSubMenues() {
 
 
 headerMenuItems.forEach(menu => {
-    menu.addEventListener('mouseover', (event) => {plntAjaxShowPrimaryMenu(event)},{once:true});
+    menu.addEventListener('mouseenter', (event) => {plntAjaxShowPrimaryMenu(event)},{once:true});
 });
 headerMenuWrap.addEventListener('mouseleave', closeHeaderCatalog);
