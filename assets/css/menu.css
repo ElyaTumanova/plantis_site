@@ -93,7 +93,7 @@
 }
 .header__menu .container {
     background-color: var(--background);
-    height: 50vh;
+    height: 70vh;
     align-items: start;
     box-shadow: 0 18px 39px 0 rgba(0, 0, 0, .102), 0 72px 72px 0 rgba(0, 0, 0, .09);
     border-bottom-right-radius: 40px;
@@ -117,7 +117,7 @@
 
 .menu--main .sub-menu {
     line-height: 1.2;
-    max-height: calc(50vh - 30px);
+    max-height: calc(70vh - 30px);
 }
 
 .menu--main .menu-node_lvl_1 {
@@ -156,7 +156,8 @@
     flex-wrap: wrap;
     row-gap: 5px;
     column-gap: 150px;
-    max-height: calc(var(--vh) - var(--headerHeight) - 20px);
+    /* max-height: calc(var(--vh) - var(--headerHeight) - 20px); */
+    max-height: calc(70vh - 30px);
 }
 
 .menu_item_treez_plants .menu--onside_lvl_1 {
@@ -175,7 +176,8 @@
 
     font-size: 14px;
 
-    max-height: calc(var(--vh) - var(--headerHeight) - 20px);
+    /* max-height: calc(var(--vh) - var(--headerHeight) - 20px); */
+    max-height: calc(70vh - 30px);
 }
 
 .menu--onside_lvl_3 {
@@ -184,6 +186,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 10px;
+    max-height: calc(70vh - 30px);
 }
 
 .menu_podarok .menu--onside_lvl_3 {
@@ -221,7 +224,7 @@
     row-gap: 10px;
     display: flex;
     flex-direction: column;
-    max-height: calc(var(--vh) - var(--headerHeight) - 150px);
+    /* max-height: calc(var(--vh) - var(--headerHeight) - 150px); */
     flex-flow: column wrap;
 }
 
@@ -234,7 +237,7 @@
     row-gap: 10px;
     display: flex;
     flex-direction: column;
-    max-height: calc(var(--vh) - var(--headerHeight) - 150px);
+    /* max-height: calc(var(--vh) - var(--headerHeight) - 150px); */
     flex-flow: column wrap;
 }
 
