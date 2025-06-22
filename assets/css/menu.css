@@ -147,6 +147,7 @@
     top: 0;
     /* left: 300px; */
     /* visibility: hidden; */
+    visibility: visible;
 
     max-width: 290px;
     width: 290px;
