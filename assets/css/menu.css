@@ -202,6 +202,7 @@
     row-gap: 10px;
     display: flex;
     flex-direction: column;
+    flex-flow: column wrap;
 
     max-height: calc(70vh - 30px);
 }
