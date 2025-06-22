@@ -14,7 +14,7 @@ print
 <yml_catalog date='".date('Y-m-d H:i')."'>
 <shop>
 <name>".get_bloginfo('name')."</name>
-<url>".get_bloginfo('url')."</url>
+<>".get_bloginfo('url')."</url>
 ";
 
 // Валюта. Если у вас используется альтернативная валюта или + ещё какая-то, то поменяйте данный участок кода.

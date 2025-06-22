@@ -88,13 +88,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 				<div class="header__main-menu-wrap">
 					<div class="container">
-						<nav class="header__main-menu-item" data-menu = "menu_item_plants">Комнатные растения</nav>
-						<nav class="header__main-menu-item" data-menu = "menu_item_gorshki">Горшки и кашпо</nav>
-						<nav class="header__main-menu-item" data-menu = "menu_item_ukhod">Все для ухода</nav>
-						<nav class="header__main-menu-item" data-menu = "menu_item_treez_plants">Искусственные растения Treez</nav>
+						<nav class="header__main-menu-item" data-menu = "menu_item_plants">
+							<a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">Комнатные растения</a>
+						</nav>
+						<nav class="header__main-menu-item" data-menu = "menu_item_gorshki">
+							<a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/">Горшки и кашпо</a>
+						</nav>
+						<nav class="header__main-menu-item" data-menu = "menu_item_ukhod">
+							<a href="<?php echo site_url()?>/product-category/ukhod/">Все для ухода</a>
+						</nav>
+						<nav class="header__main-menu-item" data-menu = "menu_item_treez_plants">
+							<a href="<?php echo site_url()?>/product-category/iskusstvennye-rasteniya-treez/">Искусственные растения Treez</a>
+						</nav>
 						<nav class="header__main-menu-item" data-menu = "menu_item_service">Услуги</nav>
-						<nav class="header__main-menu-item">Скидки</nav>
-						<nav class="header__main-menu-item">Подарочный сертификат</nav>
+						<nav class="header__main-menu-item">
+							<a href="<?php echo site_url()?>/product-tag/skidki/">Скидки</a>
+						</nav>
+						<nav class="header__main-menu-item">
+							<a href="<?php echo site_url()?>/#/">Подарочный сертификат</a>
+						</nav>
 					</div>
 					<div class="header__menu"> 
 						<div class="container">
