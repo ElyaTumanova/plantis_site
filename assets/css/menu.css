@@ -217,7 +217,8 @@
     position: absolute;
     top: -6px;
     left: 300px;
-    visibility: hidden;
+    /* visibility: hidden; */
+    visibility: visible;
 
     row-gap: 10px;
     display: flex;
