@@ -44,7 +44,7 @@ function plntAjaxShowPrimaryMenu(event) {
 function primaryMenuInit() {
 
 headerMenuItems.forEach(menu => {
-    menu.addEventListener('mouseenter', openHeaderCatalog);
+    menu.addEventListener('mouseover', openHeaderCatalog);
 });
 
   subMenues = document.querySelectorAll('.menu--main .sub-menu');
@@ -64,31 +64,31 @@ headerMenuItems.forEach(menu => {
   gorshkiCats = document.querySelectorAll('.menu_item_gorshki .menu-node_lvl_2 > a');
 
   headerMenuItems.forEach((el) => {
-      el.addEventListener('mouseenter',closeAllSubmenu);
-      el.addEventListener('mouseenter',showSubmenu);
+      el.addEventListener('mouseover',closeAllSubmenu);
+      el.addEventListener('mouseover',showSubmenu);
   })
 
   treezCollectionsCats.forEach((el) => {
-      el.addEventListener('mouseenter',openTreezSubMenues);
+      el.addEventListener('mouseover',openTreezSubMenues);
   })
 
   lechuzaCat.forEach((el) => {
-      el.addEventListener('mouseenter',openLechuzaSubMenues);
+      el.addEventListener('mouseover',openLechuzaSubMenues);
   })
 
   plantsCats.forEach((el) => {
-      el.addEventListener('mouseenter',openPlantsSubMenues);
+      el.addEventListener('mouseover',openPlantsSubMenues);
   })
 
   plantsTreezCats.forEach((el) => {
-      el.addEventListener('mouseenter',openPlantsSubMenues);
+      el.addEventListener('mouseover',openPlantsSubMenues);
   })
 
   gorshkiCats.forEach((el) => {
-    el.addEventListener('mouseenter',closeTreezSubMenues);
+    el.addEventListener('mouseover',closeTreezSubMenues);
     let classList = el.parentElement.classList;
     if(!classList.contains('menu_item_lechuza')) {
-        el.addEventListener('mouseenter',closeLechuzaSubMenues);
+        el.addEventListener('mouseover',closeLechuzaSubMenues);
     }
   })
 }
@@ -192,6 +192,6 @@ function closePlantsSubMenues() {
 
 
 headerMenuItems.forEach(menu => {
-    menu.addEventListener('mouseenter', (event) => {plntAjaxShowPrimaryMenu(event)},{once:true});
+    menu.addEventListener('mouseover', (event) => {plntAjaxShowPrimaryMenu(event)},{once:true});
 });
 headerMenuWrap.addEventListener('mouseleave', closeHeaderCatalog);
