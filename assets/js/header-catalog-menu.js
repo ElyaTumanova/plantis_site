@@ -43,12 +43,6 @@ function plntAjaxShowPrimaryMenu(event) {
 
 function primaryMenuInit() {
 
-    headerMenuItems.forEach(menu => {
-        menu.addEventListener('mouseenter', openHeaderCatalog);
-        el.addEventListener('mouseenter',closeAllSubmenu);
-        el.addEventListener('mouseenter',showSubmenu);
-    });
-
   subMenues = document.querySelectorAll('.menu--main .sub-menu');
 
   treezCollectionsCats = document.querySelectorAll('.menu_item_treez .menu-node_lvl_3');
@@ -64,6 +58,12 @@ function primaryMenuInit() {
   lechuzaSubMenues = document.querySelectorAll('.menu_item_lechuza .sub-menu');
 
   gorshkiCats = document.querySelectorAll('.menu_item_gorshki .menu-node_lvl_2 > a');
+
+  headerMenuItems.forEach((el) => {
+      el.addEventListener('mouseenter', openHeaderCatalog);
+      el.addEventListener('mouseenter',closeAllSubmenu);
+      el.addEventListener('mouseenter',showSubmenu);
+  })
 
   treezCollectionsCats.forEach((el) => {
       el.addEventListener('mouseenter',openTreezSubMenues);
