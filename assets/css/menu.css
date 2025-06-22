@@ -66,7 +66,7 @@
 
 .header__main-menu-item:hover {
     cursor: pointer;
-    color: var(--accent-back);
+    color: rgb(255 255 255 / 70%);
 }
 
 /* меню каталога в хедере main menu - old*/
