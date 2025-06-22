@@ -32,11 +32,8 @@ function plntAjaxShowPrimaryMenu(event) {
           //console.log(response);
           primaryMenuDiv.innerHTML = response;
           primaryMenuInit();
-          setTimeout(() => {
-            openHeaderCatalog();
-            showSubmenu(event);
-          }, 500);
-         
+          openHeaderCatalog();
+          showSubmenu(event);
         }
       );
   // Close anon function.
@@ -47,12 +44,9 @@ function plntAjaxShowPrimaryMenu(event) {
 function primaryMenuInit() {
 
     headerMenuItems.forEach(menu => {
-        setTimeout(() => {
-           menu.addEventListener('mouseenter', openHeaderCatalog);
-            el.addEventListener('mouseenter',closeAllSubmenu);
-            el.addEventListener('mouseenter',showSubmenu); 
-        }, 500);
-        
+        menu.addEventListener('mouseenter', openHeaderCatalog);
+        el.addEventListener('mouseenter',closeAllSubmenu);
+        el.addEventListener('mouseenter',showSubmenu);
     });
 
   subMenues = document.querySelectorAll('.menu--main .sub-menu');
