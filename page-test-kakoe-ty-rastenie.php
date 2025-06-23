@@ -6,10 +6,6 @@
     <div>
       <h2 class="test__question">Question A</h2>
       <ul class = "test__answers">
-        <li class="test__answer">Answer A</li>
-        <li class="test__answer">Answer B</li>
-        <li class="test__answer">Answer C</li>
-        <li class="test__answer">Answer D</li>
       </ul>
     </div>
 	</main><!-- #main -->
