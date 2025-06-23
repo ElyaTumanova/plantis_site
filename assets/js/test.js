@@ -32,7 +32,7 @@ class Question
     this.questionForm = document.querySelector('.test__answers-form');
   }
 
-  this.questionForm.addEventListener('submit', this.handleFormSubmit)
+
  
   renderQuestion() {
     // console.log(this.questionElement);
@@ -52,6 +52,7 @@ class Question
       this.answersList.appendChild(this.answerElementDiv);
       //this.answerElement.addEventListener('click', ()=>{answer.handleChooseAnswer()});
     })
+    this.questionForm.addEventListener('submit', this.handleFormSubmit)
   }
   
   
