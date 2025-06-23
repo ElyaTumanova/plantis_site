@@ -39,7 +39,7 @@ class Question
 
       this.answers.forEach(answer => {
         let answerElement = document.createElement('li');
-        answerElement.addEventListener('click',answer.Click());
+        answerElement.addEventListener('click',answer.Click);
         answerElement.innerText = answer.text;
         this.answersElement.appendChild(answerElement);
       })
