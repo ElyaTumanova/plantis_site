@@ -40,7 +40,8 @@ class Question
       this.answers.forEach(answer => {
         this.answerElement = document.createElement('li');
         this.answerElement.innerText = answer.text;
-        this.answerElement.addEventListener('click', answer.Click);
+        // this.answerElement.addEventListener('click', answer.Click);
+        this.answerElement.addEventListener('click', ()=>{console.log(this)});
         this.answersElement.appendChild(this.answerElement);
       })
    }
