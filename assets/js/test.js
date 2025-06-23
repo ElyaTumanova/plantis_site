@@ -23,40 +23,42 @@ class Quiz {
 //Класс, представляющий вопрос
 class Question
 {
-   constructor(text, answers)
-   {
-      this.text = text;
-      this.answers = answers;
-      this.questionElement = document.querySelector('.test__question');
-      this.answersList = document.querySelector('.test__answers');
-      this.questionForm = document.querySelector('.test__answers-form');
-   }
+  constructor(text, answers)
+  {
+    this.text = text;
+    this.answers = answers;
+    this.questionElement = document.querySelector('.test__question');
+    this.answersList = document.querySelector('.test__answers');
+    this.questionForm = document.querySelector('.test__answers-form');
+  }
+
+  this.questionForm.addEventListener('submit', this.handleFormSubmit)
  
-   renderQuestion() {
-      // console.log(this.questionElement);
-      // console.log(this.answersElement);
-      // console.log(this.text);
-      this.questionElement.innerText = this.text;
+  renderQuestion() {
+    // console.log(this.questionElement);
+    // console.log(this.answersElement);
+    // console.log(this.text);
+    this.questionElement.innerText = this.text;
 
-      this.answers.forEach(answer => {
-        this.answerElementDiv = document.createElement('div');
-        this.answerElementInput = document.createElement('input');
-        this.answerElementLabel = document.createElement('label');
-        this.answerElementInput.setAttribute('type', 'radio');
-        this.answerElementInput.setAttribute('name', 'answer');
-        this.answerElementLabel.innerText = answer.text;
-        this.answerElementDiv.appendChild(this.answerElementInput);
-        this.answerElementDiv.appendChild(this.answerElementLabel);
-        this.answersList.appendChild(this.answerElementDiv);
-        //this.answerElement.addEventListener('click', ()=>{answer.handleChooseAnswer()});
-      })
-   }
-
-   handleSubmitForm() {
-    this.questionForm.addEventListener('submit', (event)=>{
-      event.preventDefault();
-      console.log(this.questionForm)})
-   }
+    this.answers.forEach(answer => {
+      this.answerElementDiv = document.createElement('div');
+      this.answerElementInput = document.createElement('input');
+      this.answerElementLabel = document.createElement('label');
+      this.answerElementInput.setAttribute('type', 'radio');
+      this.answerElementInput.setAttribute('name', 'answer');
+      this.answerElementLabel.innerText = answer.text;
+      this.answerElementDiv.appendChild(this.answerElementInput);
+      this.answerElementDiv.appendChild(this.answerElementLabel);
+      this.answersList.appendChild(this.answerElementDiv);
+      //this.answerElement.addEventListener('click', ()=>{answer.handleChooseAnswer()});
+    })
+  }
+  
+  
+  handleFormSubmit() {
+    event.preventDefault();
+    console.log(this.questionForm);
+  }
 }
  
 //Класс, представляющий ответ
