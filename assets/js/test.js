@@ -60,6 +60,7 @@ class Question
   handleFormSubmit() {
     event.preventDefault();
     console.log(this.chosenAnswer);
+    this.chosenAnswer.handleChooseAnswer();
   }
 
   handleInputClick(answer) {
