@@ -34,6 +34,13 @@ class Question
    RenderQuestion() {
       console.log(this.questionElement);
       console.log(this.answersElement);
+      this.questionElement.innerHtml = this.text;
+
+      this.answers.forEach(answer => {
+        let answerElement = document.createElement('li');
+        answerElement.innerHtml = answer;
+        this.answersElement.appendChild(answerElement);
+      })
    }
 }
  
