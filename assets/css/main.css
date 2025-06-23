@@ -376,7 +376,7 @@
     }
 }
 
-@media(max-width: 767px) {
+@media(max-width: 1000px) {
     .main__about-first-screen {
         grid-template-columns: auto;
         grid-template-rows: repeat(3, auto);
@@ -419,6 +419,12 @@
     object-fit: cover;
 }
 
+@media(max-width: 1000px) {
+    .main__about-photo {
+        height: 200px;
+    }
+}
+
 .main__about-block {
     display: grid;
     grid-template-columns: 550px auto;
@@ -433,7 +439,7 @@
     }
 }
 
-@media(max-width: 767px) {
+@media(max-width: 1000px) {
     .main__about-block {
         grid-template-columns: auto;
     }
