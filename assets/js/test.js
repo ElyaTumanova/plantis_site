@@ -50,7 +50,7 @@ class Question
       this.answerElementDiv.appendChild(this.answerElementInput);
       this.answerElementDiv.appendChild(this.answerElementLabel);
       this.answersList.appendChild(this.answerElementDiv);
-      this.answerElementInput.addEventListener('click', (event)=>{this.handleInputClick()});
+      this.answerElementInput.addEventListener('click', (event)=>{this.handleInputClick(event)});
       //this.answerElement.addEventListener('click', ()=>{answer.handleChooseAnswer()});
     })
     this.questionForm.addEventListener('submit', ()=>{this.handleFormSubmit()})
