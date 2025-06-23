@@ -25,13 +25,15 @@ class Question
 {
    constructor(text, answers)
    {
-       this.text = text;
-       this.answers = answers;
+      this.text = text;
+      this.answers = answers;
+      this.questionElement = document.querySelector('.test__question');
+      this.answersElement = document.querySelector('.test__answers');
    }
  
-   Click(index)
-   {
-       return this.answers[index].value;
+   RenderQuestion() {
+      console.log(this.questionElement);
+      console.log(this.answersElement);
    }
 }
  
@@ -115,6 +117,7 @@ questions.forEach(q => {
   console.log(q.text);
   console.log(q.answers[0]);
   q.answers[0].Click();
+  q.RenderQuestion();
 
 
 });
