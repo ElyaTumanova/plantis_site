@@ -431,6 +431,10 @@
     border-bottom: solid 1px var(--gray-text);
 }
 
+.main__about-assort-list li:first-child {
+    padding-top: 0;
+}
+
 
 /* about section    #adaptive*/
 
