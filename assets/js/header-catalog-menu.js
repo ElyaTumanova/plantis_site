@@ -61,9 +61,11 @@ function primaryMenuInit() {
 
   headerMenuItems.forEach((el) => {
     console.log(el.getAttribute('data-menu'));
-      el.addEventListener('mouseenter', openHeaderCatalog);
-      el.addEventListener('mouseenter',closeAllSubmenu);
-      el.addEventListener('mouseenter',showSubmenu);
+    if(el.getAttribute('data-menu')) {
+        el.addEventListener('mouseenter', openHeaderCatalog);
+        el.addEventListener('mouseenter',closeAllSubmenu);
+        el.addEventListener('mouseenter',showSubmenu);
+    }
   })
 
   treezCollectionsCats.forEach((el) => {
@@ -192,4 +194,11 @@ function closePlantsSubMenues() {
 headerMenuItems.forEach(menu => {
     menu.addEventListener('mouseenter', (event) => {plntAjaxShowPrimaryMenu(event)},{once:true});
 });
+
+headerMenuItems.forEach(menu => {
+    if(!menu.getAttribute('data-menu')) {
+        menu.addEventListener('mouseenter', closeHeaderCatalog);
+    }
+});
+
 headerMenuWrap.addEventListener('mouseleave', closeHeaderCatalog);
