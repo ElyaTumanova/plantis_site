@@ -60,7 +60,6 @@ function primaryMenuInit() {
   gorshkiCats = document.querySelectorAll('.menu_item_gorshki .menu-node_lvl_2 > a');
 
   headerMenuItems.forEach((el) => {
-    console.log(el.getAttribute('data-menu'));
     if(el.getAttribute('data-menu')) {
         el.addEventListener('mouseenter', openHeaderCatalog);
         el.addEventListener('mouseenter',closeAllSubmenu);
