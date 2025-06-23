@@ -386,6 +386,7 @@
         "photo";
         margin-bottom: 30px;
         padding: 30px;
+        row-gap: 25px;
     }
 }
 
