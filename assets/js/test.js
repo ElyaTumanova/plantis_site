@@ -34,11 +34,12 @@ class Question
    RenderQuestion() {
       console.log(this.questionElement);
       console.log(this.answersElement);
-      this.questionElement.innerHtml = this.text;
+      console.log(this.text);
+      this.questionElement.innerText = this.text;
 
       this.answers.forEach(answer => {
         let answerElement = document.createElement('li');
-        answerElement.innerHtml = answer;
+        answerElement.innerText = answer;
         this.answersElement.appendChild(answerElement);
       })
    }
