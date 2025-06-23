@@ -126,7 +126,7 @@ questions.forEach(q => {
   console.log(q);
   console.log(q.text);
   console.log(q.answers[0]);
-  q.answers[0].Click();
+  q.answers[0].handleChooseAnswer();
   q.RenderQuestion();
 
 
