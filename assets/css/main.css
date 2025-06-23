@@ -385,6 +385,7 @@
         "intro"
         "photo";
         margin-bottom: 30px;
+        padding: 30px;
     }
 }
 
@@ -445,6 +446,7 @@
     .main__about-block {
         grid-template-columns: auto;
         margin-bottom: 30px;
+        padding: 30px;
     }
 }
 
