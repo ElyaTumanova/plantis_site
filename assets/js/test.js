@@ -50,7 +50,7 @@ class Question
       this.answerElementDiv.appendChild(this.answerElementInput);
       this.answerElementDiv.appendChild(this.answerElementLabel);
       this.answersList.appendChild(this.answerElementDiv);
-      this.answerElementInput.addEventListener('click', (event)=>{this.handleInputClick(event)});
+      this.answerElementInput.addEventListener('click', ()=>{this.handleInputClick(this.answerElementInput)});
       //this.answerElement.addEventListener('click', ()=>{answer.handleChooseAnswer()});
     })
     this.questionForm.addEventListener('submit', ()=>{this.handleFormSubmit()})
@@ -61,8 +61,8 @@ class Question
     console.log(this.questionForm);
   }
 
-  handleInputClick(event) {
-    console.log(event.target);
+  handleInputClick(input) {
+    console.log(input);
     console.log(this.answerElementInput);
   }
 }
