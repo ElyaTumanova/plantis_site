@@ -20,7 +20,10 @@
     font-size: 10px;
     text-align: center;
     max-width: fit-content;
+}
 
+.backorder_date-info_late {
+  background-color: var(--stock-backorder);
 }
 
 @media (min-width: 768px) {
