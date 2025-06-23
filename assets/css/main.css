@@ -370,7 +370,7 @@
     margin-bottom: 50px;
 }
 
-.main__about-first-screen-heading {
+.main__about-heading {
     grid-area: title;
     color: var(--text);
 }
@@ -403,22 +403,12 @@
     line-height: 1.2;
 }
 
-.main__about-heading {
-    font-size: 34px;
-    font-weight: 600;
-    text-transform: uppercase;
-    line-height: 1.1;
-    text-align: center;
-    color: var(--accent-color);
-    margin-bottom: 30px;
-}
-
 .main__about-block_assort {
     background-color: var(--gray);
     border-radius: 40px;
 }
 
-.main__about-text, .main__about-list {
+.main__about-text {
     font-size: 20px;
     line-height: 1.4;
     margin-bottom: 20px;
@@ -429,6 +419,7 @@
     font-size: 18px;
     padding: 15px 0;
     border-bottom: solid 1px var(--gray-text);
+    line-height: 1.2;
 }
 
 .main__about-assort-list li:first-child {
