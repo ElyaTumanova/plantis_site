@@ -59,7 +59,7 @@ global $skidki_cat_id;
 	</div>
 	<div class="main__about container main__row">
 		<div class="main__about-first-screen">
-			<h2 class="main__about-first-screen-heading entry-title">Plantis.shop — интернет-магазин комнатных растений с доставкой</h2>
+			<h2 class="main__about-first-screen-heading entry-title">Plantis.shop — <br>интернет-магазин комнатных растений с&nbsp;доставкой</h2>
 			<p class="main__about-intro">Добро пожаловать в Plantis — интернет-магазин комнатных растений с быстрой доставкой по Москве и Московской области. У нас можно заказать комнатные растения онлайн или выбрать их  в нашем шоуруме оффлайн. Мы предлагаем эксклюзивный ассортимент горшечных растений и высокий уровень сервиса, чтобы ваша покупка была приятной.</p>
 			<img class="main__about-photo" src="https://plantis.shop/wp-content/uploads/2022/01/16.10-2.jpg" alt="Профессиональный уход за растениями">
 		</div>
