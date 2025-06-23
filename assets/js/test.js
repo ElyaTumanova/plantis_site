@@ -13,16 +13,10 @@ class Test {
    }
 
    testInit() {
-    this.questions[0].renderQuestion();
-    this.questionForm.addEventListener('submit', ()=>{this.handleFormSubmit()})
+    this.questions[this.current].renderQuestion();
+    this.questionForm.addEventListener('submit', ()=>{this.questions[this.current].handleFormSubmit()})
    }
 
-    handleFormSubmit() {
-      event.preventDefault();
-      console.log(this.questionForm);
-      console.log(this.chosenAnswer);
-      //this.chosenAnswer.handleChooseAnswer();
-    }
 }
 
 //Класс, представляющий вопрос
@@ -55,11 +49,11 @@ class Question
     })
   }
   
-  // handleFormSubmit() {
-  //   event.preventDefault();
-  //   console.log(this.chosenAnswer);
-  //   this.chosenAnswer.handleChooseAnswer();
-  // }
+  handleFormSubmit() {
+    event.preventDefault();
+    console.log(this.chosenAnswer);
+    this.chosenAnswer.handleChooseAnswer();
+  }
 
   handleInputClick(answer) {
     this.chosenAnswer = answer;
