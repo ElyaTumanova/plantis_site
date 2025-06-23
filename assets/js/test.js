@@ -41,7 +41,7 @@ class Question
         this.answerElement = document.createElement('li');
         this.answerElement.innerText = answer.text;
         // this.answerElement.addEventListener('click', answer.Click);
-        this.answerElement.addEventListener('click', ()=>{answer.Click.bind(this)});
+        this.answerElement.addEventListener('click', ()=>{answer.Click()});
         this.answersElement.appendChild(this.answerElement);
       })
    }
