@@ -38,10 +38,10 @@ class Question
       this.questionElement.innerText = this.text;
 
       this.answers.forEach(answer => {
-        let answerElement = document.createElement('li');
-        answerElement.addEventListener('click',answer.Click);
-        answerElement.innerText = answer.text;
-        this.answersElement.appendChild(answerElement);
+        this.answerElement = document.createElement('li');
+        this.answerElement.innerText = answer.text;
+        this.answerElement.addEventListener('click', answer.Click);
+        this.answersElement.appendChild(this.answerElement);
       })
    }
 }
