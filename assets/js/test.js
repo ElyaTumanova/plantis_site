@@ -57,43 +57,44 @@ class Answer
 
 const plantTypes = [
   {name:'0 Замиокулькас',
-    score: 0
-  },
-  {name:'0 Замиокулькас',
-    score: 0
-  },
-  {name:'0 Замиокулькас',
-    score: 0
-  },
-  {name:'0 Замиокулькас',
-    score: 0
+    score: 0,
+    result: 'lalalal',
   },
   {name:'1 Спатифиллум',
-    score: 0
+    score: 0,
+    result: 'lalalal',
   },
   {name:'2 Хризалидокарпус',
-    score: 0
+    score: 0,
+    result: 'lalalal',
   },
   {name:'3 Фикус Бенджамина',
-    score: 0
+    score: 0,
+    result: 'lalalal',
   },
   {name:'4 Фикус эластика',
-    score: 0
+    score: 0,
+    result: 'lalalal',
   },
   {name:'5 Антуриум',
-    score: 0
+    score: 0,
+    result: 'lalalal',
   },
   {name:'6 Аглаонема',
-    score: 0
+    score: 0,
+    result: 'lalalal',
   },
   {name:'7 Драцена',
-    score: 0
+    score: 0,
+    result: 'lalalal',
   },
   {name:'8 Сансевиерия',
-    score: 0
+    score: 0,
+    result: 'lalalal',
   },
   {name:'9 Эпипремнум',
-    score: 0
+    score: 0,
+    result: 'lalalal',
   }
 ]
 
