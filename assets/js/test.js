@@ -45,7 +45,8 @@ class Answer
    }
 
    Click () {
-     console.log('answer type is ', this.type)
+     console.log('answer type is ', this.type.name)
+     console.log('answer score is ', this.type.score)
    }
 }
 
@@ -96,7 +97,7 @@ const questions =
 [
    new Question("Какой вид отдыха тебе ближе всего?",
    [
-       new Answer("Сидеть дома, обложившись пледами, сериалами и заказной едой – идеальный уют.", plantTypes[9].name),
+       new Answer("Сидеть дома, обложившись пледами, сериалами и заказной едой – идеальный уют.", plantTypes[9]),
        new Answer("Уехать на пляж, надеть солнечные очки и забыть о делах.", plantTypes[2]),
        new Answer("Отправиться в спонтанное приключение или начать ремонт. Ну, типа, для души.", plantTypes[6]),
        new Answer(" Провести день в одиночестве, читая философские трактаты под кружку чая.", plantTypes[3])
