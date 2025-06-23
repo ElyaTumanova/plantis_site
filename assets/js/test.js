@@ -1,19 +1,19 @@
 //Класс, который представляет сам тест
 
 class Test {
-  constructor(questions, results, plantTypes)
+  constructor(questions)
    {
        //Массив с вопросами
        this.questions = questions;
  
-       //Массив с возможными результатами
-       this.results = results;
+      //  //Массив с возможными результатами
+      //  this.results = results;
  
-       //Количество набранных очков
-       this.plantTypes = plantTypes;
+      //  //Количество набранных очков
+      //  this.plantTypes = plantTypes;
  
-       //Номер результата из массива
-       this.result = 0;
+      //  //Номер результата из массива
+      //  this.result = 0;
  
        //Номер текущего вопроса
        this.current = 0;
@@ -158,6 +158,6 @@ const questions =
 // console.log(plantTypes[0].name);
 // console.log(plantTypes[0].score);
 
-const test = new Test;
+const test = new Test(questions);
 
 test.testInit();
