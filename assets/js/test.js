@@ -38,10 +38,10 @@ class Question
       this.questionElement.innerText = this.text;
 
       this.answers.forEach(answer => {
-        this.answerElement = document.createElement('li');
+        this.answerElement = document.createElement('input');
+        this.answerElement.setAttribute('type', 'radio');
         this.answerElement.innerText = answer.text;
-        // this.answerElement.addEventListener('click', answer.Click);
-        this.answerElement.addEventListener('click', ()=>{answer.Click()});
+        this.answerElement.addEventListener('click', ()=>{answer.handleChooseAnswer()});
         this.answersElement.appendChild(this.answerElement);
       })
    }
@@ -56,7 +56,7 @@ class Answer
        this.type = type;
    }
 
-   Click () {
+   handleChooseAnswer () {
      console.log('answer type is ', this.type.name)
      console.log('answer score is ', this.type.score)
      

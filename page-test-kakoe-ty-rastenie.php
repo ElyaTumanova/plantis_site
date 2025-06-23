@@ -5,9 +5,9 @@
     <h1>This is test</h1>
     <div>
       <h2 class="test__question"></h2>
-      <ul class = "test__answers">
-      </ul>
-      <button>Далее</button>
+      <form class = "test__answers">
+        <button type="submit">Далее</button>
+      </form>
     </div>
 	</main><!-- #main -->
 </div><!-- #primary -->
