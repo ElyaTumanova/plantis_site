@@ -30,6 +30,7 @@ class Question
     this.questionElement = document.querySelector('.test__question');
     this.answersList = document.querySelector('.test__answers');
     this.questionForm = document.querySelector('.test__answers-form');
+    this.chosenAnswer = this.chosenAnswer;
   }
 
 
@@ -58,12 +59,12 @@ class Question
   
   handleFormSubmit() {
     event.preventDefault();
-    console.log(this.questionForm);
+    console.log(this.chosenAnswer);
   }
 
-  handleInputClick(input) {
-    console.log(input);
-    console.log(this.answerElementInput);
+  handleInputClick(answer) {
+    this.chosenAnswer = answer;
+    console.log(this.chosenAnswer);
   }
 }
  
