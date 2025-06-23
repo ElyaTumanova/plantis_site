@@ -1,6 +1,6 @@
 //Класс, который представляет сам тест
 
-class Quiz {
+class Test {
   constructor(questions, results, plantTypes)
    {
        //Массив с вопросами
@@ -17,6 +17,10 @@ class Quiz {
  
        //Номер текущего вопроса
        this.current = 0;
+   }
+
+   testInit() {
+    this.questions[0].renderQuestion();
    }
 }
 
@@ -143,17 +147,17 @@ const questions =
 ];
 
 
-questions.forEach(q => {
-  console.log(q);
-  console.log(q.text);
-  console.log(q.answers[0]);
-  q.answers[0].handleChooseAnswer();
-  q.renderQuestion();
+// questions.forEach(q => {
+//   console.log(q);
+//   console.log(q.text);
+//   console.log(q.answers[0]);
+//   q.answers[0].handleChooseAnswer();
+//   q.renderQuestion();
+// });
 
+// console.log(plantTypes[0].name);
+// console.log(plantTypes[0].score);
 
-});
+const test = new Test;
 
-console.log(plantTypes[0].name);
-console.log(plantTypes[0].score);
-
- 
+test.testInit();
