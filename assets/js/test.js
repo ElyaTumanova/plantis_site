@@ -45,7 +45,7 @@ class Answer
    }
 
    Click () {
-     console.log(this.type)
+     console.log('answer type is ', this.type)
    }
 }
 
@@ -76,7 +76,15 @@ const questions =
    ])
 ];
 
-console.log(questions);
+
+questions.forEach(q => {
+  console.log(q);
+  console.log(q.text);
+  console.log(q.answers[0]);
+  q.answers[0].Click();
+
+
+});
 
 console.log(plantTypes[0].name);
 console.log(plantTypes[0].score);
