@@ -19,6 +19,7 @@ class Quiz {
        this.current = 0;
    }
 }
+
 //Класс, представляющий вопрос
 class Question
 {
@@ -28,10 +29,10 @@ class Question
        this.answers = answers;
    }
  
-  //  Click(index)
-  //  {
-  //      return this.answers[index].value;
-  //  }
+   Click(index)
+   {
+       return this.answers[index].value;
+   }
 }
  
 //Класс, представляющий ответ
@@ -41,6 +42,10 @@ class Answer
    {
        this.text = text;
        this.type = type;
+   }
+
+   Click () {
+     console.log(this.type)
    }
 }
 
@@ -70,6 +75,8 @@ const questions =
        new Answer(" Провести день в одиночестве, читая философские трактаты под кружку чая.", plantTypes[3])
    ])
 ];
+
+questions.Click();
 
 console.log(plantTypes[0].name);
 console.log(plantTypes[0].score);
