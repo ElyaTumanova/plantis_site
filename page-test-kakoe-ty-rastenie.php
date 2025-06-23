@@ -5,7 +5,7 @@
     <h1>This is test</h1>
     <div>
       <h2 class="test__question"></h2>
-      <form>
+      <form class = "test__answers-form">
         <div class = "test__answers">
 
         </div>

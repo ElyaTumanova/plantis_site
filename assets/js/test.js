@@ -29,9 +29,10 @@ class Question
       this.answers = answers;
       this.questionElement = document.querySelector('.test__question');
       this.answersList = document.querySelector('.test__answers');
+      this.questionForm = document.querySelector('.test__answers-form');
    }
  
-   RenderQuestion() {
+   renderQuestion() {
       // console.log(this.questionElement);
       // console.log(this.answersElement);
       // console.log(this.text);
@@ -47,9 +48,12 @@ class Question
         this.answerElementDiv.appendChild(this.answerElementInput);
         this.answerElementDiv.appendChild(this.answerElementLabel);
         this.answersList.appendChild(this.answerElementDiv);
-
         //this.answerElement.addEventListener('click', ()=>{answer.handleChooseAnswer()});
       })
+   }
+
+   handleSubmitForm() {
+    this.questionForm.addEventListener('submit', ()=>{this.questionForm})
    }
 }
  
@@ -133,7 +137,7 @@ questions.forEach(q => {
   console.log(q.text);
   console.log(q.answers[0]);
   q.answers[0].handleChooseAnswer();
-  q.RenderQuestion();
+  q.renderQuestion();
 
 
 });
