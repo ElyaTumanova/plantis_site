@@ -372,7 +372,7 @@
 
 @media(max-width: 1300px) {
     .main__about-first-screen {
-        grid-template-columns: 400px auto;
+        grid-template-columns: 500px auto;
     }
 }
 
