@@ -446,7 +446,7 @@
     .main__about-block {
         grid-template-columns: auto;
         margin-bottom: 30px;
-        padding: 30px;
+        padding: 0 30px;
     }
 }
 
@@ -465,6 +465,12 @@
 .main__about-block_assort {
     background-color: var(--gray);
     border-radius: 40px;
+}
+
+@media(max-width: 1000px) {
+    .main__about-block_assort {
+        padding: 30px;
+    }
 }
 
 .main__about-text {
