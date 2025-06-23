@@ -389,6 +389,14 @@
     object-fit: cover;
 }
 
+.main__about-block {
+    display: grid;
+    grid-template-columns: 650px auto;
+    padding: 50px;
+    margin-bottom: 50px;
+    column-gap: 100px;
+}
+
 .main__about-heading {
     font-size: 34px;
     font-weight: 600;
