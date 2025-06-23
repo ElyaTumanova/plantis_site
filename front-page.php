@@ -70,8 +70,8 @@ global $skidki_cat_id;
 				<p class="main__about-text">Мы работаем как с физическими, так и с юридическими лицами, предлагая выгодные условия для корпоративных клиентов.</p>
 			</div>
 		</div>
-		<div class="main__about-assort">
-			<h4 class="main__about-assort-heading">Ассортимент Plantis.shop включает:</h4>
+		<div class="main__about-block">
+			<h4 class="main__about-block-heading">Ассортимент Plantis.shop включает:</h4>
 			<ul class="main__about-assort-list">
 				<li><strong>Декоративно-лиственные растения:</strong> фикусы, алоказии, аглаонемы, кодиеумы, а также другие цветы, которые могут похвалиться эффектным внешним видом;</li>
 				<li><strong>Цветущие растения:</strong> антуриумы, спатифиллумы, гибискусы;</li>
