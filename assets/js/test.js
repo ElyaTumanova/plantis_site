@@ -52,7 +52,7 @@ class Question
       this.answersList.appendChild(this.answerElementDiv);
       //this.answerElement.addEventListener('click', ()=>{answer.handleChooseAnswer()});
     })
-    this.questionForm.addEventListener('submit', this.handleFormSubmit)
+    this.questionForm.addEventListener('submit', ()=>{this.handleFormSubmit()})
   }
   
   
