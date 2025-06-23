@@ -50,15 +50,20 @@ class Question
       this.answerElementDiv.appendChild(this.answerElementInput);
       this.answerElementDiv.appendChild(this.answerElementLabel);
       this.answersList.appendChild(this.answerElementDiv);
+      this.answerElementInput.addEventListener('click', ()=>{this.handleInputClick()});
       //this.answerElement.addEventListener('click', ()=>{answer.handleChooseAnswer()});
     })
     this.questionForm.addEventListener('submit', ()=>{this.handleFormSubmit()})
   }
   
-  
   handleFormSubmit() {
     event.preventDefault();
     console.log(this.questionForm);
+  }
+
+  handleInputClick(event) {
+    console.log(event.target);
+    console.log(this.answerElementInput);
   }
 }
  
