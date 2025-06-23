@@ -76,7 +76,7 @@ const questions =
    ])
 ];
 
-questions[1];
+console.log(questions[1]);
 
 console.log(plantTypes[0].name);
 console.log(plantTypes[0].score);
