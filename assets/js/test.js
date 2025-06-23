@@ -28,7 +28,7 @@ class Question
       this.text = text;
       this.answers = answers;
       this.questionElement = document.querySelector('.test__question');
-      this.answersElement = document.querySelector('.test__answers');
+      this.answersList = document.querySelector('.test__answers');
    }
  
    RenderQuestion() {
@@ -38,11 +38,17 @@ class Question
       this.questionElement.innerText = this.text;
 
       this.answers.forEach(answer => {
-        this.answerElement = document.createElement('input');
-        this.answerElement.setAttribute('type', 'radio');
-        this.answerElement.innerText = answer.text;
-        this.answerElement.addEventListener('click', ()=>{answer.handleChooseAnswer()});
-        this.answersElement.appendChild(this.answerElement);
+        this.answerElementDiv = document.createElement('div');
+        this.answerElementInput = document.createElement('input');
+        this.answerElementLabel = document.createElement('label');
+        this.answerElementInput.setAttribute('type', 'radio');
+        this.answerElementInput.setAttribute('name', 'answer');
+        this.answerElementLabel.innerText = answer.text;
+        this.answerElementDiv.appendChild(this.answerElementInput);
+        this.answerElementDiv.appendChild(this.answerElementInput);
+        this.answersList.appendChild(this.answerElementDiv);
+
+        //this.answerElement.addEventListener('click', ()=>{answer.handleChooseAnswer()});
       })
    }
 }
