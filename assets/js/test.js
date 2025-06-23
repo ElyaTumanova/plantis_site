@@ -65,7 +65,7 @@ const plantTypes = [
 ]
 
 //Массив с вопросами
-const questions =
+const questions = 
 [
    new Question("Какой вид отдыха тебе ближе всего?",
    [
@@ -76,7 +76,7 @@ const questions =
    ])
 ];
 
-console.log(questions[1]);
+console.log(questions);
 
 console.log(plantTypes[0].name);
 console.log(plantTypes[0].score);
