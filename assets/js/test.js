@@ -53,7 +53,8 @@ class Question
    }
 
    handleSubmitForm() {
-    this.questionForm.addEventListener('submit', ()=>{event.preventDefault();
+    this.questionForm.addEventListener('submit', (event)=>{
+      event.preventDefault();
       console.log(this.questionForm)})
    }
 }
