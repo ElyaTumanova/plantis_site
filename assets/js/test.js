@@ -32,13 +32,14 @@ class Question
    }
  
    RenderQuestion() {
-      console.log(this.questionElement);
-      console.log(this.answersElement);
-      console.log(this.text);
+      // console.log(this.questionElement);
+      // console.log(this.answersElement);
+      // console.log(this.text);
       this.questionElement.innerText = this.text;
 
       this.answers.forEach(answer => {
         let answerElement = document.createElement('li');
+        answerElement.addEventListener('click',answer.Click());
         answerElement.innerText = answer.text;
         this.answersElement.appendChild(answerElement);
       })
