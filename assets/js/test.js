@@ -3,17 +3,10 @@
 class Test {
   constructor(questions)
    {
-       //Массив с вопросами
-       this.questions = questions;
- 
-      //  //Массив с возможными результатами
-      //  this.results = results;
- 
-      //  //Количество набранных очков
-      //  this.plantTypes = plantTypes;
- 
-      //  //Номер результата из массива
-      //  this.result = 0;
+      //Массив с вопросами
+      this.questions = questions;
+
+      this.questionForm = document.querySelector('.test__answers-form');
  
        //Номер текущего вопроса
        this.current = 0;
@@ -21,7 +14,15 @@ class Test {
 
    testInit() {
     this.questions[0].renderQuestion();
+    this.questionForm.addEventListener('submit', ()=>{this.handleFormSubmit()})
    }
+
+    handleFormSubmit() {
+      event.preventDefault();
+      console.log(this.questionForm);
+      console.log(this.chosenAnswer);
+      //this.chosenAnswer.handleChooseAnswer();
+    }
 }
 
 //Класс, представляющий вопрос
@@ -33,16 +34,11 @@ class Question
     this.answers = answers;
     this.questionElement = document.querySelector('.test__question');
     this.answersList = document.querySelector('.test__answers');
-    this.questionForm = document.querySelector('.test__answers-form');
+    // this.questionForm = document.querySelector('.test__answers-form');
     this.chosenAnswer = this.chosenAnswer;
   }
-
-
  
   renderQuestion() {
-    // console.log(this.questionElement);
-    // console.log(this.answersElement);
-    // console.log(this.text);
     this.questionElement.innerText = this.text;
 
     this.answers.forEach(answer => {
@@ -57,14 +53,13 @@ class Question
       this.answersList.appendChild(this.answerElementDiv);
       this.answerElementInput.addEventListener('click', ()=>{this.handleInputClick(answer)});
     })
-    this.questionForm.addEventListener('submit', ()=>{this.handleFormSubmit()})
   }
   
-  handleFormSubmit() {
-    event.preventDefault();
-    console.log(this.chosenAnswer);
-    this.chosenAnswer.handleChooseAnswer();
-  }
+  // handleFormSubmit() {
+  //   event.preventDefault();
+  //   console.log(this.chosenAnswer);
+  //   this.chosenAnswer.handleChooseAnswer();
+  // }
 
   handleInputClick(answer) {
     this.chosenAnswer = answer;
