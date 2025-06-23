@@ -14,7 +14,7 @@ class Test {
 
    testInit() {
     this.questions[this.current].renderQuestion();
-    this.questionForm.addEventListener('submit', ()=>{this.questions[this.current].handleFormSubmit()})
+    this.questionForm.addEventListener('submit', ()=>{this.questions[this.current].handleFormSubmit()});
    }
 
 }
