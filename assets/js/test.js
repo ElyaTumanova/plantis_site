@@ -45,7 +45,7 @@ class Question
         this.answerElementInput.setAttribute('name', 'answer');
         this.answerElementLabel.innerText = answer.text;
         this.answerElementDiv.appendChild(this.answerElementInput);
-        this.answerElementDiv.appendChild(this.answerElementInput);
+        this.answerElementDiv.appendChild(this.answerElementLabel);
         this.answersList.appendChild(this.answerElementDiv);
 
         //this.answerElement.addEventListener('click', ()=>{answer.handleChooseAnswer()});
