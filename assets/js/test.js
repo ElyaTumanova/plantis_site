@@ -76,7 +76,7 @@ const questions =
    ])
 ];
 
-questions.Click();
+questions[1][0].Click();
 
 console.log(plantTypes[0].name);
 console.log(plantTypes[0].score);
