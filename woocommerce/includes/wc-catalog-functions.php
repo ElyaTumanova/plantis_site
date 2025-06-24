@@ -268,16 +268,6 @@ function AddThumbnailClass( $atts, $attachment ) {
 remove_action('woocommerce_before_shop_loop_item_title','woocommerce_show_product_loop_sale_flash', 10);
 add_action('woocommerce_before_shop_loop_item_title','truemisha_sale_badge', 5);
 
-// // кнопка купить в один клик
-
-add_action('woocommerce_before_shop_loop_item_title','plnt_buy_one_click_button', 40);
-
-function plnt_buy_one_click_button() {
-	?>
-	<button class="catalog__one-click-btn button">Купить в один клик</button>
-	<?php
-}
-
 // // перенос кнопки в корзину
 remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
 add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_add_to_cart', 30);

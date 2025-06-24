@@ -221,6 +221,7 @@ function plnt_price_wrap(){
                     plnt_get_add_to_card();
                 }
                 ?>
+               <?php plnt_buy_one_click_button();?>
             </div>
             <span class = "backorder-info">В наличии <?php echo $product->get_stock_quantity();?> шт. Если вы хотите заказать большее количество, то ориентировочная дата доставки из Европы <?php echo plnt_set_backorders_date();?>. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</span>
         </div>
@@ -232,6 +233,11 @@ function plnt_price_wrap(){
     <?php
 };
 
+function plnt_buy_one_click_button() {
+	?>
+	<button class="card__one-click-btn button">Купить в один клик</button>
+	<?php
+}
 // peresadka
 function plnt_get_peresadka_add_to_cart() {
     global $product; 
