@@ -483,6 +483,24 @@
     /* margin: 0 14px; */
 }
 
+.card__one-click-btn {
+    margin-top: 10px;
+    width: 100%;
+    background-color: transparent;
+    border: solid 2px var(--accent-color);
+    color: var(--accent-color);
+    font-weight: 600;
+    padding: 11px 10px 9px;
+}
+
+@media(max-width:767px) {
+    .card__one-click-btn {
+        display: none;
+    }
+}
+
+/* backorder-info */
+
 .backorder-info {
     display: block;
     transition: bottom 2s, opacity 0s 1.8s;

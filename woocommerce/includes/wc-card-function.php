@@ -219,7 +219,7 @@ function plnt_price_wrap(){
                     plnt_outofstock_btn();
                 } else {
                     plnt_get_add_to_card();
-                    ?> <button class="card__one-click-btn page-popup-open-btn button">Купить в один клик</button> <?php
+                    plnt_buy_one_click_btn();
                 }
                 ?>
             </div>
@@ -233,6 +233,9 @@ function plnt_price_wrap(){
     <?php
 };
 
+function plnt_buy_one_click_btn() {
+?> <button class="card__one-click-btn page-popup-open-btn button">Купить в один клик</button> <?php
+}
 // peresadka
 function plnt_get_peresadka_add_to_cart() {
     global $product; 
@@ -346,13 +349,15 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 add_action( 'woocommerce_single_product_summary', 'plnt_product_artikul', 40 );
 
 function plnt_product_artikul() {
-  global $product;
+    global $product;
 	$sku = $product->get_sku();
- 
+    
 	if( $sku ) { // если заполнен, то выводим
 		echo '<p class="product__artikul">Артикул: ' . $sku . '</p>';
 	}
 };
+
+add_action( 'woocommerce_single_product_summary', 'plnt_buy_one_click_btn', 50);
 
 //upsells & cross sells
 
