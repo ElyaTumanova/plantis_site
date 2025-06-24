@@ -1,38 +1,64 @@
 //Класс, который представляет сам тест
 
-class Quiz {
-  constructor(questions, results, plantTypes)
+class Test {
+  constructor(questions)
    {
-       //Массив с вопросами
-       this.questions = questions;
- 
-       //Массив с возможными результатами
-       this.results = results;
- 
-       //Количество набранных очков
-       this.plantTypes = plantTypes;
- 
-       //Номер результата из массива
-       this.result = 0;
+      //Массив с вопросами
+      this.questions = questions;
+
+      this.questionForm = document.querySelector('.test__answers-form');
  
        //Номер текущего вопроса
        this.current = 0;
    }
+
+   testInit() {
+    this.questions[this.current].renderQuestion();
+    this.questionForm.addEventListener('submit', ()=>{this.questions[this.current].handleFormSubmit()});
+   }
+
 }
 
 //Класс, представляющий вопрос
 class Question
 {
-   constructor(text, answers)
-   {
-       this.text = text;
-       this.answers = answers;
-   }
+  constructor(text, answers)
+  {
+    this.text = text;
+    this.answers = answers;
+    this.questionElement = document.querySelector('.test__question');
+    this.answersList = document.querySelector('.test__answers');
+    // this.questionForm = document.querySelector('.test__answers-form');
+    this.chosenAnswer = this.chosenAnswer;
+  }
  
-   Click(index)
-   {
-       return this.answers[index].value;
-   }
+  renderQuestion() {
+    this.questionElement.innerText = this.text;
+
+    this.answers.forEach(answer => {
+      this.answerElementDiv = document.createElement('div');
+      this.answerElementInput = document.createElement('input');
+      this.answerElementLabel = document.createElement('label');
+      this.answerElementInput.setAttribute('type', 'radio');
+      this.answerElementInput.setAttribute('name', 'answer');
+      this.answerElementLabel.innerText = answer.text;
+      this.answerElementDiv.appendChild(this.answerElementInput);
+      this.answerElementDiv.appendChild(this.answerElementLabel);
+      this.answersList.appendChild(this.answerElementDiv);
+      this.answerElementInput.addEventListener('click', ()=>{this.handleInputClick(answer)});
+    })
+  }
+  
+  handleFormSubmit() {
+    event.preventDefault();
+    console.log(this.chosenAnswer);
+    this.chosenAnswer.handleChooseAnswer();
+  }
+
+  handleInputClick(answer) {
+    this.chosenAnswer = answer;
+    console.log(this.chosenAnswer);
+  }
 }
  
 //Класс, представляющий ответ
@@ -44,7 +70,7 @@ class Answer
        this.type = type;
    }
 
-   Click () {
+   handleChooseAnswer () {
      console.log('answer type is ', this.type.name)
      console.log('answer score is ', this.type.score)
      
@@ -111,16 +137,17 @@ const questions =
 ];
 
 
-questions.forEach(q => {
-  console.log(q);
-  console.log(q.text);
-  console.log(q.answers[0]);
-  q.answers[0].Click();
+// questions.forEach(q => {
+//   console.log(q);
+//   console.log(q.text);
+//   console.log(q.answers[0]);
+//   q.answers[0].handleChooseAnswer();
+//   q.renderQuestion();
+// });
 
+// console.log(plantTypes[0].name);
+// console.log(plantTypes[0].score);
 
-});
+const test = new Test(questions);
 
-console.log(plantTypes[0].name);
-console.log(plantTypes[0].score);
-
- 
+test.testInit();
