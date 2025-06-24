@@ -499,6 +499,16 @@
     }
 }
 
+.card__grid .summary .card__one-click-btn {
+    display: none;
+}
+
+@media(max-width:767px) {
+    .card__grid .summary .card__one-click-btn {
+        display: block;
+    }
+}
+
 /* backorder-info */
 
 .backorder-info {
