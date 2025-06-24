@@ -18,6 +18,13 @@ class Test {
     console.log(this);
    }
 
+    handleFormSubmit(number) {
+      event.preventDefault();
+      console.log(this.questions.chosenAnswer);
+      this.questions.chosenAnswer.countScore();
+      console.log(this.questions);
+    }
+
 }
 
 //Класс, представляющий вопрос
@@ -54,14 +61,6 @@ class Question
     this.chosenAnswer = answer;
     console.log(this.chosenAnswer);
   }
-
-  handleFormSubmit(number) {
-    event.preventDefault();
-    console.log(this.chosenAnswer);
-    this.chosenAnswer.countScore();
-    console.log(this);
-  }
-
 
 }
  
