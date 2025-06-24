@@ -454,7 +454,7 @@
 .main__about-block_assort {
     background-color: var(--gray);
     border-radius: 40px;
-    grid-template-rows: auto 50px;
+    grid-template-rows: auto 70px;
     grid-template-areas: "heading list"
     "button list";
 }
@@ -462,6 +462,10 @@
 @media(max-width: 1000px) {
     .main__about-block_assort {
         padding: 30px;
+        grid-template-rows: auto auto 50px;
+        grid-template-areas: "heading"
+        "list"
+        "button";
     }
 }
 
@@ -487,8 +491,15 @@
     background-color: var(--text);
     color: var(--white);
     border-radius: 50px;
+    margin: 10px 0;
 }
 
+
+@media(max-width: 1000px) {
+    .main__about-block-button {
+        margin: 0;
+    }
+}
 
 
 .main__about-text {
