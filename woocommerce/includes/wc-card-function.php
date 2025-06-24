@@ -433,6 +433,16 @@ function plnt_get_preorder_popup () {
     }
 }
 
+// поп-ап купить в один клик buy-one-click-popup
+add_action('woocommerce_after_main_content','plnt_get_buy_one_сlick_popup',20);
+
+function plnt_get_buy_one_сlick_popup () {
+    global $product;
+    if (is_product() && $product->get_stock_status() !=='outofstock') {
+        wc_get_template_part('template-parts/popups/buy-one-click-popup');
+    }
+}
+
 /*--------------------------------------------------------------
 # HELPERS 
 --------------------------------------------------------------*/
