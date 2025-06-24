@@ -74,7 +74,7 @@ global $skidki_cat_id;
 			</div>
 		</div>
 		<div class="main__about-block main__about-block_assort">
-			<h4 class="main__about-block-heading">Ассортимент Plantis.shop включает:</h4>
+			<h3 class="main__about-block-heading">Ассортимент Plantis.shop включает:</h3>
 			<ul class="main__about-assort-list">
 				<li><strong>Декоративно-лиственные растения:</strong> фикусы, алоказии, аглаонемы, кодиеумы, а также другие цветы, которые могут похвалиться эффектным внешним видом;</li>
 				<li><strong>Цветущие растения:</strong> антуриумы, спатифиллумы, гибискусы;</li>
