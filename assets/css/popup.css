@@ -46,28 +46,31 @@
 /* стили для скролла scroll */
 .page-popup__container::-webkit-scrollbar-track
 {
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	display: none;
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	border-radius: 10px;
 	background-color: #F5F5F5;
-    max-height: 80%;
-    margin: auto 0;
+    height: 80px;
+    margin: auto 0; */
 }
 
 .page-popup__container::-webkit-scrollbar
 {
-	width: 12px;
+    display: none;
+	/* width: 12px;
 	background-color: #F5F5F5;
-    max-height: 80%;
-    margin: auto 0;
+    height: 80px;
+    margin: auto 0; */
 }
 
 .page-popup__container::-webkit-scrollbar-thumb
 {
-	border-radius: 10px;
+    display: none;
+	/* border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #919191;
-    max-height: 80%;
-    margin: auto 0;
+    height: 80%;
+    margin: auto 0; */
 }
 
 /* preorder & price list popup */
