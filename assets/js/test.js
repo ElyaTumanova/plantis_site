@@ -14,7 +14,8 @@ class Test {
 
    testInit() {
     this.questions[this.current].renderQuestion();
-    this.questionForm.addEventListener('submit', ()=>{this.questions[this.current].handleFormSubmit()});
+    this.questionForm.addEventListener('submit', ()=>{this.questions[this.current].handleFormSubmit(this.current)});
+    console.log(this);
    }
 
 }
@@ -49,16 +50,19 @@ class Question
     })
   }
   
-  handleFormSubmit() {
-    event.preventDefault();
-    console.log(this.chosenAnswer);
-    this.chosenAnswer.handleChooseAnswer();
-  }
-
   handleInputClick(answer) {
     this.chosenAnswer = answer;
     console.log(this.chosenAnswer);
   }
+
+  handleFormSubmit(number) {
+    event.preventDefault();
+    console.log(this.chosenAnswer);
+    this.chosenAnswer.countScore();
+    console.log(this);
+  }
+
+
 }
  
 //Класс, представляющий ответ
@@ -70,7 +74,7 @@ class Answer
        this.type = type;
    }
 
-   handleChooseAnswer () {
+   countScore () {
      console.log('answer type is ', this.type.name)
      console.log('answer score is ', this.type.score)
      
@@ -141,7 +145,7 @@ const questions =
 //   console.log(q);
 //   console.log(q.text);
 //   console.log(q.answers[0]);
-//   q.answers[0].handleChooseAnswer();
+//   q.answers[0].countScore();
 //   q.renderQuestion();
 // });
 
