@@ -32,7 +32,7 @@
     position: absolute;
     top: 50px;
     background: var(--background);
-    padding: 50px;
+    padding: 40px 50px;
     left: 0;
     right: var(--scrollWidth);
     /* right: 0; */
@@ -43,34 +43,39 @@
     overflow-y: auto;
 }
 
+.page-popup__form .wpcf7-form input {
+    margin-top: 10px;
+    border-radius: 40px;
+    padding: 10px;
+}
+.page-popup__form .wpcf7-form input:focus {
+    border: 1px solid #777e90;
+}
+
+.page-popup__form .wpcf7-form textarea {
+    margin-top: 10px;
+    border-radius: 30px;
+    padding: 18px;
+    height: 70px;
+}
+.page-popup__form .wpcf7-form textarea:focus {
+    border: 1px solid #777e90;
+}
+
 /* стили для скролла scroll */
 .page-popup__container::-webkit-scrollbar-track
 {
 	display: none;
-    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: #F5F5F5;
-    height: 80px;
-    margin: auto 0; */
 }
 
 .page-popup__container::-webkit-scrollbar
 {
     display: none;
-	/* width: 12px;
-	background-color: #F5F5F5;
-    height: 80px;
-    margin: auto 0; */
 }
 
 .page-popup__container::-webkit-scrollbar-thumb
 {
     display: none;
-	/* border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #919191;
-    height: 80%;
-    margin: auto 0; */
 }
 
 /* preorder & price list popup */
@@ -102,8 +107,8 @@
 
 .page-popup__close {
     position: absolute;
-    top: -30px;
-    right: -30px;
+    top: -0;
+    right: -0;
 }
 
 @media (max-width: 767px) {
@@ -341,6 +346,11 @@ input[type="search"], input[type="search"]:focus-visible {
 
 .buy-one-click-popup .page-popup__container {
     max-width: 700px;
+}
+
+.buy-one-click-popup__message {
+    margin: 20px 0;
+    line-height: 1.3;
 }
 
 /* buy one click popup radio button */
