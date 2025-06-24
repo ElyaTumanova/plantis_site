@@ -20,9 +20,10 @@ class Test {
 
     handleFormSubmit(number) {
       event.preventDefault();
-      console.log(this.questions.chosenAnswer);
-      this.questions.chosenAnswer.countScore();
+      //console.log(this.questions.chosenAnswer);
+      //this.questions.chosenAnswer.countScore();
       console.log(this.questions);
+      console.log(this);
     }
 
 }
