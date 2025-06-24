@@ -28,7 +28,7 @@ class Test {
 
         ++this.current;
         console.log(this.current);
-        if(this.current <= this.questions.length) {
+        if(this.current < this.questions.length) {
           this.questions[this.current].renderQuestion();
         } else {
           this.showResult();
