@@ -48,7 +48,7 @@
     border-radius: 40px;
     padding: 10px;
 }
-.page-popup__form .wpcf7-form input:focus {
+.page-popup__form .wpcf7-form input:focus, .page-popup__form .wpcf7-form input:focus-visible {
     border: 1px solid #777e90;
 }
 
@@ -349,7 +349,6 @@ input[type="search"], input[type="search"]:focus-visible {
 }
 
 .buy-one-click-popup__message {
-    margin: 20px 0;
     line-height: 1.3;
 }
 
