@@ -8,8 +8,10 @@ class Test {
 
       this.questionForm = document.querySelector('.test__answers-form');
  
-       //Номер текущего вопроса
-       this.current = 0;
+      //Номер текущего вопроса
+      this.current = 0;
+
+      this.testError = document.querySelector('.test__error');
    }
 
    testInit() {
@@ -20,10 +22,15 @@ class Test {
 
     handleFormSubmit(number) {
       event.preventDefault();
-      this.questions[this.current].chosenAnswer.countScore();
+      if (this.questions[this.current].chosenAnswer) {
+        this.questions[this.current].chosenAnswer.countScore();
 
-      ++this.current;
-      this.questions[this.current].renderQuestion();
+        ++this.current;
+        this.questions[this.current].renderQuestion();
+      } else {
+        this.testError.classList.add('test__error_show');
+      }
+      
     }
 
 }
@@ -37,6 +44,7 @@ class Question
     this.answers = answers;
     this.questionElement = document.querySelector('.test__question');
     this.answersList = document.querySelector('.test__answers');
+    this.testError = document.querySelector('.test__error');
     // this.questionForm = document.querySelector('.test__answers-form');
     this.chosenAnswer = this.chosenAnswer;
   }
@@ -62,6 +70,7 @@ class Question
   handleInputClick(answer) {
     this.chosenAnswer = answer;
     console.log(this.chosenAnswer);
+    this.testError.classList.remove('test__error_show');
   }
 
 }

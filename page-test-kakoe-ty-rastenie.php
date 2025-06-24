@@ -3,7 +3,7 @@
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
     <h1>This is test</h1>
-    <div>
+    <div class="test">
       <h2 class="test__question"></h2>
       <form class = "test__answers-form">
         <div class = "test__answers">
@@ -11,6 +11,7 @@
         </div>
         <button type="submit">Далее</button>
       </form>
+      <p class = "test__error">Выберите вариант ответа</p>
     </div>
 	</main><!-- #main -->
 </div><!-- #primary -->
