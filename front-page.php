@@ -84,6 +84,7 @@ global $skidki_cat_id;
 				<li><strong>Неприхотливые растения для начинающих:</strong> замиокулькас, сансевиерия, хлорофитум, пеперомия и другие;</li>
 				<li><strong>Растения безопасные для животных:</strong> для тех, у кого есть четвероногий друг.</li>
 			</ul>
+			<button class="main__about-block-button button"></button>
 		</div>
 		<div class="main__about-block">
 			<h3 class="main__about-block-heading">Plantis.shop — ваш эксперт по комнатным растениям</h3>
