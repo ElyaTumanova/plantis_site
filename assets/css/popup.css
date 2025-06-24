@@ -306,6 +306,10 @@ input[type="search"], input[type="search"]:focus-visible {
 
 /* buy one click popup */
 
+.buy-one-click-popup .page-popup__container {
+    max-width: 700px;
+}
+
 /* buy one click popup radio button */
 
 /* для элемента input c type="radio" */
