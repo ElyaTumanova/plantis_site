@@ -12,6 +12,7 @@ class Test {
       this.current = 0;
 
       this.testError = document.querySelector('.test__error');
+      this.testResult = document.querySelector('.test__result');
    }
 
    testInit() {
@@ -26,11 +27,19 @@ class Test {
         this.questions[this.current].chosenAnswer.countScore();
 
         ++this.current;
-        this.questions[this.current].renderQuestion();
+        if(this.current <= this.questions.length) {
+          this.questions[this.current].renderQuestion();
+        } else {
+          this.showResult();
+        }
       } else {
         this.testError.classList.add('test__error_show');
       }
       
+    }
+
+    showResult() {
+      console.log(this);
     }
 
 }

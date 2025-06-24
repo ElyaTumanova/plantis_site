@@ -12,7 +12,8 @@
         <button type="submit">Далее</button>
       </form>
       <p class = "test__error">Выберите вариант ответа</p>
-    </div>
+      <div class = "test__result"></div>
+    </div> 
 	</main><!-- #main -->
 </div><!-- #primary -->
 
