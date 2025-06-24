@@ -27,6 +27,7 @@ class Test {
         this.questions[this.current].chosenAnswer.countScore();
 
         ++this.current;
+        console.log(this.current);
         if(this.current <= this.questions.length) {
           this.questions[this.current].renderQuestion();
         } else {
