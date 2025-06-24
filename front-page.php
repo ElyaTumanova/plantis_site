@@ -64,7 +64,7 @@ global $skidki_cat_id;
 				<p>Добро пожаловать в Plantis — интернет-магазин комнатных растений с быстрой доставкой по Москве и Московской области. У&nbsp;нас можно заказать комнатные растения онлайн или выбрать их в нашем шоуруме оффлайн.</p> 
 				<p>Мы предлагаем эксклюзивный ассортимент горшечных растений и высокий уровень сервиса, чтобы ваша покупка была приятной.</p>
 			</div>
-			<img class="main__about-photo" src="https://plantis.shop/wp-content/uploads/2022/01/16.10-2.jpg" alt="Профессиональный уход за растениями">
+			<img class="main__about-photo" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
 		</div>
 		<div class="main__about-block">
 			<h3 class="main__about-block-heading">Комнатные растения для дома, офиса и бизнеса</h3>
