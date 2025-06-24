@@ -52,6 +52,7 @@ class Test {
       });
 
       console.log(this.result);
+      this.testResult.innerText = this.result.result;
     }
 
 }
