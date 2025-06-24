@@ -510,6 +510,10 @@
     }
 }
 
+.card__one-click-btn:hover {
+    box-shadow: none;
+}
+
 /* backorder-info */
 
 .backorder-info {
