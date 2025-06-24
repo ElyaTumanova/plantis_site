@@ -42,6 +42,16 @@ class Test {
 
     showResult() {
       console.log(this.plantTypes);
+  
+      this.result = plantTypes.reduce(function(prev, current) {
+          if (+current.score > +prev.score) {
+              return current;
+          } else {
+              return prev;
+          }
+      });
+
+      console.log(this.result);
     }
 
 }
