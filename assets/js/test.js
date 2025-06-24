@@ -42,6 +42,7 @@ class Question
   }
  
   renderQuestion() {
+    this.answersList.innerHTML = "";
     this.questionElement.innerText = this.text;
 
     this.answers.forEach(answer => {
