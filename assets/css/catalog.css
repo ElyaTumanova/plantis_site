@@ -1080,6 +1080,7 @@ ul.products {
     margin-left: auto;
     display: block;
     width: fit-content;
+    padding: 15px 20px;
 }
 
 /*--------------------------------------------------------------
