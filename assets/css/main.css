@@ -473,6 +473,7 @@
     font-size: 28px;
     text-transform: uppercase;
     line-height: 1.2;
+    color: var(--text);
 }
 
 .main__about-block_assort .main__about-block-heading {
@@ -481,7 +482,7 @@
 
 @media(max-width: 767px) {
     .main__about-block-heading  {
-       font-size: 24px;
+       font-size: 20px;
     }
 }
 
