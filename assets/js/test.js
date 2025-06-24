@@ -41,7 +41,7 @@ class Test {
     }
 
     showResult() {
-      console.log(this);
+      console.log(this.plantTypes);
     }
 
 }
