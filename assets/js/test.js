@@ -20,10 +20,10 @@ class Test {
 
     handleFormSubmit(number) {
       event.preventDefault();
-      console.log(this.questions[this.current].chosenAnswer);
       this.questions[this.current].chosenAnswer.countScore();
-      console.log(this.questions[this.current]);
-      console.log(this);
+
+      ++this.current;
+      this.questions[this.current].renderQuestion();
     }
 
 }
@@ -136,21 +136,19 @@ const questions =
        new Answer("Сидеть дома, обложившись пледами, сериалами и заказной едой – идеальный уют.", plantTypes[9]),
        new Answer("Уехать на пляж, надеть солнечные очки и забыть о делах.", plantTypes[2]),
        new Answer("Отправиться в спонтанное приключение или начать ремонт. Ну, типа, для души.", plantTypes[6]),
-       new Answer(" Провести день в одиночестве, читая философские трактаты под кружку чая.", plantTypes[3])
-   ])
+       new Answer("Провести день в одиночестве, читая философские трактаты под кружку чая.", plantTypes[3])
+   ]),
+
+   new Question("Как ты ведёшь себя на вечеринке?",
+   [
+       new Answer("Я в центре внимания, делаю эффектный вход, все обсуждают мой лук.", plantTypes[5]),
+       new Answer("Я сижу в уголке, наблюдаю и делаю умные выводы.", plantTypes[8]),
+       new Answer("Завожу душевные разговоры и внимательно слушаю других.", plantTypes[1]),
+       new Answer("Я там, где весело, но всегда готов(а) сбежать по-тихому, если станет скучно.", plantTypes[7])
+   ]),
+
 ];
 
-
-// questions.forEach(q => {
-//   console.log(q);
-//   console.log(q.text);
-//   console.log(q.answers[0]);
-//   q.answers[0].countScore();
-//   q.renderQuestion();
-// });
-
-// console.log(plantTypes[0].name);
-// console.log(plantTypes[0].score);
 
 const test = new Test(questions);
 
