@@ -1,10 +1,11 @@
 //Класс, который представляет сам тест
 
 class Test {
-  constructor(questions)
+  constructor(questions, plantTypes)
    {
       //Массив с вопросами
       this.questions = questions;
+      this.plantTypes = plantTypes;
 
       this.questionForm = document.querySelector('.test__answers-form');
  
@@ -170,6 +171,6 @@ const questions =
 ];
 
 
-const test = new Test(questions);
+const test = new Test(questions, plantTypes);
 
 test.testInit();
