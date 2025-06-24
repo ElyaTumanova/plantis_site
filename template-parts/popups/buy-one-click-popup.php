@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 $close_icon = carbon_get_theme_option('close_icon')
 ?>
-<div class="page-popup popup buy-one-click-popup order_wrap">
+<div class="page-popup popup buy-one-click-popup">
     <div class="page-popup__container">
         <div class="page-popup__wrap">
             <h2 class="page-popup__heading heading-2">Купить в один клик</h2>
