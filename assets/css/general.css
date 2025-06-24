@@ -181,7 +181,7 @@
 }
 
 
-.button:hover, .wpcf7-submit:hover { 
+.button:hover, .button:active, .button:focus, .wpcf7-submit:hover { 
     text-decoration: none;
 }
 
