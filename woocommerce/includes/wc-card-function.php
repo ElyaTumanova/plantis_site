@@ -219,7 +219,7 @@ function plnt_price_wrap(){
                     plnt_outofstock_btn();
                 } else {
                     plnt_get_add_to_card();
-                    ?> <button class="card__one-click-btn button">Купить в один клик</button> <?php
+                    ?> <button class="card__one-click-btn page-popup-open-btn button">Купить в один клик</button> <?php
                 }
                 ?>
             </div>
