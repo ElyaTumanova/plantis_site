@@ -502,6 +502,7 @@
 
 .card__grid .summary .card__one-click-btn {
     display: none;
+    padding: 15px 10px;
 }
 
 @media(max-width:767px) {
