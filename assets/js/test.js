@@ -21,7 +21,7 @@ class Test {
     handleFormSubmit(number) {
       event.preventDefault();
       console.log(this.questions[this.current].chosenAnswer);
-      //this.questions.chosenAnswer.countScore();
+      this.questions[this.current].chosenAnswer.countScore();
       console.log(this.questions[this.current]);
       console.log(this);
     }
