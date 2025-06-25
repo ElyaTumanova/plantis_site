@@ -13,6 +13,8 @@ class Test {
       this.current = 0;
 
       this.testError = document.querySelector('.test__error');
+    
+      this.testResult = document.querySelector('.test__result');
       this.testResultName = document.querySelector('.test__result-name');
       this.testResultDescr = document.querySelector('.test__result-descr');
       this.testResultLink = document.querySelector('.test__result-link');
@@ -40,7 +42,7 @@ class Test {
           this.showResult();
         }
       } else {
-        this.testError.classList.add('test__error_show');
+        this.testError.classList.remove('d-none');
       }
       
     }
@@ -57,6 +59,7 @@ class Test {
       });
 
       console.log(this.resultPlant);
+      this.testResult.classList.remove('d-none');
       this.testResultName.innerText = `Поздрвляем! Вы ${this.resultPlant.name}!`;
       this.testResultDescr.innerText = this.resultPlant.result;
       this.testResultLink.setAttribute('href',`https://dev.plantis.shop/resultat-testa-${this.resultPlant.slug}`);
@@ -99,7 +102,7 @@ class Question
   handleInputClick(answer) {
     this.chosenAnswer = answer;
     console.log(this.chosenAnswer);
-    this.testError.classList.remove('test__error_show');
+    this.testError.classList.add('d-none');
   }
 
   cleanQuestion() {

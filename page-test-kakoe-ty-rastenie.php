@@ -10,9 +10,9 @@
 
         </div>
         <button type="submit">Далее</button>
-        <p class = "test__error">Выберите вариант ответа</p>
+        <p class = "test__error d-none">Выберите вариант ответа</p>
       </form>
-      <div class = "test__result">
+      <div class = "test__result d-none">
         <p class = "test__result-name"></p>
         <p class = "test__result-descr"></p>
         <img src="" alt="" class = "test__result-image" loading="lazy">
