@@ -7,7 +7,12 @@ const pagePopupOverlay = document.querySelector('.page-popup__popup-overlay');
 //для попапа на странице усуги по уходу
 let serviceButtons = document.querySelectorAll('.service-page .page-popup-open-btn');
 let serviceNameInput = document.querySelector('.ukhod-popup-service-name');
-let serviceContactForm = document.querySelector('.service-popup form');
+// let serviceContactForm = document.querySelector('.service-popup form');
+let pagePopupContactForm = document.querySelector('.page-popup form');
+
+//для попапа купть в один клик и предзаказ
+// let oneClickContactForm = document.querySelector('.service-popup form');
+// let preorderContactForm = document.querySelector('.service-popup form');
 
 if (pagePopup != null && pageOpenPopupBtn != null) {
     pageOpenPopupBtn.forEach(button => {
@@ -32,7 +37,8 @@ if (pagePopup != null && pageOpenPopupBtn != null) {
         if((e.key=='Escape'||e.key=='Esc')){
             if(pagePopup.classList.contains('popup_active')) {
                 toggle_page_popup ();
-                cleanUkhodForm();
+                //cleanUkhodForm();
+                cleanForm();
             } 
         }
     }, true);
@@ -55,9 +61,14 @@ if(pagePopup != null && serviceButtons != null) {
   });
 }
 
-function cleanUkhodForm() {
-  if(serviceContactForm != null) {
-    serviceContactForm.reset();
+// function cleanUkhodForm() {
+//   if(serviceContactForm != null) {
+//     serviceContactForm.reset();
+//   }
+// }
+function cleanForm() {
+  if(pagePopupContactForm != null) {
+    pagePopupContactForm.reset();
   }
 }
 
