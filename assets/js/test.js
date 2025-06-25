@@ -1,5 +1,122 @@
 //Класс, который представляет сам тест
 
+class Test {
+  constructor(questions, plantTypes)
+   {
+      //Массив с вопросами
+      this.questions = questions;
+      this.plantTypes = plantTypes;
+
+      this.questionForm = document.querySelector('.test__answers-form');
+ 
+      //Номер текущего вопроса
+      this.current = 0;
+
+      this.testError = document.querySelector('.test__error');
+      this.testResult = document.querySelector('.test__result');
+   }
+
+   testInit() {
+    this.questions[this.current].renderQuestion();
+    this.questionForm.addEventListener('submit', ()=>{this.handleFormSubmit()});
+    console.log(this);
+   }
+
+    handleFormSubmit(number) {
+      event.preventDefault();
+      if (this.questions[this.current].chosenAnswer) {
+        this.questions[this.current].chosenAnswer.countScore();
+
+        ++this.current;
+        console.log(this.current);
+        if(this.current < this.questions.length) {
+          this.questions[this.current].renderQuestion();
+        } else {
+          this.showResult();
+        }
+      } else {
+        this.testError.classList.add('test__error_show');
+      }
+      
+    }
+
+    showResult() {
+      console.log(this.plantTypes);
+  
+      this.result = plantTypes.reduce(function(prev, current) {
+          if (+current.score > +prev.score) {
+              return current;
+          } else {
+              return prev;
+          }
+      });
+
+      console.log(this.result);
+      this.testResult.innerText = `Поздрвляем! Вы ${this.name}! <br> ${this.result.result}`;
+    }
+
+}
+
+//Класс, представляющий вопрос
+class Question
+{
+  constructor(text, answers)
+  {
+    this.text = text;
+    this.answers = answers;
+    this.questionElement = document.querySelector('.test__question');
+    this.answersList = document.querySelector('.test__answers');
+    this.testError = document.querySelector('.test__error');
+    // this.questionForm = document.querySelector('.test__answers-form');
+    this.chosenAnswer = this.chosenAnswer;
+  }
+ 
+  renderQuestion() {
+    this.answersList.innerHTML = "";
+    this.questionElement.innerText = this.text;
+
+    this.answers.forEach(answer => {
+      this.answerElementDiv = document.createElement('div');
+      this.answerElementInput = document.createElement('input');
+      this.answerElementLabel = document.createElement('label');
+      this.answerElementInput.setAttribute('type', 'radio');
+      this.answerElementInput.setAttribute('name', 'answer');
+      this.answerElementLabel.innerText = answer.text;
+      this.answerElementDiv.appendChild(this.answerElementInput);
+      this.answerElementDiv.appendChild(this.answerElementLabel);
+      this.answersList.appendChild(this.answerElementDiv);
+      this.answerElementInput.addEventListener('click', ()=>{this.handleInputClick(answer)});
+    })
+  }
+  
+  handleInputClick(answer) {
+    this.chosenAnswer = answer;
+    console.log(this.chosenAnswer);
+    this.testError.classList.remove('test__error_show');
+  }
+
+}
+ 
+//Класс, представляющий ответ
+class Answer
+{
+   constructor(text, type)
+   {
+       this.text = text;
+       this.type = type;
+   }
+
+   countScore () {
+     console.log('answer type is ', this.type.name)
+     console.log('answer score is ', this.type.score)
+     
+     ++this.type.score;
+     
+     console.log('answer score is ', this.type.score)
+
+   }
+}
+
 const plantTypes = [
   {name:'0 Замиокулькас',
     score: 0,
@@ -127,124 +244,6 @@ const questions =
    ]),
 
 ];
-
-class Test {
-  constructor(questions, plantTypes)
-   {
-      //Массив с вопросами
-      this.questions = questions;
-      this.plantTypes = plantTypes;
-
-      this.questionForm = document.querySelector('.test__answers-form');
- 
-      //Номер текущего вопроса
-      this.current = 0;
-
-      this.testError = document.querySelector('.test__error');
-      this.testResult = document.querySelector('.test__result');
-   }
-
-   testInit() {
-    this.questions[this.current].renderQuestion();
-    this.questionForm.addEventListener('submit', ()=>{this.handleFormSubmit()});
-    console.log(this);
-   }
-
-    handleFormSubmit(number) {
-      event.preventDefault();
-      if (this.questions[this.current].chosenAnswer) {
-        this.questions[this.current].chosenAnswer.countScore();
-
-        ++this.current;
-        console.log(this.current);
-        if(this.current < this.questions.length) {
-          this.questions[this.current].renderQuestion();
-        } else {
-          this.showResult();
-        }
-      } else {
-        this.testError.classList.add('test__error_show');
-      }
-      
-    }
-
-    showResult() {
-      console.log(this.plantTypes);
-  
-      this.result = plantTypes.reduce(function(prev, current) {
-          if (+current.score > +prev.score) {
-              return current;
-          } else {
-              return prev;
-          }
-      });
-
-      console.log(this.result);
-      this.testResult.innerText = `Поздрвляем! Вы ${this.name}! <br> ${this.result.result}`;
-    }
-
-}
-
-//Класс, представляющий вопрос
-class Question
-{
-  constructor(text, answers)
-  {
-    this.text = text;
-    this.answers = answers;
-    this.questionElement = document.querySelector('.test__question');
-    this.answersList = document.querySelector('.test__answers');
-    this.testError = document.querySelector('.test__error');
-    // this.questionForm = document.querySelector('.test__answers-form');
-    this.chosenAnswer = this.chosenAnswer;
-  }
- 
-  renderQuestion() {
-    this.answersList.innerHTML = "";
-    this.questionElement.innerText = this.text;
-
-    this.answers.forEach(answer => {
-      this.answerElementDiv = document.createElement('div');
-      this.answerElementInput = document.createElement('input');
-      this.answerElementLabel = document.createElement('label');
-      this.answerElementInput.setAttribute('type', 'radio');
-      this.answerElementInput.setAttribute('name', 'answer');
-      this.answerElementLabel.innerText = answer.text;
-      this.answerElementDiv.appendChild(this.answerElementInput);
-      this.answerElementDiv.appendChild(this.answerElementLabel);
-      this.answersList.appendChild(this.answerElementDiv);
-      this.answerElementInput.addEventListener('click', ()=>{this.handleInputClick(answer)});
-    })
-  }
-  
-  handleInputClick(answer) {
-    this.chosenAnswer = answer;
-    console.log(this.chosenAnswer);
-    this.testError.classList.remove('test__error_show');
-  }
-
-}
- 
-//Класс, представляющий ответ
-class Answer
-{
-   constructor(text, type)
-   {
-       this.text = text;
-       this.type = type;
-   }
-
-   countScore () {
-     console.log('answer type is ', this.type.name)
-     console.log('answer score is ', this.type.score)
-     
-     ++this.type.score;
-     
-     console.log('answer score is ', this.type.score)
-
-   }
-}
-
 
 const test = new Test(questions, plantTypes);
 
