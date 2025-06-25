@@ -10,8 +10,8 @@
 
         </div>
         <button type="submit">Далее</button>
+        <p class = "test__error">Выберите вариант ответа</p>
       </form>
-      <p class = "test__error">Выберите вариант ответа</p>
       <div class = "test__result">
         <p class = "test__result-name"></p>
         <p class = "test__result-descr"></p>
