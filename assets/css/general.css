@@ -197,6 +197,10 @@
     border-radius: 23px;
 }
 
+.wpcf7 form.invalid .wpcf7-response-output {
+    display: none;
+}
+
 .button:hover, .button:active, .button:focus, .wpcf7-submit:hover { 
     text-decoration: none;
 }
