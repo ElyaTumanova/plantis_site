@@ -40,6 +40,11 @@
     grid-area: error;
     margin: 10px 0;
     color: var(--red-color);
+    visibility: hidden;
+}
+
+.test__error_show {
+    visibility: visible;
 }
 
 

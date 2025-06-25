@@ -42,7 +42,7 @@ class Test {
           this.showResult();
         }
       } else {
-        this.testError.classList.remove('d-none');
+        this.testError.classList.add('test__error_show');
       }
       
     }
@@ -110,7 +110,7 @@ class Question
   handleInputClick(answer) {
     this.chosenAnswer = answer;
     console.log(this.chosenAnswer);
-    this.testError.classList.add('d-none');
+    this.testError.classList.remove('test__error_show');
   }
 
   cleanQuestion() {
