@@ -69,12 +69,14 @@ function cleanForm() {
 }
 
 function hidePopup() {
-  pagePopupContainer.style.visibility = 'hidden';
+  setTimeout(() => {
+    pagePopupContainer.style.visibility = 'hidden';
+  }, 200);
   setTimeout(() => {
     toggle_page_popup ();
     cleanForm();
     pagePopupContainer.style.visibility = 'visible';
-  }, 20000);
+  }, 2000);
 }
 
 
