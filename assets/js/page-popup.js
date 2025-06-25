@@ -71,12 +71,12 @@ function cleanForm() {
 function hidePopup() {
   setTimeout(() => {
     pagePopupContainer.style.visibility = 'hidden';
-  }, 200);
+  }, 1000);
   setTimeout(() => {
     toggle_page_popup ();
     cleanForm();
     pagePopupContainer.style.visibility = 'visible';
-  }, 2000);
+  }, 4000);
 }
 
 
