@@ -181,7 +181,7 @@
     padding: 10px;
 }
 
-.wpcf7-response-output {
+.wpcf7 form.sent .wpcf7-response-output {
     border: none;
     font-size: 18px;
     padding: 20px;
