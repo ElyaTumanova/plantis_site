@@ -73,7 +73,7 @@ function hidePopup() {
   setTimeout(() => {
     toggle_page_popup ();
     cleanForm();
-  }, 2000);
+  }, 20000);
 }
 
 

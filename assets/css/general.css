@@ -188,7 +188,7 @@
     position: absolute;
     top: 40%;
     transform: translateY(-40px);
-    transition: opacity 0.3s, transform 0.7s;
+    transition: opacity 0s, transform 0.7s;
 }
 
 .wpcf7 form.sent .wpcf7-response-output {
