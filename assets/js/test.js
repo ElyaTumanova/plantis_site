@@ -225,7 +225,7 @@ const questions =
         new Answer("Завожу душевные разговоры и внимательно слушаю других.", plantTypes[1]),
         new Answer("Я там, где весело, но всегда готов(а) сбежать по-тихому, если станет скучно.", plantTypes[7])
     ],
-    'https://plantis.shop/wp-content/uploads/2025/01/aglaonema-dzhubili-petit-14-50-1-800x800.webp',
+    'http://dev.plantis.shop/wp-content/uploads/2025/06/1.webp',
   ),
 
   //  new Question("Твоя реакция на критику:",
