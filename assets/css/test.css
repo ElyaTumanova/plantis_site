@@ -116,7 +116,7 @@
 }
 
 .category-test .entry-content > p {
-  grid-area: desc;
+  grid-area: descr;
   font-size: 18px;
   line-height: 1.4;
 }
