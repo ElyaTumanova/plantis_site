@@ -324,7 +324,7 @@
 /* кнопка оформления заказа*/
 .woocommerce-checkout .place-order .button {
     background-color: var(--accent-color); 
-    border-radius: 5px;
+    border-radius: 30px;
     font-size: 16px;
     font-weight: 500;
     text-transform: uppercase;
