@@ -75,6 +75,7 @@ class Question
   {
     this.text = text;
     this.answers = answers;
+    this.image = image;
     this.questionImage = document.querySelector('.test__image');
     this.questionElement = document.querySelector('.test__question');
     this.answersList = document.querySelector('.test__answers');
