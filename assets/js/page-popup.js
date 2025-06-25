@@ -73,7 +73,8 @@ function hidePopup() {
     pagePopupContainer.style.visibility = 'hidden';
   }, 1000);
   setTimeout(() => {
-    toggle_page_popup ();
+    pagePopup.classList.remove('popup_active');
+    body.classList.remove('fix-body');
     cleanForm();
     pagePopupContainer.style.visibility = 'visible';
   }, 3000);
