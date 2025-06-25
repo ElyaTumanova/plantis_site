@@ -9,9 +9,15 @@
 
 	<div class="entry-content">
 		<?php 
-		    //print_r(wp_get_post_categories(get_the_ID())[0]);
-
-			the_content(); ?>
+		    the_content(); 
+			if(wp_get_post_categories(get_the_ID())[0] == '1349') {
+				?>
+				<a class="take-test button" href='<?php echo site_url()?>/test-kakoe-ty-rastenie' target = "_blank">Пройти тест</a>
+				<?php
+			};
+			
+			
+			?>
 		<?php
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . __( 'Pages:', 'art-starter-theme' ),

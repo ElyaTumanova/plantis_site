@@ -131,6 +131,13 @@
 }
 
 
+.category-test .take-test {
+    background-color: var(--text);
+    color: var(--white);
+    border-radius: 50px;
+    width: 300px;
+}
+
 /* radio button */
 
 /* для элемента input c type="radio" */
