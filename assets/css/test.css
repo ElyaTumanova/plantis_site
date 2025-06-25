@@ -103,9 +103,10 @@
 .category-test .entry-content {
     display: grid;
     grid-template-columns: 680px 300px;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto 50px;
     grid-template-areas: "title img"
-    "descr img";
+    "descr img"
+    "button img";
     column-gap: 100px;
     row-gap: 30px;
     margin-top: 60px;
@@ -132,6 +133,7 @@
 
 
 .category-test .take-test {
+    grid-area: button;
     background-color: var(--text);
     color: var(--white);
     border-radius: 50px;
