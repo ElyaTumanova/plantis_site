@@ -15,6 +15,8 @@
       <div class = "test__result">
         <p class = "test__result-name"></p>
         <p class = "test__result-descr"></p>
+        <img src="" alt="" class = "test__result-image" loading="lazy">
+        <a href="" class = "test__result-link">Поделиться</a>
       </div>
     </div> 
 	</main><!-- #main -->
