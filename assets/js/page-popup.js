@@ -76,7 +76,7 @@ function hidePopup() {
     toggle_page_popup ();
     cleanForm();
     pagePopupContainer.style.visibility = 'visible';
-  }, 4000);
+  }, 3000);
 }
 
 
