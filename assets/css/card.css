@@ -708,11 +708,11 @@ input[type="number"] {
 }
 
 .card__outofstock-info {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 700;
     padding-bottom: 25px;
     color: var(--red-color);
-    line-height: 1.2;
+    line-height: 1.4;
 }
 
 @media (max-width: 767px) {
