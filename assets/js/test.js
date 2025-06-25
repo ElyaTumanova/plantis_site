@@ -20,6 +20,7 @@ class Test {
       this.testResultName = document.querySelector('.test__result-name');
       this.testResultDescr = document.querySelector('.test__result-descr');
       this.testShareTelegram = document.querySelector('.test__result .social-media__button-telegram');
+      this.testShareWhatsapp = document.querySelector('.test__result .social-media__button-whatsapp');
       this.testResultImage = document.querySelector('.test__result-image');
    }
 
@@ -69,6 +70,7 @@ class Test {
       this.testResultName.innerText = `Поздравляем! Вы ${this.resultPlant.name}!`;
       this.testResultDescr.innerText = this.resultPlant.result;
       this.testShareTelegram.setAttribute('href',`https://telegram.me/share/url?url=https://dev.plantis.shop/resultat-testa-${this.resultPlant.slug}&text=Посмотри какое я растение`);
+      this.testShareWhatsapp.setAttribute('href',`https://web.whatsapp.com/send?text=Посмотри какое я растение - https://dev.plantis.shop/resultat-testa-${this.resultPlant.slug}`);
       this.testResultImage.setAttribute('src',this.resultPlant.image);
       this.testResultImage.setAttribute('alt',this.resultPlant.name);
     }
