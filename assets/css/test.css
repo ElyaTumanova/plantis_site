@@ -31,7 +31,10 @@
     margin-bottom: 30px;
 }
 
-.test__answers div:hover {
+.test__answers input:hover {
+  cursor: pointer;
+}
+.test__answers label:hover {
   cursor: pointer;
 }
 
