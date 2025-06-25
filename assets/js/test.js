@@ -215,7 +215,7 @@ const questions =
         new Answer("Отправиться в спонтанное приключение или начать ремонт. Ну, типа, для души.", plantTypes[6]),
         new Answer("Провести день в одиночестве, читая философские трактаты под кружку чая.", plantTypes[3])
     ],
-    'https://plantis.shop/wp-content/uploads/2025/01/aglaonema-dzhubili-petit-14-50-1-800x800.webp',
+    'http://dev.plantis.shop/wp-content/uploads/2025/06/1.webp',
    ),
 
    new Question("Как ты ведёшь себя на вечеринке?",
