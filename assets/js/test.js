@@ -68,7 +68,7 @@ class Test {
       this.testResult.classList.remove('d-none');
       this.testResultName.innerText = `Поздравляем! Вы ${this.resultPlant.name}!`;
       this.testResultDescr.innerText = this.resultPlant.result;
-      this.testShareTelegram.setAttribute('href',`https://telegram.me/share/url?url=https://dev.plantis.shop/resultat-testa-${this.resultPlant.slug}&text=${this.resultPlant.name}`);
+      this.testShareTelegram.setAttribute('href',`https://telegram.me/share/url?url=https://dev.plantis.shop/resultat-testa-${this.resultPlant.slug}&text=Посмотри какое я растение`);
       this.testResultImage.setAttribute('src',this.resultPlant.image);
       this.testResultImage.setAttribute('alt',this.resultPlant.name);
     }
