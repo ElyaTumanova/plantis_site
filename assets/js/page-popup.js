@@ -1,5 +1,5 @@
 //переменные для управления попапом
-const pagePopupContainer = document.querySelectorAll('.page-popup__container'); 
+const pagePopupContainer = document.querySelector('.page-popup__container'); 
 const pageOpenPopupBtn = document.querySelectorAll('.page-popup-open-btn');
 const pagePopup = document.querySelector('.page-popup');
 const pageClosePopupBtn = document.querySelector('.page-popup__close');
@@ -69,7 +69,7 @@ function cleanForm() {
 }
 
 function hidePopup() {
-  pagePopupContainer.setAttribute('style', 'visibility: hidden;')
+  pagePopupContainer.style.visibility = 'hidden';
   setTimeout(() => {
     toggle_page_popup ();
     cleanForm();
