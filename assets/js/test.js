@@ -33,6 +33,7 @@ class Test {
         if(this.current < this.questions.length) {
           this.questions[this.current].renderQuestion();
         } else {
+          this.questions[0].cleanQuestion();
           this.showResult();
         }
       } else {
@@ -53,7 +54,6 @@ class Test {
       });
 
       console.log(this.result);
-      this.questions[this.current].cleanQuestion();
       this.testResultName.innerText = `Поздрвляем! Вы ${this.result.name}!`;
       this.testResultDescr.innerText = this.result.result;
     }
