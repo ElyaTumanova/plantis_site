@@ -18,7 +18,6 @@ get_header(); ?>
 
                 <div class="info__content">
                     <?php
-                    echo get_the_category( the_ID(););
                     the_content();
                     ?>
                 </div><!-- .entry-content -->
