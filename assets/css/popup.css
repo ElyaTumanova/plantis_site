@@ -39,7 +39,7 @@
     max-width: 1300px;
     margin: auto;
     border-radius: 40px;
-    max-height: 100vh;
+    height: 100vh;
     overflow-y: auto;
 }
 
