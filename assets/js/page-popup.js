@@ -24,13 +24,15 @@ if (pagePopup != null && pageOpenPopupBtn != null) {
     if (pageClosePopupBtn) {
         pageClosePopupBtn.addEventListener ("click", (evt)=>{
             toggle_page_popup ();
-            cleanUkhodForm();
+            //cleanUkhodForm();
+                cleanForm();
         });
     }
 
     pagePopupOverlay.addEventListener ("click", (evt)=>{
         toggle_page_popup ();
-        cleanUkhodForm();
+        //cleanUkhodForm();
+                cleanForm();
     });
 
     document.addEventListener('keydown', function(e){
