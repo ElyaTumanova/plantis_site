@@ -488,8 +488,8 @@
     margin-top: 10px;
     width: 100%;
     background-color: transparent;
-    border: solid 2px var(--accent-color);
-    color: var(--accent-color);
+    border: solid 2px var(--black-color);
+    color: var(--black-color);
     font-weight: 600;
     padding: 11px 10px 9px;
 }
