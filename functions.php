@@ -34,7 +34,7 @@ require get_template_directory() . '/includes/metrika.php';
 //require get_template_directory() . '/includes/xml/create_yandex_xml.php';
 //require get_template_directory() . '/includes/xml/create_google_xml.php';
 /** Add Test taxonomy */
-// require get_template_directory() . '/includes/test-taxonomy.php';
+require get_template_directory() . '/includes/test-post-type.php';
 
 
 /** Add Woocommerce files */
