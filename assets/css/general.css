@@ -185,7 +185,8 @@
     display: block;
     visibility: hidden;
     position: absolute;
-    top: 70%;
+    top: 40%;
+    transform: translateY(-40px);
     transition: all cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
