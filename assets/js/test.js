@@ -50,7 +50,7 @@ class Test {
     }
 
     cleanQuestion() {
-      this.testWrap.innerHTML = "";
+      this.testWrap.remove();
     }
 
     showResult() {
