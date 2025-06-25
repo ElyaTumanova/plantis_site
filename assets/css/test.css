@@ -115,7 +115,7 @@
   grid-area: title;
 }
 
-.category-test .entry-content p {
+.category-test .entry-content > p {
   grid-area: desc;
   font-size: 18px;
   line-height: 1.4;
