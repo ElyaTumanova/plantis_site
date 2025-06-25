@@ -798,6 +798,13 @@ input[type="number"] {
     font-size: 14px;
 }
 
+.card__grid_not-plant .woocommerce-Tabs-panel {
+    height: 200px;  /*card-grid heihts*/
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+
  @media (max-width:767px) {
     .card__grid .woocommerce-Tabs-panel {
         height: auto;
