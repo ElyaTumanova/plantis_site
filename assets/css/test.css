@@ -88,6 +88,11 @@
 
 .test__result-share {
     grid-area: share;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.test__result-share div {
     display: flex;
     column-gap: 30px;
 }
