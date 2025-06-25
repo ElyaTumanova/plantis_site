@@ -86,7 +86,7 @@ class Question
   renderQuestion() {
     this.answersList.innerHTML = "";
     this.questionElement.innerText = this.text;
-    this.questionImage.setAttribute('href',this.image);
+    this.questionImage.setAttribute('src',this.image);
     this.questionImage.setAttribute('alt',this.text);
 
 
