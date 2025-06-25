@@ -14,7 +14,7 @@ class Test {
 
       this.testError = document.querySelector('.test__error');
       this.testResultName = document.querySelector('.test__result-name');
-      this.testResultDescr = document.querySelector('.test__result-name');
+      this.testResultDescr = document.querySelector('.test__result-descr');
    }
 
    testInit() {
