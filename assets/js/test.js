@@ -13,7 +13,8 @@ class Test {
       this.current = 0;
 
       this.testError = document.querySelector('.test__error');
-      this.testResult = document.querySelector('.test__result');
+      this.testResultName = document.querySelector('.test__result-name');
+      this.testResultDescr = document.querySelector('.test__result-name');
    }
 
    testInit() {
@@ -52,7 +53,9 @@ class Test {
       });
 
       console.log(this.result);
-      this.testResult.innerText = `Поздрвляем! Вы ${this.name}! <br> ${this.result.result}`;
+      this.questions[this.current].cleanQuestion();
+      this.testResultName.innerText = `Поздрвляем! Вы ${this.result.name}!`;
+      this.testResultDescr.innerText = this.result.result;
     }
 
 }
@@ -67,7 +70,6 @@ class Question
     this.questionElement = document.querySelector('.test__question');
     this.answersList = document.querySelector('.test__answers');
     this.testError = document.querySelector('.test__error');
-    // this.questionForm = document.querySelector('.test__answers-form');
     this.chosenAnswer = this.chosenAnswer;
   }
  
@@ -95,6 +97,10 @@ class Question
     this.testError.classList.remove('test__error_show');
   }
 
+  cleanQuestion() {
+    this.questionElement.innerText = "";
+    this.answersList.innerHTML = "";
+  }
 }
  
 //Класс, представляющий ответ
@@ -179,69 +185,69 @@ const questions =
        new Answer("Я там, где весело, но всегда готов(а) сбежать по-тихому, если станет скучно.", plantTypes[7])
    ]),
 
-   new Question("Твоя реакция на критику:",
-   [
-       new Answer("Саркастично улыбаюсь и делаю вид, что мне всё равно (но я запомнил).", plantTypes[4]),
-       new Answer("Очень переживаю, но потом благодарю — ведь это помогает расти.", plantTypes[1]),
-       new Answer("Критику можно? Только тихо и желательно не сегодня.", plantTypes[3]),
-       new Answer("Критика — просто шум. Я выше этого.", plantTypes[0])
-   ]),
+  //  new Question("Твоя реакция на критику:",
+  //  [
+  //      new Answer("Саркастично улыбаюсь и делаю вид, что мне всё равно (но я запомнил).", plantTypes[4]),
+  //      new Answer("Очень переживаю, но потом благодарю — ведь это помогает расти.", plantTypes[1]),
+  //      new Answer("Критику можно? Только тихо и желательно не сегодня.", plantTypes[3]),
+  //      new Answer("Критика — просто шум. Я выше этого.", plantTypes[0])
+  //  ]),
 
-   new Question("Какой стиль тебе ближе всего?",
-   [
-       new Answer("Строгость и лаконичность, но с изюминкой.", plantTypes[7]),
-       new Answer("Цветные узоры, аксессуары и немного аромапалочек.", plantTypes[6]),
-       new Answer("Ярко, модно, немного экстравагантно.", plantTypes[5]),
-       new Answer("Классика: монохром, минимализм, аккуратность.", plantTypes[4])
-   ]),
+  //  new Question("Какой стиль тебе ближе всего?",
+  //  [
+  //      new Answer("Строгость и лаконичность, но с изюминкой.", plantTypes[7]),
+  //      new Answer("Цветные узоры, аксессуары и немного аромапалочек.", plantTypes[6]),
+  //      new Answer("Ярко, модно, немного экстравагантно.", plantTypes[5]),
+  //      new Answer("Классика: монохром, минимализм, аккуратность.", plantTypes[4])
+  //  ]),
 
-   new Question("Как ты относишься к переменам?",
-   [
-       new Answer("Перемен не боюсь, но делаю всё на своих условиях.", plantTypes[0]),
-       new Answer("Люблю перемены, особенно если они влекут за собой новые горизонты!", plantTypes[7]),
-       new Answer("Немного напрягаюсь, но адаптируюсь быстро.", plantTypes[9]),
-       new Answer("Перемены? Я сначала распускаю пару листьев тревоги.", plantTypes[3])
-   ]),
+  //  new Question("Как ты относишься к переменам?",
+  //  [
+  //      new Answer("Перемен не боюсь, но делаю всё на своих условиях.", plantTypes[0]),
+  //      new Answer("Люблю перемены, особенно если они влекут за собой новые горизонты!", plantTypes[7]),
+  //      new Answer("Немного напрягаюсь, но адаптируюсь быстро.", plantTypes[9]),
+  //      new Answer("Перемены? Я сначала распускаю пару листьев тревоги.", plantTypes[3])
+  //  ]),
 
-   new Question("Какой твой идеальный рабочий день?",
-   [
-       new Answer("Всё по плану, без стресса, с ароматом кофе и лёгким дзеном.", plantTypes[6]),
-       new Answer("Периоды продуктивности сменяются моментами созерцания.", plantTypes[3]),
-       new Answer("Много общения, обсуждений, комплиментов и немного работы.", plantTypes[5]),
-       new Answer("Рабочий день? Главное, чтобы никто не мешал.", plantTypes[8])
-   ]),
+  //  new Question("Какой твой идеальный рабочий день?",
+  //  [
+  //      new Answer("Всё по плану, без стресса, с ароматом кофе и лёгким дзеном.", plantTypes[6]),
+  //      new Answer("Периоды продуктивности сменяются моментами созерцания.", plantTypes[3]),
+  //      new Answer("Много общения, обсуждений, комплиментов и немного работы.", plantTypes[5]),
+  //      new Answer("Рабочий день? Главное, чтобы никто не мешал.", plantTypes[8])
+  //  ]),
 
-   new Question("Что ты обычно делаешь в свободное время?",
-   [
-       new Answer("Составляю планы на неделю и на случай апокалипсиса.", plantTypes[4]),
-       new Answer("Валяюсь, медитирую, сижу в тёплом углу.", plantTypes[0]),
-       new Answer("Встречаюсь с друзьями, устраиваю мини-праздники без повода.", plantTypes[2]),
-       new Answer("Украшаю дом, настраиваю уют, делаю что-то красивое.", plantTypes[9])
-   ]),
+  //  new Question("Что ты обычно делаешь в свободное время?",
+  //  [
+  //      new Answer("Составляю планы на неделю и на случай апокалипсиса.", plantTypes[4]),
+  //      new Answer("Валяюсь, медитирую, сижу в тёплом углу.", plantTypes[0]),
+  //      new Answer("Встречаюсь с друзьями, устраиваю мини-праздники без повода.", plantTypes[2]),
+  //      new Answer("Украшаю дом, настраиваю уют, делаю что-то красивое.", plantTypes[9])
+  //  ]),
 
-   new Question("Тебя забыли поздравить с праздником. Как ты реагируешь?",
-   [
-       new Answer("Делаю вид, что не обиделся, но потом драматично намекаю.", plantTypes[5]),
-       new Answer("Мне не нужны поводы — я сам себе праздник.", plantTypes[7]),
-       new Answer("Это обидно… Но я всё равно поздравлю их.", plantTypes[1]),
-       new Answer("Кто-то опять переоценил значение поздравлений.", plantTypes[8])
-   ]),
+  //  new Question("Тебя забыли поздравить с праздником. Как ты реагируешь?",
+  //  [
+  //      new Answer("Делаю вид, что не обиделся, но потом драматично намекаю.", plantTypes[5]),
+  //      new Answer("Мне не нужны поводы — я сам себе праздник.", plantTypes[7]),
+  //      new Answer("Это обидно… Но я всё равно поздравлю их.", plantTypes[1]),
+  //      new Answer("Кто-то опять переоценил значение поздравлений.", plantTypes[8])
+  //  ]),
 
-   new Question("Твоя суперсила:",
-   [
-       new Answer("Молча выживать в самых странных ситуациях.", plantTypes[8]),
-       new Answer("Находить гармонию в хаосе и оставаться стильным.", plantTypes[6]),
-       new Answer("Впитывать атмосферу, как губка, и адаптироваться моментально.", plantTypes[9]),
-       new Answer("Быть неподражаемым и всегда на виду.", plantTypes[5])
-   ]),
+  //  new Question("Твоя суперсила:",
+  //  [
+  //      new Answer("Молча выживать в самых странных ситуациях.", plantTypes[8]),
+  //      new Answer("Находить гармонию в хаосе и оставаться стильным.", plantTypes[6]),
+  //      new Answer("Впитывать атмосферу, как губка, и адаптироваться моментально.", plantTypes[9]),
+  //      new Answer("Быть неподражаемым и всегда на виду.", plantTypes[5])
+  //  ]),
 
-   new Question("Выбери фразу, которая ближе всего тебе по духу:",
-   [
-       new Answer("«Не трогай меня — и я никого не трону».", plantTypes[4]),
-       new Answer("«Обнимите меня и полейте тёплой водой слов».", plantTypes[1]),
-       new Answer("«Я всегда тянусь к солнцу, даже ночью».", plantTypes[2]),
-       new Answer("«Я выгляжу как философ, потому что им и являюсь».", plantTypes[3])
-   ]),
+  //  new Question("Выбери фразу, которая ближе всего тебе по духу:",
+  //  [
+  //      new Answer("«Не трогай меня — и я никого не трону».", plantTypes[4]),
+  //      new Answer("«Обнимите меня и полейте тёплой водой слов».", plantTypes[1]),
+  //      new Answer("«Я всегда тянусь к солнцу, даже ночью».", plantTypes[2]),
+  //      new Answer("«Я выгляжу как философ, потому что им и являюсь».", plantTypes[3])
+  //  ]),
 
 ];
 

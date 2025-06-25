@@ -12,7 +12,10 @@
         <button type="submit">Далее</button>
       </form>
       <p class = "test__error">Выберите вариант ответа</p>
-      <div class = "test__result"></div>
+      <div class = "test__result">
+        <p class = "test__result-name"></p>
+        <p class = "test__result-descr"></p>
+      </div>
     </div> 
 	</main><!-- #main -->
 </div><!-- #primary -->
