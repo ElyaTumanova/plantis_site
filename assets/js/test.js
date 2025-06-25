@@ -34,7 +34,7 @@ class Test {
           this.questions[this.current].renderQuestion();
         } else {
           this.questions[0].cleanQuestion();
-          this.questionForm.classList.add(d-none);
+          this.questionForm.classList.add('d-none');
           this.showResult();
         }
       } else {
