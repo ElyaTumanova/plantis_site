@@ -20,6 +20,7 @@ class Test {
       this.testResultName = document.querySelector('.test__result-name');
       this.testResultDescr = document.querySelector('.test__result-descr');
       this.testResultLink = document.querySelector('.test__result-link');
+      this.testShareTelegram = document.querySelector('.test__btn_telegram_share');
       this.testResultImage = document.querySelector('.test__result-image');
    }
 
@@ -66,9 +67,11 @@ class Test {
 
       console.log(this.resultPlant);
       this.testResult.classList.remove('d-none');
-      this.testResultName.innerText = `Поздрвляем! Вы ${this.resultPlant.name}!`;
+      this.testResultName.innerText = `Поздравляем! Вы ${this.resultPlant.name}!`;
       this.testResultDescr.innerText = this.resultPlant.result;
       this.testResultLink.setAttribute('href',`https://dev.plantis.shop/resultat-testa-${this.resultPlant.slug}`);
+      this.testShareTelegram.setAttribute('href',`https://dev.plantis.shop/resultat-testa-${this.resultPlant.slug}`);
+      this.testShareTelegram.setAttribute('href',`https://telegram.me/share/url?url=https://dev.plantis.shop/resultat-testa-${this.resultPlant.slug}&text=${this.resultPlant.name}`);
       this.testResultImage.setAttribute('src',this.resultPlant.image);
       this.testResultImage.setAttribute('alt',this.resultPlant.name);
     }
