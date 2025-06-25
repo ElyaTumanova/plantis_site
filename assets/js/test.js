@@ -7,6 +7,8 @@ class Test {
       this.questions = questions;
       this.plantTypes = plantTypes;
 
+      this.testWrap = document.querySelector('.test');
+
       this.questionForm = document.querySelector('.test__answers-form');
  
       //Номер текущего вопроса
@@ -37,7 +39,7 @@ class Test {
         if(this.current < this.questions.length) {
           this.questions[this.current].renderQuestion();
         } else {
-          this.questions[0].cleanQuestion();
+          this.cleanQuestion();
           this.questionForm.classList.add('d-none');
           this.showResult();
         }
@@ -45,6 +47,10 @@ class Test {
         this.testError.classList.add('test__error_show');
       }
       
+    }
+
+    cleanQuestion() {
+      this.testWrap.innerHTML = "";
     }
 
     showResult() {
@@ -111,11 +117,6 @@ class Question
     this.chosenAnswer = answer;
     console.log(this.chosenAnswer);
     this.testError.classList.remove('test__error_show');
-  }
-
-  cleanQuestion() {
-    this.questionElement.innerText = "";
-    this.answersList.innerHTML = "";
   }
 }
  
