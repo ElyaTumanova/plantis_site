@@ -9,7 +9,7 @@
 
 	<div class="entry-content">
 		<?php 
-		    echo wp_get_post_categories(the_ID())[0];
+		    pront_r(wp_get_post_categories(the_ID()));
 			the_content(); ?>
 		<?php
 			wp_link_pages( array(
