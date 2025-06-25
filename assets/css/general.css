@@ -181,20 +181,29 @@
     padding: 10px;
 }
 
+.wpcf7 form.init .wpcf7-response-output {
+    display: block;
+    visibility: hidden;
+    position: absolute;
+    top: 70%;
+    transition: all cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
 .wpcf7 form.sent .wpcf7-response-output {
     border: none;
     font-size: 18px;
-    padding: 20px;
+    padding: 30px 20px;
     text-align: center;
     font-weight: 700;
     position: absolute;
-    top: 50%;
-    background-color: #262626;
-    color: var(--white);
+    top: 40%;
+    background-color: white;
     left: 0;
     right: 0;
     margin: 0;
     border-radius: 23px;
+    box-shadow: 0 18px 39px 0 rgba(0, 0, 0, .102), 0 72px 72px 0 rgba(0, 0, 0, .09);
+    visibility: visible;
 }
 
 .wpcf7 form.invalid .wpcf7-response-output {
