@@ -183,7 +183,7 @@
 
 .wpcf7 form.init .wpcf7-response-output {
     display: block;
-    visibility: 0%;
+    visibility: hidden;
     position: absolute;
     top: 40%;
     transform: translateY(-40px);
@@ -204,7 +204,7 @@
     margin: 0;
     border-radius: 23px;
     box-shadow: 0 18px 39px 0 rgba(0, 0, 0, .102), 0 72px 72px 0 rgba(0, 0, 0, .09);
-    visibility: 100%;
+    visibility: visible;
 }
 
 .wpcf7 form.invalid .wpcf7-response-output {
