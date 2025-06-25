@@ -19,7 +19,7 @@ class Test {
       this.testResult = document.querySelector('.test__result');
       this.testResultName = document.querySelector('.test__result-name');
       this.testResultDescr = document.querySelector('.test__result-descr');
-      this.testShareTelegram = document.querySelector('.test__btn_telegram_share');
+      this.testShareTelegram = document.querySelector('.test__result .social-media__button-telegram');
       this.testResultImage = document.querySelector('.test__result-image');
    }
 
