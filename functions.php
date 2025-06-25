@@ -167,7 +167,7 @@ function plnt_set_constants_script() {
 
 add_filter('wpseo_opengraph_image', 'plnt_opengraph_image');
 function plnt_opengraph_image($image) {
-   $image = 'https://plantis.shop/wp-content/uploads/2025/01/пересадка_мобnorm-копия.webp'
+   $image = 'https://plantis.shop/wp-content/uploads/2025/01/пересадка_мобnorm-копия.webp';
    return $image;
 }
 
