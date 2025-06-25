@@ -91,11 +91,13 @@ class Question
 
 
     this.answers.forEach(answer => {
+      console.log(answer);
       this.answerElementDiv = document.createElement('div');
       this.answerElementInput = document.createElement('input');
       this.answerElementLabel = document.createElement('label');
       this.answerElementInput.setAttribute('type', 'radio');
       this.answerElementInput.setAttribute('name', 'answer');
+      //this.answerElementInput.setAttribute('id', 'answer'); 
       this.answerElementLabel.innerText = answer.text;
       this.answerElementDiv.appendChild(this.answerElementInput);
       this.answerElementDiv.appendChild(this.answerElementLabel);
