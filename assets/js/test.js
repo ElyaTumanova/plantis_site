@@ -71,10 +71,11 @@ class Test {
 //Класс, представляющий вопрос
 class Question
 {
-  constructor(text, answers)
+  constructor(text, answers, image)
   {
     this.text = text;
     this.answers = answers;
+    this.questionImage = document.querySelector('.test__image');
     this.questionElement = document.querySelector('.test__question');
     this.answersList = document.querySelector('.test__answers');
     this.testError = document.querySelector('.test__error');
@@ -84,6 +85,9 @@ class Question
   renderQuestion() {
     this.answersList.innerHTML = "";
     this.questionElement.innerText = this.text;
+    this.questionImage.setAttribute('href',this.image);
+    this.questionImage.setAttribute('alt',this.text);
+
 
     this.answers.forEach(answer => {
       this.answerElementDiv = document.createElement('div');
@@ -198,20 +202,24 @@ const plantTypes = [
 const questions = 
 [
    new Question("Какой вид отдыха тебе ближе всего?",
-   [
-       new Answer("Сидеть дома, обложившись пледами, сериалами и заказной едой – идеальный уют.", plantTypes[9]),
-       new Answer("Уехать на пляж, надеть солнечные очки и забыть о делах.", plantTypes[2]),
-       new Answer("Отправиться в спонтанное приключение или начать ремонт. Ну, типа, для души.", plantTypes[6]),
-       new Answer("Провести день в одиночестве, читая философские трактаты под кружку чая.", plantTypes[3])
-   ]),
+    [
+        new Answer("Сидеть дома, обложившись пледами, сериалами и заказной едой – идеальный уют.", plantTypes[9]),
+        new Answer("Уехать на пляж, надеть солнечные очки и забыть о делах.", plantTypes[2]),
+        new Answer("Отправиться в спонтанное приключение или начать ремонт. Ну, типа, для души.", plantTypes[6]),
+        new Answer("Провести день в одиночестве, читая философские трактаты под кружку чая.", plantTypes[3])
+    ],
+    'https://plantis.shop/wp-content/uploads/2025/01/aglaonema-dzhubili-petit-14-50-1-800x800.webp',
+   ),
 
    new Question("Как ты ведёшь себя на вечеринке?",
-   [
-       new Answer("Я в центре внимания, делаю эффектный вход, все обсуждают мой лук.", plantTypes[5]),
-       new Answer("Я сижу в уголке, наблюдаю и делаю умные выводы.", plantTypes[8]),
-       new Answer("Завожу душевные разговоры и внимательно слушаю других.", plantTypes[1]),
-       new Answer("Я там, где весело, но всегда готов(а) сбежать по-тихому, если станет скучно.", plantTypes[7])
-   ]),
+    [
+        new Answer("Я в центре внимания, делаю эффектный вход, все обсуждают мой лук.", plantTypes[5]),
+        new Answer("Я сижу в уголке, наблюдаю и делаю умные выводы.", plantTypes[8]),
+        new Answer("Завожу душевные разговоры и внимательно слушаю других.", plantTypes[1]),
+        new Answer("Я там, где весело, но всегда готов(а) сбежать по-тихому, если станет скучно.", plantTypes[7])
+    ],
+    'https://plantis.shop/wp-content/uploads/2025/01/aglaonema-dzhubili-petit-14-50-1-800x800.webp',
+  ),
 
   //  new Question("Твоя реакция на критику:",
   //  [
