@@ -1,0 +1,19 @@
+.test {
+    display: grid;
+    grid-template-columns: auto 400px;
+    grid-template-rows: auto auto;
+    grid-template-areas: "question img"
+    "answers img";
+}
+
+.test__question {
+    grid-area: question;
+}
+
+.test__answers-form {
+    grid-area: answers;
+}
+
+.test__image {
+    grid-area: img;
+}
