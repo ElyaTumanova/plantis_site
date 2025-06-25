@@ -64,9 +64,9 @@
     border: 1px solid #777e90;
 }
 
-/* .page-popup__form .wpcf7-spinner {
+.page-popup__form .wpcf7-spinner {
    display: none;
-} */
+}
 
 /* стили для скролла scroll */
 .page-popup__container::-webkit-scrollbar-track
