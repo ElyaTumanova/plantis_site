@@ -113,6 +113,8 @@
 
 .category-test .wp-block-heading {
   grid-area: title;
+  font-size: 30px;
+  font-weight: 700;
 }
 
 .category-test .entry-content > p {
