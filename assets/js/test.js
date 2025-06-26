@@ -9,7 +9,7 @@ class Test {
 
       this.questionForm = document.querySelector('.test__answers-form');
  
-      //Номер текущего вопроса
+      //Индекс текущего вопроса
       this.current = 0;
 
       this.testError = document.querySelector('.test__error');
@@ -22,7 +22,7 @@ class Test {
     console.log(this);
    }
 
-    handleFormSubmit(number) {
+    handleFormSubmit() {
       event.preventDefault();
       if (this.questions[this.current].chosenAnswer) {
         this.questions[this.current].chosenAnswer.countScore();
@@ -37,7 +37,6 @@ class Test {
       } else {
         this.testError.classList.add('test__error_show');
       }
-      
     }
 
     showResult() {
