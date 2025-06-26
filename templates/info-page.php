@@ -18,7 +18,6 @@ get_header(); ?>
 
                 <div class="info__content">
                     <?php
-
                     the_content();
                     ?>
                 </div><!-- .entry-content -->
@@ -27,7 +26,7 @@ get_header(); ?>
         <?php
         endwhile; // End of the loop.
         ?>
-
+         
     </main><!-- #main -->
 </div><!-- #primary -->
 
