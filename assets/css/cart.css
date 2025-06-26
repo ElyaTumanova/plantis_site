@@ -451,6 +451,8 @@
 .woocommerce-mini-cart {
     margin-bottom: 25px;
     color: var(--text);
+    max-height: calc(var(--vh) - 300px);
+    overflow: auto;
 }
 
 /* стили для скролла scroll */
@@ -486,6 +488,7 @@
     "peresadka peresadka peresadka";
     column-gap: 10px;
     margin-bottom: 10px;
+    margin-right: 10px;
 }
 .woocommerce-mini-cart-item .backorder_date-info {
     grid-area: status;
