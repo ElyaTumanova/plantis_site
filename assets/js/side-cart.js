@@ -1,5 +1,5 @@
 //переменные для управления попапом
-const sideCartWrap = document.querySelector('.side-cart');
+const sideCartWrap = document.querySelector('.side-cart-wrap');
 const sideCartOpenPopupBtn = document.querySelector('.side-cart__open-btn');
 const sideCartOpenPopupBtnMob = document.querySelector('.header__nav-wrap .header-cart');
 const sideCartClosePopupBtn = document.querySelector('.side-cart__close');
@@ -12,7 +12,7 @@ if (sideCartPopup != null && sideCartOpenPopupBtn != null || sideCartOpenPopupBt
     sideCartOpenPopupBtn.addEventListener ("click", (evt)=>{
         plntAjaxGetMiniCartOnSide();
     },{once:true});
-    
+
     sideCartOpenPopupBtn.addEventListener ("click", (evt)=>{
         toggle_side_cart_popup ();
     });
@@ -58,7 +58,7 @@ function plntAjaxGetMiniCartOnSide() {
         data, // Send our PHP function
         function(response){
           //console.log(response);
-          sideCartWrap.append(response);
+          sideCartWrap.innerHTML = response;
         }
       );
   // Close anon function.
