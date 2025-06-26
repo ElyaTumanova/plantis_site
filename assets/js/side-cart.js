@@ -18,6 +18,10 @@ if (sideCartPopup != null && sideCartOpenPopupBtn != null || sideCartOpenPopupBt
     });
 
     sideCartOpenPopupBtnMob.addEventListener ("click", (evt)=>{
+        plntAjaxGetMiniCartOnSide();
+    },{once:true});
+
+    sideCartOpenPopupBtnMob.addEventListener ("click", (evt)=>{
         toggle_side_cart_popup ();
     });
 
