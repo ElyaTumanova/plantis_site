@@ -647,6 +647,10 @@
     margin-bottom: 30px;
 }
 
+.side-cart-wrap {
+    height: 100%;
+}
+
 .side-cart .mini-cart {
     padding: 0;
     box-shadow: none;
