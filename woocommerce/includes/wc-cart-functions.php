@@ -188,6 +188,15 @@ function plnt_woocommerce_widget_shopping_cart_subtotal() {
 	echo '<span>' . esc_html__( 'Сумма:', 'woocommerce' ) . '</span> ' . WC()->cart->get_cart_subtotal(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
+// AJAX for mini cart
+function plnt_get_mini_cart() {
+	echo plnt_woocommerce_mini_cart();
+	die();
+}
+
+add_filter( 'wp_ajax_nopriv_plnt_get_mini_cart', 'plnt_get_mini_cart' );
+add_filter( 'wp_ajax_plnt_get_mini_cart', 'plnt_get_mini_cart' );
+
 /*--------------------------------------------------------------
 # CART UPDATE 
 --------------------------------------------------------------*/

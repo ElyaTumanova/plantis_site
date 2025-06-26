@@ -1,4 +1,5 @@
 //переменные для управления попапом
+const sideCartWrap = document.querySelector('.side-cart');
 const sideCartOpenPopupBtn = document.querySelector('.side-cart__open-btn');
 const sideCartOpenPopupBtnMob = document.querySelector('.header__nav-wrap .header-cart');
 const sideCartClosePopupBtn = document.querySelector('.side-cart__close');
@@ -7,6 +8,10 @@ const sideCartPopup = document.querySelector('.side-cart__popup');
 const sideCartPopupOverlay = document.querySelector('.side-cart__popup-overlay');
 
 if (sideCartPopup != null && sideCartOpenPopupBtn != null || sideCartOpenPopupBtnMob !=null) {
+    
+    sideCartOpenPopupBtn.addEventListener ("click", (evt)=>{
+        plntAjaxGetMiniCartOnSide();
+    },{once:true});
     
     sideCartOpenPopupBtn.addEventListener ("click", (evt)=>{
         toggle_side_cart_popup ();
@@ -40,6 +45,25 @@ function toggle_side_cart_popup () {
         body.classList.toggle ('fix-body');
     }
 };
+
+function plntAjaxGetMiniCartOnSide() {
+  ( function ( $ ) {
+      "use strict";
+    // Define the PHP function to call from here
+      var data = {
+        'action': 'plnt_get_mini_cart'
+      };
+      $.get(
+        woocommerce_params.ajax_url, // The AJAX URL
+        data, // Send our PHP function
+        function(response){
+          //console.log(response);
+          sideCartWrap.append(response);
+        }
+      );
+  // Close anon function.
+  }( jQuery ) );
+}
 
 
 
