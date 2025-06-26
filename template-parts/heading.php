@@ -81,7 +81,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php 
 								plnt_woocommerce_cart_header(); 
 								?><div class="mini-cart__wrap"> <?php
-									plnt_woocommerce_mini_cart(); 
+									//plnt_woocommerce_mini_cart(); 
 								?></div>
 						</div><!-- .header-cart -->
 					</div>
