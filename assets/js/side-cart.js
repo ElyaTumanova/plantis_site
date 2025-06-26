@@ -1,4 +1,4 @@
-//переменные для управления попапом
+//переменные для управления попапом Side cart
 const sideCartWrap = document.querySelector('.side-cart-wrap');
 const sideCartOpenPopupBtn = document.querySelector('.side-cart__open-btn');
 const sideCartOpenPopupBtnMob = document.querySelector('.header__nav-wrap .header-cart');
@@ -10,7 +10,7 @@ const sideCartPopupOverlay = document.querySelector('.side-cart__popup-overlay')
 if (sideCartPopup != null && sideCartOpenPopupBtn != null || sideCartOpenPopupBtnMob !=null) {
     
     sideCartOpenPopupBtn.addEventListener ("click", (evt)=>{
-        plntAjaxGetMiniCartOnSide();
+        plntAjaxGetMiniCart(sideCartWrap);
     },{once:true});
 
     sideCartOpenPopupBtn.addEventListener ("click", (evt)=>{
@@ -18,7 +18,7 @@ if (sideCartPopup != null && sideCartOpenPopupBtn != null || sideCartOpenPopupBt
     });
 
     sideCartOpenPopupBtnMob.addEventListener ("click", (evt)=>{
-        plntAjaxGetMiniCartOnSide();
+        plntAjaxGetMiniCart(sideCartWrap);
     },{once:true});
 
     sideCartOpenPopupBtnMob.addEventListener ("click", (evt)=>{
@@ -50,7 +50,7 @@ function toggle_side_cart_popup () {
     }
 };
 
-function plntAjaxGetMiniCartOnSide() {
+function plntAjaxGetMiniCart(miniCartDiv) {
   ( function ( $ ) {
       "use strict";
     // Define the PHP function to call from here
@@ -62,12 +62,23 @@ function plntAjaxGetMiniCartOnSide() {
         data, // Send our PHP function
         function(response){
           //console.log(response);
-          sideCartWrap.innerHTML = response;
+          miniCartDiv.innerHTML = response;
         }
       );
   // Close anon function.
   }( jQuery ) );
 }
+
+
+//переменные для управления попапом mini cart в header
+
+const headerCartOpenBtn = document.querySelector('.header__main .header-cart');
+const headerCartWrap = document.querySelector('.header__main .mini-cart__wrap');
+
+
+headerCartOpenBtn.addEventListener ("mouseenter", (evt)=>{
+        plntAjaxGetMiniCart(headerCartWrap);
+},{once:true});
 
 
 
