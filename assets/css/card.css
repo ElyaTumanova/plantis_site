@@ -382,15 +382,15 @@
     position: absolute;
     top: 0;
     z-index: 2;
-    padding: 5px;
-    border-radius: 5px 0px 5px 0px;
+    padding: 5px 7px;
+    border-radius: 13px;
     color: var(--white);
     min-width: 96px;
 }
 
 @media (max-width:767px) {
     .card__stockstatus {
-        padding: 3px;
+        padding: 3px 5px;
         min-width: 103px;
     }
 }
