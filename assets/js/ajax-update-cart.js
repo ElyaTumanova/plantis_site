@@ -34,7 +34,7 @@ function plntAjaxUpdateCartCount() {
 plntAjaxUpdateCartCount();
 
 // получаем корзину для обновления кнопок добавления в корзину
-function plntAjaxUpdateMiniCart() {
+function plntAjaxGetMiniCart() {
   // console.log('hi get minicart');
   let miniCartDiv = document.createElement('div');
   //console.log(miniCartDiv);
@@ -59,7 +59,7 @@ function plntAjaxUpdateMiniCart() {
   }( jQuery ) );
 }
   
-plntAjaxUpdateMiniCart(); //функция используется в плагнах Load More и BeRocket filters
+plntAjaxGetMiniCart(); //функция используется в плагнах Load More и BeRocket filters
 
 /*--------------------------------------------------------------
 # Update catalog add-to-cart buttons
@@ -118,6 +118,6 @@ jQuery(function($){
 		swiper_backorder_crossells_init();
 		backorderCrossellInit();
 		plntAjaxUpdateCartCount();
-		plntAjaxUpdateMiniCart();
+		plntAjaxGetMiniCart();
 	});
 })
