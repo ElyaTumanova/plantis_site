@@ -163,7 +163,7 @@ function truemisha_sale_badge() {
 		$percentage = ( ( $product->get_regular_price() - $product->get_sale_price() ) / $product->get_regular_price() ) * 100;
  
 	if ( $percentage > 0 ) {
-		echo '<div class="sale_badge"><span class="sale_badge-skidka">Скидка </span>' . round( $percentage ) . '%</div>';
+		echo '<div class="sale_badge"> - ' . round( $percentage ) . '%</div>';
 	}
 };
 

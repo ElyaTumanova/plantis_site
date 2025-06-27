@@ -1155,12 +1155,12 @@ ul.products {
 
 .product-slider-wrap .sale_badge {
     font-size: 13px;
-    padding: 0 3px 0 0;
+    padding: 3px 5px;
 }
 
-.product-slider-wrap .sale_badge .sale_badge-skidka{
+/* .product-slider-wrap .sale_badge .sale_badge-skidka{
     padding: 3px;
-}
+} */
 
 /* стили цены */
 .product-slider-wrap .product .price {
