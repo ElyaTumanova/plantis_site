@@ -2,9 +2,10 @@ function plntAjaxUpdateWishCount() {
     //console.log('hi plntAjaxUpdateWishCount');
     jQuery( function( $ ) {
         $(document).ready( function() {
-            $.get( yith_wcwl_l10n.ajax_url, {
+            $.get( woocommerce_params.ajax_url, {
             action: 'yith_wcwl_update_wishlist_count'
             }, function( data ) {
+                console.log(data);
             $('.yith-wcwl-items-count').children('i').html( data.count );
             if (data.count > 0) {
                 $('.header__main .header__wishlist .header-btn__wrap').addClass("header-btn__wrap_active");
@@ -24,10 +25,10 @@ function plntAjaxGetWishlist() {
 //console.log('hi plntAjaxGetWishlist');
 jQuery( function( $ ) {
     $(document).ready( function() {
-        $.get( yith_wcwl_l10n.ajax_url, {
+        $.get( woocommerce_params.ajax_url, {
         action: 'plnt_yith_wcwl_get_wishlist'
         }, function( data ) {
-        //console.log(data.wish);
+        console.log(data.wish);
         updateWishBtns(data.wish);
         } );
     } );
