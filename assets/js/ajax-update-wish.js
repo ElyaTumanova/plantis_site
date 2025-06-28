@@ -27,7 +27,8 @@ jQuery( function( $ ) {
     $(document).ready( function() {
         $.get( woocommerce_params.ajax_url, {
         action: 'plnt_yith_wcwl_get_wishlist'
-        }, function( data ) {
+        }, 
+        function( data ) {
         // console.log(data.wish);
         // console.log(data.count);
 
