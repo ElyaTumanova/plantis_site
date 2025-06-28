@@ -193,19 +193,25 @@ function plnt_woocommerce_widget_shopping_cart_subtotal() {
 --------------------------------------------------------------*/
 //обновляем мини корзину и количество в корзине с помошью ajax при загрузке страницы, чтобы решить проблему кешрования
 function plnt_update_mini_cart() {
-	echo wc_get_template( 'cart/mini-cart.php' );
+	ob_start();
+    woocommerce_mini_cart();
+    $response['mini_cart'] = ob_get_clean();
+	$response['cart_count'] = WC()->cart->get_cart_contents_count();
+	wp_send_json_success($response);
 	die();
 }
 add_filter( 'wp_ajax_nopriv_plnt_update_mini_cart', 'plnt_update_mini_cart' );
 add_filter( 'wp_ajax_plnt_update_mini_cart', 'plnt_update_mini_cart' );
 //
 
-function plnt_update_header_cart_count() {
-	echo wp_kses_data(WC()->cart->get_cart_contents_count());
-	die();
-}
-add_filter( 'wp_ajax_nopriv_plnt_update_header_cart_count', 'plnt_update_header_cart_count' );
-add_filter( 'wp_ajax_plnt_update_header_cart_count', 'plnt_update_header_cart_count' );
+// function plnt_update_header_cart_count() {
+// 	echo wp_kses_data(WC()->cart->get_cart_contents_count());
+// 	die();
+// }
+// add_filter( 'wp_ajax_nopriv_plnt_update_header_cart_count', 'plnt_update_header_cart_count' );
+// add_filter( 'wp_ajax_plnt_update_header_cart_count', 'plnt_update_header_cart_count' );
+
+
 
 /*--------------------------------------------------------------
 # CART FUNCTIONS 

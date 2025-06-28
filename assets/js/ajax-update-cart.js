@@ -32,7 +32,7 @@ function plntAjaxUpdateCartCount() {
   }( jQuery ) );
 }
 
-plntAjaxUpdateCartCount();
+//plntAjaxUpdateCartCount();
 
 // получаем корзину для обновления кнопок добавления в корзину
 function plntAjaxGetMiniCart() {
@@ -51,10 +51,21 @@ function plntAjaxGetMiniCart() {
       data, // Send our PHP function
       function(response){
         console.log(response);
-        $('.mini-cart').html(response); // Repopulate the specific element with the new content
+        $('.mini-cart').html(response.mini_cart); // Repopulate the specific element with the new content
         //console.log(response);
-        miniCartDiv.innerHTML = response;
+        miniCartDiv.innerHTML = response.mini_cart;
         updateCatalogButtons(miniCartDiv);
+
+        $('.header-cart__link .header__count').html(response.cart_count); // Repopulate the specific element with the new content
+        $('.header-cart__mob .header__count').html(response.cart_count); // Repopulate the specific element with the new content
+        $('.side-cart__count').html(response.cart_count);
+        if (response.cart_count >0) {
+          $('.header__main .header-cart .header-btn__wrap').addClass("header-btn__wrap_active");
+          $('.header__main .header-cart .header__count').addClass("header__count_active");
+          $('.header__nav-wrap .header-cart .header-btn__wrap').addClass("header-btn__wrap_active");
+          $('.header__nav-wrap .header-cart .header__count').addClass("header__count_active");
+        }
+        
       }
     );
   // Close anon function.
@@ -119,7 +130,7 @@ jQuery(function($){
 		//console.log('hi updated_cart_totals');
 		swiper_backorder_crossells_init();
 		backorderCrossellInit();
-		plntAjaxUpdateCartCount();
+		//plntAjaxUpdateCartCount();
 		plntAjaxGetMiniCart();
 	});
 })

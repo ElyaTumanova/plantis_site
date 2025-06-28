@@ -19,7 +19,7 @@ function plnt_card_wishlist_btn() {
 // }
 
 
-// шорткод для вывода ссылки и кол-ва + ajsx обновление
+// шорткод для вывода ссылки и кол-ва + ajax обновление
 if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) ) {
     function yith_wcwl_get_items_count() {
       ob_start();
@@ -52,16 +52,16 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
     add_shortcode( 'yith_wcwl_items_count', 'yith_wcwl_get_items_count' );
   }
   
-  if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_ajax_update_count' ) ) {
-    function yith_wcwl_ajax_update_count() {
-      wp_send_json( array(
-        'count' => yith_wcwl_count_all_products()
-      ) );
-    }
+  // if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_ajax_update_count' ) ) {
+  //   function yith_wcwl_ajax_update_count() {
+  //     wp_send_json( array(
+  //       'count' => yith_wcwl_count_all_products()
+  //     ) );
+  //   }
   
-    add_action( 'wp_ajax_yith_wcwl_update_wishlist_count', 'yith_wcwl_ajax_update_count' );
-    add_action( 'wp_ajax_nopriv_yith_wcwl_update_wishlist_count', 'yith_wcwl_ajax_update_count' );
-  }
+  //   add_action( 'wp_ajax_yith_wcwl_update_wishlist_count', 'yith_wcwl_ajax_update_count' );
+  //   add_action( 'wp_ajax_nopriv_yith_wcwl_update_wishlist_count', 'yith_wcwl_ajax_update_count' );
+  // }
   
 
   if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_enqueue_custom_script' ) ) {
