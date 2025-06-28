@@ -121,7 +121,8 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'plnt_yith_wcwl_ajax_get_wishl
   function plnt_yith_wcwl_ajax_get_wishlist() {
     global $user_id;
     wp_send_json( array(
-      'wish' =>  plnt_get_wish_list_ids()
+      'wish' =>  plnt_get_wish_list_ids();
+      'count' => yith_wcwl_count_all_products();
     ));
   }
 

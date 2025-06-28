@@ -29,6 +29,7 @@ jQuery( function( $ ) {
         action: 'plnt_yith_wcwl_get_wishlist'
         }, function( data ) {
         console.log(data.wish);
+        console.log(data.count);
         updateWishBtns(data.wish);
         } );
     } );
