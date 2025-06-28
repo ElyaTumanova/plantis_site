@@ -183,6 +183,6 @@ jQuery(function($){
 		swiper_backorder_crossells_init();
 		backorderCrossellInit();
 		//plntAjaxUpdateCartCount();
-		plntAjaxGetWishMiniCart();
+		//plntAjaxGetWishMiniCart();
 	});
 })
