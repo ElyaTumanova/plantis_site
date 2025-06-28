@@ -588,7 +588,7 @@ function remove_my_theme_canonical() {
     $br_aapf_paid_instance = BeRocket_AAPF_paid::getInstance();
     remove_action('wp_head', array($br_aapf_paid_instance, 'wp_head_canonical'), 99999);
 }
-add_action('init', 'remove_my_theme_canonical');
+//add_action('init', 'remove_my_theme_canonical');
 
 function add_custom_canonical_tags() {
     if (is_paged()) {
