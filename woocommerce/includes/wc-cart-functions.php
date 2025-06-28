@@ -197,7 +197,7 @@ function plnt_update_mini_cart() {
     woocommerce_mini_cart();
     $response['mini_cart'] = ob_get_clean();
 	$response['cart_count'] = WC()->cart->get_cart_contents_count();
-	wp_send_json_success($response);
+	wp_send_json($response);
 	die();
 }
 add_filter( 'wp_ajax_nopriv_plnt_update_mini_cart', 'plnt_update_mini_cart' );
