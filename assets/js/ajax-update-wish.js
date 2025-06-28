@@ -18,7 +18,7 @@ function plntAjaxUpdateWishCount() {
     });
 };
   
-plntAjaxUpdateWishCount();
+//plntAjaxUpdateWishCount();
 
 
 function plntAjaxGetWishlist() {
@@ -30,7 +30,16 @@ jQuery( function( $ ) {
         }, function( data ) {
         console.log(data.wish);
         console.log(data.count);
+
         updateWishBtns(data.wish);
+
+        $('.yith-wcwl-items-count').children('i').html( data.count );
+        if (data.count > 0) {
+            $('.header__main .header__wishlist .header-btn__wrap').addClass("header-btn__wrap_active");
+            $('.header__nav-wrap .header__wishlist .header-btn__wrap').addClass("header-btn__wrap_active");
+            $('.header__main .header__wishlist .header__count').addClass("header__count_active");
+            $('.header__nav-wrap .header__wishlist .header__count').addClass("header__count_active");
+        }
         } );
     } );
 });
