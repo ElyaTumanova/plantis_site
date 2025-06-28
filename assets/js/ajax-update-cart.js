@@ -180,7 +180,7 @@ function updateWishBtns(wishListItemsStr) {
 
 jQuery(function($){
 	$( document.body ).on( 'updated_cart_totals', function(){
-		//console.log('hi updated_cart_totals');
+		console.log('hi updated_cart_totals');
 		swiper_backorder_crossells_init();
 		backorderCrossellInit();
 		//plntAjaxUpdateCartCount();
