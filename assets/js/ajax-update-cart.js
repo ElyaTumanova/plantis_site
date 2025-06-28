@@ -5,32 +5,32 @@
 
 
 // обновляем кол-во товаров в корзине в хедере в десктопе и в моб и боковой корзины - код повторяется в cart.min.js
-function plntAjaxUpdateCartCount() {
-  ( function ( $ ) {
-      "use strict";
-    // Define the PHP function to call from here
-      var data = {
-        'action': 'plnt_update_header_cart_count'
-      };
-      $.get(
-        woocommerce_params.ajax_url, // The AJAX URL
-        data, // Send our PHP function
-        function(response){
-          console.log(response);
-          $('.header-cart__link .header__count').html(response); // Repopulate the specific element with the new content
-          $('.header-cart__mob .header__count').html(response); // Repopulate the specific element with the new content
-          $('.side-cart__count').html(response);
-          if (response >0) {
-            $('.header__main .header-cart .header-btn__wrap').addClass("header-btn__wrap_active");
-            $('.header__main .header-cart .header__count').addClass("header__count_active");
-            $('.header__nav-wrap .header-cart .header-btn__wrap').addClass("header-btn__wrap_active");
-            $('.header__nav-wrap .header-cart .header__count').addClass("header__count_active");
-          }
-        }
-      );
-  // Close anon function.
-  }( jQuery ) );
-}
+// function plntAjaxUpdateCartCount() {
+//   ( function ( $ ) {
+//       "use strict";
+//     // Define the PHP function to call from here
+//       var data = {
+//         'action': 'plnt_update_header_cart_count'
+//       };
+//       $.get(
+//         woocommerce_params.ajax_url, // The AJAX URL
+//         data, // Send our PHP function
+//         function(response){
+//           console.log(response);
+//           $('.header-cart__link .header__count').html(response); // Repopulate the specific element with the new content
+//           $('.header-cart__mob .header__count').html(response); // Repopulate the specific element with the new content
+//           $('.side-cart__count').html(response);
+//           if (response >0) {
+//             $('.header__main .header-cart .header-btn__wrap').addClass("header-btn__wrap_active");
+//             $('.header__main .header-cart .header__count').addClass("header__count_active");
+//             $('.header__nav-wrap .header-cart .header-btn__wrap').addClass("header-btn__wrap_active");
+//             $('.header__nav-wrap .header-cart .header__count').addClass("header__count_active");
+//           }
+//         }
+//       );
+//   // Close anon function.
+//   }( jQuery ) );
+// }
 
 //plntAjaxUpdateCartCount();
 
@@ -82,8 +82,9 @@ function plntAjaxGetWishMiniCart() {
   }( jQuery ) );
 }
   
-plntAjaxGetWishMiniCart(); //функция используется в плагнах Load More и BeRocket filters
+//plntAjaxGetWishMiniCart(); //функция используется в плагнах Load More и BeRocket filters
 
+document.addEventListener('DOMContentLoaded', plntAjaxGetWishMiniCart);
 /*--------------------------------------------------------------
 # Update catalog add-to-cart buttons
 --------------------------------------------------------------*/
