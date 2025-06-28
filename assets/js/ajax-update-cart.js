@@ -84,9 +84,9 @@ function plntAjaxGetWishMiniCart() {
   
 //plntAjaxGetWishMiniCart(); //функция используется в плагнах Load More и BeRocket filters
 
-//document.addEventListener('DOMContentLoaded', plntAjaxGetWishMiniCart);
-document.addEventListener('pointermove', ()=>(console.log('hoho')),{once:true});
-document.addEventListener('pointermove', plntAjaxGetWishMiniCart, {once:true});
+document.addEventListener('DOMContentLoaded', plntAjaxGetWishMiniCart);
+//document.addEventListener('pointermove', ()=>(console.log('hoho')),{once:true});
+//document.addEventListener('pointermove', plntAjaxGetWishMiniCart, {once:true});
 /*--------------------------------------------------------------
 # Update catalog add-to-cart buttons
 --------------------------------------------------------------*/
