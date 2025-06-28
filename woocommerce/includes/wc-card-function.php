@@ -219,7 +219,7 @@ function plnt_price_wrap(){
                     plnt_outofstock_btn();
                 } else {
                     plnt_get_add_to_card();
-                    plnt_buy_one_click_btn();
+                    //plnt_buy_one_click_btn();
                 }
                 ?>
             </div>
@@ -357,7 +357,7 @@ function plnt_product_artikul() {
 	}
 };
 
-add_action( 'woocommerce_single_product_summary', 'plnt_buy_one_click_btn', 50);
+//add_action( 'woocommerce_single_product_summary', 'plnt_buy_one_click_btn', 50);
 
 //upsells & cross sells
 
@@ -439,7 +439,7 @@ function plnt_get_preorder_popup () {
 }
 
 // поп-ап купить в один клик buy-one-click-popup
-add_action('woocommerce_after_main_content','plnt_get_buy_one_сlick_popup',20);
+//add_action('woocommerce_after_main_content','plnt_get_buy_one_сlick_popup',20);
 
 function plnt_get_buy_one_сlick_popup () {
     global $product;
