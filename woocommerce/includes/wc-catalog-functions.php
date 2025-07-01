@@ -781,6 +781,21 @@ function plnt_main_cats_slider_action_callback() {
     wp_die();
 };
 
+
+add_filter( 'woocommerce_get_image_size_woocommerce_thumbnail', 'custom_thumbnail_size_for_homepage' );
+
+function custom_thumbnail_size_for_homepage( $size ) {
+    if ( is_front_page() ) {
+        return array(
+            'width'  => 300,
+            'height' => 300,
+            'crop'   => 1, // обрезка по центру
+        );
+    }
+
+    return $size; // оставляем как есть на других страницах
+}
+
 //add_action('wp_head','plnt_debug');
 
 function plnt_debug() {
