@@ -224,6 +224,7 @@
 
     .side-cart__close:hover {
         box-shadow: none;
+        cursor: pointer;
     }
 }
 
