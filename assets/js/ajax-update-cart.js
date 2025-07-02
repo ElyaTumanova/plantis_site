@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', plntAjaxGetWishMiniCart);
 
 function updateCatalogButtons(miniCartDiv) {
 
-  // console.log('hiho');
+  console.log('hi updateCatalogButtons');
   // console.log(miniCartDiv);
   let miniCartItems = miniCartDiv.querySelectorAll('.woocommerce-mini-cart-item .remove_from_cart_button');
   let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
