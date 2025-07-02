@@ -112,9 +112,12 @@ function updateCatalogButtons(miniCartDiv) {
   addToCartBtns.forEach(button => {
     //console.log(button.dataset.product_id);
     if(productsInCartIds.includes(button.dataset.product_id)) {
+      let addToCartForm = button.parentElement;
+      console.log(addToCartForm);
       //console.log(button);
       button.innerHTML = 'Добавлен';
-      button.setAttribute('href', button.dataset.remove_link);
+      //button.setAttribute('href', button.dataset.remove_link);
+      addToCartForm.setAttribute('action', button.dataset.remove_link);
       button.setAttribute('class', 'button product_type_simple remove_from_cart_button added');
     };
   });
@@ -124,8 +127,11 @@ function updateCatalogButtons(miniCartDiv) {
       return
     } else {
       //console.log(button.dataset.product_id);
+      let addToCartForm = button.parentElement;
+      console.log(addToCartForm);
       button.innerHTML = 'В корзину';
-      button.setAttribute('href', `?add-to-cart=${button.dataset.product_id}`);
+      //button.setAttribute('href', `?add-to-cart=${button.dataset.product_id}`);
+      addToCartForm.setAttribute('action', `?add-to-cart=${button.dataset.product_id}`);
       button.setAttribute('class', 'button product_type_simple add_to_cart_button ajax_add_to_cart');
     };
   });
@@ -183,6 +189,6 @@ jQuery(function($){
 		console.log('hi updated_cart_totals');
 		swiper_backorder_crossells_init();
 		backorderCrossellInit();
-		//plntAjaxGetWishMiniCart();
+		plntAjaxGetWishMiniCart();
 	});
 })
