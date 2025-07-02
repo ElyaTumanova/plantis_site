@@ -231,7 +231,6 @@
 
 /* стили для сетки каталога */
 
-/*new code*/
 .catalog__grid .products {
     display: flex;
     align-items: stretch;
@@ -256,36 +255,6 @@
     width: calc(100% / 2 - 8px);
 }
 
-/*old code*/
-
-/* .catalog__grid 
-ul.products {
-    display: flex;
-    align-items: stretch;
-    flex-direction: row;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    word-break: break-word;
-    min-width: 12vw;
-    column-gap: 16px;
-    row-gap: 26px;
-
-    &.columns-2 {
-
-        li.product {
-            width: calc(100% / 2 - 8px);
-        }
-    }
-
-    &.columns-3 {
-
-        li.product {
-            width: calc(100% / 3 - 16px);
-        }
-    }
-} */
-/*/old code*/
-
 .catalog__grid .products .product {
     display: flex;
     flex-direction: column;
@@ -295,7 +264,6 @@ ul.products {
     position: relative;
 }
 
-/*new code*/
 @media (max-width: 1300px) {
     .catalog__grid .products {
         row-gap: 30px;
@@ -318,22 +286,6 @@ ul.products {
         width: 100%;
     }
 }
-
-/*old code*/
-/* @media (max-width: 767px) {
-    .catalog__grid 
-    ul.products {
-        row-gap: 30px;
-
-        &.columns-2 {
-
-            li.product {
-                width: 100%;
-            }
-        }
-    }
-} */
-/*/old code*/
 
 .catalog__grid .term-description {
     margin-top: 30px;
@@ -454,24 +406,33 @@ ul.products {
     border-color: var(--red-color);
 }
 
+.catalog__grid .add_to_cart_from {
+    margin-bottom: 15px;
+    margin-top: -62px;
+    margin-right: 20px;
+    margin-left: auto;
+    order: -1;
+    z-index: 2;
+}
+
 .catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple {
     margin: 10px 0 15px;
     font-size: 0;
     width: 52px;
     height: 52px;
     border-radius: 100%;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px;
     margin-top: -62px;
     margin-right: 20px;
-    margin-left: auto;
+    margin-left: auto; */
     /* background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg); */
     background-image: url(https://plantis.shop/wp-content/uploads/2025/02/cart_white_new2.svg);
     background-repeat: no-repeat;
     background-position: center;
     padding: 0;
     background-size: 50%;
-    order: -1;
-    z-index: 2;
+    /* order: -1;
+    z-index: 2; */
     
     /* margin: 10px 0 10px; */
 }
