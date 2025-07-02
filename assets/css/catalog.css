@@ -407,7 +407,7 @@
 }
 
 .catalog__grid .add_to_cart_from {
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
     margin-top: -62px;
     margin-right: 20px;
     margin-left: auto;
@@ -416,7 +416,7 @@
 }
 
 .catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple {
-    margin: 10px 0 15px;
+    /* margin: 10px 0 15px; */
     font-size: 0;
     width: 52px;
     height: 52px;
