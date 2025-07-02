@@ -651,7 +651,6 @@ function plnt_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 
 add_filter( 'woocommerce_loop_add_to_cart_link', 'plnt_change_rel', 10, 2); 
 function plnt_change_rel( $html, $product ) {
-  echo $html;
  $html = str_replace( 'rel="nofollow"', 'rel="noindex, nofollow"', $html );
  return $html;
 }
