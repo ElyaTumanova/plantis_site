@@ -53,7 +53,7 @@ else {
 echo apply_filters(
 	'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
 	sprintf(
-		'<form action="%s" method="post">
+		'<form action="%s" method="post" class="add_to_cart_from">
     <button type="submit" data-quantity="%s" class="%s" %s>%s</button>
     </form>',
     // esc_url( $product->add_to_cart_url() ),
