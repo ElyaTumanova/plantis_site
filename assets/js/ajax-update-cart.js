@@ -35,6 +35,7 @@
 //plntAjaxUpdateCartCount();
 
 // получаем корзину для обновления кнопок добавления в корзину
+//функция используется в плагнах Load More и BeRocket filters
 function plntAjaxGetWishMiniCart() {
   // console.log('hi get minicart');
   let miniCartDiv = document.createElement('div');
@@ -50,7 +51,7 @@ function plntAjaxGetWishMiniCart() {
       woocommerce_params.ajax_url, // The AJAX URL
       data, // Send our PHP function
       function(response){
-        console.log(response);
+        //console.log(response);
         $('.mini-cart').html(response.mini_cart); // Repopulate the specific element with the new content
         //console.log(response);
         miniCartDiv.innerHTML = response.mini_cart;
@@ -80,13 +81,10 @@ function plntAjaxGetWishMiniCart() {
     );
   // Close anon function.
   }( jQuery ) );
-}
-  
-//plntAjaxGetWishMiniCart(); //функция используется в плагнах Load More и BeRocket filters
+} 
 
 document.addEventListener('DOMContentLoaded', plntAjaxGetWishMiniCart);
-//document.addEventListener('pointermove', ()=>(console.log('hoho')),{once:true});
-//document.addEventListener('pointermove', plntAjaxGetWishMiniCart, {once:true});
+
 /*--------------------------------------------------------------
 # Update catalog add-to-cart buttons
 --------------------------------------------------------------*/
