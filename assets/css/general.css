@@ -221,6 +221,11 @@
     .button:hover, .wpcf7-submit:hover { 
         box-shadow: inset 0 0 0 50px rgba(0, 0, 0, 0.2);
     }
+
+    .side-cart__close:hover {
+        box-shadow: none;
+        cursor: pointer;
+    }
 }
 
 
