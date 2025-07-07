@@ -4,7 +4,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $close_icon = carbon_get_theme_option('close_icon');
-echo $close_icon;
 ?>
 
 <footer id="footer" class="footer" role="contentinfo">
