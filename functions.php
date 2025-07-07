@@ -289,6 +289,30 @@ function plnt_check_page() {
 
 }
 
+function plnt_get_cats_data() {
+	global $plants_treez_cat_id;
+	global $plants_cat_id;
+	global $gorshki_cat_id;
+	global $ukhod_cat_id;
+	global $treez_cat_id;
+	global $treez_poliv_cat_id;
+	global $lechuza_cat_id;
+	global $misc_cat_id;
+	global $peresadka_cat_id;
+
+	$term = get_term( $plants_cat_id, 'product_cat');
+	$term_name = $term->name; // получаем название конкретной категории товаров (в данном случае)
+	echo($term_name);
+
+	$terms = get_terms( [
+		'taxonomy' => 'post_tag',
+		'hide_empty' => false,
+	] );
+
+	echo ($terms);
+}
+
 //add_action( 'wp_footer', 'plnt_check_page' );
 //add_action( 'wp_footer', 'plnt_dev_functions' );
+add_action( 'wp_footer', 'plnt_get_cats_data' );
 
