@@ -313,6 +313,10 @@ function plnt_get_cats_data() {
 
 	foreach ($terms as $key => $term) {
 		print_r($term->term_id);
+		print_r($term->term_name);
+		print_r($term->term_slug);
+		print_r($term->term_description);
+		echo ('<br>');
 	}
 }
 
