@@ -319,7 +319,7 @@ function plnt_get_cats_data() {
 		print_r($term->name);
 		echo ("','slug' => '");
 		print_r($term->slug);
-		echo ("']");
+		echo ("'],");
 		//echo (';');
 		//print_r($term->description);
 		//echo (';');
