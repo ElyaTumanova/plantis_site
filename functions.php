@@ -315,21 +315,23 @@ function plnt_get_cats_data() {
 	foreach ($terms as $key => $term) {
 		//print_r($term);
 		//print_r($term->term_id);
-		//echo (';');
-		//print_r($term->name);
-		//echo (';');
-		//print_r($term->slug);
+		echo ("'name' =>");
+		print_r($term->name);
+		echo ("'slug' =>");
+		print_r($term->slug);
 		//echo (';');
 		//print_r($term->description);
 		//echo (';');
 		//echo ('<br>');
-		array_push($my_terms_array, ['name'=>$term->name, 'slug'=>$term->slug]);
+		//array_push($my_terms_array, ['name'=>$term->name, 'slug'=>$term->slug]);
 	}
 
-	print_r($my_terms_array);
+	//print_r($my_terms_array);
 }
 
 //add_action( 'wp_footer', 'plnt_check_page' );
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 add_action( 'wp_footer', 'plnt_get_cats_data' );
 
+
+$cats_array = array(['name' => 'Treez Effectory Anthra', 'slug' => 'treez-effectory-anthra']);
