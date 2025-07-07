@@ -305,7 +305,7 @@ function plnt_get_cats_data() {
 	print_r($term_name);
 
 	$terms = get_terms( [
-		'taxonomy' => 'post_tag',
+		'taxonomy' => 'product_cat',
 		'hide_empty' => false,
 	] );
 
