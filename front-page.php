@@ -14,8 +14,8 @@ global $skidki_cat_id;
 			</div>
 
 			<div class="main__catalog-buttons-wrap">
-				<a class="main__plants-button button" href="<?php echo get_term_link( $plants_cat_id, 'product_cat' );?>">Комнатные растения</a>
-				<a class="main__gorshki-button button" href="<?php echo get_term_link( $gorshki_cat_id, 'product_cat' );?>">Горшки и кашпо</a>
+				<a class="main__plants-button button" href="<?php //echo get_term_link( $plants_cat_id, 'product_cat' );?>">Комнатные растения</a>
+				<a class="main__gorshki-button button" href="<?php //echo get_term_link( $gorshki_cat_id, 'product_cat' );?>">Горшки и кашпо</a>
 			</div>
 	
 			<!-- <div class="main__sale-gallery-wrap">
