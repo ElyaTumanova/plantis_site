@@ -310,19 +310,23 @@ function plnt_get_cats_data() {
 	] );
 
 	//print_r($terms);
+	$my_terms_array = [];
 
 	foreach ($terms as $key => $term) {
 		//print_r($term);
-		print_r($term->term_id);
-		echo (';');
-		print_r($term->name);
-		echo (';');
-		print_r($term->slug);
-		echo (';');
-		print_r($term->description);
-		echo (';');
-		echo ('<br>');
+		//print_r($term->term_id);
+		//echo (';');
+		//print_r($term->name);
+		//echo (';');
+		//print_r($term->slug);
+		//echo (';');
+		//print_r($term->description);
+		//echo (';');
+		//echo ('<br>');
+		array_push($my_terms_array, ['name'=>$term->name, 'slug'=>$term->slug]);
 	}
+
+	print_r($my_terms_array);
 }
 
 //add_action( 'wp_footer', 'plnt_check_page' );
