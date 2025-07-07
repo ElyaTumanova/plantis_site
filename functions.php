@@ -302,14 +302,18 @@ function plnt_get_cats_data() {
 
 	$term = get_term( $plants_cat_id, 'product_cat');
 	$term_name = $term->name; // получаем название конкретной категории товаров (в данном случае)
-	print_r($term_name);
+	//print_r($term_name);
 
 	$terms = get_terms( [
 		'taxonomy' => 'product_cat',
 		'hide_empty' => false,
 	] );
 
-	print_r($terms);
+	//print_r($terms);
+
+	foreach ($terms as $key => $term) {
+		print_r($term);
+	}
 }
 
 //add_action( 'wp_footer', 'plnt_check_page' );
