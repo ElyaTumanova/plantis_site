@@ -29,7 +29,7 @@ require get_template_directory() . '/includes/ajax.php';
 /** Add constants */
 require get_template_directory() . '/includes/constants.php';
 /** Add Yandex metrika */
-//require get_template_directory() . '/includes/metrika.php';
+require get_template_directory() . '/includes/metrika.php';
 /** Create Yandex XML */
 //require get_template_directory() . '/includes/xml/create_yandex_xml.php';
 //require get_template_directory() . '/includes/xml/create_google_xml.php';
