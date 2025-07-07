@@ -3,7 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-$close_icon = carbon_get_theme_option('close_icon')
+$close_icon = carbon_get_theme_option('close_icon');
+echo $close_icon;
 ?>
 
 <footer id="footer" class="footer" role="contentinfo">
