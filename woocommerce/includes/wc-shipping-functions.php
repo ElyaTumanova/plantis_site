@@ -177,12 +177,10 @@ function plnt_shipping_conditions( $rates, $package ) {
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
     $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
 
-    // проверяем крупногабаритную доставку
+    // проверяем крупногабаритную доставку и суммы заказов
     if ($cart_weight >= 11) {
         $delivery_murkup = $large_markup_delivery;
-    } 
-    // проверяем маленькие суммы заказов
-    else {
+    } else {
         if ( WC()->cart->subtotal < $min_small_delivery ) {
                 $delivery_murkup = $small_markup_delivery;
         } else if (WC()->cart->subtotal < $min_medium_delivery) {

@@ -79,6 +79,7 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'late_markup_delivery', 'Надбавка к стоимости поздней доставки'),
 			Field::make( 'text', 'small_markup_delivery', 'Надбавка к стоимости маленькой доставки'),
 			Field::make( 'text', 'medium_markup_delivery', 'Надбавка к стоимости средней доставки'),
+			Field::make( 'text', 'large_markup_delivery', 'Надбавка к стоимости крупногабаритной доставки'),
 	   ))
 		->add_tab( __('General'), array(
 			Field::make( 'text', 'notice', 'Уведомление' ),
