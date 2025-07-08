@@ -18,6 +18,7 @@ let deliveryIntervalInput = document.querySelectorAll('input[name=additional_del
 let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
 let today;
 
+console.log(deliveryMarkup);
 
 function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
@@ -36,34 +37,33 @@ function getCheckedShippingMethod (){
 function renderDeliveryDates(shippingValue) {
   deliveryDatesInfo.forEach((info) => {
     info.label.innerHTML=`${info.text}`;
-    if(info.text !=='08.03') {
-      let priceEl = document.createElement('span');
-      info.label.appendChild(priceEl);
-        if(shippingValue == deliveryInMKAD || shippingValue == deliveryInMKADUrg) {
-          priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadUrg}₽` : `${deliveryCostInMkad}₽` ;
-        }
-        if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
-          priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadUrg}₽` : `${deliveryCostOutMkad}₽` ;
-        }
-        if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
-          priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadSmallUrg}₽` : `${deliveryCostInMkadSmall}₽` ;
-        }
-        if(shippingValue == deliveryOutMKADSmall || shippingValue == deliveryOutMKADSmallUrg) {
-          priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadSmallUrg}₽` : `${deliveryCostOutMkadSmall}₽` ;
-        }
-        if(shippingValue == deliveryInMKADLarge || shippingValue == deliveryInMKADLargeUrg) {
-          priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadLargeUrg}₽` : `${deliveryCostInMkadLarge}₽` ;
-        }
-        if(shippingValue == deliveryOutMKADLarge || shippingValue == deliveryOutMKADLargeUrg) {
-          priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadLargeUrg}₽` : `${deliveryCostOutMkadLarge}₽` ;
-        }
-        if(shippingValue == deliveryInMKADMedium || shippingValue == deliveryInMKADMediumUrg) {
-          priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadMediumUrg}₽` : `${deliveryCostInMkadMedium}₽` ;
-        }
-        if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
-          priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadMediumUrg}₽` : `${deliveryCostOutMkadMedium}₽` ;
-        }
-    } 
+    let priceEl = document.createElement('span');
+    info.label.appendChild(priceEl);
+      if(shippingValue == deliveryInMKAD || shippingValue == deliveryInMKADUrg) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadUrg}₽` : `${deliveryCostInMkad}₽` ;
+      }
+      if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadUrg}₽` : `${deliveryCostOutMkad}₽` ;
+      }
+      // if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
+      //   priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadSmallUrg}₽` : `${deliveryCostInMkadSmall}₽` ;
+      // }
+      // if(shippingValue == deliveryOutMKADSmall || shippingValue == deliveryOutMKADSmallUrg) {
+      //   priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadSmallUrg}₽` : `${deliveryCostOutMkadSmall}₽` ;
+      // }
+      // if(shippingValue == deliveryInMKADLarge || shippingValue == deliveryInMKADLargeUrg) {
+      //   priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadLargeUrg}₽` : `${deliveryCostInMkadLarge}₽` ;
+      // }
+      // if(shippingValue == deliveryOutMKADLarge || shippingValue == deliveryOutMKADLargeUrg) {
+      //   priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadLargeUrg}₽` : `${deliveryCostOutMkadLarge}₽` ;
+      // }
+      // if(shippingValue == deliveryInMKADMedium || shippingValue == deliveryInMKADMediumUrg) {
+      //   priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadMediumUrg}₽` : `${deliveryCostInMkadMedium}₽` ;
+      // }
+      // if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
+      //   priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadMediumUrg}₽` : `${deliveryCostOutMkadMedium}₽` ;
+      // }
+     
   })
 }
 
@@ -109,7 +109,6 @@ function ajaxGetUrgent(date) {
             data: {
                 'action': 'get_urgent_shipping',
                 'isUrgent': isUrgent,
-                'date': date,
             },
             success: function (result) {
                 // Trigger refresh checkout

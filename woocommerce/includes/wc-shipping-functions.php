@@ -79,7 +79,7 @@ function plnt_get_urgent_shipping() {
       WC()->session->set('isUrgent', '0' ); //0
   }
 
-  WC()->session->set('date', $_POST['date'] );
+//   WC()->session->set('date', $_POST['date'] );
 
   die(); // (required)
 }
@@ -159,10 +159,10 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
 
-    $large_markup_delivery = 2000;
-    $small_markup_delivery = 200;
-    $medium_markup_delivery = 300;
-    $urgent_markup_delivery = 90;
+    $large_markup_delivery = carbon_get_theme_option('large_markup_delivery');
+    $small_markup_delivery = carbon_get_theme_option('small_markup_delivery');
+    $medium_markup_delivery = carbon_get_theme_option('medium_markup_delivery');
+    $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
 
 
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
@@ -205,6 +205,12 @@ function plnt_shipping_conditions( $rates, $package ) {
         $delivery_murkup = 0;
     }
 
+    ?>
+	<script>
+        let deliveryMarkup = '<?php echo $delivery_murkup; ?>';
+        console.log(deliveryMarkup);
+    </script>
+	<?php
     // set markup
     foreach ($rates as $rate) {
         if ($rate->id == $delivery_inMKAD || $rate->id == $delivery_outMKAD){
