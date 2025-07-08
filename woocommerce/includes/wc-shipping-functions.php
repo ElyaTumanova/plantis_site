@@ -30,7 +30,7 @@ function plnt_set_initials() {
 
 //for dev
 
-//add_action('woocommerce_review_order_before_shipping','plnt_check');
+add_action('woocommerce_review_order_before_shipping','plnt_check');
 //add_action('wp_head','plnt_check');
 
 function plnt_check() {
@@ -43,8 +43,8 @@ function plnt_check() {
     // print_r( $packages);
     // echo '<br>';
     //echo $delivery_pochta;
-    echo $chosen_methods[0];
-    echo '<br>';
+    // echo $chosen_methods[0];
+    // echo '<br>';
 
     // if($local_pickup === $chosen_methods[0]) {
     //     echo 'hi';
@@ -201,11 +201,11 @@ function plnt_shipping_conditions( $rates, $package ) {
     }
 
     // обнуляем надбавку для предзаказа
-    if (plnt_is_backorder()) {
+    if (plnt_is_backorder() || plnt_is_treez_backorder()) {
         $delivery_murkup = 0;
     }
 
-
+    // set markup
     foreach ($rates as $rate) {
         if ($rate->id == $delivery_inMKAD || $rate->id == $delivery_outMKAD){
             $rate->cost = $rate->cost + $delivery_murkup;
@@ -214,8 +214,8 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     /*СРОЧНАЯ ДОСТАВКА*/
 
-    date_default_timezone_set('Europe/Moscow');
-    $hour = date("H");
+    // date_default_timezone_set('Europe/Moscow');
+    // $hour = date("H");
 
     // if (plnt_is_backorder()) {
     //     unset( $rates[ $urgent_delivery_inMKAD ] );
