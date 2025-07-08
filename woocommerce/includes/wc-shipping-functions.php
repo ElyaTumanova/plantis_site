@@ -141,157 +141,207 @@ function plnt_shipping_conditions( $rates, $package ) {
     global $delivery_long_dist;
     global $delivery_pochta;
 
-    global $delivery_inMKAD_small;
-	  global $delivery_outMKAD_small;
-	  global $delivery_inMKAD_large;
-	  global $delivery_outMKAD_large;
-    global $delivery_inMKAD_medium;
-	  global $delivery_outMKAD_medium;
+    // global $delivery_inMKAD_small;
+	//   global $delivery_outMKAD_small;
+	//   global $delivery_inMKAD_large;
+	//   global $delivery_outMKAD_large;
+    // global $delivery_inMKAD_medium;
+	//   global $delivery_outMKAD_medium;
 
-    global $urgent_delivery_inMKAD; 
-	  global $urgent_delivery_outMKAD; 
-	  global $urgent_delivery_inMKAD_small; 
-	  global $urgent_delivery_outMKAD_small;
-	  global $urgent_delivery_inMKAD_large; 
-	  global $urgent_delivery_outMKAD_large;
-    global $urgent_delivery_inMKAD_medium;
-	  global $urgent_delivery_outMKAD_medium;
+    // global $urgent_delivery_inMKAD; 
+	//   global $urgent_delivery_outMKAD; 
+	//   global $urgent_delivery_inMKAD_small; 
+	//   global $urgent_delivery_outMKAD_small;
+	//   global $urgent_delivery_inMKAD_large; 
+	//   global $urgent_delivery_outMKAD_large;
+    // global $urgent_delivery_inMKAD_medium;
+	//   global $urgent_delivery_outMKAD_medium;
 
     $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
 
+    $large_markup_delivery = 2000;
+    $small_markup_delivery = 200;
+    $medium_markup_delivery = 300;
+    $urgent_markup_delivery = 90;
+
+
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
 
-    
+    $delivery_murkup = 0;
+
+    /*new code*/
+
+    // define markup
+    $cart_weight = WC()->cart->cart_contents_weight; // вес товаров в корзине
+
+    $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+    $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
+
+    // проверяем крупногабаритную доставку
+    if ($cart_weight >= 11) {
+        $delivery_murkup = $large_markup_delivery;
+    } 
+    // проверяем маленькие суммы заказов
+    else {
+        if ( WC()->cart->subtotal < $min_small_delivery ) {
+                $delivery_murkup = $small_markup_delivery;
+        } else if (WC()->cart->subtotal < $min_medium_delivery) {
+            $delivery_murkup = $medium_markup_delivery;
+        }
+    }
+
+    //проверяем срочную доставку и позднюю доставку
+
+    if (WC()->session->get('isLate' ) === '1') {
+         $delivery_murkup =  $delivery_murkup + $late_markup_delivery;
+    }
+
+    if (WC()->session->get('isUrgent' ) === '1') {
+        $delivery_murkup = $delivery_murkup + $urgent_markup_delivery;
+    }
+
+    // обнуляем надбавку для предзаказа
+    if (plnt_is_backorder()) {
+        $delivery_murkup = 0;
+    }
+
+
+    foreach ($rates as $rate) {
+        if ($rate->id == $delivery_inMKAD || $rate->id == $delivery_outMKAD){
+            $rate->cost = $rate->cost + $delivery_murkup;
+        }
+    }
+
     /*СРОЧНАЯ ДОСТАВКА*/
 
     date_default_timezone_set('Europe/Moscow');
     $hour = date("H");
 
-    if (plnt_is_backorder()) {
-        unset( $rates[ $urgent_delivery_inMKAD ] );
-        unset( $rates[ $urgent_delivery_outMKAD ] );
-        unset( $rates[ $urgent_delivery_inMKAD_small ] );
-        unset( $rates[ $urgent_delivery_outMKAD_small ] );
-        unset( $rates[ $urgent_delivery_inMKAD_large ] );
-        unset( $rates[ $urgent_delivery_outMKAD_large ] );
-        unset( $rates[ $urgent_delivery_inMKAD_medium ] );
-        unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-    } else {
-      if (WC()->session->get('isUrgent' ) === '0' || ($hour >= 18 && $hour <20)) {
-        unset( $rates[ $urgent_delivery_inMKAD ] );
-        unset( $rates[ $urgent_delivery_outMKAD ] );
-        unset( $rates[ $urgent_delivery_inMKAD_small ] );
-        unset( $rates[ $urgent_delivery_outMKAD_small ] );
-        unset( $rates[ $urgent_delivery_inMKAD_large ] );
-        unset( $rates[ $urgent_delivery_outMKAD_large ] );
-        unset( $rates[ $urgent_delivery_inMKAD_medium ] );
-        unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-      }  else {
-        unset( $rates[ $delivery_inMKAD ] );
-        unset( $rates[ $delivery_outMKAD ] );
-        unset( $rates[ $delivery_inMKAD_small ] );
-        unset( $rates[ $delivery_outMKAD_small ] );
-        unset( $rates[ $delivery_inMKAD_large ] );
-        unset( $rates[ $delivery_outMKAD_large ] );
-        unset( $rates[ $delivery_inMKAD_medium ] );
-        unset( $rates[ $delivery_outMKAD_medium ] );
-        WC()->session->set('isLate', '0' );
-      } 
-    }
+    // if (plnt_is_backorder()) {
+    //     unset( $rates[ $urgent_delivery_inMKAD ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_small ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_small ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_large ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_large ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_medium ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+    // } else {
+    //   if (WC()->session->get('isUrgent' ) === '0' || ($hour >= 18 && $hour <20)) {
+    //     unset( $rates[ $urgent_delivery_inMKAD ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_small ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_small ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_large ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_large ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_medium ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+    //   }  else {
+    //     unset( $rates[ $delivery_inMKAD ] );
+    //     unset( $rates[ $delivery_outMKAD ] );
+    //     unset( $rates[ $delivery_inMKAD_small ] );
+    //     unset( $rates[ $delivery_outMKAD_small ] );
+    //     unset( $rates[ $delivery_inMKAD_large ] );
+    //     unset( $rates[ $delivery_outMKAD_large ] );
+    //     unset( $rates[ $delivery_inMKAD_medium ] );
+    //     unset( $rates[ $delivery_outMKAD_medium ] );
+    //     WC()->session->set('isLate', '0' );
+    //   } 
+    // }
 
     /*СТОИМОСТЬ ДОСТАВКИ ПО СУММЕ*/
 
-    $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-    $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
+    // $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+    // $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
 
-    if ( WC()->cart->subtotal < $min_small_delivery ) {
-        unset( $rates[ $delivery_inMKAD ] );
-        unset( $rates[ $delivery_outMKAD ] );
-        unset( $rates[ $urgent_delivery_inMKAD ] );
-        unset( $rates[ $urgent_delivery_outMKAD ] );
-        unset( $rates[ $delivery_inMKAD_large ] );
-        unset( $rates[ $delivery_outMKAD_large ] );
-        unset( $rates[ $urgent_delivery_inMKAD_large ] );
-        unset( $rates[ $urgent_delivery_outMKAD_large ] );
-        unset( $rates[ $delivery_inMKAD_medium ] );
-        unset( $rates[ $delivery_outMKAD_medium ] );
-        unset( $rates[ $urgent_delivery_inMKAD_medium ] );
-        unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-        if(isset($rates[ $delivery_courier ]) && WC()->session->get('date' ) === '08.03') {
-            unset( $rates[ $delivery_inMKAD_small ] );
-            unset( $rates[ $delivery_outMKAD_small ] );
-            unset( $rates[ $urgent_delivery_inMKAD_small ] );
-            unset( $rates[ $urgent_delivery_outMKAD_small ] );
-            unset( $rates[ $delivery_inMKAD_medium ] );
-            unset( $rates[ $delivery_outMKAD_medium ] );
-            unset( $rates[ $urgent_delivery_inMKAD_medium ] );
-            unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-            unset( $rates[ $delivery_long_dist ] );
-        }
-    } else if ( WC()->cart->subtotal < $min_medium_delivery ) {
-        unset( $rates[ $delivery_inMKAD ] );
-        unset( $rates[ $delivery_outMKAD ] );
-        unset( $rates[ $urgent_delivery_inMKAD ] );
-        unset( $rates[ $urgent_delivery_outMKAD ] );
-        unset( $rates[ $delivery_inMKAD_large ] );
-        unset( $rates[ $delivery_outMKAD_large ] );
-        unset( $rates[ $urgent_delivery_inMKAD_large ] );
-        unset( $rates[ $urgent_delivery_outMKAD_large ] );
-        unset( $rates[ $delivery_inMKAD_small ] );
-        unset( $rates[ $delivery_outMKAD_small ] );
-        unset( $rates[ $urgent_delivery_inMKAD_small ] );
-        unset( $rates[ $urgent_delivery_outMKAD_small ] );
-        if(isset($rates[ $delivery_courier ]) && WC()->session->get('date' ) === '08.03') {
-            unset( $rates[ $delivery_inMKAD_small ] );
-            unset( $rates[ $delivery_outMKAD_small ] );
-            unset( $rates[ $urgent_delivery_inMKAD_small ] );
-            unset( $rates[ $urgent_delivery_outMKAD_small ] );
-            unset( $rates[ $delivery_inMKAD_medium ] );
-            unset( $rates[ $delivery_outMKAD_medium ] );
-            unset( $rates[ $urgent_delivery_inMKAD_medium ] );
-            unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-            unset( $rates[ $delivery_long_dist ] );
-        }
+    // if ( WC()->cart->subtotal < $min_small_delivery ) {
+    //     unset( $rates[ $delivery_inMKAD ] );
+    //     unset( $rates[ $delivery_outMKAD ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD ] );
+    //     unset( $rates[ $delivery_inMKAD_large ] );
+    //     unset( $rates[ $delivery_outMKAD_large ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_large ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_large ] );
+    //     unset( $rates[ $delivery_inMKAD_medium ] );
+    //     unset( $rates[ $delivery_outMKAD_medium ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_medium ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+    //     if(isset($rates[ $delivery_courier ]) && WC()->session->get('date' ) === '08.03') {
+    //         unset( $rates[ $delivery_inMKAD_small ] );
+    //         unset( $rates[ $delivery_outMKAD_small ] );
+    //         unset( $rates[ $urgent_delivery_inMKAD_small ] );
+    //         unset( $rates[ $urgent_delivery_outMKAD_small ] );
+    //         unset( $rates[ $delivery_inMKAD_medium ] );
+    //         unset( $rates[ $delivery_outMKAD_medium ] );
+    //         unset( $rates[ $urgent_delivery_inMKAD_medium ] );
+    //         unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+    //         unset( $rates[ $delivery_long_dist ] );
+    //     }
+    // } else if ( WC()->cart->subtotal < $min_medium_delivery ) {
+    //     unset( $rates[ $delivery_inMKAD ] );
+    //     unset( $rates[ $delivery_outMKAD ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD ] );
+    //     unset( $rates[ $delivery_inMKAD_large ] );
+    //     unset( $rates[ $delivery_outMKAD_large ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_large ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_large ] );
+    //     unset( $rates[ $delivery_inMKAD_small ] );
+    //     unset( $rates[ $delivery_outMKAD_small ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_small ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_small ] );
+    //     if(isset($rates[ $delivery_courier ]) && WC()->session->get('date' ) === '08.03') {
+    //         unset( $rates[ $delivery_inMKAD_small ] );
+    //         unset( $rates[ $delivery_outMKAD_small ] );
+    //         unset( $rates[ $urgent_delivery_inMKAD_small ] );
+    //         unset( $rates[ $urgent_delivery_outMKAD_small ] );
+    //         unset( $rates[ $delivery_inMKAD_medium ] );
+    //         unset( $rates[ $delivery_outMKAD_medium ] );
+    //         unset( $rates[ $urgent_delivery_inMKAD_medium ] );
+    //         unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+    //         unset( $rates[ $delivery_long_dist ] );
+    //     }
             
-    } else {
-    unset( $rates[ $delivery_inMKAD_small ] );
-    unset( $rates[ $delivery_outMKAD_small ] );
-    unset( $rates[ $urgent_delivery_inMKAD_small ] );
-    unset( $rates[ $urgent_delivery_outMKAD_small ] );
-    unset( $rates[ $delivery_inMKAD_medium ] );
-    unset( $rates[ $delivery_outMKAD_medium ] );
-    unset( $rates[ $urgent_delivery_inMKAD_medium ] );
-    unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-        if (WC()->session->get('date' ) !== '08.03') {
-            unset( $rates[ $delivery_courier ] );
-        }
-    }
+    // } else {
+    // unset( $rates[ $delivery_inMKAD_small ] );
+    // unset( $rates[ $delivery_outMKAD_small ] );
+    // unset( $rates[ $urgent_delivery_inMKAD_small ] );
+    // unset( $rates[ $urgent_delivery_outMKAD_small ] );
+    // unset( $rates[ $delivery_inMKAD_medium ] );
+    // unset( $rates[ $delivery_outMKAD_medium ] );
+    // unset( $rates[ $urgent_delivery_inMKAD_medium ] );
+    // unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+    //     if (WC()->session->get('date' ) !== '08.03') {
+    //         unset( $rates[ $delivery_courier ] );
+    //     }
+    // }
  
     /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
     
-    $cart_weight = WC()->cart->cart_contents_weight; // вес товаров в корзине
+    // $cart_weight = WC()->cart->cart_contents_weight; // вес товаров в корзине
 
-    if ($cart_weight >= 11) {
-        unset( $rates[ $delivery_inMKAD ] );
-        unset( $rates[ $delivery_outMKAD ] );
-        unset( $rates[ $urgent_delivery_inMKAD ] );
-        unset( $rates[ $urgent_delivery_outMKAD ] );
-        unset( $rates[ $delivery_inMKAD_small ] );
-        unset( $rates[ $delivery_outMKAD_small ] );
-        unset( $rates[ $urgent_delivery_inMKAD_small ] );
-        unset( $rates[ $urgent_delivery_outMKAD_small ] );
-        unset( $rates[ $delivery_inMKAD_medium ] );
-        unset( $rates[ $delivery_outMKAD_medium ] );
-        unset( $rates[ $urgent_delivery_inMKAD_medium ] );
-        unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-        unset( $rates[ $delivery_pochta ] );
-    } else {
-        unset( $rates[ $delivery_inMKAD_large ] );
-        unset( $rates[ $delivery_outMKAD_large ] );
-        unset( $rates[ $urgent_delivery_inMKAD_large ] );
-        unset( $rates[ $urgent_delivery_outMKAD_large ] );
+    // if ($cart_weight >= 11) {
+    //     unset( $rates[ $delivery_inMKAD ] );
+    //     unset( $rates[ $delivery_outMKAD ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD ] );
+    //     unset( $rates[ $delivery_inMKAD_small ] );
+    //     unset( $rates[ $delivery_outMKAD_small ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_small ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_small ] );
+    //     unset( $rates[ $delivery_inMKAD_medium ] );
+    //     unset( $rates[ $delivery_outMKAD_medium ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_medium ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+    //     unset( $rates[ $delivery_pochta ] );
+    // } else {
+    //     unset( $rates[ $delivery_inMKAD_large ] );
+    //     unset( $rates[ $delivery_outMKAD_large ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_large ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_large ] );
 
-    }
+    // }
 
     //поздняя доставка
     if (isset($chosen_methods)) {
@@ -300,15 +350,15 @@ function plnt_shipping_conditions( $rates, $package ) {
         }
     }
 
-    if (WC()->session->get('isLate' ) === '1') {
-        foreach( $rates as $rate) {
-            if ( 'local_pickup' !== $rate->method_id) {
-                if('free_shipping' !== $rate->method_id) {
-                    $rate->cost = $rate->cost + $late_markup_delivery;
-                }
-            }	
-        }
-    }
+    // if (WC()->session->get('isLate' ) === '1') {
+    //     foreach( $rates as $rate) {
+    //         if ( 'local_pickup' !== $rate->method_id) {
+    //             if('free_shipping' !== $rate->method_id) {
+    //                 $rate->cost = $rate->cost + $late_markup_delivery;
+    //             }
+    //         }	
+    //     }
+    // }
 
     // почта России
     global $plants_cat_id;
@@ -332,29 +382,29 @@ function plnt_shipping_conditions( $rates, $package ) {
     
 
     //исключения из доставки
-    if (WC()->session->get('date' ) === '08.03') {
-        unset( $rates[ $delivery_inMKAD ] );
-        unset( $rates[ $delivery_outMKAD ] );
-        unset( $rates[ $delivery_inMKAD_small ] );
-        unset( $rates[ $delivery_outMKAD_small ] );
-        unset( $rates[ $delivery_inMKAD_large ] );
-        unset( $rates[ $delivery_outMKAD_large ] );
-        unset( $rates[ $delivery_inMKAD_medium ] );
-        unset( $rates[ $delivery_outMKAD_medium ] );
+    // if (WC()->session->get('date' ) === '08.03') {
+    //     unset( $rates[ $delivery_inMKAD ] );
+    //     unset( $rates[ $delivery_outMKAD ] );
+    //     unset( $rates[ $delivery_inMKAD_small ] );
+    //     unset( $rates[ $delivery_outMKAD_small ] );
+    //     unset( $rates[ $delivery_inMKAD_large ] );
+    //     unset( $rates[ $delivery_outMKAD_large ] );
+    //     unset( $rates[ $delivery_inMKAD_medium ] );
+    //     unset( $rates[ $delivery_outMKAD_medium ] );
 
-        unset( $rates[ $urgent_delivery_inMKAD ] );
-        unset( $rates[ $urgent_delivery_outMKAD ] );
-        unset( $rates[ $urgent_delivery_inMKAD_small ] );
-        unset( $rates[ $urgent_delivery_outMKAD_small ] );
-        unset( $rates[ $urgent_delivery_inMKAD_large ] );
-        unset( $rates[ $urgent_delivery_outMKAD_large ] );
-        unset( $rates[ $urgent_delivery_inMKAD_medium ] );
-        unset( $rates[ $urgent_delivery_outMKAD_medium ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_small ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_small ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_large ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_large ] );
+    //     unset( $rates[ $urgent_delivery_inMKAD_medium ] );
+    //     unset( $rates[ $urgent_delivery_outMKAD_medium ] );
 
-        unset( $rates[ $delivery_long_dist ] );
-    } else {
-        unset( $rates[ $delivery_courier ] );
-    }
+    //     unset( $rates[ $delivery_long_dist ] );
+    // } else {
+    //     unset( $rates[ $delivery_courier ] );
+    // }
 
 	return $rates;
 }
