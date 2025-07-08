@@ -110,6 +110,27 @@ function plnt_set_constants_script() {
 
 	$isbackorders = plnt_is_backorder();
 	$isTreezBackorders = plnt_is_treez_backorder();
+
+	 // define markup
+	$delivery_murkup = 0;
+
+    $cart_weight = WC()->cart->cart_contents_weight; // вес товаров в корзине
+
+    $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+    $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
+
+    // проверяем крупногабаритную доставку
+    if ($cart_weight >= 11) {
+        $delivery_murkup = $large_markup_delivery;
+    } 
+    // проверяем маленькие суммы заказов
+    else {
+        if ( WC()->cart->subtotal < $min_small_delivery ) {
+                $delivery_murkup = $small_markup_delivery;
+        } else if (WC()->cart->subtotal < $min_medium_delivery) {
+            $delivery_murkup = $medium_markup_delivery;
+        }
+    }
    
 	?>
 	<script>
@@ -128,7 +149,9 @@ function plnt_set_constants_script() {
 		let deliveryCostOutMkad = '<?php echo $out_mkad; ?>';
 
 
+		let deliveryUrgMarkup = '<?php echo $urgent_markup_delivery; ?>';
 		let deliveryLateMarkup = '<?php echo $late_markup_delivery; ?>';
+		let deliveryMarkup = '<?php echo $delivery_murkup; ?>';
 
 		let isBackorder = '<?php echo $isbackorders; ?>';
 		let isTreezBackorders = '<?php echo $isTreezBackorders; ?>';

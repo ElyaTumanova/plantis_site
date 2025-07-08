@@ -37,11 +37,11 @@ function renderDeliveryDates(shippingValue) {
     info.label.innerHTML=`${info.text}`;
     let priceEl = document.createElement('span');
     info.label.appendChild(priceEl);
-      if(shippingValue == deliveryInMKAD || shippingValue == deliveryInMKADUrg) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadUrg}₽` : `${deliveryCostInMkad}₽` ;
+      if(shippingValue == deliveryInMKAD) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkad + deliveryUrgMarkup + deliveryMarkup}₽` : `${deliveryCostInMkad + deliveryMarkup}₽` ;
       }
-      if(shippingValue == deliveryOutMKAD || shippingValue == deliveryOutMKADUrg) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadUrg}₽` : `${deliveryCostOutMkad}₽` ;
+      if(shippingValue == deliveryOutMKAD) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkad + deliveryUrgMarkup + deliveryMarkup}₽` : `${deliveryCostOutMkad + deliveryMarkup}₽` ;
       }
       // if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
       //   priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadSmallUrg}₽` : `${deliveryCostInMkadSmall}₽` ;
@@ -70,7 +70,7 @@ function renderDeliveryIntervals(shippingValue,date) {
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
     info.label.appendChild(priceEl);
-      if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryPochtaId ||shippingValue == deliveryCourierId || shippingValue == deliveryLongId || date === '08.03') {
+      if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryPochtaId ||shippingValue == deliveryCourierId || shippingValue == deliveryLongId) {
       } else {
         if (isUrgent == '1') {
           priceEl.innerHTML = `+0₽`;
