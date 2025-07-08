@@ -172,7 +172,7 @@ function plnt_shipping_conditions( $rates, $package ) {
     /*new code*/
 
     // define markup
-    //$cart_weight = WC()->cart->cart_contents_weight; // вес товаров в корзине
+    $cart_weight = WC()->cart->cart_contents_weight; // вес товаров в корзине
 
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
     $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
