@@ -82,6 +82,7 @@
 // слайдер инициирован в wc-catalog-functions, чтобы повторно инициироваться при аякс обновлении каталога при приминении фильтров
 
 function swiper_catalog_card_imgs_init () {
+    console.log('hi swiper_catalog_card_imgs_init');
     swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
         pagination: {
             el: '.swiper-pagination',
