@@ -1,5 +1,4 @@
-<?php
-get_header(); ?>
+<?php get_header(); ?>
 
 <main class="content-area">
     <h1 class="entry-title">Вопросы и ответы</h1>                
