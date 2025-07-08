@@ -38,10 +38,10 @@ function renderDeliveryDates(shippingValue) {
     let priceEl = document.createElement('span');
     info.label.appendChild(priceEl);
       if(shippingValue == deliveryInMKAD) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkad + deliveryUrgMarkup + deliveryMarkup}₽` : `${deliveryCostInMkad + deliveryMarkup}₽` ;
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(deliveryCostInMkad) + Number(deliveryUrgMarkup) + Number(deliveryMarkup)}₽` : `${Number(deliveryCostInMkad) + Number(deliveryMarkup)}₽` ;
       }
       if(shippingValue == deliveryOutMKAD) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkad + deliveryUrgMarkup + deliveryMarkup}₽` : `${deliveryCostOutMkad + deliveryMarkup}₽` ;
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(deliveryCostOutMkad) + Number(deliveryUrgMarkup) + Number(deliveryMarkup)}₽` : `${Number(deliveryCostOutMkad) + Number(deliveryMarkup)}₽` ;
       }
       // if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
       //   priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadSmallUrg}₽` : `${deliveryCostInMkadSmall}₽` ;
