@@ -116,23 +116,7 @@ function plnt_set_constants_script() {
 		// shipping methods IDs
 		let deliveryInMKAD = '<?php echo $delivery_inMKAD; ?>';
 		let deliveryOutMKAD = '<?php echo $delivery_outMKAD; ?>';
-		// let deliveryInMKADSmall = '<?php //echo $delivery_inMKAD_small; ?>';
-		// let deliveryOutMKADSmall = '<?php //echo $delivery_outMKAD_small; ?>';
-		// let deliveryInMKADLarge = '<?php //echo $delivery_inMKAD_large; ?>';
-		// let deliveryOutMKADLarge = '<?php //echo $delivery_outMKAD_large; ?>';
-		// let deliveryInMKADMedium = '<?php //echo $delivery_inMKAD_medium; ?>';
-		// let deliveryOutMKADMedium = '<?php //echo $delivery_outMKAD_medium; ?>';
-
-		// let deliveryInMKADUrg = '<?php echo $urgent_delivery_inMKAD; ?>';
-		// let deliveryOutMKADUrg = '<?php echo $urgent_delivery_outMKAD; ?>';
-		// let deliveryInMKADSmallUrg = '<?php echo $urgent_delivery_inMKAD_small; ?>';
-		// let deliveryOutMKADSmallUrg = '<?php echo $urgent_delivery_outMKAD_small; ?>';
-		// let deliveryInMKADLargeUrg = '<?php echo $urgent_delivery_inMKAD_large; ?>';
-		// let deliveryOutMKADLargeUrg = '<?php echo $urgent_delivery_outMKAD_large; ?>';
-		// let deliveryInMKADMediumUrg = '<?php echo $urgent_delivery_inMKAD_medium; ?>';
-		// let deliveryOutMKADMediumUrg = '<?php echo $urgent_delivery_outMKAD_medium; ?>';
-		
-		
+	
 		let localPickupId = '<?php echo $local_pickup; ?>';
 		let deliveryFreeId = '<?php echo $delivery_free; ?>';
 		let deliveryPochtaId = '<?php echo $delivery_pochta; ?>';
@@ -142,32 +126,10 @@ function plnt_set_constants_script() {
 		// shipping methods costs
 		let deliveryCostInMkad = '<?php echo $in_mkad; ?>';
 		let deliveryCostOutMkad = '<?php echo $out_mkad; ?>';
-		// let deliveryCostInMkadUrg = '<?php //echo $in_mkad_urg; ?>';
-		// let deliveryCostOutMkadUrg = '<?php //echo $out_mkad_urg; ?>';
 
-		// let deliveryCostInMkadLarge = '<?php //echo $in_mkad_large; ?>';
-		// let deliveryCostOutMkadLarge = '<?php //echo $out_mkad_large; ?>';
-		// let deliveryCostInMkadLargeUrg = '<?php //echo $in_mkad_urg_large; ?>';
-		// let deliveryCostOutMkadLargeUrg = '<?php //echo $out_mkad_urg_large; ?>';
-
-		// let deliveryCostInMkadSmall = '<?php //echo $in_mkad_small; ?>';
-		// let deliveryCostOutMkadSmall = '<?php //echo $out_mkad_small; ?>';
-		// let deliveryCostInMkadSmallUrg = '<?php //echo $in_mkad_small_urg; ?>';
-		// let deliveryCostOutMkadSmallUrg = '<?php //echo $out_mkad_small_urg; ?>';
-
-		// let deliveryCostInMkadMedium = '<?php //echo $in_mkad_medium; ?>';
-		// let deliveryCostOutMkadMedium = '<?php //echo $out_mkad_medium; ?>';
-		// let deliveryCostInMkadMediumUrg = '<?php //echo $in_mkad_medium_urg; ?>';
-		// let deliveryCostOutMkadMediumUrg = '<?php //echo $out_mkad_medium_urg; ?>';
 
 		let deliveryLateMarkup = '<?php echo $late_markup_delivery; ?>';
-		let deliveryUrgMarkup = '<?php echo $urgent_markup_delivery; ?>';
-		let deliverySmallMarkup = '<?php echo $small_markup_delivery; ?>';
-		let deliveryMedMarkup = '<?php echo $medium_markup_delivery; ?>';
 
-        // let isBackorder = '<?php //echo $isbackorders; ?>';
-        // let isTreezBackorders = '<?php //echo $isTreezBackorders; ?>';
-    // console.log('isBackorder in functions ', isBackorder);
 	</script>
 	<?php
 }

@@ -18,8 +18,6 @@ let deliveryIntervalInput = document.querySelectorAll('input[name=additional_del
 let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
 let today;
 
-console.log(deliveryMarkup);
-
 function onChangeShippingMethod(event) {
     if(event && event.target.className == "shipping_method") {
         renderDeliveryDates(event.target.value);
