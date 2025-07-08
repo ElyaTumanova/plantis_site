@@ -108,8 +108,8 @@ function plnt_set_constants_script() {
 	// $in_mkad_medium_urg = $shipping_costs[$urgent_delivery_inMKAD_medium];
 	// $out_mkad_medium_urg = $shipping_costs[$urgent_delivery_outMKAD_medium];
 
-	// $isbackorders = plnt_is_backorder();
-	// $isTreezBackorders = plnt_is_treez_backorder();
+	$isbackorders = plnt_is_backorder();
+	$isTreezBackorders = plnt_is_treez_backorder();
    
 	?>
 	<script>
