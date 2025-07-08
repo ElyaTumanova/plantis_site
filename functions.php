@@ -165,8 +165,8 @@ function plnt_set_constants_script() {
 		let deliverySmallMarkup = '<?php echo $small_markup_delivery; ?>';
 		let deliveryMedMarkup = '<?php echo $medium_markup_delivery; ?>';
 
-        // let isBackorder = '<?php echo //$isbackorders; ?>';
-        // let isTreezBackorders = '<?php echo //$isTreezBackorders; ?>';
+        // let isBackorder = '<?php //echo $isbackorders; ?>';
+        // let isTreezBackorders = '<?php //echo $isTreezBackorders; ?>';
     // console.log('isBackorder in functions ', isBackorder);
 	</script>
 	<?php
