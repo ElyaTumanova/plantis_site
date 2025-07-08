@@ -97,7 +97,7 @@ function ajaxGetUrgent(date) {
 
   console.debug('hi ajaxGetUrgent');
   console.debug('isUrgent ajax', isUrgent);
-  console.debug('isBackorder ajax', isBackorder);
+  // console.debug('isBackorder ajax', isBackorder);
   console.debug('isTreezBackorders ajax', isTreezBackorders);
 
   jQuery( function($){
@@ -144,7 +144,7 @@ function ajaxGetLateDelivery(event) {
 function setInitalState() {
   let hour = new Date().getHours();
 
-  console.debug('isBackorders ', isBackorder);
+  // console.debug('isBackorders ', isBackorder);
   console.debug('isTreezBackorders ',isTreezBackorders);
   // if (isBackorder || isTreezBackorders) {
   //   isUrgent = 0;
