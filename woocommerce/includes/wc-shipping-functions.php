@@ -205,12 +205,6 @@ function plnt_shipping_conditions( $rates, $package ) {
         $delivery_murkup = 0;
     }
 
-    ?>
-	<script>
-        let deliveryMarkup = '<?php echo $delivery_murkup; ?>';
-        console.log(deliveryMarkup);
-    </script>
-	<?php
     // set markup
     foreach ($rates as $rate) {
         if ($rate->id == $delivery_inMKAD || $rate->id == $delivery_outMKAD){
