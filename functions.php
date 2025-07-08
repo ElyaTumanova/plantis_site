@@ -130,6 +130,9 @@ function plnt_set_constants_script() {
 
 		let deliveryLateMarkup = '<?php echo $late_markup_delivery; ?>';
 
+		let isBackorder = '<?php echo $isbackorders; ?>';
+		let isTreezBackorders = '<?php echo $isTreezBackorders; ?>';
+
 	</script>
 	<?php
 }
