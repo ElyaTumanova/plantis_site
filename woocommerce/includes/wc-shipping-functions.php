@@ -178,17 +178,17 @@ function plnt_shipping_conditions( $rates, $package ) {
     $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
 
     // проверяем крупногабаритную доставку
-    // if ($cart_weight >= 11) {
-    //     $delivery_murkup = $large_markup_delivery;
-    // } 
-    // // проверяем маленькие суммы заказов
-    // else {
-    //     if ( WC()->cart->subtotal < $min_small_delivery ) {
-    //             $delivery_murkup = $small_markup_delivery;
-    //     } else if (WC()->cart->subtotal < $min_medium_delivery) {
-    //         $delivery_murkup = $medium_markup_delivery;
-    //     }
-    // }
+    if ($cart_weight >= 11) {
+        $delivery_murkup = $large_markup_delivery;
+    } 
+    // проверяем маленькие суммы заказов
+    else {
+        if ( WC()->cart->subtotal < $min_small_delivery ) {
+                $delivery_murkup = $small_markup_delivery;
+        } else if (WC()->cart->subtotal < $min_medium_delivery) {
+            $delivery_murkup = $medium_markup_delivery;
+        }
+    }
 
     //проверяем срочную доставку и позднюю доставку
 
