@@ -12,17 +12,17 @@ function plnt_set_initials() {
     date_default_timezone_set('Europe/Moscow');
     $hour = date("H");
 
-    $isBackorder = plnt_is_backorder();
+    // $isBackorder = plnt_is_backorder();
 
-    if ($isBackorder) {
-        WC()->session->set('isUrgent', '0' ); //0
-    } else {
+    // if ($isBackorder) {
+    //     WC()->session->set('isUrgent', '0' ); //0
+    // } else {
         if ($hour >= 18 && $hour <20) {
             WC()->session->set('isUrgent', '0' ); //0
         } else {
             WC()->session->set('isUrgent', '1' ); //1
         }
-    }
+    // }
    
     WC()->session->set('isLate', '0' );
 

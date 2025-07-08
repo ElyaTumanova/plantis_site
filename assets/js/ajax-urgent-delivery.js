@@ -85,9 +85,9 @@ function renderDeliveryIntervals(shippingValue,date) {
 }
 
 function ajaxGetUrgent(date) {
-  if (isBackorder || isTreezBackorders) {
-    isUrgent = 0;
-  } else {
+  // if (isBackorder || isTreezBackorders) {
+  //   isUrgent = 0;
+  // } else {
     if (date) {
       if(date == today) {
         isUrgent = '1';
@@ -95,7 +95,7 @@ function ajaxGetUrgent(date) {
         isUrgent = '0';
       }
     }
-  }
+  // }
 
   console.debug('hi ajaxGetUrgent');
   console.debug('isUrgent ajax', isUrgent);
@@ -149,15 +149,15 @@ function setInitalState() {
 
   console.debug('isBackorders ', isBackorder);
   console.debug('isTreezBackorders ',isTreezBackorders);
-  if (isBackorder || isTreezBackorders) {
-    isUrgent = 0;
-  } else {
+  // if (isBackorder || isTreezBackorders) {
+  //   isUrgent = 0;
+  // } else {
     if (hour >= 18 && hour <20) { 
       isUrgent = 0;
     } else {
       isUrgent = 1;
     }
-  }
+  // }
 
   if (hour >= 20) {
     today = `${((new Date().getDate()+1) < 10 ? '0' : '') + (new Date().getDate() + 1)}.${(new Date().getUTCMonth()< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
