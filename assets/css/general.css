@@ -257,7 +257,7 @@
 .sale_badge {
     position: absolute;
     bottom: 10px;
-    left: 10px;
+    left: 13px;
     z-index: 2;
     background-color: var(--red-color);
     color: var(--white);
