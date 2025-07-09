@@ -1105,7 +1105,7 @@
     z-index: 10;
     margin: 0;
     top: 10px;
-    right: 3px;
+    right: 5px;
     width: 40px;
     height: 40px;
 }
@@ -1119,6 +1119,10 @@
 .product-slider-wrap .sale_badge {
     font-size: 13px;
     padding: 3px 5px;
+}
+
+.product-slider-wrap img {
+    border-radius: 25px;
 }
 
 /* .product-slider-wrap .sale_badge .sale_badge-skidka{
