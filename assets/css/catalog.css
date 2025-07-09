@@ -612,6 +612,7 @@
 .product__image-slider-wrap img {
     border: var(--background) 1px solid;
     box-sizing: border-box;
+    border-radius: 35px;
 }
 /*--------------------------------------------------------------
 # Upsells & Cross sells in Card
