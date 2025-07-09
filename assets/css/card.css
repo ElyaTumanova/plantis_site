@@ -570,9 +570,13 @@
 }
 
 .card__grid .add-to-cart-wrap .button {
-    grid-area: cart;
+    /* grid-area: cart; */
     margin: 4px 0;
     white-space: nowrap;
+}
+
+.card__grid .add-to-cart-wrap .add_to_cart_from {
+    grid-area: cart;
 }
 
 @media (max-width: 767px) {
