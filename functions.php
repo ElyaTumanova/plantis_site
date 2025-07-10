@@ -389,8 +389,8 @@ function plnt_get_prods_data() {
 // // 				echo 'Term was successfully updated.';
 // // 			}
 // 	}
-	print_r($terms);
+	// print_r($terms);
 }
 
-//add_action( 'wp_footer', 'plnt_get_prods_data' );
+add_action( 'wp_footer', 'plnt_get_prods_data' );
 
