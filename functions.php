@@ -342,7 +342,8 @@ function plnt_get_prods_data() {
                 array(
                     'taxonomy' => 'product_cat',
                     'field' => 'slug',
-                    'terms' => 'komnatnye-rasteniya'
+                    'terms' => 'komnatnye-rasteniya',
+                    'operator' => 'NOT IN'
                 )
             )
   );
