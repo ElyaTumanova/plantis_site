@@ -342,8 +342,8 @@ function plnt_get_prods_data() {
                 array(
                     'taxonomy' => 'product_cat',
                     'field' => 'slug',
-                    'terms' => 'komnatnye-rasteniya',
-                    'operator' => 'NOT IN'
+                    'terms' => 'gorshki_i_kashpo',
+                    // 'operator' => 'NOT IN'
                 )
             )
   );
