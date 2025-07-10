@@ -341,7 +341,7 @@ function plnt_get_prods_data() {
       		 'meta_query' => array( 
 				array(
 					'key'       => '_stock_status',
-					'value'     => 'outofstock',
+					'value'     => 'instock',
 					'compare'   => 'NOT IN'
 				)
 			),
