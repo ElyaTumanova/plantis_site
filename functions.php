@@ -353,8 +353,8 @@ function plnt_get_prods_data() {
 
 	$count = 0;
 	echo ('<br>');
-	echo(count($products));
-	echo ('<br>');
+	// echo(count($products));
+	// echo ('<br>');
   print_r($products);
 // 		foreach ($terms as $key => $term) {
 // 			print_r($term->name);
@@ -389,7 +389,7 @@ function plnt_get_prods_data() {
 // // 				echo 'Term was successfully updated.';
 // // 			}
 // 	}
-	// print_r($terms);
+
 }
 
 add_action( 'wp_footer', 'plnt_get_prods_data' );
