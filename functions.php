@@ -347,6 +347,13 @@ function plnt_get_prods_data() {
       'no_found_rows' => 1,
       'posts_per_page' => -1,
       'orderby' => 'rand',
+      'tax_query' => array(
+                array(
+                    'taxonomy' => 'product_cat',
+                    'field' => 'slug',
+                    'terms' => 'komnatnye-rasteniya'
+                )
+            )
   );
 
   $products = new WP_Query( $args );
@@ -355,7 +362,7 @@ function plnt_get_prods_data() {
 	echo ('<br>');
 	echo(count($products->posts));
 	echo ('<br>');
-  //print_r($products->posts);
+  print_r($products->posts);
 		foreach ($products->posts as $key => $term) {
       echo ("['name' => '");
 			print_r($term->post_title);
