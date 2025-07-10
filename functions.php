@@ -325,7 +325,7 @@ function plnt_get_cats_data() {
 	print_r ($cats_array[0]['name']);
 }
 
-//add_action( 'wp_footer', 'plnt_check_page' );
+add_action( 'wp_footer', 'plnt_check_page' );
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 //add_action( 'wp_footer', 'plnt_get_cats_data' );
 
@@ -342,8 +342,8 @@ function plnt_get_prods_data() {
                 array(
                     'taxonomy' => 'product_cat',
                     'field' => 'slug',
-                    'terms' => 'gorshki_i_kashpo',
-                    // 'operator' => 'NOT IN'
+                    'terms' => array('gorshki_i_kashpo', 'komnatnye-rasteniya'),
+                    'operator' => 'NOT IN'
                 )
             )
   );
