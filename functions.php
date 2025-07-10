@@ -357,11 +357,11 @@ function plnt_get_prods_data() {
 	echo ('<br>');
   //print_r($products->posts);
 		foreach ($products->posts as $key => $term) {
+      echo ("['name' => '");
 			print_r($term->post_title);
-			echo ('  -  ');
-			echo($term->ID);
-			echo ('  -  ');
+			echo ("', 'slug'=>'");
       echo($term->post_name);
+      echo("']");
  			echo ('<br>');
 			// $slug = 'not found';
 			// foreach ($cats_array as $key => $cat) {
