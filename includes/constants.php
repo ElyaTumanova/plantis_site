@@ -22,20 +22,20 @@ function plnt_check_site() {
 add_action( 'wp_footer', 'plnt_check_site' );
 
 /* Категории товаров */
-if($site === 'http://new.plantis.shop') {
-	//NEW PLANTIS SHOP
+if($site === 'https://plantis-shop.ru') {
+	//PLANTIS-SHOP.RU
 	// constants for categories IDs
-	$plants_cat_id = 90;
-	$gorshki_cat_id = 86;
-	$treez_cat_id = 379;
+	$plants_cat_id = 329; //ok
+	$gorshki_cat_id = 138; //ok
+	$treez_cat_id = 119; //ok
 	$treez_poliv_cat_id = 632;
-	$ukhod_cat_id = 378;
+	$ukhod_cat_id = 325; //ok
 	$misc_cat_id = 16;
 	$skidki_cat_id = 105;
 	$avtopoliv_tag_id = 1050;
 	$peresadka_cat_id = 740;
-	$plants_treez_cat_id = 768;
-	$lechuza_cat_id = 770;
+	$plants_treez_cat_id = 17; //ok
+	$lechuza_cat_id = 265; //ok
 	
 	$tags_podarki = array(
 		374,
