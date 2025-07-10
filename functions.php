@@ -361,7 +361,7 @@ function plnt_get_prods_data() {
 			print_r($term->post_title);
 			echo ("', 'slug'=>'");
       echo($term->post_name);
-      echo("']");
+      echo("'],");
  			echo ('<br>');
 			// $slug = 'not found';
 			// foreach ($cats_array as $key => $cat) {
