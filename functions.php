@@ -272,11 +272,11 @@ function plnt_check_page() {
 	// print_r( $gorshki_cat_id );
 	// echo '</pre>';
 	if ( is_page( 'vakansii' ) ) {
-		echo 'Это vakansii!';
+		plnt_get_prods_data();
 	}
-	else {
-		echo 'Это какая-то другая страница.';
-	}
+	// else {
+	// 	echo 'Это какая-то другая страница.';
+	// }
 
 }
 
@@ -330,3 +330,63 @@ add_action( 'wp_footer', 'plnt_check_page' );
 //add_action( 'wp_footer', 'plnt_get_cats_data' );
 
 
+function plnt_get_prods_data() {
+
+  $args = array(
+      'post_type' => 'product',
+      'ignore_sticky_posts' => 1,
+      'no_found_rows' => 1,
+      'posts_per_page' => -1,
+      'orderby' => 'rand',
+      'tax_query' => array(
+                array(
+                    'taxonomy' => 'product_cat',
+                    'field' => 'slug',
+                    'terms' => 'komnatnye-rasteniya'
+                )
+            )
+  );
+
+  $products = new WP_Query( $args );
+
+	$count = 0;
+	echo ('<br>');
+	echo(count($products->posts));
+	echo ('<br>');
+  //print_r($products->posts);
+		foreach ($products->posts as $key => $term) {
+      echo ("['name' => '");
+			print_r($term->post_title);
+			echo ("', 'slug'=>'");
+      echo($term->post_name);
+      echo("'],");
+ 			echo ('<br>');
+			// $slug = 'not found';
+			// foreach ($cats_array as $key => $cat) {
+			// 	if($term->name == $cat['name']) {
+			// 		++$count;
+			// 		$slug = $cat['slug'];
+			// 	}
+			// }
+			// echo($count.' ');
+			// echo ($term->name);
+			// echo (';  ');
+			// echo ($slug);
+			// echo ('<br>');
+			
+// 			$result = wp_update_term( $term->term_id, 'product_cat', [
+// 				'slug' => $slug,
+// 			] );
+
+// 			// check the result
+// 			if( is_wp_error( $result ) ){
+
+// 				echo $result->get_error_message();
+// 			}
+// 			else {
+
+// 				echo 'Term was successfully updated.';
+// 			}
+	}
+
+}
