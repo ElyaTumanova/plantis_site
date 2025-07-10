@@ -356,13 +356,13 @@ function plnt_get_prods_data() {
             )
   );
 
-  //$products = new WP_Query( $args );
+  $products = new WP_Query( $args );
 
 	$count = 0;
 	echo ('<br>');
 	echo(count($products->posts));
 	echo ('<br>');
-  print_r($products->posts);
+  //print_r($products->posts);
 		foreach ($products->posts as $key => $term) {
       echo ("['name' => '");
 			print_r($term->post_title);
