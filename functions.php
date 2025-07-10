@@ -271,21 +271,12 @@ function plnt_check_page() {
 	// print_r( get_queried_object_id() );
 	// print_r( $gorshki_cat_id );
 	// echo '</pre>';
-	if ( is_page( 'wishlist' ) ) {
-		echo 'Это wishlist!';
+	if ( is_page( 'vakansii' ) ) {
+		echo 'Это vakansii!';
 	}
 	else {
 		echo 'Это какая-то другая страница.';
 	}
-
-  echo yith_wcwl_count_all_products();
-	// if(is_page_template('themes/plantis_site/woocommerce/loop/no-products-found.php')) {
-	// 	echo 'Это то что нужно';
-	// }
-	// else {
-	// 	echo 'Это какая-то другая страница.';
-	// }
-	
 
 }
 
@@ -334,7 +325,7 @@ function plnt_get_cats_data() {
 	print_r ($cats_array[0]['name']);
 }
 
-//add_action( 'wp_footer', 'plnt_check_page' );
+add_action( 'wp_footer', 'plnt_check_page' );
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 //add_action( 'wp_footer', 'plnt_get_cats_data' );
 
