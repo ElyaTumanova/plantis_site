@@ -292,3 +292,58 @@ function plnt_check_page() {
 //add_action( 'wp_footer', 'plnt_check_page' );
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 
+function plnt_get_prods_data() {
+
+  $args = array(
+      'post_type' => 'product',
+      'ignore_sticky_posts' => 1,
+      'no_found_rows' => 1,
+      'posts_per_page' => -1,
+      'orderby' => 'rand',
+  );
+
+  $products = new WP_Query( $args );
+
+	$count = 0;
+	echo ('<br>');
+	echo(count($products));
+	echo ('<br>');
+  print_r($products);
+// 		foreach ($terms as $key => $term) {
+// 			print_r($term->name);
+// 			echo ('  -  ');
+// 			echo($term->term_id);
+// 			echo ('  -  ');
+//  			//echo ('<br>');
+// 			$slug = 'not found';
+// 			foreach ($cats_array as $key => $cat) {
+// 				if($term->name == $cat['name']) {
+// 					++$count;
+// 					$slug = $cat['slug'];
+// 				}
+// 			}
+// 			echo($count.' ');
+// 			echo ($term->name);
+// 			echo (';  ');
+// 			echo ($slug);
+// 			echo ('<br>');
+			
+// // 			$result = wp_update_term( $term->term_id, 'product_cat', [
+// // 				'slug' => $slug,
+// // 			] );
+
+// // 			// check the result
+// // 			if( is_wp_error( $result ) ){
+
+// // 				echo $result->get_error_message();
+// // 			}
+// // 			else {
+
+// // 				echo 'Term was successfully updated.';
+// // 			}
+// 	}
+	print_r($terms);
+}
+
+//add_action( 'wp_footer', 'plnt_get_prods_data' );
+
