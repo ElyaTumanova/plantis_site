@@ -356,39 +356,40 @@ function plnt_get_prods_data() {
 	echo(count($products->posts));
 	echo ('<br>');
   print_r($products->posts);
-// 		foreach ($terms as $key => $term) {
-// 			print_r($term->name);
-// 			echo ('  -  ');
-// 			echo($term->term_id);
-// 			echo ('  -  ');
-//  			//echo ('<br>');
-// 			$slug = 'not found';
-// 			foreach ($cats_array as $key => $cat) {
-// 				if($term->name == $cat['name']) {
-// 					++$count;
-// 					$slug = $cat['slug'];
-// 				}
-// 			}
-// 			echo($count.' ');
-// 			echo ($term->name);
-// 			echo (';  ');
-// 			echo ($slug);
-// 			echo ('<br>');
+		foreach ($products->posts as $key => $term) {
+			print_r($term->post_title);
+			echo ('  -  ');
+			echo($term->ID);
+			echo ('  -  ');
+      echo($term->post_name);
+ 			echo ('<br>');
+			// $slug = 'not found';
+			// foreach ($cats_array as $key => $cat) {
+			// 	if($term->name == $cat['name']) {
+			// 		++$count;
+			// 		$slug = $cat['slug'];
+			// 	}
+			// }
+			// echo($count.' ');
+			// echo ($term->name);
+			// echo (';  ');
+			// echo ($slug);
+			// echo ('<br>');
 			
-// // 			$result = wp_update_term( $term->term_id, 'product_cat', [
-// // 				'slug' => $slug,
-// // 			] );
+// 			$result = wp_update_term( $term->term_id, 'product_cat', [
+// 				'slug' => $slug,
+// 			] );
 
-// // 			// check the result
-// // 			if( is_wp_error( $result ) ){
+// 			// check the result
+// 			if( is_wp_error( $result ) ){
 
-// // 				echo $result->get_error_message();
-// // 			}
-// // 			else {
+// 				echo $result->get_error_message();
+// 			}
+// 			else {
 
-// // 				echo 'Term was successfully updated.';
-// // 			}
-// 	}
+// 				echo 'Term was successfully updated.';
+// 			}
+	}
 
 }
 
