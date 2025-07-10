@@ -356,7 +356,7 @@ function plnt_get_prods_data() {
             )
   );
 
-  $products = new WP_Query( $args );
+  //$products = new WP_Query( $args );
 
 	$count = 0;
 	echo ('<br>');
