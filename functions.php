@@ -355,7 +355,7 @@ function plnt_get_prods_data() {
 	echo ('<br>');
 	// echo(count($products));
 	// echo ('<br>');
-  print_r($products);
+  print_r($products->posts);
 // 		foreach ($terms as $key => $term) {
 // 			print_r($term->name);
 // 			echo ('  -  ');
