@@ -26,6 +26,7 @@ get_header(); ?>
     $min_small_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_small_delivery)) - 1;
     $min_medium_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_medium_delivery)) - 1;
 
+    print_r($shipping_costs);
     
 ?>
 
