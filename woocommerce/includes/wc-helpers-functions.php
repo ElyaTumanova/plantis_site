@@ -115,24 +115,30 @@ function plnt_wc_cart_totals_shipping_method_label( $method ) {
 
 function get_delivery_markup() {
   // define markup
-	$delivery_murkup = 0;
+	$delivery_murkup = ['in_mkad'=>0, 'out_mkad'=>0];
 
   $cart_weight = WC()->cart->cart_contents_weight; // вес товаров в корзине
-
-  $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
-
-  $large_markup_delivery = carbon_get_theme_option('large_markup_delivery');
-  $small_markup_delivery = carbon_get_theme_option('small_markup_delivery');
-  $medium_markup_delivery = carbon_get_theme_option('medium_markup_delivery');
-  $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
 
   $min_small_delivery = carbon_get_theme_option('min_small_delivery');
   $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
 
 
+  $large_markup_delivery_in_mkad = carbon_get_theme_option('large_markup_delivery_in_mkad');
+  $large_markup_delivery_out_mkad = carbon_get_theme_option('large_markup_delivery_out_mkad');
+
+  $small_markup_delivery = carbon_get_theme_option('small_markup_delivery');
+  $medium_markup_delivery = carbon_get_theme_option('medium_markup_delivery');
+
+  $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
+  $urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_large');
+
+  $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+
+
+
   // проверяем крупногабаритную доставку
   if ($cart_weight >= 11) {
-    $delivery_murkup = $large_markup_delivery;
+    $delivery_murkup = $large_markup_delivery_in_mkad;
   } 
   // проверяем маленькие суммы заказов
   else {

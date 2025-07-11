@@ -170,7 +170,6 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
     /*new code*/
-    $delivery_murkup = 0;
 
     $delivery_murkup = get_delivery_markup();
 
@@ -190,11 +189,14 @@ function plnt_shipping_conditions( $rates, $package ) {
     // }
 
     // set markup
-    foreach ($rates as $rate) {
-        if ($rate->id == $delivery_inMKAD || $rate->id == $delivery_outMKAD){
-            $rate->cost = $rate->cost + $delivery_murkup;
-        }
+    if ($delivery_murkup) {
+      foreach ($rates as $rate) {
+          if ($rate->id == $delivery_inMKAD || $rate->id == $delivery_outMKAD){
+              $rate->cost = $rate->cost + $delivery_murkup;
+          }
+      }
     }
+    
 
     /*СРОЧНАЯ ДОСТАВКА*/
 
