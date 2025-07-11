@@ -189,13 +189,13 @@ function plnt_shipping_conditions( $rates, $package ) {
     // }
 
     // set markup
-    if ($delivery_murkup) {
-      foreach ($rates as $rate) {
-          if ($rate->id == $delivery_inMKAD || $rate->id == $delivery_outMKAD){
-              $rate->cost = $rate->cost + $delivery_murkup;
-          }
-      }
-    }
+    // if ($delivery_murkup) {
+    //   foreach ($rates as $rate) {
+    //       if ($rate->id == $delivery_inMKAD || $rate->id == $delivery_outMKAD){
+    //           $rate->cost = $rate->cost + $delivery_murkup;
+    //       }
+    //   }
+    // }
     
 
     /*СРОЧНАЯ ДОСТАВКА*/
