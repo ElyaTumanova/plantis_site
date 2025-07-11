@@ -119,10 +119,16 @@ function get_delivery_markup() {
 
   $cart_weight = WC()->cart->cart_contents_weight; // вес товаров в корзине
 
-  $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-  $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
+  $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+
+  $large_markup_delivery = carbon_get_theme_option('large_markup_delivery');
   $small_markup_delivery = carbon_get_theme_option('small_markup_delivery');
   $medium_markup_delivery = carbon_get_theme_option('medium_markup_delivery');
+  $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
+
+  $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+  $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
+
 
   // проверяем крупногабаритную доставку
   if ($cart_weight >= 11) {
