@@ -441,15 +441,15 @@ function plnt_disable_payment_small_order( $available_gateways ) {
         }
         
     
-        // // дальняя доставка
-        // if ( $delivery_long_dist == $chosen_methods[0]) {
-        //     unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
-        // }
+        // дальняя доставка
+        if ( $delivery_long_dist == $chosen_methods[0]) {
+            unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+        }
 
-        // // почта России
-        // if ( $delivery_pochta == $chosen_methods[0]) {
-        //     unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
-        // }
+        // почта России
+        if ( $delivery_pochta == $chosen_methods[0]) {
+            unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+        }
     }
 
 
