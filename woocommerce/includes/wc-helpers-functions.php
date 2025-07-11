@@ -121,6 +121,8 @@ function get_delivery_markup() {
 
   $min_small_delivery = carbon_get_theme_option('min_small_delivery');
   $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
+  $small_markup_delivery = carbon_get_theme_option('small_markup_delivery');
+  $medium_markup_delivery = carbon_get_theme_option('medium_markup_delivery');
 
   // проверяем крупногабаритную доставку
   if ($cart_weight >= 11) {
