@@ -60,7 +60,7 @@ function plantis_load_textdomain() {
 		return;
 	}
 
-	debug_load_theme_textdomain( 'art-starter-theme', get_template_directory() . '/languages' );
+	debug_load_theme_textdomain( 'plantis-theme', get_template_directory() . '/languages' );
 }
 add_action( 'after_setup_theme', 'plantis_load_textdomain' );
 
@@ -419,7 +419,7 @@ function plnt_get_prods_data() {
 
 
 function debug_load_theme_textdomain($domain) {
-	if ( $domain === 'art-starter-theme' ) {
+	if ( $domain === 'plantis-theme' ) {
 		error_log( "🚨 load_theme_textdomain('{$domain}') вызвана до init" );
 		error_log( print_r( debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), true ) );
 	}

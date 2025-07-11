@@ -1,4 +1,4 @@
-=== art-starter-theme ===
+=== plantis-theme ===
 
 Contributors: Artabr
 Tags: translation-ready, custom-background, theme-options, custom-menu, post-formats, threaded-comments
