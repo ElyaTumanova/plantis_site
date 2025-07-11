@@ -52,15 +52,17 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 }
 
 function plantis_load_textdomain() {
-	// Проверяем, что это НЕ wp-cron (админка, фронтенд и т.д.)
-	if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
+	// Не загружаем в cron или CLI
+	if (
+		( defined( 'DOING_CRON' ) && DOING_CRON ) ||
+		( defined( 'WP_CLI' ) && WP_CLI )
+	) {
 		return;
 	}
 
-	debug_load_theme_textdomain( 'plantis_site', get_template_directory() . '/languages' );
+	debug_load_theme_textdomain( 'art-starter-theme', get_template_directory() . '/languages' );
 }
-add_action( 'init', 'plantis_load_textdomain' );
-
+add_action( 'after_setup_theme', 'plantis_load_textdomain' );
 
 //ЗАДАЕМ КОНСТАНТЫ ДЛЯ JS
 add_action( 'wp_footer', 'plnt_set_constants_script' );
