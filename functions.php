@@ -50,7 +50,8 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 }
 
 
-
+//ЗАДАЕМ КОНСТАНТЫ ДЛЯ JS
+add_action( 'wp_footer', 'plnt_set_constants_script' );
 
 // add_filter('wpseo_opengraph_image', 'plnt_opengraph_image');
 // function plnt_opengraph_image($image) {
