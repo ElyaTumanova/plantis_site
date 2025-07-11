@@ -6,9 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! function_exists( 'ast_theme_support' ) ) :
 	add_action( 'after_setup_theme', 'ast_theme_support' );
 	function ast_theme_support() {
-        add_action( 'init', function() {
-            load_theme_textdomain( 'art-starter-theme', get_template_directory() . '/languages' );
-        } );
 		add_theme_support( 'html5', array(
 			'search-form',
 			'comment-form',
@@ -32,6 +29,11 @@ if ( ! function_exists( 'ast_theme_support' ) ) :
 		add_editor_style( 'assets/stylesheets/editor.css' );
 	}
 endif;
+
+function plantis_load_textdomain() {
+	load_theme_textdomain( 'art-starter-theme', get_template_directory() . '/languages' );
+}
+add_action( 'init', 'plantis_load_textdomain' );
 
 // Разрешаем загрузку svg
 add_filter( 'upload_mimes', 'svg_upload_allow' );
