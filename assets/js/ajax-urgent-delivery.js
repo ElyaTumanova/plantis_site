@@ -259,6 +259,6 @@ if (checkoutForm) {
   ajaxGetUrgent(deliveryDatesInput[0].value);
   console.debug(isUrgent);
 
-    checkoutForm.addEventListener('change', ()=>getCheckedDate());
+    checkoutForm.addEventListener('change', ()=>getCheckedInterval());
   
 }
