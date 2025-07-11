@@ -349,7 +349,7 @@ function plnt_get_prods_data() {
                 array(
                     'taxonomy' => 'product_cat',
                     'field' => 'slug',
-                    'terms' => 'iskusstvennye-rasteniya-treez',
+                    'terms' => 'ukhod',
                     // 'terms' => array('gorshki_i_kashpo', 'komnatnye-rasteniya'),
                     // 'operator' => 'NOT IN'
                 )
