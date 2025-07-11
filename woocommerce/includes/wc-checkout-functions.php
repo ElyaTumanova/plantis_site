@@ -494,7 +494,7 @@ Contents
         $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
         $shipping_costs = plnt_get_shiping_costs();
         global $delivery_inMKAD;
-        global $delivery_outMKAD
+        global $delivery_outMKAD;
         global $delivery_courier;
         global $delivery_long_dist;
         global $urgent_deliveries;
