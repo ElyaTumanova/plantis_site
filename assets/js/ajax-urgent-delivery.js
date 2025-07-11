@@ -44,7 +44,9 @@ function getCheckedDate (){
 
 function getCheckedInterval (){
  let dateIntervals = document.querySelectorAll('.additional_delivery_interval input');
+ console.log(dateIntervals)
  checkedIntervalInput = Array.from(dateIntervals).find((el)=>el.checked == true); 
+ console.log(checkedIntervalInput)
  console.log(checkedIntervalInput.value)
  return checkedIntervalInput.value;
 }
