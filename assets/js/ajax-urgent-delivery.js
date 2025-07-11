@@ -10,12 +10,9 @@ let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerc
 let deliveryDatesInfo = [];
 let deliveryIntervalsInfo = []
 let shippingMethodValues = [];
-let checkedShippingMethodInput;
-let checkedShippingMethod;
-let checkedDateInput;
-let checkedDate;
-let checkedIntervalInput;
-let checkedInterval;
+let checkedShippingMethod = '';
+let checkedDate = '';
+let checkedInterval = '';
 
 let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
 //let deliveryInterval = document.querySelectorAll('#additional_delivery_interval_field input');
@@ -32,23 +29,25 @@ function onChangeShippingMethod(event) {
 }
 
 function getCheckedShippingMethod (){
-  checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
+  let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
   return checkedShippingMethodInput.value;
 }
 
 function getCheckedDate (){
  let dateInputs = document.querySelectorAll('.delivery_dates input');
- checkedDateInput = Array.from(dateInputs).find((el)=>el.checked == true); 
+ let checkedDateInput = Array.from(dateInputs).find((el)=>el.checked == true); 
  return checkedDateInput.value;
 }
 
 function getCheckedInterval (){
  let dateIntervals = document.querySelectorAll('.additional_delivery_interval input');
  console.log(dateIntervals)
- checkedIntervalInput = Array.from(dateIntervals).find((el)=>el.checked == true); 
+ let checkedIntervalInput = Array.from(dateIntervals).find((el)=>el.checked == true); 
  console.log(checkedIntervalInput)
- console.log(checkedIntervalInput.value)
- return checkedIntervalInput.value;
+ if(checkedIntervalInput) {
+   console.log(checkedIntervalInput.value)
+   return checkedIntervalInput.value;
+ }
 }
 
 function renderDeliveryDates(shippingValue) {
@@ -102,22 +101,27 @@ function renderDeliveryIntervals(shippingValue,date) {
 }
 
 function ajaxGetUrgent(date) {
-  // if (isBackorder || isTreezBackorders) {
-  //   isUrgent = 0;
-  // } else {
-    if (date) {
-      if(date == today) {
-        isUrgent = '1';
-      } else {
-        isUrgent = '0';
-      }
-    }
-  // }
+
+  checkedShippingMethod = getCheckedShippingMethod();
+  checkedDate = getCheckedDate();
+  checkedInterval = getCheckedInterval();
+
+
+  if(checkedDate == today) {
+    isUrgent = '1';
+  } else {
+    isUrgent = '0';
+  }
+
+   if(checkedInterval == '18:00 - 21:00') {
+    isLate = '1'
+  } else {
+    isLate = '0'
+  }
 
   console.debug('hi ajaxGetUrgent');
   console.debug('isUrgent ajax', isUrgent);
-  // console.debug('isBackorder ajax', isBackorder);
-  // console.debug('isTreezBackorders ajax', isTreezBackorders);
+  console.debug('isLate ajax', isLate);
 
   jQuery( function($){
         $.ajax({
@@ -126,6 +130,7 @@ function ajaxGetUrgent(date) {
             data: {
                 'action': 'get_urgent_shipping',
                 'isUrgent': isUrgent,
+                'isLate': isLate
             },
             success: function (result) {
                 // Trigger refresh checkout
@@ -166,17 +171,12 @@ function ajaxGetLateDelivery(event) {
 function setInitalState() {
   let hour = new Date().getHours();
 
-  // console.debug('isBackorders ', isBackorder);
-  // console.debug('isTreezBackorders ',isTreezBackorders);
-  // if (isBackorder || isTreezBackorders) {
-  //   isUrgent = 0;
-  // } else {
-    if (hour >= 18 && hour <20) { 
-      isUrgent = 0;
-    } else {
-      isUrgent = 1;
-    }
-  // }
+  if (hour >= 18 && hour <20) { 
+    isUrgent = 0;
+  } else {
+    isUrgent = 1;
+  }
+
 
   if (hour >= 20) {
     today = `${((new Date().getDate()+1) < 10 ? '0' : '') + (new Date().getDate() + 1)}.${(new Date().getUTCMonth()< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
@@ -193,6 +193,7 @@ function setInitalState() {
   }
 
   isLate = 0;
+
 }
 
 function setDatesIntervals() {
@@ -258,9 +259,10 @@ if (checkoutForm) {
 
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 
-  ajaxGetUrgent(deliveryDatesInput[0].value);
+  //ajaxGetUrgent(deliveryDatesInput[0].value);
+  ajaxGetUrgent();
   console.debug(isUrgent);
 
-    checkoutForm.addEventListener('change', ()=>getCheckedInterval());
+  checkoutForm.addEventListener('change', ajaxGetUrgent);
   
 }
