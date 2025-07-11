@@ -472,9 +472,6 @@ Contents
     add_action('plnt_large_delivery_notice', 'plnt_large_delivery_notice');
 
     function plnt_large_delivery_notice() {
-      
-        // вес товаров в корзине
-        // $cart_weight = WC()->cart->cart_contents_weight;
 
         if (check_if_large_delivery()) {
             echo '<div class=large_delivery_notice>
