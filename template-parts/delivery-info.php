@@ -8,9 +8,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 // стоимость доставки
 
         
-// global $delivery_inMKAD;
-// global $delivery_outMKAD;
-
+global $delivery_inMKAD;
+global $delivery_outMKAD;
 
 $shipping_costs = plnt_get_shiping_costs();
    

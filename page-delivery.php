@@ -3,6 +3,9 @@ get_header(); ?>
 
 <?php 
     // стоимость доставки
+
+    global $delivery_inMKAD;
+    global $delivery_outMKAD;
    
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
     $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
