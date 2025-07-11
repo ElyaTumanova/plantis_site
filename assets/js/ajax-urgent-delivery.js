@@ -24,11 +24,14 @@ let today;
 //         renderDeliveryIntervals(event.target.value,'');
 //     }
 // }
-function onChangeShippingMethod() {
+function onChangeShippingMethod(event) {
+  console.log(event);
   checkedShippingMethod = getCheckedShippingMethod();
   console.log(checkedShippingMethod);
   checkedDate = getCheckedDate();
+  console.log(checkedDate);
   checkedInterval = getCheckedInterval();
+  console.log(checkedInterval)
 
   if(checkedDate == today) {
     isUrgent = '1';
