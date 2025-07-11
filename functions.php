@@ -56,6 +56,8 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	require get_template_directory() . '/woocommerce/includes/wc-account-functions.php';
 }
 
+add_filter( 'use_block_editor_for_post', '__return_false' );
+
 //ЗАДАЕМ КОНСТАНТЫ ДЛЯ JS
 //add_action( 'wp_footer', 'plnt_set_constants_script' );
 function plnt_set_constants_script() {
