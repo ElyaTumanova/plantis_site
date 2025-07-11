@@ -68,7 +68,7 @@ function plnt_set_backorders_date() {
 }
 
 /*--------------------------------------------------------------
-# HELPERS for cart & delovery
+# HELPERS for cart & checkout
 --------------------------------------------------------------*/
 
  //Функция, возвращающая количество определённого товара в корзине
@@ -182,3 +182,14 @@ function get_delivery_markup() {
   return $delivery_murkup;
 }
 
+function check_if_large_delivery() {
+  $cart_weight = WC()->cart->cart_contents_weight;
+
+  $isLargeDelivery = false;
+
+  if ($cart_weight >= 11) {
+     $isLargeDelivery = true;
+  }
+
+  return $isLargeDelivery;
+}
