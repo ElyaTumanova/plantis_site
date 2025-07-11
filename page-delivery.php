@@ -36,8 +36,8 @@ $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
     // $medium_delivery_markup_in_mkad_urg =  floatval(str_replace(' ', '', $in_mkad_medium_urg)) - floatval(str_replace(' ', '', $in_mkad_urg));
     // $medium_delivery_markup_out_mkad_urg =  floatval(str_replace(' ', '', $out_mkad_medium_urg)) - floatval(str_replace(' ', '', $out_mkad_urg));
 
-    // $min_small_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_small_delivery)) - 1;
-    // $min_medium_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_medium_delivery)) - 1;
+    $min_small_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_small_delivery)) - 1;
+    $min_medium_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_medium_delivery)) - 1;
 
     
 ?>
