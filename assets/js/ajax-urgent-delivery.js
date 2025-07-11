@@ -12,6 +12,8 @@ let deliveryIntervalsInfo = []
 let shippingMethodValues = [];
 let checkedShippingMethodInput;
 let checkedShippingMethod;
+let checkedDateInput;
+let checkedDate;
 
 let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
 //let deliveryInterval = document.querySelectorAll('#additional_delivery_interval_field input');
@@ -29,6 +31,12 @@ function onChangeShippingMethod(event) {
 
 function getCheckedShippingMethod (){
   checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
+  return checkedShippingMethodInput.value;
+}
+
+function getCheckedDate (){
+  checkedDateInput = document.querySelector('.delivery_dates input[checked="checked"]');
+  console.debug(checkedDateInput)
   return checkedShippingMethodInput.value;
 }
 
@@ -241,5 +249,7 @@ if (checkoutForm) {
 
   ajaxGetUrgent(deliveryDatesInput[0].value);
   console.debug(isUrgent);
+
+    checkoutForm.addEventListener('change', ()=>getCheckedDate());
   
 }
