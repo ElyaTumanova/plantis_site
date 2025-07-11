@@ -10,11 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 // 	'mobile-nav' => 'Mobile',
 // ));
 register_nav_menus( array(
-	'primary'   => esc_html__( 'Primary Menu', 'plantis-theme' ),
-	'secondary' => esc_html__( 'Secondary Menu', 'plantis-theme' ),
-	'catalog'    => esc_html__( 'Categories in Catalog', 'plantis-theme' ),
-	'footer-plants'    => esc_html__( 'Plants Categories in Footer', 'plantis-theme' ),
-	'footer-services'    => esc_html__( 'Services List in Footer', 'plantis-theme' ),
+	'primary'   => 'Primary Menu',
+	'secondary' => 'Secondary Menu',
+	'catalog'    => 'Categories in Catalog',
+	'footer-plants'    => 'Plants Categories in Footer',
+	'footer-services'    => 'Services List in Footer',
 ) );
 
 
