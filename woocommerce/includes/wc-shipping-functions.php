@@ -52,14 +52,12 @@ function plnt_check() {
     // }
     // $isbackorders = plnt_is_backorder();
     // echo 'isback '.$isbackorders.'  ';
-    //echo 'isUrgent '.(WC()->session->get('isUrgent' )).'  ';
+    echo 'isUrgent '.(WC()->session->get('isUrgent' )).'  ';
     // echo 'hiAjax '.(WC()->session->get('hiAjax' )).'  ';
     // echo 'hiInit '.(WC()->session->get('hiInit' )).'  ';
     // echo 'isback2 '.(WC()->session->get('isBackorder' )).'  ';
     echo 'isLate '.(WC()->session->get('isLate' )).'  ';
-    //echo '<br>';
-    //echo 'date '.(WC()->session->get('date' )).'  ';
-    //echo '<br>';
+    echo '<br>';
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
     // if ( is_checkout() && ($hour<18 || $hour>=20)) {
