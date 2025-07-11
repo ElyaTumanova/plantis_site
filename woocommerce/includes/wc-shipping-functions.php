@@ -410,7 +410,7 @@ function plnt_shipping_conditions( $rates, $package ) {
 }
 
 //убираем способ онлайн-оплаты, если маленькая сумма заказа или далекая доставка
-//add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_small_order' );
+add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_small_order' );
 
 function plnt_disable_payment_small_order( $available_gateways ) {
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
@@ -431,14 +431,14 @@ function plnt_disable_payment_small_order( $available_gateways ) {
 
     if (isset($chosen_methods)) {
         // стоимость товаров в корзине
-        if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
-            unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
-        }
+        // if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
+        //     unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+        // }
     
         
-        if (WC()->cart->subtotal < $min_medium_delivery && $delivery_courier == $chosen_methods[0]) {
-            unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
-        }
+        // if (WC()->cart->subtotal < $min_medium_delivery && $delivery_courier == $chosen_methods[0]) {
+        //     unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+        // }
         
     
         // дальняя доставка
