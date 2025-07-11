@@ -18,7 +18,7 @@ get_header(); ?>
 			<header class="page-header">
 				<h1 class="page-title"><?php
 					/* translators: %s: search query. */
-					printf( esc_html__( 'Результаты поиска: %s', 'plantis-theme' ), '<span>' . get_search_query() . '</span>' );
+					printf( 'Результаты поиска: %s', '<span>' . get_search_query() . '</span>' );
 				?></h1>
 			</header><!-- .page-header -->
 
@@ -64,8 +64,8 @@ get_header(); ?>
 
                     the_posts_pagination( array(
                         'class' => 'woocommerce-pagination',
-                        'prev_text'    => __('←', 'plantis-theme'),
-	                    'next_text'    => __('→', 'plantis-theme'),
+                        'prev_text'    => '←',
+	                    'next_text'    => '→',
                     ));
 
                     else :
