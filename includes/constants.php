@@ -82,8 +82,8 @@ if($site === 'https://plantis-shop.ru') {
 
 /* Способы доставки и оплаты */
 
-if($site === 'http://new.plantis.shop') {
-	//NEW PLANTIS SHOP
+if($site === 'https://plantis-shop.ru') {
+	//PLANTIS-SHOP.RU
 	$local_pickup = 'local_pickup:9'; //самовывоз
 	
 	$delivery_inMKAD = 'flat_rate:1';

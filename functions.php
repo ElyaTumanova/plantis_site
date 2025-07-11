@@ -57,25 +57,25 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 }
 
 //ЗАДАЕМ КОНСТАНТЫ ДЛЯ JS
-add_action( 'wp_footer', 'plnt_set_constants_script' );
+//add_action( 'wp_footer', 'plnt_set_constants_script' );
 function plnt_set_constants_script() {
 	global $delivery_inMKAD;
 	global $delivery_outMKAD;
-	global $delivery_inMKAD_small;
-	global $delivery_outMKAD_small;
-	global $delivery_inMKAD_large;
-	global $delivery_outMKAD_large;
-	global $delivery_inMKAD_medium;
-	global $delivery_outMKAD_medium;
+	// global $delivery_inMKAD_small;
+	// global $delivery_outMKAD_small;
+	// global $delivery_inMKAD_large;
+	// global $delivery_outMKAD_large;
+	// global $delivery_inMKAD_medium;
+	// global $delivery_outMKAD_medium;
 
-	global $urgent_delivery_inMKAD; 
-	global $urgent_delivery_outMKAD; 
-	global $urgent_delivery_inMKAD_small; 
-	global $urgent_delivery_outMKAD_small;
-	global $urgent_delivery_inMKAD_large; 
-	global $urgent_delivery_outMKAD_large;
-	global $urgent_delivery_inMKAD_medium;
-	global $urgent_delivery_outMKAD_medium;
+	// global $urgent_delivery_inMKAD; 
+	// global $urgent_delivery_outMKAD; 
+	// global $urgent_delivery_inMKAD_small; 
+	// global $urgent_delivery_outMKAD_small;
+	// global $urgent_delivery_inMKAD_large; 
+	// global $urgent_delivery_outMKAD_large;
+	// global $urgent_delivery_inMKAD_medium;
+	// global $urgent_delivery_outMKAD_medium;
 
 	global $local_pickup;
 	global $delivery_free;
