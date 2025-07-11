@@ -171,10 +171,10 @@ function get_delivery_markup() {
       }
     // }
 
-    // обнуляем надбавку для предзаказа
+    // обнуляем СРОЧНУЮ надбавку для предзаказа
     if (plnt_is_backorder() || plnt_is_treez_backorder()) {
-        $delivery_murkup['in_mkad'] =  0;
-        $delivery_murkup['out_mkad'] =  0;
+        // $delivery_murkup['in_mkad'] =  0;
+        // $delivery_murkup['out_mkad'] =  0;
         $delivery_murkup['urg'] =  0;
     }
 
