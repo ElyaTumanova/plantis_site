@@ -548,7 +548,7 @@ Contents
                     echo '<div class="checkout__text checkout__text_small-order">
                     При заказе на сумму менее '.$min_small_delivery,' рублей стоимость доставки увеличена. 
                     <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></div';
-                } else if ($delivery_courier == $chosen_methods[0] && WC()->session->get('date' ) !== '08.03') {
+                } else if ($delivery_courier == $chosen_methods[0] ) {
                     echo '<div class="checkout__text checkout__text_small-order-holiday">
                     В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью до '.$min_small_delivery,' рублей доставляются в любой день по тарифу курьерской службы. 
                     Мы свяжемся с Вами после оформления заказа и произведем расчет стоимости доставки. 
@@ -563,7 +563,7 @@ Contents
                     echo '<div class="checkout__text checkout__text_small-order">
                     При заказе на сумму менее '.$min_medium_delivery,' рублей стоимость доставки увеличена. 
                     <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></div';
-                } else if ($delivery_courier == $chosen_methods[0] && WC()->session->get('date' ) !== '08.03') {
+                } else if ($delivery_courier == $chosen_methods[0] ) {
                     echo '<div class="checkout__text checkout__text_small-order-holiday">
                     В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью до '.$min_medium_delivery,' рублей доставляются в любой день по тарифу курьерской службы. 
                     Мы свяжемся с Вами после оформления заказа и произведем расчет стоимости доставки. 
@@ -606,7 +606,7 @@ Contents
                 </div>';
         }
 
-        if (WC()->session->get('date' ) === '08.03' && $delivery_courier == $chosen_methods[0]) {
+        if ($delivery_courier == $chosen_methods[0]) {
             echo '<div class="checkout__text checkout__text_holiday">
                 В связи с высокой загрузкой курьеров в праздничные дни заказы доставляются по тарифу курьерской службы. 
                 Мы свяжемся с Вами после оформления заказа и произведем расчет стоимости доставки. 
