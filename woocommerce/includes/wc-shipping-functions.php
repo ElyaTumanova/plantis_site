@@ -197,12 +197,7 @@ function plnt_shipping_conditions( $rates, $package ) {
       }
     } 
 
-    // обнуляем надбавку для предзаказа
-    // if (plnt_is_backorder() || plnt_is_treez_backorder()) {
-    //     $delivery_murkup['in_mkad'] =  0;
-    //     $delivery_murkup['out_mkad'] =  0;
-    //     $delivery_murkup['urg'] =  0;
-    // }
+
 
     // set markup
     if ($delivery_murkup) {
@@ -321,56 +316,20 @@ function plnt_shipping_conditions( $rates, $package ) {
     //     }
     // }
  
-    /*СТОИМОСТЬ ДОСТАВКИ ПО ВЕСУ*/
+    /*ПОЧТА РОССИИ*/
     
-    // $cart_weight = WC()->cart->cart_contents_weight; // вес товаров в корзине
+    $cart_weight = WC()->cart->cart_contents_weight; // вес товаров в корзине
 
-    // if ($cart_weight >= 11) {
-    //     unset( $rates[ $delivery_inMKAD ] );
-    //     unset( $rates[ $delivery_outMKAD ] );
-    //     unset( $rates[ $urgent_delivery_inMKAD ] );
-    //     unset( $rates[ $urgent_delivery_outMKAD ] );
-    //     unset( $rates[ $delivery_inMKAD_small ] );
-    //     unset( $rates[ $delivery_outMKAD_small ] );
-    //     unset( $rates[ $urgent_delivery_inMKAD_small ] );
-    //     unset( $rates[ $urgent_delivery_outMKAD_small ] );
-    //     unset( $rates[ $delivery_inMKAD_medium ] );
-    //     unset( $rates[ $delivery_outMKAD_medium ] );
-    //     unset( $rates[ $urgent_delivery_inMKAD_medium ] );
-    //     unset( $rates[ $urgent_delivery_outMKAD_medium ] );
-    //     unset( $rates[ $delivery_pochta ] );
-    // } else {
-    //     unset( $rates[ $delivery_inMKAD_large ] );
-    //     unset( $rates[ $delivery_outMKAD_large ] );
-    //     unset( $rates[ $urgent_delivery_inMKAD_large ] );
-    //     unset( $rates[ $urgent_delivery_outMKAD_large ] );
-
-    // }
-
-    //поздняя доставка
-    // if (isset($chosen_methods)) {
-    //     if($local_pickup == $chosen_methods[0] || $delivery_courier == $chosen_methods[0] || $delivery_long_dist == $chosen_methods[0] || $delivery_pochta == $chosen_methods[0]) {
-    //         WC()->session->set('isLate', '0' );  
-    //     }
-    // }
-
-    // if (WC()->session->get('isLate' ) === '1') {
-    //     foreach( $rates as $rate) {
-    //         if ( 'local_pickup' !== $rate->method_id) {
-    //             if('free_shipping' !== $rate->method_id) {
-    //                 $rate->cost = $rate->cost + $late_markup_delivery;
-    //             }
-    //         }	
-    //     }
-    // }
-
-    // почта России
+    if ($cart_weight >= 11) {
+        unset( $rates[ $delivery_pochta ] );
+    }
+ 
     global $plants_cat_id;
     $plantsQty = 0;
     $notPlantsInCartQty = 0;
     foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
         $_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
-		$parentCatId = check_category($_product);
+		    $parentCatId = check_category($_product);
         if ($parentCatId == $plants_cat_id ){
             $plantsQty =  $plantsQty + $cart_item['quantity'];
         } else {
