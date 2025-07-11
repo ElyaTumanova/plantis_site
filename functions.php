@@ -60,7 +60,7 @@ function plantis_load_textdomain() {
 		return;
 	}
 
-	debug_load_theme_textdomain( 'plantis-theme', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'plantis-theme', get_template_directory() . '/languages' );
 }
 add_action( 'after_setup_theme', 'plantis_load_textdomain' );
 
