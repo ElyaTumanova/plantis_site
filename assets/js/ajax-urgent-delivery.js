@@ -118,7 +118,7 @@ function ajaxGetUrgent(date) {
 
 function ajaxGetLateDelivery(event) {
 
-  console.debug(event);
+  console.debug(event.target.value);
   console.debug('hi ajaxGetLateDelivery');
 
   if(event.target.value == '18:00 - 21:00') {
