@@ -8,7 +8,7 @@ use Carbon_Fields\Field;
 
 // Default options page
 Container::make('theme_options', 'Настройки темы')
-		 ->add_tab( __('Icons'), array(
+		 ->add_tab( __('Icons', 'plantis-theme'), array(
 			 Field::make( 'image', 'logo', 'Logo' )
 			 	->set_value_type( 'url' ),
 			 Field::make( 'textarea', 'account_icon', 'Personal Account' )
@@ -33,7 +33,7 @@ Container::make('theme_options', 'Настройки темы')
 				->set_rows( 6 ),
 			 Field::make( 'text', 'site_title', 'Site title in header' )
          ))
-		 ->add_tab( __('Main Page Banners'), array(
+		 ->add_tab( __('Main Page Banners', 'plantis-theme'), array(
 			Field::make( 'complex', 'banners', 'Баннеры для главной страницы' )
 				->add_fields( array(
 					Field::make( 'image', 'banner_desktop', 'Баннер для десктопа' )
@@ -49,7 +49,7 @@ Container::make('theme_options', 'Настройки темы')
 					)
 				)
 		))
-		 ->add_tab( __('Main Page Categories'), array(
+		 ->add_tab( __('Main Page Categories', 'plantis-theme'), array(
 			Field::make( 'image', 'cats_palms', 'Пальмы' )
 			 ->set_value_type( 'url' ),
 			Field::make( 'image', 'cats_fikus', 'Фикусы' )
@@ -69,7 +69,7 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'image', 'cats_petfriendly', 'Pet Friendly' )
 			 ->set_value_type( 'url' ),
 		))
-		->add_tab( __('Delivery'), array(
+		->add_tab( __('Delivery', 'plantis-theme'), array(
 			Field::make( 'text', 'min_free_delivery', 'Минимальная сумма заказа для бесплатной доставки (текст с пробелом)'),
 			Field::make( 'text', 'min_small_delivery', 'Сумма заказа для более дорогой доставки - самая минимальная'),
 			Field::make( 'text', 'min_medium_delivery', 'Сумма заказа для более дорогой доставки - средняя (не обязательно)'),
@@ -77,9 +77,9 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'min_lechuza_delivery', 'Сумма заказа для доставки кашпо Lechuza'),
 			Field::make( 'text', 'late_markup_delivery', 'Надбавка к стоимости поздней доставки'),
 	   ))
-		->add_tab( __('General'), array(
+		->add_tab( __('General', 'plantis-theme'), array(
 			Field::make( 'text', 'notice', 'Уведомление' ),
-			Field::make( 'checkbox', 'show_notice', __( 'Показать уведомление' ) )
+			Field::make( 'checkbox', 'show_notice', __( 'Показать уведомление', 'plantis-theme' ) )
     				->set_option_value( 'yes' ),
 			Field::make( 'text', 'weekend', 'Выходной (формат ДД.ММ, разделитель - запятая без пробелов)' ),
 			Field::make( 'text', 'pricelist_link', 'Ссылка на скачивание оптового прйс-листа' ),
