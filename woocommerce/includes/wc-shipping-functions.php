@@ -169,26 +169,26 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     $delivery_murkup = 0;
 
-    // $delivery_murkup = get_delivery_markup();
+    $delivery_murkup = get_delivery_markup();
 
     /*new code*/
 
     // define markup
-    $cart_weight = WC()->cart->cart_contents_weight; // вес товаров в корзине
+    // $cart_weight = WC()->cart->cart_contents_weight; // вес товаров в корзине
 
-    $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-    $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
+    // $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+    // $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
 
-    // проверяем крупногабаритную доставку и суммы заказов
-    if ($cart_weight >= 11) {
-        $delivery_murkup = $large_markup_delivery;
-    } else {
-        if ( WC()->cart->subtotal < $min_small_delivery ) {
-                $delivery_murkup = $small_markup_delivery;
-        } else if (WC()->cart->subtotal < $min_medium_delivery) {
-            $delivery_murkup = $medium_markup_delivery;
-        }
-    }
+    // // проверяем крупногабаритную доставку и суммы заказов
+    // if ($cart_weight >= 11) {
+    //     $delivery_murkup = $large_markup_delivery;
+    // } else {
+    //     if ( WC()->cart->subtotal < $min_small_delivery ) {
+    //             $delivery_murkup = $small_markup_delivery;
+    //     } else if (WC()->cart->subtotal < $min_medium_delivery) {
+    //         $delivery_murkup = $medium_markup_delivery;
+    //     }
+    // }
 
     //проверяем срочную доставку и позднюю доставку
 
