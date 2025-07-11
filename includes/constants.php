@@ -271,9 +271,12 @@ function plnt_set_constants_script() {
 		let deliveryCostOutMkad = '<?php echo $out_mkad; ?>';
 
 
-		let deliveryUrgMarkup = '<?php echo $urgent_markup_delivery; ?>';
+		let deliveryUrgMarkup = '<?php echo $delivery_murkup['urg']; ?>';
 		let deliveryLateMarkup = '<?php echo $late_markup_delivery; ?>';
-		let deliveryMarkup = '<?php echo $delivery_murkup; ?>';
+		// let deliveryMarkup = '<?php //echo $delivery_murkup; ?>';
+
+    let deliveryMarkupInMkad = '<?php echo $delivery_murkup['in_makd']; ?>'
+    let deliveryMarkupOutMkad = '<?php echo $delivery_murkup['out_makd']; ?>'
 
 		let isBackorder = '<?php echo $isbackorders; ?>';
 		let isTreezBackorders = '<?php echo $isTreezBackorders; ?>';

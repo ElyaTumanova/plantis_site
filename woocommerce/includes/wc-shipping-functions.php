@@ -172,29 +172,41 @@ function plnt_shipping_conditions( $rates, $package ) {
     /*new code*/
 
     $delivery_murkup = get_delivery_markup();
+    $delivery_markup_in_mkad = 0;
+    $delivery_markup_out_mkad = 0;
 
-    // //проверяем срочную доставку и позднюю доставку
+    if ($delivery_murkup) {
+      $delivery_markup_in_mkad = $delivery_murkup['in_mkad'];
+      $delivery_markup_out_mkad = $delivery_murkup['out_mkad'];
 
-    // if (WC()->session->get('isLate' ) === '1') {
-    //      $delivery_murkup =  $delivery_murkup + $late_markup_delivery;
-    // }
+      // //проверяем срочную доставку и позднюю доставку
 
-    // if (WC()->session->get('isUrgent' ) === '1') {
-    //     $delivery_murkup = $delivery_murkup + $urgent_markup_delivery;
-    // }
+      if (WC()->session->get('isLate' ) === '1') {
+        $delivery_markup_in_mkad =  $delivery_markup_in_mkad + $late_markup_delivery;
+        $delivery_markup_out_mkad =  $delivery_markup_out_mkad + $late_markup_delivery;
+      }
 
-    // // обнуляем надбавку для предзаказа
+      if (WC()->session->get('isUrgent' ) === '1') {
+          $delivery_markup_in_mkad =  $delivery_markup_in_mkad + $delivery_murkup['urg'];
+          $delivery_markup_out_mkad =  $delivery_markup_out_mkad + $delivery_murkup['urg'];
+          //$delivery_murkup = $delivery_murkup + $urgent_markup_delivery;
+      }
+    } 
+
+    // обнуляем надбавку для предзаказа
     // if (plnt_is_backorder() || plnt_is_treez_backorder()) {
-    //     $delivery_murkup = 0;
+    //     $delivery_murkup['in_mkad'] =  0;
+    //     $delivery_murkup['out_mkad'] =  0;
+    //     $delivery_murkup['urg'] =  0;
     // }
 
     // set markup
     if ($delivery_murkup) {
       foreach ($rates as $rate) {
           if ($rate->id == $delivery_inMKAD){
-              $rate->cost = $rate->cost + $delivery_murkup['in_mkad'];
+              $rate->cost = $rate->cost + $delivery_markup_in_mkad;
           } else if ($rate->id == $delivery_outMKAD){
-              $rate->cost = $rate->cost + $delivery_murkup['out_mkad'];
+              $rate->cost = $rate->cost + $delivery_markup_out_mkad;
           }
       }
     }
