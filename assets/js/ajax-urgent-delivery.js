@@ -26,7 +26,11 @@ let today;
 // }
 function onChangeShippingMethod(event) {
   console.log(event);
-  checkedShippingMethod = getCheckedShippingMethod();
+  if(event && event.target.className == "shipping_method") {
+     checkedShippingMethod = event.target.value
+  } else {
+    checkedShippingMethod = getCheckedShippingMethod();
+  }
   console.log(checkedShippingMethod);
   checkedDate = getCheckedDate();
   console.log(checkedDate);
