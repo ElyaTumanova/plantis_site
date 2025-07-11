@@ -342,11 +342,11 @@ function plnt_shipping_conditions( $rates, $package ) {
     // }
 
     //поздняя доставка
-    if (isset($chosen_methods)) {
-        if($local_pickup == $chosen_methods[0] || $delivery_courier == $chosen_methods[0] || $delivery_long_dist == $chosen_methods[0] || $delivery_pochta == $chosen_methods[0]) {
-            WC()->session->set('isLate', '0' );  
-        }
-    }
+    // if (isset($chosen_methods)) {
+    //     if($local_pickup == $chosen_methods[0] || $delivery_courier == $chosen_methods[0] || $delivery_long_dist == $chosen_methods[0] || $delivery_pochta == $chosen_methods[0]) {
+    //         WC()->session->set('isLate', '0' );  
+    //     }
+    // }
 
     // if (WC()->session->get('isLate' ) === '1') {
     //     foreach( $rates as $rate) {
