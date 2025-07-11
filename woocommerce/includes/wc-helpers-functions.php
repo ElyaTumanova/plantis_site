@@ -68,7 +68,7 @@ function plnt_set_backorders_date() {
 }
 
 /*--------------------------------------------------------------
-# HELPERS for cart
+# HELPERS for cart & delovery
 --------------------------------------------------------------*/
 
  //Функция, возвращающая количество определённого товара в корзине
@@ -111,5 +111,30 @@ function plnt_wc_cart_totals_shipping_method_label( $method ) {
 	}
 
 	return apply_filters( 'woocommerce_cart_shipping_method_full_label', $label, $method );
+}
+
+function get_delivery_markup() {
+  // define markup
+	$delivery_murkup = 0;
+
+  $cart_weight = WC()->cart->cart_contents_weight; // вес товаров в корзине
+
+  $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+  $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
+
+  // проверяем крупногабаритную доставку
+  if ($cart_weight >= 11) {
+    $delivery_murkup = $large_markup_delivery;
+  } 
+  // проверяем маленькие суммы заказов
+  else {
+      if ( WC()->cart->subtotal < $min_small_delivery ) {
+        $delivery_murkup = $small_markup_delivery;
+      } else if (WC()->cart->subtotal < $min_medium_delivery) {
+        $delivery_murkup = $medium_markup_delivery;
+      }
+  }
+
+  return $delivery_murkup;
 }
 
