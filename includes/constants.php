@@ -275,8 +275,8 @@ function plnt_set_constants_script() {
 		let deliveryLateMarkup = '<?php echo $late_markup_delivery; ?>';
 		// let deliveryMarkup = '<?php //echo $delivery_murkup; ?>';
 
-    let deliveryMarkupInMkad = '<?php echo $delivery_murkup['in_makd']; ?>'
-    let deliveryMarkupOutMkad = '<?php echo $delivery_murkup['out_makd']; ?>'
+    let deliveryMarkupInMkad = '<?php echo $delivery_murkup['in_mkad']; ?>'
+    let deliveryMarkupOutMkad = '<?php echo $delivery_murkup['out_mkad']; ?>'
 
 		let isBackorder = '<?php echo $isbackorders; ?>';
 		let isTreezBackorders = '<?php echo $isTreezBackorders; ?>';
