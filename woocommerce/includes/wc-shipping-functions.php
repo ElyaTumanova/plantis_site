@@ -192,9 +192,9 @@ function plnt_shipping_conditions( $rates, $package ) {
     if ($delivery_murkup) {
       foreach ($rates as $rate) {
           if ($rate->id == $delivery_inMKAD){
-              $rate->cost = $rate->cost + $delivery_murkup[in_mkad];
+              $rate->cost = $rate->cost + $delivery_murkup['in_mkad'];
           } else if ($rate->id == $delivery_outMKAD){
-              $rate->cost = $rate->cost + $delivery_murkup[out_mkad];
+              $rate->cost = $rate->cost + $delivery_murkup['out_mkad'];
           }
       }
     }
