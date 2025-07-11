@@ -66,6 +66,9 @@ function plnt_check() {
     //     echo $hour;
     // }
 
+    $delivery_murkup = get_delivery_markup();
+    echo ($delivery_murkup);
+
 }
 
 // срочная доставка
@@ -166,44 +169,25 @@ function plnt_shipping_conditions( $rates, $package ) {
 
 
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
-
+    /*new code*/
     $delivery_murkup = 0;
 
     $delivery_murkup = get_delivery_markup();
 
-    /*new code*/
+    // //проверяем срочную доставку и позднюю доставку
 
-    // define markup
-    // $cart_weight = WC()->cart->cart_contents_weight; // вес товаров в корзине
-
-    // $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-    // $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
-
-    // // проверяем крупногабаритную доставку и суммы заказов
-    // if ($cart_weight >= 11) {
-    //     $delivery_murkup = $large_markup_delivery;
-    // } else {
-    //     if ( WC()->cart->subtotal < $min_small_delivery ) {
-    //             $delivery_murkup = $small_markup_delivery;
-    //     } else if (WC()->cart->subtotal < $min_medium_delivery) {
-    //         $delivery_murkup = $medium_markup_delivery;
-    //     }
+    // if (WC()->session->get('isLate' ) === '1') {
+    //      $delivery_murkup =  $delivery_murkup + $late_markup_delivery;
     // }
 
-    //проверяем срочную доставку и позднюю доставку
+    // if (WC()->session->get('isUrgent' ) === '1') {
+    //     $delivery_murkup = $delivery_murkup + $urgent_markup_delivery;
+    // }
 
-    if (WC()->session->get('isLate' ) === '1') {
-         $delivery_murkup =  $delivery_murkup + $late_markup_delivery;
-    }
-
-    if (WC()->session->get('isUrgent' ) === '1') {
-        $delivery_murkup = $delivery_murkup + $urgent_markup_delivery;
-    }
-
-    // обнуляем надбавку для предзаказа
-    if (plnt_is_backorder() || plnt_is_treez_backorder()) {
-        $delivery_murkup = 0;
-    }
+    // // обнуляем надбавку для предзаказа
+    // if (plnt_is_backorder() || plnt_is_treez_backorder()) {
+    //     $delivery_murkup = 0;
+    // }
 
     // set markup
     foreach ($rates as $rate) {

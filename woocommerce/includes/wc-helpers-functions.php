@@ -137,6 +137,22 @@ function get_delivery_markup() {
       }
   }
 
+  //проверяем срочную доставку и позднюю доставку
+
+    if (WC()->session->get('isLate' ) === '1') {
+         $delivery_murkup =  $delivery_murkup + $late_markup_delivery;
+    }
+
+    if (WC()->session->get('isUrgent' ) === '1') {
+        $delivery_murkup = $delivery_murkup + $urgent_markup_delivery;
+    }
+
+    // обнуляем надбавку для предзаказа
+    if (plnt_is_backorder() || plnt_is_treez_backorder()) {
+        $delivery_murkup = 0;
+    }
+
+
   return $delivery_murkup;
 }
 
