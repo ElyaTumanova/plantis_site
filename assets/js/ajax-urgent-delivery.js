@@ -15,17 +15,39 @@ let checkedDate = '';
 let checkedInterval = '';
 
 let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
-//let deliveryInterval = document.querySelectorAll('#additional_delivery_interval_field input');
 let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
 let today;
 
-function onChangeShippingMethod(event) {
-    if(event && event.target.className == "shipping_method") {
-        renderDeliveryDates(event.target.value);
-        renderDeliveryIntervals(event.target.value,'');
-        // console.log(event.target.value);
-        // ajaxGetUrgent();
-    }
+// function onChangeShippingMethod(event) {
+//     if(event && event.target.className == "shipping_method") {
+//         renderDeliveryDates(event.target.value);
+//         renderDeliveryIntervals(event.target.value,'');
+//     }
+// }
+function onChangeShippingMethod() {
+  checkedShippingMethod = getCheckedShippingMethod();
+  checkedDate = getCheckedDate();
+  checkedInterval = getCheckedInterval();
+
+  if(checkedDate == today) {
+    isUrgent = '1';
+  } else {
+    isUrgent = '0';
+  }
+
+   if(checkedInterval == '18:00 - 21:00') {
+    isLate = '1'
+  } else {
+    isLate = '0'
+  }
+
+  checkHoliday(checkedDate);
+
+  renderDeliveryDates(checkedShippingMethod);
+  renderDeliveryIntervals(checkedShippingMethod);
+
+  ajaxGetUrgent();
+
 }
 
 function getCheckedShippingMethod (){
@@ -41,11 +63,8 @@ function getCheckedDate (){
 
 function getCheckedInterval (){
  let dateIntervals = document.querySelectorAll('.additional_delivery_interval input');
- console.log(dateIntervals)
  let checkedIntervalInput = Array.from(dateIntervals).find((el)=>el.checked == true); 
- console.log(checkedIntervalInput)
  if(checkedIntervalInput) {
-   console.log(checkedIntervalInput.value)
    return checkedIntervalInput.value;
  }
 }
@@ -61,29 +80,10 @@ function renderDeliveryDates(shippingValue) {
       if(shippingValue == deliveryOutMKAD) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(deliveryCostOutMkad) + Number(deliveryUrgMarkup) + Number(deliveryMarkupOutMkad)}₽` : `${Number(deliveryCostOutMkad) + Number(deliveryMarkupOutMkad)}₽` ;
       }
-      // if(shippingValue == deliveryInMKADSmall || shippingValue == deliveryInMKADSmallUrg) {
-      //   priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadSmallUrg}₽` : `${deliveryCostInMkadSmall}₽` ;
-      // }
-      // if(shippingValue == deliveryOutMKADSmall || shippingValue == deliveryOutMKADSmallUrg) {
-      //   priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadSmallUrg}₽` : `${deliveryCostOutMkadSmall}₽` ;
-      // }
-      // if(shippingValue == deliveryInMKADLarge || shippingValue == deliveryInMKADLargeUrg) {
-      //   priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadLargeUrg}₽` : `${deliveryCostInMkadLarge}₽` ;
-      // }
-      // if(shippingValue == deliveryOutMKADLarge || shippingValue == deliveryOutMKADLargeUrg) {
-      //   priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadLargeUrg}₽` : `${deliveryCostOutMkadLarge}₽` ;
-      // }
-      // if(shippingValue == deliveryInMKADMedium || shippingValue == deliveryInMKADMediumUrg) {
-      //   priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostInMkadMediumUrg}₽` : `${deliveryCostInMkadMedium}₽` ;
-      // }
-      // if(shippingValue == deliveryOutMKADMedium || shippingValue == deliveryOutMKADMediumUrg) {
-      //   priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${deliveryCostOutMkadMediumUrg}₽` : `${deliveryCostOutMkadMedium}₽` ;
-      // }
-     
   })
 }
 
-function renderDeliveryIntervals(shippingValue,date) {
+function renderDeliveryIntervals(shippingValue) {
   deliveryIntervalsInfo.forEach((info) => {
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
@@ -100,24 +100,24 @@ function renderDeliveryIntervals(shippingValue,date) {
   
 }
 
-function ajaxGetUrgent(date) {
+function ajaxGetUrgent() {
 
-  checkedShippingMethod = getCheckedShippingMethod();
-  checkedDate = getCheckedDate();
-  checkedInterval = getCheckedInterval();
+  // checkedShippingMethod = getCheckedShippingMethod();
+  // checkedDate = getCheckedDate();
+  // checkedInterval = getCheckedInterval();
 
 
-  if(checkedDate == today) {
-    isUrgent = '1';
-  } else {
-    isUrgent = '0';
-  }
+  // if(checkedDate == today) {
+  //   isUrgent = '1';
+  // } else {
+  //   isUrgent = '0';
+  // }
 
-   if(checkedInterval == '18:00 - 21:00') {
-    isLate = '1'
-  } else {
-    isLate = '0'
-  }
+  //  if(checkedInterval == '18:00 - 21:00') {
+  //   isLate = '1'
+  // } else {
+  //   isLate = '0'
+  // }
 
   console.debug('hi ajaxGetUrgent');
   console.debug('isUrgent ajax', isUrgent);
@@ -140,33 +140,33 @@ function ajaxGetUrgent(date) {
   });
 };
 
-function ajaxGetLateDelivery(event) {
+// function ajaxGetLateDelivery(event) {
 
-  console.debug(event.target.value);
-  console.debug('hi ajaxGetLateDelivery');
+//   console.debug(event.target.value);
+//   console.debug('hi ajaxGetLateDelivery');
 
-  if(event.target.value == '18:00 - 21:00') {
-    isLate = '1'
-  } else {
-    isLate = '0'
-  }
-  // console.log(isLate);
+//   if(event.target.value == '18:00 - 21:00') {
+//     isLate = '1'
+//   } else {
+//     isLate = '0'
+//   }
+//   // console.log(isLate);
 
-  jQuery( function($){
-    $.ajax({
-        type: 'POST',
-        url: wc_checkout_params.ajax_url,
-        data: {
-            'action': 'get_late_shipping',
-            'isLate': isLate,
-        },
-        success: function (result) {
-            // Trigger refresh checkout
-            $('body').trigger('update_checkout');
-        }
-    });
-});
-}
+//   jQuery( function($){
+//     $.ajax({
+//         type: 'POST',
+//         url: wc_checkout_params.ajax_url,
+//         data: {
+//             'action': 'get_late_shipping',
+//             'isLate': isLate,
+//         },
+//         success: function (result) {
+//             // Trigger refresh checkout
+//             $('body').trigger('update_checkout');
+//         }
+//     });
+// });
+// }
 
 function setInitalState() {
   let hour = new Date().getHours();
@@ -177,6 +177,7 @@ function setInitalState() {
     isUrgent = 1;
   }
 
+  isLate = 0;
 
   if (hour >= 20) {
     today = `${((new Date().getDate()+1) < 10 ? '0' : '') + (new Date().getDate() + 1)}.${(new Date().getUTCMonth()< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
@@ -192,33 +193,32 @@ function setInitalState() {
     isHideInterval = true;
   }
 
-  isLate = 0;
+  checkHoliday(deliveryDatesInput[0].value);
+
+  deliveryDatesInput[0].setAttribute('checked','checked');
+  deliveryIntervalInput[0].setAttribute('checked','checked');
 
 }
 
-function setDatesIntervals() {
+function getDatesIntervalsInfo() {
   deliveryDatesLables.forEach((label) => {
     let dateInfo = {
       label: label,
       for: label.htmlFor,
       text: label.textContent};
-    //console.log(dateInfo);
     deliveryDatesInfo.push(dateInfo);
   });
 
-  deliveryDatesInput[0].setAttribute('checked','checked');
-  deliveryIntervalInput[0].setAttribute('checked','checked');
-
-  deliveryDatesInput.forEach((date) => {
-    date.addEventListener('click', function(event){
-      //console.log(event.target.value);
-      // console.log(isUrgent);
-      ajaxGetUrgent(event.target.value);
-      checkHoliday(event.target.value);
-      shippingValue = getCheckedShippingMethod();
-      renderDeliveryIntervals(shippingValue,event.target.value);
-    });
-  })
+  // deliveryDatesInput.forEach((date) => {
+  //   date.addEventListener('click', function(event){
+  //     //console.log(event.target.value);
+  //     console.log(isUrgent);
+  //     ajaxGetUrgent(event.target.value);
+  //     checkHoliday(event.target.value);
+  //     shippingValue = getCheckedShippingMethod();
+  //     renderDeliveryIntervals(shippingValue,event.target.value);
+  //   });
+  // })
 
   if(deliveryLateMarkup) {    
     deliveryIntervalLabels.forEach((label) => {
@@ -230,9 +230,9 @@ function setDatesIntervals() {
       //console.log(intervalInfo);
       deliveryIntervalsInfo.push(intervalInfo);
     });
-    deliveryIntervalInput.forEach(el =>{
-      el.addEventListener('click', ajaxGetLateDelivery);
-    })
+    // deliveryIntervalInput.forEach(el =>{
+    //   el.addEventListener('click', ajaxGetLateDelivery);
+    // })
   }
 }
 
@@ -249,20 +249,19 @@ function checkHoliday(date) {
 if (checkoutForm) {
 
   setInitalState();
-  checkHoliday(deliveryDatesInput[0].value);
-  setDatesIntervals();
+  getDatesIntervalsInfo();
 
-  checkedShippingMethod = getCheckedShippingMethod();
+  // checkedShippingMethod = getCheckedShippingMethod();
 
-  renderDeliveryIntervals(checkedShippingMethod,deliveryDatesInput[0].value);
-  renderDeliveryDates(checkedShippingMethod);
+  // renderDeliveryIntervals(checkedShippingMethod);
+  // renderDeliveryDates(checkedShippingMethod);
 
   checkoutForm.addEventListener('change', onChangeShippingMethod);
 
   //ajaxGetUrgent(deliveryDatesInput[0].value);
-  ajaxGetUrgent();
+  onChangeShippingMethod();
   console.debug(isUrgent);
 
-  checkoutForm.addEventListener('change', ajaxGetUrgent);
+  //checkoutForm.addEventListener('change', ajaxGetUrgent);
   
 }
