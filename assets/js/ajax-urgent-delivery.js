@@ -14,6 +14,8 @@ let checkedShippingMethodInput;
 let checkedShippingMethod;
 let checkedDateInput;
 let checkedDate;
+let checkedIntervalInput;
+let checkedInterval;
 
 let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
 //let deliveryInterval = document.querySelectorAll('#additional_delivery_interval_field input');
@@ -35,13 +37,16 @@ function getCheckedShippingMethod (){
 }
 
 function getCheckedDate (){
- let dateInput = document.querySelectorAll('.delivery_dates input');
- console.debug(dateInput)
- checkedDateInput = Array.from(dateInput).find((el)=>el.checked == true); 
- console.debug(checkedDateInput)
- console.debug(checkedDateInput.value)
-  
-  return checkedShippingMethodInput.value;
+ let dateInputs = document.querySelectorAll('.delivery_dates input');
+ checkedDateInput = Array.from(dateInputs).find((el)=>el.checked == true); 
+ return checkedDateInput.value;
+}
+
+function getCheckedInterval (){
+ let dateIntervals = document.querySelectorAll('.additional_delivery_interval input');
+ checkedIntervalInput = Array.from(dateIntervals).find((el)=>el.checked == true); 
+ console.log(checkedIntervalInput.value)
+ return checkedIntervalInput.value;
 }
 
 function renderDeliveryDates(shippingValue) {
