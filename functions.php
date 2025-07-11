@@ -1,4 +1,9 @@
 <?php
+add_action( 'after_setup_theme', function() {
+	load_theme_textdomain( 'plantis-theme', get_template_directory() . '/languages' );
+} );
+
+
 /** Add Carbon Fields */
 
 require_once __DIR__ . '/../../../vendor/autoload.php'; // путь может отличаться
@@ -50,10 +55,6 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	require get_template_directory() . '/woocommerce/includes/wc-yith-wishlist-finctions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-account-functions.php';
 }
-
-add_action( 'after_setup_theme', function() {
-	load_theme_textdomain( 'plantis-theme', get_template_directory() . '/languages' );
-} );
 
 //ЗАДАЕМ КОНСТАНТЫ ДЛЯ JS
 add_action( 'wp_footer', 'plnt_set_constants_script' );
