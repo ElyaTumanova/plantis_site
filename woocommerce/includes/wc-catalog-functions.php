@@ -276,8 +276,8 @@ add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_
 
 add_filter('woocommerce_product_add_to_cart_text','plnt_change_add_to_cart_text');
 
-function plnt_change_add_to_cart_text($text) {
-	global $product;
+function plnt_change_add_to_cart_text($text,$product) {
+	//global $product;
 	if ($product->is_in_stock()) {
 		return $text;
 	} else {
