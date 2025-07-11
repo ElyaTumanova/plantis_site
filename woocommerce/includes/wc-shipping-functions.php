@@ -56,7 +56,7 @@ function plnt_check() {
     // echo 'hiAjax '.(WC()->session->get('hiAjax' )).'  ';
     // echo 'hiInit '.(WC()->session->get('hiInit' )).'  ';
     // echo 'isback2 '.(WC()->session->get('isBackorder' )).'  ';
-    //echo 'isLate '.(WC()->session->get('isLate' )).'  ';
+    echo 'isLate '.(WC()->session->get('isLate' )).'  ';
     //echo '<br>';
     //echo 'date '.(WC()->session->get('date' )).'  ';
     //echo '<br>';
@@ -67,7 +67,7 @@ function plnt_check() {
     // }
 
     $delivery_murkup = get_delivery_markup();
-    print_r ($delivery_murkup);
+    //print_r ($delivery_murkup);
 
 }
 

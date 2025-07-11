@@ -252,7 +252,7 @@ function plnt_set_constants_script() {
 
 	// define markup
 	$delivery_murkup = get_delivery_markup();
-  print_r($delivery_murkup); 
+ //print_r($delivery_murkup); 
    
 	?>
 	<script>
