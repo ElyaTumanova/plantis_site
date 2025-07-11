@@ -118,6 +118,9 @@ function ajaxGetUrgent(date) {
 
 function ajaxGetLateDelivery(event) {
 
+  console.debug(event);
+  console.debug('hi ajaxGetLateDelivery');
+
   if(event.target.value == '18:00 - 21:00') {
     isLate = '1'
   } else {
@@ -197,7 +200,6 @@ function setDatesIntervals() {
     });
   })
 
-  console.log(deliveryLateMarkup);
   if(deliveryLateMarkup) {    
     deliveryIntervalLabels.forEach((label) => {
       let intervalInfo = {

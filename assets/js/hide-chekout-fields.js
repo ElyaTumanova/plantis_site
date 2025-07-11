@@ -19,8 +19,8 @@
 
         //for delivery intervals
         if (deliveryInterval) {
-            console.log(deliveryInterval);
-            console.log('isHideInterval', isHideInterval);
+            // console.log(deliveryInterval);
+            // console.log('isHideInterval', isHideInterval);
             if (isBackorder || isTreezBackorders) {
                 deliveryInterval.classList.add('d-none');
                 deliveryIntervalInput.forEach((input)=>{
