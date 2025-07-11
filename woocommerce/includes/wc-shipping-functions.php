@@ -67,7 +67,7 @@ function plnt_check() {
     // }
 
     $delivery_murkup = get_delivery_markup();
-    echo ($delivery_murkup);
+    print_r ($delivery_murkup);
 
 }
 
