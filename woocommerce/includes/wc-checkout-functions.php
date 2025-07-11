@@ -494,8 +494,6 @@ Contents
         global $delivery_outMKAD;
         global $delivery_courier;
         global $delivery_long_dist;
-        global $urgent_deliveries;
-        global $normal_deliveries;
         global $local_pickup;
         global $delivery_pochta;
 
