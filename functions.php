@@ -53,7 +53,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 function plantis_load_textdomain() {
     error_log( 'Текстовый домен загружен через init' );
-	load_theme_textdomain( 'art-starter-theme', get_template_directory() . '/languages' );
+	debug_load_theme_textdomain( 'art-starter-theme', get_template_directory() . '/languages' );
 }
 add_action( 'init', 'plantis_load_textdomain' );
 
@@ -411,3 +411,10 @@ function plnt_get_prods_data() {
 
 //add_action( 'wp_footer', 'plnt_get_prods_data' );
 
+
+function debug_load_theme_textdomain($domain) {
+	if ( $domain === 'art-starter-theme' ) {
+		error_log( "🚨 load_theme_textdomain('{$domain}') вызвана до init" );
+		error_log( print_r( debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), true ) );
+	}
+}
