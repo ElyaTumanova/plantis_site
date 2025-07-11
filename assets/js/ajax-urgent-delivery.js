@@ -20,17 +20,17 @@ let today;
 
 //определяем параметры оформления заказа, влияющие на стоимость доставки и вызываем аякс, отрисовываем поля дат и интервалов доставки
 function getOrderParametrs(event) {
-  console.log(event);
+  console.debug(event);
   if(event && event.target.className == "shipping_method") {
      checkedShippingMethod = event.target.value
   } else {
     checkedShippingMethod = getCheckedShippingMethod();
   }
-  console.log(checkedShippingMethod);
+  console.debug(checkedShippingMethod);
   checkedDate = getCheckedDate();
-  console.log(checkedDate);
+  console.debug(checkedDate);
   checkedInterval = getCheckedInterval();
-  console.log(checkedInterval)
+  console.debug(checkedInterval)
 
   if(checkedDate == today) {
     isUrgent = '1';
@@ -148,7 +148,7 @@ function setInitalState() {
     today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${(new Date().getUTCMonth()< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
   };
 
- //console.log(today);
+ //console.debug(today);
 
   if(hour >=20 && hour<24) {
     isHideInterval = false;
