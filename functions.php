@@ -50,7 +50,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 
 //ЗАДАЕМ КОНСТАНТЫ ДЛЯ JS
-//add_action( 'wp_footer', 'plnt_set_constants_script' );
+add_action( 'wp_footer', 'plnt_set_constants_script' );
 function plnt_set_constants_script() {
 	global $delivery_inMKAD;
 	global $delivery_outMKAD;
