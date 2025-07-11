@@ -26,6 +26,7 @@ let today;
 // }
 function onChangeShippingMethod() {
   checkedShippingMethod = getCheckedShippingMethod();
+  console.log(checkedShippingMethod);
   checkedDate = getCheckedDate();
   checkedInterval = getCheckedInterval();
 
