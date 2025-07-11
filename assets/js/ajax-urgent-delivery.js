@@ -74,6 +74,8 @@ function getCheckedInterval (){
  let checkedIntervalInput = Array.from(dateIntervals).find((el)=>el.checked == true); 
  if(checkedIntervalInput) {
    return checkedIntervalInput.value;
+ } else {
+  return ''
  }
 }
 
