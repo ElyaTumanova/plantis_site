@@ -116,7 +116,7 @@ Contents
     // }
 
     // итоговая стоимость
-    add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 25 );
+    //add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 25 );
 
     function plnt_order_total() {
             ?>
