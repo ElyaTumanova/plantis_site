@@ -36,21 +36,21 @@ require get_template_directory() . '/includes/metrika.php';
 
 /** Add Woocommerce files */
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-	require get_template_directory() . '/woocommerce/includes/wc-cart-functions.php';
+	//require get_template_directory() . '/woocommerce/includes/wc-cart-functions.php';
 	//require get_template_directory() . '/woocommerce/includes/wc-shipping-functions.php';
 	//require get_template_directory() . '/woocommerce/includes/wc-checkout-functions.php';
-	require get_template_directory() . '/woocommerce/includes/wc-custom-fields.php';
-	require get_template_directory() . '/woocommerce/includes/wc-function.php';
-	require get_template_directory() . '/woocommerce/includes/wc-remove-functions.php';
-	require get_template_directory() . '/woocommerce/includes/wc-card-function.php';
-	require get_template_directory() . '/woocommerce/includes/wc-catalog-functions.php';
-	require get_template_directory() . '/woocommerce/includes/wc-yith-wishlist-finctions.php';
-	require get_template_directory() . '/woocommerce/includes/wc-account-functions.php';
+	// require get_template_directory() . '/woocommerce/includes/wc-custom-fields.php';
+	// require get_template_directory() . '/woocommerce/includes/wc-function.php';
+	// require get_template_directory() . '/woocommerce/includes/wc-remove-functions.php';
+	// require get_template_directory() . '/woocommerce/includes/wc-card-function.php';
+	// require get_template_directory() . '/woocommerce/includes/wc-catalog-functions.php';
+	// require get_template_directory() . '/woocommerce/includes/wc-yith-wishlist-finctions.php';
+	// require get_template_directory() . '/woocommerce/includes/wc-account-functions.php';
 }
 
 
 //ЗАДАЕМ КОНСТАНТЫ ДЛЯ JS
-add_action( 'wp_footer', 'plnt_set_constants_script' );
+//add_action( 'wp_footer', 'plnt_set_constants_script' );
 function plnt_set_constants_script() {
 	global $delivery_inMKAD;
 	global $delivery_outMKAD;
@@ -383,22 +383,22 @@ function plnt_get_prods_data() {
 			// echo ($slug);
 			// echo ('<br>');
 			
-// 			$result = wp_update_term( $term->term_id, 'product_cat', [
-// 				'slug' => $slug,
-// 			] );
+			// $result = wp_update_term( $term->term_id, 'product_cat', [
+			// 	'slug' => $slug,
+			// ] );
 
-// 			// check the result
-// 			if( is_wp_error( $result ) ){
+			// // check the result
+			// if( is_wp_error( $result ) ){
 
-// 				echo $result->get_error_message();
-// 			}
-// 			else {
+			// 	echo $result->get_error_message();
+			// }
+			// else {
 
-// 				echo 'Term was successfully updated.';
-// 			}
+			// 	echo 'Term was successfully updated.';
+			// }
 	}
 
 }
 
-add_action( 'wp_footer', 'plnt_get_prods_data' );
+//add_action( 'wp_footer', 'plnt_get_prods_data' );
 
