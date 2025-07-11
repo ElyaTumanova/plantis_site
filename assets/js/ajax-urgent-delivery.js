@@ -204,7 +204,5 @@ if (checkoutForm) {
   document.addEventListener('DOMContentLoaded', getOrderParametrs )
 
   checkoutForm.addEventListener('change', getOrderParametrs);
-
-  console.log(isHideInterval)
   
 }
