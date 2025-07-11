@@ -66,6 +66,7 @@ function renderDeliveryDates(shippingValue) {
 }
 
 function renderDeliveryIntervals(shippingValue,date) {
+  console.log('renderDeliveryIntervals',deliveryLateMarkup )
   deliveryIntervalsInfo.forEach((info) => {
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
