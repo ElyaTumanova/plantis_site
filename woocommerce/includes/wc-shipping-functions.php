@@ -431,25 +431,25 @@ function plnt_disable_payment_small_order( $available_gateways ) {
 
     if (isset($chosen_methods)) {
         // стоимость товаров в корзине
-        // if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
-        //     unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
-        // }
-    
-        
-        // if (WC()->cart->subtotal < $min_medium_delivery && $delivery_courier == $chosen_methods[0]) {
-        //     unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
-        // }
-        
-    
-        // дальняя доставка
-        if ( $delivery_long_dist == $chosen_methods[0]) {
+        if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
             unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
         }
+    
+        
+        if (WC()->cart->subtotal < $min_medium_delivery && $delivery_courier == $chosen_methods[0]) {
+            unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+        }
+        
+    
+        // // дальняя доставка
+        // if ( $delivery_long_dist == $chosen_methods[0]) {
+        //     unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+        // }
 
-        // почта России
-        if ( $delivery_pochta == $chosen_methods[0]) {
-            unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
-        }
+        // // почта России
+        // if ( $delivery_pochta == $chosen_methods[0]) {
+        //     unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+        // }
     }
 
 
