@@ -137,32 +137,43 @@ function get_delivery_markup() {
 
 
   // проверяем крупногабаритную доставку
-  // if ($cart_weight >= 11) {
-  //   $delivery_murkup = $large_markup_delivery_in_mkad;
-  // } 
-  // // проверяем маленькие суммы заказов
-  // else {
-  //     if ( WC()->cart->subtotal < $min_small_delivery ) {
-  //       $delivery_murkup = $small_markup_delivery;
-  //     } else if (WC()->cart->subtotal < $min_medium_delivery) {
-  //       $delivery_murkup = $medium_markup_delivery;
-  //     }
-  // }
+  if ($cart_weight >= 11) {
+    $delivery_murkup[$in_mkad] = $large_markup_delivery_in_mkad;
+    $delivery_murkup[$out_mkad] = $large_markup_delivery_out_mkad;
+  } 
+  // проверяем маленькие суммы заказов
+  else {
+      if ( WC()->cart->subtotal < $min_small_delivery ) {
+        $delivery_murkup[$in_mkad] = $small_markup_delivery;
+        $delivery_murkup[$out_mkad] = $small_markup_delivery;
+      } else if (WC()->cart->subtotal < $min_medium_delivery) {
+        $delivery_murkup[$in_mkad] = $medium_markup_delivery;
+        $delivery_murkup[$out_mkad] = $medium_markup_delivery;
+      }
+  }
 
-  // //проверяем срочную доставку и позднюю доставку
+  //проверяем срочную доставку и позднюю доставку
 
-  //   if (WC()->session->get('isLate' ) === '1') {
-  //        $delivery_murkup =  $delivery_murkup + $late_markup_delivery;
-  //   }
+    if (WC()->session->get('isLate' ) === '1') {
+         $delivery_murkup[$in_mkad] =  $delivery_murkup[$in_mkad] + $late_markup_delivery;
+         $delivery_murkup[$out_mkad] =  $delivery_murkup[$out_mkad] + $late_markup_delivery;
+    }
 
-  //   if (WC()->session->get('isUrgent' ) === '1') {
-  //       $delivery_murkup = $delivery_murkup + $urgent_markup_delivery;
-  //   }
+    if (WC()->session->get('isUrgent' ) === '1') {
+      if ($cart_weight >= 11) {
+        $delivery_murkup[$in_mkad] =  $delivery_murkup[$in_mkad] + $urgent_markup_delivery_large;
+        $delivery_murkup[$out_mkad] =  $delivery_murkup[$out_mkad] + $urgent_markup_delivery_large;
+      } else {
+        $delivery_murkup[$in_mkad] =  $delivery_murkup[$in_mkad] + $urgent_markup_delivery;
+        $delivery_murkup[$out_mkad] =  $delivery_murkup[$out_mkad] + $urgent_markup_delivery;
+      }
+    }
 
-  //   // обнуляем надбавку для предзаказа
-  //   if (plnt_is_backorder() || plnt_is_treez_backorder()) {
-  //       $delivery_murkup = 0;
-  //   }
+    // обнуляем надбавку для предзаказа
+    if (plnt_is_backorder() || plnt_is_treez_backorder()) {
+        $delivery_murkup[$in_mkad] =  0;
+        $delivery_murkup[$out_mkad] =  0;
+    }
 
 
   return $delivery_murkup;

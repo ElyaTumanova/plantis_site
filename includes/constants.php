@@ -255,7 +255,7 @@ function plnt_set_constants_script() {
   echo($delivery_murkup); 
    
 	?>
-	<script>
+	<!-- <script>
 		// shipping methods IDs
 		let deliveryInMKAD = '<?php echo $delivery_inMKAD; ?>';
 		let deliveryOutMKAD = '<?php echo $delivery_outMKAD; ?>';
@@ -278,6 +278,6 @@ function plnt_set_constants_script() {
 		let isBackorder = '<?php echo $isbackorders; ?>';
 		let isTreezBackorders = '<?php echo $isTreezBackorders; ?>';
 
-	</script>
+	</script> -->
 	<?php
 }
