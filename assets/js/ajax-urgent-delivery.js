@@ -18,13 +18,8 @@ let deliveryIntervalInput = document.querySelectorAll('input[name=additional_del
 let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
 let today;
 
-// function onChangeShippingMethod(event) {
-//     if(event && event.target.className == "shipping_method") {
-//         renderDeliveryDates(event.target.value);
-//         renderDeliveryIntervals(event.target.value,'');
-//     }
-// }
-function onChangeShippingMethod(event) {
+//определяем параметры оформления заказа, влияющие на стоимость доставки и вызываем аякс, отрисовываем поля дат и интервалов доставки
+function getOrderParametrs(event) {
   console.log(event);
   if(event && event.target.className == "shipping_method") {
      checkedShippingMethod = event.target.value
@@ -79,6 +74,7 @@ function getCheckedInterval (){
  }
 }
 
+//функция отрисовывает поля дат доставки с добавлением стоимости доставки
 function renderDeliveryDates(shippingValue) {
   deliveryDatesInfo.forEach((info) => {
     info.label.innerHTML=`${info.text}`;
@@ -93,6 +89,7 @@ function renderDeliveryDates(shippingValue) {
   })
 }
 
+//функция отрисовывает поля интервалов доставки с добавлением стоимости доставки
 function renderDeliveryIntervals(shippingValue) {
   deliveryIntervalsInfo.forEach((info) => {
     let priceEl = document.createElement('span');
@@ -110,25 +107,8 @@ function renderDeliveryIntervals(shippingValue) {
   
 }
 
+//аякс запрос
 function ajaxGetUrgent() {
-
-  // checkedShippingMethod = getCheckedShippingMethod();
-  // checkedDate = getCheckedDate();
-  // checkedInterval = getCheckedInterval();
-
-
-  // if(checkedDate == today) {
-  //   isUrgent = '1';
-  // } else {
-  //   isUrgent = '0';
-  // }
-
-  //  if(checkedInterval == '18:00 - 21:00') {
-  //   isLate = '1'
-  // } else {
-  //   isLate = '0'
-  // }
-
   console.debug('hi ajaxGetUrgent');
   console.debug('isUrgent ajax', isUrgent);
   console.debug('isLate ajax', isLate);
@@ -150,34 +130,7 @@ function ajaxGetUrgent() {
   });
 };
 
-// function ajaxGetLateDelivery(event) {
-
-//   console.debug(event.target.value);
-//   console.debug('hi ajaxGetLateDelivery');
-
-//   if(event.target.value == '18:00 - 21:00') {
-//     isLate = '1'
-//   } else {
-//     isLate = '0'
-//   }
-//   // console.log(isLate);
-
-//   jQuery( function($){
-//     $.ajax({
-//         type: 'POST',
-//         url: wc_checkout_params.ajax_url,
-//         data: {
-//             'action': 'get_late_shipping',
-//             'isLate': isLate,
-//         },
-//         success: function (result) {
-//             // Trigger refresh checkout
-//             $('body').trigger('update_checkout');
-//         }
-//     });
-// });
-// }
-
+//определяем начальное состояние при загрузке формы
 function setInitalState() {
   let hour = new Date().getHours();
 
@@ -210,6 +163,7 @@ function setInitalState() {
 
 }
 
+//функция собирает исходные значения полей дат и интервалов доставки, чтобы потом пересивовать их
 function getDatesIntervalsInfo() {
   deliveryDatesLables.forEach((label) => {
     let dateInfo = {
@@ -219,17 +173,6 @@ function getDatesIntervalsInfo() {
     deliveryDatesInfo.push(dateInfo);
   });
 
-  // deliveryDatesInput.forEach((date) => {
-  //   date.addEventListener('click', function(event){
-  //     //console.log(event.target.value);
-  //     console.log(isUrgent);
-  //     ajaxGetUrgent(event.target.value);
-  //     checkHoliday(event.target.value);
-  //     shippingValue = getCheckedShippingMethod();
-  //     renderDeliveryIntervals(shippingValue,event.target.value);
-  //   });
-  // })
-
   if(deliveryLateMarkup) {    
     deliveryIntervalLabels.forEach((label) => {
       let intervalInfo = {
@@ -237,12 +180,8 @@ function getDatesIntervalsInfo() {
         for: label.htmlFor,
         text: label.textContent
         };
-      //console.log(intervalInfo);
       deliveryIntervalsInfo.push(intervalInfo);
     });
-    // deliveryIntervalInput.forEach(el =>{
-    //   el.addEventListener('click', ajaxGetLateDelivery);
-    // })
   }
 }
 
@@ -258,20 +197,10 @@ function checkHoliday(date) {
 
 if (checkoutForm) {
 
-  setInitalState();
-  getDatesIntervalsInfo();
+  document.addEventListener('DOMContentLoaded', getDatesIntervalsInfo )
+  document.addEventListener('DOMContentLoaded', setInitalState )
+  document.addEventListener('DOMContentLoaded', getOrderParametrs )
 
-  // checkedShippingMethod = getCheckedShippingMethod();
-
-  // renderDeliveryIntervals(checkedShippingMethod);
-  // renderDeliveryDates(checkedShippingMethod);
-
-  checkoutForm.addEventListener('change', onChangeShippingMethod);
-
-  //ajaxGetUrgent(deliveryDatesInput[0].value);
-  onChangeShippingMethod();
-  console.debug(isUrgent);
-
-  //checkoutForm.addEventListener('change', ajaxGetUrgent);
+  checkoutForm.addEventListener('change', getOrderParametrs);
   
 }
