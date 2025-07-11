@@ -197,6 +197,7 @@ function setDatesIntervals() {
     });
   })
 
+  console.log(deliveryLateMarkup);
   if(deliveryLateMarkup) {    
     deliveryIntervalLabels.forEach((label) => {
       let intervalInfo = {
