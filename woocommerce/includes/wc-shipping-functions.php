@@ -318,9 +318,7 @@ function plnt_shipping_conditions( $rates, $package ) {
  
     /*ПОЧТА РОССИИ*/
     
-    $cart_weight = WC()->cart->cart_contents_weight; // вес товаров в корзине
-
-    if ($cart_weight >= 11) {
+    if (check_if_large_delivery()) {
         unset( $rates[ $delivery_pochta ] );
     }
  

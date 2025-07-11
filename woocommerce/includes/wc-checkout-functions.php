@@ -493,6 +493,8 @@ Contents
         $min_small_delivery = carbon_get_theme_option('min_small_delivery');
         $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
         $shipping_costs = plnt_get_shiping_costs();
+        global $delivery_inMKAD;
+        global $delivery_outMKAD
         global $delivery_courier;
         global $delivery_long_dist;
         global $urgent_deliveries;
@@ -507,40 +509,42 @@ Contents
 
         echo '<div class="checkout__comment">';
 
-        //Срочная доставка "День в день"
+        //обычная доставка за и в пределах МКАД
 
-        if ( in_array($chosen_methods[0],$urgent_deliveries) ) {
-            if($hour < 18) {
-                echo '<div class="checkout__text checkout__text_urgent">
-                    Срочную доставку можно оформить до 18:00. 
-                    После оформления заказа мы свяжемся с вами для его подтверждения. 
-                    <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';
-            }
-        //при оформлении после 20:00-00:00 текущего дня
-            if($hour >= 20) {
-                echo '<div class="checkout__text checkout__text_normal-late">
-                    При оформлении после 20:00 доставки на следующий день стоимость рассчитывается по тарифу срочной доставки. 
-                    После оформления заказа мы свяжемся с вами в рабочее время для его подтверждения.</div>';
-            }
-        }
-        
-        //Доставка в пределах МКАД 
-        
-        if ( in_array($chosen_methods[0],$normal_deliveries) ) {
-            //при оформлении до 20:00
-            if ($hour < 20) {
-                echo '<div class="checkout__text checkout__text_normal">
-                    После оформления заказа мы свяжемся с вами в рабочее время с 10:00 до 20:00 для его подтверждения. 
-                    <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';
+        if ($delivery_inMKAD == $chosen_methods[0] || $delivery_outMKAD == $chosen_methods[0]) {
+
+            //Срочная доставка "День в день"
+
+            if ( WC()->session->get('isUrgent' ) === '1') {
+                if($hour < 18) {
+                    echo '<div class="checkout__text checkout__text_urgent">
+                        Срочную доставку можно оформить до 18:00. 
+                        После оформления заказа мы свяжемся с вами для его подтверждения. 
+                        <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';
+                }
             //при оформлении после 20:00-00:00 текущего дня
-            } else {
-                echo '<div class="checkout__text checkout__text_normal-late">
-                    При оформлении после 20:00 доставки на следующий день стоимость рассчитывается по тарифу срочной доставки. 
-                    После оформления заказа мы свяжемся с вами в рабочее время для его подтверждения.</div>';
+                if($hour >= 20) {
+                    echo '<div class="checkout__text checkout__text_normal-late">
+                        При оформлении после 20:00 доставки на следующий день стоимость рассчитывается по тарифу срочной доставки. 
+                        После оформления заказа мы свяжемся с вами в рабочее время для его подтверждения.</div>';
+                }
             }
-        }
         
-        if ( in_array($chosen_methods[0],$normal_deliveries) || in_array($chosen_methods[0],$urgent_deliveries)) {
+            //Доставка не срочная
+            
+            if ( WC()->session->get('isUrgent' ) === '0' ) {
+                //при оформлении до 20:00
+                if ($hour < 20) {
+                    echo '<div class="checkout__text checkout__text_normal">
+                        После оформления заказа мы свяжемся с вами в рабочее время с 10:00 до 20:00 для его подтверждения. 
+                        <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';
+                //при оформлении после 20:00-00:00 текущего дня
+                } else {
+                    echo '<div class="checkout__text checkout__text_normal-late">
+                        При оформлении после 20:00 доставки на следующий день стоимость рассчитывается по тарифу срочной доставки. 
+                        После оформления заказа мы свяжемся с вами в рабочее время для его подтверждения.</div>';
+                }
+            }
             
             //Доставка заказов до 1500 рублей
             if (WC()->cart->subtotal < $min_small_delivery) {
