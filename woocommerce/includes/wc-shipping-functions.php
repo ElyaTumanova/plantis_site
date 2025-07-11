@@ -166,10 +166,10 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
 
-    $large_markup_delivery = carbon_get_theme_option('large_markup_delivery');
-    $small_markup_delivery = carbon_get_theme_option('small_markup_delivery');
-    $medium_markup_delivery = carbon_get_theme_option('medium_markup_delivery');
-    $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
+    // $large_markup_delivery = carbon_get_theme_option('large_markup_delivery');
+    // $small_markup_delivery = carbon_get_theme_option('small_markup_delivery');
+    //$medium_markup_delivery = carbon_get_theme_option('medium_markup_delivery');
+    //$urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
 
 
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
