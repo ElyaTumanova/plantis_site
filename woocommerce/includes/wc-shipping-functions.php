@@ -117,19 +117,19 @@ function plnt_refresh_shipping_methods_for_urgent( $post_data ){
 //     die(); // (required)
 // }
 
-// add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_late', 10, 1 );
-// function plnt_refresh_shipping_methods_for_late( $post_data ){
-//     $bool = true;
+add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_late', 10, 1 );
+function plnt_refresh_shipping_methods_for_late( $post_data ){
+    $bool = true;
 
-//     if ( WC()->session->get('isLate' ) === '1')
-//         $bool = false;
+    if ( WC()->session->get('isLate' ) === '1')
+        $bool = false;
 
-//     // Mandatory to make it work with shipping methods
-//     foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
-//         WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
-//     }
-//     WC()->cart->calculate_shipping();
-// }
+    // Mandatory to make it work with shipping methods
+    foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
+        WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
+    }
+    WC()->cart->calculate_shipping();
+}
 
 
 /* выбираем способ доставки в зависимости от условий*/
