@@ -24,20 +24,20 @@ $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
     $in_mkad = $shipping_costs[$delivery_inMKAD];
     $out_mkad = $shipping_costs[$delivery_outMKAD];
 
-    $small_delivery_markup_in_mkad =  floatval(str_replace(' ', '', $in_mkad_small)) - floatval(str_replace(' ', '', $in_mkad));
-    $small_delivery_markup_out_mkad =  floatval(str_replace(' ', '', $out_mkad_small)) - floatval(str_replace(' ', '', $out_mkad));
+    // $small_delivery_markup_in_mkad =  floatval(str_replace(' ', '', $in_mkad_small)) - floatval(str_replace(' ', '', $in_mkad));
+    // $small_delivery_markup_out_mkad =  floatval(str_replace(' ', '', $out_mkad_small)) - floatval(str_replace(' ', '', $out_mkad));
 
-    $medium_delivery_markup_in_mkad =  floatval(str_replace(' ', '', $in_mkad_medium)) - floatval(str_replace(' ', '', $in_mkad));
-    $medium_delivery_markup_out_mkad =  floatval(str_replace(' ', '', $out_mkad_medium)) - floatval(str_replace(' ', '', $out_mkad));
+    // $medium_delivery_markup_in_mkad =  floatval(str_replace(' ', '', $in_mkad_medium)) - floatval(str_replace(' ', '', $in_mkad));
+    // $medium_delivery_markup_out_mkad =  floatval(str_replace(' ', '', $out_mkad_medium)) - floatval(str_replace(' ', '', $out_mkad));
     
-    $small_delivery_markup_in_mkad_urg =  floatval(str_replace(' ', '', $in_mkad_small_urg)) - floatval(str_replace(' ', '', $in_mkad_urg));
-    $small_delivery_markup_out_mkad_urg =  floatval(str_replace(' ', '', $out_mkad_small_urg)) - floatval(str_replace(' ', '', $out_mkad_urg));
+    // $small_delivery_markup_in_mkad_urg =  floatval(str_replace(' ', '', $in_mkad_small_urg)) - floatval(str_replace(' ', '', $in_mkad_urg));
+    // $small_delivery_markup_out_mkad_urg =  floatval(str_replace(' ', '', $out_mkad_small_urg)) - floatval(str_replace(' ', '', $out_mkad_urg));
 
-    $medium_delivery_markup_in_mkad_urg =  floatval(str_replace(' ', '', $in_mkad_medium_urg)) - floatval(str_replace(' ', '', $in_mkad_urg));
-    $medium_delivery_markup_out_mkad_urg =  floatval(str_replace(' ', '', $out_mkad_medium_urg)) - floatval(str_replace(' ', '', $out_mkad_urg));
+    // $medium_delivery_markup_in_mkad_urg =  floatval(str_replace(' ', '', $in_mkad_medium_urg)) - floatval(str_replace(' ', '', $in_mkad_urg));
+    // $medium_delivery_markup_out_mkad_urg =  floatval(str_replace(' ', '', $out_mkad_medium_urg)) - floatval(str_replace(' ', '', $out_mkad_urg));
 
-    $min_small_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_small_delivery)) - 1;
-    $min_medium_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_medium_delivery)) - 1;
+    // $min_small_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_small_delivery)) - 1;
+    // $min_medium_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_medium_delivery)) - 1;
 
     
 ?>
@@ -122,14 +122,14 @@ $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
                             <p>Доставка крупномерных растений (от 100см), больших заказов, высоких или тяжелых кашпо осуществляется грузовым автомобилем.</p>
                             <p><strong>Крупногабаритная доставка на следующий день или позже:</strong></p>
                             <ul>
-                                <li>в пределах МКАД — от '.$large_markup_delivery_in_mkad.' рублей;</li>
-                                <li>за пределы МКАД (до 5 км) — от '.$large_markup_delivery_out_mkad.' рублей;</li>
+                                <li>в пределах МКАД — от '.floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_in_mkad)).' рублей;</li>
+                                <li>за пределы МКАД (до 5 км) — от '.floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)).' рублей;</li>
                                 <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
                             </ul>
                             <p><strong>Крупногабаритная срочная “день в день”. Можно оформить до 18:00:</strong></p>
                             <ul>
-                                <li>в пределах МКАД — от '.floatval(str_replace(' ', '', $large_markup_delivery_in_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)).' рублей;</li>
-                                <li>за пределы МКАД (до 5 км) — от '.floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)).' рублей;</li>
+                                <li>в пределах МКАД — от '.floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_in_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)).' рублей;</li>
+                                <li>за пределы МКАД (до 5 км) — от '.floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)).' рублей;</li>
                                 <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
                             </ul>
                         </div>
