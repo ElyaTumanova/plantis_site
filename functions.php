@@ -52,8 +52,12 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 }
 
 function plantis_load_textdomain() {
-    error_log( 'Текстовый домен загружен через init' );
-	debug_load_theme_textdomain( 'art-starter-theme', get_template_directory() . '/languages' );
+	// Проверяем, что это НЕ wp-cron (админка, фронтенд и т.д.)
+	if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
+		return;
+	}
+
+	load_theme_textdomain( 'art-starter-theme', get_template_directory() . '/languages' );
 }
 add_action( 'init', 'plantis_load_textdomain' );
 
