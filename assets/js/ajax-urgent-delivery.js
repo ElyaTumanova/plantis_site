@@ -197,8 +197,10 @@ function checkHoliday(date) {
 
 if (checkoutForm) {
 
+  setInitalState();
+
   document.addEventListener('DOMContentLoaded', getDatesIntervalsInfo )
-  document.addEventListener('DOMContentLoaded', setInitalState )
+
   document.addEventListener('DOMContentLoaded', getOrderParametrs )
 
   checkoutForm.addEventListener('change', getOrderParametrs);
