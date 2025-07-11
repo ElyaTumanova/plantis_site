@@ -40,7 +40,7 @@ function plnt_check() {
     // echo '<br>';
     $packages = WC()->shipping()->get_packages();
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
-    print_r( $packages);
+    //print_r( $packages);
     // echo '<br>';
     //echo $delivery_pochta;
     // echo $chosen_methods[0];
@@ -410,7 +410,7 @@ function plnt_shipping_conditions( $rates, $package ) {
 }
 
 //убираем способ онлайн-оплаты, если маленькая сумма заказа или далекая доставка
-add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_small_order' );
+//add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_small_order' );
 
 function plnt_disable_payment_small_order( $available_gateways ) {
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
