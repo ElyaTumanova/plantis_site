@@ -189,7 +189,7 @@ $filter_icon = "https://plantis.shop/wp-content/uploads/2024/07/filter_new.svg";
 
 
 //ЗАДАЕМ КОНСТАНТЫ ДЛЯ JS
-
+add_action( 'wp_footer', 'plnt_set_constants_script' );
 function plnt_set_constants_script() {
 	global $delivery_inMKAD;
 	global $delivery_outMKAD;
