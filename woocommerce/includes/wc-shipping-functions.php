@@ -80,6 +80,12 @@ function plnt_get_urgent_shipping() {
       WC()->session->set('isUrgent', '0' ); //0
   }
 
+  if ( $_POST['isLate'] === '1'){
+        WC()->session->set('isLate', '1' );
+    } else {
+        WC()->session->set('isLate', '0' );
+    }
+
 //   WC()->session->set('date', $_POST['date'] );
 
   die(); // (required)
@@ -100,30 +106,30 @@ function plnt_refresh_shipping_methods_for_urgent( $post_data ){
 }
 
 // поздняя доставка
-add_action( 'wp_ajax_get_late_shipping', 'plnt_get_late_shipping' );
-add_action( 'wp_ajax_nopriv_get_late_shipping', 'plnt_get_late_shipping' );
-function plnt_get_late_shipping() {
-    if ( $_POST['isLate'] === '1'){
-        WC()->session->set('isLate', '1' );
-    } else {
-        WC()->session->set('isLate', '0' );
-    }
-    die(); // (required)
-}
+// add_action( 'wp_ajax_get_late_shipping', 'plnt_get_late_shipping' );
+// add_action( 'wp_ajax_nopriv_get_late_shipping', 'plnt_get_late_shipping' );
+// function plnt_get_late_shipping() {
+//     if ( $_POST['isLate'] === '1'){
+//         WC()->session->set('isLate', '1' );
+//     } else {
+//         WC()->session->set('isLate', '0' );
+//     }
+//     die(); // (required)
+// }
 
-add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_late', 10, 1 );
-function plnt_refresh_shipping_methods_for_late( $post_data ){
-    $bool = true;
+// add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_late', 10, 1 );
+// function plnt_refresh_shipping_methods_for_late( $post_data ){
+//     $bool = true;
 
-    if ( WC()->session->get('isLate' ) === '1')
-        $bool = false;
+//     if ( WC()->session->get('isLate' ) === '1')
+//         $bool = false;
 
-    // Mandatory to make it work with shipping methods
-    foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
-        WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
-    }
-    WC()->cart->calculate_shipping();
-}
+//     // Mandatory to make it work with shipping methods
+//     foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
+//         WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
+//     }
+//     WC()->cart->calculate_shipping();
+// }
 
 
 /* выбираем способ доставки в зависимости от условий*/
