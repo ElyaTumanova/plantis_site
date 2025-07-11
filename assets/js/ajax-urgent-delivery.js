@@ -35,8 +35,11 @@ function getCheckedShippingMethod (){
 }
 
 function getCheckedDate (){
-  checkedDateInput = document.querySelectorAll('.delivery_dates input');
+ let dateInput = document.querySelectorAll('.delivery_dates input');
+  checkedDateInput = dateInput.find(()=>{el.checked == true});
+  
   console.debug(checkedDateInput)
+  
   return checkedShippingMethodInput.value;
 }
 
