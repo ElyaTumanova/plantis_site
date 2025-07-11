@@ -38,9 +38,9 @@ function plnt_check() {
     global $local_pickup;
     global $delivery_pochta;
     // echo '<br>';
-    // $packages = WC()->shipping()->get_packages();
+    $packages = WC()->shipping()->get_packages();
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
-    // print_r( $packages);
+    print_r( $packages);
     // echo '<br>';
     //echo $delivery_pochta;
     // echo $chosen_methods[0];
@@ -52,7 +52,7 @@ function plnt_check() {
     // }
     // $isbackorders = plnt_is_backorder();
     // echo 'isback '.$isbackorders.'  ';
-    echo 'isUrgent '.(WC()->session->get('isUrgent' )).'  ';
+    //echo 'isUrgent '.(WC()->session->get('isUrgent' )).'  ';
     // echo 'hiAjax '.(WC()->session->get('hiAjax' )).'  ';
     // echo 'hiInit '.(WC()->session->get('hiInit' )).'  ';
     // echo 'isback2 '.(WC()->session->get('isBackorder' )).'  ';
