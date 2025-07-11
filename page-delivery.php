@@ -8,34 +8,21 @@ get_header(); ?>
     $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
     $min_free_delivery = carbon_get_theme_option('min_free_delivery');
 
-$large_markup_delivery_in_mkad = carbon_get_theme_option('large_markup_delivery_in_mkad');
-$large_markup_delivery_out_mkad = carbon_get_theme_option('large_markup_delivery_out_mkad');
+    $large_markup_delivery_in_mkad = carbon_get_theme_option('large_markup_delivery_in_mkad');
+    $large_markup_delivery_out_mkad = carbon_get_theme_option('large_markup_delivery_out_mkad');
 
-$small_markup_delivery = carbon_get_theme_option('small_markup_delivery');
-$medium_markup_delivery = carbon_get_theme_option('medium_markup_delivery');
+    $small_markup_delivery = carbon_get_theme_option('small_markup_delivery');
+    $medium_markup_delivery = carbon_get_theme_option('medium_markup_delivery');
 
-$urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
-$urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_large');
+    $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
+    $urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_large');
 
-$late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+    $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
 
     $shipping_costs = plnt_get_shiping_costs();
 
     $in_mkad = $shipping_costs[$delivery_inMKAD];
     $out_mkad = $shipping_costs[$delivery_outMKAD];
-
-    // $small_delivery_markup_in_mkad =  floatval(str_replace(' ', '', $in_mkad_small)) - floatval(str_replace(' ', '', $in_mkad));
-    // $small_delivery_markup_out_mkad =  floatval(str_replace(' ', '', $out_mkad_small)) - floatval(str_replace(' ', '', $out_mkad));
-
-    // $medium_delivery_markup_in_mkad =  floatval(str_replace(' ', '', $in_mkad_medium)) - floatval(str_replace(' ', '', $in_mkad));
-    // $medium_delivery_markup_out_mkad =  floatval(str_replace(' ', '', $out_mkad_medium)) - floatval(str_replace(' ', '', $out_mkad));
-    
-    // $small_delivery_markup_in_mkad_urg =  floatval(str_replace(' ', '', $in_mkad_small_urg)) - floatval(str_replace(' ', '', $in_mkad_urg));
-    // $small_delivery_markup_out_mkad_urg =  floatval(str_replace(' ', '', $out_mkad_small_urg)) - floatval(str_replace(' ', '', $out_mkad_urg));
-
-    // $medium_delivery_markup_in_mkad_urg =  floatval(str_replace(' ', '', $in_mkad_medium_urg)) - floatval(str_replace(' ', '', $in_mkad_urg));
-    // $medium_delivery_markup_out_mkad_urg =  floatval(str_replace(' ', '', $out_mkad_medium_urg)) - floatval(str_replace(' ', '', $out_mkad_urg));
-
     $min_small_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_small_delivery)) - 1;
     $min_medium_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_medium_delivery)) - 1;
 
