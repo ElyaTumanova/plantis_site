@@ -990,7 +990,7 @@ function plnt_show_dontcallme_on_thankyou( $order_id ) {
     $order = wc_get_order( $order_id );
 
     // Получаем значение поля billing_dontcallme
-    $dontcallme = $order->get_billing_dontcallme();
+    $dontcallme = $order->get_meta('billing_dontcallme');
 
     if ( ! empty( $dontcallme ) ) {
         echo '<p><strong>Не нужно звонков, напишите сразу в WhatsApp;)</strong> ' . esc_html( $dontcallme ) . '</p>';
