@@ -124,8 +124,16 @@ function ajaxGetUrgent() {
                 'isLate': isLate
             },
             success: function (result) {
+                console.debug('AJAX success:', result);
                 // Trigger refresh checkout
                 $('body').trigger('update_checkout');
+            },
+            error: function(xhr, status, error) {
+                console.error('AJAX error:', status, error);
+                console.error('Response:', xhr.responseText);
+            },
+            complete: function() {
+                console.debug('AJAX complete');
             }
         });
   });
