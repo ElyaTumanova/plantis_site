@@ -890,6 +890,14 @@ function plnt_override_checkout_fields( $fields ) {
     return $fields;
 }
 
+add_filter( 'woocommerce_checkout_fields', 'hide_all_billing_field_labels' );
+function hide_all_billing_field_labels( $fields ) {
+    foreach ( $fields['billing'] as $key => &$field ) {
+        $field['label'] = ''; // Удаляем заголовок
+    }
+    return $fields;
+}
+
 /*--------------------------------------------------------------
 # Dont call me radio buttons
 --------------------------------------------------------------*/
