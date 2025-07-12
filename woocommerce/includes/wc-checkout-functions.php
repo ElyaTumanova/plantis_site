@@ -895,6 +895,11 @@ function hide_all_billing_field_labels( $fields ) {
     foreach ( $fields['billing'] as $key => &$field ) {
         $field['label'] = ''; // Удаляем заголовок
     }
+
+    if ( isset( $fields['order']['order_comments'] ) ) {
+        $fields['order']['order_comments']['label'] = '';
+    }
+    
     return $fields;
 }
 
