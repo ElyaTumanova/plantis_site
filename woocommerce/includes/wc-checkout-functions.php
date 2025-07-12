@@ -983,6 +983,19 @@ function plnt_dontcallme_field_in_email( $rows, $order ) {
 
 }
 
+// // добавляем в Спасибо за заказ
+
+add_action( 'woocommerce_thankyou', 'plnt_show_dontcallme_on_thankyou', 20 );
+function plnt_show_dontcallme_on_thankyou( $order_id ) {
+	$order = wc_get_order( $order_id );
+	$dontcallme = $order->get_meta( 'billing_dontcallme' );
+
+	if ( ! empty( $comments ) ) {
+		echo '<h2>Комментарий к заказу</h2>';
+		echo '<p>' . $dontcallme . '</p>';
+	}
+}
+
 /*--------------------------------------------------------------
 # Billing adress field
 --------------------------------------------------------------*/
