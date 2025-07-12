@@ -84,7 +84,7 @@ if($site === 'https://plantis-shop.ru') {
 
 if($site === 'https://plantis-shop.ru') {
 	//PLANTIS-SHOP.RU
-	$local_pickup = 'local_pickup:1'; //самовывоз to be updated
+	$local_pickup = 'local_pickup:5'; 
 	
 	$delivery_inMKAD = 'flat_rate:1';
 	$delivery_outMKAD = 'flat_rate:2';
