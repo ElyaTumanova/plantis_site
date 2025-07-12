@@ -14,9 +14,9 @@ function plnt_check_site() {
 			echo '<script> console.log("hello plantis")</script>';
 		}
 	}
-	// echo '<pre>';
-	// print_r( $site );
-	// echo '</pre>';
+	echo '<pre>';
+	print_r( $site );
+	echo '</pre>';
 }
 
 add_action( 'wp_footer', 'plnt_check_site' );
@@ -84,34 +84,34 @@ if($site === 'https://plantis-shop.ru') {
 
 if($site === 'https://plantis-shop.ru') {
 	//PLANTIS-SHOP.RU
-	$local_pickup = 'local_pickup:1'; //самовывоз
+	$local_pickup = 'local_pickup:1'; //самовывоз to be updated
 	
 	$delivery_inMKAD = 'flat_rate:1';
 	$delivery_outMKAD = 'flat_rate:2';
-	$delivery_inMKAD_small = 'flat_rate:34';
-	$delivery_outMKAD_small = 'flat_rate:35';
-	$delivery_inMKAD_large = 'flat_rate:29';
-	$delivery_outMKAD_large = 'flat_rate:30';
-	$delivery_inMKAD_medium = 'flat_rate:38';
-	$delivery_outMKAD_medium = 'flat_rate:40';
+	// $delivery_inMKAD_small = 'flat_rate:34';
+	// $delivery_outMKAD_small = 'flat_rate:35';
+	// $delivery_inMKAD_large = 'flat_rate:29';
+	// $delivery_outMKAD_large = 'flat_rate:30';
+	// $delivery_inMKAD_medium = 'flat_rate:38';
+	// $delivery_outMKAD_medium = 'flat_rate:40';
 
 
-	$urgent_delivery_inMKAD = 'flat_rate:13'; 
-	$urgent_delivery_outMKAD = 'flat_rate:14'; 
-	$urgent_delivery_inMKAD_small = 'flat_rate:36'; 
-	$urgent_delivery_outMKAD_small = 'flat_rate:37';
-	$urgent_delivery_inMKAD_large = 'flat_rate:31'; 
-	$urgent_delivery_outMKAD_large = 'flat_rate:32';
-	$urgent_delivery_inMKAD_medium = 'flat_rate:39'; 
-	$urgent_delivery_outMKAD_medium = 'flat_rate:41';
+	// $urgent_delivery_inMKAD = 'flat_rate:13'; 
+	// $urgent_delivery_outMKAD = 'flat_rate:14'; 
+	// $urgent_delivery_inMKAD_small = 'flat_rate:36'; 
+	// $urgent_delivery_outMKAD_small = 'flat_rate:37';
+	// $urgent_delivery_inMKAD_large = 'flat_rate:31'; 
+	// $urgent_delivery_outMKAD_large = 'flat_rate:32';
+	// $urgent_delivery_inMKAD_medium = 'flat_rate:39'; 
+	// $urgent_delivery_outMKAD_medium = 'flat_rate:41';
 	
 	$delivery_free = 'free_shipping:9';
 
-	$delivery_pochta = 'flat_rate:3';
+	$delivery_pochta = 'flat_rate:4'; //to be updated
 
-	$delivery_courier = 'free_shipping:1';
+	$delivery_courier = 'free_shipping:1'; //to be updated
 
-	$delivery_long_dist = 'free_shipping:2';
+	$delivery_long_dist = 'free_shipping:3';
 
 	//#filters ID's
 	$filter_podborki_id = 10989;
