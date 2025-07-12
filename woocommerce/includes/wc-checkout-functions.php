@@ -862,7 +862,7 @@ Contents
 /*--------------------------------------------------------------
 # Checkout form fields
 --------------------------------------------------------------*/
-
+// редактируем поля формы
 add_filter( 'woocommerce_checkout_fields', 'plnt_override_checkout_fields' );
 
 function plnt_override_checkout_fields( $fields ) {
@@ -890,6 +890,7 @@ function plnt_override_checkout_fields( $fields ) {
     return $fields;
 }
 
+//убираем заголовки
 add_filter( 'woocommerce_checkout_fields', 'hide_all_billing_field_labels' );
 function hide_all_billing_field_labels( $fields ) {
     foreach ( $fields['billing'] as $key => &$field ) {
@@ -903,12 +904,16 @@ function hide_all_billing_field_labels( $fields ) {
     return $fields;
 }
 
+//добавляем поле с примечанием в админку
 add_action( 'woocommerce_checkout_create_order', 'plnt_save_order_comments_field', 10, 2 );
 function plnt_save_order_comments_field( $order, $data ) {
 	if ( isset( $_POST['order_comments'] ) ) {
 		$order->update_meta_data( '_order_comments', sanitize_textarea_field( $_POST['order_comments'] ) );
 	}
 }
+
+//скрываем в админке поля для адреса доставки
+add_filter( 'woocommerce_admin_shipping_fields', '__return_empty_array' );
 
 /*--------------------------------------------------------------
 # Dont call me radio buttons
