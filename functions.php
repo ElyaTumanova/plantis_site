@@ -45,7 +45,7 @@ require get_template_directory() . '/includes/metrika.php';
 /** Add Woocommerce files */
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 	require get_template_directory() . '/woocommerce/includes/wc-cart-functions.php';
-	//require get_template_directory() . '/woocommerce/includes/wc-shipping-functions.php';
+	require get_template_directory() . '/woocommerce/includes/wc-shipping-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-checkout-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-custom-fields.php';
 	require get_template_directory() . '/woocommerce/includes/wc-function.php';
