@@ -141,7 +141,7 @@ function renderDeliveryIntervals(shippingValue) {
 //   });
 // };
 
-function ajaxGetUrgent(isUrgent, isLate) {
+function ajaxGetUrgent() {
   console.debug('hi ajaxGetUrgent');
   console.debug('isUrgent ajax', isUrgent);
   console.debug('isLate ajax', isLate);
