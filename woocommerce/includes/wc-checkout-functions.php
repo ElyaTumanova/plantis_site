@@ -897,7 +897,7 @@ function plnt_override_checkout_fields( $fields ) {
 add_filter( 'woocommerce_checkout_fields', 'plnt_add_dontcallme_field_to_checkout' );
 
 function plnt_add_dontcallme_field_to_checkout( $fields ) {
-    $fields['billing']['billing_dontcallme_field'] = array(
+    $fields['billing']['billing_dontcallme'] = array(
         'type'        => 'radio',
         'label'       => 'Не нужно звонков, напишите сразу в WhatsApp;)',
         'required'    => true,
@@ -909,11 +909,59 @@ function plnt_add_dontcallme_field_to_checkout( $fields ) {
         'default'     => 'no',
     );
 
-    $fields['billing']['billing_dontcallme_field']['priority'] = 30;
-    
+    $fields['billing']['billing_dontcallme']['priority'] = 30;
+
     return $fields;
 }
 
+// // сохряняем новое поле в заказе
+
+
+add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_dontcallme_fields', 25 );
+
+function plnt_save_deliveplnt_save_dontcallme_fieldsry_fields( $order_id ){
+
+    if( ! empty( $_POST[ 'billing_dontcallme' ] ) ) {
+        update_post_meta( $order_id, 'billing_dontcallme', sanitize_text_field( $_POST[ 'billing_dontcallme' ] ) );
+    }
+}
+
+// // добавляем поле в админку
+
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_doncallme_field_value', 20 );
+
+function plnt_print_doncallme_field_value( $order ){
+
+    $method = get_post_meta( $order->get_id(), 'billing_dontcallme', true );
+
+    echo '<div class="address">
+        <p' . ( ! $method ? ' class="none_set"' : '' ) . '>
+            <strong>Не нужно звонков, напишите сразу в WhatsApp;)</strong>
+            ' . ( $method ? $method : 'Не указан.' ) . '
+        </p>
+    </div>'
+}
+
+
+// // добавляем новые поля в письма
+
+add_filter( 'woocommerce_get_order_item_totals', 'plnt_dontcallme_field_in_email', 20, 2 );
+    
+function plnt_dontcallme_field_in_email( $rows, $order ) {
+
+    // удалите это условие, если хотите добавить значение поля и на страницу "Заказ принят"
+    // if( is_order_received_page() ) {
+    // 	return $rows;
+    // }
+
+    $rows[ 'billing_dontcallme' ] = array(
+        'label' => 'Не нужно звонков, напишите сразу в WhatsApp;)',
+        'value' => get_post_meta( $order->get_id(), 'billing_dontcallme', true )
+    );
+
+    return $rows;
+
+}
 
 /*--------------------------------------------------------------
 # Billing adress field
