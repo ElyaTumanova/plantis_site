@@ -88,15 +88,7 @@ function plnt_get_urgent_shipping() {
     WC()->session->set( 'isUrgent', $is_urgent );
     WC()->session->set( 'isLate', $is_late );
 
-    // Можно вернуть успех для отладки
-    wp_send_json_success([
-        'set' => [
-            'isUrgent' => $is_urgent,
-            'isLate' => $is_late,
-        ]
-    ]);
-
-  wp_die(); // (required)
+   wp_send_json_success([ 'message' => 'OK' ]);
 }
 
 add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_urgent', 10, 1 );
