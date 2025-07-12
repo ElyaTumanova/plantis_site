@@ -126,7 +126,9 @@ function ajaxGetUrgent() {
             success: function (result) {
                 console.debug('AJAX success:', result);
                 // Trigger refresh checkout
-                $('body').trigger('update_checkout');
+                if (result.success) {
+                    $('body').trigger('update_checkout');
+                }
             },
             error: function(xhr, status, error) {
                 console.error('AJAX error:', status, error);

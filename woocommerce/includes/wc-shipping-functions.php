@@ -90,13 +90,12 @@ function plnt_get_urgent_shipping() {
 
     // Можно вернуть успех для отладки
     wp_send_json_success([
-        'set' => [
-            'isUrgent' => $is_urgent,
-            'isLate' => $is_late,
-        ]
+        'isUrgent' => $is_urgent,
+        'isLate' => $is_late,
+        'message' => 'Флаги обновлены'
     ]);
 
-  wp_die(); // (required)
+  //wp_die(); // (required)
 }
 
 add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_urgent', 10, 1 );
