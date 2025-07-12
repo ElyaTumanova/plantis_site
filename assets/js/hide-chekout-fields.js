@@ -15,6 +15,8 @@
         if(event && event.target.className == "shipping_method") {
             // console.log(event);
             checkedShippingMethod = event.target.value;
+        } else {
+            checkedShippingMethod = getCheckedShippingMethod();
         }
 
         //for delivery intervals
@@ -99,7 +101,8 @@
     }
 
     if(checkoutForm) {
-        plnt_hide_checkout_fields(event);
+        document.addEventListener('DOMContentLoaded', plnt_hide_checkout_fields )
+        //plnt_hide_checkout_fields(event);
         
         checkoutForm.addEventListener('change', plnt_hide_checkout_fields);
     }
