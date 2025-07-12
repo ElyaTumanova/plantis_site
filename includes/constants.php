@@ -14,9 +14,9 @@ function plnt_check_site() {
 			echo '<script> console.log("hello plantis")</script>';
 		}
 	}
-	echo '<pre>';
-	print_r( $site );
-	echo '</pre>';
+	// echo '<pre>';
+	// print_r( $site );
+	// echo '</pre>';
 }
 
 add_action( 'wp_footer', 'plnt_check_site' );
