@@ -903,6 +903,13 @@ function hide_all_billing_field_labels( $fields ) {
     return $fields;
 }
 
+add_action( 'woocommerce_checkout_create_order', 'plnt_save_order_comments_field', 10, 2 );
+function plnt_save_order_comments_field( $order, $data ) {
+	if ( isset( $_POST['order_comments'] ) ) {
+		$order->update_meta_data( '_order_comments', sanitize_textarea_field( $_POST['order_comments'] ) );
+	}
+}
+
 /*--------------------------------------------------------------
 # Dont call me radio buttons
 --------------------------------------------------------------*/
