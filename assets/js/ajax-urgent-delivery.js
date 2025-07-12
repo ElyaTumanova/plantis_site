@@ -116,6 +116,7 @@ function ajaxGetUrgent() {
   jQuery( function($){
         $.ajax({
             type: 'POST',
+            contentType: 'application/json',
             url: wc_checkout_params.ajax_url,
             data: {
                 'action': 'get_urgent_shipping',
