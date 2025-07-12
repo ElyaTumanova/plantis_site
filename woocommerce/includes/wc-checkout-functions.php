@@ -939,7 +939,7 @@ function plnt_print_doncallme_field_value( $order ){
             <strong>Не нужно звонков, напишите сразу в WhatsApp;)</strong>
             ' . ( $method ? $method : 'Не указан.' ) . '
         </p>
-    </div>'
+    </div>';
 }
 
 
