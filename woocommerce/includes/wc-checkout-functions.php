@@ -976,7 +976,7 @@ function plnt_print_doncallme_field_value( $order ){
 
 // // добавляем новые поля в письма
 
-add_filter( 'woocommerce_email_after_order_table', 'plnt_dontcallme_field_in_email', 20, 2 );
+add_filter( 'woocommerce_get_order_item_totals', 'plnt_dontcallme_field_in_email', 20, 2 );
     
 function plnt_dontcallme_field_in_email( $rows, $order ) {
 
