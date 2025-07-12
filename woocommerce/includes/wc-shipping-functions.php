@@ -80,8 +80,21 @@ function plnt_get_urgent_shipping() {
 //         WC()->session->set('isLate', '0' );
 //     }
 
-    WC()->session->set('isUrgent', $_POST['isUrgent'] );
-    WC()->session->set('isLate', $_POST['isLate'] );
+// Безопасная обработка значений
+    $is_urgent = sanitize_text_field( $_POST['isUrgent'] ?? '' );
+    $is_late   = sanitize_text_field( $_POST['isLate'] ?? '' );
+
+    // Запись в сессию WooCommerce
+    WC()->session->set( 'isUrgent', $is_urgent );
+    WC()->session->set( 'isLate', $is_late );
+
+    // Можно вернуть успех для отладки
+    wp_send_json_success([
+        'set' => [
+            'isUrgent' => $is_urgent,
+            'isLate' => $is_late,
+        ]
+    ]);
 
   wp_die(); // (required)
 }
