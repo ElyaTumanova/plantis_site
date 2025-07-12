@@ -606,6 +606,10 @@
     font-style: normal;
 }
 
+.plnt-order__delivery-label {
+    font-weight: 700;
+}
+
 /* адрес клиента */ 
 
 .woocommerce-customer-details .woocommerce-column__title {
