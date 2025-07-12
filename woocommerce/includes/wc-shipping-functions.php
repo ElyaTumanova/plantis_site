@@ -68,13 +68,13 @@ add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
 
-  if ( $_POST['isUrgent'] === 'true'){
+  if ( $_POST['isUrgent'] === '1'){
       WC()->session->set('isUrgent', '1' ); //1
   } else {
       WC()->session->set('isUrgent', '0' ); //0
   }
 
-  if ( $_POST['isLate'] === 'true'){
+  if ( $_POST['isLate'] === '1'){
         WC()->session->set('isLate', '1' );
     } else {
         WC()->session->set('isLate', '0' );
