@@ -7,11 +7,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 Contents
 # Backorders
 # Checkout page adjustments
-# Billing adress field
 # Delivery date & Interval fields
 # Notifications
 # Treez & Lechuza notifications
 # Checkout form fields
+# Billing adress field
 # Thankyou page
 --------------------------------------------------------------*/
 
@@ -167,66 +167,6 @@ Contents
         }
         echo '</div>';
     }
-/*--------------------------------------------------------------
-# Billing adress field
---------------------------------------------------------------*/
-    // делим поле billing_address_2 на несколько полей//
-
-    add_filter( 'woocommerce_form_field_text', 'true_fields', 25, 4 );
-    
-    function true_fields( $field, $key, $args, $value ) {
-    
-        if( 'billing_address_2' === $key ) {
-    
-            $field = '<p class="form-row address-field additional-address-field form-row-wide" data-priority="60">
-                <span class="woocommerce-input-wrapper true-wrapper woocommerce-address-wrapper">
-                    <input type="text" name="billing_address_2" id="billing_address_2" placeholder="Квартира" value="">
-                    <input type="text" name="billing_address_3" id="billing_address_3" placeholder="Подъезд" value="">
-                    <input type="text" name="billing_address_4" id="billing_address_4" placeholder="Этаж" value="">
-                    <input type="text" name="billing_address_5" id="billing_address_5" placeholder="Дополнительная информация" value="">
-                </span>
-            </p>';
-    
-        }
-    
-        return $field;
-    
-    }
-
-    add_filter( 'woocommerce_checkout_posted_data', 'true_process_fields' );
-    
-    function true_process_fields( $data ) {
-    
-        // в поле billing_address_2 мы и будем записывать новые значения полей
-        $data[ 'billing_address_2' ] = '';
-        $fields = array();
-    
-        // получаем данные из глобального $_POST, сначала парадную (подъезд)
-        if( ! empty( $_POST[ 'billing_address_2' ] ) ) {
-            $fields[] = 'квартира ' . $_POST[ 'billing_address_2' ];
-        }
-
-        if( ! empty( $_POST[ 'billing_address_3' ] ) ) {
-            $fields[] = 'подъезд ' . $_POST[ 'billing_address_3' ];
-        }
-        // затем этаж
-        if( ! empty( $_POST[ 'billing_address_4' ] ) ) {
-            $fields[] = 'этаж ' . $_POST[ 'billing_address_4' ];
-        }
-
-        // затем доп поля
-        if( ! empty( $_POST[ 'billing_address_5' ] ) ) {
-            $fields[] = ' ' . $_POST[ 'billing_address_5' ];
-        }
-
-        // объединяем все заполненные данные запятой
-        $data[ 'billing_address_2' ] = join( ', ', $fields );
-    
-        // возвращаем результат
-        return $data;
-    
-    }
-
 /*--------------------------------------------------------------
 # Delivery date & Interval fields
 --------------------------------------------------------------*/
@@ -925,19 +865,78 @@ Contents
 add_filter( 'woocommerce_checkout_fields', 'plnt_override_checkout_fields' );
 
 function plnt_override_checkout_fields( $fields ) {
-
+    //убираем ненужные поля
     unset( $fields['billing']['billing_last_name'] );
     unset( $fields['billing']['billing_city'] );
     unset( $fields['billing']['billing_state'] );
-
-    // Удаление поля "Почтовый индекс"
     unset( $fields['billing']['billing_postcode'] );
-
-    // Пример: убрать поле из раздела доставки
-    // unset( $fields['shipping']['shipping_address_2'] );
+    //меняем порядок вывода полей
+    $fields['billing']['billing_phone']['priority'] = 20;
+    $fields['billing']['billing_email']['priority'] = 20;
+    $fields['billing']['billing_address_2']['priority'] = 30;
 
     return $fields;
 }
+
+/*--------------------------------------------------------------
+# Billing adress field
+--------------------------------------------------------------*/
+    // делим поле billing_address_2 на несколько полей//
+
+    add_filter( 'woocommerce_form_field_text', 'true_fields', 25, 4 );
+    
+    function true_fields( $field, $key, $args, $value ) {
+    
+        if( 'billing_address_2' === $key ) {
+    
+            $field = '<p class="form-row address-field additional-address-field form-row-wide" data-priority="60">
+                <span class="woocommerce-input-wrapper true-wrapper woocommerce-address-wrapper">
+                    <input type="text" name="billing_address_2" id="billing_address_2" placeholder="Квартира" value="">
+                    <input type="text" name="billing_address_3" id="billing_address_3" placeholder="Подъезд" value="">
+                    <input type="text" name="billing_address_4" id="billing_address_4" placeholder="Этаж" value="">
+                    <input type="text" name="billing_address_5" id="billing_address_5" placeholder="Дополнительная информация" value="">
+                </span>
+            </p>';
+    
+        }
+    
+        return $field;
+    
+    }
+
+    add_filter( 'woocommerce_checkout_posted_data', 'true_process_fields' );
+    
+    function true_process_fields( $data ) {
+    
+        // в поле billing_address_2 мы и будем записывать новые значения полей
+        $data[ 'billing_address_2' ] = '';
+        $fields = array();
+    
+        // получаем данные из глобального $_POST, сначала парадную (подъезд)
+        if( ! empty( $_POST[ 'billing_address_2' ] ) ) {
+            $fields[] = 'квартира ' . $_POST[ 'billing_address_2' ];
+        }
+
+        if( ! empty( $_POST[ 'billing_address_3' ] ) ) {
+            $fields[] = 'подъезд ' . $_POST[ 'billing_address_3' ];
+        }
+        // затем этаж
+        if( ! empty( $_POST[ 'billing_address_4' ] ) ) {
+            $fields[] = 'этаж ' . $_POST[ 'billing_address_4' ];
+        }
+
+        // затем доп поля
+        if( ! empty( $_POST[ 'billing_address_5' ] ) ) {
+            $fields[] = ' ' . $_POST[ 'billing_address_5' ];
+        }
+
+        // объединяем все заполненные данные запятой
+        $data[ 'billing_address_2' ] = join( ', ', $fields );
+    
+        // возвращаем результат
+        return $data;
+    
+    }
 
 /*--------------------------------------------------------------
 # Thankyou page
