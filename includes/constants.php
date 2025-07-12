@@ -204,6 +204,9 @@ function plnt_set_constants_script() {
 
 	$shipping_costs = plnt_get_shiping_costs();
 
+    echo ($delivery_inMKAD);
+    echo ($delivery_outMKAD);
+
     $in_mkad = $shipping_costs[$delivery_inMKAD];
     $out_mkad = $shipping_costs[$delivery_outMKAD];
 
