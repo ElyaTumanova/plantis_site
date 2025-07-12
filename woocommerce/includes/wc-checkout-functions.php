@@ -11,6 +11,7 @@ Contents
 # Delivery date & Interval fields
 # Notifications
 # Treez & Lechuza notifications
+# Checkout form fields
 # Thankyou page
 --------------------------------------------------------------*/
 
@@ -916,6 +917,27 @@ Contents
         
         return $isTreezBackorders;
     }
+
+/*--------------------------------------------------------------
+# Checkout form fields
+--------------------------------------------------------------*/
+
+add_filter( 'woocommerce_checkout_fields', 'plnt_override_checkout_fields' );
+
+function plnt_override_checkout_fields( $fields ) {
+
+    unset( $fields['billing']['billing_last_name'] );
+    unset( $fields['billing']['billing_city'] );
+    unset( $fields['billing']['billing_state'] );
+
+    // Удаление поля "Почтовый индекс"
+    unset( $fields['billing']['billing_postcode'] );
+
+    // Пример: убрать поле из раздела доставки
+    // unset( $fields['shipping']['shipping_address_2'] );
+
+    return $fields;
+}
 
 /*--------------------------------------------------------------
 # Thankyou page

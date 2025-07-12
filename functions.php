@@ -312,8 +312,3 @@ function plnt_get_prods_data() {
 }
 
 //add_action( 'wp_footer', 'plnt_get_prods_data' );
-
-
-add_action( 'wp_ajax_test_ajax', function() {
-    wp_send_json_success( ['status' => 'ok'] );
-});
