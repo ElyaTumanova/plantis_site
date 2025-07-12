@@ -913,7 +913,10 @@ function plnt_save_order_comments_field( $order, $data ) {
 }
 
 //скрываем в админке поля для адреса доставки
-add_filter( 'woocommerce_admin_shipping_fields', '__return_empty_array' );
+add_action( 'add_meta_boxes', function() {
+	remove_meta_box( 'woocommerce-order-shipping-address', 'shop_order', 'side' );
+}, 99 );
+
 
 /*--------------------------------------------------------------
 # Dont call me radio buttons
