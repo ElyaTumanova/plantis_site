@@ -1002,7 +1002,7 @@ function plnt_dontcallme_field_in_email( $rows, $order ) {
     
     }
 
-    add_filter( 'woocommerce_checkout_posted_data', 'true_process_fields' );
+    //add_filter( 'woocommerce_checkout_posted_data', 'true_process_fields' );
     
     function true_process_fields( $data ) {
     
@@ -1034,6 +1034,28 @@ function plnt_dontcallme_field_in_email( $rows, $order ) {
         // возвращаем результат
         return $data;
     
+    }
+
+    add_action( 'woocommerce_checkout_update_order_meta', 'true_save_combined_address' );
+    function true_save_combined_address( $order_id ) {
+        $fields = [];
+
+        if ( ! empty( $_POST['billing_address_2'] ) ) {
+            $fields[] = 'квартира ' . sanitize_text_field( $_POST['billing_address_2'] );
+        }
+        if ( ! empty( $_POST['billing_address_3'] ) ) {
+            $fields[] = 'подъезд ' . sanitize_text_field( $_POST['billing_address_3'] );
+        }
+        if ( ! empty( $_POST['billing_address_4'] ) ) {
+            $fields[] = 'этаж ' . sanitize_text_field( $_POST['billing_address_4'] );
+        }
+        if ( ! empty( $_POST['billing_address_5'] ) ) {
+            $fields[] = sanitize_text_field( $_POST['billing_address_5'] );
+        }
+
+        $address = implode( ', ', $fields );
+
+        update_post_meta( $order_id, '_billing_address_2', $address );
     }
 
 /*--------------------------------------------------------------
