@@ -132,6 +132,12 @@ if ( $show_downloads ) {
  */
 do_action( 'woocommerce_after_order_details', $order );
 ?>
+<?php if( $plnt_order_totals['billing_dontcallme']['value'] ) : ?>
+<div class='plnt-order__delivery-row'>
+    <div class='plnt-order__delivery-label' scope="row">Не нужно звонков, напишите сразу в WhatsApp:</div>
+    <div class='plnt-order__delivery-value'><?php echo wp_kses_post( $plnt_order_totals['billing_dontcallme']['value'] ); ?></div>
+</div>
+<?php endif; ?> 
 <?php if( $plnt_order_totals['delivery_dates']['value'] ) : ?>
 <div class='plnt-order__delivery-row'>
     <div class='plnt-order__delivery-label' scope="row">Дата доставки (самовывоза):</div>
