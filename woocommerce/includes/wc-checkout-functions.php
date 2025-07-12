@@ -13,6 +13,7 @@ Contents
 # Checkout form fields
 # Dont call me radio buttons
 # Billing adress field
+# Payment for local pickup
 # Thankyou page
 --------------------------------------------------------------*/
 
@@ -1075,6 +1076,79 @@ function plnt_dontcallme_field_in_email( $rows, $order ) {
 
         update_post_meta( $order_id, '_billing_address_2', $address );
     }
+
+/*--------------------------------------------------------------
+# Payment for local pickup
+--------------------------------------------------------------*/
+
+add_filter( 'woocommerce_payment_gateways', 'add_cash_pickup_gateway_class' );
+function add_cash_pickup_gateway_class( $gateways ) {
+    $gateways[] = 'WC_Gateway_Cash_Pickup';
+    return $gateways;
+}
+
+add_action( 'plugins_loaded', 'init_cash_pickup_gateway_class' );
+function init_cash_pickup_gateway_class() {
+    class WC_Gateway_Cash_Pickup extends WC_Payment_Gateway {
+        public function __construct() {
+            $this->id = 'cash_pickup';
+            $this->method_title = 'Оплата при получении в шоуруме';
+            $this->method_description = 'Оплата наличными только при выборе самовывоза.';
+            $this->has_fields = false;
+
+            $this->init_form_fields();
+            $this->init_settings();
+
+            $this->enabled = $this->get_option( 'enabled' );
+            $this->title   = $this->get_option( 'title' );
+
+            add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, [ $this, 'process_admin_options' ] );
+        }
+
+        public function init_form_fields() {
+            $this->form_fields = array(
+                'enabled' => array(
+                    'title'   => 'Включить/Отключить',
+                    'type'    => 'checkbox',
+                    'label'   => 'Включить способ оплаты "Наличные при самовывозе"',
+                    'default' => 'yes'
+                ),
+                'title' => array(
+                    'title'       => 'Заголовок',
+                    'type'        => 'text',
+                    'description' => 'У нас в шоуруме можно оплатить любым удобным для Вас способом: наличными, картой или переводом.',
+                    'default'     => 'Наличные при самовывозе',
+                ),
+            );
+        }
+
+        public function process_payment( $order_id ) {
+            $order = wc_get_order( $order_id );
+            $order->payment_complete();
+            $order->reduce_order_stock();
+            WC()->cart->empty_cart();
+            return array(
+                'result'   => 'success',
+                'redirect' => $this->get_return_url( $order ),
+            );
+        }
+    }
+}
+
+add_filter( 'woocommerce_available_payment_gateways', 'limit_cash_pickup_to_local_pickup' );
+function limit_cash_pickup_to_local_pickup( $available_gateways ) {
+    if ( is_admin() ) return $available_gateways;
+
+    $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+    $chosen_shipping = $chosen_methods[0] ?? '';
+
+    if ( isset( $available_gateways['cash_pickup'] ) && strpos( $chosen_shipping, 'local_pickup' ) === false ) {
+        unset( $available_gateways['cash_pickup'] );
+    }
+
+    return $available_gateways;
+}
+
 
 /*--------------------------------------------------------------
 # Thankyou page
