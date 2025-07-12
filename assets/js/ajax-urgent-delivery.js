@@ -108,38 +108,75 @@ function renderDeliveryIntervals(shippingValue) {
 }
 
 //аякс запрос
-function ajaxGetUrgent() {
+// function ajaxGetUrgent() {
+//   console.debug('hi ajaxGetUrgent');
+//   console.debug('isUrgent ajax', isUrgent);
+//   console.debug('isLate ajax', isLate);
+
+//   jQuery( function($){
+//         $.ajax({
+//             type: 'POST',
+//             dataType: 'json',
+//             url: wc_checkout_params.ajax_url,
+//             data: {
+//                 'action': 'get_urgent_shipping',
+//                 'isUrgent': isUrgent,
+//                 'isLate': isLate
+//             },
+//             success: function (result) {
+//                 console.debug('AJAX success:', result);
+//                 // Trigger refresh checkout
+//                 if (result.success) {
+//                     $('body').trigger('update_checkout');
+//                 }
+//             },
+//             error: function(xhr, status, error) {
+//                 console.error('AJAX error:', status, error);
+//                 console.error('Response:', xhr.responseText);
+//             },
+//             complete: function() {
+//                 console.debug('AJAX complete');
+//             }
+//         });
+//   });
+// };
+
+function ajaxGetUrgent(isUrgent, isLate) {
   console.debug('hi ajaxGetUrgent');
   console.debug('isUrgent ajax', isUrgent);
   console.debug('isLate ajax', isLate);
 
-  jQuery( function($){
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            url: wc_checkout_params.ajax_url,
-            data: {
-                'action': 'get_urgent_shipping',
-                'isUrgent': isUrgent,
-                'isLate': isLate
-            },
-            success: function (result) {
-                console.debug('AJAX success:', result);
-                // Trigger refresh checkout
-                if (result.success) {
-                    $('body').trigger('update_checkout');
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX error:', status, error);
-                console.error('Response:', xhr.responseText);
-            },
-            complete: function() {
-                console.debug('AJAX complete');
-            }
-        });
+  const data = new URLSearchParams();
+  data.append('action', 'get_urgent_shipping');
+  data.append('isUrgent', isUrgent);
+  data.append('isLate', isLate);
+
+  fetch('/wp-admin/admin-ajax.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: data
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(result => {
+    console.debug('✅ AJAX success:', result);
+    if (result.success) {
+      document.body.dispatchEvent(new Event('update_checkout'));
+    }
+  })
+  .catch(error => {
+    console.error('❌ AJAX error:', error);
+  })
+  .finally(() => {
+    console.debug('⚙️ AJAX complete');
   });
-};
+}
 
 //определяем начальное состояние при загрузке формы
 function setInitalState() {
