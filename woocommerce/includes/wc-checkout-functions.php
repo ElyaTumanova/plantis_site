@@ -11,6 +11,7 @@ Contents
 # Notifications
 # Treez & Lechuza notifications
 # Checkout form fields
+# Dont call me radio buttons
 # Billing adress field
 # Thankyou page
 --------------------------------------------------------------*/
@@ -873,10 +874,46 @@ function plnt_override_checkout_fields( $fields ) {
     //меняем порядок вывода полей
     $fields['billing']['billing_phone']['priority'] = 20;
     $fields['billing']['billing_email']['priority'] = 20;
-    $fields['billing']['billing_address_2']['priority'] = 30;
+    $fields['billing']['billing_address_2']['priority'] = 40;
+
+    //добавляем placeholder
+    $fields['billing']['billing_first_name']['placeholder'] = 'Имя (обязательно)';
+    $fields['billing']['billing_phone']['placeholder'] = 'Телефон (обязательно)';
+    $fields['billing']['billing_email']['placeholder'] = 'Email (обязательно)';
+    //делаем обязательным
+    $fields['billing']['billing_first_name']['required'] = true;
+    $fields['billing']['billing_phone']['required'] = true;
+    $fields['billing']['billing_email']['required'] = true;
+    $fields['billing']['billing_address_2']['required'] = false;
+    
 
     return $fields;
 }
+
+/*--------------------------------------------------------------
+# Dont call me radio buttons
+--------------------------------------------------------------*/
+
+add_filter( 'woocommerce_checkout_fields', 'plnt_add_dontcallme_field_to_checkout' );
+
+function plnt_add_dontcallme_field_to_checkout( $fields ) {
+    $fields['billing']['billing_dontcallme_field'] = array(
+        'type'        => 'radio',
+        'label'       => 'Не нужно звонков, напишите сразу в WhatsApp;)',
+        'required'    => true,
+        'class'       => array( 'form-row dontcallme' ),
+        'options'     => array(
+            'yes' => 'Да',
+            'no'   => 'Нет',
+        ),
+        'default'     => 'no',
+    );
+
+    $fields['billing']['billing_dontcallme_field']['priority'] = 30;
+    
+    return $fields;
+}
+
 
 /*--------------------------------------------------------------
 # Billing adress field
