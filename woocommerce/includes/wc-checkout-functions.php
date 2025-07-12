@@ -899,7 +899,7 @@ function hide_all_billing_field_labels( $fields ) {
     if ( isset( $fields['order']['order_comments'] ) ) {
         $fields['order']['order_comments']['label'] = '';
     }
-    
+
     return $fields;
 }
 
@@ -932,7 +932,7 @@ function plnt_add_dontcallme_field_to_checkout( $fields ) {
 
 add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_dontcallme_fields', 25 );
 
-function plnt_save_deliveplnt_save_dontcallme_fieldsry_fields( $order_id ){
+function plnt_save_dontcallme_fields( $order_id ){
 
     if( ! empty( $_POST[ 'billing_dontcallme' ] ) ) {
         update_post_meta( $order_id, 'billing_dontcallme', sanitize_text_field( $_POST[ 'billing_dontcallme' ] ) );
