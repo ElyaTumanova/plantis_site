@@ -180,9 +180,65 @@ if($site === 'https://plantis-shop.ru') {
 
 }
 
-$urgent_deliveries = [$urgent_delivery_inMKAD, $urgent_delivery_outMKAD, $urgent_delivery_inMKAD_small, $urgent_delivery_outMKAD_small, $urgent_delivery_inMKAD_large, $urgent_delivery_outMKAD_large, $urgent_delivery_inMKAD_medium, $urgent_delivery_outMKAD_medium];
-$normal_deliveries = [$delivery_inMKAD, $delivery_outMKAD, $delivery_inMKAD_small, $delivery_outMKAD_small, $delivery_inMKAD_large, $delivery_outMKAD_large, $delivery_inMKAD_medium, $delivery_outMKAD_medium];
-
 /* Изображения и иконки */
 
 $filter_icon = "https://plantis.shop/wp-content/uploads/2024/07/filter_new.svg";
+
+
+//ЗАДАЕМ КОНСТАНТЫ ДЛЯ JS
+add_action( 'wp_footer', 'plnt_set_constants_script' );
+function plnt_set_constants_script() {
+	global $delivery_inMKAD;
+	global $delivery_outMKAD;
+	global $local_pickup;
+	global $delivery_free;
+	global $delivery_pochta;
+	global $delivery_courier;
+	global $delivery_long_dist;
+
+	$late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+	$large_markup_delivery = carbon_get_theme_option('large_markup_delivery');
+    $small_markup_delivery = carbon_get_theme_option('small_markup_delivery');
+    $medium_markup_delivery = carbon_get_theme_option('medium_markup_delivery');
+    $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
+
+	$shipping_costs = plnt_get_shiping_costs();
+
+    $in_mkad = $shipping_costs[$delivery_inMKAD];
+    $out_mkad = $shipping_costs[$delivery_outMKAD];
+
+	$isbackorders = plnt_is_backorder();
+	$isTreezBackorders = plnt_is_treez_backorder();
+
+	$delivery_murkup = get_delivery_markup();
+   
+	?>
+	<script>
+		// shipping methods IDs
+		let deliveryInMKAD = '<?php echo $delivery_inMKAD; ?>';
+		let deliveryOutMKAD = '<?php echo $delivery_outMKAD; ?>';
+	
+		let localPickupId = '<?php echo $local_pickup; ?>';
+		let deliveryFreeId = '<?php echo $delivery_free; ?>';
+		let deliveryPochtaId = '<?php echo $delivery_pochta; ?>';
+		let deliveryCourierId = '<?php echo $delivery_courier; ?>';
+		let deliveryLongId = '<?php echo $delivery_long_dist; ?>';
+
+		// shipping methods costs
+		let deliveryCostInMkad = '<?php echo $in_mkad; ?>';
+		let deliveryCostOutMkad = '<?php echo $out_mkad; ?>';
+
+        //markups
+		let deliveryUrgMarkup = '<?php echo $delivery_murkup['urg']; ?>';
+		let deliveryLateMarkup = '<?php echo $late_markup_delivery; ?>';
+
+        let deliveryMarkupInMkad = '<?php echo $delivery_murkup['in_mkad']; ?>'
+        let deliveryMarkupOutMkad = '<?php echo $delivery_murkup['out_mkad']; ?>'
+
+        //is backorders
+		let isBackorder = '<?php echo $isbackorders; ?>';
+		let isTreezBackorders = '<?php echo $isTreezBackorders; ?>';
+
+	</script>
+	<?php
+}

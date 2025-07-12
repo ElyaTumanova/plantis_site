@@ -72,10 +72,16 @@ Container::make('theme_options', 'Настройки темы')
 		->add_tab('Delivery', array(
 			Field::make( 'text', 'min_free_delivery', 'Минимальная сумма заказа для бесплатной доставки (текст с пробелом)'),
 			Field::make( 'text', 'min_small_delivery', 'Сумма заказа для более дорогой доставки - самая минимальная'),
+            Field::make( 'text', 'small_markup_delivery', 'Надбавка к стоимости маленькой доставки'),
 			Field::make( 'text', 'min_medium_delivery', 'Сумма заказа для более дорогой доставки - средняя (не обязательно)'),
+			Field::make( 'text', 'medium_markup_delivery', 'Надбавка к стоимости средней доставки'),
 			Field::make( 'text', 'min_treez_delivery', 'Сумма заказа для доставки кашпо Treez'),
 			Field::make( 'text', 'min_lechuza_delivery', 'Сумма заказа для доставки кашпо Lechuza'),
+			Field::make( 'text', 'urgent_markup_delivery', 'Надбавка к стоимости срочной доставки'),
 			Field::make( 'text', 'late_markup_delivery', 'Надбавка к стоимости поздней доставки'),
+			Field::make( 'text', 'large_markup_delivery_in_mkad', 'Надбавка к стоимости крупногабаритной доставки в пределах МКАД'),
+			Field::make( 'text', 'large_markup_delivery_out_mkad', 'Надбавка к стоимости крупногабаритной доставки за пределами МКАД'),
+			Field::make( 'text', 'urgent_markup_delivery_large', 'Надбавка к стоимости срочной крупногабаритной доставки'),
 	   ))
 		->add_tab('General', array(
 			Field::make( 'text', 'notice', 'Уведомление' ),

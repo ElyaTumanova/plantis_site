@@ -20,6 +20,9 @@ function ast_register_custom_fields() {
 	require get_template_directory() . '/includes/custom-fields/theme-options.php';
 }
 
+/** Add constants */
+require get_template_directory() . '/includes/constants.php';
+
 /** Add theme support */
 require get_template_directory() . '/includes/theme-support.php';
 /** Enqueue scripts */
@@ -34,8 +37,6 @@ require get_template_directory() . '/includes/cleanup.php';
 require get_template_directory() . '/includes/navigation.php';
 /** Add ajax */
 require get_template_directory() . '/includes/ajax.php';
-/** Add constants */
-require get_template_directory() . '/includes/constants.php';
 /** Add Yandex metrika */
 require get_template_directory() . '/includes/metrika.php';
 /** Create Yandex XML */
@@ -44,6 +45,7 @@ require get_template_directory() . '/includes/metrika.php';
 
 /** Add Woocommerce files */
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	require get_template_directory() . '/woocommerce/includes/wc-helpers-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-cart-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-shipping-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-checkout-functions.php';
@@ -57,6 +59,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 }
 
 add_filter( 'use_block_editor_for_post', '__return_false' );
+
 
 //ЗАДАЕМ КОНСТАНТЫ ДЛЯ JS
 //add_action( 'wp_footer', 'plnt_set_constants_script' );
