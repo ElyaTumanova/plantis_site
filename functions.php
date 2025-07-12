@@ -314,9 +314,6 @@ function plnt_get_prods_data() {
 //add_action( 'wp_footer', 'plnt_get_prods_data' );
 
 
-function debug_load_theme_textdomain($domain) {
-	if ( $domain === 'plantis-theme' ) {
-		error_log( "🚨 load_theme_textdomain('{$domain}') вызвана до init" );
-		error_log( print_r( debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), true ) );
-	}
-}
+add_action( 'wp_ajax_test_ajax', function() {
+    wp_send_json_success( ['status' => 'ok'] );
+});
