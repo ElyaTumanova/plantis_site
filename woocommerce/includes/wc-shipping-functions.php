@@ -46,12 +46,12 @@ function plnt_check() {
     // }
     // $isbackorders = plnt_is_backorder();
     // echo 'isback '.$isbackorders.'  ';
-    //echo 'isUrgent '.(WC()->session->get('isUrgent' )).'  ';
-    echo 'hello? '.(WC()->session->get('hello' )).'  ';
+    echo 'isUrgent '.(WC()->session->get('isUrgent' )).'  ';
+
     // echo 'hiAjax '.(WC()->session->get('hiAjax' )).'  ';
     // echo 'hiInit '.(WC()->session->get('hiInit' )).'  ';
     // echo 'isback2 '.(WC()->session->get('isBackorder' )).'  ';
-    //echo 'isLate '.(WC()->session->get('isLate' )).'  ';
+    echo 'isLate '.(WC()->session->get('isLate' )).'  ';
     echo '<br>';
     // date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
@@ -80,19 +80,19 @@ function plnt_get_urgent_shipping() {
 //     } else {
 //         WC()->session->set('isLate', '0' );
 //     }
-    WC()->session->set( 'hello', 'hello' );
+    ;
 // Безопасная обработка значений
-    // $is_urgent = sanitize_text_field( $_POST['isUrgent'] ?? '' );
-    // $is_late   = sanitize_text_field( $_POST['isLate'] ?? '' );
+    $is_urgent = sanitize_text_field( $_POST['isUrgent'] ?? '' );
+    $is_late   = sanitize_text_field( $_POST['isLate'] ?? '' );
 
-    // // Запись в сессию WooCommerce
-    // WC()->session->set( 'isUrgent', $is_urgent );
-    // WC()->session->set( 'isLate', $is_late );
+    // Запись в сессию WooCommerce
+    WC()->session->set( 'isUrgent', $is_urgent );
+    WC()->session->set( 'isLate', $is_late );
 
     // Можно вернуть успех для отладки
     wp_send_json_success([
-        // 'isUrgent' => $is_urgent,
-        // 'isLate' => $is_late,
+        'isUrgent' => $is_urgent,
+        'isLate' => $is_late,
         'message' => 'Флаги обновлены'
     ]);
 
