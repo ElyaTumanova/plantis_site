@@ -10,11 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 // 	'mobile-nav' => 'Mobile',
 // ));
 register_nav_menus( array(
-	'primary'   => esc_html__( 'Primary Menu', 'art-starter-theme' ),
-	'secondary' => esc_html__( 'Secondary Menu', 'art-starter-theme' ),
-	'catalog'    => esc_html__( 'Categories in Catalog', 'art-starter-theme' ),
-	'footer-plants'    => esc_html__( 'Plants Categories in Footer', 'art-starter-theme' ),
-	'footer-services'    => esc_html__( 'Services List in Footer', 'art-starter-theme' ),
+	'primary'   => 'Primary Menu',
+	'secondary' => 'Secondary Menu',
+	'catalog'    => 'Categories in Catalog',
+	'footer-plants'    => 'Plants Categories in Footer',
+	'footer-services'    => 'Services List in Footer',
 ) );
 
 

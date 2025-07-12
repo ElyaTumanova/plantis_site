@@ -1,19 +1,28 @@
 <?php
+add_action( 'after_setup_theme', function() {
+	load_theme_textdomain( 'plantis-theme', get_template_directory() . '/languages' );
+} );
+
+
 /** Add Carbon Fields */
+
+require_once __DIR__ . '/../../../vendor/autoload.php'; // путь может отличаться
+use Carbon_Fields\Carbon_Fields;
+
+add_action( 'after_setup_theme', function() {
+    Carbon_Fields::boot();
+} );
+
+
 add_action( 'carbon_fields_register_fields', 'ast_register_custom_fields' );
 function ast_register_custom_fields() {
 	require get_template_directory() . '/includes/custom-fields/post-meta.php';
 	require get_template_directory() . '/includes/custom-fields/theme-options.php';
 }
 
-add_action( 'after_setup_theme', 'crb_load' );
-function crb_load() {
-	load_template( get_template_directory() . '/includes/carbon-fields/vendor/autoload.php' );
-	\Carbon_Fields\Carbon_Fields::boot();
-}
-
 /** Add constants */
 require get_template_directory() . '/includes/constants.php';
+
 /** Add theme support */
 require get_template_directory() . '/includes/theme-support.php';
 /** Enqueue scripts */
@@ -49,12 +58,147 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	require get_template_directory() . '/woocommerce/includes/wc-account-functions.php';
 }
 
+add_filter( 'use_block_editor_for_post', '__return_false' );
 
-// add_filter('wpseo_opengraph_image', 'plnt_opengraph_image');
-// function plnt_opengraph_image($image) {
-//    $image = 'https://plantis.shop/wp-content/uploads/2025/01/пересадка_мобnorm-копия.webp';
-//    return $image;
-// }
+
+//ЗАДАЕМ КОНСТАНТЫ ДЛЯ JS
+//add_action( 'wp_footer', 'plnt_set_constants_script' );
+function plnt_set_constants_script() {
+	global $delivery_inMKAD;
+	global $delivery_outMKAD;
+	// global $delivery_inMKAD_small;
+	// global $delivery_outMKAD_small;
+	// global $delivery_inMKAD_large;
+	// global $delivery_outMKAD_large;
+	// global $delivery_inMKAD_medium;
+	// global $delivery_outMKAD_medium;
+
+	// global $urgent_delivery_inMKAD; 
+	// global $urgent_delivery_outMKAD; 
+	// global $urgent_delivery_inMKAD_small; 
+	// global $urgent_delivery_outMKAD_small;
+	// global $urgent_delivery_inMKAD_large; 
+	// global $urgent_delivery_outMKAD_large;
+	// global $urgent_delivery_inMKAD_medium;
+	// global $urgent_delivery_outMKAD_medium;
+
+	global $local_pickup;
+	global $delivery_free;
+	global $delivery_pochta;
+	global $delivery_courier;
+	global $delivery_long_dist;
+
+	$late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+
+	$shipping_costs = plnt_get_shiping_costs();
+
+    $in_mkad = $shipping_costs[$delivery_inMKAD];
+    $out_mkad = $shipping_costs[$delivery_outMKAD];
+
+	// $in_mkad_urg = $shipping_costs[$urgent_delivery_inMKAD];
+	// $out_mkad_urg = $shipping_costs[$urgent_delivery_outMKAD];
+
+	// $in_mkad_large = $shipping_costs[$delivery_inMKAD_large];
+	// $out_mkad_large = $shipping_costs[$delivery_outMKAD_large];
+
+	// $in_mkad_urg_large = $shipping_costs[$urgent_delivery_inMKAD_large];
+	// $out_mkad_urg_large = $shipping_costs[$urgent_delivery_outMKAD_large];
+ 
+	// $in_mkad_small = $shipping_costs[$delivery_inMKAD_small];
+	// $out_mkad_small = $shipping_costs[$delivery_outMKAD_small];
+
+	// $in_mkad_small_urg = $shipping_costs[$urgent_delivery_inMKAD_small];
+	// $out_mkad_small_urg = $shipping_costs[$urgent_delivery_outMKAD_small];
+
+	// $in_mkad_medium = $shipping_costs[$delivery_inMKAD_medium];
+	// $out_mkad_medium = $shipping_costs[$delivery_outMKAD_medium];
+
+	// $in_mkad_medium_urg = $shipping_costs[$urgent_delivery_inMKAD_medium];
+	// $out_mkad_medium_urg = $shipping_costs[$urgent_delivery_outMKAD_medium];
+
+	$isbackorders = plnt_is_backorder();
+	$isTreezBackorders = plnt_is_treez_backorder();
+   
+	?>
+	<script>
+		// shipping methods IDs
+		let deliveryInMKAD = '<?php echo $delivery_inMKAD; ?>';
+		let deliveryOutMKAD = '<?php echo $delivery_outMKAD; ?>';
+		let deliveryInMKADSmall = '<?php echo $delivery_inMKAD_small; ?>';
+		let deliveryOutMKADSmall = '<?php echo $delivery_outMKAD_small; ?>';
+		let deliveryInMKADLarge = '<?php echo $delivery_inMKAD_large; ?>';
+		let deliveryOutMKADLarge = '<?php echo $delivery_outMKAD_large; ?>';
+		let deliveryInMKADMedium = '<?php echo $delivery_inMKAD_medium; ?>';
+		let deliveryOutMKADMedium = '<?php echo $delivery_outMKAD_medium; ?>';
+
+		let deliveryInMKADUrg = '<?php echo $urgent_delivery_inMKAD; ?>';
+		let deliveryOutMKADUrg = '<?php echo $urgent_delivery_outMKAD; ?>';
+		let deliveryInMKADSmallUrg = '<?php echo $urgent_delivery_inMKAD_small; ?>';
+		let deliveryOutMKADSmallUrg = '<?php echo $urgent_delivery_outMKAD_small; ?>';
+		let deliveryInMKADLargeUrg = '<?php echo $urgent_delivery_inMKAD_large; ?>';
+		let deliveryOutMKADLargeUrg = '<?php echo $urgent_delivery_outMKAD_large; ?>';
+		let deliveryInMKADMediumUrg = '<?php echo $urgent_delivery_inMKAD_medium; ?>';
+		let deliveryOutMKADMediumUrg = '<?php echo $urgent_delivery_outMKAD_medium; ?>';
+		
+		
+		let localPickupId = '<?php echo $local_pickup; ?>';
+		let deliveryFreeId = '<?php echo $delivery_free; ?>';
+		let deliveryPochtaId = '<?php echo $delivery_pochta; ?>';
+		let deliveryCourierId = '<?php echo $delivery_courier; ?>';
+		let deliveryLongId = '<?php echo $delivery_long_dist; ?>';
+
+		// shipping methods costs
+		let deliveryCostInMkad = '<?php echo $in_mkad; ?>';
+		let deliveryCostOutMkad = '<?php echo $out_mkad; ?>';
+		let deliveryCostInMkadUrg = '<?php echo $in_mkad_urg; ?>';
+		let deliveryCostOutMkadUrg = '<?php echo $out_mkad_urg; ?>';
+
+		let deliveryCostInMkadLarge = '<?php echo $in_mkad_large; ?>';
+		let deliveryCostOutMkadLarge = '<?php echo $out_mkad_large; ?>';
+		let deliveryCostInMkadLargeUrg = '<?php echo $in_mkad_urg_large; ?>';
+		let deliveryCostOutMkadLargeUrg = '<?php echo $out_mkad_urg_large; ?>';
+
+		let deliveryCostInMkadSmall = '<?php echo $in_mkad_small; ?>';
+		let deliveryCostOutMkadSmall = '<?php echo $out_mkad_small; ?>';
+		let deliveryCostInMkadSmallUrg = '<?php echo $in_mkad_small_urg; ?>';
+		let deliveryCostOutMkadSmallUrg = '<?php echo $out_mkad_small_urg; ?>';
+
+		let deliveryCostInMkadMedium = '<?php echo $in_mkad_medium; ?>';
+		let deliveryCostOutMkadMedium = '<?php echo $out_mkad_medium; ?>';
+		let deliveryCostInMkadMediumUrg = '<?php echo $in_mkad_medium_urg; ?>';
+		let deliveryCostOutMkadMediumUrg = '<?php echo $out_mkad_medium_urg; ?>';
+
+		let deliveryLateMarkup = '<?php echo $late_markup_delivery; ?>';
+
+        let isBackorder = '<?php echo $isbackorders; ?>';
+        let isTreezBackorders = '<?php echo $isTreezBackorders; ?>';
+    console.log('isBackorder in functions ', isBackorder);
+	</script>
+	<?php
+}
+
+
+add_filter( 'wpseo_opengraph_image', 'plantis_default_og_image' );
+add_filter( 'wpseo_twitter_image', 'plantis_default_og_image' );
+add_filter( 'wpseo_schema_graph_pieces', 'plantis_schema_default_image', 11, 2 );
+
+function plantis_default_og_image( $image ) {
+	if ( empty( $image ) ) {
+		$image = 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp'; // путь к изображению
+	}
+	return $image;
+}
+
+function plantis_schema_default_image( $pieces, $context ) {
+	foreach ( $pieces as $piece ) {
+		if ( isset( $piece->context ) && $piece->context === 'mainEntity' ) {
+			if ( empty( $piece->image ) ) {
+				$piece->image = 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp';
+			}
+		}
+	}
+	return $pieces;
+}
 
 // FOR DEV
 
@@ -224,3 +368,73 @@ function plnt_get_cats_data() {
 //add_action( 'wp_footer', 'plnt_get_cats_data' );
 
 
+function plnt_get_prods_data() {
+
+  $args = array(
+      'post_type' => 'product',
+      'ignore_sticky_posts' => 1,
+      'no_found_rows' => 1,
+      'posts_per_page' => -1,
+      'orderby' => 'rand',
+      'tax_query' => array(
+                array(
+                    'taxonomy' => 'product_cat',
+                    'field' => 'slug',
+                    'terms' => 'komnatnye-rasteniya'
+                )
+            )
+  );
+
+  $products = new WP_Query( $args );
+
+	$count = 0;
+	echo ('<br>');
+	echo(count($products->posts));
+	echo ('<br>');
+  //print_r($products->posts);
+		foreach ($products->posts as $key => $term) {
+      echo ("['name' => '");
+			print_r($term->post_title);
+			echo ("', 'slug'=>'");
+      echo($term->post_name);
+      echo("'],");
+ 			echo ('<br>');
+			// $slug = 'not found';
+			// foreach ($cats_array as $key => $cat) {
+			// 	if($term->name == $cat['name']) {
+			// 		++$count;
+			// 		$slug = $cat['slug'];
+			// 	}
+			// }
+			// echo($count.' ');
+			// echo ($term->name);
+			// echo (';  ');
+			// echo ($slug);
+			// echo ('<br>');
+			
+			// $result = wp_update_term( $term->term_id, 'product_cat', [
+			// 	'slug' => $slug,
+			// ] );
+
+			// // check the result
+			// if( is_wp_error( $result ) ){
+
+			// 	echo $result->get_error_message();
+			// }
+			// else {
+
+			// 	echo 'Term was successfully updated.';
+			// }
+	}
+
+}
+
+//add_action( 'wp_footer', 'plnt_get_prods_data' );
+
+
+function debug_load_theme_textdomain($domain) {
+	if ( $domain === 'plantis-theme' ) {
+		error_log( "🚨 load_theme_textdomain('{$domain}') вызвана до init" );
+		error_log( print_r( debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), true ) );
+	}
+}

@@ -27,7 +27,7 @@ Contents
         if( is_checkout( ) && ! is_wc_endpoint_url()) {
             foreach ( WC()->cart->get_cart() as $cart_item ) {
                 $_product = $cart_item['data'];
-                $_product_id = $_product->id;
+                $_product_id = $_product->get_id();
                 $qty = $cart_item[ 'quantity' ];
                 $stock_qty = $_product->get_stock_quantity();
                 

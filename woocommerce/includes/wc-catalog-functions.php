@@ -274,10 +274,10 @@ add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_
 
 // // меняем текст кнопки в корзину, если товар не в наличии
 
-add_filter('woocommerce_product_add_to_cart_text','plnt_change_add_to_cart_text');
+add_filter('woocommerce_product_add_to_cart_text','plnt_change_add_to_cart_text',10, 2);
 
-function plnt_change_add_to_cart_text($text) {
-	global $product;
+function plnt_change_add_to_cart_text($text,$product) {
+	//global $product;
 	if ($product->is_in_stock()) {
 		return $text;
 	} else {
