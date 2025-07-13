@@ -10,9 +10,11 @@ function plnt_set_constants() {
   global $parentCatId;
   global $isTreez;
   global $isLechuza;
-  $parentCatId = check_category ($product);
-  $isTreez = check_is_treez($product);
-  $isLechuza = check_is_lechuza($product);
+  if($product) {
+    $parentCatId = check_category ($product);
+    $isTreez = check_is_treez($product);
+    $isLechuza = check_is_lechuza($product);
+  }
 }
 
 //обертки для card grid
@@ -413,14 +415,10 @@ function plnt_card_ukhod_loop() {
 add_action('woocommerce_before_single_product','plnt_category_link',20);
 
 function plnt_category_link () {
-    // global $product;
     global $parentCatId;
-    //$parentCat = check_category ($product);
     $term = get_term($parentCatId);
     $link = get_term_link( $parentCatId, 'product_cat' );
     $name = $term->name;
-    // echo 'parentCatId'.$parentCatId;
-    // echo 'parentCat'.$parentCat;
 
     echo '<div class="card__toback-link">
     <span>prev</span>
