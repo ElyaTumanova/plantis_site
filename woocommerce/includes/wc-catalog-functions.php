@@ -313,7 +313,7 @@ function plnt_get_product_tags() {
 	if(is_shop() || is_product_category() || is_product_tag()) {
 		global $product;
 		global $tags_podarki;
-		$tags = wc_get_product_term_ids( $product->get_id(), 'product_tag' )
+		$tags = wc_get_product_term_ids( $product->get_id(), 'product_tag' );
 		echo '<div class=catalog__tags>';
 		foreach($tags as $tag) {
 			if (!in_array($tag, $tags_podarki, true)) {
