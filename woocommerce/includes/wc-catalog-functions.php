@@ -465,7 +465,7 @@ function truemisha_remove_orderby_options( $sortby ) {
 add_filter( 'woocommerce_get_catalog_ordering_args', 'custom_woocommerce_get_catalog_ordering_args' );
 
 function custom_woocommerce_get_catalog_ordering_args( $args ) {
-	$orderby_value = isset( $_GET['orderby'] ) ? woocommerce_clean( $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
+	$orderby_value = isset( $_GET['orderby'] ) ? wc_clean( $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
 
 	if ( 'name_list_asc' == $orderby_value ) {
 	$args['orderby'] = 'name';
