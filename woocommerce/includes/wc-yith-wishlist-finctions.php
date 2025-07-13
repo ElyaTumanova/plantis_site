@@ -32,7 +32,7 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
             <div class="header__count header__count_active ">
           <?php endif;?>
               <span class="yith-wcwl-items-count">
-                <i class="yith-wcwl-icon fa fa-heart-o"><?php echo esc_html( yith_wcwl_count_all_products() ); ?></i>
+                <i ><?php echo esc_html( yith_wcwl_count_all_products() ); ?></i>
               </span>
             </div>
 
