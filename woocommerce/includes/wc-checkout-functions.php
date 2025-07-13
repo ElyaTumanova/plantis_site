@@ -1076,6 +1076,16 @@ function plnt_dontcallme_field_in_email( $rows, $order ) {
         update_post_meta( $order_id, '_billing_address_2', $address );
     }
 
+    add_filter('woocommerce_payment_gateways', 'plnt_prioritize_tbank_payment');
+    function plnt_prioritize_tbank_payment($gateways) {
+        usort($gateways, function($a, $b) {
+            // Поднимаем T-Bank (класс WC_TBank) выше остальных
+            if (get_class($a) === 'WC_TBank') return -1;
+            if (get_class($b) === 'WC_TBank') return 1;
+            return 0; // остальные не трогаем
+        });
+        return $gateways;
+    }
 /*--------------------------------------------------------------
 # Thankyou page
 --------------------------------------------------------------*/
