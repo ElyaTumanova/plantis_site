@@ -67,11 +67,18 @@
         }
         
         // for INN
-        if(event && event.target.id == "payment_method_cheque") {
-            if (innField) {innField.classList.remove('d-none')};
-        } else {
-            if (innField) {innField.classList.add('d-none')};
-        };
+        if (innField) {
+            if(event && event.target.id == "payment_method_cheque") {
+                innField.classList.remove('d-none');
+            } else {
+                if(event.target.id == "payment_method_tbank" 
+                    || event.target.id == "payment_method_cop"
+                    || event.target.id == "payment_method_cod"
+                ) 
+                {innField.classList.add('d-none')}
+            };
+        }
+        
 
         // for holidays
         if (isHoliday === '1') {
