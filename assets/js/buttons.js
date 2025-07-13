@@ -159,5 +159,3 @@ function scrollToTop () {
         behavior: 'smooth'
       })
 }
-
-console.log('hello dev4');
