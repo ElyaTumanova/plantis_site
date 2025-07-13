@@ -996,7 +996,7 @@ function plnt_add_inn_field_to_checkout( $fields ) {
     $fields['order']['additional_inn'] = array(
         'type'        => 'text',
         'label'       => '',
-        'placeholder' => 'ИНН (для оплаты по счету)'
+        'placeholder' => 'ИНН (для оплаты по счету)',
         'required'    => false,
         'class'       => array( 'form-row inn' )
     );
