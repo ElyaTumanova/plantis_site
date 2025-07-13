@@ -35,50 +35,41 @@
         // }
 
         //for delivery intervals
-        if (deliveryInterval) {
-            if (isBackorder  
-                || isTreezBackorders  
-                || checkedShippingMethod == localPickupId 
-                || checkedShippingMethod == deliveryPochtaId
-                || isHideInterval
-                || isUrgent == '1') {
-                hideInterval()
-            } else {
-                showInterval()
-            }
-        }
-
-
         // if (deliveryInterval) {
-        //     // console.log(deliveryInterval);
-        //     // console.log('isHideInterval', isHideInterval);
-        //     if (isBackorder || isTreezBackorders) {
-        //         deliveryInterval.classList.add('d-none');
-        //         deliveryIntervalInput.forEach((input)=>{
-        //             input.checked = false;
-        //         })
-        //     } else { 
-        //         if ( checkedShippingMethod == localPickupId || checkedShippingMethod == deliveryPochtaId) {
-        //             deliveryInterval.classList.add('d-none');
-        //             deliveryIntervalInput.forEach((input)=>{
-        //                 input.checked = false;
-        //             });
-        //         } else {
-        //             if (isUrgent == '1' && isHideInterval) {
-        //                 deliveryInterval.classList.add('d-none');
-        //                 deliveryIntervalInput.forEach((input)=>{
-        //                     input.checked = false;
-        //                 });
-        //             }
-        //             if (isUrgent == '0') {
-        //                 deliveryInterval.classList.remove('d-none');
-        //             }
-        //             if (!isHideInterval) {
-        //                 deliveryInterval.classList.remove('d-none');
-        //             }
-        //         }
+        //     if (isBackorder  
+        //         || isTreezBackorders  
+        //         || checkedShippingMethod == localPickupId 
+        //         || checkedShippingMethod == deliveryPochtaId
+        //         || isHideInterval
+        //         || isUrgent == '1') {
+        //         hideInterval()
+        //     } else {
+        //         showInterval()
         //     }
         // }
+
+
+        if (deliveryInterval) {
+            // console.log(deliveryInterval);
+            // console.log('isHideInterval', isHideInterval);
+            if (isBackorder || isTreezBackorders) {
+                hideInterval()
+            } else { 
+                if ( checkedShippingMethod == localPickupId || checkedShippingMethod == deliveryPochtaId) {
+                    hideInterval()
+                } else {
+                    if (isUrgent == '1' && isHideInterval) {
+                        hideInterval();
+                    }
+                    if (isUrgent == '0') {
+                        showInterval()
+                    }
+                    if (!isHideInterval) {
+                        showInterval()
+                    }
+                }
+            }
+        }
 
         //for delivery dates
         if (deliveryDates) {
