@@ -161,3 +161,10 @@ if ( $order->get_customer_note() ) : ?>
         <div><?php echo wp_kses( nl2br( wptexturize( $order->get_customer_note() ) ), array() ); ?></div>
     </div>
 <?php endif; ?>
+
+<?php if( $plnt_order_totals['additional_inn']['value'] ) : ?>
+<div class='plnt-order__delivery-row'>
+    <div class='plnt-order__delivery-label' scope="row"><?php echo wp_kses_post( $plnt_order_totals['additional_inn']['label'] ); ?>:</div>
+    <div class='plnt-order__delivery-value'><?php echo wp_kses_post( $plnt_order_totals['additional_inn']['value'] ); ?></div>
+</div>
+<?php endif; ?>
