@@ -16,8 +16,11 @@
         })
     }
 
-    function showInterval () {
-
+    function showInterval() {
+        deliveryInterval.classList.remove('d-none');
+        if (!checkedInterval) {
+            deliveryIntervalInput[0].setAttribute('checked','checked');
+        }
     }
 
     function plnt_hide_checkout_fields(event){
@@ -40,10 +43,7 @@
                 || isUrgent == '1') {
                 hideInterval()
             } else {
-                deliveryInterval.classList.remove('d-none');
-                if (!checkedInterval) {
-                    deliveryIntervalInput[0].setAttribute('checked','checked');
-                }
+                showInterval()
             }
         }
 
