@@ -108,39 +108,6 @@ function renderDeliveryIntervals(shippingValue) {
 }
 
 //аякс запрос
-// function ajaxGetUrgent() {
-//   console.debug('hi ajaxGetUrgent');
-//   console.debug('isUrgent ajax', isUrgent);
-//   console.debug('isLate ajax', isLate);
-
-//   jQuery( function($){
-//         $.ajax({
-//             type: 'POST',
-//             dataType: 'json',
-//             url: wc_checkout_params.ajax_url,
-//             data: {
-//                 'action': 'get_urgent_shipping',
-//                 'isUrgent': isUrgent,
-//                 'isLate': isLate
-//             },
-//             success: function (result) {
-//                 console.debug('AJAX success:', result);
-//                 // Trigger refresh checkout
-//                 if (result.success) {
-//                     $('body').trigger('update_checkout');
-//                 }
-//             },
-//             error: function(xhr, status, error) {
-//                 console.error('AJAX error:', status, error);
-//                 console.error('Response:', xhr.responseText);
-//             },
-//             complete: function() {
-//                 console.debug('AJAX complete');
-//             }
-//         });
-//   });
-// };
-
 function ajaxGetUrgent() {
   console.debug('hi ajaxGetUrgent');
   console.debug('isUrgent ajax', isUrgent);
@@ -246,6 +213,8 @@ function checkHoliday(date) {
 if (checkoutForm) {
 
   setInitalState();
+  console.log(getCheckedDate());
+  console.log(getCheckedInterval());
 
   document.addEventListener('DOMContentLoaded', getDatesIntervalsInfo )
 

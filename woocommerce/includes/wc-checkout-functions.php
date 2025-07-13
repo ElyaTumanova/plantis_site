@@ -13,6 +13,7 @@ Contents
 # Checkout form fields
 # Dont call me radio buttons
 # Billing adress field
+# T Bank
 # Thankyou page
 --------------------------------------------------------------*/
 
@@ -1021,7 +1022,6 @@ function plnt_dontcallme_field_in_email( $rows, $order ) {
     }
 
     //add_filter( 'woocommerce_checkout_posted_data', 'true_process_fields' );
-    
     function true_process_fields( $data ) {
     
         // в поле billing_address_2 мы и будем записывать новые значения полей
@@ -1075,7 +1075,9 @@ function plnt_dontcallme_field_in_email( $rows, $order ) {
 
         update_post_meta( $order_id, '_billing_address_2', $address );
     }
-
+/*--------------------------------------------------------------
+# T Bank
+--------------------------------------------------------------*/
     add_filter('woocommerce_available_payment_gateways', 'plnt_move_tbank_up');
     function plnt_move_tbank_up($available_gateways) {
         if (isset($available_gateways['tbank'])) {
