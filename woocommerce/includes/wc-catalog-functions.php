@@ -224,7 +224,7 @@ function plnt_catalog_gallery() {
 
 	if (is_shop() || is_product_category() || is_product_tag() ) {
 		global $product;
-		$image = $product->get_image();	
+		$image = $product->get_image('medium');	
 		$attachment_ids = $product->get_gallery_image_ids();
 		echo '
 		<div class="product__image-slider-wrap swiper">
