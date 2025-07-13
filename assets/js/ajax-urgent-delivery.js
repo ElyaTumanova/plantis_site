@@ -51,10 +51,6 @@ function getOrderParametrs(event) {
 
   ajaxGetUrgent();
 
-  console.log(getCheckedDate());
-  console.log(getCheckedInterval());
-  console.log(isUrgent)
-
 }
 
 function getCheckedShippingMethod (){
@@ -177,8 +173,8 @@ function setInitalState() {
 
   checkHoliday(deliveryDatesInput[0].value);
 
-  deliveryDatesInput[0].setAttribute('checked','checked');
-  deliveryIntervalInput[0].setAttribute('checked','checked');
+  deliveryDatesInput[0].checked = true;
+  deliveryIntervalInput[0].checked = true;
 
 }
 
