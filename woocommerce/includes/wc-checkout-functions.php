@@ -913,15 +913,6 @@ function plnt_save_order_comments_field( $order, $data ) {
 	}
 }
 
-//скрываем в админке поля для адреса доставки
-// add_action( 'add_meta_boxes', function() {
-// 	remove_meta_box( 'woocommerce-order-shipping-address', 'shop_order', 'side' );
-// }, 99 );
-
-// add_filter( 'woocommerce_admin_shipping_fields', function( $fields ) {
-//     return []; // Удаляет все поля доставки
-// }, 100 );
-
 /*--------------------------------------------------------------
 # Dont call me radio buttons
 --------------------------------------------------------------*/
@@ -989,6 +980,75 @@ function plnt_dontcallme_field_in_email( $rows, $order ) {
     $rows[ 'billing_dontcallme' ] = array(
         'label' => 'Не нужно звонков, напишите сразу в WhatsApp;)',
         'value' => get_post_meta( $order->get_id(), 'billing_dontcallme', true )
+    );
+
+    return $rows;
+
+}
+
+/*--------------------------------------------------------------
+# INN field
+--------------------------------------------------------------*/
+
+add_filter( 'woocommerce_checkout_fields', 'plnt_add_inn_field_to_checkout' );
+
+function plnt_add_inn_field_to_checkout( $fields ) {
+    $fields['order']['additional_inn'] = array(
+        'type'        => 'text',
+        'label'       => '',
+        'placeholder' => 'ИНН (для оплаты по счету)'
+        'required'    => false,
+        'class'       => array( 'form-row inn' )
+    );
+
+    //$fields['billing']['billing_dontcallme']['priority'] = 30;
+
+    return $fields;
+}
+
+// // сохряняем новое поле в заказе
+
+
+add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_inn_fields', 25 );
+
+function plnt_save_inn_fields( $order_id ){
+
+    if( ! empty( $_POST[ 'additional_inn' ] ) ) {
+        update_post_meta( $order_id, 'additional_inn', sanitize_text_field( $_POST[ 'additional_inn' ] ) );
+    }
+}
+
+// // добавляем поле в админку
+
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_inn_field_value', 20 );
+
+function plnt_print_inn_field_value( $order ){
+
+    $method = get_post_meta( $order->get_id(), 'additional_inn', true );
+
+    echo '<div class="address">
+        <p' . ( ! $method ? ' class="none_set"' : '' ) . '>
+            <strong>ИНН (для оплаты по счету)</strong>
+            ' . ( $method ? $method : 'Не указан.' ) . '
+        </p>
+    </div>';
+}
+
+
+// // добавляем новые поля в письма
+
+add_filter( 'woocommerce_get_order_item_totals', 'plnt_inn_field_in_email', 20, 2 );
+    
+function plnt_inn_field_in_email( $rows, $order ) {
+
+    // удалите это условие, если хотите добавить значение поля и на страницу "Заказ принят"
+    // if( is_order_received_page() ) {
+    // 	return $rows;
+    // }
+
+    $rows[ 'additional_inn' ] = array(
+        'label' => 'ИНН (для оплаты по счету)',
+        'value' => get_post_meta( $order->get_id(), 'additional_inn', true )
     );
 
     return $rows;
