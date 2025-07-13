@@ -75,7 +75,10 @@
                     || event.target.id == "payment_method_cop"
                     || event.target.id == "payment_method_cod"
                 ) 
-                {innField.classList.add('d-none')}
+                {
+                    innField.classList.add('d-none')
+                    innField.value = ''
+                }
             };
         }
         
