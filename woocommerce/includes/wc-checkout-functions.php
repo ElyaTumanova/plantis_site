@@ -51,7 +51,7 @@ Contents
         } else {
             $isbackorders = plnt_is_backorder();
             if( $isbackorders) {
-                unset( $available_gateways['tinkoff'] ); //to do change to tinkoff
+                unset( $available_gateways['tbank'] ); //to do change to tbank
                 unset( $available_gateways['cop'] ); 
             }
             return $available_gateways;
@@ -809,7 +809,7 @@ Contents
             }
         
             if( $products_min) {
-                unset( $available_gateways['tinkoff'] );
+                unset( $available_gateways['tbank'] );
                 //unset( $available_gateways['bacs'] );
             }
             return $available_gateways;
@@ -831,7 +831,7 @@ Contents
             }
         
             if( $products_min) {
-                unset( $available_gateways['tinkoff'] );
+                unset( $available_gateways['tbank'] );
             }
             return $available_gateways;
         }

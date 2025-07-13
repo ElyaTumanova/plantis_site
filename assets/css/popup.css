@@ -432,6 +432,6 @@ input[type="search"], input[type="search"]:focus-visible {
     background-color: #e9ecef;
   }
 
-.payment_method_tinkoff img {
+.payment_method_tbank img {
     display: none;
 }

@@ -218,23 +218,23 @@ function plnt_disable_payment_small_order( $available_gateways ) {
     if (isset($chosen_methods)) {
         // стоимость товаров в корзине
         if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
-            unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+            unset( $available_gateways['tbank'] ); //to be updated - change to tbank
         }
     
         
         if (WC()->cart->subtotal < $min_medium_delivery && $delivery_courier == $chosen_methods[0]) {
-            unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+            unset( $available_gateways['tbank'] ); //to be updated - change to tbank
         }
         
     
         // дальняя доставка
         if ( $delivery_long_dist == $chosen_methods[0]) {
-            unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+            unset( $available_gateways['tbank'] ); //to be updated - change to tbank
         }
 
         // почта России
         if ( $delivery_pochta == $chosen_methods[0]) {
-            unset( $available_gateways['tinkoff'] ); //to be updated - change to tinkoff
+            unset( $available_gateways['tbank'] ); //to be updated - change to tbank
         }
     }
 
