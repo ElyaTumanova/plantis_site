@@ -1076,21 +1076,16 @@ function plnt_dontcallme_field_in_email( $rows, $order ) {
         update_post_meta( $order_id, '_billing_address_2', $address );
     }
 
-    add_filter('woocommerce_payment_gateways', 'plnt_prioritize_tbank_gateway');
-    function plnt_prioritize_tbank_gateway($gateways) {
-        // Поднимаем 'WC_TBank' выше остальных
-        $tbank = [];
-        $others = [];
-
-        foreach ($gateways as $gateway) {
-            if ($gateway === 'WC_TBank') {
-                $tbank[] = $gateway;
-            } else {
-                $others[] = $gateway;
-            }
+    add_filter('woocommerce_available_payment_gateways', 'plnt_move_tbank_up');
+    function plnt_move_tbank_up($available_gateways) {
+        if (isset($available_gateways['tbank'])) {
+            $tbank = $available_gateways['tbank'];
+            unset($available_gateways['tbank']);
+            $new_gateways = ['tbank' => $tbank] + $available_gateways;
+            return $new_gateways;
         }
 
-        return array_merge($tbank, $others);
+        return $available_gateways;
     }
 /*--------------------------------------------------------------
 # Thankyou page
