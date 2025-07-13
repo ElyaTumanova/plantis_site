@@ -80,8 +80,7 @@
                     innField.value = ''
                 }
             };
-        }
-        
+        }        
 
         // for holidays
         if (isHoliday === '1') {
