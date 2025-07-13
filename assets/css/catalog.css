@@ -327,12 +327,19 @@
     border: none;
     position: absolute;
     height: 0;
-    margin-left: auto;
-    margin-top: 10px;
-    margin-right: 10px;
+    margin-left: auto !important;
+    margin-top: 10px !important;
+    margin-right: 10px !important;
     z-index: 2;
-    top: 10px;
-    right: 10px;
+    top: 10px !important;
+    right: 10px !important;
+}
+.catalog__products-wrap .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, 
+.catalog__products-wrap .yith-wcwl-add-to-wishlist a.delete_item>img, 
+.catalog__products-wrap .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
+    margin: 0 !important;
+    max-width: 32px;
+    width: 32px;
 }
 
 @media (max-width:767px) {
@@ -346,6 +353,7 @@
     .catalog__products-wrap .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
         margin: 0 !important;
         max-width: 24px;
+        width: 24px;
     }
 
     /* .catalog__products-wrap .yith-wcwl-add-to-wishlist {
