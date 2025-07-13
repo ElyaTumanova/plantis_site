@@ -18,6 +18,7 @@
 
     function showInterval() {
         deliveryInterval.classList.remove('d-none');
+        console.log(checkedInterval);
         if (!checkedInterval) {
             deliveryIntervalInput[0].setAttribute('checked','checked');
         }
