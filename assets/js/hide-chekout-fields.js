@@ -21,7 +21,7 @@
         console.log(checkedInterval);
         if (checkedInterval == '') {
             console.log('hoho')
-            deliveryIntervalInput[0].setAttribute('checked','checked');
+            deliveryIntervalInput[0].checked = true;
         }
     }
 
