@@ -19,36 +19,13 @@
     function showInterval() {
         deliveryInterval.classList.remove('d-none');
         console.log(checkedInterval);
-        if (!checkedInterval) {
+        if (checkedInterval = '') {
             deliveryIntervalInput[0].setAttribute('checked','checked');
         }
     }
 
     function plnt_hide_checkout_fields(event){
-        
         //console.log('hi plnt_hide_checkout_fields');
-        // if(event && event.target.className == "shipping_method") {
-        //     // console.log(event);
-        //     checkedShippingMethod = event.target.value;
-        // } else {
-        //     checkedShippingMethod = getCheckedShippingMethod();
-        // }
-
-        //for delivery intervals
-        // if (deliveryInterval) {
-        //     if (isBackorder  
-        //         || isTreezBackorders  
-        //         || checkedShippingMethod == localPickupId 
-        //         || checkedShippingMethod == deliveryPochtaId
-        //         || isHideInterval
-        //         || isUrgent == '1') {
-        //         hideInterval()
-        //     } else {
-        //         showInterval()
-        //     }
-        // }
-
-
         if (deliveryInterval) {
             // console.log(deliveryInterval);
             // console.log('isHideInterval', isHideInterval);
