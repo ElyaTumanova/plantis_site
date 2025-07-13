@@ -55,7 +55,7 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 	data-id="<?php echo esc_attr( $wishlist_id ); ?>" data-token="<?php echo esc_attr( $wishlist_token ); ?>">
 
 	<?php $column_count = 2; ?>
-
+    <?php echo('lalalal')?>
 	<thead>
 	<tr>
 		<?php if ( $show_cb ) : ?>
