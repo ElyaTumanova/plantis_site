@@ -1001,13 +1001,10 @@ function plnt_add_inn_field_to_checkout( $fields ) {
         'class'       => array( 'form-row inn' )
     );
 
-    //$fields['billing']['billing_dontcallme']['priority'] = 30;
-
     return $fields;
 }
 
 // // сохряняем новое поле в заказе
-
 
 add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_inn_fields', 25 );
 
