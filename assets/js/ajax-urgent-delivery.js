@@ -51,6 +51,10 @@ function getOrderParametrs(event) {
 
   ajaxGetUrgent();
 
+  console.log(getCheckedDate());
+  console.log(getCheckedInterval());
+  console.log(isUrgent)
+
 }
 
 function getCheckedShippingMethod (){
@@ -213,8 +217,6 @@ function checkHoliday(date) {
 if (checkoutForm) {
 
   setInitalState();
-  console.log(getCheckedDate());
-  console.log(getCheckedInterval());
 
   document.addEventListener('DOMContentLoaded', getDatesIntervalsInfo )
 
