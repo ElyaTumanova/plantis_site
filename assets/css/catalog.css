@@ -569,7 +569,7 @@
     border: solid 2px var(--accent-color); */
     font-weight: 600;
     margin-right: 5px;
-	margin-top: 5px;
+	/* margin-top: 5px; */
     white-space: nowrap;
     display: inline-block;
     color: var(--gray-text);
@@ -577,6 +577,7 @@
 
 .catalog__tag-link:hover {
     text-decoration: none;
+    color: var(--accent-color);
 }
 
 /* sale badge */
