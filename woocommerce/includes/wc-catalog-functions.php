@@ -754,7 +754,7 @@ function plnt_main_cats_slider_action_callback() {
     );
     
     $products = new WP_Query( $args );
-	  $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
+	$json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
     if ( $products->have_posts() ) : ?>  
 	
 		<div class="product-slider-wrap product-slider-swiper swiper">
@@ -773,7 +773,7 @@ function plnt_main_cats_slider_action_callback() {
     
     <?php endif;
     ?>
-    <div><?php echo 'hello '.$term_slug.' '.$term_type ;?></div>
+    <!-- <div><?php //echo 'hello '.$term_slug.' '.$term_type ;?></div> -->
     <?php
     
     $json_data['out'] = ob_get_clean();
