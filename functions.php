@@ -84,9 +84,9 @@ function plantis_schema_default_image( $pieces, $context ) {
 
 // анализ производиетльности серевера
 //отладка server timing
-
-define('WP_START', microtime(true));
-define('SAVEQUERIES', true);
+// включи это в wp-config.php
+// define('WP_START', microtime(true));
+// define('SAVEQUERIES', true);
 
 add_action('wp_footer', function () {
     global $timing_points, $wpdb;
