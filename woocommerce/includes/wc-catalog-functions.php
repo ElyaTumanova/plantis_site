@@ -773,7 +773,7 @@ function plnt_main_cats_slider_action_callback() {
     
     <?php endif;
     ?>
-    <div><?php echo $term_slug.' '.$term_type ;?></div>
+    <div><?php echo 'hello '.$term_slug.' '.$term_type ;?></div>
     <?php
     
     $json_data['out'] = ob_get_clean();
