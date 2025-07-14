@@ -13,16 +13,16 @@ function showSlider(sliderNmber) {
             el.classList.remove('main__cats-nav-title_active');
         }
     });
-    // console.log('catsTerm ',catsTerm);
-    // console.log('taxonomyType ',taxonomyType);
+    console.log('catsTerm ',catsTerm);
+    console.log('taxonomyType ',taxonomyType);
 
 }
 
 function ajaxGetMainCatTerm() {
     jQuery( function($){
-        //console.log('ajaxGetMainCatTerm init');
-        // console.log('catsTerm ajax',catsTerm);
-        // console.log('taxonomyType ajax',taxonomyType);
+        console.log('ajaxGetMainCatTerm init');
+        console.log('catsTerm ajax',catsTerm);
+        console.log('taxonomyType ajax',taxonomyType);
         $.ajax({
             type: 'POST',
             url: woocommerce_params.ajax_url,
@@ -49,7 +49,7 @@ function ajaxGetMainCatTerm() {
 
 }
 document.addEventListener('DOMContentLoaded',()=>{showSlider(0)});
-//showSlider(0);
+showSlider(0);
 navItems.forEach((el,index) => {
     el.addEventListener('click',() => showSlider(index));
 });
