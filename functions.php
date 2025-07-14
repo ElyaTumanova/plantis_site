@@ -222,6 +222,23 @@ add_action('wp_footer', function () {
     echo "-->\n";
 });
 
+add_action('shutdown', function () {
+    global $wpdb;
+
+    if (defined('SAVEQUERIES') && SAVEQUERIES && !empty($wpdb->queries)) {
+        usort($wpdb->queries, function ($a, $b) {
+            return $b[1] <=> $a[1]; // сортировка по времени DESC
+        });
+
+        echo "<!-- TOP 10 SLOWEST SQL QUERIES -->\n";
+        foreach (array_slice($wpdb->queries, 0, 10) as $i => $query) {
+            list($sql, $time, $call) = $query;
+            printf("<!-- #%d | %.4f sec | %s -->\n", $i + 1, $time, $sql);
+        }
+        echo "<!-- END SQL -->\n";
+    }
+});
+
 
 
 // FOR DEV
