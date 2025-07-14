@@ -6,12 +6,12 @@ add_action( 'after_setup_theme', function() {
 
 /** Add Carbon Fields */
 
-require_once __DIR__ . '/../../../vendor/autoload.php'; // путь может отличаться
-use Carbon_Fields\Carbon_Fields;
+// require_once __DIR__ . '/../../../vendor/autoload.php'; // путь может отличаться
+// use Carbon_Fields\Carbon_Fields;
 
-add_action( 'after_setup_theme', function() {
-    Carbon_Fields::boot();
-} );
+// add_action( 'after_setup_theme', function() {
+//     Carbon_Fields::boot();
+// } );
 
 
 add_action( 'carbon_fields_register_fields', 'ast_register_custom_fields' );
