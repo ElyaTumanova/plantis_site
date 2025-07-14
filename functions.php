@@ -12,6 +12,8 @@ function crb_load() {
 	\Carbon_Fields\Carbon_Fields::boot();
 }
 
+require get_template_directory() . '/includes/server-debug.php';
+
 /** Add theme support */
 require get_template_directory() . '/includes/theme-support.php';
 /** Enqueue scripts */
