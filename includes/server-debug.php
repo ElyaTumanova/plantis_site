@@ -144,6 +144,11 @@ if ( ! defined( 'ABSPATH' ) ) {
     });
 
     add_action('shutdown', function () {
+
+        if ( ! defined('SAVEQUERIES') || ! SAVEQUERIES || wp_doing_ajax() ) {
+            return;
+        }
+        
         global $wpdb;
 
         if (defined('SAVEQUERIES') && SAVEQUERIES && !empty($wpdb->queries)) {
