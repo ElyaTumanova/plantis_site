@@ -563,15 +563,16 @@
 }
 
 .catalog__tag {
-    border-radius: 20px;
-    padding: 3px 7px 3px;
-    box-shadow: 0 0 0 1px #f2f2f2;
-    border: solid 2px var(--accent-color);
+    /* border-radius: 20px; */
+    padding: 3px 7px 3px 0;
+    /* box-shadow: 0 0 0 1px #f2f2f2;
+    border: solid 2px var(--accent-color); */
     font-weight: 600;
     margin-right: 5px;
 	margin-top: 5px;
     white-space: nowrap;
     display: inline-block;
+    color: var(--gray-text);
 }
 
 .catalog__tag-link:hover {

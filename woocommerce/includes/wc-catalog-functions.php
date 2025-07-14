@@ -318,7 +318,7 @@ function plnt_get_product_tags() {
 		foreach($tags as $tag) {
 			if (!in_array($tag, $tags_podarki, true)) {
 				echo '<a class=catalog__tag-link href="'.get_tag_link(get_term($tag)->term_taxonomy_id).'">
-					<span class=catalog__tag>'.get_term($tag)->name.'</span>
+					<span class=catalog__tag>#'.get_term($tag)->name.'</span>
 				</a>';
 			}
 		}
