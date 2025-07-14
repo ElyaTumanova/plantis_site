@@ -364,18 +364,13 @@
     } */
 
     .catalog__products-wrap .yith-wcwl-add-to-wishlist {
-        /* position: absolute;
-        top: auto;
-        bottom: auto;
-        top: calc(var(--imgH) + 80px);
-        right: 80px; */
         border-radius: 100%;
         padding: 11px 10px 9px 10px;
-        position: relative;
+        position: relative !important;
         order: 2;
-        margin-top: -62px;
-        margin-left: auto;
-        margin-right: 70px;
+        margin-top: -62px !important;
+        margin-left: auto !important;
+        margin-right: 70px !important;
         height: fit-content;
         
         /* option 1 */
