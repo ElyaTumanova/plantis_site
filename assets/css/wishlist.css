@@ -108,8 +108,8 @@ table.wishlist_table tbody td.product-add-to-cart {
 }
 
 .yith_wcwl_wishlist_footer .yith_wcwl_footer_additional_action>* {
-    padding: 10px;
-    border-radius: 5px;
+    padding: 10px 15px;
+    border-radius: 30px;
     background-color: var(--accent-color);
     color: var(--white);
     border-color: var(--accent-color);
@@ -156,7 +156,7 @@ table.wishlist_table tbody td.product-add-to-cart {
 }
 
 .wishlist_table.mobile li .item-details table.item-details-table td.value {
-    text-align: left;
+    text-align: left !important;
     font-size: 25px;
     font-weight: 700;
 }
@@ -186,12 +186,13 @@ table.wishlist_table tbody td.product-add-to-cart {
 }
 
 .yith_wcwl_wishlist_footer .wishlist-actions>* {
-    padding: 10px;
-    border-radius: 5px;
+    padding: 10px 15px;
+    border-radius: 30px;
     background-color: var(--accent-color);
     color: var(--white);
     border-color: var(--accent-color);
     text-transform: uppercase;
+    width: 100%;
 }
 
 /*--------------------------------------------------------------
