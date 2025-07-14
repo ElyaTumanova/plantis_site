@@ -84,9 +84,6 @@ function plantis_schema_default_image( $pieces, $context ) {
 
 // анализ производиетльности серевера
 
-define('WP_START', microtime(true));
-define('SAVEQUERIES', true);
-
 global $timing_points;
 $timing_points = [];
 
