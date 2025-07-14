@@ -10,6 +10,9 @@
     margin-top: 30px;
 }
 
+.woocommerce table.shop_table.wishlist_table tr td {
+    color: var(--text) !important;
+}
 .wishlist-items-wrapper {
     display: flex;
     align-items: stretch;
