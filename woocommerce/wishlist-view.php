@@ -277,7 +277,7 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 						?>
 
 						<a href="<?php echo esc_url( get_permalink( apply_filters( 'woocommerce_in_cart_product', $item->get_product_id() ) ) ); ?>">
-							<?php echo wp_kses_post( $product->get_image() ); ?>
+							<?php echo wp_kses_post( $product->get_image('large') ); ?> 
 						</a>
 
 						<?php
