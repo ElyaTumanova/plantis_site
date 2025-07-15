@@ -166,18 +166,3 @@ if ( ! defined( 'ABSPATH' ) ) {
             echo "<!-- END SQL -->\n";
         }
     });
-
-
-
-
-    if ( defined('SAVEQUERIES') && SAVEQUERIES ) {
-        add_action('shutdown', function () {
-            global $wpdb;
-
-            $queries = array_map(function ($q) {
-                return $q['time'] . ' sec | ' . $q['query'];
-            }, $wpdb->queries);
-
-            file_put_contents( ABSPATH . 'slow-queries.log', implode("\n", $queries) . "\n\n", FILE_APPEND );
-        });
-    }
