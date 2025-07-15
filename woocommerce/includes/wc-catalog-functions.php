@@ -83,7 +83,7 @@ function plnt_catalog_sidebar() {
 		<div class="modal-mob__close catalog-sidebar__close button"><?php echo $close_icon ?></div>
         <div class="catalog__sidebar-cats">
             <li id="menu-item-41448" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat current-menu-item menu-item-has-children menu-item-41448 catalog__node catalog__node_lvl_1 catalog__dropdown catalog__node_active">
-                <a href="https://plantis.shop/product-category/komnatnye-rasteniya/" aria-current="page">Комнатные растения</a>
+                <a href="https://plantis-shop.ru/product-category/komnatnye-rasteniya/" aria-current="page">Комнатные растения</a>
                 <span class="menu__dropdown-arrow">next</span>
             </li>
         </div>
