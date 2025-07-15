@@ -15,6 +15,7 @@ Contents
 # Billing adress field
 # T Bank
 # Thankyou page
+# Additional fields for admin
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -1160,5 +1161,103 @@ function plnt_inn_field_in_email( $rows, $order ) {
 
         return $thank_you_msg;
     }
+
+
+
+/*--------------------------------------------------------------
+# Additional fields for admin
+--------------------------------------------------------------*/
+    add_action( 'add_meta_boxes', 'plnt_add_custom_fields_meta_box' );
+    function plnt_add_custom_fields_meta_box() {
+        add_meta_box(
+            'plnt_custom_order_fields',
+            'Дополнительные поля заказа',
+            'plnt_render_custom_fields_meta_box',
+            'shop_order',
+            'side',
+            'default'
+        );
+    }
+
+    function plnt_render_custom_fields_meta_box( $post ) {
+        $fields = [
+            'plnt_payment_method'      => ['Способ оплаты', 'select'],
+            'plnt_client_status'      => ['Статус клиента', 'select'],
+            'plnt_client_origin'  => ['Откуда пришел клиент', 'select'],
+            'plnt_paid'     => ['Оплачен?', 'select'],
+            'plnt_comment'     => ['Комментарий', 'text'],
+        ];
+
+        $select_field_options = [
+            'plnt_payment_method' => [
+                'site'   => 'На сайте',
+                'ssylka'   => 'По ссылке',
+                'nal'    => 'Наличными',
+                'perevod' => 'Переводом',
+                'schet' => 'По счету',
+                'other' => 'Иное',
+            ],
+            'plnt_client_status' => [
+                'new' => 'Новый',
+                'requring'  => 'Повтор',
+                'other' => 'Иное',
+            ],
+            'plnt_client_origin' => [
+                'site' => 'Сайт',
+                'preorder'  => 'Предзаказ',
+                'messenger' => 'Мессенджер',
+                'mail' => 'Письмо',
+                'call' => 'Звонок',
+                'other' => 'Иное',
+            ],
+            'plnt_paid' => [
+                'yes' => 'Да',
+                'no'  => 'Нет',
+                'other' => 'Иное',
+            ],
+        ];
+
+        foreach ( $fields as $key => $field ) {
+            $label = $field[0];
+            $type  = $field[1];
+            $value = get_post_meta( $post->ID, '_' . $key, true );
+
+            echo '<p><label for="' . esc_attr($key) . '">' . esc_html($label) . '</label><br />';
+
+            if ( $type === 'select' ) {
+                echo '<select name="' . esc_attr($key) . '" id="' . esc_attr($key) . '" style="width:100%">';
+                if ( isset( $select_field_options[ $key ] ) ) {
+                    foreach ( $select_field_options[ $key ] as $option_value => $option_label ) {
+                        $selected = selected( $value, $option_value, false );
+                        echo '<option value="' . esc_attr($option_value) . '" ' . $selected . '>' . esc_html($option_label) . '</option>';
+                    }
+                }
+                echo '</select>';
+            } else {
+                echo '<input type="text" style="width:100%" name="' . esc_attr($key) . '" id="' . esc_attr($key) . '" value="' . esc_attr($value) . '" />';
+            }
+
+            echo '</p>';
+        }
+    }
+
+    function plnt_save_custom_fields_meta_box( $post_id ) {
+        $fields = [
+            'plnt_payment_method',
+            'plnt_client_status',
+            'plnt_client_origin',
+            'plnt_paid',
+            'plnt_comment',
+        ];
+
+        foreach ( $fields as $field ) {
+            if ( isset( $_POST[ $field ] ) ) {
+                update_post_meta( $post_id, '_' . $field, sanitize_text_field( $_POST[ $field ] ) );
+            }
+        }
+    }
+
+
+
 
 
