@@ -1,6 +1,6 @@
 <?php
 
-//get_header(); 
+get_header(); 
 
 global $skidki_cat_id;
 ?>
