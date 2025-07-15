@@ -166,3 +166,6 @@ if ( ! defined( 'ABSPATH' ) ) {
             echo "<!-- END SQL -->\n";
         }
     });
+
+
+    echo "<!-- Timing: get_header = {$header_duration} ms -->";
