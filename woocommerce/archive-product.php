@@ -74,14 +74,14 @@ if ( woocommerce_product_loop() ) {
 			wc_get_template_part( 'content', 'product' );
 		}
 	}
-
+    
 	/**
 	 * Hook: woocommerce_before_product_loop_end.
 	 *
 	 * @hooked plnt_img_gallery_swiper_init - 10 - инициация слайдера swiper для галереи фото в каталоге
 	 */
 	do_action( 'woocommerce_before_product_loop_end' );   //plnt new action 
-
+    echo "<!-- Timing: cataloglog = " . round((microtime(true) - $start) * 1000, 2) . " ms -->";
 	woocommerce_product_loop_end();
 
 	/**
@@ -90,7 +90,6 @@ if ( woocommerce_product_loop() ) {
 	 * @hooked woocommerce_pagination - 10
 	 */
 	do_action( 'woocommerce_after_shop_loop' );
-    echo "<!-- Timing: catalog = " . round((microtime(true) - $start) * 1000, 2) . " ms -->";
 } else {
 	/**
 	 * Hook: woocommerce_no_products_found.
