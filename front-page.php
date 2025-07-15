@@ -1,15 +1,6 @@
 <?php
-
-   $start_header = microtime(true);
-   get_header();
-
-    $end_header = microtime(true);
-
-    $header_duration = round(($end_header - $start_header) * 1000, 2); // в миллисекундах
-    echo "<!-- Timing: get_header = {$header_duration} ms -->";
-
-
-global $skidki_cat_id;
+    get_header();
+    global $skidki_cat_id;
 ?>
 
 <div class="content-area-full-width">
@@ -104,4 +95,13 @@ global $skidki_cat_id;
 	</main><!-- #main -->
 </div><!-- #primary -->
 
-<?php get_footer(); ?>
+<?php 
+
+    $start_footer = microtime(true);
+   get_footer();
+
+    $end_footer = microtime(true);
+
+    $footer_duration = round(($end_footer - $start_footer) * 1000, 2); // в миллисекундах
+    echo "<!-- Timing: get_footer = {$footer_duration} ms -->";
+ ?>
