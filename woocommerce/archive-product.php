@@ -90,6 +90,7 @@ if ( woocommerce_product_loop() ) {
 	 * @hooked woocommerce_pagination - 10
 	 */
 	do_action( 'woocommerce_after_shop_loop' );
+    echo "<!-- Timing: catalog = " . round((microtime(true) - $start) * 1000, 2) . " ms -->";
 } else {
 	/**
 	 * Hook: woocommerce_no_products_found.
@@ -105,7 +106,7 @@ if ( woocommerce_product_loop() ) {
  * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
  */
 do_action( 'woocommerce_after_main_content' );
-echo "<!-- Timing: catalog = " . round((microtime(true) - $start) * 1000, 2) . " ms -->";
+
 /**
  * Hook: woocommerce_sidebar.
  *
