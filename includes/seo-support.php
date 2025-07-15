@@ -50,7 +50,7 @@ function fix_yoast_schema_images_globally( $pieces, $context ) {
 // add_filter( 'wpseo_twitter_image', 'plantis_default_twitter_image',10,1 );
 // add_filter( 'wpseo_schema_graph_pieces', 'plantis_schema_default_image', 11, 2 );
 
-function plnt_default_og_image( $image,$presentation ) {
+function plnt_default_og_image( $image ) {
 	if ( empty( $image ) ) {
 		$image_id = attachment_url_to_postid( 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp' );
 		if ( $image_id ) {
