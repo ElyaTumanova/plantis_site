@@ -2,6 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+$start_footer_file = microtime(true);
 
 $close_icon = carbon_get_theme_option('close_icon');
 ?>
@@ -82,6 +83,7 @@ if (!is_account_page()) {
 ?>
 
 <?php wp_footer(); ?>
+<?php echo "<!-- Timing: footer.php = " . round((microtime(true) - $start_footer_file) * 1000, 2) . " ms -->"; ?>
 
 </body>
 </html>
