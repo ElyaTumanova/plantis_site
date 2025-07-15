@@ -15,10 +15,12 @@ Contents
 add_action('woocommerce_before_shop_loop','plnt_set_constants',5);
 
 add_action('woocommerce_before_shop_loop',function(){
-    $start = microtime(true);
+     global $plnt_start_timer;
+     $plnt_start_timer = microtime(true);
 },4);
 add_action('woocommerce_before_shop_loop',function(){
-    echo "<!-- Timing: plnt_set_constants = " . round((microtime(true) - $start) * 1000, 2) . " ms -->";
+    global $plnt_start_timer;
+    echo "<!-- Timing: plnt_set_constants = " . round((microtime(true) - $plnt_start_timer) * 1000, 2) . " ms -->";
 },6);
 
 /*--------------------------------------------------------------
