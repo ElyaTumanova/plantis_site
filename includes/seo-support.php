@@ -3,11 +3,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-add_filter( 'wpseo_opengraph_image', 'plantis_default_og_image' );
-add_filter( 'wpseo_twitter_image', 'plantis_default_twitter_image' );
+add_filter( 'wpseo_opengraph_image', 'plantis_default_og_image',10,2 );
+add_filter( 'wpseo_twitter_image', 'plantis_default_twitter_image',10,1 );
 add_filter( 'wpseo_schema_graph_pieces', 'plantis_schema_default_image', 11, 2 );
 
-function plantis_default_og_image( $image ) {
+function plantis_default_og_image( $image,$presentation ) {
 	if ( empty( $image ) ) {
 		$image_id = attachment_url_to_postid( 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp' );
 		if ( $image_id ) {
@@ -29,6 +29,8 @@ function plantis_default_og_image( $image ) {
 
 	return $image;
 }
+
+add_action('wp_footer',function(){echo($image_id = attachment_url_to_postid( 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp' ))});
 
 function plantis_default_twitter_image( $image ) {
 	if ( empty( $image ) ) {
