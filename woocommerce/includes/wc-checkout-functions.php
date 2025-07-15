@@ -1230,7 +1230,7 @@ function plnt_inn_field_in_email( $rows, $order ) {
 
             if ( $type === 'select' ) {
                 echo '<select name="' . esc_attr($key) . '" id="' . esc_attr($key) . '" style="width:100%">';
-               // echo '<option value="">— Выберите —</option>';
+                echo '<option value="">— Выберите —</option>';
                 if ( isset( $select_field_options[ $key ] ) ) {
                     foreach ( $select_field_options[ $key ] as $option_value => $option_label ) {
                         $selected = selected( $value, $option_value, false );
