@@ -9,10 +9,27 @@ add_filter( 'wpseo_schema_graph_pieces', 'plantis_schema_default_image', 11, 2 )
 
 function plantis_default_og_image( $image ) {
 	if ( empty( $image ) ) {
-		$image = 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp'; // путь к изображению
+		$image_id = attachment_url_to_postid( 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp' );
+		if ( $image_id ) {
+			$size = wp_get_attachment_image_src( $image_id, 'full' );
+			if ( $size ) {
+				return [
+					'url' => $size[0],
+					'width' => $size[1],
+					'height' => $size[2],
+				];
+			}
+		}
+
+		// fallback: без размера
+		return [
+			'url' => 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp',
+		];
 	}
+
 	return $image;
 }
+
 
 function plantis_schema_default_image( $pieces, $context ) {
 	foreach ( $pieces as $piece ) {
