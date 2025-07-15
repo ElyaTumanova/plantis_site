@@ -27,7 +27,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 			</div>
 			<div class="header__notice-wrap">
-				<?php get_template_part( 'template-parts/header-notice' );?>
+				<?php 
+                $start_notice = microtime(true);
+                           get_template_part( 'template-parts/header-notice' );
+                            $end_notice = microtime(true);
+
+                            $notice_duration = round(($end_notice - $start_notice) * 1000, 2); // в миллисекундах
+                            echo "<!-- Timing: get_header = {$notice_duration} ms -->";
+                
+                ?>
 			</div>
 
 			<div class="header__main">
