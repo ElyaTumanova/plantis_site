@@ -14,15 +14,6 @@ Contents
 --------------------------------------------------------------*/
 add_action('woocommerce_before_shop_loop','plnt_set_constants',5);
 
-add_action('woocommerce_before_shop_loop',function(){
-     global $plnt_start_timer;
-     $plnt_start_timer = microtime(true);
-},4);
-add_action('woocommerce_before_shop_loop',function(){
-    global $plnt_start_timer;
-    echo "<!-- Timing: plnt_set_constants = " . round((microtime(true) - $plnt_start_timer) * 1000, 2) . " ms -->";
-},6);
-
 /*--------------------------------------------------------------
 #Catalog design
 --------------------------------------------------------------*/
@@ -117,6 +108,15 @@ function plnt_catalog_sidebar() {
     </div>
     <?php 
 };
+
+add_action('woocommerce_before_shop_loop',function(){
+     global $plnt_start_timer;
+     $plnt_start_timer = microtime(true);
+},19);
+add_action('woocommerce_before_shop_loop',function(){
+    global $plnt_start_timer;
+    echo "<!-- Timing: plnt_catalog_sidebar = " . round((microtime(true) - $plnt_start_timer) * 1000, 2) . " ms -->";
+},21);
 
 // // вывод фильтров над каталогом  #filters #berocket
 add_action('woocommerce_before_shop_loop','plnt_catalog_filters_main_area', 20);
