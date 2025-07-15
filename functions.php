@@ -28,12 +28,10 @@ function ast_register_custom_fields() {
 
 /** Add constants */
 require get_template_directory() . '/includes/constants.php';
-
 /** Add SEO support */
 require get_template_directory() . '/includes/seo-support.php';
-
 /** Add theme support */
-require get_template_directory() . '/includes/seo-support.php';
+require get_template_directory() . '/includes/theme-support.php';
 /** Enqueue scripts */
 require get_template_directory() . '/includes/enqueue-scripts-style.php';
 /** Various clean up functions */
