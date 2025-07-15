@@ -1078,7 +1078,7 @@ function plnt_inn_field_in_email( $rows, $order ) {
     
     }
 
-    //add_filter( 'woocommerce_checkout_posted_data', 'true_process_fields' );
+    add_filter( 'woocommerce_checkout_posted_data', 'true_process_fields' );
     function true_process_fields( $data ) {
     
         // в поле billing_address_2 мы и будем записывать новые значения полей
