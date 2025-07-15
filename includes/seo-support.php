@@ -30,7 +30,7 @@ function plantis_default_og_image( $image,$presentation ) {
 	return $image;
 }
 
-add_action('wp_footer',function(){echo($image_id = attachment_url_to_postid( 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp' ))});
+add_action('wp_footer',function(){echo($image_id = attachment_url_to_postid( 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp' ));});
 
 function plantis_default_twitter_image( $image ) {
 	if ( empty( $image ) ) {
