@@ -19,7 +19,7 @@ function plnt_check_site() {
 	// echo '</pre>';
 }
 
-//add_action( 'wp_footer', 'plnt_check_site' );
+add_action( 'wp_footer', 'plnt_check_site' );
 
 /* Категории товаров */
 if($site === 'https://plantis-shop.ru') {

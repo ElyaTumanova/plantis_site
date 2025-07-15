@@ -30,7 +30,7 @@ function ast_register_custom_fields() {
 require get_template_directory() . '/includes/constants.php';
 
 /** Add SEO support */
-require get_template_directory() . '/includes/constants.php';
+require get_template_directory() . '/includes/seo-support.php';
 
 /** Add theme support */
 require get_template_directory() . '/includes/seo-support.php';
