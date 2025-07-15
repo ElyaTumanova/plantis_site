@@ -21,7 +21,7 @@ function ast_register_custom_fields() {
 }
 
 /** Add server timing debug */
-require get_template_directory() . '/includes/server-debug.php';
+//require get_template_directory() . '/includes/server-debug.php';
 
 /** Add constants */
 require get_template_directory() . '/includes/constants.php';
