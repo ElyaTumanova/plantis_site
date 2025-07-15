@@ -97,4 +97,4 @@ global $skidki_cat_id;
 	</main><!-- #main -->
 </div><!-- #primary -->
 
-<?php //get_footer(); ?>
+<?php get_footer(); ?>
