@@ -14,6 +14,13 @@ Contents
 --------------------------------------------------------------*/
 add_action('woocommerce_before_shop_loop','plnt_set_constants',5);
 
+add_action('woocommerce_before_shop_loop',function(){
+    $start = microtime(true);
+},4);
+add_action('woocommerce_before_shop_loop',function(){
+    echo "<!-- Timing: plnt_set_constants = " . round((microtime(true) - $start) * 1000, 2) . " ms -->";
+},6);
+
 /*--------------------------------------------------------------
 #Catalog design
 --------------------------------------------------------------*/

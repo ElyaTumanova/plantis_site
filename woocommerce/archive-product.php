@@ -21,8 +21,6 @@ defined( 'ABSPATH' ) || exit;
 
 get_header( 'shop' );
 
-$start = microtime(true);
-
 /**
  * Hook: woocommerce_before_main_content.
  *
@@ -81,7 +79,7 @@ if ( woocommerce_product_loop() ) {
 	 * @hooked plnt_img_gallery_swiper_init - 10 - инициация слайдера swiper для галереи фото в каталоге
 	 */
 	do_action( 'woocommerce_before_product_loop_end' );   //plnt new action 
-    echo "<!-- Timing: cataloglog = " . round((microtime(true) - $start) * 1000, 2) . " ms -->";
+
 	woocommerce_product_loop_end();
 
 	/**
