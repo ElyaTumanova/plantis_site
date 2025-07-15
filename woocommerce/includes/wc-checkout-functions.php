@@ -1262,6 +1262,8 @@ function plnt_inn_field_in_email( $rows, $order ) {
         }
     }
 
+    add_action( 'save_post_shop_order', 'plnt_save_custom_fields_meta_box', 20, 2 );
+
 
 
 
