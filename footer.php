@@ -8,11 +8,11 @@ $close_icon = carbon_get_theme_option('close_icon');
 ?>
 
 <footer id="footer" class="footer" role="contentinfo">
-<?php $start = microtime(true); ?>
+<?php //$start = microtime(true); ?>
 <div class="footer__nav container">
     <?php get_template_part('template-parts/menu-footer');?>
 </div>
-<?php echo "<!-- Timing: footer nav = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
+<?php //echo "<!-- Timing: footer nav = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
 
 <div class="footer__info container">
     <span class="footer__info-copyright">© 2021 - 2024 Plantis | Комнатные растения и аксессуары с доставкой. Тел. <a href="tel:+78002015790">8 800 201 57 90</a></span>

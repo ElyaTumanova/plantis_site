@@ -167,3 +167,38 @@ if ( ! defined( 'ABSPATH' ) ) {
         }
     });
 
+
+    //замеряем время для каталога
+
+    add_action('template_redirect', function () {
+        global $timing_start;
+        if (is_shop() || is_product_category()) {
+            $timing_start = microtime(true);
+        }
+    }, 0);
+
+    add_action('shutdown', function () {
+        global $timing_start, $wpdb;
+        if (!isset($timing_start)) return;
+
+        $timing_end = microtime(true);
+        $total_time = $timing_end - $timing_start;
+
+        $db_time = 0;
+        if (defined('SAVEQUERIES') && SAVEQUERIES && isset($GLOBALS['wpdb']->queries)) {
+            foreach ($GLOBALS['wpdb']->queries as $q) {
+                $db_time += $q[1];
+            }
+        }
+
+        $php_time = $total_time;
+        $template_time = $php_time - $db_time;
+
+        echo "\n<!-- Server-Timing Debug:\n";
+        echo "db: " . round($db_time * 1000, 2) . "ms\n";
+        echo "template: " . round($template_time * 1000, 2) . "ms\n";
+        echo "total: " . round($total_time * 1000, 2) . "ms\n";
+        echo "-->\n";
+    });
+
+
