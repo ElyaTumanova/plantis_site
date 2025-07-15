@@ -14,10 +14,10 @@ $close_icon = carbon_get_theme_option('close_icon');
 <div class="footer__nav container">
     <div class="footer__plants-menu footer__menu-wrap">
         <a class="footer__heading footer__heading_link" href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">Растения</a>
-        <?php plnt_footer_menu_plants(); ?>
+        <?php //plnt_footer_menu_plants(); ?>
     </div>
     <div class="footer__services-menu footer__menu-wrap">
-        <?php plnt_footer_menu_services(); ?>
+        <?php //plnt_footer_menu_services(); ?>
     </div>
     <?php echo "<!-- Timing: footer nav = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
     <div class="footer__info-menu footer__menu-wrap">
