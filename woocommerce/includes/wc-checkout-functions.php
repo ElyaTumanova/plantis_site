@@ -1190,7 +1190,6 @@ function plnt_inn_field_in_email( $rows, $order ) {
 
         $select_field_options = [
             'plnt_payment_method' => [
-                'default'   => '',
                 'site'   => 'На сайте',
                 'ssylka'   => 'По ссылке',
                 'nal'    => 'Наличными',
@@ -1199,13 +1198,11 @@ function plnt_inn_field_in_email( $rows, $order ) {
                 'other' => 'Иное',
             ],
             'plnt_client_status' => [
-                'default'   => '',
                 'new' => 'Новый',
                 'requring'  => 'Повтор',
                 'other' => 'Иное',
             ],
             'plnt_client_origin' => [
-                'default'   => '',
                 'site' => 'Сайт',
                 'preorder'  => 'Предзаказ',
                 'messenger' => 'Мессенджер',
@@ -1214,7 +1211,6 @@ function plnt_inn_field_in_email( $rows, $order ) {
                 'other' => 'Иное',
             ],
             'plnt_paid' => [
-                'default'   => '',
                 'yes' => 'Да',
                 'no'  => 'Нет',
                 'other' => 'Иное',
