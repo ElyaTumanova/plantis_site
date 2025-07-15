@@ -21,6 +21,8 @@ defined( 'ABSPATH' ) || exit;
 
 get_header( 'shop' );
 
+$start = microtime(true);
+
 /**
  * Hook: woocommerce_before_main_content.
  *
@@ -110,5 +112,7 @@ do_action( 'woocommerce_after_main_content' );
  * @hooked woocommerce_get_sidebar - 10
  */
 do_action( 'woocommerce_sidebar' );
+
+echo "<!-- Timing: catalog = " . round((microtime(true) - $start) * 1000, 2) . " ms -->";
 
 get_footer( 'shop' );
