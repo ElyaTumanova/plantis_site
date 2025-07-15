@@ -1,6 +1,6 @@
 <?php
 
-get_header(); 
+//get_header(); 
 
 global $skidki_cat_id;
 ?>
@@ -97,4 +97,4 @@ global $skidki_cat_id;
 	</main><!-- #main -->
 </div><!-- #primary -->
 
-<?php get_footer(); ?>
+<?php //get_footer(); ?>
