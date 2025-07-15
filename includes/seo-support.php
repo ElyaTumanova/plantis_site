@@ -19,6 +19,24 @@ function fix_yoast_schema_image( $data, $context ) {
 	return $data;
 }
 
+add_filter( 'wpseo_schema_graph_pieces', 'fix_yoast_schema_images_globally', 10, 2 );
+function fix_yoast_schema_images_globally( $pieces, $context ) {
+	foreach ( $pieces as &$piece ) {
+		if ( isset( $piece['@type'] ) && isset( $piece['image'] ) && ! is_array( $piece['image'] ) ) {
+            $image_id = attachment_url_to_postid( 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp' );
+            if ( $image_id ) {
+                $image = wp_get_attachment_image_src( $image_id );
+            }
+			$piece['image'] = [
+				'url'    => $image[0],
+                'width'  => $image[1],
+                'height' => $image[2],
+			];
+		}
+	}
+	return $pieces;
+}
+
 add_filter( 'wpseo_opengraph_image', 'plnt_default_og_image');
 add_filter( 'wpseo_opengraph_image_width', 'plnt_change_opengraph_image_width');
 add_filter( 'wpseo_opengraph_image_height', 'plnt_change_opengraph_image_height');
