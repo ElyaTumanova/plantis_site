@@ -95,13 +95,6 @@
 	</main><!-- #main -->
 </div><!-- #primary -->
 
-<?php 
+<?php $start_footer = microtime(true); get_footer(); ?>
+<?php echo "<!-- Timing: get_footer = " . round((microtime(true) - $start_footer) * 1000, 2) . " ms -->"; ?>
 
-    $start_footer = microtime(true);
-   get_footer();
-
-    $end_footer = microtime(true);
-
-    $footer_duration = round(($end_footer - $start_footer) * 1000, 2); // в миллисекундах
-    echo "<!-- Timing: get_footer = {$footer_duration} ms -->";
- ?>
