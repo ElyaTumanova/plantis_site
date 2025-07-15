@@ -3,6 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 ?>
+
 <div class="footer__plants-menu footer__menu-wrap">
     <a class="footer__heading footer__heading_link" href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">Растения</a>
     <nav class="menu-footer_plants-container">
@@ -38,7 +39,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         </ul>
     </nav>
 </div>
-<?php echo "<!-- Timing: footer nav = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
+
 <div class="footer__info-menu footer__menu-wrap">
     <?php get_template_part('template-parts/info-pages-list');?>
 </div>
