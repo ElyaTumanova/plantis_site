@@ -1,6 +1,15 @@
 let catalogMenuDiv = document.querySelector('.catalog__sidebar-cats');
 
 
+
+let tempMenu = document.querySelectorAll('.catalog__sidebar-temp');
+let tempMenuItems = document.querySelectorAll('.catalog__sidebar-temp li');
+
+tempMenuItems.forEach(element => {
+    element.addEventListener('click',plntAjaxShowCatalogMenu,{ once: true })
+});
+
+
 function plntAjaxShowCatalogMenu(event) {
   const data = new URLSearchParams();
   data.append('action', 'plnt_show_catalog_menu');
@@ -14,6 +23,7 @@ function plntAjaxShowCatalogMenu(event) {
     if (catalogMenuDiv) {
       catalogMenuDiv.innerHTML = html;
     }
+    tempMenu.remove();
     setCatalogDropdown();
   })
   .catch(error => {
