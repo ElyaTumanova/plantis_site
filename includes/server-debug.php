@@ -81,16 +81,16 @@ if ( ! defined( 'ABSPATH' ) ) {
         $timing['template'] = isset($timing_points['template_start']) ? ($now - $timing_points['template_start']) * 1000 : 0;
 
         // SQL
-        $db_time = 0;
-        if (!empty($wpdb->queries)) {
-            foreach ($wpdb->queries as $query) {
-                $db_time += $query[1];
-            }
-        }
-        $timing['db'] = $db_time * 1000;
+        // $db_time = 0;
+        // if (!empty($wpdb->queries)) {
+        //     foreach ($wpdb->queries as $query) {
+        //         $db_time += $query[1];
+        //     }
+        // }
+        // $timing['db'] = $db_time * 1000;
 
-        $timing['php'] = $php_total;
-        $timing['total'] = $php_total;
+        // $timing['php'] = $php_total;
+        // $timing['total'] = $php_total;
 
         // Header
         // $server_timing = [];
