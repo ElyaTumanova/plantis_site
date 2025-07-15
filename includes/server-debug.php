@@ -167,5 +167,3 @@ if ( ! defined( 'ABSPATH' ) ) {
         }
     });
 
-
-    echo "<!-- Timing: get_header = {$header_duration} ms -->";
