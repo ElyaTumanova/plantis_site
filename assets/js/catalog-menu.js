@@ -23,7 +23,7 @@ function plntAjaxShowCatalogMenu(event) {
     if (catalogMenuDiv) {
       catalogMenuDiv.innerHTML = html;
     }
-    tempMenu.remove();
+    // tempMenu.remove();
     setCatalogDropdown();
   })
   .catch(error => {
