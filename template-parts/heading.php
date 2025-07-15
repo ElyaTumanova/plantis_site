@@ -9,7 +9,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="header__info">
 				<div class="header__info-wrap container">
 					<nav class="header__info-navigation" role="navigation">
-						<?php plnt_secondary_menu(); ?>
+						<?php 
+                        
+                            $start_header = microtime(true);
+                            plnt_secondary_menu();
+                            $end_header = microtime(true);
+
+                            $header_duration = round(($end_header - $start_header) * 1000, 2); // в миллисекундах
+                            echo "<!-- Timing: get_header = {$header_duration} ms -->";
+ 
+                        
+                        
+                         ?>
 					</nav>
 					<div class="header__phones"><a href="tel:+78002015790">8 800 201 57 90</a> | <a href="tel:+79647687944">8 964 768 79 44</a></div>
 					<!-- <div class="header__working-hours">Eжедневно с 10 до 20</div> -->

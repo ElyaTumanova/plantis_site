@@ -49,12 +49,5 @@
 <div id="page" class="site">
 
 <?php
-
-    $start_header = microtime(true);
     get_template_part( 'template-parts/heading' );
-    $end_header = microtime(true);
-
-    $header_duration = round(($end_header - $start_header) * 1000, 2); // в миллисекундах
-    echo "<!-- Timing: get_header = {$header_duration} ms -->";
- 
 ?>
