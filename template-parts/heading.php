@@ -11,12 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<nav class="header__info-navigation" role="navigation">
 						<?php 
                         
-                            $start_header = microtime(true);
-                            plnt_secondary_menu();
-                            $end_header = microtime(true);
+                            // $start_header = microtime(true);
+                            // plnt_secondary_menu();
+                            // $end_header = microtime(true);
 
-                            $header_duration = round(($end_header - $start_header) * 1000, 2); // в миллисекундах
-                            echo "<!-- Timing: get_header = {$header_duration} ms -->";
+                            // $header_duration = round(($end_header - $start_header) * 1000, 2); // в миллисекундах
+                            // echo "<!-- Timing: get_header = {$header_duration} ms -->";
  
                         
                         
