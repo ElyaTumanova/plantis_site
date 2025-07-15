@@ -21,6 +21,11 @@ function fix_yoast_schema_image( $data, $context ) {
 
 add_filter( 'wpseo_schema_graph_pieces', 'fix_yoast_schema_images_globally', 10, 2 );
 function fix_yoast_schema_images_globally( $pieces, $context ) {
+    // Обрабатываем только массивы
+		if ( ! is_array( $piece ) ) {
+			continue;
+		}
+        
 	foreach ( $pieces as &$piece ) {
 		if ( isset( $piece['@type'] ) && isset( $piece['image'] ) && ! is_array( $piece['image'] ) ) {
             $image_id = attachment_url_to_postid( 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp' );
