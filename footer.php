@@ -8,6 +8,8 @@ $close_icon = carbon_get_theme_option('close_icon');
 ?>
 
 <footer id="footer" class="footer" role="contentinfo">
+<?php $start = microtime(true); ?>
+<!-- твой блок кода -->
 
 <div class="footer__nav container">
     <div class="footer__plants-menu footer__menu-wrap">
@@ -24,7 +26,7 @@ $close_icon = carbon_get_theme_option('close_icon');
         <?php get_template_part('template-parts/contacts-part');?>
     </div>
 </div>
-
+<?php echo "<!-- Timing: footer nav = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
 
 <div class="footer__info container">
     <span class="footer__info-copyright">© 2021 - 2024 Plantis | Комнатные растения и аксессуары с доставкой. Тел. <a href="tel:+78002015790">8 800 201 57 90</a></span>
@@ -49,10 +51,7 @@ $close_icon = carbon_get_theme_option('close_icon');
         <div class="side-cart">
             <h4 class="side-cart__title heading-2">Корзина</h4>
             <div class="modal-mob__close side-cart__close button"><?php echo $close_icon ?></div>      
-            <?php 
-                $start = microtime(true);
-                plnt_woocommerce_mini_cart();
-                echo "<!-- Timing: mini-cart = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
+            <?php plnt_woocommerce_mini_cart();?>
         </div>
         <div class="side-cart__popup-overlay popup-overlay"></div>
     </div>
