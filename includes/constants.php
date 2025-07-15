@@ -116,7 +116,7 @@ if($site === 'https://plantis-shop.ru') {
 	//#filters ID's
 	$filter_podborki_id = 10989;
 	$filter_in_stock_id = 6110;
-	$filter_price_id = 6055;
+	$filter_price_id = 9300; //ok
 	$filter_height_id = 6056;
 	$filter_poliv_id = 6109;
 	$filter_svet_id = 11115;
