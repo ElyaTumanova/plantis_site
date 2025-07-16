@@ -100,20 +100,20 @@ if($site === 'https://plantis-shop.ru') {
 	//#filters ID's
     $filter_plant_type_id = 9310; //ok
     $filter_plant_name_id = 9311; //ok
-	$filter_podborki_id = 10989;
+	$filter_podborki_id = 9323; //ok
 	$filter_in_stock_id = 6110; //undo
 	$filter_price_id = 9300; //ok
 	$filter_height_id = 9313; //ok
-	$filter_poliv_id = 6109;
-	$filter_svet_id = 11115;
-	$filter_vlaga_id = 11116;
-	$filter_diametr_id = 11117;
+	$filter_poliv_id = 9315;//ok
+	$filter_svet_id = 9316;//ok
+	$filter_vlaga_id = 9317; //ok
+	$filter_diametr_id = 9321; //ok
 	$filter_color_id = 9314; //ok
-	$filter_forma_id = 12013;
-	$filter_materilal_id = 12015;
-	$filter_volume_id = 12016;
-	$filter_gift_id = 10988;
-	$filter_active_id = 6057;
+	$filter_forma_id = 9318; //ok
+	$filter_materilal_id = 9319;//ok
+	$filter_volume_id = 9320; //ok
+	$filter_gift_id = 9322; //ok
+	$filter_active_id = 9324; //ok
 	$filter_razmer_id = 60247; //to be updated
 	$filter_razmer_kashpo_id = 56545; //to be updated
 

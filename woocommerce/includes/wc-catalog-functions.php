@@ -105,7 +105,6 @@ function plnt_catalog_sidebar() {
 				echo do_shortcode('[br_filter_single filter_id='.$filter_poliv_id.']'); //	полив //56533 //6109
 				echo do_shortcode('[br_filter_single filter_id='.$filter_svet_id.']'); // освещение //56538 //11115
 				echo do_shortcode('[br_filter_single filter_id='.$filter_vlaga_id.']'); // влажность //56539 //11116
-				//echo do_shortcode('[br_filter_single filter_id=12018]'); // автополив
 				echo do_shortcode('[br_filter_single filter_id='.$filter_diametr_id.']'); // диаметр горшка //56540 //11117
 				//echo do_shortcode('[br_filter_single filter_id='.$filter_razmer_kashpo_id.']'); // диаметр кашпо Treez //56545 //12017
 				echo do_shortcode('[br_filter_single filter_id='.$filter_color_id.']'); // цвет //56532 //6108
