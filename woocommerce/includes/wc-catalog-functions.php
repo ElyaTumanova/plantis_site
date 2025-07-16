@@ -100,7 +100,6 @@ function plnt_catalog_sidebar() {
 			echo do_shortcode('[br_filter_single filter_id='.$filter_price_id.']'); // цена  \\56529 //6055
 			if (!is_shop()) {
 				echo do_shortcode('[br_filter_single filter_id='.$filter_plant_type_id.']');
-                echo '<input type="text" placeholder="Поиск..." class="berocket-search-checkbox">';
 				echo do_shortcode('[br_filter_single filter_id='.$filter_plant_name_id.']');
 				echo do_shortcode('[br_filter_single filter_id='.$filter_height_id.']'); // высота //56530 //6056
 				echo do_shortcode('[br_filter_single filter_id='.$filter_poliv_id.']'); //	полив //56533 //6109
@@ -722,10 +721,20 @@ add_filter('BeRocket_AAPF_template_full_element_content', 'plnt_plant_name_filte
 function plnt_plant_name_filter_content($template_content) {
 	if ($template_content['template']['attributes']['data-name']==='Название') {
             echo '<pre>';
-			print_r( $template_content );
+			print_r( $template_content['template']['content'] );
 			echo '</pre>';
+
+            $template_content['template']['content'] = berocket_insert_to_array(
+				$template_content['template']['content'],
+				'header',
+				array(
+					'custom_content' =>  '<input type="text" placeholder="Поиск..." class="berocket-search-checkbox">'
+				),
+				true
+			);
 	}
     return $template_content;
+
 }
 
 // add_filter('BeRocket_AAPF_template_full_content', 'plnt_berocket_gift_filter_header', 4000, 1);
