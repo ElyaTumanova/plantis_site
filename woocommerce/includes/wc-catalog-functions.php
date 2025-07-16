@@ -62,7 +62,7 @@ function plnt_catalog_grid_end() {
 add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar',20);
 function plnt_catalog_sidebar() {
 	// // #filters ID's
-    global $filter_plant_type_id
+    global $filter_plant_type_id;
 	global $filter_in_stock_id;
 	global $filter_price_id;
 	global $filter_height_id;
