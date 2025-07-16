@@ -725,8 +725,8 @@ function plnt_plant_name_filter_content($template_content) {
 			echo '</pre>';
 
             $template_content['template']['content'] = berocket_insert_to_array(
-				$template_content['template']['content'],
-				'filter',
+				$template_content['template']['content']['filter']['content'],
+				'list',
 				array(
 					'custom_content' =>  '<input type="text" placeholder="Поиск..." class="berocket-search-checkbox">'
 				),
