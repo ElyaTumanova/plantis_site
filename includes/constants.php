@@ -108,7 +108,7 @@ if($site === 'https://plantis-shop.ru') {
 	$filter_svet_id = 11115;
 	$filter_vlaga_id = 11116;
 	$filter_diametr_id = 11117;
-	$filter_color_id = 6108;
+	$filter_color_id = 9314; //ok
 	$filter_forma_id = 12013;
 	$filter_materilal_id = 12015;
 	$filter_volume_id = 12016;
