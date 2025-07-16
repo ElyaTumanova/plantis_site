@@ -81,14 +81,14 @@ function plnt_catalog_sidebar() {
     <div class="catalog__sidebar modal-mob">
 		<p class="catalog__sidebar-filters-heading">Фильтры</p>
 		<div class="modal-mob__close catalog-sidebar__close button"><?php echo $close_icon ?></div>
-        <div class="catalog__sidebar-cats">
+        <!-- <div class="catalog__sidebar-cats">
             <ul class="catalog__sidebar-temp">
                 <li class="menu-item catalog__node catalog__dropdown">
                     <a href="https://plantis-shop.ru/product-category/komnatnye-rasteniya/" aria-current="page">Комнатные растения</a>
                     <span class="menu__dropdown-arrow">next</span>
                 </li>
             </ul>
-        </div>
+        </div> -->
 		<?php //plnt_catalog_menu() ?>
 		<div class="catalog__sidebar-filters">
 			<div class="catalog__instock-filter">

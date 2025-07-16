@@ -1,7 +1,5 @@
 let catalogMenuDiv = document.querySelector('.catalog__sidebar-cats');
 
-
-
 let tempMenu = document.querySelectorAll('.catalog__sidebar-temp');
 let tempMenuItems = document.querySelectorAll('.catalog__sidebar-temp li');
 
