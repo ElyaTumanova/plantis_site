@@ -159,3 +159,16 @@ function scrollToTop () {
         behavior: 'smooth'
       })
 }
+
+
+const miniCart = document.querySelector('.woocommerce-mini-cart');
+if (miniCart) {
+  let timeout;
+  miniCart.addEventListener('scroll', () => {
+    miniCart.classList.add('scrolling');
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      miniCart.classList.remove('scrolling');
+    }, 300);
+  });
+}
