@@ -1535,6 +1535,17 @@
     width: 4px;
 }
 
+/* фильтр с назанием растения */
+
+#mCSB_1_scrollbar_vertical {
+    margin-top: 50px !important;
+}
+
+.berocket-search-checkbox {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
 /*стили для switch чекбокса в наличии*/
 
 .catalog__instock-filter input:not(checked) { position: absolute; opacity: 0;} 
