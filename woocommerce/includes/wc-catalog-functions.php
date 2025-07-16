@@ -63,6 +63,7 @@ add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar',20);
 function plnt_catalog_sidebar() {
 	// // #filters ID's
     global $filter_plant_type_id;
+    global $filter_plant_name_id;
 	global $filter_in_stock_id;
 	global $filter_price_id;
 	global $filter_height_id;
@@ -99,6 +100,7 @@ function plnt_catalog_sidebar() {
 			echo do_shortcode('[br_filter_single filter_id='.$filter_price_id.']'); // цена  \\56529 //6055
 			if (!is_shop()) {
 				echo do_shortcode('[br_filter_single filter_id='.$filter_plant_type_id.']');
+				echo do_shortcode('[br_filter_single filter_id='.$filter_plant_name_id.']');
 				echo do_shortcode('[br_filter_single filter_id='.$filter_height_id.']'); // высота //56530 //6056
 				echo do_shortcode('[br_filter_single filter_id='.$filter_poliv_id.']'); //	полив //56533 //6109
 				echo do_shortcode('[br_filter_single filter_id='.$filter_svet_id.']'); // освещение //56538 //11115
