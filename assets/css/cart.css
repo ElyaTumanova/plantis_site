@@ -476,7 +476,7 @@
     
 }
 
-.woocommerce-mini-cart.scrolling::-webkit-scrollbar-thumb {
+.woocommerce-mini-cart:hover::-webkit-scrollbar-thumb {
   background: rgba(100, 100, 100, 0.7); /* ярче при скролле */
 }
 
