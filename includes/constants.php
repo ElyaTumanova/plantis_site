@@ -103,7 +103,7 @@ if($site === 'https://plantis-shop.ru') {
 	$filter_podborki_id = 10989;
 	$filter_in_stock_id = 6110; //undo
 	$filter_price_id = 9300; //ok
-	$filter_height_id = 6056;
+	$filter_height_id = 9313; //ok
 	$filter_poliv_id = 6109;
 	$filter_svet_id = 11115;
 	$filter_vlaga_id = 11116;
