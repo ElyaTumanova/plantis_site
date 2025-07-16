@@ -457,14 +457,10 @@
 .woocommerce-mini-cart::-webkit-scrollbar
 {
 	width: 4px;
-    transition: opacity 0.3s ease;
-    opacity: 0;
 	/* background-color: #F5F5F5; */
 }
 
-.side-cart .woocommerce-mini-cart:hover::-webkit-scrollbar {
-  opacity: 1;
-}
+
 
 .woocommerce-mini-cart::-webkit-scrollbar-track
 {
@@ -687,10 +683,6 @@
     max-height: calc(var(--vh) - 230px);
     overflow-y: auto;
     overflow-x: hidden;
-    /* стили для скролла scroll */
-    scrollbar-width: none; /* Firefox: полностью скрываем */
-    -ms-overflow-style: none; /* IE 10+ */
-    position: relative;
 }
 
 
