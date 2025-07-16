@@ -17,7 +17,7 @@ function hideFilterItems() {
         }
     });
     diametrFilterWrapHeight = 16 * itemsCount + 10 * (itemsCount - 1);
-    console.log(itemsCount);
+    //console.log(itemsCount);
     document.documentElement.style.setProperty('--diametrFilterWrapHeight', `${diametrFilterWrapHeight}px`);
 
     diametrFilterWrap.classList.add('hidden');
