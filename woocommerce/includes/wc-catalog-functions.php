@@ -100,6 +100,7 @@ function plnt_catalog_sidebar() {
 			echo do_shortcode('[br_filter_single filter_id='.$filter_price_id.']'); // цена  \\56529 //6055
 			if (!is_shop()) {
 				echo do_shortcode('[br_filter_single filter_id='.$filter_plant_type_id.']');
+                echo '<input type="text" placeholder="Поиск..." class="berocket-search-checkbox">';
 				echo do_shortcode('[br_filter_single filter_id='.$filter_plant_name_id.']');
 				echo do_shortcode('[br_filter_single filter_id='.$filter_height_id.']'); // высота //56530 //6056
 				echo do_shortcode('[br_filter_single filter_id='.$filter_poliv_id.']'); //	полив //56533 //6109
