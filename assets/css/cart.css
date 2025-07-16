@@ -685,17 +685,15 @@
 }
 .side-cart .woocommerce-mini-cart {
     max-height: calc(var(--vh) - 230px);
-    overflow-y: hidden;
-    overflow-x: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     /* стили для скролла scroll */
     scrollbar-width: none; /* Firefox: полностью скрываем */
     -ms-overflow-style: none; /* IE 10+ */
     position: relative;
 }
 
-/* .side-cart .woocommerce-mini-cart {
-    overflow-y: auto;
-} */
+
 
 .side-cart__open-btn .header__count {
     position: absolute;
