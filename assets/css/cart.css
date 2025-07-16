@@ -463,7 +463,7 @@
 
 .woocommerce-mini-cart::-webkit-scrollbar
 {
-	width: 12px;
+	width: 4px;
 	background-color: #F5F5F5;
 }
 
@@ -472,8 +472,15 @@
 	border-radius: 10px;
 	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
 	background-color: #919191;
-    width: 4px;
+    
 }
+
+.woocommerce-mini-cart::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
 
 
 .woocommerce-mini-cart-item {
