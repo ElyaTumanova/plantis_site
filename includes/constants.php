@@ -28,27 +28,27 @@ if($site === 'https://plantis-shop.ru') {
 	$plants_cat_id = 329; //ok
 	$gorshki_cat_id = 138; //ok
 	$treez_cat_id = 119; //ok
-	$treez_poliv_cat_id = 632;
+	$treez_poliv_cat_id = 240; //ok
 	$ukhod_cat_id = 325; //ok
-	$misc_cat_id = 16;
-	$skidki_cat_id = 105;
-	$avtopoliv_tag_id = 1050;
-	$peresadka_cat_id = 740;
+	$misc_cat_id = 16; //ok
+	$skidki_cat_id = 385;//ok
+	$avtopoliv_tag_id = 264; //ok
+	$peresadka_cat_id = 546; //ok
 	$plants_treez_cat_id = 17; //ok
 	$lechuza_cat_id = 265; //ok
 	
 	$tags_podarki = array(
-		374,
-		300,
-		275,
-		276,
-		277,
-		293,
-		283,
-		278,
-		294,
-		295,
-		347);
+        420,
+        368,
+        367,
+        353,
+        352,
+        351,
+        350,
+        348,
+        349,
+        385,	//tag skidki
+		389); //tag pegular assortiment
 } else {
 	// PLANTIS SHOP
 	$plants_cat_id = 838;
@@ -63,7 +63,7 @@ if($site === 'https://plantis-shop.ru') {
 	$plants_treez_cat_id = 1152;
 	$lechuza_cat_id = 1261;
 
-	$tags_podarki = array(
+	$tags_podarki = array( //all ok
 		1084,
 		1073,
 		1076,
@@ -88,34 +88,19 @@ if($site === 'https://plantis-shop.ru') {
 	
 	$delivery_inMKAD = 'flat_rate:1';
 	$delivery_outMKAD = 'flat_rate:2';
-	// $delivery_inMKAD_small = 'flat_rate:34';
-	// $delivery_outMKAD_small = 'flat_rate:35';
-	// $delivery_inMKAD_large = 'flat_rate:29';
-	// $delivery_outMKAD_large = 'flat_rate:30';
-	// $delivery_inMKAD_medium = 'flat_rate:38';
-	// $delivery_outMKAD_medium = 'flat_rate:40';
-
-
-	// $urgent_delivery_inMKAD = 'flat_rate:13'; 
-	// $urgent_delivery_outMKAD = 'flat_rate:14'; 
-	// $urgent_delivery_inMKAD_small = 'flat_rate:36'; 
-	// $urgent_delivery_outMKAD_small = 'flat_rate:37';
-	// $urgent_delivery_inMKAD_large = 'flat_rate:31'; 
-	// $urgent_delivery_outMKAD_large = 'flat_rate:32';
-	// $urgent_delivery_inMKAD_medium = 'flat_rate:39'; 
-	// $urgent_delivery_outMKAD_medium = 'flat_rate:41';
 	
 	$delivery_free = 'free_shipping:9';
 
-	$delivery_pochta = 'flat_rate:4'; //to be updated
+	$delivery_pochta = 'flat_rate:4';
 
 	$delivery_courier = 'free_shipping:1'; //to be updated
 
 	$delivery_long_dist = 'free_shipping:3';
 
 	//#filters ID's
+    $filter_plant_type_id = 9310; //ok
 	$filter_podborki_id = 10989;
-	$filter_in_stock_id = 6110;
+	$filter_in_stock_id = 6110; //undo
 	$filter_price_id = 9300; //ok
 	$filter_height_id = 6056;
 	$filter_poliv_id = 6109;
