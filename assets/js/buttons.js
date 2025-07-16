@@ -161,10 +161,12 @@ function scrollToTop () {
 }
 
 
-const miniCart = document.querySelector('.side-cart .woocommerce-mini-cart');
+let miniCart = document.querySelector('.side-cart .woocommerce-mini-cart');
 if (miniCart) {
+console.log(miniCart);
   let timeout;
   miniCart.addEventListener('scroll', () => {
+    console.log('scrolling');
     miniCart.classList.add('scrolling');
     clearTimeout(timeout);
     timeout = setTimeout(() => {
