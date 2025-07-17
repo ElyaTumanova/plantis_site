@@ -109,7 +109,7 @@
     font-weight: 600;
 }
 
-.header__main-submenu-item_accent:after  {
+.header__main-submenu-item_accent a:after  {
     font-weight: 600;
     content: "next";
     font-family: swiper-icons;
@@ -117,6 +117,9 @@
     letter-spacing: 0;
     font-size: 12px;
     margin-top: 3px;
+}
+.header__main-submenu-item_accent a:hover:after {
+   color: var(--accent-color);
 }
 
 /* меню каталога в хедере main menu - old*/
