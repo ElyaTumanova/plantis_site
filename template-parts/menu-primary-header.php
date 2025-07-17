@@ -59,7 +59,6 @@ $cats_palms = carbon_get_theme_option('cats_palms');
                         <li class="header__main-submenu-item">
                             <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-listvennye">Кактусы</a>
                         </li>
-                        <img src="<?php echo $cats_palms ?>" class="cats-grid__img" alt="Пальмы">
                     </ul>
                     <ul >
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
@@ -139,6 +138,7 @@ $cats_palms = carbon_get_theme_option('cats_palms');
                             <a href="<?php echo site_url()?>/product-category/ukhod/zashchita-rastenij">Защита растений</a>
                         </li>
                     </ul>
+                    <img src="<?php echo $cats_palms ?>" class="header__main-submenu-img" alt="Пальмы">
                 </div>
                 <div class="header__main-submenu" data-menu = "menu_item_gorshki">
                     <ul>
