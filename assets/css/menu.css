@@ -85,6 +85,11 @@
     justify-content: space-between;
 }
 
+.header__main-submenu-img {
+    width: 200px;
+    height: 200px;
+}
+
 /* меню каталога в хедере main menu - old*/
 .header__menu {
     /* background-color: var(--background); */

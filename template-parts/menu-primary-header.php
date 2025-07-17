@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-$cats_palms = carbon_get_theme_option('cats_palms');
+	$cats_fikus = carbon_get_theme_option('cats_fikus')
 ?>
 
 <div class="header__main-menu-wrap">
@@ -138,7 +138,7 @@ $cats_palms = carbon_get_theme_option('cats_palms');
                             <a href="<?php echo site_url()?>/product-category/ukhod/zashchita-rastenij">Защита растений</a>
                         </li>
                     </ul>
-                    <img src="<?php echo $cats_palms ?>" class="header__main-submenu-img" alt="Пальмы">
+                    <img src="<?php echo $cats_fikus ?>" class="header__main-submenu-img" alt="Пальмы">
                 </div>
                 <div class="header__main-submenu" data-menu = "menu_item_gorshki">
                     <ul>
