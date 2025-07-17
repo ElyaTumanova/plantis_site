@@ -90,6 +90,23 @@
     height: 200px;
 }
 
+.header__main-submenu ul {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.header__main-submenu a:hover {
+    text-decoration: none;
+    color: var(--accent-color);
+}
+
+.header__main-submenu-item_accent {
+    font-weight: 600px;
+}
+
 /* меню каталога в хедере main menu - old*/
 .header__menu {
     /* background-color: var(--background); */
