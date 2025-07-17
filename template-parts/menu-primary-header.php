@@ -2,6 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+$cats_palms = carbon_get_theme_option('cats_palms');
 ?>
 
 <div class="header__main-menu-wrap">
@@ -58,6 +59,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <li class="header__main-submenu-item">
                             <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-listvennye">Кактусы</a>
                         </li>
+                        <img src="<?php echo $cats_palms ?>" class="cats-grid__img" alt="Пальмы">
                     </ul>
                     <ul >
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
