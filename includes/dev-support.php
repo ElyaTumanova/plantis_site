@@ -29,7 +29,7 @@ function plnt_dev_functions() {
         echo ($name);
         echo (site_url().'/product-category/ikashpo-treez/treez-effectory/'.$term->slug);
         $link = site_url().'/product-category/ikashpo-treez/treez-effectory/'.$term->slug;
-        echo ('<a href="'.$link.'">'.$name.'</a>')
+        echo ('<a href="'.$link.'">'.$name.'</a>');
     }
 	// $cats_for_check = [$plants_cat_id, $gorshki_cat_id, $ukhod_cat_id,$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
 	// $cats_for_include = [];
