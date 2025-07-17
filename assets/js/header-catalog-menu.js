@@ -4,7 +4,7 @@ let primaryMenuDiv = document.querySelector('.main-navigation');
 let headerMenuWrap = document.querySelector('.header__main-menu-wrap');
 let headerMenuItems = document.querySelectorAll('.header__main-menu-item');
 let majorCats;
-let subMenues;
+let subMenues = document.querySelectorAll('.header__main-submenu');;
 // let firstSubMenues;
 
 let treezCollectionsCats;
@@ -106,19 +106,17 @@ function closeHeaderCatalog () {
 function showSubmenu(event) {
     let menu = event.target.getAttribute('data-menu');
     //event.target.classList.add('menu_active');
-    let menuSubMenues = document.querySelectorAll(`.${menu} .menu--onside_lvl_1`);
-    menuSubMenues.forEach((el) => {
-        el.classList.add('menu--onside_show');
-    })
+    let menuSubMenu = document.querySelector(`.header__main-submenu[data-menu='${menu}']`);
+    menuSubMenu.classList.add('header__main-submenu_show');
 }
 
 function closeAllSubmenu() {
-    closePlantsSubMenues();
+    //closePlantsSubMenues();
     //closePlantsTreezSubMenues();
-    closeTreezSubMenues ();
-    closeLechuzaSubMenues();
+   // closeTreezSubMenues ();
+    //closeLechuzaSubMenues();
     subMenues.forEach((el) => {
-        el.classList.remove('menu--onside_show');
+        el.classList.remove('header__main-submenu_show');
     })
 }
 
@@ -197,6 +195,8 @@ function closePlantsSubMenues() {
 headerMenuItems.forEach((el) => {
     if(el.getAttribute('data-menu')) {
         el.addEventListener('mouseenter', openHeaderCatalog);
+        el.addEventListener('mouseenter',closeAllSubmenu);
+        el.addEventListener('mouseenter',showSubmenu);
     }
   })
 
