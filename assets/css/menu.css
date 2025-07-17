@@ -117,6 +117,7 @@
     letter-spacing: 0;
     font-size: 12px;
     margin-top: 3px;
+    margin-left: 10px;
 }
 .header__main-submenu-item_accent a:hover:after {
    color: var(--accent-color);
