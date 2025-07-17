@@ -100,7 +100,7 @@ function openHeaderCatalog () {
 
 function closeHeaderCatalog () {
     headerCatalogWrap.classList.remove('header__menu_open');
-    closeAllSubmenu();
+    //closeAllSubmenu();
 }
 
 function showSubmenu(event) {
