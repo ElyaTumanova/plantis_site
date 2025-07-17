@@ -94,7 +94,7 @@ function primaryMenuInit() {
 
 
 function openHeaderCatalog () {
-    closeAllSubmenu();
+    //closeAllSubmenu();
     headerCatalogWrap.classList.add('header__menu_open');
 }
 
