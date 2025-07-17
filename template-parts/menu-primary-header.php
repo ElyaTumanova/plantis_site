@@ -144,6 +144,20 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
                             <a href="<?php echo site_url()?>/product-tag/kashpo-s-avtopolivom/">Кашпо с автополивом</a>
                         </li>
+                        <?php
+                            $args = array( 'taxonomy' => 'product_cat', 'parent' => 177 );  
+                            $terms = get_terms( $args ); 
+
+                            foreach ($terms as $term) {
+                                $name = str_replace('Treez Effectory ','',$term ->name);
+                                $link = site_url().'/product-category/ikashpo-treez/treez-effectory/'.$term->slug;
+                                ?>
+                                    <li class="header__main-submenu-item">
+                                        <a href="<?php echo $link?>"><?php echo $name?></a>
+                                    </li>
+                                <?
+                            }
+                        ?>
                     </ul>
                     <img class="header__main-submenu-img" loading="lazy" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
                 </div>

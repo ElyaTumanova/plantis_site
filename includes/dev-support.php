@@ -18,19 +18,6 @@ function plnt_dev_functions() {
 	global $misc_cat_id;
 	global $peresadka_cat_id;
 
-    $args = array( 'taxonomy' => 'product_cat', 'parent' => 177 );  
-    $terms = get_terms( $args ); 
-    print_r($terms);
-
-    foreach ($terms as $term) {
-        echo ($term ->term_id);
-        echo ($term ->name);
-        $name = str_replace('Treez Effectory ','',$term ->name);
-        echo ($name);
-        echo (site_url().'/product-category/ikashpo-treez/treez-effectory/'.$term->slug);
-        $link = site_url().'/product-category/ikashpo-treez/treez-effectory/'.$term->slug;
-        echo ('<a href="'.$link.'">'.$name.'</a>');
-    }
 	// $cats_for_check = [$plants_cat_id, $gorshki_cat_id, $ukhod_cat_id,$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
 	// $cats_for_include = [];
 	// $cats_for_include_clean = [];
