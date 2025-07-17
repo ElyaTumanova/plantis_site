@@ -23,9 +23,9 @@ function plnt_dev_functions() {
     print_r($terms);
 
     foreach ($terms as $term) {
-        echo ($term ->'term_id');
-        echo ($term ->'name');
-        $name = str_replace('Treez Effectory ','',$term ->'name');
+        echo ($term ->term_id);
+        echo ($term ->name);
+        $name = str_replace('Treez Effectory ','',$term ->name);
         echo ($name);
         echo (site_url()'/product-category/ikashpo-treez/treez-effectory/'$term->slug);
     }
