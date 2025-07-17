@@ -25,19 +25,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<div class="header__main">
 				<div class="container">
-					<div class="header__wrap">
+					<div class="header__wrap_logo">
 						<div class="logo">
 							<?php $logo = carbon_get_theme_option('logo');?>
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
 						</div><!-- .logo -->
-						<div class="header__catalog button"> 
+						<!-- <div class="header__catalog button"> 
 							<div class="header__catalog_icon">
 							<svg class="header__catalog_icon-svg" width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 1H0" stroke="white" stroke-width="1.5" stroke-miterlimit="10"></path></svg>
 							<svg class="header__catalog_icon-svg" width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 1H0" stroke="white" stroke-width="1.5" stroke-miterlimit="10"></path></svg>
 							<svg class="header__catalog_icon-svg" width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 1H0" stroke="white" stroke-width="1.5" stroke-miterlimit="10"></path></svg>
 							</div>
 							Каталог
-						</div>
+						</div> -->
 					</div>
 					<div class="header__description">
 						<?php $site_title = carbon_get_theme_option('site_title')?>
@@ -90,13 +90,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</div><!-- .header-cart -->
 					</div>
 				</div>
-			</div>
-			
-			<div class="header__menu">
-				<div class="container">
-					<nav id="site-navigation" class="main-navigation" role="navigation">
-						<?php //plnt_primary_menu(); ?>
-					</nav><!-- #site-navigation -->
+				<div class="header__main-menu-wrap">
+					<div class="container">
+						<nav class="header__main-menu-item" data-menu = "menu_item_plants">
+							<a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">Комнатные растения</a>
+						</nav>
+						<nav class="header__main-menu-item" data-menu = "menu_item_gorshki">
+							<a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/">Горшки и кашпо</a>
+						</nav>
+						<nav class="header__main-menu-item" data-menu = "menu_item_ukhod">
+							<a href="<?php echo site_url()?>/product-category/ukhod/">Все для ухода</a>
+						</nav>
+						<nav class="header__main-menu-item" data-menu = "menu_item_treez_plants">
+							<a href="<?php echo site_url()?>/product-category/iskusstvennye-rasteniya-treez/">Искусственные растения Treez</a>
+						</nav>
+						<nav class="header__main-menu-item" data-menu = "menu_item_service">Услуги</nav>
+						<nav class="header__main-menu-item">
+							<a href="<?php echo site_url()?>/product-tag/skidki/">Скидки</a>
+						</nav>
+						<nav class="header__main-menu-item">
+							<a href="<?php echo site_url()?>/#/">Подарочный сертификат</a>
+						</nav>
+					</div>
+					<div class="header__menu"> 
+						<div class="container">
+							<nav id="site-navigation" class="main-navigation" role="navigation">
+								<?php //plnt_primary_menu(); ?>
+							</nav><!-- #site-navigation -->
+						</div>
+					</div>	
 				</div>
 			</div>
 		</div>
