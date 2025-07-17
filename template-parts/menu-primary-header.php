@@ -148,6 +148,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <a href="<?php echo site_url()?>/product-tag/kashpo-s-avtopolivom/">Кашпо с автополивом</a>
                         </li>
                     </ul>
+                    <img class="header__main-submenu-img" loading="lazy" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
                 </div>
             </nav>
         </div>

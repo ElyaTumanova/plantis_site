@@ -105,11 +105,11 @@
     color: var(--accent-color);
 }
 
-.header__main-submenu-item_accent, .header__main-submenu-item_accent a  {
+.header__main-submenu-item_accent  {
     font-weight: 600;
 }
 
-.header__main-submenu-item_accent:after, .header__main-submenu-item_accent a:after  {
+.header__main-submenu-item_accent:after  {
     font-weight: 600;
     content: "next";
     font-family: swiper-icons;
@@ -144,6 +144,7 @@
     transition: all 200ms ease-out;
 
 }
+
 .header__menu .container {
     background-color: var(--background);
     /* height: calc(var(--vh) - var(--headerHeight) - 30px); */
