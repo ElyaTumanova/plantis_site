@@ -138,6 +138,16 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </li>
                     </ul>
                 </div>
+                <div class="header__main-submenu" data-menu = "menu_item_gorshki">
+                    <ul>
+                        <li class="header__main-submenu-item header__main-submenu-item_accent">
+                            <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/">Керамические горшки</a>
+                        </li>
+                        <li class="header__main-submenu-item header__main-submenu-item_accent">
+                            <a href="<?php echo site_url()?>/product-tag/kashpo-s-avtopolivom/">Кашпо с автополивом</a>
+                        </li>
+                    </ul>
+                </div>
             </nav>
         </div>
     </div>	
