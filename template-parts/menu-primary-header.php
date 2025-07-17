@@ -12,9 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
         <nav class="header__main-menu-item" data-menu = "menu_item_gorshki">
             <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/">Горшки и кашпо</a>
         </nav>
-        <nav class="header__main-menu-item" data-menu = "menu_item_ukhod">
-            <a href="<?php echo site_url()?>/product-category/ukhod/">Все для ухода</a>
-        </nav>
         <nav class="header__main-menu-item" data-menu = "menu_item_treez_plants">
             <a href="<?php echo site_url()?>/product-category/iskusstvennye-rasteniya-treez/">Искусственные растения Treez</a>
         </nav>

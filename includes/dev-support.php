@@ -4,6 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // FOR DEV
+add_action( 'wp_footer', 'plnt_dev_functions' );
 
 function plnt_dev_functions() {
 
@@ -17,78 +18,81 @@ function plnt_dev_functions() {
 	global $misc_cat_id;
 	global $peresadka_cat_id;
 
-	$cats_for_check = [$plants_cat_id, $gorshki_cat_id, $ukhod_cat_id,$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
-	$cats_for_include = [];
-	$cats_for_include_clean = [];
-	foreach($cats_for_check as $item){
-		$args = array(
-			'post_type'      => 'product',
-			'posts_per_page' => -1,
-			'post_status'    => 'publish',
-			'meta_query' => array( 
-				array(
-					'key' => '_stock',
-					'type'    => 'numeric',
-					'value' => '0',
-					'compare' => '>'
-				)
-			),
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'product_cat',
-					'field' => 'id',
-					'terms' => [$item],
-					'operator' => 'IN',
-					'include_children' => 1,
-				)
-			)
-		);
-		$query = new WP_Query;
-		$checkproducts = $query->query($args);
+    $args = array( 'taxonomy' => 'product_cat', 'parent' => 177 );  
+    $terms = get_terms( $args ); 
+    print_r($terms);
+	// $cats_for_check = [$plants_cat_id, $gorshki_cat_id, $ukhod_cat_id,$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
+	// $cats_for_include = [];
+	// $cats_for_include_clean = [];
+	// foreach($cats_for_check as $item){
+	// 	$args = array(
+	// 		'post_type'      => 'product',
+	// 		'posts_per_page' => -1,
+	// 		'post_status'    => 'publish',
+	// 		'meta_query' => array( 
+	// 			array(
+	// 				'key' => '_stock',
+	// 				'type'    => 'numeric',
+	// 				'value' => '0',
+	// 				'compare' => '>'
+	// 			)
+	// 		),
+	// 		'tax_query' => array(
+	// 			array(
+	// 				'taxonomy' => 'product_cat',
+	// 				'field' => 'id',
+	// 				'terms' => [$item],
+	// 				'operator' => 'IN',
+	// 				'include_children' => 1,
+	// 			)
+	// 		)
+	// 	);
+	// 	$query = new WP_Query;
+	// 	$checkproducts = $query->query($args);
 
-		$checkproductscount = count($checkproducts);
-		// echo $item.' '.$checkproductscount;
-		// echo '<br>';
-		if($checkproductscount != 0) {
-			//print_r($checkproducts);
-			foreach ($checkproducts as $item) {
-				// print_r($item);
-				// echo '<br>';
-				$product = wc_get_product($item);
-				$prod_cats = $product->get_category_ids();
-				foreach ($prod_cats as $cat) {
-					array_push($cats_for_include, $cat);
-				}
-				// echo ('cat ids ');
-				// print_r($product->get_category_ids());
-				// echo '<br>';
-			}
-		};
-	}
-	echo 'cats_for_include ';
-	$cats_for_include_clean = array_unique($cats_for_include);
-	// print_r($cats_for_include);
+	// 	$checkproductscount = count($checkproducts);
+	// 	// echo $item.' '.$checkproductscount;
+	// 	// echo '<br>';
+	// 	if($checkproductscount != 0) {
+	// 		//print_r($checkproducts);
+	// 		foreach ($checkproducts as $item) {
+	// 			// print_r($item);
+	// 			// echo '<br>';
+	// 			$product = wc_get_product($item);
+	// 			$prod_cats = $product->get_category_ids();
+	// 			foreach ($prod_cats as $cat) {
+	// 				array_push($cats_for_include, $cat);
+	// 			}
+	// 			// echo ('cat ids ');
+	// 			// print_r($product->get_category_ids());
+	// 			// echo '<br>';
+	// 		}
+	// 	};
+	// }
+	// echo 'cats_for_include ';
+	// $cats_for_include_clean = array_unique($cats_for_include);
+	// // print_r($cats_for_include);
+	// // echo '<br>';
+	// print_r($cats_for_include_clean);
 	// echo '<br>';
-	print_r($cats_for_include_clean);
-	echo '<br>';
-	echo 'cats_for_exclude ';
-	print_r($cats_for_exclude); 
+	// echo 'cats_for_exclude ';
+	// print_r($cats_for_exclude); 
 	
 
-	$args_cats=array(
-		'taxonomy'   => 'product_cat',
-		'hide_empty' => true,
-		'include' => $cats_for_include_clean,
-	);
+	// $args_cats=array(
+	// 	'taxonomy'   => 'product_cat',
+	// 	'hide_empty' => true,
+	// 	'include' => $cats_for_include_clean,
+	// );
 
-	$terms=get_terms($args_cats);
+	// $terms=get_terms($args_cats);
 
-	foreach($terms as $item){
-		echo $item->name;
-		echo '<br>';
-	}
+	// foreach($terms as $item){
+	// 	echo $item->name;
+	// 	echo '<br>';
+	// }
 
-	//print_r($terms);
+	
 }
 
 function plnt_check_page() {
@@ -167,7 +171,7 @@ function plnt_get_cats_data() {
 }
 
 //add_action( 'wp_footer', 'plnt_check_page' );
-//add_action( 'wp_footer', 'plnt_dev_functions' );
+
 //add_action( 'wp_footer', 'plnt_get_cats_data' );
 
 
