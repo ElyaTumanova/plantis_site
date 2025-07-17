@@ -190,9 +190,15 @@ function closePlantsSubMenues() {
 }
 
 
-headerMenuItems.forEach(menu => {
-    menu.addEventListener('mouseenter', (event) => {plntAjaxShowPrimaryMenu(event)},{once:true});
-});
+// headerMenuItems.forEach(menu => {
+//     menu.addEventListener('mouseenter', (event) => {plntAjaxShowPrimaryMenu(event)},{once:true});
+// });
+
+headerMenuItems.forEach((el) => {
+    if(el.getAttribute('data-menu')) {
+        el.addEventListener('mouseenter', openHeaderCatalog);
+    }
+  })
 
 headerMenuItems.forEach(menu => {
     if(!menu.getAttribute('data-menu')) {
