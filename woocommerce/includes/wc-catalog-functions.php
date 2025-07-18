@@ -221,16 +221,18 @@ function plnt_attribute_page_title($page_title) {
 add_filter( 'wpseo_breadcrumb_links', 'plnt_change_breadcrumb_title', 10, 2 );
 function plnt_change_breadcrumb_title( $links ) {
     print_r ($links); 
+          echo ('<br>');
     foreach($links as $link) {
         if(array_key_exists('taxonomy', $link)){
             print_r ($link); 
+                  echo ('<br>');
             if ($link['taxonomy'] == 'pa_color') {
                 $link['text'] = 'Горшки и кашпо цвета ' . $link['text'];
             }
         }
-        // echo ('finish');
-        // echo ('<br>');
-        // print_r ($link); 
+        echo ('finish');
+        echo ('<br>');
+        print_r ($link); 
         // //array_push($new_link, $link);
         // $new_link = . $link;
     
