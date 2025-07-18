@@ -146,9 +146,9 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </li>
                         <?php $start = microtime(true); ?>
                         <?php
-                            // $term = get_term_by( 'slug', 'treez-effectory', 'category' );
-                            // //$term_id = $term->term_id;
-                            // print_r($term);
+                            $term = get_term_by( 'slug', 'treez-effectory', 'category' );
+                            //$term_id = $term->term_id;
+                            print_r($term);
                             $args = array( 'taxonomy' => 'product_cat', 'parent' => 177 );  
                             $terms = get_terms( $args ); 
                             foreach ($terms as $term) {
