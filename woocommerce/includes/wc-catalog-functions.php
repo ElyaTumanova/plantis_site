@@ -220,29 +220,30 @@ function plnt_attribute_page_title($page_title) {
 //Изменение заголовка в хлебных крошках Yoast SEO #breadcrumb
 add_filter( 'wpseo_breadcrumb_single_link', 'plnt_change_breadcrumb_title', 10, 2 );
 function plnt_change_breadcrumb_title( $link_output, $link ) {
-    $new_link = [];
-    // print_r (gettype($link));
-    echo ('start');
-    echo ('<br>');
     print_r ($link); 
-    echo ('<br>');
+    // $new_link = [];
+    // // print_r (gettype($link));
+    // echo ('start');
+    // echo ('<br>');
+    // print_r ($link); 
+    // echo ('<br>');
 
-    if(array_key_exists('taxonomy', $link)){
-    //    print_r ($link); 
-    //    print_r ($link_output); 
-        if ($link['taxonomy'] == 'pa_color') {
-            $link['text'] = 'Горшки и кашпо цвета ' . $link['text'];
-            // print_r ($link); 
-            // print_r ($link_output); 
-        }
-    }
-    echo ('finish');
-    echo ('<br>');
-    print_r ($link); 
-    array_push($new_link, $link);
+    // if(array_key_exists('taxonomy', $link)){
+    // //    print_r ($link); 
+    // //    print_r ($link_output); 
+    //     if ($link['taxonomy'] == 'pa_color') {
+    //         $link['text'] = 'Горшки и кашпо цвета ' . $link['text'];
+    //         // print_r ($link); 
+    //         // print_r ($link_output); 
+    //     }
+    // }
+    // echo ('finish');
+    // echo ('<br>');
+    // print_r ($link); 
+    // array_push($new_link, $link);
   
-    echo('new link');
-    print_r($new_link);
+    // echo('new link');
+    // print_r($new_link);
 	return $link_output;
 }
 
