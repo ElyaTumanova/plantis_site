@@ -144,13 +144,13 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
                             <a href="<?php echo site_url()?>/product-tag/kashpo-s-avtopolivom/">Кашпо с автополивом</a>
                         </li>
+                        <?php $start = microtime(true); ?>
                         <?php
-                            $term = get_term_by( 'slug', 'treez-effectory', 'category' );
-                            //$term_id = $term->term_id;
-                            print_r($term);
+                            // $term = get_term_by( 'slug', 'treez-effectory', 'category' );
+                            // //$term_id = $term->term_id;
+                            // print_r($term);
                             $args = array( 'taxonomy' => 'product_cat', 'parent' => 177 );  
                             $terms = get_terms( $args ); 
-
                             foreach ($terms as $term) {
                                 $name = str_replace('Treez Effectory ','',$term ->name);
                                 $link = site_url().'/product-category/ikashpo-treez/treez-effectory/'.$term->slug;
@@ -161,6 +161,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                                 <?
                             }
                         ?>
+                        <?php echo "<!-- Timing: primary menu = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
                     </ul>
                     <img class="header__main-submenu-img" loading="lazy" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
                 </div>
