@@ -187,13 +187,13 @@ function plnt_catalog_grid_columns () {
 add_filter( 'woocommerce_page_title', 'plnt_woocommerce_page_title');
 
 function plnt_woocommerce_page_title($page_title) {
+    echo $page_title;
 	if ( is_paged() ) {
 		$pageNum = get_query_var('paged');
 
 		$page_title .= " - Страница ".$pageNum;
 		return $page_title;
 	}
-	
 	else {
 		return $page_title;
 	}
