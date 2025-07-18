@@ -220,6 +220,7 @@ function plnt_attribute_page_title($page_title) {
 //Изменение заголовка в хлебных крошках Yoast SEO #breadcrumb
 add_filter( 'wpseo_breadcrumb_single_link', 'plnt_change_breadcrumb_title', 10, 2 );
 function plnt_change_breadcrumb_title( $link_output, $link ) {
+    $new_link = [];
     // print_r (gettype($link));
     echo ('start');
     echo ('<br>');
@@ -238,6 +239,10 @@ function plnt_change_breadcrumb_title( $link_output, $link ) {
     echo ('finish');
     echo ('<br>');
     print_r ($link); 
+    array_push($new_link, $link);
+  
+    echo('new link');
+    print_r($new_link);
 	return $link_output;
 }
 
