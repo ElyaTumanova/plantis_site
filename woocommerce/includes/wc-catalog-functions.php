@@ -187,7 +187,6 @@ function plnt_catalog_grid_columns () {
 add_filter( 'woocommerce_page_title', 'plnt_woocommerce_page_title');
 
 function plnt_woocommerce_page_title($page_title) {
-    echo $page_title;
 	if ( is_paged() ) {
 		$pageNum = get_query_var('paged');
 
@@ -200,12 +199,23 @@ function plnt_woocommerce_page_title($page_title) {
 }
 
 // меняем название заголовка для shop
+add_filter( "get_the_archive_title", "plnt_change_my_title" );
 function plnt_change_my_title( $title ){
     if ( $title == "Магазин" ) $title = "Все товары";
-    echo $title;
     return $title;
 }
-add_filter( "get_the_archive_title", "plnt_change_my_title" );
+
+add_filter( 'woocommerce_page_title', 'plnt_attribute_page_title');
+
+function plnt_attribute_page_title($page_title) {
+    if ( is_tax('pa_color') ) {
+    $page_title = "Горшки и кашпо цвета ".$pageNum;
+		return $page_title;
+    }
+	else {
+		return $page_title;
+	}
+}
 
 // описание категории и преимущества в каталоге
 
