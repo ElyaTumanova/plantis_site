@@ -145,7 +145,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <a href="<?php echo site_url()?>/product-tag/kashpo-s-avtopolivom/">Кашпо с автополивом</a>
                         </li>
                         <li class="header__main-submenu-item">
-                            <p class="header__main-submenu-item_accent">По диаметру<p>
+                            <p class="header__main-submenu-item_accent">По диаметру</p>
                             <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/malenkie-do-17sm">Маленькие (До 17см)</a>
                             <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/srednie-ot-18-do-25sm">Средние (От 18 до 25см)</a>
                             <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/bolshie-ot-26sm">Большие (От 26см)</a>
