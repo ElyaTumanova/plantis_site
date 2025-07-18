@@ -212,7 +212,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     </ul>
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
-                            <a class ="header__main-submenu-item_kashpo" href="<?php echo site_url()?>/product-category/kashpo-lechuza">Кашпо Lechuza</a>
+                            <a class ="header__main-submenu-item_accent" href="<?php echo site_url()?>/product-category/kashpo-lechuza">Кашпо Lechuza</a>
                             <div class="header__main-submenu-item_row">
                                 <?php $start = microtime(true); ?>
                                 <?php
