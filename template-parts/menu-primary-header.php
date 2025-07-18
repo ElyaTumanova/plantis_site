@@ -153,8 +153,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                             По назначению
                         </li>                       -->
                     </ul>
-                    <ul>
-                        <li class="header__main-submenu-item header__main-submenu-item_accent">
+                    <ul class="header__main-submenu_lvl1">
+                        <li class="header__main-submenu-item">
                             <p class="header__main-submenu-item_accent">Популярные цвета</p>
                             <div class="header__main-submenu-item_row">
                                 <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
@@ -167,7 +167,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             </div>
                         </li>
                     </ul>
-                    <ul>
+                    <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
                             <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/kashpo-treez">Кашпо Treez</a>
                         </li>
