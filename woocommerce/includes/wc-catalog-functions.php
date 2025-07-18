@@ -221,6 +221,7 @@ function plnt_attribute_page_title($page_title) {
 add_filter( 'wpseo_breadcrumb_single_link', 'plnt_change_breadcrumb_title', 10, 2 );
 function plnt_change_breadcrumb_title( $link_output, $link ) {
     print_r (gettype($link));
+    print_r ($link[0][0]);
 	// if ( is_tax( 'pa_color' ) && isset( $link['text'] ) ) {
 	// 	if ( $link['text'] === single_term_title( '', false ) ) {
 	// 		$link_output['text'] = 'Горшки и кашпо цвета ' . $link['text'];
