@@ -222,10 +222,10 @@ add_filter( 'wpseo_breadcrumb_single_link', 'plnt_change_breadcrumb_title', 10, 
 function plnt_change_breadcrumb_title( $link_output, $link ) {
     print_r (gettype($link));
     if(array_key_exists('taxonomy', $link)){
-       print_r ($link); 
+       print_r ($link['text']); 
        print_r ($link_output); 
         if ($link['taxonomy'] == 'pa_color') {
-            $link['text'] = 'Горшки и кашпо цвета ' . $link_output;
+            $link['text'] = 'Горшки и кашпо цвета ' . $link['text'];
         }
     }
 	return $link_output;
