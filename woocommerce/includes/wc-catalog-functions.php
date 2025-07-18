@@ -222,7 +222,8 @@ add_filter( 'wpseo_breadcrumb_single_link', 'plnt_change_breadcrumb_title', 10, 
 function plnt_change_breadcrumb_title( $link_output, $link ) {
     print_r (gettype($link));
     if(array_key_exists('taxonomy', $link)){
-       print_r ($link); 
+       print_r ($link['taxonomy']); 
+
     }
 	// if ( is_tax( 'pa_color' ) && isset( $link['text'] ) ) {
 	// 	if ( $link['text'] === single_term_title( '', false ) ) {
