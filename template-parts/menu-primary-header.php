@@ -184,28 +184,26 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
                             <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/kashpo-treez">Кашпо Treez</a>
                         </li>
-                        <li class="header__main-submenu-item header__main-submenu-item_accent">
+                        <li class="header__main-submenu-item header__main-submenu-item_kashpo">
                             <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/kashpo-treez/treez-effectory">Treez Effectory</a>
-                        <?php $start = microtime(true); ?>
-                            <ul>
-                                <?php
-                                    $term = get_term_by( 'slug', 'treez-effectory', 'product_cat' );
-                                    $term_id = $term->term_id;
-                                    $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
-                                    $terms = get_terms( $args ); 
-                                    foreach ($terms as $term) {
-                                        $name = str_replace('Treez Effectory ','',$term ->name);
-                                        $link = site_url().'/product-category/kashpo-treez/treez-effectory/'.$term->slug;
-                                        ?>
-                                            <li class="header__main-submenu-item">
-                                                <a href="<?php echo $link?>"><?php echo $name?></a>
-                                            </li>
-                                        <?
-                                    }
-                                ?>
-                            </ul>
                         </li>
-                        <?php echo "<!-- Timing: primary menu = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
+                        <li class="header__main-submenu-item">
+                            <?php $start = microtime(true); ?>
+                            <?php
+                                $term = get_term_by( 'slug', 'treez-effectory', 'product_cat' );
+                                $term_id = $term->term_id;
+                                $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
+                                $terms = get_terms( $args ); 
+                                foreach ($terms as $term) {
+                                    $name = str_replace('Treez Effectory ','',$term ->name);
+                                    $link = site_url().'/product-category/kashpo-treez/treez-effectory/'.$term->slug;
+                                    ?>
+                                    <a href="<?php echo $link?>"><?php echo $name?></a>
+                                    <?
+                                }
+                            ?>
+                            <?php echo "<!-- Timing: primary menu = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
+                        </li>
                     </ul>
                   
                        
