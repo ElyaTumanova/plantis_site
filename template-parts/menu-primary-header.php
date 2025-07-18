@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <div class="container">
             <nav id="site-navigation" class="main-navigation" role="navigation">
                 <div class="header__main-submenu" data-menu = "menu_item_plants">
-                    <ul>
+                    <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
                             <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">Комнатные растения</a>
                         </li>
@@ -56,7 +56,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-listvennye">Кактусы</a>
                         </li>
                     </ul>
-                    <ul >
+                    <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
                             Популярные подборки
                         </li>
@@ -85,7 +85,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <a href="<?php echo site_url()?>/product-tag/bonsay/">Бонсаи</a>
                         </li>
                     </ul>
-                    <ul>
+                    <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
                             Повод для подарка
                         </li>
@@ -120,7 +120,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-8-marta/">8 марта</a>
                         </li>
                     </ul>
-                    <ul>
+                    <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
                             <a href="<?php echo site_url()?>/product-category/ukhod/">Всё для ухода</a>
                         </li>
@@ -183,6 +183,26 @@ if ( ! defined( 'ABSPATH' ) ) {
                                     foreach ($terms as $term) {
                                         $name = str_replace('Treez Effectory ','',$term ->name);
                                         $link = site_url().'/product-category/kashpo-treez/treez-effectory/'.$term->slug;
+                                        ?>
+                                        <a href="<?php echo $link?>"><?php echo $name?></a>
+                                        <?
+                                    }
+                                ?>
+                                <?php echo "<!-- Timing: primary menu = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
+                            </div>
+                        </li>
+                        <li class="header__main-submenu-item">
+                            <a class ="header__main-submenu-item_kashpo" href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/kashpo-treez/treez-ergo">Treez Ergo</a>
+                            <div class="header__main-submenu-item_row">
+                                <?php $start = microtime(true); ?>
+                                <?php
+                                    $term = get_term_by( 'slug', 'treez-ergo', 'product_cat' );
+                                    $term_id = $term->term_id;
+                                    $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
+                                    $terms = get_terms( $args ); 
+                                    foreach ($terms as $term) {
+                                        $name = str_replace('Treez Ergo ','',$term ->name);
+                                        $link = site_url().'/product-category/kashpo-treez/treez-ergo/'.$term->slug;
                                         ?>
                                         <a href="<?php echo $link?>"><?php echo $name?></a>
                                         <?
