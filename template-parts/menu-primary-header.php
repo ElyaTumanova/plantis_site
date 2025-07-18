@@ -137,7 +137,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <img class="header__main-submenu-img" loading="lazy" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
                 </div>
                 <div class="header__main-submenu" data-menu = "menu_item_gorshki">
-                    <ul>
+                    <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
                             <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/">Керамические горшки</a>
                         </li>
@@ -155,16 +155,16 @@ if ( ! defined( 'ABSPATH' ) ) {
                     </ul>
                     <ul>
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
-                            Популярные цвета
-                        </li>
-                        <li class="header__main-submenu-item header__main-submenu-item_row">
-                            <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
-                            <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
-                            <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
-                            <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
-                            <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
-                            <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
-                            <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
+                            <p class="header__main-submenu-item_accent">Популярные цвета</p>
+                            <div class="header__main-submenu-item_row">
+                                <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
+                                <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
+                                <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
+                                <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
+                                <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
+                                <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
+                                <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
+                            </div>
                         </li>
                     </ul>
                     <ul>
@@ -173,23 +173,23 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </li>
                         <li class="header__main-submenu-item header__main-submenu-item_kashpo">
                             <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/kashpo-treez/treez-effectory">Treez Effectory</a>
-                        </li>
-                        <li class="header__main-submenu-item header__main-submenu-item_row">
-                            <?php $start = microtime(true); ?>
-                            <?php
-                                $term = get_term_by( 'slug', 'treez-effectory', 'product_cat' );
-                                $term_id = $term->term_id;
-                                $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
-                                $terms = get_terms( $args ); 
-                                foreach ($terms as $term) {
-                                    $name = str_replace('Treez Effectory ','',$term ->name);
-                                    $link = site_url().'/product-category/kashpo-treez/treez-effectory/'.$term->slug;
-                                    ?>
-                                    <a href="<?php echo $link?>"><?php echo $name?></a>
-                                    <?
-                                }
-                            ?>
-                            <?php echo "<!-- Timing: primary menu = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
+                            <div class="header__main-submenu-item_row">
+                                <?php $start = microtime(true); ?>
+                                <?php
+                                    $term = get_term_by( 'slug', 'treez-effectory', 'product_cat' );
+                                    $term_id = $term->term_id;
+                                    $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
+                                    $terms = get_terms( $args ); 
+                                    foreach ($terms as $term) {
+                                        $name = str_replace('Treez Effectory ','',$term ->name);
+                                        $link = site_url().'/product-category/kashpo-treez/treez-effectory/'.$term->slug;
+                                        ?>
+                                        <a href="<?php echo $link?>"><?php echo $name?></a>
+                                        <?
+                                    }
+                                ?>
+                                <?php echo "<!-- Timing: primary menu = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
+                            </div>
                         </li>
                     </ul>
                     <img class="header__main-submenu-img" loading="lazy" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
