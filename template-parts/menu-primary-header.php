@@ -144,14 +144,30 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
                             <a href="<?php echo site_url()?>/product-tag/kashpo-s-avtopolivom/">Кашпо с автополивом</a>
                         </li>
+                        <li class="header__main-submenu-item header__main-submenu-item_accent">
+                            По диаметру
+                        </li>
+                        <?php
+                            $term = get_term_by( 'slug', 'gorshki_i_kashpo', 'product_cat' );
+                            $term_id = $term->term_id;
+                            $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
+                            $terms = get_terms( $args ); 
+                            foreach ($terms as $term) {
+                                $name = $term ->name;
+                                $link = site_url().'/product-category/gorshki_i_kashpo/'.$term->slug;
+                                ?>
+                                    <li class="header__main-submenu-item">
+                                        <a href="<?php echo $link?>"><?php echo $name?></a>
+                                    </li>
+                                <?
+                            }
+                        ?>
+                  
                         <?php $start = microtime(true); ?>
                         <?php
                             $term = get_term_by( 'slug', 'treez-effectory', 'product_cat' );
-                            //$term = get_term_by( 'id', 177, 'product-cat' );
                             $term_id = $term->term_id;
-                            print_r($term);
-                            print_r($term_id);
-                            $args = array( 'taxonomy' => 'product_cat', 'parent' => 177 );  
+                            $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
                             $terms = get_terms( $args ); 
                             foreach ($terms as $term) {
                                 $name = str_replace('Treez Effectory ','',$term ->name);
