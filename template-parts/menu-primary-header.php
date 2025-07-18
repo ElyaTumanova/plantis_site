@@ -169,10 +169,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                     </ul>
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
-                            <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/kashpo-treez">Кашпо Treez</a>
+                            <a href="<?php echo site_url()?>/product-category/kashpo-treez">Кашпо Treez</a>
                         </li>
                         <li class="header__main-submenu-item">
-                            <a class ="header__main-submenu-item_kashpo" href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/kashpo-treez/treez-effectory">Treez Effectory</a>
+                            <a class ="header__main-submenu-item_kashpo" href="<?php echo site_url()?>/product-category/kashpo-treez/treez-effectory">Treez Effectory</a>
                             <div class="header__main-submenu-item_row">
                                 <?php $start = microtime(true); ?>
                                 <?php
@@ -188,11 +188,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                                         <?
                                     }
                                 ?>
-                                <?php echo "<!-- Timing: primary menu = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
                             </div>
                         </li>
                         <li class="header__main-submenu-item">
-                            <a class ="header__main-submenu-item_kashpo" href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/kashpo-treez/treez-ergo">Treez Ergo</a>
+                            <a class ="header__main-submenu-item_kashpo" href="<?php echo site_url()?>/product-category/kashpo-treez/treez-ergo">Treez Ergo</a>
                             <div class="header__main-submenu-item_row">
                                 <?php $start = microtime(true); ?>
                                 <?php
@@ -203,6 +202,27 @@ if ( ! defined( 'ABSPATH' ) ) {
                                     foreach ($terms as $term) {
                                         $name = str_replace('Treez Ergo ','',$term ->name);
                                         $link = site_url().'/product-category/kashpo-treez/treez-ergo/'.$term->slug;
+                                        ?>
+                                        <a href="<?php echo $link?>"><?php echo $name?></a>
+                                        <?
+                                    }
+                                ?>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="header__main-submenu_lvl1">
+                        <li class="header__main-submenu-item">
+                            <a class ="header__main-submenu-item_kashpo" href="<?php echo site_url()?>/product-category/kashpo-lechuza">Кашпо Lechuza</a>
+                            <div class="header__main-submenu-item_row">
+                                <?php $start = microtime(true); ?>
+                                <?php
+                                    $term = get_term_by( 'slug', 'kashpo-lechuza', 'product_cat' );
+                                    $term_id = $term->term_id;
+                                    $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
+                                    $terms = get_terms( $args ); 
+                                    foreach ($terms as $term) {
+                                        $name = str_replace('Кашпо Lechuza ','',$term ->name);
+                                        $link = site_url().'/product-category/kashpo-lechuza/'.$term->slug;
                                         ?>
                                         <a href="<?php echo $link?>"><?php echo $name?></a>
                                         <?
