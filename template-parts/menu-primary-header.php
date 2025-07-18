@@ -171,8 +171,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
                             <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/kashpo-treez">Кашпо Treez</a>
                         </li>
-                        <li class="header__main-submenu-item header__main-submenu-item_kashpo">
-                            <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/kashpo-treez/treez-effectory">Treez Effectory</a>
+                        <li class="header__main-submenu-item">
+                            <a class ="header__main-submenu-item_kashpo" href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/kashpo-treez/treez-effectory">Treez Effectory</a>
                             <div class="header__main-submenu-item_row">
                                 <?php $start = microtime(true); ?>
                                 <?php
