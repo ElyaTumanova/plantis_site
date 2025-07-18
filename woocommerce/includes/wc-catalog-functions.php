@@ -241,7 +241,7 @@ function plnt_change_breadcrumb_title( $link_output, $link ) {
     echo ('<br>');
     print_r ($link); 
     //array_push($new_link, $link);
-    $new_link = .$link;
+    $new_link = . $link;
   
     echo('new link');
     print_r($new_link);
