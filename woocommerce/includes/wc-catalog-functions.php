@@ -241,7 +241,7 @@ function plnt_change_breadcrumb_title( $links ) {
         // print_r($new_link);
     }
     print_r ($new_links);
-	return $links;
+	return $new_links;
 }
 
 
