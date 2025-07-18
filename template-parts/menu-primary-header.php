@@ -146,8 +146,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </li>
                         <?php $start = microtime(true); ?>
                         <?php
-                            //$term = get_term_by( 'slug', 'treez-effectory', 'product-category' );
-                            $term = get_term_by( 'id', 177, 'product-category' );
+                            $term = get_term_by( 'slug', 'treez-effectory', 'product-cat' );
+                            //$term = get_term_by( 'id', 177, 'product-category' );
                             $term_id = $term->term_id;
                             print_r($term);
                             print_r($term_id);
