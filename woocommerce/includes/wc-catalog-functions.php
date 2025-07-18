@@ -221,6 +221,7 @@ function plnt_attribute_page_title($page_title) {
 add_filter( 'wpseo_breadcrumb_links', 'plnt_change_breadcrumb_title', 10, 2 );
 function plnt_change_breadcrumb_title( $links ) {
     print_r ($links); 
+    $new_links = [];
           echo ('<br>');
     foreach($links as $link) {
         if(array_key_exists('taxonomy', $link)){
@@ -233,12 +234,13 @@ function plnt_change_breadcrumb_title( $links ) {
         echo ('finish');
         echo ('<br>');
         print_r ($link); 
-        // //array_push($new_link, $link);
+        array_push($new_links, $link);
         // $new_link = . $link;
     
         // echo('new link');
         // print_r($new_link);
     }
+    print_r ($new_links);
 	return $links;
 }
 
