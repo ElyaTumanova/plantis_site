@@ -217,14 +217,17 @@ function plnt_attribute_page_title($page_title) {
 	}
 }
 
-add_filter( "get_the_archive_title", "plnt_change_attribute_title" );
-function plnt_change_attribute_title( $title ){
-    if ( is_tax('pa_color') ) {
-        $term = get_queried_object();
-        $title = "Горшки и кашпо цвета ".$term->name;
-    } 
-    return $title;
+//Изменение заголовка в хлебных крошках Yoast SEO #breadcrumb
+add_filter( 'wpseo_breadcrumb_single_link', 'plnt_change_breadcrumb_title', 10, 2 );
+function plnt_change_breadcrumb_title( $link_output, $link ) {
+	if ( is_tax( 'pa_color' ) && isset( $link['text'] ) ) {
+		if ( $link['text'] === single_term_title( '', false ) ) {
+			$link_output['text'] = 'Горшки и кашпо цвета ' . $link['text'];
+		}
+	}
+	return $link_output;
 }
+
 
 // описание категории и преимущества в каталоге
 
