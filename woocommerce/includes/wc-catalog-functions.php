@@ -209,7 +209,7 @@ add_filter( 'woocommerce_page_title', 'plnt_attribute_page_title');
 
 function plnt_attribute_page_title($page_title) {
     if ( is_tax('pa_color') ) {
-    $page_title = "Горшки и кашпо цвета ".$pageNum;
+    $page_title = "Горшки и кашпо цвета ".$page_title;
 		return $page_title;
     }
 	else {
