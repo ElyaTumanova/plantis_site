@@ -220,7 +220,7 @@ function plnt_attribute_page_title($page_title) {
 //Изменение заголовка в хлебных крошках Yoast SEO #breadcrumb
 add_filter( 'wpseo_breadcrumb_single_link', 'plnt_change_breadcrumb_title', 10, 2 );
 function plnt_change_breadcrumb_title( $link_output, $link ) {
-    echo ($link_output);
+    print_t ($link);
 	// if ( is_tax( 'pa_color' ) && isset( $link['text'] ) ) {
 	// 	if ( $link['text'] === single_term_title( '', false ) ) {
 	// 		$link_output['text'] = 'Горшки и кашпо цвета ' . $link['text'];
