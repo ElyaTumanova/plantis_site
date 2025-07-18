@@ -146,8 +146,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </li>
                         <?php
                             $term = get_term_by( 'slug', 'treez-effectory', 'category' );
-                            $term_id = $term->term_id;
-                            echo($term_id);
+                            //$term_id = $term->term_id;
+                            echo($term);
                             $args = array( 'taxonomy' => 'product_cat', 'parent' => 177 );  
                             $terms = get_terms( $args ); 
 
