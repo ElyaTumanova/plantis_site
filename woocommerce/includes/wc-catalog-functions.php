@@ -221,9 +221,8 @@ add_filter( "get_the_archive_title", "plnt_change_attribute_title" );
 function plnt_change_attribute_title( $title ){
     if ( is_tax('pa_color') ) {
         $title = "Горшки и кашпо цвета ".$title;
-    } else {
-        return $title;
-    }
+    } 
+    return $title;
 }
 
 // описание категории и преимущества в каталоге
