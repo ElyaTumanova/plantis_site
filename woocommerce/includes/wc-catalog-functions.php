@@ -220,15 +220,15 @@ function plnt_attribute_page_title($page_title) {
 //Изменение заголовка в хлебных крошках Yoast SEO #breadcrumb
 add_filter( 'wpseo_breadcrumb_single_link', 'plnt_change_breadcrumb_title', 10, 2 );
 function plnt_change_breadcrumb_title( $link_output, $link ) {
-    print_r (gettype($link));
+    // print_r (gettype($link));
     print_r ($link); 
     if(array_key_exists('taxonomy', $link)){
-       print_r ($link); 
-       print_r ($link_output); 
+    //    print_r ($link); 
+    //    print_r ($link_output); 
         if ($link['taxonomy'] == 'pa_color') {
             $link['text'] = 'Горшки и кашпо цвета ' . $link['text'];
-            print_r ($link); 
-            print_r ($link_output); 
+            // print_r ($link); 
+            // print_r ($link_output); 
         }
     }
     echo ('<br>');
