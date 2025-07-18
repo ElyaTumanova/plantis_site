@@ -146,7 +146,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </li>
                         <?php $start = microtime(true); ?>
                         <?php
-                            $term = get_term_by( 'slug', 'treez-effectory', 'product-category' );
+                            //$term = get_term_by( 'slug', 'treez-effectory', 'product-category' );
+                            $term = get_term_by( 'id', 177, 'product-category' );
                             $term_id = $term->term_id;
                             print_r($term);
                             print_r($term_id);
@@ -154,7 +155,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             $terms = get_terms( $args ); 
                             foreach ($terms as $term) {
                                 $name = str_replace('Treez Effectory ','',$term ->name);
-                                $link = site_url().'/product-category/ikashpo-treez/treez-effectory/'.$term->slug;
+                                $link = site_url().'/product-category/kashpo-treez/treez-effectory/'.$term->slug;
                                 ?>
                                     <li class="header__main-submenu-item">
                                         <a href="<?php echo $link?>"><?php echo $name?></a>
