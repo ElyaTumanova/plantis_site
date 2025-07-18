@@ -202,6 +202,7 @@ function plnt_woocommerce_page_title($page_title) {
 // меняем название заголовка для shop
 function plnt_change_my_title( $title ){
     if ( $title == "Магазин" ) $title = "Все товары";
+    echo $title;
     return $title;
 }
 add_filter( "get_the_archive_title", "plnt_change_my_title" );

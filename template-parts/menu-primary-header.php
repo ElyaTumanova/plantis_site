@@ -141,28 +141,43 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
                             <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/">Керамические горшки</a>
                         </li>
+                    </ul>
+                    <ul>
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
                             <a href="<?php echo site_url()?>/product-tag/kashpo-s-avtopolivom/">Кашпо с автополивом</a>
                         </li>
+                    </ul>
+                    <ul>
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
                             По диаметру
                         </li>
-                        <?php
-                            $term = get_term_by( 'slug', 'gorshki_i_kashpo', 'product_cat' );
-                            $term_id = $term->term_id;
-                            $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id, 'orderby' => 'id','order' => 'ASC', );  
-                            $terms = get_terms( $args ); 
-                            foreach ($terms as $term) {
-                                $name = $term ->name;
-                                $link = site_url().'/product-category/gorshki_i_kashpo/'.$term->slug;
-                                ?>
-                                    <li class="header__main-submenu-item">
-                                        <a href="<?php echo $link?>"><?php echo $name?></a>
-                                    </li>
-                                <?
-                            }
-                        ?>
-                  
+                        <li class="header__main-submenu-item">
+                            <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/malenkie-do-17sm">Маленькие (До 17см)</a>
+                        </li>
+                        <li class="header__main-submenu-item">
+                            <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/srednie-ot-18-do-25sm">Средние (От 18 до 25см)</a>
+                        </li>
+                        <li class="header__main-submenu-item">
+                            <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/bolshie-ot-26sm">Большие (От 26см)</a>
+                        </li>
+                    </ul>
+                    <!-- <ul>
+                        <li class="header__main-submenu-item header__main-submenu-item_accent">
+                            По назначению
+                        </li>
+                    </ul>                         -->
+                    <ul>
+                        <li class="header__main-submenu-item header__main-submenu-item_accent">
+                            Популярные цвета
+                        </li>
+                         <li class="header__main-submenu-item">
+                            <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="header__main-submenu-item header__main-submenu-item_accent">
+                            <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/">Кашпо Treez</a>
+                        </li>
                         <?php $start = microtime(true); ?>
                         <?php
                             $term = get_term_by( 'slug', 'treez-effectory', 'product_cat' );
@@ -180,6 +195,9 @@ if ( ! defined( 'ABSPATH' ) ) {
                             }
                         ?>
                         <?php echo "<!-- Timing: primary menu = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
+                    </ul>
+                  
+                       
                     </ul>
                     <img class="header__main-submenu-img" loading="lazy" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
                 </div>
