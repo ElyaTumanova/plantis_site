@@ -226,9 +226,11 @@ function plnt_change_breadcrumb_title( $link_output, $link ) {
        print_r ($link_output); 
         if ($link['taxonomy'] == 'pa_color') {
             $link['text'] = 'Горшки и кашпо цвета ' . $link['text'];
+            print_r ($link); 
+            print_r ($link_output); 
         }
     }
-	return $link;
+	return $link_output;
 }
 
 
