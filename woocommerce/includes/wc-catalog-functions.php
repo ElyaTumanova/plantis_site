@@ -230,6 +230,8 @@ function plnt_change_breadcrumb_title( $link_output, $link ) {
             print_r ($link_output); 
         }
     }
+    echo ('<br>');
+    print_r ($link); 
 	return $link_output;
 }
 
