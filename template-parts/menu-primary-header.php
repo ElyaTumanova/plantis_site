@@ -150,7 +150,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <?php
                             $term = get_term_by( 'slug', 'gorshki_i_kashpo', 'product_cat' );
                             $term_id = $term->term_id;
-                            $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
+                            $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id, 'orderby' => 'id','order' => 'ASC', );  
                             $terms = get_terms( $args ); 
                             foreach ($terms as $term) {
                                 $name = $term ->name;
