@@ -220,7 +220,8 @@ function plnt_attribute_page_title($page_title) {
 add_filter( "get_the_archive_title", "plnt_change_attribute_title" );
 function plnt_change_attribute_title( $title ){
     if ( is_tax('pa_color') ) {
-        $title = "Горшки и кашпо цвета ".$title;
+        $term = get_queried_object();
+        $title = "Горшки и кашпо цвета ".$term->name;
     } 
     return $title;
 }
