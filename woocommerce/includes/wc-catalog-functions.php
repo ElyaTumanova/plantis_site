@@ -217,6 +217,15 @@ function plnt_attribute_page_title($page_title) {
 	}
 }
 
+add_filter( "get_the_archive_title", "plnt_change_attribute_title" );
+function plnt_change_attribute_title( $title ){
+    if ( is_tax('pa_color') ) {
+        $title = "Горшки и кашпо цвета ".$title;
+    } else {
+        return $title;
+    }
+}
+
 // описание категории и преимущества в каталоге
 
 add_action('woocommerce_after_shop_loop','woocommerce_taxonomy_archive_description',15);
