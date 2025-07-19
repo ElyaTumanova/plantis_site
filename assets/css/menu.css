@@ -135,6 +135,7 @@
 .header__main-submenu-item_link {
     display: flex;
     column-gap: 7px;
+    align-items: anchor-center;
 }
 
 /* .header__main-submenu-item_link:after  {
