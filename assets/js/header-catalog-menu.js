@@ -80,7 +80,7 @@ menuLinksWithImage.forEach((el)=>{
     let catId = el.getAttribute('data-cat_id');
     if(catId) {
         el.addEventListener('mouseenter',(evt)=>{getCatImageAjax(evt,catId)})
-        //el.addEventListener('mouseleave', (evt)=>{getDefaultImage(evt)})
+        el.addEventListener('mouseleave', (evt)=>{getDefaultImage(evt)})
     }
 })
 
