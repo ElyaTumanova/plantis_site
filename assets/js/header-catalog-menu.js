@@ -5,7 +5,7 @@ let subMenues = document.querySelectorAll('.header__main-submenu');
 let menuLinksWithImage = headerCatalogWrap.querySelectorAll('.header__main-submenu-item_image');
 
 function getCatImageAjax(catId) {
-    // alert(catId)
+    console.log(catId)
     const data = new URLSearchParams();
     data.append('action', 'get_menu_cats_image');
     data.append('cat_id', catId);
