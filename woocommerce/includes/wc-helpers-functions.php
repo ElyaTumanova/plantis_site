@@ -234,7 +234,7 @@ function get_primary_submenu($cat_slug,$link_base,$cat_name='') {
     $terms = get_terms( $args ); 
 
     ?>
-    <a class ="header__main-submenu-item_link" href="<?php echo site_url().$link_base.'/'. $cat_slug.'/'?>"><?php echo $cat_name?></a>
+    <a class ="header__main-submenu-item_link" href="<?php echo site_url().$link_base. $cat_slug.'/'?>"><?php echo $cat_name?></a>
     <div class="header__main-submenu-item_row">
         <?php
         foreach ($terms as $term) {
