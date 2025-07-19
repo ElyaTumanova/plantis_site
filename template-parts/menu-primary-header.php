@@ -201,7 +201,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                                 <ul class="header__main-submenu_lvl1">
                                 <li class="header__main-submenu-item">
                                 <?php
-                                    $words_to_remove = ['Treez','Искусственные', 'Искусственная', 'Искусственное', 'Искусственный'];
+                                    $words_to_remove = ['Treez','Искусственные', 'Искусственная', 'Искусственное', 'Искусственный','растения'];
                                     get_primary_submenu($term->slug,'/product-category/iskusstvennye-rasteniya-treez/',$words_to_remove, true);
                                 ?>
                             </li>
