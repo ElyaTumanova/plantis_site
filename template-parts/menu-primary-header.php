@@ -143,7 +143,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     </ul>
                     <img class="header__main-submenu-img" loading="lazy" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
                 </div>
-                <div class="header__main-submenu" data-menu = "menu_item_gorshki">
+                <div class="header__main-submenu_show" data-menu = "menu_item_gorshki">
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
                             <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/">
