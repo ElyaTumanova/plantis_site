@@ -5,7 +5,36 @@ let subMenues = document.querySelectorAll('.header__main-submenu');
 let menuLinksWithImage = headerCatalogWrap.querySelectorAll('.header__main-submenu-item_image');
 console.log(menuLinksWithImage);
 function getCatImageAjax(catId) {
-    alert(catId)
+    // alert(catId)
+    const data = new URLSearchParams();
+    data.append('action', 'get_menu_cats_image');
+    data.append('cat_id', catId);
+
+    fetch('/wp-admin/admin-ajax.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: data
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(result => {
+    console.debug('✅ AJAX success:', result);
+    if (result.success) {
+      console.log(result);
+    }
+  })
+  .catch(error => {
+    console.error('❌ AJAX error:', error);
+  })
+  .finally(() => {
+    console.debug('⚙️ AJAX complete');
+  });
 }
 
 function openHeaderCatalog () {
