@@ -213,7 +213,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
                             <a class ="header__main-submenu-item_accent header__main-submenu-item_link " href="<?php echo site_url()?>/product-category/kashpo-lechuza">Кашпо Lechuza</a>
-                            <div class="header__main-submenu-item>
+                            <div class="header__main-submenu-item">
                                 <?php $start = microtime(true); ?>
                                 <?php
                                     $term = get_term_by( 'slug', 'kashpo-lechuza', 'product_cat' );
