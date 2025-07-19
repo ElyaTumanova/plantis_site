@@ -5,7 +5,8 @@ let subMenues = document.querySelectorAll('.header__main-submenu');
 let menuLinksWithImage = headerCatalogWrap.querySelectorAll('.header__main-submenu-item_image');
 
 function getCatImageAjax(event, catId) {
-    console.log(catId)
+    let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
+    
     const data = new URLSearchParams();
     data.append('action', 'get_menu_cats_image');
     data.append('cat_id', catId);
@@ -27,6 +28,7 @@ function getCatImageAjax(event, catId) {
         console.debug('✅ AJAX success:', result);
         if (result.success) {
         console.log(result.data.image_url);
+        menuImage.setAttribute('src',result.data.image_url);
         }
     })
     .catch(error => {
@@ -36,9 +38,6 @@ function getCatImageAjax(event, catId) {
         console.debug('⚙️ AJAX complete');
     });
 
-    console.log(event.target);
-    let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
-    console.log(menuImage);
 }
 
 function openHeaderCatalog () {
