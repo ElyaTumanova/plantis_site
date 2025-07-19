@@ -227,7 +227,10 @@ function plnt_get_shiping_costs() {
 
 mb_internal_encoding("UTF-8");
 function mb_ucfirst($text) {
-    return mb_strtoupper(mb_substr($text, 0, 1)) . mb_substr($text, 1);
+    echo($text);
+    $new_text = mb_strtoupper(mb_substr($text, 0, 1)) . mb_substr($text, 1);
+    echo($new_text);
+    return $new_text;
 }
 
 //example, $cat_slug = 'treez-effectory', $link_base = '/product-category/kashpo-treez/', $words_to_remove - words to be removed from menu items
