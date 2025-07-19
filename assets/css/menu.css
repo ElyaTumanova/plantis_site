@@ -91,9 +91,17 @@
 
 [data-menu = "menu_item_treez_plants"].header__main-submenu_show {
     display: grid;
-    grid-template-columns: repeat(4, 350px);
+    grid-template-columns: repeat(3, 350px);
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: dense;
     column-gap: 50px;
     row-gap: 30px;
+}
+
+[data-menu = "menu_item_treez_plants"].header__main-submenu_show .header__main-submenu-img {
+    grid-column-start: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
 }
 
 .header__main-submenu-img {
