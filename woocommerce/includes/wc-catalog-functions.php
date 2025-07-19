@@ -205,6 +205,9 @@ function plnt_change_my_title( $title ){
     return $title;
 }
 
+// настройки заголовков для страницы каталога с атрибутом цвет #color
+
+// // заголовок страницы 
 add_filter( 'woocommerce_page_title', 'plnt_attribute_page_title');
 
 function plnt_attribute_page_title($page_title) {
@@ -218,7 +221,7 @@ function plnt_attribute_page_title($page_title) {
 	}
 }
 
-//Изменение заголовка в хлебных крошках Yoast SEO #breadcrumb
+// //Изменение заголовка в хлебных крошках Yoast SEO #breadcrumb
 add_filter( 'wpseo_breadcrumb_links', 'plnt_change_breadcrumb_title', 10, 2 );
 function plnt_change_breadcrumb_title( $links ) {
     $new_links = [];
@@ -248,6 +251,18 @@ function plnt_get_color_name_tltle($text) {
             $new_text = str_replace('ый','ого',mb_strtolower($text));
     }
     return $new_text;
+}
+
+// // seo title для атрибута цвет #seo #yoast
+
+add_filter('wpseo_title', 'plnt_attribute_seo_title');
+
+function plnt_attribute_seo_title() {
+    if ( is_tax('pa_color') ) {
+        $new_text = plnt_get_color_name_tltle($title);
+        $title = "Горшки и кашпо ".$new_text." цвета";
+    }
+    return $title;
 }
 
 // описание категории и преимущества в каталоге

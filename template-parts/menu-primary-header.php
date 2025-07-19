@@ -134,7 +134,6 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <a href="<?php echo site_url()?>/product-category/ukhod/zashchita-rastenij">Защита растений</a>
                         </li>
                     </ul>
-                    
                     <img class="header__main-submenu-img" loading="lazy" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
                 </div>
                 <div class="header__main-submenu" data-menu = "menu_item_gorshki">
