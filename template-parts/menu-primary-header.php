@@ -29,8 +29,12 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <div class="header__main-submenu" data-menu = "menu_item_plants">
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
-                            <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">Комнатные растения</a>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z"/></svg>
+                            <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">
+                                Комнатные растения
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z"/></svg>
+
+                            </a>
+                            
                         </li>
                         <li class="header__main-submenu-item">
                             <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-listvennye">Декоративно-лиственные</a>
