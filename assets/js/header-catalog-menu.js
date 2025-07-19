@@ -26,7 +26,7 @@ function getCatImageAjax(catId) {
   .then(result => {
     console.debug('✅ AJAX success:', result);
     if (result.success) {
-      console.log(result);
+      console.log(result.data.image_url);
     }
   })
   .catch(error => {
