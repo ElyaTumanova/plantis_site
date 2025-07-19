@@ -233,10 +233,10 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
     $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
     $terms = get_terms( $args ); 
     $cat_name = $term->name;
-    
+
     if($words_to_remove && $clean_cat_name) {
         foreach ($words_to_remove as $word) {
-            $cat_name = ucfirst(str_replace($word,'',$cat_name));
+            $cat_name = mb_ucfirst(str_replace($word,'',$cat_name));
         }
     }
     ?>
@@ -247,7 +247,7 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
             $name = $term ->name;
             if($words_to_remove) {
                 foreach ($words_to_remove as $word) {
-                    $name = str_replace($word,'',$name);
+                    $name = mb_ucfirst(str_replace($word,'',$name));
                 }
             }
             $link = site_url().$link_base. $cat_slug.'/'.$term->slug;
