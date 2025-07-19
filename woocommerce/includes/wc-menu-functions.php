@@ -62,13 +62,13 @@ function plnt_get_menu_cats_image() {
     if ( ! $cat_id ) {
         wp_send_json_error('Invalid category ID');
     }
+    wp_send_json_success( [ 'test' => $cat_id ] );
+    // $thumbnail_id = get_term_meta( $cat_id, 'thumbnail_id', true );
+    // $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
 
-    $thumbnail_id = get_term_meta( $cat_id, 'thumbnail_id', true );
-    $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
-
-    if ( $thumbnail_url ) {
-        wp_send_json_success( [ 'image_url' => esc_url( $thumbnail_url ) ] );
-    } else {
-        wp_send_json_error('Image not found');
-    }
+    // if ( $thumbnail_url ) {
+    //     wp_send_json_success( [ 'image_url' => esc_url( $thumbnail_url ) ] );
+    // } else {
+    //     wp_send_json_error('Image not found');
+    // }
 }

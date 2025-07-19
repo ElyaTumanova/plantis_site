@@ -9,7 +9,7 @@ function getCatImageAjax(event, catId) {
     
     const data = new URLSearchParams();
     data.append('action', 'get_menu_cats_image');
-    data.append('cat_id', catId);
+    data.append('cat_id', [catId, catId]);
 
     fetch('/wp-admin/admin-ajax.php', {
         method: 'POST',
@@ -27,8 +27,8 @@ function getCatImageAjax(event, catId) {
     .then(result => {
         console.debug('✅ AJAX success:', result);
         if (result.success) {
-            console.log(result.data.image_url);
-            menuImage.setAttribute('src',result.data.image_url);
+            console.log(result.data.test);
+            //menuImage.setAttribute('src',result.data.image_url);
         }
     })
     .catch(error => {
