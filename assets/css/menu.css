@@ -134,6 +134,7 @@
 
 .header__main-submenu-item_link {
     display: flex;
+    column-gap: 7px;
 }
 
 /* .header__main-submenu-item_link:after  {
