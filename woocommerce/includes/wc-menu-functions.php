@@ -50,7 +50,6 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
             <?
         }
         ?>
-        <img class="header__main-submenu-img" loading="lazy" src="<?php echo $image?>" alt="Plantis.shop">
     </div> <?php
 }
 
