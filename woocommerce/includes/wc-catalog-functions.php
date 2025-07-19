@@ -257,7 +257,7 @@ function plnt_get_color_name_tltle($text) {
 
 add_filter('wpseo_title', 'plnt_attribute_seo_title');
 
-function plnt_attribute_seo_title() {
+function plnt_attribute_seo_title($title) {
     if ( is_tax('pa_color') ) {
         $new_text = plnt_get_color_name_tltle($title);
         $title = "Горшки и кашпо ".$new_text." цвета";
