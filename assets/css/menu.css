@@ -130,6 +130,7 @@
 
 .header__main-submenu-item_accent  {
     font-weight: 600;
+    line-height: 24px;
 }
 
 .header__main-submenu-item_link {
