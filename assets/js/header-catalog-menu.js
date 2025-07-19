@@ -36,7 +36,8 @@ function getCatImageAjax(event, catId) {
         console.debug('⚙️ AJAX complete');
     });
 
-    console.log(event);
+    console.log(event.target);
+    console.log(event.target.closest('.header__main-submenu'));
     //let menuImage = headerCatalogWrap.querySelector('.')
 }
 
