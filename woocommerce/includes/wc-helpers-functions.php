@@ -227,14 +227,19 @@ function plnt_get_shiping_costs() {
 
 
  //example, $cat_slug = 'treez-effectory', $link_base = '/product-category/kashpo-treez/', $cat_name = 'Treez Effectory' for menu item, $words_to_remove - to be removed
-function get_primary_submenu($cat_slug,$link_base,$cat_name='',$words_to_remove = []) { 
+function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_cat_name = flase) { 
     $term = get_term_by( 'slug', $cat_slug, 'product_cat' );
     $term_id = $term->term_id;
-    $term_name = $term->name;
     $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
     $terms = get_terms( $args ); 
+    $cat_name = $term->name;
+    if($words_to_remove && $clean_cat_name) {
+        foreach ($words_to_remove as $word) {
+            $cat_name = str_replace($word,'',$cat_name);
+        }
+    }
     ?>
-    <a class ="header__main-submenu-item_link" href="<?php echo site_url().$link_base. $cat_slug.'/'?>"><?php echo $term_name?></a>
+    <a class ="header__main-submenu-item_link" href="<?php echo site_url().$link_base. $cat_slug.'/'?>"><?php echo $cat_name?></a>
     <div class="header__main-submenu-item_row">
         <?php
         foreach ($terms as $term) {

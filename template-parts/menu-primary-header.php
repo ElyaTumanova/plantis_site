@@ -173,19 +173,19 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </li>
                         <li class="header__main-submenu-item">
                             <?php
-                                get_primary_submenu('treez-effectory','/product-category/kashpo-treez/','Treez Effectory',['Treez Effectory ']);
+                                get_primary_submenu('treez-effectory','/product-category/kashpo-treez/',['Treez Effectory ']);
                             ?>
                         </li>
                         <li class="header__main-submenu-item">
                             <?php
-                                get_primary_submenu('treez-ergo','/product-category/kashpo-treez/','Treez Ergo', ['Treez Ergo ']);
+                                get_primary_submenu('treez-ergo','/product-category/kashpo-treez/', ['Treez Ergo ']);
                             ?>
                         </li>
                     </ul>
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
                             <?php
-                                get_primary_submenu('kashpo-lechuza','/product-category/kashpo-lechuza/','Кашпо Lechuza', ['Кашпо Lechuza ']);
+                                get_primary_submenu('kashpo-lechuza','/product-category/kashpo-lechuza/',['Кашпо Lechuza ']);
                             ?>
                         </li>
                     </ul>
@@ -201,7 +201,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                                 <ul class="header__main-submenu_lvl1">
                                 <li class="header__main-submenu-item">
                                 <?php
-                                    get_primary_submenu($term->slug,'/product-category/iskusstvennye-rasteniya-treez/'.$term->slug,$term->name,['Treez','Искусственные', 'Искусственная', 'Искусственное', 'Искусственный']);
+                                    $words_to_remove = ['Treez','Искусственные', 'Искусственная', 'Искусственное', 'Искусственный'];
+                                    get_primary_submenu($term->slug,'/product-category/iskusstvennye-rasteniya-treez/'.$term->slug,$words_to_remove, true);
                                 ?>
                             </li>
                             </ul>
