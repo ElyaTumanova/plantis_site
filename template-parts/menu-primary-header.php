@@ -201,7 +201,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                                 <ul class="header__main-submenu_lvl1">
                                 <li class="header__main-submenu-item">
                                 <?php
-                                    get_primary_submenu($term->slug,'/product-category/iskusstvennye-rasteniya-treez/'.$term->slug,$term->name,['Treez','Искусственные']);
+                                    get_primary_submenu($term->slug,'/product-category/iskusstvennye-rasteniya-treez/'.$term->slug,$term->name,['Treez','Искусственные', 'Искусственная', 'Искусственное', 'Искусственный']);
                                 ?>
                             </li>
                             </ul>
