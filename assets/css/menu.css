@@ -89,6 +89,13 @@
     justify-content: space-between;
 }
 
+.header__main-submenu_show [data-menu = "menu_item_treez_plants"] {
+    display: grid;
+    grid-template-columns: repeat(3 / 350px);
+    column-gap: 50px;
+    row-gap: 30px;
+}
+
 .header__main-submenu-img {
     width: 350px;
     height: 350px;
@@ -103,7 +110,7 @@
     font-size: 16px;
     font-weight: 400;
     max-width: 450px;
-    min-width: 230px;
+    min-width: 250px;
 }
 
 .header__main-submenu a:hover {
