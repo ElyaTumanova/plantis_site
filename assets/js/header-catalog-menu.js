@@ -3,7 +3,6 @@ let headerMenuWrap = document.querySelector('.header__main-menu-wrap');
 let headerMenuItems = document.querySelectorAll('.header__main-menu-item');
 let subMenues = document.querySelectorAll('.header__main-submenu');
 let menuLinksWithImage = headerCatalogWrap.querySelectorAll('.header__main-submenu-item_image');
-let menuImage = headerCatalogWrap.querySelector('.')
 
 function getCatImageAjax(event, catId) {
     console.log(catId)
