@@ -225,15 +225,7 @@ function plnt_get_shiping_costs() {
 	return $shipping_costs;
 }
 
-// mb_internal_encoding("UTF-8");
-// setlocale(LC_CTYPE, 'ru_RU');
-function mb_ucfirst($text,) {
-    mb_internal_encoding("UTF-8");
-    echo($text);
-    $new_text = mb_strtoupper(mb_substr($text, 0, 1),"UTF-8") . mb_substr($text, 1);
-    echo($new_text);
-    return $new_text;
-}
+
 
 //example, $cat_slug = 'treez-effectory', $link_base = '/product-category/kashpo-treez/', $words_to_remove - words to be removed from menu items
 function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_cat_name=false) { 
@@ -247,8 +239,6 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
         foreach ($words_to_remove as $word) {
             $cat_name = str_replace($word,'',$cat_name);
         }
-        $cat_name = mb_ucfirst($cat_name);
-        echo(mb_ucfirst('hello'));
     }
     ?>
     <a class ="header__main-submenu-item_link" href="<?php echo site_url().$link_base. $cat_slug.'/'?>"><?php echo $cat_name?></a>
