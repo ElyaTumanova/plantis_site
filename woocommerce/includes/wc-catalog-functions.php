@@ -244,7 +244,7 @@ function plnt_get_breadcrumb_text($text) {
             $new_text = 'золотого';
             break;
         default:
-            $new_text = str_replace('ый','ого',$text);
+            $new_text = strtolower(str_replace('ый','ого',$text));
     }
     return $new_text;
 }
