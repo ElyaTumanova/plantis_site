@@ -228,6 +228,7 @@ function plnt_get_shiping_costs() {
 // mb_internal_encoding("UTF-8");
 // setlocale(LC_CTYPE, 'ru_RU');
 function mb_ucfirst($text,) {
+    mb_internal_encoding("UTF-8");
     echo($text);
     $new_text = mb_strtoupper(mb_substr($text, 0, 1),"UTF-8") . mb_substr($text, 1);
     echo($new_text);
