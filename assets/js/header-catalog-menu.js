@@ -27,8 +27,8 @@ function getCatImageAjax(event, catId) {
     .then(result => {
         console.debug('✅ AJAX success:', result);
         if (result.success) {
-        console.log(result.data.image_url);
-        menuImage.setAttribute('src',result.data.image_url);
+            console.log(result.data.image_url);
+            menuImage.setAttribute('src',result.data.image_url);
         }
     })
     .catch(error => {
@@ -79,9 +79,14 @@ headerMenuWrap.addEventListener('mouseleave', closeHeaderCatalog);
 menuLinksWithImage.forEach((el)=>{
     let catId = el.getAttribute('data-cat_id');
     if(catId) {
-        //el.addEventListener('mouseenter',(evt)=>{getCatImageAjax(catId)})
-        el.addEventListener('click',(evt)=>{getCatImageAjax(evt, catId)})
+        el.addEventListener('mouseenter',(evt)=>{getCatImageAjax(evt,catId)})
+        el.addEventListener('mouseenter', (evt)=>{getDefaultImage(evt)})
     }
 })
+
+function getDefaultImage(event) {
+    let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
+    menuImage.setAttribute('src','https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp');
+}
 
 
