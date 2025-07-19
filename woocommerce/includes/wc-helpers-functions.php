@@ -240,8 +240,9 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
 
     if($words_to_remove && $clean_cat_name) {
         foreach ($words_to_remove as $word) {
-            $cat_name = mb_ucfirst(str_replace($word,'',$cat_name));
+            $cat_name = str_replace($word,'',$cat_name);
         }
+        $cat_name = mb_ucfirst($cat_name);
     }
     ?>
     <a class ="header__main-submenu-item_link" href="<?php echo site_url().$link_base. $cat_slug.'/'?>"><?php echo $cat_name?></a>
