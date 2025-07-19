@@ -194,7 +194,7 @@ function plnt_change_my_title( $title ){
 // настройки заголовков для страницы каталога с атрибутом цвет #color
 
 // // заголовок страницы 
-add_filter( 'woocommerce_page_title', 'plnt_attribute_page_title');
+add_filter( 'woocommerce_page_title', 'plnt_attribute_page_title',10);
 
 function plnt_attribute_page_title($page_title) {
     if ( is_tax('pa_color') ) {
@@ -208,7 +208,7 @@ function plnt_attribute_page_title($page_title) {
 }
 
 // заголовок для страниц пагинации
-add_filter( 'woocommerce_page_title', 'plnt_woocommerce_page_title');
+add_filter( 'woocommerce_page_title', 'plnt_woocommerce_page_title',20);
 
 function plnt_woocommerce_page_title($page_title) {
 	if ( is_paged() ) {
