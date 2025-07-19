@@ -259,5 +259,6 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
             <?
         }
         ?>
+        <img class="header__main-submenu-img" loading="lazy" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
     </div> <?php
 }
