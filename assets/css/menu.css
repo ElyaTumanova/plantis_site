@@ -132,7 +132,11 @@
     font-weight: 600;
 }
 
-.header__main-submenu-item_link:after  {
+.header__main-submenu-item_link {
+    display: flex;
+}
+
+/* .header__main-submenu-item_link:after  {
     font-weight: 600;
     content: "next";
     font-family: swiper-icons;
@@ -141,10 +145,10 @@
     font-size: 12px;
     margin-top: 3px;
     margin-left: 7px;
-}
-.header__main-submenu-item_link:hover:after {
+} */
+/* .header__main-submenu-item_link:hover:after {
    color: var(--accent-color);
-}
+} */
 
 /* меню каталога в хедере main menu - old*/
 .header__menu {
