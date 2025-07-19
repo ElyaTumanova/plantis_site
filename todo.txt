@@ -1,0 +1,4 @@
+TO DO LIST
+
+1. Поменять заголовки и хлебыне крошки для меток. 
+    функция  plnt_woocommerce_get_breadcrumb_filter не работает, так как крошки выводит YOAST

@@ -157,13 +157,13 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <li class="header__main-submenu-item">
                             <p class="header__main-submenu-item_accent">Популярные цвета</p>
                             <div class="header__main-submenu-item_row">
+                                <a href="<?php echo site_url()?>/attribute/color/belyj/">Белый</a>
+                                <a href="<?php echo site_url()?>/attribute/color/chyornyj/">Чёрный</a>
                                 <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
-                                <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
-                                <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
-                                <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
-                                <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
-                                <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
-                                <a href="<?php echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
+                                <a href="<?php echo site_url()?>/attribute/color/seryj/">Серый</a>
+                                <a href="<?php echo site_url()?>/attribute/color/zolotoj/">Золотой</a>
+                                <a href="<?php echo site_url()?>/attribute/color/serebro/">Серебро</a>
+                                <a href="<?php echo site_url()?>/attribute/color/terrakotovyj/">Терракотовый</a>
                             </div>
                         </li>
                     </ul>
