@@ -225,8 +225,12 @@ function plnt_get_shiping_costs() {
 	return $shipping_costs;
 }
 
+mb_internal_encoding("UTF-8");
+function mb_ucfirst($text) {
+    return mb_strtoupper(mb_substr($text, 0, 1)) . mb_substr($text, 1);
+}
 
- //example, $cat_slug = 'treez-effectory', $link_base = '/product-category/kashpo-treez/', $cat_name = 'Treez Effectory' for menu item, $words_to_remove - to be removed
+//example, $cat_slug = 'treez-effectory', $link_base = '/product-category/kashpo-treez/', $cat_name = 'Treez Effectory' for menu item, $words_to_remove - to be removed
 function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_cat_name=false) { 
     $term = get_term_by( 'slug', $cat_slug, 'product_cat' );
     $term_id = $term->term_id;
