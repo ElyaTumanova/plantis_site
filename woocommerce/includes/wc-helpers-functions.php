@@ -233,9 +233,10 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
     $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
     $terms = get_terms( $args ); 
     $cat_name = $term->name;
+    
     if($words_to_remove && $clean_cat_name) {
         foreach ($words_to_remove as $word) {
-            $cat_name = str_replace($word,'',$cat_name);
+            $cat_name = ucfirst(str_replace($word,'',$cat_name));
         }
     }
     ?>
