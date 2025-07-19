@@ -240,7 +240,11 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
             $cat_name = str_replace($word,'',$cat_name);
         }
     }
+
+    $category_thumbnail = get_woocommerce_term_meta($term_id, 'thumbnail_id', true);
+    $image = wp_get_attachment_url($category_thumbnail);
     ?>
+    
     <a class ="header__main-submenu-item_accent header__main-submenu-item_link" data-cat_id = <?php echo $term_id?> href="<?php echo site_url().$link_base. $cat_slug.'/'?>"><?php echo $cat_name?>
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z"/></svg>
     </a>
@@ -259,6 +263,6 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
             <?
         }
         ?>
-        <img class="header__main-submenu-img" loading="lazy" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
+        <img class="header__main-submenu-img" loading="lazy" src="<?php echo $image?>" alt="Plantis.shop">
     </div> <?php
 }
