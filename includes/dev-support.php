@@ -22,7 +22,7 @@ function plnt_dev_functions() {
     // $term_id = $term->term_id;
     $args = array( 'taxonomy' => 'product_cat', 'parent' => $plants_treez_cat_id );  
     $terms = get_terms( $args ); 
-    print_r($terms);
+    print_r($terms[0]->'slug');
 	// $cats_for_check = [$plants_cat_id, $gorshki_cat_id, $ukhod_cat_id,$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
 	// $cats_for_include = [];
 	// $cats_for_include_clean = [];
