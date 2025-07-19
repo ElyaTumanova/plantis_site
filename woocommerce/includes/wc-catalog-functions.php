@@ -245,7 +245,7 @@ function plnt_get_color_name_tltle($text) {
             $new_text = 'золотого';
             break;
         default:
-            $new_text = str_replace('ый','ого',strtolower($text));
+            $new_text = str_replace('ый','ого',mb_strtolower($text));
     }
     return $new_text;
 }
