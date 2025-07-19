@@ -234,6 +234,7 @@ function plnt_change_breadcrumb_title( $links ) {
 	return $new_links;
 }
 
+
 function plnt_get_color_name_tltle($text) {
     $new_text;
     switch($text) {
