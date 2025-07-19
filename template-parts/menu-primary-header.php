@@ -192,7 +192,9 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <img class="header__main-submenu-img" loading="lazy" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
                 </div>
                 <div class="header__main-submenu" data-menu = "menu_item_treez_plants">
-                    <ul class="header__main-submenu_lvl1"></ul>
+                    <ul class="header__main-submenu_lvl1">
+                        
+                    </ul>
                 </div>
             </nav>
         </div>
