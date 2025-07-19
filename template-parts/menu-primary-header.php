@@ -193,7 +193,21 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </div>
                 <div class="header__main-submenu" data-menu = "menu_item_treez_plants">
                     <ul class="header__main-submenu_lvl1">
-                        
+                        <?php 
+                            global $plants_treez_cat_id;
+                            $args = array( 'taxonomy' => 'product_cat', 'parent' => $plants_treez_cat_id );  
+                            $terms = get_terms( $args ); 
+                            print_r($terms[0]->slug);
+                            foreach($terms as $term) {
+                                ?> 
+                                  <li class="header__main-submenu-item">
+                                    <?php
+                                        get_primary_submenu($term->slug,'/product-category/iskusstvennye-rasteniya-treez/'.$term->slug,$term->name);
+                                    ?>
+                                </li>
+                                <?php
+                            }
+                        ?>
                     </ul>
                 </div>
             </nav>
