@@ -210,6 +210,22 @@ if ( ! defined( 'ABSPATH' ) ) {
                         }
                     ?> 
                 </div>
+                <div class="header__main-submenu" data-menu = "menu_item_service">
+                    <ul class="header__main-submenu_lvl1">
+                        <li class="header__main-submenu-item">
+                            <a href="<?php echo site_url()?>/usluga-peresadki-komnatnyh-rastenij/">Пересадка</a>
+                        </li>
+                        <li class="header__main-submenu-item">
+                            <a href="<?php echo site_url()?>/landscaping/">Озеленение</a>
+                        </li>
+                        <li class="header__main-submenu-item">
+                            <a href="<?php echo site_url()?>/professionalnyj-uhod-za-rasteniyami/">Профессиональный уход за растениями</a>
+                        </li>
+                        <li class="header__main-submenu-item">
+                            <a href="<?php echo site_url()?>/pokupka-komnatnyh-rastenij-optom/">Оптовая покупка растений</a>
+                        </li>
+                    </ul>
+                </div>
             </nav>
         </div>
     </div>	
