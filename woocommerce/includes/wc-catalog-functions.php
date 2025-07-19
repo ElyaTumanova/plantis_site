@@ -260,7 +260,13 @@ add_filter('wpseo_title', 'plnt_attribute_seo_title');
 function plnt_attribute_seo_title($title) {
     if ( is_tax('pa_color') ) {
         $new_text = plnt_get_color_name_tltle($title);
-        $title = "Горшки и кашпо ".$new_text." цвета";
+        $title = "Горшки и кашпо ".$new_text." цвета – купить с доставкой в Москве в интернет-магазине – Plantis";
+        if ( is_paged() ) {
+            $pageNum = get_query_var('paged');
+
+            $title .= " - Страница ".$pageNum;
+            return $title;
+        }
     }
     return $title;
 }
