@@ -252,7 +252,7 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
             $name = $term ->name;
             if($words_to_remove) {
                 foreach ($words_to_remove as $word) {
-                    $name = mb_ucfirst(str_replace($word,'',$name));
+                    $name = str_replace($word,'',$name);
                 }
             }
             $link = site_url().$link_base. $cat_slug.'/'.$term->slug;
