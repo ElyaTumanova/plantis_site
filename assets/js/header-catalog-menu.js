@@ -3,7 +3,7 @@ let headerMenuWrap = document.querySelector('.header__main-menu-wrap');
 let headerMenuItems = document.querySelectorAll('.header__main-menu-item');
 let subMenues = document.querySelectorAll('.header__main-submenu');
 let menuLinksWithImage = headerCatalogWrap.querySelectorAll('.header__main-submenu-item_image');
-console.log(menuLinksWithImage);
+
 function getCatImageAjax(catId) {
     // alert(catId)
     const data = new URLSearchParams();
@@ -76,8 +76,8 @@ headerMenuWrap.addEventListener('mouseleave', closeHeaderCatalog);
 menuLinksWithImage.forEach((el)=>{
     let catId = el.getAttribute('data-cat_id');
     if(catId) {
-        console.log(catId)
-        el.addEventListener('mouseenter',(evt)=>{getCatImageAjax(catId)})
+        //el.addEventListener('mouseenter',(evt)=>{getCatImageAjax(catId)})
+        el.addEventListener('click',(evt)=>{getCatImageAjax(catId)})
     }
 })
 

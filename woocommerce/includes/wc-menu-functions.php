@@ -40,7 +40,13 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
             }
             $link = site_url().$link_base. $cat_slug.'/'.$term->slug;
             ?>
-            <a class="header__main-submenu-item_image" data-cat_id = <?php echo $term->term_id?> href="<?php echo $link?>"><?php echo $name?></a>
+            <a 
+                class="header__main-submenu-item_image" 
+                data-cat_id = <?php echo $term->term_id?> 
+                href="<?php echo $link?>" 
+                target='_blank'>
+                <?php echo $name?>
+            </a>
             <?
         }
         ?>
