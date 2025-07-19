@@ -28,8 +28,8 @@ if ( ! defined( 'ABSPATH' ) ) {
             <nav id="site-navigation" class="main-navigation" role="navigation">
                 <div class="header__main-submenu" data-menu = "menu_item_plants">
                     <ul class="header__main-submenu_lvl1">
-                        <li class="header__main-submenu-item header__main-submenu-item_accent">
-                            <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">Комнатные растения</a>
+                        <li class="header__main-submenu-item">
+                            <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">Комнатные растения</a>
                         </li>
                         <li class="header__main-submenu-item">
                             <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-listvennye">Декоративно-лиственные</a>
@@ -121,8 +121,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </li>
                     </ul>
                     <ul class="header__main-submenu_lvl1">
-                        <li class="header__main-submenu-item header__main-submenu-item_accent">
-                            <a href="<?php echo site_url()?>/product-category/ukhod/">Всё для ухода</a>
+                        <li class="header__main-submenu-item">
+                            <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/ukhod/">Всё для ухода</a>
                         </li>
                         <li class="header__main-submenu-item">
                             <a href="<?php echo site_url()?>/product-category/ukhod/grunt">Грунт</a>
@@ -138,11 +138,11 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </div>
                 <div class="header__main-submenu" data-menu = "menu_item_gorshki">
                     <ul class="header__main-submenu_lvl1">
-                        <li class="header__main-submenu-item header__main-submenu-item_accent">
-                            <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/">Керамические горшки</a>
+                        <li class="header__main-submenu-item">
+                            <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/">Керамические горшки</a>
                         </li>
-                        <li class="header__main-submenu-item header__main-submenu-item_accent">
-                            <a href="<?php echo site_url()?>/product-tag/kashpo-s-avtopolivom/">Кашпо с автополивом</a>
+                        <li class="header__main-submenu-item">
+                            <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-tag/kashpo-s-avtopolivom/">Кашпо с автополивом</a>
                         </li>
                         <li class="header__main-submenu-item">
                             <p class="header__main-submenu-item_accent">По диаметру</p>
@@ -168,11 +168,11 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </li>
                     </ul>
                     <ul class="header__main-submenu_lvl1">
-                        <li class="header__main-submenu-item header__main-submenu-item_accent">
-                            <a href="<?php echo site_url()?>/product-category/kashpo-treez">Кашпо Treez</a>
+                        <li class="header__main-submenu-item">
+                            <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/kashpo-treez">Кашпо Treez</a>
                         </li>
                         <li class="header__main-submenu-item">
-                            <a class ="header__main-submenu-item_kashpo" href="<?php echo site_url()?>/product-category/kashpo-treez/treez-effectory">Treez Effectory</a>
+                            <a class ="header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/kashpo-treez/treez-effectory">Treez Effectory</a>
                             <div class="header__main-submenu-item_row">
                                 <?php $start = microtime(true); ?>
                                 <?php
@@ -191,7 +191,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             </div>
                         </li>
                         <li class="header__main-submenu-item">
-                            <a class ="header__main-submenu-item_kashpo" href="<?php echo site_url()?>/product-category/kashpo-treez/treez-ergo">Treez Ergo</a>
+                            <a class ="header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/kashpo-treez/treez-ergo">Treez Ergo</a>
                             <div class="header__main-submenu-item_row">
                                 <?php $start = microtime(true); ?>
                                 <?php
@@ -212,7 +212,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     </ul>
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
-                            <a class ="header__main-submenu-item_accent" href="<?php echo site_url()?>/product-category/kashpo-lechuza">Кашпо Lechuza</a>
+                            <a class ="header__main-submenu-item_accent header__main-submenu-item_link " href="<?php echo site_url()?>/product-category/kashpo-lechuza">Кашпо Lechuza</a>
                             <div class="header__main-submenu-item_row">
                                 <?php $start = microtime(true); ?>
                                 <?php
