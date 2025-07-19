@@ -230,10 +230,11 @@ function plnt_get_shiping_costs() {
 function get_primary_submenu($cat_slug,$link_base,$cat_name='',$words_to_remove = []) { 
     $term = get_term_by( 'slug', $cat_slug, 'product_cat' );
     $term_id = $term->term_id;
+    $term_name = $term->term_name;
     $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
     $terms = get_terms( $args ); 
     ?>
-    <a class ="header__main-submenu-item_link" href="<?php echo site_url().$link_base. $cat_slug.'/'?>"><?php echo $cat_name?></a>
+    <a class ="header__main-submenu-item_link" href="<?php echo site_url().$link_base. $cat_slug.'/'?>"><?php echo $term_name?></a>
     <div class="header__main-submenu-item_row">
         <?php
         foreach ($terms as $term) {
