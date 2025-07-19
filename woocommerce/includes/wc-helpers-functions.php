@@ -226,8 +226,8 @@ function plnt_get_shiping_costs() {
 }
 
 
- //example, $cat_slug = 'treez-effectory', $link_base = '/product-category/kashpo-treez/', $cat_name = 'Treez Effectory' to be removed
-function get_primary_submenu($cat_slug,$link_base,$cat_name='') { 
+ //example, $cat_slug = 'treez-effectory', $link_base = '/product-category/kashpo-treez/', $cat_name = 'Treez Effectory' for menu item, $words_to_remove - to be removed
+function get_primary_submenu($cat_slug,$link_base,$cat_name='',$words_to_remove = []) { 
     $term = get_term_by( 'slug', $cat_slug, 'product_cat' );
     $term_id = $term->term_id;
     $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
@@ -238,10 +238,11 @@ function get_primary_submenu($cat_slug,$link_base,$cat_name='') {
     <div class="header__main-submenu-item_row">
         <?php
         foreach ($terms as $term) {
-            if($cat_name<>'') {
-                $name = str_replace($cat_name.' ','',$term ->name);
-            } else {
-                $name = $term ->name;
+            $name = $term ->name;
+            if($words_to_remove) {
+                foreach ($words_to_remove as $word) {
+                    $name = str_replace($word,'',$name);
+                }
             }
             $link = site_url().$link_base. $cat_slug.'/'.$term->slug;
             ?>

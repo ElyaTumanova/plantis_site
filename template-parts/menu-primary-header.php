@@ -173,19 +173,19 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </li>
                         <li class="header__main-submenu-item">
                             <?php
-                                get_primary_submenu('treez-effectory','/product-category/kashpo-treez/','Treez Effectory');
+                                get_primary_submenu('treez-effectory','/product-category/kashpo-treez/','Treez Effectory',['Treez Effectory ']);
                             ?>
                         </li>
                         <li class="header__main-submenu-item">
                             <?php
-                                get_primary_submenu('treez-ergo','/product-category/kashpo-treez/','Treez Ergo');
+                                get_primary_submenu('treez-ergo','/product-category/kashpo-treez/','Treez Ergo', ['Treez Ergo ']);
                             ?>
                         </li>
                     </ul>
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
                             <?php
-                                get_primary_submenu('kashpo-lechuza','/product-category/kashpo-lechuza/','Кашпо Lechuza');
+                                get_primary_submenu('kashpo-lechuza','/product-category/kashpo-lechuza/','Кашпо Lechuza', ['Кашпо Lechuza ']);
                             ?>
                         </li>
                     </ul>
@@ -196,7 +196,6 @@ if ( ! defined( 'ABSPATH' ) ) {
                         global $plants_treez_cat_id;
                         $args = array( 'taxonomy' => 'product_cat', 'parent' => $plants_treez_cat_id );  
                         $terms = get_terms( $args ); 
-                        print_r($terms[0]->slug);
                         foreach($terms as $term) {
                             ?> 
                                 <ul class="header__main-submenu_lvl1">
