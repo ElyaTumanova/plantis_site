@@ -184,20 +184,6 @@ function plnt_catalog_grid_columns () {
 
 // // заголовок каталога 
 
-add_filter( 'woocommerce_page_title', 'plnt_woocommerce_page_title');
-
-function plnt_woocommerce_page_title($page_title) {
-	if ( is_paged() ) {
-		$pageNum = get_query_var('paged');
-
-		$page_title .= " - Страница ".$pageNum;
-		return $page_title;
-	}
-	else {
-		return $page_title;
-	}
-}
-
 // меняем название заголовка для shop
 //add_filter( "get_the_archive_title", "plnt_change_my_title" );
 function plnt_change_my_title( $title ){
@@ -216,6 +202,21 @@ function plnt_attribute_page_title($page_title) {
         $page_title = "Горшки и кашпо ".$new_text." цвета";
 		return $page_title;
     }
+	else {
+		return $page_title;
+	}
+}
+
+// заголовок для страниц пагинации
+add_filter( 'woocommerce_page_title', 'plnt_woocommerce_page_title');
+
+function plnt_woocommerce_page_title($page_title) {
+	if ( is_paged() ) {
+		$pageNum = get_query_var('paged');
+
+		$page_title .= " - Страница ".$pageNum;
+		return $page_title;
+	}
 	else {
 		return $page_title;
 	}
