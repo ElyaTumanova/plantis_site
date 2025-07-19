@@ -31,7 +31,6 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <li class="header__main-submenu-item">
                             <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">
                                 Комнатные растения
-                                <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.707 16.707a1 1 0 0 1-1.414 0L9 10.414V12a1 1 0 0 1-2 0V8a1 1 0 0 1 1-1h4a1 1 0 0 1 0 2h-1.586l6.293 6.293a1 1 0 0 1 0 1.414z" style="fill:#ff8e31" data-name="Up Left"/></svg> -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z"/></svg>
                             </a>
                             
@@ -127,7 +126,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                     </ul>
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
-                            <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/ukhod/">Всё для ухода</a>
+                            <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/ukhod/">
+                                Всё для ухода
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z"/></svg>
+                            </a>
                         </li>
                         <li class="header__main-submenu-item">
                             <a href="<?php echo site_url()?>/product-category/ukhod/grunt">Грунт</a>
@@ -144,10 +146,16 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <div class="header__main-submenu" data-menu = "menu_item_gorshki">
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
-                            <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/">Керамические горшки</a>
+                            <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/">
+                                Керамические горшки 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z"/></svg>
+                            </a>
                         </li>
                         <li class="header__main-submenu-item">
-                            <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-tag/kashpo-s-avtopolivom/">Кашпо с автополивом</a>
+                            <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-tag/kashpo-s-avtopolivom/">
+                                Кашпо с автополивом
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z"/></svg>
+                            </a>
                         </li>
                         <li class="header__main-submenu-item">
                             <p class="header__main-submenu-item_accent">По диаметру</p>
@@ -174,7 +182,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                     </ul>
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
-                            <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/kashpo-treez">Кашпо Treez</a>
+                            <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/kashpo-treez">
+                                Кашпо Treez
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z"/></svg>
+                            </a>
                         </li>
                         <li class="header__main-submenu-item">
                             <?php
