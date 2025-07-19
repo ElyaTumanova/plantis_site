@@ -178,20 +178,6 @@ if ( ! defined( 'ABSPATH' ) ) {
                             По назначению
                         </li>                       -->
                     </ul>
-                    <!-- <ul class="header__main-submenu_lvl1">
-                        <li class="header__main-submenu-item">
-                            <p class="header__main-submenu-item_accent">Популярные цвета</p>
-                            <div class="header__main-submenu-item_row">
-                                <a href="<?php //echo site_url()?>/attribute/color/belyj/">Белый</a>
-                                <a href="<?php //echo site_url()?>/attribute/color/chyornyj/">Чёрный</a>
-                                <a href="<?php //echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
-                                <a href="<?php //echo site_url()?>/attribute/color/seryj/">Серый</a>
-                                <a href="<?php //echo site_url()?>/attribute/color/zolotoj/">Золотой</a>
-                                <a href="<?php //echo site_url()?>/attribute/color/serebro/">Серебро</a>
-                                <a href="<?php //echo site_url()?>/attribute/color/terrakotovyj/">Терракотовый</a>
-                            </div>
-                        </li>
-                    </ul> -->
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
                             <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/kashpo-treez">
@@ -237,6 +223,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <?php
                         }
                     ?> 
+                    <img class="header__main-submenu-img" loading="lazy" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
                 </div>
                 <div class="header__main-submenu" data-menu = "menu_item_service">
                     <ul class="header__main-submenu_lvl1">
