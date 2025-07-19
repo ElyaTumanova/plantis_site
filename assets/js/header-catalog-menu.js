@@ -37,8 +37,8 @@ function getCatImageAjax(event, catId) {
     });
 
     console.log(event.target);
-    console.log(event.target.closest('.header__main-submenu'));
-    //let menuImage = headerCatalogWrap.querySelector('.')
+    let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
+    console.log(menuImage);
 }
 
 function openHeaderCatalog () {
