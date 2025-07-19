@@ -23,9 +23,9 @@ function plnt_dev_functions() {
     $args = array( 'taxonomy' => 'product_cat', 'parent' => $plants_treez_cat_id );  
     $terms = get_terms( $args ); 
     //print_r($terms);
-    $category_thumbnail = get_term_meta(137, 'thumbnail', true);
+    $category_thumbnail = get_term_meta(137);
     //$image = wp_get_attachment_url($category_thumbnail);
-    echo($category_thumbnail);
+    print_r($category_thumbnail);
     //echo($image);
 	// $cats_for_check = [$plants_cat_id, $gorshki_cat_id, $ukhod_cat_id,$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
 	// $cats_for_include = [];
