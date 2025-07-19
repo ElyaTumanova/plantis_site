@@ -47,7 +47,7 @@ headerMenuWrap.addEventListener('mouseleave', closeHeaderCatalog);
 menuLinksWithImage.forEach((el)=>{
     let catId = el.getAttribute('data-cat_id');
     if(catId) {
-        el.addEventListener('mouseenter',(evt)=>{getCatImageAjax(catId)})
+        el.addEventListener('click',(evt)=>{getCatImageAjax(catId)})
     }
 })
 
