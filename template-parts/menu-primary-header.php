@@ -162,12 +162,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/malenkie-do-17sm">Маленькие (До 17см)</a>
                             <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/srednie-ot-18-do-25sm">Средние (От 18 до 25см)</a>
                             <a href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/bolshie-ot-26sm">Большие (От 26см)</a>
-                        <!-- <li class="header__main-submenu-item header__main-submenu-item_accent">
-                            По назначению
-                        </li>                       -->
-                    </ul>
-                    <ul class="header__main-submenu_lvl1">
-                        <li class="header__main-submenu-item">
+                         <li class="header__main-submenu-item">
                             <p class="header__main-submenu-item_accent">Популярные цвета</p>
                             <div class="header__main-submenu-item_row">
                                 <a href="<?php echo site_url()?>/attribute/color/belyj/">Белый</a>
@@ -179,7 +174,24 @@ if ( ! defined( 'ABSPATH' ) ) {
                                 <a href="<?php echo site_url()?>/attribute/color/terrakotovyj/">Терракотовый</a>
                             </div>
                         </li>
+                        <!-- <li class="header__main-submenu-item header__main-submenu-item_accent">
+                            По назначению
+                        </li>                       -->
                     </ul>
+                    <!-- <ul class="header__main-submenu_lvl1">
+                        <li class="header__main-submenu-item">
+                            <p class="header__main-submenu-item_accent">Популярные цвета</p>
+                            <div class="header__main-submenu-item_row">
+                                <a href="<?php //echo site_url()?>/attribute/color/belyj/">Белый</a>
+                                <a href="<?php //echo site_url()?>/attribute/color/chyornyj/">Чёрный</a>
+                                <a href="<?php //echo site_url()?>/attribute/color/bezhevyy/">Бежевый</a>
+                                <a href="<?php //echo site_url()?>/attribute/color/seryj/">Серый</a>
+                                <a href="<?php //echo site_url()?>/attribute/color/zolotoj/">Золотой</a>
+                                <a href="<?php //echo site_url()?>/attribute/color/serebro/">Серебро</a>
+                                <a href="<?php //echo site_url()?>/attribute/color/terrakotovyj/">Терракотовый</a>
+                            </div>
+                        </li>
+                    </ul> -->
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
                             <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/kashpo-treez">
