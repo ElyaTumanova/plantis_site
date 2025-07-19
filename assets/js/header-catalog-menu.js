@@ -21,7 +21,7 @@ function getCatImageAjax(catId) {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    return response.json();
+    return response;
   })
   .then(result => {
     console.debug('✅ AJAX success:', result);
