@@ -209,7 +209,8 @@ add_filter( 'woocommerce_page_title', 'plnt_attribute_page_title');
 
 function plnt_attribute_page_title($page_title) {
     if ( is_tax('pa_color') ) {
-    $page_title = "Горшки и кашпо цвета ".$page_title;
+        $new_text = plnt_get_breadcrumb_text($page_title);
+        $page_title = "Горшки и кашпо ".$new_text." цвета";
 		return $page_title;
     }
 	else {
@@ -232,6 +233,20 @@ function plnt_change_breadcrumb_title( $links ) {
 	return $new_links;
 }
 
+function plnt_get_breadcrumb_text($text) {
+    $new_text;
+    switch($text) {
+        case 'Серебро':
+            $new_text = 'серебряного';
+            break;
+        case 'Золотой':
+            $new_text = 'золотого';
+            break;
+        default:
+            $new_text = str_replace('ый','ого',$text);
+    }
+    return $new_text;
+}
 
 // описание категории и преимущества в каталоге
 
