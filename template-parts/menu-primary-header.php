@@ -176,17 +176,16 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <div class="header__main-submenu-item_row">
                                 <?php $start = microtime(true); ?>
                                 <?php
-                                    $term = get_term_by( 'slug', 'treez-effectory', 'product_cat' );
-                                    $term_id = $term->term_id;
-                                    $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
-                                    $terms = get_terms( $args ); 
-                                    foreach ($terms as $term) {
-                                        $name = str_replace('Treez Effectory ','',$term ->name);
-                                        $link = site_url().'/product-category/kashpo-treez/treez-effectory/'.$term->slug;
-                                        ?>
-                                        <a href="<?php echo $link?>"><?php echo $name?></a>
-                                        <?
-                                    }
+                                    get_primary_submenu('treez-effectory','/product-category/kashpo-treez/','Treez Effectory ');
+                                    // $term = get_term_by( 'slug', 'treez-effectory', 'product_cat' );
+                                    // $term_id = $term->term_id;
+                                    // $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
+                                    // $terms = get_terms( $args ); 
+                                    // foreach ($terms as $term) {
+                                    //     $name = str_replace('Treez Effectory ','',$term ->name);
+                                    //     $link = site_url().'/product-category/kashpo-treez/treez-effectory/'.$term->slug;
+                          
+                                    // }
                                 ?>
                             </div>
                         </li>

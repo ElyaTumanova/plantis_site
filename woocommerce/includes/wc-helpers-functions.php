@@ -224,3 +224,23 @@ function plnt_get_shiping_costs() {
 
 	return $shipping_costs;
 }
+
+
+ //example, $cat_slug = 'treez-effectory', $link_base = '/product-category/kashpo-treez/', $cat_name = 'Treez Effectory ' to be removed
+function get_primary_submenu($cat_slug,$link_base,$cat_name='') { 
+    $term = get_term_by( 'slug', $cat_slug, 'product_cat' );
+    $term_id = $term->term_id;
+    $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
+    $terms = get_terms( $args ); 
+    foreach ($terms as $term) {
+        if($cat_name<>'') {
+            $name = str_replace($cat_name,'',$term ->name);
+        } else {
+            $name = $term ->name;
+        }
+        $link = site_url().$link_base.$term->slug;
+        ?>
+        <a href="<?php echo $link?>"><?php echo $name?></a>
+        <?
+    }
+}
