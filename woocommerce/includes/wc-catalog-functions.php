@@ -209,7 +209,7 @@ add_filter( 'woocommerce_page_title', 'plnt_attribute_page_title');
 
 function plnt_attribute_page_title($page_title) {
     if ( is_tax('pa_color') ) {
-        $new_text = plnt_get_breadcrumb_text($page_title);
+        $new_text = plnt_get_color_name_tltle($page_title);
         $page_title = "Горшки и кашпо ".$new_text." цвета";
 		return $page_title;
     }
@@ -225,7 +225,7 @@ function plnt_change_breadcrumb_title( $links ) {
     foreach($links as $link) {
         if(array_key_exists('taxonomy', $link)){
             if ($link['taxonomy'] == 'pa_color') {
-                $new_text = plnt_get_breadcrumb_text($link['text']);
+                $new_text = plnt_get_color_name_tltle($link['text']);
                 $link['text'] = "Горшки и кашпо ".$new_text." цвета";
             }
         }
@@ -234,7 +234,7 @@ function plnt_change_breadcrumb_title( $links ) {
 	return $new_links;
 }
 
-function plnt_get_breadcrumb_text($text) {
+function plnt_get_color_name_tltle($text) {
     $new_text;
     switch($text) {
         case 'Серебро':
