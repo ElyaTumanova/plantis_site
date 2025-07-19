@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 ?>
-
+<?php $start = microtime(true); ?>
 <div class="header__main-menu-wrap">
     <div class="container">
         <nav class="header__main-menu-item" data-menu = "menu_item_plants">
@@ -172,34 +172,21 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/kashpo-treez">Кашпо Treez</a>
                         </li>
                         <li class="header__main-submenu-item">
-                            <a class ="header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/kashpo-treez/treez-effectory">Treez Effectory</a>
-                            <div class="header__main-submenu-item_row">
-                                <?php $start = microtime(true); ?>
-                                <?php
-                                    get_primary_submenu('treez-effectory','/product-category/kashpo-treez/','Treez Effectory');
-                                ?>
-                            </div>
+                            <?php
+                                get_primary_submenu('treez-effectory','/product-category/kashpo-treez/','Treez Effectory');
+                            ?>
                         </li>
                         <li class="header__main-submenu-item">
-                            <!-- <a class ="header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/kashpo-treez/treez-ergo">Treez Ergo</a>
-                            <div class="header__main-submenu-item_row"> -->
-                                <?php $start = microtime(true); ?>
-                                <?php
-                                    get_primary_submenu('treez-ergo','/product-category/kashpo-treez/','Treez Ergo');
-                                ?>
-                            <!-- </div> -->
+                            <?php
+                                get_primary_submenu('treez-ergo','/product-category/kashpo-treez/','Treez Ergo');
+                            ?>
                         </li>
                     </ul>
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
-                            <a class ="header__main-submenu-item_accent header__main-submenu-item_link " href="<?php echo site_url()?>/product-category/kashpo-lechuza">Кашпо Lechuza</a>
-                            <div class="header__main-submenu-item">
-                                <?php $start = microtime(true); ?>
-                                <?php
-                                    //get_primary_submenu('kashpo-lechuza','/product-category/kashpo-lechuza/','Кашпо Lechuza');
-                                ?>
-                                <?php echo "<!-- Timing: primary menu = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
-                            </div>
+                            <?php
+                                get_primary_submenu('kashpo-lechuza','/product-category/kashpo-lechuza/','Кашпо Lechuza');
+                            ?>
                         </li>
                     </ul>
                     <img class="header__main-submenu-img" loading="lazy" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
@@ -211,3 +198,5 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
     </div>	
 </div>
+
+ <?php echo "<!-- Timing: primary menu = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>

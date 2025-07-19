@@ -243,7 +243,7 @@ function get_primary_submenu($cat_slug,$link_base,$cat_name='') {
             } else {
                 $name = $term ->name;
             }
-            $link = site_url().$link_base.'/'. $cat_slug.'/'.$term->slug;
+            $link = site_url().$link_base. $cat_slug.'/'.$term->slug;
             ?>
             <a href="<?php echo $link?>"><?php echo $name?></a>
             <?
