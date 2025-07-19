@@ -60,7 +60,9 @@ add_action( 'wp_ajax_nopriv_get_menu_cats_image', 'plnt_get_menu_cats_image' );
 function plnt_get_menu_cats_image() {
     $cat_id = sanitize_text_field( $_POST['cat_id'] ?? '' );
     $category_thumbnail = get_term_meta($cat_id, 'thumbnail_id', true);
-    $image = wp_get_attachment_url($category_thumbnail);
+    ob_start();
+    wp_get_attachment_url($category_thumbnail);
+    $response = ob_get_clean();
     wp_send_json($image);
 	die();
 
