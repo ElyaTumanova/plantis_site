@@ -58,9 +58,18 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
 add_action( 'wp_ajax_get_menu_cats_image', 'plnt_get_menu_cats_image' );
 add_action( 'wp_ajax_nopriv_get_menu_cats_image', 'plnt_get_menu_cats_image' );
 function plnt_get_menu_cats_image() {
-    $cat_id = sanitize_text_field( $_POST['cat_id'] ?? '' );
-    $category_thumbnail = get_term_meta($cat_id, 'thumbnail_id', true);
-    echo wp_get_attachment_url($category_thumbnail);
-	die();
+    $cat_id = isset($_POST['cat_id']) ? intval($_POST['cat_id']) : 0;
 
+    if ( ! $cat_id ) {
+        wp_send_json_error('Invalid category ID');
+    }
+
+    $thumbnail_id = get_term_meta( $cat_id, 'thumbnail_id', true );
+    $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
+
+    if ( $thumbnail_url ) {
+        wp_send_json_success( [ 'image_url' => esc_url( $thumbnail_url ) ] );
+    } else {
+        wp_send_json_error('Image not found');
+    }
 }
