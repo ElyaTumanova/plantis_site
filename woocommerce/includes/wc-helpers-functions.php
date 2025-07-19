@@ -241,7 +241,7 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
         }
     }
 
-    $category_thumbnail = get_term_meta(177, 'thumbnail_id', true);
+    $category_thumbnail = get_term_meta(137, 'thumbnail_id', true);
     $image = wp_get_attachment_url($category_thumbnail);
     ?>
     
