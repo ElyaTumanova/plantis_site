@@ -3,38 +3,42 @@ let headerMenuWrap = document.querySelector('.header__main-menu-wrap');
 let headerMenuItems = document.querySelectorAll('.header__main-menu-item');
 let subMenues = document.querySelectorAll('.header__main-submenu');
 let menuLinksWithImage = headerCatalogWrap.querySelectorAll('.header__main-submenu-item_image');
+let menuImage = headerCatalogWrap.querySelector('.')
 
-function getCatImageAjax(catId) {
+function getCatImageAjax(event, catId) {
     console.log(catId)
     const data = new URLSearchParams();
     data.append('action', 'get_menu_cats_image');
     data.append('cat_id', catId);
 
     fetch('/wp-admin/admin-ajax.php', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: data
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.json();
-  })
-  .then(result => {
-    console.debug('✅ AJAX success:', result);
-    if (result.success) {
-      console.log(result.data.image_url);
-    }
-  })
-  .catch(error => {
-    console.error('❌ AJAX error:', error);
-  })
-  .finally(() => {
-    console.debug('⚙️ AJAX complete');
-  });
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: data
+    })
+    .then(response => {
+        if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(result => {
+        console.debug('✅ AJAX success:', result);
+        if (result.success) {
+        console.log(result.data.image_url);
+        }
+    })
+    .catch(error => {
+        console.error('❌ AJAX error:', error);
+    })
+    .finally(() => {
+        console.debug('⚙️ AJAX complete');
+    });
+
+    console.log(event);
+    //let menuImage = headerCatalogWrap.querySelector('.')
 }
 
 function openHeaderCatalog () {
@@ -77,7 +81,7 @@ menuLinksWithImage.forEach((el)=>{
     let catId = el.getAttribute('data-cat_id');
     if(catId) {
         //el.addEventListener('mouseenter',(evt)=>{getCatImageAjax(catId)})
-        el.addEventListener('click',(evt)=>{getCatImageAjax(catId)})
+        el.addEventListener('click',(evt)=>{getCatImageAjax(evt, catId)})
     }
 })
 
