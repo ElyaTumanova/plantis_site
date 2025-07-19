@@ -177,15 +177,6 @@ if ( ! defined( 'ABSPATH' ) ) {
                                 <?php $start = microtime(true); ?>
                                 <?php
                                     get_primary_submenu('treez-effectory','/product-category/kashpo-treez/','Treez Effectory ');
-                                    // $term = get_term_by( 'slug', 'treez-effectory', 'product_cat' );
-                                    // $term_id = $term->term_id;
-                                    // $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
-                                    // $terms = get_terms( $args ); 
-                                    // foreach ($terms as $term) {
-                                    //     $name = str_replace('Treez Effectory ','',$term ->name);
-                                    //     $link = site_url().'/product-category/kashpo-treez/treez-effectory/'.$term->slug;
-                          
-                                    // }
                                 ?>
                             </div>
                         </li>
@@ -194,17 +185,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <div class="header__main-submenu-item_row">
                                 <?php $start = microtime(true); ?>
                                 <?php
-                                    $term = get_term_by( 'slug', 'treez-ergo', 'product_cat' );
-                                    $term_id = $term->term_id;
-                                    $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
-                                    $terms = get_terms( $args ); 
-                                    foreach ($terms as $term) {
-                                        $name = str_replace('Treez Ergo ','',$term ->name);
-                                        $link = site_url().'/product-category/kashpo-treez/treez-ergo/'.$term->slug;
-                                        ?>
-                                        <a href="<?php echo $link?>"><?php echo $name?></a>
-                                        <?
-                                    }
+                                    get_primary_submenu('treez-ergo','/product-category/kashpo-treez/','Treez Ergo ');
                                 ?>
                             </div>
                         </li>
@@ -215,17 +196,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <div class="header__main-submenu-item">
                                 <?php $start = microtime(true); ?>
                                 <?php
-                                    $term = get_term_by( 'slug', 'kashpo-lechuza', 'product_cat' );
-                                    $term_id = $term->term_id;
-                                    $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
-                                    $terms = get_terms( $args ); 
-                                    foreach ($terms as $term) {
-                                        $name = str_replace('Кашпо Lechuza ','',$term ->name);
-                                        $link = site_url().'/product-category/kashpo-lechuza/'.$term->slug;
-                                        ?>
-                                        <a href="<?php echo $link?>"><?php echo $name?></a>
-                                        <?
-                                    }
+                                    get_primary_submenu('kashpo-lechuza','/product-category/kashpo-lechuza/','Кашпо Lechuza ');
                                 ?>
                                 <?php echo "<!-- Timing: primary menu = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
                             </div>
