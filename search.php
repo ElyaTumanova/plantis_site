@@ -42,9 +42,9 @@ get_header(); ?>
             ?>
 
             <div class="catalog__grid">
-                <div class="catalog__sidebar">
-                    <?php plnt_catalog_menu() ?>
-                </div>
+                <!-- <div class="catalog__sidebar">
+                    <?php //plnt_catalog_menu() ?>
+                </div> -->
                 <div class="catalog__products-wrap">
                     <ul class="products columns-2"> 
                         <?php
