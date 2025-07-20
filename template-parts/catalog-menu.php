@@ -16,5 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) {
         </ul>
     </li>
     <?php get_catalog_submenu('kashpo-lechuza','/product-category/kashpo-lechuza/',['Кашпо Lechuza ']);?>
+    <?php get_catalog_submenu('ukhod','/product-category/ukhod/');?>
     </ul>
 </nav>
