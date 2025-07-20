@@ -8,11 +8,9 @@ let imageLinks;
 
 function getCatImage(event, catId) {
     let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
-
-    console.log(menuImage);
-    console.log(catId);
     if (imageLinks) {
         let imageLink = imageLinks.catId;
+        console.log(imageLink);
         if(imageLink) {
             menuImage.setAttribute('src',imageLink);
         }
