@@ -45,7 +45,7 @@ function getCatImagesAjax () {
         console.debug('✅ AJAX success:', result);
         if (result.success) {
             imageLinks = result.data.image_url;
-            console.log(imageLinks);
+            console.log(imageLinks.id_137);
         }
     })
     .catch(error => {
