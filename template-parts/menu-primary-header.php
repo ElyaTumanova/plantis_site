@@ -2,6 +2,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+
+$arrow_icon = carbon_get_theme_option('arrow_icon');
 ?>
 <?php $start = microtime(true); ?>
 <div class="header__main-menu-wrap">
@@ -31,6 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <li class="header__main-submenu-item">
                             <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">
                                 Комнатные растения
+                                <?php echo $arrow_icon?>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path d="M7 17L17 7M7 7h10v10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>

@@ -31,6 +31,8 @@ Container::make('theme_options', 'Настройки темы')
 				->set_rows( 6 ),
 			 Field::make( 'textarea', 'close_icon', 'Close icon' )
 				->set_rows( 6 ),
+            Field::make( 'textarea', 'arrow_icon', 'Arrow icon' )
+                ->set_rows( 6 ),
 			 Field::make( 'text', 'site_title', 'Site title in header' )
          ))
 		 ->add_tab('Main Page Banners', array(
