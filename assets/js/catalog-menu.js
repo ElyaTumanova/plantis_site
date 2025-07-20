@@ -3,9 +3,9 @@ let catalogMenuDiv = document.querySelector('.catalog__sidebar-cats');
 let tempMenu = document.querySelectorAll('.catalog__sidebar-temp');
 let tempMenuItems = document.querySelectorAll('.catalog__sidebar-temp li');
 
-tempMenuItems.forEach(element => {
-    element.addEventListener('click',plntAjaxShowCatalogMenu,{ once: true })
-});
+// tempMenuItems.forEach(element => {
+//     element.addEventListener('click',plntAjaxShowCatalogMenu,{ once: true })
+// });
 
 
 function plntAjaxShowCatalogMenu(event) {
@@ -33,19 +33,17 @@ function plntAjaxShowCatalogMenu(event) {
 
 
 //раскрывает пункты меню в категориях на страницах каталога
-function setCatalogDropdown() {
-  const dropdownCatalog = document.querySelectorAll('.catalog__dropdown');
 
-  dropdownCatalog.forEach((el) => {
-    const menu = el.querySelector('.catalog__dropdown-menu');
-    const btn = el.querySelector('.menu__dropdown-arrow');
-    btn.addEventListener('click', function (event) {
-      menu.classList.toggle('catalog__dropdown-menu_show');
-      el.classList.toggle('catalog__dropdown_open');
-      event.stopPropagation();
-    })
-  })
-}
+const dropdownCatalog = document.querySelectorAll('.catalog__dropdown');
 
+dropdownCatalog.forEach((el) => {
+const menu = el.querySelector('.catalog__dropdown-menu');
+const btn = el.querySelector('.menu__dropdown-arrow');
+btn.addEventListener('click', function (event) {
+    menu.classList.toggle('catalog__dropdown-menu_show');
+    el.classList.toggle('catalog__dropdown_open');
+    event.stopPropagation();
+})
+})
 
 
