@@ -280,52 +280,55 @@ function swiper_catalog_card_imgs_init () {
 /*--------------------------------------------------------------
 # Popular slider
 --------------------------------------------------------------*/
-
-const swiper_popular_slider = new Swiper('.popular-slider-swiper', {
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        type: 'progressbar'
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    // scrollbar: {
-    //     el: '.swiper-scrollbar',
-    //     draggable: true,
-    // },
-    slidesPerView: 5,
-    slidesPerGroup: 1,
-    spaceBetween: 30,
-    loop: true,
-    freeMode: true,
-    breakpoints: {
-        320: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-            navigation: {
-                enabled: false,
-            },
-            freeMode: true,
+function swiper_popular_slider_init() {
+    console.log(swiper_popular_slider_init)
+    swiper_popular_slider = new Swiper('.popular-slider-swiper', {
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            type: 'progressbar'
         },
-        768: {
-            slidesPerView: 4,
-            spaceBetween: 10,
-            navigation: {
-                enabled: true,
-            },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
         },
-        1024: {
-            slidesPerView: 5,
-            spaceBetween: 30,
-            navigation: {
-                enabled: true,
+        // scrollbar: {
+        //     el: '.swiper-scrollbar',
+        //     draggable: true,
+        // },
+        slidesPerView: 5,
+        slidesPerGroup: 1,
+        spaceBetween: 30,
+        loop: true,
+        freeMode: true,
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+                navigation: {
+                    enabled: false,
+                },
+                freeMode: true,
             },
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 10,
+                navigation: {
+                    enabled: true,
+                },
+            },
+            1024: {
+                slidesPerView: 5,
+                spaceBetween: 30,
+                navigation: {
+                    enabled: true,
+                },
+            }
         }
-    }
-});
+    });
+}
 
+swiper_popular_slider_init();
 
 /*--------------------------------------------------------------
 # About Us

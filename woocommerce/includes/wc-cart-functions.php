@@ -225,15 +225,6 @@ function plnt_update_mini_cart() {
 }
 add_filter( 'wp_ajax_nopriv_plnt_update_mini_cart', 'plnt_update_mini_cart' );
 add_filter( 'wp_ajax_plnt_update_mini_cart', 'plnt_update_mini_cart' );
-//
-
-// function plnt_update_header_cart_count() {
-// 	echo wp_kses_data(WC()->cart->get_cart_contents_count());
-// 	die();
-// }
-// add_filter( 'wp_ajax_nopriv_plnt_update_header_cart_count', 'plnt_update_header_cart_count' );
-// add_filter( 'wp_ajax_plnt_update_header_cart_count', 'plnt_update_header_cart_count' );
-
 
 
 /*--------------------------------------------------------------

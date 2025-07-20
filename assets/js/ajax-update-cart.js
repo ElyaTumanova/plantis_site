@@ -186,5 +186,6 @@ jQuery(function($){
 		swiper_backorder_crossells_init();
 		backorderCrossellInit();
 		plntAjaxGetWishMiniCart();
+        swiper_popular_slider_init();
 	});
 })
