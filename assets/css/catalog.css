@@ -620,6 +620,7 @@
 .product__image-slider-wrap img {
     border: var(--background) 1px solid;
     box-sizing: border-box;
+    border-radius: 35px;
 }
 /*--------------------------------------------------------------
 # Upsells & Cross sells in Card
@@ -647,6 +648,10 @@
     right: 10px;
     width: 40px;
     height: 40px;
+}
+
+.card__sliders-wrap img {
+    border-radius: 25px;
 }
 
 .cross-upsells-swiper .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, .cross-upsells-swiper .yith-wcwl-add-to-wishlist a.delete_item>img, .cross-upsells-swiper .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
@@ -725,8 +730,8 @@
 
 /* кнопка добавить в корзину */
 .card__sliders-wrap .add_to_cart_from {
-    margin-top: -40px;
-    margin-right: 13px;
+    margin-top: -49px;
+    margin-right: 11px;
     margin-left: auto;
     order: -1;
     z-index: 2;
@@ -1056,8 +1061,8 @@
 --------------------------------------------------------------*/
 
 .product-slider-wrap .add_to_cart_from {
-    margin-top: -40px;
-    margin-right: 3px;
+    margin-top: -49px;
+    margin-right: 5px;
     margin-left: auto;
     order: -1;
     z-index: 2;
@@ -1112,7 +1117,7 @@
     z-index: 10;
     margin: 0;
     top: 10px;
-    right: 3px;
+    right: 5px;
     left: auto !important;
     width: 40px;
     height: 40px;
@@ -1127,6 +1132,10 @@
 .product-slider-wrap .sale_badge {
     font-size: 13px;
     padding: 3px 5px;
+}
+
+.product-slider-wrap img {
+    border-radius: 25px;
 }
 
 /* .product-slider-wrap .sale_badge .sale_badge-skidka{
