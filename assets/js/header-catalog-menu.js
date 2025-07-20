@@ -12,7 +12,7 @@ let timerId;
 function openHeaderCatalog () {
     timerId = setTimeout(() => {
         headerCatalogWrap.classList.add('header__menu_open');
-    }, 1000)
+    }, 500)
 }
 
 function closeHeaderCatalog () {
