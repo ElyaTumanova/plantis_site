@@ -3,7 +3,7 @@ let headerMenuWrap = document.querySelector('.header__main-menu-wrap');
 let headerMenuItems = document.querySelectorAll('.header__main-menu-item');
 let subMenues = document.querySelectorAll('.header__main-submenu');
 let imageCatId = [];
-//let menuLinksWithImage = headerCatalogWrap.querySelectorAll('.header__main-submenu-item_image');
+let menuLinksWithImage = headerCatalogWrap.querySelectorAll('.header__main-submenu-item_image');
 
 function getCatImageAjax(event, catId) {
     let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
@@ -53,7 +53,6 @@ function showSubmenu(event) {
     let menu = event.target.getAttribute('data-menu');
     let menuSubMenu = document.querySelector(`.header__main-submenu[data-menu='${menu}']`);
     menuSubMenu.classList.add('header__main-submenu_show');
-    let menuLinksWithImage = menuSubMenu.querySelectorAll('.header__main-submenu-item_image');
     menuLinksWithImage.forEach((link)=>{
         imageCatId.push(link.getAttribute('data-cat_id'));
     })
