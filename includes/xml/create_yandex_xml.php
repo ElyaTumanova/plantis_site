@@ -124,13 +124,14 @@ function create_yandex_xml_btn () {
             global $delivery_outMKAD;
             $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
             $urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_large');
+            $large_markup_delivery_out_mkad = carbon_get_theme_option('large_markup_delivery_out_mkad');
             $shipping_costs = plnt_get_shiping_costs();
             $in_mkad = $shipping_costs[$delivery_inMKAD];
             $out_mkad = $shipping_costs[$delivery_outMKAD];
             $out_mkad_urg = floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery));
             
-                $out_mkad_large = floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad));
-                $out_mkad_urg_large = floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large));
+            $out_mkad_large = floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad));
+            $out_mkad_urg_large = floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large));
 
             $yandex_xml .= 
             "<delivery-options>
