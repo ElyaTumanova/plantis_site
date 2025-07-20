@@ -123,10 +123,14 @@ function create_yandex_xml_btn () {
             global $delivery_inMKAD;
             global $delivery_outMKAD;
             $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
+            $urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_large');
             $shipping_costs = plnt_get_shiping_costs();
             $in_mkad = $shipping_costs[$delivery_inMKAD];
             $out_mkad = $shipping_costs[$delivery_outMKAD];
             $out_mkad_urg = floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery));
+            
+                $out_mkad_large = floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad));
+                $out_mkad_urg_large = floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large));
 
             $yandex_xml .= 
             "<delivery-options>
@@ -231,7 +235,6 @@ function create_yandex_xml_btn () {
                     </delivery-options>
                     ";
                 }
-
                 //Название и описание
                 $yandex_xml .= "<name>".htmlspecialchars($allproduct->post_title)."</name>
                 <description><![CDATA['".htmlspecialchars(strip_tags($allproduct->post_content))."]]></description>
