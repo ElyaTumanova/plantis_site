@@ -46,8 +46,38 @@ function getCatImagesAjax () {
         imageCatId.push(link.getAttribute('data-cat_id'));
         console.log(link.getAttribute('data-cat_id'));
     })
-    console.log(menuLinksWithImage);
-    console.log(imageCatId);
+
+    const data = new URLSearchParams();
+    data.append('action', 'get_menu_cats_image');
+    data.append('cat_id', imageCatId);
+
+    fetch('/wp-admin/admin-ajax.php', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: data
+    })
+    .then(response => {
+        if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(result => {
+        console.debug('✅ AJAX success:', result);
+        if (result.success) {
+            console.log(result.data.test);
+            //menuImage.setAttribute('src',result.data.image_url);
+        }
+    })
+    .catch(error => {
+        console.error('❌ AJAX error:', error);
+    })
+    .finally(() => {
+        console.debug('⚙️ AJAX complete');
+    });
+
 }
 
 function openHeaderCatalog () {
@@ -86,15 +116,15 @@ headerMenuItems.forEach(menu => {
 
 headerMenuWrap.addEventListener('mouseleave', closeHeaderCatalog);
 
-menuLinksWithImage.forEach((el)=>{
-    let catId = el.getAttribute('data-cat_id');
-    if(catId) {
-        el.addEventListener('mouseenter',(evt)=>{getCatImageAjax(evt,catId)})
-        el.addEventListener('mouseleave', (evt)=>{getDefaultImage(evt)})
-    }
-})
+// menuLinksWithImage.forEach((el)=>{
+//     let catId = el.getAttribute('data-cat_id');
+//     if(catId) {
+//         el.addEventListener('mouseenter',(evt)=>{getCatImageAjax(evt,catId)})
+//         el.addEventListener('mouseleave', (evt)=>{getDefaultImage(evt)})
+//     }
+// })
 
- document.addEventListener('DOMContentLoaded',getCatImagesAjax,{once:true});
+document.addEventListener('DOMContentLoaded',getCatImagesAjax,{once:true});
 
 function getDefaultImage(event) {
     let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
