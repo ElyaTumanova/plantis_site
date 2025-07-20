@@ -189,3 +189,7 @@ jQuery(function($){
         swiper_popular_slider_init();
 	});
 })
+
+jQuery(document.body).on('wc_update_cart', function() {
+    console.log('Cart was updated (via JS event)');
+});
