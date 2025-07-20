@@ -36,6 +36,7 @@ if($site === 'https://plantis-shop.ru') {
 	$peresadka_cat_id = 546; //ok
 	$plants_treez_cat_id = 17; //ok
 	$lechuza_cat_id = 265; //ok
+	$uncategorized_cat_id = 466; //ok
 	
 	$tags_podarki = array(
         420,

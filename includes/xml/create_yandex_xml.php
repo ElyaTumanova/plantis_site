@@ -18,6 +18,7 @@ function create_yandex_xml_btn () {
             global $lechuza_cat_id;
             global $misc_cat_id;
             global $peresadka_cat_id;
+            global $uncategorized_cat_id;
             $yandex_xml = "<?xml version='1.0' encoding='UTF-8'?>
             <yml_catalog date='".date('Y-m-d H:i')."'>
             <shop>
@@ -32,50 +33,76 @@ function create_yandex_xml_btn () {
             $yandex_xml .="<categories>
             ";
 
-            $cats_for_check = [$plants_cat_id, $gorshki_cat_id, $ukhod_cat_id, $treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
-            $cats_for_include = [];
-            $cats_for_include_clean = [];
-            foreach($cats_for_check as $item){
-                $args = array(
-                    'post_type'      => 'product',
-                    'posts_per_page' => -1,
-                    'post_status'    => 'publish',
-                    'meta_query' => array( 
-                        array(
-                            'key' => '_stock',
-                            'type'    => 'numeric',
-                            'value' => '0',
-                            'compare' => '>'
-                        )
-                    ),
-                    'tax_query' => array(
-                        array(
-                            'taxonomy' => 'product_cat',
-                            'field' => 'id',
-                            'terms' => [$item],
-                            'operator' => 'IN',
-                            'include_children' => 1,
-                        )
-                    )
-                );
-                $query = new WP_Query;
-                $checkproducts = $query->query($args);
-                if(count($checkproducts) != 0) {
-                    foreach ($checkproducts as $item) {
-                        $product = wc_get_product($item);
-                        $prod_cats = $product->get_category_ids();
-                        foreach ($prod_cats as $cat) {
-                            array_push($cats_for_include, $cat);
-                        }
+            // $cats_for_check = [$plants_cat_id, $gorshki_cat_id, $ukhod_cat_id, $treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id];
+            // $cats_for_include = [];
+            // $cats_for_include_clean = [];
+            // foreach($cats_for_check as $item){
+            //     $args = array(
+            //         'post_type'      => 'product',
+            //         'posts_per_page' => -1,
+            //         'post_status'    => 'publish',
+            //         'meta_query' => array( 
+            //             array(
+            //                 'key' => '_stock',
+            //                 'type'    => 'numeric',
+            //                 'value' => '0',
+            //                 'compare' => '>'
+            //             )
+            //         ),
+            //         'tax_query' => array(
+            //             array(
+            //                 'taxonomy' => 'product_cat',
+            //                 'field' => 'id',
+            //                 'terms' => [$item],
+            //                 'operator' => 'IN',
+            //                 'include_children' => 1,
+            //             )
+            //         )
+            //     );
+            //     $query = new WP_Query;
+            //     $checkproducts = $query->query($args);
+            //     if(count($checkproducts) != 0) {
+            //         foreach ($checkproducts as $item) {
+            //             $product = wc_get_product($item);
+            //             $prod_cats = $product->get_category_ids();
+            //             foreach ($prod_cats as $cat) {
+            //                 array_push($cats_for_include, $cat);
+            //             }
+            //         }
+            //     };
+            // }
+            // $cats_for_include_clean = array_unique($cats_for_include);
+
+            $categories_with_stock = [];
+
+            $args = [
+                'taxonomy'   => 'product_cat',
+                'hide_empty' => true, // только категории с товарами
+            ];
+
+            $product_cats = get_terms( $args );
+
+            foreach ( $product_cats as $cat ) {
+                $products = wc_get_products([
+                    'status'      => 'publish',
+                    'limit'       => -1,
+                    'stock_status'=> 'instock',
+                    'category'    => [ $cat->slug ],
+                ]);
+
+                // Фильтрация по количеству на складе
+                foreach ( $products as $product ) {
+                    if ( $product->get_stock_quantity() > 0) {
+                        $categories_with_stock[] = $cat;
+                        break;
                     }
-                };
+                }
             }
-            $cats_for_include_clean = array_unique($cats_for_include);
 
             $args=array(
                 'taxonomy'   => 'product_cat',
                 'hide_empty' => true,
-                'include' => $cats_for_include_clean,
+                'include' => $categories_with_stock,
             );
 
             $terms=get_terms($args);
@@ -95,37 +122,11 @@ function create_yandex_xml_btn () {
 
             global $delivery_inMKAD;
             global $delivery_outMKAD;
-            global $delivery_inMKAD_small;
-            global $delivery_outMKAD_small;
-            global $delivery_inMKAD_large;
-            global $delivery_outMKAD_large;
-        
-            global $urgent_delivery_inMKAD; 
-            global $urgent_delivery_outMKAD; 
-            global $urgent_delivery_inMKAD_small; 
-            global $urgent_delivery_outMKAD_small;
-            global $urgent_delivery_inMKAD_large; 
-            global $urgent_delivery_outMKAD_large;
-      
+            $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
             $shipping_costs = plnt_get_shiping_costs();
-
             $in_mkad = $shipping_costs[$delivery_inMKAD];
             $out_mkad = $shipping_costs[$delivery_outMKAD];
-
-            $in_mkad_urg = $shipping_costs[$urgent_delivery_inMKAD];
-            $out_mkad_urg = $shipping_costs[$urgent_delivery_outMKAD];
-
-            $in_mkad_large = $shipping_costs[$delivery_inMKAD_large];
-            $out_mkad_large = $shipping_costs[$delivery_outMKAD_large];
-
-            $in_mkad_urg_large = $shipping_costs[$urgent_delivery_inMKAD_large];
-            $out_mkad_urg_large = $shipping_costs[$urgent_delivery_outMKAD_large];
-        
-            $in_mkad_small = $shipping_costs[$delivery_inMKAD_small];
-            $out_mkad_small = $shipping_costs[$delivery_outMKAD_small];
-
-            $in_mkad_small_urg = $shipping_costs[$urgent_delivery_inMKAD_small];
-            $out_mkad_small_urg = $shipping_costs[$urgent_delivery_outMKAD_small];
+            $out_mkad_urg = floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery));
 
             $yandex_xml .= 
             "<delivery-options>
@@ -158,7 +159,7 @@ function create_yandex_xml_btn () {
                         'taxonomy' => 'product_cat',
                         'field' => 'id',
                         'operator' => 'NOT IN',
-                        'terms' => [$treez_poliv_cat_id, $plants_treez_cat_id, $peresadka_cat_id, $misc_cat_id],
+                        'terms' => [$treez_poliv_cat_id, $plants_treez_cat_id, $peresadka_cat_id, $misc_cat_id, $uncategorized_cat_id],
                         'include_children' => 1,
                     )
                 )
