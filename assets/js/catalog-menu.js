@@ -41,11 +41,13 @@ dropdownCatalog.forEach((el) => {
     console.log(el);
     console.log(menu);
     console.log(btn);
-    btn.addEventListener('click', function (event) {
-        menu.classList.toggle('catalog__dropdown-menu_show');
-        el.classList.toggle('catalog__dropdown_open');
-        event.stopPropagation();
-    })
+    if(menu && btn) {
+        btn.addEventListener('click', function (event) {
+            menu.classList.toggle('catalog__dropdown-menu_show');
+            el.classList.toggle('catalog__dropdown_open');
+            event.stopPropagation();
+        })
+    }
 })
 
 
