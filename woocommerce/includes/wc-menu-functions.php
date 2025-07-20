@@ -50,48 +50,85 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
     </div> <?php
 }
 
-function get_catalog_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_cat_name=false) { 
-    $term = get_term_by( 'slug', $cat_slug, 'product_cat' );
-    $term_id = $term->term_id;
-    $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
-    $terms = get_terms( $args ); 
-    $cat_name = $term->name;
-
-    if($words_to_remove && $clean_cat_name) {
-        foreach ($words_to_remove as $word) {
-            $cat_name = str_replace($word,'',$cat_name);
-        }
-    }
+function get_catalog_submenu($cat_slug,$link_base,$levels=1, $words_to_remove=[], $clean_cat_name=false) { 
     ?>
-    <li class="catalog__dropdown catalog__node catalog__node_lvl_2">
+    <?php if($levels >= 1);?>
+    <li class="catalog__dropdown catalog__node catalog__node_lvl_1">
         <a
             href="<?php echo site_url().$link_base. $cat_slug.'/'?>">
             <?php echo $cat_name?>
         </a>
+        <?php if($levels >= 2);?>
         <span class="menu__dropdown-arrow">next</span>
         <ul class = "sub-menu catalog__dropdown-menu catalog__dropdown-menu_lvl_2">
             <?php
-            foreach ($terms as $term) {
-                $name = $term ->name;
-                if($words_to_remove) {
-                    foreach ($words_to_remove as $word) {
-                        $name = str_replace($word,'',$name);
-                    }
+            $term = get_term_by( 'slug', $cat_slug, 'product_cat' );
+            $term_id = $term->term_id;
+            $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
+            $terms = get_terms( $args ); 
+            $cat_name = $term->name;
+
+            if($words_to_remove && $clean_cat_name) {
+                foreach ($words_to_remove as $word) {
+                    $cat_name = str_replace($word,'',$cat_name);
                 }
-                $link = site_url().$link_base. $cat_slug.'/'.$term->slug;
-                ?>
-                <li class="catalog__node catalog__node_lvl_3">
-                    <a 
-                        href="<?php echo $link?>">
-                        <?php echo $name?>
-                    </a>
-                    <span class="menu__dropdown-arrow">next</span>
-                </li>
-                <?
+            }
+            if($terms) {
+                foreach ($terms as $term) {
+                    $name = $term ->name;
+                    if($words_to_remove) {
+                        foreach ($words_to_remove as $word) {
+                            $name = str_replace($word,'',$name);
+                        }
+                    }
+                    $link = site_url().$link_base. $cat_slug.'/'.$term->slug;
+                    ?>
+                    <li class="catalog__node catalog__node_lvl_2">
+                        <a 
+                            href="<?php echo $link?>">
+                            <?php echo $name?>
+                        </a>
+                        <?php if($levels >= 3);?>
+                        <span class="menu__dropdown-arrow">next</span>
+                        <ul class = "sub-menu catalog__dropdown-menu catalog__dropdown-menu_lvl_3">
+                            <?php 
+                                $term_sub = get_term_by( 'slug', $term->slug, 'product_cat' );
+                                $term_sub_id = $term_sub->term_id;
+                                $args_sub = array( 'taxonomy' => 'product_cat', 'parent' => $term_sub_id );  
+                                $terms_sub = get_terms( $args_sub ); 
+                                if($terms_sub) {
+                                    $cat_name_sub = $terms_sub->name;
+                                    foreach ($terms_sub as $term_sub) {
+                                        $name_sub = $term_sub ->name;
+                                        if($words_to_remove) {
+                                            foreach ($words_to_remove as $word) {
+                                                $name_sub = str_replace($word,'',$name);
+                                            }
+                                        }
+                                        $link_sub = site_url().$link_base. $cat_slug.'/'.$term->slug.'/'.$term_sub->slug;
+                                        ?>
+                                        <li class="catalog__node catalog__node_lvl_3">
+                                            <a 
+                                                href="<?php echo $link_sub?>">
+                                                <?php echo $name_sub?>
+                                            </a>
+                                        </li>
+                                        <?php 
+                                    }
+                                }
+                                    
+                            ?>                   
+                        </ul>
+                        <?php endif;?>
+                    </li>
+                    <?
+                }
             }
             ?>
         </ul>
+        <?php endif;?>
     </li>
+    <?php endif;?>
   <?php
 }
 
