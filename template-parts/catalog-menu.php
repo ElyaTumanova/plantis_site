@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <nav class='menu-catalog-container'>
     <ul class='catalog-menu'>
+    <?php get_catalog_submenu('gorshki_i_kashpo','/product-category/gorshki_i_kashpo/');?>
     <li class="catalog__dropdown catalog__node catalog__node_lvl_1">
         <a href="<?php echo site_url()?>/product-category/kashpo-treez/">Кашпо Treez</a>
         <span class="menu__dropdown-arrow">next</span>
