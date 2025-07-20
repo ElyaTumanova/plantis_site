@@ -70,8 +70,8 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		// wp_enqueue_script( 'jquery.nivo.slider', get_template_directory_uri() .
 		//                                      '/assets/js/jquery.nivo.slider.js', array( 'jquery' ), null, true);
 
-		// wp_enqueue_script( 'catalog-menu', get_template_directory_uri() .
-		//                                      '/assets/js/catalog-menu.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/catalog-menu.js'), true );
+		wp_enqueue_script( 'catalog-menu', get_template_directory_uri() .
+		                                     '/assets/js/catalog-menu.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/catalog-menu.js'), true );
 
 		wp_enqueue_script( 'delivery-dropdown', get_template_directory_uri() .
 		                                     '/assets/js/delivery-dropdown.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/delivery-dropdown.js'), true );
