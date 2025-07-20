@@ -244,15 +244,15 @@ function truemisha_single_product_btn_text( $text ) {
 	return $text;
 }
 
-add_action('woocommerce_cart_updated', 'my_cart_submit_hook');
-function my_cart_submit_hook() {
-    // Действие при обновлении корзины
-    ?>
-	<script>
-		jQuery(function($){
-            console.log('woocommerce_cart_updated hooked')
-			swiper_popular_slider_init ();
-		})
-	</script>
-	<?php
-}
+// add_action('woocommerce_cart_updated', 'my_cart_submit_hook');
+// function my_cart_submit_hook() {
+//     // Действие при обновлении корзины
+//     ?>
+// 	<script>
+// 		jQuery(function($){
+//             console.log('woocommerce_cart_updated hooked')
+// 			swiper_popular_slider_init ();
+// 		})
+// 	</script>
+// 	<?php
+// }
