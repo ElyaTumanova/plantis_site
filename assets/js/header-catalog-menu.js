@@ -75,7 +75,6 @@ headerMenuItems.forEach((el) => {
         el.addEventListener('mouseenter', openHeaderCatalog);
         el.addEventListener('mouseenter',closeAllSubmenu);
         el.addEventListener('mouseenter',showSubmenu);
-        el.addEventListener('mouseenter',getCatImagesAjax,{once:true});
     }
   })
 
@@ -95,9 +94,12 @@ menuLinksWithImage.forEach((el)=>{
     }
 })
 
+ document.addEventListener('DOMContentLoaded',getCatImagesAjax,{once:true});
+
 function getDefaultImage(event) {
     let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
     menuImage.setAttribute('src','https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp');
 }
+
 
 
