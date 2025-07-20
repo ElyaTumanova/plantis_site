@@ -70,7 +70,7 @@ function plnt_get_menu_cats_image() {
         $thumbnail_id = get_term_meta( $id, 'thumbnail_id', true );
         $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
 
-        $image_urls[$id] = $thumbnail_url; 
+        $image_urls['id_'.$id] = $thumbnail_url; 
     }
     if ( $image_urls ) {
         wp_send_json_success( [ 'image_url' => $image_urls ] );
