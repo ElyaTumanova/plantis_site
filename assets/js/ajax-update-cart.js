@@ -186,10 +186,14 @@ jQuery(function($){
 		swiper_backorder_crossells_init();
 		backorderCrossellInit();
 		plntAjaxGetWishMiniCart();
-        swiper_popular_slider_init();
 	});
 })
 
 // jQuery(document.body).on('wc_update_cart', function() {
 //     console.log('Cart was updated (via JS event)');
 // });
+
+jQuery(document.body).on('wc_cart_emptied', function() {
+  console.log('🛒 Корзина стала пустой');
+  // тут твоя логика
+});
