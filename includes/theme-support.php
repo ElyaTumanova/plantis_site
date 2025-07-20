@@ -114,3 +114,16 @@ function check_301redirect_tax_url(){
 		exit;
 	}
 }
+
+//добавить фавикон favicon
+add_action( 'wp_head', 'plnt_add_favicons' );
+function plnt_add_favicons() {
+    $dir = get_template_directory_uri() . '/images/favicons/';
+    ?>
+    <link rel="icon" href="<?php echo $dir; ?>favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo $dir; ?>apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $dir; ?>favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $dir; ?>favicon-16x16.png">
+    <link rel="manifest" href="<?php echo $dir; ?>site.webmanifest">
+    <?php
+}
