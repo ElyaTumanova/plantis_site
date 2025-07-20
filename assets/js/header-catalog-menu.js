@@ -7,8 +7,6 @@ let menuLinksWithImage = headerCatalogWrap.querySelectorAll('.header__main-subme
 let imageLinks;
 let timerId;
 
-
-
 function openHeaderCatalog () {
     timerId = setTimeout(() => {
         headerCatalogWrap.classList.add('header__menu_open');
@@ -90,13 +88,12 @@ headerMenuItems.forEach((el) => {
         el.addEventListener('mouseenter', closeAllSubmenu);
         el.addEventListener('mouseenter', showSubmenu);
     }
+    if(!el.getAttribute('data-menu')) {
+        el.addEventListener('mouseenter', closeHeaderCatalog);
+    }
+    el.addEventListener('click', closeHeaderCatalog);
 })
 
-headerMenuItems.forEach(menu => {
-    if(!menu.getAttribute('data-menu')) {
-        menu.addEventListener('mouseenter', closeHeaderCatalog);
-    }
-});
 
 headerMenuWrap.addEventListener('mouseleave', closeHeaderCatalog);
 
