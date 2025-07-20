@@ -55,6 +55,7 @@ function showSubmenu(event) {
     menuSubMenu.classList.add('header__main-submenu_show');
     menuLinksWithImage.forEach((link)=>{
         imageCatId.push(link.getAttribute('data-cat_id'));
+        console.log(link.getAttribute('data-cat_id'));
     })
     console.log(menuLinksWithImage);
     console.log(imageCatId);
