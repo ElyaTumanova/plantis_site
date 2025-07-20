@@ -55,9 +55,9 @@ $close_icon = carbon_get_theme_option('close_icon');
             <div class="burger-menu__nav-btn burger-menu__nav_menu">Меню</div>
             <div class="burger-menu__nav-btn burger-menu__nav_catalog">Каталог</div>
         </div>
-        <?php get_template_part('template-parts/popups/burger-menu');?>
+        <?php get_template_part('template-parts/burger-menu-mob');?>
         <div class="catalog-menu__wrap">
-            <?php //plnt_catalog_menu() ?>
+            <?php get_template_part('template-parts/catalog-menu');?>
         </div>
     </div>
     <div class="modal-mob__overlay"></div>
