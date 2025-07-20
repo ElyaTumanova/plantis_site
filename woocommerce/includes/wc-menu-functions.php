@@ -82,7 +82,7 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $words_to_remove=[]
                             $name = str_replace($word,'',$name);
                         }
                     }
-                    $link = site_url().$link_base. $cat_slug.'/'.$term->slug;
+                    $link = site_url().$link_base.'/'. $cat_slug.'/'.$term->slug;
                     ?>
                     <li class="catalog__dropdown catalog__node catalog__node_lvl_2">
                         <a 
@@ -105,7 +105,7 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $words_to_remove=[]
                                                 $name_sub = str_replace($word,'',$name_sub);
                                             }
                                         }
-                                        $link_sub = site_url().$link_base. $cat_slug.'/'.$term->slug.'/'.$term_sub->slug;
+                                        $link_sub = site_url().$link_base. '/'.$cat_slug.'/'.$term->slug.'/'.$term_sub->slug;
                                         ?>
                                         <li class="catalog__node catalog__node_lvl_3">
                                             <a 
