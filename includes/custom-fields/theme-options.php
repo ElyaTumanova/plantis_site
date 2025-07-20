@@ -8,7 +8,7 @@ use Carbon_Fields\Field;
 
 // Default options page
 Container::make('theme_options', 'Настройки темы')
-		 ->add_tab( __('Icons'), array(
+		 ->add_tab('Icons', array(
 			 Field::make( 'image', 'logo', 'Logo' )
 			 	->set_value_type( 'url' ),
 			 Field::make( 'textarea', 'account_icon', 'Personal Account' )
@@ -31,9 +31,11 @@ Container::make('theme_options', 'Настройки темы')
 				->set_rows( 6 ),
 			 Field::make( 'textarea', 'close_icon', 'Close icon' )
 				->set_rows( 6 ),
+            Field::make( 'textarea', 'arrow_icon', 'Arrow icon' )
+                ->set_rows( 6 ),
 			 Field::make( 'text', 'site_title', 'Site title in header' )
          ))
-		 ->add_tab( __('Main Page Banners'), array(
+		 ->add_tab('Main Page Banners', array(
 			Field::make( 'complex', 'banners', 'Баннеры для главной страницы' )
 				->add_fields( array(
 					Field::make( 'image', 'banner_desktop', 'Баннер для десктопа' )
@@ -49,7 +51,7 @@ Container::make('theme_options', 'Настройки темы')
 					)
 				)
 		))
-		 ->add_tab( __('Main Page Categories'), array(
+		 ->add_tab('Main Page Categories', array(
 			Field::make( 'image', 'cats_palms', 'Пальмы' )
 			 ->set_value_type( 'url' ),
 			Field::make( 'image', 'cats_fikus', 'Фикусы' )
@@ -69,17 +71,23 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'image', 'cats_petfriendly', 'Pet Friendly' )
 			 ->set_value_type( 'url' ),
 		))
-		->add_tab( __('Delivery'), array(
+		->add_tab('Delivery', array(
 			Field::make( 'text', 'min_free_delivery', 'Минимальная сумма заказа для бесплатной доставки (текст с пробелом)'),
 			Field::make( 'text', 'min_small_delivery', 'Сумма заказа для более дорогой доставки - самая минимальная'),
+            Field::make( 'text', 'small_markup_delivery', 'Надбавка к стоимости маленькой доставки'),
 			Field::make( 'text', 'min_medium_delivery', 'Сумма заказа для более дорогой доставки - средняя (не обязательно)'),
+			Field::make( 'text', 'medium_markup_delivery', 'Надбавка к стоимости средней доставки'),
 			Field::make( 'text', 'min_treez_delivery', 'Сумма заказа для доставки кашпо Treez'),
 			Field::make( 'text', 'min_lechuza_delivery', 'Сумма заказа для доставки кашпо Lechuza'),
+			Field::make( 'text', 'urgent_markup_delivery', 'Надбавка к стоимости срочной доставки'),
 			Field::make( 'text', 'late_markup_delivery', 'Надбавка к стоимости поздней доставки'),
+			Field::make( 'text', 'large_markup_delivery_in_mkad', 'Надбавка к стоимости крупногабаритной доставки в пределах МКАД'),
+			Field::make( 'text', 'large_markup_delivery_out_mkad', 'Надбавка к стоимости крупногабаритной доставки за пределами МКАД'),
+			Field::make( 'text', 'urgent_markup_delivery_large', 'Надбавка к стоимости срочной крупногабаритной доставки'),
 	   ))
-		->add_tab( __('General'), array(
+		->add_tab('General', array(
 			Field::make( 'text', 'notice', 'Уведомление' ),
-			Field::make( 'checkbox', 'show_notice', __( 'Показать уведомление' ) )
+			Field::make( 'checkbox', 'show_notice', 'Показать уведомление' )
     				->set_option_value( 'yes' ),
 			Field::make( 'text', 'weekend', 'Выходной (формат ДД.ММ, разделитель - запятая без пробелов)' ),
 			Field::make( 'text', 'pricelist_link', 'Ссылка на скачивание оптового прйс-листа' ),

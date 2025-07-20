@@ -6,7 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! function_exists( 'ast_theme_support' ) ) :
 	add_action( 'after_setup_theme', 'ast_theme_support' );
 	function ast_theme_support() {
-		load_theme_textdomain( 'art-starter-theme', get_template_directory() . '/languages' );
 		add_theme_support( 'html5', array(
 			'search-form',
 			'comment-form',

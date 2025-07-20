@@ -225,15 +225,6 @@ function plnt_update_mini_cart() {
 }
 add_filter( 'wp_ajax_nopriv_plnt_update_mini_cart', 'plnt_update_mini_cart' );
 add_filter( 'wp_ajax_plnt_update_mini_cart', 'plnt_update_mini_cart' );
-//
-
-// function plnt_update_header_cart_count() {
-// 	echo wp_kses_data(WC()->cart->get_cart_contents_count());
-// 	die();
-// }
-// add_filter( 'wp_ajax_nopriv_plnt_update_header_cart_count', 'plnt_update_header_cart_count' );
-// add_filter( 'wp_ajax_plnt_update_header_cart_count', 'plnt_update_header_cart_count' );
-
 
 
 /*--------------------------------------------------------------
@@ -252,50 +243,3 @@ function truemisha_single_product_btn_text( $text ) {
  
 	return $text;
 }
-
-/*--------------------------------------------------------------
-# HELPERS 
---------------------------------------------------------------*/
-
- //Функция, возвращающая количество определённого товара в корзине
- function plnt_get_product_quantity_in_cart( $product_id ) {
- 
-	// по умолчанию количество товара равно 0
-	$quantity = 0;
-	// проходим циклом через все товары в корзине
-	foreach ( WC()->cart->get_cart() as $cart_item ) {
-		// можно еще проверяет ID вариаций $cart_item[ 'variation_id' ]
-		// если данный товар в цикле – наш товар, то записываем его количество в переменную
-		if( $product_id == $cart_item[ 'product_id' ] ){
-			$quantity = $cart_item[ 'quantity' ];
-			break; // и прерываем цикл
-		}
-	}
- 
-	return $quantity;
- 
-}
-
-// переписана стандартная функция wc_cart_totals_shipping_method_label, которая лежит в woocommerce/plugins/woocommerce/includes/wc-cart-functions.php, чтобы убрать : из названия метода доставки
-function plnt_wc_cart_totals_shipping_method_label( $method ) {
-	$label     = $method->get_label();
-	$has_cost  = 0 < $method->cost;
-	$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
-
-	if ( $has_cost && ! $hide_cost ) {
-		if ( WC()->cart->display_prices_including_tax() ) {
-			$label .= wc_price( $method->cost + $method->get_shipping_tax() );
-			if ( $method->get_shipping_tax() > 0 && ! wc_prices_include_tax() ) {
-				$label .= ' <small class="tax_label">' . WC()->countries->inc_tax_or_vat() . '</small>';
-			}
-		} else {
-			$label .= wc_price( $method->cost );
-			if ( $method->get_shipping_tax() > 0 && wc_prices_include_tax() ) {
-				$label .= ' <small class="tax_label">' . WC()->countries->ex_tax_or_vat() . '</small>';
-			}
-		}
-	}
-
-	return apply_filters( 'woocommerce_cart_shipping_method_full_label', $label, $method );
-}
-

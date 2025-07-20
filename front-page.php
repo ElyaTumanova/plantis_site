@@ -1,8 +1,6 @@
 <?php
-
-get_header(); 
-
-global $skidki_cat_id;
+    get_header();
+    global $skidki_cat_id;
 ?>
 
 <div class="content-area-full-width">
@@ -97,4 +95,6 @@ global $skidki_cat_id;
 	</main><!-- #main -->
 </div><!-- #primary -->
 
-<?php get_footer(); ?>
+<?php $start_footer = microtime(true); get_footer(); ?>
+<?php echo "<!-- Timing: get_footer = " . round((microtime(true) - $start_footer) * 1000, 2) . " ms -->"; ?>
+

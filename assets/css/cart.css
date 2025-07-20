@@ -454,26 +454,42 @@
 }
 
 /* стили для скролла scroll */
-.woocommerce-mini-cart::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: #F5F5F5;
-}
-
 .woocommerce-mini-cart::-webkit-scrollbar
 {
-	width: 12px;
-	background-color: #F5F5F5;
+	width: 4px;
+}
+
+.woocommerce-mini-cart::-webkit-scrollbar-track
+{
+    background: transparent;  /* Скрыть трек */
 }
 
 .woocommerce-mini-cart::-webkit-scrollbar-thumb
 {
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #919191;
+    background-color: rgba(100, 100, 100, 0.3); /* бледный по умолчанию */
+    border-radius: 4px;
+    transition: background-color 0.2s ease;  
 }
 
+.woocommerce-mini-cart:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.7); /* ярче при скролле */
+}
+
+.woocommerce-mini-cart::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+/* === Firefox Support === */
+.woocommerce-mini-cart {
+  scrollbar-width: thin; /* auto | thin | none */
+  scrollbar-color: rgba(100, 100, 100, 0.3) transparent;
+}
+
+.woocommerce-mini-cart:hover {
+  scrollbar-color: rgba(100, 100, 100, 0.7) transparent;
+}
 
 .woocommerce-mini-cart-item {
     display: grid;
@@ -667,6 +683,8 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+
+
 
 .side-cart__open-btn .header__count {
     position: absolute;

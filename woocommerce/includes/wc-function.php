@@ -2,11 +2,11 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-//Хлебные крошки
+//Хлебные крошки #breadcrumb
 if ( ! function_exists( 'ast_breadrumbs_yoast' ) ) {
 	add_action( 'woocommerce_before_main_content', 'ast_breadrumbs_yoast', 10 );
 	function ast_breadrumbs_yoast() {
-		if ( is_product() || is_product_category() ||is_product_tag() || is_shop() ) {
+		if ( is_product() || is_product_category() ||is_product_tag() || is_shop() || is_tax('pa_color')) {
 			if ( function_exists( 'yoast_breadcrumb' ) ) {
 				$before      = '<div class="woocommerce-breadcrumb" id="breadcrumbs">';
 				$after       = '</div>';
