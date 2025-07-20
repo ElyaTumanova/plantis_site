@@ -41,6 +41,15 @@ function getCatImageAjax(event, catId) {
 
 }
 
+function getCatImagesAjax () {
+    menuLinksWithImage.forEach((link)=>{
+        imageCatId.push(link.getAttribute('data-cat_id'));
+        console.log(link.getAttribute('data-cat_id'));
+    })
+    console.log(menuLinksWithImage);
+    console.log(imageCatId);
+}
+
 function openHeaderCatalog () {
     headerCatalogWrap.classList.add('header__menu_open');
 }
@@ -53,12 +62,6 @@ function showSubmenu(event) {
     let menu = event.target.getAttribute('data-menu');
     let menuSubMenu = document.querySelector(`.header__main-submenu[data-menu='${menu}']`);
     menuSubMenu.classList.add('header__main-submenu_show');
-    menuLinksWithImage.forEach((link)=>{
-        imageCatId.push(link.getAttribute('data-cat_id'));
-        console.log(link.getAttribute('data-cat_id'));
-    })
-    console.log(menuLinksWithImage);
-    console.log(imageCatId);
 }
 
 function closeAllSubmenu() {
@@ -72,6 +75,7 @@ headerMenuItems.forEach((el) => {
         el.addEventListener('mouseenter', openHeaderCatalog);
         el.addEventListener('mouseenter',closeAllSubmenu);
         el.addEventListener('mouseenter',showSubmenu);
+        el.addEventListener('mouseenter',getCatImagesAjax,{once:true});
     }
   })
 
