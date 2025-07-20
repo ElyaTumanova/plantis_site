@@ -14,7 +14,7 @@ function getCatImage(event, catId) {
     console.log(imageLinks.id_137);
 
     if (imageLinks) {
-        let imageLink = imageLinks.id;
+        let imageLink = imageLinks[`id_${catId}`];
         console.log(imageLink);
         if(imageLink) {
             menuImage.setAttribute('src',imageLink);
