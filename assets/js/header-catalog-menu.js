@@ -10,6 +10,9 @@ function getCatImage(event, catId) {
     let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
     id = `id_${catId}`;
     console.log(id);
+    console.log(imageLinks);
+    console.log(imageLinks.id_137);
+
     if (imageLinks) {
         let imageLink = imageLinks.id;
         console.log(imageLink);
