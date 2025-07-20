@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <nav class='menu-catalog-container'>
     <ul class='catalog-menu'>
-        <?php get_catalog_submenu('ukhod','/product-category/komnatnye-rasteniya/',3);?>
+        <?php get_catalog_submenu('komnatnye-rasteniya','/product-category/komnatnye-rasteniya/',3);?>
         <?php get_catalog_submenu('gorshki_i_kashpo','/product-category/gorshki_i_kashpo/',2);?>
         <?php get_catalog_submenu('kashpo-treez','/product-category/kashpo-treez/',3,['Treez Effectory ', 'Treez Ergo ']);?>
         <?php get_catalog_submenu('kashpo-lechuza','/product-category/kashpo-lechuza/',2,['Кашпо Lechuza ']);?>
