@@ -9,7 +9,9 @@ let imageLinks;
 
 
 function openHeaderCatalog () {
-    headerCatalogWrap.classList.add('header__menu_open');
+    setTimeout(() => {
+        headerCatalogWrap.classList.add('header__menu_open');
+    }, 1000)
 }
 
 function closeHeaderCatalog () {
@@ -31,7 +33,6 @@ function closeAllSubmenu() {
 function getCatImagesAjax () {
     menuLinksWithImage.forEach((link)=>{
         imageCatId.push(link.getAttribute('data-cat_id'));
-        console.log(link.getAttribute('data-cat_id'));
     })
 
     const data = new URLSearchParams();
@@ -55,7 +56,6 @@ function getCatImagesAjax () {
         console.debug('✅ AJAX success:', result);
         if (result.success) {
             imageLinks = result.data.image_url;
-            console.log(imageLinks.id_137);
         }
     })
     .catch(error => {
@@ -70,7 +70,6 @@ function getCatImage(event, catId) {
     let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
     if (imageLinks && menuImage) {
         let imageLink = imageLinks[`id_${catId}`];
-        console.log(imageLink);
         if(imageLink) {
             menuImage.setAttribute('src',imageLink);
         }
