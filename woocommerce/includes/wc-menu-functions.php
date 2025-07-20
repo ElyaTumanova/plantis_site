@@ -102,7 +102,7 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $words_to_remove=[]
                                         $name_sub = $term_sub ->name;
                                         if($words_to_remove) {
                                             foreach ($words_to_remove as $word) {
-                                                $name_sub = str_replace($word,'',$name);
+                                                $name_sub = str_replace($word,'',$name_sub);
                                             }
                                         }
                                         $link_sub = site_url().$link_base. $cat_slug.'/'.$term->slug.'/'.$term_sub->slug;
