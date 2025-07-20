@@ -14,5 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
             <?php get_catalog_submenu('treez-effectory','/product-category/kashpo-treez/',['Treez Ergo ']);?>
         </ul>
     </li>
+    <?php get_catalog_submenu('kashpo-lechuza','/product-category/kashpo-lechuza/',['Кашпо Lechuza ']);?>
     </ul>
 </nav>
