@@ -3,7 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-$arrow_icon = carbon_get_theme_option('arrow_icon');
+add_action( 'carbon_fields_register_fields', function() {
+    $arrow_icon = carbon_get_theme_option('arrow_icon');
+});
 
 //example, $cat_slug = 'treez-effectory', $link_base = '/product-category/kashpo-treez/', $words_to_remove - words to be removed from menu items
 function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_cat_name=false) { 
