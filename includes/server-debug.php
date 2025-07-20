@@ -5,7 +5,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // анализ производиетльности серевера
 
+
 //см wp-debug.php
+
 
     global $timing_points;
     $timing_points = [];
@@ -83,6 +85,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         $timing['template'] = isset($timing_points['template_start']) ? ($now - $timing_points['template_start']) * 1000 : 0;
 
         // SQL
+
         // $db_time = 0;
         // if (!empty($wpdb->queries)) {
         //     foreach ($wpdb->queries as $query) {
@@ -145,6 +148,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         echo "-->\n";
     });
 
+
     // TOP 10 SLOWEST SQL QUERIES
     // add_action('shutdown', function () {
 
@@ -167,4 +171,5 @@ if ( ! defined( 'ABSPATH' ) ) {
     //         echo "<!-- END SQL -->\n";
     //     }
     // });
+
 
