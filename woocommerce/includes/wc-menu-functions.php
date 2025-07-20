@@ -3,6 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+$arrow_icon = carbon_get_theme_option('arrow_icon');
 
 //example, $cat_slug = 'treez-effectory', $link_base = '/product-category/kashpo-treez/', $words_to_remove - words to be removed from menu items
 function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_cat_name=false) { 
@@ -27,7 +28,7 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
         data-cat_id = <?php echo $term_id?> 
         href="<?php echo site_url().$link_base. $cat_slug.'/'?>">
         <?php echo $cat_name?>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z"/></svg>
+        <?php echo $arrow_icon?>
     </a>
     <div class="header__main-submenu-item_row">
         <?php
