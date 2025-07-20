@@ -67,7 +67,7 @@ function getCatImagesAjax () {
     .then(result => {
         console.debug('✅ AJAX success:', result);
         if (result.success) {
-            console.log(result.data.test);
+            console.log(result.data.image_url);
             //menuImage.setAttribute('src',result.data.image_url);
         }
     })

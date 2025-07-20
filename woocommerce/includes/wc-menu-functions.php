@@ -57,18 +57,24 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
 add_action( 'wp_ajax_get_menu_cats_image', 'plnt_get_menu_cats_image' );
 add_action( 'wp_ajax_nopriv_get_menu_cats_image', 'plnt_get_menu_cats_image' );
 function plnt_get_menu_cats_image() {
-    $cat_id = isset($_POST['cat_id']) ? ($_POST['cat_id']) : '';
+    $image_urls = []
+    $cat_id_str = isset($_POST['cat_id']) ? ($_POST['cat_id']) : '';
 
-    if ( ! $cat_id ) {
+    if ( ! $cat_id_str ) {
         wp_send_json_error('Invalid category ID');
     }
-    wp_send_json_success( [ 'test' => $cat_id ] );
-    // $thumbnail_id = get_term_meta( $cat_id, 'thumbnail_id', true );
-    // $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
 
-    // if ( $thumbnail_url ) {
-    //     wp_send_json_success( [ 'image_url' => esc_url( $thumbnail_url ) ] );
-    // } else {
-    //     wp_send_json_error('Image not found');
-    // }
+    $cat_ids = explode(',',$cat_id_str);
+
+    foreach($cat_ids as $id) {
+        $thumbnail_id = get_term_meta( $id, 'thumbnail_id', true );
+        $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
+
+        $image_urls[$id] = $thumbnail_url; 
+    }
+    if ( $image_urls ) {
+        wp_send_json_success( [ 'image_url' => $image_urls ] );
+    } else {
+        wp_send_json_error('Image not found');
+    }
 }
