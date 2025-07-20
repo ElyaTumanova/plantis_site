@@ -1113,6 +1113,7 @@
     margin: 0;
     top: 10px;
     right: 3px;
+    left: auto !important;
     width: 40px;
     height: 40px;
 }
