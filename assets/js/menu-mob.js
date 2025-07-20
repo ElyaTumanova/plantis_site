@@ -54,10 +54,10 @@ function catalogMenuInit() {
 }
 
 
-menuMobOpen.addEventListener ("click", plntAjaxShowCatalogMobMenu,{once:true});
-menuMobOpen.addEventListener ("click", (evt)=>{
-    catalogMobOpen.removeEventListener("click", plntAjaxShowCatalogMobMenu)
-});
+// menuMobOpen.addEventListener ("click", plntAjaxShowCatalogMobMenu,{once:true});
+// menuMobOpen.addEventListener ("click", (evt)=>{
+//     catalogMobOpen.removeEventListener("click", plntAjaxShowCatalogMobMenu)
+// });
 
 menuMobOpen.addEventListener ("click", (evt)=>{
     toggle_mob_menu ();
