@@ -84,7 +84,7 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $words_to_remove=[]
                     }
                     $link = site_url().$link_base. $cat_slug.'/'.$term->slug;
                     ?>
-                    <li class="catalog__node catalog__node_lvl_2">
+                    <li class="catalog__dropdown catalog__node catalog__node_lvl_2">
                         <a 
                             href="<?php echo $link?>">
                             <?php echo $name?>
