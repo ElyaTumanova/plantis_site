@@ -51,8 +51,19 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
 }
 
 function get_catalog_submenu($cat_slug,$link_base,$levels=1, $words_to_remove=[], $clean_cat_name=false) { 
-    ?>
-    <?php if($levels >= 1):?>
+    $term = get_term_by( 'slug', $cat_slug, 'product_cat' );
+    $term_id = $term->term_id;
+    $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
+    $terms = get_terms( $args ); 
+    $cat_name = $term->name;
+
+    if($words_to_remove && $clean_cat_name) {
+        foreach ($words_to_remove as $word) {
+            $cat_name = str_replace($word,'',$cat_name);
+        }
+    }
+    
+    if($levels >= 1):?>
     <li class="catalog__dropdown catalog__node catalog__node_lvl_1">
         <a
             href="<?php echo site_url().$link_base. $cat_slug.'/'?>">
@@ -62,17 +73,7 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $words_to_remove=[]
         <span class="menu__dropdown-arrow">next</span>
         <ul class = "sub-menu catalog__dropdown-menu catalog__dropdown-menu_lvl_2">
             <?php
-            $term = get_term_by( 'slug', $cat_slug, 'product_cat' );
-            $term_id = $term->term_id;
-            $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
-            $terms = get_terms( $args ); 
-            $cat_name = $term->name;
-
-            if($words_to_remove && $clean_cat_name) {
-                foreach ($words_to_remove as $word) {
-                    $cat_name = str_replace($word,'',$cat_name);
-                }
-            }
+            
             if($terms):
                 foreach ($terms as $term) {
                     $name = $term ->name;
