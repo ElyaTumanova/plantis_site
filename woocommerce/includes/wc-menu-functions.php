@@ -57,11 +57,11 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $cats_exclide=[], $
     $terms = get_terms( $args ); 
     $cat_name = $term->name;
 
-    if($words_to_remove && $clean_cat_name) {
-        foreach ($words_to_remove as $word) {
-            $cat_name = str_replace($word,'',$cat_name);
-        }
-    }
+    // if($words_to_remove && $clean_cat_name) {
+    //     foreach ($words_to_remove as $word) {
+    //         $cat_name = str_replace($word,'',$cat_name);
+    //     }
+    // }
 
     if($levels >= 1):?>
     <li class="catalog__dropdown catalog__node catalog__node_lvl_1">
@@ -77,7 +77,7 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $cats_exclide=[], $
             if($terms):
                 foreach ($terms as $term) {
                     $name = $term ->name;
-                    if($words_to_remove) {
+                    if($words_to_remove && $clean_cat_name) {
                         foreach ($words_to_remove as $word) {
                             $name = str_replace($word,'',$name);
                         }
