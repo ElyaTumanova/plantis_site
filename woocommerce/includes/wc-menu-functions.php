@@ -66,7 +66,7 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $words_to_remove=[]
     if($levels >= 1):?>
     <li class="catalog__dropdown catalog__node catalog__node_lvl_1">
         <a
-            href="<?php echo site_url().$link_base. $cat_slug.'/'?>">
+            href="<?php echo site_url().$link_base.'/'. $cat_slug.'/'?>">
             <?php echo $cat_name?>
         </a>
         <?php if($levels >= 2):?>
