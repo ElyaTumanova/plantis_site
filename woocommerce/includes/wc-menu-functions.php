@@ -73,7 +73,7 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $words_to_remove=[]
                     $cat_name = str_replace($word,'',$cat_name);
                 }
             }
-            if($terms) {
+            if($terms)
                 foreach ($terms as $term) {
                     $name = $term ->name;
                     if($words_to_remove) {
@@ -96,7 +96,7 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $words_to_remove=[]
                                 $term_sub_id = $term_sub->term_id;
                                 $args_sub = array( 'taxonomy' => 'product_cat', 'parent' => $term_sub_id );  
                                 $terms_sub = get_terms( $args_sub ); 
-                                if($terms_sub) {
+                                if($terms_sub);
                                     $cat_name_sub = $terms_sub->name;
                                     foreach ($terms_sub as $term_sub) {
                                         $name_sub = $term_sub ->name;
@@ -115,15 +115,14 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $words_to_remove=[]
                                         </li>
                                         <?php 
                                     }
-                                }
-                                    
-                            ?>                   
+                                endif;    
+                            ?>                  
                         </ul>
                         <?php endif;?>
                     </li>
                     <?
                 }
-            }
+            endif;
             ?>
         </ul>
         <?php endif;?>
