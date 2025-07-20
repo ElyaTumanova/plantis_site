@@ -5,16 +5,18 @@ let subMenues = document.querySelectorAll('.header__main-submenu');
 let imageCatId = [];
 let menuLinksWithImage = headerCatalogWrap.querySelectorAll('.header__main-submenu-item_image');
 let imageLinks;
+let timerId;
 
 
 
 function openHeaderCatalog () {
-    setTimeout(() => {
+    timerId = setTimeout(() => {
         headerCatalogWrap.classList.add('header__menu_open');
     }, 1000)
 }
 
 function closeHeaderCatalog () {
+    clearTimeout(timerId);
     headerCatalogWrap.classList.remove('header__menu_open');
 }
 
@@ -85,8 +87,8 @@ function getDefaultImage(event) {
 headerMenuItems.forEach((el) => {
     if(el.getAttribute('data-menu')) {
         el.addEventListener('mouseenter', openHeaderCatalog);
-        el.addEventListener('mouseenter',closeAllSubmenu);
-        el.addEventListener('mouseenter',showSubmenu);
+        el.addEventListener('mouseenter', closeAllSubmenu);
+        el.addEventListener('mouseenter', showSubmenu);
     }
 })
 
