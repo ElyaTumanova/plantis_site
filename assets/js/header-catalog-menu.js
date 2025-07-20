@@ -6,20 +6,26 @@ let imageCatId = [];
 let menuLinksWithImage = headerCatalogWrap.querySelectorAll('.header__main-submenu-item_image');
 let imageLinks;
 
-function getCatImage(event, catId) {
-    let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
-    id = `id_${catId}`;
-    console.log(id);
-    console.log(imageLinks);
-    console.log(imageLinks.id_137);
 
-    if (imageLinks) {
-        let imageLink = imageLinks[`id_${catId}`];
-        console.log(imageLink);
-        if(imageLink) {
-            menuImage.setAttribute('src',imageLink);
-        }
-    }
+
+function openHeaderCatalog () {
+    headerCatalogWrap.classList.add('header__menu_open');
+}
+
+function closeHeaderCatalog () {
+    headerCatalogWrap.classList.remove('header__menu_open');
+}
+
+function showSubmenu(event) {
+    let menu = event.target.getAttribute('data-menu');
+    let menuSubMenu = document.querySelector(`.header__main-submenu[data-menu='${menu}']`);
+    menuSubMenu.classList.add('header__main-submenu_show');
+}
+
+function closeAllSubmenu() {
+    subMenues.forEach((el) => {
+        el.classList.remove('header__main-submenu_show');
+    })
 }
 
 function getCatImagesAjax () {
@@ -60,25 +66,22 @@ function getCatImagesAjax () {
     });
 }
 
-function openHeaderCatalog () {
-    headerCatalogWrap.classList.add('header__menu_open');
+function getCatImage(event, catId) {
+    let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
+    if (imageLinks && menuImage) {
+        let imageLink = imageLinks[`id_${catId}`];
+        console.log(imageLink);
+        if(imageLink) {
+            menuImage.setAttribute('src',imageLink);
+        }
+    }
 }
 
-function closeHeaderCatalog () {
-    headerCatalogWrap.classList.remove('header__menu_open');
+function getDefaultImage(event) {
+    let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
+    menuImage.setAttribute('src','https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp');
 }
 
-function showSubmenu(event) {
-    let menu = event.target.getAttribute('data-menu');
-    let menuSubMenu = document.querySelector(`.header__main-submenu[data-menu='${menu}']`);
-    menuSubMenu.classList.add('header__main-submenu_show');
-}
-
-function closeAllSubmenu() {
-    subMenues.forEach((el) => {
-        el.classList.remove('header__main-submenu_show');
-    })
-}
 
 headerMenuItems.forEach((el) => {
     if(el.getAttribute('data-menu')) {
@@ -86,7 +89,7 @@ headerMenuItems.forEach((el) => {
         el.addEventListener('mouseenter',closeAllSubmenu);
         el.addEventListener('mouseenter',showSubmenu);
     }
-  })
+})
 
 headerMenuItems.forEach(menu => {
     if(!menu.getAttribute('data-menu')) {
@@ -104,12 +107,6 @@ menuLinksWithImage.forEach((el)=>{
     }
 })
 
-document.addEventListener('DOMContentLoaded',getCatImagesAjax,{once:true});
-
-function getDefaultImage(event) {
-    let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
-    menuImage.setAttribute('src','https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp');
-}
-
+headerMenuWrap.addEventListener('mouseenter',getCatImagesAjax,{once:true});
 
 
