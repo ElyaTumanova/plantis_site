@@ -57,7 +57,7 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
 add_action( 'wp_ajax_get_menu_cats_image', 'plnt_get_menu_cats_image' );
 add_action( 'wp_ajax_nopriv_get_menu_cats_image', 'plnt_get_menu_cats_image' );
 function plnt_get_menu_cats_image() {
-    $image_urls = []
+    $image_urls = [];
     $cat_id_str = isset($_POST['cat_id']) ? ($_POST['cat_id']) : '';
 
     if ( ! $cat_id_str ) {
