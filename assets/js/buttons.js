@@ -56,10 +56,10 @@ window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset;
     if(scrollTop >0){
         headerMainDiv.setAttribute('style', `margin-top:${marginTopOffset}px`);
-        headerMenu.setAttribute('style', `margin-top:${marginTopOffset}px`);
+        //headerMenu.setAttribute('style', `margin-top:${marginTopOffset}px`);
     } else{
         headerMainDiv.removeAttribute('style');
-        headerMenu.removeAttribute('style');
+        //headerMenu.removeAttribute('style');
     }
 });
 document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
