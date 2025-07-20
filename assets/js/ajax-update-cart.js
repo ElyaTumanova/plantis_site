@@ -190,6 +190,6 @@ jQuery(function($){
 	});
 })
 
-jQuery(document.body).on('wc_update_cart', function() {
-    console.log('Cart was updated (via JS event)');
-});
+// jQuery(document.body).on('wc_update_cart', function() {
+//     console.log('Cart was updated (via JS event)');
+// });
