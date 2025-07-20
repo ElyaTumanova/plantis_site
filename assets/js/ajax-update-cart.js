@@ -195,5 +195,5 @@ jQuery(function($){
 
 jQuery(document.body).on('wc_cart_emptied', function() {
   console.log('🛒 Корзина стала пустой');
-  // тут твоя логика
+  swiper_popular_slider_init();
 });
