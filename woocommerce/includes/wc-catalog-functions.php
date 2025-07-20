@@ -61,6 +61,7 @@ function plnt_catalog_grid_end() {
 // // вывод меню и фильтров в сайд баре  #filters #berocket
 add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar',20);
 function plnt_catalog_sidebar() {
+    global $plants_treez_cat_id;
 	// // #filters ID's
     global $filter_plant_type_id;
     global $filter_plant_name_id;
@@ -109,7 +110,8 @@ function plnt_catalog_sidebar() {
 				//echo do_shortcode('[br_filter_single filter_id='.$filter_razmer_kashpo_id.']'); // диаметр кашпо Treez //56545 //12017
 				echo do_shortcode('[br_filter_single filter_id='.$filter_color_id.']'); // цвет //56532 //6108
 				echo do_shortcode('[br_filter_single filter_id='.$filter_forma_id.']'); // форма //56541 //12013
-                if(!is_product_category('iskusstvennye-rasteniya-treez')) {
+                if(!(is_product_category($plants_treez_cat_id) || 
+	                term_is_ancestor_of( $plants_treez_cat_id, get_queried_object_id(), 'product_cat' ))) {
                     echo do_shortcode('[br_filter_single filter_id='.$filter_materilal_id.']'); // материал //56543 //12015
                 }
 				//echo do_shortcode('[br_filter_single filter_id='.$filter_razmer_id.']'); // размер для растений Treez

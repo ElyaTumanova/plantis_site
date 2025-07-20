@@ -44,8 +44,7 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
             <a 
                 class="header__main-submenu-item_image" 
                 data-cat_id = <?php echo $term->term_id?> 
-                href="<?php echo $link?>" 
-                target='_blank'>
+                href="<?php echo $link?>">
                 <?php echo $name?>
             </a>
             <?
