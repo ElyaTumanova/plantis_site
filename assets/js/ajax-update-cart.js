@@ -194,6 +194,5 @@ jQuery(function($){
 // });
 
 jQuery(document.body).on('wc_cart_emptied', function() {
-  console.log('🛒 Корзина стала пустой');
   swiper_popular_slider_init();
 });

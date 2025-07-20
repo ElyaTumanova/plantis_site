@@ -20,7 +20,7 @@ function showSlider(sliderNmber) {
 
 function ajaxGetMainCatTerm() {
     jQuery( function($){
-        console.log('ajaxGetMainCatTerm init');
+        // console.log('ajaxGetMainCatTerm init');
         // console.log('catsTerm ajax',catsTerm);
         // console.log('taxonomyType ajax',taxonomyType);
         $.ajax({
