@@ -11,6 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php get_catalog_submenu('kashpo-treez','/product-category',3,['Treez Effectory ', 'Treez Ergo ']);?>
         <?php get_catalog_submenu('kashpo-lechuza','/product-category',2,['Кашпо Lechuza ']);?>
         <?php get_catalog_submenu('ukhod','/product-category',2);?>
-        <?php get_catalog_submenu('iskusstvennye-rasteniya-treez','/product-category',3);?>
+        <?php get_catalog_submenu('iskusstvennye-rasteniya-treez','/product-category',3,[],['Treez','Искусственные', 'Искусственная', 'Искусственное', 'Искусственный','растения'],true);?>
     </ul>
 </nav>

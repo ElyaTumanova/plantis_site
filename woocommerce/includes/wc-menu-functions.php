@@ -50,7 +50,7 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
     </div> <?php
 }
 
-function get_catalog_submenu($cat_slug,$link_base,$levels=1, $words_to_remove=[], $clean_cat_name=false) { 
+function get_catalog_submenu($cat_slug,$link_base,$levels=1, $cats_exclide=[], $words_to_remove=[], $clean_cat_name=false) { 
     $term = get_term_by( 'slug', $cat_slug, 'product_cat' );
     $term_id = $term->term_id;
     $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
