@@ -70,6 +70,7 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $cats_exclude=[], $
             
             if($terms):
                 foreach ($terms as $term) {
+                    echo ($term->id);
                     if(!in_array($term->id,$cats_exclude )):
                         $name = $term ->name;
                         if($words_to_remove && $clean_cat_name) {
