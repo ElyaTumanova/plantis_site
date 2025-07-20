@@ -3,10 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-add_action( 'carbon_fields_register_fields', function() {
-    $arrow_icon = carbon_get_theme_option('arrow_icon');
-});
-
 //example, $cat_slug = 'treez-effectory', $link_base = '/product-category/kashpo-treez/', $words_to_remove - words to be removed from menu items
 function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_cat_name=false) { 
     $term = get_term_by( 'slug', $cat_slug, 'product_cat' );
@@ -30,7 +26,9 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
         data-cat_id = <?php echo $term_id?> 
         href="<?php echo site_url().$link_base. $cat_slug.'/'?>">
         <?php echo $cat_name?>
-        <?php echo $arrow_icon?>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M7 17L17 7M7 7h10v10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
     </a>
     <div class="header__main-submenu-item_row">
         <?php
