@@ -809,7 +809,8 @@ input[type="number"] {
 
 .card__grid_not-plant .woocommerce-Tabs-panel {
     height: 200px;  /*card-grid heihts*/
-    overflow-y: auto;
+    /* overflow-y: auto; */
+    overflow-y: scroll;
     font-size: 14px;
 }
 
