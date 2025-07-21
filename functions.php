@@ -70,6 +70,7 @@ add_action( 'plnt_generate_yml_daily', 'plnt_generate_yml_callback' );
 
 function plnt_generate_yml_callback() {
     include get_theme_file_path('/includes/xml/create_yandex_xml.php');
+    include get_theme_file_path('/includes/xml/create_google_xml.php');
 }
 
 
