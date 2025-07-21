@@ -454,18 +454,15 @@
 }
 
 /* стили для скролла scroll */
-.woocommerce-mini-cart::-webkit-scrollbar
-{
+.woocommerce-mini-cart::-webkit-scrollbar {
 	width: 4px;
 }
 
-.woocommerce-mini-cart::-webkit-scrollbar-track
-{
+.woocommerce-mini-cart::-webkit-scrollbar-track {
     background: transparent;  /* Скрыть трек */
 }
 
-.woocommerce-mini-cart::-webkit-scrollbar-thumb
-{
+.woocommerce-mini-cart::-webkit-scrollbar-thumb {
     background-color: rgba(100, 100, 100, 0.3); /* бледный по умолчанию */
     border-radius: 4px;
     transition: background-color 0.2s ease;  
@@ -490,6 +487,7 @@
 .woocommerce-mini-cart:hover {
   scrollbar-color: rgba(100, 100, 100, 0.7) transparent;
 }
+/* end custom scroll */
 
 .woocommerce-mini-cart-item {
     display: grid;
