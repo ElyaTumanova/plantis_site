@@ -1,4 +1,6 @@
 <?php
+
+/** Add Translations */
 add_action( 'after_setup_theme', function() {
 	load_theme_textdomain( 'plantis-theme', get_template_directory() . '/languages' );
 } );
@@ -46,9 +48,9 @@ require get_template_directory() . '/includes/navigation.php';
 require get_template_directory() . '/includes/ajax.php';
 /** Add Yandex metrika */
 require get_template_directory() . '/includes/metrika.php';
-/** Create Yandex XML */
-//require get_template_directory() . '/includes/xml/create_yandex_xml.php';
-//require get_template_directory() . '/includes/xml/create_google_xml.php';
+/** Add Feed xml creation*/
+require get_template_directory() . '/includes/xml/create_xml_task.php';
+
 
 /** Add Woocommerce files */
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
@@ -66,29 +68,3 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	require get_template_directory() . '/woocommerce/includes/wc-account-functions.php';
 }
 
-add_action( 'plnt_generate_yml_daily', 'plnt_generate_yml_callback' );
-
-function plnt_generate_yml_callback() {
-    include get_theme_file_path('/includes/xml/create_yandex_xml.php');
-    include get_theme_file_path('/includes/xml/create_google_xml.php');
-}
-
-
-// В functions.php или в инициализирующем файле темы/плагина
-add_action( 'init', 'plnt_schedule_custom_cron' );
-
-function plnt_schedule_custom_cron() {
-    if ( ! wp_next_scheduled( 'plnt_generate_yml_daily' ) ) {
-        $hour = 19;
-        $minute = 00;
-        
-        $timestamp = mktime( $hour, $minute, 0 );
-
-        // Если время уже прошло сегодня — планируем на завтра
-        if ( $timestamp < time() ) {
-            $timestamp = strtotime('+1 day', $timestamp);
-        }
-
-        wp_schedule_event( $timestamp, 'daily', 'plnt_generate_yml_daily' );
-    }
-}
