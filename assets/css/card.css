@@ -839,8 +839,8 @@ input[type="number"] {
 	background-color: #F5F5F5; */
 }
 
-.card__grid .woocommerce-Tabs-panel--description::-webkit-scrollbar-thumb{
-     background-color: rgba(100, 100, 100, 0.3); /* бледный по умолчанию */
+.card__grid .woocommerce-Tabs-panel--description::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 100, 100, 0.3); /* бледный по умолчанию */
     border-radius: 4px;
     transition: background-color 0.2s ease; 
 	/* border-radius: 10px;
@@ -857,6 +857,17 @@ input[type="number"] {
   height: 0;
   width: 0;
 }
+
+/* === Firefox Support === */
+.card__grid .woocommerce-Tabs-panel--description {
+  scrollbar-width: thin; /* auto | thin | none */
+  scrollbar-color: rgba(100, 100, 100, 0.3) transparent;
+}
+
+.card__grid .woocommerce-Tabs-panel--description:hover {
+  scrollbar-color: rgba(100, 100, 100, 0.7) transparent;
+}
+/* end custom scroll */
 
 .card__grid .woocommerce-Tabs-panel--description p {
     font-size: 14px;
