@@ -757,11 +757,12 @@ input[type="number"] {
     line-height: 1.2;
     text-align: center;
     border-radius: 5px 5px 0 0;
-    border: solid 2px var(--gray);
-    background-color: var(--gray);
+    border-bottom: solid 2px var(--gray);
+    /* background-color: var(--gray); */
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--gray-text);
 }
 
 @media (max-width: 965px) and (min-width:767px) {
@@ -770,15 +771,20 @@ input[type="number"] {
     }
 }
 
-.card__grid .wc-tabs li:not(:first-child):not(:last-child) {
+.card__grid .wc-tabs li a:hover, .card__grid .wc-tabs li a:active, .card__grid .wc-tabs li a:focus {
+    text-decoration: none;
+}
+
+/* .card__grid .wc-tabs li:not(:first-child):not(:last-child) {
     margin-right: 2px;
     margin-left: 2px;
-}
+} */
 
 .card__grid .wc-tabs .active{
     background-color: var(--background);
     opacity: 100%;
-    border-bottom: solid 1px var(--background);
+    border-bottom: solid 2px var(--dark-bg);
+    color: var(--text);
 }
 
 .card__grid .wc-tabs a:hover, .card__grid .wc-tabsa:focus, .card__grid .wc-tabsa:active{
