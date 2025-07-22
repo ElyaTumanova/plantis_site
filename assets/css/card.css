@@ -793,10 +793,10 @@ input[type="number"] {
 
 .card__grid .wc-tab {
     padding: 7px;
-    border-radius: 0 0 5px 5px;
+    /* border-radius: 0 0 5px 5px;
     border-bottom: solid 2px var(--gray);
     border-right: solid 2px var(--gray);
-    border-left: solid 2px var(--gray);
+    border-left: solid 2px var(--gray); */
 }
 
 .card__grid .wc-tab .delivery_table__header {
