@@ -300,7 +300,7 @@ input[type="search"], input[type="search"]:focus-visible {
 
 .search-result__link:hover {
     text-decoration: none;
-    background-color: #F7F8FB;
+    background-color: var(--gray);
 }
 
 .search-result__title {
