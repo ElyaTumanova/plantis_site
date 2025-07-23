@@ -76,7 +76,8 @@ $pricelist_link = carbon_get_theme_option('pricelist_link');
                     }
 
                     // Пример использования
-                    $lowest_cats = get_lowest_level_product_categories(); // начиная с корня
+                    global $plants_cat_id;
+                    $lowest_cats = get_lowest_level_product_categories($plants_cat_id); // начиная с корня
                     foreach ( $lowest_cats as $cat ) {
                         echo $cat->name . ' (ID: ' . $cat->term_id . ')<br>';
                     }
