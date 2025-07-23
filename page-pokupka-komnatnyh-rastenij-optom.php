@@ -40,6 +40,7 @@ $pricelist_link = carbon_get_theme_option('pricelist_link');
             </div>
             <h2 class="info__heading heading-2">Категории растений от А до Я</h2>
             <div class="optom__plants-cats-az">
+                <div class="plants-cats-az">
                 <?php //get_template_part('template-parts/plant-cats-az');
                     global $plants_cat_id;
                     $lowest_cats = get_lowest_level_product_categories($plants_cat_id); // начиная с корня
@@ -53,7 +54,7 @@ $pricelist_link = carbon_get_theme_option('pricelist_link');
 
                  
                 ?>
-
+                </div>
             </div>
             <h2 class="info__heading heading-2">Остались вопросы?</h2>
             <p>Позвоните нам или напишите, любым удобным способом!</p>
