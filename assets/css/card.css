@@ -859,14 +859,14 @@ input[type="number"] {
 }
 
 /* === Firefox Support === */
-.card__grid .woocommerce-Tabs-panel {
-  scrollbar-width: thin; /* auto | thin | none */
+/* .card__grid .woocommerce-Tabs-panel {
+  scrollbar-width: thin; 
   scrollbar-color: rgba(100, 100, 100, 0.3) transparent;
 }
 
 .card__grid .woocommerce-Tabs-panel:hover {
   scrollbar-color: rgba(100, 100, 100, 0.7) transparent;
-}
+} */
 
 /* end custom scroll */
 
