@@ -832,36 +832,30 @@ input[type="number"] {
 
  /* стили для скролла scroll */
 
- .card__grid .woocommerce-Tabs-panel::-webkit-scrollbar {
+.card__grid .woocommerce-Tabs-panel::-webkit-scrollbar {
     width: 4px;
-	/* width: 12px;
-	background-color: #F5F5F5; */
 }
 
- .card__grid .woocommerce-Tabs-panel::-webkit-scrollbar-track{
+.card__grid .woocommerce-Tabs-panel::-webkit-scrollbar-track{
 	 background: transparent;  /* Скрыть трек */
-    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: #F5F5F5; */
 }
 
 .card__grid .woocommerce-Tabs-panel::-webkit-scrollbar-thumb {
     background-color: rgba(100, 100, 100, 0.3); /* бледный по умолчанию */
     border-radius: 4px;
     transition: background-color 0.2s ease; 
-	/* border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #919191; */
+
 }
 
 .card__grid .woocommerce-Tabs-panel:hover::-webkit-scrollbar-thumb {
   background-color: rgba(100, 100, 100, 0.7); /* ярче при скролле */
 }
 
-.card__grid .woocommerce-Tabs-panel::-webkit-scrollbar-button {
+.card__grid .woocommerce-Tabs-panel::-webkit-scrollbar-button:single-button {
   display: none !important;
-  height: 0;
   width: 0;
+  height: 0;
+  background: transparent;
 }
 
 /* === Firefox Support === */
@@ -873,6 +867,7 @@ input[type="number"] {
 .card__grid .woocommerce-Tabs-panel:hover {
   scrollbar-color: rgba(100, 100, 100, 0.7) transparent;
 }
+
 /* end custom scroll */
 
 .card__grid .woocommerce-Tabs-panel--description p {
