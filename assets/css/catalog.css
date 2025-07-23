@@ -1537,13 +1537,33 @@
 }
 
  /* стили для скролла scroll */
- .filter-show-more-btn::-webkit-scrollbar-track
-{
-	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
-	border-radius: 16px;
-	background-color: #F5F5F5;
-    width: 4px;
+    /* start custom scroll */
+.filter-show-more-btn::-webkit-scrollbar {
+	width: 4px;
 }
+
+.filter-show-more-btn::-webkit-scrollbar-track {
+    background: transparent;  /* Скрыть трек */
+}
+
+.filter-show-more-btn::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 100, 100, 0.3); /* бледный по умолчанию */
+    border-radius: 4px;
+    transition: background-color 0.2s ease;  
+}
+
+.filter-show-more-btn:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.7); /* ярче при скролле */
+}
+
+.filter-show-more-btn::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+/* end custom scroll */
+
 
 /* фильтр с назанием растения */
 

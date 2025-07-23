@@ -454,6 +454,7 @@
 }
 
 /* стили для скролла scroll */
+ /* start custom scroll */
 .woocommerce-mini-cart::-webkit-scrollbar {
 	width: 4px;
 }
@@ -478,15 +479,6 @@
   width: 0;
 }
 
-/* === Firefox Support === */
-.woocommerce-mini-cart {
-  scrollbar-width: thin; /* auto | thin | none */
-  scrollbar-color: rgba(100, 100, 100, 0.3) transparent;
-}
-
-.woocommerce-mini-cart:hover {
-  scrollbar-color: rgba(100, 100, 100, 0.7) transparent;
-}
 /* end custom scroll */
 
 .woocommerce-mini-cart-item {
