@@ -46,7 +46,7 @@ $pricelist_link = carbon_get_theme_option('pricelist_link');
                     foreach ( $lowest_cats as $cat ) {
                         //print_r($cat);
                         echo $cat->name . ' (ID: ' . $cat->term_id . ')<br>';
-                        $thumbnail_id = get_term_meta( $id, 'thumbnail_id', true );
+                        $thumbnail_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
                         $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
                         echo($thumbnail_url);
                     }
