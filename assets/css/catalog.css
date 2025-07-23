@@ -1538,25 +1538,25 @@
 
  /* стили для скролла scroll */
     /* start custom scroll */
-.filter-show-more-btn::-webkit-scrollbar {
+.filter_diametr_gorshka .bapf_body::-webkit-scrollbar {
 	width: 4px;
 }
 
-.filter-show-more-btn::-webkit-scrollbar-track {
+.filter_diametr_gorshka .bapf_body::-webkit-scrollbar-track {
     background: transparent;  /* Скрыть трек */
 }
 
-.filter-show-more-btn::-webkit-scrollbar-thumb {
+.filter_diametr_gorshka .bapf_body::-webkit-scrollbar-thumb {
     background-color: rgba(100, 100, 100, 0.3); /* бледный по умолчанию */
     border-radius: 4px;
     transition: background-color 0.2s ease;  
 }
 
-.filter-show-more-btn:hover::-webkit-scrollbar-thumb {
+.filter_diametr_gorshka .bapf_body:hover::-webkit-scrollbar-thumb {
   background-color: rgba(100, 100, 100, 0.7); /* ярче при скролле */
 }
 
-.filter-show-more-btn::-webkit-scrollbar-button {
+.filter_diametr_gorshka .bapf_body::-webkit-scrollbar-button {
   display: none;
   height: 0;
   width: 0;
