@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // FOR DEV
-//add_action( 'wp_footer', 'plnt_dev_functions' );
+add_action( 'wp_footer', 'plnt_dev_functions' );
 
 function plnt_dev_functions() {
 
@@ -18,15 +18,19 @@ function plnt_dev_functions() {
 	global $misc_cat_id;
 	global $peresadka_cat_id;
 
+    $all_sizes = get_intermediate_image_sizes();
+    print_r( $all_sizes );
+
+
     // $term = get_term( 'slug', $cat_slug, 'product_cat' );
     // $term_id = $term->term_id;
     $args = array( 'taxonomy' => 'product_cat', 'parent' => $plants_treez_cat_id );  
     $terms = get_terms( $args ); 
     //print_r($terms);
-    $category_thumbnail = get_term_meta(137, 'thumbnail_id', true);
-    $image = wp_get_attachment_url($category_thumbnail);
-    echo($category_thumbnail);
-    echo($image);
+    // $category_thumbnail = get_term_meta(137, 'thumbnail_id', true);
+    // $image = wp_get_attachment_url($category_thumbnail);
+    // echo($category_thumbnail);
+    // echo($image);
 	// $cats_for_check = [$plants_cat_id, $gorshki_cat_id, $ukhod_cat_id,$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
 	// $cats_for_include = [];
 	// $cats_for_include_clean = [];
