@@ -67,6 +67,39 @@ function plnt_set_backorders_date() {
 	return $backorderdate;
 }
 
+// находит все дочерние категории нижнего уровня
+    function get_lowest_level_product_categories( $parent_id = 0 ) {
+        $lowest_level_cats = [];
+
+        // Получаем все подкатегории заданной родительской категории
+        $categories = get_terms( [
+            'taxonomy'   => 'product_cat',
+            'parent'     => $parent_id,
+            'hide_empty' => false,
+        ] );
+
+        foreach ( $categories as $category ) {
+            // Проверяем, есть ли у категории дочерние
+            $child_cats = get_terms( [
+                'taxonomy'   => 'product_cat',
+                'parent'     => $category->term_id,
+                'hide_empty' => false,
+            ] );
+
+            if ( empty( $child_cats ) ) {
+                // Нет дочерних — значит, это нижний уровень
+                $lowest_level_cats[] = $category;
+            } else {
+                // Рекурсивно ищем в дочерних
+                $lowest_level_cats = array_merge(
+                    $lowest_level_cats,
+                    get_lowest_level_product_categories( $category->term_id )
+                );
+            }
+        }
+
+        return $lowest_level_cats;
+    }
 /*--------------------------------------------------------------
 # HELPERS for cart & checkout
 --------------------------------------------------------------*/

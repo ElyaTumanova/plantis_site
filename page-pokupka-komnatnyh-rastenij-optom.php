@@ -41,44 +41,10 @@ $pricelist_link = carbon_get_theme_option('pricelist_link');
             <h2 class="info__heading heading-2">Категории растений от А до Я</h2>
             <div class="optom__plants-cats-az">
                 <?php //get_template_part('template-parts/plant-cats-az');
-                
-                    function get_lowest_level_product_categories( $parent_id = 0 ) {
-                        $lowest_level_cats = [];
-
-                        // Получаем все подкатегории заданной родительской категории
-                        $categories = get_terms( [
-                            'taxonomy'   => 'product_cat',
-                            'parent'     => $parent_id,
-                            'hide_empty' => false,
-                        ] );
-
-                        foreach ( $categories as $category ) {
-                            // Проверяем, есть ли у категории дочерние
-                            $child_cats = get_terms( [
-                                'taxonomy'   => 'product_cat',
-                                'parent'     => $category->term_id,
-                                'hide_empty' => false,
-                            ] );
-
-                            if ( empty( $child_cats ) ) {
-                                // Нет дочерних — значит, это нижний уровень
-                                $lowest_level_cats[] = $category;
-                            } else {
-                                // Рекурсивно ищем в дочерних
-                                $lowest_level_cats = array_merge(
-                                    $lowest_level_cats,
-                                    get_lowest_level_product_categories( $category->term_id )
-                                );
-                            }
-                        }
-
-                        return $lowest_level_cats;
-                    }
-
-                    // Пример использования
                     global $plants_cat_id;
                     $lowest_cats = get_lowest_level_product_categories($plants_cat_id); // начиная с корня
                     foreach ( $lowest_cats as $cat ) {
+                        print_r($cat);
                         echo $cat->name . ' (ID: ' . $cat->term_id . ')<br>';
                     }
 
