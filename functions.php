@@ -284,29 +284,33 @@ function plnt_check_page() {
 
 }
 function plnt_get_images_data() {
+   $alt = get_image_alt_by_filename( 'aglaonema-krit-flejm-12-35-3.webp' );
+    echo $alt ? $alt : 'Alt не найден';
+    
+    $images_array = array();
+    // $fp = fopen( ABSPATH . "/wp-content/images.csv", 'w' ); 
+    // fwrite( $fp, $images_array );
+    // fclose( $fp );
+}
+
+function get_image_alt_by_filename( $filename ) {
     $args = [
         'post_type'      => 'attachment',
         'post_status'    => 'inherit',
         'posts_per_page' => 1,
         'meta_query'     => [],
-        's'              => 'aglaonema-krit-flejm-12-35-3.webp', // поиск по названию
+        's'              => $filename, // поиск по названию
     ];
 
     $query = new WP_Query( $args );
 
     if ( $query->have_posts() ) {
         $attachment = $query->posts[0];
-        print_r($attachment);
         $alt = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true );
+        return $alt;
     }
 
-    
-	echo $alt ? $alt : 'Alt не найден';
-    
-    $images_array = array();
-    // $fp = fopen( ABSPATH . "/wp-content/images.csv", 'w' ); 
-    // fwrite( $fp, $images_array );
-    // fclose( $fp );
+    return false;
 }
 function plnt_get_cats_data() {
 	global $plants_treez_cat_id;
