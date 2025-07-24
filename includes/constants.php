@@ -8,8 +8,8 @@ $site = get_site_url();
 function plnt_check_site() {
 	global $site;
 	if (is_front_page()) {
-		if($site === 'http://new.plantis.shop') {
-			echo '<script> console.log("hello new plantis")</script>';
+		if($site === 'https://plantis-shop.ru') {
+			echo '<script> console.log("hello plantis ru")</script>';
 		} else {
 			echo '<script> console.log("hello plantis")</script>';
 		}
