@@ -288,11 +288,12 @@ function plnt_get_images_data() {
     $args = [
         'post_type'      => 'attachment',
         'post_status'    => 'inherit',
-        'posts_per_page' => 1,
-        'meta_query'     => [],
+        'posts_per_page' => 4,
     ];
 
     $query = new WP_Query( $args );
+
+    print_r($query);
 
 //    $alt = get_image_alt_by_filename( 'aglaonema-krit-flejm-12-35-3' );
 //     echo $alt ? $alt : 'Alt не найден';
