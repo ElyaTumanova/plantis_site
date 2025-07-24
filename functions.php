@@ -284,11 +284,15 @@ function plnt_check_page() {
 
 }
 function plnt_get_images_data() {
-    $image_url = 'http://dev.plantis.shop/wp-content/uploads/2023/09/aglaonema-krit-flejm-12-35-3.webp';
-    $alt = get_image_alt_by_url( $image_url );
 
-    echo $alt ? $alt : 'Alt не найден';
-        
+    $args = [
+        'post_type'      => 'attachment',
+        'post_status'    => 'inherit',
+        'posts_per_page' => 1,
+        'meta_query'     => [],
+    ];
+
+    $query = new WP_Query( $args );
 
 //    $alt = get_image_alt_by_filename( 'aglaonema-krit-flejm-12-35-3' );
 //     echo $alt ? $alt : 'Alt не найден';
