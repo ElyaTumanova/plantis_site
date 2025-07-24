@@ -287,7 +287,8 @@ function plnt_get_images_data() {
     $args = [
         'post_type'      => 'attachment',
         'post_status'    => 'inherit',
-        'posts_per_page' => -1,
+        'posts_per_page' => 1,
+        'meta_query'     => [],
         's'              => 'aglaonema-krit-flejm-12-35-3', // поиск по названию
     ];
 
