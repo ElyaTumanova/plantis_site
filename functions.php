@@ -284,7 +284,6 @@ function plnt_check_page() {
 
 }
 function plnt_get_images_data() {
-    $image_alt = '';
     $args = [
         'post_type'      => 'attachment',
         'post_status'    => 'inherit',
@@ -301,10 +300,10 @@ function plnt_get_images_data() {
         $image_alt = $alt;
     }
 
+    
+	echo $image_alt ? $image_alt : 'Alt не найден';
+    
     $images_array = array();
-
-	print_r ($image_alt);
-
     // $fp = fopen( ABSPATH . "/wp-content/images.csv", 'w' ); 
     // fwrite( $fp, $images_array );
     // fclose( $fp );
