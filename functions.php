@@ -284,8 +284,19 @@ function plnt_check_page() {
 
 }
 function plnt_get_images_data() {
-   $alt = get_image_alt_by_filename( 'aglaonema-krit-flejm-12-35-3' );
-    echo $alt ? $alt : 'Alt не найден';
+    $args = [
+        'post_type'      => 'attachment',
+        'posts_per_page' => -1,
+        's'              => 'aglaonema-krit-flejm-12-35-3', // поиск по названию
+    ];
+
+    
+    $query = new WP_Query( $args );
+
+    print_r($query);
+
+//    $alt = get_image_alt_by_filename( 'aglaonema-krit-flejm-12-35-3' );
+//     echo $alt ? $alt : 'Alt не найден';
     
     $images_array = array();
     // $fp = fopen( ABSPATH . "/wp-content/images.csv", 'w' ); 
