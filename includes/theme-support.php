@@ -96,6 +96,7 @@ add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
 
 //убираем ненужны размеры изображений
 add_filter( 'intermediate_image_sizes', function( $sizes ) {
+    error_log( 'Фильтр сработал, удаляем размеры: ' . implode(', ', array_keys($sizes)) );
     unset( $sizes['1536x1536'] ); // с WP 5.3+
     unset( $sizes['2048x2048'] ); // с WP 5.3+
     return $sizes;
