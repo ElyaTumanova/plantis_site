@@ -310,7 +310,8 @@ function get_image_alt_by_url( $image_url ) {
     ));
 
     if ( $attachment_id ) {
-        return get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
+        return $attachment_id;
+        //return get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
     }
 
     return false;
