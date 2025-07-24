@@ -95,7 +95,7 @@ function show_svg_in_media_library( $response ) {
 add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
 
 //убираем ненужны размеры изображений
-add_filter( 'intermediate_image_sizes_advanced', function( $sizes ) {
+add_filter( 'intermediate_image_sizes', function( $sizes ) {
     unset( $sizes['1536x1536'] ); // с WP 5.3+
     unset( $sizes['2048x2048'] ); // с WP 5.3+
     return $sizes;
