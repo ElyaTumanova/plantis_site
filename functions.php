@@ -284,8 +284,8 @@ function plnt_check_page() {
 
 }
 function plnt_get_images_data() {
-    $image_alt;
-     $args = [
+    $image_alt = '';
+    $args = [
         'post_type'      => 'attachment',
         'post_status'    => 'inherit',
         'posts_per_page' => 1,
