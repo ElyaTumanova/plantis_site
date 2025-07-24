@@ -296,12 +296,12 @@ function plnt_get_images_data() {
 
     if ( $query->have_posts() ) {
         $attachment = $query->posts[0];
+        print_r($attachment);
         $alt = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true );
-        $image_alt = $alt;
     }
 
     
-	echo $image_alt ? $image_alt : 'Alt не найден';
+	echo $alt ? $alt : 'Alt не найден';
     
     $images_array = array();
     // $fp = fopen( ABSPATH . "/wp-content/images.csv", 'w' ); 
