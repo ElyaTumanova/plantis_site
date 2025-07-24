@@ -290,7 +290,7 @@ function plnt_get_images_data() {
         'post_status'    => 'inherit',
         'posts_per_page' => 1,
         'meta_query'     => [],
-        's'              => 'shefflera-nora-na-shtambe-14-50-1-1.webp', // поиск по названию
+        's'              => 'aglaonema-krit-flejm-12-35-3.webp', // поиск по названию
     ];
 
     $query = new WP_Query( $args );
@@ -358,7 +358,7 @@ function plnt_get_cats_data() {
     // fclose( $fp );
 }
 
-//add_action( 'wp_footer', 'plnt_check_page' );
+add_action( 'wp_footer', 'plnt_check_page' );
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 //add_action( 'wp_footer', 'plnt_get_cats_data' );
 
