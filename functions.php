@@ -290,7 +290,7 @@ function plnt_get_images_data() {
         'post_status'    => 'inherit',
         'posts_per_page' => 1,
         'meta_query'     => [],
-        's'              => $'shefflera-nora-na-shtambe-14-50-1-1.webp', // поиск по названию
+        's'              => 'shefflera-nora-na-shtambe-14-50-1-1.webp', // поиск по названию
     ];
 
     $query = new WP_Query( $args );
