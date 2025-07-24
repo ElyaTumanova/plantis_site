@@ -284,23 +284,11 @@ function plnt_check_page() {
 
 }
 function plnt_get_images_data() {
-    $args = [
-        'post_type'      => 'attachment',
-        'post_status'    => 'inherit',
-        'posts_per_page' => 1,
-        'meta_query'     => [],
-        's'              => 'aglaonema-krit-flejm-12-35-3', // поиск по названию
-    ];
+    $image_url = 'http://dev.plantis.shop/wp-content/uploads/2023/09/aglaonema-krit-flejm-12-35-3.webp';
+    $alt = get_image_alt_by_url( $image_url );
 
-    
-    $query = new WP_Query( $args );
-    if ( $query->have_posts() ) {
-        print_r($query);
-        $attachment = $query->posts[0];
-        $alt = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true );
-        return $alt;
-    }
-    
+    echo $alt ? $alt : 'Alt не найден';
+        
 
 //    $alt = get_image_alt_by_filename( 'aglaonema-krit-flejm-12-35-3' );
 //     echo $alt ? $alt : 'Alt не найден';
@@ -310,7 +298,23 @@ function plnt_get_images_data() {
     // fwrite( $fp, $images_array );
     // fclose( $fp );
 }
+function get_image_alt_by_url( $image_url ) {
+    global $wpdb;
 
+    $attachment_id = $wpdb->get_var( $wpdb->prepare(
+        "SELECT ID FROM $wpdb->posts 
+         WHERE post_type = 'attachment' 
+         AND guid = %s 
+         LIMIT 1",
+        $image_url
+    ));
+
+    if ( $attachment_id ) {
+        return get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
+    }
+
+    return false;
+}
 function get_image_alt_by_filename( $filename ) {
     $args = [
         'post_type'      => 'attachment',
