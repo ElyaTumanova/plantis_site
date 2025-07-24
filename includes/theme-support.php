@@ -90,7 +90,7 @@ function show_svg_in_media_library( $response ) {
 	return $response;
 }
 
-// отключаем scrset
+// отключаем srcset
 
 add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
 
