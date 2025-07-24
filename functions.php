@@ -85,26 +85,26 @@ function plnt_set_constants_script() {
     $in_mkad = $shipping_costs[$delivery_inMKAD];
     $out_mkad = $shipping_costs[$delivery_outMKAD];
 
-	// $in_mkad_urg = $shipping_costs[$urgent_delivery_inMKAD];
-	// $out_mkad_urg = $shipping_costs[$urgent_delivery_outMKAD];
+	$in_mkad_urg = $shipping_costs[$urgent_delivery_inMKAD];
+	$out_mkad_urg = $shipping_costs[$urgent_delivery_outMKAD];
 
-	// $in_mkad_large = $shipping_costs[$delivery_inMKAD_large];
-	// $out_mkad_large = $shipping_costs[$delivery_outMKAD_large];
+	$in_mkad_large = $shipping_costs[$delivery_inMKAD_large];
+	$out_mkad_large = $shipping_costs[$delivery_outMKAD_large];
 
-	// $in_mkad_urg_large = $shipping_costs[$urgent_delivery_inMKAD_large];
-	// $out_mkad_urg_large = $shipping_costs[$urgent_delivery_outMKAD_large];
+	$in_mkad_urg_large = $shipping_costs[$urgent_delivery_inMKAD_large];
+	$out_mkad_urg_large = $shipping_costs[$urgent_delivery_outMKAD_large];
  
-	// $in_mkad_small = $shipping_costs[$delivery_inMKAD_small];
-	// $out_mkad_small = $shipping_costs[$delivery_outMKAD_small];
+	$in_mkad_small = $shipping_costs[$delivery_inMKAD_small];
+	$out_mkad_small = $shipping_costs[$delivery_outMKAD_small];
 
-	// $in_mkad_small_urg = $shipping_costs[$urgent_delivery_inMKAD_small];
-	// $out_mkad_small_urg = $shipping_costs[$urgent_delivery_outMKAD_small];
+	$in_mkad_small_urg = $shipping_costs[$urgent_delivery_inMKAD_small];
+	$out_mkad_small_urg = $shipping_costs[$urgent_delivery_outMKAD_small];
 
-	// $in_mkad_medium = $shipping_costs[$delivery_inMKAD_medium];
-	// $out_mkad_medium = $shipping_costs[$delivery_outMKAD_medium];
+	$in_mkad_medium = $shipping_costs[$delivery_inMKAD_medium];
+	$out_mkad_medium = $shipping_costs[$delivery_outMKAD_medium];
 
-	// $in_mkad_medium_urg = $shipping_costs[$urgent_delivery_inMKAD_medium];
-	// $out_mkad_medium_urg = $shipping_costs[$urgent_delivery_outMKAD_medium];
+	$in_mkad_medium_urg = $shipping_costs[$urgent_delivery_inMKAD_medium];
+	$out_mkad_medium_urg = $shipping_costs[$urgent_delivery_outMKAD_medium];
 
 	$isbackorders = plnt_is_backorder();
 	$isTreezBackorders = plnt_is_treez_backorder();
