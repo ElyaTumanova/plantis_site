@@ -289,6 +289,7 @@ function plnt_get_images_data() {
         'post_type'      => 'attachment',
         'post_status'    => 'inherit',
         'posts_per_page' => 4,
+        'post_name' => 'aglaonema-krit-flejm-12-35-1';
     ];
 
     $query = new WP_Query( $args );
