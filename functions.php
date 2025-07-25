@@ -291,7 +291,9 @@ function plnt_get_images_data() {
         'posts_per_page' => 4,
         'post_name' => 'aglaonema-krit-flejm-12-35-1',
     ];
-
+    $alt = get_post_meta( 64520, '_wp_attachment_image_alt', true );
+    echo ($alt);
+    echo('<br>');
     $query = new WP_Query( $args );
     echo ("<pre>");
     print_r($query->posts);
