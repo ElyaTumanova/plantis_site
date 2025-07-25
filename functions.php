@@ -303,7 +303,7 @@ function plnt_get_images_data() {
         $alt = get_post_meta( $img->ID, '_wp_attachment_image_alt', true );
         echo ("['id' => '");
 		echo($img->ID);
-        echo ("['file_name' => '");
+        echo ("', 'file_name'=>'");
 		echo($img->post_name);
 		echo ("', 'opisanie'=>'");
         echo($img->post_content);
