@@ -290,9 +290,9 @@ function plnt_get_images_data() {
         'post_status'    => 'inherit',
         'posts_per_page' => -1,
     ];
-    $alt = get_post_meta( 64520, '_wp_attachment_image_alt', true );
-    echo ($alt);
-    echo('<br>');
+    // $alt = get_post_meta( 64520, '_wp_attachment_image_alt', true );
+    // echo ($alt);
+    // echo('<br>');
     $query = new WP_Query( $args );
     // echo ("<pre>");
     // print_r($query->posts);
