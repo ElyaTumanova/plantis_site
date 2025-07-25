@@ -290,30 +290,30 @@ function plnt_get_images_data() {
         'post_status'    => 'inherit',
         'posts_per_page' => -1,
     ];
-    //$alt = get_post_meta( 64520, '_wp_attachment_image_alt', true );
-    //echo ($alt);
-    //echo('<br>');
+    $alt = get_post_meta( 64520, '_wp_attachment_image_alt', true );
+    echo ($alt);
+    echo('<br>');
     $query = new WP_Query( $args );
     // echo ("<pre>");
     // print_r($query->posts);
     // echo ("</pre>");
     $images = $query->posts;
     echo ("<pre>");
-    foreach ($images as $img ) {
-        $alt = get_post_meta( $img->ID, '_wp_attachment_image_alt', true );
-        echo ("['id' => '");
-		echo($img->ID);
-		echo ("', 'opisanie'=>'");
-        echo($img->post_content);
-        echo ("', 'podpis'=>'");
-        echo($img->post_excerpt);
-        echo ("', 'url'=>'");
-        echo($img->guid);
-        echo ("', 'alt'=>'");
-        echo($img->$alt);
-        echo("'],");
- 		echo ('<br>');
-    }
+    //foreach ($images as $img ) {
+        //$alt = get_post_meta( $img->ID, '_wp_attachment_image_alt', true );
+        // echo ("['id' => '");
+		// echo($img->ID);
+		// echo ("', 'opisanie'=>'");
+        // echo($img->post_content);
+        // echo ("', 'podpis'=>'");
+        // echo($img->post_excerpt);
+        // echo ("', 'url'=>'");
+        // echo($img->guid);
+        // echo ("', 'alt'=>'");
+        // echo($img->$alt);
+        // echo("'],");
+ 		//echo ('<br>');
+    //}
     echo ("</pre>");
     
     
