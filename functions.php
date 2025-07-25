@@ -294,55 +294,36 @@ function plnt_get_images_data() {
     //echo ($alt);
     //echo('<br>');
     $query = new WP_Query( $args );
+    // echo ("<pre>");
+    // print_r($query->posts);
+    // echo ("</pre>");
+    $images = $query->posts;
     echo ("<pre>");
-    print_r($query->posts);
+    foreach ($images as $img ) {
+        $alt = get_post_meta( $img->ID, '_wp_attachment_image_alt', true );
+        echo ("['id' => '");
+		echo($img->ID);
+		echo ("', 'opisanie'=>'");
+        echo($img->post_content);
+        echo ("', 'podpis'=>'");
+        echo($img->post_excerpt);
+        echo ("', 'url'=>'");
+        echo($img->guid);
+        echo ("', 'alt'=>'");
+        echo($img->$alt);
+        echo("'],");
+ 		echo ('<br>');
+    }
     echo ("</pre>");
-
-//    $alt = get_image_alt_by_filename( 'aglaonema-krit-flejm-12-35-3' );
-//     echo $alt ? $alt : 'Alt не найден';
     
-    $images_array = array();
+    
+    //$images_array = array();
     // $fp = fopen( ABSPATH . "/wp-content/images.csv", 'w' ); 
     // fwrite( $fp, $images_array );
     // fclose( $fp );
 }
-function get_image_alt_by_url( $image_url ) {
-    global $wpdb;
 
-    $attachment_id = $wpdb->get_var( $wpdb->prepare(
-        "SELECT ID FROM $wpdb->posts 
-         WHERE post_type = 'attachment' 
-         AND guid = %s 
-         LIMIT 1",
-        $image_url
-    ));
 
-    if ( $attachment_id ) {
-        return $attachment_id;
-        //return get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
-    }
-
-    return false;
-}
-function get_image_alt_by_filename( $filename ) {
-    $args = [
-        'post_type'      => 'attachment',
-        'post_status'    => 'inherit',
-        'posts_per_page' => 1,
-        'meta_query'     => [],
-        's'              => $filename, // поиск по названию
-    ];
-
-    $query = new WP_Query( $args );
-
-    if ( $query->have_posts() ) {
-        $attachment = $query->posts[0];
-        $alt = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true );
-        return $alt;
-    }
-
-    return false;
-}
 function plnt_get_cats_data() {
 	global $plants_treez_cat_id;
 	global $plants_cat_id;
