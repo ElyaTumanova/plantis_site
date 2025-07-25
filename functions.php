@@ -303,6 +303,8 @@ function plnt_get_images_data() {
         $alt = get_post_meta( $img->ID, '_wp_attachment_image_alt', true );
         echo ("['id' => '");
 		echo($img->ID);
+        echo ("['file_name' => '");
+		echo($img->post_name);
 		echo ("', 'opisanie'=>'");
         echo($img->post_content);
         echo ("', 'podpis'=>'");
@@ -316,11 +318,6 @@ function plnt_get_images_data() {
     }
     echo ("</pre>");
     
-    
-    //$images_array = array();
-    // $fp = fopen( ABSPATH . "/wp-content/images.csv", 'w' ); 
-    // fwrite( $fp, $images_array );
-    // fclose( $fp );
 }
 
 
@@ -431,19 +428,19 @@ function plnt_get_prods_data() {
 			// echo ($slug);
 			// echo ('<br>');
 			
-// 			$result = wp_update_term( $term->term_id, 'product_cat', [
-// 				'slug' => $slug,
-// 			] );
+    // 			$result = wp_update_term( $term->term_id, 'product_cat', [
+    // 				'slug' => $slug,
+    // 			] );
 
-// 			// check the result
-// 			if( is_wp_error( $result ) ){
+    // 			// check the result
+    // 			if( is_wp_error( $result ) ){
 
-// 				echo $result->get_error_message();
-// 			}
-// 			else {
+    // 				echo $result->get_error_message();
+    // 			}
+    // 			else {
 
-// 				echo 'Term was successfully updated.';
-// 			}
+    // 				echo 'Term was successfully updated.';
+    // 			}
 	}
 
 }
