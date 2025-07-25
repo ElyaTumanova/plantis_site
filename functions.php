@@ -299,10 +299,10 @@ function plnt_get_images_data() {
     // echo ("</pre>");
     $images = $query->posts;
     echo ("<pre>");
-    //foreach ($images as $img ) {
-        //$alt = get_post_meta( $img->ID, '_wp_attachment_image_alt', true );
-        // echo ("['id' => '");
-		// echo($img->ID);
+    foreach ($images as $img ) {
+        $alt = get_post_meta( $img->ID, '_wp_attachment_image_alt', true );
+        echo ("['id' => '");
+		echo($img->ID);
 		// echo ("', 'opisanie'=>'");
         // echo($img->post_content);
         // echo ("', 'podpis'=>'");
@@ -312,8 +312,8 @@ function plnt_get_images_data() {
         // echo ("', 'alt'=>'");
         // echo($img->$alt);
         // echo("'],");
- 		//echo ('<br>');
-    //}
+ 		echo ('<br>');
+    }
     echo ("</pre>");
     
     
