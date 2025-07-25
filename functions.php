@@ -301,20 +301,22 @@ function plnt_get_images_data() {
     echo ("<pre>");
     foreach ($images as $img ) {
         $alt = get_post_meta( $img->ID, '_wp_attachment_image_alt', true );
-        echo ("['id' => '");
-		echo($img->ID);
-        echo ("', 'file_name'=>'");
-		echo($img->post_name);
-		echo ("', 'opisanie'=>'");
-        echo($img->post_content);
-        echo ("', 'podpis'=>'");
-        echo($img->post_excerpt);
-        echo ("', 'url'=>'");
-        echo($img->guid);
-        echo ("', 'alt'=>'");
-        echo($alt);
-        echo("'],");
- 		echo ('<br>');
+        if($alt) {
+            echo ("['id' => '");
+            echo($img->ID);
+            echo ("', 'file_name'=>'");
+            echo($img->post_name);
+            echo ("', 'opisanie'=>'");
+            echo($img->post_content);
+            echo ("', 'podpis'=>'");
+            echo($img->post_excerpt);
+            echo ("', 'url'=>'");
+            echo($img->guid);
+            echo ("', 'alt'=>'");
+            echo($alt);
+            echo("'],");
+            echo ('<br>');
+        }
     }
     echo ("</pre>");
     
@@ -370,7 +372,7 @@ function plnt_get_cats_data() {
     // fclose( $fp );
 }
 
-//add_action( 'wp_footer', 'plnt_check_page' );
+add_action( 'wp_footer', 'plnt_check_page' );
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 //add_action( 'wp_footer', 'plnt_get_cats_data' );
 
