@@ -276,7 +276,7 @@ function plnt_check_page() {
 	// print_r( $gorshki_cat_id );
 	// echo '</pre>';
 	if ( is_page( 'vakansii' ) ) {
-		plnt_get_images_data();
+		plnt_get_yoast_data();
 	}
 	// else {
 	// 	echo 'Это какая-то другая страница.';
@@ -372,7 +372,39 @@ function plnt_get_cats_data() {
     // fclose( $fp );
 }
 
-//add_action( 'wp_footer', 'plnt_check_page' );
+function plnt_get_yoast_data() {
+	global $plants_treez_cat_id;
+	global $plants_cat_id;
+	global $gorshki_cat_id;
+	global $ukhod_cat_id;
+	global $treez_cat_id;
+	global $treez_poliv_cat_id;
+	global $lechuza_cat_id;
+	global $misc_cat_id;
+	global $peresadka_cat_id;
+
+	// $term = get_term( $plants_cat_id, 'product_cat');
+	// $term_name = $term->name; // получаем название конкретной категории товаров (в данном случае)
+	// //print_r($term_name);
+
+
+    $terms = get_terms( array(
+        'taxonomy'   => 'product_cat',
+        'hide_empty' => false,
+    ) );
+
+    foreach ( $terms as $term ) {
+        $yoast_title = get_term_meta( $term->term_id, 'wpseo_title', true );
+        $yoast_desc  = get_term_meta( $term->term_id, 'wpseo_desc', true );
+
+        echo '<h3>' . esc_html( $term->name ) . '</h3>';
+        echo '<p>Yoast Title: ' . esc_html( $yoast_title ) . '</p>';
+        echo '<p>Yoast Description: ' . esc_html( $yoast_desc ) . '</p>';
+    }
+}
+
+
+add_action( 'wp_footer', 'plnt_check_page' );
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 //add_action( 'wp_footer', 'plnt_get_cats_data' );
 
