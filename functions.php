@@ -392,9 +392,9 @@ function plnt_get_yoast_data() {
         'taxonomy'   => 'product_cat',
         'hide_empty' => false,
     ) );
-
+    echo('<pre>');
     print_r($terms);
-
+    echo ('</pre>');
     // foreach ( $terms as $term ) {
     //     $yoast_title = get_term_meta( $term->term_id, 'wpseo_title', true );
     //     $yoast_desc  = get_term_meta( $term->term_id, 'wpseo_desc', true );
