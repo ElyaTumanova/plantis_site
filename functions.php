@@ -393,14 +393,16 @@ function plnt_get_yoast_data() {
         'hide_empty' => false,
     ) );
 
-    foreach ( $terms as $term ) {
-        $yoast_title = get_term_meta( $term->term_id, 'wpseo_title', true );
-        $yoast_desc  = get_term_meta( $term->term_id, 'wpseo_desc', true );
+    print_r($terms);
 
-        echo '<h3>' . esc_html( $term->name ) . '</h3>';
-        echo '<p>Yoast Title: ' . esc_html( $yoast_title ) . '</p>';
-        echo '<p>Yoast Description: ' . esc_html( $yoast_desc ) . '</p>';
-    }
+    // foreach ( $terms as $term ) {
+    //     $yoast_title = get_term_meta( $term->term_id, 'wpseo_title', true );
+    //     $yoast_desc  = get_term_meta( $term->term_id, 'wpseo_desc', true );
+
+    //     echo '<h3>' . esc_html( $term->name ) . '</h3>';
+    //     echo '<p>Yoast Title: ' . esc_html( $yoast_title ) . '</p>';
+    //     echo '<p>Yoast Description: ' . esc_html( $yoast_desc ) . '</p>';
+    // }
 }
 
 
