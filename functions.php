@@ -397,7 +397,7 @@ function plnt_get_yoast_data() {
     
     foreach ( $terms as $term ) {
 
-        print_r($get_term_meta( $term->term_id));
+        print_r($term);
         // $yoast_title = get_term_meta( $term->term_id, 'wpseo_title', true );
         // $yoast_desc  = get_term_meta( $term->term_id, 'wpseo_desc', true );
 
