@@ -383,6 +383,10 @@ function plnt_get_yoast_data() {
 	global $misc_cat_id;
 	global $peresadka_cat_id;
 
+    global $wpdb;
+    echo('<pre>');
+    print_r($wpdb->wpur_aioseo_posts);
+
 	// $term = get_term( $plants_cat_id, 'product_cat');
 	// $term_name = $term->name; // получаем название конкретной категории товаров (в данном случае)
 	// //print_r($term_name);
@@ -392,7 +396,7 @@ function plnt_get_yoast_data() {
         'taxonomy'   => 'product_cat',
         'hide_empty' => false,
     ) );
-    echo('<pre>');
+    
     // print_r($terms);
     
     foreach ( $terms as $term ) {
