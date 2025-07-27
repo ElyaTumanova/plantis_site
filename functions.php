@@ -387,7 +387,7 @@ function plnt_get_yoast_data() {
     echo('<pre>');
     print_r($wpdb->tables);
     //print_r($wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->aioseo_posts;" ));
-    print_r($wpdb->get_results( "SELECT * FROM $wpur_yoast_indexable WHERE ID = '27'"));
+    print_r($wpdb->get_results( "SELECT * FROM 'wpur_yoast_indexable' WHERE ID = '27'"));
     //print_r($wpdb->get_results( "SELECT * FROM $wpdb->posts WHERE ID = '33739'"));
     //print_r($wpdb->get_results( "SELECT * FROM $wpdb->termmeta WHERE term_id = '838'"));
     //print_r($wpdb->get_results( "SELECT * FROM $wpdb->term_taxonomy"));
