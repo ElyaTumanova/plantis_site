@@ -38,7 +38,7 @@ if( $product->is_type( 'simple' )
 else {
 	if ($parentCat === $peresadka_cat_id) 
 	{
-        $url = '?add-to-cart='.$product->get_id();
+        $url = $product->add_to_cart_url();
 		$text = 'Добавить пересадку за ' .$product->get_price(). ' руб.';
 		$class = isset( $args['class'] ) ? $args['class'] : 'button';
 	} 
@@ -48,8 +48,6 @@ else {
 		$class = isset( $args['class'] ) ? $args['class'] : 'button';
 	}
 }
-
-echo($url);
 //
 
 if ($parentCat !== $peresadka_cat_id) {
