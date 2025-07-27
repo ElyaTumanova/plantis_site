@@ -34,6 +34,7 @@ if( $product->is_type( 'simple' )
     $url = wc_get_cart_remove_url( $cart_item_key );
     $text = 'Добавлен';
     $class = 'button product_type_simple remove_from_cart_button added';
+    echo('1');
 }
 else {
 	if ($parentCat === $peresadka_cat_id) 
@@ -41,11 +42,13 @@ else {
 		$url = $product->add_to_cart_url();
 		$text = 'Добавить пересадку за ' .$product->get_price(). ' руб.';
 		$class = isset( $args['class'] ) ? $args['class'] : 'button';
+         echo('2');
 	} 
 	else {
 		$url = $product->add_to_cart_url();
 		$text = $product->add_to_cart_text();
 		$class = isset( $args['class'] ) ? $args['class'] : 'button';
+        echo('3');
 	}
 }
 
