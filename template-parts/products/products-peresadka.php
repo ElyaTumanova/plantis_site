@@ -37,6 +37,7 @@ if($is_plants_in_cart) {
                 'posts_per_page' => 8,
                 'orderby' => 'rand',
                 'post__in' => $crosssell_ids,
+                'post_status' => 'any',
                 'meta_query' => array( 
                     array(
                         'key'       => '_stock_status',
