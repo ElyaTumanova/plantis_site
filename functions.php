@@ -385,40 +385,22 @@ function plnt_get_yoast_data() {
 
     global $wpdb;
     echo('<pre>');
-    print_r($wpdb->tables);
-    //print_r($wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->aioseo_posts;" ));
-    print_r($wpdb->get_results( "SELECT * FROM wpur_yoast_indexable WHERE object_sub_type = 'product_cat'"));
-    //print_r($wpdb->get_results( "SELECT * FROM $wpdb->posts WHERE ID = '33739'"));
-    //print_r($wpdb->get_results( "SELECT * FROM $wpdb->termmeta WHERE term_id = '838'"));
-    //print_r($wpdb->get_results( "SELECT * FROM $wpdb->term_taxonomy"));
-    // print_r(get_post_meta( 33739, '_yoast_wpseo_title'));
-    // print_r(get_post_meta( 33739, '_yoast_wpseo_metadesc'));
-    // print_r(get_post_meta( 838, '_yoast_wpseo_title'));
-
-
-	// $term = get_term( $plants_cat_id, 'product_cat');
-	// $term_name = $term->name; // получаем название конкретной категории товаров (в данном случае)
-	// //print_r($term_name);
-
+ 
+    print_r($wpdb->get_results( "SELECT * FROM wpur_yoast_indexable WHERE object_sub_type = 'product_cat' AND object_id=650"));
 
     $terms = get_terms( array(
         'taxonomy'   => 'product_cat',
         'hide_empty' => false,
-    ) );
+    ));
     
     // print_r($terms);
     
     foreach ( $terms as $term ) {
 
         $meta = get_term_meta( $term->term_id );
-        //echo($term->term_id);
-        //print_r($meta);
-        // $yoast_title = get_term_meta( $term->term_id, '_yoast_wpseo_title', true );
-        // $yoast_desc  = get_term_meta( $term->term_id, '_yoast_wpseo_metadesc', true );
+        echo($term->term_id);
+        echo('<br>');
 
-        // echo '<h3>' . esc_html( $term->name ) . '</h3>';
-        // echo '<p>Yoast Title: ' . esc_html( $yoast_title ) . '</p>';
-        // echo '<p>Yoast Description: ' . esc_html( $yoast_desc ) . '</p>';
     }
 
     echo ('</pre>');
