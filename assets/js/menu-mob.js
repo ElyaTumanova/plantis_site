@@ -13,13 +13,51 @@ const menuMobCatalogBtn = document.querySelector('.burger-menu__nav_catalog');
 const menuMobMenu = document.querySelector('.burger-menu__wrap');
 const menuMobCatalog = document.querySelector('.catalog-menu__wrap');
 
-const catalogMob = document.querySelector('.catalog-menu__wrap');
+//const catalogMob = document.querySelector('.catalog-menu__wrap');
 const catalogMobOpen = document.querySelector('.header__catalog_mob');
 
+let dropdownPlants;
+let menuPlants;
 
+function plntAjaxShowCatalogMobMenu() {
+  ( function ( $ ) {
+    console.log('plntAjaxShowCatalogMobMenu init');
+      "use strict";
+    // Define the PHP function to call from here
+      var data = {
+        'action': 'plnt_show_catalog_menu'
+      };
+      $.get(
+        woocommerce_params.ajax_url, // The AJAX URL
+        data, // Send our PHP function
+        function(response){
+          //console.log(response);
+          menuMobCatalog.innerHTML = response;
+          console.log('plntAjaxShowCatalogMobMenu success')
+          catalogMenuInit();
+        }
+      );
+  // Close anon function.
+  }( jQuery ) );
+}
+
+function catalogMenuInit() {
 // для разворачивая пункта меню с растениями
-const dropdownPlants = catalogMob.querySelector('.catalog__dropdown');
-const menuPlants = dropdownPlants.querySelector('.catalog__dropdown-menu');
+  dropdownPlants = menuMobCatalog.querySelector('.catalog__dropdown');
+  menuPlants = dropdownPlants.querySelector('.catalog__dropdown-menu');
+
+  // для разворачивая пункта меню с растениями
+  menuPlants.classList.add('catalog__dropdown-menu_show');
+  dropdownPlants.classList.add('catalog__dropdown_open');
+
+  setCatalogDropdown();
+}
+
+
+// menuMobOpen.addEventListener ("click", plntAjaxShowCatalogMobMenu,{once:true});
+// menuMobOpen.addEventListener ("click", (evt)=>{
+//     catalogMobOpen.removeEventListener("click", plntAjaxShowCatalogMobMenu)
+// });
 
 menuMobOpen.addEventListener ("click", (evt)=>{
     toggle_mob_menu ();
@@ -64,15 +102,21 @@ function open_catalog () {
     menuMobCatalog.classList.add('catalog-menu__wrap_open');
     menuMobCatalogBtn.classList.add('burger-menu__nav-btn_active');
 
-     // для разворачивая пункта меню с растениями
-     menuPlants.classList.add('catalog__dropdown-menu_show');
-     dropdownPlants.classList.add('catalog__dropdown_open');
+    //  // для разворачивая пункта меню с растениями
+    //  menuPlants.classList.add('catalog__dropdown-menu_show');
+    //  dropdownPlants.classList.add('catalog__dropdown_open');
 
 }
 
 /*--------------------------------------------------------------
 # Catalog for mobile
 --------------------------------------------------------------*/
+
+
+// catalogMobOpen.addEventListener ("click", plntAjaxShowCatalogMobMenu,{once:true});
+// catalogMobOpen.addEventListener ("click", (evt)=>{
+//     menuMobOpen.removeEventListener("click", plntAjaxShowCatalogMobMenu)
+// });
 
 catalogMobOpen.addEventListener ("click", (evt)=>{
     toggle_mob_menu ();

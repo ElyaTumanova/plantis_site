@@ -4,8 +4,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $product;
-$is_out_of_stock = $product->get_stock_status() ==='outofstock';
-
 
 $crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
 
@@ -43,19 +41,8 @@ if( !empty ($crosssell_ids) ){
         $products = new WP_Query( $args );
         if ( $products->have_posts() ) : ?>
 
-            <div class="card__sliders-wrap cross-sells">
-
-                <?php 
-                if ( $is_out_of_stock) {
-                    ?>
-                    <h2 class="heading-2"><?php _e( 'Похожие растения в наличии', 'woocommerce' ) ?></h2>       
-                    <?php
-                } else {
-                    ?>
-                    <h2 class="heading-2"><?php _e( 'Похожие растения', 'woocommerce' ) ?></h2>
-                    <?php       
-                }
-                ?>         
+            <div class="card__sliders-wrap cross-sells"> 
+                <h2 class="heading-2"><?php _e( 'Похожие растения', 'woocommerce' ) ?></h2>        
                 <div class="cross-upsells-swiper swiper">
                     <ul class="products columns-3 swiper-wrapper"> 
                         <?php while ( $products->have_posts() ) : $products->the_post(); ?>

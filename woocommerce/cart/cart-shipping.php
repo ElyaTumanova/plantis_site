@@ -32,7 +32,7 @@ $calculator_text          = '';
         <strong><?php echo wp_kses_post( $package_name ); ?></strong>
 		<?php do_action ('plnt_large_delivery_notice')?>
 		<?php if ( isset( $available_methods ) && is_array( $available_methods ) ) : ?>
-			<ul id="shipping_method" class="woocommerce-shipping-methods <?php if ( plnt_is_backorder()  ) : ?> woocommerce-shipping-backorder <?php endif;?>">
+			<ul id="shipping_method" class="woocommerce-shipping-methods <?php if ( plnt_is_backorder() || plnt_is_treez_backorder()) : ?> woocommerce-shipping-backorder <?php endif;?>">
 				<?php foreach ( $available_methods as $method ) : ?>
 					<li>
 						<?php

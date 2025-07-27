@@ -18,7 +18,7 @@ get_header(); ?>
 			<header class="page-header">
 				<h1 class="page-title"><?php
 					/* translators: %s: search query. */
-					printf( esc_html__( 'Результаты поиска: %s', 'estore' ), '<span>' . get_search_query() . '</span>' );
+					printf( 'Результаты поиска: %s', '<span>' . get_search_query() . '</span>' );
 				?></h1>
 			</header><!-- .page-header -->
 
@@ -42,9 +42,9 @@ get_header(); ?>
             ?>
 
             <div class="catalog__grid">
-                <div class="catalog__sidebar">
-                    <?php plnt_catalog_menu() ?>
-                </div>
+                <!-- <div class="catalog__sidebar">
+                    <?php //plnt_catalog_menu() ?>
+                </div> -->
                 <div class="catalog__products-wrap">
                     <ul class="products columns-2"> 
                         <?php
@@ -64,8 +64,8 @@ get_header(); ?>
 
                     the_posts_pagination( array(
                         'class' => 'woocommerce-pagination',
-                        'prev_text'    => __('←'),
-	                    'next_text'    => __('→'),
+                        'prev_text'    => '←',
+	                    'next_text'    => '→',
                     ));
 
                     else :

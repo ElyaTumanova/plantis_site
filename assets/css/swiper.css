@@ -570,6 +570,12 @@
     border-radius: var(--swiper-scrollbar-border-radius, 10px);
     left: 0;
     top: 0;
+    cursor: pointer;
+  }
+
+  .swiper-scrollbar-drag:hover, .swiper-scrollbar-drag:active{
+    height: 6px;
+    top: -1px;
   }
   .swiper-scrollbar-cursor-drag {
     cursor: move;

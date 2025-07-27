@@ -53,9 +53,11 @@ else {
 echo apply_filters(
 	'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
 	sprintf(
-		'<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
-        // esc_url( $product->add_to_cart_url() ),
-        esc_url( $url),                                                                         //added
+		'<form action="%s" method="post" class="add_to_cart_from">
+    <button type="submit" data-quantity="%s" class="%s" %s>%s</button>
+    </form>',
+    // esc_url( $product->add_to_cart_url() ),
+    esc_url( $url),                                                                         //added
 		esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
 		// esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ),
 		esc_attr( $class ),                                                                     //added
@@ -66,3 +68,20 @@ echo apply_filters(
 	$product,
 	$args
 );
+
+// echo apply_filters(
+// 	'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
+// 	sprintf(
+// 		'<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
+//         // esc_url( $product->add_to_cart_url() ),
+//         esc_url( $url),                                                                         //added
+// 		esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
+// 		// esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ),
+// 		esc_attr( $class ),                                                                     //added
+// 		isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
+// 		// esc_html( $product->add_to_cart_text() )
+// 		esc_html( $text )                                                                       //added
+// 	),
+// 	$product,
+// 	$args
+// );

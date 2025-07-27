@@ -121,20 +121,33 @@ do_action( 'woocommerce_before_cart' ); ?>
 							<?php 
 								$qty = $cart_item[ 'quantity' ];
 								$stock_qty = $_product->get_stock_quantity();
-								if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
-									?><sup class="backorder_date-info">Доставка после <?php echo plnt_set_backorders_date();?></sup>
+								global $plants_cat_id;
+								if ( check_is_treez($_product) || check_is_lechuza($_product) ) {
+									?><p class="backorder_date-info backorder_date-info_late">Доставка со склада 3 - 7 дней</p>
 									<?php
-								}	
+								}	else {
+									if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
+										if (check_category($_product) === $plants_cat_id) {
+										?><p class="backorder_date-info backorder_date-info_late">Доставка после <?php echo plnt_set_backorders_date();?></p>
+										<?php } else {
+											?><p class="backorder_date-info backorder_date-info_late">Доставка со склада 3 - 7 дней</p>
+											<?php
+										}
+									} else {
+										?><p class="backorder_date-info">Доставка от 2-х часов</p>
+										<?php
+									}
+								}
 							?>
 							<!-- peresadka_init -->
-							<div class="cart__peresadka">
+							<!-- <div class="cart__peresadka">
 							<?php 
-							get_template_part('template-parts/products/products-peresadka',null,
-									array( // массив с параметрами
-										'product_id' => $product_id
-									)); 
+							//get_template_part('template-parts/products/products-peresadka',null,
+							//		array( // массив с параметрами
+							//			'product_id' => $product_id
+							//		)); 
 							?>
-							</div>
+							</div> -->
 						</td>
 
 						<td class="product-price" data-title="<?php esc_attr_e( 'Price', 'woocommerce' ); ?>">
@@ -178,16 +191,21 @@ do_action( 'woocommerce_before_cart' ); ?>
 								echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 							?>
 						</td>
-						<td class="product-backorder-upsells">
+						
 						<?php 
-						if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
+						global $plants_cat_id;
+						$parentCatId = check_category ($_product);
+						if ( $_product->backorders_allowed() && $qty > $stock_qty && $parentCatId === $plants_cat_id) {
+							?><td class="product-backorder-upsells"><?php
 							get_template_part('template-parts/products/products-backorder-crosssell',null,
 								array( // массив с параметрами
-									'product_id' => $product_id
+									'product_id' => $product_id,
+									'cart_item'=>$cart_item_key
 							));
+							?></td><?php
 						}	 
 						?>
-						</td>
+						
 					</tr>
 					<?php
 				}

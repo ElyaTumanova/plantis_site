@@ -3,53 +3,33 @@ get_header(); ?>
 
 <?php 
     // стоимость доставки
+
+    global $delivery_inMKAD;
+    global $delivery_outMKAD;
    
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
     $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
     $min_free_delivery = carbon_get_theme_option('min_free_delivery');
-    
+
+    $large_markup_delivery_in_mkad = carbon_get_theme_option('large_markup_delivery_in_mkad');
+    $large_markup_delivery_out_mkad = carbon_get_theme_option('large_markup_delivery_out_mkad');
+
+    $small_markup_delivery = carbon_get_theme_option('small_markup_delivery');
+    $medium_markup_delivery = carbon_get_theme_option('medium_markup_delivery');
+
+    $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
+    $urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_large');
+
+    $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+
     $shipping_costs = plnt_get_shiping_costs();
 
     $in_mkad = $shipping_costs[$delivery_inMKAD];
     $out_mkad = $shipping_costs[$delivery_outMKAD];
-
-	$in_mkad_urg = $shipping_costs[$urgent_delivery_inMKAD];
-	$out_mkad_urg = $shipping_costs[$urgent_delivery_outMKAD];
-
-	$in_mkad_large = $shipping_costs[$delivery_inMKAD_large];
-	$out_mkad_large = $shipping_costs[$delivery_outMKAD_large];
-
-	$in_mkad_urg_large = $shipping_costs[$urgent_delivery_inMKAD_large];
-	$out_mkad_urg_large = $shipping_costs[$urgent_delivery_outMKAD_large];
- 
-	$in_mkad_small = $shipping_costs[$delivery_inMKAD_small];
-	$out_mkad_small = $shipping_costs[$delivery_outMKAD_small];
-
-	$in_mkad_small_urg = $shipping_costs[$urgent_delivery_inMKAD_small];
-	$out_mkad_small_urg = $shipping_costs[$urgent_delivery_outMKAD_small];
-
-    $in_mkad_medium = $shipping_costs[$delivery_inMKAD_medium];
-	$out_mkad_medium = $shipping_costs[$delivery_outMKAD_medium];
-
-	$in_mkad_medium_urg = $shipping_costs[$urgent_delivery_inMKAD_medium];
-	$out_mkad_medium_urg = $shipping_costs[$urgent_delivery_outMKAD_medium];
-
-    $small_delivery_markup_in_mkad =  floatval(str_replace(' ', '', $in_mkad_small)) - floatval(str_replace(' ', '', $in_mkad));
-    $small_delivery_markup_out_mkad =  floatval(str_replace(' ', '', $out_mkad_small)) - floatval(str_replace(' ', '', $out_mkad));
-
-    $medium_delivery_markup_in_mkad =  floatval(str_replace(' ', '', $in_mkad_medium)) - floatval(str_replace(' ', '', $in_mkad));
-    $medium_delivery_markup_out_mkad =  floatval(str_replace(' ', '', $out_mkad_medium)) - floatval(str_replace(' ', '', $out_mkad));
-    
-    $small_delivery_markup_in_mkad_urg =  floatval(str_replace(' ', '', $in_mkad_small_urg)) - floatval(str_replace(' ', '', $in_mkad_urg));
-    $small_delivery_markup_out_mkad_urg =  floatval(str_replace(' ', '', $out_mkad_small_urg)) - floatval(str_replace(' ', '', $out_mkad_urg));
-
-    $medium_delivery_markup_in_mkad_urg =  floatval(str_replace(' ', '', $in_mkad_medium_urg)) - floatval(str_replace(' ', '', $in_mkad_urg));
-    $medium_delivery_markup_out_mkad_urg =  floatval(str_replace(' ', '', $out_mkad_medium_urg)) - floatval(str_replace(' ', '', $out_mkad_urg));
-
     $min_small_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_small_delivery)) - 1;
     $min_medium_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_medium_delivery)) - 1;
 
-    $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+    print_r($shipping_costs);
     
 ?>
 
@@ -73,8 +53,8 @@ get_header(); ?>
                             </ul>
                         <p><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
                         <ul>
-                            <li>в пределах МКАД — от <?php echo $in_mkad_urg ?> рублей;</li>
-                            <li>за пределы МКАД (до 5 км) — от <?php echo $out_mkad_urg ?> рублей;</li>
+                            <li>в пределах МКАД — от <?php echo floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery)) ?> рублей;</li>
+                            <li>за пределы МКАД (до 5 км) — от <?php echo floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery)) ?> рублей;</li>
                             <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
                         </ul>	
                         <?php if($min_small_delivery || $min_medium_delivery) {
@@ -86,37 +66,13 @@ get_header(); ?>
                                 <p><strong>Цена доставки для заказов стоимостью до 
                                     <?php 
                                     if($min_small_delivery) {
-                                        echo $min_small_delivery_minus_1.' рублей увеличена на '.$small_delivery_markup_in_mkad;  
-                                            if($small_delivery_markup_in_mkad !== $small_delivery_markup_out_mkad ) {
-                                                echo ' / '.$small_delivery_markup_out_mkad.' рублей в пределах и за пределами МКАД соответственно.'; }
-                                            else {echo ' рублей.';} 
+                                        echo $min_small_delivery_minus_1.' рублей увеличена на '.$small_markup_delivery.' рублей.';   
                                     } 
                                     
                                     if($min_medium_delivery) {
-                                        echo '<br>Цена доставки для заказов стоимостью от '.$min_small_delivery.' до '.$min_medium_delivery_minus_1.' рублей увеличена на '.$medium_delivery_markup_in_mkad; 
-                                            if($medium_delivery_markup_in_mkad !== $medium_delivery_markup_out_mkad ) { 
-                                                echo ' / '.$small_delivery_markup_out_mkad.' рублей в пределах и за пределами МКАД соответственно.'; }
-                                            else {echo ' рублей.';}
+                                        echo '<br>Цена доставки для заказов стоимостью от '.$min_small_delivery.' до '.$min_medium_delivery_minus_1.' рублей увеличена на '.$medium_markup_delivery.' рублей.'; 
                                     } ?> 
                                 </strong></p>  
-
-                                <!-- <small>2 - если стоимость вашего заказа меньше 
-                                   <?php 
-                                    // if($min_small_delivery) {
-                                    //     echo $min_small_delivery.' рублей, стоимость доставки будет увеличена на '.$small_delivery_markup_in_mkad_urg;  
-                                    //         if($small_delivery_markup_in_mkad_urg !== $small_delivery_markup_out_mkad_urg ) {
-                                    //             echo ' / '.$small_delivery_markup_out_mkad_urg.' рублей в пределах и за пределами МКАД соответственно.'; }
-                                    //         else {echo ' рублей.';} 
-                                    // } 
-                                    
-                                    // if($min_medium_delivery) {
-                                    //     echo '<br>Если стоимость меньше '.$min_medium_delivery.' рублей, стоимость доставки будет увеличена на '.$medium_delivery_markup_in_mkad_urg; 
-                                    //         if($medium_delivery_markup_in_mkad_urg !== $medium_delivery_markup_out_mkad_urg ) { 
-                                    //             echo ' / '.$small_delivery_markup_out_mkad_urg.' рублей в пределах и за пределами МКАД соответственно.'; }
-                                    //         else {echo ' рублей.';}
-                                    // } 
-                                    ?> 
-                                </small>                                 -->
                             <?php endif; ?>			
                         <?php
 
@@ -147,7 +103,7 @@ get_header(); ?>
                     </div> -->
                 </div>
             </div>
-                <?php if(array_key_exists($delivery_inMKAD_large,$shipping_costs)) { 
+                <?php if($large_markup_delivery_in_mkad) { 
                     echo '<div class="delivery__block">
                         <div class="delivery__header">
                             <h2 class="entry-header">Крупногабаритная доставка</h2>
@@ -157,14 +113,14 @@ get_header(); ?>
                             <p>Доставка крупномерных растений (от 100см), больших заказов, высоких или тяжелых кашпо осуществляется грузовым автомобилем.</p>
                             <p><strong>Крупногабаритная доставка на следующий день или позже:</strong></p>
                             <ul>
-                                <li>в пределах МКАД — от '.$in_mkad_large.' рублей;</li>
-                                <li>за пределы МКАД (до 5 км) — от '.$out_mkad_large.' рублей;</li>
+                                <li>в пределах МКАД — от '.floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_in_mkad)).' рублей;</li>
+                                <li>за пределы МКАД (до 5 км) — от '.floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)).' рублей;</li>
                                 <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
                             </ul>
                             <p><strong>Крупногабаритная срочная “день в день”. Можно оформить до 18:00:</strong></p>
                             <ul>
-                                <li>в пределах МКАД — от '.$in_mkad_urg_large.' рублей;</li>
-                                <li>за пределы МКАД (до 5 км) — от '.$out_mkad_urg_large.' рублей;</li>
+                                <li>в пределах МКАД — от '.floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_in_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)).' рублей;</li>
+                                <li>за пределы МКАД (до 5 км) — от '.floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)).' рублей;</li>
                                 <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
                             </ul>
                         </div>

@@ -10,11 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 // 	'mobile-nav' => 'Mobile',
 // ));
 register_nav_menus( array(
-	'primary'   => esc_html__( 'Primary Menu', 'art-starter-theme' ),
-	'secondary' => esc_html__( 'Secondary Menu', 'art-starter-theme' ),
-	'catalog'    => esc_html__( 'Categories in Catalog', 'art-starter-theme' ),
-	'footer-plants'    => esc_html__( 'Plants Categories in Footer', 'art-starter-theme' ),
-	'footer-services'    => esc_html__( 'Services List in Footer', 'art-starter-theme' ),
+	'primary'   => 'Primary Menu',
+	'secondary' => 'Secondary Menu',
+	'catalog'    => 'Categories in Catalog',
+	'footer-plants'    => 'Plants Categories in Footer',
+	'footer-services'    => 'Services List in Footer',
 ) );
 
 
@@ -254,3 +254,20 @@ function nav_remove_empty_category_menu_item ( $items, $menu) {
 }
 
 add_filter( 'wp_get_nav_menu_items', 'nav_remove_empty_category_menu_item', 10, 3 );
+
+// AJAX for menu
+function plnt_show_primary_menu() {
+	echo plnt_primary_menu();
+	die();
+}
+
+add_filter( 'wp_ajax_nopriv_plnt_show_primary_menu', 'plnt_show_primary_menu' );
+add_filter( 'wp_ajax_plnt_show_primary_menu', 'plnt_show_primary_menu' );
+
+function plnt_show_catalog_menu() {
+	echo plnt_catalog_menu();
+	die();
+}
+
+add_filter( 'wp_ajax_nopriv_plnt_show_catalog_menu', 'plnt_show_catalog_menu' );
+add_filter( 'wp_ajax_plnt_show_catalog_menu', 'plnt_show_catalog_menu' );

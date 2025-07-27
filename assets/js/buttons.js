@@ -51,15 +51,12 @@ window.addEventListener('resize', () => {
 
 //скрываем меню при скролле
 let marginTopOffset = headerMainHeight - headerHeight;
-let headerMenu = document.querySelector('.header__menu');
 window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset;
     if(scrollTop >0){
         headerMainDiv.setAttribute('style', `margin-top:${marginTopOffset}px`);
-        headerMenu.setAttribute('style', `margin-top:${marginTopOffset}px`);
     } else{
         headerMainDiv.removeAttribute('style');
-        headerMenu.removeAttribute('style');
     }
 });
 document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
@@ -70,6 +67,26 @@ document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffs
 //     document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
 //     console.log(marginTopOffset);
 // });
+
+//скрываем панель с фльтрами в моб каталоге при скролле
+
+let catalogFilterWrap = document.querySelector('.catalog__filter-wrap');
+let lastScrollTop = window.pageYOffset;
+
+if(catalogFilterWrap) {
+    window.addEventListener('scroll', function() {
+        let scrollTopPosition = window.pageYOffset;
+    
+        if (scrollTopPosition > lastScrollTop) {
+            // console.log('scrolling down');
+            catalogFilterWrap.classList.add('catalog__filter-wrap_up');
+        } else if (scrollTopPosition < lastScrollTop) {
+            // console.log('scrolling up');
+            catalogFilterWrap.classList.remove('catalog__filter-wrap_up');
+        }
+        lastScrollTop = scrollTopPosition <= 0 ? 0 : scrollTopPosition;
+    });
+}
 
 /*--------------------------------------------------------------
 # Filters for mobile in catalog
@@ -117,14 +134,14 @@ if(catalogWrap) {
     
     function make_2_grid_columns () {
         catalogGrid.classList.add ('columns-2');
-        catalogGrid.classList.remove ('columns-3');
+        catalogGrid.classList.remove ('columns-2_other');
         gridButton2.disabled = true;
         gridButton3.disabled = false;
     };
     
     function make_3_grid_columns () {
         catalogGrid.classList.remove ('columns-2');
-        catalogGrid.classList.add ('columns-3');
+        catalogGrid.classList.add ('columns-2_other');
         gridButton2.disabled = false;
         gridButton3.disabled = true;
     };
@@ -139,5 +156,3 @@ function scrollToTop () {
         behavior: 'smooth'
       })
 }
-
-console.log('hello master');

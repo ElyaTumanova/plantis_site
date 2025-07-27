@@ -45,7 +45,7 @@
             "filters"
             "catalog"
             "pagination";
-        margin-top: 20px;
+        margin-top: 5px;
     }
 
     .catalog__grid .woocommerce-ordering__wrap {
@@ -102,6 +102,11 @@
         padding-right: 10px;
         box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
         margin-bottom: 10px;
+        transition: top 0.4s;
+    }
+
+    .catalog__filter-wrap_up {
+        top: -80px;
     }
 }
 
@@ -225,8 +230,8 @@
 }
 
 /* стили для сетки каталога */
-.catalog__grid 
-ul.products {
+
+.catalog__grid .products {
     display: flex;
     align-items: stretch;
     flex-direction: row;
@@ -236,42 +241,49 @@ ul.products {
     min-width: 12vw;
     column-gap: 16px;
     row-gap: 26px;
+}
 
-    &.columns-2 {
+.catalog__grid .products.columns-2 .product { /*количетсво столбцов по умолчанию на классе columns-2*/
+    width: calc(100% / 2 - 8px);
+}
 
-        li.product {
-            width: calc(100% / 2 - 8px);
-        }
+.catalog__grid .products.columns-2_other .product {
+    width: calc(100% / 3 - 18px);
+}
+
+.catalog__grid .products.columns-3 .product { /* to be deleted*/
+    width: calc(100% / 2 - 8px);
+}
+
+.catalog__grid .products .product {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    box-sizing: border-box;
+    position: relative;
+}
+
+@media (max-width: 1300px) {
+    .catalog__grid .products {
+        row-gap: 30px;
     }
 
-    &.columns-3 {
-
-        li.product {
-            width: calc(100% / 3 - 16px);
-        }
+    .catalog__grid .products.columns-2 .product {
+        width: calc(100% / 2 - 8px);
     }
 
-    li.product {
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        align-items: flex-start;
-        box-sizing: border-box;
-        position: relative;
+    .catalog__grid .products.columns-2_large .product {
+        width: calc(100% / 2 - 8px);
     }
 }
 
 @media (max-width: 767px) {
-    .catalog__grid 
-    ul.products {
-        row-gap: 30px;
-
-        &.columns-2 {
-
-            li.product {
-                width: 100%;
-            }
-        }
+    .catalog__grid .products.columns-2 .product {
+        width: 100%;
+    }
+    .catalog__grid .products.columns-2_large .product {
+        width: 100%;
     }
 }
 
@@ -314,14 +326,20 @@ ul.products {
 .catalog__products-wrap .yith-wcwl-add-to-wishlist {
     border: none;
     position: absolute;
-    /* top: 0;
-    right: 0; */
-    
-    /* position: relative; */
     height: 0;
-    margin-left: auto;
-    margin-top: 10px;
-    margin-right: 10px;
+    margin-left: auto !important;
+    margin-top: 10px !important;
+    margin-right: 10px !important;
+    z-index: 2;
+    top: 10px !important;
+    right: 10px !important;
+    left: auto !important;
+}
+.catalog__products-wrap .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, 
+.catalog__products-wrap .yith-wcwl-add-to-wishlist a.delete_item>img, 
+.catalog__products-wrap .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
+    max-width: 32px;
+    width: 32px;
 }
 
 @media (max-width:767px) {
@@ -335,6 +353,7 @@ ul.products {
     .catalog__products-wrap .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
         margin: 0 !important;
         max-width: 24px;
+        width: 24px;
     }
 
     /* .catalog__products-wrap .yith-wcwl-add-to-wishlist {
@@ -345,18 +364,13 @@ ul.products {
     } */
 
     .catalog__products-wrap .yith-wcwl-add-to-wishlist {
-        /* position: absolute;
-        top: auto;
-        bottom: auto;
-        top: calc(var(--imgH) + 80px);
-        right: 80px; */
         border-radius: 100%;
         padding: 11px 10px 9px 10px;
-        position: relative;
+        position: relative !important;
         order: 2;
-        margin-top: -62px;
-        margin-left: auto;
-        margin-right: 70px;
+        margin-top: -62px !important;
+        margin-left: auto !important;
+        margin-right: 70px !important;
         height: fit-content;
         
         /* option 1 */
@@ -395,26 +409,26 @@ ul.products {
     border-color: var(--red-color);
 }
 
+.catalog__grid .add_to_cart_from {
+    margin-top: -62px;
+    margin-right: 20px;
+    margin-left: auto;
+    order: -1;
+    z-index: 2;
+}
+
 .catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple {
-    margin: 10px 0 15px;
     font-size: 0;
     width: 52px;
     height: 52px;
     border-radius: 100%;
     margin-bottom: 15px;
-    margin-top: -62px;
-    margin-right: 20px;
-    margin-left: auto;
     /* background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg); */
-    background-image: url(https://plantis.shop/wp-content/uploads/2025/01/cart_white_new.svg);
+    background-image: url(https://plantis.shop/wp-content/uploads/2025/02/cart_white_new2.svg);
     background-repeat: no-repeat;
     background-position: center;
     padding: 0;
     background-size: 50%;
-    order: -1;
-    z-index: 2;
-    
-    /* margin: 10px 0 10px; */
 }
 
 .catalog__grid .added {
@@ -430,6 +444,12 @@ ul.products {
 }
 
 @media (max-width: 767px) {
+    .catalog__grid .add_to_cart_from {
+        margin-top: -67px;
+        margin-left: auto;
+        margin-right: 0;
+        order: 1;
+    }
 
     .catalog__grid .add_to_cart_button, .catalog__grid .product_type_simple {
         font-size: 0;
@@ -437,19 +457,19 @@ ul.products {
         height: 60px;
         border-radius: 100%;
         margin-bottom: 0;
-        margin-top: -67px;
+        /* margin-top: -67px;
         margin-left: auto;
-        margin-right: 0;
+        margin-right: 0; */
         /* position: absolute;
         top: calc(var(--imgH) + 60px);
         right: 10px; */
         /* background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg); */
-        background-image: url(https://plantis.shop/wp-content/uploads/2025/01/cart_white_new.svg);
+        background-image: url(https://plantis.shop/wp-content/uploads/2025/02/cart_white_new2.svg);
         background-repeat: no-repeat;
         background-position: center;
         padding: 0;
         background-size: 50%;
-        order: 1;
+        /* order: 1; */
     }
 
     .catalog__grid .added {
@@ -538,20 +558,25 @@ ul.products {
 
 @media(max-width: 767px) {
     .catalog__tags {
-        margin-top: 15px;
+        margin-top: 25px;
     }
 }
 
 .catalog__tag {
-    border-radius: 20px;
-    padding: 3px 7px 3px;
-    box-shadow: 0 0 0 1px #f2f2f2;
-    border: solid 2px var(--accent-color);
+    /* border-radius: 20px; */
+    padding: 3px 7px 3px 0;
+    /* box-shadow: 0 0 0 1px #f2f2f2;
+    border: solid 2px var(--accent-color); */
     font-weight: 600;
     margin-right: 5px;
-	margin-top: 5px;
+	/* margin-top: 5px; */
     white-space: nowrap;
     display: inline-block;
+    color: var(--gray-text);
+}
+
+.catalog__tag:hover {
+    color: var(--accent-color);
 }
 
 .catalog__tag-link:hover {
@@ -572,7 +597,7 @@ ul.products {
     .catalog__products-wrap .card__stockstatus {
         font-size: 16px;
         min-width: 103px;
-        padding: 3px;
+        padding: 3px 5px;
     }
 }
 
@@ -595,6 +620,7 @@ ul.products {
 .product__image-slider-wrap img {
     border: var(--background) 1px solid;
     box-sizing: border-box;
+    border-radius: 35px;
 }
 /*--------------------------------------------------------------
 # Upsells & Cross sells in Card
@@ -622,6 +648,10 @@ ul.products {
     right: 10px;
     width: 40px;
     height: 40px;
+}
+
+.card__sliders-wrap img {
+    border-radius: 25px;
 }
 
 .cross-upsells-swiper .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, .cross-upsells-swiper .yith-wcwl-add-to-wishlist a.delete_item>img, .cross-upsells-swiper .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
@@ -699,24 +729,26 @@ ul.products {
 } */
 
 /* кнопка добавить в корзину */
+.card__sliders-wrap .add_to_cart_from {
+    margin-top: -49px;
+    margin-right: 11px;
+    margin-left: auto;
+    order: -1;
+    z-index: 2;
+}
+
 .card__sliders-wrap .add_to_cart_button, .card__sliders-wrap .product_type_simple {
-    margin: 10px 0 15px;
     font-size: 0;
     width: 40px;
     height: 40px;
     border-radius: 100%;
     margin-bottom: 15px;
-    margin-top: -40px;
-    margin-right: 13px;
-    margin-left: auto;
     /* background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg); */
-    background-image: url(https://plantis.shop/wp-content/uploads/2025/01/cart_white_new.svg);
+    background-image: url(https://plantis.shop/wp-content/uploads/2025/02/cart_white_new2.svg);
     background-repeat: no-repeat;
     background-position: center;
     padding: 0;
     background-size: 50%;
-    order: -1;
-    z-index: 2;
 }
 
 .card__sliders-wrap .added {
@@ -1021,30 +1053,33 @@ ul.products {
     margin-left: auto;
     display: block;
     width: fit-content;
+    padding: 15px 20px;
 }
 
 /*--------------------------------------------------------------
 # Product slider
 --------------------------------------------------------------*/
 
+.product-slider-wrap .add_to_cart_from {
+    margin-top: -49px;
+    margin-right: 5px;
+    margin-left: auto;
+    order: -1;
+    z-index: 2;
+}
+
 .product-slider-wrap .add_to_cart_button, .product-slider-wrap .product_type_simple {
-    margin: 10px 0 15px;
     font-size: 0;
     width: 40px;
     height: 40px;
     border-radius: 100%;
     margin-bottom: 15px;
-    margin-top: -40px;
-    margin-right: 3px;
-    margin-left: auto;
     /* background-image: url(https://plantis.shop/wp-content/uploads/2024/03/cart-white.svg); */
-    background-image: url(https://plantis.shop/wp-content/uploads/2025/01/cart_white_new.svg);
+    background-image: url(https://plantis.shop/wp-content/uploads/2025/02/cart_white_new2.svg);
     background-repeat: no-repeat;
     background-position: center;
     padding: 0;
     background-size: 50%;
-    order: -1;
-    z-index: 2;
 }
 
 .product-slider-wrap .added {
@@ -1057,7 +1092,7 @@ ul.products {
 
 .product-slider-wrap .woocommerce-loop-product__title {
     font-size: 15px;
-    min-height: 35px;
+    min-height: 53px;
 }
 .product-slider-wrap .woocommerce-product-details__short-description {
     font-size: 13px;
@@ -1082,7 +1117,8 @@ ul.products {
     z-index: 10;
     margin: 0;
     top: 10px;
-    right: 3px;
+    right: 5px;
+    left: auto !important;
     width: 40px;
     height: 40px;
 }
@@ -1095,12 +1131,16 @@ ul.products {
 
 .product-slider-wrap .sale_badge {
     font-size: 13px;
-    padding: 0 3px 0 0;
+    padding: 3px 5px;
 }
 
-.product-slider-wrap .sale_badge .sale_badge-skidka{
-    padding: 3px;
+.product-slider-wrap img {
+    border-radius: 25px;
 }
+
+/* .product-slider-wrap .sale_badge .sale_badge-skidka{
+    padding: 3px;
+} */
 
 /* стили цены */
 .product-slider-wrap .product .price {
@@ -1260,6 +1300,7 @@ ul.products {
 
     .metki_swiper_wrap {
         margin: 0;
+        padding-bottom: 0px;
     }
 }
 
@@ -1347,7 +1388,7 @@ ul.products {
 @media (max-width:767px) {
     .catalog__filter-active {
         overflow-x: scroll;
-        margin-top: 10px;
+        /* margin-top: 10px; */
     }
     .catalog__filter-active .berocket_aapf_widget_selected_filter {
         flex-wrap: nowrap;
@@ -1456,6 +1497,7 @@ ul.products {
     font-family: swiper-icons !important;
     text-transform: none;
     font-weight: 600;
+    font-style: normal;
 }
 
 .catalog__sidebar-filters .fa-chevron-up:before {
@@ -1464,6 +1506,74 @@ ul.products {
     font-family: swiper-icons !important;
     text-transform: none;
     font-weight: 600;
+    font-style: normal;
+}
+
+/*фильтр с диаметром горшка*/
+
+.filter_diametr_gorshka .bapf_body {
+    height: var(--diametrFilterWrapHeight);
+    max-height: 350px;
+    overflow-y: auto;
+    transition: all 0.3s;
+}
+
+.filter_diametr_gorshka .bapf_body.hidden {
+    height: var(--diametrFilterWrapHeight);
+    max-height: var(--diametrFilterWrapHeight);
+    overflow-y: hidden;
+
+}
+
+.filter-show-more-btn {
+    border: none;
+    background-color: var(--background);
+    color: var(--gray-text);
+    margin-top: 10px;
+}
+
+.filter-show-more-btn:hover {
+    color: var(--text);
+}
+
+ /* стили для скролла scroll */
+    /* start custom scroll */
+.filter_diametr_gorshka .bapf_body::-webkit-scrollbar {
+	width: 4px;
+}
+
+.filter_diametr_gorshka .bapf_body::-webkit-scrollbar-track {
+    background: transparent;  /* Скрыть трек */
+}
+
+.filter_diametr_gorshka .bapf_body::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 100, 100, 0.3); /* бледный по умолчанию */
+    border-radius: 4px;
+    transition: background-color 0.2s ease;  
+}
+
+.filter_diametr_gorshka .bapf_body:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.7); /* ярче при скролле */
+}
+
+.filter_diametr_gorshka .bapf_body::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+/* end custom scroll */
+
+
+/* фильтр с назанием растения */
+
+.mCSB_scrollTools_vertical {
+    margin-top: 50px !important;
+}
+
+.berocket-search-checkbox {
+    margin-bottom: 20px;
+    width: 100%;
 }
 
 /*стили для switch чекбокса в наличии*/

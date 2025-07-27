@@ -12,12 +12,18 @@
 }
 
 .backorder_date-info {
-    padding: 0.2em;
+    padding: 0.2em 0.4em;
     background-color: var(--accent-color);
     border-radius: 7px;
     color: var(--white);
-    white-space: nowrap;
-    top: -0.3em;
+    white-space: normal;
+    font-size: 10px;
+    text-align: center;
+    max-width: fit-content;
+}
+
+.backorder_date-info_late {
+  background-color: var(--stock-backorder);
 }
 
 @media (min-width: 768px) {
@@ -208,6 +214,7 @@
 #shipping_method {
     display: flex;
     min-height: 85px;
+    overflow-x: auto;
 }
 
 #shipping_method label::before {
@@ -240,8 +247,15 @@
     display: inline;
 }
 
-/*прячем срочную доставку для предзаказа*/
-.woocommerce-shipping-backorder li:has([value="flat_rate:5"]) {
+
+/* DELETE */
+/*прячем цену для почты россии*/
+/* .woocommerce-shipping-backorder li:has([value="flat_rate:27"]) span {
+    display: none;
+} */
+
+/*прячем срочную доставку для предзаказа #backorder*/
+/* .woocommerce-shipping-backorder li:has([value="flat_rate:5"]) {
     display: none;
 }
 .woocommerce-shipping-backorder li:has([value="flat_rate:6"]) {
@@ -264,7 +278,7 @@
 }
 .woocommerce-shipping-backorder li:has([value="flat_rate:12"]) {
     display: none;
-}
+} */
 
 .large_delivery_notice {
     /* background-color: var(--notice-red); */
@@ -312,7 +326,7 @@
 /* кнопка оформления заказа*/
 .woocommerce-checkout .place-order .button {
     background-color: var(--accent-color); 
-    border-radius: 5px;
+    border-radius: 30px;
     font-size: 16px;
     font-weight: 500;
     text-transform: uppercase;
@@ -802,6 +816,6 @@ label.list-view {
     background-color: #e9ecef;
   }
 
-.payment_method_tinkoff img {
+.payment_method_tbank img {
     display: none;
 }
