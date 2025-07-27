@@ -373,16 +373,6 @@ function plnt_get_cats_data() {
 }
 
 function plnt_get_yoast_data() {
-	global $plants_treez_cat_id;
-	global $plants_cat_id;
-	global $gorshki_cat_id;
-	global $ukhod_cat_id;
-	global $treez_cat_id;
-	global $treez_poliv_cat_id;
-	global $lechuza_cat_id;
-	global $misc_cat_id;
-	global $peresadka_cat_id;
-
     global $wpdb;
     echo('<pre>');
  
@@ -397,17 +387,18 @@ function plnt_get_yoast_data() {
     
     foreach ( $terms as $term ) {
         $yoast_data = $wpdb->get_results( "SELECT * FROM wpur_yoast_indexable WHERE object_sub_type = 'product_cat' AND object_id=$term->term_id");
-
-        //print_r($term);
+        echo ("['id' => '");
         echo($term->term_id);
-        echo('<br>');
+        echo ("', 'name'=>'");
         echo($term->name);
-        echo('<br>');
+        echo ("', 'slug'=>'");
         echo($term->slug);
-        echo('<br>');
+        echo ("', 'seo_title'=>'");
         print_r($yoast_data[0]->title);
-        echo('<br>');
+        echo ("', 'seo_descr'=>'");
         print_r($yoast_data[0]->description);
+        echo("'],");
+        echo ('<br>');
 
     }
 
