@@ -379,14 +379,14 @@ function plnt_get_yoast_data() {
     //print_r($wpdb->get_results( "SELECT * FROM wpur_yoast_indexable WHERE object_sub_type = 'product_cat' AND object_id=650"));
 
     $terms = get_terms( array(
-        'taxonomy'   => 'product_cat',
+        'taxonomy'   => 'product_tag',
         'hide_empty' => false,
     ));
     
     //print_r($terms);
     
     foreach ( $terms as $term ) {
-        $yoast_data = $wpdb->get_results( "SELECT * FROM wpur_yoast_indexable WHERE object_sub_type = 'product_cat' AND object_id=$term->term_id");
+        $yoast_data = $wpdb->get_results( "SELECT * FROM wpur_yoast_indexable WHERE object_sub_type = 'product_tag' AND object_id=$term->term_id");
         echo ("['id' => '");
         echo($term->term_id);
         echo ("', 'name'=>'");
@@ -406,7 +406,7 @@ function plnt_get_yoast_data() {
 }
 
 
-//add_action( 'wp_footer', 'plnt_check_page' );
+add_action( 'wp_footer', 'plnt_check_page' );
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 //add_action( 'wp_footer', 'plnt_get_cats_data' );
 
