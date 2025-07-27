@@ -385,7 +385,8 @@ function plnt_get_yoast_data() {
 
     global $wpdb;
     echo('<pre>');
-    print_r($wpdb->wpur_aioseo_posts);
+    print_r($$wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->wpur_aioseo_posts;" ););
+
 
 	// $term = get_term( $plants_cat_id, 'product_cat');
 	// $term_name = $term->name; // получаем название конкретной категории товаров (в данном случае)
@@ -402,7 +403,7 @@ function plnt_get_yoast_data() {
     foreach ( $terms as $term ) {
 
         $meta = get_term_meta( $term->term_id );
-        print_r($meta);
+        //print_r($meta);
         // $yoast_title = get_term_meta( $term->term_id, 'wpseo_title', true );
         // $yoast_desc  = get_term_meta( $term->term_id, 'wpseo_desc', true );
 
