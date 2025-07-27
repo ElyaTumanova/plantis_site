@@ -383,7 +383,7 @@ function plnt_get_yoast_data() {
         'hide_empty' => false,
     ));
     
-    print_r($terms);
+    //print_r($terms);
     
     foreach ( $terms as $term ) {
         $yoast_data = $wpdb->get_results( "SELECT * FROM wpur_yoast_indexable WHERE object_sub_type = 'product_cat' AND object_id=$term->term_id");
