@@ -207,7 +207,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
                         if($parentCatId === $plants_cat_id) {
                             ?><td class="product-upsells"><?php
-							get_template_part('template-parts/plnt-upsells', null,
+							get_template_part('template-parts/products/products-cart-upsells', null,
                             array( // массив с параметрами
 									'product_id' => $product_id,
 							)
