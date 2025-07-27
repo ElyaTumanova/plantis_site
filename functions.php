@@ -396,7 +396,7 @@ function plnt_get_yoast_data() {
     // print_r($terms);
     
     foreach ( $terms as $term ) {
-
+        print_r($term);
         $meta = get_term_meta( $term->term_id );
         echo($term->term_id);
         echo('<br>');
