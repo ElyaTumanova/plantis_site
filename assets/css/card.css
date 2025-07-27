@@ -638,7 +638,7 @@ input[type="number"] {
 }
 
 /* ссылка на просмотр корзины после добавления */
-.add-to-cart-wrap .wc-forward, .card__peresadka .wc-forward {
+.add-to-cart-wrap .wc-forward, .cart__peresadka .wc-forward {
     display: none;
 }
 

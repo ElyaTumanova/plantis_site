@@ -274,9 +274,40 @@
 
 /* peresadka */
 
-.woocommerce-cart-form .cart__peresadka .quantity {
+.cart__peresadka .quantity {
     display: none;
 }
+
+.cart__peresadka {
+    display: flex;
+    align-items: center;
+    color: var(--gray-text);
+}
+.cart__peresadka svg path{
+    stroke: var(--gray-text);
+}
+.cart__peresadka:hover{
+    color: var(--text);
+}
+.cart__peresadka:hover svg path{
+    stroke: var(--text);
+}
+
+.cart__peresadka .add_to_cart_button, .cart__peresadka .product_type_simple {
+    width: fit-content;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 10px 0;
+    text-transform: none;
+}
+.cart__peresadka .add_to_cart_button:hover, .cart__peresadka .product_type_simple:hover  {
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+
 
 /* backorder */
 .backorder-crossells__preview-wrap {
