@@ -405,7 +405,9 @@ function plnt_get_yoast_data() {
         echo('<br>');
         echo($term->slug);
         echo('<br>');
-        print_r($yoast_data[0]);
+        print_r($yoast_data[0]->title);
+        echo('<br>');
+        print_r($yoast_data[0]->description);
 
     }
 
