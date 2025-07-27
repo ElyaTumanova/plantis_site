@@ -54,7 +54,7 @@ else {
 }
 //
 
-if ($parentCat !== $peresadka_cat_id) {
+if (is_page( 'cart' )) {
     echo apply_filters(
         'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
         sprintf(

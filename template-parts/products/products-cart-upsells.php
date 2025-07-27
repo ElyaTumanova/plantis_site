@@ -45,7 +45,28 @@ if( !empty ($upsells_ids) ){
                     <ul class="products columns-3 swiper-wrapper"> 
                         <?php while ( $products->have_posts() ) : $products->the_post(); ?>
 
-                        <?php wc_get_template_part( 'content', 'product' ); ?>
+                       <?php $prod_id = get_the_ID(); ?>
+                        <?php $sale = get_post_meta( get_the_ID(), '_sale_price', true);?>
+                        <li class="swiper-slide product">
+                            <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'medium' );?>" class="cart_upsells__img attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="<?php echo get_the_title();?>">
+                            <a href="<?php echo get_permalink();?>" class="cart_upsells__link" target="blank">
+                                <div class="cart_upsells__title woocommerce-loop-product__title"><?php echo get_the_title();?></div>
+                            </a>
+                            <div class="price">
+                            <?php if ($sale) {
+                                ?>
+                                <span class="cart_upsells__reg-price"><?php echo get_post_meta( get_the_ID(), '_regular_price', true);?>&#8381;</span>
+                                <span class="cart_upsells__price"><?php echo get_post_meta( get_the_ID(), '_sale_price', true);?>&#8381;</span>
+                                <?php
+                            } else {
+                                ?>
+                                <span class="cart_upsells__price"><?php echo get_post_meta( get_the_ID(), '_price', true);?>&#8381;</span>
+                                <?php 
+                            }
+                            ?>
+                            </div>
+                            
+                        </li>
 
                         <?php endwhile; // end of the loop. ?>
                     </ul>
