@@ -386,7 +386,7 @@ function plnt_get_yoast_data() {
     global $wpdb;
     echo('<pre>');
  
-    print_r($wpdb->get_results( "SELECT * FROM wpur_yoast_indexable WHERE object_sub_type = 'product_cat' AND object_id=650"));
+    //print_r($wpdb->get_results( "SELECT * FROM wpur_yoast_indexable WHERE object_sub_type = 'product_cat' AND object_id=650"));
 
     $terms = get_terms( array(
         'taxonomy'   => 'product_cat',
@@ -400,6 +400,11 @@ function plnt_get_yoast_data() {
         $meta = get_term_meta( $term->term_id );
         echo($term->term_id);
         echo('<br>');
+        echo($term->name);
+        echo('<br>');
+        echo($term->slug);
+        echo('<br>');
+        print_r($wpdb->get_results( "SELECT * FROM wpur_yoast_indexable WHERE object_sub_type = 'product_cat' AND object_id=$term->term_id"));
 
     }
 
