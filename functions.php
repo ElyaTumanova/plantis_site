@@ -389,7 +389,7 @@ function plnt_get_yoast_data() {
     //print_r($wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->aioseo_posts;" ));
     //print_r($wpdb->get_results( "SELECT * FROM $wpdb->aioseo_posts WHERE ID = '18'"));
     //print_r($wpdb->get_results( "SELECT * FROM $wpdb->posts WHERE ID = '33739'"));
-    print_r($wpdb->get_results( "SELECT * FROM $wpdb->terms WHERE ID = '33739'"));
+    print_r($wpdb->get_results( "SELECT * FROM $wpdb->terms"));
     // print_r(get_post_meta( 33739, '_yoast_wpseo_title'));
     // print_r(get_post_meta( 33739, '_yoast_wpseo_metadesc'));
     // print_r(get_post_meta( 838, '_yoast_wpseo_title'));
