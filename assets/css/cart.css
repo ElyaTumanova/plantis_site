@@ -97,11 +97,12 @@
 .woocommerce-cart-form .shop_table tr.woocommerce-cart-form__cart-item {
     display: grid;
     grid-template-columns:160px auto 150px;
-    grid-template-rows: repeat(4, auto);
+    grid-template-rows: repeat(5, auto);
     grid-template-areas:
     "img name price"
     "img name qty"
     "img name remove"
+    "backorder backorder backorder backorder"
     "upsells upsells upsells";
     column-gap: 25px;
 
@@ -112,7 +113,7 @@
 }
 
 .woocommerce-cart-form .shop_table td.product-backorder-upsells {
-    grid-area: upsells;
+    grid-area: backorder;
     overflow: hidden;
 }
 
@@ -221,10 +222,11 @@
     .woocommerce-cart-form .shop_table tr.woocommerce-cart-form__cart-item {
         display: grid;
         grid-template-columns:80px auto 150px 20px;
-        grid-template-rows: repeat(3, auto);
+        grid-template-rows: repeat(4, auto);
         grid-template-areas:
         "img name price price "
         "img name qty remove "
+        "backorder backorder backorder backorder"
         "upsells upsells upsells upsells";
 
         column-gap: 7px;
