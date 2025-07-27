@@ -533,3 +533,68 @@ function swiper_backorder_crossells_init(){
 }
 
 swiper_backorder_crossells_init();
+
+function swiper_cart_upsells_init(){
+    swiper_cart_upsells = new Swiper('.cart_upsells-swiper', {
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            type: 'progressbar'
+        },
+        scrollbar: {
+            el: ".swiper-scrollbar",
+            hide: false,
+            draggable: true,
+        },
+        // navigation: {
+        //     nextEl: '.swiper-button-next',
+        //     prevEl: '.swiper-button-prev',
+        // },
+        slidesPerView: 4,
+        slidesPerGroup: 1,
+        spaceBetween: 15,
+        loop: false,
+        freeMode: false,
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+                pagination: {
+                    enabled: true,
+                },
+                scrollbar: {
+                    enabled: false,
+                },
+            },
+            520: {
+                slidesPerView: 3,
+                pagination: {
+                    enabled: true,
+                },
+                scrollbar: {
+                    enabled: false,
+                },
+            },
+            768: {
+                slidesPerView: 4,
+                pagination: {
+                    enabled: false,
+                },
+                scrollbar: {
+                    enabled: true,
+                },
+            },
+            1024: {
+                slidesPerView: 4,
+                pagination: {
+                    enabled: false,
+                },
+                scrollbar: {
+                    enabled: true,
+                },
+            }
+        }
+    });
+}
+
+swiper_cart_upsells_init();
