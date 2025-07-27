@@ -34,7 +34,7 @@ if( !empty ($upsells_ids) ){
         if ( $products->have_posts() ) : ?>
 
             <div class="cart-upsells__preview-wrap">
-                <div class="cart-upsells__preview-title">Похожие растения в наличии</div>
+                <div class="cart-upsells__preview-title">Этому растению подойдет</div>
    
                 <div class="cart-upsells__preview-down"><span class="cart-upsells__preview-down-open">Развернуть</span><span class="cart-upsells__preview-down-close">Свернуть</span><span class="cart-upsells__preview-arrow">next</span></div>
             </div>
