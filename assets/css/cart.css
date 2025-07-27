@@ -116,6 +116,11 @@
     overflow: hidden;
 }
 
+.woocommerce-cart-form .shop_table td.product-upsells {
+    grid-area: upsells;
+    overflow: hidden;
+}
+
 .woocommerce-cart-form .shop_table td.product-price, td.product-subtotal {
     text-align: center;
 }
