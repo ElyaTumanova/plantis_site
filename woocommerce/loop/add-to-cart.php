@@ -48,6 +48,8 @@ else {
 		$class = isset( $args['class'] ) ? $args['class'] : 'button';
 	}
 }
+
+echo($url);
 //
 
 if ($parentCat !== $peresadka_cat_id) {
@@ -74,8 +76,8 @@ if ($parentCat !== $peresadka_cat_id) {
     	'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
     	sprintf(
     		'<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
-            esc_url( $product->add_to_cart_url() ),
-            //esc_url( $url),                                                                         //added
+            //esc_url( $product->add_to_cart_url() ),
+            esc_url( $url),                                                                         //added
     		esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
     		// esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ),
     		esc_attr( $class ),                                                                     //added
