@@ -5,6 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $plants_cat_id;
 $is_plants_in_cart = true;
+
+//не учитываем наличие растений в корзине
 // foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 //     $_product   = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 //     $parentCat = check_category($_product);

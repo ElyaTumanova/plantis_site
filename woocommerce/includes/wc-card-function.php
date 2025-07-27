@@ -229,7 +229,7 @@ function plnt_price_wrap(){
         </div>
         <?php
         // peresadka_init
-        plnt_get_peresadka_add_to_cart();
+        //plnt_get_peresadka_add_to_cart();
         ?>
     </div>
     <?php
