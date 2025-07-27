@@ -411,13 +411,13 @@ function plnt_get_yoast_data() {
     foreach ( $terms as $term ) {
 
         $meta = get_term_meta( $term->term_id );
-        //print_r($meta);
-        $yoast_title = get_term_meta( $term->term_id, '_yoast_wpseo_title', true );
-        $yoast_desc  = get_term_meta( $term->term_id, '_yoast_wpseo_metadesc', true );
+        print_r($meta);
+        // $yoast_title = get_term_meta( $term->term_id, '_yoast_wpseo_title', true );
+        // $yoast_desc  = get_term_meta( $term->term_id, '_yoast_wpseo_metadesc', true );
 
-        echo '<h3>' . esc_html( $term->name ) . '</h3>';
-        echo '<p>Yoast Title: ' . esc_html( $yoast_title ) . '</p>';
-        echo '<p>Yoast Description: ' . esc_html( $yoast_desc ) . '</p>';
+        // echo '<h3>' . esc_html( $term->name ) . '</h3>';
+        // echo '<p>Yoast Title: ' . esc_html( $yoast_title ) . '</p>';
+        // echo '<p>Yoast Description: ' . esc_html( $yoast_desc ) . '</p>';
     }
 
     echo ('</pre>');
