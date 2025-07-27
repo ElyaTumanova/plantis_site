@@ -4,8 +4,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $product;
+$product_id = $args[ 'product_id' ];
 
-$upsells_ids = $product->get_upsell_ids();
+if ($product) {
+    $upsells_ids = $product->get_upsell_ids();
+} else {
+    if ($product_id) {
+        $product = wc_get_product( $product_id );
+        $upsells_ids = $product->get_upsell_ids();
+    }
+}
 
 if( !empty ($upsells_ids) ){
 
