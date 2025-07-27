@@ -385,7 +385,8 @@ function plnt_get_yoast_data() {
 
     global $wpdb;
     echo('<pre>');
-    print_r($wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->aioseo_posts;" ));
+    //print_r($wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->aioseo_posts;" ));
+    print_r($wpdb->get_results( "SELECT * FROM $wpdb->aioseo_posts WHERE post_id = '18'"));
 
 
 	// $term = get_term( $plants_cat_id, 'product_cat');
