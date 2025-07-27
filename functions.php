@@ -396,7 +396,7 @@ function plnt_get_yoast_data() {
     // print_r($terms);
     
     foreach ( $terms as $term ) {
-        $yoast_data[0] = $wpdb->get_results( "SELECT * FROM wpur_yoast_indexable WHERE object_sub_type = 'product_cat' AND object_id=$term->term_id");
+        $yoast_data = $wpdb->get_results( "SELECT * FROM wpur_yoast_indexable WHERE object_sub_type = 'product_cat' AND object_id=$term->term_id");
 
         //print_r($term);
         echo($term->term_id);
@@ -405,7 +405,7 @@ function plnt_get_yoast_data() {
         echo('<br>');
         echo($term->slug);
         echo('<br>');
-        print_r($yoast_data);
+        print_r($yoast_data[0]);
 
     }
 
