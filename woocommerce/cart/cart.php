@@ -204,6 +204,12 @@ do_action( 'woocommerce_before_cart' ); ?>
 							));
 							?></td><?php
 						}	 
+
+                        if($parentCatId === $plants_cat_id) {
+                            ?><td class="product-upsells"><?php
+							get_template_part('template-parts/plnt-upsells');
+							?></td><?php
+                        }                        
 						?>
 						
 					</tr>
