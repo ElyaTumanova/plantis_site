@@ -38,11 +38,11 @@ get_header(); ?>
         <div class="delivery info__list">
 
             <div class="delivery__block">
-                <div class="delivery__header">
+                <!-- <div class="delivery__header"> -->
                     <h1 class="entry-header">Доставка</h1>
-                    <span class="delivery__dropdown-arrow">next</span>
-                </div>
-                <div class="delivery__dropdown">
+                    <!-- <span class="delivery__dropdown-arrow">next</span> -->
+                <!-- </div> -->
+                <!-- <div class="delivery__dropdown"> -->
                     <div>
                         <!-- <h3 class="delivery__heading heading-2">Если ваш заказ <b>от <?php //echo $min_small_delivery ?></b> рублей:</h3> -->
                         <p><strong>Доставка на следующий день или позже:</strong></p>
@@ -101,7 +101,7 @@ get_header(); ?>
                             <p class="info__note">В итоговой стоимости заказа не учитывается цена доставки!</p>
                         <?php endif; ?>
                     </div> -->
-                </div>
+                <!-- </div> -->
             </div>
                 <?php if($large_markup_delivery_in_mkad) { 
                     echo '<div class="delivery__block">
