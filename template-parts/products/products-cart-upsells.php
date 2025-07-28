@@ -76,6 +76,10 @@ if( !empty ($upsells_ids) ){
                                     echo $sale;
                                     } else {
                                     echo get_post_meta( get_the_ID(), '_price', true);}?>" 
+                                    data-category-name="<?php
+                                    $parentCatId = check_category($this);
+                                    echo get_the_category_by_ID($parentCatId);
+                                    ?>" 
                                 >
                                 В корзину
                             </a>
