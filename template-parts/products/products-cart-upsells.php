@@ -68,7 +68,7 @@ if( !empty ($upsells_ids) ){
                             <a 
                                 href="?add-to-cart=<?php echo $prod_id;?>" 
                                 data-quantity="1" 
-                                class="button ajax_add_to_cart product-cart-upsells_btn" 
+                                class="button product_type_simple add_to_cart_button ajax_add_to_cart product-cart-upsells_btn" 
                                 data-product_id="<?php echo $prod_id;?>" 
                                 rel="noindex, nofollow" 
                                 data-product-name="<?php echo get_the_title();?>" 
