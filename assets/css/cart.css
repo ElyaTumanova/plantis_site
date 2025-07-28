@@ -202,6 +202,9 @@
     grid-area: img;
     align-self: center;
 }
+.woocommerce-cart-form .shop_table td.product-thumbnail img{
+    border-radius: 16px;
+}
 
 .woocommerce-cart-form .shop_table td.product-name {
     grid-area: name;
