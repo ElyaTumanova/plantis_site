@@ -77,7 +77,7 @@ if( !empty ($upsells_ids) ){
                                     } else {
                                     echo get_post_meta( get_the_ID(), '_price', true);}?>" 
                                     data-category-name="Горшки и кашпо"
-                                    data-stock-quantity="<?php echo get_stock_quantity();?>" 
+                                    data-stock-quantity="<?php echo get_post_meta( get_the_ID(), '', true);?>" 
                                     
                                 >
                                 В корзину
