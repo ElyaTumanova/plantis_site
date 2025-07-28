@@ -48,7 +48,6 @@ $pricelist_link = carbon_get_theme_option('pricelist_link');
                         return strcmp($a->name, $b->name);
                     }
                     usort($lowest_cats, "sortByName");
-                    print_r( $lowest_cats);
                     foreach ( $lowest_cats as $cat ) {
                         //print_r($cat);
                         echo $cat->name . ' (ID: ' . $cat->term_id . ')<br>';
