@@ -69,18 +69,37 @@
         // for INN
         if (innField) {
             console.log(document.querySelector('.wc_payment_methods input[checked="checked"]').value);
-            if(event && event.target.id == "payment_method_cheque") {
-                innField.classList.remove('d-none');
-            } else {
-                if(event.target.id == "payment_method_tbank" 
+            // if(event && event.target.id == "payment_method_cheque") {
+            //     innField.classList.remove('d-none');
+            // } else {
+            //     if(event.target.id == "payment_method_tbank" 
+            //         || event.target.id == "payment_method_cop"
+            //         || event.target.id == "payment_method_cod"
+            //     ) 
+            //     {
+            //         innField.classList.add('d-none')
+            //         innField.value = ''
+            //     }
+            // };
+
+            if (event) {
+                if (event.target.id == "payment_method_cheque") {
+                    innField.classList.remove('d-none');
+                } else if (event.target.id == "payment_method_tbank" 
                     || event.target.id == "payment_method_cop"
-                    || event.target.id == "payment_method_cod"
-                ) 
-                {
+                    || event.target.id == "payment_method_cod")
+                    {
+                        innField.classList.add('d-none')
+                        innField.value = ''
+                    }   
+            } else {
+                if (document.querySelector('.wc_payment_methods input[checked="checked"]').value == 'cheque') {
+                    innField.classList.remove('d-none');
+                } else {
                     innField.classList.add('d-none')
                     innField.value = ''
                 }
-            };
+            }
         }        
 
         // for holidays
