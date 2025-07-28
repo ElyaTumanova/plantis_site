@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // FOR DEV
-add_action( 'wp_footer', 'plnt_dev_functions' );
+//add_action( 'wp_footer', 'plnt_dev_functions' );
 
 function plnt_dev_functions() {
 
