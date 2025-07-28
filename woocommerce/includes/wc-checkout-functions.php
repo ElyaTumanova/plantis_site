@@ -574,6 +574,8 @@ Contents
     /* Уведомление об ошибке в оформлении заказа */
     add_action( 'woocommerce_after_checkout_validation', 'checkout_validation_unique_error', 9999, 2 );
     function checkout_validation_unique_error( $data, $errors ){
+        print_r($data);
+        print_r($errors);
         // Check for any validation errors
         if( ! empty( $errors->get_error_codes() ) ) {
 
