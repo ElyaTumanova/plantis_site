@@ -39,7 +39,7 @@ if( !empty ($upsells_ids) ){
                 <div class="cart-upsells__preview-down"><span class="cart-upsells__preview-down-open">Развернуть</span><span class="cart-upsells__preview-down-close">Свернуть</span><span class="cart-upsells__preview-arrow">next</span></div>
             </div>
 
-            <div class="cart-upsells__sliders-wrap product-slider-wrap">    
+            <div class="cart-upsells__sliders-wrap">    
                     
                 <div class="cart_upsells-swiper swiper">
                     <ul class="products columns-3 swiper-wrapper"> 
