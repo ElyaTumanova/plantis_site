@@ -1135,16 +1135,6 @@ function plnt_inn_field_in_email( $rows, $order ) {
         update_post_meta( $order_id, '_billing_address_2', $address );
     }
 
-    add_filter( 'woocommerce_checkout_fields', 'plnt_billing_adress');
-    function plnt_billing_adress($fields) {
-        $fields['billing']['billing_address_2']['required'] = false;
-        $fields['billing']['billing_address_3']['required'] = false;
-        $fields['billing']['billing_address_4']['required'] = false;
-        $fields['billing']['billing_address_5']['required'] = false;
-        
-        return $fields;
-    }
-
 /*--------------------------------------------------------------
 # T Bank
 --------------------------------------------------------------*/
