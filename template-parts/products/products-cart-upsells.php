@@ -66,12 +66,16 @@ if( !empty ($upsells_ids) ){
                             ?>
                             </div>
                             <a 
-                                href="?add-to-cart=<?php $prod_id?>" 
+                                href="?add-to-cart=<?php echo $prod_id;?>" 
                                 data-quantity="1" 
-                                class="button product_type_simple add_to_cart_button ajax_add_to_cart product-cart-upsells_btn" 
+                                class="button ajax_add_to_cart product-cart-upsells_btn" 
                                 data-product_id="<?php echo $prod_id;?>" 
                                 rel="noindex, nofollow" 
-                               
+                                data-product-name="<?php echo get_the_title();?>" 
+                                data-product-price="<?php if ($sale) { 
+                                    echo $sale;
+                                    } else {
+                                    echo get_post_meta( get_the_ID(), '_price', true);}?>" 
                                 >
                                 В корзину
                             </a>
