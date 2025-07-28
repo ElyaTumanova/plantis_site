@@ -12,6 +12,7 @@ Contents
 # Treez & Lechuza notifications
 # Checkout form fields
 # Dont call me radio buttons
+# INN field
 # Billing adress field
 # T Bank
 # Thankyou page
@@ -886,7 +887,7 @@ function plnt_override_checkout_fields( $fields ) {
     $fields['billing']['billing_first_name']['required'] = true;
     $fields['billing']['billing_phone']['required'] = true;
     $fields['billing']['billing_email']['required'] = true;
-    $fields['billing']['billing_address_2']['required'] = false;
+    //$fields['billing']['billing_address_2']['required'] = false;
     
 
     return $fields;
