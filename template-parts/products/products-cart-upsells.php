@@ -78,7 +78,12 @@ if( !empty ($upsells_ids) ){
                                     echo get_post_meta( get_the_ID(), '_price', true);}?>" 
                                     data-category-name="Горшки и кашпо"
                                     data-stock-quantity="<?php echo get_post_meta( get_the_ID(), '_stock', true);?>" 
-                                    
+                                    data-remove_link="<?php
+                                    $cart_item_key = WC()->cart->generate_cart_id( $prod_id );
+                                    $remove_cart_url = wc_get_cart_remove_url( $cart_item_key );
+                                    echo $remove_cart_url;
+                                    ?>" 
+                                    data-cart_item_key="<?php echo $cart_item_key;?>"
                                 >
                                 В корзину
                             </a>
