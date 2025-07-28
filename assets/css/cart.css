@@ -400,6 +400,10 @@
     max-width: calc(100vw - 50px);
 }
 
+.backorder-crossells__sliders-wrap .swiper-wrapper img {
+    border-radius: 16px;
+}
+
 .backorder-crossells__sliders-wrap .card__stockstatus {
     display: none;
 }
@@ -526,6 +530,10 @@
     margin-bottom: 15px;
     margin-top: 25px;
     max-width: calc(100vw - 50px);
+}
+
+.cart-upsells__sliders-wrap .swiper-wrapper img {
+    border-radius: 16px;
 }
 
 .cart-upsells__sliders-wrap .card__stockstatus {
