@@ -203,7 +203,7 @@
     align-self: center;
 }
 .woocommerce-cart-form .shop_table td.product-thumbnail img{
-    border-radius: 16px;
+    border-radius: 25px;
 }
 
 .woocommerce-cart-form .shop_table td.product-name {
@@ -401,7 +401,7 @@
 }
 
 .backorder-crossells__sliders-wrap .swiper-wrapper img {
-    border-radius: 16px;
+    border-radius: 25px;
 }
 
 .backorder-crossells__sliders-wrap .card__stockstatus {
