@@ -183,7 +183,7 @@
     /* max-width: 100vw;
     width: 100%; */
     width: 1300px;
-    height: calc(var(--vh) - var(--headerHeight));
+    /* height: calc(var(--vh) - var(--headerHeight)); */
     /* height: 100vh; */
     top: 44px; /*высота .header__main-menu-wrap .container*/
     /* left: 0px; */
