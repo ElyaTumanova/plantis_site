@@ -874,7 +874,7 @@ function plnt_override_checkout_fields( $fields ) {
     unset( $fields['billing']['billing_city'] );
     unset( $fields['billing']['billing_state'] );
     unset( $fields['billing']['billing_postcode'] );
-    unset( $fields['billing']['billing_address_1'] );
+
     //меняем порядок вывода полей
     $fields['billing']['billing_phone']['priority'] = 20;
     $fields['billing']['billing_email']['priority'] = 20;
@@ -888,6 +888,7 @@ function plnt_override_checkout_fields( $fields ) {
     $fields['billing']['billing_first_name']['required'] = true;
     $fields['billing']['billing_phone']['required'] = true;
     $fields['billing']['billing_email']['required'] = true;
+    $fields['billing']['billing_address_1']['required'] = false;
     $fields['billing']['billing_address_2']['required'] = false;
     
 
