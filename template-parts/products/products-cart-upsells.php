@@ -77,7 +77,7 @@ if( !empty ($upsells_ids) ){
                                     } else {
                                     echo get_post_meta( get_the_ID(), '_price', true);}?>" 
                                     data-category-name="<?php
-                                    $parentCatId = check_category($this);
+                                    $parentCatId = check_category($product);
                                     echo get_the_category_by_ID($parentCatId);
                                     ?>" 
                                 >
