@@ -571,7 +571,7 @@
     text-align: center;
 }
 
-.product-cart-upsells_btn.added {
+.cart-upsells__sliders-wrap .added {
     width: 100%;
     padding: 5px 10px 4px;
     border-radius: 5px;
