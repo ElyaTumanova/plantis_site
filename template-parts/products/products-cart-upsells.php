@@ -77,8 +77,8 @@ if( !empty ($upsells_ids) ){
                                     } else {
                                     echo get_post_meta( get_the_ID(), '_price', true);}?>" 
                                 data-category-name="<?php
-                                    $parentCatId = check_category($product);
-                                    echo get_the_category_by_ID($parentCatId);
+                                    //$parentCatId = check_category($product);
+                                    //echo get_the_category_by_ID($parentCatId);
                                     ?>" 
                                 data-stock-quantity="<?php get_stock_quantity();?>" 
                                 data-remove_link="<?php
@@ -86,7 +86,8 @@ if( !empty ($upsells_ids) ){
                                     $remove_cart_url = wc_get_cart_remove_url( $cart_item_key );
                                     echo $remove_cart_url;
                                     ?>" 
-                                data-cart_item_key="<?php echo $cart_item_key;?>">
+                                data-cart_item_key="<?php echo $cart_item_key;?>"
+                                >
                                 В корзину
                             </a>
                         </li>
