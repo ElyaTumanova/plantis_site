@@ -68,6 +68,7 @@
         
         // for INN
         if (innField) {
+            console.log(document.querySelector('.wc_payment_methods input[checked="checked"]').value);
             if(event && event.target.id == "payment_method_cheque") {
                 innField.classList.remove('d-none');
             } else {
