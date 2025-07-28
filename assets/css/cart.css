@@ -558,6 +558,22 @@
     -webkit-transform: rotate(-90deg);
     transform: rotate(-90deg);
 }
+
+.product-cart-upsells_btn {
+    width: 100%;
+    padding: 5px 10px 4px;
+    border-radius: 5px;
+    background-color: var(--text);
+    border: 2px solid var(--text);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--white);
+    text-align: center;
+}
+
+.product-cart-upsells_btn:hover{
+    cursor: pointer;
+}
 /*--------------------------------------------------------------
 # Mini cart
 --------------------------------------------------------------*/
