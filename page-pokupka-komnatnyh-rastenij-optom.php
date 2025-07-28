@@ -44,6 +44,10 @@ $pricelist_link = carbon_get_theme_option('pricelist_link');
                 <?php //get_template_part('template-parts/plant-cats-az');
                     global $plants_cat_id;
                     $lowest_cats = get_lowest_level_product_categories($plants_cat_id); // начиная с корня
+                    function sortByName($a, $b) {
+                        return strcmp($a->name, $b->name);
+                    }
+                    usort($lowest_cats, sortByName);
                     print_r( $lowest_cats);
                     foreach ( $lowest_cats as $cat ) {
                         //print_r($cat);
