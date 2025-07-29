@@ -160,10 +160,10 @@
 
 @media(max-width: 767px) {
     .contacts__phones {
-        font-size: 20px
+        font-size: 25px
     }
     .contacts__mail {
-        font-size: 20px
+        font-size: 25px
     }
 }
 .contacts__work-hours {
