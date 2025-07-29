@@ -105,11 +105,11 @@ get_header(); ?>
             </div>
                 <?php if($large_markup_delivery_in_mkad):?>
                     <div class="delivery__block">
-                        <div class="delivery__header">
+                        <!-- <div class="delivery__header"> -->
                             <h2 class="entry-header">Крупногабаритная доставка</h2>
-                            <span class="delivery__dropdown-arrow">next</span>
-                        </div>
-                        <div class="delivery__dropdown">
+                            <!-- <span class="delivery__dropdown-arrow">next</span>
+                        </div> -->
+                        <!-- <div class="delivery__dropdown"> -->
                             <p>Доставка крупномерных растений (от 100см), больших заказов, высоких или тяжелых кашпо осуществляется грузовым автомобилем.</p>
                             <p><strong>Крупногабаритная доставка на следующий день или позже:</strong></p>
                             <ul>
@@ -123,18 +123,18 @@ get_header(); ?>
                                 <li>за пределы МКАД (до 5 км) — от <?php echo(floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)))?> рублей;</li>
                                 <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
                             </ul>
-                        </div>
+                        <!-- </div> -->
                     </div>
                 <?php endif;?>				
                     
                 <?php if($min_free_delivery) {'<p>При заказе товаров на сумму <strong>свыше '.$min_free_delivery.' рублей</strong> доставка осуществляется бесплатно.</p>';}?>				
                 
                 <div class="delivery__block">
-                    <div class="delivery__header">
+                    <!-- <div class="delivery__header"> -->
                         <h2 class="entry-header">Самовывоз</h2>
-                        <span class="delivery__dropdown-arrow">next</span>
-                    </div>
-                    <div class="delivery__dropdown">
+                        <!-- <span class="delivery__dropdown-arrow">next</span>
+                    </div> -->
+                    <!-- <div class="delivery__dropdown"> -->
                         <h3 class="delivery__heading heading-2">Где</h3>
                         <p>Вы можете бесплатно забрать товары из нашего шоурума по адресу г. Москва, ул. Мещерякова, д.3 (от м. Тушинская или м. Сокол).</p>
                         <div class="info__map">
@@ -144,16 +144,16 @@ get_header(); ?>
                         <h3 class="delivery__heading heading-2">Когда</h3>
                             <p>Мы ждем Вас ежедневно в рабочие часы.</p>
                             <p>Необходимо предварительно связаться с нами и договорится о времени Вашего прибытия.</p>
-                    </div>
+                    <!-- </div> -->
                 </div>
                 
                 
                 <div class="delivery__block">
-                    <div class="delivery__header">
+                    <!-- <div class="delivery__header"> -->
                         <h3 class="entry-header">Интервалы доставки</h3>
-                        <span class="delivery__dropdown-arrow">next</span>
-                    </div>
-                    <div class="delivery__dropdown">
+                        <!-- <span class="delivery__dropdown-arrow">next</span>
+                    </div> -->
+                    <!-- <div class="delivery__dropdown"> -->
                         <ul>
                             <li>с 11:00 до 21:00;</li>
                             <li>с 11:00 до 16:00;</li>
@@ -162,19 +162,19 @@ get_header(); ?>
                         </ul>
                         <p>Мы работаем без выходных, поэтому <strong>доставка осуществляется каждый день.</strong></p>
                         <p>При оформлении срочной доставки “день в день” менеджер согласует с вами удобный интервал доставки.</p>					
-                    </div>
+                    <!-- </div> -->
                 </div>
 
                 <div class="delivery__block">
-                    <div class="delivery__header">
+                    <!-- <div class="delivery__header"> -->
                         <h3 class="entry-header">Связаться с нами</h3>
-                        <span class="delivery__dropdown-arrow">next</span>
-                    </div>
-                    <div class="delivery__dropdown">
+                        <!-- <span class="delivery__dropdown-arrow">next</span>
+                    </div> -->
+                    <!-- <div class="delivery__dropdown"> -->
                         <p>Ничего страшного, если вы не можете принять заказ в согласованные дату и время. В таком случае просим связаться с нами удобным для вас способом.</p>
 
                         <?php get_template_part('template-parts/contacts-part');?>
-                    </div>
+                    <!-- </div> -->
                 </div>
 
 
