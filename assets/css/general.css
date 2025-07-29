@@ -61,10 +61,6 @@
     margin-top: 10px;
 }
 
-.content-area_sidebar {
-    display: flex;
-}
-
 .fix-body .container {
     max-width: calc(1300px + var(--scrollWidth));
     padding-right: var(--scrollWidth);
@@ -111,6 +107,11 @@
     }
 }
 
+/* side bar */
+.content-area_sidebar {
+    display: flex;
+    column-gap: 50px;
+}
 
 /* корректировка отступов для каталога */
 

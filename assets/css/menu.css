@@ -889,3 +889,28 @@
     color: var(--text);
 }
 
+/*--------------------------------------------------------------
+# Side bar menu
+--------------------------------------------------------------*/
+.info-menu-sidebar {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.info-menu-sidebar .menu__item_accent {
+    display: none;
+}
+.info-menu-sidebar .menu__item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+
+
+
+
+
