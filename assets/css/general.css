@@ -110,7 +110,7 @@
 /* side bar */
 .content-area_sidebar {
     display: flex;
-    column-gap: 50px;
+    column-gap: 70px;
 }
 
 @media (max-width: 767px) {

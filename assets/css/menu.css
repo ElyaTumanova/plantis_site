@@ -901,8 +901,8 @@
     /* box-shadow: 0 18px 39px 0 rgba(0, 0, 0, .102), 0 72px 72px 0 rgba(0, 0, 0, .09); */
     height: fit-content;
     margin-top: 39px;
-    max-width: 250px;
-    min-width: 250px;
+    max-width: 230px;
+    min-width: 230px;
 }
 
 .info-menu-sidebar .menu__item_accent {
