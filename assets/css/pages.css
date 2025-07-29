@@ -99,7 +99,7 @@
 
 .contacts__wrap {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 350px 1fr 1fr;
     column-gap: 20px;
     row-gap: 50px;
     grid-template-areas: 
@@ -123,9 +123,11 @@
 
 .contacts__phones {
     grid-area: phones;
+    font-size: 40px
 }
 .contacts__mail {
     grid-area: mail;
+    font-size: 40px
 }
 .contacts__work-hours {
     grid-area: hours;
