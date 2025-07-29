@@ -120,6 +120,12 @@
     margin-top: 39px;
 }
 
+@media (max-width: 1024px) {
+    .content-area_sidebar {
+        column-gap: 50px;
+    }
+}
+
 @media (max-width: 767px) {
     .content-area_sidebar .entry-header {
         margin-top: 0;
