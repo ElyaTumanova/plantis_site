@@ -136,8 +136,6 @@
 }
 .contacts__adress {
     grid-area: adress;
-    display: flex;
-    justify-content: space-between;
 }
 
 .contacts__map {
