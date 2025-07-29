@@ -99,7 +99,7 @@
 
 .contacts__wrap {
     display: grid;
-    grid-template-columns: 350px 350px;
+    grid-template-columns: repeat(2, auto);
     column-gap: 20px;
     row-gap: 50px;
     grid-template-areas: 
@@ -140,7 +140,7 @@
     justify-content: space-between;
 }
 
-.contacts__wrap {
+.contacts__map {
     grid-area: map;
 }
 
