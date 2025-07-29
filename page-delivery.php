@@ -33,13 +33,9 @@ get_header(); ?>
     
 ?>
 
-<div class="content-area">
+<div class="content-area content-area_sidebar">
      <aside>  
-        <h2>Полезные ссылки</h2>  
-        <ul>  
-            <li><a href="https://dreaper.ru">Сайт о веб-разработке</a></li>  
-            <li><a href="https://www.example.com">Ресурс по HTML</a></li>  
-        </ul>  
+        ?php get_template_part('template-parts/info-pages-list');?> 
     </aside> 
 	<main id="main" class="site-main" role="main">
         <div class="delivery info__list">

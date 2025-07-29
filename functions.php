@@ -41,7 +41,7 @@ require get_template_directory() . '/includes/cleanup.php';
 /** Return entry meta information for posts */
 // require get_template_directory() . '/includes/meta-data.php';
 /** Create widget areas in sidebar and footer */
-require get_template_directory() . '/includes/widget-areas.php';
+// require get_template_directory() . '/includes/widget-areas.php';
 /** Add register nav menu */
 require get_template_directory() . '/includes/navigation.php';
 /** Add ajax */
