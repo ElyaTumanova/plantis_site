@@ -895,18 +895,25 @@
 .info-menu-sidebar {
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
+    padding: 15px;
+    border-radius: 24px;
+    border: 1px solid #e6e8ec;
+    /* box-shadow: 0 18px 39px 0 rgba(0, 0, 0, .102), 0 72px 72px 0 rgba(0, 0, 0, .09); */
+    height: fit-content;
+    margin-top: 50px;
+    max-width: 250px;
 }
 
 .info-menu-sidebar .menu__item_accent {
     display: none;
 }
 .info-menu-sidebar .menu__item {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--gray);
+    padding: 15px 0;
     font-size: 14px;
     font-weight: 700;
-    text-transform: uppercase;
+}
+.info-menu-sidebar .menu__item:not(:last-child) {
+    border-bottom: 1px solid var(--gray);
 }
 
 
