@@ -116,13 +116,14 @@
         "mail mail"
         "adress hours" 
         "map map";
-        }
+        row-gap: 30px;
+    }
 }
 
 @media (max-width: 767px) {
     .contacts__wrap {
         grid-template-columns: 100%;
-        row-gap: 40px;
+        row-gap: 20px;
         grid-template-areas: 
         "phones"
         "mail" 
