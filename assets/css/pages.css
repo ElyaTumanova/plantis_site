@@ -149,8 +149,16 @@
 
 .delivery {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    flex-flow: wrap;
+    column-gap: 20px;
+    row-gap: 30px;
 }
+
+.delivery__block {
+    max-width: 450px;
+}
+
 
 @media (max-width: 767px) {
     .delivery .entry-header{
