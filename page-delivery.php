@@ -34,7 +34,7 @@ get_header(); ?>
 ?>
 
 <div class="content-area content-area_sidebar">
-     <aside class='info-menu-sidebar'>  
+    <aside class='info-menu-sidebar'>  
         <?php get_template_part('template-parts/info-pages-list');?> 
     </aside> 
 	<main id="main" class="site-main" role="main">
