@@ -892,6 +892,7 @@
 /*--------------------------------------------------------------
 # Side bar menu
 --------------------------------------------------------------*/
+
 .info-menu-sidebar {
     display: flex;
     flex-direction: column;
@@ -913,6 +914,9 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 1.4;
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
 }
 
 .info-menu-sidebar .menu__item:hover {
@@ -927,6 +931,17 @@
     border-bottom: 1px solid var(--gray);
 }
 
+.menu__item-icon {
+    display: none;
+}
+
+.info-menu-sidebar .menu__item-icon {
+    display: block;
+}
+.info-menu-sidebar .menu__item-icon path {
+    fill: var(--icons-color) !important;
+    stroke: var(--icons-color) !important;
+}
 
 
 
