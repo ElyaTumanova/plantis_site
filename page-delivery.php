@@ -39,7 +39,7 @@ get_header(); ?>
 
             <div class="delivery__block">
                 <!-- <div class="delivery__header"> -->
-                    <h1 class="delivery__header entry-header">Доставка</h1>
+                    <h1 class="entry-header">Доставка</h1>
                     <!-- <span class="delivery__dropdown-arrow">next</span> -->
                 <!-- </div> -->
                 <!-- <div class="delivery__dropdown"> -->
@@ -103,8 +103,8 @@ get_header(); ?>
                     </div> -->
                 <!-- </div> -->
             </div>
-                <?php if($large_markup_delivery_in_mkad) { 
-                    echo '<div class="delivery__block">
+                <?php if($large_markup_delivery_in_mkad):?>
+                    <div class="delivery__block">
                         <div class="delivery__header">
                             <h2 class="entry-header">Крупногабаритная доставка</h2>
                             <span class="delivery__dropdown-arrow">next</span>
@@ -113,21 +113,21 @@ get_header(); ?>
                             <p>Доставка крупномерных растений (от 100см), больших заказов, высоких или тяжелых кашпо осуществляется грузовым автомобилем.</p>
                             <p><strong>Крупногабаритная доставка на следующий день или позже:</strong></p>
                             <ul>
-                                <li>в пределах МКАД — от '.floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_in_mkad)).' рублей;</li>
-                                <li>за пределы МКАД (до 5 км) — от '.floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)).' рублей;</li>
+                                <li>в пределах МКАД — от <?php echo(floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_in_mkad)))?> рублей;</li>
+                                <li>за пределы МКАД (до 5 км) — от <?php echo(floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)))?> рублей;</li>
                                 <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
                             </ul>
                             <p><strong>Крупногабаритная срочная “день в день”. Можно оформить до 18:00:</strong></p>
                             <ul>
-                                <li>в пределах МКАД — от '.floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_in_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)).' рублей;</li>
-                                <li>за пределы МКАД (до 5 км) — от '.floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)).' рублей;</li>
+                                <li>в пределах МКАД — от <?php echo(floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_in_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)))?> рублей;</li>
+                                <li>за пределы МКАД (до 5 км) — от <?php echo(floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)))?> рублей;</li>
                                 <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
                             </ul>
                         </div>
-                    </div>';
-                }?>				
+                    </div>
+                <?php endif;?>				
                     
-                <?php if($min_free_delivery) { echo '<p>При заказе товаров на сумму <strong>свыше '.$min_free_delivery.' рублей</strong> доставка осуществляется бесплатно.</p>';}?>				
+                <?php if($min_free_delivery) {'<p>При заказе товаров на сумму <strong>свыше '.$min_free_delivery.' рублей</strong> доставка осуществляется бесплатно.</p>';}?>				
                 
                 <div class="delivery__block">
                     <div class="delivery__header">

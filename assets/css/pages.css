@@ -158,7 +158,7 @@
     }
 }
 
-.delivery__header {
+/* .delivery__header {
     display: flex;
     position: relative;
     align-items: center;
@@ -168,9 +168,9 @@
 
 .delivery__header:hover {
     cursor: pointer;
-}
+} */
 
-.delivery__header .entry-header {
+.delivery .entry-header {
     color: var(--text);
     font-size: 30px;
 }
