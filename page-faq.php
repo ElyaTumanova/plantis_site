@@ -1,6 +1,9 @@
 <?php get_header(); ?>
 
-<main class="content-area">
+<div class="content-area content-area_sidebar">
+    <aside class='info-menu-sidebar'>  
+        <?php get_template_part('template-parts/info-pages-list');?> 
+    </aside> 
     <h1 class="entry-title">Вопросы и ответы</h1>                
     <div class="info__content">
         <h4 class="wp-block-heading"><b>Я получу растение как на фото в каталоге?</b></h4>
