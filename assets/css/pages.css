@@ -109,6 +109,16 @@
     max-width: 100%;
 }
 
+@media (max-width: 1024px) {
+    .contacts__wrap {
+        grid-template-areas: 
+        "phones phones"
+        "mail mail"
+        "adress hours" 
+        "map map";
+        }
+}
+
 @media (max-width: 767px) {
     .contacts__wrap {
         grid-template-columns: 100%;
@@ -132,7 +142,7 @@
     font-size: 40px
 }
 
-@media(max-width: 1024px) {
+@media(max-width: 1100px) {
     .contacts__phones {
         font-size: 30px
     }
