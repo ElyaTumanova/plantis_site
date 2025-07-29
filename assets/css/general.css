@@ -113,6 +113,12 @@
     column-gap: 50px;
 }
 
+@media (max-width: 767px) {
+    .content-area_sidebar aside{
+        display: none;
+    }
+}
+
 /* корректировка отступов для каталога */
 
 @media (max-width: 767px) {
