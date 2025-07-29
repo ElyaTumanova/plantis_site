@@ -175,7 +175,7 @@
     font-size: 30px;
 }
 
-.delivery__block:not(:first-of-type) {
+.delivery__block:not(:first-child) {
     margin: 40px 0 20px;
 }
 
