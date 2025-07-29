@@ -941,6 +941,9 @@
 .info-menu-sidebar .menu__item-icon path {
     fill: var(--icons-color) !important;
 }
+.info-menu-sidebar .menu__item:hover .menu__item-icon path {
+    fill: var(--accent-color) !important;
+}
 
 
 
