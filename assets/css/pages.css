@@ -99,9 +99,9 @@
 
 .contacts__wrap {
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 300px);
     column-gap: 20px;
-    row-gap: 30px;
+    row-gap: 50px;
     grid-template-areas: 
     "phones mail hours"
     "adress adress adress" ;
@@ -136,10 +136,16 @@
 
 .contacts__wrap .heading-2 {
     margin-bottom: 15px;
+    color: var(--gray-text);
+    font-weight: 300;
 }
 
 .contacts__social-media, .contacts__map {
     margin-top: 20px;
+}
+
+.contacts__map iframe {
+    width: 100%;
 }
 
 /*--------------------------------------------------------------

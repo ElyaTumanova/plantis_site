@@ -124,6 +124,10 @@
 }
 
 @media (max-width: 767px) {
+    .content-area_sidebar {
+        display: block;
+    }
+    
     .content-area_sidebar aside{
         display: none;
     }
