@@ -112,6 +112,9 @@
     display: flex;
     column-gap: 70px;
 }
+.content-area_sidebar .site-main{
+    width: 100%;
+}
 
 .content-area_sidebar .entry-header {
     margin-top: 39px;
@@ -127,7 +130,7 @@
     .content-area_sidebar {
         display: block;
     }
-    
+
     .content-area_sidebar aside{
         display: none;
     }
