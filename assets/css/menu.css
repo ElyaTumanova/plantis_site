@@ -911,8 +911,18 @@
 .info-menu-sidebar .menu__item {
     padding: 15px 0;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 600;
+    line-height: 1.4;
 }
+
+.info-menu-sidebar .menu__item:hover {
+    color: var(--accent-color);
+}
+
+.info-menu-sidebar .menu__item a:hover {
+    text-decoration: none;
+}
+
 .info-menu-sidebar .menu__item:not(:last-child) {
     border-bottom: 1px solid var(--gray);
 }
