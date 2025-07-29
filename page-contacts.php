@@ -25,16 +25,18 @@ get_header(); ?>
 			</div>
 		
 			<div class="contacts__adress">
-				<h2 class="heading-2">Адрес</h2>
-				<p>г. Москва, ул. Мещерякова, д.3. м. Тушинская</p>
+                <div>
+                    <h2 class="heading-2">Адрес</h2>
+                    <p>г. Москва, ул. Мещерякова, д.3. м. Тушинская</p>
+                </div>
                 <div class="contacts__work-hours">
                     <h2 class="heading-2">Часы работы</h2>
                     <p>Ежедневно с 10 до 20</p>
                 </div>
-				<div class="contacts__map">
-					<iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=237252555639" width="560" height="400" frameborder="0"></iframe>
-				</div>		
 			</div>
+            <div class="contacts__map">
+                <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=237252555639" width="560" height="400" frameborder="0"></iframe>
+            </div>		
 		</div>
 	</main><!-- #main -->
 </div><!-- #primary -->

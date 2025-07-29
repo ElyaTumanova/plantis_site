@@ -99,12 +99,13 @@
 
 .contacts__wrap {
     display: grid;
-    grid-template-columns: 350px 1fr 1fr;
+    grid-template-columns: 350px 350px;
     column-gap: 20px;
     row-gap: 50px;
     grid-template-areas: 
-    "phones mail hours"
-    "adress adress adress" ;
+    "phones mail"
+    "adress adress" 
+    "map map";
     max-width: 100%;
 }
 
@@ -116,7 +117,8 @@
         "phones"
         "mail" 
         "hours"
-        "adress";
+        "adress"
+        "map";
         max-width: 100%;
     }
 }
@@ -129,11 +131,17 @@
     grid-area: mail;
     font-size: 40px
 }
-.contacts__work-hours {
+/* .contacts__work-hours {
     grid-area: hours;
-}
+} */
 .contacts__adress {
     grid-area: adress;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contacts__wrap {
+    grid-area: map;
 }
 
 .contacts__wrap .heading-2 {
