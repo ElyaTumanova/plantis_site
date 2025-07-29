@@ -104,7 +104,7 @@
     row-gap: 50px;
     grid-template-areas: 
     "phones mail"
-    "adress adress" 
+    "adress hours" 
     "map map";
     max-width: 100%;
 }
@@ -131,9 +131,9 @@
     grid-area: mail;
     font-size: 40px
 }
-/* .contacts__work-hours {
+.contacts__work-hours {
     grid-area: hours;
-} */
+}
 .contacts__adress {
     grid-area: adress;
     display: flex;
