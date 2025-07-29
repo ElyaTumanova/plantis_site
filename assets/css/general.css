@@ -118,6 +118,12 @@
 }
 
 @media (max-width: 767px) {
+    .content-area_sidebar .entry-header {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 767px) {
     .content-area_sidebar aside{
         display: none;
     }
