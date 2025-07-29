@@ -937,7 +937,6 @@
 
 .info-menu-sidebar .menu__item-icon {
     display: block;
-    width: 30px;
 }
 .info-menu-sidebar .menu__item-icon path {
     fill: var(--icons-color) !important;
