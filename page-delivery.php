@@ -34,6 +34,13 @@ get_header(); ?>
 ?>
 
 <div class="content-area">
+     <aside>  
+        <h2>Полезные ссылки</h2>  
+        <ul>  
+            <li><a href="https://dreaper.ru">Сайт о веб-разработке</a></li>  
+            <li><a href="https://www.example.com">Ресурс по HTML</a></li>  
+        </ul>  
+    </aside> 
 	<main id="main" class="site-main" role="main">
         <div class="delivery info__list">
 
@@ -181,15 +188,9 @@ get_header(); ?>
            
 
 		</div>
-	</main><!-- #main -->
+	</main><!-- #main -->  
 </div><!-- #primary -->
 
-<aside>  
-    <h2>Полезные ссылки</h2>  
-    <ul>  
-        <li><a href="https://dreaper.ru">Сайт о веб-разработке</a></li>  
-        <li><a href="https://www.example.com">Ресурс по HTML</a></li>  
-    </ul>  
-</aside> 
+
 
 <?php get_footer(); ?>

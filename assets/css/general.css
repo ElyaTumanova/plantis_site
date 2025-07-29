@@ -59,6 +59,7 @@
     max-width: 1300px;
     margin: auto;
     margin-top: 10px;
+    display: flex;
 }
 
 .fix-body .container {
