@@ -107,6 +107,7 @@
     "adress hours" 
     "map map";
     max-width: 100%;
+    margin-top: 30px;
 }
 
 @media (max-width: 1024px) {
@@ -138,6 +139,11 @@
     grid-area: phones;
     font-size: 40px
 }
+
+.contacts__phones p:first-child {
+    margin-top: 15px;
+}
+
 .contacts__mail {
     grid-area: mail;
     font-size: 40px
