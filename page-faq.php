@@ -5,7 +5,7 @@
         <?php get_template_part('template-parts/info-pages-list');?> 
     </aside> 
     <main id="main" class="site-main" role="main">
-        <h1 class="entry-title">Вопросы и ответы</h1>                
+        <h1 class="entry-header">Вопросы и ответы</h1>                
         <div class="info__content">
             <h4 class="wp-block-heading"><b>Я получу растение как на фото в каталоге?</b></h4>
             <p>Они как и мы индивидуальны, поэтому двух одинаковых не бывает. И это хорошо, так как вы никогда не встретите точно такое же растение как у вас.</p>
