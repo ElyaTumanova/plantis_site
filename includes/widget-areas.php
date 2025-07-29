@@ -44,7 +44,7 @@ function plnt_info_menu_sidebar() {
 }
 add_action('widgets_init', 'plnt_info_menu_sidebar');
 
-if ( is_page('delivery') ||) { // ID страницы или slug
+if ( is_page('delivery')) { // ID страницы или slug
     dynamic_sidebar('special-sidebar');
 } 
 
