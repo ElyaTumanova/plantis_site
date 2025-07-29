@@ -902,6 +902,7 @@
     height: fit-content;
     margin-top: 50px;
     max-width: 250px;
+    min-width: 250px;
 }
 
 .info-menu-sidebar .menu__item_accent {

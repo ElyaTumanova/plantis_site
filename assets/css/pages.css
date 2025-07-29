@@ -151,11 +151,10 @@
     display: flex;
     /* flex-direction: column; */
     flex-flow: wrap;
-    column-gap: 20px;
-    row-gap: 30px;
+    column-gap: 50px;
 }
 
-.delivery__block {
+.delivery__block:not(:nth-child(3)) {
     max-width: 450px;
 }
 
