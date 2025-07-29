@@ -941,7 +941,6 @@
 }
 .info-menu-sidebar .menu__item-icon path {
     fill: var(--icons-color) !important;
-    stroke: var(--icons-color) !important;
 }
 
 
