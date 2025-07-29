@@ -99,11 +99,11 @@
 
 .contacts__wrap {
     display: grid;
-    grid-template-columns: repeat(3 / auto);
+    grid-template-columns: repeat(3, auto);
     column-gap: 20px;
     row-gap: 30px;
     grid-template-areas: 
-    "phones mail  hoursadress"
+    "phones mail hours"
     "adress adress adress" ;
     max-width: 100%;
 }
