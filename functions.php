@@ -407,16 +407,36 @@ function plnt_get_yoast_data() {
 
 function get_orders_meta() {
     global $wpdb;
+    $exclude = [
+        '_billing_', '_shipping_', '_payment_', '_order_', '_transaction_id',
+        '_customer_ip_address', '_customer_user_agent', '_wc_order_key',
+        '_cart_hash', '_created_via', '_download_permissions_granted',
+        '_recorded_coupon_usage_counts', '_order_currency', '_prices_include_tax'
+    ];
+
+    $where_exclude = implode(" AND pm.meta_key NOT LIKE ", array_map(function($v){ return "'$v%'"; }, $exclude));
+
     echo ('<pre>');
-    print_r($wpdb->get_results( "SELECT 
-        pm.meta_key AS meta_field,
-        COUNT(*) AS usage_count,
-        SUBSTRING_INDEX(GROUP_CONCAT(pm.meta_value SEPARATOR '||'), '||', 1) AS example_value
+    print_r($wpdb->get_results( "
+        SELECT pm.meta_key AS meta_field,
+               COUNT(*) AS usage_count,
+               SUBSTRING_INDEX(GROUP_CONCAT(pm.meta_value SEPARATOR '||'), '||', 1) AS example_value
         FROM {$wpdb->postmeta} pm
         JOIN {$wpdb->posts} p ON p.ID = pm.post_id
         WHERE p.post_type = 'shop_order'
+        AND pm.meta_key NOT LIKE '_edit%' 
+        AND pm.meta_key NOT LIKE '_order_total%'
+        AND pm.meta_key NOT LIKE '_order_version%'
+        AND pm.meta_key NOT LIKE '_customer_user%'
+        AND pm.meta_key NOT LIKE '_download%' 
+        AND pm.meta_key NOT LIKE '_wc_reserved_stock%'
+        AND pm.meta_key NOT LIKE '_wc_deposit%'
+        AND pm.meta_key NOT LIKE '_stripe%'
+        AND pm.meta_key NOT LIKE '_paypal%'
+        AND pm.meta_key NOT LIKE '_refund%'
+        $where_exclude
         GROUP BY pm.meta_key
-        ORDER BY usage_count DESC;
+        ORDER BY usage_count DESC
     "));
     echo ('</pre>');
 
