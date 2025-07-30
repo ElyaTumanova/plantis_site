@@ -407,7 +407,7 @@ function plnt_get_yoast_data() {
 
 function get_orders_meta() {
     global $wpdb;
-
+    echo ('<pre>');
     print_r($wpdb->get_results( "SELECT 
         pm.meta_key AS meta_field,
         COUNT(*) AS usage_count,
@@ -418,6 +418,7 @@ function get_orders_meta() {
         GROUP BY pm.meta_key
         ORDER BY usage_count DESC;
     "));
+    echo ('</pre>');
 
 }
 
