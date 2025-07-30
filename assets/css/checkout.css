@@ -381,15 +381,15 @@
     width: fit-content;
 }
 
-#billing_dontcallme_field {
+#dontcallme_field {
     margin-bottom: 30px;
 }
 
-#billing_dontcallme_field .woocommerce-input-wrapper {
+#dontcallme_field .woocommerce-input-wrapper {
     margin-top: 10px;
 }
 
-#billing_dontcallme_field .radio {
+#dontcallme_field .radio {
     padding-left: 5px;
 }
 

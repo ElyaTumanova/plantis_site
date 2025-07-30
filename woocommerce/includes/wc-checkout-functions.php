@@ -924,7 +924,7 @@ function plnt_save_order_comments_field( $order, $data ) {
 add_filter( 'woocommerce_checkout_fields', 'plnt_add_dontcallme_field_to_checkout' );
 
 function plnt_add_dontcallme_field_to_checkout( $fields ) {
-    $fields['billing']['billing_dontcallme'] = array(
+    $fields['billing']['dontcallme'] = array(
         'type'        => 'radio',
         'label'       => 'Не нужно звонков, напишите сразу в WhatsApp;)',
         'required'    => true,
@@ -936,7 +936,7 @@ function plnt_add_dontcallme_field_to_checkout( $fields ) {
         'default'     => 'Нет',
     );
 
-    $fields['billing']['billing_dontcallme']['priority'] = 30;
+    $fields['billing']['dontcallme']['priority'] = 30;
 
     return $fields;
 }
@@ -948,8 +948,8 @@ add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_dontcallme_fiel
 
 function plnt_save_dontcallme_fields( $order_id ){
 
-    if( ! empty( $_POST[ 'billing_dontcallme' ] ) ) {
-        update_post_meta( $order_id, 'billing_dontcallme', sanitize_text_field( $_POST[ 'billing_dontcallme' ] ) );
+    if( ! empty( $_POST[ 'dontcallme' ] ) ) {
+        update_post_meta( $order_id, 'dontcallme', sanitize_text_field( $_POST[ 'dontcallme' ] ) );
     }
 }
 
@@ -959,7 +959,7 @@ add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_do
 
 function plnt_print_doncallme_field_value( $order ){
 
-    $method = get_post_meta( $order->get_id(), 'billing_dontcallme', true );
+    $method = get_post_meta( $order->get_id(), 'dontcallme', true );
 
     echo '<div class="address">
         <p' . ( ! $method ? ' class="none_set"' : '' ) . '>
@@ -981,9 +981,9 @@ function plnt_dontcallme_field_in_email( $rows, $order ) {
     // 	return $rows;
     // }
 
-    $rows[ 'billing_dontcallme' ] = array(
+    $rows[ 'dontcallme' ] = array(
         'label' => 'Не нужно звонков, напишите сразу в WhatsApp;)',
-        'value' => get_post_meta( $order->get_id(), 'billing_dontcallme', true )
+        'value' => get_post_meta( $order->get_id(), 'dontcallme', true )
     );
 
     return $rows;
