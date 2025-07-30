@@ -412,8 +412,8 @@ function get_orders_meta() {
         pm.meta_key AS meta_field,
         COUNT(*) AS usage_count,
         SUBSTRING_INDEX(GROUP_CONCAT(pm.meta_value SEPARATOR '||'), '||', 1) AS example_value
-        FROM wp_postmeta pm
-        JOIN wp_posts p ON p.ID = pm.post_id
+        FROM {$wpdb->postmeta} pm
+        JOIN {$wpdb->posts} p ON p.ID = pm.post_id
         WHERE p.post_type = 'shop_order'
         GROUP BY pm.meta_key
         ORDER BY usage_count DESC;
