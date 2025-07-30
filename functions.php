@@ -276,7 +276,7 @@ function plnt_check_page() {
 	// print_r( $gorshki_cat_id );
 	// echo '</pre>';
 	if ( is_page( 'vakansii' ) ) {
-		plnt_get_yoast_data();
+		get_orders_meta();
 	}
 	// else {
 	// 	echo 'Это какая-то другая страница.';
@@ -405,8 +405,23 @@ function plnt_get_yoast_data() {
     echo ('</pre>');
 }
 
+function get_orders_meta() {
+    global $wpdb;
 
-//add_action( 'wp_footer', 'plnt_check_page' );
+    print_r($wpdb->get_results( "SELECT 
+        pm.meta_key AS meta_field,
+        COUNT(*) AS usage_count,
+        SUBSTRING_INDEX(GROUP_CONCAT(pm.meta_value SEPARATOR '||'), '||', 1) AS example_value
+        FROM wp_postmeta pm
+        JOIN wp_posts p ON p.ID = pm.post_id
+        WHERE p.post_type = 'shop_order'
+        GROUP BY pm.meta_key
+        ORDER BY usage_count DESC;
+    "));
+
+}
+
+add_action( 'wp_footer', 'plnt_check_page' );
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 //add_action( 'wp_footer', 'plnt_get_cats_data' );
 
