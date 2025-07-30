@@ -91,11 +91,17 @@
 
 [data-menu = "menu_item_treez_plants"].header__main-submenu_show {
     display: grid;
-    grid-template-columns: repeat(3, 350px);
+    grid-template-columns: repeat(2, 350px) 420px;
     grid-template-rows: repeat(3, auto);
-    grid-auto-flow: dense;
+    grid-auto-flow: column;
     column-gap: 50px;
     row-gap: 30px;
+    justify-self: end;
+}
+
+[data-menu = "menu_item_treez_plants"].header__main-submenu_show .header__main-submenu_lvl1:nth-child(3) {
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
 
 [data-menu = "menu_item_treez_plants"].header__main-submenu_show .header__main-submenu-img {
