@@ -566,38 +566,15 @@ function plnt_get_orders() {
     $meta_fields = [];
     echo ('<pre>');
     foreach ($orders as $order) {
-
         print_r($order['meta_data']);
         foreach ($order['meta_data'] as $meta) {
             print_r($meta['key']);
             if (!in_array($meta['key'],$meta_fields)) {
                 array_push($meta_fields,$meta['key']);
             }
-            print_r($meta_fields);
         }
-
-        // $new_meta = [];
-        // foreach ($order['meta_data'] as $meta) {
-        //     $key = $meta['key'];
-        //     $value = $meta['value'];
-        //     if ($key === '_billing_dontcallme') {
-        //         $key = 'dontcallme';
-        //     }
-        //     if ($key === 'additional_inn') {
-        //         $key = 'additional_inn';
-        //     }
-        //     if ($key === 'delivery_dates') {
-        //         $key = 'delivery_dates';
-        //     }
-        //     if ($key === 'additional_delivery_interval') {
-        //         $key = 'additional_delivery_interval';
-        //     }
-        //     $new_meta[] = ['key' => $key, 'value' => $value];
-        // }
-
-        // print_r($new_meta);
-
     }
+    print_r($meta_fields);
     echo ('</pre>');
 
     
