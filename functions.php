@@ -581,10 +581,10 @@ function plnt_get_orders() {
         $result = wc_api_request("$new_url/orders", $new_key, $new_secret, 'POST', $new_order);
 
         if (isset($result['id'])) {
-            log_message("✅ Заказ {$order['number']} перенесён → Новый ID {$result['id']}");
+            echo("✅ Заказ {$order['number']} перенесён → Новый ID {$result['id']}");
             $total++;
         } else {
-            log_message("❌ Ошибка переноса заказа {$order['number']}");
+            echo("❌ Ошибка переноса заказа {$order['number']}");
         }
     }
    // print_r($meta_fields);
