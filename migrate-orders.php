@@ -79,9 +79,11 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
             'quantity'     => $item['quantity'],
             'subtotal'     => $item['subtotal'],
             'total'        => $item['total'],
-            'meta_data'    => array_map(fn($m) => ['key' => $m['key'], 'value' => $m['value']], $item['meta_data'])
+            'meta_data' => array_map(function($m) {
+                return ['key' => $m['key'], 'value' => $m['value']];
+            }, $item['meta_data'])
         ];
-    }
+    }   
 
     // Подготовка доставки
     $new_shipping_lines = [];
@@ -90,7 +92,12 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
             'method_id'    => $ship['method_id'],
             'method_title' => $ship['method_title'],
             'total'        => $ship['total'],
-            'meta_data'    => array_map(fn($m) => ['key' => $m['key'], 'value' => $m['value']], $ship['meta_data'])
+            'meta_data' => array_map(function($m) {
+                return [
+                    'key'   => $m['key'],
+                    'value' => $m['value']
+                ];
+            }, $ship['meta_data'])
         ];
     }
 
