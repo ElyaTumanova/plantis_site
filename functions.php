@@ -571,43 +571,57 @@ foreach ($orders as $order) {
     print_r($order['meta_data']);
 
     // === 2. Преобразуем кастомные поля ===
-    // $new_meta = [];
-    // foreach ($order['meta_data'] as $meta) {
-    //     $key = $meta['key'];
-    //     $value = $meta['value'];
+    $new_meta = [];
+    foreach ($order['meta_data'] as $meta) {
+        $key = $meta['key'];
+        $value = $meta['value'];
 
-    //     // Маппинг ключей: billing_dontcallme → dontcallme
-    //     if ($key === 'billing_dontcallme' || $key === '_billing_dontcallme') {
-    //         $key = 'dontcallme';
-    //     }
+        // Маппинг ключей: billing_dontcallme → dontcallme
+        if ($key === '_billing_dontcallme') {
+            $key = 'dontcallme';
+        }
+        if ($key === 'is_vat_exempt') {
+            $key = 'is_vat_exempt';
+        }
+        if ($key === 'additional_inn') {
+            $key = 'additional_inn';
+        }
+        if ($key === 'delivery_dates') {
+            $key = 'delivery_dates';
+        }
+        if ($key === 'additional_delivery_interval') {
+            $key = 'additional_delivery_interval';
+        }
 
-    //     $new_meta[] = ['key' => $key, 'value' => $value];
-    // }
+        $new_meta[] = ['key' => $key, 'value' => $value];
+    }
+
+    print_r($new_meta);
 
     // === 3. Подготавливаем заказ для нового сайта ===
-    // $new_order = [
-    //     'customer_id' => $order['customer_id'] ?: 0,
-    //     'status' => $order['status'],
-    //     'currency' => $order['currency'],
-    //     'billing' => $order['billing'],
-    //     'shipping' => $order['shipping'],
-    //     'payment_method' => $order['payment_method'],
-    //     'payment_method_title' => $order['payment_method_title'],
-    //     'customer_note' => $order['customer_note'],
-    //     'line_items' => $order['line_items'],
-    //     'shipping_lines' => $order['shipping_lines'],
-    //     'meta_data' => $new_meta
-    // ];
+    $new_order = [
+        'customer_id' => $order['customer_id'] ?: 0,
+        'status' => $order['status'],
+        'currency' => $order['currency'],
+        'billing' => $order['billing'],
+        'shipping' => $order['shipping'],
+        'payment_method' => $order['payment_method'],
+        'payment_method_title' => $order['payment_method_title'],
+        'customer_note' => $order['customer_note'],
+        'line_items' => $order['line_items'],
+        'shipping_lines' => $order['shipping_lines'],
+        'meta_data' => $new_meta
+    ];
 
     // === 4. Отправляем заказ на новый сайт ===
-    // $result = wc_api_request($new_url, $new_key, $new_secret, 'POST', $new_order);
+    $result = wc_api_request($new_url, $new_key, $new_secret, 'POST', $new_order);
 
-    // if (isset($result['id'])) {
-    //     echo "✅ Заказ {$order['id']} перенесён → Новый ID {$result['id']}\n";
-    // } else {
-    //     echo "❌ Ошибка при переносе заказа {$order['id']}\n";
-    //     print_r($result);
-    // }
+    if (isset($result['id'])) {
+        echo "✅ Заказ {$order['id']} перенесён → Новый ID {$result['id']}\n";
+    } else {
+        echo "❌ Ошибка при переносе заказа {$order['id']}\n";
+        print_r($result);
+    }
 }
 echo ('</pre>');
 }
