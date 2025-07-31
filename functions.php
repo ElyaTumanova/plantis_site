@@ -564,7 +564,9 @@ function wc_api_request($url, $key, $secret, $method = 'GET', $data = null) {
 // === 1. Получаем заказы со старого сайта ===
 $orders = wc_api_request("$old_url?per_page=1", $old_key, $old_secret);
 
+echo ('<pre>');
 foreach ($orders as $order) {
+
 
     print_r($order);
 
@@ -607,4 +609,5 @@ foreach ($orders as $order) {
     //     print_r($result);
     // }
 }
+echo ('</pre>');
 }
