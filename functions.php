@@ -588,7 +588,7 @@ function plnt_get_orders() {
         }
     }
    // print_r($meta_fields);
-    print_r($new_meta);
+    //print_r($new_meta);
     echo ('</pre>');
 
     
@@ -597,9 +597,18 @@ function plnt_get_orders() {
 
 function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secret) {
     $existing = wc_api_request("$new_api_url/orders?search=" . $old_order['number'], $new_key, $new_secret);
-    print_r($existing);
+    $order_exists = false;
     if (!empty($existing)) {
-        echo("⚠️ Заказ {$old_order['number']} уже существует, пропускаем.");
+        foreach ($existing as $ex) {
+            if ($ex['number'] == $old_order['number']) {
+                $order_exists = true;
+                break;
+            }
+        }
+    }
+
+    if ($order_exists) {
+        echo("⚠️ Заказ {$old_order['number']} уже существует, пропускаем.\n");
         return null;
     }
 
