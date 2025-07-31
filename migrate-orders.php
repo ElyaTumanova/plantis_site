@@ -120,8 +120,8 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
             ? 'dontcallme'
             : $meta['key'];
         $key = ($meta['key'] === 'additional_peresadka')
-            ? 'dontcallme'
-            : $meta['_plnt_comment'];
+            ? '_plnt_comment'
+            : $meta['key'];
         if (in_array($key, $added_keys)) continue;
         $new_meta[] = ['key' => $key, 'value' => $meta['value']];
         $added_keys[] = $key;
