@@ -568,7 +568,6 @@ function plnt_get_orders() {
     foreach ($orders as $order) {
         print_r($order['meta_data']);
         foreach ($order['meta_data'] as $meta) {
-            print_r($meta['key']);
             if (!in_array($meta['key'],$meta_fields)) {
                 array_push($meta_fields,$meta['key']);
             }
