@@ -570,7 +570,7 @@ function plnt_get_orders() {
         print_r($order['meta_data']);
 
         $new_meta = [];
-        foreach ($old_order['meta_data'] as $meta) {
+        foreach ($order['meta_data'] as $meta) {
             $key = $meta['key'];
             $value = $meta['value'];
             if ($key === '_billing_dontcallme') {
