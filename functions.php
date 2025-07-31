@@ -276,7 +276,7 @@ function plnt_check_page() {
 	// print_r( $gorshki_cat_id );
 	// echo '</pre>';
 	if ( is_page( 'vakansii' ) ) {
-		get_orders_meta();
+		plnt_get_orders();
 	}
 	// else {
 	// 	echo 'Это какая-то другая страница.';
@@ -405,7 +405,7 @@ function plnt_get_yoast_data() {
     echo ('</pre>');
 }
 
-function get_orders_meta() {
+function plnt_get_orders_meta() {
     global $wpdb;
      $exclude_like = [
         '_billing_%', '_shipping_%', '_payment_%', '_order_%', '_transaction_id',
@@ -527,4 +527,84 @@ function plnt_get_prods_data() {
     // 			}
 	}
 
+}
+
+function plnt_get_orders() {
+
+// === Данные API старого магазина ===
+$old_url = "https://plantis.shop/wp-json/wc/v3/orders";
+$old_key = "ck_d0efbf184dd2bf49da53a4b8df98201faa5bcb8d";
+$old_secret = "cs_3b711de00ebec91a2ce1bc0314dac8721c160c8a";
+
+// === Данные API нового магазина ===
+$new_url = "https://plantis-shop.ru/wp-json/wc/v3/orders";
+$new_key = "ck_771c883e1256823b9fa05f23e4f41b7b543aa311";
+$new_secret = "cs_15ac1868a521fc7333c50c09f52901adaa524cd8";
+
+// === Функция запроса к API ===
+function wc_api_request($url, $key, $secret, $method = 'GET', $data = null) {
+    $ch = curl_init();
+    $headers = ["Content-Type: application/json"];
+    $opts = [
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_USERPWD => "$key:$secret",
+        CURLOPT_HTTPHEADER => $headers
+    ];
+    if ($method === 'POST') {
+        $opts[CURLOPT_POST] = true;
+        $opts[CURLOPT_POSTFIELDS] = json_encode($data, JSON_UNESCAPED_UNICODE);
+    }
+    curl_setopt_array($ch, $opts);
+    $response = curl_exec($ch);
+    curl_close($ch);
+    return json_decode($response, true);
+}
+
+// === 1. Получаем заказы со старого сайта ===
+$orders = wc_api_request("$old_url?per_page=1", $old_key, $old_secret);
+
+foreach ($orders as $order) {
+
+    print_r($order);
+
+    // === 2. Преобразуем кастомные поля ===
+    // $new_meta = [];
+    // foreach ($order['meta_data'] as $meta) {
+    //     $key = $meta['key'];
+    //     $value = $meta['value'];
+
+    //     // Маппинг ключей: billing_dontcallme → dontcallme
+    //     if ($key === 'billing_dontcallme' || $key === '_billing_dontcallme') {
+    //         $key = 'dontcallme';
+    //     }
+
+    //     $new_meta[] = ['key' => $key, 'value' => $value];
+    // }
+
+    // === 3. Подготавливаем заказ для нового сайта ===
+    // $new_order = [
+    //     'customer_id' => $order['customer_id'] ?: 0,
+    //     'status' => $order['status'],
+    //     'currency' => $order['currency'],
+    //     'billing' => $order['billing'],
+    //     'shipping' => $order['shipping'],
+    //     'payment_method' => $order['payment_method'],
+    //     'payment_method_title' => $order['payment_method_title'],
+    //     'customer_note' => $order['customer_note'],
+    //     'line_items' => $order['line_items'],
+    //     'shipping_lines' => $order['shipping_lines'],
+    //     'meta_data' => $new_meta
+    // ];
+
+    // === 4. Отправляем заказ на новый сайт ===
+    // $result = wc_api_request($new_url, $new_key, $new_secret, 'POST', $new_order);
+
+    // if (isset($result['id'])) {
+    //     echo "✅ Заказ {$order['id']} перенесён → Новый ID {$result['id']}\n";
+    // } else {
+    //     echo "❌ Ошибка при переносе заказа {$order['id']}\n";
+    //     print_r($result);
+    // }
+}
 }
