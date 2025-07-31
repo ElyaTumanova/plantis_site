@@ -568,7 +568,7 @@ echo ('<pre>');
 foreach ($orders as $order) {
 
 
-    print_r($order);
+    print_r($order['meta_data']);
 
     // === 2. Преобразуем кастомные поля ===
     // $new_meta = [];
