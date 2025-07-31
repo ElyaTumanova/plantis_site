@@ -47,6 +47,18 @@ function get_product_id_by_sku($sku, $api_url, $key, $secret) {
     return null; // товар не найден
 }
 
+function normalize_date($date) {
+    if (!$date) return null;
+    return (strpos($date, 'T') === false) 
+        ? date('Y-m-d\TH:i:s', strtotime($date)) 
+        : $date;
+}
+
+function normalize_date_gmt($date) {
+    if (!$date) return null;
+    return gmdate('Y-m-d\TH:i:s', strtotime($date));
+}
+
 
 // === Подготовка заказа ===
 function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secret) {
@@ -139,11 +151,13 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
         'line_items'           => $new_line_items,
         'shipping_lines'       => $new_shipping_lines,
         'meta_data'            => $new_meta,
-        // ✅ перенос даты создания
-        'date_created'         => $old_order['date_created'],   // формат YYYY-MM-DDTHH:MM:SS
-        'date_paid'      => isset($old_order['date_paid']) ? $old_order['date_paid'] : null,
-        'date_completed' => isset($old_order['date_completed']) ? $old_order['date_completed'] : null
-
+        // ✅ Перенос всех дат
+        'date_created'         => normalize_date($old_order['date_created']),
+        'date_created_gmt'     => normalize_date_gmt($old_order['date_created']),
+        'date_paid'            => isset($old_order['date_paid']) ? normalize_date($old_order['date_paid']) : null,
+        'date_paid_gmt'        => isset($old_order['date_paid']) ? normalize_date_gmt($old_order['date_paid']) : null,
+        'date_completed'       => isset($old_order['date_completed']) ? normalize_date($old_order['date_completed']) : null,
+        'date_completed_gmt'   => isset($old_order['date_completed']) ? normalize_date_gmt($old_order['date_completed']) : null
     ];
 }
 
