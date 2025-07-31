@@ -562,7 +562,7 @@ function plnt_get_orders() {
     }
 
     // === 1. Получаем заказы со старого сайта ===
-    $orders = wc_api_request("$old_url?per_page=1", $old_key, $old_secret);
+    $orders = wc_api_request("$old_url?per_page=100", $old_key, $old_secret);
 
     echo ('<pre>');
     foreach ($orders as $order) {
@@ -575,9 +575,6 @@ function plnt_get_orders() {
             $value = $meta['value'];
             if ($key === '_billing_dontcallme') {
                 $key = 'dontcallme';
-            }
-            if ($key === 'is_vat_exempt') {
-                $key = 'is_vat_exempt';
             }
             if ($key === 'additional_inn') {
                 $key = 'additional_inn';
