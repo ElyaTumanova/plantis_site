@@ -59,31 +59,35 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
         return null;
     }
 
-    // Подготовка товаров
+    // 🔹 Подготовка товаров — поиск ТОЛЬКО по SKU
     $new_line_items = [];
     foreach ($old_order['line_items'] as $item) {
-        $new_pid = get_product_id_by_id_or_sku(
-            $item['product_id'],
+
+        // ✅ Ищем товар только по SKU
+        $new_pid = get_product_id_by_sku(
             $item['sku'],
             str_replace('/orders', '', $new_api_url),
             $new_key,
             $new_secret
         );
+
         if (!$new_pid) {
             echo "❌ Товар {$item['name']} (SKU {$item['sku']}) не найден, пропускаем.\n";
             continue;
         }
+
         $new_line_items[] = [
             'product_id'   => $new_pid,
-            'variation_id' => $item['variation_id'],
+            'variation_id' => $item['variation_id'], // можно оставить, если вариации есть
             'quantity'     => $item['quantity'],
             'subtotal'     => $item['subtotal'],
             'total'        => $item['total'],
-            'meta_data' => array_map(function($m) {
+            'meta_data'    => array_map(function($m) {
                 return ['key' => $m['key'], 'value' => $m['value']];
             }, $item['meta_data'])
         ];
-    }   
+    }
+    
 
     // Подготовка доставки
     $new_shipping_lines = [];
