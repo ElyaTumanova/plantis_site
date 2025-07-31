@@ -152,12 +152,12 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
         'shipping_lines'       => $new_shipping_lines,
         'meta_data'            => $new_meta,
         // ✅ Перенос всех дат
-        'date_created'         => normalize_date($old_order['date_created']),
-        'date_created_gmt'     => normalize_date_gmt($old_order['date_created']),
-        'date_paid'            => isset($old_order['date_paid']) ? normalize_date($old_order['date_paid']) : null,
-        'date_paid_gmt'        => isset($old_order['date_paid']) ? normalize_date_gmt($old_order['date_paid']) : null,
-        'date_completed'       => isset($old_order['date_completed']) ? normalize_date($old_order['date_completed']) : null,
-        'date_completed_gmt'   => isset($old_order['date_completed']) ? normalize_date_gmt($old_order['date_completed']) : null
+        // 'date_created'         => normalize_date($old_order['date_created']),
+        // 'date_created_gmt'     => normalize_date_gmt($old_order['date_created']),
+        // 'date_paid'            => isset($old_order['date_paid']) ? normalize_date($old_order['date_paid']) : null,
+        // 'date_paid_gmt'        => isset($old_order['date_paid']) ? normalize_date_gmt($old_order['date_paid']) : null,
+        // 'date_completed'       => isset($old_order['date_completed']) ? normalize_date($old_order['date_completed']) : null,
+        // 'date_completed_gmt'   => isset($old_order['date_completed']) ? normalize_date_gmt($old_order['date_completed']) : null
     ];
 }
 
@@ -178,9 +178,22 @@ if (!$new_order) {
 // === 3. Отправляем заказ на новый сайт ===
 $result = wc_api_request("$new_url/orders", $new_key, $new_secret, 'POST', $new_order);
 
-if (isset($result['id'])) {
-    echo "✅ Заказ {$old_order['number']} перенесён → Новый ID {$result['id']}\n";
-} else {
-    echo "❌ Ошибка при переносе заказа {$old_order['number']}:\n";
-    print_r($result);
+if (!isset($result['id'])) {
+    exit("❌ Ошибка при создании заказа {$old_order['number']}:\n" . print_r($result, true));
 }
+
+$new_order_id = $result['id'];
+echo "✅ Заказ {$old_order['number']} создан на новом сайте (ID $new_order_id)\n";
+
+// === 4. Обновляем даты (PUT) ===
+$update_dates = [
+    'date_created'     => normalize_date($old_order['date_created']),
+    'date_created_gmt' => normalize_date_gmt($old_order['date_created']),
+    'date_paid'        => isset($old_order['date_paid']) ? normalize_date($old_order['date_paid']) : null,
+    'date_paid_gmt'    => isset($old_order['date_paid']) ? normalize_date_gmt($old_order['date_paid']) : null,
+    'date_completed'   => isset($old_order['date_completed']) ? normalize_date($old_order['date_completed']) : null,
+    'date_completed_gmt'=> isset($old_order['date_completed']) ? normalize_date_gmt($old_order['date_completed']) : null
+];
+
+wc_api_request("$new_url/orders/$new_order_id", $new_key, $new_secret, 'PUT', $update_dates);
+echo "✅ Даты заказа {$old_order['number']} обновлены.\n";
