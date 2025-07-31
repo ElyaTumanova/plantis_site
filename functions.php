@@ -407,14 +407,16 @@ function plnt_get_yoast_data() {
 
 function get_orders_meta() {
     global $wpdb;
-    $exclude = [
-        '_billing_', '_shipping_', '_payment_', '_order_', '_transaction_id',
-        '_customer_ip_address', '_customer_user_agent', '_wc_order_key',
-        '_cart_hash', '_created_via', '_download_permissions_granted',
-        '_recorded_coupon_usage_counts', '_order_currency', '_prices_include_tax'
+     $exclude_like = [
+        '_billing_%', '_shipping_%', '_payment_%', '_order_%', '_transaction_id',
+        '_customer_ip_address', '_customer_user_agent', '_cart_hash', '_created_via',
+        '_download_%', '_edit%', '_refund_%', '_stripe%', '_paypal%', '_wc_reserved_stock%',
+        '_order_currency', '_prices_include_tax'
     ];
 
-    $where_exclude = implode(" AND pm.meta_key NOT LIKE ", array_map(function($v){ return "'$v%'"; }, $exclude));
+    $exclude_sql = implode(" AND pm.meta_key NOT LIKE ", array_map(function($v) {
+        return $v;
+    }, $exclude_like));
 
     echo ('<pre>');
     // print_r($wpdb->get_results( "SELECT * FROM {$wpdb->postmeta} pm
@@ -428,17 +430,23 @@ function get_orders_meta() {
         FROM {$wpdb->postmeta} pm
         JOIN {$wpdb->posts} p ON p.ID = pm.post_id
         WHERE p.post_type = 'shop_order'
-        AND pm.meta_key NOT LIKE '_edit%' 
-        AND pm.meta_key NOT LIKE '_order_total%'
+        AND pm.meta_key NOT LIKE '_edit%'
         AND pm.meta_key NOT LIKE '_order_version%'
         AND pm.meta_key NOT LIKE '_customer_user%'
-        AND pm.meta_key NOT LIKE '_download%' 
-        AND pm.meta_key NOT LIKE '_wc_reserved_stock%'
         AND pm.meta_key NOT LIKE '_wc_deposit%'
-        AND pm.meta_key NOT LIKE '_stripe%'
-        AND pm.meta_key NOT LIKE '_paypal%'
         AND pm.meta_key NOT LIKE '_refund%'
-        $where_exclude
+        AND pm.meta_key NOT LIKE '_download%'
+        AND pm.meta_key NOT LIKE '_wc_reserved_stock%'
+        AND pm.meta_key NOT LIKE '_payment_method_title'
+        AND pm.meta_key NOT LIKE '_payment_method'
+        AND pm.meta_key NOT LIKE '_recorded_coupon_usage_counts'
+        AND pm.meta_key NOT LIKE '_shipping_method'
+        AND pm.meta_key NOT LIKE '_shipping_total'
+        AND pm.meta_key NOT LIKE '_billing_email'
+        AND pm.meta_key NOT LIKE '_billing_phone'
+        AND pm.meta_key NOT LIKE '_billing_address%'
+        AND pm.meta_key NOT LIKE '_shipping_address%'
+        AND pm.meta_key NOT LIKE '_customer_user'
         GROUP BY pm.meta_key
         ORDER BY usage_count DESC
     "));
