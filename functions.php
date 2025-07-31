@@ -568,11 +568,22 @@ function plnt_get_orders() {
     foreach ($orders as $order) {
         print_r($order['meta_data']);
         $new_meta = [];
+        $added_keys = []; // массив для проверки дублей
+
         foreach ($order['meta_data'] as $meta) {
             $key = ($meta['key'] === 'billing_dontcallme' || $meta['key'] === '_billing_dontcallme')
-                ? 'dontcallme' : $meta['key'];
+                ? 'dontcallme'
+                : $meta['key'];
+
+            // ✅ Если этот ключ уже добавлен — пропускаем
+            if (in_array($key, $added_keys)) {
+                continue;
+            }
+
             $new_meta[] = ['key' => $key, 'value' => $meta['value']];
+            $added_keys[] = $key;
         }
+
         // foreach ($order['meta_data'] as $meta) {
         //     if (!in_array($meta['key'],$meta_fields)) {
         //         array_push($meta_fields,$meta['key']);
