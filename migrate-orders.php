@@ -32,14 +32,21 @@ function wc_api_request($url, $key, $secret, $method = 'GET', $data = null) {
 }
 
 // === Проверка товара (по ID и SKU) ===
-function get_product_id_by_id_or_sku($product_id, $sku, $api_url, $key, $secret) {
-    $product = wc_api_request("$api_url/products/$product_id", $key, $secret);
-    if (!isset($product['id'])) {
-        $products = wc_api_request("$api_url/products?sku=" . urlencode($sku), $key, $secret);
-        return (!empty($products) && isset($products[0]['id'])) ? $products[0]['id'] : null;
+function get_product_id_by_sku($sku, $api_url, $key, $secret) {
+    if (!$sku) {
+        return null; // если SKU пустой — сразу возвращаем null
     }
-    return $product['id'];
+
+    // Запрос к WooCommerce API по SKU
+    $products = wc_api_request("$api_url/products?sku=" . urlencode($sku), $key, $secret);
+
+    if (!empty($products) && isset($products[0]['id'])) {
+        return $products[0]['id'];
+    }
+
+    return null; // товар не найден
 }
+
 
 // === Подготовка заказа ===
 function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secret) {
