@@ -597,10 +597,14 @@ function plnt_get_orders() {
 
 function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secret) {
     $existing = wc_api_request("$new_api_url/orders?search=" . $old_order['number'], $new_key, $new_secret);
-    $order_exists = false;
-    if (!empty($existing)) {
+    if (!is_array($existing)) {
+        echo "⚠️ Ошибка API при проверке существующего заказа: ";
+        print_r($existing);
+        $order_exists = false;
+    } else {
+        $order_exists = false;
         foreach ($existing as $ex) {
-            if ($ex['number'] == $old_order['number']) {
+            if (isset($ex['number']) && $ex['number'] == $old_order['number']) {
                 $order_exists = true;
                 break;
             }
