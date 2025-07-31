@@ -131,7 +131,7 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
         'customer_note'        => $old_order['customer_note'],
         'line_items'           => $new_line_items,
         'shipping_lines'       => $new_shipping_lines,
-        'meta_data'            => $new_meta
+        'meta_data'            => $new_meta,
         // ✅ перенос даты создания
         'date_created'         => $old_order['date_created'],   // формат YYYY-MM-DDTHH:MM:SS
         'date_paid'            => $old_order['date_paid'] ?? null,
