@@ -567,28 +567,25 @@ function plnt_get_orders() {
     echo ('<pre>');
     foreach ($orders as $order) {
         print_r($order['meta_data']);
-        $new_meta = [];
-        $added_keys = []; // массив для проверки дублей
 
-        foreach ($order['meta_data'] as $meta) {
-            $key = ($meta['key'] === 'billing_dontcallme' || $meta['key'] === '_billing_dontcallme')
-                ? 'dontcallme'
-                : $meta['key'];
-
-            // ✅ Если этот ключ уже добавлен — пропускаем
-            if (in_array($key, $added_keys)) {
-                continue;
-            }
-
-            $new_meta[] = ['key' => $key, 'value' => $meta['value']];
-            $added_keys[] = $key;
-        }
 
         // foreach ($order['meta_data'] as $meta) {
         //     if (!in_array($meta['key'],$meta_fields)) {
         //         array_push($meta_fields,$meta['key']);
         //     }
         // }
+
+        $new_order = prepare_order_for_import($order, "$new_url/orders", $new_key, $new_secret);
+         if (!$new_order) continue;
+
+        $result = wc_api_request("$new_url/orders", $new_key, $new_secret, 'POST', $new_order);
+
+        if (isset($result['id'])) {
+            log_message("✅ Заказ {$order['number']} перенесён → Новый ID {$result['id']}");
+            $total++;
+        } else {
+            log_message("❌ Ошибка переноса заказа {$order['number']}");
+        }
     }
    // print_r($meta_fields);
     print_r($new_meta);
@@ -599,45 +596,25 @@ function plnt_get_orders() {
 }
 
 function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secret) {
-
-    // 🔹 Вспомогательная функция: проверяет наличие товара на новом сайте
-    function get_product_id_by_id_or_sku($product_id, $sku, $api_url, $key, $secret) {
-        // Проверка по ID
-        $product = wc_api_request("$api_url/products/$product_id", $key, $secret);
-        if (!isset($product['id'])) {
-            // Если по ID не найден — пробуем по SKU
-            $products = wc_api_request("$api_url/products?sku=" . urlencode($sku), $key, $secret);
-            if (!empty($products) && isset($products[0]['id'])) {
-                return $products[0]['id'];
-            }
-            return null; // товар не найден
-        }
-        return $product['id'];
-    }
-
-    // 🔹 Проверка: не существует ли уже заказ с таким номером
     $existing = wc_api_request("$new_api_url/orders?search=" . $old_order['number'], $new_key, $new_secret);
     if (!empty($existing)) {
-        echo "⚠️ Заказ {$old_order['number']} уже существует, пропускаем.\n";
+        log_message("⚠️ Заказ {$old_order['number']} уже существует, пропускаем.");
         return null;
     }
 
-    // 🔹 Подготавливаем line_items
     $new_line_items = [];
     foreach ($old_order['line_items'] as $item) {
         $new_product_id = get_product_id_by_id_or_sku(
             $item['product_id'],
             $item['sku'],
-            str_replace('/orders', '', $new_api_url), // API продуктов
+            str_replace('/orders', '', $new_api_url),
             $new_key,
             $new_secret
         );
-
         if (!$new_product_id) {
-            echo "❌ Товар {$item['name']} (SKU {$item['sku']}) не найден на новом сайте — заказ будет неполный!\n";
-            continue; // пропускаем этот товар
+            log_message("❌ Товар {$item['name']} (SKU {$item['sku']}) не найден — пропускаем его.");
+            continue;
         }
-
         $new_line_items[] = [
             'product_id'   => $new_product_id,
             'variation_id' => $item['variation_id'],
@@ -650,7 +627,6 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
         ];
     }
 
-    // 🔹 Подготавливаем shipping_lines
     $new_shipping_lines = [];
     foreach ($old_order['shipping_lines'] as $ship) {
         $new_shipping_lines[] = [
@@ -663,30 +639,23 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
         ];
     }
 
-    // 🔹 Подготавливаем meta_data (конвертация + маппинг)
     $new_meta = [];
-    foreach ($old_order['meta_data'] as $meta) {
-        $key = $meta['key'];
-        $value = $meta['value'];
-        if ($key === '_billing_dontcallme') {
-            $key = 'dontcallme';
+    $added_keys = []; // массив для проверки дублей
+
+    foreach ($order['meta_data'] as $meta) {
+        $key = ($meta['key'] === 'billing_dontcallme' || $meta['key'] === '_billing_dontcallme')
+            ? 'dontcallme'
+            : $meta['key'];
+
+        // ✅ Если этот ключ уже добавлен — пропускаем
+        if (in_array($key, $added_keys)) {
+            continue;
         }
-        if ($key === 'is_vat_exempt') {
-            $key = 'is_vat_exempt';
-        }
-        if ($key === 'additional_inn') {
-            $key = 'additional_inn';
-        }
-        if ($key === 'delivery_dates') {
-            $key = 'delivery_dates';
-        }
-        if ($key === 'additional_delivery_interval') {
-            $key = 'additional_delivery_interval';
-        }
-        $new_meta[] = ['key' => $key, 'value' => $value];
+
+        $new_meta[] = ['key' => $key, 'value' => $meta['value']];
+        $added_keys[] = $key;
     }
 
-    // 🔹 Формируем новый заказ
     return [
         'customer_id'          => $old_order['customer_id'] ?: 0,
         'status'               => $old_order['status'],

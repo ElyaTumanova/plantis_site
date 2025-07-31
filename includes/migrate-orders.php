@@ -133,10 +133,20 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
     }
 
     $new_meta = [];
-    foreach ($old_order['meta_data'] as $meta) {
+    $added_keys = []; // массив для проверки дублей
+
+    foreach ($order['meta_data'] as $meta) {
         $key = ($meta['key'] === 'billing_dontcallme' || $meta['key'] === '_billing_dontcallme')
-             ? 'dontcallme' : $meta['key'];
+            ? 'dontcallme'
+            : $meta['key'];
+
+        // ✅ Если этот ключ уже добавлен — пропускаем
+        if (in_array($key, $added_keys)) {
+            continue;
+        }
+
         $new_meta[] = ['key' => $key, 'value' => $meta['value']];
+        $added_keys[] = $key;
     }
 
     return [
