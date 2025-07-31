@@ -598,7 +598,7 @@ function plnt_get_orders() {
 function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secret) {
     $existing = wc_api_request("$new_api_url/orders?search=" . $old_order['number'], $new_key, $new_secret);
     if (!empty($existing)) {
-        log_message("⚠️ Заказ {$old_order['number']} уже существует, пропускаем.");
+        echo("⚠️ Заказ {$old_order['number']} уже существует, пропускаем.");
         return null;
     }
 
@@ -612,7 +612,7 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
             $new_secret
         );
         if (!$new_product_id) {
-            log_message("❌ Товар {$item['name']} (SKU {$item['sku']}) не найден — пропускаем его.");
+            echo("❌ Товар {$item['name']} (SKU {$item['sku']}) не найден — пропускаем его.");
             continue;
         }
         $new_line_items[] = [
