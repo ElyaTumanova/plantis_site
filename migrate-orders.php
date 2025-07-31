@@ -55,16 +55,15 @@ function normalize_date($date) {
 
 function normalize_date_gmt($date) {
     if (!$date) return null;
-
-    // Преобразуем дату в timestamp относительно ЛОКАЛЬНОГО времени WP
     $timestamp = strtotime($date);
 
-    // Вычитаем смещение часового пояса WordPress
-    $wp_offset = get_option('gmt_offset') * HOUR_IN_SECONDS;
+    // Определяем смещение сервера
+    $server_offset = date('Z'); // смещение в секундах
+    $utc_timestamp = $timestamp - $server_offset;
 
-    // Конвертируем в UTC
-    return gmdate('Y-m-d\TH:i:s', $timestamp - $wp_offset);
+    return gmdate('Y-m-d\TH:i:s', $utc_timestamp);
 }
+
 
 
 
