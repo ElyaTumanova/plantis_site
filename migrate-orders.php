@@ -1,12 +1,12 @@
 <?php
 
 // === Данные API старого магазина ===
-$old_url = "https://plantis.shop/wp-json/wc/v3/orders";
+$old_url = "https://plantis.shop/wp-json/wc/v3";
 $old_key = "ck_d0efbf184dd2bf49da53a4b8df98201faa5bcb8d";
 $old_secret = "cs_3b711de00ebec91a2ce1bc0314dac8721c160c8a";
 
 // === Данные API нового магазина ===
-$new_url = "https://plantis-shop.ru/wp-json/wc/v3/orders";
+$new_url = "https://plantis-shop.ru/wp-json/wc/v3";
 $new_key = "ck_771c883e1256823b9fa05f23e4f41b7b543aa311";
 $new_secret = "cs_15ac1868a521fc7333c50c09f52901adaa524cd8";
 
