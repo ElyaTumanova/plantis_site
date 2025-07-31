@@ -49,15 +49,23 @@ function get_product_id_by_sku($sku, $api_url, $key, $secret) {
 
 function normalize_date($date) {
     if (!$date) return null;
-    return (strpos($date, 'T') === false) 
-        ? date('Y-m-d\TH:i:s', strtotime($date)) 
-        : $date;
+    // Преобразуем в локальное ISO 8601 без смещения
+    return date('Y-m-d\TH:i:s', strtotime($date));
 }
 
 function normalize_date_gmt($date) {
     if (!$date) return null;
-    return gmdate('Y-m-d\TH:i:s', strtotime($date));
+
+    // Преобразуем дату в timestamp относительно ЛОКАЛЬНОГО времени WP
+    $timestamp = strtotime($date);
+
+    // Вычитаем смещение часового пояса WordPress
+    $wp_offset = get_option('gmt_offset') * HOUR_IN_SECONDS;
+
+    // Конвертируем в UTC
+    return gmdate('Y-m-d\TH:i:s', $timestamp - $wp_offset);
 }
+
 
 
 // === Подготовка заказа ===
@@ -194,6 +202,6 @@ $update_dates = [
     'date_completed'   => isset($old_order['date_completed']) ? normalize_date($old_order['date_completed']) : null,
     'date_completed_gmt'=> isset($old_order['date_completed']) ? normalize_date_gmt($old_order['date_completed']) : null
 ];
-var_dump($update_dates); exit;
+//var_dump($update_dates); exit;
 wc_api_request("$new_url/orders/$new_order_id", $new_key, $new_secret, 'PUT', $update_dates);
 echo "✅ Даты заказа {$old_order['number']} обновлены.\n";
