@@ -569,22 +569,34 @@ function plnt_get_orders() {
 
         print_r($order['meta_data']);
 
+        $new_meta = [];
+        foreach ($old_order['meta_data'] as $meta) {
+            $key = $meta['key'];
+            $value = $meta['value'];
+            if ($key === '_billing_dontcallme') {
+                $key = 'dontcallme';
+            }
+            if ($key === 'is_vat_exempt') {
+                $key = 'is_vat_exempt';
+            }
+            if ($key === 'additional_inn') {
+                $key = 'additional_inn';
+            }
+            if ($key === 'delivery_dates') {
+                $key = 'delivery_dates';
+            }
+            if ($key === 'additional_delivery_interval') {
+                $key = 'additional_delivery_interval';
+            }
+            $new_meta[] = ['key' => $key, 'value' => $value];
+        }
+
+        print_r($new_meta);
+
     }
     echo ('</pre>');
 
-    $new_order = prepare_order_for_import($old_order, $new_url, $new_key, $new_secret);
-
-    if ($new_order) {
-        // 3. Отправляем на новый сайт
-        $result = wc_api_request($new_url, $new_key, $new_secret, 'POST', $new_order);
-
-        if (isset($result['id'])) {
-            echo "✅ Заказ {$old_order['number']} перенесён → Новый ID {$result['id']}\n";
-        } else {
-            echo "❌ Ошибка при переносе заказа {$old_order['number']}\n";
-            print_r($result);
-        }
-    }
+    
 
 }
 
