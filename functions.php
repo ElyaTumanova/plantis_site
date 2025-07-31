@@ -563,14 +563,14 @@ function plnt_get_orders() {
 
     // === 1. Получаем заказы со старого сайта ===
     $orders = wc_api_request("$old_url?per_page=100", $old_key, $old_secret);
-
+    $meta_fields = [];
     echo ('<pre>');
     foreach ($orders as $order) {
 
         print_r($order['meta_data']);
         foreach ($order['meta_data'] as $meta) {
-            print_r($meta);
-            print_r(array_keys($meta));
+            print_r($meta['key']);
+            
         }
 
         // $new_meta = [];
