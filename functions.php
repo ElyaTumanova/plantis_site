@@ -569,26 +569,26 @@ function plnt_get_orders() {
 
         print_r($order['meta_data']);
 
-        $new_meta = [];
-        foreach ($order['meta_data'] as $meta) {
-            $key = $meta['key'];
-            $value = $meta['value'];
-            if ($key === '_billing_dontcallme') {
-                $key = 'dontcallme';
-            }
-            if ($key === 'additional_inn') {
-                $key = 'additional_inn';
-            }
-            if ($key === 'delivery_dates') {
-                $key = 'delivery_dates';
-            }
-            if ($key === 'additional_delivery_interval') {
-                $key = 'additional_delivery_interval';
-            }
-            $new_meta[] = ['key' => $key, 'value' => $value];
-        }
+        // $new_meta = [];
+        // foreach ($order['meta_data'] as $meta) {
+        //     $key = $meta['key'];
+        //     $value = $meta['value'];
+        //     if ($key === '_billing_dontcallme') {
+        //         $key = 'dontcallme';
+        //     }
+        //     if ($key === 'additional_inn') {
+        //         $key = 'additional_inn';
+        //     }
+        //     if ($key === 'delivery_dates') {
+        //         $key = 'delivery_dates';
+        //     }
+        //     if ($key === 'additional_delivery_interval') {
+        //         $key = 'additional_delivery_interval';
+        //     }
+        //     $new_meta[] = ['key' => $key, 'value' => $value];
+        // }
 
-        print_r($new_meta);
+        // print_r($new_meta);
 
     }
     echo ('</pre>');
