@@ -130,7 +130,7 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
 
 // === 1. Получаем заказ со старого сайта ===
 $old_order = wc_api_request("$old_url/orders/$order_id_to_migrate", $old_key, $old_secret);
-var_dump($old_order); exit;
+//var_dump($old_order); exit;
 if (!$old_order || !isset($old_order['id'])) {
     exit("❌ Заказ с ID $order_id_to_migrate не найден на старом сайте.\n");
 }
