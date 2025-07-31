@@ -112,6 +112,9 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
         $key = ($meta['key'] === 'billing_dontcallme' || $meta['key'] === '_billing_dontcallme')
             ? 'dontcallme'
             : $meta['key'];
+        $key = ($meta['key'] === 'additional_peresadka')
+            ? 'dontcallme'
+            : $meta['_plnt_comment'];
         if (in_array($key, $added_keys)) continue;
         $new_meta[] = ['key' => $key, 'value' => $meta['value']];
         $added_keys[] = $key;
@@ -129,6 +132,10 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
         'line_items'           => $new_line_items,
         'shipping_lines'       => $new_shipping_lines,
         'meta_data'            => $new_meta
+        // ✅ перенос даты создания
+        'date_created'         => $old_order['date_created'],   // формат YYYY-MM-DDTHH:MM:SS
+        'date_paid'            => $old_order['date_paid'] ?? null,
+        'date_completed'       => $old_order['date_completed'] ?? null
     ];
 }
 
