@@ -562,18 +562,25 @@ function plnt_get_orders() {
     }
 
     // === 1. Получаем заказы со старого сайта ===
-    $orders = wc_api_request("$old_url?per_page=100", $old_key, $old_secret);
+    $orders = wc_api_request("$old_url?per_page=1", $old_key, $old_secret);
     $meta_fields = [];
     echo ('<pre>');
     foreach ($orders as $order) {
         print_r($order['meta_data']);
+        $new_meta = [];
         foreach ($order['meta_data'] as $meta) {
-            if (!in_array($meta['key'],$meta_fields)) {
-                array_push($meta_fields,$meta['key']);
-            }
+            $key = ($meta['key'] === 'billing_dontcallme' || $meta['key'] === '_billing_dontcallme')
+                ? 'dontcallme' : $meta['key'];
+            $new_meta[] = ['key' => $key, 'value' => $meta['value']];
         }
+        // foreach ($order['meta_data'] as $meta) {
+        //     if (!in_array($meta['key'],$meta_fields)) {
+        //         array_push($meta_fields,$meta['key']);
+        //     }
+        // }
     }
-    print_r($meta_fields);
+   // print_r($meta_fields);
+    print_r($new_meta);
     echo ('</pre>');
 
     
