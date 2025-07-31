@@ -597,6 +597,7 @@ function plnt_get_orders() {
 
 function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secret) {
     $existing = wc_api_request("$new_api_url/orders?search=" . $old_order['number'], $new_key, $new_secret);
+    print_r($existing);
     if (!empty($existing)) {
         echo("⚠️ Заказ {$old_order['number']} уже существует, пропускаем.");
         return null;
