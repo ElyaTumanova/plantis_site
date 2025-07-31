@@ -417,16 +417,8 @@ function get_orders_meta() {
     $where_exclude = implode(" AND pm.meta_key NOT LIKE ", array_map(function($v){ return "'$v%'"; }, $exclude));
 
     echo ('<pre>');
-    print_r($wpdb->get_results( "
-        SELECT pm.meta_key AS meta_field,
-               COUNT(*) AS usage_count,
-               SUBSTRING_INDEX(GROUP_CONCAT(pm.meta_value SEPARATOR '||'), '||', 1) AS example_value
-        FROM {$wpdb->postmeta} pm
-        JOIN {$wpdb->posts} p ON p.ID = pm.post_id
-        WHERE p.post_type = 'shop_order'
-        GROUP BY pm.meta_key
-        ORDER BY usage_count DESC
-    "));
+    print_r($wpdb->get_results( "SELECT * FROM $wpdb->postы WHERE post_type = 'shop_order'"));
+
     // print_r($wpdb->get_results( "
     //     SELECT pm.meta_key AS meta_field,
     //            COUNT(*) AS usage_count,
