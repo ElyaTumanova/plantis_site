@@ -160,18 +160,18 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
         $added_keys[] = $key;
     }
 
-    // 🔹 Добавляем служебные даты для обновления в базе
-    $new_meta[] = [
-        'key'   => '_imported_dates',
-        'value' => [
-            'created'         => $old_order['date_created'],
-            'created_gmt'     => gmdate('Y-m-d H:i:s', strtotime($old_order['date_created'])),
-            'paid'            => isset($old_order['date_paid']) ? $old_order['date_paid'] : '',
-            'paid_gmt'        => isset($old_order['date_paid']) ? gmdate('Y-m-d H:i:s', strtotime($old_order['date_paid'])) : '',
-            'completed'       => isset($old_order['date_completed']) ? $old_order['date_completed'] : '',
-            'completed_gmt'   => isset($old_order['date_completed']) ? gmdate('Y-m-d H:i:s', strtotime($old_order['date_completed'])) : ''
-        ]
-    ];
+    // // 🔹 Добавляем служебные даты для обновления в базе
+    // $new_meta[] = [
+    //     'key'   => '_imported_dates',
+    //     'value' => [
+    //         'created'         => $old_order['date_created'],
+    //         'created_gmt'     => gmdate('Y-m-d H:i:s', strtotime($old_order['date_created'])),
+    //         'paid'            => isset($old_order['date_paid']) ? $old_order['date_paid'] : '',
+    //         'paid_gmt'        => isset($old_order['date_paid']) ? gmdate('Y-m-d H:i:s', strtotime($old_order['date_paid'])) : '',
+    //         'completed'       => isset($old_order['date_completed']) ? $old_order['date_completed'] : '',
+    //         'completed_gmt'   => isset($old_order['date_completed']) ? gmdate('Y-m-d H:i:s', strtotime($old_order['date_completed'])) : ''
+    //     ]
+    // ];
 
     // ✅ Флаг для последующего SQL-обновления
     //$new_meta[] = ['key' => '_need_fix_dates', 'value' => '1'];
@@ -225,6 +225,7 @@ $local_completed = !empty($old_order['date_completed']) ? date('Y-m-d H:i:s', st
 $gmt_completed   = $local_completed ? gmdate('Y-m-d H:i:s', strtotime($old_order['date_completed'])) : null;
 
 // === 4. Прямое обновление дат в БД ===
+// ✅ Жестко правим даты в базе
 $wpdb->update(
     $wpdb->posts,
     [
@@ -236,10 +237,9 @@ $wpdb->update(
     ['ID' => $new_id]
 );
 
-// === 5. Сохраняем мета WooCommerce для всех дат ===
+// ✅ Обновляем мета WooCommerce
 update_post_meta($new_id, '_date_created', $local_created);
 update_post_meta($new_id, '_date_created_gmt', $gmt_created);
-
 if ($local_paid) {
     update_post_meta($new_id, '_date_paid', $local_paid);
     update_post_meta($new_id, '_date_paid_gmt', $gmt_paid);
@@ -249,4 +249,8 @@ if ($local_completed) {
     update_post_meta($new_id, '_date_completed_gmt', $gmt_completed);
 }
 
-echo "✅ Даты (local + GMT) установлены 1:1 как в старом заказе для ID $new_id\n";
+// ✅ Сбрасываем кэш, чтобы WooCommerce подтянул новые даты
+clean_post_cache($new_id);
+wc_delete_shop_order_transients($new_id);
+
+echo "✅ Даты перезаписаны напрямую в базе и кэш очищен для ID $new_id\n";
