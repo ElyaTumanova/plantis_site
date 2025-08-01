@@ -237,6 +237,20 @@ $wpdb->update(
     ['ID' => $new_id]
 );
 
+// === Устанавливаем правильные даты из старого заказа ===
+if ($local_paid) {
+    $wpdb->query($wpdb->prepare(
+        "INSERT INTO {$wpdb->postmeta} (post_id, meta_key, meta_value) VALUES (%d, '_date_paid', %s)",
+        $new_id, $local_paid
+    ));
+}
+if ($local_completed) {
+    $wpdb->query($wpdb->prepare(
+        "INSERT INTO {$wpdb->postmeta} (post_id, meta_key, meta_value) VALUES (%d, '_date_completed', %s)",
+        $new_id, $local_completed
+    ));
+}
+
 // === 5. Сбрасываем кэш WooCommerce, чтобы новые даты подтянулись ===
 clean_post_cache($new_id);
 if (function_exists('wc_delete_shop_order_transients')) {
