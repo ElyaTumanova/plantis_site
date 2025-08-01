@@ -14,7 +14,7 @@ $new_secret = "cs_15ac1868a521fc7333c50c09f52901adaa524cd8";
 $order_id_to_migrate = 65740;
 
 // === Подключаем WordPress, чтобы использовать $wpdb ===
-require_once '/var/www/u1478867/data/www/dev.plantis.shop/wp-load.php';
+require_once ' /var/www/www-root/data/www/plantis-shop.ru/wp-load.php';
 global $wpdb;
 
 // === Функция API ===
