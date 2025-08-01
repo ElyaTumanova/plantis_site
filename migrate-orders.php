@@ -1,4 +1,10 @@
 <?php
+// === Конфигурация базы нового сайта ===
+$db_host = 'localhost';
+$db_user = 'plantis';
+$db_pass = 'Chippo1912';
+$db_name = 'db';
+$db_prefix = 'wp_'; // ваш префикс таблиц
 
 // === Данные API старого магазина ===
 $old_url = "https://plantis.shop/wp-json/wc/v3";
@@ -173,7 +179,7 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
     ];
 
     // ✅ Флаг для последующего SQL-обновления
-    $new_meta[] = ['key' => '_need_fix_dates', 'value' => '1'];
+    //$new_meta[] = ['key' => '_need_fix_dates', 'value' => '1'];
 
 
     return [
@@ -215,10 +221,11 @@ if (!isset($result['id'])) {
 $new_order_id = $result['id'];
 echo "✅ Заказ {$old_order['number']} создан на новом сайте (ID $new_order_id)\n";
 
-// === 4. СРАЗУ обновляем даты напрямую в базе ===
-require_once '/var/www/u1478867/data/www/dev.plantis.shop/wp-load.php';
-global $wpdb;
+// === 3. Подключаемся к БД напрямую ===
+$conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
+if ($conn->connect_error) die("DB Error: " . $conn->connect_error);
 
+// === Даты из старого заказа ===
 $c  = $old_order['date_created'];
 $cg = gmdate('Y-m-d H:i:s', strtotime($c));
 $p  = !empty($old_order['date_paid']) ? $old_order['date_paid'] : null;
@@ -226,15 +233,18 @@ $pg = $p ? gmdate('Y-m-d H:i:s', strtotime($p)) : null;
 $d  = !empty($old_order['date_completed']) ? $old_order['date_completed'] : null;
 $dg = $d ? gmdate('Y-m-d H:i:s', strtotime($d)) : null;
 
-$wpdb->update($wpdb->posts, ['post_date' => $c, 'post_date_gmt' => $cg], ['ID' => $new_id]);
+// === 4. Обновляем даты напрямую ===
+$conn->query("UPDATE {$db_prefix}posts SET post_date='$c', post_date_gmt='$cg' WHERE ID=$new_id");
 
 if ($p) {
-    update_post_meta($new_id, '_date_paid', $p);
-    if ($pg) update_post_meta($new_id, '_date_paid_gmt', $pg);
+    $conn->query("REPLACE INTO {$db_prefix}postmeta (post_id, meta_key, meta_value) VALUES ($new_id, '_date_paid', '$p')");
+    if ($pg) $conn->query("REPLACE INTO {$db_prefix}postmeta (post_id, meta_key, meta_value) VALUES ($new_id, '_date_paid_gmt', '$pg')");
 }
 if ($d) {
-    update_post_meta($new_id, '_date_completed', $d);
-    if ($dg) update_post_meta($new_id, '_date_completed_gmt', $dg);
+    $conn->query("REPLACE INTO {$db_prefix}postmeta (post_id, meta_key, meta_value) VALUES ($new_id, '_date_completed', '$d')");
+    if ($dg) $conn->query("REPLACE INTO {$db_prefix}postmeta (post_id, meta_key, meta_value) VALUES ($new_id, '_date_completed_gmt', '$dg')");
 }
 
-echo "✅ Даты обновлены напрямую через SQL для заказа ID $new_id\n";
+$conn->close();
+
+echo "✅ Даты обновлены напрямую в БД для заказа ID $new_id\n";
