@@ -1,10 +1,11 @@
 <?php
-// === Конфигурация базы нового сайта ===
-$db_host = '127.0.0.1';
-$db_user = 'plantis';
-$db_pass = 'Chippo1912';
-$db_name = 'db';
-$db_prefix = 'wp_'; // ваш префикс таблиц
+// === Читаем wp-config.php, чтобы не писать логины вручную ===
+$wp_config = file_get_contents('/var/www/u1478867/data/www/dev.plantis.shop/wp-config.php');
+preg_match("/DB_NAME',\s*'(.+?)'/", $wp_config, $m); $db_name = $m[1];
+preg_match("/DB_USER',\s*'(.+?)'/", $wp_config, $m); $db_user = $m[1];
+preg_match("/DB_PASSWORD',\s*'(.+?)'/", $wp_config, $m); $db_pass = $m[1];
+preg_match("/DB_HOST',\s*'(.+?)'/", $wp_config, $m); $db_host = $m[1];
+$table_prefix = 'wp_'; // если нужно, можно тоже извлечь из wp-config.php
 
 // === Данные API старого магазина ===
 $old_url = "https://plantis.shop/wp-json/wc/v3";
@@ -69,9 +70,6 @@ function normalize_date_gmt($date) {
 
     return gmdate('Y-m-d\TH:i:s', $utc_timestamp);
 }
-
-
-
 
 // === Подготовка заказа ===
 function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secret) {
@@ -225,7 +223,18 @@ echo "✅ Заказ {$old_order['number']} создан на новом сай�
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 if ($conn->connect_error) die("DB Error: " . $conn->connect_error);
 
-// === Даты из старого заказа ===
+// === 3. Подключаемся к MySQL напрямую ===
+$conn = @new mysqli($db_host, $db_user, $db_pass, $db_name);
+if ($conn->connect_errno) {
+    // пробуем через сокет
+    $conn = @new mysqli(null, $db_user, $db_pass, $db_name, null, '/var/lib/mysql/mysql.sock');
+}
+if ($conn->connect_errno) {
+    die("❌ DB Error ({$conn->connect_errno}): {$conn->connect_error}\n");
+}
+echo "✅ Подключение к базе установлено!\n";
+
+// === 4. Даты из старого заказа ===
 $c  = $old_order['date_created'];
 $cg = gmdate('Y-m-d H:i:s', strtotime($c));
 $p  = !empty($old_order['date_paid']) ? $old_order['date_paid'] : null;
@@ -233,18 +242,18 @@ $pg = $p ? gmdate('Y-m-d H:i:s', strtotime($p)) : null;
 $d  = !empty($old_order['date_completed']) ? $old_order['date_completed'] : null;
 $dg = $d ? gmdate('Y-m-d H:i:s', strtotime($d)) : null;
 
-// === 4. Обновляем даты напрямую ===
-$conn->query("UPDATE {$db_prefix}posts SET post_date='$c', post_date_gmt='$cg' WHERE ID=$new_id");
+// === 5. Обновляем даты напрямую ===
+$conn->query("UPDATE {$table_prefix}posts SET post_date='$c', post_date_gmt='$cg' WHERE ID=$new_id");
 
 if ($p) {
-    $conn->query("REPLACE INTO {$db_prefix}postmeta (post_id, meta_key, meta_value) VALUES ($new_id, '_date_paid', '$p')");
-    if ($pg) $conn->query("REPLACE INTO {$db_prefix}postmeta (post_id, meta_key, meta_value) VALUES ($new_id, '_date_paid_gmt', '$pg')");
+    $conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) VALUES ($new_id, '_date_paid', '$p')");
+    if ($pg) $conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) VALUES ($new_id, '_date_paid_gmt', '$pg')");
 }
 if ($d) {
-    $conn->query("REPLACE INTO {$db_prefix}postmeta (post_id, meta_key, meta_value) VALUES ($new_id, '_date_completed', '$d')");
-    if ($dg) $conn->query("REPLACE INTO {$db_prefix}postmeta (post_id, meta_key, meta_value) VALUES ($new_id, '_date_completed_gmt', '$dg')");
+    $conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) VALUES ($new_id, '_date_completed', '$d')");
+    if ($dg) $conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) VALUES ($new_id, '_date_completed_gmt', '$dg')");
 }
 
 $conn->close();
 
-echo "✅ Даты обновлены напрямую в БД для заказа ID $new_id\n";
+echo "✅ Даты успешно обновлены через SQL для заказа ID $new_id\n";
