@@ -1,11 +1,4 @@
 <?php
-// === Читаем wp-config.php, чтобы не писать логины вручную ===
-$wp_config = file_get_contents('/var/www/u1478867/data/www/dev.plantis.shop/wp-config.php');
-preg_match("/DB_NAME',\s*'(.+?)'/", $wp_config, $m); $db_name = $m[1];
-preg_match("/DB_USER',\s*'(.+?)'/", $wp_config, $m); $db_user = $m[1];
-preg_match("/DB_PASSWORD',\s*'(.+?)'/", $wp_config, $m); $db_pass = $m[1];
-preg_match("/DB_HOST',\s*'(.+?)'/", $wp_config, $m); $db_host = $m[1];
-$table_prefix = 'wp_'; // если нужно, можно тоже извлечь из wp-config.php
 
 // === Данные API старого магазина ===
 $old_url = "https://plantis.shop/wp-json/wc/v3";
@@ -219,59 +212,34 @@ if (!isset($result['id'])) {
 $new_id = $result['id'];
 echo "✅ Заказ {$old_order['number']} создан на новом сайте (ID $new_id)\n";
 
-// === 3. Подключаемся к MySQL напрямую ===
-$conn = @new mysqli($db_host, $db_user, $db_pass, $db_name);
-if ($conn->connect_errno) {
-    // пробуем через сокет
-    $conn = @new mysqli(null, $db_user, $db_pass, $db_name, null, '/var/lib/mysql/mysql.sock');
-}
-if ($conn->connect_errno) {
-    die("❌ DB Error ({$conn->connect_errno}): {$conn->connect_error}\n");
-}
-echo "✅ Подключение к базе установлено!\n";
+// === 3. Подключаем WordPress, чтобы работать через WC_Order ===
+require_once '/var/www/u1478867/data/www/dev.plantis.shop/wp-load.php';
 
-// === 4. Даты из старого заказа ===
-$c  = $old_order['date_created'];
-$cg = gmdate('Y-m-d H:i:s', strtotime($c));
-$p  = !empty($old_order['date_paid']) ? $old_order['date_paid'] : null;
-$pg = $p ? gmdate('Y-m-d H:i:s', strtotime($p)) : null;
-$d  = !empty($old_order['date_completed']) ? $old_order['date_completed'] : null;
-$dg = $d ? gmdate('Y-m-d H:i:s', strtotime($d)) : null;
+// === 4. Устанавливаем даты через WooCommerce API ===
+$c = !empty($old_order['date_created'])   ? $old_order['date_created']   : null;
+$p = !empty($old_order['date_paid'])      ? $old_order['date_paid']      : null;
+$d = !empty($old_order['date_completed']) ? $old_order['date_completed'] : null;
 
-// === 5. Обновляем все даты, чтобы WooCommerce их подхватил ===
-
-// Основная дата заказа (создание)
-$conn->query("UPDATE {$table_prefix}posts 
-    SET post_date='$c', post_date_gmt='$cg', 
-        post_modified='$c', post_modified_gmt='$cg' 
-    WHERE ID=$new_id");
-
-// Добавляем мета WooCommerce (обязательно для корректного отображения)
-$conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) 
-    VALUES ($new_id, '_date_created', '$c')");
-$conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) 
-    VALUES ($new_id, '_date_created_gmt', '$cg')");
-
-// Дата оплаты
-if ($p) {
-    $conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) 
-        VALUES ($new_id, '_date_paid', '$p')");
-    if ($pg) {
-        $conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) 
-            VALUES ($new_id, '_date_paid_gmt', '$pg')");
+$order = wc_get_order($new_id);
+if ($order) {
+    // Преобразуем даты в объекты WC_DateTime (WooCommerce автоматически выставляет GMT)
+    if ($c) {
+        $created_obj = new WC_DateTime($c, new DateTimeZone('UTC'));
+        $order->set_date_created($created_obj);
     }
-}
-
-// Дата завершения
-if ($d) {
-    $conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) 
-        VALUES ($new_id, '_date_completed', '$d')");
-    if ($dg) {
-        $conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) 
-            VALUES ($new_id, '_date_completed_gmt', '$dg')");
+    if ($p) {
+        $paid_obj = new WC_DateTime($p, new DateTimeZone('UTC'));
+        $order->set_date_paid($paid_obj);
     }
+    if ($d) {
+        $completed_obj = new WC_DateTime($d, new DateTimeZone('UTC'));
+        $order->set_date_completed($completed_obj);
+    }
+
+    // Сохраняем заказ с обновлёнными датами
+    $order->save();
+
+    echo "✅ Даты (с учётом GMT) обновлены через WC_Order для ID $new_id\n";
+} else {
+    echo "❌ Не удалось загрузить заказ $new_id через wc_get_order()\n";
 }
-
-$conn->close();
-
-echo "✅ Даты успешно обновлены через SQL для заказа ID $new_id\n";
