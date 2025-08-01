@@ -212,35 +212,35 @@ if (!isset($result['id'])) {
 $new_order_id = $result['id'];
 echo "✅ Заказ {$old_order['number']} создан на новом сайте (ID $new_order_id)\n";
 
+// === 4. Обновляем даты напрямую через SQL ===
+require_once '/var/www/u1478867/data/www/dev.plantis.shop/wp-load.php';
+global $wpdb;
 
-// === 4. Добавляем SQL-хук в новый сайт ===
-$wp_hook_file = '/var/www/u1478867/data/www/dev.plantis.shop/wp-content/themes/plantis_site/functions-import-dates.php';
-if (!file_exists($wp_hook_file)) {
-    file_put_contents($wp_hook_file, <<<PHP
-<?php
-add_action('woocommerce_new_order', function(\$order_id) {
-    \$dates = get_post_meta(\$order_id, '_imported_dates', true);
-    if (empty(\$dates) || !is_array(\$dates)) return;
+// Даты из старого заказа
+$created        = $old_order['date_created'];
+$created_gmt    = gmdate('Y-m-d H:i:s', strtotime($created));
+$paid           = !empty($old_order['date_paid']) ? $old_order['date_paid'] : null;
+$paid_gmt       = $paid ? gmdate('Y-m-d H:i:s', strtotime($paid)) : null;
+$completed      = !empty($old_order['date_completed']) ? $old_order['date_completed'] : null;
+$completed_gmt  = $completed ? gmdate('Y-m-d H:i:s', strtotime($completed)) : null;
 
-    global \$wpdb;
-    if (!empty(\$dates['created'])) {
-        \$wpdb->update(
-            \$wpdb->posts,
-            ['post_date' => \$dates['created'], 'post_date_gmt' => \$dates['created_gmt']],
-            ['ID' => \$order_id]
-        );
-    }
-    if (!empty(\$dates['paid'])) {
-        update_post_meta(\$order_id, '_date_paid', \$dates['paid']);
-        if (!empty(\$dates['paid_gmt'])) update_post_meta(\$order_id, '_date_paid_gmt', \$dates['paid_gmt']);
-    }
-    if (!empty(\$dates['completed'])) {
-        update_post_meta(\$order_id, '_date_completed', \$dates['completed']);
-        if (!empty(\$dates['completed_gmt'])) update_post_meta(\$order_id, '_date_completed_gmt', \$dates['completed_gmt']);
-    }
-    delete_post_meta(\$order_id, '_imported_dates'); // очистка служебных данных
-});
-PHP
-    );
-    echo "✅ Хук для обновления дат добавлен в functions-import-dates.php\n";
+// ✅ обновляем post_date (дата создания)
+$wpdb->update(
+    $wpdb->posts,
+    ['post_date' => $created, 'post_date_gmt' => $created_gmt],
+    ['ID' => $new_order_id]
+);
+
+// ✅ обновляем даты оплаты
+if ($paid) {
+    update_post_meta($new_order_id, '_date_paid', $paid);
+    update_post_meta($new_order_id, '_date_paid_gmt', $paid_gmt);
 }
+
+// ✅ обновляем даты завершения
+if ($completed) {
+    update_post_meta($new_order_id, '_date_completed', $completed);
+    update_post_meta($new_order_id, '_date_completed_gmt', $completed_gmt);
+}
+
+echo "✅ Даты обновлены напрямую через SQL для заказа ID $new_order_id.\n";
