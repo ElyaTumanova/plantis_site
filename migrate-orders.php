@@ -216,12 +216,8 @@ if (!isset($result['id'])) {
     exit("❌ Ошибка при создании заказа {$old_order['number']}:\n" . print_r($result, true));
 }
 
-$new_order_id = $result['id'];
-echo "✅ Заказ {$old_order['number']} создан на новом сайте (ID $new_order_id)\n";
-
-// === 3. Подключаемся к БД напрямую ===
-$conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
-if ($conn->connect_error) die("DB Error: " . $conn->connect_error);
+$new_id = $result['id'];
+echo "✅ Заказ {$old_order['number']} создан на новом сайте (ID $new_id)\n";
 
 // === 3. Подключаемся к MySQL напрямую ===
 $conn = @new mysqli($db_host, $db_user, $db_pass, $db_name);
