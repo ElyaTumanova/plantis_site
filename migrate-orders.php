@@ -1,6 +1,6 @@
 <?php
 // === Конфигурация базы нового сайта ===
-$db_host = 'localhost';
+$db_host = '127.0.0.1';
 $db_user = 'plantis';
 $db_pass = 'Chippo1912';
 $db_name = 'db';
