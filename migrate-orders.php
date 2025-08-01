@@ -216,51 +216,58 @@ echo "✅ Заказ {$old_order['number']} создан на новом сай�
 require_once '/var/www/www-root/data/www/plantis-shop.ru/wp-load.php';
 
 // === 4. Устанавливаем даты через WooCommerce API ===
-$c = !empty($old_order['date_created'])   ? $old_order['date_created']   : null;
-$p = !empty($old_order['date_paid'])      ? $old_order['date_paid']      : null;
-$d = !empty($old_order['date_completed']) ? $old_order['date_completed'] : null;
+// исходные значения
+$c = $old_order['date_created'];   // локальное время
+$p = $old_order['date_paid'] ?? null;
+$d = $old_order['date_completed'] ?? null;
+
+// вычисляем GMT
+$created_gmt    = gmdate('Y-m-d H:i:s', strtotime($c));
+$paid_gmt       = $p ? gmdate('Y-m-d H:i:s', strtotime($p)) : null;
+$completed_gmt  = $d ? gmdate('Y-m-d H:i:s', strtotime($d)) : null;
+
 
 $order = wc_get_order($new_id);
 if ($order) {
-    // Создаём объект UTC и явно задаём offset=0, чтобы WooCommerce не сдвигал дату
+    // === Локальные даты ===
     if ($c) {
-        $created = new WC_DateTime($c, new DateTimeZone('UTC'));
-        $created->set_utc_offset(0);
+        $created = new WC_DateTime($c, new DateTimeZone(wp_timezone_string()));
         $order->set_date_created($created);
     }
     if ($p) {
-        $paid = new WC_DateTime($p, new DateTimeZone('UTC'));
-        $paid->set_utc_offset(0);
+        $paid = new WC_DateTime($p, new DateTimeZone(wp_timezone_string()));
         $order->set_date_paid($paid);
     }
     if ($d) {
-        $completed = new WC_DateTime($d, new DateTimeZone('UTC'));
-        $completed->set_utc_offset(0);
+        $completed = new WC_DateTime($d, new DateTimeZone(wp_timezone_string()));
         $order->set_date_completed($completed);
     }
 
     $order->save();
 
-    // ✅ Подстраховка: принудительно прописываем GMT через SQL
+    // === Принудительно обновляем GMT (WooCommerce может не рассчитать правильно) ===
     global $wpdb;
     if ($c) {
         $wpdb->update(
             $wpdb->posts,
             [
-                'post_date'     => gmdate('Y-m-d H:i:s', strtotime($c)),
-                'post_date_gmt' => gmdate('Y-m-d H:i:s', strtotime($c)),
-                'post_modified'     => gmdate('Y-m-d H:i:s', strtotime($c)),
-                'post_modified_gmt' => gmdate('Y-m-d H:i:s', strtotime($c)),
+                'post_date'         => $c,
+                'post_date_gmt'     => $created_gmt,
+                'post_modified'     => $c,
+                'post_modified_gmt' => $created_gmt,
             ],
             ['ID' => $order->get_id()]
         );
 
         update_post_meta($order->get_id(), '_date_created', $c);
-        update_post_meta($order->get_id(), '_date_created_gmt', gmdate('Y-m-d H:i:s', strtotime($c)));
+        update_post_meta($order->get_id(), '_date_created_gmt', $created_gmt);
+    }
+    if ($p) {
+        update_post_meta($order->get_id(), '_date_paid_gmt', $paid_gmt);
+    }
+    if ($d) {
+        update_post_meta($order->get_id(), '_date_completed_gmt', $completed_gmt);
     }
 
-    echo "✅ Все даты (локальные + GMT) выставлены для ID {$order->get_id()}\n";
-} else {
-    echo "❌ Не удалось загрузить заказ $new_id через wc_get_order()\n";
+    echo "✅ Даты выставлены корректно: локальное + GMT для ID {$order->get_id()}\n";
 }
-
