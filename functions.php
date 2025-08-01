@@ -36,6 +36,9 @@ require get_template_directory() . '/includes/metrika.php';
 //require get_template_directory() . '/includes/xml/create_yandex_xml.php';
 //require get_template_directory() . '/includes/xml/create_google_xml.php';
 
+require_once get_template_directory() . '/includes/fix-imported-order-dates.php';
+
+
 /** Add Woocommerce files */
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 	require get_template_directory() . '/woocommerce/includes/wc-cart-functions.php';
