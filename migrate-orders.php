@@ -31,7 +31,7 @@ function wc_api_request($url, $key, $secret, $method = 'GET', $data = null) {
     return json_decode($response, true);
 }
 
-// === Проверка товара (по ID и SKU) ===
+// === Функция поиска товара по SKU ===
 function get_product_id_by_sku($sku, $api_url, $key, $secret) {
     if (!$sku) {
         return null; // если SKU пустой — сразу возвращаем null
@@ -131,20 +131,47 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
         ];
     }
 
-    // Подготовка meta_data (с удалением дублей)
+    // Подготовка meta_data (удаляем дубли и переименовываем ключи)
     $new_meta = [];
     $added_keys = [];
+
     foreach ($old_order['meta_data'] as $meta) {
-        $key = ($meta['key'] === 'billing_dontcallme' || $meta['key'] === '_billing_dontcallme')
-            ? 'dontcallme'
-            : $meta['key'];
-        $key = ($meta['key'] === 'additional_peresadka')
-            ? '_plnt_comment'
-            : $meta['key'];
-        if (in_array($key, $added_keys)) continue;
-        $new_meta[] = ['key' => $key, 'value' => $meta['value']];
+        $original_key = $meta['key'];
+
+        // 🔹 Переименовываем ключи по правилам
+        if ($original_key === 'billing_dontcallme' || $original_key === '_billing_dontcallme') {
+            $key = 'dontcallme';
+        } elseif ($original_key === 'additional_peresadka') {
+            $key = '_plnt_comment';
+        } else {
+            $key = $original_key;
+        }
+
+        // 🔹 Пропускаем, если такой ключ уже добавлен
+        if (in_array($key, $added_keys)) {
+            continue;
+        }
+
+        $new_meta[] = [
+            'key'   => $key,
+            'value' => $meta['value']
+        ];
         $added_keys[] = $key;
     }
+
+    // 🔹 Добавляем служебные даты для обновления в базе
+    $new_meta[] = [
+        'key'   => '_imported_dates',
+        'value' => [
+            'created'         => $old_order['date_created'],
+            'created_gmt'     => gmdate('Y-m-d H:i:s', strtotime($old_order['date_created'])),
+            'paid'            => isset($old_order['date_paid']) ? $old_order['date_paid'] : '',
+            'paid_gmt'        => isset($old_order['date_paid']) ? gmdate('Y-m-d H:i:s', strtotime($old_order['date_paid'])) : '',
+            'completed'       => isset($old_order['date_completed']) ? $old_order['date_completed'] : '',
+            'completed_gmt'   => isset($old_order['date_completed']) ? gmdate('Y-m-d H:i:s', strtotime($old_order['date_completed'])) : ''
+        ]
+    ];
+
 
     return [
         'customer_id'          => $old_order['customer_id'] ?: 0,
@@ -158,13 +185,6 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
         'line_items'           => $new_line_items,
         'shipping_lines'       => $new_shipping_lines,
         'meta_data'            => $new_meta,
-        // ✅ Перенос всех дат
-        // 'date_created'         => normalize_date($old_order['date_created']),
-        // 'date_created_gmt'     => normalize_date_gmt($old_order['date_created']),
-        // 'date_paid'            => isset($old_order['date_paid']) ? normalize_date($old_order['date_paid']) : null,
-        // 'date_paid_gmt'        => isset($old_order['date_paid']) ? normalize_date_gmt($old_order['date_paid']) : null,
-        // 'date_completed'       => isset($old_order['date_completed']) ? normalize_date($old_order['date_completed']) : null,
-        // 'date_completed_gmt'   => isset($old_order['date_completed']) ? normalize_date_gmt($old_order['date_completed']) : null
     ];
 }
 
@@ -192,15 +212,35 @@ if (!isset($result['id'])) {
 $new_order_id = $result['id'];
 echo "✅ Заказ {$old_order['number']} создан на новом сайте (ID $new_order_id)\n";
 
-// === 4. Обновляем даты (PUT) ===
-$update_dates = [
-    'date_created'     => normalize_date($old_order['date_created']),
-    'date_created_gmt' => normalize_date_gmt($old_order['date_created']),
-    'date_paid'        => isset($old_order['date_paid']) ? normalize_date($old_order['date_paid']) : null,
-    'date_paid_gmt'    => isset($old_order['date_paid']) ? normalize_date_gmt($old_order['date_paid']) : null,
-    'date_completed'   => isset($old_order['date_completed']) ? normalize_date($old_order['date_completed']) : null,
-    'date_completed_gmt'=> isset($old_order['date_completed']) ? normalize_date_gmt($old_order['date_completed']) : null
-];
-//var_dump($update_dates); exit;
-wc_api_request("$new_url/orders/$new_order_id", $new_key, $new_secret, 'PUT', $update_dates);
-echo "✅ Даты заказа {$old_order['number']} обновлены.\n";
+
+// === 4. Добавляем SQL-хук в новый сайт ===
+$wp_hook_file = '/var/www/u1478867/data/www/dev.plantis.shop/wp-content/themes/plantis_site/functions-import-dates.php';
+if (!file_exists($wp_hook_file)) {
+    file_put_contents($wp_hook_file, <<<PHP
+<?php
+add_action('woocommerce_new_order', function(\$order_id) {
+    \$dates = get_post_meta(\$order_id, '_imported_dates', true);
+    if (empty(\$dates) || !is_array(\$dates)) return;
+
+    global \$wpdb;
+    if (!empty(\$dates['created'])) {
+        \$wpdb->update(
+            \$wpdb->posts,
+            ['post_date' => \$dates['created'], 'post_date_gmt' => \$dates['created_gmt']],
+            ['ID' => \$order_id]
+        );
+    }
+    if (!empty(\$dates['paid'])) {
+        update_post_meta(\$order_id, '_date_paid', \$dates['paid']);
+        if (!empty(\$dates['paid_gmt'])) update_post_meta(\$order_id, '_date_paid_gmt', \$dates['paid_gmt']);
+    }
+    if (!empty(\$dates['completed'])) {
+        update_post_meta(\$order_id, '_date_completed', \$dates['completed']);
+        if (!empty(\$dates['completed_gmt'])) update_post_meta(\$order_id, '_date_completed_gmt', \$dates['completed_gmt']);
+    }
+    delete_post_meta(\$order_id, '_imported_dates'); // очистка служебных данных
+});
+PHP
+    );
+    echo "✅ Хук для обновления дат добавлен в functions-import-dates.php\n";
+}
