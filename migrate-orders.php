@@ -13,6 +13,10 @@ $new_secret = "cs_15ac1868a521fc7333c50c09f52901adaa524cd8";
 // === Укажите ID заказа для переноса ===
 $order_id_to_migrate = 65740;
 
+// === Подключаем WordPress, чтобы использовать $wpdb ===
+require_once '/var/www/u1478867/data/www/dev.plantis.shop/wp-load.php';
+global $wpdb;
+
 // === Функция API ===
 function wc_api_request($url, $key, $secret, $method = 'GET', $data = null) {
     $ch = curl_init();
@@ -212,62 +216,37 @@ if (!isset($result['id'])) {
 $new_id = $result['id'];
 echo "✅ Заказ {$old_order['number']} создан на новом сайте (ID $new_id)\n";
 
-// === 3. Подключаем WordPress, чтобы работать через WC_Order ===
-require_once '/var/www/www-root/data/www/plantis-shop.ru/wp-load.php';
+// === 3. Подготавливаем даты из старого заказа ===
+$local_created   = date('Y-m-d H:i:s', strtotime($old_order['date_created']));
+$gmt_created     = gmdate('Y-m-d H:i:s', strtotime($old_order['date_created']));
+$local_paid      = !empty($old_order['date_paid']) ? date('Y-m-d H:i:s', strtotime($old_order['date_paid'])) : null;
+$gmt_paid        = $local_paid ? gmdate('Y-m-d H:i:s', strtotime($old_order['date_paid'])) : null;
+$local_completed = !empty($old_order['date_completed']) ? date('Y-m-d H:i:s', strtotime($old_order['date_completed'])) : null;
+$gmt_completed   = $local_completed ? gmdate('Y-m-d H:i:s', strtotime($old_order['date_completed'])) : null;
 
-// === 4. Устанавливаем даты через WooCommerce API ===
-// исходные значения
-$c = $old_order['date_created'];   // локальное время
-$p = $old_order['date_paid'] ?? null;
-$d = $old_order['date_completed'] ?? null;
+// === 4. Прямое обновление дат в БД ===
+$wpdb->update(
+    $wpdb->posts,
+    [
+        'post_date'         => $local_created,
+        'post_date_gmt'     => $gmt_created,
+        'post_modified'     => $local_created,
+        'post_modified_gmt' => $gmt_created,
+    ],
+    ['ID' => $new_id]
+);
 
-// вычисляем GMT
-$created_gmt    = gmdate('Y-m-d H:i:s', strtotime($c));
-$paid_gmt       = $p ? gmdate('Y-m-d H:i:s', strtotime($p)) : null;
-$completed_gmt  = $d ? gmdate('Y-m-d H:i:s', strtotime($d)) : null;
+// === 5. Сохраняем мета WooCommerce для всех дат ===
+update_post_meta($new_id, '_date_created', $local_created);
+update_post_meta($new_id, '_date_created_gmt', $gmt_created);
 
-
-$order = wc_get_order($new_id);
-if ($order) {
-    // === Локальные даты ===
-    if ($c) {
-        $created = new WC_DateTime($c, new DateTimeZone(wp_timezone_string()));
-        $order->set_date_created($created);
-    }
-    if ($p) {
-        $paid = new WC_DateTime($p, new DateTimeZone(wp_timezone_string()));
-        $order->set_date_paid($paid);
-    }
-    if ($d) {
-        $completed = new WC_DateTime($d, new DateTimeZone(wp_timezone_string()));
-        $order->set_date_completed($completed);
-    }
-
-    $order->save();
-
-    // === Принудительно обновляем GMT (WooCommerce может не рассчитать правильно) ===
-    global $wpdb;
-    if ($c) {
-        $wpdb->update(
-            $wpdb->posts,
-            [
-                'post_date'         => $c,
-                'post_date_gmt'     => $created_gmt,
-                'post_modified'     => $c,
-                'post_modified_gmt' => $created_gmt,
-            ],
-            ['ID' => $order->get_id()]
-        );
-
-        update_post_meta($order->get_id(), '_date_created', $c);
-        update_post_meta($order->get_id(), '_date_created_gmt', $created_gmt);
-    }
-    if ($p) {
-        update_post_meta($order->get_id(), '_date_paid_gmt', $paid_gmt);
-    }
-    if ($d) {
-        update_post_meta($order->get_id(), '_date_completed_gmt', $completed_gmt);
-    }
-
-    echo "✅ Даты выставлены корректно: локальное + GMT для ID {$order->get_id()}\n";
+if ($local_paid) {
+    update_post_meta($new_id, '_date_paid', $local_paid);
+    update_post_meta($new_id, '_date_paid_gmt', $gmt_paid);
 }
+if ($local_completed) {
+    update_post_meta($new_id, '_date_completed', $local_completed);
+    update_post_meta($new_id, '_date_completed_gmt', $gmt_completed);
+}
+
+echo "✅ Даты (local + GMT) установлены 1:1 как в старом заказе для ID $new_id\n";
