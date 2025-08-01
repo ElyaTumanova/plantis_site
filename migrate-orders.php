@@ -225,32 +225,23 @@ $local_completed = !empty($old_order['date_completed']) ? date('Y-m-d H:i:s', st
 $gmt_completed   = $local_completed ? gmdate('Y-m-d H:i:s', strtotime($old_order['date_completed'])) : null;
 
 // === 4. Прямое обновление дат в БД ===
-// ✅ Жестко правим даты в базе
+// === 4. Жестко обновляем даты только в wp_posts ===
 $wpdb->update(
     $wpdb->posts,
     [
-        'post_date'         => $local_created,
-        'post_date_gmt'     => $gmt_created,
+        'post_date'         => $local_created,   // локальное время
+        'post_date_gmt'     => $gmt_created,     // UTC
         'post_modified'     => $local_created,
         'post_modified_gmt' => $gmt_created,
     ],
     ['ID' => $new_id]
 );
 
-// ✅ Обновляем мета WooCommerce
-update_post_meta($new_id, '_date_created', $local_created);
-update_post_meta($new_id, '_date_created_gmt', $gmt_created);
-if ($local_paid) {
-    update_post_meta($new_id, '_date_paid', $local_paid);
-    update_post_meta($new_id, '_date_paid_gmt', $gmt_paid);
-}
-if ($local_completed) {
-    update_post_meta($new_id, '_date_completed', $local_completed);
-    update_post_meta($new_id, '_date_completed_gmt', $gmt_completed);
-}
-
-// ✅ Сбрасываем кэш, чтобы WooCommerce подтянул новые даты
+// === 5. Сбрасываем кэш WooCommerce, чтобы новые даты подтянулись ===
 clean_post_cache($new_id);
-wc_delete_shop_order_transients($new_id);
+if (function_exists('wc_delete_shop_order_transients')) {
+    wc_delete_shop_order_transients($new_id);
+}
 
-echo "✅ Даты перезаписаны напрямую в базе и кэш очищен для ID $new_id\n";
+echo "✅ Даты обновлены только через wp_posts (без лишних мета) для заказа $new_id\n";
+
