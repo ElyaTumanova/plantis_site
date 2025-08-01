@@ -222,24 +222,45 @@ $d = !empty($old_order['date_completed']) ? $old_order['date_completed'] : null;
 
 $order = wc_get_order($new_id);
 if ($order) {
-    // Преобразуем даты в объекты WC_DateTime (WooCommerce автоматически выставляет GMT)
+    // Создаём объект UTC и явно задаём offset=0, чтобы WooCommerce не сдвигал дату
     if ($c) {
-        $created_obj = new WC_DateTime($c, new DateTimeZone('UTC'));
-        $order->set_date_created($created_obj);
+        $created = new WC_DateTime($c, new DateTimeZone('UTC'));
+        $created->set_utc_offset(0);
+        $order->set_date_created($created);
     }
     if ($p) {
-        $paid_obj = new WC_DateTime($p, new DateTimeZone('UTC'));
-        $order->set_date_paid($paid_obj);
+        $paid = new WC_DateTime($p, new DateTimeZone('UTC'));
+        $paid->set_utc_offset(0);
+        $order->set_date_paid($paid);
     }
     if ($d) {
-        $completed_obj = new WC_DateTime($d, new DateTimeZone('UTC'));
-        $order->set_date_completed($completed_obj);
+        $completed = new WC_DateTime($d, new DateTimeZone('UTC'));
+        $completed->set_utc_offset(0);
+        $order->set_date_completed($completed);
     }
 
-    // Сохраняем заказ с обновлёнными датами
     $order->save();
 
-    echo "✅ Даты (с учётом GMT) обновлены через WC_Order для ID $new_id\n";
+    // ✅ Подстраховка: принудительно прописываем GMT через SQL
+    global $wpdb;
+    if ($c) {
+        $wpdb->update(
+            $wpdb->posts,
+            [
+                'post_date'     => gmdate('Y-m-d H:i:s', strtotime($c)),
+                'post_date_gmt' => gmdate('Y-m-d H:i:s', strtotime($c)),
+                'post_modified'     => gmdate('Y-m-d H:i:s', strtotime($c)),
+                'post_modified_gmt' => gmdate('Y-m-d H:i:s', strtotime($c)),
+            ],
+            ['ID' => $order->get_id()]
+        );
+
+        update_post_meta($order->get_id(), '_date_created', $c);
+        update_post_meta($order->get_id(), '_date_created_gmt', gmdate('Y-m-d H:i:s', strtotime($c)));
+    }
+
+    echo "✅ Все даты (локальные + GMT) выставлены для ID {$order->get_id()}\n";
 } else {
     echo "❌ Не удалось загрузить заказ $new_id через wc_get_order()\n";
 }
+
