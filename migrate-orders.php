@@ -219,13 +219,11 @@ echo "✅ Заказ {$old_order['number']} создан на новом сай�
 // === 3. Подготавливаем даты из старого заказа ===
 $local_created   = date('Y-m-d H:i:s', strtotime($old_order['date_created']));
 $gmt_created     = gmdate('Y-m-d H:i:s', strtotime($old_order['date_created']));
-$local_paid      = !empty($old_order['date_paid']) ? date('Y-m-d H:i:s', strtotime($old_order['date_paid'])) : null;
-$gmt_paid        = $local_paid ? gmdate('Y-m-d H:i:s', strtotime($old_order['date_paid'])) : null;
-$local_completed = !empty($old_order['date_completed']) ? date('Y-m-d H:i:s', strtotime($old_order['date_completed'])) : null;
-$gmt_completed   = $local_completed ? gmdate('Y-m-d H:i:s', strtotime($old_order['date_completed'])) : null;
 
-// === 4. Прямое обновление дат в БД ===
-// === 4. Жестко обновляем даты только в wp_posts ===
+$local_paid      = !empty($old_order['date_paid']) ? date('Y-m-d H:i:s', strtotime($old_order['date_paid'])) : null;
+$local_completed = !empty($old_order['date_completed']) ? date('Y-m-d H:i:s', strtotime($old_order['date_completed'])) : null;
+
+// === 4. Жёстко обновляем дату создания (wp_posts) ===
 $wpdb->update(
     $wpdb->posts,
     [
@@ -237,25 +235,22 @@ $wpdb->update(
     ['ID' => $new_id]
 );
 
-// === Устанавливаем правильные даты из старого заказа ===
+// === 5. Перезаписываем даты оплаты и завершения ===
+// WooCommerce при создании ставит текущие, поэтому их надо удалить и добавить свои
+delete_post_meta($new_id, '_date_paid');
+delete_post_meta($new_id, '_date_completed');
+
 if ($local_paid) {
-    $wpdb->query($wpdb->prepare(
-        "INSERT INTO {$wpdb->postmeta} (post_id, meta_key, meta_value) VALUES (%d, '_date_paid', %s)",
-        $new_id, $local_paid
-    ));
+    add_post_meta($new_id, '_date_paid', $local_paid, true);
 }
 if ($local_completed) {
-    $wpdb->query($wpdb->prepare(
-        "INSERT INTO {$wpdb->postmeta} (post_id, meta_key, meta_value) VALUES (%d, '_date_completed', %s)",
-        $new_id, $local_completed
-    ));
+    add_post_meta($new_id, '_date_completed', $local_completed, true);
 }
 
-// === 5. Сбрасываем кэш WooCommerce, чтобы новые даты подтянулись ===
+// === 6. Сбрасываем кэш WooCommerce ===
 clean_post_cache($new_id);
 if (function_exists('wc_delete_shop_order_transients')) {
     wc_delete_shop_order_transients($new_id);
 }
 
-echo "✅ Даты обновлены только через wp_posts (без лишних мета) для заказа $new_id\n";
-
+echo "✅ Даты (создание, оплата, завершение) успешно перенесены для заказа $new_id\n";
