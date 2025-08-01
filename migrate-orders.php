@@ -238,16 +238,38 @@ $pg = $p ? gmdate('Y-m-d H:i:s', strtotime($p)) : null;
 $d  = !empty($old_order['date_completed']) ? $old_order['date_completed'] : null;
 $dg = $d ? gmdate('Y-m-d H:i:s', strtotime($d)) : null;
 
-// === 5. Обновляем даты напрямую ===
-$conn->query("UPDATE {$table_prefix}posts SET post_date='$c', post_date_gmt='$cg' WHERE ID=$new_id");
+// === 5. Обновляем все даты, чтобы WooCommerce их подхватил ===
 
+// Основная дата заказа (создание)
+$conn->query("UPDATE {$table_prefix}posts 
+    SET post_date='$c', post_date_gmt='$cg', 
+        post_modified='$c', post_modified_gmt='$cg' 
+    WHERE ID=$new_id");
+
+// Добавляем мета WooCommerce (обязательно для корректного отображения)
+$conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) 
+    VALUES ($new_id, '_date_created', '$c')");
+$conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) 
+    VALUES ($new_id, '_date_created_gmt', '$cg')");
+
+// Дата оплаты
 if ($p) {
-    $conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) VALUES ($new_id, '_date_paid', '$p')");
-    if ($pg) $conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) VALUES ($new_id, '_date_paid_gmt', '$pg')");
+    $conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) 
+        VALUES ($new_id, '_date_paid', '$p')");
+    if ($pg) {
+        $conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) 
+            VALUES ($new_id, '_date_paid_gmt', '$pg')");
+    }
 }
+
+// Дата завершения
 if ($d) {
-    $conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) VALUES ($new_id, '_date_completed', '$d')");
-    if ($dg) $conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) VALUES ($new_id, '_date_completed_gmt', '$dg')");
+    $conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) 
+        VALUES ($new_id, '_date_completed', '$d')");
+    if ($dg) {
+        $conn->query("REPLACE INTO {$table_prefix}postmeta (post_id, meta_key, meta_value) 
+            VALUES ($new_id, '_date_completed_gmt', '$dg')");
+    }
 }
 
 $conn->close();
