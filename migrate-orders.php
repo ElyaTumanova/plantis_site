@@ -172,6 +172,9 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
         ]
     ];
 
+    // ✅ Флаг для последующего SQL-обновления
+    $new_meta[] = ['key' => '_need_fix_dates', 'value' => '1'];
+
 
     return [
         'customer_id'          => $old_order['customer_id'] ?: 0,
