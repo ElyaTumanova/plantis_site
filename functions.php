@@ -36,7 +36,7 @@ require get_template_directory() . '/includes/metrika.php';
 //require get_template_directory() . '/includes/xml/create_yandex_xml.php';
 //require get_template_directory() . '/includes/xml/create_google_xml.php';
 
-require_once get_template_directory() . '/includes/fix-imported-order-dates.php';
+//require_once get_template_directory() . '/includes/fix-imported-order-dates.php';
 
 
 /** Add Woocommerce files */

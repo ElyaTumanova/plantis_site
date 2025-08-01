@@ -214,3 +214,27 @@ if (!isset($result['id'])) {
 
 $new_order_id = $result['id'];
 echo "✅ Заказ {$old_order['number']} создан на новом сайте (ID $new_order_id)\n";
+
+// === 4. СРАЗУ обновляем даты напрямую в базе ===
+require_once '/var/www/u1478867/data/www/dev.plantis.shop/wp-load.php';
+global $wpdb;
+
+$c  = $old_order['date_created'];
+$cg = gmdate('Y-m-d H:i:s', strtotime($c));
+$p  = !empty($old_order['date_paid']) ? $old_order['date_paid'] : null;
+$pg = $p ? gmdate('Y-m-d H:i:s', strtotime($p)) : null;
+$d  = !empty($old_order['date_completed']) ? $old_order['date_completed'] : null;
+$dg = $d ? gmdate('Y-m-d H:i:s', strtotime($d)) : null;
+
+$wpdb->update($wpdb->posts, ['post_date' => $c, 'post_date_gmt' => $cg], ['ID' => $new_id]);
+
+if ($p) {
+    update_post_meta($new_id, '_date_paid', $p);
+    if ($pg) update_post_meta($new_id, '_date_paid_gmt', $pg);
+}
+if ($d) {
+    update_post_meta($new_id, '_date_completed', $d);
+    if ($dg) update_post_meta($new_id, '_date_completed_gmt', $dg);
+}
+
+echo "✅ Даты обновлены напрямую через SQL для заказа ID $new_id\n";
