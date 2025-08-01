@@ -216,31 +216,39 @@ echo "✅ Заказ {$old_order['number']} создан на новом сай�
 require_once '/var/www/u1478867/data/www/dev.plantis.shop/wp-load.php';
 global $wpdb;
 
-// Даты из старого заказа
-$created        = $old_order['date_created'];
-$created_gmt    = gmdate('Y-m-d H:i:s', strtotime($created));
-$paid           = !empty($old_order['date_paid']) ? $old_order['date_paid'] : null;
-$paid_gmt       = $paid ? gmdate('Y-m-d H:i:s', strtotime($paid)) : null;
-$completed      = !empty($old_order['date_completed']) ? $old_order['date_completed'] : null;
-$completed_gmt  = $completed ? gmdate('Y-m-d H:i:s', strtotime($completed)) : null;
+// Даты из старого заказа (простая проверка вместо тернарных с сокращённым синтаксисом)
+$created       = isset($old_order['date_created']) ? $old_order['date_created'] : null;
+$created_gmt   = $created ? gmdate('Y-m-d H:i:s', strtotime($created)) : null;
+
+$paid          = isset($old_order['date_paid']) && $old_order['date_paid'] ? $old_order['date_paid'] : null;
+$paid_gmt      = $paid ? gmdate('Y-m-d H:i:s', strtotime($paid)) : null;
+
+$completed     = isset($old_order['date_completed']) && $old_order['date_completed'] ? $old_order['date_completed'] : null;
+$completed_gmt = $completed ? gmdate('Y-m-d H:i:s', strtotime($completed)) : null;
 
 // ✅ обновляем post_date (дата создания)
-$wpdb->update(
-    $wpdb->posts,
-    ['post_date' => $created, 'post_date_gmt' => $created_gmt],
-    ['ID' => $new_order_id]
-);
+if ($created) {
+    $wpdb->update(
+        $wpdb->posts,
+        array('post_date' => $created, 'post_date_gmt' => $created_gmt),
+        array('ID' => $new_order_id)
+    );
+}
 
 // ✅ обновляем даты оплаты
 if ($paid) {
     update_post_meta($new_order_id, '_date_paid', $paid);
-    update_post_meta($new_order_id, '_date_paid_gmt', $paid_gmt);
+    if ($paid_gmt) {
+        update_post_meta($new_order_id, '_date_paid_gmt', $paid_gmt);
+    }
 }
 
 // ✅ обновляем даты завершения
 if ($completed) {
     update_post_meta($new_order_id, '_date_completed', $completed);
-    update_post_meta($new_order_id, '_date_completed_gmt', $completed_gmt);
+    if ($completed_gmt) {
+        update_post_meta($new_order_id, '_date_completed_gmt', $completed_gmt);
+    }
 }
 
-echo "✅ Даты обновлены напрямую через SQL для заказа ID $new_order_id.\n";
+echo "✅ Даты обновлены напрямую через SQL для заказа ID " . $new_order_id . "\n";
