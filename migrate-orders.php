@@ -213,7 +213,7 @@ $new_id = $result['id'];
 echo "✅ Заказ {$old_order['number']} создан на новом сайте (ID $new_id)\n";
 
 // === 3. Подключаем WordPress, чтобы работать через WC_Order ===
-require_once '/var/www/u1478867/data/www/dev.plantis.shop/wp-load.php';
+require_once '/var/www/www-root/data/www/plantis-shop.ru/wp-load.php';
 
 // === 4. Устанавливаем даты через WooCommerce API ===
 $c = !empty($old_order['date_created'])   ? $old_order['date_created']   : null;
