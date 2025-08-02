@@ -565,36 +565,21 @@ function plnt_get_orders() {
     }
 
     // === 1. Получаем заказы со старого сайта ===
-    $orders = wc_api_request("$old_url?per_page=1", $old_key, $old_secret);
+    $orders = wc_api_request("$old_url?per_page=100", $old_key, $old_secret);
     $meta_fields = [];
     echo ('<pre>');
     foreach ($orders as $order) {
         print_r($order['meta_data']);
 
-
-        // foreach ($order['meta_data'] as $meta) {
-        //     if (!in_array($meta['key'],$meta_fields)) {
-        //         array_push($meta_fields,$meta['key']);
-        //     }
-        // }
-
-        $new_order = prepare_order_for_import($order, "$new_url/orders", $new_key, $new_secret);
-         if (!$new_order) continue;
-
-        $result = wc_api_request("$new_url/orders", $new_key, $new_secret, 'POST', $new_order);
-
-        if (isset($result['id'])) {
-            echo("✅ Заказ {$order['number']} перенесён → Новый ID {$result['id']}");
-            $total++;
-        } else {
-            echo("❌ Ошибка переноса заказа {$order['number']}");
+        foreach ($order['meta_data'] as $meta) {
+            if (!in_array($meta['key'],$meta_fields)) {
+                array_push($meta_fields,$meta['key']);
+            }
         }
     }
-   // print_r($meta_fields);
-    //print_r($new_meta);
-    echo ('</pre>');
+    print_r($meta_fields);
 
-    
+    echo ('</pre>');
 
 }
 
