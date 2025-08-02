@@ -11,7 +11,7 @@ $new_key = "ck_771c883e1256823b9fa05f23e4f41b7b543aa311";
 $new_secret = "cs_15ac1868a521fc7333c50c09f52901adaa524cd8";
 
 // === Укажите ID заказа для переноса ===
-$order_id_to_migrate = 65740;
+$order_id_to_migrate = 31888;
 
 // === Подключаем WordPress, чтобы использовать $wpdb ===
 require_once '/var/www/www-root/data/www/plantis-shop.ru/wp-load.php';
