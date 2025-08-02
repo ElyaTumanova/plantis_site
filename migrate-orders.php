@@ -144,6 +144,10 @@ function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secre
             $key = 'dontcallme';
         } elseif ($original_key === 'additional_peresadka') {
             $key = '_plnt_comment';
+        } elseif ($original_key === 'Дата доставки (самовывоза)' || $original_key === 'datepicker' || $original_key === 'Дата доставки' ) {
+            $key = 'delivery_dates';
+        } elseif ($original_key === 'Интервал') {
+            $key = 'additional_delivery_interval';
         } else {
             $key = $original_key;
         }
