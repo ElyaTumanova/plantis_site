@@ -565,22 +565,37 @@ function plnt_get_orders() {
     }
 
     // === 1. Получаем заказы со старого сайта ===
-    $orders = wc_api_request("$old_url?per_page=100", $old_key, $old_secret);
-    $meta_fields = [];
-    echo ('<pre>');
-    foreach ($orders as $order) {
-        print_r($order['meta_data']);
+    echo "<pre>";
 
-        foreach ($order['meta_data'] as $meta) {
-            if (!in_array($meta['key'],$meta_fields)) {
-                array_push($meta_fields,$meta['key']);
+    $meta_fields = [];
+    $page = 1;
+
+    do {
+        // Загружаем заказы постранично
+        $orders = wc_api_request("$old_url?per_page=100&page=$page", $old_key, $old_secret);
+
+        if (empty($orders) || !is_array($orders)) {
+            break;
+        }
+
+        // Проходим по каждому заказу
+        foreach ($orders as $order) {
+            if (empty($order['meta_data'])) continue;
+
+            foreach ($order['meta_data'] as $meta) {
+                $key = $meta['key'];
+                if (!in_array($key, $meta_fields, true)) {
+                    $meta_fields[] = $key;
+                }
             }
         }
-    }
+
+        $page++;
+    } while (count($orders) === 100); // пока возвращается 100 заказов, продолжаем
+
+    // Выводим все уникальные мета-ключи
     print_r($meta_fields);
-
-    echo ('</pre>');
-
+    echo "</pre>";
 }
 
 function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secret) {
