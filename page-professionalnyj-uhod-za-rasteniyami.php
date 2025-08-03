@@ -8,7 +8,7 @@ get_header(); ?>
     <div class="page-ukhod service-page">
       <div class="page-ukhod__first-screen">
         <h1 class="page-ukhod__entry-title entry-title">Профессиональный уход за&nbsp;растениями</h1> 
-        <img class="page-ukhod__photo" loading="lazy" src="https://plantis.shop/wp-content/uploads/2022/01/16.10-2.jpg" alt="Профессиональный уход за растениями">               
+        <img class="page-ukhod__photo" loading="lazy" src="<?php echo get_template_directory_uri()?>/images/interior.webp" alt="Профессиональный уход за растениями">               
         <div class="page-ukhod__intro">
           Мир растений – неизведанный прекрасный мир. Уход за растениями – наука. Иногда, перекинуть задачу по уходу за растениями в офисе или кафе на сотрудников или клининг – это&nbsp;значит пожертвовать растениями. Ущерб от такого экономического решения превышают сэкономленные деньги, вплоть до того, что придется все создавать заново. 
         </div>
