@@ -78,7 +78,7 @@ function getCatImage(event, catId) {
 
 function getDefaultImage(event) {
     let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
-    menuImage.setAttribute('src','<?php echo get_template_directory_uri()?>/images/interior.webp');
+    menuImage.setAttribute('src','https://plantis-shop.ru/wp-content/themes/plantis_site/images/interior.webp');
 }
 
 
