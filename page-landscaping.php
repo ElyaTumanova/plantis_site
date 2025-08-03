@@ -34,7 +34,8 @@ get_header(); ?>
 
                 <?php get_template_part('template-parts/contacts-part');?>
             </div>
-            <img class="landscaping__photo" fetchpriority="high" decoding="async" width="800" height="800" src="https://plantis.shop/wp-content/uploads/2022/01/16.10-2-1024x1024.jpg"  alt="Услуги озеленения Plantis" srcset="https://plantis.shop/wp-content/uploads/2022/01/16.10-2-1024x1024.jpg 1024w, https://plantis.shop/wp-content/uploads/2022/01/16.10-2-350x350.jpg 350w, https://plantis.shop/wp-content/uploads/2022/01/16.10-2-100x100.jpg 100w, https://plantis.shop/wp-content/uploads/2022/01/16.10-2-680x680.jpg 680w, https://plantis.shop/wp-content/uploads/2022/01/16.10-2-300x300.jpg 300w, https://plantis.shop/wp-content/uploads/2022/01/16.10-2-150x150.jpg 150w, https://plantis.shop/wp-content/uploads/2022/01/16.10-2-768x768.jpg 768w, https://plantis.shop/wp-content/uploads/2022/01/16.10-2-1536x1536.jpg 1536w, https://plantis.shop/wp-content/uploads/2022/01/16.10-2-230x230.jpg 230w, https://plantis.shop/wp-content/uploads/2022/01/16.10-2-400x400.jpg 400w, https://plantis.shop/wp-content/uploads/2022/01/16.10-2-600x600.jpg 600w, https://plantis.shop/wp-content/uploads/2022/01/16.10-2-640x640.jpg 640w, https://plantis.shop/wp-content/uploads/2022/01/16.10-2.jpg 1600w" sizes="(max-width: 800px) 100vw, 800px">
+            <img class="landscaping__photo" fetchpriority="high" decoding="async" width="800" height="800" 
+            src="<?php echo get_template_directory_uri()?>/images/landscaping.webp"  alt="Услуги озеленения Plantis">
         
 		</div>
 	</main><!-- #main -->
