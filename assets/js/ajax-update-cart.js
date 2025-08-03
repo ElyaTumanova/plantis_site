@@ -155,7 +155,7 @@ function updateWishBtns(wishListItemsStr) {
             button.setAttribute('href', `?remove_from_wishlist=${button.dataset.productId}`);
             button.setAttribute('class', 'delete_item');
             let img = button.querySelector('img');
-            img.setAttribute('src','https://plantis.shop/wp-content/uploads/2024/03/heart-red.svg');
+            img.setAttribute('src','https://plantis-shop.ru/wp-content/themes/plantis_site/images/icons/heart-red.svg'); //#todo проверить код
             };
         });
 
@@ -169,7 +169,7 @@ function updateWishBtns(wishListItemsStr) {
                 button.setAttribute('href', `?add_to_wishlist=${button.dataset.productId}`);
                 button.setAttribute('class', 'add_to_wishlist single_add_to_wishlist');
                 let img = button.querySelector('img');
-                img.setAttribute('src','https://plantis.shop/wp-content/uploads/2024/03/heart_green.svg');
+                img.setAttribute('src','https://plantis-shop.ru/wp-content/themes/plantis_site/images/icons/heart_green.svg'); //#todo проверить код
             };
         });
     }
