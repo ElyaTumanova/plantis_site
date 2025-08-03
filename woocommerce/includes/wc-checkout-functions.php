@@ -115,8 +115,8 @@ Contents
 
     // function plnt_delivery_condition_info () {
     //     echo '<div class="checkout__text checkout__text_delivery-info">
-    //         После оформления заказа мы свяжемся с вами в <a href="https://plantis.shop/contacts/">рабочее время</a> и согласуем время доставки.
-    //         <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a> <br>
+    //         После оформления заказа мы свяжемся с вами в <a href="https://plantis-shop.ru/contacts/">рабочее время</a> и согласуем время доставки.
+    //         <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a> <br>
     //         Важно! Срочную доставку "день в день" можно оформить до 18 часов.</div>';
     // }
 
@@ -405,7 +405,7 @@ Contents
         foreach ( WC()->cart->get_cart() as $cart_item ) {
             if( $cart_item['data']->get_shipping_class() == $class_slug ){
                 echo '<tr> <td colspan="2" class="checkout__text checkout__text_large">
-                Вы выбрали крупногабаритный товар. Стоимость доставки увеличена. <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></td></tr>';
+                Вы выбрали крупногабаритный товар. Стоимость доставки увеличена. <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></td></tr>';
                 break; // Stop the loop
             } 	
         }
@@ -420,7 +420,7 @@ Contents
 
         if (check_if_large_delivery()) {
             echo '<div class=large_delivery_notice>
-            <img class=large_delivery_img src="https://plantis.shop/wp-content/uploads/2024/08/car.svg" alt="car">
+            <img class=large_delivery_img src="https://plantis-shop.ru/wp-content/uploads/2024/08/car.svg" alt="car">
             <p>Для заказа предусмотрена крупногабаритная доставка!</p></div>';
         }
         
@@ -460,7 +460,7 @@ Contents
                     echo '<div class="checkout__text checkout__text_urgent">
                         Срочную доставку можно оформить до 18:00. 
                         После оформления заказа мы свяжемся с вами для его подтверждения. 
-                        <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';
+                        <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';
                 }
             //при оформлении после 20:00-00:00 текущего дня
                 if($hour >= 20) {
@@ -477,7 +477,7 @@ Contents
                 if ($hour < 20) {
                     echo '<div class="checkout__text checkout__text_normal">
                         После оформления заказа мы свяжемся с вами в рабочее время с 10:00 до 20:00 для его подтверждения. 
-                        <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';
+                        <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';
                 //при оформлении после 20:00-00:00 текущего дня
                 } else {
                     echo '<div class="checkout__text checkout__text_normal-late">
@@ -491,13 +491,13 @@ Contents
                 if(!array_key_exists($delivery_courier,$shipping_costs)) {
                     echo '<div class="checkout__text checkout__text_small-order">
                     При заказе на сумму менее '.$min_small_delivery,' рублей стоимость доставки увеличена. 
-                    <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></div';
+                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></div';
                 } else if ($delivery_courier == $chosen_methods[0] ) {
                     echo '<div class="checkout__text checkout__text_small-order-holiday">
                     В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью до '.$min_small_delivery,' рублей доставляются в любой день по тарифу курьерской службы. 
                     Мы свяжемся с Вами после оформления заказа и произведем расчет стоимости доставки. 
                     Также, вы можете самостоятельно бесплатно забрать заказ в нашем магазине, оформив самовывоз.
-                    <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
+                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a>
                     </div>';
                 }  
             }
@@ -506,13 +506,13 @@ Contents
                 if(!array_key_exists($delivery_courier,$shipping_costs)) {
                     echo '<div class="checkout__text checkout__text_small-order">
                     При заказе на сумму менее '.$min_medium_delivery,' рублей стоимость доставки увеличена. 
-                    <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></div';
+                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></div';
                 } else if ($delivery_courier == $chosen_methods[0] ) {
                     echo '<div class="checkout__text checkout__text_small-order-holiday">
                     В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью до '.$min_medium_delivery,' рублей доставляются в любой день по тарифу курьерской службы. 
                     Мы свяжемся с Вами после оформления заказа и произведем расчет стоимости доставки. 
                     Также, вы можете самостоятельно бесплатно забрать заказ в нашем магазине, оформив самовывоз.
-                    <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
+                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a>
                     </div>';
                 }  
        
@@ -524,7 +524,7 @@ Contents
             echo '<div class="checkout__text checkout__text_long-dist">
                 Доставка на расстояние свыше 5км от МКАД осуществляется по тарифам курьерской службы. 
                 Мы свяжемся с Вами после оформления заказа в рабочее время с 10:00 до 20:00 и рассчитаем стоимость доставки.
-                <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
+                <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a>
                 </div>';
         }
 
@@ -538,7 +538,7 @@ Contents
                 Рассчитать стоимость и срок доставки вы можете на <a href="https://www.pochta.ru/shipment?type=PARCEL">сайте</a> "Почты России".
                 Оплатить заказ можно будет после его оформления.
                 Мы свяжемся с Вами после оформления заказа в рабочее время с 10:00 до 20:00.
-                <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
+                <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a>
                 </div>';
         }
 
@@ -546,7 +546,7 @@ Contents
         if ( $local_pickup == $chosen_methods[0]) {
             echo '<div class="checkout__text checkout__text_local-pickup">
                 После оформления заказа мы свяжемся с вами в рабочее время с 10:00 до 20:00 для его подтверждения.
-                <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
+                <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a>
                 </div>';
         }
 
