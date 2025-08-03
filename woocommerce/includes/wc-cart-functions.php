@@ -72,8 +72,8 @@ function plnt_empty_cart_btns() {
 add_filter( 'wc_empty_cart_message', 'plnt_empty_cart_message_filter' );
 
 function plnt_empty_cart_message_filter( $message ){
-
-	$message = '<img class = cart__empty-image src="'get_template_directory_uri()'/images/empty_cart.svg" alt="Empty cart"> Ваша корзина пока пуста.';
+    $dir = get_template_directory_uri() . '/images/empty_cart.svg';
+	$message = '<img class = cart__empty-image src="'. $dir.'" alt="Empty cart"> Ваша корзина пока пуста.';
 
 	return $message;
 }
