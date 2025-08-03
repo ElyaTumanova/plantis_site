@@ -143,7 +143,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             <a href="<?php echo site_url()?>/product-category/ukhod/zashchita-rastenij">Защита растений</a>
                         </li>
                     </ul>
-                    <img class="header__main-submenu-img" loading="lazy" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
+                    <img class="header__main-submenu-img" loading="lazy" src="<?php echo get_template_directory_uri()?>/images/interior.webp" alt="Plantis.shop">
                 </div>
                 <div class="header__main-submenu" data-menu = "menu_item_gorshki">
                     <ul class="header__main-submenu_lvl1">
@@ -205,7 +205,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             ?>
                         </li>
                     </ul>
-                    <img class="header__main-submenu-img" loading="lazy" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
+                    <img class="header__main-submenu-img" loading="lazy" src="<?php echo get_template_directory_uri()?>/images/interior.webp" alt="Plantis.shop">
                 </div>
                 <div class="header__main-submenu" data-menu = "menu_item_treez_plants">
                     <?php 
@@ -225,7 +225,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             <?php
                         }
                     ?> 
-                    <img class="header__main-submenu-img" loading="lazy" src="https://plantis.shop/wp-content/uploads/2025/06/интерьер.webp" alt="Plantis.shop">
+                    <img class="header__main-submenu-img" loading="lazy" src="<?php echo get_template_directory_uri()?>/images/interior.webp" alt="Plantis.shop">
                 </div>
                 <div class="header__main-submenu" data-menu = "menu_item_service">
                     <ul class="header__main-submenu_lvl1">
