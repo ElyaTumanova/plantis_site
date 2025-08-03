@@ -330,7 +330,7 @@
     min-height: 120px;
     border-radius: 10px;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
-    background-image: url(https://plantis.shop/wp-content/uploads/2025/01/telegram-2.webp), radial-gradient(#4AB0E9, #ABDAF5);
+    background-image: url(https://plantis-shop.ru/wp-content/themes/plantis_site/images/telegram-2.webp), radial-gradient(#4AB0E9, #ABDAF5);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -344,7 +344,7 @@
 
 @media (min-width:1279px) {
     .main__telegram {
-        background-image: url(https://plantis.shop/wp-content/uploads/2025/01/telegram_mob_square.webp), radial-gradient(#4AB0E9, #ABDAF5);
+        background-image: url(https://plantis-shop.ru/wp-content/themes/plantis_site/images/telegram_mob_square.webp), radial-gradient(#4AB0E9, #ABDAF5);
     }
 }
 

@@ -293,17 +293,6 @@
     /* justify-content: center; */
 }
 
-/* .large_delivery_notice::before {
-    content: "";
-    background-image: url(https://plantis.shop/wp-content/uploads/2024/08/car.svg);
-    height: 25px;
-    width: 27px;
-    display: block;
-    background-repeat: no-repeat;
-    background-size: 27px 24px;
-    margin-right: 10px;
-} */
-
 .large_delivery_img {
     height: 25px;
     width: 27px;
