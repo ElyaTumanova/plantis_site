@@ -737,7 +737,7 @@ function plnt_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
 	return $crumbs;
 }
 
-// меняем rel для ссылки добавления товаров в корзину #ceo
+// меняем rel для ссылки добавления товаров в корзину #seo
 
 add_filter( 'woocommerce_loop_add_to_cart_link', 'plnt_change_rel', 10, 2); 
 function plnt_change_rel( $html, $product ) {
