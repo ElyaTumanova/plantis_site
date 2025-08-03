@@ -169,7 +169,7 @@ if($site === 'https://plantis-shop.ru') {
 
 /* Изображения и иконки */
 
-$filter_icon = get_template_directory_uri() . '/images/icons/filter_new.svg";
+$filter_icon = get_template_directory_uri() . '/images/icons/filter_new.svg';
 
 
 //ЗАДАЕМ КОНСТАНТЫ ДЛЯ JS
