@@ -42,7 +42,7 @@ get_header(); ?>
                     </div>
                 </div>
 
-                <div class="about__slider about__slider_photo">
+                <!-- <div class="about__slider about__slider_photo">
                     <div class="about__swiper-photo swiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
@@ -86,9 +86,9 @@ get_header(); ?>
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div>
                     </div>
-                </div>
+                </div> -->
             </div>
-            <div class="about__full-width-wrap">
+            <!-- <div class="about__full-width-wrap">
                 <h2 class="entry-title container">Отзывы</h2> 
                 <div class="about__slider about__slider_feedback container">
                         <div class="about__swiper-feedback swiper">
@@ -115,7 +115,7 @@ get_header(); ?>
                         </div>  
                      
                 </div>                   
-            </div>
+            </div> -->
 
             
 
