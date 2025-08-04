@@ -41,25 +41,28 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-listvennye">Декоративно-лиственные</a>
                         </li>
                         <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-listvennye">Цветущие</a>
+                            <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/fikusy">Фикусы</a>
                         </li>
                         <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-listvennye">Пальмы</a>
+                            <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-cvetushchie">Цветущие</a>
                         </li>
                         <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-listvennye">Лианы</a>
+                            <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/palms">Пальмы</a>
                         </li>
                         <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-listvennye">Цитрусовые</a>
+                            <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/lianas">Лианы</a>
                         </li>
                         <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-listvennye">Папоротники</a>
+                            <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/citrusovye">Цитрусовые</a>
                         </li>
                         <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-listvennye">Суккуленты</a>
+                            <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/paporotniki">Папоротники</a>
                         </li>
                         <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-listvennye">Кактусы</a>
+                            <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/succulent">Суккуленты</a>
+                        </li>
+                        <li class="header__main-submenu-item">
+                            <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/kaktusy">Кактусы</a>
                         </li>
                     </ul>
                     <ul class="header__main-submenu_lvl1">
