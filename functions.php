@@ -457,7 +457,7 @@ function plnt_get_orders_meta() {
 
 }
 
-//add_action( 'wp_footer', 'plnt_check_page' );
+add_action( 'wp_footer', 'plnt_check_page' );
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 //add_action( 'wp_footer', 'plnt_get_cats_data' );
 
@@ -481,7 +481,7 @@ function plnt_get_prods_data() {
                 array(
                     'taxonomy' => 'product_cat',
                     'field' => 'slug',
-                    'terms' => 'kashpo-lechuza',
+                    'terms' => 'gorshki_i_kashpo',
                     // 'terms' => array('gorshki_i_kashpo', 'komnatnye-rasteniya'),
                     // 'operator' => 'NOT IN'
                 )
