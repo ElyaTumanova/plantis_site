@@ -279,7 +279,7 @@ function plnt_check_page() {
 	// print_r( $gorshki_cat_id );
 	// echo '</pre>';
 	if ( is_page( 'vakansii' ) ) {
-		plnt_get_orders();
+        plnt_get_prods_data();
 	}
 	// else {
 	// 	echo 'Это какая-то другая страница.';
@@ -494,200 +494,26 @@ function plnt_get_prods_data() {
 	echo ('<br>');
 	echo(count($products->posts));
 	echo ('<br>');
-  //print_r($products->posts);
-		foreach ($products->posts as $key => $term) {
-      echo ("['name' => '");
-			print_r($term->post_title);
-			echo ("', 'slug'=>'");
-      echo($term->post_name);
-      echo("'],");
- 			echo ('<br>');
-			// $slug = 'not found';
-			// foreach ($cats_array as $key => $cat) {
-			// 	if($term->name == $cat['name']) {
-			// 		++$count;
-			// 		$slug = $cat['slug'];
-			// 	}
-			// }
-			// echo($count.' ');
-			// echo ($term->name);
-			// echo (';  ');
-			// echo ($slug);
-			// echo ('<br>');
-			
-    // 			$result = wp_update_term( $term->term_id, 'product_cat', [
-    // 				'slug' => $slug,
-    // 			] );
-
-    // 			// check the result
-    // 			if( is_wp_error( $result ) ){
-
-    // 				echo $result->get_error_message();
-    // 			}
-    // 			else {
-
-    // 				echo 'Term was successfully updated.';
-    // 			}
-	}
-
+    //print_r($products->posts);
+    foreach ($products->posts as $key => $term) {
+        echo ("['name' => '");
+        print_r($term->post_title);
+        echo ("', 'slug'=>'");
+        echo($term->post_name);
+        echo("'],");
+        echo ('<br>');
+        $slug = 'not found';
+        // foreach ($cats_array as $key => $cat) {
+        //     if($term->name == $cat['name']) {
+        //         ++$count;
+        //         $slug = $cat['slug'];
+        //     }
+        // }
+        // echo($count.' ');
+        // echo ($term->name);
+        // echo (';  ');
+        // echo ($slug);
+        // echo ('<br>');
+    }
 }
 
-function plnt_get_orders() {
-
-    // === Данные API старого магазина ===
-    $old_url = "https://plantis.shop/wp-json/wc/v3/orders";
-    $old_key = "ck_d0efbf184dd2bf49da53a4b8df98201faa5bcb8d";
-    $old_secret = "cs_3b711de00ebec91a2ce1bc0314dac8721c160c8a";
-
-    // === Данные API нового магазина ===
-    $new_url = "https://plantis-shop.ru/wp-json/wc/v3/orders";
-    $new_key = "ck_771c883e1256823b9fa05f23e4f41b7b543aa311";
-    $new_secret = "cs_15ac1868a521fc7333c50c09f52901adaa524cd8";
-
-    // === Функция запроса к API ===
-    function wc_api_request($url, $key, $secret, $method = 'GET', $data = null) {
-        $ch = curl_init();
-        $headers = ["Content-Type: application/json"];
-        $opts = [
-            CURLOPT_URL => $url,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_USERPWD => "$key:$secret",
-            CURLOPT_HTTPHEADER => $headers
-        ];
-        if ($method === 'POST') {
-            $opts[CURLOPT_POST] = true;
-            $opts[CURLOPT_POSTFIELDS] = json_encode($data, JSON_UNESCAPED_UNICODE);
-        }
-        curl_setopt_array($ch, $opts);
-        $response = curl_exec($ch);
-        curl_close($ch);
-        return json_decode($response, true);
-    }
-
-    // === 1. Получаем заказы со старого сайта ===
-    echo "<pre>";
-
-    $meta_fields = [];
-    $page = 1;
-
-    do {
-        // Загружаем заказы постранично
-        $orders = wc_api_request("$old_url?per_page=100&page=$page", $old_key, $old_secret);
-
-        if (empty($orders) || !is_array($orders)) {
-            break;
-        }
-
-        // Собираем все уникальные мета-ключи
-        foreach ($orders as $order) {
-            if (empty($order['meta_data'])) continue;
-
-            foreach ($order['meta_data'] as $meta) {
-                $key = $meta['key'];
-                if (!in_array($key, $meta_fields, true)) {
-                    $meta_fields[] = $key;
-                }
-            }
-        }
-
-        $page++;
-
-        // 🔹 Пауза 1 секунда перед следующим запросом
-        sleep(1);
-
-    } while (count($orders) === 100); // продолжаем, пока возвращается 100 заказов
-
-    // Выводим все уникальные мета-ключи
-    print_r($meta_fields);
-    echo "</pre>";
-}
-
-function prepare_order_for_import($old_order, $new_api_url, $new_key, $new_secret) {
-    $existing = wc_api_request("$new_api_url/orders?search=" . $old_order['number'], $new_key, $new_secret);
-    if (!is_array($existing)) {
-        echo "⚠️ Ошибка API при проверке существующего заказа: ";
-        print_r($existing);
-        $order_exists = false;
-    } else {
-        $order_exists = false;
-        foreach ($existing as $ex) {
-            if (isset($ex['number']) && $ex['number'] == $old_order['number']) {
-                $order_exists = true;
-                break;
-            }
-        }
-    }
-
-    if ($order_exists) {
-        echo("⚠️ Заказ {$old_order['number']} уже существует, пропускаем.\n");
-        return null;
-    }
-
-    $new_line_items = [];
-    foreach ($old_order['line_items'] as $item) {
-        $new_product_id = get_product_id_by_id_or_sku(
-            $item['product_id'],
-            $item['sku'],
-            str_replace('/orders', '', $new_api_url),
-            $new_key,
-            $new_secret
-        );
-        if (!$new_product_id) {
-            echo("❌ Товар {$item['name']} (SKU {$item['sku']}) не найден — пропускаем его.");
-            continue;
-        }
-        $new_line_items[] = [
-            'product_id'   => $new_product_id,
-            'variation_id' => $item['variation_id'],
-            'quantity'     => $item['quantity'],
-            'subtotal'     => $item['subtotal'],
-            'total'        => $item['total'],
-            'meta_data'    => array_map(function($m) {
-                return ['key' => $m['key'], 'value' => $m['value']];
-            }, $item['meta_data'])
-        ];
-    }
-
-    $new_shipping_lines = [];
-    foreach ($old_order['shipping_lines'] as $ship) {
-        $new_shipping_lines[] = [
-            'method_id'    => $ship['method_id'],
-            'method_title' => $ship['method_title'],
-            'total'        => $ship['total'],
-            'meta_data'    => array_map(function($m) {
-                return ['key' => $m['key'], 'value' => $m['value']];
-            }, $ship['meta_data'])
-        ];
-    }
-
-    $new_meta = [];
-    $added_keys = []; // массив для проверки дублей
-
-    foreach ($order['meta_data'] as $meta) {
-        $key = ($meta['key'] === 'billing_dontcallme' || $meta['key'] === '_billing_dontcallme')
-            ? 'dontcallme'
-            : $meta['key'];
-
-        // ✅ Если этот ключ уже добавлен — пропускаем
-        if (in_array($key, $added_keys)) {
-            continue;
-        }
-
-        $new_meta[] = ['key' => $key, 'value' => $meta['value']];
-        $added_keys[] = $key;
-    }
-
-    return [
-        'customer_id'          => $old_order['customer_id'] ?: 0,
-        'status'               => $old_order['status'],
-        'currency'             => $old_order['currency'],
-        'billing'              => $old_order['billing'],
-        'shipping'             => $old_order['shipping'],
-        'payment_method'       => $old_order['payment_method'],
-        'payment_method_title' => $old_order['payment_method_title'],
-        'customer_note'        => $old_order['customer_note'],
-        'line_items'           => $new_line_items,
-        'shipping_lines'       => $new_shipping_lines,
-        'meta_data'            => $new_meta
-    ];
-}
