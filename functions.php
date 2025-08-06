@@ -481,7 +481,7 @@ function plnt_get_prods_data() {
                 array(
                     'taxonomy' => 'product_cat',
                     'field' => 'slug',
-                    'terms' => 'gorshki_i_kashpo',
+                    'terms' => 'kashpo-treez',
                     // 'terms' => array('gorshki_i_kashpo', 'komnatnye-rasteniya'),
                     // 'operator' => 'NOT IN'
                 )
