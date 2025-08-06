@@ -470,13 +470,13 @@ function plnt_get_prods_data() {
       'no_found_rows' => 1,
       'posts_per_page' => -1,
       'orderby' => 'rand',
-      // 		 'meta_query' => array( 
-			// 	array(
-			// 		'key'       => '_stock_status',
-			// 		'value'     => 'instock',
-			// 		'compare'   => 'NOT IN'
-			// 	)
-			// ),
+      		 'meta_query' => array( 
+				array(
+					'key'       => '_stock_status',
+					'value'     => 'instock',
+					'compare'   => 'NOT IN'
+				)
+			),
       'tax_query' => array(
                 array(
                     'taxonomy' => 'product_cat',
