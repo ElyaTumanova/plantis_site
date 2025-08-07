@@ -4,6 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $plants_cat_id;
+global $gorshki_cat_id;
+global $treez_cat_id;
+global $lechuza_cat_id;
 $is_plants_in_cart = true;
 
 //не учитываем наличие растений в корзине
@@ -62,14 +65,21 @@ if($is_plants_in_cart) {
                 <?php
                 woocommerce_template_loop_add_to_cart();
                 //woocommerce_quantity_input();
+            else: 
+                if ($parentCat == $gorshki_cat_id ||  $parentCat == $treez_cat_id || $parentCat == $lechuza_cat_id) {
+                    echo ('free peresadka');
+                }
             endif;
         }
         wp_reset_query();
         wp_reset_postdata();
     
+    } else {
+        if ($parentCat == $gorshki_cat_id ||  $parentCat == $treez_cat_id || $parentCat == $lechuza_cat_id) {
+            echo ('free peresadka');
+        }
     }
 
-    echo ($parentCat);
     
 }
 
