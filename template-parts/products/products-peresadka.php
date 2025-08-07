@@ -19,6 +19,7 @@ $is_plants_in_cart = true;
 if($is_plants_in_cart) {
     $product_id = $args[ 'product_id' ];
     $product = wc_get_product( $product_id );
+    $parentCat = check_category ($product);
     
     $crosssell_ids = get_post_meta( $product_id, '_crosssell_ids' );
     
@@ -61,13 +62,14 @@ if($is_plants_in_cart) {
                 <?php
                 woocommerce_template_loop_add_to_cart();
                 //woocommerce_quantity_input();
-            else: echo ('free peresadka');
             endif;
         }
         wp_reset_query();
         wp_reset_postdata();
     
     }
+
+    echo ($parentCat);
     
 }
 
