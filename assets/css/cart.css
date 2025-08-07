@@ -668,7 +668,7 @@
     "image name remove"
     "image price x"
     "image status status"
-    "peresadka peresadka peresadka";
+    "x peresadka peresadka";
     column-gap: 10px;
     margin-bottom: 10px;
 }
@@ -707,6 +707,12 @@
 
 .woocommerce-mini-cart-item .cart__peresadka {
     grid-area: peresadka;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 0;
+}
+.woocommerce-mini-cart-item .cart__peresadka .button {
+    padding: 0;
 }
 
 /* .woocommerce-mini-cart-item .cart__peresadka .quantity {
