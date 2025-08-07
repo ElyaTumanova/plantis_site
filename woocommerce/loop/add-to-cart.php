@@ -33,7 +33,7 @@ if( $product->is_type( 'simple' )
     $cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
     $url = wc_get_cart_remove_url( $cart_item_key );
     if ($parentCat === $peresadka_cat_id) {
-        $text = 'Пересадка добавлена';
+        $text = 'Добавить пересадку за ' .$product->get_price(). ' руб.';
     } else {
         $text = 'Добавлен';
     }
