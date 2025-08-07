@@ -67,7 +67,7 @@ if($is_plants_in_cart) {
                 //woocommerce_quantity_input();
             else: 
                 if ($parentCat == $gorshki_cat_id ||  $parentCat == $treez_cat_id || $parentCat == $lechuza_cat_id) {
-                    echo ('free peresadka');
+                    echo ('Пересадка бесплатно');
                 }
             endif;
         }
@@ -76,7 +76,7 @@ if($is_plants_in_cart) {
     
     } else {
         if ($parentCat == $gorshki_cat_id ||  $parentCat == $treez_cat_id || $parentCat == $lechuza_cat_id) {
-            echo ('free peresadka');
+            echo ('Пересадка бесплатно');
         }
     }
 
