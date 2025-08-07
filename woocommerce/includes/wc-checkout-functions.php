@@ -419,9 +419,11 @@ Contents
     function plnt_large_delivery_notice() {
 
         if (check_if_large_delivery()) {
-            echo '<div class=large_delivery_notice>
-            <img class=large_delivery_img src="'get_template_directory_uri().'/images/icons/car.svg" alt="car">
-            <p>Для заказа предусмотрена крупногабаритная доставка!</p></div>';
+            ?>
+            <div class=large_delivery_notice>
+            <img class=large_delivery_img src="<?php echo get_template_directory_uri()?>/images/icons/car.svg" alt="car">
+            <p>Для заказа предусмотрена крупногабаритная доставка!</p></div>
+            <?php
         }
         
     }
