@@ -420,7 +420,7 @@ Contents
 
         if (check_if_large_delivery()) {
             echo '<div class=large_delivery_notice>
-            <img class=large_delivery_img src="https://plantis-shop.ru/wp-content/uploads/2024/08/car.svg" alt="car">
+            <img class=large_delivery_img src="'echo get_template_directory_uri().'/images/icons/car.svg" alt="car">
             <p>Для заказа предусмотрена крупногабаритная доставка!</p></div>';
         }
         
