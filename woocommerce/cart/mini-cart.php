@@ -98,14 +98,14 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 						}
 					?>	
 					<!-- peresadka_init -->
-					<div class="cart__peresadka">
+					<!-- <div class="cart__peresadka">
 						<?php 
-						get_template_part('template-parts/products/products-peresadka',null,
-								array( // массив с параметрами
-									'product_id' => $product_id
-								)); 
+						// get_template_part('template-parts/products/products-peresadka',null,
+						// 		array( // массив с параметрами
+						// 			'product_id' => $product_id
+						// 		)); 
 						?>
-					</div>
+					</div> -->
 
 				</li>
 				<?php
