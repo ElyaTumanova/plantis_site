@@ -31,13 +31,15 @@ if( $product->is_type( 'simple' )
 && WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( $product->get_id() ) )) 
 { 
     $cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
-    $url = wc_get_cart_remove_url( $cart_item_key );
     if ($parentCat === $peresadka_cat_id) {
         $text = 'Добавить пересадку за ' .$product->get_price(). ' руб.';
+        $url = $product->add_to_cart_url();
+        $class = isset( $args['class'] ) ? $args['class'] : 'button';
     } else {
+        $url = wc_get_cart_remove_url( $cart_item_key );
         $text = 'Добавлен';
+        $class = 'button product_type_simple remove_from_cart_button added';
     }
-    $class = 'button product_type_simple remove_from_cart_button added';
 }
 else {
 	if ($parentCat === $peresadka_cat_id) 
