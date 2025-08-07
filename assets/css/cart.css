@@ -293,7 +293,15 @@
     display: flex;
     align-items: center;
     color: var(--gray-text);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 0;
 }
+
+.cart__peresadka .button {
+    padding: 0;
+}
+
 .cart__peresadka svg path{
     stroke: var(--gray-text);
 }
