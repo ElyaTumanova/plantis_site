@@ -61,6 +61,7 @@ if($is_plants_in_cart) {
                 <?php
                 woocommerce_template_loop_add_to_cart();
                 //woocommerce_quantity_input();
+            else: echo ('free peresadka');
             endif;
         }
         wp_reset_query();
