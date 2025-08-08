@@ -348,7 +348,7 @@ function plnt_img_gallery_swiper_init() {
 // добавляем класс для swiper к изображениям товара 
 add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
 function AddThumbnailClass( $atts, $attachment ) {
-	if (is_shop() || is_product_category() || is_product_tag()) {
+	if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
 		$atts['class'] .= " swiper-slide"; 
 	}
 		return $atts;
@@ -400,7 +400,7 @@ add_action('woocommerce_shop_loop_item_title','woocommerce_template_single_excer
 add_action('woocommerce_after_shop_loop_item', 'plnt_get_product_tags', 20);
 
 function plnt_get_product_tags() {
-	if(is_shop() || is_product_category() || is_product_tag()) {
+	if(is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
 		global $product;
 		global $tags_podarki;
 		$tags = wc_get_product_term_ids( $product->get_id(), 'product_tag' );
