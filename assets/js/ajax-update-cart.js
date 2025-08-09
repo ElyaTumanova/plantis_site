@@ -192,7 +192,7 @@ function getAddedPeresadka() {
             peresadkaProdIdsArrClean.push(id);
         }
     })
-    let peresadkaBtns = querySelectorAll('.cart__peresadka');
+    let peresadkaBtns = document.querySelectorAll('.cart__peresadka');
     console.log(peresadkaBtns);
 
 }
