@@ -37,7 +37,7 @@
 // получаем корзину для обновления кнопок добавления в корзину
 //функция используется в плагнах Load More и BeRocket filters
 function plntAjaxGetWishMiniCart() {
-  // console.log('hi get minicart');
+  console.log('hi get minicart');
   let miniCartDiv = document.createElement('div');
   //console.log(miniCartDiv);
 
