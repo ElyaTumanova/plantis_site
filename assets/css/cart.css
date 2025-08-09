@@ -562,7 +562,7 @@
     font-weight: 600;
 }
 .product-cart-upsells_active .cart-upsells__sliders-wrap {
-    height: 400px;
+    height: 460px;
     opacity: 100%;
     transition: height 0.9s, opacity 0.8s 0.1s;
 }
