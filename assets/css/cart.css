@@ -578,7 +578,7 @@
     transform: rotate(-90deg);
 }
 
-.product-cart-upsells_btn {
+.product-cart-upsells .add_to_cart_button, .product-cart-upsells .product_type_simple {
     width: 100%;
     padding: 5px 10px 4px;
     border-radius: 5px;
