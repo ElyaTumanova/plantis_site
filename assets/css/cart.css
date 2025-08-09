@@ -599,6 +599,8 @@
     color: var(--white);
     text-align: center;
     border-width: 2px;
+    background-color: var(--added-cart);
+    border-color: var(--added-cart);
 }
 
 .product-cart-upsells_btn:hover{
