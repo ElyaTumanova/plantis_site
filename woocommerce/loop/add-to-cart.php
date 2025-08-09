@@ -28,19 +28,21 @@ $parentCat = check_category ($product);
 if( $product->is_type( 'simple' )
 && $product->is_purchasable()
 && $product->is_in_stock()
-&& WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( $product->get_id() ) )) 
+&& WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( $product->get_id() ) )
+&& $parentCat != $peresadka_cat_id) 
 { 
     $cart_item_key = WC()->cart->generate_cart_id( $product->get_id() );
     $url = wc_get_cart_remove_url( $cart_item_key );
-    if ($parentCat === $peresadka_cat_id) {
-        $text = 'Пересадка добавлена';
-    } else {
-        $text = 'Добавлен';
-    }
+    // if ($parentCat === $peresadka_cat_id) {
+    //     $text = 'Пересадка добавлена';
+    // } else {
+    //     $text = 'Добавлен';
+    // }
+    $text = 'Добавлен';
     $class = 'button product_type_simple remove_from_cart_button added';
 }
 else {
-	if ($parentCat === $peresadka_cat_id) 
+	if ($parentCat == $peresadka_cat_id) 
 	{
         $url = $product->add_to_cart_url();
 		$text = 'Добавить пересадку за ' .$product->get_price(). ' руб.';
