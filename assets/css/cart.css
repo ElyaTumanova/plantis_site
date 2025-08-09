@@ -632,11 +632,11 @@
 }
 
 .mini-cart__wrap .mini-cart {
-    height: 485px;
+    max-height: 485px;
 }
 
 .mini-cart__wrap .woocommerce-mini-cart {
-    height: 300px;
+    max-height: 300px;
     overflow-y: auto;
 }
 
