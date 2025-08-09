@@ -111,6 +111,7 @@ function updateCatalogButtons(miniCartDiv) {
   
   addToCartBtns.forEach(button => {
     console.log(button.dataset.categoryName);
+    console.log(button);
     if(productsInCartIds.includes(button.dataset.product_id) && button.dataset.categoryName != 'Пересадка') {
       let addToCartForm = button.parentElement;
       console.log(addToCartForm);
