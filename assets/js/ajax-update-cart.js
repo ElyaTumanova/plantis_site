@@ -186,7 +186,10 @@ function updateWishBtns(wishListItemsStr) {
 function getAddedPeresadka() {
     let peresadkaProdIds = window.sessionStorage.getItem('peresadkaProdId');
     let peresadkaProdIdsArr = peresadkaProdIds.split(';');
-    console.log(peresadkaProdIdsArr);
+    let peresadkaProdIdsArrClean = peresadkaProdIdsArr.filter((item, index) => {
+        return peresadkaProdIdsArr.indexOf(item) !== index
+    });
+    console.log(peresadkaProdIdsArrClean);
 }
 
 
