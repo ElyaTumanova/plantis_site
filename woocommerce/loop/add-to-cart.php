@@ -23,7 +23,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $product;
 global $peresadka_cat_id;
 $parentCat = check_category ($product);
-echo ($parentCat);
 
 // added
 if( $product->is_type( 'simple' )
