@@ -194,7 +194,6 @@ function getAddedPeresadka() {
     })
     let peresadkaBtns = document.querySelectorAll('.cart__peresadka');
     console.log(peresadkaBtns);
-
 }
 
 
@@ -210,7 +209,7 @@ jQuery(function($){
 		backorderCrossellInit();
         cartUpsellsInit();
 		plntAjaxGetWishMiniCart();
-        getAddedPeresadka();
+       // getAddedPeresadka();
 	});
 })
 
