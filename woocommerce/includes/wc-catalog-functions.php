@@ -340,6 +340,7 @@ function plnt_img_gallery_swiper_init() {
 	<script>
 		jQuery(function($){
 			swiper_catalog_card_imgs_init ();
+            setSearchFilterField();
 		})
 	</script>
 	<?php	
