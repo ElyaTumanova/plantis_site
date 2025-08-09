@@ -714,6 +714,10 @@
     grid-area: image;
 }
 
+.woocommerce-mini-cart-item > img {
+    grid-area: image;
+}
+
 .woocommerce-mini-cart-item .product-name {
     grid-area: name;
     font-size: 18px;
