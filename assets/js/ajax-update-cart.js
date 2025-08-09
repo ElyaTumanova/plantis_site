@@ -183,6 +183,11 @@ function updateWishBtns(wishListItemsStr) {
     }
 }
 
+function getAddedPeresadka() {
+    let peresadkaProdIds = window.sessionStorage.getItem('peresadkaProdId');
+    console.log(peresadkaProdIds);
+}
+
 
 /*--------------------------------------------------------------
 # Start cart js after ajax cart update
@@ -196,6 +201,7 @@ jQuery(function($){
 		backorderCrossellInit();
         cartUpsellsInit();
 		plntAjaxGetWishMiniCart();
+        getAddedPeresadka();
 	});
 })
 
