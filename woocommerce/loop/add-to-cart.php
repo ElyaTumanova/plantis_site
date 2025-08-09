@@ -38,7 +38,7 @@ if( $product->is_type( 'simple' )
     // } else {
     //     $text = 'Добавлен';
     // }
-    $text = 'Добавлено';
+    $text = 'Добавлен';
     $class = 'button product_type_simple remove_from_cart_button added';
 }
 else {

@@ -55,7 +55,7 @@ function plntAjaxGetWishMiniCart() {
         $('.mini-cart').html(response.mini_cart); // Repopulate the specific element with the new content
         //console.log(response);
         miniCartDiv.innerHTML = response.mini_cart;
-        //updateCatalogButtons(miniCartDiv);
+        updateCatalogButtons(miniCartDiv);
 
         $('.header-cart__link .header__count').html(response.cart_count); // Repopulate the specific element with the new content
         $('.header-cart__mob .header__count').html(response.cart_count); // Repopulate the specific element with the new content
