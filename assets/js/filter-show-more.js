@@ -58,11 +58,13 @@ if(diametrFilter) {
 //search field for plants names filter
 function setSearchFilterField() {
     document.addEventListener('DOMContentLoaded', function () {
+    console.log('hi setSearchFilterField');
     const searchInput = document.querySelector('.berocket-search-checkbox');
     const checkboxes = document.querySelectorAll('.filter_plant_name li');
 
     if (searchInput && checkboxes.length) {
         searchInput.addEventListener('input', function () {
+        console.log('hi hi');
         const query = this.value.toLowerCase();
         checkboxes.forEach((li) => {
             const label = li.textContent.toLowerCase();
