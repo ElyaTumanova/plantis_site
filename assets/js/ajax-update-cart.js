@@ -95,6 +95,7 @@ function updateCatalogButtons(miniCartDiv) {
   // console.log(miniCartDiv);
   let miniCartItems = miniCartDiv.querySelectorAll('.woocommerce-mini-cart-item .remove_from_cart_button');
   let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
+  console.log(addToCartBtns);
   let removeCartBtns = document.querySelectorAll('.remove_from_cart_button');
   let productsInCartIds = [];
   
