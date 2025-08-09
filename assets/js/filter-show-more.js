@@ -75,4 +75,4 @@ function setSearchFilterField() {
     });
 }
 
-setSearchFilterField();
+document.addEventListener('DOMContentLoaded', setSearchFilterField);
