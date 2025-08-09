@@ -73,4 +73,4 @@ function setSearchFilterField() {
     });
 }
 
-// setSearchFilterField();
+setSearchFilterField();
