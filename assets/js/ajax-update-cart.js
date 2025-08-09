@@ -111,7 +111,7 @@ function updateCatalogButtons(miniCartDiv) {
   //console.log(productsInCartIds);
   
   addToCartBtns.forEach(button => {
-    //console.log(button.dataset.product_id);
+    console.log(button.dataset);
     if(productsInCartIds.includes(button.dataset.product_id)) {
       let addToCartForm = button.parentElement;
       console.log(addToCartForm);
