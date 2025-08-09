@@ -185,7 +185,8 @@ function updateWishBtns(wishListItemsStr) {
 
 function getAddedPeresadka() {
     let peresadkaProdIds = window.sessionStorage.getItem('peresadkaProdId');
-    console.log(peresadkaProdIds);
+    let peresadkaProdIdsArr = peresadkaProdIds.split(';');
+    console.log(peresadkaProdIdsArr);
 }
 
 
