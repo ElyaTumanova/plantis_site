@@ -140,7 +140,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 								}
 							?>
 							<!-- peresadka_init -->
-							<div class="cart__peresadka">
+							<div class="cart__peresadka" data-product_id=<?php echo $product_id;?>>
 							<?php 
 							get_template_part('template-parts/products/products-peresadka',null,
 									array( // массив с параметрами
