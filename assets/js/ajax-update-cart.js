@@ -95,7 +95,6 @@ function updateCatalogButtons(miniCartDiv) {
   // console.log(miniCartDiv);
   let miniCartItems = miniCartDiv.querySelectorAll('.woocommerce-mini-cart-item .remove_from_cart_button');
   let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
-  console.log(addToCartBtns);
   let removeCartBtns = document.querySelectorAll('.remove_from_cart_button');
   let productsInCartIds = [];
   
@@ -111,8 +110,8 @@ function updateCatalogButtons(miniCartDiv) {
   //console.log(productsInCartIds);
   
   addToCartBtns.forEach(button => {
-    //console.log(button.dataset.categoryName);
-    if(productsInCartIds.includes(button.dataset.product_id) && button.dataset.categoryName!='Пересадка') {
+    console.log(button.dataset.categoryName);
+    if(productsInCartIds.includes(button.dataset.product_id) && button.dataset.categoryName != 'Пересадка') {
       let addToCartForm = button.parentElement;
       console.log(addToCartForm);
       console.log(console.log(addToCartForm.matches('form')));
