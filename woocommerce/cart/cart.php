@@ -176,7 +176,9 @@ do_action( 'woocommerce_before_cart' ); ?>
 						
 						<?php 
 						global $plants_cat_id;
+                        $qty = $cart_item[ 'quantity' ];
 						$parentCatId = check_category ($_product);
+                        $stock_qty = $_product->get_stock_quantity();
 						if ( $_product->backorders_allowed() && $qty > $stock_qty && $parentCatId === $plants_cat_id) {
 							?><td class="product-backorder-upsells"><?php
 							get_template_part('template-parts/products/products-backorder-crosssell',null,
