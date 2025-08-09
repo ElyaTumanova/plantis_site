@@ -14,3 +14,6 @@ TO DO LIST
 11. Переделать блок с отзывами и с фотографиями на странице О нас
 12. Заменить email
 13. Разобраться с isHideInterval
+
+ссылка на настройки т банка
+https://plantis-shop.ru/wp-admin/admin.php?page=wc-settings&tab=checkout&section=tbank&from=WCADMIN_PAYMENT_SETTINGS
