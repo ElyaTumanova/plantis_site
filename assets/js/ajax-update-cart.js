@@ -186,9 +186,12 @@ function updateWishBtns(wishListItemsStr) {
 function getAddedPeresadka() {
     let peresadkaProdIds = window.sessionStorage.getItem('peresadkaProdId');
     let peresadkaProdIdsArr = peresadkaProdIds.split(';');
-    let peresadkaProdIdsArrClean = peresadkaProdIdsArr.filter((item, index) => {
-        return peresadkaProdIdsArr.indexOf(item) !== index
-    });
+    let peresadkaProdIdsArrClean = [];
+    peresadkaProdIdsArr.forEach((id)=> {
+        if(!peresadkaProdIdsArrClean.includes(id)) {
+            peresadkaProdIdsArrClean.push(id);
+        }
+    })
     console.log(peresadkaProdIdsArrClean);
 }
 
