@@ -259,4 +259,28 @@ function plnt_get_shiping_costs() {
 }
 
 
+function get_backorder_info_snippet($_product, $qty) {
+    global $plants_cat_id;
+    global $peresadka_cat_id;
+    $stock_qty = $_product->get_stock_quantity();
+    if (check_category($_product) !== $peresadka_cat_id) {
+        if ( check_is_treez($_product) || check_is_lechuza($_product) ) {
+            ?><p class="backorder_date-info backorder_date-info_late">Доставка со склада 3 - 7 дней</p>
+            <?php
+        } else {
+            if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
+                if (check_category($_product) === $plants_cat_id) {
+                ?><p class="backorder_date-info backorder_date-info_late">Доставка после <?php echo plnt_set_backorders_date();?></p>
+                <?php } else {
+                    ?><p class="backorder_date-info backorder_date-info_late">Доставка со склада 3 - 7 дней</p>
+                    <?php
+                }
+            } else {
+                ?><p class="backorder_date-info">Доставка от 2-х часов</p>
+                <?php
+            }
+        }
+    }
+}
+
 
