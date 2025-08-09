@@ -48,6 +48,7 @@ if($site === 'https://plantis-shop.ru') {
         350,
         348,
         349,
+        347,
         385,	//tag skidki
 		389); //tag pegular assortiment
 } else {
