@@ -113,7 +113,7 @@ function updateCatalogButtons(miniCartDiv) {
     //console.log(button.dataset.product_id);
     if(productsInCartIds.includes(button.dataset.product_id)) {
       let addToCartForm = button.parentElement;
-      //console.log(button);
+      console.log(addToCartForm);
       button.innerHTML = 'Добавлен';
       addToCartForm.setAttribute('action', button.dataset.remove_link);
       button.setAttribute('class', 'button product_type_simple remove_from_cart_button added');
