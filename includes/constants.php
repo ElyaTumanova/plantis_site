@@ -22,7 +22,7 @@ function plnt_check_site() {
 add_action( 'wp_footer', 'plnt_check_site' );
 
 /* Категории товаров */
-if($site === 'https://plantis-shop.ru') {
+if($site === 'https://plantis-shop.ru' || $site === 'http://dev.plantis-shop.ru') {
 	//PLANTIS-SHOP.RU
 	// constants for categories IDs
 	$plants_cat_id = 329; //ok
