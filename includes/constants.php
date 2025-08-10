@@ -8,7 +8,7 @@ $site = get_site_url();
 function plnt_check_site() {
 	global $site;
 	if (is_front_page()) {
-		if($site === 'https://plantis-shop.ru') {
+		if($site === 'https://plantis-shop.ru' || $site === 'http://dev.plantis-shop.ru') {
 			echo '<script> console.log("hello plantis ru")</script>';
 		} else {
 			echo '<script> console.log("hello plantis")</script>';
@@ -84,7 +84,7 @@ if($site === 'https://plantis-shop.ru' || $site === 'http://dev.plantis-shop.ru'
 
 /* Способы доставки и оплаты */
 
-if($site === 'https://plantis-shop.ru') {
+if($site === 'https://plantis-shop.ru' || $site === 'http://dev.plantis-shop.ru') {
 	//PLANTIS-SHOP.RU
 	$local_pickup = 'local_pickup:5'; 
 	
