@@ -365,6 +365,7 @@
     animation-name: cart__peresadka-added;
     animation-duration: 1.5s;
     opacity: 0;
+    visibility: hidden;
 }
 
 

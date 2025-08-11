@@ -203,25 +203,25 @@ function getAddedPeresadka() {
 
 function getAddedPeresadkaMini() {
     console.log('hi getAddedPeresadkaMini');
-    let peresadkaProdId = window.sessionStorage.getItem('peresadkaProdId');
-    window.sessionStorage.removeItem('peresadkaProdId');
-    let miniCarts = document.querySelectorAll('.woocommerce-mini-cart');
-    let peresadkaBtns = [];
-    miniCarts.forEach((cart)=> {
-        peresadkaBtns = [...peresadkaBtns,...cart.querySelectorAll('.cart__peresadka')]; 
-    })
+    // let peresadkaProdId = window.sessionStorage.getItem('peresadkaProdId');
+    // window.sessionStorage.removeItem('peresadkaProdId');
+    // let miniCarts = document.querySelectorAll('.woocommerce-mini-cart');
+    // let peresadkaBtns = [];
+    // miniCarts.forEach((cart)=> {
+    //     peresadkaBtns = [...peresadkaBtns,...cart.querySelectorAll('.cart__peresadka')]; 
+    // })
 
-    console.log(peresadkaBtns);
+    // console.log(peresadkaBtns);
 
-    let peresadkaAddedMini = document.createElement('div');
-    peresadkaAddedMini.setAttribute('class','cart__peresadka-added_mini');
+    // let peresadkaAddedMini = document.createElement('div');
+    // peresadkaAddedMini.setAttribute('class','cart__peresadka-added_mini');
 
-    peresadkaBtns.forEach((btn)=> {
-        if(btn.dataset.product_id == peresadkaProdId ) {
-            console.log(btn);
-            btn.append(peresadkaAddedMini);
-        }
-    })
+    // peresadkaBtns.forEach((btn)=> {
+    //     if(btn.dataset.product_id == peresadkaProdId ) {
+    //         console.log(btn);
+    //         btn.append(peresadkaAddedMini);
+    //     }
+    // })
 }
 
 
