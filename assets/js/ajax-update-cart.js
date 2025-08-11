@@ -191,12 +191,12 @@ function getAddedPeresadka() {
     console.log(peresadkaBtns);
 
     let peresadkaAdded = document.createElement('div');
-    peresadkaAdded.setAttribute('class','cart__peresadka-added')
+    peresadkaAdded.setAttribute('class','cart__peresadka-added');
     peresadkaAdded.textContent = 'Пересадка добавлена';
 
     let peresadkaAddedMini = document.createElement('img');
-    peresadkaAddedMini.setAttribute('class','cart__peresadka-added_mini')
-    peresadkaAddedMini.setAttribute('href','https://plantis-shop.ru/wp-content/themes/plantis_site/images/icons/check_white.svg')
+    peresadkaAddedMini.setAttribute('class','cart__peresadka-added_mini');
+    peresadkaAddedMini.setAttribute('href','https://plantis-shop.ru/wp-content/themes/plantis_site/images/icons/check_white.svg');
 
     peresadkaBtns.forEach((btn)=> {
         console.log(btn.dataset.product_id);
