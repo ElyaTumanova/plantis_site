@@ -198,9 +198,13 @@ function getAddedPeresadka() {
 
     peresadkaBtns.forEach((btn)=> {
         if(btn.dataset.product_id == peresadkaProdId ) {
+            console.log(Array.from(btn.classList));
             if(Array.from(btn.classList).includes('cart__peresadka_minicart')) {
+                console.log('hi mini');
+                console.log(btn);
                 btn.append(peresadkaAddedMini);
             } else {
+                console.log(btn.parentElement);
                 btn.parentElement.append(peresadkaAdded);
             }
         }
