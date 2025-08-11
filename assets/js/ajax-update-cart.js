@@ -209,7 +209,7 @@ function getAddedPeresadkaMini() {
     let miniCarts = document.querySelectorAll('.woocommerce-mini-cart');
     let peresadkaBtns = [];
     miniCarts.forEach((cart)=> {
-        peresadkaBtns.push(cart.querySelectorAll('.cart__peresadka')); 
+        peresadkaBtns =[...cart.querySelectorAll('.cart__peresadka')]; 
     })
 
     console.log(peresadkaBtns);
