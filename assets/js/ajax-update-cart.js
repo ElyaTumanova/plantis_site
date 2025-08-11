@@ -201,7 +201,7 @@ function getAddedPeresadka() {
     peresadkaBtns.forEach((btn)=> {
         console.log(btn.dataset.product_id);
         if(btn.dataset.product_id == peresadkaProdId ) {
-            console.log(btn.classList);
+            console.log(Array.from(btn.classList));
             // if(btn.classList.includes('cart__peresadka_minicart')) {
             //     console.log(btn.parentElement);
             //     btn.append(peresadkaAddedMini);
