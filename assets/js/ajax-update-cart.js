@@ -193,12 +193,17 @@ function getAddedPeresadka() {
     peresadkaAdded.setAttribute('class','cart__peresadka-added')
     peresadkaAdded.textContent = 'Пересадка добавлена';
     peresadkaBtns.forEach((btn)=> {
-        console.log(btn.dataset.product_id);
-        if(btn.dataset.product_id == peresadkaProdId) {
-            console.log(btn.parentElement);
-            btn.parentElement.append(peresadkaAdded);
-        }
+        btn.addEventListener('click', peresadkaBtnsOnClick)
+        // console.log(btn.dataset.product_id);
+        // if(btn.dataset.product_id == peresadkaProdId) {
+        //     console.log(btn.parentElement);
+        //     btn.parentElement.append(peresadkaAdded);
+        // }
     })
+
+    function peresadkaBtnsOnClick(evt) {
+        console.log(evt.target.dataset.product_id);
+    }
 }
 
 
