@@ -253,3 +253,7 @@ jQuery(function($){
 jQuery(document.body).on('wc_cart_emptied', function() {
   swiper_popular_slider_init();
 });
+
+jQuery(document.body).on('wc_fragments_refreshed', function() {
+    console.log('Фрагменты корзины обновлены!');
+});
