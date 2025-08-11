@@ -122,14 +122,14 @@ do_action( 'woocommerce_before_cart' ); ?>
                                 get_backorder_info_snippet($_product, $cart_item[ 'quantity' ]);
 							?>
 							<!-- peresadka_init -->
-							<div class="cart__peresadka" data-product_id=<?php echo $product_id;?>>
+						
 							<?php 
 							get_template_part('template-parts/products/products-peresadka',null,
 									array( // массив с параметрами
 										'product_id' => $product_id
 									)); 
 							?>
-							</div>
+						
 						</td>
 
 						<td class="product-price" data-title="<?php esc_attr_e( 'Price', 'woocommerce' ); ?>">

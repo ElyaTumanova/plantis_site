@@ -242,12 +242,12 @@ function plnt_buy_one_click_btn() {
 function plnt_get_peresadka_add_to_cart() {
     global $product; 
     $product_id = $product->get_id();
-    ?><div class="cart__peresadka"><?php 
+
     get_template_part('template-parts/products/products-peresadka',null, 
         array( // массив с параметрами
             'product_id' => $product_id
         ));
-    ?></div><?php
+
 };
 
 function plnt_get_add_to_card() {

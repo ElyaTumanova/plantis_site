@@ -185,14 +185,8 @@ function updateWishBtns(wishListItemsStr) {
 
 function getAddedPeresadka() {
     let peresadkaProdId = window.sessionStorage.getItem('peresadkaProdId');
+    window.sessionStorage.removeItem('peresadkaProdId');
     console.log(peresadkaProdId);
-    // let peresadkaProdIdsArr = peresadkaProdIds.split(';');
-    // let peresadkaProdIdsArrClean = [];
-    // peresadkaProdIdsArr.forEach((id)=> {
-    //     if(!peresadkaProdIdsArrClean.includes(id)) {
-    //         peresadkaProdIdsArrClean.push(id);
-    //     }
-    // })
     let peresadkaBtns = document.querySelectorAll('.cart__peresadka');
     console.log(peresadkaBtns);
     let peresadkaAdded = document.createElement('div');
