@@ -61,7 +61,6 @@ if($is_plants_in_cart) {
             $products = new WP_Query( $args );
             if ( $products->have_posts() ) : $products->the_post(); 
                 ?>
-                <div class="cart__peresadka" data-product_id=<?php echo $product_id;?>>
                 <svg class="peresadka_plus_icon" viewBox="0 0 24 24" width="18" height="18" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M12 6V18" stroke="#000000" stroke-width="1.3"></path><path d="M6 12L18 12" stroke="#000000" stroke-width="1.3"></path></svg>
                 <?php
                 woocommerce_template_loop_add_to_cart();
@@ -70,8 +69,6 @@ if($is_plants_in_cart) {
                 if ($parentCat == $gorshki_cat_id ||  $parentCat == $treez_cat_id || $parentCat == $lechuza_cat_id) {
                     echo ('Пересадка бесплатно');
                 }
-                ?> </div> 
-                <?php
             endif;
         }
         wp_reset_query();
