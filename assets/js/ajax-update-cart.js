@@ -195,6 +195,7 @@ function getAddedPeresadka() {
     peresadkaBtns.forEach((btn)=> {
         console.log(btn.dataset.product_id);
         if(btn.dataset.product_id == peresadkaProdId) {
+            console.log(btn.parentElement);
             btn.parentElement.append(peresadkaAdded);
         }
     })
