@@ -203,6 +203,7 @@ function getAddedPeresadka() {
                 console.log('hi mini');
                 console.log(btn);
                 btn.append(peresadkaAddedMini);
+                btn.append('hi mini');
             } else {
                 console.log(btn.parentElement);
                 btn.parentElement.append(peresadkaAdded);
