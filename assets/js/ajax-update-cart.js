@@ -186,6 +186,7 @@ function updateWishBtns(wishListItemsStr) {
 }
 
 function getAddedPeresadka() {
+    console.log('hi getAddedPeresadka');
     let peresadkaProdId = window.sessionStorage.getItem('peresadkaProdId');
     //window.sessionStorage.removeItem('peresadkaProdId');
     let cart = document.querySelector('.woocommerce-cart-form');
@@ -204,6 +205,7 @@ function getAddedPeresadka() {
 }
 
 function getAddedPeresadkaMini() {
+    console.log('hi getAddedPeresadkaMini');
     let peresadkaProdId = window.sessionStorage.getItem('peresadkaProdId');
     window.sessionStorage.removeItem('peresadkaProdId');
     let miniCarts = document.querySelectorAll('.woocommerce-mini-cart');
