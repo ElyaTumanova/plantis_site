@@ -37,7 +37,7 @@
 // получаем корзину для обновления кнопок добавления в корзину
 //функция используется в плагнах Load More и BeRocket filters
 function plntAjaxGetWishMiniCart() {
-  console.log('hi get minicart');
+  //console.log('hi get minicart');
   let miniCartDiv = document.createElement('div');
   //console.log(miniCartDiv);
 
@@ -202,25 +202,17 @@ function getAddedPeresadka() {
 }
 
 function getAddedPeresadkaMini() {
-    console.log('hi getAddedPeresadkaMini');
     let peresadkaProdId = window.sessionStorage.getItem('peresadkaProdId');
-    // window.sessionStorage.removeItem('peresadkaProdId');
     let miniCarts = document.querySelectorAll('.woocommerce-mini-cart');
     let peresadkaBtns = [];
     miniCarts.forEach((cart)=> {
         peresadkaBtns = [...peresadkaBtns,...cart.querySelectorAll('.cart__peresadka')]; 
     })
 
-    // console.log(peresadkaBtns);
-
-    // let peresadkaAddedMini = document.createElement('div');
-    // peresadkaAddedMini.setAttribute('class','cart__peresadka-added_mini');
-
     peresadkaBtns.forEach((btn)=> {
         if(btn.dataset.product_id == peresadkaProdId ) {
             console.log(btn);
             btn.querySelector('.cart__peresadka-added_mini').setAttribute('style', 'visibility: visible');
-            // btn.append(peresadkaAddedMini);
         }
     })
 }
@@ -232,7 +224,7 @@ function getAddedPeresadkaMini() {
 
 jQuery(function($){
 	$( document.body ).on( 'updated_cart_totals', function(){
-		console.log('hi updated_cart_totals');
+		console.debug('hi updated_cart_totals');
 		swiper_backorder_crossells_init();
 		swiper_cart_upsells_init();
 		backorderCrossellInit();
@@ -251,6 +243,6 @@ jQuery(document.body).on('wc_cart_emptied', function() {
 });
 
 jQuery(document.body).on('wc_fragments_loaded', function() {
-    console.log('Фрагменты корзины обновлены!');
+    console.debug('Фрагменты корзины обновлены!');
     getAddedPeresadkaMini();
 });
