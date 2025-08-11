@@ -190,7 +190,7 @@ function getAddedPeresadka() {
     let peresadkaBtns = document.querySelectorAll('.cart__peresadka');
     console.log(peresadkaBtns);
     let peresadkaAdded = document.createElement('div');
-    //peresadkaAdded.setAttribute('class','cart__peresadka-added')
+    peresadkaAdded.setAttribute('class','cart__peresadka-added')
     peresadkaAdded.textContent = 'Пересадка добавлена';
     peresadkaBtns.forEach((btn)=> {
         console.log(btn.dataset.product_id);
