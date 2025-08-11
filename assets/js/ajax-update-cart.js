@@ -201,13 +201,14 @@ function getAddedPeresadka() {
     peresadkaBtns.forEach((btn)=> {
         console.log(btn.dataset.product_id);
         if(btn.dataset.product_id == peresadkaProdId ) {
-            if(btn.classList.includes('cart__peresadka_minicart')) {
-                console.log(btn.parentElement);
-                btn.append(peresadkaAddedMini);
-            } else {
-                console.log(btn.parentElement);
-                btn.parentElement.append(peresadkaAdded);
-            }
+            console.log(btn.classList);
+            // if(btn.classList.includes('cart__peresadka_minicart')) {
+            //     console.log(btn.parentElement);
+            //     btn.append(peresadkaAddedMini);
+            // } else {
+            //     console.log(btn.parentElement);
+            //     btn.parentElement.append(peresadkaAdded);
+            // }
         }
     })
 }
