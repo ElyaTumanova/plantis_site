@@ -196,12 +196,12 @@ function getAddedPeresadka() {
     let peresadkaBtns = document.querySelectorAll('.cart__peresadka');
     console.log(peresadkaBtns);
     let peresadkaAdded = document.createElement('div');
-    peresadkaAdded.setAttribute('style','color = red')
+    peresadkaAdded.setAttribute('style','color: red')
     peresadkaAdded.textContent = 'Пересадка добавлена';
     peresadkaBtns.forEach((btn)=> {
         console.log(btn.dataset.product_id);
         if(btn.dataset.product_id == peresadkaProdId) {
-            btn.append(peresadkaAdded);
+            btn.parentElement.append(peresadkaAdded);
         }
     })
 }
