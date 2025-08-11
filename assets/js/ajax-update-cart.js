@@ -207,9 +207,9 @@ function getAddedPeresadkaMini() {
     let peresadkaProdId = window.sessionStorage.getItem('peresadkaProdId');
     window.sessionStorage.removeItem('peresadkaProdId');
     let miniCarts = document.querySelectorAll('.woocommerce-mini-cart');
-    let peresadkaBtns;
+    let peresadkaBtns = [];
     miniCarts.forEach((cart)=> {
-        peresadkaBtns += cart.querySelectorAll('.cart__peresadka');
+        peresadkaBtns.push(cart.querySelectorAll('.cart__peresadka')); 
     })
 
     console.log(peresadkaBtns);
