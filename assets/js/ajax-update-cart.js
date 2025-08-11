@@ -195,6 +195,9 @@ function getAddedPeresadka() {
     // })
     let peresadkaBtns = document.querySelectorAll('.cart__peresadka');
     console.log(peresadkaBtns);
+    peresadkaBtns.forEach((btn)=> {
+        console.log(btn.dataset.product_id);
+    })
 }
 
 
