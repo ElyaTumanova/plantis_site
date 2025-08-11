@@ -223,6 +223,7 @@ function getAddedPeresadkaMini() {
 
     peresadkaBtns.forEach((btn)=> {
         if(btn.dataset.product_id == peresadkaProdId ) {
+            console.log(btn);
             btn.append(peresadkaAddedMini);
         }
     })
@@ -245,9 +246,9 @@ jQuery(function($){
 	});
 })
 
-jQuery(document.body).on('wc_update_cart', function() {
-    console.log('Cart was updated (via JS event)');
-});
+// jQuery(document.body).on('wc_update_cart', function() {
+//     console.log('Cart was updated (via JS event)');
+// });
 
 jQuery(document.body).on('wc_cart_emptied', function() {
   swiper_popular_slider_init();
