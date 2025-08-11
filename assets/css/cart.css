@@ -338,11 +338,15 @@
 @keyframes cart__peresadka-added {
   from {
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateX(-20px);
   }
-  to {
+  50% {
     opacity: 1;
     transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(20px);
   }
 }
 
