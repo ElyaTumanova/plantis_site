@@ -184,8 +184,8 @@ function updateWishBtns(wishListItemsStr) {
 }
 
 function getAddedPeresadka() {
-    let peresadkaProdIds = window.sessionStorage.getItem('peresadkaProdId');
-    console.log(peresadkaProdIds);
+    let peresadkaProdId = window.sessionStorage.getItem('peresadkaProdId');
+    console.log(peresadkaProdId);
     // let peresadkaProdIdsArr = peresadkaProdIds.split(';');
     // let peresadkaProdIdsArrClean = [];
     // peresadkaProdIdsArr.forEach((id)=> {
@@ -197,6 +197,9 @@ function getAddedPeresadka() {
     console.log(peresadkaBtns);
     peresadkaBtns.forEach((btn)=> {
         console.log(btn.dataset.product_id);
+        if(btn.dataset.product_id == peresadkaProdId) {
+            btn.append(document.createElement('p').textContent = 'Hi');
+        }
     })
 }
 
