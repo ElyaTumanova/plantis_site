@@ -188,7 +188,8 @@ function updateWishBtns(wishListItemsStr) {
 function getAddedPeresadka() {
     let peresadkaProdId = window.sessionStorage.getItem('peresadkaProdId');
     //window.sessionStorage.removeItem('peresadkaProdId');
-    let peresadkaBtns = document.querySelectorAll('.cart__peresadka');
+    let cart = document.querySelector('.woocommerce-cart-form');
+    let peresadkaBtns = cart.querySelectorAll('.cart__peresadka');
 
     let peresadkaAdded = document.createElement('div');
     peresadkaAdded.setAttribute('class','cart__peresadka-added');
@@ -205,7 +206,13 @@ function getAddedPeresadka() {
 function getAddedPeresadkaMini() {
     let peresadkaProdId = window.sessionStorage.getItem('peresadkaProdId');
     window.sessionStorage.removeItem('peresadkaProdId');
-    let peresadkaBtns = document.querySelectorAll('.cart__peresadka');
+    let miniCarts = document.querySelectorAll('.woocommerce-mini-cart');
+    let peresadkaBtns;
+    miniCarts.forEach((cart)=> {
+        peresadkaBtns += cart.querySelectorAll('.cart__peresadka');
+    })
+
+    console.log(peresadkaBtns);
 
     let peresadkaAddedMini = document.createElement('img');
     peresadkaAddedMini.setAttribute('class','cart__peresadka-added_mini');
@@ -213,13 +220,13 @@ function getAddedPeresadkaMini() {
 
     peresadkaBtns.forEach((btn)=> {
         if(btn.dataset.product_id == peresadkaProdId ) {
-            console.log(Array.from(btn.classList));
-            if(Array.from(btn.classList).includes('cart__peresadka_minicart')) {
-                console.log('hi mini');
-                console.log(btn);
-                btn.append(peresadkaAddedMini);
-                btn.append('hi mini');
-            }
+            btn.append(peresadkaAddedMini);
+            btn.append('hi mini');
+            // console.log(Array.from(btn.classList));
+            // if(Array.from(btn.classList).includes('cart__peresadka_minicart')) {
+            //     btn.append(peresadkaAddedMini);
+            //     btn.append('hi mini');
+            // }
         }
     })
 }
