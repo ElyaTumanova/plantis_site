@@ -76,6 +76,8 @@ function plntAjaxGetWishMiniCart() {
             $('.header__main .header__wishlist .header__count').addClass("header__count_active");
             $('.header__nav-wrap .header__wishlist .header__count').addClass("header__count_active");
         }
+
+        getAddedPeresadkaMini();
         
       }
     );
@@ -185,12 +187,25 @@ function updateWishBtns(wishListItemsStr) {
 
 function getAddedPeresadka() {
     let peresadkaProdId = window.sessionStorage.getItem('peresadkaProdId');
-    window.sessionStorage.removeItem('peresadkaProdId');
+    //window.sessionStorage.removeItem('peresadkaProdId');
     let peresadkaBtns = document.querySelectorAll('.cart__peresadka');
 
     let peresadkaAdded = document.createElement('div');
     peresadkaAdded.setAttribute('class','cart__peresadka-added');
     peresadkaAdded.textContent = 'Пересадка добавлена';
+
+    peresadkaBtns.forEach((btn)=> {
+        if(btn.dataset.product_id == peresadkaProdId ) {
+            console.log(btn.parentElement);
+            btn.parentElement.append(peresadkaAdded);
+        }
+    })
+}
+
+function getAddedPeresadkaMini() {
+    let peresadkaProdId = window.sessionStorage.getItem('peresadkaProdId');
+    window.sessionStorage.removeItem('peresadkaProdId');
+    let peresadkaBtns = document.querySelectorAll('.cart__peresadka');
 
     let peresadkaAddedMini = document.createElement('img');
     peresadkaAddedMini.setAttribute('class','cart__peresadka-added_mini');
@@ -204,9 +219,6 @@ function getAddedPeresadka() {
                 console.log(btn);
                 btn.append(peresadkaAddedMini);
                 btn.append('hi mini');
-            } else {
-                console.log(btn.parentElement);
-                btn.parentElement.append(peresadkaAdded);
             }
         }
     })
