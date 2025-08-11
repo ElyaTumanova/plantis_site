@@ -251,4 +251,5 @@ jQuery(document.body).on('wc_cart_emptied', function() {
 
 jQuery(document.body).on('wc_fragments_loaded', function() {
     console.log('Фрагменты корзины обновлены!');
+    getAddedPeresadkaMini();
 });
