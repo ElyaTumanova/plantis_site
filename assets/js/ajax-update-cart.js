@@ -189,18 +189,27 @@ function getAddedPeresadka() {
     console.log(peresadkaProdId);
     let peresadkaBtns = document.querySelectorAll('.cart__peresadka');
     console.log(peresadkaBtns);
+
     let peresadkaAdded = document.createElement('div');
     peresadkaAdded.setAttribute('class','cart__peresadka-added')
     peresadkaAdded.textContent = 'Пересадка добавлена';
+
+    let peresadkaAddedMini = document.createElement('img');
+    peresadkaAddedMini.setAttribute('class','cart__peresadka-added_mini')
+    peresadkaAddedMini.setAttribute('href','https://plantis-shop.ru/wp-content/themes/plantis_site/images/icons/check_white.svg')
+
     peresadkaBtns.forEach((btn)=> {
         console.log(btn.dataset.product_id);
-        if(btn.dataset.product_id == peresadkaProdId) {
-            console.log(btn.parentElement);
-            btn.parentElement.append(peresadkaAdded);
+        if(btn.dataset.product_id == peresadkaProdId ) {
+            if(btn.classList.includes('cart__peresadka_minicart')) {
+                console.log(btn.parentElement);
+                btn.append(peresadkaAddedMini);
+            } else {
+                console.log(btn.parentElement);
+                btn.parentElement.append(peresadkaAdded);
+            }
         }
     })
-
-  
 }
 
 
