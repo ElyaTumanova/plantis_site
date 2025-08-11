@@ -186,9 +186,7 @@ function updateWishBtns(wishListItemsStr) {
 function getAddedPeresadka() {
     let peresadkaProdId = window.sessionStorage.getItem('peresadkaProdId');
     window.sessionStorage.removeItem('peresadkaProdId');
-    console.log(peresadkaProdId);
     let peresadkaBtns = document.querySelectorAll('.cart__peresadka');
-    console.log(peresadkaBtns);
 
     let peresadkaAdded = document.createElement('div');
     peresadkaAdded.setAttribute('class','cart__peresadka-added');
@@ -199,16 +197,12 @@ function getAddedPeresadka() {
     peresadkaAddedMini.setAttribute('href','https://plantis-shop.ru/wp-content/themes/plantis_site/images/icons/check_white.svg');
 
     peresadkaBtns.forEach((btn)=> {
-        console.log(btn.dataset.product_id);
         if(btn.dataset.product_id == peresadkaProdId ) {
-            console.log(Array.from(btn.classList));
-            // if(btn.classList.includes('cart__peresadka_minicart')) {
-            //     console.log(btn.parentElement);
-            //     btn.append(peresadkaAddedMini);
-            // } else {
-            //     console.log(btn.parentElement);
-            //     btn.parentElement.append(peresadkaAdded);
-            // }
+            if(Array.from(btn.classList).includes('cart__peresadka_minicart')) {
+                btn.append(peresadkaAddedMini);
+            } else {
+                btn.parentElement.append(peresadkaAdded);
+            }
         }
     })
 }
