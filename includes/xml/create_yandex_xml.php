@@ -16,14 +16,16 @@ global $uncategorized_cat_id;
 $yandex_xml = "<?xml version='1.0' encoding='UTF-8'?>
 <yml_catalog date='".date('Y-m-d H:i')."'>
 <shop>
-<name>Plantis</name>
+<name>".get_bloginfo('name')."</name>
 <company>ИП Туманов В.В.</company>
-<url>""</url>
+<url>".get_bloginfo('url')."</url>
 <currencies>
 <currency id='RUB' rate='1'/>
-</currencies>";
+</currencies>
+";
 
-$yandex_xml .="<categories>";
+$yandex_xml .="<categories>
+";
 
 $categories_with_stock = [];
 
