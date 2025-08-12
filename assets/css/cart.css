@@ -240,7 +240,7 @@
         padding: 10px;
     }
     .woocommerce-cart-form .shop_table td.product-subtotal {
-        justify-self: right;
+        justify-self: left;
         font-size: 22px;
     }
     .woocommerce-cart-form .shop_table td.product-quantity {
@@ -302,7 +302,6 @@
     color: var(--gray-text);
     font-size: 14px;
     font-weight: 500;
-    padding: 10px 0;
 }
 
 .cart__peresadka .button {
@@ -326,6 +325,7 @@
     border: none;
     padding: 10px 0;
     text-transform: none;
+    text-align: left;
 }
 .cart__peresadka .add_to_cart_button:hover, .cart__peresadka .product_type_simple:hover  {
     background: none;
