@@ -18,14 +18,12 @@ $yandex_xml = "<?xml version='1.0' encoding='UTF-8'?>
 <shop>
 <name>Plantis</name>
 <company>ИП Туманов В.В.</company>
-<url>""</url>
+<url>".get_site_url()."</url>
 <currencies>
 <currency id='RUB' rate='1'/>
-</currencies>
-";
+</currencies>";
 
-$yandex_xml .="<categories>
-";
+$yandex_xml .="<categories>";
 
 $categories_with_stock = [];
 
