@@ -1,7 +1,7 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
+// if ( ! defined( 'ABSPATH' ) ) {
+// 	exit; // Exit if accessed directly
+// }
 
 global $plants_cat_id;
 global $gorshki_cat_id;
