@@ -1,6 +1,5 @@
 let isUrgent;
 let isLate;
-let isHideInterval;
 let isHoliday; //скрываем подние интервалы доставки
 let holidays = []; //format dd.mm
 let checkoutForm = document.querySelector('form[name="checkout"]');
@@ -164,12 +163,6 @@ function setInitalState() {
   };
 
  //console.debug(today);
-
-  if(hour >=20 && hour<24) {
-    isHideInterval = false;
-  } else {
-    isHideInterval = true;
-  }
 
   checkHoliday(deliveryDatesInput[0].value);
 

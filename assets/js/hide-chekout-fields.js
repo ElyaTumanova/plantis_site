@@ -26,8 +26,6 @@
     function plnt_hide_checkout_fields(event){
         //console.log('hi plnt_hide_checkout_fields');
         if (deliveryInterval) {
-            // console.log(deliveryInterval);
-            // console.log('isHideInterval', isHideInterval);
             if (isBackorder || isTreezBackorders) {
                 hideInterval()
             } else { 
@@ -40,9 +38,7 @@
                     if (isUrgent == '0') {
                         showInterval()
                     }
-                    // if (!isHideInterval) {
-                    //     showInterval()
-                    // }
+
                 }
             }
         }
