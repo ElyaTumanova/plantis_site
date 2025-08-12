@@ -165,13 +165,13 @@ foreach($allproducts as $allproduct){
     // Получаем цену товара
     $sale = get_post_meta($allproduct->ID, '_sale_price', true);
     if ($sale>0) {
-        $yandex_xml .= "<price>".get_post_meta($allproduct->ID,'_sale_price',true)."</price>
+        $yandex_xml .= "<price>".number_format(get_post_meta($allproduct->ID,'_sale_price',true), 2, '.', '')."</price>
         <oldprice>".get_post_meta($allproduct->ID,'_regular_price',true)."</oldprice>";
     } else {
         $yandex_xml .= "<price>".get_post_meta($allproduct->ID,'_price',true)."</price>";
     };
     $yandex_xml .= 
-    "<currencyId>RUR</currencyId>
+    "<currencyId>RUB</currencyId>
     <categoryId>".$lastcateg."</categoryId>
     ";
 
