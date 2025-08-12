@@ -211,6 +211,7 @@
     font-size: 16px;
     text-align: left;
     align-self: center;
+    position: relative;
 }
 
 .woocommerce-cart-form .shop_table td.product-subtotal {
