@@ -16,9 +16,9 @@ global $uncategorized_cat_id;
 $yandex_xml = "<?xml version='1.0' encoding='UTF-8'?>
 <yml_catalog date='".date('Y-m-d H:i')."'>
 <shop>
-<name>".get_bloginfo('name')."</name>
+<name>Plantis</name>
 <company>ИП Туманов В.В.</company>
-<url>".get_bloginfo('url')."</url>
+<url>".get_site_url()."</url>
 <currencies>
 <currency id='RUB' rate='1'/>
 </currencies>
