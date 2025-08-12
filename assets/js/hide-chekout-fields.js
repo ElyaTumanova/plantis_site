@@ -34,15 +34,15 @@
                 if ( checkedShippingMethod == localPickupId || checkedShippingMethod == deliveryPochtaId) {
                     hideInterval()
                 } else {
-                    if (isUrgent == '1' && isHideInterval) {
+                    if (isUrgent == '1') {
                         hideInterval();
                     }
                     if (isUrgent == '0') {
                         showInterval()
                     }
-                    if (!isHideInterval) {
-                        showInterval()
-                    }
+                    // if (!isHideInterval) {
+                    //     showInterval()
+                    // }
                 }
             }
         }
