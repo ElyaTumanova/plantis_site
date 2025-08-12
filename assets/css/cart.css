@@ -240,8 +240,8 @@
         padding: 10px;
     }
     .woocommerce-cart-form .shop_table td.product-subtotal {
-        justify-self: center;
-        font-size: 24px;
+        justify-self: right;
+        font-size: 22px;
     }
     .woocommerce-cart-form .shop_table td.product-quantity {
         justify-self: flex-start;
@@ -256,6 +256,12 @@
         overflow-wrap: anywhere;
         font-size: 14px;
     }
+    }
+
+    @media  (max-width: 385px) {
+        .woocommerce-cart-form .shop_table td.product-subtotal {
+            font-size: 20px;
+        }
     }
 
 /*empty cart*/
