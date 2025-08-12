@@ -227,10 +227,11 @@
     .woocommerce-cart-form .shop_table tr.woocommerce-cart-form__cart-item {
         display: grid;
         grid-template-columns:80px auto 150px 20px;
-        grid-template-rows: repeat(4, auto);
+        grid-template-rows: repeat(5, auto);
         grid-template-areas:
-        "img name name name "
-        "img price qty remove "
+        "img name name name"
+        "img price price x"
+        "img y qty remove"
         "backorder backorder backorder backorder"
         "upsells upsells upsells upsells";
 
