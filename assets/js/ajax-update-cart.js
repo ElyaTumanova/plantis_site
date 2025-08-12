@@ -156,22 +156,16 @@ function updateWishBtns(wishListItemsStr) {
 --------------------------------------------------------------*/
 
 function getAddedPeresadka() {
-    console.log('hi getAddedPeresadka');
     let peresadkaProdId = window.sessionStorage.getItem('peresadkaProdId');
     window.sessionStorage.removeItem('peresadkaProdId');
     let cart = document.querySelector('.woocommerce-cart-form');
     let peresadkaBtns = cart.querySelectorAll('.cart__peresadka');
-
-    // let peresadkaAdded = document.createElement('div');
-    // peresadkaAdded.setAttribute('class','cart__peresadka-added');
-    // peresadkaAdded.textContent = 'Пересадка добавлена';
 
     peresadkaBtns.forEach((btn)=> {
         if(btn.dataset.product_id == peresadkaProdId ) {
             let peresadkaAdded = btn.querySelector('.cart__peresadka-added_mini');
             peresadkaAdded.textContent = 'Пересадка добавлена';
             peresadkaAdded.setAttribute('style', 'visibility: visible');
-            //btn.parentElement.append(peresadkaAdded);
         }
     })
 }
@@ -186,7 +180,6 @@ function getAddedPeresadkaMini() {
 
     peresadkaBtns.forEach((btn)=> {
         if(btn.dataset.product_id == peresadkaProdId ) {
-            console.log(btn);
             btn.querySelector('.cart__peresadka-added_mini').setAttribute('style', 'visibility: visible');
         }
     })

@@ -229,8 +229,8 @@
         grid-template-columns:80px auto 150px 20px;
         grid-template-rows: repeat(4, auto);
         grid-template-areas:
-        "img name price price "
-        "img name qty remove "
+        "img name name name "
+        "img price qty remove "
         "backorder backorder backorder backorder"
         "upsells upsells upsells upsells";
 
