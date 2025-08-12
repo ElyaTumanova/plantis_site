@@ -3,37 +3,6 @@
 --------------------------------------------------------------*/
 //обновляем мини корзину и количество в корзине с помошью ajax при загрузке страницы, чтобы решить проблему кешрования
 
-
-// обновляем кол-во товаров в корзине в хедере в десктопе и в моб и боковой корзины - код повторяется в cart.min.js
-// function plntAjaxUpdateCartCount() {
-//   ( function ( $ ) {
-//       "use strict";
-//     // Define the PHP function to call from here
-//       var data = {
-//         'action': 'plnt_update_header_cart_count'
-//       };
-//       $.get(
-//         woocommerce_params.ajax_url, // The AJAX URL
-//         data, // Send our PHP function
-//         function(response){
-//           console.log(response);
-//           $('.header-cart__link .header__count').html(response); // Repopulate the specific element with the new content
-//           $('.header-cart__mob .header__count').html(response); // Repopulate the specific element with the new content
-//           $('.side-cart__count').html(response);
-//           if (response >0) {
-//             $('.header__main .header-cart .header-btn__wrap').addClass("header-btn__wrap_active");
-//             $('.header__main .header-cart .header__count').addClass("header__count_active");
-//             $('.header__nav-wrap .header-cart .header-btn__wrap').addClass("header-btn__wrap_active");
-//             $('.header__nav-wrap .header-cart .header__count').addClass("header__count_active");
-//           }
-//         }
-//       );
-//   // Close anon function.
-//   }( jQuery ) );
-// }
-
-//plntAjaxUpdateCartCount();
-
 // получаем корзину для обновления кнопок добавления в корзину
 //функция используется в плагнах Load More и BeRocket filters
 function plntAjaxGetWishMiniCart() {
@@ -182,6 +151,10 @@ function updateWishBtns(wishListItemsStr) {
     }
 }
 
+/*--------------------------------------------------------------
+# Get message about peresadka added
+--------------------------------------------------------------*/
+
 function getAddedPeresadka() {
     console.log('hi getAddedPeresadka');
     let peresadkaProdId = window.sessionStorage.getItem('peresadkaProdId');
@@ -189,14 +162,16 @@ function getAddedPeresadka() {
     let cart = document.querySelector('.woocommerce-cart-form');
     let peresadkaBtns = cart.querySelectorAll('.cart__peresadka');
 
-    let peresadkaAdded = document.createElement('div');
-    peresadkaAdded.setAttribute('class','cart__peresadka-added');
-    peresadkaAdded.textContent = 'Пересадка добавлена';
+    // let peresadkaAdded = document.createElement('div');
+    // peresadkaAdded.setAttribute('class','cart__peresadka-added');
+    // peresadkaAdded.textContent = 'Пересадка добавлена';
 
     peresadkaBtns.forEach((btn)=> {
         if(btn.dataset.product_id == peresadkaProdId ) {
-            console.log(btn.parentElement);
-            btn.parentElement.append(peresadkaAdded);
+            let peresadkaAdded = btn.querySelector('.cart__peresadka-added_mini');
+            peresadkaAdded.textContent = 'Пересадка добавлена';
+            peresadkaAdded.setAttribute('style', 'visibility: visible');
+            //btn.parentElement.append(peresadkaAdded);
         }
     })
 }

@@ -327,13 +327,33 @@
 }
 
 
-.cart__peresadka-added {
+.woocommerce-cart-form__cart-item .cart__peresadka-added_mini {
     color: var(--accent-color);
     font-size: 14px;
+    font-weight: 600;
     position: absolute;
+    bottom: -15px;
     animation-name: cart__peresadka-added;
     animation-duration: 1.5s;
     opacity: 0;
+    visibility: hidden;
+}
+
+.woocommerce-mini-cart .cart__peresadka-added_mini {
+    position: absolute;
+    right: 55px;
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    background-color: var(--accent-color);
+    background-image: url(https://plantis-shop.ru/wp-content/themes/plantis_site/images/icons/check_white.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    animation-name: cart__peresadka-added;
+    animation-duration: 1.5s;
+    opacity: 0;
+    visibility: hidden;
 }
 
 @keyframes cart__peresadka-added {
@@ -349,23 +369,6 @@
     opacity: 0;
     transform: translateX(30px);
   }
-}
-
-.cart__peresadka-added_mini {
-    position: absolute;
-    right: 55px;
-    height: 20px;
-    width: 20px;
-    border-radius: 20px;
-    background-color: var(--accent-color);
-    background-image: url(https://plantis-shop.ru/wp-content/themes/plantis_site/images/icons/check_white.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 70%;
-    animation-name: cart__peresadka-added;
-    animation-duration: 1.5s;
-    opacity: 0;
-    visibility: hidden;
 }
 
 
