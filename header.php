@@ -14,7 +14,7 @@
 	k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
 	(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-	ym(87781741, "init", {
+	ym(103710881, "init", {
 			clickmap:true,
 			trackLinks:true,
 			accurateTrackBounce:true,
@@ -23,7 +23,7 @@
 	});
 	window.dataLayer = window.dataLayer || [];
 	</script>
-	<noscript><div><img src="https://mc.yandex.ru/watch/87781741" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<noscript><div><img src="https://mc.yandex.ru/watch/103710881" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 	<!-- /Yandex.Metrika counter -->
 	 
 	<!-- Top.Mail.Ru counter -->
@@ -45,7 +45,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<noscript><div><img src="https://mc.yandex.ru/watch/87781741" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- <noscript><div><img src="https://mc.yandex.ru/watch/103710881" style="position:absolute; left:-9999px;" alt="" /></div></noscript> -->
 <div id="page" class="site">
 
 <?php
