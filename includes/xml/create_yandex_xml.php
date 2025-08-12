@@ -157,6 +157,16 @@ foreach($allproducts as $allproduct){
             $lastcateg=$categorys[0]->term_id;
         }
     }  
+
+    $brand = '';
+    $parentCat = check_category ($allproduct);
+    if ($parentCat == $treez_cat_id || $parentCat == $treez_poliv_cat_id || $parentCat == $plants_treez_cat_id) {
+        $brand = 'Treez';
+    } else if ($parentCat == $lechuza_cat_id) {
+        $brand = 'Lechuza';
+    } else {
+        $brand = 'Plantis';
+    }
     
     $yandex_xml .= 
     "<offer id='".$allproduct->ID."' available='true'>
@@ -193,7 +203,7 @@ foreach($allproducts as $allproduct){
     //Название и описание
     $yandex_xml .= "<name>".htmlspecialchars($allproduct->post_title)."</name>
     <description><![CDATA['".htmlspecialchars(strip_tags($allproduct->post_content))."]]></description>
-    <vendor>Plantis</vendor>";
+    <vendor>".$brand."</vendor>";
 
     //Параметры товара
 
