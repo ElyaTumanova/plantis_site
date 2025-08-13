@@ -153,11 +153,11 @@ function plnt_product_image_wrap () {
     <?php 
 };
 
-add_filter( 'woocommerce_gallery_image_html_attachment_image_params', 'wp_kama_woocommerce_gallery_image_html_attachment_params_filter', 10, 4 );
+// добавляем к изображению товара разметку schema.org
+add_filter( 'woocommerce_gallery_image_html_attachment_image_params', 'plnt_image_params', 10, 4 );
 
-function wp_kama_woocommerce_gallery_image_html_attachment_params_filter( $image_attributes, $attachment_id, $image_size, $main_image ){
+function plnt_image_params( $image_attributes, $attachment_id, $image_size, $main_image ){
     $image_attributes['itemprop'] = 'image';
-	print_r($image_attributes);
 	return $image_attributes;
 }
 
