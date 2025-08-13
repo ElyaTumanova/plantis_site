@@ -166,6 +166,7 @@ foreach($allproducts as $allproduct){
 
     $brand = '';
     $idCats = get_the_terms($allproduct->ID,'product_cat');
+    var_dump($idCats);
     if (in_array($treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats) || in_array($plants_treez_cat_id, $idCats)) {
         $brand = 'Treez';
     } else if (in_array($lechuza_cat_id, $idCats)) {
@@ -173,7 +174,7 @@ foreach($allproducts as $allproduct){
     } else {
         $brand = 'Plantis';
     }
-    var_dump($idCats);
+    
     $yandex_xml .= 
     "<offer id='".$allproduct->ID."' available='true'>
     <url>".get_permalink($allproduct->ID)."</url>";
