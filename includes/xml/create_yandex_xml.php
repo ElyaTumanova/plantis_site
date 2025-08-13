@@ -173,7 +173,7 @@ foreach($allproducts as $allproduct){
     } else {
         $brand = 'Plantis';
     }
-    
+    var_dump($idCats);
     $yandex_xml .= 
     "<offer id='".$allproduct->ID."' available='true'>
     <url>".get_permalink($allproduct->ID)."</url>";
