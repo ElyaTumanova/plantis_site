@@ -32,7 +32,10 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
                             <a class="header__main-submenu-item_accent header__main-submenu-item_link header__main-submenu-item_image" 
-                            data-cat_id = <?php echo get_category_by_slug('komnatnye-rasteniya')->term_id?> 
+                            data-cat_id = <?php 
+                            $cat = get_category_by_slug('category-name'); 
+                            $id = $cat->term_id;
+                            echo $id?> 
                             href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">
                                 Комнатные растения
                                 <?php echo $arrow_icon?>
