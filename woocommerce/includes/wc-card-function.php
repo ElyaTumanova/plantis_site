@@ -30,6 +30,7 @@ function plnt_card_grid_start () {
     global $treez_poliv_cat_id;
     global $plants_treez_cat_id;
     global $lechuza_cat_id;
+    $idCats = $product->get_category_ids();
     
     $schemaOrgAttr = 'itemscope itemtype="http://schema.org/Product"';
 
@@ -60,9 +61,9 @@ function plnt_card_grid_start () {
     } 
     // добавляем brand для schema.org
     $brand = '';
-    if ($parentCatId == $treez_cat_id || $parentCatId == $treez_poliv_cat_id || $parentCatId == $plants_treez_cat_id) {
+    if (in_array($treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats) || in_array($plants_treez_cat_id, $idCats)) {
         $brand = 'Treez';
-    } else if ($parentCatId == $lechuza_cat_id) {
+    } else if (in_array($lechuza_cat_id, $idCats)) {
         $brand = 'Lechuza';
     } else {
         $brand = 'Plantis';
@@ -72,7 +73,6 @@ function plnt_card_grid_start () {
         <meta itemprop="name" content="<?php echo $brand ?>">
     </div>
     <?php
-
 };
 
 add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',40);
