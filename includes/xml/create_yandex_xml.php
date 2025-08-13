@@ -169,7 +169,7 @@ foreach($allproducts as $allproduct){
     // var_dump($cats);
     $idCats = [];
     foreach ($cats as $cat) {
-        var_dump($cat);
+        var_dump($cat->term_id);
         //array_push($idCats, $cat->term_id);
     }
     //var_dump($idCats);
