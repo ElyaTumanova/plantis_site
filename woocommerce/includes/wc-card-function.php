@@ -61,7 +61,7 @@ function plnt_card_grid_start () {
     } 
 
     ?>
-    <meta itemprop = "description" content="<?php the_content(); ?>"> 
+    <meta itemprop = "description" content="<?php strip_tags(the_content()); ?>"> 
     <?
 };
 
