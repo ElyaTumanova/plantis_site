@@ -209,7 +209,7 @@ function for_dev() {
     echo '<br>';
     echo 'stock status '.$product->get_stock_status();
     echo '<br>';
-    echo 'get_manage_stock '.$product->$product->get_manage_stock();
+    echo 'get_manage_stock '.$product->get_manage_stock();
     echo '<br>';
     echo 'backorders_allowed '.$product->$product->backorders_allowed();
     echo '<br>';
