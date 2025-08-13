@@ -59,6 +59,14 @@ function plnt_card_grid_start () {
             <?php
         }
     } 
+};
+
+add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',40);
+
+function plnt_card_grid_end () {
+    ?>
+	</div>
+    <?php 
     // добавляем brand для schema.org
     $brand = '';
     if (in_array($treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats) || in_array($plants_treez_cat_id, $idCats)) {
@@ -73,14 +81,6 @@ function plnt_card_grid_start () {
         <meta itemprop="name" content="<?php echo $brand ?>">
     </div>
     <?php
-};
-
-add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',40);
-
-function plnt_card_grid_end () {
-    ?>
-	</div>
-    <?php 
 };
 
 // табы
