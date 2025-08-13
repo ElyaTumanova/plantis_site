@@ -299,6 +299,11 @@ function plnt_price_wrap(){
             
             <meta itemprop="price" content="<?php echo $price?>">
             <meta itemprop="priceCurrency" content="RUB">
+            <div itemprop="seller" itemscope itemtype="http://schema.org/seller">
+                <div itemscope itemtype="https://schema.org/Organization">
+                     <meta itemprop="name" content="Plantis">
+                </div>
+            </div>
         </div>
         <?php
         // peresadka_init
