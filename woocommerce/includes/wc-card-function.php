@@ -259,11 +259,11 @@ function plnt_price_wrap(){
                 echo 'BackOrder';
                 ?><link itemprop="availability" href="http://schema.org/BackOrder"><?php
             }
-            if ($product->get_stock_status() ==='outofstock' &&  $parentCatId == $plants_cat_id;) {
+            if ($product->get_stock_status() ==='outofstock' &&  $parentCatId == $plants_cat_id) {
                 echo 'PreOrder';
                 ?><link itemprop="availability" href="http://schema.org/PreOrder"><?php
             }
-            if ($product->get_stock_status() ==='outofstock' &&  !$parentCatId == $plants_cat_id;) {
+            if ($product->get_stock_status() ==='outofstock' &&  !$parentCatId == $plants_cat_id) {
                 echo 'OutOfStock';
                 ?><link itemprop="availability" href="http://schema.org/OutOfStock"><?php
             }
