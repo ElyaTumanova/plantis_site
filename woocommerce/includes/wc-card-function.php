@@ -26,16 +26,21 @@ function plnt_card_grid_start () {
     global $isTreez;
     global $isLechuza;
     global $plants_cat_id;
+    global $treez_cat_id;
+    global $treez_poliv_cat_id;
+    global $plants_treez_cat_id;
+    global $lechuza_cat_id;
+    
     $schemaOrgAttr = 'itemscope itemtype="http://schema.org/Product"';
 
     if ($parentCatId === $plants_cat_id) {
         if ( $product->get_stock_status() ==='onbackorder' && $product->backorders_allowed()) {
             ?>
-            <div class="card__grid card__grid_backorder">
+            <div class="card__grid card__grid_backorder" <?php echo $schemaOrgAttr ?>>
             <?php
         } elseif ($product->get_stock_status() ==='outofstock') {
             ?>
-            <div class="card__grid card__grid_outofstock">
+            <div class="card__grid card__grid_outofstock" <?php echo $schemaOrgAttr ?>>
             <?php
         } else {
             ?>
@@ -45,14 +50,29 @@ function plnt_card_grid_start () {
     } else {
         if ($isTreez || $isLechuza) {
             ?>
-            <div class="card__grid card__grid_not-plant card__grid_treez ">
+            <div class="card__grid card__grid_not-plant card__grid_treez" <?php echo $schemaOrgAttr ?>>
             <?php
         } else {
             ?>
-            <div class="card__grid card__grid_not-plant">
+            <div class="card__grid card__grid_not-plant" <?php echo $schemaOrgAttr ?>>
             <?php
         }
     } 
+    // добавляем brand для schema.org
+    $brand = '';
+    if ($parentCat == $treez_cat_id || $parentCat == $treez_poliv_cat_id || $parentCat == $plants_treez_cat_id) {
+        $brand = 'Treez';
+    } else if ($parentCat == $lechuza_cat_id) {
+        $brand = 'Lechuza';
+    } else {
+        $brand = 'Plantis';
+    }
+    ?> 
+    <div itemscope itemtype="http://schema.org/Brand"> 
+        <meta itemprop="name" content="<?php echo $brand ?>">
+    </div>
+    <?php
+
 };
 
 add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',40);
@@ -206,7 +226,7 @@ function for_dev() {
     global $parentCatId;
     global $isTreez;
     $idCats = $product->get_category_ids();
-    print_r($idCats);
+    //print_r($idCats);
     echo 'stock qty '.$product->get_stock_quantity();
     echo '<br>';
     echo 'stock status '.$product->get_stock_status();
@@ -239,7 +259,7 @@ function plnt_price_wrap(){
     <div class="card__price-wrap">
         <div class = "card__add-to-cart-wrap" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
             <?php
-            echo for_dev();
+            //echo for_dev();
             woocommerce_template_single_price();
             ?> 
             <div class="card__price-btns-wrap">
