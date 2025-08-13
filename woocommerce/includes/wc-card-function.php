@@ -26,11 +26,6 @@ function plnt_card_grid_start () {
     global $isTreez;
     global $isLechuza;
     global $plants_cat_id;
-    global $treez_cat_id;
-    global $treez_poliv_cat_id;
-    global $plants_treez_cat_id;
-    global $lechuza_cat_id;
-    $idCats = $product->get_category_ids();
     
     $schemaOrgAttr = 'itemscope itemtype="http://schema.org/Product"';
 
@@ -69,6 +64,11 @@ function plnt_card_grid_start () {
 add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',40);
 
 function plnt_card_grid_end () {
+    global $treez_cat_id;
+    global $treez_poliv_cat_id;
+    global $plants_treez_cat_id;
+    global $lechuza_cat_id;
+    $idCats = $product->get_category_ids();
     ?>
 	</div>
     <?php 
