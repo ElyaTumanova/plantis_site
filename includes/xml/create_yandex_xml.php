@@ -172,13 +172,13 @@ foreach($allproducts as $allproduct){
     //     array_push($idCats, $cat -> 'term_id');
     // }
     // var_dump($idCats);
-    if (in_array($treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats) || in_array($plants_treez_cat_id, $idCats)) {
-        $brand = 'Treez';
-    } else if (in_array($lechuza_cat_id, $idCats)) {
-        $brand = 'Lechuza';
-    } else {
-        $brand = 'Plantis';
-    }
+    // if (in_array($treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats) || in_array($plants_treez_cat_id, $idCats)) {
+    //     $brand = 'Treez';
+    // } else if (in_array($lechuza_cat_id, $idCats)) {
+    //     $brand = 'Lechuza';
+    // } else {
+    //     $brand = 'Plantis';
+    // }
     
     $yandex_xml .= 
     "<offer id='".$allproduct->ID."' available='true'>
