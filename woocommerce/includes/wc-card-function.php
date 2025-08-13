@@ -63,6 +63,7 @@ function plnt_card_grid_start () {
 add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',40);
 
 function plnt_card_grid_end () {
+    global $product;
     global $treez_cat_id;
     global $treez_poliv_cat_id;
     global $plants_treez_cat_id;
