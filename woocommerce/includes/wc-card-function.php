@@ -206,6 +206,7 @@ function for_dev() {
     global $parentCatId;
     global $isTreez;
     echo 'stock qty '.$product->get_stock_quantity();
+    echo 'price '.$product->get_price();
     echo '<br>';
     echo 'parent cat '.$parentCatId;
     echo '<br>';
@@ -218,9 +219,9 @@ function for_dev() {
 function plnt_price_wrap(){
     ?>
     <div class="card__price-wrap">
-        <div class = "card__add-to-cart-wrap">
+        <div class = "card__add-to-cart-wrap" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
             <?php
-            //echo for_dev();
+            echo for_dev();
             woocommerce_template_single_price();
             ?> 
             <div class="card__price-btns-wrap">
@@ -235,6 +236,7 @@ function plnt_price_wrap(){
                 ?>
             </div>
             <span class = "backorder-info">В наличии <?php echo $product->get_stock_quantity();?> шт. Если вы хотите заказать большее количество, то ориентировочная дата доставки из Европы <?php echo plnt_set_backorders_date();?>. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</span>
+            <meta itemprop="priceCurrency" content="RUB">
         </div>
         <?php
         // peresadka_init
