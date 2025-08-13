@@ -19,7 +19,7 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
     ?>
     
     <a 
-        class ="header__main-submenu-item_accent header__main-submenu-item_link header__main-submenu-item_image" 
+        class ="header__main-submenu-item_accent header__main-submenu-item_arrow header__main-submenu-item_image" 
         data-cat_id = <?php echo $term_id?> 
         href="<?php echo site_url().$link_base. $cat_slug.'/'?>">
         <?php echo $cat_name?>
