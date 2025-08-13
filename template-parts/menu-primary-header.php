@@ -33,7 +33,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                         <li class="header__main-submenu-item">
                             <a class="header__main-submenu-item_accent header__main-submenu-item_link header__main-submenu-item_image" 
                             data-cat_id = <?php 
-                            $cat = get_category_by_slug('komnatnye-rasteniya'); 
+                            $category = get_term_by( 'slug', 'komnatnye-rasteniya', 'product_cat' );
                             echo $cat;
                             $id = $cat->term_id;
                             echo $id?> 
