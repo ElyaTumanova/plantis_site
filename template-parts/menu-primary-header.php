@@ -297,7 +297,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                         <li class="header__main-submenu-item">
                             <a class="header__main-submenu-item_accent header__main-submenu-item_arrow header__main-submenu-item_image" 
                             data-cat_id = <?php 
-                            $category = get_term_by( 'slug', 'bolshie-ot-26sm', 'product_cat' );
+                            $category = get_term_by( 'slug', 'kashpo-treez', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
                             echo $id;}?>
