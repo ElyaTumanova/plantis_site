@@ -68,8 +68,8 @@ function plnt_card_grid_end () {
     $product_id = $product->get_id();
     $url = get_permalink( $product_id );
     ?>
-    <meta itemprop="url" content="<?php echo $url?>">
-    <?php print_r(parse_url($url)['host']."/".parse_url($url)['path']) ?>
+    <meta itemprop="url" content="<?php echo parse_url($url)['host'].parse_url($url)['path']?>">
+    <?php print_r(parse_url($url)['host'].parse_url($url)['path']) ?>
 	</div>
     <?php 
     // добавляем разметку brand для schema.org
