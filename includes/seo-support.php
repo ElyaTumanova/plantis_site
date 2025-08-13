@@ -98,4 +98,4 @@ function plantis_schema_default_image( $pieces, $context ) {
 }
 
 // отключаем schema.org в Yoast
-add_filter( 'wpseo_json_ld_output', '__return_false' );.
+add_filter( 'wpseo_json_ld_output', '__return_false' );
