@@ -65,10 +65,13 @@ function plnt_card_grid_end () {
     global $plants_treez_cat_id;
     global $lechuza_cat_id;
     $idCats = $product->get_category_ids();
+    $product_id = $product->get_id();
+    $url = get_permalink( $product_id );
     ?>
+    <meta itemprop="url" content="<?php echo $url?>">
 	</div>
     <?php 
-    // добавляем brand для schema.org
+    // добавляем разметку brand для schema.org
     $brand = '';
     if (in_array($treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats) || in_array($plants_treez_cat_id, $idCats)) {
         $brand = 'Treez';
@@ -426,7 +429,7 @@ function plnt_product_artikul() {
 	$sku = $product->get_sku();
     
 	if( $sku ) { // если заполнен, то выводим
-		echo '<p class="product__artikul">Артикул: ' . $sku . '</p>';
+		echo '<p class="product__artikul" itemprop="sku">Артикул: ' . $sku . '</p>';
 	}
 };
 
