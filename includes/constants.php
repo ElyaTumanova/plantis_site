@@ -22,7 +22,7 @@ function plnt_check_site() {
 add_action( 'wp_footer', 'plnt_check_site' );
 
 /* Категории товаров */
-if($site === 'https://plantis-shop.ru' || $site === 'http://dev.plantis-shop.ru') {
+// if($site === 'https://plantis-shop.ru' || $site === 'http://dev.plantis-shop.ru') {
 	//PLANTIS-SHOP.RU
 	// constants for categories IDs
 	$plants_cat_id = 329; //ok
@@ -51,35 +51,35 @@ if($site === 'https://plantis-shop.ru' || $site === 'http://dev.plantis-shop.ru'
         347,
         385,	//tag skidki
 		389); //tag pegular assortiment
-} else {
-	// PLANTIS SHOP
-	$plants_cat_id = 838;
-	$gorshki_cat_id = 68;
-	$treez_cat_id = 802;
-	$treez_poliv_cat_id = 846;
-	$ukhod_cat_id = 69;
-	$misc_cat_id = 23;
-	$skidki_cat_id = 578;
-	$avtopoliv_tag_id = 1050;
-	$peresadka_cat_id = 740; // to do update
-	$plants_treez_cat_id = 1152;
-	$lechuza_cat_id = 1261;
+// } else {
+// 	// PLANTIS SHOP
+// 	$plants_cat_id = 838;
+// 	$gorshki_cat_id = 68;
+// 	$treez_cat_id = 802;
+// 	$treez_poliv_cat_id = 846;
+// 	$ukhod_cat_id = 69;
+// 	$misc_cat_id = 23;
+// 	$skidki_cat_id = 578;
+// 	$avtopoliv_tag_id = 1050;
+// 	$peresadka_cat_id = 740; // to do update
+// 	$plants_treez_cat_id = 1152;
+// 	$lechuza_cat_id = 1261;
 
-	$tags_podarki = array( //all ok
-		1084,
-		1073,
-		1076,
-		1075,
-		1080,
-		1082,
-		1072,
-		1081,
-		1077,
-		1078,
-		1074,
-		837,	//tag skidki
-		1195); //tag pegular assortiment
-}
+// 	$tags_podarki = array( //all ok
+// 		1084,
+// 		1073,
+// 		1076,
+// 		1075,
+// 		1080,
+// 		1082,
+// 		1072,
+// 		1081,
+// 		1077,
+// 		1078,
+// 		1074,
+// 		837,	//tag skidki
+// 		1195); //tag pegular assortiment
+// }
 
 
 /* Способы доставки и оплаты */
