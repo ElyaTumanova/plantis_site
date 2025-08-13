@@ -60,9 +60,9 @@ function plnt_card_grid_start () {
     } 
     // добавляем brand для schema.org
     $brand = '';
-    if ($parentCat == $treez_cat_id || $parentCat == $treez_poliv_cat_id || $parentCat == $plants_treez_cat_id) {
+    if ($parentCatId == $treez_cat_id || $parentCatId == $treez_poliv_cat_id || $parentCatId == $plants_treez_cat_id) {
         $brand = 'Treez';
-    } else if ($parentCat == $lechuza_cat_id) {
+    } else if ($parentCatId == $lechuza_cat_id) {
         $brand = 'Lechuza';
     } else {
         $brand = 'Plantis';
