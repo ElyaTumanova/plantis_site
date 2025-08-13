@@ -26,6 +26,7 @@ function plnt_card_grid_start () {
     global $isTreez;
     global $isLechuza;
     global $plants_cat_id;
+    $schemaOrgAttr = 'itemscope itemtype="http://schema.org/Product"';
 
     if ($parentCatId === $plants_cat_id) {
         if ( $product->get_stock_status() ==='onbackorder' && $product->backorders_allowed()) {
@@ -38,7 +39,7 @@ function plnt_card_grid_start () {
             <?php
         } else {
             ?>
-            <div class="card__grid">
+            <div class="card__grid" <?php echo $schemaOrgAttr ?>>
             <?php
         }
     } else {
