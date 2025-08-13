@@ -165,7 +165,7 @@ foreach($allproducts as $allproduct){
     }  
 
     $brand = '';
-    $idCats = wp_get_post_categories($allproduct->ID);
+    $idCats = wp_get_post_categories($allproduct->ID, array('fields' => 'term_taxonomy_id'));
     if (in_array($treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats) || in_array($plants_treez_cat_id, $idCats)) {
         $brand = 'Treez';
     } else if (in_array($lechuza_cat_id, $idCats)) {
