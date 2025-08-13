@@ -205,6 +205,8 @@ function for_dev() {
     global $product;
     global $parentCatId;
     global $isTreez;
+    $idCats = $product->get_category_ids();
+    print_r($idCats);
     echo 'stock qty '.$product->get_stock_quantity();
     echo '<br>';
     echo 'stock status '.$product->get_stock_status();
