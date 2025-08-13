@@ -217,7 +217,7 @@ function for_dev() {
     echo '<br>';
     echo 'parent cat '.$parentCatId;
     echo '<br>';
-    $term = get_term_by( 'id', $$parentCatId, 'product_cat' );
+    $term = get_term_by( 'id', $parentCatId, 'product_cat' );
     echo $term->name;    
     echo '<br>';
     //print_r($product);
