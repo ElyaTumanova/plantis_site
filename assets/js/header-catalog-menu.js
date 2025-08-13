@@ -72,6 +72,8 @@ function getCatImage(event, catId) {
         let imageLink = imageLinks[`id_${catId}`];
         if(imageLink) {
             menuImage.setAttribute('src', imageLink);
+        } else {
+            menuImage.setAttribute('src','https://plantis-shop.ru/wp-content/themes/plantis_site/images/interior.webp');
         }
     }
 }
@@ -101,7 +103,7 @@ menuLinksWithImage.forEach((el)=>{
     let catId = el.getAttribute('data-cat_id');
     if(catId) {
         el.addEventListener('mouseenter',(evt)=>{getCatImage(evt,catId)})
-        el.addEventListener('mouseleave', (evt)=>{getDefaultImage(evt)})
+        //el.addEventListener('mouseleave', (evt)=>{getDefaultImage(evt)})
     }
 })
 
