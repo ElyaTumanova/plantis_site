@@ -31,118 +31,118 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                 <div class="header__main-submenu" data-menu = "menu_item_plants">
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
-                            <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">
+                            <a class="header__main-submenu-item_accent header__main-submenu-item_link header__main-submenu-item_image" 
+                                href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">
                                 Комнатные растения
                                 <?php echo $arrow_icon?>
-                            </a>
-                            
+                            </a> 
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-listvennye">Декоративно-лиственные</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/fikusy">Фикусы</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-cvetushchie">Цветущие</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/palms">Пальмы</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/lianas">Лианы</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/citrusovye">Цитрусовые</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/paporotniki">Папоротники</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/succulent">Суккуленты</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/kaktusy">Кактусы</a>
                         </li>
                     </ul>
                     <ul class="header__main-submenu_lvl1">
-                        <li class="header__main-submenu-item header__main-submenu-item_accent">
+                        <li class="header__main-submenu-item header__main-submenu-item_image header__main-submenu-item_accent">
                             Популярные подборки
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/napolnye/">Напольные</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/novichkam/">Неприхотливые</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/pet-friendly/">Pet Friendly</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/malenkie-cvety-v-gorshkah/">Компактные</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/ampelnye/">Ампельные</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/ehkzoticheskie-komnatnye-rasteniya/">Экзотические</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/variegatnye/">Вариегатные</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/bonsay/">Бонсаи</a>
                         </li>
                     </ul>
                     <ul class="header__main-submenu_lvl1">
-                        <li class="header__main-submenu-item header__main-submenu-item_accent">
+                        <li class="header__main-submenu-item header__main-submenu-item_image header__main-submenu-item_accent">
                             Повод для подарка
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/">В подарок женщине</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/">В подарок мужчине</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-yubilej/">На юбилей</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-nachalniku/">Начальнику</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-1-sentyabrya/">День знаний</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-den-uchitelya/">День учителя</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-den-materi/">День матери</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-novyj-god/">Новый год</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-den-svyatogo-valentina/">День святого Валентина</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-8-marta/">8 марта</a>
                         </li>
                     </ul>
                     <ul class="header__main-submenu_lvl1">
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a class="header__main-submenu-item_accent header__main-submenu-item_link" href="<?php echo site_url()?>/product-category/ukhod/">
                                 Всё для ухода
                                 <?php echo $arrow_icon?>
                             </a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-category/ukhod/grunt">Грунт</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-category/ukhod/udobreniya">Удобрения</a>
                         </li>
-                        <li class="header__main-submenu-item">
+                        <li class="header__main-submenu-item header__main-submenu-item_image">
                             <a href="<?php echo site_url()?>/product-category/ukhod/zashchita-rastenij">Защита растений</a>
                         </li>
                     </ul>
