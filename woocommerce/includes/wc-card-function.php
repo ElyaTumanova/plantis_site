@@ -58,6 +58,7 @@ function plnt_card_grid_start () {
 add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',40);
 
 function plnt_card_grid_end () {
+    echo the_content();
     ?>
 	</div>
     <?php 
@@ -93,8 +94,8 @@ add_filter( 'woocommerce_product_tabs', 'truemisha_reorder_tabs', 25 );
 function truemisha_reorder_tabs( $tabs ) {
  
 	$tabs[ 'delivery' ][ 'priority' ] = 20;
-  $tabs[ 'additional_information' ][ 'priority' ] = 10;
-  $tabs[ 'description' ][ 'priority' ] = 30;
+    $tabs[ 'additional_information' ][ 'priority' ] = 10;
+    $tabs[ 'description' ][ 'priority' ] = 30;
 	return $tabs;
  
 }
