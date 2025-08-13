@@ -111,6 +111,7 @@ function truemisha_rename_tabs( $tabs ) {
     } else {
         $tabs[ 'additional_information' ][ 'title' ] = 'Xарактеристики';
     }
+    print_r($tabs);
 	return $tabs;
 }
 
