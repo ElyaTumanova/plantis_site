@@ -20,8 +20,8 @@ global $peresadka_cat_id;
 $google_xml = "<?xml version='1.0'?>
 <rss xmlns:g='http://base.google.com/ns/1.0' version='2.0'>
 <channel>
-<title>".get_bloginfo('name')."</title>
-<link>".get_bloginfo('url')."</link>
+<title>Plantis</title>
+<link>https://plantis-shop.ru</link>
 <description>Интернет магазин комнатных растений с доставкой - Plantis</description>
 ";
 
