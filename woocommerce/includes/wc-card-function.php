@@ -217,16 +217,18 @@ function for_dev() {
 }
 
 function plnt_price_wrap(){
+    global $product;
+    $price = number_format($product->get_price(), 2, '.', '');
     ?>
     <div class="card__price-wrap">
         <div class = "card__add-to-cart-wrap" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
             <?php
-            echo for_dev();
+            //echo for_dev();
             woocommerce_template_single_price();
             ?> 
             <div class="card__price-btns-wrap">
                 <?php
-                global $product;
+                
                 if ( $product->get_stock_status() ==='outofstock') {
                     plnt_outofstock_btn();
                 } else {
@@ -236,6 +238,7 @@ function plnt_price_wrap(){
                 ?>
             </div>
             <span class = "backorder-info">В наличии <?php echo $product->get_stock_quantity();?> шт. Если вы хотите заказать большее количество, то ориентировочная дата доставки из Европы <?php echo plnt_set_backorders_date();?>. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</span>
+            <meta itemprop="price" content="<?php echo $price?>">
             <meta itemprop="priceCurrency" content="RUB">
         </div>
         <?php
