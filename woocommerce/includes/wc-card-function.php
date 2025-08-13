@@ -153,6 +153,14 @@ function plnt_product_image_wrap () {
     <?php 
 };
 
+add_filter( 'woocommerce_gallery_image_html_attachment_image_params', 'wp_kama_woocommerce_gallery_image_html_attachment_params_filter', 10, 4 );
+
+function wp_kama_woocommerce_gallery_image_html_attachment_params_filter( $image_attributes, $attachment_id, $image_size, $main_image ){
+
+	print_r($image_attributes);
+	return $image_attributes;
+}
+
 function truemisha_sale_badge() {
  
 	// получаем объект текущего товара в цикле
