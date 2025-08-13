@@ -225,6 +225,9 @@ function for_dev() {
 
 function plnt_price_wrap(){
     global $product;
+    global $parentCatId;
+    global $plants_cat_id;
+
     $price = number_format($product->get_price(), 2, '.', '');
     $stock_status = $product->get_stock_status();
     ?>
@@ -247,10 +250,25 @@ function plnt_price_wrap(){
             </div>
             <span class = "backorder-info">В наличии <?php echo $product->get_stock_quantity();?> шт. Если вы хотите заказать большее количество, то ориентировочная дата доставки из Европы <?php echo plnt_set_backorders_date();?>. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</span>
             <?php 
-            
+            if($product->get_manage_stock() && $product->get_stock_status() ==='instock') {
+                echo 'InStock';
+                ?><link itemprop="availability" href="http://schema.org/InStock"><?php
+            } 
+            if ((!$product->get_manage_stock() && $product->get_stock_status() ==='instock') || 
+                $product->get_stock_status() ==='onbackorder') {
+                echo 'BackOrder';
+                ?><link itemprop="availability" href="http://schema.org/BackOrder"><?php
+            }
+            if ($product->get_stock_status() ==='outofstock' &&  $parentCatId == $plants_cat_id;) {
+                echo 'PreOrder';
+                ?><link itemprop="availability" href="http://schema.org/PreOrder"><?php
+            }
+            if ($product->get_stock_status() ==='outofstock' &&  !$parentCatId == $plants_cat_id;) {
+                echo 'OutOfStock';
+                ?><link itemprop="availability" href="http://schema.org/OutOfStock"><?php
+            }
             ?>
             
-            <link itemprop="availability" href="http://schema.org/InStock">
             <meta itemprop="price" content="<?php echo $price?>">
             <meta itemprop="priceCurrency" content="RUB">
         </div>
