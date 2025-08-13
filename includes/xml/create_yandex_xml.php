@@ -1,12 +1,12 @@
 <?php
-// if ( ! defined( 'ABSPATH' ) ) {
-// 	exit; // Exit if accessed directly
-// }
-require_once $_SERVER['DOCUMENT_ROOT'] . '/wp-load.php';
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+// require_once $_SERVER['DOCUMENT_ROOT'] . '/wp-load.php';
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 
 global $plants_cat_id;
@@ -166,13 +166,10 @@ foreach($allproducts as $allproduct){
 
     $brand = '';
     $cats = get_the_terms($allproduct->ID,'product_cat');
-    // var_dump($cats);
     $idCats = [];
     foreach ($cats as $cat) {
-        // var_dump($cat->term_id);
         array_push($idCats, $cat->term_id);
     }
-    // var_dump($idCats);
     if (in_array($treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats) || in_array($plants_treez_cat_id, $idCats)) {
         $brand = 'Treez';
     } else if (in_array($lechuza_cat_id, $idCats)) {
@@ -180,7 +177,6 @@ foreach($allproducts as $allproduct){
     } else {
         $brand = 'Plantis';
     }
-    // var_dump($brand);
     
     $yandex_xml .= 
     "<offer id='".$allproduct->ID."' available='true'>
