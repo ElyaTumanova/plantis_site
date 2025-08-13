@@ -56,9 +56,8 @@ function plnt_card_grid_start () {
     } 
 
     ?>
-    <meta itemprop = "description" content="<?php htmlspecialchars(the_content()); ?>"> 
+    <!-- <meta itemprop = "description" content="<?php htmlspecialchars(the_content()); ?>">  -->
     <?
-    echo (htmlspecialchars(the_content()));
 };
 
 add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',40);
