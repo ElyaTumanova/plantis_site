@@ -169,7 +169,7 @@ foreach($allproducts as $allproduct){
     var_dump($cats);
     $idCats = [];
     foreach ($cats as $cat) {
-        array_push($idCats, $cat -> 'term_id');
+        array_push($idCats, $cat->term_id);
     }
     var_dump($idCats);
     // if (in_array($treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats) || in_array($plants_treez_cat_id, $idCats)) {
