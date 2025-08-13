@@ -12,6 +12,7 @@ global $delivery_inMKAD;
 global $delivery_outMKAD;
 
 $shipping_costs = plnt_get_shiping_costs();
+print_r($shipping_costs);
    
 $in_mkad = $shipping_costs[$delivery_inMKAD];
 $out_mkad = $shipping_costs[$delivery_outMKAD];
