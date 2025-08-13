@@ -66,10 +66,8 @@ function plnt_card_grid_end () {
     global $lechuza_cat_id;
     $idCats = $product->get_category_ids();
     $product_id = $product->get_id();
-    $url = get_permalink( $product_id );
     ?>
-    <meta itemprop="url" content="<?php echo parse_url($url)['host'].parse_url($url)['path']?>">
-    <?php print_r(parse_url($url)['host'].parse_url($url)['path']) ?>
+    <link itemprop="url" href="<?php echo get_permalink( $product_id );?>">
 	</div>
     <?php 
     // добавляем разметку brand для schema.org
