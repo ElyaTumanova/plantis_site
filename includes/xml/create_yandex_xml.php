@@ -159,10 +159,10 @@ foreach($allproducts as $allproduct){
     }  
 
     $brand = '';
-    $parentCat = check_category ($allproduct);
-    if ($parentCat == $treez_cat_id || $parentCat == $treez_poliv_cat_id || $parentCat == $plants_treez_cat_id) {
+    $idCats = $allproduct->get_category_ids();
+    if (in_array($treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats) || in_array($plants_treez_cat_id, $idCats)) {
         $brand = 'Treez';
-    } else if ($parentCat == $lechuza_cat_id) {
+    } else if (in_array($lechuza_cat_id, $idCats)) {
         $brand = 'Lechuza';
     } else {
         $brand = 'Plantis';
