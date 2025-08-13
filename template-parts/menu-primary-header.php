@@ -36,7 +36,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'komnatnye-rasteniya', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?> 
+                            echo $id;}?> 
                             href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/">
                                 Комнатные растения
                                 <?php echo $arrow_icon?>
@@ -48,7 +48,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'dekorativno-listvennye', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?> 
+                            echo $id;}?> 
                             href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-listvennye">Декоративно-лиственные</a>
                         </li>
                         <li class="header__main-submenu-item">
@@ -57,7 +57,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'fikusy', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?>
+                            echo $id;}?>
                             href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/fikusy">Фикусы</a>
                         </li>
                         <li class="header__main-submenu-item">
@@ -66,7 +66,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'dekorativno-cvetushchie', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?>
+                            echo $id;}?>
                             href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/dekorativno-cvetushchie">Цветущие</a>
                         </li>
                         <li class="header__main-submenu-item">
@@ -75,7 +75,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'palms', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?>
+                            echo $id;}?>
                             href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/palms">Пальмы</a>
                         </li>
                         <li class="header__main-submenu-item">
@@ -84,7 +84,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'lianas', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?>
+                            echo $id;}?>
                             href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/lianas">Лианы</a>
                         </li>
                         <li class="header__main-submenu-item">
@@ -93,7 +93,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'citrusovye', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?>
+                            echo $id;}?>
                             href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/citrusovye">Цитрусовые</a>
                         </li>
                         <li class="header__main-submenu-item">
@@ -102,7 +102,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'paporotniki', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?>
+                            echo $id;}?>
                             href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/paporotniki">Папоротники</a>
                         </li>
                         <li class="header__main-submenu-item">
@@ -111,7 +111,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'succulent', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?>
+                            echo $id;}?>
                             href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/succulent">Суккуленты</a>
                         </li>
                         <li class="header__main-submenu-item">
@@ -120,7 +120,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'kaktusy', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?>
+                            echo $id;}?>
                             href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/kaktusy">Кактусы</a>
                         </li>
                     </ul>
@@ -195,7 +195,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'ukhod', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?> 
+                            echo $id;}?> 
                             href="<?php echo site_url()?>/product-category/ukhod/">
                                 Всё для ухода
                                 <?php echo $arrow_icon?>
@@ -207,7 +207,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'grunt', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?>
+                            echo $id;}?>
                             href="<?php echo site_url()?>/product-category/ukhod/grunt">Грунт</a>
                         </li>
                         <li class="header__main-submenu-item">
@@ -216,7 +216,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'udobreniya', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?>
+                            echo $id;}?>
                             href="<?php echo site_url()?>/product-category/ukhod/udobreniya">Удобрения</a>
                         </li>
                         <li class="header__main-submenu-item">
@@ -225,7 +225,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'zashchita-rastenij', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?>
+                            echo $id;}?>
                             href="<?php echo site_url()?>/product-category/ukhod/zashchita-rastenij">Защита растений</a>
                         </li>
                     </ul>
@@ -239,7 +239,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'gorshki_i_kashpo', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?>
+                            echo $id;}?>
                             href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/">
                                 Керамические горшки 
                                 <?php echo $arrow_icon?>
@@ -259,7 +259,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'malenkie-do-17sm', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?>
+                            echo $id;}?>
                             href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/malenkie-do-17sm">Маленькие (До 17см)</a>
 
                             <a class = "header__main-submenu-item_image"
@@ -267,7 +267,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'srednie-ot-18-do-25sm', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?>
+                            echo $id;}?>
                             href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/srednie-ot-18-do-25sm">Средние (От 18 до 25см)</a>
 
                             <a class = "header__main-submenu-item_image"
@@ -275,7 +275,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'bolshie-ot-26sm', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?>
+                            echo $id;}?>
                             href="<?php echo site_url()?>/product-category/gorshki_i_kashpo/bolshie-ot-26sm">Большие (От 26см)</a>
                          <li class="header__main-submenu-item">
                             <p class="header__main-submenu-item_accent">Популярные цвета</p>
@@ -300,7 +300,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             $category = get_term_by( 'slug', 'bolshie-ot-26sm', 'product_cat' );
                             if($category) {
                             $id = $category->term_taxonomy_id;
-                            echo $id}?>
+                            echo $id;}?>
                             href="<?php echo site_url()?>/product-category/kashpo-treez">
                                 Кашпо Treez
                                 <?php echo $arrow_icon?>
