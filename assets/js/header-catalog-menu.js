@@ -111,7 +111,12 @@ menuLinksWithImage.forEach((el)=>{
 
 headerMenuWrap.addEventListener('mouseenter',getCatImagesAjax,{once:true});
 
-azPlantsBtn.addEventListener('click',closeAllSubmenu);
-azPlantsBtn.addEventListener('click',showSubmenu);
+azPlantsBtn.addEventListener('click',openAZPlantsList);
+
+function openAZPlantsList(event) {
+    closeAllSubmenu();
+    showSubmenu(event);
+    azPlantsBtn.textContent('Назад');
+}
 
 
