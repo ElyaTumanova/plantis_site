@@ -5,7 +5,8 @@ let subMenues = document.querySelectorAll('.header__main-submenu');
 let imageCatId = [];
 let menuLinksWithImage = headerCatalogWrap.querySelectorAll('.header__main-submenu-item_image');
 let imageLinks;
-let azPlantsBtn = headerCatalogWrap.querySelector('.header__menu-azbtn');
+let azPlantsBtnOpen = headerCatalogWrap.querySelector('.header__menu-azbtn_open');
+let azPlantsBtnClose = headerCatalogWrap.querySelector('.header__menu-azbtn_close');
 let timerId;
 
 function openHeaderCatalog () {
@@ -24,10 +25,15 @@ function showSubmenu(menu) {
     //let menu = event.target.getAttribute('data-menu');
     let menuSubMenu = document.querySelector(`.header__main-submenu[data-menu='${menu}']`);
     menuSubMenu.classList.add('header__main-submenu_show');
-    if(menu == 'menu_item_plants' || menu == 'menu_az_palnts') {
-        azPlantsBtn.classList.add('header__menu-azbtn_show');
+    if(menu == 'menu_item_plants') {
+        azPlantsBtnOpen.classList.add('header__menu-azbtn_show');
+        azPlantsBtnClose.classList.remove('header__menu-azbtn_show');
+    } else if (menu == 'menu_az_palnts') {
+        azPlantsBtnOpen.classList.remove('header__menu-azbtn_show');
+        azPlantsBtnClose.classList.add('header__menu-azbtn_show');
     } else {
-        azPlantsBtn.classList.remove('header__menu-azbtn_show');
+        azPlantsBtnOpen.classList.remove('header__menu-azbtn_show');
+        azPlantsBtnClose.classList.remove('header__menu-azbtn_show');
     }
 }
 
@@ -35,8 +41,6 @@ function closeAllSubmenu() {
     subMenues.forEach((el) => {
         el.classList.remove('header__main-submenu_show');
     })
-    azPlantsBtn.textContent = 'Все растения от А до Я';
-    azPlantsBtn.addEventListener('click',openAZPlantsList,{once:true});
 }
 
 function getCatImagesAjax () {
@@ -118,19 +122,16 @@ menuLinksWithImage.forEach((el)=>{
 
 headerMenuWrap.addEventListener('mouseenter',getCatImagesAjax,{once:true});
 
-azPlantsBtn.addEventListener('click',openAZPlantsList,{once:true});
+azPlantsBtnOpen.addEventListener('click',openAZPlantsList);
+azPlantsBtnClose.addEventListener('click',closeAZPlantsList);
 
 function openAZPlantsList(event) {
     closeAllSubmenu();
     showSubmenu('menu_az_palnts');
-    azPlantsBtn.textContent = 'Назад';
-    azPlantsBtn.addEventListener('click',closeAZPlantsList,{once:true});
 }
 
 function closeAZPlantsList() {
     closeAllSubmenu();
     showSubmenu('menu_item_plants');
-    azPlantsBtn.textContent = 'Все растения от А до Я';
-    azPlantsBtn.addEventListener('click',openAZPlantsList,{once:true});
 }
 

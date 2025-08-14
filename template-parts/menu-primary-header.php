@@ -368,7 +368,8 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                     </ul>
                 </div>
             </nav>
-            <button class='button header__menu-azbtn' data-menu = "menu_az_palnts">Все растения от А до Я</button>
+            <button class='button header__menu-azbtn header__menu-azbtn_open' data-menu = "menu_az_palnts">Все растения от А до Я</button>
+            <button class='button header__menu-azbtn header__menu-azbtn_close' data-menu = "menu_az_palnts">Назад</button>
         </div>
     </div>
 </div>
