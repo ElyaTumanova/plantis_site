@@ -237,7 +237,6 @@ function updatePopularSwiper() {
         populars.forEach((el)=>{
             el.classList.add('swiper-slide');
         })
-        console.log(populars);
         swiper_popular_slider_init();
     }
 }
