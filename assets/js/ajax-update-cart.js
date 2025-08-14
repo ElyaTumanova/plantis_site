@@ -218,9 +218,18 @@ jQuery(document.body).on('wc_fragments_loaded', function() {
 
 jQuery(document.body).on('added_to_wishlist', function(){
     console.log('hello wish');
-    swiper_popular_slider_init();
+    updatePopularSwiper();
+    // swiper_popular_slider_init();
 });
 jQuery(document.body).on('removed_from_wishlist', function(){
     console.log('bye wish');
-    swiper_popular_slider_init();
+    updatePopularSwiper();
+    // swiper_popular_slider_init();
 });
+
+
+function updatePopularSwiper() {
+    let wishlist = document.querySelector('.yith-wcwl-form');
+    let populars = wishlist.querySelectorAll('.product');
+    console.log(populars);
+}
