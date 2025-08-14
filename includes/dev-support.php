@@ -18,7 +18,10 @@ add_filter( 'do_shortcode_tag', function( $output, $tag, $atts, $m ) {
         return $output;
     }
 
-    $after_html = '<div class="after-my-shortcode">Мой блок сразу после шорткода</div>';
+    ob_start();
+    get_template_part('template-parts/products/products-popular');
+    $after_html = ob_get_clean();
+
     return $output . $after_html;
 }, 10, 4 );
 
