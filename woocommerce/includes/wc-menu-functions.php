@@ -21,7 +21,7 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
     <a 
         class ="header__main-submenu-item_accent header__main-submenu-item_arrow header__main-submenu-item_image" 
         data-cat_id = <?php echo $term_id?> 
-        href="<?php echo site_url().$link_base. $cat_slug.'/'?>">
+        href="<?php get_term_link($term_id,'product_cat')?>">
         <?php echo $cat_name?>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path d="M7 17L17 7M7 7h10v10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -37,12 +37,12 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
                 }
             }
             //$link = site_url().$link_base. $cat_slug.'/'.$term->slug;
-            $link = get_term_link($term->term_id,'product_cat');
+            //$link = get_term_link($term->term_id,'product_cat');
             ?>
             <a 
                 class="header__main-submenu-item_image" 
                 data-cat_id = <?php echo $term->term_id?> 
-                href="<?php echo $link?>">
+                href="<?php echo get_term_link($term->term_id,'product_cat')?>">
                 <?php echo $name?>
             </a>
             <?
