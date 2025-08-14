@@ -35,6 +35,7 @@ function closeAllSubmenu() {
     subMenues.forEach((el) => {
         el.classList.remove('header__main-submenu_show');
     })
+    azPlantsBtn.textContent = 'Все растения от А до Я';
 }
 
 function getCatImagesAjax () {
@@ -100,7 +101,6 @@ headerMenuItems.forEach((el) => {
     if(!el.getAttribute('data-menu')) {
         el.addEventListener('mouseenter', closeHeaderCatalog);
     }
-    el.addEventListener('mouseenter', closeAZPlantsList);
     el.addEventListener('click', closeHeaderCatalog);
 })
 
