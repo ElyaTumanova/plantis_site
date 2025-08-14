@@ -215,16 +215,18 @@ jQuery(document.body).on('wc_fragments_loaded', function() {
     getAddedPeresadkaMini();
 });
 
+/*--------------------------------------------------------------
+# Update popular slider after ajax wish update
+--------------------------------------------------------------*/
 
 jQuery(document.body).on('added_to_wishlist', function(){
-    console.log('hello wish');
+    //console.log('hello wish');
     updatePopularSwiper();
-    // swiper_popular_slider_init();
 });
+
 jQuery(document.body).on('removed_from_wishlist', function(){
-    console.log('bye wish');
+    //console.log('bye wish');
     updatePopularSwiper();
-    // swiper_popular_slider_init();
 });
 
 
