@@ -6,6 +6,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 // FOR DEV
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 
+add_action('yith_wcwl_wishlist_after_wishlist_content','echo_hi', 50);
+
+function echo_hi() {
+	echo ('hihi');
+}
+
 function plnt_dev_functions() {
 
 	global $plants_treez_cat_id;
