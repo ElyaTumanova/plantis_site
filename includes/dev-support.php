@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 
 add_action('yith_wcwl_wishlist_after_wishlist_content','echo_hi', 50);
+add_shortcode( 'plnt_yith_wcwl_wishlist_popular', 'echo_hi');
 
 function echo_hi() {
 	echo ('hihi');
