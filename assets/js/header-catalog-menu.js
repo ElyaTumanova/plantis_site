@@ -36,6 +36,7 @@ function closeAllSubmenu() {
         el.classList.remove('header__main-submenu_show');
     })
     azPlantsBtn.textContent = 'Все растения от А до Я';
+    azPlantsBtn.addEventListener('click',openAZPlantsList,{once:true});
 }
 
 function getCatImagesAjax () {
