@@ -20,8 +20,8 @@ function closeHeaderCatalog () {
 }
 
 function showSubmenu(event) {
-    console.log(event);
     let menu = event.target.getAttribute('data-menu');
+    console.log(menu);
     let menuSubMenu = document.querySelector(`.header__main-submenu[data-menu='${menu}']`);
     menuSubMenu.classList.add('header__main-submenu_show');
     if(menu == "menu_item_plants") {
