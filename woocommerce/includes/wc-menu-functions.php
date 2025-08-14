@@ -169,7 +169,7 @@ function get_az_palnts_submenu() {
         // echo($thumbnail_url);
         ?>
         <li class="header__main-submenu-item">
-            <a href="<?php echo site_url()?>/usluga-peresadki-komnatnyh-rastenij/"><?php echo $cat->name?></a>
+            <a href="<?php echo get_term_link($cat->term_id,'product_cat')?>><?php echo $cat->name?></a>
         </li> 
         <?php
     }
