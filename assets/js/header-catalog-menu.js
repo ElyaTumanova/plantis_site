@@ -27,9 +27,9 @@ function showSubmenu(event) {
     if(menu == "menu_item_plants") {
         console.log(azPlantsBtn);
         console.log('hohoh');
-        azPlantsBtn.classList.add('.header__menu-azbtn_show');
+        azPlantsBtn.classList.add('header__menu-azbtn_show');
     } else {
-        azPlantsBtn.classList.remove('.header__menu-azbtn_show');
+        azPlantsBtn.classList.remove('header__menu-azbtn_show');
     }
 }
 
