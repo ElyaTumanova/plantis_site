@@ -169,10 +169,7 @@ function get_az_palnts_submenu() {
         // echo($thumbnail_url);
         ?>
         <li class="header__main-submenu-item">
-            <a 
-            class="header__main-submenu-item_image" 
-            data-cat_id = <?php echo $cat->term_id?> 
-            href="<?php echo get_term_link($cat->term_id,'product_cat')?>"><?php echo $cat->name?></a>
+            <a href="<?php echo get_term_link($cat->term_id,'product_cat')?>"><?php echo $cat->name?></a>
         </li> 
         <?php
     }

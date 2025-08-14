@@ -110,6 +110,18 @@
     justify-self: end;
 }
 
+[data-menu = "menu_az_palnts"].header__main-submenu_show .header__main-submenu_lvl1 {
+    max-height: 388px;
+    flex-wrap: wrap;
+    column-gap: 27px;
+}
+
+[data-menu = "menu_az_palnts"].header__main-submenu_show .header__main-submenu_lvl1 a{
+    font-size: 14px;
+    max-width: 100px;
+    word-break: break-word;
+}
+
 .header__main-submenu-img {
     width: 350px;
     height: 350px;
