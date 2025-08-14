@@ -100,6 +100,7 @@ headerMenuItems.forEach((el) => {
     if(!el.getAttribute('data-menu')) {
         el.addEventListener('mouseenter', closeHeaderCatalog);
     }
+    el.addEventListener('mouseenter', closeAZPlantsList);
     el.addEventListener('click', closeHeaderCatalog);
 })
 
