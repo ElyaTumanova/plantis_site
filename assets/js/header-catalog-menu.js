@@ -24,6 +24,11 @@ function showSubmenu(event) {
     let menu = event.target.getAttribute('data-menu');
     let menuSubMenu = document.querySelector(`.header__main-submenu[data-menu='${menu}']`);
     menuSubMenu.classList.add('header__main-submenu_show');
+    if(menu == "menu_item_plants") {
+        azPlantsBtn.classList.add('.header__menu-azbtn_show');
+    } else {
+        azPlantsBtn.classList.remove('.header__menu-azbtn_show');
+    }
 }
 
 function closeAllSubmenu() {
