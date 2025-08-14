@@ -230,6 +230,12 @@ jQuery(document.body).on('removed_from_wishlist', function(){
 
 function updatePopularSwiper() {
     let wishlist = document.querySelector('.yith-wcwl-form');
-    let populars = wishlist.querySelectorAll('.product');
-    console.log(populars);
+    if(wishlist) {
+        let populars = wishlist.querySelectorAll('.product');
+        populars.forEach((el)=>{
+            el.classList.add('swiper-slide');
+        })
+        console.log(populars);
+        swiper_popular_slider_init();
+    }
 }
