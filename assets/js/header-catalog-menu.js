@@ -17,7 +17,7 @@ function openHeaderCatalog () {
 function closeHeaderCatalog () {
     clearTimeout(timerId);
     headerCatalogWrap.classList.remove('header__menu_open');
-    closeAZPlantsList();
+    closeAllSubmenu();
 }
 
 function showSubmenu(menu) {
