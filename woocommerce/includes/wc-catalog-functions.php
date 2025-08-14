@@ -423,7 +423,7 @@ add_action('woocommerce_after_shop_loop_item', 'plnt_check_stock_status', 30);
 
 // // добавляем класс для swiper для каталог гридов
 
-add_filter('woocommerce_post_class', 'plnt_add_class_loop_item_swiper');
+add_filter('post_class', 'plnt_add_class_loop_item_swiper');
 function plnt_add_class_loop_item_swiper($clasess){
 	if(is_product() || is_front_page() || is_cart() || is_page('wishlist') || is_search()) {
 		$clasess[] .= 'swiper-slide';
