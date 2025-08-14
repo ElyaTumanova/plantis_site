@@ -13,17 +13,17 @@ function echo_hi() {
 }
 
 // functions.php или плагин
-add_filter( 'do_shortcode_tag', function( $output, $tag, $atts, $m ) {
-    if ( $tag !== 'yith_wcwl_wishlist' ) {
-        return $output;
-    }
+// add_filter( 'do_shortcode_tag', function( $output, $tag, $atts, $m ) {
+//     if ( $tag !== 'yith_wcwl_wishlist' ) {
+//         return $output;
+//     }
 
-    ob_start();
-    get_template_part('template-parts/products/products-popular');
-    $after_html = ob_get_clean();
+//     ob_start();
+//     get_template_part('template-parts/products/products-popular');
+//     $after_html = ob_get_clean();
 
-    return $output . $after_html;
-}, 10, 4 );
+//     return $output . $after_html;
+// }, 10, 4 );
 
 
 function plnt_dev_functions() {
