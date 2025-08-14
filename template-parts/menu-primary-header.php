@@ -365,6 +365,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                 <div class="header__main-submenu" data-menu = "menu_az_palnts">
                     <ul class="header__main-submenu_lvl1">
                         <p>Здесь будут ссылки на растения</p>
+                        <?php get_az_palnts_submenu();?>
                     </ul>
                 </div>
             </nav>
