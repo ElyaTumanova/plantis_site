@@ -28,7 +28,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
     <div class="header__menu"> 
         <div class="container">
             <nav id="site-navigation" class="main-navigation" role="navigation">
-                <div class="header__main-submenu" data-menu = "menu_item_plants">
+                <div class="header__main-submenu header__main-submenu_show" data-menu = "menu_item_plants">
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
                             <a class="header__main-submenu-item_accent header__main-submenu-item_arrow header__main-submenu-item_image" 
