@@ -7,11 +7,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 
 add_action('yith_wcwl_wishlist_after_wishlist_content','echo_hi', 50);
-add_shortcode( 'plnt_yith_wcwl_wishlist_popular', 'echo_hi');
 
 function echo_hi() {
 	echo ('hihi');
 }
+
+// functions.php или плагин
+add_filter( 'do_shortcode_tag', function( $output, $tag, $atts, $m ) {
+    if ( $tag !== 'yith_wcwl_wishlist_after_wishlist_content' ) {
+        return $output;
+    }
+
+    $after_html = '<div class="after-my-shortcode">Мой блок сразу после шорткода</div>';
+    return $output . $after_html;
+}, 10, 4 );
+
 
 function plnt_dev_functions() {
 
