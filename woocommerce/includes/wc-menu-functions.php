@@ -152,3 +152,20 @@ function plnt_get_menu_cats_image() {
         wp_send_json_error('Image not found');
     }
 }
+
+
+function get_az_palnts_submenu() {
+    global $plants_cat_id;
+    $lowest_cats = get_lowest_level_product_categories($plants_cat_id); // начиная с корня
+    function sortByName($a, $b) {
+        return strcmp($a->name, $b->name);
+    }
+    usort($lowest_cats, "sortByName");
+    foreach ( $lowest_cats as $cat ) {
+        //print_r($cat);
+        echo $cat->name . ' (ID: ' . $cat->term_id . ')<br>';
+        $thumbnail_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
+        $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
+        echo($thumbnail_url);
+    }
+}
