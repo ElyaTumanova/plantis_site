@@ -17,6 +17,7 @@ function openHeaderCatalog () {
 function closeHeaderCatalog () {
     clearTimeout(timerId);
     headerCatalogWrap.classList.remove('header__menu_open');
+    closeAZPlantsList();
 }
 
 function showSubmenu(menu) {
@@ -124,7 +125,7 @@ function openAZPlantsList(event) {
     azPlantsBtn.addEventListener('click',closeAZPlantsList,{once:true});
 }
 
-function closeAZPlantsList(event) {
+function closeAZPlantsList() {
     closeAllSubmenu();
     showSubmenu('menu_item_plants');
     azPlantsBtn.textContent = 'Все растения от А до Я';
