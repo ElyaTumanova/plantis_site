@@ -212,6 +212,8 @@
     border-bottom-right-radius: 40px;
     border-bottom-left-radius: 40px;
     padding: 40px;
+    display: flex;
+    flex-direction: column;
 }
 
 .header__menu_open {
@@ -509,6 +511,9 @@
 
 .header__menu-azbtn_show {
     display: block;
+    background-color: var(--text);
+    color: var(--white);
+    padding: 10px 20px;
 }
 
 /* info menu */

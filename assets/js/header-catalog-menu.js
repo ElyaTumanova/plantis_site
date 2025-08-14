@@ -5,6 +5,7 @@ let subMenues = document.querySelectorAll('.header__main-submenu');
 let imageCatId = [];
 let menuLinksWithImage = headerCatalogWrap.querySelectorAll('.header__main-submenu-item_image');
 let imageLinks;
+let azPlantsBtn = headerCatalogWrap.querySelector('.header__menu-azbtn');
 let timerId;
 
 function openHeaderCatalog () {
@@ -19,6 +20,7 @@ function closeHeaderCatalog () {
 }
 
 function showSubmenu(event) {
+    console.log(event);
     let menu = event.target.getAttribute('data-menu');
     let menuSubMenu = document.querySelector(`.header__main-submenu[data-menu='${menu}']`);
     menuSubMenu.classList.add('header__main-submenu_show');
@@ -108,5 +110,8 @@ menuLinksWithImage.forEach((el)=>{
 })
 
 headerMenuWrap.addEventListener('mouseenter',getCatImagesAjax,{once:true});
+
+azPlantsBtn.addEventListener('click',closeAllSubmenu);
+azPlantsBtn.addEventListener('click',showSubmenu);
 
 

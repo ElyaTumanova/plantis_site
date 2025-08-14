@@ -362,8 +362,13 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                         </li>
                     </ul>
                 </div>
+                <div class="header__main-submenu" data-menu = "menu_az_palnts">
+                    <ul class="header__main-submenu_lvl1">
+                        <p>Здесь будут ссылки на растения</p>
+                    </ul>
+                </div>
             </nav>
-            <button class='header__menu-azbtn header__menu-azbtn_show'>Все растения от А до Я</button>
+            <button class='button header__menu-azbtn header__menu-azbtn_show' data-menu = "menu_az_palnts">Все растения от А до Я</button>
         </div>
     </div>
 </div>
