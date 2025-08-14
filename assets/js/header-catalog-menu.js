@@ -19,14 +19,11 @@ function closeHeaderCatalog () {
     headerCatalogWrap.classList.remove('header__menu_open');
 }
 
-function showSubmenu(event) {
-    let menu = event.target.getAttribute('data-menu');
-    console.log(menu);
+function showSubmenu(menu) {
+    //let menu = event.target.getAttribute('data-menu');
     let menuSubMenu = document.querySelector(`.header__main-submenu[data-menu='${menu}']`);
     menuSubMenu.classList.add('header__main-submenu_show');
-    if(menu == "menu_item_plants") {
-        console.log(azPlantsBtn);
-        console.log('hohoh');
+    if(menu == 'menu_item_plants' || menu == 'menu_az_palnts') {
         azPlantsBtn.classList.add('header__menu-azbtn_show');
     } else {
         azPlantsBtn.classList.remove('header__menu-azbtn_show');
@@ -97,7 +94,7 @@ headerMenuItems.forEach((el) => {
     if(el.getAttribute('data-menu')) {
         el.addEventListener('mouseenter', openHeaderCatalog);
         el.addEventListener('mouseenter', closeAllSubmenu);
-        el.addEventListener('mouseenter', showSubmenu);
+        el.addEventListener('mouseenter', (evt)=>showSubmenu(evt.target.getAttribute('data-menu')));
     }
     if(!el.getAttribute('data-menu')) {
         el.addEventListener('mouseenter', closeHeaderCatalog);
@@ -118,12 +115,19 @@ menuLinksWithImage.forEach((el)=>{
 
 headerMenuWrap.addEventListener('mouseenter',getCatImagesAjax,{once:true});
 
-azPlantsBtn.addEventListener('click',openAZPlantsList);
+azPlantsBtn.addEventListener('click',openAZPlantsList,{once:true});
 
 function openAZPlantsList(event) {
     closeAllSubmenu();
-    showSubmenu(event);
+    showSubmenu('menu_az_palnts');
     azPlantsBtn.textContent = 'Назад';
+    azPlantsBtn.addEventListener('click',closeAZPlantsList,{once:true});
 }
 
+function closeAZPlantsList(event) {
+    closeAllSubmenu();
+    showSubmenu('menu_item_plants');
+    azPlantsBtn.textContent = 'Все растения от А до Я';
+    azPlantsBtn.addEventListener('click',openAZPlantsList,{once:true});
+}
 
