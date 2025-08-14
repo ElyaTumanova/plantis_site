@@ -216,6 +216,6 @@ jQuery(document.body).on('wc_fragments_loaded', function() {
 });
 
 
-jQuery(document.body).on('yith_wcwl_init', function(){
+jQuery(document.body).on('yith_wcwl_wishlist_updated', function(){
     console.log('hello wish');
 });
