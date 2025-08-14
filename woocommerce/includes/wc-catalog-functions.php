@@ -350,7 +350,7 @@ function plnt_img_gallery_swiper_init() {
 add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
 function AddThumbnailClass( $atts, $attachment ) {
 	if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
-		$atts['class'] .= "swiper-slide"; 
+		$atts['class'] .= " swiper-slide"; 
 	}
 	return $atts;
 }
