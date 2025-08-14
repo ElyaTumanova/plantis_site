@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-//example, $cat_slug = 'treez-effectory', $link_base = '/product-category/kashpo-treez/', $words_to_remove - words to be removed from menu items
+//example, $cat_slug = 'treez-effectory', $words_to_remove - words to be removed from menu items
 function get_primary_submenu($cat_slug,$words_to_remove = [], $clean_cat_name=false) { 
     $term = get_term_by( 'slug', $cat_slug, 'product_cat' );
     $term_id = $term->term_id;
@@ -59,7 +59,7 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $cats_exclude=[], $
     if($levels >= 1):?>
     <li class="catalog__dropdown catalog__node catalog__node_lvl_1">
         <a
-            href="<?php echo site_url().$link_base.'/'. $cat_slug.'/'?>">
+            href="<?php echo get_term_link($term_id,'product_cat')?>">
             <?php echo $cat_name?>
         </a>
         <?php if($levels >= 2):?>
@@ -76,11 +76,10 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $cats_exclude=[], $
                                 $name = str_replace($word,'',$name);
                             }
                         }
-                        $link = site_url().$link_base.'/'. $cat_slug.'/'.$term->slug;
                         ?>
                         <li class="catalog__dropdown catalog__node catalog__node_lvl_2">
                             <a 
-                                href="<?php echo $link?>">
+                                href="<?php echo get_term_link($term->term_id,'product_cat')?>">
                                 <?php echo $name?>
                             </a>
                             <?php if($levels >= 3):?>
@@ -99,11 +98,10 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $cats_exclude=[], $
                                                     $name_sub = str_replace($word,'',$name_sub);
                                                 }
                                             }
-                                            $link_sub = site_url().$link_base. '/'.$cat_slug.'/'.$term->slug.'/'.$term_sub->slug;
                                             ?>
                                             <li class="catalog__node catalog__node_lvl_3">
                                                 <a 
-                                                    href="<?php echo $link_sub?>">
+                                                    href="<?php echo get_term_link($term_sub_id,'product_cat')?>">
                                                     <?php echo $name_sub?>
                                                 </a>
                                             </li>
