@@ -21,7 +21,7 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
     <a 
         class ="header__main-submenu-item_accent header__main-submenu-item_arrow header__main-submenu-item_image" 
         data-cat_id = <?php echo $term_id?> 
-        href="<?php get_term_link($term_id,'product_cat')?>">
+        href="<?php echo get_term_link($term_id,'product_cat')?>">
         <?php echo $cat_name?>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path d="M7 17L17 7M7 7h10v10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
