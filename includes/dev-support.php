@@ -14,7 +14,7 @@ function echo_hi() {
 
 // functions.php или плагин
 add_filter( 'do_shortcode_tag', function( $output, $tag, $atts, $m ) {
-    if ( $tag !== 'yith_wcwl_wishlist_after_wishlist_content' ) {
+    if ( $tag !== 'yith_wcwl_wishlist' ) {
         return $output;
     }
 
