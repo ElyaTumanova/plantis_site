@@ -214,3 +214,8 @@ jQuery(document.body).on('wc_fragments_loaded', function() {
     console.debug('Фрагменты корзины обновлены!');
     getAddedPeresadkaMini();
 });
+
+
+$(document).on('yith_wcwl_init', function(){
+    console.log('hello wish');
+});
