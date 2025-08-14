@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 //example, $cat_slug = 'treez-effectory', $link_base = '/product-category/kashpo-treez/', $words_to_remove - words to be removed from menu items
-function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_cat_name=false) { 
+function get_primary_submenu($cat_slug,$words_to_remove = [], $clean_cat_name=false) { 
     $term = get_term_by( 'slug', $cat_slug, 'product_cat' );
     $term_id = $term->term_id;
     $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
@@ -36,8 +36,6 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
                     $name = str_replace($word,'',$name);
                 }
             }
-            //$link = site_url().$link_base. $cat_slug.'/'.$term->slug;
-            //$link = get_term_link($term->term_id,'product_cat');
             ?>
             <a 
                 class="header__main-submenu-item_image" 
