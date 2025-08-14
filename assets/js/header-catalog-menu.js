@@ -116,7 +116,7 @@ azPlantsBtn.addEventListener('click',openAZPlantsList);
 function openAZPlantsList(event) {
     closeAllSubmenu();
     showSubmenu(event);
-    azPlantsBtn.textContent('Назад');
+    azPlantsBtn.textContent = 'Назад';
 }
 
 
