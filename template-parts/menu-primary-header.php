@@ -366,6 +366,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                     <ul class="header__main-submenu_lvl1">
                         <?php get_az_palnts_submenu();?>
                     </ul>
+                    <img class="header__main-submenu-img" loading="lazy" src="<?php echo get_template_directory_uri()?>/images/interior.webp" alt="Plantis.shop">
                 </div>
             </nav>
             <button class='button header__menu-azbtn' data-menu = "menu_az_palnts">Все растения от А до Я</button>
