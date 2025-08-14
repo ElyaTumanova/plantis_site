@@ -101,7 +101,7 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $cats_exclude=[], $
                                             ?>
                                             <li class="catalog__node catalog__node_lvl_3">
                                                 <a 
-                                                    href="<?php echo get_term_link($term_sub_id,'product_cat')?>">
+                                                    href="<?php echo get_term_link($term_sub->term_id,'product_cat')?>">
                                                     <?php echo $name_sub?>
                                                 </a>
                                             </li>
