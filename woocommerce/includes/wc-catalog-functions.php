@@ -346,7 +346,10 @@ function plnt_img_gallery_swiper_init() {
 }
 
 // добавляем класс для swiper к изображениям товара 
-add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
+add_action( 'init', function () {
+    add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
+});
+
 function AddThumbnailClass( $atts, $attachment ) {
 	if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
 		$atts['class'] .= " swiper-slide"; 
