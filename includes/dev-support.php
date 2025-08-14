@@ -6,25 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 // FOR DEV
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 
-add_action('yith_wcwl_wishlist_after_wishlist_content','echo_hi', 50);
-
 function echo_hi() {
 	echo ('hihi');
 }
-
-// functions.php или плагин
-// add_filter( 'do_shortcode_tag', function( $output, $tag, $atts, $m ) {
-//     if ( $tag !== 'yith_wcwl_wishlist' ) {
-//         return $output;
-//     }
-
-//     ob_start();
-//     get_template_part('template-parts/products/products-popular');
-//     $after_html = ob_get_clean();
-
-//     return $output . $after_html;
-// }, 10, 4 );
-
 
 function plnt_dev_functions() {
 
