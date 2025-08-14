@@ -196,8 +196,8 @@
     left: calc((100vw - var(--scrollWidth) - 1300px)/2);
     box-shadow: rgba(20, 20, 20, 0.03) 0px 6px 8px 0px;
 
-    visibility: hidden;
-    opacity: 0;
+    /* visibility: hidden;
+    opacity: 0; */
     transition: all 200ms ease-out;
 
 }
@@ -500,6 +500,15 @@
 
 .menu--onside_show {
     visibility: visible;
+}
+
+/* A to Z button for plants menu */
+.header__menu-azbtn {
+    display: none;
+}
+
+.header__menu-azbtn_show {
+    display: block;
 }
 
 /* info menu */

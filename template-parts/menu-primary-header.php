@@ -363,6 +363,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                     </ul>
                 </div>
             </nav>
+            <button class='header__menu-azbtn header__menu-azbtn_show'>Все растения от А до Я</button>
         </div>
     </div>
 </div>
