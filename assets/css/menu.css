@@ -97,6 +97,7 @@
     column-gap: 30px;
     width: 100%;
     justify-content: start;
+    opacity: 1;
 }
 
 [data-menu = "menu_az_palnts"].header__main-submenu_show {
@@ -112,7 +113,6 @@
     grid-auto-flow: column;
     column-gap: 50px;
     row-gap: 30px;
-    opacity: 1;
 }
 
 [data-menu = "menu_item_treez_plants"].header__main-submenu_show .header__main-submenu_lvl1:nth-child(3) {
