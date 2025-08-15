@@ -80,6 +80,8 @@
 
 .header__main-submenu {
     display: none;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
 [data-menu = "menu_az_palnts"].header__main-submenu {
@@ -101,7 +103,6 @@
     visibility: visible;
     opacity: 1;
     height: fit-content;
-    transition: opacity 1s ease-in-out;
 }
 
 [data-menu = "menu_item_treez_plants"].header__main-submenu_show {
@@ -111,6 +112,7 @@
     grid-auto-flow: column;
     column-gap: 50px;
     row-gap: 30px;
+    opacity: 1;
 }
 
 [data-menu = "menu_item_treez_plants"].header__main-submenu_show .header__main-submenu_lvl1:nth-child(3) {
