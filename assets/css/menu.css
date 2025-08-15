@@ -83,7 +83,7 @@
     height: 0;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    /* transition: opacity 0s ease-in-out; */
 }
 
 /* [data-menu = "menu_az_palnts"].header__main-submenu {
@@ -104,11 +104,12 @@
     opacity: 1;
 }
 
-/* [data-menu = "menu_az_palnts"].header__main-submenu_show {
+[data-menu = "menu_item_plants"].header__main-submenu_show-slow {
     visibility: visible;
     opacity: 1;
     height: fit-content;
-} */
+    transition: opacity 1s ease-in-out;
+}
 
 [data-menu = "menu_item_treez_plants"].header__main-submenu_show {
     display: grid;
