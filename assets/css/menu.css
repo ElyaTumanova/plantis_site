@@ -549,6 +549,7 @@
 
 .header__menu-azbtn_show {
     display: block;
+    border: none;
     background-color: var(--gray);
     color: var(--text);
     padding: 10px 20px;
