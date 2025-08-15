@@ -158,10 +158,10 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             Повод для подарка
                         </li>
                         <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/">В подарок женщине</a>
+                            <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-zhenshchine">В подарок женщине</a>
                         </li>
                         <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/">В подарок мужчине</a>
+                            <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-muzhchine">В подарок мужчине</a>
                         </li>
                         <li class="header__main-submenu-item">
                             <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-yubilej/">На юбилей</a>
@@ -308,19 +308,19 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                         </li>
                         <li class="header__main-submenu-item">
                             <?php
-                                get_primary_submenu('treez-effectory','/product-category/kashpo-treez/',['Treez Effectory ']);
+                                get_primary_submenu('treez-effectory',['Treez Effectory ']);
                             ?>
                         </li>
                         <li class="header__main-submenu-item">
                             <?php
-                                get_primary_submenu('treez-ergo','/product-category/kashpo-treez/', ['Treez Ergo ']);
+                                get_primary_submenu('treez-ergo', ['Treez Ergo ']);
                             ?>
                         </li>
                     </ul>
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
                             <?php
-                                get_primary_submenu('kashpo-lechuza','/product-category/kashpo-lechuza/',['Кашпо Lechuza ']);
+                                get_primary_submenu('kashpo-lechuza',['Кашпо Lechuza ']);
                             ?>
                         </li>
                     </ul>
@@ -337,7 +337,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                                 <li class="header__main-submenu-item">
                                 <?php
                                     $words_to_remove = ['Treez','Искусственные', 'Искусственная', 'Искусственное', 'Искусственный','растения'];
-                                    get_primary_submenu($term->slug,'/product-category/iskusstvennye-rasteniya-treez/',$words_to_remove, true);
+                                    get_primary_submenu($term->slug,$words_to_remove, true);
                                 ?>
                             </li>
                             </ul>
@@ -362,7 +362,14 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                         </li>
                     </ul>
                 </div>
+                <div class="header__main-submenu" data-menu = "menu_az_palnts">
+                    <ul class="header__main-submenu_lvl1">
+                        <?php get_az_palnts_submenu();?>
+                    </ul>
+                </div>
             </nav>
+            <button class='button header__menu-azbtn header__menu-azbtn_open' data-menu = "menu_az_palnts">Все растения от А до Я</button>
+            <button class='button header__menu-azbtn header__menu-azbtn_close' data-menu = "menu_az_palnts">Назад</button>
         </div>
     </div>
 </div>
