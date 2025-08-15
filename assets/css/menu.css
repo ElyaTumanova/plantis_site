@@ -550,7 +550,7 @@
 .header__menu-azbtn_show {
     display: block;
     background-color: var(--gray);
-    color: var(--white);
+    color: var(--text);
     padding: 10px 20px;
     width: 230px;
 }
