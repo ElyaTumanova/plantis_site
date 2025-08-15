@@ -3,8 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-//example, $cat_slug = 'treez-effectory', $link_base = '/product-category/kashpo-treez/', $words_to_remove - words to be removed from menu items
-function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_cat_name=false) { 
+//example, $cat_slug = 'treez-effectory', $words_to_remove - words to be removed from menu items
+function get_primary_submenu($cat_slug,$words_to_remove = [], $clean_cat_name=false) { 
     $term = get_term_by( 'slug', $cat_slug, 'product_cat' );
     $term_id = $term->term_id;
     $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
@@ -21,7 +21,7 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
     <a 
         class ="header__main-submenu-item_accent header__main-submenu-item_arrow header__main-submenu-item_image" 
         data-cat_id = <?php echo $term_id?> 
-        href="<?php echo site_url().$link_base. $cat_slug.'/'?>">
+        href="<?php echo get_term_link($term_id,'product_cat')?>">
         <?php echo $cat_name?>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path d="M7 17L17 7M7 7h10v10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -36,12 +36,11 @@ function get_primary_submenu($cat_slug,$link_base,$words_to_remove = [], $clean_
                     $name = str_replace($word,'',$name);
                 }
             }
-            $link = site_url().$link_base. $cat_slug.'/'.$term->slug;
             ?>
             <a 
                 class="header__main-submenu-item_image" 
                 data-cat_id = <?php echo $term->term_id?> 
-                href="<?php echo $link?>">
+                href="<?php echo get_term_link($term->term_id,'product_cat')?>">
                 <?php echo $name?>
             </a>
             <?
@@ -60,7 +59,7 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $cats_exclude=[], $
     if($levels >= 1):?>
     <li class="catalog__dropdown catalog__node catalog__node_lvl_1">
         <a
-            href="<?php echo site_url().$link_base.'/'. $cat_slug.'/'?>">
+            href="<?php echo get_term_link($term_id,'product_cat')?>">
             <?php echo $cat_name?>
         </a>
         <?php if($levels >= 2):?>
@@ -77,11 +76,10 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $cats_exclude=[], $
                                 $name = str_replace($word,'',$name);
                             }
                         }
-                        $link = site_url().$link_base.'/'. $cat_slug.'/'.$term->slug;
                         ?>
                         <li class="catalog__dropdown catalog__node catalog__node_lvl_2">
                             <a 
-                                href="<?php echo $link?>">
+                                href="<?php echo get_term_link($term->term_id,'product_cat')?>">
                                 <?php echo $name?>
                             </a>
                             <?php if($levels >= 3):?>
@@ -100,11 +98,10 @@ function get_catalog_submenu($cat_slug,$link_base,$levels=1, $cats_exclude=[], $
                                                     $name_sub = str_replace($word,'',$name_sub);
                                                 }
                                             }
-                                            $link_sub = site_url().$link_base. '/'.$cat_slug.'/'.$term->slug.'/'.$term_sub->slug;
                                             ?>
                                             <li class="catalog__node catalog__node_lvl_3">
                                                 <a 
-                                                    href="<?php echo $link_sub?>">
+                                                    href="<?php echo get_term_link($term_sub->term_id,'product_cat')?>">
                                                     <?php echo $name_sub?>
                                                 </a>
                                             </li>
@@ -150,5 +147,30 @@ function plnt_get_menu_cats_image() {
         wp_send_json_success( [ 'image_url' => $image_urls ] );
     } else {
         wp_send_json_error('Image not found');
+    }
+}
+
+
+function get_az_palnts_submenu() {
+    global $plants_cat_id;
+    $lowest_cats = get_lowest_level_product_categories($plants_cat_id); // начиная с корня
+    function sortByName($a, $b) {
+        return strcmp($a->name, $b->name);
+    }
+    usort($lowest_cats, "sortByName");
+    $words_to_remove = [' (Цитрофортунелла)','овая пальма', ' (Кодиеум)', ' (Купрессус)', ' (Седум)', ' (Эриокактус)', ' (Буксус)', ' (Крестовник)', ' (Кентия)', ' Одри'];
+    foreach ( $lowest_cats as $cat ) {
+        $name = $cat ->name;
+        if($words_to_remove) {
+            foreach ($words_to_remove as $word) {
+                $name = str_replace($word,'',$name);
+                $name = str_replace('ковое дерево','а',$name);
+            }
+        }
+        ?>
+        <li class="header__main-submenu-item">
+            <a href="<?php echo get_term_link($cat->term_id,'product_cat')?>"><?php echo $name?></a>
+        </li> 
+        <?php
     }
 }
