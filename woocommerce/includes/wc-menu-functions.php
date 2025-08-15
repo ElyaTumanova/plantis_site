@@ -158,7 +158,7 @@ function get_az_palnts_submenu() {
         return strcmp($a->name, $b->name);
     }
     usort($lowest_cats, "sortByName");
-    $words_to_remove = ['(Цитрофортунелла)'];
+    $words_to_remove = [' (Цитрофортунелла)','овая пальма', ' (Кодиеум)', ' (Купрессус)', ' (Седум)', ' (Эриокактус)', ' (Буксус)', ' (Крестовник)', ' (Кентия)', ' Одри'];
     foreach ( $lowest_cats as $cat ) {
         $name = $cat ->name;
         if($words_to_remove) {
