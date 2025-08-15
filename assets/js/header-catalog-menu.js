@@ -36,7 +36,7 @@ function showSubmenu(menu) {
         azPlantsBtnOpen.classList.remove('header__menu-azbtn_show');
         azPlantsBtnClose.classList.remove('header__menu-azbtn_show');
     }
-    plantsSumbenu.classList.remove('header__main-submenu_show-slow');
+    //plantsSumbenu.classList.remove('header__main-submenu_show-slow');
 }
 
 function closeAllSubmenu() {
