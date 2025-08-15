@@ -101,6 +101,7 @@
     visibility: visible;
     opacity: 1;
     height: fit-content;
+    transition: opacity 1s ease-in-out;
 }
 
 [data-menu = "menu_item_treez_plants"].header__main-submenu_show {
