@@ -82,11 +82,23 @@
     display: none;
 }
 
+[data-menu = "menu_az_palnts"].header__main-submenu {
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+
 .header__main-submenu_show {
     display: flex;
     column-gap: 30px;
     width: 100%;
     justify-content: start;
+}
+
+[data-menu = "menu_az_palnts"].header__main-submenu_show {
+    visibility: visible;
+    opacity: 1;
 }
 
 [data-menu = "menu_item_treez_plants"].header__main-submenu_show {
