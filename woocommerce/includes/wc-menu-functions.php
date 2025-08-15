@@ -164,6 +164,7 @@ function get_az_palnts_submenu() {
         if($words_to_remove) {
             foreach ($words_to_remove as $word) {
                 $name = str_replace($word,'',$name);
+                $name = str_replace('ковое дерево','а',$name);
             }
         }
         ?>
