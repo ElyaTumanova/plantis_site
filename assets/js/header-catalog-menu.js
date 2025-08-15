@@ -135,7 +135,7 @@ function closeAZPlantsList() {
     let plantsSumbenu = headerCatalogWrap.querySelector('[data-menu = "menu_item_plants"]');
     plantsSumbenu.classList.add('header__main-submenu_show-slow');
     showSubmenu('menu_item_plants');
-    //plantsSumbenu.classList.remove('header__main-submenu_show-slow');
+    plantsSumbenu.classList.remove('header__main-submenu_show-slow');
 }
 console.log(headerCatalogWrap.querySelector('[data-menu = "menu_item_plants"]'));
 
