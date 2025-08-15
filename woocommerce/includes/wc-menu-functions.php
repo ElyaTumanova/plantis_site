@@ -160,7 +160,7 @@ function get_az_palnts_submenu() {
     usort($lowest_cats, "sortByName");
     $words_to_remove = ['(Цитрофортунелла)'];
     foreach ( $lowest_cats as $cat ) {
-        $name = $term ->name;
+        $name = $cat ->name;
         if($words_to_remove && $clean_cat_name) {
             foreach ($words_to_remove as $word) {
                 $name = str_replace($word,'',$name);
