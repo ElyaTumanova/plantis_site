@@ -80,33 +80,35 @@
 
 .header__main-submenu {
     display: block;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-[data-menu = "menu_az_palnts"].header__main-submenu {
-    display: block;
     height: 0;
     visibility: hidden;
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
 
+/* [data-menu = "menu_az_palnts"].header__main-submenu {
+    display: block;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+} */
+
 .header__main-submenu_show {
     display: flex;
     column-gap: 30px;
     width: 100%;
     justify-content: start;
+    height: fit-content;
     visibility: visible;
     opacity: 1;
 }
 
-[data-menu = "menu_az_palnts"].header__main-submenu_show {
+/* [data-menu = "menu_az_palnts"].header__main-submenu_show {
     visibility: visible;
     opacity: 1;
     height: fit-content;
-}
+} */
 
 [data-menu = "menu_item_treez_plants"].header__main-submenu_show {
     display: grid;
