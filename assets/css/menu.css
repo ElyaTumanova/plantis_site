@@ -91,7 +91,7 @@
     height: 0;
     visibility: hidden;
     opacity: 0; */
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .header__main-submenu_show {
@@ -112,7 +112,7 @@
     visibility: visible;
     opacity: 1;
     height: fit-content;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
 [data-menu = "menu_item_treez_plants"].header__main-submenu_show {
@@ -549,7 +549,7 @@
 
 .header__menu-azbtn_show {
     display: block;
-    background-color: var(--text);
+    background-color: var(--black-color);
     color: var(--white);
     padding: 10px 20px;
     width: 230px;
