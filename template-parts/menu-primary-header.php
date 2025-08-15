@@ -158,10 +158,10 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             Повод для подарка
                         </li>
                         <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/">В подарок женщине</a>
+                            <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-zhenshchine">В подарок женщине</a>
                         </li>
                         <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/">В подарок мужчине</a>
+                            <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-muzhchine">В подарок мужчине</a>
                         </li>
                         <li class="header__main-submenu-item">
                             <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-yubilej/">На юбилей</a>
