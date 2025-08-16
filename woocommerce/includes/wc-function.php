@@ -8,9 +8,10 @@ if ( ! function_exists( 'ast_breadrumbs_yoast' ) ) {
 	function ast_breadrumbs_yoast() {
 		if ( is_product() || is_product_category() ||is_product_tag() || is_shop() || is_tax('pa_color')) {
 			if ( function_exists( 'yoast_breadcrumb' ) ) {
-				$before      = '<div class="woocommerce-breadcrumb" id="breadcrumbs">';
+				$before      = '<div class="woocommerce-breadcrumb" id="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">';
 				$after       = '</div>';
 				$breadcrumbs = yoast_breadcrumb( $before, $after, true );
+                print_r($breadcrumbs);
 				
 				return $breadcrumbs;
 			}
