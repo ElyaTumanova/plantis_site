@@ -32,6 +32,8 @@ require get_template_directory() . '/includes/dev-support.php';
 require get_template_directory() . '/includes/constants.php';
 /** Add SEO support */
 require get_template_directory() . '/includes/seo-support.php';
+/** Add New Yoast breadcrumd */
+require get_template_directory() . '/includes/yoast-breadcrumb.php';
 /** Add theme support */
 require get_template_directory() . '/includes/theme-support.php';
 /** Enqueue scripts */
