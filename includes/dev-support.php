@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // FOR DEV
-add_filter( 'wpseo_breadcrumb_output', 'wp_kama_wpseo_breadcrumb_output_filter', 10, 2 );
+add_filter( 'wpseo_breadcrumb_output', 'modify_yoast_output', 10, 2 );
 
 /**
  * Function for `wpseo_breadcrumb_output` filter-hook.
@@ -14,11 +14,18 @@ add_filter( 'wpseo_breadcrumb_output', 'wp_kama_wpseo_breadcrumb_output_filter',
  *
  * @return string
  */
-function wp_kama_wpseo_breadcrumb_output_filter( $output, $presentation ){
-    print_r($output);
-	// filter...
-	return $output;
-}
+function modify_yoast_output( $html ) {
+		// Убираем псевдо wrapper
+		$html = str_replace( [ '<wrapper>', '</wrapper>' ], '', $html );
+
+		// Формируем контейнер для li элементов
+		$ul = '<ul itemscope="itemscope" itemtype="https://schema.org/BreadcrumbList" class="breadcrumb">%s</ul>';
+
+		// Вставляем в контейнер li элменты
+		$html = sprintf( $ul, $html );
+
+		return $html;
+	}
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 
 function plnt_dev_functions() {
