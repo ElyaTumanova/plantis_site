@@ -395,6 +395,16 @@
   text-decoration: none;
 }
 
+.footer__contacts-heading {
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-bottom: 15px;
+    color: inherit;
+    margin: 0;
+}
+
 .footer__contacts .contacts-part__wrap {
     margin: 0;
     display: block;

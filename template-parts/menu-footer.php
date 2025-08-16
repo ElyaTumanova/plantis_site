@@ -44,5 +44,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php get_template_part('template-parts/info-pages-list');?>
 </div>
 <div class="footer__contacts">
+    <h3 class="footer__contacts-heading">Контакты</h3>
     <?php get_template_part('template-parts/contacts-part');?>
+    <p class="footer__contacts-adress">г. Москва, ул. Мещерякова, д.3. м. Тушинская</p>
 </div>
