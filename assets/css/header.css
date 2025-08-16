@@ -405,18 +405,6 @@
     margin: 0;
 }
 
-.footer__contacts-adress {
-    font-size: 14px;
-    line-height: 1;
-    font-weight: 400;
-    margin-top: 25px;
-    max-width: 250px;
-}
-
-.footer__contacts-adress a {
-    text-decoration: none;
-}
-
 .footer__contacts .contacts-part__wrap {
     margin: 0;
     display: block;

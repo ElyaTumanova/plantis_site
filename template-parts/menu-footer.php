@@ -45,15 +45,14 @@ $logo = carbon_get_theme_option('logo');
     <?php get_template_part('template-parts/info-pages-list');?>
 </div>
 <div itemscope itemtype="http://schema.org/LocalBusiness" class="footer__contacts">
-    <h3 class="footer__contacts-heading">Контакты</h3>
+    <!-- <h3 class="footer__contacts-heading">Контакты</h3> -->
     <meta itemprop="name" content="Plantis">
     <meta itemprop="image" content="<?php echo $logo ?>">
     <?php get_template_part('template-parts/contacts-part');?>
     <meta itemprop="telephone" content="8 800 201 57 90">
     <meta itemprop="email" content="INFO@PLANTIS.SHOP">
-    <div class="footer__contacts-adress" itemprop = "address" itemscope itemtype="http://schema.org/PostalAddress">
-        <a href="https://yandex.ru/maps/-/CXQ-ErQ" target="_blank" rel="noopener">
-                <span itemprop="streetAddress">г. Москва, ул. Мещерякова, д.3. м.&nbsp;Тушинская</span></a>
+    <div itemprop = "address" itemscope itemtype="http://schema.org/PostalAddress">
+        <meta itemprop="streetAddress" content="г. Москва, ул. Мещерякова, д.3. м. Тушинская">
     </div>
 
 </div>
