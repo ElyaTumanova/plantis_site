@@ -4,6 +4,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // FOR DEV
+
+add_filter( 'wpseo_breadcrumb_single_link', 'wp_kama_wpseo_breadcrumb_single_link_filter', 10, 2 );
+
+/**
+ * Function for `wpseo_breadcrumb_single_link` filter-hook.
+ * 
+ * @param string $link_output The output string.
+ * @param array  $link        The breadcrumb link array.
+ *
+ * @return string
+ */
+function wp_kama_wpseo_breadcrumb_single_link_filter( $link_output, $link ){
+    print_r($link_output);
+	// filter...
+	return $link_output;
+}
+
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 
 function plnt_dev_functions() {

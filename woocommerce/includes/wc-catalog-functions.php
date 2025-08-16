@@ -238,7 +238,6 @@ function plnt_change_breadcrumb_title( $links ) {
                 $link['text'] = "Горшки и кашпо ".$new_text." цвета";
             }
         }
-        // добавляем разметку в schema.org в #breadcrumb
 
         array_push($new_links, $link);
     }
