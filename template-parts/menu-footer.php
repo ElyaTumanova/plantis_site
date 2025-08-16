@@ -52,8 +52,8 @@ $logo = carbon_get_theme_option('logo');
     <meta itemprop="telephone" content="8 800 201 57 90">
     <meta itemprop="email" content="INFO@PLANTIS.SHOP">
     <div class="footer__contacts-adress" itemprop = "address" itemscope itemtype="http://schema.org/PostalAddress">
-        <a href="https://yandex.ru/maps/-/CXQ-ErQ" target="_blank" rel="noopener" itemprop="streetAddress">
-                г. Москва, ул. Мещерякова, д.3. м.&nbsp;Тушинская</a>
+        <a href="https://yandex.ru/maps/-/CXQ-ErQ" target="_blank" rel="noopener">
+                <span itemprop="streetAddress">г. Москва, ул. Мещерякова, д.3. м.&nbsp;Тушинская</span></a>
     </div>
 
 </div>
