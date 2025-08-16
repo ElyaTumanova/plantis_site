@@ -16,7 +16,7 @@ add_filter( 'wpseo_breadcrumb_output_wrapper', 'wp_kama_wpseo_breadcrumb_output_
  */
 function wp_kama_wpseo_breadcrumb_output_wrapper_filter( $string ){
     print_r($string);
-    $string = 'span itemscope' 
+    $string = 'span itemscope';
 	// filter...
 	return $string;
 }
