@@ -15,14 +15,8 @@ add_filter( 'wpseo_breadcrumb_output', 'modify_yoast_output', 10, 2 );
  * @return string
  */
 function modify_yoast_output( $html ) {
-		// Убираем псевдо wrapper
-		$html = str_replace( [ '<wrapper>', '</wrapper>' ], '', $html );
+    print_r($html);
 
-		// Формируем контейнер для li элементов
-		$ul = '<ul itemscope="itemscope" itemtype="https://schema.org/BreadcrumbList" class="breadcrumb">%s</ul>';
-
-		// Вставляем в контейнер li элменты
-		$html = sprintf( $ul, $html );
 
 		return $html;
 	}
