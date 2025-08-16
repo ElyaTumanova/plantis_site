@@ -2,6 +2,27 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+
+//убираем стандартные крошки WC
+remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
+
+
+//Хлебные крошки #breadcrumb от Yoast
+// if ( ! function_exists( 'ast_breadrumbs_yoast' ) ) {
+// 	add_action( 'woocommerce_before_main_content', 'ast_breadrumbs_yoast', 10 );
+// 	function ast_breadrumbs_yoast() {
+// 		if ( is_product() || is_product_category() ||is_product_tag() || is_shop() || is_tax('pa_color')) {
+// 			if ( function_exists( 'yoast_breadcrumb' ) ) {
+// 				$before      = '<div class="woocommerce-breadcrumb" id="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">';
+// 				$after       = '</div>';
+// 				$breadcrumbs = yoast_breadcrumb( $before, $after, true );
+				
+// 				return $breadcrumbs;
+// 			}
+// 		}
+// 	}
+// }
+
 /**
  * Изменяет хлебные крошки Yoast.
  *
@@ -121,4 +142,22 @@ function plnt_breadrumbs_yoast() {
     if ( is_product() || is_product_category() ||is_product_tag() || is_shop() || is_tax('pa_color')) {
         do_action('pretty_breadcrumb');
     }
+}
+
+
+// //Изменение заголовка в хлебных крошках Yoast SEO #breadcrumb
+add_filter( 'wpseo_breadcrumb_links', 'plnt_change_breadcrumb_title', 10, 2 );
+function plnt_change_breadcrumb_title( $links ) {
+    $new_links = [];
+    foreach($links as $link) {
+        if(array_key_exists('taxonomy', $link)){
+            if ($link['taxonomy'] == 'pa_color') {
+                $new_text = plnt_get_color_name_tltle($link['text']);
+                $link['text'] = "Горшки и кашпо ".$new_text." цвета";
+            }
+        }
+
+        array_push($new_links, $link);
+    }
+	return $new_links;
 }

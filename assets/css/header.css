@@ -10,6 +10,12 @@
 
 .header__breadcrumb, .woocommerce-breadcrumb {
     font-size: 14px;
+    display: flex;
+    column-gap: 3px;
+}
+
+.woocommerce-breadcrumb .active {
+    font-weight: 700;
 }
 
 @media (max-width: 1279px) {

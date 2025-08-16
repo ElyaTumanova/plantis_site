@@ -226,23 +226,6 @@ function plnt_woocommerce_page_title($page_title) {
 	}
 }
 
-// //Изменение заголовка в хлебных крошках Yoast SEO #breadcrumb
-add_filter( 'wpseo_breadcrumb_links', 'plnt_change_breadcrumb_title', 10, 2 );
-function plnt_change_breadcrumb_title( $links ) {
-    $new_links = [];
-    foreach($links as $link) {
-        if(array_key_exists('taxonomy', $link)){
-            if ($link['taxonomy'] == 'pa_color') {
-                $new_text = plnt_get_color_name_tltle($link['text']);
-                $link['text'] = "Горшки и кашпо ".$new_text." цвета";
-            }
-        }
-
-        array_push($new_links, $link);
-    }
-	return $new_links;
-}
-
 
 function plnt_get_color_name_tltle($text) {
     $new_text;
