@@ -229,6 +229,7 @@ function plnt_woocommerce_page_title($page_title) {
 // //Изменение заголовка в хлебных крошках Yoast SEO #breadcrumb
 add_filter( 'wpseo_breadcrumb_links', 'plnt_change_breadcrumb_title', 10, 2 );
 function plnt_change_breadcrumb_title( $links ) {
+    print_r($links);
     $new_links = [];
     foreach($links as $link) {
         if(array_key_exists('taxonomy', $link)){
