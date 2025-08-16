@@ -5,22 +5,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
-add_filter( 'wpseo_breadcrumb_single_link', 'wp_kama_wpseo_breadcrumb_single_link_filter', 10, 2 );
+add_filter( 'wpseo_breadcrumb_output_wrapper', 'wp_kama_wpseo_breadcrumb_output_wrapper_filter' );
 
 /**
- * Function for `wpseo_breadcrumb_single_link` filter-hook.
+ * Function for `wpseo_breadcrumb_output_wrapper` filter-hook.
  * 
- * @param string $link_output The output string.
- * @param array  $link        The breadcrumb link array.
+ * @param  $string 
  *
- * @return string
+ * @return 
  */
-function wp_kama_wpseo_breadcrumb_single_link_filter( $link_output, $link ){
-    print_r($link_output);
+function wp_kama_wpseo_breadcrumb_output_wrapper_filter( $string ){
+    print_r($string);
 	// filter...
-	return $link_output;
+	return $string;
 }
-
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 
 function plnt_dev_functions() {
