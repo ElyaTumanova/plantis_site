@@ -11,14 +11,12 @@ if ( ! function_exists( 'ast_breadrumbs_yoast' ) ) {
 				$before      = '<div class="woocommerce-breadcrumb" id="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">';
 				$after       = '</div>';
 				$breadcrumbs = yoast_breadcrumb( $before, $after, true );
-                print_r($breadcrumbs);
 				
 				return $breadcrumbs;
 			}
 		}
 	}
 }
-
 
 
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );

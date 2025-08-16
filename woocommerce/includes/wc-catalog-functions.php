@@ -229,6 +229,7 @@ function plnt_woocommerce_page_title($page_title) {
 // //Изменение заголовка в хлебных крошках Yoast SEO #breadcrumb
 add_filter( 'wpseo_breadcrumb_links', 'plnt_change_breadcrumb_title', 10, 2 );
 function plnt_change_breadcrumb_title( $links ) {
+    print_r($links);
     $new_links = [];
     foreach($links as $link) {
         if(array_key_exists('taxonomy', $link)){
@@ -237,6 +238,8 @@ function plnt_change_breadcrumb_title( $links ) {
                 $link['text'] = "Горшки и кашпо ".$new_text." цвета";
             }
         }
+        // добавляем разметку в schema.org в #breadcrumb
+
         array_push($new_links, $link);
     }
 	return $new_links;
@@ -720,7 +723,6 @@ add_action('wp_head', 'add_custom_canonical_tags');
 add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
 
 function plnt_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
-    print_r($crumbs);
 	foreach ( $crumbs as $crumb ) {
 		if (str_contains($crumb[0], 'Товары с меткой ')) {
 			$key = array_search($crumb, $crumbs);
