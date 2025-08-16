@@ -4,21 +4,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // FOR DEV
-
-add_filter( 'wpseo_breadcrumb_output_wrapper', 'wp_kama_wpseo_breadcrumb_output_wrapper_filter' );
+add_filter( 'wpseo_breadcrumb_output', 'wp_kama_wpseo_breadcrumb_output_filter', 10, 2 );
 
 /**
- * Function for `wpseo_breadcrumb_output_wrapper` filter-hook.
+ * Function for `wpseo_breadcrumb_output` filter-hook.
  * 
- * @param  $string 
+ * @param string                 $output       The HTML output.
+ * @param Indexable_Presentation $presentation The presentation of an indexable.
  *
- * @return 
+ * @return string
  */
-function wp_kama_wpseo_breadcrumb_output_wrapper_filter( $string ){
-    print_r($string);
-    $string = 'span itemscope';
+function wp_kama_wpseo_breadcrumb_output_filter( $output, $presentation ){
+    print_r($output);
 	// filter...
-	return $string;
+	return $output;
 }
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 
