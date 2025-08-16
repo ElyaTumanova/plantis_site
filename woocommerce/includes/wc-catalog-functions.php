@@ -700,26 +700,6 @@ function add_custom_canonical_tags() {
 // Добавляем действие в WordPress, чтобы выполнить функцию при выводе тегов в head
 add_action('wp_head', 'add_custom_canonical_tags');
 
-// изменяем названия меток на подборки для хлебных крошек #breadcrumb
-add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
-
-function plnt_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
-	foreach ( $crumbs as $crumb ) {
-		if (str_contains($crumb[0], 'Товары с меткой ')) {
-			$key = array_search($crumb, $crumbs);
-			$newstring = str_replace('Товары с меткой ', "Товары из подборки ", $crumb[0]);
-
-			$replacements = array(0 => $newstring);
-
-			$crumbNew = array_replace($crumb, $replacements);
-			$replacements2 = array($key => $crumbNew);
-			$crumbsNew = array_replace($crumbs, $replacements2);
-			$crumbs = $crumbsNew;
-		}
-	}
-
-	return $crumbs;
-}
 
 // меняем rel для ссылки добавления товаров в корзину #seo
 

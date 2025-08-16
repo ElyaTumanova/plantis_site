@@ -139,7 +139,7 @@ new Pretty_Breadcrumb();
 
 add_action( 'woocommerce_before_main_content', 'plnt_breadrumbs_yoast', 10 );
 function plnt_breadrumbs_yoast() {
-    if ( is_product() || is_product_category() ||is_product_tag() || is_shop() || is_tax('pa_color')) {
+    if ( is_product() || is_product_category() ||is_product_tag() || is_shop() || is_tax()) {
         do_action('pretty_breadcrumb');
     }
 }
@@ -161,3 +161,25 @@ function plnt_change_breadcrumb_title( $links ) {
     }
 	return $new_links;
 }
+
+// старый код для стандарта WC
+// изменяем названия меток на подборки для хлебных крошек #breadcrumb
+// add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
+
+// function plnt_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
+// 	foreach ( $crumbs as $crumb ) {
+// 		if (str_contains($crumb[0], 'Товары с меткой ')) {
+// 			$key = array_search($crumb, $crumbs);
+// 			$newstring = str_replace('Товары с меткой ', "Товары из подборки ", $crumb[0]);
+
+// 			$replacements = array(0 => $newstring);
+
+// 			$crumbNew = array_replace($crumb, $replacements);
+// 			$replacements2 = array($key => $crumbNew);
+// 			$crumbsNew = array_replace($crumbs, $replacements2);
+// 			$crumbs = $crumbsNew;
+// 		}
+// 	}
+
+// 	return $crumbs;
+// }
