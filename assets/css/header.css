@@ -410,6 +410,9 @@
     line-height: 1;
     font-weight: 400;
     margin-top: 25px;
+}
+
+.footer__contacts-adress a {
     text-decoration: none;
 }
 

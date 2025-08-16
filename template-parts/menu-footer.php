@@ -46,6 +46,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="footer__contacts">
     <h3 class="footer__contacts-heading">Контакты</h3>
     <?php get_template_part('template-parts/contacts-part');?>
-    <a class="footer__contacts-adress" href="https://yandex.ru/maps/-/CXQ-ErQ" target="_blank" rel="noopener">
-            г. Москва, ул. Мещерякова, д.3. м. Тушинская</a>
+    <div class="footer__contacts-adress">
+        <a href="https://yandex.ru/maps/-/CXQ-ErQ" target="_blank" rel="noopener">
+                г. Москва, ул. Мещерякова, д.3. м. Тушинская</a>
+    </div>
+
 </div>
