@@ -4,23 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // FOR DEV
-add_filter( 'wpseo_breadcrumb_output', 'modify_yoast_output', 10, 2 );
-
-/**
- * Function for `wpseo_breadcrumb_output` filter-hook.
- * 
- * @param string                 $output       The HTML output.
- * @param Indexable_Presentation $presentation The presentation of an indexable.
- *
- * @return string
- */
-function modify_yoast_output( $html ) {
-    print_r($html);
 
 
-		return $html;
-	}
-//add_action( 'wp_footer', 'plnt_dev_functions' );
 
 function plnt_dev_functions() {
 
