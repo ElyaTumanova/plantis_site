@@ -405,6 +405,13 @@
     margin: 0;
 }
 
+.footer__contacts-adress {
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 400;
+    margin-top: 25px;
+}
+
 .footer__contacts .contacts-part__wrap {
     margin: 0;
     display: block;
