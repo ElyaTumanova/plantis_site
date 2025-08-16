@@ -720,6 +720,7 @@ add_action('wp_head', 'add_custom_canonical_tags');
 add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
 
 function plnt_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
+    print_r($crumbs);
 	foreach ( $crumbs as $crumb ) {
 		if (str_contains($crumb[0], 'Товары с меткой ')) {
 			$key = array_search($crumb, $crumbs);
