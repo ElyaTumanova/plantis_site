@@ -55,5 +55,4 @@
 
 <?php
     get_template_part( 'template-parts/heading' );
-    do_action('pretty_breadcrumb');
 ?>
