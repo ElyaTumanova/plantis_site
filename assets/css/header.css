@@ -410,6 +410,7 @@
     line-height: 1;
     font-weight: 400;
     margin-top: 25px;
+    text-decoration: none;
 }
 
 .footer__contacts .contacts-part__wrap {
