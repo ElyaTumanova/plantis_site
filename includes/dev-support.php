@@ -4,6 +4,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // FOR DEV
+add_action( 'wp_footer', 'plnt_echo_smth' );
+
+
+function plnt_echo_smth() {
+    ob_start();
+    woocommerce_product_archive_description();
+    $desc = trim( ob_get_clean() );
+    print_r($desc);
+}
+
 
 function plnt_dev_functions() {
 
