@@ -292,7 +292,7 @@ add_filter('woocommerce_product_loop_start', function ($html) {
     if($thumbnail_url) {
         $html .= '<meta itemprop="image" content="' . $thumbnail_url . '" />' . "\n";
     } else {
-        $html .= '<meta itemprop="image" content="' . get_template_directory_uri() . '/images/interior.webp'" />' . "\n";
+        $html .= '<meta itemprop="image" content="' . get_template_directory_uri() . '/images/interior.webp" />' . "\n";
     }
 
     
