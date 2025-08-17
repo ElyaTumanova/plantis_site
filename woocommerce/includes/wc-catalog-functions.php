@@ -295,8 +295,6 @@ add_filter('woocommerce_product_loop_start', function ($html) {
         $html .= '<meta itemprop="image" content="' . get_template_directory_uri() . '/images/interior.webp" />' . "\n";
     }
 
-    
-
     return $html;
 }, 10);
 
@@ -318,7 +316,7 @@ function plnt_get_advantages() {
 remove_action( 'woocommerce_shop_loop_item_title','woocommerce_template_loop_product_title', 10 );
 add_action('woocommerce_shop_loop_item_title', 'soChangeProductsTitle', 10 );
 function soChangeProductsTitle() {
-    echo '<div class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div>';
+    echo '<div itemprop="name" class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div>';
 }
 
 //оформление карточки товара в каталоге

@@ -4,7 +4,7 @@
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/content-product.php.
  * 
- *  MODIFIED FOR PLANTIS_THEME (for berocket wish list integration only)
+ *  MODIFIED FOR PLANTIS_THEME
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -25,9 +25,8 @@ global $product;
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
-$id = $product->get_id();
 ?>
-<li <?php wc_product_class( '', $product ); ?> data-id="<?php echo $id; ?>"> 
+<li <?php wc_product_class( '', $product ); ?>> 
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
