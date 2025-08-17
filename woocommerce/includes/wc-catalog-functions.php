@@ -274,7 +274,16 @@ add_filter('woocommerce_product_loop_start', function ($html) {
     );
 
     $html .= '<meta itemprop="name" content="' . woocommerce_page_title(false) . '" />' . "\n";
-    $html .= '<meta itemprop="description" content="' . woocommerce_product_archive_description() . '" />' . "\n";
+
+    ob_start();
+    woocommerce_product_archive_description();
+    $desc = trim( ob_get_clean() );
+
+    if ( $desc ) {
+        $html .= '<meta itemprop="description" content="' . esc_attr( wp_strip_all_tags( $desc ) ) . '" />' . "\n";
+    } else {
+        $html .= '<meta itemprop="description" content="' . woocommerce_page_title(false) . '" />' . "\n";
+    }
 
     return $html;
 }, 10);
