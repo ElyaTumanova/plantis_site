@@ -268,7 +268,7 @@ add_filter('woocommerce_product_loop_start', function ($html) {
     // Добавим attributes itemscope/itemtype к UL/DIV.products
     $html = preg_replace(
         '/<ul\s+class="products([^"]*)"/',
-        '<ul itemscope itemtype="https://schema.org/ItemList" class="products$1"',
+        '<ul itemscope itemtype="https://schema.org/OfferCatalog" class="products$1"',
         $html,
         1
     );
