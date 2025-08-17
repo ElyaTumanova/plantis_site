@@ -45,7 +45,7 @@ $logo = carbon_get_theme_option('logo');
     <?php get_template_part('template-parts/info-pages-list');?>
 </div>
 <div itemscope itemtype="https://schema.org/Florist" class="footer__contacts">
-    <!-- <h3 class="footer__contacts-heading">Контакты</h3> -->
+     <!-- Schema.org -->
     <meta itemprop="name" content="Интернет-магазин комнатных растений в Москве - Plantis">
     <meta itemprop="image" content="<?php echo $logo ?>">
     <?php get_template_part('template-parts/contacts-part');?>
@@ -56,5 +56,6 @@ $logo = carbon_get_theme_option('logo');
         <meta itemprop="addressLocality" content="г. Москва">
         <meta itemprop="streetAddress" content="ул. Мещерякова, д.3.">
     </div>
+    <!-- /Schema.org -->
 
 </div>

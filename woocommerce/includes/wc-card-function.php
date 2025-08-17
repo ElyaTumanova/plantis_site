@@ -17,7 +17,7 @@ function plnt_set_constants() {
   }
 }
 
-//обертки для card grid
+//обертки для card grid + schema.org
 add_action('woocommerce_before_single_product_summary','plnt_card_grid_start',5);
 
 function plnt_card_grid_start () {
@@ -213,7 +213,7 @@ function plnt_product_gallery( $options ) {
 	return $options;
 };
 
-//цена и кнопка в корзину, кнопка в избранное
+//цена и кнопка в корзину, кнопка в избранное + schema.org
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 remove_action('woocommerce_before_single_product','woocommerce_output_all_notices', 10); /* убрать уведомления woocommerce*/
@@ -397,7 +397,7 @@ function truemisha_quantity_minus() {
     } 
 };
 
-// мета данные товара
+// мета данные товара артикул + schema.org
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 add_action( 'woocommerce_single_product_summary', 'plnt_product_artikul', 40 );
 

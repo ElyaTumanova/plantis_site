@@ -260,12 +260,13 @@ function plnt_attribute_seo_title($title) {
     return $title;
 }
 
-add_filter('woocommerce_product_loop_start', function ($html) {
+// добавляем атрибуты schema.org
+add_filter('woocommerce_product_loop_start', 'plnt_get_catalog_list_schema',10);
+
+function plnt_get_catalog_list_schema_data ($html) {
     if ( ! (is_shop() || is_product_category() || is_product_tag() || is_tax()) ) {
         return $html;
     }
-
-    // Добавим attributes itemscope/itemtype к UL/DIV.products
     $html = preg_replace(
         '/<ul\s+class="products([^"]*)"/',
         '<ul itemscope itemtype="https://schema.org/OfferCatalog" class="products$1"',
@@ -275,16 +276,13 @@ add_filter('woocommerce_product_loop_start', function ($html) {
 
     $ctx = wc_get_catalog_context();
 
-    $html .= '<meta itemprop="name" content="' . $ctx['title'] . '" />' . "\n";
-    
-    
+    $html .= '<meta itemprop="name" content="' . $ctx['title'] . '" />' . "\n"; 
     
     if ( $ctx['desc'] ) {
         $html .= '<meta itemprop="description" content="' . $ctx['desc'] . '" />' . "\n";
     } else {
         $html .= '<meta itemprop="description" content="' . $ctx['title'] . '" />' . "\n";
     }
-    
 
     $thumbnail_id = get_term_meta( $ctx['term']->term_id, 'thumbnail_id', true );
     $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
@@ -296,7 +294,7 @@ add_filter('woocommerce_product_loop_start', function ($html) {
     }
 
     return $html;
-}, 10);
+};
 
 // описание категории и преимущества в каталоге
 
@@ -311,7 +309,7 @@ function plnt_get_advantages() {
 #Card in Catalog design
 --------------------------------------------------------------*/
 
-//название товара - меняем тег h2
+//название товара - меняем тег h2 + schema.org
 
 remove_action( 'woocommerce_shop_loop_item_title','woocommerce_template_loop_product_title', 10 );
 add_action('woocommerce_shop_loop_item_title', 'soChangeProductsTitle', 10 );
@@ -461,7 +459,6 @@ function plnt_get_catalog_schema_data() {
     $product_id = $product->get_id();
     $price = number_format($product->get_price(), 2, '.', '');
     ?>
-        <!--В поле description указывается описание товара.-->
         <meta itemprop="description" content="<?php echo $product->get_description()?>">
         <link itemprop="url" href="<?php echo get_permalink( $product_id )?>">
         <meta itemprop="price" content="<?php echo $price?>">
