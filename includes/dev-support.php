@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // FOR DEV
-//add_action( 'wp_footer', 'plnt_echo_smth' );
+add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
@@ -12,7 +12,10 @@ function plnt_echo_smth() {
     $ctx = wc_get_catalog_context();
 
     print_r($ctx);
-    echo ("<!-- Timing: wc_get_catalog_context = " . round((microtime(true) - $start) * 1000, 2) . " ms -->");
+    echo ("Timing: wc_get_catalog_context = " . round((microtime(true) - $start) * 1000, 2) . " ms" );
+
+    // $thumbnail_id = get_term_meta( $id, 'thumbnail_id', true );
+    // $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
 }
 
 

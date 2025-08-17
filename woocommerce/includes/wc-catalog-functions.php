@@ -276,14 +276,17 @@ add_filter('woocommerce_product_loop_start', function ($html) {
     $ctx = wc_get_catalog_context();
 
     $html .= '<meta itemprop="name" content="' . $ctx['title'] . '" />' . "\n";
-
-  
-
+    
+    
+    
     if ( $ctx['desc'] ) {
         $html .= '<meta itemprop="description" content="' . $ctx['desc'] . '" />' . "\n";
     } else {
         $html .= '<meta itemprop="description" content="' . $ctx['title'] . '" />' . "\n";
     }
+    
+    $html .= '<meta itemprop="image" content="' . . '" />' . "\n";
+    
 
     return $html;
 }, 10);
