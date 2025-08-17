@@ -128,7 +128,7 @@ function wc_get_catalog_context() {
         return $ctx;
     }
 
-    if ( is_product_search() ) {
+    if ( is_search() ) {
         $ctx['type']  = 'search';
         $ctx['title'] = sprintf(__('Search results for “%s”','woocommerce'), get_search_query());
         return $ctx;
