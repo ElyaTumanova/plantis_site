@@ -100,6 +100,60 @@ function plnt_set_backorders_date() {
 
         return $lowest_level_cats;
     }
+
+/**
+ * Вернёт контекст текущего каталога WooCommerce.
+ * Определяет: магазин, категория, метка, любая таксономия товаров, поиск и т.п.
+ */
+function wc_get_catalog_context() {
+    $ctx = [
+        'type'     => 'other', // shop|product_cat|product_tag|product_tax|search|other
+        'taxonomy' => null,    // 'product_cat' / 'product_tag' / 'pa_color' / 'product_brand' и т.д.
+        'term'     => null,    // объект WP_Term (если есть)
+        'title'    => '',
+        'desc'     => '',
+        'is_paged' => is_paged(),
+    ];
+
+    if ( is_shop() || is_post_type_archive('product') ) {
+        $ctx['type']  = 'shop';
+        $shop_id = wc_get_page_id('shop');
+        if ( $shop_id && $shop_id > 0 ) {
+            $ctx['title'] = get_the_title($shop_id);
+            $desc = get_post_field('post_excerpt', $shop_id) ?: get_post_field('post_content', $shop_id);
+            $ctx['desc']  = $desc ? wp_strip_all_tags( apply_filters('the_content', $desc) ) : '';
+        } else {
+            $ctx['title'] = post_type_archive_title('', false);
+        }
+        return $ctx;
+    }
+
+    if ( is_product_search() ) {
+        $ctx['type']  = 'search';
+        $ctx['title'] = sprintf(__('Search results for “%s”','woocommerce'), get_search_query());
+        return $ctx;
+    }
+
+    // Любая таксономия товаров (включая product_cat, product_tag, атрибуты pa_*, кастомные таксы)
+    if ( is_product_taxonomy() ) {
+        $term = get_queried_object(); // WP_Term
+        if ( $term instanceof WP_Term ) {
+            $ctx['term']     = $term;
+            $ctx['taxonomy'] = $term->taxonomy;
+            // Подтипы
+            if ( is_product_category() )      { $ctx['type'] = 'product_cat'; }
+            elseif ( is_product_tag() )       { $ctx['type'] = 'product_tag'; }
+            else                              { $ctx['type'] = 'product_tax'; } // например, pa_color, product_brand
+
+            $ctx['title'] = $term->name;
+            $ctx['desc']  = wp_strip_all_tags( term_description($term, $term->taxonomy) );
+        }
+        return $ctx;
+    }
+
+    return $ctx; // не магазин и не архив товаров
+}
+
 /*--------------------------------------------------------------
 # HELPERS for cart & checkout
 --------------------------------------------------------------*/

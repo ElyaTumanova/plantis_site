@@ -8,10 +8,9 @@ add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
-    ob_start();
-    woocommerce_product_archive_description();
-    $desc = trim( ob_get_clean() );
-    print_r($desc);
+    $ctx = wc_get_catalog_context();
+
+    print_r($ctx);
 }
 
 
