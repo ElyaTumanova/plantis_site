@@ -5,8 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
-
-
 function plnt_dev_functions() {
 
 	global $plants_treez_cat_id;
