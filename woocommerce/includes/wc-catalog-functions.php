@@ -285,7 +285,7 @@ add_filter('woocommerce_product_loop_start', function ($html) {
         $html .= '<meta itemprop="description" content="' . $ctx['title'] . '" />' . "\n";
     }
     
-    $html .= '<meta itemprop="image" content="' . . '" />' . "\n";
+    // $html .= '<meta itemprop="image" content="' . . '" />' . "\n";
     
 
     return $html;
