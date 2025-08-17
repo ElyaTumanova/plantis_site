@@ -462,7 +462,7 @@ function plnt_get_catalog_schema_data() {
     $price = number_format($product->get_price(), 2, '.', '');
     ?>
         <!--В поле description указывается описание товара.-->
-        <span itemprop="description"><?php echo $product->get_description()?></span>
+        <meta itemprop="description" content="<?php echo $product->get_description()?>">
         <link itemprop="url" href="<?php echo get_permalink( $product_id )?>">
         <meta itemprop="price" content="<?php echo $price?>">
         <meta itemprop="priceCurrency" content="RUB">
