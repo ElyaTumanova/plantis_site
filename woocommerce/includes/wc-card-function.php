@@ -351,28 +351,6 @@ function plnt_get_add_to_card() {
     } 
 };
 
-function plnt_check_stock_status() {
-    global $product;
-    global $parentCatId;
-    global $plants_cat_id;
-
-    if ($parentCatId === $plants_cat_id) {
-        if ( $product->get_stock_status() ==='instock' ) {
-            ?>
-            <div class="card__stockstatus card__stockstatus_in">Доставка от 2-х часов</div>
-            <?php
-        } else if ($product->backorders_allowed() && $product->get_stock_quantity() <= 0) {
-            ?>
-            <div class="card__stockstatus card__stockstatus_backorder">Доставка 10 — 14 дней</div>
-            <?php
-        } else {
-            ?>
-            <div class="card__stockstatus card__stockstatus_out">Под заказ</div>
-            <?php
-        }
-    }
-}
-
 function plnt_outofstock_btn() {
     global $product;
     if ( $product->get_stock_status() ==='outofstock') {

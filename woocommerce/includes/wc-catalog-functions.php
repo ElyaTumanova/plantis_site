@@ -452,6 +452,26 @@ function plnt_add_class_loop_item_swiper($clasess){
 	return $clasess;
 }
 
+
+//вывод данных для Schema.org 
+add_action('woocommerce_after_shop_loop_item', 'plnt_get_catalog_schema_data', 40);
+
+function plnt_get_catalog_schema_data() {
+    ?>
+        <!--В поле description указывается описание товара.-->
+         <span itemprop="description">Описание товара</span>
+         <!--В поле url указывается ссылка на страницу товара.-->
+         <link itemprop="url" href="www.example.com/product/1">
+         <!--В поле image указывается ссылка на картинку товара.-->
+         <img src="http://www.example.com/image1.jpg" itemprop="image">
+         <!--В поле price указывается цена товара.-->
+         <meta itemprop="price" content="7150.00">
+         <!--В поле priceCurrency указывается валюта.-->
+         <meta itemprop="priceCurrency" content="RUB">
+         <!--В поле availability указывается информация о доступности товара для заказа.-->
+         <link itemprop="availability" href="http://schema.org/InStock">
+    <?php
+}
 /*--------------------------------------------------------------
 #Catalog Functions
 --------------------------------------------------------------*/
