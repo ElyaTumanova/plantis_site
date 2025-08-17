@@ -278,6 +278,7 @@ add_filter('woocommerce_product_loop_start', function ($html) {
     ob_start();
     woocommerce_product_archive_description();
     $desc = trim( ob_get_clean() );
+    print_r($desc);
 
     if ( $desc ) {
         $html .= '<meta itemprop="description" content="' . esc_attr( wp_strip_all_tags( $desc ) ) . '" />' . "\n";
