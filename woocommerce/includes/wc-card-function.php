@@ -257,7 +257,6 @@ function plnt_price_wrap(){
     global $plants_cat_id;
 
     $price = number_format($product->get_price(), 2, '.', '');
-    $stock_status = $product->get_stock_status();
     ?>
     <div class="card__price-wrap">
         <div class = "card__add-to-cart-wrap" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
