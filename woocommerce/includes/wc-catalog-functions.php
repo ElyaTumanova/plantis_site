@@ -285,7 +285,11 @@ add_filter('woocommerce_product_loop_start', function ($html) {
         $html .= '<meta itemprop="description" content="' . $ctx['title'] . '" />' . "\n";
     }
     
-    // $html .= '<meta itemprop="image" content="' . . '" />' . "\n";
+
+    $thumbnail_id = get_term_meta( $ctx['term']->term_id, 'thumbnail_id', true );
+    $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
+
+    $html .= '<meta itemprop="image" content="' . $thumbnail_url . '" />' . "\n";
     
 
     return $html;
