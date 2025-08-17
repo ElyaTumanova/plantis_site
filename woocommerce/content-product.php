@@ -4,7 +4,7 @@
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/content-product.php.
  * 
- *  MODIFIED FOR PLANTIS_THEME
+ *  MODIFIED FOR PLANTIS_THEME (for Schema.org)
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -26,7 +26,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<li <?php wc_product_class( '', $product ); ?>> 
+<li <?php wc_product_class( '', $product ); ?> itemprop="itemListElement" itemscope itemtype="https://schema.org/Offer"> 
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
