@@ -8,9 +8,11 @@ add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
+    $start = microtime(true);
     $ctx = wc_get_catalog_context();
 
     print_r($ctx);
+    echo "<!-- Timing: wc_get_catalog_context = " . round((microtime(true) - $start) * 1000, 2) . " ms -->";
 }
 
 
