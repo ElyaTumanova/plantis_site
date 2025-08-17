@@ -273,8 +273,9 @@ add_filter('woocommerce_product_loop_start', function ($html) {
         1
     );
 
-    $html .= '<meta itemprop="name" content="'woocommerce_page_title();'">
-   <meta itemprop="description" content="Описание каталога">';
+    $html .= '<meta itemprop="name" content="' . woocommerce_page_title(false) . '" />' . "\n";
+    $html .= '<meta itemprop="description" content="Описание каталога" />' . "\n";
+
 
     return $html;
 }, 10);
