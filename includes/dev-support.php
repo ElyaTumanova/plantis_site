@@ -12,7 +12,7 @@ function plnt_echo_smth() {
     $ctx = wc_get_catalog_context();
 
     print_r($ctx);
-    echo "<!-- Timing: wc_get_catalog_context = " . round((microtime(true) - $start) * 1000, 2) . " ms -->";
+    echo ("<!-- Timing: wc_get_catalog_context = " . round((microtime(true) - $start) * 1000, 2) . " ms -->");
 }
 
 
