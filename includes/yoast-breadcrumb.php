@@ -152,7 +152,7 @@ function plnt_change_breadcrumb_title( $links ) {
     foreach($links as $link) {
         if(array_key_exists('taxonomy', $link)){
             if ($link['taxonomy'] == 'pa_color') {
-                $new_text = plnt_get_color_name_tltle($link['text']);
+                $new_text = plnt_get_color_name_title($link['text']);
                 $link['text'] = "Горшки и кашпо ".$new_text." цвета";
             }
         }

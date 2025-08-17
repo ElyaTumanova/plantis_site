@@ -202,7 +202,7 @@ add_filter( 'woocommerce_page_title', 'plnt_attribute_page_title',10);
 
 function plnt_attribute_page_title($page_title) {
     if ( is_tax('pa_color') ) {
-        $new_text = plnt_get_color_name_tltle($page_title);
+        $new_text = plnt_get_color_name_title($page_title);
         $page_title = "Горшки и кашпо ".$new_text." цвета";
 		return $page_title;
     }
@@ -227,7 +227,7 @@ function plnt_woocommerce_page_title($page_title) {
 }
 
 
-function plnt_get_color_name_tltle($text) {
+function plnt_get_color_name_title($text) {
     $new_text;
     switch($text) {
         case 'Серебро':
@@ -248,7 +248,7 @@ add_filter('wpseo_title', 'plnt_attribute_seo_title');
 
 function plnt_attribute_seo_title($title) {
     if ( is_tax('pa_color') ) {
-        $new_text = plnt_get_color_name_tltle($title);
+        $new_text = plnt_get_color_name_title($title);
         $title = "Горшки и кашпо ".$new_text." цвета – купить с доставкой в Москве в интернет-магазине – Plantis";
         if ( is_paged() ) {
             $pageNum = get_query_var('paged');
@@ -259,6 +259,23 @@ function plnt_attribute_seo_title($title) {
     }
     return $title;
 }
+
+add_filter('woocommerce_product_loop_start', function ($html) {
+    if ( ! (is_shop() || is_product_category() || is_product_tag() || is_tax()) ) {
+        return $html;
+    }
+
+    // Добавим attributes itemscope/itemtype к UL/DIV.products
+    $html = preg_replace(
+        '/<ul\s+class="products([^"]*)"/',
+        '<ul itemscope itemtype="https://schema.org/ItemList" class="products$1"',
+        $html,
+        1
+    );
+
+
+    return $html;
+}, 10);
 
 // описание категории и преимущества в каталоге
 
