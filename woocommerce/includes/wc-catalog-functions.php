@@ -289,7 +289,12 @@ add_filter('woocommerce_product_loop_start', function ($html) {
     $thumbnail_id = get_term_meta( $ctx['term']->term_id, 'thumbnail_id', true );
     $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
 
-    $html .= '<meta itemprop="image" content="' . $thumbnail_url . '" />' . "\n";
+    if($thumbnail_url) {
+        $html .= '<meta itemprop="image" content="' . $thumbnail_url . '" />' . "\n";
+    } else {
+        $html .= '<meta itemprop="image" content="' . get_template_directory_uri() . '/images/interior.webp'" />' . "\n";
+    }
+
     
 
     return $html;
