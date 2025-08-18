@@ -314,7 +314,12 @@ function plnt_get_advantages() {
 remove_action( 'woocommerce_shop_loop_item_title','woocommerce_template_loop_product_title', 10 );
 add_action('woocommerce_shop_loop_item_title', 'soChangeProductsTitle', 10 );
 function soChangeProductsTitle() {
-    echo '<div itemprop="name" class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div>';
+    if ( is_shop() || is_product_category() || is_product_tag() || is_tax() ) {
+    $schema_data = 'itemprop="name"';
+} else {
+    $schema_data = '';
+}
+    echo '<div ' . $schema_data . ' class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div>';
 }
 
 //оформление карточки товара в каталоге
@@ -457,31 +462,33 @@ function plnt_add_class_loop_item_swiper($clasess){
 add_action('woocommerce_after_shop_loop_item', 'plnt_get_catalog_schema_data', 40);
 
 function plnt_get_catalog_schema_data() {
-    global $product;
-    $product_id = $product->get_id();
-    $price = number_format($product->get_price(), 2, '.', '');
-    ?>
-        <meta itemprop="description" content="<?php echo strip_tags($product->get_description())?>">
-        <link itemprop="url" href="<?php echo get_permalink( $product_id )?>">
-        <meta itemprop="price" content="<?php echo $price?>">
-        <meta itemprop="priceCurrency" content="RUB">
-    <?php
-    if($product->get_manage_stock() && $product->get_stock_status() ==='instock') {
-        // echo 'InStock';
-        ?><link itemprop="availability" href="http://schema.org/InStock"><?php
-    } 
-    if ((!$product->get_manage_stock() && $product->get_stock_status() ==='instock') || 
-        $product->get_stock_status() ==='onbackorder') {
-        // echo 'BackOrder';
-        ?><link itemprop="availability" href="http://schema.org/BackOrder"><?php
-    }
-    if ($product->get_stock_status() ==='outofstock' &&  $parentCatId == $plants_cat_id) {
-        //echo 'PreOrder';
-        ?><link itemprop="availability" href="http://schema.org/PreOrder"><?php
-    }
-    if ($product->get_stock_status() ==='outofstock' &&  $parentCatId != $plants_cat_id) {
-        //echo 'OutOfStock';
-        ?><link itemprop="availability" href="http://schema.org/OutOfStock"><?php
+    if ( is_shop() || is_product_category() || is_product_tag() || is_tax() ) {
+        global $product;
+        $product_id = $product->get_id();
+        $price = number_format($product->get_price(), 2, '.', '');
+        ?>
+            <meta itemprop="description" content="<?php echo strip_tags($product->get_description())?>">
+            <link itemprop="url" href="<?php echo get_permalink( $product_id )?>">
+            <meta itemprop="price" content="<?php echo $price?>">
+            <meta itemprop="priceCurrency" content="RUB">
+        <?php
+        if($product->get_manage_stock() && $product->get_stock_status() ==='instock') {
+            // echo 'InStock';
+            ?><link itemprop="availability" href="http://schema.org/InStock"><?php
+        } 
+        if ((!$product->get_manage_stock() && $product->get_stock_status() ==='instock') || 
+            $product->get_stock_status() ==='onbackorder') {
+            // echo 'BackOrder';
+            ?><link itemprop="availability" href="http://schema.org/BackOrder"><?php
+        }
+        if ($product->get_stock_status() ==='outofstock' &&  $parentCatId == $plants_cat_id) {
+            //echo 'PreOrder';
+            ?><link itemprop="availability" href="http://schema.org/PreOrder"><?php
+        }
+        if ($product->get_stock_status() ==='outofstock' &&  $parentCatId != $plants_cat_id) {
+            //echo 'OutOfStock';
+            ?><link itemprop="availability" href="http://schema.org/OutOfStock"><?php
+        }
     }
 }
 /*--------------------------------------------------------------
