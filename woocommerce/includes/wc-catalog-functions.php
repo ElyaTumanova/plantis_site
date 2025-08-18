@@ -464,6 +464,8 @@ add_action('woocommerce_after_shop_loop_item', 'plnt_get_catalog_schema_data', 4
 function plnt_get_catalog_schema_data() {
     if ( is_shop() || is_product_category() || is_product_tag() || is_tax() ) {
         global $product;
+        global $plants_cat_id;
+        $parentCatId = check_category ($product);
         $product_id = $product->get_id();
         $price = number_format($product->get_price(), 2, '.', '');
         ?>
