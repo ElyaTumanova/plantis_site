@@ -17,6 +17,7 @@
 
 .woocommerce-breadcrumb li {
     display: flex;
+    column-gap: 3px;
 }
 
 .woocommerce-breadcrumb .active {
