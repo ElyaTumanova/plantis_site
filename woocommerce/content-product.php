@@ -31,7 +31,7 @@ if ( is_shop() || is_product_category() || is_product_tag() || is_tax() ) {
     $schema_data = '';
 }
 ?>
-<li <?php wc_product_class( '', $product ); $schema_data?> > 
+<li <?php wc_product_class( '', $product ); echo $schema_data?> > 
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
