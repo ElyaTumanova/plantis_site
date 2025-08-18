@@ -125,7 +125,7 @@ function plnt_schema_json() {
                     "price"         => number_format($product->get_sale_price(), 2, '.', ''),
                     "priceCurrency" => "RUB"
                 ]
-            ]
+            ];
         } else (
             $price = number_format($product->get_price(), 2, '.', '');
         )
