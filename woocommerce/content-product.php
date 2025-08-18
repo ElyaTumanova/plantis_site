@@ -25,8 +25,13 @@ global $product;
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
+if ( is_shop() || is_product_category() || is_product_tag() || is_tax() ) {
+    $schema_data = 'itemprop="itemListElement" itemscope itemtype="https://schema.org/Offer"';
+} else {
+    $schema_data = '';
+}
 ?>
-<li <?php wc_product_class( '', $product ); ?> itemprop="itemListElement" itemscope itemtype="https://schema.org/Offer"> 
+<li <?php wc_product_class( '', $product ); $schema_data?> > 
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
