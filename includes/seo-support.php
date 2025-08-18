@@ -115,7 +115,21 @@ function plnt_schema_json() {
     if (is_product()) { 
         global $product;
         $idCats = $product->get_category_ids();
-        $price = number_format($product->get_price(), 2, '.', '');
+
+        if($product->get_sale_price()) {
+            $price = number_format($product->get_regular_price(), 2, '.', '');
+            $regular_price_data = [
+                "priceSpecification" => [
+                    "@type"         => "UnitPriceSpecification",
+                    "priceType"     => "https://schema.org/StrikethroughPrice",
+                    "price"         => number_format($product->get_sale_price(), 2, '.', '');,
+                    "priceCurrency" => "RUB"
+                ]
+            ]
+        } else (
+            $price = number_format($product->get_price(), 2, '.', '');
+        )
+        
         $availability = plnt_get_availability_text($product);
         $brand = plnt_get_brand_text($idCats);
         $data = [
@@ -133,6 +147,7 @@ function plnt_schema_json() {
                 "@type"         => "Offer",
                 "priceCurrency" => "RUB",
                 "price"         => $price,
+                $regular_price_data,
                 "availability"  => $availability,
             ],
         ];
