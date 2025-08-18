@@ -319,7 +319,7 @@ function soChangeProductsTitle() {
 } else {
     $schema_data = '';
 }
-    echo '<div' . $schema_data . ' class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div>';
+    echo '<div ' . $schema_data . ' class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div>';
 }
 
 //оформление карточки товара в каталоге
