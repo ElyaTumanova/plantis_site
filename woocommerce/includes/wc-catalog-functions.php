@@ -314,7 +314,12 @@ function plnt_get_advantages() {
 remove_action( 'woocommerce_shop_loop_item_title','woocommerce_template_loop_product_title', 10 );
 add_action('woocommerce_shop_loop_item_title', 'soChangeProductsTitle', 10 );
 function soChangeProductsTitle() {
-    echo '<div itemprop="name" class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div>';
+    if ( is_shop() || is_product_category() || is_product_tag() || is_tax() ) {
+    $schema_data = 'itemprop="name"';
+} else {
+    $schema_data = '';
+}
+    echo '<div' . $schema_data . ' class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div>';
 }
 
 //оформление карточки товара в каталоге
