@@ -112,33 +112,33 @@ add_action( 'init', 'wc_remove_output_structured_data' );
 add_action('wp_head','plnt_schema_json');
 
 function plnt_schema_json() {
-    ?>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org/",
-      "@type": "Product",
-      "name": "Executive Anvil",
-      "image": [
-        "https://example.com/photos/1x1/photo.jpg",
-        "https://example.com/photos/4x3/photo.jpg",
-        "https://example.com/photos/16x9/photo.jpg"
-       ],
-      "description": "Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height.",
-      "sku": "0446310786", 
-      "brand": {
-        "@type": "Brand",
-        "name": "ACME"
-      },
-      "offers": {
-        "@type": "Offer",
-        "url": "https://example.com/anvil",
-        "priceCurrency": "USD",
-        "price": 119.99,
-        "priceValidUntil": "2024-11-20",
-        "itemCondition": "https://schema.org/UsedCondition",
-        "availability": "https://schema.org/InStock"
-      }
+    if (is_product()) { 
+        global $product;
+
+        $data = [
+            "@context" => "https://schema.org/",
+            "@type"    => "Product",
+            "name"     => $product->get_name(),
+            "image"    => wp_get_attachment_url( $product->get_image_id() ),
+            "sku"      => $product->get_sku(),
+            "url"      => get_permalink( $product->get_id() ),
+            "offers"   => [
+                "@type"         => "Offer",
+                "priceCurrency" => "RUB",
+                "price"         => $product->get_price(),
+                "availability"  => $product->is_in_stock()
+                    ? "https://schema.org/InStock"
+                    : "https://schema.org/OutOfStock",
+            ],
+        ];
+        ?>
+        <script type="application/ld+json">
+        <?php echo wp_json_encode( $data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ); ?>
+        </script>
+        <?php
+     
+
+     
+ 
     }
-    </script>
-    <?php
 }
