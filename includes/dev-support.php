@@ -21,6 +21,10 @@ function plnt_echo_smth() {
 }
 
 
+function echo_hi() {
+	echo ('hihi');
+}
+
 function plnt_dev_functions() {
 
 	global $plants_treez_cat_id;

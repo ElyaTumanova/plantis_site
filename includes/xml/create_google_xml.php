@@ -2,6 +2,11 @@
 if ( ! defined( 'ABSPATH' ) ) {
 exit; // Exit if accessed directly
 }
+// require_once $_SERVER['DOCUMENT_ROOT'] . '/wp-load.php';
+
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 global $plants_cat_id;
 global $gorshki_cat_id;
@@ -16,8 +21,8 @@ global $peresadka_cat_id;
 $google_xml = "<?xml version='1.0'?>
 <rss xmlns:g='http://base.google.com/ns/1.0' version='2.0'>
 <channel>
-<title>".get_bloginfo('name')."</title>
-<link>".get_bloginfo('url')."</link>
+<title>Plantis</title>
+<link>https://plantis-shop.ru</link>
 <description>Интернет магазин комнатных растений с доставкой - Plantis</description>
 ";
 
