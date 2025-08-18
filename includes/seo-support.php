@@ -114,9 +114,10 @@ add_action('wp_head','plnt_schema_json');
 function plnt_schema_json() {
     if (is_product()) { 
         global $product;
+        $idCats = $product->get_category_ids();
         $price = number_format($product->get_price(), 2, '.', '');
         $availability = plnt_get_availability_text($product);
-
+        $brand = plnt_get_brand_text($idCats);
         $data = [
             "@context" => "https://schema.org/",
             "@type"    => "Product",
