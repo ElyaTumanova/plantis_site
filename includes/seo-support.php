@@ -115,23 +115,27 @@ function plnt_schema_json() {
     if (is_product()) { 
         global $product;
         $idCats = $product->get_category_ids();
+        $brand = plnt_get_brand_text($idCats);
+        $price = number_format($product->get_price(), 2, '.', '');
+        $availability = plnt_get_availability_text($product);
+
+        $offers = [
+            "@type"         => "Offer",
+            "priceCurrency" => "RUB",
+            "price"         => $price,
+            "availability"  => $availability,
+        ];
 
         if($product->get_sale_price()) {
-            $price = number_format($product->get_regular_price(), 2, '.', '');
-            $regular_price_data = [
-                "priceSpecification" => [
-                    "@type"         => "UnitPriceSpecification",
-                    "priceType"     => "https://schema.org/StrikethroughPrice",
-                    "price"         => number_format($product->get_sale_price(), 2, '.', ''),
-                    "priceCurrency" => "RUB"
-                ]
+            $offers["price"] = number_format($product->get_regular_price(), 2, '.', '');
+            $offers["priceSpecification"] = [
+                "@type"         => "UnitPriceSpecification",
+                "priceType"     => "https://schema.org/StrikethroughPrice",
+                "price"         => number_format($product->get_sale_price(), 2, '.', ''),
+                "priceCurrency" => "RUB"
             ];
-        } else {
-            $price = number_format($product->get_price(), 2, '.', '');
         }
-        
-        $availability = plnt_get_availability_text($product);
-        $brand = plnt_get_brand_text($idCats);
+
         $data = [
             "@context" => "https://schema.org/",
             "@type"    => "Product",
@@ -143,13 +147,7 @@ function plnt_schema_json() {
                 "name"   => $brand,
             ],
             "url"      => get_permalink( $product->get_id() ),
-            "offers"   => [
-                "@type"         => "Offer",
-                "priceCurrency" => "RUB",
-                "price"         => $price,
-                $regular_price_data,
-                "availability"  => $availability,
-            ],
+            "offers"   => $offers,
         ];
         ?>
         <script type="application/ld+json">
