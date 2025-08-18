@@ -22,7 +22,7 @@ function plnt_check_site() {
 add_action( 'wp_footer', 'plnt_check_site' );
 
 /* Категории товаров */
-if($site === 'https://plantis-shop.ru' || $site === 'http://dev.plantis-shop.ru') {
+// if($site === 'https://plantis-shop.ru' || $site === 'http://dev.plantis-shop.ru') {
 	//PLANTIS-SHOP.RU
 	// constants for categories IDs
 	$plants_cat_id = 329; //ok
@@ -51,40 +51,40 @@ if($site === 'https://plantis-shop.ru' || $site === 'http://dev.plantis-shop.ru'
         347,
         385,	//tag skidki
 		389); //tag pegular assortiment
-} else {
-	// PLANTIS SHOP
-	$plants_cat_id = 838;
-	$gorshki_cat_id = 68;
-	$treez_cat_id = 802;
-	$treez_poliv_cat_id = 846;
-	$ukhod_cat_id = 69;
-	$misc_cat_id = 23;
-	$skidki_cat_id = 578;
-	$avtopoliv_tag_id = 1050;
-	$peresadka_cat_id = 740; // to do update
-	$plants_treez_cat_id = 1152;
-	$lechuza_cat_id = 1261;
+// } else {
+// 	// PLANTIS SHOP
+// 	$plants_cat_id = 838;
+// 	$gorshki_cat_id = 68;
+// 	$treez_cat_id = 802;
+// 	$treez_poliv_cat_id = 846;
+// 	$ukhod_cat_id = 69;
+// 	$misc_cat_id = 23;
+// 	$skidki_cat_id = 578;
+// 	$avtopoliv_tag_id = 1050;
+// 	$peresadka_cat_id = 740; // to do update
+// 	$plants_treez_cat_id = 1152;
+// 	$lechuza_cat_id = 1261;
 
-	$tags_podarki = array( //all ok
-		1084,
-		1073,
-		1076,
-		1075,
-		1080,
-		1082,
-		1072,
-		1081,
-		1077,
-		1078,
-		1074,
-		837,	//tag skidki
-		1195); //tag pegular assortiment
-}
+// 	$tags_podarki = array( //all ok
+// 		1084,
+// 		1073,
+// 		1076,
+// 		1075,
+// 		1080,
+// 		1082,
+// 		1072,
+// 		1081,
+// 		1077,
+// 		1078,
+// 		1074,
+// 		837,	//tag skidki
+// 		1195); //tag pegular assortiment
+// }
 
 
 /* Способы доставки и оплаты */
 
-if($site === 'https://plantis-shop.ru' || $site === 'http://dev.plantis-shop.ru') {
+// if($site === 'https://plantis-shop.ru' || $site === 'http://dev.plantis-shop.ru') {
 	//PLANTIS-SHOP.RU
 	$local_pickup = 'local_pickup:5'; 
 	
@@ -120,53 +120,54 @@ if($site === 'https://plantis-shop.ru' || $site === 'http://dev.plantis-shop.ru'
 	$filter_razmer_kashpo_id = 56545; //to be updated
 
 
-} else {
-	// PLANTIS SHOP
-	$local_pickup = 'local_pickup:1'; //самовывоз
+// } 
+// else {
+// 	// PLANTIS SHOP
+// 	$local_pickup = 'local_pickup:1'; //самовывоз
 	
-	$delivery_inMKAD = 'flat_rate:2';
-	$delivery_outMKAD = 'flat_rate:3';
-	$delivery_inMKAD_small = 'flat_rate:23';
-	$delivery_outMKAD_small = 'flat_rate:24';
-	$delivery_inMKAD_large = 'flat_rate:17'; 
-	$delivery_outMKAD_large = 'flat_rate:18'; 
-	$delivery_inMKAD_medium = 'flat_rate:9';  
-	$delivery_outMKAD_medium = 'flat_rate:10'; 
+// 	$delivery_inMKAD = 'flat_rate:2';
+// 	$delivery_outMKAD = 'flat_rate:3';
+// 	$delivery_inMKAD_small = 'flat_rate:23';
+// 	$delivery_outMKAD_small = 'flat_rate:24';
+// 	$delivery_inMKAD_large = 'flat_rate:17'; 
+// 	$delivery_outMKAD_large = 'flat_rate:18'; 
+// 	$delivery_inMKAD_medium = 'flat_rate:9';  
+// 	$delivery_outMKAD_medium = 'flat_rate:10'; 
 
 
-	$urgent_delivery_inMKAD = 'flat_rate:5'; 
-	$urgent_delivery_outMKAD = 'flat_rate:6'; 
-	$urgent_delivery_inMKAD_small = 'flat_rate:25'; 
-	$urgent_delivery_outMKAD_small = 'flat_rate:26'; 
-	$urgent_delivery_inMKAD_large = 'flat_rate:19'; 
-	$urgent_delivery_outMKAD_large = 'flat_rate:20';
-	$urgent_delivery_inMKAD_medium = 'flat_rate:11'; 
-	$urgent_delivery_outMKAD_medium = 'flat_rate:12'; 
+// 	$urgent_delivery_inMKAD = 'flat_rate:5'; 
+// 	$urgent_delivery_outMKAD = 'flat_rate:6'; 
+// 	$urgent_delivery_inMKAD_small = 'flat_rate:25'; 
+// 	$urgent_delivery_outMKAD_small = 'flat_rate:26'; 
+// 	$urgent_delivery_inMKAD_large = 'flat_rate:19'; 
+// 	$urgent_delivery_outMKAD_large = 'flat_rate:20';
+// 	$urgent_delivery_inMKAD_medium = 'flat_rate:11'; 
+// 	$urgent_delivery_outMKAD_medium = 'flat_rate:12'; 
 	
-	$delivery_free = 'free_shipping:4';
-	$delivery_pochta = 'flat_rate:27';
-	$delivery_courier = 'free_shipping:21';
-	$delivery_long_dist = 'free_shipping:22';
+// 	$delivery_free = 'free_shipping:4';
+// 	$delivery_pochta = 'flat_rate:27';
+// 	$delivery_courier = 'free_shipping:21';
+// 	$delivery_long_dist = 'free_shipping:22';
 	
-	//#filters ID's
-	$filter_podborki_id = 56536;
-	$filter_in_stock_id = 56534;
-	$filter_price_id = 56529;
-	$filter_height_id = 56530;
-	$filter_poliv_id = 56533;
-	$filter_svet_id = 56538;
-	$filter_vlaga_id = 56539;
-	$filter_diametr_id = 56540;
-	$filter_color_id = 56532;
-	$filter_forma_id = 56541;
-	$filter_materilal_id = 56543;
-	$filter_volume_id = 56544;
-	$filter_gift_id = 56535;
-	$filter_active_id = 56531;
-	$filter_razmer_id = 60247;
-	$filter_razmer_kashpo_id = 56545;
+// 	//#filters ID's
+// 	$filter_podborki_id = 56536;
+// 	$filter_in_stock_id = 56534;
+// 	$filter_price_id = 56529;
+// 	$filter_height_id = 56530;
+// 	$filter_poliv_id = 56533;
+// 	$filter_svet_id = 56538;
+// 	$filter_vlaga_id = 56539;
+// 	$filter_diametr_id = 56540;
+// 	$filter_color_id = 56532;
+// 	$filter_forma_id = 56541;
+// 	$filter_materilal_id = 56543;
+// 	$filter_volume_id = 56544;
+// 	$filter_gift_id = 56535;
+// 	$filter_active_id = 56531;
+// 	$filter_razmer_id = 60247;
+// 	$filter_razmer_kashpo_id = 56545;
 
-}
+// }
 
 /* Изображения и иконки */
 

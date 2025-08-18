@@ -202,7 +202,7 @@ add_filter( 'woocommerce_page_title', 'plnt_attribute_page_title',10);
 
 function plnt_attribute_page_title($page_title) {
     if ( is_tax('pa_color') ) {
-        $new_text = plnt_get_color_name_tltle($page_title);
+        $new_text = plnt_get_color_name_title($page_title);
         $page_title = "Горшки и кашпо ".$new_text." цвета";
 		return $page_title;
     }
@@ -226,24 +226,8 @@ function plnt_woocommerce_page_title($page_title) {
 	}
 }
 
-// //Изменение заголовка в хлебных крошках Yoast SEO #breadcrumb
-add_filter( 'wpseo_breadcrumb_links', 'plnt_change_breadcrumb_title', 10, 2 );
-function plnt_change_breadcrumb_title( $links ) {
-    $new_links = [];
-    foreach($links as $link) {
-        if(array_key_exists('taxonomy', $link)){
-            if ($link['taxonomy'] == 'pa_color') {
-                $new_text = plnt_get_color_name_tltle($link['text']);
-                $link['text'] = "Горшки и кашпо ".$new_text." цвета";
-            }
-        }
-        array_push($new_links, $link);
-    }
-	return $new_links;
-}
 
-
-function plnt_get_color_name_tltle($text) {
+function plnt_get_color_name_title($text) {
     $new_text;
     switch($text) {
         case 'Серебро':
@@ -264,7 +248,7 @@ add_filter('wpseo_title', 'plnt_attribute_seo_title');
 
 function plnt_attribute_seo_title($title) {
     if ( is_tax('pa_color') ) {
-        $new_text = plnt_get_color_name_tltle($title);
+        $new_text = plnt_get_color_name_title($title);
         $title = "Горшки и кашпо ".$new_text." цвета – купить с доставкой в Москве в интернет-магазине – Plantis";
         if ( is_paged() ) {
             $pageNum = get_query_var('paged');
@@ -275,6 +259,42 @@ function plnt_attribute_seo_title($title) {
     }
     return $title;
 }
+
+// добавляем атрибуты schema.org
+add_filter('woocommerce_product_loop_start', 'plnt_get_catalog_list_schema_data',10);
+
+function plnt_get_catalog_list_schema_data ($html) {
+    if ( ! (is_shop() || is_product_category() || is_product_tag() || is_tax()) ) {
+        return $html;
+    }
+    $html = preg_replace(
+        '/<ul\s+class="products([^"]*)"/',
+        '<ul itemscope itemtype="https://schema.org/OfferCatalog" class="products$1"',
+        $html,
+        1
+    );
+
+    $ctx = wc_get_catalog_context();
+
+    $html .= '<meta itemprop="name" content="' . $ctx['title'] . '" />' . "\n"; 
+    
+    if ( $ctx['desc'] ) {
+        $html .= '<meta itemprop="description" content="' . $ctx['desc'] . '" />' . "\n";
+    } else {
+        $html .= '<meta itemprop="description" content="' . $ctx['title'] . '" />' . "\n";
+    }
+
+    $thumbnail_id = get_term_meta( $ctx['term']->term_id, 'thumbnail_id', true );
+    $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
+
+    if($thumbnail_url) {
+        $html .= '<meta itemprop="image" content="' . $thumbnail_url . '" />' . "\n";
+    } else {
+        $html .= '<meta itemprop="image" content="' . get_template_directory_uri() . '/images/interior.webp" />' . "\n";
+    }
+
+    return $html;
+};
 
 // описание категории и преимущества в каталоге
 
@@ -289,12 +309,12 @@ function plnt_get_advantages() {
 #Card in Catalog design
 --------------------------------------------------------------*/
 
-//название товара - меняем тег h2
+//название товара - меняем тег h2 + schema.org
 
 remove_action( 'woocommerce_shop_loop_item_title','woocommerce_template_loop_product_title', 10 );
 add_action('woocommerce_shop_loop_item_title', 'soChangeProductsTitle', 10 );
 function soChangeProductsTitle() {
-    echo '<div class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div>';
+    echo '<div itemprop="name" class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div>';
 }
 
 //оформление карточки товара в каталоге
@@ -314,7 +334,7 @@ function plnt_catalog_gallery() {
 
 	if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
 		global $product;
-		$image = $product->get_image('large');	
+		$image = $product->get_image('large', array('itemprop'=>'image'));	//schema.org
 		$attachment_ids = $product->get_gallery_image_ids();
 		echo '
 		<div class="product__image-slider-wrap swiper">
@@ -432,6 +452,38 @@ function plnt_add_class_loop_item_swiper($clasess){
 	return $clasess;
 }
 
+
+//вывод данных для Schema.org 
+add_action('woocommerce_after_shop_loop_item', 'plnt_get_catalog_schema_data', 40);
+
+function plnt_get_catalog_schema_data() {
+    global $product;
+    $product_id = $product->get_id();
+    $price = number_format($product->get_price(), 2, '.', '');
+    ?>
+        <meta itemprop="description" content="<?php echo strip_tags($product->get_description())?>">
+        <link itemprop="url" href="<?php echo get_permalink( $product_id )?>">
+        <meta itemprop="price" content="<?php echo $price?>">
+        <meta itemprop="priceCurrency" content="RUB">
+    <?php
+    if($product->get_manage_stock() && $product->get_stock_status() ==='instock') {
+        // echo 'InStock';
+        ?><link itemprop="availability" href="http://schema.org/InStock"><?php
+    } 
+    if ((!$product->get_manage_stock() && $product->get_stock_status() ==='instock') || 
+        $product->get_stock_status() ==='onbackorder') {
+        // echo 'BackOrder';
+        ?><link itemprop="availability" href="http://schema.org/BackOrder"><?php
+    }
+    if ($product->get_stock_status() ==='outofstock' &&  $parentCatId == $plants_cat_id) {
+        //echo 'PreOrder';
+        ?><link itemprop="availability" href="http://schema.org/PreOrder"><?php
+    }
+    if ($product->get_stock_status() ==='outofstock' &&  $parentCatId != $plants_cat_id) {
+        //echo 'OutOfStock';
+        ?><link itemprop="availability" href="http://schema.org/OutOfStock"><?php
+    }
+}
 /*--------------------------------------------------------------
 #Catalog Functions
 --------------------------------------------------------------*/
@@ -718,26 +770,6 @@ function add_custom_canonical_tags() {
 // Добавляем действие в WordPress, чтобы выполнить функцию при выводе тегов в head
 add_action('wp_head', 'add_custom_canonical_tags');
 
-// изменяем названия меток на подборки для хлебных крошек #breadcrumb
-add_filter( 'woocommerce_get_breadcrumb', 'plnt_woocommerce_get_breadcrumb_filter', 10, 2 );
-
-function plnt_woocommerce_get_breadcrumb_filter( $crumbs, $that ){
-	foreach ( $crumbs as $crumb ) {
-		if (str_contains($crumb[0], 'Товары с меткой ')) {
-			$key = array_search($crumb, $crumbs);
-			$newstring = str_replace('Товары с меткой ', "Товары из подборки ", $crumb[0]);
-
-			$replacements = array(0 => $newstring);
-
-			$crumbNew = array_replace($crumb, $replacements);
-			$replacements2 = array($key => $crumbNew);
-			$crumbsNew = array_replace($crumbs, $replacements2);
-			$crumbs = $crumbsNew;
-		}
-	}
-
-	return $crumbs;
-}
 
 // меняем rel для ссылки добавления товаров в корзину #seo
 

@@ -2,6 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+$logo = carbon_get_theme_option('logo');
 ?>
 
 <div class="footer__plants-menu footer__menu-wrap">
@@ -43,6 +44,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="footer__info-menu footer__menu-wrap">
     <?php get_template_part('template-parts/info-pages-list');?>
 </div>
-<div class="footer__contacts">
+<div itemscope itemtype="https://schema.org/Florist" class="footer__contacts">
+     <!-- Schema.org -->
+    <meta itemprop="name" content="Интернет-магазин комнатных растений в Москве - Plantis">
+    <meta itemprop="image" content="<?php echo $logo ?>">
     <?php get_template_part('template-parts/contacts-part');?>
+    <meta itemprop="openingHours" content="Mo-Su 10:00-20:00"/>
+    <meta itemprop="telephone" content="+7 800 201 57 90">
+    <meta itemprop="email" content="INFO@PLANTIS.SHOP">
+    <div itemprop = "address" itemscope itemtype="http://schema.org/PostalAddress">
+        <meta itemprop="addressLocality" content="г. Москва">
+        <meta itemprop="streetAddress" content="ул. Мещерякова, д.3.">
+    </div>
+    <!-- /Schema.org -->
+
 </div>

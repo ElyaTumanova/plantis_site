@@ -17,7 +17,7 @@ function plnt_set_constants() {
   }
 }
 
-//обертки для card grid
+//обертки для card grid + schema.org
 add_action('woocommerce_before_single_product_summary','plnt_card_grid_start',5);
 
 function plnt_card_grid_start () {
@@ -26,29 +26,31 @@ function plnt_card_grid_start () {
     global $isTreez;
     global $isLechuza;
     global $plants_cat_id;
+    
+    $schemaOrgAttr = 'itemscope itemtype="http://schema.org/Product"';
 
     if ($parentCatId === $plants_cat_id) {
         if ( $product->get_stock_status() ==='onbackorder' && $product->backorders_allowed()) {
             ?>
-            <div class="card__grid card__grid_backorder">
+            <div class="card__grid card__grid_backorder" <?php echo $schemaOrgAttr ?>>
             <?php
         } elseif ($product->get_stock_status() ==='outofstock') {
             ?>
-            <div class="card__grid card__grid_outofstock">
+            <div class="card__grid card__grid_outofstock" <?php echo $schemaOrgAttr ?>>
             <?php
         } else {
             ?>
-            <div class="card__grid">
+            <div class="card__grid" <?php echo $schemaOrgAttr ?>>
             <?php
         }
     } else {
         if ($isTreez || $isLechuza) {
             ?>
-            <div class="card__grid card__grid_not-plant card__grid_treez ">
+            <div class="card__grid card__grid_not-plant card__grid_treez" <?php echo $schemaOrgAttr ?>>
             <?php
         } else {
             ?>
-            <div class="card__grid card__grid_not-plant">
+            <div class="card__grid card__grid_not-plant" <?php echo $schemaOrgAttr ?>>
             <?php
         }
     } 
@@ -57,9 +59,31 @@ function plnt_card_grid_start () {
 add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',40);
 
 function plnt_card_grid_end () {
+    global $product;
+    global $treez_cat_id;
+    global $treez_poliv_cat_id;
+    global $plants_treez_cat_id;
+    global $lechuza_cat_id;
+    $idCats = $product->get_category_ids();
+    $product_id = $product->get_id();
     ?>
+    <link itemprop="url" href="<?php echo get_permalink( $product_id );?>">
 	</div>
     <?php 
+    // добавляем разметку brand для schema.org
+    $brand = '';
+    if (in_array($treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats) || in_array($plants_treez_cat_id, $idCats)) {
+        $brand = 'Treez';
+    } else if (in_array($lechuza_cat_id, $idCats)) {
+        $brand = 'Lechuza';
+    } else {
+        $brand = 'Plantis';
+    }
+    ?> 
+    <div itemscope itemtype="http://schema.org/Brand"> 
+        <meta itemprop="name" content="<?php echo $brand ?>">
+    </div>
+    <?php
 };
 
 // табы
@@ -92,8 +116,8 @@ add_filter( 'woocommerce_product_tabs', 'truemisha_reorder_tabs', 25 );
 function truemisha_reorder_tabs( $tabs ) {
  
 	$tabs[ 'delivery' ][ 'priority' ] = 20;
-  $tabs[ 'additional_information' ][ 'priority' ] = 10;
-  $tabs[ 'description' ][ 'priority' ] = 30;
+    $tabs[ 'additional_information' ][ 'priority' ] = 10;
+    $tabs[ 'description' ][ 'priority' ] = 30;
 	return $tabs;
  
 }
@@ -152,6 +176,14 @@ function plnt_product_image_wrap () {
     <?php 
 };
 
+// добавляем к изображению товара разметку schema.org
+add_filter( 'woocommerce_gallery_image_html_attachment_image_params', 'plnt_image_params', 10, 4 );
+
+function plnt_image_params( $image_attributes, $attachment_id, $image_size, $main_image ){
+    $image_attributes['itemprop'] = 'image';
+	return $image_attributes;
+}
+
 function truemisha_sale_badge() {
  
 	// получаем объект текущего товара в цикле
@@ -181,7 +213,7 @@ function plnt_product_gallery( $options ) {
 	return $options;
 };
 
-//цена и кнопка в корзину, кнопка в избранное
+//цена и кнопка в корзину, кнопка в избранное + schema.org
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 remove_action('woocommerce_before_single_product','woocommerce_output_all_notices', 10); /* убрать уведомления woocommerce*/
@@ -196,9 +228,22 @@ function for_dev() {
     global $product;
     global $parentCatId;
     global $isTreez;
+    $idCats = $product->get_category_ids();
+    //print_r($idCats);
     echo 'stock qty '.$product->get_stock_quantity();
     echo '<br>';
+    echo 'stock status '.$product->get_stock_status();
+    echo '<br>';
+    echo 'get_manage_stock '.$product->get_manage_stock();
+    echo '<br>';
+    echo 'backorders_allowed '.$product->backorders_allowed();
+    echo '<br>';
+    echo 'price '.$product->get_price();
+    echo '<br>';
     echo 'parent cat '.$parentCatId;
+    echo '<br>';
+    $term = get_term_by( 'id', $parentCatId, 'product_cat' );
+    echo $term->name;    
     echo '<br>';
     //print_r($product);
     //$isTreez = check_is_treez($product);
@@ -207,16 +252,21 @@ function for_dev() {
 }
 
 function plnt_price_wrap(){
+    global $product;
+    global $parentCatId;
+    global $plants_cat_id;
+
+    $price = number_format($product->get_price(), 2, '.', '');
     ?>
     <div class="card__price-wrap">
-        <div class = "card__add-to-cart-wrap">
+        <div class = "card__add-to-cart-wrap" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
             <?php
             //echo for_dev();
             woocommerce_template_single_price();
             ?> 
             <div class="card__price-btns-wrap">
                 <?php
-                global $product;
+                
                 if ( $product->get_stock_status() ==='outofstock') {
                     plnt_outofstock_btn();
                 } else {
@@ -226,6 +276,29 @@ function plnt_price_wrap(){
                 ?>
             </div>
             <span class = "backorder-info">В наличии <?php echo $product->get_stock_quantity();?> шт. Если вы хотите заказать большее количество, то ориентировочная дата доставки из Европы <?php echo plnt_set_backorders_date();?>. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</span>
+            <?php 
+            if($product->get_manage_stock() && $product->get_stock_status() ==='instock') {
+               // echo 'InStock';
+                ?><link itemprop="availability" href="http://schema.org/InStock"><?php
+            } 
+            if ((!$product->get_manage_stock() && $product->get_stock_status() ==='instock') || 
+                $product->get_stock_status() ==='onbackorder') {
+               // echo 'BackOrder';
+                ?><link itemprop="availability" href="http://schema.org/BackOrder"><?php
+            }
+            if ($product->get_stock_status() ==='outofstock' &&  $parentCatId == $plants_cat_id) {
+                //echo 'PreOrder';
+                ?><link itemprop="availability" href="http://schema.org/PreOrder"><?php
+            }
+            if ($product->get_stock_status() ==='outofstock' &&  $parentCatId != $plants_cat_id) {
+                //echo 'OutOfStock';
+                ?><link itemprop="availability" href="http://schema.org/OutOfStock"><?php
+            }
+            ?>
+            
+            <meta itemprop="price" content="<?php echo $price?>">
+            <meta itemprop="priceCurrency" content="RUB">
+            <meta itemprop="seller" content="Plantis">
         </div>
         <?php
         // peresadka_init
@@ -277,28 +350,6 @@ function plnt_get_add_to_card() {
     } 
 };
 
-function plnt_check_stock_status() {
-    global $product;
-    global $parentCatId;
-    global $plants_cat_id;
-
-    if ($parentCatId === $plants_cat_id) {
-        if ( $product->get_stock_status() ==='instock' ) {
-            ?>
-            <div class="card__stockstatus card__stockstatus_in">Доставка от 2-х часов</div>
-            <?php
-        } else if ($product->backorders_allowed() && $product->get_stock_quantity() <= 0) {
-            ?>
-            <div class="card__stockstatus card__stockstatus_backorder">Доставка 10 — 14 дней</div>
-            <?php
-        } else {
-            ?>
-            <div class="card__stockstatus card__stockstatus_out">Под заказ</div>
-            <?php
-        }
-    }
-}
-
 function plnt_outofstock_btn() {
     global $product;
     if ( $product->get_stock_status() ==='outofstock') {
@@ -346,7 +397,7 @@ function truemisha_quantity_minus() {
     } 
 };
 
-// мета данные товара
+// мета данные товара артикул + schema.org
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 add_action( 'woocommerce_single_product_summary', 'plnt_product_artikul', 40 );
 
@@ -355,7 +406,7 @@ function plnt_product_artikul() {
 	$sku = $product->get_sku();
     
 	if( $sku ) { // если заполнен, то выводим
-		echo '<p class="product__artikul">Артикул: ' . $sku . '</p>';
+		echo '<p class="product__artikul" itemprop="sku">Артикул: ' . $sku . '</p>';
 	}
 };
 

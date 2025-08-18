@@ -96,3 +96,15 @@ function plantis_schema_default_image( $pieces, $context ) {
 	}
 	return $pieces;
 }
+
+// отключаем schema.org в Yoast
+add_filter( 'wpseo_json_ld_output', '__return_false' );
+
+/** * Удалить вывод структурированных данных на всех страницах и в письмах WooCommerce */  
+function wc_remove_output_structured_data() {  
+    // Удалить вывод структурированных данных из footer всех страниц  
+    remove_action( 'wp_footer', array( WC()->structured_data, 'output_structured_data' ), 10 );  
+    // Удалить вывод структурированных данных из раздела деталей заказа в письмах WooCommerce  
+    // remove_action( 'woocommerce_email_order_details', array( WC()->structured_data, 'output_email_structured_data' ), 30 );  
+}  
+add_action( 'init', 'wc_remove_output_structured_data' );  

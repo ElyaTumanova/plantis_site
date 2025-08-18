@@ -61,45 +61,127 @@ function check_is_lechuza($product) {
     return $isLechuza;
 }
 
+// находит все дочерние категории нижнего уровня
+function get_lowest_level_product_categories( $parent_id = 0 ) {
+    $lowest_level_cats = [];
+
+    // Получаем все подкатегории заданной родительской категории
+    $categories = get_terms( [
+        'taxonomy'   => 'product_cat',
+        'parent'     => $parent_id,
+        'hide_empty' => false,
+    ] );
+
+    foreach ( $categories as $category ) {
+        // Проверяем, есть ли у категории дочерние
+        $child_cats = get_terms( [
+            'taxonomy'   => 'product_cat',
+            'parent'     => $category->term_id,
+            'hide_empty' => false,
+        ] );
+
+        if ( empty( $child_cats ) ) {
+            // Нет дочерних — значит, это нижний уровень
+            $lowest_level_cats[] = $category;
+        } else {
+            // Рекурсивно ищем в дочерних
+            $lowest_level_cats = array_merge(
+                $lowest_level_cats,
+                get_lowest_level_product_categories( $category->term_id )
+            );
+        }
+    }
+
+    return $lowest_level_cats;
+}
+
+/**
+ * Вернёт контекст текущего каталога WooCommerce.
+ * Определяет: магазин, категория, метка, любая таксономия товаров, поиск и т.п.
+ */
+function wc_get_catalog_context() {
+    $ctx = [
+        'type'     => 'other', // shop|product_cat|product_tag|product_tax|search|other
+        'taxonomy' => null,    // 'product_cat' / 'product_tag' / 'pa_color' / 'product_brand' и т.д.
+        'term'     => null,    // объект WP_Term (если есть)
+        'title'    => '',
+        'desc'     => '',
+        'is_paged' => is_paged(),
+    ];
+
+    if ( is_shop() || is_post_type_archive('product') ) {
+        $ctx['type']  = 'shop';
+        $shop_id = wc_get_page_id('shop');
+        if ( $shop_id && $shop_id > 0 ) {
+            $ctx['title'] = get_the_title($shop_id);
+            $desc = get_post_field('post_excerpt', $shop_id) ?: get_post_field('post_content', $shop_id);
+            $ctx['desc']  = $desc ? wp_strip_all_tags( apply_filters('the_content', $desc) ) : '';
+        } else {
+            $ctx['title'] = post_type_archive_title('', false);
+        }
+        return $ctx;
+    }
+
+    if ( is_search() ) {
+        $ctx['type']  = 'search';
+        $ctx['title'] = sprintf(__('Search results for “%s”','woocommerce'), get_search_query());
+        return $ctx;
+    }
+
+    // Любая таксономия товаров (включая product_cat, product_tag, атрибуты pa_*, кастомные таксы)
+    if ( is_product_taxonomy() ) {
+        $term = get_queried_object(); // WP_Term
+        if ( $term instanceof WP_Term ) {
+            $ctx['term']     = $term;
+            $ctx['taxonomy'] = $term->taxonomy;
+            // Подтипы
+            if ( is_product_category() )      { $ctx['type'] = 'product_cat'; }
+            elseif ( is_product_tag() )       { $ctx['type'] = 'product_tag'; }
+            else                              { $ctx['type'] = 'product_tax'; } // например, pa_color, product_brand
+
+            $ctx['title'] = $term->name;
+            $ctx['desc']  = wp_strip_all_tags( term_description($term, $term->taxonomy) );
+        }
+        return $ctx;
+    }
+
+    return $ctx; // не магазин и не архив товаров
+}
+
+/*--------------------------------------------------------------
+# HELPERS вывод информации о товаре
+--------------------------------------------------------------*/
+
+// выводим дату, доступную для заказа
 function plnt_set_backorders_date() {
 	$backorderdate = date( "d.m", strtotime('next wednesday +2 week') );
 
 	return $backorderdate;
 }
 
-// находит все дочерние категории нижнего уровня
-    function get_lowest_level_product_categories( $parent_id = 0 ) {
-        $lowest_level_cats = [];
+// выводим статус товара
+function plnt_check_stock_status() {
+    global $product;
+    global $parentCatId;
+    global $plants_cat_id;
 
-        // Получаем все подкатегории заданной родительской категории
-        $categories = get_terms( [
-            'taxonomy'   => 'product_cat',
-            'parent'     => $parent_id,
-            'hide_empty' => false,
-        ] );
-
-        foreach ( $categories as $category ) {
-            // Проверяем, есть ли у категории дочерние
-            $child_cats = get_terms( [
-                'taxonomy'   => 'product_cat',
-                'parent'     => $category->term_id,
-                'hide_empty' => false,
-            ] );
-
-            if ( empty( $child_cats ) ) {
-                // Нет дочерних — значит, это нижний уровень
-                $lowest_level_cats[] = $category;
-            } else {
-                // Рекурсивно ищем в дочерних
-                $lowest_level_cats = array_merge(
-                    $lowest_level_cats,
-                    get_lowest_level_product_categories( $category->term_id )
-                );
-            }
+    if ($parentCatId === $plants_cat_id) {
+        if ( $product->get_stock_status() ==='instock' ) {
+            ?>
+            <div class="card__stockstatus card__stockstatus_in">Доставка от 2-х часов</div>
+            <?php
+        } else if ($product->backorders_allowed() && $product->get_stock_quantity() <= 0) {
+            ?>
+            <div class="card__stockstatus card__stockstatus_backorder">Доставка 10 — 14 дней</div>
+            <?php
+        } else {
+            ?>
+            <div class="card__stockstatus card__stockstatus_out">Под заказ</div>
+            <?php
         }
-
-        return $lowest_level_cats;
     }
+}
+
 /*--------------------------------------------------------------
 # HELPERS for cart & checkout
 --------------------------------------------------------------*/
