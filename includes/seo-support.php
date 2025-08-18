@@ -126,9 +126,9 @@ function plnt_schema_json() {
                     "priceCurrency" => "RUB"
                 ]
             ];
-        } else (
+        } else {
             $price = number_format($product->get_price(), 2, '.', '');
-        )
+        }
         
         $availability = plnt_get_availability_text($product);
         $brand = plnt_get_brand_text($idCats);
