@@ -352,18 +352,25 @@ function plnt_get_cats_data() {
 	$my_terms_array = [];
 
 	foreach ($terms as $key => $term) {
+        if ($term->description) {
+            print_r($term->name);
+            echo (' - ');
+            print_r($term->description);
+            echo (';');
+            echo ('<br>');
+        }
 		//print_r($term);
 		//print_r($term->term_id);
 		// echo ("['name' => '");
-		print_r($term->name);
-        echo (' - ');
+		// print_r($term->name);
+        // echo (' - ');
 		// echo ("','slug' => '");
 		// print_r($term->slug);
 		// echo ("'],");
 		//echo (';');
-		print_r($term->description);
-		echo (';');
-		echo ('<br>');
+		// print_r($term->description);
+		// echo (';');
+		// echo ('<br>');
 		//array_push($my_terms_array, ['name'=>$term->name, 'slug'=>$term->slug]);
 	}
 
