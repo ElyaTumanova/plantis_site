@@ -12,10 +12,11 @@
     font-size: 14px;
     display: flex;
     column-gap: 3px;
+    flex-wrap: wrap;
 }
 
 .woocommerce-breadcrumb li {
-    
+    display: flex;
 }
 
 .woocommerce-breadcrumb .active {
