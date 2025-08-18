@@ -1,7 +1,13 @@
 <?php
-// if ( ! defined( 'ABSPATH' ) ) {
-// 	exit; // Exit if accessed directly
-// }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+// require_once $_SERVER['DOCUMENT_ROOT'] . '/wp-load.php';
+
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
+
 
 global $plants_cat_id;
 global $gorshki_cat_id;
@@ -16,9 +22,9 @@ global $uncategorized_cat_id;
 $yandex_xml = "<?xml version='1.0' encoding='UTF-8'?>
 <yml_catalog date='".date('Y-m-d H:i')."'>
 <shop>
-<name>".get_bloginfo('name')."</name>
+<name>Plantis</name>
 <company>ИП Туманов В.В.</company>
-<url>".get_bloginfo('url')."</url>
+<url>https://plantis-shop.ru</url>
 <currencies>
 <currency id='RUB' rate='1'/>
 </currencies>
@@ -159,7 +165,11 @@ foreach($allproducts as $allproduct){
     }  
 
     $brand = '';
-    $idCats = $allproduct->get_category_ids();
+    $cats = get_the_terms($allproduct->ID,'product_cat');
+    $idCats = [];
+    foreach ($cats as $cat) {
+        array_push($idCats, $cat->term_id);
+    }
     if (in_array($treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats) || in_array($plants_treez_cat_id, $idCats)) {
         $brand = 'Treez';
     } else if (in_array($lechuza_cat_id, $idCats)) {

@@ -214,3 +214,29 @@ jQuery(document.body).on('wc_fragments_loaded', function() {
     console.debug('Фрагменты корзины обновлены!');
     getAddedPeresadkaMini();
 });
+
+/*--------------------------------------------------------------
+# Update popular slider after ajax wish update
+--------------------------------------------------------------*/
+
+jQuery(document.body).on('added_to_wishlist', function(){
+    //console.log('hello wish');
+    updatePopularSwiper();
+});
+
+jQuery(document.body).on('removed_from_wishlist', function(){
+    //console.log('bye wish');
+    updatePopularSwiper();
+});
+
+
+function updatePopularSwiper() {
+    let wishlist = document.querySelector('.yith-wcwl-form');
+    if(wishlist) {
+        let populars = wishlist.querySelectorAll('.product');
+        populars.forEach((el)=>{
+            el.classList.add('swiper-slide');
+        })
+        swiper_popular_slider_init();
+    }
+}
