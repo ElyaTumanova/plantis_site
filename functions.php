@@ -459,7 +459,7 @@ function plnt_get_orders_meta() {
 
 }
 
-//add_action( 'wp_footer', 'plnt_check_page' );
+add_action( 'wp_footer', 'plnt_check_page' );
 //add_action( 'wp_footer', 'plnt_dev_functions' );
 //add_action( 'wp_footer', 'plnt_get_cats_data' );
 
