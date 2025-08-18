@@ -114,6 +114,8 @@ add_action('wp_head','plnt_schema_json');
 function plnt_schema_json() {
     if (is_product()) { 
         global $product;
+        $price = number_format($product->get_price(), 2, '.', '');
+        $availability = plnt_get_availability_text($product);
 
         $data = [
             "@context" => "https://schema.org/",
@@ -121,14 +123,16 @@ function plnt_schema_json() {
             "name"     => $product->get_name(),
             "image"    => wp_get_attachment_url( $product->get_image_id() ),
             "sku"      => $product->get_sku(),
+            "brand"    => [
+                "@type"  => "Brand",
+                "name"   => $brand,
+            ],
             "url"      => get_permalink( $product->get_id() ),
             "offers"   => [
                 "@type"         => "Offer",
                 "priceCurrency" => "RUB",
-                "price"         => $product->get_price(),
-                "availability"  => $product->is_in_stock()
-                    ? "https://schema.org/InStock"
-                    : "https://schema.org/OutOfStock",
+                "price"         => $price,
+                "availability"  => $availability,
             ],
         ];
         ?>
