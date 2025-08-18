@@ -356,7 +356,7 @@ function plnt_get_cats_data() {
             print_r($term->name);
             echo (' - ');
             print_r($term->description);
-            echo (';');
+            // echo (';');
             echo ('<br>');
         }
 		//print_r($term);
