@@ -127,11 +127,11 @@ function plnt_schema_json() {
         ];
 
         if($product->get_sale_price()) {
-            $offers["price"] = number_format($product->get_regular_price(), 2, '.', '');
+            $offers["price"] = number_format($product->get_sale_price(), 2, '.', '');
             $offers["priceSpecification"] = [
                 "@type"         => "UnitPriceSpecification",
                 "priceType"     => "https://schema.org/StrikethroughPrice",
-                "price"         => number_format($product->get_sale_price(), 2, '.', ''),
+                "price"         => number_format($product->get_regular_price(), 2, '.', ''),
                 "priceCurrency" => "RUB"
             ];
         }
