@@ -279,7 +279,7 @@ function plnt_check_page() {
 	// print_r( $gorshki_cat_id );
 	// echo '</pre>';
 	if ( is_page( 'vakansii' ) ) {
-        plnt_get_prods_data();
+        plnt_get_cats_data();
 	}
 	// else {
 	// 	echo 'Это какая-то другая страница.';
@@ -345,8 +345,10 @@ function plnt_get_cats_data() {
 		'taxonomy' => 'product_cat',
 		'hide_empty' => false,
 	] );
-
-	//print_r($terms);
+    
+    echo('<pre>');
+	print_r($terms);
+    echo('</pre>');
 	$my_terms_array = [];
 
 	// foreach ($terms as $key => $term) {
@@ -366,9 +368,9 @@ function plnt_get_cats_data() {
 
 	//print_r($my_terms_array);
 
-	$images_array = array();
+	// $images_array = array();
 
-	print_r ($images_array);
+	// print_r ($images_array);
 
     // $fp = fopen( ABSPATH . "/wp-content/images.csv", 'w' ); 
     // fwrite( $fp, $images_array );
