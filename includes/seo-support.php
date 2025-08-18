@@ -124,28 +124,10 @@ function plnt_schema_json() {
         "https://example.com/photos/16x9/photo.jpg"
        ],
       "description": "Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height.",
-      "sku": "0446310786",
-      "mpn": "925872",
+      "sku": "0446310786", 
       "brand": {
         "@type": "Brand",
         "name": "ACME"
-      },
-      "review": {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": 4,
-          "bestRating": 5
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Fred Benson"
-        }
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": 4.4,
-        "reviewCount": 89
       },
       "offers": {
         "@type": "Offer",
