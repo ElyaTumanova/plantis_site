@@ -119,6 +119,14 @@ function plnt_schema_json() {
         $price = number_format($product->get_price(), 2, '.', '');
         $availability = plnt_get_availability_text($product);
 
+        $attachment_ids = $product->get_gallery_image_ids();
+
+        $images = ["image"    => wp_get_attachment_url( $product->get_image_id() ),];
+
+        foreach( $attachment_ids as $attachment_id ) {
+            $images["image"] = wp_get_attachment_image( $attachment_id);
+        };
+
         $offers = [
             "@type"         => "Offer",
             "priceCurrency" => "RUB",
@@ -140,8 +148,9 @@ function plnt_schema_json() {
             "@context" => "https://schema.org/",
             "@type"    => "Product",
             "name"     => $product->get_name(),
-            "image"    => wp_get_attachment_url( $product->get_image_id() ),
+            "image"    => $images,
             "sku"      => $product->get_sku(),
+            "description" => $product->get_description(),
             "brand"    => [
                 "@type"  => "Brand",
                 "name"   => $brand,
