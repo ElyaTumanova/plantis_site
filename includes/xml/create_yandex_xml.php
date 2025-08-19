@@ -1,12 +1,12 @@
 <?php
-// if ( ! defined( 'ABSPATH' ) ) {
-// 	exit; // Exit if accessed directly
-// }
-require_once $_SERVER['DOCUMENT_ROOT'] . '/wp-load.php';
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+// require_once $_SERVER['DOCUMENT_ROOT'] . '/wp-load.php';
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 
 global $plants_cat_id;
