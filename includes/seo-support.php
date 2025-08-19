@@ -158,7 +158,7 @@ function plnt_schema_json() {
             "name"     => $product->get_name(),
             "image"    => $images,
             "sku"      => $product->get_sku(),
-            "description" => $product->get_description(),
+            "description" => strip_tags($product->get_description()),
             "brand"    => [
                 "@type"  => "Brand",
                 "name"   => $brand,
