@@ -324,6 +324,11 @@
     opacity: 0.7;
 }
 
+.woocommerce-product-attributes h3 {
+    font-weight: 500;
+    font-size: 14px;
+}
+
 .woocommerce-product-attributes-item--weight {
     display: none;
 }
