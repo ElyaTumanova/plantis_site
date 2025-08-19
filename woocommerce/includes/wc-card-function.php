@@ -27,7 +27,7 @@ function plnt_card_grid_start () {
     global $isLechuza;
     global $plants_cat_id;
     
-    $schemaOrgAttr = 'itemscope itemtype="http://schema.org/Product"';
+    $schemaOrgAttr = 'itemscope itemtype="https://schema.org/Product"';
 
     if ($parentCatId === $plants_cat_id) {
         if ( $product->get_stock_status() ==='onbackorder' && $product->backorders_allowed()) {
@@ -60,25 +60,19 @@ add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',40);
 
 function plnt_card_grid_end () {
     global $product;
-    global $treez_cat_id;
-    global $treez_poliv_cat_id;
-    global $plants_treez_cat_id;
-    global $lechuza_cat_id;
+    // global $treez_cat_id;
+    // global $treez_poliv_cat_id;
+    // global $plants_treez_cat_id;
+    // global $lechuza_cat_id;
     $idCats = $product->get_category_ids();
     $product_id = $product->get_id();
     ?>
     <link itemprop="url" href="<?php echo get_permalink( $product_id );?>">
 	</div>
     <?php 
+    
     // добавляем разметку brand для schema.org
-    $brand = '';
-    if (in_array($treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats) || in_array($plants_treez_cat_id, $idCats)) {
-        $brand = 'Treez';
-    } else if (in_array($lechuza_cat_id, $idCats)) {
-        $brand = 'Lechuza';
-    } else {
-        $brand = 'Plantis';
-    }
+    $brand = plnt_get_brand_text($idCats);
     ?> 
     <div itemscope itemtype="http://schema.org/Brand"> 
         <meta itemprop="name" content="<?php echo $brand ?>">
@@ -253,9 +247,6 @@ function for_dev() {
 
 function plnt_price_wrap(){
     global $product;
-    global $parentCatId;
-    global $plants_cat_id;
-
     $price = number_format($product->get_price(), 2, '.', '');
     ?>
     <div class="card__price-wrap">
@@ -277,25 +268,8 @@ function plnt_price_wrap(){
             </div>
             <span class = "backorder-info">В наличии <?php echo $product->get_stock_quantity();?> шт. Если вы хотите заказать большее количество, то ориентировочная дата доставки из Европы <?php echo plnt_set_backorders_date();?>. После оформления заказа наш менеджер свяжется с вами для уточнения деталей заказа.</span>
             <?php 
-            if($product->get_manage_stock() && $product->get_stock_status() ==='instock') {
-               // echo 'InStock';
-                ?><link itemprop="availability" href="http://schema.org/InStock"><?php
-            } 
-            if ((!$product->get_manage_stock() && $product->get_stock_status() ==='instock') || 
-                $product->get_stock_status() ==='onbackorder') {
-               // echo 'BackOrder';
-                ?><link itemprop="availability" href="http://schema.org/BackOrder"><?php
-            }
-            if ($product->get_stock_status() ==='outofstock' &&  $parentCatId == $plants_cat_id) {
-                //echo 'PreOrder';
-                ?><link itemprop="availability" href="http://schema.org/PreOrder"><?php
-            }
-            if ($product->get_stock_status() ==='outofstock' &&  $parentCatId != $plants_cat_id) {
-                //echo 'OutOfStock';
-                ?><link itemprop="availability" href="http://schema.org/OutOfStock"><?php
-            }
-            ?>
-            
+            $availability = plnt_get_availability_text($product);
+            ?><link itemprop="availability" href="http://schema.org/<?php echo $availability?>">
             <meta itemprop="price" content="<?php echo $price?>">
             <meta itemprop="priceCurrency" content="RUB">
             <meta itemprop="seller" content="Plantis">
@@ -406,7 +380,7 @@ function plnt_product_artikul() {
 	$sku = $product->get_sku();
     
 	if( $sku ) { // если заполнен, то выводим
-		echo '<p class="product__artikul" itemprop="sku">Артикул: ' . $sku . '</p>';
+		echo '<p class="product__artikul">Артикул: <span itemprop="sku">' . $sku . '</span> </p>';
 	}
 };
 

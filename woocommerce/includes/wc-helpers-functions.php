@@ -183,6 +183,45 @@ function plnt_check_stock_status() {
 }
 
 /*--------------------------------------------------------------
+# HELPERS for SEO & Schema.org
+--------------------------------------------------------------*/
+
+function plnt_get_availability_text($product) {
+    global $plants_cat_id;
+    $parentCatId = check_category ($product);
+    if($product->get_manage_stock() && $product->get_stock_status() ==='instock') {
+        return 'InStock';
+    } 
+    if ((!$product->get_manage_stock() && $product->get_stock_status() ==='instock') || 
+        $product->get_stock_status() ==='onbackorder') {
+        return 'BackOrder';
+    }
+    if ($product->get_stock_status() ==='outofstock' &&  $parentCatId == $plants_cat_id) {
+        return 'PreOrder';
+    }
+    if ($product->get_stock_status() ==='outofstock' &&  $parentCatId != $plants_cat_id) {
+        return 'OutOfStock';
+    }
+}
+
+function plnt_get_brand_text($idCats) {
+    global $treez_cat_id;
+    global $treez_poliv_cat_id;
+    global $plants_treez_cat_id;
+    global $lechuza_cat_id;
+    $brand = '';
+    if (in_array($treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats) || in_array($plants_treez_cat_id, $idCats)) {
+        $brand = 'Treez';
+    } else if (in_array($lechuza_cat_id, $idCats)) {
+        $brand = 'Lechuza';
+    } else {
+        $brand = 'Plantis';
+    }
+    return $brand;
+}
+
+
+/*--------------------------------------------------------------
 # HELPERS for cart & checkout
 --------------------------------------------------------------*/
 
