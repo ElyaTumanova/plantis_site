@@ -380,7 +380,7 @@ function plnt_product_artikul() {
 	$sku = $product->get_sku();
     
 	if( $sku ) { // если заполнен, то выводим
-		echo '<p class="product__artikul" itemprop="sku">Артикул: ' . $sku . '</p>';
+		echo '<p class="product__artikul">Артикул: <span itemprop="sku">' . $sku . '</span> </p>';
 	}
 };
 
