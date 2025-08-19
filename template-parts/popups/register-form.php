@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         <div class="u-column2 col-2">
 
-            <h2><?php esc_html_e( 'Register', 'woocommerce' ); ?></h2>
+            <h4><?php esc_html_e( 'Register', 'woocommerce' ); ?></h4>
 
             <form method="post" class="woocommerce-form woocommerce-form-register register" <?php do_action( 'woocommerce_register_form_tag' ); ?> >
 
