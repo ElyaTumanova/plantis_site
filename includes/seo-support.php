@@ -119,13 +119,21 @@ function plnt_schema_json() {
         $price = number_format($product->get_price(), 2, '.', '');
         $availability = plnt_get_availability_text($product);
 
+        $images = [];
+
+        $main_img = wp_get_attachment_url( $product->get_image_id() );
+        if ( $main_img ) {
+            $images[] = $main_img;
+        }
+
+        // Дополнительные из галереи
         $attachment_ids = $product->get_gallery_image_ids();
-
-        $images = ["image"    => wp_get_attachment_url( $product->get_image_id() ),];
-
-        foreach( $attachment_ids as $attachment_id ) {
-            $images["image"] = wp_get_attachment_image( $attachment_id);
-        };
+        foreach ( $attachment_ids as $attachment_id ) {
+            $img_url = wp_get_attachment_url( $attachment_id );
+            if ( $img_url ) {
+                $images[] = $img_url;
+            }
+        }
 
         $offers = [
             "@type"         => "Offer",
