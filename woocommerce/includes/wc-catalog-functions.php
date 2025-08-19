@@ -474,23 +474,8 @@ function plnt_get_catalog_schema_data() {
             <meta itemprop="price" content="<?php echo $price?>">
             <meta itemprop="priceCurrency" content="RUB">
         <?php
-        if($product->get_manage_stock() && $product->get_stock_status() ==='instock') {
-            // echo 'InStock';
-            ?><link itemprop="availability" href="http://schema.org/InStock"><?php
-        } 
-        if ((!$product->get_manage_stock() && $product->get_stock_status() ==='instock') || 
-            $product->get_stock_status() ==='onbackorder') {
-            // echo 'BackOrder';
-            ?><link itemprop="availability" href="http://schema.org/BackOrder"><?php
-        }
-        if ($product->get_stock_status() ==='outofstock' &&  $parentCatId == $plants_cat_id) {
-            //echo 'PreOrder';
-            ?><link itemprop="availability" href="http://schema.org/PreOrder"><?php
-        }
-        if ($product->get_stock_status() ==='outofstock' &&  $parentCatId != $plants_cat_id) {
-            //echo 'OutOfStock';
-            ?><link itemprop="availability" href="http://schema.org/OutOfStock"><?php
-        }
+        $availability = plnt_get_availability_text($product);
+        ?><link itemprop="availability" href="http://schema.org/<?php echo $availability?>"><?php
     }
 }
 /*--------------------------------------------------------------

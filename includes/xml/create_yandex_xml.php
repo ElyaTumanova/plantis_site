@@ -164,19 +164,12 @@ foreach($allproducts as $allproduct){
         }
     }  
 
-    $brand = '';
     $cats = get_the_terms($allproduct->ID,'product_cat');
     $idCats = [];
     foreach ($cats as $cat) {
         array_push($idCats, $cat->term_id);
     }
-    if (in_array($treez_cat_id, $idCats) || in_array($treez_poliv_cat_id, $idCats) || in_array($plants_treez_cat_id, $idCats)) {
-        $brand = 'Treez';
-    } else if (in_array($lechuza_cat_id, $idCats)) {
-        $brand = 'Lechuza';
-    } else {
-        $brand = 'Plantis';
-    }
+    $brand = plnt_get_brand_text($idCats);
     
     $yandex_xml .= 
     "<offer id='".$allproduct->ID."' available='true'>
@@ -213,7 +206,7 @@ foreach($allproducts as $allproduct){
     //Название и описание
     $yandex_xml .= "<name>".htmlspecialchars($allproduct->post_title)."</name>
     <description><![CDATA['".htmlspecialchars(strip_tags($allproduct->post_content))."]]></description>
-    <vendor>".$brand."</vendor>";
+    <brand>".$brand."</brand>";
 
     //Параметры товара
 
