@@ -120,10 +120,6 @@ function truemisha_reorder_tabs( $tabs ) {
 add_filter( 'woocommerce_product_tabs', 'truemisha_rename_tabs', 25 );
  
 function truemisha_rename_tabs( $tabs ) {
-    echo ('<pre>');
-    print_r($tabs);
-    echo ('</pre>');
-
     global $parentCatId;
     global $plants_cat_id;
     if( $parentCatId === $plants_cat_id ) {
