@@ -45,6 +45,13 @@
     display: none;
 }
 
+.plnt-customer-login-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+}
+
 .login-popup .page-popup__container, .register-popup .page-popup__container {
     max-width: 600px;
 }
