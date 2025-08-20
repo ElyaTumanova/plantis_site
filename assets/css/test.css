@@ -8,8 +8,8 @@
     grid-template-rows: auto auto auto auto;
     grid-template-areas: "question"
     "answers"
-    "img"
-    "error";
+    "error"
+    "img";
     column-gap: 40px;
     row-gap: 30px;
     margin-top: 30px;
