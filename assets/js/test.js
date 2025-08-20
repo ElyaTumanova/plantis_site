@@ -103,9 +103,9 @@ class Question
     this.answers.forEach(answer => {
       console.log(answer);
       this.answerElementDiv = document.createElement('div');
+       this.answerElementDiv.classList.add('test__answer');
       this.answerElementInput = document.createElement('input');
       this.answerElementLabel = document.createElement('label');
-      this.answerElementLabel.classList.add('test__answer');
       this.answerElementLabel.setAttribute('for', answer.type.slug);
       this.answerElementInput.setAttribute('type', 'radio');
       this.answerElementInput.setAttribute('name', 'answer');
