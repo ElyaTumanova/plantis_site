@@ -45,6 +45,13 @@
     display: none;
 }
 
+.plnt-customer-login-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+}
+
 .login-popup .page-popup__container, .register-popup .page-popup__container {
     max-width: 600px;
 }
@@ -600,10 +607,14 @@
 .plnt-order__delivery-row {
     display: flex;
     column-gap: 15px;
-    margin-bottom: 10px;
+    margin: 10px 0;
     line-height: 1.4;
     font-size: 18px;
     font-style: normal;
+}
+
+.plnt-order__delivery-label {
+    font-weight: 700;
 }
 
 /* адрес клиента */ 

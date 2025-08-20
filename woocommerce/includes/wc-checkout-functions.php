@@ -7,11 +7,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 Contents
 # Backorders
 # Checkout page adjustments
-# Billing adress field
 # Delivery date & Interval fields
 # Notifications
 # Treez & Lechuza notifications
+# Checkout form fields
+# Dont call me radio buttons
+# INN field
+# Billing adress field
+# T Bank
 # Thankyou page
+# Additional fields for admin
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -27,7 +32,7 @@ Contents
         if( is_checkout( ) && ! is_wc_endpoint_url()) {
             foreach ( WC()->cart->get_cart() as $cart_item ) {
                 $_product = $cart_item['data'];
-                $_product_id = $_product->id;
+                $_product_id = $_product->get_id();
                 $qty = $cart_item[ 'quantity' ];
                 $stock_qty = $_product->get_stock_quantity();
                 
@@ -49,7 +54,7 @@ Contents
         } else {
             $isbackorders = plnt_is_backorder();
             if( $isbackorders) {
-                unset( $available_gateways['tinkoff'] ); //to do change to tinkoff
+                unset( $available_gateways['tbank'] ); //to do change to tbank
                 unset( $available_gateways['cop'] ); 
             }
             return $available_gateways;
@@ -110,8 +115,8 @@ Contents
 
     // function plnt_delivery_condition_info () {
     //     echo '<div class="checkout__text checkout__text_delivery-info">
-    //         После оформления заказа мы свяжемся с вами в <a href="https://plantis.shop/contacts/">рабочее время</a> и согласуем время доставки.
-    //         <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a> <br>
+    //         После оформления заказа мы свяжемся с вами в <a href="https://plantis-shop.ru/contacts/">рабочее время</a> и согласуем время доставки.
+    //         <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a> <br>
     //         Важно! Срочную доставку "день в день" можно оформить до 18 часов.</div>';
     // }
 
@@ -166,66 +171,6 @@ Contents
         }
         echo '</div>';
     }
-/*--------------------------------------------------------------
-# Billing adress field
---------------------------------------------------------------*/
-    // делим поле billing_address_2 на несколько полей//
-
-    add_filter( 'woocommerce_form_field_text', 'true_fields', 25, 4 );
-    
-    function true_fields( $field, $key, $args, $value ) {
-    
-        if( 'billing_address_2' === $key ) {
-    
-            $field = '<p class="form-row address-field additional-address-field form-row-wide" data-priority="60">
-                <span class="woocommerce-input-wrapper true-wrapper woocommerce-address-wrapper">
-                    <input type="text" name="billing_address_2" id="billing_address_2" placeholder="Квартира" value="">
-                    <input type="text" name="billing_address_3" id="billing_address_3" placeholder="Подъезд" value="">
-                    <input type="text" name="billing_address_4" id="billing_address_4" placeholder="Этаж" value="">
-                    <input type="text" name="billing_address_5" id="billing_address_5" placeholder="Дополнительная информация" value="">
-                </span>
-            </p>';
-    
-        }
-    
-        return $field;
-    
-    }
-
-    add_filter( 'woocommerce_checkout_posted_data', 'true_process_fields' );
-    
-    function true_process_fields( $data ) {
-    
-        // в поле billing_address_2 мы и будем записывать новые значения полей
-        $data[ 'billing_address_2' ] = '';
-        $fields = array();
-    
-        // получаем данные из глобального $_POST, сначала парадную (подъезд)
-        if( ! empty( $_POST[ 'billing_address_2' ] ) ) {
-            $fields[] = 'квартира ' . $_POST[ 'billing_address_2' ];
-        }
-
-        if( ! empty( $_POST[ 'billing_address_3' ] ) ) {
-            $fields[] = 'подъезд ' . $_POST[ 'billing_address_3' ];
-        }
-        // затем этаж
-        if( ! empty( $_POST[ 'billing_address_4' ] ) ) {
-            $fields[] = 'этаж ' . $_POST[ 'billing_address_4' ];
-        }
-
-        // затем доп поля
-        if( ! empty( $_POST[ 'billing_address_5' ] ) ) {
-            $fields[] = ' ' . $_POST[ 'billing_address_5' ];
-        }
-
-        // объединяем все заполненные данные запятой
-        $data[ 'billing_address_2' ] = join( ', ', $fields );
-    
-        // возвращаем результат
-        return $data;
-    
-    }
-
 /*--------------------------------------------------------------
 # Delivery date & Interval fields
 --------------------------------------------------------------*/
@@ -460,7 +405,7 @@ Contents
         foreach ( WC()->cart->get_cart() as $cart_item ) {
             if( $cart_item['data']->get_shipping_class() == $class_slug ){
                 echo '<tr> <td colspan="2" class="checkout__text checkout__text_large">
-                Вы выбрали крупногабаритный товар. Стоимость доставки увеличена. <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></td></tr>';
+                Вы выбрали крупногабаритный товар. Стоимость доставки увеличена. <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></td></tr>';
                 break; // Stop the loop
             } 	
         }
@@ -472,14 +417,13 @@ Contents
     add_action('plnt_large_delivery_notice', 'plnt_large_delivery_notice');
 
     function plnt_large_delivery_notice() {
-      
-        // вес товаров в корзине
-        $cart_weight = WC()->cart->cart_contents_weight;
 
-        if ($cart_weight >= 11) {
-            echo '<div class=large_delivery_notice>
-            <img class=large_delivery_img src="https://plantis.shop/wp-content/uploads/2024/08/car.svg" alt="car">
-            <p>Для заказа предусмотрена крупногабаритная доставка!</p></div>';
+        if (check_if_large_delivery()) {
+            ?>
+            <div class=large_delivery_notice>
+            <img class=large_delivery_img src="https://plantis-shop.ru/wp-content/themes/plantis_site/images/icons/car.svg" alt="car">
+            <p>Для заказа предусмотрена крупногабаритная доставка!</p></div>
+            <?php
         }
         
     }
@@ -493,10 +437,10 @@ Contents
         $min_small_delivery = carbon_get_theme_option('min_small_delivery');
         $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
         $shipping_costs = plnt_get_shiping_costs();
+        global $delivery_inMKAD;
+        global $delivery_outMKAD;
         global $delivery_courier;
         global $delivery_long_dist;
-        global $urgent_deliveries;
-        global $normal_deliveries;
         global $local_pickup;
         global $delivery_pochta;
 
@@ -507,53 +451,54 @@ Contents
 
         echo '<div class="checkout__comment">';
 
-        //Срочная доставка "День в день"
+        //обычная доставка за и в пределах МКАД
 
-        if ( in_array($chosen_methods[0],$urgent_deliveries) ) {
-            if($hour < 18) {
-                echo '<div class="checkout__text checkout__text_urgent">
-                    Срочную доставку можно оформить до 18:00. 
-                    После оформления заказа мы свяжемся с вами для его подтверждения. 
-                    <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';
-            }
-        //при оформлении после 20:00-00:00 текущего дня
-            if($hour >= 20) {
-                echo '<div class="checkout__text checkout__text_normal-late">
-                    При оформлении после 20:00 доставки на следующий день стоимость рассчитывается по тарифу срочной доставки. 
-                    После оформления заказа мы свяжемся с вами в рабочее время для его подтверждения.</div>';
-            }
-        }
-        
-        //Доставка в пределах МКАД 
-        
-        if ( in_array($chosen_methods[0],$normal_deliveries) ) {
-            //при оформлении до 20:00
-            if ($hour < 20) {
-                echo '<div class="checkout__text checkout__text_normal">
-                    После оформления заказа мы свяжемся с вами в рабочее время с 10:00 до 20:00 для его подтверждения. 
-                    <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';
+        if ($delivery_inMKAD == $chosen_methods[0] || $delivery_outMKAD == $chosen_methods[0]) {
+
+            //Срочная доставка "День в день"
+
+            if ( WC()->session->get('isUrgent' ) === '1') {
+                if($hour < 18) {
+                    echo '<div class="checkout__text checkout__text_urgent">
+                        Срочную доставку можно оформить до 18:00. 
+                        После оформления заказа мы свяжемся с вами для его подтверждения. 
+                        <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';
+                }
             //при оформлении после 20:00-00:00 текущего дня
-            } else {
-                echo '<div class="checkout__text checkout__text_normal-late">
-                    При оформлении после 20:00 доставки на следующий день стоимость рассчитывается по тарифу срочной доставки. 
-                    После оформления заказа мы свяжемся с вами в рабочее время для его подтверждения.</div>';
+                if($hour >= 20) {
+                    echo '<div class="checkout__text checkout__text_normal-late">
+                        При оформлении после 20:00 доставки на следующий день стоимость рассчитывается по тарифу срочной доставки. 
+                        После оформления заказа мы свяжемся с вами в рабочее время для его подтверждения.</div>';
+                }
             }
-        }
         
-        if ( in_array($chosen_methods[0],$normal_deliveries) || in_array($chosen_methods[0],$urgent_deliveries)) {
+            //Доставка не срочная
+            if ( WC()->session->get('isUrgent' ) === '0' ) {
+                //при оформлении до 20:00
+                if ($hour < 20) {
+                    echo '<div class="checkout__text checkout__text_normal">
+                        После оформления заказа мы свяжемся с вами в рабочее время с 10:00 до 20:00 для его подтверждения. 
+                        <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';
+                //при оформлении после 20:00-00:00 текущего дня
+                } else {
+                    echo '<div class="checkout__text checkout__text_normal-late">
+                        При оформлении после 20:00 доставки на следующий день стоимость рассчитывается по тарифу срочной доставки. 
+                        После оформления заказа мы свяжемся с вами в рабочее время для его подтверждения.</div>';
+                }
+            }
             
             //Доставка заказов до 1500 рублей
             if (WC()->cart->subtotal < $min_small_delivery) {
                 if(!array_key_exists($delivery_courier,$shipping_costs)) {
                     echo '<div class="checkout__text checkout__text_small-order">
                     При заказе на сумму менее '.$min_small_delivery,' рублей стоимость доставки увеличена. 
-                    <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></div';
-                } else if ($delivery_courier == $chosen_methods[0] && WC()->session->get('date' ) !== '08.03') {
+                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></div';
+                } else if ($delivery_courier == $chosen_methods[0] ) {
                     echo '<div class="checkout__text checkout__text_small-order-holiday">
                     В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью до '.$min_small_delivery,' рублей доставляются в любой день по тарифу курьерской службы. 
                     Мы свяжемся с Вами после оформления заказа и произведем расчет стоимости доставки. 
                     Также, вы можете самостоятельно бесплатно забрать заказ в нашем магазине, оформив самовывоз.
-                    <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
+                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a>
                     </div>';
                 }  
             }
@@ -562,13 +507,13 @@ Contents
                 if(!array_key_exists($delivery_courier,$shipping_costs)) {
                     echo '<div class="checkout__text checkout__text_small-order">
                     При заказе на сумму менее '.$min_medium_delivery,' рублей стоимость доставки увеличена. 
-                    <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки.</a></div';
-                } else if ($delivery_courier == $chosen_methods[0] && WC()->session->get('date' ) !== '08.03') {
+                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></div';
+                } else if ($delivery_courier == $chosen_methods[0] ) {
                     echo '<div class="checkout__text checkout__text_small-order-holiday">
                     В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью до '.$min_medium_delivery,' рублей доставляются в любой день по тарифу курьерской службы. 
                     Мы свяжемся с Вами после оформления заказа и произведем расчет стоимости доставки. 
                     Также, вы можете самостоятельно бесплатно забрать заказ в нашем магазине, оформив самовывоз.
-                    <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
+                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a>
                     </div>';
                 }  
        
@@ -580,7 +525,7 @@ Contents
             echo '<div class="checkout__text checkout__text_long-dist">
                 Доставка на расстояние свыше 5км от МКАД осуществляется по тарифам курьерской службы. 
                 Мы свяжемся с Вами после оформления заказа в рабочее время с 10:00 до 20:00 и рассчитаем стоимость доставки.
-                <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
+                <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a>
                 </div>';
         }
 
@@ -594,7 +539,7 @@ Contents
                 Рассчитать стоимость и срок доставки вы можете на <a href="https://www.pochta.ru/shipment?type=PARCEL">сайте</a> "Почты России".
                 Оплатить заказ можно будет после его оформления.
                 Мы свяжемся с Вами после оформления заказа в рабочее время с 10:00 до 20:00.
-                <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
+                <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a>
                 </div>';
         }
 
@@ -602,11 +547,11 @@ Contents
         if ( $local_pickup == $chosen_methods[0]) {
             echo '<div class="checkout__text checkout__text_local-pickup">
                 После оформления заказа мы свяжемся с вами в рабочее время с 10:00 до 20:00 для его подтверждения.
-                <a href="https://plantis.shop/delivery/">Подробнее об условиях доставки и самовывоза.</a>
+                <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a>
                 </div>';
         }
 
-        if (WC()->session->get('date' ) === '08.03' && $delivery_courier == $chosen_methods[0]) {
+        if ($delivery_courier == $chosen_methods[0]) {
             echo '<div class="checkout__text checkout__text_holiday">
                 В связи с высокой загрузкой курьеров в праздничные дни заказы доставляются по тарифу курьерской службы. 
                 Мы свяжемся с Вами после оформления заказа и произведем расчет стоимости доставки. 
@@ -868,7 +813,7 @@ Contents
             }
         
             if( $products_min) {
-                unset( $available_gateways['tinkoff'] );
+                unset( $available_gateways['tbank'] );
                 //unset( $available_gateways['bacs'] );
             }
             return $available_gateways;
@@ -890,7 +835,7 @@ Contents
             }
         
             if( $products_min) {
-                unset( $available_gateways['tinkoff'] );
+                unset( $available_gateways['tbank'] );
             }
             return $available_gateways;
         }
@@ -919,6 +864,295 @@ Contents
     }
 
 /*--------------------------------------------------------------
+# Checkout form fields
+--------------------------------------------------------------*/
+// редактируем поля формы
+add_filter( 'woocommerce_checkout_fields', 'plnt_override_checkout_fields' );
+
+function plnt_override_checkout_fields( $fields ) {
+    //убираем ненужные поля
+    unset( $fields['billing']['billing_last_name'] );
+    unset( $fields['billing']['billing_city'] );
+    unset( $fields['billing']['billing_state'] );
+    unset( $fields['billing']['billing_postcode'] );
+
+    //меняем порядок вывода полей
+    $fields['billing']['billing_phone']['priority'] = 20;
+    $fields['billing']['billing_email']['priority'] = 20;
+    $fields['billing']['billing_address_2']['priority'] = 40;
+
+    //добавляем placeholder
+    $fields['billing']['billing_first_name']['placeholder'] = 'Имя (обязательно)';
+    $fields['billing']['billing_phone']['placeholder'] = 'Телефон (обязательно)';
+    $fields['billing']['billing_email']['placeholder'] = 'Email (обязательно)';
+    //делаем обязательным
+    $fields['billing']['billing_first_name']['required'] = true;
+    $fields['billing']['billing_phone']['required'] = true;
+    $fields['billing']['billing_email']['required'] = true;
+    $fields['billing']['billing_address_1']['required'] = false;
+    $fields['billing']['billing_address_2']['required'] = false;
+    
+
+    return $fields;
+}
+
+//убираем заголовки
+add_filter( 'woocommerce_checkout_fields', 'hide_all_billing_field_labels' );
+function hide_all_billing_field_labels( $fields ) {
+    foreach ( $fields['billing'] as $key => &$field ) {
+        $field['label'] = ''; // Удаляем заголовок
+    }
+
+    if ( isset( $fields['order']['order_comments'] ) ) {
+        $fields['order']['order_comments']['label'] = '';
+    }
+
+    return $fields;
+}
+
+//добавляем поле с примечанием в админку
+add_action( 'woocommerce_checkout_create_order', 'plnt_save_order_comments_field', 10, 2 );
+function plnt_save_order_comments_field( $order, $data ) {
+	if ( isset( $_POST['order_comments'] ) ) {
+		$order->update_meta_data( '_order_comments', sanitize_textarea_field( $_POST['order_comments'] ) );
+	}
+}
+
+/*--------------------------------------------------------------
+# Dont call me radio buttons
+--------------------------------------------------------------*/
+
+add_filter( 'woocommerce_checkout_fields', 'plnt_add_dontcallme_field_to_checkout' );
+
+function plnt_add_dontcallme_field_to_checkout( $fields ) {
+    $fields['billing']['dontcallme'] = array(
+        'type'        => 'radio',
+        'label'       => 'Не нужно звонков, напишите сразу в WhatsApp;)',
+        'required'    => true,
+        'class'       => array( 'form-row dontcallme' ),
+        'options'     => array(
+            'Да' => 'Да',
+            'Нет'   => 'Нет',
+        ),
+        'default'     => 'Нет',
+    );
+
+    $fields['billing']['dontcallme']['priority'] = 30;
+
+    return $fields;
+}
+
+// // сохряняем новое поле в заказе
+
+
+add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_dontcallme_fields', 25 );
+
+function plnt_save_dontcallme_fields( $order_id ){
+
+    if( ! empty( $_POST[ 'dontcallme' ] ) ) {
+        update_post_meta( $order_id, 'dontcallme', sanitize_text_field( $_POST[ 'dontcallme' ] ) );
+    }
+}
+
+// // добавляем поле в админку
+
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_doncallme_field_value', 20 );
+
+function plnt_print_doncallme_field_value( $order ){
+
+    $method = get_post_meta( $order->get_id(), 'dontcallme', true );
+
+    echo '<div class="address">
+        <p' . ( ! $method ? ' class="none_set"' : '' ) . '>
+            <strong>Не нужно звонков, напишите сразу в WhatsApp;)</strong>
+            ' . ( $method ? $method : 'Не указан.' ) . '
+        </p>
+    </div>';
+}
+
+
+// // добавляем новые поля в письма
+
+add_filter( 'woocommerce_get_order_item_totals', 'plnt_dontcallme_field_in_email', 20, 2 );
+    
+function plnt_dontcallme_field_in_email( $rows, $order ) {
+
+    // удалите это условие, если хотите добавить значение поля и на страницу "Заказ принят"
+    // if( is_order_received_page() ) {
+    // 	return $rows;
+    // }
+
+    $rows[ 'dontcallme' ] = array(
+        'label' => 'Не нужно звонков, напишите сразу в WhatsApp;)',
+        'value' => get_post_meta( $order->get_id(), 'dontcallme', true )
+    );
+
+    return $rows;
+
+}
+
+/*--------------------------------------------------------------
+# INN field
+--------------------------------------------------------------*/
+
+add_filter( 'woocommerce_checkout_fields', 'plnt_add_inn_field_to_checkout' );
+
+function plnt_add_inn_field_to_checkout( $fields ) {
+    $fields['order']['additional_inn'] = array(
+        'type'        => 'text',
+        'label'       => '',
+        'placeholder' => 'ИНН (для оплаты по счету)',
+        'required'    => false,
+        'class'       => array( 'form-row inn' )
+    );
+
+    return $fields;
+}
+
+// // сохряняем новое поле в заказе
+
+add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_inn_fields', 25 );
+
+function plnt_save_inn_fields( $order_id ){
+
+    if( ! empty( $_POST[ 'additional_inn' ] ) ) {
+        update_post_meta( $order_id, 'additional_inn', sanitize_text_field( $_POST[ 'additional_inn' ] ) );
+    }
+}
+
+// // добавляем поле в админку
+
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_inn_field_value', 20 );
+
+function plnt_print_inn_field_value( $order ){
+
+    $method = get_post_meta( $order->get_id(), 'additional_inn', true );
+
+    echo '<div class="address">
+        <p' . ( ! $method ? ' class="none_set"' : '' ) . '>
+            <strong>ИНН (для оплаты по счету)</strong>
+            ' . ( $method ? $method : 'Не указан.' ) . '
+        </p>
+    </div>';
+}
+
+
+// // добавляем новые поля в письма
+
+add_filter( 'woocommerce_get_order_item_totals', 'plnt_inn_field_in_email', 20, 2 );
+    
+function plnt_inn_field_in_email( $rows, $order ) {
+
+    // удалите это условие, если хотите добавить значение поля и на страницу "Заказ принят"
+    // if( is_order_received_page() ) {
+    // 	return $rows;
+    // }
+
+    $rows[ 'additional_inn' ] = array(
+        'label' => 'ИНН (для оплаты по счету)',
+        'value' => get_post_meta( $order->get_id(), 'additional_inn', true )
+    );
+
+    return $rows;
+
+}
+
+/*--------------------------------------------------------------
+# Billing adress field
+--------------------------------------------------------------*/
+    // делим поле billing_address_2 на несколько полей//
+
+    add_filter( 'woocommerce_form_field_text', 'true_fields', 25, 4 );
+    
+    function true_fields( $field, $key, $args, $value ) {
+    
+        if( 'billing_address_2' === $key ) {
+    
+            $field = '<p class="form-row address-field additional-address-field form-row-wide" data-priority="60">
+                <span class="woocommerce-input-wrapper true-wrapper woocommerce-address-wrapper">
+                    <input type="text" name="billing_address_2" id="billing_address_2" placeholder="Квартира" value="">
+                    <input type="text" name="billing_address_3" id="billing_address_3" placeholder="Подъезд" value="">
+                    <input type="text" name="billing_address_4" id="billing_address_4" placeholder="Этаж" value="">
+                    <input type="text" name="billing_address_5" id="billing_address_5" placeholder="Дополнительная информация" value="">
+                </span>
+            </p>';
+    
+        }
+    
+        return $field;
+    
+    }
+
+    add_filter( 'woocommerce_checkout_posted_data', 'true_process_fields' );
+    function true_process_fields( $data ) {
+    
+        // в поле billing_address_2 мы и будем записывать новые значения полей
+        $data[ 'billing_address_2' ] = '';
+        $fields = array();
+    
+        // получаем данные из глобального $_POST, сначала парадную (подъезд)
+        if( ! empty( $_POST[ 'billing_address_2' ] ) ) {
+            $fields[] = 'квартира ' . $_POST[ 'billing_address_2' ];
+        }
+
+        if( ! empty( $_POST[ 'billing_address_3' ] ) ) {
+            $fields[] = 'подъезд ' . $_POST[ 'billing_address_3' ];
+        }
+        // затем этаж
+        if( ! empty( $_POST[ 'billing_address_4' ] ) ) {
+            $fields[] = 'этаж ' . $_POST[ 'billing_address_4' ];
+        }
+
+        // затем доп поля
+        if( ! empty( $_POST[ 'billing_address_5' ] ) ) {
+            $fields[] = ' ' . $_POST[ 'billing_address_5' ];
+        }
+
+        // объединяем все заполненные данные запятой
+        $data[ 'billing_address_2' ] = join( ', ', $fields );
+    
+        // возвращаем результат
+        return $data;
+    
+    }
+
+    add_action( 'woocommerce_checkout_update_order_meta', 'true_save_combined_address' );
+    function true_save_combined_address( $order_id ) {
+        $fields = [];
+
+        if ( ! empty( $_POST['billing_address_2'] ) ) {
+            $fields[] = 'квартира ' . sanitize_text_field( $_POST['billing_address_2'] );
+        }
+        if ( ! empty( $_POST['billing_address_3'] ) ) {
+            $fields[] = 'подъезд ' . sanitize_text_field( $_POST['billing_address_3'] );
+        }
+        if ( ! empty( $_POST['billing_address_4'] ) ) {
+            $fields[] = 'этаж ' . sanitize_text_field( $_POST['billing_address_4'] );
+        }
+        if ( ! empty( $_POST['billing_address_5'] ) ) {
+            $fields[] = sanitize_text_field( $_POST['billing_address_5'] );
+        }
+
+        $address = implode( ', ', $fields );
+
+        update_post_meta( $order_id, '_billing_address_2', $address );
+    }
+
+/*--------------------------------------------------------------
+# T Bank
+--------------------------------------------------------------*/
+    add_filter('woocommerce_available_payment_gateways', 'plnt_move_tbank_up');
+    function plnt_move_tbank_up($available_gateways) {
+        if (isset($available_gateways['tbank'])) {
+            $tbank = $available_gateways['tbank'];
+            unset($available_gateways['tbank']);
+            $new_gateways = ['tbank' => $tbank] + $available_gateways;
+            return $new_gateways;
+        }
+
+        return $available_gateways;
+    }
+/*--------------------------------------------------------------
 # Thankyou page
 --------------------------------------------------------------*/
 
@@ -932,5 +1166,106 @@ Contents
 
         return $thank_you_msg;
     }
+
+
+
+/*--------------------------------------------------------------
+# Additional fields for admin
+--------------------------------------------------------------*/
+    add_action( 'add_meta_boxes', 'plnt_add_custom_fields_meta_box' );
+    function plnt_add_custom_fields_meta_box() {
+        add_meta_box(
+            'plnt_custom_order_fields',
+            'Дополнительные поля заказа',
+            'plnt_render_custom_fields_meta_box',
+            'shop_order',
+            'side',
+            'default'
+        );
+    }
+
+    function plnt_render_custom_fields_meta_box( $post ) {
+        $fields = [
+            'plnt_payment_method'      => ['Способ оплаты', 'select'],
+            'plnt_client_status'      => ['Статус клиента', 'select'],
+            'plnt_client_origin'  => ['Откуда пришел клиент', 'select'],
+            'plnt_paid'     => ['Оплачен?', 'select'],
+            'plnt_comment'     => ['Комментарий', 'text'],
+        ];
+
+        $select_field_options = [
+            'plnt_payment_method' => [
+                'site'   => 'На сайте',
+                'ssylka'   => 'По ссылке',
+                'nal'    => 'Наличными',
+                'perevod' => 'Переводом',
+                'schet' => 'По счету',
+                'other' => 'Иное',
+            ],
+            'plnt_client_status' => [
+                'new' => 'Новый',
+                'requring'  => 'Повтор',
+                'other' => 'Иное',
+            ],
+            'plnt_client_origin' => [
+                'site' => 'Сайт',
+                'preorder'  => 'Предзаказ',
+                'messenger' => 'Мессенджер',
+                'mail' => 'Письмо',
+                'call' => 'Звонок',
+                'other' => 'Иное',
+            ],
+            'plnt_paid' => [
+                'yes' => 'Да',
+                'no'  => 'Нет',
+                'other' => 'Иное',
+            ],
+        ];
+
+        foreach ( $fields as $key => $field ) {
+            $label = $field[0];
+            $type  = $field[1];
+            $value = get_post_meta( $post->ID, '_' . $key, true );
+
+            echo '<p><label for="' . esc_attr($key) . '">' . esc_html($label) . '</label><br />';
+
+            if ( $type === 'select' ) {
+                echo '<select name="' . esc_attr($key) . '" id="' . esc_attr($key) . '" style="width:100%">';
+                echo '<option value="">— Выберите —</option>';
+                if ( isset( $select_field_options[ $key ] ) ) {
+                    foreach ( $select_field_options[ $key ] as $option_value => $option_label ) {
+                        $selected = selected( $value, $option_value, false );
+                        echo '<option value="' . esc_attr($option_value) . '" ' . $selected . '>' . esc_html($option_label) . '</option>';
+                    }
+                }
+                echo '</select>';
+            } else {
+                echo '<input type="text" style="width:100%" name="' . esc_attr($key) . '" id="' . esc_attr($key) . '" value="' . esc_attr($value) . '" />';
+            }
+
+            echo '</p>';
+        }
+    }
+
+    function plnt_save_custom_fields_meta_box( $post_id ) {
+        $fields = [
+            'plnt_payment_method',
+            'plnt_client_status',
+            'plnt_client_origin',
+            'plnt_paid',
+            'plnt_comment',
+        ];
+
+        foreach ( $fields as $field ) {
+            if ( isset( $_POST[ $field ] ) ) {
+                update_post_meta( $post_id, '_' . $field, sanitize_text_field( $_POST[ $field ] ) );
+            }
+        }
+    }
+
+    add_action( 'save_post_shop_order', 'plnt_save_custom_fields_meta_box', 20, 2 );
+
+
+
 
 

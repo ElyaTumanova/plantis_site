@@ -20,7 +20,7 @@
 			?>
 		<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'art-starter-theme' ),
+				'before' => '<div class="page-links">' . __( 'Pages:', 'plantis-theme' ),
 				'after'  => '</div>',
 			) );
 		?>

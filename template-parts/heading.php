@@ -9,31 +9,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="header__info">
 				<div class="header__info-wrap container">
 					<nav class="header__info-navigation" role="navigation">
-						<?php plnt_secondary_menu(); ?>
+                        <?php 
+                            get_template_part( 'template-parts/info-menu-header');
+                        ?>
 					</nav>
 					<div class="header__phones"><a href="tel:+78002015790">8 800 201 57 90</a> | <a href="tel:+79647687944">8 964 768 79 44</a></div>
-					<div class="header__working-hours">Eжедневно с 10 до 20</div>
+					<!-- <div class="header__working-hours">Eжедневно с 10 до 20</div> -->
 				</div>
 			</div>
 			<div class="header__notice-wrap">
-				<?php get_template_part( 'template-parts/header-notice' );?>
+				<?php 
+                    get_template_part( 'template-parts/header-notice' );
+                ?>
 			</div>
 
 			<div class="header__main">
 				<div class="container">
-					<div class="header__wrap">
+					<div class="header__wrap_logo">
 						<div class="logo">
 							<?php $logo = carbon_get_theme_option('logo');?>
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
 						</div><!-- .logo -->
-						<div class="header__catalog button"> 
-							<div class="header__catalog_icon">
-							<svg class="header__catalog_icon-svg" width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 1H0" stroke="white" stroke-width="1.5" stroke-miterlimit="10"></path></svg>
-							<svg class="header__catalog_icon-svg" width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 1H0" stroke="white" stroke-width="1.5" stroke-miterlimit="10"></path></svg>
-							<svg class="header__catalog_icon-svg" width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 1H0" stroke="white" stroke-width="1.5" stroke-miterlimit="10"></path></svg>
-							</div>
-							Каталог
-						</div>
 					</div>
 					<div class="header__description">
 						<?php $site_title = carbon_get_theme_option('site_title')?>
@@ -86,14 +82,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</div><!-- .header-cart -->
 					</div>
 				</div>
-			</div>
-			
-			<div class="header__menu">
-				<div class="container">
-					<nav id="site-navigation" class="main-navigation" role="navigation">
-						<?php //plnt_primary_menu(); ?>
-					</nav><!-- #site-navigation -->
-				</div>
+                <?php 
+                    get_template_part( 'template-parts/menu-primary-header');
+                ?>
 			</div>
 		</div>
 

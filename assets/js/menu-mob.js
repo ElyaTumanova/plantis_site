@@ -54,10 +54,10 @@ function catalogMenuInit() {
 }
 
 
-menuMobOpen.addEventListener ("click", plntAjaxShowCatalogMobMenu,{once:true});
-menuMobOpen.addEventListener ("click", (evt)=>{
-    catalogMobOpen.removeEventListener("click", plntAjaxShowCatalogMobMenu)
-});
+// menuMobOpen.addEventListener ("click", plntAjaxShowCatalogMobMenu,{once:true});
+// menuMobOpen.addEventListener ("click", (evt)=>{
+//     catalogMobOpen.removeEventListener("click", plntAjaxShowCatalogMobMenu)
+// });
 
 menuMobOpen.addEventListener ("click", (evt)=>{
     toggle_mob_menu ();
@@ -113,10 +113,10 @@ function open_catalog () {
 --------------------------------------------------------------*/
 
 
-catalogMobOpen.addEventListener ("click", plntAjaxShowCatalogMobMenu,{once:true});
-catalogMobOpen.addEventListener ("click", (evt)=>{
-    menuMobOpen.removeEventListener("click", plntAjaxShowCatalogMobMenu)
-});
+// catalogMobOpen.addEventListener ("click", plntAjaxShowCatalogMobMenu,{once:true});
+// catalogMobOpen.addEventListener ("click", (evt)=>{
+//     menuMobOpen.removeEventListener("click", plntAjaxShowCatalogMobMenu)
+// });
 
 catalogMobOpen.addEventListener ("click", (evt)=>{
     toggle_mob_menu ();

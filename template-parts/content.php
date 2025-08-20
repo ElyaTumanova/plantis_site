@@ -12,14 +12,14 @@
 	<div class="entry-content">
 		<?php
 		the_content( sprintf(
-			__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'art-starter-theme' ),
+			__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'plantis-theme' ),
 			the_title( '<span class="screen-reader-text">"', '"</span>', false )
 		) );
 		?>
 		
 		<?php
 		wp_link_pages( array(
-			'before' => '<div class="page-links">' . __( 'Pages:', 'art-starter-theme' ),
+			'before' => '<div class="page-links">' . __( 'Pages:', 'plantis-theme' ),
 			'after'  => '</div>',
 		) );
 		?>

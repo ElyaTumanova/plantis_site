@@ -48,25 +48,7 @@ defined( 'ABSPATH' ) || exit;
 						<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 						<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 						<?php 
-							$qty = $cart_item[ 'quantity' ];
-							$stock_qty = $_product->get_stock_quantity();
-							global $plants_cat_id;
-							if ( check_is_treez($_product) || check_is_lechuza($_product) ) {
-								?><p class="backorder_date-info backorder_date-info_late">Доставка со склада 3 - 7 дней</p>
-								<?php
-							}	else {
-								if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
-									if (check_category($_product) === $plants_cat_id) {
-									?><p class="backorder_date-info backorder_date-info_late">Доставка после <?php echo plnt_set_backorders_date();?></p>
-									<?php } else {
-										?><p class="backorder_date-info backorder_date-info_late">Доставка со склада 3 - 7 дней</p>
-										<?php
-									}
-								} else {
-									?><p class="backorder_date-info">Доставка от 2-х часов</p>
-									<?php
-								}
-							}
+                            get_backorder_info_snippet($_product, $cart_item[ 'quantity' ]);
 						?>
 					</td>
 					<td class="product-total">

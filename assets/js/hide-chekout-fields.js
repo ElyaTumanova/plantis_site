@@ -9,42 +9,36 @@
     let additionalAddress = document.querySelector('.additional-address-field');
     let innField = document.querySelector('#additional_inn');
 
-    function plnt_hide_checkout_fields(event){
-        
-        //console.log('hi plnt_hide_checkout_fields');
-        if(event && event.target.className == "shipping_method") {
-            // console.log(event);
-            checkedShippingMethod = event.target.value;
-        }
+    function hideInterval() {
+        deliveryInterval.classList.add('d-none');
+        deliveryIntervalInput.forEach((input)=>{
+            input.checked = false;
+        })
+    }
 
-        //for delivery intervals
+    function showInterval() {
+        deliveryInterval.classList.remove('d-none');
+        if (checkedInterval == '') {
+            deliveryIntervalInput[0].checked = true;
+        }
+    }
+
+    function plnt_hide_checkout_fields(event){
+        //console.log('hi plnt_hide_checkout_fields');
         if (deliveryInterval) {
-            console.log(deliveryInterval);
-            console.log('isHideInterval', isHideInterval);
             if (isBackorder || isTreezBackorders) {
-                deliveryInterval.classList.add('d-none');
-                deliveryIntervalInput.forEach((input)=>{
-                    input.checked = false;
-                })
+                hideInterval()
             } else { 
                 if ( checkedShippingMethod == localPickupId || checkedShippingMethod == deliveryPochtaId) {
-                    deliveryInterval.classList.add('d-none');
-                    deliveryIntervalInput.forEach((input)=>{
-                        input.checked = false;
-                    });
+                    hideInterval()
                 } else {
-                    if (isUrgent == '1' && isHideInterval) {
-                        deliveryInterval.classList.add('d-none');
-                        deliveryIntervalInput.forEach((input)=>{
-                            input.checked = false;
-                        });
+                    if (isUrgent == '1') {
+                        hideInterval();
                     }
                     if (isUrgent == '0') {
-                        deliveryInterval.classList.remove('d-none');
+                        showInterval()
                     }
-                    if (!isHideInterval) {
-                        deliveryInterval.classList.remove('d-none');
-                    }
+
                 }
             }
         }
@@ -69,11 +63,22 @@
         }
         
         // for INN
-        if(event && event.target.id == "payment_method_cheque") {
-            if (innField) {innField.classList.remove('d-none')};
-        } else {
-            if (innField) {innField.classList.add('d-none')};
-        };
+        if (innField) {
+            console.log(document.querySelector('.wc_payment_methods input[checked="checked"]').value);
+            if(event && event.target.id == "payment_method_cheque") {
+                innField.classList.remove('d-none');
+            } else {
+                if(event.target.id == "payment_method_tbank" 
+                    || event.target.id == "payment_method_cop"
+                    || event.target.id == "payment_method_cod"
+                    || document.querySelector('.wc_payment_methods input[checked="checked"]').value != 'cheque'
+                ) 
+                {
+                    innField.classList.add('d-none')
+                    innField.value = ''
+                }
+            };
+        }        
 
         // for holidays
         if (isHoliday === '1') {
@@ -99,7 +104,8 @@
     }
 
     if(checkoutForm) {
-        plnt_hide_checkout_fields(event);
+        document.addEventListener('DOMContentLoaded', plnt_hide_checkout_fields )
+        //plnt_hide_checkout_fields(event);
         
         checkoutForm.addEventListener('change', plnt_hide_checkout_fields);
     }

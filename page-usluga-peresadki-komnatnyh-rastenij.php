@@ -8,7 +8,7 @@ get_header(); ?>
     <div class="page-peresadka service-page">
       <div class="page-peresadka__first-screen">
         <h1 class="page-peresadka__entry-title entry-title">Услуги по пересадке комнатных растений</h1> 
-        <img class="page-peresadka__photo" src="https://plantis.shop/wp-content/uploads/2022/01/16.10-2.jpg" alt="Профессиональный уход за растениями">               
+        <img class="page-peresadka__photo" loading="lazy" src="<?php echo get_template_directory_uri()?>/images/landscaping.webp" alt="Пересадка комнатных растений">               
         <div class="page-peresadka__intro">
           Вы хотите купить комнатное растение. И&nbsp;теперь перед вами стоит задача его пересадить. Но вы не знаете с чего начать?
         </div>

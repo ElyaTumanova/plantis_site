@@ -132,6 +132,12 @@ if ( $show_downloads ) {
  */
 do_action( 'woocommerce_after_order_details', $order );
 ?>
+<?php if( $plnt_order_totals['dontcallme']['value'] ) : ?>
+<div class='plnt-order__delivery-row'>
+    <div class='plnt-order__delivery-label' scope="row">Не нужно звонков, напишите сразу в WhatsApp:</div>
+    <div class='plnt-order__delivery-value'><?php echo wp_kses_post( $plnt_order_totals['dontcallme']['value'] ); ?></div>
+</div>
+<?php endif; ?> 
 <?php if( $plnt_order_totals['delivery_dates']['value'] ) : ?>
 <div class='plnt-order__delivery-row'>
     <div class='plnt-order__delivery-label' scope="row">Дата доставки (самовывоза):</div>
@@ -154,4 +160,11 @@ if ( $order->get_customer_note() ) : ?>
         <div><?php esc_html_e( 'Note:', 'woocommerce' ); ?></div>
         <div><?php echo wp_kses( nl2br( wptexturize( $order->get_customer_note() ) ), array() ); ?></div>
     </div>
+<?php endif; ?>
+
+<?php if( $plnt_order_totals['additional_inn']['value'] ) : ?>
+<div class='plnt-order__delivery-row'>
+    <div class='plnt-order__delivery-label' scope="row"><?php echo wp_kses_post( $plnt_order_totals['additional_inn']['label'] ); ?>:</div>
+    <div class='plnt-order__delivery-value'><?php echo wp_kses_post( $plnt_order_totals['additional_inn']['value'] ); ?></div>
+</div>
 <?php endif; ?>

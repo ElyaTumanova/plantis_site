@@ -19,7 +19,7 @@ function plnt_card_wishlist_btn() {
 // }
 
 
-// шорткод для вывода ссылки и кол-ва + ajsx обновление
+// шорткод для вывода ссылки и кол-ва + ajax обновление
 if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) ) {
     function yith_wcwl_get_items_count() {
       ob_start();
@@ -32,7 +32,7 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
             <div class="header__count header__count_active ">
           <?php endif;?>
               <span class="yith-wcwl-items-count">
-                <i class="yith-wcwl-icon fa fa-heart-o"><?php echo esc_html( yith_wcwl_count_all_products() ); ?></i>
+                <i ><?php echo esc_html( yith_wcwl_count_all_products() ); ?></i>
               </span>
             </div>
 
@@ -95,42 +95,23 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
     add_action( 'wp_enqueue_scripts', 'yith_wcwl_enqueue_custom_script', 20 );
   }
 
- 
 
+// if ( defined( 'YITH_WCWL' ) && ! function_exists( 'plnt_yith_wcwl_ajax_get_wishlist' ) ) {
+//   function plnt_yith_wcwl_ajax_get_wishlist() {
+//     global $user_id;
+//     wp_send_json( array(
+//       'wish' =>  plnt_get_wish_list_ids(),
+//       'count' => yith_wcwl_count_all_products()
+//     ));
+//   }
 
-// получаем ИД товаров в wishlist для аякса
-
-function plnt_get_wish_list_ids() {
-  global $user_id;
-  $wishlist_ids = YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) );
-
-  foreach ($wishlist_ids as $wishlist_id) {
-    $wish_id = $wishlist_id['id'];
-    $wish_list_items = [];
-                
-    $wish_products = YITH_WCWL()->get_products( [ 'wishlist_id' => 'all' ] );
-    foreach ($wish_products as $wish_product) {
-      $product_id = $wish_product['prod_id'];
-      array_push($wish_list_items, $product_id);
-    }
-    return $wish_list_items_string = implode(",", $wish_list_items);
-  }
-};
-
-if ( defined( 'YITH_WCWL' ) && ! function_exists( 'plnt_yith_wcwl_ajax_get_wishlist' ) ) {
-  function plnt_yith_wcwl_ajax_get_wishlist() {
-    global $user_id;
-    wp_send_json( array(
-      'wish' =>  plnt_get_wish_list_ids()
-    ));
-  }
-
-  add_action( 'wp_ajax_plnt_yith_wcwl_get_wishlist', 'plnt_yith_wcwl_ajax_get_wishlist' );
-  add_action( 'wp_ajax_nopriv_plnt_yith_wcwl_get_wishlist', 'plnt_yith_wcwl_ajax_get_wishlist' );
-}
+//   add_action( 'wp_ajax_plnt_yith_wcwl_get_wishlist', 'plnt_yith_wcwl_ajax_get_wishlist' );
+//   add_action( 'wp_ajax_nopriv_plnt_yith_wcwl_get_wishlist', 'plnt_yith_wcwl_ajax_get_wishlist' );
+// }
 
 
 add_action('yith_wcwl_wishlist_after_wishlist_content','plnt_cart_popular', 40);
+
 
 // перевод текстов
 

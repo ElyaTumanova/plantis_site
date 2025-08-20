@@ -1,8 +1,6 @@
 <?php
-
-get_header(); 
-
-global $skidki_cat_id;
+    get_header();
+    global $skidki_cat_id;
 ?>
 
 <div class="content-area-full-width">
@@ -58,23 +56,45 @@ global $skidki_cat_id;
 		<a class="main__telegram" href="https://t.me/plantis" target="blank"></a>
 	</div>
 	<div class="main__about container main__row">
-		<!-- <div> -->
-		<h2 class="main__about-heading">ИНТЕРНЕТ МАГАЗИН КОМНАТНЫХ РАСТЕНИЙ и цветов PLANTIS.SHOP</h2>		
-		<p class="main__about-text">Мы сделали ставку на сервис и не прогадали.</p>
-		<p class="main__about-text">Покупка в интернет-магазине горшечного растения может быть интересной и увлекательной.</p>
-		<ul class="main__about-list">
-			<li>Все горшечные растения поставляются из лучших питомников Голландии, Дании, Италии, Турции и России. Мы лично отбираем те экземпляры, которыми хотим поделиться с вами.</li>
-			<li>В нашем каталоге комнатных растений практически каждый найдёт то, что ищет. А если не найдёт, то у нас можно заказать растение для вас.</li>
-			<li>У нас большой выбор декоративно-лиственных растений, цветущих, вьющихся лиан, карликовых деревьев и, конечно же, комнатных пальм. 
-				В ассортименте также представлены редкие и экзотические растения, бонсаи, а не только фикусы, спатифиллумы, сансевиерии и замиокулькасы.</li>
-		</ul>
-		<p class="main__about-text">Мы знаем, что многие наши клиенты хотят купить комнатное растение в горшке первый раз, поэтому предлагаем большой выбор неприхотливых комнатных растений.</p>	
-		<p class="main__about-text">Благодаря такому отношению к делу более 30% наших клиентов возвращаются к нам за покупкой вновь.</p>
-		<p class="main__about-text">Для нас это важно, ведь так приятно делать сервис, после которого вы будете вспоминать нас с теплотой и смотреть на своего нового друга.</p>					
-		<!-- </div> -->
-		<!-- <div style="width:560px;height:800px;overflow:hidden;position:relative;"><iframe style="width:100%;height:100%;border:1px solid #e6e6e6;border-radius:8px;box-sizing:border-box" src="https://yandex.ru/maps-reviews-widget/237252555639?comments"></iframe><a href="https://yandex.ru/maps/org/plentis/237252555639/" target="_blank" style="box-sizing:border-box;text-decoration:none;color:#b3b3b3;font-size:10px;font-family:YS Text,sans-serif;padding:0 20px;position:absolute;bottom:8px;width:100%;text-align:center;left:0;overflow:hidden;text-overflow:ellipsis;display:block;max-height:14px;white-space:nowrap;padding:0 16px;box-sizing:border-box">Плэнтис на карте Москвы — Яндекс Карты</a></div> -->
+		<div class="main__about-first-screen">
+			<h2 class="main__about-heading entry-title">Plantis.shop — <br>интернет-магазин комнатных растений с&nbsp;доставкой</h2>
+			<div class="main__about-intro">
+				<p>Добро пожаловать в Plantis — интернет-магазин комнатных растений с быстрой доставкой по Москве и Московской области. У&nbsp;нас можно заказать комнатные растения онлайн или выбрать их в нашем шоуруме оффлайн.</p> 
+				<p>Мы предлагаем эксклюзивный ассортимент горшечных растений и высокий уровень сервиса, чтобы ваша покупка была приятной.</p>
+			</div>
+			<img class="main__about-photo" loading="lazy" src="<?php echo get_template_directory_uri()?>/images/interior.webp" alt="Plantis.shop">
+		</div>
+		<div class="main__about-block">
+			<h3 class="main__about-block-heading">Комнатные растения для дома, офиса и бизнеса</h3>
+			<div>
+				<p class="main__about-text">В нашем каталоге представлены <strong>горшечные растения</strong>, которые подойдут как для уютной квартиры, так и для стильного офиса, ресторана, салона красоты или бизнес-центра.</p> 
+				<p class="main__about-text">Мы работаем как с физическими, так и с юридическими лицами, предлагая выгодные условия для корпоративных клиентов.</p>
+			</div>
+		</div>
+		<div class="main__about-block main__about-block_assort">
+			<h3 class="main__about-block-heading">Ассортимент Plantis.shop включает:</h3>
+			<ul class="main__about-assort-list">
+				<li><strong>Декоративно-лиственные растения:</strong> фикусы, алоказии, аглаонемы, кодиеумы, а также другие цветы, которые могут похвалиться эффектным внешним видом;</li>
+				<li><strong>Цветущие растения:</strong> антуриумы, спатифиллумы, гибискусы;</li>
+				<li><strong>Комнатные пальмы и крупномеры:</strong> идеальны для зонирования и создания живых акцентов;</li>
+				<li><strong>Лианы и ампельные растения:</strong> сциндапсусы, филодендроны, эпипремнумы — для вертикального озеленения;</li>
+				<li><strong>Бонсаи, редкие и экзотические виды:</strong> для ценителей и коллекционеров;</li>
+				<li><strong>Неприхотливые растения для начинающих:</strong> замиокулькас, сансевиерия, хлорофитум, пеперомия и другие;</li>
+				<li><strong>Растения безопасные для животных:</strong> для тех, у кого есть четвероногий друг.</li>
+			</ul>
+			<a class="main__about-block-button button" href="<?php echo get_term_link( $plants_cat_id, 'product_cat' );?>">Комнатные растения</a>
+		</div>
+		<div class="main__about-block">
+			<h3 class="main__about-block-heading">Plantis.shop — ваш эксперт по комнатным растениям</h3>
+			<div>
+				<p class="main__about-text">Plantis.shop — это не просто магазин, это команда экспертов, которые помогут выбрать идеальное растение под ваши цели, условия, образ жизни.</p>
+				<p class="main__about-text">Станьте частью зелёного сообщества Plantis. Мы — место, где легко и приятно заказать комнатные растения с доставкой, получая удовольствие от сервиса. Сервиса, к которому хочется возвращаться.</p>
+			</div>
+		</div>
 	</div>
 	</main><!-- #main -->
 </div><!-- #primary -->
 
-<?php get_footer(); ?>
+<?php $start_footer = microtime(true); get_footer(); ?>
+<?php echo "<!-- Timing: get_footer = " . round((microtime(true) - $start_footer) * 1000, 2) . " ms -->"; ?>
+

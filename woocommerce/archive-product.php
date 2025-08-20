@@ -72,7 +72,7 @@ if ( woocommerce_product_loop() ) {
 			wc_get_template_part( 'content', 'product' );
 		}
 	}
-
+    
 	/**
 	 * Hook: woocommerce_before_product_loop_end.
 	 *
@@ -110,5 +110,7 @@ do_action( 'woocommerce_after_main_content' );
  * @hooked woocommerce_get_sidebar - 10
  */
 do_action( 'woocommerce_sidebar' );
+
+
 
 get_footer( 'shop' );

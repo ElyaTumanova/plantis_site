@@ -13,7 +13,7 @@
 :root {
     --accent-color: #146F41;
     /* --accent-color: rgb(33, 33, 33); */
-    --black-color: #000;
+    --black-color: #121212;
     --icons-color: rgb(184, 184, 184);
     --icons-color-active: rgb(143, 143, 143);
     --red-color: #F93D05;
@@ -31,6 +31,7 @@
     --stock-color: #53de00;
     --stock-backorder: #dbc602;
     --notice-red:#f3afaf;
+    --dark-bg:#262626;
 }
 
 .d-none {
@@ -106,6 +107,40 @@
     }
 }
 
+/* side bar */
+.content-area_sidebar {
+    display: flex;
+    column-gap: 70px;
+}
+.content-area_sidebar .site-main{
+    width: 100%;
+}
+
+.content-area_sidebar .entry-header {
+    margin-top: 39px;
+}
+
+@media (max-width: 1024px) {
+    .content-area_sidebar {
+        column-gap: 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .content-area_sidebar .entry-header {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .content-area_sidebar {
+        display: block;
+    }
+
+    .content-area_sidebar aside{
+        display: none;
+    }
+}
 
 /* корректировка отступов для каталога */
 
@@ -176,19 +211,55 @@
 
     border-style: solid;
     border-width: 1px 1px 1px 1px;
-    border-radius: 5px;
+    border-radius: 30px;
     
     padding: 10px;
 }
 
+.wpcf7 form.init .wpcf7-response-output {
+    display: block;
+    visibility: hidden;
+    opacity: 0%;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-40px);
+    transition: opacity 0s, transform 0.7s;
+}
 
-.button:hover, .wpcf7-submit:hover { 
+.wpcf7 form.sent .wpcf7-response-output {
+    border: none;
+    font-size: 18px;
+    padding: 30px 20px;
+    text-align: center;
+    font-weight: 700;
+    position: absolute;
+    top: 40%;
+    background-color: white;
+    left: 0;
+    right: 0;
+    margin: 0;
+    border-radius: 23px;
+    box-shadow: 0 18px 39px 0 rgba(0, 0, 0, .102), 0 72px 72px 0 rgba(0, 0, 0, .09);
+    visibility: visible;
+    opacity: 100%;
+}
+
+.wpcf7 form.invalid .wpcf7-response-output {
+    display: none;
+}
+
+.button:hover, .button:active, .button:focus, .wpcf7-submit:hover { 
     text-decoration: none;
 }
 
 @media (hover: hover) {
     .button:hover, .wpcf7-submit:hover { 
         box-shadow: inset 0 0 0 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .side-cart__close:hover {
+        box-shadow: none;
+        cursor: pointer;
     }
 }
 
@@ -220,35 +291,36 @@
 
 .sale_badge {
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
+    left: 13px;
     z-index: 2;
     background-color: var(--red-color);
     color: var(--white);
     display: flex;
     align-items: center;
-    border-radius: 0px 5px 0px 5px;
-    padding: 0 5px 0 0;
+    border-radius: 13px;
+    padding: 5px 7px;
     font-size: 14px;
     line-height: 1;
     word-break: normal;
 }
 
-.sale_badge-skidka {
+/* .sale_badge-skidka {
     background-color: var(--text);
     color: var(--white);
     display: block;
     padding: 5px;
     border-radius: 0px 0px 0px 5px;
     margin-right: 3px;
-}
+} */
 
 @media (max-width:767px) {
     .sale_badge {
         font-size: 12px;
     }
-    .sale_badge-skidka {
+    /* .sale_badge-skidka {
         padding: 3px;
-    }
+    } */
 }
 
 /* swiper */

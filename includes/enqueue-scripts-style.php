@@ -16,9 +16,9 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		wp_enqueue_script( 'ajax-update-cart', get_template_directory_uri() .
 											 '/assets/js/ajax-update-cart.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/ajax-update-cart.js'), true );									 
 		
-		wp_enqueue_script( 'ajax-update-wish', get_template_directory_uri() .
-											 '/assets/js/ajax-update-wish.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/ajax-update-wish.js'), true );	
-		
+        wp_enqueue_script( 'filter-show-more', get_template_directory_uri() .
+		                                     '/assets/js/filter-show-more.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/filter-show-more.js'), true );
+
 		wp_enqueue_script( 'ajax-urgent-delivery', get_template_directory_uri() .
 											 '/assets/js/ajax-urgent-delivery.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/ajax-urgent-delivery.js'), true );	
 		
@@ -79,16 +79,18 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		wp_enqueue_script( 'delivery-dropdown', get_template_directory_uri() .
 		                                     '/assets/js/delivery-dropdown.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/delivery-dropdown.js'), true );
 		
-		wp_enqueue_script( 'filter-show-more', get_template_directory_uri() .
-		                                     '/assets/js/filter-show-more.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/filter-show-more.js'), true );
-
 		wp_enqueue_script( 'cart-backorder-crossell', get_template_directory_uri() .
 		                                     '/assets/js/cart-backorder-crossell.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/cart-backorder-crossell.js'), true );
+
 		
 		if(is_page('test-kakoe-ty-rastenie')) {
 			wp_enqueue_script( 'test', get_template_directory_uri() .
 												 '/assets/js/test.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/test.js'), true );
 		}
+
+		wp_enqueue_script( 'cart-upsells', get_template_directory_uri() .
+		                                     '/assets/js/cart-upsells.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/cart-upsells.js'), true );
+
 
 		wp_enqueue_script( 'metrikaGoal', get_template_directory_uri() .
 		                                     '/assets/js/metrikaGoal.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/metrikaGoal.js'), true );  //metrikaGoal Яндекс Метрика Yandex Metrika
@@ -115,7 +117,8 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		wp_enqueue_style( 'swiper', get_template_directory_uri() .
 									'/assets/css/swiper.css', array(), null, 'all' ); //swiper
 
-		wp_enqueue_style( 'general', get_template_directory_uri() .
+
+    wp_enqueue_style( 'general', get_template_directory_uri() .
 		                             '/assets/css/general.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/general.css'), 'all' );
 		wp_enqueue_style( 'main', get_template_directory_uri() .
 		                             '/assets/css/main.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/main.css'), 'all' );
