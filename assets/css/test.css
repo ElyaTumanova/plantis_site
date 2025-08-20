@@ -26,6 +26,7 @@
     grid-area: answers;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .test__image {
@@ -74,16 +75,17 @@
     color: var(--red-color);
     visibility: hidden;
     opacity: 0;
-    margin: 0;
-    height: 0;
-    transform: opacity 0.5s;
+    /* margin: 0;
+    height: 0; */
+    position: absolute;
+    transition: opacity 0.5s;
+    margin: 10px 0;
 }
 
 .test__error_show {
     visibility: visible;
     opacity: 1;
-    margin: 10px 0;
-    height: fit-content;
+    /* height: fit-content; */
 }
 
 .test__result {
