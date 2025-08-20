@@ -20,14 +20,10 @@
 @media(max-width: 767px) {
  .test {
     row-gap: 20px;
- }
-}
-
-@media(max-width: 767px) {
- .test__answers {
     margin-top: 20px;
  }
 }
+
 .test__question {
     grid-area: question;
     justify-self: center;
