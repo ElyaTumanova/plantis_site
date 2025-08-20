@@ -76,7 +76,7 @@ class Test {
       this.testShareTelegram.setAttribute('href',`https://telegram.me/share/url?url=${this.resultPageUrl}&text=Посмотри какое я растение`);
       this.testShareWhatsapp.setAttribute('href',`https://web.whatsapp.com/send?text=Посмотри какое я растение - ${this.resultPageUrl}`);
       this.testShareOk.setAttribute('href',`https://connect.ok.ru/offer?url=${this.resultPageUrl}&title=Посмотри какое я растение`);
-      this.testShareVk.setAttribute('href',`vk.com/share.php?url=${this.resultPageUrl}`);
+      this.testShareVk.setAttribute('href',`https://vk.com/share.php?url=${this.resultPageUrl}`);
       this.testResultImage.setAttribute('src',this.resultPlant.image);
       this.testResultImage.setAttribute('alt',this.resultPlant.name);
     }
