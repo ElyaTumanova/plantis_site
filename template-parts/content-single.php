@@ -3,12 +3,21 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 		<div class="entry-meta">
-			<?php ast_posted_on(); ?>
+
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
-		<?php the_content(); ?>
+		<?php 
+		    the_content(); 
+			if(wp_get_post_categories(get_the_ID())[0] == '1349') {
+				?>
+				<a class="take-test button" href='<?php echo site_url()?>/test-kakoe-ty-rastenie' target = "_blank">Пройти тест</a>
+				<?php
+			};
+			
+			
+			?>
 		<?php
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . __( 'Pages:', 'plantis-theme' ),
@@ -18,6 +27,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php ast_entry_footer(); ?>
+	
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
