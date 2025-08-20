@@ -298,6 +298,14 @@
     background-color: var(--whatsapp);
 }
 
+.social-media__button-ok {
+    background-color: var(--ok);
+}
+
+.social-media__button-vk {
+    background-color: var(--vk);
+}
+
 .social-media__button-icon {
     height: 30px;
     fill: white;
