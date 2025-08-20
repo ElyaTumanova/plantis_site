@@ -71,13 +71,19 @@
 
 .test__error {
     /* grid-area: error; */
-    margin: 10px 0;
     color: var(--red-color);
     visibility: hidden;
+    opacity: 0;
+    margin: 0;
+    height: 0;
+    transform: opacity 0.5s;
 }
 
 .test__error_show {
     visibility: visible;
+    opacity: 1;
+    margin: 10px 0;
+    height: fit-content;
 }
 
 .test__result {
