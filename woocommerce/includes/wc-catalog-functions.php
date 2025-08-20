@@ -82,7 +82,7 @@ function plnt_catalog_sidebar() {
 	$close_icon = carbon_get_theme_option('close_icon')
 	?>
     <div class="catalog__sidebar modal-mob">
-		<p class="catalog__sidebar-filters-heading">Фильтры</p>
+		<h2 class="catalog__sidebar-filters-heading">Фильтры</h2>
 		<div class="modal-mob__close catalog-sidebar__close button"><?php echo $close_icon ?></div>
         <!-- <div class="catalog__sidebar-cats">
             <ul class="catalog__sidebar-temp">
@@ -93,7 +93,7 @@ function plnt_catalog_sidebar() {
             </ul>
         </div> -->
 		<?php //plnt_catalog_menu() ?>
-		<div class="catalog__sidebar-filters">
+		<aside class="catalog__sidebar-filters">
 			<div class="catalog__instock-filter">
 				<?php echo do_shortcode('[br_filter_single filter_id='.$filter_in_stock_id.']') //товары в наличии //56534 //6110?>
 			</div>
@@ -119,7 +119,7 @@ function plnt_catalog_sidebar() {
 				echo do_shortcode('[br_filter_single filter_id='.$filter_gift_id.']'); // в подарок //56535 //10988
 			}
 			?>
-		</div>
+		</aside>
     </div>
     <?php 
 };
@@ -309,7 +309,7 @@ function plnt_get_advantages() {
 #Card in Catalog design
 --------------------------------------------------------------*/
 
-//название товара - меняем тег h2 + schema.org
+//название товара - меняем тег h2 на h3 + schema.org
 
 remove_action( 'woocommerce_shop_loop_item_title','woocommerce_template_loop_product_title', 10 );
 add_action('woocommerce_shop_loop_item_title', 'soChangeProductsTitle', 10 );
@@ -319,7 +319,7 @@ function soChangeProductsTitle() {
 } else {
     $schema_data = '';
 }
-    echo '<div ' . $schema_data . ' class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div>';
+    echo '<h3 ' . $schema_data . ' class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</h3>';
 }
 
 //оформление карточки товара в каталоге
