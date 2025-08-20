@@ -223,7 +223,7 @@ const questions = [
         new Answer("Завожу душевные разговоры и внимательно слушаю других.", plantTypes[1]),
         new Answer("Я там, где весело, но всегда готов(а) сбежать по-тихому, если станет скучно.", plantTypes[7])
     ],
-    'https://plantis.shop/wp-content/uploads/2025/06/q_2.webp',
+    vars.theme_url + '/images/test/q_2.webp',
   ),
 
    new Question("Твоя реакция на критику:",
@@ -233,7 +233,7 @@ const questions = [
        new Answer("Критику можно? Только тихо и желательно не сегодня.", plantTypes[3]),
        new Answer("Критика — просто шум. Я выше этого.", plantTypes[0])
    ],
-    'https://plantis.shop/wp-content/uploads/2025/06/q_3.webp'
+    vars.theme_url + '/images/test/q_3.webp'
   ),
 
    new Question("Какой стиль тебе ближе всего?",
@@ -243,7 +243,7 @@ const questions = [
        new Answer("Ярко, модно, немного экстравагантно.", plantTypes[5]),
        new Answer("Классика: монохром, минимализм, аккуратность.", plantTypes[4])
    ],
-    'https://plantis.shop/wp-content/uploads/2025/06/q_4.webp'
+    vars.theme_url + '/images/test/q_4.webp'
   ),
 
    new Question("Как ты относишься к переменам?",
@@ -252,7 +252,7 @@ const questions = [
        new Answer("Люблю перемены, особенно если они влекут за собой новые горизонты!", plantTypes[7]),
        new Answer("Немного напрягаюсь, но адаптируюсь быстро.", plantTypes[9]),
        new Answer("Перемены? Я сначала распускаю пару листьев тревоги.", plantTypes[3])
-   ],'https://plantis.shop/wp-content/uploads/2025/06/q_5.webp'),
+   ],vars.theme_url + '/images/test/q_5.webp'),
 
    new Question("Какой твой идеальный рабочий день?",
    [
@@ -260,7 +260,7 @@ const questions = [
        new Answer("Периоды продуктивности сменяются моментами созерцания.", plantTypes[3]),
        new Answer("Много общения, обсуждений, комплиментов и немного работы.", plantTypes[5]),
        new Answer("Рабочий день? Главное, чтобы никто не мешал.", plantTypes[8])
-   ],'https://plantis.shop/wp-content/uploads/2025/06/q_6.webp'),
+   ],vars.theme_url + '/images/test/q_6.webp'),
 
    new Question("Что ты обычно делаешь в свободное время?",
    [
@@ -268,7 +268,7 @@ const questions = [
        new Answer("Валяюсь, медитирую, сижу в тёплом углу.", plantTypes[0]),
        new Answer("Встречаюсь с друзьями, устраиваю мини-праздники без повода.", plantTypes[2]),
        new Answer("Украшаю дом, настраиваю уют, делаю что-то красивое.", plantTypes[9])
-   ],'https://plantis.shop/wp-content/uploads/2025/06/q_7.webp'),
+   ],vars.theme_url + '/images/test/q_7.webp'),
 
    new Question("Тебя забыли поздравить с праздником. Как ты реагируешь?",
    [
@@ -276,7 +276,7 @@ const questions = [
        new Answer("Мне не нужны поводы — я сам себе праздник.", plantTypes[7]),
        new Answer("Это обидно… Но я всё равно поздравлю их.", plantTypes[1]),
        new Answer("Кто-то опять переоценил значение поздравлений.", plantTypes[8])
-   ],'https://plantis.shop/wp-content/uploads/2025/06/q_8.webp'),
+   ],vars.theme_url + '/images/test/q_8.webp'),
 
    new Question("Твоя суперсила:",
    [
@@ -284,7 +284,7 @@ const questions = [
        new Answer("Находить гармонию в хаосе и оставаться стильным.", plantTypes[6]),
        new Answer("Впитывать атмосферу, как губка, и адаптироваться моментально.", plantTypes[9]),
        new Answer("Быть неподражаемым и всегда на виду.", plantTypes[5])
-   ],'https://plantis.shop/wp-content/uploads/2025/06/q_9.webp'),
+   ],vars.theme_url + '/images/test/q_9.webp'),
 
    new Question("Выбери фразу, которая ближе всего тебе по духу:",
    [
@@ -292,7 +292,7 @@ const questions = [
        new Answer("«Обнимите меня и полейте тёплой водой слов».", plantTypes[1]),
        new Answer("«Я всегда тянусь к солнцу, даже ночью».", plantTypes[2]),
        new Answer("«Я выгляжу как философ, потому что им и являюсь».", plantTypes[3])
-   ],'https://plantis.shop/wp-content/uploads/2025/06/q_10.webp'),
+   ],vars.theme_url + '/images/test/q_10.webp'),
 
 ];
 
