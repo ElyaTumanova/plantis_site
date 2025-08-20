@@ -65,6 +65,9 @@ class Test {
       });
 
       console.log(this.resultPlant);
+      this.resultPageUrl = vars.site_url + '/resultat-testa-' + this.resultPlant.slug;
+      console.log(this.resultPageUrl);
+
       this.testResult.classList.remove('d-none');
       this.testResultName.innerText = `Поздравляем! Вы ${this.resultPlant.name}!`;
       this.testResultDescr.innerText = this.resultPlant.result;
@@ -213,7 +216,7 @@ const questions = [
         new Answer("Отправиться в спонтанное приключение или начать ремонт. Ну, типа, для души.", plantTypes[6]),
         new Answer("Провести день в одиночестве, читая философские трактаты под кружку чая.", plantTypes[3])
     ],
-    vars.theme_url + "/images/test/q_1.webp",
+    vars.theme_url + '/images/test/q_1.webp'
    ),
 
    new Question("Как ты ведёшь себя на вечеринке?",

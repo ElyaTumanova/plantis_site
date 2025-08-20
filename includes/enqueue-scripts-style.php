@@ -145,7 +145,7 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		wp_enqueue_style( 'test', get_template_directory_uri() .
 		                             '/assets/css/test.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/test.css'), 'all' );
     	// Пробрасываем путь к папке темы в JS
-        wp_localize_script('test','vars', array('theme_url' => get_template_directory_uri()));
+        wp_localize_script('test','vars', array('theme_url' => get_template_directory_uri(), 'site_url' => get_site_url()));
         wp_enqueue_style( 'progressive-image', get_template_directory_uri() .
 		                             '/assets/css/progressive-image.css', array(), null, 'all' ); // for lazy load
 		wp_enqueue_style( 'FlexSlider', get_template_directory_uri() .
