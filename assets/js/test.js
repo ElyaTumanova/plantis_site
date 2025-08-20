@@ -205,8 +205,7 @@ const plantTypes = [
 ]
 
 //Массив с вопросами
-const questions = 
-[
+const questions = [
    new Question("Какой вид отдыха тебе ближе всего?",
     [
         new Answer("Сидеть дома, обложившись пледами, сериалами и заказной едой – идеальный уют.", plantTypes[9]),
@@ -214,7 +213,7 @@ const questions =
         new Answer("Отправиться в спонтанное приключение или начать ремонт. Ну, типа, для души.", plantTypes[6]),
         new Answer("Провести день в одиночестве, читая философские трактаты под кружку чая.", plantTypes[3])
     ],
-    'https://plantis.shop/wp-content/uploads/2025/06/q_1.webp',
+    '../../images/test/q_1.webp',
    ),
 
    new Question("Как ты ведёшь себя на вечеринке?",
