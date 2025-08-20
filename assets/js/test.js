@@ -71,8 +71,8 @@ class Test {
       this.testResult.classList.remove('d-none');
       this.testResultName.innerText = `Поздравляем! Вы ${this.resultPlant.name}!`;
       this.testResultDescr.innerText = this.resultPlant.result;
-      this.testShareTelegram.setAttribute('href',`https://telegram.me/share/url?url=https://dev.plantis.shop/resultat-testa-${this.resultPlant.slug}&text=Посмотри какое я растение`);
-      this.testShareWhatsapp.setAttribute('href',`https://web.whatsapp.com/send?text=Посмотри какое я растение - https://dev.plantis.shop/resultat-testa-${this.resultPlant.slug}`);
+      this.testShareTelegram.setAttribute('href',`https://telegram.me/share/url?url=${this.resultPageUrl}&text=Посмотри какое я растение`);
+      this.testShareWhatsapp.setAttribute('href',`https://web.whatsapp.com/send?text=Посмотри какое я растение - ${this.resultPageUrl}`);
       this.testResultImage.setAttribute('src',this.resultPlant.image);
       this.testResultImage.setAttribute('alt',this.resultPlant.name);
     }
@@ -105,6 +105,7 @@ class Question
       this.answerElementDiv = document.createElement('div');
       this.answerElementInput = document.createElement('input');
       this.answerElementLabel = document.createElement('label');
+      this.answerElementLabel.classList.add('test__answer');
       this.answerElementLabel.setAttribute('for', answer.type.slug);
       this.answerElementInput.setAttribute('type', 'radio');
       this.answerElementInput.setAttribute('name', 'answer');
