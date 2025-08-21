@@ -58,6 +58,8 @@ if ($cat_exist) {
 
 
     wp_reset_query();
+} else {
+    echo('no such cat');
 }
 
 
