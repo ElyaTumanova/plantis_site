@@ -229,6 +229,7 @@
 
 .test-plants-btn {
     background-color: var(--text);
+    color: var(--white);
 }
 
 /* radio button */
