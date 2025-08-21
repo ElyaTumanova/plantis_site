@@ -11,7 +11,7 @@
                 echo '<img class="test-image" src="'. $feat_image_url .'" alt = "' . get_the_title() . '">';
             }
 
-            $test_link = echo site_url().'/test-kakoe-ty-rastenie';
+            $test_link = site_url().'/test-kakoe-ty-rastenie';
             ?>
             <a class="take-test button" href='<?php echo $test_link?>' target = "_blank">Пройти тест</a>
             <div class = "test-share">
