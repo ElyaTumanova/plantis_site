@@ -73,8 +73,8 @@
     border-radius: 30px;
     display: flex;
     min-height: 60px;
-    /* box-shadow: -5px 4px 8px 0px rgba(0, 0, 0, .102), 0 72px 72px 0 rgba(0, 0, 0, .09); */
     box-shadow: -5px 4px 8px 0px rgba(0, 0, 0, .102), 1px -1px 0px 0 rgb(249 249 249);
+    box-shadow: -5px 4px 8px 0px rgba(0, 0, 0, .102), 3px -2px 3px 0 rgb(249 249 249);
     background-color: var(--white);
 }
 
