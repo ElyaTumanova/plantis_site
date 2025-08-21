@@ -106,26 +106,27 @@ class Question
 
     this.answers.forEach(answer => {
       console.log(answer);
-      this.answerElementDiv = document.createElement('div');
-      this.answerElementDiv.classList.add('test__answer');
-      this.answerElementInput = document.createElement('input');
-      this.answerElementLabel = document.createElement('label');
-      this.answerElementLabel.setAttribute('for', answer.type.slug);
-      this.answerElementInput.setAttribute('type', 'radio');
-      this.answerElementInput.setAttribute('name', 'answer');
-      this.answerElementInput.setAttribute('id', answer.type.slug); 
-      this.answerElementLabel.innerText = answer.text;
-      this.answerElementDiv.appendChild(this.answerElementInput);
-      this.answerElementDiv.appendChild(this.answerElementLabel);
-      this.answersList.appendChild(this.answerElementDiv);
-      this.answerElementInput.addEventListener('click', ()=>{this.handleInputClick(answer)});
+      renderAnswer(answer);
+    //   this.answerElementDiv = document.createElement('div');
+    //   this.answerElementDiv.classList.add('test__answer');
+    //   this.answerElementInput = document.createElement('input');
+    //   this.answerElementLabel = document.createElement('label');
+    //   this.answerElementLabel.setAttribute('for', answer.type.slug);
+    //   this.answerElementInput.setAttribute('type', 'radio');
+    //   this.answerElementInput.setAttribute('name', 'answer');
+    //   this.answerElementInput.setAttribute('id', answer.type.slug); 
+    //   this.answerElementLabel.innerText = answer.text;
+    //   this.answerElementDiv.appendChild(this.answerElementInput);
+    //   this.answerElementDiv.appendChild(this.answerElementLabel);
+    //   this.answersList.appendChild(this.answerElementDiv);
+    //   this.answerElementInput.addEventListener('click', ()=>{this.handleInputClick(answer)});
     })
   }
   
   handleInputClick(answer) {
     this.chosenAnswer = answer;
-    console.log(this);
-    this.answerElementDiv.classList.add('test__answer_chosen');
+    console.log(answer);
+    // this.answerElementDiv.classList.add('test__answer_chosen');
     this.testError.classList.remove('test__error_show');
   }
 }
@@ -137,6 +138,22 @@ class Answer
    {
        this.text = text;
        this.type = type;
+   }
+
+   renderAnswer() {
+        this.answerElementDiv = document.createElement('div');
+        this.answerElementDiv.classList.add('test__answer');
+        this.answerElementInput = document.createElement('input');
+        this.answerElementLabel = document.createElement('label');
+        this.answerElementLabel.setAttribute('for', answer.type.slug);
+        this.answerElementInput.setAttribute('type', 'radio');
+        this.answerElementInput.setAttribute('name', 'answer');
+        this.answerElementInput.setAttribute('id', answer.type.slug); 
+        this.answerElementLabel.innerText = answer.text;
+        this.answerElementDiv.appendChild(this.answerElementInput);
+        this.answerElementDiv.appendChild(this.answerElementLabel);
+        this.answersList.appendChild(this.answerElementDiv);
+        this.answerElementInput.addEventListener('click', ()=>{this.handleInputClick(answer)});
    }
 
    countScore () {
