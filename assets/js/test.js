@@ -307,4 +307,4 @@ const questions = [
 
 const test = new Test(questions, plantTypes);
 const initBtn = document.querySelector('.test__init-btn');
-initBtn.addEventListener ('click',test.testInit());
+initBtn.addEventListener ('click', test.testInit());
