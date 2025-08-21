@@ -68,12 +68,13 @@
 }
 
 .test__answer {
-    padding: 10px;
+    padding: 10px 20px;
     /* border: 2px solid var(--accent-color); */
     border-radius: 30px;
     display: flex;
     min-height: 60px;
-    box-shadow: -5px 4px 8px 0px rgba(0, 0, 0, .102), 0 72px 72px 0 rgba(0, 0, 0, .09);
+    /* box-shadow: -5px 4px 8px 0px rgba(0, 0, 0, .102), 0 72px 72px 0 rgba(0, 0, 0, .09); */
+    box-shadow: -5px 4px 8px 0px rgba(0, 0, 0, .102), 1px -1px 0px 0 rgb(249 249 249);
     background-color: var(--white);
 }
 
@@ -90,6 +91,7 @@
     border-radius: 50px;
     width: 300px;
     align-self: center;
+    padding: 12px 10px;
 }
 
 .test__error {
