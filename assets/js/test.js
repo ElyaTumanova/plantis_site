@@ -124,7 +124,7 @@ class Question
   
   handleInputClick(answer) {
     this.chosenAnswer = answer;
-    console.log(this.chosenAnswer);
+    console.log(this);
     this.answerElementInput.classList.add('test__answer_chosen');
     this.testError.classList.remove('test__error_show');
   }
