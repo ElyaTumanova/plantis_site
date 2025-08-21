@@ -306,5 +306,5 @@ const questions = [
 ];
 
 const test = new Test(questions, plantTypes);
-
-test.testInit();
+const initBtn = document.querySelector('.test__init-btn');
+initBtn.addEventListener ('click',test.testInit());

@@ -3,6 +3,7 @@
 <div class="content-area">
 	<main id="main" class="site-main test-page">
     <h1 class = "entry-title">Какое ты растение?</h1>
+    <button class = "test__init-btn">Init button</button>
     <div class="test">
       <h2 class="test__question"></h2>
       <form class = "test__answers-form">
