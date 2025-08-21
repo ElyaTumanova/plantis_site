@@ -1186,9 +1186,9 @@ function plnt_inn_field_in_email( $rows, $order ) {
 
     function plnt_render_custom_fields_meta_box( $post ) {
         $fields = [
-            'plnt_payment_method'      => ['Способ оплаты', 'select'],
             'plnt_client_status'      => ['Статус клиента', 'select'],
             'plnt_client_origin'  => ['Откуда пришел клиент', 'select'],
+            'plnt_payment_method'      => ['Способ оплаты', 'select'],
             'plnt_paid'     => ['Оплачен?', 'select'],
             'plnt_comment'     => ['Комментарий', 'text'],
         ];
@@ -1209,6 +1209,9 @@ function plnt_inn_field_in_email( $rows, $order ) {
             ],
             'plnt_client_origin' => [
                 'site' => 'Сайт',
+                'street' => 'С улицы',
+                'avito' => 'Авито',
+                'one-click' => 'Один клик',
                 'preorder'  => 'Предзаказ',
                 'messenger' => 'Мессенджер',
                 'mail' => 'Письмо',
