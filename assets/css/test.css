@@ -201,13 +201,20 @@
   margin: 0;
 }
 
+.category-test .test-actions {
+    grid-area: button;
+}
 
 .category-test .take-test {
-    grid-area: button;
     background-color: var(--text);
     color: var(--white);
     border-radius: 50px;
     width: 300px;
+}
+
+.category-test .test-share > div {
+    display: flex;
+    column-gap: 20px;
 }
 
 /* radio button */
