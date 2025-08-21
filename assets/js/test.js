@@ -71,7 +71,7 @@ class Test {
       console.log(this.resultPageUrl);
 
       this.testResult.classList.remove('d-none');
-      this.testResultName.innerText = `Поздравляем! Вы ${this.resultPlant.name}!`;
+      this.testResultName.innerText = `Поздравляем! <br> Вы ${this.resultPlant.name}!`;
       this.testResultDescr.innerText = this.resultPlant.result;
       this.testShareTelegram.setAttribute('href',`https://telegram.me/share/url?url=${this.resultPageUrl}&text=Посмотри какое я растение`);
       this.testShareWhatsapp.setAttribute('href',`https://web.whatsapp.com/send?text=Посмотри какое я растение - ${this.resultPageUrl}`);
