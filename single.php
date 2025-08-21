@@ -4,7 +4,7 @@
 	<main id="main" class="site-main" role="main">
 		<?php while ( have_posts() ) : the_post(); 
         
-        echo(get_post_type();)
+        echo(get_post_type());
         ?>
 
         
