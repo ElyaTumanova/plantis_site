@@ -179,9 +179,9 @@
     grid-template-columns: 680px 300px;
     grid-template-rows:  auto auto 50px;
     grid-template-areas:
-    "title img"
-    "descr img"
-    "button img";
+    "img title"
+    "img descr"
+    "img button";
     column-gap: 100px;
     row-gap: 30px;
 }

@@ -1,7 +1,9 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<div class="entry-content">
-        <?php the_title( '<h1 class="entry-title">Поздравляем! Вы ', '</h1>' ); ?>
+        <h1 class="entry-title">Поздравляем! <br>
+        <?php the_title( '<span>Вы ', '</span>' ); ?>
+        </h1>
 		<?php 
 		    the_content(); 
             if( has_post_thumbnail() ){
