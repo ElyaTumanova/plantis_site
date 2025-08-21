@@ -274,3 +274,12 @@
   .test input[type=radio]:disabled+label::before {
     background-color: #e9ecef;
   }
+
+
+  /* страница результатов теста */
+
+  article.category-test .entry-title {
+    color: var(--text);
+    text-transform: none;
+    font-size: 45px;
+  }
