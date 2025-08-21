@@ -34,7 +34,11 @@
                 </div>
             </div>
             <?php
-	
+            echo (get_post_field( 'post_name', get_post() ));
+            get_template_part('template-parts/products/products-backorder-crosssell',null,
+                                array( // массив с параметрами
+                                    'cat_slug' => 'aglaonema',
+                            ));
 			
 			
 			?>
