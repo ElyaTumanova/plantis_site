@@ -9,7 +9,7 @@ add_action( 'wp_footer', 'plnt_echo_smth' );
 
 function plnt_echo_smth() {
     echo ('check ');
-    echo is_product_category('lalala');
+    echo is_product_category('ukhod');
 }
 
 
