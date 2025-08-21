@@ -165,24 +165,23 @@
     margin-top: 15px;
 }
 
-/* результаты теста */
+/* страница с результатами теста */
+
+.category-test .entry-title {
+    color: var(--text);
+    text-transform: none;
+    font-size: 45px;
+}
 
 .category-test .entry-content {
     display: grid;
     grid-template-columns: 680px 300px;
-    grid-template-rows: auto auto 50px;
-    grid-template-areas: "title img"
+    grid-template-rows:  auto 50px;
+    grid-template-areas:
     "descr img"
     "button img";
     column-gap: 100px;
     row-gap: 30px;
-    margin-top: 60px;
-}
-
-.category-test .wp-block-heading {
-  grid-area: title;
-  font-size: 30px;
-  font-weight: 700;
 }
 
 .category-test .entry-content > p {
@@ -275,11 +274,3 @@
     background-color: #e9ecef;
   }
 
-
-  /* страница результатов теста */
-
-  article.category-test .entry-title {
-    color: var(--text);
-    text-transform: none;
-    font-size: 45px;
-  }

@@ -9,6 +9,10 @@
 	<div class="entry-content">
 		<?php 
 		    the_content(); 
+            if( has_post_thumbnail() ){
+                $feat_image_url = wp_get_attachment_url( get_post_thumbnail_id() );
+                echo '<div style="background-image:url('. $feat_image_url .');"></div>';
+            }
 
             ?>
             <a class="take-test button" href='<?php echo site_url()?>/test-kakoe-ty-rastenie' target = "_blank">Пройти тест</a>
