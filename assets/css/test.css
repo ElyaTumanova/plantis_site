@@ -171,13 +171,15 @@
     color: var(--text);
     text-transform: none;
     font-size: 45px;
+    grid-area: title;
 }
 
 .category-test .entry-content {
     display: grid;
     grid-template-columns: 680px 300px;
-    grid-template-rows:  auto 50px;
+    grid-template-rows:  auto auto 50px;
     grid-template-areas:
+    "title img"
     "descr img"
     "button img";
     column-gap: 100px;
