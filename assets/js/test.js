@@ -316,5 +316,5 @@ function startTest () {
     setTimeout(()=>{
         disclaimerDiv.classList.add('d-none');
         testMainDiv.classList.remove('d-none');
-    }, 200)
+    }, 1000)
 }
