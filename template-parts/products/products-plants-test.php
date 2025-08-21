@@ -51,7 +51,7 @@ if ($cat_exist) {
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                 </div>
-                <a class="button" href="<?php echo get_term_link( $cat_slug, 'product_cat' );?>">Все товары для ухода</a>
+                <a class="button test-plants-btn" href="<?php echo get_term_link( $cat_slug, 'product_cat' );?>">Все растения категории</a>
             </div>
 
     <?php endif;

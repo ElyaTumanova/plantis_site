@@ -223,6 +223,14 @@
     column-gap: 20px;
 }
 
+.test-plants-wrap {
+    grid-area: upsells;
+}
+
+.test-plants-btn {
+    background-color: var(--text);
+}
+
 /* radio button */
 
 /* для элемента input c type="radio" */
