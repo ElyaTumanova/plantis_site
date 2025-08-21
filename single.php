@@ -3,14 +3,15 @@
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
 		<?php while ( have_posts() ) : the_post(); 
-        if ($taxname = 'test') {
-            echo(get_post_type());
-        }
         ?>
-
-        
-			
-			<?php get_template_part( 'template-parts/content', 'single' ); ?>
+            	
+			<?php 
+             if ($taxname = 'test') {
+                get_template_part( 'template-parts/content', 'single-test' );
+            } else {
+                get_template_part( 'template-parts/content', 'single' );
+            }
+         ?>
 			
 			<?php the_post_navigation(); ?>
 			

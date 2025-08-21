@@ -2,6 +2,8 @@
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
+        <p>hello</p>
+
 		<div class="entry-meta">
 
 		</div><!-- .entry-meta -->
@@ -10,13 +12,14 @@
 	<div class="entry-content">
 		<?php 
 		    the_content(); 
-        ?>
-		<?php
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'plantis-theme' ),
-				'after'  => '</div>',
-			) );
-		?>
+
+            ?>
+            <a class="take-test button" href='<?php echo site_url()?>/test-kakoe-ty-rastenie' target = "_blank">Пройти тест</a>
+            <?php
+	
+			
+			
+			?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
