@@ -11,7 +11,7 @@
 		    the_content(); 
             if( has_post_thumbnail() ){
                 $feat_image_url = wp_get_attachment_url( get_post_thumbnail_id() );
-                echo '<div style="background-image:url('. $feat_image_url .');"></div>';
+                echo '<img href="'. $feat_image_url .'" alt = "' . get_the_title() . '">';
             }
 
             ?>
