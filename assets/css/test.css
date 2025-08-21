@@ -176,7 +176,7 @@
 
 .category-test .entry-content {
     display: grid;
-    grid-template-columns: 500px auto;
+    grid-template-columns: 500px 1fr;
     /* grid-template-rows:  auto auto auto; */
     grid-template-areas:
     "img title"
