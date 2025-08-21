@@ -40,7 +40,7 @@ if ($cat_exist) {
     $products = new WP_Query( $args );
     if ( $products->have_posts() ) : ?>   
             <div class="test-plants-wrap product-slider-wrap">
-                <h2 class="my_header__title">Найди своего нового друга</h2>
+                <h2 class="my_header__title">Это мог бы быть ты</h2>
                 <div class="product-slider-swiper swiper">
                     <ul class="products columns-3 swiper-wrapper"> 
                         <?php while ( $products->have_posts() ) : $products->the_post(); ?>
