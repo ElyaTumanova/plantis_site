@@ -28,7 +28,7 @@ $min_free_delivery = carbon_get_theme_option('min_free_delivery');
 ?>
 
 <div class="delivery-info">
-    <h4 class="delivery_table__header">Доставка</h4>
+    <h2 class="delivery_table__header">Доставка и самовывоз</h2>
     <div class="delivery_table">
         <?php if($min_free_delivery) { 
             echo '
