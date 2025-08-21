@@ -3,7 +3,11 @@
 <div class="content-area">
 	<main id="main" class="site-main test-page">
     <h1 class = "entry-title">Какое ты растение?</h1>
-    <button class = "test__init-btn">Init button</button>
+    <div class="test__disclaimer">
+        <p class="test__disclaimer-text">Какой-то умный текст про шуточный тест</p>
+        <button class = "test__init-btn button">Начать тест</button>
+        <p class="test__disclaimer-agree">Нажимая кнопку "Начать тест", вы согласшетесь с тем, что его разработчики душнилы</p>
+    </div>
     <div class="test">
       <h2 class="test__question"></h2>
       <form class = "test__answers-form">

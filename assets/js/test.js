@@ -307,4 +307,10 @@ const questions = [
 
 const test = new Test(questions, plantTypes);
 const initBtn = document.querySelector('.test__init-btn');
-initBtn.addEventListener ('click', (evt)=>{test.testInit()});
+const disclaimerDiv = document.querySelector('.test__disclaimer'); 
+initBtn.addEventListener ('click', startTest);
+
+function startTest () {
+    test.testInit();
+    disclaimerDiv.classList.add('d-none');
+}
