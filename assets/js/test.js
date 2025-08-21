@@ -17,7 +17,7 @@ class Test {
       this.testError = document.querySelector('.test__error');
     
       this.testResult = document.querySelector('.test__result');
-      this.testResultName = document.querySelector('.test__result-name');
+      this.testResultName = document.querySelector('.test__result-name span');
       this.testResultDescr = document.querySelector('.test__result-descr');
       this.testShareTelegram = document.querySelector('.test__result .social-media__button-telegram');
       this.testShareWhatsapp = document.querySelector('.test__result .social-media__button-whatsapp');

@@ -15,7 +15,7 @@
       <img src="" alt="" class = "test__image" loading="lazy">
     </div> 
     <div class = "test__result d-none">
-      <p class = "test__result-name"></p>
+      <p class = "test__result-name">Поздравляем!<br><span></span></p>
       <p class = "test__result-descr"></p>
       <img src="" alt="" class = "test__result-image" loading="lazy">
       <div class = "test__result-share">
