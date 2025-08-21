@@ -313,6 +313,8 @@ initBtn.addEventListener ('click', startTest);
 
 function startTest () {
     test.testInit();
-    disclaimerDiv.classList.add('d-none');
-    testMainDiv.classList.remove('d-none');
+    setTimeout(()=>{
+        disclaimerDiv.classList.add('d-none');
+        testMainDiv.classList.remove('d-none');
+    }, 200)
 }
