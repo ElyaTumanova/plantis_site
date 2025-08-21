@@ -10,7 +10,7 @@ add_action( 'wp_footer', 'plnt_echo_smth' );
 function plnt_echo_smth() {
     global $plants_cat_id;
     echo ('check ');
-    $lowest_cats = get_lowest_level_product_categories($plants_cat_id)
+    $lowest_cats = get_lowest_level_product_categories($plants_cat_id);
     print_r($lowest_cats);
 }
 
