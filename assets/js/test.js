@@ -107,7 +107,7 @@ class Question
     this.answers.forEach(answer => {
       console.log(answer);
       this.answerElementDiv = document.createElement('div');
-       this.answerElementDiv.classList.add('test__answer');
+      this.answerElementDiv.classList.add('test__answer');
       this.answerElementInput = document.createElement('input');
       this.answerElementLabel = document.createElement('label');
       this.answerElementLabel.setAttribute('for', answer.type.slug);
@@ -125,6 +125,7 @@ class Question
   handleInputClick(answer) {
     this.chosenAnswer = answer;
     console.log(this.chosenAnswer);
+    this.answerElementInput.classList.add('test__answer_chosen');
     this.testError.classList.remove('test__error_show');
   }
 }

@@ -78,6 +78,10 @@
     background-color: var(--white);
 }
 
+.test__answer_chosen {
+    box-shadow: inset -3px 2px 8px 0px rgba(0, 0, 0, .102);
+}
+
 @media(max-width: 767px) {
  .test__answer {
     font-size: 16px;
