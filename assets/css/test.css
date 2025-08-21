@@ -177,11 +177,12 @@
 .category-test .entry-content {
     display: grid;
     grid-template-columns: 500px 600px;
-    grid-template-rows:  auto auto 50px;
+    /* grid-template-rows:  auto auto auto; */
     grid-template-areas:
     "img title"
     "img descr"
-    "img button";
+    "img button"
+    "upsells upsells";
     column-gap: 100px;
     row-gap: 30px;
     margin: 40px 0;
@@ -210,6 +211,11 @@
     color: var(--white);
     border-radius: 50px;
     width: 300px;
+    margin-bottom: 30px;
+}
+
+.category-test .test-share > p {
+    margin-bottom: 20px;
 }
 
 .category-test .test-share > div {
