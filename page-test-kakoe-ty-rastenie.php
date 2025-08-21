@@ -8,7 +8,7 @@
         <button class = "test__init-btn button">Начать тест</button>
         <p class="test__disclaimer-agree">Нажимая кнопку "Начать тест", вы согласшетесь с тем, что его разработчики душнилы</p>
     </div>
-    <div class="test">
+    <div class="test d-none">
       <h2 class="test__question"></h2>
       <form class = "test__answers-form">
         <div class = "test__answers">
