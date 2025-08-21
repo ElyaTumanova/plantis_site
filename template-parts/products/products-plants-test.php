@@ -32,7 +32,7 @@ if ($cat_exist) {
             array(
                 'taxonomy' => 'product_cat',
                 'field' => 'slug',
-                'terms' => $cat_slug;
+                'terms' => $cat_slug,
             )
         )
     );
