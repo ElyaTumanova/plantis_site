@@ -8,8 +8,14 @@ add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
+    global $plants_cat_id;
     echo ('check ');
-    echo is_product_category('ukhod');
+    $categories = get_terms( [
+        'taxonomy'   => 'product_cat',
+        'parent'     => $plants_cat_id,
+        'hide_empty' => false,
+    ] );
+   print_r($categories);
 }
 
 
