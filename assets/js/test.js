@@ -118,14 +118,14 @@ class Question
       this.answerElementDiv.appendChild(this.answerElementInput);
       this.answerElementDiv.appendChild(this.answerElementLabel);
       this.answersList.appendChild(this.answerElementDiv);
-      this.answerElementInput.addEventListener('click', ()=>{this.handleInputClick(answer)});
+      this.answerElementInput.addEventListener('click', ()=>{this.handleInputClick(answer, this.answerElementDiv)});
     })
   }
   
-  handleInputClick(answer) {
+  handleInputClick(answer, answerElementDiv) {
     this.chosenAnswer = answer;
     console.log(answer);
-    this.answerElementDiv.classList.add('test__answer_chosen');
+    answerElementDiv.classList.add('test__answer_chosen');
     this.testError.classList.remove('test__error_show');
   }
 }
