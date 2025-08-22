@@ -47,7 +47,7 @@ if ($cat_exist) {
                         <?php add_filter('woocommerce_post_class', 'plnt_add_class_loop_test_swiper', 10, 3);
                             global $product;
                             function plnt_add_class_loop_test_swiper($clasess, $product){
-                                $clasess[] = 'swiper-slide';
+                                $clasess[] = 'swiper-slide2';
                                 return $clasess;
                             };?>
                         <?php wc_get_template_part( 'content', 'product' ); ?>
