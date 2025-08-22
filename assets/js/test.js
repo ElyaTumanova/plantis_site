@@ -79,6 +79,8 @@ class Test {
       this.testShareVk.setAttribute('href',`https://vk.com/share.php?url=${this.resultPageUrl}`);
       this.testResultImage.setAttribute('src',this.resultPlant.image);
       this.testResultImage.setAttribute('alt',this.resultPlant.name);
+
+      ajaxGetUpsells(this.resultPlant.slug);
     }
 }
 
@@ -317,4 +319,34 @@ function startTest () {
         disclaimerDiv.classList.add('d-none');
         testMainDiv.classList.remove('d-none');
     }, 300)
+}
+
+function ajaxGetUpsells(catSlug) {
+    console.log(catSlug)
+    const data = new URLSearchParams();
+    data.append('action', 'get_test_upsells');
+    data.append('cat_slug', catSlug);
+
+    fetch('/wp-admin/admin-ajax.php', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: data
+    })
+    .then(response => {
+        if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(result => {
+        console.debug('✅ AJAX success:', result);
+    })
+    .catch(error => {
+        console.error('❌ AJAX error:', error);
+    })
+    .finally(() => {
+        console.debug('⚙️ AJAX complete');
+    });
 }
