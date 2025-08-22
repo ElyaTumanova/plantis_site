@@ -4,14 +4,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // FOR DEV
-//add_action( 'wp_footer', 'plnt_echo_smth' );
+add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
-    if(is_single()) {
-        echo ('this is single');
+    if(is_page('test-kakoe-ty-rastenie')) {
+        echo ('this is test');
     } else {
-        echo ('this is NOT single');
+        echo ('this is NOT test');
     }
 }
 
