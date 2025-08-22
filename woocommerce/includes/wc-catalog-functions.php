@@ -448,10 +448,10 @@ add_action('woocommerce_after_shop_loop_item', 'plnt_check_stock_status', 30);
 
 // // добавляем класс для swiper для каталог гридов
 
-add_filter('post_class', 'plnt_add_class_loop_item_swiper');
+add_filter('post_class', 'plnt_add_class_loop_item_swiper', 10, 3);
 function plnt_add_class_loop_item_swiper($clasess){
 	if(is_product() || is_front_page() || is_cart() || is_page('wishlist') || is_search() || is_single() || is_page('test-kakoe-ty-rastenie')) {
-		$clasess[] .= 'swiper-slide';
+		$clasess[] = 'swiper-slide';
 	}
 	//get_pr($clasess, false);
 	return $clasess;
