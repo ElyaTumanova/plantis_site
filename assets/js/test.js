@@ -311,6 +311,7 @@ const test = new Test(questions, plantTypes);
 const initBtn = document.querySelector('.test__init-btn');
 const disclaimerDiv = document.querySelector('.test__disclaimer'); 
 const testMainDiv = document.querySelector('.test'); 
+const testUpsellsDiv = document.querySelector('.test__result-upsells'); 
 initBtn.addEventListener ('click', startTest);
 
 function startTest () {
@@ -335,7 +336,6 @@ function ajaxGetUpsells(catSlug) {
         body: data
     })
     .then(response => {
-        console.log(response)
         if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -343,7 +343,7 @@ function ajaxGetUpsells(catSlug) {
     })
     .then(result => {
         console.debug('✅ AJAX success:', result);
-        console.log(result.test_upsells);
+        testUpsellsDiv.innerHTML = result.test_upsells;
     })
     .catch(error => {
         console.error('❌ AJAX error:', error);
