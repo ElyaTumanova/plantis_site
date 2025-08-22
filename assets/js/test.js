@@ -350,5 +350,6 @@ function ajaxGetUpsells(catSlug) {
     })
     .finally(() => {
         console.debug('⚙️ AJAX complete');
+        swiper_product_slider_init();
     });
 }
