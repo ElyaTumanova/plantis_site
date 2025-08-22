@@ -342,6 +342,7 @@ function ajaxGetUpsells(catSlug) {
     })
     .then(result => {
         console.debug('✅ AJAX success:', result);
+        console.log(result);
     })
     .catch(error => {
         console.error('❌ AJAX error:', error);
