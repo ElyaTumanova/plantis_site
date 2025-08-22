@@ -125,10 +125,16 @@ add_action('wp_ajax_nopriv_get_test_upsells', 'plnt_get_test_upsells_action_call
 
 function plnt_get_test_upsells_action_callback() {
     $cat_slug = $_POST['cat_slug'];
+    ob_start();
     get_template_part('template-parts/products/products-plants-test',null,
         array( // массив с параметрами
             'cat_slug' => $cat_slug,
         ));
+    $response['test_upsells'] = ob_get_clean();
+
+	wp_send_json($response);
+	die();
+    
 }
 
 // вывод слайдеров товаров на главной
