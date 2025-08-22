@@ -130,6 +130,7 @@ function plnt_get_test_upsells_action_callback() {
         array( // массив с параметрами
             'cat_slug' => $cat_slug,
         ));
+        
     $response['test_upsells'] = ob_get_clean();
 
 	wp_send_json($response);
