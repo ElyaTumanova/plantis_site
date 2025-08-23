@@ -1,4 +1,14 @@
+<?php
+if (!defined('ABSPATH')) exit;
+
+add_filter('query_vars', function ($vars) {
+    $vars[] = 'ref';
+    return $vars;
+});
+?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+    <?php print_r($vars);?>
 
 	<div class="entry-content">
         <h1 class="entry-title">Поздравляем! <br>
