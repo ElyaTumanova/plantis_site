@@ -41,7 +41,7 @@ if ($cat_exist) {
     if ( $products->have_posts() ) : ?>  
             <?php 
             function plnt_add_class_loop_test_swiper($clasess, $product){
-                $clasess[] = 'swiper-slide2';
+                $clasess[] = 'swiper-slide';
                 return $clasess;
             }; ?> 
             <div class="test-plants-wrap product-slider-wrap">
