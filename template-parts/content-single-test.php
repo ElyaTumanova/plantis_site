@@ -6,11 +6,14 @@ add_filter('query_vars', function ($vars) {
     return $vars;
 });
 
-$ref = get_query_var('ref');
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-    <?php print_r($ref);?>
+    
+    <?php 
+    $ref = get_query_var('ref');
+    echo('<pre>');
+    print_r($ref);
+    echo('</pre>');?>
 
 	<div class="entry-content">
         <h1 class="entry-title">Поздравляем! <br>
