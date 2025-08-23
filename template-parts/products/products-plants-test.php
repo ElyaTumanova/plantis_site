@@ -38,18 +38,20 @@ if ($cat_exist) {
     );
 
     $products = new WP_Query( $args );
-    if ( $products->have_posts() ) : ?>   
+    if ( $products->have_posts() ) : ?>  
+            <?php 
+            function plnt_add_class_loop_test_swiper($clasess, $product){
+                $clasess[] = 'swiper-slide2';
+                return $clasess;
+            }; ?> 
             <div class="test-plants-wrap product-slider-wrap">
                 <h2 class="my_header__title">Это мог бы быть ты</h2>
                 <div class="product-slider-swiper swiper">
                     <ul class="products columns-3 swiper-wrapper"> 
                         <?php while ( $products->have_posts() ) : $products->the_post(); ?>
                         <?php add_filter('woocommerce_post_class', 'plnt_add_class_loop_test_swiper', 10, 3);
-                            global $product;
-                            function plnt_add_class_loop_test_swiper($clasess, $product){
-                                $clasess[] = 'swiper-slide2';
-                                return $clasess;
-                            };?>
+                            // global $product;
+                            ?>
                         <?php wc_get_template_part( 'content', 'product' ); ?>
                         <?php endwhile; // end of the loop. ?>
                     </ul>
