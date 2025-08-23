@@ -1,12 +1,3 @@
-<?php
-if (!defined('ABSPATH')) exit;
-
-add_filter('query_vars', function ($vars) {
-    $vars[] = 'ref';
-    return $vars;
-});
-
-?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     
     <?php 

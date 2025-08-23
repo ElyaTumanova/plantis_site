@@ -138,3 +138,8 @@ function plnt_add_favicons() {
     <link rel="manifest" href="<?php echo $dir; ?>/site.webmanifest" />
     <?php
 }
+
+add_filter('query_vars', function ($vars) {
+    $vars[] = 'ref';
+    return $vars;
+});
