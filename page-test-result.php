@@ -2,7 +2,7 @@
 
 $plant_types = require get_theme_file_path('assets/data/plant-types.php');
 $by_slug = [];
-foreach ($plant_types as $it) { $by_slug[$it['zamiokulkas']] = $it; };
+foreach ($plant_types as $it) { $by_slug[$it['slug']] = $it; };
 
 ?>
 
