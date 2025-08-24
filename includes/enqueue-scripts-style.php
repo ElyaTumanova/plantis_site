@@ -89,7 +89,7 @@ if ( ! function_exists( 'ast_scripts' ) ) {
             
             $plant_types = require get_theme_file_path('assets/data/plant-types.php');
             $inline = 'const plantTypes = ' . wp_json_encode($plant_types, JSON_UNESCAPED_UNICODE) . ';';
-            wp_add_inline_script($handle, $inline, 'before');
+            wp_add_inline_script('test', $inline, 'before');
         }
 
 		wp_enqueue_script( 'cart-upsells', get_template_directory_uri() .
