@@ -1,3 +1,5 @@
+<?php get_header(); ?>
+
 <div class="result-test">
     
     <?php 
@@ -46,3 +48,5 @@
 	</div><!-- .entry-content -->
 
 </div>
+
+<?php get_footer();?>

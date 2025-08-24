@@ -142,14 +142,12 @@ class Answer
    }
 
    countScore () {
-     console.log('answer type is ', this.type.name)
-     console.log('answer score is ', this.type.score)
+     //console.log('answer type is ', this.type.name)
+     //console.log('answer score is ', this.type.score)
      
      ++this.type.score;
      
-     console.log('answer score is ', this.type.score)
-     console.log(plantTypes)
-
+     //console.log('answer score is ', this.type.score)
    }
 }
 
