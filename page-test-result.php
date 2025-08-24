@@ -10,10 +10,10 @@ foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
     <?php 
     $gen = get_query_var('gen');
     $plant = get_query_var('plant');
-    echo('<pre>');
-    print_r($plant);
-    print_r($plants_by_slug);
-    echo('</pre>');
+    // echo('<pre>');
+    // print_r($plant);
+    // print_r($plants_by_slug);
+    // echo('</pre>');
     ?>
     <?php if (array_key_exists($plant, $plants_by_slug)):?>
         <div class="entry-content">
