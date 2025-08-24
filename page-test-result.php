@@ -15,7 +15,7 @@ foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
     print_r($plants_by_slug);
     echo('</pre>');
     ?>
-    <?php if (in_array($plant, $plants_by_slug)):?>
+    <?php if (array_key_exists($plant, $plants_by_slug)):?>
         <div class="entry-content">
             <h1 class="entry-title">Поздравляем! <br>
             Вы <?php echo $plants_by_slug[$plant]['name']?>!
