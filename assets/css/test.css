@@ -176,7 +176,7 @@
     mask-size: cover;
     background-color: var(--text);
     margin-right: 10px;
-    float: right;
+    float: left;
 }
 
 #copyShareBtn {
@@ -275,6 +275,7 @@
 .result-test .test-share > div {
     display: flex;
     column-gap: 20px;
+    margin-top: 15px;
 }
 
 .test-plants-wrap {
