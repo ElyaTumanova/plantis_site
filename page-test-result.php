@@ -57,6 +57,7 @@ foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
                 </div><!-- .page-content -->
             </section><!-- .error-404 -->
         </div>
+    <?php endif;?>
 
 </div>
 
