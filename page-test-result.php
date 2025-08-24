@@ -1,8 +1,8 @@
 <?php get_header(); 
 
 $plant_types = require get_theme_file_path('assets/data/plant-types.php');
-$by_slug = [];
-foreach ($plant_types as $it) { $by_slug[$it['slug']] = $it; };
+$plants_by_slug = [];
+foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
 
 ?>
 
@@ -12,7 +12,7 @@ foreach ($plant_types as $it) { $by_slug[$it['slug']] = $it; };
     $gen = get_query_var('gen');
     echo('<pre>');
     print_r($gen);
-    print_r($by_slug);
+    print_r($plants_by_slug['zamiokulkas']);
     echo('</pre>');?>
 
 	<div class="entry-content">
