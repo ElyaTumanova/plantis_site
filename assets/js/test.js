@@ -67,7 +67,7 @@ class Test {
       });
 
       console.log(this.resultPlant);
-      this.resultPageUrl = vars.site_url + '/test-result?plant=' + this.resultPlant.slug + 'gen=' + gen;
+      this.resultPageUrl = vars.site_url + '/test-result?plant=' + this.resultPlant.slug + '&gen=' + gen;
       console.log(this.resultPageUrl);
 
       this.testResult.classList.remove('d-none');
