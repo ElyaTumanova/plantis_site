@@ -212,10 +212,23 @@
     font-size: 18px;
 }
 
+.test__disclaimer-text p {
+    margin-bottom: 7px;
+}
 
+.test__select-gen {
+    display: flex;
+    width: 100%;
+    column-gap: 30px;
+}
 .test__select-gen legend {
     font-weight: 600;
     margin-bottom: 15px;
+}
+
+.test__disclaimer-agree {
+    font-size: 14px;
+    text-align: center;
 }
 
 /* страница с результатами теста */
