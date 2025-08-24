@@ -56,31 +56,55 @@ class Test {
     }
 
     showResult() {
-      console.log(this.plantTypes);
-  
-      this.resultPlant = plantTypes.reduce(function(prev, current) {
-          if (+current.score > +prev.score) {
-              return current;
-          } else {
-              return prev;
-          }
-      });
+        console.log(this.plantTypes);
 
-      console.log(this.resultPlant);
-      this.resultPageUrl = vars.site_url + '/test-result?plant=' + this.resultPlant.slug + '&gen=' + gen;
-      console.log(this.resultPageUrl);
+        this.resultPlant = plantTypes.reduce(function(prev, current) {
+            if (+current.score > +prev.score) {
+                return current;
+            } else {
+                return prev;
+            }
+        });
 
-      this.testResult.classList.remove('d-none');
-      this.testResultName.innerText = `Вы ${this.resultPlant.name}!`;
-      this.testResultDescr.innerText = this.resultPlant.result;
-      this.testShareTelegram.setAttribute('href',`https://telegram.me/share/url?url=${this.resultPageUrl}&text=Посмотри какое я растение`);
-      this.testShareWhatsapp.setAttribute('href',`https://web.whatsapp.com/send?text=Посмотри какое я растение - ${this.resultPageUrl}`);
-      this.testShareOk.setAttribute('href',`https://connect.ok.ru/offer?url=${this.resultPageUrl}&title=Посмотри какое я растение`);
-      this.testShareVk.setAttribute('href',`https://vk.com/share.php?url=${this.resultPageUrl}`);
-      this.testResultImage.setAttribute('src',this.resultPlant.image);
-      this.testResultImage.setAttribute('alt',this.resultPlant.name);
+        console.log(this.resultPlant);
+        //link to share
+        const shareText = 'Посмотри какое я растение';
+        const pageUrl = new URL('/test-result', vars.site_url); // vars.site_url = 'https://dev.plantis-shop.ru'
+        pageUrl.searchParams.set('plant', this.resultPlant.slug); // 'zamiokulkas'
+        pageUrl.searchParams.set('gen', gen);                     // 'f'
+        this.resultPageUrl = pageUrl.toString();
+        console.log(this.resultPageUrl);
 
-      ajaxGetUpsells(this.resultPlant.slug);
+        const tg = new URL('https://t.me/share/url');
+        tg.searchParams.set('url', this.resultPageUrl);
+        tg.searchParams.set('text', shareText);
+
+        const wa = new URL('https://web.whatsapp.com/send');
+        wa.searchParams.set('text', `${shareText} - ${pageUrl}`);
+        this.testShareWhatsapp.setAttribute('href', wa.toString());
+    
+        const ok = new URL('https://connect.ok.ru/offer');
+        ok.searchParams.set('url', pageUrl);
+        ok.searchParams.set('title', shareText);
+        this.testShareOk.setAttribute('href', ok.toString());
+
+        const vk = new URL('https://vk.com/share.php');
+        vk.searchParams.set('url', pageUrl);
+        // можно добавить заголовок (необязательно)
+        vk.searchParams.set('title', shareText);
+        this.testShareVk.setAttribute('href', vk.toString());
+
+        this.testResult.classList.remove('d-none');
+        this.testResultName.innerText = `Вы ${this.resultPlant.name}!`;
+        this.testResultDescr.innerText = this.resultPlant.result;
+        this.testShareTelegram.setAttribute('href',tg.toString());
+    //   this.testShareWhatsapp.setAttribute('href',`https://web.whatsapp.com/send?text=Посмотри какое я растение - ${this.resultPageUrl}`);
+    //   this.testShareOk.setAttribute('href',`https://connect.ok.ru/offer?url=${this.resultPageUrl}&title=Посмотри какое я растение`);
+    //   this.testShareVk.setAttribute('href',`https://vk.com/share.php?url=${this.resultPageUrl}`);
+        this.testResultImage.setAttribute('src',this.resultPlant.image);
+        this.testResultImage.setAttribute('alt',this.resultPlant.name);
+
+        ajaxGetUpsells(this.resultPlant.slug);
     }
 }
 
