@@ -273,7 +273,7 @@
 /* radio button */
 
 /* для элемента input c type="radio" */
-.test input[type=radio] {
+.test-page input[type=radio] {
     position: absolute;
     z-index: -1;
     opacity: 0;
@@ -281,7 +281,7 @@
   }
 
   /* для элемента label связанного с .test input[type=radio] */
-  .test input[type=radio]+label {
+  .test-page input[type=radio]+label {
     display: inline-flex;
     align-items: center;
     user-select: none;
@@ -290,7 +290,7 @@
 
   
   /* создание в label псевдоэлемента  before со следующими стилями */
-  .test input[type=radio]+label::before {
+  .test-page input[type=radio]+label::before {
     content: '';
     display: inline-block;
     width: 1em;
@@ -306,35 +306,35 @@
   }
 
   /* стили при наведении курсора на радио */
-  .test input[type=radio]:not(:disabled):not(:checked)+label:hover::before {
+  .test-page input[type=radio]:not(:disabled):not(:checked)+label:hover::before {
     border-color: #b3d7ff;
   }
 
   /* стили для активной радиокнопки (при нажатии на неё) */
-  .test input[type=radio]:not(:disabled):active+label::before {
+  .test-page input[type=radio]:not(:disabled):active+label::before {
     background-color: #b3d7ff;
     border-color: #b3d7ff;
   }
 
   /* стили для радиокнопки, находящейся в фокусе */
-  .test input[type=radio]:focus+label::before {
+  .test-page input[type=radio]:focus+label::before {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
 
   /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
-  .test input[type=radio]:focus:not(:checked)+label::before {
+  .test-page input[type=radio]:focus:not(:checked)+label::before {
     border-color: #80bdff;
   }
 
   /* стили для радиокнопки, находящейся в состоянии checked */
-  .test input[type=radio]:checked+label::before {
+  .test-page input[type=radio]:checked+label::before {
     border-color: var(--text);
     background-color: var(--text);
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
   }
 
   /* стили для радиокнопки, находящейся в состоянии disabled */
-  .test input[type=radio]:disabled+label::before {
+  .test-page input[type=radio]:disabled+label::before {
     background-color: #e9ecef;
   }
 
