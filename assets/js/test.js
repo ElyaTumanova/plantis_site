@@ -98,9 +98,6 @@ class Test {
         this.testResultName.innerText = `Вы ${this.resultPlant.name}!`;
         this.testResultDescr.innerText = this.resultPlant.result;
         this.testShareTelegram.setAttribute('href',tg.toString());
-    //   this.testShareWhatsapp.setAttribute('href',`https://web.whatsapp.com/send?text=Посмотри какое я растение - ${this.resultPageUrl}`);
-    //   this.testShareOk.setAttribute('href',`https://connect.ok.ru/offer?url=${this.resultPageUrl}&title=Посмотри какое я растение`);
-    //   this.testShareVk.setAttribute('href',`https://vk.com/share.php?url=${this.resultPageUrl}`);
         this.testResultImage.setAttribute('src',this.resultPlant.image);
         this.testResultImage.setAttribute('alt',this.resultPlant.name);
 
@@ -314,5 +311,7 @@ const initBtn = document.querySelector('.test__init-btn');
 const disclaimerDiv = document.querySelector('.test__disclaimer'); 
 const testMainDiv = document.querySelector('.test'); 
 const testUpsellsDiv = document.querySelector('.test__result-upsells'); 
-const gen = 'f';
+const gen = document.querySelector('input[name="gender"]:checked')?.value; // "f" или "m"
+console.log(gen);
+
 initBtn.addEventListener ('click', startTest);
