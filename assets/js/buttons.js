@@ -157,6 +157,10 @@ function scrollToTop () {
       })
 }
 
+/*--------------------------------------------------------------
+# Buttons to copy link
+--------------------------------------------------------------*/
+
 copyShareBtn = document.querySelector('#copyShareBtn');
 copyShareBtn.addEventListener('click', async () => {
     const url = copyShareBtn.dataset.url || window.location.href;
