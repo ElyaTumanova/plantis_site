@@ -67,7 +67,7 @@ class Test {
       });
 
       console.log(this.resultPlant);
-      this.resultPageUrl = vars.site_url + '/resultat-testa-' + this.resultPlant.slug;
+      this.resultPageUrl = vars.site_url + '/test-result?plant=' + this.resultPlant.slug + 'gen=' + gen;
       console.log(this.resultPageUrl);
 
       this.testResult.classList.remove('d-none');
@@ -290,4 +290,5 @@ const initBtn = document.querySelector('.test__init-btn');
 const disclaimerDiv = document.querySelector('.test__disclaimer'); 
 const testMainDiv = document.querySelector('.test'); 
 const testUpsellsDiv = document.querySelector('.test__result-upsells'); 
+const gen = 'f';
 initBtn.addEventListener ('click', startTest);
