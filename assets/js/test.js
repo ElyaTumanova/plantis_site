@@ -19,6 +19,8 @@ class Test {
       this.testResult = document.querySelector('.test__result');
       this.testResultName = document.querySelector('.test__result-name span');
       this.testResultDescr = document.querySelector('.test__result-descr');
+      this.testShareLink = document.querySelector('.test__result-link');
+      this.copyShareBtn = document.querySelector('#copyShareBtn');
       this.testShareTelegram = document.querySelector('.test__result .social-media__button-telegram');
       this.testShareWhatsapp = document.querySelector('.test__result .social-media__button-whatsapp');
       this.testShareOk = document.querySelector('.test__result .social-media__button-ok');
@@ -78,6 +80,7 @@ class Test {
         const tg = new URL('https://t.me/share/url');
         tg.searchParams.set('url', this.resultPageUrl);
         tg.searchParams.set('text', shareText);
+        this.testShareTelegram.setAttribute('href',tg.toString());
 
         const wa = new URL('https://web.whatsapp.com/send');
         wa.searchParams.set('text', `${shareText} - ${pageUrl}`);
@@ -90,18 +93,43 @@ class Test {
 
         const vk = new URL('https://vk.com/share.php');
         vk.searchParams.set('url', pageUrl);
-        // можно добавить заголовок (необязательно)
         vk.searchParams.set('title', shareText);
         this.testShareVk.setAttribute('href', vk.toString());
 
         this.testResult.classList.remove('d-none');
         this.testResultName.innerText = `Вы ${this.resultPlant.name}!`;
         this.testResultDescr.innerText = this.resultPlant.result;
-        this.testShareTelegram.setAttribute('href',tg.toString());
+        this.testShareLink.setAttribute('href',this.resultPageUrl);
+        this.copyShareBtn.dataset.url = this.resultPageUrl;
         this.testResultImage.setAttribute('src',this.resultPlant.image);
         this.testResultImage.setAttribute('alt',this.resultPlant.name);
 
         ajaxGetUpsells(this.resultPlant.slug);
+
+        this.copyShareBtn.addEventListener('click', async () => {
+            const url = copyBtn.dataset.url || window.location.href;
+
+            try {
+            if (navigator.clipboard?.writeText) {
+                await navigator.clipboard.writeText(url);
+            } else {
+                const ta = document.createElement('textarea');
+                ta.value = url;
+                ta.setAttribute('readonly', '');
+                ta.style.position = 'fixed';
+                ta.style.top = '-9999px';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+            }
+            const old = copyBtn.textContent;
+            copyBtn.textContent = 'Скопировано!';
+            setTimeout(() => copyBtn.textContent = old, 1500);
+            } catch {
+            alert('Не удалось скопировать:\n' + url);
+            }
+        });
     }
 }
 
