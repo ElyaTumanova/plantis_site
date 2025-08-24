@@ -191,6 +191,12 @@
     font-size: 18px;
 }
 
+/* test disclaimer*/
+.test__select-gen label {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
 /* страница с результатами теста */
 
 .result-test .entry-title {

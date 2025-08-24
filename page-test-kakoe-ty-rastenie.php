@@ -10,15 +10,11 @@
         <form class="test__select-gen">
             <legend>Выберите Ваш пол</legend>
 
-            <label>
-            <input type="radio" name="gender" value="f" checked>
-            Женский
-            </label>
+            <input type="radio" name="gender" id="f" value="f" checked>
+            <label for="f">Женский</label>
 
-            <label>
-            <input type="radio" name="gender" value="m">
-            Мужской
-            </label>
+            <input type="radio" name="gender" id="m" value="m">
+            <label for="m">Мужской</label>
         </form>
     </div>
     <div class="test d-none">
