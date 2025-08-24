@@ -143,6 +143,6 @@ function plnt_add_favicons() {
 // регистрируем гет парамтер для теста какое ты растение
 add_filter('query_vars', function ($vars) {
     $vars[] = 'gen';
-    $vars[] = 'name';
+    $vars[] = 'plant';
     return $vars;
 });

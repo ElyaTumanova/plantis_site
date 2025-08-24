@@ -10,11 +10,11 @@ foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
     
     <?php 
     $gen = get_query_var('gen');
-    $name = get_query_var('name');
+    $plant = get_query_var('plant');
     echo('<pre>');
     print_r($gen);
-    print_r($name);
-    print_r($plants_by_slug['zamiokulkas']);
+    print_r($plant);
+    //print_r($plants_by_slug['zamiokulkas']);
     echo('</pre>');?>
 
 	<div class="entry-content">
