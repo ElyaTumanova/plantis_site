@@ -5,17 +5,16 @@
     <h1 class = "entry-title">Какое ты растение?</h1>
     <div class="test__disclaimer">
         <p class="test__disclaimer-text">Какой-то умный текст про шуточный тест</p>
-        <button class = "test__init-btn button">Начать тест</button>
-        <p class="test__disclaimer-agree">Нажимая кнопку "Начать тест", вы согласшетесь с тем, что его разработчики душнилы</p>
-        <form class="test__select-gen">
+        <div class="test__select-gen">
             <legend>Выберите Ваш пол</legend>
-
             <input type="radio" name="gender" id="f" value="f" checked>
             <label for="f">Женский</label>
 
             <input type="radio" name="gender" id="m" value="m">
             <label for="m">Мужской</label>
-        </form>
+        </div>
+        <button class = "test__init-btn button">Начать тест</button>
+        <p class="test__disclaimer-agree">Нажимая кнопку "Начать тест", вы согласшетесь с тем, что его разработчики душнилы</p>
     </div>
     <div class="test d-none">
       <h2 class="test__question"></h2>

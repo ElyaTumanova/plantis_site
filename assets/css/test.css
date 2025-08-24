@@ -192,7 +192,7 @@
 }
 
 /* test disclaimer*/
-.test__select-gen label {
+.test__select-gen legend {
     font-weight: 600;
     margin-bottom: 15px;
 }
