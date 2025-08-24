@@ -277,9 +277,21 @@
 }
 
 .test__result-share span {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     mask-image: url(../../images/icons/copy-link.svg);
+    display: block;
+    mask-size: cover;
+    background-color: var(--text);
+    margin-right: 10px;
+}
+
+#copyShareBtn {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 0;
 }
 
 /* radio button */
