@@ -7,20 +7,18 @@
         <p class="test__disclaimer-text">Какой-то умный текст про шуточный тест</p>
         <button class = "test__init-btn button">Начать тест</button>
         <p class="test__disclaimer-agree">Нажимая кнопку "Начать тест", вы согласшетесь с тем, что его разработчики душнилы</p>
-        <form>
-            <fieldset>
-                <legend>Выберите Ваш пол</legend>
+        <form class="test__select-gen">
+            <legend>Выберите Ваш пол</legend>
 
-                <label>
-                <input type="radio" name="gender" value="f" checked>
-                Женский
-                </label>
+            <label>
+            <input type="radio" name="gender" value="f" checked>
+            Женский
+            </label>
 
-                <label>
-                <input type="radio" name="gender" value="m">
-                Мужской
-                </label>
-            </fieldset>
+            <label>
+            <input type="radio" name="gender" value="m">
+            Мужской
+            </label>
         </form>
     </div>
     <div class="test d-none">
