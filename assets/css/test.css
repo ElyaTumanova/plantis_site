@@ -276,7 +276,7 @@
     padding: 10px 30px;
 }
 
-#copyShareBtn span {
+.test__result-share span {
     width: 16px;
     height: 16px;
     mask-image: url(../../images/icons/copy-link.svg);
