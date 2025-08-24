@@ -268,6 +268,7 @@ const questions = [
 
 function startTest () {
     test.testInit();
+    gen = document.querySelector('input[name="gender"]:checked')?.value; // "f" или "m"
     setTimeout(()=>{
         disclaimerDiv.classList.add('d-none');
         testMainDiv.classList.remove('d-none');
@@ -311,7 +312,7 @@ const initBtn = document.querySelector('.test__init-btn');
 const disclaimerDiv = document.querySelector('.test__disclaimer'); 
 const testMainDiv = document.querySelector('.test'); 
 const testUpsellsDiv = document.querySelector('.test__result-upsells'); 
-const gen = document.querySelector('input[name="gender"]:checked')?.value; // "f" или "m"
+let gen;
 console.log(gen);
 
 initBtn.addEventListener ('click', startTest);
