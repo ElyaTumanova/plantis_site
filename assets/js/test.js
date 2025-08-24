@@ -106,30 +106,30 @@ class Test {
 
         ajaxGetUpsells(this.resultPlant.slug);
 
-        this.copyShareBtn.addEventListener('click', async () => {
-            const url = this.copyShareBtn.dataset.url || window.location.href;
+        // this.copyShareBtn.addEventListener('click', async () => {
+        //     const url = this.copyShareBtn.dataset.url || window.location.href;
 
-            try {
-            if (navigator.clipboard?.writeText) {
-                await navigator.clipboard.writeText(url);
-            } else {
-                const ta = document.createElement('textarea');
-                ta.value = url;
-                ta.setAttribute('readonly', '');
-                ta.style.position = 'fixed';
-                ta.style.top = '-9999px';
-                document.body.appendChild(ta);
-                ta.select();
-                document.execCommand('copy');
-                document.body.removeChild(ta);
-            }
-            const old = this.copyShareBtn.textContent;
-            this.copyShareBtn.textContent = 'Скопировано!';
-            setTimeout(() => this.copyShareBtn.textContent = old, 1500);
-            } catch {
-            alert('Не удалось скопировать:\n' + url);
-            }
-        });
+        //     try {
+        //     if (navigator.clipboard?.writeText) {
+        //         await navigator.clipboard.writeText(url);
+        //     } else {
+        //         const ta = document.createElement('textarea');
+        //         ta.value = url;
+        //         ta.setAttribute('readonly', '');
+        //         ta.style.position = 'fixed';
+        //         ta.style.top = '-9999px';
+        //         document.body.appendChild(ta);
+        //         ta.select();
+        //         document.execCommand('copy');
+        //         document.body.removeChild(ta);
+        //     }
+        //     const old = this.copyShareBtn.textContent;
+        //     this.copyShareBtn.textContent = 'Скопировано!';
+        //     setTimeout(() => this.copyShareBtn.textContent = old, 1500);
+        //     } catch {
+        //     alert('Не удалось скопировать:\n' + url);
+        //     }
+        // });
     }
 }
 

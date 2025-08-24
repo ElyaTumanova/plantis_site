@@ -33,7 +33,7 @@
       <img src="" alt="" class = "test__result-image" loading="lazy">
       <div class = "test__result-share">
         <!-- <a class = "test__result-link" href="">Поделись результатом</a> -->
-        <span></span> 
+        <span id="copyShareIcon"></span> 
         <button id="copyShareBtn" type="button" data-url>Поделись результатом</button>
         <div>
           <a class="social-media__button button social-media__button-telegram" href="" target = "_blank">

@@ -1,5 +1,6 @@
 .test-page .entry-title {
     font-size: 20px;
+    color: var(--text);
 }
 
 .test {
@@ -167,10 +168,30 @@
     margin-top: 15px;
 }
 
+#copyShareIcon {
+    width: 20px;
+    height: 20px;
+    mask-image: url(../../images/icons/copy-link.svg);
+    display: block;
+    mask-size: cover;
+    background-color: var(--text);
+    margin-right: 10px;
+    float: right;
+}
+
+#copyShareBtn {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 2px 0 0 0;
+}
+
 .test__result-upsells {
     grid-area: upsells;
 }
 
+/* test start screen*/
 .test__disclaimer {
     margin: 0 auto;
     max-width: 600px;
@@ -191,7 +212,7 @@
     font-size: 18px;
 }
 
-/* test disclaimer*/
+
 .test__select-gen legend {
     font-weight: 600;
     margin-bottom: 15px;
@@ -274,24 +295,6 @@
     display: block;
     width: fit-content;
     padding: 10px 30px;
-}
-
-.test__result-share span {
-    width: 20px;
-    height: 20px;
-    mask-image: url(../../images/icons/copy-link.svg);
-    display: block;
-    mask-size: cover;
-    background-color: var(--text);
-    margin-right: 10px;
-}
-
-#copyShareBtn {
-    border: none;
-    background-color: transparent;
-    font-size: 20px;
-    font-weight: 600;
-    padding: 0;
 }
 
 /* radio button */
