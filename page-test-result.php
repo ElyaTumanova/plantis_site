@@ -47,7 +47,7 @@ foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
         <?php
         get_template_part('template-parts/products/products-plants-test',null,
                             array( // массив с параметрами
-                                'cat_slug' => $plants_by_slug[$plant]['name'],
+                                'cat_slug' => $plant,
                         ));
         ?>
 	</div><!-- .entry-content -->
