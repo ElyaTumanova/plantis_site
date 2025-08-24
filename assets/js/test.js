@@ -107,7 +107,7 @@ class Test {
         ajaxGetUpsells(this.resultPlant.slug);
 
         this.copyShareBtn.addEventListener('click', async () => {
-            const url = copyBtn.dataset.url || window.location.href;
+            const url = this.copyShareBtn.dataset.url || window.location.href;
 
             try {
             if (navigator.clipboard?.writeText) {
@@ -123,9 +123,9 @@ class Test {
                 document.execCommand('copy');
                 document.body.removeChild(ta);
             }
-            const old = copyBtn.textContent;
-            copyBtn.textContent = 'Скопировано!';
-            setTimeout(() => copyBtn.textContent = old, 1500);
+            const old = this.copyShareBtn.textContent;
+            this.copyShareBtn.textContent = 'Скопировано!';
+            setTimeout(() => this.copyShareBtn.textContent = old, 1500);
             } catch {
             alert('Не удалось скопировать:\n' + url);
             }
