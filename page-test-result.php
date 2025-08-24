@@ -1,4 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     
     <?php 
     $gen = get_query_var('gen');
@@ -49,7 +49,4 @@
 			?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-	
-	</footer><!-- .entry-footer -->
-</article><!-- #post-## -->
+</div>
