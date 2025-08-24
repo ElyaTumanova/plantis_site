@@ -19,7 +19,7 @@ class Test {
       this.testResult = document.querySelector('.test__result');
       this.testResultName = document.querySelector('.test__result-name span');
       this.testResultDescr = document.querySelector('.test__result-descr');
-      this.testShareLink = document.querySelector('.test__result-link');
+    //   this.testShareLink = document.querySelector('.test__result-link');
       this.copyShareBtn = document.querySelector('#copyShareBtn');
       this.testShareTelegram = document.querySelector('.test__result .social-media__button-telegram');
       this.testShareWhatsapp = document.querySelector('.test__result .social-media__button-whatsapp');
@@ -99,7 +99,7 @@ class Test {
         this.testResult.classList.remove('d-none');
         this.testResultName.innerText = `Вы ${this.resultPlant.name}!`;
         this.testResultDescr.innerText = this.resultPlant.result;
-        this.testShareLink.setAttribute('href',this.resultPageUrl);
+        // this.testShareLink.setAttribute('href',this.resultPageUrl);
         this.copyShareBtn.dataset.url = this.resultPageUrl;
         this.testResultImage.setAttribute('src',this.resultPlant.image);
         this.testResultImage.setAttribute('alt',this.resultPlant.name);

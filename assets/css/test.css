@@ -276,6 +276,12 @@
     padding: 10px 30px;
 }
 
+#copyShareBtn span {
+    width: 16px;
+    height: 16px;
+    mask-image: url(../../images/icons/copy-link.svg);
+}
+
 /* radio button */
 
 /* для элемента input c type="radio" */
