@@ -273,6 +273,7 @@ function startTest () {
         disclaimerDiv.classList.add('d-none');
         testMainDiv.classList.remove('d-none');
     }, 300)
+    console.log(gen);
 }
 
 function ajaxGetUpsells(catSlug) {
@@ -313,6 +314,6 @@ const disclaimerDiv = document.querySelector('.test__disclaimer');
 const testMainDiv = document.querySelector('.test'); 
 const testUpsellsDiv = document.querySelector('.test__result-upsells'); 
 let gen;
-console.log(gen);
+
 
 initBtn.addEventListener ('click', startTest);
