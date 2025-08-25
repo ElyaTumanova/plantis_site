@@ -177,7 +177,7 @@ class Answer
    }
 }
 
-//console.log(plantTypes);
+console.log(plantTypes);
 
 //Массив с вопросами
 const questions = [
