@@ -223,10 +223,11 @@
     display: flex;
     width: 100%;
     column-gap: 30px;
+    align-items: center;
 }
+
 .test__select-gen legend {
     font-weight: 600;
-    margin-bottom: 15px;
 }
 
 .test__disclaimer-agree {
@@ -330,6 +331,10 @@
     align-items: center;
     user-select: none;
     width: 100%;
+  }
+
+  .test__select-gen input[type=radio]+label {
+    width: fit-content;
   }
 
   
