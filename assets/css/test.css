@@ -245,9 +245,7 @@
 .test__disclaimer-text {
   font-size: 16px;
   line-height: 1.65;
-  padding: 16px 20px;
   border-radius: 12px;
-  /* background: #FFF4E0; тёплый пастельный фон */
 }
 
 /* абзацы */
