@@ -11,7 +11,7 @@ class Test {
       this.progressBar = document.querySelector('#progress');
 
       this.questionForm = document.querySelector('.test__answers-form');
-
+ 
       //Индекс текущего вопроса
       this.current = 0;
 
@@ -29,10 +29,9 @@ class Test {
    }
 
    testInit() {
-    this.gen = document.querySelector('input[name="gender"]:checked')?.value; // "f" или "m"
     this.questions[this.current].renderQuestion();
     this.questionForm.addEventListener('submit', ()=>{this.handleFormSubmit()});
-    console.log(this.gen);
+    console.log(this);
    }
 
     handleFormSubmit() {
@@ -63,8 +62,6 @@ class Test {
 
     showResult() {
         console.log(this.plantTypes);
-        console.log(this.gen)
-        let gen = this.gen
 
         this.resultPlant = plantTypes.reduce(function(prev, current) {
             if (+current.score > +prev.score) {
@@ -107,8 +104,9 @@ class Test {
         this.testResultDescr.innerText = this.resultPlant.result;
         this.copyShareBtn.dataset.url = this.resultPageUrl;
         console.log(this.resultPlant.image)
-        console.log(this.resultPlant.image.gen)
-        this.testResultImage.setAttribute('src',this.resultPlant.image.gen);
+        console.log(gen)
+        console.log(this.resultPlant.image[gen])
+        this.testResultImage.setAttribute('src',this.resultPlant.image[gen]);
         this.testResultImage.setAttribute('alt',this.resultPlant.name);
 
         ajaxGetUpsells(this.resultPlant.slug);
@@ -278,11 +276,12 @@ const questions = [
 
 function startTest () {
     test.testInit();
+    gen = document.querySelector('input[name="gender"]:checked')?.value; // "f" или "m"
     setTimeout(()=>{
         disclaimerDiv.classList.add('d-none');
         testMainDiv.classList.remove('d-none');
     }, 300)
-    // console.log(gen);
+    console.log(gen);
 }
 
 function ajaxGetUpsells(catSlug) {
@@ -322,6 +321,7 @@ const initBtn = document.querySelector('.test__init-btn');
 const disclaimerDiv = document.querySelector('.test__disclaimer'); 
 const testMainDiv = document.querySelector('.test'); 
 const testUpsellsDiv = document.querySelector('.test__result-upsells'); 
+let gen;
 
 
 initBtn.addEventListener ('click', startTest);
