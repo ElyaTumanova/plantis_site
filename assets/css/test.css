@@ -294,7 +294,6 @@
 .result-test .entry-content {
     display: grid;
     grid-template-columns: 500px 1fr;
-    /* grid-template-rows:  auto auto auto; */
     grid-template-areas:
     "img title"
     "img descr"
@@ -303,6 +302,27 @@
     column-gap: 100px;
     row-gap: 30px;
     margin: 40px 0;
+}
+
+@media (max-width: 1300px) {
+    .result-test .entry-content {
+        grid-template-columns: 450px 1fr;
+        column-gap: 50px;
+        margin-top: 80px;
+    }
+}
+
+@media (max-width: 767px) {
+    .result-test .entry-content {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "title"
+        "img"
+        "descr"
+        "button"
+        "upsells";
+        row-gap: 20px;
+    }
 }
 
 .result-test .entry-content > p {
