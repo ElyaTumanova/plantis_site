@@ -1,3 +1,13 @@
 {
     "workbench.editor.enablePreview": false,
+    "multiCommand.commands": [
+        {
+            "command": "multiCommand.commitAndSync",
+            "sequence": [
+            "git.stageAll",   // добавить все изменения в stage
+            "git.commit",     // сделать commit c текстом из поля Source Control
+            "git.sync"        // pull + push
+            ]
+        }
+    ]
 }
