@@ -211,13 +211,13 @@
     color: var(--white);
 }
 
-.test__disclaimer-text {
+/* .test__disclaimer-text {
     font-size: 18px;
 }
 
 .test__disclaimer-text p {
     margin-bottom: 7px;
-}
+} */
 
 /*  */
 .test__disclaimer-text {
@@ -254,7 +254,7 @@
 
 /*  */
 
-.test__select-gen {
+/* .test__select-gen {
     display: flex;
     width: 100%;
     column-gap: 30px;
@@ -268,7 +268,108 @@
 .test__disclaimer-agree {
     font-size: 14px;
     text-align: center;
+} */
+
+.test__select-gen {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px 0;
+  font-size: 16px;
 }
+
+.test__select-gen legend {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #374151;
+  text-align: center;
+}
+
+/* контейнер для радио-кнопок */
+.test__select-gen input[type="radio"] {
+  display: none;
+}
+
+.test__select-gen label {
+  flex: 1;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #fff;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  cursor: pointer;
+  text-align: center;
+  transition: all .2s ease;
+}
+
+/* hover эффект */
+.test__select-gen label:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* выбранное состояние */
+.test__select-gen input[type="radio"]:checked + label {
+  border-color: #10b981;
+  background: #ecfdf5;
+  color: #047857;
+  font-weight: 600;
+}
+
+/* горизонтальное выравнивание */
+.test__select-gen {
+  align-items: stretch;
+}
+.test__select-gen input[type="radio"] + label {
+  display: inline-block;
+}
+.test__select-gen legend + input + label {
+  margin-top: 0; /* убираем лишние отступы */
+}
+.test__select-gen legend + input + label,
+.test__select-gen input[id="m"] + label {
+  margin-top: 0;
+}
+
+/* делаем ряд */
+.test__select-gen legend ~ input + label {
+  display: inline-flex;
+}
+.test__select-gen legend ~ input + label {
+  flex: 1;
+}
+.test__select-gen {
+  flex-direction: column;
+}
+.test__select-gen legend + input + label,
+.test__select-gen input[id="m"] + label {
+  margin-top: 0;
+}
+.test__select-gen legend ~ input + label {
+  display: inline-block;
+  margin: 0;
+}
+
+/* обёртка для горизонтального ряда */
+.test__select-gen {
+  display: flex;
+  flex-direction: column;
+}
+.test__select-gen legend {
+  margin-bottom: 12px;
+}
+.test__select-gen legend + input + label {
+  margin-right: 8px;
+}
+.test__select-gen legend ~ input + label {
+  display: inline-block;
+}
+.test__select-gen legend + input + label,
+.test__select-gen input[id="m"] + label {
+  display: inline-block;
+  width: calc(50% - 6px);
+}
+
 
 /* страница с результатами теста */
 
