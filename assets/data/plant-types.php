@@ -36,7 +36,10 @@ return [
         'name'   => '4 Фикус эластика',
         'score'  => 0,
         'slug'   => 'fikus-ehlastika',
-        'image'  => 'https://dev.plantis-shop.ru/wp-content/themes/plantis_site/images/test/test.png',
+        'image'  => [
+            'f' => get_template_directory_uri().'/images/test/test.png',
+            'm' => get_template_directory_uri().'/images/test/test.png',
+            ],
         'result' => 'Уверены, что вы всё-таки фикус эластика. Вас можно считать крепким орешком — стойкий, глянцевый, всегда в хорошей форме. Вам не страшны ни пересуды, ни пересадки. Главное — не трогать вас без надобности, а то выделите "млечный сок" сарказма. И да, пыль с вас лучше сдувать трепетно — с уважением к величию!',
     ],
     [
