@@ -317,22 +317,22 @@
 }
 
 /* горизонтальное выравнивание */
-.test__select-gen {
+/* .test__select-gen {
   align-items: stretch;
 }
 .test__select-gen input[type="radio"] + label {
   display: inline-block;
 }
 .test__select-gen legend + input + label {
-  margin-top: 0; /* убираем лишние отступы */
+  margin-top: 0; 
 }
 .test__select-gen legend + input + label,
 .test__select-gen input[id="m"] + label {
   margin-top: 0;
-}
+} */
 
 /* делаем ряд */
-.test__select-gen legend ~ input + label {
+/* .test__select-gen legend ~ input + label {
   display: inline-flex;
 }
 .test__select-gen legend ~ input + label {
@@ -348,10 +348,10 @@
 .test__select-gen legend ~ input + label {
   display: inline-block;
   margin: 0;
-}
+} */
 
 /* обёртка для горизонтального ряда */
-.test__select-gen {
+/* .test__select-gen {
   display: flex;
   flex-direction: column;
 }
@@ -368,7 +368,7 @@
 .test__select-gen input[id="m"] + label {
   display: inline-block;
   width: calc(50% - 6px);
-}
+} */
 
 
 
