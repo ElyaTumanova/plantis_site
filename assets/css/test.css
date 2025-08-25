@@ -302,6 +302,8 @@
     .test__result {
         grid-template-columns: 450px 1fr;
         column-gap: 50px;
+    }
+    .result-test .test__result {
         margin-top: 60px;
     }
 }
