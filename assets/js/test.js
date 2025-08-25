@@ -63,6 +63,8 @@ class Test {
 
     showResult() {
         console.log(this.plantTypes);
+        console.log(this.gen)
+        let gen = this.gen
 
         this.resultPlant = plantTypes.reduce(function(prev, current) {
             if (+current.score > +prev.score) {
@@ -105,8 +107,6 @@ class Test {
         this.testResultDescr.innerText = this.resultPlant.result;
         this.copyShareBtn.dataset.url = this.resultPageUrl;
         console.log(this.resultPlant.image)
-        console.log(this.gen)
-        let gen = this.gen
         console.log(this.resultPlant.image.gen)
         this.testResultImage.setAttribute('src',this.resultPlant.image.gen);
         this.testResultImage.setAttribute('alt',this.resultPlant.name);
@@ -282,7 +282,7 @@ function startTest () {
         disclaimerDiv.classList.add('d-none');
         testMainDiv.classList.remove('d-none');
     }, 300)
-    console.log(gen);
+    // console.log(gen);
 }
 
 function ajaxGetUpsells(catSlug) {
