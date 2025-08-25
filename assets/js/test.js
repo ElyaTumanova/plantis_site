@@ -62,6 +62,7 @@ class Test {
 
     showResult() {
         console.log(this.plantTypes);
+        testNavWrap.classList.remove('d-none');
 
         this.resultPlant = plantTypes.reduce(function(prev, current) {
             if (+current.score > +prev.score) {
