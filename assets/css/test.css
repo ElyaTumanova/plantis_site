@@ -321,6 +321,13 @@
 
 @media (max-width: 900px) {
     .result-test .content {
+        grid-template-columns: 350px 1fr;
+        column-gap:20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .result-test .content {
         display: flex;
         flex-direction: column;
         row-gap: 20px;
