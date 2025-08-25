@@ -312,7 +312,7 @@
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 900px) {
     .result-test .entry-content {
         grid-template-columns: 1fr;
         grid-template-areas:
