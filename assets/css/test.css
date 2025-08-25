@@ -252,6 +252,7 @@
     width: 100%;
     column-gap: 30px;
     align-items: center;
+    margin-top: auto;
 }
 
 .test__select-gen legend {
