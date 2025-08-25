@@ -42,8 +42,10 @@ class Test {
         ++this.current;
         console.log(this.current);
         if(this.current < this.questions.length) {
+            console.log(this.progressBar)
+            console.log(this.current)
           this.questions[this.current].renderQuestion();
-          this.progressBar.value = this.current;
+          this.progressBar.setAttribute('value',this.current);
         } else {
           this.cleanQuestion();
           this.questionForm.classList.add('d-none');
