@@ -277,6 +277,7 @@ function startTest () {
     setTimeout(()=>{
         disclaimerDiv.classList.add('d-none');
         testTitle.classList.add('d-none');
+        testNavWrap.classList.add('d-none');
         testMainDiv.classList.remove('d-none');
     }, 300)
     console.log(gen);
@@ -318,6 +319,7 @@ const test = new Test(questions, plantTypes);
 const initBtn = document.querySelector('.test__init-btn');
 const disclaimerDiv = document.querySelector('.test__disclaimer'); 
 const testTitle = document.querySelector('.test-page .entry-title'); 
+const testNavWrap = document.querySelector('.header__nav-wrap'); 
 const testMainDiv = document.querySelector('.test'); 
 const testUpsellsDiv = document.querySelector('.test__result-upsells'); 
 let gen;
