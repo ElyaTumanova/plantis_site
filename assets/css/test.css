@@ -47,6 +47,7 @@
 .test__question {
     grid-area: question;
     justify-self: center;
+    font-weight: 600;
 }
 
 .test__answers-form {
