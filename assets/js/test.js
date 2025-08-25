@@ -104,6 +104,7 @@ class Test {
         this.testResultDescr.innerText = this.resultPlant.result;
         this.copyShareBtn.dataset.url = this.resultPageUrl;
         console.log(this.resultPlant.image)
+        console.log(gen)
         console.log(this.resultPlant.image.gen)
         this.testResultImage.setAttribute('src',this.resultPlant.image.gen);
         this.testResultImage.setAttribute('alt',this.resultPlant.name);
