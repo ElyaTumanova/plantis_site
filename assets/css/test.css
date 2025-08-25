@@ -50,6 +50,12 @@
     font-weight: 600;
 }
 
+@media(max-width: 767px) {
+ .test__question {
+    font-size: 20px;
+ }
+}
+
 .test__answers-form {
     grid-area: answers;
     display: flex;
