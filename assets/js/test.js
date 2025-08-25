@@ -103,7 +103,7 @@ class Test {
         this.testResultName.innerText = `Вы ${this.resultPlant.name}!`;
         this.testResultDescr.innerText = this.resultPlant.result;
         this.copyShareBtn.dataset.url = this.resultPageUrl;
-        this.testResultImage.setAttribute('src',this.resultPlant.image);
+        this.testResultImage.setAttribute('src',this.resultPlant.image.gen);
         this.testResultImage.setAttribute('alt',this.resultPlant.name);
 
         ajaxGetUpsells(this.resultPlant.slug);
