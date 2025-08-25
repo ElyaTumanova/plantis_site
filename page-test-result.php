@@ -20,8 +20,8 @@ foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
             <h1 class="entry-title">Поздравляем! <br>
             Вы <?php echo $plants_by_slug[$plant]['name']?>!
             </h1>
-            <p class="test-description"><?php echo $plants_by_slug[$plant]['result']?></p>
             <img class="test-image" src="<?php echo $plants_by_slug[$plant]['image'][$gen]?>" alt = "<?php echo $plants_by_slug[$plant]['name']?>">
+            <p class="test-description"><?php echo $plants_by_slug[$plant]['result']?></p>
             <?php $test_link = site_url().'/test-kakoe-ty-rastenie';?>
             <div class="test-actions">
                 <a class="take-test button" href='<?php echo $test_link?>' target = "_blank">Пройти тест</a>
