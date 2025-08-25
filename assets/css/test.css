@@ -224,24 +224,34 @@
   font-size: 16px;
   line-height: 1.65;
   color: #111;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: rgba(255, 245, 230, 0.5); /* тёплый пастельный фон */
 }
-.test__disclaimer-text p { margin: 16px 0; }
 
-/* акцентная первая строка как заголовок блока */
+/* абзацы */
+.test__disclaimer-text p { margin: 14px 0; }
+
+/* акцентная первая строка */
 .test__disclaimer-text p:first-child {
   font-weight: 800;
   letter-spacing: .005em;
   margin-bottom: 8px;
+  color: #d97706; /* солнечный акцент (оранжевый) */
 }
-/* мягкий сабхед (вторая строка) */
+
+/* мягкий сабхед */
 .test__disclaimer-text p:nth-child(2) {
   color: #374151;
 }
-/* финальный акцент — курсив и полужир */
+
+/* финальный акцент */
 .test__disclaimer-text p:last-child {
   font-style: italic;
   font-weight: 600;
+  color: #047857; /* жизнерадостный зелёный */
 }
+
 /*  */
 
 .test__select-gen {
