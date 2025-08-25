@@ -219,6 +219,31 @@
     margin-bottom: 7px;
 }
 
+/*  */
+.test__disclaimer-text {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #111;
+}
+.test__disclaimer-text p { margin: 16px 0; }
+
+/* акцентная первая строка как заголовок блока */
+.test__disclaimer-text p:first-child {
+  font-weight: 800;
+  letter-spacing: .005em;
+  margin-bottom: 8px;
+}
+/* мягкий сабхед (вторая строка) */
+.test__disclaimer-text p:nth-child(2) {
+  color: #374151;
+}
+/* финальный акцент — курсив и полужир */
+.test__disclaimer-text p:last-child {
+  font-style: italic;
+  font-weight: 600;
+}
+/*  */
+
 .test__select-gen {
     display: flex;
     width: 100%;
