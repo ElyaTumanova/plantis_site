@@ -181,11 +181,11 @@
     min-height: 550px;
 }
 
-@media (max-width:767px) {
+/* @media (max-width:767px) {
     .test__disclaimer {
         row-gap: 10px;
     }
-}
+} */
 
 .test__init-btn {
   display: block;
@@ -229,9 +229,9 @@
 /* абзацы */
 .test__disclaimer-text p { margin: 14px 0; }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .test__disclaimer-text p { margin: 7px 0; }
-}
+} */
 
 /* акцентная первая строка */
 .test__disclaimer-text p:first-child {
