@@ -8,6 +8,7 @@ class Test {
       this.plantTypes = plantTypes;
 
       this.testWrap = document.querySelector('.test');
+      this.progressBar = document.querySelector('#progress');
 
       this.questionForm = document.querySelector('.test__answers-form');
  
@@ -19,7 +20,6 @@ class Test {
       this.testResult = document.querySelector('.test__result');
       this.testResultName = document.querySelector('.test__result-name span');
       this.testResultDescr = document.querySelector('.test__result-descr');
-    //   this.testShareLink = document.querySelector('.test__result-link');
       this.copyShareBtn = document.querySelector('#copyShareBtn');
       this.testShareTelegram = document.querySelector('.test__result .social-media__button-telegram');
       this.testShareWhatsapp = document.querySelector('.test__result .social-media__button-whatsapp');
@@ -43,6 +43,7 @@ class Test {
         console.log(this.current);
         if(this.current < this.questions.length) {
           this.questions[this.current].renderQuestion();
+          this.progressBar.setAttribute('value',this.current)
         } else {
           this.cleanQuestion();
           this.questionForm.classList.add('d-none');
@@ -99,37 +100,11 @@ class Test {
         this.testResult.classList.remove('d-none');
         this.testResultName.innerText = `Вы ${this.resultPlant.name}!`;
         this.testResultDescr.innerText = this.resultPlant.result;
-        // this.testShareLink.setAttribute('href',this.resultPageUrl);
         this.copyShareBtn.dataset.url = this.resultPageUrl;
         this.testResultImage.setAttribute('src',this.resultPlant.image);
         this.testResultImage.setAttribute('alt',this.resultPlant.name);
 
         ajaxGetUpsells(this.resultPlant.slug);
-
-        // this.copyShareBtn.addEventListener('click', async () => {
-        //     const url = this.copyShareBtn.dataset.url || window.location.href;
-
-        //     try {
-        //     if (navigator.clipboard?.writeText) {
-        //         await navigator.clipboard.writeText(url);
-        //     } else {
-        //         const ta = document.createElement('textarea');
-        //         ta.value = url;
-        //         ta.setAttribute('readonly', '');
-        //         ta.style.position = 'fixed';
-        //         ta.style.top = '-9999px';
-        //         document.body.appendChild(ta);
-        //         ta.select();
-        //         document.execCommand('copy');
-        //         document.body.removeChild(ta);
-        //     }
-        //     const old = this.copyShareBtn.textContent;
-        //     this.copyShareBtn.textContent = 'Скопировано!';
-        //     setTimeout(() => this.copyShareBtn.textContent = old, 1500);
-        //     } catch {
-        //     alert('Не удалось скопировать:\n' + url);
-        //     }
-        // });
     }
 }
 

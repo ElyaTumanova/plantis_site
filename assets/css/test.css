@@ -33,6 +33,9 @@
 
 #progress {
     grid-area: progressbar;
+    width: 100%;
+    accent-color: #327039;
+    height: 20px;
 }
 
 .test__question {
