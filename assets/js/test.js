@@ -276,6 +276,7 @@ function startTest () {
     gen = document.querySelector('input[name="gender"]:checked')?.value; // "f" или "m"
     setTimeout(()=>{
         disclaimerDiv.classList.add('d-none');
+        testTitle.classList.add('d-none');
         testMainDiv.classList.remove('d-none');
     }, 300)
     console.log(gen);
@@ -316,6 +317,7 @@ function ajaxGetUpsells(catSlug) {
 const test = new Test(questions, plantTypes);
 const initBtn = document.querySelector('.test__init-btn');
 const disclaimerDiv = document.querySelector('.test__disclaimer'); 
+const testTitle = document.querySelector('.test-page .entry-title'); 
 const testMainDiv = document.querySelector('.test'); 
 const testUpsellsDiv = document.querySelector('.test__result-upsells'); 
 let gen;
