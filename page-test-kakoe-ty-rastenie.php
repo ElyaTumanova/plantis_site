@@ -23,7 +23,7 @@
         <p class="test__disclaimer-agree">Нажимая кнопку "Начать тест", вы соглашаетесь с тем, что его разработчики душнилы</p>
     </div>
     <div class="test d-none">
-      <progress id="progress" value="0" max="100"></progress>
+      <progress id="progress" value="1" max="10"></progress>
       <h2 class="test__question"></h2>
       <form class = "test__answers-form">
         <div class = "test__answers">
