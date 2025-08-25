@@ -120,7 +120,7 @@
 @media(max-width: 767px) {
  .test__answer {
     font-size: 16px;
-    min-height: 0;
+    min-height: 52px;
     padding: 10px 20px;
  }
 }
