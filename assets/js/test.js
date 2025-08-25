@@ -279,6 +279,7 @@ function startTest () {
         testTitle.classList.add('d-none');
         testNavWrap.classList.add('d-none');
         testMainDiv.classList.remove('d-none');
+        window.scrollTo(0, 0);
     }, 300)
     console.log(gen);
 }
