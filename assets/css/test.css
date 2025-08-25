@@ -233,13 +233,12 @@
 }
 
 
-/*  */
 .test__disclaimer-text {
   font-size: 16px;
   line-height: 1.65;
   padding: 16px 20px;
   border-radius: 12px;
-  background: #FFF4E0; /* тёплый пастельный фон */
+  /* background: #FFF4E0; тёплый пастельный фон */
 }
 
 /* абзацы */
@@ -259,8 +258,6 @@
   color: #047857; /* жизнерадостный зелёный */
 }
 
-/*  */
-
 .test__select-gen {
     display: flex;
     width: 100%;
@@ -277,21 +274,6 @@
     font-size: 14px;
     text-align: center;
 }
-
-/* .test__select-gen {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 24px 0;
-  font-size: 16px;
-} */
-
-/* .test__select-gen legend {
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #374151;
-
-} */
 
 /* страница с результатами теста */
 
