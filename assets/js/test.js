@@ -45,7 +45,7 @@ class Test {
             console.log(this.progressBar)
             console.log(this.current)
           this.questions[this.current].renderQuestion();
-          this.progressBar.setAttribute('value',this.current);
+          this.progressBar.setAttribute('value',this.current+1);
         } else {
           this.cleanQuestion();
           this.questionForm.classList.add('d-none');

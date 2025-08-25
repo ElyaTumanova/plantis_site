@@ -118,16 +118,16 @@
 }
 
 .test__error {
-    /* grid-area: error; */
     color: var(--red-color);
     visibility: hidden;
     opacity: 0;
-    /* margin: 0;
-    height: 0; */
     position: absolute;
     bottom: 0;
     transition: opacity 0.5s;
     margin: 10px 0;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
 
 @media(max-width: 767px) {
