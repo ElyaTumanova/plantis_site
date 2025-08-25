@@ -437,11 +437,11 @@
 
 
 /* контейнер для радио-кнопок */
-.test input[type="radio"] {
+.test-page input[type="radio"] {
   display: none;
 }
 
-.test label {
+.test-page label {
   flex: 1;
   padding: 14px 16px;
   border-radius: 25px;
@@ -454,13 +454,13 @@
 }
 
 /* hover эффект */
-.test label:hover {
+.test-page label:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
 /* выбранное состояние */
-.test input[type="radio"]:checked + label {
+.test-page input[type="radio"]:checked + label {
     background: #ecfdf5;
     color: #327039;
     font-weight: 600;
