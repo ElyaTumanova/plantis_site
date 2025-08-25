@@ -254,7 +254,7 @@
 
 /*  */
 
-/* .test__select-gen {
+.test__select-gen {
     display: flex;
     width: 100%;
     column-gap: 30px;
@@ -263,27 +263,28 @@
 
 .test__select-gen legend {
     font-weight: 600;
+    text-align: center;
 }
 
 .test__disclaimer-agree {
     font-size: 14px;
     text-align: center;
-} */
+}
 
-.test__select-gen {
+/* .test__select-gen {
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin: 24px 0;
   font-size: 16px;
-}
+} */
 
-.test__select-gen legend {
+/* .test__select-gen legend {
   font-weight: 600;
   margin-bottom: 8px;
   color: #374151;
-  text-align: center;
-}
+
+} */
 
 /* контейнер для радио-кнопок */
 .test__select-gen input[type="radio"] {
