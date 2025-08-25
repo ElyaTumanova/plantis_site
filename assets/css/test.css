@@ -46,7 +46,7 @@
 
 .test__question {
     grid-area: question;
-    justify-self: center;
+    /* justify-self: center; */
     font-weight: 600;
 }
 
@@ -203,25 +203,29 @@
 
 .test__disclaimer-text {
   font-size: 16px;
-  line-height: 1.65;
+  line-height: 1.3;
   border-radius: 12px;
 }
 
 /* абзацы */
 .test__disclaimer-text p { margin: 14px 0; }
 
+@media (max-width: 767px) {
+    .test__disclaimer-text p { margin: 7px 0; }
+}
+
 /* акцентная первая строка */
 .test__disclaimer-text p:first-child {
   font-weight: 800;
-  margin-bottom: 8px;
-  color: #DC5C35; /* солнечный акцент (оранжевый) */
+  /* margin-bottom: 8px; */
+  /* color: #DC5C35; солнечный акцент (оранжевый) */
 }
 
 /* финальный акцент */
 .test__disclaimer-text p:last-child {
   font-style: italic;
   font-weight: 600;
-  color: #047857; /* жизнерадостный зелёный */
+  /* color: #047857; жизнерадостный зелёный */
 }
 
 .test__select-gen {
