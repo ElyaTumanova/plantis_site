@@ -16,14 +16,14 @@ foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
     // echo('</pre>');
     ?>
     <?php if (array_key_exists($plant, $plants_by_slug)):?>
-        <div class="content">
-            <h1 class="entry-title">Поздравляем! <br>
+        <div class="test__result">
+            <h1 class="test__result-name">Поздравляем! <br>
             Вы <?php echo $plants_by_slug[$plant]['name']?>!
             </h1>
-            <img class="test-image" src="<?php echo $plants_by_slug[$plant]['image'][$gen]?>" alt = "<?php echo $plants_by_slug[$plant]['name']?>">
-            <p class="test-description"><?php echo $plants_by_slug[$plant]['result']?></p>
+            <img class="test__result-image" src="<?php echo $plants_by_slug[$plant]['image'][$gen]?>" alt = "<?php echo $plants_by_slug[$plant]['name']?>">
+            <p class="test__result-descr"><?php echo $plants_by_slug[$plant]['result']?></p>
             <?php $test_link = site_url().'/test-kakoe-ty-rastenie';?>
-            <div class="test-actions">
+            <div class="test__result-share">
                 <a class="take-test button" href='<?php echo $test_link?>' target = "_blank">Пройти тест</a>
                 <div class = "test-share">
                     <span id="copyShareIcon"></span> 
@@ -44,12 +44,14 @@ foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
                     </div>
                 </div>
             </div>
-            <?php
-            get_template_part('template-parts/products/products-plants-test',null,
-                                array( // массив с параметрами
-                                    'cat_slug' => $plant,
-                            ));
+            <div class = "test__result-upsells">
+                <?php
+                get_template_part('template-parts/products/products-plants-test',null,
+                array( // массив с параметрами
+                    'cat_slug' => $plant,
+                ));
             ?>
+            </div>
         </div>
     <?php else:?>
         <div>
