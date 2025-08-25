@@ -81,10 +81,6 @@
     background-color: var(--white); */
 }
 
-.test__answer label {
-    box-shadow: -5px 4px 8px 0px rgba(0, 0, 0, .102), 3px -2px 3px 0 rgb(249 249 249);
-}
-
 
 @media(max-width: 767px) {
  .test__answer {
@@ -94,12 +90,22 @@
 }
 
 .test__button {
-    background-color: var(--text);
-    color: var(--white);
-    border-radius: 50px;
-    width: 300px;
-    align-self: center;
-    padding: 12px 10px;
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border-radius: 25px;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #327039;
+    color: #fff;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.test__button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(16, 185, 129, 0.3);
 }
 
 .test__error {
@@ -467,7 +473,11 @@
 .test-page input[type="radio"]:checked + label {
     background: #ecfdf5;
     color: #327039;
-    font-weight: 600;
+    /* font-weight: 600; */
     display: flex;
     justify-content: center;
+}
+
+.test__answer label {
+    box-shadow: -5px 4px 8px 0px rgba(0, 0, 0, .102), 3px -2px 3px 0 rgb(249 249 249);
 }
