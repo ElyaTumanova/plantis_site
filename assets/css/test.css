@@ -207,11 +207,12 @@
   display: block;
   width: 100%;
   padding: 14px;
-  border-radius: 12px;
+  border-radius: 25px;
   border: none;
   font-size: 18px;
   font-weight: 600;
-  background: linear-gradient(90deg, #34d399, #10b981);
+  /* background: linear-gradient(90deg, #34d399, #10b981); */
+  background-color: #327039;
   color: #fff;
   cursor: pointer;
   transition: transform .2s ease, box-shadow .2s ease;
@@ -226,10 +227,9 @@
 .test__disclaimer-text {
   font-size: 16px;
   line-height: 1.65;
-  color: #111;
   padding: 16px 20px;
   border-radius: 12px;
-  background: rgba(255, 245, 230, 0.5); /* тёплый пастельный фон */
+  background: #FFF4E0; /* тёплый пастельный фон */
 }
 
 /* абзацы */
@@ -238,14 +238,8 @@
 /* акцентная первая строка */
 .test__disclaimer-text p:first-child {
   font-weight: 800;
-  letter-spacing: .005em;
   margin-bottom: 8px;
-  color: #d97706; /* солнечный акцент (оранжевый) */
-}
-
-/* мягкий сабхед */
-.test__disclaimer-text p:nth-child(2) {
-  color: #374151;
+  color: #DC5C35; /* солнечный акцент (оранжевый) */
 }
 
 /* финальный акцент */
@@ -297,7 +291,7 @@
 .test__select-gen label {
   flex: 1;
   padding: 14px 16px;
-  border-radius: 12px;
+  border-radius: 25px;
   background: #fff;
   border: 2px solid transparent;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
