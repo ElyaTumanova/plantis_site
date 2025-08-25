@@ -314,13 +314,8 @@
 
 @media (max-width: 900px) {
     .result-test .entry-content {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-        "title"
-        "img"
-        "descr"
-        "button"
-        "upsells";
+        display: flex;
+        flex-direction: column;
         row-gap: 20px;
     }
 }

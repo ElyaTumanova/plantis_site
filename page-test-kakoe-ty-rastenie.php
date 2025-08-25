@@ -36,8 +36,8 @@
     </div> 
     <div class = "test__result d-none">
       <p class = "test__result-name">Поздравляем!<br><span></span></p>
-      <p class = "test__result-descr"></p>
       <img src="" alt="" class = "test__result-image" loading="lazy">
+      <p class = "test__result-descr"></p>
       <div class = "test__result-share">
         <!-- <a class = "test__result-link" href="">Поделись результатом</a> -->
         <span id="copyShareIcon"></span> 
