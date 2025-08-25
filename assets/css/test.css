@@ -327,7 +327,7 @@
     }
 }
 
-.result-test .content > p {
+.result-test .test-description {
   grid-area: descr;
   font-size: 20px;
   line-height: 1.4;
@@ -336,8 +336,9 @@
 }
 
 @media (max-width: 900px) {
-    .result-test .content > p {
+    .result-test .test-description {
         max-width: 100%;
+        font-size: 16px;
     }
 }
 
@@ -363,6 +364,12 @@
     border-radius: 50px;
     width: 300px;
     margin-bottom: 30px;
+}
+
+@media (max-width: 900px) {
+    .result-test .take-test {
+        width: 100%;
+    }
 }
 
 .result-test .test-share > p {
