@@ -73,11 +73,11 @@ if (!is_account_page()) {
 <?php wp_footer(); ?>
 <?php echo "<!-- Timing: footer.php = " . round((microtime(true) - $start_footer_file) * 1000, 2) . " ms -->"; ?>
 <!-- #google_recapcha -->
-<script src="https://www.google.com/recaptcha/api.js"></script>
- <script>
+<!-- <script src="https://www.google.com/recaptcha/api.js"></script> -->
+ <!-- <script>
    function onSubmit(token) {
     document.getElementById("recapcha-form").submit();
    }
- </script>
+ </script> -->
 </body>
 </html>
