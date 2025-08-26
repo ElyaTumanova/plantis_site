@@ -139,66 +139,60 @@ function plnt_add_favicons() {
     <?php
 }
 
-// CF7: строгая проверка RU-телефона на сервере
+// Серверная проверка RU-телефона для CF7 только для [tel* tel-536]
 add_filter( 'wpcf7_validate_tel',  'my_cf7_ru_phone_validate', 20, 2 );
 add_filter( 'wpcf7_validate_tel*', 'my_cf7_ru_phone_validate', 20, 2 );
 
 function my_cf7_ru_phone_validate( $result, $tag ) {
-    // --- если нужно проверять только конкретное поле, раскомментируй:
-    // if ( $tag->name !== 'tel-536' ) { return $result; }
+    // Проверяем только нужное поле
+    if ( $tag->name !== 'tel-536' ) {
+        return $result;
+    }
 
-    // получаем значение поля
-    $name = is_object( $tag ) ? $tag->name : ( is_array( $tag ) && isset( $tag['name'] ) ? $tag['name'] : '' );
+    // Получаем значение
     $submission = WPCF7_Submission::get_instance();
     $value = '';
-
     if ( $submission ) {
         if ( method_exists( $submission, 'get_posted_string' ) ) {
-            $value = (string) $submission->get_posted_string( $name );
+            $value = (string) $submission->get_posted_string( $tag->name );
         } else {
-            $posted = $submission->get_posted_data( $name );
+            $posted = $submission->get_posted_data( $tag->name );
             $value  = is_array( $posted ) ? implode( '', $posted ) : (string) $posted;
         }
     }
     $value = trim( $value );
 
-    // пусто: валидно, если поле не обязательно
-    $is_required = ( is_object($tag) && method_exists($tag,'is_required') ) ? $tag->is_required() : false;
+    // Так как поле tel* — оно обязательно. Если пусто — ошибка.
     if ( $value === '' ) {
-        if ( $is_required ) {
-            $result->invalidate( $tag, __( 'Введите номер телефона.', 'plantis-theme' ) );
-        }
+        $result->invalidate( $tag, __( 'Введите номер телефона.', 'your-textdomain' ) );
         return $result;
     }
 
-    // 1) допустимые символы
-    if ( ! preg_match( '/^[+0-9()\/\-\s]+$/u', $value ) ) {
-        $result->invalidate( $tag, __( 'Недопустимые символы в номере телефона.', 'plantis-theme' ) );
+    // Разрешённые символы в введённой строке
+    if ( ! preg_match( '/^[+0-9()\/\-\s]+$/', $value ) ) {
+        $result->invalidate( $tag, __( 'Недопустимые символы в номере телефона.', 'your-textdomain' ) );
         return $result;
     }
 
-    // 2) нормализация и проверка «только + и цифры»
-    $normalized = preg_replace( '/[\s()\/-]+/u', '', $value );
+    // Нормализуем (убираем пробелы/скобки/дефисы/слэш)
+    $normalized = preg_replace( '/[\s()\/-]+/', '', $value );
+
+    // После нормализации — только опциональный "+" и цифры
     if ( ! preg_match( '/^\+?\d+$/', $normalized ) ) {
-        $result->invalidate( $tag, __( 'Неверный формат номера телефона.', 'plantis-theme' ) );
+        $result->invalidate( $tag, __( 'Неверный формат номера телефона.', 'your-textdomain' ) );
         return $result;
     }
 
-    // 3) RU-правила:
-    // +7XXXXXXXXXX — страна + 10 цифр
-    // 8XXXXXXXXXX или 7XXXXXXXXXX — всего 11 цифр
-    // 9XXXXXXXXX — локальный мобильный без кода страны (10 цифр)
-    if (
+    // Жёсткие RU-правила:
+    // +7XXXXXXXXXX  |  8XXXXXXXXXX  |  7XXXXXXXXXX  |  9XXXXXXXXX
+    $ok =
         preg_match( '/^\+7\d{10}$/', $normalized ) ||
         preg_match( '/^[87]\d{10}$/', $normalized ) ||
-        preg_match( '/^9\d{9}$/',   $normalized )
-    ) {
-        return $result; // валидно
+        preg_match( '/^9\d{9}$/',    $normalized );
+
+    if ( ! $ok ) {
+        $result->invalidate( $tag, __( 'Введите номер телефона в формате +7 (XXX) XXX-XX-XX.', 'your-textdomain' ) );
     }
 
-    // короткие и прочие варианты — не проходят
-    $result->invalidate( $tag, __( 'Введите номер телефона в формате +7 (XXX) XXX-XX-XX.', 'plantis-theme' ) );
     return $result;
 }
-
-
