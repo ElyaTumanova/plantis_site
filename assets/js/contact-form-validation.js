@@ -108,20 +108,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const raw = (field.value || '').trim();
     if (raw === '') return !isRequired(field);
 
-    // только допустимые символы
+    // разрешённые символы
     if (!/^[+0-9()\/\-\s]+$/.test(raw)) return false;
 
-    const normalized = raw.replace(/[\s()\/-]/g, ''); // убрали форматирование
+    // убираем форматирование
+    const normalized = raw.replace(/[\s()\/-]/g, '');
     if (!/^\+?\d+$/.test(normalized)) return false;
 
-    if (/^\+7\d{10}$/.test(normalized)) return true;   // +7XXXXXXXXXX
-    if (/^[87]\d{10}$/.test(normalized)) return true;  // 8XXXXXXXXXX или 7XXXXXXXXXX
-    if (/^9\d{9}$/.test(normalized)) return true;      // 903XXXXXXXX
+    // RU-правила:
+    // +7XXXXXXXXXX  — страна + 10 цифр
+    if (/^\+7\d{10}$/.test(normalized)) return true;
+    // 8XXXXXXXXXX или 7XXXXXXXXXX — всего 11 цифр
+    if (/^[87]\d{10}$/.test(normalized)) return true;
+    // 9XXXXXXXXX — локальный мобильный без кода страны (10 цифр)
+    if (/^9\d{9}$/.test(normalized)) return true;
 
-    // резерв: 7–15 цифр
-    const digitsOnly = normalized.replace(/\D/g, '');
-    return digitsOnly.length >= 7 && digitsOnly.length <= 15;
-  }
+    // Никаких «>=7» — короткие номера не проходят
+    return false;
+    }
 
   function emailOk(field) {
     const v = (field.value || '').trim();
