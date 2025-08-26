@@ -216,6 +216,12 @@
     padding: 10px;
 }
 
+.wpcf7 form input[type=submit].is-disabled,
+.wpcf7 form button[type=submit].is-disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+
 .wpcf7 form.init .wpcf7-response-output {
     display: block;
     visibility: hidden;

@@ -83,6 +83,8 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		                                     '/assets/js/cart-backorder-crossell.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/cart-backorder-crossell.js'), true );
 		wp_enqueue_script( 'cart-upsells', get_template_directory_uri() .
 		                                     '/assets/js/cart-upsells.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/cart-upsells.js'), true );
+		wp_enqueue_script( 'contact-form-validation', get_template_directory_uri() .
+		                                     '/assets/js/contact-form-validation.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/contact-form-validation.js'), true );
 
 		wp_enqueue_script( 'metrikaGoal', get_template_directory_uri() .
 		                                     '/assets/js/metrikaGoal.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/metrikaGoal.js'), true );  //metrikaGoal Яндекс Метрика Yandex Metrika
