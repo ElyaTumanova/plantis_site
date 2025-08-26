@@ -180,21 +180,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // обязательные поля
       for (let i = 0; i < requiredFields.length; i++) {
-        if (!isFilled(requiredFields[i], form)) { ok = false; break; }
+        if (!isFilled(requiredFields[i], form)) { ok = false; }
       }
 
-      // телефон(ы)
-      if (ok && phoneFields.length) {
-        for (let i = 0; i < phoneFields.length; i++) {
-          if (!phoneOk(phoneFields[i])) { ok = false; break; }
-        }
+      // телефон(ы) + подсказки
+      for (let i = 0; i < phoneFields.length; i++) {
+        const valid = phoneOk(phoneFields[i]);
+        setPhoneTip(phoneFields[i], valid);
+        if (!valid) ok = false;
       }
 
       // email(ы)
-      if (ok && emailFields.length) {
-        for (let i = 0; i < emailFields.length; i++) {
-          if (!emailOk(emailFields[i])) { ok = false; break; }
-        }
+      for (let i = 0; i < emailFields.length; i++) {
+        if (!emailOk(emailFields[i])) { ok = false; }
       }
 
       submit.disabled = !ok;
@@ -202,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
       else submit.classList.add('is-disabled');
     }
 
-    // Маску ставим на все телефонные поля, чтобы ввод шёл в формате +7 (XXX) XXX-XX-XX
+    // Маска на все телефонные поля
     Array.prototype.forEach.call(phoneFields, function (input) {
       attachPhoneMask(input, check);
     });
@@ -214,10 +212,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // слушатели
     form.addEventListener('input',  check, true);
     form.addEventListener('change', check, true);
-    form.addEventListener('wpcf7invalid', check);
+    form.addEventListener('wpcf7invalid', check); // если сервер CF7 вернул ошибки, синхронизируем
     form.addEventListener('wpcf7mailsent', function () {
       submit.disabled = true;
       submit.classList.add('is-disabled');
+      // по отправке можно скрыть свои подсказки:
+      Array.prototype.forEach.call(phoneFields, function (f) { setPhoneTip(f, true); });
     });
     form.addEventListener('reset', function () { setTimeout(check, 0); });
 
