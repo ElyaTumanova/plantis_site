@@ -139,16 +139,3 @@ function plnt_add_favicons() {
     <?php
 }
 
-// добавляем данные в Contact Form 7 для #google_recapcha
-// add_filter( 'wpcf7_form_elements', function( $content ) {
-//     $content = str_replace(
-//         'class="wpcf7-form-control wpcf7-submit has-spinner"',
-//         'class="wpcf7-form-control wpcf7-submit has-spinner g-recaptcha" 
-//          data-sitekey="6LcP2rIrAAAAAGxrNXEe4AP0rC_fXZ7v7vKVr4wF"
-//          data-callback="onSubmit"
-//          data-action="submit"',
-//         $content
-//     );
-//     return $content;
-// });
-
