@@ -139,6 +139,33 @@ document.addEventListener('DOMContentLoaded', function () {
     return asciiEmail.test(v);
   }
 
+  /* ===== ТИПЫ/ПОДСКАЗКИ ДЛЯ ТЕЛЕФОНА ===== */
+  function setPhoneTip(field, isValid) {
+    // Оборачивает в стандарт CF7: класс на инпуте и span.wpcf7-not-valid-tip рядом
+    const wrap = field.closest('.wpcf7-form-control-wrap') || field.parentNode;
+    if (!wrap) return;
+
+    let tip = wrap.querySelector('.wpcf7-not-valid-tip[data-custom="1"]');
+
+    if (isValid) {
+      if (tip) tip.remove();
+      field.classList.remove('wpcf7-not-valid');
+      field.setAttribute('aria-invalid', 'false');
+    } else {
+      if (!tip) {
+        tip = document.createElement('span');
+        tip.className = 'wpcf7-not-valid-tip';
+        tip.setAttribute('aria-hidden', 'true');
+        tip.setAttribute('data-custom', '1'); // чтобы не трогать системные подсказки CF7
+        tip.textContent = 'Введите номер телефона.';
+        wrap.appendChild(tip);
+      }
+      field.classList.add('wpcf7-not-valid');
+      field.setAttribute('aria-invalid', 'true');
+    }
+  }
+
+
   /* ===== ИНИЦИАЛИЗАЦИЯ КАЖДОЙ ФОРМЫ ===== */
   Array.prototype.forEach.call(forms, function (form) {
     const submit = form.querySelector('input[type=submit], button[type=submit]');
