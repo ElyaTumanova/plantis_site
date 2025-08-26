@@ -110,4 +110,80 @@
         checkoutForm.addEventListener('change', plnt_hide_checkout_fields);
     }
 
-    
+/*--------------------------------------------------------------
+# Phone number mask
+--------------------------------------------------------------*/
+
+// Маска телефона на странице оформления заказа WooCommerce
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Подключаем маску к полям телефона (учтём перерисовки checkout через AJAX)
+  function digitsBody(value) {
+    let d = (value || '').replace(/\D/g, '');
+    if (d.startsWith('8') || d.startsWith('7')) d = d.slice(1);
+    return d.slice(0, 10);
+  }
+  function formatFromDigits(body) {
+    let out = '+7';
+    if (body.length > 0) { out += ' (' + body.slice(0,3); if (body.length >= 3) out += ')'; }
+    if (body.length > 3) out += ' ' + body.slice(3,6);
+    if (body.length > 6) out += '-' + body.slice(6,8);
+    if (body.length > 8) out += '-' + body.slice(8,10);
+    return out;
+  }
+  function attachPhoneMask(input) {
+    if (input.dataset.phoneMaskAttached === '1') return;
+    input.dataset.phoneMaskAttached = '1';
+
+    function apply(d) {
+      input.value = formatFromDigits(d);
+      input.dataset.prevDigits = d;
+      try { input.setSelectionRange(input.value.length, input.value.length); } catch(e){}
+    }
+    function onInput(e) {
+      const prev = input.dataset.prevDigits || '';
+      const type = (e && e.inputType) || '';
+      const isDelete = type.indexOf('delete') === 0 || input.dataset.backspace === '1';
+      let d = digitsBody(input.value);
+      if (isDelete && prev.length === d.length && prev.length > 0) d = prev.slice(0, -1);
+      apply(d);
+      input.dataset.backspace = '';
+    }
+    function onKeydown(e){ if (e.key === 'Backspace') input.dataset.backspace = '1'; }
+    function onFocus(){
+      if (!input.value.trim()) {
+        input.value = '+7 ';
+        try { input.setSelectionRange(input.value.length, input.value.length); } catch(e){}
+      }
+      input.dataset.prevDigits = digitsBody(input.value);
+    }
+    function onBlur(){
+      if (digitsBody(input.value).length < 10) input.value = ''; // незавершённый номер очищаем
+    }
+
+    input.setAttribute('maxlength','18'); // "+7 (XXX) XXX-XX-XX"
+    input.setAttribute('inputmode','tel');
+    input.dataset.prevDigits = '';
+    input.dataset.backspace = '';
+    input.addEventListener('keydown', onKeydown, false);
+    input.addEventListener('input',  onInput,  false);
+    input.addEventListener('paste',  onInput,  false);
+    input.addEventListener('focus',  onFocus,  false);
+    input.addEventListener('blur',   onBlur,   false);
+
+    apply(digitsBody(input.value));
+  }
+
+  function initMask() {
+    // Стандартные поля Woo: billing_phone (+ возможно shipping_phone)
+    document.querySelectorAll('input[name="billing_phone"], input#billing_phone, input[name="shipping_phone"], input#shipping_phone')
+      .forEach(attachPhoneMask);
+  }
+
+  initMask();
+
+  // WooCommerce часто перерисовывает чек-аут — наблюдаем DOM и перевешиваем маску
+  const target = document.querySelector('form.checkout') || document.body;
+  const mo = new MutationObserver(function(){ initMask(); });
+  mo.observe(target, { childList: true, subtree: true });
+});
