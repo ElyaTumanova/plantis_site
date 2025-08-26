@@ -124,42 +124,62 @@ document.addEventListener('DOMContentLoaded', function () {
     return d.slice(0, 10);
   }
   function formatFromDigits(body) {
+    if (body.length === 0) return ''; // сохраняем плейсхолдер
     let out = '+7';
-    if (body.length > 0) { out += ' (' + body.slice(0,3); if (body.length >= 3) out += ')'; }
-    if (body.length > 3) out += ' ' + body.slice(3,6);
-    if (body.length > 6) out += '-' + body.slice(6,8);
-    if (body.length > 8) out += '-' + body.slice(8,10);
+    if (body.length >= 1) {
+        out += ' (' + body.slice(0, Math.min(3, body.length));
+        if (body.length >= 3) out += ')';
+    }
+    if (body.length >= 4) out += ' ' + body.slice(3, Math.min(6, body.length));
+    if (body.length >= 7) out += '-' + body.slice(6, Math.min(8, body.length));
+    if (body.length >= 9) out += '-' + body.slice(8, Math.min(10, body.length));
     return out;
   }
-  function attachPhoneMask(input) {
+  function attachPhoneMask(input, onChange) {
     if (input.dataset.phoneMaskAttached === '1') return;
     input.dataset.phoneMaskAttached = '1';
 
+    function digitsBody(value) {
+        let d = (value || '').replace(/\D/g, '');
+        if (d.startsWith('8') || d.startsWith('7')) d = d.slice(1);
+        return d.slice(0, 10);
+    }
+
     function apply(d) {
-      input.value = formatFromDigits(d);
-      input.dataset.prevDigits = d;
-      try { input.setSelectionRange(input.value.length, input.value.length); } catch(e){}
+        const formatted = formatFromDigits(d);
+        input.value = formatted; // если d пустой — станет '', плейсхолдер виден
+        input.dataset.prevDigits = d;
+        try { input.setSelectionRange(input.value.length, input.value.length); } catch (e) {}
     }
+
     function onInput(e) {
-      const prev = input.dataset.prevDigits || '';
-      const type = (e && e.inputType) || '';
-      const isDelete = type.indexOf('delete') === 0 || input.dataset.backspace === '1';
-      let d = digitsBody(input.value);
-      if (isDelete && prev.length === d.length && prev.length > 0) d = prev.slice(0, -1);
-      apply(d);
-      input.dataset.backspace = '';
+        const prev = input.dataset.prevDigits || '';
+        const type = (e && e.inputType) || '';
+        const isDelete = type.indexOf('delete') === 0 || input.dataset.backspace === '1';
+
+        let d = digitsBody(input.value);
+        // backspace по служебным символам маски
+        if (isDelete && prev.length === d.length && prev.length > 0) d = prev.slice(0, -1);
+
+        apply(d);
+        input.dataset.backspace = '';
+        if (typeof onChange === 'function') onChange();
     }
-    function onKeydown(e){ if (e.key === 'Backspace') input.dataset.backspace = '1'; }
-    function onFocus(){
-      if (!input.value.trim()) {
-        input.value = '+7 ';
-        try { input.setSelectionRange(input.value.length, input.value.length); } catch(e){}
-      }
-      input.dataset.prevDigits = digitsBody(input.value);
+
+    function onKeydown(e) {
+        if (e.key === 'Backspace') input.dataset.backspace = '1';
     }
-    // function onBlur(){
-    //   if (digitsBody(input.value).length < 10) input.value = ''; // незавершённый номер очищаем
-    // }
+
+    function onFocus() {
+        // НИЧЕГО не подставляем на фокусе — плейсхолдер остаётся как есть
+        input.dataset.prevDigits = digitsBody(input.value);
+    }
+
+    function onBlur() {
+        // Если нужно сохранять незавершённый ввод — ничего не чистим
+        // (оставь пустым). Если хочешь очищать — добавь проверку длины и очистку.
+        if (typeof onChange === 'function') onChange();
+    }
 
     input.setAttribute('maxlength','18'); // "+7 (XXX) XXX-XX-XX"
     input.setAttribute('inputmode','tel');
@@ -169,9 +189,10 @@ document.addEventListener('DOMContentLoaded', function () {
     input.addEventListener('input',  onInput,  false);
     input.addEventListener('paste',  onInput,  false);
     input.addEventListener('focus',  onFocus,  false);
-    // input.addEventListener('blur',   onBlur,   false);
+    input.addEventListener('blur',   onBlur,   false);
 
-    apply(digitsBody(input.value));
+    // ИНИЦИАЛИЗАЦИЯ: не подставляем "+7" — оставляем пусто
+    apply(digitsBody(input.value)); // если пусто -> '', плейсхолдер виден
   }
 
   function initMask() {
