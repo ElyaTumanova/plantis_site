@@ -125,12 +125,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Никаких «>=7» — короткие номера не проходят
     return false;
-    }
+  }
 
   function emailOk(field) {
     const v = (field.value || '').trim();
     if (v === '') return !isRequired(field);
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+    // ASCII-email: латиница/цифры в локальной части + допустимые спецсимволы,
+    // домен — латиница/цифры/дефис, TLD — только буквы, ≥2
+    const asciiEmail =
+        /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/;
+
+    return asciiEmail.test(v);
   }
 
   /* ===== ИНИЦИАЛИЗАЦИЯ КАЖДОЙ ФОРМЫ ===== */
