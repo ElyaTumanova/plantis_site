@@ -139,7 +139,7 @@ function plnt_add_favicons() {
     <?php
 }
 
-
+// добавляем данные в Contact Form 7 для #google_recapcha
 add_filter( 'wpcf7_form_elements', function( $content ) {
     $content = str_replace(
         'class="wpcf7-form-control wpcf7-submit has-spinner"',
