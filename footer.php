@@ -75,8 +75,8 @@ if (!is_account_page()) {
 <script src="https://www.google.com/recaptcha/api.js"></script>
  <script>
    function onSubmit(token) {
-    console.log('hi recapcha')
-    console.log(token)
+    // console.log('hi recapcha')
+    // console.log(token)
     document.getElementById("recapcha-form").submit();
    }
  </script>
