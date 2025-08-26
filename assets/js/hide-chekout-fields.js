@@ -157,9 +157,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       input.dataset.prevDigits = digitsBody(input.value);
     }
-    function onBlur(){
-      if (digitsBody(input.value).length < 10) input.value = ''; // незавершённый номер очищаем
-    }
+    // function onBlur(){
+    //   if (digitsBody(input.value).length < 10) input.value = ''; // незавершённый номер очищаем
+    // }
 
     input.setAttribute('maxlength','18'); // "+7 (XXX) XXX-XX-XX"
     input.setAttribute('inputmode','tel');
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
     input.addEventListener('input',  onInput,  false);
     input.addEventListener('paste',  onInput,  false);
     input.addEventListener('focus',  onFocus,  false);
-    input.addEventListener('blur',   onBlur,   false);
+    // input.addEventListener('blur',   onBlur,   false);
 
     apply(digitsBody(input.value));
   }
