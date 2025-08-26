@@ -139,59 +139,62 @@ function plnt_add_favicons() {
     <?php
 }
 
-// Серверная проверка RU-телефона для CF7 только для [tel* tel-536]
-add_filter( 'wpcf7_validate_tel',  'my_cf7_ru_phone_validate', 20, 2 );
-add_filter( 'wpcf7_validate_tel*', 'my_cf7_ru_phone_validate', 20, 2 );
 
-function my_cf7_ru_phone_validate( $result, $tag ) {
-    // Проверяем только нужное поле
-    if ( $tag->name !== 'tel-536' ) {
-        return $result;
-    }
+// Строгая серверная проверка RU-телефона для CF7
+add_filter( 'wpcf7_validate_tel',  'my_cf7_ru_phone_validate_strict', 9999, 2 );
+add_filter( 'wpcf7_validate_tel*', 'my_cf7_ru_phone_validate_strict', 9999, 2 );
 
-    // Получаем значение
+function my_cf7_ru_phone_validate_strict( $result, $tag ) {
+    // Если хотите ограничить проверку только на одно поле:
+    // if ( $tag->name !== 'tel-536' ) return $result;
+
+    // Получаем значение наиболее надёжным способом
     $submission = WPCF7_Submission::get_instance();
+    $name = is_object($tag) ? $tag->name : '';
     $value = '';
+
     if ( $submission ) {
-        if ( method_exists( $submission, 'get_posted_string' ) ) {
-            $value = (string) $submission->get_posted_string( $tag->name );
-        } else {
-            $posted = $submission->get_posted_data( $tag->name );
-            $value  = is_array( $posted ) ? implode( '', $posted ) : (string) $posted;
+        $posted = $submission->get_posted_data();
+        if ( isset( $posted[ $name ] ) ) {
+            $value = is_array($posted[ $name ]) ? implode('', $posted[ $name ]) : (string) $posted[ $name ];
         }
     }
-    $value = trim( $value );
+    $value = trim( (string) $value );
 
-    // Так как поле tel* — оно обязательно. Если пусто — ошибка.
+    // Обязательное поле: пусто — ошибка
+    $is_required = ( is_object($tag) && method_exists($tag,'is_required') ) ? $tag->is_required() : false;
     if ( $value === '' ) {
-        $result->invalidate( $tag, __( 'Введите номер телефона.', 'your-textdomain' ) );
+        if ( $is_required ) {
+            $result->invalidate( $tag, __( 'Введите номер телефона.', 'your-textdomain' ) );
+        }
         return $result;
     }
 
-    // Разрешённые символы в введённой строке
-    if ( ! preg_match( '/^[+0-9()\/\-\s]+$/', $value ) ) {
-        $result->invalidate( $tag, __( 'Недопустимые символы в номере телефона.', 'your-textdomain' ) );
-        return $result;
-    }
-
-    // Нормализуем (убираем пробелы/скобки/дефисы/слэш)
-    $normalized = preg_replace( '/[\s()\/-]+/', '', $value );
-
-    // После нормализации — только опциональный "+" и цифры
-    if ( ! preg_match( '/^\+?\d+$/', $normalized ) ) {
+    // Нормализация: заменяем неразрывные пробелы, убираем пробелы/скобки/дефисы/слэши и прочие разделители
+    $value = preg_replace( '/\x{00A0}/u', ' ', $value );        // nbsp -> space
+    $normalized = preg_replace( '/[\s\(\)\/\-\x{2010}-\x{2015}]+/u', '', $value ); // тире всех типов
+    // Оставляем только опциональный "+" в начале и цифры
+    if ( ! preg_match( '/^\+?\d+$/u', $normalized ) ) {
         $result->invalidate( $tag, __( 'Неверный формат номера телефона.', 'your-textdomain' ) );
         return $result;
     }
 
-    // Жёсткие RU-правила:
-    // +7XXXXXXXXXX  |  8XXXXXXXXXX  |  7XXXXXXXXXX  |  9XXXXXXXXX
+    // Жёсткие RU-правила (без поблажек):
     $ok =
-        preg_match( '/^\+7\d{10}$/', $normalized ) ||
-        preg_match( '/^[87]\d{10}$/', $normalized ) ||
-        preg_match( '/^9\d{9}$/',    $normalized );
+        preg_match( '/^\+7\d{10}$/', $normalized ) || // +7XXXXXXXXXX
+        preg_match( '/^[87]\d{10}$/', $normalized ) || // 8XXXXXXXXXX или 7XXXXXXXXXX
+        preg_match( '/^9\d{9}$/',    $normalized );    // 903XXXXXXXX
 
     if ( ! $ok ) {
         $result->invalidate( $tag, __( 'Введите номер телефона в формате +7 (XXX) XXX-XX-XX.', 'your-textdomain' ) );
+    }
+
+    // ЛОГИ для отладки (после теста можно удалить)
+    if ( defined('WP_DEBUG') && WP_DEBUG ) {
+        error_log( sprintf(
+            'CF7 phone validate: name=%s, raw="%s", normalized="%s", ok=%s',
+            $name, $value, $normalized, $ok ? '1' : '0'
+        ) );
     }
 
     return $result;
