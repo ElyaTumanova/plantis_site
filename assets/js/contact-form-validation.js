@@ -24,11 +24,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // телефон: разрешаем + ( ) - / пробелы; 7–15 цифр
     const phoneOk = (field) => {
-      const v = field.value.trim();
-      if (v === '') return !isRequired(field);
-      if (!/^[+0-9()\/\-\s]+$/.test(v)) return false;
-      const digits = v.replace(/\D/g, '').length;
-      return digits >= 7 && digits <= 15;
+        const v = field.value.trim();
+        if (v === '') return !isRequired(field);
+
+        // только разрешённые символы
+        if (!/^[+0-9()\/\-\s]+$/.test(v)) return false;
+
+        // нормализуем: убираем пробелы, скобки, дефисы, слэши
+        const normalized = v.replace(/[\s()\/-]/g, '');
+
+        // после нормализации допускаем только опциональный '+' и цифры
+        if (!/^\+?\d+$/.test(normalized)) return false;
+
+        // целевые форматы для RU:
+        // 1) +7XXXXXXXXXX
+        if (/^\+7\d{10}$/.test(normalized)) return true;
+        // 2) 8XXXXXXXXXX или 7XXXXXXXXXX
+        if (/^[87]\d{10}$/.test(normalized)) return true;
+        // 3) 9XXXXXXXXX (10-значный мобильный)
+        if (/^9\d{9}$/.test(normalized)) return true;
+
+        // общий фолбэк: 7–15 цифр
+        const digitsOnly = normalized.replace(/\D/g, '');
+        return digitsOnly.length >= 7 && digitsOnly.length <= 15;
     };
 
     // email: простая и надёжная проверка
