@@ -68,6 +68,7 @@
     border-radius: 20px;
     box-shadow: -8px 6px 13px 0 rgba(0, 0, 0, .102), 5px -2px 9px 0 rgba(0, 0, 0, .09);
     justify-self: center;
+    align-self: flex-end;
     /* width: 100%; */
 }
 
