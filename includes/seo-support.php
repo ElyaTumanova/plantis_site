@@ -24,7 +24,7 @@ add_filter('wpseo_opengraph_desc', function ($desc) {
 
 add_filter('wpseo_opengraph_image', function ($img) {
     if (is_page('test-kakoe-ty-rastenie')) {
-        return get_template_directory_uri() .'/images/test/test_cover.png';
+        return get_template_directory_uri() .'/images/test/test_cover.webp';
     }
     return $img;
 });
