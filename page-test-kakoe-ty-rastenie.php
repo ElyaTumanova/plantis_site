@@ -27,7 +27,7 @@
         </div>
         <div class = "test__init">
             <button class = "test__init-btn button">Поехали!</button>
-            <p class="test__disclaimer-agree">Нажимая кнопку "Поехали!", вы соглашаетесь с тем, что его разработчики душнилы</p>
+            <p class="test__disclaimer-agree">Нажимая кнопку "Поехали!", вы соглашаетесь с тем, что разработчики теста душнилы</p>
         </div>
     </div>
     <div class="test d-none">

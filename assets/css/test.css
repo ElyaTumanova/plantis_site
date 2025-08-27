@@ -196,11 +196,24 @@
     "img text";
 }
 
-/* @media (max-width:767px) {
+@media (max-width:1279px) {
     .test__disclaimer {
-        row-gap: 10px;
+        grid-template-columns: 400px minmax(auto, 600px);
+        column-gap: 15px;
     }
-} */
+}
+
+@media (max-width:767px) {
+    .test__disclaimer {
+        grid-template-columns: auto;
+        row-gap: 10px;
+        grid-template-areas: 
+        "img"
+        "gen"
+        "btn"
+        "text";
+    }
+}
 
 .test__cover {
     grid-area: img;
@@ -294,13 +307,14 @@
 .test__disclaimer-agree {
     font-size: 14px;
     text-align: center;
+    margin-top: 10px;
 }
 
-@media (max-width: 1279px) {
+/* @media (max-width: 1279px) {
     .test__disclaimer-agree {
         margin-bottom: 75px;
     }
-}
+} */
 
 /* страница с результатами теста */
 
