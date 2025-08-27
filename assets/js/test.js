@@ -86,7 +86,7 @@ class Test {
         tg.searchParams.set('text', shareText);
         this.testShareTelegram.setAttribute('href',tg.toString());
 
-        const wa = new URL('https://web.whatsapp.com/send');
+        const wa = new URL('https://wa.me/?text=');
         wa.searchParams.set('text', `${shareText} - ${pageUrl}`);
         this.testShareWhatsapp.setAttribute('href', wa.toString());
     
