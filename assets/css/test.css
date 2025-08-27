@@ -103,7 +103,7 @@
     border-radius: 30px;
     display: flex;
     align-items: center;
-    min-height: 60px;
+    min-height: 72px;
     box-shadow: -5px 4px 8px 0px rgba(0, 0, 0, .102), 3px -2px 3px 0 rgb(249 249 249);
     background-color: var(--white);
 }
