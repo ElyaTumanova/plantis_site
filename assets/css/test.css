@@ -87,12 +87,15 @@
  }
 }
 
-.test__answers input:hover {
+@media (hover: hover) {
+    .test__answers input:hover {
     cursor: pointer;
+    }
+    .test__answers label:hover {
+        cursor: pointer;
+    }
 }
-.test__answers label:hover {
-    cursor: pointer;
-}
+
 
 .test__answer {
     padding: 20px 20px;
@@ -105,10 +108,13 @@
 }
 
 /* hover эффект */
-.test__answer:has(label:hover) {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+@media (hover: hover) {
+    .test__answer:has(label:hover) {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
 }
+
 
 /* выбранное состояние */
 .test__answer:has(input[type="radio"]:checked)  {
@@ -145,10 +151,13 @@
     transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.test__button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(16, 185, 129, 0.3);
+@media (hover: hover) {
+    .test__button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(16, 185, 129, 0.3);
+    }
 }
+
 
 .test__error {
     color: var(--red-color);
@@ -207,11 +216,13 @@
   cursor: pointer;
   transition: transform .2s ease, box-shadow .2s ease;
 }
-.test__init-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(16,185,129,0.3);
-}
 
+@media (hover: hover) {
+    .test__init-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(16,185,129,0.3);
+    }
+}
 
 .test__disclaimer-text {
   font-size: 16px;
@@ -516,10 +527,14 @@
 }
 
 /* hover эффект */
-.test__select-gen label:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+
+@media (hover: hover) {
+    .test__select-gen label:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
 }
+
 
 /* выбранное состояние */
 .test__select-gen input[type="radio"]:checked + label {
