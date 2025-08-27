@@ -4,7 +4,7 @@
 	<main id="main" class="site-main test-page">
     <h1 class = "entry-title">Какое ты растение?</h1>
     <div class="test__disclaimer">
-        <img src="<?php echo get_template_directory_uri() .'/images/test/test_cover.webp'?>" alt="Тест - Какое ты комнатное растение?">
+        <img class="test__cover" src="<?php echo get_template_directory_uri() .'/images/test/test_cover.webp'?>" alt="Тест - Какое ты комнатное растение?">
         <div class="test__disclaimer-text test__disclaimer-text_desktop">
             <p><strong>Внимание! Результат этого теста абсолютно не обязывает вас пересаживаться, поливаться чаще или пытаться фотосинтезировать энергию солнца.</strong></p>
             <p>Все совпадения с вашими чертами характера — случайны, но подозрительно точны.</p>

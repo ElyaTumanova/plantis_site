@@ -202,6 +202,11 @@
     }
 } */
 
+.test__cover {
+    grid-area: img;
+    border-radius: 20px;
+}
+
 .test__init-btn {
     grid-area: btn;
     display: block;
