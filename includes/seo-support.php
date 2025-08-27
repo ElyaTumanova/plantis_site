@@ -8,25 +8,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 --------------------------------------------------------------*/
 
 
-// function my_custom_opengraph_tags() {
-//     if (is_page('test-kakoe-ty-rastenie')) { 
-//         ?>
-        <!-- <meta property="og:title" content="Пройди тест — Какое ты растение?" />
-//         <meta property="og:description" content="Узнай, какое растение тебе ближе всего!" />
-//         <meta property="og:image" content="https://dev.plantis-shop.ru/wp-content/themes/plantis_site/images/test/test.png" />
-//         <meta property="og:url" content="<?php //echo get_site_url() . '/test-kakoe-ty-rastenie'; ?>" />
-//         <meta property="og:type" content="website" /> -->
-         <?php
-//     }
-// }
-// add_action('wp_head', 'my_custom_opengraph_tags');
-
 add_filter('wpseo_opengraph_title', function ($title) {
     if (is_page('test-kakoe-ty-rastenie')) {                // ваша страница
         return 'Пройди тест — Какое ты растение?';
     }
     return $title;
 });
+
+add_filter('wpseo_opengraph_desc', function ($desc) {
+    if (is_page('test-kakoe-ty-rastenie')) {
+        return 'Узнай, какое растение тебе ближе всего!';
+    }
+    return $desc;
+});
+
+add_filter('wpseo_opengraph_image', function ($img) {
+    if (is_page('test-kakoe-ty-rastenie')) {
+        return get_template_directory_uri() .'/images/test/test_cover.png';
+    }
+    return $img;
+});
+
+
 
 
 /*--------------------------------------------------------------
