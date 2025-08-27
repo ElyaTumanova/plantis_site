@@ -121,9 +121,6 @@
 .test__answer:has(input[type="radio"]:checked)  {
     background: #ecfdf5;
     color: #327039;
-    /* font-weight: 600; */
-    /* display: flex; */
-    /* justify-content: center; */
 }
 
 .test__answers label {
@@ -188,22 +185,15 @@
 
 /* test start screen*/
 .test__disclaimer {
-    /* margin: 0 auto;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 550px; */
-    
     display: grid;
     grid-template-columns: 400px 1fr;
     column-gap: 50px;
     row-gap: 20px;
     grid-template-areas: 
-    "img text"
-    "gen text"
-    "btn text"
-    " agree text";
+    "img gen"
+    "img btn"
+    "img agree"
+    "img text";
 }
 
 /* @media (max-width:767px) {
