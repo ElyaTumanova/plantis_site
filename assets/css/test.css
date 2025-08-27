@@ -199,7 +199,7 @@
 @media (max-width:1279px) {
     .test__disclaimer {
         grid-template-columns: 400px minmax(auto, 600px);
-        column-gap: 15px;
+        column-gap: 40px;
     }
 }
 
