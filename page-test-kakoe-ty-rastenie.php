@@ -25,8 +25,10 @@
             <input type="radio" name="gender" id="m" value="m">
             <label for="m">Мужской</label>
         </div>
-        <button class = "test__init-btn button">Поехали!</button>
-        <p class="test__disclaimer-agree">Нажимая кнопку "Поехали!", вы соглашаетесь с тем, что его разработчики душнилы</p>
+        <div class = "test__init">
+            <button class = "test__init-btn button">Поехали!</button>
+            <p class="test__disclaimer-agree">Нажимая кнопку "Поехали!", вы соглашаетесь с тем, что его разработчики душнилы</p>
+        </div>
     </div>
     <div class="test d-none">
       <progress id="progress" value="1" max="10"></progress>

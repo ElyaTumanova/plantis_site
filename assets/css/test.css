@@ -187,13 +187,12 @@
 .test__disclaimer {
     margin-top: 30px;
     display: grid;
-    grid-template-columns: 500px minmax(1fr, 600px);
+    grid-template-columns: 500px minmax(auto, 600px);
     column-gap: 50px;
     row-gap: 20px;
     grid-template-areas: 
     "img gen"
     "img btn"
-    "img agree"
     "img text";
 }
 
@@ -208,10 +207,14 @@
     border-radius: 20px;
 }
 
-.test__init-btn {
+.test__init {
     grid-area: btn;
+}
+
+.test__init-btn {
     display: block;
     width: 100%;
+    max-height: 45px;
     padding: 14px;
     border-radius: 25px;
     border: none;
@@ -289,7 +292,6 @@
 }
 
 .test__disclaimer-agree {
-    grid-area: agree;
     font-size: 14px;
     text-align: center;
 }
