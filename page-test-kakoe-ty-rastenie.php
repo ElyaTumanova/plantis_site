@@ -10,7 +10,7 @@
             <?php echo get_template_directory_uri() .'/images/test/test_cover_long.webp'?> 600w,
             <?php echo get_template_directory_uri() .'/images/test/test_cover.webp'?> 1200w"
             sizes="
-            (max-width: 767px) 500px,
+            (max-width: 767px) 800px,
             767px"
             alt="Тест - Какое ты комнатное растение?">
         <div class="test__disclaimer-text test__disclaimer-text_desktop">
