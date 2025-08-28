@@ -7,12 +7,12 @@
         <img class="test__cover" 
             src="<?php echo get_template_directory_uri() .'/images/test/test_cover.webp'?>" 
             srcset="
-            <?php echo get_template_directory_uri() .'/images/test/test_cover_long.webp'?> 300w,
+            <?php echo get_template_directory_uri() .'/images/test/test_cover_long.webp'?> 800w,
             <?php echo get_template_directory_uri() .'/images/test/test_cover.webp'?> 1200w"
             sizes="
             (max-width: 767px) 100vw,
-            (max-width:1279px) 400px,
-            500px"
+            (max-width:1279px) 1000px,
+            1000px"
             alt="Тест - Какое ты комнатное растение?">
         <div class="test__disclaimer-text test__disclaimer-text_desktop">
             <p><strong>Внимание! Результат этого теста абсолютно не обязывает вас пересаживаться, поливаться чаще или пытаться фотосинтезировать энергию солнца.</strong></p>
