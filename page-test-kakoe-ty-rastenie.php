@@ -4,9 +4,9 @@
 	<main id="main" class="site-main test-page">
     <h1 class = "entry-title">Какое ты растение?</h1>
     <div class="test__disclaimer">
-        <picture>
+        <picture class="test__cover">
         <!-- Мобильная версия (до 767px) -->
-        <source class="test__cover"
+        <source 
             srcset="<?php echo get_template_directory_uri() .'/images/test/test_cover_long.webp'?>" 
             media="(max-width: 767px)">
         
