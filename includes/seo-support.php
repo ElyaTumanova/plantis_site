@@ -22,12 +22,12 @@ add_filter('wpseo_opengraph_desc', function ($desc) {
     return $desc;
 });
 
-add_filter('wpseo_opengraph_image', function ($img) {
-    if (is_page('test-kakoe-ty-rastenie')) {
-        return get_template_directory_uri() .'/images/test/test_cover_long.jpg';
-    }
-    return $img;
-},100);
+// add_filter('wpseo_opengraph_image', function ($img) {
+//     if (is_page('test-kakoe-ty-rastenie')) {
+//         return get_template_directory_uri() .'/images/test/test_cover_long.jpg';
+//     }
+//     return $img;
+// },100);
 
 // // Задаём ширину og:image
 // add_filter('wpseo_opengraph_image_width', function ($width) {
@@ -44,6 +44,14 @@ add_filter('wpseo_opengraph_image', function ($img) {
 //     }
 //     return $height;
 // });
+
+add_action('wp_head', function() {
+    if (is_page('test-kakoe-ty-rastenie')) {
+        echo '<meta property="og:image" content="'get_template_directory_uri() .'/images/test/test_cover_long.jpg" />' . "\n";
+        echo '<meta property="og:image:width" content="1200" />' . "\n";
+        echo '<meta property="og:image:height" content="630" />' . "\n";
+    }
+});
 
 
 
