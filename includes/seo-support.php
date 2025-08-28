@@ -27,7 +27,7 @@ add_filter('wpseo_opengraph_image', function ($img) {
         return get_template_directory_uri() .'/images/test/test_cover_long.jpg';
     }
     return $img;
-});
+},100);
 
 // // Задаём ширину og:image
 // add_filter('wpseo_opengraph_image_width', function ($width) {
