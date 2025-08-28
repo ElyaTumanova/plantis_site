@@ -24,9 +24,25 @@ add_filter('wpseo_opengraph_desc', function ($desc) {
 
 add_filter('wpseo_opengraph_image', function ($img) {
     if (is_page('test-kakoe-ty-rastenie')) {
-        return get_template_directory_uri() .'/images/test/test_cover.webp';
+        return get_template_directory_uri() .'/images/test/test_cover_long.jpg';
     }
     return $img;
+});
+
+// Задаём ширину og:image
+add_filter('wpseo_opengraph_image_width', function ($width) {
+    if (is_page('test-kakoe-ty-rastenie')) {   // ID страницы, где нужно
+        return 1200;
+    }
+    return $width;
+});
+
+// Задаём высоту og:image
+add_filter('wpseo_opengraph_image_height', function ($height) {
+    if (is_page('test-kakoe-ty-rastenie')) {
+        return 630;
+    }
+    return $height;
 });
 
 
