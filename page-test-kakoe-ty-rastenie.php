@@ -6,7 +6,7 @@
     <div class="test__disclaimer">
         <picture>
         <!-- Мобильная версия (до 767px) -->
-        <source 
+        <source class="test__cover"
             srcset="<?php echo get_template_directory_uri() .'/images/test/test_cover_long.webp'?>" 
             media="(max-width: 767px)">
         
@@ -17,7 +17,6 @@
         
         <!-- Фолбэк (на случай, если браузер не поддерживает <picture>) -->
         <img 
-            class="test__cover"
             src="<?php echo get_template_directory_uri() .'/images/test/test_cover.webp'?>" 
             alt="Тест - Какое ты комнатное растение?">
         </picture>
