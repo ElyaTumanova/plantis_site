@@ -217,6 +217,9 @@
 
 .test__cover {
     grid-area: img;
+}
+
+.test__cover img {
     border-radius: 20px;
 }
 
