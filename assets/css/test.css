@@ -99,7 +99,7 @@
 
 
 .test__answer {
-    padding: 20px 20px;
+    /* padding: 20px 20px; */
     border-radius: 30px;
     display: flex;
     align-items: center;
@@ -125,8 +125,9 @@
 
 .test__answers label {
     width: 100%;
-    min-height: 32px;
-    display: contents;
+    /* min-height: 32px;
+    display: contents; */
+    padding: 20px;
 }
 
 @media(max-width: 767px) {
