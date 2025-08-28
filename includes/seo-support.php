@@ -29,21 +29,21 @@ add_filter('wpseo_opengraph_image', function ($img) {
     return $img;
 });
 
-// Задаём ширину og:image
-add_filter('wpseo_opengraph_image_width', function ($width) {
-    if (is_page('test-kakoe-ty-rastenie')) {   // ID страницы, где нужно
-        return 1200;
-    }
-    return $width;
-});
+// // Задаём ширину og:image
+// add_filter('wpseo_opengraph_image_width', function ($width) {
+//     if (is_page('test-kakoe-ty-rastenie')) {   // ID страницы, где нужно
+//         return 1200;
+//     }
+//     return $width;
+// });
 
-// Задаём высоту og:image
-add_filter('wpseo_opengraph_image_height', function ($height) {
-    if (is_page('test-kakoe-ty-rastenie')) {
-        return 630;
-    }
-    return $height;
-});
+// // Задаём высоту og:image
+// add_filter('wpseo_opengraph_image_height', function ($height) {
+//     if (is_page('test-kakoe-ty-rastenie')) {
+//         return 630;
+//     }
+//     return $height;
+// });
 
 
 
