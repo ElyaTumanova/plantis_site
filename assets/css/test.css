@@ -125,6 +125,8 @@
 
 .test__answers label {
     width: 100%;
+    min-height: 32px;
+    display: contents;
 }
 
 @media(max-width: 767px) {
