@@ -47,7 +47,7 @@ add_filter('wpseo_opengraph_desc', function ($desc) {
 
 add_action('wp_head', function() {
     if (is_page('test-kakoe-ty-rastenie')) {
-        echo '<meta property="og:image" content="'get_template_directory_uri() .'/images/test/test_cover_long.jpg" />' . "\n";
+        echo '<meta property="og:image" content="'. get_template_directory_uri() .'/images/test/test_cover_long.jpg" />' . "\n";
         echo '<meta property="og:image:width" content="1200" />' . "\n";
         echo '<meta property="og:image:height" content="630" />' . "\n";
     }
