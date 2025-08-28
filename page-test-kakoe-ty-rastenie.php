@@ -4,16 +4,24 @@
 	<main id="main" class="site-main test-page">
     <h1 class = "entry-title">Какое ты растение?</h1>
     <div class="test__disclaimer">
-        <img class="test__cover" 
+        <picture>
+        <!-- Мобильная версия (до 767px) -->
+        <source 
+            srcset="<?php echo get_template_directory_uri() .'/images/test/test_cover_long.webp'?>" 
+            media="(max-width: 767px)">
+        
+        <!-- Десктопная версия (от 768px и выше) -->
+        <source 
+            srcset="<?php echo get_template_directory_uri() .'/images/test/test_cover.webp'?>" 
+            media="(min-width: 768px)">
+        
+        <!-- Фолбэк (на случай, если браузер не поддерживает <picture>) -->
+        <img 
+            class="test__cover"
             src="<?php echo get_template_directory_uri() .'/images/test/test_cover.webp'?>" 
-            srcset="
-            <?php echo get_template_directory_uri() .'/images/test/test_cover_long.webp'?> 800w,
-            <?php echo get_template_directory_uri() .'/images/test/test_cover.webp'?> 1200w"
-            sizes="
-            (max-width: 767px) 100vw,
-            (max-width:1279px) 1000px,
-            1000px"
             alt="Тест - Какое ты комнатное растение?">
+        </picture>
+
         <div class="test__disclaimer-text test__disclaimer-text_desktop">
             <p><strong>Внимание! Результат этого теста абсолютно не обязывает вас пересаживаться, поливаться чаще или пытаться фотосинтезировать энергию солнца.</strong></p>
             <p>Все совпадения с вашими чертами характера — случайны, но подозрительно точны.</p>
