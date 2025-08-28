@@ -127,7 +127,7 @@
     width: 100%;
     /* min-height: 32px;
     display: contents; */
-    padding: 20px;
+    padding: 15px 20px;
 }
 
 @media(max-width: 767px) {
