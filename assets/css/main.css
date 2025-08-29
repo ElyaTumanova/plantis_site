@@ -609,7 +609,7 @@
 
 .cats-grid__inner_palms {
     grid-area: palms;
-    aspect-ratio: 1/2;
+    /* aspect-ratio: 1/2; */
     background-image: url(../../images/cats-grid/palms.webp);
 }
 .cats-grid__inner_lisv {
@@ -624,7 +624,7 @@
 }
 .cats-grid__inner_napol {
     grid-area: napol;
-    aspect-ratio: 1/2;
+    /* aspect-ratio: 1/2; */
     background-image: url(../../images/cats-grid/napol.webp);
 }
 .cats-grid__inner_cvetush {
