@@ -282,12 +282,12 @@ function initTest () {
 function startTest () {
     genDiv.classList.add('d-none');
     gen = document.querySelector('input[name="gender"]:checked')?.value; // "f" или "m"
-    setTimeout(()=>{
+    // setTimeout(()=>{
         testTitle.classList.add('d-none');
         testNavWrap.classList.add('d-none');
         testMainDiv.classList.remove('d-none');
         window.scrollTo(0, 0);
-    }, 300)
+    // }, 300)
     console.log(gen);
 }
 
