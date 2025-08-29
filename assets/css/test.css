@@ -108,6 +108,14 @@
     background-color: var(--white);
 }
 
+@media(max-width: 767px) {
+ .test__answer {
+    font-size: 16px;
+    min-height: 52px;
+    /* padding: 10px 20px; */
+ }
+}
+
 /* hover эффект */
 @media (hover: hover) {
     .test__answer:has(label:hover) {
@@ -115,7 +123,6 @@
         /* box-shadow: 0 4px 12px rgba(0,0,0,0.12); */
     }
 }
-
 
 /* выбранное состояние */
 .test__answer:has(input[type="radio"]:checked)  {
@@ -131,11 +138,9 @@
 }
 
 @media(max-width: 767px) {
- .test__answer {
-    font-size: 16px;
-    min-height: 52px;
-    padding: 10px 20px;
- }
+    .test__answers label {
+        padding: 10px;
+    }
 }
 
 .test__button {
