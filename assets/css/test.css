@@ -139,7 +139,7 @@
 
 @media(max-width: 767px) {
     .test__answers label {
-        padding: 10px;
+        padding: 10px 20px;
     }
 }
 
@@ -301,9 +301,23 @@
     margin-top: 50px;
 }
 
+@media (max-width: 767px) {
+    .test__select-gen {
+        width: 100%;
+    }
+}
+
 .test__select-gen-wrap {
     display: flex;
     column-gap: 50px;
+}
+
+@media (max-width: 767px) {
+    .test__select-gen-wrap {
+        width: 100%;
+        column-gap: 10px;
+        justify-content: space-around;
+    }
 }
 
 .test__select-gen legend {
