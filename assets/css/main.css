@@ -566,7 +566,7 @@
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-template-areas:
-    "napol lisv cvetush cvetush palms fikus"
+    "napol lisv lisv cvetush palms fikus"
     "napol neprikhotliv succulent lianas palms petfriendly"
     ;
 }
@@ -602,7 +602,7 @@
 }
 .cats-grid__inner_lisv {
     grid-area: lisv;
-    aspect-ratio: 1/1;
+    aspect-ratio: 2/1;
 }
 .cats-grid__inner_neprikhotliv {
     grid-area: neprikhotliv;
@@ -614,7 +614,7 @@
 }
 .cats-grid__inner_cvetush {
     grid-area: cvetush;
-    aspect-ratio: 2/1;
+    aspect-ratio: 1/1;
 }
 .cats-grid__inner_succulent {
     grid-area: succulent;
