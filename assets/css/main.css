@@ -661,6 +661,11 @@
         top: 13px;
         left: 13px;
     }
+
+    .cats-grid__inner_neprikhotliv .cats-grid__title {
+        max-width: 89px;
+        word-break: break-all;
+    }
 }
 
 /* categories sliders */
