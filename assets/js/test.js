@@ -178,7 +178,7 @@ class Answer
    }
 }
 
-console.log(plantTypes);
+//console.log(plantTypes);
 
 //Массив с вопросами
 const questions = [
@@ -272,11 +272,16 @@ const questions = [
 
 ];
 
-function startTest () {
+function initTest () {
     test.testInit();
+    introDiv.classList.add('d-none');
+    genDiv.classList.remove('d-none');
+    genBtn.addEventListener('click',startTest);
+}
+
+function startTest () {
     gen = document.querySelector('input[name="gender"]:checked')?.value; // "f" или "m"
     setTimeout(()=>{
-        disclaimerDiv.classList.add('d-none');
         testTitle.classList.add('d-none');
         testNavWrap.classList.add('d-none');
         testMainDiv.classList.remove('d-none');
@@ -319,7 +324,9 @@ function ajaxGetUpsells(catSlug) {
 
 const test = new Test(questions, plantTypes);
 const initBtn = document.querySelector('.test__init-btn');
-const disclaimerDiv = document.querySelector('.test__disclaimer'); 
+const introDiv = document.querySelector('.test__intro'); 
+const genDiv = document.querySelector('.test__select-gen');
+const genBtn = document.querySelector('.test__select-gen-btn');
 const testTitle = document.querySelector('.test-page .entry-title'); 
 const testNavWrap = document.querySelector('.header__nav-wrap'); 
 const testMainDiv = document.querySelector('.test'); 
@@ -327,4 +334,4 @@ const testUpsellsDiv = document.querySelector('.test__result-upsells');
 let gen;
 
 
-initBtn.addEventListener ('click', startTest);
+initBtn.addEventListener ('click', initTest);

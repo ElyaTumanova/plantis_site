@@ -43,6 +43,7 @@
 
         <input type="radio" name="gender" id="m" value="m">
         <label for="m">Мужской</label>
+        <button class="test__select-gen-btn button">Далее</button>
     </div>
     <div class="test d-none">
       <progress id="progress" value="1" max="10"></progress>
