@@ -194,8 +194,8 @@
     column-gap: 50px;
     row-gap: 20px;
     grid-template-areas: 
-    "img btn"
-    "img text";
+    "img text"
+    "img btn";
 }
 
 @media (max-width:1279px) {
@@ -211,8 +211,8 @@
         row-gap: 10px;
         grid-template-areas: 
         "img"
-        "btn"
-        "text";
+        "text"
+        "btn";
     }
 }
 
@@ -274,25 +274,10 @@
 }
 
 /* абзацы */
-.test__disclaimer-text p { margin: 14px 0; }
+.test__disclaimer-text p { margin: 10px 0; }
 
-/* @media (max-width: 767px) {
+@media (max-width: 767px) {
     .test__disclaimer-text p { margin: 7px 0; }
-} */
-
-/* акцентная первая строка */
-.test__disclaimer-text p:first-child {
-  font-weight: 800;
-  /* margin-bottom: 8px; */
-  /* color: #DC5C35; солнечный акцент (оранжевый) */
-}
-
-/* финальный акцент */
-.test__disclaimer-text p:last-child {
-  font-style: italic;
-  font-weight: 600;
-  margin-bottom: 0;
-  /* color: #047857; жизнерадостный зелёный */
 }
 
 .test__disclaimer-agree {
