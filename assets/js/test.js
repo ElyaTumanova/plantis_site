@@ -280,6 +280,7 @@ function initTest () {
 }
 
 function startTest () {
+    genDiv.classList.add('d-none');
     gen = document.querySelector('input[name="gender"]:checked')?.value; // "f" или "m"
     setTimeout(()=>{
         testTitle.classList.add('d-none');
