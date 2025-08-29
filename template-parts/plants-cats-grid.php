@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="cats-grid">
     <a href="<?php echo get_site_url();?>/product-category/komnatnye-rasteniya/palms/" class="cats-grid__inner cats-grid__inner_palms">
         <h3 class="cats-grid__title">Пальмы</h3>
-        <img src="<?php echo $cats_palms ?>" class="cats-grid__img" alt="Пальмы">
+        <img src="<?php echo get_template_directory_uri() .'/images/cats-grid/palms.webp'?>" class="cats-grid__img" alt="Пальмы">
     </a>
     <a href="<?php echo get_site_url();?>/product-category/komnatnye-rasteniya/fikusy/" class="cats-grid__inner cats-grid__inner_fikus">
         <h3 class="cats-grid__title">Фикусы</h3>
