@@ -3,7 +3,7 @@
 <div class="content-area">
 	<main id="main" class="site-main test-page">
     <h1 class = "entry-title">Какое ты растение?</h1>
-    <div class="test__disclaimer">
+    <div class="test__intro">
         <picture class="test__cover">
         <!-- Мобильная версия (до 767px) -->
         <source 
@@ -33,18 +33,18 @@
             <p>Все совпадения с вашими чертами характера — случайны, но подозрительно точны.</p>
             <p><strong>С любовью, ваш зелёный ироничный внутренний сад!</strong></p>
         </div>
-        <div class="test__select-gen">
-            <legend>Выберите Ваш пол</legend>
-            <input type="radio" name="gender" id="f" value="f" checked>
-            <label for="f">Женский</label>
-
-            <input type="radio" name="gender" id="m" value="m">
-            <label for="m">Мужской</label>
-        </div>
         <div class = "test__init">
             <button class = "test__init-btn button">Поехали!</button>
             <p class="test__disclaimer-agree">Нажимая кнопку "Поехали!", вы соглашаетесь с тем, что разработчики теста душнилы</p>
         </div>
+    </div>
+    <div class="test__select-gen d-none">
+        <legend>Выберите Ваш пол</legend>
+        <input type="radio" name="gender" id="f" value="f" checked>
+        <label for="f">Женский</label>
+
+        <input type="radio" name="gender" id="m" value="m">
+        <label for="m">Мужской</label>
     </div>
     <div class="test d-none">
       <progress id="progress" value="1" max="10"></progress>

@@ -187,32 +187,30 @@
 }
 
 /* test start screen*/
-.test__disclaimer {
+.test__intro {
     margin-top: 30px;
     display: grid;
     grid-template-columns: 500px minmax(auto, 600px);
     column-gap: 50px;
     row-gap: 20px;
     grid-template-areas: 
-    "img gen"
     "img btn"
     "img text";
 }
 
 @media (max-width:1279px) {
-    .test__disclaimer {
+    .test__intro {
         grid-template-columns: 400px minmax(auto, 600px);
         column-gap: 40px;
     }
 }
 
 @media (max-width:767px) {
-    .test__disclaimer {
+    .test__intro {
         grid-template-columns: auto;
         row-gap: 10px;
         grid-template-areas: 
         "img"
-        "gen"
         "btn"
         "text";
     }
@@ -297,8 +295,13 @@
   /* color: #047857; жизнерадостный зелёный */
 }
 
+.test__disclaimer-agree {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+}
+
 .test__select-gen {
-    grid-area: gen;
     display: flex;
     width: 100%;
     column-gap: 30px;
@@ -309,18 +312,6 @@
 .test__select-gen legend {
     font-weight: 600;
 }
-
-.test__disclaimer-agree {
-    font-size: 14px;
-    text-align: center;
-    margin-top: 10px;
-}
-
-/* @media (max-width: 1279px) {
-    .test__disclaimer-agree {
-        margin-bottom: 75px;
-    }
-} */
 
 /* страница с результатами теста */
 
