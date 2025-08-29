@@ -665,13 +665,13 @@
 } */
 
 .cats-grid__title {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 700;
     max-width: 125px;
     line-height: 1.2;
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 12px;
+    left: 12px;
     text-transform: uppercase;
     color: var(--accent-color);
 }
@@ -683,10 +683,10 @@
         left: 10px;
     }
 
-    .cats-grid__inner_neprikhotliv .cats-grid__title {
+    /* .cats-grid__inner_neprikhotliv .cats-grid__title {
         max-width: 89px;
         word-break: break-all;
-    }
+    } */
 }
 
 /* categories sliders */
