@@ -614,7 +614,7 @@
 }
 .cats-grid__inner_lisv {
     grid-area: lisv;
-    aspect-ratio: 2/1;
+    /* aspect-ratio: 2/1; */
     background-image: url(../../images/cats-grid/decor.webp);
 }
 .cats-grid__inner_neprikhotliv {
