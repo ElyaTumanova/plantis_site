@@ -272,6 +272,7 @@
 @media (max-width: 767px) {
     .test__disclaimer-text_mob {
         display: block;
+        margin-top: 0;
     }
     .test__disclaimer-text_desktop {
         display: none;
