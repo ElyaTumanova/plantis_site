@@ -320,7 +320,7 @@
     width: 100px;
     height: 100px;
     background-size: cover;
-    margin-bottom: 30px;
+    padding-bottom: 30px;
     cursor: pointer;
 }
 .test__gen-f label::before {
