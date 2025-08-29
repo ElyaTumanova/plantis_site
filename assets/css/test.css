@@ -304,53 +304,55 @@
     font-weight: 600;
 }
 
-.test__select-gen-f::before {
+.test__gen {
+    padding: 14px 16px;
+    border-radius: 25px;
+    background: #fff;
+    border: 2px solid transparent;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    cursor: pointer;
+    text-align: center;
+}
+.test__gen::before {
     content: "";
-    background-image: url(../../images/test/test.png);
     display: block;
     width: 100px;
     height: 100px;
     background-size: cover;
     margin-bottom: 30px;
 }
-.test__select-gen-m::before {
-    content: "";
+.test__gen-f::before {
     background-image: url(../../images/test/test.png);
-    display: block;
-    width: 100px;
-    height: 100px;
-    background-size: cover;
-    margin-bottom: 30px;
+}
+.test__gen-m::before {
+    background-image: url(../../images/test/test.png);
 }
 
 .test__select-gen label {
   flex: 1;
-  padding: 14px 16px;
+  /* padding: 14px 16px;
   border-radius: 25px;
   background: #fff;
   border: 2px solid transparent;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   cursor: pointer;
-  text-align: center;
+  text-align: center; */
   transition: all .2s ease;
 }
 
 /* hover эффект */
 
 @media (hover: hover) {
-    .test__select-gen label:hover {
+    .test__gen:hover {
         transform: translateY(-2px);
         /* box-shadow: 0 4px 12px rgba(0,0,0,0.12); */
     }
 }
 
 /* выбранное состояние */
-.test__select-gen input[type="radio"]:checked + label {
+.test__select-gen input[type="radio"]:checked + .test__gen {
     background: #ecfdf5;
     color: var(--accent-color);
-    /* font-weight: 600; */
-    /* display: flex;
-    justify-content: center; */
 }
 
 /* страница с результатами теста */
