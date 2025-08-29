@@ -594,67 +594,75 @@
   overflow: hidden; /* чтобы ничего не торчало */
 }
 
-.cats-grid__inner_palms {
-    grid-area: palms;
-    aspect-ratio: 1/2;
-    background-image: url(../../images/cats-grid/palms.webp);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-.cats-grid__inner_lisv {
-    grid-area: lisv;
-    aspect-ratio: 2/1;
-}
-.cats-grid__inner_neprikhotliv {
-    grid-area: neprikhotliv;
-    aspect-ratio: 1/1;
-}
-.cats-grid__inner_napol {
-    grid-area: napol;
-    aspect-ratio: 1/2;
-}
-.cats-grid__inner_cvetush {
-    grid-area: cvetush;
-    aspect-ratio: 1/1;
-}
-.cats-grid__inner_succulent {
-    grid-area: succulent;
-    aspect-ratio: 1/1;
-}
-.cats-grid__inner_lianas {
-    grid-area: lianas;
-    aspect-ratio: 1/1;
-}
-.cats-grid__inner_petfriendly {
-    grid-area: petfriendly;
-    aspect-ratio: 1/1;
-}
-.cats-grid__inner_fikus {
-    grid-area: fikus;
-    aspect-ratio: 1/1;
-}
-
 .cats-grid__inner {
     /* border: solid 1px black; */
     /* min-height: 80px; */
     font-size: 0;
     position: relative;
-    /* box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.15); */
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
     padding: 5px;
     box-sizing: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.cats-grid__img {
-    display: block;     /* убирает лишние зазоры */
+.cats-grid__inner_palms {
+    grid-area: palms;
+    aspect-ratio: 1/2;
+    background-image: url(../../images/cats-grid/palms.webp);
+}
+.cats-grid__inner_lisv {
+    grid-area: lisv;
+    aspect-ratio: 2/1;
+    background-image: url(../../images/cats-grid/decor.webp);
+}
+.cats-grid__inner_neprikhotliv {
+    grid-area: neprikhotliv;
+    aspect-ratio: 1/1;
+    background-image: url(../../images/cats-grid/nepr.webp);
+}
+.cats-grid__inner_napol {
+    grid-area: napol;
+    aspect-ratio: 1/2;
+    background-image: url(../../images/cats-grid/napol.webp);
+}
+.cats-grid__inner_cvetush {
+    grid-area: cvetush;
+    aspect-ratio: 1/1;
+    background-image: url(../../images/cats-grid/cvet.webp);
+}
+.cats-grid__inner_succulent {
+    grid-area: succulent;
+    aspect-ratio: 1/1;
+    background-image: url(../../images/cats-grid/succ.webp);
+}
+.cats-grid__inner_lianas {
+    grid-area: lianas;
+    aspect-ratio: 1/1;
+    background-image: url(../../images/cats-grid/lians.webp);
+}
+.cats-grid__inner_petfriendly {
+    grid-area: petfriendly;
+    aspect-ratio: 1/1;
+    background-image: url(../../images/cats-grid/pet.webp);
+}
+.cats-grid__inner_fikus {
+    grid-area: fikus;
+    aspect-ratio: 1/1;
+    background-image: url(../../images/cats-grid/fikus.webp);
+}
+
+/* .cats-grid__img {
+    display: block;    
     width: 100%;
     height: 100%;       
     max-width: 100%;
     border-radius: 10px;
     box-shadow: 0 0 6px rgba(0,0,0,.15);
-    object-fit: cover;  /* обрезаем края, без искажений */
+    object-fit: cover; 
     display: block;
-}
+} */
 
 .cats-grid__title {
     font-size: 18px;
@@ -670,7 +678,7 @@
 
 @media (max-width: 767px) {
     .cats-grid__title {
-        font-size: 14px;
+        font-size: 12px;
         top: 10px;
         left: 10px;
     }
