@@ -575,21 +575,13 @@
     /* .cats-grid-wrap {display: block;} */
     .cats-grid {
         display: grid;
-        grid-template-columns: repeat(2, 50%);
-        grid-template-rows: repeat(12, auto);
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, auto);
         grid-template-areas:
-        "lisv lisv"
-        "lisv lisv"
-        "palms fikus"
-        "palms fikus"
-        "palms napol"
-        "palms napol"
-        "cvetush napol"
-        "cvetush napol"
-        "neprikhotliv lianas"
-        "neprikhotliv lianas"
-        "neprikhotliv petfriendly"
-        "succulent petfriendly"
+        "lisv lisv fikus"
+        "napol cvetush petfriendly"
+        "napol neprikhotliv palms"
+        "succulent lianas palms"
         ;
         row-gap: 0;
         column-gap: 0;
