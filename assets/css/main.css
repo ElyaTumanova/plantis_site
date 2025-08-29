@@ -575,7 +575,7 @@
     /* .cats-grid-wrap {display: block;} */
     .cats-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         grid-template-rows: repeat(4, auto);
         grid-template-areas:
         "lisv lisv fikus"
@@ -587,6 +587,8 @@
         column-gap: 0;
     }  
 }
+
+.cats-grid > * { min-width: 0; }
 
 .cats-grid__inner_palms {
     grid-area: palms;
@@ -637,10 +639,12 @@
 }
 
 .cats-grid__img {
-    border-radius: 10px;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.15);
-    height: 100%;
+    display: block;     /* убирает лишние зазоры */
     width: 100%;
+    height: auto;       /* ключ: не фиксируйте высоту */
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0,0,0,.15);
 }
 
 .cats-grid__title {
