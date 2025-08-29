@@ -313,7 +313,7 @@
     cursor: pointer;
     text-align: center;
 }
-.test__gen::before {
+.test__gen label::before {
     content: "";
     display: block;
     width: 100px;
@@ -321,10 +321,10 @@
     background-size: cover;
     margin-bottom: 30px;
 }
-.test__gen-f::before {
+.test__gen-f label::before {
     background-image: url(../../images/test/test.png);
 }
-.test__gen-m::before {
+.test__gen-m label::before {
     background-image: url(../../images/test/test.png);
 }
 
