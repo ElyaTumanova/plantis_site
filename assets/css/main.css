@@ -641,7 +641,7 @@
 .cats-grid__img {
     display: block;     /* убирает лишние зазоры */
     width: 100%;
-    height: auto;       /* ключ: не фиксируйте высоту */
+    height: 100%;       
     max-width: 100%;
     border-radius: 10px;
     box-shadow: 0 0 6px rgba(0,0,0,.15);
