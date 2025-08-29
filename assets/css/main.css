@@ -586,10 +586,6 @@
         row-gap: 0;
         column-gap: 0;
     }  
-
-    .cats-grid__title {
-        font-size: 16px;
-    }
 }
 
 .cats-grid__inner_palms {
@@ -659,7 +655,7 @@
     color: var(--accent-color);
 }
 
-@media (max-width: 440px) {
+@media (max-width: 767px) {
     .cats-grid__title {
         font-size: 16px;
         top: 13px;
