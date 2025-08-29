@@ -563,15 +563,11 @@
     display: grid;
     /* column-gap: 10px;
     row-gap: 10px; */
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-template-areas:
-    "palms lisv lisv neprikhotliv"
-    "palms lisv lisv neprikhotliv"
-    "palms napol cvetush neprikhotliv"
-    "palms napol cvetush succulent"
-    "fikus napol lianas petfriendly"
-    "fikus napol lianas petfriendly"
+    "napol lisv cvetush cvetush fikus succulent"
+    "napol neprikhotliv neprikhotliv palms petfriendly lianas"
     ;
 }
 
