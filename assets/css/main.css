@@ -598,15 +598,15 @@
 
 .cats-grid__inner_palms {
     grid-area: palms;
-    aspect-ratio: 1/2;
+    aspect-ratio: 1/1;
 }
 .cats-grid__inner_lisv {
     grid-area: lisv;
-    aspect-ratio: 2/1;
+    aspect-ratio: 1/1;
 }
 .cats-grid__inner_neprikhotliv {
     grid-area: neprikhotliv;
-    aspect-ratio: 2/3;
+    aspect-ratio: 2/1;
 }
 .cats-grid__inner_napol {
     grid-area: napol;
@@ -614,11 +614,11 @@
 }
 .cats-grid__inner_cvetush {
     grid-area: cvetush;
-    aspect-ratio: 1/1;
+    aspect-ratio: 2/1;
 }
 .cats-grid__inner_succulent {
     grid-area: succulent;
-    aspect-ratio: 2/1;
+    aspect-ratio: 1/1;
 }
 .cats-grid__inner_lianas {
     grid-area: lianas;
