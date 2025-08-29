@@ -290,11 +290,22 @@
     width: 100%;
     column-gap: 30px;
     align-items: center;
-    margin-top: auto;
+    flex-direction: column;
+    row-gap: 30px;
+    margin-top: 50px;
 }
 
 .test__select-gen legend {
     font-weight: 600;
+}
+
+.test__select-gen-f::before {
+    content: "";
+    background-image: url(../../images/test/test.png);
+}
+.test__select-gen-m::before {
+    content: "";
+    background-image: url(../../images/test/test.png);
 }
 
 /* страница с результатами теста */

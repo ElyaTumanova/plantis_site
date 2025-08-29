@@ -38,11 +38,17 @@
     </div>
     <div class="test__select-gen d-none">
         <legend>Выберите Ваш пол</legend>
-        <input type="radio" name="gender" id="f" value="f" checked>
-        <label for="f">Женский</label>
-
-        <input type="radio" name="gender" id="m" value="m">
-        <label for="m">Мужской</label>
+        <div>
+            <div class="test__select-gen-f">
+                <input type="radio" name="gender" id="f" value="f" checked>
+                <label for="f">Женский</label>
+            </div>
+            <div class="test__select-gen-m">
+                <input type="radio" name="gender" id="m" value="m">
+                <label for="m">Мужской</label>
+            </div>
+        </div>
+       
         <button class="test__select-gen-btn button">Далее</button>
     </div>
     <div class="test d-none">
