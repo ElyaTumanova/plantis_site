@@ -38,7 +38,7 @@
     </div>
     <div class="test__select-gen d-none">
         <legend>Выберите Ваш пол</legend>
-        <div>
+        <div class="test__select-gen-wrap">
             <div class="test__select-gen-f">
                 <input type="radio" name="gender" id="f" value="f" checked>
                 <label for="f">Женский</label>

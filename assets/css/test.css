@@ -295,6 +295,11 @@
     margin-top: 50px;
 }
 
+.test__select-gen-wrap {
+    display: flex;
+    column-gap: 30px;
+}
+
 .test__select-gen legend {
     font-weight: 600;
 }
@@ -302,10 +307,20 @@
 .test__select-gen-f::before {
     content: "";
     background-image: url(../../images/test/test.png);
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    margin-bottom: 30px;
 }
 .test__select-gen-m::before {
     content: "";
     background-image: url(../../images/test/test.png);
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    margin-bottom: 30px;
 }
 
 /* страница с результатами теста */
