@@ -208,7 +208,7 @@
 @media (max-width:767px) {
     .test__intro {
         grid-template-columns: auto;
-        row-gap: 10px;
+        row-gap: 20px;
         grid-template-areas: 
         "img"
         "text"
