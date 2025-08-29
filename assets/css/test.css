@@ -310,9 +310,10 @@
     background: #fff;
     border: 2px solid transparent;
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    cursor: pointer;
     text-align: center;
+    transition: all .2s ease;
 }
+
 .test__gen label::before {
     content: "";
     display: block;
@@ -320,6 +321,7 @@
     height: 100px;
     background-size: cover;
     margin-bottom: 30px;
+    cursor: pointer;
 }
 .test__gen-f label::before {
     background-image: url(../../images/test/test.png);
@@ -329,15 +331,8 @@
 }
 
 .test__select-gen label {
-  flex: 1;
-  /* padding: 14px 16px;
-  border-radius: 25px;
-  background: #fff;
-  border: 2px solid transparent;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  cursor: pointer;
-  text-align: center; */
-  transition: all .2s ease;
+    flex: 1;
+    cursor: pointer;
 }
 
 /* hover эффект */
