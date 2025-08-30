@@ -664,7 +664,7 @@
 }
 .cats-grid__inner_fikus {
     grid-area: fikus;
-    /* aspect-ratio: 1/1; */
+    aspect-ratio: 1/1;
     background-image: url(../../images/cats-grid/fikus.webp);
 }
 
