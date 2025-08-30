@@ -649,6 +649,7 @@
     background-size: 40%;
     background-position: bottom right;
 }
+
 .cats-grid__inner_lianas {
     grid-area: lianas;
     /* aspect-ratio: 1/1; */
@@ -692,7 +693,8 @@
 
 @media (max-width: 767px) {
     .cats-grid__title {
-        font-size: 12px;
+        font-size: 14px;
+        text-transform: none;
         /* top: 10px;
         left: 10px; */
     }
