@@ -19,7 +19,7 @@ return [
         'score'  => 0,
         'slug'   => 'spatifillum',
         'image'  => [
-            'f' => get_template_directory_uri().'/images/test/test.png',
+            'f' => get_template_directory_uri().'/images/test/spatifillum-f.webp',
             'm' => get_template_directory_uri().'/images/test/test.png',
             ],
         'result' => 'Мы думаем, что вы - спатифиллум. Вы расцветаете от внимания, грустите без любви и вянете от сквозняков душевных разговоров. Но стоило бы сказать вам комплимент — и вы снова сияли бы, как белый парус надежды. Вы - душа тонкая, ранимая, но чарующая.',
