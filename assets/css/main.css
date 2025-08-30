@@ -721,6 +721,12 @@
     margin: 40px 0 15px;
 }
 
+@media(max-width:767px) {
+    .main__cats-wrap .product-slider-wrap {
+        margin: 20px 0 15px;
+    }
+}
+
 .main__cats-nav {
     display: flex;
     column-gap: 24px;
