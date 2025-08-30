@@ -564,10 +564,11 @@
     column-gap: 10px;
     row-gap: 10px;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     grid-template-areas:
     "napol lisv lisv cvetush palms fikus"
-    "napol neprikhotliv succulent lianas palms petfriendly"
+    "napol neprikhotliv neprikhotliv lianas palms petfriendly"
+    "napol neprikhotliv neprikhotliv succulent palms petfriendly"
     ;
 }
 
@@ -619,7 +620,7 @@
 }
 .cats-grid__inner_neprikhotliv {
     grid-area: neprikhotliv;
-    aspect-ratio: 1/1;
+    /* aspect-ratio: 1/1; */
     background-image: url(../../images/cats-grid/nepr.webp);
 }
 .cats-grid__inner_napol {
