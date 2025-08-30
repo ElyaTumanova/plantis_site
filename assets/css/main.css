@@ -564,11 +564,15 @@
     column-gap: 10px;
     row-gap: 10px;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 1fr 0.5fr 0.5fr;
+    grid-template-rows: 0.5fr 0.5fr 1fr;
     grid-template-areas:
-    "napol lisv lisv cvetush palms fikus"
+    /* "napol lisv lisv cvetush palms fikus"
     "napol neprikhotliv neprikhotliv lianas palms petfriendly"
     "napol neprikhotliv neprikhotliv succulent palms petfriendly"
+    ; */
+    "napol lisv lisv cvetush palms lianas"
+    "napol lisv lisv cvetush palms succulent"
+    "napol fikus neprikhotliv neprikhotliv palms petfriendly"
     ;
 }
 
@@ -635,17 +639,21 @@
 }
 .cats-grid__inner_succulent {
     grid-area: succulent;
-    aspect-ratio: 1/1;
+    /* aspect-ratio: 1/1; */
     background-image: url(../../images/cats-grid/succ.webp);
+    background-size: 40%;
+    background-position: bottom right;
 }
 .cats-grid__inner_lianas {
     grid-area: lianas;
-    aspect-ratio: 1/1;
+    /* aspect-ratio: 1/1; */
     background-image: url(../../images/cats-grid/lians.webp);
+    background-size: contain;
+    background-position: bottom right;
 }
 .cats-grid__inner_petfriendly {
     grid-area: petfriendly;
-    aspect-ratio: 1/1;
+    /* aspect-ratio: 1/1; */
     background-image: url(../../images/cats-grid/pet.webp);
 }
 .cats-grid__inner_fikus {
