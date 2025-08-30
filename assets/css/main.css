@@ -695,6 +695,7 @@
     .cats-grid__title {
         font-size: 16px;
         text-transform: none;
+        font-weight: 600;
         /* top: 10px;
         left: 10px; */
     }
