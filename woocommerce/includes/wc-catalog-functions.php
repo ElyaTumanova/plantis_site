@@ -264,7 +264,7 @@ function plnt_attribute_seo_title($title) {
 add_filter('woocommerce_product_loop_start', 'plnt_get_catalog_list_schema_data',10);
 
 function plnt_get_catalog_list_schema_data ($html) {
-    if ( ! (is_shop() || is_product_category() || is_product_tag() || is_tax()) ) {
+    if ( ! (is_shop() || is_product_category() || is_product_tag() || is_tax()) || is_search() ) {
         return $html;
     }
     $html = preg_replace(
