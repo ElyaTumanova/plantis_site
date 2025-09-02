@@ -692,11 +692,11 @@ add_filter( 'wpseo_robots', function( $robots ) {
     return $robots;
 }, 20, 1 );
 
-add_action('wp_head', function() {
-    if ( isset($_GET['add-to-cart']) ) {
-        echo '<meta name="robots" content="noindex, nofollow">';
-    }
-}, 30, 1);
+// add_action('wp_head', function() {
+//     if ( isset($_GET['add-to-cart']) ) {
+//         echo '<meta name="robots" content="noindex, nofollow">';
+//     }
+// }, 30, 1);
 
 // изменяем canonical для страниц пагинации #SEO
 
