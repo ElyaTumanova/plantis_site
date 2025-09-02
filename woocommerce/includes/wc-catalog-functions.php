@@ -686,7 +686,7 @@ add_filter( 'wpseo_robots', function( $robots ) {
 
     // Условие: есть параметр filters в URL
     if ( isset( $_GET['filters'] ) && $_GET['filters'] !== '') {
-        return 'noindex, nofollow';
+        return 'noindex, follow';
     }
 
     return $robots;
