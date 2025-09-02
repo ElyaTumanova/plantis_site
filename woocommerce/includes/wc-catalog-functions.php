@@ -680,9 +680,9 @@ function filter_wpseo_robots( $robotsstr ) {
 add_filter( 'wpseo_robots', function( $robots ) {
 
     // Только фронтенд, только HTML-страницы
-    if ( is_admin() || is_feed() ) {
-        return $robots;
-    }
+    // if ( is_admin() || is_feed() ) {
+    //     return $robots;
+    // }
 
     // Условие: есть параметр filters в URL
     if ( isset( $_GET['filters'] ) && $_GET['filters'] !== '') {
