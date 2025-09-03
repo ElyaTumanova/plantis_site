@@ -698,18 +698,12 @@ add_filter( 'wpseo_robots', function( $robots ) {
 add_filter( 'wpseo_robots', function( $robots ) {
 
     // Условие: есть параметр в URL
-    if ( isset( $_GET['add-to-cart'] ) && $_GET['add-to-cart'] !== '') {
+    if ( (isset( $_GET['add-to-cart'] ) && $_GET['add-to-cart'] !== ''))
+        || (isset( $_GET['add_to_wishlist'] ) && $_GET['add_to_wishlist'] !== ''){
         return 'noindex, nofollow';
     }
-
     return $robots;
 }, 30, 1 );
-
-// add_action('wp_head', function() {
-//     if ( isset($_GET['add-to-cart']) ) {
-//         echo '<meta name="robots" content="noindex, nofollow">';
-//     }
-// }, 30, 1);
 
 // изменяем canonical для страниц пагинации #SEO
 
