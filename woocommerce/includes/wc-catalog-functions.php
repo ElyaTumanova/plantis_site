@@ -698,8 +698,8 @@ add_filter( 'wpseo_robots', function( $robots ) {
 add_filter( 'wpseo_robots', function( $robots ) {
 
     // Условие: есть параметр в URL
-    if ( (isset( $_GET['add-to-cart'] ) && $_GET['add-to-cart'] !== ''))
-        || (isset( $_GET['add_to_wishlist'] ) && $_GET['add_to_wishlist'] !== ''){
+    if ( (isset( $_GET['add-to-cart'] ) && $_GET['add-to-cart'] !== '')
+        || (isset( $_GET['add_to_wishlist'] ) && $_GET['add_to_wishlist'] !== '')){
         return 'noindex, nofollow';
     }
     return $robots;
