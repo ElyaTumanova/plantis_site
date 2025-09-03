@@ -685,18 +685,31 @@ add_filter( 'wpseo_robots', function( $robots ) {
     // }
 
     // Условие: есть параметр filters в URL
-    if ( isset( $_GET['filters'] ) && $_GET['filters'] !== '') {
+    if ( (isset( $_GET['filters'] ) && $_GET['filters'] !== '') 
+        || (isset( $_GET['orderby'] ) && $_GET['orderby'] !== '') 
+        || (isset( $_GET['interest'] ))) {
         return 'noindex, follow';
     }
 
     return $robots;
 }, 20, 1 );
 
-add_action('wp_head', function() {
-    if ( isset($_GET['add-to-cart']) ) {
-        echo '<meta name="robots" content="noindex, nofollow">';
+
+add_filter( 'wpseo_robots', function( $robots ) {
+
+    // Условие: есть параметр в URL
+    if ( isset( $_GET['add-to-cart'] ) && $_GET['add-to-cart'] !== '') {
+        return 'noindex, nofollow';
     }
-}, 30, 1);
+
+    return $robots;
+}, 30, 1 );
+
+// add_action('wp_head', function() {
+//     if ( isset($_GET['add-to-cart']) ) {
+//         echo '<meta name="robots" content="noindex, nofollow">';
+//     }
+// }, 30, 1);
 
 // изменяем canonical для страниц пагинации #SEO
 
