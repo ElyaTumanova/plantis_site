@@ -432,6 +432,10 @@
     top: 32px;
 }
 
+.search-result__item img {
+    object-fit: contain;
+}
+
 /* кнопка в коризину и инпут изменения количетсва */
 
 .card__grid .add-to-cart-wrap {
