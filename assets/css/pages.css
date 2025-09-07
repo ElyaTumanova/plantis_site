@@ -447,19 +447,27 @@
     border-radius: 10px;
 }
 
-.reviews-wrapper {
-  position: relative;
-  width: 100%;
-  padding-top: 70%; /* соотношение сторон 16:9 ≈ 56.25%, можно варьировать */
+.reviews-card {
+  max-width: 860px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
-.reviews-wrapper iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.reviews-card h2 {
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+  text-align: center;
 }
-.reviews-wrapper iframe body{
-  background-color: var(--background);
+.reviews-frame {
+  overflow: hidden;
+  border-radius: 16px;
+}
+.reviews-frame iframe {
+  width: 100%;
+  height: 500px;
+  border: none;
 }
 
 

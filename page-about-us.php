@@ -116,16 +116,17 @@ get_header(); ?>
                      
                 </div>                   
             </div> -->
-
-            <div class="reviews-wrapper">
-              <iframe
-                src="https://yandex.ru/maps-reviews-widget/237252555639?comments"
-                frameborder="0"
-                allowfullscreen
-                loading="lazy"
-                title="Отзывы на Яндекс.Картах">
-              </iframe>
+            
+            <div class="reviews-card">
+              <h2>Отзывы о нас</h2>
+              <div class="reviews-frame">
+                <iframe src="https://yandex.ru/maps-reviews-widget/237252555639?comments"
+                        loading="lazy"
+                        frameborder="0"
+                        allowfullscreen></iframe>
+              </div>
             </div>
+            
 
 
         
