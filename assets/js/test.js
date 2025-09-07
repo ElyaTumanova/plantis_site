@@ -150,7 +150,7 @@ class Question
       this.answerElementInput.setAttribute('type', 'radio');
       this.answerElementInput.setAttribute('name', 'answer');
       this.answerElementInput.setAttribute('id', answer.type.slug); 
-      this.answerElementLabel.innerText = answer.text;
+      this.answerElementLabel.innerHTML = answer.text;
       this.answerElementDiv.appendChild(this.answerElementInput);
       this.answerElementDiv.appendChild(this.answerElementLabel);
       this.answersList.appendChild(this.answerElementDiv);
@@ -200,14 +200,14 @@ const questions = [
     [
         new Answer("Люблю быть в центре внимания - эффектно появиться, ослепить всех своим нарядом и стать предметом всеобщего обсуждения.", plantTypes[5]),
         new Answer("Я сижу в уголке, наблюдаю за происходящим, подслушиваю секреты и делаю правильные выводы.", plantTypes[8]),
-        new Answer(["Завожу душные душевные разговоры и внимательно слушаю каждого, кто готов поделиться своими переживаниями."], plantTypes[1]),
+        new Answer(["Завожу <span>душные</span> душевные разговоры и внимательно слушаю каждого, кто готов поделиться своими переживаниями."], plantTypes[1]),
         new Answer("Я там, где весело. Но если мне скучно, то я всегда готов незаметно улизнуть на другую вечеринку.", plantTypes[7])
     ],
     vars.theme_url + '/images/test/q_2.webp',
   ),
   new Question("Мудрые цитаты бывают не только в книгах. Ими наполнены сторис бывшего, а также речь таксиста в три часа ночи. А какая фраза ближе тебе по духу?",
    [
-       new Answer("«Меньше слов, больше фотосинтеза дела».", plantTypes[4]),
+       new Answer("«Меньше слов, больше <span>фотосинтеза</span> дела».", plantTypes[4]),
        new Answer("«Семь раз отмерь, один раз полей».", plantTypes[1]),
        new Answer("«Не руби пальму, под которой отдыхаешь».", plantTypes[2]),
        new Answer("«Я стоял и молча наблюдал за вами, поэтому «Я знаю, что вы сделали прошлым летом».", plantTypes[3])
