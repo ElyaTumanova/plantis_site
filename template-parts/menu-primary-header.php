@@ -124,84 +124,30 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                             href="<?php echo site_url()?>/product-category/komnatnye-rasteniya/kaktusy">Кактусы</a>
                         </li>
                     </ul>
-                    <ul class="header__main-submenu_lvl1">
-                      <li class="header__main-submenu-item header__main-submenu-item_accent">
-                          Популярные подборки
-                      </li>
-
-                      <li class="header__main-submenu-item">
-                          <a class="header__main-submenu-item_image"
-                            data-cat_id="<?php 
-                                $tag = get_term_by('slug', 'napolnye', 'product_tag');
-                                if ($tag) echo (int) $tag->term_id;
-                            ?>"
-                            href="<?php echo site_url()?>/product-tag/napolnye/">Напольные</a>
-                      </li>
-
-                      <li class="header__main-submenu-item">
-                          <a class="header__main-submenu-item_image"
-                            data-cat_id="<?php 
-                                $tag = get_term_by('slug', 'novichkam', 'product_tag');
-                                if ($tag) echo (int) $tag->term_id;
-                            ?>"
-                            href="<?php echo site_url()?>/product-tag/novichkam/">Неприхотливые</a>
-                      </li>
-
-                      <li class="header__main-submenu-item">
-                          <a class="header__main-submenu-item_image"
-                            data-cat_id="<?php 
-                                $tag = get_term_by('slug', 'pet-friendly', 'product_tag');
-                                if ($tag) echo (int) $tag->term_id;
-                            ?>"
-                            href="<?php echo site_url()?>/product-tag/pet-friendly/">Pet Friendly</a>
-                      </li>
-
-                      <li class="header__main-submenu-item">
-                          <a class="header__main-submenu-item_image"
-                            data-cat_id="<?php 
-                                $tag = get_term_by('slug', 'malenkie-cvety-v-gorshkah', 'product_tag');
-                                if ($tag) echo (int) $tag->term_id;
-                            ?>"
-                            href="<?php echo site_url()?>/product-tag/malenkie-cvety-v-gorshkah/">Компактные</a>
-                      </li>
-
-                      <li class="header__main-submenu-item">
-                          <a class="header__main-submenu-item_image"
-                            data-cat_id="<?php 
-                                $tag = get_term_by('slug', 'ampelnye', 'product_tag');
-                                if ($tag) echo (int) $tag->term_id;
-                            ?>"
-                            href="<?php echo site_url()?>/product-tag/ampelnye/">Ампельные</a>
-                      </li>
-
-                      <li class="header__main-submenu-item">
-                          <a class="header__main-submenu-item_image"
-                            data-cat_id="<?php 
-                                $tag = get_term_by('slug', 'ehkzoticheskie-komnatnye-rasteniya', 'product_tag');
-                                if ($tag) echo (int) $tag->term_id;
-                            ?>"
-                            href="<?php echo site_url()?>/product-tag/ehkzoticheskie-komnatnye-rasteniya/">Экзотические</a>
-                      </li>
-
-                      <li class="header__main-submenu-item">
-                          <a class="header__main-submenu-item_image"
-                            data-cat_id="<?php 
-                                $tag = get_term_by('slug', 'variegatnye', 'product_tag');
-                                if ($tag) echo (int) $tag->term_id;
-                            ?>"
-                            href="<?php echo site_url()?>/product-tag/variegatnye/">Вариегатные</a>
-                      </li>
-
-                      <li class="header__main-submenu-item">
-                          <a class="header__main-submenu-item_image"
-                            data-cat_id="<?php 
-                                $tag = get_term_by('slug', 'bonsay', 'product_tag');
-                                if ($tag) echo (int) $tag->term_id;
-                            ?>"
-                            href="<?php echo site_url()?>/product-tag/bonsay/">Бонсаи</a>
-                      </li>
-                  </ul>
-
+                    <?php
+                      render_product_tag_menu( 'Популярные подборки', [
+                          'napolnye'                       => 'Напольные',
+                          'novichkam'                      => 'Неприхотливые',
+                          'pet-friendly'                   => 'Pet Friendly',
+                          'malenkie-cvety-v-gorshkah'      => 'Компактные',
+                          'ampelnye'                       => 'Ампельные',
+                          'ehkzoticheskie-komnatnye-rasteniya' => 'Экзотические',
+                          'variegatnye'                    => 'Вариегатные',
+                          'bonsay'                         => 'Бонсаи',
+                      ] );
+                      render_product_tag_menu( 'Повод для подарка', [
+                          'komnatnoe-rastenie-v-podarok-zhenshchine'        => 'В подарок женщине',
+                          'komnatnoe-rastenie-v-podarok-muzhchine'          => 'В подарок мужчине',
+                          'komnatnoe-rastenie-v-podarok-na-yubilej'         => 'На юбилей',
+                          'komnatnoe-rastenie-v-podarok-nachalniku'         => 'Начальнику',
+                          'komnatnoe-rastenie-v-podarok-na-1-sentyabrya'    => 'День знаний',
+                          'komnatnoe-rastenie-v-podarok-na-den-uchitelya'   => 'День учителя',
+                          'komnatnoe-rastenie-v-podarok-na-den-materi'      => 'День матери',
+                          'komnatnoe-rastenie-v-podarok-na-novyj-god'       => 'Новый год',
+                          'komnatnoe-rastenie-v-podarok-na-den-svyatogo-valentina' => 'День святого Валентина',
+                          'komnatnoe-rastenie-v-podarok-na-8-marta'         => '8 марта',
+                      ] );
+                    ?>
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
                             Повод для подарка

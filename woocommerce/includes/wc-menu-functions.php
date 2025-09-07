@@ -174,3 +174,41 @@ function get_az_palnts_submenu() {
         <?php
     }
 }
+
+
+
+/**
+ * Выводит меню с метками WooCommerce (product_tag)
+ *
+ * @param string $title   Заголовок списка (первый <li>)
+ * @param array  $tags    Ассоциативный массив [ 'slug' => 'Название' ]
+ */
+  function render_product_tag_menu( $title, $tags = [] ) {
+      if ( empty( $tags ) ) {
+          return;
+      }
+
+      echo '<ul class="header__main-submenu_lvl1">';
+      echo '<li class="header__main-submenu-item header__main-submenu-item_accent">' . esc_html( $title ) . '</li>';
+
+      foreach ( $tags as $slug => $label ) {
+          $tag = get_term_by( 'slug', $slug, 'product_tag' );
+
+          if ( $tag && ! is_wp_error( $tag ) ) {
+              $url     = get_term_link( $tag, 'product_tag' );
+              $data_id = (int) $tag->term_id; // для меток используем term_id
+          } else {
+              // fallback если метка не найдена
+              $url     = trailingslashit( site_url( '/product-tag/' . $slug ) );
+              $data_id = '';
+          }
+
+          echo '<li class="header__main-submenu-item">';
+          echo '<a class="header__main-submenu-item_image" data-cat_id="' . esc_attr( $data_id ) . '" href="' . esc_url( $url ) . '">';
+          echo esc_html( $label );
+          echo '</a>';
+          echo '</li>';
+      }
+
+      echo '</ul>';
+}
