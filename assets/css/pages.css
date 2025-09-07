@@ -472,6 +472,12 @@
   border: none;
 }
 
+@media (max-width: 767px) {
+  .reviews-frame {
+    margin-left: 0;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Peresadka
