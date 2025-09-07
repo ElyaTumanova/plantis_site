@@ -125,40 +125,83 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                         </li>
                     </ul>
                     <ul class="header__main-submenu_lvl1">
-                        <li class="header__main-submenu-item header__main-submenu-item_accent">
-                            Популярные подборки
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/napolnye/">Напольные</a>
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/novichkam/">Неприхотливые</a>
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a class = "header__main-submenu-item_image"
-                            data-cat_id = <?php 
-                            $category = get_term_by( 'slug', 'pet-friendly', 'product_tag' );
-                            if($category) {
-                            $id = $category->term_taxonomy_id;
-                            echo $id;}?>
+                      <li class="header__main-submenu-item header__main-submenu-item_accent">
+                          Популярные подборки
+                      </li>
+
+                      <li class="header__main-submenu-item">
+                          <a class="header__main-submenu-item_image"
+                            data-cat_id="<?php 
+                                $tag = get_term_by('slug', 'napolnye', 'product_tag');
+                                if ($tag) echo (int) $tag->term_id;
+                            ?>"
+                            href="<?php echo site_url()?>/product-tag/napolnye/">Напольные</a>
+                      </li>
+
+                      <li class="header__main-submenu-item">
+                          <a class="header__main-submenu-item_image"
+                            data-cat_id="<?php 
+                                $tag = get_term_by('slug', 'novichkam', 'product_tag');
+                                if ($tag) echo (int) $tag->term_id;
+                            ?>"
+                            href="<?php echo site_url()?>/product-tag/novichkam/">Неприхотливые</a>
+                      </li>
+
+                      <li class="header__main-submenu-item">
+                          <a class="header__main-submenu-item_image"
+                            data-cat_id="<?php 
+                                $tag = get_term_by('slug', 'pet-friendly', 'product_tag');
+                                if ($tag) echo (int) $tag->term_id;
+                            ?>"
                             href="<?php echo site_url()?>/product-tag/pet-friendly/">Pet Friendly</a>
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/malenkie-cvety-v-gorshkah/">Компактные</a>
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/ampelnye/">Ампельные</a>
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/ehkzoticheskie-komnatnye-rasteniya/">Экзотические</a>
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/variegatnye/">Вариегатные</a>
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/bonsay/">Бонсаи</a>
-                        </li>
-                    </ul>
+                      </li>
+
+                      <li class="header__main-submenu-item">
+                          <a class="header__main-submenu-item_image"
+                            data-cat_id="<?php 
+                                $tag = get_term_by('slug', 'malenkie-cvety-v-gorshkah', 'product_tag');
+                                if ($tag) echo (int) $tag->term_id;
+                            ?>"
+                            href="<?php echo site_url()?>/product-tag/malenkie-cvety-v-gorshkah/">Компактные</a>
+                      </li>
+
+                      <li class="header__main-submenu-item">
+                          <a class="header__main-submenu-item_image"
+                            data-cat_id="<?php 
+                                $tag = get_term_by('slug', 'ampelnye', 'product_tag');
+                                if ($tag) echo (int) $tag->term_id;
+                            ?>"
+                            href="<?php echo site_url()?>/product-tag/ampelnye/">Ампельные</a>
+                      </li>
+
+                      <li class="header__main-submenu-item">
+                          <a class="header__main-submenu-item_image"
+                            data-cat_id="<?php 
+                                $tag = get_term_by('slug', 'ehkzoticheskie-komnatnye-rasteniya', 'product_tag');
+                                if ($tag) echo (int) $tag->term_id;
+                            ?>"
+                            href="<?php echo site_url()?>/product-tag/ehkzoticheskie-komnatnye-rasteniya/">Экзотические</a>
+                      </li>
+
+                      <li class="header__main-submenu-item">
+                          <a class="header__main-submenu-item_image"
+                            data-cat_id="<?php 
+                                $tag = get_term_by('slug', 'variegatnye', 'product_tag');
+                                if ($tag) echo (int) $tag->term_id;
+                            ?>"
+                            href="<?php echo site_url()?>/product-tag/variegatnye/">Вариегатные</a>
+                      </li>
+
+                      <li class="header__main-submenu-item">
+                          <a class="header__main-submenu-item_image"
+                            data-cat_id="<?php 
+                                $tag = get_term_by('slug', 'bonsay', 'product_tag');
+                                if ($tag) echo (int) $tag->term_id;
+                            ?>"
+                            href="<?php echo site_url()?>/product-tag/bonsay/">Бонсаи</a>
+                      </li>
+                  </ul>
+
                     <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item header__main-submenu-item_accent">
                             Повод для подарка
