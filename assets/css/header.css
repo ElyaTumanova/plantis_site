@@ -216,6 +216,10 @@
   height: 24px;
 }
 
+.header__info .social-media__button-icon {
+  height: 17px;
+}
+
 /* header__notice styles */
 
 .header__notice {
