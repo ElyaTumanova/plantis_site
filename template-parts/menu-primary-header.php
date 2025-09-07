@@ -149,41 +149,6 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                       ] );
                     ?>
                     <ul class="header__main-submenu_lvl1">
-                        <li class="header__main-submenu-item header__main-submenu-item_accent">
-                            Повод для подарка
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-zhenshchine">В подарок женщине</a>
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-muzhchine">В подарок мужчине</a>
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-yubilej/">На юбилей</a>
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-nachalniku/">Начальнику</a>
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-1-sentyabrya/">День знаний</a>
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-den-uchitelya/">День учителя</a>
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-den-materi/">День матери</a>
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-novyj-god/">Новый год</a>
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-den-svyatogo-valentina/">День святого Валентина</a>
-                        </li>
-                        <li class="header__main-submenu-item">
-                            <a href="<?php echo site_url()?>/product-tag/komnatnoe-rastenie-v-podarok-na-8-marta/">8 марта</a>
-                        </li>
-                    </ul>
-                    <ul class="header__main-submenu_lvl1">
                         <li class="header__main-submenu-item">
                             <a class="header__main-submenu-item_accent header__main-submenu-item_arrow header__main-submenu-item_image"
                             data-cat_id = <?php 
