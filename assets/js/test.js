@@ -16,6 +16,7 @@ class Test {
       this.current = 0;
 
       this.testError = document.querySelector('.test__error');
+      this.testSubmitBtn = document.querySelector('.test__button');
     
       this.testResult = document.querySelector('.test__result');
       this.testResultName = document.querySelector('.test__result-name span');
@@ -53,6 +54,7 @@ class Test {
         }
       } else {
         this.testError.classList.add('test__error_show');
+        this.testSubmitBtn.innerHTML = "Error";
       }
     }
 
