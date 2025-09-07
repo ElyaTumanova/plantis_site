@@ -1174,14 +1174,14 @@ function check_is_plants_in_cart() {
 
 add_filter( 'woocommerce_gateway_title', function( $title, $gateway_id ) {
     if ( $gateway_id === 'cod' & !check_is_plants_in_cart()) {
-        $title = 'Наличные курьеру'; // 👉 своё название
+        $title = 'Оплату после подтверждения заказа менеджером'; // 👉 своё название
     }
     return $title;
 }, 10, 2 );
 
 add_filter( 'woocommerce_gateway_description', function( $description, $gateway_id ) {
     if ( $gateway_id === 'cod' & !check_is_plants_in_cart()) {
-        $description = 'Оплата наличными при получении заказа';
+        $description = 'Наш менеджер свяжется с Вами после оформления заказа. После вашего подтверждения мы пришлём ссылку на оплату картой.';
     }
     return $description;
 }, 10, 2 );
