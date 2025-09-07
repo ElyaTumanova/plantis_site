@@ -118,9 +118,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 								echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'woocommerce' ) . '</p>', $product_id ) );
 							}
 							?>
-							<?php 
-                                get_backorder_info_snippet($_product, $cart_item[ 'quantity' ]);
-							?>
+							<?php get_backorder_info_snippet($_product, $cart_item[ 'quantity' ]);?>
 							<!-- peresadka_init -->
 							<!-- <div class="cart__peresadka" data-product_id=<?php //echo $product_id;?>>
 							<?php 
