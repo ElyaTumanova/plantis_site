@@ -1388,6 +1388,7 @@
     }
     .catalog__filter-active .berocket_aapf_widget_selected_filter {
         flex-wrap: nowrap;
+        margin-bottom: 10px;
     }
     .catalog__filter-active .bapf_sfilter {
         margin-bottom: 0;
