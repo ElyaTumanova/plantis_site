@@ -143,6 +143,10 @@
     line-height: 1.3;
 }
 
+.test__answers label span {
+  text-decoration: line-through;
+}
+
 @media(max-width: 767px) {
     .test__answers label {
         padding: 10px 20px;
