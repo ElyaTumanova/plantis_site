@@ -472,7 +472,7 @@
   border: none;
 }
 .reviews-frame iframe .badge__form{
-  display: none;
+  display: none !important;
 }
 
 @media (max-width: 767px) {
