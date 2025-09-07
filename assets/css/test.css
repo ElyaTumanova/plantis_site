@@ -138,6 +138,7 @@
     /* min-height: 32px;
     display: contents; */
     padding: 15px 20px;
+    line-height: 1.3;
 }
 
 @media(max-width: 767px) {
