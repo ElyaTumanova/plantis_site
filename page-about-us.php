@@ -119,7 +119,7 @@ get_header(); ?>
 
             <div class="reviews-wrapper">
               <iframe
-                src="https://yandex.ru/maps-reviews-widget/CLESbJop?comments"
+                src="https://yandex.ru/maps-reviews-widget/237252555639?comments"
                 frameborder="0"
                 allowfullscreen
                 loading="lazy"
