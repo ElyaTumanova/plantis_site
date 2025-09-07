@@ -21,9 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 			</div>
 			<div class="header__notice-wrap">
-				<?php 
-                    get_template_part( 'template-parts/header-notice' );
-                ?>
+				<?php get_template_part( 'template-parts/header-notice' );?>
 			</div>
 
 			<div class="header__main">

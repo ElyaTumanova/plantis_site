@@ -65,6 +65,7 @@
     /* justify-content: space-between; */
     column-gap: 15px;
     justify-content: end;
+    align-items: center;
 }
 
 .logo {
@@ -203,6 +204,16 @@
     font-weight: 700;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+.header__info .social-media__buttons {
+  column-gap: 10px;
+}
+
+.header__info .social-media__button {
+  padding: 0;
+  width: 24px;
+  height: 24px;
 }
 
 /* header__notice styles */
