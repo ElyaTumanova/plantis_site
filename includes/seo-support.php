@@ -61,7 +61,7 @@ add_action('wp_head', function() {
         $gen = get_query_var('gen');
         $plant = get_query_var('plant');
         $img = $plants_by_slug[$plant]['image'][$gen];
-        echo '<meta property="og:image" content="'. $img . "\n";
+        echo '<meta property="og:image" content="'. $img .'/>' . "\n";
         echo '<meta property="og:image:width" content="1200" />' . "\n";
         echo '<meta property="og:image:height" content="630" />' . "\n";
     }
