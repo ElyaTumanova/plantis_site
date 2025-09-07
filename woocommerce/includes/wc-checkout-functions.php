@@ -1160,7 +1160,7 @@ function check_is_plants_in_cart() {
   global $plants_cat_id;
   $isPlants = false;
   foreach ( WC()->cart->get_cart() as $cart_item ) {
-      $_product = $cart_item['data'];
+      $product = $cart_item['data'];
       $idCats = $product->get_category_ids();
       
       if (in_array($plants_cat_id, $idCats)) {
