@@ -168,7 +168,7 @@
 }
 
 
-.test__error {
+/* .test__error {
     color: var(--red-color);
     visibility: hidden;
     opacity: 0;
@@ -192,7 +192,7 @@
 .test__error_show {
     visibility: visible;
     opacity: 1;
-}
+} */
 
 /* test start screen*/
 .test__intro {

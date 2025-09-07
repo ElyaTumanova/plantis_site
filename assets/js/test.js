@@ -15,7 +15,7 @@ class Test {
       //Индекс текущего вопроса
       this.current = 0;
 
-      this.testError = document.querySelector('.test__error');
+      // this.testError = document.querySelector('.test__error');
       this.testSubmitBtn = document.querySelector('.test__button');
     
       this.testResult = document.querySelector('.test__result');
@@ -53,7 +53,7 @@ class Test {
           this.showResult();
         }
       } else {
-        this.testError.classList.add('test__error_show');
+        // this.testError.classList.add('test__error_show');
         this.testSubmitBtn.innerHTML = "Выберите вариант ответа";
         this.testSubmitBtn.setAttribute ('style', 'color:red');
         setTimeout(() =>  {
@@ -129,7 +129,7 @@ class Question
     this.questionImage = document.querySelector('.test__image');
     this.questionElement = document.querySelector('.test__question');
     this.answersList = document.querySelector('.test__answers');
-    this.testError = document.querySelector('.test__error');
+    // this.testError = document.querySelector('.test__error');
     this.chosenAnswer = this.chosenAnswer;
   }
  
@@ -162,7 +162,7 @@ class Question
     this.chosenAnswer = answer;
     console.log(answer);
     console.log(answerElementDiv);
-    this.testError.classList.remove('test__error_show');
+    // this.testError.classList.remove('test__error_show');
   }
 }
  
