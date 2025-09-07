@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_filter('wpseo_opengraph_title', function ($title) {
     if (is_page('test-kakoe-ty-rastenie')) {                // ваша страница
         return 'Пройди тест — Какое ты растение?';
+    } else if (is_page('test-result')) {
+        return 'Посмотри какое я растение';
     }
     return $title;
 });
@@ -18,6 +20,8 @@ add_filter('wpseo_opengraph_title', function ($title) {
 add_filter('wpseo_opengraph_desc', function ($desc) {
     if (is_page('test-kakoe-ty-rastenie')) {
         return 'Узнай, какое растение тебе ближе всего!';
+    } else if (is_page('test-result')) {
+        return 'Результат теста - Какое ты растение?';
     }
     return $desc;
 });

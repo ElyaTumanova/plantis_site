@@ -53,11 +53,11 @@
 
 }
 
-/* @media(max-width: 767px) {
+@media(max-width: 767px) {
  .test__question {
-    font-size: 18px;
+    text-align: center;
  }
-} */
+}
 
 .test__answers-form {
     grid-area: answers;
@@ -276,6 +276,7 @@
 .test__disclaimer-text_mob {
     grid-area: text;
     display: none;
+    align-items: center;
 }
 
 @media (max-width: 767px) {
