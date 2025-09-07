@@ -54,7 +54,12 @@ class Test {
         }
       } else {
         this.testError.classList.add('test__error_show');
-        this.testSubmitBtn.innerHTML = "Error";
+        this.testSubmitBtn.innerHTML = "Выберите вариант ответа";
+        this.testSubmitBtn.setAttribute ('style', 'color:red');
+        setTimeout(() =>  {
+          this.testSubmitBtn.innerHTML = "Далее"
+          this.testSubmitBtn.removeAttribute ('style');
+        }, 1500);
       }
     }
 
