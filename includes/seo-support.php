@@ -3,99 +3,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-//add_filter( 'wpseo_schema_organization', 'fix_yoast_schema_image', 10, 2 );
-function fix_yoast_schema_image( $data, $context ) {
-	if ( empty( $data['image'] ) || ! is_array( $data['image'] ) || ! isset( $data['image']['url'] ) ) {
-        $image_id = attachment_url_to_postid( 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp' );
-		if ( $image_id ) {
-			$image = wp_get_attachment_image_src( $image_id );
-		}
-		$data['image'] = [
-			'url'    => $image[0],
-			'width'  => $image[1],
-			'height' => $image[2],
-		];
-	}
-	return $data;
-}
+/*--------------------------------------------------------------
+Contents
+# Opengraph
+# Schema.org
+# Favicon
+--------------------------------------------------------------*/
 
-//add_filter( 'wpseo_schema_graph_pieces', 'fix_yoast_schema_images_globally', 10, 2 );
-function fix_yoast_schema_images_globally( $pieces, $context ) {
+/*--------------------------------------------------------------
+# Opengraph
+--------------------------------------------------------------*/
 
-	foreach ( $pieces as &$piece ) {
 
-         // Обрабатываем только массивы
-		if ( ! is_array( $piece ) ) {
-			continue;
-		}
 
-		if ( isset( $piece['@type'] ) && isset( $piece['image'] ) && ! is_array( $piece['image'] ) ) {
-            $image_id = attachment_url_to_postid( 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp' );
-            if ( $image_id ) {
-                $image = wp_get_attachment_image_src( $image_id );
-            }
-			$piece['image'] = [
-				'url'    => $image[0],
-                'width'  => $image[1],
-                'height' => $image[2],
-			];
-		}
-	}
-	return $pieces;
-}
-
-// add_filter( 'wpseo_opengraph_image', 'plnt_default_og_image');
-// add_filter( 'wpseo_opengraph_image_width', 'plnt_change_opengraph_image_width');
-// add_filter( 'wpseo_opengraph_image_height', 'plnt_change_opengraph_image_height');
-// add_filter( 'wpseo_twitter_image', 'plantis_default_twitter_image',10,1 );
-// add_filter( 'wpseo_schema_graph_pieces', 'plantis_schema_default_image', 11, 2 );
-
-function plnt_default_og_image( $image ) {
-	if ( empty( $image ) ) {
-		$image_id = attachment_url_to_postid( 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp' );
-		if ( $image_id ) {
-			$image = wp_get_attachment_image_src( $image_id )[0];
-		}
-	}
-
-	return $image;
-}
-function plnt_change_opengraph_image_width( $width ) {
-    if ( empty( $width ) ) {
-		$image_id = attachment_url_to_postid( 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp' );
-		if ( $image_id ) {
-			$width = wp_get_attachment_image_src( $image_id )[1];
-		}
-	}
-    return $width;
-}
-function plnt_change_opengraph_image_height( $height  ) {
-    if ( empty( $height  ) ) {
-		$image_id = attachment_url_to_postid( 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp' );
-		if ( $image_id ) {
-			$height  = wp_get_attachment_image_src( $image_id )[2];
-		}
-	}
-    return $height ;
-}
-
-function plantis_default_twitter_image( $image ) {
-	if ( empty( $image ) ) {
-		$image = 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp'; // путь к изображению
-	}
-	return $image;
-}
-
-function plantis_schema_default_image( $pieces, $context ) {
-	foreach ( $pieces as $piece ) {
-		if ( isset( $piece->context ) && $piece->context === 'mainEntity' ) {
-			if ( empty( $piece->image ) ) {
-				$piece->image = 'https://plantis-shop.ru/wp-content/uploads/2025/07/mainbannermob.webp';
-			}
-		}
-	}
-	return $pieces;
-}
+/*--------------------------------------------------------------
+# Schema.org
+--------------------------------------------------------------*/
 
 // отключаем schema.org в Yoast
 add_filter( 'wpseo_json_ld_output', '__return_false' );
@@ -171,9 +94,23 @@ function plnt_schema_json() {
             <?php echo wp_json_encode( $data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ); ?>
         </script>
         <?php
-     
-
-     
- 
     }
+}
+
+/*--------------------------------------------------------------
+# Favicon
+--------------------------------------------------------------*/
+//добавить фавикон favicon
+add_action( 'wp_head', 'plnt_add_favicons' );
+function plnt_add_favicons() {
+    $dir = get_template_directory_uri() . '/images/favicons';
+    ?>
+    <link rel="icon" type="image/svg+xml" href="<?php echo $dir; ?>/favicon.svg" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="<?php echo $dir; ?>/favicon-32x32.png" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="<?php echo $dir; ?>/favicon-96x96.png" sizes="96x96"/>
+    <link rel="shortcut icon" href="<?php echo $dir; ?>/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo $dir; ?>/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Plantis" />
+    <link rel="manifest" href="<?php echo $dir; ?>/site.webmanifest" />
+    <?php
 }
