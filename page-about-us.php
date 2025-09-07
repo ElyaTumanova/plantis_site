@@ -117,7 +117,16 @@ get_header(); ?>
                 </div>                   
             </div> -->
 
-            
+            <div class="reviews-wrapper">
+              <iframe
+                src="https://yandex.ru/maps-reviews-widget/ВАШ_ID_МЕСТА?comments"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                title="Отзывы на Яндекс.Картах">
+              </iframe>
+            </div>
+
 
         
 		</div>
