@@ -54,6 +54,16 @@ add_action('wp_head', function() {
         echo '<meta property="og:image" content="'. get_template_directory_uri() .'/images/test/test_cover_long.jpg" />' . "\n";
         echo '<meta property="og:image:width" content="1200" />' . "\n";
         echo '<meta property="og:image:height" content="630" />' . "\n";
+    } else if (is_page('test-result')) {
+        $plant_types = require get_theme_file_path('assets/data/plant-types.php');
+        $plants_by_slug = [];
+        foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
+        $gen = get_query_var('gen');
+        $plant = get_query_var('plant');
+        $img = $plants_by_slug[$plant]['image'][$gen];
+        echo '<meta property="og:image" content="'. $img . "\n";
+        echo '<meta property="og:image:width" content="1200" />' . "\n";
+        echo '<meta property="og:image:height" content="630" />' . "\n";
     }
 });
 
