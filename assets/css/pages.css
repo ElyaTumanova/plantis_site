@@ -471,6 +471,9 @@
   max-width: 760px;
   border: none;
 }
+.reviews-frame iframe .badge__form{
+  display: none;
+}
 
 @media (max-width: 767px) {
   .reviews-frame {
