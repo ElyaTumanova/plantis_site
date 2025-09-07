@@ -1361,7 +1361,7 @@
 
 .catalog__filter-active .berocket_aapf_widget_selected_filter .bapf_sfa_unall {
     margin-left: auto !important;
-    margin-top: 17px;
+    /* margin-top: 17px; */
 }
 
 .catalog__filter-active .bapf_sfa_taxonomy ul {
