@@ -220,7 +220,6 @@ function plnt_get_brand_text($idCats) {
     return $brand;
 }
 
-
 /*--------------------------------------------------------------
 # HELPERS for cart & checkout
 --------------------------------------------------------------*/
@@ -378,7 +377,6 @@ function plnt_get_shiping_costs() {
 
 	return $shipping_costs;
 }
-
 
 function get_backorder_info_snippet($_product, $qty) {
     global $plants_cat_id;

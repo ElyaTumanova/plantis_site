@@ -15,6 +15,7 @@ Contents
 # INN field
 # Billing adress field
 # T Bank
+# Payment method
 # Thankyou page
 # Additional fields for admin
 --------------------------------------------------------------*/
@@ -411,7 +412,6 @@ Contents
         }
     }
 
-
     // сообщение о крупногабартной доставке (с машинкой)
 
     add_action('plnt_large_delivery_notice', 'plnt_large_delivery_notice');
@@ -665,14 +665,14 @@ Contents
         $cat_amount = 0;
         $products_min = false;
         foreach ( WC()->cart->get_cart() as $cart_item ) {
-                $_product = $cart_item['data'];
-                $isTreez = check_is_treez($_product);
-                if ( $isTreez) {
-                    $products_min = true;
-                    $qty = $cart_item[ 'quantity' ];
-                    $price = $cart_item['data']->get_price();
-                    $cat_amount = $cat_amount + $price*$qty;
-                }	
+          $_product = $cart_item['data'];
+          $isTreez = check_is_treez($_product);
+          if ( $isTreez) {
+              $products_min = true;
+              $qty = $cart_item[ 'quantity' ];
+              $price = $cart_item['data']->get_price();
+              $cat_amount = $cat_amount + $price*$qty;
+          }	
         }
     
         if( ( is_cart() || is_checkout() ) && $cat_amount < $min_treez_delivery && $products_min) {
@@ -704,14 +704,14 @@ Contents
         $cat_amount = 0;
         $products_min = false;
         foreach ( WC()->cart->get_cart() as $cart_item ) {
-                $_product = $cart_item['data'];
-                $isLechuza = check_is_lechuza($_product);
-                if ( $isLechuza) {
-                    $products_min = true;
-                    $qty = $cart_item[ 'quantity' ];
-                    $price = $cart_item['data']->get_price();
-                    $cat_amount = $cat_amount + $price*$qty;
-                }	
+          $_product = $cart_item['data'];
+          $isLechuza = check_is_lechuza($_product);
+          if ( $isLechuza) {
+              $products_min = true;
+              $qty = $cart_item[ 'quantity' ];
+              $price = $cart_item['data']->get_price();
+              $cat_amount = $cat_amount + $price*$qty;
+          }	
         }
     
         if( ( is_cart() || is_checkout() ) && $cat_amount < $min_lechuza_delivery && $products_min) {
@@ -748,14 +748,14 @@ Contents
         $cat_amount = 0;
         $products_min = false;
         foreach ( WC()->cart->get_cart() as $cart_item ) {
-                $_product = $cart_item['data'];
-                $isTreez = check_is_treez($_product);
-                if ( $isTreez) {
-                    $products_min = true;
-                    $qty = $cart_item[ 'quantity' ];
-                    $price = $cart_item['data']->get_price();
-                    $cat_amount = $cat_amount + $price*$qty;
-                }	
+            $_product = $cart_item['data'];
+            $isTreez = check_is_treez($_product);
+            if ( $isTreez) {
+                $products_min = true;
+                $qty = $cart_item[ 'quantity' ];
+                $price = $cart_item['data']->get_price();
+                $cat_amount = $cat_amount + $price*$qty;
+            }	
         }
 
         // if( $cat_amount < $min_treez_delivery && $products_min) {
@@ -774,14 +774,14 @@ Contents
         $cat_amount = 0;
         $products_min = false;
         foreach ( WC()->cart->get_cart() as $cart_item ) {
-                $_product = $cart_item['data'];
-                $isLechuza = check_is_lechuza($_product);
-                if ( $isLechuza) {
-                    $products_min = true;
-                    $qty = $cart_item[ 'quantity' ];
-                    $price = $cart_item['data']->get_price();
-                    $cat_amount = $cat_amount + $price*$qty;
-                }	
+          $_product = $cart_item['data'];
+          $isLechuza = check_is_lechuza($_product);
+          if ( $isLechuza) {
+              $products_min = true;
+              $qty = $cart_item[ 'quantity' ];
+              $price = $cart_item['data']->get_price();
+              $cat_amount = $cat_amount + $price*$qty;
+          }	
         }
 
         // if( $cat_amount < $min_lechuza_delivery && $products_min) {
@@ -826,12 +826,12 @@ Contents
             return $available_gateways;
         } else {
             foreach ( WC()->cart->get_cart() as $cart_item ) {
-                    $_product = $cart_item['data'];
-                    $isLechuza = check_is_lechuza($_product);
-        
-                    if ( $isLechuza) {
-                        $products_min = true;
-                    }	
+              $_product = $cart_item['data'];
+              $isLechuza = check_is_lechuza($_product);
+  
+              if ( $isLechuza) {
+                  $products_min = true;
+              }	
             }
         
             if( $products_min) {
@@ -1152,6 +1152,41 @@ function plnt_inn_field_in_email( $rows, $order ) {
 
         return $available_gateways;
     }
+
+/*--------------------------------------------------------------
+# Payment method
+--------------------------------------------------------------*/
+function check_is_plants_in_cart() {
+  global $plants_cat_id;
+  $isPlants = false;
+  foreach ( WC()->cart->get_cart() as $cart_item ) {
+      $_product = $cart_item['data'];
+      $idCats = $product->get_category_ids();
+      
+      if (in_array($plants_cat_id, $idCats)) {
+          $isPlants = true;
+          break;
+      }	
+  }
+
+  return $isPlants;
+}
+
+add_filter( 'woocommerce_gateway_title', function( $title, $gateway_id ) {
+    if ( $gateway_id === 'cod' & !check_is_plants_in_cart()) {
+        $title = 'Наличные курьеру'; // 👉 своё название
+    }
+    return $title;
+}, 10, 2 );
+
+add_filter( 'woocommerce_gateway_description', function( $description, $gateway_id ) {
+    if ( $gateway_id === 'cod' & !check_is_plants_in_cart()) {
+        $description = 'Оплата наличными при получении заказа';
+    }
+    return $description;
+}, 10, 2 );
+
+
 /*--------------------------------------------------------------
 # Thankyou page
 --------------------------------------------------------------*/
