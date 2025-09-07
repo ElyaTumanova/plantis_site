@@ -59,7 +59,7 @@
 
         </div>
         <button class="test__button button" type="submit">Далее</button>
-        <p class = "test__error">Выберите вариант ответа</p>
+        <!-- <p class = "test__error">Выберите вариант ответа</p> -->
       </form>
       <img src="" alt="" class = "test__image" loading="lazy">
     </div> 
