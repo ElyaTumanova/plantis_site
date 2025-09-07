@@ -276,7 +276,7 @@
 .test__disclaimer-text_mob {
     grid-area: text;
     display: none;
-    align-items: center;
+    text-align: center;
 }
 
 @media (max-width: 767px) {
