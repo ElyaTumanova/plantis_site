@@ -1159,14 +1159,16 @@ function plnt_inn_field_in_email( $rows, $order ) {
 function check_is_plants_in_cart() {
   global $plants_cat_id;
   $isPlants = false;
+  if( is_checkout( ) && ! is_wc_endpoint_url()) {
   foreach ( WC()->cart->get_cart() as $cart_item ) {
-      $product = $cart_item['data'];
-      $idCats = $product->get_category_ids();
-      
-      if (in_array($plants_cat_id, $idCats)) {
-          $isPlants = true;
-          break;
-      }	
+        $product = $cart_item['data'];
+        $idCats = $product->get_category_ids();
+        
+        if (in_array($plants_cat_id, $idCats)) {
+            $isPlants = true;
+            break;
+        }	
+    }
   }
 
   return $isPlants;
