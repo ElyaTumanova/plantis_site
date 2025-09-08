@@ -125,7 +125,7 @@ get_header(); ?>
                         frameborder="0"
                         allowfullscreen>
                 </iframe>
-                <div class="reviews-mask"></div>
+                <div class="reviews-mask" aria-hidden="true"></div>
               </div>
             </div>
             

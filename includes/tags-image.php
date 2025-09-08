@@ -5,12 +5,12 @@
 add_action('product_tag_add_form_fields', function() {
     ?>
     <div class="form-field term-image-wrap">
-        <label for="product_tag_thumb_id"><?php _e('Изображение', 'your-textdomain'); ?></label>
+        <label for="product_tag_thumb_id"><?php _e('Изображение', 'plantis-theme'); ?></label>
         <input type="hidden" id="product_tag_thumb_id" name="product_tag_thumb_id" value="">
         <div id="product_tag_thumb_preview" style="margin-bottom:10px;"></div>
-        <button type="button" class="button upload_product_tag_image"><?php _e('Загрузить/выбрать', 'your-textdomain'); ?></button>
-        <button type="button" class="button remove_product_tag_image" style="display:none;"><?php _e('Удалить', 'your-textdomain'); ?></button>
-        <p class="description"><?php _e('Будет использоваться как изображение метки (аналогично категории).', 'your-textdomain'); ?></p>
+        <button type="button" class="button upload_product_tag_image"><?php _e('Загрузить/выбрать', 'plantis-theme'); ?></button>
+        <button type="button" class="button remove_product_tag_image" style="display:none;"><?php _e('Удалить', 'plantis-theme'); ?></button>
+        <p class="description"><?php _e('Будет использоваться как изображение метки (аналогично категории).', 'plantis-theme'); ?></p>
     </div>
     <?php
 });
@@ -21,13 +21,13 @@ add_action('product_tag_edit_form_fields', function($term) {
     $image_html = $image_id ? wp_get_attachment_image($image_id, [150,150]) : '';
     ?>
     <tr class="form-field term-image-wrap">
-        <th scope="row"><label for="product_tag_thumb_id"><?php _e('Изображение', 'your-textdomain'); ?></label></th>
+        <th scope="row"><label for="product_tag_thumb_id"><?php _e('Изображение', 'plantis-theme'); ?></label></th>
         <td>
             <input type="hidden" id="product_tag_thumb_id" name="product_tag_thumb_id" value="<?php echo esc_attr($image_id); ?>">
             <div id="product_tag_thumb_preview" style="margin-bottom:10px;"><?php echo $image_html; ?></div>
-            <button type="button" class="button upload_product_tag_image"><?php _e('Загрузить/выбрать', 'your-textdomain'); ?></button>
-            <button type="button" class="button remove_product_tag_image" <?php if (!$image_id) echo 'style="display:none;"'; ?>><?php _e('Удалить', 'your-textdomain'); ?></button>
-            <p class="description"><?php _e('Будет использоваться как изображение метки (аналогично категории).', 'your-textdomain'); ?></p>
+            <button type="button" class="button upload_product_tag_image"><?php _e('Загрузить/выбрать', 'plantis-theme'); ?></button>
+            <button type="button" class="button remove_product_tag_image" <?php if (!$image_id) echo 'style="display:none;"'; ?>><?php _e('Удалить', 'plantis-theme'); ?></button>
+            <p class="description"><?php _e('Будет использоваться как изображение метки (аналогично категории).', 'plantis-theme'); ?></p>
         </td>
     </tr>
     <?php
@@ -59,8 +59,8 @@ add_action('admin_enqueue_scripts', function($hook){
                 function openFrame(){
                     if (frame) { frame.open(); return; }
                     frame = wp.media({
-                        title: '".esc_js(__('Выберите изображение', 'your-textdomain'))."',
-                        button: { text: '".esc_js(__('Использовать', 'your-textdomain'))."' },
+                        title: '".esc_js(__('Выберите изображение', 'plantis-theme'))."',
+                        button: { text: '".esc_js(__('Использовать', 'plantis-theme'))."' },
                         multiple: false
                     });
                     frame.on('select', function(){
