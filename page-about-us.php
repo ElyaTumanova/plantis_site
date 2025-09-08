@@ -123,7 +123,9 @@ get_header(); ?>
                 <iframe src="https://yandex.ru/maps-reviews-widget/237252555639?comments"
                         loading="lazy"
                         frameborder="0"
-                        allowfullscreen></iframe>
+                        allowfullscreen>
+                </iframe>
+                <div class="reviews-mask"></div>
               </div>
             </div>
             

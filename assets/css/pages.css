@@ -481,6 +481,14 @@
   }
 }
 
+.reviews-mask {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 72px;              /* подберите нужное значение */
+  background: #fff;          /* тот же цвет, что и у контейнера */
+  pointer-events: auto;      /* чтобы перекрыть клики */
+}
+
 
 /*--------------------------------------------------------------
 # Peresadka
