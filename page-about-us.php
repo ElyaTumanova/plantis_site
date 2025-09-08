@@ -8,7 +8,7 @@ get_header(); ?>
 <div class="content-area">
 
 		<header class="entry-header container">
-			<h1 class="entry-title">О нас</h1>                
+			<h1 class="entry-title about__title">О нас</h1>                
 		</header>
 		<div class="about info__content">
             <div class="about__wrap container">
