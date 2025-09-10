@@ -51,15 +51,12 @@ window.addEventListener('resize', () => {
 
 //скрываем меню при скролле
 let marginTopOffset = headerMainHeight - headerHeight;
-let headerMenu = document.querySelector('.header__menu');
 window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset;
     if(scrollTop >0){
         headerMainDiv.setAttribute('style', `margin-top:${marginTopOffset}px`);
-        headerMenu.setAttribute('style', `margin-top:${marginTopOffset}px`);
     } else{
         headerMainDiv.removeAttribute('style');
-        headerMenu.removeAttribute('style');
     }
 });
 document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
@@ -136,15 +133,15 @@ if(catalogWrap) {
     }
     
     function make_2_grid_columns () {
-        catalogGrid.classList.add ('columns-2_large');
-        catalogGrid.classList.remove ('columns-2');
+        catalogGrid.classList.add ('columns-2');
+        catalogGrid.classList.remove ('columns-2_other');
         gridButton2.disabled = true;
         gridButton3.disabled = false;
     };
     
     function make_3_grid_columns () {
-        catalogGrid.classList.remove ('columns-2_large');
-        catalogGrid.classList.add ('columns-2');
+        catalogGrid.classList.remove ('columns-2');
+        catalogGrid.classList.add ('columns-2_other');
         gridButton2.disabled = false;
         gridButton3.disabled = true;
     };
@@ -159,5 +156,3 @@ function scrollToTop () {
         behavior: 'smooth'
       })
 }
-
-console.log('hello dev4');

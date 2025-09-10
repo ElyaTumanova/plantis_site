@@ -38,10 +38,28 @@ $pricelist_link = carbon_get_theme_option('pricelist_link');
                 Скачать оптовый прайс-лист</a>
                 <!-- <button class="optom__button optom__button_pricelist button page-popup-open-btn">Получить оптовый прайс-лист</button> -->
             </div>
-            <h2 class="info__heading heading-2">Категории растений от А до Я</h2>
+            <!-- <h2 class="info__heading heading-2">Категории растений от А до Я</h2>
             <div class="optom__plants-cats-az">
-                <?php get_template_part('template-parts/plant-cats-az');?>
-            </div>
+                <div class="plants-cats-az">
+                <?php //get_template_part('template-parts/plant-cats-az');
+                    // global $plants_cat_id;
+                    // $lowest_cats = get_lowest_level_product_categories($plants_cat_id); // начиная с корня
+                    // function sortByName($a, $b) {
+                    //     return strcmp($a->name, $b->name);
+                    // }
+                    // usort($lowest_cats, "sortByName");
+                    // foreach ( $lowest_cats as $cat ) {
+                    //     //print_r($cat);
+                    //     echo $cat->name . ' (ID: ' . $cat->term_id . ')<br>';
+                    //     $thumbnail_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
+                    //     $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
+                    //     echo($thumbnail_url);
+                    // }
+
+                 
+                ?>
+                </div>
+            </div> -->
             <h2 class="info__heading heading-2">Остались вопросы?</h2>
             <p>Позвоните нам или напишите, любым удобным способом!</p>
             <?php get_template_part('template-parts/contacts-part');?>

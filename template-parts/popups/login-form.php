@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         <?php endif; ?>
 
-                <h2><?php esc_html_e( 'Login', 'woocommerce' ); ?></h2>
+                <div class = "plnt-customer-login-title"><?php esc_html_e( 'Login', 'woocommerce' ); ?></div>
 
                 <form class="woocommerce-form woocommerce-form-login login" method="post">
 

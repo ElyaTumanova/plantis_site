@@ -17,7 +17,7 @@ function hideFilterItems() {
         }
     });
     diametrFilterWrapHeight = 16 * itemsCount + 10 * (itemsCount - 1);
-    console.log(itemsCount);
+    //console.log(itemsCount);
     document.documentElement.style.setProperty('--diametrFilterWrapHeight', `${diametrFilterWrapHeight}px`);
 
     diametrFilterWrap.classList.add('hidden');
@@ -53,3 +53,23 @@ if(diametrFilter) {
 
     hideFilterItems();
 }
+
+
+//search field for plants names filter
+function setSearchFilterField() {
+    const searchInput = document.querySelector('.berocket-search-checkbox');
+    const checkboxes = document.querySelectorAll('.filter_plant_name li');
+
+    if (searchInput && checkboxes.length) {
+        searchInput.addEventListener('input', function () {
+        console.log('hi hi');
+        const query = this.value.toLowerCase();
+        checkboxes.forEach((li) => {
+            const label = li.textContent.toLowerCase();
+            li.style.display = label.includes(query) ? '' : 'none';
+        });
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', setSearchFilterField);

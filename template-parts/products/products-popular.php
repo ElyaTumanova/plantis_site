@@ -30,7 +30,7 @@ $products = new WP_Query( $args );
 if ( $products->have_posts() ) : ?>   
         <div class="product-slider-wrap popular-products-wrap">
             <h2 class="my_header__title">Популярные товары</h2>
-            <div class="product-slider-swiper popular-slider-swiper swiper">
+            <div class="popular-slider-swiper swiper">
                 <ul class="products columns-3 swiper-wrapper"> 
                     <?php while ( $products->have_posts() ) : $products->the_post(); ?>
                     <?php wc_get_template_part( 'content', 'product' ); ?>

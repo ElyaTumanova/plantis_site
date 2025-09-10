@@ -72,8 +72,8 @@ function plnt_empty_cart_btns() {
 add_filter( 'wc_empty_cart_message', 'plnt_empty_cart_message_filter' );
 
 function plnt_empty_cart_message_filter( $message ){
-
-	$message = '<img class = cart__empty-image src="https://plantis.shop/wp-content/uploads/2024/07/кактус.svg" alt="Empty cart"> Ваша корзина пока пуста.';
+    $dir = get_template_directory_uri() . '/images/empty_cart.svg';
+	$message = '<img class = cart__empty-image src="'. $dir.'" alt="Empty cart"> Ваша корзина пока пуста.';
 
 	return $message;
 }
@@ -189,23 +189,43 @@ function plnt_woocommerce_widget_shopping_cart_subtotal() {
 }
 
 /*--------------------------------------------------------------
-# CART UPDATE 
+# CART & WISHLIST UPDATE 
 --------------------------------------------------------------*/
+
+// получаем ИД товаров в wishlist для аякса
+
+function plnt_get_wish_list_ids() {
+  global $user_id;
+  $wishlist_ids = YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) );
+
+  foreach ($wishlist_ids as $wishlist_id) {
+    $wish_id = $wishlist_id['id'];
+    $wish_list_items = [];
+                
+    $wish_products = YITH_WCWL()->get_products( [ 'wishlist_id' => 'all' ] );
+    foreach ($wish_products as $wish_product) {
+      $product_id = $wish_product['prod_id'];
+      array_push($wish_list_items, $product_id);
+    }
+    return $wish_list_items_string = implode(",", $wish_list_items);
+  }
+};
+
 //обновляем мини корзину и количество в корзине с помошью ajax при загрузке страницы, чтобы решить проблему кешрования
 function plnt_update_mini_cart() {
-	echo wc_get_template( 'cart/mini-cart.php' );
+	ob_start();
+    woocommerce_mini_cart();
+    $response['mini_cart'] = ob_get_clean();
+	$response['cart_count'] = WC()->cart->get_cart_contents_count();
+	$response['wish'] = plnt_get_wish_list_ids();
+	$response['count'] = yith_wcwl_count_all_products();
+
+	wp_send_json($response);
 	die();
 }
 add_filter( 'wp_ajax_nopriv_plnt_update_mini_cart', 'plnt_update_mini_cart' );
 add_filter( 'wp_ajax_plnt_update_mini_cart', 'plnt_update_mini_cart' );
-//
 
-function plnt_update_header_cart_count() {
-	echo wp_kses_data(WC()->cart->get_cart_contents_count());
-	die();
-}
-add_filter( 'wp_ajax_nopriv_plnt_update_header_cart_count', 'plnt_update_header_cart_count' );
-add_filter( 'wp_ajax_plnt_update_header_cart_count', 'plnt_update_header_cart_count' );
 
 /*--------------------------------------------------------------
 # CART FUNCTIONS 
@@ -214,7 +234,7 @@ add_filter( 'wp_ajax_plnt_update_header_cart_count', 'plnt_update_header_cart_co
 // изменяем кнопку "в корзину" после добавления товара в корзину
 
 
-add_filter( 'woocommerce_product_single_add_to_cart_text', 'truemisha_single_product_btn_text' ); // текст для страницы самого товара
+//add_filter( 'woocommerce_product_single_add_to_cart_text', 'truemisha_single_product_btn_text' ); // текст для страницы самого товара
  
 function truemisha_single_product_btn_text( $text ) {
 	if( WC()->cart->find_product_in_cart( WC()->cart->generate_cart_id( get_the_ID() ) ) ) {
@@ -223,50 +243,3 @@ function truemisha_single_product_btn_text( $text ) {
  
 	return $text;
 }
-
-/*--------------------------------------------------------------
-# HELPERS 
---------------------------------------------------------------*/
-
- //Функция, возвращающая количество определённого товара в корзине
- function plnt_get_product_quantity_in_cart( $product_id ) {
- 
-	// по умолчанию количество товара равно 0
-	$quantity = 0;
-	// проходим циклом через все товары в корзине
-	foreach ( WC()->cart->get_cart() as $cart_item ) {
-		// можно еще проверяет ID вариаций $cart_item[ 'variation_id' ]
-		// если данный товар в цикле – наш товар, то записываем его количество в переменную
-		if( $product_id == $cart_item[ 'product_id' ] ){
-			$quantity = $cart_item[ 'quantity' ];
-			break; // и прерываем цикл
-		}
-	}
- 
-	return $quantity;
- 
-}
-
-// переписана стандартная функция wc_cart_totals_shipping_method_label, которая лежит в woocommerce/plugins/woocommerce/includes/wc-cart-functions.php, чтобы убрать : из названия метода доставки
-function plnt_wc_cart_totals_shipping_method_label( $method ) {
-	$label     = $method->get_label();
-	$has_cost  = 0 < $method->cost;
-	$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
-
-	if ( $has_cost && ! $hide_cost ) {
-		if ( WC()->cart->display_prices_including_tax() ) {
-			$label .= wc_price( $method->cost + $method->get_shipping_tax() );
-			if ( $method->get_shipping_tax() > 0 && ! wc_prices_include_tax() ) {
-				$label .= ' <small class="tax_label">' . WC()->countries->inc_tax_or_vat() . '</small>';
-			}
-		} else {
-			$label .= wc_price( $method->cost );
-			if ( $method->get_shipping_tax() > 0 && wc_prices_include_tax() ) {
-				$label .= ' <small class="tax_label">' . WC()->countries->ex_tax_or_vat() . '</small>';
-			}
-		}
-	}
-
-	return apply_filters( 'woocommerce_cart_shipping_method_full_label', $label, $method );
-}
-

@@ -1,26 +1,27 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> itemscope itemtype="https://schema.org/Store">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Schema.org -->
+    <meta itemprop="image" content="<?php echo carbon_get_theme_option('logo') ?>">
+    <meta itemprop="name" content="Интернет-магазин комнатных растений в Москве - Plantis">
+    <meta itemprop="openingHours" content="Mo-Su 10:00-20:00"/>
+    <meta itemprop="telephone" content="+7 800 201 57 90">
+    <meta itemprop="address" content="г. Москва, ул. Мещерякова, д.3. м. Тушинская">
+    <meta itemprop="priceRange" content="100 - 40000">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-	<!-- Antibot -->
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/css/jquery.fancybox.min.css" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js"></script> -->
-	<!-- /Antibot -->
-	
+	<!-- /Schema.org -->
 	<!-- Yandex.Metrika counter -->
-	<script type="text/javascript" >
+	<script async type="text/javascript" >
 	(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
 	m[i].l=1*new Date();
 	for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
 	k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
 	(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-	ym(87781741, "init", {
+	ym(103710881, "init", {
 			clickmap:true,
 			trackLinks:true,
 			accurateTrackBounce:true,
@@ -29,7 +30,7 @@
 	});
 	window.dataLayer = window.dataLayer || [];
 	</script>
-	<noscript><div><img src="https://mc.yandex.ru/watch/87781741" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<noscript><div><img src="https://mc.yandex.ru/watch/103710881" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 	<!-- /Yandex.Metrika counter -->
 	 
 	<!-- Top.Mail.Ru counter -->
@@ -51,164 +52,9 @@
 </head>
 
 <body <?php body_class(); ?>>
-<noscript><div><img src="https://mc.yandex.ru/watch/87781741" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- <noscript><div><img src="https://mc.yandex.ru/watch/103710881" style="position:absolute; left:-9999px;" alt="" /></div></noscript> -->
 <div id="page" class="site">
 
-<header id="header" class="header" role="banner">
-		<div class="header__desktop">
-			<div class="header__info">
-				<div class="header__info-wrap container">
-					<nav class="header__info-navigation" role="navigation">
-						<?php plnt_secondary_menu(); ?>
-					</nav>
-					<!-- <a href="https://t.me/plantis" class="header__telegram button" role="button" target="blank">
-						<span class="header__telegram-icon">
-							<svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M13.4223 1.02293C13.4223 1.02293 14.7544 0.503503 14.6434 1.76497C14.6064 2.28441 14.2734 4.10241 14.0144 6.06883L13.1263 11.8939C13.1263 11.8939 13.0523 12.7472 12.3862 12.8956C11.7202 13.044 10.7211 12.3762 10.5361 12.2278C10.3881 12.1165 7.7609 10.4469 6.8358 9.63063C6.57677 9.40801 6.28075 8.96278 6.8728 8.44335L10.7581 4.73316C11.2022 4.28793 11.6462 3.24907 9.79603 4.51054L4.61563 8.03525C4.61563 8.03525 4.02359 8.40626 2.91352 8.07235L0.508316 7.3303C0.508316 7.3303 -0.379756 6.77378 1.13737 6.21722C4.83767 4.47341 9.38902 2.69251 13.4223 1.02293Z" fill="white"></path>
-							</svg>
-						</span>
-						<span class="header__telegram-text">Telegram канал</span>
-					</a> -->
-					<div class="header__phones"><a href="tel:+78002015790">8 800 201 57 90</a> | <a href="tel:+79647687944">8 964 768 79 44</a></div>
-					<div class="header__working-hours">Eжедневно с 10 до 20</div>
-				</div>
-			</div>
-			<div class="header__notice-wrap">
-				<?php get_template_part( 'template-parts/header-notice' );?>
-			</div>
-
-			<div class="header__main">
-				<div class="container">
-					<div class="header__wrap">
-						<div class="logo">
-							<?php $logo = carbon_get_theme_option('logo');?>
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
-						</div><!-- .logo -->
-						<div class="header__catalog button"> 
-							<div class="header__catalog_icon">
-							<svg class="header__catalog_icon-svg" width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 1H0" stroke="white" stroke-width="1.5" stroke-miterlimit="10"></path></svg>
-							<svg class="header__catalog_icon-svg" width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 1H0" stroke="white" stroke-width="1.5" stroke-miterlimit="10"></path></svg>
-							<svg class="header__catalog_icon-svg" width="18" height="2" viewBox="0 0 18 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 1H0" stroke="white" stroke-width="1.5" stroke-miterlimit="10"></path></svg>
-							</div>
-							Каталог
-						</div>
-					</div>
-					<div class="header__description">
-						<?php $site_title = carbon_get_theme_option('site_title')?>
-						<?php if ( is_front_page()) : ?>
-							<h1 class="site-title"><?php echo $site_title ?></h1>
-						<?php else : ?>
-							<p class="site-title"><?php echo $site_title ?></p>
-						<?php endif; ?>
-					</div><!-- .description -->
-					<div class="header__wrap">
-						<div class="search-btn">
-							<?php $search_icon = carbon_get_theme_option('search_icon')?>
-							<button class="header-btn__wrap">
-								<?php echo $search_icon ?>
-								<span class="header-btn__label">Поиск</span>		
-							</button>
-						</div>
-						<div class="header__account">
-							<?php $account_icon = carbon_get_theme_option('account_icon');
-							$account_logged_icon = carbon_get_theme_option('account_logged_icon')?>
-							<?php if (!is_user_logged_in()) : 
-								if (is_account_page()) :?>
-									<a href ="<?php echo esc_url( home_url( '/my-account' ) ); ?>" class="header-btn__wrap">
-										<?php echo $account_icon ?>	
-										<span class="header-btn__label">Войти</span>		
-									</a>
-								<?php else :?> 
-									<div class="header-btn__wrap login-btn">
-										<?php echo $account_icon ?>	
-										<span class="header-btn__label">Войти</span>		
-									</div>
-								<?php endif; ?>
-							<?php else :?>
-								<a href ="<?php echo esc_url( home_url( '/my-account/orders' ) ); ?>" class="header-btn__wrap header-btn__wrap_active">
-									<?php echo $account_icon ?>		
-									<span class="header-btn__label">Войти</span>		
-								</a>
-							<?php endif; ?>
-						</div>
-						<div class="header__wishlist">
-							<?php echo do_shortcode('[yith_wcwl_items_count]')?>
-						</div>
-						
-						<div class="header-cart">
-							<?php 
-								plnt_woocommerce_cart_header(); 
-								?><div class="mini-cart__wrap"> <?php
-									plnt_woocommerce_mini_cart(); 
-								?></div>
-						</div><!-- .header-cart -->
-					</div>
-				</div>
-			</div>
-			
-			<div class="header__menu">
-				<div class="container">
-					<nav id="site-navigation" class="main-navigation" role="navigation">
-						<?php plnt_primary_menu(); ?>
-					</nav><!-- #site-navigation -->
-				</div>
-			</div>
-		</div>
-
-		<div class="header__mob container">
-			<div class="search-btn">
-				<?php $search_icon_mob = carbon_get_theme_option('search_icon_mob')?>
-				<button class="header-btn__wrap header-btn__wrap_mob">
-					<?php echo $search_icon ?>
-					<!-- <img class="header-btn__icon" src="<?php //echo $search_icon_mob ?>" alt="search" width="21" height="21">		 -->
-				</button>
-			</div>
-			<div class="logo">
-				<?php $logo = carbon_get_theme_option('logo');?>
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
-			</div><!-- .logo -->
-			<div class="header__mob-menu">
-				<!-- <?php $menu_icon_mob = carbon_get_theme_option('menu_icon_mob')?> -->
-				<button class="header-btn__wrap header-btn__wrap_mob">
-					<img class="header-btn__icon" src="<?php echo $menu_icon_mob ?>" alt="menu" width="21" height="21">		
-				</button>
-			</div>
-		</div>
-		<div class="header__notice-wrap_mob">
-			<?php get_template_part( 'template-parts/header-notice' );?>
-		</div>
-
-		<!-- <div class="header__breadcrumb container"><?php //woocommerce_breadcrumb() ?></div> -->
-		
-		<div class="header__nav-wrap container">
-			<div class="header__phone">
-				<?php $phone_icon = carbon_get_theme_option('phone_icon')?>
-					<a href="tel:+79647687944" class="header-btn__wrap">	
-						<?php echo $phone_icon ?>
-						<span class="header-btn__label">Позвонить</span>	
-					</a>
-				</a>
-			</div>
-
-			<div class="header__catalog_mob">
-				<?php $catalog_icon = carbon_get_theme_option('catalog_icon')?>
-					<div class="header-btn__wrap">	
-						<?php echo $catalog_icon ?>	
-						<span class="header-btn__label">Каталог</span>		
-					</div>
-				</a>
-			</div>
-
-			<div class="header__wishlist">
-				<?php echo do_shortcode('[yith_wcwl_items_count]')?>
-			</div>
-			
-			<div class="header-cart">
-				<?php 
-					plnt_woocommerce_cart_header_mob(); 
-				?>
-
-			</div><!-- .header-cart -->
-		</div>
-	</header><!-- #header -->
-	
+<?php
+    get_template_part( 'template-parts/heading' );
+?>

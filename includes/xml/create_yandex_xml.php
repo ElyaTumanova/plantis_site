@@ -2,294 +2,248 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+// require_once $_SERVER['DOCUMENT_ROOT'] . '/wp-load.php';
 
-function create_yandex_xml_btn () {
-	?>
-	<button class="xml_button xml_button_yandex">Создать фид для Яндекса</button>
-	<script>
-        function create_yandex_xml(){
-            <?php 
-            global $plants_cat_id;
-            global $gorshki_cat_id;
-            global $ukhod_cat_id;
-            global $treez_cat_id;
-            global $treez_poliv_cat_id;
-            global $plants_treez_cat_id;
-            global $lechuza_cat_id;
-            global $misc_cat_id;
-            global $peresadka_cat_id;
-            $yandex_xml = "<?xml version='1.0' encoding='UTF-8'?>
-            <yml_catalog date='".date('Y-m-d H:i')."'>
-            <shop>
-            <name>".get_bloginfo('name')."</name>
-            <company>ИП Туманов В.В.</company>
-            <url>".get_bloginfo('url')."</url>
-            <currencies>
-            <currency id='RUB' rate='1'/>
-            </currencies>
-            ";
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
-            $yandex_xml .="<categories>
-            ";
 
-            $cats_for_check = [$plants_cat_id, $gorshki_cat_id, $ukhod_cat_id, $treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
-            $cats_for_include = [];
-            $cats_for_include_clean = [];
-            foreach($cats_for_check as $item){
-                $args = array(
-                    'post_type'      => 'product',
-                    'posts_per_page' => -1,
-                    'post_status'    => 'publish',
-                    'meta_query' => array( 
-                        array(
-                            'key' => '_stock',
-                            'type'    => 'numeric',
-                            'value' => '0',
-                            'compare' => '>'
-                        )
-                    ),
-                    'tax_query' => array(
-                        array(
-                            'taxonomy' => 'product_cat',
-                            'field' => 'id',
-                            'terms' => [$item],
-                            'operator' => 'IN',
-                            'include_children' => 1,
-                        )
-                    )
-                );
-                $query = new WP_Query;
-                $checkproducts = $query->query($args);
-                if(count($checkproducts) != 0) {
-                    foreach ($checkproducts as $item) {
-                        $product = wc_get_product($item);
-                        $prod_cats = $product->get_category_ids();
-                        foreach ($prod_cats as $cat) {
-                            array_push($cats_for_include, $cat);
-                        }
-                    }
-                };
-            }
-            $cats_for_include_clean = array_unique($cats_for_include);
+global $plants_cat_id;
+global $gorshki_cat_id;
+global $ukhod_cat_id;
+global $treez_cat_id;
+global $treez_poliv_cat_id;
+global $plants_treez_cat_id;
+global $lechuza_cat_id;
+global $misc_cat_id;
+global $peresadka_cat_id;
+global $uncategorized_cat_id;
+$yandex_xml = "<?xml version='1.0' encoding='UTF-8'?>
+<yml_catalog date='".date('Y-m-d H:i')."'>
+<shop>
+<name>Plantis</name>
+<company>ИП Туманов В.В.</company>
+<url>https://plantis-shop.ru</url>
+<currencies>
+<currency id='RUB' rate='1'/>
+</currencies>
+";
 
-            $args=array(
-                'taxonomy'   => 'product_cat',
-                'hide_empty' => true,
-                'include' => $cats_for_include_clean,
-            );
+$yandex_xml .="<categories>
+";
 
-            $terms=get_terms($args);
-            foreach($terms as $item){
-                $yandex_xml .="<category id='".$item->term_id."'";
-            
-                if($item->parent!=0){
-                    $yandex_xml .= " parentId='".$item->parent."'";
-                }
-                $yandex_xml .= ">".htmlspecialchars(trim($item->name))."</category>
-                ";
-            }
-            $yandex_xml .= "</categories>
-            <delivery>true</delivery>
-            ";
-            //списоск опций доставки
+$categories_with_stock = [];
 
-            global $delivery_inMKAD;
-            global $delivery_outMKAD;
-            global $delivery_inMKAD_small;
-            global $delivery_outMKAD_small;
-            global $delivery_inMKAD_large;
-            global $delivery_outMKAD_large;
-        
-            global $urgent_delivery_inMKAD; 
-            global $urgent_delivery_outMKAD; 
-            global $urgent_delivery_inMKAD_small; 
-            global $urgent_delivery_outMKAD_small;
-            global $urgent_delivery_inMKAD_large; 
-            global $urgent_delivery_outMKAD_large;
-      
-            $shipping_costs = plnt_get_shiping_costs();
+$args = [
+    'taxonomy'   => 'product_cat',
+    'hide_empty' => true, // только категории с товарами
+];
 
-            $in_mkad = $shipping_costs[$delivery_inMKAD];
-            $out_mkad = $shipping_costs[$delivery_outMKAD];
+$product_cats = get_terms( $args );
 
-            $in_mkad_urg = $shipping_costs[$urgent_delivery_inMKAD];
-            $out_mkad_urg = $shipping_costs[$urgent_delivery_outMKAD];
+foreach ( $product_cats as $cat ) {
+    $products = wc_get_products([
+        'status'      => 'publish',
+        'limit'       => -1,
+        'stock_status'=> 'instock',
+        'category'    => [ $cat->slug ],
+    ]);
 
-            $in_mkad_large = $shipping_costs[$delivery_inMKAD_large];
-            $out_mkad_large = $shipping_costs[$delivery_outMKAD_large];
-
-            $in_mkad_urg_large = $shipping_costs[$urgent_delivery_inMKAD_large];
-            $out_mkad_urg_large = $shipping_costs[$urgent_delivery_outMKAD_large];
-        
-            $in_mkad_small = $shipping_costs[$delivery_inMKAD_small];
-            $out_mkad_small = $shipping_costs[$delivery_outMKAD_small];
-
-            $in_mkad_small_urg = $shipping_costs[$urgent_delivery_inMKAD_small];
-            $out_mkad_small_urg = $shipping_costs[$urgent_delivery_outMKAD_small];
-
-            $yandex_xml .= 
-            "<delivery-options>
-                <option cost='".$out_mkad."' days = '1' order-before='20'/>
-                <option cost='".$out_mkad_urg."' days = '0' order-before='18'/>
-            </delivery-options>
-
-            <pickup-options>
-                <option cost='0' days='0' order-before='18'/>
-            </pickup-options>
-            ";
-
-            // Список товаров. В примере участвует кастомный тип записи 'products', его замените на тот, который создан у вас.
-            $yandex_xml .= "<offers>
-            ";
-            $args=array(
-                'post_type'      => 'product',
-                'posts_per_page' => -1,
-                'post_status'    => 'publish',
-                'meta_query' => array( 
-                    array(
-                        'key' => '_stock',
-                        'type'    => 'numeric',
-                        'value' => '0',
-                        'compare' => '>'
-                    )
-                ),
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'product_cat',
-                        'field' => 'id',
-                        'operator' => 'NOT IN',
-                        'terms' => [$treez_poliv_cat_id, $plants_treez_cat_id, $peresadka_cat_id, $misc_cat_id],
-                        'include_children' => 1,
-                    )
-                )
-            );
-            $query = new WP_Query;
-            $allproducts = $query->query($args);
-
-            $allproductscount = count($allproducts);
-
-            foreach($allproducts as $allproduct){
-               
-                // Определяем последую категорию в дереве, к которой присвоен конкретный товар в текущем цикле. В примере участвует кастомная таксономия 'products_category', её замените на ту, которая создана у вас.
-                $lastcateg='';
-                if($categorys=get_the_terms($allproduct->ID,'product_cat')){
-                    if(count($categorys)>1){
-                        $arrtemp=array();
-                        foreach($categorys as $category){
-                            $arrtemp[]=$category->term_id;
-                        }
-                        
-                        foreach($arrtemp as $arrtempz){
-                            $termchildren=get_term_children($arrtempz,'product_cat');
-                            if($termchildren==null){
-                                $lastcateg=$arrtempz;
-                                break;
-                            }
-
-                            foreach($termchildren as $child){
-                                if(!in_array($child,$arrtemp)){
-                                    $lastcateg=$arrtempz;
-                                    break 2;
-                                }
-                            }
-                        }     
-                    }else{
-                        $lastcateg=$categorys[0]->term_id;
-                    }
-                }  
-                
-                $yandex_xml .= 
-                "<offer id='".$allproduct->ID."' available='true'>
-                <url>".get_permalink($allproduct->ID)."</url>";
-
-                // Получаем цену товара
-                $sale = get_post_meta($allproduct->ID, '_sale_price', true);
-                if ($sale>0) {
-                    $yandex_xml .= "<price>".get_post_meta($allproduct->ID,'_sale_price',true)."</price>
-                    <oldprice>".get_post_meta($allproduct->ID,'_regular_price',true)."</oldprice>";
-                } else {
-                    $yandex_xml .= "<price>".get_post_meta($allproduct->ID,'_price',true)."</price>";
-                };
-                $yandex_xml .= 
-                "<currencyId>RUR</currencyId>
-                <categoryId>".$lastcateg."</categoryId>
-                ";
-
-                // Получаем картинку товара. Если она у вас хранится в мета поле, берите из него.
-                $product_img=wp_get_attachment_image_src(get_post_thumbnail_id($allproduct->ID),'full');  
-
-                if(is_array($product_img) && $product_img[0])
-                $yandex_xml .= "<picture>".$product_img[0]."</picture>
-                ";
-
-                // Способы доставки для групногабаритного товара
-                if(get_post_meta($allproduct->ID,'_weight',true)>=11) {
-                    $yandex_xml .= "<delivery-options>
-                        <option cost='".$out_mkad_large."' days = '1' order-before='20'/>
-                        <option cost='".$out_mkad_urg_large."' days = '0' order-before='18'/>
-                    </delivery-options>
-                    ";
-                }
-
-                //Название и описание
-                $yandex_xml .= "<name>".htmlspecialchars($allproduct->post_title)."</name>
-                <description><![CDATA['".htmlspecialchars(strip_tags($allproduct->post_content))."]]></description>
-                <vendor>Plantis</vendor>";
-
-                //Параметры товара
-
-                $product_attributes = get_post_meta($allproduct->ID, '_product_attributes', true);
-                if(is_array($product_attributes)) {
-                    foreach ($product_attributes as $product_attribute) {
-                        if($product_attribute['is_visible']) {
-                            $param_name = wc_attribute_label( $product_attribute['name'] );
-                            if($product_attribute['is_taxonomy']) {
-                                $attribute_values = get_the_terms( $allproduct->ID, $product_attribute['name']);
-                                $values = [];
-                                foreach ($attribute_values as $value) {
-                                    $values[] = $value->name;
-                                };
-                                $param_value = implode(',', $values);
-                            } else {
-                                $param_value =  $product_attribute['value'];
-                            }
-                            $yandex_xml .= '<param name ="'.$param_name.'">'.$param_value.'</param>';
-                        };
-                    }
-                }
-
-                //Закрыли тег оффер
-                $yandex_xml .= "</offer>
-                ";
-            }
-            //Конец файла
-            $yandex_xml .= "</offers>
-            ";
-            $yandex_xml .= "</shop>
-            </yml_catalog>
-            ";
-
-            $fp = fopen( ABSPATH . "/wp-content/yandex-xml/feed-yml-0.xml", 'w' ); 
-            fwrite( $fp, $yandex_xml );
-            fclose( $fp );
-            ?>
-		}
-
-        const intervalIdY = setInterval(function() {
-        create_yandex_xml();
-        }, 21600000);
-
-		const elementY = document.querySelector('.xml_button_yandex');
-
-        elementY.addEventListener('click', function (event) {
-            create_yandex_xml();
-            console.log('YML фид создан');
-            let allproductscount = <?php echo $allproductscount; ?>;
-            console.log(allproductscount);
-        });
-	</script>
-	<?php
+    // Фильтрация по количеству на складе
+    foreach ( $products as $product ) {
+        if ( $product->get_stock_quantity() > 0) {
+            $categories_with_stock[] = $cat;
+            break;
+        }
+    }
 }
 
-add_action( 'wp_footer', 'create_yandex_xml_btn' );
-?>
+$args=array(
+    'taxonomy'   => 'product_cat',
+    'hide_empty' => true,
+    'include' => $categories_with_stock,
+);
+
+$terms=get_terms($args);
+foreach($terms as $item){
+    $yandex_xml .="<category id='".$item->term_id."'";
+
+    if($item->parent!=0){
+        $yandex_xml .= " parentId='".$item->parent."'";
+    }
+    $yandex_xml .= ">".htmlspecialchars(trim($item->name))."</category>
+    ";
+}
+$yandex_xml .= "</categories>
+<delivery>true</delivery>
+";
+//списоск опций доставки
+
+global $delivery_inMKAD;
+global $delivery_outMKAD;
+$urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
+$urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_large');
+$large_markup_delivery_out_mkad = carbon_get_theme_option('large_markup_delivery_out_mkad');
+$shipping_costs = plnt_get_shiping_costs();
+$in_mkad = $shipping_costs[$delivery_inMKAD];
+$out_mkad = $shipping_costs[$delivery_outMKAD];
+$out_mkad_urg = floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery));
+
+$out_mkad_large = floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad));
+$out_mkad_urg_large = floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large));
+
+$yandex_xml .= 
+"<delivery-options>
+    <option cost='".$out_mkad."' days = '1' order-before='20'/>
+    <option cost='".$out_mkad_urg."' days = '0' order-before='18'/>
+</delivery-options>
+
+<pickup-options>
+    <option cost='0' days='0' order-before='18'/>
+</pickup-options>
+";
+
+// Список товаров. В примере участвует кастомный тип записи 'products', его замените на тот, который создан у вас.
+$yandex_xml .= "<offers>
+";
+$args=array(
+    'post_type'      => 'product',
+    'posts_per_page' => -1,
+    'post_status'    => 'publish',
+    'meta_query' => array( 
+        array(
+            'key' => '_stock',
+            'type'    => 'numeric',
+            'value' => '0',
+            'compare' => '>'
+        )
+    ),
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'product_cat',
+            'field' => 'id',
+            'operator' => 'NOT IN',
+            'terms' => [$treez_poliv_cat_id, $plants_treez_cat_id, $peresadka_cat_id, $misc_cat_id, $uncategorized_cat_id],
+            'include_children' => 1,
+        )
+    )
+);
+$query = new WP_Query;
+$allproducts = $query->query($args);
+
+$allproductscount = count($allproducts);
+
+foreach($allproducts as $allproduct){
+    
+    // Определяем последую категорию в дереве, к которой присвоен конкретный товар в текущем цикле. В примере участвует кастомная таксономия 'products_category', её замените на ту, которая создана у вас.
+    $lastcateg='';
+    if($categorys=get_the_terms($allproduct->ID,'product_cat')){
+        if(count($categorys)>1){
+            $arrtemp=array();
+            foreach($categorys as $category){
+                $arrtemp[]=$category->term_id;
+            }
+            
+            foreach($arrtemp as $arrtempz){
+                $termchildren=get_term_children($arrtempz,'product_cat');
+                if($termchildren==null){
+                    $lastcateg=$arrtempz;
+                    break;
+                }
+
+                foreach($termchildren as $child){
+                    if(!in_array($child,$arrtemp)){
+                        $lastcateg=$arrtempz;
+                        break 2;
+                    }
+                }
+            }     
+        }else{
+            $lastcateg=$categorys[0]->term_id;
+        }
+    }  
+
+    $cats = get_the_terms($allproduct->ID,'product_cat');
+    $idCats = [];
+    foreach ($cats as $cat) {
+        array_push($idCats, $cat->term_id);
+    }
+    $brand = plnt_get_brand_text($idCats);
+    
+    $yandex_xml .= 
+    "<offer id='".$allproduct->ID."' available='true'>
+    <url>".get_permalink($allproduct->ID)."</url>";
+
+    // Получаем цену товара
+    $sale = get_post_meta($allproduct->ID, '_sale_price', true);
+    if ($sale>0) {
+        $yandex_xml .= "<price>".number_format(get_post_meta($allproduct->ID,'_sale_price',true), 2, '.', '')."</price>
+        <oldprice>".number_format(get_post_meta($allproduct->ID,'_regular_price',true), 2, '.', '')."</oldprice>";
+    } else {
+        $yandex_xml .= "<price>".number_format(get_post_meta($allproduct->ID,'_price',true), 2, '.', '')."</price>";
+    };
+    $yandex_xml .= 
+    "<currencyId>RUB</currencyId>
+    <categoryId>".$lastcateg."</categoryId>
+    ";
+
+    // Получаем картинку товара. Если она у вас хранится в мета поле, берите из него.
+    $product_img=wp_get_attachment_image_src(get_post_thumbnail_id($allproduct->ID),'full');  
+
+    if(is_array($product_img) && $product_img[0])
+    $yandex_xml .= "<picture>".$product_img[0]."</picture>
+    ";
+
+    // Способы доставки для групногабаритного товара
+    if(get_post_meta($allproduct->ID,'_weight',true)>=11) {
+        $yandex_xml .= "<delivery-options>
+            <option cost='".$out_mkad_large."' days = '1' order-before='20'/>
+            <option cost='".$out_mkad_urg_large."' days = '0' order-before='18'/>
+        </delivery-options>
+        ";
+    }
+    //Название и описание
+    $yandex_xml .= "<name>".htmlspecialchars($allproduct->post_title)."</name>
+    <description><![CDATA['".htmlspecialchars(strip_tags($allproduct->post_content))."]]></description>
+    <brand>".$brand."</brand>";
+
+    //Параметры товара
+
+    $product_attributes = get_post_meta($allproduct->ID, '_product_attributes', true);
+    if(is_array($product_attributes)) {
+        foreach ($product_attributes as $product_attribute) {
+            if($product_attribute['is_visible']) {
+                $param_name = wc_attribute_label( $product_attribute['name'] );
+                if($product_attribute['is_taxonomy']) {
+                    $attribute_values = get_the_terms( $allproduct->ID, $product_attribute['name']);
+                    $values = [];
+                    foreach ($attribute_values as $value) {
+                        $values[] = $value->name;
+                    };
+                    $param_value = implode(',', $values);
+                } else {
+                    $param_value =  $product_attribute['value'];
+                }
+                $yandex_xml .= '<param name ="'.$param_name.'">'.$param_value.'</param>';
+            };
+        }
+    }
+
+    //Закрыли тег оффер
+    $yandex_xml .= "</offer>
+    ";
+}
+//Конец файла
+$yandex_xml .= "</offers>
+";
+$yandex_xml .= "</shop>
+</yml_catalog>
+";
+
+$fp = fopen( ABSPATH . "/wp-content/yandex-xml/feed-yml-0.xml", 'w' ); 
+fwrite( $fp, $yandex_xml );
+fclose( $fp );
+
+
+

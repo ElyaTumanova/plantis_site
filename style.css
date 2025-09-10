@@ -7,13 +7,14 @@ Description: Тема для интернет магазина Plantis
 Version: 1.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: art-starter-theme
+Text Domain: plantis-theme
 */
 
 
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
+# Fonts
 # Normalize
 # Typography
 # Elements
@@ -34,6 +35,51 @@ Text Domain: art-starter-theme
 	## Captions
 	## Galleries
 --------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Fonts
+--------------------------------------------------------------*/
+/* @font-face {
+  font-family: 'Nunito';
+  src: url('fonts/nunito/Nunito-Light.woff') format("woff"),
+    url('fonts/nunito/Nunito-Light.woff2') format("woff2"),
+    url('fonts/nunito/Nunito-Light.svg') format("svg"),
+    url('fonts/nunito/Nunito-Light.ttf') format("ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: url('fonts/nunito/Nunito-Regular.woff2') format("woff2"),
+  url('fonts/nunito/Nunito-Regular.woff') format("woff"),
+  url('fonts/nunito/Nunito-Regular.svg') format("svg"),
+  url('fonts/nunito/Nunito-Regular.ttf') format("ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: url('fonts/nunito/Nunito-Medium.woff') format("woff"),
+    url('fonts/nunito/Nunito-Medium.woff2') format("woff2"),
+    url('fonts/nunito/Nunito-Medium.svg') format("svg"),
+    url('fonts/nunito/Nunito-Medium.ttf') format("ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: url('fonts/nunito/Nunito-SemiBold.woff') format("woff"),
+  url('fonts/nunito/Nunito-SemiBold.woff2') format("woff2"),
+    url('fonts/nunito/Nunito-SemiBold.svg') format("svg"),
+    url('fonts/nunito/Nunito-SemiBold.ttf') format("ttf");
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: url('fonts/nunito/Nunito-Bold.woff') format("woff"),
+  url('fonts/nunito/Nunito-Bold.woff2') format("woff2"),
+    url('fonts/nunito/Nunito-Bold.svg') format("svg"),
+    url('fonts/nunito/Nunito-Bold.ttf') format("ttf");
+  font-weight: 700;
+} */
 
 /*--------------------------------------------------------------
 # Normalize
@@ -460,6 +506,7 @@ input[type="email"],
 input[type="url"],
 input[type="password"],
 input[type="search"],
+input[type="tel"],
 textarea {
     color: #666;
     border: 1px solid #ccc;

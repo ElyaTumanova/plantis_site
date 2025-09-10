@@ -13,11 +13,16 @@ function showSlider(sliderNmber) {
             el.classList.remove('main__cats-nav-title_active');
         }
     });
+    // console.log('catsTerm ',catsTerm);
+    // console.log('taxonomyType ',taxonomyType);
 
 }
 
 function ajaxGetMainCatTerm() {
     jQuery( function($){
+        // console.log('ajaxGetMainCatTerm init');
+        // console.log('catsTerm ajax',catsTerm);
+        // console.log('taxonomyType ajax',taxonomyType);
         $.ajax({
             type: 'POST',
             url: woocommerce_params.ajax_url,
@@ -30,7 +35,9 @@ function ajaxGetMainCatTerm() {
             beforeSend: function(xhr){
             },
             success: function (data) {
+                // console.log('ajaxGetMainCatTerm success');
                 $('.main__cats-slider').html(data.out);
+                // console.log(data.out);
                 let slider = document.querySelectorAll(".product-slider-swiper .product");
                 slider.forEach((slide) => {
                     slide.classList.add('swiper-slide');
@@ -41,7 +48,8 @@ function ajaxGetMainCatTerm() {
     });
 
 }
-showSlider(0);
+document.addEventListener('DOMContentLoaded',()=>{showSlider(0)});
+
 navItems.forEach((el,index) => {
     el.addEventListener('click',() => showSlider(index));
 });

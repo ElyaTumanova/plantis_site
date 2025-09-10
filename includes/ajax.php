@@ -8,6 +8,7 @@ add_action('wp_ajax_nopriv_search-ajax', 'plnt_search_ajax_action_callback');
 
 function plnt_search_ajax_action_callback (){
     global $plants_treez_cat_id;
+    global $peresadka_cat_id;
     if(!wp_verify_nonce($_POST['nonce'], 'search-nonce')){
         wp_die('Данные отправлены не с того адреса');
     }
@@ -33,7 +34,7 @@ function plnt_search_ajax_action_callback (){
                 'taxonomy' => 'product_cat',
                 'field' => 'id',
                 'operator' => 'NOT IN',
-                'terms' => [$plants_treez_cat_id],
+                'terms' => [$plants_treez_cat_id, $peresadka_cat_id],
                 'include_children' => 1,
             )
         )

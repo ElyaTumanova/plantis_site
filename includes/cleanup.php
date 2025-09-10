@@ -46,6 +46,10 @@ if ( ! function_exists( 'ast_cleanup_head' ) ) {
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 		// Emoji styles.
 		remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
+    remove_action('wp_head', 'wp_oembed_add_discovery_links'); //oEmbed
+    remove_action('wp_head', 'wp_oembed_add_host_js');  //oEmbed
+
 	}
 }
 // Remove WP version from RSS.
@@ -55,4 +59,6 @@ if ( ! function_exists( 'ast_remove_rss_version' ) ) {
 	}
 }
 
+// отключаем gutenberg
+add_filter( 'use_block_editor_for_post', '__return_false' );
 

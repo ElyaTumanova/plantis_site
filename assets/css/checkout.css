@@ -20,7 +20,10 @@
     font-size: 10px;
     text-align: center;
     max-width: fit-content;
+}
 
+.backorder_date-info_late {
+  background-color: var(--stock-backorder);
 }
 
 @media (min-width: 768px) {
@@ -244,13 +247,15 @@
     display: inline;
 }
 
+
+/* DELETE */
 /*прячем цену для почты россии*/
-.woocommerce-shipping-backorder li:has([value="flat_rate:27"]) span {
+/* .woocommerce-shipping-backorder li:has([value="flat_rate:27"]) span {
     display: none;
-}
+} */
 
 /*прячем срочную доставку для предзаказа #backorder*/
-.woocommerce-shipping-backorder li:has([value="flat_rate:5"]) {
+/* .woocommerce-shipping-backorder li:has([value="flat_rate:5"]) {
     display: none;
 }
 .woocommerce-shipping-backorder li:has([value="flat_rate:6"]) {
@@ -273,7 +278,7 @@
 }
 .woocommerce-shipping-backorder li:has([value="flat_rate:12"]) {
     display: none;
-}
+} */
 
 .large_delivery_notice {
     /* background-color: var(--notice-red); */
@@ -287,17 +292,6 @@
     align-items: center;
     /* justify-content: center; */
 }
-
-/* .large_delivery_notice::before {
-    content: "";
-    background-image: url(https://plantis.shop/wp-content/uploads/2024/08/car.svg);
-    height: 25px;
-    width: 27px;
-    display: block;
-    background-repeat: no-repeat;
-    background-size: 27px 24px;
-    margin-right: 10px;
-} */
 
 .large_delivery_img {
     height: 25px;
@@ -321,7 +315,7 @@
 /* кнопка оформления заказа*/
 .woocommerce-checkout .place-order .button {
     background-color: var(--accent-color); 
-    border-radius: 5px;
+    border-radius: 30px;
     font-size: 16px;
     font-weight: 500;
     text-transform: uppercase;
@@ -376,15 +370,15 @@
     width: fit-content;
 }
 
-#billing_dontcallme_field {
+#dontcallme_field {
     margin-bottom: 30px;
 }
 
-#billing_dontcallme_field .woocommerce-input-wrapper {
+#dontcallme_field .woocommerce-input-wrapper {
     margin-top: 10px;
 }
 
-#billing_dontcallme_field .radio {
+#dontcallme_field .radio {
     padding-left: 5px;
 }
 
@@ -885,6 +879,6 @@ label.list-view {
     background-color: #e9ecef;
   }
 
-.payment_method_tinkoff img {
+.payment_method_tbank img {
     display: none;
 }

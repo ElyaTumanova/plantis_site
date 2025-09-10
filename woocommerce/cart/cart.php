@@ -118,33 +118,14 @@ do_action( 'woocommerce_before_cart' ); ?>
 								echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'woocommerce' ) . '</p>', $product_id ) );
 							}
 							?>
-							<?php 
-								$qty = $cart_item[ 'quantity' ];
-								$stock_qty = $_product->get_stock_quantity();
-								global $plants_cat_id;
-								if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
-									if (check_category($_product) === $plants_cat_id) {
-									?><p class="backorder_date-info">Доставка после <?php echo plnt_set_backorders_date();?></p>
-									<?php } else {
-										?><p class="backorder_date-info">Доставка со склада 3 - 7 дней</p>
-										<?php
-									}
-								} else {
-									?><p class="backorder_date-info">Доставка от 2-х часов</p>
-									<?php
-								}
-								if ( check_is_treez($_product) || check_is_lechuza($_product) ) {
-									?><p class="backorder_date-info">Доставка со склада 3 - 7 дней</p>
-									<?php
-								}	
-							?>
+							<?php get_backorder_info_snippet($_product, $cart_item[ 'quantity' ]);?>
 							<!-- peresadka_init -->
-							<!-- <div class="cart__peresadka">
+							<!-- <div class="cart__peresadka" data-product_id=<?php //echo $product_id;?>>
 							<?php 
-							//get_template_part('template-parts/products/products-peresadka',null,
-							//		array( // массив с параметрами
-							//			'product_id' => $product_id
-							//		)); 
+							// get_template_part('template-parts/products/products-peresadka',null,
+							// 		array( // массив с параметрами
+							// 			'product_id' => $product_id
+							// 		)); 
 							?>
 							</div> -->
 						</td>
@@ -193,7 +174,9 @@ do_action( 'woocommerce_before_cart' ); ?>
 						
 						<?php 
 						global $plants_cat_id;
+                        $qty = $cart_item[ 'quantity' ];
 						$parentCatId = check_category ($_product);
+                        $stock_qty = $_product->get_stock_quantity();
 						if ( $_product->backorders_allowed() && $qty > $stock_qty && $parentCatId === $plants_cat_id) {
 							?><td class="product-backorder-upsells"><?php
 							get_template_part('template-parts/products/products-backorder-crosssell',null,
@@ -203,6 +186,16 @@ do_action( 'woocommerce_before_cart' ); ?>
 							));
 							?></td><?php
 						}	 
+
+                        if($parentCatId === $plants_cat_id) {
+                            ?><td class="product-cart-upsells"><?php
+							get_template_part('template-parts/products/products-cart-upsells', null,
+                            array( // массив с параметрами
+									'product_id' => $product_id,
+							)
+                        );
+							?></td><?php
+                        }                        
 						?>
 						
 					</tr>

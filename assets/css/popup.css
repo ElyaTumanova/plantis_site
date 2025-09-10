@@ -12,7 +12,7 @@
     width: 100%;
     height: 100vh;
     z-index: 9999;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.5);
 }
 
 .popup-overlay {
@@ -23,7 +23,6 @@
     position: fixed;
 }
 
-/* preorder & price list popup */
 
 .page-popup__wrap {
     position: relative;
@@ -31,15 +30,61 @@
 
 .page-popup__container {
     position: absolute;
-    top: 100px;
+    top: 0;
     background: var(--background);
-    padding: 50px;
+    padding: 40px 50px;
     left: 0;
     right: var(--scrollWidth);
     /* right: 0; */
     max-width: 1300px;
     margin: auto;
+    border-radius: 40px;
+    height: var(--vh);
+    overflow-y: auto;
 }
+
+.page-popup__form .wpcf7-form input {
+    margin-top: 20px;
+    border-radius: 40px;
+    padding: 10px;
+}
+
+.page-popup__form .wpcf7-form input:focus, .page-popup__form .wpcf7-form input:focus-visible {
+    border: 1px solid #777e90;
+}
+
+.page-popup__form .wpcf7-form textarea {
+    margin-top: 10px;
+    border-radius: 30px;
+    padding: 18px;
+    height: 55px;
+}
+
+.page-popup__form .wpcf7-form textarea:focus {
+    border: 1px solid #777e90;
+}
+
+.page-popup__form .wpcf7-spinner {
+   display: none;
+}
+
+/* стили для скролла scroll */
+.page-popup__container::-webkit-scrollbar-track
+{
+	display: none;
+}
+
+.page-popup__container::-webkit-scrollbar
+{
+    display: none;
+}
+
+.page-popup__container::-webkit-scrollbar-thumb
+{
+    display: none;
+}
+
+/* preorder & price list popup */
 
 .preorder-popup .page-popup__container {
     max-width: 700px;
@@ -59,10 +104,11 @@
 
 @media (max-width: 767px) {
     .page-popup__container {
-        top: 100px;
-        padding: 15px;
+        top: 0;
+        padding: 25px 15px;
         max-width: 1300px;
         margin: auto;
+        border-radius: 0;
     }
 }
 
@@ -73,8 +119,8 @@
 
 .page-popup__close {
     position: absolute;
-    top: -30px;
-    right: -30px;
+    top: -0;
+    right: -0;
 }
 
 .page-popup__container_giftcard .page-popup__close {
@@ -204,27 +250,32 @@ input[type="search"], input[type="search"]:focus-visible {
 }
 
 /* стили для скролла scroll */
-.search-result::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: #F5F5F5;
+ /* start custom scroll */
+.search-result::-webkit-scrollbar {
+	width: 4px;
 }
 
-.search-result::-webkit-scrollbar
-{
-	width: 12px;
-	background-color: #F5F5F5;
+.search-result::-webkit-scrollbar-track {
+    background: transparent;  /* Скрыть трек */
 }
 
-.search-result::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #919191;
+.search-result::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 100, 100, 0.3); /* бледный по умолчанию */
+    border-radius: 4px;
+    transition: background-color 0.2s ease;  
 }
 
+.search-result:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.7); /* ярче при скролле */
+}
 
+.search-result::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+/* end custom scroll */
 
 .search-result__text {
     margin-top: 10px;
@@ -260,7 +311,7 @@ input[type="search"], input[type="search"]:focus-visible {
 
 .search-result__link:hover {
     text-decoration: none;
-    background-color: #F7F8FB;
+    background-color: var(--gray);
 }
 
 .search-result__title {
@@ -287,4 +338,116 @@ input[type="search"], input[type="search"]:focus-visible {
 .search-result__price {
     font-size: 30px;
     font-weight: 400;
+}
+
+/* service-popup */
+.service-popup .page-popup__container {
+    max-width: 700px;
+}
+
+.service-popup-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+/* .service-popup-list .wpcf7-list-item{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: end;
+  width: fit-content;
+}
+
+.service-popup-list input {
+  width: fit-content;
+  margin-right: 5px;
+} */
+
+/* buy one click popup */
+
+.buy-one-click-popup .page-popup__container {
+    max-width: 700px;
+}
+
+.buy-one-click-popup .dontcallme-wrap {
+    display: flex;
+}
+.buy-one-click-popup #dontcallme {
+    display: flex;
+}
+
+.buy-one-click-popup__message {
+    line-height: 1.3;
+}
+
+/* buy one click popup radio button */
+
+/* для элемента input c type="radio" */
+.buy-one-click-popup input[type=radio] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    width: fit-content;
+  }
+
+  /* для элемента span связанного с .buy-one-click-popup input[type=radio] */
+  .buy-one-click-popup input[type=radio]+span {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+  }
+
+  
+  /* создание в span псевдоэлемента  before со следующими стилями */
+  .buy-one-click-popup input[type=radio]+span::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #adb5bd;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+  }
+
+  /* стили при наведении курсора на радио */
+  .buy-one-click-popup input[type=radio]:not(:disabled):not(:checked)+span:hover::before {
+    border-color: #b3d7ff;
+  }
+
+  /* стили для активной радиокнопки (при нажатии на неё) */
+  .buy-one-click-popup input[type=radio]:not(:disabled):active+span::before {
+    background-color: #b3d7ff;
+    border-color: #b3d7ff;
+  }
+
+  /* стили для радиокнопки, находящейся в фокусе */
+  .buy-one-click-popup input[type=radio]:focus+span::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+
+  /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+  .buy-one-click-popup input[type=radio]:focus:not(:checked)+span::before {
+    border-color: #80bdff;
+  }
+
+  /* стили для радиокнопки, находящейся в состоянии checked */
+  .buy-one-click-popup input[type=radio]:checked+span::before {
+    border-color: var(--accent-color);
+    background-color: var(--accent-color);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+  }
+
+  /* стили для радиокнопки, находящейся в состоянии disabled */
+  .buy-one-click-popup input[type=radio]:disabled+span::before {
+    background-color: #e9ecef;
+  }
+
+.payment_method_tbank img {
+    display: none;
 }

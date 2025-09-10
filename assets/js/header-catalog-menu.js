@@ -1,149 +1,141 @@
-let catalogBtn = document.querySelector('.header__catalog');
 let headerCatalogWrap = document.querySelector('.header__menu');
-let majorCats = document.querySelectorAll('.menu--main .menu-node_lvl_1');
-let subMenues = document.querySelectorAll('.menu--main .sub-menu');
-let firstSubMenues = majorCats[0].querySelectorAll('.menu--onside_lvl_1');
-
-let treezCollectionsCats = document.querySelectorAll('.menu_item_treez .menu-node_lvl_3');
-let treezSubMenues = document.querySelectorAll('.menu_item_treez .menu-node_lvl_3 .sub-menu');
-
-let plantsCats = document.querySelectorAll('.menu_item_plants .menu-node_lvl_2');
-let plantsSubMenues = document.querySelectorAll('.menu_item_plants .menu-node_lvl_2 .sub-menu');
-
-let lechuzaCat = document.querySelectorAll('.menu_item_lechuza');
-let lechuzaSubMenues = document.querySelectorAll('.menu_item_lechuza .sub-menu');
-
-let gorshkiCats = document.querySelectorAll('.menu_item_gorshki .menu-node_lvl_2 > a');
+let headerMenuWrap = document.querySelector('.header__main-menu-wrap');
+let headerMenuItems = document.querySelectorAll('.header__main-menu-item');
+let subMenues = document.querySelectorAll('.header__main-submenu');
+let imageCatId = [];
+let menuLinksWithImage = headerCatalogWrap.querySelectorAll('.header__main-submenu-item_image');
+let imageLinks;
+let plantsSumbenu = headerCatalogWrap.querySelector('[data-menu = "menu_item_plants"]');
+let azPlantsBtnOpen = headerCatalogWrap.querySelector('.header__menu-azbtn_open');
+let azPlantsBtnClose = headerCatalogWrap.querySelector('.header__menu-azbtn_close');
+let timerId;
 
 function openHeaderCatalog () {
-    headerCatalogWrap.classList.add('header__menu_open');
-    catalogBtn.classList.add('header__catalog_open');
-
-    closeAllSubmenu();
-
-    firstSubMenues.forEach((el) => {
-        el.classList.add('menu--onside_show');
-    });
-    majorCats[0].classList.add('menu_active');
-
-    catalogBtn.addEventListener('click',closeHeaderCatalog,{once:true})
+    timerId = setTimeout(() => {
+        headerCatalogWrap.classList.add('header__menu_open');
+    }, 250)
 }
 
 function closeHeaderCatalog () {
+    clearTimeout(timerId);
     headerCatalogWrap.classList.remove('header__menu_open');
-    catalogBtn.classList.remove('header__catalog_open');
     closeAllSubmenu();
-    catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
 }
 
-function showSubmenu(event) {
-    let menu = event.target;
-    menu.classList.add('menu_active');
-    let menuSubMenues = menu.querySelectorAll('.sub-menu');
-    menuSubMenues.forEach((el) => {
-        el.classList.add('menu--onside_show');
-    })
-    closeTreezSubMenues ();
-    closePlantsSubMenues();
-    closeLechuzaSubMenues();
+function showSubmenu(menu) {
+    //let menu = event.target.getAttribute('data-menu');
+    let menuSubMenu = document.querySelector(`.header__main-submenu[data-menu='${menu}']`);
+    menuSubMenu.classList.add('header__main-submenu_show');
+    if(menu == 'menu_item_plants') {
+        azPlantsBtnOpen.classList.add('header__menu-azbtn_show');
+        azPlantsBtnClose.classList.remove('header__menu-azbtn_show');
+    } else if (menu == 'menu_az_palnts') {
+        azPlantsBtnOpen.classList.remove('header__menu-azbtn_show');
+        azPlantsBtnClose.classList.add('header__menu-azbtn_show');
+    } else {
+        azPlantsBtnOpen.classList.remove('header__menu-azbtn_show');
+        azPlantsBtnClose.classList.remove('header__menu-azbtn_show');
+    }
 }
 
 function closeAllSubmenu() {
-    closePlantsSubMenues();
-    closeTreezSubMenues ();
-    closeLechuzaSubMenues();
-    majorCats.forEach((el) => {
-        el.classList.remove('menu_active');
-    })
     subMenues.forEach((el) => {
-        el.classList.remove('menu--onside_show');
+        el.classList.remove('header__main-submenu_show');
     })
+    plantsSumbenu.classList.remove('header__main-submenu_show-slow');
 }
 
-function openTreezSubMenues(event) {
-    closeLechuzaSubMenues();
-    closeTreezSubMenues();    
-    let menu = event.target;
-    menu.classList.add('menu_active_lvl_2');
-    let menuSubMenues = menu.querySelectorAll('.sub-menu');
-    menuSubMenues.forEach((el) => {
-        el.classList.add('menu--onside_show');
+function getCatImagesAjax () {
+    menuLinksWithImage.forEach((link)=>{
+        imageCatId.push(link.getAttribute('data-cat_id'));
     })
+
+    const data = new URLSearchParams();
+    data.append('action', 'get_menu_cats_image');
+    data.append('cat_id', imageCatId);
+
+    fetch('/wp-admin/admin-ajax.php', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: data
+    })
+    .then(response => {
+        if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(result => {
+        console.debug('✅ AJAX success:', result);
+        if (result.success) {
+            imageLinks = result.data.image_url;
+        }
+    })
+    .catch(error => {
+        console.error('❌ AJAX error:', error);
+    })
+    .finally(() => {
+        console.debug('⚙️ AJAX complete');
+    });
 }
 
-function closeTreezSubMenues () {
-    treezCollectionsCats.forEach((el) => {
-        el.classList.remove('menu_active_lvl_2');
-    })
-    
-    treezSubMenues.forEach((el) => {
-        el.classList.remove('menu--onside_show');
-    })
+function getCatImage(event, catId) {
+    let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
+    if (imageLinks && menuImage) {
+        let imageLink = imageLinks[`id_${catId}`];
+        if(imageLink) {
+            menuImage.setAttribute('src', imageLink);
+        } else {
+            menuImage.setAttribute('src','https://plantis-shop.ru/wp-content/themes/plantis_site/images/interior.webp');
+        }
+    }
 }
 
-function openLechuzaSubMenues(event) {
-    closeTreezSubMenues();     
-    let menu = event.target;
-    menu.classList.add('menu_active_lvl_2');
-    let menuSubMenues = menu.querySelectorAll('.sub-menu');
-    menuSubMenues.forEach((el) => {
-        el.classList.add('menu--onside_show');
-    })
+function getDefaultImage(event) {
+    let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
+    menuImage.setAttribute('src','https://plantis-shop.ru/wp-content/themes/plantis_site/images/interior.webp');
 }
 
-function closeLechuzaSubMenues () {
-    lechuzaCat.forEach((el) => {
-        el.classList.remove('menu_active_lvl_2');
-    })
-    
-    lechuzaSubMenues.forEach((el) => {
-        el.classList.remove('menu--onside_show');
-    })
-}
 
-function openPlantsSubMenues(event) {
-    closePlantsSubMenues();
-    let menu = event.target;
-    menu.classList.add('menu_active_lvl_2');
-    let menuSubMenues = menu.querySelectorAll('.sub-menu');
-    menuSubMenues.forEach((el) => {
-        el.classList.add('menu--onside_show');
-    })
-}
-
-function closePlantsSubMenues() {
-    plantsCats.forEach((el) => {
-        el.classList.remove('menu_active_lvl_2');
-    })
-    plantsSubMenues.forEach((el) => {
-        el.classList.remove('menu--onside_show');
-    })
-}
-
-catalogBtn.addEventListener('click',openHeaderCatalog,{once:true});
-
-majorCats.forEach((el) => {
-    el.addEventListener('mouseenter',closeAllSubmenu);
-    el.addEventListener('mouseenter',showSubmenu);
+headerMenuItems.forEach((el) => {
+    if(el.getAttribute('data-menu')) {
+        el.addEventListener('mouseenter', openHeaderCatalog);
+        el.addEventListener('mouseenter', closeAllSubmenu);
+        el.addEventListener('mouseenter', (evt)=>showSubmenu(evt.target.getAttribute('data-menu')));
+    }
+    if(!el.getAttribute('data-menu')) {
+        el.addEventListener('mouseenter', closeHeaderCatalog);
+    }
+    el.addEventListener('click', closeHeaderCatalog);
 })
 
-treezCollectionsCats.forEach((el) => {
-    el.addEventListener('mouseenter',openTreezSubMenues);
-})
 
-lechuzaCat.forEach((el) => {
-    el.addEventListener('mouseenter',openLechuzaSubMenues);
-})
+headerMenuWrap.addEventListener('mouseleave', closeHeaderCatalog);
 
-plantsCats.forEach((el) => {
-    el.addEventListener('mouseenter',openPlantsSubMenues);
-})
-
-gorshkiCats.forEach((el) => {
-    el.addEventListener('mouseenter',closeTreezSubMenues);
-    let classList = el.parentElement.classList;
-    // console.log(classList)
-    if(!classList.contains('menu_item_lechuza')) {
-        el.addEventListener('mouseenter',closeLechuzaSubMenues);
+menuLinksWithImage.forEach((el)=>{
+    let catId = el.getAttribute('data-cat_id');
+    if(catId) {
+        el.addEventListener('mouseenter',(evt)=>{getCatImage(evt,catId)})
+        //el.addEventListener('mouseleave', (evt)=>{getDefaultImage(evt)})
     }
 })
+
+headerMenuWrap.addEventListener('mouseenter',getCatImagesAjax,{once:true});
+
+azPlantsBtnOpen.addEventListener('click',openAZPlantsList);
+azPlantsBtnClose.addEventListener('click',closeAZPlantsList);
+
+function openAZPlantsList(event) {
+    closeAllSubmenu();
+    showSubmenu('menu_az_palnts');
+}
+
+function closeAZPlantsList() {
+    closeAllSubmenu();
+    plantsSumbenu.classList.add('header__main-submenu_show-slow');
+    showSubmenu('menu_item_plants');
+}
+// console.log(headerCatalogWrap.querySelector('[data-menu = "menu_item_plants"]'));
+

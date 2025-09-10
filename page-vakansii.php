@@ -1,7 +1,10 @@
 <?php
 get_header(); ?>
 
-<div class="content-area">
+<div class="content-area content-area_sidebar">
+    <aside class='info-menu-sidebar'>  
+        <?php get_template_part('template-parts/info-pages-list');?> 
+    </aside> 
 	<main id="main" class="site-main" role="main">
 		<header class="entry-header">
 			<h1 class="entry-title">Вакансии</h1>                
@@ -47,7 +50,7 @@ get_header(); ?>
             <div class="info__accent-text-small">Важно: Тебе нравится эта вакансия, а опыта ухода за комнатными растениями нет? 
                 <br>Ничего страшного, у нас тоже когда-то его не было. Главное чтобы тебе было это интересно, а остальному мы научим.
 </div>
-        <div><?php echo do_shortcode('[content_no_cache id="59894"]') //товары в наличии //56534 //6110?></div>
+        <div><?php //echo do_shortcode('[content_no_cache id="59894"]') //товары в наличии //56534 //6110?></div>
 		</div>
 	</main><!-- #main -->
 </div><!-- #primary -->

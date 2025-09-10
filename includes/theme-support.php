@@ -6,7 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! function_exists( 'ast_theme_support' ) ) :
 	add_action( 'after_setup_theme', 'ast_theme_support' );
 	function ast_theme_support() {
-		load_theme_textdomain( 'art-starter-theme', get_template_directory() . '/languages' );
 		add_theme_support( 'html5', array(
 			'search-form',
 			'comment-form',
@@ -91,9 +90,18 @@ function show_svg_in_media_library( $response ) {
 	return $response;
 }
 
-// отключаем scrset
+// отключаем srcset
 
 add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
+
+//убираем ненужны размеры изображений
+// add_filter( 'intermediate_image_sizes', function( $sizes ) {
+//     error_log( 'Фильтр сработал, удаляем размеры: ' . implode(', ', array_keys($sizes)) );
+//     unset( $sizes['1536x1536'] ); // с WP 5.3+
+//     unset( $sizes['2048x2048'] ); // с WP 5.3+
+//     error_log( 'Фильтр сработал, остались размеры: ' . implode(', ', array_keys($sizes)) );
+//     return $sizes;
+// });
 
 
 // убираем дубли URL для категорий товаров
@@ -115,3 +123,5 @@ function check_301redirect_tax_url(){
 		exit;
 	}
 }
+
+
