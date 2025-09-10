@@ -62,7 +62,7 @@ defined( 'ABSPATH' ) || exit;
 						<?php //esc_html_e( 'Email:', 'woocommerce' ); ?>
 						<strong><?php //echo $order->get_billing_email(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></strong>
 					</li> -->
-				<?php endif; ?>
+				<?php //endif; ?>
 
 				<!-- <li class="woocommerce-order-overview__total total">
 					<?php //esc_html_e( 'Total:', 'woocommerce' ); ?>
