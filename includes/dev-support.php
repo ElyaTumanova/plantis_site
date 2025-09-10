@@ -5,6 +5,40 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
+// В functions.php темы (child-темы) или в небольшом плагине
+add_filter( 'woocommerce_get_order_item_totals', function( $totals, $order ) {
+    if ( isset( $totals['shipping'] ) ) {
+        // Узнаём выбранный метод
+        $methods = $order->get_shipping_methods();
+        if ( $methods ) {
+            $method = current( $methods ); // WC_Order_Item_Shipping
+            $method_id = $method->get_method_id(); // например: local_pickup
+            $shipping_total = (float) $order->get_shipping_total();
+            $shipping_tax   = (float) $order->get_shipping_tax();
+
+            // Для самовывоза (local_pickup) показывать 0 ₽ вместо названия
+            if ( false !== stripos( $method_id, 'local_pickup' ) ) {
+                // Если хотите просто "0 ₽"
+                $totals['shipping']['value'] = wc_price( 0, [ 'currency' => $order->get_currency() ] );
+
+                // Если хотите "Самовывоз — 0 ₽", раскомментируйте:
+                // $totals['shipping']['value'] = sprintf(
+                //     '%s — %s',
+                //     wp_kses_post( $method->get_name() ),
+                //     wc_price( 0, [ 'currency' => $order->get_currency() ] )
+                // );
+            } else {
+                // Для других методов можно принудительно показать числовую стоимость
+                // (учитывая налог, если нужно)
+                $amount = $shipping_total + $shipping_tax;
+                $totals['shipping']['value'] = wc_price( $amount, [ 'currency' => $order->get_currency() ] );
+            }
+        }
+    }
+    return $totals;
+}, 10, 2 );
+
+
 //add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
