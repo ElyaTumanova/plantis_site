@@ -105,7 +105,7 @@ function plnt_get_giftcard_popup() {
 
 add_action('yith_ywgc_show_gift_card_amount_selection', function(){
   echo ('hihih');
-},10)
+},10);
 
 // add_action('yith_gift_cards_template_before_add_to_cart_form', function (){
 //   echo '<div class="page-popup__container page-popup__container_giftcard d-none">
