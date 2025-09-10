@@ -104,11 +104,14 @@
   color: var(--text) !important;
 }
 
-.selected_button .ywgc-manual-currency-symbol {
+.ywgc-manual-currency-symbol {
+  display: none;
+}
+/* .selected_button .ywgc-manual-currency-symbol {
   color: var(--text) !important;
   top: 0;
   background-color: var(--background) !important;
-}
+} */
 
 .gift_card_template_button {
   margin-top: 5px !important;
