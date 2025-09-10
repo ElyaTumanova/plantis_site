@@ -541,6 +541,7 @@
     row-gap: 15px;
     /* justify-content: space-between; */
     max-width: 650px;
+    flex-wrap: wrap;
 }
 
 .woocommerce-thankyou-order-details li{
