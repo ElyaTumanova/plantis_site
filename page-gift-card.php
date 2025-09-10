@@ -1,6 +1,11 @@
 <?php get_header(); 
 $gcid = 15419;
-$product    = wc_get_product( $gcid );
+
+
+global $product, $post;
+
+$post    = get_post( $gcid );
+$product = wc_get_product( $gcid );
 ?>
 
 <h1>Hi this is gift card page</h1>
@@ -9,6 +14,8 @@ $product    = wc_get_product( $gcid );
 
 
 <?php 
+
+
 
 
 echo do_shortcode('[yith_ywgc_display_gift_card_form]');
