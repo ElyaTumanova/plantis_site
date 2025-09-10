@@ -11,12 +11,8 @@ $product    = wc_get_product( $gcid );
 <?php 
 
 
-wc_get_template(
-  'single-product/add-to-cart/gift-card.php',
-  '',
-  '',
-  trailingslashit( YITH_YWGC_TEMPLATES_DIR )
-);
+echo do_shortcode('[yith_ywgc_display_gift_card_form]');
+
 
 ?>
 
