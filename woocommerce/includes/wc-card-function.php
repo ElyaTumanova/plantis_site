@@ -2,6 +2,88 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+/**
+ * Хелпер: текущий товар — gift card?
+ */
+function plnt_is_gift_card( $p = null ) {
+    if ( ! $p ) {
+        global $product;
+        $p = $product;
+    }
+    return ( $p instanceof WC_Product ) && $p->is_type( 'gift-card' );
+}
+
+/**
+ * Если это gift-card, отключаем все наши кастомизации
+ * и возвращаем стандартное поведение WooCommerce.
+ */
+add_action( 'woocommerce_before_single_product', function () {
+    if ( ! is_product() ) {
+        return;
+    }
+    global $product;
+    if ( ! plnt_is_gift_card( $product ) ) {
+        return; // для обычных товаров — оставляем ваши кастомизации
+    }
+
+    /* --- 1) ВЕРНУТЬ ДЕФОЛТЫ Woo --- */
+    // уведомления
+    //add_action( 'woocommerce_before_single_product', 'woocommerce_output_all_notices', 10 );
+
+    // медиа и бейдж распродажи
+    //add_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
+    //add_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20 );
+
+    // цена и кнопка "в корзину"
+    add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+    add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
+
+    /* --- 2) СНЯТЬ ВАШИ ДОБАВЛЕНИЯ/ИЗМЕНЕНИЯ --- */
+
+    // обёртки карточки
+    remove_action( 'woocommerce_before_single_product_summary', 'plnt_card_grid_start', 5 );
+    remove_action( 'woocommerce_after_single_product_summary',  'plnt_card_grid_end', 40 );
+
+    // ваши медиа-обёртки/галерея/бейджи
+    remove_action( 'woocommerce_before_single_product_summary', 'plnt_product_image_wrap', 10 );
+    remove_filter( 'woocommerce_gallery_image_html_attachment_image_params', 'plnt_image_params', 10 );
+    remove_filter( 'woocommerce_single_product_carousel_options', 'plnt_product_gallery' );
+
+    // цена/кнопки/обёртки вместо дефолтных
+    remove_action( 'woocommerce_after_single_product_summary',  'plnt_price_wrap', 5 );
+    remove_action( 'woocommerce_single_product_summary',        'plnt_buy_one_click_btn', 50 );
+
+    // вкладки (добавление/переименование/удаление/порядок)
+    remove_filter( 'woocommerce_product_tabs', 'truemisha_new_product_tab', 25 );
+    remove_filter( 'woocommerce_product_tabs', 'truemisha_reorder_tabs', 25 );
+    remove_filter( 'woocommerce_product_tabs', 'truemisha_rename_tabs', 25 );
+    remove_filter( 'woocommerce_product_tabs', 'truemisha_remove_product_tabs', 25 );
+
+    // кнопки +/- количества
+    remove_action( 'woocommerce_before_quantity_input_field', 'truemisha_quantity_minus', 25 );
+    remove_action( 'woocommerce_after_quantity_input_field',  'truemisha_quantity_plus', 25 );
+
+    // мета (артикул) и schema.org — если не нужно на gift card
+    remove_action( 'woocommerce_single_product_summary', 'plnt_product_artikul', 40 );
+
+    // баннеры/попапы/прочее (если на gift card не нужны)
+    remove_action( 'woocommerce_after_single_product_summary', 'plnt_card_banners_wrap', 5 );
+    remove_action( 'woocommerce_after_main_content', 'plnt_get_preorder_popup', 20 );
+    remove_action( 'woocommerce_after_main_content', 'plnt_get_buy_one_сlick_popup', 20 );
+
+    // апсейлы/крёст-сейлы/хедер
+    remove_action( 'woocommerce_after_single_product_summary', 'plnt_get_upsells', 15 );
+    remove_filter( 'woocommerce_product_upsells_products_heading', 'plnt_upsells_heading' );
+    remove_action( 'woocommerce_after_single_product_summary', 'plnt_get_cross_sells', 20 );
+
+    // ссылка "назад" в категорию — если не нужна на gift card
+    remove_action( 'woocommerce_before_single_product', 'plnt_category_link', 20 );
+
+    // сообщения корзины/редиректы — вы отключали, вернём стандарт
+    remove_filter( 'woocommerce_cart_redirect_after_error', '__return_false' );
+    remove_filter( 'wc_add_to_cart_message_html', '__return_false' );
+
+}, 1 ); // приоритет 1 — раньше ваших кастомных хуков
 
 //определяем переменные
 add_action('woocommerce_before_single_product','plnt_set_constants',5);
