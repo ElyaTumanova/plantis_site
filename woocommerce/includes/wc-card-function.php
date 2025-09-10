@@ -247,7 +247,7 @@ function for_dev() {
 
 function plnt_price_wrap() {
     global $product;
-    $price = number_format($product->get_price(), 2, '.', '');
+    // $price = number_format($product->get_price(), 2, '.', ''); //to do
     ?>
     <div class="card__price-wrap">
         <div class = "card__add-to-cart-wrap" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
@@ -269,7 +269,7 @@ function plnt_price_wrap() {
             <?php 
             $availability = plnt_get_availability_text($product);
             ?><link itemprop="availability" href="http://schema.org/<?php echo $availability?>">
-            <meta itemprop="price" content="<?php echo $price?>">
+            <meta itemprop="price" content="<?php //echo $price?>">
             <meta itemprop="priceCurrency" content="RUB">
             <meta itemprop="seller" content="Plantis">
         </div>

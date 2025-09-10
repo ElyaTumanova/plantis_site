@@ -17,6 +17,7 @@ function plnt_echo_smth() {
 
   echo '<pre>';
   print_r($product);
+  echo '</pre>';
   
 }
 
