@@ -11,7 +11,12 @@ $product    = wc_get_product( $gcid );
 <?php 
 
 
-do_action( 'woocommerce_' . $product->get_type() . '_add_to_cart' );
+wc_get_template(
+  'single-product/add-to-cart/gift-card.php',
+  '',
+  '',
+  trailingslashit( YITH_YWGC_TEMPLATES_DIR )
+);
 
 ?>
 
