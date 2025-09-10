@@ -5,12 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
-add_filter( 'woocommerce_feature_enabled', function( $enabled, $feature ) {
-    if ( 'email_improvements' === $feature ) {
-        return true; // Включаем фичу
-    }
-    return $enabled;
-}, 10, 2 );
+// add_filter( 'woocommerce_feature_enabled', function( $enabled, $feature ) {
+//     if ( 'email_improvements' === $feature ) {
+//         return true; // Включаем фичу
+//     }
+//     return $enabled;
+// }, 10, 2 );
 
 //add_action( 'wp_footer', 'plnt_echo_smth' );
 
