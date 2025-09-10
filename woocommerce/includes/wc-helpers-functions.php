@@ -39,6 +39,18 @@ function check_category ($product) {
     }
 };
 
+function plnt_set_constants() {
+  global $product;
+  global $parentCatId;
+  global $isTreez;
+  global $isLechuza;
+  if($product) {
+    $parentCatId = check_category ($product);
+    $isTreez = check_is_treez($product);
+    $isLechuza = check_is_lechuza($product);
+  }
+}
+
 function check_is_treez($product) {
     global $treez_cat_id;
     global $treez_poliv_cat_id;

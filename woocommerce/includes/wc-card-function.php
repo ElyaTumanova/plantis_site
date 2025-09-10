@@ -6,17 +6,6 @@ global $product;
 if ( $product && !$product->is_type( 'gift-card' ) ) {
 //определяем переменные
 add_action('woocommerce_before_single_product','plnt_set_constants',5);
-function plnt_set_constants() {
-  global $product;
-  global $parentCatId;
-  global $isTreez;
-  global $isLechuza;
-  if($product) {
-    $parentCatId = check_category ($product);
-    $isTreez = check_is_treez($product);
-    $isLechuza = check_is_lechuza($product);
-  }
-}
 
 //обертки для card grid + schema.org
 add_action('woocommerce_before_single_product_summary','plnt_card_grid_start',5);
