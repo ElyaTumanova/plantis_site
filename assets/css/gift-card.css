@@ -101,7 +101,7 @@
   margin-top: 10px;
   height: 50px;
   border-radius: 5px !important;
-  color: var(--text);
+  color: var(--text) !important;
 }
 
 .selected_button .ywgc-manual-currency-symbol {
