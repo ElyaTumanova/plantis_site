@@ -279,8 +279,7 @@ function plnt_price_wrap() {
         ?>
     </div>
     <?php
-  }
-};
+  };
 
 function plnt_buy_one_click_btn() {
 ?> <button class="card__one-click-btn page-popup-open-btn button">Купить в один клик</button> <?php
