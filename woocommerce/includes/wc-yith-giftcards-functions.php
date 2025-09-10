@@ -111,7 +111,7 @@ add_action('yith_ywgc_show_gift_card_amount_selection', function(){
       <p>3000<span>₽</span></p>
       <p>4000<span>₽</span></p>
   </div>
-  <?php;
+  <?php
 },10);
 
 // add_action('yith_gift_cards_template_before_add_to_cart_form', function (){
