@@ -3,6 +3,6 @@ console.log(giftAmounts)
 
 giftAmounts.forEach(el => {
   el.addEventListener('click', function () {
-    console.log(el.innerHTML)
+    console.log(el.childNodes)
   })
 })
