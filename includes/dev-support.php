@@ -13,6 +13,7 @@ function plnt_echo_smth() {
 
   $product = wc_get_product( 15419 );
   echo $product->get_price_html();
+  echo $product->get_price();
 
   echo '<pre>';
   print_r($product);
