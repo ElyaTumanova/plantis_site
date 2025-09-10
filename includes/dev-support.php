@@ -9,17 +9,14 @@ add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
-    $slug = 'my-product-slug';
-    $product_id = wc_get_product_id_by_slug( $slug );
 
-    if ( $product_id ) {
-        $product = wc_get_product( $product_id );
-        echo $product->get_price_html();
 
-        echo '<pre>';
-        print_r($product);
-        echo '</pre>';
-    }
+  $product = wc_get_product( 15419 );
+  echo $product->get_price_html();
+
+  echo '<pre>';
+  print_r($product);
+  
 }
 
 
