@@ -1,6 +1,6 @@
 /* gift card page */
 
-/* .card__grid_gift-card {
+.card__grid_gift-card {
   display: flex;
   flex-direction: column;
 }
@@ -121,7 +121,7 @@
 
 .ywgc-manual-amount-error {
   float: none;
-} */
+}
 
 
 .gift__amounts {
