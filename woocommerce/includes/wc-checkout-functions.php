@@ -120,9 +120,38 @@ Contents
     //         <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a> <br>
     //         Важно! Срочную доставку "день в день" можно оформить до 18 часов.</div>';
     // }
+    
+    // хук для подарчной карты #giftcard
+
+    add_action( 'woocommerce_checkout_order_review', 'plnt_set_giftcard_hook', 25 );
+
+    function plnt_set_giftcard_hook() {
+        do_action( 'plnt_woocommerce_checkout_gift_card' );
+    }
+
+    // хук перед итоговой стоимостью
+    add_action( 'woocommerce_checkout_order_review', 'plnt_set_before_order_total_hook', 30 );
+
+    function plnt_set_before_order_total_hook() {
+        echo '<table class="plnt-before-order-total">
+        <tbody>' ;
+        do_action( 'woocommerce_review_order_before_order_total' );
+        echo '
+        </tbody>
+        </table>' ;
+    }
+
+    // добавляем фрагмент, чтобы апдейтить поле с подарочной картой
+    add_action( 'woocommerce_update_order_review_fragments', 'my_update_order_review_giftcard_fragments', 10, 1 );
+    function my_update_order_review_giftcard_fragments( $fragments ) {
+        ob_start();
+        plnt_set_before_order_total_hook();
+        $fragments[ 'table.plnt-before-order-total'] = ob_get_clean();
+        return $fragments;
+    }
 
     // итоговая стоимость
-    add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 25 );
+    add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 35 );
 
     function plnt_order_total() {
             ?>
