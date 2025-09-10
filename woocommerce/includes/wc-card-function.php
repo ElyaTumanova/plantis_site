@@ -168,23 +168,6 @@ function plnt_image_params( $image_attributes, $attachment_id, $image_size, $mai
 	return $image_attributes;
 }
 
-function truemisha_sale_badge() {
- 
-	// получаем объект текущего товара в цикле
-	global $product;
- 
-	// есле не распродажа, ничего не делаем
-	if ( ! $product->is_on_sale() ) {
-		return;
-	}
-		// рассчитываем процент скидки
-		$percentage = ( ( $product->get_regular_price() - $product->get_sale_price() ) / $product->get_regular_price() ) * 100;
- 
-	if ( $percentage > 0 ) {
-		echo '<div class="sale_badge"> - ' . round( $percentage ) . '%</div>';
-	}
-};
-
 //слайдер фото товара
 
 add_filter( 'woocommerce_single_product_carousel_options', 'plnt_product_gallery' );
@@ -334,7 +317,6 @@ add_action('woocommerce_after_single_product_summary', 'plnt_card_banners_wrap',
 function plnt_card_banners_wrap() {
     get_template_part('template-parts/card-banners'); // info cards for card
 }
-
 
 //кнопки изменения количества
 add_action( 'woocommerce_before_quantity_input_field', 'truemisha_quantity_minus', 25 );

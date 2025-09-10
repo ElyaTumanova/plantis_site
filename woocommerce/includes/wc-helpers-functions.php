@@ -51,6 +51,23 @@ function plnt_set_constants() {
   }
 }
 
+function truemisha_sale_badge() {
+ 
+	// получаем объект текущего товара в цикле
+	global $product;
+ 
+	// есле не распродажа, ничего не делаем
+	if ( ! $product->is_on_sale() ) {
+		return;
+	}
+		// рассчитываем процент скидки
+		$percentage = ( ( $product->get_regular_price() - $product->get_sale_price() ) / $product->get_regular_price() ) * 100;
+ 
+	if ( $percentage > 0 ) {
+		echo '<div class="sale_badge"> - ' . round( $percentage ) . '%</div>';
+	}
+};
+
 function check_is_treez($product) {
     global $treez_cat_id;
     global $treez_poliv_cat_id;
