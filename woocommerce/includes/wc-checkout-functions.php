@@ -1238,38 +1238,27 @@ add_filter( 'woocommerce_gateway_description', function( $description, $gateway_
     }, 10, 2 );
 
     //правим стили фотографии товара в письмах
-    add_filter( 'woocommerce_order_item_thumbnail', function( $image_html, $item) {
-        $product = $item->get_product();
+    add_filter( 'woocommerce_order_item_thumbnail', function( $image_html, $item ) {
+        $product = is_callable( [$item, 'get_product'] ) ? $item->get_product() : null;
         if ( ! $product ) {
             return $image_html;
         }
 
         $attachment_id = $product->get_image_id();
-        if ( ! $attachment_id ) {
-            return $image_html;
-        }
+        $src = $attachment_id ? wp_get_attachment_image_url( $attachment_id, 'thumbnail' ) : '';
 
-        // Берём URL миниатюры, без srcset/picture.
-        $src = wp_get_attachment_image_url( $attachment_id, 'thumbnail' );
         if ( ! $src ) {
             return $image_html;
         }
 
-        // Размер как у вас сейчас (48x48). Поменяйте на 32x32, если нужно «как в классике».
-        $width  = 48;
-        $height = 48;
-
-        // Чистый <img>: без margin-right, без "inline-block", с выравниванием по верху.
-        $alt = esc_attr( $product->get_name() );
-
+        // Возвращаем «чистый» <img> 48×48, без margin-right, с выравниванием по верху
         return sprintf(
-            '<img src="%s" alt="%s" width="%d" height="%d" style="display:block;vertical-align:top;border:0;outline:0;text-decoration:none;" />',
+            '<img src="%s" alt="%s" width="48" height="48" style="display:block;vertical-align:top;border:0;outline:0;text-decoration:none;" />',
             esc_url( $src ),
-            $alt,
-            $width,
-            $height
+            esc_attr( $product->get_name() )
         );
-    }, 2, 2 );
+    }, 999, 2 );
+
 
 
 
