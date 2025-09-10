@@ -245,7 +245,7 @@ function for_dev() {
     echo '<br>';
 }
 
-function plnt_price_wrap(){
+function plnt_price_wrap() {
     global $product;
     $price = number_format($product->get_price(), 2, '.', '');
     ?>
