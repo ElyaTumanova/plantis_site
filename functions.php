@@ -34,7 +34,7 @@ require get_template_directory() . '/includes/tags-image.php';
 /** Add constants */
 require get_template_directory() . '/includes/constants.php';
 /** Add SEO support */
-require get_template_directory() . '/includes/seo-support.php';
+//require get_template_directory() . '/includes/seo-support.php';
 /** Add New Yoast breadcrumd */
 require get_template_directory() . '/includes/yoast-breadcrumb.php';
 /** Add theme support */
