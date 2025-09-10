@@ -3,6 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 global $product;
+echo $product->get_type();
 if ( $product && !$product->is_type( 'gift-card' ) ) {
 //определяем переменные
 add_action('woocommerce_before_single_product','plnt_set_constants',5);
