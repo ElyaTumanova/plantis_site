@@ -90,6 +90,12 @@
     max-width: 700px;
 }
 
+.page-popup__container_giftcard {
+  z-index: 99990;
+  top: -60px;
+  border-radius: 30px;
+}
+
 @media (max-width: 1300px) {
     .page-popup__container {
         right: 0;
@@ -115,6 +121,11 @@
     position: absolute;
     top: -0;
     right: -0;
+}
+
+.page-popup__container_giftcard .page-popup__close {
+    top: 30px;
+    right: 30px;
 }
 
 @media (max-width: 767px) {

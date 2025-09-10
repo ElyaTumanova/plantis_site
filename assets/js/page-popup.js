@@ -11,6 +11,9 @@ let serviceButtons = document.querySelectorAll('.service-page .page-popup-open-b
 let serviceNameInput = document.querySelector('.ukhod-popup-service-name');
 
 
+//additional for gift-card
+const giftCardPopupContainer = document.querySelector('.page-popup__container_giftcard');
+
 if (pagePopup != null && pageOpenPopupBtn != null) {
     pageOpenPopupBtn.forEach(button => {
       button.addEventListener ("click", (evt)=>{
@@ -43,6 +46,8 @@ if (pagePopup != null && pageOpenPopupBtn != null) {
 function toggle_page_popup () {
     pagePopup.classList.toggle ('popup_active');
     body.classList.toggle ('fix-body');
+    //additional for gift-card
+    giftCardPopupContainer.classList.toggle('d-none');
 };
 
 
