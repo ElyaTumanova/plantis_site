@@ -40,7 +40,7 @@ if ( ! empty( $order->get_billing_first_name() ) ) {
 ?>
 </p>
 <?php if ( $email_improvements_enabled ) : ?>
-	<p><?php esc_html_e( 'Just to let you know — we’ve received your order, and it is now being processed.', 'woocommerce' ); ?></p>
+  <p><?php esc_html_e( 'Just to let you know — we’ve received your order, and it is now being processed.', 'woocommerce' ); ?></p>
 	<!-- <p><?php //esc_html_e( 'Here’s a reminder of what you’ve ordered:', 'woocommerce' ); ?></p> -->
 <?php else : ?>
 	<?php /* translators: %s: Order number */ ?>
