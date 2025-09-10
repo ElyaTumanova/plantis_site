@@ -78,7 +78,7 @@
     font-weight: 600;
 }
 
-#ywgc-manual-amount  {
+#ywgc-manual-amount, .selected_button #ywgc-manual-amount {
   background-color: var(--background) !important;
   height: auto;
   margin: 0 !important;
