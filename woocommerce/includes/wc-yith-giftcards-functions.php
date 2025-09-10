@@ -31,7 +31,7 @@ function create_gift_card_page($gift_card) {
 
 }
 
-add_action('yith_ywgc_after_gift_card_generation_save', 'create_gift_card_page');
+//add_action('yith_ywgc_after_gift_card_generation_save', 'create_gift_card_page');
 
 /*--------------------------------------------------------------
 #EMAILS
