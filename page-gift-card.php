@@ -14,13 +14,16 @@ $product = wc_get_product( $gcid );
 
 
 <?php 
+if ( $product && $product->is_type( 'gift-card' ) ) {
+    setup_postdata( $post );
 
+    // Шорткод теперь видит "текущий товар"
+    echo do_shortcode('[yith_ywgc_display_gift_card_form]');
 
-
-
-echo do_shortcode('[yith_ywgc_display_gift_card_form]');
-
-
+    wp_reset_postdata();
+} else {
+    echo '<p>Указанный продукт не является gift-card либо не найден.</p>';
+}
 ?>
 
 <?php get_footer();?>
