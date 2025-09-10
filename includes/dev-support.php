@@ -5,20 +5,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
-//add_action( 'wp_footer', 'plnt_echo_smth' );
+add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
-    $start = microtime(true);
-    $ctx = wc_get_catalog_context();
+    $slug = 'my-product-slug';
+    $product_id = wc_get_product_id_by_slug( $slug );
 
-    print_r($ctx);
-    echo ("Timing: wc_get_catalog_context = " . round((microtime(true) - $start) * 1000, 2) . " ms" );
+    if ( $product_id ) {
+        $product = wc_get_product( $product_id );
+        echo $product->get_price_html();
 
-    $thumbnail_id = get_term_meta( $ctx['term']->term_id, 'thumbnail_id', true );
-    $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
-
-    echo($thumbnail_url);
+        echo '<pre>';
+        print_r($product);
+        echo '</pre>';
+    }
 }
 
 
