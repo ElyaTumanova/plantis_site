@@ -1253,7 +1253,7 @@ add_filter( 'woocommerce_gateway_description', function( $description, $gateway_
 
         // Возвращаем «чистый» <img> 48×48, без margin-right, с выравниванием по верху
         return sprintf(
-            '<img src="%s" alt="%s" width="48" height="48" style="display:block;vertical-align:top;border:0;outline:0;text-decoration:none;" />',
+            '<img src="%s" alt="%s" width="48" height="48" style="display:block;vertical-align:top;border:0;outline:0;text-decoration:none;margin-right:0" />',
             esc_url( $src ),
             esc_attr( $product->get_name() )
         );
