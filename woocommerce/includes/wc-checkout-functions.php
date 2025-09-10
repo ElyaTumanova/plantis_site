@@ -16,7 +16,7 @@ Contents
 # Billing adress field
 # T Bank
 # Payment method
-# Thankyou page
+# Thankyou page & email
 # Additional fields for admin
 --------------------------------------------------------------*/
 
@@ -1190,7 +1190,7 @@ add_filter( 'woocommerce_gateway_description', function( $description, $gateway_
 
 
 /*--------------------------------------------------------------
-# Thankyou page
+# Thankyou page & email
 --------------------------------------------------------------*/
 
     // уведомление Спасибо за заказ
@@ -1204,6 +1204,58 @@ add_filter( 'woocommerce_gateway_description', function( $description, $gateway_
         return $thank_you_msg;
     }
 
+    // Чтобы в письмах выводилась стомость доставки 0 руб при самовывозе
+    add_filter( 'woocommerce_get_order_item_totals', function( $totals, $order ) {
+        if ( isset( $totals['shipping'] ) ) {
+            // Узнаём выбранный метод
+            $methods = $order->get_shipping_methods();
+            if ( $methods ) {
+                $method = current( $methods ); // WC_Order_Item_Shipping
+                $method_id = $method->get_method_id(); // например: local_pickup
+                $shipping_total = (float) $order->get_shipping_total();
+                $shipping_tax   = (float) $order->get_shipping_tax();
+
+                // Для самовывоза (local_pickup) показывать 0 ₽ вместо названия
+                if ( false !== stripos( $method_id, 'local_pickup' ) ) {
+                    // Если хотите просто "0 ₽"
+                    $totals['shipping']['value'] = wc_price( 0, [ 'currency' => $order->get_currency() ] );
+
+                    // Если хотите "Самовывоз — 0 ₽", раскомментируйте:
+                    // $totals['shipping']['value'] = sprintf(
+                    //     '%s — %s',
+                    //     wp_kses_post( $method->get_name() ),
+                    //     wc_price( 0, [ 'currency' => $order->get_currency() ] )
+                    // );
+                } else {
+                    // Для других методов можно принудительно показать числовую стоимость
+                    // (учитывая налог, если нужно)
+                    $amount = $shipping_total + $shipping_tax;
+                    $totals['shipping']['value'] = wc_price( $amount, [ 'currency' => $order->get_currency() ] );
+                }
+            }
+        }
+        return $totals;
+    }, 10, 2 );
+
+    //правим стили фотографии товара в письмах
+    add_filter( 'woocommerce_email_order_item_thumbnail', function( $image, $item ) {
+        $product = $item->get_product();
+        if ( ! $product ) {
+            return $image;
+        }
+
+        $src = wp_get_attachment_image_url( $product->get_image_id(), 'thumbnail' );
+
+        if ( ! $src ) {
+            return $image;
+        }
+
+        return sprintf(
+            '<img src="%s" alt="%s" width="32" height="32" style="display:block;vertical-align:top;border:none;outline:none;text-decoration:none;" />',
+            esc_url( $src ),
+            esc_attr( $product->get_name() )
+        );
+    }, 10, 2 );
 
 
 /*--------------------------------------------------------------
