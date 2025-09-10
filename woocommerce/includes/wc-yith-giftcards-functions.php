@@ -76,7 +76,7 @@ add_filter('ywgc_remove_gift_card_text', function (){
 #PRODUCT PAGE
 --------------------------------------------------------------*/
 
-add_action('woocommerce_before_single_product_summary','plnt_gift_card_info', 6);
+//add_action('woocommerce_before_single_product_summary','plnt_gift_card_info', 6);
 
 function plnt_gift_card_info() {
   global $product;

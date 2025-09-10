@@ -986,7 +986,7 @@ input[type="number"] {
 
 /* gift card page */
 
-.card__grid_gift-card {
+/* .card__grid_gift-card {
   display: flex;
   flex-direction: column;
 }
@@ -1014,8 +1014,6 @@ input[type="number"] {
 
 .gift-cards_form {
   width: 100%;
-  /* padding: 30px; */
-  /* background-color: var(--accent-back); */
   border-radius: 20px;
 }
 
@@ -1109,6 +1107,6 @@ input[type="number"] {
 
 .ywgc-manual-amount-error {
   float: none;
-}
+} */
 
 
