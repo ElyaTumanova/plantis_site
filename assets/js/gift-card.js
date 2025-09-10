@@ -4,9 +4,8 @@ console.log(giftAmounts)
 
 giftAmounts.forEach(el => {
   el.addEventListener('click', function () {
-    console.log(el.childNodes[0].textContent)
-    console.log(amountInput)
-    amountInput.value = el.childNodes.text.textContent
+    let amount = el.childNodes[0].textContent
+    amountInput.value = amount
     
   })
 
