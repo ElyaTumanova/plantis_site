@@ -1238,7 +1238,7 @@ add_filter( 'woocommerce_gateway_description', function( $description, $gateway_
     }, 10, 2 );
 
     //правим стили фотографии товара в письмах
-    add_filter( 'woocommerce_email_order_item_thumbnail', function( $image_html, $item, $args ) {
+    add_filter( 'woocommerce_order_item_thumbnail', function( $image_html, $item) {
         $product = $item->get_product();
         if ( ! $product ) {
             return $image_html;
@@ -1269,7 +1269,7 @@ add_filter( 'woocommerce_gateway_description', function( $description, $gateway_
             $width,
             $height
         );
-    }, 999, 3 );
+    }, 2, 2 );
 
 
 
