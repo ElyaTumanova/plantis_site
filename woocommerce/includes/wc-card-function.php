@@ -2,7 +2,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-
+global $product;
+if ( $product && !$product->is_type( 'gift-card' ) ) {
 //определяем переменные
 add_action('woocommerce_before_single_product','plnt_set_constants',5);
 function plnt_set_constants() {
@@ -471,4 +472,5 @@ function plnt_get_buy_one_сlick_popup () {
     if (is_product() && $product->get_stock_status() !=='outofstock') {
         wc_get_template_part('template-parts/popups/buy-one-click-popup');
     }
+}
 }
