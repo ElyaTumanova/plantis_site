@@ -11,7 +11,8 @@ add_action( 'wp_footer', 'plnt_echo_smth' );
 function plnt_echo_smth() {
 
 
-  $product = wc_get_product( 15419 );
+  //$product = wc_get_product( 15419 );
+  $product = wc_get_product( 15183 );
   echo $product->get_price_html();
   echo $product->get_price();
 
