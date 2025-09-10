@@ -32,7 +32,7 @@ function wc_remove_output_structured_data() {
 }  
 add_action( 'init', 'wc_remove_output_structured_data' );  
 
-add_action('wp_head','plnt_schema_json');
+//add_action('wp_head','plnt_schema_json'); //todo вернуть
 
 function plnt_schema_json() {
     if (is_product()) { 
