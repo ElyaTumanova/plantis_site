@@ -104,7 +104,14 @@ function plnt_get_giftcard_popup() {
 }
 
 add_action('yith_ywgc_show_gift_card_amount_selection', function(){
-  echo ('<div>hihih</div>');
+  ?> 
+  <div class="gift__amounts">
+      <p>1000<span>₽</span></p>
+      <p>2000<span>₽</span></p>
+      <p>3000<span>₽</span></p>
+      <p>4000<span>₽</span></p>
+  </div>
+  <?php;
 },10);
 
 // add_action('yith_gift_cards_template_before_add_to_cart_form', function (){

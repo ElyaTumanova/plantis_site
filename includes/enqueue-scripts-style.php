@@ -75,6 +75,8 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 
 		wp_enqueue_script( 'catalog-menu', get_template_directory_uri() .
 		                                     '/assets/js/catalog-menu.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/catalog-menu.js'), true );
+		wp_enqueue_script( 'gift-card', get_template_directory_uri() .
+		                                     '/assets/js/gift-card.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/gift-card.js'), true );
 
 		wp_enqueue_script( 'delivery-dropdown', get_template_directory_uri() .
 		                                     '/assets/js/delivery-dropdown.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/delivery-dropdown.js'), true );
@@ -111,7 +113,7 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		wp_enqueue_style( 'swiper', get_template_directory_uri() .
 									'/assets/css/swiper.css', array(), null, 'all' ); //swiper
 
-        wp_enqueue_style( 'general', get_template_directory_uri() .
+    wp_enqueue_style( 'general', get_template_directory_uri() .
 		                             '/assets/css/general.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/general.css'), 'all' );
 		wp_enqueue_style( 'main', get_template_directory_uri() .
 		                             '/assets/css/main.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/main.css'), 'all' );
