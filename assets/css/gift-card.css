@@ -1,0 +1,126 @@
+/* gift card page */
+
+/* .card__grid_gift-card {
+  display: flex;
+  flex-direction: column;
+}
+.card__grid_gift-card .card__image-wrap{
+  display: none;
+}
+.card__grid_gift-card .summary {
+  display: none;
+}
+.card__grid_gift-card .woocommerce-tabs{
+  display: none;
+}
+.card__grid_gift-card .card_banner{
+  display: none;
+}
+.card__grid_gift-card .ywgc-recipient-email{
+  display: none;
+}
+.card__grid_gift-card .quantity{
+  display: none;
+}
+.card__grid_gift-card .ywgc_delivery_info_title{
+  display: none;
+}
+
+.gift-cards_form {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.gift-cards_form input {
+  margin: 10px 0 0 !important;
+  outline: none;
+  padding: 3px 15px;
+}
+.gift-cards_form textarea {
+  margin: 10px 0 0 !important;
+  outline: none;
+  padding: 3px 15px;
+}
+
+.gift-card-content-editor {
+  display: grid;
+  grid-template-columns: repeat(2, calc(50% - 10px));
+  grid-template-rows: auto auto;
+  grid-template-areas: 
+  "recepient sender"
+  "message message";
+  row-gap: 20px;
+  column-gap: 20px;
+}
+
+.ywgc-single-recipient {
+  grid-area: recepient;
+}
+.ywgc-single-recipient .ywgc-recipient-name{
+  width: 100%;
+}
+.ywgc-send-and-delivery-container {
+  grid-area: sender;
+}
+.ywgc-send-and-delivery-container .ywgc-sender-name {
+  width: 100%;
+}
+.ywgc-message {
+  grid-area: message;
+}
+
+.gift-cards-list {
+  margin-bottom: 20px;
+}
+
+.ywgc_select_amount_title, .gift-cards_form label {
+    font-size: 18px !important;
+    font-weight: 600;
+}
+
+.selected_button #ywgc-manual-amount  {
+  background-color: var(--background) !important;
+  height: auto;
+  margin: 0 !important;
+  border: none !important;
+  outline: none;
+  color: var(--text) !important;
+}
+
+.selected_button #ywgc-manual-amount:focus, .selected_button #ywgc-manual-amount:active {
+  border: none !important;
+  outline: none;
+  color: var(--text) !important;
+}
+
+.selected_button #ywgc-manual-amount-div-wrapper  {
+  height: auto;
+}
+.gift-cards_form .selected_button  {
+  background-color: var(--background) !important;
+  margin-top: 10px;
+  height: 50px;
+  border-radius: 5px !important;
+}
+
+.selected_button .ywgc-manual-currency-symbol {
+  color: var(--text) !important;
+  top: 0;
+  background-color: var(--background) !important;
+}
+
+.gift_card_template_button {
+  margin-top: 5px !important;
+}
+.gift_card_template_button button{
+  width: 100%;
+  border: none;
+  background-color: var(--accent-color);
+  color: var(--white);
+}
+
+.ywgc-manual-amount-error {
+  float: none;
+} */
+
+

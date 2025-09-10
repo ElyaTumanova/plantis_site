@@ -138,6 +138,9 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		wp_enqueue_style( 'popup', get_template_directory_uri() .
 		                             '/assets/css/popup.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/popup.css'), 'all' );
 		
+		wp_enqueue_style( 'gift-card', get_template_directory_uri() .
+		                             '/assets/css/gift-card.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/gift-card.css'), 'all' );
+		
     
     wp_enqueue_style( 'progressive-image', get_template_directory_uri() .
 		                             '/assets/css/progressive-image.css', array(), null, 'all' ); // for lazy load
