@@ -42,7 +42,7 @@
   padding: 3px 15px;
 }
 
-.gift-card-content-editor {
+/* .gift-card-content-editor {
   display: grid;
   grid-template-columns: repeat(2, calc(50% - 10px));
   grid-template-rows: auto auto;
@@ -51,7 +51,7 @@
   "message message";
   row-gap: 20px;
   column-gap: 20px;
-}
+} */
 
 .ywgc-single-recipient {
   grid-area: recepient;
