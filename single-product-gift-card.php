@@ -4,7 +4,7 @@ $gcid = 15419;
 global $product;
 $target_id = 15419; // <-- ID нужного товара
 
-woocommerce_show_product_images();
+wc_get_template( 'single-product/product-image.php' );
 ?>
 
 
