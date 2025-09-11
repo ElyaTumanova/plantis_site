@@ -143,6 +143,10 @@
   height: fit-content;
 }
 
+.gift_card_template_button .quantity {
+  display: none;
+}
+
 .gift_card_add_to_cart_button[disabled],
 .gift_card_add_to_cart_button.is-disabled {
   opacity: .5;
@@ -153,5 +157,9 @@
 .ywgc-recipient-email, .ywgc-recipient-name {
   float: none !important;
   width: 100% !important;
+}
+
+.selected_button {
+  margin: 0 !important;
 }
 
