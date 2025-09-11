@@ -32,6 +32,8 @@ $on_sale_value = str_replace( ',', '.', $on_sale_value );
 	 */
 	do_action( 'yith_gift_cards_template_before_amounts', $product );
 
+  echo ('hohoho');
+
 	foreach ( $amounts as $value => $item ) :
 		if ( $on_sale && $on_sale_value && apply_filters( 'ywgc_show_discounted_gift_card_amounts_buttons', true ) ) {
 			$discounted_price = $item['price'] - ( ( $item['price'] * (float) $on_sale_value ) / 100 );
@@ -39,7 +41,6 @@ $on_sale_value = str_replace( ',', '.', $on_sale_value );
 		} else {
 			$value_to_display = $item['title'];
 		}
-    echo ('hohoho');
 		?>
 		<button type="button" class="ywgc-predefined-amount-button ywgc-amount-buttons" value="<?php echo esc_attr( $item['amount'] ); ?>" data-price="<?php echo esc_attr( $item['price'] ); ?>" data-wc-price="<?php echo esc_attr( wp_strip_all_tags( wc_price( $item['price'] ) ) ); ?>">
 			<?php echo wp_kses_post( apply_filters( 'yith_gift_card_select_amount_values', $value_to_display, $item ) ); ?>
