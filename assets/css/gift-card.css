@@ -154,7 +154,12 @@
   pointer-events: none;
 }
 
-.ywgc-recipient-email, .ywgc-recipient-name {
+.ywgc-recipient-email {
+  float: none !important;
+  width: 100% !important;
+}
+
+.ywgc-recipient-name {
   float: none !important;
   width: 100% !important;
 }

@@ -32,7 +32,7 @@ add_action( 'woocommerce_before_single_product', function () {
 
     // медиа и бейдж распродажи
     //add_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
-    //add_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20 );
+    add_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20 );
 
     // цена и кнопка "в корзину"
     add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
