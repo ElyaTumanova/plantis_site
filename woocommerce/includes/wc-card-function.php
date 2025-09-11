@@ -5,13 +5,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Хелпер: текущий товар — gift card?
  */
-function plnt_is_gift_card( $p = null ) {
-    if ( ! $p ) {
-        global $product;
-        $p = $product;
-    }
-    return ( $p instanceof WC_Product ) && $p->is_type( 'gift-card' );
-}
+// function plnt_is_gift_card( $p = null ) {
+//     if ( ! $p ) {
+//         global $product;
+//         $p = $product;
+//     }
+//     return ( $p instanceof WC_Product ) && $p->is_type( 'gift-card' );
+// }
 
 /**
  * Если это gift-card, отключаем все наши кастомизации

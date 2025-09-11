@@ -10,6 +10,8 @@ $target_id = 15419; // <-- ID нужного товара
 <h1>Hi this is gift card page</h1>
 
 <?php 
+
+ywgc_append_design_presets( $product );
 echo do_shortcode('[yith_ywgc_display_gift_card_form]');
 
 if ( $product && (int) $product->get_id() === $target_id ) : ?>
