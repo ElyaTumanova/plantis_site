@@ -39,7 +39,7 @@ $on_sale_value = str_replace( ',', '.', $on_sale_value );
 		} else {
 			$value_to_display = $item['title'];
 		}
-
+    echo ('hohoho');
 		?>
 		<button type="button" class="ywgc-predefined-amount-button ywgc-amount-buttons" value="<?php echo esc_attr( $item['amount'] ); ?>" data-price="<?php echo esc_attr( $item['price'] ); ?>" data-wc-price="<?php echo esc_attr( wp_strip_all_tags( wc_price( $item['price'] ) ) ); ?>">
 			<?php echo wp_kses_post( apply_filters( 'yith_gift_card_select_amount_values', $value_to_display, $item ) ); ?>
