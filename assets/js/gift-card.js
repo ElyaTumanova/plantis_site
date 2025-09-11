@@ -29,5 +29,5 @@ function updateState() {
 }
 
 updateState()
-amountInput.addEventListener('input', updateState)
+//amountInput.addEventListener('input', updateState)
 amountInput.addEventListener('blur', updateState)
