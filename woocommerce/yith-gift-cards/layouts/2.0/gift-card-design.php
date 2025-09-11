@@ -15,8 +15,6 @@ global $post;
 $cnt      = 0;
 $category = '';
 
-echo ('heheheh');
-
 if ( isset( $selected_categories_unserialized[1] ) ){
 	$category = get_term( $selected_categories_unserialized[1] )->slug;
 }
