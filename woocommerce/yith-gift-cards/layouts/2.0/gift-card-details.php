@@ -15,27 +15,23 @@ global $product;
 
 ?>
 
-<h3><?php echo wp_kses( get_option( 'ywgc_delivery_info_title', esc_html__( 'Delivery info', 'yith-woocommerce-gift-cards' ) ), 'post' ); ?></h3>
-<?php echo ('hihih')?>
+
 <div class="gift-card-content-editor step-content clearfix">
 
-	<h5 class="ywgc_recipient_info_title">
-		<?php echo wp_kses( get_option( 'ywgc_recipient_info_title', esc_html__( 'RECIPIENT INFO', 'yith-woocommerce-gift-cards' ) ), 'post' ); ?>
-	</h5>
 
 
-	<div class="ywgc-single-recipient">
-		<div class="ywgc-recipient-name clearfix">
-			<label for="ywgc-recipient-name"><?php echo wp_kses( apply_filters( 'ywgc_recipient_name_label', esc_html__( 'Name: ', 'yith-woocommerce-gift-cards' ) ), 'post' ); ?></label>
-			<input type="text" id="ywgc-recipient-name" name="ywgc-recipient-name[]" <?php echo ( $mandatory_recipient ) ? 'required' : ''; ?> class="yith_wc_gift_card_input_recipient_details">
-		</div>
 
-		<div class="ywgc-recipient-email clearfix">
-			<label for="ywgc-recipient-email"><?php echo wp_kses( apply_filters( 'ywgc_recipient_email_label', esc_html__( 'Email: ', 'yith-woocommerce-gift-cards' ) ), 'post' ); ?></label>
-			<input type="email" id="ywgc-recipient-email" name="ywgc-recipient-email[]" <?php echo ( $mandatory_recipient ) ? 'required' : ''; ?>
-			class="ywgc-recipient yith_wc_gift_card_input_recipient_details"/>
-		</div>
-	</div>
+  <div class="ywgc-recipient-name clearfix">
+    <label for="ywgc-recipient-name"><?php echo wp_kses( apply_filters( 'ywgc_recipient_name_label', esc_html__( 'Name: ', 'yith-woocommerce-gift-cards' ) ), 'post' ); ?></label>
+    <input type="text" id="ywgc-recipient-name" name="ywgc-recipient-name[]" <?php echo ( $mandatory_recipient ) ? 'required' : ''; ?> class="yith_wc_gift_card_input_recipient_details">
+  </div>
+
+  <div class="ywgc-recipient-email clearfix">
+    <label for="ywgc-recipient-email"><?php echo wp_kses( apply_filters( 'ywgc_recipient_email_label', esc_html__( 'Email: ', 'yith-woocommerce-gift-cards' ) ), 'post' ); ?></label>
+    <input type="email" id="ywgc-recipient-email" name="ywgc-recipient-email[]" <?php echo ( $mandatory_recipient ) ? 'required' : ''; ?>
+    class="ywgc-recipient yith_wc_gift_card_input_recipient_details"/>
+  </div>
+
 
 	<?php if ( ! $mandatory_recipient ) : ?>
 		<span class="ywgc-empty-recipient-note"><?php echo wp_kses( apply_filters( 'ywgc_empty_recipient_note', esc_html__( 'If empty, will be sent to your email address', 'yith-woocommerce-gift-cards' ) ), 'post' ); ?></span>
@@ -43,10 +39,6 @@ global $product;
 
 
 	<?php if ( 'yes' === get_option( 'ywgc_ask_sender_name', 'yes' ) ) : ?>
-
-		<h5 class="ywgc-sender-info-title">
-			<?php echo wp_kses( get_option( 'ywgc_sender_info_title', esc_html__( 'YOUR INFO', 'yith-woocommerce-gift-cards' ) ), 'post' ); ?>
-		</h5>
 
 		<div class="ywgc-sender-name clearfix">
 			<label for="ywgc-sender-name"><?php echo wp_kses( apply_filters( 'ywgc_sender_name_label', esc_html__( 'Name: ', 'yith-woocommerce-gift-cards' ) ), 'post' ); ?></label>
