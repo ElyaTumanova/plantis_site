@@ -1,6 +1,6 @@
 /* gift card page */
 
-.card__grid_gift-card {
+/* .card__grid_gift-card {
   display: flex;
   flex-direction: column;
 }
@@ -24,7 +24,7 @@
 }
 .card__grid_gift-card .ywgc_delivery_info_title{
   display: none;
-}
+} */
 
 .gift-cards_form {
   width: 100%;
@@ -148,5 +148,10 @@
   opacity: .5;
   cursor: not-allowed;
   pointer-events: none;
+}
+
+.ywgc-recipient-email, .ywgc-recipient-name {
+  float: none !important;
+  width: 100% !important;
 }
 

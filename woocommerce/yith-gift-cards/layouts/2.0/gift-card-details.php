@@ -21,27 +21,25 @@ global $product;
 
   <h3>Куда отправить сертификат</h3>
   <div class="ywgc-recipient-email clearfix">
-    <label for="ywgc-recipient-email"><?php echo wp_kses( apply_filters( 'ywgc_recipient_email_label', esc_html__( 'Email: ', 'yith-woocommerce-gift-cards' ) ), 'post' ); ?></label>
     <input type="email" id="ywgc-recipient-email" name="ywgc-recipient-email[]" <?php echo ( $mandatory_recipient ) ? 'required' : ''; ?>
     class="ywgc-recipient yith_wc_gift_card_input_recipient_details"
     placeholder = "Ваша почта"/>
   </div>
   <h3>Кому дарим</h3>
   <div class="ywgc-recipient-name clearfix">
-    <label for="ywgc-recipient-name"><?php echo wp_kses( apply_filters( 'ywgc_recipient_name_label', esc_html__( 'Name: ', 'yith-woocommerce-gift-cards' ) ), 'post' ); ?></label>
     <input type="text" id="ywgc-recipient-name" name="ywgc-recipient-name[]" <?php echo ( $mandatory_recipient ) ? 'required' : ''; ?> 
     class="yith_wc_gift_card_input_recipient_details"
     placeholder = "Имя получателя">
   </div>
   <div class="ywgc-message clearfix">
-		<label for="ywgc-edit-message"><?php echo wp_kses( apply_filters( 'ywgc_edit_message_label', esc_html__( 'Добавьте теплых слов: ', 'yith-woocommerce-gift-cards' ) ), 'post' ); ?></label>
-		<textarea id="ywgc-edit-message" name="ywgc-edit-message" rows="5"></textarea>
+		<textarea id="ywgc-edit-message" name="ywgc-edit-message" rows="5" placeholder = "Добавьте теплых слов"></textarea>
 	</div>
 
 	<?php if ( 'yes' === get_option( 'ywgc_ask_sender_name', 'yes' ) ) : ?>
 		<div class="ywgc-sender-name clearfix">
-			<label for="ywgc-sender-name"><?php echo wp_kses( apply_filters( 'ywgc_sender_name_label', esc_html__( 'Name: ', 'yith-woocommerce-gift-cards' ) ), 'post' ); ?></label>
-			<input type="text" name="ywgc-sender-name" id="ywgc-sender-name" value="<?php echo wp_kses( apply_filters( 'ywgc_sender_name_value', '' ), 'post' ); ?>">
+			<input type="text" name="ywgc-sender-name" id="ywgc-sender-name" 
+      value="<?php echo wp_kses( apply_filters( 'ywgc_sender_name_value', '' ), 'post' ); ?>"
+      placeholder = "Имя отправителя">
 		</div>
 	<?php endif; ?>
 	
