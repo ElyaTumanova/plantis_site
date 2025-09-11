@@ -19,7 +19,6 @@ $product_id = yit_get_product_id( $product );
 
 ?>
 <div class="gift_card_template_button variations_button">
-  <div>hohoh</div>
 	<?php if ( ! $product->is_sold_individually() ) : ?>
 		<?php woocommerce_quantity_input( array( 'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( $_POST['quantity'] ) : 1 ) ); //phpcs:ignore --nonce and wc function?>
 	<?php endif; ?>

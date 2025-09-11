@@ -59,12 +59,11 @@ endif;
  */
 if ( $manual_amount ) :
 	?>
-  <div>hohoh</div>
-	<button class="ywgc-manual-amount-container ywgc-manual-amount ywgc-amount-buttons">
+
 		<div id="ywgc-manual-amount-div-wrapper">
 			<span class="ywgc-manual-currency-symbol left ywgc-hidden"><?php echo esc_html( get_woocommerce_currency_symbol() ); ?></span><input id="ywgc-manual-amount" name="ywgc-manual-amount" class="ywgc-manual-amount" type="number" inputmode="numeric" placeholder="<?php echo esc_html( apply_filters( 'yith_wcgc_manual_amount_option_text', esc_html_x( 'Custom', 'Placeholder for the custom amount input in the gift card product page', 'yith-woocommerce-gift-cards' ) ) ); ?>"><span class="ywgc-manual-currency-symbol right ywgc-hidden"><?php echo esc_html( get_woocommerce_currency_symbol() ); ?></span>
 		</div>
-	</button>
+
 	<?php
 endif;
 
