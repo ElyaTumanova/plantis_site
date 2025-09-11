@@ -2,6 +2,7 @@ let giftAmounts = document.querySelectorAll('.gift__amounts p')
 let amountInput = document.querySelector('#ywgc-manual-amount')
 let submitBtn = document.querySelector('.gift_card_add_to_cart_button')
 let minAmount = 1500
+let maxAmount = 30000
 
 if (amountInput) {
   amountInput.setAttribute('placeholder', minAmount)
@@ -19,7 +20,7 @@ giftAmounts.forEach(el => {
 function isValidAmount(v) {
     if (v == null) return false;
     let n = Number(v);
-    return Number.isFinite(n) && n > 0;
+    return Number.isFinite(n) && n >= 1500 & n<=30000;
   }
 
 function updateState() {
