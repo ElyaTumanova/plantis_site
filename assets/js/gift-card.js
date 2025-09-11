@@ -1,12 +1,33 @@
 let giftAmounts = document.querySelectorAll('.gift__amounts p')
 let amountInput = document.querySelector('#ywgc-manual-amount')
-console.log(giftAmounts)
+let submitBtn = document.querySelector('.gift_card_add_to_cart_button')
+let minAmount = 1500
+
+if (amountInput) {
+  amountInput.setAttribute('placeholder', minAmount)
+}
 
 giftAmounts.forEach(el => {
   el.addEventListener('click', function () {
     let amount = el.childNodes[0].textContent
     amountInput.value = amount
-    
+    updateState()
   })
-
 })
+
+// validation
+function isValidAmount(v) {
+    if (v == null) return false;
+    let n = Number(v);
+    return Number.isFinite(n) && n > 0;
+  }
+
+function updateState() {
+  let ok = isValidAmount(amountInput.value)
+  submitBtn.disabled = !ok
+  submitBtn.classList.toggle('is-disabled', !ok)
+}
+
+updateState()
+amountInput.addEventListener('input', updateState)
+amountInput.addEventListener('blur', updateState)

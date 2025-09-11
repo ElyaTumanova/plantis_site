@@ -140,5 +140,13 @@
   border: 1px solid black;
   border-radius: 20px;
   cursor: pointer;
+  height: fit-content;
+}
+
+.gift_card_add_to_cart_button[disabled],
+.gift_card_add_to_cart_button.is-disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
