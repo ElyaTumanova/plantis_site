@@ -175,8 +175,6 @@ function plnt_no_filter_css() {
   wp_dequeue_style('woocommerce-product-filters-style');
   wp_dequeue_style('woocommerce-product-filter-price-slider-style');
   wp_dequeue_style('brands-styles');
-  wp_dequeue_style('ywgc-frontend');
-  wp_dequeue_style('ywgc-product-layout-2');
 
   if( !is_checkout()) {
     wp_dequeue_style('suggestions');
@@ -209,4 +207,6 @@ function remove_my_style_stylesheet() {
 	wp_deregister_style( 'wp-block-library' ); 
 	wp_deregister_style( 'woocommerce-product-filter-removable-chips-style' ); 
 	wp_deregister_style( 'woocommerce-product-gallery-style' ); 
+	wp_deregister_style( 'ywgc-frontend' ); 
+	wp_deregister_style( 'ywgc-product-layout-2' ); 
 }
