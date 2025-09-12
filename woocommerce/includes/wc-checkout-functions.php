@@ -1175,8 +1175,8 @@ function check_is_plants_in_cart() {
 }
 
 add_filter( 'woocommerce_gateway_title', function( $title, $gateway_id ) {
-    if ( $gateway_id === 'cod' & !check_is_plants_in_cart()) {
-        $title = 'Оплату после подтверждения заказа менеджером'; // 👉 своё название
+    if ( ! is_admin() && $gateway_id === 'cod' && !check_is_plants_in_cart()) {
+      $title = 'Оплата после подтверждения заказа менеджером';
     }
     return $title;
 }, 10, 2 );
