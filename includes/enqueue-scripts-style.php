@@ -176,6 +176,7 @@ function plnt_no_filter_css() {
   wp_dequeue_style('woocommerce-product-filter-price-slider-style');
   wp_dequeue_style('brands-styles');
   wp_dequeue_style('ywgc-frontend');
+  wp_dequeue_style('ywgc-product-layout-2');
 
   if( !is_checkout()) {
     wp_dequeue_style('suggestions');
