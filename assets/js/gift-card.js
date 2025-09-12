@@ -48,6 +48,34 @@ updateState()
 //amountInput.addEventListener('input', updateState)
 amountInput.addEventListener('blur', updateState)
 
+//input field control
+amountInput.addEventListener('input', function () {
+  // Удаляем все символы, кроме цифр
+  let val = this.value.replace(/\D/g, '');
+
+  // Преобразуем строку в число
+  let num = parseInt(val, 10);
+
+  // Если поле пустое, просто оставляем пустым
+  if (val === '') {
+    this.value = '';
+    return;
+  }
+
+  // Если меньше минимального — сразу ставим минимум
+  if (num < minAmount) {
+    num = minAmount;
+  }
+
+  // Если больше максимального — ставим максимум
+  if (num > maxAmount) {
+    num = maxAmount;
+  }
+
+  // Обновляем поле отфильтрованным и ограниченным значением
+  this.value = num;
+});
+
 let buyNowInput = document.createElement('input');
 buyNowInput.type = 'hidden';
 buyNowInput.name = 'buy_now';

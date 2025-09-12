@@ -140,9 +140,9 @@ add_filter('ywgc_add_to_cart_button_text', function (){
   return 'В корзину';
 });
 
-add_filter('ywgc_minimal_amount_error_text',function (){
-  return 'Минимальная стоимость подарочного сертификата';
-});
+// add_filter('ywgc_minimal_amount_error_text',function (){
+//   return 'Минимальная стоимость подарочного сертификата';
+// });
 
 add_filter( 'woocommerce_add_to_cart_redirect', function( $url ) {
     if ( isset( $_REQUEST['buy_now'] ) && '1' === $_REQUEST['buy_now'] ) {
