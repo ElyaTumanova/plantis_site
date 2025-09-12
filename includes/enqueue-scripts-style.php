@@ -207,6 +207,4 @@ function remove_my_style_stylesheet() {
 	wp_deregister_style( 'wp-block-library' ); 
 	wp_deregister_style( 'woocommerce-product-filter-removable-chips-style' ); 
 	wp_deregister_style( 'woocommerce-product-gallery-style' ); 
-	wp_deregister_style( 'ywgc-frontend' ); 
-	wp_deregister_style( 'ywgc-product-layout-2' ); 
 }

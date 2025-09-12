@@ -28,7 +28,9 @@
 
 .gift-cards_form {
   width: 100%;
+  max-width: 860px;
   border-radius: 20px;
+  margin-top: 50px;
 }
 
 .gift-cards_form input {
@@ -164,7 +166,4 @@
   width: 100% !important;
 }
 
-.selected_button {
-  margin: 0 !important;
-}
 
