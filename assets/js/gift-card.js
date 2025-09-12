@@ -8,8 +8,10 @@ let minAmount = 1500
 let maxAmount = 30000
 
 //for dev
-document.querySelector('#ywgc-recipient-email').innerHTML = 'elyagi@mail.ru'
-document.querySelector('#ywgc-recipient-name').innerHTML = 'Ela'
+let mail = document.querySelector('#ywgc-recipient-email')
+mail.innerHTML = 'elyagi@mail.ru'
+let nameF = document.querySelector('#ywgc-recipient-name')
+nameF.innerHTML = 'Ela'
 
 
 
