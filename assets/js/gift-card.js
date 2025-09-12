@@ -9,9 +9,9 @@ let maxAmount = 30000
 
 //for dev
 let mail = document.querySelector('#ywgc-recipient-email')
-mail.innerHTML = 'elyagi@mail.ru'
+mail.value = 'elyagi@mail.ru'
 let nameF = document.querySelector('#ywgc-recipient-name')
-nameF.innerHTML = 'Ela'
+nameF.value = 'Ela'
 
 
 
