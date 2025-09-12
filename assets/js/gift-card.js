@@ -43,6 +43,11 @@ function updateState() {
 
 function submitGiftForm() {
   console.log('form submitted')
+  let buyNowInput = document.createElement('input');
+  buyNowInput.type = 'hidden';
+  buyNowInput.name = 'buy_now';
+  buyNowInput.value = '1';
+  gifForm.appendChild(hidden);
   gifForm.submit()
 }
 
