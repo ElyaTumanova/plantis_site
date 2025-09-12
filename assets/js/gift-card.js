@@ -47,7 +47,7 @@ function submitGiftForm() {
   buyNowInput.type = 'hidden';
   buyNowInput.name = 'buy_now';
   buyNowInput.value = '1';
-  gifForm.appendChild(hidden);
+  gifForm.appendChild(buyNowInput);
   gifForm.submit()
 }
 
