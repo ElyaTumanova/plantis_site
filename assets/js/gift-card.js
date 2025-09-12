@@ -51,15 +51,34 @@ amountInput.addEventListener('blur', updateState)
 
 //input field control
 amountInput.addEventListener('input', function () {
-    // Убираем все символы кроме цифр
-    let val = this.value.replace(/\D/g, '');
+    // Удаляем все нецифровые символы
+    let digits = this.value.replace(/\D/g, '');
 
-    if (val !== '') {
-      let num = parseInt(val, 10);
-      if (num > maxAmount) num = maxAmount;  // ограничение сверху
-      this.value = num;
+    if (digits !== '') {
+      let num = parseInt(digits, 10);
+
+      // Если число больше максимального, запрещаем добавление лишней цифры
+      if (num > maxAmount) {
+        // возвращаем старое значение (до ввода этой цифры)
+        this.value = this.dataset.prevValue || maxAmount;
+        return;
+      }
+
+      // Обновляем значение и запоминаем как «предыдущее валидное»
+      this.value = digits;
+      this.dataset.prevValue = this.value;
     } else {
-      this.value = ''; // позволяем временно очистить поле
+      // Позволяем временно очистить поле
+      this.value = '';
+      this.dataset.prevValue = '';
+    }
+  });
+
+  // После потери фокуса проверяем минимум
+  amountInput.addEventListener('blur', function () {
+    if (this.value === '' || parseInt(this.value, 10) < minAmount) {
+      this.value = minAmount;
+      this.dataset.prevValue = this.value;
     }
   });
 
