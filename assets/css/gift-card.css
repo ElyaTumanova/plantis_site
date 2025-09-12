@@ -30,6 +30,7 @@
   width: 100%;
   max-width: 860px;
   border-radius: 20px;
+  margin: auto;
   margin-top: 50px;
 }
 
@@ -81,7 +82,8 @@
 }
 
 #ywgc-manual-amount, .selected_button #ywgc-manual-amount {
-  background-color: var(--background) !important;
+  width: 100%;
+  background-color: transparent !important;
   height: auto;
   margin: 0 !important;
   border: none !important;
