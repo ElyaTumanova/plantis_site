@@ -7,6 +7,13 @@ console.log(gifForm)
 let minAmount = 1500
 let maxAmount = 30000
 
+//for dev
+document.querySelector('#ywgc-recipient-email').innerHTML = 'elyagi@mail.ru'
+document.querySelector('#ywgc-recipient-name').innerHTML = 'Ela'
+
+
+
+
 if (amountInput) {
   amountInput.setAttribute('placeholder', minAmount)
 }
