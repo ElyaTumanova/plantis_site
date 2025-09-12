@@ -1,7 +1,7 @@
 let giftAmounts = document.querySelectorAll('.gift__amounts p')
 let amountInput = document.querySelector('#ywgc-manual-amount')
-// let submitBtn = document.querySelector('.gift_card_add_to_cart_button')
-let submitBtn = document.querySelector('.gift-card-button')
+let submitBtn = document.querySelector('.gift_card_add_to_cart_button')
+//let submitBtn = document.querySelector('.gift-card-button')
 let gifForm = document.querySelector('.gift-cards_form')
 console.log(gifForm)
 let minAmount = 1500
@@ -53,6 +53,13 @@ function submitGiftForm() {
 
 updateState()
 //amountInput.addEventListener('input', updateState)
+
+let buyNowInput = document.createElement('input');
+buyNowInput.type = 'hidden';
+buyNowInput.name = 'buy_now';
+buyNowInput.value = '1';
+gifForm.appendChild(buyNowInput);
+
 amountInput.addEventListener('blur', updateState)
 
-submitBtn.addEventListener('click',submitGiftForm)
+//submitBtn.addEventListener('click',submitGiftForm)
