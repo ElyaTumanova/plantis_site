@@ -14,19 +14,13 @@ wc_get_template( 'single-product/product-image.php' );
 
 echo do_shortcode('[yith_ywgc_display_gift_card_form]');
 
-if ( $product && (int) $product->get_id() === $target_id ) : ?>
-    <a class="button alt buy-now"
-       href="<?php echo esc_url( add_query_arg(
-           array(
-               'add-to-cart' => $product->get_id(),
-               'quantity'    => 1,
-               'buy_now'     => 1, // флажок для редиректа (см. шаг 4)
-           ),
-           wc_get_page_permalink( 'checkout' ) // сразу на страницу Оформления
-       ) ); ?>">
-        Купить сейчас
-    </a>
-<?php endif; 
-?>
+if ( $product && (int) $product->get_id() === $gcid ) : ?>
+  <button type="button" class="gift-card-button alt buy-now">
+    <?php
+      // Базовая подпись на случай, если JS недоступен:
+      echo esc_html__( 'Купить сейчас', 'your-textdomain' );
+    ?>
+  </button>
+<?php endif; ?>
 
 <?php get_footer();?>
