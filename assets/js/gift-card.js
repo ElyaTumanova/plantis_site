@@ -5,6 +5,7 @@ let gifForm = document.querySelector('.gift-cards_form')
 
 let minAmount = 1500
 let maxAmount = 30000
+amountInput.value = minAmount;
 
 //for dev
 let mail = document.querySelector('#ywgc-recipient-email')
@@ -50,31 +51,25 @@ amountInput.addEventListener('blur', updateState)
 
 //input field control
 amountInput.addEventListener('input', function () {
-  // Удаляем все символы, кроме цифр
-  let val = this.value.replace(/\D/g, '');
+    // Убираем все символы кроме цифр
+    let val = this.value.replace(/\D/g, '');
 
-  // Преобразуем строку в число
-  let num = parseInt(val, 10);
+    if (val !== '') {
+      let num = parseInt(val, 10);
+      if (num > maxAmount) num = maxAmount;  // ограничение сверху
+      this.value = num;
+    } else {
+      this.value = ''; // позволяем временно очистить поле
+    }
+  });
 
-  // Если поле пустое, просто оставляем пустым
-  if (val === '') {
-    this.value = '';
-    return;
-  }
-
-  // Если меньше минимального — сразу ставим минимум
-  if (num < minAmount) {
-    num = minAmount;
-  }
-
-  // Если больше максимального — ставим максимум
-  if (num > maxAmount) {
-    num = maxAmount;
-  }
-
-  // Обновляем поле отфильтрованным и ограниченным значением
-  this.value = num;
-});
+  // После завершения ввода — проверяем минимум
+  amountInput.addEventListener('blur', function () {
+    let val = this.value;
+    if (val === '' || parseInt(val, 10) < minAmount) {
+      this.value = minAmount;
+    }
+  });
 
 let buyNowInput = document.createElement('input');
 buyNowInput.type = 'hidden';
