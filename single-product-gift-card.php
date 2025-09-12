@@ -4,7 +4,7 @@ $gcid = 15419;
 global $product;
 $target_id = 15419; // <-- ID нужного товара
 
-wc_get_template( 'single-product/product-image.php' );
+//wc_get_template( 'single-product/product-image.php' );
 ?>
 
 

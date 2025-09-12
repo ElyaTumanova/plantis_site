@@ -3,6 +3,7 @@ let amountInput = document.querySelector('#ywgc-manual-amount')
 // let submitBtn = document.querySelector('.gift_card_add_to_cart_button')
 let submitBtn = document.querySelector('.gift-card-button')
 let gifForm = document.querySelector('.gift-cards_form')
+console.log(gifForm)
 let minAmount = 1500
 let maxAmount = 30000
 
@@ -33,7 +34,7 @@ function updateState() {
 
 function submitGiftForm() {
   console.log('form submitted')
-  gifForm.requestSubmit()
+  gifForm.submit()
 }
 
 updateState()
