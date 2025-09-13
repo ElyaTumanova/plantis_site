@@ -38,9 +38,9 @@ global $product;
 
 	<?php if ( 'yes' === get_option( 'ywgc_ask_sender_name', 'yes' ) ) : ?>
 		<div class="ywgc-sender-name clearfix">
+      <label for="ywgc-sender-name">Имя отправителя</label>
 			<input type="text" name="ywgc-sender-name" id="ywgc-sender-name" 
-      value="<?php echo wp_kses( apply_filters( 'ywgc_sender_name_value', '' ), 'post' ); ?>"
-      placeholder = "Имя отправителя">
+      value="<?php echo wp_kses( apply_filters( 'ywgc_sender_name_value', '' ), 'post' ); ?>">
 		</div>
 	<?php endif; ?>
 	
