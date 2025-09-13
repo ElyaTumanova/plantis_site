@@ -12,8 +12,10 @@ amountInput.setAttribute('value',minAmount)
 //for dev
 let mail = document.querySelector('#ywgc-recipient-email')
 mail.value = 'elyagi@mail.ru'
+mail.classList.add('focus')
 let nameF = document.querySelector('#ywgc-recipient-name')
 nameF.value = 'Ela'
+nameF.classList.add(focus)
 //
 
 allInputs.forEach(el=>{
@@ -23,6 +25,8 @@ allInputs.forEach(el=>{
   el.addEventListener('blur', function(){
     if(el.value != '') {
       el.classList.add('focus')
+    } else {
+      el.classList.remove('focus')
     }
   })
 })

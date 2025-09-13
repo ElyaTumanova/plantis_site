@@ -182,19 +182,20 @@
 .gift-cards_form label {
   pointer-events: none;
   position: absolute;
-  top: 1.25rem;
-  left: 1rem;
-  font-size: 1rem;
+  top: 26px;
+  left: 13px;
+  font-size: 16px;
   display: block;
-  padding: 0 .25rem;
-  background-color: #fff;
+  padding: 0 4px;
+  background-color: var(--background-color);
   transition: all .3s ease;
+  color: var(--gray-text);
 }
 
 .ywgc-recipient-email:has(.focus) label {
-  top: 1.25rem;
-  left: 1rem;
-  color: red;
+  top: 0px;
+  left: 13px;
+  color: var(--text);
 }
 /* обнуление стандартного вывода ошибок */
 .ywgc-red-border {
