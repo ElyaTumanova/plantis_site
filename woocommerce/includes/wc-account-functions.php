@@ -61,9 +61,9 @@ function remove_wc_password_meter() {
 // 	return $redirect;
  
 // }
-
+//remove_action( 'woocommerce_before_customer_login_form', 'woocommerce_output_all_notices', 10 );
 //add_action('plnt_header_notice','woocommerce_output_all_notices', 10 );
-add_action('plnt_notices','woocommerce_output_all_notices', 10 );
+add_action('plnt_notices','woocommerce_output_all_notices', 5 );
 
 
 // перевод текстов
