@@ -177,8 +177,9 @@
   width: 100% !important;
 }
 
-.ywgc-edit-message:placeholder {
+#ywgc-edit-message:placeholder {
   font-size: 12px;
+  margin-top: 5px;
 }
 
 /* обнуление стандартного вывода ошибок */
