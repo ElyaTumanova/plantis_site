@@ -34,17 +34,6 @@
   margin-top: 50px;
 }
 
-.gift-cards_form input {
-  margin: 10px 0 0 !important;
-  outline: none;
-  padding: 3px 15px;
-}
-.gift-cards_form textarea {
-  margin: 10px 0 0 !important;
-  outline: none;
-  padding: 3px 15px;
-}
-
 /* .gift-card-content-editor {
   display: grid;
   grid-template-columns: repeat(2, calc(50% - 10px));
@@ -164,10 +153,14 @@
 /* form fields */
 
 .gift-cards_form input, .gift-cards_form textarea {
-  border-radius: 40px;
+  border-radius: 40px !important;
+  padding: 3px 25px;
+  outline: none;
+  margin: 10px 0 0 !important;
 }
 .gift-cards_form input:focus, .gift-cards_form textarea:focus {
   border-color: var(--text);
+  padding: 3px 25px;
 }
 
 .ywgc-recipient-email {
@@ -195,7 +188,7 @@
   pointer-events: none;
   position: absolute;
   top: 26px;
-  left: 13px;
+  left: 19px;
   font-size: 16px;
   display: block;
   padding: 0 4px;
@@ -206,7 +199,7 @@
 
 .ywgc-recipient-email:has(.focus) label {
   top: 0px;
-  left: 13px;
+  left: 25px;
   color: var(--text);
 }
 .ywgc-recipient-name:has(.focus) label {
