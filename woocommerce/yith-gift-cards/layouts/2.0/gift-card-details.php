@@ -21,18 +21,19 @@ global $product;
 
   <h3>Куда отправить сертификат</h3>
   <div class="ywgc-recipient-email clearfix">
+    <label for="ywgc-recipient-email">Ваша почта</label>
     <input type="email" id="ywgc-recipient-email" name="ywgc-recipient-email[]" <?php echo ( $mandatory_recipient ) ? 'required' : ''; ?>
-    class="ywgc-recipient yith_wc_gift_card_input_recipient_details"
-    placeholder = "Ваша почта"/>
+    class="ywgc-recipient yith_wc_gift_card_input_recipient_details"/>
   </div>
   <h3>Кому дарим</h3>
   <div class="ywgc-recipient-name clearfix">
+    <label for="ywgc-recipient-name">Имя получателя</label>
     <input type="text" id="ywgc-recipient-name" name="ywgc-recipient-name[]" <?php echo ( $mandatory_recipient ) ? 'required' : ''; ?> 
-    class="yith_wc_gift_card_input_recipient_details"
-    placeholder = "Имя получателя">
+    class="yith_wc_gift_card_input_recipient_details">
   </div>
   <div class="ywgc-message clearfix">
-		<textarea id="ywgc-edit-message" name="ywgc-edit-message" rows="5" placeholder = "Добавьте теплых слов"></textarea>
+    <label for="ywgc-edit-message">Добавьте теплых слов</label>
+		<textarea id="ywgc-edit-message" name="ywgc-edit-message" rows="5"></textarea>
 	</div>
 
 	<?php if ( 'yes' === get_option( 'ywgc_ask_sender_name', 'yes' ) ) : ?>

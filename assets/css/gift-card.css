@@ -177,12 +177,6 @@
   width: 100% !important;
 }
 
-#ywgc-edit-message:placeholder {
-  font-size: 12px;
-  margin-top: 5px;
-  color: red !important;
-}
-
 /* обнуление стандартного вывода ошибок */
 .ywgc-red-border {
   border: 1px solid var(--yith-ywgc-border-color) !important;
