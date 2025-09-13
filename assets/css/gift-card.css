@@ -68,9 +68,7 @@
 .ywgc-send-and-delivery-container .ywgc-sender-name {
   width: 100%;
 }
-.ywgc-message {
-  grid-area: message;
-}
+
 
 .gift-cards-list {
   margin-bottom: 20px;
@@ -166,7 +164,7 @@
   cursor: not-allowed;
   pointer-events: none;
 }
-
+/* form fields */
 .ywgc-recipient-email {
   float: none !important;
   width: 100% !important;
@@ -176,6 +174,10 @@
 .ywgc-recipient-name {
   float: none !important;
   width: 100% !important;
+  position: relative;
+}
+
+.ywgc-message {
   position: relative;
 }
 
@@ -193,6 +195,21 @@
 }
 
 .ywgc-recipient-email:has(.focus) label {
+  top: 0px;
+  left: 13px;
+  color: var(--text);
+}
+.ywgc-recipient-name:has(.focus) label {
+  top: 0px;
+  left: 13px;
+  color: var(--text);
+}
+.ywgc-sender-name:has(.focus) label {
+  top: 0px;
+  left: 13px;
+  color: var(--text);
+}
+.ywgc-message:has(.focus) label {
   top: 0px;
   left: 13px;
   color: var(--text);

@@ -3,6 +3,7 @@ let amountInput = document.querySelector('#ywgc-manual-amount')
 let submitBtn = document.querySelector('.gift_card_add_to_cart_button')
 let gifForm = document.querySelector('.gift-cards_form')
 let allInputs = gifForm.querySelectorAll('input')
+let allTextareas = gifForm.querySelectorAll('textarea')
 
 let minAmount = 1500
 let maxAmount = 30000
@@ -18,6 +19,7 @@ nameF.value = 'Ela'
 nameF.classList.add(focus)
 //
 
+// для упралвения label
 allInputs.forEach(el=>{
   el.addEventListener('focus', function(){
     el.classList.add('focus')
@@ -30,6 +32,19 @@ allInputs.forEach(el=>{
     }
   })
 })
+allTextareas.forEach(el=>{
+  el.addEventListener('focus', function(){
+    el.classList.add('focus')
+  })
+  el.addEventListener('blur', function(){
+    if(el.value != '') {
+      el.classList.add('focus')
+    } else {
+      el.classList.remove('focus')
+    }
+  })
+})
+
 giftAmounts.forEach(el => {
   el.addEventListener('click', function () {
     let amount = el.childNodes[0].textContent
