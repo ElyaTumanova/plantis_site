@@ -180,6 +180,7 @@
 #ywgc-edit-message:placeholder {
   font-size: 12px;
   margin-top: 5px;
+  color: red !important;
 }
 
 /* обнуление стандартного вывода ошибок */
