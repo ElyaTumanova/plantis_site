@@ -188,6 +188,11 @@
   background-color: #fff;
   transition: all .3s ease;
 }
+
+.ywgc-recipient-email:has(input:focus) label {
+  top: 1.25rem;
+  left: 1rem;
+}
 /* обнуление стандартного вывода ошибок */
 .ywgc-red-border {
   border: 1px solid var(--yith-ywgc-border-color) !important;
