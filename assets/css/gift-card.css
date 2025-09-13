@@ -80,9 +80,11 @@
   color: var(--text) !important;
 }
 
-.ywgc_select_amount_title, .gift-cards_form label {
+.gift-cards_form h3 {
     font-size: 18px !important;
     font-weight: 600;
+    margin-block: 10px;
+    
 }
 
 #ywgc-manual-amount, .selected_button #ywgc-manual-amount {
@@ -173,6 +175,10 @@
 .ywgc-recipient-name {
   float: none !important;
   width: 100% !important;
+}
+
+.ywgc-edit-message:placeholder {
+  font-size: 12px;
 }
 
 /* обнуление стандартного вывода ошибок */
