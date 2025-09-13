@@ -129,10 +129,12 @@
 
 .ywgc-manual-amount-error {
   float: none;
+  display: none;
 }
 
-.gift-cards-list {
-  font-size: 14px !important;
+.gift-cards-list .gift__note {
+  font-size: 14px;
+  margin-top: 10px;
 }
 
 .gift__amounts, .gift__amounts.selected_button {
