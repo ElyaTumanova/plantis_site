@@ -80,6 +80,7 @@ amountInput.addEventListener('input', function () {
       this.value = minAmount;
       this.dataset.prevValue = this.value;
       this.focus();
+      this.dispatchEvent(new MouseEvent('click',     { bubbles: true }));
     }
   });
 
