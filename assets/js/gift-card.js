@@ -87,8 +87,6 @@ amountInput.addEventListener('input', function () {
     let val = this.value;
     if (val === '' || parseInt(val, 10) < minAmount) {
       this.value = minAmount;
-      this.focus();
-      this.dispatchEvent(new MouseEvent('click',     { bubbles: true }));
     }
   });
 
