@@ -91,10 +91,22 @@ if(mobOpenBtn) {
 
 // уведомление об ошибке
 
-if (loginPopup) {
-    const errorMsg = loginPopup.querySelector('.woocommerce-error'); 
+const noticePopup = document.querySelector('.notices-popup');
+function toggle_notice_popup () {
+    noticePopup.classList.toggle ('popup_active');
+    body.classList.toggle ('fix-body');
+};
+if (noticePopup) {
+    const errorMsg = noticePopup.querySelector('.woocommerce-error'); 
     
     if (errorMsg) {
-        toggle_login_popup ();
+        toggle_notice_popup ();
     };
 }
+// if (loginPopup) {
+//     const errorMsg = loginPopup.querySelector('.woocommerce-error'); 
+    
+//     if (errorMsg) {
+//         toggle_login_popup ();
+//     };
+// }
