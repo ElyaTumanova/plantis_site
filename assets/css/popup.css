@@ -446,6 +446,20 @@ input[type="search"], input[type="search"]:focus-visible {
 
 .notices-popup__close {
     position: absolute;
-    top: -0;
-    right: -0;
+    top: 15px;
+    right: 30px;
+}
+
+.notices-popup__container {
+    position: absolute;
+    top: 20%;
+    background: var(--background);
+    padding: 40px 50px;
+    left: 0;
+    right: var(--scrollWidth);
+    max-width: 670px;
+    margin: auto;
+    border-radius: 40px;
+    overflow-y: auto;
+    height: fit-content;
 }
