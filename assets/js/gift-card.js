@@ -2,6 +2,7 @@ let giftAmounts = document.querySelectorAll('.gift__amounts p')
 let amountInput = document.querySelector('#ywgc-manual-amount')
 let submitBtn = document.querySelector('.gift_card_add_to_cart_button')
 let gifForm = document.querySelector('.gift-cards_form')
+let allInputs = gifForm.querySelectorAll('input')
 
 let minAmount = 1500
 let maxAmount = 30000
@@ -13,8 +14,13 @@ let mail = document.querySelector('#ywgc-recipient-email')
 mail.value = 'elyagi@mail.ru'
 let nameF = document.querySelector('#ywgc-recipient-name')
 nameF.value = 'Ela'
+//
 
-
+allInputs.forEach(el=>{
+  el.addEventListener('focus', function(){
+    el.classList.add('focus')
+  })
+})
 giftAmounts.forEach(el => {
   el.addEventListener('click', function () {
     let amount = el.childNodes[0].textContent
