@@ -80,17 +80,18 @@ amountInput.addEventListener('input', function () {
     if (this.value === '' || parseInt(this.value, 10) < minAmount) {
       this.value = minAmount;
       this.dataset.prevValue = this.value;
+      updateState()
     }
   });
 
   // После завершения ввода — проверяем минимум
-  amountInput.addEventListener('blur', function () {
-    let val = this.value;
-    if (val === '' || parseInt(val, 10) < minAmount) {
-      this.value = minAmount;
-      updateState()
-    }
-  });
+  // amountInput.addEventListener('blur', function () {
+  //   let val = this.value;
+  //   if (val === '' || parseInt(val, 10) < minAmount) {
+  //     this.value = minAmount;
+  //     updateState()
+  //   }
+  // });
 
 let buyNowInput = document.createElement('input');
 buyNowInput.type = 'hidden';
