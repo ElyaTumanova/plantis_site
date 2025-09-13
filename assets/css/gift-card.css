@@ -170,11 +170,13 @@
 .ywgc-recipient-email {
   float: none !important;
   width: 100% !important;
+  position: relative;
 }
 
 .ywgc-recipient-name {
   float: none !important;
   width: 100% !important;
+  position: relative;
 }
 
 .gift-cards_form label {
@@ -192,6 +194,7 @@
 .ywgc-recipient-email:has(input:focus) label {
   top: 1.25rem;
   left: 1rem;
+  color: red;
 }
 /* обнуление стандартного вывода ошибок */
 .ywgc-red-border {
