@@ -107,8 +107,7 @@
 
 .ywgc-manual-amount-container .selected_button, .ywgc-manual-amount-container  {
   background-color: transparent !important;
-  margin-top: 10px;
-  height: 50px;
+  height: 50px !important;
   border-radius: 5px !important;
   color: var(--text) !important;
 }
@@ -131,8 +130,6 @@
   background-color: var(--accent-color);
   color: var(--white);
 }
-
-
 
 .gift-cards-list .gift__note {
   font-size: 14px;
@@ -165,10 +162,23 @@
   pointer-events: none;
 }
 /* form fields */
+
+.gift-cards_form input, .gift-cards_form textarea {
+  border-radius: 40px;
+}
+.gift-cards_form input:focus, .gift-cards_form textarea:focus {
+  border-color: var(--text);
+}
+
 .ywgc-recipient-email {
   float: none !important;
   width: 100% !important;
   position: relative;
+}
+
+.ywgc-recipient-email p {
+  font-size: 14px;
+  margin-top: 10px;
 }
 
 .ywgc-recipient-name {

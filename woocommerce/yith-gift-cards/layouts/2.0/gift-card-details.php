@@ -21,13 +21,14 @@ global $product;
 
   <h3>Куда отправить сертификат</h3>
   <div class="ywgc-recipient-email clearfix">
-    <label for="ywgc-recipient-email">Ваша почта</label>
+    <label for="ywgc-recipient-email">Ваша почта*</label>
     <input type="email" id="ywgc-recipient-email" name="ywgc-recipient-email[]" <?php echo ( $mandatory_recipient ) ? 'required' : ''; ?>
     class="ywgc-recipient yith_wc_gift_card_input_recipient_details"/>
+    <p>Ссылка на подарочный сертификат будет направлена на указанную почту автоматически после оплаты</p>
   </div>
   <h3>Кому дарим</h3>
   <div class="ywgc-recipient-name clearfix">
-    <label for="ywgc-recipient-name">Имя получателя</label>
+    <label for="ywgc-recipient-name">Имя получателя*</label>
     <input type="text" id="ywgc-recipient-name" name="ywgc-recipient-name[]" <?php echo ( $mandatory_recipient ) ? 'required' : ''; ?> 
     class="yith_wc_gift_card_input_recipient_details">
   </div>
