@@ -5,7 +5,8 @@ let gifForm = document.querySelector('.gift-cards_form')
 
 let minAmount = 1500
 let maxAmount = 30000
-amountInput.value = minAmount;
+amountInput.value = minAmount
+amountInput.setAttribute('value',minAmount)
 
 //for dev
 let mail = document.querySelector('#ywgc-recipient-email')
@@ -79,7 +80,7 @@ amountInput.addEventListener('input', function () {
   amountInput.addEventListener('blur', function () {
     if (this.value === '' || parseInt(this.value, 10) < minAmount) {
       this.value = minAmount;
-      this.dataset.prevValue = this.value;
+      this.setAttribute('value',minAmount)
       updateState()
     }
   });
