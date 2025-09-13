@@ -30,6 +30,7 @@ function isValidAmount(v) {
   }
 
 function updateState() {
+  console.log(amountInput.value)
   let ok = isValidAmount(amountInput.value)
   submitBtn.disabled = !ok
   submitBtn.classList.toggle('is-disabled', !ok)
