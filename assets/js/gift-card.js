@@ -87,6 +87,7 @@ amountInput.addEventListener('input', function () {
     let val = this.value;
     if (val === '' || parseInt(val, 10) < minAmount) {
       this.value = minAmount;
+      updateState()
     }
   });
 
