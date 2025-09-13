@@ -72,13 +72,14 @@ amountInput.addEventListener('input', function () {
       this.value = '';
       this.dataset.prevValue = '';
     }
-  });
+});
 
   // После потери фокуса проверяем минимум
   amountInput.addEventListener('blur', function () {
     if (this.value === '' || parseInt(this.value, 10) < minAmount) {
       this.value = minAmount;
       this.dataset.prevValue = this.value;
+      this.focus();
     }
   });
 
