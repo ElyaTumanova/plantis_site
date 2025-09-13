@@ -92,21 +92,26 @@ if(mobOpenBtn) {
 // уведомление об ошибке
 
 const noticePopup = document.querySelector('.notices-popup');
-function toggle_notice_popup () {
-    noticePopup.classList.toggle ('popup_active');
-    body.classList.toggle ('fix-body');
-};
+
 if (noticePopup) {
+    const noticePopupClose = document.querySelector('.notices-popup__close');
+    const noticePopupOverlay = document.querySelector('.notices__popup-overlay');
+    document.addEventListener('keydown', function(e){
+        if((e.key=='Escape'||e.key=='Esc')){
+            if(noticePopup.classList.contains('popup_active')) {
+                toggle_notice_popup ();
+            } 
+        }
+    }, true);
+    function toggle_notice_popup () {
+        noticePopup.classList.toggle ('popup_active');
+        body.classList.toggle ('fix-body');
+    };
     const errorMsg = noticePopup.querySelector('.woocommerce-error'); 
+    noticePopupClose.addEventListener('click',toggle_notice_popup);
+    noticePopupOverlay.addEventListener('click',toggle_notice_popup);
     
     if (errorMsg) {
         toggle_notice_popup ();
     };
 }
-// if (loginPopup) {
-//     const errorMsg = loginPopup.querySelector('.woocommerce-error'); 
-    
-//     if (errorMsg) {
-//         toggle_login_popup ();
-//     };
-// }
