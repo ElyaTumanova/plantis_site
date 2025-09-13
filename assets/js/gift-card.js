@@ -16,7 +16,7 @@ mail.value = 'elyagi@mail.ru'
 mail.classList.add('focus')
 let nameF = document.querySelector('#ywgc-recipient-name')
 nameF.value = 'Ela'
-nameF.classList.add(focus)
+nameF.classList.add('focus')
 //
 
 // для упралвения label
