@@ -464,6 +464,6 @@ input[type="search"], input[type="search"]:focus-visible {
     height: fit-content;
 }
 
-.woocommerce-notices-wrapper:focus {
+.woocommerce-error:focus {
   outline: none !important;
 }
