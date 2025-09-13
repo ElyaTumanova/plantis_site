@@ -101,7 +101,7 @@
   color: var(--text) !important;
 }
 
-.selected_button #ywgc-manual-amount-div-wrapper  {
+#ywgc-manual-amount-div-wrapper  {
   height: auto;
 }
 
@@ -132,10 +132,7 @@
   color: var(--white);
 }
 
-.ywgc-manual-amount-error {
-  float: none;
-  display: none;
-}
+
 
 .gift-cards-list .gift__note {
   font-size: 14px;
@@ -178,6 +175,14 @@
   width: 100% !important;
 }
 
+/* обнуление стандартного вывода ошибок */
 .ywgc-red-border {
   border: 1px solid var(--yith-ywgc-border-color) !important;
+}
+.ywgc-manual-amount-error {
+  float: none;
+  display: none;
+  font-size: 0 !important;
+  height: 0;
+  margin: 0;
 }
