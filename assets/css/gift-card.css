@@ -191,7 +191,7 @@
   transition: all .3s ease;
 }
 
-.ywgc-recipient-email:has(input:focus) label {
+.ywgc-recipient-email:has(.focus) label {
   top: 1.25rem;
   left: 1rem;
   color: red;
