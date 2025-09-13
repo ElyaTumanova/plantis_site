@@ -124,4 +124,9 @@ function check_301redirect_tax_url(){
 	}
 }
 
+//уведомления об ошибках
+
+add_action('plnt_notices','woocommerce_output_all_notices', 5 );
+
+
 

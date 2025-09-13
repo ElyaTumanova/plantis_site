@@ -463,3 +463,7 @@ input[type="search"], input[type="search"]:focus-visible {
     overflow-y: auto;
     height: fit-content;
 }
+
+.woocommerce-notices-wrapper:focus {
+  outline: none !important;
+}
