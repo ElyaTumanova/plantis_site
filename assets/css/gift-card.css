@@ -25,10 +25,14 @@
 .card__grid_gift-card .ywgc_delivery_info_title{
   display: none;
 } */
-
+.gift-content-area {
+  max-width: 924px;
+  margin: auto;
+  margin-top: 10px;
+}
 .gift-cards_form {
   width: 100%;
-  max-width: 860px;
+  max-width: 924px;
   border-radius: 20px;
   margin: auto;
   margin-top: 50px;
@@ -133,11 +137,13 @@
 }
 
 .gift__amounts p {
-  padding: 10px;
-  border: 1px solid black;
+  padding: 10px 10px;
   border-radius: 20px;
   cursor: pointer;
   height: fit-content;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .16);
+  min-width: 78px;
+  text-align: center;
 }
 
 .gift_card_template_button .quantity {
