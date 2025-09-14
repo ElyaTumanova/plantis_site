@@ -252,3 +252,40 @@ add_filter( 'woocommerce_add_to_cart_redirect', function( $url ) {
 } );
 
 
+/*--------------------------------------------------------------
+#GIFT CARD PAGE
+--------------------------------------------------------------*/
+
+/**
+ * Получить объект подарочной карты по её номеру
+ *
+ * @param string $code Номер подарочной карты
+ * @return YWGC_Gift_Card_Premium|null
+ */
+function mytheme_get_giftcard_by_code( $code ) {
+    if ( empty( $code ) ) {
+        return null;
+    }
+
+    $query = new WP_Query( array(
+        'post_type'      => 'gift_card',     // тип поста для YITH карт
+        'post_status'    => 'publish',
+        'posts_per_page' => 1,
+        'meta_query'     => array(
+            array(
+                'key'   => '_ywgc_number',   // метаполе с номером карты
+                'value' => $code,
+            ),
+        ),
+        'fields' => 'ids',
+    ) );
+
+    if ( ! empty( $query->posts ) ) {
+        $gift_card_id = $query->posts[0];
+        return new YWGC_Gift_Card_Premium( $gift_card_id );
+    }
+
+    return null;
+}
+
+
