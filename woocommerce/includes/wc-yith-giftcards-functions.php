@@ -43,31 +43,6 @@ add_filter('query_vars', function ($vars) {
 #EMAILS
 --------------------------------------------------------------*/
 
-//add_filter( 'yith_ywgc_email_automatic_cart_discount_url', 'plantis_change_email_discount_link', 10, 3 );
-
-function plantis_change_email_discount_link( $apply_discount_url, $args, $gift_card ) {
-    // Аккуратно получаем код подарочной карты
-    if ( is_object( $gift_card ) && method_exists( $gift_card, 'get_code' ) ) {
-        $code = $gift_card->get_code();
-    } elseif ( is_string( $gift_card ) && $gift_card !== '' ) {
-        // В некоторых версиях/вызовах в фильтр могут передавать строку-код
-        $code = $gift_card;
-    } else {
-        return $apply_discount_url; // ничего не знаем — возвращаем исходный URL
-    }
-
-    // Собираем базовый URL без get_permalink(), чтобы не трогать $post
-    // замените '/gift-card/' на ваш реальный путь страницы, которая принимает параметр
-    $base_url = home_url( '/gift-card/' );
-
-    // Подставляем параметр ?gcnum=... корректно
-    $new_url = add_query_arg( 'gcnum', rawurlencode( $code ), $base_url );
-
-    // Возвращаем новый URL (выводить его потом лучше через esc_url())
-    return $new_url;
-}
-
-
 /**
  * Вывод изображения, номера и суммы подарочной карты в письме
  */
@@ -161,7 +136,7 @@ add_action( 'plnt_gift_card_email_after_preview', function( $gift_card ) {
     $date_format = apply_filters( 'yith_wcgc_date_format', 'd.m.Y' );
 
     // Выводим HTML с датой
-    echo '<div class="giftcard-expiration">';
+    echo '<div class="giftcard-expiration" style="margin:20px 0;">';
     echo esc_html( sprintf(
         'Подарочный сертификат действует до %s',
         date_i18n( $date_format, $expiration_date )
@@ -169,30 +144,6 @@ add_action( 'plnt_gift_card_email_after_preview', function( $gift_card ) {
     echo '</div>';
 
 }, 20, 1 );
-
-
-// Меняем текст сообщения о сроке действия подарочной карты в письме
-// add_filter( 'yith_ywgc_gift_card_email_expiration_message', function( $text, $gift_card ) {
-
-//     // Определяем дату окончания действия карты
-//     $expiration_date = ! is_numeric( $gift_card->expiration )
-//         ? strtotime( $gift_card->expiration )
-//         : $gift_card->expiration;
-
-//     if ( ! $expiration_date ) {
-//         return $text; // если нет даты — оставляем исходное сообщение
-//     }
-
-//     // Формат даты: можно взять из настроек WP или задать свой
-//     $date_format = apply_filters( 'yith_wcgc_date_format', 'd.m.Y' );
-
-//     // Новый текст на русском
-//     return sprintf(
-//         'Подарочный сертификат действует до %s',
-//         date_i18n( $date_format, $expiration_date )
-//     );
-
-// }, 10, 2 );
 
 
 /*--------------------------------------------------------------
