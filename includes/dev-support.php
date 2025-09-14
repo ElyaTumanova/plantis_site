@@ -15,10 +15,19 @@ function plnt_echo_smth() {
   echo $product->get_price_html();
   echo $product->get_price();
 
-  echo '<pre>';
-  print_r($product);
-  echo '</pre>';
   
+
+  $query = new WP_Query( array(
+        'post_type'      => 'gift_card',     // тип поста для YITH карт
+        'post_status'    => 'publish',
+        'posts_per_page' => -1,
+        'fields' => 'ids',
+    ) );
+
+  echo '<pre>';
+  //print_r($product);
+  print_r($query);
+  echo '</pre>';
 }
 
 
