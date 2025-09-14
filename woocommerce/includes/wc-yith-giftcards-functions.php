@@ -43,12 +43,30 @@ add_filter('query_vars', function ($vars) {
 #EMAILS
 --------------------------------------------------------------*/
 
-add_filter( 'yith_ywgc_email_automatic_cart_discount_url', 'change_email_discount_link', 10, 3);
+add_filter( 'yith_ywgc_email_automatic_cart_discount_url', 'plantis_change_email_discount_link', 10, 3 );
 
-function change_email_discount_link($apply_discount_url, $args, $gift_card) {
-    $apply_discount_url = 'http://dev.plantis-shop.ru/gift-card?gcnum='.$gift_card->gift_card_number;
-    return $apply_discount_url;
+function plantis_change_email_discount_link( $apply_discount_url, $args, $gift_card ) {
+    // Аккуратно получаем код подарочной карты
+    if ( is_object( $gift_card ) && method_exists( $gift_card, 'get_code' ) ) {
+        $code = $gift_card->get_code();
+    } elseif ( is_string( $gift_card ) && $gift_card !== '' ) {
+        // В некоторых версиях/вызовах в фильтр могут передавать строку-код
+        $code = $gift_card;
+    } else {
+        return $apply_discount_url; // ничего не знаем — возвращаем исходный URL
+    }
+
+    // Собираем базовый URL без get_permalink(), чтобы не трогать $post
+    // замените '/gift-card/' на ваш реальный путь страницы, которая принимает параметр
+    $base_url = home_url( '/gift-card/' );
+
+    // Подставляем параметр ?gcnum=... корректно
+    $new_url = add_query_arg( 'gcnum', rawurlencode( $code ), $base_url );
+
+    // Возвращаем новый URL (выводить его потом лучше через esc_url())
+    return $new_url;
 }
+
 //
 // add_action ('plnt_gift_card_email_after_preview', 'add_email_gift_card_link');
 
@@ -57,18 +75,35 @@ function change_email_discount_link($apply_discount_url, $args, $gift_card) {
 //   echo $giftcard_link;
 // }
 
-// add_filter('yith_ywgc_gift_card_email_expiration_message', function ($text, $gift_card) {
-//         // translators: %s is the gift card expiration date.
-// 				sprintf( _x( 'Подарочный сертификат действует до %s', 'gift card expiration date', 'yith-woocommerce-gift-cards' ), date_i18n( $date_format, $expiration_date ), $date_format ),
-// 				$gift_card
-// })
+// Меняем текст сообщения о сроке действия подарочной карты в письме
+add_filter( 'yith_ywgc_gift_card_email_expiration_message', function( $text, $gift_card, $date_format = null ) {
 
-	// $expiration_message = apply_filters(
-	// 			'yith_ywgc_gift_card_email_expiration_message',
-	// 			// translators: %s is the gift card expiration date.
-	// 			sprintf( _x( 'This gift card code will be valid until %s', 'gift card expiration date', 'yith-woocommerce-gift-cards' ), date_i18n( $date_format, $expiration_date ), $date_format ),
-	// 			$gift_card
-	// 		);
+    // Получаем timestamp окончания срока действия (или null/false)
+    if ( is_object( $gift_card ) && method_exists( $gift_card, 'get_expiration' ) ) {
+        $expiration = $gift_card->get_expiration();
+    } else {
+        return $text; // перестраховка: если объект другой — не трогаем
+    }
+
+    if ( empty( $expiration ) ) {
+        return $text; // если нет даты — оставляем дефолт
+    }
+
+    // Если плагин передал формат третьим аргументом — используем его,
+    // иначе возьмём из фильтра YITH (или зададим свой)
+    $format = $date_format ?: apply_filters( 'yith_wcgc_date_format', 'Y-m-d' );
+    // при желании можно жестко указать: $format = 'd.m.Y';
+
+    // Ваш новый текст сообщения
+    $new_text = sprintf(
+        __( 'Подарочный сертификат действует до %s', 'your-textdomain' ),
+        date_i18n( $format, $expiration )
+    );
+
+    return $new_text;
+
+}, 10, 3 ); // важное: accepted args = 3, чтобы поймать и $date_format при наличии
+
 /*--------------------------------------------------------------
 #CHECKOUT PAGE
 --------------------------------------------------------------*/

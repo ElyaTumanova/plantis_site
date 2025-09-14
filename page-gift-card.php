@@ -2,7 +2,7 @@
 
 ?>
 
-<div class="result-test content-area">
+<div class="gift-card content-area">
   <h1>Hi this is gift card page</h1>
     <?php 
     $gcnum = get_query_var('gcnum');
