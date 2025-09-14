@@ -67,16 +67,79 @@ function plantis_change_email_discount_link( $apply_discount_url, $args, $gift_c
     return $new_url;
 }
 
+
+/**
+ * Вывод изображения, номера и суммы подарочной карты в письме
+ */
+add_action( 'ywgc_gift_cards_email_before_preview_gift_card_param', function( $gift_card ) {
+
+    if ( ! is_object( $gift_card ) ) {
+        return;
+    }
+
+    // --- Изображение подарочной карты ---
+    // Получаем картинку, выбранную в плагине. Может быть ID или URL.
+    $image_url = '';
+    if ( ! empty( $gift_card->image_id ) ) {
+        $image_url = wp_get_attachment_url( $gift_card->image_id );
+    } elseif ( ! empty( $gift_card->image ) ) {
+        $image_url = esc_url( $gift_card->image );
+    }
+
+    // --- Номер подарочной карты ---
+    $code = ! empty( $gift_card->gift_card_number )
+        ? $gift_card->gift_card_number
+        : ( method_exists( $gift_card, 'get_code' ) ? $gift_card->get_code() : '' );
+
+    // --- Сумма подарочной карты ---
+    $amount = '';
+    if ( isset( $gift_card->amount ) ) {
+        $amount = wc_price( $gift_card->amount );
+    } elseif ( method_exists( $gift_card, 'get_balance' ) ) {
+        $amount = wc_price( $gift_card->get_balance() );
+    }
+
+    // --- Вывод разметки ---
+    ?>
+    <div class="giftcard-preview" style="text-align:center; margin:20px 0;">
+        <?php if ( $image_url ) : ?>
+            <img src="<?php echo esc_url( $image_url ); ?>"
+                 alt="<?php esc_attr_e( 'Gift Card', 'your-textdomain' ); ?>"
+                 style="max-width:100%; height:auto; margin-bottom:15px;" />
+        <?php endif; ?>
+
+        <?php if ( $code ) : ?>
+            <p style="font-size:18px; font-weight:bold; margin:0 0 10px;">
+                <?php echo esc_html__( 'Номер подарочной карты:', 'your-textdomain' ) . ' ' . esc_html( $code ); ?>
+            </p>
+        <?php endif; ?>
+
+        <?php if ( $amount ) : ?>
+            <p style="font-size:16px; margin:0;">
+                <?php echo esc_html__( 'Сумма подарочной карты:', 'your-textdomain' ) . ' ' . wp_kses_post( $amount ); ?>
+            </p>
+        <?php endif; ?>
+    </div>
+    <?php
+
+}, 10, 1 );
+
+
 //
-add_action ('plnt_gift_card_email_after_preview', 'add_email_gift_card_link');
+add_action ('plnt_gift_card_email_after_preview', 'add_email_gift_card_link', 10);
 
 function add_email_gift_card_link($gift_card) {
   $giftcard_link = 'http://dev.plantis-shop.ru/gift-card?gcnum='.$gift_card->gift_card_number;
   echo $giftcard_link;
 }
 
-// Меняем текст сообщения о сроке действия подарочной карты в письме
-add_filter( 'yith_ywgc_gift_card_email_expiration_message', function( $text, $gift_card ) {
+
+// дата окончания действия
+add_action( 'plnt_gift_card_email_after_preview', function( $gift_card ) {
+
+    if ( ! is_object( $gift_card ) ) {
+        return;
+    }
 
     // Определяем дату окончания действия карты
     $expiration_date = ! is_numeric( $gift_card->expiration )
@@ -84,19 +147,45 @@ add_filter( 'yith_ywgc_gift_card_email_expiration_message', function( $text, $gi
         : $gift_card->expiration;
 
     if ( ! $expiration_date ) {
-        return $text; // если нет даты — оставляем исходное сообщение
+        return;
     }
 
-    // Формат даты: можно взять из настроек WP или задать свой
+    // Формат даты (можно менять)
     $date_format = apply_filters( 'yith_wcgc_date_format', 'd.m.Y' );
 
-    // Новый текст на русском
-    return sprintf(
+    // Выводим HTML с датой
+    echo '<div class="giftcard-expiration">';
+    echo esc_html( sprintf(
         'Подарочный сертификат действует до %s',
         date_i18n( $date_format, $expiration_date )
-    );
+    ) );
+    echo '</div>';
 
-}, 10, 2 );
+}, 20, 1 );
+
+
+// Меняем текст сообщения о сроке действия подарочной карты в письме
+// add_filter( 'yith_ywgc_gift_card_email_expiration_message', function( $text, $gift_card ) {
+
+//     // Определяем дату окончания действия карты
+//     $expiration_date = ! is_numeric( $gift_card->expiration )
+//         ? strtotime( $gift_card->expiration )
+//         : $gift_card->expiration;
+
+//     if ( ! $expiration_date ) {
+//         return $text; // если нет даты — оставляем исходное сообщение
+//     }
+
+//     // Формат даты: можно взять из настроек WP или задать свой
+//     $date_format = apply_filters( 'yith_wcgc_date_format', 'd.m.Y' );
+
+//     // Новый текст на русском
+//     return sprintf(
+//         'Подарочный сертификат действует до %s',
+//         date_i18n( $date_format, $expiration_date )
+//     );
+
+// }, 10, 2 );
 
 
 /*--------------------------------------------------------------

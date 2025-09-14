@@ -34,7 +34,7 @@ do_action( 'ywgc_gift_cards_email_before_preview', $introductory_text, $gift_car
  */
 do_action( 'ywgc_gift_cards_email_before_preview_gift_card_param', $gift_card );
 
-YITH_YWGC()->preview_digital_gift_cards( $gift_card, 'email' );
+// YITH_YWGC()->preview_digital_gift_cards( $gift_card, 'email' );
 
 do_action( 'plnt_gift_card_email_after_preview', $gift_card );
 /**
@@ -44,7 +44,7 @@ do_action( 'plnt_gift_card_email_after_preview', $gift_card );
  *
  * @param object $gift_card the gift card object
  */
-do_action( 'ywgc_gift_card_email_after_preview', $gift_card );
+//do_action( 'ywgc_gift_card_email_after_preview', $gift_card );
 
 /*
  * @hooked YITH_WooCommerce_Gift_Cards_Premium::add_footer_information() Output the email footer
