@@ -930,6 +930,12 @@ function plnt_override_checkout_fields( $fields ) {
     $fields['billing']['billing_email']['required'] = true;
     $fields['billing']['billing_address_1']['required'] = false;
     $fields['billing']['billing_address_2']['required'] = false;
+
+    if (! WC()->cart->needs_shipping()) {
+      unset( $fields['billing']['billing_address_1'] );
+      unset( $fields['billing']['billing_address_2'] );
+      unset( $fields['order']['order_comments'] );
+    }
     
 
     return $fields;
