@@ -27,7 +27,7 @@ function plnt_echo_smth() {
   echo '<pre>';
   //print_r($product);
   //print_r($query);
-  get_post( (int) $query->posts[0] );
+  $post_obj = get_post( (int) $query->posts[0] );
   if ( $post_obj instanceof WP_Post ) {
     $post_id = $post_obj->ID;
     $title   = get_the_title( $post_id );
