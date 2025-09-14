@@ -12,8 +12,4 @@ $target_id = 15419; // <-- ID нужного товара
 </div>
 
 
-
-
-
-
 <?php get_footer();?>

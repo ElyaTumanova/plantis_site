@@ -45,18 +45,18 @@
   column-gap: 20px;
 } */
 
-.ywgc-single-recipient {
+/* .ywgc-single-recipient {
   grid-area: recepient;
 }
 .ywgc-single-recipient .ywgc-recipient-name{
   width: 100%;
-}
-.ywgc-send-and-delivery-container {
+} */
+/* .ywgc-send-and-delivery-container {
   grid-area: sender;
 }
 .ywgc-send-and-delivery-container .ywgc-sender-name {
   width: 100%;
-}
+} */
 
 
 .gift-cards-list {
@@ -97,7 +97,7 @@
 .ywgc-manual-amount-container .selected_button, .ywgc-manual-amount-container  {
   background-color: transparent !important;
   height: 50px !important;
-  border-radius: 5px !important;
+  border-radius: 40px !important;
   color: var(--text) !important;
 }
 
@@ -158,6 +158,9 @@
   outline: none;
   margin: 10px 0 0 !important;
 }
+.gift-cards_form textarea {
+  border-radius: 20px !important;
+}
 .gift-cards_form input:focus, .gift-cards_form textarea:focus {
   border-color: var(--text);
   padding: 3px 25px;
@@ -181,6 +184,12 @@
 }
 
 .ywgc-message {
+  position: relative;
+}
+
+.ywgc-sender-name {
+  width: 100% !important;
+  float: none !important;
   position: relative;
 }
 
@@ -218,9 +227,9 @@
   color: var(--text);
 }
 /* обнуление стандартного вывода ошибок */
-.ywgc-red-border {
+/* .ywgc-red-border {
   border: 1px solid var(--yith-ywgc-border-color) !important;
-}
+} */
 .ywgc-manual-amount-error {
   float: none;
   display: none;

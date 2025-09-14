@@ -107,10 +107,16 @@ add_action('yith_ywgc_show_gift_card_amount_selection', function(){
   ?> 
   <p class="gift__note">Можно ввести любую сумму от 1500 до 30 000 ₽</p>
   <div class="gift__amounts">
-      <p>1000<span>₽</span></p>
+      <p>1500<span>₽</span></p>
       <p>2000<span>₽</span></p>
       <p>3000<span>₽</span></p>
       <p>4000<span>₽</span></p>
+      <p>5000<span>₽</span></p>
+      <p>10000<span>₽</span></p>
+      <p>15000<span>₽</span></p>
+      <p>20000<span>₽</span></p>
+      <p>25000<span>₽</span></p>
+      <p>30000<span>₽</span></p>
   </div>
   <?php
 },10);
@@ -138,7 +144,7 @@ add_filter('yith_wcgc_manual_amount_option_text', function (){
   return '';
 });
 add_filter('ywgc_add_to_cart_button_text', function (){
-  return 'В корзину';
+  return 'Перейти к оплате';
 });
 
 // add_filter('ywgc_minimal_amount_error_text',function (){

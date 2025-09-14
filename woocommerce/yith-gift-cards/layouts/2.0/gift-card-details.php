@@ -1,6 +1,8 @@
 <?php
 /**
  * Gift Card product add to cart
+ * 
+ * MODIFIED FOR PLANTIS THEME
  *
  * @author  YITH <plugins@yithemes.com>
  * @package yith-woocommerce-gift-cards\templates\yith-gift-cards\
