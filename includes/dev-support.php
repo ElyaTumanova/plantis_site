@@ -41,7 +41,7 @@ function plnt_echo_smth() {
 
     print_r($title);
     echo('<br>');
-    print_r($gc);
+    print_r($post_obj);
   }
 
   echo '</pre>';
