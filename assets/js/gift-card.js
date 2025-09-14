@@ -14,7 +14,7 @@ imageAmount.innerHTML = `${minAmount}<span>₽</span>`
 
 //for dev
 let mail = document.querySelector('#ywgc-recipient-email')
-mail.value = 'elyagi@mail.ru'
+mail.value = 'eleonoraatumanova@gmail.com'
 mail.classList.add('focus')
 let nameF = document.querySelector('#ywgc-recipient-name')
 nameF.value = 'Ela'
