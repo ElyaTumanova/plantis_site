@@ -210,6 +210,10 @@ Contents
     add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_interval_field', 20 );
 
     function plnt_add_delivery_interval_field() {
+       if (! is_gift_card_checkout()) {
+        return;
+      }
+      
         // выводим поле функцией woocommerce_form_field()
         woocommerce_form_field( 
             'additional_delivery_interval', 
