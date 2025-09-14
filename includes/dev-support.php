@@ -26,7 +26,10 @@ function plnt_echo_smth() {
 
   echo '<pre>';
   //print_r($product);
-  print_r($query);
+  //print_r($query);
+
+  print_r( $query->posts[0]);
+
   echo '</pre>';
 }
 
