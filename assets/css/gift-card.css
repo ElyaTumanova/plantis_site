@@ -35,36 +35,30 @@
   max-width: 924px;
   border-radius: 20px;
   margin: auto;
-  margin-top: 50px;
 }
 
-/* .gift-card-content-editor {
-  display: grid;
-  grid-template-columns: repeat(2, calc(50% - 10px));
-  grid-template-rows: auto auto;
-  grid-template-areas: 
-  "recepient sender"
-  "message message";
-  row-gap: 20px;
-  column-gap: 20px;
-} */
+.gift-image-wrap {
+  position: relative;
+}
+.gift-image {
+  height: 300px;
+  border-radius: 30px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .16);
+  margin-block: 20px;
+}
 
-/* .ywgc-single-recipient {
-  grid-area: recepient;
+.gift-image-amount {
+  position: absolute;
+  bottom: 50px;
+  left: 30px;
+  font-size: 32px;
+  font-weight: 600;
 }
-.ywgc-single-recipient .ywgc-recipient-name{
-  width: 100%;
-} */
-/* .ywgc-send-and-delivery-container {
-  grid-area: sender;
-}
-.ywgc-send-and-delivery-container .ywgc-sender-name {
-  width: 100%;
-} */
 
 
 .gift-cards-list {
   margin-bottom: 20px;
+  position: relative;
 }
 .selected_button {
   background-color: transparent !important;
@@ -72,9 +66,9 @@
 }
 
 .gift-cards_form h3 {
-    font-size: 18px !important;
+    font-size: 22px !important;
     font-weight: 600;
-    margin-block: 10px;
+    margin: 50px 0 25px;
     
 }
 
@@ -127,6 +121,9 @@
 .gift-cards-list .gift__note {
   font-size: 14px;
   margin-top: 10px;
+  position: absolute;
+  top: 54px;
+  left: 200px;
 }
 
 .gift__amounts, .gift__amounts.selected_button {
