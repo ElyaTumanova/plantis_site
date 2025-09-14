@@ -43,7 +43,7 @@ add_filter('query_vars', function ($vars) {
 #EMAILS
 --------------------------------------------------------------*/
 
-add_filter( 'yith_ywgc_email_automatic_cart_discount_url', 'plantis_change_email_discount_link', 10, 3 );
+//add_filter( 'yith_ywgc_email_automatic_cart_discount_url', 'plantis_change_email_discount_link', 10, 3 );
 
 function plantis_change_email_discount_link( $apply_discount_url, $args, $gift_card ) {
     // Аккуратно получаем код подарочной карты
@@ -76,33 +76,28 @@ function plantis_change_email_discount_link( $apply_discount_url, $args, $gift_c
 // }
 
 // Меняем текст сообщения о сроке действия подарочной карты в письме
-add_filter( 'yith_ywgc_gift_card_email_expiration_message', function( $text, $gift_card, $date_format = null ) {
+add_filter( 'yith_ywgc_gift_card_email_expiration_message', function( $text, $gift_card ) {
 
-    // Получаем timestamp окончания срока действия (или null/false)
-    if ( is_object( $gift_card ) && method_exists( $gift_card, 'get_expiration' ) ) {
-        $expiration = $gift_card->get_expiration();
-    } else {
-        return $text; // перестраховка: если объект другой — не трогаем
+    // Определяем дату окончания действия карты
+    $expiration_date = ! is_numeric( $gift_card->expiration )
+        ? strtotime( $gift_card->expiration )
+        : $gift_card->expiration;
+
+    if ( ! $expiration_date ) {
+        return $text; // если нет даты — оставляем исходное сообщение
     }
 
-    if ( empty( $expiration ) ) {
-        return $text; // если нет даты — оставляем дефолт
-    }
+    // Формат даты: можно взять из настроек WP или задать свой
+    $date_format = apply_filters( 'yith_wcgc_date_format', 'd.m.Y' );
 
-    // Если плагин передал формат третьим аргументом — используем его,
-    // иначе возьмём из фильтра YITH (или зададим свой)
-    $format = $date_format ?: apply_filters( 'yith_wcgc_date_format', 'Y-m-d' );
-    // при желании можно жестко указать: $format = 'd.m.Y';
-
-    // Ваш новый текст сообщения
-    $new_text = sprintf(
-        __( 'Подарочный сертификат действует до %s', 'your-textdomain' ),
-        date_i18n( $format, $expiration )
+    // Новый текст на русском
+    return sprintf(
+        'Подарочный сертификат действует до %s',
+        date_i18n( $date_format, $expiration_date )
     );
 
-    return $new_text;
+}, 10, 2 );
 
-}, 10, 3 ); // важное: accepted args = 3, чтобы поймать и $date_format при наличии
 
 /*--------------------------------------------------------------
 #CHECKOUT PAGE
