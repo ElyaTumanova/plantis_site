@@ -463,9 +463,9 @@ Contents
     add_action( 'woocommerce_checkout_order_review', 'delivery_info', 10 );
    
     function delivery_info(){
-      if !is_gift_card_checkout() {
-        return;
-      }
+        if ! is_gift_card_checkout() {
+          return;
+        }
         $min_small_delivery = carbon_get_theme_option('min_small_delivery');
         $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
         $shipping_costs = plnt_get_shiping_costs();
