@@ -46,19 +46,29 @@ add_filter('query_vars', function ($vars) {
 add_filter( 'yith_ywgc_email_automatic_cart_discount_url', 'change_email_discount_link', 10, 3);
 
 function change_email_discount_link($apply_discount_url, $args, $gift_card) {
-    $apply_discount_url = 'http://dev.plantis-shop.ru/lalalal';
+    $apply_discount_url = 'http://dev.plantis-shop.ru/gift-card?gcnum='.$gift_card->gift_card_number;
     return $apply_discount_url;
 }
-
-
 //
-add_action ('plnt_gift_card_email_after_preview', 'add_email_gift_card_link');
+// add_action ('plnt_gift_card_email_after_preview', 'add_email_gift_card_link');
 
-function add_email_gift_card_link($gift_card) {
-  $giftcard_link = 'http://dev.plantis-shop.ru/gift-card?gcnum='.$gift_card->gift_card_number;
-  echo $giftcard_link;
-}
+// function add_email_gift_card_link($gift_card) {
+//   $giftcard_link = 'http://dev.plantis-shop.ru/gift-card?gcnum='.$gift_card->gift_card_number;
+//   echo $giftcard_link;
+// }
 
+add_filter('yith_ywgc_gift_card_email_expiration_message', function () {
+        // translators: %s is the gift card expiration date.
+				sprintf( _x( 'Подарочный сертификат действует до %s', 'gift card expiration date', 'yith-woocommerce-gift-cards' ), date_i18n( $date_format, $expiration_date ), $date_format ),
+				$gift_card
+})
+
+	// $expiration_message = apply_filters(
+	// 			'yith_ywgc_gift_card_email_expiration_message',
+	// 			// translators: %s is the gift card expiration date.
+	// 			sprintf( _x( 'This gift card code will be valid until %s', 'gift card expiration date', 'yith-woocommerce-gift-cards' ), date_i18n( $date_format, $expiration_date ), $date_format ),
+	// 			$gift_card
+	// 		);
 /*--------------------------------------------------------------
 #CHECKOUT PAGE
 --------------------------------------------------------------*/
