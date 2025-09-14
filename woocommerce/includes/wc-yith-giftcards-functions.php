@@ -80,10 +80,17 @@ add_action( 'ywgc_gift_cards_email_before_preview_gift_card_param', function( $g
     // --- Изображение подарочной карты ---
     // Получаем картинку, выбранную в плагине. Может быть ID или URL.
     $image_url = '';
-    if ( ! empty( $gift_card->image_id ) ) {
-        $image_url = wp_get_attachment_url( $gift_card->image_id );
-    } elseif ( ! empty( $gift_card->image ) ) {
-        $image_url = esc_url( $gift_card->image );
+   if ( isset( $gift_card->product_id ) ) {
+        $product_id = (int) $gift_card->product_id;
+    } elseif ( method_exists( $gift_card, 'get_product_id' ) ) {
+        $product_id = (int) $gift_card->get_product_id();
+    }
+
+    if ( $product_id ) {
+        $thumb = get_the_post_thumbnail_url( $product_id, 'full' );
+        if ( $thumb ) {
+            $image_url = $thumb;
+        }
     }
 
     // --- Номер подарочной карты ---
@@ -101,7 +108,7 @@ add_action( 'ywgc_gift_cards_email_before_preview_gift_card_param', function( $g
 
     // --- Вывод разметки ---
     ?>
-    <div class="giftcard-preview" style="text-align:center; margin:20px 0;">
+    <div class="giftcard-preview" style="text-align:left; margin:20px 0;">
         <?php if ( $image_url ) : ?>
             <img src="<?php echo esc_url( $image_url ); ?>"
                  alt="<?php esc_attr_e( 'Gift Card', 'your-textdomain' ); ?>"
@@ -110,13 +117,13 @@ add_action( 'ywgc_gift_cards_email_before_preview_gift_card_param', function( $g
 
         <?php if ( $code ) : ?>
             <p style="font-size:18px; font-weight:bold; margin:0 0 10px;">
-                <?php echo esc_html__( 'Номер подарочной карты:', 'your-textdomain' ) . ' ' . esc_html( $code ); ?>
+                <?php echo esc_html__( 'Номер сертификата:', 'your-textdomain' ) . ' ' . esc_html( $code ); ?>
             </p>
         <?php endif; ?>
 
         <?php if ( $amount ) : ?>
             <p style="font-size:16px; margin:0;">
-                <?php echo esc_html__( 'Сумма подарочной карты:', 'your-textdomain' ) . ' ' . wp_kses_post( $amount ); ?>
+                <?php echo esc_html__( 'Сумма сертификата:', 'your-textdomain' ) . ' ' . wp_kses_post( $amount ); ?>
             </p>
         <?php endif; ?>
     </div>
