@@ -1,8 +1,5 @@
 <?php get_header(); 
-$gcid = 15419;
-
-global $product;
-$target_id = 15419; // <-- ID нужного товара
+global $gcid;
 
 //wc_get_template( 'single-product/product-image.php' );
 ?>
