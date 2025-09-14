@@ -33,6 +33,12 @@ function create_gift_card_page($gift_card) {
 
 //add_action('yith_ywgc_after_gift_card_generation_save', 'create_gift_card_page');
 
+// регистрируем гет парамтер для подарочной карты
+add_filter('query_vars', function ($vars) {
+    $vars[] = 'gcnum';
+    return $vars;
+});
+
 /*--------------------------------------------------------------
 #EMAILS
 --------------------------------------------------------------*/
@@ -49,7 +55,7 @@ function change_email_discount_link($apply_discount_url, $args, $gift_card) {
 add_action ('plnt_gift_card_email_after_preview', 'add_email_gift_card_link');
 
 function add_email_gift_card_link($gift_card) {
-  $giftcard_link = 'http://dev.plantis-shop.ru/gift-card?='.$gift_card->gift_card_number;
+  $giftcard_link = 'http://dev.plantis-shop.ru/gift-card?gcnum='.$gift_card->gift_card_number;
   echo $giftcard_link;
 }
 
