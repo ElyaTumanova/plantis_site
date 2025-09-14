@@ -57,18 +57,18 @@ function change_email_discount_link($apply_discount_url, $args, $gift_card) {
 //   echo $giftcard_link;
 // }
 
-add_filter('yith_ywgc_gift_card_email_expiration_message', function () {
+add_filter('yith_ywgc_gift_card_email_expiration_message', function ($text, $gift_card) {
         // translators: %s is the gift card expiration date.
 				sprintf( _x( 'Подарочный сертификат действует до %s', 'gift card expiration date', 'yith-woocommerce-gift-cards' ), date_i18n( $date_format, $expiration_date ), $date_format ),
 				$gift_card
 })
 
-	// $expiration_message = apply_filters(
-	// 			'yith_ywgc_gift_card_email_expiration_message',
-	// 			// translators: %s is the gift card expiration date.
-	// 			sprintf( _x( 'This gift card code will be valid until %s', 'gift card expiration date', 'yith-woocommerce-gift-cards' ), date_i18n( $date_format, $expiration_date ), $date_format ),
-	// 			$gift_card
-	// 		);
+	$expiration_message = apply_filters(
+				'yith_ywgc_gift_card_email_expiration_message',
+				// translators: %s is the gift card expiration date.
+				sprintf( _x( 'This gift card code will be valid until %s', 'gift card expiration date', 'yith-woocommerce-gift-cards' ), date_i18n( $date_format, $expiration_date ), $date_format ),
+				$gift_card
+			);
 /*--------------------------------------------------------------
 #CHECKOUT PAGE
 --------------------------------------------------------------*/
