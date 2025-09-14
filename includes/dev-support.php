@@ -28,21 +28,18 @@ function plnt_echo_smth() {
   //print_r($product);
   //print_r($query);
   $post_obj = get_post( (int) $query->posts[0] );
-  if ( $post_obj instanceof WP_Post ) {
-    $post_id = $post_obj->ID;
-    $title   = get_the_title( $post_id );
-    if ( class_exists( 'YWGC_Gift_Card_Premium' ) ) {
-        $gc = new YWGC_Gift_Card_Premium( $post_id );
-    } elseif ( class_exists( 'YWGC_Gift_Card' ) ) {
-        $gc = new YWGC_Gift_Card( $post_id );
-    } else {
-        $gc = null;
-    }
 
-    print_r($title);
-    echo('<br>');
-    print_r($post_obj);
-  }
+  $post_id = $query->posts[0];
+  $title   = get_the_title( $post_id );
+
+
+  print_r($title);
+  echo('<br>');
+  print_r($post_obj);
+  echo('<br>');
+  print_r(get_post_meta( $post_id ));
+  
+
 
   echo '</pre>';
 }
