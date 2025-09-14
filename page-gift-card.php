@@ -6,7 +6,7 @@
   <h1>Hi this is gift card page</h1>
     <?php 
     $gcnum = get_query_var('gcnum');
-    $gift_card = mytheme_get_giftcard_by_code( $code );
+    $gift_card = mytheme_get_giftcard_by_code( $gcnum );
 
     if ( $gift_card ) {
         echo 'Номер карты: ' . esc_html( $gift_card->gift_card_number );
