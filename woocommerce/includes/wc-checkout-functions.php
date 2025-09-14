@@ -210,7 +210,7 @@ Contents
     add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_interval_field', 20 );
 
     function plnt_add_delivery_interval_field() {
-       if (! is_gift_card_checkout()) {
+       if (! WC()->cart->needs_shipping()) {
         return;
       }
       
@@ -237,7 +237,7 @@ Contents
     add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 15 );
 
     function plnt_add_delivery_dates() {
-      if (! is_gift_card_checkout()) {
+      if (! WC()->cart->needs_shipping()) {
         return;
       }
 

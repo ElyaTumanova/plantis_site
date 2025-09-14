@@ -28,7 +28,8 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php else : ?>
 
-		<h3><?php esc_html_e( 'Billing details', 'woocommerce' ); ?></h3>
+		<!-- <h3><?php //esc_html_e( 'Billing details', 'woocommerce' ); ?></h3> -->
+    <h3 class="checkout__title">Контактная информация</h3>
 
 	<?php endif; ?>
 
