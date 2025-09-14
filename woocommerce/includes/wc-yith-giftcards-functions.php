@@ -68,12 +68,12 @@ function plantis_change_email_discount_link( $apply_discount_url, $args, $gift_c
 }
 
 //
-// add_action ('plnt_gift_card_email_after_preview', 'add_email_gift_card_link');
+add_action ('plnt_gift_card_email_after_preview', 'add_email_gift_card_link');
 
-// function add_email_gift_card_link($gift_card) {
-//   $giftcard_link = 'http://dev.plantis-shop.ru/gift-card?gcnum='.$gift_card->gift_card_number;
-//   echo $giftcard_link;
-// }
+function add_email_gift_card_link($gift_card) {
+  $giftcard_link = 'http://dev.plantis-shop.ru/gift-card?gcnum='.$gift_card->gift_card_number;
+  echo $giftcard_link;
+}
 
 // Меняем текст сообщения о сроке действия подарочной карты в письме
 add_filter( 'yith_ywgc_gift_card_email_expiration_message', function( $text, $gift_card ) {
