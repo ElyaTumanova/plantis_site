@@ -40,7 +40,7 @@ function create_gift_card_page($gift_card) {
 add_filter( 'yith_ywgc_email_automatic_cart_discount_url', 'change_email_discount_link', 10, 3);
 
 function change_email_discount_link($apply_discount_url, $args, $gift_card) {
-    $apply_discount_url = 'http://new.plantis.shop/lalalal';
+    $apply_discount_url = 'http://dev.plantis-shop.ru/lalalal';
     return $apply_discount_url;
 }
 
@@ -49,7 +49,7 @@ function change_email_discount_link($apply_discount_url, $args, $gift_card) {
 add_action ('plnt_gift_card_email_after_preview', 'add_email_gift_card_link');
 
 function add_email_gift_card_link($gift_card) {
-  $giftcard_link = 'http://new.plantis.shop/gift-card-'.$gift_card->gift_card_number;
+  $giftcard_link = 'http://dev.plantis-shop.ru/gift-card?='.$gift_card->gift_card_number;
   echo $giftcard_link;
 }
 
