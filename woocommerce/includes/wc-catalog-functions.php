@@ -719,6 +719,14 @@ add_filter( 'yith_wcwl_button_html', function( $html ) {
     return $html;
 }, 10 );
 
+add_action( 'send_headers', function () {
+    if ( (isset($_GET['add_to_wishlist']) && $_GET['add_to_wishlist'] !== '')
+      || (isset($_GET['add-to-cart']) && $_GET['add-to-cart'] !== '') ) {
+        header( 'X-Robots-Tag: noindex, nofollow', true );
+    }
+}, 9 );
+
+
 
 
 // изменяем canonical для страниц пагинации #SEO
