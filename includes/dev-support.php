@@ -9,16 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 function plnt_echo_smth() {
-    $start = microtime(true);
-    $ctx = wc_get_catalog_context();
-
-    print_r($ctx);
-    echo ("Timing: wc_get_catalog_context = " . round((microtime(true) - $start) * 1000, 2) . " ms" );
-
-    $thumbnail_id = get_term_meta( $ctx['term']->term_id, 'thumbnail_id', true );
-    $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
-
-    echo($thumbnail_url);
+    if(is_page('test-kakoe-ty-rastenie')) {
+        echo ('this is test');
+    } else {
+        echo ('this is NOT test');
+    }
 }
 
 

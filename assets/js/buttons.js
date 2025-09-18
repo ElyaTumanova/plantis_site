@@ -156,3 +156,33 @@ function scrollToTop () {
         behavior: 'smooth'
       })
 }
+
+/*--------------------------------------------------------------
+# Buttons to copy link
+--------------------------------------------------------------*/
+
+copyShareBtn = document.querySelector('#copyShareBtn');
+copyShareBtn.addEventListener('click', async () => {
+    const url = copyShareBtn.dataset.url || window.location.href;
+
+    try {
+    if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(url);
+    } else {
+        const ta = document.createElement('textarea');
+        ta.value = url;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+    }
+    const old = copyShareBtn.textContent;
+    copyShareBtn.textContent = 'Скопировано!';
+    setTimeout(() => copyShareBtn.textContent = old, 1500);
+    } catch {
+    alert('Не удалось скопировать:\n' + url);
+    }
+});
