@@ -364,10 +364,10 @@
     cursor: pointer;
 }
 .test__gen-f label::before {
-    background-image: url(../../images/test/test.png);
+    background-image: url(../../images/test/test_vw.webp);
 }
 .test__gen-m label::before {
-    background-image: url(../../images/test/test.png);
+    background-image: url(../../images/test/test_vm.webp);
 }
 
 /* hover эффект */
