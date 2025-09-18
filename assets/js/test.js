@@ -32,7 +32,6 @@ class Test {
    testInit() {
     this.questions[this.current].renderQuestion();
     this.questionForm.addEventListener('submit', ()=>{this.handleFormSubmit()});
-    // console.log(this);
    }
 
     handleFormSubmit() {
@@ -41,11 +40,8 @@ class Test {
         this.questions[this.current].chosenAnswer.countScore();
 
         ++this.current;
-        // console.log(this.current);
-        console.log(this.plantTypes);
+        console.debug(this.plantTypes);
         if(this.current < this.questions.length) {
-            // console.log(this.progressBar)
-            // console.log(this.current)
           this.questions[this.current].renderQuestion();
           this.progressBar.setAttribute('value',this.current+1);
         } else {
@@ -54,7 +50,6 @@ class Test {
           this.showResult();
         }
       } else {
-        // this.testError.classList.add('test__error_show');
         this.testSubmitBtn.innerHTML = "Выберите вариант ответа";
         this.testSubmitBtn.setAttribute ('style', 'color:red');
         setTimeout(() =>  {
@@ -69,7 +64,7 @@ class Test {
     }
 
     showResult() {
-        console.log(this.plantTypes);
+        console.debug(this.plantTypes);
         testNavWrap.classList.remove('d-none');
 
         this.resultPlant = plantTypes.reduce(function(prev, current) {
@@ -80,14 +75,13 @@ class Test {
             }
         });
 
-        console.log(this.resultPlant);
+        console.debug(this.resultPlant);
         //link to share
         const shareText = 'Посмотри какое я растение';
         const pageUrl = new URL('/test-result', vars.site_url); // vars.site_url = 'https://dev.plantis-shop.ru'
         pageUrl.searchParams.set('plant', this.resultPlant.slug); // 'zamiokulkas'
         pageUrl.searchParams.set('gen', gen);                     // 'f'
         this.resultPageUrl = pageUrl.toString();
-        // console.log(this.resultPageUrl);
 
         const tg = new URL('https://t.me/share/url');
         tg.searchParams.set('url', this.resultPageUrl);
@@ -142,7 +136,6 @@ class Question
 
 
     this.answers.forEach(answer => {
-      // console.log(answer.type);
       this.answerElementDiv = document.createElement('div');
       this.answerElementDiv.classList.add('test__answer');
       this.answerElementInput = document.createElement('input');
@@ -161,9 +154,7 @@ class Question
   
   handleInputClick(answer, answerElementDiv) {
     this.chosenAnswer = answer;
-    console.log(answer.type);
-    // console.log(answerElementDiv);
-    // this.testError.classList.remove('test__error_show');
+    console.debug(answer.type);
   }
 }
  
@@ -177,12 +168,7 @@ class Answer
    }
 
    countScore () {
-     //console.log('answer type is ', this.type.name)
-     //console.log('answer score is ', this.type.score)
-     
      ++this.type.score;
-     
-     //console.log('answer score is ', this.type.score)
    }
 }
 
@@ -301,11 +287,11 @@ function startTest () {
         testMainDiv.classList.remove('d-none');
         window.scrollTo(0, 0);
     // }, 300)
-    console.log(gen);
+    console.debug(gen);
 }
 
 function ajaxGetUpsells(catSlug) {
-    console.log(catSlug)
+    console.debug(catSlug)
     const data = new URLSearchParams();
     data.append('action', 'get_test_upsells');
     data.append('cat_slug', catSlug);
