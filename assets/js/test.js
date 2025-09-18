@@ -81,7 +81,7 @@ class Test {
         const pageUrl = new URL('/test-result', vars.site_url); // vars.site_url = 'https://dev.plantis-shop.ru'
         pageUrl.searchParams.set('plant', this.resultPlant.slug); // 'zamiokulkas'
         pageUrl.searchParams.set('gen', gen);                     // 'f'
-        this.resultPageUrl = pageUrl.toString();
+        this.resultPageUrl = pageUrl.href;
 
         const tg = new URL('https://t.me/share/url');
         tg.searchParams.set('url', this.resultPageUrl);
