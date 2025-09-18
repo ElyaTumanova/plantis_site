@@ -41,7 +41,8 @@ class Test {
         this.questions[this.current].chosenAnswer.countScore();
 
         ++this.current;
-        console.log(this.current);
+        // console.log(this.current);
+        console.log(this.plantTypes);
         if(this.current < this.questions.length) {
             // console.log(this.progressBar)
             // console.log(this.current)
@@ -68,7 +69,7 @@ class Test {
     }
 
     showResult() {
-        // console.log(this.plantTypes);
+        console.log(this.plantTypes);
         testNavWrap.classList.remove('d-none');
 
         this.resultPlant = plantTypes.reduce(function(prev, current) {
