@@ -32,7 +32,7 @@ class Test {
    testInit() {
     this.questions[this.current].renderQuestion();
     this.questionForm.addEventListener('submit', ()=>{this.handleFormSubmit()});
-    console.log(this);
+    // console.log(this);
    }
 
     handleFormSubmit() {
@@ -43,8 +43,8 @@ class Test {
         ++this.current;
         console.log(this.current);
         if(this.current < this.questions.length) {
-            console.log(this.progressBar)
-            console.log(this.current)
+            // console.log(this.progressBar)
+            // console.log(this.current)
           this.questions[this.current].renderQuestion();
           this.progressBar.setAttribute('value',this.current+1);
         } else {
@@ -68,7 +68,7 @@ class Test {
     }
 
     showResult() {
-        console.log(this.plantTypes);
+        // console.log(this.plantTypes);
         testNavWrap.classList.remove('d-none');
 
         this.resultPlant = plantTypes.reduce(function(prev, current) {
@@ -86,7 +86,7 @@ class Test {
         pageUrl.searchParams.set('plant', this.resultPlant.slug); // 'zamiokulkas'
         pageUrl.searchParams.set('gen', gen);                     // 'f'
         this.resultPageUrl = pageUrl.toString();
-        console.log(this.resultPageUrl);
+        // console.log(this.resultPageUrl);
 
         const tg = new URL('https://t.me/share/url');
         tg.searchParams.set('url', this.resultPageUrl);
@@ -141,7 +141,7 @@ class Question
 
 
     this.answers.forEach(answer => {
-      console.log(answer);
+      // console.log(answer.type);
       this.answerElementDiv = document.createElement('div');
       this.answerElementDiv.classList.add('test__answer');
       this.answerElementInput = document.createElement('input');
@@ -160,8 +160,8 @@ class Question
   
   handleInputClick(answer, answerElementDiv) {
     this.chosenAnswer = answer;
-    console.log(answer);
-    console.log(answerElementDiv);
+    console.log(answer.type);
+    // console.log(answerElementDiv);
     // this.testError.classList.remove('test__error_show');
   }
 }
