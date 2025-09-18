@@ -12,12 +12,12 @@
         'post_type'      => 'gift_card',     // тип поста для YITH карт
         'post_status'    => 'publish',
         'posts_per_page' => 1,
-        // 'meta_query'     => array(
-        //     array(
-        //         'key'   => '_ywgc_number',   // метаполе с номером карты
-        //         'value' => $code,
-        //     ),
-        // ),
+        'meta_query'     => array(
+            array(
+                'key'   => 'post_title',   // метаполе с номером карты
+                'value' => $code,
+            ),
+        ),
         'fields' => 'ids',
     ) );
 
