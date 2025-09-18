@@ -60,7 +60,7 @@ add_action('wp_head', function() {
         foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
         $gen = get_query_var('gen');
         $plant = get_query_var('plant');
-        if ($gen && $plant) {
+        if ($gen && $plant && array_key_exists($gen, $plants_by_slug) && array_key_exists($plant, $plants_by_slug)) {
           $img = $plants_by_slug[$plant]['image'][$gen];
         } else {
           $img = get_template_directory_uri().'/images/test/test_cover.webp';
