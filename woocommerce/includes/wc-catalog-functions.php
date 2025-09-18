@@ -706,13 +706,19 @@ add_filter( 'wpseo_robots', function( $robots ) {
 }, 30, 1 );
 
 add_filter( 'yith_wcwl_button_html', function( $html ) {
-    $html = str_replace(
-        'rel="nofollow"',
-        'rel="nofollow ugc noopener"',
-        $html
-    );
+    // если уже есть rel, дописываем ugc и nofollow, иначе добавляем новый
+    if ( strpos( $html, 'rel=' ) !== false ) {
+        $html = preg_replace(
+            '/rel="([^"]*)"/i',
+            'rel="$1 nofollow ugc noopener"',
+            $html
+        );
+    } else {
+        $html = str_replace( '<a ', '<a rel="nofollow ugc noopener" ', $html );
+    }
     return $html;
 }, 10 );
+
 
 
 // изменяем canonical для страниц пагинации #SEO
