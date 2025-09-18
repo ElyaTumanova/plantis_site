@@ -27,7 +27,7 @@ return [
     [
         'name'   => 'Хризалидокарпус',
         'score'  => 0,
-        'slug'   => 'dipsis-areka',
+        'slug'   => 'dipsis',
         'image'  => [
             'f' => get_template_directory_uri().'/images/test/Dypsis_w.webp',
             'm' => get_template_directory_uri().'/images/test/Dypsis_m.webp',
