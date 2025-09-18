@@ -15,7 +15,8 @@ Contents
 # INN field
 # Billing adress field
 # T Bank
-# Thankyou page
+# Payment method
+# Thankyou page & email
 # Additional fields for admin
 --------------------------------------------------------------*/
 
@@ -411,7 +412,6 @@ Contents
         }
     }
 
-
     // сообщение о крупногабартной доставке (с машинкой)
 
     add_action('plnt_large_delivery_notice', 'plnt_large_delivery_notice');
@@ -665,14 +665,14 @@ Contents
         $cat_amount = 0;
         $products_min = false;
         foreach ( WC()->cart->get_cart() as $cart_item ) {
-                $_product = $cart_item['data'];
-                $isTreez = check_is_treez($_product);
-                if ( $isTreez) {
-                    $products_min = true;
-                    $qty = $cart_item[ 'quantity' ];
-                    $price = $cart_item['data']->get_price();
-                    $cat_amount = $cat_amount + $price*$qty;
-                }	
+          $_product = $cart_item['data'];
+          $isTreez = check_is_treez($_product);
+          if ( $isTreez) {
+              $products_min = true;
+              $qty = $cart_item[ 'quantity' ];
+              $price = $cart_item['data']->get_price();
+              $cat_amount = $cat_amount + $price*$qty;
+          }	
         }
     
         if( ( is_cart() || is_checkout() ) && $cat_amount < $min_treez_delivery && $products_min) {
@@ -704,14 +704,14 @@ Contents
         $cat_amount = 0;
         $products_min = false;
         foreach ( WC()->cart->get_cart() as $cart_item ) {
-                $_product = $cart_item['data'];
-                $isLechuza = check_is_lechuza($_product);
-                if ( $isLechuza) {
-                    $products_min = true;
-                    $qty = $cart_item[ 'quantity' ];
-                    $price = $cart_item['data']->get_price();
-                    $cat_amount = $cat_amount + $price*$qty;
-                }	
+          $_product = $cart_item['data'];
+          $isLechuza = check_is_lechuza($_product);
+          if ( $isLechuza) {
+              $products_min = true;
+              $qty = $cart_item[ 'quantity' ];
+              $price = $cart_item['data']->get_price();
+              $cat_amount = $cat_amount + $price*$qty;
+          }	
         }
     
         if( ( is_cart() || is_checkout() ) && $cat_amount < $min_lechuza_delivery && $products_min) {
@@ -748,14 +748,14 @@ Contents
         $cat_amount = 0;
         $products_min = false;
         foreach ( WC()->cart->get_cart() as $cart_item ) {
-                $_product = $cart_item['data'];
-                $isTreez = check_is_treez($_product);
-                if ( $isTreez) {
-                    $products_min = true;
-                    $qty = $cart_item[ 'quantity' ];
-                    $price = $cart_item['data']->get_price();
-                    $cat_amount = $cat_amount + $price*$qty;
-                }	
+            $_product = $cart_item['data'];
+            $isTreez = check_is_treez($_product);
+            if ( $isTreez) {
+                $products_min = true;
+                $qty = $cart_item[ 'quantity' ];
+                $price = $cart_item['data']->get_price();
+                $cat_amount = $cat_amount + $price*$qty;
+            }	
         }
 
         // if( $cat_amount < $min_treez_delivery && $products_min) {
@@ -774,14 +774,14 @@ Contents
         $cat_amount = 0;
         $products_min = false;
         foreach ( WC()->cart->get_cart() as $cart_item ) {
-                $_product = $cart_item['data'];
-                $isLechuza = check_is_lechuza($_product);
-                if ( $isLechuza) {
-                    $products_min = true;
-                    $qty = $cart_item[ 'quantity' ];
-                    $price = $cart_item['data']->get_price();
-                    $cat_amount = $cat_amount + $price*$qty;
-                }	
+          $_product = $cart_item['data'];
+          $isLechuza = check_is_lechuza($_product);
+          if ( $isLechuza) {
+              $products_min = true;
+              $qty = $cart_item[ 'quantity' ];
+              $price = $cart_item['data']->get_price();
+              $cat_amount = $cat_amount + $price*$qty;
+          }	
         }
 
         // if( $cat_amount < $min_lechuza_delivery && $products_min) {
@@ -826,12 +826,12 @@ Contents
             return $available_gateways;
         } else {
             foreach ( WC()->cart->get_cart() as $cart_item ) {
-                    $_product = $cart_item['data'];
-                    $isLechuza = check_is_lechuza($_product);
-        
-                    if ( $isLechuza) {
-                        $products_min = true;
-                    }	
+              $_product = $cart_item['data'];
+              $isLechuza = check_is_lechuza($_product);
+  
+              if ( $isLechuza) {
+                  $products_min = true;
+              }	
             }
         
             if( $products_min) {
@@ -1152,8 +1152,44 @@ function plnt_inn_field_in_email( $rows, $order ) {
 
         return $available_gateways;
     }
+
 /*--------------------------------------------------------------
-# Thankyou page
+# Payment method
+--------------------------------------------------------------*/
+function check_is_plants_in_cart() {
+  global $plants_cat_id;
+  $isPlants = false;
+  if( is_checkout( ) && ! is_wc_endpoint_url()) {
+  foreach ( WC()->cart->get_cart() as $cart_item ) {
+        $product = $cart_item['data'];
+        $idCats = $product->get_category_ids();
+        
+        if (in_array($plants_cat_id, $idCats)) {
+            $isPlants = true;
+            break;
+        }	
+    }
+  }
+  return $isPlants;
+}
+
+add_filter( 'woocommerce_gateway_title', function( $title, $gateway_id ) {
+    if ( ! is_admin() && $gateway_id === 'cod' && !check_is_plants_in_cart()) {
+      $title = 'Оплата после подтверждения заказа менеджером';
+    }
+    return $title;
+}, 10, 2 );
+
+add_filter( 'woocommerce_gateway_description', function( $description, $gateway_id ) {
+    if (! is_admin() && $gateway_id === 'cod' && !check_is_plants_in_cart()) {
+        $description = 'Наш менеджер свяжется с Вами после оформления заказа. После вашего подтверждения мы пришлём ссылку на оплату картой.';
+    }
+    return $description;
+}, 10, 2 );
+
+
+/*--------------------------------------------------------------
+# Thankyou page & email
 --------------------------------------------------------------*/
 
     // уведомление Спасибо за заказ
@@ -1166,6 +1202,62 @@ function plnt_inn_field_in_email( $rows, $order ) {
 
         return $thank_you_msg;
     }
+
+    // Чтобы в письмах выводилась стомость доставки 0 руб при самовывозе
+    add_filter( 'woocommerce_get_order_item_totals', function( $totals, $order ) {
+        if ( isset( $totals['shipping'] ) ) {
+            // Узнаём выбранный метод
+            $methods = $order->get_shipping_methods();
+            if ( $methods ) {
+                $method = current( $methods ); // WC_Order_Item_Shipping
+                $method_id = $method->get_method_id(); // например: local_pickup
+                $shipping_total = (float) $order->get_shipping_total();
+                $shipping_tax   = (float) $order->get_shipping_tax();
+
+                // Для самовывоза (local_pickup) показывать 0 ₽ вместо названия
+                if ( false !== stripos( $method_id, 'local_pickup' ) ) {
+                    // Если хотите просто "0 ₽"
+                    $totals['shipping']['value'] = wc_price( 0, [ 'currency' => $order->get_currency() ] );
+
+                    // Если хотите "Самовывоз — 0 ₽", раскомментируйте:
+                    // $totals['shipping']['value'] = sprintf(
+                    //     '%s — %s',
+                    //     wp_kses_post( $method->get_name() ),
+                    //     wc_price( 0, [ 'currency' => $order->get_currency() ] )
+                    // );
+                } else {
+                    // Для других методов можно принудительно показать числовую стоимость
+                    // (учитывая налог, если нужно)
+                    $amount = $shipping_total + $shipping_tax;
+                    $totals['shipping']['value'] = wc_price( $amount, [ 'currency' => $order->get_currency() ] );
+                }
+            }
+        }
+        return $totals;
+    }, 10, 2 );
+
+    //правим стили фотографии товара в письмах
+    add_filter( 'woocommerce_order_item_thumbnail', function( $image_html, $item ) {
+        $product = is_callable( [$item, 'get_product'] ) ? $item->get_product() : null;
+        if ( ! $product ) {
+            return $image_html;
+        }
+
+        $attachment_id = $product->get_image_id();
+        $src = $attachment_id ? wp_get_attachment_image_url( $attachment_id, 'thumbnail' ) : '';
+
+        if ( ! $src ) {
+            return $image_html;
+        }
+
+        // Возвращаем «чистый» <img> 48×48, без margin-right, с выравниванием по верху
+        return sprintf(
+            '<img src="%s" alt="%s" width="48" height="48" style="border:none;display:inline-block;font-size:14px;font-weight:bold;height:auto;outline:none;text-decoration:none;text-transform:capitalize;vertical-align:middle;margin-right:24px;max-width:48px;" />',
+            esc_url( $src ),
+            esc_attr( $product->get_name() )
+        );
+    }, 999, 2 );
+
 
 
 
@@ -1186,9 +1278,9 @@ function plnt_inn_field_in_email( $rows, $order ) {
 
     function plnt_render_custom_fields_meta_box( $post ) {
         $fields = [
-            'plnt_payment_method'      => ['Способ оплаты', 'select'],
             'plnt_client_status'      => ['Статус клиента', 'select'],
             'plnt_client_origin'  => ['Откуда пришел клиент', 'select'],
+            'plnt_payment_method'      => ['Способ оплаты', 'select'],
             'plnt_paid'     => ['Оплачен?', 'select'],
             'plnt_comment'     => ['Комментарий', 'text'],
         ];
@@ -1209,6 +1301,9 @@ function plnt_inn_field_in_email( $rows, $order ) {
             ],
             'plnt_client_origin' => [
                 'site' => 'Сайт',
+                'street' => 'С улицы',
+                'avito' => 'Авито',
+                'one-click' => 'Один клик',
                 'preorder'  => 'Предзаказ',
                 'messenger' => 'Мессенджер',
                 'mail' => 'Письмо',

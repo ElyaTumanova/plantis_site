@@ -5,6 +5,8 @@
  * Used by list_attributes() in the products class.
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/single-product/product-attributes.php.
+ * 
+ * MODIFIED FOR PLANTIS_THEME (SEO PURPOSE)
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -26,7 +28,7 @@ if ( ! $product_attributes ) {
 <table class="woocommerce-product-attributes shop_attributes">
 	<?php foreach ( $product_attributes as $product_attribute_key => $product_attribute ) : ?>
 		<tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--<?php echo esc_attr( $product_attribute_key ); ?>">
-			<th class="woocommerce-product-attributes-item__label"><?php echo wp_kses_post( $product_attribute['label'] ); ?></th>
+			<th class="woocommerce-product-attributes-item__label"><h3><?php echo wp_kses_post( $product_attribute['label'] ); ?></h3></th>
 			<td class="woocommerce-product-attributes-item__value"><?php echo wp_kses_post( $product_attribute['value'] ); ?></td>
 		</tr>
 	<?php endforeach; ?>

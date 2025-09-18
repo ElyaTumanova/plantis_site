@@ -72,6 +72,5 @@ if (!is_account_page()) {
 
 <?php wp_footer(); ?>
 <?php echo "<!-- Timing: footer.php = " . round((microtime(true) - $start_footer_file) * 1000, 2) . " ms -->"; ?>
-
 </body>
 </html>

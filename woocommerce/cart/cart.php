@@ -118,18 +118,16 @@ do_action( 'woocommerce_before_cart' ); ?>
 								echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'woocommerce' ) . '</p>', $product_id ) );
 							}
 							?>
-							<?php 
-                                get_backorder_info_snippet($_product, $cart_item[ 'quantity' ]);
-							?>
+							<?php get_backorder_info_snippet($_product, $cart_item[ 'quantity' ]);?>
 							<!-- peresadka_init -->
-							<div class="cart__peresadka" data-product_id=<?php echo $product_id;?>>
+							<!-- <div class="cart__peresadka" data-product_id=<?php //echo $product_id;?>>
 							<?php 
-							get_template_part('template-parts/products/products-peresadka',null,
-									array( // массив с параметрами
-										'product_id' => $product_id
-									)); 
+							// get_template_part('template-parts/products/products-peresadka',null,
+							// 		array( // массив с параметрами
+							// 			'product_id' => $product_id
+							// 		)); 
 							?>
-							</div>
+							</div> -->
 						</td>
 
 						<td class="product-price" data-title="<?php esc_attr_e( 'Price', 'woocommerce' ); ?>">

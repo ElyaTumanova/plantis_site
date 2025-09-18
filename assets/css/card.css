@@ -324,6 +324,11 @@
     opacity: 0.7;
 }
 
+.woocommerce-product-attributes h3 {
+    font-weight: 500;
+    font-size: 14px;
+}
+
 .woocommerce-product-attributes-item--weight {
     display: none;
 }
@@ -425,6 +430,10 @@
 
 .search-result__item:first-child .card__stockstatus {
     top: 32px;
+}
+
+.search-result__item img {
+    object-fit: contain;
 }
 
 /* кнопка в коризину и инпут изменения количетсва */

@@ -4,6 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // FOR DEV
+
 //add_action( 'wp_footer', 'plnt_echo_smth' );
 
 

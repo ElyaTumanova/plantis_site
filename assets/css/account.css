@@ -537,18 +537,19 @@
 .woocommerce-thankyou-order-details {
     margin-bottom: 20px;
     display: flex;
-    column-gap: 15px;
-    justify-content: space-between;
+    column-gap: 40px;
+    row-gap: 15px;
+    /* justify-content: space-between; */
     max-width: 650px;
+    flex-wrap: wrap;
 }
 
 .woocommerce-thankyou-order-details li{
     margin-bottom: 5px;
-    margin-bottom: 5px;
-    text-align: center;
+    /* text-align: center; */
     display: flex;
     flex-direction: column;
-    max-width: 220px;
+    max-width: 290px;
     row-gap: 5px;
 }
 

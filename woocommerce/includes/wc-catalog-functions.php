@@ -82,7 +82,7 @@ function plnt_catalog_sidebar() {
 	$close_icon = carbon_get_theme_option('close_icon')
 	?>
     <div class="catalog__sidebar modal-mob">
-		<p class="catalog__sidebar-filters-heading">Фильтры</p>
+		<h2 class="catalog__sidebar-filters-heading">Фильтры</h2>
 		<div class="modal-mob__close catalog-sidebar__close button"><?php echo $close_icon ?></div>
         <!-- <div class="catalog__sidebar-cats">
             <ul class="catalog__sidebar-temp">
@@ -93,7 +93,7 @@ function plnt_catalog_sidebar() {
             </ul>
         </div> -->
 		<?php //plnt_catalog_menu() ?>
-		<div class="catalog__sidebar-filters">
+		<aside class="catalog__sidebar-filters">
 			<div class="catalog__instock-filter">
 				<?php echo do_shortcode('[br_filter_single filter_id='.$filter_in_stock_id.']') //товары в наличии //56534 //6110?>
 			</div>
@@ -119,7 +119,7 @@ function plnt_catalog_sidebar() {
 				echo do_shortcode('[br_filter_single filter_id='.$filter_gift_id.']'); // в подарок //56535 //10988
 			}
 			?>
-		</div>
+		</aside>
     </div>
     <?php 
 };
@@ -264,7 +264,7 @@ function plnt_attribute_seo_title($title) {
 add_filter('woocommerce_product_loop_start', 'plnt_get_catalog_list_schema_data',10);
 
 function plnt_get_catalog_list_schema_data ($html) {
-    if ( ! (is_shop() || is_product_category() || is_product_tag() || is_tax()) ) {
+    if ( ! (is_shop() || is_product_category() || is_product_tag() || is_tax()) || is_search() ) {
         return $html;
     }
     $html = preg_replace(
@@ -309,7 +309,7 @@ function plnt_get_advantages() {
 #Card in Catalog design
 --------------------------------------------------------------*/
 
-//название товара - меняем тег h2 + schema.org
+//название товара - меняем тег h2 на h3 + schema.org
 
 remove_action( 'woocommerce_shop_loop_item_title','woocommerce_template_loop_product_title', 10 );
 add_action('woocommerce_shop_loop_item_title', 'soChangeProductsTitle', 10 );
@@ -319,7 +319,7 @@ function soChangeProductsTitle() {
 } else {
     $schema_data = '';
 }
-    echo '<div ' . $schema_data . ' class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</div>';
+    echo '<h3 ' . $schema_data . ' class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</h3>';
 }
 
 //оформление карточки товара в каталоге
@@ -666,7 +666,7 @@ function move_to_top_on_pagination() {
 add_action('woocommerce_after_main_content', 'move_to_top_on_pagination');
 
 // добавляем директивы ноиндекс, фоллоу для страниц пагинации, начиная со 2 #SEO
-add_filter( 'wpseo_robots', 'filter_wpseo_robots' );
+add_filter( 'wpseo_robots', 'filter_wpseo_robots', 10, 1 );
 
 /* Yoast SEO -  add noindex, follow for paginated pages */
 function filter_wpseo_robots( $robotsstr ) {
@@ -675,6 +675,63 @@ function filter_wpseo_robots( $robotsstr ) {
     } 
     return $robotsstr;
 }
+
+// добавляем директивы ноиндекс, фоллоу для страниц с фильтами
+add_filter( 'wpseo_robots', function( $robots ) {
+
+    // Только фронтенд, только HTML-страницы
+    // if ( is_admin() || is_feed() ) {
+    //     return $robots;
+    // }
+
+    // Условие: есть параметр filters в URL
+    if ( (isset( $_GET['filters'] ) && $_GET['filters'] !== '') 
+        || (isset( $_GET['orderby'] ) && $_GET['orderby'] !== '') 
+        || (isset( $_GET['interest'] ))) {
+        return 'noindex, follow';
+    }
+
+    return $robots;
+}, 20, 1 );
+
+
+add_filter( 'wpseo_robots', function( $robots ) {
+
+    // Условие: есть параметр в URL
+    if ( (isset( $_GET['add-to-cart'] ) && $_GET['add-to-cart'] !== '')
+        || (isset( $_GET['add_to_wishlist'] ) && $_GET['add_to_wishlist'] !== '')){
+        return 'noindex, nofollow';
+    }
+    return $robots;
+}, 30, 1 );
+
+// functions.php или в mu-plugin
+// add_filter( 'yith_wcwl_button_html', function( $html, $product_id, $atts ) {
+
+//     // если rel уже есть — аккуратно дописываем токены
+//     if ( preg_match( '/\srel=(["\'])(.*?)\1/i', $html, $m ) ) {
+//         $rel = preg_split( '/\s+/', trim( $m[2] ) );
+//         foreach ( [ 'nofollow', 'ugc', 'noopener' ] as $t ) {
+//             if ( ! in_array( $t, $rel, true ) ) { $rel[] = $t; }
+//         }
+//         $new = ' rel="' . implode( ' ', $rel ) . '"';
+//         $html = preg_replace( '/\srel=(["\'])(.*?)\1/i', $new, $html, 1 );
+//     } else {
+//         // если rel нет — добавляем
+//         $html = preg_replace( '/<a\s+/i', '<a rel="nofollow ugc noopener" ', $html, 1 );
+//     }
+
+//     return $html;
+// }, 10, 3 ); // ВАЖНО: accepted args = 3
+
+
+// add_action( 'send_headers', function () {
+//     if ( (isset($_GET['add_to_wishlist']) && $_GET['add_to_wishlist'] !== '')
+//       || (isset($_GET['add-to-cart']) && $_GET['add-to-cart'] !== '') ) {
+//         header( 'X-Robots-Tag: noindex, nofollow', true );
+//     }
+// }, 9 );
+
 
 // изменяем canonical для страниц пагинации #SEO
 

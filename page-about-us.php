@@ -8,7 +8,7 @@ get_header(); ?>
 <div class="content-area">
 
 		<header class="entry-header container">
-			<h1 class="entry-title">О нас</h1>                
+			<h1 class="entry-title about__title">О нас</h1>                
 		</header>
 		<div class="about info__content">
             <div class="about__wrap container">
@@ -116,8 +116,20 @@ get_header(); ?>
                      
                 </div>                   
             </div> -->
-
             
+            <div class="reviews-card">
+              <h2>Отзывы о нас</h2>
+              <div class="reviews-frame">
+                <iframe src="https://yandex.ru/maps-reviews-widget/237252555639?comments"
+                        loading="lazy"
+                        frameborder="0"
+                        allowfullscreen>
+                </iframe>
+                <div class="reviews-mask" aria-hidden="true"></div>
+              </div>
+            </div>
+            
+
 
         
 		</div>

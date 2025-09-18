@@ -28,6 +28,9 @@ function ast_register_custom_fields() {
 /** Add functions for DEV & DEBUG */
 require get_template_directory() . '/includes/dev-support.php';
 
+/** Add images for tags */
+require get_template_directory() . '/includes/tags-image.php';
+
 /** Add constants */
 require get_template_directory() . '/includes/constants.php';
 /** Add SEO support */

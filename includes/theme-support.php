@@ -124,21 +124,6 @@ function check_301redirect_tax_url(){
 	}
 }
 
-//добавить фавикон favicon
-add_action( 'wp_head', 'plnt_add_favicons' );
-function plnt_add_favicons() {
-    $dir = get_template_directory_uri() . '/images/favicons';
-    ?>
-    <link rel="icon" type="image/svg+xml" href="<?php echo $dir; ?>/favicon.svg" sizes="32x32"/>
-    <link rel="icon" type="image/png" href="<?php echo $dir; ?>/favicon-32x32.png" sizes="32x32"/>
-    <link rel="icon" type="image/png" href="<?php echo $dir; ?>/favicon-96x96.png" sizes="96x96"/>
-    <link rel="shortcut icon" href="<?php echo $dir; ?>/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo $dir; ?>/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Plantis" />
-    <link rel="manifest" href="<?php echo $dir; ?>/site.webmanifest" />
-    <?php
-}
-
 
 // регистрируем гет парамтер для теста какое ты растение
 add_filter('query_vars', function ($vars) {
@@ -146,3 +131,4 @@ add_filter('query_vars', function ($vars) {
     $vars[] = 'plant';
     return $vars;
 });
+
