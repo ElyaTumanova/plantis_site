@@ -8,6 +8,19 @@
     $gcnum = get_query_var('gcnum');
     $gift_card = mytheme_get_giftcard_by_code( $gcnum );
 
+    $query = new WP_Query( array(
+        'post_type'      => 'gift_card',     // тип поста для YITH карт
+        'post_status'    => 'publish',
+        'posts_per_page' => 1,
+        // 'meta_query'     => array(
+        //     array(
+        //         'key'   => '_ywgc_number',   // метаполе с номером карты
+        //         'value' => $code,
+        //     ),
+        // ),
+        'fields' => 'ids',
+    ) );
+
     if ( $gift_card ) {
         echo 'Номер карты: ' . esc_html( $gift_card->gift_card_number );
         echo '<br>Баланс: ' . wc_price( $gift_card->get_balance() );
@@ -18,7 +31,7 @@
 
     echo('<pre>');
     print_r($gcnum);
-    print_r($gift_card);
+    print_r($query);
     echo('</pre>');
     ?>
 </div>
