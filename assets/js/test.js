@@ -91,7 +91,6 @@ class Test {
         const wa = new URL('https://wa.me/');
         wa.searchParams.set('text', `${shareText} - ${this.resultPageUrl}`);
         this.testShareWhatsapp.setAttribute('href', wa.toString());
-        console.log(wa.toString())
     
         const ok = new URL('https://connect.ok.ru/offer');
         ok.searchParams.set('url', pageUrl);
