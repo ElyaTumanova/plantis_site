@@ -541,10 +541,6 @@ a:hover{ color: var(--primary-600); }
   aspect-ratio: 1 / 1;
 }
 
-/* Ссылки — спокойные, подчёркивание только при hover */
-a{ color: var(--text); text-decoration: none; }
-a:hover{ text-decoration: underline; }
-
 /* Мобайл-твики */
 @media (max-width: 900px){
   .gift-card__main{ gap: 20px; }
