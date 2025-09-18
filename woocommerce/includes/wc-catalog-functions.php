@@ -706,31 +706,31 @@ add_filter( 'wpseo_robots', function( $robots ) {
 }, 30, 1 );
 
 // functions.php или в mu-plugin
-add_filter( 'yith_wcwl_button_html', function( $html, $product_id, $atts ) {
+// add_filter( 'yith_wcwl_button_html', function( $html, $product_id, $atts ) {
 
-    // если rel уже есть — аккуратно дописываем токены
-    if ( preg_match( '/\srel=(["\'])(.*?)\1/i', $html, $m ) ) {
-        $rel = preg_split( '/\s+/', trim( $m[2] ) );
-        foreach ( [ 'nofollow', 'ugc', 'noopener' ] as $t ) {
-            if ( ! in_array( $t, $rel, true ) ) { $rel[] = $t; }
-        }
-        $new = ' rel="' . implode( ' ', $rel ) . '"';
-        $html = preg_replace( '/\srel=(["\'])(.*?)\1/i', $new, $html, 1 );
-    } else {
-        // если rel нет — добавляем
-        $html = preg_replace( '/<a\s+/i', '<a rel="nofollow ugc noopener" ', $html, 1 );
-    }
+//     // если rel уже есть — аккуратно дописываем токены
+//     if ( preg_match( '/\srel=(["\'])(.*?)\1/i', $html, $m ) ) {
+//         $rel = preg_split( '/\s+/', trim( $m[2] ) );
+//         foreach ( [ 'nofollow', 'ugc', 'noopener' ] as $t ) {
+//             if ( ! in_array( $t, $rel, true ) ) { $rel[] = $t; }
+//         }
+//         $new = ' rel="' . implode( ' ', $rel ) . '"';
+//         $html = preg_replace( '/\srel=(["\'])(.*?)\1/i', $new, $html, 1 );
+//     } else {
+//         // если rel нет — добавляем
+//         $html = preg_replace( '/<a\s+/i', '<a rel="nofollow ugc noopener" ', $html, 1 );
+//     }
 
-    return $html;
-}, 10, 3 ); // ВАЖНО: accepted args = 3
+//     return $html;
+// }, 10, 3 ); // ВАЖНО: accepted args = 3
 
 
-add_action( 'send_headers', function () {
-    if ( (isset($_GET['add_to_wishlist']) && $_GET['add_to_wishlist'] !== '')
-      || (isset($_GET['add-to-cart']) && $_GET['add-to-cart'] !== '') ) {
-        header( 'X-Robots-Tag: noindex, nofollow', true );
-    }
-}, 9 );
+// add_action( 'send_headers', function () {
+//     if ( (isset($_GET['add_to_wishlist']) && $_GET['add_to_wishlist'] !== '')
+//       || (isset($_GET['add-to-cart']) && $_GET['add-to-cart'] !== '') ) {
+//         header( 'X-Robots-Tag: noindex, nofollow', true );
+//     }
+// }, 9 );
 
 
 
