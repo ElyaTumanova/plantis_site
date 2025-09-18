@@ -733,8 +733,6 @@ add_filter( 'wpseo_robots', function( $robots ) {
 // }, 9 );
 
 
-
-
 // изменяем canonical для страниц пагинации #SEO
 
 // Disable Canonical for - ALL pages
