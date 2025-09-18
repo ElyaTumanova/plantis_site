@@ -15,7 +15,7 @@
         'meta_query'     => array(
             array(
                 'key'   => 'post_title',   // метаполе с номером карты
-                'value' => $code,
+                'value' => $gcnum,
             ),
         ),
         'fields' => 'ids',
