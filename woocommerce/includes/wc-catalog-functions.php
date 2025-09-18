@@ -705,6 +705,16 @@ add_filter( 'wpseo_robots', function( $robots ) {
     return $robots;
 }, 30, 1 );
 
+add_filter( 'yith_wcwl_button_html', function( $html ) {
+    $html = str_replace(
+        'rel="nofollow"',
+        'rel="nofollow ugc noopener"',
+        $html
+    );
+    return $html;
+}, 10 );
+
+
 // изменяем canonical для страниц пагинации #SEO
 
 // Disable Canonical for - ALL pages
