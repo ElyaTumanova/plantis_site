@@ -454,6 +454,7 @@
     font-size: 45px;
     font-weight: 600;
     grid-area: title;
+    line-height: 1.3;
 }
 
 @media (max-width: 900px) {
