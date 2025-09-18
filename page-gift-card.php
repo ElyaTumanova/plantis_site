@@ -23,16 +23,17 @@
     ) );
 
     if ( $gift_card ) {
-        echo 'Номер карты: ' . esc_html( $gift_card->gift_card_number );
-        echo '<br>Баланс: ' . wc_price( $gift_card->get_balance() );
-        echo '<br>Действует до: ' . date_i18n( get_option( 'date_format' ), $gift_card->get_expiration() );
+        echo 'Карта найдена.';
+        // echo 'Номер карты: ' . esc_html( $gift_card->gift_card_number );
+        // echo '<br>Баланс: ' . wc_price( $gift_card->get_balance() );
+        // echo '<br>Действует до: ' . date_i18n( get_option( 'date_format' ), $gift_card->get_expiration() );
     } else {
         echo 'Карта с таким номером не найдена.';
     }
 
     echo('<pre>');
     print_r($gcnum);
-    print_r($query);
+    print_r($gift_card);
     echo('</pre>');
     ?>
 </div>
