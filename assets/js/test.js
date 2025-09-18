@@ -197,7 +197,7 @@ const questions = [
        new Answer("«Меньше слов, больше <span>фотосинтеза</span> дела».", plantTypes[4]),
        new Answer("«Семь раз отмерь, один раз полей».", plantTypes[1]),
        new Answer("«Не руби пальму, под которой отдыхаешь».", plantTypes[2]),
-       new Answer("«Я стоял и молча наблюдал за вами, поэтому «Я знаю, что вы сделали прошлым летом».", plantTypes[3])
+       new Answer("Я стоял и молча наблюдал за вами, поэтому «Я знаю, что вы сделали прошлым летом».", plantTypes[3])
    ],vars.theme_url + '/images/test/q_10.webp'
   ),
 
