@@ -3,11 +3,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-Contents
+#Contents
 # Opengraph
 # Schema.org
 # Favicon
---------------------------------------------------------------*/
+
 
 /*--------------------------------------------------------------
 # Opengraph
