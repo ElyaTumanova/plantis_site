@@ -127,3 +127,32 @@ buyNowInput.type = 'hidden';
 buyNowInput.name = 'buy_now';
 buyNowInput.value = '1';
 gifForm.appendChild(buyNowInput);
+
+
+
+// gift card page
+
+// FAQ toggle
+document.querySelectorAll('.faq-item').forEach(item => {
+  const q = item.querySelector('.faq-question');
+  if(!q) return;
+  q.addEventListener('click', () => item.classList.toggle('open'));
+});
+
+// Copy gift code
+document.querySelectorAll('[data-copy-target]').forEach(btn=>{
+  btn.addEventListener('click', async ()=>{
+    const target = document.querySelector(btn.getAttribute('data-copy-target'));
+    if(!target) return;
+    const text = target.textContent.trim();
+    try{
+      await navigator.clipboard.writeText(text);
+      const prev = btn.textContent;
+      btn.textContent = 'Скопировано ✓';
+      setTimeout(()=> btn.textContent = prev, 1400);
+    }catch(e){
+      btn.textContent = 'Ошибка копирования';
+      setTimeout(()=> btn.textContent = 'Скопировать', 1400);
+    }
+  });
+});

@@ -42,7 +42,7 @@
 }
 .gift-image {
   height: 300px;
-  border-radius: 30px;
+  /* border-radius: 30px; */
   box-shadow: 0 0 8px rgba(0, 0, 0, .16);
   margin-block: 20px;
 }
@@ -389,7 +389,7 @@
   background: var(--primary);
   border: 1px solid #1c1f22;
   padding: 14px 20px;
-  border-radius: 12px;
+  /* border-radius: 12px; */
 }
 .button.gift-card__btn:hover{ background: var(--primary-600); }
 .button.gift-card__btn:active{ transform: translateY(1px); }
