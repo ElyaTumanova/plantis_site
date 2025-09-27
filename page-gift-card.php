@@ -30,7 +30,7 @@ echo('</pre>');
       <div class="gift-card__row">
         <p>Номер сертификата:</p>
         <p class="copy-wrap">
-          <span id="gift-code">0000-0000-0000-0000</span>
+          <span id="gift-code"><?php echo $gift_card->post_title?></span>
           <button class="copy-btn" type="button" data-copy-target="#gift-code">Скопировать</button>
         </p>
       </div>
