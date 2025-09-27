@@ -461,10 +461,6 @@
 }
 .faq-answer p, .faq-answer ol{ margin: 12px 0 0; }
 
-/* Мелочи */
-a{ color: var(--primary); }
-a:hover{ color: var(--primary-600); }
-
 /* Обёртка секции */
 .gift-card__info{
   margin: 40px auto 24px;
