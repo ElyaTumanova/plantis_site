@@ -25,12 +25,12 @@ echo('</pre>');
     <div class="gift-card__wrap">
       <div class="gift-image-wrap">
         <img src="https://plantis-shop.ru/wp-content/uploads/2025/07/decor-n.webp" class="gift-image" alt="Подарочная карта" loading="lazy">
-        <p class="gift-image-amount">1500<span>₽</span></p>
+        <p class="gift-image-amount"><?php echo $gift_card->_ywgc_balance_total ?><span>₽</span></p>
       </div>
       <div class="gift-card__row">
         <p>Номер сертификата:</p>
         <p class="copy-wrap">
-          <span id="gift-code"><?php echo $gift_card->post_title?></span>
+          <span id="gift-code"><?php echo $gcnum?></span>
           <button class="copy-btn" type="button" data-copy-target="#gift-code">Скопировать</button>
         </p>
       </div>
