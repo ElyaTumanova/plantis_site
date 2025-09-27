@@ -47,14 +47,6 @@
   margin-block: 20px;
 }
 
-.gift-image-amount {
-  position: absolute;
-  bottom: 50px;
-  left: 30px;
-  font-size: 32px;
-  font-weight: 600;
-}
-
 
 .gift-cards-list {
   margin-bottom: 20px;
@@ -264,7 +256,6 @@
   line-height: 1.2;
   margin: 0 0 8px;
   font-weight: 600;
-  letter-spacing: -.015em;
   margin-bottom: 10px;
 }
 
@@ -317,17 +308,23 @@
 
 .gift-image-amount{
   position: absolute;
+  bottom: 50px;
+  left: 30px;
+  right: auto;
+
   margin: 0;
+  padding: 12px 24px;
+  
   backdrop-filter: blur(3px);
-  letter-spacing: .3px;
-  right: 14px; bottom: 14px;
-  padding: 6px 12px;
   border-radius: 999px;
   background: rgba(255,255,255,.92);
+  box-shadow: 0 1px 6px rgba(0,0,0,.06);
+  
   color: var(--text);
   font-weight: 600;
-  box-shadow: 0 1px 6px rgba(0,0,0,.06);
+  font-size: 32px;
 }
+
 
 .gift-image-amount span{ opacity: .9; }
 
@@ -353,7 +350,6 @@
 }
 .gift-card__row span{
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  letter-spacing: .02em;
 }
 /* Блок поздравления (правая колонка) */
 .gift-card__greeting{
@@ -384,7 +380,6 @@
   gap: 10px;
   color: #fff;
   font-weight: 600;
-  letter-spacing: .2px;
   transition: transform .06s ease, background .2s ease, box-shadow .2s ease;
   background: var(--primary);
   border: 1px solid #1c1f22;
@@ -435,7 +430,6 @@
   margin:0;
   font-size: clamp(18px, 2vw, 20px);
   font-weight: 600;
-  letter-spacing: -.01em;
 }
 .faq-question::after{
   content:"+";
