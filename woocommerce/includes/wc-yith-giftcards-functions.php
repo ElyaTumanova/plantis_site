@@ -271,7 +271,7 @@ function mytheme_get_giftcard_by_code( $code ) {
         'post_type'      => 'gift_card',     // тип поста для YITH карт
         'post_status'    => 'publish',
         'posts_per_page' => 1,
-        'post_title' => $code,
+        's' => $code,
         'fields' => 'ids',
     ) );
 
