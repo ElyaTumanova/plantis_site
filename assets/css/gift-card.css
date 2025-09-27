@@ -398,7 +398,6 @@
   background: var(--primary);
   border: 1px solid #1c1f22;
   padding: 14px 20px;
-  /* border-radius: 12px; */
   margin-top: auto;
 }
 .button.gift-card__btn:hover{ background: var(--primary-600); }
