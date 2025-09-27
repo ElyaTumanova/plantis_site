@@ -1,7 +1,8 @@
 <?php get_header(); 
 
 $gcnum = get_query_var('gcnum');
-$gift_card = mytheme_get_giftcard_by_code( $gcnum );
+$gift_card_id = mytheme_get_giftcard_by_code( $gcnum );
+$gift_card = get_post( $gift_card_id );
 echo('<pre>');
 if ( $gift_card ) {
     echo 'Карта найдена.';
@@ -11,7 +12,7 @@ if ( $gift_card ) {
 } else {
     echo 'Карта с таким номером не найдена.';
 }
-// print_r($gcnum);
+print_r($gcnum);
 print_r($gift_card);
 echo('</pre>');
 ?>
