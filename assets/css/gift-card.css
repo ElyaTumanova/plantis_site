@@ -266,7 +266,7 @@
   display: grid;
   grid-template-columns: 1.1fr .9fr;
   gap: 24px;
-  align-items: start;
+  align-items: stretch;
 }
 
 @media (max-width: 900px){
@@ -399,6 +399,7 @@
   border: 1px solid #1c1f22;
   padding: 14px 20px;
   /* border-radius: 12px; */
+  margin-top: auto;
 }
 .button.gift-card__btn:hover{ background: var(--primary-600); }
 .button.gift-card__btn:active{ transform: translateY(1px); }
@@ -417,10 +418,11 @@
   font-size: 13px;
   border-radius: 8px;
   cursor:pointer;
-  transition: background .2s ease, border-color .2s ease;
+  transition: all .2s ease;
   background: #fff;
   border: 1px solid #e0e4e8;
   padding: 8px 12px;
+  min-width: 130px;
 }
 .copy-btn:hover{ background:#f7faf8; }
 .copy-btn:focus-visible{ outline: 3px solid var(--outline); outline-offset: 2px; }

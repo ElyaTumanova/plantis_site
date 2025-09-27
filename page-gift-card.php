@@ -39,15 +39,15 @@ $gift_card = get_post_meta( $gift_card_id );
           <p>Срок действия сертификата:</p>
           <p><?php echo $gift_card['_ywgc_expiration_date_formatted'][0] ?></p>
         </div>
+      </div>
+      
+      <div class="gift-card__greeting">
+        <p class="gift-card__greeting-to"><?php echo $gift_card['_ywgc_recipient_name'][0] ?></p>
+        <p class="gift-card__greeting-text"><?php echo $gift_card['_ywgc_message'][0] ?></p>
+        <p class="gift-card__greeting-from"><?php echo $gift_card['_ywgc_sender_name'][0] ?></p>
         <a class="button gift-card__btn" href="<?php echo get_site_url()?>/shop">К покупкам</a>
       </div>
-      <?php if ($gift_card['_ywgc_recipient_name'][0] || $gift_card['_ywgc_message'][0] || $gift_card['_ywgc_sender_name'][0]):?>
-        <div class="gift-card__greeting">
-          <p class="gift-card__greeting-to"><?php echo $gift_card['_ywgc_recipient_name'][0] ?></p>
-          <p class="gift-card__greeting-text"><?php echo $gift_card['_ywgc_message'][0] ?></p>
-          <p class="gift-card__greeting-from"><?php echo $gift_card['_ywgc_sender_name'][0] ?></p>
-        </div>
-      <?php endif;?>
+
 
     </div>
 
