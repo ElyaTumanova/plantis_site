@@ -40,7 +40,7 @@
 .gift-image {
   height: 300px;
   /* border-radius: 30px; */
-  box-shadow: 0 0 8px rgba(0, 0, 0, .16);
+  /* box-shadow: 0 0 8px rgba(0, 0, 0, .16); */
   margin-block: 20px;
 }
 
@@ -302,6 +302,7 @@
 .gift-content-area .gift-image-wrap {
   max-width: 500px;
   margin-top: 40px;
+  box-shadow: none;
 }
 
 .gift-image{
@@ -318,21 +319,21 @@
   right: auto;
 
   margin: 0;
-  /* padding: 12px 24px; */
+  padding: 12px 24px;
   
-  /* backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
   border-radius: 999px;
-  background: rgba(255,255,255,.92); */
-  /* box-shadow: 0 1px 6px rgba(0,0,0,.06); */
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 1px 6px rgba(0,0,0,.06);
   
   color: var(--text);
   font-weight: 600;
   font-size: 30px;
 }
-/* 
+
 .gift-content-area .gift-image-amount {
   box-shadow: none;
-} */
+}
 
 
 .gift-image-amount span{ opacity: .9; }
