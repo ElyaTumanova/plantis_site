@@ -15,12 +15,13 @@ function plnt_echo_smth() {
   echo $product->get_price_html();
   echo $product->get_price();
 
-  
+  $code = 'B138-0994-F82D-9637';
 
   $query = new WP_Query( array(
         'post_type'      => 'gift_card',     // тип поста для YITH карт
         'post_status'    => 'publish',
-        'posts_per_page' => -1,
+        'posts_per_page' => 1,
+        'post_title' => $code,
         'fields' => 'ids',
     ) );
 
