@@ -37,7 +37,7 @@ echo('</pre>');
         <p>Срок действия сертификата:</p>
         <p>14.09.2025</p>
       </div>
-      <a class="button gift-card__btn" href="<?php site_url()?>/shop">К покупкам</a>
+      <a class="button gift-card__btn" href="<?php echo get_site_url()?>/shop">К покупкам</a>
     </div>
 
     <div class="gift-card__greeting">
