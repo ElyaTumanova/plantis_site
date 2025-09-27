@@ -289,8 +289,8 @@
   border-radius: calc(var(--radius) - 4px);
   overflow: hidden;
   background: #f2f3f5;
-  aspect-ratio: 3 / 1;
-  /* aspect-ratio: 16 / 9; */
+  /* aspect-ratio: 3 / 1; */
+  aspect-ratio: 16 / 9;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -304,6 +304,11 @@
   max-width: 500px;
   margin-top: 40px;
   box-shadow: 0 0 8px rgba(0, 0, 0, .16);
+}
+
+.gift-card__main .gift-image-wrap {
+  max-height: 200px;
+  width: 100%;
 }
 
 .gift-image{
