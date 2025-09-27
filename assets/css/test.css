@@ -223,6 +223,7 @@
 
 @media (max-width:767px) {
     .test__intro {
+        margin-top: 10px;
         grid-template-columns: auto;
         row-gap: 20px;
         grid-template-areas: 
