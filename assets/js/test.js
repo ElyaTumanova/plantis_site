@@ -64,6 +64,7 @@ class Test {
     }
 
     showResult() {
+        finishTestGoal();
         console.debug(this.plantTypes);
         testNavWrap.classList.remove('d-none');
 
@@ -270,6 +271,7 @@ const questions = [
 ];
 
 function initTest () {
+    startTestGoal();
     test.testInit();
     introDiv.classList.add('d-none');
     genDiv.classList.remove('d-none');
@@ -318,6 +320,15 @@ function ajaxGetUpsells(catSlug) {
         console.debug('⚙️ AJAX complete');
         swiper_product_slider_init();
     });
+}
+
+function startTestGoal() {
+  ym(103710881,'reachGoal','start-test') 
+  return true;
+}
+function finishTestGoal() {
+  ym(103710881, 'reachGoal', 'finish-test'); 
+  return true;
 }
 
 const test = new Test(questions, plantTypes);
