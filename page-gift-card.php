@@ -180,7 +180,7 @@ $gift_card = get_post_meta( $gift_card_id );
 
 <?php else:?>
   <div>Карта с таким номером не найдена.</div>
-<? endif:?>
+<? endif;?>
 
 
 <?php get_footer();?>
