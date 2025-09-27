@@ -366,6 +366,9 @@
 }
 /* Блок поздравления (правая колонка) */
 .gift-card__greeting{
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
   border: 1px solid #e7eaee;
   box-shadow: none;
   background: #fff;
@@ -375,14 +378,12 @@
 .gift-card__greeting-to{
   font-size: 18px;
   font-weight: 700;
-  margin: 0 0 8px;
 }
 .gift-card__greeting-text{
-  margin: 0 0 12px;
+  line-height: 1.4;
 }
 .gift-card__greeting-from{
   color: var(--gray-text);
-  margin: 0;
 }
 
 /* Кнопка */
@@ -519,6 +520,7 @@
   grid-template-columns: 72px 1fr;
   align-items: start;
   min-height: 96px;
+  align-items: center;
 }
 
 .giftcard-advantages__wrap:hover{
