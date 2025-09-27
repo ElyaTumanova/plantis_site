@@ -466,7 +466,10 @@
   padding: 0 18px 18px;
   max-height: 650px; /* достаточно для большинства ответов */
 }
-.faq-answer p, .faq-answer ol{ margin: 12px 0 0; }
+.faq-answer p, .faq-answer ol{ 
+  margin: 12px 0 0; 
+  line-height: 1.4;
+}
 
 .faq-answer ol {
   margin-left: 18px;
