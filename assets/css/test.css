@@ -246,6 +246,11 @@
     margin-bottom: 15px;
 }
 
+.test__init-text {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
 .test__init-btn {
     display: block;
     width: 100%;
