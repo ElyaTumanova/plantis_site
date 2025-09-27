@@ -36,7 +36,7 @@ function plnt_echo_smth() {
 
   print_r($title);
   echo('<br>');
-  print_r($post_obj);
+  print_r($query);
   echo('<br>');
   print_r(get_post_meta( $post_id ));
   
