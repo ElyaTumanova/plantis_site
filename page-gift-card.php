@@ -25,7 +25,7 @@ echo('</pre>');
     <div class="gift-card__wrap">
       <div class="gift-image-wrap">
         <img src="https://plantis-shop.ru/wp-content/uploads/2025/07/decor-n.webp" class="gift-image" alt="Подарочная карта" loading="lazy">
-        <p class="gift-image-amount"><?php echo $gift_card->_ywgc_balance_total ?><span>₽</span></p>
+        <p class="gift-image-amount"><?php echo $gift_card['_ywgc_balance_total'][0] ?><span>₽</span></p>
       </div>
       <div class="gift-card__row">
         <p>Номер сертификата:</p>
