@@ -2,7 +2,7 @@
 
 $gcnum = get_query_var('gcnum');
 $gift_card_id = mytheme_get_giftcard_by_code( $gcnum );
-$gift_card = get_post( $gift_card_id );
+$gift_card = get_post_meta( $gift_card_id );
 echo('<pre>');
 if ( $gift_card ) {
     echo 'Карта найдена.';
