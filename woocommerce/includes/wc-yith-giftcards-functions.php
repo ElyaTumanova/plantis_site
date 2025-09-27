@@ -256,30 +256,55 @@ add_filter( 'woocommerce_add_to_cart_redirect', function( $url ) {
 #GIFT CARD PAGE
 --------------------------------------------------------------*/
 
-/**
- * Получить объект подарочной карты по её номеру
- *
- * @param string $code Номер подарочной карты
- * @return YWGC_Gift_Card_Premium|null
- */
+
+// function mytheme_get_giftcard_by_code( $code ) {
+//     $code = sanitize_text_field( $code );
+//     if ( empty( $code ) ) {
+//         return null;
+//     }
+
+//     $query = new WP_Query( array(
+//         'post_type'      => 'gift_card',     // тип поста для YITH карт
+//         'post_status'    => 'publish',
+//         'posts_per_page' => 1,
+//         's' => $code,
+//         'fields' => 'ids',
+//     ) );
+
+//     if ( ! empty( $query->posts ) ) {
+//         return $query->posts[0];
+//     }
+
+//     return null;
+// }
+
 function mytheme_get_giftcard_by_code( $code ) {
-    if ( empty( $code ) ) {
-        return null;
-    }
+  global $wpdb;
 
-    $query = new WP_Query( array(
-        'post_type'      => 'gift_card',     // тип поста для YITH карт
-        'post_status'    => 'publish',
-        'posts_per_page' => 1,
-        's' => $code,
-        'fields' => 'ids',
-    ) );
+  $code = sanitize_text_field( $code );
+  if ( empty( $code ) ) {
+      return null;
+  }
 
-    if ( ! empty( $query->posts ) ) {
-        return $query->posts[0];
-    }
+  // Временный фильтр для точного совпадения заголовка
+  add_filter( 'posts_where', function( $where, $query ) use ( $code, $wpdb ) {
+      if ( isset( $query->query_vars['exact_title'] ) && $query->query_vars['exact_title'] ) {
+          $where .= $wpdb->prepare( " AND {$wpdb->posts}.post_title = %s", $code );
+      }
+      return $where;
+  }, 10, 2 );
 
-    return null;
+  $query = new WP_Query( array(
+      'post_type'   => 'gift_card',
+      'post_status' => 'publish',
+      'posts_per_page' => 1,
+      'fields'     => 'ids',
+      'exact_title'=> true, // наш специальный флаг
+  ) );
+
+  // важно удалить фильтр, чтобы он не влиял на другие запросы
+  remove_all_filters( 'posts_where' );
+
+  return ! empty( $query->posts ) ? (int) $query->posts[0] : null;
 }
-
 
