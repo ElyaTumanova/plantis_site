@@ -36,15 +36,15 @@ echo('</pre>');
       </div>
       <div class="gift-card__row">
         <p>Срок действия сертификата:</p>
-        <p>14.09.2025</p>
+        <p><?php echo $gift_card['_ywgc_expiration_date_formatted'][0] ?></p>
       </div>
       <a class="button gift-card__btn" href="<?php echo get_site_url()?>/shop">К покупкам</a>
     </div>
 
     <div class="gift-card__greeting">
-      <p class="gift-card__greeting-to">Эля!</p>
-      <p class="gift-card__greeting-text">С наилучшими пожеланиями от всех нас! Пусть этот сертификат исполнит маленькое желание. Улыбок и тепла!</p>
-      <p class="gift-card__greeting-from">Твои коллеги</p>
+      <p class="gift-card__greeting-to"><?php echo $gift_card['_ywgc_recipient_name'][0] ?></p>
+      <p class="gift-card__greeting-text"><?php echo $gift_card['_ywgc_message'][0] ?></p>
+      <p class="gift-card__greeting-from"><?php echo $gift_card['_ywgc_sender_name'][0] ?></p>
     </div>
   </div>
 
