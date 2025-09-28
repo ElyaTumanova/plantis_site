@@ -137,6 +137,12 @@ const testResShareBtns = document.querySelectorAll('.test-page .test__result-soc
 const testShareCopyBtn  = document.querySelectorAll('.result-test .copyShareBtn');
 const testResShareCopyBtn  = document.querySelectorAll('.test-page .copyShareBtn');
 
+console.log(takeTestBtn)
+console.log(testShareBtns)
+console.log(testShareCopyBtn)
+console.log(testResShareBtns)
+console.log(testResShareCopyBtn)
+
 
 takeTestBtn.addEventListener('click',function(){
   ym(103710881,'reachGoal','take-test')
@@ -167,11 +173,7 @@ testResShareCopyBtn.addEventListener('click',function(){
   return true;
 });
 
-console.log(takeTestBtn)
-console.log(testShareBtns)
-console.log(testShareCopyBtn)
-console.log(testResShareBtns)
-console.log(testResShareCopyBtn)
+
 
 
 
