@@ -59,7 +59,7 @@ function datePlus3MonthsIntl() {
           </div>
           
           <div class="gift-card__greeting">
-            <p class="gift-card__greeting-to">Имя (кому)</p>
+            <p class="gift-card__greeting-to">[Имя (кому)]</p>
             <p class="gift-card__greeting-text">Эта подарочная карта для тебя 🌿
               <br>
               Открой для себя мир комнатных растений, подбери красивые горшки и полезные аксессуары.
@@ -69,7 +69,7 @@ function datePlus3MonthsIntl() {
               <br>
               <strong>[Или ваш текст поздравления]</strong>
             </p>
-            <p class="gift-card__greeting-from">Имя (от кого)</p>
+            <p class="gift-card__greeting-from">[Имя (от кого)]</p>
             <a class="button gift-card__btn" href="<?php echo get_site_url()?>/shop">К покупкам</a>
           </div>
         </div>
