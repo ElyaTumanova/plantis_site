@@ -49,7 +49,7 @@ function datePlus3MonthsIntl() {
             <a class="button gift-card__btn" href="<?php echo get_site_url()?>/shop">К покупкам</a>
           </div>
         </div>
-        <?php get_template_part( 'template-parts/gift-card-exam' );?>
+        <?php //get_template_part( 'template-parts/gift-card-faq' );?>
     </div>
   </div>
   <div class="page-popup__popup-overlay popup-overlay"></div>
