@@ -5,14 +5,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
-//add_action( 'wp_footer', 'plnt_echo_smth' );
+add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
-    if(is_page('test-kakoe-ty-rastenie')) {
-        echo ('this is test');
-    } else {
-        echo ('this is NOT test');
+    if(is_page('test-result')) {
+        echo ('this is test res');
+        $plant_types = require get_theme_file_path('assets/data/plant-types.php');
+        $plants_by_slug = [];
+        foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
+        print_r($plants_by_slug);
+        $gen = get_query_var('gen');
+        $plant = get_query_var('plant');
+        echo ($gen);
+        echo ($plant);
+
+        if ($gen && $plant && array_key_exists($gen, $plants_by_slug) && array_key_exists($plant, $plants_by_slug)) {
+          $img = $plants_by_slug[$plant]['image'][$gen];
+        } else {
+          $img = get_template_directory_uri().'/images/test/test_cover.webp';
+        }
     }
 }
 
