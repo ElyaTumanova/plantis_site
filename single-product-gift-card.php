@@ -46,7 +46,7 @@ global $gcid;
       </div>	
     </div>
   </div>
-  <?php wc_get_template_part('template-parts/popups/gift-card-popup');?>
+  <?php //wc_get_template_part('template-parts/popups/gift-card-popup');?>
 
 </div>
 
