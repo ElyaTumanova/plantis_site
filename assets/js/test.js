@@ -312,7 +312,7 @@ function ajaxGetUpsells(catSlug) {
         return response.json();
     })
     .then(result => {
-        console.debug('✅ AJAX success:', result);
+        console.debug('✅ AJAX success:');
         testUpsellsDiv.innerHTML = result.test_upsells;
     })
     .catch(error => {
