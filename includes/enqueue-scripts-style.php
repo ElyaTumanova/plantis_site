@@ -83,14 +83,15 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		                                     '/assets/js/cart-backorder-crossell.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/cart-backorder-crossell.js'), true );
 
 		
-		if(is_page('test-kakoe-ty-rastenie')) {
+		if(is_page('test-kakoe-ty-rastenie') || is_page('test-result') ) {
 			wp_enqueue_script( 'test', get_template_directory_uri() .
 												 '/assets/js/test.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/test.js'), true );
             
             $plant_types = require get_theme_file_path('assets/data/plant-types.php');
             $inline = 'const plantTypes = ' . wp_json_encode($plant_types, JSON_UNESCAPED_UNICODE) . ';';
             wp_add_inline_script('test', $inline, 'before');
-        }
+            wp_localize_script('test','vars', array('theme_url' => get_template_directory_uri(), 'site_url' => get_site_url()));
+    }
 
 		wp_enqueue_script( 'cart-upsells', get_template_directory_uri() .
 		                                     '/assets/js/cart-upsells.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/cart-upsells.js'), true );
@@ -150,9 +151,8 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		                             '/assets/css/popup.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/popup.css'), 'all' );
 		wp_enqueue_style( 'test', get_template_directory_uri() .
 		                             '/assets/css/test.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/test.css'), 'all' );
-    	// Пробрасываем путь к папке темы в JS
-        wp_localize_script('test','vars', array('theme_url' => get_template_directory_uri(), 'site_url' => get_site_url()));
-        wp_enqueue_style( 'progressive-image', get_template_directory_uri() .
+  
+    wp_enqueue_style( 'progressive-image', get_template_directory_uri() .
 		                             '/assets/css/progressive-image.css', array(), null, 'all' ); // for lazy load
 		wp_enqueue_style( 'FlexSlider', get_template_directory_uri() .
 		                             '/assets/css/FlexSlider.css', array(), null, 'all' );
