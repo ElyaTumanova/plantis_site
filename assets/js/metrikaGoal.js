@@ -132,22 +132,19 @@ document.addEventListener( 'wpcf7mailsent', function( event ) {
 
 const takeTestBtn = document.querySelector('.take-test');
 const testShareBtns = document.querySelectorAll('.result-test .test__result-socials .social-media__button');
-const testResShareBtns = document.querySelectorAll('.test-page .test__result-socials .social-media__button');
-
 const testShareCopyBtn  = document.querySelector('.result-test .copyShareBtn');
-const testResShareCopyBtn  = document.querySelector('.test-page .copyShareBtn');
 
 console.log(takeTestBtn)
 console.log(testShareBtns)
 console.log(testShareCopyBtn)
-console.log(testResShareBtns)
-console.log(testResShareCopyBtn)
 
+if(takeTestBtn) {
+  takeTestBtn.addEventListener('click',function(){
+    ym(103710881,'reachGoal','take-test')
+    return true;
+  });
+}
 
-takeTestBtn.addEventListener('click',function(){
-  ym(103710881,'reachGoal','take-test')
-  return true;
-});
 
 testShareBtns.forEach(btn => {
   btn.addEventListener('click',function(){
@@ -156,22 +153,12 @@ testShareBtns.forEach(btn => {
   });
 })
 
-testShareCopyBtn.addEventListener('click',function(){
-  ym(103710881,'reachGoal','share-test')
-  return true;
-});
-
-testResShareBtns.forEach(btn => {
-  btn.addEventListener('click',function(){
-    ym(103710881,'reachGoal','share-test-res')
+if(testShareCopyBtn) {
+  testShareCopyBtn.addEventListener('click',function(){
+    ym(103710881,'reachGoal','share-test')
     return true;
   });
-})
-
-testResShareCopyBtn.addEventListener('click',function(){
-  ym(103710881,'reachGoal','share-test-res')
-  return true;
-});
+}
 
 
 

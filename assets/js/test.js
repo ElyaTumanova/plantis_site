@@ -27,7 +27,30 @@ class Test {
       this.testShareOk = document.querySelector('.test__result .social-media__button-ok');
       this.testShareVk = document.querySelector('.test__result .social-media__button-vk');
       this.testResultImage = document.querySelector('.test__result-image');
+
       this.questionForm.addEventListener('submit', (e)=>{this.handleFormSubmit(e)});
+
+      // metrika goal
+      this.copyShareBtn.addEventListener('click',function(){
+        ym(103710881,'reachGoal','share-test-res')
+        return true;
+      });
+      this.testShareTelegram.addEventListener('click',function(){
+        ym(103710881,'reachGoal','share-test-res')
+        return true;
+      });
+      this.testShareWhatsapp.addEventListener('click',function(){
+        ym(103710881,'reachGoal','share-test-res')
+        return true;
+      });
+      this.testShareOk.addEventListener('click',function(){
+        ym(103710881,'reachGoal','share-test-res')
+        return true;
+      });
+      this.testShareVk.addEventListener('click',function(){
+        ym(103710881,'reachGoal','share-test-res')
+        return true;
+      });
     }
     
     testInit() {
