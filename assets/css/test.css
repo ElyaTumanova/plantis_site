@@ -77,6 +77,12 @@
     /* width: 100%; */
 }
 
+@media(max-width: 767px) {
+ .test__image {
+    display: none;
+ }
+}
+
 .test__answers {
     display: grid;
     grid-template-columns: 1fr 1fr;
