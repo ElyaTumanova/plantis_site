@@ -339,6 +339,7 @@
 @media (max-width: 767px) {
     .test__select-gen {
         width: 100%;
+        min-height: calc(100dvh - 220px);
     }
 }
 
@@ -429,6 +430,12 @@
     .test__select-gen-btn:hover {
         transform: translateY(-2px);
     }
+}
+
+@media (max-width: 767px) {
+    .test__select-gen-btn {
+      margin-top: auto;
+  }
 }
 
 
