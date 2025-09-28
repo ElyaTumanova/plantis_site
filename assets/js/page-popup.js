@@ -6,6 +6,9 @@ const pageClosePopupBtn = document.querySelector('.page-popup__close');
 const pagePopupOverlay = document.querySelector('.page-popup__popup-overlay');
 const pagePopupContactForm = document.querySelector('.page-popup form');
 
+console.log(pageOpenPopupBtn)
+console.log(pagePopup)
+
 //для попапа на странице усуги по уходу
 let serviceButtons = document.querySelectorAll('.service-page .page-popup-open-btn');
 let serviceNameInput = document.querySelector('.ukhod-popup-service-name');
