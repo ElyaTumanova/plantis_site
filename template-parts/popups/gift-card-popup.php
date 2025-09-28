@@ -4,11 +4,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 $close_icon = carbon_get_theme_option('close_icon');
 function datePlus3MonthsIntl() {
+    // создаём дату через 3 месяца
     $date = new DateTime('+3 months');
-    $fmt  = new IntlDateFormatter('ru_RU', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
-    $fmt->setPattern('d MMMM, yyyy'); // 27 сентября, 2026
-    return $fmt->format($date);
+
+    // массив русских названий месяцев в родительном падеже
+    $months = [
+        1 => 'января',
+        2 => 'февраля',
+        3 => 'марта',
+        4 => 'апреля',
+        5 => 'мая',
+        6 => 'июня',
+        7 => 'июля',
+        8 => 'августа',
+        9 => 'сентября',
+        10 => 'октября',
+        11 => 'ноября',
+        12 => 'декабря'
+    ];
+
+    $day   = $date->format('j');
+    $month = $months[(int)$date->format('n')];
+    $year  = $date->format('Y');
+
+    return "{$day} {$month} {$year}";
 }
+
 
 ?>
 <div class="page-popup popup gift-card-popup">
@@ -49,7 +70,7 @@ function datePlus3MonthsIntl() {
             <a class="button gift-card__btn" href="<?php echo get_site_url()?>/shop">К покупкам</a>
           </div>
         </div>
-        <?php //get_template_part( 'template-parts/gift-card-faq' );?>
+        <?php get_template_part( 'template-parts/gift-card-faq' );?>
     </div>
   </div>
   <div class="page-popup__popup-overlay popup-overlay"></div>
