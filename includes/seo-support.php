@@ -26,33 +26,19 @@ add_filter('wpseo_opengraph_desc', function ($desc) {
     if (is_page('test-kakoe-ty-rastenie')) {
         return 'Узнай, какое растение тебе ближе всего!';
     } else if (is_page('test-result')) {
-        return 'Результат теста - Какое ты растение?';
+        $plant_types = require get_theme_file_path('assets/data/plant-types.php');
+        $plants_by_slug = [];
+        foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
+        $plant = get_query_var('plant');
+        if ($plant && isset($plants_by_slug[$plant])) {
+          $desc = $plants_by_slug[$plant]['result'];
+        } else {
+          $desc = 'Результат теста - Какое ты растение?';
+        }
+        return $desc;
     }
     return $desc;
 });
-
-// add_filter('wpseo_opengraph_image', function ($img) {
-//     if (is_page('test-kakoe-ty-rastenie')) {
-//         return get_template_directory_uri() .'/images/test/test_cover_long.jpg';
-//     }
-//     return $img;
-// },100);
-
-// // Задаём ширину og:image
-// add_filter('wpseo_opengraph_image_width', function ($width) {
-//     if (is_page('test-kakoe-ty-rastenie')) {   // ID страницы, где нужно
-//         return 1200;
-//     }
-//     return $width;
-// });
-
-// // Задаём высоту og:image
-// add_filter('wpseo_opengraph_image_height', function ($height) {
-//     if (is_page('test-kakoe-ty-rastenie')) {
-//         return 630;
-//     }
-//     return $height;
-// });
 
 add_action('wp_head', function() {
     if (is_page('test-kakoe-ty-rastenie')) {
