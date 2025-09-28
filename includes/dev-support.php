@@ -10,6 +10,7 @@ add_action( 'wp_footer', 'plnt_echo_smth' );
 
 function plnt_echo_smth() {
     if(is_page('test-result')) {
+      echo('<pre>');
         echo ('this is test res');
         $plant_types = require get_theme_file_path('assets/data/plant-types.php');
         $plants_by_slug = [];
@@ -25,6 +26,8 @@ function plnt_echo_smth() {
         } else {
           $img = get_template_directory_uri().'/images/test/test_cover.webp';
         }
+        echo($img);
+        echo('<pre>');
     }
 }
 
