@@ -114,7 +114,7 @@ class Test {
         this.testShareTelegram.setAttribute('href',tg.toString());
 
         const wa = new URL('https://wa.me/');
-        wa.searchParams.set('text', `${shareText} - ${this.resultPageUrl}`);
+        wa.searchParams.set('text', `${this.resultPageUrl}\n${shareText}`);
         this.testShareWhatsapp.setAttribute('href', wa.toString());
     
         const ok = new URL('https://connect.ok.ru/offer');
