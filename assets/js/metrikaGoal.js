@@ -118,6 +118,23 @@ jQuery(document).ready(function() {
 		 ym(103710881, 'reachGoal', 'load-price-list'); 
 		return true;
 	});	
+
+  jQuery('.take-test').click(function(){
+    ym(103710881,'reachGoal','take-test'); 
+    return true;
+  });	
+
+  jQuery('.result-test .test__result-socials .social-media__button').click(function(){
+    ym(103710881,'reachGoal','share-test'); 
+    return true;
+  });	
+
+  jQuery('.result-test #copyShareBtn').click(function(){
+    ym(103710881,'reachGoal','share-test'); 
+    return true;
+  });	
+  
+
 });
 
 //Отправка формы «Предзаказ»
@@ -129,36 +146,6 @@ document.addEventListener( 'wpcf7mailsent', function( event ) {
 }, false );
 
 
-
-const takeTestBtn = document.querySelector('.take-test');
-const testShareBtns = document.querySelectorAll('.result-test .test__result-socials .social-media__button');
-const testShareCopyBtn  = document.querySelector('.result-test .copyShareBtn');
-
-console.log(takeTestBtn)
-console.log(testShareBtns)
-console.log(testShareCopyBtn)
-
-if(takeTestBtn) {
-  takeTestBtn.addEventListener('click',function(){
-    ym(103710881,'reachGoal','take-test')
-    return true;
-  });
-}
-
-
-testShareBtns.forEach(btn => {
-  btn.addEventListener('click',function(){
-    ym(103710881,'reachGoal','share-test')
-    return true;
-  });
-})
-
-if(testShareCopyBtn) {
-  testShareCopyBtn.addEventListener('click',function(){
-    ym(103710881,'reachGoal','share-test')
-    return true;
-  });
-}
 
 
 
