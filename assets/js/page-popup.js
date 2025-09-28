@@ -17,7 +17,8 @@ const giftCardPopupContainer = document.querySelector('.page-popup__container_gi
 if (pagePopup != null && pageOpenPopupBtn != null) {
     pageOpenPopupBtn.forEach(button => {
       button.addEventListener ("click", (evt)=>{
-          toggle_page_popup ();
+        console.log(pagePopup)
+        toggle_page_popup ();
       });
     });
     
