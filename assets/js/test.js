@@ -27,15 +27,17 @@ class Test {
       this.testShareOk = document.querySelector('.test__result .social-media__button-ok');
       this.testShareVk = document.querySelector('.test__result .social-media__button-vk');
       this.testResultImage = document.querySelector('.test__result-image');
-      this.handleFormSubmit = this.handleFormSubmit.bind(this);
       this.questionForm.addEventListener('submit', (e)=>{this.handleFormSubmit(e)});
     }
     
     testInit() {
       this.questions[this.current].renderQuestion();
+      console.log(this);
     }
 
     handleFormSubmit(e) {
+      console.log(this);
+      console.log(this.questionForm);
       e.preventDefault();
       if (this.questions[this.current].chosenAnswer) {
         this.questions[this.current].chosenAnswer.countScore();
