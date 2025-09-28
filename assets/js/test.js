@@ -32,12 +32,9 @@ class Test {
     
     testInit() {
       this.questions[this.current].renderQuestion();
-      console.log(this);
     }
 
     handleFormSubmit(e) {
-      console.log(this);
-      console.log(this.questionForm);
       e.preventDefault();
       if (this.questions[this.current].chosenAnswer) {
         this.questions[this.current].chosenAnswer.countScore();
