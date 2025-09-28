@@ -64,6 +64,7 @@ class Test {
     }
 
     showResult() {
+        console.debug('test show result');
         finishTestGoal();
         console.debug(this.plantTypes);
         testNavWrap.classList.remove('d-none');
@@ -271,6 +272,7 @@ const questions = [
 ];
 
 function initTest () {
+    console.debug('test poekhali');
     startTestGoal();
     test.testInit();
     introDiv.classList.add('d-none');
