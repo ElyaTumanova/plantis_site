@@ -55,7 +55,7 @@
     <div class="test d-none">
       <progress id="progress" value="1" max="10"></progress>
       <h2 class="test__question"></h2>
-      <form class = "test__answers-form">
+      <form class = "test__answers-form" id="questionForm">
         <div class = "test__answers">
 
         </div>
