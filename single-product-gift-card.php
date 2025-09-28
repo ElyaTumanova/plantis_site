@@ -4,7 +4,7 @@ global $gcid;
 //wc_get_template( 'single-product/product-image.php' );
 ?>
 <div class="gift-content-area">
-  <h1>Электронный подарочный сертификат</h1>
+  <h1 class="gift-card__title">Электронный подарочный сертификат</h1>
   <div class="gift-image-wrap">
     <img src="https://plantis-shop.ru/wp-content/uploads/2025/07/decor-n.webp" class="gift-image" alt="Подарочная карта">
     <p class="gift-image-amount">1500<span>₽</span></p>

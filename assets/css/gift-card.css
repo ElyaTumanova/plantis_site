@@ -112,7 +112,9 @@
   outline: none;
   margin: 10px 0 0 !important;
 }
+
 .gift-cards_form textarea {
+  padding: 25px;
   border-radius: 20px !important;
 }
 .gift-cards_form input:focus, .gift-cards_form textarea:focus {
