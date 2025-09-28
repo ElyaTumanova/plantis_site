@@ -187,6 +187,11 @@
     }
 }
 
+@media(max-width: 767px) {
+    .test__button {
+        margin-top: auto;
+    }
+}
 
 /* .test__error {
     color: var(--red-color);
