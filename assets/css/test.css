@@ -38,7 +38,8 @@
     "progressbar"
     "question"
     "answers";
-    grid-template-rows: repeat(3, min-content)
+    grid-template-rows: repeat(3, min-content);
+    min-height: 100dvh;
  }
 }
 
