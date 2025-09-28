@@ -27,11 +27,11 @@ class Test {
       this.testShareOk = document.querySelector('.test__result .social-media__button-ok');
       this.testShareVk = document.querySelector('.test__result .social-media__button-vk');
       this.testResultImage = document.querySelector('.test__result-image');
+      this.questionForm.addEventListener('submit', (e)=>{this.handleFormSubmit(e)});
    }
 
    testInit() {
     this.questions[this.current].renderQuestion();
-    this.questionForm.addEventListener('submit', (e)=>{this.handleFormSubmit(e)});
    }
 
     handleFormSubmit(e) {
