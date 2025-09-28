@@ -31,11 +31,11 @@ class Test {
 
    testInit() {
     this.questions[this.current].renderQuestion();
-    this.questionForm.addEventListener('submit', ()=>{this.handleFormSubmit()});
+    this.questionForm.addEventListener('submit', (e)=>{this.handleFormSubmit(e)});
    }
 
-    handleFormSubmit() {
-      event.preventDefault();
+    handleFormSubmit(e) {
+      e.preventDefault();
       if (this.questions[this.current].chosenAnswer) {
         this.questions[this.current].chosenAnswer.countScore();
 
