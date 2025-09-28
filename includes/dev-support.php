@@ -21,7 +21,7 @@ function plnt_echo_smth() {
         echo ($gen);
         echo ($plant);
 
-        if ($gen && $plant && array_key_exists($gen, $plants_by_slug) && array_key_exists($plant, $plants_by_slug)) {
+        if ($gen && $plant && isset($plants_by_slug[$plant]) && isset($plants_by_slug[$plant]['image'][$gen])) {
           $img = $plants_by_slug[$plant]['image'][$gen];
         } else {
           $img = get_template_directory_uri().'/images/test/test_cover.webp';
