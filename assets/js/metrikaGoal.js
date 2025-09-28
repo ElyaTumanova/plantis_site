@@ -134,8 +134,8 @@ const takeTestBtn = document.querySelector('.take-test');
 const testShareBtns = document.querySelectorAll('.result-test .test__result-socials .social-media__button');
 const testResShareBtns = document.querySelectorAll('.test-page .test__result-socials .social-media__button');
 
-const testShareCopyBtn  = document.querySelectorAll('.result-test .copyShareBtn');
-const testResShareCopyBtn  = document.querySelectorAll('.test-page .copyShareBtn');
+const testShareCopyBtn  = document.querySelector('.result-test .copyShareBtn');
+const testResShareCopyBtn  = document.querySelector('.test-page .copyShareBtn');
 
 console.log(takeTestBtn)
 console.log(testShareBtns)
