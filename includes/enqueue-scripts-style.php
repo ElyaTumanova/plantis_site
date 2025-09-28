@@ -83,7 +83,7 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		                                     '/assets/js/cart-backorder-crossell.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/cart-backorder-crossell.js'), true );
 
 		
-		if(is_page('test-kakoe-ty-rastenie') || is_page('test-result') ) {
+		if(is_page('test-kakoe-ty-rastenie')) {
 			wp_enqueue_script( 'test', get_template_directory_uri() .
 												 '/assets/js/test.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/test.js'), true );
             
