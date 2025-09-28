@@ -79,7 +79,7 @@ class Test {
 
         console.debug(this.resultPlant);
         //link to share
-        const shareText = 'Посмотри какое я растение';
+        const shareText = 'Посмотри какое я растение \n👉 Пройти тест: https://plantis-shop.ru/test-kakoe-ty-rastenie';
         const pageUrl = new URL('/test-result', vars.site_url); // vars.site_url = 'https://dev.plantis-shop.ru'
         pageUrl.searchParams.set('plant', this.resultPlant.slug); // 'zamiokulkas'
         pageUrl.searchParams.set('gen', gen);                     // 'f'
@@ -95,12 +95,12 @@ class Test {
         this.testShareWhatsapp.setAttribute('href', wa.toString());
     
         const ok = new URL('https://connect.ok.ru/offer');
-        ok.searchParams.set('url', pageUrl);
+        ok.searchParams.set('url', this.resultPageUrl);
         ok.searchParams.set('title', shareText);
         this.testShareOk.setAttribute('href', ok.toString());
 
         const vk = new URL('https://vk.com/share.php');
-        vk.searchParams.set('url', pageUrl);
+        vk.searchParams.set('url', this.resultPageUrl);
         vk.searchParams.set('title', shareText);
         this.testShareVk.setAttribute('href', vk.toString());
 
