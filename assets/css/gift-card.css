@@ -266,7 +266,7 @@
 
 .gift-content-area .gift-image-wrap {
   max-width: 500px;
-  margin-top: 40px;
+  margin-top: 15px;
   box-shadow: 0 0 8px rgba(0, 0, 0, .16);
 }
 
@@ -366,11 +366,13 @@
 }
 
 .gift-card__example-btn {
-  margin-top: 15px;
+  margin-top: 40px;
   padding: 10px;
   background-color: var(--gray);
   font-weight: 600;
   border-radius: 10px;
+  border: none;
+  font-size: 14px;
 }
 
 /* Кнопка-копировать номер */
