@@ -465,10 +465,15 @@ add_action('woocommerce_after_shop_loop_item', 'plnt_get_catalog_schema_data', 4
 function plnt_get_catalog_schema_data() {
     if ( is_shop() || is_product_category() || is_product_tag() || is_tax() ) {
         global $product;
+        print_r($product);
         global $plants_cat_id;
         $parentCatId = check_category ($product);
         $product_id = $product->get_id();
-        $price = number_format($product->get_price(), 2, '.', '');
+        if($product->get_price()) {
+          $price = number_format($product->get_price(), 2, '.', '');
+        } else {
+          $price = 0;
+        }
         ?>
             <meta itemprop="description" content="<?php echo strip_tags($product->get_description())?>">
             <link itemprop="url" href="<?php echo get_permalink( $product_id )?>">
