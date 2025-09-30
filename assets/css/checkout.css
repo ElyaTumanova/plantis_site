@@ -755,15 +755,18 @@ label.list-view {
     content: "next";
     font-family: swiper-icons;
     font-size: 18px;
+    font-weight: 600;
     transition: transform .2s ease;
     color: var(--text);
     width: 1.25em;
     text-align: center;
     display: inline-block;
+    margin-left: 10px;
+    transform: rotate(90deg);
 }
 
 .ywgc-show-giftcard.open::after{
-  content:"–";
+  transform: rotate(-90deg);
 }
 
 .ywgc-gift-card-applied {
