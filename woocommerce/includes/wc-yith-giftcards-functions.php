@@ -160,6 +160,11 @@ add_filter('ywgc_remove_gift_card_text', function (){
   return '×';
 });
 
+//изменили плейсхолдер для поля кода карты
+add_filter('ywgc_checkout_box_placeholder', function (){
+  return 'Номер подарочного сертификата';
+});
+
 
 // add_filter('yith_ywgc_cart_totals_gift_card_label',function (){
 //   return 'Подарочный сертификат';

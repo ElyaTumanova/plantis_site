@@ -126,6 +126,9 @@ Contents
     add_action( 'woocommerce_checkout_order_review', 'plnt_set_giftcard_hook', 25 );
 
     function plnt_set_giftcard_hook() {
+        if (! is_gift_card_checkout()) {
+          return;
+        }
         do_action( 'plnt_woocommerce_checkout_gift_card' );
     }
 
