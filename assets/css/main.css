@@ -301,6 +301,7 @@
 
 .social-media__button-max {
     background-image: url('https://dev.plantis-shop.ru/wp-content/themes/plantis_site/images/icons/max-bg.svg');
+    background-size: contain;
 }
 
 .social-media__button-ok {
