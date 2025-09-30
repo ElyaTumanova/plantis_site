@@ -52,7 +52,7 @@ add_action('ywgc_gift_cards_email_before_preview', function ($introductory_text,
 }, 10, 2);
 
 add_filter('ywgc_gift_cards_email_before_preview_text', function (){
-  return;
+  return '';
 });
 /**
  * Вывод изображения, номера и суммы подарочной карты в письме
