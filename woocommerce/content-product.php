@@ -25,7 +25,7 @@ global $product;
 if ( empty( $product ) || ! $product->is_visible()) {
 	return;
 }
-if ( is_shop() || is_product_category() || is_product_tag() || is_tax() && ! $product->is_virtual()) {
+if ( (is_shop() || is_product_category() || is_product_tag() || is_tax()) && ! $product->is_virtual()) {
     $schema_data = 'itemprop="itemListElement" itemscope itemtype="https://schema.org/Offer"';
 } else {
     $schema_data = '';
