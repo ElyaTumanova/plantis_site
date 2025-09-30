@@ -287,6 +287,7 @@
     height: 50px;
     border-radius: 100%;
     border: none;
+    overflow: hidden;
     /* padding: 0; */
 }
 
@@ -298,9 +299,9 @@
     background-color: var(--whatsapp);
 }
 
-/* .social-media__button-max {
-    background: linear-gradient(90deg,#5a8cff -16.1%,#43d6ff 16.36%,#8f3fff 76.63%);
-} */
+.social-media__button-max {
+    background-image: url('https://dev.plantis-shop.ru/wp-content/themes/plantis_site/images/icons/max-bg.svg');
+}
 
 .social-media__button-ok {
     background-color: var(--ok);
