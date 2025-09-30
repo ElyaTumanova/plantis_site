@@ -6,7 +6,7 @@ global $gcid;
 <div class="gift-content-area">
   <div>
     <h1 class="gift-card__title">Электронный подарочный сертификат</h1>
-    <button class="gift-card__example-btn button page-popup-open-btn">Посмотреть пример</button>
+    <button class="gift-card__example-btn page-popup-open-btn">Посмотреть пример</button>
   </div>
   <div class="gift-image-wrap">
     <img src="https://plantis-shop.ru/wp-content/uploads/2025/07/decor-n.webp" class="gift-image" alt="Подарочная карта">
