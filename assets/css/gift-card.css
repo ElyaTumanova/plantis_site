@@ -97,6 +97,7 @@
   border-radius: 20px;
   cursor: pointer;
   height: fit-content;
+  width: fit-content;
   box-shadow: 0 0 8px rgba(0, 0, 0, .16);
   min-width: 78px;
   text-align: center;
