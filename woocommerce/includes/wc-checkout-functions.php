@@ -123,7 +123,7 @@ Contents
     
     // хук для подарчной карты #giftcard
 
-    add_action( 'woocommerce_checkout_order_review', 'plnt_set_giftcard_hook', 25 );
+    //add_action( 'woocommerce_checkout_order_review', 'plnt_set_giftcard_hook', 25 );
 
     function plnt_set_giftcard_hook() {
         if (! is_gift_card_checkout()) {
