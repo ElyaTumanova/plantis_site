@@ -411,7 +411,7 @@ function is_gift_card_checkout() {
       $product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
       $id = $product->get_id();
       if ($id !== $gcid ){
-          $notOnlyPlantsInCart = true;
+          $notOnlyGiftCardInCart = true;
           break;
       } 
   }
