@@ -402,7 +402,7 @@ function get_backorder_info_snippet($_product, $qty) {
     }
 }
 
-function is_gift_card_checkout() {
+function is_not_gift_card_checkout() {
   global $gcid;
   $notOnlyGiftCardInCart = false;
 

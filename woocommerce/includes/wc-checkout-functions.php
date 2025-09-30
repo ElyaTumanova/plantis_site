@@ -126,7 +126,7 @@ Contents
     add_action( 'woocommerce_checkout_order_review', 'plnt_set_giftcard_hook', 25 );
 
     function plnt_set_giftcard_hook() {
-        if (! is_gift_card_checkout()) {
+        if (is_not_gift_card_checkout()) {
            do_action( 'plnt_woocommerce_checkout_gift_card' );
         };
     }
@@ -472,7 +472,7 @@ Contents
     add_action( 'woocommerce_checkout_order_review', 'delivery_info', 10 );
    
     function delivery_info(){
-        if (! is_gift_card_checkout()) {
+        if (! is_not_gift_card_checkout()) {
           return;
         }
         $min_small_delivery = carbon_get_theme_option('min_small_delivery');
