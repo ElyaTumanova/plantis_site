@@ -751,7 +751,7 @@ label.list-view {
     background-color: var(--bg);
 }
 
-.ywgc-show-giftcard {
+.ywgc-show-giftcard::after {
     content: "+";
     font-size: 22px;
     transition: transform .2s ease;
@@ -761,7 +761,7 @@ label.list-view {
     display: inline-block;
 }
 
-.ywgc-show-giftcard.open{
+.ywgc-show-giftcard.open::after{
   content:"–";
 }
 
