@@ -127,6 +127,9 @@ Contents
 
     function plnt_set_giftcard_hook() {
         do_action( 'plnt_woocommerce_checkout_gift_card' );
+        if (! is_gift_card_checkout()) {
+            remove_all_actions( 'plnt_woocommerce_checkout_gift_card' );
+        };
     }
 
     // хук перед итоговой стоимостью

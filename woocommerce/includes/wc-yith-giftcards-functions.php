@@ -155,10 +155,6 @@ add_filter( 'ywgc_gift_card_code_form_checkout_hook', function (){
   return 'plnt_woocommerce_checkout_gift_card';
 });
 
-if (! is_gift_card_checkout()) {
-    remove_all_actions( 'plnt_woocommerce_checkout_gift_card' );
-};
-
 //изменили название поля для удаления кода карты
 add_filter('ywgc_remove_gift_card_text', function (){
   return '×';
