@@ -10,11 +10,11 @@ get_header(); ?>
         <?php get_template_part('template-parts/info-pages-list');?> 
     </aside> 
 		<main id="main" class="site-main" role="main">
-      <div class="entry-header container">
-        <h1 class="entry-title about__title">О нас</h1>                
+      <div class="entry-header">
+        <h1 class="entry-title">О нас</h1>                
           </div>
       <div class="about info__content">
-        <div class="about__wrap container">
+        <div class="about__wrap">
             <div>
                 <div class="info__accent-text-upper">Мы хотим стать для вас местом, где вы поймёте, что выращивание комнатных растений простой процесс, который не требует много сил и специфических знаний.</div>
                 <h2 class="info__heading heading-2">Кто мы такие?</h2>
