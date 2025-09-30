@@ -202,15 +202,6 @@
 
 /* gift card result page */
 
-/* Палитра: убираем зелёный, делаем акцент почти чёрным */
-:root{
-  --primary: #0f1113;
-  --primary-600: #000000;
-  --primary-100: #f5f6f7;
-  --outline: #cfd5db;
-  --radius: 14px;
-}
-
 .gift-card-content-area{
   max-width: 1160px;
   margin: 32px auto 64px;
@@ -218,11 +209,15 @@
 }
 
 .gift-card__title{
-  font-size: clamp(28px, 3.2vw, 40px);
+  font-size: 40px;
   line-height: 1.2;
   margin: 0 0 8px;
   font-weight: 600;
   margin-bottom: 10px;
+}
+
+.page-popup__container .gift-card__title {
+  margin-top: 30px;
 }
 
 .gift-card__descr{
@@ -249,13 +244,13 @@
   border: 1px solid #e7eaee;
   box-shadow: none;
   background: #fff;
-  border-radius: var(--radius);
+  border-radius: 14px;
   padding: 22px;
 }
 
 .gift-image-wrap{
   position: relative;
-  border-radius: calc(var(--radius) - 4px);
+  border-radius: 10px;
   overflow: hidden;
   background: #f2f3f5;
   /* aspect-ratio: 3 / 1; */
@@ -347,7 +342,7 @@
   border: 1px solid #e7eaee;
   box-shadow: none;
   background: #fff;
-  border-radius: var(--radius);
+  border-radius: 14px;
   padding: 22px;
 }
 .gift-card__greeting-to{
@@ -363,23 +358,18 @@
 
 /* Кнопка */
 .button.gift-card__btn{
-  margin-top: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: #fff;
+  color: var(--white);
   font-weight: 600;
-  transition: transform .06s ease, background .2s ease, box-shadow .2s ease;
-  background: var(--primary);
-  border: 1px solid #1c1f22;
+  background: var(--text);
   padding: 14px 20px;
   margin-top: auto;
 }
-.button.gift-card__btn:hover{ background: var(--primary-600); }
-.button.gift-card__btn:active{ transform: translateY(1px); }
-.button.gift-card__btn:focus-visible{
-  outline-offset: 2px;
-  outline: 2px solid var(--outline);
+
+.gift-card__example-btn {
+  color: var(--white);
+  font-weight: 600;
+  background: var(--text);
+  padding: 14px 20px;
 }
 
 /* Кнопка-копировать номер */
@@ -399,7 +389,7 @@
   min-width: 130px;
 }
 .copy-btn:hover{ background:#f7faf8; }
-.copy-btn:focus-visible{ outline: 3px solid var(--outline); outline-offset: 2px; }
+.copy-btn:focus-visible{ outline: 3px solid #cfd5db; outline-offset: 2px; }
 
 /* FAQ */
 .faq-item{
@@ -412,6 +402,7 @@
 .faq-question{
   padding: 18px 20px;
   display:flex;
+  gap: 10px;
   justify-content: space-between;
   align-items:center;
   cursor:pointer;

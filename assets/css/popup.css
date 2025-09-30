@@ -451,3 +451,10 @@ input[type="search"], input[type="search"]:focus-visible {
 .payment_method_tbank img {
     display: none;
 }
+
+
+/* gift-card-popup */
+
+.gift-card-popup .page-popup__container {
+  border-radius: none;
+}

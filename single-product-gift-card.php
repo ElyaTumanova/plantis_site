@@ -9,7 +9,7 @@ global $gcid;
     <img src="https://plantis-shop.ru/wp-content/uploads/2025/07/decor-n.webp" class="gift-image" alt="Подарочная карта">
     <p class="gift-image-amount">1500<span>₽</span></p>
   </div>
-  <button class="gift-card__example-btn page-popup-open-btn">Посмотреть пример</button>
+  <button class="gift-card__example-btn button page-popup-open-btn">Посмотреть пример</button>
   <?php echo do_shortcode('[yith_ywgc_display_gift_card_form]');?>
 
   <div class="gift-card__info">
