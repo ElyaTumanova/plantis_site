@@ -163,6 +163,10 @@ document.querySelectorAll('[data-copy-target]').forEach(btn=>{
 // checkout page
 
 const giftcardShow = document.querySelector('.ywgc-show-giftcard')
+const giftCardApplyBtn = document.querySelector('.ywgc_apply_gift_card_button')
 if(giftcardShow) {
   giftcardShow.addEventListener('click', () => giftcardShow.classList.toggle('open'));
+}
+if(giftCardApplyBtn) {
+  giftCardApplyBtn.addEventListener('click', () => giftcardShow.classList.toggle('open'));
 }
