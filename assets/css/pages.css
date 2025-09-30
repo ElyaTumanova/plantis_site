@@ -638,7 +638,7 @@
 /*--------------------------------------------------------------
 # Gift card info
 --------------------------------------------------------------*/
-.giftcard-advantages {
+/* .giftcard-advantages {
     display: grid;
     grid-template: repeat(2, auto) / repeat(3,auto);
     row-gap: 30px;
@@ -672,7 +672,7 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 1.4;
-}
+} */
 
 /*--------------------------------------------------------------
 # Services
