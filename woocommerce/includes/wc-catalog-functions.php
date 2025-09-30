@@ -275,7 +275,6 @@ function plnt_get_catalog_list_schema_data ($html) {
     );
 
     $ctx = wc_get_catalog_context();
-    print_r($ctx);
 
     $html .= '<meta itemprop="name" content="' . $ctx['title'] . '" />' . "\n"; 
     
