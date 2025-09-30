@@ -285,8 +285,10 @@ function plnt_get_catalog_list_schema_data ($html) {
         $html .= '<meta itemprop="description" content="' . $ctx['title'] . '" />' . "\n";
     }
 
-    $thumbnail_id = get_term_meta( $ctx['term']->term_id, 'thumbnail_id', true );
-    $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
+    if($ctx['term']) {
+      $thumbnail_id = get_term_meta( $ctx['term']->term_id, 'thumbnail_id', true );
+      $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
+    }
 
     if($thumbnail_url) {
         $html .= '<meta itemprop="image" content="' . $thumbnail_url . '" />' . "\n";
