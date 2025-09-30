@@ -54,6 +54,14 @@
   color: var(--text) !important;
 }
 
+@media only screen and (max-width: 992px) {
+    .gift-cards-list .ywgc-amount-buttons {
+        width: 20% !important;
+        max-width: 20% !important;
+        border-radius: 40px !important;
+    }
+}
+
 .ywgc-manual-currency-symbol {
   display: none;
 }

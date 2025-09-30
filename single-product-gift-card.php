@@ -1,9 +1,5 @@
-<?php get_header(); 
-global $gcid;
-
-//wc_get_template( 'single-product/product-image.php' );
-?>
-<div class="gift-content-area">
+<?php get_header();?>
+<div class="gift-content-area content-area">
   <h1 class="gift-card__title">Электронный подарочный сертификат</h1>
   <button class="gift-card__example-btn page-popup-open-btn">Посмотреть пример</button>
   <div class="gift-image-wrap">

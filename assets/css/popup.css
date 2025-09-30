@@ -456,5 +456,5 @@ input[type="search"], input[type="search"]:focus-visible {
 /* gift-card-popup */
 
 .gift-card-popup .page-popup__container {
-  border-radius: none;
+  border-radius: 0;
 }
