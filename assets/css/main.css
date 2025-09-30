@@ -300,7 +300,7 @@
 }
 
 .social-media__button-max {
-    background-image: url('https://dev.plantis-shop.ru/wp-content/themes/plantis_site/images/icons/max-bg.svg');
+    background-image: url('https://plantis-shop.ru/wp-content/themes/plantis_site/images/icons/max-bg.svg');
     background-size: contain;
 }
 
@@ -314,6 +314,7 @@
 
 .social-media__button-icon {
     height: 30px;
+    width: 30px;
     fill: white;
     margin: auto; 
 }
