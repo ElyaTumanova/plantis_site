@@ -42,7 +42,13 @@ add_filter('query_vars', function ($vars) {
 /*--------------------------------------------------------------
 #EMAILS
 --------------------------------------------------------------*/
-
+add_action('ywgc_gift_cards_email_before_preview', function ($introductory_text, $gift_card){
+  ?>
+  <p style="margin-bottom:15px;text-align:left;margin:0 0 16px">
+    В данном письме содержится  ссылка на подарочный сертификат, которой Вы можете поделится с получателем
+  </p>
+  <?php
+}, 10, 2)
 /**
  * Вывод изображения, номера и суммы подарочной карты в письме
  */
@@ -55,7 +61,7 @@ add_action( 'ywgc_gift_cards_email_before_preview_gift_card_param', function( $g
     // --- Изображение подарочной карты ---
     // Получаем картинку, выбранную в плагине. Может быть ID или URL.
     $image_url = '';
-   if ( isset( $gift_card->product_id ) ) {
+    if ( isset( $gift_card->product_id ) ) {
         $product_id = (int) $gift_card->product_id;
     } elseif ( method_exists( $gift_card, 'get_product_id' ) ) {
         $product_id = (int) $gift_card->get_product_id();
