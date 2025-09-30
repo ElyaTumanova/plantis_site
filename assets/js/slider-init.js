@@ -615,7 +615,6 @@ swiper_cart_upsells_init();
         slidesPerView: 'auto',
         spaceBetween: 5,
         loop: false,
-        freeMode: false,
         breakpoints: {
             320: {
             navigation: {
@@ -624,7 +623,7 @@ swiper_cart_upsells_init();
             scrollbar: {
                 enabled: false,
             },
-            loop: true,
+            loop: false,
             },
             767: {
             navigation: {
