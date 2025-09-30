@@ -39,7 +39,6 @@ get_header(); ?>
     </aside> 
 	<main id="main" class="site-main" role="main">
         <div class="delivery info__list">
-
             <div class="delivery__block">
                 <!-- <div class="delivery__header"> -->
                     <h1 class="entry-header">Доставка</h1>
