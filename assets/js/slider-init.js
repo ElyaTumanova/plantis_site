@@ -598,3 +598,38 @@ function swiper_cart_upsells_init(){
 }
 
 swiper_cart_upsells_init();
+
+/*--------------------------------------------------------------
+# Gift card
+--------------------------------------------------------------*/
+ const swiper_gift = new Swiper('.gift-swiper-wrap', {
+        // navigation: {
+        //     nextEl: '.myslider-next',
+        //     prevEl: '.myslider-prev',
+        // },
+        // scrollbar: {
+        //     el: ".swiper-scrollbar",
+        //     hide: false,
+        //     draggable: true,
+        // },
+        slidesPerView: 'auto',
+        spaceBetween: 5,
+        loop: false,
+        breakpoints: {
+            320: {
+            navigation: {
+                enabled: false,
+            },
+            scrollbar: {
+                enabled: false,
+            },
+            loop: true,
+            },
+            767: {
+            navigation: {
+                enabled: true,
+            },
+            loop: false,
+            }
+        }
+    });

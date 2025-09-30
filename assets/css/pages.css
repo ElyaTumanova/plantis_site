@@ -636,45 +636,6 @@
 }
 
 /*--------------------------------------------------------------
-# Gift card info
---------------------------------------------------------------*/
-/* .giftcard-advantages {
-    display: grid;
-    grid-template: repeat(2, auto) / repeat(3,auto);
-    row-gap: 30px;
-    column-gap: 30px;
-    margin-right: 20px;
-}
-
-.giftcard-advantages__wrap {
-    row-gap: 15px;
-    display: grid;
-    grid-template:auto / 45px auto;
-    grid-template-areas: "photo desrc";
-    align-items: center;
-}
-
-.giftcard-advantages__title {
-    margin: auto 0 auto 10px;
-    font-weight: 600;
-    font-size: 22px;
-}
-
-.giftcard-advantages__image {
-    grid-area: photo;
-    width: 45px;
-    height: 45px;
-    margin: auto 10px auto 0;
-}
-
-.giftcard-advantages__descr {
-    grid-area: desrc;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.4;
-} */
-
-/*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
 

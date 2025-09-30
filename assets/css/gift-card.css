@@ -74,6 +74,7 @@
   border: none;
   background-color: var(--accent-color);
   color: var(--white);
+  padding: 14px;
 }
 
 .gift-cards-list .gift__note {
@@ -225,7 +226,11 @@
   font-weight: 600;
   margin-bottom: 10px;
 }
-
+@media (max-width: 767px) {
+    .gift-card__title {
+        font-size: 24px;
+    }
+}
 .page-popup__container .gift-card__title {
   margin-top: 30px;
 }
@@ -383,6 +388,12 @@
   border-radius: 10px;
   border: none;
   font-size: 14px;
+}
+
+@media (max-width: 767px) {
+    .gift-card__example-btn {
+        margin-top: 20px;
+    }
 }
 
 /* Кнопка-копировать номер */
