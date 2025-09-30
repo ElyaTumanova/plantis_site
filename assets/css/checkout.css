@@ -748,6 +748,21 @@ label.list-view {
     align-items: center;
     color: var(--text);
     box-shadow: none;
+    background-color: var(--bg);
+}
+
+.ywgc-show-giftcard {
+    content: "+";
+    font-size: 22px;
+    transition: transform .2s ease;
+    color: var(--text);
+    width: 1.25em;
+    text-align: center;
+    display: inline-block;
+}
+
+.ywgc-show-giftcard.open{
+  content:"–";
 }
 
 .ywgc-gift-card-applied {

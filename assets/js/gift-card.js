@@ -159,3 +159,10 @@ document.querySelectorAll('[data-copy-target]').forEach(btn=>{
     }
   });
 });
+
+// checkout page
+
+const giftcardShow = document.querySelector('.ywgc-show-giftcard')
+if(giftcardShow) {
+  giftcardShow.addEventListener('click', () => giftcardShow.classList.toggle('open'));
+}
