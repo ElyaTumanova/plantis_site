@@ -287,11 +287,9 @@ function plnt_get_catalog_list_schema_data ($html) {
     if($ctx['term']) {
       $thumbnail_id = get_term_meta( $ctx['term']->term_id, 'thumbnail_id', true );
       $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
-      if($thumbnail_url) {
-          $html .= '<meta itemprop="image" content="' . $thumbnail_url . '" />' . "\n";
-      } else {
-          $html .= '<meta itemprop="image" content="' . get_template_directory_uri() . '/images/interior.webp" />' . "\n";
-      }
+      $html .= '<meta itemprop="image" content="' . $thumbnail_url . '" />' . "\n";
+    } else {
+      $html .= '<meta itemprop="image" content="' . get_template_directory_uri() . '/images/interior.webp" />' . "\n";
     }
 
     return $html;
