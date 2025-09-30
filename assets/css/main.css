@@ -298,9 +298,9 @@
     background-color: var(--whatsapp);
 }
 
-.social-media__button-max {
+/* .social-media__button-max {
     background: linear-gradient(90deg,#5a8cff -16.1%,#43d6ff 16.36%,#8f3fff 76.63%);
-}
+} */
 
 .social-media__button-ok {
     background-color: var(--ok);
