@@ -466,7 +466,6 @@ function plnt_get_catalog_schema_data() {
         if ($product->is_virtual()) {
           return;
         }
-        print_r($product->get_slug());
         global $plants_cat_id;
         $parentCatId = check_category ($product);
         $product_id = $product->get_id();
