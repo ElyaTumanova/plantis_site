@@ -7,6 +7,10 @@
     display: none;
 }
 
+.woocommerce-checkout-review-order-table .ywgc-gift-card-applied {
+  display: none;
+}
+
 .woocommerce-checkout-review-order-table {
     table-layout:fixed;
 }
