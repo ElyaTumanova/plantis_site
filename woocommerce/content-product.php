@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 global $product;
 
 // Ensure visibility.
-if ( empty( $product ) || ! $product->is_visible() ) {
+if ( empty( $product ) || ! $product->is_visible() || $product->is_virtual()) {
 	return;
 }
 if ( is_shop() || is_product_category() || is_product_tag() || is_tax() ) {

@@ -465,7 +465,7 @@ add_action('woocommerce_after_shop_loop_item', 'plnt_get_catalog_schema_data', 4
 function plnt_get_catalog_schema_data() {
     if ( is_shop() || is_product_category() || is_product_tag() || is_tax() ) {
         global $product;
-        if ($product->get_slug() == 'gift-card') {
+        if ($product->is_virtual()) {
           return;
         }
         print_r($product->get_slug());
