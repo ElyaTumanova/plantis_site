@@ -142,10 +142,12 @@
   float: none !important;
   width: 100% !important;
   position: relative;
+  margin-bottom: 15px;
 }
 
 .ywgc-message {
   position: relative;
+  margin-bottom: 15px;
 }
 
 .ywgc-sender-name {
