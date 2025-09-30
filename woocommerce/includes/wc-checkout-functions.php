@@ -123,14 +123,11 @@ Contents
     
     // хук для подарчной карты #giftcard
 
-    add_action( 'woocommerce_checkout_order_review', 'plnt_set_giftcard_hook', 25 );
-
-    function plnt_set_giftcard_hook() {
-        do_action( 'plnt_woocommerce_checkout_gift_card' );
-        if (! is_gift_card_checkout()) {
-            remove_all_actions( 'plnt_woocommerce_checkout_gift_card' );
-        };
-    }
+    add_action( 'woocommerce_checkout_order_review', function () {
+      if ( is_gift_card_checkout() ) {
+          do_action( 'plnt_woocommerce_checkout_gift_card' );
+      }
+    }, 25 );
 
     // хук перед итоговой стоимостью
     add_action( 'woocommerce_checkout_order_review', 'plnt_set_before_order_total_hook', 30 );
