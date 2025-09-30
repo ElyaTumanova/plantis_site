@@ -754,7 +754,7 @@ label.list-view {
 .ywgc-show-giftcard::after {
     content: "next";
     font-family: swiper-icons;
-    font-size: 18px;
+    font-size: 12px;
     font-weight: 600;
     transition: transform .2s ease;
     color: var(--text);
