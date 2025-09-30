@@ -151,11 +151,9 @@ add_action( 'plnt_gift_card_email_after_preview', function( $gift_card ) {
 --------------------------------------------------------------*/
 
 // поменяли хук, на котором висит поле ввода подарочной карты на странице Checkout
-add_filter( 'ywgc_gift_card_code_form_checkout_hook', function( $hook ) {
-    return is_gift_card_checkout()
-        ? 'plnt_woocommerce_checkout_gift_card' // ваш кастомный хук
-        : '';                                   // иначе — никуда (хука '' не существует)
-}, 10 );
+add_filter( 'ywgc_gift_card_code_form_checkout_hook', function (){
+  return 'plnt_woocommerce_checkout_gift_card';
+});
 
 //изменили название поля для удаления кода карты
 add_filter('ywgc_remove_gift_card_text', function (){
