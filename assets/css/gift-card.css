@@ -85,7 +85,7 @@
 }
 
 @media (max-width: 767px) {
-    .gift-card__title {
+    .gift-cards-list .gift__note {
         top: 73px;
     }
 }
