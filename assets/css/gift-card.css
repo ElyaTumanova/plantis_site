@@ -328,6 +328,8 @@
   .gift-image-amount{
       padding: 5px 10px;
       font-size: 18px;
+      bottom: 10px;
+      left: 10px;
   }
 }
 
