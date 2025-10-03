@@ -444,6 +444,7 @@
 @media (max-width: 767px) {
     .copy-wrap {
         justify-content: space-between;
+        width: 100%;
     }
 }
 .copy-btn{
