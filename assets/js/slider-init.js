@@ -620,14 +620,14 @@ swiper_cart_upsells_init();
             navigation: {
                 enabled: false,
             },
-            scrollbar: {
-                enabled: false,
-            },
+            // scrollbar: {
+            //     enabled: false,
+            // },
             loop: false,
             },
             767: {
             navigation: {
-                enabled: true,
+                enabled: false,
             },
             loop: false,
             }
