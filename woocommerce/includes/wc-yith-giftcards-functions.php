@@ -220,7 +220,7 @@ function plnt_get_giftcard_popup() {
 
 add_action('yith_ywgc_show_gift_card_amount_selection', function(){
   ?> 
-  <p class="gift__note">Можно ввести любую сумму от 1500 до 30 000 ₽</p>
+  <p class="gift__note">Можно ввести любую сумму от 1500 до 30&nbsp;000&nbsp;₽</p>
   <div class="gift__amounts gift-swiper-wrap">
       <div class="swiper-wrapper">
         <p class="swiper-slide">1500<span>₽</span></p>
