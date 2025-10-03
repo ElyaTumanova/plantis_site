@@ -324,6 +324,14 @@
   font-size: 30px;
 }
 
+@media (max-width: 767px){
+  .gift-image-amount{
+      padding: 5px 10px;
+      font-size: 18px;
+  }
+}
+
+
 .gift-content-area .gift-image-amount {
   box-shadow: none;
   background: transparent;
