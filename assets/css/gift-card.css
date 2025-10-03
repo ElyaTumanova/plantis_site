@@ -271,6 +271,12 @@
   padding: 22px;
 }
 
+@media (max-width: 767px){
+  .gift-card__wrapn{
+    padding: 14px;
+  }
+}
+
 .gift-image-wrap{
   position: relative;
   border-radius: 10px;
@@ -333,7 +339,6 @@
   }
 }
 
-
 .gift-content-area .gift-image-amount {
   box-shadow: none;
   background: transparent;
@@ -353,6 +358,15 @@
   border-top: 1px solid #eef0f2; 
   padding: 12px 0;
 }
+
+@media (max-width:767px) {
+  .gift-card__row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+  }
+}
 .gift-card__row:first-of-type{ border-top: 0; }
 
 .gift-card__row p{
@@ -368,7 +382,7 @@
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
 }
 /* Блок поздравления (правая колонка) */
-.gift-card__greeting{
+.gift-card__greeting {
   display: flex;
   flex-direction: column;
   row-gap: 15px;
@@ -377,6 +391,11 @@
   background: #fff;
   border-radius: 14px;
   padding: 22px;
+}
+@media (max-width: 767px){
+  .gift-card__greeting {
+      padding: 20px 14px;
+  }
 }
 .gift-card__greeting-to{
   font-size: 18px;
@@ -420,6 +439,11 @@
   align-items:center;
   gap:10px;
 }
+@media (max-width: 767px) {
+    .copy-wrap {
+        justify-content: space-between;
+    }
+}
 .copy-btn{
   font-size: 13px;
   border-radius: 8px;
@@ -453,6 +477,7 @@
   margin:0;
   font-size: clamp(18px, 2vw, 20px);
   font-weight: 600;
+  line-height: 1.4;
 }
 .faq-question::after{
   content:"+";
