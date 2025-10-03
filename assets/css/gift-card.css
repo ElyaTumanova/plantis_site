@@ -153,6 +153,8 @@
 .ywgc-recipient-email p {
   font-size: 14px;
   margin-top: 10px;
+  line-height: 1.2;
+  padding-left: 10px;
 }
 
 .ywgc-recipient-name {
@@ -263,7 +265,7 @@
 }
 
 /* Левая карточка */
-.gift-card__wrap{
+.gift-card__wrap {
   border: 1px solid #e7eaee;
   box-shadow: none;
   background: #fff;
@@ -272,7 +274,7 @@
 }
 
 @media (max-width: 767px){
-  .gift-card__wrapn{
+  .gift-card__wrap {
     padding: 14px;
   }
 }
