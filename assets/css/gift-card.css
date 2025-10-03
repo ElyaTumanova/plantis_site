@@ -79,11 +79,17 @@
 
 .gift-cards-list .gift__note {
   font-size: 14px;
-  margin-top: 10px;
   position: absolute;
-  top: 54px;
+  top: 65px;
   left: 200px;
 }
+
+@media (max-width: 767px) {
+    .gift-card__title {
+        top: 73px;
+    }
+}
+
 
 .gift__amounts, .gift__amounts.selected_button {
   font-size: 16px;
