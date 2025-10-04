@@ -61,6 +61,12 @@
         border-radius: 40px !important;
     }
 }
+@media (max-width: 500px) {
+    .gift-cards-list .ywgc-amount-buttons {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
 
 .ywgc-manual-currency-symbol {
   display: none;
@@ -84,9 +90,12 @@
   left: 200px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 550px) {
     .gift-cards-list .gift__note {
-        top: 73px;
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-top: 10px;
     }
 }
 
