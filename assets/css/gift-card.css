@@ -61,11 +61,10 @@
         border-radius: 40px !important;
     }
 }
-@media (max-width: 500px) {
+@media (max-width: 550px) {
     .gift-cards-list .ywgc-amount-buttons {
         width: 100% !important;
         max-width: 100% !important;
-        margin-left: 10px;
     }
 }
 
@@ -97,6 +96,7 @@
         top: 0;
         left: 0;
         margin-top: 10px;
+        margin-left: 10px;
     }
 }
 
