@@ -462,7 +462,7 @@ input[type="search"], input[type="search"]:focus-visible {
 .gc-balance-popup__container {
     position: absolute;
     top: 50%;
-    transform: translateX(-50%);
+    transform: translateY(-50%);
     background: var(--background);
     padding: 40px 50px;
     left: 0;
