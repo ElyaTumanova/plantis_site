@@ -53,11 +53,14 @@ function wc_remove_output_structured_data() {
 }  
 add_action( 'init', 'wc_remove_output_structured_data' );  
 
-add_action('wp_head','plnt_schema_json'); //todo вернуть
+add_action('wp_head','plnt_schema_json');
 
 function plnt_schema_json() {
     if (is_product()) { 
         global $product;
+        if ($product->is_type( 'gift-card' )) {
+          return;
+        }
         $idCats = $product->get_category_ids();
         $brand = plnt_get_brand_text($idCats);
         $price = number_format($product->get_price(), 2, '.', '');
