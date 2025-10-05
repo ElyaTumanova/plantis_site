@@ -157,13 +157,14 @@ function setInitalState() {
   isLate = 0;
 
   if (hour >= 20) {
-    today = `${((new Date().getDate()+1) < 10 ? '0' : '') + (new Date().getDate() + 1)}.${(new Date().getUTCMonth()< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
+    today = `${((new Date().getDate()+1) < 10 ? '0' : '') + (new Date().getDate() + 1)}.${((new Date().getUTCMonth() + 1)< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
   } else {
-    today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${(new Date().getUTCMonth()< 9 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
+    today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${((new Date().getUTCMonth() + 1)< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
   };
 
  console.debug(today);
- console.debug(new Date().getUTCMonth());
+ console.debug(new Date().getUTCMonth() + 1);
+ console.debug(new Date().getDate());
  console.debug(new Date().getDate());
  
   checkHoliday(deliveryDatesInput[0].value);
