@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="faq-answer">
       <p>
         Проверьте баланс сертификата
-        <a target="_blank" rel="noopener noreferrer" href="#">по ссылке</a>
+        <a target="_self" rel="noopener noreferrer" href="#check-gc-balance">по ссылке</a>
         или свяжитесь с нами удобным вам способом. Нам можно позвонить:
         <a href="tel:+78002015790">8 800 201 57 90</a>
         (каждый день с 10:00 до 20:00 по Москве) или написать:
@@ -70,7 +70,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="faq-question">
       <h3>Как проверить баланс?</h3>
     </div>
-    <div class="faq-answer">
+    <div class="faq-answer" id="check-gc-balance">
       <?php echo do_shortcode('[yith_gift_card_check_balance_form]');?>
       <p>
         Или свяжитесь с нами удобным вам способом. Нам можно позвонить:
