@@ -164,7 +164,8 @@ function setInitalState() {
 
  console.debug(today);
  console.debug(new Date().getUTCMonth());
-
+ console.debug(new Date().getDate());
+ 
   checkHoliday(deliveryDatesInput[0].value);
 
   deliveryDatesInput[0].checked = true;
