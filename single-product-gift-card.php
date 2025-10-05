@@ -46,6 +46,7 @@
   <?php get_template_part( 'template-parts/gift-card-faq' );?>
 </div>
 <?php get_template_part('template-parts/popups/gift-card-popup');?>
+<?php echo do_shortcode('[yith_ywgc_check_balance]');?>
 
 
 <?php get_footer();?>
