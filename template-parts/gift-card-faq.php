@@ -70,7 +70,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="faq-question">
       <h3>Как проверить баланс?</h3>
     </div>
-    <div class="faq-answer" id="check-gc-balance">
+    <div class="faq-answer">
       <p>
         Или свяжитесь с нами удобным вам способом. Нам можно позвонить:
         <a href="tel:+78002015790">8 800 201 57 90</a>

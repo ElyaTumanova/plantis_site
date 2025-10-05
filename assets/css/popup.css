@@ -458,3 +458,19 @@ input[type="search"], input[type="search"]:focus-visible {
 .gift-card-popup .page-popup__container {
   border-radius: 0;
 }
+
+.gc-balance-popup__container {
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%);
+    background: var(--background);
+    padding: 40px 50px;
+    left: 0;
+    right: var(--scrollWidth);
+    /* right: 0; */
+    max-width: 500px;
+    margin: auto;
+    border-radius: 40px;
+    height: 500px;
+    overflow-y: auto;
+}
