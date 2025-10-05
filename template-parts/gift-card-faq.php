@@ -71,9 +71,9 @@ if ( ! defined( 'ABSPATH' ) ) {
       <h3>Как проверить баланс?</h3>
     </div>
     <div class="faq-answer">
+      <?php echo do_shortcode('[yith_gift_card_check_balance_form]');?>
       <p>
-        <a target="_blank" rel="noopener noreferrer" href="#">По ссылке</a>
-        или свяжитесь с нами удобным вам способом. Нам можно позвонить:
+        Или свяжитесь с нами удобным вам способом. Нам можно позвонить:
         <a href="tel:+78002015790">8 800 201 57 90</a>
         (каждый день с 10:00 до 20:00 по Москве) или написать:
         <a target="_blank" rel="noopener noreferrer" href="mailto:INFO@PLANTIS.SHOP">INFO@PLANTIS.SHOP</a>.

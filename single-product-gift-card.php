@@ -45,7 +45,6 @@
   </div>
   <h2 class="giftcard-advantages__title">Часто задаваемые вопросы</h2>
   <?php get_template_part( 'template-parts/gift-card-faq' );?>
-  <?php echo do_shortcode('[yith_gift_card_check_balance_form]');?>
 </div>
 <?php get_template_part('template-parts/popups/gift-card-popup');?>
 
