@@ -177,18 +177,18 @@ add_filter('ywgc_checkout_box_placeholder', function (){
   return 'Номер подарочного сертификата';
 });
 
-//изменили для поля кода карты
+//изменили название для поля введенного кода карты
 add_filter('yith_ywgc_cart_totals_gift_card_label', function (){
-  return 'Номер';
+  return 'Сертификат';
 });
 
 // Для плагина YITH Gift Cards
-function remove_yith_gift_card_display() {
-    if (class_exists('YITH_YWGC_Frontend')) {
-        remove_action('woocommerce_order_item_meta_start', array(YITH_YWGC_Frontend::get_instance(), 'show_gift_card_code_on_order_item'), 10, 2);
-    }
-}
-add_action('init', 'remove_yith_gift_card_display');
+// function remove_yith_gift_card_display() {
+//     if (class_exists('YITH_YWGC_Frontend')) {
+//         remove_action('woocommerce_order_item_meta_start', array(YITH_YWGC_Frontend::get_instance(), 'show_gift_card_code_on_order_item'), 10, 2);
+//     }
+// }
+// add_action('init', 'remove_yith_gift_card_display');
 
 // add_filter('yith_ywgc_cart_totals_gift_card_label',function (){
 //   return 'Подарочный сертификат';
