@@ -312,7 +312,7 @@
 }
 
 .gift-card__main .gift-image-wrap {
-  max-height: 200px;
+  max-height: 250px;
   width: 100%;
 }
 
@@ -355,7 +355,7 @@
   box-shadow: none;
   background: transparent;
   backdrop-filter: none;
-
+  color: var(--white);
 }
 
 
