@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
-//add_action( 'wp_footer', 'plnt_echo_smth' );
+add_action( 'wp_footer', 'echo_hi' );
 
 
 function plnt_echo_smth() {
@@ -47,7 +47,9 @@ function plnt_echo_smth() {
 
 
 function echo_hi() {
-	echo ('hihi');
+  if (is_page('gift-card')) {
+    echo ('hihi');
+  }
 }
 
 function plnt_dev_functions() {
