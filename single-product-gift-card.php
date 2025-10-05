@@ -2,6 +2,7 @@
 <div class="gift-content-area content-area">
   <h1 class="gift-card__title">Электронный подарочный сертификат</h1>
   <button class="gift-card__example-btn page-popup-open-btn">Посмотреть пример</button>
+  <button class="gift-card__example-btn">Проверить баланс</button>
   <div class="gift-image-wrap">
     <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_cover.jpg" class="gift-image" alt="Подарочная карта">
     <p class="gift-image-amount">1500<span>₽</span></p>
@@ -44,9 +45,9 @@
   </div>
   <h2 class="giftcard-advantages__title">Часто задаваемые вопросы</h2>
   <?php get_template_part( 'template-parts/gift-card-faq' );?>
+  <?php echo do_shortcode('[yith_gift_card_check_balance_form]');?>
 </div>
 <?php get_template_part('template-parts/popups/gift-card-popup');?>
-<?php echo do_shortcode('[yith_gift_card_check_balance_form]');?>
 
 
 <?php get_footer();?>
