@@ -351,12 +351,12 @@
   }
 }
 
-.gift-content-area .gift-image-amount {
+/* .gift-content-area .gift-image-amount {
   box-shadow: none;
   background: transparent;
   backdrop-filter: none;
   color: var(--white);
-}
+} */
 
 
 .gift-image-amount span{ opacity: .9; }
