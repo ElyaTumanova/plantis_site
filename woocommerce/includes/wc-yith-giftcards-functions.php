@@ -182,6 +182,10 @@ add_filter('yith_ywgc_cart_totals_gift_card_label', function (){
   return 'Номер';
 });
 
+add_filter('yith_ywgc_display_code_order_details', function (){
+  return false;
+});
+
 
 // add_filter('yith_ywgc_cart_totals_gift_card_label',function (){
 //   return 'Подарочный сертификат';
