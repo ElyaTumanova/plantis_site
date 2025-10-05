@@ -162,7 +162,7 @@ function setInitalState() {
     today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${(new Date().getUTCMonth()< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
   };
 
- //console.debug(today);
+ console.debug(today);
 
   checkHoliday(deliveryDatesInput[0].value);
 
