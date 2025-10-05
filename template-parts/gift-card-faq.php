@@ -71,7 +71,6 @@ if ( ! defined( 'ABSPATH' ) ) {
       <h3>Как проверить баланс?</h3>
     </div>
     <div class="faq-answer" id="check-gc-balance">
-      <?php echo do_shortcode('[yith_gift_card_check_balance_form]');?>
       <p>
         Или свяжитесь с нами удобным вам способом. Нам можно позвонить:
         <a href="tel:+78002015790">8 800 201 57 90</a>

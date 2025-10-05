@@ -6,16 +6,13 @@ const pageClosePopupBtn = document.querySelector('.page-popup__close');
 const pagePopupOverlay = document.querySelector('.page-popup__popup-overlay');
 const pagePopupContactForm = document.querySelector('.page-popup form');
 
-console.log(pageOpenPopupBtn)
-console.log(pagePopup)
+// console.log(pageOpenPopupBtn)
+// console.log(pagePopup)
 
 //для попапа на странице усуги по уходу
 let serviceButtons = document.querySelectorAll('.service-page .page-popup-open-btn');
 let serviceNameInput = document.querySelector('.ukhod-popup-service-name');
 
-
-//additional for gift-card
-const giftCardPopupContainer = document.querySelector('.page-popup__container_giftcard');
 
 if (pagePopup != null && pageOpenPopupBtn != null) {
     pageOpenPopupBtn.forEach(button => {
@@ -50,8 +47,6 @@ if (pagePopup != null && pageOpenPopupBtn != null) {
 function toggle_page_popup () {
     pagePopup.classList.toggle ('popup_active');
     body.classList.toggle ('fix-body');
-    //additional for gift-card
-    giftCardPopupContainer.classList.toggle('d-none');
 };
 
 
