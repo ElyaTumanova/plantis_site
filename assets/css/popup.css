@@ -468,9 +468,23 @@ input[type="search"], input[type="search"]:focus-visible {
     left: 0;
     right: var(--scrollWidth);
     /* right: 0; */
-    max-width: 500px;
+    max-width: 660px;
     margin: auto;
     border-radius: 40px;
     height: 500px;
     overflow-y: auto;
+}
+
+.gc-balance-popup__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.form-check-gift-card-balance {
+  margin-top: 30px;
+}
+
+.ywgc-shortcode-form-title {
+  display: none;
 }

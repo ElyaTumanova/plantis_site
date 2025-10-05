@@ -218,6 +218,9 @@ function toggle_gc_popup () {
 
 if(gcBalanceForm !=null) {
   gcBalanceForm.addEventListener('submit', hidePopup);
+  gcBalanceForm.addEventListener('submit', function(evt){
+    evt.preventDefault;
+  });
 }
 
 
