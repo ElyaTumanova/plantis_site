@@ -15,6 +15,27 @@ Contents
 --------------------------------------------------------------*/
 
 
+add_filter('wpseo_opengraph_title', function ($title) {
+    if (is_page('gift-card')) {                // ваша страница
+        return 'Ваш подарочный сертификат в Plantis';
+    }
+    return $title;
+});
+
+add_filter('wpseo_opengraph_desc', function ($desc) {
+    if (is_page('gift-card')) {
+        return 'Интернет-магазин комнатных растений';
+    }
+    return $desc;
+});
+
+add_action('wp_head', function() {
+    if (is_page('gift-card')) {
+        echo '<meta property="og:image" content="'. get_template_directory_uri() .'/images/gift-card/gc_soc.jpg" />' . "\n";
+        echo '<meta property="og:image:width" content="1200" />' . "\n";
+        echo '<meta property="og:image:height" content="630" />' . "\n";
+    }
+});
 
 /*--------------------------------------------------------------
 # Schema.org
