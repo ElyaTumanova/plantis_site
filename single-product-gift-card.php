@@ -42,7 +42,7 @@
       </div>	
     </div>
   </div>
-
+  <h2 class="giftcard-advantages__title">Часто задаваемые вопросы</h2>
   <?php get_template_part( 'template-parts/gift-card-faq' );?>
 </div>
 <?php get_template_part('template-parts/popups/gift-card-popup');?>
