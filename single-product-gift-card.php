@@ -3,7 +3,7 @@
   <h1 class="gift-card__title">Электронный подарочный сертификат</h1>
   <button class="gift-card__example-btn page-popup-open-btn">Посмотреть пример</button>
   <div class="gift-image-wrap">
-    <img src="<?php get_template_directory_uri()?> .'/images/gift-card/gc_cover.jpg" class="gift-image" alt="Подарочная карта">
+    <img src="<?php echo get_template_directory_uri()?> '/images/gift-card/gc_cover.jpg" class="gift-image" alt="Подарочная карта">
     <p class="gift-image-amount">1500<span>₽</span></p>
   </div>
   <?php echo do_shortcode('[yith_ywgc_display_gift_card_form]');?>

@@ -25,7 +25,7 @@ $gift_card = get_post_meta( $gift_card_id );
     <div class="gift-card__main">
       <div class="gift-card__wrap">
         <div class="gift-image-wrap">
-          <img src="<?php get_template_directory_uri()?> .'/images/gift-card/gc_cover.jpg" class="gift-image" alt="Подарочная карта" loading="lazy">
+          <img src="<?php echo get_template_directory_uri()?> '/images/gift-card/gc_cover.jpg" class="gift-image" alt="Подарочная карта" loading="lazy">
           <p class="gift-image-amount"><?php echo $gift_card['_ywgc_balance_total'][0] ?><span>₽</span></p>
         </div>
         <div class="gift-card__row">
