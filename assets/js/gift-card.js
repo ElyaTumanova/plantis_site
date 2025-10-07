@@ -312,16 +312,16 @@ if (gcBalanceForm) {
       });
     }
 
-    form.addEventListener('submit', async (e) => {
+    gcBalanceForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       resetMessage();
 
       const code = codeInput.value.trim();
-      if (!isCodeValid(code)) {
-        showMessage("Проверьте код: разрешены буквы/цифры/дефис, длина 8–24 символа.", "err");
-        codeInput.focus();
-        return;
-      }
+      // if (!isCodeValid(code)) {
+      //   showMessage("Проверьте код: разрешены буквы/цифры/дефис, длина 8–24 символа.", "err");
+      //   codeInput.focus();
+      //   return;
+      // }
 
       try {
         setLoading(true);
