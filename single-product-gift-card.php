@@ -3,7 +3,7 @@
   <div class="gift-content-area">
     <h1 class="gift-card__title">Электронный подарочный сертификат</h1>
     <button class="gift-card__example-btn page-popup-open-btn">Посмотреть пример</button>
-    <a class="gift-card__example-btn gc-popup-open-btn" href="<?php echo get_site_url()?>/gift-card">Проверить баланс</a>
+    <a class="gift-card__example-btn gc-popup-open-btn" href="<?php echo get_site_url()?>/gift-card" target="_blank">Проверить баланс</a>
     <div class="gift-image-wrap">
       <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_cover.jpg" class="gift-image" alt="Подарочная карта">
       <p class="gift-image-amount">1500<span>₽</span></p>
