@@ -20,10 +20,10 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		                                     '/assets/js/filter-show-more.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/filter-show-more.js'), true );
 
 		wp_enqueue_script( 'ajax-urgent-delivery', get_template_directory_uri() .
-											 '/assets/js/ajax-urgent-delivery.js', array( 'jquery', 'hide-chekout-fields' ), filemtime(get_stylesheet_directory() .'/assets/js/ajax-urgent-delivery.js'), true );	
+											 '/assets/js/ajax-urgent-delivery.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/ajax-urgent-delivery.js'), true );	
 		
-		wp_enqueue_script( 'hide-chekout-fields', get_template_directory_uri() .
-											 '/assets/js/hide-chekout-fields.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/hide-chekout-fields.js'), true );	
+		wp_enqueue_script( 'chekout-fields', get_template_directory_uri() .
+											 '/assets/js/chekout-fields.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/chekout-fields.js'), true );	
 		
 		wp_enqueue_script( 'ajax-search', get_template_directory_uri() .
 		                                 '/assets/js/ajax-search.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/ajax-search.js'), true );
