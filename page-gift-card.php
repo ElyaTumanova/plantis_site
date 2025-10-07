@@ -61,7 +61,26 @@ echo('</pre>');
   </div>
 
 <?php else:?>
-  <div>Карта с таким номером не найдена.</div>
+    <div class="gift-card-content-area">
+    <div>Карта с таким номером не найдена.</div>
+    <form method="get" novalidate>
+      <label for="code">Код подарочной карты</label>
+      <input id="code" name="code" type="text" inputmode="latin"
+            placeholder="Например: AB12-CD34-EF56"
+            autocomplete="off" required />
+      <div class="hint">Допустимы буквы, цифры и дефис. Минимум 8 символов.</div>
+
+      <div class="row">
+        <button id="checkBtn" type="submit">
+          Проверить
+          <span id="spin" class="spinner" style="display:none"></span>
+        </button>
+        <button type="button" id="clearBtn" style="background:#e5e7eb;color:#111;">Очистить</button>
+      </div>
+
+      <div id="msg" class="result" style="display:none"></div>
+    </form>
+</div>
 <? endif;?>
 
 

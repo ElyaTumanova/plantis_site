@@ -347,13 +347,14 @@ function plnt_get_giftcard_by_code( $code ) {
 add_action( 'wp_ajax_check_giftcard_balance', 'plnt_check_giftcard_balance' );
 add_action( 'wp_ajax_nopriv_check_giftcard_balance', 'plnt_check_giftcard_balance' );
 function plnt_check_giftcard_balance() {
+    $res = null;
     $code = sanitize_text_field( $_POST['code'] ?? '' );
     $gift_card_id = plnt_get_giftcard_by_code( $code );
     $gift_card = get_post_meta( $gift_card_id );
     if ( $gift_card ) {
-      
+      $res = $gift_card['_ywgc_balance_total'][0];
     }
     wp_send_json_success([
-        'gc' => $gift_card_id
+        'res' => $res
     ]);
 }
