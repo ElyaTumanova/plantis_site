@@ -33,15 +33,16 @@ function getOrderParametrs(event) {
 
   if(checkedDate == today) {
     isUrgent = '1';
+    isLate = '0';
   } else {
     isUrgent = '0';
+    if(checkedInterval == '18:00 - 21:00') {
+      isLate = '1'
+    } else {
+      isLate = '0'
+    }
   }
 
-   if(checkedInterval == '18:00 - 21:00') {
-    isLate = '1'
-  } else {
-    isLate = '0'
-  }
 
   console.debug(isUrgent);
   console.debug(isLate);
