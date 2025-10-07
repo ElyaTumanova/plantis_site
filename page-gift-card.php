@@ -3,7 +3,7 @@
 $gcnum = get_query_var('gcnum');
 $gift_card_id = plnt_get_giftcard_by_code( $gcnum );
 $gift_card = get_post_meta( $gift_card_id );
-// echo('<pre>');
+echo('<pre>');
 if ( $gift_card ) {
     echo 'Карта найдена.';
     // echo 'Номер карты: ' . esc_html( $gift_card->gift_card_number );
