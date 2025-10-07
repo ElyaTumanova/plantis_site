@@ -22,8 +22,6 @@ function getOrderParametrs(event) {
   console.debug(checkedShippingMethod);
   checkedDate = getCheckedDate();
   console.debug(checkedDate);
-  checkedInterval = getCheckedInterval();
-  console.debug(checkedInterval)
 
   if(checkedDate == today) {
     isUrgent = '1';
@@ -33,6 +31,10 @@ function getOrderParametrs(event) {
   }
   
   plnt_hide_checkout_fields(event);
+
+  checkedInterval = getCheckedInterval();
+  console.debug(checkedInterval)
+
 
   if(checkedInterval == '18:00 - 21:00') {
     isLate = '1'
