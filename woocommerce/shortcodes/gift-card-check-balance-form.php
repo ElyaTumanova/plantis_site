@@ -14,7 +14,7 @@ $text_input = array(
 );
 
 ?>
-<form method="post" class="form-check-gift-card-balance ywgc-shortcode-form" name="form-check-gift-card-balance">
+<form method="post" class="form-check-gift-card-balance ywgc-shortcode-form" name="form-check-gift-card-balance" onsubmit="event.preventDefault()">
 	<p class="ywgc-shortcode-form-title"><?php echo esc_html_x( 'Check your balance', 'shortcode title', 'yith-woocommerce-gift-cards' ); ?></p>
 	<span class="ywgc-shortcode-form-label"> <?php esc_html_e( 'Gift Card', 'yith-woocommerce-gift-cards' ); ?></span>
 	<div>
