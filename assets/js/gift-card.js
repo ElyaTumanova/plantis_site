@@ -246,11 +246,11 @@ function hidePopup() {
 
 if (gcBalanceForm) {
   console.log(gcBalanceForm)
-    const codeInput = gcBalanceForm.getElementById('code');
-    const btn = gcBalanceForm.getElementById('checkBtn');
-    const spin = gcBalanceForm.getElementById('spin');
-    const msg = gcBalanceForm.getElementById('msg');
-    const clearBtn = gcBalanceForm.getElementById('clearBtn');
+    const codeInput = document.getElementById('code');
+    const btn = document.getElementById('checkBtn');
+    const spin = document.getElementById('spin');
+    const msg = document.getElementById('msg');
+    const clearBtn = document.getElementById('clearBtn');
 
    function showMessage(text, type = "ok") {
       msg.textContent = text;
