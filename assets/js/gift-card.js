@@ -303,6 +303,7 @@ if (gcBalanceForm) {
         console.debug('✅ AJAX success:', result);
         if (result.success) {
           console.log(result);
+          return result;
         }
       })
       .catch(error => {

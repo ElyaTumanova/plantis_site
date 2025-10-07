@@ -349,6 +349,10 @@ add_action( 'wp_ajax_nopriv_check_giftcard_balance', 'plnt_check_giftcard_balanc
 function plnt_check_giftcard_balance() {
     $code = sanitize_text_field( $_POST['code'] ?? '' );
     $gift_card_id = plnt_get_giftcard_by_code( $code );
+    $gift_card = get_post_meta( $gift_card_id );
+    if ( $gift_card ) {
+      
+    }
     wp_send_json_success([
         'gc' => $gift_card_id
     ]);

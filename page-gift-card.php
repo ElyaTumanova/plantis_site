@@ -4,17 +4,17 @@ $gcnum = get_query_var('gcnum');
 $gift_card_id = plnt_get_giftcard_by_code( $gcnum );
 $gift_card = get_post_meta( $gift_card_id );
 // echo('<pre>');
-// if ( $gift_card ) {
-//     echo 'Карта найдена.';
-//     // echo 'Номер карты: ' . esc_html( $gift_card->gift_card_number );
-//     // echo '<br>Баланс: ' . wc_price( $gift_card->get_balance() );
-//     // echo '<br>Действует до: ' . date_i18n( get_option( 'date_format' ), $gift_card->get_expiration() );
-// } else {
-//     echo 'Карта с таким номером не найдена.';
-// }
-// print_r($gcnum);
-// print_r($gift_card);
-// echo('</pre>');
+if ( $gift_card ) {
+    echo 'Карта найдена.';
+    // echo 'Номер карты: ' . esc_html( $gift_card->gift_card_number );
+    // echo '<br>Баланс: ' . wc_price( $gift_card->get_balance() );
+    // echo '<br>Действует до: ' . date_i18n( get_option( 'date_format' ), $gift_card->get_expiration() );
+} else {
+    echo 'Карта с таким номером не найдена.';
+}
+print_r($gcnum);
+print_r($gift_card);
+echo('</pre>');
 ?>
 
 <?php if ( $gift_card ):?>
