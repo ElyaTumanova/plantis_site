@@ -12,7 +12,7 @@ $close_icon = carbon_get_theme_option('close_icon');
         <span class="gc-balance-popup__close heading-2"><?php echo $close_icon ?></span>
         <?php //echo do_shortcode('[yith_gift_card_check_balance_form]');?>
 
-        <form id="gc-balance-form" novalidate>
+        <form method="post" id="gc-balance-form" novalidate>
           <label for="code">Код подарочной карты</label>
           <input id="code" name="code" type="text" inputmode="latin"
                 placeholder="Например: AB12-CD34-EF56"
