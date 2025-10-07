@@ -54,7 +54,7 @@ function getOrderParametrs(event) {
   if(event.target.className == "shipping_method" || 
     event.target.name == "delivery_dates" || 
     event.target.name == "additional_delivery_interval" ||
-    event.target == 'document') {
+    event.target == document) {
       console.log('нужен пересчет')
     } else {
       console.log('не нужен пересчет')
