@@ -64,8 +64,8 @@ echo('</pre>');
     <div class="gift-card-content-area">
     <div>Карта с таким номером не найдена.</div>
     <form method="get" novalidate>
-      <label for="code">Код подарочной карты</label>
-      <input id="code" name="code" type="text" inputmode="latin"
+      <label for="gcnum">Код подарочной карты</label>
+      <input id="gcnum" name="gcnum" type="text" inputmode="latin"
             placeholder="Например: AB12-CD34-EF56"
             autocomplete="off" required />
       <div class="hint">Допустимы буквы, цифры и дефис. Минимум 8 символов.</div>
