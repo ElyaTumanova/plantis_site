@@ -14,6 +14,7 @@
         deliveryIntervalInput.forEach((input)=>{
             input.checked = false;
         })
+        console.log(deliveryIntervalInput)
     }
 
     function showInterval() {

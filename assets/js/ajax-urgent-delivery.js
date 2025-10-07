@@ -43,6 +43,9 @@ function getOrderParametrs(event) {
     isLate = '0'
   }
 
+  console.debug(isUrgent);
+  console.debug(isLate);
+
   checkHoliday(checkedDate);
 
   renderDeliveryDates(checkedShippingMethod);
