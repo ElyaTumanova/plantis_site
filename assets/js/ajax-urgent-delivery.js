@@ -2,10 +2,6 @@ let isUrgent;
 let isLate;
 let isHoliday; //скрываем подние интервалы доставки
 let holidays = []; //format dd.mm
-let checkoutForm = document.querySelector('form[name="checkout"]');
-let deliveryDates = document.querySelector('.delivery_dates');
-let deliveryDatesInput = document.querySelectorAll('.delivery_dates input');
-let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
 let deliveryDatesInfo = [];
 let deliveryIntervalsInfo = []
 let shippingMethodValues = [];
@@ -13,8 +9,6 @@ let checkedShippingMethod = '';
 let checkedDate = '';
 let checkedInterval = '';
 
-let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
-let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
 let today;
 
 //определяем параметры оформления заказа, влияющие на стоимость доставки и вызываем аякс, отрисовываем поля дат и интервалов доставки
@@ -33,14 +27,15 @@ function getOrderParametrs(event) {
 
   if(checkedDate == today) {
     isUrgent = '1';
-    isLate = '0';
+    // isLate = '0';
   } else {
     isUrgent = '0';
-    if(checkedInterval == '18:00 - 21:00') {
-      isLate = '1'
-    } else {
-      isLate = '0'
-    }
+  }
+
+  if(checkedInterval == '18:00 - 21:00') {
+    isLate = '1'
+  } else {
+    isLate = '0'
   }
 
 

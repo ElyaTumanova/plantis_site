@@ -8,6 +8,12 @@
     let addressFields = document.querySelector('#billing_address_1_field');
     let additionalAddress = document.querySelector('.additional-address-field');
     let innField = document.querySelector('#additional_inn');
+    let checkoutForm = document.querySelector('form[name="checkout"]');
+    let deliveryDates = document.querySelector('.delivery_dates');
+    let deliveryDatesInput = document.querySelectorAll('.delivery_dates input');
+    let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
+    let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
+    let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
 
     function hideInterval() {
         deliveryInterval.classList.add('d-none');
