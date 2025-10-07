@@ -30,7 +30,6 @@ function datePlus3MonthsIntl() {
     return "{$day} {$month} {$year}";
 }
 
-
 ?>
 <div class="page-popup popup gift-card-popup">
   <div class="page-popup__container">

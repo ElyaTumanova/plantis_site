@@ -179,7 +179,7 @@ const gcOpenPopupBtn = document.querySelectorAll('.gc-popup-open-btn');
 const gcPopup = document.querySelector('.gc-balance-popup');
 const gcClosePopupBtn = document.querySelector('.gc-balance-popup__close');
 const gcPopupOverlay = document.querySelector('.gc-balance-popup__popup-overlay');
-const gcBalanceForm = document.querySelector('.form-check-gift-card-balance');
+const gcBalanceForm = document.querySelector('.gc-balance-form');
 
 if (gcPopup != null && gcOpenPopupBtn != null) {
     gcOpenPopupBtn.forEach(button => {
@@ -217,10 +217,10 @@ function toggle_gc_popup () {
 
 
 if(gcBalanceForm !=null) {
-  gcBalanceForm.addEventListener('submit', hidePopup);
-  gcBalanceForm.addEventListener('submit', function(evt){
-    evt.preventDefault;
-  });
+  // gcBalanceForm.addEventListener('submit', hidePopup);
+  // gcBalanceForm.addEventListener('submit', function(evt){
+  //   evt.preventDefault;
+  // });
 }
 
 
@@ -242,3 +242,121 @@ function hidePopup() {
   }, 3000);
 }
 
+// проверка кода карты
+
+if (gcBalanceForm) {
+    const codeInput = gcBalanceForm.getElementById('code');
+    const btn = gcBalanceForm.getElementById('checkBtn');
+    const spin = gcBalanceForm.getElementById('spin');
+    const msg = gcBalanceForm.getElementById('msg');
+    const clearBtn = gcBalanceForm.getElementById('clearBtn');
+
+   function showMessage(text, type = "ok") {
+      msg.textContent = text;
+      msg.className = "result " + (type === "ok" ? "ok" : "err");
+      msg.style.display = "block";
+    }
+
+    function resetMessage() {
+      msg.textContent = "";
+      msg.style.display = "none";
+    }
+
+    function setLoading(loading) {
+      btn.disabled = loading;
+      spin.style.display = loading ? "inline-block" : "none";
+    }
+
+    function formatMoney(amount, currency = "RUB") {
+      try {
+        return new Intl.NumberFormat('ru-RU', { style: 'currency', currency }).format(amount);
+      } catch {
+        return amount + " " + currency;
+      }
+    }
+
+    // Простая клиентская валидация: буквы/цифры/дефис, 8–24 символа.
+    function isCodeValid(code) {
+      return /^[A-Za-z0-9-]{8,24}$/.test(code);
+    }
+
+    function checkCode(code) {
+      const data = new URLSearchParams();
+      data.append('action', 'check_giftcard_balance');
+      data.append('code', code);
+
+      fetch('/wp-admin/admin-ajax.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: data
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(result => {
+        console.debug('✅ AJAX success:', result);
+        if (result.success) {
+          console.log(result);
+        }
+      })
+      .catch(error => {
+        console.error('❌ AJAX error:', error);
+      })
+      .finally(() => {
+        console.debug('⚙️ AJAX complete');
+      });
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      resetMessage();
+
+      const code = codeInput.value.trim();
+      if (!isCodeValid(code)) {
+        showMessage("Проверьте код: разрешены буквы/цифры/дефис, длина 8–24 символа.", "err");
+        codeInput.focus();
+        return;
+      }
+
+      try {
+        setLoading(true);
+        const data = await checkCode(code);
+        console.log(data)
+        // const amount = Number(data.amount);
+        // const currency = data.currency || "RUB";
+
+        // if (Number.isFinite(amount) && amount >= 0) {
+        //   showMessage(`Сумма карты: ${formatMoney(amount, currency)}`, "ok");
+        // } else {
+        //   showMessage("Неверный формат суммы в ответе сервера.", "err");
+        // }
+      } catch (err) {
+        console.log(err)
+        // if (err.status === 404) {
+        //   showMessage("Карта с таким кодом не найдена.", "err");
+        // } else if (err.status === 410) {
+        //   showMessage("Карта просрочена или уже использована.", "err");
+        // } else {
+        //   showMessage(err.message || "Не удалось выполнить проверку. Попробуйте позже.", "err");
+        // }
+      } finally {
+        setLoading(false);
+      }
+    });
+
+    clearBtn.addEventListener('click', () => {
+      codeInput.value = "";
+      resetMessage();
+      codeInput.focus();
+    });
+
+    // Позволяем отправить по Enter
+    codeInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') form.requestSubmit();
+    });
+}

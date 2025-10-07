@@ -9,8 +9,8 @@ Contents
 #EMAILS
 #CHECKOUT PAGE
 #PRODUCT PAGE
+#CARD BALANCE CHECK
 --------------------------------------------------------------*/
-
 
 /*--------------------------------------------------------------
 #GENERAL DEV
@@ -288,7 +288,7 @@ add_filter( 'woocommerce_add_to_cart_redirect', function( $url ) {
 --------------------------------------------------------------*/
 
 
-// function mytheme_get_giftcard_by_code( $code ) {
+// function plnt_get_giftcard_by_code( $code ) {
 //     $code = sanitize_text_field( $code );
 //     if ( empty( $code ) ) {
 //         return null;
@@ -309,7 +309,7 @@ add_filter( 'woocommerce_add_to_cart_redirect', function( $url ) {
 //     return null;
 // }
 
-function mytheme_get_giftcard_by_code( $code ) {
+function plnt_get_giftcard_by_code( $code ) {
   global $wpdb;
 
   $code = sanitize_text_field( $code );
@@ -339,3 +339,17 @@ function mytheme_get_giftcard_by_code( $code ) {
   return ! empty( $query->posts ) ? (int) $query->posts[0] : null;
 }
 
+
+/*--------------------------------------------------------------
+#CARD BALANCE CHECK
+--------------------------------------------------------------*/
+
+add_action( 'wp_ajax_check_giftcard_balance', 'plnt_check_giftcard_balance' );
+add_action( 'wp_ajax_nopriv_check_giftcard_balance', 'plnt_check_giftcard_balance' );
+function plnt_check_giftcard_balance() {
+    $code = sanitize_text_field( $_POST['code'] ?? '' );
+    $gift_card_id = plnt_get_giftcard_by_code( $code );
+    wp_send_json_success([
+        'gc' => $gift_card_id
+    ]);
+}
