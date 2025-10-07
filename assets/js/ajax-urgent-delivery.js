@@ -51,7 +51,7 @@ function getOrderParametrs(event) {
   renderDeliveryDates(checkedShippingMethod);
   renderDeliveryIntervals(checkedShippingMethod);
 
-  // ajaxGetUrgent();
+  ajaxGetUrgent();
 
 }
 
