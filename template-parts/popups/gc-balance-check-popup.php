@@ -16,8 +16,7 @@ $close_icon = carbon_get_theme_option('close_icon');
           <label for="code">Код подарочной карты</label>
           <input id="code" name="code" type="text" inputmode="latin"
                 placeholder="Например: AB12-CD34-EF56"
-                autocomplete="off" required
-                pattern="[A-Za-z0-9-]{8,24}" />
+                autocomplete="off" required />
           <div class="hint">Допустимы буквы, цифры и дефис. Минимум 8 символов.</div>
 
           <div class="row">
