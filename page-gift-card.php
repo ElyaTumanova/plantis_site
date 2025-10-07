@@ -62,11 +62,11 @@ $gift_card = get_post_meta( $gift_card_id );
 
 <?php else:?>
     <div class="gift-card-content-area">
-    <h1>Проверить баланс подарочного сертификата</h1>
-    <?php if ($gcnum):?>
-      <p>Карта с номером <?php echo $gcnum?> не найдена.</p>
-    <?php endif; ?>
-    <form method="get" novalidate>
+      <?php if ($gcnum):?>
+        <p>Карта с номером <?php echo $gcnum?> не найдена.</p>
+      <?php endif; ?>
+      <h1>Проверить баланс подарочного сертификата</h1>
+      <form method="get" novalidate>
       <label for="gcnum">Код подарочной карты</label>
       <input id="gcnum" name="gcnum" type="text" inputmode="latin"
             placeholder="Например: AB12-CD34-EF56"
