@@ -111,10 +111,10 @@
     }
 
     if(checkoutForm) {
-        document.addEventListener('DOMContentLoaded', plnt_hide_checkout_fields )
+        // document.addEventListener('DOMContentLoaded', plnt_hide_checkout_fields )
         //plnt_hide_checkout_fields(event);
         
-        checkoutForm.addEventListener('change', plnt_hide_checkout_fields);
+        // checkoutForm.addEventListener('change', plnt_hide_checkout_fields);
     }
 
 /*--------------------------------------------------------------

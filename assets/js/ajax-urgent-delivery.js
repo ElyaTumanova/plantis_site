@@ -31,7 +31,9 @@ function getOrderParametrs(event) {
   } else {
     isUrgent = '0';
   }
-
+  
+  plnt_hide_checkout_fields();
+  
   if(checkedInterval == '18:00 - 21:00') {
     isLate = '1'
   } else {
