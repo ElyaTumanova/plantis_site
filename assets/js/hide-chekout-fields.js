@@ -20,7 +20,7 @@
         deliveryIntervalInput.forEach((input)=>{
             input.checked = false;
         })
-        console.log(deliveryIntervalInput)
+        console.debug(deliveryIntervalInput)
     }
 
     function showInterval() {
@@ -71,7 +71,7 @@
         
         // for INN
         if (innField) {
-            console.log(document.querySelector('.wc_payment_methods input[checked="checked"]').value);
+            console.debug(document.querySelector('.wc_payment_methods input[checked="checked"]').value);
             if(event && event.target.id == "payment_method_cheque") {
                 innField.classList.remove('d-none');
             } else {
@@ -108,13 +108,6 @@
                 el.classList.remove('d-none');
             })
         }
-    }
-
-    if(checkoutForm) {
-        // document.addEventListener('DOMContentLoaded', plnt_hide_checkout_fields )
-        //plnt_hide_checkout_fields(event);
-        
-        // checkoutForm.addEventListener('change', plnt_hide_checkout_fields);
     }
 
 /*--------------------------------------------------------------
