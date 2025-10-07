@@ -245,6 +245,7 @@ function hidePopup() {
 // проверка кода карты
 
 if (gcBalanceForm) {
+  console.log(gcBalanceForm)
     const codeInput = gcBalanceForm.getElementById('code');
     const btn = gcBalanceForm.getElementById('checkBtn');
     const spin = gcBalanceForm.getElementById('spin');
