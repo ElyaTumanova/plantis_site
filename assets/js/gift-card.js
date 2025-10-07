@@ -315,8 +315,11 @@ if (gcBalanceForm) {
     gcBalanceForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       resetMessage();
+      console.log('hi form')
+      console.log(e)
 
       const code = codeInput.value.trim();
+      console.log(code)
       // if (!isCodeValid(code)) {
       //   showMessage("Проверьте код: разрешены буквы/цифры/дефис, длина 8–24 символа.", "err");
       //   codeInput.focus();
