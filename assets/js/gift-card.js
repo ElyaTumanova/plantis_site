@@ -179,7 +179,7 @@ const gcOpenPopupBtn = document.querySelectorAll('.gc-popup-open-btn');
 const gcPopup = document.querySelector('.gc-balance-popup');
 const gcClosePopupBtn = document.querySelector('.gc-balance-popup__close');
 const gcPopupOverlay = document.querySelector('.gc-balance-popup__popup-overlay');
-const gcBalanceForm = document.querySelector('.gc-balance-form');
+const gcBalanceForm = document.querySelector('#gc-balance-form');
 
 if (gcPopup != null && gcOpenPopupBtn != null) {
     gcOpenPopupBtn.forEach(button => {
