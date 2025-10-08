@@ -1,16 +1,5 @@
 <?php get_header(); 
 
-//for dev
-
-// echo('<pre>');
-// if ( $gift_card ) {
-//     echo 'Карта найдена.';
-// } else {
-//     echo 'Карта с таким номером не найдена.';
-// }
-// print_r($gcnum);
-// print_r($gift_card);
-// echo('</pre>');
 
 /** helper: безопасное чтение мета */
 function gc_meta(array $meta, string $key, $default = '') {
@@ -40,7 +29,18 @@ if ( $gc_valid ) {
         $gift_card = (array) get_post_meta( $gift_card_id );
     }
 }
+//for dev
 
+echo('<pre>');
+if ( $gift_card ) {
+    echo 'Карта найдена.';
+} else {
+    echo 'Карта с таким номером не найдена.';
+}
+print_r($raw_gcnum);
+print_r($gcnum);
+print_r($gift_card);
+echo('</pre>');
 ?>
 
 <?php if ( $gift_card ):?>
