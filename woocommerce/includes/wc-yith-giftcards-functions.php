@@ -309,52 +309,58 @@ add_filter( 'woocommerce_add_to_cart_redirect', function( $url ) {
 //     return null;
 // }
 
-function plnt_get_giftcard_by_code( $code ) {
-  global $wpdb;
-
-  $code = sanitize_text_field( $code );
-  if ( empty( $code ) ) {
-      return null;
-  }
-
-  // Временный фильтр для точного совпадения заголовка
-  add_filter( 'posts_where', function( $where, $query ) use ( $code, $wpdb ) {
-      if ( isset( $query->query_vars['exact_title'] ) && $query->query_vars['exact_title'] ) {
-          $where .= $wpdb->prepare( " AND {$wpdb->posts}.post_title = %s", $code );
-      }
-      return $where;
-  }, 10, 2 );
-
-  $query = new WP_Query( array(
-      'post_type'   => 'gift_card',
-      'post_status' => 'publish',
-      'posts_per_page' => 1,
-      'fields'     => 'ids',
-      'exact_title'=> true, // наш специальный флаг
-  ) );
-
-  // важно удалить фильтр, чтобы он не влиял на другие запросы
-  remove_all_filters( 'posts_where' );
-
-  return ! empty( $query->posts ) ? (int) $query->posts[0] : null;
+// выносим фильтр в именованную функцию
+function plnt_where_exact_title( $where, $query ) {
+    global $wpdb;
+    $exact_title = $query->get( 'plnt_exact_title' );
+    if ( $exact_title ) {
+        $where .= $wpdb->prepare( " AND {$wpdb->posts}.post_title = %s", $exact_title );
+    }
+    return $where;
 }
+
+function plnt_get_giftcard_by_code( $code ) {
+    // строгая валидация
+    $code = strtoupper( sanitize_text_field( (string) $code ) );
+    if ( $code === '' || ! preg_match( '/^[A-Z0-9]{4}(?:-[A-Z0-9]{4}){3}$/', $code ) ) {
+        return null;
+    }
+
+    add_filter( 'posts_where', 'plnt_where_exact_title', 10, 2 );
+
+    $q = new WP_Query( [
+        'post_type'       => 'gift_card',
+        'post_status'     => 'publish',
+        'posts_per_page'  => 1,
+        'fields'          => 'ids',
+        // передаём значение для фильтра БЕЗОПАСНО
+        'plnt_exact_title'=> $code,
+        'no_found_rows'   => true,
+        'ignore_sticky_posts' => true,
+    ] );
+
+    remove_filter( 'posts_where', 'plnt_where_exact_title', 10 );
+
+    return ! empty( $q->posts ) ? (int) $q->posts[0] : null;
+}
+
 
 
 /*--------------------------------------------------------------
 #CARD BALANCE CHECK
 --------------------------------------------------------------*/
 
-add_action( 'wp_ajax_check_giftcard_balance', 'plnt_check_giftcard_balance' );
-add_action( 'wp_ajax_nopriv_check_giftcard_balance', 'plnt_check_giftcard_balance' );
-function plnt_check_giftcard_balance() {
-    $res = null;
-    $code = sanitize_text_field( $_POST['code'] ?? '' );
-    $gift_card_id = plnt_get_giftcard_by_code( $code );
-    $gift_card = get_post_meta( $gift_card_id );
-    if ( $gift_card ) {
-      $res = $gift_card['_ywgc_balance_total'][0];
-    }
-    wp_send_json_success([
-        'res' => $res
-    ]);
-}
+// add_action( 'wp_ajax_check_giftcard_balance', 'plnt_check_giftcard_balance' );
+// add_action( 'wp_ajax_nopriv_check_giftcard_balance', 'plnt_check_giftcard_balance' );
+// function plnt_check_giftcard_balance() {
+//     $res = null;
+//     $code = sanitize_text_field( $_POST['code'] ?? '' );
+//     $gift_card_id = plnt_get_giftcard_by_code( $code );
+//     $gift_card = get_post_meta( $gift_card_id );
+//     if ( $gift_card ) {
+//       $res = $gift_card['_ywgc_balance_total'][0];
+//     }
+//     wp_send_json_success([
+//         'res' => $res
+//     ]);
+// }
