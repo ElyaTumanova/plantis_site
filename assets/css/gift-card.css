@@ -473,7 +473,14 @@
 /* CHECK BALANCE */
 
 .gift-card__not-found {
-  
+  margin-block: 50px 30px;
+  font-size: 22px;
+}
+
+.gift-card__check-title {
+  font-size: 22px;
+  margin-bottom: 20px;
+
 }
 
 /* FAQ */

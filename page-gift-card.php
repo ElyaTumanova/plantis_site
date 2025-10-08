@@ -91,15 +91,15 @@ if ( $gift_card_id > 0 ) {
       <?php if ($gcnum):?>
         <p class="gift-card__not-found">Карта с номером <?php echo esc_html($gcnum)?> не найдена.</p>
       <?php endif; ?>
-      <h1>Проверить баланс подарочного сертификата</h1>
-      <form method="get" novalidate>
+      <h1 class="gift-card__check-title">Проверить баланс подарочного сертификата</h1>
+      <form method="get" id="gc-balance-form" novalidate>
       <label for="gcnum">Код подарочной карты</label>
       <input id="gcnum" name="gcnum" type="text" inputmode="latin"
             placeholder="XXXX-XXXX-XXXX-XXXX"
             autocomplete="off" required />
 
       <div class="row">
-        <button id="checkBtn" type="submit">
+        <button id="checkBtn" type="submit" class="button">
           Проверить
           <span id="spin" class="spinner" style="display:none"></span>
         </button>

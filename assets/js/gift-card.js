@@ -179,7 +179,6 @@ if(giftCardApplyBtn) {
 // const gcPopup = document.querySelector('.gc-balance-popup');
 // const gcClosePopupBtn = document.querySelector('.gc-balance-popup__close');
 // const gcPopupOverlay = document.querySelector('.gc-balance-popup__popup-overlay');
-// const gcBalanceForm = document.querySelector('#gc-balance-form');
 
 // if (gcPopup != null && gcOpenPopupBtn != null) {
 //     gcOpenPopupBtn.forEach(button => {
@@ -242,15 +241,16 @@ if(giftCardApplyBtn) {
 //   }, 3000);
 // }
 
-// проверка кода карты в форме - не используем
+// проверка кода карты
+const gcBalanceForm = document.querySelector('#gc-balance-form');
 
-// if (gcBalanceForm) {
-//   console.log(gcBalanceForm)
-//     const codeInput = document.getElementById('code');
-//     const btn = document.getElementById('checkBtn');
-//     const spin = document.getElementById('spin');
-//     const msg = document.getElementById('msg');
-//     const clearBtn = document.getElementById('clearBtn');
+if (gcBalanceForm) {
+  console.log(gcBalanceForm)
+    const codeInput = document.getElementById('gcnum');
+    const btn = document.getElementById('checkBtn');
+    const spin = document.getElementById('spin');
+    const msg = document.getElementById('msg');
+    const clearBtn = document.getElementById('clearBtn');
 
 //    function showMessage(text, type = "ok") {
 //       msg.textContent = text;
@@ -364,4 +364,4 @@ if(giftCardApplyBtn) {
 //     codeInput.addEventListener('keydown', (e) => {
 //       if (e.key === 'Enter') form.requestSubmit();
 //     });
-// }
+}
