@@ -219,9 +219,9 @@
   color: var(--text);
 }
 /* обнуление стандартного вывода ошибок */
-/* .ywgc-red-border {
+.ywgc-red-border {
   border: 1px solid var(--yith-ywgc-border-color) !important;
-} */
+}
 .ywgc-manual-amount-error {
   float: none;
   display: none;
@@ -469,6 +469,12 @@
 }
 .copy-btn:hover{ background:#f7faf8; }
 .copy-btn:focus-visible{ outline: 3px solid #cfd5db; outline-offset: 2px; }
+
+/* CHECK BALANCE */
+
+.gift-card__not-found {
+  
+}
 
 /* FAQ */
 .faq-item{

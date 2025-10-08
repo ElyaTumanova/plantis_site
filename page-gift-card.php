@@ -19,37 +19,28 @@ $clean = sanitize_text_field($no_html);
 // 4) нормализация под ваш формат
 $gcnum = strtoupper($clean);
 
-/** строгая allow-list валидация */
-// $gc_valid = (bool) preg_match('/^[A-Z0-9]{4}(?:-[A-Z0-9]{4}){3}$/', $gcnum);
 
-/** если код невалидный — можно сразу показать форму и/или выставить 400 */
-// if ( $raw_gcnum && ! $gc_valid ) {
-//     status_header(400); // опционально
-//     $gcnum = '';        // не пропускаем дальше
-// }
-
-/** 2) ищем карту только для валидного кода */
 $gift_card_id = 0;
 $gift_card    = [];
 
-// if ( $gc_valid ) {
-    $gift_card_id = (int) plnt_get_giftcard_by_code( $gcnum );
-    if ( $gift_card_id > 0 ) {
-        $gift_card = (array) get_post_meta( $gift_card_id );
-    }
-// }
+
+$gift_card_id = (int) plnt_get_giftcard_by_code( $gcnum );
+if ( $gift_card_id > 0 ) {
+    $gift_card = (array) get_post_meta( $gift_card_id );
+}
+
 //for dev
 
-echo('<pre>');
-if ( $gift_card ) {
-    echo 'Карта найдена.';
-} else {
-    echo 'Карта с таким номером не найдена.';
-}
-// print_r($raw_gcnum);
-print_r($gcnum);
-print_r($gift_card);
-echo('</pre>');
+// echo('<pre>');
+// if ( $gift_card ) {
+//     echo 'Карта найдена.';
+// } else {
+//     echo 'Карта с таким номером не найдена.';
+// }
+// // print_r($raw_gcnum);
+// print_r($gcnum);
+// print_r($gift_card);
+// echo('</pre>');
 ?>
 
 <?php if ( $gift_card ):?>
@@ -98,7 +89,7 @@ echo('</pre>');
 <?php else:?>
     <div class="gift-card-content-area">
       <?php if ($gcnum):?>
-        <p>Карта с номером <?php echo esc_html($gcnum)?> не найдена.</p>
+        <p class="gift-card__not-found">Карта с номером <?php echo esc_html($gcnum)?> не найдена.</p>
       <?php endif; ?>
       <h1>Проверить баланс подарочного сертификата</h1>
       <form method="get" novalidate>
