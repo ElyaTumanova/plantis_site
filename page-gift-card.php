@@ -7,6 +7,7 @@ function gc_meta(array $meta, string $key, $default = '') {
 }
 
 /** 1) берём и нормализуем gcnum */
+$raw_gcnum = (string) get_query_var('gcnum');
 $raw_gcnum = wp_unslash($raw_gcnum);
 
 // 2) снять ВСЕ HTML-теги (никаких <b>, <script> и т.п.)
