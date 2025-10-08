@@ -96,10 +96,7 @@ echo('</pre>');
       <label for="gcnum">Код подарочной карты</label>
       <input id="gcnum" name="gcnum" type="text" inputmode="latin"
             placeholder="XXXX-XXXX-XXXX-XXXX"
-            autocomplete="off" required 
-            pattern="[A-Za-z0-9]{4}(?:-[A-Za-z0-9]{4}){3}"
-            maxlength="19"/>
-      <div class="hint">Допустимы буквы, цифры и дефис. Минимум 8 символов.</div>
+            autocomplete="off" required />
 
       <div class="row">
         <button id="checkBtn" type="submit">
