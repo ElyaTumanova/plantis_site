@@ -46,7 +46,7 @@ if ( $gift_card ) {
 } else {
     echo 'Карта с таким номером не найдена.';
 }
-print_r($raw_gcnum);
+// print_r($raw_gcnum);
 print_r($gcnum);
 print_r($gift_card);
 echo('</pre>');
