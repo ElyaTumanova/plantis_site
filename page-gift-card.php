@@ -7,8 +7,16 @@ function gc_meta(array $meta, string $key, $default = '') {
 }
 
 /** 1) берём и нормализуем gcnum */
-$raw_gcnum = (string) get_query_var('gcnum');
-$gcnum = strtoupper( sanitize_text_field( $raw_gcnum ) );
+$raw_gcnum = wp_unslash($raw_gcnum);
+
+// 2) снять ВСЕ HTML-теги (никаких <b>, <script> и т.п.)
+$no_html = wp_strip_all_tags($raw_gcnum, true);
+
+// 3) общая санитизация текста (убирает управляющие символы, null-bytes и пр.)
+$clean = sanitize_text_field($no_html);
+
+// 4) нормализация под ваш формат
+$gcnum = strtoupper($clean);
 
 /** строгая allow-list валидация */
 // $gc_valid = (bool) preg_match('/^[A-Z0-9]{4}(?:-[A-Z0-9]{4}){3}$/', $gcnum);
