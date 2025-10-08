@@ -101,12 +101,12 @@ if ( $gift_card_id > 0 ) {
       <div class="row">
         <button id="checkBtn" type="submit" class="button">
           Проверить
-          <span id="spin" class="spinner" style="display:none"></span>
+          <!-- <span id="spin" class="spinner" style="display:none"></span> -->
         </button>
         <button type="button" id="clearBtn" style="background:#e5e7eb;color:#111;">Очистить</button>
       </div>
-
-      <div id="msg" class="result" style="display:none"></div>
+<!-- 
+      <div id="msg" class="result" style="display:none"></div> -->
     </form>
 </div>
 <? endif;?>

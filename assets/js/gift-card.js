@@ -252,21 +252,21 @@ if (gcBalanceForm) {
     const msg = document.getElementById('msg');
     const clearBtn = document.getElementById('clearBtn');
 
-//    function showMessage(text, type = "ok") {
-//       msg.textContent = text;
-//       msg.className = "result " + (type === "ok" ? "ok" : "err");
-//       msg.style.display = "block";
-//     }
+  //  function showMessage(text, type = "ok") {
+  //     msg.textContent = text;
+  //     msg.className = "result " + (type === "ok" ? "ok" : "err");
+  //     msg.style.display = "block";
+  //   }
 
-//     function resetMessage() {
-//       msg.textContent = "";
-//       msg.style.display = "none";
-//     }
+  //   function resetMessage() {
+  //     msg.textContent = "";
+  //     msg.style.display = "none";
+  //   }
 
-//     function setLoading(loading) {
-//       btn.disabled = loading;
-//       spin.style.display = loading ? "inline-block" : "none";
-//     }
+    // function setLoading(loading) {
+    //   btn.disabled = loading;
+    //   spin.style.display = loading ? "inline-block" : "none";
+    // }
 
 //     function formatMoney(amount, currency = "RUB") {
 //       try {
@@ -354,11 +354,11 @@ if (gcBalanceForm) {
 //       }
 //     });
 
-//     clearBtn.addEventListener('click', () => {
-//       codeInput.value = "";
-//       resetMessage();
-//       codeInput.focus();
-//     });
+    clearBtn.addEventListener('click', () => {
+      codeInput.value = "";
+      resetMessage();
+      codeInput.focus();
+    });
 
 //     // Позволяем отправить по Enter
 //     codeInput.addEventListener('keydown', (e) => {
