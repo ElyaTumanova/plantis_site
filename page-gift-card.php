@@ -11,24 +11,24 @@ $raw_gcnum = (string) get_query_var('gcnum');
 $gcnum = strtoupper( sanitize_text_field( $raw_gcnum ) );
 
 /** строгая allow-list валидация */
-$gc_valid = (bool) preg_match('/^[A-Z0-9]{4}(?:-[A-Z0-9]{4}){3}$/', $gcnum);
+// $gc_valid = (bool) preg_match('/^[A-Z0-9]{4}(?:-[A-Z0-9]{4}){3}$/', $gcnum);
 
 /** если код невалидный — можно сразу показать форму и/или выставить 400 */
-if ( $raw_gcnum && ! $gc_valid ) {
-    status_header(400); // опционально
-    $gcnum = '';        // не пропускаем дальше
-}
+// if ( $raw_gcnum && ! $gc_valid ) {
+//     status_header(400); // опционально
+//     $gcnum = '';        // не пропускаем дальше
+// }
 
 /** 2) ищем карту только для валидного кода */
 $gift_card_id = 0;
 $gift_card    = [];
 
-if ( $gc_valid ) {
+// if ( $gc_valid ) {
     $gift_card_id = (int) plnt_get_giftcard_by_code( $gcnum );
     if ( $gift_card_id > 0 ) {
         $gift_card = (array) get_post_meta( $gift_card_id );
     }
-}
+// }
 //for dev
 
 echo('<pre>');
