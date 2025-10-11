@@ -485,12 +485,14 @@
 .gc-balance__checkBtn {
   background-color: var(--text);
   color: var(--white);
+  padding: 10px 20px;
 }
 
 .gc-balance__clearBtn {
   color: var(--text);
   background-color: var(--white);
   border: solid 1px var(--text);
+  padding: 10px 20px;
 }
 
 .gc-balance-form .row {
