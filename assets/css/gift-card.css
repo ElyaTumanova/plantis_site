@@ -480,7 +480,11 @@
 .gift-card__check-title {
   font-size: 22px;
   margin-bottom: 20px;
+}
 
+.gc-balance__btn {
+  background-color: var(--text);
+  color: var(--white);
 }
 
 /* FAQ */

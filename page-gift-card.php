@@ -95,15 +95,14 @@ if ( $gift_card_id > 0 ) {
       <form method="get" id="gc-balance-form" novalidate>
       <label for="gcnum">Код подарочной карты</label>
       <input id="gcnum" name="gcnum" type="text" inputmode="latin"
-            placeholder="XXXX-XXXX-XXXX-XXXX"
             autocomplete="off" required />
 
       <div class="row">
-        <button id="checkBtn" type="submit" class="button">
+        <button id="checkBtn" type="submit" class="button gc-balance__btn">
           Проверить
           <!-- <span id="spin" class="spinner" style="display:none"></span> -->
         </button>
-        <button type="button" id="clearBtn" style="background:#e5e7eb;color:#111;">Очистить</button>
+        <button type="button" id="clearBtn" class="button gc-balance__btn">Очистить</button>
       </div>
 <!-- 
       <div id="msg" class="result" style="display:none"></div> -->
