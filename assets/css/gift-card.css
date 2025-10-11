@@ -482,6 +482,11 @@
   font-weight: 500;
 }
 
+.gift-card__not-found span {
+  font-weight: 700;
+}
+
+
 .gift-card__check-title {
   font-size: 22px;
   margin-bottom: 20px;
