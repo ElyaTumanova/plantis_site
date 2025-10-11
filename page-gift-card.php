@@ -107,6 +107,9 @@ if ( $gift_card_id > 0 ) {
     <?php if ($gcnum):?>
         <p class="gift-card__not-found">Карта с номером <?php echo esc_html($gcnum)?> не найдена.</p>
     <?php endif; ?>
+    <?php if ($gcnum == ''):?>
+        <p class="gift-card__not-found">Введите номер подарочной карты</p>
+    <?php endif; ?>
 </div>
 <? endif;?>
 
