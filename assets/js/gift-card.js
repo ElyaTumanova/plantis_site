@@ -242,7 +242,7 @@ if(giftCardApplyBtn) {
 // }
 
 // проверка кода карты
-const gcBalanceForm = document.querySelector('#gc-balance-form');
+const gcBalanceForm = document.querySelector('.gc-balance-form');
 
 if (gcBalanceForm) {
   console.log(gcBalanceForm)
