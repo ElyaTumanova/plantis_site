@@ -252,116 +252,69 @@ if (gcBalanceForm) {
     const msg = document.getElementById('msg');
     const clearBtn = document.querySelector('.gc-balance__clearBtn');
 
-  //  function showMessage(text, type = "ok") {
-  //     msg.textContent = text;
-  //     msg.className = "result " + (type === "ok" ? "ok" : "err");
-  //     msg.style.display = "block";
-  //   }
+    // Любая кириллица по Unicode
+    const reCyrillic = /[\p{Script=Cyrillic}]/gu;
 
-  //   function resetMessage() {
-  //     msg.textContent = "";
-  //     msg.style.display = "none";
-  //   }
+    // Очистка кириллицы на лету + сообщение о пустом поле
+    codeInput.addEventListener('input', () => {
+      const cleaned = codeInput.value.replace(reCyrillic, '');
+      if (cleaned !== codeInput.value) codeInput.value = cleaned;
 
-    // function setLoading(loading) {
-    //   btn.disabled = loading;
-    //   spin.style.display = loading ? "inline-block" : "none";
-    // }
+      if (!codeInput.value.trim()) {
+        codeInput.setCustomValidity('Поле не должно быть пустым');
+      } else {
+        codeInput.setCustomValidity('');
+      }
+    });
 
-//     function formatMoney(amount, currency = "RUB") {
-//       try {
-//         return new Intl.NumberFormat('ru-RU', { style: 'currency', currency }).format(amount);
-//       } catch {
-//         return amount + " " + currency;
-//       }
-//     }
+    // Блокируем вставку кириллицы
+    codeInput.addEventListener('paste', (e) => {
+      e.preventDefault();
+      const text = (e.clipboardData || window.clipboardData).getData('text');
+      const cleaned = text.replace(reCyrillic, '');
+      const { selectionStart, selectionEnd } = codeInput;
+      const before = codeInput.value.slice(0, selectionStart);
+      const after  = codeInput.value.slice(selectionEnd);
+      codeInput.value = before + cleaned + after;
 
-//     // Простая клиентская валидация: буквы/цифры/дефис, 8–24 символа.
-//     function isCodeValid(code) {
-//       return /^[A-Za-z0-9-]{8,24}$/.test(code);
-//     }
+      const caret = (before + cleaned).length;
+      codeInput.setSelectionRange(caret, caret);
+      codeInput.dispatchEvent(new Event('input', { bubbles: true }));
+    });
 
-//     function checkCode(code) {
-//       const data = new URLSearchParams();
-//       data.append('action', 'check_giftcard_balance');
-//       data.append('code', code);
+    // Доп. защита на уровне beforeinput
+    codeInput.addEventListener('beforeinput', (e) => {
+      if (typeof e.data === 'string' && reCyrillic.test(e.data)) {
+        e.preventDefault();
+      }
+    });
 
-//       fetch('/wp-admin/admin-ajax.php', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/x-www-form-urlencoded'
-//         },
-//         body: data
-//       })
-//       .then(response => {
-//         if (!response.ok) {
-//           throw new Error(`HTTP error! Status: ${response.status}`);
-//         }
-//         return response.json();
-//       })
-//       .then(result => {
-//         console.debug('✅ AJAX success:', result);
-//         if (result.success) {
-//           console.log(result);
-//           return result;
-//         }
-//       })
-//       .catch(error => {
-//         console.error('❌ AJAX error:', error);
-//       })
-//       .finally(() => {
-//         console.debug('⚙️ AJAX complete');
-//       });
-//     }
+    // Проверка при отправке
+    gcBalanceForm.addEventListener('submit', (e) => {
+      const value = codeInput.value.trim();
 
-//     gcBalanceForm.addEventListener('submit', async (e) => {
-//       e.preventDefault();
-//       resetMessage();
-//       console.log('hi form')
-//       console.log(e)
+      if (!value) {
+        codeInput.setCustomValidity('Поле не должно быть пустым');
+      } else if (reCyrillic.test(value)) {
+        codeInput.setCustomValidity('Нельзя использовать русские буквы');
+      } else {
+        codeInput.setCustomValidity('');
+      }
 
-//       const code = codeInput.value.trim();
-//       console.log(code)
-//       // if (!isCodeValid(code)) {
-//       //   showMessage("Проверьте код: разрешены буквы/цифры/дефис, длина 8–24 символа.", "err");
-//       //   codeInput.focus();
-//       //   return;
-//       // }
+      if (!gcBalanceForm.checkValidity()) {
+        e.preventDefault();
+        gcBalanceForm.reportValidity();
+      }
+    });
 
-//       try {
-//         setLoading(true);
-//         const data = await checkCode(code);
-//         console.log(data)
-//         // const amount = Number(data.amount);
-//         // const currency = data.currency || "RUB";
-
-//         // if (Number.isFinite(amount) && amount >= 0) {
-//         //   showMessage(`Сумма карты: ${formatMoney(amount, currency)}`, "ok");
-//         // } else {
-//         //   showMessage("Неверный формат суммы в ответе сервера.", "err");
-//         // }
-//       } catch (err) {
-//         console.log(err)
-//         // if (err.status === 404) {
-//         //   showMessage("Карта с таким кодом не найдена.", "err");
-//         // } else if (err.status === 410) {
-//         //   showMessage("Карта просрочена или уже использована.", "err");
-//         // } else {
-//         //   showMessage(err.message || "Не удалось выполнить проверку. Попробуйте позже.", "err");
-//         // }
-//       } finally {
-//         setLoading(false);
-//       }
-//     });
-
+    // Кнопка «Очистить»
     clearBtn.addEventListener('click', () => {
-      codeInput.value = "";
-      resetMessage();
+      codeInput.value = '';
+      codeInput.setCustomValidity('');
       codeInput.focus();
     });
 
-//     // Позволяем отправить по Enter
-//     codeInput.addEventListener('keydown', (e) => {
-//       if (e.key === 'Enter') form.requestSubmit();
-//     });
+
+
+
 }
