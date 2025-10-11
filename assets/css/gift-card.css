@@ -482,9 +482,19 @@
   margin-bottom: 20px;
 }
 
-.gc-balance__btn {
+.gc-balance__checkBtn {
   background-color: var(--text);
   color: var(--white);
+}
+
+.gc-balance__clearBtn {
+  color: var(--text);
+  background-color: var(--white);
+  border: solid 1px var(--text);
+}
+
+.gc-balance-form .row {
+  margin-top: 20px;
 }
 
 /* FAQ */

@@ -93,19 +93,19 @@ if ( $gift_card_id > 0 ) {
       <?php endif; ?>
       <h1 class="gift-card__check-title">Проверить баланс подарочного сертификата</h1>
       <form method="get" id="gc-balance-form" novalidate>
-      <label for="gcnum">Код подарочной карты</label>
-      <input id="gcnum" name="gcnum" type="text" inputmode="latin"
-            autocomplete="off" required />
+        <label for="gcnum">Код подарочной карты</label>
+        <input id="gcnum" name="gcnum" type="text" inputmode="latin"
+              autocomplete="off" required />
 
-      <div class="row">
-        <button id="checkBtn" type="submit" class="button gc-balance__btn">
-          Проверить
-          <!-- <span id="spin" class="spinner" style="display:none"></span> -->
-        </button>
-        <button type="button" id="clearBtn" class="button gc-balance__btn">Очистить</button>
-      </div>
-<!-- 
-      <div id="msg" class="result" style="display:none"></div> -->
+        <div class="row">
+          <button type="submit" class="button gc-balance__checkBtn">
+            Проверить
+            <!-- <span id="spin" class="spinner" style="display:none"></span> -->
+          </button>
+          <button type="button" class="button gc-balance__clearBtn">Очистить</button>
+        </div>
+
+        <!-- <div id="msg" class="result" style="display:none"></div> -->
     </form>
 </div>
 <? endif;?>

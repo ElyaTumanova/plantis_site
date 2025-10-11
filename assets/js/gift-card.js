@@ -247,10 +247,10 @@ const gcBalanceForm = document.querySelector('#gc-balance-form');
 if (gcBalanceForm) {
   console.log(gcBalanceForm)
     const codeInput = document.getElementById('gcnum');
-    const btn = document.getElementById('checkBtn');
+    const btn = document.querySelector('.gc-balance__checkBtn');
     const spin = document.getElementById('spin');
     const msg = document.getElementById('msg');
-    const clearBtn = document.getElementById('clearBtn');
+    const clearBtn = document.querySelector('.gc-balance__clearBtn');
 
   //  function showMessage(text, type = "ok") {
   //     msg.textContent = text;
