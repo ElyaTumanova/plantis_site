@@ -86,8 +86,6 @@ echo('</pre>');
       <form method="get" class="gc-balance-form" novalidate>
         <label for="gcnum">Номер подарочной карты</label>
         <input id="gcnum" name="gcnum" type="text" inputmode="latin"
-            pattern="^(?!.*[А-Яа-яЁё]).+$"
-            oninput="this.value = this.value.replace(/[А-Яа-яЁё]/g, '')"
             autocomplete="off" required />
 
         <div class="row">
