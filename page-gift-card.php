@@ -1,11 +1,5 @@
 <?php get_header(); 
 
-
-/** helper: безопасное чтение мета */
-function gc_meta(array $meta, string $key, $default = '') {
-    return isset($meta[$key][0]) ? $meta[$key][0] : $default;
-}
-
 /** 1) берём и нормализуем gcnum */
 $raw_gcnum = (string) get_query_var('gcnum');
 $raw_gcnum = wp_unslash($raw_gcnum);
@@ -90,7 +84,7 @@ if ( $gift_card_id > 0 ) {
     <div class="gift-card-content-area">
       <h1 class="gift-card__check-title">Проверить баланс подарочного сертификата</h1>
       <form method="get" class="gc-balance-form" novalidate>
-        <label for="gcnum">Код подарочной карты</label>
+        <label for="gcnum">Номер подарочной карты</label>
         <input id="gcnum" name="gcnum" type="text" inputmode="latin"
               autocomplete="off" required />
 
@@ -107,7 +101,7 @@ if ( $gift_card_id > 0 ) {
     <?php if ($gcnum):?>
         <p class="gift-card__not-found">Карта с номером <span><?php echo esc_html($gcnum)?></span> не найдена.</p>
     <?php endif; ?>
-    <?php if ($gcnum == ''):?>
+    <?php if ($raw_gcnum && $gcnum == ''):?>
         <p class="gift-card__not-found">Введите номер подарочной карты</p>
     <?php endif; ?>
 </div>
