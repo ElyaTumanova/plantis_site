@@ -277,7 +277,7 @@ if (gcBalanceForm) {
       if (!v.trim()) {
         codeInput.setCustomValidity('Поле не должно быть пустым');
       } else if (reCyrillic.test(v)) {
-        codeInput.setCustomValidity('Нельзя использовать русские буквы');
+        codeInput.setCustomValidity('Используйте латинские буквы');
       } else {
         codeInput.setCustomValidity('');
       }
