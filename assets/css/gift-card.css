@@ -474,7 +474,12 @@
 
 .gift-card__not-found {
   margin-block: 50px 30px;
-  font-size: 22px;
+  font-size: 20px;
+  padding: 30px;
+  border-radius: 30px;
+  background-color: var(--gray);
+  width: fit-content;
+  font-weight: 500;
 }
 
 .gift-card__check-title {
