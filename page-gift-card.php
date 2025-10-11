@@ -86,7 +86,9 @@ echo('</pre>');
       <form method="get" class="gc-balance-form" novalidate>
         <label for="gcnum">Номер подарочной карты</label>
         <input id="gcnum" name="gcnum" type="text" inputmode="latin"
-              autocomplete="off" required />
+            pattern="^(?!.*[А-Яа-яЁё]).+$"
+            oninput="this.value = this.value.replace(/[А-Яа-яЁё]/g, '')"
+            autocomplete="off" required />
 
         <div class="row">
           <button type="submit" class="button gc-balance__checkBtn">
@@ -97,13 +99,10 @@ echo('</pre>');
         </div>
 
         <!-- <div id="msg" class="result" style="display:none"></div> -->
-    </form>
-    <?php if ($gcnum):?>
-        <p class="gift-card__not-found">Карта с номером <span><?php echo esc_html($gcnum)?></span> не найдена.</p>
-    <?php endif; ?>
-    <?php if ($raw_gcnum && $gcnum == ''):?>
-        <p class="gift-card__not-found">Введите номер подарочной карты</p>
-    <?php endif; ?>
+      </form>
+      <?php if ($gcnum):?>
+          <p class="gift-card__not-found">Карта с номером <span><?php echo esc_html($gcnum)?></span> не найдена.</p>
+      <?php endif; ?>
 </div>
 <? endif;?>
 
