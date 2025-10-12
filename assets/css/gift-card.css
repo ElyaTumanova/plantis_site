@@ -498,10 +498,10 @@
 /* CHECK BALANCE */
 
 .gift-card__not-found {
-  margin-block: 50px 30px;
+  margin: 50px auto 30px;
   font-size: 20px;
   padding: 30px;
-  border-radius: 30px;
+  border-radius: 20px;
   background-color: var(--gray);
   width: fit-content;
   font-weight: 500;
@@ -515,6 +515,7 @@
 .gift-card__check-title {
   font-size: 22px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .gc-balance-form {
@@ -528,6 +529,8 @@
   padding: 3px 25px;
   outline: none;
   margin: 10px 0 0;
+  height: 40px;
+  width: 255px;
 }
 
 .gc-balance__checkBtn {
