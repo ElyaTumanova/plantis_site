@@ -26,6 +26,14 @@
 			</div> -->
 		</div>
 	</div>
+  <div class="container main__row main__promo">
+    <div class="main__promo-card">
+      <a href="<?php echo site_url()?>/test-kakoe-ty-rastenie" target="_blank"><img src="<?php echo get_template_directory_uri()?>/images/gift-card/test_main_cover.jpg" alt="Пройди тест - Какое ты комнатное растение?"></a>
+    </div>
+    <div class="main__promo-card">
+      <a href="<?php echo site_url()?>/shop/gift-card" target="_blank"><img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_soc.jpg" alt="Подарочный сертификат"></a>
+    </div>
+  </div>
 	<div class="main__cats-wrap main__row container">
 		<div class="main__cats-nav">
 			<span class = "main__cats-nav-title" data-type="product_tag" data-term="skidki">Скидки</span>
@@ -45,14 +53,6 @@
 	<div class="cats-grid-wrap main__row container">
 		<?php get_template_part('template-parts/plants-cats-grid');?>
 	</div>
-  <div class="container main__row main__promo">
-    <div class="main__promo-card">
-      <a href="<?php echo site_url()?>/test-kakoe-ty-rastenie" target="_blank"><img src="<?php echo get_template_directory_uri()?>/images/gift-card/test_main_cover.jpg" alt="Пройди тест - Какое ты комнатное растение?"></a>
-    </div>
-    <div class="main__promo-card">
-      <a href="<?php echo site_url()?>/shop/gift-card" target="_blank"><img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_soc.jpg" alt="Подарочный сертификат"></a>
-    </div>
-  </div>
 	<div class="main__wrap container main__row">
 		<?php
 			get_template_part( 'template-parts/advantages' );
