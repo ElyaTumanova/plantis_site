@@ -50,7 +50,7 @@
       <img src="<?php echo get_template_directory_uri()?>/images/gift-card/test_cover_long.webp" alt="Пройди тест - Какое ты комнатное растение?">
     </div>
     <div class="main__gift-card">
-      <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc-soc.jpg" alt="Подарочный сертификат">
+      <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_soc.jpg" alt="Подарочный сертификат">
     </div>
   </div>
 	<div class="main__wrap container main__row">
