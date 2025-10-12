@@ -45,6 +45,15 @@
 	<div class="cats-grid-wrap main__row container">
 		<?php get_template_part('template-parts/plants-cats-grid');?>
 	</div>
+  <div class="container main__row">
+    <div class="main__test-card">
+      <img src="<?php echo get_template_directory_uri()?>/images/interior.webp" alt="">
+    </div>
+    <div class="main__gift-card">
+      <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc-soc.jpg" alt="">
+    </div>
+
+  </div>
 	<div class="main__wrap container main__row">
 		<?php
 			get_template_part( 'template-parts/advantages' );
