@@ -47,10 +47,10 @@
 	</div>
   <div class="container main__row main__promo">
     <div class="main__promo-card">
-      <img src="<?php echo get_template_directory_uri()?>/images/gift-card/test_cover_long.webp" alt="Пройди тест - Какое ты комнатное растение?">
+      <a href="<?php echo site_url()?>/test-kakoe-ty-rastenie"><img src="<?php echo get_template_directory_uri()?>/images/gift-card/test_cover_long.webp" alt="Пройди тест - Какое ты комнатное растение?"></a>
     </div>
     <div class="main__promo-card">
-      <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_soc.jpg" alt="Подарочный сертификат">
+      <a href="<?php echo site_url()?>/shop/gift-card"><img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_soc.jpg" alt="Подарочный сертификат"></a>
     </div>
   </div>
 	<div class="main__wrap container main__row">

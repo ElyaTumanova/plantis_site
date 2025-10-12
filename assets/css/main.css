@@ -777,9 +777,20 @@
 
 .main__promo-card {
   max-height: 300px;
+  flex: 1 1 50%;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .main__promo-card img {
   max-height: 300px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.main__promo-card a, .main__promo-card a:hover, .main__promo-card a:focus {
+  text-decoration: none;
+  color: inherit;
 }
 
