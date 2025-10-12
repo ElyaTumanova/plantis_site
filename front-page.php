@@ -45,11 +45,11 @@
 	<div class="cats-grid-wrap main__row container">
 		<?php get_template_part('template-parts/plants-cats-grid');?>
 	</div>
-  <div class="container main__row">
-    <div class="main__test-card">
+  <div class="container main__row main__promo">
+    <div class="main__promo-card">
       <img src="<?php echo get_template_directory_uri()?>/images/gift-card/test_cover_long.webp" alt="Пройди тест - Какое ты комнатное растение?">
     </div>
-    <div class="main__gift-card">
+    <div class="main__promo-card">
       <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_soc.jpg" alt="Подарочный сертификат">
     </div>
   </div>
