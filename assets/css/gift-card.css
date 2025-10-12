@@ -517,6 +517,19 @@
   margin-bottom: 20px;
 }
 
+.gc-balance-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gc-balance-form input {
+  border-radius: 40px;
+  padding: 3px 25px;
+  outline: none;
+  margin: 10px 0 0;
+}
+
 .gc-balance__checkBtn {
   background-color: var(--text);
   color: var(--white);
