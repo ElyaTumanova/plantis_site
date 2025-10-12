@@ -565,6 +565,10 @@
   gap: 7px;
 }
 
+.faq-answer a {
+  color: var(--accent-color);
+}
+
 /* Обёртка секции */
 .gift-card__info{
   margin: 40px auto 24px;

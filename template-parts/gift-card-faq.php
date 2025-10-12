@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="faq-answer">
       <p>
         Проверьте баланс сертификата
-        <a target="_self" rel="noopener noreferrer" href="#check-gc-balance">здесь</a>
+        <a target="_self" rel="noopener noreferrer" href="<?php echo site_url()?>/gift-card">здесь</a>
         или свяжитесь с нами удобным вам способом. Нам можно позвонить:
         <a href="tel:+78002015790">8 800 201 57 90</a>
         (каждый день с 10:00 до 20:00 по Москве) или написать:
@@ -72,7 +72,9 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
     <div class="faq-answer">
       <p>
-        Или свяжитесь с нами удобным вам способом. Нам можно позвонить:
+        Проверьте баланс сертификата
+        <a target="_self" rel="noopener noreferrer" href="<?php echo site_url()?>/gift-card">здесь</a>
+        или свяжитесь с нами удобным вам способом. Нам можно позвонить:
         <a href="tel:+78002015790">8 800 201 57 90</a>
         (каждый день с 10:00 до 20:00 по Москве) или написать:
         <a target="_blank" rel="noopener noreferrer" href="mailto:INFO@PLANTIS.SHOP">INFO@PLANTIS.SHOP</a>.
