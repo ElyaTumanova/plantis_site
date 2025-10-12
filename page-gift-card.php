@@ -81,7 +81,7 @@ if ( $gift_card_id > 0 ) {
   </div>
 
 <?php else:?>
-    <div class="gift-card-content-area">
+    <div class="gift-card-cb-content-area">
       <h1 class="gift-card__check-title">Проверить баланс подарочного сертификата</h1>
       <form method="get" class="gc-balance-form" novalidate>
         <label for="gcnum">Номер подарочной карты</label>
