@@ -137,6 +137,7 @@
 
 .advantages__wrap {
     max-width: 297px;
+    min-width: 200px;
     row-gap: 15px;
     display: grid;
     grid-template: 40px auto / 40px auto;
@@ -217,7 +218,7 @@
 
 /* advantages  #adaptive*/
 
-@media (max-width:767px) {
+@media (max-width:1024px) {
     .advantages {
         display: flex;
         flex-direction: column;
@@ -228,6 +229,8 @@
     }
 
     .advantages__wrap {
+        max-width: 100%;
+        min-width: none;
         grid-template-columns: 50px auto;
         row-gap: 10px;
         min-width: 300px;
@@ -364,7 +367,8 @@
 
 @media (max-width:767px) {
     .main__telegram {
-       margin-top: -10px;
+       /* margin-top: -10px; */
+       border-radius: 20px;
     }
 }
 
@@ -391,9 +395,9 @@
   overflow: hidden;
 }
 
-@media (min-width:767px) {
+@media (max-width:767px) {
     .main__test {
-        min-height: 200px;
+        border-radius: 20px;
     }
   }
 
