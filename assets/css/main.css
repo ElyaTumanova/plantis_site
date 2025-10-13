@@ -220,6 +220,16 @@
 
 @media (max-width:1024px) {
     .advantages {
+        display: grid;
+        column-gap: 20px;
+        grid-template-columns: repeat(2,auto);
+        margin: 0;
+        row-gap: 20px;
+    }
+  }
+
+@media (max-width:767px) {
+    .advantages {
         display: flex;
         flex-direction: column;
         /* overflow-y: scroll; */
