@@ -37,7 +37,7 @@
     --border-rad: 40px;
 }
 
-@media (min-width:767px) {
+@media (max-width:767px) {
     :root {
       --border-rad: 30px;
     }
