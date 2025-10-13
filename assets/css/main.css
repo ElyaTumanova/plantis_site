@@ -10,8 +10,8 @@
   
   @media (max-width:1279px) {
     .main__wrap {
-      grid-template-columns: 100%;
-      grid-template-rows: auto 250px 250px;
+      display: flex;
+      flex-direction: column;
       row-gap: 30px;
     }
 }
@@ -389,6 +389,12 @@
   border-radius: 40px;
   overflow: hidden;
 }
+
+@media (min-width:767px) {
+    .main__test {
+        min-height: 200px;
+    }
+  }
 
 .main__test img {
   object-fit: cover;
