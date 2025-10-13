@@ -130,9 +130,9 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		
     // main
     wp_enqueue_style( 'main', 
-      get_template_directory_uri().'/assets/css/main/main.css', 
+      get_template_directory_uri().'/assets/css/main.css', 
       array(), 
-      filemtime(get_stylesheet_directory() .'/assets/css/main/main.css'), 
+      filemtime(get_stylesheet_directory() .'/assets/css/main.css'), 
       'all' 
     );
     wp_enqueue_style( 'advantages', 
