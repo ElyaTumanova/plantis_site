@@ -135,32 +135,7 @@ if ( ! function_exists( 'ast_styles' ) ) {
       filemtime(get_stylesheet_directory() .'/assets/css/main.css'), 
       'all' 
     );
-    wp_enqueue_style( 'advantages', 
-      get_template_directory_uri().'/assets/css/main/advantages.css', 
-      array(), 
-      filemtime(get_stylesheet_directory() .'/assets/css/main/advantages.css'), 
-      'all' 
-    );
-    wp_enqueue_style( 'banners', 
-      get_template_directory_uri().'/assets/css/main/banners.css', 
-      array(), 
-      filemtime(get_stylesheet_directory() .'/assets/css/main/banners.css'), 
-      'all' 
-    );
-    wp_enqueue_style( 'main-about', 
-      get_template_directory_uri().'/assets/css/main/main-about.css', 
-      array(), 
-      filemtime(get_stylesheet_directory() .'/assets/css/main/main-about.css'), 
-      'all' 
-    );
-    wp_enqueue_style( 'cats-grid', 
-      get_template_directory_uri().'/assets/css/main/cats-grid.css', 
-      array(), 
-      filemtime(get_stylesheet_directory() .'/assets/css/main/cats-grid.css'), 
-      'all' 
-    );
 		
-    
     wp_enqueue_style( 'header', get_template_directory_uri() .
 		                             '/assets/css/header.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/header.css'), 'all' );
 		wp_enqueue_style( 'menu', get_template_directory_uri() .
