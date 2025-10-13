@@ -130,7 +130,7 @@
     column-gap: 20px;
     padding: 25px;
     background-color: var(--gray);
-    border-radius: 40px;
+    border-radius: var(--border-rad);
     /* box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25); */
     /* align-items: center; */
 }
@@ -369,20 +369,13 @@
 
 .main__telegram {
     min-height: 120px;
-    border-radius: 40px;
+    border-radius: var(--border-rad);
     /* box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25); */
     background-image: url(https://plantis-shop.ru/wp-content/themes/plantis_site/images/telegram-2.webp), radial-gradient(#4AB0E9, #ABDAF5);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
     display: block;
-}
-
-@media (max-width:767px) {
-    .main__telegram {
-       /* margin-top: -10px; */
-       border-radius: 20px;
-    }
 }
 
 @media (min-width:1279px) {
@@ -393,7 +386,7 @@
 
 @media (min-width:767px) {
     .main__telegram {
-        min-height: 200px;
+        min-height: 250px;
     }
 }
 
@@ -404,16 +397,10 @@
   display: flex;
   justify-content: center;
   background-image: linear-gradient(#FCF9E1, #F5F3DB);
-  border-radius: 40px;
+  border-radius: var(--border-rad);
   overflow: hidden;
   max-height: 250px;
 }
-
-@media (max-width:767px) {
-    .main__test {
-        border-radius: 20px;
-    }
-  }
 
 .main__test img {
   object-fit: cover;
@@ -434,7 +421,7 @@
     row-gap: 40px;
     padding: 50px;
     background-color: var(--gray);
-    border-radius: 40px;
+    border-radius: var(--border-rad);
     margin-bottom: 50px;
 }
 
@@ -484,7 +471,7 @@
 
 .main__about-photo {
     grid-area: photo;
-    border-radius: 40px;
+    border-radius: var(--border-rad);
     height: 445px;
     width: 100%;
     object-fit: cover;
@@ -521,7 +508,7 @@
 
 .main__about-block_assort {
     background-color: var(--gray);
-    border-radius: 40px;
+    border-radius: var(--border-rad);
     grid-template-rows: auto 70px;
     grid-template-areas: "heading list"
     "button list";

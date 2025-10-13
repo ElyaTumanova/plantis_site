@@ -34,6 +34,13 @@
     --stock-backorder: #dbc602;
     --notice-red:#f3afaf;
     --dark-bg:#262626;
+    --border-rad: 40px;
+}
+
+@media (min-width:767px) {
+    :root {
+      --border-rad: 30px;
+    }
 }
 
 .d-none {
