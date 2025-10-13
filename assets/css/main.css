@@ -221,7 +221,7 @@
 @media (max-width:1024px) {
     .advantages {
         display: grid;
-        column-gap: 80px;
+        column-gap: 40px;
         grid-template-columns: repeat(2, 300px);
         margin: 0;
         row-gap: 20px;
@@ -229,7 +229,7 @@
     }
   }
 
-@media (max-width:767px) {
+@media (max-width:690px) {
     .advantages {
         display: flex;
         flex-direction: column;
@@ -240,8 +240,9 @@
     }
 
     .advantages__wrap {
-        max-width: 100%;
-        min-width: none;
+        max-width: 350px;
+        min-width: 0;
+        margin: auto;
         grid-template-columns: 50px auto;
         grid-template-rows: 50px auto;
         row-gap: 10px;
