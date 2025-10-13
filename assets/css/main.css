@@ -2,8 +2,9 @@
 
 .main__wrap {
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 70% 30% 30%;
     row-gap: 50px;
+    column-gap: 20px;
 }
 
 @media (max-width:1279px) {
@@ -123,7 +124,7 @@
     grid-template: repeat(2, auto) / repeat(2,auto);
     row-gap: 30px;
     column-gap: 30px;
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 
 .advantages__wrap {

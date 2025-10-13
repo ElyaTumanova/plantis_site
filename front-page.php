@@ -49,6 +49,9 @@
 		<?php
 			get_template_part( 'template-parts/advantages' );
 		?>
+    <a>
+      <img src="<?php echo get_template_directory_uri()?>/images/test/test_cover.jpg" alt="">
+    </a>
 		<!-- <div class="main__contacts">
 			<p class="main__contacts-text">Не знаете, какое комнатное растение подойдёт именно вам?<br>Спросите нас об этом!</p>
 			<?php //get_template_part('template-parts/social-media-btns');?>
