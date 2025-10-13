@@ -99,7 +99,7 @@
 @media (max-width:1024px) {
     .advantages {
         display: grid;
-        column-gap: 40px;
+        column-gap: 20px;
         grid-template-columns: repeat(2, auto);
         height: 100%;
         margin: 0;
