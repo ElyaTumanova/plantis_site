@@ -2,8 +2,9 @@
 
 .main__wrap {
     display: grid;
-    grid-template-columns: repeat(2,(50% - 10px));
-    row-gap: 50px;
+    grid-template-columns: repeat(2, calc(50% - 10px));
+    grid-template-rows: auto 250px;
+    row-gap: 30px;
     column-gap: 20px;
 }
 
@@ -121,18 +122,20 @@
 /* advantages */
 .advantages {
     grid-column: span 2;
-    display: grid;
-    grid-template: repeat(2, auto) / repeat(2, auto);
+    /* display: grid;
+    grid-template: repeat(2, auto) / repeat(2, auto); */
+    display: flex;
     row-gap: 10px;
     column-gap: 20px;
     padding: 25px;
     background-color: var(--gray);
     border-radius: 40px;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
-    align-items: center;
+    /* align-items: center; */
 }
 
 .advantages__wrap {
+    flex: 0 0 calc(25% - 20px);
     row-gap: 15px;
     display: grid;
     grid-template: 40px auto / 40px auto;
