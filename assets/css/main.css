@@ -382,6 +382,9 @@
 
 .main__test {
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(#FCF9E1, #F5F3DB);
 }
 
 .main__test img {
