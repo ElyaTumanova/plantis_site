@@ -120,15 +120,15 @@
 
 /* advantages */
 .advantages {
-    display: grid;
-    grid-template: repeat(2, auto) / repeat(2,auto);
+     display: grid;
+    grid-template: repeat(2, auto) / repeat(2, auto);
     row-gap: 10px;
-    column-gap: 10px;
-    /* margin-right: 20px; */
-    padding: 10px;
+    column-gap: 20px;
+    padding: 25px;
     background-color: var(--gray);
-    border-radius: 10px;
+    border-radius: 40px;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+    align-items: center;
 }
 
 .advantages__wrap {
@@ -348,7 +348,7 @@
 
 .main__telegram {
     min-height: 120px;
-    border-radius: 10px;
+    border-radius: 40px;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
     background-image: url(https://plantis-shop.ru/wp-content/themes/plantis_site/images/telegram-2.webp), radial-gradient(#4AB0E9, #ABDAF5);
     background-repeat: no-repeat;
