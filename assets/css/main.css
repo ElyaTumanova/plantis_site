@@ -242,7 +242,8 @@
     .advantages__wrap {
         max-width: 100%;
         min-width: none;
-        grid-template: 50px auto / 50px auto;
+        grid-template-columns: 50px auto;
+        grid-template-rows: 50px auto;
         row-gap: 10px;
         min-width: 300px;
         background-color: var(--gray);
