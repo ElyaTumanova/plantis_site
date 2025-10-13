@@ -2,7 +2,7 @@
 
 .main__wrap {
     display: grid;
-    grid-template-columns: calc(40% - 40px) 30% 30%;
+    grid-template-columns: calc(50% - 40px) 20% 30%;
     row-gap: 50px;
     column-gap: 20px;
 }
@@ -372,6 +372,18 @@
     .main__telegram {
         min-height: 200px;
     }
+}
+
+/* test banner */
+
+.main__test {
+  text-decoration: none;
+}
+
+.main__test img {
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 /* about section */

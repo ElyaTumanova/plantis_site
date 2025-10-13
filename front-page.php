@@ -49,7 +49,7 @@
 		<?php
 			get_template_part( 'template-parts/advantages' );
 		?>
-    <a class="main__test">
+    <a class="main__test" href="<?php echo site_url()?>/test-kakoe-ty-rastenie" target="_blank">
       <img src="<?php echo get_template_directory_uri()?>/images/test/test_main_cover.jpg" alt="">
     </a>
 		<!-- <div class="main__contacts">
