@@ -1,0 +1,131 @@
+/* categories grid */
+
+/* .cats-grid-wrap {display: none;} */
+.cats-grid {
+    display: grid;
+    column-gap: 10px;
+    row-gap: 10px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 0.5fr 0.5fr 1fr;
+    grid-template-areas:
+    /* "napol lisv lisv cvetush palms fikus"
+    "napol neprikhotliv neprikhotliv lianas palms petfriendly"
+    "napol neprikhotliv neprikhotliv succulent palms petfriendly"
+    ; */
+    "napol lisv lisv cvetush palms lianas"
+    "napol lisv lisv cvetush palms succulent"
+    "napol fikus neprikhotliv neprikhotliv palms petfriendly"
+    ;
+}
+
+@media (max-width:767px) {
+    /* .cats-grid-wrap {display: block;} */
+    .cats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: 1fr 1fr 0.5fr 0.5fr 1fr;
+        grid-template-areas:
+        "lisv lisv fikus"
+        "napol cvetush petfriendly"
+        "napol  succulent palms"
+        "napol  lianas palms"
+        "neprikhotliv neprikhotliv palms"
+        ;
+        row-gap: 5px;
+        column-gap: 5px;
+    }  
+}
+
+.cats-grid > *{
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden; /* чтобы ничего не торчало */
+}
+
+.cats-grid__inner {
+    /* border: solid 1px black; */
+    /* min-height: 80px; */
+    font-size: 0;
+    position: relative;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    /* padding: 5px; */
+    box-sizing: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.cats-grid__inner_palms {
+    grid-area: palms;
+    /* aspect-ratio: 1/2; */
+    background-image: url(../../images/cats-grid/palms.webp);
+}
+.cats-grid__inner_lisv {
+    grid-area: lisv;
+    /* aspect-ratio: 2/1; */
+    background-image: url(../../images/cats-grid/decor.webp);
+}
+.cats-grid__inner_neprikhotliv {
+    grid-area: neprikhotliv;
+    /* aspect-ratio: 1/1; */
+    background-image: url(../../images/cats-grid/nepr.webp);
+    background-size: 60%;
+    background-position: bottom right;
+}
+.cats-grid__inner_napol {
+    grid-area: napol;
+    /* aspect-ratio: 1/2; */
+    background-image: url(../../images/cats-grid/napol.webp);
+}
+.cats-grid__inner_cvetush {
+    grid-area: cvetush;
+    /* aspect-ratio: 1/1; */
+    background-image: url(../../images/cats-grid/cvet.webp);
+    background-size: 92%;
+    background-position: bottom right;
+}
+.cats-grid__inner_succulent {
+    grid-area: succulent;
+    /* aspect-ratio: 1/1; */
+    background-image: url(../../images/cats-grid/succ.webp);
+    background-size: 40%;
+    background-position: bottom right;
+}
+
+.cats-grid__inner_lianas {
+    grid-area: lianas;
+    /* aspect-ratio: 1/1; */
+    background-image: url(../../images/cats-grid/lians.webp);
+    background-size: contain;
+    background-position: bottom right;
+}
+.cats-grid__inner_petfriendly {
+    grid-area: petfriendly;
+    /* aspect-ratio: 1/1; */
+    background-image: url(../../images/cats-grid/pet.webp);
+}
+.cats-grid__inner_fikus {
+    grid-area: fikus;
+    aspect-ratio: 1/1;
+    background-image: url(../../images/cats-grid/fikus.webp);
+}
+
+.cats-grid__title {
+    font-size: 14px;
+    font-weight: 700;
+    max-width: 125px;
+    line-height: 1.2;
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+}
+
+@media (max-width: 767px) {
+    .cats-grid__title {
+        font-size: 16px;
+        text-transform: none;
+        font-weight: 600;
+    }
+}

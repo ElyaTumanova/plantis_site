@@ -1,0 +1,308 @@
+/* first sreen styles */
+
+.main__wrap {
+    display: grid;
+    grid-template-columns: repeat(2, calc(50% - 10px));
+    grid-template-rows: auto 250px;
+    row-gap: 30px;
+    column-gap: 20px;
+  }
+  
+  @media (max-width:1279px) {
+    .main__wrap {
+      display: flex;
+      flex-direction: column;
+      row-gap: 30px;
+    }
+}
+
+
+.main__row {
+    margin-bottom: 55px;
+}
+
+
+@media (max-width:767px) {
+    .main__row {
+        margin-bottom: 45px;
+    }
+}
+
+/* стили для swiper */
+@media (min-width:1279px) {
+    .main__wrap .swiper-button-prev, .main__wrap .swiper-button-next {
+        margin-top: 0;
+        top: 123px;
+    }
+}
+
+
+
+/* catalog buttons */
+
+.main__catalog-buttons-wrap {
+    display: none;
+}
+
+@media (max-width:1279px) {
+    .main__catalog-buttons-wrap {
+        display: flex;
+        justify-content: space-between;
+        column-gap: 20px;
+        margin-top: 30px;
+    }
+}
+
+.main__plants-button {
+    color: var(--white);
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    width: 100%;
+}
+
+.main__gorshki-button {
+    color: var(--accent-color);
+    background-color: transparent;
+    border-color: var(--accent-color);
+    width: 100%;
+}
+
+.overflow_section {
+    overflow-x: auto;
+    width: fit-content;
+}
+
+
+/* contacts ellipse */
+
+.main__contacts {
+    border-radius: 100%;
+    background-color: var(--accent-color);
+    width: 334px;
+    height: 334px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 35px;
+}
+
+.main__contacts-text {
+    text-align: center;
+    color: var(--white);
+    font-size: 22px;
+    line-height: 1.15;
+    font-weight: 400;
+    max-width: 250px;
+}
+
+.social-media__buttons {
+    display: flex;
+    column-gap: 30px;
+    border-radius: 100%;
+}
+
+.social-media__button {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: none;
+    overflow: hidden;
+    /* padding: 0; */
+}
+
+.social-media__button-telegram {
+    background-color: var(--telegram);
+}
+
+.social-media__button-whatsapp {
+    background-color: var(--whatsapp);
+}
+
+.social-media__button-max {
+    background-image: url('https://plantis-shop.ru/wp-content/themes/plantis_site/images/icons/max-bg.svg');
+    background-size: contain;
+}
+
+.social-media__button-ok {
+    background-color: var(--ok);
+}
+
+.social-media__button-vk {
+    background-color: var(--vk);
+}
+
+.social-media__button-icon {
+    height: 30px;
+    width: 30px;
+    fill: white;
+    margin: auto; 
+}
+
+/* .social-media__button-telegram .social-media__button-icon path {
+    stroke: var(--gray-text);
+}
+
+.social-media__button-whatsapp .social-media__button-icon path {
+    fill: var(--gray-text);
+} */
+
+@media (max-width:767px) {
+    .main__contacts {
+        width: 270px;
+        height: 270px;
+        row-gap: 25px;
+    }
+
+    .main__contacts-text {
+        font-size: 20px;
+    }
+}
+
+/*telegram section*/
+
+.main__telegram {
+    min-height: 120px;
+    border-radius: var(--border-rad);
+    /* box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25); */
+    background-image: url(https://plantis-shop.ru/wp-content/themes/plantis_site/images/telegram-2.webp), radial-gradient(#4AB0E9, #ABDAF5);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: block;
+}
+
+@media (min-width:1279px) {
+    .main__telegram {
+        background-image: url(https://plantis-shop.ru/wp-content/themes/plantis_site/images/telegram_mob_square.webp), radial-gradient(#4AB0E9, #ABDAF5);
+    }
+}
+
+@media (min-width:767px) {
+    .main__telegram {
+        min-height: 250px;
+    }
+}
+
+/* test banner */
+
+.main__test {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(#FCF9E1, #F5F3DB);
+  border-radius: var(--border-rad);
+  overflow: hidden;
+  max-height: 250px;
+}
+
+.main__test img {
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+
+
+/* categories sliders */
+
+/* @media (max-width:767px) {
+    .main__cats-wrap {
+        display: none;
+    }
+} */
+
+/* .main__cats-wrap .my_header__title {
+    display: none;
+} */
+
+.main__cats-wrap .product-slider-wrap {
+    margin: 40px 0 15px;
+}
+
+@media(max-width:767px) {
+    .main__cats-wrap .product-slider-wrap {
+        margin: 20px 0 15px;
+    }
+}
+
+.main__cats-nav {
+    display: flex;
+    column-gap: 24px;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+@media(max-width:1279px) {
+    .main__cats-nav {
+        overflow-x: scroll;
+        padding-bottom: 8px;
+    }
+}
+
+.main__cats-nav-title {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--gray-text);
+    cursor: pointer;
+    white-space: nowrap;
+    min-width: max-content;
+}
+
+.main__cats-nav-title_active {
+    color: var(--text);
+}
+
+/* .main__cats-slider {
+    display: none;
+}
+
+.main__cats-slider_open {
+    display: block;
+} */
+
+.main__cats-all {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    line-height: 1.2;
+    position: relative;
+    text-decoration: none;
+    font-weight: 600;
+    width: fit-content;
+    margin-left: auto;
+    color: var(--text);
+    margin-top: 10px;
+}
+.main__cats-all:hover { text-decoration: none; }
+
+.main__cats-all::before { 
+    content: ""; 
+    position: absolute; 
+    display: block; 
+    width: 0%; 
+    height: 2px; 
+    bottom: -3px; 
+    left: 0; 
+    background-color: var(--text); 
+    transition: width 0.3s ease; 
+}
+
+.main__cats-all:hover::before { 
+    width: 170px; 
+}
+
+.main__cats-all:after {
+    content: "next";
+    font-family: swiper-icons;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+    font-size: 13px;
+    margin-left: 10px;
+    margin-top: 3px;
+}
