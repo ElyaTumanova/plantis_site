@@ -136,7 +136,7 @@
 }
 
 .advantages__wrap {
-    max-width: 310px;
+    max-width: 297px;
     row-gap: 15px;
     display: grid;
     grid-template: 40px auto / 40px auto;
