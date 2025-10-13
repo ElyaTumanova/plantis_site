@@ -788,6 +788,7 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .main__promo-card a, .main__promo-card a:hover, .main__promo-card a:focus {
