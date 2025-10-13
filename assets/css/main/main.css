@@ -205,7 +205,7 @@
 }
 
 .main__test img {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
 }
