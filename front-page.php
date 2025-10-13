@@ -50,7 +50,15 @@
 			get_template_part( 'template-parts/advantages' );
 		?>
     <a class="main__test" href="<?php echo site_url()?>/test-kakoe-ty-rastenie" target="_blank">
-      <img src="<?php echo get_template_directory_uri()?>/images/test/test_main_cover.webp" alt="Тест - Какое ты растение?">
+      <img src="<?php echo get_template_directory_uri()?>/images/test/test_main_cover.webp" 
+      srcset="
+      <?php echo get_template_directory_uri()?>/images/test/test_main_cover.webp 960w,
+      <?php echo get_template_directory_uri()?>/images/test/test_main_cover_large.webp 1440w"
+      sizes="(max-width: 960px) 100vw, 960px"         
+      width="1280" height="500"
+      alt="Тест - Какое ты растение?"
+      loading='lazy'
+      decoding="async">
     </a>
 		<!-- <div class="main__contacts">
 			<p class="main__contacts-text">Не знаете, какое комнатное растение подойдёт именно вам?<br>Спросите нас об этом!</p>
