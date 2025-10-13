@@ -100,11 +100,12 @@
     .advantages {
         display: grid;
         column-gap: 40px;
-        grid-template-columns: repeat(2, 300px);
+        grid-template-columns: repeat(2, auto);
+        height: 100%;
         margin: 0;
         row-gap: 20px;
-        justify-content: center;
-        background-color: none;
+        /* justify-content: center; */
+        background-color: transparent;
         padding: 0;
     }
     .advantages__wrap {
