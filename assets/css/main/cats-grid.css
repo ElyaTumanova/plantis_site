@@ -58,36 +58,36 @@
 .cats-grid__inner_palms {
     grid-area: palms;
     /* aspect-ratio: 1/2; */
-    background-image: url(../../images/cats-grid/palms.webp);
+    background-image: url(../../../images/cats-grid/palms.webp);
 }
 .cats-grid__inner_lisv {
     grid-area: lisv;
     /* aspect-ratio: 2/1; */
-    background-image: url(../../images/cats-grid/decor.webp);
+    background-image: url(../../../images/cats-grid/decor.webp);
 }
 .cats-grid__inner_neprikhotliv {
     grid-area: neprikhotliv;
     /* aspect-ratio: 1/1; */
-    background-image: url(../../images/cats-grid/nepr.webp);
+    background-image: url(../../../images/cats-grid/nepr.webp);
     background-size: 60%;
     background-position: bottom right;
 }
 .cats-grid__inner_napol {
     grid-area: napol;
     /* aspect-ratio: 1/2; */
-    background-image: url(../../images/cats-grid/napol.webp);
+    background-image: url(../../../images/cats-grid/napol.webp);
 }
 .cats-grid__inner_cvetush {
     grid-area: cvetush;
     /* aspect-ratio: 1/1; */
-    background-image: url(../../images/cats-grid/cvet.webp);
+    background-image: url(../../../images/cats-grid/cvet.webp);
     background-size: 92%;
     background-position: bottom right;
 }
 .cats-grid__inner_succulent {
     grid-area: succulent;
     /* aspect-ratio: 1/1; */
-    background-image: url(../../images/cats-grid/succ.webp);
+    background-image: url(../../../images/cats-grid/succ.webp);
     background-size: 40%;
     background-position: bottom right;
 }
@@ -95,19 +95,19 @@
 .cats-grid__inner_lianas {
     grid-area: lianas;
     /* aspect-ratio: 1/1; */
-    background-image: url(../../images/cats-grid/lians.webp);
+    background-image: url(../../../images/cats-grid/lians.webp);
     background-size: contain;
     background-position: bottom right;
 }
 .cats-grid__inner_petfriendly {
     grid-area: petfriendly;
     /* aspect-ratio: 1/1; */
-    background-image: url(../../images/cats-grid/pet.webp);
+    background-image: url(../../../images/cats-grid/pet.webp);
 }
 .cats-grid__inner_fikus {
     grid-area: fikus;
     aspect-ratio: 1/1;
-    background-image: url(../../images/cats-grid/fikus.webp);
+    background-image: url(../../../images/cats-grid/fikus.webp);
 }
 
 .cats-grid__title {
