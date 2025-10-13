@@ -2,7 +2,7 @@
 
 .main__wrap {
     display: grid;
-    grid-template-columns: calc(50% - 40px) 20% 30%;
+    grid-template-columns: repeat(2,(50% - 10px));
     row-gap: 50px;
     column-gap: 20px;
 }
@@ -120,7 +120,8 @@
 
 /* advantages */
 .advantages {
-     display: grid;
+    grid-column: span 2;
+    display: grid;
     grid-template: repeat(2, auto) / repeat(2, auto);
     row-gap: 10px;
     column-gap: 20px;
