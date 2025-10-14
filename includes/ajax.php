@@ -95,19 +95,23 @@ function render_search_result($product) {
             <?php plnt_check_stock_status();?>
             <img src="<?php echo get_the_post_thumbnail_url( $id, 'thumbnail' );?>" class="search-result__image" alt="<?php echo $product->get_title();?>">
             <div class="search-result__info">
-                <span class="search-result__title"><?php echo $product->get_title();?></span>
-                <span class="search-result__descr"><?php echo $product->get_short_description();?></span>
-                <?php if ($sale) {
-                    ?>
-                    <span class="search-result__reg-price"><?php echo get_post_meta( $id, '_regular_price', true);?>&#8381;</span>
-                    <span class="search-result__price"><?php echo get_post_meta( $id, '_sale_price', true);?>&#8381;</span>
-                    <?php
-                } else {
-                    ?>
-                    <span class="search-result__price"><?php echo get_post_meta( $id, '_price', true);?>&#8381;</span>
-                    <?php 
-                }
-                ?>
+                <div class="search-result__row">
+                  <span class="search-result__title"><?php echo $product->get_title();?></span>
+                  <span class="search-result__descr"><?php echo $product->get_short_description();?></span>
+                </div>
+                <div class="search-result__row">
+                  <?php if ($sale) {
+                      ?>
+                      <span class="search-result__reg-price"><?php echo get_post_meta( $id, '_regular_price', true);?>&#8381;</span>
+                      <span class="search-result__price"><?php echo get_post_meta( $id, '_sale_price', true);?>&#8381;</span>
+                      <?php
+                  } else {
+                      ?>
+                      <span class="search-result__price"><?php echo get_post_meta( $id, '_price', true);?>&#8381;</span>
+                      <?php 
+                  }
+                  ?>
+                </div>
             </div>
         </a>  
     </div>
