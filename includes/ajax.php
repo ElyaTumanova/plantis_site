@@ -50,6 +50,7 @@ function plnt_search_ajax_action_callback (){
     if ($product_sku_id) { 
       $product = wc_get_product( $product_sku_id );
       print_r($product);
+      print_r($product->get_id());
       $short_descr = $product->get_short_description();
       $title = $product->get_title();
       $sale = get_post_meta( $product_sku_id, '_sale_price', true);
@@ -134,6 +135,7 @@ function plnt_search_ajax_action_callback (){
 }
 
 function render_search_result($product) {
+  $id = $product->get_id();
   ?>
   <div class="search-result__item">
       <a href="<?php echo $product->get_permalink();?>" class="search-result__link" target="blank">
