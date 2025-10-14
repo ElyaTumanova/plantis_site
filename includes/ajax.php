@@ -49,7 +49,7 @@ function plnt_search_ajax_action_callback (){
 
     if ($product_sku_id) { 
       $product = wc_get_product( $product_sku_id );
-      //print_r($product);
+      print_r($product);
       $short_descr = $product->get_short_description();
       $title = $product->get_title();
       $sale = get_post_meta( $product_sku_id, '_sale_price', true);
@@ -133,6 +133,31 @@ function plnt_search_ajax_action_callback (){
     wp_die();
 }
 
+function render_search_result($product) {
+  ?>
+  <div class="search-result__item">
+      <a href="<?php echo $product->get_permalink();?>" class="search-result__link" target="blank">
+          <?php plnt_check_stock_status();?>
+          <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );?>" class="search-result__image" alt="<?php echo get_the_title();?>">
+          <div class="search-result__info">
+              <span class="search-result__title"><?php echo get_the_title();?></span>
+              <span class="search-result__descr"><?php echo $short_descr?></span>
+              <?php if ($sale) {
+                  ?>
+                  <span class="search-result__reg-price"><?php echo get_post_meta( get_the_ID(), '_regular_price', true);?>&#8381;</span>
+                  <span class="search-result__price"><?php echo get_post_meta( get_the_ID(), '_sale_price', true);?>&#8381;</span>
+                  <?php
+              } else {
+                  ?>
+                  <span class="search-result__price"><?php echo get_post_meta( get_the_ID(), '_price', true);?>&#8381;</span>
+                  <?php 
+              }
+              ?>
+          </div>
+      </a>  
+  </div>
+  <?php
+}
 // вывод товаров в результатх теста
 add_action('wp_ajax_get_test_upsells', 'plnt_get_test_upsells_action_callback');
 add_action('wp_ajax_nopriv_get_test_upsells', 'plnt_get_test_upsells_action_callback');
