@@ -116,9 +116,10 @@ function plnt_search_ajax_action_callback (){
         <?php
     }
     $json_data['out'] = ob_get_clean();
+    $search_timing = round((microtime(true) - $start_search) * 1000, 2);
+    $json_data['search_timing'] = $search_timing;
     wp_send_json($json_data);
     wp_die();
-    echo "<!-- Timing: get_footer = " . round((microtime(true) - $start_search) * 1000, 2) . " ms -->";
 }
 
 // вывод товаров в результатх теста
