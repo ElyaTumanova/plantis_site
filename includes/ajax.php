@@ -15,37 +15,72 @@ function plnt_search_ajax_action_callback (){
         wp_die('Данные отправлены не с того адреса');
     }
 
-    $arg = array(
-        'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
-        'post_status' => 'publish',
-        's' => $_POST['s'],
-        'orderby' => 'meta_value',
-	    'meta_key' => '_stock_status',
-        'order' => 'ASC',
-        // 'posts_per_page' => -1,
-        'meta_query' => array( 
-            array(
-                'key'       => '_stock_status',
-                'value'     => 'outofstock',
-                'compare'   => 'NOT IN',
-                )
-                
-        ),
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'product_cat',
-                'field' => 'id',
-                'operator' => 'NOT IN',
-                'terms' => [$plants_treez_cat_id, $peresadka_cat_id],
-                'include_children' => 1,
-            )
-        )
-    );
-    $query_ajax = new WP_Query($arg);
-    $search_timing_1 = round((microtime(true) - $start_search) * 1000, 2);
     $product_sku_id = wc_get_product_id_by_sku( $query_ajax->query_vars[ 's' ] );
     $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
-    if ($query_ajax->have_posts() || $product_sku_id) {
+
+    if ($product_sku_id) { 
+      $product = wc_get_product( $product_sku_id );
+      //print_r($product);
+      $short_descr = $product->get_short_description();
+      $title = $product->get_title();
+      $sale = get_post_meta( $product_sku_id, '_sale_price', true);
+      ?>
+      <div class="search-result__item">
+          <a href="<?php echo $product->get_permalink();?>" class="search-result__link" target="blank">
+              <img src="<?php echo get_the_post_thumbnail_url( $product_sku_id, 'thumbnail' );?>" class="search-result__image" alt="<?php echo $title;?>">
+              <div class="search-result__info">
+                  <span class="search-result__title"><?php echo $title?></span>
+                  <span class="search-result__descr"><?php echo $short_descr?></span>
+                  <?php if ($sale) {
+                      ?>
+                      <span class="search-result__reg-price"><?php echo get_post_meta( $product_sku_id, '_regular_price', true);?>&#8381;</span>
+                      <span class="search-result__price"><?php echo get_post_meta( $product_sku_id, '_sale_price', true);?>&#8381;</span>
+                      <?php
+                  } else {
+                      ?>
+                      <span class="search-result__price"><?php echo get_post_meta( $product_sku_id, '_price', true);?>&#8381;</span>
+                      <?php 
+                  }
+                  ?>
+              </div>
+          </a>  
+      </div>
+
+      <input class="search-result__btn button" type="submit" form ="searchform" value="Посмотреть все" />
+
+      <?php
+    } else {
+      $arg = array(
+          'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
+          'post_status' => 'publish',
+          's' => $_POST['s'],
+          'orderby' => 'meta_value',
+        'meta_key' => '_stock_status',
+          'order' => 'ASC',
+          // 'posts_per_page' => -1,
+          'meta_query' => array( 
+              array(
+                  'key'       => '_stock_status',
+                  'value'     => 'outofstock',
+                  'compare'   => 'NOT IN',
+                  )
+                  
+          ),
+          'tax_query' => array(
+              array(
+                  'taxonomy' => 'product_cat',
+                  'field' => 'id',
+                  'operator' => 'NOT IN',
+                  'terms' => [$plants_treez_cat_id, $peresadka_cat_id],
+                  'include_children' => 1,
+              )
+          )
+      );
+      $query_ajax = new WP_Query($arg);
+      // $search_timing_1 = round((microtime(true) - $start_search) * 1000, 2);
+
+      // $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
+      if ($query_ajax->have_posts()) {
         // echo '<pre>';
         // print_r( $query_ajax );
         // echo '</pre>';
@@ -79,46 +114,18 @@ function plnt_search_ajax_action_callback (){
             </div>
             <?php
         }
-        if ($product_sku_id) {
-            $product = wc_get_product( $product_sku_id );
-            //print_r($product);
-            $short_descr = $product->get_short_description();
-            $title = $product->get_title();
-            $sale = get_post_meta( $product_sku_id, '_sale_price', true);
-            ?>
-            <div class="search-result__item">
-                <a href="<?php echo $product->get_permalink();?>" class="search-result__link" target="blank">
-                    <img src="<?php echo get_the_post_thumbnail_url( $product_sku_id, 'thumbnail' );?>" class="search-result__image" alt="<?php echo $title;?>">
-                    <div class="search-result__info">
-                        <span class="search-result__title"><?php echo $title?></span>
-                        <span class="search-result__descr"><?php echo $short_descr?></span>
-                        <?php if ($sale) {
-                            ?>
-                            <span class="search-result__reg-price"><?php echo get_post_meta( $product_sku_id, '_regular_price', true);?>&#8381;</span>
-                            <span class="search-result__price"><?php echo get_post_meta( $product_sku_id, '_sale_price', true);?>&#8381;</span>
-                            <?php
-                        } else {
-                            ?>
-                            <span class="search-result__price"><?php echo get_post_meta( $product_sku_id, '_price', true);?>&#8381;</span>
-                            <?php 
-                        }
-                        ?>
-                    </div>
-                </a>  
-            </div>
-            <?php
-        }
         ?>
         <input class="search-result__btn button" type="submit" form ="searchform" value="Посмотреть все" />
         <?php
-    } else {
+      } else {
         ?>
         <div class="search-result__text">Ничего не найдено</div>
         <?php
-    }
-    $search_timing_2 = round((microtime(true) - $start_search) * 1000, 2);
+      }
+    } 
+    // $search_timing_2 = round((microtime(true) - $start_search) * 1000, 2);
     $json_data['out'] = ob_get_clean();
-    $json_data['search_timing_1'] = $search_timing_1;
+    // $json_data['search_timing_1'] = $search_timing_1;
     $json_data['search_timing_2'] = $search_timing_2;
     wp_send_json($json_data);
     wp_die();
