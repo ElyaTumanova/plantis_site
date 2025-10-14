@@ -15,7 +15,36 @@ function plnt_search_ajax_action_callback (){
         wp_die('Данные отправлены не с того адреса');
     }
 
+    $arg = array(
+          'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
+          'post_status' => 'publish',
+          's' => $_POST['s'],
+          'orderby' => 'meta_value',
+        'meta_key' => '_stock_status',
+          'order' => 'ASC',
+          // 'posts_per_page' => -1,
+          'meta_query' => array( 
+              array(
+                  'key'       => '_stock_status',
+                  'value'     => 'outofstock',
+                  'compare'   => 'NOT IN',
+                  )
+                  
+          ),
+          'tax_query' => array(
+              array(
+                  'taxonomy' => 'product_cat',
+                  'field' => 'id',
+                  'operator' => 'NOT IN',
+                  'terms' => [$plants_treez_cat_id, $peresadka_cat_id],
+                  'include_children' => 1,
+              )
+          )
+      );
+      $query_ajax = new WP_Query($arg);
+
     $product_sku_id = wc_get_product_id_by_sku( $query_ajax->query_vars[ 's' ] );
+    print_r($product_sku_id);
     $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
 
     if ($product_sku_id) { 
@@ -50,33 +79,6 @@ function plnt_search_ajax_action_callback (){
 
       <?php
     } else {
-      $arg = array(
-          'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
-          'post_status' => 'publish',
-          's' => $_POST['s'],
-          'orderby' => 'meta_value',
-        'meta_key' => '_stock_status',
-          'order' => 'ASC',
-          // 'posts_per_page' => -1,
-          'meta_query' => array( 
-              array(
-                  'key'       => '_stock_status',
-                  'value'     => 'outofstock',
-                  'compare'   => 'NOT IN',
-                  )
-                  
-          ),
-          'tax_query' => array(
-              array(
-                  'taxonomy' => 'product_cat',
-                  'field' => 'id',
-                  'operator' => 'NOT IN',
-                  'terms' => [$plants_treez_cat_id, $peresadka_cat_id],
-                  'include_children' => 1,
-              )
-          )
-      );
-      $query_ajax = new WP_Query($arg);
       // $search_timing_1 = round((microtime(true) - $start_search) * 1000, 2);
 
       // $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
