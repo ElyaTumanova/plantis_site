@@ -42,7 +42,7 @@ function plnt_search_ajax_action_callback (){
         )
     );
     $query_ajax = new WP_Query($arg);
-    $search_timing = round((microtime(true) - $start_search) * 1000, 2);
+    $search_timing_1 = round((microtime(true) - $start_search) * 1000, 2);
     $product_sku_id = wc_get_product_id_by_sku( $query_ajax->query_vars[ 's' ] );
     $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
     if ($query_ajax->have_posts() || $product_sku_id) {
@@ -116,8 +116,10 @@ function plnt_search_ajax_action_callback (){
         <div class="search-result__text">Ничего не найдено</div>
         <?php
     }
+    $search_timing_2 = round((microtime(true) - $start_search) * 1000, 2);
     $json_data['out'] = ob_get_clean();
-    $json_data['search_timing'] = $search_timing;
+    $json_data['search_timing_1'] = $search_timing_1;
+    $json_data['search_timing_2'] = $search_timing_2;
     wp_send_json($json_data);
     wp_die();
 }
