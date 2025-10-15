@@ -326,7 +326,7 @@ input[type="search"], input[type="search"]:focus-visible {
 }
 
 .search-result__price {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 400;
 }
 
@@ -337,8 +337,9 @@ input[type="search"], input[type="search"]:focus-visible {
 
 .search-result__info {
   display: flex;
-  gap: 30px;
-  align-items: center;
+  flex-direction: column;
+  row-gap: 10px;
+  /* align-items: center; */
 }
 
 /* service-popup */
