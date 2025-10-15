@@ -332,7 +332,7 @@ input[type="search"], input[type="search"]:focus-visible {
 
 .search-result__item img {
     object-fit: contain;
-    height: 50px;
+    height: 60px;
 }
 
 .search-result__info {
