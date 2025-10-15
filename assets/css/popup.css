@@ -299,12 +299,6 @@ input[type="search"], input[type="search"]:focus-visible {
     align-items: center;
 }
 
-@media (max-width:767px) {
-    .search-result__link {
-      align-items: start;
-    }
-}
-
 .search-result__link:hover {
     text-decoration: none;
     background-color: var(--gray);
