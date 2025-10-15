@@ -316,6 +316,12 @@ input[type="search"], input[type="search"]:focus-visible {
     display: block;
 }
 
+@media (max-width:767px) {
+  .search-result__title  {
+      font-size: 16px;
+    }
+}
+
 .search-result__descr {
     font-weight: 600;
     font-size: 16px;
