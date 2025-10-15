@@ -78,10 +78,10 @@ function plnt_search_ajax_action_callback (){
         <?php
       }
     } 
-    $search_timing_2 = round((microtime(true) - $start_search) * 1000, 2);
+    // $search_timing_2 = round((microtime(true) - $start_search) * 1000, 2);
     $json_data['out'] = ob_get_clean();
     // $json_data['search_timing_1'] = $search_timing_1;
-    $json_data['search_timing_2'] = $search_timing_2;
+    // $json_data['search_timing_2'] = $search_timing_2;
     wp_send_json($json_data);
     wp_die();
 }

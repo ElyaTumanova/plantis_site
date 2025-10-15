@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // анализ производиетльности серевера
 
 
-//см wp-debug.php
+//см wp-config.php
 
 
     global $timing_points;
@@ -150,26 +150,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
     // TOP 10 SLOWEST SQL QUERIES
-    // add_action('shutdown', function () {
+    add_action('shutdown', function () {
 
-    //     if ( ! defined('SAVEQUERIES') || ! SAVEQUERIES || wp_doing_ajax() ) {
-    //         return;
-    //     }
+        if ( ! defined('SAVEQUERIES') || ! SAVEQUERIES || wp_doing_ajax() ) {
+            return;
+        }
         
-    //     global $wpdb;
+        global $wpdb;
 
-    //     if (defined('SAVEQUERIES') && SAVEQUERIES && !empty($wpdb->queries)) {
-    //         usort($wpdb->queries, function ($a, $b) {
-    //             return $b[1] <=> $a[1]; // сортировка по времени DESC
-    //         });
+        if (defined('SAVEQUERIES') && SAVEQUERIES && !empty($wpdb->queries)) {
+            usort($wpdb->queries, function ($a, $b) {
+                return $b[1] <=> $a[1]; // сортировка по времени DESC
+            });
 
-    //         echo "<!-- TOP 10 SLOWEST SQL QUERIES -->\n";
-    //         foreach (array_slice($wpdb->queries, 0, 10) as $i => $query) {
-    //             list($sql, $time, $call) = $query;
-    //             printf("<!-- #%d | %.4f sec | %s -->\n", $i + 1, $time, $sql);
-    //         }
-    //         echo "<!-- END SQL -->\n";
-    //     }
-    // });
+            echo "<!-- TOP 10 SLOWEST SQL QUERIES -->\n";
+            foreach (array_slice($wpdb->queries, 0, 10) as $i => $query) {
+                list($sql, $time, $call) = $query;
+                printf("<!-- #%d | %.4f sec | %s -->\n", $i + 1, $time, $sql);
+            }
+            echo "<!-- END SQL -->\n";
+        }
+    });
 
 
