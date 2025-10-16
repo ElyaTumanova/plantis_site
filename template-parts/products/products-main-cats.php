@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="swiper-button-prev"></div>
 			<div class="swiper-button-next"></div>
 		</div>
-		<a class="main__cats-all" href="<?php echo get_term_link( $term_slug, $term_type );?>">Все товары категории</a>
+		<a class="main__cats-all" href="<?php echo get_term_link( 'skidki', 'product_tag' );?>">Все товары категории</a>
     
     <?php endif;
  
