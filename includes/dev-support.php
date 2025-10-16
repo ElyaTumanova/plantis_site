@@ -278,7 +278,7 @@ function plnt_get_prods_data() {
 
 //add_action( 'wp_footer', 'plnt_get_prods_data' );
 
-<?php
+
 // РАННИЙ маркер
 add_filter('woocommerce_add_to_cart_fragments', function($fragments){
     if (isset($GLOBALS['wc_a2c_mark'])) ($GLOBALS['wc_a2c_mark'])('before fragments');
