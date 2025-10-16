@@ -609,11 +609,13 @@
     background-position: bottom right; */
 }
 .cats-grid__inner_neprikhotliv img {
-  height: 60%;
-  position: absolute;
-  z-index: -1;
-  bottom: 0;
-  right: 0;
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    right: 0;
+    object-fit: cover;
+    object-position: bottom right;
+    width: 60%;
 }
 
 .cats-grid__inner_napol {
