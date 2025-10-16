@@ -279,35 +279,89 @@ function plnt_get_prods_data() {
 //add_action( 'wp_footer', 'plnt_get_prods_data' );
 
 
-// === functions.php (дочерней темы) ИЛИ отдельный мини-плагин ===
 
-// Старт замера: самый ранний хук внутри ajax-запроса wc-ajax=add_to_cart
-add_action( 'init', function () {
-    if ( wp_doing_ajax()
-      && isset($_GET['wc-ajax'])
-      && $_GET['wc-ajax'] === 'add_to_cart' ) {
-        $GLOBALS['wc_add_to_cart_t0'] = microtime( true );
-    }
-}, 0 );
+// === 1) старт и хранилище чекпоинтов — только для wc-ajax=add_to_cart ===
+add_action('init', function () {
+    if (
+        function_exists('wp_doing_ajax') && wp_doing_ajax() &&
+        isset($_GET['wc-ajax']) && $_GET['wc-ajax'] === 'add_to_cart'
+    ) {
+        $t0 = microtime(true);
+        $GLOBALS['wc_a2c_t0']  = $t0;
+        $GLOBALS['wc_a2c_cps'] = [ ['name' => 'init(start)', 't' => $t0] ];
 
-// Стоп замера и отдача времени в заголовке (видно в DevTools → Network → Headers).
-// Хук срабатывает ПЕРЕД формированием JSON-ответа и отправкой.
-add_action( 'woocommerce_ajax_added_to_cart', function( $product_id ){
-    if ( isset( $GLOBALS['wc_add_to_cart_t0'] ) && ! headers_sent() ) {
-        $ms = (int) round( ( microtime(true) - $GLOBALS['wc_add_to_cart_t0'] ) * 1000 );
-        header( 'Server-Timing: app;desc="wc add_to_cart";dur=' . $ms );
-        header( 'X-Response-Time: ' . $ms . 'ms' );
+        // замыкание-маркер (в глобале), чтобы не объявлять функцию
+        $GLOBALS['wc_a2c_mark'] = function (string $label) {
+            $GLOBALS['wc_a2c_cps'][] = ['name' => $label, 't' => microtime(true)];
+        };
     }
-}, 999 );
+}, 0);
 
-// (Опционально) если хотите прочитать время на клиенте из JSON-ответа,
-// добавим «скрытый» фрагмент с числом миллисекунд:
-add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ){
-    if ( isset( $GLOBALS['wc_add_to_cart_t0'] ) ) {
-        $ms = (int) round( ( microtime(true) - $GLOBALS['wc_add_to_cart_t0'] ) * 1000 );
-        $fragments['wc_add_to_cart_server_ms'] =
-            '<div id="wc-add-to-cart-server-ms" data-ms="' . esc_attr( $ms ) . '"></div>';
-    }
+// === 2) чекпоинты процесса ===
+add_filter('woocommerce_add_to_cart_validation', function($p,$pid,$q,$vid,$vars,$data){
+    if (isset($GLOBALS['wc_a2c_mark'])) ($GLOBALS['wc_a2c_mark'])('before validation');
+    return $p;
+}, 1, 6);
+
+add_filter('woocommerce_add_to_cart_validation', function($p,$pid,$q,$vid,$vars,$data){
+    if (isset($GLOBALS['wc_a2c_mark'])) ($GLOBALS['wc_a2c_mark'])('after validation');
+    return $p;
+}, 999, 6);
+
+add_action('woocommerce_add_to_cart', function(){
+    if (isset($GLOBALS['wc_a2c_mark'])) ($GLOBALS['wc_a2c_mark'])('after add_to_cart');
+}, 10);
+
+add_action('woocommerce_before_calculate_totals', function(){
+    if (isset($GLOBALS['wc_a2c_mark'])) ($GLOBALS['wc_a2c_mark'])('before calculate_totals');
+}, 1);
+
+add_action('woocommerce_after_calculate_totals', function(){
+    if (isset($GLOBALS['wc_a2c_mark'])) ($GLOBALS['wc_a2c_mark'])('after calculate_totals');
+}, 999);
+
+add_action('woocommerce_ajax_added_to_cart', function(){
+    if (isset($GLOBALS['wc_a2c_mark'])) ($GLOBALS['wc_a2c_mark'])('woocommerce_ajax_added_to_cart');
+}, 10);
+
+// === 3) финальная запись заголовков (ничего не меняем во фрагментах) ===
+// ставим ранний и поздний фильтры, чтобы померить «до» и «после» сборки
+add_filter('woocommerce_add_to_cart_fragments', function($fragments){
+    if (isset($GLOBALS['wc_a2c_mark'])) ($GLOBALS['wc_a2c_mark'])('before fragments');
     return $fragments;
-}, 999 );
+}, 1);
+
+add_filter('woocommerce_add_to_cart_fragments', function($fragments){
+    if (isset($GLOBALS['wc_a2c_mark'])) ($GLOBALS['wc_a2c_mark'])('after fragments');
+
+    // нет стартовой метки — просто выходим
+    if (empty($GLOBALS['wc_a2c_t0']) || headers_sent()) {
+        return $fragments;
+    }
+
+    $t0  = $GLOBALS['wc_a2c_t0'];
+    $cps = isset($GLOBALS['wc_a2c_cps']) && is_array($GLOBALS['wc_a2c_cps']) ? $GLOBALS['wc_a2c_cps'] : [];
+
+    // подготовим Server-Timing: шаговые длительности от предыдущей метки
+    $metrics = [];
+    $prev = $t0;
+    foreach ($cps as $i => $cp) {
+        $label = preg_replace('~[^a-z0-9_-]+~i', '-', $cp['name']); // безопасное короткое имя
+        $dur   = (int) round( ($cp['t'] - $prev) * 1000 );
+        $metrics[] = sprintf('%s;dur=%d;desc="%s"', strtolower($label ?: "cp{$i}"), $dur, $cp['name']);
+        $prev = $cp['t'];
+    }
+
+    // total — от первой метки до «после фрагментов»
+    $total_ms = (int) round( (end($cps)['t'] - $t0) * 1000 );
+    $metrics[] = sprintf('total;dur=%d;desc="total add_to_cart"', $total_ms);
+
+    // отправляем заголовки
+    // один объединённый Server-Timing (допускается несколько, но один — чище)
+    @header('Server-Timing: ' . implode(', ', $metrics));
+    @header('X-Response-Time: ' . $total_ms . 'ms');
+
+    return $fragments; // ничего не изменяем в теле ответа
+}, 999);
+
 
