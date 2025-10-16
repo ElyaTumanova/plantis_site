@@ -72,3 +72,32 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'weekend', 'Выходной (формат ДД.ММ, разделитель - запятая без пробелов)' ),
 			Field::make( 'text', 'pricelist_link', 'Ссылка на скачивание оптового прйс-листа' ),
 	   ));
+     ->add_tab('Plants cats', array(
+			  Field::make( 'image', 'cat_palms', 'Пальмы' )
+                ->set_value_type( 'id' ),
+                
+        Field::make( 'image', 'cat_fikusy', 'Фикусы' )
+            ->set_value_type( 'id' ),
+            
+        Field::make( 'image', 'cat_listvennye', 'Декоративно-лиственные' )
+            ->set_value_type( 'id' ),
+            
+        Field::make( 'image', 'cat_napolnye', 'Напольные' )
+            ->set_value_type( 'id' ),
+            
+        Field::make( 'image', 'cat_cvetushchie', 'Цветущие' )
+            ->set_value_type( 'id' ),
+            
+        Field::make( 'image', 'cat_lianas', 'Лианы' )
+            ->set_value_type( 'id' ),
+            
+        Field::make( 'image', 'cat_neprikhotlivye', 'Неприхотливые' )
+            ->set_value_type( 'id' ),
+            
+        Field::make( 'image', 'cat_succulent', 'Суккуленты' )
+            ->set_value_type( 'id' ),
+            
+        Field::make( 'image', 'cat_pet_friendly', 'Pet Friendly' )
+            ->set_value_type( 'id' ),
+			 
+      ))
