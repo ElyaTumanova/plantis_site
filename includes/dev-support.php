@@ -279,5 +279,37 @@ function plnt_get_prods_data() {
 //add_action( 'wp_footer', 'plnt_get_prods_data' );
 
 
+// Вывод всех зарегистрированных размеров изображений
+function show_image_sizes() {
+    global $_wp_additional_image_sizes;
+    
+    echo '<pre>';
+    echo 'Стандартные размеры WordPress:' . "\n";
+    $default_sizes = get_intermediate_image_sizes();
+    
+    foreach ($default_sizes as $size) {
+        echo "Размер: " . $size . "\n";
+        if (in_array($size, array('thumbnail', 'medium', 'medium_large', 'large'))) {
+            $width = get_option($size . '_size_w');
+            $height = get_option($size . '_size_h');
+            $crop = get_option($size . '_size_crop');
+            echo "  Ширина: $width\n";
+            echo "  Высота: $height\n";
+            echo "  Обрезка: " . ($crop ? 'Да' : 'Нет') . "\n";
+        } elseif (isset($_wp_additional_image_sizes[$size])) {
+            $sizes = $_wp_additional_image_sizes[$size];
+            echo "  Ширина: " . $sizes['width'] . "\n";
+            echo "  Высота: " . $sizes['height'] . "\n";
+            echo "  Обрезка: " . ($sizes['crop'] ? 'Да' : 'Нет') . "\n";
+        }
+        echo "\n";
+    }
+    echo '</pre>';
+}
+
+// Вызвать функцию - можно добавить в хук, например:
+add_action('wp_head', 'show_image_sizes');
+//show_image_sizes();
+
 
 
