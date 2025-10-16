@@ -608,6 +608,14 @@
     /* background-size: 60%;
     background-position: bottom right; */
 }
+.cats-grid__inner_neprikhotliv img {
+  height: 60%;
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
+}
+
 .cats-grid__inner_napol {
     grid-area: napol;
     aspect-ratio: 1/2;
@@ -622,15 +630,27 @@
 }
 
 .cats-grid__inner_cvetush img {
-  object-position: bottom right;
   height: 92%;
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
 }
+
 .cats-grid__inner_succulent {
     grid-area: succulent;
     aspect-ratio: 2/1;
     /* background-image: url(../../images/cats-grid/succ.webp); */
     /* background-size: 40%;
     background-position: bottom right; */
+}
+
+.cats-grid__inner_succulent img {
+  height: 40%;
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
 }
 
 .cats-grid__inner_lianas {
@@ -640,6 +660,15 @@
     background-size: contain;
     background-position: bottom right; */
 }
+
+.cats-grid__inner_lianas img {
+  object-fit: contain;
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
+}
+
 .cats-grid__inner_petfriendly {
     grid-area: petfriendly;
     aspect-ratio: 1/1;
