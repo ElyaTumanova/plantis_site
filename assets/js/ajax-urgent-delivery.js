@@ -63,14 +63,15 @@ function getOrderParametrs(event) {
 
   if(event.target.className == "shipping_method" || 
     event.target.name == "delivery_dates" || 
-    event.target.name == "additional_delivery_interval" ||
-    event.target == document) {
-      // console.log('нужен пересчет')
+    event.target.name == "additional_delivery_interval" )
+    //|| event.target == document
+   {
+      console.log('нужен пересчет')
       ajaxGetUrgent();
     } 
-    // else {
-    //   console.log('не нужен пересчет')
-    // }
+    else {
+      console.log('не нужен пересчет')
+    }
 
 
 
