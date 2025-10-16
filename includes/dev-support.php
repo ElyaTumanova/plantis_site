@@ -277,3 +277,131 @@ function plnt_get_prods_data() {
 }
 
 //add_action( 'wp_footer', 'plnt_get_prods_data' );
+
+<?php
+/**
+ * Подробные замеры add_to_cart с выводом в футере.
+ * Вставить в functions.php дочерней темы или в отдельный плагин.
+ */
+
+// ===== Хелперы для чекпоинтов ===============================================
+function wcac_mark( $name ) {
+    $t = microtime( true );
+    if ( ! isset( $GLOBALS['wc_add_cart_cp'] ) || ! is_array( $GLOBALS['wc_add_cart_cp'] ) ) {
+        $GLOBALS['wc_add_cart_cp'] = [];
+    }
+    $GLOBALS['wc_add_cart_cp'][] = [ 'name' => (string) $name, 't' => $t ];
+}
+
+function wcac_render_table() {
+    $cps = isset( $GLOBALS['wc_add_cart_cp'] ) ? $GLOBALS['wc_add_cart_cp'] : [];
+    if ( empty( $cps ) ) {
+        return '<div id="wc-ajax-metrics">Нет данных замеров.</div>';
+    }
+
+    // Считаем шаговые и накопительные миллисекунды
+    $rows = [];
+    $t0 = $cps[0]['t'];
+    $prev = $t0;
+    foreach ( $cps as $i => $cp ) {
+        $step_ms = (int) round( ( $cp['t'] - $prev ) * 1000 );
+        $cum_ms  = (int) round( ( $cp['t'] - $t0 ) * 1000 );
+        $rows[]  = sprintf(
+            '<tr><td>%d</td><td>%s</td><td style="text-align:right">%d&nbsp;мс</td><td style="text-align:right">%d&nbsp;мс</td></tr>',
+            $i, esc_html( $cp['name'] ), $step_ms, $cum_ms
+        );
+        $prev = $cp['t'];
+    }
+
+    $total_ms = (int) round( ( end( $cps )['t'] - $t0 ) * 1000 );
+
+    // Компактный фиксированный виджет в «футере» (fixed снизу справа)
+    $html = '
+    <div id="wc-ajax-metrics" style="position:fixed;right:12px;bottom:12px;z-index:9999;max-width:420px;background:#fff;border:1px solid rgba(0,0,0,.1);box-shadow:0 6px 24px rgba(0,0,0,.12);border-radius:10px;font:13px/1.35 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif">
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.06)">
+        <strong>WC add_to_cart — таймлайны</strong>
+        <span style="margin-left:auto;opacity:.7">Σ '.$total_ms.' мс</span>
+      </div>
+      <div style="max-height:260px;overflow:auto">
+        <table style="width:100%;border-collapse:collapse">
+          <thead>
+            <tr style="background:#fafafa">
+              <th style="text-align:left;padding:6px 10px;width:38px">#</th>
+              <th style="text-align:left;padding:6px 10px">Шаг</th>
+              <th style="text-align:right;padding:6px 10px;width:90px">Δ, мс</th>
+              <th style="text-align:right;padding:6px 10px;width:90px">Σ, мс</th>
+            </tr>
+          </thead>
+          <tbody>' . implode( '', $rows ) . '</tbody>
+        </table>
+      </div>
+      <div style="padding:8px 10px;color:#666;border-top:1px solid rgba(0,0,0,.06)">
+        Обновляется после успешного add_to_cart
+      </div>
+    </div>';
+
+    return $html;
+}
+
+// ===== 1) Плейсхолдер в футере страницы =====================================
+add_action( 'wp_footer', function () {
+    if ( is_admin() ) return;
+    echo '<div id="wc-ajax-metrics" style="position:fixed;right:12px;bottom:12px;z-index:9999;padding:8px 10px;border-radius:10px;background:#f2f2f2;font:13px/1.35 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;">Ожидание первого замера…</div>';
+}, 99 );
+
+// ===== 2) Чекпоинты по ходу обработки запроса ===============================
+
+// Старт как можно раньше в конкретном AJAX-запросе add_to_cart
+add_action( 'init', function () {
+    if ( wp_doing_ajax() && isset( $_GET['wc-ajax'] ) && $_GET['wc-ajax'] === 'add_to_cart' ) {
+        wcac_mark( 'init (start)' );
+    }
+}, 0 );
+
+// До валидации (ранний приоритет)
+add_filter( 'woocommerce_add_to_cart_validation', function( $passed, $product_id, $qty, $variation_id, $variations, $cart_item_data ){
+    wcac_mark( 'before validation' );
+    return $passed;
+}, 1, 6 );
+
+// После валидации (поздний приоритет)
+add_filter( 'woocommerce_add_to_cart_validation', function( $passed, $product_id, $qty, $variation_id, $variations, $cart_item_data ){
+    wcac_mark( 'after validation' );
+    return $passed;
+}, 999, 6 );
+
+// После фактического добавления в корзину
+add_action( 'woocommerce_add_to_cart', function( $cart_item_key, $product_id, $quantity, $variation_id, $variations, $cart_item_data ){
+    wcac_mark( 'after WC_Cart::add_to_cart' );
+}, 10, 6 );
+
+// Момент ajax-хука WooCommerce (перед формированием фрагментов)
+add_action( 'woocommerce_ajax_added_to_cart', function( $product_id ){
+    wcac_mark( 'woocommerce_ajax_added_to_cart' );
+}, 10, 1 );
+
+// Перед сборкой фрагментов (низкий приоритет)
+add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ){
+    wcac_mark( 'before fragments' );
+    return $fragments;
+}, 1 );
+
+// После сборки фрагментов — формируем наш HTML и подменяем футер
+add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ){
+    wcac_mark( 'after fragments' );
+
+    // Сюда же удобно добавить «итоговый» чекпоинт
+    wcac_mark( 'prepare footer html' );
+
+    $fragments['#wc-ajax-metrics'] = wcac_render_table();
+    return $fragments;
+}, 999 );
+
+// ===== Примечания ============================================================
+// • При ошибке валидации/добавления фрагменты не вернутся — футер не обновится.
+//   Для fail-кейсов замеряйте «конец-в-конец» на клиенте через события
+//   `adding_to_cart` / `ajaxError`.
+// • Если хотите видеть ещё шаги (например, перерасчёт тоталов/доставки),
+//   можно дополнительно отметить:
+//   - add_action( 'woocommerce_before_calculate_totals', fn() => wcac_mark('before calculate_totals'), 1 );
+//   - add_action( 'woocommerce_after_calculate_totals', fn() => wcac_mark('after calculate_totals'), 999 );
