@@ -620,6 +620,11 @@
     /* background-size: 92%;
     background-position: bottom right; */
 }
+
+.cats-grid__inner_cvetush img {
+  object-position: bottom right;
+  height: 92%;
+}
 .cats-grid__inner_succulent {
     grid-area: succulent;
     aspect-ratio: 2/1;
