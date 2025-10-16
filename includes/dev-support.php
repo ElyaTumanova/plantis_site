@@ -279,77 +279,36 @@ function plnt_get_prods_data() {
 //add_action( 'wp_footer', 'plnt_get_prods_data' );
 
 
-// РАННИЙ маркер
-add_filter('woocommerce_add_to_cart_fragments', function($fragments){
-    if (isset($GLOBALS['wc_a2c_mark'])) ($GLOBALS['wc_a2c_mark'])('before fragments');
-    return $fragments;
-}, 1);
 
-// БЕЗОПАСНАЯ отправка заголовков (ограничения длины + try/catch)
-add_filter('woocommerce_add_to_cart_fragments', function($fragments){
-    try {
-        if (empty($GLOBALS['wc_a2c_t0']) || !isset($GLOBALS['wc_a2c_cps']) || headers_sent()) {
-            return $fragments;
-        }
+// === functions.php (дочерней темы) ИЛИ отдельный мини-плагин ===
 
-        ($GLOBALS['wc_a2c_mark'])('after fragments');
-
-        $t0  = (float) $GLOBALS['wc_a2c_t0'];
-        $cps = is_array($GLOBALS['wc_a2c_cps']) ? $GLOBALS['wc_a2c_cps'] : [];
-
-        // safety: если пусто — не ставим заголовки
-        if (!$cps) return $fragments;
-
-        // Нормализуем метки и считаем дельты
-        $metrics = [];
-        $prev = $t0;
-        foreach ($cps as $i => $cp) {
-            $label = isset($cp['name']) ? (string)$cp['name'] : "cp{$i}";
-            // короткое имя: только a-z0-9_- и макс 16 символов
-            $short = strtolower(preg_replace('~[^a-z0-9_-]+~i', '-', $label));
-            if ($short === '' ) $short = "cp{$i}";
-            if (strlen($short) > 16) $short = substr($short, 0, 16);
-
-            $t = isset($cp['t']) ? (float)$cp['t'] : microtime(true);
-            $dur = (int) round( ($t - $prev) * 1000 );
-            if ($dur < 0) { $dur = 0; }
-
-            $metrics[] = "{$short};dur={$dur}";
-            $prev = $t;
-        }
-
-        // total
-        $lastT = isset($cps[count($cps)-1]['t']) ? (float)$cps[count($cps)-1]['t'] : microtime(true);
-        $total_ms = (int) round( ($lastT - $t0) * 1000 );
-        array_push($metrics, "total;dur={$total_ms}");
-
-        // Ограничим количество метрик и длину заголовка
-        $MAX_METRICS = 12;               // максимум 12 шагов + total
-        $metrics = array_slice($metrics, 0, $MAX_METRICS - 1);
-        $metrics[] = "total;dur={$total_ms}";
-
-        $value = implode(', ', $metrics);
-
-        // Ограничим длину заголовка ~1800 символами (запасы под сервер)
-        $MAX_LEN = 1800;
-        if (strlen($value) > $MAX_LEN) {
-            // обрежем до ближайшей запятой и добавим только total
-            $value = substr($value, 0, $MAX_LEN);
-            $value = rtrim(substr($value, 0, strrpos($value, ',')));
-            $value .= ", total;dur={$total_ms}";
-        }
-
-        // Отправляем — ОДИН заголовок Server-Timing + X-Response-Time
-        if (!headers_sent()) {
-            @header('Server-Timing: ' . $value, true);
-            @header('X-Response-Time: ' . $total_ms . 'ms', true);
-        }
-    } catch (Throwable $e) {
-        // не роняем ответ
-        error_log('[wc-add_to_cart headers] ' . $e->getMessage());
-        return $fragments;
+// Старт замера: самый ранний хук внутри ajax-запроса wc-ajax=add_to_cart
+add_action( 'init', function () {
+    if ( wp_doing_ajax()
+      && isset($_GET['wc-ajax'])
+      && $_GET['wc-ajax'] === 'add_to_cart' ) {
+        $GLOBALS['wc_add_to_cart_t0'] = microtime( true );
     }
+}, 0 );
 
+// Стоп замера и отдача времени в заголовке (видно в DevTools → Network → Headers).
+// Хук срабатывает ПЕРЕД формированием JSON-ответа и отправкой.
+add_action( 'woocommerce_ajax_added_to_cart', function( $product_id ){
+    if ( isset( $GLOBALS['wc_add_to_cart_t0'] ) && ! headers_sent() ) {
+        $ms = (int) round( ( microtime(true) - $GLOBALS['wc_add_to_cart_t0'] ) * 1000 );
+        header( 'Server-Timing: app;desc="wc add_to_cart";dur=' . $ms );
+        header( 'X-Response-Time: ' . $ms . 'ms' );
+    }
+}, 999 );
+
+// (Опционально) если хотите прочитать время на клиенте из JSON-ответа,
+// добавим «скрытый» фрагмент с числом миллисекунд:
+add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ){
+    if ( isset( $GLOBALS['wc_add_to_cart_t0'] ) ) {
+        $ms = (int) round( ( microtime(true) - $GLOBALS['wc_add_to_cart_t0'] ) * 1000 );
+        $fragments['wc_add_to_cart_server_ms'] =
+            '<div id="wc-add-to-cart-server-ms" data-ms="' . esc_attr( $ms ) . '"></div>';
+    }
     return $fragments;
-}, 999);
+}, 999 );
 
