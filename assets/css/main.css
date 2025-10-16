@@ -583,6 +583,12 @@
     background-repeat: no-repeat;
 }
 
+.cats-grid__inner img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
 .cats-grid__inner_palms {
     grid-area: palms;
     /* aspect-ratio: 1/2; */

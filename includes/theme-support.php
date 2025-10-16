@@ -92,7 +92,7 @@ function show_svg_in_media_library( $response ) {
 
 // отключаем srcset
 
-add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
+//add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
 
 //убираем ненужны размеры изображений
 // add_filter( 'intermediate_image_sizes', function( $sizes ) {
