@@ -71,7 +71,7 @@ Container::make('theme_options', 'Настройки темы')
     				->set_option_value( 'yes' ),
 			Field::make( 'text', 'weekend', 'Выходной (формат ДД.ММ, разделитель - запятая без пробелов)' ),
 			Field::make( 'text', 'pricelist_link', 'Ссылка на скачивание оптового прйс-листа' ),
-	   ));
+	   ))
      ->add_tab('Plants cats', array(
 			  Field::make( 'image', 'cat_palms', 'Пальмы' )
                 ->set_value_type( 'id' ),
@@ -100,4 +100,4 @@ Container::make('theme_options', 'Настройки темы')
         Field::make( 'image', 'cat_pet_friendly', 'Pet Friendly' )
             ->set_value_type( 'id' ),
 			 
-      ))
+     ));
