@@ -49,6 +49,7 @@ function ajaxGetMainCatTerm() {
 
 }
 //document.addEventListener('DOMContentLoaded',()=>{showSlider(0)});
+document.addEventListener('DOMContentLoaded', swiper_product_slider_init);
 
 navItems.forEach((el,index) => {
     el.addEventListener('click',() => showSlider(index));
