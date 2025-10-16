@@ -632,11 +632,13 @@
 }
 
 .cats-grid__inner_cvetush img {
-  height: 92%;
   position: absolute;
   z-index: -1;
   bottom: 0;
   right: 0;
+  object-fit: contain;
+  object-position: bottom;
+  width: 90%;
 }
 
 .cats-grid__inner_succulent {
