@@ -279,7 +279,7 @@ function plnt_get_prods_data() {
 //add_action( 'wp_footer', 'plnt_get_prods_data' );
 
 
-<?php
+
 // ========== Плейсхолдер в футере (безопасный) ==========
 add_action( 'wp_footer', function () {
     if ( is_admin() ) { return; }
