@@ -338,7 +338,7 @@ function plnt_catalog_gallery() {
 
 	if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
 		global $product;
-		$image = $product->get_image('large', array('itemprop'=>'image'));	//schema.org
+		$image = $product->get_image('medium', array('itemprop'=>'image'));	//schema.org
 		$attachment_ids = $product->get_gallery_image_ids();
 		echo '
 		<div class="product__image-slider-wrap swiper">
