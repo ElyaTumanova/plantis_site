@@ -279,113 +279,35 @@ function plnt_get_prods_data() {
 //add_action( 'wp_footer', 'plnt_get_prods_data' );
 
 
+// === functions.php (дочерней темы) ИЛИ отдельный мини-плагин ===
 
-// ========== Плейсхолдер в футере (безопасный) ==========
-add_action( 'wp_footer', function () {
-    if ( is_admin() ) { return; }
-    echo '<div id="wc-ajax-metrics" style="position:fixed;right:12px;bottom:12px;z-index:9999;padding:8px 10px;border-radius:10px;background:#f2f2f2;font:13px/1.35 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;">Ожидание замера…</div>';
-}, 99 );
-
-// ========== Вся логика замеров целиком внутри init и ТОЛЬКО для данного AJAX ==========
+// Старт замера: самый ранний хук внутри ajax-запроса wc-ajax=add_to_cart
 add_action( 'init', function () {
-
-    // Гарантируем, что хук активируется лишь для wc-ajax=add_to_cart
-    if ( ! function_exists('wp_doing_ajax') || ! wp_doing_ajax() ) { return; }
-    if ( empty($_GET['wc-ajax']) || $_GET['wc-ajax'] !== 'add_to_cart' ) { return; }
-
-    // Стартовая метка
-    $t0 = microtime(true);
-
-    // Хранилище чекпоинтов в замыкании
-    $cps = [];
-    $mark = function( $label ) use ( &$cps ) {
-        $cps[] = [ 'name' => (string) $label, 't' => microtime(true) ];
-        // Пишем в debug.log на всякий случай (не критично, если WP_DEBUG_LOG=off)
-        if ( function_exists('error_log') ) {
-            @error_log('[wc-add_to_cart] ' . $label);
-        }
-    };
-
-    // Поставим первую метку
-    $mark('init (start)');
-
-    // До валидации
-    add_filter( 'woocommerce_add_to_cart_validation', function( $passed, $product_id, $qty, $variation_id, $variations, $cart_item_data ) use ( $mark ) {
-        $mark('before validation');
-        return $passed;
-    }, 1, 6 );
-
-    // После валидации
-    add_filter( 'woocommerce_add_to_cart_validation', function( $passed, $product_id, $qty, $variation_id, $variations, $cart_item_data ) use ( $mark ) {
-        $mark('after validation');
-        return $passed;
-    }, 999, 6 );
-
-    // После фактического добавления в корзину
-    add_action( 'woocommerce_add_to_cart', function( $cart_item_key, $product_id, $quantity, $variation_id, $variations, $cart_item_data ) use ( $mark ) {
-        $mark('after WC_Cart::add_to_cart');
-    }, 10, 6 );
-
-    // Хук AJAX Woo — перед генерацией фрагментов
-    add_action( 'woocommerce_ajax_added_to_cart', function( $product_id ) use ( $mark ) {
-        $mark('woocommerce_ajax_added_to_cart');
-    }, 10, 1 );
-
-    // Перед фрагментами
-    add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ) use ( $mark ) {
-        $mark('before fragments');
-        return $fragments;
-    }, 1 );
-
-    // Финальный фрагмент, который попадёт в футер
-    add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ) use ( &$cps, $t0, $mark ) {
-
-        // Последняя метка и подготовка HTML
-        $mark('after fragments');
-
-        // Если по какой-то причине меток нет — просто вернём фрагменты как есть
-        if ( empty($cps) ) { return $fragments; }
-
-        // Построим таблицу
-        $rows = '';
-        $prev = $t0;
-        $i    = 0;
-        foreach ( $cps as $cp ) {
-            $step_ms = (int) round( ( $cp['t'] - $prev ) * 1000 );
-            $cum_ms  = (int) round( ( $cp['t'] - $t0 ) * 1000 );
-            $name    = esc_html( $cp['name'] );
-            $rows   .= "<tr><td>{$i}</td><td>{$name}</td><td style='text-align:right'>{$step_ms}&nbsp;мс</td><td style='text-align:right'>{$cum_ms}&nbsp;мс</td></tr>";
-            $prev    = $cp['t'];
-            $i++;
-        }
-        $total_ms = (int) round( ( end($cps)['t'] - $t0 ) * 1000 );
-
-        $html = "
-        <div id='wc-ajax-metrics' style='position:fixed;right:12px;bottom:12px;z-index:9999;max-width:420px;background:#fff;border:1px solid rgba(0,0,0,.1);box-shadow:0 6px 24px rgba(0,0,0,.12);border-radius:10px;font:13px/1.35 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif'>
-          <div style='display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.06)'>
-            <strong>WC add_to_cart — таймлайны</strong>
-            <span style='margin-left:auto;opacity:.7'>Σ {$total_ms} мс</span>
-          </div>
-          <div style='max-height:260px;overflow:auto'>
-            <table style='width:100%;border-collapse:collapse'>
-              <thead>
-                <tr style='background:#fafafa'>
-                  <th style='text-align:left;padding:6px 10px;width:38px'>#</th>
-                  <th style='text-align:left;padding:6px 10px'>Шаг</th>
-                  <th style='text-align:right;padding:6px 10px;width:90px'>Δ, мс</th>
-                  <th style='text-align:right;padding:6px 10px;width:90px'>Σ, мс</th>
-                </tr>
-              </thead>
-              <tbody>{$rows}</tbody>
-            </table>
-          </div>
-          <div style='padding:8px 10px;color:#666;border-top:1px solid rgba(0,0,0,.06)'>
-            Обновляется после успешного add_to_cart
-          </div>
-        </div>";
-
-        // Подменяем содержимое футерного блока по селектору
-        $fragments['#wc-ajax-metrics'] = $html;
-        return $fragments;
-    }, 999 );
+    if ( wp_doing_ajax()
+      && isset($_GET['wc-ajax'])
+      && $_GET['wc-ajax'] === 'add_to_cart' ) {
+        $GLOBALS['wc_add_to_cart_t0'] = microtime( true );
+    }
 }, 0 );
+
+// Стоп замера и отдача времени в заголовке (видно в DevTools → Network → Headers).
+// Хук срабатывает ПЕРЕД формированием JSON-ответа и отправкой.
+add_action( 'woocommerce_ajax_added_to_cart', function( $product_id ){
+    if ( isset( $GLOBALS['wc_add_to_cart_t0'] ) && ! headers_sent() ) {
+        $ms = (int) round( ( microtime(true) - $GLOBALS['wc_add_to_cart_t0'] ) * 1000 );
+        header( 'Server-Timing: app;desc="wc add_to_cart";dur=' . $ms );
+        header( 'X-Response-Time: ' . $ms . 'ms' );
+    }
+}, 999 );
+
+// (Опционально) если хотите прочитать время на клиенте из JSON-ответа,
+// добавим «скрытый» фрагмент с числом миллисекунд:
+add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ){
+    if ( isset( $GLOBALS['wc_add_to_cart_t0'] ) ) {
+        $ms = (int) round( ( microtime(true) - $GLOBALS['wc_add_to_cart_t0'] ) * 1000 );
+        $fragments['wc_add_to_cart_server_ms'] =
+            '<div id="wc-add-to-cart-server-ms" data-ms="' . esc_attr( $ms ) . '"></div>';
+    }
+    return $fragments;
+}, 999 );
+
