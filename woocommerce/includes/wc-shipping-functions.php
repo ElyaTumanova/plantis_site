@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 //СПОСОБЫ ДОСТАВКИ
 
 //задаем по умолчанию срочную доставку
-//add_action('wp_head','plnt_set_initials');
+add_action('wp_head','plnt_set_initials');
 
 function plnt_set_initials() {
     date_default_timezone_set('Europe/Moscow');
@@ -37,8 +37,8 @@ function plnt_check() {
     //print_r( $packages);
     // echo '<br>';
     //echo $delivery_pochta;
-    // echo $chosen_methods[0];
-    // echo '<br>';
+    echo $chosen_methods[0];
+    echo '<br>';
 
     // if($local_pickup === $chosen_methods[0]) {
     //     echo 'hi';
