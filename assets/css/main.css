@@ -646,11 +646,13 @@
 }
 
 .cats-grid__inner_succulent img {
-  height: 40%;
+  height: 86%;
   position: absolute;
   z-index: -1;
   bottom: 0;
   right: 0;
+  object-fit: contain;
+  object-position: bottom right;
 }
 
 .cats-grid__inner_lianas {
@@ -663,10 +665,7 @@
 
 .cats-grid__inner_lianas img {
   object-fit: contain;
-  position: absolute;
-  z-index: -1;
-  bottom: 0;
-  right: 0;
+  object-position: right;
 }
 
 .cats-grid__inner_petfriendly {
