@@ -308,7 +308,7 @@ function show_image_sizes() {
 }
 
 // Вызвать функцию - можно добавить в хук, например:
-add_action('wp_head', 'show_image_sizes');
+//add_action('wp_head', 'show_image_sizes');
 //show_image_sizes();
 
 
