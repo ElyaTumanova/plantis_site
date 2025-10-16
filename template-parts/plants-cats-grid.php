@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="cats-grid">
     <a href="<?php echo get_site_url();?>/product-category/komnatnye-rasteniya/palms/" class="cats-grid__inner cats-grid__inner_palms">
         <h3 class="cats-grid__title">Пальмы</h3>
+        <?php echo wp_get_attachment_image( 15491, 'medium' );?>
     </a>
     <a href="<?php echo get_site_url();?>/product-category/komnatnye-rasteniya/fikusy/" class="cats-grid__inner cats-grid__inner_fikus">
         <h3 class="cats-grid__title">Фикусы</h3>

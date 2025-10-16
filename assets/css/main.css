@@ -586,7 +586,7 @@
 .cats-grid__inner_palms {
     grid-area: palms;
     /* aspect-ratio: 1/2; */
-    background-image: url(../../images/cats-grid/palms.webp);
+    /* background-image: url(../../images/cats-grid/palms.webp); */
 }
 .cats-grid__inner_lisv {
     grid-area: lisv;
