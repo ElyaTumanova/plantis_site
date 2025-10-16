@@ -312,4 +312,8 @@ function show_image_sizes() {
 //show_image_sizes();
 
 
-
+add_action('wp_ajax_nopriv_ping', 'ajax_ping');
+add_action('wp_ajax_ping', 'ajax_ping');
+function ajax_ping(){
+  wp_send_json_success('ok'); // без лишней логики
+}
