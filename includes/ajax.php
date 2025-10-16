@@ -143,6 +143,7 @@ add_action('wp_ajax_get_main_cats_term', 'plnt_main_cats_slider_action_callback'
 add_action('wp_ajax_nopriv_get_main_cats_term', 'plnt_main_cats_slider_action_callback');
 
 function plnt_main_cats_slider_action_callback() {
+  $start_main = microtime(true);
 	$term_slug = $_POST['term'];
 	$term_type = $_POST['type'];
     //   WC()->session->set('term_slug', $_POST['term'] );
@@ -192,8 +193,9 @@ function plnt_main_cats_slider_action_callback() {
     ?>
     <!-- <div><?php //echo 'hello '.$term_slug.' '.$term_type ;?></div> -->
     <?php
-    
+    $main_timing = round((microtime(true) - $start_main) * 1000, 2);
     $json_data['out'] = ob_get_clean();
+    $json_data['main_timing'] = $main_timing;
     wp_send_json($json_data);
     wp_die();
 };
