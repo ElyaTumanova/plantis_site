@@ -106,7 +106,7 @@ function plnt_woocommerce_cart_header_fragment( $fragments ) {
 	return $fragments;
 }
 
-add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_fragment', 25 );
+//add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_fragment', 25 );
 
 // вывод корзины в хедере для мобилки
 function plnt_woocommerce_cart_header_mob() {
@@ -132,7 +132,7 @@ function plnt_woocommerce_cart_header_mob_fragment( $fragments ) {
 	return $fragments;
 }
 
-add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_mob_fragment', 25 );
+//add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_mob_fragment', 25 );
 
 // вывод мини корзины в хедере и side cart
 function plnt_woocommerce_mini_cart() {
@@ -150,7 +150,7 @@ function plnt_woocommerce_mini_cart_fragment( $fragments ) {
 	return $fragments;
 }
 
-add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_mini_cart_fragment', 25 );
+//add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_mini_cart_fragment', 25 );
 
 // вывод кол-ва товаров в корзине side cart
 
@@ -173,7 +173,7 @@ function plnt_side_cart_count_fragment( $fragments ) {
 	return $fragments;
 }
 
-add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_side_cart_count_fragment', 25 );
+//add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_side_cart_count_fragment', 25 );
 
 /*--------------------------------------------------------------
 # MINI CART 
