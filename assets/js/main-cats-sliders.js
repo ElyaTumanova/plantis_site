@@ -48,7 +48,7 @@ function ajaxGetMainCatTerm() {
     });
 
 }
-document.addEventListener('DOMContentLoaded',()=>{showSlider(0)});
+//document.addEventListener('DOMContentLoaded',()=>{showSlider(0)});
 
 navItems.forEach((el,index) => {
     el.addEventListener('click',() => showSlider(index));

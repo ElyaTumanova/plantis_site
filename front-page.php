@@ -40,6 +40,9 @@
 			<span class = "main__cats-nav-title" data-type="product_cat" data-term="lianas">Лианы</span>
 		</div>
 		<div class=main__cats-slider>
+      	<?php
+				get_template_part( 'template-parts/products/products-main-cats');
+				?>
 		</div>
 	</div>
 	<div class="cats-grid-wrap main__row container">
