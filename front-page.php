@@ -43,7 +43,7 @@
 		</div>
 	</div>
 	<div class="cats-grid-wrap main__row container">
-		<?php //get_template_part('template-parts/plants-cats-grid');?>
+		<?php get_template_part('template-parts/plants-cats-grid');?>
 	</div>
 	<div class="main__wrap container main__row">
 		<?php
