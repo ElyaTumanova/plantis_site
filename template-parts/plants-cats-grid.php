@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <a href="<?php //echo get_site_url();?>/product-category/komnatnye-rasteniya/dekorativno-cvetushchie/" class="cats-grid__inner cats-grid__inner_cvetush">
         <h3 class="cats-grid__title">Цветущие</h3>
     </a>
-    <a href="<?php//echo get_site_url();?>/product-category/komnatnye-rasteniya/lianas/" class="cats-grid__inner cats-grid__inner_lianas">
+    <a href="<?php //echo get_site_url();?>/product-category/komnatnye-rasteniya/lianas/" class="cats-grid__inner cats-grid__inner_lianas">
         <h3 class="cats-grid__title">Лианы</h3>
     </a>
     <a href="<?php //echo get_site_url();?>/product-tag/novichkam/" class="cats-grid__inner cats-grid__inner_neprikhotliv">
