@@ -94,6 +94,23 @@ function show_svg_in_media_library( $response ) {
 
 //add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
 
+function disable_srcset_except_homepage($sources, $size_array, $image_src, $image_meta, $attachment_id) {
+    // Оставляем srcset только на главной странице
+    if (is_front_page() || is_home()) {
+        return $sources;
+    }
+    
+    // На всех остальных страницах отключаем
+    return false;
+}
+add_filter('wp_calculate_image_srcset', 'disable_srcset_except_homepage', 10, 5);
+
+
+//add_filter('max_srcset_image_width', 'change_max_srcset_image_width', 10, 2);
+function change_max_srcset_image_width($max_width, $size_array) {
+    return 2048; // Новый максимум
+}
+
 //убираем ненужны размеры изображений
 // add_filter( 'intermediate_image_sizes', function( $sizes ) {
 //     error_log( 'Фильтр сработал, удаляем размеры: ' . implode(', ', array_keys($sizes)) );
