@@ -579,8 +579,10 @@
     border-radius: 10px;
     /* padding: 5px; */
     box-sizing: border-box;
-    background-size: cover;
-    background-repeat: no-repeat;
+    /* background-size: cover;
+    background-repeat: no-repeat; */
+    height: 100%;
+    width: 100%;
 }
 
 .cats-grid__inner img {
@@ -601,7 +603,7 @@
 }
 .cats-grid__inner_neprikhotliv {
     grid-area: neprikhotliv;
-    aspect-ratio: 1/1;
+    aspect-ratio: 2/1;
     /* background-image: url(../../images/cats-grid/nepr.webp); */
     /* background-size: 60%;
     background-position: bottom right; */
@@ -620,7 +622,7 @@
 }
 .cats-grid__inner_succulent {
     grid-area: succulent;
-    aspect-ratio: 1/1;
+    aspect-ratio: 2/1;
     /* background-image: url(../../images/cats-grid/succ.webp); */
     /* background-size: 40%;
     background-position: bottom right; */
@@ -628,7 +630,7 @@
 
 .cats-grid__inner_lianas {
     grid-area: lianas;
-    aspect-ratio: 1/1;
+    aspect-ratio: 2/1;
     /* background-image: url(../../images/cats-grid/lians.webp);
     background-size: contain;
     background-position: bottom right; */
