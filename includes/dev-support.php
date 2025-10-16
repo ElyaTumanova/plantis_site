@@ -278,7 +278,6 @@ function plnt_get_prods_data() {
 
 //add_action( 'wp_footer', 'plnt_get_prods_data' );
 
-<?php
 /**
  * Подробные замеры add_to_cart с выводом в футере.
  * Вставить в functions.php дочерней темы или в отдельный плагин.
