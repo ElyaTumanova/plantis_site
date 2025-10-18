@@ -131,7 +131,7 @@ function updateWishBtns(wishListItemsStr) {
             button.setAttribute('href', `?remove_from_wishlist=${button.dataset.productId}`);
             button.setAttribute('class', 'delete_item');
             let img = button.querySelector('img');
-            img.setAttribute('src','src="https://plantis-shop.ru/wp-content/uploads/2025/07/heart_black_new.svg"');
+            img.setAttribute('src','https://plantis-shop.ru/wp-content/uploads/2025/07/heart_black_new.svg');
             };
         });
 
