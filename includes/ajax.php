@@ -46,6 +46,7 @@ function plnt_search_ajax_action_callback (){
     $product_sku_id = wc_get_product_id_by_sku( $query_ajax->query_vars[ 's' ] );
     // print_r($product_sku_id);
     $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
+    ?> <div class='serach-result__wrap'> <?php
 
     if ($product_sku_id) { 
       $product = wc_get_product( $product_sku_id );
@@ -56,6 +57,7 @@ function plnt_search_ajax_action_callback (){
       $sale = get_post_meta( $product_sku_id, '_sale_price', true);
       render_search_result($product);
       ?>
+        </div>
         <input class="search-result__btn button" type="submit" form ="searchform" value="Посмотреть все" />
       <?php
     } else {
@@ -70,11 +72,13 @@ function plnt_search_ajax_action_callback (){
           render_search_result($product);
         }
         ?>
+        </div>
         <input class="search-result__btn button" type="submit" form ="searchform" value="Посмотреть все" />
         <?php
       } else {
         ?>
         <div class="search-result__text">Ничего не найдено</div>
+        </div>
         <?php
       }
     } 

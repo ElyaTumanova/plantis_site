@@ -220,6 +220,7 @@ input[type="search"], input[type="search"]:focus-visible {
     top: 43px;
     border-radius: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    background-color: var(--background);
 }
 
 /* .search-form {
