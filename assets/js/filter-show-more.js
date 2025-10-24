@@ -79,18 +79,34 @@ function setSearchFilterField() {
     }
 
     if (filterBody && filterHeader) {
-      console.log(filterBody.getAttribute('style'))
-      const inlineStyle = filterBody.getAttribute('style')
-      console.log(inlineStyle)
-      if(inlineStyle.includes('display: none')) {
-        filterHeader.classList.add('d-none')
-        console.log('hidden')
-      }
+      console.log(filterBody.getAttribute('style'));
+      
+      // Функция для проверки и скрытия/показа
+      const checkDisplayState = () => {
+          const computedStyle = window.getComputedStyle(filterBody);
+          if (computedStyle.display === 'none') {
+              filterHeader.classList.add('d-none');
+              console.log('hidden');
+          } else {
+              filterHeader.classList.remove('d-none');
+          }
+      };
+      
+      // Проверяем сразу при загрузке
+      checkDisplayState();
+      
+      // Наблюдаем за изменениями атрибута style
+      const observer = new MutationObserver(checkDisplayState);
+      observer.observe(filterBody, {
+          attributes: true,
+          attributeFilter: ['style']
+      });
+      
       filterHeader.addEventListener('click', function() {
-        searchInput.classList.toggle('d-none');
-        console.log('hi hi');
-      })
-    }
+          searchInput.classList.toggle('d-none');
+          console.log('hi hi');
+      });
+  }
 }
 
 document.addEventListener('DOMContentLoaded', setSearchFilterField);
