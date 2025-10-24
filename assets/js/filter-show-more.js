@@ -85,10 +85,10 @@ function setSearchFilterField() {
       const checkDisplayState = () => {
           const computedStyle = window.getComputedStyle(filterBody);
           if (computedStyle.display === 'none') {
-              filterHeader.classList.add('d-none');
+              searchInput.classList.add('d-none');
               console.log('hidden');
           } else {
-              filterHeader.classList.remove('d-none');
+              searchInput.classList.remove('d-none');
           }
       };
       
