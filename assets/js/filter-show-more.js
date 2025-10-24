@@ -56,6 +56,8 @@ if(diametrFilter) {
       hideFilterItems();
     }
 
+    diametrFilterWrap.classList.add('hidden');
+
 }
 
 
