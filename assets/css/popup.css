@@ -213,7 +213,6 @@ input[type="search"], input[type="search"]:focus-visible {
     display: flex;
     flex-direction: column;
     max-height: 80vh;
-    overflow-y: scroll;
     position: absolute;
     width: 800px;
     z-index: 2;
@@ -221,6 +220,11 @@ input[type="search"], input[type="search"]:focus-visible {
     border-radius: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
     background-color: var(--background);
+}
+
+.serach-result__wrap {
+    max-height: 70vh;
+    overflow-y: scroll;
 }
 
 /* .search-form {
