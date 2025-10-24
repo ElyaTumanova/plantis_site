@@ -223,7 +223,7 @@ input[type="search"], input[type="search"]:focus-visible {
 }
 
 .serach-result__wrap {
-    max-height: 70vh;
+    max-height: calc(80vh - 55px);
     overflow-y: scroll;
 }
 
@@ -311,10 +311,7 @@ input[type="search"], input[type="search"]:focus-visible {
     background-color: var(--accent-color);
     border-color: var(--accent-color);
     color: var(--white);
-    position: sticky;
-    bottom: 10px;
-    right: 10px;
-    left: 10px;
+    margin: 10px;
 }
 
 .search-result__item {
