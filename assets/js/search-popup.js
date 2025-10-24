@@ -35,7 +35,7 @@ document.addEventListener('keydown', function(e){
 
 function toggle_search_popup () {
     searchPopup.classList.toggle ('popup_active');
-    body.classList.toggle ('fix-body');
+    // body.classList.toggle ('fix-body');
     searchInput.focus();
 
     // для поиска

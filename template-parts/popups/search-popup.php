@@ -13,5 +13,5 @@ $close_icon = carbon_get_theme_option('close_icon')
         </div>
         <div class="search-result container"></div>
     </div>
-    <div class="search__popup-overlay popup-overlay"></div>
+    <!-- <div class="search__popup-overlay popup-overlay"></div> -->
 </div>
