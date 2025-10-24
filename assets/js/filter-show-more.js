@@ -4,6 +4,7 @@ let diametrFilterWrap;
 let diametrFilterItems;
 let showMoreBtn;
 let diametrFilterWrapHeight = 150;
+let diametrFilterWrapHeightMax = 354;
 
 
 function hideFilterItems() {
@@ -34,7 +35,7 @@ function showAllFilterItems() {
     diametrFilterWrapHeight = 16 * itemsCount + 10 * (itemsCount - 1);
     document.documentElement.style.setProperty('--diametrFilterWrapHeight', `${diametrFilterWrapHeight}px`);
     diametrFilterWrap.classList.remove('hidden');
-    if (diametrFilterWrapHeight > 354) {
+    if (diametrFilterWrapHeight > diametrFilterWrapHeightMax) {
       diametrFilterWrap.classList.add('scroll');
     }
 
@@ -49,6 +50,7 @@ function showAllFilterItems() {
 if(diametrFilter) {
     diametrFilterWrap = diametrFilter.querySelector('.bapf_body');
     diametrFilterItems = Array.from(diametrFilter.querySelectorAll('li'));
+    document.documentElement.style.setProperty('--diametrFilterWrapHeightMax', `${diametrFilterWrapHeightMax}px`);
 
     if(diametrFilterItems.length > 9) {
       showMoreBtn = document.createElement("button");
