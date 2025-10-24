@@ -81,6 +81,7 @@ function setSearchFilterField() {
     if (filterBody && filterHeader) {
       console.log(filterBody.getAttribute('style'))
       const inlineStyle = filterBody.getAttribute('style')
+      console.log(inlineStyle)
       if(inlineStyle.includes('display: none')) {
         filterHeader.classList.add('d-none')
         console.log('hidden')
