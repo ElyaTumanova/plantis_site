@@ -187,10 +187,10 @@
     }
 }
 
-.search-form {
+/* .search-form {
     display: flex;
     justify-content: space-between;
-    width: calc(100% - 35px); /*ширина close button и column gap*/
+    width: calc(100% - 35px); 
 }
 
 input[type="search"], input[type="search"]:focus-visible {
@@ -209,7 +209,6 @@ input[type="search"], input[type="search"]:focus-visible {
 }
   
 .search__close {
-    /* margin: auto; */
     margin-top: auto;
     margin-bottom: auto;
 }
@@ -234,7 +233,7 @@ input[type="search"], input[type="search"]:focus-visible {
     .search-result {
         max-height: 50vh;
     }
-}
+} */
 
 /* стили для скролла scroll */
  /* start custom scroll */
