@@ -50,7 +50,6 @@ function showAllFilterItems() {
 if(diametrFilter) {
     diametrFilterWrap = diametrFilter.querySelector('.bapf_body');
     diametrFilterItems = Array.from(diametrFilter.querySelectorAll('li'));
-    console.log(diametrFilterItems.length)
 
     if(diametrFilterItems.length > 9) {
       showMoreBtn = document.createElement("button");
@@ -59,9 +58,6 @@ if(diametrFilter) {
   
       hideFilterItems();
     }
-
-    // diametrFilterWrap.classList.add('hidden');
-
 }
 
 

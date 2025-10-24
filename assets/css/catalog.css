@@ -1509,9 +1509,8 @@
 /*фильтр с диаметром горшка*/
 
 .filter_diametr_gorshka .bapf_body {
-    height: var(--diametrFilterWrapHeight);
+    /* height: var(--diametrFilterWrapHeight); */
     max-height: 350px;
-    /* overflow-y: auto; */
     overflow-y: hidden;
     transition: all 0.3s;
 }
