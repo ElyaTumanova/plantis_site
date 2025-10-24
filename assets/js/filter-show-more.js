@@ -39,6 +39,7 @@ function showAllFilterItems() {
     if (diametrFilterWrapHeight > 350) {
       diametrFilterWrap.classList.add('scroll');
     }
+    
     showMoreBtn.addEventListener('click', hideFilterItems, {once:true});
     showMoreBtn.addEventListener('click', (event) => {
         let sidebar = document.querySelector('.catalog__sidebar-filters');

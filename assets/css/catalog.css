@@ -1516,7 +1516,7 @@
 }
 
 .filter_diametr_gorshka .bapf_body.hidden {
-    height: var(--diametrFilterWrapHeight);
+    /* height: var(--diametrFilterWrapHeight); */
     max-height: var(--diametrFilterWrapHeight);
 }
 
