@@ -2,7 +2,6 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-$close_icon = carbon_get_theme_option('close_icon')
 ?>
 
 <header id="header" class="header" role="banner">
@@ -44,9 +43,7 @@ $close_icon = carbon_get_theme_option('close_icon')
           <div class="search">
               <div class="search__wrap container">
                   <?get_search_form();?>
-                  <div class="search__close"><?php echo $close_icon ?></div>
               </div>
-              <div class="search-result container"></div>
           </div>
 					<div class="header__wrap">
 						<div class="search-btn">
