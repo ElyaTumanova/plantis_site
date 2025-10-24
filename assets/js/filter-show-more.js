@@ -77,7 +77,11 @@ function setSearchFilterField() {
         });
         });
     }
-    if (filterHeader) {
+
+    if (filterBody && filterHeader) {
+      if(filterBody.getAttribute('style')?.includes('display: none')) {
+        filterHeader.classList.add('d-none')
+      }
       filterHeader.addEventListener('click', function() {
         searchInput.classList.toggle('d-none');
         console.log('hi hi');
