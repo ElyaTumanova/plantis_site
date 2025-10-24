@@ -45,6 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                   <?get_search_form();?>
               <!-- </div> -->
           </div>
+          <div class="search-result"></div>
 					<div class="header__wrap">
 						<div class="search-btn">
 							<?php $search_icon = carbon_get_theme_option('search_icon')?>

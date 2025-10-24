@@ -208,6 +208,13 @@ input[type="search"], input[type="search"]:focus-visible {
     outline: none;
 }
 
+.search-result {
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+    overflow-y: scroll;
+}
+
 /* .search-form {
     display: flex;
     justify-content: space-between;
