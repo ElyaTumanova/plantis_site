@@ -179,7 +179,7 @@
     padding: 10px 0;
     background: var(--background);
     width: 0;
-    transition: all cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    transition: width 0.5s ease-in-out ;
 }
 
 .header__main .search_open {
