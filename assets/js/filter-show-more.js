@@ -5,6 +5,8 @@ let diametrFilterItems;
 let showMoreBtn;
 let diametrFilterWrapHeight = 150;
 
+console.log(diametrFilterItems)
+
 
 function hideFilterItems() {
     let itemsCount = 0;
