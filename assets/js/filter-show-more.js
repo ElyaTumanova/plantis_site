@@ -80,8 +80,10 @@ function setSearchFilterField() {
 
     if (filterBody && filterHeader) {
       console.log(filterBody.getAttribute('style'))
-      if(filterBody.getAttribute('style').includes('display: none')) {
+      const inlineStyle = filterBody.getAttribute('style')
+      if(inlineStyle.includes('display: none')) {
         filterHeader.classList.add('d-none')
+        console.log('hidden')
       }
       filterHeader.addEventListener('click', function() {
         searchInput.classList.toggle('d-none');
