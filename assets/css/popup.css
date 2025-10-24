@@ -196,7 +196,7 @@
 
 .search-field {
   width: 0;
-  padding: 10px 5px !important;
+  padding: 5px 20px !important;
   border-radius: 40px !important;
   transition: all 0.5s ease-in-out;
 }
