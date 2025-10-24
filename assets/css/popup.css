@@ -178,13 +178,26 @@
 .header__main .search {
     padding: 10px 0;
     background: var(--background);
-    width: 300px;
+    width: 0;
+    transition: all cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.header__main .search_open {
+    width: 800px;
 }
 
 @media (max-width:1279px) {
     .header__main .search {
         top: 55px;
     }
+}
+
+.search-field {
+  width: 100%;
+}
+
+input[type="search"], input[type="search"]:focus-visible {
+    outline: none;
 }
 
 /* .search-form {

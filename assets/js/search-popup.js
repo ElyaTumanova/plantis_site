@@ -1,6 +1,7 @@
 //переменные для управления попапом
 const searchOpenPopupBtn = document.querySelectorAll('.search-btn');
 const searchPopup = document.querySelector('.search-popup');
+const searchWrap = document.querySelector('.search');
 const searchClosePopupBtn = document.querySelector('.search__close');
 const searchPopupOverlay = document.querySelector('.search__popup-overlay');
 
@@ -10,7 +11,8 @@ const searchInput = document.querySelector('.search-field');
 
 searchOpenPopupBtn.forEach((btn)=>
     btn.addEventListener ("click", (evt)=>{
-        toggle_search_popup ();
+        //toggle_search_popup ();
+        searchWrap.classList.toggle('search_open')
     })
 );
 
