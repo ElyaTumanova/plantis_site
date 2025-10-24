@@ -80,7 +80,7 @@ function setSearchFilterField() {
 
     if (filterBody && filterHeader) {
       console.log(filterBody.getAttribute('style'))
-      if(filterBody.getAttribute('style')?.includes('display: none')) {
+      if(filterBody.getAttribute('style').includes('display: none')) {
         filterHeader.classList.add('d-none')
       }
       filterHeader.addEventListener('click', function() {
