@@ -885,18 +885,10 @@ function plnt_plant_name_filter_content($template_content) {
 				$template_content['template']['content'],
           'filter',
           array(
-            'custom_content' =>  '<input type="text" placeholder="Поиск..." class="berocket-search-checkbox">'
+            'custom_content' =>  '<input type="text" placeholder="Поиск..." class="berocket-search-checkbox d-none">'
           ),
           true
 			  );
-        // $template_content['template']['content']['filter']['content'] = berocket_insert_to_array(
-				// $template_content['template']['content']['filter']['content'],
-        //   'list',
-        //   array(
-        //     'custom_content' =>  '<input type="text" placeholder="Поиск..." class="berocket-search-checkbox">'
-        //   ),
-        //   true
-			  // );
 	}
     return $template_content;
 

@@ -62,18 +62,25 @@ if(diametrFilter) {
 
 //search field for plants names filter
 function setSearchFilterField() {
+    const filterHeader = document.querySelector('.filter_plant_name .bapf_head');
     const searchInput = document.querySelector('.berocket-search-checkbox');
     const checkboxes = document.querySelectorAll('.filter_plant_name li');
+    console.log(filterHeader);
 
     if (searchInput && checkboxes.length) {
         searchInput.addEventListener('input', function () {
-        console.log('hi hi');
         const query = this.value.toLowerCase();
         checkboxes.forEach((li) => {
             const label = li.textContent.toLowerCase();
             li.style.display = label.includes(query) ? '' : 'none';
         });
         });
+    }
+    if (filterHeader) {
+      filterHeader.addEventListener('click', function() {
+        searchInput.classList.toggle('d-none');
+        console.log('hi hi');
+      })
     }
 }
 
