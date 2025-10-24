@@ -175,7 +175,7 @@
 
 /* search and search popup styles */
 
-.search-popup .search {
+.header__main .search {
     padding: 10px 0;
     background: var(--background);
     position: absolute;
@@ -184,7 +184,7 @@
 }
 
 @media (max-width:1279px) {
-    .search-popup .search {
+    .header__main .search {
         top: 55px;
     }
 }
