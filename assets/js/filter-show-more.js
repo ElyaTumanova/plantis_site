@@ -5,8 +5,6 @@ let diametrFilterItems;
 let showMoreBtn;
 let diametrFilterWrapHeight = 150;
 
-console.log(diametrFilterItems)
-
 
 function hideFilterItems() {
     let itemsCount = 0;
@@ -48,6 +46,7 @@ function showAllFilterItems() {
 if(diametrFilter) {
     diametrFilterWrap = diametrFilter.querySelector('.bapf_body');
     diametrFilterItems = Array.from(diametrFilter.querySelectorAll('li'));
+    console.log(diametrFilterItems)
 
     showMoreBtn = document.createElement("button");
     showMoreBtn.classList.add('filter-show-more-btn');
