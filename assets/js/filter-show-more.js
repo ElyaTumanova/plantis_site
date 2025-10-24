@@ -17,7 +17,6 @@ function hideFilterItems() {
         }
     });
     diametrFilterWrapHeight = 16 * itemsCount + 10 * (itemsCount - 1);
-    //console.log(itemsCount);
     document.documentElement.style.setProperty('--diametrFilterWrapHeight', `${diametrFilterWrapHeight}px`);
 
     diametrFilterWrap.classList.add('hidden');
@@ -33,13 +32,12 @@ function showAllFilterItems() {
         itemsCount++;
     })
     diametrFilterWrapHeight = 16 * itemsCount + 10 * (itemsCount - 1);
-    // console.log(itemsCount);
     document.documentElement.style.setProperty('--diametrFilterWrapHeight', `${diametrFilterWrapHeight}px`);
     diametrFilterWrap.classList.remove('hidden');
     if (diametrFilterWrapHeight > 350) {
       diametrFilterWrap.classList.add('scroll');
     }
-    
+
     showMoreBtn.addEventListener('click', hideFilterItems, {once:true});
     showMoreBtn.addEventListener('click', (event) => {
         let sidebar = document.querySelector('.catalog__sidebar-filters');

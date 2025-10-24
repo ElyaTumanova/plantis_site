@@ -877,11 +877,11 @@ add_filter('BeRocket_AAPF_template_full_content', 'plnt_plant_name_filter_conten
 add_filter('BeRocket_AAPF_template_full_element_content', 'plnt_plant_name_filter_content', 4000, 1);
 function plnt_plant_name_filter_content($template_content) {
 	if ($template_content['template']['attributes']['data-name']==='Название') {
-            // echo '<pre>';
-			// print_r( $template_content['template']['content']['filter']['content'] );
-			// echo '</pre>';
+      echo '<pre>';
+			print_r( $template_content['template']['content']['filter']['content'] );
+			echo '</pre>';
 
-            $template_content['template']['content']['filter']['content'] = berocket_insert_to_array(
+        $template_content['template']['content']['filter']['content'] = berocket_insert_to_array(
 				$template_content['template']['content']['filter']['content'],
 				'list',
 				array(
