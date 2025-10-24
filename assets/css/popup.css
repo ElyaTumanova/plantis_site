@@ -178,9 +178,7 @@
 .header__main .search {
     padding: 10px 0;
     background: var(--background);
-    position: absolute;
-    top: 108px;
-    width: 100%;
+    width: 300px;
 }
 
 @media (max-width:1279px) {

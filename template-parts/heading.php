@@ -41,9 +41,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php endif; ?>
 					</div><!-- .description -->
           <div class="search">
-              <div class="search__wrap container">
+              <!-- <div class="search__wrap"> -->
                   <?get_search_form();?>
-              </div>
+              <!-- </div> -->
           </div>
 					<div class="header__wrap">
 						<div class="search-btn">
