@@ -34,7 +34,7 @@ function showAllFilterItems() {
     diametrFilterWrapHeight = 16 * itemsCount + 10 * (itemsCount - 1);
     document.documentElement.style.setProperty('--diametrFilterWrapHeight', `${diametrFilterWrapHeight}px`);
     diametrFilterWrap.classList.remove('hidden');
-    if (diametrFilterWrapHeight > 350) {
+    if (diametrFilterWrapHeight > 354) {
       diametrFilterWrap.classList.add('scroll');
     }
 
