@@ -2,6 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+$close_icon = carbon_get_theme_option('close_icon')
 ?>
 
 <header id="header" class="header" role="banner">
