@@ -177,14 +177,13 @@
 
 .header__main .search {
     background: var(--background);
-    width: 0;
     visibility: hidden;
     opacity: 0;
-    transition: all 0.5s ease-in-out ;
+    width: 800px;
+    transition: all 0.5s ease-in-out;
 }
 
 .header__main .search_open {
-    width: 800px;
     opacity: 1;
     visibility: visible;
 }
@@ -196,9 +195,13 @@
 }
 
 .search-field {
-  width: 100%;
+  width: 0;
   padding: 10px 5px !important;
   border-radius: 40px !important;
+  transition: all 0.5s ease-in-out;
+}
+.search_open .search-field {
+  width: 100%;
 }
 
 input[type="search"], input[type="search"]:focus-visible {
