@@ -46,13 +46,16 @@ function showAllFilterItems() {
 if(diametrFilter) {
     diametrFilterWrap = diametrFilter.querySelector('.bapf_body');
     diametrFilterItems = Array.from(diametrFilter.querySelectorAll('li'));
-    console.log(diametrFilterItems)
+    console.log(diametrFilterItems.length)
 
-    showMoreBtn = document.createElement("button");
-    showMoreBtn.classList.add('filter-show-more-btn');
-    diametrFilter.appendChild(showMoreBtn);
+    if(diametrFilterItems.length > 9) {
+      showMoreBtn = document.createElement("button");
+      showMoreBtn.classList.add('filter-show-more-btn');
+      diametrFilter.appendChild(showMoreBtn);
+  
+      hideFilterItems();
+    }
 
-    hideFilterItems();
 }
 
 
