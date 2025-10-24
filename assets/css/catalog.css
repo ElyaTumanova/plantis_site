@@ -1511,14 +1511,18 @@
 .filter_diametr_gorshka .bapf_body {
     height: var(--diametrFilterWrapHeight);
     max-height: 350px;
-    overflow-y: auto;
+    /* overflow-y: auto; */
+    overflow-y: hidden;
     transition: all 0.3s;
 }
 
 .filter_diametr_gorshka .bapf_body.hidden {
     height: var(--diametrFilterWrapHeight);
     max-height: var(--diametrFilterWrapHeight);
-    overflow-y: hidden;
+}
+
+.filter_diametr_gorshka .bapf_body.scroll {
+    overflow-y: auto;
 }
 
 .filter-show-more-btn {

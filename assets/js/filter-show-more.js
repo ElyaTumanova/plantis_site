@@ -21,6 +21,7 @@ function hideFilterItems() {
     document.documentElement.style.setProperty('--diametrFilterWrapHeight', `${diametrFilterWrapHeight}px`);
 
     diametrFilterWrap.classList.add('hidden');
+    diametrFilterWrap.classList.remove('scroll');
     showMoreBtn.addEventListener('click', showAllFilterItems, {once:true});
     showMoreBtn.textContent = 'Показать все';
 }
@@ -32,9 +33,12 @@ function showAllFilterItems() {
         itemsCount++;
     })
     diametrFilterWrapHeight = 16 * itemsCount + 10 * (itemsCount - 1);
-    console.log(itemsCount);
+    // console.log(itemsCount);
     document.documentElement.style.setProperty('--diametrFilterWrapHeight', `${diametrFilterWrapHeight}px`);
     diametrFilterWrap.classList.remove('hidden');
+    if (diametrFilterWrapHeight > 350) {
+      diametrFilterWrap.classList.add('scroll');
+    }
     showMoreBtn.addEventListener('click', hideFilterItems, {once:true});
     showMoreBtn.addEventListener('click', (event) => {
         let sidebar = document.querySelector('.catalog__sidebar-filters');
@@ -56,7 +60,7 @@ if(diametrFilter) {
       hideFilterItems();
     }
 
-    diametrFilterWrap.classList.add('hidden');
+    // diametrFilterWrap.classList.add('hidden');
 
 }
 
