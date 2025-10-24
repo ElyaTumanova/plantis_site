@@ -47,7 +47,7 @@ $close_icon = carbon_get_theme_option('close_icon');
 </footer><!-- #colophon -->
 </div><!-- #page -->
 
-<?php //get_template_part('template-parts/popups/search-popup');?>
+<?php get_template_part('template-parts/popups/search-popup');?>
 <div class="burger-menu"> 
     <div class="modal-mob">
         <div class="modal-mob__close burger-menu__close button"><?php echo $close_icon ?></div>

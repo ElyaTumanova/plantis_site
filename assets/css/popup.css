@@ -176,7 +176,6 @@
 /* search and search popup styles */
 
 .header__main .search {
-    padding: 10px 0;
     background: var(--background);
     width: 0;
     visibility: hidden;
@@ -198,6 +197,8 @@
 
 .search-field {
   width: 100%;
+  padding: 10px 5px !important;
+  border-radius: 40px !important;
 }
 
 input[type="search"], input[type="search"]:focus-visible {
