@@ -78,15 +78,12 @@ function setSearchFilterField() {
         });
     }
 
-    if (filterBody && filterHeader) {
-      console.log(filterBody.getAttribute('style'));
-      
+    if (filterBody && filterHeader) {      
       // Функция для проверки и скрытия/показа
       const checkDisplayState = () => {
           const computedStyle = window.getComputedStyle(filterBody);
           if (computedStyle.display === 'none') {
               searchInput.classList.add('d-none');
-              console.log('hidden');
           } else {
               searchInput.classList.remove('d-none');
           }
@@ -104,7 +101,6 @@ function setSearchFilterField() {
       
       filterHeader.addEventListener('click', function() {
           searchInput.classList.toggle('d-none');
-          console.log('hi hi');
       });
   }
 }
