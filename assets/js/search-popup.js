@@ -21,6 +21,8 @@ searchOpenPopupBtn.forEach((btn)=>
 function toggleSearch() {
   searchWrap.classList.toggle('search_open');
   body.classList.toggle ('fix-body');
+  searchInput.focus();
+  searchInput.value= "";
 }
 
 document.addEventListener('pointerdown', (e) => {
@@ -29,7 +31,6 @@ document.addEventListener('pointerdown', (e) => {
   // Если клик пришёл не по контенту модалки и не по её потомкам — закрываем
   if (!searchResult.contains(e.target)) {
     searchResult.hidden = true;
-    searchResult.innerHTML = '';
     toggleSearch()
   };
 });
