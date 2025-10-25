@@ -216,7 +216,6 @@ input[type="search"], input[type="search"]:focus-visible {
   max-height: 80vh;
   width: 800px;
   
-  visibility: hidden;
   position: absolute;
   top: calc(var(--headerHeight) - 44px); /*44 высота зеленого меню header__main-menu-wrap*/
   left: calc(50% + 16px);
