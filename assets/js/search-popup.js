@@ -15,14 +15,14 @@ searchWrap.hidden = true;
 
 searchOpenPopupBtn.forEach((btn)=>
     btn.addEventListener ("click", (evt)=>{
-        searchWrap.hidden = false;
         toggleSearch();
     })
 );
 
 function toggleSearch() {
+  searchWrap.hidden = !searchWrap.hidden;
   searchWrap.classList.toggle('search_open');
-  if (searchWrap.classList.contains('search_open')) {
+  if (searchWrap.classList.contains('search_open') && !searchWrap.hidden) {
     requestAnimationFrame(() => {
       setTimeout(() => {
         searchInput.focus({ preventScroll: true });
@@ -44,7 +44,6 @@ document.addEventListener('pointerdown', (e) => {
 
 function closeSearchResult() {
     searchResult.hidden = true;
-    searchWrap.hidden = true;
     searchResult.innerHTML = '';
     toggleSearch();
 }
