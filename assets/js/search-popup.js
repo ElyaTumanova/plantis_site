@@ -7,6 +7,7 @@ const searchPopupOverlay = document.querySelector('.search__popup-overlay');
 
 //доп переменные для поиска
 const searchResult = document.querySelector('.search-result');
+console.log(searchResult)
 const searchInput = document.querySelector('.search-field');
 
 searchOpenPopupBtn.forEach((btn)=>
