@@ -188,6 +188,7 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+    transition: opacity  0.5s ease-in-out;
 }
 
 .search-field {
@@ -199,6 +200,7 @@
 .search.search_open .search-field {
   width: 100%;
   box-sizing: border-box;
+  transition: width 0.5s ease-in-out;
 }
 
 input[type="search"], input[type="search"]:focus-visible {
