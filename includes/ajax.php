@@ -46,7 +46,7 @@ function plnt_search_ajax_action_callback (){
     $product_sku_id = wc_get_product_id_by_sku( $query_ajax->query_vars[ 's' ] );
     // print_r($product_sku_id);
     $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
-    ?> <div class='serach-result__wrap'> <?php
+    ?> <div class='serach-result__items'> <?php
 
     if ($product_sku_id) { 
       $product = wc_get_product( $product_sku_id );

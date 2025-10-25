@@ -209,6 +209,15 @@ input[type="search"], input[type="search"]:focus-visible {
     outline: none;
 }
 
+.search-result__wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: transparent;
+}
+
 .search-result {
     display: flex;
     flex-direction: column;
@@ -227,7 +236,7 @@ input[type="search"], input[type="search"]:focus-visible {
     background-color: var(--background);
 }
 
-.serach-result__wrap {
+.serach-result__items {
     max-height: calc(80vh - 55px);
     overflow-y: scroll;
     margin: 10px;
