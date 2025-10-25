@@ -44,7 +44,6 @@ if ( ! defined( 'ABSPATH' ) ) {
               <!-- <div class="search__wrap"> -->
                   <?get_search_form();?>
               <!-- </div> -->
-              <div class="search-result"></div>
           </div>
 					<div class="header__wrap">
 						<div class="search-btn">
@@ -89,9 +88,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</div><!-- .header-cart -->
 					</div>
 				</div>
-                <?php 
-                    get_template_part( 'template-parts/menu-primary-header');
-                ?>
+        <?php get_template_part( 'template-parts/menu-primary-header');?>
 			</div>
 		</div>
 
@@ -117,6 +114,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="header__notice-wrap_mob">
 			<?php get_template_part( 'template-parts/header-notice' );?>
 		</div>
+    <div class="search-result"></div>
 
 		<!-- <div class="header__breadcrumb container"><?php //woocommerce_breadcrumb() ?></div> -->
 		

@@ -68,7 +68,6 @@ function setSearchFilterField() {
     const filterBody = document.querySelector('.filter_plant_name .bapf_body');
     const searchInput = document.querySelector('.berocket-search-checkbox');
     const checkboxes = document.querySelectorAll('.filter_plant_name li');
-    console.log(filterBody);
 
     if (searchInput && checkboxes.length) {
         searchInput.addEventListener('input', function () {
