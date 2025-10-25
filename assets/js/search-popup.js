@@ -36,7 +36,7 @@ function toggleSearch() {
 }
 
 document.addEventListener('pointerdown', (e) => {
-  if (searchResult.hidden && !searchWrap.classList.includes('search_open')) return;                 // если закрыта — игнор
+  if (searchResult.hidden && !searchWrap.classList.contains('search_open')) return;                 // если закрыта — игнор
   if(searchWrap.contains(e.target)) return;
   if(headerButns.contains(e.target)) return;
   // Если клик пришёл не по контенту модалки и не по её потомкам — закрываем
