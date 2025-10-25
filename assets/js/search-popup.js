@@ -11,6 +11,7 @@ const searchInput = document.querySelector('.search-field');
 
 
 searchResult.hidden = true;
+searchWrap.hidden = true;
 
 searchOpenPopupBtn.forEach((btn)=>
     btn.addEventListener ("click", (evt)=>{
@@ -19,8 +20,8 @@ searchOpenPopupBtn.forEach((btn)=>
 );
 
 function toggleSearch() {
+  searchWrap.hidden = false;
   searchWrap.classList.toggle('search_open');
-  // body.classList.toggle ('fix-body');
   if (searchWrap.classList.contains('search_open')) {
     requestAnimationFrame(() => {
       setTimeout(() => {
@@ -33,7 +34,7 @@ function toggleSearch() {
 }
 
 document.addEventListener('pointerdown', (e) => {
-  if (searchResult.hidden) return;                 // если закрыта — игнор
+  if (searchResult.hidden || searchWrap.hidden) return;                 // если закрыта — игнор
   if(searchWrap.contains(e.target)) return;
   // Если клик пришёл не по контенту модалки и не по её потомкам — закрываем
   if (!searchResult.contains(e.target)) {
@@ -43,6 +44,7 @@ document.addEventListener('pointerdown', (e) => {
 
 function closeSearchResult() {
     searchResult.hidden = true;
+    searchWrap.hidden = true;
     searchResult.innerHTML = '';
     toggleSearch();
 }
