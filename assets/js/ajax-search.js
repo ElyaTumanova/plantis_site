@@ -20,6 +20,7 @@ jQuery(function ($){
                 // console.log(data.search_timing_1);
                 // console.log(data.search_timing_2);
                 console.log(data);
+                searchResult.hidden = false;
                 $('.search-result').html(data.out);    //стили контейнеров формы поиска из header
             }
         });

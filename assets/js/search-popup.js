@@ -21,13 +21,15 @@ searchOpenPopupBtn.forEach((btn)=>
 function toggleSearch() {
   searchWrap.classList.toggle('search_open');
   body.classList.toggle ('fix-body');
-  searchResult.hidden = !searchResult.hidden;
 }
 
 document.addEventListener('pointerdown', (e) => {
   if (searchResult.hidden) return;                 // если закрыта — игнор
   // Если клик пришёл не по контенту модалки и не по её потомкам — закрываем
-  if (!searchResult.contains(e.target)) toggleSearch();
+  if (!searchResult.contains(e.target)) {
+    searchResult.hidden = true;
+    toggleSearch()
+  };
 });
 
 
