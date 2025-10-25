@@ -114,7 +114,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="header__notice-wrap_mob">
 			<?php get_template_part( 'template-parts/header-notice' );?>
 		</div>
-    <div class="search-result"></div>
+    <div class="search-result">
+      <div class="search__popup-overlay popup-overlay"></div>
+    </div>
 
 		<!-- <div class="header__breadcrumb container"><?php //woocommerce_breadcrumb() ?></div> -->
 		
