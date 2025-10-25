@@ -23,6 +23,7 @@ searchOpenPopupBtn.forEach((btn)=>
 function toggleSearch() {
   searchWrap.hidden = !searchWrap.hidden;
   searchWrap.classList.toggle('search_open');
+  console.log(searchWrap.classList)
   if (searchWrap.classList.contains('search_open') && !searchWrap.hidden) {
     requestAnimationFrame(() => {
       setTimeout(() => {
