@@ -179,28 +179,24 @@
     background: var(--background);
     visibility: hidden;
     opacity: 0;
+    pointer-events: none;
     width: 800px;
-    transition: all 0.5s ease-in-out;
+    transition: opacity  0.5s ease-in-out;
 }
 
-.header__main .search_open {
+.header__main .search.search_open {
     opacity: 1;
     visibility: visible;
-}
-
-@media (max-width:1279px) {
-    .header__main .search {
-        top: 55px;
-    }
+    pointer-events: auto;
 }
 
 .search-field {
   width: 0;
   padding: 5px 20px !important;
   border-radius: 40px !important;
-  transition: all 0.5s ease-in-out;
+  transition: width 0.5s ease-in-out;
 }
-.search_open .search-field {
+.search.search_open .search-field {
   width: 100%;
   box-sizing: border-box;
 }

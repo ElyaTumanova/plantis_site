@@ -21,15 +21,15 @@ searchOpenPopupBtn.forEach((btn)=>
 function toggleSearch() {
   searchWrap.classList.toggle('search_open');
   // body.classList.toggle ('fix-body');
-  requestAnimationFrame(() => {
-    // маленькая задержка помогает на iOS/Safari и при CSS-переходах
-    setTimeout(() => {
-      // не скроллить страницу при фокусе
-      searchInput.focus({ preventScroll: true });
-      searchInput.value = "";         // очистить после фокуса
-
-    }, 0);
-  });
+  if (searchWrap.classList.contains('search_open')) {
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        searchInput.focus({ preventScroll: true });
+        searchInput.value = '';
+        // searchInput.select(); // если нужно выделить текст
+      }, 0);
+    });
+  }
 }
 
 document.addEventListener('pointerdown', (e) => {
