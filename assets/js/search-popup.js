@@ -12,7 +12,8 @@ const searchInput = document.querySelector('.search-field');
 searchOpenPopupBtn.forEach((btn)=>
     btn.addEventListener ("click", (evt)=>{
         //toggle_search_popup ();
-        searchWrap.classList.toggle('search_open')
+        searchWrap.classList.toggle('search_open');
+        body.classList.toggle ('fix-body');
     })
 );
 
