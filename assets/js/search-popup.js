@@ -4,6 +4,7 @@ const searchPopup = document.querySelector('.search-popup');
 const searchWrap = document.querySelector('.search');
 const searchClosePopupBtn = document.querySelector('.search__close');
 const searchPopupOverlay = document.querySelector('.search__popup-overlay');
+const headerButns = document.querySelector('.header__main .header__wrap');
 
 //доп переменные для поиска
 const searchResult = document.querySelector('.search-result');
@@ -36,7 +37,7 @@ function toggleSearch() {
 document.addEventListener('pointerdown', (e) => {
   if (searchResult.hidden && searchWrap.hidden) return;                 // если закрыта — игнор
   if(searchWrap.contains(e.target)) return;
-  if(searchOpenPopupBtn.contains(e.target)) return;
+  if(headerButns.contains(e.target)) return;
   // Если клик пришёл не по контенту модалки и не по её потомкам — закрываем
   if (!searchResult.contains(e.target)) {
     closeSearchResult()
