@@ -30,12 +30,15 @@ document.addEventListener('pointerdown', (e) => {
   if(searchWrap.contains(e.target)) return;
   // Если клик пришёл не по контенту модалки и не по её потомкам — закрываем
   if (!searchResult.contains(e.target)) {
-    searchResult.hidden = true;
-    toggleSearch()
+    closeSearchResult()
   };
 });
 
-
+function closeSearchResult() {
+    searchResult.hidden = true;
+    searchResult.innerHTML = '';
+    toggleSearch();
+}
 
 
 
