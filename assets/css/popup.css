@@ -181,14 +181,18 @@
     opacity: 0;
     pointer-events: none;
     width: 800px;
-    transition: opacity  0.5s ease-in-out;
+   transition:
+    opacity .5s ease-in-out,
+    visibility 0s linear .5s; 
 }
 
 .header__main .search.search_open {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transition: opacity  0.5s ease-in-out;
+    transition:
+    opacity .5s ease-in-out,
+    visibility 0s;
 }
 
 .search-field {
@@ -200,7 +204,6 @@
 .search.search_open .search-field {
   width: 100%;
   box-sizing: border-box;
-  transition: width 0.5s ease-in-out;
 }
 
 input[type="search"], input[type="search"]:focus-visible {
