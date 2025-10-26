@@ -16,11 +16,11 @@ const searchInputMob = document.querySelector('.search_mob .search-field');
 
 searchResult.hidden = true;
 
-searchOpenPopupBtn.forEach((btn)=>
-    btn.addEventListener ("click", (evt)=>{
-        toggleSearch();
-    })
-);
+// searchOpenPopupBtn.forEach((btn)=>
+//     btn.addEventListener ("click", (evt)=>{
+//         toggleSearch();
+//     })
+// );
 
 searchOpenPopupBtn.addEventListener('click', toggleSearch)
 searchOpenPopupBtnMob.addEventListener('click', toggleSearchMob)
