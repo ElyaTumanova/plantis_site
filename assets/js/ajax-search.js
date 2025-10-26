@@ -18,6 +18,7 @@ jQuery(function ($){
             },
             success: function(data){
                 // console.log(data);
+                body.classList.add('fix-body');
                 $('.search-result').prop('hidden', false);
                 $('.search-result').html(data.out);    //стили контейнеров формы поиска из header
             }

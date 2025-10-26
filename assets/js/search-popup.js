@@ -22,7 +22,6 @@ searchOpenPopupBtn.forEach((btn)=>
 
 function toggleSearch() {
   searchWrap.classList.toggle('search_open');
-  body.classList.toggle ('fix-body');
   console.log(searchWrap.classList)
   if (searchWrap.classList.contains('search_open')) {
     requestAnimationFrame(() => {
@@ -48,6 +47,7 @@ document.addEventListener('pointerdown', (e) => {
 function closeSearchResult() {
     searchResult.hidden = true;
     searchResult.innerHTML = '';
+    body.classList.remove('fix-body');
     toggleSearch();
 }
 
