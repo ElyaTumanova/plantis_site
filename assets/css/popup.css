@@ -200,7 +200,7 @@
   padding: 5px 20px !important;
   border-radius: 40px !important;
   transition: width 0.5s ease-in-out;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 .search_open .search-field {
   width: 100%;
