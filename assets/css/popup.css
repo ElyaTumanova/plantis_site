@@ -211,6 +211,18 @@
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 200px);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.search_mob.search_open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+  opacity .5s ease-in-out,
+  visibility 0s;
 }
 
 /* .search_mob.search_open .search-field {
