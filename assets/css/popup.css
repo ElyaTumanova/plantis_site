@@ -198,6 +198,7 @@
   .search {
     top: -44px;
     z-index: 10000;
+    width: calc(100% - 200px);
   }
 }
 
@@ -246,6 +247,13 @@ input[type="search"], input[type="search"]:focus-visible {
 @media((max-width: 1279px)) {
   .search-result {
     top: 8px;
+    width: calc(100% - 200px);
+  }
+}
+@media((max-width: 767px)) {
+  .search-result {
+    top: 8px;
+    width: 100dvw;
   }
 }
 
