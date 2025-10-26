@@ -40,7 +40,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<p class="site-title"><?php echo $site_title ?></p>
 						<?php endif; ?>
 					</div><!-- .description -->
-          <div class="search"><?get_search_form();?></div>
 					<div class="header__wrap">
 						<div class="search-btn">
 							<?php $search_icon = carbon_get_theme_option('search_icon')?>
@@ -96,7 +95,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<!-- <img class="header-btn__icon" src="<?php //echo $search_icon_mob ?>" alt="search" width="21" height="21">		 -->
 				</button>
 			</div>
-      <div class="search_mob"><?get_search_form();?></div>
 			<div class="logo">
 				<?php $logo = carbon_get_theme_option('logo');?>
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
@@ -111,7 +109,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="header__notice-wrap_mob">
 			<?php get_template_part( 'template-parts/header-notice' );?>
 		</div>
-
+    <div class="search"><?get_search_form();?></div>
     <div class="search-result">
     </div>
 
