@@ -88,7 +88,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 
 		<div class="header__mob container">
-			<div class="search-btn_mob">
+			<div class="search-btn">
 				<?php $search_icon_mob = carbon_get_theme_option('search_icon_mob')?>
 				<button class="header-btn__wrap header-btn__wrap_mob">
 					<?php echo $search_icon ?>

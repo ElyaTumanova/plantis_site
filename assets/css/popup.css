@@ -176,14 +176,29 @@
 /* search and search popup styles */
 
 .search {
+    position: absolute;
+    top: 46px;
+    left: 50%;
+    transform: translateX(-50%);
+
     background: var(--background);
+    width: 800px;
+
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
-    width: 800px;
+
     transition:
     opacity .5s ease-in-out,
     visibility 0s linear .5s; 
+}
+
+
+@media((max-width: 1279px)) {
+  .search {
+    top: -44px;
+    z-index: 10000;
+  }
 }
 
 .search.search_open {

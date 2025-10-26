@@ -1,6 +1,5 @@
 //переменные для управления попапом
 const searchOpenPopupBtn = document.querySelector('.search-btn');
-const searchOpenPopupBtnMob = document.querySelector('.search-btn_mob');
 // const searchPopup = document.querySelector('.search-popup');
 const searchWrap = document.querySelector('.search');
 const searchWrapMob = document.querySelector('.search_mob');
@@ -16,14 +15,11 @@ const searchInputMob = document.querySelector('.search_mob .search-field');
 
 searchResult.hidden = true;
 
-// searchOpenPopupBtn.forEach((btn)=>
-//     btn.addEventListener ("click", (evt)=>{
-//         toggleSearch();
-//     })
-// );
-
-searchOpenPopupBtn.addEventListener('click', toggleSearch)
-searchOpenPopupBtnMob.addEventListener('click', toggleSearchMob)
+searchOpenPopupBtn.forEach((btn)=>
+    btn.addEventListener ("click", (evt)=>{
+        toggleSearch();
+    })
+);
 
 function toggleSearch() {
   searchWrap.classList.toggle('search_open');
@@ -32,17 +28,6 @@ function toggleSearch() {
       setTimeout(() => {
         searchInput.focus();
         searchInput.value = '';
-      }, 0);
-    });
-  }
-}
-function toggleSearchMob() {
-  searchWrapMob.classList.toggle('search_open');
-  if (searchWrapMob.classList.contains('search_open')) {
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        searchInputMob.focus();
-        searchInputMob.value = '';
       }, 0);
     });
   }
