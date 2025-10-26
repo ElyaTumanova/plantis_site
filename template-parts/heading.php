@@ -89,14 +89,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 
 		<div class="header__mob container">
-			<div class="search-btn">
+			<div class="search-btn_mob">
 				<?php $search_icon_mob = carbon_get_theme_option('search_icon_mob')?>
 				<button class="header-btn__wrap header-btn__wrap_mob">
 					<?php echo $search_icon ?>
 					<!-- <img class="header-btn__icon" src="<?php //echo $search_icon_mob ?>" alt="search" width="21" height="21">		 -->
 				</button>
 			</div>
-      <div class="search"><?get_search_form();?></div>
+      <div class="search_mob"><?get_search_form();?></div>
 			<div class="logo">
 				<?php $logo = carbon_get_theme_option('logo');?>
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
