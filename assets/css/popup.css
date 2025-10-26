@@ -219,7 +219,7 @@ input[type="search"], input[type="search"]:focus-visible {
   
   position: absolute;
   top: calc(var(--headerHeight) - 44px); /*44 высота зеленого меню header__main-menu-wrap*/
-  left: calc(50% + 16px);
+  left: calc(50% + 22px);
   transform: translateX(-50%);
   z-index: 2;
   
@@ -230,7 +230,7 @@ input[type="search"], input[type="search"]:focus-visible {
 
 .serach-result__items {
     max-height: calc(80vh - 55px);
-    overflow-y: scroll;
+    overflow-y: auto;
     margin: 10px;
 }
 
@@ -311,7 +311,7 @@ input[type="search"], input[type="search"]:focus-visible {
 /* end custom scroll */
 
 .search-result__text {
-    margin-top: 10px;
+    margin-block: 25px;
 }
 
 .search-result__btn {
