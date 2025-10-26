@@ -253,7 +253,7 @@ input[type="search"], input[type="search"]:focus-visible {
 @media((max-width: 767px)) {
   .search-result {
     top: 8px;
-    width: 100dvw;
+    width: calc(100dvw - 20px);
   }
 }
 
