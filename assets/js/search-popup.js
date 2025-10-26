@@ -26,7 +26,7 @@ function toggleSearch() {
   if (searchWrap.classList.contains('search_open')) {
     requestAnimationFrame(() => {
       setTimeout(() => {
-        searchInput.focus({ preventScroll: true });
+        searchInput.focus();
         searchInput.value = '';
         // searchInput.select(); // если нужно выделить текст
       }, 0);
