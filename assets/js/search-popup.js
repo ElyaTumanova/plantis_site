@@ -1,5 +1,5 @@
 //переменные для управления попапом
-const searchOpenPopupBtn = document.querySelector('.search-btn');
+const searchOpenPopupBtn = document.querySelectorAll('.search-btn');
 // const searchPopup = document.querySelector('.search-popup');
 const searchWrap = document.querySelector('.search');
 const searchWrapMob = document.querySelector('.search_mob');
