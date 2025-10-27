@@ -270,6 +270,15 @@ input[type="search"], input[type="search"]:focus-visible {
     margin: 10px;
 }
 
+.search__close {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.search__close:hover {
+    cursor:pointer;
+}
+
 /* .search-form {
     display: flex;
     justify-content: space-between;

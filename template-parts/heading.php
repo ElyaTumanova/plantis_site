@@ -1,6 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
+  $close_icon = carbon_get_theme_option('close_icon')
 }
 ?>
 
@@ -110,7 +111,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php get_template_part( 'template-parts/header-notice' );?>
 		</div>
     <div class="search"><?get_search_form();?></div>
-    <div class="search-result">
+    <div class="search-result__wrap">
+      <div class="search__close"><?php echo $close_icon ?></div>
+      <div class="search-result">
+      </div>
     </div>
 
 
