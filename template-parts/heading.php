@@ -43,9 +43,11 @@ $close_icon = carbon_get_theme_option('close_icon');
 					</div><!-- .description -->
 					<div class="header__wrap">
 						<div class="search-btn">
-							<?php $search_icon = carbon_get_theme_option('search_icon')?>
+							<?php $search_icon = carbon_get_theme_option('search_icon');
+              $close_icon = carbon_get_theme_option('close_icon')?>
 							<button class="header-btn__wrap">
 								<?php echo $search_icon ?>
+								<?php echo $close_icon ?>
 								<span class="header-btn__label">Поиск</span>		
 							</button>
 						</div>
