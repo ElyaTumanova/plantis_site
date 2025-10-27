@@ -121,10 +121,13 @@
     stroke: var(--icons-color) !important;
 }
 
-.header-btn__wrap:active svg path, .header-btn__wrap:focus svg path, .header-btn__wrap:hover svg path {
+@media (hover: hover) {
+  .header-btn__wrap:active svg path, .header-btn__wrap:focus svg path, .header-btn__wrap:hover svg path {
     fill: var(--icons-color-active) !important;
     stroke: var(--icons-color-active) !important;
+  }
 }
+
 
 .header-btn__wrap_active svg path{
     fill: var(--black-color) !important;
