@@ -44,7 +44,7 @@ $close_icon = carbon_get_theme_option('close_icon');
 					<div class="header__wrap">
 						<div class="search-btn">
 							<?php $search_icon = carbon_get_theme_option('search_icon');
-              $close_icon = carbon_get_theme_option('close_icon')?>
+              $close_icon = carbon_get_theme_option('close_icon');?>
 							<button class="header-btn__wrap">
 								<?php echo $search_icon ?>
 								<?php echo $close_icon ?>
@@ -92,9 +92,11 @@ $close_icon = carbon_get_theme_option('close_icon');
 
 		<div class="header__mob container">
 			<div class="search-btn">
-				<?php $search_icon_mob = carbon_get_theme_option('search_icon_mob')?>
+				<?php $search_icon_mob = carbon_get_theme_option('search_icon_mob');
+        $close_icon = carbon_get_theme_option('close_icon');?>
 				<button class="header-btn__wrap header-btn__wrap_mob">
 					<?php echo $search_icon ?>
+          <?php echo $close_icon ?>
 					<!-- <img class="header-btn__icon" src="<?php //echo $search_icon_mob ?>" alt="search" width="21" height="21">		 -->
 				</button>
 			</div>
