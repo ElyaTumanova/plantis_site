@@ -3,7 +3,6 @@ const searchOpenPopupBtn = document.querySelectorAll('.search-btn');
 const searchWrap = document.querySelector('.search');
 const headerButns = document.querySelector('.header__main .header__wrap');
 const headerButnsMob = document.querySelector('.header__mob .search-btn');
-const body = document.body;
 const searchResult = document.querySelector('.search-result');
 const searchInput = document.querySelector('.search .search-field');
 
