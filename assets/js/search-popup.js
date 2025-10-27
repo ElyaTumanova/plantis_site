@@ -17,12 +17,12 @@ searchResult.hidden = true;
 
 searchOpenPopupBtn.forEach((btn)=>
     btn.addEventListener ("click", (evt)=>{
-        toggleSearch(evt);
+      btn.classList.toggle('search_open')
+        toggleSearch();
     })
 );
 
-function toggleSearch(evt) {
-  console.log(evt)
+function toggleSearch() {
   searchWrap.classList.toggle('search_open');
   if (searchWrap.classList.contains('search_open')) {
     requestAnimationFrame(() => {
