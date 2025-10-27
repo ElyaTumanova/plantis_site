@@ -111,12 +111,9 @@ $close_icon = carbon_get_theme_option('close_icon');
 			<?php get_template_part( 'template-parts/header-notice' );?>
 		</div>
     <div class="search"><?get_search_form();?></div>
-    <div class="search-result__wrap">
-      <div class="search__close"><?php echo $close_icon ?></div>
-      <div class="search-result">
-      </div>
-    </div>
 
+    <div class="search-result">
+    </div>
 
 		<!-- <div class="header__breadcrumb container"><?php //woocommerce_breadcrumb() ?></div> -->
 		
