@@ -202,6 +202,12 @@
   }
 }
 
+@media((max-width: 767px)) {
+  .search {
+    width: calc(100% - 125px);
+  }
+}
+
 .search.search_open {
     opacity: 1;
     visibility: visible;
@@ -230,7 +236,7 @@ input[type="search"], input[type="search"]:focus-visible {
   display: flex;
   flex-direction: column;
   
-  max-height: 80vh;
+  max-height: 80dvh;
   width: 800px;
   
   position: absolute;
@@ -254,6 +260,7 @@ input[type="search"], input[type="search"]:focus-visible {
   .search-result {
     top: 8px;
     width: calc(100dvw - 20px);
+    max-height: calc(80dvh - 150px);
   }
 }
 
