@@ -1,96 +1,71 @@
-//переменные для управления попапом
+// переменные для управления попапом
 const searchOpenPopupBtn = document.querySelectorAll('.search-btn');
-// const searchPopup = document.querySelector('.search-popup');
 const searchWrap = document.querySelector('.search');
-// const searchClosePopupBtn = document.querySelector('.search__close');
-// const searchPopupOverlay = document.querySelector('.search__popup-overlay');
 const headerButns = document.querySelector('.header__main .header__wrap');
 const headerButnsMob = document.querySelector('.header__mob .search-btn');
-
-//доп переменные для поиска
+const body = document.body;
 const searchResult = document.querySelector('.search-result');
 const searchInput = document.querySelector('.search .search-field');
 
-
 searchResult.hidden = true;
 
-searchOpenPopupBtn.forEach((btn)=>
-    btn.addEventListener ("click", (evt)=>{
-      btn.classList.toggle('search_open')
-      toggleSearch();
-    })
-);
+// ====== отдельные функции ======
+function openSearch(activeBtn = null) {
+  if (searchWrap.classList.contains('search_open')) return;
 
-function toggleSearch() {
-  searchWrap.classList.toggle('search_open');
-  if (searchWrap.classList.contains('search_open')) {
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        searchInput.focus();
-        searchInput.value = '';
-      }, 0);
-    });
-  }
-}
+  searchWrap.classList.add('search_open');
+  if (activeBtn) activeBtn.classList.add('search_open');
 
-document.addEventListener('pointerdown', (e) => {
-  if (searchResult.hidden && !searchWrap.classList.contains('search_open')) return;                 // если закрыта — игнор
-  if (searchWrap.contains(e.target) 
-    || headerButns.contains(e.target) 
-    || headerButnsMob.contains(e.target)) 
-  return;
-  // Если клик пришёл не по контенту модалки и не по её потомкам — закрываем
-  if (!searchResult.contains(e.target)) {
-    closeSearchResult()
-  };
-});
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      searchInput.focus();
+      searchInput.value = '';
+    }, 0);
+  });
 
-function closeSearchResult() {
+  // при открытии чистим/прячем результаты
+  if (!searchResult.hidden) {
     searchResult.hidden = true;
     searchResult.innerHTML = '';
     body.classList.remove('fix-body');
-    searchOpenPopupBtn.forEach((btn)=>btn.classList.remove('search_open'));
-    toggleSearch();
+  }
 }
 
+function closeSearch() {
+  // снимаем состояния у обёртки и кнопок
+  searchWrap.classList.remove('search_open');
+  searchOpenPopupBtn.forEach(btn => btn.classList.remove('search_open'));
 
+  // всегда прячем и очищаем результаты
+  searchResult.hidden = true;
+  searchResult.innerHTML = '';
+  body.classList.remove('fix-body');
+}
 
-// searchOpenPopupBtn.forEach((btn)=>
-//     btn.addEventListener ("click", (evt)=>{
-//         toggle_search_popup ();
-//     })
-// );
+// ====== события ======
+searchOpenPopupBtn.forEach(btn =>
+  btn.addEventListener('click', () => {
+    if (searchWrap.classList.contains('search_open')) {
+      closeSearch();
+    } else {
+      openSearch(btn);
+    }
+  })
+);
 
-// searchClosePopupBtn.addEventListener ("click", (evt)=>{
-//     toggle_search_popup ();
-// });
+// клик вне области — закрыть
+document.addEventListener('pointerdown', (e) => {
+  // если уже всё закрыто — игнор
+  if (searchResult.hidden && !searchWrap.classList.contains('search_open')) return;
 
-// searchPopupOverlay.addEventListener ("click", (evt)=>{
-//     toggle_search_popup ();
-// });
+  // клики по самому поиску/кнопкам игнорируем
+  if (
+    searchWrap.contains(e.target) ||
+    headerButns?.contains(e.target) ||
+    headerButnsMob?.contains?.(e.target) ||
+    e.target === headerButnsMob
+  ) return;
 
-// document.addEventListener('keydown', function(e){
-//     if((e.key=='Escape'||e.key=='Esc')){
-//         if(searchPopup.classList.contains('popup_active')) {
-//             toggle_search_popup ();
-//         } 
-//     }
-// }, true);
-
-// function toggle_search_popup () {
-//     searchPopup.classList.toggle ('popup_active');
-//     // body.classList.toggle ('fix-body');
-//     searchInput.focus();
-
-//     // для поиска
-//     const searchPopupResultBtn = document.querySelector('.search-result__btn');
-//     const deleteElement = searchResult.querySelectorAll('div');
-//     for (let i = 0; i < deleteElement.length; i++) {
-//       deleteElement[i].remove();
-//     }
-//     searchInput.value= "";
-//     if(searchPopupResultBtn) {
-//         searchPopupResultBtn.remove();
-//     }
-
-// };
+  // иначе закрываем всё
+  closeSearch();
+});

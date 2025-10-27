@@ -8,7 +8,6 @@ add_action('wp_ajax_search-ajax', 'plnt_search_ajax_action_callback');
 add_action('wp_ajax_nopriv_search-ajax', 'plnt_search_ajax_action_callback');
 
 function plnt_search_ajax_action_callback (){
-    $start_search = microtime(true);
     global $plants_treez_cat_id;
     global $peresadka_cat_id;
     if(!wp_verify_nonce($_POST['nonce'], 'search-nonce')){
@@ -61,7 +60,6 @@ function plnt_search_ajax_action_callback (){
         <input class="search-result__btn button" type="submit" form ="searchform" value="Посмотреть все" />
       <?php
     } else {
-      // $search_timing_1 = round((microtime(true) - $start_search) * 1000, 2);
       if ($query_ajax->have_posts()) {
         // echo '<pre>';
         // print_r( $query_ajax );
@@ -82,10 +80,7 @@ function plnt_search_ajax_action_callback (){
         <?php
       }
     } 
-    // $search_timing_2 = round((microtime(true) - $start_search) * 1000, 2);
     $json_data['out'] = ob_get_clean();
-    // $json_data['search_timing_1'] = $search_timing_1;
-    // $json_data['search_timing_2'] = $search_timing_2;
     wp_send_json($json_data);
     wp_die();
 }
