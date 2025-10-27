@@ -17,7 +17,7 @@ searchResult.hidden = true;
 searchOpenPopupBtn.forEach((btn)=>
     btn.addEventListener ("click", (evt)=>{
       btn.classList.toggle('search_open')
-        toggleSearch();
+      toggleSearch();
     })
 );
 
@@ -49,6 +49,7 @@ function closeSearchResult() {
     searchResult.hidden = true;
     searchResult.innerHTML = '';
     body.classList.remove('fix-body');
+    searchOpenPopupBtn.forEach((btn)=>btn.classList.remove('search_open'));
     toggleSearch();
 }
 
