@@ -690,15 +690,15 @@ input[type="search"], input[type="search"]:focus-visible {
   row-gap: 10px;
   align-items: start;
   column-gap: 20px;
-  width: 80%;
+  width: 100%;
   justify-content: space-between;
 }
 
-@media (max-width:900px) {
+/* @media (max-width:900px) {
   .search-result__info  {
       width: 100%;
     }
-}
+} */
 
 .search-result__item .card__stockstatus {
   font-size: 12px;
