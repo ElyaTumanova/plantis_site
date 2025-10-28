@@ -544,7 +544,7 @@ function shop_only_instock_products( $meta_query, $query ) {
 	is_product_category($lechuza_cat_id) || 
 	term_is_ancestor_of( $lechuza_cat_id, get_queried_object_id(), 'product_cat' ) ||
 	is_product_tag ($avtopoliv_tag_id) ||
-	is_search()) { 		//где хотим срыть товары не в наличии
+	) { 		//где хотим срыть товары не в наличии
 		$meta_query[] = array(
 			'key' => '_stock_status',
 			'value' => 'outofstock',
@@ -562,12 +562,71 @@ function shop_only_instock_products( $meta_query, $query ) {
 				'compare' => '>'
 			)
 		);
+		return $meta_query;
+	}	else {
+		return $meta_query;
+	}
+}
 
-		return $meta_query;
-	}
-	else {
-		return $meta_query;
-	}
+// // убираем из результатов поиска товары не в наличии, кроме категории растений
+
+add_filter( 'posts_clauses', 'wc_search_instock_except_plants', 10, 2 );
+
+function wc_search_instock_except_plants( $clauses, $wp_query ) {
+    if ( ! $wp_query->is_search() ) {
+        return $clauses;
+    }
+
+    // Обрабатываем только продуктовый поиск WooCommerce
+    $post_type = $wp_query->get( 'post_type' );
+    if ( $post_type && $post_type !== 'product' ) {
+        return $clauses;
+    }
+
+    global $wpdb, $plants_cat_id;
+
+    if ( empty( $plants_cat_id ) ) {
+        // если ID не задан — просто фильтруем по наличию как обычно
+        $clauses['join']  .= " LEFT JOIN {$wpdb->postmeta} pm_stock ON (pm_stock.post_id = {$wpdb->posts}.ID AND pm_stock.meta_key = '_stock_status') ";
+        $clauses['where'] .= " AND (pm_stock.meta_value != 'outofstock')";
+        return $clauses;
+    }
+
+    // Соберём все ID «растительной» ветки (родитель + дети)
+    $plant_ids = array_map( 'absint', array_unique( array_merge(
+        array( (int) $plants_cat_id ),
+        (array) get_term_children( (int) $plants_cat_id, 'product_cat' )
+    ) ) );
+
+    // подготовим IN (...)
+    $in_sql = implode( ',', array_fill( 0, count( $plant_ids ), '%d' ) );
+    $prepare_args = $plant_ids;
+
+    // Подключим связи с таксономией и мета по стоку
+    $clauses['join'] .= "
+        LEFT JOIN {$wpdb->term_relationships} tr_plants
+            ON tr_plants.object_id = {$wpdb->posts}.ID
+        LEFT JOIN {$wpdb->term_taxonomy} tt_plants
+            ON tt_plants.term_taxonomy_id = tr_plants.term_taxonomy_id
+            AND tt_plants.taxonomy = 'product_cat'
+        LEFT JOIN {$wpdb->postmeta} pm_stock
+            ON (pm_stock.post_id = {$wpdb->posts}.ID AND pm_stock.meta_key = '_stock_status')
+    ";
+
+    // Логика: (товар в «растениях» ИЛИ stock_status != outofstock)
+    $where_piece = $wpdb->prepare(
+        " AND ( tt_plants.term_id IN ($in_sql) OR pm_stock.meta_value != 'outofstock' ) ",
+        ...$prepare_args
+    );
+
+    $clauses['where'] .= $where_piece;
+
+    // На всякий случай уберём дубли (JOIN по термам может умножать строки)
+    if ( strpos( $clauses['groupby'], "{$wpdb->posts}.ID" ) === false ) {
+        $clauses['groupby'] = "{$wpdb->posts}.ID";
+    }
+
+    return $clauses;
 }
 
 // // скрываем Treez Plants из результатов поиска 
