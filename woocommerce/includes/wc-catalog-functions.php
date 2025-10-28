@@ -526,11 +526,11 @@ add_filter( 'woocommerce_product_query_meta_query', 'shop_only_instock_products'
 function shop_only_instock_products( $meta_query, $query ) {
 	global $plants_cat_id;
 	global $gorshki_cat_id;
-    global $treez_cat_id;
-	global $plants_treez_cat_id;
-    global $ukhod_cat_id;
-    global $lechuza_cat_id;
-    global $avtopoliv_tag_id;
+  global $treez_cat_id;
+  global $plants_treez_cat_id;
+  global $ukhod_cat_id;
+  global $lechuza_cat_id;
+  global $avtopoliv_tag_id;
 
 	if( is_shop() || 
 	// is_product_category($gorshki_cat_id) || 

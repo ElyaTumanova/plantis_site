@@ -10,11 +10,12 @@ add_action('wp_ajax_nopriv_search-ajax', 'plnt_search_ajax_action_callback');
 function plnt_search_ajax_action_callback (){
     global $plants_treez_cat_id;
     global $peresadka_cat_id;
+    global $plants_cat_id;
     if(!wp_verify_nonce($_POST['nonce'], 'search-nonce')){
         wp_die('Данные отправлены не с того адреса');
     }
 
-    $arg = array(
+    $argPlants = array(
       'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
       'post_status' => 'publish',
       's' => $_POST['s'],
@@ -34,13 +35,41 @@ function plnt_search_ajax_action_callback (){
           array(
               'taxonomy' => 'product_cat',
               'field' => 'id',
-              'operator' => 'NOT IN',
-              'terms' => [$plants_treez_cat_id, $peresadka_cat_id],
+              'operator' => 'IN',
+              'terms' => [$plants_cat_id],
               'include_children' => 1,
           )
       )
     );
-    $query_ajax = new WP_Query($arg);
+    $argOther = array(
+      'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
+      'post_status' => 'publish',
+      's' => $_POST['s'],
+      'orderby' => 'meta_value',
+      'meta_key' => '_stock_status',
+      'order' => 'ASC',
+      // 'posts_per_page' => -1,
+      'meta_query' => array( 
+          array(
+              'key'       => '_stock_status',
+              'value'     => 'outofstock',
+              'compare'   => 'NOT IN',
+              )
+              
+      ),
+      'tax_query' => array(
+          array(
+              'taxonomy' => 'product_cat',
+              'field' => 'id',
+              'operator' => 'NOT IN',
+              'terms' => [$plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id],
+              'include_children' => 1,
+          )
+      )
+    );
+    $query_ajax_plants = new WP_Query($argPlants);
+    $query_ajax_other = new WP_Query($argOther);
+    $query_ajax = array_merge($query_ajax_plants, $query_ajax_other);
 
     $product_sku_id = wc_get_product_id_by_sku( $query_ajax->query_vars[ 's' ] );
     // print_r($product_sku_id);
