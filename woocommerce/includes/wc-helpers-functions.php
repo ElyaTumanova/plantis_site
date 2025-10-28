@@ -167,11 +167,13 @@ function plnt_check_stock_status() {
     $id = $product->get_id();
     echo ('<pre>');
     echo ($parentCatId);
+    echo ('<br>');
     if(!$parentCatId) {
       $parentCatId = check_category($product);
     }
 
     echo ($id);
+    echo ('<br>');
     echo ($parentCatId);
     echo ('</pre>');
 
