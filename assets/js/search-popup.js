@@ -15,34 +15,12 @@ function openSearch(activeBtn = null) {
   searchWrap.classList.add('search_open');
   if (activeBtn) activeBtn.classList.add('search_open');
 
-  const attemptFocus = () => {
-    // Получаем стили элемента для проверки opacity и visibility
-    const styles = window.getComputedStyle(searchInput);
-    const isVisible = searchInput.offsetWidth > 0 && 
-                     searchInput.offsetHeight > 0 && 
-                     !searchInput.hidden &&
-                     styles.opacity > 0 &&
-                     styles.visibility !== 'hidden';
-    
-    if (isVisible) {
+  requestAnimationFrame(() => {
+    setTimeout(() => {
       searchInput.focus();
       searchInput.value = '';
-      
-      // Для мобильных добавляем несколько попыток
-      if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-        setTimeout(() => {
-          searchInput.focus();
-          searchInput.click();
-        }, 100);
-      }
-    } else {
-      // Если не видим, пробуем снова
-      setTimeout(attemptFocus, 50);
-    }
-  };
-
-  // Даем время на применение всех CSS-стилей
-  setTimeout(attemptFocus, 100);
+    }, 0);
+  });
 
   // при открытии чистим/прячем результаты
   if (!searchResult.hidden) {
