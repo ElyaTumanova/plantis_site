@@ -14,9 +14,9 @@ function plnt_echo_smth() {
     global $plants_cat_id;
     $product_sku_id_1 = wc_get_product_id_by_sku( 'lalal' );
     $product_sku_id_2 = wc_get_product_id_by_sku( 'P00623' );
+    $product_sku_id = $product_sku_id_2 ?: $product_sku_id_1 ?: 0;
     echo('<pre>');
-    print_r($product_sku_id_1);
-    print_r($product_sku_id_2);
+    print_r($product_sku_id);
     echo('</pre>');
 }
 
