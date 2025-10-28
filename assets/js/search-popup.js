@@ -14,15 +14,14 @@ function openSearch(activeBtn = null) {
 
   searchWrap.classList.add('search_open');
   if (activeBtn) activeBtn.classList.add('search_open');
+  const delay = 'ontouchstart' in window ? 100 : 0;
 
-  if(searchWrap.classList.contains('search_open')) {
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        searchInput.focus();
-        searchInput.value = '';
-      }, 0);
-    });
-  }
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      searchInput.focus();
+      searchInput.value = '';
+    }, delay);
+  });
 
   // при открытии чистим/прячем результаты
   if (!searchResult.hidden) {
