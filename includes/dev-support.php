@@ -67,9 +67,9 @@ function plnt_echo_smth() {
     );
     $query_ajax_plants = new WP_Query($argPlants);
     $query_ajax_other = new WP_Query($argOther);
-    $query_ajax = array_merge($query_ajax_plants, $query_ajax_other);
+    // $query_ajax = array_merge($query_ajax_plants, $query_ajax_other);
     echo('<pre>');
-    print_r($query_ajax);
+    print_r($query_ajax_plants);
     echo('</pre>');
 }
 
