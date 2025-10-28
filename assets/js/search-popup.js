@@ -14,13 +14,20 @@ function openSearch(activeBtn = null) {
 
   searchWrap.classList.add('search_open');
   if (activeBtn) activeBtn.classList.add('search_open');
-  searchInput.setAttribute('readonly', true);
+
   requestAnimationFrame(() => {
     setTimeout(() => {
-      searchInput.removeAttribute('readonly');
       searchInput.focus();
+
+      // Затем принудительный клик для мобильных
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      if (isTouchDevice) {
+        searchInput.click(); // Дополнительный клик для вызова клавиатуры
+      }
+
+      
       searchInput.value = '';
-    }, 100);
+    }, 10);
   });
 
   // при открытии чистим/прячем результаты
