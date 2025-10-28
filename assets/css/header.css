@@ -500,10 +500,14 @@
 @media((max-width: 1279px)) {
   .search {
     top: -44px;
-    opacity: 1;
+    opacity: 0;
     visibility: visible;
     z-index: -1;
     width: calc(100% - 200px);
+    transition:
+    z-index .5s ease-in-out,
+    opacity .5s ease-in-out,
+    visibility 0s;
   }
   
   .search.search_open {
