@@ -348,3 +348,14 @@ add_filter( 'the_posts', function( $posts, $query ) {
 
 	return $filtered;
 }, 20, 2 );
+
+/**
+ * Чиним пагинацию под отфильтрованный набор.
+ */
+add_filter( 'found_posts', function( $found, $query ) {
+	if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
+		return $found;
+	}
+	$cnt = (int) $query->get( 'my_filtered_count' );
+	return ( $cnt || $cnt === 0 ) ? $cnt : $found;
+}, 20, 2 );
