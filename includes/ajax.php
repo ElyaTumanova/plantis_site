@@ -73,8 +73,9 @@ function plnt_search_ajax_action_callback (){
 
     
 
-    $product_sku_id = wc_get_product_id_by_sku( $query_ajax_plants->query_vars[ 's' ] );
-    // $product_sku_id = wc_get_product_id_by_sku( $query_ajax_other->query_vars[ 's' ] );
+    $product_sku_id_plants = wc_get_product_id_by_sku( $query_ajax_plants->query_vars[ 's' ] );
+    $product_sku_id_other = wc_get_product_id_by_sku( $query_ajax_other->query_vars[ 's' ] );
+    $product_sku_id = $product_sku_id_plants ?: $product_sku_id_other ?: 0;
     // print_r($product_sku_id);
     $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
     ?> <div class='serach-result__items'> <?php
