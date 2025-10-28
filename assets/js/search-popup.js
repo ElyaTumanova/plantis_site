@@ -15,45 +15,35 @@ function openSearch(activeBtn = null) {
   searchWrap.classList.add('search_open');
   if (activeBtn) activeBtn.classList.add('search_open');
 
-  // requestAnimationFrame(() => {
-  //   setTimeout(() => {
-  //     searchInput.focus();
-
-  //     // Затем принудительный клик для мобильных
-  //     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  //     if (isTouchDevice) {
-  //       searchInput.click(); // Дополнительный клик для вызова клавиатуры
-  //     }
-
-
-  //     searchInput.value = '';
-  //   }, 10);
-  // });
-
-   const focusSearchInput = () => {
-    // Первая попытка - стандартный фокус
-    searchInput.focus();
-    searchInput.value = '';
-    
-    // Вторая попытка через небольшой таймаут для мобильных
+requestAnimationFrame(() => {
     setTimeout(() => {
-      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      // Проверяем, что элемент видим перед фокусом
+      const isVisible = searchInput.offsetWidth > 0 && 
+                       searchInput.offsetHeight > 0 && 
+                       !searchInput.hidden;
       
-      if (isTouchDevice && document.activeElement !== searchInput) {
-        // Для тач-устройств, если фокус не сработал
-        searchInput.blur(); // Сначала сбрасываем фокус
+      if (isVisible) {
+        searchInput.focus();
+        searchInput.value = '';
+        
+        // Для мобильных добавляем клик
+        if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+          searchInput.click();
+        }
+      } else {
+        // Если не видим, пробуем еще раз через небольшой интервал
         setTimeout(() => {
           searchInput.focus();
-          searchInput.click(); // Комбинируем методы
+          searchInput.value = '';
+          if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+            searchInput.click();
+          }
         }, 50);
       }
-    }, 100);
-  };
-
-  requestAnimationFrame(() => {
-    setTimeout(focusSearchInput, 0);
+    }, 0);
   });
-  
+
+
   // при открытии чистим/прячем результаты
   if (!searchResult.hidden) {
     searchResult.hidden = true;
