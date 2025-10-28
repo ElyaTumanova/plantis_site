@@ -5,19 +5,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
-//add_action( 'wp_footer', 'plnt_echo_smth' );
+add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
-    global $plants_treez_cat_id;
-    global $peresadka_cat_id;
-    global $plants_cat_id;
-    $product_sku_id_1 = wc_get_product_id_by_sku( 'lalal' );
-    $product_sku_id_2 = wc_get_product_id_by_sku( 'P00623' );
-    $product_sku_id = $product_sku_id_2 ?: $product_sku_id_1 ?: 0;
-    echo('<pre>');
-    print_r($product_sku_id);
-    echo('</pre>');
+  if(is_search()) {
+    echo('hi search');
+  } else {
+    echo('hi');
+  }
 }
 
 
