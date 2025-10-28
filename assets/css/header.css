@@ -482,18 +482,18 @@
     opacity: 0;
     pointer-events: none;
 
-    /* transition:
+    transition:
     opacity .5s ease-in-out,
-    visibility 0s linear .5s;  */
+    visibility 0s linear .5s; 
 }
 
 .search.search_open {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    /* transition:
+    transition:
     opacity .5s ease-in-out,
-    visibility 0s; */
+    visibility 0s;
 }
 
 
@@ -504,10 +504,10 @@
     visibility: visible;
     z-index: -1;
     width: calc(100% - 200px);
-    /* transition:
+    transition:
     z-index .5s ease-in-out,
     opacity .5s ease-in-out,
-    visibility 0s; */
+    visibility 0s;
   }
   
   .search.search_open {
@@ -525,7 +525,7 @@
   width: 0;
   padding: 5px 20px !important;
   border-radius: 40px !important;
-  /* transition: width 0.5s ease-in-out; */
+  transition: width 0.5s ease-in-out;
   box-sizing: border-box !important;
 }
 .search_open .search-field {

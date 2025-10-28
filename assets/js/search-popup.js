@@ -18,6 +18,12 @@ function openSearch(activeBtn = null) {
   requestAnimationFrame(() => {
     setTimeout(() => {
       searchInput.focus();
+      
+      searchInput.setAttribute('readonly', 'readonly');
+      setTimeout(() => {
+        searchInput.removeAttribute('readonly');
+      }, 100);
+      
       searchInput.value = '';
     }, 0);
   });
