@@ -109,6 +109,23 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		// }
 	}
 }
+
+function my_enqueue_recaptcha_woo_js() {
+    // Передаём site key из PHP, чтобы не хардкодить
+    wp_register_script(
+        'recaptcha-woocommerce',
+        get_template_directory_uri() . '/assets/js/recaptcha-woocommerce.js',
+        array(), // grecaptcha уже подключен глобально
+        '1.0',
+        true
+    );
+    wp_localize_script('recaptcha-woocommerce', 'recaptchaWoo', array(
+        'siteKey' => '6LcP2rIrAAAAAGxrNXEe4AP0rC_fXZ7v7vKVr4wF',
+    ));
+    wp_enqueue_script('recaptcha-woocommerce');
+}
+add_action('wp_enqueue_scripts', 'my_enqueue_recaptcha_woo_js');
+
 /**
  * Enqueue all styles
  */
