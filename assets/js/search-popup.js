@@ -15,19 +15,28 @@ function openSearch(activeBtn = null) {
   searchWrap.classList.add('search_open');
   if (activeBtn) activeBtn.classList.add('search_open');
 
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      searchInput.focus();
-      
-      searchInput.setAttribute('readonly', 'readonly');
-      setTimeout(() => {
-        searchInput.removeAttribute('readonly');
-      }, 100);
-      
-      searchInput.value = '';
-    }, 0);
-  });
+  // requestAnimationFrame(() => {
+  //   setTimeout(() => {
+  //     searchInput.focus();
+  //     searchInput.value = '';
+  //   }, 0);
+  // });
 
+  searchInput.focus();
+    
+    // Для iOS - создаем временное событие touch
+    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        const clickEvent = document.createEvent('MouseEvents');
+        clickEvent.initEvent('touchstart', true, true);
+        searchInput.dispatchEvent(clickEvent);
+    }
+    
+    // Дополнительный трюк для некоторых Android устройств
+    setTimeout(() => {
+        searchInput.setSelectionRange(0, 0);
+    }, 100);
+
+    
   // при открытии чистим/прячем результаты
   if (!searchResult.hidden) {
     searchResult.hidden = true;
