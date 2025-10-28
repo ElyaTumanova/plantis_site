@@ -308,205 +308,64 @@ function show_image_sizes() {
 // }
 
 
-/**
- * Поиск WooCommerce:
- * - Растения (ветка $plants_cat_id) показывать всегда (в т.ч. outofstock)
- * - Остальные категории — только товары в наличии
- *
- * Без правок SQL; снимаем штатные фильтры WC на outofstock для поиска,
- * затем фильтруем результаты в PHP и чиним пагинацию.
- */
-
-/**
- * 0) Помощник: получить все ID терминов ветки "Растения"
- */
-function my_get_plants_branch_ids(): array {
-    static $ids = null;
-    if ( $ids !== null ) return $ids;
-
-    // возьмём ID из глобали — как у вас
-    global $plants_cat_id;
-    $root_id = absint( $plants_cat_id );
-
-    if ( ! $root_id ) {
-        $ids = [];
-        return $ids;
-    }
-
-    $ids = array_map( 'absint', array_unique( array_merge(
-        [ $root_id ],
-        (array) get_term_children( $root_id, 'product_cat' )
-    ) ) );
-
-    return $ids;
-}
-
-/**
- * 1) На поиске убираем из meta_query любые попытки скрыть outofstock.
- */
-add_filter( 'woocommerce_product_query_meta_query', function( $meta_query, $query ) {
-    if ( is_admin() || ! is_search() ) {
-        return $meta_query;
-    }
-
-    if ( ! is_array( $meta_query ) ) return $meta_query;
-
-    // рекурсивно убираем условия по _stock_status
-    $clean = function( $clause ) use ( &$clean ) {
-        if ( ! is_array( $clause ) ) return $clause;
-
-        if ( isset( $clause['key'] ) && $clause['key'] === '_stock_status' ) {
-            return null; // выкинуть
-        }
-
-        $out = [];
-        foreach ( $clause as $k => $v ) {
-            $v2 = is_array( $v ) ? $clean( $v ) : $v;
-            if ( $v2 !== null && $v2 !== [] ) {
-                $out[ $k ] = $v2;
-            }
-        }
-        return $out;
-    };
-
-    $meta_query = $clean( $meta_query );
-
-    // подчистим пустые элементы верхнего уровня
-    if ( is_array( $meta_query ) ) {
-        $meta_query = array_values( array_filter( $meta_query, function( $v ) {
-            return $v !== null && $v !== [];
-        } ) );
-    }
-
-    return $meta_query;
-}, 10, 2 );
-
-/**
- * 2) На поиске убираем из tax_query скрытие outofstock (таксономия product_visibility).
- */
-add_filter( 'woocommerce_product_query_tax_query', function( $tax_query, $query ) {
-    if ( is_admin() || ! is_search() ) {
-        return $tax_query;
-    }
-
-    if ( ! is_array( $tax_query ) ) return $tax_query;
-
-    // узнаём ID терма outofstock
-    if ( function_exists( 'wc_get_product_visibility_term_ids' ) ) {
-        $vis = wc_get_product_visibility_term_ids();
-        $outofstock_term_id = isset( $vis['outofstock'] ) ? absint( $vis['outofstock'] ) : 0;
-    } else {
-        $outofstock_term_id = 0;
-    }
-
-    // выкидываем любую часть, которая исключает outofstock
-    $filtered = [];
-    foreach ( $tax_query as $clause ) {
-        if ( ! is_array( $clause ) ) {
-            $filtered[] = $clause;
-            continue;
-        }
-        $is_visibility_out = (
-            isset( $clause['taxonomy'], $clause['operator'], $clause['terms'] )
-            && $clause['taxonomy'] === 'product_visibility'
-            && in_array( $clause['operator'], [ 'NOT IN', 'NOT EXISTS' ], true )
-        );
-
-        if ( $is_visibility_out ) {
-            // если явно исключают outofstock — пропускаем эту часть
-            $terms = array_map( 'absint', (array) $clause['terms'] );
-            if ( $outofstock_term_id && in_array( $outofstock_term_id, $terms, true ) ) {
-                continue; // выкинули
-            }
-        }
-        $filtered[] = $clause;
-    }
-
-    return $filtered;
-}, 10, 2 );
-
-/**
- * 3) Собственно наша логика выборки для результатов поиска.
- *    - Растения (ветка) — оставить всегда
- *    - Остальные — только если _stock_status != outofstock
- *    Плюс — правим пагинацию.
- */
 add_filter( 'the_posts', function( $posts, $query ) {
-    if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
-        return $posts;
-    }
+	if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
+		return $posts;
+	}
 
-    // на всякий случай: ищем именно продукты
-    $pt = $query->get( 'post_type' );
-    if ( empty( $pt ) ) {
-        $query->set( 'post_type', [ 'product' ] );
-    } elseif ( is_string( $pt ) && $pt !== 'product' ) {
-        return $posts;
-    } elseif ( is_array( $pt ) && ! in_array( 'product', $pt, true ) ) {
-        return $posts;
-    }
+	global $plants_cat_id; // ← твоя глобальная переменная
+	if ( ! $plants_cat_id ) {
+		// если не задан ID категории "Растения" — ничего не фильтруем
+		return $posts;
+	}
 
-    $plant_branch = my_get_plants_branch_ids();
+	// получаем всю ветку категорий "Растения"
+	$plant_branch_ids = array_map( 'absint', array_unique( array_merge(
+		array( (int) $plants_cat_id ),
+		(array) get_term_children( (int) $plants_cat_id, 'product_cat' )
+	) ) );
 
-    $filtered = [];
-    foreach ( $posts as $p ) {
-        if ( $p->post_type !== 'product' ) {
-            $filtered[] = $p;
-            continue;
-        }
+	$filtered = array();
 
-        // Если товар принадлежит ветке "Растения" — оставляем безусловно
-        $is_plant = false;
-        if ( $plant_branch ) {
-            $term_ids = wp_get_post_terms( $p->ID, 'product_cat', [ 'fields' => 'ids' ] );
-            if ( is_array( $term_ids ) && array_intersect( $term_ids, $plant_branch ) ) {
-                $is_plant = true;
-            }
-        }
+	foreach ( $posts as $post ) {
+		if ( $post->post_type !== 'product' ) {
+			$filtered[] = $post;
+			continue;
+		}
 
-        if ( $is_plant ) {
-            $filtered[] = $p;
-            continue;
-        }
+		// Проверяем, принадлежит ли товар к "Растениям"
+		$terms = wp_get_post_terms( $post->ID, 'product_cat', array( 'fields' => 'ids' ) );
+		$is_plant = is_array( $terms ) && array_intersect( $terms, $plant_branch_ids );
 
-        // Иначе — оставляем только если не outofstock
-        $status = get_post_meta( $p->ID, '_stock_status', true );
-        if ( $status !== 'outofstock' ) {
-            $filtered[] = $p;
-        }
-    }
+		if ( $is_plant ) {
+			// если растение — показываем всегда
+			$filtered[] = $post;
+			continue;
+		}
 
-    // Сохраним число для фикса пагинации
-    $query->set( 'my_filtered_count', count( $filtered ) );
+		// иначе — только если товар не outofstock
+		$status = get_post_meta( $post->ID, '_stock_status', true );
+		if ( $status !== 'outofstock' ) {
+			$filtered[] = $post;
+		}
+	}
 
-    return $filtered;
+	// сохраняем количество для пагинации
+	$query->set( 'my_filtered_count', count( $filtered ) );
+
+	return $filtered;
 }, 20, 2 );
 
 /**
- * 4) Чиним пагинацию (пересчитываем found_posts по нашему фильтру).
+ * Чиним пагинацию — чтобы количество страниц совпадало с отфильтрованным числом.
  */
 add_filter( 'found_posts', function( $found, $query ) {
-    if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
-        return $found;
-    }
-    $cnt = (int) $query->get( 'my_filtered_count' );
-    if ( $cnt > 0 ) {
-        return $cnt;
-    }
-    // если после фильтрации ничего не осталось — возвращаем 0
-    if ( $cnt === 0 ) {
-        return 0;
-    }
-    return $found;
+	if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
+		return $found;
+	}
+	$cnt = (int) $query->get( 'my_filtered_count' );
+	if ( $cnt || $cnt === 0 ) {
+		return $cnt;
+	}
+	return $found;
 }, 20, 2 );
-
-/**
- * 5) Подстрахуемся: если кто-то ещё не задал post_type — ограничим поиск продуктами.
- */
-add_action( 'pre_get_posts', function( $q ) {
-    if ( is_admin() || ! $q->is_main_query() || ! $q->is_search() ) return;
-    $pt = $q->get( 'post_type' );
-    if ( empty( $pt ) ) {
-        $q->set( 'post_type', [ 'product' ] );
-    }
-}, 20 );
