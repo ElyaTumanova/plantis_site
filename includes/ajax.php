@@ -41,35 +41,35 @@ function plnt_search_ajax_action_callback (){
           )
       )
     );
-    $argOther = array(
-      'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
-      'post_status' => 'publish',
-      's' => $_POST['s'],
-      'orderby' => 'meta_value',
-      'meta_key' => '_stock_status',
-      'order' => 'ASC',
-      // 'posts_per_page' => -1,
-      'meta_query' => array( 
-          array(
-              'key'       => '_stock_status',
-              'value'     => 'outofstock',
-              'compare'   => 'NOT IN',
-              )
+    // $argOther = array(
+    //   'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
+    //   'post_status' => 'publish',
+    //   's' => $_POST['s'],
+    //   'orderby' => 'meta_value',
+    //   'meta_key' => '_stock_status',
+    //   'order' => 'ASC',
+    //   // 'posts_per_page' => -1,
+    //   'meta_query' => array( 
+    //       array(
+    //           'key'       => '_stock_status',
+    //           'value'     => 'outofstock',
+    //           'compare'   => 'NOT IN',
+    //           )
               
-      ),
-      'tax_query' => array(
-          array(
-              'taxonomy' => 'product_cat',
-              'field' => 'id',
-              'operator' => 'NOT IN',
-              'terms' => [$plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id],
-              'include_children' => 1,
-          )
-      )
-    );
-    $query_ajax_plants = new WP_Query($argPlants);
-    $query_ajax_other = new WP_Query($argOther);
-    $query_ajax = array_merge($query_ajax_plants, $query_ajax_other);
+    //   ),
+    //   'tax_query' => array(
+    //       array(
+    //           'taxonomy' => 'product_cat',
+    //           'field' => 'id',
+    //           'operator' => 'NOT IN',
+    //           'terms' => [$plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id],
+    //           'include_children' => 1,
+    //       )
+    //   )
+    // );
+    $query_ajax = new WP_Query($argPlants);
+    // $query_ajax_other = new WP_Query($argOther);
+    // $query_ajax = array_merge($query_ajax_plants, $query_ajax_other);
 
     $product_sku_id = wc_get_product_id_by_sku( $query_ajax->query_vars[ 's' ] );
     // print_r($product_sku_id);
