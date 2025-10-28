@@ -164,7 +164,6 @@ function plnt_check_stock_status() {
     global $product;
     global $parentCatId;
     global $plants_cat_id;
-    print_r($parentCatId);
     if(!$parentCatId) {
       $parentCatId = check_category($product);
     }
