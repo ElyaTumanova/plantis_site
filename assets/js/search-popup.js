@@ -15,7 +15,12 @@ function openSearch(activeBtn = null) {
   searchWrap.classList.add('search_open');
   if (activeBtn) activeBtn.classList.add('search_open');
 
-  searchInput.focus();
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      searchInput.focus();
+      searchInput.value = '';
+    }, 0);
+  });
     
   // Для iOS - создаем временное событие touch
   if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -28,8 +33,6 @@ function openSearch(activeBtn = null) {
   setTimeout(() => {
       searchInput.setSelectionRange(0, 0);
   }, 100);
-
-  searchInput.value = '';
     
   // при открытии чистим/прячем результаты
   if (!searchResult.hidden) {
