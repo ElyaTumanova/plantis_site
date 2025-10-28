@@ -719,9 +719,12 @@ input[type="search"], input[type="search"]:focus-visible {
   margin-top: 10px;
 }
 
-/* .search-result__item:first-child .card__stockstatus {
-    top: 32px;
-} */
+.search-result__item .card__stockstatus_backorder {
+  display: none;
+}
+.search-result__item .card__stockstatus_out {
+  display: none;
+}
 
 
 

@@ -162,20 +162,8 @@ function plnt_set_backorders_date() {
 // выводим статус товара
 function plnt_check_stock_status() {
     global $product;
-    // global $parentCatId;
     global $plants_cat_id;
-    // $id = $product->get_id();
-    // echo ('<pre>');
-    // echo ($parentCatId);
-    // echo ('<br>');
-    // if(!$parentCatId) {
-      $parentCatId = check_category($product);
-    // }
-
-    // echo ($id);
-    // echo ('<br>');
-    // echo ($parentCatId);
-    // echo ('</pre>');
+    $parentCatId = check_category($product);
 
     if ($parentCatId === $plants_cat_id) {
         if ( $product->get_stock_status() ==='instock' ) {

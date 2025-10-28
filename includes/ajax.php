@@ -22,14 +22,14 @@ function plnt_search_ajax_action_callback (){
       'meta_key' => '_stock_status',
       'order' => 'ASC',
       // 'posts_per_page' => -1,
-      'meta_query' => array( 
-          array(
-              'key'       => '_stock_status',
-              'value'     => 'outofstock',
-              'compare'   => 'NOT IN',
-              )
+      // 'meta_query' => array( 
+      //     array(
+      //         'key'       => '_stock_status',
+      //         'value'     => 'outofstock',
+      //         'compare'   => 'NOT IN',
+      //         )
               
-      ),
+      // ),
       'tax_query' => array(
           array(
               'taxonomy' => 'product_cat',
