@@ -60,6 +60,7 @@ document.addEventListener('pointerdown', (e) => {
   // клики по самому поиску/кнопкам игнорируем
   if (
     searchWrap.contains(e.target) ||
+    searchResult.contains(e.target) ||
     headerButns?.contains(e.target) ||
     headerButnsMob?.contains?.(e.target) ||
     e.target === headerButnsMob
