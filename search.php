@@ -16,8 +16,8 @@ get_header(); ?>
 		if ( have_posts() ) : ?>
 
 			<header class="page-header">
+        <p>куку</p>
 				<h1 class="page-title">
-          <p>куку</p>
           <?php
 					/* translators: %s: search query. */
         
