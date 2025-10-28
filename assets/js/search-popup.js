@@ -4,7 +4,7 @@ const searchWrap = document.querySelector('.search__wrap');
 const headerButns = document.querySelector('.header__main .header__wrap');
 const headerButnsMob = document.querySelector('.header__mob .search-btn');
 const searchResult = document.querySelector('.search-result');
-const searchInput = document.querySelector('.search .search-field');
+const searchInput = document.querySelector('.search__wrap .search-field');
 
 searchResult.hidden = true;
 
@@ -15,24 +15,21 @@ function openSearch(activeBtn = null) {
   searchWrap.classList.add('search_open');
   if (activeBtn) activeBtn.classList.add('search_open');
 
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      searchInput.focus();
-      searchInput.value = '';
-    }, 0);
-  });
+  searchInput.focus();
     
-  // // Для iOS - создаем временное событие touch
-  // if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-  //     const clickEvent = document.createEvent('MouseEvents');
-  //     clickEvent.initEvent('touchstart', true, true);
-  //     searchInput.dispatchEvent(clickEvent);
-  // }
+  // Для iOS - создаем временное событие touch
+  if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      const clickEvent = document.createEvent('MouseEvents');
+      clickEvent.initEvent('touchstart', true, true);
+      searchInput.dispatchEvent(clickEvent);
+  }
   
-  // // Дополнительный трюк для некоторых Android устройств
-  // setTimeout(() => {
-  //     searchInput.setSelectionRange(0, 0);
-  // }, 100);
+  // Дополнительный трюк для некоторых Android устройств
+  setTimeout(() => {
+      searchInput.setSelectionRange(0, 0);
+  }, 100);
+
+  searchInput.value = '';
     
   // при открытии чистим/прячем результаты
   if (!searchResult.hidden) {
