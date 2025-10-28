@@ -12,9 +12,6 @@ function plnt_echo_smth() {
     global $plants_treez_cat_id;
     global $peresadka_cat_id;
     global $plants_cat_id;
-    if(!wp_verify_nonce($_POST['nonce'], 'search-nonce')){
-        wp_die('Данные отправлены не с того адреса');
-    }
 
     $argPlants = array(
       'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
