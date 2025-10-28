@@ -5,30 +5,75 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
-//add_action( 'wp_footer', 'plnt_echo_smth' );
+add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
-    if(is_page('test-result')) {
-      echo('<pre>');
-        echo ('this is test res');
-        $plant_types = require get_theme_file_path('assets/data/plant-types.php');
-        $plants_by_slug = [];
-        foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
-        print_r($plants_by_slug);
-        $gen = get_query_var('gen');
-        $plant = get_query_var('plant');
-        echo ($gen);
-        echo ($plant);
-
-        if ($gen && $plant && isset($plants_by_slug[$plant]) && isset($plants_by_slug[$plant]['image'][$gen])) {
-          $img = $plants_by_slug[$plant]['image'][$gen];
-        } else {
-          $img = get_template_directory_uri().'/images/test/test_cover.webp';
-        }
-        echo($img);
-        echo('<pre>');
+    global $plants_treez_cat_id;
+    global $peresadka_cat_id;
+    global $plants_cat_id;
+    if(!wp_verify_nonce($_POST['nonce'], 'search-nonce')){
+        wp_die('Данные отправлены не с того адреса');
     }
+
+    $argPlants = array(
+      'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
+      'post_status' => 'publish',
+      's' => $_POST['s'],
+      'orderby' => 'meta_value',
+      'meta_key' => '_stock_status',
+      'order' => 'ASC',
+      // 'posts_per_page' => -1,
+      // 'meta_query' => array( 
+      //     array(
+      //         'key'       => '_stock_status',
+      //         'value'     => 'outofstock',
+      //         'compare'   => 'NOT IN',
+      //         )
+              
+      // ),
+      'tax_query' => array(
+          array(
+              'taxonomy' => 'product_cat',
+              'field' => 'id',
+              'operator' => 'IN',
+              'terms' => [$plants_cat_id],
+              'include_children' => 1,
+          )
+      )
+    );
+    $argOther = array(
+      'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
+      'post_status' => 'publish',
+      's' => $_POST['s'],
+      'orderby' => 'meta_value',
+      'meta_key' => '_stock_status',
+      'order' => 'ASC',
+      // 'posts_per_page' => -1,
+      'meta_query' => array( 
+          array(
+              'key'       => '_stock_status',
+              'value'     => 'outofstock',
+              'compare'   => 'NOT IN',
+              )
+              
+      ),
+      'tax_query' => array(
+          array(
+              'taxonomy' => 'product_cat',
+              'field' => 'id',
+              'operator' => 'NOT IN',
+              'terms' => [$plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id],
+              'include_children' => 1,
+          )
+      )
+    );
+    $query_ajax_plants = new WP_Query($argPlants);
+    $query_ajax_other = new WP_Query($argOther);
+    $query_ajax = array_merge($query_ajax_plants, $query_ajax_other);
+    echo('<pre>');
+    print_r($query_ajax);
+    echo('</pre>');
 }
 
 
