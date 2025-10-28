@@ -116,11 +116,12 @@ function my_enqueue_recaptcha_woo_js() {
         'recaptcha-woocommerce',
         get_template_directory_uri() . '/assets/js/recaptcha-woocommerce.js',
         array(), // grecaptcha уже подключен глобально
-        '1.0',
+        filemtime(get_stylesheet_directory() .'/assets/js/recaptcha-woocommerce.js'),
         true
     );
     wp_localize_script('recaptcha-woocommerce', 'recaptchaWoo', array(
         'siteKey' => '6LcP2rIrAAAAAGxrNXEe4AP0rC_fXZ7v7vKVr4wF',
+        'debug'   => true // <-- ставь false, чтобы выключить логи
     ));
     wp_enqueue_script('recaptcha-woocommerce');
 }
