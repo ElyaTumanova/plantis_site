@@ -543,7 +543,8 @@ function shop_only_instock_products( $meta_query, $query ) {
 	term_is_ancestor_of( $ukhod_cat_id, get_queried_object_id(), 'product_cat' ) ||
 	is_product_category($lechuza_cat_id) || 
 	term_is_ancestor_of( $lechuza_cat_id, get_queried_object_id(), 'product_cat' ) ||
-	is_product_tag ($avtopoliv_tag_id)) { 		//где хотим скрыть товары не в наличии
+	is_product_tag ($avtopoliv_tag_id) ||
+  is_search()) { 		//где хотим скрыть товары не в наличии
 		$meta_query[] = array(
 			'key' => '_stock_status',
 			'value' => 'outofstock',
