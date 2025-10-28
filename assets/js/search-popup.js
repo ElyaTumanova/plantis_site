@@ -15,34 +15,34 @@ function openSearch(activeBtn = null) {
   searchWrap.classList.add('search_open');
   if (activeBtn) activeBtn.classList.add('search_open');
 
-requestAnimationFrame(() => {
-    setTimeout(() => {
-      // Проверяем, что элемент видим перед фокусом
-      const isVisible = searchInput.offsetWidth > 0 && 
-                       searchInput.offsetHeight > 0 && 
-                       !searchInput.hidden;
+  const attemptFocus = () => {
+    // Получаем стили элемента для проверки opacity и visibility
+    const styles = window.getComputedStyle(searchInput);
+    const isVisible = searchInput.offsetWidth > 0 && 
+                     searchInput.offsetHeight > 0 && 
+                     !searchInput.hidden &&
+                     styles.opacity > 0 &&
+                     styles.visibility !== 'hidden';
+    
+    if (isVisible) {
+      searchInput.focus();
+      searchInput.value = '';
       
-      if (isVisible) {
-        searchInput.focus();
-        searchInput.value = '';
-        
-        // Для мобильных добавляем клик
-        if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-          searchInput.click();
-        }
-      } else {
-        // Если не видим, пробуем еще раз через небольшой интервал
+      // Для мобильных добавляем несколько попыток
+      if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
         setTimeout(() => {
           searchInput.focus();
-          searchInput.value = '';
-          if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-            searchInput.click();
-          }
-        }, 50);
+          searchInput.click();
+        }, 100);
       }
-    }, 0);
-  });
+    } else {
+      // Если не видим, пробуем снова
+      setTimeout(attemptFocus, 50);
+    }
+  };
 
+  // Даем время на применение всех CSS-стилей
+  setTimeout(attemptFocus, 100);
 
   // при открытии чистим/прячем результаты
   if (!searchResult.hidden) {
