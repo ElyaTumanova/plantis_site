@@ -165,6 +165,9 @@ function plnt_check_stock_status() {
     global $parentCatId;
     global $plants_cat_id;
     print_r($parentCatId);
+    if(!$parentCatId) {
+      $parentCatId = check_category($product);
+    }
 
     if ($parentCatId === $plants_cat_id) {
         if ( $product->get_stock_status() ==='instock' ) {
