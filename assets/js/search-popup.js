@@ -22,17 +22,17 @@ function openSearch(activeBtn = null) {
     }, 0);
   });
     
-  // Для iOS - создаем временное событие touch
-  if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-      const clickEvent = document.createEvent('MouseEvents');
-      clickEvent.initEvent('touchstart', true, true);
-      searchInput.dispatchEvent(clickEvent);
-  }
+  // // Для iOS - создаем временное событие touch
+  // if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+  //     const clickEvent = document.createEvent('MouseEvents');
+  //     clickEvent.initEvent('touchstart', true, true);
+  //     searchInput.dispatchEvent(clickEvent);
+  // }
   
-  // Дополнительный трюк для некоторых Android устройств
-  setTimeout(() => {
-      searchInput.setSelectionRange(0, 0);
-  }, 100);
+  // // Дополнительный трюк для некоторых Android устройств
+  // setTimeout(() => {
+  //     searchInput.setSelectionRange(0, 0);
+  // }, 100);
     
   // при открытии чистим/прячем результаты
   if (!searchResult.hidden) {
