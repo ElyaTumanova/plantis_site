@@ -569,66 +569,6 @@ function shop_only_instock_products( $meta_query, $query ) {
 
 // // убираем из результатов поиска товары не в наличии, кроме категории растений
 
-add_filter( 'the_posts', function( $posts, $query ) {
-    if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
-        return $posts;
-    }
-
-    // Убедимся, что на поиске смотрим продукты
-    $pt = $query->get( 'post_type' );
-    if ( empty( $pt ) ) {
-        $query->set( 'post_type', [ 'product' ] );
-    } elseif ( is_string( $pt ) && $pt !== 'product' ) {
-        return $posts;
-    } elseif ( is_array( $pt ) && ! in_array( 'product', $pt, true ) ) {
-        return $posts;
-    }
-
-    // Найдём корень «Растений» и все дочерние ID
-    static $plant_branch = null;
-    if ( $plant_branch === null ) {
-        $root = get_term_by( 'slug', 'komnatnye-rasteniya', 'product_cat' );
-        if ( $root ) {
-            $plant_branch = array_map( 'absint', array_unique( array_merge(
-                [ (int) $root->term_id ],
-                (array) get_term_children( (int) $root->term_id, 'product_cat' )
-            ) ) );
-        } else {
-            $plant_branch = []; // если не нашли — будем просто фильтровать по стоку
-        }
-    }
-
-    $filtered = [];
-    foreach ( $posts as $p ) {
-        if ( $p->post_type !== 'product' ) {
-            // На всякий случай пропускаем чужие типы как есть
-            $filtered[] = $p;
-            continue;
-        }
-
-        // Если продукт в ветке «Растения» — всегда оставить
-        $is_plant = false;
-        if ( $plant_branch ) {
-            $terms = wp_get_post_terms( $p->ID, 'product_cat', [ 'fields' => 'ids' ] );
-            if ( is_array( $terms ) && array_intersect( $terms, $plant_branch ) ) {
-                $is_plant = true;
-            }
-        }
-
-        if ( $is_plant ) {
-            $filtered[] = $p;
-            continue;
-        }
-
-        // Иначе — оставить только если не outofstock
-        $stock_status = get_post_meta( $p->ID, '_stock_status', true );
-        if ( $stock_status !== 'outofstock' ) {
-            $filtered[] = $p;
-        }
-    }
-
-    return $filtered;
-}, 20, 2 );
 
 // // скрываем Treez Plants из результатов поиска 
 
