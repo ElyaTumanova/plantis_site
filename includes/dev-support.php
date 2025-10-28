@@ -308,64 +308,64 @@ function show_image_sizes() {
 // }
 
 
-add_filter( 'the_posts', function( $posts, $query ) {
-	if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
-		return $posts;
-	}
+// add_filter( 'the_posts', function( $posts, $query ) {
+// 	if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
+// 		return $posts;
+// 	}
 
-	global $plants_cat_id; // ← твоя глобальная переменная
-	if ( ! $plants_cat_id ) {
-		// если не задан ID категории "Растения" — ничего не фильтруем
-		return $posts;
-	}
+// 	global $plants_cat_id; // ← твоя глобальная переменная
+// 	if ( ! $plants_cat_id ) {
+// 		// если не задан ID категории "Растения" — ничего не фильтруем
+// 		return $posts;
+// 	}
 
-	// получаем всю ветку категорий "Растения"
-	$plant_branch_ids = array_map( 'absint', array_unique( array_merge(
-		array( (int) $plants_cat_id ),
-		(array) get_term_children( (int) $plants_cat_id, 'product_cat' )
-	) ) );
+// 	// получаем всю ветку категорий "Растения"
+// 	$plant_branch_ids = array_map( 'absint', array_unique( array_merge(
+// 		array( (int) $plants_cat_id ),
+// 		(array) get_term_children( (int) $plants_cat_id, 'product_cat' )
+// 	) ) );
 
-	$filtered = array();
+// 	$filtered = array();
 
-	foreach ( $posts as $post ) {
-		if ( $post->post_type !== 'product' ) {
-			$filtered[] = $post;
-			continue;
-		}
+// 	foreach ( $posts as $post ) {
+// 		if ( $post->post_type !== 'product' ) {
+// 			$filtered[] = $post;
+// 			continue;
+// 		}
 
-		// Проверяем, принадлежит ли товар к "Растениям"
-		$terms = wp_get_post_terms( $post->ID, 'product_cat', array( 'fields' => 'ids' ) );
-		$is_plant = is_array( $terms ) && array_intersect( $terms, $plant_branch_ids );
+// 		// Проверяем, принадлежит ли товар к "Растениям"
+// 		$terms = wp_get_post_terms( $post->ID, 'product_cat', array( 'fields' => 'ids' ) );
+// 		$is_plant = is_array( $terms ) && array_intersect( $terms, $plant_branch_ids );
 
-		if ( $is_plant ) {
-			// если растение — показываем всегда
-			$filtered[] = $post;
-			continue;
-		}
+// 		if ( $is_plant ) {
+// 			// если растение — показываем всегда
+// 			$filtered[] = $post;
+// 			continue;
+// 		}
 
-		// иначе — только если товар не outofstock
-		$status = get_post_meta( $post->ID, '_stock_status', true );
-		if ( $status !== 'outofstock' ) {
-			$filtered[] = $post;
-		}
-	}
+// 		// иначе — только если товар не outofstock
+// 		$status = get_post_meta( $post->ID, '_stock_status', true );
+// 		if ( $status !== 'outofstock' ) {
+// 			$filtered[] = $post;
+// 		}
+// 	}
 
-	// сохраняем количество для пагинации
-	$query->set( 'my_filtered_count', count( $filtered ) );
+// 	// сохраняем количество для пагинации
+// 	$query->set( 'my_filtered_count', count( $filtered ) );
 
-	return $filtered;
-}, 20, 2 );
+// 	return $filtered;
+// }, 20, 2 );
 
-/**
- * Чиним пагинацию — чтобы количество страниц совпадало с отфильтрованным числом.
- */
-add_filter( 'found_posts', function( $found, $query ) {
-	if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
-		return $found;
-	}
-	$cnt = (int) $query->get( 'my_filtered_count' );
-	if ( $cnt || $cnt === 0 ) {
-		return $cnt;
-	}
-	return $found;
-}, 20, 2 );
+// /**
+//  * Чиним пагинацию — чтобы количество страниц совпадало с отфильтрованным числом.
+//  */
+// add_filter( 'found_posts', function( $found, $query ) {
+// 	if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
+// 		return $found;
+// 	}
+// 	$cnt = (int) $query->get( 'my_filtered_count' );
+// 	if ( $cnt || $cnt === 0 ) {
+// 		return $cnt;
+// 	}
+// 	return $found;
+// }, 20, 2 );
