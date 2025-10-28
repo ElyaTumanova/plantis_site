@@ -16,9 +16,7 @@ get_header(); ?>
 		if ( have_posts() ) : ?>
 
 			<header class="page-header">
-        <p>куку</p>
-				<h1 class="page-title">
-          <?php
+				<h1 class="page-title"><?php
 					/* translators: %s: search query. */
         
 					printf( 'Результаты поиска: %s', '<span>' . get_search_query() . '</span>' );
