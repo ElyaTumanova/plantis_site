@@ -14,13 +14,13 @@ function openSearch(activeBtn = null) {
 
   searchWrap.classList.add('search_open');
   if (activeBtn) activeBtn.classList.add('search_open');
-  const delay = 'ontouchstart' in window ? 100 : 0;
-
+  searchInput.setAttribute('readonly', true);
   requestAnimationFrame(() => {
     setTimeout(() => {
+      searchInput.removeAttribute('readonly');
       searchInput.focus();
       searchInput.value = '';
-    }, delay);
+    }, 100);
   });
 
   // при открытии чистим/прячем результаты
