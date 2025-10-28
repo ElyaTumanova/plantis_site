@@ -121,7 +121,7 @@ function my_enqueue_recaptcha_woo_js() {
     );
     wp_localize_script('recaptcha-woocommerce', 'recaptchaWoo', array(
         'siteKey' => '6LcP2rIrAAAAAGxrNXEe4AP0rC_fXZ7v7vKVr4wF',
-        'debug'   => true // <-- ставь false, чтобы выключить логи
+        'debug'   => false // <-- ставь false, чтобы выключить логи
     ));
     wp_enqueue_script('recaptcha-woocommerce');
 }
