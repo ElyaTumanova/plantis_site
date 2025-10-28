@@ -96,8 +96,8 @@ function render_search_result($product) {
             <div class="search-result__row">
               <span class="search-result__title"><?php echo $product->get_title();?></span>
               <!-- <span class="search-result__descr"><?php //echo $product->get_short_description();?></span> -->
+              <?php plnt_check_stock_status();?>
             </div>
-            <?php plnt_check_stock_status();?>
             <div class="search-result__row">
               <?php if ($sale) {
                 ?>

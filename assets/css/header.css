@@ -686,7 +686,7 @@ input[type="search"], input[type="search"]:focus-visible {
 
 .search-result__info {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   row-gap: 10px;
   /* align-items: center; */
 }
