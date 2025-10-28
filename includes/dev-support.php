@@ -5,71 +5,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
-add_action( 'wp_footer', 'plnt_echo_smth' );
+//add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
     global $plants_treez_cat_id;
     global $peresadka_cat_id;
     global $plants_cat_id;
-
-    $argPlants = array(
-      'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
-      'post_status' => 'publish',
-      's' => 'кала',
-      'orderby' => 'meta_value',
-      'meta_key' => '_stock_status',
-      'order' => 'ASC',
-      // 'posts_per_page' => -1,
-      // 'meta_query' => array( 
-      //     array(
-      //         'key'       => '_stock_status',
-      //         'value'     => 'outofstock',
-      //         'compare'   => 'NOT IN',
-      //         )
-              
-      // ),
-      'tax_query' => array(
-          array(
-              'taxonomy' => 'product_cat',
-              'field' => 'id',
-              'operator' => 'IN',
-              'terms' => [$plants_cat_id],
-              'include_children' => 1,
-          )
-      )
-    );
-    $argOther = array(
-      'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
-      'post_status' => 'publish',
-      's' => 'кала',
-      'orderby' => 'meta_value',
-      'meta_key' => '_stock_status',
-      'order' => 'ASC',
-      // 'posts_per_page' => -1,
-      'meta_query' => array( 
-          array(
-              'key'       => '_stock_status',
-              'value'     => 'outofstock',
-              'compare'   => 'NOT IN',
-              )
-              
-      ),
-      'tax_query' => array(
-          array(
-              'taxonomy' => 'product_cat',
-              'field' => 'id',
-              'operator' => 'NOT IN',
-              'terms' => [$plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id],
-              'include_children' => 1,
-          )
-      )
-    );
-    $query_ajax_plants = new WP_Query($argPlants);
-    $query_ajax_other = new WP_Query($argOther);
-    // $query_ajax = array_merge($query_ajax_plants, $query_ajax_other);
+    $product_sku_id = wc_get_product_id_by_sku( 'lalal' );
     echo('<pre>');
-    print_r($query_ajax_plants);
+    print_r($product_sku_id);
     echo('</pre>');
 }
 

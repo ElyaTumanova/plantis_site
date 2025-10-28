@@ -69,11 +69,12 @@ function plnt_search_ajax_action_callback (){
     );
     $query_ajax_plants = new WP_Query($argPlants);
     $query_ajax_other = new WP_Query($argOther);
-    $query_ajax = array_merge($query_ajax_plants, $query_ajax_other);
+    // $query_ajax = array_merge($query_ajax_plants->posts, $query_ajax_other->posts);
 
     
 
-    $product_sku_id = wc_get_product_id_by_sku( $query_ajax->query_vars[ 's' ] );
+    $product_sku_id = wc_get_product_id_by_sku( $query_ajax_plants->query_vars[ 's' ] );
+    // $product_sku_id = wc_get_product_id_by_sku( $query_ajax_other->query_vars[ 's' ] );
     // print_r($product_sku_id);
     $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
     ?> <div class='serach-result__items'> <?php
@@ -91,12 +92,17 @@ function plnt_search_ajax_action_callback (){
         <input class="search-result__btn button" type="submit" form ="searchform" value="Посмотреть все" />
       <?php
     } else {
-      if ($query_ajax->have_posts()) {
+      if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
         // echo '<pre>';
         // print_r( $query_ajax );
         // echo '</pre>';
-        while ($query_ajax->have_posts()){
-          $query_ajax->the_post();
+        while ($query_ajax_plants->have_posts()){
+          $query_ajax_plants->the_post();
+          $product = wc_get_product( get_the_ID() );
+          render_search_result($product);
+        }
+        while ($query_ajax_other->have_posts()){
+          $query_ajax_other->the_post();
           $product = wc_get_product( get_the_ID() );
           render_search_result($product);
         }
