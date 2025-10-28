@@ -569,64 +569,66 @@ function shop_only_instock_products( $meta_query, $query ) {
 
 // // убираем из результатов поиска товары не в наличии, кроме категории растений
 
-add_filter( 'posts_clauses', 'wc_search_instock_except_plants', 10, 2 );
-
-function wc_search_instock_except_plants( $clauses, $wp_query ) {
-    if ( ! $wp_query->is_search() ) {
-        return $clauses;
+add_filter( 'the_posts', function( $posts, $query ) {
+    if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
+        return $posts;
     }
 
-    // Обрабатываем только продуктовый поиск WooCommerce
-    $post_type = $wp_query->get( 'post_type' );
-    if ( $post_type && $post_type !== 'product' ) {
-        return $clauses;
+    // Убедимся, что на поиске смотрим продукты
+    $pt = $query->get( 'post_type' );
+    if ( empty( $pt ) ) {
+        $query->set( 'post_type', [ 'product' ] );
+    } elseif ( is_string( $pt ) && $pt !== 'product' ) {
+        return $posts;
+    } elseif ( is_array( $pt ) && ! in_array( 'product', $pt, true ) ) {
+        return $posts;
     }
 
-    global $wpdb, $plants_cat_id;
-
-    if ( empty( $plants_cat_id ) ) {
-        // если ID не задан — просто фильтруем по наличию как обычно
-        $clauses['join']  .= " LEFT JOIN {$wpdb->postmeta} pm_stock ON (pm_stock.post_id = {$wpdb->posts}.ID AND pm_stock.meta_key = '_stock_status') ";
-        $clauses['where'] .= " AND (pm_stock.meta_value != 'outofstock')";
-        return $clauses;
+    // Найдём корень «Растений» и все дочерние ID
+    static $plant_branch = null;
+    if ( $plant_branch === null ) {
+        $root = get_term_by( 'slug', 'komnatnye-rasteniya', 'product_cat' );
+        if ( $root ) {
+            $plant_branch = array_map( 'absint', array_unique( array_merge(
+                [ (int) $root->term_id ],
+                (array) get_term_children( (int) $root->term_id, 'product_cat' )
+            ) ) );
+        } else {
+            $plant_branch = []; // если не нашли — будем просто фильтровать по стоку
+        }
     }
 
-    // Соберём все ID «растительной» ветки (родитель + дети)
-    $plant_ids = array_map( 'absint', array_unique( array_merge(
-        array( (int) $plants_cat_id ),
-        (array) get_term_children( (int) $plants_cat_id, 'product_cat' )
-    ) ) );
+    $filtered = [];
+    foreach ( $posts as $p ) {
+        if ( $p->post_type !== 'product' ) {
+            // На всякий случай пропускаем чужие типы как есть
+            $filtered[] = $p;
+            continue;
+        }
 
-    // подготовим IN (...)
-    $in_sql = implode( ',', array_fill( 0, count( $plant_ids ), '%d' ) );
-    $prepare_args = $plant_ids;
+        // Если продукт в ветке «Растения» — всегда оставить
+        $is_plant = false;
+        if ( $plant_branch ) {
+            $terms = wp_get_post_terms( $p->ID, 'product_cat', [ 'fields' => 'ids' ] );
+            if ( is_array( $terms ) && array_intersect( $terms, $plant_branch ) ) {
+                $is_plant = true;
+            }
+        }
 
-    // Подключим связи с таксономией и мета по стоку
-    $clauses['join'] .= "
-        LEFT JOIN {$wpdb->term_relationships} tr_plants
-            ON tr_plants.object_id = {$wpdb->posts}.ID
-        LEFT JOIN {$wpdb->term_taxonomy} tt_plants
-            ON tt_plants.term_taxonomy_id = tr_plants.term_taxonomy_id
-            AND tt_plants.taxonomy = 'product_cat'
-        LEFT JOIN {$wpdb->postmeta} pm_stock
-            ON (pm_stock.post_id = {$wpdb->posts}.ID AND pm_stock.meta_key = '_stock_status')
-    ";
+        if ( $is_plant ) {
+            $filtered[] = $p;
+            continue;
+        }
 
-    // Логика: (товар в «растениях» ИЛИ stock_status != outofstock)
-    $where_piece = $wpdb->prepare(
-        " AND ( tt_plants.term_id IN ($in_sql) OR pm_stock.meta_value != 'outofstock' ) ",
-        ...$prepare_args
-    );
-
-    $clauses['where'] .= $where_piece;
-
-    // На всякий случай уберём дубли (JOIN по термам может умножать строки)
-    if ( strpos( $clauses['groupby'], "{$wpdb->posts}.ID" ) === false ) {
-        $clauses['groupby'] = "{$wpdb->posts}.ID";
+        // Иначе — оставить только если не outofstock
+        $stock_status = get_post_meta( $p->ID, '_stock_status', true );
+        if ( $stock_status !== 'outofstock' ) {
+            $filtered[] = $p;
+        }
     }
 
-    return $clauses;
-}
+    return $filtered;
+}, 20, 2 );
 
 // // скрываем Treez Plants из результатов поиска 
 
