@@ -312,7 +312,7 @@ add_filter( 'the_posts', function( $posts, $query ) {
 	if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
 		return $posts;
 	}
-
+  
 	global $plants_cat_id; // ID корневой категории «Растения»
 	$plants_cat_id = absint( $plants_cat_id );
 
@@ -352,10 +352,10 @@ add_filter( 'the_posts', function( $posts, $query ) {
 /**
  * Чиним пагинацию под отфильтрованный набор.
  */
-add_filter( 'found_posts', function( $found, $query ) {
-	if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
-		return $found;
-	}
-	$cnt = (int) $query->get( 'my_filtered_count' );
-	return ( $cnt || $cnt === 0 ) ? $cnt : $found;
-}, 20, 2 );
+// add_filter( 'found_posts', function( $found, $query ) {
+// 	if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
+// 		return $found;
+// 	}
+// 	$cnt = (int) $query->get( 'my_filtered_count' );
+// 	return ( $cnt || $cnt === 0 ) ? $cnt : $found;
+// }, 20, 2 );
