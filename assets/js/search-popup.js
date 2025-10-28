@@ -15,12 +15,14 @@ function openSearch(activeBtn = null) {
   searchWrap.classList.add('search_open');
   if (activeBtn) activeBtn.classList.add('search_open');
 
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      searchInput.focus();
-      searchInput.value = '';
-    }, 0);
-  });
+  if(searchWrap.classList.contains('search_open')) {
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        searchInput.focus();
+        searchInput.value = '';
+      }, 0);
+    });
+  }
 
   // при открытии чистим/прячем результаты
   if (!searchResult.hidden) {
