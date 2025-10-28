@@ -19,7 +19,7 @@ function plnt_echo_smth() {
     $argPlants = array(
       'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
       'post_status' => 'publish',
-      's' => $_POST['s'],
+      's' => 'кала',
       'orderby' => 'meta_value',
       'meta_key' => '_stock_status',
       'order' => 'ASC',
@@ -45,7 +45,7 @@ function plnt_echo_smth() {
     $argOther = array(
       'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
       'post_status' => 'publish',
-      's' => $_POST['s'],
+      's' => 'кала',
       'orderby' => 'meta_value',
       'meta_key' => '_stock_status',
       'order' => 'ASC',
