@@ -12,9 +12,11 @@ function plnt_echo_smth() {
     global $plants_treez_cat_id;
     global $peresadka_cat_id;
     global $plants_cat_id;
-    $product_sku_id = wc_get_product_id_by_sku( 'lalal' );
+    $product_sku_id_1 = wc_get_product_id_by_sku( 'lalal' );
+    $product_sku_id_2 = wc_get_product_id_by_sku( 'P00623' );
     echo('<pre>');
-    print_r($product_sku_id);
+    print_r($product_sku_id_1);
+    print_r($product_sku_id_2);
     echo('</pre>');
 }
 
