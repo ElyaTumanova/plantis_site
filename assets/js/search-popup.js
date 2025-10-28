@@ -15,21 +15,45 @@ function openSearch(activeBtn = null) {
   searchWrap.classList.add('search_open');
   if (activeBtn) activeBtn.classList.add('search_open');
 
-  requestAnimationFrame(() => {
+  // requestAnimationFrame(() => {
+  //   setTimeout(() => {
+  //     searchInput.focus();
+
+  //     // Затем принудительный клик для мобильных
+  //     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  //     if (isTouchDevice) {
+  //       searchInput.click(); // Дополнительный клик для вызова клавиатуры
+  //     }
+
+
+  //     searchInput.value = '';
+  //   }, 10);
+  // });
+
+   const focusSearchInput = () => {
+    // Первая попытка - стандартный фокус
+    searchInput.focus();
+    searchInput.value = '';
+    
+    // Вторая попытка через небольшой таймаут для мобильных
     setTimeout(() => {
-      searchInput.focus();
-
-      // Затем принудительный клик для мобильных
       const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-      if (isTouchDevice) {
-        searchInput.click(); // Дополнительный клик для вызова клавиатуры
-      }
-
       
-      searchInput.value = '';
-    }, 10);
-  });
+      if (isTouchDevice && document.activeElement !== searchInput) {
+        // Для тач-устройств, если фокус не сработал
+        searchInput.blur(); // Сначала сбрасываем фокус
+        setTimeout(() => {
+          searchInput.focus();
+          searchInput.click(); // Комбинируем методы
+        }, 50);
+      }
+    }, 100);
+  };
 
+  requestAnimationFrame(() => {
+    setTimeout(focusSearchInput, 0);
+  });
+  
   // при открытии чистим/прячем результаты
   if (!searchResult.hidden) {
     searchResult.hidden = true;
