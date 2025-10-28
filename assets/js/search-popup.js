@@ -1,6 +1,6 @@
 // переменные для управления попапом
 const searchOpenPopupBtn = document.querySelectorAll('.search-btn');
-const searchWrap = document.querySelector('.search');
+const searchWrap = document.querySelector('.search__wrap');
 const headerButns = document.querySelector('.header__main .header__wrap');
 const headerButnsMob = document.querySelector('.header__mob .search-btn');
 const searchResult = document.querySelector('.search-result');
@@ -29,6 +29,7 @@ function openSearch(activeBtn = null) {
       searchInput.setSelectionRange(0, 0);
   }, 100);
 
+  searchInput.value = '';
     
   // при открытии чистим/прячем результаты
   if (!searchResult.hidden) {

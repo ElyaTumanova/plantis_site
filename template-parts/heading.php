@@ -114,7 +114,7 @@ $close_icon = carbon_get_theme_option('close_icon');
 		<div class="header__notice-wrap_mob">
 			<?php get_template_part( 'template-parts/header-notice' );?>
 		</div>
-    <div class="search"><?get_search_form();?></div>
+    <div class="search__wrap"><?get_search_form();?></div>
 
     <div class="search-result">
     </div>

@@ -469,7 +469,7 @@
 
 /* search and search popup styles */
 
-.search {
+.search__wrap {
     position: absolute;
     top: 46px;
     left: 50%;
@@ -487,7 +487,7 @@
     visibility 0s linear .5s; 
 }
 
-.search.search_open {
+.search__wrap.search_open {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -498,7 +498,7 @@
 
 
 @media((max-width: 1279px)) {
-  .search {
+  .search__wrap {
     top: -44px;
     opacity: 0;
     visibility: visible;
@@ -510,13 +510,13 @@
     visibility 0s;
   }
   
-  .search.search_open {
+  .search__wrap.search_open {
     z-index: 10000;
   }
 }
 
 @media((max-width: 767px)) {
-  .search {
+  .search__wrap {
     width: calc(100% - 125px);
   }
 }
