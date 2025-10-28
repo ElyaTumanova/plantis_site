@@ -487,21 +487,6 @@
     visibility 0s linear .5s; 
 }
 
-
-@media((max-width: 1279px)) {
-  .search {
-    top: -44px;
-    z-index: 10000;
-    width: calc(100% - 200px);
-  }
-}
-
-@media((max-width: 767px)) {
-  .search {
-    width: calc(100% - 125px);
-  }
-}
-
 .search.search_open {
     opacity: 1;
     visibility: visible;
@@ -509,6 +494,27 @@
     transition:
     opacity .5s ease-in-out,
     visibility 0s;
+}
+
+
+@media((max-width: 1279px)) {
+  .search {
+    top: -44px;
+    opacity: 1;
+    visibility: visible;
+    z-index: -1;
+    width: calc(100% - 200px);
+  }
+  
+  .search.search_open {
+    z-index: 10000;
+  }
+}
+
+@media((max-width: 767px)) {
+  .search {
+    width: calc(100% - 125px);
+  }
 }
 
 .search-field {
