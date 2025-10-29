@@ -1,9 +1,7 @@
 <?php 
-$s = get_search_query(); // строка поиска из ?s=
+$search = get_search_query(); // строка поиска из ?s=
 $paged = max(1, (int) get_query_var('paged'));
 $per_page = 24;
-
-echo($s);
 
 global $plants_treez_cat_id;
 global $peresadka_cat_id;
@@ -88,7 +86,7 @@ do_action( 'woocommerce_before_main_content' );
 ?>
 <header class="woocommerce-products-header">
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title">Результаты поиска: <?php echo($s) ?></h1>
+		<h1 class="woocommerce-products-header__title page-title">Результаты поиска: <?php echo esc_html($search) ?></h1>
 	<?php endif; ?>
 
 	<?php
