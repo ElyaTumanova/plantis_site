@@ -17,7 +17,7 @@ global $plants_cat_id;
 $argPlants = array(
   'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
   'post_status' => 'publish',
-  's' => $_POST['s'],
+  's' => 'кала',
   'orderby' => 'meta_value',
   'meta_key' => '_stock_status',
   'order' => 'ASC',
@@ -34,7 +34,7 @@ $argPlants = array(
 $argOther = array(
   'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
   'post_status' => 'publish',
-  's' => $_POST['s'],
+  's' => 'кала',
   'orderby' => 'meta_value',
   'meta_key' => '_stock_status',
   'order' => 'ASC',
