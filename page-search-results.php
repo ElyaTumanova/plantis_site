@@ -10,7 +10,7 @@ global $plants_cat_id;
 $argPlants = array(
   'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
   'post_status' => 'publish',
-  's' => 'замио',
+  's' => $search,
   'fields'         => 'ids',
   'posts_per_page' => -1,
   'no_found_rows'  => true,
@@ -30,7 +30,7 @@ $argPlants = array(
 $argOther = array(
   'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
   'post_status' => 'publish',
-  's' => 'замио',
+  's' => $search,
   'fields'         => 'ids',
   'posts_per_page' => -1,
   'no_found_rows'  => true,
