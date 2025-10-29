@@ -72,7 +72,7 @@ do_action( 'woocommerce_before_main_content' );
 ?>
 <header class="woocommerce-products-header">
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title">Рузельтаты поиска: <?php echo($s) ?></h1>
+		<h1 class="woocommerce-products-header__title page-title">Результаты поиска: <?php echo($s) ?></h1>
 	<?php endif; ?>
 
 	<?php
