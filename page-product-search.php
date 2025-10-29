@@ -120,4 +120,4 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
 
 
 
-<?php get_footer(); ?>
+<?php //get_footer(); ?>
