@@ -5,7 +5,7 @@
 
 $s = get_search_query(); // строка поиска из ?s=
 $paged = max(1, (int) get_query_var('paged'));
-$per_page = 4;
+$per_page = 24;
 
 echo($s);
 
@@ -90,19 +90,21 @@ do_action( 'woocommerce_before_main_content' );
 <?php
 
 if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
+
     // Используем Woo-компоненты, чтобы сохранить верстку/сетки
     do_action('woocommerce_before_shop_loop');
     woocommerce_product_loop_start();
-
-    while ($query_ajax_plants->have_posts()) {
-        $query_ajax_plants->the_post();
-        	do_action( 'woocommerce_shop_loop' );
-			    wc_get_template_part( 'content', 'product' );
-    }
-    while ($query_ajax_other->have_posts()) {
-        $query_ajax_other->the_post();
-        do_action( 'woocommerce_shop_loop' );
-			  wc_get_template_part( 'content', 'product' );
+    if ( wc_get_loop_prop( 'total' ) ) {
+      while ($query_ajax_plants->have_posts()) {
+          $query_ajax_plants->the_post();
+            do_action( 'woocommerce_shop_loop' );
+            wc_get_template_part( 'content', 'product' );
+      }
+      while ($query_ajax_other->have_posts()) {
+          $query_ajax_other->the_post();
+          do_action( 'woocommerce_shop_loop' );
+          wc_get_template_part( 'content', 'product' );
+      }
     }
 
     do_action( 'woocommerce_before_product_loop_end' );   //plnt new action 
