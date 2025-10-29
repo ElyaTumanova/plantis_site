@@ -118,8 +118,6 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
     do_action( 'woocommerce_before_product_loop_end' );   //plnt new action 
     woocommerce_product_loop_end();
 
-    do_action( 'woocommerce_after_shop_loop' );
-
      // ПРАВИЛЬНАЯ ПАГИНАЦИЯ
     $big = 999999999; // need an unlikely integer
     
@@ -139,6 +137,10 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
     echo '<nav class="woocommerce-pagination">';
     echo paginate_links($pagination_args);
     echo '</nav>';
+
+    do_action( 'woocommerce_after_shop_loop' );
+
+    
     wp_reset_postdata();
 } else {
    	do_action( 'woocommerce_no_products_found' );
