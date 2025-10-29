@@ -20,6 +20,8 @@ $argPlants = array(
   'orderby' => 'meta_value',
   'meta_key' => '_stock_status',
   'order' => 'ASC',
+  'posts_per_page' => 12, // ← вот это определяет количество
+  'paged' => get_query_var('paged', 1),
   'tax_query' => array(
       array(
           'taxonomy' => 'product_cat',
@@ -37,6 +39,8 @@ $argOther = array(
   'orderby' => 'meta_value',
   'meta_key' => '_stock_status',
   'order' => 'ASC',
+  'posts_per_page' => 12, // ← вот это определяет количество
+  'paged' => get_query_var('paged', 1),
   'meta_query' => array( 
       array(
           'key'       => '_stock_status',
