@@ -336,7 +336,7 @@ add_action('template_redirect', function(){
         $url = add_query_arg([
             's' => get_search_query(),
             'paged' => max(1, (int) get_query_var('paged')),
-        ], home_url('/serach-results/')); // слаг вашей страницы
+        ], home_url('/search-results/')); // слаг вашей страницы
         wp_safe_redirect($url, 302);
         exit;
     }
