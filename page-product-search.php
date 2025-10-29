@@ -103,6 +103,8 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
     do_action( 'woocommerce_before_product_loop_end' );   //plnt new action 
     woocommerce_product_loop_end();
 
+    do_action( 'woocommerce_after_shop_loop' );
+
     // Пагинация
     // $total_pages = (int) ceil($total / $per_page);
     // echo paginate_links([
@@ -111,8 +113,9 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
     // ]);
     wp_reset_postdata();
 } else {
-    wc_get_template('loop/no-products-found.php');
+   	do_action( 'woocommerce_no_products_found' );
 }
+do_action( 'woocommerce_after_main_content' );
 ?>
 
 </div> <!--content-area end -->
