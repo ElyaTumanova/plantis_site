@@ -75,7 +75,7 @@ $q_page = new WP_Query([
     'orderby'        => 'post__in',
     'posts_per_page' => 12,
     'paged' => $paged,
-    'no_found_rows'  => true,
+    'no_found_rows'  => false,
 ]);
 
 get_header( 'shop' );
