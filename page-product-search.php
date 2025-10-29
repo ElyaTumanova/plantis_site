@@ -30,7 +30,7 @@ do_action( 'woocommerce_before_main_content' );
 	do_action( 'woocommerce_archive_description' );
 	?>
 </header>
-<div  class="contenr-area">
+<div  class="content-area">
 <?php
 
 $s = get_search_query(); // строка поиска из ?s=
@@ -100,6 +100,7 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
         $query_ajax_other->the_post();
         wc_get_template_part('content', 'product');
     }
+    do_action( 'woocommerce_before_product_loop_end' );   //plnt new action 
     woocommerce_product_loop_end();
 
     // Пагинация
