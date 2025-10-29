@@ -4,13 +4,87 @@
  */
 
 get_header(); 
-$s = get_query_var('s');
-// $s = get_search_query(); // строка поиска из ?s=
+$s = get_search_query(); // строка поиска из ?s=
 $paged = max(1, (int) get_query_var('paged'));
 $per_page = 24;
 
 echo($s);
+
+global $plants_treez_cat_id;
+global $peresadka_cat_id;
+global $plants_cat_id;
+
+$argPlants = array(
+  'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
+  'post_status' => 'publish',
+  's' => $_POST['s'],
+  'orderby' => 'meta_value',
+  'meta_key' => '_stock_status',
+  'order' => 'ASC',
+  'tax_query' => array(
+      array(
+          'taxonomy' => 'product_cat',
+          'field' => 'id',
+          'operator' => 'IN',
+          'terms' => [$plants_cat_id],
+          'include_children' => 1,
+      )
+  )
+);
+$argOther = array(
+  'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
+  'post_status' => 'publish',
+  's' => $_POST['s'],
+  'orderby' => 'meta_value',
+  'meta_key' => '_stock_status',
+  'order' => 'ASC',
+  'meta_query' => array( 
+      array(
+          'key'       => '_stock_status',
+          'value'     => 'outofstock',
+          'compare'   => 'NOT IN',
+          )
+          
+  ),
+  'tax_query' => array(
+      array(
+          'taxonomy' => 'product_cat',
+          'field' => 'id',
+          'operator' => 'NOT IN',
+          'terms' => [$plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id],
+          'include_children' => 1,
+      )
+  )
+);
+$query_ajax_plants = new WP_Query($argPlants);
+$query_ajax_other = new WP_Query($argOther);
+
+if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
+    // Используем Woo-компоненты, чтобы сохранить верстку/сетки
+    do_action('woocommerce_before_shop_loop');
+    woocommerce_product_loop_start();
+    while ($query_ajax_plants->have_posts()) {
+        $query_ajax_plants->the_post();
+        wc_get_template_part('content', 'product');
+    }
+    while ($query_ajax_other->have_posts()) {
+        $query_ajax_other->the_post();
+        wc_get_template_part('content', 'product');
+    }
+    woocommerce_product_loop_end();
+
+    // Пагинация
+    // $total_pages = (int) ceil($total / $per_page);
+    // echo paginate_links([
+    //     'total'   => $total_pages,
+    //     'current' => $paged,
+    // ]);
+    wp_reset_postdata();
+} else {
+    wc_get_template('loop/no-products-found.php');
+}
 ?>
+
 
 
 
