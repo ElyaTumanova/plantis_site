@@ -72,7 +72,7 @@ do_action( 'woocommerce_before_main_content' );
 ?>
 <header class="woocommerce-products-header">
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+		<h1 class="woocommerce-products-header__title page-title">Рузельтаты поиска: <?php echo($s) ?></h1>
 	<?php endif; ?>
 
 	<?php
@@ -94,12 +94,14 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
 
     while ($query_ajax_plants->have_posts()) {
         $query_ajax_plants->the_post();
-        wc_get_template_part('content', 'product');
+        	do_action( 'woocommerce_shop_loop' );
+			    wc_get_template_part( 'content', 'product' );
     }
-    while ($query_ajax_other->have_posts()) {
-        $query_ajax_other->the_post();
-        wc_get_template_part('content', 'product');
-    }
+    // while ($query_ajax_other->have_posts()) {
+    //     $query_ajax_other->the_post();
+    //     do_action( 'woocommerce_shop_loop' );
+		// 	  wc_get_template_part( 'content', 'product' );
+    // }
 
     do_action( 'woocommerce_before_product_loop_end' );   //plnt new action 
     woocommerce_product_loop_end();

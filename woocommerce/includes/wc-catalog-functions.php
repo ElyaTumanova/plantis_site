@@ -99,7 +99,7 @@ function plnt_catalog_sidebar() {
 			</div>
 			<?php 
 			echo do_shortcode('[br_filter_single filter_id='.$filter_price_id.']'); // цена  \\56529 //6055
-			if (!is_shop()) {
+			if (!is_shop() || !is_page('search-results')) {
 				echo do_shortcode('[br_filter_single filter_id='.$filter_plant_type_id.']');
 				echo do_shortcode('[br_filter_single filter_id='.$filter_plant_name_id.']');
 				echo do_shortcode('[br_filter_single filter_id='.$filter_height_id.']'); // высота //56530 //6056
