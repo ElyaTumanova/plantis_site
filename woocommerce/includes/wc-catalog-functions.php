@@ -562,23 +562,10 @@ function shop_only_instock_products( $meta_query, $query ) {
 			)
 		);
 		return $meta_query;
-	}	else if (is_search()) {
-      $meta_query = array(
-        array(
-          'key' => '_stock_status',
-          'value' => 'outofstock',
-          'compare' => '='
-        )
-      );
-      return $meta_query;
-  }
-  else {
+	}	else {
 		return $meta_query;
 	}
 }
-
-// // убираем из результатов поиска товары не в наличии, кроме категории растений
-
 
 // // скрываем Treez Plants из результатов поиска 
 
