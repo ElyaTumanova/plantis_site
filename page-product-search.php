@@ -120,7 +120,7 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
 
     // Пагинация
     wc_get_template('loop/pagination.php', array(
-        'total'   => $total,
+        'total'   => $query_ajax_plants->max_num_pages,
         'current' => $paged,
         'base'    => esc_url_raw(str_replace(999999999, '%#%', get_pagenum_link(999999999, false))),
     ));
