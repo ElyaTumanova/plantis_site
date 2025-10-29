@@ -45,7 +45,7 @@ function plnt_catalog_products_wrap_start() {
 add_action('woocommerce_after_shop_loop','plnt_catalog_products_wrap_end',20);
 function plnt_catalog_products_wrap_end() {
 	?>
-		</div>
+		 </div> <!--catalog grid end -->
 	<?php 
 };
 

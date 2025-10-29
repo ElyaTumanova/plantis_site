@@ -115,7 +115,7 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
 }
 ?>
 
-</div>
+</div> <!--content-area end -->
 
 
 
