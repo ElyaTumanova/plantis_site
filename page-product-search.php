@@ -120,13 +120,25 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
 
     do_action( 'woocommerce_after_shop_loop' );
 
-    // Пагинация
-    $pagination_base = add_query_arg('paged', '%#%');
-    wc_get_template('loop/pagination.php', array(
-        'total'   => $query_ajax_plants->max_num_pages,
+     // ПРАВИЛЬНАЯ ПАГИНАЦИЯ
+    $big = 999999999; // need an unlikely integer
+    
+    // Создаем правильную базовую ссылку для пагинации
+    $pagination_args = array(
+        'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+        'format' => '?paged=%#%',
         'current' => $paged,
-        'base'    => $pagination_base,
-    ));
+        'total' => $query_ajax_plants->max_num_pages,
+        'prev_text' => '&larr;',
+        'next_text' => '&rarr;',
+        'type' => 'list',
+        'end_size' => 3,
+        'mid_size' => 3
+    );
+    
+    echo '<nav class="woocommerce-pagination">';
+    echo paginate_links($pagination_args);
+    echo '</nav>';
     wp_reset_postdata();
 } else {
    	do_action( 'woocommerce_no_products_found' );
