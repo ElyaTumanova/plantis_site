@@ -64,8 +64,9 @@ $query_ajax_other = new WP_Query($argOther);
 
 // $total = count($query_ajax_plants->posts) + count($query_ajax_other->posts);
 $total = count($query_ajax_plants->posts);
-echo($total);
-echo($query_ajax_plants->max_num_pages);
+// echo($total);
+// echo($query_ajax_plants->max_num_pages);
+echo($paged);
 
 get_header( 'shop' );
 
