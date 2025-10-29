@@ -16,7 +16,7 @@ global $plants_cat_id;
 $argPlants = array(
   'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
   'post_status' => 'publish',
-  's' => 'кашпо',
+  's' => 'замио',
   'orderby' => 'meta_value',
   'meta_key' => '_stock_status',
   'order' => 'ASC',
@@ -33,7 +33,7 @@ $argPlants = array(
 $argOther = array(
   'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
   'post_status' => 'publish',
-  's' => 'кашпо',
+  's' => 'замио',
   'orderby' => 'meta_value',
   'meta_key' => '_stock_status',
   'order' => 'ASC',
@@ -94,7 +94,7 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
     // Используем Woo-компоненты, чтобы сохранить верстку/сетки
     do_action('woocommerce_before_shop_loop');
     woocommerce_product_loop_start();
-    if ( wc_get_loop_prop( 'total' ) ) {
+  
       while ($query_ajax_plants->have_posts()) {
           $query_ajax_plants->the_post();
             do_action( 'woocommerce_shop_loop' );
@@ -105,7 +105,7 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
           do_action( 'woocommerce_shop_loop' );
           wc_get_template_part( 'content', 'product' );
       }
-    }
+
 
     do_action( 'woocommerce_before_product_loop_end' );   //plnt new action 
     woocommerce_product_loop_end();
