@@ -108,11 +108,11 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
             do_action( 'woocommerce_shop_loop' );
             wc_get_template_part( 'content', 'product' );
       }
-      // while ($query_ajax_other->have_posts()) {
-      //     $query_ajax_other->the_post();
-      //     do_action( 'woocommerce_shop_loop' );
-      //     wc_get_template_part( 'content', 'product' );
-      // }
+      while ($query_ajax_other->have_posts()) {
+          $query_ajax_other->the_post();
+          do_action( 'woocommerce_shop_loop' );
+          wc_get_template_part( 'content', 'product' );
+      }
 
 
     do_action( 'woocommerce_before_product_loop_end' );   //plnt new action 
