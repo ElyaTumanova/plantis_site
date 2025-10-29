@@ -20,7 +20,7 @@ $argPlants = array(
   'orderby' => 'meta_value',
   'meta_key' => '_stock_status',
   'order' => 'ASC',
-  'posts_per_page' => -1, // ← вот это определяет количество
+  'posts_per_page' => 12, // ← вот это определяет количество
   'paged' => $paged,
   'tax_query' => array(
       array(
@@ -63,7 +63,7 @@ $query_ajax_plants = new WP_Query($argPlants);
 $query_ajax_other = new WP_Query($argOther);
 
 // $total = count($query_ajax_plants->posts) + count($query_ajax_other->posts);
-$total = count($query_ajax_plants->posts);
+// $total = count($query_ajax_plants->posts);
 // echo($total);
 echo($query_ajax_plants->max_num_pages);
 // echo($paged);
@@ -121,10 +121,11 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
     do_action( 'woocommerce_after_shop_loop' );
 
     // Пагинация
+    $pagination_base = add_query_arg('paged', '%#%');
     wc_get_template('loop/pagination.php', array(
         'total'   => $query_ajax_plants->max_num_pages,
         'current' => $paged,
-        'base'    => esc_url_raw(str_replace(999999999, '%#%', get_pagenum_link(999999999, false))),
+        'base'    => $pagination_base,
     ));
     wp_reset_postdata();
 } else {
