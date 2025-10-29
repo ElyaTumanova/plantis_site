@@ -3,9 +3,35 @@
  * Template Name: Product Search (Custom)
  */
 
-get_header(); 
 get_header( 'shop' );
 
+/**
+ * Hook: woocommerce_before_main_content.
+ *
+ * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+ * @hooked woocommerce_breadcrumb - 20
+ * @hooked WC_Structured_Data::generate_website_data() - 30
+ */
+do_action( 'woocommerce_before_main_content' );
+
+?>
+<header class="woocommerce-products-header">
+	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+	<?php endif; ?>
+
+	<?php
+	/**
+	 * Hook: woocommerce_archive_description.
+	 *
+	 * @hooked woocommerce_taxonomy_archive_description - 10
+	 * @hooked woocommerce_product_archive_description - 10
+	 */
+	do_action( 'woocommerce_archive_description' );
+	?>
+</header>
+<div  class="contenr-area">
+<?php
 
 $s = get_search_query(); // строка поиска из ?s=
 $paged = max(1, (int) get_query_var('paged'));
@@ -87,6 +113,8 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
     wc_get_template('loop/no-products-found.php');
 }
 ?>
+
+</div>
 
 
 
