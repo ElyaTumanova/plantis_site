@@ -63,7 +63,7 @@ $product_sku_id_other = wc_get_product_id_by_sku( $query_ajax_other->query_vars[
 $product_sku_id = $product_sku_id_plants ?: $product_sku_id_other ?: 0;
 
 if ($product_sku_id) {
-  $all_ids = $product_sku_id;
+  $all_ids = [$product_sku_id];
 } else {
   $ids_plants = array_map('intval', (array) $query_ajax_plants->posts);
   $ids_others = array_map('intval', (array) $query_ajax_other->posts);
