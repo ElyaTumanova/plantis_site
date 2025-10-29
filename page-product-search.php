@@ -58,6 +58,8 @@ $argOther = array(
 $query_ajax_plants = new WP_Query($argPlants);
 $query_ajax_other = new WP_Query($argOther);
 
+$total = count($query_ajax_plants->posts) + count($query_ajax_other->posts)
+
 get_header( 'shop' );
 
 /**
@@ -109,11 +111,11 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
     do_action( 'woocommerce_after_shop_loop' );
 
     // Пагинация
-    // $total_pages = (int) ceil($total / $per_page);
-    // echo paginate_links([
-    //     'total'   => $total_pages,
-    //     'current' => $paged,
-    // ]);
+    $total_pages = (int) ceil($total / $per_page);
+    echo paginate_links([
+        'total'   => $total_pages,
+        'current' => $paged,
+    ]);
     wp_reset_postdata();
 } else {
    	do_action( 'woocommerce_no_products_found' );
