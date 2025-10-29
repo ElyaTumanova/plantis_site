@@ -64,6 +64,7 @@ $query_ajax_other = new WP_Query($argOther);
 
 // $total = count($query_ajax_plants->posts) + count($query_ajax_other->posts);
 $total = count($query_ajax_plants->posts);
+echo($total);
 
 get_header( 'shop' );
 
@@ -118,7 +119,7 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
     do_action( 'woocommerce_after_shop_loop' );
 
     // Пагинация
-      wc_get_template('loop/pagination.php', array(
+    wc_get_template('loop/pagination.php', array(
         'total'   => $total,
         'current' => $paged,
         'base'    => esc_url_raw(str_replace(999999999, '%#%', get_pagenum_link(999999999, false))),
