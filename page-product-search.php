@@ -39,7 +39,7 @@ $argOther = array(
   'orderby' => 'meta_value',
   'meta_key' => '_stock_status',
   'order' => 'ASC',
-  'posts_per_page' => 12, // ← вот это определяет количество
+  'posts_per_page' => -1, // ← вот это определяет количество
   'paged' => $paged,
   'meta_query' => array( 
       array(
@@ -65,8 +65,8 @@ $query_ajax_other = new WP_Query($argOther);
 // $total = count($query_ajax_plants->posts) + count($query_ajax_other->posts);
 $total = count($query_ajax_plants->posts);
 // echo($total);
-// echo($query_ajax_plants->max_num_pages);
-echo($paged);
+echo($query_ajax_plants->max_num_pages);
+// echo($paged);
 
 get_header( 'shop' );
 
