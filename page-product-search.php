@@ -17,11 +17,12 @@ $argPlants = array(
   'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
   'post_status' => 'publish',
   's' => 'замио',
+  'fields'         => 'ids',
+  'posts_per_page' => -1,
+  'no_found_rows'  => true,
   'orderby' => 'meta_value',
   'meta_key' => '_stock_status',
   'order' => 'ASC',
-  'posts_per_page' => 12, // ← вот это определяет количество
-  'paged' => $paged,
   'tax_query' => array(
       array(
           'taxonomy' => 'product_cat',
@@ -36,11 +37,12 @@ $argOther = array(
   'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
   'post_status' => 'publish',
   's' => 'замио',
+  'fields'         => 'ids',
+  'posts_per_page' => -1,
+  'no_found_rows'  => true,
   'orderby' => 'meta_value',
   'meta_key' => '_stock_status',
   'order' => 'ASC',
-  'posts_per_page' => 12, // ← вот это определяет количество
-  'paged' => $paged,
   'meta_query' => array( 
       array(
           'key'       => '_stock_status',
@@ -62,11 +64,19 @@ $argOther = array(
 $query_ajax_plants = new WP_Query($argPlants);
 $query_ajax_other = new WP_Query($argOther);
 
-// $total = count($query_ajax_plants->posts) + count($query_ajax_other->posts);
-// $total = count($query_ajax_plants->posts);
-// echo($total);
-echo($query_ajax_plants->max_num_pages);
-// echo($paged);
+$ids_plants = array_map('intval', (array) $query_ajax_plants->posts);
+$ids_others = array_map('intval', (array) $query_ajax_other->posts);
+$all_ids = array_values(array_unique(array_merge($ids_plants, $ids_others)));
+
+$q_page = new WP_Query([
+    'post_type'      => 'product',
+    'post_status'    => 'publish',
+    'post__in'       => $page_ids,
+    'orderby'        => 'post__in',
+    'posts_per_page' => 12,
+    'paged' => $paged,
+    'no_found_rows'  => true,
+]);
 
 get_header( 'shop' );
 
@@ -97,23 +107,17 @@ do_action( 'woocommerce_before_main_content' );
 </header>
 <?php
 
-if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
+if ($q_page->have_posts()) {
 
     // Используем Woo-компоненты, чтобы сохранить верстку/сетки
     do_action('woocommerce_before_shop_loop');
     woocommerce_product_loop_start();
   
-      while ($query_ajax_plants->have_posts()) {
-          $query_ajax_plants->the_post();
+      while ($q_page->have_posts()) {
+          $q_page->the_post();
             do_action( 'woocommerce_shop_loop' );
             wc_get_template_part( 'content', 'product' );
       }
-      while ($query_ajax_other->have_posts()) {
-          $query_ajax_other->the_post();
-          do_action( 'woocommerce_shop_loop' );
-          wc_get_template_part( 'content', 'product' );
-      }
-
 
     do_action( 'woocommerce_before_product_loop_end' );   //plnt new action 
     woocommerce_product_loop_end();
@@ -126,7 +130,7 @@ if ($query_ajax_plants->have_posts() || $query_ajax_other->have_posts()) {
         'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
         'format' => '?paged=%#%',
         'current' => $paged,
-        'total' => $query_ajax_plants->max_num_pages,
+        'total' => $q_page->max_num_pages,
         'prev_text' => '&larr;',
         'next_text' => '&rarr;',
         'type' => 'list',
