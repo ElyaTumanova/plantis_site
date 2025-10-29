@@ -336,7 +336,7 @@ add_action('woocommerce_before_product_loop_end','plnt_img_gallery_swiper_init',
 
 function plnt_catalog_gallery() {
 
-	if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() || is_page('search-result')) {
+	if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() || is_page('search-results')) {
 		global $product;
 		$image = $product->get_image('large', array('itemprop'=>'image'));	//schema.org
 		$attachment_ids = $product->get_gallery_image_ids();
