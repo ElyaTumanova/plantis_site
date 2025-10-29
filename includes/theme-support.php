@@ -146,6 +146,7 @@ function check_301redirect_tax_url(){
 add_filter('query_vars', function ($vars) {
     $vars[] = 'gen';
     $vars[] = 'plant';
+    $vars[] = 's';
     return $vars;
 });
 
