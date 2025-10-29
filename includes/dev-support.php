@@ -331,13 +331,13 @@ function show_image_sizes() {
 
 
 
-add_action('template_redirect', function(){
-    if (is_search() && (get_query_var('post_type') === 'product' || isset($_GET['post_type']) && $_GET['post_type'] === 'product')) {
-        $url = add_query_arg([
-            's' => get_search_query(),
-            'paged' => max(1, (int) get_query_var('paged')),
-        ], home_url('/search-results/')); // слаг вашей страницы
-        wp_safe_redirect($url, 302);
-        exit;
-    }
-});
+// add_action('template_redirect', function(){
+//     if (is_search() && (get_query_var('post_type') === 'product' || isset($_GET['post_type']) && $_GET['post_type'] === 'product')) {
+//         $url = add_query_arg([
+//             's' => get_search_query(),
+//             'paged' => max(1, (int) get_query_var('paged')),
+//         ], home_url('/search-results/')); // слаг вашей страницы
+//         wp_safe_redirect($url, 302);
+//         exit;
+//     }
+// });
