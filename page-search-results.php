@@ -80,6 +80,13 @@ $q_page = new WP_Query([
     'no_found_rows'  => false,
 ]);
 
+// Сохраняем оригинальный запрос
+global $wp_query;
+$original_query = $wp_query;
+
+// Подменяем основной запрос на наш для работы WooCommerce функций
+$wp_query = $q_page;
+
 get_header( 'shop' );
 
 /**
@@ -94,7 +101,7 @@ do_action( 'woocommerce_before_main_content' );
 ?>
 <header class="woocommerce-products-header">
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title">Результаты поиска: <?php if ($product_sku_id){echo('Артикул: ');}; echo esc_html($search) ?></h1>
+		<h1 class="woocommerce-products-header__title page-title">Результаты поиска: <?php if ($product_sku_id){echo('Артикул ');}; echo esc_html($search) ?></h1>
 	<?php endif; ?>
 
 	<?php
@@ -145,8 +152,9 @@ if ($q_page->have_posts()) {
     echo '</nav>';
 
     do_action( 'woocommerce_after_shop_loop' );
-
     
+    // Восстанавливаем оригинальный запрос
+    $wp_query = $original_query;
     wp_reset_postdata();
 } else {
    	do_action( 'woocommerce_no_products_found' );
