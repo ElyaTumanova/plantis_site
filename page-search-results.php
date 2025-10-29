@@ -58,9 +58,17 @@ $argOther = array(
 $query_ajax_plants = new WP_Query($argPlants);
 $query_ajax_other = new WP_Query($argOther);
 
-$ids_plants = array_map('intval', (array) $query_ajax_plants->posts);
-$ids_others = array_map('intval', (array) $query_ajax_other->posts);
-$all_ids = array_values(array_unique(array_merge($ids_plants, $ids_others)));
+$product_sku_id_plants = wc_get_product_id_by_sku( $query_ajax_plants->query_vars[ 's' ] );
+$product_sku_id_other = wc_get_product_id_by_sku( $query_ajax_other->query_vars[ 's' ] );
+$product_sku_id = $product_sku_id_plants ?: $product_sku_id_other ?: 0;
+
+if ($product_sku_id) {
+  $all_ids = $product_sku_id;
+} else {
+  $ids_plants = array_map('intval', (array) $query_ajax_plants->posts);
+  $ids_others = array_map('intval', (array) $query_ajax_other->posts);
+  $all_ids = array_values(array_unique(array_merge($ids_plants, $ids_others)));
+}
 
 $q_page = new WP_Query([
     'post_type'      => 'product',

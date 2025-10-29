@@ -59,9 +59,6 @@ function plnt_search_ajax_action_callback (){
     );
     $query_ajax_plants = new WP_Query($argPlants);
     $query_ajax_other = new WP_Query($argOther);
-    // $query_ajax = array_merge($query_ajax_plants->posts, $query_ajax_other->posts);
-
-    
 
     $product_sku_id_plants = wc_get_product_id_by_sku( $query_ajax_plants->query_vars[ 's' ] );
     $product_sku_id_other = wc_get_product_id_by_sku( $query_ajax_other->query_vars[ 's' ] );
