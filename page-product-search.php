@@ -5,7 +5,7 @@
 
 $s = get_search_query(); // строка поиска из ?s=
 $paged = max(1, (int) get_query_var('paged'));
-$per_page = 24;
+$per_page = 4;
 
 echo($s);
 
