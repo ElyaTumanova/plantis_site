@@ -1,5 +1,5 @@
 <?php 
-$search = get_search_query(); // строка поиска из ?s=
+$search = get_query_var('search'); 
 $paged = max(1, (int) get_query_var('paged'));
 $per_page = 24;
 
