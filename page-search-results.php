@@ -3,9 +3,14 @@ $search = get_query_var('search');
 $paged = max(1, (int) get_query_var('paged'));
 $per_page = 24;
 
-global $plants_treez_cat_id;
-global $peresadka_cat_id;
-global $plants_cat_id;
+global $plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id;
+
+/** 1) Читаем orderby и получаем правильные аргументы сортировки от Woo */
+$orderby_value = isset($_GET['orderby'])
+    ? wc_clean( wp_unslash( $_GET['orderby'] ) )
+    : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby', 'menu_order' ) );
+
+$ordering_args = WC()->query->get_catalog_ordering_args( $orderby_value );
 
 $argPlants = array(
   'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
@@ -70,22 +75,23 @@ if ($product_sku_id) {
   $all_ids = array_values(array_unique(array_merge($ids_plants, $ids_others)));
 }
 
-$q_page = new WP_Query([
+$q_args = [
     'post_type'      => 'product',
     'post_status'    => 'publish',
     'post__in'       => $all_ids,
-    'orderby'        => 'post__in',
+    'orderby'        => $ordering_args['orderby'],
+    'order'          => $ordering_args['order'],
     'posts_per_page' => 12,
     'paged' => $paged,
+    'ignore_sticky_posts' => true,
     'no_found_rows'  => false,
-]);
+];
 
-// Сохраняем оригинальный запрос
-global $wp_query;
-$original_query = $wp_query;
+if ( ! empty( $ordering_args['meta_key'] ) ) {
+  $q_args['meta_key'] = $ordering_args['meta_key']; // нужно для price/popularity/rating
+}
 
-// Подменяем основной запрос на наш для работы WooCommerce функций
-$wp_query = $q_page;
+$q_page = new WP_Query( $q_args );
 
 get_header( 'shop' );
 
@@ -143,8 +149,12 @@ if ($q_page->have_posts()) {
         'prev_text' => '&larr;',
         'next_text' => '&rarr;',
         'type' => 'list',
-        'end_size' => 3,
-        'mid_size' => 3
+        'end_size' => 2,
+        'mid_size' => 1,
+        'add_args'  => array(
+          'orderby' => $orderby_value, // ← сохраняем выбранную сортировку
+          'search'  => $search,        // ← и строку поиска, если вы храните её в query_var 'search'
+        ),
     );
     
     echo '<nav class="woocommerce-pagination">';
@@ -152,9 +162,8 @@ if ($q_page->have_posts()) {
     echo '</nav>';
 
     do_action( 'woocommerce_after_shop_loop' );
+
     
-    // Восстанавливаем оригинальный запрос
-    $wp_query = $original_query;
     wp_reset_postdata();
 } else {
    	do_action( 'woocommerce_no_products_found' );
