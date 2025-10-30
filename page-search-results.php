@@ -6,11 +6,11 @@ $per_page = 24;
 global $plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id;
 
 /** 1) Читаем orderby и получаем правильные аргументы сортировки от Woo */
-// $orderby_value = isset($_GET['orderby'])
-//     ? wc_clean( wp_unslash( $_GET['orderby'] ) )
-//     : 'popularity';
+$orderby_value = isset($_GET['orderby'])
+    ? wc_clean( wp_unslash( $_GET['orderby'] ) )
+    : 'post__in';
 
-// $ordering_args = WC()->query->get_catalog_ordering_args( $orderby_value );
+$ordering_args = WC()->query->get_catalog_ordering_args( $orderby_value );
 
 $argPlants = array(
   'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
@@ -79,9 +79,9 @@ $q_args = [
     'post_type'      => 'product',
     'post_status'    => 'publish',
     'post__in'       => $all_ids,
-    'orderby'        => 'post__in',
-    // 'orderby'        => $ordering_args['orderby'],
-    // 'order'          => $ordering_args['order'],
+    // 'orderby'        => 'post__in',
+    'orderby'        => $ordering_args['orderby'],
+    'order'          => $ordering_args['order'],
     'posts_per_page' => $per_page,
     'paged' => $paged,
     'ignore_sticky_posts' => true,
@@ -90,13 +90,13 @@ $q_args = [
 
 
 
-if ( isset($_GET['orderby']) ) {
-    $q_args['orderby']        = $ordering_args['orderby'];
-    $q_args['order']        = $ordering_args['order'];
-    if ( ! empty( $ordering_args['meta_key'] ) ) {
-      $q_args['meta_key'] = $ordering_args['meta_key']; // нужно для price/popularity/rating
-    }
-} 
+// if ( isset($_GET['orderby']) ) {
+//     $q_args['orderby']        = $ordering_args['orderby'];
+//     $q_args['order']        = $ordering_args['order'];
+//     if ( ! empty( $ordering_args['meta_key'] ) ) {
+//       $q_args['meta_key'] = $ordering_args['meta_key']; // нужно для price/popularity/rating
+//     }
+// } 
 
 
 $q_page = new WP_Query( $q_args );
