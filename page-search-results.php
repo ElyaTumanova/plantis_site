@@ -6,11 +6,11 @@ $per_page = 24;
 global $plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id;
 
 /** 1) Читаем orderby и получаем правильные аргументы сортировки от Woo */
-$orderby_value = isset($_GET['orderby'])
-    ? wc_clean( wp_unslash( $_GET['orderby'] ) )
-    : 'popularity';
+// $orderby_value = isset($_GET['orderby'])
+//     ? wc_clean( wp_unslash( $_GET['orderby'] ) )
+//     : 'popularity';
 
-$ordering_args = WC()->query->get_catalog_ordering_args( $orderby_value );
+// $ordering_args = WC()->query->get_catalog_ordering_args( $orderby_value );
 
 $argPlants = array(
   'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
@@ -79,9 +79,9 @@ $q_args = [
     'post_type'      => 'product',
     'post_status'    => 'publish',
     'post__in'       => $all_ids,
-    // 'orderby'        => 'post__in',
-    'orderby'        => $ordering_args['orderby'],
-    'order'          => $ordering_args['order'],
+    'orderby'        => 'post__in',
+    // 'orderby'        => $ordering_args['orderby'],
+    // 'order'          => $ordering_args['order'],
     'posts_per_page' => $per_page,
     'paged' => $paged,
     'ignore_sticky_posts' => true,
@@ -90,18 +90,13 @@ $q_args = [
 
 
 
-// if ( isset($_GET['orderby']) ) {
-//     // $total    = count( $all_ids );
-//     // $offset   = ( max(1,(int)$paged) - 1 ) * (int)$per_page;
-//     // $page_ids = array_slice( $all_ids, $offset, $per_page );
-
-//     // Отдаем WP только ID текущей страницы и фиксируем порядок именно как в $all_ids
-//     $q_args['orderby']        = $ordering_args['orderby'];
-//     $q_args['order']        = $ordering_args['order'];
-//     if ( ! empty( $ordering_args['meta_key'] ) ) {
-//       $q_args['meta_key'] = $ordering_args['meta_key']; // нужно для price/popularity/rating
-//     }
-// } 
+if ( isset($_GET['orderby']) ) {
+    $q_args['orderby']        = $ordering_args['orderby'];
+    $q_args['order']        = $ordering_args['order'];
+    if ( ! empty( $ordering_args['meta_key'] ) ) {
+      $q_args['meta_key'] = $ordering_args['meta_key']; // нужно для price/popularity/rating
+    }
+} 
 
 
 $q_page = new WP_Query( $q_args );
@@ -113,13 +108,6 @@ wc_set_loop_prop( 'total', (int) $q_page->found_posts );
 
 get_header( 'shop' );
 
-/**
- * Hook: woocommerce_before_main_content.
- *
- * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
- * @hooked woocommerce_breadcrumb - 20
- * @hooked WC_Structured_Data::generate_website_data() - 30
- */
 do_action( 'woocommerce_before_main_content' );
 
 ?>
@@ -128,15 +116,7 @@ do_action( 'woocommerce_before_main_content' );
 		<h1 class="woocommerce-products-header__title page-title">Результаты поиска: <?php if ($product_sku_id){echo('Артикул ');}; echo esc_html($search) ?></h1>
 	<?php endif; ?>
 
-	<?php
-	/**
-	 * Hook: woocommerce_archive_description.
-	 *
-	 * @hooked woocommerce_taxonomy_archive_description - 10
-	 * @hooked woocommerce_product_archive_description - 10
-	 */
-	do_action( 'woocommerce_archive_description' );
-	?>
+	<?php	do_action( 'woocommerce_archive_description' );?>
 </header>
 <?php
 
