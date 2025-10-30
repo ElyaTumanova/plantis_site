@@ -81,7 +81,7 @@ $q_args = [
     'post__in'       => $all_ids,
     'orderby'        => $ordering_args['orderby'],
     'order'          => $ordering_args['order'],
-    'posts_per_page' => 12,
+    'posts_per_page' => $per_page,
     'paged' => $paged,
     'ignore_sticky_posts' => true,
     'no_found_rows'  => false,
@@ -92,6 +92,11 @@ if ( ! empty( $ordering_args['meta_key'] ) ) {
 }
 
 $q_page = new WP_Query( $q_args );
+
+wc_set_loop_prop( 'is_paginated', $q_page->max_num_pages > 1 );
+wc_set_loop_prop( 'page', $paged );
+wc_set_loop_prop( 'per_page', $per_page );            // у вас 24
+wc_set_loop_prop( 'total', (int) $q_page->found_posts );
 
 get_header( 'shop' );
 
@@ -126,6 +131,7 @@ if ($q_page->have_posts()) {
 
     // Используем Woo-компоненты, чтобы сохранить верстку/сетки
     do_action('woocommerce_before_shop_loop');
+    plnt_woocommerce_catalog_ordering();
     woocommerce_product_loop_start();
   
       while ($q_page->have_posts()) {
