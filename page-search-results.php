@@ -165,10 +165,10 @@ if ($q_page->have_posts()) {
         'type' => 'list',
         'end_size' => 2,
         'mid_size' => 1,
-        'add_args'  => array(
-          'orderby' => $orderby_value, // ← сохраняем выбранную сортировку
-          'search'  => $search,        // ← и строку поиска, если вы храните её в query_var 'search'
-        ),
+        // 'add_args'  => array(
+        //   'orderby' => $orderby_value, // ← сохраняем выбранную сортировку
+        //   'search'  => $search,        // ← и строку поиска, если вы храните её в query_var 'search'
+        // ),
     );
     
     echo '<nav class="woocommerce-pagination">';
