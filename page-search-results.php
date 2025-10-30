@@ -79,36 +79,30 @@ $q_args = [
     'post_type'      => 'product',
     'post_status'    => 'publish',
     'post__in'       => $all_ids,
-    'orderby'        => $ordering_args['orderby'],
-    'order'          => $ordering_args['order'],
+    'orderby'        => 'post__in',
+    // 'orderby'        => $ordering_args['orderby'],
+    // 'order'          => $ordering_args['order'],
     'posts_per_page' => $per_page,
     'paged' => $paged,
     'ignore_sticky_posts' => true,
     'no_found_rows'  => false,
 ];
 
-if ( ! empty( $ordering_args['meta_key'] ) ) {
-  $q_args['meta_key'] = $ordering_args['meta_key']; // нужно для price/popularity/rating
-}
 
-if ( empty($_GET['orderby']) || $_GET['orderby'] === 'menu_order' ) {
+
+if ( $_GET['orderby'] ) {
     // $total    = count( $all_ids );
     // $offset   = ( max(1,(int)$paged) - 1 ) * (int)$per_page;
     // $page_ids = array_slice( $all_ids, $offset, $per_page );
 
     // Отдаем WP только ID текущей страницы и фиксируем порядок именно как в $all_ids
-    $q_args['post__in']       = $all_ids;
-    $q_args['orderby']        = 'post__in';
-    unset( $q_args['meta_key'] ); // на всякий случай не мешаем 'post__in'
-
-    // // Чтобы пагинация считалась верно
-    // $fake_found_posts = $total;
+    $q_args['orderby']        = $ordering_args['orderby'];
+    $q_args['order']        = $ordering_args['order'];
+    if ( ! empty( $ordering_args['meta_key'] ) ) {
+      $q_args['meta_key'] = $ordering_args['meta_key']; // нужно для price/popularity/rating
+    }
 } 
-// else {
-//     // Пользователь выбрал сортировку — пусть сортирует ВНУТРИ множества $all_ids
-//     // (оставляем post__in полным списком, а сортировку задает Woo аргументами)
-//     $fake_found_posts = null;
-// }
+
 
 $q_page = new WP_Query( $q_args );
 
