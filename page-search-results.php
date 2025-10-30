@@ -79,7 +79,6 @@ $q_args = [
     'post_type'      => 'product',
     'post_status'    => 'publish',
     'post__in'       => $all_ids,
-    // 'orderby'        => 'post__in',
     'orderby'        => $ordering_args['orderby'],
     'order'          => $ordering_args['order'],
     'posts_per_page' => $per_page,
@@ -88,15 +87,10 @@ $q_args = [
     'no_found_rows'  => false,
 ];
 
+if ( ! empty( $ordering_args['meta_key'] ) ) {
+    $q_args['meta_key'] = $ordering_args['meta_key'];       // для цены будет '_price'
+}
 
-
-// if ( isset($_GET['orderby']) ) {
-//     $q_args['orderby']        = $ordering_args['orderby'];
-//     $q_args['order']        = $ordering_args['order'];
-//     if ( ! empty( $ordering_args['meta_key'] ) ) {
-//       $q_args['meta_key'] = $ordering_args['meta_key']; // нужно для price/popularity/rating
-//     }
-// } 
 
 
 $q_page = new WP_Query( $q_args );
