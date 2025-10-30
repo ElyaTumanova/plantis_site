@@ -6,11 +6,11 @@ $per_page = 24;
 global $plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id;
 
 /** 1) Читаем orderby и получаем правильные аргументы сортировки от Woo */
-$orderby_value = isset($_GET['orderby'])
-    ? wc_clean( wp_unslash( $_GET['orderby'] ) )
-    : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby', 'menu_order' ) );
+// $orderby_value = isset($_GET['orderby'])
+//     ? wc_clean( wp_unslash( $_GET['orderby'] ) )
+//     : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby', 'menu_order' ) );
 
-$ordering_args = WC()->query->get_catalog_ordering_args( $orderby_value );
+// $ordering_args = WC()->query->get_catalog_ordering_args( $orderby_value );
 
 $argPlants = array(
   'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
