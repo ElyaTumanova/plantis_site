@@ -12,6 +12,21 @@ $orderby_value = isset($_GET['orderby'])
 
 $ordering_args = WC()->query->get_catalog_ordering_args( $orderby_value );
 
+$added_filters = [];
+if ( $orderby_value === 'price' ) {
+    add_filter( 'posts_clauses', [ WC()->query, 'order_by_price_asc_post_clauses' ] );
+    $added_filters[] = [ 'posts_clauses', [ WC()->query, 'order_by_price_asc_post_clauses' ] ];
+} elseif ( $orderby_value === 'price-desc' ) {
+    add_filter( 'posts_clauses', [ WC()->query, 'order_by_price_desc_post_clauses' ] );
+    $added_filters[] = [ 'posts_clauses', [ WC()->query, 'order_by_price_desc_post_clauses' ] ];
+} elseif ( $orderby_value === 'popularity' ) {
+    add_filter( 'posts_clauses', [ WC()->query, 'order_by_popularity_post_clauses' ] );
+    $added_filters[] = [ 'posts_clauses', [ WC()->query, 'order_by_popularity_post_clauses' ] ];
+} elseif ( $orderby_value === 'rating' ) {
+    add_filter( 'posts_clauses', [ WC()->query, 'order_by_rating_post_clauses' ] );
+    $added_filters[] = [ 'posts_clauses', [ WC()->query, 'order_by_rating_post_clauses' ] ];
+}
+
 $argPlants = array(
   'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
   'post_status' => 'publish',
@@ -88,12 +103,19 @@ $q_args = [
 ];
 
 if ( ! empty( $ordering_args['meta_key'] ) ) {
-    $q_args['meta_key'] = $ordering_args['meta_key'];       // для цены будет '_price'
+    $q_args['meta_key']  = $ordering_args['meta_key'];      // '_price' или 'total_sales'
+    if ( $orderby_value === 'price' || $orderby_value === 'price-desc' ) {
+        $q_args['meta_type'] = 'DECIMAL';                   // чтобы точно числовая сортировка
+    }
 }
 
 
 
 $q_page = new WP_Query( $q_args );
+
+foreach ( $added_filters as $af ) {
+    remove_filter( $af[0], $af[1] );
+}
 
 wc_set_loop_prop( 'is_paginated', $q_page->max_num_pages > 1 );
 wc_set_loop_prop( 'page', $paged );
