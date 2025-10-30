@@ -90,7 +90,7 @@ $q_args = [
 
 
 
-if ( $_GET['orderby'] ) {
+if ( isset($_GET['orderby']) ) {
     // $total    = count( $all_ids );
     // $offset   = ( max(1,(int)$paged) - 1 ) * (int)$per_page;
     // $page_ids = array_slice( $all_ids, $offset, $per_page );
