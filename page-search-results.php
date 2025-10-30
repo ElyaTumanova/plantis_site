@@ -91,11 +91,30 @@ if ( ! empty( $ordering_args['meta_key'] ) ) {
   $q_args['meta_key'] = $ordering_args['meta_key']; // нужно для price/popularity/rating
 }
 
+if ( empty($_GET['orderby']) || $_GET['orderby'] === 'menu_order' ) {
+    // $total    = count( $all_ids );
+    // $offset   = ( max(1,(int)$paged) - 1 ) * (int)$per_page;
+    // $page_ids = array_slice( $all_ids, $offset, $per_page );
+
+    // Отдаем WP только ID текущей страницы и фиксируем порядок именно как в $all_ids
+    $q_args['post__in']       = $all_ids;
+    $q_args['orderby']        = 'post__in';
+    unset( $q_args['meta_key'] ); // на всякий случай не мешаем 'post__in'
+
+    // // Чтобы пагинация считалась верно
+    // $fake_found_posts = $total;
+} 
+// else {
+//     // Пользователь выбрал сортировку — пусть сортирует ВНУТРИ множества $all_ids
+//     // (оставляем post__in полным списком, а сортировку задает Woo аргументами)
+//     $fake_found_posts = null;
+// }
+
 $q_page = new WP_Query( $q_args );
 
 wc_set_loop_prop( 'is_paginated', $q_page->max_num_pages > 1 );
 wc_set_loop_prop( 'page', $paged );
-wc_set_loop_prop( 'per_page', $per_page );            // у вас 24
+wc_set_loop_prop( 'per_page', $per_page );
 wc_set_loop_prop( 'total', (int) $q_page->found_posts );
 
 get_header( 'shop' );
@@ -131,7 +150,6 @@ if ($q_page->have_posts()) {
 
     // Используем Woo-компоненты, чтобы сохранить верстку/сетки
     do_action('woocommerce_before_shop_loop');
-    plnt_woocommerce_catalog_ordering();
     woocommerce_product_loop_start();
   
       while ($q_page->have_posts()) {
