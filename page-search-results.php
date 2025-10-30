@@ -152,11 +152,19 @@ if ($q_page->have_posts()) {
     woocommerce_product_loop_end();
 
      // ПРАВИЛЬНАЯ ПАГИНАЦИЯ
-    $big = 999999999; // need an unlikely integer
+    // канонический URL вашей страницы результатов без query-параметров
+    $base_url = get_permalink(); // например /search-results/
+
+    // соберём один раз все параметры, которые хотим сохранять между страницами
+    $add_args = array(
+        'orderby' => $orderby_value,      // текущая сортировка
+        'search'  => $search,             // ваша строка поиска (если используете кастомный параметр)
+        // если вместо 'search' используете стандартный WordPress 's', то: 's' => get_search_query(),
+    );
     
     // Создаем правильную базовую ссылку для пагинации
     $pagination_args = array(
-        'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+        'base' => esc_url_raw( add_query_arg( 'paged', '%#%', $base_url ) ),
         'format' => '?paged=%#%',
         'current' => $paged,
         'total' => $q_page->max_num_pages,
@@ -165,10 +173,7 @@ if ($q_page->have_posts()) {
         'type' => 'list',
         'end_size' => 2,
         'mid_size' => 1,
-        // 'add_args'  => array(
-        //   'orderby' => $orderby_value, // ← сохраняем выбранную сортировку
-        //   'search'  => $search,        // ← и строку поиска, если вы храните её в query_var 'search'
-        // ),
+        'add_args'  => $add_args,
     );
     
     echo '<nav class="woocommerce-pagination">';
