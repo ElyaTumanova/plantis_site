@@ -488,11 +488,15 @@
 
     transition:
     opacity .5s ease-in-out,
-    visibility 0s linear .5s; 
+    visibility 0s linear .5s,
+    margin-top .3s; 
 
-    margin-top: var(--marginTopOffset);
+    margin-top: 0;
 }
 
+.search__wrap.scrollhidden {
+    margin-top: var(--marginTopOffset);
+}
 .search__wrap.search_open {
     opacity: 1;
     visibility: visible;
