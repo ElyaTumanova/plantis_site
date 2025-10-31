@@ -1,13 +1,5 @@
 <?php 
-// $search = get_query_var('search'); 
-
-$search = get_search_query(); // = $_GET['s'] безопасно
-global $wp_query;
-$wp_query->is_search = true;
-$wp_query->is_404    = false;
-status_header(200);
-
-
+$search = get_query_var('search'); 
 $paged = max(1, (int) get_query_var('paged'));
 $per_page = 24;
 
