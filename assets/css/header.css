@@ -485,6 +485,8 @@
     transition:
     opacity .5s ease-in-out,
     visibility 0s linear .5s; 
+    
+    margin-top: var(--marginTopOffset);
 }
 
 .search__wrap.search_open {
