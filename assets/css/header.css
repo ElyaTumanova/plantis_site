@@ -514,7 +514,7 @@
 @media((max-width: 1279px)) {
   .search__wrap {
     position: fixed;
-    top: 13px;
+    top: 12px;
     opacity: 0;
     visibility: visible;
     z-index: -1;
