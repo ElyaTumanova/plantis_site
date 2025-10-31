@@ -488,11 +488,11 @@
     opacity: 0;
     pointer-events: none;
 
-    /* transition:
+    transition:
     opacity .5s ease-in-out,
     visibility 0s linear .5s,
-    transform .3s ease;  */
-    transition: all .3s;
+    transform .3s ease; 
+    /* transition: all .3s; */
 }
 
 .search__wrap.scrollhidden {
@@ -504,7 +504,8 @@
     pointer-events: auto;
     transition:
     opacity .5s ease-in-out,
-    visibility 0s;
+    visibility 0s,
+    transform .3s ease;
 }
 
 
