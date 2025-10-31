@@ -479,6 +479,8 @@
     left: 50%;
     transform: translateX(-50%);
 
+    margin-top: 0;
+
     background: var(--background);
     width: 800px;
 
@@ -489,13 +491,12 @@
     transition:
     opacity .5s ease-in-out,
     visibility 0s linear .5s,
-    margin-top .3s; 
-
-    margin-top: 0;
+    transform .3s; 
 }
 
 .search__wrap.scrollhidden {
-    margin-top: var(--marginTopOffset);
+    /* margin-top: var(--marginTopOffset); */
+    transform: translateX(-50%) translateY(var(--marginTopOffset));
 }
 .search__wrap.search_open {
     opacity: 1;
