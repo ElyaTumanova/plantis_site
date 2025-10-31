@@ -53,9 +53,9 @@
     transition: all .3s ease;
 }
 
-.header__main.scrollhidden {
+/* .header__main.scrollhidden {
   margin-top: var(--marginTopOffset);
-}
+} */
 
 .header__main .container {
     display: flex;
