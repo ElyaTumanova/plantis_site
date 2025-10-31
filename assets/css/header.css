@@ -50,7 +50,7 @@
     position: relative;
     background-color: var(--background);
     margin-top: 0;
-    transition: all .3s ease;
+    transition: all .3s;
 }
 
 /* .header__main.scrollhidden {
@@ -488,10 +488,11 @@
     opacity: 0;
     pointer-events: none;
 
-    transition:
+    /* transition:
     opacity .5s ease-in-out,
     visibility 0s linear .5s,
-    transform .3s ease; 
+    transform .3s ease;  */
+    transition: all .3s;
 }
 
 .search__wrap.scrollhidden {
