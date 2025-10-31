@@ -1,4 +1,7 @@
 <?php 
+/**
+ * Template Name: Product Search (Custom)
+ */
 $search = get_query_var('search'); 
 $paged = max(1, (int) get_query_var('paged'));
 $per_page = 24;
