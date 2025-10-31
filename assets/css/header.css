@@ -524,6 +524,10 @@
   .search__wrap.search_open {
     z-index: 10000;
   }
+
+  .search__wrap.scrollhidden {
+    transform: translateX(-50%);
+  }
 }
 
 @media((max-width: 767px)) {
