@@ -494,9 +494,6 @@
     transform .3s; 
 }
 
-.search__wrap.scrollhidden {
-    transform: translateX(-50%) translateY(var(--marginTopOffset));
-}
 .search__wrap.search_open {
     opacity: 1;
     visibility: visible;
@@ -505,6 +502,12 @@
     opacity .5s ease-in-out,
     visibility 0s,
     transform .3s;
+}
+
+@media((min-width: 1279px)) {
+  .search__wrap.scrollhidden {
+    transform: translateX(-50%) translateY(var(--marginTopOffset));
+  }
 }
 
 
@@ -523,10 +526,6 @@
   
   .search__wrap.search_open {
     z-index: 10000;
-  }
-
-  .search__wrap.scrollhidden {
-    transform: translateX(-50%);
   }
 }
 
