@@ -53,6 +53,10 @@
     transition: all .3s;
 }
 
+.header__main.scrollhidden {
+  margin-top: var(--marginTopOffset);
+}
+
 .header__main .container {
     display: flex;
     justify-content: space-between;
@@ -485,7 +489,7 @@
     transition:
     opacity .5s ease-in-out,
     visibility 0s linear .5s; 
-    
+
     margin-top: var(--marginTopOffset);
 }
 
