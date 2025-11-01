@@ -16,8 +16,23 @@ function openSearch(activeBtn = null) {
   searchWrap.classList.add('search_open');
   if (activeBtn) activeBtn.classList.add('search_open');
 
+  focusSearch();
+  closeSearchResults();
+  
+}
+
+function closeSearch() {
+  // снимаем состояния у обёртки и кнопок
+  searchWrap.classList.remove('search_open');
+  searchOpenPopupBtn.forEach(btn => btn.classList.remove('search_open'));
+
+  // всегда прячем и очищаем результаты
+  closeSearchResults();
+}
+
+function focusSearch() {
   searchInput.focus();
-    
+  
   // Для iOS - создаем временное событие touch
   if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
       const clickEvent = document.createEvent('MouseEvents');
@@ -31,24 +46,14 @@ function openSearch(activeBtn = null) {
   }, 100);
 
   searchInput.value = '';
-    
-  // при открытии чистим/прячем результаты
+}
+
+function closeSearchResults() {
   if (!searchResult.hidden) {
     searchResult.hidden = true;
     searchResult.innerHTML = '';
     body.classList.remove('fix-body');
   }
-}
-
-function closeSearch() {
-  // снимаем состояния у обёртки и кнопок
-  searchWrap.classList.remove('search_open');
-  searchOpenPopupBtn.forEach(btn => btn.classList.remove('search_open'));
-
-  // всегда прячем и очищаем результаты
-  searchResult.hidden = true;
-  searchResult.innerHTML = '';
-  body.classList.remove('fix-body');
 }
 
 // ====== события ======
@@ -82,6 +87,6 @@ document.addEventListener('pointerdown', (e) => {
 
 //очистить строку поиска
 searchClear.addEventListener('click', ()=>{
-    searchInput.value = '';
-    searchResult.innerHTML = '';
+    focusSearch();
+    closeSearchResults();
 })
