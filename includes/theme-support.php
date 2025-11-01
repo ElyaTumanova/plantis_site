@@ -142,7 +142,7 @@ function check_301redirect_tax_url(){
 }
 
 
-// регистрируем гет парамтер для теста какое ты растение
+// регистрируем гет парамтер для теста какое ты растение и поиска
 add_filter('query_vars', function ($vars) {
     $vars[] = 'gen';
     $vars[] = 'plant';
