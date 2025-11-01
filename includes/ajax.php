@@ -123,7 +123,7 @@ function render_search_result($product) {
               <!-- <span class="search-result__descr"><?php //echo $product->get_short_description();?></span> -->
               <?php plnt_check_stock_status();?>
             </div>
-            <div class="search-result__row">
+            <div class="search-result__row search-result__row_price">
               <?php if ($sale) {
                 ?>
                       <span class="search-result__reg-price"><?php echo get_post_meta( $id, '_regular_price', true);?>&#8381;</span>

@@ -613,6 +613,18 @@ input[type="search"], input[type="search"]:focus-visible {
   position: relative;
 }
 
+.search-result__row_price {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+@media((max-width: 767px)) {
+  .search-result__row_price {
+    flex-direction: column;
+  }
+}
+
 /* по умолчанию показываем лупу, скрываем крестик */
 .search-btn .icon-search {
   display: inline-block;
@@ -716,7 +728,6 @@ input[type="search"], input[type="search"]:focus-visible {
     font-weight: 400;
     color: red;
     text-decoration: line-through;
-    margin-right: 10px;
 }
 
 .search-result__price {
