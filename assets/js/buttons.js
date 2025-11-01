@@ -130,12 +130,12 @@ if(catalogWrap) {
     const catalogGrid = catalogWrap.querySelector('.products');
     console.log(catalogGrid.classList)
     if(catalogGrid.classList.contains('columns-2')) {
-      gridButton2.disabled = false;
-      gridButton3.disabled = true;
-    } 
-    if(catalogGrid.classList.contains('columns-3')) {
       gridButton3.disabled = false;
       gridButton2.disabled = true;
+    } 
+    if(catalogGrid.classList.contains('columns-3')) {
+      gridButton2.disabled = false;
+      gridButton3.disabled = true;
     } 
     if (gridButton2) {
         gridButton2.addEventListener ("click", (evt)=>{
