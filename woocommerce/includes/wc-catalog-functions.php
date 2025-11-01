@@ -492,6 +492,8 @@ if (!function_exists('plnt_loop_columns')) {
     function plnt_loop_columns() {
       if(is_page('search-results')) {
         return 3;
+      } else {
+        return 2;
       }
     }
 }
