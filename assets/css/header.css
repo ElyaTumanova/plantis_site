@@ -614,7 +614,7 @@ input[type="search"], input[type="search"]:focus-visible {
   top: 4px;
   right: 7px;
   cursor: pointer;
-  transition: all .5s;
+  transition: all .7s;
   opacity: 0;
 }
 
