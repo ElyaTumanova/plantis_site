@@ -1,6 +1,6 @@
 <?php 
 /**
- * Template Name: Product Search (Custom)
+ * Template Name: Product Search
  */
 $search = get_query_var('search'); 
 $paged = max(1, (int) get_query_var('paged'));
