@@ -252,7 +252,7 @@
 }
 
 .catalog__grid .products.columns-3 .product { /* to be deleted*/
-    width: calc(100% / 2 - 8px);
+    width: calc(100% / 3 - 18px);
 }
 
 .catalog__grid .products .product {
