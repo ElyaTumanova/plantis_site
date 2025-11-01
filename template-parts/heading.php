@@ -111,7 +111,7 @@ $catalog_icon = carbon_get_theme_option('catalog_icon');
 		</div>
     <div class="search__wrap">
       <?get_search_form();?>
-      <div class="search__close"><?php echo $close_icon ?></div>
+      <div class="search__clean"><?php echo $close_icon ?></div>
     </div>
 
     <div class="search-result">
