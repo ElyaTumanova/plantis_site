@@ -551,6 +551,25 @@ input[type="search"], input[type="search"]:focus-visible {
     outline: none;
 }
 
+.search__wrap .search__clean {
+  position: absolute;
+  top: 4px;
+  right: calc(100% - 45px);
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+}
+
+.search__wrap.search_open .search__clean {
+  right: 7px;
+  opacity: 1;
+  /* transition: all .1s; */
+}
+
+.search__clean svg path {
+  stroke: var(--icons-color) !important;
+}
+
 .search-result {
   display: flex;
   flex-direction: column;
@@ -607,25 +626,6 @@ input[type="search"], input[type="search"]:focus-visible {
 }
 .search-btn.search_open .icon-close {
   display: inline-block;
-}
-
-.search__wrap .search__clean {
-  position: absolute;
-  top: 4px;
-  right: calc(100% - 45px);
-  cursor: pointer;
-  transition: all .3s;
-  opacity: 0;
-}
-
-.search__wrap.search_open .search__clean {
-  right: 7px;
-  opacity: 1;
-  /* transition: all .1s; */
-}
-
-.search__clean svg path {
-  stroke: var(--icons-color) !important;
 }
 
 /* стили для скролла scroll */
