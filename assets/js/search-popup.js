@@ -5,6 +5,7 @@ const headerButns = document.querySelector('.header__main .header__wrap');
 const headerButnsMob = document.querySelector('.header__mob .search-btn');
 const searchResult = document.querySelector('.search-result');
 const searchInput = document.querySelector('.search__wrap .search-field');
+const searchClear = document.querySelector('.search__wrap .search__clean');
 
 searchResult.hidden = true;
 
@@ -78,3 +79,8 @@ document.addEventListener('pointerdown', (e) => {
   // иначе закрываем всё
   closeSearch();
 });
+
+//очистить строку поиска
+searchClear.addEventListener('click', ()=>{
+    searchResult.innerHTML = '';
+})

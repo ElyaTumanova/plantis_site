@@ -613,7 +613,9 @@ input[type="search"], input[type="search"]:focus-visible {
   position: absolute;
   top: 4px;
   right: 7px;
+  cursor: pointer;
 }
+
 .search__clean svg path {
   stroke: var(--icons-color) !important;
 }
