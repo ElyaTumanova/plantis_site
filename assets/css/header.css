@@ -609,6 +609,10 @@ input[type="search"], input[type="search"]:focus-visible {
   display: inline-block;
 }
 
+.search__close {
+  
+}
+
 /* стили для скролла scroll */
  /* start custom scroll */
 .search-result::-webkit-scrollbar {
