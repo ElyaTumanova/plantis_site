@@ -609,11 +609,18 @@ input[type="search"], input[type="search"]:focus-visible {
   display: inline-block;
 }
 
-.search__clean {
+.search__wrap .search__clean {
   position: absolute;
   top: 4px;
-  right: 7px;
+  left: 10px;
+  right: auto;
   cursor: pointer;
+  transition: all .3s;
+}
+
+.search__wrap.search_open .search__clean {
+    right: 7px;
+    left: auto;
 }
 
 .search__clean svg path {
