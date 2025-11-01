@@ -487,12 +487,14 @@ function plnt_get_catalog_schema_data() {
 
 // // количетсво товаров и кол-во колонок в каталоге
 
-// add_filter('loop_shop_columns', 'plnt_loop_columns');
-// if (!function_exists('plnt_loop_columns')) {
-//     function plnt_loop_columns() {
-//     	return 3;
-//     }
-// }
+add_filter('loop_shop_columns', 'plnt_loop_columns');
+if (!function_exists('plnt_loop_columns')) {
+    function plnt_loop_columns() {
+      if(is_page('search-results')) {
+        return 3;
+      }
+    }
+}
 
 add_filter( 'loop_shop_per_page', 'truemisha_products_per_page', 20 );
  
