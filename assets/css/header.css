@@ -53,6 +53,10 @@
     transition: all .3s;
 }
 
+.header__main.scrollhidden {
+  margin-top: var(--marginTopOffset);
+}
+
 .header__main .container {
     display: flex;
     justify-content: space-between;
@@ -121,10 +125,13 @@
     stroke: var(--icons-color) !important;
 }
 
-.header-btn__wrap:active svg path, .header-btn__wrap:focus svg path, .header-btn__wrap:hover svg path {
+@media (hover: hover) {
+  .header-btn__wrap:active svg path, .header-btn__wrap:focus svg path, .header-btn__wrap:hover svg path {
     fill: var(--icons-color-active) !important;
     stroke: var(--icons-color-active) !important;
+  }
 }
+
 
 .header-btn__wrap_active svg path{
     fill: var(--black-color) !important;
@@ -462,6 +469,296 @@
     .footer {
         padding-bottom: 130px;
     }
+}
+
+/* search and search popup styles */
+
+.search__wrap {
+    position: absolute;
+    top: 46px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin-top: 0;
+
+    background: var(--background);
+    width: 800px;
+
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+    opacity .5s ease-in-out,
+    visibility 0s linear .5s,
+    transform .3s; 
+}
+
+.search__wrap.search_open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition:
+    opacity .5s ease-in-out,
+    visibility 0s,
+    transform .3s;
+}
+
+@media((min-width: 1279px)) {
+  .search__wrap.scrollhidden {
+    transform: translateX(-50%) translateY(var(--marginTopOffset));
+  }
+}
+
+
+@media((max-width: 1279px)) {
+  .search__wrap {
+    position: fixed;
+    top: 10px;
+    opacity: 0;
+    visibility: visible;
+    z-index: -1;
+    width: calc(100% - 200px);
+    transition:
+    z-index .5s ease-in-out,
+    opacity .5s ease-in-out,
+    visibility 0s;
+  }
+  
+  .search__wrap.search_open {
+    z-index: 10000;
+  }
+}
+
+@media((max-width: 767px)) {
+  .search__wrap {
+    width: calc(100% - 125px);
+  }
+}
+
+.search-field {
+  width: 0;
+  padding: 5px 20px !important;
+  border-radius: 40px !important;
+  transition: width 0.5s ease-in-out;
+  box-sizing: border-box !important;
+}
+.search_open .search-field {
+  width: 100%;
+}
+
+input[type="search"], input[type="search"]:focus-visible {
+    outline: none;
+}
+
+.search__wrap .search__clean {
+  position: absolute;
+  top: 5px;
+  right: calc(100% - 45px);
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  border-radius: 100px;
+}
+
+.search__wrap.search_open .search__clean {
+  right: 7px;
+  opacity: 1;
+  /* transition: all .1s; */
+}
+
+.search__clean svg path {
+  stroke: var(--icons-color) !important;
+}
+
+.search-result {
+  display: flex;
+  flex-direction: column;
+  
+  max-height: 80dvh;
+  width: 800px;
+  
+  position: absolute;
+  top: calc(var(--headerHeight) - 44px); /*44 высота зеленого меню header__main-menu-wrap*/
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  background-color: var(--background);
+}
+
+@media((max-width: 1279px)) {
+  .search-result {
+    top: 8px;
+    width: calc(100% - 200px);
+  }
+}
+@media((max-width: 767px)) {
+  .search-result {
+    top: 8px;
+    width: calc(100dvw - 20px);
+    max-height: calc(100dvh - 150px);
+  }
+}
+
+.serach-result__items {
+    max-height: calc(80vh - 55px);
+    overflow-y: auto;
+    margin: 10px;
+}
+
+.search-btn {
+  position: relative;
+}
+
+/* по умолчанию показываем лупу, скрываем крестик */
+.search-btn .icon-search {
+  display: inline-block;
+}
+.search-btn .icon-close {
+  display: none;
+}
+
+/* когда открыт поиск — показываем крестик, скрываем лупу */
+.search-btn.search_open .icon-search {
+  display: none;
+}
+.search-btn.search_open .icon-close {
+  display: inline-block;
+}
+
+/* стили для скролла scroll */
+ /* start custom scroll */
+.search-result::-webkit-scrollbar {
+	width: 4px;
+}
+
+.search-result::-webkit-scrollbar-track {
+    background: transparent;  /* Скрыть трек */
+}
+
+.search-result::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 100, 100, 0.3); /* бледный по умолчанию */
+    border-radius: 4px;
+    transition: background-color 0.2s ease;  
+}
+
+.search-result:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.7); /* ярче при скролле */
+}
+
+.search-result::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+/* end custom scroll */
+
+.search-result__text {
+    margin-block: 25px;
+}
+
+.search-result__btn {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--white);
+    margin: 10px;
+}
+
+.search-result__item {
+    position: relative;
+}
+
+.search-result__item:first-child {
+    padding-top: 20px;
+}
+
+.search-result__item:last-of-type {
+    padding-bottom: 40px;
+}
+
+.search-result__link {
+    display: flex;
+    column-gap: 20px;
+    padding: 10px;
+    align-items: center;
+}
+
+.search-result__link:hover {
+    text-decoration: none;
+    background-color: var(--gray);
+}
+
+.search-result__title {
+    font-size: 20px;
+    font-weight: 700;
+    display: block;
+}
+
+@media (max-width:767px) {
+  .search-result__title  {
+      font-size: 16px;
+    }
+}
+
+.search-result__descr {
+    font-weight: 600;
+    font-size: 16px;
+    /* margin-bottom: 15px; */
+    display: block;
+}
+
+.search-result__reg-price {
+    font-size: 20px;
+    font-weight: 400;
+    color: red;
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+
+.search-result__price {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.search-result__item img {
+    object-fit: contain;
+    height: 60px;
+}
+
+.search-result__info {
+  display: flex;
+  /* flex-direction: column; */
+  row-gap: 10px;
+  align-items: start;
+  column-gap: 20px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* @media (max-width:900px) {
+  .search-result__info  {
+      width: 100%;
+    }
+} */
+
+.search-result__item .card__stockstatus {
+  font-size: 12px;
+  /* top: 12px; */
+  /* z-index: 0; */
+  position: static;
+  width: 155px;
+  margin-top: 10px;
+}
+
+.search-result__item .card__stockstatus_backorder {
+  display: none;
+}
+.search-result__item .card__stockstatus_out {
+  display: none;
 }
 
 

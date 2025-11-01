@@ -45,7 +45,7 @@ function plnt_catalog_products_wrap_start() {
 add_action('woocommerce_after_shop_loop','plnt_catalog_products_wrap_end',20);
 function plnt_catalog_products_wrap_end() {
 	?>
-		</div>
+		 </div> <!--catalog grid end -->
 	<?php 
 };
 
@@ -99,7 +99,7 @@ function plnt_catalog_sidebar() {
 			</div>
 			<?php 
 			echo do_shortcode('[br_filter_single filter_id='.$filter_price_id.']'); // цена  \\56529 //6055
-			if (!is_shop()) {
+			if (!is_shop() && !is_page('search-results')) {
 				echo do_shortcode('[br_filter_single filter_id='.$filter_plant_type_id.']');
 				echo do_shortcode('[br_filter_single filter_id='.$filter_plant_name_id.']');
 				echo do_shortcode('[br_filter_single filter_id='.$filter_height_id.']'); // высота //56530 //6056
@@ -336,7 +336,7 @@ add_action('woocommerce_before_product_loop_end','plnt_img_gallery_swiper_init',
 
 function plnt_catalog_gallery() {
 
-	if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
+	if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() || is_page('search-results')) {
 		global $product;
 		$image = $product->get_image('large', array('itemprop'=>'image'));	//schema.org
 		$attachment_ids = $product->get_gallery_image_ids();
@@ -526,11 +526,11 @@ add_filter( 'woocommerce_product_query_meta_query', 'shop_only_instock_products'
 function shop_only_instock_products( $meta_query, $query ) {
 	global $plants_cat_id;
 	global $gorshki_cat_id;
-    global $treez_cat_id;
-	global $plants_treez_cat_id;
-    global $ukhod_cat_id;
-    global $lechuza_cat_id;
-    global $avtopoliv_tag_id;
+  global $treez_cat_id;
+  global $plants_treez_cat_id;
+  global $ukhod_cat_id;
+  global $lechuza_cat_id;
+  global $avtopoliv_tag_id;
 
 	if( is_shop() || 
 	// is_product_category($gorshki_cat_id) || 
@@ -543,8 +543,7 @@ function shop_only_instock_products( $meta_query, $query ) {
 	term_is_ancestor_of( $ukhod_cat_id, get_queried_object_id(), 'product_cat' ) ||
 	is_product_category($lechuza_cat_id) || 
 	term_is_ancestor_of( $lechuza_cat_id, get_queried_object_id(), 'product_cat' ) ||
-	is_product_tag ($avtopoliv_tag_id) ||
-	is_search()) { 		//где хотим срыть товары не в наличии
+	is_product_tag ($avtopoliv_tag_id)) { 		//где хотим скрыть товары не в наличии
 		$meta_query[] = array(
 			'key' => '_stock_status',
 			'value' => 'outofstock',
@@ -562,10 +561,8 @@ function shop_only_instock_products( $meta_query, $query ) {
 				'compare' => '>'
 			)
 		);
-
 		return $meta_query;
-	}
-	else {
+	}	else {
 		return $meta_query;
 	}
 }

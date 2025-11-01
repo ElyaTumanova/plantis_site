@@ -17,10 +17,9 @@ jQuery(function ($){
             beforeSend: function(xhr){
             },
             success: function(data){
-                // console.log(data.search_timing_1);
-                // console.log(data.search_timing_2);
-                console.log(data);
-                $('.search .search-result').html(data.out);    //стили контейнеров формы поиска из header
+                body.classList.add('fix-body');
+                $('.search-result').prop('hidden', false);
+                $('.search-result').html(data.out);    //стили контейнеров формы поиска из header
             }
         });
     });

@@ -639,9 +639,9 @@
 # Services
 --------------------------------------------------------------*/
 
-@media (max-width: 767px) {
+@media (max-width: 1279px) {
     .service-page {
-        margin-top: 80px;
+        padding-top: 20px;
     }
 }
 

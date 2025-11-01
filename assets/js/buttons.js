@@ -41,6 +41,7 @@ window.addEventListener('resize', () => {
 });
 
 let headerMainDiv = document.querySelector('.header__main');
+let searchDiv = document.querySelector('.search__wrap');
 let headerMainHeight= headerMainDiv.offsetHeight;
 
 // слушаем событие resize
@@ -54,9 +55,15 @@ let marginTopOffset = headerMainHeight - headerHeight;
 window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset;
     if(scrollTop >0){
-        headerMainDiv.setAttribute('style', `margin-top:${marginTopOffset}px`);
+        // headerMainDiv.setAttribute('style', `margin-top:${marginTopOffset}px`);
+        document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
+        headerMainDiv.classList.add('scrollhidden');
+        searchDiv.classList.add('scrollhidden');
     } else{
-        headerMainDiv.removeAttribute('style');
+        // headerMainDiv.removeAttribute('style');
+        document.documentElement.style.setProperty('--marginTopOffset', 0);
+        headerMainDiv.classList.remove('scrollhidden');
+        searchDiv.classList.remove('scrollhidden');
     }
 });
 document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);

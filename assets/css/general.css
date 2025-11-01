@@ -161,6 +161,14 @@
     .archive .woocommerce-products-header {
         padding: 10px 10px 0;
     }
+
+    .page-template-page-search-results .content-area {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .page-template-page-search-results .woocommerce-products-header {
+        padding: 10px 10px 0;
+    }
 }
 
 /* заголовк H1 */

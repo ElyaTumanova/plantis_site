@@ -142,10 +142,23 @@ function check_301redirect_tax_url(){
 }
 
 
-// регистрируем гет парамтер для теста какое ты растение
+// регистрируем гет парамтер для теста какое ты растение и поиска
 add_filter('query_vars', function ($vars) {
     $vars[] = 'gen';
     $vars[] = 'plant';
+    $vars[] = 'search';
     return $vars;
+});
+
+
+add_action('template_redirect', function(){
+    if (is_search() && (get_query_var('post_type') === 'product' || isset($_GET['post_type']) && $_GET['post_type'] === 'product')) {
+        $url = add_query_arg([
+            'search' => get_search_query(),
+            // 'paged' => max(1, (int) get_query_var('paged')),
+        ], home_url('/search-results/')); // слаг вашей страницы
+        wp_safe_redirect($url, 302);
+        exit;
+    }
 });
 
