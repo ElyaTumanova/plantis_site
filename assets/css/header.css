@@ -610,7 +610,12 @@ input[type="search"], input[type="search"]:focus-visible {
 }
 
 .search__clean {
-
+  position: absolute;
+  top: 4px;
+  right: 7px;
+}
+.search__clean svg path {
+  stroke: var(--icons-color) !important;
 }
 
 /* стили для скролла scroll */
