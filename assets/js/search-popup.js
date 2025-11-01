@@ -82,5 +82,6 @@ document.addEventListener('pointerdown', (e) => {
 
 //очистить строку поиска
 searchClear.addEventListener('click', ()=>{
+    searchInput.value = '';
     searchResult.innerHTML = '';
 })
