@@ -612,15 +612,16 @@ input[type="search"], input[type="search"]:focus-visible {
 .search__wrap .search__clean {
   position: absolute;
   top: 4px;
-  right: 7px;
+  right: calc(100% - 45px);
   cursor: pointer;
-  transition: all .7s;
+  transition: all .3s;
   opacity: 0;
 }
 
 .search__wrap.search_open .search__clean {
+  right: 7px;
   opacity: 1;
-  transition: all .1s;
+  /* transition: all .1s; */
 }
 
 .search__clean svg path {
