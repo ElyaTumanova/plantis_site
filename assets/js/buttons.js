@@ -128,6 +128,7 @@ const gridButton3 = document.getElementById('catalog__grid-button-3');
 const catalogWrap = document.querySelector('.catalog__products-wrap');
 if(catalogWrap) {
     const catalogGrid = catalogWrap.querySelector('.products');
+    console.log(catalogGrid.classList)
     if (gridButton2) {
         gridButton2.addEventListener ("click", (evt)=>{
             make_2_grid_columns();
@@ -138,21 +139,19 @@ if(catalogWrap) {
             make_3_grid_columns();
         });
     }
-
-    // if(document.querySelector('.page-template-page-search-results')) {
-    //   make_3_grid_columns ();
-    // }
     
     function make_2_grid_columns () {
         catalogGrid.classList.add ('columns-2');
-        catalogGrid.classList.remove ('columns-2_other');
+        // catalogGrid.classList.remove ('columns-2_other');
+        catalogGrid.classList.remove ('columns-3');
         gridButton2.disabled = true;
         gridButton3.disabled = false;
     };
     
     function make_3_grid_columns () {
         catalogGrid.classList.remove ('columns-2');
-        catalogGrid.classList.add ('columns-2_other');
+        catalogGrid.classList.add ('columns-3');
+        // catalogGrid.classList.add ('columns-2_other');
         gridButton2.disabled = false;
         gridButton3.disabled = true;
     };
