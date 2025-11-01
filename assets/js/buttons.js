@@ -138,6 +138,10 @@ if(catalogWrap) {
             make_3_grid_columns();
         });
     }
+
+    if(document.querySelector('.page-template-page-search-results')) {
+      make_3_grid_columns ();
+    }
     
     function make_2_grid_columns () {
         catalogGrid.classList.add ('columns-2');
