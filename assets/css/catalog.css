@@ -260,7 +260,7 @@
     position: relative;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1279px) {
     .catalog__grid .products {
         row-gap: 30px;
     }
