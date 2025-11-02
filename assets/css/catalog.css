@@ -187,6 +187,10 @@
     column-gap: 10px;
 }
 
+.page-template-page-search-results .catalog__grid-buttons{
+  flex-direction: row-reverse;
+}
+
 @media (max-width: 1279px) {
     .catalog__grid-buttons {
         display: none;
