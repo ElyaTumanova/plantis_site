@@ -269,7 +269,7 @@
         width: calc(100% / 2 - 8px);
     }
 
-    .catalog__grid .products.columns-2_large .product {
+    .catalog__grid .products.columns-3 .product {
         width: calc(100% / 2 - 8px);
     }
 }
