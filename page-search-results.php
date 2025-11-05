@@ -108,6 +108,9 @@ if ($product_sku_id) {
         'post_type'      => 'product',
         'post_status'    => 'publish',
         'fields'         => 'ids',
+        'orderby' => 'meta_value',
+        'meta_key' => '_stock_status',
+        'order' => 'ASC',
         'posts_per_page' => -1,
         'no_found_rows'  => true,
         'tax_query'      => [
