@@ -55,6 +55,8 @@
 
 .wishlist_table tr th.product-thumbnail {
     width: 100% !important;
+}
+.wishlist_table tr .product-thumbnail {
     border-radius: 40px;
     overflow: hidden;
 }
