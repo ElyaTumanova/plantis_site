@@ -94,6 +94,17 @@ if ($product_sku_id) {
 }
 
 get_header( 'shop' );
+do_action( 'woocommerce_before_main_content' );
+
+?>
+<header class="woocommerce-products-header">
+  <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+    <h1 class="woocommerce-products-header__title page-title">Результаты поиска: <?php if ($product_sku_id){echo('Артикул ');}; echo esc_html($search) ?></h1>
+  <?php endif; ?>
+
+  <?php	do_action( 'woocommerce_archive_description' );?>
+</header>
+<?php
 
 if ( empty( $all_ids ) ) {
     do_action( 'woocommerce_no_products_found' );
@@ -129,18 +140,6 @@ if ( empty( $all_ids ) ) {
   wc_set_loop_prop( 'page', $paged );
   wc_set_loop_prop( 'per_page', $per_page );
   wc_set_loop_prop( 'total', (int) $q_page->found_posts );
-
-  do_action( 'woocommerce_before_main_content' );
-
-  ?>
-  <header class="woocommerce-products-header">
-    <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-      <h1 class="woocommerce-products-header__title page-title">Результаты поиска: <?php if ($product_sku_id){echo('Артикул ');}; echo esc_html($search) ?></h1>
-    <?php endif; ?>
-
-    <?php	do_action( 'woocommerce_archive_description' );?>
-  </header>
-  <?php
 
   if ($q_page->have_posts()) {
 
@@ -186,8 +185,8 @@ if ( empty( $all_ids ) ) {
       
       wp_reset_postdata();
   } 
-  do_action( 'woocommerce_after_main_content' );
 }
 
+do_action( 'woocommerce_after_main_content' );
 get_footer( 'shop' );
 ?>
