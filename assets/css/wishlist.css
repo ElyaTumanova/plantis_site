@@ -37,8 +37,8 @@
 
 .wishlist-items-wrapper .stock-status {
     position: absolute;
-    top: 0;
-    left: -8px;
+    top: 2px;
+    left: -0;
 }
 
 .wishlist-title-container {
@@ -55,6 +55,8 @@
 
 .wishlist_table tr th.product-thumbnail {
     width: 100% !important;
+    border-radius: 40px;
+    overflow: hidden;
 }
 
 .wishlist_table tbody td {
@@ -73,7 +75,8 @@ table.wishlist_table tbody td.product-remove {
     margin-bottom: 10px;
     align-self: end;
     position: absolute;
-    right: 16px;
+    right: 24px;
+    top: 8px;
 }
 
 table.wishlist_table tbody td.product-remove a:hover, table.wishlist_table tbody td.product-remove a:focus, table.wishlist_table tbody td.product-remove a:active{
