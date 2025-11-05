@@ -93,6 +93,8 @@ if ($product_sku_id) {
   $all_ids = array_values(array_unique(array_merge($ids_plants, $ids_others)));
 }
 
+get_header( 'shop' );
+
 if ( empty( $all_ids ) ) {
     do_action( 'woocommerce_no_products_found' );
     get_template_part('template-parts/products/products-popular');
@@ -127,8 +129,6 @@ if ( empty( $all_ids ) ) {
   wc_set_loop_prop( 'page', $paged );
   wc_set_loop_prop( 'per_page', $per_page );
   wc_set_loop_prop( 'total', (int) $q_page->found_posts );
-
-  get_header( 'shop' );
 
   do_action( 'woocommerce_before_main_content' );
 
