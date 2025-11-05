@@ -283,6 +283,7 @@ function swiper_catalog_card_imgs_init () {
 # Popular slider
 --------------------------------------------------------------*/
 function swiper_popular_slider_init() {
+    console.log('hi swiper_popular_slider_init')
     swiper_popular_slider = new Swiper('.popular-slider-swiper', {
         pagination: {
             el: '.swiper-pagination',
