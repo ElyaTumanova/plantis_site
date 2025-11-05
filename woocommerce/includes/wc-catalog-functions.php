@@ -373,7 +373,7 @@ function plnt_img_gallery_swiper_init() {
 
 add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
 function AddThumbnailClass( $atts, $attachment ) {
-	if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() || is_page('search-results')) {
+	if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
 		$atts['class'] .= " swiper-slide"; 
 	}
 	return $atts;
@@ -449,7 +449,7 @@ add_action('woocommerce_after_shop_loop_item', 'plnt_check_stock_status', 30);
 
 add_filter('post_class', 'plnt_add_class_loop_item_swiper', 10, 3);
 function plnt_add_class_loop_item_swiper($clasess){
-	if(is_product() || is_front_page() || is_cart() || is_page('wishlist') || is_search()) {
+	if(is_product() || is_front_page() || is_cart() || is_page('wishlist') || is_search() || is_page('search-results')) {
 		$clasess[] = 'swiper-slide';
 	}
 	//get_pr($clasess, false);
