@@ -1684,3 +1684,12 @@
   pointer-events: none;
   cursor: default;
 }
+
+@media (max-width: 767px) {
+  .page-template-page-search-results .bapf_no_products {
+    padding: 0 10px;
+  }
+  .page-template-page-search-results .popular-products-wrap {
+    padding: 0 10px;
+  }
+}
