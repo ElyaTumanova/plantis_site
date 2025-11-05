@@ -184,6 +184,7 @@ if ($q_page->have_posts()) {
     wp_reset_postdata();
 } else {
    	do_action( 'woocommerce_no_products_found' );
+    get_template_part('template-parts/products/products-popular');
 }
 
 do_action( 'woocommerce_after_main_content' );
