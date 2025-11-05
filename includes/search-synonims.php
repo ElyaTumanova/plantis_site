@@ -5,32 +5,38 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 //Поле «Синонимы» у товара (meta _synonyms)
 
-// Метабокс
-add_action( 'add_meta_boxes', function () {
-    add_meta_box(
-        'plnt_synonyms_box',
-        'Синонимы (поиск)',
-        function ( $post ) {
-            $val = get_post_meta( $post->ID, '_synonyms', true );
-            echo '<textarea style="width:100%;min-height:120px" name="plnt_synonyms">'.esc_textarea($val).'</textarea>';
-            echo '<p class="description">Перечислите синонимы через запятую. По ним тоже будет идти поиск.</p>';
-            wp_nonce_field( 'plnt_synonyms_save', 'plnt_synonyms_nonce' );
-        },
-        'product',
-        'normal',
-        'default'
-    );
-});
+// 1) Добавляем вкладку "Синонимы"
+add_filter( 'woocommerce_product_data_tabs', function( $tabs ) {
+    $tabs['plnt_synonyms_tab'] = [
+        'label'    => 'Синонимы',
+        'target'   => 'plnt_synonyms_panel',
+        'class'    => ['show_if_simple','show_if_variable','show_if_grouped','show_if_external'],
+        'priority' => 80,
+    ];
+    return $tabs;
+} );
 
-// Сохранение
-add_action( 'save_post_product', function ( $post_id ) {
-    if ( ! isset($_POST['plnt_synonyms_nonce']) || ! wp_verify_nonce( $_POST['plnt_synonyms_nonce'], 'plnt_synonyms_save' ) ) return;
-    if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) return;
-    if ( ! current_user_can( 'edit_post', $post_id ) ) return;
+// 2) Панель с полем
+add_action( 'woocommerce_product_data_panels', function() {
+    echo '<div id="plnt_synonyms_panel" class="panel woocommerce_options_panel">';
+    woocommerce_wp_textarea_input( [
+        'id'          => '_synonyms',
+        'label'       => 'Синонимы (поиск)',
+        'description' => 'Перечислите синонимы через запятую. По ним тоже будет идти поиск.',
+        'desc_tip'    => true,
+        'rows'        => 6,
+    ] );
+    echo '</div>';
+} );
 
-    $val = isset($_POST['plnt_synonyms']) ? wp_kses_post( wp_unslash($_POST['plnt_synonyms']) ) : '';
-    update_post_meta( $post_id, '_synonyms', $val );
-});
+// 3) Сохранение значения
+add_action( 'woocommerce_admin_process_product_object', function( $product ) {
+    if ( isset( $_POST['_synonyms'] ) ) {
+        $val = wp_kses_post( wp_unslash( $_POST['_synonyms'] ) );
+        $product->update_meta_data( '_synonyms', $val );
+    }
+} );
+
 
 //Поле «Синонимы» у категории товара (term meta _synonyms)
 
