@@ -88,10 +88,46 @@ $product_sku_id = $product_sku_id_plants ?: $product_sku_id_other ?: 0;
 if ($product_sku_id) {
   $all_ids = [$product_sku_id];
 } else {
+  $ids_by_cat_synonyms = [];
+
+  $matched_cats = get_terms([
+      'taxonomy'   => 'product_cat',
+      'hide_empty' => false,
+      'meta_query' => [
+          [
+              'key'     => '_synonyms',
+              'value'   => $search,
+              'compare' => 'LIKE',
+          ],
+      ],
+      'fields' => 'ids',
+  ]);
+
+  if ( ! is_wp_error( $matched_cats ) && ! empty( $matched_cats ) ) {
+    $ids_by_cat_synonyms = get_posts([
+        'post_type'      => 'product',
+        'post_status'    => 'publish',
+        'fields'         => 'ids',
+        'posts_per_page' => -1,
+        'no_found_rows'  => true,
+        'tax_query'      => [
+            [
+                'taxonomy'         => 'product_cat',
+                'field'            => 'term_id',
+                'terms'            => $matched_cats,
+                'include_children' => true,
+            ],
+        ],
+    ]);
+  }
+
+
   $ids_plants = array_map('intval', (array) $query_ajax_plants->posts);
   $ids_others = array_map('intval', (array) $query_ajax_other->posts);
-  $all_ids = array_values(array_unique(array_merge($ids_plants, $ids_others)));
+  $all_ids = array_values(array_unique(array_merge($ids_plants, $ids_others, $ids_by_cat_synonyms)));
 }
+
+
 
 get_header( 'shop' );
 do_action( 'woocommerce_before_main_content' );
