@@ -9,27 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 function plnt_echo_smth() {
-  $ids_by_product_synonyms = get_posts([
-      'post_type'      => 'product',
-      'post_status'    => 'publish',
-      'fields'         => 'ids',
-      'orderby' => 'meta_value',
-      'meta_key' => '_stock_status',
-      'order' => 'ASC',
-      'posts_per_page' => -1,
-      'no_found_rows'  => true,
-      'meta_query'     => [
-          [
-              'key'     => '_synonyms',
-              'value'   => 'замикус',
-              'compare' => 'LIKE',
-          ],
-      ],
-  ]);
-
-    echo ('<pre>');
-    print_r($ids_by_product_synonyms);
-    echo ('</pre>');
 }
 
 

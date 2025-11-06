@@ -1693,3 +1693,19 @@
     padding: 0 10px;
   }
 }
+
+/* убираем фильтры из результатов поиска */
+.page-template-page-search-results .catalog__sidebar {
+  display: none;
+}
+.page-template-page-search-results .catalog__grid {
+  grid-template-columns: 100%;
+  grid-template-areas:
+  "metki"
+  "sorting"
+  "catalog"
+  "pagination";
+}
+.page-template-page-search-results .catalog__mob-filter-btn {
+  display: none;
+}
