@@ -124,10 +124,29 @@ if ($product_sku_id) {
     ]);
   }
 
+  $ids_by_product_synonyms = [];
+  $ids_by_product_synonyms = get_posts([
+      'post_type'      => 'product',
+      'post_status'    => 'publish',
+      'fields'         => 'ids',
+      'orderby' => 'meta_value',
+      'meta_key' => '_stock_status',
+      'order' => 'ASC',
+      'posts_per_page' => -1,
+      'no_found_rows'  => true,
+      'meta_query'     => [
+          [
+              'key'     => '_synonyms',
+              'value'   => $search,
+              'compare' => 'LIKE',
+          ],
+      ],
+  ]);
+
 
   $ids_plants = array_map('intval', (array) $query_ajax_plants->posts);
   $ids_others = array_map('intval', (array) $query_ajax_other->posts);
-  $all_ids = array_values(array_unique(array_merge($ids_plants, $ids_others, $ids_by_cat_synonyms)));
+  $all_ids = array_values(array_unique(array_merge($ids_plants, $ids_others, $ids_by_cat_synonyms, $ids_by_product_synonyms)));
 }
 
 

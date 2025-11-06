@@ -9,36 +9,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 function plnt_echo_smth() {
-  if(is_search()) {
-    echo('hi search');
-  } else {
-    echo('hi');
-  }
-    global $plants_treez_cat_id;
-    global $peresadka_cat_id;
-    global $plants_cat_id;
-
-     $argPlants = array(
-      'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
-      'post_status' => 'publish',
-      's' => 'кала',
+  $ids_by_product_synonyms = get_posts([
+      'post_type'      => 'product',
+      'post_status'    => 'publish',
+      'fields'         => 'ids',
       'orderby' => 'meta_value',
       'meta_key' => '_stock_status',
       'order' => 'ASC',
-      'tax_query' => array(
-          array(
-              'taxonomy' => 'product_cat',
-              'field' => 'id',
-              'operator' => 'IN',
-              'terms' => [$plants_cat_id],
-              'include_children' => 1,
-          )
-      )
-    );
-    $query_ajax_plants = new WP_Query($argPlants);
+      'posts_per_page' => -1,
+      'no_found_rows'  => true,
+      'meta_query'     => [
+          [
+              'key'     => '_synonyms',
+              'value'   => 'замикус',
+              'compare' => 'LIKE',
+          ],
+      ],
+  ]);
 
     echo ('<pre>');
-    print_r($query_ajax_plants);
+    print_r($ids_by_product_synonyms);
     echo ('</pre>');
 }
 
