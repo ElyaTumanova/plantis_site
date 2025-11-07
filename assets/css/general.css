@@ -331,10 +331,10 @@
     bottom: 10px;
     left: 13px;
     z-index: 2;
-    /* background-color: var(--red-color);
-    color: var(--white); */
-    background-color: #B394F7;
-    color: #fff;
+    background-color: var(--red-color);
+    color: var(--white);
+    /* background-color: #B394F7;
+    color: #fff; */
 
     display: flex;
     align-items: center;
