@@ -66,6 +66,9 @@
 }
 
 .header__main-menu-item_sale {
+  background-color: #B394F7;
+  padding: 7px 15px;
+  border-radius: 10px;
   color: #DCF942;
 }
 
