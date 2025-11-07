@@ -18,8 +18,8 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
             <a href="<?php echo site_url()?>/product-category/iskusstvennye-rasteniya-treez/">Искусственные растения Treez</a>
         </div>
         <div class="header__main-menu-item" data-menu = "menu_item_service">Услуги</div>
-        <div class="header__main-menu-item">
-            <a href="<?php echo site_url()?>/product-tag/skidki/">Скидки</a>
+        <div class="header__main-menu-item header__main-menu-item_sale ">
+            <a href="<?php echo site_url()?>/product-tag/skidki/">11.11 SALE</a>
         </div>
         <!-- <div class="header__main-menu-item">
             <a href="<?php //echo site_url()?>/#/">Подарочный сертификат</a>
