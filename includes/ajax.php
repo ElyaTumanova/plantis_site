@@ -162,7 +162,7 @@ function render_search_result($product) {
   <?php
 }
 
-function plnt_get_search_query($search) {
+function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $paged=null) {
   global $plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id;
   $argPlants = array(
     'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
@@ -287,13 +287,24 @@ function plnt_get_search_query($search) {
       'post_type'      => 'product',
       'post_status'    => 'publish',
       'post__in'       => !empty($all_ids) ? $all_ids : [0],
-      'orderby'        => $ordering_args['orderby'],
-      'order'          => $ordering_args['order'],
-      'posts_per_page' => $per_page,
-      'paged' => $paged,
+      // 'orderby'        => $ordering_args['orderby'],
+      // 'order'          => $ordering_args['order'],
+      // 'posts_per_page' => $per_page,
+      // 'paged' => $paged,
       'ignore_sticky_posts' => true,
       'no_found_rows'  => false,
   ];
+
+  if ($ordering_args) {
+    $q_args['orderby'] = $ordering_args['orderby'];
+    $q_args['order'] = $ordering_args['order'];
+  }
+  if ($per_page) {
+    $q_args['posts_per_page'] = $per_page;
+  }
+  if ($paged) {
+    $q_args['paged'] = $paged;
+  }
 
 
   $q_page = new WP_Query( $q_args );
