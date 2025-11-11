@@ -210,6 +210,8 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
   if ($ordering_args) {
     $q_args['orderby'] = $ordering_args['orderby'];
     $q_args['order'] = $ordering_args['order'];
+  } else {
+    $q_args['orderby'] = 'post__in';
   }
   if ($per_page) {
     $q_args['posts_per_page'] = $per_page;
