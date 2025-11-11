@@ -151,7 +151,7 @@ if ($product_sku_id) {
 $q_args = [
     'post_type'      => 'product',
     'post_status'    => 'publish',
-    'post__in'       => $all_ids,
+    'post__in'       => !empty($all_ids) ? $all_ids : [0],
     'orderby'        => $ordering_args['orderby'],
     'order'          => $ordering_args['order'],
     'posts_per_page' => $per_page,
