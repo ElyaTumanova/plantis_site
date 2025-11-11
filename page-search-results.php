@@ -6,8 +6,6 @@ $search = get_query_var('search');
 $paged = max(1, (int) get_query_var('paged'));
 $per_page = 24;
 
-global $plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id;
-
 /** 1) Читаем orderby и получаем правильные аргументы сортировки от Woo */
 $orderby_value = isset($_GET['orderby'])
     ? wc_clean( wp_unslash( $_GET['orderby'] ) )
@@ -30,138 +28,7 @@ if ( $orderby_value === 'price' ) {
     $added_filters[] = [ 'posts_clauses', [ WC()->query, 'order_by_rating_post_clauses' ] ];
 }
 
-$argPlants = array(
-  'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
-  'post_status' => 'publish',
-  's' => $search,
-  'fields'         => 'ids',
-  'posts_per_page' => -1,
-  'no_found_rows'  => true,
-  'orderby' => 'meta_value',
-  'meta_key' => '_stock_status',
-  'order' => 'ASC',
-  'tax_query' => array(
-      array(
-          'taxonomy' => 'product_cat',
-          'field' => 'id',
-          'operator' => 'IN',
-          'terms' => [$plants_cat_id],
-          'include_children' => 1,
-      )
-  )
-);
-$argOther = array(
-  'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
-  'post_status' => 'publish',
-  's' => $search,
-  'fields'         => 'ids',
-  'posts_per_page' => -1,
-  'no_found_rows'  => true,
-  'orderby' => 'meta_value',
-  'meta_key' => '_stock_status',
-  'order' => 'ASC',
-  'meta_query' => array( 
-      array(
-          'key'       => '_stock_status',
-          'value'     => 'outofstock',
-          'compare'   => 'NOT IN',
-          )
-          
-  ),
-  'tax_query' => array(
-      array(
-          'taxonomy' => 'product_cat',
-          'field' => 'id',
-          'operator' => 'NOT IN',
-          'terms' => [$plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id],
-          'include_children' => 1,
-      )
-  )
-);
-$query_ajax_plants = new WP_Query($argPlants);
-$query_ajax_other = new WP_Query($argOther);
-
-$product_sku_id_plants = wc_get_product_id_by_sku( $query_ajax_plants->query_vars[ 's' ] );
-$product_sku_id_other = wc_get_product_id_by_sku( $query_ajax_other->query_vars[ 's' ] );
-$product_sku_id = $product_sku_id_plants ?: $product_sku_id_other ?: 0;
-
-if ($product_sku_id) {
-  $all_ids = [$product_sku_id];
-} else {
-  $ids_by_cat_synonyms = [];
-
-  $matched_cats = get_terms([
-      'taxonomy'   => 'product_cat',
-      'hide_empty' => false,
-      'meta_query' => [
-          [
-              'key'     => '_synonyms',
-              'value'   => $search,
-              'compare' => 'LIKE',
-          ],
-      ],
-      'fields' => 'ids',
-  ]);
-
-  if ( ! is_wp_error( $matched_cats ) && ! empty( $matched_cats ) ) {
-    $ids_by_cat_synonyms = get_posts([
-        'post_type'      => 'product',
-        'post_status'    => 'publish',
-        'fields'         => 'ids',
-        'orderby' => 'meta_value',
-        'meta_key' => '_stock_status',
-        'order' => 'ASC',
-        'posts_per_page' => -1,
-        'no_found_rows'  => true,
-        'tax_query'      => [
-            [
-                'taxonomy'         => 'product_cat',
-                'field'            => 'term_id',
-                'terms'            => $matched_cats,
-                'include_children' => true,
-            ],
-        ],
-    ]);
-  }
-
-  $ids_by_product_synonyms = [];
-  $ids_by_product_synonyms = get_posts([
-      'post_type'      => 'product',
-      'post_status'    => 'publish',
-      'fields'         => 'ids',
-      'orderby' => 'meta_value',
-      'meta_key' => '_stock_status',
-      'order' => 'ASC',
-      'posts_per_page' => -1,
-      'no_found_rows'  => true,
-      'meta_query'     => [
-          [
-              'key'     => '_synonyms',
-              'value'   => $search,
-              'compare' => 'LIKE',
-          ],
-      ],
-  ]);
-
-
-  $ids_plants = array_map('intval', (array) $query_ajax_plants->posts);
-  $ids_others = array_map('intval', (array) $query_ajax_other->posts);
-  $all_ids = array_values(array_unique(array_merge($ids_plants, $ids_others, $ids_by_cat_synonyms, $ids_by_product_synonyms)));
-}
-$q_args = [
-    'post_type'      => 'product',
-    'post_status'    => 'publish',
-    'post__in'       => !empty($all_ids) ? $all_ids : [0],
-    'orderby'        => $ordering_args['orderby'],
-    'order'          => $ordering_args['order'],
-    'posts_per_page' => $per_page,
-    'paged' => $paged,
-    'ignore_sticky_posts' => true,
-    'no_found_rows'  => false,
-];
-
-
-$q_page = new WP_Query( $q_args );
+$q_page = get_search_query($search);
 
 
 get_header( 'shop' );
