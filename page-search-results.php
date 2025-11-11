@@ -28,7 +28,7 @@ if ( $orderby_value === 'price' ) {
     $added_filters[] = [ 'posts_clauses', [ WC()->query, 'order_by_rating_post_clauses' ] ];
 }
 
-$q_page = get_search_query($search);
+$q_page = plnt_get_search_query($search);  
 
 
 get_header( 'shop' );

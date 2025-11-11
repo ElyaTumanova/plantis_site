@@ -15,7 +15,7 @@ function plnt_search_ajax_action_callback (){
         wp_die('Данные отправлены не с того адреса');
     }
 
-    $q_page = get_search_query($_POST['s']);
+    $q_page = plnt_get_search_query($_POST['s']);
 
     // $argPlants = array(
     //   'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
@@ -162,7 +162,7 @@ function render_search_result($product) {
   <?php
 }
 
-function get_search_query($search) {
+function plnt_get_search_query($search) {
   global $plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id;
   $argPlants = array(
     'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
