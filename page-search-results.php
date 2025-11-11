@@ -148,7 +148,20 @@ if ($product_sku_id) {
   $ids_others = array_map('intval', (array) $query_ajax_other->posts);
   $all_ids = array_values(array_unique(array_merge($ids_plants, $ids_others, $ids_by_cat_synonyms, $ids_by_product_synonyms)));
 }
+$q_args = [
+    'post_type'      => 'product',
+    'post_status'    => 'publish',
+    'post__in'       => $all_ids,
+    'orderby'        => $ordering_args['orderby'],
+    'order'          => $ordering_args['order'],
+    'posts_per_page' => $per_page,
+    'paged' => $paged,
+    'ignore_sticky_posts' => true,
+    'no_found_rows'  => false,
+];
 
+
+$q_page = new WP_Query( $q_args );
 
 
 get_header( 'shop' );
@@ -164,22 +177,10 @@ do_action( 'woocommerce_before_main_content' );
 </header>
 <?php
 
-if ( empty( $all_ids ) ) {
+if ( empty( $q_page->have_posts() ) ) {
     do_action( 'woocommerce_no_products_found' );
     get_template_part('template-parts/products/products-popular');
 } else {
-
-  $q_args = [
-      'post_type'      => 'product',
-      'post_status'    => 'publish',
-      'post__in'       => $all_ids,
-      'orderby'        => $ordering_args['orderby'],
-      'order'          => $ordering_args['order'],
-      'posts_per_page' => $per_page,
-      'paged' => $paged,
-      'ignore_sticky_posts' => true,
-      'no_found_rows'  => false,
-  ];
 
   if ( ! empty( $ordering_args['meta_key'] ) ) {
       $q_args['meta_key']  = $ordering_args['meta_key'];      // '_price' или 'total_sales'
@@ -187,8 +188,6 @@ if ( empty( $all_ids ) ) {
           $q_args['meta_type'] = 'DECIMAL';                   // чтобы точно числовая сортировка
       }
   }
-
-  $q_page = new WP_Query( $q_args );
 
   foreach ( $added_filters as $af ) {
       remove_filter( $af[0], $af[1] );
