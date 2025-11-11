@@ -199,10 +199,6 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
       'post_type'      => 'product',
       'post_status'    => 'publish',
       'post__in'       => !empty($all_ids) ? $all_ids : [0],
-      // 'orderby'        => $ordering_args['orderby'],
-      // 'order'          => $ordering_args['order'],
-      // 'posts_per_page' => $per_page,
-      // 'paged' => $paged,
       'ignore_sticky_posts' => true,
       'no_found_rows'  => false,
   ];
