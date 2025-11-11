@@ -28,16 +28,16 @@ if ( $orderby_value === 'price' ) {
     $added_filters[] = [ 'posts_clauses', [ WC()->query, 'order_by_rating_post_clauses' ] ];
 }
 
-$q_page = plnt_get_search_query($search, $ordering_args, $per_page, $paged);  
+$result = plnt_get_search_query($search, $ordering_args, $per_page, $paged);  
 
-
+$q_page = $result['query'];
 get_header( 'shop' );
 do_action( 'woocommerce_before_main_content' );
 
 ?>
 <header class="woocommerce-products-header">
   <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-    <h1 class="woocommerce-products-header__title page-title">Результаты поиска: <?php if ($product_sku_id){echo('Артикул ');}; echo esc_html($search) ?></h1>
+    <h1 class="woocommerce-products-header__title page-title">Результаты поиска: <?php if ($result['sku']){echo('Артикул ');}; echo esc_html($search) ?></h1>
   <?php endif; ?>
 
   <?php	do_action( 'woocommerce_archive_description' );?>

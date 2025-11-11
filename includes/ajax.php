@@ -308,8 +308,11 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
 
 
   $q_page = new WP_Query( $q_args );
-  return $q_page;
-}
+  $result = [
+    'query' => $q_page,
+    'sku' => $product_sku_id
+  ];
+  return $result;
 
 // вывод товаров в результатх теста
 add_action('wp_ajax_get_test_upsells', 'plnt_get_test_upsells_action_callback');
