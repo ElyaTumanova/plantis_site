@@ -293,7 +293,47 @@ function wc_context_label($ctx) {
  */
 function wc_write_product_log($text) {
     $log_dir  = WP_CONTENT_DIR . '/product-logs';
-    if (!file_exists($log_dir)) wp_mkdir_p($log_dir);
     $log_file = $log_dir . '/product-change-log-' . wp_date('Y-m-d') . '.txt';
-    file_put_contents($log_file, $text, FILE_APPEND | LOCK_EX);
+
+    if ( ! file_exists($log_dir) ) {
+        if ( ! function_exists('wp_mkdir_p') ) {
+            require_once ABSPATH . 'wp-admin/includes/file.php';
+        }
+        if ( ! wp_mkdir_p($log_dir) ) {
+            error_log('[WC Product Log] Не удалось создать каталог: ' . $log_dir);
+            // фолбэк в uploads
+            $upload = wp_get_upload_dir();
+            if (!empty($upload['basedir'])) {
+                $log_dir  = trailingslashit($upload['basedir']) . 'product-logs';
+                $log_file = $log_dir . '/product-change-log-' . wp_date('Y-m-d') . '.txt';
+                if ( ! file_exists($log_dir) && ! wp_mkdir_p($log_dir) ) {
+                    error_log('[WC Product Log] Не удалось создать uploads каталог: ' . $log_dir);
+                    if (function_exists('wc_get_logger')) {
+                        $logger = wc_get_logger();
+                        $logger->info($text, ['source' => 'product-change-log']);
+                        return true;
+                    }
+                    return false;
+                }
+            }
+        }
+    }
+
+    $htaccess = $log_dir . '/.htaccess';
+    if ( ! file_exists($htaccess) ) {
+        @file_put_contents($htaccess, "<FilesMatch \".*\">\n  Require all denied\n</FilesMatch>\n");
+    }
+
+    $ok = @file_put_contents($log_file, $text, FILE_APPEND | LOCK_EX);
+    if ($ok === false) {
+        error_log('[WC Product Log] Не удалось записать файл: ' . $log_file);
+        if (function_exists('wc_get_logger')) {
+            $logger = wc_get_logger();
+            $logger->info($text, ['source' => 'product-change-log']);
+            return true;
+        }
+        return false;
+    }
+    return true;
 }
+
