@@ -36,6 +36,11 @@ add_action('init', function () {
     add_action('woocommerce_before_product_object_save', 'wc_log_snapshot_before_save', 10, 2);
     add_action('woocommerce_after_product_object_save',  'wc_log_compare_after_save',   10, 2);
 
+    // Отслеживаем ручное изменение количества через мета-обновления
+    add_filter('pre_update_post_meta', 'wc_log_capture_old_stock_meta', 10, 4);
+    add_action('updated_post_meta',    'wc_log_maybe_log_stock_meta_change', 10, 4);
+
+
     // Удаление
     add_action('before_delete_post', 'log_wc_product_delete');
 
@@ -287,6 +292,82 @@ function wc_context_label($ctx) {
         'order'  => 'Заказ',
     ][$ctx] ?? 'Вручную';
 }
+
+// Хранилище старых значений для _stock/_stock_status
+$GLOBALS['wc_prev_stock_meta'] = []; // [post_id => ['_stock' => old, '_stock_status' => old]]
+
+/**
+ * Сохраняем "старое" значение мета перед обновлением (чтобы потом сравнить).
+ */
+function wc_log_capture_old_stock_meta($check, $object_id, $meta_key, $meta_value) {
+    // интересуют товары и вариации
+    $ptype = get_post_type($object_id);
+    if ($ptype !== 'product' && $ptype !== 'product_variation') return $check;
+
+    if ($meta_key === '_stock' || $meta_key === '_stock_status') {
+        if (!isset($GLOBALS['wc_prev_stock_meta'][$object_id])) {
+            $GLOBALS['wc_prev_stock_meta'][$object_id] = [];
+        }
+        // читаем прежнее значение до апдейта
+        $old = get_post_meta($object_id, $meta_key, true);
+        $GLOBALS['wc_prev_stock_meta'][$object_id][$meta_key] = $old;
+    }
+    return $check; // не блокируем обновление
+}
+
+/**
+ * После обновления мета сравниваем и при необходимости пишем в лог.
+ */
+function wc_log_maybe_log_stock_meta_change($meta_id, $object_id, $meta_key, $meta_value) {
+    // интересуют только эти ключи и типы
+    $ptype = get_post_type($object_id);
+    if ($ptype !== 'product' && $ptype !== 'product_variation') return;
+    if ($meta_key !== '_stock' && $meta_key !== '_stock_status') return;
+
+    // подавляем записи, если это изменения из заказа (мы уже логируем wc_reduce/restore_order_stock)
+    $ctx = wc_detect_context_for_product($object_id);
+    if ($ctx === 'order' || !empty($GLOBALS['wc_suppress_after_save'][$object_id])) {
+        return;
+    }
+
+    $old = $GLOBALS['wc_prev_stock_meta'][$object_id][$meta_key] ?? null;
+    $new = get_post_meta($object_id, $meta_key, true);
+
+    // если реально не поменялось — выходим
+    if ((string)$old === (string)$new) return;
+
+    // Достаём продукт (для вариации — её объект)
+    $product = wc_get_product($object_id);
+    if (!$product) return;
+
+    // Имя/ID и пользователь
+    $name = $product->get_name();
+    $user = wp_get_current_user();
+    $username = ($user && $user->exists()) ? $user->user_login : 'system';
+
+    // Человечные лейблы
+    $label = ($meta_key === '_stock') ? 'Остаток на складе' : 'Статус наличия';
+
+    $log_entry = sprintf(
+        "[%s] Обновление товара #%d (%s) пользователем %s | Способ: %s | Изменения: %s: \"%s\" → \"%s\"\n",
+        wp_date("Y-m-d H:i:s"),
+        $object_id,
+        $name ?: '(без названия)',
+        $username,
+        wc_context_label($ctx),
+        $label,
+        wc_stringify($old),
+        wc_stringify($new)
+    );
+    wc_write_product_log($log_entry);
+
+    // чистка старых значений
+    unset($GLOBALS['wc_prev_stock_meta'][$object_id][$meta_key]);
+    if (empty($GLOBALS['wc_prev_stock_meta'][$object_id])) {
+        unset($GLOBALS['wc_prev_stock_meta'][$object_id]);
+    }
+}
+
 
 /**
  * Запись лога с ротацией по дате
