@@ -61,10 +61,10 @@ function plnt_catalog_grid_end() {
 // // вывод меню и фильтров в сайд баре  #filters #berocket
 add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar',20);
 function plnt_catalog_sidebar() {
-    global $plants_treez_cat_id;
+  global $plants_treez_cat_id;
 	// // #filters ID's
-    global $filter_plant_type_id;
-    global $filter_plant_name_id;
+  global $filter_plant_type_id;
+  global $filter_plant_name_id;
 	global $filter_in_stock_id;
 	global $filter_price_id;
 	global $filter_height_id;
@@ -82,44 +82,35 @@ function plnt_catalog_sidebar() {
 	$close_icon = carbon_get_theme_option('close_icon')
 	?>
     <div class="catalog__sidebar modal-mob">
-		<h2 class="catalog__sidebar-filters-heading">Фильтры</h2>
-		<div class="modal-mob__close catalog-sidebar__close button"><?php echo $close_icon ?></div>
-        <!-- <div class="catalog__sidebar-cats">
-            <ul class="catalog__sidebar-temp">
-                <li class="menu-item catalog__node catalog__dropdown">
-                    <a href="https://plantis-shop.ru/product-category/komnatnye-rasteniya/" aria-current="page">Комнатные растения</a>
-                    <span class="menu__dropdown-arrow">next</span>
-                </li>
-            </ul>
-        </div> -->
-		<?php //plnt_catalog_menu() ?>
-		<aside class="catalog__sidebar-filters">
-			<div class="catalog__instock-filter">
-				<?php echo do_shortcode('[br_filter_single filter_id='.$filter_in_stock_id.']') //товары в наличии //56534 //6110?>
-			</div>
-			<?php 
-			echo do_shortcode('[br_filter_single filter_id='.$filter_price_id.']'); // цена  \\56529 //6055
-			if (!is_shop() && !is_page('search-results')) {
-				echo do_shortcode('[br_filter_single filter_id='.$filter_plant_type_id.']');
-				echo do_shortcode('[br_filter_single filter_id='.$filter_plant_name_id.']');
-				echo do_shortcode('[br_filter_single filter_id='.$filter_height_id.']'); // высота //56530 //6056
-				echo do_shortcode('[br_filter_single filter_id='.$filter_poliv_id.']'); //	полив //56533 //6109
-				echo do_shortcode('[br_filter_single filter_id='.$filter_svet_id.']'); // освещение //56538 //11115
-				echo do_shortcode('[br_filter_single filter_id='.$filter_vlaga_id.']'); // влажность //56539 //11116
-				echo do_shortcode('[br_filter_single filter_id='.$filter_diametr_id.']'); // диаметр горшка //56540 //11117
-				//echo do_shortcode('[br_filter_single filter_id='.$filter_razmer_kashpo_id.']'); // диаметр кашпо Treez //56545 //12017
-				echo do_shortcode('[br_filter_single filter_id='.$filter_color_id.']'); // цвет //56532 //6108
-				echo do_shortcode('[br_filter_single filter_id='.$filter_forma_id.']'); // форма //56541 //12013
-                if(!(is_product_category($plants_treez_cat_id) || 
-	                term_is_ancestor_of( $plants_treez_cat_id, get_queried_object_id(), 'product_cat' ))) {
-                    echo do_shortcode('[br_filter_single filter_id='.$filter_materilal_id.']'); // материал //56543 //12015
-                }
-				//echo do_shortcode('[br_filter_single filter_id='.$filter_razmer_id.']'); // размер для растений Treez
-				//echo do_shortcode('[br_filter_single filter_id='.$filter_volume_id.']'); // Объем //56544 //12016
-				echo do_shortcode('[br_filter_single filter_id='.$filter_gift_id.']'); // в подарок //56535 //10988
-			}
-			?>
-		</aside>
+      <h2 class="catalog__sidebar-filters-heading">Фильтры</h2>
+      <div class="modal-mob__close catalog-sidebar__close button"><?php echo $close_icon ?></div>
+      <aside class="catalog__sidebar-filters">
+        <div class="catalog__instock-filter">
+          <?php echo do_shortcode('[br_filter_single filter_id='.$filter_in_stock_id.']') //товары в наличии //56534 //6110?>
+        </div>
+        <?php 
+        echo do_shortcode('[br_filter_single filter_id='.$filter_price_id.']'); // цена  \\56529 //6055
+        if (!is_shop() && !is_page('search-results')) {
+          echo do_shortcode('[br_filter_single filter_id='.$filter_plant_type_id.']');
+          echo do_shortcode('[br_filter_single filter_id='.$filter_plant_name_id.']');
+          echo do_shortcode('[br_filter_single filter_id='.$filter_height_id.']'); // высота //56530 //6056
+          echo do_shortcode('[br_filter_single filter_id='.$filter_poliv_id.']'); //	полив //56533 //6109
+          echo do_shortcode('[br_filter_single filter_id='.$filter_svet_id.']'); // освещение //56538 //11115
+          echo do_shortcode('[br_filter_single filter_id='.$filter_vlaga_id.']'); // влажность //56539 //11116
+          echo do_shortcode('[br_filter_single filter_id='.$filter_diametr_id.']'); // диаметр горшка //56540 //11117
+          //echo do_shortcode('[br_filter_single filter_id='.$filter_razmer_kashpo_id.']'); // диаметр кашпо Treez //56545 //12017
+          echo do_shortcode('[br_filter_single filter_id='.$filter_color_id.']'); // цвет //56532 //6108
+          echo do_shortcode('[br_filter_single filter_id='.$filter_forma_id.']'); // форма //56541 //12013
+          if(!(is_product_category($plants_treez_cat_id) || 
+            term_is_ancestor_of( $plants_treez_cat_id, get_queried_object_id(), 'product_cat' ))) {
+              echo do_shortcode('[br_filter_single filter_id='.$filter_materilal_id.']'); // материал //56543 //12015
+          }
+          //echo do_shortcode('[br_filter_single filter_id='.$filter_razmer_id.']'); // размер для растений Treez
+          //echo do_shortcode('[br_filter_single filter_id='.$filter_volume_id.']'); // Объем //56544 //12016
+          echo do_shortcode('[br_filter_single filter_id='.$filter_gift_id.']'); // в подарок //56535 //10988
+        }
+        ?>
+      </aside>
     </div>
     <?php 
 };

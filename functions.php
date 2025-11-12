@@ -30,6 +30,8 @@ require get_template_directory() . '/includes/dev-support.php';
 
 /** Add images for tags */
 require get_template_directory() . '/includes/tags-image.php';
+/** Add synonims for search */
+require get_template_directory() . '/includes/search-synonims.php';
 
 /** Add constants */
 require get_template_directory() . '/includes/constants.php';

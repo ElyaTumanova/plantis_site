@@ -6,8 +6,6 @@ $search = get_query_var('search');
 $paged = max(1, (int) get_query_var('paged'));
 $per_page = 24;
 
-global $plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id;
-
 /** 1) Читаем orderby и получаем правильные аргументы сортировки от Woo */
 $orderby_value = isset($_GET['orderby'])
     ? wc_clean( wp_unslash( $_GET['orderby'] ) )
@@ -30,98 +28,26 @@ if ( $orderby_value === 'price' ) {
     $added_filters[] = [ 'posts_clauses', [ WC()->query, 'order_by_rating_post_clauses' ] ];
 }
 
-$argPlants = array(
-  'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
-  'post_status' => 'publish',
-  's' => $search,
-  'fields'         => 'ids',
-  'posts_per_page' => -1,
-  'no_found_rows'  => true,
-  'orderby' => 'meta_value',
-  'meta_key' => '_stock_status',
-  'order' => 'ASC',
-  'tax_query' => array(
-      array(
-          'taxonomy' => 'product_cat',
-          'field' => 'id',
-          'operator' => 'IN',
-          'terms' => [$plants_cat_id],
-          'include_children' => 1,
-      )
-  )
-);
-$argOther = array(
-  'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
-  'post_status' => 'publish',
-  's' => $search,
-  'fields'         => 'ids',
-  'posts_per_page' => -1,
-  'no_found_rows'  => true,
-  'orderby' => 'meta_value',
-  'meta_key' => '_stock_status',
-  'order' => 'ASC',
-  'meta_query' => array( 
-      array(
-          'key'       => '_stock_status',
-          'value'     => 'outofstock',
-          'compare'   => 'NOT IN',
-          )
-          
-  ),
-  'tax_query' => array(
-      array(
-          'taxonomy' => 'product_cat',
-          'field' => 'id',
-          'operator' => 'NOT IN',
-          'terms' => [$plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id],
-          'include_children' => 1,
-      )
-  )
-);
-$query_ajax_plants = new WP_Query($argPlants);
-$query_ajax_other = new WP_Query($argOther);
+$result = plnt_get_search_query($search, $ordering_args, $per_page, $paged);  
 
-$product_sku_id_plants = wc_get_product_id_by_sku( $query_ajax_plants->query_vars[ 's' ] );
-$product_sku_id_other = wc_get_product_id_by_sku( $query_ajax_other->query_vars[ 's' ] );
-$product_sku_id = $product_sku_id_plants ?: $product_sku_id_other ?: 0;
-
-if ($product_sku_id) {
-  $all_ids = [$product_sku_id];
-} else {
-  $ids_plants = array_map('intval', (array) $query_ajax_plants->posts);
-  $ids_others = array_map('intval', (array) $query_ajax_other->posts);
-  $all_ids = array_values(array_unique(array_merge($ids_plants, $ids_others)));
-}
-
+$q_page = $result['query'];
 get_header( 'shop' );
 do_action( 'woocommerce_before_main_content' );
 
 ?>
 <header class="woocommerce-products-header">
   <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-    <h1 class="woocommerce-products-header__title page-title">Результаты поиска: <?php if ($product_sku_id){echo('Артикул ');}; echo esc_html($search) ?></h1>
+    <h1 class="woocommerce-products-header__title page-title">Результаты поиска: <?php if ($result['sku']){echo('Артикул ');}; echo esc_html($search) ?></h1>
   <?php endif; ?>
 
   <?php	do_action( 'woocommerce_archive_description' );?>
 </header>
 <?php
 
-if ( empty( $all_ids ) ) {
+if ( empty( $q_page->have_posts() ) ) {
     do_action( 'woocommerce_no_products_found' );
     get_template_part('template-parts/products/products-popular');
 } else {
-
-  $q_args = [
-      'post_type'      => 'product',
-      'post_status'    => 'publish',
-      'post__in'       => $all_ids,
-      'orderby'        => $ordering_args['orderby'],
-      'order'          => $ordering_args['order'],
-      'posts_per_page' => $per_page,
-      'paged' => $paged,
-      'ignore_sticky_posts' => true,
-      'no_found_rows'  => false,
-  ];
 
   if ( ! empty( $ordering_args['meta_key'] ) ) {
       $q_args['meta_key']  = $ordering_args['meta_key'];      // '_price' или 'total_sales'
@@ -129,8 +55,6 @@ if ( empty( $all_ids ) ) {
           $q_args['meta_type'] = 'DECIMAL';                   // чтобы точно числовая сортировка
       }
   }
-
-  $q_page = new WP_Query( $q_args );
 
   foreach ( $added_filters as $af ) {
       remove_filter( $af[0], $af[1] );
