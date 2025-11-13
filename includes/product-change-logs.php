@@ -36,10 +36,10 @@ add_action('init', function () {
     add_action('woocommerce_before_product_object_save', 'wc_log_snapshot_before_save', 10, 2);
     add_action('woocommerce_after_product_object_save',  'wc_log_compare_after_save',   10, 2);
 
-    // Отслеживаем ручное изменение количества через мета-обновления
+    // Отслеживаем ручное изменение количества/статуса через мета
     add_filter('pre_update_post_meta', 'wc_log_capture_old_stock_meta', 10, 4);
     add_action('updated_post_meta',    'wc_log_maybe_log_stock_meta_change', 10, 4);
-
+    add_action('added_post_meta',      'wc_log_maybe_log_stock_meta_added', 10, 4);
 
     // Удаление
     add_action('before_delete_post', 'log_wc_product_delete');
@@ -87,6 +87,36 @@ add_action('init', function () {
         $GLOBALS['wc_suppress_after_save'] = [];
     });
 });
+
+// где-нибудь после твоих add_action(... init ...) — отдельный хук ядра WP
+add_action('post_updated', 'wc_log_title_change', 10, 3);
+
+function wc_log_title_change($post_ID, $post_after, $post_before) {
+    // только для товаров
+    if ($post_after->post_type !== 'product') return;
+
+    $old = (string) $post_before->post_title;
+    $new = (string) $post_after->post_title;
+    if ($old === $new) return;
+
+    // контекст и пользователь
+    $ctx      = wc_detect_context_for_product($post_ID);
+    $user     = wp_get_current_user();
+    $username = ($user && $user->exists()) ? $user->user_login : 'system';
+
+    $log_entry = sprintf(
+        "[%s] Обновление товара #%d (%s) пользователем %s | Способ: %s | Изменения: Название: \"%s\" → \"%s\"\n",
+        wp_date('Y-m-d H:i:s'),
+        $post_ID,
+        $new !== '' ? $new : '(без названия)',
+        $username,
+        wc_context_label($ctx),
+        wc_stringify($old),
+        wc_stringify($new)
+    );
+    wc_write_product_log($log_entry);
+}
+
 
 // ======================================================
 //  ЛОГИКА СОХРАНЕНИЙ
@@ -366,6 +396,63 @@ function wc_log_maybe_log_stock_meta_change($meta_id, $object_id, $meta_key, $me
     if (empty($GLOBALS['wc_prev_stock_meta'][$object_id])) {
         unset($GLOBALS['wc_prev_stock_meta'][$object_id]);
     }
+}
+
+// Ловим кейс "удалили → добавили" (_stock/_stock_status впервые появляется)
+function wc_log_maybe_log_stock_meta_added($meta_id, $object_id, $meta_key, $meta_value) {
+    wc_log_handle_stock_meta_event($object_id, $meta_key, 'add');
+}
+
+// Общий обработчик для added/updated (чтобы не дублировать код)
+function wc_log_handle_stock_meta_event($object_id, $meta_key, $mode) {
+    $ptype = get_post_type($object_id);
+    if ($ptype !== 'product' && $ptype !== 'product_variation') return;
+    if ($meta_key !== '_stock' && $meta_key !== '_stock_status') return;
+
+    // подавляем, если это движение из заказа
+    $ctx = wc_detect_context_for_product($object_id);
+    if ($ctx === 'order' || !empty($GLOBALS['wc_suppress_after_save'][$object_id])) return;
+
+    $new = get_post_meta($object_id, $meta_key, true);
+
+    // 1) старое из pre_update кеша
+    $old = $GLOBALS['wc_prev_stock_meta'][$object_id][$meta_key] ?? null;
+
+    // 2) fallback — снапшот из before_save
+    if ($old === null) {
+        $snapshot = $GLOBALS['wc_product_snapshots'][$object_id] ?? null;
+        if ($snapshot) {
+            if ($meta_key === '_stock')        $old = $snapshot['stock_quantity'] ?? null;
+            if ($meta_key === '_stock_status') $old = $snapshot['stock_status']   ?? null;
+        }
+    }
+
+    // 3) если это именно add, считаем, что "раньше не было"
+    if ($old === null && $mode === 'add') $old = '';
+
+    if ((string)$old === (string)$new) return;
+
+    $product  = wc_get_product($object_id);
+    $name     = $product ? $product->get_name() : '(без названия)';
+    $user     = wp_get_current_user();
+    $username = ($user && $user->exists()) ? $user->user_login : 'system';
+    $label    = ($meta_key === '_stock') ? 'Остаток на складе' : 'Статус наличия';
+
+    $log_entry = sprintf(
+        "[%s] Обновление товара #%d (%s) пользователем %s | Способ: %s | Изменения: %s: \"%s\" → \"%s\"\n",
+        wp_date("Y-m-d H:i:s"),
+        $object_id,
+        $name,
+        $username,
+        wc_context_label($ctx),
+        $label,
+        wc_stringify($old),
+        wc_stringify($new)
+    );
+    wc_write_product_log($log_entry);
+
+    unset($GLOBALS['wc_prev_stock_meta'][$object_id][$meta_key]);
+    if (empty($GLOBALS['wc_prev_stock_meta'][$object_id])) unset($GLOBALS['wc_prev_stock_meta'][$object_id]);
 }
 
 
