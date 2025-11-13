@@ -659,9 +659,9 @@ function move_to_top_on_pagination() {
 
 add_action('woocommerce_after_main_content', 'move_to_top_on_pagination');
 
-// sale page
+// skidki page
 
-// Использовать шаблон магазина для страницы /sale/
+// Использовать шаблон магазина для страницы /skidki/
 add_filter( 'template_include', 'my_sale_page_use_shop_template', 99 );
 function my_sale_page_use_shop_template( $template ) {
     if ( is_page( 'skidki' ) ) {
@@ -674,17 +674,17 @@ function my_sale_page_use_shop_template( $template ) {
     return $template;
 }
 
-// Считать страницу /sale/ аналогом магазина для Woo
+// Считать страницу /skidki/ аналогом магазина для Woo
 add_filter( 'woocommerce_is_shop', 'my_sale_page_is_shop' );
 function my_sale_page_is_shop( $is_shop ) {
-    if ( is_page( 'sale' ) ) {
+    if ( is_page( 'skidki' ) ) {
         return true;
     }
     return $is_shop;
 }
 
 
-// Показать на странице /sale/ только товары со скидкой
+// Показать на странице /skidki/ только товары со скидкой
 add_action( 'pre_get_posts', 'my_sale_page_show_onsale_products' );
 function my_sale_page_show_onsale_products( $q ) {
     // Только фронт, только главный запрос
@@ -692,7 +692,7 @@ function my_sale_page_show_onsale_products( $q ) {
         return;
     }
 
-    if ( is_page( 'sale' ) ) {
+    if ( is_page( 'skidki' ) ) {
         // Говорим, что это запрос по товарам
         $q->set( 'post_type', 'product' );
 
