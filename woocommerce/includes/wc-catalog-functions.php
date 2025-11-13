@@ -690,36 +690,43 @@ function my_sale_page_show_onsale_products( $q ) {
         return;
     }
 
-    // Проверяем именно слаг страницы
-    if ( isset( $q->query['pagename'] ) && $q->query['pagename'] === 'skidki' ) {
-
-        // Делаем запрос по товарам вместо страницы
-        $q->set( 'post_type', 'product' );
-
-        // Убираем признаки страницы, чтобы не было 404
-        $q->set( 'page_id', '' );
-        $q->set( 'pagename', '' );
-        $q->is_page     = false;
-        $q->is_singular = false;
-        $q->is_404      = false;
-        $q->is_archive  = true;
-        $q->is_post_type_archive = true;
-
-        // Товары со скидкой
-        $on_sale = wc_get_product_ids_on_sale();
-        if ( empty( $on_sale ) ) {
-            // Чтобы не было пустого IN (), подсовываем 0
-            $on_sale = array( 0 );
-        }
-        $q->set( 'post__in', $on_sale );
-
-        // Стандартные meta/tax-фильтры WooCommerce
-        if ( function_exists( 'WC' ) ) {
-            $q->set( 'meta_query', WC()->query->get_meta_query() );
-            $q->set( 'tax_query', WC()->query->get_tax_query() );
-        }
+    // Работаем только на странице со слагом skidki
+    if ( ! $q->is_page() ) {
+        return;
     }
+
+    $page = get_queried_object();
+
+    if ( ! $page || empty( $page->post_name ) || $page->post_name !== 'skidki' ) {
+        return;
+    }
+
+    // Делаем запрос по товарам вместо страницы
+    $q->set( 'post_type', 'product' );
+    $q->set( 'post_status', 'publish' );
+
+    // Только товары со скидкой
+    $on_sale_ids = wc_get_product_ids_on_sale();
+    if ( empty( $on_sale_ids ) ) {
+        // Чтобы не было пустого IN ()
+        $on_sale_ids = array( 0 );
+    }
+    $q->set( 'post__in', $on_sale_ids );
+
+    // Кол-во на страницу как в магазине/блоге
+    $q->set( 'posts_per_page', get_option( 'posts_per_page' ) );
+
+    // Убираем признаки "это страница", делаем "это архив товара"
+    $q->set( 'page_id', '' );
+    $q->set( 'pagename', '' );
+
+    $q->is_page            = false;
+    $q->is_singular        = false;
+    $q->is_404             = false;
+    $q->is_archive         = true;
+    $q->is_post_type_archive = true;
 }
+
 
 
 
