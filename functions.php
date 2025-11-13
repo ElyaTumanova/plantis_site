@@ -29,7 +29,7 @@ function ast_register_custom_fields() {
 require get_template_directory() . '/includes/dev-support.php';
 
 /** Add functions for products change log */
-//require get_template_directory() . '/includes/product-change-logs.php';
+require get_template_directory() . '/includes/product-change-logs.php';
 
 /** Add images for tags */
 require get_template_directory() . '/includes/tags-image.php';
