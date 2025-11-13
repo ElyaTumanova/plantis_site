@@ -659,6 +659,56 @@ function move_to_top_on_pagination() {
 
 add_action('woocommerce_after_main_content', 'move_to_top_on_pagination');
 
+// sale page
+
+// Использовать шаблон магазина для страницы /sale/
+add_filter( 'template_include', 'my_sale_page_use_shop_template', 99 );
+function my_sale_page_use_shop_template( $template ) {
+    if ( is_page( 'skidki' ) ) {
+        $shop_template = wc_locate_template( 'archive-product.php' );
+        if ( $shop_template ) {
+            return $shop_template;
+        }
+    }
+
+    return $template;
+}
+
+// Считать страницу /sale/ аналогом магазина для Woo
+add_filter( 'woocommerce_is_shop', 'my_sale_page_is_shop' );
+function my_sale_page_is_shop( $is_shop ) {
+    if ( is_page( 'sale' ) ) {
+        return true;
+    }
+    return $is_shop;
+}
+
+
+// Показать на странице /sale/ только товары со скидкой
+add_action( 'pre_get_posts', 'my_sale_page_show_onsale_products' );
+function my_sale_page_show_onsale_products( $q ) {
+    // Только фронт, только главный запрос
+    if ( is_admin() || ! $q->is_main_query() ) {
+        return;
+    }
+
+    if ( is_page( 'sale' ) ) {
+        // Говорим, что это запрос по товарам
+        $q->set( 'post_type', 'product' );
+
+        // Берём только товары со скидкой
+        $q->set( 'post__in', wc_get_product_ids_on_sale() );
+
+        // Подтягиваем стандартные meta/tax запросы WooCommerce
+        if ( function_exists( 'WC' ) ) {
+            $q->set( 'meta_query', WC()->query->get_meta_query() );
+            $q->set( 'tax_query', WC()->query->get_tax_query() );
+        }
+    }
+}
+
+
+
 // добавляем директивы ноиндекс, фоллоу для страниц пагинации, начиная со 2 #SEO
 add_filter( 'wpseo_robots', 'filter_wpseo_robots', 10, 1 );
 
