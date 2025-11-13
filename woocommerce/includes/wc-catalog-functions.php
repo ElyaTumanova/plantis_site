@@ -685,27 +685,27 @@ function my_sale_page_use_shop_template( $template ) {
 
 
 // Показать на странице /skidki/ только товары со скидкой
-add_action( 'pre_get_posts', 'my_sale_page_show_onsale_products' );
-function my_sale_page_show_onsale_products( $q ) {
-    // Только фронт, только главный запрос
-    if ( is_admin() || ! $q->is_main_query() ) {
-        return;
-    }
+// add_action( 'pre_get_posts', 'my_sale_page_show_onsale_products' );
+// function my_sale_page_show_onsale_products( $q ) {
+//     // Только фронт, только главный запрос
+//     if ( is_admin() || ! $q->is_main_query() ) {
+//         return;
+//     }
 
-    if ( is_page( 'skidki' ) ) {
-        // Говорим, что это запрос по товарам
-        $q->set( 'post_type', 'product' );
+//     if ( is_page( 'skidki' ) ) {
+//         // Говорим, что это запрос по товарам
+//         $q->set( 'post_type', 'product' );
 
-        // Берём только товары со скидкой
-        $q->set( 'post__in', wc_get_product_ids_on_sale() );
+//         // Берём только товары со скидкой
+//         $q->set( 'post__in', wc_get_product_ids_on_sale() );
 
-        // Подтягиваем стандартные meta/tax запросы WooCommerce
-        if ( function_exists( 'WC' ) ) {
-            $q->set( 'meta_query', WC()->query->get_meta_query() );
-            $q->set( 'tax_query', WC()->query->get_tax_query() );
-        }
-    }
-}
+//         // Подтягиваем стандартные meta/tax запросы WooCommerce
+//         if ( function_exists( 'WC' ) ) {
+//             $q->set( 'meta_query', WC()->query->get_meta_query() );
+//             $q->set( 'tax_query', WC()->query->get_tax_query() );
+//         }
+//     }
+// }
 
 
 
