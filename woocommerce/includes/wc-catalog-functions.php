@@ -675,13 +675,13 @@ function my_sale_page_use_shop_template( $template ) {
 }
 
 // Считать страницу /skidki/ аналогом магазина для Woo
-add_filter( 'woocommerce_is_shop', 'my_sale_page_is_shop' );
-function my_sale_page_is_shop( $is_shop ) {
-    if ( is_page( 'skidki' ) ) {
-        return true;
-    }
-    return $is_shop;
-}
+// add_filter( 'woocommerce_is_shop', 'my_sale_page_is_shop' );
+// function my_sale_page_is_shop( $is_shop ) {
+//     if ( is_page( 'skidki' ) ) {
+//         return true;
+//     }
+//     return $is_shop;
+// }
 
 
 // Показать на странице /skidki/ только товары со скидкой
