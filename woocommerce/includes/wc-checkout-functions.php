@@ -431,7 +431,7 @@ Contents
     
     //комментарий к выбранному способу доставки
 
-    //add_action( 'woocommerce_checkout_order_review', 'delivery_info', 10 );
+    add_action( 'woocommerce_checkout_order_review', 'delivery_info', 10 );
    
     function delivery_info(){
         $min_small_delivery = carbon_get_theme_option('min_small_delivery');
@@ -492,7 +492,7 @@ Contents
                 if(!array_key_exists($delivery_courier,$shipping_costs)) {
                     echo '<div class="checkout__text checkout__text_small-order">
                     При заказе на сумму менее '.$min_small_delivery,' рублей стоимость доставки увеличена. 
-                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></div';
+                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></div>';
                 } else if ($delivery_courier == $chosen_methods[0] ) {
                     echo '<div class="checkout__text checkout__text_small-order-holiday">
                     В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью до '.$min_small_delivery,' рублей доставляются в любой день по тарифу курьерской службы. 
@@ -507,7 +507,7 @@ Contents
                 if(!array_key_exists($delivery_courier,$shipping_costs)) {
                     echo '<div class="checkout__text checkout__text_small-order">
                     При заказе на сумму менее '.$min_medium_delivery,' рублей стоимость доставки увеличена. 
-                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></div';
+                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></div>';
                 } else if ($delivery_courier == $chosen_methods[0] ) {
                     echo '<div class="checkout__text checkout__text_small-order-holiday">
                     В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью до '.$min_medium_delivery,' рублей доставляются в любой день по тарифу курьерской службы. 
@@ -565,7 +565,7 @@ Contents
     }
 
     // добавляем фрагмент, чтобы апдейтить комментарий к доставке
-    //add_action( 'woocommerce_update_order_review_fragments', 'update_order_review_notifications_fragments', 20, 1 );
+    add_action( 'woocommerce_update_order_review_fragments', 'update_order_review_notifications_fragments', 20, 1 );
     function update_order_review_notifications_fragments( $fragments ) {
         ob_start();
         delivery_info();
