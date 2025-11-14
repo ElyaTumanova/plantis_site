@@ -491,7 +491,7 @@ Contents
             if (WC()->cart->subtotal < $min_small_delivery) {
                 if(!array_key_exists($delivery_courier,$shipping_costs)) {
                     echo '<div class="checkout__text checkout__text_small-order">
-                    При заказе на сумму менее '.$min_small_delivery,' рублей стоимость доставки увеличена. 
+                    При заказе на сумму менее '.$min_small_delivery.' рублей стоимость доставки увеличена. 
                     <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></div>';
                 } else if ($delivery_courier == $chosen_methods[0] ) {
                     echo '<div class="checkout__text checkout__text_small-order-holiday">
@@ -506,7 +506,7 @@ Contents
             else if (WC()->cart->subtotal < $min_medium_delivery){
                 if(!array_key_exists($delivery_courier,$shipping_costs)) {
                     echo '<div class="checkout__text checkout__text_small-order">
-                    При заказе на сумму менее '.$min_medium_delivery,' рублей стоимость доставки увеличена. 
+                    При заказе на сумму менее '.$min_medium_delivery.' рублей стоимость доставки увеличена. 
                     <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></div>';
                 } else if ($delivery_courier == $chosen_methods[0] ) {
                     echo '<div class="checkout__text checkout__text_small-order-holiday">
