@@ -431,7 +431,7 @@ Contents
     
     //комментарий к выбранному способу доставки
 
-    add_action( 'woocommerce_checkout_order_review', 'delivery_info', 10 );
+    //add_action( 'woocommerce_checkout_order_review', 'delivery_info', 10 );
    
     function delivery_info(){
         $min_small_delivery = carbon_get_theme_option('min_small_delivery');
