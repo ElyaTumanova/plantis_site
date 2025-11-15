@@ -462,6 +462,7 @@
   border-radius: 10px;
   border: none;
   font-size: 14px;
+  display: inline-flex;
 }
 
 @media (max-width: 767px) {
