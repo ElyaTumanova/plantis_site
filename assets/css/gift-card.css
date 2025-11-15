@@ -651,15 +651,14 @@
 /* Карточка преимущества */
 .giftcard-advantages__wrap{
   display: grid;
-  grid-template: auto / 45px auto;
+  grid-template: auto / 55px 1fr;
   /* grid-template-areas: "photo desrc"; */
-  gap: 14px;
+  gap: 24px;
   padding: 14px;
   transition: transform .06s ease, box-shadow .2s ease, border-color .2s ease;
   background: #fff;
   border: 1px solid #e7eaee;
   border-radius: 14px;
-  grid-template-columns: 72px 1fr;
   align-items: start;
   min-height: 96px;
   align-items: center;
@@ -688,9 +687,10 @@
     text-align: center;
     font-size: 22px;
     font-weight: 700;
-    color: var(--white);
-    background-color: var(--accent-color);
+    color: var(--accent-color);
+    background-color: var(--accent-back);
     padding: 15px;
+    border-radius: 100px;
 }
 
 /* Текст преимущества */
