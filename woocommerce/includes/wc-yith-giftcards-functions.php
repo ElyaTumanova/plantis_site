@@ -163,6 +163,7 @@ add_action('woocommerce_email_footer', function($email) {
   <p style="margin: 0 0 10px;"><a style="color: inherit;font-weight:normal;text-decoration:none" href="tel:+78002015790">8 800 201 57 90</a></p>
   <p style="margin: 0 0 10px;"><a style="color: inherit;font-weight:normal;text-decoration:none" href="tel:+79647687944">8 964 768 79 44</a></p>
   <p style="margin: 0 0 10px;"><a style="color: inherit;font-weight:normal;text-decoration:none" href="mailto:INFO@PLANTIS.SHOP">INFO@PLANTIS.SHOP</a></p>
+  <p style="margin:40px 0 10px; font-weight: bold; color: #146F41">Ваш Plantis</p>
   <?php
 }, 10, 1);
 
