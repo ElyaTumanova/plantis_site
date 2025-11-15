@@ -46,7 +46,7 @@ add_filter('query_vars', function ($vars) {
 add_action('ywgc_gift_cards_email_before_preview', function ($introductory_text, $gift_card){
   ?>
   <p style="margin-bottom:15px;text-align:left;margin:0 0 16px">
-    Спасибо за покупку подарочного сертификата! Вот как его подарить. <br>
+    Спасибо за покупку подарочного сертификата! Вот как его подарить. <br> <br> 
     Он доступен в цифровом формате. Просто отправьте ссылку человеку, которому вы его дарите. Все детали сертификата можно найти по той же ссылке.
   </p>
   <?php
@@ -156,6 +156,23 @@ add_action( 'plnt_gift_card_email_after_preview', function( $gift_card ) {
     echo '</div>';
 
 }, 20, 1 );
+
+add_action('woocommerce_email_footer', function($email) {
+  ?>
+  <div style="margin:20px 0;">Наши контакты</div>
+  <div>
+				<p><a href="tel:+78002015790">8 800 201 57 90</a></p>
+				<p><a href="tel:+79647687944">8 964 768 79 44</a></p>
+			</div>
+            
+			<div>
+				<a href="mailto:INFO@PLANTIS.SHOP">INFO@PLANTIS.SHOP</a>
+          <div>
+              <?php get_template_part('template-parts/social-media-btns');?>
+          </div>
+			</div>
+  <?php
+})
 
 
 /*--------------------------------------------------------------
