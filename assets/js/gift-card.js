@@ -11,8 +11,8 @@ if (gifForm) {
 
   let minAmount = 1500
   let maxAmount = 30000
-  // amountInput.value = minAmount
-  // amountInput.setAttribute('value',minAmount)
+  amountInput.value = minAmount
+  amountInput.setAttribute('value',minAmount)
   imageAmount.innerHTML = `${minAmount}<span>₽</span>`
 
   //for dev
