@@ -159,18 +159,10 @@ add_action( 'plnt_gift_card_email_after_preview', function( $gift_card ) {
 
 add_action('woocommerce_email_footer', function($email) {
   ?>
-  <div style="margin:20px 0;">Наши контакты</div>
-  <div>
-				<p><a href="tel:+78002015790">8 800 201 57 90</a></p>
-				<p><a href="tel:+79647687944">8 964 768 79 44</a></p>
-			</div>
-            
-			<div>
-				<a href="mailto:INFO@PLANTIS.SHOP">INFO@PLANTIS.SHOP</a>
-          <div>
-              <?php get_template_part('template-parts/social-media-btns');?>
-          </div>
-			</div>
+  <p style="margin:30px 0 10px; font-weight: bold;">Наши контакты</p>
+  <p style="margin: 0 0 10px;"><a style="color: inherit;font-weight:normal;text-decoration:none" href="tel:+78002015790">8 800 201 57 90</a></p>
+  <p style="margin: 0 0 10px;"><a style="color: inherit;font-weight:normal;text-decoration:none" href="tel:+79647687944">8 964 768 79 44</a></p>
+  <p style="margin: 0 0 10px;"><a style="color: inherit;font-weight:normal;text-decoration:none" href="mailto:INFO@PLANTIS.SHOP">INFO@PLANTIS.SHOP</a></p>
   <?php
 }, 10, 1);
 
