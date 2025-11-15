@@ -172,7 +172,7 @@ add_action('woocommerce_email_footer', function($email) {
           </div>
 			</div>
   <?php
-})
+});
 
 
 /*--------------------------------------------------------------
