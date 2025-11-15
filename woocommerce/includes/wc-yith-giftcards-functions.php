@@ -302,73 +302,73 @@ function plnt_get_giftcard_by_code( $code ) {
 #PRICE FIX
 --------------------------------------------------------------*/
 
-// Функция нормализации цены (убираем валюту, пробелы, запятые)
-if ( ! function_exists( 'tbank_to_float' ) ) {
-    function tbank_to_float( $value ) {
-        // Переводим в строку, чтобы не ловить варнинги
-        $value = (string) $value;
+// // Функция нормализации цены (убираем валюту, пробелы, запятые)
+// if ( ! function_exists( 'tbank_to_float' ) ) {
+//     function tbank_to_float( $value ) {
+//         // Переводим в строку, чтобы не ловить варнинги
+//         $value = (string) $value;
 
-        // Убираем всё, кроме цифр, точки, запятой и минуса
-        $value = preg_replace( '/[^\d,.\-]/u', '', $value );
+//         // Убираем всё, кроме цифр, точки, запятой и минуса
+//         $value = preg_replace( '/[^\d,.\-]/u', '', $value );
 
-        // Заменяем запятую на точку (если используется вид 1000,50)
-        $value = str_replace( ',', '.', $value );
+//         // Заменяем запятую на точку (если используется вид 1000,50)
+//         $value = str_replace( ',', '.', $value );
 
-        // Возвращаем «числовую строку» — WooCommerce так же хранит цены
-        return $value;
-    }
-}
+//         // Возвращаем «числовую строку» — WooCommerce так же хранит цены
+//         return $value;
+//     }
+// }
 
-// Нормализуем цену для товаров типа gift card
-function tbank_fix_yith_giftcard_price( $price, $product ) {
-    if ( ! $product ) {
-        return $price;
-    }
+// // Нормализуем цену для товаров типа gift card
+// function tbank_fix_yith_giftcard_price( $price, $product ) {
+//     if ( ! $product ) {
+//         return $price;
+//     }
 
-    $type = $product->get_type();
+//     $type = $product->get_type();
 
-    // Проверяем тип товара — тут можно добавить свои варианты, если точно знаешь slug
-    $giftcard_types = array( 'gift-card', 'ywgc_gift_card' );
+//     // Проверяем тип товара — тут можно добавить свои варианты, если точно знаешь slug
+//     $giftcard_types = array( 'gift-card', 'ywgc_gift_card' );
 
-    if ( ! in_array( $type, $giftcard_types, true ) ) {
-        return $price; // обычные товары не трогаем
-    }
+//     if ( ! in_array( $type, $giftcard_types, true ) ) {
+//         return $price; // обычные товары не трогаем
+//     }
 
-    // Нормализуем то, что вернул YITH
-    $normalized = tbank_to_float( $price );
+//     // Нормализуем то, что вернул YITH
+//     $normalized = tbank_to_float( $price );
 
-    // На всякий случай: если после очистки пусто — возвращаем оригинал
-    if ( $normalized === '' ) {
-        return $price;
-    }
+//     // На всякий случай: если после очистки пусто — возвращаем оригинал
+//     if ( $normalized === '' ) {
+//         return $price;
+//     }
 
-    return $normalized;
-}
+//     return $normalized;
+// }
 
-add_filter( 'woocommerce_product_get_price',         'tbank_fix_yith_giftcard_price', 20, 2 );
-add_filter( 'woocommerce_product_get_regular_price', 'tbank_fix_yith_giftcard_price', 20, 2 );
-add_filter( 'woocommerce_product_get_sale_price',    'tbank_fix_yith_giftcard_price', 20, 2 );
+// add_filter( 'woocommerce_product_get_price',         'tbank_fix_yith_giftcard_price', 20, 2 );
+// add_filter( 'woocommerce_product_get_regular_price', 'tbank_fix_yith_giftcard_price', 20, 2 );
+// add_filter( 'woocommerce_product_get_sale_price',    'tbank_fix_yith_giftcard_price', 20, 2 );
 
-//Хук на суммы в позициях заказа
+// //Хук на суммы в позициях заказа
 
-function tbank_fix_yith_giftcard_order_item_total( $total, $item, $order ) {
-    $product = $item->get_product();
-    if ( ! $product ) {
-        return $total;
-    }
+// function tbank_fix_yith_giftcard_order_item_total( $total, $item, $order ) {
+//     $product = $item->get_product();
+//     if ( ! $product ) {
+//         return $total;
+//     }
 
-    $type = $product->get_type();
-    $giftcard_types = array( 'gift-card', 'ywgc_gift_card' );
+//     $type = $product->get_type();
+//     $giftcard_types = array( 'gift-card', 'ywgc_gift_card' );
 
-    if ( ! in_array( $type, $giftcard_types, true ) ) {
-        return $total;
-    }
+//     if ( ! in_array( $type, $giftcard_types, true ) ) {
+//         return $total;
+//     }
 
-    $normalized = tbank_to_float( $total );
-    return $normalized === '' ? $total : $normalized;
-}
+//     $normalized = tbank_to_float( $total );
+//     return $normalized === '' ? $total : $normalized;
+// }
 
-add_filter( 'woocommerce_order_item_get_total',    'tbank_fix_yith_giftcard_order_item_total', 20, 3 );
-add_filter( 'woocommerce_order_item_get_subtotal', 'tbank_fix_yith_giftcard_order_item_total', 20, 3 );
+// add_filter( 'woocommerce_order_item_get_total',    'tbank_fix_yith_giftcard_order_item_total', 20, 3 );
+// add_filter( 'woocommerce_order_item_get_subtotal', 'tbank_fix_yith_giftcard_order_item_total', 20, 3 );
 
 
