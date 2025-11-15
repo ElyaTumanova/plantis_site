@@ -16,23 +16,6 @@ Contents
 #GENERAL DEV
 --------------------------------------------------------------*/
 
-// создаем запись со станицей с подарочной картой
-function create_gift_card_page($gift_card) {
-    $post_data = array(
-    'post_title'    => wp_strip_all_tags( 'Подарочная карта' ),
-    'post_content'  => $gift_card->gift_card_number ,
-    'post_name' => 'gift-card-'.$gift_card->gift_card_number,
-    'post_status'   => 'publish',
-    'post_author'   => 1,
-  );
-
-  // Вставляем запись в базу данных
-  $post_id = wp_insert_post( $post_data );
-
-}
-
-//add_action('yith_ywgc_after_gift_card_generation_save', 'create_gift_card_page');
-
 // регистрируем гет парамтер для подарочной карты
 add_filter('query_vars', function ($vars) {
     $vars[] = 'gcnum';
@@ -193,18 +176,6 @@ add_filter('yith_ywgc_cart_totals_gift_card_label', function (){
   return 'Сертификат';
 });
 
-// Для плагина YITH Gift Cards
-// function remove_yith_gift_card_display() {
-//     if (class_exists('YITH_YWGC_Frontend')) {
-//         remove_action('woocommerce_order_item_meta_start', array(YITH_YWGC_Frontend::get_instance(), 'show_gift_card_code_on_order_item'), 10, 2);
-//     }
-// }
-// add_action('init', 'remove_yith_gift_card_display');
-
-// add_filter('yith_ywgc_cart_totals_gift_card_label',function (){
-//   return 'Подарочный сертификат';
-// });
-
 /*--------------------------------------------------------------
 #PRODUCT PAGE
 --------------------------------------------------------------*/
@@ -256,14 +227,6 @@ add_action('yith_ywgc_show_gift_card_amount_selection', function(){
   <?php
 },10);
 
-// add_action('yith_gift_cards_template_before_add_to_cart_form', function (){
-//   echo '<div class="page-popup__container page-popup__container_giftcard d-none">
-//   <span class="page-popup__close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.00045 24L24 0.999999M23.9995 24L0.999999 1" stroke="currentColor" stroke-miterlimit="10"></path></svg></span>';
-// }, 10);
-
-// add_action('yith_gift_cards_template_after_add_to_cart_form', function (){
-//   echo '</div>';
-// }, 10);
 
 add_filter('ywgc_recipient_name_label', function (){
   return 'Для кого подарок';
@@ -297,28 +260,6 @@ add_filter( 'woocommerce_add_to_cart_redirect', function( $url ) {
 /*--------------------------------------------------------------
 #GIFT CARD PAGE
 --------------------------------------------------------------*/
-
-
-// function plnt_get_giftcard_by_code( $code ) {
-//     $code = sanitize_text_field( $code );
-//     if ( empty( $code ) ) {
-//         return null;
-//     }
-
-//     $query = new WP_Query( array(
-//         'post_type'      => 'gift_card',     // тип поста для YITH карт
-//         'post_status'    => 'publish',
-//         'posts_per_page' => 1,
-//         's' => $code,
-//         'fields' => 'ids',
-//     ) );
-
-//     if ( ! empty( $query->posts ) ) {
-//         return $query->posts[0];
-//     }
-
-//     return null;
-// }
 
 // выносим фильтр в именованную функцию
 function plnt_where_exact_title( $where, $query ) {
@@ -354,24 +295,3 @@ function plnt_get_giftcard_by_code( $code ) {
 
     return ! empty( $q->posts ) ? (int) $q->posts[0] : null;
 }
-
-
-
-/*--------------------------------------------------------------
-#CARD BALANCE CHECK
---------------------------------------------------------------*/
-
-// add_action( 'wp_ajax_check_giftcard_balance', 'plnt_check_giftcard_balance' );
-// add_action( 'wp_ajax_nopriv_check_giftcard_balance', 'plnt_check_giftcard_balance' );
-// function plnt_check_giftcard_balance() {
-//     $res = null;
-//     $code = sanitize_text_field( $_POST['code'] ?? '' );
-//     $gift_card_id = plnt_get_giftcard_by_code( $code );
-//     $gift_card = get_post_meta( $gift_card_id );
-//     if ( $gift_card ) {
-//       $res = $gift_card['_ywgc_balance_total'][0];
-//     }
-//     wp_send_json_success([
-//         'res' => $res
-//     ]);
-// }
