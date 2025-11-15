@@ -46,7 +46,8 @@ add_filter('query_vars', function ($vars) {
 add_action('ywgc_gift_cards_email_before_preview', function ($introductory_text, $gift_card){
   ?>
   <p style="margin-bottom:15px;text-align:left;margin:0 0 16px">
-    В данном письме содержится  ссылка на подарочный сертификат, которой Вы можете поделится с получателем
+    Спасибо за покупку подарочного сертификата! Вот как его подарить. <br>
+    Он доступен в цифровом формате. Просто отправьте ссылку человеку, которому вы его дарите. Все детали сертификата можно найти по той же ссылке.
   </p>
   <?php
 }, 10, 2);
