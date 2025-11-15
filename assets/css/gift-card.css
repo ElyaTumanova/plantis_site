@@ -629,6 +629,7 @@
   font-weight: 600;
 }
 
+
 /* Сетка преимуществ */
 .giftcard-advantages{
   display: grid;
@@ -651,7 +652,7 @@
 .giftcard-advantages__wrap{
   display: grid;
   grid-template: auto / 45px auto;
-  grid-template-areas: "photo desrc";
+  /* grid-template-areas: "photo desrc"; */
   gap: 14px;
   padding: 14px;
   transition: transform .06s ease, box-shadow .2s ease, border-color .2s ease;
@@ -671,7 +672,7 @@
 }
 
 /* Плашка под иконку (делаем иконку визуально ровной) */
-.giftcard-advantages__image{
+/* .giftcard-advantages__image{
   grid-area: photo;
   object-fit: contain;
   display: block;
@@ -681,12 +682,20 @@
   background: #f3f4f6;
   border-radius: 12px;
   padding: 10px;
+} */
 
+.giftcard-advantages__number {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    background-color: var(--accent-color);
+    padding: 15px;
 }
 
 /* Текст преимущества */
 .giftcard-advantages__descr{
-  grid-area: desrc;
+  /* grid-area: desrc; */
   font-weight: 500;
   font-size: 15px;
   line-height: 1.45;
