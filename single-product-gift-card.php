@@ -43,7 +43,6 @@
   </div>
 </div>
 <?php get_template_part('template-parts/popups/gift-card-popup');?>
-<?php //get_template_part('template-parts/popups/gc-balance-check-popup');?>
 
 
 <?php get_footer();?>
