@@ -307,6 +307,7 @@ function my_show_cart_items_on_checkout() {
 
     foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
         $product  = $cart_item['data'];
+        $type    = $product->get_type();
         $name     = $product->get_name();
         $qty      = $cart_item['quantity'];
         $price    = wc_get_price_to_display( $product );
@@ -317,6 +318,7 @@ function my_show_cart_items_on_checkout() {
         echo 'Кол-во: ' . esc_html( $qty ) . '<br>';
         echo 'Цена за шт.: ' . wc_price( $price ) . '<br>';
         echo 'Сумма: ' . wc_price( $subtotal );
+        echo 'Тип: ' . $type;
         echo '</li>';
     }
 
