@@ -53,6 +53,7 @@ function plnt_card_grid_start () {
             <div class="card__grid card__grid_not-plant" <?php echo $schemaOrgAttr ?>>
             <?php
             echo 'price '.$product->get_price();
+            print_r($product);
         }
     } 
 };
