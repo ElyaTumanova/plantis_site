@@ -52,6 +52,7 @@ function plnt_card_grid_start () {
             ?>
             <div class="card__grid card__grid_not-plant" <?php echo $schemaOrgAttr ?>>
             <?php
+            echo 'price '.$product->get_price();
         }
     } 
 };
@@ -247,7 +248,6 @@ function for_dev() {
 
 function plnt_price_wrap() {
     global $product;
-    echo ($product->get_price());
     $price = number_format($product->get_price(), 2, '.', ''); 
     ?>
     <div class="card__price-wrap">
