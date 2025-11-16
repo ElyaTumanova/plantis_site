@@ -247,6 +247,7 @@ function for_dev() {
 
 function plnt_price_wrap() {
     global $product;
+    echo ($product->get_price());
     $price = number_format($product->get_price(), 2, '.', ''); 
     ?>
     <div class="card__price-wrap">
