@@ -1,7 +1,5 @@
 <?php get_header();?>
 <div class="content-area">
-  <?php echo 'price '.$product->get_price();?>
-  <?php print_r($product);?>
   <div class="gift-content-area">
     <h1 class="gift-card__title">Электронный подарочный сертификат</h1>
     <button class="gift-card__example-btn page-popup-open-btn">Посмотреть пример</button>
