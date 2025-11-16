@@ -213,16 +213,16 @@ add_action('yith_ywgc_show_gift_card_amount_selection', function(){
   <p class="gift__note">Можно ввести любую сумму от 1500 до 30&nbsp;000&nbsp;₽</p>
   <div class="gift__amounts gift-swiper-wrap">
       <div class="swiper-wrapper">
-        <p class="swiper-slide">1500<span>₽</span></p>
-        <p class="swiper-slide">2000<span>₽</span></p>
-        <p class="swiper-slide">3000<span>₽</span></p>
-        <p class="swiper-slide">4000<span>₽</span></p>
-        <p class="swiper-slide">5000<span>₽</span></p>
-        <p class="swiper-slide">10000<span>₽</span></p>
-        <p class="swiper-slide">15000<span>₽</span></p>
-        <p class="swiper-slide">20000<span>₽</span></p>
-        <p class="swiper-slide">25000<span>₽</span></p>
-        <p class="swiper-slide">30000<span>₽</span></p>
+        <p class="swiper-slide" data-amount="1500">1500<span>₽</span></p>
+        <p class="swiper-slide" data-amount="2000">2000<span>₽</span></p>
+        <p class="swiper-slide" data-amount="3000">3000<span>₽</span></p>
+        <p class="swiper-slide" data-amount="4000">4000<span>₽</span></p>
+        <p class="swiper-slide" data-amount="5000">5000<span>₽</span></p>
+        <p class="swiper-slide" data-amount="10000">10000<span>₽</span></p>
+        <p class="swiper-slide" data-amount="15000">15000<span>₽</span></p>
+        <p class="swiper-slide" data-amount="20000">20000<span>₽</span></p>
+        <p class="swiper-slide" data-amount="25000">25000<span>₽</span></p>
+        <p class="swiper-slide" data-amount="30000">30000<span>₽</span></p>
       </div>
   </div>
   <?php
