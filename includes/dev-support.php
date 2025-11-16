@@ -325,3 +325,35 @@ function my_show_cart_items_on_checkout() {
     echo '</ul>';
     echo '</div>';
 }
+
+
+add_action( 'woocommerce_before_checkout_form', 'my_set_price_by_product_id_on_checkout', 5 );
+function my_set_price_by_product_id_on_checkout() {
+
+    // чтобы не срабатывало в админке и при пустой корзине
+    if ( is_admin() && ! defined( 'DOING_AJAX' ) ) {
+        return;
+    }
+
+    if ( WC()->cart->is_empty() ) {
+        return;
+    }
+
+    // ID товара, которому задаём цену
+    $target_id = 15419;   // ← поменяй на свой ID
+
+    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+        $product = $cart_item['data'];
+
+        $new_price = wc_get_price_to_display( $product );   // ← нужная цена
+
+        // для простых товаров
+        if ( $product->get_id() == $target_id ) {
+            $product->set_price( $new_price );
+        }
+    }
+
+    // пересчитать итоги после изменения цен
+    WC()->cart->calculate_totals();
+}
+
