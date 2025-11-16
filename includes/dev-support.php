@@ -359,8 +359,8 @@ function my_set_price_by_product_id_on_checkout() {
 
 
 // Простой вариант: одна цена для одного товара по его ID.
-add_filter( 'woocommerce_product_get_price', 'my_force_product_price_by_id', 10, 2 );
-add_filter( 'woocommerce_product_get_regular_price', 'my_force_product_price_by_id', 10, 2 );
+//add_filter( 'woocommerce_product_get_price', 'my_force_product_price_by_id', 10, 2 );
+//add_filter( 'woocommerce_product_get_regular_price', 'my_force_product_price_by_id', 10, 2 );
 
 function my_force_product_price_by_id( $price, $product ) {
 
@@ -371,7 +371,6 @@ function my_force_product_price_by_id( $price, $product ) {
         $new_price = wc_get_price_to_display( $product ); 
         return $new_price;
     }
-
 
     return $price;
 }
