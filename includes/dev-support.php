@@ -293,3 +293,33 @@ function plnt_get_prods_data() {
 }
 
 //add_action( 'wp_footer', 'plnt_get_prods_data' );
+
+add_action( 'woocommerce_before_checkout_form', 'my_show_cart_items_on_checkout', 5 );
+function my_show_cart_items_on_checkout() {
+    if ( WC()->cart->is_empty() ) {
+        return;
+    }
+
+    echo '<div class="my-checkout-items">';
+    echo '<h3>Состав заказа</h3>';
+
+    echo '<ul>';
+
+    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+        $product  = $cart_item['data'];
+        $name     = $product->get_name();
+        $qty      = $cart_item['quantity'];
+        $price    = wc_get_price_to_display( $product );
+        $subtotal = $price * $qty;
+
+        echo '<li>';
+        echo '<strong>' . esc_html( $name ) . '</strong><br>';
+        echo 'Кол-во: ' . esc_html( $qty ) . '<br>';
+        echo 'Цена за шт.: ' . wc_price( $price ) . '<br>';
+        echo 'Сумма: ' . wc_price( $subtotal );
+        echo '</li>';
+    }
+
+    echo '</ul>';
+    echo '</div>';
+}
