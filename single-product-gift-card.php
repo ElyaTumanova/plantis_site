@@ -1,5 +1,6 @@
 <?php get_header();?>
 <div class="content-area">
+  <?php echo 'price '.$product->get_price();?>
   <div class="gift-content-area">
     <h1 class="gift-card__title">Электронный подарочный сертификат</h1>
     <button class="gift-card__example-btn page-popup-open-btn">Посмотреть пример</button>
@@ -8,10 +9,7 @@
       <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_cover.jpg" class="gift-image" alt="Подарочная карта">
       <p class="gift-image-amount">1500<span>₽</span></p>
     </div>
-    <?php 
-        echo 'price '.$product->get_price();
-        
-        echo do_shortcode('[yith_ywgc_display_gift_card_form]');?>
+    <?php echo do_shortcode('[yith_ywgc_display_gift_card_form]');?>
     <div class="gift-card__info">
       <h2 class="giftcard-advantages__title">Преимущества подарочного сертификата</h2>
       <div class="giftcard-advantages">
