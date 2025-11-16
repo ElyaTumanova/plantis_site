@@ -327,7 +327,7 @@ function my_show_cart_items_on_checkout() {
 }
 
 
-add_action( 'woocommerce_before_checkout_form', 'my_set_price_by_product_id_on_checkout', 5 );
+//add_action( 'woocommerce_before_checkout_form', 'my_set_price_by_product_id_on_checkout', 5 );
 function my_set_price_by_product_id_on_checkout() {
 
     // чтобы не срабатывало в админке и при пустой корзине
@@ -356,4 +356,26 @@ function my_set_price_by_product_id_on_checkout() {
     // пересчитать итоги после изменения цен
     WC()->cart->calculate_totals();
 }
+
+
+// Простой вариант: одна цена для одного товара по его ID.
+add_filter( 'woocommerce_product_get_price', 'my_force_product_price_by_id', 10, 2 );
+add_filter( 'woocommerce_product_get_regular_price', 'my_force_product_price_by_id', 10, 2 );
+add_filter( 'woocommerce_product_variation_get_price', 'my_force_product_price_by_id', 10, 2 );
+add_filter( 'woocommerce_product_variation_get_regular_price', 'my_force_product_price_by_id', 10, 2 );
+
+function my_force_product_price_by_id( $price, $product ) {
+
+    $target_id = 15419;  // ID товара, для которого задаём новую цену
+
+    // Для простого товара
+    if ( $product->get_id() == $target_id ) {
+        $new_price = wc_get_price_to_display( $product ); 
+        return $new_price;
+    }
+
+
+    return $price;
+}
+
 
