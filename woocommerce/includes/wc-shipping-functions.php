@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 //СПОСОБЫ ДОСТАВКИ
 
 //задаем по умолчанию срочную доставку
-//add_action('wp_head','plnt_set_initials');
+add_action('wp_head','plnt_set_initials');
 
 function plnt_set_initials() {
     date_default_timezone_set('Europe/Moscow');
@@ -37,8 +37,8 @@ function plnt_check() {
     //print_r( $packages);
     // echo '<br>';
     //echo $delivery_pochta;
-    // echo $chosen_methods[0];
-    // echo '<br>';
+    echo $chosen_methods[0];
+    echo '<br>';
 
     // if($local_pickup === $chosen_methods[0]) {
     //     echo 'hi';
@@ -47,7 +47,7 @@ function plnt_check() {
     // $isbackorders = plnt_is_backorder();
     // echo 'isback '.$isbackorders.'  ';
     echo 'isUrgent '.(WC()->session->get('isUrgent' )).'  ';
-
+    
     // echo 'hiAjax '.(WC()->session->get('hiAjax' )).'  ';
     // echo 'hiInit '.(WC()->session->get('hiInit' )).'  ';
     // echo 'isback2 '.(WC()->session->get('isBackorder' )).'  ';
@@ -86,31 +86,18 @@ function plnt_get_urgent_shipping() {
   //wp_die(); // (required)
 }
 
-add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_urgent', 10, 1 );
-function plnt_refresh_shipping_methods_for_urgent( $post_data ){
-    $bool = true;
+add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods', 10, 1 );
+function plnt_refresh_shipping_methods( $post_data ){
+    // Если хотя бы один из флагов равен '1', сбрасываем кэш способов доставки
+    $has_flag = ( WC()->session->get('isUrgent') === '1' ) || ( WC()->session->get('isLate') === '1' );
 
-    if ( WC()->session->get('isUrgent' ) === '1' )
-        $bool = false;
+    $bool = ! $has_flag;
 
-    // Mandatory to make it work with shipping methods
+    // Обязательно для корректной перерасчётки способов доставки
     foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
         WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
     }
-    WC()->cart->calculate_shipping();
-}
 
-add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods_for_late', 10, 1 );
-function plnt_refresh_shipping_methods_for_late( $post_data ){
-    $bool = true;
-
-    if ( WC()->session->get('isLate' ) === '1')
-        $bool = false;
-
-    // Mandatory to make it work with shipping methods
-    foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
-        WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
-    }
     WC()->cart->calculate_shipping();
 }
 

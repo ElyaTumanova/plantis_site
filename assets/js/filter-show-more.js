@@ -4,6 +4,7 @@ let diametrFilterWrap;
 let diametrFilterItems;
 let showMoreBtn;
 let diametrFilterWrapHeight = 150;
+let diametrFilterWrapHeightMax = 354;
 
 
 function hideFilterItems() {
@@ -17,10 +18,10 @@ function hideFilterItems() {
         }
     });
     diametrFilterWrapHeight = 16 * itemsCount + 10 * (itemsCount - 1);
-    //console.log(itemsCount);
     document.documentElement.style.setProperty('--diametrFilterWrapHeight', `${diametrFilterWrapHeight}px`);
 
     diametrFilterWrap.classList.add('hidden');
+    diametrFilterWrap.classList.remove('scroll');
     showMoreBtn.addEventListener('click', showAllFilterItems, {once:true});
     showMoreBtn.textContent = 'Показать все';
 }
@@ -32,9 +33,12 @@ function showAllFilterItems() {
         itemsCount++;
     })
     diametrFilterWrapHeight = 16 * itemsCount + 10 * (itemsCount - 1);
-    console.log(itemsCount);
     document.documentElement.style.setProperty('--diametrFilterWrapHeight', `${diametrFilterWrapHeight}px`);
     diametrFilterWrap.classList.remove('hidden');
+    if (diametrFilterWrapHeight > diametrFilterWrapHeightMax) {
+      diametrFilterWrap.classList.add('scroll');
+    }
+
     showMoreBtn.addEventListener('click', hideFilterItems, {once:true});
     showMoreBtn.addEventListener('click', (event) => {
         let sidebar = document.querySelector('.catalog__sidebar-filters');
@@ -46,23 +50,27 @@ function showAllFilterItems() {
 if(diametrFilter) {
     diametrFilterWrap = diametrFilter.querySelector('.bapf_body');
     diametrFilterItems = Array.from(diametrFilter.querySelectorAll('li'));
+    document.documentElement.style.setProperty('--diametrFilterWrapHeightMax', `${diametrFilterWrapHeightMax}px`);
 
-    showMoreBtn = document.createElement("button");
-    showMoreBtn.classList.add('filter-show-more-btn');
-    diametrFilter.appendChild(showMoreBtn);
-
-    hideFilterItems();
+    if(diametrFilterItems.length > 9) {
+      showMoreBtn = document.createElement("button");
+      showMoreBtn.classList.add('filter-show-more-btn');
+      diametrFilter.appendChild(showMoreBtn);
+  
+      hideFilterItems();
+    }
 }
 
 
 //search field for plants names filter
 function setSearchFilterField() {
+    const filterHeader = document.querySelector('.filter_plant_name .bapf_head');
+    const filterBody = document.querySelector('.filter_plant_name .bapf_body');
     const searchInput = document.querySelector('.berocket-search-checkbox');
     const checkboxes = document.querySelectorAll('.filter_plant_name li');
 
     if (searchInput && checkboxes.length) {
         searchInput.addEventListener('input', function () {
-        console.log('hi hi');
         const query = this.value.toLowerCase();
         checkboxes.forEach((li) => {
             const label = li.textContent.toLowerCase();
@@ -70,6 +78,32 @@ function setSearchFilterField() {
         });
         });
     }
+
+    if (filterBody && filterHeader) {      
+      // Функция для проверки и скрытия/показа
+      const checkDisplayState = () => {
+          const computedStyle = window.getComputedStyle(filterBody);
+          if (computedStyle.display === 'none') {
+              searchInput.classList.add('d-none');
+          } else {
+              searchInput.classList.remove('d-none');
+          }
+      };
+      
+      // Проверяем сразу при загрузке
+      checkDisplayState();
+      
+      // Наблюдаем за изменениями атрибута style
+      const observer = new MutationObserver(checkDisplayState);
+      observer.observe(filterBody, {
+          attributes: true,
+          attributeFilter: ['style']
+      });
+      
+      filterHeader.addEventListener('click', function() {
+          searchInput.classList.toggle('d-none');
+      });
+  }
 }
 
 document.addEventListener('DOMContentLoaded', setSearchFilterField);

@@ -3,10 +3,42 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+
+// Старт замера: самый ранний хук внутри ajax-запроса wc-ajax=add_to_cart
+add_action( 'init', function () {
+    if ( wp_doing_ajax()
+      && isset($_GET['wc-ajax'])
+      && $_GET['wc-ajax'] === 'add_to_cart' ) {
+        $GLOBALS['wc_add_to_cart_t0'] = microtime( true );
+    }
+}, 0 );
+
+// Стоп замера и отдача времени в заголовке (видно в DevTools → Network → Headers).
+// Хук срабатывает ПЕРЕД формированием JSON-ответа и отправкой.
+add_action( 'woocommerce_ajax_added_to_cart', function( $product_id ){
+    if ( isset( $GLOBALS['wc_add_to_cart_t0'] ) && ! headers_sent() ) {
+        $ms = (int) round( ( microtime(true) - $GLOBALS['wc_add_to_cart_t0'] ) * 1000 );
+        header( 'Server-Timing: app;desc="wc add_to_cart";dur=' . $ms );
+        header( 'X-Response-Time: ' . $ms . 'ms' );
+    }
+}, 999 );
+
+// (Опционально) если хотите прочитать время на клиенте из JSON-ответа,
+// добавим «скрытый» фрагмент с числом миллисекунд:
+add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ){
+    if ( isset( $GLOBALS['wc_add_to_cart_t0'] ) ) {
+        $ms = (int) round( ( microtime(true) - $GLOBALS['wc_add_to_cart_t0'] ) * 1000 );
+        $fragments['wc_add_to_cart_server_ms'] =
+            '<div id="wc-add-to-cart-server-ms" data-ms="' . esc_attr( $ms ) . '"></div>';
+    }
+    return $fragments;
+}, 999 );
+
+
 // анализ производиетльности серевера
 
 
-//см wp-debug.php
+//см wp-config.php
 
 
     global $timing_points;
@@ -150,26 +182,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
     // TOP 10 SLOWEST SQL QUERIES
-    // add_action('shutdown', function () {
+    add_action('shutdown', function () {
 
-    //     if ( ! defined('SAVEQUERIES') || ! SAVEQUERIES || wp_doing_ajax() ) {
-    //         return;
-    //     }
+        if ( ! defined('SAVEQUERIES') || ! SAVEQUERIES || wp_doing_ajax() ) {
+            return;
+        }
         
-    //     global $wpdb;
+        global $wpdb;
 
-    //     if (defined('SAVEQUERIES') && SAVEQUERIES && !empty($wpdb->queries)) {
-    //         usort($wpdb->queries, function ($a, $b) {
-    //             return $b[1] <=> $a[1]; // сортировка по времени DESC
-    //         });
+        if (defined('SAVEQUERIES') && SAVEQUERIES && !empty($wpdb->queries)) {
+            usort($wpdb->queries, function ($a, $b) {
+                return $b[1] <=> $a[1]; // сортировка по времени DESC
+            });
 
-    //         echo "<!-- TOP 10 SLOWEST SQL QUERIES -->\n";
-    //         foreach (array_slice($wpdb->queries, 0, 10) as $i => $query) {
-    //             list($sql, $time, $call) = $query;
-    //             printf("<!-- #%d | %.4f sec | %s -->\n", $i + 1, $time, $sql);
-    //         }
-    //         echo "<!-- END SQL -->\n";
-    //     }
-    // });
+            echo "<!-- TOP 10 SLOWEST SQL QUERIES -->\n";
+            foreach (array_slice($wpdb->queries, 0, 10) as $i => $query) {
+                list($sql, $time, $call) = $query;
+                printf("<!-- #%d | %.4f sec | %s -->\n", $i + 1, $time, $sql);
+            }
+            echo "<!-- END SQL -->\n";
+        }
+    });
 
 

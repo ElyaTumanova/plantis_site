@@ -51,26 +51,6 @@ Container::make('theme_options', 'Настройки темы')
 					)
 				)
 		))
-		 ->add_tab('Main Page Categories', array(
-			Field::make( 'image', 'cats_palms', 'Пальмы' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'cats_fikus', 'Фикусы' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'cats_lisv', 'Декор-листв' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'cats_napol', 'Напольные' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'cats_cvetush', 'Цветущие' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'cats_lianas', 'Лианы' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'cats_neprikhotliv', 'Неприхотливые' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'cats_succulent', 'Суккуленты' )
-			 ->set_value_type( 'url' ),
-			Field::make( 'image', 'cats_petfriendly', 'Pet Friendly' )
-			 ->set_value_type( 'url' ),
-		))
 		->add_tab('Delivery', array(
 			Field::make( 'text', 'min_free_delivery', 'Минимальная сумма заказа для бесплатной доставки (текст с пробелом)'),
 			Field::make( 'text', 'min_small_delivery', 'Сумма заказа для более дорогой доставки - самая минимальная'),
@@ -91,4 +71,33 @@ Container::make('theme_options', 'Настройки темы')
     				->set_option_value( 'yes' ),
 			Field::make( 'text', 'weekend', 'Выходной (формат ДД.ММ, разделитель - запятая без пробелов)' ),
 			Field::make( 'text', 'pricelist_link', 'Ссылка на скачивание оптового прйс-листа' ),
-	   ));
+	   ))
+     ->add_tab('Plants cats', array(
+			  Field::make( 'image', 'cat_palms', 'Пальмы' )
+                ->set_value_type( 'id' ),
+                
+        Field::make( 'image', 'cat_fikusy', 'Фикусы' )
+            ->set_value_type( 'id' ),
+            
+        Field::make( 'image', 'cat_listvennye', 'Декоративно-лиственные' )
+            ->set_value_type( 'id' ),
+            
+        Field::make( 'image', 'cat_napolnye', 'Напольные' )
+            ->set_value_type( 'id' ),
+            
+        Field::make( 'image', 'cat_cvetushchie', 'Цветущие' )
+            ->set_value_type( 'id' ),
+            
+        Field::make( 'image', 'cat_lianas', 'Лианы' )
+            ->set_value_type( 'id' ),
+            
+        Field::make( 'image', 'cat_neprikhotlivye', 'Неприхотливые' )
+            ->set_value_type( 'id' ),
+            
+        Field::make( 'image', 'cat_succulent', 'Суккуленты' )
+            ->set_value_type( 'id' ),
+            
+        Field::make( 'image', 'cat_pet_friendly', 'Pet Friendly' )
+            ->set_value_type( 'id' ),
+			 
+     ));

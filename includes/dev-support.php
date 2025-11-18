@@ -9,40 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 function plnt_echo_smth() {
-
-
-  $product = wc_get_product( 15419 );
-  echo $product->get_price_html();
-  echo $product->get_price();
-
-  $code = 'B138-0994-F82D-9637';
-
-  $query = new WP_Query( array(
-        'post_type'      => 'gift_card',     // тип поста для YITH карт
-        'post_status'    => 'publish',
-        'posts_per_page' => 1,
-        's' => $code,
-        'fields' => 'ids',
-    ) );
-
-  echo '<pre>';
-  //print_r($product);
-  //print_r($query);
-  $post_obj = get_post( (int) $query->posts[0] );
-
-  $post_id = $query->posts[0];
-  $title   = get_the_title( $post_id );
-
-
-  print_r($title);
-  echo('<br>');
-  print_r($query);
-  echo('<br>');
-  print_r(get_post_meta( $post_id ));
-  
-
-
-  echo '</pre>';
 }
 
 
@@ -295,4 +261,41 @@ function plnt_get_prods_data() {
 //add_action( 'wp_footer', 'plnt_get_prods_data' );
 
 
+// Вывод всех зарегистрированных размеров изображений
+function show_image_sizes() {
+    global $_wp_additional_image_sizes;
+    
+    echo '<pre>';
+    echo 'Стандартные размеры WordPress:' . "\n";
+    $default_sizes = get_intermediate_image_sizes();
+    
+    foreach ($default_sizes as $size) {
+        echo "Размер: " . $size . "\n";
+        if (in_array($size, array('thumbnail', 'medium', 'medium_large', 'large'))) {
+            $width = get_option($size . '_size_w');
+            $height = get_option($size . '_size_h');
+            $crop = get_option($size . '_size_crop');
+            echo "  Ширина: $width\n";
+            echo "  Высота: $height\n";
+            echo "  Обрезка: " . ($crop ? 'Да' : 'Нет') . "\n";
+        } elseif (isset($_wp_additional_image_sizes[$size])) {
+            $sizes = $_wp_additional_image_sizes[$size];
+            echo "  Ширина: " . $sizes['width'] . "\n";
+            echo "  Высота: " . $sizes['height'] . "\n";
+            echo "  Обрезка: " . ($sizes['crop'] ? 'Да' : 'Нет') . "\n";
+        }
+        echo "\n";
+    }
+    echo '</pre>';
+}
 
+// Вызвать функцию - можно добавить в хук, например:
+//add_action('wp_head', 'show_image_sizes');
+//show_image_sizes();
+
+
+// add_action('wp_ajax_nopriv_ping', 'ajax_ping');
+// add_action('wp_ajax_ping', 'ajax_ping');
+// function ajax_ping(){
+//   wp_send_json_success('ok'); // без лишней логики
+// }

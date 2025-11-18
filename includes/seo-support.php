@@ -3,12 +3,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-/*--------------------------------------------------------------
-Contents
+# Contents
 # Opengraph
 # Schema.org
 # Favicon
---------------------------------------------------------------*/
+
 
 /*--------------------------------------------------------------
 # Opengraph
@@ -18,6 +17,11 @@ Contents
 add_filter('wpseo_opengraph_title', function ($title) {
     if (is_page('gift-card')) {                // ваша страница
         return 'Ваш подарочный сертификат в Plantis';
+add_filter('wpseo_opengraph_title', function ($title) {
+    if (is_page('test-kakoe-ty-rastenie')) {                // ваша страница
+        return 'Пройди тест — Какое ты растение?';
+    } else if (is_page('test-result')) {
+        return 'Посмотри какое я растение';
     }
     return $title;
 });
@@ -25,6 +29,19 @@ add_filter('wpseo_opengraph_title', function ($title) {
 add_filter('wpseo_opengraph_desc', function ($desc) {
     if (is_page('gift-card')) {
         return 'Интернет-магазин комнатных растений';
+    } else if (is_page('test-kakoe-ty-rastenie')) {
+        return 'Узнай, какое растение тебе ближе всего!';
+    } else if (is_page('test-result')) {
+        $plant_types = require get_theme_file_path('assets/data/plant-types.php');
+        $plants_by_slug = [];
+        foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
+        $plant = get_query_var('plant');
+        if ($plant && isset($plants_by_slug[$plant])) {
+          $desc = $plants_by_slug[$plant]['result'];
+        } else {
+          $desc = 'Результат теста - Какое ты растение?';
+        }
+        return $desc;
     }
     return $desc;
 });
@@ -35,12 +52,30 @@ add_action('wp_head', function() {
         echo '<meta property="og:image:width" content="1200" />' . "\n";
         echo '<meta property="og:image:height" content="630" />' . "\n";
     }
+    else if (is_page('test-kakoe-ty-rastenie')) {
+        echo '<meta property="og:image" content="'. get_template_directory_uri() .'/images/test/test_cover_long.jpg" />' . "\n";
+        echo '<meta property="og:image:width" content="1200" />' . "\n";
+        echo '<meta property="og:image:height" content="630" />' . "\n";
+    } else if (is_page('test-result')) {
+        $plant_types = require get_theme_file_path('assets/data/plant-types.php');
+        $plants_by_slug = [];
+        foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
+        $gen = get_query_var('gen');
+        $plant = get_query_var('plant');
+        if ($gen && $plant && isset($plants_by_slug[$plant]) && isset($plants_by_slug[$plant]['image'][$gen])) {
+          $img = $plants_by_slug[$plant]['image'][$gen];
+        } else {
+          $img = get_template_directory_uri().'/images/test/test_cover.webp';
+        }
+        echo '<meta property="og:image" content="'. $img .'"/>' . "\n";
+        echo '<meta property="og:image:width" content="1024" />' . "\n";
+        echo '<meta property="og:image:height" content="1024" />' . "\n";
+    }
 });
 
 /*--------------------------------------------------------------
-# Schema.org
+# Shcema org
 --------------------------------------------------------------*/
-
 // отключаем schema.org в Yoast
 add_filter( 'wpseo_json_ld_output', '__return_false' );
 

@@ -247,12 +247,8 @@
     width: calc(100% / 2 - 8px);
 }
 
-.catalog__grid .products.columns-2_other .product {
-    width: calc(100% / 3 - 18px);
-}
-
-.catalog__grid .products.columns-3 .product { /* to be deleted*/
-    width: calc(100% / 2 - 8px);
+.catalog__grid .products.columns-3 .product { 
+    width: calc(100% / 3 - 11px);
 }
 
 .catalog__grid .products .product {
@@ -264,7 +260,7 @@
     position: relative;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1279px) {
     .catalog__grid .products {
         row-gap: 30px;
     }
@@ -273,7 +269,7 @@
         width: calc(100% / 2 - 8px);
     }
 
-    .catalog__grid .products.columns-2_large .product {
+    .catalog__grid .products.columns-3 .product {
         width: calc(100% / 2 - 8px);
     }
 }
@@ -282,7 +278,7 @@
     .catalog__grid .products.columns-2 .product {
         width: 100%;
     }
-    .catalog__grid .products.columns-2_large .product {
+    .catalog__grid .products.columns-3 .product {
         width: 100%;
     }
 }
@@ -1509,17 +1505,18 @@
 /*фильтр с диаметром горшка*/
 
 .filter_diametr_gorshka .bapf_body {
-    height: var(--diametrFilterWrapHeight);
-    max-height: 350px;
-    overflow-y: auto;
+    /* max-height: 354px; */
+    max-height: var(--diametrFilterWrapHeightMax);
+    overflow-y: hidden;
     transition: all 0.3s;
 }
 
 .filter_diametr_gorshka .bapf_body.hidden {
-    height: var(--diametrFilterWrapHeight);
     max-height: var(--diametrFilterWrapHeight);
-    overflow-y: hidden;
+}
 
+.filter_diametr_gorshka .bapf_body.scroll {
+    overflow-y: auto;
 }
 
 .filter-show-more-btn {
@@ -1663,4 +1660,52 @@
 
 .woocommerce-pagination a.next, .woocommerce-pagination a.prev{
     font-size: 25px;
+}
+
+/*--------------------------------------------------------------
+# Search results page
+--------------------------------------------------------------*/
+.page-template-page-search-results .catalog__grid-buttons{
+  flex-direction: row-reverse;
+}
+
+.page-template-page-search-results .popular-slider-swiper .product__image-slider-wrap .swiper-pagination {
+  display: none;
+  pointer-events: none;
+  cursor: default;
+}
+.page-template-page-search-results .popular-slider-swiper .product__image-slider-wrap .swiper-button-prev {
+  display: none;
+  pointer-events: none;
+  cursor: default;
+}
+.page-template-page-search-results .popular-slider-swiper .product__image-slider-wrap .swiper-button-next {
+  display: none;
+  pointer-events: none;
+  cursor: default;
+}
+
+@media (max-width: 767px) {
+  .page-template-page-search-results .bapf_no_products {
+    padding: 0 10px;
+  }
+  .page-template-page-search-results .popular-products-wrap {
+    padding: 0 10px;
+  }
+}
+
+/* убираем фильтры из результатов поиска */
+.page-template-page-search-results .catalog__sidebar {
+  display: none;
+}
+.page-template-page-search-results .catalog__grid {
+  grid-template-columns: 100%;
+  grid-template-areas:
+  "metki"
+  "sorting"
+  "catalog"
+  "pagination";
+}
+.page-template-page-search-results .catalog__mob-filter-btn {
+  display: none;
 }

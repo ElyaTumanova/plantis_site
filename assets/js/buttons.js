@@ -41,6 +41,7 @@ window.addEventListener('resize', () => {
 });
 
 let headerMainDiv = document.querySelector('.header__main');
+let searchDiv = document.querySelector('.search__wrap');
 let headerMainHeight= headerMainDiv.offsetHeight;
 
 // слушаем событие resize
@@ -54,9 +55,15 @@ let marginTopOffset = headerMainHeight - headerHeight;
 window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset;
     if(scrollTop >0){
-        headerMainDiv.setAttribute('style', `margin-top:${marginTopOffset}px`);
+        // headerMainDiv.setAttribute('style', `margin-top:${marginTopOffset}px`);
+        document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
+        headerMainDiv.classList.add('scrollhidden');
+        searchDiv.classList.add('scrollhidden');
     } else{
-        headerMainDiv.removeAttribute('style');
+        // headerMainDiv.removeAttribute('style');
+        document.documentElement.style.setProperty('--marginTopOffset', 0);
+        headerMainDiv.classList.remove('scrollhidden');
+        searchDiv.classList.remove('scrollhidden');
     }
 });
 document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
@@ -121,10 +128,20 @@ const gridButton3 = document.getElementById('catalog__grid-button-3');
 const catalogWrap = document.querySelector('.catalog__products-wrap');
 if(catalogWrap) {
     const catalogGrid = catalogWrap.querySelector('.products');
+    console.log(catalogGrid.classList)
+    if(catalogGrid.classList.contains('columns-2')) {
+      gridButton3.disabled = false;
+      gridButton2.disabled = true;
+    } 
+    if(catalogGrid.classList.contains('columns-3')) {
+      gridButton2.disabled = false;
+      gridButton3.disabled = true;
+    } 
     if (gridButton2) {
         gridButton2.addEventListener ("click", (evt)=>{
             make_2_grid_columns();
         });
+
     }
     if (gridButton3) {
         gridButton3.addEventListener ("click", (evt)=>{
@@ -134,14 +151,14 @@ if(catalogWrap) {
     
     function make_2_grid_columns () {
         catalogGrid.classList.add ('columns-2');
-        catalogGrid.classList.remove ('columns-2_other');
+        catalogGrid.classList.remove ('columns-3');
         gridButton2.disabled = true;
         gridButton3.disabled = false;
     };
     
     function make_3_grid_columns () {
         catalogGrid.classList.remove ('columns-2');
-        catalogGrid.classList.add ('columns-2_other');
+        catalogGrid.classList.add ('columns-3');
         gridButton2.disabled = false;
         gridButton3.disabled = true;
     };
@@ -155,4 +172,36 @@ function scrollToTop () {
         left: 0,
         behavior: 'smooth'
       })
+}
+
+/*--------------------------------------------------------------
+# Buttons to copy link
+--------------------------------------------------------------*/
+
+copyShareBtn = document.querySelector('#copyShareBtn');
+if(copyShareBtn) {
+  copyShareBtn.addEventListener('click', async () => {
+      const url = copyShareBtn.dataset.url || window.location.href;
+  
+      try {
+      if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(url);
+      } else {
+          const ta = document.createElement('textarea');
+          ta.value = url;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.top = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+      }
+      const old = copyShareBtn.textContent;
+      copyShareBtn.textContent = 'Скопировано!';
+      setTimeout(() => copyShareBtn.textContent = old, 1500);
+      } catch {
+      alert('Не удалось скопировать:\n' + url);
+      }
+  });
 }

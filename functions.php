@@ -28,8 +28,13 @@ function ast_register_custom_fields() {
 /** Add functions for DEV & DEBUG */
 require get_template_directory() . '/includes/dev-support.php';
 
+/** Add functions for products change log */
+//require get_template_directory() . '/includes/product-change-logs.php';
+
 /** Add images for tags */
 require get_template_directory() . '/includes/tags-image.php';
+/** Add synonims for search */
+require get_template_directory() . '/includes/search-synonims.php';
 
 /** Add constants */
 require get_template_directory() . '/includes/constants.php';
@@ -55,6 +60,7 @@ require get_template_directory() . '/includes/ajax.php';
 require get_template_directory() . '/includes/metrika.php';
 /** Add Feed xml creation*/
 require get_template_directory() . '/includes/xml/create_xml_task.php';
+
 
 
 /** Add Woocommerce files */

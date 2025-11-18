@@ -2,14 +2,23 @@
 
 .main__wrap {
     display: grid;
-    grid-template-columns: 70% 30%;
-    row-gap: 50px;
+    grid-template-columns: repeat(2, calc(50% - 10px));
+    grid-template-rows: auto 250px;
+    row-gap: 30px;
+    column-gap: 20px;
+}
+  
+@media (max-width:900px) {
+    .main__wrap {
+      display: flex;
+      flex-direction: column;
+      row-gap: 30px;
+    }
 }
 
-@media (max-width:1279px) {
+@media (max-width:690px) {
     .main__wrap {
-        grid-template-columns: 100%;
-        row-gap: 30px;
+      row-gap: 20px;
     }
 }
 
@@ -27,66 +36,13 @@
 
 /* стили для swiper */
 @media (min-width:1279px) {
-    
     .main__wrap .swiper-button-prev, .main__wrap .swiper-button-next {
         margin-top: 0;
         top: 123px;
     }
 }
 
-/* banners */
 
-.main__wrap-colored-bg {
-    background-color: #F5F5F6;
-    padding: 20px 0;
-}
-
-.main__banners-wrap {
-    /* margin-right: 20px; */
-    position: relative;
-}
-
-.main__banners-wrap img {
-    vertical-align: bottom;
-}
-
-/* @media (max-width:1279px) {
-    .main__banners-wrap {
-        margin-right: 0;
-    }
-} */
-
-.main__banners {
-    border-radius: 5px;
-    height: 100%;
-}
-
-.main__banners_no-link:hover {
-    cursor: default ;
-}
-
-.main__banners_mob {
-    display: none;
-}
-
-@media (max-width: 767px) {
-    .main__banners {
-        display: none;
-    }
-    .main__banners_mob {
-        display: block;
-    }
-}
-
-.main__banners, .main__banners_mob {
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-}
-
-.main__banners img, .main__banners_mob img {
-    border-radius: 5px;
-    width: 100%;
-}
 
 /* catalog buttons */
 
@@ -117,19 +73,267 @@
     width: 100%;
 }
 
+.overflow_section {
+    overflow-x: auto;
+    width: fit-content;
+}
+
+
+/* contacts ellipse */
+
+.main__contacts {
+    border-radius: 100%;
+    background-color: var(--accent-color);
+    width: 334px;
+    height: 334px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 35px;
+}
+
+.main__contacts-text {
+    text-align: center;
+    color: var(--white);
+    font-size: 22px;
+    line-height: 1.15;
+    font-weight: 400;
+    max-width: 250px;
+}
+
+.social-media__buttons {
+    display: flex;
+    column-gap: 30px;
+    border-radius: 100%;
+}
+
+.social-media__button {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: none;
+    overflow: hidden;
+    /* padding: 0; */
+}
+
+.social-media__button-telegram {
+    background-color: var(--telegram);
+}
+
+.social-media__button-whatsapp {
+    background-color: var(--whatsapp);
+}
+
+.social-media__button-max {
+    background-image: url('https://plantis-shop.ru/wp-content/themes/plantis_site/images/icons/max-bg.svg');
+    background-size: contain;
+}
+
+.social-media__button-ok {
+    background-color: var(--ok);
+}
+
+.social-media__button-vk {
+    background-color: var(--vk);
+}
+
+.social-media__button-icon {
+    height: 30px;
+    width: 30px;
+    fill: white;
+    margin: auto; 
+}
+
+/* .social-media__button-telegram .social-media__button-icon path {
+    stroke: var(--gray-text);
+}
+
+.social-media__button-whatsapp .social-media__button-icon path {
+    fill: var(--gray-text);
+} */
+
+@media (max-width:767px) {
+    .main__contacts {
+        width: 270px;
+        height: 270px;
+        row-gap: 25px;
+    }
+
+    .main__contacts-text {
+        font-size: 20px;
+    }
+}
+
+/*telegram section*/
+
+.main__telegram {
+    min-height: 120px;
+    border-radius: var(--border-rad);
+    /* box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25); */
+    background-image: url(https://plantis-shop.ru/wp-content/themes/plantis_site/images/telegram-2.webp), radial-gradient(#4AB0E9, #ABDAF5);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: block;
+}
+
+@media (min-width:1279px) {
+    .main__telegram {
+        background-image: url(https://plantis-shop.ru/wp-content/themes/plantis_site/images/telegram_mob_square.webp), radial-gradient(#4AB0E9, #ABDAF5);
+    }
+}
+
+@media (min-width:767px) {
+    .main__telegram {
+        min-height: 250px;
+    }
+}
+
+/* test banner */
+
+.main__test {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(#FCF9E1, #F5F3DB);
+  border-radius: var(--border-rad);
+  overflow: hidden;
+  max-height: 250px;
+}
+
+.main__test img {
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+
+
+/* categories sliders */
+
+/* @media (max-width:767px) {
+    .main__cats-wrap {
+        display: none;
+    }
+} */
+
+/* .main__cats-wrap .my_header__title {
+    display: none;
+} */
+
+.main__cats-wrap .product-slider-wrap {
+    margin: 40px 0 15px;
+}
+
+@media(max-width:767px) {
+    .main__cats-wrap .product-slider-wrap {
+        margin: 20px 0 15px;
+    }
+}
+
+.main__cats-nav {
+    display: flex;
+    column-gap: 24px;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+@media(max-width:1279px) {
+    .main__cats-nav {
+        overflow-x: scroll;
+        padding-bottom: 8px;
+    }
+}
+
+.main__cats-nav-title {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--gray-text);
+    cursor: pointer;
+    white-space: nowrap;
+    min-width: max-content;
+}
+
+.main__cats-nav-title_active {
+    color: var(--text);
+}
+
+/* .main__cats-slider {
+    display: none;
+}
+
+.main__cats-slider_open {
+    display: block;
+} */
+
+.main__cats-all {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    line-height: 1.2;
+    position: relative;
+    text-decoration: none;
+    font-weight: 600;
+    width: fit-content;
+    margin-left: auto;
+    color: var(--text);
+    margin-top: 10px;
+}
+.main__cats-all:hover { text-decoration: none; }
+
+.main__cats-all::before { 
+    content: ""; 
+    position: absolute; 
+    display: block; 
+    width: 0%; 
+    height: 2px; 
+    bottom: -3px; 
+    left: 0; 
+    background-color: var(--text); 
+    transition: width 0.3s ease; 
+}
+
+.main__cats-all:hover::before { 
+    width: 170px; 
+}
+
+.main__cats-all:after {
+    content: "next";
+    font-family: swiper-icons;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+    font-size: 13px;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
 /* advantages */
 .advantages {
-    display: grid;
-    grid-template: repeat(2, auto) / repeat(2,auto);
-    row-gap: 30px;
-    column-gap: 30px;
-    margin-right: 20px;
+    grid-column: span 2;
+    /* display: grid;
+    grid-template: repeat(2, auto) / repeat(2, auto); */
+    display: flex;
+    row-gap: 10px;
+    column-gap: 20px;
+    padding: 25px;
+    background-color: var(--gray);
+    border-radius: var(--border-rad);
+    /* box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25); */
+    /* align-items: center; */
 }
 
 .advantages__wrap {
+    max-width: 297px;
+    min-width: 200px;
     row-gap: 15px;
     display: grid;
-    grid-template: repeat(2, auto) / 70px auto;
+    grid-template: 40px auto / 40px auto;
     grid-template-areas: "photo title"
     "desrc desrc";
 }
@@ -139,21 +343,21 @@
     margin: auto 0 auto 10px;
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .advantages__image {
     grid-area: photo;
-    width: 70px;
-    height: 70px;
+    width: 40px;
+    height: 40px;
     margin: auto 10px auto 0;
 }
 
 .advantages__descr {
     grid-area: desrc;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
-    line-height: 1.4;
+    line-height: 1.3;
 }
 
 .advantages_mob {
@@ -207,7 +411,36 @@
 
 /* advantages  #adaptive*/
 
-@media (max-width:767px) {
+@media (max-width:1024px) {
+    .advantages {
+        display: grid;
+        column-gap: 20px;
+        grid-template-columns: repeat(2, auto);
+        margin: 0;
+        row-gap: 20px;
+        /* justify-content: center; */
+        background-color: transparent;
+        padding: 0;
+    }
+    .advantages__wrap {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        min-height: 120px;
+        margin: auto;
+        grid-template-columns: 50px auto;
+        grid-template-rows: 50px auto;
+        row-gap: 10px;
+        background-color: var(--gray);
+        padding: 20px 30px;
+        border-radius: var(--border-rad);
+        /* box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25); */
+    }
+  
+  }
+
+@media (max-width:690px) {
     .advantages {
         display: flex;
         flex-direction: column;
@@ -218,14 +451,7 @@
     }
 
     .advantages__wrap {
-        grid-template-columns: 50px auto;
-        row-gap: 10px;
-        min-width: 300px;
-        background-color: var(--gray);
-        padding: 10px;
-        min-height: 120px;
-        border-radius: 10px;
-        /* box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25); */
+        padding: 10px 20px;
     }
 
     .advantages__title {
@@ -245,112 +471,234 @@
     }
 }
 
-.overflow_section {
-    overflow-x: auto;
-    width: fit-content;
+/* banners */
+
+.main__wrap-colored-bg {
+    background-color: #F5F5F6;
+    padding: 20px 0;
 }
 
-
-/* contacts ellipse */
-
-.main__contacts {
-    border-radius: 100%;
-    background-color: var(--accent-color);
-    width: 334px;
-    height: 334px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    row-gap: 35px;
+.main__banners-wrap {
+    /* margin-right: 20px; */
+    position: relative;
 }
 
-.main__contacts-text {
-    text-align: center;
-    color: var(--white);
-    font-size: 22px;
-    line-height: 1.15;
-    font-weight: 400;
-    max-width: 250px;
+.main__banners-wrap img {
+    vertical-align: bottom;
 }
 
-.social-media__buttons {
-    display: flex;
-    column-gap: 30px;
-    border-radius: 100%;
-}
-
-.social-media__button {
-    display: flex;
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    border: none;
-    /* padding: 0; */
-}
-
-.social-media__button-telegram {
-    background-color: var(--telegram);
-}
-
-.social-media__button-whatsapp {
-    background-color: var(--whatsapp);
-}
-
-.social-media__button-icon {
-    height: 30px;
-    fill: white;
-    margin: auto; 
-}
-
-/* .social-media__button-telegram .social-media__button-icon path {
-    stroke: var(--gray-text);
-}
-
-.social-media__button-whatsapp .social-media__button-icon path {
-    fill: var(--gray-text);
+/* @media (max-width:1279px) {
+    .main__banners-wrap {
+        margin-right: 0;
+    }
 } */
 
-@media (max-width:767px) {
-    .main__contacts {
-        width: 270px;
-        height: 270px;
-        row-gap: 25px;
-    }
+.main__banners {
+    border-radius: 5px;
+    height: 100%;
+}
 
-    .main__contacts-text {
-        font-size: 20px;
+.main__banners_no-link:hover {
+    cursor: default ;
+}
+
+.main__banners_mob {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .main__banners {
+        display: none;
+    }
+    .main__banners_mob {
+        display: block;
     }
 }
 
-/*telegram section*/
+.main__banners, .main__banners_mob {
+    border-radius: 40px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+}
 
-.main__telegram {
-    min-height: 120px;
+.main__banners img, .main__banners_mob img {
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* categories grid */
+
+/* .cats-grid-wrap {display: none;} */
+.cats-grid {
+    display: grid;
+    column-gap: 10px;
+    row-gap: 10px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 0.5fr 0.5fr 1fr;
+    grid-template-areas:
+    /* "napol lisv lisv cvetush palms fikus"
+    "napol neprikhotliv neprikhotliv lianas palms petfriendly"
+    "napol neprikhotliv neprikhotliv succulent palms petfriendly"
+    ; */
+    "napol lisv lisv cvetush palms lianas"
+    "napol lisv lisv cvetush palms succulent"
+    "napol fikus neprikhotliv neprikhotliv palms petfriendly"
+    ;
+}
+
+@media (max-width:767px) {
+    /* .cats-grid-wrap {display: block;} */
+    .cats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: 1fr 1fr 0.5fr 0.5fr 1fr;
+        grid-template-areas:
+        "lisv lisv fikus"
+        "napol cvetush petfriendly"
+        "napol  succulent palms"
+        "napol  lianas palms"
+        "neprikhotliv neprikhotliv palms"
+        ;
+        row-gap: 5px;
+        column-gap: 5px;
+    }  
+}
+
+.cats-grid > *{
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden; /* чтобы ничего не торчало */
+}
+
+.cats-grid__inner {
+    /* border: solid 1px black; */
+    /* min-height: 80px; */
+    font-size: 0;
+    position: relative;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
-    background-image: url(https://plantis-shop.ru/wp-content/themes/plantis_site/images/telegram-2.webp), radial-gradient(#4AB0E9, #ABDAF5);
-    background-repeat: no-repeat;
-    background-position: center;
+    /* padding: 5px; */
+    box-sizing: border-box;
+    /* background-size: cover;
+    background-repeat: no-repeat; */
+    height: 100%;
+    width: 100%;
+}
+
+.cats-grid__inner img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.cats-grid__inner_palms {
+    grid-area: palms;
+    aspect-ratio: 1/2;
+    /* background-image: url(../../images/cats-grid/palms.webp); */
+}
+.cats-grid__inner_lisv {
+    grid-area: lisv;
+    aspect-ratio: 2/1;
+    /* background-image: url(../../images/cats-grid/decor.webp); */
+}
+.cats-grid__inner_neprikhotliv {
+    grid-area: neprikhotliv;
+    aspect-ratio: 2/1;
+    /* background-image: url(../../images/cats-grid/nepr.webp); */
+    /* background-size: 60%;
+    background-position: bottom right; */
+}
+.cats-grid__inner_neprikhotliv img {
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    right: 0;
+    object-fit: cover;
+    object-position: bottom right;
+    width: 60%;
+}
+
+.cats-grid__inner_napol {
+    grid-area: napol;
+    aspect-ratio: 1/2;
+    /* background-image: url(../../images/cats-grid/napol.webp); */
+}
+.cats-grid__inner_cvetush {
+    grid-area: cvetush;
+    aspect-ratio: 1/1;
+    /* background-image: url(../../images/cats-grid/cvet.webp); */
+    /* background-size: 92%;
+    background-position: bottom right; */
+}
+
+.cats-grid__inner_cvetush img {
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
+  object-fit: contain;
+  object-position: bottom;
+  width: 90%;
+}
+
+.cats-grid__inner_succulent {
+    grid-area: succulent;
+    aspect-ratio: 2/1;
+    /* background-image: url(../../images/cats-grid/succ.webp); */
+    /* background-size: 40%;
+    background-position: bottom right; */
+}
+
+.cats-grid__inner_succulent img {
+  height: 86%;
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
+  object-fit: contain;
+  object-position: bottom right;
+}
+
+.cats-grid__inner_lianas {
+    grid-area: lianas;
+    aspect-ratio: 2/1;
+    /* background-image: url(../../images/cats-grid/lians.webp);
     background-size: contain;
+    background-position: bottom right; */
 }
 
-@media (max-width:767px) {
-    .main__telegram {
-       margin-top: -10px;
-    }
+.cats-grid__inner_lianas img {
+  object-fit: contain;
+  object-position: right;
 }
 
-@media (min-width:1279px) {
-    .main__telegram {
-        background-image: url(https://plantis-shop.ru/wp-content/themes/plantis_site/images/telegram_mob_square.webp), radial-gradient(#4AB0E9, #ABDAF5);
-    }
+.cats-grid__inner_petfriendly {
+    grid-area: petfriendly;
+    aspect-ratio: 1/1;
+    /* background-image: url(../../images/cats-grid/pet.webp); */
+}
+.cats-grid__inner_fikus {
+    grid-area: fikus;
+    aspect-ratio: 1/1;
+    /* background-image: url(../../images/cats-grid/fikus.webp); */
 }
 
-@media (min-width:767px) {
-    .main__telegram {
-        min-height: 200px;
+.cats-grid__title {
+    font-size: 14px;
+    font-weight: 700;
+    max-width: 125px;
+    line-height: 1.2;
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+}
+
+@media (max-width: 767px) {
+    .cats-grid__title {
+        font-size: 16px;
+        text-transform: none;
+        font-weight: 600;
     }
 }
 
@@ -366,7 +714,7 @@
     row-gap: 40px;
     padding: 50px;
     background-color: var(--gray);
-    border-radius: 40px;
+    border-radius: var(--border-rad);
     margin-bottom: 50px;
 }
 
@@ -416,7 +764,7 @@
 
 .main__about-photo {
     grid-area: photo;
-    border-radius: 40px;
+    border-radius: var(--border-rad);
     height: 445px;
     width: 100%;
     object-fit: cover;
@@ -453,7 +801,7 @@
 
 .main__about-block_assort {
     background-color: var(--gray);
-    border-radius: 40px;
+    border-radius: var(--border-rad);
     grid-template-rows: auto 70px;
     grid-template-areas: "heading list"
     "button list";
@@ -546,253 +894,3 @@
         margin-bottom: 10px;
     }
 }
-
-
-/* categories grid */
-
-/* .cats-grid-wrap {display: none;} */
-.cats-grid {
-    display: grid;
-    /* column-gap: 10px;
-    row-gap: 10px; */
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    grid-template-areas:
-    "palms lisv lisv neprikhotliv"
-    "palms lisv lisv neprikhotliv"
-    "palms napol cvetush neprikhotliv"
-    "palms napol cvetush succulent"
-    "fikus napol lianas petfriendly"
-    "fikus napol lianas petfriendly"
-    ;
-}
-
-@media (max-width:767px) {
-    /* .cats-grid-wrap {display: block;} */
-    .cats-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 50%);
-        grid-template-rows: repeat(12, auto);
-        grid-template-areas:
-        "lisv lisv"
-        "lisv lisv"
-        "palms fikus"
-        "palms fikus"
-        "palms napol"
-        "palms napol"
-        "cvetush napol"
-        "cvetush napol"
-        "neprikhotliv lianas"
-        "neprikhotliv lianas"
-        "neprikhotliv petfriendly"
-        "succulent petfriendly"
-        ;
-        row-gap: 0;
-        column-gap: 0;
-    }  
-}
-
-.cats-grid__inner_palms {
-    grid-area: palms;
-    aspect-ratio: 1/2;
-}
-.cats-grid__inner_lisv {
-    grid-area: lisv;
-    aspect-ratio: 2/1;
-}
-.cats-grid__inner_neprikhotliv {
-    grid-area: neprikhotliv;
-    aspect-ratio: 2/3;
-}
-.cats-grid__inner_napol {
-    grid-area: napol;
-    aspect-ratio: 1/2;
-}
-.cats-grid__inner_cvetush {
-    grid-area: cvetush;
-    aspect-ratio: 1/1;
-}
-.cats-grid__inner_succulent {
-    grid-area: succulent;
-    aspect-ratio: 2/1;
-}
-.cats-grid__inner_lianas {
-    grid-area: lianas;
-    aspect-ratio: 1/1;
-}
-.cats-grid__inner_petfriendly {
-    grid-area: petfriendly;
-    aspect-ratio: 1/1;
-}
-.cats-grid__inner_fikus {
-    grid-area: fikus;
-    aspect-ratio: 1/1;
-}
-
-.cats-grid__inner {
-    /* border: solid 1px black; */
-    /* min-height: 80px; */
-    font-size: 0;
-    position: relative;
-    /* box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.15); */
-    border-radius: 10px;
-    padding: 5px;
-    box-sizing: border-box;
-}
-
-.cats-grid__img {
-    border-radius: 10px;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.15);
-    height: 100%;
-    width: 100%;
-}
-
-.cats-grid__title {
-    font-size: 18px;
-    font-weight: 700;
-    max-width: 125px;
-    line-height: 1.2;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    text-transform: uppercase;
-    color: var(--accent-color);
-}
-
-@media (max-width: 440px) {
-    .cats-grid__title {
-        font-size: 16px;
-        top: 13px;
-        left: 13px;
-    }
-}
-
-/* categories sliders */
-
-/* @media (max-width:767px) {
-    .main__cats-wrap {
-        display: none;
-    }
-} */
-
-/* .main__cats-wrap .my_header__title {
-    display: none;
-} */
-
-.main__cats-wrap .product-slider-wrap {
-    margin: 40px 0 15px;
-}
-
-.main__cats-nav {
-    display: flex;
-    column-gap: 24px;
-    max-width: 100%;
-    width: 100%;
-    overflow: hidden;
-}
-
-@media(max-width:1279px) {
-    .main__cats-nav {
-        overflow-x: scroll;
-        padding-bottom: 8px;
-    }
-}
-
-.main__cats-nav-title {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--gray-text);
-    cursor: pointer;
-    white-space: nowrap;
-    min-width: max-content;
-}
-
-.main__cats-nav-title_active {
-    color: var(--text);
-}
-
-/* .main__cats-slider {
-    display: none;
-}
-
-.main__cats-slider_open {
-    display: block;
-} */
-
-.main__cats-all {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    line-height: 1.2;
-    position: relative;
-    text-decoration: none;
-    font-weight: 600;
-    width: fit-content;
-    margin-left: auto;
-    color: var(--text);
-    margin-top: 10px;
-}
-.main__cats-all:hover { text-decoration: none; }
-
-.main__cats-all::before { 
-    content: ""; 
-    position: absolute; 
-    display: block; 
-    width: 0%; 
-    height: 2px; 
-    bottom: -3px; 
-    left: 0; 
-    background-color: var(--text); 
-    transition: width 0.3s ease; 
-}
-
-.main__cats-all:hover::before { 
-    width: 170px; 
-}
-
-.main__cats-all:after {
-    content: "next";
-    font-family: swiper-icons;
-    text-transform: none;
-    letter-spacing: 0;
-    font-weight: 600;
-    font-size: 13px;
-    margin-left: 10px;
-    margin-top: 3px;
-}
-
-/* promo section  */
-
-.main__promo {
-    display: flex;
-    gap: 30px;
-}
-
-@media(max-width:767px) {
-  .main__promo {
-    flex-direction: column;
-  }
-}
-
-.main__promo-card {
-  max-height: 300px;
-  flex: 1 1 50%;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.15);
-}
-
-.main__promo-card img {
-  max-height: 300px;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.main__promo-card a, .main__promo-card a:hover, .main__promo-card a:focus {
-  text-decoration: none;
-  color: inherit;
-}
-

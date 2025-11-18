@@ -25,6 +25,8 @@
     --gray-text:#767676;
     --telegram:#0886C4;
     --whatsapp:#25d366;
+    --ok:#EE8208;
+    --vk:#07f;
     --sale: #A4198E;
     --accent-back: #F5FDF2;
     --added-cart: #FE6A4C;
@@ -32,6 +34,13 @@
     --stock-backorder: #dbc602;
     --notice-red:#f3afaf;
     --dark-bg:#262626;
+    --border-rad: 40px;
+}
+
+@media (max-width:767px) {
+    :root {
+      --border-rad: 30px;
+    }
 }
 
 .d-none {
@@ -150,6 +159,14 @@
         padding-right: 0;
     }
     .archive .woocommerce-products-header {
+        padding: 10px 10px 0;
+    }
+
+    .page-template-page-search-results .content-area {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .page-template-page-search-results .woocommerce-products-header {
         padding: 10px 10px 0;
     }
 }

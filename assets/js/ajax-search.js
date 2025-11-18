@@ -2,7 +2,7 @@ jQuery(function ($){
     $('.search-form input[name="s"]').on('keyup', function (){  //стили контейнеров формы поиска из header
         var search = $('.search-form input[name="s"]').val();
         if (search.length <3) {
-            return false; //ajax works after 4 digits input
+            return false; //ajax works after 3 digits input
         }
         var data = {
             s: search,
@@ -17,8 +17,9 @@ jQuery(function ($){
             beforeSend: function(xhr){
             },
             success: function(data){
-                // console.log(data);
-                $('.search .search-result').html(data.out);    //стили контейнеров формы поиска из header
+                body.classList.add('fix-body');
+                $('.search-result').prop('hidden', false);
+                $('.search-result').html(data.out);    //стили контейнеров формы поиска из header
             }
         });
     });

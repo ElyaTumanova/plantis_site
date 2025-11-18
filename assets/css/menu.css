@@ -65,6 +65,13 @@
     font-size: 14px;
 }
 
+.header__main-menu-item_sale {
+  background-color: #B394F7;
+  padding: 7px 15px;
+  border-radius: 10px;
+  /* color: #DCF942; */
+}
+
 .header__main-menu-item:hover {
     cursor: pointer;
     color: rgb(255 255 255 / 70%);
@@ -143,7 +150,7 @@
 }
 
 [data-menu = "menu_az_palnts"].header__main-submenu .header__main-submenu_lvl1 a{
-    font-size: 14px;
+    font-size: 13px;
     max-width: 100px;
     word-break: break-word;
 }

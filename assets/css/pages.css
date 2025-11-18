@@ -462,7 +462,7 @@
 
 .reviews-card {
   max-width: 860px;
-  margin: 40px auto;
+  margin: 40px 0;
   padding: 20px;
   border-radius: 20px;
   background: #fff;
@@ -639,9 +639,9 @@
 # Services
 --------------------------------------------------------------*/
 
-@media (max-width: 767px) {
+@media (max-width: 1279px) {
     .service-page {
-        margin-top: 80px;
+        padding-top: 20px;
     }
 }
 
@@ -825,14 +825,14 @@
 .page-ukhod .social-media__buttons {
   grid-area: social;
   justify-content: start;
-  column-gap: 50px;
+  /* column-gap: 50px; */
 }
 
-@media(max-width:1200px) {
+/* @media(max-width:1200px) {
   .page-ukhod .social-media__buttons {
     column-gap: 60px;
   }
-}
+} */
 
 @media (max-width: 1080px) {
    .page-ukhod .social-media__buttons {

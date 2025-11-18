@@ -44,8 +44,8 @@
         grid-template-areas:
         "image"
         "info"
-        "crossells"
         "banner1"
+        "crossells"
         "descr"
         "banner2"
         "upsells"
@@ -419,21 +419,6 @@
 .card__image-wrap .card__stockstatus {
     font-size: 17px;
     min-width: 107px;
-}
-
-
-.search-result__item .card__stockstatus {
-    font-size: 12px;
-    top: 12px;
-    z-index: 0;
-}
-
-.search-result__item:first-child .card__stockstatus {
-    top: 32px;
-}
-
-.search-result__item img {
-    object-fit: contain;
 }
 
 /* кнопка в коризину и инпут изменения количетсва */

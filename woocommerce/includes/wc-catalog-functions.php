@@ -45,7 +45,7 @@ function plnt_catalog_products_wrap_start() {
 add_action('woocommerce_after_shop_loop','plnt_catalog_products_wrap_end',20);
 function plnt_catalog_products_wrap_end() {
 	?>
-		</div>
+		 </div> <!--catalog grid end -->
 	<?php 
 };
 
@@ -61,10 +61,10 @@ function plnt_catalog_grid_end() {
 // // вывод меню и фильтров в сайд баре  #filters #berocket
 add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar',20);
 function plnt_catalog_sidebar() {
-    global $plants_treez_cat_id;
+  global $plants_treez_cat_id;
 	// // #filters ID's
-    global $filter_plant_type_id;
-    global $filter_plant_name_id;
+  global $filter_plant_type_id;
+  global $filter_plant_name_id;
 	global $filter_in_stock_id;
 	global $filter_price_id;
 	global $filter_height_id;
@@ -82,44 +82,35 @@ function plnt_catalog_sidebar() {
 	$close_icon = carbon_get_theme_option('close_icon')
 	?>
     <div class="catalog__sidebar modal-mob">
-		<h2 class="catalog__sidebar-filters-heading">Фильтры</h2>
-		<div class="modal-mob__close catalog-sidebar__close button"><?php echo $close_icon ?></div>
-        <!-- <div class="catalog__sidebar-cats">
-            <ul class="catalog__sidebar-temp">
-                <li class="menu-item catalog__node catalog__dropdown">
-                    <a href="https://plantis-shop.ru/product-category/komnatnye-rasteniya/" aria-current="page">Комнатные растения</a>
-                    <span class="menu__dropdown-arrow">next</span>
-                </li>
-            </ul>
-        </div> -->
-		<?php //plnt_catalog_menu() ?>
-		<aside class="catalog__sidebar-filters">
-			<div class="catalog__instock-filter">
-				<?php echo do_shortcode('[br_filter_single filter_id='.$filter_in_stock_id.']') //товары в наличии //56534 //6110?>
-			</div>
-			<?php 
-			echo do_shortcode('[br_filter_single filter_id='.$filter_price_id.']'); // цена  \\56529 //6055
-			if (!is_shop()) {
-				echo do_shortcode('[br_filter_single filter_id='.$filter_plant_type_id.']');
-				echo do_shortcode('[br_filter_single filter_id='.$filter_plant_name_id.']');
-				echo do_shortcode('[br_filter_single filter_id='.$filter_height_id.']'); // высота //56530 //6056
-				echo do_shortcode('[br_filter_single filter_id='.$filter_poliv_id.']'); //	полив //56533 //6109
-				echo do_shortcode('[br_filter_single filter_id='.$filter_svet_id.']'); // освещение //56538 //11115
-				echo do_shortcode('[br_filter_single filter_id='.$filter_vlaga_id.']'); // влажность //56539 //11116
-				echo do_shortcode('[br_filter_single filter_id='.$filter_diametr_id.']'); // диаметр горшка //56540 //11117
-				//echo do_shortcode('[br_filter_single filter_id='.$filter_razmer_kashpo_id.']'); // диаметр кашпо Treez //56545 //12017
-				echo do_shortcode('[br_filter_single filter_id='.$filter_color_id.']'); // цвет //56532 //6108
-				echo do_shortcode('[br_filter_single filter_id='.$filter_forma_id.']'); // форма //56541 //12013
-                if(!(is_product_category($plants_treez_cat_id) || 
-	                term_is_ancestor_of( $plants_treez_cat_id, get_queried_object_id(), 'product_cat' ))) {
-                    echo do_shortcode('[br_filter_single filter_id='.$filter_materilal_id.']'); // материал //56543 //12015
-                }
-				//echo do_shortcode('[br_filter_single filter_id='.$filter_razmer_id.']'); // размер для растений Treez
-				//echo do_shortcode('[br_filter_single filter_id='.$filter_volume_id.']'); // Объем //56544 //12016
-				echo do_shortcode('[br_filter_single filter_id='.$filter_gift_id.']'); // в подарок //56535 //10988
-			}
-			?>
-		</aside>
+      <h2 class="catalog__sidebar-filters-heading">Фильтры</h2>
+      <div class="modal-mob__close catalog-sidebar__close button"><?php echo $close_icon ?></div>
+      <aside class="catalog__sidebar-filters">
+        <div class="catalog__instock-filter">
+          <?php echo do_shortcode('[br_filter_single filter_id='.$filter_in_stock_id.']') //товары в наличии //56534 //6110?>
+        </div>
+        <?php 
+        echo do_shortcode('[br_filter_single filter_id='.$filter_price_id.']'); // цена  \\56529 //6055
+        if (!is_shop() && !is_page('search-results')) {
+          echo do_shortcode('[br_filter_single filter_id='.$filter_plant_type_id.']');
+          echo do_shortcode('[br_filter_single filter_id='.$filter_plant_name_id.']');
+          echo do_shortcode('[br_filter_single filter_id='.$filter_height_id.']'); // высота //56530 //6056
+          echo do_shortcode('[br_filter_single filter_id='.$filter_poliv_id.']'); //	полив //56533 //6109
+          echo do_shortcode('[br_filter_single filter_id='.$filter_svet_id.']'); // освещение //56538 //11115
+          echo do_shortcode('[br_filter_single filter_id='.$filter_vlaga_id.']'); // влажность //56539 //11116
+          echo do_shortcode('[br_filter_single filter_id='.$filter_diametr_id.']'); // диаметр горшка //56540 //11117
+          //echo do_shortcode('[br_filter_single filter_id='.$filter_razmer_kashpo_id.']'); // диаметр кашпо Treez //56545 //12017
+          echo do_shortcode('[br_filter_single filter_id='.$filter_color_id.']'); // цвет //56532 //6108
+          echo do_shortcode('[br_filter_single filter_id='.$filter_forma_id.']'); // форма //56541 //12013
+          if(!(is_product_category($plants_treez_cat_id) || 
+            term_is_ancestor_of( $plants_treez_cat_id, get_queried_object_id(), 'product_cat' ))) {
+              echo do_shortcode('[br_filter_single filter_id='.$filter_materilal_id.']'); // материал //56543 //12015
+          }
+          //echo do_shortcode('[br_filter_single filter_id='.$filter_razmer_id.']'); // размер для растений Treez
+          //echo do_shortcode('[br_filter_single filter_id='.$filter_volume_id.']'); // Объем //56544 //12016
+          echo do_shortcode('[br_filter_single filter_id='.$filter_gift_id.']'); // в подарок //56535 //10988
+        }
+        ?>
+      </aside>
     </div>
     <?php 
 };
@@ -284,13 +275,12 @@ function plnt_get_catalog_list_schema_data ($html) {
         $html .= '<meta itemprop="description" content="' . $ctx['title'] . '" />' . "\n";
     }
 
-    $thumbnail_id = get_term_meta( $ctx['term']->term_id, 'thumbnail_id', true );
-    $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
-
-    if($thumbnail_url) {
-        $html .= '<meta itemprop="image" content="' . $thumbnail_url . '" />' . "\n";
+    if($ctx['term']) {
+      $thumbnail_id = get_term_meta( $ctx['term']->term_id, 'thumbnail_id', true );
+      $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
+      $html .= '<meta itemprop="image" content="' . $thumbnail_url . '" />' . "\n";
     } else {
-        $html .= '<meta itemprop="image" content="' . get_template_directory_uri() . '/images/interior.webp" />' . "\n";
+      $html .= '<meta itemprop="image" content="' . get_template_directory_uri() . '/images/interior.webp" />' . "\n";
     }
 
     return $html;
@@ -337,7 +327,7 @@ add_action('woocommerce_before_product_loop_end','plnt_img_gallery_swiper_init',
 
 function plnt_catalog_gallery() {
 
-	if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
+	if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() || is_page('search-results')) {
 		global $product;
 		$image = $product->get_image('large', array('itemprop'=>'image'));	//schema.org
 		$attachment_ids = $product->get_gallery_image_ids();
@@ -448,10 +438,10 @@ add_action('woocommerce_after_shop_loop_item', 'plnt_check_stock_status', 30);
 
 // // добавляем класс для swiper для каталог гридов
 
-add_filter('post_class', 'plnt_add_class_loop_item_swiper');
+add_filter('post_class', 'plnt_add_class_loop_item_swiper', 10, 3);
 function plnt_add_class_loop_item_swiper($clasess){
-	if(is_product() || is_front_page() || is_cart() || is_page('wishlist') || is_search()) {
-		$clasess[] .= 'swiper-slide';
+	if(is_product() || is_front_page() || is_cart() || is_page('wishlist') || is_search() || is_page('search-results')) {
+		$clasess[] = 'swiper-slide';
 	}
 	//get_pr($clasess, false);
 	return $clasess;
@@ -464,6 +454,9 @@ add_action('woocommerce_after_shop_loop_item', 'plnt_get_catalog_schema_data', 4
 function plnt_get_catalog_schema_data() {
     if ( is_shop() || is_product_category() || is_product_tag() || is_tax() ) {
         global $product;
+        if ($product->is_virtual()) {
+          return;
+        }
         global $plants_cat_id;
         $parentCatId = check_category ($product);
         $product_id = $product->get_id();
@@ -485,12 +478,16 @@ function plnt_get_catalog_schema_data() {
 
 // // количетсво товаров и кол-во колонок в каталоге
 
-// add_filter('loop_shop_columns', 'plnt_loop_columns');
-// if (!function_exists('plnt_loop_columns')) {
-//     function plnt_loop_columns() {
-//     	return 3;
-//     }
-// }
+add_filter('loop_shop_columns', 'plnt_loop_columns');
+if (!function_exists('plnt_loop_columns')) {
+    function plnt_loop_columns() {
+      if(is_page('search-results')) {
+        return 3;
+      } else {
+        return 2;
+      }
+    }
+}
 
 add_filter( 'loop_shop_per_page', 'truemisha_products_per_page', 20 );
  
@@ -524,11 +521,11 @@ add_filter( 'woocommerce_product_query_meta_query', 'shop_only_instock_products'
 function shop_only_instock_products( $meta_query, $query ) {
 	global $plants_cat_id;
 	global $gorshki_cat_id;
-    global $treez_cat_id;
-	global $plants_treez_cat_id;
-    global $ukhod_cat_id;
-    global $lechuza_cat_id;
-    global $avtopoliv_tag_id;
+  global $treez_cat_id;
+  global $plants_treez_cat_id;
+  global $ukhod_cat_id;
+  global $lechuza_cat_id;
+  global $avtopoliv_tag_id;
 
 	if( is_shop() || 
 	// is_product_category($gorshki_cat_id) || 
@@ -541,8 +538,7 @@ function shop_only_instock_products( $meta_query, $query ) {
 	term_is_ancestor_of( $ukhod_cat_id, get_queried_object_id(), 'product_cat' ) ||
 	is_product_category($lechuza_cat_id) || 
 	term_is_ancestor_of( $lechuza_cat_id, get_queried_object_id(), 'product_cat' ) ||
-	is_product_tag ($avtopoliv_tag_id) ||
-	is_search()) { 		//где хотим срыть товары не в наличии
+	is_product_tag ($avtopoliv_tag_id)) { 		//где хотим скрыть товары не в наличии
 		$meta_query[] = array(
 			'key' => '_stock_status',
 			'value' => 'outofstock',
@@ -560,10 +556,8 @@ function shop_only_instock_products( $meta_query, $query ) {
 				'compare' => '>'
 			)
 		);
-
 		return $meta_query;
-	}
-	else {
+	}	else {
 		return $meta_query;
 	}
 }
@@ -665,6 +659,7 @@ function move_to_top_on_pagination() {
 
 add_action('woocommerce_after_main_content', 'move_to_top_on_pagination');
 
+
 // добавляем директивы ноиндекс, фоллоу для страниц пагинации, начиная со 2 #SEO
 add_filter( 'wpseo_robots', 'filter_wpseo_robots', 10, 1 );
 
@@ -704,6 +699,34 @@ add_filter( 'wpseo_robots', function( $robots ) {
     }
     return $robots;
 }, 30, 1 );
+
+// functions.php или в mu-plugin
+// add_filter( 'yith_wcwl_button_html', function( $html, $product_id, $atts ) {
+
+//     // если rel уже есть — аккуратно дописываем токены
+//     if ( preg_match( '/\srel=(["\'])(.*?)\1/i', $html, $m ) ) {
+//         $rel = preg_split( '/\s+/', trim( $m[2] ) );
+//         foreach ( [ 'nofollow', 'ugc', 'noopener' ] as $t ) {
+//             if ( ! in_array( $t, $rel, true ) ) { $rel[] = $t; }
+//         }
+//         $new = ' rel="' . implode( ' ', $rel ) . '"';
+//         $html = preg_replace( '/\srel=(["\'])(.*?)\1/i', $new, $html, 1 );
+//     } else {
+//         // если rel нет — добавляем
+//         $html = preg_replace( '/<a\s+/i', '<a rel="nofollow ugc noopener" ', $html, 1 );
+//     }
+
+//     return $html;
+// }, 10, 3 ); // ВАЖНО: accepted args = 3
+
+
+// add_action( 'send_headers', function () {
+//     if ( (isset($_GET['add_to_wishlist']) && $_GET['add_to_wishlist'] !== '')
+//       || (isset($_GET['add-to-cart']) && $_GET['add-to-cart'] !== '') ) {
+//         header( 'X-Robots-Tag: noindex, nofollow', true );
+//     }
+// }, 9 );
+
 
 // изменяем canonical для страниц пагинации #SEO
 
@@ -847,18 +870,26 @@ add_filter('BeRocket_AAPF_template_full_content', 'plnt_plant_name_filter_conten
 add_filter('BeRocket_AAPF_template_full_element_content', 'plnt_plant_name_filter_content', 4000, 1);
 function plnt_plant_name_filter_content($template_content) {
 	if ($template_content['template']['attributes']['data-name']==='Название') {
-            // echo '<pre>';
-			// print_r( $template_content['template']['content']['filter']['content'] );
+      // echo '<pre>';
+			// print_r( $template_content['template']['content'] );
 			// echo '</pre>';
 
-            $template_content['template']['content']['filter']['content'] = berocket_insert_to_array(
-				$template_content['template']['content']['filter']['content'],
-				'list',
-				array(
-					'custom_content' =>  '<input type="text" placeholder="Поиск..." class="berocket-search-checkbox">'
-				),
-				true
-			);
+        $template_content['template']['content'] = berocket_insert_to_array(
+				$template_content['template']['content'],
+          'filter',
+          array(
+            'custom_content' =>  '<input type="text" placeholder="Поиск..." class="berocket-search-checkbox d-none">'
+          ),
+          true
+			  );
+        // $template_content['template']['content']['filter']['content'] = berocket_insert_to_array(
+				// $template_content['template']['content']['filter']['content'],
+        //   'list',
+        //   array(
+        //     'custom_content' =>  '<input type="text" placeholder="Поиск..." class="berocket-search-checkbox">'
+        //   ),
+        //   true
+			  // );
 	}
     return $template_content;
 
@@ -888,66 +919,6 @@ function plnt_plant_name_filter_content($template_content) {
 // 	}
 //     return $template_content;
 // }
-
-// вывод слайдеров товаров на главной
-add_action('wp_ajax_get_main_cats_term', 'plnt_main_cats_slider_action_callback');
-add_action('wp_ajax_nopriv_get_main_cats_term', 'plnt_main_cats_slider_action_callback');
-
-function plnt_main_cats_slider_action_callback() {
-	$term_slug = $_POST['term'];
-	$term_type = $_POST['type'];
-//   WC()->session->set('term_slug', $_POST['term'] );
-//   WC()->session->set('term_type', $_POST['type'] );
-
-    $args = array(
-        'post_type' => 'product',
-        'ignore_sticky_posts' => 1,
-        'no_found_rows' => 1,
-        'posts_per_page' => 8,
-        'orderby' => 'rand',
-        'meta_query' => array( 
-            array(
-                'key'       => '_stock_status',
-                'value'     => array('outofstock','onbackorder'),
-                'compare'   => 'NOT IN'
-            )
-        ),
-        'tax_query' => array(
-          array(
-            'taxonomy' => $term_type,
-            'field' => 'slug',
-            'terms' => $term_slug,
-          )
-        ),
-    );
-    
-    $products = new WP_Query( $args );
-	  $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
-    if ( $products->have_posts() ) : ?>  
-	
-		<div class="product-slider-wrap product-slider-swiper swiper">
-			<ul class="products columns-3 swiper-wrapper">
-				<?php while ( $products->have_posts() ) : $products->the_post(); ?>
-
-				<?php wc_get_template_part( 'content', 'product' ); ?>
-
-				<?php endwhile; // end of the loop. ?> 
-			</ul>
-			<div class="swiper-pagination"></div>
-			<div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div>
-		</div>
-		<a class="main__cats-all" href="<?php echo get_term_link( $term_slug, $term_type );?>">Все товары категории</a>
-    
-    <?php endif;
-    ?>
-    <!-- <div><?php //echo 'hello '.$term_slug.' '.$term_type ;?></div> -->
-    <?php
-    
-    $json_data['out'] = ob_get_clean();
-    wp_send_json($json_data);
-    wp_die();
-};
 
 
 // add_filter( 'woocommerce_get_image_size_woocommerce_thumbnail', 'custom_thumbnail_size_for_homepage' );
