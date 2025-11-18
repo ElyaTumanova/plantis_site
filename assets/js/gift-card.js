@@ -63,7 +63,7 @@ if (gifForm) {
   function isValidAmount(v) {
       if (v == null) return false;
       let n = Number(v);
-      return Number.isFinite(n) && n >= 1500 & n<=30000;
+      return Number.isFinite(n) && n >= minAmount & n<= maxAmount;
     }
 
   function updateState() {
