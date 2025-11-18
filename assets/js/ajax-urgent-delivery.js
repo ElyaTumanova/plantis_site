@@ -339,6 +339,6 @@ if (checkoutForm && !isGiftCard) {
 }
 
 if (checkoutForm && isGiftCard) {
-  hideCheckoutFields();
+  document.addEventListener('DOMContentLoaded', hideCheckoutFields )
   checkoutForm.addEventListener('change', hideCheckoutFields);
 }
