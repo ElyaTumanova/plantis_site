@@ -98,10 +98,18 @@ if ( $show_downloads ) {
                     <div class='plnt-order__totals-label' scope="row">Итого товары:</div>
                     <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['cart_subtotal']['value'] ); ?></div>
                 </div>
-                <div class='plnt-order__totals-row'>
-                    <div class='plnt-order__totals-label' scope="row">Доставка:</div>
-                    <div class='plnt-order__totals-value plnt-order__totals-value_delivery'><?php echo wp_kses_post( $plnt_order_totals['shipping']['value'] ); ?></div>
-                </div>
+                <?php if(array_key_exists('shipping', $plnt_order_totals)):?>
+                  <div class='plnt-order__totals-row'>
+                      <div class='plnt-order__totals-label' scope="row">Доставка:</div>
+                      <div class='plnt-order__totals-value plnt-order__totals-value_delivery'><?php echo wp_kses_post( $plnt_order_totals['shipping']['value'] ); ?></div>
+                  </div>
+                <?php endif;?>
+                <?php if(array_key_exists('yith_gift_cards', $plnt_order_totals)):?>
+                  <div class='plnt-order__totals-row'>
+                      <div class='plnt-order__totals-label' scope="row">Подарочный сертификат:</div>
+                      <div class='plnt-order__totals-value plnt-order__totals-value_gift'><?php echo wp_kses_post( $plnt_order_totals['yith_gift_cards']['value'] ); ?></div>
+                  </div>
+                <?php endif;?>
                 <div class='plnt-order__totals-row plnt-order__totals-row_total'>
                     <div class='plnt-order__totals-label' scope="row">Итого:</div>
                     <div class='plnt-order__totals-value plnt-order__totals-value_total'><?php echo wp_kses_post( $plnt_order_totals['order_total']['value'] ); ?></div>

@@ -601,3 +601,26 @@ function swiper_cart_upsells_init(){
 }
 
 swiper_cart_upsells_init();
+
+/*--------------------------------------------------------------
+# Gift card
+--------------------------------------------------------------*/
+const swiper_gift = new Swiper('.gift-swiper-wrap', {
+    slidesPerView: 'auto',
+    spaceBetween: 5,
+    loop: false,
+    breakpoints: {
+        320: {
+        navigation: {
+            enabled: false,
+        },
+        loop: false,
+        },
+        767: {
+        navigation: {
+            enabled: false,
+        },
+        loop: false,
+        }
+    }
+});

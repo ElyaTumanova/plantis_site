@@ -90,6 +90,12 @@
     max-width: 700px;
 }
 
+.page-popup__container_giftcard {
+  z-index: 99990;
+  top: -60px;
+  border-radius: 30px;
+}
+
 @media (max-width: 1300px) {
     .page-popup__container {
         right: 0;
@@ -115,6 +121,11 @@
     position: absolute;
     top: -0;
     right: -0;
+}
+
+.page-popup__container_giftcard .page-popup__close {
+    top: 30px;
+    right: 30px;
 }
 
 @media (max-width: 767px) {
@@ -283,4 +294,40 @@
 
 .payment_method_tbank img {
     display: none;
+}
+
+
+/* gift-card-popup - не используется*/
+
+.gift-card-popup .page-popup__container {
+  border-radius: 0;
+}
+
+.gc-balance-popup__container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--background);
+  padding: 40px 50px;
+  left: 0;
+  right: var(--scrollWidth);
+  max-width: 660px;
+  margin: auto;
+  border-radius: 40px;
+  height: 500px;
+  overflow-y: auto;
+}
+
+.gc-balance-popup__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.form-check-gift-card-balance {
+  margin-top: 30px;
+}
+
+.ywgc-shortcode-form-title {
+  display: none;
 }

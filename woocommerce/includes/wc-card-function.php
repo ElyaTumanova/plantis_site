@@ -245,9 +245,9 @@ function for_dev() {
     echo '<br>';
 }
 
-function plnt_price_wrap(){
+function plnt_price_wrap() {
     global $product;
-    $price = number_format($product->get_price(), 2, '.', '');
+    $price = number_format($product->get_price(), 2, '.', ''); 
     ?>
     <div class="card__price-wrap">
         <div class = "card__add-to-cart-wrap" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
@@ -257,7 +257,6 @@ function plnt_price_wrap(){
             ?> 
             <div class="card__price-btns-wrap">
                 <?php
-                
                 if ( $product->get_stock_status() ==='outofstock') {
                     plnt_outofstock_btn();
                 } else {
@@ -280,7 +279,7 @@ function plnt_price_wrap(){
         ?>
     </div>
     <?php
-};
+  };
 
 function plnt_buy_one_click_btn() {
 ?> <button class="card__one-click-btn page-popup-open-btn button">Купить в один клик</button> <?php
@@ -432,7 +431,10 @@ function plnt_get_cross_sells(){
 add_action('woocommerce_after_single_product_summary','plnt_card_ukhod_loop',50);
 
 function plnt_card_ukhod_loop() {
-    get_template_part('template-parts/products/products-ukhod');
+    global $product;
+    if ($product->get_type() != 'gift-card') {
+        get_template_part('template-parts/products/products-ukhod');
+    }
 }
 
 // ссылка "назад" для карточки товара

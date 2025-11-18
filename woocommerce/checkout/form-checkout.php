@@ -37,7 +37,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 	
 	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
     
-    <div class="order_wrap">
+  <div class="order_wrap <?php echo !is_not_gift_card_checkout() ? 'gift-card' : ''; ?>">
    
     <div id="order_review" class="woocommerce-checkout-review-order">
         <h3 class="checkout__title" id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>

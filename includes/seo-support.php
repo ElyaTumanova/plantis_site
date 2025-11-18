@@ -13,8 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 # Opengraph
 --------------------------------------------------------------*/
 
+
 add_filter('wpseo_opengraph_title', function ($title) {
-    if (is_page('test-kakoe-ty-rastenie')) {                // ваша страница
+     if (is_page('gift-card')) {                // ваша страница
+        return 'Ваш подарочный сертификат в Plantis';
+    } else if (is_page('test-kakoe-ty-rastenie')) {                // ваша страница
         return 'Пройди тест — Какое ты растение?';
     } else if (is_page('test-result')) {
         return 'Посмотри какое я растение';
@@ -23,7 +26,9 @@ add_filter('wpseo_opengraph_title', function ($title) {
 });
 
 add_filter('wpseo_opengraph_desc', function ($desc) {
-    if (is_page('test-kakoe-ty-rastenie')) {
+    if (is_page('gift-card')) {
+        return 'Интернет-магазин комнатных растений';
+    } else if (is_page('test-kakoe-ty-rastenie')) {
         return 'Узнай, какое растение тебе ближе всего!';
     } else if (is_page('test-result')) {
         $plant_types = require get_theme_file_path('assets/data/plant-types.php');
@@ -41,7 +46,12 @@ add_filter('wpseo_opengraph_desc', function ($desc) {
 });
 
 add_action('wp_head', function() {
-    if (is_page('test-kakoe-ty-rastenie')) {
+    if (is_page('gift-card')) {
+        echo '<meta property="og:image" content="'. get_template_directory_uri() .'/images/gift-card/gc_soc.jpg" />' . "\n";
+        echo '<meta property="og:image:width" content="1200" />' . "\n";
+        echo '<meta property="og:image:height" content="630" />' . "\n";
+    }
+    else if (is_page('test-kakoe-ty-rastenie')) {
         echo '<meta property="og:image" content="'. get_template_directory_uri() .'/images/test/test_cover_long.jpg" />' . "\n";
         echo '<meta property="og:image:width" content="1200" />' . "\n";
         echo '<meta property="og:image:height" content="630" />' . "\n";
@@ -82,6 +92,9 @@ add_action('wp_head','plnt_schema_json');
 function plnt_schema_json() {
     if (is_product()) { 
         global $product;
+        if ($product->is_type( 'gift-card' )) {
+          return;
+        }
         $idCats = $product->get_category_ids();
         $brand = plnt_get_brand_text($idCats);
         $price = number_format($product->get_price(), 2, '.', '');

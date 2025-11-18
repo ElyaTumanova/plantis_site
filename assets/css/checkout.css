@@ -7,6 +7,10 @@
     display: none;
 }
 
+.woocommerce-checkout-review-order-table .ywgc-gift-card-applied {
+  display: none;
+}
+
 .woocommerce-checkout-review-order-table {
     table-layout:fixed;
 }
@@ -736,6 +740,100 @@ label.list-view {
 .checkout__free-delivery-text span{
    font-weight:700;
    font-size: 20px;
+}
+
+/*gift card*/
+
+.ywgc_have_code {
+    border: none;
+    padding: 20px 15px 20px 0px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    color: var(--text);
+    box-shadow: none;
+    background-color: var(--bg);
+}
+
+.ywgc-show-giftcard::after {
+    content: "next";
+    font-family: swiper-icons;
+    font-size: 12px;
+    font-weight: 600;
+    transition: transform .2s ease;
+    color: var(--text);
+    width: 1.25em;
+    text-align: center;
+    display: inline-block;
+    margin-left: 10px;
+    transform: rotate(90deg);
+}
+
+.ywgc-show-giftcard.open::after{
+  transform: rotate(-90deg);
+}
+
+.ywgc-gift-card-applied {
+    color: var(--text);
+}
+
+.ywgc-gift-card-applied th {
+    text-align: left;
+    padding-left: 5px;
+    padding-bottom: 20px;
+}
+
+.ywgc-gift-card-applied td {
+    padding: 0 0 20px !important;
+    text-align: end;
+}
+
+.ywgc-gift-card-applied a {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 0;
+    padding-top: 7px;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.ywgc_enter_code {
+    margin: 0;
+    padding: 10px 0;
+    background-color: var(--bg);
+}
+
+.ywgc_enter_code input{
+    width: 100%;
+}
+
+.ywgc_enter_code .form-row-first{
+    width: 75%;
+}
+.ywgc_enter_code .form-row-last{
+    display: flex;
+    justify-content: end;
+    width: fit-content;
+}
+
+.ywgc_enter_code + .woocommerce-message {
+    display: none;
+}
+
+.ywgc_apply_gift_card_button {
+    background-color: var(--accent-color) !important;
+}
+
+.ywgc_apply_gift_card_button:hover { 
+        box-shadow: inset 0 0 0 50px rgba(0, 0, 0, 0.2) !important;
+        background-color: var(--accent-color) !important;
+    } 
+
+@media (hover: hover) {
+    .ywgc_apply_gift_card_button:hover { 
+        box-shadow: inset 0 0 0 50px rgba(0, 0, 0, 0.2) !important;
+        background-color: var(--accent-color) !important;
+    } 
 }
 
 /* radio button */
