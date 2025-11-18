@@ -120,9 +120,40 @@ Contents
     //         <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a> <br>
     //         Важно! Срочную доставку "день в день" можно оформить до 18 часов.</div>';
     // }
+    
+    // хук для подарчной карты #giftcard
+
+    add_action( 'woocommerce_checkout_order_review', 'plnt_set_giftcard_hook', 25 );
+
+    function plnt_set_giftcard_hook() {
+        if (is_not_gift_card_checkout()) {
+           do_action( 'plnt_woocommerce_checkout_gift_card' );
+        };
+    }
+
+    // хук перед итоговой стоимостью
+    add_action( 'woocommerce_checkout_order_review', 'plnt_set_before_order_total_hook', 30 );
+
+    function plnt_set_before_order_total_hook() {
+        echo '<table class="plnt-before-order-total">
+        <tbody>' ;
+        do_action( 'woocommerce_review_order_before_order_total' );
+        echo '
+        </tbody>
+        </table>' ;
+    }
+
+    // добавляем фрагмент, чтобы апдейтить поле с подарочной картой
+    add_action( 'woocommerce_update_order_review_fragments', 'my_update_order_review_giftcard_fragments', 10, 1 );
+    function my_update_order_review_giftcard_fragments( $fragments ) {
+        ob_start();
+        plnt_set_before_order_total_hook();
+        $fragments[ 'table.plnt-before-order-total'] = ob_get_clean();
+        return $fragments;
+    }
 
     // итоговая стоимость
-    add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 25 );
+    add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 35 );
 
     function plnt_order_total() {
             ?>
@@ -181,6 +212,10 @@ Contents
     add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_interval_field', 20 );
 
     function plnt_add_delivery_interval_field() {
+       if (! WC()->cart->needs_shipping()) {
+        return;
+      }
+      
         // выводим поле функцией woocommerce_form_field()
         woocommerce_form_field( 
             'additional_delivery_interval', 
@@ -204,6 +239,9 @@ Contents
     add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 15 );
 
     function plnt_add_delivery_dates() {
+      if (! WC()->cart->needs_shipping()) {
+        return;
+      }
 
         $days = array();
 
@@ -434,6 +472,9 @@ Contents
     add_action( 'woocommerce_checkout_order_review', 'delivery_info', 10 );
    
     function delivery_info(){
+        if (! is_not_gift_card_checkout()) {
+          return;
+        }
         $min_small_delivery = carbon_get_theme_option('min_small_delivery');
         $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
         $shipping_costs = plnt_get_shiping_costs();
@@ -891,6 +932,12 @@ function plnt_override_checkout_fields( $fields ) {
     $fields['billing']['billing_email']['required'] = true;
     $fields['billing']['billing_address_1']['required'] = false;
     $fields['billing']['billing_address_2']['required'] = false;
+
+    if (! WC()->cart->needs_shipping()) {
+      unset( $fields['billing']['billing_address_1'] );
+      unset( $fields['billing']['billing_address_2'] );
+      unset( $fields['order']['order_comments'] );
+    }
     
 
     return $fields;

@@ -22,7 +22,7 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
             <a href="<?php echo site_url()?>/product-tag/skidki/">Скидки</a>
         </div>
         <!-- <div class="header__main-menu-item">
-            <a href="<?php //echo site_url()?>/#/">Подарочный сертификат</a>
+            <a href="<?php //echo site_url()?>/shop/gift-card">Подарочный сертификат</a>
         </div> -->
     </div>
     <div class="header__menu"> 

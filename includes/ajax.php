@@ -176,7 +176,7 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
         'post_status'    => 'publish',
         'fields'         => 'ids',
         'orderby' => 'meta_value',
-        'meta_key' => '_stock_status',
+	      'meta_key' => '_stock_status',
         'order' => 'ASC',
         'posts_per_page' => -1,
         'no_found_rows'  => true,
