@@ -15,10 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 add_filter('wpseo_opengraph_title', function ($title) {
-    if (is_page('gift-card')) {                // ваша страница
+     if (is_page('gift-card')) {                // ваша страница
         return 'Ваш подарочный сертификат в Plantis';
-add_filter('wpseo_opengraph_title', function ($title) {
-    if (is_page('test-kakoe-ty-rastenie')) {                // ваша страница
+    } else if (is_page('test-kakoe-ty-rastenie')) {                // ваша страница
         return 'Пройди тест — Какое ты растение?';
     } else if (is_page('test-result')) {
         return 'Посмотри какое я растение';
