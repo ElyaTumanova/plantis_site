@@ -326,7 +326,7 @@ function hideCheckoutFields(event){
   }
 }
 
-if (checkoutForm) {
+if (checkoutForm & deliveryDates) {
 
   setInitalState();
 
