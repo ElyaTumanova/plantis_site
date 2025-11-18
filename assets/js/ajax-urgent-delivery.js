@@ -338,7 +338,7 @@ if (checkoutForm && !isGiftCard) {
   
 }
 
-if (checkoutForm) {
+if (checkoutForm && isGiftCard) {
   hideCheckoutFields();
-  checkoutForm.addEventListener('change', getOrderParametrs);
+  checkoutForm.addEventListener('change', hideCheckoutFields);
 }
