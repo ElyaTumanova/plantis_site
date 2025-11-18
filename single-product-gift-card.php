@@ -5,7 +5,7 @@
     <button class="gift-card__example-btn page-popup-open-btn">Посмотреть пример</button>
     <a class="gift-card__example-btn" href="<?php echo get_site_url()?>/gift-card" target="_blank">Проверить баланс</a>
     <div class="gift-image-wrap">
-      <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_cover.jpg" class="gift-image" alt="Подарочная карта">
+      <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_cover.webp" class="gift-image" alt="Подарочная карта">
       <p class="gift-image-amount">1500<span>₽</span></p>
     </div>
     <?php echo do_shortcode('[yith_ywgc_display_gift_card_form]');?>

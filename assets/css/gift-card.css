@@ -329,7 +329,8 @@
 .gift-content-area .gift-image-wrap {
   max-width: 500px;
   margin-top: 15px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, .16);
+  /* box-shadow: 0 0 8px rgba(0, 0, 0, .16); */
+  box-shadow: 25px 15px 45px rgba(0, 0, 0, 0.18);
 }
 
 .gift-card__main .gift-image-wrap {
