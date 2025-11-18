@@ -44,7 +44,7 @@ require get_template_directory() . '/includes/enqueue-scripts-style.php';
 /** Various clean up functions */
 require get_template_directory() . '/includes/cleanup.php';
 /** Return entry meta information for posts */
-require get_template_directory() . '/includes/meta-data.php';
+//require get_template_directory() . '/includes/meta-data.php';
 /** Create widget areas in sidebar and footer */
 // require get_template_directory() . '/includes/widget-areas.php';
 /** Add register nav menu */
