@@ -410,7 +410,7 @@ function is_not_gift_card_checkout() {
   foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
       $product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
       // $id = $product->get_id();
-      $type = $product->get_type()
+      $type = $product->get_type();
       if ($type !== 'gift-card' ){
           $notOnlyGiftCardInCart = true;
           break;
