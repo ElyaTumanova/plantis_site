@@ -64,7 +64,7 @@ add_action( 'ywgc_gift_cards_email_before_preview_gift_card_param', function( $g
     //     }
     // }
 
-    $image_url = echo get_template_directory_uri().'/images/gift-card/gc_soc.jpg';
+    $image_url = get_template_directory_uri().'/images/gift-card/gc_soc.jpg';
 
     // --- Номер подарочной карты ---
     $code = ! empty( $gift_card->gift_card_number )
