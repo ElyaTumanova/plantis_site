@@ -50,19 +50,21 @@ add_action( 'ywgc_gift_cards_email_before_preview_gift_card_param', function( $g
 
     // --- Изображение подарочной карты ---
     // Получаем картинку, выбранную в плагине. Может быть ID или URL.
-    $image_url = '';
-    if ( isset( $gift_card->product_id ) ) {
-        $product_id = (int) $gift_card->product_id;
-    } elseif ( method_exists( $gift_card, 'get_product_id' ) ) {
-        $product_id = (int) $gift_card->get_product_id();
-    }
+    // $image_url = '';
+    // if ( isset( $gift_card->product_id ) ) {
+    //     $product_id = (int) $gift_card->product_id;
+    // } elseif ( method_exists( $gift_card, 'get_product_id' ) ) {
+    //     $product_id = (int) $gift_card->get_product_id();
+    // }
 
-    if ( $product_id ) {
-        $thumb = get_the_post_thumbnail_url( $product_id, 'full' );
-        if ( $thumb ) {
-            $image_url = $thumb;
-        }
-    }
+    // if ( $product_id ) {
+    //     $thumb = get_the_post_thumbnail_url( $product_id, 'full' );
+    //     if ( $thumb ) {
+    //         $image_url = $thumb;
+    //     }
+    // }
+
+    $image_url = echo get_template_directory_uri().'/images/gift-card/gc_soc.jpg';
 
     // --- Номер подарочной карты ---
     $code = ! empty( $gift_card->gift_card_number )
@@ -301,74 +303,19 @@ function plnt_get_giftcard_by_code( $code ) {
 /*--------------------------------------------------------------
 #PRICE FIX
 --------------------------------------------------------------*/
+// в плагине Т банка
+// plugins/tbank-woocommerce/tbank/SupportPaymentTBank.php
+// заменить в двух местах
+// $price = $item->get_product()->get_price();
+// на 
+//$price = $item->get_product()->get_price();
+// if ( $item->get_product()->get_type() === 'gift-card' || $price === '' || $price === null ) {
 
-// // Функция нормализации цены (убираем валюту, пробелы, запятые)
-// if ( ! function_exists( 'tbank_to_float' ) ) {
-//     function tbank_to_float( $value ) {
-//         // Переводим в строку, чтобы не ловить варнинги
-//         $value = (string) $value;
+//     $qty  = max(1, (float) $item->get_quantity());
+//     $line_total = (float) $item->get_total();
+//     $line_tax   = (float) $item->get_total_tax();
 
-//         // Убираем всё, кроме цифр, точки, запятой и минуса
-//         $value = preg_replace( '/[^\d,.\-]/u', '', $value );
-
-//         // Заменяем запятую на точку (если используется вид 1000,50)
-//         $value = str_replace( ',', '.', $value );
-
-//         // Возвращаем «числовую строку» — WooCommerce так же хранит цены
-//         return $value;
-//     }
+//     $price = ($line_total + $line_tax) / $qty;
 // }
-
-// // Нормализуем цену для товаров типа gift card
-// function tbank_fix_yith_giftcard_price( $price, $product ) {
-//     if ( ! $product ) {
-//         return $price;
-//     }
-
-//     $type = $product->get_type();
-
-//     // Проверяем тип товара — тут можно добавить свои варианты, если точно знаешь slug
-//     $giftcard_types = array( 'gift-card', 'ywgc_gift_card' );
-
-//     if ( ! in_array( $type, $giftcard_types, true ) ) {
-//         return $price; // обычные товары не трогаем
-//     }
-
-//     // Нормализуем то, что вернул YITH
-//     $normalized = tbank_to_float( $price );
-
-//     // На всякий случай: если после очистки пусто — возвращаем оригинал
-//     if ( $normalized === '' ) {
-//         return $price;
-//     }
-
-//     return $normalized;
-// }
-
-// add_filter( 'woocommerce_product_get_price',         'tbank_fix_yith_giftcard_price', 20, 2 );
-// add_filter( 'woocommerce_product_get_regular_price', 'tbank_fix_yith_giftcard_price', 20, 2 );
-// add_filter( 'woocommerce_product_get_sale_price',    'tbank_fix_yith_giftcard_price', 20, 2 );
-
-//Хук на суммы в позициях заказа
-
-// function tbank_fix_yith_giftcard_order_item_total( $total, $item, $order ) {
-//     $product = $item->get_product();
-//     if ( ! $product ) {
-//         return $total;
-//     }
-
-//     $type = $product->get_type();
-//     $giftcard_types = array( 'gift-card', 'ywgc_gift_card' );
-
-//     if ( ! in_array( $type, $giftcard_types, true ) ) {
-//         return $total;
-//     }
-
-//     $normalized = tbank_to_float( $total );
-//     return $normalized === '' ? $total : $normalized;
-// }
-
-// add_filter( 'woocommerce_order_item_get_total',    'tbank_fix_yith_giftcard_order_item_total', 20, 3 );
-// add_filter( 'woocommerce_order_item_get_subtotal', 'tbank_fix_yith_giftcard_order_item_total', 20, 3 );
 
 

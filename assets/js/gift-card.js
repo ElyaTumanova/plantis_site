@@ -9,7 +9,7 @@ if (gifForm) {
   let allInputs = gifForm.querySelectorAll('input')
   let allTextareas = gifForm.querySelectorAll('textarea')
 
-  let minAmount = 1500
+  let minAmount = 10
   let maxAmount = 30000
   amountInput.value = minAmount
   amountInput.setAttribute('value',minAmount)
