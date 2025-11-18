@@ -38,7 +38,7 @@ add_action( 'wp_footer', 'plnt_check_site' );
 	$lechuza_cat_id = 265; //ok
 	$uncategorized_cat_id = 466; //ok
 
-  $gcid = 15419;
+  $gcid = 16970;
 	
 	$tags_podarki = array(
         420,
