@@ -335,6 +335,10 @@ if (checkoutForm && !isGiftCard) {
 
   document.addEventListener('DOMContentLoaded', getOrderParametrs )
 
-  checkoutForm.addEventListener('change', getOrderParametrs);
   
+}
+
+if (checkoutForm) {
+  hideCheckoutFields();
+  checkoutForm.addEventListener('change', getOrderParametrs);
 }
