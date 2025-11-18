@@ -753,7 +753,7 @@ label.list-view {
   color: var(--text);
   box-shadow: none;
   background-color: var(--bg);
-  /* display: none;  */
+  display: none; 
 }
 
 .ywgc-show-giftcard::after {
