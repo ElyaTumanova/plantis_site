@@ -158,13 +158,6 @@ add_action('woocommerce_email_footer', function($email) {
 #CHECKOUT PAGE
 --------------------------------------------------------------*/
 
-// Генерировать и отправлять подарочные карты ТОЛЬКО при статусе "Выполнен" (completed)
-add_filter( 'yith_ywgc_generate_gift_card_on_order_status', function( $statuses ) {
-    // Можно проверить, что $statuses массив, но обычно это не обязательно
-    return array( 'completed' );
-} );
-
-
 // поменяли хук, на котором висит поле ввода подарочной карты на странице Checkout
 add_filter( 'ywgc_gift_card_code_form_checkout_hook', function (){
   return 'plnt_woocommerce_checkout_gift_card';
