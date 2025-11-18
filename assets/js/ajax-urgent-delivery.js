@@ -327,7 +327,6 @@ function hideCheckoutFields(event){
   }
 }
 
-console.log(isGiftCard);
 if (checkoutForm && !isGiftCard) {
 
   setInitalState();
