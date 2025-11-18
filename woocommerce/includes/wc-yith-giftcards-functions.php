@@ -109,7 +109,7 @@ add_action( 'ywgc_gift_cards_email_before_preview_gift_card_param', function( $g
 add_action ('plnt_gift_card_email_after_preview', 'add_email_gift_card_link', 10);
 
 function add_email_gift_card_link($gift_card) {
-  $giftcard_link = 'http://dev.plantis-shop.ru/gift-card?gcnum='.$gift_card->gift_card_number;
+  $giftcard_link = site_url().'/gift-card?gcnum='.$gift_card->gift_card_number;
   echo $giftcard_link;
 }
 
