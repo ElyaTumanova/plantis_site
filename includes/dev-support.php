@@ -300,5 +300,8 @@ function show_image_sizes() {
 //   wp_send_json_success('ok'); // без лишней логики
 // }
 
-
-add_filter('woocommerce_logging_enabled', '__return_false');
+// Add to functions.php to disable the problematic pattern registration
+function disable_problematic_patterns() {
+    remove_action('init', array(Automattic\WooCommerce\Blocks\BlockPatterns::class, 'register_ptk_patterns'));
+}
+add_action('wp_loaded', 'disable_problematic_patterns');
