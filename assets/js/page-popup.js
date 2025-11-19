@@ -17,7 +17,6 @@ let serviceNameInput = document.querySelector('.ukhod-popup-service-name');
 if (pagePopup != null && pageOpenPopupBtn != null) {
     pageOpenPopupBtn.forEach(button => {
       button.addEventListener ("click", (evt)=>{
-        console.log(pagePopup)
         toggle_page_popup ();
       });
     });
@@ -61,9 +60,9 @@ if(pagePopup != null && serviceButtons != null) {
 }
 
 
-if(pagePopupContactForm !=null) {
-  pagePopupContactForm.addEventListener('submit', hidePopup);
-}
+// if(pagePopupContactForm !=null) {
+//   pagePopupContactForm.addEventListener('submit', hidePopup);
+// }
 
 
 function cleanForm() {
