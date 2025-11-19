@@ -75,12 +75,12 @@ function hidePopup() {
   setTimeout(() => {
     pagePopupContainer.style.visibility = 'hidden';
   }, 1000);
-  setTimeout(() => {
-    pagePopup.classList.remove('popup_active');
-    body.classList.remove('fix-body');
-    cleanForm();
-    pagePopupContainer.style.visibility = 'visible';
-  }, 5000);
+  // setTimeout(() => {
+  //   pagePopup.classList.remove('popup_active');
+  //   body.classList.remove('fix-body');
+  //   cleanForm();
+  //   pagePopupContainer.style.visibility = 'visible';
+  // }, 5000);
 }
 
 // document.addEventListener('wpcf7mailsent', function(event) {
@@ -98,10 +98,12 @@ document.addEventListener('wpcf7submit', function(event) {
     // const responseOutput = document.querySelector('.wpcf7-response-output');
 
     console.log('Текст ответа:');
-    pagePopup.classList.remove('popup_active');
-    body.classList.remove('fix-body');
-    cleanForm();
-    pagePopupContainer.style.visibility = 'visible';
+    setTimeout(() => {
+      pagePopup.classList.remove('popup_active');
+      body.classList.remove('fix-body');
+      cleanForm();
+      pagePopupContainer.style.visibility = 'visible';
+    }, 5000);
 
 
 }, false);
