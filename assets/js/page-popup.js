@@ -60,9 +60,9 @@ if(pagePopup != null && serviceButtons != null) {
 }
 
 
-if(pagePopupContactForm !=null) {
-  pagePopupContactForm.addEventListener('submit', hidePopup);
-}
+// if(pagePopupContactForm !=null) {
+//   pagePopupContactForm.addEventListener('submit', hidePopup);
+// }
 
 
 function cleanForm() {
@@ -75,12 +75,12 @@ function hidePopup() {
   setTimeout(() => {
     pagePopupContainer.style.visibility = 'hidden';
   }, 1000);
-  // setTimeout(() => {
-  //   pagePopup.classList.remove('popup_active');
-  //   body.classList.remove('fix-body');
-  //   cleanForm();
-  //   pagePopupContainer.style.visibility = 'visible';
-  // }, 5000);
+  setTimeout(() => {
+    pagePopup.classList.remove('popup_active');
+    body.classList.remove('fix-body');
+    cleanForm();
+    pagePopupContainer.style.visibility = 'visible';
+  }, 5000);
 }
 
 // document.addEventListener('wpcf7mailsent', function(event) {
@@ -96,6 +96,7 @@ function hidePopup() {
 document.addEventListener('wpcf7submit', function(event) {
     // Универсальный обработчик отправки
     console.log('Текст ответа:');
+    pagePopupContainer.style.visibility = 'hidden';
     setTimeout(() => {
       pagePopup.classList.remove('popup_active');
       body.classList.remove('fix-body');
