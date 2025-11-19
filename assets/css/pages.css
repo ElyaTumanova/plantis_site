@@ -948,6 +948,10 @@
   grid-template-rows: auto auto;
 }
 
+.page-peresadka__services_btn .page-peresadka__services-list {
+    grid-row: span 2;
+}
+
 .page-ukhod__services-list li {
   font-size: 18px;
   padding: 15px 0;
