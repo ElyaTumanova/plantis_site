@@ -60,7 +60,7 @@ if(pagePopup != null && serviceButtons != null) {
 
 if(pagePopupContactForm !== null) {
   // pagePopupContactForm.addEventListener('submit', hidePopup);
-  pagePopupContactForm.addEventListener('submit', pagePopupPreloader.classList.add('active'));
+  pagePopupContactForm.addEventListener('submit', (evt) => {pagePopupPreloader.classList.add('active')});
 }
 
 
