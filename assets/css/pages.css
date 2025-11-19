@@ -1210,7 +1210,7 @@
 .page-lanscaping .page-ukhod__advantages-item li {
   width: 270px;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .page-lanscaping .page-ukhod__advantages-item li p:first-child {
