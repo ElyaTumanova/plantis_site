@@ -5,7 +5,7 @@ get_header(); ?>
 
 <div class="content-area">
 	<main id="main" class="site-main" role="main">
-    <div class="page-peresadka service-page">
+    <div class="page-lanscaping service-page">
       <div class="page-peresadka__first-screen">
         <h1 class="page-peresadka__entry-title entry-title">Озеленение офисов</h1> 
         <img class="page-peresadka__photo" loading="lazy" src="<?php echo get_template_directory_uri()?>/images/landscaping.webp" alt="Пересадка комнатных растений">               

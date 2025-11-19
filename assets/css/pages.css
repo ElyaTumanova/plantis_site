@@ -1202,8 +1202,11 @@
   color: var(--white);
   line-height: 1.4;
 }
+.page-lanscaping .page-ukhod__advantages-item li {
+  flex-direction: column;
+}
 
-.page-ukhod__advantages-item li p:first-child {
+.page-lanscaping .page-ukhod__advantages-item li p:first-child {
   margin-bottom: 10px;
   font-weight: 600;
   font-size: 20px;
