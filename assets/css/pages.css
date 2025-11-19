@@ -987,14 +987,14 @@
         font-size: 24px;
     }
 }
-.page-peresadka__services-title {
+.page-peresadka__services-title, .page-peresadka__services-title h2, .page-peresadka__services-title p {
   font-size: 28px;
   text-transform: uppercase;
   line-height: 1.2;
 }
 
 @media(max-width:767px) {
-    .page-peresadka__services-title {         
+    .page-peresadka__services-title, .page-peresadka__services-title h2, .page-peresadka__services-title p {         
         font-size: 24px;
     }
 }
