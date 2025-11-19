@@ -97,7 +97,7 @@ document.addEventListener('wpcf7submit', function(event) {
     // Универсальный обработчик отправки
     // const responseOutput = document.querySelector('.wpcf7-response-output');
 
-    console.log('Текст ответа:', responseOutput.textContent);
+    console.log('Текст ответа:');
     pagePopup.classList.remove('popup_active');
     body.classList.remove('fix-body');
     cleanForm();
