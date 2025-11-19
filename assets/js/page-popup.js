@@ -83,22 +83,27 @@ function hidePopup() {
   }, 5000);
 }
 
-document.addEventListener('wpcf7mailsent', function(event) {
-    console.log('Форма отправлена успешно');
-    // Действия при успешной отправке
-}, false);
+// document.addEventListener('wpcf7mailsent', function(event) {
+//     console.log('Форма отправлена успешно');
+//     // Действия при успешной отправке
+// }, false);
 
-document.addEventListener('wpcf7mailfailed', function(event) {
-    console.log('Ошибка отправки');
-    // Действия при ошибке
-}, false);
+// document.addEventListener('wpcf7mailfailed', function(event) {
+//     console.log('Ошибка отправки');
+//     // Действия при ошибке
+// }, false);
 
 document.addEventListener('wpcf7submit', function(event) {
     // Универсальный обработчик отправки
-    const responseOutput = document.querySelector('.wpcf7-response-output');
-    if (responseOutput) {
-        console.log('Текст ответа:', responseOutput.textContent);
-    }
+    // const responseOutput = document.querySelector('.wpcf7-response-output');
+
+    console.log('Текст ответа:', responseOutput.textContent);
+    pagePopup.classList.remove('popup_active');
+    body.classList.remove('fix-body');
+    cleanForm();
+    pagePopupContainer.style.visibility = 'visible';
+
+
 }, false);
 
 
