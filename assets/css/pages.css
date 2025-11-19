@@ -978,14 +978,22 @@
 
 .page-peresadka__services-list_nums li {
   display: flex;
-  column-gap: 20px;
+  column-gap: 30px;
 }
 .page-peresadka__services-list_nums li > p {
-
+    font-size: 30px;
+    font-weight: 600;
+    /* margin-block: auto; */
 }
 
 .page-peresadka__services-list_nums li div > p:first-child {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
 
+.page-peresadka__services-list_nums li div > p:last-child {
+  line-height: 1.4;
 }
 
 
