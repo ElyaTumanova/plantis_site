@@ -113,13 +113,13 @@ get_header(); ?>
           <li>
               <p>Экосистема</p> 
               <p>от&nbsp;100&nbsp;000 рублей</p>
-              <p>Разработка проекта уникального дизайна для полной трансформации помещения.</p>
+              <p>Разработка проекта с уникальным дизайном для полной трансформации помещения.</p>
           </li>
         </ul>
       </div>
       <div class="page-peresadka__service-item">
         <h2 class="page-peresadka__service-item-title">Профессиональное обслуживание</h2>
-        <p class="page-peresadka__service-item-descr">Чтобы растения всегда выглядели безупречно и оставались здоровыми, мы можем предложить вам постпродажное обслуживание. Посмотреть тарифы на обслуживание растений вы можете <a href="<?php echo site_url()?>/professionalnyj-uhod-za-rasteniyami" target="_blank">здесь</a>.</p>
+        <p class="page-peresadka__service-item-descr">Чтобы растения всегда выглядели безупречно и оставались здоровыми, мы можем предложить вам постпродажное обслуживание. Посмотреть тарифы на обслуживание растений вы можете <a href="<?php echo site_url()?>/professionalnyj-uhod-za-rasteniyami" target="_blank">здесь <i class="fas fa-external-link-alt"></i></a>.</p>
       </div>
 		</div>
 
