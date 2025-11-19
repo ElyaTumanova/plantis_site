@@ -945,7 +945,7 @@
 }
 
 .page-peresadka__services_btn {
-  grid-template-rows: auto auto;
+  grid-template-rows: auto 50px;
 }
 
 .page-peresadka__services_btn .page-peresadka__services-list {
