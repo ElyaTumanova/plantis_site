@@ -244,8 +244,8 @@
     visibility: hidden;
     opacity: 0%;
     position: absolute;
-    top: 40%;
-    transform: translateY(-40px);
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0s, transform 0.7s;
 }
 
@@ -256,7 +256,8 @@
     text-align: center;
     font-weight: 700;
     position: absolute;
-    top: 40%;
+    top: 50%;
+    transform: translateY(-50%);
     background-color: white;
     left: 0;
     right: 0;
@@ -274,7 +275,8 @@
     text-align: center;
     font-weight: 700;
     position: absolute;
-    top: 40%;
+    top: 50%;
+    transform: translateY(-50%);
     background-color: white;
     left: 0;
     right: 0;
