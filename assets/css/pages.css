@@ -944,6 +944,10 @@
     }
 }
 
+.page-peresadka__services_btn {
+  grid-template-rows: auto auto;
+}
+
 .page-ukhod__services-list li {
   font-size: 18px;
   padding: 15px 0;

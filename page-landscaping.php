@@ -54,7 +54,7 @@ get_header(); ?>
         </ul>
       </div>
 
-      <div class="page-peresadka__services">
+      <div class="page-peresadka__services page-peresadka__services_btn">
         <h2 class="page-peresadka__services-title">Как выглядит процесс?</h2>
         <ul class="page-peresadka__services-list page-peresadka__services-list_nums">
           <li>
@@ -93,8 +93,8 @@ get_header(); ?>
               </div>
           </li>
         </ul >
+        <button class="page-peresadka__rasschet button page-popup-open-btn" name="Заявка на пересадку">Оставить заявку</button>
       </div>
-      <button class="page-peresadka__rasschet button page-popup-open-btn" name="Заявка на пересадку">Оставить заявку</button>
 
       <div class="page-peresadka__service-item">
         <h2 class="page-peresadka__service-item-title">Сколько стоит озеленение “под ключ”?</h2>
