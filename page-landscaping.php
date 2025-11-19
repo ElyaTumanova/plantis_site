@@ -15,7 +15,7 @@ get_header(); ?>
           <p>Мы поможем вам его сделать.</p>
         </div>
         <div class="page-peresadka__buttons">
-          <button class="page-peresadka__rasschet button page-popup-open-btn" name="Заявка на пересадку">Оставить заявку</button>
+          <button class="page-peresadka__rasschet button page-popup-open-btn" name="Заявка на озеленение">Оставить заявку</button>
           <?php get_template_part('template-parts/social-media-btns');?> 
         </div>
              
@@ -93,7 +93,7 @@ get_header(); ?>
               </div>
           </li>
         </ul >
-        <button class="page-peresadka__rasschet button page-popup-open-btn" name="Заявка на пересадку">Оставить заявку</button>
+        <button class="page-peresadka__rasschet button page-popup-open-btn" name="Заявка на озеленение">Оставить заявку</button>
       </div>
 
       <div class="page-peresadka__service-item">
