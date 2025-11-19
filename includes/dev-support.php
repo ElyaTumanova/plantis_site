@@ -299,3 +299,6 @@ function show_image_sizes() {
 // function ajax_ping(){
 //   wp_send_json_success('ok'); // без лишней логики
 // }
+
+
+add_filter('woocommerce_logging_enabled', '__return_false');
