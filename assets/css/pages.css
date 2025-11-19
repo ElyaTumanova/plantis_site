@@ -951,6 +951,12 @@
 .page-peresadka__services_btn .page-peresadka__services-list {
     grid-row: span 2;
 }
+@media(max-width:767px) {
+  .page-peresadka__services_btn button {
+    height: 50px;
+  }
+}
+
 
 .page-ukhod__services-list li {
   font-size: 18px;
@@ -1153,7 +1159,9 @@
 
 @media(max-width:767px) {
   .page-peresadka__service-item {
-      grid-template-columns: auto;
+      /* grid-template-columns: auto; */
+      display: flex;
+      flex-direction: column;
       row-gap: 30px;
       margin-bottom: 60px;
       padding: 30px;
@@ -1165,6 +1173,11 @@
     margin-top: 40px;
 }
 
+@media(max-width:767px) {
+  .page-lanscaping .page-peresadka__service-item .page-ukhod__advantages-item {
+      grid-column: span 1;
+  }
+}
 
 .page-peresadka .info__table {
   border: none;
