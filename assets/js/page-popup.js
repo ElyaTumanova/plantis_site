@@ -4,11 +4,11 @@ const pageOpenPopupBtn = document.querySelectorAll('.page-popup-open-btn');
 const pagePopup = document.querySelector('.page-popup');
 const pageClosePopupBtn = document.querySelector('.page-popup__close');
 const pagePopupOverlay = document.querySelector('.page-popup__popup-overlay');
-const pagePopupForm = document.querySelector('.page-popup form');
+// const pagePopupForm = document.querySelector('.page-popup form');
 const pagePopupContactForm = document.querySelector('.page-popup .wpcf7-form');
 
 // console.log(pageOpenPopupBtn)
-// console.log(pagePopup)
+console.log(pagePopupForm)
 
 //для попапа на странице усуги по уходу
 let serviceButtons = document.querySelectorAll('.service-page .page-popup-open-btn');
@@ -61,18 +61,18 @@ if(pagePopup != null && serviceButtons != null) {
 }
 
 
-if(pagePopupContactForm == null) {
-  pagePopupForm.addEventListener('submit', hidePopup);
-}
+// if(pagePopupContactForm == null) {
+//   pagePopupForm.addEventListener('submit', hidePopup);
+// }
 
 
 function cleanForm() {
   if(pagePopupContactForm != null) {
     pagePopupContactForm.reset();
   }
-  if(pagePopupForm != null) {
-    pagePopupForm.reset();
-  }
+  // if(pagePopupForm != null) {
+  //   pagePopupForm.reset();
+  // }
 }
 
 function hidePopup() {
