@@ -60,9 +60,9 @@ if(pagePopup != null && serviceButtons != null) {
 }
 
 
-// if(pagePopupContactForm !=null) {
-//   pagePopupContactForm.addEventListener('submit', hidePopup);
-// }
+if(pagePopupContactForm !=null) {
+  pagePopupContactForm.addEventListener('submit', hidePopup);
+}
 
 
 function cleanForm() {
@@ -82,16 +82,6 @@ function hidePopup() {
     pagePopupContainer.style.visibility = 'visible';
   }, 5000);
 }
-
-// document.addEventListener('wpcf7mailsent', function(event) {
-//     console.log('Форма отправлена успешно');
-//     // Действия при успешной отправке
-// }, false);
-
-// document.addEventListener('wpcf7mailfailed', function(event) {
-//     console.log('Ошибка отправки');
-//     // Действия при ошибке
-// }, false);
 
 document.addEventListener('wpcf7submit', function(event) {
     // Универсальный обработчик отправки
