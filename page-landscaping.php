@@ -56,7 +56,7 @@ get_header(); ?>
 
       <div class="page-peresadka__services">
         <h2 class="page-peresadka__services-title">Как выглядит процесс?</h2>
-        <ul class="page-peresadka__services-list">
+        <ul class="page-peresadka__services-list page-peresadka__services-list_nums">
           <li>
               <p>01</p>
               <div>

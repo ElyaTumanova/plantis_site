@@ -976,6 +976,20 @@
   padding-top: 0;
 }
 
+.page-peresadka__services-list_nums li{
+  display: flex;
+  column-gap: 20px;
+}
+.page-peresadka__services-list_nums li > p {
+
+}
+
+.page-peresadka__services-list_nums li div > p {
+
+}
+
+
+
 .page-ukhod__services-title {
   font-size: 28px;
   text-transform: uppercase;
