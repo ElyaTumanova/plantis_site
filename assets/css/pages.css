@@ -807,6 +807,9 @@
     }
 }
 
+.page-peresadka__intro p {
+  margin-bottom: 5px;
+}
 
 .page-ukhod__rasschet {
   grid-area: rasschet;

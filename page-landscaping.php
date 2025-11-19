@@ -21,7 +21,9 @@ get_header(); ?>
              
       </div>
 			<div class="page-peresadka__services">
-        <h2 class="page-peresadka__services-title">В Plantis мы создаём индивидуальные решения. Наши проекты выбирают потому, что мы:</h2>
+        <div class="page-peresadka__services-title"><h2>В Plantis мы создаём индивидуальные решения.</h2> 
+          <p>Наши проекты выбирают потому, что мы:</p>
+        </div>
         <ul class="page-peresadka__services-list">
           <li>Работаем только со здоровыми растениями от лучших садовников Европы;</li>
           <li>Создаём проекты «под ключ» — с фиксированной ценой и прозрачными условиями оплаты;</li>
