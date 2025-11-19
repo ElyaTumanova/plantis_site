@@ -993,6 +993,10 @@
   line-height: 1.2;
 }
 
+.page-peresadka__services-title h2 {
+  margin-bottom: 20px;
+}
+
 @media(max-width:767px) {
     .page-peresadka__services-title, .page-peresadka__services-title h2, .page-peresadka__services-title p {         
         font-size: 24px;
@@ -1197,6 +1201,12 @@
   align-items: center;
   color: var(--white);
   line-height: 1.4;
+}
+
+.page-ukhod__advantages-item li p:first-child {
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .page-peresadka__example {
