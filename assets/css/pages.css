@@ -976,7 +976,7 @@
   padding-top: 0;
 }
 
-.page-peresadka__services-list_nums li{
+.page-peresadka__services-list_nums li {
   display: flex;
   column-gap: 20px;
 }
@@ -984,7 +984,7 @@
 
 }
 
-.page-peresadka__services-list_nums li div > p {
+.page-peresadka__services-list_nums li div > p:first-child {
 
 }
 
