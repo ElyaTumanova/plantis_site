@@ -5,6 +5,7 @@ const pagePopup = document.querySelector('.page-popup');
 const pageClosePopupBtn = document.querySelector('.page-popup__close');
 const pagePopupOverlay = document.querySelector('.page-popup__popup-overlay');
 const pagePopupContactForm = document.querySelector('.page-popup .wpcf7-form');
+const pagePopupPreloader = document.querySelector('.page-popup .preloader');
 
 //для попапа на странице усуги по уходу
 let serviceButtons = document.querySelectorAll('.service-page .page-popup-open-btn');
@@ -57,9 +58,10 @@ if(pagePopup != null && serviceButtons != null) {
 }
 
 
-// if(pagePopupContactForm !== null) {
-//   pagePopupContactForm.addEventListener('submit', hidePopup);
-// }
+if(pagePopupContactForm !== null) {
+  // pagePopupContactForm.addEventListener('submit', hidePopup);
+  pagePopupContactForm.addEventListener('submit', pagePopupPreloader.classList.add('active'));
+}
 
 
 function cleanForm() {
@@ -82,14 +84,14 @@ function hidePopup() {
 
 document.addEventListener('wpcf7submit', function(event) {
     // Универсальный обработчик отправки
-    console.log('Текст ответа:');
     pagePopupContainer.style.visibility = 'hidden';
+    pagePopupPreloader.classList.remove('active');
     setTimeout(() => {
       pagePopup.classList.remove('popup_active');
       body.classList.remove('fix-body');
       cleanForm();
       pagePopupContainer.style.visibility = 'visible';
-    }, 3000);
+    }, 4000);
 
 }, false);
 
