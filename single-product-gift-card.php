@@ -24,17 +24,14 @@ $gcid = 15419;?>
 
     <br>
 
-    <label>
+    <!-- <label>
         E-mail:
         <input type="email" name="billing_email" required>
     </label>
 
-    <br>
+    <br> -->
 
-    <label>
-        Телефон:
-        <input type="tel" name="billing_phone">
-    </label>
+
 
     <button type="submit">Купить подарочную карту</button>
 </form>
