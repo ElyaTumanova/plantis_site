@@ -23,6 +23,57 @@ add_filter('query_vars', function ($vars) {
     return $vars;
 });
 
+add_action( 'init', function() {
+    if ( isset($_POST['instant_payment_submit']) && !empty($_POST['instant_payment_amount']) ) {
+
+        $amount = floatval( $_POST['instant_payment_amount'] );
+        if ( $amount <= 0 ) {
+            return;
+        }
+
+        // ID платёжного метода (НЕ payment_method_tbank, а его "хвост")
+        $payment_method_id = 'tbank';
+
+        // На всякий случай проверим, что такой метод существует и включен
+        if ( function_exists( 'WC' ) && WC()->payment_gateways ) {
+            $gateways = WC()->payment_gateways->payment_gateways();
+
+            if ( ! isset( $gateways[ $payment_method_id ] ) ) {
+                // Если что-то не так — можно логгировать/вывести ошибку
+                return;
+            }
+        }
+
+        // Создаем заказ
+        $order = wc_create_order( array(
+            'status'      => 'pending',
+            'created_via' => 'instant_payment_button',
+        ) );
+
+        // Добавляем fee на нужную сумму
+        $item_fee = new WC_Order_Item_Fee();
+        $item_fee->set_name( 'Оплата услуги' );
+        $item_fee->set_amount( $amount );
+        $item_fee->set_total( $amount );
+        $order->add_item( $item_fee );
+
+        // Устанавливаем способ оплаты
+        $order->set_payment_method( $payment_method_id );
+        // Можно указать название, если нужно переопределить
+        // $order->set_payment_method_title( 'Оплата через Т-Банк' );
+
+        // Пересчитать суммы
+        $order->calculate_totals();
+
+        // URL страницы оплаты
+        $payment_url = $order->get_checkout_payment_url();
+
+        wp_safe_redirect( $payment_url );
+        exit;
+    }
+});
+
+
 /*--------------------------------------------------------------
 #EMAILS
 --------------------------------------------------------------*/

@@ -9,6 +9,11 @@
       <p class="gift-image-amount">1500<span>₽</span></p>
     </div>
     <?php echo do_shortcode('[yith_ywgc_display_gift_card_form]');?>
+
+    <form method="post">
+        <input type="hidden" name="instant_payment_amount" value="1500">
+        <button type="submit" name="instant_payment_submit">Оплатить 1500 ₽</button>
+    </form>
     <div class="gift-card__info">
       <h2 class="giftcard-advantages__title">Преимущества подарочного сертификата</h2>
       <div class="giftcard-advantages">
