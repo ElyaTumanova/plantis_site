@@ -25,16 +25,16 @@ if ( $gift_card_id > 0 ) {
 
 //for dev
 
-// echo('<pre>');
-// // if ( $gift_card ) {
-// //     echo 'Карта найдена.';
-// // } else {
-// //     echo 'Карта с таким номером не найдена.';
-// // }
-// print_r($raw_gcnum);
-// print_r($gcnum);
-// print_r($gift_card);
-// echo('</pre>');
+echo('<pre>');
+// if ( $gift_card ) {
+//     echo 'Карта найдена.';
+// } else {
+//     echo 'Карта с таким номером не найдена.';
+// }
+print_r($raw_gcnum);
+print_r($gcnum);
+print_r($gift_card);
+echo('</pre>');
 ?>
 
 <?php if ( $gift_card ):?>
@@ -45,7 +45,7 @@ if ( $gift_card_id > 0 ) {
     <div class="gift-card__main">
       <div class="gift-card__wrap">
         <div class="gift-image-wrap">
-          <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_cover.webp" class="gift-image" alt="Подарочная карта" loading="lazy">
+          <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_cover.jpg" class="gift-image" alt="Подарочная карта" loading="lazy">
           <p class="gift-image-amount"><?php echo esc_html($gift_card['_ywgc_balance_total'][0]) ?><span>₽</span></p>
         </div>
         <div class="gift-card__row">
