@@ -28,7 +28,7 @@ add_action( 'admin_post_giftcard_pay',        'handle_giftcard_pay' );
 
 function handle_giftcard_pay() {
 
-    // 1. Сумма
+    // 1. Сумма сертификата
     $amount_raw = $_POST['giftcard_amount'] ?? '';
     if ( is_array( $amount_raw ) ) {
         $amount_raw = reset( $amount_raw );
@@ -53,9 +53,9 @@ function handle_giftcard_pay() {
         wp_die( 'Товар подарочной карты не найден.' );
     }
 
-    // 3. Данные для YITH-формы
+    // 3. Данные из твоей формы YITH
 
-    // 3.1 Email получателя (он же email покупателя)
+    // 3.1 Email (и плательщика, и получателя – один и тот же)
     $recipient_emails = $_POST['ywgc-recipient-email'] ?? [];
     if ( is_array( $recipient_emails ) ) {
         $recipient_email = reset( $recipient_emails );
@@ -107,38 +107,52 @@ function handle_giftcard_pay() {
         'total'    => $amount,
     ] );
 
-    // 5.1. Прописываем мета для YITH (делают карту «виртуальной»)
+    // 5.1. Мета YITH для строки заказа – чтобы в заказе выводились нужные поля
 
     if ( $item_id ) {
-        // ❗ Названия ключей (_ywgc_...) лучше сверить на тестовом заказе,
-        // но чаще всего используются такие:
 
-        if ( $recipient_email ) {
-            wc_add_order_item_meta( $item_id, '_ywgc_recipient_email', $recipient_email );
-        }
+        // Сумма карты (Amount)
+        wc_add_order_item_meta( $item_id, '_ywgc_amount', $amount );
 
+        // "Ручная" сумма (Manual amount = 1)
+        wc_add_order_item_meta( $item_id, '_ywgc_is_manual_amount', 1 );
+
+        // Digital: 1 (виртуальная карта, отправляется по e-mail)
+        wc_add_order_item_meta( $item_id, '_ywgc_is_digital', 1 );
+
+        // Email получателя (хоть ты его не показывал в списке, но он нужен плагину)
+        wc_add_order_item_meta( $item_id, '_ywgc_recipient_email', $recipient_email );
+
+        // Recipient's name
         if ( $recipient_name ) {
             wc_add_order_item_meta( $item_id, '_ywgc_recipient_name', $recipient_name );
         }
 
+        // Sender's name (от кого)
         if ( $sender_name ) {
             wc_add_order_item_meta( $item_id, '_ywgc_sender_name', $sender_name );
         }
 
+        // Сообщение
         if ( $message ) {
             wc_add_order_item_meta( $item_id, '_ywgc_message', $message );
         }
 
-        // Если в твоей версии есть флаг digital/delivery type — его тоже стоит проставить.
-        // Пример (нужно проверить точное имя ключа в реальном заказе):
-        // wc_add_order_item_meta( $item_id, '_ywgc_delivery', 'email' );
-        // или
-        // wc_add_order_item_meta( $item_id, '_ywgc_is_digital', 'yes' );
+        // Design type: default
+        wc_add_order_item_meta( $item_id, '_ywgc_design_type', 'default' );
+
+        // Has custom design: 1
+        wc_add_order_item_meta( $item_id, '_ywgc_has_custom_design', 1 );
+
+        // Delivery notification: off
+        wc_add_order_item_meta( $item_id, '_ywgc_delivery_notification', 'off' );
+
+        // Версия плагина (можно захардкодить, можно взять из константы, если есть)
+        wc_add_order_item_meta( $item_id, '_ywgc_version', '4.26.0' );
     }
 
-    // 6. Проставляем биллинг (email покупателя = email получателя)
+    // 6. Биллинг заказчика (email = email получателя)
     $order->set_billing_email( $recipient_email );
-    // телефон, если нужен — можно добавить отдельным полем в форму
 
     // 7. Способ оплаты — tbank
     $order->set_payment_method( 'tbank' );
@@ -156,6 +170,7 @@ function handle_giftcard_pay() {
     wp_safe_redirect( $url );
     exit;
 }
+
 
 
 
