@@ -16,7 +16,7 @@ $gcid = 15419;?>
 <form method="post" action="/wp-admin/admin-post.php" class="giftcard-form">
 
   <input type="hidden" name="action" value="giftcard_pay">
-  <input type="hidden" name="giftcard_product_id" value="123"> <!-- ID товара gift-card -->
+  <input type="hidden" name="giftcard_product_id" value="15419"> <!-- ID товара gift-card -->
   <input type="number" name="giftcard_amount" value="1500" min="1" required style="display:none;">
 
   <div class="gift-card-content-editor step-content clearfix">
