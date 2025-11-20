@@ -252,29 +252,29 @@ function plantis_send_gift_cards_on_completed( $order_id ) {
         return;
     }
 
-    // На всякий случай можно ограничить только "наши" заказы:
+    // Если нужно – можно ограничить только нашими "кнопочными" заказами:
     // if ( $order->get_created_via() !== 'giftcard_pay_button' ) {
     //     return;
     // }
 
-    // Собираем ID подарочных карт из позиций заказа
     $gift_card_ids = [];
 
+    // Собираем ID подарочных карт из позиций заказа
     foreach ( $order->get_items() as $item_id => $item ) {
 
-        // Нас интересуют только строки YITH карты
+        // Нас интересуют только строки типа YITH_Gift_Card_Order_Item
         if ( ! $item instanceof YITH_Gift_Card_Order_Item ) {
             continue;
         }
 
         $gift_card_id = 0;
 
-        // В большинстве реализаций у YITH_Gift_Card_Order_Item есть метод get_gift_card_id()
+        // В большинстве версий есть метод get_gift_card_id()
         if ( method_exists( $item, 'get_gift_card_id' ) ) {
-            $gift_card_id = $item->get_gift_card_id();
+            $gift_card_id = (int) $item->get_gift_card_id();
         }
 
-        // Запасной вариант: взять из меты строки, если метод вдруг другой
+        // Запасной вариант – через мету строки
         if ( ! $gift_card_id ) {
             $gift_card_id = (int) wc_get_order_item_meta( $item_id, '_ywgc_gift_card_id', true );
         }
@@ -288,25 +288,22 @@ function plantis_send_gift_cards_on_completed( $order_id ) {
         return;
     }
 
-    // Класс/объект, который умеет send_gift_card_email()
-    // В том месте, где ты видел:
-    //   $gift_card_ids = YITH_YWGC_Gift_Card_Extended::get_postdated_gift_cards( $send_date );
-    //   foreach ( $gift_card_ids as $gift_card_id ) { $this->send_gift_card_email( $gift_card_id ); }
-    //
-    // этот код, скорее всего, находится внутри класса, где и объявлен send_gift_card_email().
-    // Часто достаточно просто создать его экземпляр:
-    if ( ! class_exists( 'YITH_YWGC_Gift_Card_Extended' ) ) {
+    // Класс, который умеет send_gift_card_email()
+    if ( ! class_exists( 'YITH_YWGC_Emails_Extended' ) ) {
         return;
     }
 
-    $sender = new YITH_YWGC_Gift_Card_Extended();
+    // Берём singleton из твоего класса
+    $emails = YITH_YWGC_Emails_Extended::get_instance();
 
     foreach ( $gift_card_ids as $gift_card_id ) {
-        if ( method_exists( $sender, 'send_gift_card_email' ) ) {
-            $sender->send_gift_card_email( $gift_card_id );
+        if ( method_exists( $emails, 'send_gift_card_email' ) ) {
+            // $only_new = true — не отправит повторно, если карта уже была отослана
+            $emails->send_gift_card_email( $gift_card_id, true );
         }
     }
 }
+
 
 
 
@@ -521,22 +518,22 @@ add_action('yith_ywgc_show_gift_card_amount_selection', function(){
 },10);
 
 
-add_filter('ywgc_recipient_name_label', function (){
-  return 'Для кого подарок';
-});
-add_filter('ywgc_sender_name_label', function (){
-  return 'От кого подарок';
-});
+// add_filter('ywgc_recipient_name_label', function (){
+//   return 'Для кого подарок';
+// });
+// add_filter('ywgc_sender_name_label', function (){
+//   return 'От кого подарок';
+// });
 
-add_filter('ywgc_edit_message_label', function (){
-  return 'Поздравление';
-});
-add_filter('yith_wcgc_manual_amount_option_text', function (){
-  return '';
-});
-add_filter('ywgc_add_to_cart_button_text', function (){
-  return 'Перейти к оплате';
-});
+// add_filter('ywgc_edit_message_label', function (){
+//   return 'Поздравление';
+// });
+// add_filter('yith_wcgc_manual_amount_option_text', function (){
+//   return '';
+// });
+// add_filter('ywgc_add_to_cart_button_text', function (){
+//   return 'Перейти к оплате';
+// });
 
 // add_filter('ywgc_minimal_amount_error_text',function (){
 //   return 'Минимальная стоимость подарочного сертификата';
