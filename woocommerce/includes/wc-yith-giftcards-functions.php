@@ -24,65 +24,125 @@ add_filter('query_vars', function ($vars) {
 });
 
 add_action( 'init', function() {
-    if ( isset($_POST['giftcard_pay_submit']) && !empty($_POST['giftcard_amount']) ) {
 
-        // 1. Сумма подарочной карты
-        $amount = floatval( $_POST['giftcard_amount'] );
-        if ( $amount <= 0 ) {
-            return;
-        }
-
-        // 2. ID товара "Подарочная карта" (тип gift-card)
-        $product_id = isset($_POST['giftcard_product_id']) ? absint($_POST['giftcard_product_id']) : 0;
-        if ( ! $product_id ) {
-            return;
-        }
-
-        $product = wc_get_product( $product_id );
-        if ( ! $product ) {
-            return;
-        }
-
-        // 3. ID платёжного метода (то, что в классе шлюза: $this->id)
-        $payment_method_id = 'tbank'; // не "payment_method_tbank", а именно хвост
-
-        // 4. Создаём заказ
-        $order = wc_create_order( array(
-            'status'      => 'pending',
-            'created_via' => 'instant_payment_button',
-        ) );
-
-        // 5. Добавляем продукт gift-card с нужной суммой
-        //    ВАЖНО: subtotal/total — в валюте магазина (не в копейках)
-        $order->add_product( $product, 1, array(
-            'subtotal' => $amount,
-            'total'    => $amount,
-        ) );
-
-        // (опционально) если нужен email/телефон покупателя — возьми из формы и проставь:
-        /*
-        if ( ! empty( $_POST['billing_email'] ) ) {
-            $order->set_billing_email( sanitize_email( $_POST['billing_email'] ) );
-        }
-        if ( ! empty( $_POST['billing_phone'] ) ) {
-            $order->set_billing_phone( sanitize_text_field( $_POST['billing_phone'] ) );
-        }
-        */
-
-        // 6. Указываем способ оплаты Т-банк
-        $order->set_payment_method( $payment_method_id );
-        // можно явно задать заголовок
-        // $order->set_payment_method_title( 'Оплата через Т-банк' );
-
-        // 7. Пересчитываем суммы (доставка = 0, если gift-card виртуальный и без шиппинга)
-        $order->calculate_totals();
-
-        // 8. Редирект на страницу оплаты этого заказа
-        $payment_url = $order->get_checkout_payment_url();
-        wp_safe_redirect( $payment_url );
-        exit;
+    // Наш кастомный сабмит
+    if ( empty( $_POST['giftcard_pay_submit'] ) ) {
+        return;
     }
-});
+
+    // --- 1. Сумма подарочной карты ---
+
+    $amount_raw = $_POST['giftcard_amount'] ?? '';
+
+    // защита от массива, чтобы не ловить Array to string conversion
+    if ( is_array( $amount_raw ) ) {
+        $amount_raw = reset( $amount_raw );
+    }
+
+    $amount = floatval( $amount_raw );
+    if ( $amount <= 0 ) {
+        return;
+    }
+
+    // --- 2. ID товара gift-card ---
+
+    $product_id_raw = $_POST['giftcard_product_id'] ?? 0;
+
+    if ( is_array( $product_id_raw ) ) {
+        $product_id_raw = reset( $product_id_raw );
+    }
+
+    $product_id = absint( $product_id_raw );
+    if ( ! $product_id ) {
+        return;
+    }
+
+    $product = wc_get_product( $product_id );
+    if ( ! $product ) {
+        return;
+    }
+
+    // --- 3. Платёжный метод Т-банка ---
+
+    // именно ID шлюза, обычно совпадает с тем, что в классе WC_Gateway_TBank::$id
+    $payment_method_id = 'tbank';
+
+
+    // --- 4. Создаём заказ ---
+
+    $order = wc_create_order( [
+        'status'      => 'pending',
+        'created_via' => 'instant_giftcard',
+    ] );
+
+    if ( is_wp_error( $order ) ) {
+        return;
+    }
+
+    // --- 5. Добавляем товар Подарочная карта с нужной суммой ---
+
+    // $amount тут в валюте магазина (рубли и т.п.), Woo сам потом посчитает копейки
+    $item_id = $order->add_product( $product, 1, [
+        'subtotal' => $amount,
+        'total'    => $amount,
+    ] );
+
+    // на всякий случай проверим, что строка добавилась
+    if ( ! $item_id ) {
+        return;
+    }
+
+    // --- 6. Проставляем контакты (важно не передать массив!) ---
+
+    // E-mail
+    if ( isset( $_POST['billing_email'] ) ) {
+        $email = $_POST['billing_email'];
+
+        if ( is_array( $email ) ) {
+            $email = reset( $email );
+        }
+
+        $email = sanitize_email( $email );
+        if ( ! empty( $email ) ) {
+            $order->set_billing_email( $email );
+        }
+    }
+
+    // Телефон
+    if ( isset( $_POST['billing_phone'] ) ) {
+        $phone = $_POST['billing_phone'];
+
+        if ( is_array( $phone ) ) {
+            $phone = reset( $phone );
+        }
+
+        $phone = sanitize_text_field( $phone );
+        if ( ! empty( $phone ) ) {
+            $order->set_billing_phone( $phone );
+        }
+    }
+
+    // --- 7. Привязываем способ оплаты Т-банк ---
+
+    $order->set_payment_method( $payment_method_id );
+    // При желании можно подписать:
+    // $order->set_payment_method_title( 'Оплата через Т-банк' );
+
+    // --- 8. Пересчитываем суммы ---
+
+    // если у подарочной карты нет налогов и доставки — этого достаточно
+    $order->calculate_totals( false ); // без перерасчёта налогов
+    $order->set_total( $amount );      // на всякий случай жёстко выставляем тотал
+
+    $order->save();
+
+    // --- 9. Редиректим на страницу оплаты этого заказа ---
+
+    $payment_url = $order->get_checkout_payment_url();
+    wp_safe_redirect( $payment_url );
+    exit;
+} );
+
 
 
 
