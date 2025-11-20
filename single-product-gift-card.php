@@ -13,31 +13,50 @@ $gcid = 15419;?>
     <?php echo do_shortcode('[yith_ywgc_display_gift_card_form]');?>
 
 
-<form method="post" action="/wp-admin/admin-post.php">
-    <input type="hidden" name="action" value="giftcard_pay">
-    <input type="hidden" name="giftcard_product_id" value="15419">
+<form method="post" action="/wp-admin/admin-post.php" class="giftcard-form">
 
-    <label>
-        Сумма подарочной карты:
-        <input type="number" name="giftcard_amount" value="1500" min="1" step="1" required>
-    </label>
+  <input type="hidden" name="action" value="giftcard_pay">
+  <input type="hidden" name="giftcard_product_id" value="123"> <!-- ID товара gift-card -->
+  <input type="number" name="giftcard_amount" value="1500" min="1" required style="display:none;">
 
-    <br>
+  <div class="gift-card-content-editor step-content clearfix">
 
-    <label>
-        E-mail:
-        <input type="email" name="billing_email" required>
-    </label>
+    <h3>Куда отправить сертификат</h3>
+    <div class="ywgc-recipient-email clearfix">
+      <label for="ywgc-recipient-email">Ваша почта*</label>
+      <input type="email"
+             id="ywgc-recipient-email"
+             name="ywgc-recipient-email[]"
+             required
+             class="ywgc-recipient yith_wc_gift_card_input_recipient_details focus">
+      <p>Ссылка на подарочный сертификат будет направлена на указанную почту автоматически после оплаты</p>
+    </div>
 
-    <br>
+    <h3>Кому дарим</h3>
+    <div class="ywgc-recipient-name clearfix">
+      <label for="ywgc-recipient-name">Имя получателя*</label>
+      <input type="text"
+             id="ywgc-recipient-name"
+             name="ywgc-recipient-name[]"
+             required
+             class="yith_wc_gift_card_input_recipient_details focus">
+    </div>
 
-    <label>
-        Телефон:
-        <input type="tel" name="billing_phone">
-    </label>
+    <div class="ywgc-message clearfix">
+      <label for="ywgc-edit-message">Добавьте теплых слов</label>
+      <textarea id="ywgc-edit-message" name="ywgc-edit-message" rows="5"></textarea>
+    </div>
 
-    <button type="submit">Купить подарочную карту</button>
+    <div class="ywgc-sender-name clearfix">
+      <label for="ywgc-sender-name">Имя отправителя</label>
+      <input type="text" name="ywgc-sender-name" id="ywgc-sender-name" value="">
+    </div>
+
+  </div>
+
+  <button type="submit">Купить подарочный сертификат</button>
 </form>
+
 
 
 

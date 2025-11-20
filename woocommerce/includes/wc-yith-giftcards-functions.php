@@ -53,18 +53,43 @@ function handle_giftcard_pay() {
         wp_die( 'Товар подарочной карты не найден.' );
     }
 
-    // 3. Email / телефон – обязательно привести к строке
-    $email = $_POST['billing_email'] ?? '';
-    if ( is_array( $email ) ) {
-        $email = reset( $email );
-    }
-    $email = sanitize_email( $email );
+    // 3. Данные для YITH-формы
 
-    $phone = $_POST['billing_phone'] ?? '';
-    if ( is_array( $phone ) ) {
-        $phone = reset( $phone );
+    // 3.1 Email получателя (он же email покупателя)
+    $recipient_emails = $_POST['ywgc-recipient-email'] ?? [];
+    if ( is_array( $recipient_emails ) ) {
+        $recipient_email = reset( $recipient_emails );
+    } else {
+        $recipient_email = $recipient_emails;
     }
-    $phone = sanitize_text_field( $phone );
+    $recipient_email = sanitize_email( $recipient_email );
+
+    if ( ! $recipient_email ) {
+        wp_die( 'Укажите корректный e-mail.' );
+    }
+
+    // 3.2 Имя получателя
+    $recipient_names = $_POST['ywgc-recipient-name'] ?? [];
+    if ( is_array( $recipient_names ) ) {
+        $recipient_name = reset( $recipient_names );
+    } else {
+        $recipient_name = $recipient_names;
+    }
+    $recipient_name = sanitize_text_field( $recipient_name );
+
+    // 3.3 Сообщение
+    $message_raw = $_POST['ywgc-edit-message'] ?? '';
+    if ( is_array( $message_raw ) ) {
+        $message_raw = reset( $message_raw );
+    }
+    $message = wp_kses_post( $message_raw );
+
+    // 3.4 Имя отправителя
+    $sender_raw = $_POST['ywgc-sender-name'] ?? '';
+    if ( is_array( $sender_raw ) ) {
+        $sender_raw = reset( $sender_raw );
+    }
+    $sender_name = sanitize_text_field( $sender_raw );
 
     // 4. Создаём заказ
     $order = wc_create_order( [
@@ -77,28 +102,52 @@ function handle_giftcard_pay() {
     }
 
     // 5. Добавляем товар с нужной суммой
-    // WooCommerce сам посчитает total = subtotal, без налогов/доставки, если товар без налогов
-    $order->add_product( $product, 1, [
+    $item_id = $order->add_product( $product, 1, [
         'subtotal' => $amount,
         'total'    => $amount,
     ] );
 
-    if ( $email ) {
-        $order->set_billing_email( $email );
-    }
-    if ( $phone ) {
-        $order->set_billing_phone( $phone );
+    // 5.1. Прописываем мета для YITH (делают карту «виртуальной»)
+
+    if ( $item_id ) {
+        // ❗ Названия ключей (_ywgc_...) лучше сверить на тестовом заказе,
+        // но чаще всего используются такие:
+
+        if ( $recipient_email ) {
+            wc_add_order_item_meta( $item_id, '_ywgc_recipient_email', $recipient_email );
+        }
+
+        if ( $recipient_name ) {
+            wc_add_order_item_meta( $item_id, '_ywgc_recipient_name', $recipient_name );
+        }
+
+        if ( $sender_name ) {
+            wc_add_order_item_meta( $item_id, '_ywgc_sender_name', $sender_name );
+        }
+
+        if ( $message ) {
+            wc_add_order_item_meta( $item_id, '_ywgc_message', $message );
+        }
+
+        // Если в твоей версии есть флаг digital/delivery type — его тоже стоит проставить.
+        // Пример (нужно проверить точное имя ключа в реальном заказе):
+        // wc_add_order_item_meta( $item_id, '_ywgc_delivery', 'email' );
+        // или
+        // wc_add_order_item_meta( $item_id, '_ywgc_is_digital', 'yes' );
     }
 
-    // 6. Способ оплаты — tbank (ID шлюза)
+    // 6. Проставляем биллинг (email покупателя = email получателя)
+    $order->set_billing_email( $recipient_email );
+    // телефон, если нужен — можно добавить отдельным полем в форму
+
+    // 7. Способ оплаты — tbank
     $order->set_payment_method( 'tbank' );
 
-    // 7. Пересчитываем суммы — БЕЗ ручного set_total
+    // 8. Пересчитываем суммы
     $order->calculate_totals();
-
     $order->save();
 
-    // 8. Редирект на страницу оплаты
+    // 9. Редирект на страницу оплаты
     $url = $order->get_checkout_payment_url();
     if ( ! $url ) {
         wp_die( 'Не удалось получить URL оплаты.' );
@@ -107,7 +156,6 @@ function handle_giftcard_pay() {
     wp_safe_redirect( $url );
     exit;
 }
-
 
 
 
