@@ -252,36 +252,62 @@ function plantis_send_gift_cards_on_completed( $order_id ) {
         return;
     }
 
-    // Получаем все подарочные карты, созданные этим заказом
-    if ( ! class_exists( 'YITH_YWGC_Gift_Card_Premium' ) ) {
-        return; // страховка: плагин не загружен
-    }
+    // На всякий случай можно ограничить только "наши" заказы:
+    // if ( $order->get_created_via() !== 'giftcard_pay_button' ) {
+    //     return;
+    // }
 
-    // Этот метод есть в YITH Premium — он возвращает массив gift card объектов
-    $gift_cards = YITH_YWGC_Gift_Card_Premium::get_order_gift_cards( $order_id );
+    // Собираем ID подарочных карт из позиций заказа
+    $gift_card_ids = [];
 
-    if ( empty( $gift_cards ) ) {
-        return; // В заказе нет подарочных карт
-    }
+    foreach ( $order->get_items() as $item_id => $item ) {
 
-    foreach ( $gift_cards as $gift_card ) {
-
-        // Убедимся, что это объект gift card
-        if ( ! is_object( $gift_card ) ) {
+        // Нас интересуют только строки YITH карты
+        if ( ! $item instanceof YITH_Gift_Card_Order_Item ) {
             continue;
         }
 
-        /**
-         * Это ключевой момент!
-         * Ручная отправка gift-card письма YITH:
-         * 
-         * метод ->send_gift_card_email() существует в Premium версии.
-         */
-        if ( method_exists( $gift_card, 'send_gift_card_email' ) ) {
-            $gift_card->send_gift_card_email();
+        $gift_card_id = 0;
+
+        // В большинстве реализаций у YITH_Gift_Card_Order_Item есть метод get_gift_card_id()
+        if ( method_exists( $item, 'get_gift_card_id' ) ) {
+            $gift_card_id = $item->get_gift_card_id();
+        }
+
+        // Запасной вариант: взять из меты строки, если метод вдруг другой
+        if ( ! $gift_card_id ) {
+            $gift_card_id = (int) wc_get_order_item_meta( $item_id, '_ywgc_gift_card_id', true );
+        }
+
+        if ( $gift_card_id ) {
+            $gift_card_ids[] = $gift_card_id;
+        }
+    }
+
+    if ( empty( $gift_card_ids ) ) {
+        return;
+    }
+
+    // Класс/объект, который умеет send_gift_card_email()
+    // В том месте, где ты видел:
+    //   $gift_card_ids = YITH_YWGC_Gift_Card_Extended::get_postdated_gift_cards( $send_date );
+    //   foreach ( $gift_card_ids as $gift_card_id ) { $this->send_gift_card_email( $gift_card_id ); }
+    //
+    // этот код, скорее всего, находится внутри класса, где и объявлен send_gift_card_email().
+    // Часто достаточно просто создать его экземпляр:
+    if ( ! class_exists( 'YITH_YWGC_Gift_Card_Extended' ) ) {
+        return;
+    }
+
+    $sender = new YITH_YWGC_Gift_Card_Extended();
+
+    foreach ( $gift_card_ids as $gift_card_id ) {
+        if ( method_exists( $sender, 'send_gift_card_email' ) ) {
+            $sender->send_gift_card_email( $gift_card_id );
         }
     }
 }
+
 
 
 
