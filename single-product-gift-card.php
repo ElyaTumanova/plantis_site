@@ -1,4 +1,6 @@
-<?php get_header();?>
+<?php get_header();
+
+$gcid = 15419;?>
 <div class="content-area">
   <div class="gift-content-area">
     <h1 class="gift-card__title">Электронный подарочный сертификат</h1>
@@ -10,19 +12,14 @@
     </div>
     <?php echo do_shortcode('[yith_ywgc_display_gift_card_form]');?>
 
-    <form method="post">
-        <!-- Сумма подарочной карты -->
-        <input type="number" name="giftcard_amount" value="1500" min="1" required>
 
-        <!-- ID товара Подарочная карта (тип gift-card) -->
+    <form method="post" action="/wp-admin/admin-post.php">
+        <input type="hidden" name="action" value="giftcard_pay">
         <input type="hidden" name="giftcard_product_id" value="15419">
-
-        <!-- (опционально) контакты -->
-        <input type="email"  name="billing_email"  placeholder="E-mail (для чека)">
-        <input type="tel"    name="billing_phone"  placeholder="Телефон (для чека)">
-
-        <button type="submit" name="giftcard_pay_submit">Купить подарочную карту</button>
+        <input type="number" name="giftcard_amount" value="1500" min="1">
+        <button type="submit">Оплатить</button>
     </form>
+
 
 
     <div class="gift-card__info">
