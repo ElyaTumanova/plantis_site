@@ -171,6 +171,75 @@ function handle_giftcard_pay() {
     exit;
 }
 
+/**
+ * Получить объект заказа по объекту gift card YITH.
+ */
+function plantis_get_order_from_yith_gift_card( $gift_card ) {
+    $order_id = 0;
+
+    if ( ! $gift_card ) {
+        return false;
+    }
+
+    // Часто у объекта есть метод get_order_id()
+    if ( method_exists( $gift_card, 'get_order_id' ) ) {
+        $order_id = $gift_card->get_order_id();
+    } elseif ( isset( $gift_card->order_id ) ) { // или публичное свойство
+        $order_id = $gift_card->order_id;
+    }
+
+    if ( ! $order_id ) {
+        return false;
+    }
+
+    $order = wc_get_order( $order_id );
+    return $order instanceof WC_Order ? $order : false;
+}
+
+add_filter( 'ywgc_send_gift_card_code_by_default', 'plantis_control_yith_gift_card_sending_default', 10, 2 );
+
+function plantis_control_yith_gift_card_sending_default( $send, $gift_card ) {
+
+    $order = plantis_get_order_from_yith_gift_card( $gift_card );
+    if ( ! $order ) {
+        return $send; // ничего не знаем — не трогаем
+    }
+
+    // ❗ Если хочешь это поведение только для наших "кнопочных" заказов:
+    // if ( $order->get_created_via() !== 'giftcard_pay_button' ) {
+    //     return $send;
+    // }
+
+    // Если заказ ещё НЕ выполнен — запрещаем отправку
+    if ( ! $order->has_status( 'completed' ) ) {
+        return false;
+    }
+
+    // Если заказ ВЫПОЛНЕН — оставляем как хочет плагин (обычно true)
+    return $send;
+}
+
+add_filter( 'yith_wcgc_send_now_gift_card_to_custom_recipient', 'plantis_control_yith_gift_card_sending_custom', 10, 2 );
+
+function plantis_control_yith_gift_card_sending_custom( $send, $gift_card ) {
+
+    $order = plantis_get_order_from_yith_gift_card( $gift_card );
+    if ( ! $order ) {
+        return $send;
+    }
+
+    // Только наши заказы? Раскомментируй, если нужно ограничить:
+    // if ( $order->get_created_via() !== 'giftcard_pay_button' ) {
+    //     return $send;
+    // }
+
+    if ( ! $order->has_status( 'completed' ) ) {
+        return false;
+    }
+
+    return $send;
+}
+
 
 
 
