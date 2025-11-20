@@ -108,47 +108,6 @@ function handle_giftcard_pay() {
     exit;
 }
 
-/**
- * Форсим создание подарочной карты YITH для заказов,
- * созданных нашим обработчиком handle_giftcard_pay().
- */
-add_filter( 'yith_ywgc_create_gift_card_for_order_item', 'plantis_force_yith_gift_card_creation', 10, 3 );
-
-function plantis_force_yith_gift_card_creation( $create, $order, $item ) {
-
-    // На всякий случай: если чего-то нет — ничего не меняем
-    if ( ! $order || ! $item ) {
-        return $create;
-    }
-
-    // Ограничиваем только нашими заказами,
-    // которые были созданы через handle_giftcard_pay()
-    if ( $order->get_created_via() !== 'giftcard_pay_button' ) {
-        return $create;
-    }
-
-    // Получаем продукт из позиции
-    if ( is_array( $item ) ) {
-        $product_id = isset( $item['product_id'] ) ? (int) $item['product_id'] : 0;
-        $product    = $product_id ? wc_get_product( $product_id ) : false;
-    } elseif ( $item instanceof WC_Order_Item_Product ) {
-        $product = $item->get_product();
-    } else {
-        $product = false;
-    }
-
-    if ( ! $product ) {
-        return $create;
-    }
-
-    // Если это товар-подарочная карта – принудительно говорим YITH: "создавай карту"
-    if ( $product->get_type() === 'gift-card' ) {
-        $create = true;
-    }
-
-    return $create;
-}
-
 
 
 
