@@ -13,12 +13,32 @@ $gcid = 15419;?>
     <?php echo do_shortcode('[yith_ywgc_display_gift_card_form]');?>
 
 
-    <form method="post" action="/wp-admin/admin-post.php">
-        <input type="hidden" name="action" value="giftcard_pay">
-        <input type="hidden" name="giftcard_product_id" value="15419">
-        <input type="number" name="giftcard_amount" value="1500" min="1">
-        <button type="submit">Оплатить</button>
-    </form>
+<form method="post" action="/wp-admin/admin-post.php">
+    <input type="hidden" name="action" value="giftcard_pay">
+    <input type="hidden" name="giftcard_product_id" value="15419">
+
+    <label>
+        Сумма подарочной карты:
+        <input type="number" name="giftcard_amount" value="1500" min="1" step="1" required>
+    </label>
+
+    <br>
+
+    <label>
+        E-mail:
+        <input type="email" name="billing_email" required>
+    </label>
+
+    <br>
+
+    <label>
+        Телефон:
+        <input type="tel" name="billing_phone">
+    </label>
+
+    <button type="submit">Купить подарочную карту</button>
+</form>
+
 
 
 

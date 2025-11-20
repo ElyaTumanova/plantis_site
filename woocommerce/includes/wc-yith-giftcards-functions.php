@@ -24,46 +24,90 @@ add_filter('query_vars', function ($vars) {
 });
 
 add_action( 'admin_post_nopriv_giftcard_pay', 'handle_giftcard_pay' );
-add_action( 'admin_post_giftcard_pay', 'handle_giftcard_pay' );
+add_action( 'admin_post_giftcard_pay',        'handle_giftcard_pay' );
 
 function handle_giftcard_pay() {
 
-    // ----- ПОЛУЧАЕМ ДАННЫЕ -----
-    $amount = isset($_POST['giftcard_amount']) ? floatval($_POST['giftcard_amount']) : 0;
-    $product_id = isset($_POST['giftcard_product_id']) ? absint($_POST['giftcard_product_id']) : 0;
-
-    if ($amount <= 0 || !$product_id) {
-        wp_die('Ошибка: сумма или товар не заданы.');
+    // 1. Сумма
+    $amount_raw = $_POST['giftcard_amount'] ?? '';
+    if ( is_array( $amount_raw ) ) {
+        $amount_raw = reset( $amount_raw );
+    }
+    $amount = floatval( $amount_raw );
+    if ( $amount <= 0 ) {
+        wp_die( 'Некорректная сумма.' );
     }
 
-    $product = wc_get_product($product_id);
-    if (!$product) {
-        wp_die('Ошибка: товар не найден.');
+    // 2. Товар gift-card
+    $product_id_raw = $_POST['giftcard_product_id'] ?? 0;
+    if ( is_array( $product_id_raw ) ) {
+        $product_id_raw = reset( $product_id_raw );
+    }
+    $product_id = absint( $product_id_raw );
+    if ( ! $product_id ) {
+        wp_die( 'Не указан товар подарочной карты.' );
     }
 
-    // ----- СОЗДАЕМ ЗАКАЗ -----
-    $order = wc_create_order([
-        'status' => 'pending',
-        'created_via' => 'giftcard_custom_button',
-    ]);
+    $product = wc_get_product( $product_id );
+    if ( ! $product ) {
+        wp_die( 'Товар подарочной карты не найден.' );
+    }
 
-    $order->add_product($product, 1, [
-        'total'    => $amount,
+    // 3. Email / телефон – обязательно привести к строке
+    $email = $_POST['billing_email'] ?? '';
+    if ( is_array( $email ) ) {
+        $email = reset( $email );
+    }
+    $email = sanitize_email( $email );
+
+    $phone = $_POST['billing_phone'] ?? '';
+    if ( is_array( $phone ) ) {
+        $phone = reset( $phone );
+    }
+    $phone = sanitize_text_field( $phone );
+
+    // 4. Создаём заказ
+    $order = wc_create_order( [
+        'status'      => 'pending',
+        'created_via' => 'giftcard_pay_button',
+    ] );
+
+    if ( is_wp_error( $order ) ) {
+        wp_die( 'Не удалось создать заказ.' );
+    }
+
+    // 5. Добавляем товар с нужной суммой
+    // WooCommerce сам посчитает total = subtotal, без налогов/доставки, если товар без налогов
+    $order->add_product( $product, 1, [
         'subtotal' => $amount,
-    ]);
+        'total'    => $amount,
+    ] );
 
-    $order->set_payment_method('tbank');
-    $order->calculate_totals(false);
-    $order->set_total($amount);
+    if ( $email ) {
+        $order->set_billing_email( $email );
+    }
+    if ( $phone ) {
+        $order->set_billing_phone( $phone );
+    }
+
+    // 6. Способ оплаты — tbank (ID шлюза)
+    $order->set_payment_method( 'tbank' );
+
+    // 7. Пересчитываем суммы — БЕЗ ручного set_total
+    $order->calculate_totals();
 
     $order->save();
 
-    // ----- РЕДИРЕКТ НА ОПЛАТУ -----
+    // 8. Редирект на страницу оплаты
     $url = $order->get_checkout_payment_url();
+    if ( ! $url ) {
+        wp_die( 'Не удалось получить URL оплаты.' );
+    }
 
-    wp_safe_redirect($url);
+    wp_safe_redirect( $url );
     exit;
 }
+
 
 
 
