@@ -10,10 +10,17 @@
     </div>
     <?php echo do_shortcode('[yith_ywgc_display_gift_card_form]');?>
 
-    <form method="post">
-        <input type="hidden" name="instant_payment_amount" value="1500">
-        <button type="submit" name="instant_payment_submit">Оплатить 1500 ₽</button>
+   <form method="post">
+        <!-- сумма подарочной карты в валюте магазина (например, рубли) -->
+        <input type="number" name="giftcard_amount" value="1500" min="1" required>
+
+        <!-- ID товара "Подарочная карта" (тип gift-card) -->
+        <input type="hidden" name="giftcard_product_id" value="15419">
+
+        <!-- просто флаг, что это наш сабмит -->
+        <button type="submit" name="giftcard_pay_submit">Купить подарочную карту</button>
     </form>
+
     <div class="gift-card__info">
       <h2 class="giftcard-advantages__title">Преимущества подарочного сертификата</h2>
       <div class="giftcard-advantages">
