@@ -240,6 +240,48 @@ function plantis_control_yith_gift_card_sending_custom( $send, $gift_card ) {
     return $send;
 }
 
+/**
+ * Отправляем все подарочные карты заказа при переходе в статус completed.
+ */
+add_action( 'woocommerce_order_status_completed', 'plantis_send_gift_cards_on_completed', 20 );
+
+function plantis_send_gift_cards_on_completed( $order_id ) {
+
+    $order = wc_get_order( $order_id );
+    if ( ! $order ) {
+        return;
+    }
+
+    // Получаем все подарочные карты, созданные этим заказом
+    if ( ! class_exists( 'YITH_YWGC_Gift_Card_Premium' ) ) {
+        return; // страховка: плагин не загружен
+    }
+
+    // Этот метод есть в YITH Premium — он возвращает массив gift card объектов
+    $gift_cards = YITH_YWGC_Gift_Card_Premium::get_order_gift_cards( $order_id );
+
+    if ( empty( $gift_cards ) ) {
+        return; // В заказе нет подарочных карт
+    }
+
+    foreach ( $gift_cards as $gift_card ) {
+
+        // Убедимся, что это объект gift card
+        if ( ! is_object( $gift_card ) ) {
+            continue;
+        }
+
+        /**
+         * Это ключевой момент!
+         * Ручная отправка gift-card письма YITH:
+         * 
+         * метод ->send_gift_card_email() существует в Premium версии.
+         */
+        if ( method_exists( $gift_card, 'send_gift_card_email' ) ) {
+            $gift_card->send_gift_card_email();
+        }
+    }
+}
 
 
 
