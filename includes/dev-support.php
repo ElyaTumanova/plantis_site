@@ -12,7 +12,8 @@ function plnt_echo_smth() {
   $order = wc_get_order( 15622 );
   $order_items = $order->get_items();
   echo ('<pre>');
-  print_r($order_items[0]['product_id']);
+  print_r($order_items);
+  //print_r($order_items[0]['product_id']);
   echo ('</pre>');
 }
 
