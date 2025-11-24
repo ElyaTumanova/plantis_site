@@ -20,7 +20,6 @@ let deliveryDatesInput = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
 let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
 let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
-let isGiftCard = checkoutForm.querySelector('.gift-card'); 
 
 //определяем параметры оформления заказа, влияющие на стоимость доставки и вызываем аякс, отрисовываем поля дат и интервалов доставки
 function getOrderParametrs(event) {
@@ -327,7 +326,7 @@ function hideCheckoutFields(event){
   }
 }
 
-if (checkoutForm && !isGiftCard) {
+if (checkoutForm) {
 
   setInitalState();
 
@@ -335,10 +334,6 @@ if (checkoutForm && !isGiftCard) {
 
   document.addEventListener('DOMContentLoaded', getOrderParametrs )
 
+  checkoutForm.addEventListener('change', getOrderParametrs);
   
-}
-
-if (checkoutForm && isGiftCard) {
-  document.addEventListener('DOMContentLoaded', hideCheckoutFields )
-  checkoutForm.addEventListener('change', hideCheckoutFields);
 }
