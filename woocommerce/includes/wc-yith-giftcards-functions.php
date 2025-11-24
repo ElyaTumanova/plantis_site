@@ -23,6 +23,8 @@ add_filter('query_vars', function ($vars) {
     return $vars;
 });
 
+
+// создание ссылки на оплату
 add_action( 'admin_post_nopriv_giftcard_pay', 'handle_giftcard_pay' );
 add_action( 'admin_post_giftcard_pay',        'handle_giftcard_pay' );
 
@@ -256,7 +258,7 @@ function plantis_send_gift_cards_on_completed( $order_id ) {
     if ( $order->get_created_via() !== 'giftcard_pay_button' ) {
         return;
     }
-    
+
     $order_items = $order->get_items();
 
     $gift_card_ids = [];
@@ -310,11 +312,6 @@ function plantis_send_gift_cards_on_completed( $order_id ) {
         }
     }
 }
-
-
-
-
-
 
 
 /*--------------------------------------------------------------
