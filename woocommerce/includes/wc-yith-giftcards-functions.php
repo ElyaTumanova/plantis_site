@@ -253,9 +253,10 @@ function plantis_send_gift_cards_on_completed( $order_id ) {
     }
 
     // Если нужно – можно ограничить только нашими "кнопочными" заказами:
-    // if ( $order->get_created_via() !== 'giftcard_pay_button' ) {
-    //     return;
-    // }
+    if ( $order->get_created_via() !== 'giftcard_pay_button' ) {
+        return;
+    }
+    
     $order_items = $order->get_items();
 
     $gift_card_ids = [];
@@ -289,38 +290,15 @@ function plantis_send_gift_cards_on_completed( $order_id ) {
         }
     }
 
-    // foreach ( $order->get_items() as $item_id => $item ) {
-
-    //     // Нас интересуют только строки типа YITH_Gift_Card_Order_Item
-    //     if ( ! $item instanceof YITH_Gift_Card_Order_Item ) {
-    //         continue;
-    //     }
-
-    //     $gift_card_id = 0;
-
-    //     // В большинстве версий есть метод get_gift_card_id()
-    //     if ( method_exists( $item, 'get_gift_card_id' ) ) {
-    //         $gift_card_id = (int) $item->get_gift_card_id();
-    //     }
-
-    //     // Запасной вариант – через мету строки
-    //     if ( ! $gift_card_id ) {
-    //         $gift_card_id = (int) wc_get_order_item_meta( $item_id, '_ywgc_gift_card_id', true );
-    //     }
-
-    //     if ( $gift_card_id ) {
-    //         $gift_card_ids[] = $gift_card_id;
-    //     }
-    // }
 
     if ( empty( $gift_card_ids ) ) {
         return;
     }
 
     // Класс, который умеет send_gift_card_email()
-    // if ( ! class_exists( 'YITH_YWGC_Emails_Premium' ) ) {
-    //     return;
-    // }
+    if ( ! class_exists( 'YITH_YWGC_Emails_Premium' ) ) {
+        return;
+    }
 
     // Берём singleton из твоего класса
     $emails = YITH_YWGC_Emails_Premium::get_instance();
