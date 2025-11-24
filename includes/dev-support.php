@@ -9,12 +9,21 @@ add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
-  $order = wc_get_order( 15622 );
+  $order = wc_get_order( 15623 );
   $order_items = $order->get_items();
-  echo ('<pre>');
-  print_r($order_items);
-  //print_r($order_items[0]['product_id']);
-  echo ('</pre>');
+  foreach ( $order->get_items() as $item_id => $item ) {
+      // ID товара
+      $product_id = $item->get_product_id();
+
+      // Объект товара
+      $product = $item->get_product();
+
+      // Тип товара (simple, variable, variation, grouped, external и т.д.)
+      $product_type = $product ? $product->get_type() : '';
+      echo ('<pre>');
+      print_r($product_type);
+      echo ('</pre>');
+  }
 }
 
 
