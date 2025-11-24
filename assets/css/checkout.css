@@ -907,3 +907,14 @@ label.list-view {
 .payment_method_tbank img {
     display: none;
 }
+
+
+/*gift card payment page*/
+
+.gift-order-items .order_item {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	margin-bottom: 10px;
+}
+.gift-order-items .product-name { flex: 1; }

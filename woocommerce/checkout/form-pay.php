@@ -25,7 +25,7 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
 ?>
 <form id="order_review" method="post">
   <?php if(!is_not_gift_card_order_pay()):?>
-    <div class="order-items">
+    <div class="gift-order-items">
       <?php if ( count( $order->get_items() ) > 0 ) : ?>
         <?php foreach ( $order->get_items() as $item_id => $item ) : ?>
           <?php
@@ -33,7 +33,6 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
             continue;
           }
           ?>
-
           <div class="<?php echo esc_attr( apply_filters( 'woocommerce_order_item_class', 'order_item', $item, $order ) ); ?>">
             <div class="product-name">
               <?php
