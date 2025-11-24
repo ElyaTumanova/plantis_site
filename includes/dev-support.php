@@ -9,7 +9,7 @@ add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
-  $order = wc_get_order( 15623 );
+  $order = wc_get_order( 15622 );
   $order_items = $order->get_items();
   foreach ( $order->get_items() as $item_id => $item ) {
       // ID товара
