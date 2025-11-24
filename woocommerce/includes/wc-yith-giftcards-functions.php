@@ -289,12 +289,12 @@ function plantis_send_gift_cards_on_completed( $order_id ) {
     }
 
     // Класс, который умеет send_gift_card_email()
-    if ( ! class_exists( 'YITH_YWGC_Emails_Extended' ) ) {
-        return;
-    }
+    // if ( ! class_exists( 'YITH_YWGC_Emails_Premium' ) ) {
+    //     return;
+    // }
 
     // Берём singleton из твоего класса
-    $emails = YITH_YWGC_Emails_Extended::get_instance();
+    $emails = YITH_YWGC_Emails_Premium::get_instance();
 
     foreach ( $gift_card_ids as $gift_card_id ) {
         if ( method_exists( $emails, 'send_gift_card_email' ) ) {

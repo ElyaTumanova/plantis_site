@@ -10,8 +10,9 @@ add_action( 'wp_footer', 'plnt_echo_smth' );
 
 function plnt_echo_smth() {
   $order = wc_get_order( 15622 );
+  $order_items = $order->get_items();
   echo ('<pre>');
-  print_r($order->get_items());
+  print_r($order_items[0]['product_id']);
   echo ('</pre>');
 }
 
