@@ -20,8 +20,12 @@ function plnt_echo_smth() {
 
       // Тип товара (simple, variable, variation, grouped, external и т.д.)
       $product_type = $product ? $product->get_type() : '';
+      $gift_card_post_ids = (array) $item->get_meta( '_ywgc_gift_card_post_id', true );
+      $gift_card_post_id  = isset( $gift_card_post_ids[0] ) ? $gift_card_post_ids[0] : null;
+
       echo ('<pre>');
-      print_r($order_items);
+      print_r($product_type);
+      print_r($gift_card_post_id);
       echo ('</pre>');
   }
 }
