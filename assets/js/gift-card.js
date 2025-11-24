@@ -4,6 +4,7 @@ let imageAmount = document.querySelector('.gift-image-amount')
 let submitBtn = document.querySelector('.gift_card_add_to_cart_button')
 let giftForm = document.querySelector('.gift-cards_form')
 let giftAmountPost = document.querySelector('#giftcard_amount')
+console.log(giftAmountPost)
 
 
 if (giftForm) {

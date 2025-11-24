@@ -16,7 +16,7 @@ $gcid = 15419;?>
 
       <input type="hidden" name="action" value="giftcard_pay">
       <input type="hidden" name="giftcard_product_id" value="15419"> <!-- ID товара gift-card -->
-      <input type="number" name="giftcard_amount" id="giftcard_amount" value="1500" min="1" required style="display:none;">
+      <input type="number" name="giftcard_amount" id="giftcard_amount" value="" min="1" required style="display:none;">
       <h3 class="ywgc_select_amount_title">Выберите желаемую сумму подарка</h3>
       <input id="ywgc-manual-amount" name="ywgc-manual-amount" class="ywgc-manual-amount" type="text" placeholder="" value="10">
 
