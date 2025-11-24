@@ -5,10 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
-//add_action( 'wp_footer', 'echo_hi' );
+add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
+  $order = wc_get_order( 15622 );
+  print_r($order);
 }
 
 
@@ -300,8 +302,3 @@ function show_image_sizes() {
 //   wp_send_json_success('ok'); // без лишней логики
 // }
 
-// Add to functions.php to disable the problematic pattern registration
-function disable_problematic_patterns() {
-    remove_action('init', array(Automattic\WooCommerce\Blocks\BlockPatterns::class, 'register_ptk_patterns'));
-}
-add_action('wp_loaded', 'disable_problematic_patterns');
