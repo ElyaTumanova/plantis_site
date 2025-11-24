@@ -21,7 +21,7 @@ function plnt_echo_smth() {
       // Тип товара (simple, variable, variation, grouped, external и т.д.)
       $product_type = $product ? $product->get_type() : '';
       echo ('<pre>');
-      print_r($product_type);
+      print_r($order_items);
       echo ('</pre>');
   }
 }
