@@ -25,7 +25,52 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
 ?>
 <form id="order_review" method="post">
   <?php if(!is_not_gift_card_order_pay()):?>
-  <div> lalalal</div>
+    <div class="order-items">
+      <?php if ( count( $order->get_items() ) > 0 ) : ?>
+        <?php foreach ( $order->get_items() as $item_id => $item ) : ?>
+          <?php
+          if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
+            continue;
+          }
+          ?>
+
+          <div class="<?php echo esc_attr( apply_filters( 'woocommerce_order_item_class', 'order_item', $item, $order ) ); ?>">
+            <div class="product-name">
+              <?php
+                // Имя товара
+                echo wp_kses_post( apply_filters( 'woocommerce_order_item_name', $item->get_name(), $item, false ) );
+
+                // Мета-данные товара (атрибуты, вариации и т.п.)
+                do_action( 'woocommerce_order_item_meta_start', $item_id, $item, $order, false );
+
+                wc_display_item_meta( $item );
+
+                do_action( 'woocommerce_order_item_meta_end', $item_id, $item, $order, false );
+              ?>
+            </div>
+
+            <div class="product-quantity">
+              <?php
+              // Кол-во
+              echo apply_filters(
+                'woocommerce_order_item_quantity_html',
+                '<span class="quantity">' . sprintf( '&times;&nbsp;%s', esc_html( $item->get_quantity() ) ) . '</span>',
+                $item
+              );
+              ?>
+            </div>
+
+            <div class="product-subtotal">
+              <?php
+              // Стоимость позиции
+              echo $order->get_formatted_line_subtotal( $item );
+              ?>
+            </div>
+          </div>
+
+        <?php endforeach; ?>
+      <?php endif; ?>
+    </div>
   <?php else:?>
 	<table class="shop_table">
 		<thead>
