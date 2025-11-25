@@ -912,7 +912,7 @@ label.list-view {
 /*gift card payment page*/
 
 .woocommerce-order-pay .content-area {
-    max-width: 924px;
+    max-width: 600px;
     margin: auto;
     margin-top: 10px;
 }
