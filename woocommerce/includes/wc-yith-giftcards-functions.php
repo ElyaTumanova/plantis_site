@@ -658,8 +658,8 @@ add_filter('load_textdomain_mofile', function($mofile, $domain) {
         return $mofile;
     }
 
-    $locale = determine_locale(); // WP 5.0+
-    $theme_mofile = get_stylesheet_directory() . "/languages/{$domain}-{$locale}.mo";
+    //$locale = determine_locale(); // WP 5.0+
+    $theme_mofile = get_stylesheet_directory() . "/languages/{$domain}-ru_RU.mo";
 
     if (file_exists($theme_mofile)) {
         return $theme_mofile;
