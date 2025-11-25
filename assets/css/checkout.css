@@ -917,7 +917,7 @@ label.list-view {
     margin-top: 10px;
 }
 
-.woocommerce-order-pay .gift-card .payment .payment_box {
+.woocommerce-order-pay .gift-card #payment .payment_box {
   display: none;
 }
 
