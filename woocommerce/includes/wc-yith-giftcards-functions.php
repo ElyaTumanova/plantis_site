@@ -482,7 +482,7 @@ add_filter('woocommerce_gateway_description', function($description, $gateway_id
   if ( $gateway_id == 'tbank' ) {
     return '';
   } else if ($gateway_id == 'cheque') {
-    return 'Мы можем выставить Вам счет для оплаты банковским переводом. Наш менеджер свяжется с Вами для выставления счета.'
+    return 'Мы можем выставить Вам счет для оплаты банковским переводом. Наш менеджер свяжется с Вами для выставления счета.';
   } else {
     return $description;
   }
