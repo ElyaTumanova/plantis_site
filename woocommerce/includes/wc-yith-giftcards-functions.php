@@ -470,6 +470,28 @@ add_filter('yith_ywgc_cart_totals_gift_card_label', function (){
   return 'Сертификат';
 });
 
+
+//меняем описание способа оплаты при оплате заказа для подарочной карты
+
+add_filter('woocommerce_gateway_description', function($description, $gateway_id) {
+
+  if (! is_wc_endpoint_url('order-pay') || is_not_gift_card_order_pay()) {
+    return $description;
+  }
+
+  if ( $gateway_id == 'tbank' ) {
+    return '';
+  } else if ($gateway_id == 'cheque') {
+    return 'Мы можем выставить Вам счет для оплаты банковским переводом. Наш менеджер свяжется с Вами для выставления счета.'
+  } else {
+    return $description;
+  }
+
+}, 20, 2);
+
+
+
+
 /*--------------------------------------------------------------
 #PRODUCT PAGE
 --------------------------------------------------------------*/

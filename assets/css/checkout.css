@@ -917,10 +917,6 @@ label.list-view {
     margin-top: 10px;
 }
 
-.woocommerce-order-pay .gift-card #payment .payment_box {
-  display: none;
-}
-
 .gift-order-items .gift-image-wrap {
   max-width: 500px;
 }
