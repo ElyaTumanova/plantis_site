@@ -489,6 +489,25 @@ add_filter('woocommerce_gateway_description', function($description, $gateway_id
 
 }, 20, 2);
 
+//меням сообщение "Вы платите за заказ гостя. Продолжайте оплату, только если вы знаете про этот заказ"
+
+add_filter('woocommerce_add_error', function($message) {
+
+    // только на странице оплаты заказа
+    if ( ! is_wc_endpoint_url('order-pay') ) {
+        return $message;
+    }
+
+    // ловим именно это предупреждение (на RU-сайте достаточно фразы-ключа)
+    if ( is_string($message) && mb_stripos($message, 'Вы платите за заказ гостя') !== false ) {
+        return 'Обратите внимание: e-mail, указанный в заказе, не совпадает с e-mail вашего аккаунта. Если всё верно, продолжайте оплату.';
+    }
+
+    return $message;
+
+}, 20);
+
+
 
 
 
