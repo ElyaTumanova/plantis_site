@@ -71,7 +71,7 @@ $gcid = 15419;?>
 
       </div>
 
-      <button type="submit">К оплате</button>
+      <button type="submit" class = "gift-card__submit-btn">К оплате</button>
     </form>
 
     <div class="gift-card__info">

@@ -12,6 +12,13 @@
   margin: auto;
 }
 
+.gift-cards_form .gift-card__submit-btn {
+    background-color: var(--text);
+    color: var(--white);
+    padding: 10px 20px;
+    width: 100%;
+}
+
 .gift-cards-list {
   margin-bottom: 20px;
   position: relative;

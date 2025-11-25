@@ -917,12 +917,19 @@ label.list-view {
     margin-top: 10px;
 }
 
+.woocommerce-order-pay .gift-card #payment #place_order {
+    background-color: var(--text);
+    color: var(--white);
+    padding: 10px 20px;
+    width: 100%;
+}
+
 .gift-order-items .gift-image-wrap {
   max-width: 500px;
 }
 
 .gift-order-items .gift-payment {
-display: flex;
+  display: flex;
   flex-wrap: wrap;
   gap: 30px;
   font-weight: 600;
