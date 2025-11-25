@@ -26,50 +26,44 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
 <form id="order_review" method="post">
   <?php if(!is_not_gift_card_order_pay()):?>
     <div class="gift-order-items">
-      <?php if ( count( $order->get_items() ) > 0 ) : ?>
+      <?php if ( $order && count( $order->get_items() ) > 0 ) : ?>
         <?php foreach ( $order->get_items() as $item_id => $item ) : ?>
           <?php
           if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
             continue;
           }
+
+          // Сумма по позиции (числом, без форматирования HTML)
+          $subtotal = $order->get_line_subtotal( $item, true, false ); // incl. tax, raw
           ?>
-          <div class="<?php echo esc_attr( apply_filters( 'woocommerce_order_item_class', 'order_item', $item, $order ) ); ?>">
-            <div class="product-name">
+
+          <div class="gift-card-order-item">
+            <p class="gift-card-title">
               <?php
-                // Имя товара
-                echo wp_kses_post( apply_filters( 'woocommerce_order_item_name', $item->get_name(), $item, false ) );
-
-                // Мета-данные товара (атрибуты, вариации и т.п.)
-                do_action( 'woocommerce_order_item_meta_start', $item_id, $item, $order, false );
-
-                wc_display_item_meta( $item );
-
-                do_action( 'woocommerce_order_item_meta_end', $item_id, $item, $order, false );
-              ?>
-            </div>
-
-            <div class="product-quantity">
-              <?php
-              // Кол-во
-              echo apply_filters(
-                'woocommerce_order_item_quantity_html',
-                '<span class="quantity">' . sprintf( '&times;&nbsp;%s', esc_html( $item->get_quantity() ) ) . '</span>',
-                $item
+              echo wp_kses_post(
+                apply_filters( 'woocommerce_order_item_name', $item->get_name(), $item, false )
               );
               ?>
-            </div>
+            </p>
 
-            <div class="product-subtotal">
-              <?php
-              // Стоимость позиции
-              echo $order->get_formatted_line_subtotal( $item );
-              ?>
+            <div class="gift-image-wrap">
+              <img
+                src="<?php echo esc_url( get_template_directory_uri() . '/images/gift-card/gc_cover.jpg' ); ?>"
+                class="gift-image"
+                alt="<?php echo esc_attr( $item->get_name() ); ?>"
+                loading="lazy"
+              >
+              <p class="gift-image-amount">
+                <?php echo esc_html( wc_format_decimal( $subtotal, 0 ) ); ?><span>₽</span>
+              </p>
             </div>
           </div>
 
         <?php endforeach; ?>
       <?php endif; ?>
     </div>
+
+
   <?php else:?>
 	<table class="shop_table">
 		<thead>
