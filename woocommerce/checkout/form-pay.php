@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
 
 $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 ?>
-<form id="order_review" method="post">
+<form id="order_review<?php if(!is_not_gift_card_order_pay()) ? "gift-content-area" : ""?>" method="post">
   <?php if(!is_not_gift_card_order_pay()):?>
     <div class="gift-order-items">
       <?php if ( $order && count( $order->get_items() ) > 0 ) : ?>
@@ -37,7 +37,7 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
           $subtotal = $order->get_line_subtotal( $item, true, false ); // incl. tax, raw
           ?>
 
-          <div class="gift-card-order-item gift-content-area">
+          <div class="gift-card-order-item">
             <p class="gift-card__title">
               <?php
               echo wp_kses_post(
