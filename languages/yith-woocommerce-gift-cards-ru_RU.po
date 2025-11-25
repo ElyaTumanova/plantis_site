@@ -6,7 +6,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/yith-woocommerce-"
 "gift-cards.premium\n"
 "POT-Creation-Date: 2025-07-03 11:47:53+00:00\n"
-"PO-Revision-Date: 2025-11-25 16:07+0300\n"
+"PO-Revision-Date: 2025-11-25 16:10+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -147,7 +147,7 @@ msgstr ""
 #: templates/myaccount/my-giftcards.php:26
 #: templates/shortcodes/user-gift-card-table.php:34
 msgid "Code"
-msgstr ""
+msgstr "Номер"
 
 #: includes/admin/class-yith-ywgc-backend-premium.php:1727
 #: includes/admin/class-yith-ywgc-backend.php:1031
