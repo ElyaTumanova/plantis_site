@@ -11,6 +11,7 @@ Contents
 #PRODUCT PAGE
 #CARD BALANCE CHECK
 #PRICE FIX
+#TRANSLATIONS
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -507,10 +508,6 @@ add_filter('woocommerce_add_error', function($message) {
 
 }, 20);
 
-
-
-
-
 /*--------------------------------------------------------------
 #PRODUCT PAGE
 --------------------------------------------------------------*/
@@ -649,5 +646,27 @@ function plnt_get_giftcard_by_code( $code ) {
 
 //     $price = ($line_total + $line_tax) / $qty;
 // }
+
+
+/*--------------------------------------------------------------
+#TRANSLATIONS
+--------------------------------------------------------------*/
+// подключаем переводы для плагина YITH
+add_filter('load_textdomain_mofile', function($mofile, $domain) {
+
+    if ($domain !== 'yith-woocommerce-gift-cards') {
+        return $mofile;
+    }
+
+    $locale = determine_locale(); // WP 5.0+
+    $theme_mofile = get_stylesheet_directory() . "/languages/{$domain}-{$locale}.mo";
+
+    if (file_exists($theme_mofile)) {
+        return $theme_mofile;
+    }
+
+    return $mofile;
+
+}, 10, 2);
 
 
