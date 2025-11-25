@@ -57,13 +57,15 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
                 <?php echo esc_html( wc_format_decimal( $subtotal, 0 ) ); ?><span>₽</span>
               </p>
             </div>
+            <div class="gift_payment">
+              <p>Сумма к оплате:</p>
+              <p><?php echo esc_html( wc_format_decimal( $subtotal, 0 ) ); ?><span>₽</span></p>
+            </div>
           </div>
 
         <?php endforeach; ?>
       <?php endif; ?>
     </div>
-
-
   <?php else:?>
 	<table class="shop_table">
 		<thead>

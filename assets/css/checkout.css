@@ -911,10 +911,11 @@ label.list-view {
 
 /*gift card payment page*/
 
-.gift-order-items .order_item {
-	display: flex;
-	justify-content: space-between;
-	gap: 10px;
-	margin-bottom: 10px;
+.gift-order-items .gift-image-wrap {
+  max-width: 500px;
 }
-.gift-order-items .product-name { flex: 1; }
+.gift-order-items .gift-card-title {
+  font-size: 25px;
+  margin-block: 30px 10px;
+  font-weight: 700;
+}
