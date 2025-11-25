@@ -37,8 +37,8 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
           $subtotal = $order->get_line_subtotal( $item, true, false ); // incl. tax, raw
           ?>
 
-          <div class="gift-card-order-item">
-            <p class="gift-card-title">
+          <div class="gift-card-order-item gift-content-area">
+            <p class="gift-card__title">
               <?php
               echo wp_kses_post(
                 apply_filters( 'woocommerce_order_item_name', $item->get_name(), $item, false )
