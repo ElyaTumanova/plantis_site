@@ -911,9 +911,15 @@ label.list-view {
 
 /*gift card payment page*/
 
+.woocommerce-order-pay {
+    max-width: 924px;
+    margin: auto;
+    margin-top: 10px;
+}
 .gift-order-items .gift-image-wrap {
   max-width: 500px;
 }
+
 /* .gift-order-items .gift-card-title {
   font-size: 25px;
   margin-block: 30px 10px;
