@@ -186,7 +186,11 @@
   gap:10px;
   color:#212121; /* цвет иконки через currentColor */
 }
-
+@media (max-width: 767px) {
+    .woocommerce-ordering{
+      gap: 2px;
+    }
+}
 .woocommerce-ordering::before{
   content:"";
   width:30px;
