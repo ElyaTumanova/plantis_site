@@ -603,6 +603,13 @@ input[type="search"], input[type="search"]:focus-visible {
   }
 }
 
+.search-result.is-loading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+}
+
 .serach-result__items {
     max-height: calc(80vh - 55px);
     overflow-y: auto;
