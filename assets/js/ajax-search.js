@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // ✅ 1-я попытка: если nonce плохой — обновляем и повторяем
         if (isBadNonce && attempt === 0) {
+          console.log('retry')
           const ok = await refreshNonce(signal);
           if (ok) continue; // повторить цикл => уйдёт второй search-ajax
           throw new Error('Bad nonce (refresh failed)');
