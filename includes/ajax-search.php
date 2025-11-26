@@ -91,124 +91,77 @@ function render_search_result($product) {
 }
 
 function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $paged=null) {
-  global $plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id;
-  $argPlants = array(
-    'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
-    'post_status' => 'publish',
-    's' => $search,
-    'fields'         => 'ids',
-    'posts_per_page' => -1,
-    'no_found_rows'  => true,
-    'orderby' => 'meta_value',
-    'meta_key' => '_stock_status',
-    'order' => 'ASC',
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'product_cat',
-            'field' => 'id',
-            'operator' => 'IN',
-            'terms' => [$plants_cat_id],
-            'include_children' => 1,
-        )
-    )
-  );
+  $search = trim((string)$search);
 
-  $argOther = array(
-    'post_type' => 'product', // если нужен поиск по постам - доавляем в массив 'post'
-    'post_status' => 'publish',
-    's' => $search,
-    'fields'         => 'ids',
-    'posts_per_page' => -1,
-    'no_found_rows'  => true,
-    'orderby' => 'meta_value',
-    'meta_key' => '_stock_status',
-    'order' => 'ASC',
-    'meta_query' => array( 
-        array(
-            'key'       => '_stock_status',
-            'value'     => 'outofstock',
-            'compare'   => 'NOT IN',
-            )
-            
-    ),
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'product_cat',
-            'field' => 'id',
-            'operator' => 'NOT IN',
-            'terms' => [$plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id],
-            'include_children' => 1,
-        )
-    )
-  );
-  $query_ajax_plants = new WP_Query($argPlants);
-  $query_ajax_other = new WP_Query($argOther);
-  $product_sku_id_plants = wc_get_product_id_by_sku( $query_ajax_plants->query_vars[ 's' ] );
-  $product_sku_id_other = wc_get_product_id_by_sku( $query_ajax_other->query_vars[ 's' ] );
-  $product_sku_id = $product_sku_id_plants ?: $product_sku_id_other ?: 0;
+  // (опционально) SKU — если хотите, чтобы он был самым первым:
+  $sku_id = wc_get_product_id_by_sku($search);
+  $ids_step1 = plnt_collect_ids_by_text($search, 'title_excerpt'); // 1) title OR excerpt
 
-  if ($product_sku_id) {
-    $all_ids = [$product_sku_id];
-  } else {
-    $ids_by_cat_synonyms = [];
+  // 2) synonyms (как у вас, почти без изменений)
+  $ids_by_cat_synonyms = [];
+  $matched_cats = get_terms([
+      'taxonomy'   => 'product_cat',
+      'hide_empty' => false,
+      'meta_query' => [[
+          'key'     => '_synonyms',
+          'value'   => $search,
+          'compare' => 'LIKE',
+      ]],
+      'fields' => 'ids',
+  ]);
 
-    $matched_cats = get_terms([
-        'taxonomy'   => 'product_cat',
-        'hide_empty' => false,
-        'meta_query' => [
-            [
-                'key'     => '_synonyms',
-                'value'   => $search,
-                'compare' => 'LIKE',
-            ],
-        ],
-        'fields' => 'ids',
-    ]);
-
-    if ( ! is_wp_error( $matched_cats ) && ! empty( $matched_cats ) ) {
-      $ids_by_cat_synonyms = get_posts([
-          'post_type'      => 'product',
-          'post_status'    => 'publish',
-          'fields'         => 'ids',
-          'orderby' => 'meta_value',
-          'meta_key' => '_stock_status',
-          'order' => 'ASC',
-          'posts_per_page' => -1,
-          'no_found_rows'  => true,
-          'tax_query'      => [
-              [
-                  'taxonomy'         => 'product_cat',
-                  'field'            => 'term_id',
-                  'terms'            => $matched_cats,
-                  'include_children' => true,
-              ],
-          ],
-      ]);
-    }
-
-    $ids_by_product_synonyms = [];
-    $ids_by_product_synonyms = get_posts([
+  if (!is_wp_error($matched_cats) && !empty($matched_cats)) {
+    $ids_by_cat_synonyms = get_posts([
         'post_type'      => 'product',
         'post_status'    => 'publish',
         'fields'         => 'ids',
-        'orderby' => 'meta_value',
-	      'meta_key' => '_stock_status',
-        'order' => 'ASC',
+        'orderby'        => 'meta_value',
+        'meta_key'       => '_stock_status',
+        'order'          => 'ASC',
         'posts_per_page' => -1,
         'no_found_rows'  => true,
-        'meta_query'     => [
-            [
-                'key'     => '_synonyms',
-                'value'   => $search,
-                'compare' => 'LIKE',
-            ],
-        ],
+        'tax_query'      => [[
+            'taxonomy'         => 'product_cat',
+            'field'            => 'term_id',
+            'terms'            => $matched_cats,
+            'include_children' => true,
+        ]],
     ]);
+  }
 
+  $ids_by_product_synonyms = get_posts([
+      'post_type'      => 'product',
+      'post_status'    => 'publish',
+      'fields'         => 'ids',
+      'orderby'        => 'meta_value',
+      'meta_key'       => '_stock_status',
+      'order'          => 'ASC',
+      'posts_per_page' => -1,
+      'no_found_rows'  => true,
+      'meta_query'     => [[
+          'key'     => '_synonyms',
+          'value'   => $search,
+          'compare' => 'LIKE',
+      ]],
+  ]);
 
-    $ids_plants = array_map('intval', (array) $query_ajax_plants->posts);
-    $ids_others = array_map('intval', (array) $query_ajax_other->posts);
-    $all_ids = array_values(array_unique(array_merge($ids_plants, $ids_others, $ids_by_cat_synonyms, $ids_by_product_synonyms)));
+  $ids_step2 = array_values(array_unique(array_merge(
+      array_map('intval', (array)$ids_by_cat_synonyms),
+      array_map('intval', (array)$ids_by_product_synonyms)
+  )));
+
+  // 3) content (описание)
+  $ids_step3 = plnt_collect_ids_by_text($search, 'content');
+
+  // Склейка с приоритетом групп + без дублей (порядок сохраняется)
+  $all_ids = [];
+  if ($sku_id) $all_ids[] = (int)$sku_id;
+
+  foreach ([$ids_step1, $ids_step2, $ids_step3] as $chunk) {
+    foreach ((array)$chunk as $id) {
+      $id = (int)$id;
+      if ($id && !in_array($id, $all_ids, true)) $all_ids[] = $id;
+    }
   }
 
   $q_args = [
@@ -240,6 +193,107 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
   ];
   return $result;
 }
+
+//Хук, который умеет искать (title OR excerpt) или только content
+
+add_filter('posts_search', function ($search, $wp_query) {
+    if (is_admin() || ! $wp_query->is_search()) return $search;
+
+    // включаем только для ваших запросов
+    $mode = $wp_query->get('plnt_search_in');
+    if (!$mode || $mode === 'all') return $search;
+
+    $post_type = $wp_query->get('post_type');
+    $is_product = ($post_type === 'product') || (is_array($post_type) && in_array('product', $post_type, true));
+    if (!$is_product) return $search;
+
+    $q = $wp_query->query_vars;
+    if (empty($q['search_terms']) || !is_array($q['search_terms'])) return $search;
+
+    global $wpdb;
+
+    $n = !empty($q['exact']) ? '' : '%';
+
+    // AND между словами, OR между полями (title/excerpt)
+    $clauses = [];
+    foreach ($q['search_terms'] as $term) {
+        $like = $n . $wpdb->esc_like($term) . $n;
+
+        if ($mode === 'title_excerpt') {
+            $clauses[] = $wpdb->prepare(
+                "({$wpdb->posts}.post_title LIKE %s OR {$wpdb->posts}.post_excerpt LIKE %s)",
+                $like, $like
+            );
+        } elseif ($mode === 'content') {
+            $clauses[] = $wpdb->prepare("{$wpdb->posts}.post_content LIKE %s", $like);
+        } else {
+            return $search;
+        }
+    }
+
+    $search = " AND (" . implode(" AND ", $clauses) . ")";
+
+    if (!is_user_logged_in()) {
+        $search .= " AND ({$wpdb->posts}.post_password = '')";
+    }
+
+    return $search;
+}, 10, 2);
+
+
+//Хелпер: получить IDs товаров по строке и режиму (title_excerpt / content)
+function plnt_collect_ids_by_text($search, $mode) {
+    global $plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id;
+
+    $common = [
+        'post_type'        => 'product',
+        'post_status'      => 'publish',
+        's'                => $search,
+        'plnt_search_in'   => $mode,      // <-- ключевое
+        'fields'           => 'ids',
+        'posts_per_page'   => -1,
+        'no_found_rows'    => true,
+        'orderby'          => 'meta_value',
+        'meta_key'         => '_stock_status',
+        'order'            => 'ASC',
+    ];
+
+    $argPlants = $common + [
+        'tax_query' => [[
+            'taxonomy' => 'product_cat',
+            'field' => 'id',
+            'operator' => 'IN',
+            'terms' => [$plants_cat_id],
+            'include_children' => 1,
+        ]]
+    ];
+
+    $argOther = $common + [
+        'meta_query' => [[
+            'key'     => '_stock_status',
+            'value'   => 'outofstock',
+            'compare' => 'NOT IN',
+        ]],
+        'tax_query' => [[
+            'taxonomy' => 'product_cat',
+            'field' => 'id',
+            'operator' => 'NOT IN',
+            'terms' => [$plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id],
+            'include_children' => 1,
+        ]]
+    ];
+
+    $q1 = new WP_Query($argPlants);
+    $q2 = new WP_Query($argOther);
+
+    $ids1 = array_map('intval', (array)$q1->posts);
+    $ids2 = array_map('intval', (array)$q2->posts);
+
+    return array_values(array_unique(array_merge($ids1, $ids2)));
+}
+
+
+
 
 add_action('wp_ajax_get_search_nonce', 'plnt_get_search_nonce');
 add_action('wp_ajax_nopriv_get_search_nonce', 'plnt_get_search_nonce');
