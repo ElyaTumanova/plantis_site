@@ -504,6 +504,10 @@
     transform .3s;
 }
 
+.fix-body .search__wrap {
+  padding-right: var(--scrollWidth);
+}
+
 @media((min-width: 1279px)) {
   .search__wrap.scrollhidden {
     transform: translateX(-50%) translateY(var(--marginTopOffset));
