@@ -42,7 +42,7 @@ window.addEventListener('resize', () => {
 
 let headerMainDiv = document.querySelector('.header__main');
 let searchDiv = document.querySelector('.search__wrap');
-//let searchResultDiv = document.querySelector('.search-result');
+let searchResultDiv = document.querySelector('.search-result');
 let headerMainHeight= headerMainDiv.offsetHeight;
 
 // слушаем событие resize
