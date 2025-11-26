@@ -505,7 +505,8 @@
 }
 
 .fix-body .search__wrap {
-  left: calc(50% + var(--scrollWidth));
+  left: calc(50% - var(--scrollWidth));
+  transform: translateX(calc(-50% + var(--scrollWidth)));
 }
 
 @media((min-width: 1279px)) {
