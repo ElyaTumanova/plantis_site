@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const input = document.querySelector('.search-form input[name="s"]');
   const result = document.querySelector('.search-result');
-
   if (!input || !result || !window.search_form) return;
 
   const MIN_LEN = 3;
@@ -19,7 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.remove('fix-body');
   }
 
-  // ✅ Возвращает true/false и принимает signal
+  function makeSearchFD(query) {
+    const fd = new FormData();
+    fd.append('s', query);
+    fd.append('action', 'search-ajax');
+    fd.append('nonce', search_form.nonce);
+    return fd;
+  }
+
   async function refreshNonce(signal) {
     try {
       const fd = new FormData();
@@ -41,13 +47,34 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       return false;
     } catch (e) {
+      // если отменили — просто “не получилось обновить”
       if (e.name === 'AbortError') return false;
       return false;
     }
   }
 
+  function isBadNonce(res, data) {
+    return (
+      res.status === 403 ||
+      (data?.success === false && data?.data?.message === 'Bad nonce')
+    );
+  }
+
+  async function postSearch(query, signal) {
+    const res = await fetch(search_form.url, {
+      method: 'POST',
+      body: makeSearchFD(query), // каждый раз новый FormData
+      credentials: 'same-origin',
+      signal,
+      headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    });
+
+    const data = await res.json().catch(() => null);
+    return { res, data };
+  }
+
   async function runSearch(query) {
-    // отменяем предыдущий поиск
+    // отменяем предыдущую “сессию” поиска
     if (controller) controller.abort();
     controller = ('AbortController' in window) ? new AbortController() : null;
 
@@ -59,48 +86,31 @@ document.addEventListener('DOMContentLoaded', () => {
     result.classList.add('is-loading');
     result.innerHTML = SPINNER_HTML;
 
-    const makeSearchFD = () => {
-      const fd = new FormData();
-      fd.append('s', query);
-      fd.append('action', 'search-ajax');
-      fd.append('nonce', search_form.nonce);
-      return fd;
-    };
-
     try {
-      for (let attempt = 0; attempt < 2; attempt++) {
-        const res = await fetch(search_form.url, {
-          method: 'POST',
-          body: makeSearchFD(), // каждый раз новый FormData с актуальным nonce
-          credentials: 'same-origin',
-          signal,
-          headers: { 'X-Requested-With': 'XMLHttpRequest' }
-        });
+      // 1) первая попытка search-ajax
+      let { res, data } = await postSearch(query, signal);
 
-        const data = await res.json().catch(() => null);
+      // если пользователь уже ввёл другое — не обновляем UI
+      if (input.value.trim() !== lastQuery) return;
 
-        const isBadNonce =
-          res.status === 403 ||
-          (data?.success === false && data?.data?.message === 'Bad nonce');
+      // 2) если nonce плохой — обновляем и делаем ВТОРУЮ попытку
+      if (isBadNonce(res, data)) {
+        const ok = await refreshNonce(signal);
+        if (!ok) throw new Error('Bad nonce (refresh failed)');
 
-        // ✅ 1-я попытка: если nonce плохой — обновляем и повторяем
-        if (isBadNonce && attempt === 0) {
-          console.log('retry')
-          const ok = await refreshNonce(signal);
-          if (ok) continue; // повторить цикл => уйдёт второй search-ajax
-          throw new Error('Bad nonce (refresh failed)');
-        }
-
-        // если пользователь уже ввёл другое — игнорим результат
+        // если пока обновляли nonce пользователь ввёл другое — выходим
         if (input.value.trim() !== lastQuery) return;
 
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        if (data?.success === false) throw new Error(data?.data?.message || 'AJAX error');
-
-        result.classList.remove('is-loading');
-        result.innerHTML = data?.out ?? '';
-        return;
+        ({ res, data } = await postSearch(query, signal)); // <-- повторный search-ajax
       }
+
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      if (data?.success === false) throw new Error(data?.data?.message || 'AJAX error');
+
+      if (input.value.trim() !== lastQuery) return;
+
+      result.classList.remove('is-loading');
+      result.innerHTML = data?.out ?? '';
     } catch (e) {
       if (e.name !== 'AbortError') {
         result.classList.remove('is-loading');
