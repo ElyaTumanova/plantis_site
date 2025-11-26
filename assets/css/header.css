@@ -599,8 +599,7 @@ input[type="search"], input[type="search"]:focus-visible {
     width: calc(100% - 200px);
   }
   .search-result.scrollhidden {
-    transform: translateY(0);
-    top: 63px; 
+    transform: translateY(50px) translateX(-50%);
   }
 }
 
