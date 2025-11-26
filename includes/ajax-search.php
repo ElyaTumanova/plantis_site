@@ -95,7 +95,8 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
 
   // (опционально) SKU — если хотите, чтобы он был самым первым:
   $sku_id = wc_get_product_id_by_sku($search);
-  $ids_step1 = plnt_collect_ids_by_text($search, 'title_excerpt'); // 1) title OR excerpt
+  $ids_title   = plnt_collect_ids_by_text($search, 'title');
+  $ids_excerpt = plnt_collect_ids_by_text($search, 'excerpt');
 
   // 2) synonyms (как у вас, почти без изменений)
   $ids_by_cat_synonyms = [];
@@ -145,19 +146,19 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
       ]],
   ]);
 
-  $ids_step2 = array_values(array_unique(array_merge(
+  $ids_syn = array_values(array_unique(array_merge(
       array_map('intval', (array)$ids_by_cat_synonyms),
       array_map('intval', (array)$ids_by_product_synonyms)
   )));
 
   // 3) content (описание)
-  $ids_step3 = plnt_collect_ids_by_text($search, 'content');
+  $ids_content = plnt_collect_ids_by_text($search, 'content');
 
   // Склейка с приоритетом групп + без дублей (порядок сохраняется)
   $all_ids = [];
   if ($sku_id) $all_ids[] = (int)$sku_id;
 
-  foreach ([$ids_step1, $ids_step2, $ids_step3] as $chunk) {
+  foreach ([$ids_title, $ids_excerpt, $ids_syn, $ids_content] as $chunk) {
     foreach ((array)$chunk as $id) {
       $id = (int)$id;
       if ($id && !in_array($id, $all_ids, true)) $all_ids[] = $id;
@@ -199,7 +200,6 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
 add_filter('posts_search', function ($search, $wp_query) {
     if (is_admin() || ! $wp_query->is_search()) return $search;
 
-    // включаем только для ваших запросов
     $mode = $wp_query->get('plnt_search_in');
     if (!$mode || $mode === 'all') return $search;
 
@@ -213,19 +213,22 @@ add_filter('posts_search', function ($search, $wp_query) {
     global $wpdb;
 
     $n = !empty($q['exact']) ? '' : '%';
-
-    // AND между словами, OR между полями (title/excerpt)
     $clauses = [];
+
     foreach ($q['search_terms'] as $term) {
         $like = $n . $wpdb->esc_like($term) . $n;
 
-        if ($mode === 'title_excerpt') {
+        if ($mode === 'title') {
+            $clauses[] = $wpdb->prepare("{$wpdb->posts}.post_title LIKE %s", $like);
+        } elseif ($mode === 'excerpt') {
+            $clauses[] = $wpdb->prepare("{$wpdb->posts}.post_excerpt LIKE %s", $like);
+        } elseif ($mode === 'content') {
+            $clauses[] = $wpdb->prepare("{$wpdb->posts}.post_content LIKE %s", $like);
+        } elseif ($mode === 'title_excerpt') {
             $clauses[] = $wpdb->prepare(
                 "({$wpdb->posts}.post_title LIKE %s OR {$wpdb->posts}.post_excerpt LIKE %s)",
                 $like, $like
             );
-        } elseif ($mode === 'content') {
-            $clauses[] = $wpdb->prepare("{$wpdb->posts}.post_content LIKE %s", $like);
         } else {
             return $search;
         }
@@ -239,6 +242,7 @@ add_filter('posts_search', function ($search, $wp_query) {
 
     return $search;
 }, 10, 2);
+
 
 
 //Хелпер: получить IDs товаров по строке и режиму (title_excerpt / content)
