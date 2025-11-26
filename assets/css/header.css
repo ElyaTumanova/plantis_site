@@ -571,6 +571,12 @@ input[type="search"], input[type="search"]:focus-visible {
   /* transition: all .1s; */
 }
 
+.fix-body .search__wrap.search_open .search__clean {
+  right: calc(7px + var(--scrollWidth));
+  opacity: 1;
+  /* transition: all .1s; */
+}
+
 .search__clean svg path {
   stroke: var(--icons-color) !important;
 }
