@@ -8,6 +8,21 @@ add_action('wp_ajax_search-ajax', 'plnt_search_ajax_action_callback');
 add_action('wp_ajax_nopriv_search-ajax', 'plnt_search_ajax_action_callback');
 
 function plnt_search_ajax_action_callback (){
+
+  $received = isset($_POST['nonce']) ? wp_unslash($_POST['nonce']) : '';
+  $expected = wp_create_nonce('search-nonce');
+  $verify   = wp_verify_nonce($received, 'search-nonce');
+
+  wp_send_json([
+    'received' => $received,
+    'expected' => $expected,
+    'verify'   => $verify,              // 0 / 1 / 2
+    'uid'      => get_current_user_id(),
+    'token'    => wp_get_session_token(),
+    'tick'     => wp_nonce_tick(),
+  ]);
+
+  
     global $plants_treez_cat_id;
     global $peresadka_cat_id;
     global $plants_cat_id;
