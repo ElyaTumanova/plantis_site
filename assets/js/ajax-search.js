@@ -25,6 +25,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.remove('fix-body');
   }
 
+  async function refreshNonce() {
+    const fd = new FormData();
+    fd.append('action','get_search_nonce');
+
+    const r = await fetch(search_form.url, {
+      method: 'POST',
+      body: fd,
+      credentials: 'same-origin'
+    });
+    const j = await r.json();
+    if (j.success && j.data?.nonce) search_form.nonce = j.data.nonce;
+  }
+
   async function runSearch(query) {
     if (controller) controller.abort();
     controller = ('AbortController' in window) ? new AbortController() : null;
@@ -49,6 +62,22 @@ document.addEventListener('DOMContentLoaded', () => {
         signal: controller ? controller.signal : undefined,
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
       });
+
+      // если nonce протух — обновляем и повторяем 1 раз
+      if (res.status === 403) {
+        const ok = await refreshNonce();
+        if (ok) {
+          formData.set('nonce', search_form.nonce);
+
+          res = await fetch(search_form.url, {
+            method: 'POST',
+            body: formData,
+            credentials: 'same-origin',
+            signal: controller ? controller.signal : undefined,
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+          });
+        }
+      }
 
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 

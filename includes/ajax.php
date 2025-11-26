@@ -9,20 +9,20 @@ add_action('wp_ajax_nopriv_search-ajax', 'plnt_search_ajax_action_callback');
 
 function plnt_search_ajax_action_callback (){
 
-  $received = isset($_POST['nonce']) ? wp_unslash($_POST['nonce']) : '';
-  $expected = wp_create_nonce('search-nonce');
-  $verify   = wp_verify_nonce($received, 'search-nonce');
+  // $received = isset($_POST['nonce']) ? wp_unslash($_POST['nonce']) : '';
+  // $expected = wp_create_nonce('search-nonce');
+  // $verify   = wp_verify_nonce($received, 'search-nonce');
 
-  wp_send_json([
-    'received' => $received,
-    'expected' => $expected,
-    'verify'   => $verify,              // 0 / 1 / 2
-    'uid'      => get_current_user_id(),
-    'token'    => wp_get_session_token(),
-    'tick'     => wp_nonce_tick(),
-  ]);
+  // wp_send_json([
+  //   'received' => $received,
+  //   'expected' => $expected,
+  //   'verify'   => $verify,              // 0 / 1 / 2
+  //   'uid'      => get_current_user_id(),
+  //   'token'    => wp_get_session_token(),
+  //   'tick'     => wp_nonce_tick(),
+  // ]);
 
-  
+
     global $plants_treez_cat_id;
     global $peresadka_cat_id;
     global $plants_cat_id;
@@ -240,6 +240,13 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
   ];
   return $result;
 }
+
+add_action('wp_ajax_get_search_nonce', 'plnt_get_search_nonce');
+add_action('wp_ajax_nopriv_get_search_nonce', 'plnt_get_search_nonce');
+function plnt_get_search_nonce() {
+  wp_send_json_success(['nonce' => wp_create_nonce('search-nonce')]);
+}
+
 
 // вывод товаров в результатх теста
 add_action('wp_ajax_get_test_upsells', 'plnt_get_test_upsells_action_callback');
