@@ -9,8 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 function plnt_echo_smth() {
-  plnt_get_search_query('lololo');
-
 }
 
 
