@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (controller) controller.abort();
     controller = ('AbortController' in window) ? new AbortController() : null;
 
+    const signal = controller ? controller.signal : undefined;
     lastQuery = query;
 
     document.body.classList.add('fix-body');
@@ -49,54 +50,59 @@ document.addEventListener('DOMContentLoaded', () => {
     result.classList.add('is-loading');
     result.innerHTML = SPINNER_HTML;
 
-    const formData = new FormData();
-    formData.append('s', query);
-    formData.append('action', 'search-ajax');
-    formData.append('nonce', search_form.nonce);
+    const makeSearchFD = () => {
+      const fd = new FormData();
+      fd.append('s', query);
+      fd.append('action', 'search-ajax');
+      fd.append('nonce', search_form.nonce);
+      return fd;
+    };
 
     try {
-      const res = await fetch(search_form.url, {
-        method: 'POST',
-        body: formData,
-        credentials: 'same-origin',
-        signal: controller ? controller.signal : undefined,
-        headers: { 'X-Requested-With': 'XMLHttpRequest' }
-      });
+      let attempt = 0;
 
-      // если nonce протух — обновляем и повторяем 1 раз
-      if (res.status === 403) {
-        const ok = await refreshNonce();
-        if (ok) {
-          formData.set('nonce', search_form.nonce);
+      while (attempt < 2) {
+        const res = await fetch(search_form.url, {
+          method: 'POST',
+          body: makeSearchFD(),          // каждый раз новый FormData с актуальным nonce
+          credentials: 'same-origin',
+          signal,
+          headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        });
 
-          res = await fetch(search_form.url, {
-            method: 'POST',
-            body: formData,
-            credentials: 'same-origin',
-            signal: controller ? controller.signal : undefined,
-            headers: { 'X-Requested-With': 'XMLHttpRequest' }
-          });
+        const data = await res.json().catch(() => null);
+
+        const isBadNonce =
+          res.status === 403 ||
+          (data?.success === false && data?.data?.message === 'Bad nonce');
+
+        if (isBadNonce && attempt === 0) {
+          const ok = await refreshNonce(signal);
+          attempt++;
+          if (ok) continue;              // <-- вот здесь гарантированно будет повтор search-ajax
         }
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        if (data?.success === false) throw new Error(data?.data?.message || 'AJAX error');
+
+        // если пользователь уже ввёл другое — игнорим результат
+        if (input.value.trim() !== lastQuery) return;
+
+        result.classList.remove('is-loading');
+        result.innerHTML = data?.out ?? '';
+        return;
       }
 
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-      const data = await res.json();
-
-      // если пользователь уже ввёл другое — игнорим результат
-      if (input.value.trim() !== lastQuery) return;
-
-      result.classList.remove('is-loading');
-      result.innerHTML = data.out ?? '';
+      throw new Error('Bad nonce (refresh failed)');
     } catch (e) {
       if (e.name !== 'AbortError') {
-        // если ошибка — можно спрятать или показать текст
         result.classList.remove('is-loading');
         result.innerHTML = '';
         // console.error(e);
       }
     }
   }
+
 
   input.addEventListener('input', () => {
     const query = input.value.trim();
