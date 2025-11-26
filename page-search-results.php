@@ -60,7 +60,8 @@ if ( empty( $q_page->have_posts() ) ) {
       remove_filter( $af[0], $af[1] );
   }
 
-  wc_set_loop_prop( 'is_paginated', $q_page->max_num_pages > 1 );
+  // wc_set_loop_prop( 'is_paginated', $q_page->max_num_pages > 1 );
+  wc_set_loop_prop( 'is_paginated', (int) $q_page->found_posts > 1 );
   wc_set_loop_prop( 'page', $paged );
   wc_set_loop_prop( 'per_page', $per_page );
   wc_set_loop_prop( 'total', (int) $q_page->found_posts );
