@@ -34,8 +34,8 @@
     background: var(--background);
     padding: 40px 50px;
     left: 0;
-    right: var(--scrollWidth);
-    /* right: 0; */
+    /* right: var(--scrollWidth); */
+    right: 0;
     max-width: 1300px;
     margin: auto;
     border-radius: 40px;
