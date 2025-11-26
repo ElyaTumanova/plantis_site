@@ -594,7 +594,7 @@ input[type="search"], input[type="search"]:focus-visible {
     top: 8px;
     width: calc(100% - 200px);
   }
-  .search-result .scrollhidden {
+  .search-result.scrollhidden {
     top: 63px; 
   }
 }
