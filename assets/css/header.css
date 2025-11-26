@@ -589,12 +589,17 @@ input[type="search"], input[type="search"]:focus-visible {
   background-color: var(--background);
 }
 
+.search-result.scrollhidden {
+  transform: translateY(var(--marginTopOffset));
+}
+
 @media((max-width: 1279px)) {
   .search-result {
     top: 8px;
     width: calc(100% - 200px);
   }
   .search-result.scrollhidden {
+    transform: translateY(0);
     top: 63px; 
   }
 }
