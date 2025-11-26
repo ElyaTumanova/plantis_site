@@ -188,7 +188,7 @@
 }
 @media (max-width: 767px) {
     .woocommerce-ordering{
-      gap: 2px;
+      gap: 0;
     }
 }
 .woocommerce-ordering::before{
