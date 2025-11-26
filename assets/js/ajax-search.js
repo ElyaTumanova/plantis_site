@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const result = document.querySelector('.search-result');
 
   console.log(window.search_form);
+  console.log('page origin:', location.origin);
+  console.log('ajax url:', search_form.url);
+
 
 
   if (!input || !result || !window.search_form) return;
