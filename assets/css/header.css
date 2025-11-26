@@ -597,9 +597,9 @@ input[type="search"], input[type="search"]:focus-visible {
   transform: translateX(-50%) translateY(var(--marginTopOffset));
 }
 
-.fix-body .search-result {
+/* .fix-body .search-result {
   left: calc(50% - var(--scrollWidth));
-}
+} */
 
 @media((max-width: 1279px)) {
   .search-result {
