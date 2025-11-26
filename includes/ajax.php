@@ -11,9 +11,10 @@ function plnt_search_ajax_action_callback (){
     global $plants_treez_cat_id;
     global $peresadka_cat_id;
     global $plants_cat_id;
-    if(!wp_verify_nonce($_POST['nonce'], 'search-nonce')){
-        wp_die('Данные отправлены не с того адреса');
-    }
+   if ( ! check_ajax_referer('search-nonce', 'nonce', false) ) {
+    wp_send_json_error(['message' => 'Bad nonce'], 403);
+  }
+
 
     $result = plnt_get_search_query($_POST['s']);
     $q_page = $result['query'];

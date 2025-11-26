@@ -26,8 +26,8 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 											 '/assets/js/chekout-fields.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/chekout-fields.js'), true );	
 		
 		wp_enqueue_script( 'ajax-search', get_template_directory_uri() .
-		                                 '/assets/js/ajax-search.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/ajax-search.js'), true );
-		wp_localize_script ('ajax-search', 'search_form', array(
+		                                 '/assets/js/ajax-search.js', array(), filemtime(get_stylesheet_directory() .'/assets/js/ajax-search.js'), true );
+		wp_localize_script ('ajax-search', 'plnt_search_form', array(
 			'url' => admin_url('admin-ajax.php'),
 			'nonce' => wp_create_nonce('search-nonce')
 		));

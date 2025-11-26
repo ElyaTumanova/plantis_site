@@ -2,7 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const input = document.querySelector('.search-form input[name="s"]');
   const result = document.querySelector('.search-result');
 
-  if (!input || !result || !window.search_form) return;
+  console.log(window.plnt_search_form);
+
+
+  if (!input || !result || !window.plnt_search_form) return;
 
   const MIN_LEN = 3;
   const DEBOUNCE_MS = 300;
@@ -33,10 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const formData = new FormData();
     formData.append('s', query);
     formData.append('action', 'search-ajax');
-    formData.append('nonce', search_form.nonce);
+    formData.append('nonce', plnt_search_form.nonce);
 
     try {
-      const res = await fetch(search_form.url, {
+      const res = await fetch(plnt_search_form.url, {
         method: 'POST',
         body: formData,
         credentials: 'same-origin',
