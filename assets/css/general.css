@@ -47,6 +47,8 @@
     display: none !important;
 }
 
+html { scrollbar-gutter: stable; }
+
 .fix-body {
     height: 100vh;
     /* width: calc(100vw - var(--scrollWidth)); */

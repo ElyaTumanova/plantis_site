@@ -504,10 +504,10 @@
     transform .3s;
 }
 
-.fix-body .search__wrap {
+/* .fix-body .search__wrap {
   left: calc(50% - var(--scrollWidth));
   transform: translateX(calc(-50% + var(--scrollWidth)));
-}
+} */
 
 @media((min-width: 1279px)) {
   .search__wrap.scrollhidden {
