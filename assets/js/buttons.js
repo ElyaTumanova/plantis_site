@@ -15,16 +15,16 @@ window.addEventListener('resize', () => {
 # Ширина скролл бара окна браузера
 --------------------------------------------------------------*/
 
-let scrollWidth= window.innerWidth - document.body.clientWidth;
-document.documentElement.style.setProperty('--scrollWidth', `${scrollWidth}px`);
-// console.log(scrollWidth);
-// слушаем событие resize
-window.addEventListener('resize', () => {
-    // получаем текущее значение высоты
-    let scrollWidth= window.innerWidth - document.body.clientWidth;
-    document.documentElement.style.setProperty('--scrollWidth', `${scrollWidth}px`);
-    // console.log(scrollWidth);
-});
+// let scrollWidth= window.innerWidth - document.body.clientWidth;
+// document.documentElement.style.setProperty('--scrollWidth', `${scrollWidth}px`);
+// // console.log(scrollWidth);
+// // слушаем событие resize
+// window.addEventListener('resize', () => {
+//     // получаем текущее значение высоты
+//     let scrollWidth= window.innerWidth - document.body.clientWidth;
+//     document.documentElement.style.setProperty('--scrollWidth', `${scrollWidth}px`);
+//     // console.log(scrollWidth);
+// });
 
 
 /*--------------------------------------------------------------
