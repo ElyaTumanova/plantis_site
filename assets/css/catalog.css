@@ -63,7 +63,7 @@
         margin-bottom: 0;
     }
     .catalog__mob-filter-wrap .woocommerce-ordering {
-        display: block;
+        display: flex;
     }
     .catalog__mob-filter-wrap .woocommerce-ordering select {
         display: block;
