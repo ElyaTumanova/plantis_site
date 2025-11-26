@@ -5,10 +5,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
-//add_action( 'wp_footer', 'echo_hi' );
+//add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
+  $result = plnt_get_search_query('lololo');
+  echo ('<pre>');
+  print_r($result['query']);
+  echo ('</pre>');
+
 }
 
 

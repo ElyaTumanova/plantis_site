@@ -190,7 +190,7 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
   $q_page = new WP_Query( $q_args );
   $result = [
     'query' => $q_page,
-    'sku' => $product_sku_id
+    'sku' => $sku_id
   ];
   return $result;
 }
@@ -198,7 +198,10 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
 //Хук, который умеет искать (title OR excerpt) или только content
 
 add_filter('posts_search', function ($search, $wp_query) {
-    if (is_admin() || ! $wp_query->is_search()) return $search;
+    if (is_admin() && !wp_doing_ajax()) return $search;
+
+    if (! $wp_query->is_search()) return $search;
+
 
     $mode = $wp_query->get('plnt_search_in');
     if (!$mode || $mode === 'all') return $search;
@@ -295,9 +298,6 @@ function plnt_collect_ids_by_text($search, $mode) {
 
     return array_values(array_unique(array_merge($ids1, $ids2)));
 }
-
-
-
 
 add_action('wp_ajax_get_search_nonce', 'plnt_get_search_nonce');
 add_action('wp_ajax_nopriv_get_search_nonce', 'plnt_get_search_nonce');
