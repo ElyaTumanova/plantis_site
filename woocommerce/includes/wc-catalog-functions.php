@@ -156,7 +156,7 @@ add_action( 'woocommerce_before_shop_loop', 'plnt_woocommerce_catalog_ordering',
 function plnt_woocommerce_catalog_ordering() {
 	?>
 	<div class="woocommerce-ordering__wrap">
-		<svg viewBox="0 0 24 24" width="30" height="30" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M16.3066 8.30859V18.3086" stroke="#212121" stroke-width="1.3"></path><path d="M20 15.3086L16.3077 19.0009L12.6154 15.3086" stroke="#212121" stroke-width="1.3" stroke-linejoin="round"></path><path d="M7.69336 15V5" stroke="#212121" stroke-width="1.3"></path><path d="M4 8L7.69231 4.30769L11.3846 8" stroke="#212121" stroke-width="1.3" stroke-linejoin="round"></path></svg>
+		<!-- <svg viewBox="0 0 24 24" width="30" height="30" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M16.3066 8.30859V18.3086" stroke="#212121" stroke-width="1.3"></path><path d="M20 15.3086L16.3077 19.0009L12.6154 15.3086" stroke="#212121" stroke-width="1.3" stroke-linejoin="round"></path><path d="M7.69336 15V5" stroke="#212121" stroke-width="1.3"></path><path d="M4 8L7.69231 4.30769L11.3846 8" stroke="#212121" stroke-width="1.3" stroke-linejoin="round"></path></svg> -->
 		<?php woocommerce_catalog_ordering() ?>
 	</div>
 	<?php
