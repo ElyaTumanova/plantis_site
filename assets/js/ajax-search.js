@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!input || !result || !window.search_form) return;
 
   const MIN_LEN = 3;
-  const DEBOUNCE_MS = 300;
+  const DEBOUNCE_MS = 500;
   const SPINNER_HTML = '<div class="spinner" aria-label="Loading" role="status"></div>';
 
   let timerId = null;

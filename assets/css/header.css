@@ -628,7 +628,7 @@ input[type="search"], input[type="search"]:focus-visible {
   min-height: 120px;
 }
 
-.serach-result__items {
+.search-result__items {
     max-height: calc(80vh - 55px);
     overflow-y: auto;
     margin: 10px;
