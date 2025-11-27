@@ -56,6 +56,8 @@ require get_template_directory() . '/includes/cleanup.php';
 require get_template_directory() . '/includes/navigation.php';
 /** Add ajax */
 require get_template_directory() . '/includes/ajax.php';
+/** Add ajax search*/
+require get_template_directory() . '/includes/ajax-search.php';
 /** Add Yandex metrika */
 require get_template_directory() . '/includes/metrika.php';
 /** Add Feed xml creation*/
