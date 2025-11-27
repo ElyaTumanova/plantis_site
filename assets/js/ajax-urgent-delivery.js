@@ -1,3 +1,4 @@
+const DELIVERY = window.PLNT_Delivery_Data || {};
 let isUrgent;
 let isLate;
 let isHoliday; //скрываем подние интервалы доставки
@@ -101,11 +102,11 @@ function renderDeliveryDates(shippingValue) {
     info.label.innerHTML=`${info.text}`;
     let priceEl = document.createElement('span');
     info.label.appendChild(priceEl);
-      if(shippingValue == deliveryInMKAD) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(deliveryCostInMkad) + Number(deliveryUrgMarkup) + Number(deliveryMarkupInMkad)}₽` : `${Number(deliveryCostInMkad) + Number(deliveryMarkupInMkad)}₽` ;
+      if(shippingValue == DELIVERY.deliveryInMKAD) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(DELIVERY.deliveryCostInMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupInMkad)}₽` : `${Number(DELIVERY.deliveryCostInMkad) + Number(DELIVERY.deliveryMarkupInMkad)}₽` ;
       }
-      if(shippingValue == deliveryOutMKAD) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(deliveryCostOutMkad) + Number(deliveryUrgMarkup) + Number(deliveryMarkupOutMkad)}₽` : `${Number(deliveryCostOutMkad) + Number(deliveryMarkupOutMkad)}₽` ;
+      if(shippingValue == DELIVERY.deliveryOutMKAD) {
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupOutMkad)}₽` : `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryMarkupOutMkad)}₽` ;
       }
   })
 }
@@ -116,12 +117,12 @@ function renderDeliveryIntervals(shippingValue) {
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
     info.label.appendChild(priceEl);
-      if(shippingValue == localPickupId || shippingValue == deliveryFreeId || shippingValue == deliveryPochtaId ||shippingValue == deliveryCourierId || shippingValue == deliveryLongId) {
+      if(shippingValue == DELIVERY.localPickupId || shippingValue == DELIVERY.deliveryFreeId || shippingValue == DELIVERY.deliveryPochtaId ||shippingValue == DELIVERY.deliveryCourierId || shippingValue == DELIVERY.deliveryLongId) {
       } else {
         if (isUrgent == '1') {
           priceEl.innerHTML = `+0₽`;
         } else {
-          priceEl.innerHTML = info.for == `additional_delivery_interval_18:00 - 21:00` ? `+${deliveryLateMarkup}₽` : `+0₽` ;
+          priceEl.innerHTML = info.for == `additional_delivery_interval_18:00 - 21:00` ? `+${DELIVERY.deliveryLateMarkup}₽` : `+0₽` ;
         }
       }
   })
@@ -206,7 +207,7 @@ function getDatesIntervalsInfo() {
     deliveryDatesInfo.push(dateInfo);
   });
 
-  if(deliveryLateMarkup) {    
+  if(DELIVERY.deliveryLateMarkup) {    
     deliveryIntervalLabels.forEach((label) => {
       let intervalInfo = {
         label: label,
@@ -246,10 +247,10 @@ function showInterval() {
 function hideCheckoutFields(event){
   //console.log('hi hideCheckoutFields');
   if (deliveryInterval) {
-      if (isBackorder || isTreezBackorders) {
+      if (DELIVERY.isBackorder || DELIVERY.isTreezBackorders) {
           hideInterval()
       } else { 
-          if ( checkedShippingMethod == localPickupId || checkedShippingMethod == deliveryPochtaId) {
+          if ( checkedShippingMethod == DELIVERY.localPickupId || checkedShippingMethod == DELIVERY.deliveryPochtaId) {
               hideInterval()
           } else {
               if (isUrgent == '1') {
@@ -265,7 +266,7 @@ function hideCheckoutFields(event){
 
   //for delivery dates
   if (deliveryDates) {
-      if (isBackorder || isTreezBackorders) {
+      if (DELIVERY.isBackorder || DELIVERY.isTreezBackorders) {
           deliveryDates.classList.add('d-none');
           deliveryDatesInput.forEach((input)=>{
               input.checked = false;
@@ -274,7 +275,7 @@ function hideCheckoutFields(event){
   }
 
   //for address 
-  if (checkedShippingMethod == localPickupId) {
+  if (checkedShippingMethod == DELIVERY.localPickupId) {
       if (addressFields) {addressFields.classList.add('d-none');}
       if (additionalAddress) {additionalAddress.classList.add('d-none');}
   } else {

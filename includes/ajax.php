@@ -19,7 +19,6 @@ function plnt_get_test_upsells_action_callback() {
 
 	wp_send_json($response);
 	die();
-    
 }
 
 // вывод слайдеров товаров на главной
