@@ -30,11 +30,21 @@ function plnt_search_ajax_action_callback (){
       wp_send_json_error(['message' => 'Bad nonce'], 403);
     }
 
+    $raw = isset($_POST['s']) ? wp_unslash($_POST['s']) : '';
+    $query = trim( sanitize_text_field($raw) );
 
-    $result = plnt_get_search_query($_POST['s']);
+    // не ищем мусор
+    if (mb_strlen($query) < 3) {
+      wp_send_json(['out' => '', 'found' => 0]);
+    }
+
+    $result = plnt_get_search_query($query);
     $q_page = $result['query'];
-    $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
-    ?> <div class='serach-result__items'> <?php
+    $found = (int) ($q_page->found_posts ?? 0);
+    plnt_log_search_query($query, $found);
+    // $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
+    ob_start();
+    ?> <div class='search-result__items'> <?php
 
     if($q_page->have_posts()) {
       while ($q_page->have_posts()){
@@ -52,43 +62,69 @@ function plnt_search_ajax_action_callback (){
         </div>
       <?php
     }
+    wp_reset_postdata();
 
-    $json_data['out'] = ob_get_clean();
-    wp_send_json($json_data);
-    wp_die();
+    $out = ob_get_clean();
+
+    // $json_data['out'] = ob_get_clean();
+    // wp_send_json($json_data);
+    wp_send_json([
+      'out'   => $out,
+      'found' => $found,
+    ]);
 }
 
 function render_search_result($product) {
-  $id = $product->get_id();
-  $sale = get_post_meta( $id, '_sale_price', true);
+  if (!$product instanceof WC_Product) return;
+
+  $id    = (int) $product->get_id();
+  $url   = $product->get_permalink();
+  $title = $product->get_title();
+
+  $thumb = get_the_post_thumbnail_url($id, 'thumbnail');
+  if (!$thumb) {
+    // запасной вариант (можно убрать, если не нужно)
+    $thumb = wc_placeholder_img_src('thumbnail');
+  }
+
+  $sale    = get_post_meta($id, '_sale_price', true);
+  $regular = get_post_meta($id, '_regular_price', true);
+  $price   = get_post_meta($id, '_price', true);
+
+  // Форматирование цен
+  $price_html = ($price !== '' && $price !== null) ? wc_price((float) $price) : '';
+  $reg_html   = ($regular !== '' && $regular !== null) ? wc_price((float) $regular) : '';
+  $sale_html  = ($sale !== '' && $sale !== null) ? wc_price((float) $sale) : '';
   ?>
-    <div class="search-result__item">
-        <a href="<?php echo $product->get_permalink();?>" class="search-result__link" target="blank">
-          <img src="<?php echo get_the_post_thumbnail_url( $id, 'thumbnail' );?>" class="search-result__image" alt="<?php echo $product->get_title();?>">
-          <div class="search-result__info">
-            <div class="search-result__row">
-              <span class="search-result__title"><?php echo $product->get_title();?></span>
-              <!-- <span class="search-result__descr"><?php //echo $product->get_short_description();?></span> -->
-              <?php plnt_check_stock_status();?>
-            </div>
-            <div class="search-result__row search-result__row_price">
-              <?php if ($sale) {
-                ?>
-                      <span class="search-result__reg-price"><?php echo get_post_meta( $id, '_regular_price', true);?>&#8381;</span>
-                      <span class="search-result__price"><?php echo get_post_meta( $id, '_sale_price', true);?>&#8381;</span>
-                      <?php
-                  } else {
-                    ?>
-                      <span class="search-result__price"><?php echo get_post_meta( $id, '_price', true);?>&#8381;</span>
-                      <?php 
-                  }
-                  ?>
-                </div>
-              </div>
-        </a>  
-    </div>
+  <div class="search-result__item">
+    <a href="<?php echo esc_url($url); ?>"
+       class="search-result__link"
+       target="_blank" rel="noopener noreferrer">
+
+      <img src="<?php echo esc_url($thumb); ?>"
+           class="search-result__image"
+           alt="<?php echo esc_attr($title); ?>">
+
+      <div class="search-result__info">
+        <div class="search-result__row">
+          <span class="search-result__title"><?php echo esc_html($title); ?></span>
+          <?php plnt_check_stock_status(); ?>
+        </div>
+
+        <div class="search-result__row search-result__row_price">
+          <?php if ($sale_html && $reg_html): ?>
+            <span class="search-result__reg-price"><?php echo wp_kses_post($reg_html); ?></span>
+            <span class="search-result__price"><?php echo wp_kses_post($sale_html); ?></span>
+          <?php else: ?>
+            <span class="search-result__price"><?php echo wp_kses_post($price_html); ?></span>
+          <?php endif; ?>
+        </div>
+      </div>
+    </a>
+  </div>
   <?php
 }
+
 
 function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $paged=null) {
   $search = trim((string)$search);
@@ -304,3 +340,238 @@ add_action('wp_ajax_nopriv_get_search_nonce', 'plnt_get_search_nonce');
 function plnt_get_search_nonce() {
   wp_send_json_success(['nonce' => wp_create_nonce('search-nonce')]);
 }
+
+//TELEMETRY
+
+//Создание таблицы (сразу “по дням”)
+function plnt_search_telemetry_install() {
+  global $wpdb;
+  $table = $wpdb->prefix . 'plnt_search_queries';
+  $charset = $wpdb->get_charset_collate();
+
+  require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+  $sql = "CREATE TABLE $table (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    day DATE NOT NULL,
+    query_norm VARCHAR(120) NOT NULL,
+    total_count INT UNSIGNED NOT NULL DEFAULT 0,
+    empty_count INT UNSIGNED NOT NULL DEFAULT 0,
+    first_seen DATETIME NOT NULL,
+    last_seen DATETIME NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY day_query_uq (day, query_norm),
+    KEY day_idx (day),
+    KEY query_idx (query_norm),
+    KEY last_seen_idx (last_seen)
+  ) $charset;";
+
+  dbDelta($sql);
+}
+
+add_action('init', function () {
+  $ver = '1.0.0'; // если будете менять схему — увеличивайте
+  if (get_option('plnt_search_telemetry_ver') !== $ver) {
+    plnt_search_telemetry_install();
+    update_option('plnt_search_telemetry_ver', $ver);
+  }
+});
+
+function plnt_norm_query($q) {
+  $q = wp_strip_all_tags((string) $q);
+  $q = trim($q);
+
+  // lowercase (mb if available)
+  if (function_exists('mb_strtolower')) {
+    $q = mb_strtolower($q, 'UTF-8');
+  } else {
+    $q = strtolower($q);
+  }
+
+  // ё -> е
+  $q = str_replace('ё', 'е', $q);
+
+  // collapse whitespace (unicode if possible)
+  $q = preg_replace('/\s+/u', ' ', $q);
+  if ($q === null) { // in case PCRE unicode fails for some reason
+    $q = preg_replace('/\s+/', ' ', (string) $q);
+  }
+
+  // limit length to 120 chars (mb if available)
+  if (function_exists('mb_strlen') && function_exists('mb_substr')) {
+    if (mb_strlen($q, 'UTF-8') > 120) {
+      $q = mb_substr($q, 0, 120, 'UTF-8');
+    }
+  } else {
+    if (strlen($q) > 120) {
+      $q = substr($q, 0, 120);
+    }
+  }
+
+  return trim($q);
+}
+
+
+//Нормализация + логирование “день+запрос”
+function plnt_log_search_query($q_raw, $found_posts) {
+  global $wpdb;
+
+  $q = plnt_norm_query(wp_unslash($q_raw));
+  if (mb_strlen($q) < 3) return;
+
+  // по желанию: отсечь явные email/телефоны
+  if (preg_match('/[\w.+-]+@[\w.-]+\.[a-z]{2,}/i', $q)) return;
+  if (preg_match('/(\+?\d[\d\s().-]{8,}\d)/', $q)) return;
+
+  $table = $wpdb->prefix . 'plnt_search_queries';
+  $day = current_time('Y-m-d');
+  $now = current_time('mysql');
+  $empty_inc = ((int)$found_posts === 0) ? 1 : 0;
+
+  $sql = $wpdb->prepare(
+    "INSERT INTO $table (day, query_norm, total_count, empty_count, first_seen, last_seen)
+     VALUES (%s, %s, 1, %d, %s, %s)
+     ON DUPLICATE KEY UPDATE
+       total_count = total_count + 1,
+       empty_count = empty_count + VALUES(empty_count),
+       last_seen   = VALUES(last_seen)",
+    $day, $q, $empty_inc, $now, $now
+  );
+
+  $wpdb->query($sql);
+}
+
+//Страница “Инструменты → Search queries”
+add_action('admin_menu', function () {
+  add_management_page(
+    'Search queries',
+    'Search queries',
+    'manage_options',
+    'plnt-search-queries',
+    'plnt_render_search_queries_admin_page'
+  );
+});
+
+function plnt_render_search_queries_admin_page() {
+  if (!current_user_can('manage_options')) return;
+
+  global $wpdb;
+  $table = $wpdb->prefix . 'plnt_search_queries';
+
+  $days  = isset($_GET['days']) ? max(1, min(3650, (int)$_GET['days'])) : 30;
+  $limit = isset($_GET['limit']) ? max(10, min(2000, (int)$_GET['limit'])) : 200;
+
+  $rows = $wpdb->get_results(
+    $wpdb->prepare(
+      "SELECT query_norm,
+              SUM(total_count) AS total_count,
+              SUM(empty_count) AS empty_count,
+              MIN(first_seen) AS first_seen,
+              MAX(last_seen)  AS last_seen
+       FROM $table
+       WHERE day >= (CURRENT_DATE - INTERVAL %d DAY)
+       GROUP BY query_norm
+       ORDER BY total_count DESC
+       LIMIT %d",
+      $days, $limit
+    ),
+    ARRAY_A
+  );
+
+  $export_url = wp_nonce_url(
+    admin_url('admin-post.php?action=plnt_export_search_csv&days=' . $days),
+    'plnt_export_search_csv'
+  );
+  ?>
+  <div class="wrap">
+    <h1>Search queries</h1>
+
+    <form method="get" style="margin: 12px 0;">
+      <input type="hidden" name="page" value="plnt-search-queries" />
+      <label>Период (дней):
+        <input type="number" name="days" value="<?php echo esc_attr($days); ?>" min="1" max="3650" />
+      </label>
+      <label style="margin-left:12px;">Показать строк:
+        <input type="number" name="limit" value="<?php echo esc_attr($limit); ?>" min="10" max="2000" />
+      </label>
+      <button class="button button-primary" type="submit" style="margin-left:12px;">Показать</button>
+
+      <a class="button" style="margin-left:12px;" href="<?php echo esc_url($export_url); ?>">
+        Выгрузить CSV (за <?php echo (int)$days; ?> дн.)
+      </a>
+    </form>
+
+    <table class="widefat striped">
+      <thead>
+        <tr>
+          <th>Запрос</th>
+          <th style="width:120px;">Всего</th>
+          <th style="width:140px;">Пустых</th>
+          <th style="width:180px;">First seen</th>
+          <th style="width:180px;">Last seen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if (empty($rows)): ?>
+          <tr><td colspan="5">Нет данных</td></tr>
+        <?php else: foreach ($rows as $r): ?>
+          <tr>
+            <td><?php echo esc_html($r['query_norm']); ?></td>
+            <td><?php echo (int)$r['total_count']; ?></td>
+            <td><?php echo (int)$r['empty_count']; ?></td>
+            <td><?php echo esc_html($r['first_seen']); ?></td>
+            <td><?php echo esc_html($r['last_seen']); ?></td>
+          </tr>
+        <?php endforeach; endif; ?>
+      </tbody>
+    </table>
+  </div>
+  <?php
+}
+
+//CSV экспорт
+add_action('admin_post_plnt_export_search_csv', function () {
+  if (!current_user_can('manage_options')) wp_die('Forbidden', 403);
+  check_admin_referer('plnt_export_search_csv');
+
+  global $wpdb;
+  $table = $wpdb->prefix . 'plnt_search_queries';
+  $days = isset($_GET['days']) ? max(1, min(3650, (int)$_GET['days'])) : 30;
+
+  nocache_headers();
+  header('Content-Type: text/csv; charset=utf-8');
+  header('Content-Disposition: attachment; filename=search-queries-' . date('Y-m-d') . '.csv');
+
+  $out = fopen('php://output', 'w');
+  fprintf($out, "\xEF\xBB\xBF"); // BOM для Excel
+  fputcsv($out, ['query', 'total_count', 'empty_count', 'first_seen', 'last_seen']);
+
+  $rows = $wpdb->get_results(
+    $wpdb->prepare(
+      "SELECT query_norm,
+              SUM(total_count) AS total_count,
+              SUM(empty_count) AS empty_count,
+              MIN(first_seen) AS first_seen,
+              MAX(last_seen)  AS last_seen
+       FROM $table
+       WHERE day >= (CURRENT_DATE - INTERVAL %d DAY)
+       GROUP BY query_norm
+       ORDER BY total_count DESC",
+      $days
+    ),
+    ARRAY_A
+  );
+
+  foreach ($rows as $r) {
+    fputcsv($out, [
+      $r['query_norm'],
+      (int)$r['total_count'],
+      (int)$r['empty_count'],
+      $r['first_seen'],
+      $r['last_seen'],
+    ]);
+  }
+
+  fclose($out);
+  exit;
+});
