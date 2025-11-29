@@ -5,60 +5,80 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
-//HOOKS
-
 /**
- * Показывать имена WooCommerce-хуков на страницах каталога.
- * Вешаемся на спец. хук 'all' и печатаем маркер для каждого хука WooCommerce.
+ * Отладка: показывать имена хуков WooCommerce на страницах каталога.
  */
 
-// add_action( 'init', function () {
-//     // Только фронт, не админка
-//     if ( is_admin() ) {
-//         return;
-//     }
+add_action( 'wp', 'my_wc_catalog_debug_register_hooks' );
 
-//     // Подключаем только если WooCommerce активен
-//     if ( ! class_exists( 'WooCommerce' ) ) {
-//         return;
-//     }
+function my_wc_catalog_debug_register_hooks() {
 
-//     // Вешаем глобальный перехватчик всех хуков
-//     add_action( 'all', 'plnt_wc_catalog_hooks_debug_marker', 9999 );
-// } );
+    // Только фронт
+    if ( is_admin() ) {
+        return;
+    }
+
+    // WooCommerce должен быть активен
+    if ( ! class_exists( 'WooCommerce' ) ) {
+        return;
+    }
+
+    // Только страницы каталога: магазин, категории/теги/таксономии товаров
+    if ( ! ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) {
+        return;
+    }
+
+    // Список хуков WooCommerce, типичных для страниц каталога
+    $hooks = array(
+        // Обёртка контента
+        'woocommerce_before_main_content',
+        'woocommerce_archive_description',
+        'woocommerce_before_shop_loop',
+
+        // Сам цикл товаров
+        'woocommerce_before_shop_loop_item',
+        'woocommerce_before_shop_loop_item_title',
+        'woocommerce_shop_loop_item_title',
+        'woocommerce_after_shop_loop_item_title',
+        'woocommerce_after_shop_loop_item',
+
+        'woocommerce_shop_loop', // внутри цикла
+        'woocommerce_after_shop_loop',
+
+        // Сайдбар и низ страницы
+        'woocommerce_sidebar',
+        'woocommerce_after_main_content',
+
+        // На случай отсутствия товаров
+        'woocommerce_no_products_found',
+    );
+
+    foreach ( $hooks as $hook ) {
+        add_action(
+            $hook,
+            function () use ( $hook ) {
+                my_wc_catalog_debug_marker( $hook );
+            },
+            9999
+        );
+    }
+}
 
 /**
- * Вывод маркеров хуков.
+ * Вывод маркера для конкретного хука.
+ *
+ * Если хочешь комментарии вместо span – см. ниже.
  */
-function plnt_wc_catalog_hooks_debug_marker() {
-    // Текущий хук
-    $hook = current_filter();
-
-    // Не лезем в AJAX, REST и админку
-    if ( is_admin() || wp_doing_ajax() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
-        return;
-    }
-
-    // Ограничиваемся только страницами каталога WooCommerce
-    if ( ! ( function_exists( 'is_shop' ) && ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) ) {
-        return;
-    }
-
-    // Ограничиваемся только хуками WooCommerce (чтобы не засорять вывод)
-    if ( strpos( $hook, 'woocommerce_' ) !== 0 ) {
-        return;
-    }
-
-    // На всякий случай не зацикливаемся
-    if ( $hook === 'all' ) {
-        return;
-    }
-
-    // Печатаем маленький видимый маркер хука
+function my_wc_catalog_debug_marker( $hook ) {
+    // Видимая плашка:
     echo '<span class="wc-hook-marker" data-hook="' . esc_attr( $hook ) . '">'
          . esc_html( $hook ) .
          '</span>';
+
+    // Или, если хочешь ТОЛЬКО комментарий в HTML (раскомментируй и закомментируй echo выше):
+    // echo "\n<!-- HOOK: " . esc_html( $hook ) . " -->\n";
 }
+
 
 //add_action( 'wp_footer', 'plnt_echo_smth' );
 
