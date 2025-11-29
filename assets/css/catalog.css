@@ -1752,7 +1752,7 @@
   cursor: help;
   line-height: 1;
   margin-left: 6px;
-  vertical-align: super;
+  vertical-align: top;
 }
 
 @media (max-width: 767px) {
