@@ -1728,3 +1728,11 @@
 .page-template-page-search-results .catalog__mob-filter-btn {
   display: none;
 }
+
+/* plants attributes */
+
+.catalog__products-attrs {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+}
