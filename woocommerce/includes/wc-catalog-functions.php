@@ -412,29 +412,21 @@ function plnt_woocommerce_loop_add_to_cart_args_outofstock( $args, $product ){
 add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product_link_open', 5);
 add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product_link_close', 15);
 
-// // короткое описание
+// // короткое описание & информация об уходе за растением
 add_action('woocommerce_shop_loop_item_title','plnt_woocommerce_template_single_excerpt', 20);
 
 function plnt_woocommerce_template_single_excerpt () {
   echo ('<div class="catalog__short-with-tip">');
   woocommerce_template_single_excerpt();
-  plnt_plant_attrs();
+  plnt_get_plant_attrs();
   echo ('</div>');
 }
-// // информация об уходе за растением
-// add_action('woocommerce_shop_loop_item_title','plnt_plant_attrs', 30);
 
-function plnt_plant_attrs() {
-    $tip_text = plnt_get_plants_attrs();
-    if ( $tip_text ) {
-        echo '<span class="catalog__help-icon" data-tip="' . esc_attr( $tip_text ) . '">?</span>';
-    }
-}
+function plnt_get_plant_attrs() {
 
-function plnt_get_plants_attrs() {
     // Ограничиваем вывод только архивами товара
     if ( ! ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) {
-        return '';
+        return;
     }
 
     global $product;
@@ -442,18 +434,18 @@ function plnt_get_plants_attrs() {
 
     // На всякий случай проверка объекта
     if ( ! $product instanceof WC_Product ) {
-        return '';
+        return;
     }
 
-    // Если товар не в нужной категории — ничего не возвращаем
+    // Если товар не в нужной категории — ничего не выводим
     if ( $plants_cat_id && ! has_term( $plants_cat_id, 'product_cat', $product->get_id() ) ) {
-        return '';
+        return;
     }
 
     $attributes = $product->get_attributes();
 
     if ( empty( $attributes ) ) {
-        return '';
+        return;
     }
 
     $lines = [];
@@ -490,12 +482,15 @@ function plnt_get_plants_attrs() {
     }
 
     if ( empty( $lines ) ) {
-        return '';
+        return;
     }
 
-    // Возвращаем одну строку с переносами
-    return implode( "\n", $lines );
+    // Одна строка с переносами
+    $tip_text = implode( "\n", $lines );
+
+    echo '<span class="catalog__help-icon" data-tip="' . esc_attr( $tip_text ) . '">?</span>';
 }
+
 
 // // вывод меток под карточкой товара в каталоге
 add_action('woocommerce_after_shop_loop_item', 'plnt_get_product_tags', 20);
