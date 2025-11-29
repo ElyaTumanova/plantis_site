@@ -529,6 +529,12 @@
     color: var(--gray-text);
     display: inline-block;
 }
+.catalog__grid .woocommerce-product-details__short-description p{
+  max-width: 200px;      /* нужная тебе ширина */
+  overflow: hidden;      /* обрезаем лишнее */
+  white-space: nowrap;   /* не переносим строки */
+  text-overflow: ellipsis; /* добавляем ... */
+}
 
 /* стили цены */
 .price bdi {
