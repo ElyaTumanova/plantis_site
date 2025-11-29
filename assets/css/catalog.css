@@ -1730,7 +1730,12 @@
   display: none;
 }
 
-/* plants attributes */
+/* plants attributes */ 
+
+.catalog__short-with-tip {
+  position: relative;
+  width: 100%;
+}
 
 .catalog__products-attrs {
   position: absolute;
