@@ -1751,7 +1751,6 @@
   color: var(--gray-text);
   cursor: help;
   line-height: 1;
-  position: relative;
   bottom: 3px;
   left: 6px;
 }
@@ -1760,7 +1759,8 @@
 .catalog__help-icon::after {
   content: attr(data-tip);
   position: absolute;
-  left: 50%;
+  left: 0;
+  right: 0;
   bottom: 125%;              /* над иконкой */
   transform: translateX(-50%);
   background: #333;
@@ -1768,12 +1768,11 @@
   padding: 6px 10px;
   border-radius: 4px;
   font-size: 12px;
-  white-space: nowrap;
+  line-height: 1.4;
   opacity: 0;
   pointer-events: none;
   transition: opacity .2s ease;
   z-index: 10;
-  content: attr(data-tip);
   white-space: pre-line; /* чтобы \n стали переносами строк */
 }
 
