@@ -208,13 +208,3 @@ if(copyShareBtn) {
       }
   });
 }
-
-/*--------------------------------------------------------------
-# Убираем клик по кнопке вопроса
---------------------------------------------------------------*/
-document.addEventListener('click', function(e) {
-  if (e.target.closest('.catalog__help-icon')) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-});
