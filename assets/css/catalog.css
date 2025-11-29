@@ -506,7 +506,6 @@
     line-height: 1.1;
     margin-bottom: 5px;
     margin-top: 15px;
-    display: inline-block;
 }
 
 @media (max-width: 767px) {
@@ -1740,22 +1739,21 @@
 }
 
 .catalog__help-icon {
-  font-size: 14px;
-}
-
-.catalog__help-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  border: 1px solid #999;
+  border: 2px solid var(--gray-text);
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 700;
+  color: var(--gray-text);
   cursor: help;
-  position: relative;
   line-height: 1;
+  position: relative;
+  bottom: 3px;
+  left: 6px;
 }
 
 /* Всплывающее окно */
