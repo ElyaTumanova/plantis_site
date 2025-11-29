@@ -506,6 +506,7 @@
     line-height: 1.1;
     margin-bottom: 5px;
     margin-top: 15px;
+    display: inline-block;
 }
 
 @media (max-width: 767px) {
