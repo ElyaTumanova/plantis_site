@@ -1755,6 +1755,12 @@
   vertical-align: super;
 }
 
+@media (max-width: 767px) {
+    .catalog__help-icon {
+      margin-left: 20px;
+    }
+}
+
 /* Всплывающее окно */
 .catalog__help-icon::after {
   content: attr(data-tip);
