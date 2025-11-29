@@ -45,7 +45,7 @@ class Popup {
       this.closePopup()
     })
 
-    document.addEventListener('keydown', function(e){
+    document.addEventListener('keydown', (e) =>{
         if((e.key=='Escape'||e.key=='Esc')){
             if(this.popup.classList.contains('popup_active')) {
                 this.closePopup()
@@ -56,7 +56,7 @@ class Popup {
     if(this.contactForm !=null) {
       this.contactForm.addEventListener('submit', (evt) => {this.preloader.classList.add('active')})
 
-      document.addEventListener('wpcf7submit', function(event) {
+      document.addEventListener('wpcf7submit', (evt) => {
           // Универсальный обработчик отправки
           this.container.style.visibility = 'hidden';
           this.preloader.classList.remove('active');
