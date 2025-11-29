@@ -308,7 +308,7 @@ function soChangeProductsTitle() {
 } else {
     $schema_data = '';
 }
-    echo '<h3 ' . $schema_data . ' class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '<span class = catalog__help-icon data-tip="' .echo plnt_get_plants_attrs(); .'">?</span> </h3>';
+    echo '<h3 ' . $schema_data . ' class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '<span class = catalog__help-icon data-tip="' . plnt_get_plants_attrs(); .'">?</span> </h3>';
 }
 
 // // информация об уходе за растением
