@@ -421,8 +421,27 @@ function plnt_get_plants_attrs() {
     if ( ! has_term( $plants_cat_id, 'product_cat', $product->get_id() ) ) {
         return;
     }
-    $attrs = $product->get_attributes();
-    pr($attrs);
+    $attributes = $product->get_attributes();
+    // pr($attributes);
+    foreach ( $attributes as $attribute ) {
+
+        // пропускаем атрибуты, не отмеченные "видимыми"
+        if ( ! $attribute->get_visible() ) {
+            continue;
+        }
+
+        // таксономические атрибуты (pa_color, pa_size...)
+        if ( $attribute->is_taxonomy() ) {
+            $terms = wp_get_post_terms( $product->get_id(), $attribute->get_name() );
+            foreach ( $terms as $term ) {
+                echo '<p>' . esc_html( wc_attribute_label( $attribute->get_name() ) ) . ': ' . esc_html( $term->name ) . '</p>';
+            }
+        } else {
+            // нетаксономические (кастомные) атрибуты
+            $options = $attribute->get_options();
+            echo '<p>' . esc_html( $attribute->get_name() ) . ': ' . esc_html( implode( ', ', $options ) ) . '</p>';
+        }
+    }
   }
 }
 
