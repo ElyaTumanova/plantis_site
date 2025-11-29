@@ -413,11 +413,16 @@ add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product
 add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product_link_close', 15);
 
 // // короткое описание
-add_action('woocommerce_shop_loop_item_title','woocommerce_template_single_excerpt', 20);
+add_action('woocommerce_shop_loop_item_title','plnt_woocommerce_template_single_excerpt', 20);
 
-
+function plnt_woocommerce_template_single_excerpt () {
+  echo ('<div class="catalog__short-with-tip">');
+  woocommerce_template_single_excerpt();
+  plnt_plant_attrs();
+  echo ('</div>');
+}
 // // информация об уходе за растением
-add_action('woocommerce_shop_loop_item_title','plnt_plant_attrs', 30);
+// add_action('woocommerce_shop_loop_item_title','plnt_plant_attrs', 30);
 
 function plnt_plant_attrs() {
     $tip_text = plnt_get_plants_attrs();
