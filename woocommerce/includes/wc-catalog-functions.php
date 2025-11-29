@@ -418,9 +418,11 @@ function plnt_get_plants_attrs() {
   if(is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
     global $product;
     global $plants_cat_id;
-    if($product->get_id() != $plants_cat_id ) return;
+    if ( ! has_term( $plants_cat_id, 'product_cat', $product->get_id() ) ) {
+        return;
+    }
     $attrs = $product->get_attributes();
-    print_r($attrs);
+    pr($attrs);
   }
 }
 
