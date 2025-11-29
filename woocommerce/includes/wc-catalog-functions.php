@@ -308,21 +308,38 @@ function soChangeProductsTitle() {
 } else {
     $schema_data = '';
 }
-    echo '<h3 ' . $schema_data . ' class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '<span class = catalog__help-icon data-tip="' . plnt_get_plants_attrs(); .'">?</span> </h3>';
+    echo '<h3 ' . $schema_data . ' class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '<span class = "catalog__help-icon" data-tip="' . plnt_get_plants_attrs() .'">?</span> </h3>';
 }
 
 // // информация об уходе за растением
 
 function plnt_get_plants_attrs() {
-  if(is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
+    // Ограничиваем вывод только архивами товара
+    if ( ! ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) {
+        return '';
+    }
+
     global $product;
     global $plants_cat_id;
-    if ( ! has_term( $plants_cat_id, 'product_cat', $product->get_id() ) ) {
-        return;
+
+    // На всякий случай проверка объекта
+    if ( ! $product instanceof WC_Product ) {
+        return '';
     }
+
+    // Если товар не в нужной категории — ничего не возвращаем
+    if ( $plants_cat_id && ! has_term( $plants_cat_id, 'product_cat', $product->get_id() ) ) {
+        return '';
+    }
+
     $attributes = $product->get_attributes();
-    // pr($attributes);
-    echo ('<div class="catalog__products-attrs">');
+
+    if ( empty( $attributes ) ) {
+        return '';
+    }
+
+    $html = '<div class="catalog__products-attrs">';
+
     foreach ( $attributes as $attribute ) {
 
         // пропускаем атрибуты, не отмеченные "видимыми"
@@ -330,21 +347,42 @@ function plnt_get_plants_attrs() {
             continue;
         }
 
-        // таксономические атрибуты (pa_color, pa_size...)
+        // таксономические атрибуты (pa_color, pa_size и т.п.)
         if ( $attribute->is_taxonomy() ) {
             $terms = wp_get_post_terms( $product->get_id(), $attribute->get_name() );
+
+            if ( empty( $terms ) || is_wp_error( $terms ) ) {
+                continue;
+            }
+
             foreach ( $terms as $term ) {
-                echo '<p>' . esc_html( wc_attribute_label( $attribute->get_name() ) ) . ': ' . esc_html( $term->name ) . '</p>';
+                $html .= '<p>'
+                    . esc_html( wc_attribute_label( $attribute->get_name() ) )
+                    . ': '
+                    . esc_html( $term->name )
+                    . '</p>';
             }
         } else {
             // нетаксономические (кастомные) атрибуты
             $options = $attribute->get_options();
-            echo '<p>' . esc_html( $attribute->get_name() ) . ': ' . esc_html( implode( ', ', $options ) ) . '</p>';
+
+            if ( empty( $options ) ) {
+                continue;
+            }
+
+            $html .= '<p>'
+                . esc_html( $attribute->get_name() )
+                . ': '
+                . esc_html( implode( ', ', $options ) )
+                . '</p>';
         }
     }
-    echo ('</div>');
-  }
+
+    $html .= '</div>';
+
+    return $html;
 }
+
 
 //оформление карточки товара в каталоге
 
