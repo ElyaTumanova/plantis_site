@@ -1744,6 +1744,12 @@
   max-width: 295px;
 }
 
+@media (max-width: 767px) {
+  .catalog__short-with-tip {
+    position: static;
+  }
+}
+
 .catalog__products-attrs {
   position: absolute;
   visibility: hidden;
@@ -1767,12 +1773,15 @@
   margin-left: 6px;
   vertical-align: top;
 }
-/* 
+
 @media (max-width: 767px) {
     .catalog__help-icon {
-      margin-left: 20px;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      z-index: 2;
     }
-} */
+}
 
 /* Всплывающее окно */
 .catalog__help-icon::after {
