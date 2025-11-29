@@ -1752,6 +1752,7 @@
   cursor: help;
   line-height: 1;
   margin-left: 6px;
+  transform: translateY(-2px);
 }
 
 /* Всплывающее окно */
