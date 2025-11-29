@@ -1803,18 +1803,12 @@
   white-space: pre-line; /* чтобы \n стали переносами строк */
 }
 
-/* Маленький треугольник */
-.catalog__help-icon::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 115%;
-  transform: translateX(-50%);
-  border-width: 6px;
-  border-style: solid;
-  border-color: #333 transparent transparent transparent;
-  opacity: 0;
-  transition: opacity .2s ease;
+@media (max-width: 767px) {
+    .catalog__help-icon::after{
+      width: 300px;
+      right: 0;
+      top: 130%;
+    }
 }
 
 /* Показываем подсказку при наведении */
