@@ -460,3 +460,22 @@ html { scrollbar-gutter: stable; }
     column-gap: 15px;
     overflow: hidden;
 }
+
+/* hooks */
+
+.wc-hook-marker {
+    display: inline-block;
+    font-size: 10px;
+    line-height: 1;
+    padding: 2px 4px;
+    margin: 2px;
+    border: 1px dashed #999;
+    background: rgba(255, 255, 0, 0.3);
+    color: #333;
+    z-index: 9999;
+}
+
+.wc-hook-marker::before {
+    content: "HOOK: ";
+    font-weight: bold;
+}

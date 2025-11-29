@@ -5,6 +5,61 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
+//HOOKS
+
+/**
+ * Показывать имена WooCommerce-хуков на страницах каталога.
+ * Вешаемся на спец. хук 'all' и печатаем маркер для каждого хука WooCommerce.
+ */
+
+add_action( 'init', function () {
+    // Только фронт, не админка
+    if ( is_admin() ) {
+        return;
+    }
+
+    // Подключаем только если WooCommerce активен
+    if ( ! class_exists( 'WooCommerce' ) ) {
+        return;
+    }
+
+    // Вешаем глобальный перехватчик всех хуков
+    add_action( 'all', 'plnt_wc_catalog_hooks_debug_marker', 9999 );
+} );
+
+/**
+ * Вывод маркеров хуков.
+ */
+function plnt_wc_catalog_hooks_debug_marker() {
+    // Текущий хук
+    $hook = current_filter();
+
+    // Не лезем в AJAX, REST и админку
+    if ( is_admin() || wp_doing_ajax() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+        return;
+    }
+
+    // Ограничиваемся только страницами каталога WooCommerce
+    if ( ! ( function_exists( 'is_shop' ) && ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) ) {
+        return;
+    }
+
+    // Ограничиваемся только хуками WooCommerce (чтобы не засорять вывод)
+    if ( strpos( $hook, 'woocommerce_' ) !== 0 ) {
+        return;
+    }
+
+    // На всякий случай не зацикливаемся
+    if ( $hook === 'all' ) {
+        return;
+    }
+
+    // Печатаем маленький видимый маркер хука
+    echo '<span class="wc-hook-marker" data-hook="' . esc_attr( $hook ) . '">'
+         . esc_html( $hook ) .
+         '</span>';
+}
+
 //add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
