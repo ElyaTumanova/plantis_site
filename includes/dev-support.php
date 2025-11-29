@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Отладка: показывать имена хуков WooCommerce на страницах каталога.
  */
 
-//add_action( 'wp', 'my_wc_catalog_debug_register_hooks' );
+add_action( 'wp', 'my_wc_catalog_debug_register_hooks' );
 
 function my_wc_catalog_debug_register_hooks() {
 
