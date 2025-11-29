@@ -527,6 +527,8 @@
 }
 .catalog__grid .woocommerce-product-details__short-description {
     color: var(--gray-text);
+}
+.catalog__grid .woocommerce-product-details__short-description p{
     display: inline-block;
 }
 
