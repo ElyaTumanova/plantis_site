@@ -12,20 +12,20 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Вешаемся на спец. хук 'all' и печатаем маркер для каждого хука WooCommerce.
  */
 
-add_action( 'init', function () {
-    // Только фронт, не админка
-    if ( is_admin() ) {
-        return;
-    }
+// add_action( 'init', function () {
+//     // Только фронт, не админка
+//     if ( is_admin() ) {
+//         return;
+//     }
 
-    // Подключаем только если WooCommerce активен
-    if ( ! class_exists( 'WooCommerce' ) ) {
-        return;
-    }
+//     // Подключаем только если WooCommerce активен
+//     if ( ! class_exists( 'WooCommerce' ) ) {
+//         return;
+//     }
 
-    // Вешаем глобальный перехватчик всех хуков
-    add_action( 'all', 'plnt_wc_catalog_hooks_debug_marker', 9999 );
-} );
+//     // Вешаем глобальный перехватчик всех хуков
+//     add_action( 'all', 'plnt_wc_catalog_hooks_debug_marker', 9999 );
+// } );
 
 /**
  * Вывод маркеров хуков.
