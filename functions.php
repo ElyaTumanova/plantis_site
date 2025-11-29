@@ -27,6 +27,7 @@ function ast_register_custom_fields() {
 
 /** Add functions for DEV & DEBUG */
 require get_template_directory() . '/includes/dev-support.php';
+require get_template_directory() . '/includes/helpers.php';
 
 /** Add functions for products change log */
 //require get_template_directory() . '/includes/product-change-logs.php';
