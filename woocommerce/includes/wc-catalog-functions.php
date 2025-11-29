@@ -410,6 +410,20 @@ add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product
 // // короткое описание
 add_action('woocommerce_shop_loop_item_title','woocommerce_template_single_excerpt', 20);
 
+// // информация об уходе за растением
+
+add_action('woocommerce_shop_loop_item_title','plnt_get_plants_attrs', 30);
+
+function plnt_get_plants_attrs() {
+  if(is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
+    global $product;
+    global $plants_cat_id;
+    if($product->get_id() != $plants_cat_id ) return;
+    $attrs = $product->get_attributes();
+    pr($attrs);
+  }
+}
+
 
 // // вывод меток под карточкой товара в каталоге
 add_action('woocommerce_after_shop_loop_item', 'plnt_get_product_tags', 20);

@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param mixed $var
  * @param boolean $die
  */
-function pr( $var, $die = true ) {
+function pr( $var, $die = false ) {
 	echo '<pre>';
 	print_r( $var );
 	echo '</pre>';
