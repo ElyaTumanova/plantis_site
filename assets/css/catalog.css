@@ -1773,6 +1773,8 @@
   pointer-events: none;
   transition: opacity .2s ease;
   z-index: 10;
+  content: attr(data-tip);
+  white-space: pre-line; /* чтобы \n стали переносами строк */
 }
 
 /* Маленький треугольник */

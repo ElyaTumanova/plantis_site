@@ -304,11 +304,21 @@ remove_action( 'woocommerce_shop_loop_item_title','woocommerce_template_loop_pro
 add_action('woocommerce_shop_loop_item_title', 'soChangeProductsTitle', 10 );
 function soChangeProductsTitle() {
     if ( is_shop() || is_product_category() || is_product_tag() || is_tax() ) {
-    $schema_data = 'itemprop="name"';
-} else {
-    $schema_data = '';
-}
-    echo '<h3 ' . $schema_data . ' class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '<span class = "catalog__help-icon" data-tip="' . plnt_get_plants_attrs() .'">?</span> </h3>';
+        $schema_data = 'itemprop="name"';
+    } else {
+        $schema_data = '';
+    }
+    $tip_text = plnt_get_plants_attrs();
+    echo '<h3 ' . $schema_data . ' class="' . esc_attr(
+        apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' )
+    ) . '">'
+        . get_the_title();
+
+    if ( $tip_text ) {
+        echo '<span class="catalog__help-icon" data-tip="' . esc_attr( $tip_text ) . '">?</span>';
+    }
+
+    echo '</h3>';
 }
 
 // // информация об уходе за растением
@@ -338,8 +348,7 @@ function plnt_get_plants_attrs() {
         return '';
     }
 
-    // $html = '<div class="catalog__products-attrs">';
-    $html = '';
+    $lines = [];
 
     foreach ( $attributes as $attribute ) {
 
@@ -356,13 +365,10 @@ function plnt_get_plants_attrs() {
                 continue;
             }
 
-            foreach ( $terms as $term ) {
-                $html .= '<p>'
-                    . esc_html( wc_attribute_label( $attribute->get_name() ) )
-                    . ': '
-                    . esc_html( $term->name )
-                    . '</p>';
-            }
+            $values = wp_list_pluck( $terms, 'name' );
+
+            $lines[] = wc_attribute_label( $attribute->get_name() ) . ': ' . implode( ', ', $values );
+
         } else {
             // нетаксономические (кастомные) атрибуты
             $options = $attribute->get_options();
@@ -371,18 +377,18 @@ function plnt_get_plants_attrs() {
                 continue;
             }
 
-            $html .= '<p>'
-                . esc_html( $attribute->get_name() )
-                . ': '
-                . esc_html( implode( ', ', $options ) )
-                . '</p>';
+            $lines[] = $attribute->get_name() . ': ' . implode( ', ', $options );
         }
     }
 
-    // $html .= '</div>';
+    if ( empty( $lines ) ) {
+        return '';
+    }
 
-    return $html;
+    // Возвращаем одну строку с переносами
+    return implode( "\n", $lines );
 }
+
 
 
 //оформление карточки товара в каталоге
