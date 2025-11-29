@@ -506,6 +506,8 @@
     line-height: 1.1;
     margin-bottom: 5px;
     margin-top: 15px;
+    display: flex;
+    align-items: center;
 }
 
 @media (max-width: 767px) {
@@ -1751,18 +1753,16 @@
   color: var(--gray-text);
   cursor: help;
   line-height: 1;
-  bottom: 3px;
-  left: 6px;
+  margin-left: 6px;
 }
 
 /* Всплывающее окно */
 .catalog__help-icon::after {
   content: attr(data-tip);
   position: absolute;
-  left: 0;
+  left: 10%;
   right: 0;
-  bottom: 125%;              /* над иконкой */
-  transform: translateX(-50%);
+  bottom: 90%;
   background: #333;
   color: #fff;
   padding: 6px 10px;
