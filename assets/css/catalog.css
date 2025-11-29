@@ -1808,6 +1808,8 @@
       width: 300px;
       right: 0;
       top: 130%;
+      left: auto;
+      bottom: auto;
     }
 }
 
