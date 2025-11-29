@@ -1800,7 +1800,7 @@
   color: #fff;
   padding: 6px 10px;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.4;
   opacity: 0;
   pointer-events: none;
@@ -1820,8 +1820,7 @@
 }
 
 /* Показываем подсказку при наведении */
-.catalog__help-icon:hover::after,
-.catalog__help-icon:hover::before {
+.catalog__help-icon:hover::after {
   opacity: 1;
   text-decoration: none;
 }
