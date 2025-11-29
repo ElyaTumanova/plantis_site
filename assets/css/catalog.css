@@ -506,8 +506,6 @@
     line-height: 1.1;
     margin-bottom: 5px;
     margin-top: 15px;
-    display: flex;
-    align-items: center;
 }
 
 @media (max-width: 767px) {
@@ -1761,7 +1759,7 @@
   content: attr(data-tip);
   position: absolute;
   left: 10%;
-  right: 0;
+  right: 5%;
   bottom: 90%;
   background: #333;
   color: #fff;
@@ -1794,4 +1792,5 @@
 .catalog__help-icon:hover::after,
 .catalog__help-icon:hover::before {
   opacity: 1;
+  text-decoration: none;
 }
