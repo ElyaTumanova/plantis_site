@@ -213,8 +213,8 @@ if(copyShareBtn) {
 # Убираем клик по кнопке вопроса
 --------------------------------------------------------------*/
 document.addEventListener('click', function(e) {
-  console.log(e.target);
   if (e.target.closest('.catalog__help-icon')) {
+    console.log(e.target);
     e.preventDefault();
     e.stopPropagation();
   }
