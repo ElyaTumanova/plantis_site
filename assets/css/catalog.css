@@ -1780,6 +1780,9 @@
       top: 10px;
       right: 20px;
       z-index: 2;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
     }
 }
 
@@ -1810,9 +1813,6 @@
       top: 130%;
       left: auto;
       bottom: auto;
-      width: 24px;
-      height: 24px;
-      font-size: 14px;
     }
 }
 
