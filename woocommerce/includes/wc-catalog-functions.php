@@ -423,6 +423,7 @@ function plnt_get_plants_attrs() {
     }
     $attributes = $product->get_attributes();
     // pr($attributes);
+    echo ('<div class="catalog__products-attrs">');
     foreach ( $attributes as $attribute ) {
 
         // пропускаем атрибуты, не отмеченные "видимыми"
@@ -442,6 +443,7 @@ function plnt_get_plants_attrs() {
             echo '<p>' . esc_html( $attribute->get_name() ) . ': ' . esc_html( implode( ', ', $options ) ) . '</p>';
         }
     }
+    echo ('</div>');
   }
 }
 
