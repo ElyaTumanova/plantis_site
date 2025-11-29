@@ -420,7 +420,7 @@ function plnt_get_plants_attrs() {
     global $plants_cat_id;
     if($product->get_id() != $plants_cat_id ) return;
     $attrs = $product->get_attributes();
-    pr($attrs);
+    print_r($attrs);
   }
 }
 
