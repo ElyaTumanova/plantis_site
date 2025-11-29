@@ -1735,6 +1735,7 @@
 .catalog__short-with-tip {
   position: relative;
   width: 100%;
+  max-width: 295px;
 }
 
 .catalog__products-attrs {
