@@ -338,7 +338,8 @@ function plnt_get_plants_attrs() {
         return '';
     }
 
-    $html = '<div class="catalog__products-attrs">';
+    // $html = '<div class="catalog__products-attrs">';
+    $html = '';
 
     foreach ( $attributes as $attribute ) {
 
@@ -378,7 +379,7 @@ function plnt_get_plants_attrs() {
         }
     }
 
-    $html .= '</div>';
+    // $html .= '</div>';
 
     return $html;
 }
