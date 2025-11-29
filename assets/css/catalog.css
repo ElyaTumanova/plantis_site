@@ -1735,4 +1735,63 @@
   position: absolute;
   visibility: hidden;
   opacity: 0;
+  font-size: 14px;
+}
+
+.catalog__help-icon {
+  font-size: 14px;
+}
+
+.catalog__help-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid #999;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: help;
+  position: relative;
+  line-height: 1;
+}
+
+/* Всплывающее окно */
+.catalog__help-icon::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  bottom: 125%;              /* над иконкой */
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+  z-index: 10;
+}
+
+/* Маленький треугольник */
+.catalog__help-icon::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 115%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+/* Показываем подсказку при наведении */
+.catalog__help-icon:hover::after,
+.catalog__help-icon:hover::before {
+  opacity: 1;
 }
