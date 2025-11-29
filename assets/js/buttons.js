@@ -212,10 +212,15 @@ if(copyShareBtn) {
 /*--------------------------------------------------------------
 # Убираем клик по кнопке вопроса
 --------------------------------------------------------------*/
-document.addEventListener('click', function(e) {
-  if (e.target.closest('.catalog__help-icon')) {
-    console.log(e.target);
-    e.preventDefault();
-    e.stopPropagation();
-  }
+function handleHelpIconTap(e) {
+  const icon = e.target.closest('.catalog__help-icon');
+  if (!icon) return;
+
+  e.preventDefault();
+  e.stopPropagation();
+  // тут можешь ещё открыть/закрыть тултип по клику
+}
+
+['click', 'touchstart'].forEach(function(evtName) {
+  document.addEventListener(evtName, handleHelpIconTap, { passive: false });
 });
