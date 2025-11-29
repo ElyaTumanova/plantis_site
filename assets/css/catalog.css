@@ -1767,12 +1767,12 @@
   margin-left: 6px;
   vertical-align: top;
 }
-
+/* 
 @media (max-width: 767px) {
     .catalog__help-icon {
       margin-left: 20px;
     }
-}
+} */
 
 /* Всплывающее окно */
 .catalog__help-icon::after {
