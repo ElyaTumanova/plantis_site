@@ -245,12 +245,12 @@ class MenuMobPopup extends Popup {
     })
 
     this.catalogOpenBtn.addEventListener ("click", (evt)=>{
-        this.openCatalog
+        this.openCatalog()
     })
   }
 
   addAllListeners() {
-    super.addAllListeners
+    super.addAllListeners()
     addMenuCatalogBtnsListeners()
   }
 }
