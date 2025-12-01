@@ -245,7 +245,7 @@ class MenuMobPopup extends Popup {
         this.openCatalog()
     })
 
-    this.headerCatalogOpenBtn().addEventListener ("click", (evt)=>{
+    this.headerCatalogOpenBtn.addEventListener ("click", (evt)=>{
         this.openPopup()
         this.openCatalog()
     })
