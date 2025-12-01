@@ -91,4 +91,5 @@ document.addEventListener('DOMContentLoaded', initPopups())
 function initPopups() {
   new Popup ('page-popup')
   new LogRegPopup ('login-popup')
+  new LogRegPopup ('register-popup')
 }
