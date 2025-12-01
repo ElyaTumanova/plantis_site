@@ -164,6 +164,11 @@ class RegistrPopup extends Popup {
     this.loginPopup.sayHello()
   }
 
+  openPopup () {
+    super.openPopup()
+    this.loginPopup.closePopup()
+  }
+
   addOpenListeners() {
     super.addOpenListeners()
 
