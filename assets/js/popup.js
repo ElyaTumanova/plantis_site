@@ -21,6 +21,7 @@ class Popup {
   togglePopup () {
     this.popup.classList.toggle('popup_active')
     this.body.classList.toggle ('fix-body')
+    console.log('toggle' + this.popupName)
   }
 
   cleanForm () {
