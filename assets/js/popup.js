@@ -16,21 +16,22 @@ class Popup {
     this.container = this.popup.querySelector('.popup__container')
   }
 
-  togglePopup () {
-    this.popup.classList.toggle('popup_active')
-    this.body.classList.toggle ('fix-body')
+  openPopup () {
+    this.popup.classList.add('popup_active')
+    this.body.classList.add ('fix-body')
     console.log('toggle ' + this.popupName)
   }
 
   closePopup () {
-    this.togglePopup()
+    this.popup.classList.remove('popup_active')
+    this.body.classList.remove ('fix-body')
   }
 
   addOpenListeners () {
     // открытие попапа по любой из кнопок
     this.openBtns.forEach(button => {
       button.addEventListener ('click', (evt)=>{
-        this.togglePopup()
+        this.openPopup()
       })
     })
   }
@@ -122,7 +123,7 @@ class LoginPopup extends Popup {
   initDom() {
     super.initDom() 
     this.errorMsg = this.popup.querySelector('.woocommerce-error')
-    this.mobOpenBtn = document.querySelector('.burger-menu__account')
+    // this.mobOpenBtn = document.querySelector('.burger-menu__account')
   }
 
 
@@ -130,7 +131,7 @@ class LoginPopup extends Popup {
     super.closePopup()
 
     if (this.errorMsg) {
-      this.togglePopup()
+      this.openPopup()
     }
   }
 
@@ -140,7 +141,7 @@ class LoginPopup extends Popup {
     if(this.mobOpenBtn) {
       this.mobOpenBtn.addEventListener ("click", (evt)=>{
         this.togglePopup()
-        menuMobClass.closeMobMenu()
+        // menuMobClass.closeMobMenu() tbd
       })
     }
   }
@@ -163,17 +164,13 @@ class RegistrPopup extends Popup {
     this.loginPopup.sayHello()
   }
 
-  togglePopup () {
-    super.togglePopup()
-    this.loginPopup.togglePopup()
-  }
-
   addOpenListeners() {
     super.addOpenListeners()
 
     this.loginOnRegPopupBtn.forEach((btn)=>
       btn.addEventListener ("click", (evt)=>{
-        this.togglePopup()
+        this.closePopup()
+        this.loginPopup.openPopup()
       })
     );
   }
