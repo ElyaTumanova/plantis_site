@@ -99,8 +99,6 @@ class LoginPopup extends Popup {
     this.siblingPopup.sayHello()
   }
 
-
-
   closePopup() {
     super.closePopup()
 
@@ -114,12 +112,29 @@ class RegistrPopup extends Popup {
   constructor (popupName) {
     super (popupName)
     this.siblingPopup = null
+    this.loginOnRegPopupBtn = this.popup.querySelectorAll('.register-form__login-btn')
   }
 
   setSiblingPopup(popupInstance) {
     this.siblingPopup = popupInstance
     console.log(this.siblingPopup)
     this.siblingPopup.sayHello()
+  }
+
+  togglePopup () {
+    super.togglePopup()
+    this.siblingPopup.togglePopup()
+  }
+
+
+  addOpenListeners() {
+    super.addOpenListeners()
+
+    this.loginOnRegPopupBtn.forEach((btn)=>
+      btn.addEventListener ("click", (evt)=>{
+        togglePopup ()
+      })
+    );
   }
 
 }
