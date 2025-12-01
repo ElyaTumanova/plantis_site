@@ -1,21 +1,21 @@
 class Popup {
   constructor(popupName) {
-    // Инициализация полей класса
     this.popupName = popupName
-    this.popup = document.querySelector(`.${popupName}`)
-    this.openBtns = document.querySelectorAll(`.${popupName}-open-btn`)
+  }
+
+  sayHello() {
+    console.log('hello '+ this.popupName)
+  }
+
+  initDom() {
+    this.popup = document.querySelector(`.${this.popupName}`)
+    this.openBtns = document.querySelectorAll(`.${this.popupName}-open-btn`)
     this.body = document.querySelector('body')
     this.overlay = this.popup.querySelector('.popup-overlay')
     this.closeBtn = this.popup.querySelector('.popup__close')
     this.container = this.popup.querySelector('.page-popup__container')
     this.contactForm = this.popup.querySelector('.wpcf7-form')
     this.preloader = this.popup.querySelector('.preloader')
-
-    this.addAllListeners()
-  }
-
-  sayHello() {
-    console.log('hello '+ this.popupName)
   }
 
   togglePopup () {
@@ -85,12 +85,21 @@ class Popup {
     this.addCloseListeners()
     this.addContactFormListeners()
   }
+
+  init() {
+    this.initDom();
+    this.addAllListeners();
+  }
 }
 
 class LoginPopup extends Popup {
   constructor (popupName) {
     super (popupName)
     this.siblingPopup = null
+  }
+
+  initDom() {
+    super.initDom() 
     this.errorMsg = this.popup.querySelector('.woocommerce-error')
   }
 
@@ -113,6 +122,10 @@ class RegistrPopup extends Popup {
   constructor (popupName) {
     super (popupName)
     this.siblingPopup = null
+  }
+
+  initDom() {
+    super.initDom() 
     this.loginOnRegPopupBtn = this.popup.querySelectorAll('.register-form__login-btn')
   }
 
@@ -132,21 +145,25 @@ class RegistrPopup extends Popup {
 
     this.loginOnRegPopupBtn.forEach((btn)=>
       btn.addEventListener ("click", (evt)=>{
-        this.togglePopup ()
+        this.togglePopup()
       })
     );
   }
-
 }
 
 
 document.addEventListener('DOMContentLoaded', initPopups)
 
 function initPopups() {
-  const poup = new Popup ('page-popup')
+  const popup = new Popup ('page-popup')
   const loginPoup = new LoginPopup ('login-popup')
   const registrPoup = new RegistrPopup ('register-popup')
 
   loginPoup.setSiblingPopup(registrPoup)
   registrPoup.setSiblingPopup(loginPoup)
+
+  popup.init()
+  loginPoup.init()
+  registrPoup.init()
+
 }
