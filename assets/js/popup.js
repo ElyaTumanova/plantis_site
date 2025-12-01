@@ -81,7 +81,39 @@ class Popup {
   }
 }
 
-class LogRegPopup extends Popup {
+class LoginPopup extends Popup {
+  constructor (popupName) {
+    super (popupName)
+    this.siblingPopup = null
+    this.errorMsg = this.popup.querySelector('.woocommerce-error')
+  }
+
+  setSiblingPopup(popupInstance) {
+    this.siblingPopup = popupInstance
+    console.log(this.siblingPopup)
+  }
+
+
+
+  closePopup() {
+    super.closePopup()
+
+    if (this.errorMsg) {
+      this.togglePopup()
+    }
+  }
+}
+
+class RegistrPopup extends Popup {
+  constructor (popupName) {
+    super (popupName)
+    this.siblingPopup = null
+  }
+
+  setSiblingPopup(popupInstance) {
+    this.siblingPopup = popupInstance
+    console.log(this.siblingPopup)
+  }
 
 }
 
@@ -89,7 +121,10 @@ class LogRegPopup extends Popup {
 document.addEventListener('DOMContentLoaded', initPopups())
 
 function initPopups() {
-  new Popup ('page-popup')
-  new LogRegPopup ('login-popup')
-  new LogRegPopup ('register-popup')
+  const poup = new Popup ('page-popup')
+  const loginPoup = new LoginPopup ('login-popup')
+  const registrPoup = new RegistrPopup ('register-popup')
+
+  loginPopup.setSiblingPopup(registrPoup)
+  registrPoup.setSiblingPopup(loginPopup)
 }
