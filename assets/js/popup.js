@@ -125,6 +125,6 @@ function initPopups() {
   const loginPoup = new LoginPopup ('login-popup')
   const registrPoup = new RegistrPopup ('register-popup')
 
-  loginPopup.setSiblingPopup(registrPoup)
-  registrPoup.setSiblingPopup(loginPopup)
+  loginPoup.setSiblingPopup(registrPoup)
+  registrPoup.setSiblingPopup(loginPoup)
 }
