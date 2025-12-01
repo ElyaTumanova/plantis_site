@@ -84,7 +84,7 @@ function toggle_reg_popup () {
 const mobOpenBtn = document.querySelector('.burger-menu__account'); 
 if(mobOpenBtn) {
     mobOpenBtn.addEventListener ("click", (evt)=>{
-        toggle_mob_menu ();
+        toggle_mob_menu();
         toggle_login_popup ();
     });
 }

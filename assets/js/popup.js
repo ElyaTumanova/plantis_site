@@ -95,25 +95,33 @@ class Popup {
 class LoginPopup extends Popup {
   constructor (popupName) {
     super (popupName)
-    // this.loginPopup = null
+    this.errorMsg = null
+    this.mobOpenBtn = null
   }
 
   initDom() {
     super.initDom() 
     this.errorMsg = this.popup.querySelector('.woocommerce-error')
+    this.mobOpenBtn = document.querySelector('.burger-menu__account')
   }
 
-  // setLoginPopup(popupInstance) {
-  //   this.loginPopup = popupInstance
-  //   console.log(this.loginPopup)
-  //   this.loginPopup.sayHello()
-  // }
 
   closePopup() {
     super.closePopup()
 
     if (this.errorMsg) {
       this.togglePopup()
+    }
+  }
+
+  addOpenListeners() {
+    super.addOpenListeners()
+
+    if(this.mobOpenBtn) {
+      this.mobOpenBtn.addEventListener ("click", (evt)=>{
+        this.togglePopup()
+        menuMobClass.closeMobMenu()
+      })
     }
   }
 }
