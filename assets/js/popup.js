@@ -21,7 +21,7 @@ class Popup {
   togglePopup () {
     this.popup.classList.toggle('popup_active')
     this.body.classList.toggle ('fix-body')
-    console.log('toggle' + this.popupName)
+    console.log('toggle ' + this.popupName)
   }
 
   cleanForm () {
@@ -133,7 +133,7 @@ class RegistrPopup extends Popup {
 
     this.loginOnRegPopupBtn.forEach((btn)=>
       btn.addEventListener ("click", (evt)=>{
-        togglePopup ()
+        this.togglePopup ()
       })
     );
   }
