@@ -13,6 +13,10 @@ class Popup {
     this.addAllListeners()
   }
 
+  sayHello() {
+    console.log('hello '.popupName)
+  }
+
   togglePopup () {
     this.popup.classList.toggle('popup_active')
     this.body.classList.toggle ('fix-body')
@@ -91,6 +95,7 @@ class LoginPopup extends Popup {
   setSiblingPopup(popupInstance) {
     this.siblingPopup = popupInstance
     console.log(this.siblingPopup)
+    this.siblingPopup.sayHello()
   }
 
 
@@ -113,6 +118,7 @@ class RegistrPopup extends Popup {
   setSiblingPopup(popupInstance) {
     this.siblingPopup = popupInstance
     console.log(this.siblingPopup)
+    this.siblingPopup.sayHello()
   }
 
 }
