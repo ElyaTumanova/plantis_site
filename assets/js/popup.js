@@ -182,10 +182,32 @@ class RegistrPopup extends Popup {
 }
 
 class MenuMobPopup extends Popup {
+
+  constructor (popupName) {
+    super (popupName)
+    this.menu = null
+    this.menuOpenBtn = null
+    this.catalogOpenBtn = null
+    this.menuWrap = null
+    this.catalowWrap = null
+    this.headerCatalogOpenBtn = null
+  }
+
+  initDom() {
+    super.initDom()
+    this.menu = this.popup.querySelector('.modal-mob')
+    this.menuOpenBtn = this.popup.querySelector('.burger-menu__nav_menu')
+    this.catalogOpenBtn = this.popup.querySelector('.burger-menu__nav_catalog')
+    this.menuWrap = this.popup.querySelector('.burger-menu__wrap')
+    this.catalowWrap = this.popup.querySelector('.catalog-menu__wrap')
+    this.headerCatalogOpenBtn = document.querySelector('.header__catalog_mob')
+
+  }
   static closeMobMenu() {
     console.log('hello super menu')
   }
 }
+
 document.addEventListener('DOMContentLoaded', initPopups)
 
 function initPopups() {
