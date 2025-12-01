@@ -122,11 +122,10 @@ class RegistrPopup extends Popup {
     this.siblingPopup.sayHello()
   }
 
-  // togglePopup () {
-  //   super.togglePopup()
-  //   this.siblingPopup.togglePopup()
-  // }
-
+  togglePopup () {
+    super.togglePopup()
+    this.siblingPopup.togglePopup()
+  }
 
   // addOpenListeners() {
   //   super.addOpenListeners()
