@@ -61,7 +61,7 @@ $catalog_icon = carbon_get_theme_option('catalog_icon');
 										<span class="header-btn__label">Войти</span>		
 									</a>
 								<?php else :?> 
-									<div class="header-btn__wrap login-btn">
+									<div class="header-btn__wrap login-btn login-popup-open-btn">
 										<?php echo $account_icon ?>	
 										<span class="header-btn__label">Войти</span>		
 									</div>

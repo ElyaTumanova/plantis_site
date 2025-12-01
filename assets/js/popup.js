@@ -10,7 +10,7 @@ class Popup {
     this.contactForm = this.popup.querySelector('.wpcf7-form')
     this.preloader = this.popup.querySelector('.preloader')
 
-    this.addListeners()
+    this.addAllListeners()
   }
 
   togglePopup () {
@@ -27,6 +27,15 @@ class Popup {
   closePopup () {
     this.togglePopup()
     this.cleanForm ()
+  }
+
+  addOpenListeners () {
+    // открытие попапа по любой из кнопок
+    this.openBtns.forEach(button => {
+      button.addEventListener ('click', (evt)=>{
+        this.togglePopup()
+      })
+    })
   }
 
   addCloseListeners() {
@@ -65,23 +74,21 @@ class Popup {
     }
   }
 
-  addListeners() {
-    // открытие попапа по любой из кнопок
-    this.openBtns.forEach(button => {
-      button.addEventListener ('click', (evt)=>{
-        this.togglePopup()
-      })
-    })
-
+  addAllListeners() {
+    this.addOpenListeners()
     this.addCloseListeners()
-
     this.addContactFormListeners()
-
   }
 }
+
+class LogRegPopup extends Popup {
+
+}
+
 
 document.addEventListener('DOMContentLoaded', initPopups())
 
 function initPopups() {
-  new Popup ('page-popup') 
+  new Popup ('page-popup')
+  new LogRegPopup ('login-popup')
 }
