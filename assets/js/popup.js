@@ -197,6 +197,6 @@ function initPopups() {
   popup.init()
   loginPoup.init()
   registrPoup.init()
-  menuMob.init()
+  menuMobPopup.init()
 
 }
