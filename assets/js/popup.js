@@ -1,6 +1,7 @@
 class Popup {
   constructor(popupName) {
     // Инициализация полей класса
+    this.popupName = popupName
     this.popup = document.querySelector(`.${popupName}`)
     this.openBtns = document.querySelectorAll(`.${popupName}-open-btn`)
     this.body = document.querySelector('body')
@@ -14,7 +15,7 @@ class Popup {
   }
 
   sayHello() {
-    console.log('hello '.popupName)
+    console.log('hello '+ this.popupName)
   }
 
   togglePopup () {
