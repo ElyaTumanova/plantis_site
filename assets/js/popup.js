@@ -142,7 +142,7 @@ class LoginPopup extends Popup {
 
     if(this.mobMenuLoginPopupOpenBtn) {
       this.mobMenuLoginPopupOpenBtn.addEventListener ("click", (evt)=>{
-        this.togglePopup()
+        this.openPopup()
         // menuMobClass.closeMobMenu() tbd
       })
     }
