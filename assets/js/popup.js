@@ -236,7 +236,8 @@ class MenuMobPopup extends Popup {
   }
 
   static closeMobMenu() {
-    this.closePopup()
+    if (!MenuMobPopup.current) return
+    MenuMobPopup.current.closePopup()
     console.log('hello super menu')
   }
 
