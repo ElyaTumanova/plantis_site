@@ -1,6 +1,11 @@
 class Popup {
   constructor(popupName) {
     this.popupName = popupName
+    this.popup = null
+    this.openBtns = null
+    this.body = null
+    this.overlay = null
+    this.closeBtn = null
   }
 
   sayHello() {
@@ -13,7 +18,6 @@ class Popup {
     this.body = document.querySelector('body')
     this.overlay = this.popup.querySelector('.popup-overlay')
     this.closeBtn = this.popup.querySelector('.popup__close')
-    // this.container = this.popup.querySelector('.popup__container')
   }
 
   openPopup () {
@@ -28,7 +32,6 @@ class Popup {
   }
 
   addOpenListeners () {
-    // открытие попапа по любой из кнопок
     this.openBtns.forEach(button => {
       button.addEventListener ('click', (evt)=>{
         this.openPopup()
@@ -71,6 +74,7 @@ class CF7Popup extends Popup {
     this.contactForm = null
     this.preloader = null
     this.container = null
+    this.serviceNameInput = null
   }
 
   initDom() {
@@ -78,6 +82,7 @@ class CF7Popup extends Popup {
     this.contactForm = this.popup.querySelector('.wpcf7-form')
     this.preloader = this.popup.querySelector('.preloader')
     this.container = this.popup.querySelector('.popup__container')
+    this.serviceNameInput = document.querySelector('.ukhod-popup-service-name')
   }
 
   cleanForm () {
@@ -106,6 +111,17 @@ class CF7Popup extends Popup {
             this.container.style.visibility = 'visible';
           }, 4000);
       }, false);
+    }
+  }
+
+  addServiceNameListeners() {
+    if(this.serviceNameInput) {
+      this.openBtns.forEach(btn => {
+        btn.addEventListener('click', (evt) => {
+          this.serviceNameInput.setAttribute('value',evt.target.name);
+          console.log(this.serviceNameInput)
+        });
+      });
     }
   }
 
@@ -183,7 +199,6 @@ class RegistrPopup extends Popup {
 }
 
 class MenuMobPopup extends Popup {
-
   constructor (popupName) {
     super (popupName)
     this.menu = null
@@ -191,7 +206,7 @@ class MenuMobPopup extends Popup {
     this.catalogOpenBtn = null
     this.menuWrap = null
     this.catalowWrap = null
-    this.headerCatalogOpenBtn = null
+    this.mobHeaderCatalogOpenBtn = null
     this.mobMenuLoginPopupOpenBtn = null
   }
 
@@ -202,7 +217,7 @@ class MenuMobPopup extends Popup {
     this.catalogOpenBtn = this.popup.querySelector('.burger-menu__nav_catalog')
     this.menuWrap = this.popup.querySelector('.burger-menu__wrap')
     this.catalowWrap = this.popup.querySelector('.catalog-menu__wrap')
-    this.headerCatalogOpenBtn = document.querySelector('.header__catalog_mob')
+    this.mobHeaderCatalogOpenBtn = document.querySelector('.header__catalog_mob')
     this.mobMenuLoginPopupOpenBtn = document.querySelector('.burger-menu__account')
   }
 
@@ -245,7 +260,7 @@ class MenuMobPopup extends Popup {
         this.openCatalog()
     })
 
-    this.headerCatalogOpenBtn.addEventListener ("click", (evt)=>{
+    this.mobHeaderCatalogOpenBtn.addEventListener ("click", (evt)=>{
         this.openPopup()
         this.openCatalog()
     })
