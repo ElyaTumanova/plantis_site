@@ -63,7 +63,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         <?php do_action( 'woocommerce_after_customer_login_form' ); ?>
 
-        <div class="login__close">✖</div>
+        <div class="login__close popup__close">✖</div>
     </div>
     <div class="login__popup-overlay popup-overlay"></div>
 </div>
