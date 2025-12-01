@@ -141,7 +141,7 @@ class RegistrPopup extends Popup {
 }
 
 
-document.addEventListener('DOMContentLoaded', initPopups())
+document.addEventListener('DOMContentLoaded', initPopups)
 
 function initPopups() {
   const poup = new Popup ('page-popup')
