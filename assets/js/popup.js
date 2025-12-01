@@ -210,7 +210,7 @@ class MenuMobPopup extends Popup {
     super.openPopup()
     this.menu.classList.add ('modal-mob_active')
     this.menu.scrollTo(0, 0)
-    this.openMenu
+    this.openMenu()
   }
 
   closePopup() {
