@@ -192,7 +192,7 @@ function initPopups() {
   const registrPoup = new RegistrPopup ('register-popup')
   registrPoup.setLoginPopup(loginPoup)
 
-  const menuMob = new menuMob ('burger-menu')
+  const menuMobPopup = new menuMob ('burger-menu')
 
   popup.init()
   loginPoup.init()
