@@ -100,7 +100,7 @@ $catalog_icon = carbon_get_theme_option('catalog_icon');
 			<div class="logo">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
 			</div><!-- .logo -->
-			<div class="header__mob-menu">
+			<div class="header__mob-menu burger-menu-open-btn">
 				<button class="header-btn__wrap header-btn__wrap_mob">
 					<img class="header-btn__icon" src="<?php echo $menu_icon_mob ?>" alt="menu" width="21" height="21">		
 				</button>

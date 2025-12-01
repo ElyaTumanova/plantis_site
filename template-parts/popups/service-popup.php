@@ -6,7 +6,7 @@ $close_icon = carbon_get_theme_option('close_icon');
 ?>
 
 <div class="page-popup popup service-popup">
-    <div class="page-popup__container">
+    <div class="page-popup__container popup__container">
         <div class="page-popup__wrap">
             <h2 class="page-popup__heading heading-2">Оставить заявку</h2>
             <span class="page-popup__close popup__close heading-2"><?php echo $close_icon ?></span>

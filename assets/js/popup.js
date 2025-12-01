@@ -13,7 +13,7 @@ class Popup {
     this.body = document.querySelector('body')
     this.overlay = this.popup.querySelector('.popup-overlay')
     this.closeBtn = this.popup.querySelector('.popup__close')
-    this.container = this.popup.querySelector('.page-popup__container')
+    this.container = this.popup.querySelector('.popup__container')
   }
 
   togglePopup () {
@@ -179,7 +179,11 @@ class RegistrPopup extends Popup {
   }
 }
 
-
+class menuMob extends Popup {
+  static closeMobMenu() {
+    console.log('hello super menu')
+  }
+}
 document.addEventListener('DOMContentLoaded', initPopups)
 
 function initPopups() {
@@ -188,8 +192,11 @@ function initPopups() {
   const registrPoup = new RegistrPopup ('register-popup')
   registrPoup.setLoginPopup(loginPoup)
 
+  const menuMob = new menuMob ('burger-menu')
+
   popup.init()
   loginPoup.init()
   registrPoup.init()
+  menuMob.init()
 
 }

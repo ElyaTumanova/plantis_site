@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="register-popup popup">
-    <div class="plnt-customer-register page-popup__container">
+    <div class="plnt-customer-register page-popup__container popup__container">
         <?php //wc_get_template('myaccount/form-login.php'); ?>
 
 

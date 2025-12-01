@@ -49,8 +49,8 @@ $close_icon = carbon_get_theme_option('close_icon');
 
 <?php //get_template_part('template-parts/popups/search-popup');?>
 <div class="burger-menu"> 
-    <div class="modal-mob">
-        <div class="modal-mob__close burger-menu__close button"><?php echo $close_icon ?></div>
+    <div class="modal-mob popup__container">
+        <div class="modal-mob__close popup__close button"><?php echo $close_icon ?></div>
         <div class="burger-menu__nav container">
             <div class="burger-menu__nav-btn burger-menu__nav_menu">Меню</div>
             <div class="burger-menu__nav-btn burger-menu__nav_catalog">Каталог</div>
@@ -60,7 +60,7 @@ $close_icon = carbon_get_theme_option('close_icon');
             <?php get_template_part('template-parts/catalog-menu');?>
         </div>
     </div>
-    <div class="modal-mob__overlay"></div>
+    <div class="popup-overlay"></div>
 </div>
 
 <?php 

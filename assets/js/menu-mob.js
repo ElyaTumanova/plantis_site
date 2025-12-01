@@ -1,11 +1,7 @@
 /*--------------------------------------------------------------
 # Menu in header for mobile
 --------------------------------------------------------------*/
-class menuMobClass {
-  static closeMobMenu() {
-    console.log('hello super menu')
-  }
-}
+
 const menuMobWrap = document.querySelector('.burger-menu');
 const menuMob = document.querySelector('.burger-menu .modal-mob');
 const menuMobOverlay = document.querySelector('.burger-menu .modal-mob__overlay');
