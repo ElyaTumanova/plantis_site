@@ -251,7 +251,7 @@ class MenuMobPopup extends Popup {
 
   addAllListeners() {
     super.addAllListeners()
-    addMenuCatalogBtnsListeners()
+    this.addMenuCatalogBtnsListeners()
   }
 }
 
