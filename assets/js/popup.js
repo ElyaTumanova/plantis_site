@@ -125,7 +125,7 @@ class LoginPopup extends Popup {
   initDom() {
     super.initDom() 
     this.errorMsg = this.popup.querySelector('.woocommerce-error')
-    // this.mobOpenBtn = document.querySelector('.burger-menu__account')
+    this.mobOpenBtn = document.querySelector('.burger-menu__account')
   }
 
 
