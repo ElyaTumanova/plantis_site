@@ -122,21 +122,21 @@ class RegistrPopup extends Popup {
     this.siblingPopup.sayHello()
   }
 
-  togglePopup () {
-    super.togglePopup()
-    this.siblingPopup.togglePopup()
-  }
+  // togglePopup () {
+  //   super.togglePopup()
+  //   this.siblingPopup.togglePopup()
+  // }
 
 
-  addOpenListeners() {
-    super.addOpenListeners()
+  // addOpenListeners() {
+  //   super.addOpenListeners()
 
-    this.loginOnRegPopupBtn.forEach((btn)=>
-      btn.addEventListener ("click", (evt)=>{
-        this.togglePopup ()
-      })
-    );
-  }
+  //   this.loginOnRegPopupBtn.forEach((btn)=>
+  //     btn.addEventListener ("click", (evt)=>{
+  //       this.togglePopup ()
+  //     })
+  //   );
+  // }
 
 }
 
