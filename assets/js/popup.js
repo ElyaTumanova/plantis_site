@@ -143,7 +143,6 @@ class LoginPopup extends Popup {
     if(this.mobMenuLoginPopupOpenBtn) {
       this.mobMenuLoginPopupOpenBtn.addEventListener ("click", (evt)=>{
         this.openPopup()
-        MenuMobPopup.closeMobMenu() 
       })
     }
   }
@@ -193,6 +192,7 @@ class MenuMobPopup extends Popup {
     this.menuWrap = null
     this.catalowWrap = null
     this.headerCatalogOpenBtn = null
+    this.mobMenuLoginPopupOpenBtn = null
   }
 
   initDom() {
@@ -203,7 +203,7 @@ class MenuMobPopup extends Popup {
     this.menuWrap = this.popup.querySelector('.burger-menu__wrap')
     this.catalowWrap = this.popup.querySelector('.catalog-menu__wrap')
     this.headerCatalogOpenBtn = document.querySelector('.header__catalog_mob')
-
+    this.mobMenuLoginPopupOpenBtn = document.querySelector('.burger-menu__account')
   }
 
   openPopup() {
@@ -235,11 +235,6 @@ class MenuMobPopup extends Popup {
     this.catalogOpenBtn.classList.add('burger-menu__nav-btn_active');
   }
 
-  static closeMobMenu() {
-    if (!MenuMobPopup.current) return
-    MenuMobPopup.current.closePopup()
-    console.log('hello super menu')
-  }
 
   addMenuCatalogBtnsListeners() {
     this.menuOpenBtn.addEventListener ("click", (evt)=>{
@@ -249,6 +244,11 @@ class MenuMobPopup extends Popup {
     this.catalogOpenBtn.addEventListener ("click", (evt)=>{
         this.openCatalog()
     })
+  }
+
+  addCloseListeners() {
+    super.addCloseListeners()
+    this.mobMenuLoginPopupOpenBtn.closePopup()
   }
 
   addAllListeners() {
