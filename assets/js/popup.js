@@ -143,7 +143,7 @@ class LoginPopup extends Popup {
     if(this.mobMenuLoginPopupOpenBtn) {
       this.mobMenuLoginPopupOpenBtn.addEventListener ("click", (evt)=>{
         this.openPopup()
-        // menuMobClass.closeMobMenu() tbd
+        MenuMobPopup.closeMobMenu() 
       })
     }
   }
@@ -236,6 +236,7 @@ class MenuMobPopup extends Popup {
   }
 
   static closeMobMenu() {
+    this.closePopup()
     console.log('hello super menu')
   }
 
