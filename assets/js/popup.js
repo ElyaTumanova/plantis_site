@@ -179,7 +179,7 @@ class RegistrPopup extends Popup {
   }
 }
 
-class menuMob extends Popup {
+class MenuMobPopup extends Popup {
   static closeMobMenu() {
     console.log('hello super menu')
   }
@@ -192,7 +192,7 @@ function initPopups() {
   const registrPoup = new RegistrPopup ('register-popup')
   registrPoup.setLoginPopup(loginPoup)
 
-  const menuMobPopup = new menuMob ('burger-menu')
+  const menuMobPopup = new MenuMobPopup ('burger-menu')
 
   popup.init()
   loginPoup.init()
