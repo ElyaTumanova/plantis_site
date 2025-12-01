@@ -14,8 +14,6 @@ class Popup {
     this.overlay = this.popup.querySelector('.popup-overlay')
     this.closeBtn = this.popup.querySelector('.popup__close')
     this.container = this.popup.querySelector('.page-popup__container')
-    this.contactForm = this.popup.querySelector('.wpcf7-form')
-    this.preloader = this.popup.querySelector('.preloader')
   }
 
   togglePopup () {
@@ -24,15 +22,8 @@ class Popup {
     console.log('toggle ' + this.popupName)
   }
 
-  cleanForm () {
-    if(this.contactForm !=null) {
-      this.contactForm.reset()
-    }
-  }
-
   closePopup () {
     this.togglePopup()
-    this.cleanForm ()
   }
 
   addOpenListeners () {
@@ -61,7 +52,42 @@ class Popup {
         }
     }, true);
   }
-  
+
+  addAllListeners() {
+    this.addOpenListeners()
+    this.addCloseListeners()
+  }
+
+  init() {
+    this.initDom();
+    this.addAllListeners();
+  }
+}
+
+class CF7Popup extends Popup {
+  constructor (popupName) {
+    super (popupName)
+    this.contactForm = null
+    this.preloader = null
+  }
+
+  initDom() {
+    super.initDom() 
+    this.contactForm = this.popup.querySelector('.wpcf7-form')
+    this.preloader = this.popup.querySelector('.preloader')
+  }
+
+  cleanForm () {
+    if(this.contactForm !=null) {
+      this.contactForm.reset()
+    }
+  }
+
+  closePopup () {
+    super.closePopup()
+    this.cleanForm ()
+  }
+
   addContactFormListeners() {
     if(this.contactForm !=null) {
       this.contactForm.addEventListener('submit', (evt) => {this.preloader.classList.add('active')})
@@ -81,14 +107,8 @@ class Popup {
   }
 
   addAllListeners() {
-    this.addOpenListeners()
-    this.addCloseListeners()
+    super.addAllListeners()
     this.addContactFormListeners()
-  }
-
-  init() {
-    this.initDom();
-    this.addAllListeners();
   }
 }
 
@@ -163,11 +183,9 @@ class RegistrPopup extends Popup {
 document.addEventListener('DOMContentLoaded', initPopups)
 
 function initPopups() {
-  const popup = new Popup ('page-popup')
+  const popup = new CF7Popup ('page-popup')
   const loginPoup = new LoginPopup ('login-popup')
   const registrPoup = new RegistrPopup ('register-popup')
-
-  // loginPoup.setLoginPopup(registrPoup)
   registrPoup.setLoginPopup(loginPoup)
 
   popup.init()
