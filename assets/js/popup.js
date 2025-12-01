@@ -13,7 +13,7 @@ class Popup {
     this.body = document.querySelector('body')
     this.overlay = this.popup.querySelector('.popup-overlay')
     this.closeBtn = this.popup.querySelector('.popup__close')
-    this.container = this.popup.querySelector('.popup__container')
+    // this.container = this.popup.querySelector('.popup__container')
   }
 
   openPopup () {
@@ -70,12 +70,14 @@ class CF7Popup extends Popup {
     super (popupName)
     this.contactForm = null
     this.preloader = null
+    this.container = null
   }
 
   initDom() {
     super.initDom() 
     this.contactForm = this.popup.querySelector('.wpcf7-form')
     this.preloader = this.popup.querySelector('.preloader')
+    this.container = this.popup.querySelector('.popup__container')
   }
 
   cleanForm () {
@@ -203,8 +205,53 @@ class MenuMobPopup extends Popup {
     this.headerCatalogOpenBtn = document.querySelector('.header__catalog_mob')
 
   }
+
+  openPopup() {
+    super.openPopup()
+    this.menu.classList.add ('modal-mob_active')
+    this.menu.scrollTo(0, 0)
+    this.openMenu
+  }
+
+  closePopup() {
+    super.closePopup()
+    this.menu.classList.remove ('modal-mob_active')
+    this.menu.scrollTo(0, 0)
+  }
+
+  openMenu() {
+    this.menuWrap.classList.add('burger-menu__wrap_open');
+    this.menuOpenBtn.classList.add('burger-menu__nav-btn_active');
+    
+    this.catalowWrap.classList.remove('catalog-menu__wrap_open');
+    this.catalogOpenBtn.classList.remove('burger-menu__nav-btn_active');
+  }
+
+  openCatalog() {
+    this.menuWrap.classList.remove('burger-menu__wrap_open');
+    this.menuOpenBtn.classList.remove('burger-menu__nav-btn_active');
+    
+    this.catalowWrap.classList.add('catalog-menu__wrap_open');
+    this.catalogOpenBtn.classList.add('burger-menu__nav-btn_active');
+  }
+
   static closeMobMenu() {
     console.log('hello super menu')
+  }
+
+  addMenuCatalogBtnsListeners() {
+    this.menuOpenBtn.addEventListener ("click", (evt)=>{
+        this.openMenu()
+    })
+
+    this.catalogOpenBtn.addEventListener ("click", (evt)=>{
+        this.openCatalog
+    })
+  }
+
+  addAllListeners() {
+    super.addAllListeners
+    addMenuCatalogBtnsListeners()
   }
 }
 
