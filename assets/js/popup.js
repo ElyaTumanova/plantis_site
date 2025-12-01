@@ -248,7 +248,11 @@ class MenuMobPopup extends Popup {
 
   addCloseListeners() {
     super.addCloseListeners()
-    this.mobMenuLoginPopupOpenBtn.closePopup()
+    if(this.mobMenuLoginPopupOpenBtn) {
+      this.mobMenuLoginPopupOpenBtn.addEventListener ("click", (evt)=>{
+        this.closePopup()
+      })
+    }
   }
 
   addAllListeners() {
