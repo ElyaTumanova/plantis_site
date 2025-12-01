@@ -119,7 +119,7 @@ class LoginPopup extends Popup {
   constructor (popupName) {
     super (popupName)
     this.errorMsg = null
-    this.mobOpenBtn = null
+    this.mobMenuLoginPopupOpenBtn = null
   }
 
   initDom() {
@@ -140,8 +140,8 @@ class LoginPopup extends Popup {
   addOpenListeners() {
     super.addOpenListeners()
 
-    if(this.mobOpenBtn) {
-      this.mobOpenBtn.addEventListener ("click", (evt)=>{
+    if(this.mobMenuLoginPopupOpenBtn) {
+      this.mobMenuLoginPopupOpenBtn.addEventListener ("click", (evt)=>{
         this.togglePopup()
         // menuMobClass.closeMobMenu() tbd
       })
