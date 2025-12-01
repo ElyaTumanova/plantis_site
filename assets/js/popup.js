@@ -244,6 +244,11 @@ class MenuMobPopup extends Popup {
     this.catalogOpenBtn.addEventListener ("click", (evt)=>{
         this.openCatalog()
     })
+
+    this.headerCatalogOpenBtn().addEventListener ("click", (evt)=>{
+        this.openPopup()
+        this.openCatalog()
+    })
   }
 
   addCloseListeners() {
@@ -261,8 +266,6 @@ class MenuMobPopup extends Popup {
   }
 }
 
-document.addEventListener('DOMContentLoaded', initPopups)
-
 function initPopups() {
   const popup = new CF7Popup ('page-popup')
   const loginPoup = new LoginPopup ('login-popup')
@@ -275,5 +278,6 @@ function initPopups() {
   loginPoup.init()
   registrPoup.init()
   menuMobPopup.init()
-
 }
+
+document.addEventListener('DOMContentLoaded', initPopups)
