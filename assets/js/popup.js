@@ -95,7 +95,7 @@ class Popup {
 class LoginPopup extends Popup {
   constructor (popupName) {
     super (popupName)
-    this.siblingPopup = null
+    // this.loginPopup = null
   }
 
   initDom() {
@@ -103,11 +103,11 @@ class LoginPopup extends Popup {
     this.errorMsg = this.popup.querySelector('.woocommerce-error')
   }
 
-  setSiblingPopup(popupInstance) {
-    this.siblingPopup = popupInstance
-    console.log(this.siblingPopup)
-    this.siblingPopup.sayHello()
-  }
+  // setLoginPopup(popupInstance) {
+  //   this.loginPopup = popupInstance
+  //   console.log(this.loginPopup)
+  //   this.loginPopup.sayHello()
+  // }
 
   closePopup() {
     super.closePopup()
@@ -121,7 +121,7 @@ class LoginPopup extends Popup {
 class RegistrPopup extends Popup {
   constructor (popupName) {
     super (popupName)
-    this.siblingPopup = null
+    this.loginPopup = null
   }
 
   initDom() {
@@ -129,15 +129,15 @@ class RegistrPopup extends Popup {
     this.loginOnRegPopupBtn = this.popup.querySelectorAll('.register-form__login-btn')
   }
 
-  setSiblingPopup(popupInstance) {
-    this.siblingPopup = popupInstance
-    console.log(this.siblingPopup)
-    this.siblingPopup.sayHello()
+  setLoginPopup(popupInstance) {
+    this.loginPopup = popupInstance
+    console.log(this.loginPopup)
+    this.loginPopup.sayHello()
   }
 
   togglePopup () {
     super.togglePopup()
-    this.siblingPopup.togglePopup()
+    this.loginPopup.togglePopup()
   }
 
   addOpenListeners() {
@@ -159,8 +159,8 @@ function initPopups() {
   const loginPoup = new LoginPopup ('login-popup')
   const registrPoup = new RegistrPopup ('register-popup')
 
-  loginPoup.setSiblingPopup(registrPoup)
-  registrPoup.setSiblingPopup(loginPoup)
+  // loginPoup.setLoginPopup(registrPoup)
+  registrPoup.setLoginPopup(loginPoup)
 
   popup.init()
   loginPoup.init()
