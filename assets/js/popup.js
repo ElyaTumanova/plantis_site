@@ -304,14 +304,13 @@ function initPopups() {
   registrPoup.setLoginPopup(loginPoup)
 
   const menuMobPopup = new MenuMobPopup ('burger-menu')
-  // const sideCartPopup = new Popup ('side-cart-popup')
+  const sideCartPopup = new Popup ('side-cart-popup')
 
   popup.init()
   loginPoup.init()
   registrPoup.init()
   menuMobPopup.init()
-  // sideCartPopup.init()
-  // sideCartPopup.sayHello()
+  sideCartPopup.init()
 
   console.debug('popups initialized')
 }
