@@ -602,12 +602,19 @@ input[type="search"], input[type="search"]:focus-visible {
     top: calc(var(--headerHeight) - 44px); /*44 высота зеленого меню header__main-menu-wrap*/
 }
 
+.search-result-popup.popup_active {
+  top: calc(var(--headerHeight) - 44px);
+}
+
 @media((max-width: 1279px)) {
   .search-result {
     /* top: 8px; */
     width: calc(100% - 200px);
   }
   .search-result-popup {
+    top:8px
+  }
+  .search-result-popup.popup_active {
     top:8px
   }
 
