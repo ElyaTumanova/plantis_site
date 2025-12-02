@@ -300,3 +300,5 @@ function initPopups() {
 }
 
 document.addEventListener('DOMContentLoaded', initPopups)
+
+console.debug('popups js')
