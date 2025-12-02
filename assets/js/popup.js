@@ -321,6 +321,11 @@ class SideCartPopup extends Popup {
     this.sideCartDesctopOpenPopupBtn.classList.toggle('side-cart__open-btn_active')
   }
 
+  closePopup() {
+    super.closePopup()
+    this.sideCartDesctopOpenPopupBtn.classList.remove('side-cart__open-btn_active')
+  }
+
   addToggleListeners() {
     this.sideCartDesctopOpenPopupBtn.addEventListener('click', (evt)=>{this.togglePopup()})
   }
