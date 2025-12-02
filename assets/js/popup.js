@@ -24,6 +24,8 @@ class Popup {
     this.body = document.querySelector('body')
     this.overlay = this.popup.querySelector('.popup-overlay')
     this.closeBtn = this.popup.querySelector('.popup__close')
+
+    return true
   }
 
   openPopup () {
@@ -69,8 +71,8 @@ class Popup {
   }
 
   init() {
-    this.initDom()
-    if (!this.popup) return
+    const ok = this.initDom()
+    if (!ok) return
     this.addAllListeners()
   }
 }
@@ -85,11 +87,13 @@ class CF7Popup extends Popup {
   }
 
   initDom() {
-    super.initDom() 
+    const ok = super.initDom()
+    if (!ok) return false
     this.contactForm = this.popup.querySelector('.wpcf7-form')
     this.preloader = this.popup.querySelector('.preloader')
     this.container = this.popup.querySelector('.popup__container')
     this.serviceNameInput = this.popup.querySelector('.ukhod-popup-service-name')
+    return true
   }
 
   cleanForm () {
@@ -146,9 +150,11 @@ class LoginPopup extends Popup {
   }
 
   initDom() {
-    super.initDom() 
+    const ok = super.initDom()
+    if (!ok) return false
     this.errorMsg = this.popup.querySelector('.woocommerce-error')
     this.mobMenuLoginPopupOpenBtn = document.querySelector('.burger-menu__account')
+    return true
   }
 
 
@@ -178,8 +184,10 @@ class RegistrPopup extends Popup {
   }
 
   initDom() {
-    super.initDom() 
+    const ok = super.initDom()
+    if (!ok) return false
     this.loginOnRegPopupBtn = this.popup.querySelectorAll('.register-form__login-btn')
+    return true
   }
 
   setLoginPopup(popupInstance) {
@@ -217,7 +225,8 @@ class MenuMobPopup extends Popup {
   }
 
   initDom() {
-    super.initDom()
+    const ok = super.initDom()
+    if (!ok) return false
     this.menu = this.popup.querySelector('.modal-mob')
     this.menuOpenBtn = this.popup.querySelector('.burger-menu__nav_menu')
     this.catalogOpenBtn = this.popup.querySelector('.burger-menu__nav_catalog')
@@ -225,6 +234,7 @@ class MenuMobPopup extends Popup {
     this.catalowWrap = this.popup.querySelector('.catalog-menu__wrap')
     this.mobHeaderCatalogOpenBtn = document.querySelector('.header__catalog_mob')
     this.mobMenuLoginPopupOpenBtn = document.querySelector('.burger-menu__account')
+    return true
   }
 
   openPopup() {
@@ -288,7 +298,7 @@ class MenuMobPopup extends Popup {
 } 
 
 function initPopups() {
-  // const popup = new CF7Popup ('page-popup')
+  const popup = new CF7Popup ('page-popup')
   const loginPoup = new LoginPopup ('login-popup')
   const registrPoup = new RegistrPopup ('register-popup')
   registrPoup.setLoginPopup(loginPoup)
@@ -296,7 +306,7 @@ function initPopups() {
   const menuMobPopup = new MenuMobPopup ('burger-menu')
   // const sideCartPopup = new Popup ('side-cart-popup')
 
-  // popup.init()
+  popup.init()
   loginPoup.init()
   registrPoup.init()
   menuMobPopup.init()
