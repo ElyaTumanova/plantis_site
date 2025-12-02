@@ -339,6 +339,31 @@ function initPopups() {
   console.debug('popups initialized')
 }
 
+function debugPopup(instance) {
+  if (!instance) {
+    console.warn('debugPopup: не передан экземпляр попапа');
+    return;
+  }
+
+  console.group(`Popup debug: "${instance.popupName}"`);
+
+  console.log('popupName:', instance.popupName);
+  console.log('popup element:', instance.popup, instance.popup ? '✅ найден' : '❌ НЕТ');
+  console.log('openBtns:', instance.openBtns ? instance.openBtns.length : 'null');
+  console.log('body:', !!instance.body ? '✅' : '❌');
+  console.log('overlay:', !!instance.overlay ? '✅' : '❌');
+  console.log('closeBtn:', !!instance.closeBtn ? '✅' : '❌');
+
+  if (instance.popup) {
+    console.log('has .popup_active:', instance.popup.classList.contains('popup_active'));
+  }
+
+  console.groupEnd();
+
+  // чтобы можно было дальше с ним играться в консоли
+  return instance;
+}
+
 document.addEventListener('DOMContentLoaded', initPopups)
 
-console.debug('popups js')
+debugPopup(sideCartPopup)
