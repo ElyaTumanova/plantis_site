@@ -694,8 +694,10 @@ input[type="search"], input[type="search"]:focus-visible {
 
 /* end custom scroll */
 
-.search-result__text {
-    margin-block: 25px;
+.search-result__text-nothing {
+    margin-block: auto;
+    height: 60px;
+    
 }
 
 .search-result__btn {

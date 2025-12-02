@@ -58,7 +58,7 @@ function plnt_search_ajax_action_callback (){
       <?php
     } else {
       ?>
-          <div class="search-result__text">Ничего не найдено</div>
+          <div class="search-result__text-nothing">Ничего не найдено</div>
         </div>
       <?php
     }
