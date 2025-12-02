@@ -312,12 +312,12 @@ class SideCartPopup extends Popup {
 
   addOpenListeners() {
     super.addOpenListeners()
-    this.sideCartDesctopOpenPopupBtn = this.classList.add('side-cart__open-btn_active')
+    this.sideCartDesctopOpenPopupBtn.classList.add('side-cart__open-btn_active')
   }
 
   addCloseListeners() {
     super.addCloseListeners()
-    this.sideCartDesctopOpenPopupBtn = this.classList.remove('side-cart__open-btn_active')
+    this.sideCartDesctopOpenPopupBtn.classList.remove('side-cart__open-btn_active')
   }
 }
 
