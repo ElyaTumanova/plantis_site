@@ -45,6 +45,8 @@ add_action('wp_ajax_plnt_generate_yml_schedule_now', function () {
   wp_send_json_success(['next_run' => $next ? wp_date('Y-m-d H:i:s', (int)$next) : null]);
 });
 
+wp_clear_scheduled_hook( 'plnt_generate_yml_daily' );
+
 
 
 
