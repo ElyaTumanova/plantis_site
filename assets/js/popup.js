@@ -310,13 +310,13 @@ class SideCartPopup extends Popup {
     return true
   }
 
-  addOpenListeners() {
-    super.addOpenListeners()
+  openPopup() {
+    super.openPopup()
     this.sideCartDesctopOpenPopupBtn.classList.add('side-cart__open-btn_active')
   }
 
-  addCloseListeners() {
-    super.addCloseListeners()
+  closePopup() {
+    super.closePopup()
     this.sideCartDesctopOpenPopupBtn.classList.remove('side-cart__open-btn_active')
   }
 }
@@ -337,7 +337,7 @@ function initPopups() {
   sideCartPopup.init()
 
   console.debug('fn initPopups: popups initialized')
-  debugPopup(sideCartPopup, 'sideCartDesctopOpenPopupBtn')
+  //debugPopup(sideCartPopup, 'sideCartDesctopOpenPopupBtn')
 }
 
 function debugPopup(instance, element = null) {
