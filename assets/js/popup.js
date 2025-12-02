@@ -294,6 +294,8 @@ function initPopups() {
   registrPoup.init()
   menuMobPopup.init()
   sideCartPopup.init()
+  sideCartPopup.sayHello()
+  
 }
 
 document.addEventListener('DOMContentLoaded', initPopups)
