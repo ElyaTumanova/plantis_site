@@ -135,6 +135,10 @@ add_action('wp_ajax_plnt_feed_daily_schedule_now', function () {
         wp_schedule_event(time() + 60, 'daily', $hook);
     }
 
+    // Запускаем СЕЙЧАС в этом же запросе
+    do_action($hook);
+
+
     $next_ts = wp_next_scheduled($hook);
 
     wp_send_json_success([
