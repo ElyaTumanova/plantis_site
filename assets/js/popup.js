@@ -82,7 +82,7 @@ class CF7Popup extends Popup {
     this.contactForm = this.popup.querySelector('.wpcf7-form')
     this.preloader = this.popup.querySelector('.preloader')
     this.container = this.popup.querySelector('.popup__container')
-    this.serviceNameInput = document.querySelector('.ukhod-popup-service-name')
+    this.serviceNameInput = this.popup.querySelector('.ukhod-popup-service-name')
   }
 
   cleanForm () {
@@ -128,6 +128,7 @@ class CF7Popup extends Popup {
   addAllListeners() {
     super.addAllListeners()
     this.addContactFormListeners()
+    this.addServiceNameListeners()
   }
 }
 
