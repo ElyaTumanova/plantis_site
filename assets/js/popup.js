@@ -352,7 +352,7 @@ function initPopups() {
   sideCartPopup.init()
 
   console.debug('fn initPopups: popups initialized')
-  debugPopup(sideCartPopup, 'sideCartDesctopOpenPopupBtn')
+  //debugPopup(sideCartPopup, 'sideCartDesctopOpenPopupBtn')
 }
 
 function debugPopup(instance, elementName = null) {
