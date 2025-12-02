@@ -342,25 +342,27 @@ function initPopups() {
 
 function debugPopup(instance, element = null) {
   if (!instance) {
-    console.warn('debugPopup: не передан экземпляр попапа');
+    console.warn('debugPopup: не передан экземпляр попапа')
     return;
   }
 
-  console.group(`Popup debug: "${instance.popupName}"`);
+  console.group(`Popup debug: "${instance.popupName}"`)
+
+  console.log(instance)
 
   console.log('popupName:', instance.popupName);
-  console.log('popup element:', instance.popup, instance.popup ? '✅ найден' : '❌ НЕТ');
-  console.log('openBtns:', instance.openBtns ? instance.openBtns.length : 'null');
-  console.log('body:', !!instance.body ? '✅' : '❌');
-  console.log('overlay:', !!instance.overlay ? '✅' : '❌');
-  console.log('closeBtn:', !!instance.closeBtn ? '✅' : '❌');
+  console.log('popup element:', instance.popup, instance.popup ? '✅ найден' : '❌ НЕТ')
+  console.log('openBtns:', instance.openBtns ? instance.openBtns.length : 'null')
+  console.log('body:', !!instance.body ? '✅' : '❌')
+  console.log('overlay:', !!instance.overlay ? '✅' : '❌')
+  console.log('closeBtn:', !!instance.closeBtn ? '✅' : '❌')
 
   if (instance.popup) {
-    console.log('has .popup_active:', instance.popup.classList.contains('popup_active'));
+    console.log('has .popup_active:', instance.popup.classList.contains('popup_active'))
   }
 
   if(element) {
-    console.log('element:', !!instance.element ? '✅' : '❌');
+    console.log('element:', !!instance.element ? '✅' : '❌')
   }
 
   console.groupEnd();
