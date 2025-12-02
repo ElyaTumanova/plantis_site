@@ -83,10 +83,10 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		                                     '/assets/js/header-catalog-menu.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/header-catalog-menu.js'), true );
 		wp_enqueue_script( 'search-popup', get_template_directory_uri() .
 		                                     '/assets/js/search-popup.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/search-popup.js'), true );
-		wp_enqueue_script( 'page-popup', get_template_directory_uri() .
+		wp_enqueue_script( 'popup', get_template_directory_uri() .
 											 '/assets/js/popup.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/popup.js'), true );
-		wp_enqueue_script( 'side-cart', get_template_directory_uri() .
-											 '/assets/js/side-cart.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/side-cart.js'), true );
+		// wp_enqueue_script( 'side-cart', get_template_directory_uri() .
+		// 									 '/assets/js/side-cart.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/side-cart.js'), true );
 		wp_enqueue_script( 'swiper', get_template_directory_uri() .
 		                                     '/assets/js/swiper.js', array( 'jquery' ), null, true ); //swiper	
 
