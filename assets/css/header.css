@@ -706,7 +706,7 @@ input[type="search"], input[type="search"]:focus-visible {
 /* end custom scroll */
 
 .search-result__text-nothing {
-  height: 80px;
+  height: 100px;
   display: flex;
   align-items: center;
 }
