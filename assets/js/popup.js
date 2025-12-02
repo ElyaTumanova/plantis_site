@@ -295,6 +295,8 @@ function initPopups() {
   menuMobPopup.init()
   // sideCartPopup.init()
   // sideCartPopup.sayHello()
+
+  console.debug('popups initialized')
 }
 
 document.addEventListener('DOMContentLoaded', initPopups)
