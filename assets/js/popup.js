@@ -288,7 +288,7 @@ class MenuMobPopup extends Popup {
 } 
 
 function initPopups() {
-  const popup = new CF7Popup ('page-popup')
+  // const popup = new CF7Popup ('page-popup')
   const loginPoup = new LoginPopup ('login-popup')
   const registrPoup = new RegistrPopup ('register-popup')
   registrPoup.setLoginPopup(loginPoup)
@@ -296,7 +296,7 @@ function initPopups() {
   const menuMobPopup = new MenuMobPopup ('burger-menu')
   // const sideCartPopup = new Popup ('side-cart-popup')
 
-  popup.init()
+  // popup.init()
   loginPoup.init()
   registrPoup.init()
   menuMobPopup.init()
