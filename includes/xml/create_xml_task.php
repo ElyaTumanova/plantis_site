@@ -24,7 +24,7 @@ function plnt_generate_feed_callback() {
         // здесь можно добавить любые проверки окружения, если нужно
 
         // Путь к файлам генерации
-        // $yandex_file = get_theme_file_path('/includes/xml/create_yandex_xml.php');
+        $yandex_file = get_theme_file_path('/includes/xml/create_yandex_xml.php');
         $google_file = get_theme_file_path('/includes/xml/create_google_xml.php');
 
         // На всякий случай проверим, что файлы существуют
