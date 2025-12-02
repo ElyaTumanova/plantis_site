@@ -117,7 +117,6 @@ $catalog_icon = carbon_get_theme_option('catalog_icon');
     <div class="search-result-popup popup">
       <div class="search-result">
       </div>
-      <div class="search-result__popup-overlay popup-overlay"></div>
     </div>
 
 		<!-- <div class="header__breadcrumb container"><?php //woocommerce_breadcrumb() ?></div> -->
