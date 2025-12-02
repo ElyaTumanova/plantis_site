@@ -336,7 +336,7 @@ function initPopups() {
   menuMobPopup.init()
   sideCartPopup.init()
 
-  console.debug('popups initialized')
+  console.debug('fn initPopups: popups initialized')
 }
 
 function debugPopup(instance) {
@@ -366,4 +366,4 @@ function debugPopup(instance) {
 
 document.addEventListener('DOMContentLoaded', initPopups)
 
-debugPopup(sideCartPopup)
+debugPopup()
