@@ -116,6 +116,7 @@ $catalog_icon = carbon_get_theme_option('catalog_icon');
 
     <div class="search-result-popup popup">
       <div class="search-result">
+        <div class="spinner" aria-label="Loading" role="status"></div>
       </div>
     </div>
 
