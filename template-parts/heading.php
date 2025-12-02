@@ -114,7 +114,7 @@ $catalog_icon = carbon_get_theme_option('catalog_icon');
       <div class="search__clean"><?php echo $close_icon ?></div>
     </div>
 
-    <div class="search-result__wrap popup popup_active">
+    <div class="search-result-popup popup">
       <div class="search-result">
       </div>
       <div class="search-result__popup-overlay popup-overlay"></div>

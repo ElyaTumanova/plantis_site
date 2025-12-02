@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const input = document.querySelector('.search-form input[name="s"]');
   const result = document.querySelector('.search-result');
+  const resultPopup = document.querySelector('.search-result-popup');
   if (!input || !result || !window.search_form) return;
 
   const MIN_LEN = 3;
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     result.hidden = true;
     result.innerHTML = '';
     result.classList.remove('is-loading');
+    resultPopup.classList.remove('popup_active');
     document.body.classList.remove('fix-body');
   }
 
@@ -84,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('fix-body');
     result.hidden = false;
     result.classList.add('is-loading');
+    resultPopup.classList.add('popup_active');
     result.innerHTML = SPINNER_HTML;
 
     try {
