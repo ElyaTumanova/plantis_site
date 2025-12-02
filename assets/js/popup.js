@@ -14,6 +14,12 @@ class Popup {
 
   initDom() {
     this.popup = document.querySelector(`.${this.popupName}`)
+
+    if (!this.popup) {
+      console.debug(`Popup .${this.popupName} не найден, init() пропускаем`)
+      return
+    }
+
     this.openBtns = document.querySelectorAll(`.${this.popupName}-open-btn`)
     this.body = document.querySelector('body')
     this.overlay = this.popup.querySelector('.popup-overlay')
@@ -63,8 +69,9 @@ class Popup {
   }
 
   init() {
-    this.initDom();
-    this.addAllListeners();
+    this.initDom()
+    if (!this.popup) return
+    this.addAllListeners()
   }
 }
 
