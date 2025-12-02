@@ -337,10 +337,10 @@ function initPopups() {
   sideCartPopup.init()
 
   console.debug('fn initPopups: popups initialized')
-  debugPopup(sideCartPopup)
+  debugPopup(sideCartPopup, 'sideCartDesctopOpenPopupBtn')
 }
 
-function debugPopup(instance) {
+function debugPopup(instance, element = null) {
   if (!instance) {
     console.warn('debugPopup: не передан экземпляр попапа');
     return;
@@ -357,6 +357,10 @@ function debugPopup(instance) {
 
   if (instance.popup) {
     console.log('has .popup_active:', instance.popup.classList.contains('popup_active'));
+  }
+
+  if(element) {
+    console.log('element:', !!instance.element ? '✅' : '❌');
   }
 
   console.groupEnd();
