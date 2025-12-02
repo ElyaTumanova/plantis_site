@@ -140,7 +140,7 @@ $catalog_icon = carbon_get_theme_option('catalog_icon');
 				<?php echo do_shortcode('[yith_wcwl_items_count]')?>
 			</div>
 			
-			<div class="header-cart side-cart-open-btn">
+			<div class="header-cart side-cart-popup-open-btn">
 				<?php 
 					plnt_woocommerce_cart_header_mob(); 
 				?>
