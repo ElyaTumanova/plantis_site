@@ -40,7 +40,7 @@ class Popup {
   }
 
   togglePopup() {
-    console.debug('toogle ' + this.popupName)
+    console.debug('toggle ' + this.popupName)
     this.popup.classList.toggle('popup_active')
     this.body.classList.toggle ('fix-body')
   }
@@ -322,7 +322,7 @@ class SideCartPopup extends Popup {
   }
 
   addToggleListeners() {
-    this.sideCartDesctopOpenPopupBtn.addEventListener('click', this.togglePopup)
+    this.sideCartDesctopOpenPopupBtn.addEventListener('click', (evt)=>{this.togglePopup()})
   }
 
   addAllListeners() {
