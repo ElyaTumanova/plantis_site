@@ -297,6 +297,30 @@ class MenuMobPopup extends Popup {
   }
 } 
 
+class SideCartPopup extends Popup {
+ constructor (popupName) {
+    super (popupName)
+    this.sideCartDesctopOpenPopupBtn = null
+  }
+
+  initDom() {
+    const ok = super.initDom()
+    if (!ok) return false
+    this.sideCartDesctopOpenPopupBtn = document.querySelector('.side-cart__open-btn')
+    return true
+  }
+
+  addOpenListeners() {
+    super.addOpenListeners()
+    this.sideCartDesctopOpenPopupBtn = this.classList.add('side-cart__open-btn_active')
+  }
+
+  addCloseListeners() {
+    super.addCloseListeners()
+    this.sideCartDesctopOpenPopupBtn = this.classList.remove('side-cart__open-btn_active')
+  }
+}
+
 function initPopups() {
   const popup = new CF7Popup ('page-popup')
   const loginPoup = new LoginPopup ('login-popup')
@@ -304,7 +328,7 @@ function initPopups() {
   registrPoup.setLoginPopup(loginPoup)
 
   const menuMobPopup = new MenuMobPopup ('burger-menu')
-  const sideCartPopup = new Popup ('side-cart-popup')
+  const sideCartPopup = new SideCartPopup ('side-cart-popup')
 
   popup.init()
   loginPoup.init()
