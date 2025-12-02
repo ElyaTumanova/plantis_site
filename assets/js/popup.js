@@ -365,4 +365,4 @@ function debugPopup(instance) {
 }
 
 document.addEventListener('DOMContentLoaded', initPopups)
-document.addEventListener('DOMContentLoaded', debugPopup)
+document.addEventListener('DOMContentLoaded', (evt) => {debugPopup(sideCartPopup)})
