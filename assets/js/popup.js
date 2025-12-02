@@ -365,5 +365,4 @@ function debugPopup(instance) {
 }
 
 document.addEventListener('DOMContentLoaded', initPopups)
-
-debugPopup()
+document.addEventListener('DOMContentLoaded', debugPopup)
