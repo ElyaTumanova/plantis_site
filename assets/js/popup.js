@@ -337,6 +337,7 @@ function initPopups() {
   sideCartPopup.init()
 
   console.debug('fn initPopups: popups initialized')
+  debugPopup(sideCartPopup)
 }
 
 function debugPopup(instance) {
@@ -365,4 +366,3 @@ function debugPopup(instance) {
 }
 
 document.addEventListener('DOMContentLoaded', initPopups)
-document.addEventListener('DOMContentLoaded', (evt) => {debugPopup(sideCartPopup)})
