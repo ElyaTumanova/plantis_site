@@ -40,6 +40,7 @@ class Popup {
   }
 
   togglePopup() {
+    console.debug('toogle ' + this.popupName)
     this.popup.classList.toggle('popup_active')
     this.body.classList.toggle ('fix-body')
   }
