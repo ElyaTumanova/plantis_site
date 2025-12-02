@@ -28,7 +28,7 @@ $close_icon = carbon_get_theme_option('close_icon');
 
 <div class="side-cart__wrap">
     <?php $cart_icon = carbon_get_theme_option('cart_icon')?>
-    <button class="side-cart__open-btn side-cart-popup-open-btn">
+    <button class="side-cart__open-btn">
         <?php plnt_side_cart_count ();?>
         <?php echo $cart_icon ?>
         <!-- <img class="side-cart__icon" src="<?php //echo //$cart_icon ?>" alt="cart" width="35" height="35"> -->
