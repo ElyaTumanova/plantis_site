@@ -3,7 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 exit; // Exit if accessed directly
 }
 
-<?php
 /**
  * 1) Основной callback: что делать по крону
  */
