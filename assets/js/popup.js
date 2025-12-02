@@ -326,7 +326,7 @@ class SideCartPopup extends Popup {
 
   addAllListeners() {
     super.addAllListeners()
-    addToggleListeners()
+    this.addToggleListeners()
   }
 }
 
