@@ -23,7 +23,7 @@ class Popup {
   openPopup () {
     this.popup.classList.add('popup_active')
     this.body.classList.add ('fix-body')
-    console.log('toggle ' + this.popupName)
+    console.debug('open ' + this.popupName)
   }
 
   closePopup () {
@@ -119,7 +119,6 @@ class CF7Popup extends Popup {
       this.openBtns.forEach(btn => {
         btn.addEventListener('click', (evt) => {
           this.serviceNameInput.setAttribute('value',evt.target.name);
-          console.log(this.serviceNameInput)
         });
       });
     }
@@ -178,8 +177,7 @@ class RegistrPopup extends Popup {
 
   setLoginPopup(popupInstance) {
     this.loginPopup = popupInstance
-    console.log(this.loginPopup)
-    this.loginPopup.sayHello()
+    // this.loginPopup.sayHello()
   }
 
   openPopup () {
