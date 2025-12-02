@@ -39,6 +39,11 @@ class Popup {
     this.body.classList.remove ('fix-body')
   }
 
+  togglePopup() {
+    this.popup.classList.toggle('popup_active')
+    this.body.classList.toggle ('fix-body')
+  }
+
   addOpenListeners () {
     this.openBtns.forEach(button => {
       button.addEventListener ('click', (evt)=>{
@@ -310,14 +315,18 @@ class SideCartPopup extends Popup {
     return true
   }
 
-  openPopup() {
-    super.openPopup()
-    this.sideCartDesctopOpenPopupBtn.classList.add('side-cart__open-btn_active')
+  togglePopup() {
+    super.togglePopup()
+    this.sideCartDesctopOpenPopupBtn.classList.toggle('side-cart__open-btn_active')
   }
 
-  closePopup() {
-    super.closePopup()
-    this.sideCartDesctopOpenPopupBtn.classList.remove('side-cart__open-btn_active')
+  addToggleListeners() {
+    this.sideCartDesctopOpenPopupBtn.addEventListener('click', this.togglePopup)
+  }
+
+  addAllListeners() {
+    super.addAllListeners()
+    addToggleListeners()
   }
 }
 
