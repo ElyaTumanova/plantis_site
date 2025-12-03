@@ -22,10 +22,6 @@ function plnt_search_ajax_action_callback (){
   //   'tick'     => wp_nonce_tick(),
   // ]);
 
-
-    // global $plants_treez_cat_id;
-    // global $peresadka_cat_id;
-    // global $plants_cat_id;
     if ( ! check_ajax_referer('search-nonce', 'nonce', false) ) {
       wp_send_json_error(['message' => 'Bad nonce'], 403);
     }
@@ -124,7 +120,14 @@ function render_search_result($product) {
 
 
 function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $paged=null) {
-  $search = trim((string)$search);
+  $search = (string)$search;
+
+  // убираем все варианты тире/дефисов
+  $search = preg_replace('/[\p{Pd}\x{2212}\x{2043}]+/u', '', $search);
+
+  // дополнительно чистим лишние пробелы
+  $search = preg_replace('/\s+/u', ' ', $search);
+  $search = trim($search);
 
   // (опционально) SKU — если хотите, чтобы он был самым первым:
   $sku_id = wc_get_product_id_by_sku($search);
