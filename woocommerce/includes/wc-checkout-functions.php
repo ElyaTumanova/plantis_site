@@ -365,6 +365,7 @@ Contents
             'wrapper_class' => 'form-field-wide',
             'value' => $method,
             'options' => array(
+                ''                   => '— Не выбран —', // значение по умолчанию "пусто"
                 '11:00 - 21:00'		=> '11:00 - 21:00', // 'значение' => 'заголовок'
                 '11:00 - 16:00'	=> '11:00 - 16:00', 
                 '14:00 - 18:00'	=> '14:00 - 18:00',
@@ -978,11 +979,11 @@ function plnt_add_dontcallme_field_to_checkout( $fields ) {
         'required'    => true,
         'class'       => array( 'form-row dontcallme' ),
         'options'     => array(
-            'call' => 'Позвонить',
-            'wa'   => 'Написать в Whatsapp',
-            'tg'   => 'Написать в Telegram',
+            'Позвонить' => 'Позвонить',
+            'Написать в Whatsapp'   => 'Написать в Whatsapp',
+            'Написать в Telegram'   => 'Написать в Telegram',
         ),
-        'default'     => 'call',
+        'default'     => 'Позвонить',
     );
 
     $fields['billing']['dontcallme']['priority'] = 30;
@@ -1015,7 +1016,21 @@ function plnt_print_doncallme_field_value( $order ){
             <strong>Способ связи</strong>
             ' . ( $method ? $method : 'Не указан.' ) . '
         </p>
-    </div>';
+    </div>
+    <div class="edit_address">';
+    woocommerce_wp_select( array(
+        'id' => 'dontcallme',
+        'label' => 'Способ связи',
+        'wrapper_class' => 'form-field-wide',
+        'value' => $method,
+        'options' => array(
+            ''                   => '— Не выбран —', // значение по умолчанию "пусто"
+            'Позвонить' => 'Позвонить',
+            'Написать в Whatsapp'   => 'Написать в Whatsapp',
+            'Написать в Telegram'   => 'Написать в Telegram',
+        )
+    ) );
+    echo '</div>';
 }
 
 
@@ -1031,7 +1046,7 @@ function plnt_dontcallme_field_in_email( $rows, $order ) {
     // }
 
     $rows[ 'dontcallme' ] = array(
-        'label' => 'Способ связи',
+        'label' => 'Способ связи:',
         'value' => get_post_meta( $order->get_id(), 'dontcallme', true )
     );
 
@@ -1081,7 +1096,13 @@ function plnt_print_inn_field_value( $order ){
             <strong>ИНН (для оплаты по счету)</strong>
             ' . ( $method ? $method : 'Не указан.' ) . '
         </p>
-    </div>';
+    </div>
+    <div class="edit_address">';
+    woocommerce_wp_text_input( array(
+        'id' => 'inn',
+        'label' => 'ИНН',
+    ) );
+    echo '</div>';
 }
 
 
