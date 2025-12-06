@@ -974,14 +974,15 @@ add_filter( 'woocommerce_checkout_fields', 'plnt_add_dontcallme_field_to_checkou
 function plnt_add_dontcallme_field_to_checkout( $fields ) {
     $fields['billing']['dontcallme'] = array(
         'type'        => 'radio',
-        'label'       => 'Не нужно звонков, напишите сразу в WhatsApp;)',
+        'label'       => 'К с вами связаться?',
         'required'    => true,
         'class'       => array( 'form-row dontcallme' ),
         'options'     => array(
-            'Да' => 'Да',
-            'Нет'   => 'Нет',
+            'call' => 'Позвонить',
+            'wa'   => 'Написать в Whatsapp',
+            'tg'   => 'Написать в Telegram',
         ),
-        'default'     => 'Нет',
+        'default'     => 'call',
     );
 
     $fields['billing']['dontcallme']['priority'] = 30;
@@ -1011,7 +1012,7 @@ function plnt_print_doncallme_field_value( $order ){
 
     echo '<div class="address">
         <p' . ( ! $method ? ' class="none_set"' : '' ) . '>
-            <strong>Не нужно звонков, напишите сразу в WhatsApp;)</strong>
+            <strong>Способ связи</strong>
             ' . ( $method ? $method : 'Не указан.' ) . '
         </p>
     </div>';
@@ -1030,7 +1031,7 @@ function plnt_dontcallme_field_in_email( $rows, $order ) {
     // }
 
     $rows[ 'dontcallme' ] = array(
-        'label' => 'Не нужно звонков, напишите сразу в WhatsApp;)',
+        'label' => 'Способ связи',
         'value' => get_post_meta( $order->get_id(), 'dontcallme', true )
     );
 

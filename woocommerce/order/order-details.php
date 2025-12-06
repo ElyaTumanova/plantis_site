@@ -142,7 +142,7 @@ do_action( 'woocommerce_after_order_details', $order );
 ?>
 <?php if( $plnt_order_totals['dontcallme']['value'] ) : ?>
 <div class='plnt-order__delivery-row'>
-    <div class='plnt-order__delivery-label' scope="row">Не нужно звонков, напишите сразу в WhatsApp:</div>
+    <div class='plnt-order__delivery-label' scope="row">Способ связи:</div>
     <div class='plnt-order__delivery-value'><?php echo wp_kses_post( $plnt_order_totals['dontcallme']['value'] ); ?></div>
 </div>
 <?php endif; ?> 
