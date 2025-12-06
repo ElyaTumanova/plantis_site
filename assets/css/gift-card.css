@@ -771,3 +771,22 @@ Contents
     font-weight: bold;
     margin-right: 4px;
 }
+
+.yith-ywgc-add-new-gift-card-modal-opened .yith-ywgc-add-new-gift-card-modal-wrapper {
+  width: 100% !important;
+  padding: 20px;
+}
+
+.ywgc-add-new-gift-card-form {
+  background-color: transparent !important;
+}
+
+.ywgc-add-new-gift-card-form .ywgc-link-gift-card-submit-button {
+    background-color: var(--text);
+    color: var(--white);
+    border-radius: 50px;
+}
+
+.ywgc-add-new-gift-card-form .ywgc-link-code {
+  border-radius: 25px !important;
+}
