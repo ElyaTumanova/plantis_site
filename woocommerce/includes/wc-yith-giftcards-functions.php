@@ -652,17 +652,27 @@ function plnt_get_giftcard_by_code( $code ) {
 #TRANSLATIONS
 --------------------------------------------------------------*/
 // подключаем переводы для плагина YITH
-add_filter('load_textdomain_mofile', function($mofile, $domain) {
+add_filter('load_textdomain_mofile', function ($mofile, $domain) {
 
     if ($domain !== 'yith-woocommerce-gift-cards') {
         return $mofile;
     }
 
-    //$locale = determine_locale(); // WP 5.0+
-    $theme_mofile = get_stylesheet_directory() . "/languages/{$domain}-ru_RU.mo";
+    $locale = function_exists('determine_locale') ? determine_locale() : get_locale();
+    $locale = apply_filters('plugin_locale', $locale, $domain);
 
-    if (file_exists($theme_mofile)) {
-        return $theme_mofile;
+    $filename = "{$domain}-{$locale}.mo";
+
+    // сначала в дочерней теме
+    $child = trailingslashit(get_stylesheet_directory()) . 'languages/' . $filename;
+    if (file_exists($child)) {
+        return $child;
+    }
+
+    // затем в родительской теме
+    $parent = trailingslashit(get_template_directory()) . 'languages/' . $filename;
+    if (file_exists($parent)) {
+        return $parent;
     }
 
     return $mofile;
