@@ -6,7 +6,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/yith-woocommerce-"
 "gift-cards.premium\n"
 "POT-Creation-Date: 2025-07-03 11:47:53+00:00\n"
-"PO-Revision-Date: 2025-11-25 16:10+0300\n"
+"PO-Revision-Date: 2025-12-06 13:16+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -551,7 +551,7 @@ msgstr ""
 #: templates/myaccount/my-giftcards.php:27
 #: templates/shortcodes/user-gift-card-table.php:35
 msgid "Balance"
-msgstr "Остаток"
+msgstr "Баланс"
 
 #: includes/admin/post-types/class-yith-ywgc-gift-card-post-type-admin.php:270
 msgid "Expire on"
@@ -822,7 +822,7 @@ msgstr ""
 #: includes/class-yith-woocommerce-gift-cards.php:226
 #: includes/class-yith-woocommerce-gift-cards.php:227
 msgid "Gift Cards"
-msgstr ""
+msgstr "Подарочные сертификаты"
 
 #: includes/class-yith-woocommerce-gift-cards.php:281
 msgid ""
@@ -1221,7 +1221,7 @@ msgstr ""
 
 #: includes/class-yith-ywgc-gift-card.php:851
 msgid "Valid"
-msgstr ""
+msgstr "Активен"
 
 #: includes/class-yith-ywgc-gift-card.php:855
 msgid "No longer valid, replaced by another code"
@@ -2583,17 +2583,17 @@ msgstr ""
 
 #: templates/myaccount/add-new-gift-card-template.php:26
 msgid "The gift card code is now linked to your account."
-msgstr ""
+msgstr "Подарочный сертификат успешно привязан к вашему аккаунту."
 
 #: templates/myaccount/add-new-gift-card-template.php:27
 #: templates/shortcodes/gift-card-check-balance-form.php:19
 #: templates/shortcodes/redeem-gift-card-form.php:34
 msgid "Gift Card code"
-msgstr ""
+msgstr "Номер подарочного сертификата"
 
 #: templates/myaccount/add-new-gift-card-template.php:29
 msgid "Add it"
-msgstr ""
+msgstr "Добавить"
 
 #: templates/myaccount/my-giftcards.php:28
 msgid "Usage"
@@ -2620,7 +2620,7 @@ msgstr "Заказ %s"
 
 #: templates/myaccount/my-giftcards.php:185
 msgid "Apply to cart"
-msgstr ""
+msgstr "Применить к заказу"
 
 #: templates/shortcodes/gift-card-check-balance-form.php:22
 #: templates/shortcodes/redeem-gift-card-form.php:38
@@ -3148,7 +3148,7 @@ msgstr ""
 #: includes/class-yith-woocommerce-gift-cards.php:213
 msgctxt "admin menu"
 msgid "Gift Cards"
-msgstr ""
+msgstr "Подарочные сертификаты"
 
 #: includes/class-yith-woocommerce-gift-cards.php:214
 msgctxt "add new on admin bar"
@@ -3208,14 +3208,14 @@ msgstr ""
 #: templates/myaccount/my-giftcards.php:146
 msgctxt "gift card expiration date"
 msgid "Expired on: %s"
-msgstr ""
+msgstr "Истек: %s"
 
 #. translators: %s is the gift card expiration date.
 #: templates/myaccount/my-giftcards.php:149
 #: templates/shortcodes/user-gift-card-table.php:136
 msgctxt "gift card expiration date"
 msgid "Expires on: %s"
-msgstr ""
+msgstr "Истекает: %s"
 
 #: includes/class-yith-ywgc-frontend-premium.php:1588
 msgctxt ""
@@ -3238,7 +3238,7 @@ msgstr ""
 #: includes/class-yith-ywgc-frontend.php:248
 msgctxt "my account endpoint title"
 msgid "Gift Cards"
-msgstr ""
+msgstr "Подарочные сертификаты"
 
 #: includes/class-yith-ywgc-frontend.php:306
 msgctxt "gift card delivery status label"
@@ -3419,7 +3419,7 @@ msgstr ""
 #: templates/myaccount/add-new-gift-card-template.php:23
 msgctxt "Modal title in my account"
 msgid "Link a gift card to your account"
-msgstr ""
+msgstr "Привязать подарочный сертификат к вашему аккаунту"
 
 #: templates/shortcodes/gift-card-check-balance-form.php:18
 msgctxt "shortcode title"

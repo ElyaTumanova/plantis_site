@@ -1,4 +1,17 @@
-/* gift card page */
+/*--------------------------------------------------------------
+Contents
+# Gift card page
+# Gift card page form fields
+# Gift card result page
+# Gift card CHECK BALANCE
+# Gift card FAQ
+# My Account for gift card section
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Gift card page
+--------------------------------------------------------------*/
 
 .gift-content-area {
   max-width: 924px;
@@ -138,7 +151,9 @@
   pointer-events: none;
 }
 
-/* form fields */
+/*--------------------------------------------------------------
+# Gift card page form fields
+--------------------------------------------------------------*/
 
 .gift-cards_form input, .gift-cards_form textarea {
   border-radius: 40px !important;
@@ -237,8 +252,9 @@
   margin: 0;
 }
 
-
-/* gift card result page */
+/*--------------------------------------------------------------
+# Gift card result page
+--------------------------------------------------------------*/
 
 .gift-card-content-area{
   max-width: 1160px;
@@ -504,7 +520,9 @@
 .copy-btn:hover{ background:#f7faf8; }
 .copy-btn:focus-visible{ outline: 3px solid #cfd5db; outline-offset: 2px; }
 
-/* CHECK BALANCE */
+/*--------------------------------------------------------------
+# Gift card CHECK BALANCE
+--------------------------------------------------------------*/
 
 .gift-card__not-found {
   margin: 50px auto 30px;
@@ -565,7 +583,10 @@
   display: block;
 }
 
-/* FAQ */
+/*--------------------------------------------------------------
+# Gift card FAQ
+--------------------------------------------------------------*/
+
 .faq-item{
   overflow: hidden;
   border: 1px solid #e7eaee;
@@ -720,4 +741,29 @@
 /* Мобайл-твики */
 @media (max-width: 900px){
   .gift-card__main{ gap: 20px; }
+}
+
+
+/*--------------------------------------------------------------
+# My Account for gift card section
+--------------------------------------------------------------*/
+.yith-add-new-gc-my-account-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 10px 0 0 6px;
+    font-size: 14px;
+    color: #0073aa; /* как у ссылок WP, можешь заменить */
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.yith-add-new-gc-my-account-button:hover {
+    color: #005177;
+}
+
+.yith-add-new-gc-my-account-button::before {
+    content: "+ ";
+    font-weight: bold;
+    margin-right: 4px;
 }
