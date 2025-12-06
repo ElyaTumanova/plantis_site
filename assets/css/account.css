@@ -286,6 +286,9 @@
 
     .woocommerce-MyAccount-navigation ul {
         flex-direction: row;
+        width: 100%;
+        max-width: 100%;
+        flex-wrap: wrap;
     }
 }
 
@@ -349,7 +352,7 @@
     text-align: left;
     max-width: 100px;
     vertical-align: top;
-    padding: 25px 0;
+    padding: 25px 10px 25px 0;
     text-transform: uppercase;
 }
 
@@ -362,7 +365,7 @@
 }
 
 .woocommerce-MyAccount-orders td, .my_account_giftcards td {
-    padding: 25px 0;
+    padding: 25px 10px 25px 0;
 }
 .woocommerce-orders-table__header-order-actions, .woocommerce-orders-table__cell-order-actions {
     display: none;
