@@ -378,8 +378,7 @@
     .woocommerce-billing-fields__field-wrapper input {
         margin-bottom: 15px;
         padding: 14px 14px;
-    }
-    
+    } 
 }
 
 .woocommerce-billing-fields__field-wrapper input.input-radio {
@@ -432,6 +431,12 @@
     /* margin-bottom: 30px; */
     border: 1px solid #ccc;
     border-radius: 25px;
+}
+
+@media (max-width: 767px) {
+    .woocommerce-additional-fields__field-wrapper textarea {
+        padding: 14px 14px;
+    } 
 }
 
 
