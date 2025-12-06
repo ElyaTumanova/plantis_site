@@ -791,3 +791,23 @@ Contents
 .ywgc-add-new-gift-card-form #ywgc-link-code {
   border-radius: 25px !important;
 }
+
+.ywgc-add-new-gift-card-form .yith-add-new-gc-my-account-notice-message {
+  margin-bottom: 15px;
+}
+
+.yith-ywgc-add-new-gift-card-modal-inner {
+  padding-bottom: 0 !important;
+}
+
+.ywgc-add-new-gift-card-modal-title {
+  padding-top: 30px !important;
+}
+
+.my_account_giftcards thead .direct_link {
+  display: none;
+}
+.my_account_giftcards tbody .direct_link {
+  display: none;
+}
+
