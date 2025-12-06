@@ -530,6 +530,7 @@
     row-gap: 10px; */
     overflow: scroll;
     scrollbar-width: none;
+    gap: 10px;
 }
 
 /* для работы слайдера */
@@ -568,6 +569,11 @@
 
     width: 95px;
     min-height: 28px;
+}
+
+#additional_delivery_interval_field .woocommerce-input-wrapper label {
+  width: 100%;  
+  min-width: 115px;
 }
 
 #dontcallme_field .woocommerce-input-wrapper label {
