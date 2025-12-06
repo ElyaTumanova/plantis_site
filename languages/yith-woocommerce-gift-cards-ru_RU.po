@@ -551,7 +551,7 @@ msgstr ""
 #: templates/myaccount/my-giftcards.php:27
 #: templates/shortcodes/user-gift-card-table.php:35
 msgid "Balance"
-msgstr ""
+msgstr "Остаток"
 
 #: includes/admin/post-types/class-yith-ywgc-gift-card-post-type-admin.php:270
 msgid "Expire on"
@@ -576,7 +576,7 @@ msgstr ""
 #: includes/admin/post-types/class-yith-ywgc-gift-card-post-type-admin.php:400
 #: templates/myaccount/my-giftcards.php:174
 msgid "The code has not been used yet"
-msgstr ""
+msgstr "Сертификат еще не был использован"
 
 #: includes/admin/post-types/class-yith-ywgc-gift-card-post-type-admin.php:412
 msgid "Unlimited"
@@ -2597,12 +2597,12 @@ msgstr ""
 
 #: templates/myaccount/my-giftcards.php:28
 msgid "Usage"
-msgstr ""
+msgstr "Применен в заказе"
 
 #: templates/myaccount/my-giftcards.php:29
 #: templates/shortcodes/user-gift-card-table.php:36
 msgid "Status"
-msgstr ""
+msgstr "Статус"
 
 #: templates/myaccount/my-giftcards.php:87
 #: templates/shortcodes/user-gift-card-table.php:88
@@ -2611,12 +2611,12 @@ msgstr "Подарочные сертификаты"
 
 #: templates/myaccount/my-giftcards.php:88
 msgid "Add new"
-msgstr ""
+msgstr "Добавить подарочный сертификат"
 
 #. translators: %s is the order ID in which the gift card was used.
 #: templates/myaccount/my-giftcards.php:167
 msgid "Order %s"
-msgstr ""
+msgstr "Заказ %s"
 
 #: templates/myaccount/my-giftcards.php:185
 msgid "Apply to cart"
