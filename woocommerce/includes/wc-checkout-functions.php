@@ -341,6 +341,7 @@ Contents
         woocommerce_wp_text_input( array(
             'id' => 'delivery_dates',
             'label' => 'Дата доставки (самовывоза)',
+            'wrapper_class' => 'form-field-wide',
         ) );
         echo '</div>';
     }
@@ -1101,6 +1102,7 @@ function plnt_print_inn_field_value( $order ){
     woocommerce_wp_text_input( array(
         'id' => 'inn',
         'label' => 'ИНН',
+        'wrapper_class' => 'form-field-wide',
     ) );
     echo '</div>';
 }
