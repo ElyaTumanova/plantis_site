@@ -1085,7 +1085,7 @@ function plnt_save_inn_fields( $order_id ){
 
 // // добавляем поле в админку
 
-add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_inn_field_value', 20 );
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_inn_field_value', 40 );
 
 function plnt_print_inn_field_value( $order ){
 
