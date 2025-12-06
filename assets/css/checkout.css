@@ -742,7 +742,7 @@ label.list-view {
 .checkout__text {
     font-weight: 500;
     line-height: 1.2;
-    padding: 15px !important;
+    margin: 15px;
     /* background-color: var(--gray); */
 }
 
