@@ -378,16 +378,16 @@
     .woocommerce-orders-table__header-order-actions, .woocommerce-orders-table__cell-order-actions {
         display: none;
     } */
-    .woocommerce-MyAccount-orders th, .woocommerce-MyAccount-orders thead  {
+    .woocommerce-MyAccount-orders th, .woocommerce-MyAccount-orders thead, .my_account_giftcards th, .my_account_giftcards thead  {
         display: none;
     }
-    .woocommerce-MyAccount-orders tr {
+    .woocommerce-MyAccount-orders tr, .my_account_giftcards tr {
         display: grid;
         grid-template-columns: 40% 60%;
         grid-template-rows: repeat(3,auto);
         padding: 12px 0;
     }
-    .woocommerce-MyAccount-orders td {
+    .woocommerce-MyAccount-orders td, .my_account_giftcards td {
         padding: 10px 0;
     }
 }
