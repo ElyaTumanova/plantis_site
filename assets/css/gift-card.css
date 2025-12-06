@@ -753,6 +753,10 @@ Contents
     margin-bottom: 30px;
 }
 
+.gift-card-panel-title {
+  display: none;
+}
+
 .yith-add-new-gc-my-account-button {
     background: none;
     border: none;
