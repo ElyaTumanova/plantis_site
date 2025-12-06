@@ -573,7 +573,7 @@
 
 #additional_delivery_interval_field .woocommerce-input-wrapper label {
   width: 100%;  
-  min-width: 115px;
+  /* min-width: 115px; */
 }
 
 #dontcallme_field .woocommerce-input-wrapper label {
@@ -734,13 +734,16 @@ label.list-view {
 
 /* уведомления */
 
+.checkout__comment {
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+
 .checkout__text {
     font-weight: 500;
     line-height: 1.2;
     padding: 15px !important;
     /* background-color: var(--gray); */
-    border-radius: 25px;
-    border: 1px solid #ccc;
 }
 
 /* .checkout__text_alarm {
