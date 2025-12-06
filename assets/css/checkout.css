@@ -377,6 +377,7 @@
 @media (max-width: 767px) {
     .woocommerce-billing-fields__field-wrapper input {
         margin-bottom: 15px;
+        padding: 14px 14px;
     }
     
 }
