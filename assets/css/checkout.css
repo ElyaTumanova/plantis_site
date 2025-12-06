@@ -560,7 +560,7 @@
 
 #dontcallme_field .woocommerce-input-wrapper label {
   width: 170px;  
-  min-height: 28px;
+  min-height: 40px;
 }
 
 #delivery_dates_field .woocommerce-input-wrapper label span {
