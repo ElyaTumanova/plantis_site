@@ -504,7 +504,7 @@
 }
 
 
-#additional_delivery_interval_field label::before, #delivery_dates_field label::before{
+#additional_delivery_interval_field label::before, #delivery_dates_field label::before,  #dontcallme_field label::before{
     display: none;
 }
 
@@ -538,7 +538,7 @@
 
 #additional_delivery_interval_field .woocommerce-input-wrapper label, 
 #delivery_dates_field .woocommerce-input-wrapper label, 
-#shipping_method label {
+#shipping_method label, #dontcallme_field .woocommerce-input-wrapper label{
     background-color: #f5f5f5;
     border: 1px solid #D0D0D0;
     display: flex;
@@ -582,6 +582,12 @@
     background-color: #3a3a3a;
     color: #fff;
 }
+
+#dontcallme_field .woocommerce-input-wrapper input[type=radio]:checked + label {
+    background-color: #3a3a3a;
+    color: #fff;
+}
+
 #shipping_method input[type=radio]:checked + label {
     background-color: #3a3a3a;
     color: #fff;
