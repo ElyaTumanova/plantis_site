@@ -559,8 +559,14 @@
 }
 
 #dontcallme_field .woocommerce-input-wrapper label {
-  width: 170px;  
+  width: 100%;  
   min-height: 40px;
+}
+#dontcallme_field .woocommerce-input-wrapper label:not(:last-child) {
+  margin-right: 15px;
+}
+#dontcallme_field .woocommerce-input-wrapper label:last-child {
+  margin-right: 0;
 }
 
 #delivery_dates_field .woocommerce-input-wrapper label span {
