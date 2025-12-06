@@ -775,6 +775,7 @@ Contents
 .yith-ywgc-add-new-gift-card-modal-opened .yith-ywgc-add-new-gift-card-modal-wrapper {
   width: 100% !important;
   padding: 20px;
+  max-width: 500px;
 }
 
 .ywgc-add-new-gift-card-form {
@@ -787,6 +788,6 @@ Contents
     border-radius: 50px;
 }
 
-.ywgc-add-new-gift-card-form .ywgc-link-code {
+.ywgc-add-new-gift-card-form #ywgc-link-code {
   border-radius: 25px !important;
 }
