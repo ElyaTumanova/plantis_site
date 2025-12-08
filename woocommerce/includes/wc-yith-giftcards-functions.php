@@ -80,6 +80,10 @@ function handle_giftcard_pay() {
     }
     $phone = sanitize_text_field( $phone );
 
+    if ( ! $phone ) {
+        wp_die( 'Укажите корректный номер телефона.' );
+    }
+
     // 3.2 Имя получателя
     $recipient_names = $_POST['gift-recipient-name'] ?? [];
     if ( is_array( $recipient_names ) ) {

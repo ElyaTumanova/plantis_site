@@ -49,8 +49,8 @@ $gcid = 15419;?>
           <p class="gift-recipient-note">Ссылка на подарочный сертификат будет направлена на указанную почту автоматически после оплаты</p>
         </div>
         <div class="gift-recipient-phone gift-input-wrap gift-input-wrap_labeled">
-          <label for="gift-recipient-phone">Ваша номер телефона*</label>
-          <input type="phone"
+          <label for="gift-recipient-phone">Ваш номер телефона*</label>
+          <input type="tel"
                 id="gift-recipient-phone"
                 name="gift-recipient-phone[]"
                 required
