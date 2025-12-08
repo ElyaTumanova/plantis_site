@@ -25,6 +25,10 @@ Contents
   margin: auto;
 }
 
+.gift-card-content {
+  margin-bottom: 20px;
+}
+
 .gift-cards_form .gift-card__submit-btn {
     background-color: var(--text);
     color: var(--white);
@@ -36,10 +40,6 @@ Contents
   margin-bottom: 20px;
   position: relative;
 }
-.selected_button {
-  background-color: transparent !important;
-  color: var(--text) !important;
-}
 
 .gift-cards_form h3 {
   font-size: 22px !important;
@@ -47,34 +47,7 @@ Contents
   margin: 50px 0 25px;   
 }
 
-#gift-manual-amount, .selected_button #gift-manual-amount {
-  width: 100%;
-  background-color: transparent !important;
-  height: auto;
-  margin: 0 !important;
-  border: none !important;
-  outline: none;
-  color: var(--text) !important;
-}
-
-.selected_button #gift-manual-amount:focus, .selected_button #gift-manual-amount:active {
-  border: none !important;
-  outline: none;
-  color: var(--text) !important;
-}
-
-#gift-manual-amount-div-wrapper  {
-  height: auto;
-}
-
-.gift-manual-amount-container .selected_button, .gift-manual-amount-container  {
-  background-color: transparent !important;
-  height: 50px !important;
-  border-radius: 40px !important;
-  color: var(--text) !important;
-}
-
-@media only screen and (max-width: 992px) {
+/* @media only screen and (max-width: 992px) {
     .gift-cards-list .gift-amount-buttons {
         width: 180px !important;
         max-width: 180px !important;
@@ -86,13 +59,13 @@ Contents
         width: 100% !important;
         max-width: 100% !important;
     }
-}
+} */
 
-.gift-manual-currency-symbol {
+/* .gift-manual-currency-symbol {
   display: none;
-}
+} */
 
-.gift_card_template_button {
+/* .gift_card_template_button {
   margin-top: 5px !important;
 }
 .gift_card_template_button button{
@@ -101,9 +74,9 @@ Contents
   background-color: var(--accent-color);
   color: var(--white);
   padding: 14px;
-}
+} */
 
-.gift-cards-list .gift__note {
+/* .gift-cards-list .gift__note {
   font-size: 14px;
   position: absolute;
   top: 65px;
@@ -118,10 +91,10 @@ Contents
         margin-top: 10px;
         margin-left: 10px;
     }
-}
+} */
 
 
-.gift__amounts, .gift__amounts.selected_button {
+.gift__amounts {
   font-size: 16px;
   margin-top: 20px;
   width: 100%;
@@ -159,7 +132,7 @@ Contents
   border-radius: 40px !important;
   padding: 3px 25px;
   outline: none;
-  margin: 10px 0 0 !important;
+  margin: 10px 0 0;
 }
 
 .gift-cards_form textarea {
@@ -174,6 +147,13 @@ Contents
 
 .gift-cards_form textarea:focus {
   padding: 25px;
+}
+
+#gift-manual-amount {
+  height: 50px;
+  box-sizing: border-box;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .gift-recipient-note {

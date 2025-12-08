@@ -36,7 +36,7 @@ $gcid = 15419;?>
           </div>
       </div>
 
-      <div class="gift-card-content-editor step-content clearfix">
+      <div class="gift-card-content">
 
         <h3>Куда отправить сертификат</h3>
         <div class="gift-recipient-email gift-input-wrap gift-input-wrap_labeled">
