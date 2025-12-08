@@ -8,6 +8,8 @@ class FormsValidation {
     const { target } = event
     const isFormField = target.closest(this.formSelector)
     const isRequired = target.required
+    console.log(isFormField)
+    console.log(isRequired)
 
     if (isFormField && isRequired) {
       this.validateField(target)
