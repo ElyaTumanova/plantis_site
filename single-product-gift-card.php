@@ -12,7 +12,7 @@ $gcid = 15419;?>
     </div>
 
 
-    <form method="post" action="/wp-admin/admin-post.php" class="gift-cards_form">
+    <form method="post" action="/wp-admin/admin-post.php" class="gift-cards_form" novalidate>
 
       <input type="hidden" name="action" value="giftcard_pay">
       <input type="hidden" name="giftcard_product_id" value="15419"> <!-- ID товара gift-card -->
