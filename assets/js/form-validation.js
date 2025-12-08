@@ -6,7 +6,7 @@ class FormsValidation {
     tooLong: ({ maxLength }) => `Слишком длинное значение, ограничение символов — ${maxLength}`,
   }
 
-  constructor (formSelector) {
+  constructor (formSelector, errorMessageSelector) {
     this.formSelector = formSelector
     this.form = null
   }
@@ -64,13 +64,21 @@ class FormsValidation {
     console.log(errorMessages)
 
 
-    // this.manageErrors(fieldControlElement, errorMessages)
+    this.manageErrors(fieldControlElement, errorMessages)
 
     const isValid = errorMessages.length === 0
 
     // fieldControlElement.ariaInvalid = !isValid
 
     return isValid
+  }
+
+  manageErrors(fieldControlElement, errorMessages) {
+    const fieldErrorsElement = fieldControlElement.parentElement.querySelector(this.selectors.fieldErrors)
+
+    fieldErrorsElement.innerHTML = errorMessages
+      .map((message) => `<span class="field__error">${message}</span>`)
+      .join('')
   }
 
   bindEvents() {

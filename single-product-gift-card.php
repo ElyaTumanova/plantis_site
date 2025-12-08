@@ -18,7 +18,10 @@ $gcid = 15419;?>
       <input type="hidden" name="giftcard_product_id" value="15419"> <!-- ID товара gift-card -->
       <input type="number" name="giftcard_amount" id="giftcard_amount" value="" min="1" required style="display:none;">
       <h3 class="gift_select_amount_title">Выберите желаемую сумму подарка</h3>
-      <input id="gift-manual-amount" name="gift-manual-amount" class="gift-manual-amount" type="text" placeholder="" value="10" required>
+      <div class="gift-input-wrap">
+        <input id="gift-manual-amount" name="gift-manual-amount" class="gift-manual-amount" type="text" placeholder="" value="10" required>
+        <span class="field__errors"></span>
+      </div>
 
       <p class="gift__note">Можно ввести любую сумму от 1500 до 30&nbsp;000&nbsp;₽</p>
       <div class="gift__amounts gift-swiper-wrap">
@@ -46,6 +49,7 @@ $gcid = 15419;?>
                 name="gift-recipient-email[]"
                 required
                 class="gift-recipient yith_wc_gift_card_input_recipient_details">
+          <span class="field__errors"></span>
           <p class="gift-recipient-note">Ссылка на подарочный сертификат будет направлена на указанную почту автоматически после оплаты</p>
         </div>
         <div class="gift-recipient-phone gift-input-wrap gift-input-wrap_labeled">
@@ -55,6 +59,7 @@ $gcid = 15419;?>
                 name="gift-recipient-phone[]"
                 required
                 class="gift-recipient yith_wc_gift_card_input_recipient_details">
+          <span class="field__errors"></span>
           <p class="gift-recipient-note">Ваш номер телефона для связи</p>
         </div>
 
@@ -66,6 +71,7 @@ $gcid = 15419;?>
                 name="gift-recipient-name[]"
                 required
                 class="yith_wc_gift_card_input_recipient_details">
+          <span class="field__errors"></span>
         </div>
 
         <div class="gift-message gift-input-wrap gift-input-wrap_labeled">
