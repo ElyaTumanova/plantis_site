@@ -21,6 +21,34 @@ class FormsValidation {
     }
   }
 
+  onSubmit(event) {
+    const isFormElement = event.target.matches(this.formSelector)
+    if (!isFormElement) {
+      return
+    }
+
+    const requiredControlElements = [...event.target.elements].filter(({ required }) => required)
+    let isFormValid = true
+    let firstInvalidFieldControl = null
+
+    requiredControlElements.forEach((element) => {
+      const isFieldValid = this.validateField(element)
+
+      if (!isFieldValid) {
+        isFormValid = false
+
+        if (!firstInvalidFieldControl) {
+          firstInvalidFieldControl = element
+        }
+      }
+    })
+
+    if (!isFormValid) {
+      event.preventDefault()
+      firstInvalidFieldControl.focus()
+    }
+  }
+
   validateField(fieldControlElement) {
     const errors = fieldControlElement.validity
     const errorMessages = []
@@ -38,11 +66,11 @@ class FormsValidation {
 
     // this.manageErrors(fieldControlElement, errorMessages)
 
-    // const isValid = errorMessages.length === 0
+    const isValid = errorMessages.length === 0
 
     // fieldControlElement.ariaInvalid = !isValid
 
-    // return isValid
+    return isValid
   }
 
   bindEvents() {
@@ -50,7 +78,7 @@ class FormsValidation {
       this.onBlur(event)
     }, { capture: true })
     // document.addEventListener('change', (event) => this.onChange(event))
-    // document.addEventListener('submit', (event) => this.onSubmit(event))
+    document.addEventListener('submit', (event) => this.onSubmit(event))
   }
 
   initDom () {
