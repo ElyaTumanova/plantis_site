@@ -5,6 +5,8 @@ class FormsValidation {
   }
 
   onBlur(event) {
+    console.log('hi onblur')
+    console.log(event)
     const { target } = event
     const isFormField = target.closest(this.formSelector)
     const isRequired = target.required
@@ -38,12 +40,21 @@ class FormsValidation {
     // return isValid
   }
 
+  bindEvents() {
+    document.addEventListener('blur', (event) => {
+      this.onBlur(event)
+    }, { capture: true })
+    // document.addEventListener('change', (event) => this.onChange(event))
+    // document.addEventListener('submit', (event) => this.onSubmit(event))
+  }
+
   initDom () {
     this.form = document.querySelector(this.formSelector)
   }
 
   init() {
     this.initDom()
+    this.bindEvents()
   }
 
 }
