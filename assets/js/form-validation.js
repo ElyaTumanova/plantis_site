@@ -8,6 +8,7 @@ class FormsValidation {
 
   constructor (formSelector, errorMessageSelector) {
     this.formSelector = formSelector
+    this.errorMessageSelector = errorMessageSelector
     this.form = null
   }
 
