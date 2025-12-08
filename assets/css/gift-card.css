@@ -138,12 +138,12 @@ Contents
 .gift-cards_form textarea {
   padding: 25px;
   border-radius: 20px !important;
-  width: 100%;
 }
 
 .gift-cards_form input {
   height: 50px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .gift-cards_form input:focus, .gift-cards_form textarea:focus {
