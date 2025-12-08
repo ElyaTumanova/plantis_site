@@ -14,10 +14,30 @@ class FormsValidation {
     }
   }
 
+  validateField(fieldControlElement) {
+    const errors = fieldControlElement.validity
+    const errorMessages = []
+
+    console.log(errors)
+
+    // Object.entries(this.errorMessages).forEach(([errorType, getErrorMessage]) => {
+    //   if (errors[errorType]) {
+    //     errorMessages.push(getErrorMessage(fieldControlElement))
+    //   }
+    // })
+
+
+    // this.manageErrors(fieldControlElement, errorMessages)
+
+    // const isValid = errorMessages.length === 0
+
+    // fieldControlElement.ariaInvalid = !isValid
+
+    // return isValid
+  }
+
   initDom () {
     this.form = document.querySelector(this.formSelector)
-    console.log(this.formSelector)
-    console.log(this.form)
   }
 
   init() {
