@@ -27,3 +27,4 @@ class FormsValidation {
 }
 
 const giftFormValidation = new FormsValidation('.gift-cards_form')
+giftFormValidation.init()
