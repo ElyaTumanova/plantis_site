@@ -313,7 +313,7 @@
  line-height: 1.2; 
 }
 
-.woocommerce-MyAccount-navigation ul a:hover {
+.woocommerce-MyAccount-navigation ul a:not(:last-child):hover {
   text-decoration: none;
   color: var(--accent-color);
 }
