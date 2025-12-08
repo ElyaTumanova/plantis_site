@@ -45,7 +45,7 @@ $gcid = 15419;?>
                 id="gift-recipient-email"
                 name="gift-recipient-email[]"
                 required
-                class="gift-recipient yith_wc_gift_card_input_recipient_details focus">
+                class="gift-recipient yith_wc_gift_card_input_recipient_details">
           <p class="gift-recipient-note">Ссылка на подарочный сертификат будет направлена на указанную почту автоматически после оплаты</p>
         </div>
         <div class="gift-recipient-phone gift-input-wrap gift-input-wrap_labeled">
@@ -54,7 +54,7 @@ $gcid = 15419;?>
                 id="gift-recipient-phone"
                 name="gift-recipient-phone[]"
                 required
-                class="gift-recipient yith_wc_gift_card_input_recipient_details focus">
+                class="gift-recipient yith_wc_gift_card_input_recipient_details">
           <p class="gift-recipient-note">Ваш номер телефона для связи</p>
         </div>
 
@@ -65,7 +65,7 @@ $gcid = 15419;?>
                 id="gift-recipient-name"
                 name="gift-recipient-name[]"
                 required
-                class="yith_wc_gift_card_input_recipient_details focus">
+                class="yith_wc_gift_card_input_recipient_details">
         </div>
 
         <div class="gift-message gift-input-wrap gift-input-wrap_labeled">
