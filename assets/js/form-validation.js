@@ -74,7 +74,8 @@ class FormsValidation {
   }
 
   manageErrors(fieldControlElement, errorMessages) {
-    const fieldErrorsElement = fieldControlElement.parentElement.querySelector(this.selectors.fieldErrors)
+    if (!this.errorMessageSelector) return
+    const fieldErrorsElement = fieldControlElement.parentElement.querySelector(this.errorMessageSelector)
 
     fieldErrorsElement.innerHTML = errorMessages
       .map((message) => `<span class="field__error">${message}</span>`)
@@ -100,5 +101,5 @@ class FormsValidation {
 
 }
 
-const giftFormValidation = new FormsValidation('.gift-cards_form')
+const giftFormValidation = new FormsValidation('.gift-cards_form','.field__errors')
 giftFormValidation.init()
