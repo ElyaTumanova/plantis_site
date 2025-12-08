@@ -47,7 +47,7 @@ Contents
   margin: 50px 0 25px;   
 }
 
-#ywgc-manual-amount, .selected_button #ywgc-manual-amount {
+#gift-manual-amount, .selected_button #gift-manual-amount {
   width: 100%;
   background-color: transparent !important;
   height: auto;
@@ -57,17 +57,17 @@ Contents
   color: var(--text) !important;
 }
 
-.selected_button #ywgc-manual-amount:focus, .selected_button #ywgc-manual-amount:active {
+.selected_button #gift-manual-amount:focus, .selected_button #gift-manual-amount:active {
   border: none !important;
   outline: none;
   color: var(--text) !important;
 }
 
-#ywgc-manual-amount-div-wrapper  {
+#gift-manual-amount-div-wrapper  {
   height: auto;
 }
 
-.ywgc-manual-amount-container .selected_button, .ywgc-manual-amount-container  {
+.gift-manual-amount-container .selected_button, .gift-manual-amount-container  {
   background-color: transparent !important;
   height: 50px !important;
   border-radius: 40px !important;
@@ -75,20 +75,20 @@ Contents
 }
 
 @media only screen and (max-width: 992px) {
-    .gift-cards-list .ywgc-amount-buttons {
+    .gift-cards-list .gift-amount-buttons {
         width: 180px !important;
         max-width: 180px !important;
         border-radius: 40px !important;
     }
 }
 @media (max-width: 550px) {
-    .gift-cards-list .ywgc-amount-buttons {
+    .gift-cards-list .gift-amount-buttons {
         width: 100% !important;
         max-width: 100% !important;
     }
 }
 
-.ywgc-manual-currency-symbol {
+.gift-manual-currency-symbol {
   display: none;
 }
 
@@ -176,32 +176,36 @@ Contents
   padding: 25px;
 }
 
-.ywgc-recipient-email {
+.gift-input-wrap_labeled {
+  position: relative;
+}
+
+.gift-recipient-email {
   float: none !important;
   width: 100% !important;
   position: relative;
 }
 
-.ywgc-recipient-note {
+.gift-recipient-note {
   font-size: 14px;
   margin-top: 10px;
   line-height: 1.2;
   padding-left: 10px;
 }
 
-.ywgc-recipient-name {
+.gift-recipient-name {
   float: none !important;
   width: 100% !important;
   position: relative;
   margin-bottom: 15px;
 }
 
-.ywgc-message {
+.gift-message {
   position: relative;
   margin-bottom: 15px;
 }
 
-.ywgc-sender-name {
+.gift-sender-name {
   width: 100% !important;
   float: none !important;
   position: relative;
@@ -220,31 +224,31 @@ Contents
   color: var(--gray-text);
 }
 
-.ywgc-recipient-email:has(.focus) label {
+.gift-recipient-email:has(.focus) label {
   top: 0px;
   left: 25px;
   color: var(--text);
 }
-.ywgc-recipient-name:has(.focus) label {
+.gift-recipient-name:has(.focus) label {
   top: 0px;
   left: 13px;
   color: var(--text);
 }
-.ywgc-sender-name:has(.focus) label {
+.gift-sender-name:has(.focus) label {
   top: 0px;
   left: 13px;
   color: var(--text);
 }
-.ywgc-message:has(.focus) label {
+.gift-message:has(.focus) label {
   top: 0px;
   left: 13px;
   color: var(--text);
 }
 /* обнуление стандартного вывода ошибок */
-.ywgc-red-border {
-  border: 1px solid var(--yith-ywgc-border-color) !important;
+.gift-red-border {
+  border: 1px solid var(--yith-gift-border-color) !important;
 }
-.ywgc-manual-amount-error {
+.gift-manual-amount-error {
   float: none;
   display: none;
   font-size: 0 !important;
@@ -776,35 +780,35 @@ Contents
     margin-right: 4px;
 }
 
-.yith-ywgc-add-new-gift-card-modal-opened .yith-ywgc-add-new-gift-card-modal-wrapper {
+.yith-gift-add-new-gift-card-modal-opened .yith-gift-add-new-gift-card-modal-wrapper {
   width: 100% !important;
   padding: 20px;
   max-width: 500px;
 }
 
-.ywgc-add-new-gift-card-form {
+.gift-add-new-gift-card-form {
   background-color: transparent !important;
 }
 
-.ywgc-add-new-gift-card-form .ywgc-link-gift-card-submit-button {
+.gift-add-new-gift-card-form .gift-link-gift-card-submit-button {
     background-color: var(--text);
     color: var(--white);
     border-radius: 50px;
 }
 
-.ywgc-add-new-gift-card-form #ywgc-link-code {
+.gift-add-new-gift-card-form #gift-link-code {
   border-radius: 25px !important;
 }
 
-.ywgc-add-new-gift-card-form .yith-add-new-gc-my-account-notice-message {
+.gift-add-new-gift-card-form .yith-add-new-gc-my-account-notice-message {
   margin-bottom: 15px;
 }
 
-.yith-ywgc-add-new-gift-card-modal-inner {
+.yith-gift-add-new-gift-card-modal-inner {
   padding-bottom: 0 !important;
 }
 
-.ywgc-add-new-gift-card-modal-title {
+.gift-add-new-gift-card-modal-title {
   padding-top: 30px !important;
 }
 

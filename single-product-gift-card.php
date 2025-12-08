@@ -17,8 +17,8 @@ $gcid = 15419;?>
       <input type="hidden" name="action" value="giftcard_pay">
       <input type="hidden" name="giftcard_product_id" value="15419"> <!-- ID товара gift-card -->
       <input type="number" name="giftcard_amount" id="giftcard_amount" value="" min="1" required style="display:none;">
-      <h3 class="ywgc_select_amount_title">Выберите желаемую сумму подарка</h3>
-      <input id="ywgc-manual-amount" name="ywgc-manual-amount" class="ywgc-manual-amount" type="text" placeholder="" value="10">
+      <h3 class="gift_select_amount_title">Выберите желаемую сумму подарка</h3>
+      <input id="gift-manual-amount" name="gift-manual-amount" class="gift-manual-amount" type="text" placeholder="" value="10">
 
       <p class="gift__note">Можно ввести любую сумму от 1500 до 30&nbsp;000&nbsp;₽</p>
       <div class="gift__amounts gift-swiper-wrap">
@@ -39,43 +39,43 @@ $gcid = 15419;?>
       <div class="gift-card-content-editor step-content clearfix">
 
         <h3>Куда отправить сертификат</h3>
-        <div class="ywgc-recipient-email clearfix">
-          <label for="ywgc-recipient-email">Ваша почта*</label>
+        <div class="gift-recipient-email gift-input-wrap gift-input-wrap_labeled">
+          <label for="gift-recipient-email">Ваша почта*</label>
           <input type="email"
-                id="ywgc-recipient-email"
-                name="ywgc-recipient-email[]"
+                id="gift-recipient-email"
+                name="gift-recipient-email[]"
                 required
-                class="ywgc-recipient yith_wc_gift_card_input_recipient_details focus">
-          <p class="ywgc-recipient-note">Ссылка на подарочный сертификат будет направлена на указанную почту автоматически после оплаты</p>
+                class="gift-recipient yith_wc_gift_card_input_recipient_details focus">
+          <p class="gift-recipient-note">Ссылка на подарочный сертификат будет направлена на указанную почту автоматически после оплаты</p>
         </div>
-        <div class="ywgc-recipient-phone clearfix">
-          <label for="ywgc-recipient-phone">Ваша номер телефона*</label>
-          <input type="email"
-                id="ywgc-recipient-phone"
-                name="ywgc-recipient-phone[]"
+        <div class="gift-recipient-phone gift-input-wrap gift-input-wrap_labeled">
+          <label for="gift-recipient-phone">Ваша номер телефона*</label>
+          <input type="phone"
+                id="gift-recipient-phone"
+                name="gift-recipient-phone[]"
                 required
-                class="ywgc-recipient yith_wc_gift_card_input_recipient_details focus">
-          <p class="ywgc-recipient-note">Ваш номер телефона для связи</p>
+                class="gift-recipient yith_wc_gift_card_input_recipient_details focus">
+          <p class="gift-recipient-note">Ваш номер телефона для связи</p>
         </div>
 
         <h3>Кому дарим</h3>
-        <div class="ywgc-recipient-name clearfix">
-          <label for="ywgc-recipient-name">Имя получателя*</label>
+        <div class="gift-recipient-name gift-input-wrap gift-input-wrap_labeled">
+          <label for="gift-recipient-name">Имя получателя*</label>
           <input type="text"
-                id="ywgc-recipient-name"
-                name="ywgc-recipient-name[]"
+                id="gift-recipient-name"
+                name="gift-recipient-name[]"
                 required
                 class="yith_wc_gift_card_input_recipient_details focus">
         </div>
 
-        <div class="ywgc-message clearfix">
-          <label for="ywgc-edit-message">Добавьте теплых слов</label>
-          <textarea id="ywgc-edit-message" name="ywgc-edit-message" rows="5"></textarea>
+        <div class="gift-message gift-input-wrap gift-input-wrap_labeled">
+          <label for="gift-edit-message">Добавьте теплых слов</label>
+          <textarea id="gift-edit-message" name="gift-edit-message" rows="5"></textarea>
         </div>
 
-        <div class="ywgc-sender-name clearfix">
-          <label for="ywgc-sender-name">Имя отправителя</label>
-          <input type="text" name="ywgc-sender-name" id="ywgc-sender-name" value="">
+        <div class="gift-sender-name gift-input-wrap gift-input-wrap_labeled">
+          <label for="gift-sender-name">Имя отправителя</label>
+          <input type="text" name="gift-sender-name" id="gift-sender-name" value="">
         </div>
 
       </div>

@@ -59,7 +59,7 @@ function handle_giftcard_pay() {
     // 3. Данные из твоей формы YITH
 
     // 3.1 Email (и плательщика, и получателя – один и тот же)
-    $recipient_emails = $_POST['ywgc-recipient-email'] ?? [];
+    $recipient_emails = $_POST['gift-recipient-email'] ?? [];
     if ( is_array( $recipient_emails ) ) {
         $recipient_email = reset( $recipient_emails );
     } else {
@@ -72,7 +72,7 @@ function handle_giftcard_pay() {
     }
 
     //Телефон
-    $recipient_phones = $_POST['ywgc-recipient-phone'] ?? [];
+    $recipient_phones = $_POST['gift-recipient-phone'] ?? [];
     if ( is_array( $recipient_phones ) ) {
         $phone = reset( $recipient_phones );
     } else {
@@ -81,7 +81,7 @@ function handle_giftcard_pay() {
     $phone = sanitize_text_field( $phone );
 
     // 3.2 Имя получателя
-    $recipient_names = $_POST['ywgc-recipient-name'] ?? [];
+    $recipient_names = $_POST['gift-recipient-name'] ?? [];
     if ( is_array( $recipient_names ) ) {
         $recipient_name = reset( $recipient_names );
     } else {
@@ -90,14 +90,14 @@ function handle_giftcard_pay() {
     $recipient_name = sanitize_text_field( $recipient_name );
 
     // 3.3 Сообщение
-    $message_raw = $_POST['ywgc-edit-message'] ?? '';
+    $message_raw = $_POST['gift-edit-message'] ?? '';
     if ( is_array( $message_raw ) ) {
         $message_raw = reset( $message_raw );
     }
     $message = wp_kses_post( $message_raw );
 
     // 3.4 Имя отправителя
-    $sender_raw = $_POST['ywgc-sender-name'] ?? '';
+    $sender_raw = $_POST['gift-sender-name'] ?? '';
     if ( is_array( $sender_raw ) ) {
         $sender_raw = reset( $sender_raw );
     }
