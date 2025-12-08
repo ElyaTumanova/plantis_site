@@ -1,5 +1,5 @@
 let giftAmounts = document.querySelectorAll('.gift__amounts p')
-let amountInput = document.querySelector('#ywgc-manual-amount')
+let amountInput = document.querySelector('#gift-manual-amount')
 let imageAmount = document.querySelector('.gift-image-amount')
 let submitBtn = document.querySelector('.gift_card_add_to_cart_button')
 let giftForm = document.querySelector('.gift-cards_form')
@@ -19,10 +19,10 @@ if (giftForm) {
   giftAmountPost.value = minAmount
 
   //for dev
-  let mail = document.querySelector('#ywgc-recipient-email')
+  let mail = document.querySelector('#gift-recipient-email')
   mail.value = 'eleonoraatumanova@gmail.com'
   mail.classList.add('focus')
-  let nameF = document.querySelector('#ywgc-recipient-name')
+  let nameF = document.querySelector('#gift-recipient-name')
   nameF.value = 'Ela'
   nameF.classList.add('focus')
   //
