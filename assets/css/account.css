@@ -313,6 +313,11 @@
  line-height: 1.2; 
 }
 
+.woocommerce-MyAccount-navigation ul a:hover {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
 .woocommerce-MyAccount-content p {
     margin-bottom: 10px;
 }
@@ -401,7 +406,7 @@
         padding: 12px 0;
     }
     .woocommerce-MyAccount-orders td, .my_account_giftcards td {
-        padding: 10px 0;
+        padding: 10px 7px 10px 0;
     }
 }
 
