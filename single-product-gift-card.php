@@ -48,6 +48,15 @@ $gcid = 15419;?>
                 class="ywgc-recipient yith_wc_gift_card_input_recipient_details focus">
           <p>Ссылка на подарочный сертификат будет направлена на указанную почту автоматически после оплаты</p>
         </div>
+        <div class="ywgc-recipient-phone clearfix">
+          <label for="ywgc-recipient-phone">Ваша номер телефона*</label>
+          <input type="email"
+                id="ywgc-recipient-phone"
+                name="ywgc-recipient-phone[]"
+                required
+                class="ywgc-recipient yith_wc_gift_card_input_recipient_details focus">
+          <p>Ваш номер телефона для связи</p>
+        </div>
 
         <h3>Кому дарим</h3>
         <div class="ywgc-recipient-name clearfix">

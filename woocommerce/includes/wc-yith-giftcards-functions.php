@@ -71,6 +71,15 @@ function handle_giftcard_pay() {
         wp_die( 'Укажите корректный e-mail.' );
     }
 
+    //Телефон
+    $recipient_phones = $_POST['ywgc-recipient-phone'] ?? [];
+    if ( is_array( $recipient_phones ) ) {
+        $phone = reset( $recipient_phones );
+    } else {
+        $phone = $recipient_phones;
+    }
+    $phone = sanitize_text_field( $phone );
+
     // 3.2 Имя получателя
     $recipient_names = $_POST['ywgc-recipient-name'] ?? [];
     if ( is_array( $recipient_names ) ) {
@@ -156,6 +165,9 @@ function handle_giftcard_pay() {
 
     // 6. Биллинг заказчика (email = email получателя)
     $order->set_billing_email( $recipient_email );
+    if ( $phone ) {
+        $order->set_billing_phone( $phone );
+    }
 
     // 7. Способ оплаты — tbank
     $order->set_payment_method( 'tbank' );
