@@ -64,69 +64,69 @@ if (giftForm) {
   })
 
   // validation
-  function isValidAmount(v) {
-      if (v == null) return false;
-      let n = Number(v);
-      return Number.isFinite(n) && n >= minAmount & n<= maxAmount;
-    }
+  // function isValidAmount(v) {
+  //     if (v == null) return false;
+  //     let n = Number(v);
+  //     return Number.isFinite(n) && n >= minAmount & n<= maxAmount;
+  //   }
 
-  function updateState() {
-    console.log(amountInput.value)
-    let ok = isValidAmount(amountInput.value)
-    submitBtn.disabled = !ok
-    submitBtn.classList.toggle('is-disabled', !ok)
-  }
-
-  // function submitGiftForm() {
-  //   console.log('form submitted')
-  //   let buyNowInput = document.createElement('input');
-  //   buyNowInput.type = 'hidden';
-  //   buyNowInput.name = 'buy_now';
-  //   buyNowInput.value = '1';
-  //   giftForm.appendChild(buyNowInput);
-  //   giftForm.submit()
+  // function updateState() {
+  //   console.log(amountInput.value)
+  //   let ok = isValidAmount(amountInput.value)
+  //   submitBtn.disabled = !ok
+  //   submitBtn.classList.toggle('is-disabled', !ok)
   // }
 
-  updateState()
-  //amountInput.addEventListener('input', updateState)
-  amountInput.addEventListener('blur', updateState)
+  // // function submitGiftForm() {
+  // //   console.log('form submitted')
+  // //   let buyNowInput = document.createElement('input');
+  // //   buyNowInput.type = 'hidden';
+  // //   buyNowInput.name = 'buy_now';
+  // //   buyNowInput.value = '1';
+  // //   giftForm.appendChild(buyNowInput);
+  // //   giftForm.submit()
+  // // }
 
-  //input field control
-  amountInput.addEventListener('input', function () {
-      // Удаляем все нецифровые символы
-      let digits = this.value.replace(/\D/g, '');
+  // updateState()
+  // //amountInput.addEventListener('input', updateState)
+  // amountInput.addEventListener('blur', updateState)
 
-      if (digits !== '') {
-        let num = parseInt(digits, 10);
+  // //input field control
+  // amountInput.addEventListener('input', function () {
+  //     // Удаляем все нецифровые символы
+  //     let digits = this.value.replace(/\D/g, '');
 
-        // Если число больше максимального, запрещаем добавление лишней цифры
-        if (num > maxAmount) {
-          // возвращаем старое значение (до ввода этой цифры)
-          this.value = this.dataset.prevValue || maxAmount;
-          return;
-        }
+  //     if (digits !== '') {
+  //       let num = parseInt(digits, 10);
 
-        // Обновляем значение и запоминаем как «предыдущее валидное»
-        this.value = digits;
-        this.dataset.prevValue = this.value;
-      } else {
-        // Позволяем временно очистить поле
-        this.value = '';
-        this.dataset.prevValue = '';
-      }
-  });
+  //       // Если число больше максимального, запрещаем добавление лишней цифры
+  //       if (num > maxAmount) {
+  //         // возвращаем старое значение (до ввода этой цифры)
+  //         this.value = this.dataset.prevValue || maxAmount;
+  //         return;
+  //       }
 
-    // После потери фокуса проверяем минимум
-    amountInput.addEventListener('blur', function () {
-      if (this.value === '' || parseInt(this.value, 10) < minAmount) {
-        this.value = minAmount;
-        this.setAttribute('value',minAmount)
-        imageAmount.innerHTML = `${minAmount}<span>₽</span>`
-        updateState()
-      } else {
-        imageAmount.innerHTML = `${this.value}<span>₽</span>`
-      }
-    });
+  //       // Обновляем значение и запоминаем как «предыдущее валидное»
+  //       this.value = digits;
+  //       this.dataset.prevValue = this.value;
+  //     } else {
+  //       // Позволяем временно очистить поле
+  //       this.value = '';
+  //       this.dataset.prevValue = '';
+  //     }
+  // });
+
+  //   // После потери фокуса проверяем минимум
+  //   amountInput.addEventListener('blur', function () {
+  //     if (this.value === '' || parseInt(this.value, 10) < minAmount) {
+  //       this.value = minAmount;
+  //       this.setAttribute('value',minAmount)
+  //       imageAmount.innerHTML = `${minAmount}<span>₽</span>`
+  //       updateState()
+  //     } else {
+  //       imageAmount.innerHTML = `${this.value}<span>₽</span>`
+  //     }
+  //   });
 
 
   // let buyNowInput = document.createElement('input');
