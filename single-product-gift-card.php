@@ -55,7 +55,7 @@ $gcid = 15419;?>
                 name="ywgc-recipient-phone[]"
                 required
                 class="ywgc-recipient yith_wc_gift_card_input_recipient_details focus">
-          <p>Ваш номер телефона для связи</p>
+          <p class="ywgc-recipient-note">Ваш номер телефона для связи</p>
         </div>
 
         <h3>Кому дарим</h3>
