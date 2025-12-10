@@ -76,7 +76,7 @@ class FormsValidation {
 
     if (isFormField && isRequired) {
       this.validateField(target)
-      this.isFormValid()
+      this.validateForm()
     }
   }
 
@@ -100,7 +100,7 @@ class FormsValidation {
       this.onBlur(event)
     }, { capture: true })
     document.addEventListener('submit', (event) => this.onSubmit(event))
-    document.addEventListener('DOMContentLoaded', (event) => this.isFormValid())
+    document.addEventListener('DOMContentLoaded', (event) => this.validateForm())
   }
 
   initDom () {
