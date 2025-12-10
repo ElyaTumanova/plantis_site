@@ -100,7 +100,7 @@ class FormsValidation {
       this.onBlur(event)
     }, { capture: true })
     document.addEventListener('submit', (event) => this.onSubmit(event))
-    document.addEventListener('DOMContentLoaded', this.isFormValid)
+    document.addEventListener('DOMContentLoaded', (event) => this.isFormValid)
   }
 
   initDom () {
