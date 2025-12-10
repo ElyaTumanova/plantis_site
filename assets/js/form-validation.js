@@ -265,6 +265,7 @@ class GiftFormValidation extends FormsValidation {
     this.amountInput.setAttribute('value',amount)
     this.imageAmount.innerHTML = `${amount}<span>₽</span>`
     this.giftAmountPost.value = amount
+    this.validateForm()
   }
 
   bindEvents() {
@@ -275,7 +276,6 @@ class GiftFormValidation extends FormsValidation {
       el.addEventListener('click', (evt) => {
         let amount = el.childNodes[0].textContent
         this.updateAmount(amount)
-        this.validateForm()
       })
     })
   }
