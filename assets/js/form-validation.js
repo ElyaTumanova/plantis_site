@@ -47,26 +47,10 @@ class FormsValidation {
   }
 
   validateForm() {
-    const requiredControlElements = [...this.form.elements].filter(({ required }) => required)
-    let isFormValid = true
-    let firstInvalidFieldControl = null
+    const isFormValid = this.form.checkValidity()
 
-    requiredControlElements.forEach((element) => {
-      const isFieldValid = this.validateField(element)
-
-      if (!isFieldValid) {
-        isFormValid = false
-
-        if (!firstInvalidFieldControl) {
-          firstInvalidFieldControl = element
-        }
-      }
-    })
-
-    this.sumbmitBtn.disabled = isFormValid
-    this.sumbmitBtn.classList.toggle('is-disabled', isFormValid)
-
-    return [isFormValid, firstInvalidFieldControl]
+    this.sumbmitBtn.disabled = !isFormValid
+    this.sumbmitBtn.classList.toggle('is-disabled', !isFormValid)
   }
 
   onBlur(event) {
@@ -87,7 +71,21 @@ class FormsValidation {
       return
     }
 
-    const [isFormValid, firstInvalidFieldControl] = this.validateForm()
+    const requiredControlElements = [...event.target.elements].filter(({ required }) => required)
+    let isFormValid = true
+    let firstInvalidFieldControl = null
+
+    requiredControlElements.forEach((element) => {
+      const isFieldValid = this.validateField(element)
+
+      if (!isFieldValid) {
+        isFormValid = false
+
+        if (!firstInvalidFieldControl) {
+          firstInvalidFieldControl = element
+        }
+      }
+    })
 
     if (!isFormValid) {
       event.preventDefault()
