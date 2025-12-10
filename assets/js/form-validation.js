@@ -12,6 +12,39 @@ class FormsValidation {
     this.form = null
   }
 
+  manageErrors(fieldControlElement, errorMessages) {
+    if (!this.errorMessageSelector) return
+    const fieldErrorsElement = fieldControlElement.parentElement.querySelector(this.errorMessageSelector)
+
+    fieldErrorsElement.innerHTML = errorMessages
+      .map((message) => `<span class="field__error">${message}</span>`)
+      .join('')
+  }
+
+  validateField(fieldControlElement) {
+    const errors = fieldControlElement.validity
+    const errorMessages = []
+
+    console.log(errors)
+
+    Object.entries(this.errorMessages).forEach(([errorType, getErrorMessage]) => {
+      if (errors[errorType]) {
+        errorMessages.push(getErrorMessage(fieldControlElement))
+      }
+    })
+
+    console.log(errorMessages)
+
+
+    this.manageErrors(fieldControlElement, errorMessages)
+
+    const isValid = errorMessages.length === 0
+
+    // fieldControlElement.ariaInvalid = !isValid
+
+    return isValid
+  }
+
   onBlur(event) {
     const { target } = event
     const isFormField = target.closest(this.formSelector)
@@ -50,44 +83,10 @@ class FormsValidation {
     }
   }
 
-  validateField(fieldControlElement) {
-    const errors = fieldControlElement.validity
-    const errorMessages = []
-
-    console.log(errors)
-
-    Object.entries(this.errorMessages).forEach(([errorType, getErrorMessage]) => {
-      if (errors[errorType]) {
-        errorMessages.push(getErrorMessage(fieldControlElement))
-      }
-    })
-
-    console.log(errorMessages)
-
-
-    this.manageErrors(fieldControlElement, errorMessages)
-
-    const isValid = errorMessages.length === 0
-
-    // fieldControlElement.ariaInvalid = !isValid
-
-    return isValid
-  }
-
-  manageErrors(fieldControlElement, errorMessages) {
-    if (!this.errorMessageSelector) return
-    const fieldErrorsElement = fieldControlElement.parentElement.querySelector(this.errorMessageSelector)
-
-    fieldErrorsElement.innerHTML = errorMessages
-      .map((message) => `<span class="field__error">${message}</span>`)
-      .join('')
-  }
-
   bindEvents() {
     document.addEventListener('blur', (event) => {
       this.onBlur(event)
     }, { capture: true })
-    // document.addEventListener('change', (event) => this.onChange(event))
     document.addEventListener('submit', (event) => this.onSubmit(event))
   }
 
@@ -100,6 +99,12 @@ class FormsValidation {
     this.bindEvents()
   }
 
+}
+
+class GiftFormValidation {
+   constructor (formSelector, errorMessageSelector) {
+     super ()
+  }
 }
 
 const giftFormValidation = new FormsValidation('.gift-cards_form','.field__errors')
