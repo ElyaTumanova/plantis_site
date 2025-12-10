@@ -237,7 +237,7 @@ class FormsValidation {
   init() {
     this.initDom()
     this.bindEvents()
-    this.phoneMask = PhoneMask.attach(phoneInput);
+    this.phoneMask = PhoneMask.attach(this.phoneInput);
   }
 
 }
