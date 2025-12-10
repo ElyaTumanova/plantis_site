@@ -175,7 +175,7 @@ class FormsValidation {
   validateForm() {
     const isFormValid = this.form.checkValidity()
 
-    this.sumbmitBtn.disabled = !isFormValid
+    // this.sumbmitBtn.disabled = !isFormValid
     this.sumbmitBtn.classList.toggle('is-disabled', !isFormValid)
   }
 
