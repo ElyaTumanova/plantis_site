@@ -10,6 +10,7 @@ class FormsValidation {
     this.formSelector = formSelector
     this.errorMessageSelector = errorMessageSelector
     this.form = null
+    this.sumbmitBtn = null
   }
 
   manageErrors(fieldControlElement, errorMessages) {
@@ -45,6 +46,26 @@ class FormsValidation {
     return isValid
   }
 
+  validateForm() {
+    const requiredControlElements = [...this.form.elements].filter(({ required }) => required)
+    let isFormValid = true
+    let firstInvalidFieldControl = null
+
+    requiredControlElements.forEach((element) => {
+      const isFieldValid = this.validateField(element)
+
+      if (!isFieldValid) {
+        isFormValid = false
+
+        if (!firstInvalidFieldControl) {
+          firstInvalidFieldControl = element
+        }
+      }
+    })
+
+    return [isFormValid, firstInvalidFieldControl]
+  }
+
   onBlur(event) {
     const { target } = event
     const isFormField = target.closest(this.formSelector)
@@ -61,21 +82,7 @@ class FormsValidation {
       return
     }
 
-    const requiredControlElements = [...event.target.elements].filter(({ required }) => required)
-    let isFormValid = true
-    let firstInvalidFieldControl = null
-
-    requiredControlElements.forEach((element) => {
-      const isFieldValid = this.validateField(element)
-
-      if (!isFieldValid) {
-        isFormValid = false
-
-        if (!firstInvalidFieldControl) {
-          firstInvalidFieldControl = element
-        }
-      }
-    })
+    const [isFormValid, firstInvalidFieldControl] = validateForm()
 
     if (!isFormValid) {
       event.preventDefault()
@@ -92,6 +99,8 @@ class FormsValidation {
 
   initDom () {
     this.form = document.querySelector(this.formSelector)
+    this.sumbmitBtn = this.form.querySelector('button[type="submit"]')
+    console.log(this.sumbmitBtn)
   }
 
   init() {
@@ -103,9 +112,9 @@ class FormsValidation {
 
 class GiftFormValidation {
    constructor (formSelector, errorMessageSelector) {
-     super ()
+     super (formSelector, errorMessageSelector)
   }
 }
 
-const giftFormValidation = new FormsValidation('.gift-cards_form','.field__errors')
+const giftFormValidation = new GiftFormValidation('.gift-cards_form','.field__errors')
 giftFormValidation.init()
