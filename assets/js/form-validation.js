@@ -250,9 +250,9 @@ class GiftFormValidation extends FormsValidation {
   constructor (formSelector, errorMessageSelector) {
     super (formSelector, errorMessageSelector)
     this.errorMessages = {
-      ...this.errorMessages, // берём все из родителя
-      rangeOverflow: () => `Минимальная сумма — ${this.amount.min}₽`, // переопределили
-      rangeUnderflow: () => `Максимальная сумма — ${this.amount.max}₽`, // новый тип
+      ...this.errorMessages,
+      rangeUnderflow: () => `Минимальная сумма — ${this.amount.min}₽`,
+      rangeOverflow: () => `Максимальная сумма — ${this.amount.max}₽`,
     };
     this.amountInput = null
     this.giftAmounts = null
