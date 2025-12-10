@@ -22,7 +22,7 @@ $gcid = 15419;?>
         <input id="gift-manual-amount" 
         name="gift-manual-amount" 
         class="gift-manual-amount" 
-        type="text" placeholder="" 
+        type="number" placeholder="" 
         value="10" 
         required
         min=1500
