@@ -62,8 +62,10 @@ class FormsValidation {
         }
       }
     })
-    console.log(isFormValid)
-    console.log(firstInvalidFieldControl)
+
+    this.sumbmitBtn.disabled = isFormValid
+    this.sumbmitBtn.classList.toggle('is-disabled', isFormValid)
+
     return [isFormValid, firstInvalidFieldControl]
   }
 
@@ -74,6 +76,7 @@ class FormsValidation {
 
     if (isFormField && isRequired) {
       this.validateField(target)
+      this.isFormValid()
     }
   }
 
@@ -85,8 +88,6 @@ class FormsValidation {
     }
 
     const [isFormValid, firstInvalidFieldControl] = this.validateForm()
-    console.log(isFormValid)
-    console.log(firstInvalidFieldControl)
 
     if (!isFormValid) {
       event.preventDefault()
@@ -99,6 +100,7 @@ class FormsValidation {
       this.onBlur(event)
     }, { capture: true })
     document.addEventListener('submit', (event) => this.onSubmit(event))
+    document.addEventListener('DOMContentLoaded', this.isFormValid)
   }
 
   initDom () {
