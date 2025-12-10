@@ -62,7 +62,8 @@ class FormsValidation {
         }
       }
     })
-
+    console.log(isFormValid)
+    console.log(firstInvalidFieldControl)
     return [isFormValid, firstInvalidFieldControl]
   }
 
@@ -77,12 +78,15 @@ class FormsValidation {
   }
 
   onSubmit(event) {
+    event.preventDefault()
     const isFormElement = event.target.matches(this.formSelector)
     if (!isFormElement) {
       return
     }
 
     const [isFormValid, firstInvalidFieldControl] = validateForm()
+    console.log(isFormValid)
+    console.log(firstInvalidFieldControl)
 
     if (!isFormValid) {
       event.preventDefault()
