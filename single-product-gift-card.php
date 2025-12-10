@@ -47,6 +47,8 @@ $gcid = 15419;?>
           <input type="email"
                 id="gift-recipient-email"
                 name="gift-recipient-email[]"
+                pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                title="Введите корректный email в формате name@example.com"
                 required
                 class="gift-recipient yith_wc_gift_card_input_recipient_details">
           <span class="field__errors"></span>
