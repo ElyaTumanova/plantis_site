@@ -114,10 +114,10 @@ class FormsValidation {
 
 }
 
-class GiftFormValidation {
+class GiftFormValidation extends FormsValidation {
    constructor (formSelector, errorMessageSelector) {
      super (formSelector, errorMessageSelector)
-  }
+    }
 }
 
 const giftFormValidation = new GiftFormValidation('.gift-cards_form','.field__errors')
