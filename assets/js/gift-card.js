@@ -11,12 +11,12 @@ if (giftForm) {
   let allInputs = giftForm.querySelectorAll('input')
   let allTextareas = giftForm.querySelectorAll('textarea')
 
-  let minAmount = 10
-  let maxAmount = 30000
-  amountInput.value = minAmount
-  amountInput.setAttribute('value',minAmount)
-  imageAmount.innerHTML = `${minAmount}<span>₽</span>`
-  giftAmountPost.value = minAmount
+  // let minAmount = 10
+  // let maxAmount = 30000
+  // amountInput.value = minAmount
+  // amountInput.setAttribute('value',minAmount)
+  // imageAmount.innerHTML = `${minAmount}<span>₽</span>`
+  // giftAmountPost.value = minAmount
 
   //for dev
   let mail = document.querySelector('#gift-recipient-email')
@@ -53,15 +53,15 @@ if (giftForm) {
     })
   })
 
-  giftAmounts.forEach(el => {
-    el.addEventListener('click', function () {
-      let amount = el.childNodes[0].textContent
-      amountInput.value = amount
-      giftAmountPost.value = amount
-      imageAmount.innerHTML = `${amount}<span>₽</span>`
-      // updateState()
-    })
-  })
+  // giftAmounts.forEach(el => {
+  //   el.addEventListener('click', function () {
+  //     let amount = el.childNodes[0].textContent
+  //     amountInput.value = amount
+  //     giftAmountPost.value = amount
+  //     imageAmount.innerHTML = `${amount}<span>₽</span>`
+  //     // updateState()
+  //   })
+  // })
 
   // validation
   // function isValidAmount(v) {

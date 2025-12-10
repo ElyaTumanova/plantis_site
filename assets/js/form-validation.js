@@ -191,7 +191,6 @@ class FormsValidation {
   }
 
   onSubmit(event) {
-    event.preventDefault()
     const isFormElement = event.target.matches(this.formSelector)
     if (!isFormElement) {
       return
@@ -231,21 +230,60 @@ class FormsValidation {
     this.form = document.querySelector(this.formSelector)
     this.sumbmitBtn = this.form.querySelector('button[type="submit"]')
     this.phoneInput = this.form.querySelector('input[type="tel"]');
-    console.log(this.phoneInput)
   }
 
   init() {
     this.initDom()
     this.bindEvents()
-    this.phoneMask = PhoneMask.attach(this.phoneInput);
+    if(this.phoneInput) {
+      this.phoneMask = PhoneMask.attach(this.phoneInput);
+    }
   }
 
 }
 
 class GiftFormValidation extends FormsValidation {
-   constructor (formSelector, errorMessageSelector) {
-     super (formSelector, errorMessageSelector)
-    }
+  amount = {
+    min: 10,
+    max: 30000
+  }
+  constructor (formSelector, errorMessageSelector) {
+    super (formSelector, errorMessageSelector)
+    this.amountInput = null
+    this.giftAmounts = null
+    this.imageAmount = null
+    this.giftAmountPost = null
+  }
+
+  updateAmount(amount) {
+    this.amountInput.value = amount
+    this.amountInput.setAttribute('value',amount)
+    this.imageAmount.innerHTML = `${amount}<span>₽</span>`
+    this.giftAmountPost.value = amount
+  }
+
+  bindEvents() {
+    super.bindEvents()
+    document.addEventListener('DOMContentLoaded', (evt) => this.updateAmount(this.amount.min))
+    
+    this.giftAmounts.forEach(el => {
+      el.addEventListener('click', function () {
+        let amount = el.childNodes[0].textContent
+        this.updateAmount(amount)
+        this.validateForm()
+      })
+    })
+  }
+
+  initDom () {
+    super.initDom()
+    this.amountInput = document.querySelector('.gift-manual-amount')
+    this.giftAmounts = document.querySelectorAll('.gift__amounts p')
+    this.imageAmount = document.querySelector('.gift-image-amount')
+    this.giftAmountPost = document.querySelector('#giftcard_amount')
+    console.log(amountInput)
+    console.log(giftAmounts)
+  }
 }
 
 const giftFormValidation = new GiftFormValidation('.gift-cards_form','.field__errors')
