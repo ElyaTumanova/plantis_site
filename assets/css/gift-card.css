@@ -35,6 +35,10 @@ Contents
     padding: 10px 20px;
     width: 100%;
 }
+.gift-cards_form .gift-card__submit-btn.is-disabled {
+    background-color: var(--gray);
+    color: var(--gray-text);
+}
 
 .gift-cards-list {
   margin-bottom: 20px;
