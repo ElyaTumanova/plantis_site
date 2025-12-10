@@ -265,9 +265,9 @@ class GiftFormValidation extends FormsValidation {
   bindEvents() {
     super.bindEvents()
     document.addEventListener('DOMContentLoaded', (evt) => this.updateAmount(this.amount.min))
-    
+
     this.giftAmounts.forEach(el => {
-      el.addEventListener('click', function () {
+      el.addEventListener('click', (evt) => {
         let amount = el.childNodes[0].textContent
         this.updateAmount(amount)
         this.validateForm()
