@@ -19,7 +19,15 @@ $gcid = 15419;?>
       <input type="number" name="giftcard_amount" id="giftcard_amount" value="" min="1" required style="display:none;">
       <h3 class="gift_select_amount_title">Выберите желаемую сумму подарка</h3>
       <div class="gift-input-wrap">
-        <input id="gift-manual-amount" name="gift-manual-amount" class="gift-manual-amount" type="text" placeholder="" value="10" required>
+        <input id="gift-manual-amount" 
+        name="gift-manual-amount" 
+        class="gift-manual-amount" 
+        type="text" placeholder="" 
+        value="10" 
+        required
+        min=1500
+        max=3000
+        >
         <span class="field__errors"></span>
       </div>
 
