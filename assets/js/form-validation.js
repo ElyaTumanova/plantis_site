@@ -136,11 +136,7 @@ class FormsValidation {
     this.errorMessageSelector = errorMessageSelector
     this.form = null
     this.sumbmitBtn = null
-
-    this.phoneInput = this.form.querySelector('input[type="tel"]');
-
-    // просто навешиваем маску, без коллбэков
-    this.phoneMask = PhoneMask.attach(phoneInput);
+    this.phoneInput = null
   } 
 
   manageErrors(fieldControlElement, errorMessages) {
@@ -234,12 +230,14 @@ class FormsValidation {
   initDom () {
     this.form = document.querySelector(this.formSelector)
     this.sumbmitBtn = this.form.querySelector('button[type="submit"]')
-    console.log(this.sumbmitBtn)
+    this.phoneInput = this.form.querySelector('input[type="tel"]');
+    console.log(this.phoneInput)
   }
 
   init() {
     this.initDom()
     this.bindEvents()
+    this.phoneMask = PhoneMask.attach(phoneInput);
   }
 
 }
