@@ -47,9 +47,9 @@ $gcid = 15419;?>
           <input type="email"
                 id="gift-recipient-email"
                 name="gift-recipient-email[]"
+                required
                 pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
                 title="Введите корректный email в формате name@example.com"
-                required
                 class="gift-recipient yith_wc_gift_card_input_recipient_details">
           <span class="field__errors"></span>
           <p class="gift-recipient-note">Ссылка на подарочный сертификат будет направлена на указанную почту автоматически после оплаты</p>
@@ -60,6 +60,8 @@ $gcid = 15419;?>
                 id="gift-recipient-phone"
                 name="gift-recipient-phone[]"
                 required
+                pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+                title="Введите номер в формате: +7 (XXX) XXX-XX-XX"
                 class="gift-recipient yith_wc_gift_card_input_recipient_details">
           <span class="field__errors"></span>
           <p class="gift-recipient-note">Ваш номер телефона для связи</p>
