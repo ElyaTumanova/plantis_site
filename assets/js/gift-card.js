@@ -59,7 +59,7 @@ if (giftForm) {
       amountInput.value = amount
       giftAmountPost.value = amount
       imageAmount.innerHTML = `${amount}<span>₽</span>`
-      updateState()
+      // updateState()
     })
   })
 
