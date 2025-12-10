@@ -84,7 +84,7 @@ class FormsValidation {
       return
     }
 
-    const [isFormValid, firstInvalidFieldControl] = validateForm()
+    const [isFormValid, firstInvalidFieldControl] = this.validateForm()
     console.log(isFormValid)
     console.log(firstInvalidFieldControl)
 
