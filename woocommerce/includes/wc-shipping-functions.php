@@ -138,12 +138,9 @@ function plnt_shipping_conditions( $rates, $package ) {
         $delivery_markup_out_mkad =  $delivery_markup_out_mkad + $late_markup_delivery;
       }
 
-      if (WC()->session->get('isUrgent' ) === '1'&& !$isUrgentCourierTariff) {
+      if (WC()->session->get('isUrgent' ) === '1') {
           $delivery_markup_in_mkad =  $delivery_markup_in_mkad + $delivery_murkup['urg'];
           $delivery_markup_out_mkad =  $delivery_markup_out_mkad + $delivery_murkup['urg'];
-      } elseif (WC()->session->get('isUrgent' ) === '1'&& $isUrgentCourierTariff) {
-          $delivery_markup_in_mkad = 0;
-          $delivery_markup_out_mkad = 0;
       }
     } 
 
@@ -155,6 +152,16 @@ function plnt_shipping_conditions( $rates, $package ) {
           } else if ($rate->id == $delivery_outMKAD){
               $rate->cost = $rate->cost + $delivery_markup_out_mkad;
           }
+      }
+    }
+
+    /* Срочная доставка по тарифу курьерской службы*/
+
+    if ($isUrgentCourierTariff) {
+      if (WC()->session->get('isUrgent' ) === '1') {
+        foreach ($rates as $rate) {
+          $rate->cost = 0;
+        }
       }
     }
  
