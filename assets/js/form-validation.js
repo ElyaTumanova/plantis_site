@@ -321,8 +321,31 @@ class GiftFormValidation extends FormsValidation {
   }
 }
 
+class GCBalanceForm extends FormsValidation {
+  constructor (formSelector, errorMessageSelector) {
+    super (formSelector, errorMessageSelector)
+    this.clearBtn = null
+    this.codeInput = null
+  }
+
+  initDom () {
+    const ok = super.initDom()
+    if (!ok) return false
+    this.clearBtn = document.querySelector('.gc-balance__clearBtn');
+    this.codeInput = document.getElementById('gcnum');
+  }
+
+  bindEvents() {
+    super.bindEvents()
+    this.clearBtn.addEventListener('click', () => {
+      this.codeInput.value = '';
+      this.codeInput.focus();
+    });
+  }
+}
+
 const giftFormValidation = new GiftFormValidation('.gift-cards_form','.field__errors')
 giftFormValidation.init()
 
-const gcBalanceForm = new FormsValidation ('.gc-balance-form', '.field__errors')
+const gcBalanceForm = new GCBalanceForm ('.gc-balance-form', '.field__errors')
 gcBalanceForm.init()
