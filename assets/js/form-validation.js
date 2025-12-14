@@ -318,6 +318,7 @@ class GiftFormValidation extends FormsValidation {
     this.giftAmountPost = document.querySelector('#giftcard_amount')
     console.log(amountInput)
     console.log(giftAmounts)
+    return true
   }
 }
 
@@ -333,6 +334,7 @@ class GCBalanceForm extends FormsValidation {
     if (!ok) return false
     this.clearBtn = document.querySelector('.gc-balance__clearBtn');
     this.codeInput = document.getElementById('gcnum');
+    return true
   }
 
   bindEvents() {
