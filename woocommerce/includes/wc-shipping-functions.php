@@ -193,12 +193,13 @@ function plnt_shipping_conditions( $rates, $package ) {
 	return $rates;
 }
 
-//убираем способ онлайн-оплаты, если маленькая сумма заказа или далекая доставка
+//убираем способ онлайн-оплаты, если маленькая сумма заказа или далекая доставка или Срочная доставка по тарифу курьерской службы
 add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_small_order' );
 
 function plnt_disable_payment_small_order( $available_gateways ) {
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
     $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
+    $isUrgentCourierTariff = true;
     global $delivery_courier;
     global $delivery_long_dist;
     global $delivery_pochta;
@@ -232,6 +233,11 @@ function plnt_disable_payment_small_order( $available_gateways ) {
 
         // почта России
         if ( $delivery_pochta == $chosen_methods[0]) {
+            unset( $available_gateways['tbank'] ); //to be updated - change to tbank
+        }
+
+        //Срочная доставка по тарифу курьерской службы
+        if ( $isUrgentCourierTariff) {
             unset( $available_gateways['tbank'] ); //to be updated - change to tbank
         }
     }
