@@ -13,7 +13,29 @@ function my_logged_in_email_focus_class() {
     return $email !== '' ? ' focus' : '';
 }
 
-$email = my_get_logged_in_user_email();
+function my_get_logged_in_user_name() {
+    if ( is_user_logged_in() ) {
+        $user = wp_get_current_user();
+
+        // приоритет: first_name → display_name → user_login
+        if ( ! empty( $user->first_name ) ) {
+            return $user->first_name;
+        }
+
+        if ( ! empty( $user->display_name ) ) {
+            return $user->display_name;
+        }
+
+        return $user->user_login;
+    }
+
+    return '';
+}
+
+function my_logged_in_name_focus_class() {
+    $name = my_get_logged_in_user_name();
+    return $name !== '' ? ' focus' : '';
+}
 
 $gcid = 15419;?>
 <div class="content-area">
@@ -65,6 +87,16 @@ $gcid = 15419;?>
       <div class="gift-card-content">
 
         <h3>Куда отправить сертификат</h3>
+        <div class="gift-buyer-name gift-input-wrap gift-input-wrap_labeled">
+          <label for="gift-buyer-name">Как вас зовут*</label>
+          <input type="text"
+                id="gift-buyer-name"
+                name="gift-buyer-name[]"
+                value="<?php echo esc_attr( my_get_logged_in_user_name() ); ?>"
+                required
+                class="gift-recipient yith_wc_gift_card_input_recipient_details <?php echo esc_attr( my_logged_in_name_focus_class() ); ?>">
+          <span class="field__errors"></span>
+        </div>
         <div class="gift-recipient-email gift-input-wrap gift-input-wrap_labeled">
           <label for="gift-recipient-email">Ваша почта*</label>
           <input type="email"
@@ -107,9 +139,9 @@ $gcid = 15419;?>
           <textarea id="gift-edit-message" name="gift-edit-message" rows="5"></textarea>
         </div>
 
-        <div class="gift-sender-name gift-input-wrap gift-input-wrap_labeled">
-          <label for="gift-sender-name">Имя отправителя</label>
-          <input type="text" name="gift-sender-name" id="gift-sender-name" value="">
+        <div class="gift-buyer-name gift-input-wrap gift-input-wrap_labeled">
+          <label for="gift-buyer-name">Имя отправителя</label>
+          <input type="text" name="gift-buyer-name" id="gift-buyer-name" value="">
         </div>
 
       </div>

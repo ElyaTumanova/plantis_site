@@ -84,6 +84,19 @@ function handle_giftcard_pay() {
         wp_die( 'Укажите корректный номер телефона.' );
     }
 
+    //Имя отправителя для заказа
+    $buyer_names = $_POST['gift-buyer-name'] ?? [];
+    if ( is_array( $buyer_names ) ) {
+        $buyer_name = reset( $buyer_names );
+    } else {
+        $buyer_name = $buyer_names;
+    }
+    $buyer_name = sanitize_text_field( $buyer_name );
+
+    if ( ! $buyer_name ) {
+        wp_die( 'Укажите как вас зовут.' );
+    }
+
     // 3.2 Имя получателя
     $recipient_names = $_POST['gift-recipient-name'] ?? [];
     if ( is_array( $recipient_names ) ) {
@@ -171,6 +184,9 @@ function handle_giftcard_pay() {
     $order->set_billing_email( $recipient_email );
     if ( $phone ) {
         $order->set_billing_phone( $phone );
+    }
+    if ( $buyer_name ) {
+        $order->set_billing_first_name( $buyer_name );
     }
 
     // 7. Способ оплаты — tbank
