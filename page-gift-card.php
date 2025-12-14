@@ -92,7 +92,7 @@ if ( $gift_card_id > 0 ) {
         autocomplete="off" 
         required 
         pattern="^[0-9A-Fa-f]{4}(?:-[0-9A-Fa-f]{4}){3}$"
-        title="Формат: XXXX-XXXX-XXXX-XXXX (только 0-9 и A-F)">/>
+        title="Формат: XXXX-XXXX-XXXX-XXXX (только 0-9 и A-F)"/>
         <span class="field__errors"></span>
 
         <div class="row">
