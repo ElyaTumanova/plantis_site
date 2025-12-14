@@ -5,15 +5,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
-//add_action( 'wp_footer', 'plnt_echo_smth' );
+add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
-  $result = plnt_get_search_query('lololo');
-  echo ('<pre>');
-  print_r($result['query']);
-  echo ('</pre>');
+  $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
 
+  echo $isUrgentCourierTariff;
 }
 
 
