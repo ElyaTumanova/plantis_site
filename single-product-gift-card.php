@@ -37,7 +37,9 @@ function my_logged_in_name_focus_class() {
     return $name !== '' ? ' focus' : '';
 }
 
-$gcid = 15419;?>
+$gcid = get_the_ID();
+echo $gcid;
+?>
 <div class="content-area">
   <div class="gift-content-area">
     <h1 class="gift-card__title">Электронный подарочный сертификат</h1>
