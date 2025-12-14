@@ -52,9 +52,11 @@ Container::make('theme_options', 'Настройки темы')
 				)
 		))
 		->add_tab('Delivery', array(
+      Field::make( 'checkbox', 'isUrgentCourierTariff', 'Включить срочную доставку по тарифам курьерской службы' )
+    				->set_option_value( true ),
 			Field::make( 'text', 'min_free_delivery', 'Минимальная сумма заказа для бесплатной доставки (текст с пробелом)'),
 			Field::make( 'text', 'min_small_delivery', 'Сумма заказа для более дорогой доставки - самая минимальная'),
-            Field::make( 'text', 'small_markup_delivery', 'Надбавка к стоимости маленькой доставки'),
+      Field::make( 'text', 'small_markup_delivery', 'Надбавка к стоимости маленькой доставки'),
 			Field::make( 'text', 'min_medium_delivery', 'Сумма заказа для более дорогой доставки - средняя (не обязательно)'),
 			Field::make( 'text', 'medium_markup_delivery', 'Надбавка к стоимости средней доставки'),
 			Field::make( 'text', 'min_treez_delivery', 'Сумма заказа для доставки кашпо Treez'),
