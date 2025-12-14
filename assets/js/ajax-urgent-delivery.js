@@ -10,8 +10,7 @@ let checkedShippingMethod = '';
 let checkedDate = '';
 let checkedInterval = '';
 let today;
-// let isUrgentCourierTariff = DELIVERY.isUrgentCourierTariff;
-let isUrgentCourierTariff = true;
+let isUrgentCourierTariff = DELIVERY.isUrgentCourierTariff == '1';
 console.log(isUrgentCourierTariff);
 
 let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
