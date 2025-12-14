@@ -25,7 +25,7 @@ $gcid = 15419;?>
         type="number" placeholder="" 
         value="10" 
         required
-        min=1500
+        min=10
         max=3000
         >
         <span class="field__errors"></span>
