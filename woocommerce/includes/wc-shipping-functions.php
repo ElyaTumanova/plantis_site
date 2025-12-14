@@ -125,7 +125,8 @@ function plnt_shipping_conditions( $rates, $package ) {
     $delivery_markup_in_mkad = 0;
     $delivery_markup_out_mkad = 0;
 
-    $isUrgentCourierTariff = true;
+    // $isUrgentCourierTariff = true;
+    $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
 
     if ($delivery_murkup) {
       $delivery_markup_in_mkad = $delivery_murkup['in_mkad'];
@@ -199,7 +200,8 @@ add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_smal
 function plnt_disable_payment_small_order( $available_gateways ) {
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
     $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
-    $isUrgentCourierTariff = true;
+    // $isUrgentCourierTariff = true;
+    $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
     global $delivery_courier;
     global $delivery_long_dist;
     global $delivery_pochta;

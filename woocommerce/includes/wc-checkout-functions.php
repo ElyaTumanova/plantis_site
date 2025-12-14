@@ -479,7 +479,8 @@ Contents
         }
         $min_small_delivery = carbon_get_theme_option('min_small_delivery');
         $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
-        $isUrgentCourierTariff = true;
+        // $isUrgentCourierTariff = true;
+        $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
         $shipping_costs = plnt_get_shiping_costs();
         global $delivery_inMKAD;
         global $delivery_outMKAD;
