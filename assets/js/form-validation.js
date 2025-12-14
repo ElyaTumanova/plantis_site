@@ -315,3 +315,5 @@ class GiftFormValidation extends FormsValidation {
 
 const giftFormValidation = new GiftFormValidation('.gift-cards_form','.field__errors')
 giftFormValidation.init()
+
+const gcBalanceForm = new FormsValidation ('.gc-balance-form', '.field__errors')

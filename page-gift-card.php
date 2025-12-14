@@ -85,8 +85,13 @@ if ( $gift_card_id > 0 ) {
       <h1 class="gift-card__check-title">Проверить баланс подарочного сертификата</h1>
       <form method="get" class="gc-balance-form" novalidate>
         <label for="gcnum">Номер подарочной карты</label>
-        <input id="gcnum" name="gcnum" type="text" inputmode="latin"
-            autocomplete="off" required />
+        <input id="gcnum" 
+        name="gcnum" 
+        type="text" 
+        inputmode="latin"
+        autocomplete="off" 
+        required />
+        <span class="field__errors"></span>
 
         <div class="row">
           <button type="submit" class="button gc-balance__checkBtn">
