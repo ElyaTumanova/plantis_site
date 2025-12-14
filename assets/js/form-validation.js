@@ -228,15 +228,19 @@ class FormsValidation {
 
   initDom () {
     this.form = document.querySelector(this.formSelector)
-    this.sumbmitBtn = this.form.querySelector('button[type="submit"]')
-    this.phoneInput = this.form.querySelector('input[type="tel"]');
+    if(this.form) {
+      this.sumbmitBtn = this.form.querySelector('button[type="submit"]')
+      this.phoneInput = this.form.querySelector('input[type="tel"]');
+    }
   }
 
   init() {
     this.initDom()
-    this.bindEvents()
-    if(this.phoneInput) {
-      this.phoneMask = PhoneMask.attach(this.phoneInput);
+    if(this.form) {
+      this.bindEvents()
+      if(this.phoneInput) {
+        this.phoneMask = PhoneMask.attach(this.phoneInput);
+      }
     }
   }
 
