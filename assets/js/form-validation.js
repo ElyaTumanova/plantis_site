@@ -228,20 +228,23 @@ class FormsValidation {
 
   initDom () {
     this.form = document.querySelector(this.formSelector)
-    if(this.form) {
-      this.sumbmitBtn = this.form.querySelector('button[type="submit"]')
-      this.phoneInput = this.form.querySelector('input[type="tel"]');
+    if (!this.form) {
+      console.debug(`Form .${this.formSelector} не найдена, init() пропускаем`)
+      return
     }
+    this.sumbmitBtn = this.form.querySelector('button[type="submit"]')
+    this.phoneInput = this.form.querySelector('input[type="tel"]');
+    return true
   }
 
   init() {
-    this.initDom()
-    if(this.form) {
-      this.bindEvents()
-      if(this.phoneInput) {
-        this.phoneMask = PhoneMask.attach(this.phoneInput);
-      }
+    const ok = this.initDom()
+    if (!ok) return
+    this.bindEvents()
+    if(this.phoneInput) {
+      this.phoneMask = PhoneMask.attach(this.phoneInput);
     }
+    
   }
 
 }
@@ -307,7 +310,8 @@ class GiftFormValidation extends FormsValidation {
   }
 
   initDom () {
-    super.initDom()
+    const ok = super.initDom()
+    if (!ok) return false
     this.amountInput = document.querySelector('.gift-manual-amount')
     this.giftAmounts = document.querySelectorAll('.gift__amounts p')
     this.imageAmount = document.querySelector('.gift-image-amount')
