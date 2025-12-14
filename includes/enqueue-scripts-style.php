@@ -62,7 +62,7 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 
             'isBackorder'           => (bool) $isbackorders,
             'isTreezBackorders'     => (bool) $isTreezBackorders,
-            'isUrgentCourierTariff'     => (bool) $isUrgentCourierTariff,
+            'isUrgentCourierTariff'     => $isUrgentCourierTariff,
         ]
     );
     
