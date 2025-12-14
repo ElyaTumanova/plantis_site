@@ -268,9 +268,9 @@ class GiftFormValidation extends FormsValidation {
       let num = parseInt(digits, 10);
 
       // Если число больше максимального, запрещаем добавление лишней цифры
-      if (num > maxAmount) {
+      if (num > this.amount.max) {
         // возвращаем старое значение (до ввода этой цифры)
-        this.value = this.dataset.prevValue || maxAmount;
+        this.value = this.dataset.prevValue || this.amount.max;
         return;
       }
 
