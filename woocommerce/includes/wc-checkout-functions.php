@@ -538,9 +538,7 @@ Contents
                 }
             }
             
-            if (WC()->session->get('isUrgent' ) === '1' && $isUrgentCourierTariff) {
-              continue;
-            } else {
+            if (!(WC()->session->get('isUrgent' ) === '1' && $isUrgentCourierTariff)) {
               //Доставка заказов до 1500 рублей
               if (WC()->cart->subtotal < $min_small_delivery) {
                   if(!array_key_exists($delivery_courier,$shipping_costs)) {
