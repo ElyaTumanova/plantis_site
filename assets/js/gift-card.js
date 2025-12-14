@@ -176,67 +176,67 @@ if(giftCardApplyBtn) {
 }
 
 // проверка кода карты
-const gcBalanceForm = document.querySelector('.gc-balance-form');
+// const gcBalanceForm = document.querySelector('.gc-balance-form');
 
-if (gcBalanceForm) {
-  console.log(gcBalanceForm)
-    const codeInput = document.getElementById('gcnum');
-    const btn = document.querySelector('.gc-balance__checkBtn');
-    const spin = document.getElementById('spin');
-    const msg = document.getElementById('msg');
-    const clearBtn = document.querySelector('.gc-balance__clearBtn');
+// if (gcBalanceForm) {
+//   console.log(gcBalanceForm)
+//     const codeInput = document.getElementById('gcnum');
+//     const btn = document.querySelector('.gc-balance__checkBtn');
+//     const spin = document.getElementById('spin');
+//     const msg = document.getElementById('msg');
+//     const clearBtn = document.querySelector('.gc-balance__clearBtn');
 
-   // Кириллица (включая Ё/ё) по Unicode
-    const reCyrillic = /[\p{Script=Cyrillic}]/u;
-    let justTriedCyrillic = false;
+//    // Кириллица (включая Ё/ё) по Unicode
+//     const reCyrillic = /[\p{Script=Cyrillic}]/u;
+//     let justTriedCyrillic = false;
 
-    // Отмечаем попытку ввести кириллицу (не блокируем ввод)
-    codeInput.addEventListener('beforeinput', (e) => {
-      if (typeof e.data === 'string' && reCyrillic.test(e.data)) {
-        justTriedCyrillic = true;
-      }
-    });
+//     // Отмечаем попытку ввести кириллицу (не блокируем ввод)
+//     codeInput.addEventListener('beforeinput', (e) => {
+//       if (typeof e.data === 'string' && reCyrillic.test(e.data)) {
+//         justTriedCyrillic = true;
+//       }
+//     });
 
-    // При вставке — тоже отмечаем (не блокируем)
-    codeInput.addEventListener('paste', (e) => {
-      const text = (e.clipboardData || window.clipboardData).getData('text');
-      if (reCyrillic.test(text)) {
-        justTriedCyrillic = true;
-      }
-    });
+//     // При вставке — тоже отмечаем (не блокируем)
+//     codeInput.addEventListener('paste', (e) => {
+//       const text = (e.clipboardData || window.clipboardData).getData('text');
+//       if (reCyrillic.test(text)) {
+//         justTriedCyrillic = true;
+//       }
+//     });
 
-    function validateNow({ forceShow = false } = {}) {
-      const v = codeInput.value;
+//     function validateNow({ forceShow = false } = {}) {
+//       const v = codeInput.value;
 
-      if (!v.trim()) {
-        codeInput.setCustomValidity('Поле не должно быть пустым');
-      } else if (reCyrillic.test(v)) {
-        codeInput.setCustomValidity('Используйте латинские буквы');
-      } else {
-        codeInput.setCustomValidity('');
-      }
+//       if (!v.trim()) {
+//         codeInput.setCustomValidity('Поле не должно быть пустым');
+//       } else if (reCyrillic.test(v)) {
+//         codeInput.setCustomValidity('Используйте латинские буквы');
+//       } else {
+//         codeInput.setCustomValidity('');
+//       }
 
-      if (forceShow || justTriedCyrillic) {
-        codeInput.reportValidity();
-        justTriedCyrillic = false;
-      }
-    }
+//       if (forceShow || justTriedCyrillic) {
+//         codeInput.reportValidity();
+//         justTriedCyrillic = false;
+//       }
+//     }
 
-    // Валидация на каждом вводе
-    codeInput.addEventListener('input', () => validateNow());
+//     // Валидация на каждом вводе
+//     codeInput.addEventListener('input', () => validateNow());
 
-    // Проверка при отправке
-    gcBalanceForm.addEventListener('submit', (e) => {
-      validateNow({ forceShow: true });
-      if (!gcBalanceForm.checkValidity()) {
-        e.preventDefault();
-      }
-    });
+//     // Проверка при отправке
+//     gcBalanceForm.addEventListener('submit', (e) => {
+//       validateNow({ forceShow: true });
+//       if (!gcBalanceForm.checkValidity()) {
+//         e.preventDefault();
+//       }
+//     });
 
-    // Кнопка «Очистить»
-    clearBtn.addEventListener('click', () => {
-      codeInput.value = '';
-      codeInput.setCustomValidity('');
-      codeInput.focus();
-    });
-}
+//     // Кнопка «Очистить»
+//     clearBtn.addEventListener('click', () => {
+//       codeInput.value = '';
+//       codeInput.setCustomValidity('');
+//       codeInput.focus();
+//     });
+// }
