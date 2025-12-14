@@ -10,6 +10,8 @@ let checkedShippingMethod = '';
 let checkedDate = '';
 let checkedInterval = '';
 let today;
+let isUrgentCourierTariff = DELIVERY.isUrgentCourierTariff;
+console.log(isUrgentCourierTariff);
 
 let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
 let addressFields = document.querySelector('#billing_address_1_field');
@@ -194,7 +196,6 @@ function setInitalState() {
 
   deliveryDatesInput[0].checked = true;
   deliveryIntervalInput[0].checked = true;
-
 }
 
 //функция собирает исходные значения полей дат и интервалов доставки, чтобы потом пересивовать их

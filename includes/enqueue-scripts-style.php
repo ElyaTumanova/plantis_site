@@ -23,6 +23,8 @@ if ( ! function_exists( 'ast_scripts' ) ) {
     $isTreezBackorders = plnt_is_treez_backorder();
 
     $delivery_murkup = get_delivery_markup();
+
+    $isUrgentCourierTariff = true;
 		// wp_enqueue_script( 'magnific-popup', get_template_directory_uri() .
 		//                                      '/assets/js/jquery.magnific-popup.min.js', array( 'jquery' ), null, true );
 		// wp_enqueue_script( 'owl-script', get_template_directory_uri() .
@@ -60,6 +62,7 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 
             'isBackorder'           => (bool) $isbackorders,
             'isTreezBackorders'     => (bool) $isTreezBackorders,
+            'isUrgentCourierTariff'     => (bool) $isUrgentCourierTariff,
         ]
     );
     

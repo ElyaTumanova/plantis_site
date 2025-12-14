@@ -19,7 +19,6 @@ function plnt_set_initials() {
     }
 
     WC()->session->set('isLate', '0' );
-
 };
 
 //for dev
@@ -68,7 +67,7 @@ function plnt_check() {
 add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
-// Безопасная обработка значений
+  // Безопасная обработка значений
     $is_urgent = sanitize_text_field( $_POST['isUrgent'] ?? '' );
     $is_late   = sanitize_text_field( $_POST['isLate'] ?? '' );
 
@@ -126,6 +125,8 @@ function plnt_shipping_conditions( $rates, $package ) {
     $delivery_markup_in_mkad = 0;
     $delivery_markup_out_mkad = 0;
 
+    $isUrgentCourierTariff = true;
+
     if ($delivery_murkup) {
       $delivery_markup_in_mkad = $delivery_murkup['in_mkad'];
       $delivery_markup_out_mkad = $delivery_murkup['out_mkad'];
@@ -137,9 +138,12 @@ function plnt_shipping_conditions( $rates, $package ) {
         $delivery_markup_out_mkad =  $delivery_markup_out_mkad + $late_markup_delivery;
       }
 
-      if (WC()->session->get('isUrgent' ) === '1') {
+      if (WC()->session->get('isUrgent' ) === '1'&& !$isUrgentCourierTariff) {
           $delivery_markup_in_mkad =  $delivery_markup_in_mkad + $delivery_murkup['urg'];
           $delivery_markup_out_mkad =  $delivery_markup_out_mkad + $delivery_murkup['urg'];
+      } elseif (WC()->session->get('isUrgent' ) === '1'&& $isUrgentCourierTariff) {
+          $delivery_markup_in_mkad = 0;
+          $delivery_markup_out_mkad = 0;
       }
     } 
 
