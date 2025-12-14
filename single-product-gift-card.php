@@ -26,7 +26,7 @@ $gcid = 15419;?>
         value="10" 
         required
         min=10
-        max=3000
+        max=30000
         >
         <span class="field__errors"></span>
       </div>
