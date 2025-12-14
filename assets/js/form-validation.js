@@ -265,7 +265,7 @@ class GiftFormValidation extends FormsValidation {
     this.amountInput.setAttribute('value',amount)
     this.imageAmount.innerHTML = `${amount}<span>₽</span>`
     this.giftAmountPost.value = amount
-    validateField(this.amountInput)
+    this.validateField(this.amountInput)
     this.validateForm()
   }
 
