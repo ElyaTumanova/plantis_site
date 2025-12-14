@@ -199,7 +199,7 @@ Contents
   color: var(--text);
 }
 
-.gift-cards_form .field__error {
+.gift-cards_form .field__error, .gc-balance-form .field__error {
   font-size: 14px;
   margin-top: 10px;
   line-height: 1.2;
