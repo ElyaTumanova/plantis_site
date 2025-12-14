@@ -341,6 +341,7 @@ class GCBalanceForm extends FormsValidation {
     super.bindEvents()
     this.clearBtn.addEventListener('click', () => {
       this.codeInput.value = '';
+      this.manageErrors(this.codeInput, [])
       this.codeInput.focus();
     });
   }
