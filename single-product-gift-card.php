@@ -8,6 +8,11 @@ function my_get_logged_in_user_email() {
     return '';
 }
 
+function my_logged_in_email_focus_class() {
+    $email = my_get_logged_in_user_email();
+    return $email !== '' ? ' focus' : '';
+}
+
 $email = my_get_logged_in_user_email();
 
 $gcid = 15419;?>
@@ -69,7 +74,7 @@ $gcid = 15419;?>
                 required
                 pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
                 title="Введите корректный email в формате name@example.com"
-                class="gift-recipient yith_wc_gift_card_input_recipient_details">
+                class="gift-recipient yith_wc_gift_card_input_recipient_details <?php echo esc_attr( my_logged_in_email_focus_class() ); ?>">
           <span class="field__errors"></span>
           <p class="gift-recipient-note">Ссылка на подарочный сертификат будет направлена на указанную почту автоматически после оплаты</p>
         </div>
