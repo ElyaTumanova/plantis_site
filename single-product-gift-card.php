@@ -38,7 +38,6 @@ function my_logged_in_name_focus_class() {
 }
 
 $gcid = get_the_ID();
-echo $gcid;
 ?>
 <div class="content-area">
   <div class="gift-content-area">
@@ -54,7 +53,7 @@ echo $gcid;
     <form method="post" action="/wp-admin/admin-post.php" class="gift-cards_form" novalidate>
 
       <input type="hidden" name="action" value="giftcard_pay">
-      <input type="hidden" name="giftcard_product_id" value="15419"> <!-- ID товара gift-card -->
+      <input type="hidden" name="giftcard_product_id" value="<?php echo $gcid?>"> <!-- ID товара gift-card -->
       <input type="number" name="giftcard_amount" id="giftcard_amount" value="" min="1" required style="display:none;">
       <h3 class="gift_select_amount_title">Выберите желаемую сумму подарка</h3>
       <div class="gift-input-wrap">
