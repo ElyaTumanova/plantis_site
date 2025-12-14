@@ -237,7 +237,7 @@ function plnt_disable_payment_small_order( $available_gateways ) {
         }
 
         //Срочная доставка по тарифу курьерской службы
-        if ( $isUrgentCourierTariff) {
+        if ($isUrgentCourierTariff && WC()->session->get('isUrgent' ) === '1') {
             unset( $available_gateways['tbank'] ); //to be updated - change to tbank
         }
     }
