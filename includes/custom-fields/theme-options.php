@@ -52,7 +52,7 @@ Container::make('theme_options', 'Настройки темы')
 				)
 		))
 		->add_tab('Delivery', array(
-      Field::make( 'checkbox', 'isUrgentCourierTariff', 'Включить срочную доставку по тарифам курьерской службы' )
+      Field::make( 'checkbox', 'is_urgent_courier_tariff', 'Включить срочную доставку по тарифам курьерской службы' )
     				->set_option_value( true ),
 			Field::make( 'text', 'min_free_delivery', 'Минимальная сумма заказа для бесплатной доставки (текст с пробелом)'),
 			Field::make( 'text', 'min_small_delivery', 'Сумма заказа для более дорогой доставки - самая минимальная'),

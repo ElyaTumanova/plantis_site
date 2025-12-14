@@ -24,7 +24,7 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 
     $delivery_murkup = get_delivery_markup();
 
-    $isUrgentCourierTariff = carbon_get_theme_option('isUrgentCourierTariff');
+    $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff');
 		// wp_enqueue_script( 'magnific-popup', get_template_directory_uri() .
 		//                                      '/assets/js/jquery.magnific-popup.min.js', array( 'jquery' ), null, true );
 		// wp_enqueue_script( 'owl-script', get_template_directory_uri() .
