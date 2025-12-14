@@ -110,7 +110,7 @@ function renderDeliveryDates(shippingValue) {
       if(shippingValue == DELIVERY.deliveryOutMKAD) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupOutMkad)}₽` : `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryMarkupOutMkad)}₽` ;
       }
-      if ($isUrgentCourierTariff) {
+      if (isUrgentCourierTariff) {
           if (info.for == `delivery_dates_${today}`) {
               priceEl.innerHTML = 'по тарифу КС';
           }
