@@ -1,5 +1,15 @@
 <?php get_header();
 
+function my_get_logged_in_user_email() {
+    if ( is_user_logged_in() ) {
+        $user = wp_get_current_user();
+        return ! empty( $user->user_email ) ? $user->user_email : '';
+    }
+    return '';
+}
+
+$email = my_get_logged_in_user_email();
+
 $gcid = 15419;?>
 <div class="content-area">
   <div class="gift-content-area">
@@ -55,6 +65,7 @@ $gcid = 15419;?>
           <input type="email"
                 id="gift-recipient-email"
                 name="gift-recipient-email[]"
+                value="<?php echo esc_attr( my_get_logged_in_user_email() ); ?>"
                 required
                 pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
                 title="Введите корректный email в формате name@example.com"

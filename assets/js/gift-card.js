@@ -19,12 +19,12 @@ if (giftForm) {
   // giftAmountPost.value = minAmount
 
   //for dev
-  let mail = document.querySelector('#gift-recipient-email')
-  mail.value = 'eleonoraatumanova@gmail.com'
-  mail.classList.add('focus')
-  let nameF = document.querySelector('#gift-recipient-name')
-  nameF.value = 'Ela'
-  nameF.classList.add('focus')
+  // let mail = document.querySelector('#gift-recipient-email')
+  // mail.value = 'eleonoraatumanova@gmail.com'
+  // mail.classList.add('focus')
+  // let nameF = document.querySelector('#gift-recipient-name')
+  // nameF.value = 'Ela'
+  // nameF.classList.add('focus')
   //
 
   // для упралвения label

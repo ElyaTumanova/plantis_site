@@ -260,6 +260,30 @@ class GiftFormValidation extends FormsValidation {
     this.giftAmountPost = null
   }
 
+  amountMask() {
+    // Удаляем все нецифровые символы
+    let digits = this.value.replace(/\D/g, '');
+
+    if (digits !== '') {
+      let num = parseInt(digits, 10);
+
+      // Если число больше максимального, запрещаем добавление лишней цифры
+      if (num > maxAmount) {
+        // возвращаем старое значение (до ввода этой цифры)
+        this.value = this.dataset.prevValue || maxAmount;
+        return;
+      }
+
+      // Обновляем значение и запоминаем как «предыдущее валидное»
+      this.value = digits;
+      this.dataset.prevValue = this.value;
+    } else {
+      // Позволяем временно очистить поле
+      this.value = '';
+      this.dataset.prevValue = '';
+    }
+  }
+
   updateAmount(amount) {
     this.amountInput.value = amount
     this.amountInput.setAttribute('value',amount)
@@ -279,6 +303,8 @@ class GiftFormValidation extends FormsValidation {
         this.updateAmount(amount)
       })
     })
+
+    this.amountInput.addEventListener('input', (evt)=> this.amountMask())
   }
 
   initDom () {
