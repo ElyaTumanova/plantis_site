@@ -139,9 +139,9 @@ $gcid = 15419;?>
           <textarea id="gift-edit-message" name="gift-edit-message" rows="5"></textarea>
         </div>
 
-        <div class="gift-buyer-name gift-input-wrap gift-input-wrap_labeled">
-          <label for="gift-buyer-name">Имя отправителя</label>
-          <input type="text" name="gift-buyer-name" id="gift-buyer-name" value="">
+        <div class="gift-sender-name gift-input-wrap gift-input-wrap_labeled">
+          <label for="gift-sender-name">Имя отправителя</label>
+          <input type="text" name="gift-sender-name" id="gift-sender-name" value="">
         </div>
 
       </div>
