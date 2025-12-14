@@ -503,7 +503,7 @@ Contents
 
             if ( WC()->session->get('isUrgent' ) === '1') {
               if ($isUrgentCourierTariff) {
-                echo "<div class="checkout__text checkout__text_urgent"> 
+                echo "<div class='checkout__text checkout__text_urgent'> 
                 Сррочная доставка в день заказа осуществляется по тарифам курьерской службы. 
                 \nНаш менеджер свяжется с Вами для расчета стоимости доставки.
                 </div>";
