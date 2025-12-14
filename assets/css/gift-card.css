@@ -172,7 +172,7 @@ Contents
   padding-left: 10px;
 }
 
-.gift-recipient-name, .gift-recipient-email, .gift-message {
+.gift-recipient-name, .gift-recipient-email, .gift-message, .gift-buyer-name {
   margin-bottom: 15px;
 }
 
@@ -197,6 +197,14 @@ Contents
   top: 0px;
   left: 25px;
   color: var(--text);
+}
+
+.gift-cards_form .field__error {
+  font-size: 14px;
+  margin-top: 10px;
+  line-height: 1.2;
+  padding-left: 10px;
+  color: var(--red-color);
 }
 
 /* обнуление стандартного вывода ошибок */
