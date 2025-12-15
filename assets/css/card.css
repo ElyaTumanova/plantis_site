@@ -672,6 +672,7 @@ input[type="number"] {
 .delivery_table__row div:last-child {
     font-weight: 800;
     min-width: 52px;
+    max-width: 115px;
     text-align: end;
 }
 
