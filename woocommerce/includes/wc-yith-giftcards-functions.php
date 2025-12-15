@@ -347,6 +347,28 @@ function plantis_send_gift_cards_on_completed( $order_id ) {
 }
 
 
+add_action( 'woocommerce_payment_complete', 'auto_complete_virtual_orders', 10, 1 );
+
+function auto_complete_virtual_orders( $order_id ) {
+    $order = wc_get_order( $order_id );
+
+    // Проверяем, есть ли в заказе только виртуальные товары
+    $all_virtual = true;
+    foreach ( $order->get_items() as $item ) {
+        $product = $item->get_product();
+        if ( ! $product->is_virtual() ) {
+            $all_virtual = false;
+            break;
+        }
+    }
+
+    // Если все товары виртуальные, меняем статус на "Выполнен"
+    if ( $all_virtual ) {
+        $order->update_status( 'completed' );
+    }
+}
+
+
 /*--------------------------------------------------------------
 #EMAILS
 --------------------------------------------------------------*/
