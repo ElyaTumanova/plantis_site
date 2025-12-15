@@ -56,11 +56,15 @@ get_header(); ?>
                                 <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
                             </ul>
                         <p><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
-                        <ul>
-                            <li>в пределах МКАД — от <?php echo floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery)) ?> рублей;</li>
-                            <li>за пределы МКАД (до 5 км) — от <?php echo floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery)) ?> рублей;</li>
-                            <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
-                        </ul>	
+                        <?php if($isUrgentCourierTariff):?>
+                              <p>осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</p>
+                          <?php else:?>
+                            <ul>
+                                <li>в пределах МКАД — от <?php echo floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery)) ?> рублей;</li>
+                                <li>за пределы МКАД (до 5 км) — от <?php echo floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery)) ?> рублей;</li>
+                                <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
+                            </ul>	
+                          <?php endif; ?>
                         <?php if($min_small_delivery || $min_medium_delivery) {
                             if(array_key_exists($delivery_courier,$shipping_costs)) :?>
                                 <p>Если ваш заказ <b>до 
