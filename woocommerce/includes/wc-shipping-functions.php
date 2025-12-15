@@ -19,7 +19,6 @@ function plnt_set_initials() {
     }
 
     WC()->session->set('isLate', '0' );
-
 };
 
 //for dev
@@ -68,7 +67,7 @@ function plnt_check() {
 add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
-// Безопасная обработка значений
+  // Безопасная обработка значений
     $is_urgent = sanitize_text_field( $_POST['isUrgent'] ?? '' );
     $is_late   = sanitize_text_field( $_POST['isLate'] ?? '' );
 
@@ -126,6 +125,9 @@ function plnt_shipping_conditions( $rates, $package ) {
     $delivery_markup_in_mkad = 0;
     $delivery_markup_out_mkad = 0;
 
+    // $isUrgentCourierTariff = true;
+    $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
+
     if ($delivery_murkup) {
       $delivery_markup_in_mkad = $delivery_murkup['in_mkad'];
       $delivery_markup_out_mkad = $delivery_murkup['out_mkad'];
@@ -151,6 +153,16 @@ function plnt_shipping_conditions( $rates, $package ) {
           } else if ($rate->id == $delivery_outMKAD){
               $rate->cost = $rate->cost + $delivery_markup_out_mkad;
           }
+      }
+    }
+
+    /* Срочная доставка по тарифу курьерской службы*/
+
+    if ($isUrgentCourierTariff) {
+      if (WC()->session->get('isUrgent' ) === '1') {
+        foreach ($rates as $rate) {
+          $rate->cost = 0;
+        }
       }
     }
  
@@ -182,12 +194,14 @@ function plnt_shipping_conditions( $rates, $package ) {
 	return $rates;
 }
 
-//убираем способ онлайн-оплаты, если маленькая сумма заказа или далекая доставка
+//убираем способ онлайн-оплаты, если маленькая сумма заказа или далекая доставка или Срочная доставка по тарифу курьерской службы
 add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_small_order' );
 
 function plnt_disable_payment_small_order( $available_gateways ) {
     $min_small_delivery = carbon_get_theme_option('min_small_delivery');
     $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
+    // $isUrgentCourierTariff = true;
+    $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
     global $delivery_courier;
     global $delivery_long_dist;
     global $delivery_pochta;
@@ -221,6 +235,11 @@ function plnt_disable_payment_small_order( $available_gateways ) {
 
         // почта России
         if ( $delivery_pochta == $chosen_methods[0]) {
+            unset( $available_gateways['tbank'] ); //to be updated - change to tbank
+        }
+
+        //Срочная доставка по тарифу курьерской службы
+        if ($isUrgentCourierTariff && WC()->session->get('isUrgent' ) === '1') {
             unset( $available_gateways['tbank'] ); //to be updated - change to tbank
         }
     }

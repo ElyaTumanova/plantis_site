@@ -15,16 +15,16 @@ window.addEventListener('resize', () => {
 # Ширина скролл бара окна браузера
 --------------------------------------------------------------*/
 
-let scrollWidth= window.innerWidth - document.body.clientWidth;
-document.documentElement.style.setProperty('--scrollWidth', `${scrollWidth}px`);
-// console.log(scrollWidth);
-// слушаем событие resize
-window.addEventListener('resize', () => {
-    // получаем текущее значение высоты
-    let scrollWidth= window.innerWidth - document.body.clientWidth;
-    document.documentElement.style.setProperty('--scrollWidth', `${scrollWidth}px`);
-    // console.log(scrollWidth);
-});
+// let scrollWidth= window.innerWidth - document.body.clientWidth;
+// document.documentElement.style.setProperty('--scrollWidth', `${scrollWidth}px`);
+// // console.log(scrollWidth);
+// // слушаем событие resize
+// window.addEventListener('resize', () => {
+//     // получаем текущее значение высоты
+//     let scrollWidth= window.innerWidth - document.body.clientWidth;
+//     document.documentElement.style.setProperty('--scrollWidth', `${scrollWidth}px`);
+//     // console.log(scrollWidth);
+// });
 
 
 /*--------------------------------------------------------------
@@ -42,6 +42,7 @@ window.addEventListener('resize', () => {
 
 let headerMainDiv = document.querySelector('.header__main');
 let searchDiv = document.querySelector('.search__wrap');
+let searchResultDiv = document.querySelector('.search-result');
 let headerMainHeight= headerMainDiv.offsetHeight;
 
 // слушаем событие resize
@@ -59,11 +60,13 @@ window.addEventListener('scroll', function() {
         document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
         headerMainDiv.classList.add('scrollhidden');
         searchDiv.classList.add('scrollhidden');
+        searchResultDiv.classList.add('scrollhidden');
     } else{
         // headerMainDiv.removeAttribute('style');
         document.documentElement.style.setProperty('--marginTopOffset', 0);
         headerMainDiv.classList.remove('scrollhidden');
         searchDiv.classList.remove('scrollhidden');
+        searchResultDiv.classList.remove('scrollhidden');
     }
 });
 document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);

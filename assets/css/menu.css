@@ -238,7 +238,8 @@
     /* height: 100vh; */
     top: 44px; /*высота .header__main-menu-wrap .container*/
     /* left: 0px; */
-    left: calc((100vw - var(--scrollWidth) - 1300px)/2);
+    /* left: calc((100vw - var(--scrollWidth) - 1300px)/2); */
+    left: calc((100vw - 1300px)/2);
     box-shadow: rgba(20, 20, 20, 0.03) 0px 6px 8px 0px;
 
     visibility: hidden;

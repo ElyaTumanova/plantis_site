@@ -8,6 +8,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! function_exists( 'ast_scripts' ) ) {
 	add_action( 'wp_enqueue_scripts', 'ast_scripts' );
 	function ast_scripts() {
+
+    global $delivery_inMKAD, $delivery_outMKAD;
+    global $local_pickup, $delivery_free, $delivery_pochta, $delivery_courier, $delivery_long_dist;
+
+    $late_markup_delivery   = carbon_get_theme_option('late_markup_delivery');
+    $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
+    $shipping_costs         = plnt_get_shiping_costs();
+
+    $in_mkad  = $shipping_costs[$delivery_inMKAD];
+    $out_mkad = $shipping_costs[$delivery_outMKAD];
+
+    $isbackorders      = plnt_is_backorder();
+    $isTreezBackorders = plnt_is_treez_backorder();
+
+    $delivery_murkup = get_delivery_markup();
+
+    $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff');
 		// wp_enqueue_script( 'magnific-popup', get_template_directory_uri() .
 		//                                      '/assets/js/jquery.magnific-popup.min.js', array( 'jquery' ), null, true );
 		// wp_enqueue_script( 'owl-script', get_template_directory_uri() .
@@ -16,17 +33,44 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		wp_enqueue_script( 'ajax-update-cart', get_template_directory_uri() .
 											 '/assets/js/ajax-update-cart.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/ajax-update-cart.js'), true );									 
 		
-        wp_enqueue_script( 'filter-show-more', get_template_directory_uri() .
+    wp_enqueue_script( 'filter-show-more', get_template_directory_uri() .
 		                                     '/assets/js/filter-show-more.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/filter-show-more.js'), true );
 
 		wp_enqueue_script( 'ajax-urgent-delivery', get_template_directory_uri() .
 											 '/assets/js/ajax-urgent-delivery.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/ajax-urgent-delivery.js'), true );	
 		
-		wp_enqueue_script( 'chekout-fields', get_template_directory_uri() .
+		wp_localize_script(
+        'ajax-urgent-delivery',
+        'PLNT_Delivery_Data',
+        [
+            'deliveryInMKAD'        => (string) $delivery_inMKAD,
+            'deliveryOutMKAD'       => (string) $delivery_outMKAD,
+
+            'localPickupId'         => (string) $local_pickup,
+            'deliveryFreeId'        => (string) $delivery_free,
+            'deliveryPochtaId'      => (string) $delivery_pochta,
+            'deliveryCourierId'     => (string) $delivery_courier,
+            'deliveryLongId'        => (string) $delivery_long_dist,
+
+            'deliveryCostInMkad'    => (float) $in_mkad,
+            'deliveryCostOutMkad'   => (float) $out_mkad,
+
+            'deliveryUrgMarkup'     => (float) $delivery_murkup['urg'],
+            'deliveryLateMarkup'    => (float) $late_markup_delivery,
+            'deliveryMarkupInMkad'  => (float) $delivery_murkup['in_mkad'],
+            'deliveryMarkupOutMkad' => (float) $delivery_murkup['out_mkad'],
+
+            'isBackorder'           => (bool) $isbackorders,
+            'isTreezBackorders'     => (bool) $isTreezBackorders,
+            'isUrgentCourierTariff'     => $isUrgentCourierTariff,
+        ]
+    );
+    
+    wp_enqueue_script( 'chekout-fields', get_template_directory_uri() .
 											 '/assets/js/chekout-fields.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/chekout-fields.js'), true );	
 		
 		wp_enqueue_script( 'ajax-search', get_template_directory_uri() .
-		                                 '/assets/js/ajax-search.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/ajax-search.js'), true );
+		                                 '/assets/js/ajax-search.js', array(), filemtime(get_stylesheet_directory() .'/assets/js/ajax-search.js'), true );
 		wp_localize_script ('ajax-search', 'search_form', array(
 			'url' => admin_url('admin-ajax.php'),
 			'nonce' => wp_create_nonce('search-nonce')
@@ -78,8 +122,8 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		wp_enqueue_script( 'gift-card', get_template_directory_uri() .
 		                                     '/assets/js/gift-card.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/gift-card.js'), true );
 
-		wp_enqueue_script( 'delivery-dropdown', get_template_directory_uri() .
-		                                     '/assets/js/delivery-dropdown.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/delivery-dropdown.js'), true );
+		// wp_enqueue_script( 'delivery-dropdown', get_template_directory_uri() .
+		//                                      '/assets/js/delivery-dropdown.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/delivery-dropdown.js'), true );
 		
 		wp_enqueue_script( 'cart-backorder-crossell', get_template_directory_uri() .
 		                                     '/assets/js/cart-backorder-crossell.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/cart-backorder-crossell.js'), true );

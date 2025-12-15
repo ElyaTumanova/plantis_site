@@ -807,6 +807,9 @@
     }
 }
 
+.page-peresadka__intro p {
+  margin-bottom: 5px;
+}
 
 .page-ukhod__rasschet {
   grid-area: rasschet;
@@ -941,6 +944,20 @@
     }
 }
 
+.page-peresadka__services_btn {
+  grid-template-rows: auto 50px;
+}
+
+.page-peresadka__services_btn .page-peresadka__services-list {
+    grid-row: span 2;
+}
+@media(max-width:767px) {
+  .page-peresadka__services_btn button {
+    height: 50px;
+  }
+}
+
+
 .page-ukhod__services-list li {
   font-size: 18px;
   padding: 15px 0;
@@ -973,6 +990,28 @@
   padding-top: 0;
 }
 
+.page-peresadka__services-list_nums li {
+  display: flex;
+  column-gap: 30px;
+}
+.page-peresadka__services-list_nums li > p {
+    font-size: 30px;
+    font-weight: 600;
+    /* margin-block: auto; */
+}
+
+.page-peresadka__services-list_nums li div > p:first-child {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.page-peresadka__services-list_nums li div > p:last-child {
+  line-height: 1.4;
+}
+
+
+
 .page-ukhod__services-title {
   font-size: 28px;
   text-transform: uppercase;
@@ -984,14 +1023,18 @@
         font-size: 24px;
     }
 }
-.page-peresadka__services-title {
+.page-peresadka__services-title, .page-peresadka__services-title h2, .page-peresadka__services-title p {
   font-size: 28px;
   text-transform: uppercase;
   line-height: 1.2;
 }
 
+.page-peresadka__services-title h2 {
+  margin-bottom: 20px;
+}
+
 @media(max-width:767px) {
-    .page-peresadka__services-title {         
+    .page-peresadka__services-title, .page-peresadka__services-title h2, .page-peresadka__services-title p {         
         font-size: 24px;
     }
 }
@@ -1116,13 +1159,26 @@
 
 @media(max-width:767px) {
   .page-peresadka__service-item {
-      grid-template-columns: auto;
+      /* grid-template-columns: auto; */
+      display: flex;
+      flex-direction: column;
       row-gap: 30px;
       margin-bottom: 60px;
       padding: 30px;
   }
 }
 
+.page-lanscaping .page-peresadka__service-item .page-ukhod__advantages-item {
+    grid-column: span 2;
+    margin-top: 40px;
+}
+
+@media(max-width:767px) {
+  .page-lanscaping .page-peresadka__service-item .page-ukhod__advantages-item {
+      grid-column: span 1;
+      margin-top: 0;
+  }
+}
 
 .page-peresadka .info__table {
   border: none;
@@ -1194,6 +1250,25 @@
   align-items: center;
   color: var(--white);
   line-height: 1.4;
+}
+
+.page-lanscaping .page-ukhod__advantages-item {
+    column-gap: 40px;
+}
+
+.page-lanscaping .page-ukhod__advantages-item li {
+  width: 270px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.page-lanscaping .page-ukhod__advantages-item li p:first-child {
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+.page-lanscaping .page-ukhod__advantages-item li p:last-child {
+  font-size: 14px;
 }
 
 .page-peresadka__example {

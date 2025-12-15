@@ -4,10 +4,8 @@ const pageOpenPopupBtn = document.querySelectorAll('.page-popup-open-btn');
 const pagePopup = document.querySelector('.page-popup');
 const pageClosePopupBtn = document.querySelector('.page-popup__close');
 const pagePopupOverlay = document.querySelector('.page-popup__popup-overlay');
-const pagePopupContactForm = document.querySelector('.page-popup form');
-
-// console.log(pageOpenPopupBtn)
-// console.log(pagePopup)
+const pagePopupContactForm = document.querySelector('.page-popup .wpcf7-form');
+const pagePopupPreloader = document.querySelector('.page-popup .preloader');
 
 //для попапа на странице усуги по уходу
 let serviceButtons = document.querySelectorAll('.service-page .page-popup-open-btn');
@@ -17,7 +15,6 @@ let serviceNameInput = document.querySelector('.ukhod-popup-service-name');
 if (pagePopup != null && pageOpenPopupBtn != null) {
     pageOpenPopupBtn.forEach(button => {
       button.addEventListener ("click", (evt)=>{
-        console.log(pagePopup)
         toggle_page_popup ();
       });
     });
@@ -61,8 +58,9 @@ if(pagePopup != null && serviceButtons != null) {
 }
 
 
-if(pagePopupContactForm !=null) {
-  pagePopupContactForm.addEventListener('submit', hidePopup);
+if(pagePopupContactForm !== null) {
+  // pagePopupContactForm.addEventListener('submit', hidePopup);
+  pagePopupContactForm.addEventListener('submit', (evt) => {pagePopupPreloader.classList.add('active')});
 }
 
 
@@ -81,7 +79,20 @@ function hidePopup() {
     body.classList.remove('fix-body');
     cleanForm();
     pagePopupContainer.style.visibility = 'visible';
-  }, 3000);
+  }, 5000);
 }
+
+document.addEventListener('wpcf7submit', function(event) {
+    // Универсальный обработчик отправки
+    pagePopupContainer.style.visibility = 'hidden';
+    pagePopupPreloader.classList.remove('active');
+    setTimeout(() => {
+      pagePopup.classList.remove('popup_active');
+      body.classList.remove('fix-body');
+      cleanForm();
+      pagePopupContainer.style.visibility = 'visible';
+    }, 4000);
+
+}, false);
 
 

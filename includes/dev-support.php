@@ -9,25 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 function plnt_echo_smth() {
-  $order = wc_get_order( 15647 );
-  $order_items = $order->get_items();
-  foreach ( $order->get_items() as $item_id => $item ) {
-      // ID товара
-      $product_id = $item->get_product_id();
-
-      // Объект товара
-      $product = $item->get_product();
-
-      // Тип товара (simple, variable, variation, grouped, external и т.д.)
-      $product_type = $product ? $product->get_type() : '';
-      $gift_card_post_ids = (array) $item->get_meta( '_ywgc_gift_card_post_id', true );
-      $gift_card_post_id  = isset( $gift_card_post_ids[0] ) ? $gift_card_post_ids[0] : null;
-
-      echo ('<pre>');
-      print_r($product_type);
-      print_r($gift_card_post_id);
-      echo ('</pre>');
-  }
 }
 
 
@@ -35,105 +16,6 @@ function echo_hi() {
   if (is_page('gift-card')) {
     echo ('hihi');
   }
-}
-
-function plnt_dev_functions() {
-
-	global $plants_treez_cat_id;
-	global $plants_cat_id;
-	global $gorshki_cat_id;
-	global $ukhod_cat_id;
-	global $treez_cat_id;
-	global $treez_poliv_cat_id;
-	global $lechuza_cat_id;
-	global $misc_cat_id;
-	global $peresadka_cat_id;
-
-    $all_sizes = get_intermediate_image_sizes();
-    print_r( $all_sizes );
-
-
-    // $term = get_term( 'slug', $cat_slug, 'product_cat' );
-    // $term_id = $term->term_id;
-    $args = array( 'taxonomy' => 'product_cat', 'parent' => $plants_treez_cat_id );  
-    $terms = get_terms( $args ); 
-    //print_r($terms);
-    // $category_thumbnail = get_term_meta(137, 'thumbnail_id', true);
-    // $image = wp_get_attachment_url($category_thumbnail);
-    // echo($category_thumbnail);
-    // echo($image);
-	// $cats_for_check = [$plants_cat_id, $gorshki_cat_id, $ukhod_cat_id,$treez_cat_id, $treez_poliv_cat_id, $plants_treez_cat_id, $lechuza_cat_id, $peresadka_cat_id, $misc_cat_id];
-	// $cats_for_include = [];
-	// $cats_for_include_clean = [];
-	// foreach($cats_for_check as $item){
-	// 	$args = array(
-	// 		'post_type'      => 'product',
-	// 		'posts_per_page' => -1,
-	// 		'post_status'    => 'publish',
-	// 		'meta_query' => array( 
-	// 			array(
-	// 				'key' => '_stock',
-	// 				'type'    => 'numeric',
-	// 				'value' => '0',
-	// 				'compare' => '>'
-	// 			)
-	// 		),
-	// 		'tax_query' => array(
-	// 			array(
-	// 				'taxonomy' => 'product_cat',
-	// 				'field' => 'id',
-	// 				'terms' => [$item],
-	// 				'operator' => 'IN',
-	// 				'include_children' => 1,
-	// 			)
-	// 		)
-	// 	);
-	// 	$query = new WP_Query;
-	// 	$checkproducts = $query->query($args);
-
-	// 	$checkproductscount = count($checkproducts);
-	// 	// echo $item.' '.$checkproductscount;
-	// 	// echo '<br>';
-	// 	if($checkproductscount != 0) {
-	// 		//print_r($checkproducts);
-	// 		foreach ($checkproducts as $item) {
-	// 			// print_r($item);
-	// 			// echo '<br>';
-	// 			$product = wc_get_product($item);
-	// 			$prod_cats = $product->get_category_ids();
-	// 			foreach ($prod_cats as $cat) {
-	// 				array_push($cats_for_include, $cat);
-	// 			}
-	// 			// echo ('cat ids ');
-	// 			// print_r($product->get_category_ids());
-	// 			// echo '<br>';
-	// 		}
-	// 	};
-	// }
-	// echo 'cats_for_include ';
-	// $cats_for_include_clean = array_unique($cats_for_include);
-	// // print_r($cats_for_include);
-	// // echo '<br>';
-	// print_r($cats_for_include_clean);
-	// echo '<br>';
-	// echo 'cats_for_exclude ';
-	// print_r($cats_for_exclude); 
-	
-
-	// $args_cats=array(
-	// 	'taxonomy'   => 'product_cat',
-	// 	'hide_empty' => true,
-	// 	'include' => $cats_for_include_clean,
-	// );
-
-	// $terms=get_terms($args_cats);
-
-	// foreach($terms as $item){
-	// 	echo $item->name;
-	// 	echo '<br>';
-	// }
-
-	
 }
 
 function plnt_check_page() {
@@ -318,4 +200,3 @@ function show_image_sizes() {
 // function ajax_ping(){
 //   wp_send_json_success('ok'); // без лишней логики
 // }
-

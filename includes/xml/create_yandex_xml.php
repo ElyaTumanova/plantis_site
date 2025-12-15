@@ -241,9 +241,35 @@ $yandex_xml .= "</shop>
 </yml_catalog>
 ";
 
-$fp = fopen( ABSPATH . "/wp-content/yandex-xml/feed-yml-0.xml", 'w' ); 
-fwrite( $fp, $yandex_xml );
-fclose( $fp );
+$dir_path  = ABSPATH . 'wp-content/yandex-xml';
+$file_path = $dir_path . '/feed-yml-0.xml';
 
+// 1. Убедимся, что папка существует (создадим, если нужно)
+if ( ! is_dir( $dir_path ) ) {
+    if ( ! function_exists( 'wp_mkdir_p' ) ) {
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+    }
+
+    if ( ! wp_mkdir_p( $dir_path ) ) {
+        throw new Exception( 'Cannot create directory for Yandex XML: ' . $dir_path );
+    }
+}
+
+// 2. Открываем файл
+$fp = @fopen( $file_path, 'w' ); // @ — чтобы не сыпать warning в лог PHP напрямую
+if ( $fp === false ) {
+    $err = error_get_last();
+    $msg = isset( $err['message'] ) ? $err['message'] : 'unknown fopen error';
+    throw new Exception( 'Cannot open file for writing: ' . $file_path . ' — ' . $msg );
+}
+
+// 3. Пишем содержимое
+$bytes = fwrite( $fp, $yandex_xml );
+if ( $bytes === false ) {
+    fclose( $fp );
+    throw new Exception( 'Cannot write to file: ' . $file_path );
+}
+
+fclose( $fp );
 
 

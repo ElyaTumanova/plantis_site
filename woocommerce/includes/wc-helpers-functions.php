@@ -163,24 +163,33 @@ function plnt_set_backorders_date() {
 function plnt_check_stock_status() {
     global $product;
     global $plants_cat_id;
+
     $parentCatId = check_category($product);
 
-    if ($parentCatId === $plants_cat_id) {
-        if ( $product->get_stock_status() ==='instock' ) {
-            ?>
-            <div class="card__stockstatus card__stockstatus_in">Доставка от 2-х часов</div>
-            <?php
-        } else if ($product->backorders_allowed() && $product->get_stock_quantity() <= 0) {
-            ?>
-            <div class="card__stockstatus card__stockstatus_backorder">Доставка 10 — 14 дней</div>
-            <?php
-        } else {
-            ?>
-            <div class="card__stockstatus card__stockstatus_out">Под заказ</div>
-            <?php
-        }
+    // Если не категория растений — вообще ничего не показываем
+    if ($parentCatId !== $plants_cat_id) {
+        return;
     }
+
+    // 1) Есть товар в наличии
+    if ($product->get_stock_status() === 'instock') {
+        ?>
+        <div class="card__stockstatus card__stockstatus_in">Доставка от 2-х часов</div>
+        <?php
+        return;
+    }
+
+    // 2) Разрешён предзаказ и остаток <= 0 — НИЧЕГО не выводим
+    if ($product->backorders_allowed() && $product->get_stock_quantity() <= 0) {
+        return; // просто выходим из функции
+    }
+
+    // 3) Все остальные случаи — "Под заказ"
+    ?>
+    <div class="card__stockstatus card__stockstatus_out">Под заказ</div>
+    <?php
 }
+
 
 /*--------------------------------------------------------------
 # HELPERS for SEO & Schema.org

@@ -25,6 +25,8 @@ $urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_
 $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
 
 $min_free_delivery = carbon_get_theme_option('min_free_delivery');
+
+$isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
 ?>
 
 <div class="delivery-info">
@@ -47,11 +49,19 @@ $min_free_delivery = carbon_get_theme_option('min_free_delivery');
         </div>
         <div class="delivery_table__row">
             <div>В пределах МКАД <strong>в день заказа</strong></div>
-            <div>от <?php echo floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery))?>₽</div>
+            <?php if($isUrgentCourierTariff):?>
+              <div>по тарифу грузоперевозчика</div>
+            <?php else:?>
+              <div>от <?php echo floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery))?>₽</div>
+            <?php endif; ?>
         </div>
         <div class="delivery_table__row">
             <div>За пределы МКАД (до 5км) <strong>в день заказа</strong></div>
-            <div>от <?php echo floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery))?>₽</div>
+            <?php if($isUrgentCourierTariff):?>
+              <div>по тарифу грузоперевозчика</div>
+            <?php else:?>
+              <div>от <?php echo floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery))?>₽</div>
+             <?php endif; ?>
         </div>
         <div class="delivery_table__row">
             <div>За пределы МКАД (от 5км)</div>

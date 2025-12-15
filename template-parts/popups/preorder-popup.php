@@ -14,5 +14,8 @@ $close_icon = carbon_get_theme_option('close_icon')
                 описанными в нашей <a class="page-popup__link" target="blank" href="<?php get_site_url()?>/privacy-policy/">политике конфиденциальности</a>.</p>
         </div>
     </div>
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
     <div class="page-popup__popup-overlay popup-overlay"></div>
 </div>	
