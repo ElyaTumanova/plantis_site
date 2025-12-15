@@ -1,4 +1,17 @@
-/* gift card page */
+/*--------------------------------------------------------------
+Contents
+# Gift card page
+# Gift card page form fields
+# Gift card result page
+# Gift card CHECK BALANCE
+# Gift card FAQ
+# My Account for gift card section
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Gift card page
+--------------------------------------------------------------*/
 
 .gift-content-area {
   max-width: 924px;
@@ -12,13 +25,24 @@
   margin: auto;
 }
 
+.gift-card-content {
+  margin-bottom: 20px;
+}
+
+.gift-cards_form .gift-card__submit-btn {
+    background-color: var(--text);
+    color: var(--white);
+    padding: 10px 20px;
+    width: 100%;
+}
+.gift-cards_form .gift-card__submit-btn.is-disabled {
+    background-color: var(--gray);
+    color: var(--gray-text);
+}
+
 .gift-cards-list {
   margin-bottom: 20px;
   position: relative;
-}
-.selected_button {
-  background-color: transparent !important;
-  color: var(--text) !important;
 }
 
 .gift-cards_form h3 {
@@ -27,52 +51,25 @@
   margin: 50px 0 25px;   
 }
 
-#ywgc-manual-amount, .selected_button #ywgc-manual-amount {
-  width: 100%;
-  background-color: transparent !important;
-  height: auto;
-  margin: 0 !important;
-  border: none !important;
-  outline: none;
-  color: var(--text) !important;
-}
-
-.selected_button #ywgc-manual-amount:focus, .selected_button #ywgc-manual-amount:active {
-  border: none !important;
-  outline: none;
-  color: var(--text) !important;
-}
-
-#ywgc-manual-amount-div-wrapper  {
-  height: auto;
-}
-
-.ywgc-manual-amount-container .selected_button, .ywgc-manual-amount-container  {
-  background-color: transparent !important;
-  height: 50px !important;
-  border-radius: 40px !important;
-  color: var(--text) !important;
-}
-
-@media only screen and (max-width: 992px) {
-    .gift-cards-list .ywgc-amount-buttons {
+/* @media only screen and (max-width: 992px) {
+    .gift-cards-list .gift-amount-buttons {
         width: 180px !important;
         max-width: 180px !important;
         border-radius: 40px !important;
     }
 }
 @media (max-width: 550px) {
-    .gift-cards-list .ywgc-amount-buttons {
+    .gift-cards-list .gift-amount-buttons {
         width: 100% !important;
         max-width: 100% !important;
     }
-}
+} */
 
-.ywgc-manual-currency-symbol {
+/* .gift-manual-currency-symbol {
   display: none;
-}
+} */
 
-.gift_card_template_button {
+/* .gift_card_template_button {
   margin-top: 5px !important;
 }
 .gift_card_template_button button{
@@ -81,9 +78,9 @@
   background-color: var(--accent-color);
   color: var(--white);
   padding: 14px;
-}
+} */
 
-.gift-cards-list .gift__note {
+/* .gift-cards-list .gift__note {
   font-size: 14px;
   position: absolute;
   top: 65px;
@@ -98,10 +95,10 @@
         margin-top: 10px;
         margin-left: 10px;
     }
-}
+} */
 
 
-.gift__amounts, .gift__amounts.selected_button {
+.gift__amounts {
   font-size: 16px;
   margin-top: 20px;
   width: 100%;
@@ -131,18 +128,26 @@
   pointer-events: none;
 }
 
-/* form fields */
+/*--------------------------------------------------------------
+# Gift card page form fields
+--------------------------------------------------------------*/
 
 .gift-cards_form input, .gift-cards_form textarea {
   border-radius: 40px !important;
   padding: 3px 25px;
   outline: none;
-  margin: 10px 0 0 !important;
+  margin: 10px 0 0;
 }
 
 .gift-cards_form textarea {
   padding: 25px;
   border-radius: 20px !important;
+}
+
+.gift-cards_form input {
+  height: 50px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .gift-cards_form input:focus, .gift-cards_form textarea:focus {
@@ -154,35 +159,21 @@
   padding: 25px;
 }
 
-.ywgc-recipient-email {
-  float: none !important;
-  width: 100% !important;
-  position: relative;
+#gift-manual-amount {
+  text-align: center;
+  margin-bottom: 10px;
+  width: auto;
 }
 
-.ywgc-recipient-email p {
+.gift-recipient-note {
   font-size: 14px;
   margin-top: 10px;
   line-height: 1.2;
   padding-left: 10px;
 }
 
-.ywgc-recipient-name {
-  float: none !important;
-  width: 100% !important;
-  position: relative;
+.gift-recipient-name, .gift-recipient-email, .gift-message, .gift-buyer-name {
   margin-bottom: 15px;
-}
-
-.ywgc-message {
-  position: relative;
-  margin-bottom: 15px;
-}
-
-.ywgc-sender-name {
-  width: 100% !important;
-  float: none !important;
-  position: relative;
 }
 
 .gift-cards_form label {
@@ -198,31 +189,29 @@
   color: var(--gray-text);
 }
 
-.ywgc-recipient-email:has(.focus) label {
+.gift-input-wrap_labeled {
+  position: relative;
+}
+
+.gift-input-wrap_labeled:has(.focus) label {
   top: 0px;
   left: 25px;
   color: var(--text);
 }
-.ywgc-recipient-name:has(.focus) label {
-  top: 0px;
-  left: 13px;
-  color: var(--text);
+
+.gift-cards_form .field__error, .gc-balance-form .field__error {
+  font-size: 14px;
+  margin-top: 10px;
+  line-height: 1.2;
+  padding-left: 10px;
+  color: var(--red-color);
 }
-.ywgc-sender-name:has(.focus) label {
-  top: 0px;
-  left: 13px;
-  color: var(--text);
-}
-.ywgc-message:has(.focus) label {
-  top: 0px;
-  left: 13px;
-  color: var(--text);
-}
+
 /* обнуление стандартного вывода ошибок */
-.ywgc-red-border {
-  border: 1px solid var(--yith-ywgc-border-color) !important;
+.gift-red-border {
+  border: 1px solid var(--yith-gift-border-color) !important;
 }
-.ywgc-manual-amount-error {
+.gift-manual-amount-error {
   float: none;
   display: none;
   font-size: 0 !important;
@@ -230,8 +219,9 @@
   margin: 0;
 }
 
-
-/* gift card result page */
+/*--------------------------------------------------------------
+# Gift card result page
+--------------------------------------------------------------*/
 
 .gift-card-content-area{
   max-width: 1160px;
@@ -497,7 +487,9 @@
 .copy-btn:hover{ background:#f7faf8; }
 .copy-btn:focus-visible{ outline: 3px solid #cfd5db; outline-offset: 2px; }
 
-/* CHECK BALANCE */
+/*--------------------------------------------------------------
+# Gift card CHECK BALANCE
+--------------------------------------------------------------*/
 
 .gift-card__not-found {
   margin: 50px auto 30px;
@@ -542,6 +534,11 @@
   padding: 10px 20px;
 }
 
+.gc-balance__checkBtn.is-disabled {
+  background-color: var(--gray);
+  color: var(--gray-text);
+}
+
 .gc-balance__clearBtn {
   color: var(--text);
   background-color: var(--white);
@@ -558,7 +555,10 @@
   display: block;
 }
 
-/* FAQ */
+/*--------------------------------------------------------------
+# Gift card FAQ
+--------------------------------------------------------------*/
+
 .faq-item{
   overflow: hidden;
   border: 1px solid #e7eaee;
@@ -714,3 +714,76 @@
 @media (max-width: 900px){
   .gift-card__main{ gap: 20px; }
 }
+
+
+/*--------------------------------------------------------------
+# My Account for gift card section
+--------------------------------------------------------------*/
+.gift-card-panel-title-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.gift-card-panel-title {
+  display: none;
+}
+
+.yith-add-new-gc-my-account-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.yith-add-new-gc-my-account-button:hover {
+    color: var(--accent-color);
+}
+
+.yith-add-new-gc-my-account-button::before {
+    content: "+ ";
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+.yith-gift-add-new-gift-card-modal-opened .yith-gift-add-new-gift-card-modal-wrapper {
+  width: 100% !important;
+  padding: 20px;
+  max-width: 500px;
+}
+
+.gift-add-new-gift-card-form {
+  background-color: transparent !important;
+}
+
+.gift-add-new-gift-card-form .gift-link-gift-card-submit-button {
+    background-color: var(--text);
+    color: var(--white);
+    border-radius: 50px;
+}
+
+.gift-add-new-gift-card-form #gift-link-code {
+  border-radius: 25px !important;
+}
+
+.gift-add-new-gift-card-form .yith-add-new-gc-my-account-notice-message {
+  margin-bottom: 15px;
+}
+
+.yith-gift-add-new-gift-card-modal-inner {
+  padding-bottom: 0 !important;
+}
+
+.gift-add-new-gift-card-modal-title {
+  padding-top: 30px !important;
+}
+
+.my_account_giftcards thead .direct_link {
+  display: none;
+}
+.my_account_giftcards tbody .direct_link {
+  display: none;
+}
+
