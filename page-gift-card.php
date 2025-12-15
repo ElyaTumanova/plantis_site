@@ -45,7 +45,7 @@ if ( $gift_card_id > 0 ) {
     <div class="gift-card__main">
       <div class="gift-card__wrap">
         <div class="gift-image-wrap">
-          <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_cover.webp" class="gift-image" alt="Подарочная карта" loading="lazy">
+          <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_cover.jpg" class="gift-image" alt="Подарочная карта" loading="lazy">
           <p class="gift-image-amount"><?php echo esc_html($gift_card['_ywgc_balance_total'][0]) ?><span>₽</span></p>
         </div>
         <div class="gift-card__row">
@@ -85,8 +85,15 @@ if ( $gift_card_id > 0 ) {
       <h1 class="gift-card__check-title">Проверить баланс подарочного сертификата</h1>
       <form method="get" class="gc-balance-form" novalidate>
         <label for="gcnum">Номер подарочной карты</label>
-        <input id="gcnum" name="gcnum" type="text" inputmode="latin"
-            autocomplete="off" required />
+        <input id="gcnum" 
+        name="gcnum" 
+        type="text" 
+        inputmode="latin"
+        autocomplete="off" 
+        required 
+        pattern="^[0-9A-Fa-f]{4}(?:-[0-9A-Fa-f]{4}){3}$"
+        title="Формат: XXXX-XXXX-XXXX-XXXX (только 0-9 и A-F)"/>
+        <span class="field__errors"></span>
 
         <div class="row">
           <button type="submit" class="button gc-balance__checkBtn">

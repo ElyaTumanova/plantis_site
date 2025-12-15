@@ -9,11 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 function plnt_echo_smth() {
-  $isUrgentCourierTariff = (bool) carbon_get_theme_option('is_urgent_courier_tariff') == '1';
-  $isTrue = true;
-
-  echo $isUrgentCourierTariff;
-  echo $isTrue;
 }
 
 

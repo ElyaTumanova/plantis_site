@@ -792,7 +792,7 @@ label.list-view {
   color: var(--text);
   box-shadow: none;
   background-color: var(--bg);
-  display: none; 
+  /* display: none;  */
 }
 
 .ywgc-show-giftcard::after {
@@ -946,3 +946,102 @@ label.list-view {
 .payment_method_tbank img {
     display: none;
 }
+
+
+/*gift card payment page*/
+
+.woocommerce-order-pay .content-area {
+    max-width: 600px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.woocommerce-order-pay .gift-card #payment #place_order {
+    background-color: var(--text);
+    color: var(--white);
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.gift-order-items .gift-image-wrap {
+  max-width: 500px;
+}
+
+.gift-order-items .gift-payment {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  font-weight: 600;
+  font-size: 17px;
+  margin-bottom: 30px;
+  max-width: 500px;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+/* radio button */
+
+#order_review input[type=radio] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  width: fit-content;
+}
+
+
+/* для элемента label связанного с #order_review input[type=radio] */
+#order_review input[type=radio] + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+/* создание в label псевдоэлемента before */
+#order_review input[type=radio] + label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #adb5bd;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+/* hover */
+#order_review input[type=radio]:not(:disabled):not(:checked) + label:hover::before {
+  border-color: #b3d7ff;
+}
+
+/* active */
+#order_review input[type=radio]:not(:disabled):active + label::before {
+  background-color: #b3d7ff;
+  border-color: #b3d7ff;
+}
+
+/* focus */
+#order_review input[type=radio]:focus + label::before {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* focus, но не checked */
+#order_review input[type=radio]:focus:not(:checked) + label::before {
+  border-color: #80bdff;
+}
+
+/* checked */
+#order_review input[type=radio]:checked + label::before {
+  border-color: var(--accent-color);
+  background-color: var(--accent-color);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+}
+
+/* disabled */
+#order_review input[type=radio]:disabled + label::before {
+  background-color: #e9ecef;
+}
+

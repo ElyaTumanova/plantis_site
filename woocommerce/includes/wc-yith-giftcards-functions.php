@@ -11,6 +11,7 @@ Contents
 #PRODUCT PAGE
 #CARD BALANCE CHECK
 #PRICE FIX
+#TRANSLATIONS
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -22,6 +23,329 @@ add_filter('query_vars', function ($vars) {
     $vars[] = 'gcnum';
     return $vars;
 });
+
+
+// создание ссылки на оплату
+add_action( 'admin_post_nopriv_giftcard_pay', 'handle_giftcard_pay' );
+add_action( 'admin_post_giftcard_pay',        'handle_giftcard_pay' );
+
+function handle_giftcard_pay() {
+
+    // 1. Сумма сертификата
+    $amount_raw = $_POST['giftcard_amount'] ?? '';
+    if ( is_array( $amount_raw ) ) {
+        $amount_raw = reset( $amount_raw );
+    }
+    $amount = floatval( $amount_raw );
+    if ( $amount <= 0 ) {
+        wp_die( 'Некорректная сумма.' );
+    }
+
+    // 2. Товар gift-card
+    $product_id_raw = $_POST['giftcard_product_id'] ?? 0;
+    if ( is_array( $product_id_raw ) ) {
+        $product_id_raw = reset( $product_id_raw );
+    }
+    $product_id = absint( $product_id_raw );
+    if ( ! $product_id ) {
+        wp_die( 'Не указан товар подарочной карты.' );
+    }
+
+    $product = wc_get_product( $product_id );
+    if ( ! $product ) {
+        wp_die( 'Товар подарочной карты не найден.' );
+    }
+
+    // 3. Данные из твоей формы YITH
+
+    // 3.1 Email (и плательщика, и получателя – один и тот же)
+    $recipient_emails = $_POST['gift-recipient-email'] ?? [];
+    if ( is_array( $recipient_emails ) ) {
+        $recipient_email = reset( $recipient_emails );
+    } else {
+        $recipient_email = $recipient_emails;
+    }
+    $recipient_email = sanitize_email( $recipient_email );
+
+    if ( ! $recipient_email ) {
+        wp_die( 'Укажите корректный e-mail.' );
+    }
+
+    //Телефон
+    $recipient_phones = $_POST['gift-recipient-phone'] ?? [];
+    if ( is_array( $recipient_phones ) ) {
+        $phone = reset( $recipient_phones );
+    } else {
+        $phone = $recipient_phones;
+    }
+    $phone = sanitize_text_field( $phone );
+
+    if ( ! $phone ) {
+        wp_die( 'Укажите корректный номер телефона.' );
+    }
+
+    //Имя отправителя для заказа
+    $buyer_names = $_POST['gift-buyer-name'] ?? [];
+    if ( is_array( $buyer_names ) ) {
+        $buyer_name = reset( $buyer_names );
+    } else {
+        $buyer_name = $buyer_names;
+    }
+    $buyer_name = sanitize_text_field( $buyer_name );
+
+    if ( ! $buyer_name ) {
+        wp_die( 'Укажите как вас зовут.' );
+    }
+
+    // 3.2 Имя получателя
+    $recipient_names = $_POST['gift-recipient-name'] ?? [];
+    if ( is_array( $recipient_names ) ) {
+        $recipient_name = reset( $recipient_names );
+    } else {
+        $recipient_name = $recipient_names;
+    }
+    $recipient_name = sanitize_text_field( $recipient_name );
+
+    // 3.3 Сообщение
+    $message_raw = $_POST['gift-edit-message'] ?? '';
+    if ( is_array( $message_raw ) ) {
+        $message_raw = reset( $message_raw );
+    }
+    $message = wp_kses_post( $message_raw );
+
+    // 3.4 Имя отправителя
+    $sender_raw = $_POST['gift-sender-name'] ?? '';
+    if ( is_array( $sender_raw ) ) {
+        $sender_raw = reset( $sender_raw );
+    }
+    $sender_name = sanitize_text_field( $sender_raw );
+
+    // 4. Создаём заказ
+    $order = wc_create_order( [
+        'status'      => 'pending',
+        'created_via' => 'giftcard_pay_button',
+    ] );
+
+    if ( is_wp_error( $order ) ) {
+        wp_die( 'Не удалось создать заказ.' );
+    }
+
+    // 5. Добавляем товар с нужной суммой
+    $item_id = $order->add_product( $product, 1, [
+        'subtotal' => $amount,
+        'total'    => $amount,
+    ] );
+
+    // 5.1. Мета YITH для строки заказа – чтобы в заказе выводились нужные поля
+
+    if ( $item_id ) {
+
+        // Сумма карты (Amount)
+        wc_add_order_item_meta( $item_id, '_ywgc_amount', $amount );
+
+        // "Ручная" сумма (Manual amount = 1)
+        wc_add_order_item_meta( $item_id, '_ywgc_is_manual_amount', 1 );
+
+        // Digital: 1 (виртуальная карта, отправляется по e-mail)
+        wc_add_order_item_meta( $item_id, '_ywgc_is_digital', 1 );
+
+        // Email получателя (хоть ты его не показывал в списке, но он нужен плагину)
+        wc_add_order_item_meta( $item_id, '_ywgc_recipient_email', $recipient_email );
+
+        // Recipient's name
+        if ( $recipient_name ) {
+            wc_add_order_item_meta( $item_id, '_ywgc_recipient_name', $recipient_name );
+        }
+
+        // Sender's name (от кого)
+        if ( $sender_name ) {
+            wc_add_order_item_meta( $item_id, '_ywgc_sender_name', $sender_name );
+        }
+
+        // Сообщение
+        if ( $message ) {
+            wc_add_order_item_meta( $item_id, '_ywgc_message', $message );
+        }
+
+        // Design type: default
+        wc_add_order_item_meta( $item_id, '_ywgc_design_type', 'default' );
+
+        // Has custom design: 1
+        wc_add_order_item_meta( $item_id, '_ywgc_has_custom_design', 1 );
+
+        // Delivery notification: off
+        wc_add_order_item_meta( $item_id, '_ywgc_delivery_notification', 'off' );
+
+        // Версия плагина (можно захардкодить, можно взять из константы, если есть)
+        wc_add_order_item_meta( $item_id, '_ywgc_version', '4.26.0' );
+    }
+
+    // 6. Биллинг заказчика (email = email получателя)
+    $order->set_billing_email( $recipient_email );
+    if ( $phone ) {
+        $order->set_billing_phone( $phone );
+    }
+    if ( $buyer_name ) {
+        $order->set_billing_first_name( $buyer_name );
+    }
+
+    // 7. Способ оплаты — tbank
+    $order->set_payment_method( 'tbank' );
+
+    // 8. Пересчитываем суммы
+    $order->calculate_totals();
+    $order->save();
+
+    // 9. Редирект на страницу оплаты
+    $url = $order->get_checkout_payment_url();
+    if ( ! $url ) {
+        wp_die( 'Не удалось получить URL оплаты.' );
+    }
+
+    wp_safe_redirect( $url );
+    exit;
+}
+
+/**
+ * Получить объект заказа по объекту gift card YITH.
+ */
+function plantis_get_order_from_yith_gift_card( $gift_card ) {
+    $order_id = 0;
+
+    if ( ! $gift_card ) {
+        return false;
+    }
+
+    // Часто у объекта есть метод get_order_id()
+    if ( method_exists( $gift_card, 'get_order_id' ) ) {
+        $order_id = $gift_card->get_order_id();
+    } elseif ( isset( $gift_card->order_id ) ) { // или публичное свойство
+        $order_id = $gift_card->order_id;
+    }
+
+    if ( ! $order_id ) {
+        return false;
+    }
+
+    $order = wc_get_order( $order_id );
+    return $order instanceof WC_Order ? $order : false;
+}
+
+add_filter( 'ywgc_send_gift_card_code_by_default', 'plantis_control_yith_gift_card_sending_default', 10, 2 );
+
+function plantis_control_yith_gift_card_sending_default( $send, $gift_card ) {
+
+    $order = plantis_get_order_from_yith_gift_card( $gift_card );
+    if ( ! $order ) {
+        return $send; // ничего не знаем — не трогаем
+    }
+
+    // ❗ Если хочешь это поведение только для наших "кнопочных" заказов:
+    // if ( $order->get_created_via() !== 'giftcard_pay_button' ) {
+    //     return $send;
+    // }
+
+    // Если заказ ещё НЕ выполнен — запрещаем отправку
+    if ( ! $order->has_status( 'completed' ) ) {
+        return false;
+    }
+
+    // Если заказ ВЫПОЛНЕН — оставляем как хочет плагин (обычно true)
+    return $send;
+}
+
+add_filter( 'yith_wcgc_send_now_gift_card_to_custom_recipient', 'plantis_control_yith_gift_card_sending_custom', 10, 2 );
+
+function plantis_control_yith_gift_card_sending_custom( $send, $gift_card ) {
+
+    $order = plantis_get_order_from_yith_gift_card( $gift_card );
+    if ( ! $order ) {
+        return $send;
+    }
+
+    // Только наши заказы? Раскомментируй, если нужно ограничить:
+    // if ( $order->get_created_via() !== 'giftcard_pay_button' ) {
+    //     return $send;
+    // }
+
+    if ( ! $order->has_status( 'completed' ) ) {
+        return false;
+    }
+
+    return $send;
+}
+
+/**
+ * Отправляем все подарочные карты заказа при переходе в статус completed.
+ */
+add_action( 'woocommerce_order_status_completed', 'plantis_send_gift_cards_on_completed', 20 );
+
+function plantis_send_gift_cards_on_completed( $order_id ) {
+
+    $order = wc_get_order( $order_id );
+    if ( ! $order ) {
+        return;
+    }
+
+    // Если нужно – можно ограничить только нашими "кнопочными" заказами:
+    if ( $order->get_created_via() !== 'giftcard_pay_button' ) {
+        return;
+    }
+
+    $order_items = $order->get_items();
+
+    $gift_card_ids = [];
+
+    // Собираем ID подарочных карт из позиций заказа
+    foreach ( $order->get_items() as $item_id => $item ) {
+        // // ID товара
+        // $product_id = $item->get_product_id();
+
+        // Объект товара
+        $product = $item->get_product();
+
+         // Если товара нет — сразу к следующему
+        if ( ! $product ) {
+            continue;
+        }
+
+        // Тип товара (simple, variable, gift-card и т.д.)
+        $product_type = $product->get_type();
+
+        // Нас интересуют только товары типа "gift-card"
+        if ( 'gift-card' !== $product_type ) {
+            continue;
+        }
+
+        $gift_card_post_ids = (array) $item->get_meta( '_ywgc_gift_card_post_id', true );
+        $gift_card_post_id  = isset( $gift_card_post_ids[0] ) ? $gift_card_post_ids[0] : null;
+
+        if ( $gift_card_post_id ) {
+            $gift_card_ids[] = $gift_card_post_id;
+        }
+    }
+
+
+    if ( empty( $gift_card_ids ) ) {
+        return;
+    }
+
+    // Класс, который умеет send_gift_card_email()
+    if ( ! class_exists( 'YITH_YWGC_Emails_Premium' ) ) {
+        return;
+    }
+
+    // Берём singleton из твоего класса
+    $emails = YITH_YWGC_Emails_Premium::get_instance();
+
+    foreach ( $gift_card_ids as $gift_card_id ) {
+        if ( method_exists( $emails, 'send_gift_card_email' ) ) {
+            // $only_new = true — не отправит повторно, если карта уже была отослана
+            $emails->send_gift_card_email( $gift_card_id, true );
+        }
+    }
+}
+
 
 /*--------------------------------------------------------------
 #EMAILS
@@ -179,6 +503,43 @@ add_filter('yith_ywgc_cart_totals_gift_card_label', function (){
   return 'Сертификат';
 });
 
+
+//меняем описание способа оплаты при оплате заказа для подарочной карты
+
+add_filter('woocommerce_gateway_description', function($description, $gateway_id) {
+
+  if (! is_wc_endpoint_url('order-pay') || is_not_gift_card_order_pay()) {
+    return $description;
+  }
+
+  if ( $gateway_id == 'tbank' ) {
+    return '';
+  } else if ($gateway_id == 'cheque') {
+    return 'Мы можем выставить Вам счет для оплаты банковским переводом. Наш менеджер свяжется с Вами для выставления счета.';
+  } else {
+    return $description;
+  }
+
+}, 20, 2);
+
+//меням сообщение "Вы платите за заказ гостя. Продолжайте оплату, только если вы знаете про этот заказ"
+
+add_filter('woocommerce_add_error', function($message) {
+
+    // только на странице оплаты заказа
+    if ( ! is_wc_endpoint_url('order-pay') ) {
+        return $message;
+    }
+
+    // ловим именно это предупреждение (на RU-сайте достаточно фразы-ключа)
+    if ( is_string($message) && mb_stripos($message, 'Вы платите за заказ гостя') !== false ) {
+        return 'Обратите внимание: e-mail, указанный в заказе, не совпадает с e-mail вашего аккаунта. Если всё верно, продолжайте оплату.';
+    }
+
+    return $message;
+
+}, 20);
+
 /*--------------------------------------------------------------
 #PRODUCT PAGE
 --------------------------------------------------------------*/
@@ -231,22 +592,22 @@ add_action('yith_ywgc_show_gift_card_amount_selection', function(){
 },10);
 
 
-add_filter('ywgc_recipient_name_label', function (){
-  return 'Для кого подарок';
-});
-add_filter('ywgc_sender_name_label', function (){
-  return 'От кого подарок';
-});
+// add_filter('ywgc_recipient_name_label', function (){
+//   return 'Для кого подарок';
+// });
+// add_filter('ywgc_sender_name_label', function (){
+//   return 'От кого подарок';
+// });
 
-add_filter('ywgc_edit_message_label', function (){
-  return 'Поздравление';
-});
-add_filter('yith_wcgc_manual_amount_option_text', function (){
-  return '';
-});
-add_filter('ywgc_add_to_cart_button_text', function (){
-  return 'Перейти к оплате';
-});
+// add_filter('ywgc_edit_message_label', function (){
+//   return 'Поздравление';
+// });
+// add_filter('yith_wcgc_manual_amount_option_text', function (){
+//   return '';
+// });
+// add_filter('ywgc_add_to_cart_button_text', function (){
+//   return 'Перейти к оплате';
+// });
 
 // add_filter('ywgc_minimal_amount_error_text',function (){
 //   return 'Минимальная стоимость подарочного сертификата';
@@ -317,5 +678,6 @@ function plnt_get_giftcard_by_code( $code ) {
 
 //     $price = ($line_total + $line_tax) / $qty;
 // }
+
 
 

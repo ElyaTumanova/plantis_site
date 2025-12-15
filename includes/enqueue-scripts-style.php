@@ -143,6 +143,8 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		                                     '/assets/js/cart-upsells.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/cart-upsells.js'), true );
 		wp_enqueue_script( 'contact-form-validation', get_template_directory_uri() .
 		                                     '/assets/js/contact-form-validation.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/contact-form-validation.js'), true );
+		wp_enqueue_script( 'form-validation', get_template_directory_uri() .
+		                                     '/assets/js/form-validation.js', array(), filemtime(get_stylesheet_directory() .'/assets/js/form-validation.js'), true );
 
 
 		wp_enqueue_script( 'metrikaGoal', get_template_directory_uri() .
