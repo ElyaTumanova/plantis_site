@@ -12,7 +12,7 @@ let checkedInterval = '';
 let today;
 let isUrgentCourierTariff = DELIVERY.isUrgentCourierTariff == '1';
 let deliveryLateInterval = DELIVERY.deliveryLateInterval
-console.log(deliveryLateInterval);
+// console.log(deliveryLateInterval);
 
 let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
 let addressFields = document.querySelector('#billing_address_1_field');
@@ -50,7 +50,7 @@ function getOrderParametrs(event) {
   console.debug(checkedInterval)
 
 
-  if(checkedInterval == '11:00 - 16:00') {
+  if(checkedInterval == deliveryLateInterval) {
     isLate = '1'
   } else {
     isLate = '0'
@@ -135,7 +135,7 @@ function renderDeliveryIntervals(shippingValue) {
         if (isUrgent == '1') {
           priceEl.innerHTML = `+0₽`;
         } else {
-          priceEl.innerHTML = info.for == `additional_delivery_interval_11:00 - 16:00` ? `+${DELIVERY.deliveryLateMarkup}₽` : `+0₽` ;
+          priceEl.innerHTML = info.for == `additional_delivery_interval_${deliveryLateInterval}` ? `+${DELIVERY.deliveryLateMarkup}₽` : `+0₽` ;
         }
       }
   })
