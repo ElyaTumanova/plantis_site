@@ -182,8 +182,7 @@ get_header(); ?>
                               с <?= str_replace(' - ', ' до ', $interval); ?>
                               <?= ($interval == $late_interval_delivery)
                                   ? ' + ' . (int)$late_markup_delivery . ' рублей к стоимости доставки'
-                                  : '' ?>;
-                            </li>
+                                  : '' ?>;</li>
                           <?php endforeach; ?>
                         </ul>
                         <p>Мы работаем без выходных, поэтому <strong>доставка осуществляется каждый день.</strong></p>
