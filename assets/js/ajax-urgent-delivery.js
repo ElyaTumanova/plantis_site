@@ -50,7 +50,6 @@ function getOrderParametrs(event) {
 
 
   if(checkedInterval == '11:00 - 16:00') {
-    console.debug('hello late interval')
     isLate = '1'
   } else {
     isLate = '0'
@@ -135,7 +134,7 @@ function renderDeliveryIntervals(shippingValue) {
         if (isUrgent == '1') {
           priceEl.innerHTML = `+0₽`;
         } else {
-          priceEl.innerHTML = info.for == `additional_delivery_interval_18:00 - 21:00` ? `+${DELIVERY.deliveryLateMarkup}₽` : `+0₽` ;
+          priceEl.innerHTML = info.for == `additional_delivery_interval_11:00 - 16:00` ? `+${DELIVERY.deliveryLateMarkup}₽` : `+0₽` ;
         }
       }
   })
