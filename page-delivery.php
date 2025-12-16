@@ -21,6 +21,7 @@ get_header(); ?>
     $urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_large');
 
     $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+    $late_interval_delivery = carbon_get_theme_option('late_interval_delivery');
 
     $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
 
@@ -30,6 +31,15 @@ get_header(); ?>
     $out_mkad = $shipping_costs[$delivery_outMKAD];
     $min_small_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_small_delivery)) - 1;
     $min_medium_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_medium_delivery)) - 1;
+
+
+    $intervals = [
+      '11:00 - 21:00',
+      '11:00 - 16:00',
+      '14:00 - 18:00',
+      '18:00 - 21:00',
+    ];
+
 
     //print_r($shipping_costs);
     
@@ -167,10 +177,14 @@ get_header(); ?>
                     </div> -->
                     <!-- <div class="delivery__dropdown"> -->
                         <ul>
-                            <li>с 11:00 до 21:00;</li>
-                            <li>с 11:00 до 16:00;</li>
-                            <li>с 14:00 до 18:00;</li>
-                            <li>с 18:00 до 21:00 + <?php echo $late_markup_delivery?> рублей к стоимости доставки.</li>
+                          <?php foreach ($intervals as $interval): ?>
+                            <li>
+                              с <?= str_replace(' - ', ' до ', $interval); ?>
+                              <?= ($interval === '18:00 - 21:00' && $late_interval_delivery === '18:00 - 21:00')
+                                  ? ' + ' . (int)$late_markup_delivery . ' рублей к стоимости доставки'
+                                  : '' ?>;
+                            </li>
+                          <?php endforeach; ?>
                         </ul>
                         <p>Мы работаем без выходных, поэтому <strong>доставка осуществляется каждый день.</strong></p>
                         <p>При оформлении срочной доставки “день в день” менеджер согласует с вами удобный интервал доставки.</p>					
