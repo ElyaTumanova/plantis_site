@@ -63,10 +63,17 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'min_treez_delivery', 'Сумма заказа для доставки кашпо Treez'),
 			Field::make( 'text', 'min_lechuza_delivery', 'Сумма заказа для доставки кашпо Lechuza'),
 			Field::make( 'text', 'urgent_markup_delivery', 'Надбавка к стоимости срочной доставки'),
-			Field::make( 'text', 'late_markup_delivery', 'Надбавка к стоимости поздней доставки'),
 			Field::make( 'text', 'large_markup_delivery_in_mkad', 'Надбавка к стоимости крупногабаритной доставки в пределах МКАД'),
 			Field::make( 'text', 'large_markup_delivery_out_mkad', 'Надбавка к стоимости крупногабаритной доставки за пределами МКАД'),
 			Field::make( 'text', 'urgent_markup_delivery_large', 'Надбавка к стоимости срочной крупногабаритной доставки'),
+			Field::make( 'text', 'late_markup_delivery', 'Надбавка к стоимости доставки в дорогой интервал'),
+      Field::make('select', 'late_interval_delivery', 'Дорогой интервал')
+				  ->add_options(array(
+					  '11:00 - 21:00' => '11:00 - 21:00',
+					  '11:00 - 16:00' => '11:00 - 16:00',
+					  '14:00 - 18:00' => '14:00 - 18:00',
+					  '18:00 - 21:00' => '18:00 - 21:00',
+				  ))
 	   ))
 		->add_tab('General', array(
 			Field::make( 'text', 'notice', 'Уведомление' ),
