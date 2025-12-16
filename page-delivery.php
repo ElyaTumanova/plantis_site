@@ -178,13 +178,12 @@ get_header(); ?>
                     <!-- <div class="delivery__dropdown"> -->
                         <ul>
                           <?php foreach ($intervals as $interval): ?>
-                            <li>
-                              с <?= str_replace(' - ', ' до ', $interval); ?>
-                              <?= ($interval == $late_interval_delivery)
-                                  ? ' + ' . (int)$late_markup_delivery . ' рублей к стоимости доставки'
-                                  : '' ?>;</li>
+                            <li>с <?= str_replace(' - ', ' до ', $interval); ?><?= ($interval == $late_interval_delivery)
+                                ? ' + ' . (int)$late_markup_delivery . ' рублей к стоимости доставки'
+                                : '' ?>;</li>
                           <?php endforeach; ?>
                         </ul>
+
                         <p>Мы работаем без выходных, поэтому <strong>доставка осуществляется каждый день.</strong></p>
                         <p>При оформлении срочной доставки “день в день” менеджер согласует с вами удобный интервал доставки.</p>					
                     <!-- </div> -->
