@@ -22,7 +22,6 @@ get_header(); ?>
 
     $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
     $late_interval_delivery = carbon_get_theme_option('late_interval_delivery');
-    echo($late_interval_delivery);
 
     $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
 
@@ -181,7 +180,7 @@ get_header(); ?>
                           <?php foreach ($intervals as $interval): ?>
                             <li>
                               с <?= str_replace(' - ', ' до ', $interval); ?>
-                              <?= ($interval === '18:00 - 21:00' && $late_interval_delivery === '18:00 - 21:00')
+                              <?= ($interval == $late_interval_delivery)
                                   ? ' + ' . (int)$late_markup_delivery . ' рублей к стоимости доставки'
                                   : '' ?>;
                             </li>
