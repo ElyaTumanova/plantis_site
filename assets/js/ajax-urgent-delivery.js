@@ -49,7 +49,7 @@ function getOrderParametrs(event) {
   console.debug(checkedInterval)
 
 
-  if(checkedInterval == '18:00 - 21:00') {
+  if(checkedInterval == '11:00 - 16:00') {
     isLate = '1'
   } else {
     isLate = '0'
