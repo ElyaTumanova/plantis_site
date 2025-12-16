@@ -22,6 +22,7 @@ get_header(); ?>
 
     $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
     $late_interval_delivery = carbon_get_theme_option('late_interval_delivery');
+    echo($late_interval_delivery);
 
     $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
 
