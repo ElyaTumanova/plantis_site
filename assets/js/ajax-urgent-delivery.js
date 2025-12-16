@@ -50,6 +50,7 @@ function getOrderParametrs(event) {
 
 
   if(checkedInterval == '11:00 - 16:00') {
+    console.debug('hello late interval')
     isLate = '1'
   } else {
     isLate = '0'
