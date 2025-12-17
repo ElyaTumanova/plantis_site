@@ -62,6 +62,8 @@ require get_template_directory() . '/includes/ajax-search.php';
 require get_template_directory() . '/includes/metrika.php';
 /** Add Feed xml creation*/
 require get_template_directory() . '/includes/xml/create_xml_task.php';
+/** Add recaptcha*/
+require get_template_directory() . '/includes/wc-recapthca.php';
 
 
 
