@@ -2,9 +2,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-add_action('init', function () {
-    error_log('[MY_RECAPTCHA] FILE LOADED init ' . date('c'));
-});
+// add_action('init', function () {
+//     error_log('[MY_RECAPTCHA] FILE LOADED init ' . date('c'));
+// });
 
 /**
  * === CONFIG ===
