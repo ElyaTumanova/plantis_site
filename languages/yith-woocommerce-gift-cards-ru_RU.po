@@ -6,7 +6,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/yith-woocommerce-"
 "gift-cards.premium\n"
 "POT-Creation-Date: 2025-07-03 11:47:53+00:00\n"
-"PO-Revision-Date: 2025-12-06 14:18+0300\n"
+"PO-Revision-Date: 2025-12-17 10:02+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -2754,7 +2754,7 @@ msgstr ""
 
 #: views/empty-gift-cards-table-state-customer.php:47
 msgid "There are no gift cards to show!"
-msgstr ""
+msgstr "У вас пока нет подарочных сертификатов"
 
 #: views/gift-cards-discount-settings.php:15
 msgid "Add a discount"
