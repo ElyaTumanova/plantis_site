@@ -207,6 +207,13 @@ function plnt_product_gallery( $options ) {
 	return $options;
 };
 
+//размер изображения
+
+add_filter( 'woocommerce_gallery_image_size', function( $size ) {
+  return 'large'; // или 'full', или свой кастомный size
+} );
+
+
 //цена и кнопка в корзину, кнопка в избранное + schema.org
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
