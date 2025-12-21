@@ -36,7 +36,7 @@ $logo = carbon_get_theme_option('logo');
             <li id="menu-item-64593" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64593"><a href="<?php get_site_url()?>/professionalnyj-uhod-za-rasteniyami/">Профессиональный уход за растениями</a></li>
             <li id="menu-item-49186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49186"><a href="<?php get_site_url()?>/pokupka-komnatnyh-rastenij-optom/">Растения оптом</a></li>
             <li id="menu-item-16050" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16050"><a href="<?php get_site_url()?>/landscaping/">Озеленение</a></li>
-            <li id="menu-item-27511" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-27511"><a href="<?php get_site_url()?>/product-category/product_of_week/">Скидки</a></li>
+            <li id="menu-item-27511" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-27511"><a href="<?php get_site_url()?>/product-tag/skidki/">Скидки</a></li>
         </ul>
     </nav>
 </div>
