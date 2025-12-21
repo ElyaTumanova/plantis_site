@@ -113,27 +113,44 @@ function my_recaptcha_v3_verify_token($token){
 /**
  * === 3) Login protection (WordPress auth) ===
  */
+// Вход (ТОЛЬКО WooCommerce формы, не трогаем wp-login.php / админку)
 add_filter('authenticate', function($user, $username, $password){
-	if (is_wp_error($user)) return $user;
 
-	// Иногда authenticate срабатывает не только на фронтовом логине Woo — логируем контекст
-	my_recaptcha_log('authenticate hook fired', [
-		'username' => $username,
-		'has_token' => !empty($_POST['g-recaptcha-response']),
-	]);
+    // если уже ошибка — не мешаем
+    if (is_wp_error($user)) return $user;
 
-	$token = $_POST['g-recaptcha-response'] ?? '';
-	$ok = my_recaptcha_v3_verify_token($token);
+    // 1) Не проверяем вход в админку / wp-login.php
+    // (и вообще любые экраны, где нет вашего JS)
+    if (is_admin() || (isset($GLOBALS['pagenow']) && $GLOBALS['pagenow'] === 'wp-login.php')) {
+        return $user;
+    }
 
-	if (is_wp_error($ok)) {
-		my_recaptcha_log('authenticate blocked', [
-			'error' => $ok->get_error_message(),
-		]);
-		return $ok;
-	}
+    // 2) Проверяем ТОЛЬКО если это WooCommerce login form
+    // Признак Woo-логина: woocommerce-login-nonce присутствует в POST
+    if (empty($_POST['woocommerce-login-nonce'])) {
+        return $user; // не Woo-логин → не вмешиваемся
+    }
 
-	return $user;
+    // 3) Здесь уже точно Woo login → проверяем токен
+    my_recaptcha_log('authenticate (Woo login) fired', [
+        'username'  => $username,
+        'has_token' => !empty($_POST['g-recaptcha-response']),
+    ]);
+
+    $token = $_POST['g-recaptcha-response'] ?? '';
+    $ok = my_recaptcha_v3_verify_token($token);
+
+    if (is_wp_error($ok)) {
+        my_recaptcha_log('authenticate (Woo login) blocked', [
+            'error' => $ok->get_error_message(),
+        ]);
+        return $ok;
+    }
+
+    return $user;
+
 }, 21, 3);
+
 
 /**
  * === 4) Registration protection (WooCommerce) ===
