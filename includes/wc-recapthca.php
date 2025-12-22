@@ -34,20 +34,31 @@ function my_recaptcha_log($msg, $context = []) {
 
 add_action('user_register', function($user_id){
     $user = get_userdata($user_id);
-    $email = $user ? $user->user_email : '';
-    $login = $user ? $user->user_login : '';
 
     error_log('[MY_RECAPTCHA] USER_REGISTER EVENT | ' . wp_json_encode([
-        'user_id'    => $user_id,
-        'login'      => $login,
-        'email'      => $email,
-        'request_uri'=> $_SERVER['REQUEST_URI'] ?? '',
-        'method'     => $_SERVER['REQUEST_METHOD'] ?? '',
-        'referer'    => $_SERVER['HTTP_REFERER'] ?? '',
-        'ua'         => $_SERVER['HTTP_USER_AGENT'] ?? '',
-        'ip'         => $_SERVER['REMOTE_ADDR'] ?? '',
+        'user_id'     => $user_id,
+        'login'       => $user ? $user->user_login : '',
+        'email'       => $user ? $user->user_email : '',
+        'request_uri' => $_SERVER['REQUEST_URI'] ?? '',
+        'method'      => $_SERVER['REQUEST_METHOD'] ?? '',
+        'referer'     => $_SERVER['HTTP_REFERER'] ?? '',
+        'ua'          => $_SERVER['HTTP_USER_AGENT'] ?? '',
+        'ip'          => $_SERVER['REMOTE_ADDR'] ?? '',
     ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
 }, 10, 1);
+
+
+add_filter('wp_mail', function($args){
+    if (!empty($args['subject']) && mb_stripos($args['subject'], 'Регистрация нового пользователя') !== false) {
+        error_log('[MY_RECAPTCHA] WP_MAIL new-user | ' . wp_json_encode([
+            'to'      => $args['to'],
+            'subject' => $args['subject'],
+            'headers' => $args['headers'],
+        ], JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
+    }
+    return $args;
+});
+
 
 
 /**
