@@ -32,6 +32,24 @@ function my_recaptcha_log($msg, $context = []) {
 	error_log('[MY_RECAPTCHA] ' . $msg . $ctx);
 }
 
+add_action('user_register', function($user_id){
+    $user = get_userdata($user_id);
+    $email = $user ? $user->user_email : '';
+    $login = $user ? $user->user_login : '';
+
+    error_log('[MY_RECAPTCHA] USER_REGISTER EVENT | ' . wp_json_encode([
+        'user_id'    => $user_id,
+        'login'      => $login,
+        'email'      => $email,
+        'request_uri'=> $_SERVER['REQUEST_URI'] ?? '',
+        'method'     => $_SERVER['REQUEST_METHOD'] ?? '',
+        'referer'    => $_SERVER['HTTP_REFERER'] ?? '',
+        'ua'         => $_SERVER['HTTP_USER_AGENT'] ?? '',
+        'ip'         => $_SERVER['REMOTE_ADDR'] ?? '',
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+}, 10, 1);
+
+
 /**
  * === 1) Hidden field injection in Woo forms ===
  * Вставляем <input name="g-recaptcha-response"> в формы на /my-account
@@ -156,22 +174,22 @@ add_filter('authenticate', function($user, $username, $password){
  * === 4) Registration protection (WooCommerce) ===
  * Ваш старый хук (оставляем)
  */
-add_action('woocommerce_register_post', function($username, $email, $errors){
-	my_recaptcha_log('woocommerce_register_post fired', [
-		'email' => $email,
-		'has_token' => !empty($_POST['g-recaptcha-response']),
-	]);
+// add_action('woocommerce_register_post', function($username, $email, $errors){
+// 	my_recaptcha_log('woocommerce_register_post fired', [
+// 		'email' => $email,
+// 		'has_token' => !empty($_POST['g-recaptcha-response']),
+// 	]);
 
-	$token = $_POST['g-recaptcha-response'] ?? '';
-	$ok = my_recaptcha_v3_verify_token($token);
+// 	$token = $_POST['g-recaptcha-response'] ?? '';
+// 	$ok = my_recaptcha_v3_verify_token($token);
 
-	if (is_wp_error($ok)) {
-		my_recaptcha_log('woocommerce_register_post blocked', [
-			'error' => $ok->get_error_message(),
-		]);
-		$errors->add($ok->get_error_code(), $ok->get_error_message());
-	}
-}, 10, 3);
+// 	if (is_wp_error($ok)) {
+// 		my_recaptcha_log('woocommerce_register_post blocked', [
+// 			'error' => $ok->get_error_message(),
+// 		]);
+// 		$errors->add($ok->get_error_code(), $ok->get_error_message());
+// 	}
+// }, 10, 3);
 
 /**
  * === 5) Registration protection (универсально через errors filter) ===
