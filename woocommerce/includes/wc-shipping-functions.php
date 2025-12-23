@@ -115,7 +115,6 @@ function plnt_shipping_conditions( $rates, $package ) {
     global $delivery_inMKAD;
     global $delivery_outMKAD;
 
-    global $delivery_courier;
     global $delivery_long_dist;
     global $delivery_pochta;
 
@@ -221,7 +220,7 @@ function plnt_disable_payment_small_order( $available_gateways ) {
     $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
     $isSmallHolidayCart = WC()->cart->subtotal < 5000;
     $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
-    global $delivery_courier;
+
     global $delivery_long_dist;
     global $delivery_pochta;
     global $delivery_inMKAD;
@@ -239,17 +238,6 @@ function plnt_disable_payment_small_order( $available_gateways ) {
     WC()->session->set('is_courier_deliv_flag', '0' );
 
     if (isset($chosen_methods)) {
-      // стоимость товаров в корзине
-      // if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
-      //     unset( $available_gateways['tbank'] ); //to be updated - change to tbank
-      // }
-  
-      
-      // if (WC()->cart->subtotal < $min_medium_delivery && $delivery_courier == $chosen_methods[0]) {
-      //     unset( $available_gateways['tbank'] ); //to be updated - change to tbank
-      // }
-      
-  
       // дальняя доставка
       if ( $delivery_long_dist == $chosen_methods[0]) {
           unset( $available_gateways['tbank'] ); //to be updated - change to tbank

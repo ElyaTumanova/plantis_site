@@ -410,6 +410,21 @@ Contents
     
     }
 
+    // // добавляем в админку флаг доставка по тарифу курьерской службы
+     add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_courier_deliv_flag_field_value', 25 );
+    
+    function plnt_print_courier_deliv_flag_field_value( $order ){
+    
+        $method = get_post_meta( $order->get_id(), '_is_courier_deliv_flag', true );
+    
+        echo '<div class="address">
+            <p' . ( ! $method ? ' class="none_set"' : '' ) . '>
+                <strong>Доставка по тарифу курьерской службы</strong>
+                ' . ( $method ? $method : 'Не указан.' ) . '
+            </p>
+        </div>';
+    }
+
 /*--------------------------------------------------------------
 # Notifications
 --------------------------------------------------------------*/
