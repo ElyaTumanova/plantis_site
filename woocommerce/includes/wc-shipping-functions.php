@@ -236,6 +236,7 @@ function plnt_disable_payment_small_order( $available_gateways ) {
     }
 
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+    WC()->session->set('is_courier_deliv_flag', '0' );
 
     if (isset($chosen_methods)) {
       // стоимость товаров в корзине
@@ -252,6 +253,7 @@ function plnt_disable_payment_small_order( $available_gateways ) {
       // дальняя доставка
       if ( $delivery_long_dist == $chosen_methods[0]) {
           unset( $available_gateways['tbank'] ); //to be updated - change to tbank
+          WC()->session->set('is_courier_deliv_flag', '1' );
       }
 
       // почта России
@@ -260,7 +262,6 @@ function plnt_disable_payment_small_order( $available_gateways ) {
       }
 
       //Срочная доставка по тарифу курьерской службы
-        WC()->session->set('is_courier_deliv_flag', '0' );
 
       if ($delivery_inMKAD == $chosen_methods[0] || $delivery_outMKAD == $chosen_methods[0]) {
         if ($isUrgentCourierTariff && WC()->session->get('isUrgent' ) === '1') {
