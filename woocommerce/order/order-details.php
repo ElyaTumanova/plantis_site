@@ -102,13 +102,13 @@ if ( $show_downloads ) {
                 </div>
                 <?php if($is_courier_tariff == '1'):?>
                   <div class='plnt-order__totals-row'>
-                      <div class='plnt-order__totals-label' scope="row">Доставка:</div>
+                      <div class='plnt-order__totals-label' scope="row">Доставка (<?php echo wp_kses_post( $plnt_order_totals['shipping']['meta'] ); ?>):</div>
                       <div class='plnt-order__totals-value plnt-order__totals-value_delivery'>по тарифу курьерской службы</div>
                   </div>
                 <? else:?> 
                   <?php if(array_key_exists('shipping', $plnt_order_totals)):?>
                     <div class='plnt-order__totals-row'>
-                        <div class='plnt-order__totals-label' scope="row">Доставка:</div>
+                        <div class='plnt-order__totals-label' scope="row">Доставка (<?php echo wp_kses_post( $plnt_order_totals['shipping']['meta'] ); ?>):</div>
                         <div class='plnt-order__totals-value plnt-order__totals-value_delivery'><?php echo wp_kses_post( $plnt_order_totals['shipping']['value'] ); ?></div>
                     </div>
                   <?php endif;?>
