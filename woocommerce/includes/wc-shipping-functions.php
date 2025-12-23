@@ -90,17 +90,16 @@ function plnt_get_urgent_shipping() {
 
 add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods', 10, 1 );
 function plnt_refresh_shipping_methods( $post_data ){
-    // Если хотя бы один из флагов равен '1', сбрасываем кэш способов доставки
-    $has_flag = ( WC()->session->get('isUrgent') === '1' ) || ( WC()->session->get('isLate') === '1' );
+  // Если хотя бы один из флагов равен '1', сбрасываем кэш способов доставки
+  $has_flag = ( WC()->session->get('isUrgent') === '1' ) || ( WC()->session->get('isLate') === '1' );
 
-    $bool = ! $has_flag;
+  $bool = ! $has_flag;
 
-    // Обязательно для корректной перерасчётки способов доставки
-    foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
-        WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
-    }
-
-    WC()->cart->calculate_shipping();
+  // Обязательно для корректной перерасчётки способов доставки
+  foreach ( WC()->cart->get_shipping_packages() as $package_key => $package ){
+      WC()->session->set( 'shipping_for_package_' . $package_key, $bool );
+  }
+  WC()->cart->calculate_shipping();
 }
 
 
@@ -128,12 +127,10 @@ function plnt_shipping_conditions( $rates, $package ) {
     $delivery_markup_in_mkad = 0;
     $delivery_markup_out_mkad = 0;
 
-    // $isUrgentCourierTariff = true;
     $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
     $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
     $isSmallHolidayCart = WC()->cart->subtotal < 5000;
     $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
-    WC()->session->set('is_courier_deliv_flag', '0' );
 
     if ($delivery_murkup) {
       $delivery_markup_in_mkad = $delivery_murkup['in_mkad'];
@@ -164,13 +161,13 @@ function plnt_shipping_conditions( $rates, $package ) {
     }
 
     /* Срочная доставка по тарифу курьерской службы*/
-
     if ($isUrgentCourierTariff) {
       if (WC()->session->get('isUrgent' ) === '1') {
         foreach ($rates as $rate) {
-          $rate->cost = 0;
+          if ($rate->id == $delivery_inMKAD || $rate->id == $delivery_outMKAD){
+              $rate->cost = 0;
+          }
         }
-        WC()->session->set('is_courier_deliv_flag', '0' );
       }
     }
 
@@ -178,10 +175,11 @@ function plnt_shipping_conditions( $rates, $package ) {
     if ($isSmallHolidayTariffOn) {
       if (WC()->session->get('isUrgent' ) === '0') {
         foreach ($rates as $rate) {
-          $rate->cost = 0;
+          if ($rate->id == $delivery_inMKAD || $rate->id == $delivery_outMKAD){
+              $rate->cost = 0;
+          }
         }
       }
-      WC()->session->set('is_courier_deliv_flag', '1' );
     }
 
     /*ПОЧТА РОССИИ*/
@@ -260,13 +258,18 @@ function plnt_disable_payment_small_order( $available_gateways ) {
       if ( $delivery_pochta == $chosen_methods[0]) {
           unset( $available_gateways['tbank'] ); //to be updated - change to tbank
       }
+
+      //Срочная доставка по тарифу курьерской службы
+        WC()->session->set('is_courier_deliv_flag', '0' );
+
       if ($delivery_inMKAD == $chosen_methods[0] || $delivery_outMKAD == $chosen_methods[0]) {
-        //Срочная доставка по тарифу курьерской службы
         if ($isUrgentCourierTariff && WC()->session->get('isUrgent' ) === '1') {
             unset( $available_gateways['tbank'] ); //to be updated - change to tbank
+            WC()->session->set('is_courier_deliv_flag', '1' );
         }
         if ($isSmallHolidayTariffOn && WC()->session->get('isUrgent' ) === '0') {
             unset( $available_gateways['tbank'] ); //to be updated - change to tbank
+            WC()->session->set('is_courier_deliv_flag', '1' );
         }
       }
     }
