@@ -1,6 +1,6 @@
 (function () {
   const CONFIG = {
-    siteKey: window.recaptchaWoo?.siteKey || "6LcP2rIrAAAAAGxrNXEe4AP0rC_fXZ7v7vKVr4wF",
+    siteKey: window.recaptchaWoo?.siteKey || "6LezYTQsAAAAAEzapFcvWQ9w9vAP1uCYtNKXKfXy",
     debug: window.recaptchaWoo?.debug ?? false,
 
     containers: ["#customer_login", ".login-popup", ".register-popup"],

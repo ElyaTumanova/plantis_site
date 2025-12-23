@@ -10,8 +10,10 @@ if ( ! defined('ABSPATH') ) exit;
 /** =======================
  *  CONFIG
  *  ======================= */
-if (!defined('MY_RECAPTCHA_SITE_KEY')) define('MY_RECAPTCHA_SITE_KEY', '6LcP2rIrAAAAAGxrNXEe4AP0rC_fXZ7v7vKVr4wF');
-if (!defined('MY_RECAPTCHA_SECRET'))   define('MY_RECAPTCHA_SECRET',   '6LcP2rIrAAAAAKrpzHfISt0G08fTrh6k6v7C_MLh'); // <-- лучше перевыпустить и вставить новый
+if (!defined('MY_RECAPTCHA_SITE_KEY')) define('MY_RECAPTCHA_SITE_KEY', '6LezYTQsAAAAAEzapFcvWQ9w9vAP1uCYtNKXKfXy');
+if (!defined('MY_RECAPTCHA_SECRET')) {
+    error_log('[MY_RECAPTCHA] FATAL: SECRET NOT DEFINED');
+}
 if (!defined('MY_RECAPTCHA_SCORE'))    define('MY_RECAPTCHA_SCORE',    0.7); // поднимите (у вас боты получали 0.7-0.9)
 if (!defined('MY_RECAPTCHA_DEBUG'))    define('MY_RECAPTCHA_DEBUG',    true);
 
