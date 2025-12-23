@@ -415,12 +415,12 @@ Contents
     
     function plnt_print_courier_deliv_flag_field_value( $order ){
     
-        $method = get_post_meta( $order->get_id(), '_is_courier_deliv_flag', true );
+        $method = get_post_meta( $order->get_id(), '_is_courier_deliv_flag', true ) == '1';
     
         echo '<div class="address">
             <p' . ( ! $method ? ' class="none_set"' : '' ) . '>
                 <strong>Доставка по тарифу курьерской службы</strong>
-                ' . ( $method ? $method : 'Не указан.' ) . '
+                ' . ( $method ? 'Да' : 'Нет' ) . '
             </p>
         </div>';
     }
