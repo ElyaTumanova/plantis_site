@@ -108,19 +108,9 @@ function renderDeliveryDates(shippingValue) {
     info.label.appendChild(priceEl);
       if(shippingValue == DELIVERY.deliveryInMKAD) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(DELIVERY.deliveryCostInMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupInMkad)}₽` : `${Number(DELIVERY.deliveryCostInMkad) + Number(DELIVERY.deliveryMarkupInMkad)}₽` ;
-        // if (isUrgentCourierTariff) {
-        //     if (info.for == `delivery_dates_${today}`) {
-        //         priceEl.innerHTML = 'по тарифу КС';
-        //     }
-        // }
       }
       if(shippingValue == DELIVERY.deliveryOutMKAD) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupOutMkad)}₽` : `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryMarkupOutMkad)}₽` ;
-        // if (isUrgentCourierTariff) {
-        //     if (info.for == `delivery_dates_${today}`) {
-        //         priceEl.innerHTML = 'по тарифу КС';
-        //     }
-        // }
       }
       if (isUrgentCourierTariff) {
           if (info.for == `delivery_dates_${today}`) {
@@ -141,7 +131,7 @@ function renderDeliveryIntervals(shippingValue) {
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
     info.label.appendChild(priceEl);
-      if(shippingValue == DELIVERY.localPickupId || shippingValue == DELIVERY.deliveryFreeId || shippingValue == DELIVERY.deliveryPochtaId ||shippingValue == DELIVERY.deliveryCourierId || shippingValue == DELIVERY.deliveryLongId) {
+      if(shippingValue == DELIVERY.localPickupId || shippingValue == DELIVERY.deliveryFreeId || shippingValue == DELIVERY.deliveryPochtaId ||shippingValue == DELIVERY.deliveryCourierId || shippingValue == DELIVERY.deliveryLongId || isSmallHolidayTariffOn) {
       } else {
         if (isUrgent == '1') {
           priceEl.innerHTML = `+0₽`;
