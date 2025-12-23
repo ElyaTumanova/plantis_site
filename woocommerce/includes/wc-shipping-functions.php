@@ -19,6 +19,7 @@ function plnt_set_initials() {
     }
 
     WC()->session->set('isLate', '0' );
+    WC()->session->set('is_courier_deliv_flag', '0' );
 };
 
 //for dev
@@ -130,6 +131,7 @@ function plnt_shipping_conditions( $rates, $package ) {
     $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
     $isSmallHolidayCart = WC()->cart->subtotal < 5000;
     $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
+    WC()->session->set('is_courier_deliv_flag', '0' );
 
     if ($delivery_murkup) {
       $delivery_markup_in_mkad = $delivery_murkup['in_mkad'];
@@ -166,6 +168,7 @@ function plnt_shipping_conditions( $rates, $package ) {
         foreach ($rates as $rate) {
           $rate->cost = 0;
         }
+        WC()->session->set('is_courier_deliv_flag', '0' );
       }
     }
 
@@ -176,6 +179,7 @@ function plnt_shipping_conditions( $rates, $package ) {
           $rate->cost = 0;
         }
       }
+      WC()->session->set('is_courier_deliv_flag', '1' );
     }
 
     /*ПОЧТА РОССИИ*/
@@ -234,37 +238,52 @@ function plnt_disable_payment_small_order( $available_gateways ) {
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
 
     if (isset($chosen_methods)) {
-        // стоимость товаров в корзине
-        // if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
-        //     unset( $available_gateways['tbank'] ); //to be updated - change to tbank
-        // }
-    
-        
-        // if (WC()->cart->subtotal < $min_medium_delivery && $delivery_courier == $chosen_methods[0]) {
-        //     unset( $available_gateways['tbank'] ); //to be updated - change to tbank
-        // }
-        
-    
-        // дальняя доставка
-        if ( $delivery_long_dist == $chosen_methods[0]) {
-            unset( $available_gateways['tbank'] ); //to be updated - change to tbank
-        }
+      // стоимость товаров в корзине
+      // if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
+      //     unset( $available_gateways['tbank'] ); //to be updated - change to tbank
+      // }
+  
+      
+      // if (WC()->cart->subtotal < $min_medium_delivery && $delivery_courier == $chosen_methods[0]) {
+      //     unset( $available_gateways['tbank'] ); //to be updated - change to tbank
+      // }
+      
+  
+      // дальняя доставка
+      if ( $delivery_long_dist == $chosen_methods[0]) {
+          unset( $available_gateways['tbank'] ); //to be updated - change to tbank
+      }
 
-        // почта России
-        if ( $delivery_pochta == $chosen_methods[0]) {
+      // почта России
+      if ( $delivery_pochta == $chosen_methods[0]) {
+          unset( $available_gateways['tbank'] ); //to be updated - change to tbank
+      }
+      if ($delivery_inMKAD == $chosen_methods[0] || $delivery_outMKAD == $chosen_methods[0]) {
+        //Срочная доставка по тарифу курьерской службы
+        if ($isUrgentCourierTariff && WC()->session->get('isUrgent' ) === '1') {
             unset( $available_gateways['tbank'] ); //to be updated - change to tbank
         }
-        if ($delivery_inMKAD == $chosen_methods[0] || $delivery_outMKAD == $chosen_methods[0]) {
-          //Срочная доставка по тарифу курьерской службы
-          if ($isUrgentCourierTariff && WC()->session->get('isUrgent' ) === '1') {
-              unset( $available_gateways['tbank'] ); //to be updated - change to tbank
-          }
-          if ($isSmallHolidayTariffOn && WC()->session->get('isUrgent' ) === '0') {
-              unset( $available_gateways['tbank'] ); //to be updated - change to tbank
-          }
+        if ($isSmallHolidayTariffOn && WC()->session->get('isUrgent' ) === '0') {
+            unset( $available_gateways['tbank'] ); //to be updated - change to tbank
         }
+      }
     }
 
 
     return $available_gateways;
 }
+
+
+//сохраняем в заказ флаг доставки по тарифу курьерской службы
+
+add_action('woocommerce_checkout_create_order', function( $order, $data ) {
+
+    // Берём из сессии (замени ключ на свой)
+    $value = WC()->session ? WC()->session->get('is_courier_deliv_flag') : null;
+
+    if ( $value !== null && $value !== '' ) {
+        // Сохраняем в мета заказа
+        $order->update_meta_data('_is_courier_deliv_flag', $value);
+    }
+
+}, 20, 2);

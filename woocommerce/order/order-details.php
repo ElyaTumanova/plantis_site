@@ -90,8 +90,10 @@ if ( $show_downloads ) {
         <div class="plnt-order__totals">
             <?php
             $plnt_order_totals = $order->get_order_item_totals();
+            $isCourierTariff = $order->get_meta('_is_courier_deliv_flag', true);
                 echo '<pre>';
                 print_r( $plnt_order_totals );
+                print_r( $isCourierTariff );
                 echo '</pre>';
                 ?> 
                 <div class='plnt-order__totals-row'>
