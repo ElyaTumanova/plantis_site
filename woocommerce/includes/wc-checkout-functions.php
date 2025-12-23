@@ -550,7 +550,6 @@ Contents
             if ((WC()->session->get('isUrgent' ) === '1' && $isUrgentCourierTariff) || (WC()->session->get('isUrgent' ) === '0' && $isSmallHolidayTariffOn)) {
 
             }
-              
               else {
               //Доставка заказов до 1500 рублей
               if (WC()->cart->subtotal < $min_small_delivery) {
