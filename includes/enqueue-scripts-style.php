@@ -26,6 +26,9 @@ if ( ! function_exists( 'ast_scripts' ) ) {
     $delivery_murkup = get_delivery_markup();
 
     $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff');
+    $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
+    $isSmallHolidayCart = WC()->cart->subtotal < 5000;
+    $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
 		// wp_enqueue_script( 'magnific-popup', get_template_directory_uri() .
 		//                                      '/assets/js/jquery.magnific-popup.min.js', array( 'jquery' ), null, true );
 		// wp_enqueue_script( 'owl-script', get_template_directory_uri() .
@@ -65,6 +68,7 @@ if ( ! function_exists( 'ast_scripts' ) ) {
             'isBackorder'           => (bool) $isbackorders,
             'isTreezBackorders'     => (bool) $isTreezBackorders,
             'isUrgentCourierTariff'     => $isUrgentCourierTariff,
+            'isSmallHolidayTariffOn' => $isSmallHolidayTariffOn,
         ]
     );
     

@@ -12,7 +12,8 @@ let checkedInterval = '';
 let today;
 let isUrgentCourierTariff = DELIVERY.isUrgentCourierTariff == '1';
 let deliveryLateInterval = DELIVERY.deliveryLateInterval
-// console.log(deliveryLateInterval);
+let isSmallHolidayTariffOn = DELIVERY.isSmallHolidayTariffOn
+console.log(isSmallHolidayTariffOn);
 
 let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
 let addressFields = document.querySelector('#billing_address_1_field');
