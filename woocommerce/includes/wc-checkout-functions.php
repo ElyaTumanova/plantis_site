@@ -547,7 +547,7 @@ Contents
               }
             }
             
-            if (!(WC()->session->get('isUrgent' ) === '1' && $isUrgentCourierTariff) || !$isSmallHolidayTariffOn) {
+            if (!(WC()->session->get('isUrgent' ) === '1' && $isUrgentCourierTariff) || !(WC()->session->get('isUrgent' ) === '0' && $isSmallHolidayTariffOn)) {
               //Доставка заказов до 1500 рублей
               if (WC()->cart->subtotal < $min_small_delivery) {
                   if(!array_key_exists($delivery_courier,$shipping_costs)) {
