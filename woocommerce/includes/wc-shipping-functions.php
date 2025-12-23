@@ -220,6 +220,8 @@ function plnt_disable_payment_small_order( $available_gateways ) {
     global $delivery_courier;
     global $delivery_long_dist;
     global $delivery_pochta;
+    global $delivery_inMKAD;
+    global $delivery_outMKAD;
 
     if( is_admin() ) {
 		  return $available_gateways;
@@ -252,13 +254,14 @@ function plnt_disable_payment_small_order( $available_gateways ) {
         if ( $delivery_pochta == $chosen_methods[0]) {
             unset( $available_gateways['tbank'] ); //to be updated - change to tbank
         }
-
-        //Срочная доставка по тарифу курьерской службы
-        if ($isUrgentCourierTariff && WC()->session->get('isUrgent' ) === '1') {
-            unset( $available_gateways['tbank'] ); //to be updated - change to tbank
-        }
-        if ($isSmallHolidayTariffOn && WC()->session->get('isUrgent' ) === '0') {
-            unset( $available_gateways['tbank'] ); //to be updated - change to tbank
+        if ($delivery_inMKAD == $chosen_methods[0] || $delivery_outMKAD == $chosen_methods[0]) {
+          //Срочная доставка по тарифу курьерской службы
+          if ($isUrgentCourierTariff && WC()->session->get('isUrgent' ) === '1') {
+              unset( $available_gateways['tbank'] ); //to be updated - change to tbank
+          }
+          if ($isSmallHolidayTariffOn && WC()->session->get('isUrgent' ) === '0') {
+              unset( $available_gateways['tbank'] ); //to be updated - change to tbank
+          }
         }
     }
 
