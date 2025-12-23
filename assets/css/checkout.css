@@ -575,6 +575,8 @@
 
     width: 95px;
     min-height: 28px;
+
+    cursor: pointer;
 }
 
 #additional_delivery_interval_field .woocommerce-input-wrapper label {
@@ -585,7 +587,6 @@
 #dontcallme_field .woocommerce-input-wrapper label {
   width: 100%;  
   min-height: 40px;
-  cursor: pointer;
 }
 
 #delivery_dates_field .woocommerce-input-wrapper label span {
