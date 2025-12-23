@@ -91,10 +91,10 @@ if ( $show_downloads ) {
             <?php
             $plnt_order_totals = $order->get_order_item_totals();
             $is_courier_tariff = $order->get_meta('_is_courier_deliv_flag', true);
-                // echo '<pre>';
-                // print_r( $plnt_order_totals );
-                // print_r( $is_courier_tariff );
-                // echo '</pre>';
+                echo '<pre>';
+                print_r( $plnt_order_totals );
+                print_r( $is_courier_tariff );
+                echo '</pre>';
                 ?> 
                 <div class='plnt-order__totals-row'>
                     <div class='plnt-order__totals-label' scope="row">Итого товары:</div>
