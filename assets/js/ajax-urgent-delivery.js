@@ -112,12 +112,12 @@ function renderDeliveryDates(shippingValue) {
       if(shippingValue == DELIVERY.deliveryOutMKAD) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupOutMkad)}₽` : `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryMarkupOutMkad)}₽` ;
       }
-      if (isUrgentCourierTariff) {
+      if ((shippingValue == DELIVERY.deliveryInMKAD || shippingValue == DELIVERY.deliveryOutMKAD) && isUrgentCourierTariff) {
           if (info.for == `delivery_dates_${today}`) {
               priceEl.innerHTML = 'по тарифу КС';
           }
       }
-      if (isSmallHolidayTariffOn) {
+      if ((shippingValue == DELIVERY.deliveryInMKAD || shippingValue == DELIVERY.deliveryOutMKAD) && isSmallHolidayTariffOn) {
           if (info.for != `delivery_dates_${today}`) {
               priceEl.innerHTML = 'по тарифу КС';
           }
