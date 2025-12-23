@@ -24,7 +24,7 @@ function plnt_set_initials() {
 
 //for dev
 
-//add_action('woocommerce_review_order_before_shipping','plnt_check');
+add_action('woocommerce_review_order_before_shipping','plnt_check');
 //add_action('wp_head','plnt_check');
 
 function plnt_check() {
@@ -61,6 +61,8 @@ function plnt_check() {
 
     $delivery_murkup = get_delivery_markup();
     //print_r ($delivery_murkup);
+
+    echo 'isCourier '.(WC()->session->get('is_courier_deliv_flag' )).'  ';
 
 }
 

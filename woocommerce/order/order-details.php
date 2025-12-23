@@ -33,7 +33,7 @@ if ( ! $order ) {
 	return;
 }
 
-    // echo '<pre>';
+  // echo '<pre>';
 	// print_r( $order_number );
 	// print_r( $order_status );
 	// print_r( $order_date );
@@ -90,21 +90,28 @@ if ( $show_downloads ) {
         <div class="plnt-order__totals">
             <?php
             $plnt_order_totals = $order->get_order_item_totals();
-            $isCourierTariff = $order->get_meta('_is_courier_deliv_flag', true);
+            $is_courier_tariff = $order->get_meta('_is_courier_deliv_flag', true);
                 echo '<pre>';
                 print_r( $plnt_order_totals );
-                print_r( $isCourierTariff );
+                print_r( $is_courier_tariff );
                 echo '</pre>';
                 ?> 
                 <div class='plnt-order__totals-row'>
                     <div class='plnt-order__totals-label' scope="row">Итого товары:</div>
                     <div class='plnt-order__totals-value'><?php echo wp_kses_post( $plnt_order_totals['cart_subtotal']['value'] ); ?></div>
                 </div>
-                <?php if(array_key_exists('shipping', $plnt_order_totals)):?>
+                <?php if($is_courier_tariff == '1'):?>
                   <div class='plnt-order__totals-row'>
                       <div class='plnt-order__totals-label' scope="row">Доставка:</div>
-                      <div class='plnt-order__totals-value plnt-order__totals-value_delivery'><?php echo wp_kses_post( $plnt_order_totals['shipping']['value'] ); ?></div>
+                      <div class='plnt-order__totals-value plnt-order__totals-value_delivery'>по тарифу курьерской службы</div>
                   </div>
+                <? else:?> 
+                  <?php if(array_key_exists('shipping', $plnt_order_totals)):?>
+                    <div class='plnt-order__totals-row'>
+                        <div class='plnt-order__totals-label' scope="row">Доставка:</div>
+                        <div class='plnt-order__totals-value plnt-order__totals-value_delivery'><?php echo wp_kses_post( $plnt_order_totals['shipping']['value'] ); ?></div>
+                    </div>
+                  <?php endif;?>
                 <?php endif;?>
                 <?php if(array_key_exists('yith_gift_cards', $plnt_order_totals)):?>
                   <div class='plnt-order__totals-row'>
