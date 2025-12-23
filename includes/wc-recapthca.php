@@ -1,9 +1,6 @@
 <?php
 /**
  * WooCommerce reCAPTCHA v3 (login/register/checkout) + clean logging
- * Положите в functions.php (дочерней темы) или в свой мини-плагин.
- *
- * ВАЖНО: секретный ключ вы уже светили — лучше перевыпустить ключи в Google.
  */
 if ( ! defined('ABSPATH') ) exit;
 

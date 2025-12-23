@@ -127,6 +127,9 @@ function plnt_shipping_conditions( $rates, $package ) {
 
     // $isUrgentCourierTariff = true;
     $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
+    $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
+    $isSmallHolidayCart = WC()->cart->subtotal < 5000;
+    $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
 
     if ($delivery_murkup) {
       $delivery_markup_in_mkad = $delivery_murkup['in_mkad'];
@@ -165,7 +168,16 @@ function plnt_shipping_conditions( $rates, $package ) {
         }
       }
     }
- 
+
+    /* Доставка по тарифу курьерской службы для маленьких заказов на праздники*/
+    if ($isSmallHolidayTariffOn) {
+      if (WC()->session->get('isUrgent' ) === '0') {
+        foreach ($rates as $rate) {
+          $rate->cost = 0;
+        }
+      }
+    }
+
     /*ПОЧТА РОССИИ*/
     
     if (check_if_large_delivery()) {
@@ -202,30 +214,33 @@ function plnt_disable_payment_small_order( $available_gateways ) {
     $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
     // $isUrgentCourierTariff = true;
     $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
+    $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
+    $isSmallHolidayCart = WC()->cart->subtotal < 5000;
+    $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
     global $delivery_courier;
     global $delivery_long_dist;
     global $delivery_pochta;
 
     if( is_admin() ) {
-		return $available_gateways;
-	}
+		  return $available_gateways;
+	  }
 
     if( is_wc_endpoint_url( 'order-pay' ) ) {
-		return $available_gateways;
-	}
+      return $available_gateways;
+    }
 
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
 
     if (isset($chosen_methods)) {
         // стоимость товаров в корзине
-        if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
-            unset( $available_gateways['tbank'] ); //to be updated - change to tbank
-        }
+        // if (WC()->cart->subtotal < $min_small_delivery && $delivery_courier == $chosen_methods[0]) {
+        //     unset( $available_gateways['tbank'] ); //to be updated - change to tbank
+        // }
     
         
-        if (WC()->cart->subtotal < $min_medium_delivery && $delivery_courier == $chosen_methods[0]) {
-            unset( $available_gateways['tbank'] ); //to be updated - change to tbank
-        }
+        // if (WC()->cart->subtotal < $min_medium_delivery && $delivery_courier == $chosen_methods[0]) {
+        //     unset( $available_gateways['tbank'] ); //to be updated - change to tbank
+        // }
         
     
         // дальняя доставка
@@ -240,6 +255,9 @@ function plnt_disable_payment_small_order( $available_gateways ) {
 
         //Срочная доставка по тарифу курьерской службы
         if ($isUrgentCourierTariff && WC()->session->get('isUrgent' ) === '1') {
+            unset( $available_gateways['tbank'] ); //to be updated - change to tbank
+        }
+        if ($isSmallHolidayTariffOn && WC()->session->get('isUrgent' ) === '0') {
             unset( $available_gateways['tbank'] ); //to be updated - change to tbank
         }
     }

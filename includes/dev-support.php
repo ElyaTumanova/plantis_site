@@ -5,10 +5,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
-//add_action( 'wp_footer', 'plnt_echo_smth' );
+add_action( 'wp_footer', 'plnt_echo_smth' );
 
 
 function plnt_echo_smth() {
+    $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
+    $isSmallHolidayCart = WC()->cart->subtotal <= 5000;
+    $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
+    echo $isSmallHolidayTariffOn;
 }
 
 
