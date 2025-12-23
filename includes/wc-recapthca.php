@@ -1,178 +1,232 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
-add_action('init', function () {
-    error_log('[MY_RECAPTCHA] FILE LOADED init ' . date('c'));
-});
-
 /**
- * === CONFIG ===
- * Те же ключи, что у CF7 v3
+ * WooCommerce reCAPTCHA v3 (login/register/checkout) + clean logging
+ * Положите в functions.php (дочерней темы) или в свой мини-плагин.
+ *
+ * ВАЖНО: секретный ключ вы уже светили — лучше перевыпустить ключи в Google.
  */
+if ( ! defined('ABSPATH') ) exit;
+
+/** =======================
+ *  CONFIG
+ *  ======================= */
 if (!defined('MY_RECAPTCHA_SITE_KEY')) define('MY_RECAPTCHA_SITE_KEY', '6LcP2rIrAAAAAGxrNXEe4AP0rC_fXZ7v7vKVr4wF');
-if (!defined('MY_RECAPTCHA_SECRET'))   define('MY_RECAPTCHA_SECRET',   '6LcP2rIrAAAAAKrpzHfISt0G08fTrh6k6v7C_MLh');
-if (!defined('MY_RECAPTCHA_SCORE'))    define('MY_RECAPTCHA_SCORE',    0.5); // при ложных отказах попробуй 0.3
+if (!defined('MY_RECAPTCHA_SECRET'))   define('MY_RECAPTCHA_SECRET',   '6LcP2rIrAAAAAKrpzHfISt0G08fTrh6k6v7C_MLh'); // <-- лучше перевыпустить и вставить новый
+if (!defined('MY_RECAPTCHA_SCORE'))    define('MY_RECAPTCHA_SCORE',    0.7); // поднимите (у вас боты получали 0.7-0.9)
+if (!defined('MY_RECAPTCHA_DEBUG'))    define('MY_RECAPTCHA_DEBUG',    true);
 
 /**
- * === DEBUG LOG ===
- * Чтобы error_log писал в wp-content/debug.log включите в wp-config.php:
- * define('WP_DEBUG', true);
- * define('WP_DEBUG_LOG', true);
- * define('WP_DEBUG_DISPLAY', false);
+ * Разрешённые action от reCAPTCHA v3.
+ * Сейчас ваш JS в логах отдавал action "woocommerce".
+ * Если поправите JS — добавьте сюда нужные.
  */
-if (!defined('MY_RECAPTCHA_DEBUG')) define('MY_RECAPTCHA_DEBUG', true);
-
-function my_recaptcha_log($msg, $context = []) {
-	if (!MY_RECAPTCHA_DEBUG) return;
-	$ctx = '';
-	if (!empty($context)) {
-		$ctx = ' | ' . wp_json_encode($context, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-	}
-	error_log('[MY_RECAPTCHA] ' . $msg . $ctx);
+if (!defined('MY_RECAPTCHA_ALLOWED_ACTIONS')) {
+    define('MY_RECAPTCHA_ALLOWED_ACTIONS', wp_json_encode([
+        'woocommerce',          // текущий action из вашего JS/CF7-интеграции
+        'woocommerce_submit',
+        'woocommerce_register',
+        'woocommerce_login',
+        'woocommerce_modal',
+        'checkout'
+    ]));
 }
 
-add_action('user_register', function($user_id){
-    $user = get_userdata($user_id);
+/** Rate limit для регистрации (простая защита) */
+if (!defined('MY_RECAPTCHA_REG_LIMIT_MAX'))    define('MY_RECAPTCHA_REG_LIMIT_MAX', 3);      // попыток
+if (!defined('MY_RECAPTCHA_REG_LIMIT_WINDOW')) define('MY_RECAPTCHA_REG_LIMIT_WINDOW', 3600); // секунд
 
-    error_log('[MY_RECAPTCHA] USER_REGISTER EVENT | ' . wp_json_encode([
-        'user_id'     => $user_id,
-        'login'       => $user ? $user->user_login : '',
-        'email'       => $user ? $user->user_email : '',
-        'request_uri' => $_SERVER['REQUEST_URI'] ?? '',
-        'method'      => $_SERVER['REQUEST_METHOD'] ?? '',
-        'referer'     => $_SERVER['HTTP_REFERER'] ?? '',
-        'ua'          => $_SERVER['HTTP_USER_AGENT'] ?? '',
-        'ip'          => $_SERVER['REMOTE_ADDR'] ?? '',
-    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
-}, 10, 1);
+/** =======================
+ *  LOGGING
+ *  ======================= */
+function my_recaptcha_log(string $msg, array $context = []): void {
+    if (!defined('MY_RECAPTCHA_DEBUG') || !MY_RECAPTCHA_DEBUG) return;
 
+    $ctx = $context ? (' | ' . wp_json_encode($context, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)) : '';
+    error_log('[MY_RECAPTCHA] ' . $msg . $ctx);
+}
 
-add_filter('wp_mail', function($args){
-    if (!empty($args['subject']) && mb_stripos($args['subject'], 'Регистрация нового пользователя') !== false) {
-        error_log('[MY_RECAPTCHA] WP_MAIL new-user | ' . wp_json_encode([
-            'to'      => $args['to'],
-            'subject' => $args['subject'],
-            'headers' => $args['headers'],
-        ], JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
+/** Опциональный "пинг" для проверки, что код грузится (не спамим) */
+add_action('init', function () {
+    static $once = false;
+    if ($once) return;
+    $once = true;
+    my_recaptcha_log('FILE LOADED', ['time_utc' => gmdate('c')]);
+}, 1);
+
+/** =======================
+ *  HELPERS
+ *  ======================= */
+function my_recaptcha_ip(): string {
+    return $_SERVER['REMOTE_ADDR'] ?? '';
+}
+
+function my_recaptcha_allowed_hosts(): array {
+    $host = parse_url(home_url(), PHP_URL_HOST);
+    return array_values(array_filter(array_unique([$host])));
+}
+
+function my_recaptcha_allowed_actions(): array {
+    $raw = MY_RECAPTCHA_ALLOWED_ACTIONS;
+    $arr = json_decode($raw, true);
+    return is_array($arr) ? $arr : ['woocommerce'];
+}
+
+/** простейший rate-limit по IP */
+function my_recaptcha_rate_limit_ok(string $bucket, int $max, int $window_sec): bool {
+    $ip = my_recaptcha_ip();
+    if (!$ip) return true;
+
+    $key = 'my_rc_rl_' . md5($bucket . '|' . $ip);
+    $cnt = (int) get_transient($key);
+    $cnt++;
+    set_transient($key, $cnt, $window_sec);
+
+    return $cnt <= $max;
+}
+//Сделайте строгую проверку action по месту (login/register/checkout)
+function my_recaptcha_expect_action(string $expected, string $purpose = '') {
+    $posted = (string)($_POST['g-recaptcha-action'] ?? '');
+    if ($posted === '') {
+        my_recaptcha_log('Missing posted action', ['purpose' => $purpose]);
+        return new WP_Error('captcha_error', __('Ошибка reCAPTCHA: отсутствует action.', 'woocommerce'));
     }
-    return $args;
-});
-
-
-
-/**
- * === 1) Hidden field injection in Woo forms ===
- * Вставляем <input name="g-recaptcha-response"> в формы на /my-account
- */
-add_action('woocommerce_login_form', function () {
-	echo '<input type="hidden" name="g-recaptcha-response" value="">';
-});
-
-add_action('woocommerce_register_form', function () {
-	echo '<input type="hidden" name="g-recaptcha-response" value="">';
-});
-
-// (Опционально, но полезно) На checkout тоже может создаваться аккаунт
-add_action('woocommerce_checkout_before_customer_details', function () {
-	echo '<input type="hidden" name="g-recaptcha-response" value="">';
-});
-
-/**
- * === 2) Server-side verify ===
- */
-function my_recaptcha_v3_verify_token($token){
-	if (empty($token)) {
-		return new WP_Error('captcha_error', __('Ошибка reCAPTCHA: пустой токен.', 'woocommerce'));
-	}
-
-	$res = wp_remote_post('https://www.google.com/recaptcha/api/siteverify', [
-		'body' => [
-			'secret'   => MY_RECAPTCHA_SECRET,
-			'response' => sanitize_text_field($token),
-			'remoteip' => $_SERVER['REMOTE_ADDR'] ?? '',
-		],
-		'timeout' => 10,
-	]);
-
-	if (is_wp_error($res)) {
-		return new WP_Error('captcha_error', __('Ошибка reCAPTCHA: сбой соединения.', 'woocommerce'));
-	}
-
-	$raw  = wp_remote_retrieve_body($res);
-	$body = json_decode($raw, true);
-
-	if (!is_array($body)) {
-		my_recaptcha_log('Bad JSON from Google', ['raw' => $raw]);
-		return new WP_Error('captcha_error', __('Ошибка reCAPTCHA: некорректный ответ проверки.', 'woocommerce'));
-	}
-
-	// DEBUG: логируем ответ (без токена)
-	my_recaptcha_log('Google response', [
-		'success'  => $body['success'] ?? null,
-		'score'    => $body['score'] ?? null,
-		'action'   => $body['action'] ?? null,
-		'hostname' => $body['hostname'] ?? null,
-		'errors'   => $body['error-codes'] ?? null,
-	]);
-
-	if (empty($body['success'])) {
-		return new WP_Error('captcha_error', __('Ошибка reCAPTCHA: проверка не пройдена.', 'woocommerce'));
-	}
-
-	// score (v3)
-	$score = isset($body['score']) ? (float)$body['score'] : 0.0;
-	if ($score < (float)MY_RECAPTCHA_SCORE) {
-		return new WP_Error('captcha_error', __('Ошибка reCAPTCHA: подозрительная активность.', 'woocommerce'));
-	}
-
-	// hostname (рекомендуется)
-	$allowed_hosts = [
-		parse_url(home_url(), PHP_URL_HOST),
-	];
-	$allowed_hosts = array_filter(array_unique($allowed_hosts));
-
-	if (!empty($body['hostname']) && !in_array($body['hostname'], $allowed_hosts, true)) {
-		return new WP_Error('captcha_error', __('Ошибка reCAPTCHA: неверный домен.', 'woocommerce'));
-	}
-
-	return true;
+    if ($posted !== $expected) {
+        my_recaptcha_log('Posted action mismatch', [
+            'purpose'   => $purpose,
+            'expected'  => $expected,
+            'posted'    => $posted,
+        ]);
+        return new WP_Error('captcha_error', __('Ошибка reCAPTCHA: неверный action.', 'woocommerce'));
+    }
+    return true;
 }
 
+
+/** =======================
+ *  1) Hidden field injection
+ *  ======================= */
+add_action('woocommerce_login_form', function () {
+    echo '<input type="hidden" name="g-recaptcha-response" value="">';
+    echo '<input type="hidden" name="g-recaptcha-action" value="">';
+});
+add_action('woocommerce_register_form', function () {
+    echo '<input type="hidden" name="g-recaptcha-response" value="">';
+    echo '<input type="hidden" name="g-recaptcha-action" value="">';
+});
+
 /**
- * === 3) Login protection (WordPress auth) ===
+ * На checkout поле лучше вставлять в саму форму, но этот хук хотя бы добавит в разметку.
+ * Если у вас есть кастомный checkout, и поле уже есть — можете убрать.
  */
-// Вход (ТОЛЬКО WooCommerce формы, не трогаем wp-login.php / админку)
+add_action('woocommerce_checkout_before_customer_details', function () {
+    echo '<input type="hidden" name="g-recaptcha-response" value="">';
+    echo '<input type="hidden" name="g-recaptcha-action" value="">';
+});
+
+/** =======================
+ *  2) Server-side verify
+ *  ======================= */
+function my_recaptcha_v3_verify_token(string $token, string $purpose = '') {
+    $token = trim((string)$token);
+    if ($token === '') {
+        return new WP_Error('captcha_error', __('Ошибка reCAPTCHA: пустой токен.', 'woocommerce'));
+    }
+
+    $res = wp_remote_post('https://www.google.com/recaptcha/api/siteverify', [
+        'timeout' => 10,
+        'body' => [
+            'secret'   => MY_RECAPTCHA_SECRET,
+            'response' => sanitize_text_field($token),
+            'remoteip' => my_recaptcha_ip(),
+        ],
+    ]);
+
+    if (is_wp_error($res)) {
+        my_recaptcha_log('Google request error', ['purpose' => $purpose, 'err' => $res->get_error_message()]);
+        return new WP_Error('captcha_error', __('Ошибка reCAPTCHA: сбой соединения.', 'woocommerce'));
+    }
+
+    $raw  = wp_remote_retrieve_body($res);
+    $body = json_decode($raw, true);
+
+    $posted_action = (string)($_POST['g-recaptcha-action'] ?? '');
+    if (!empty($body['action']) && $posted_action !== '' && $body['action'] !== $posted_action) {
+        return new WP_Error('captcha_error', __('Ошибка reCAPTCHA: action не совпадает.', 'woocommerce'));
+    }
+
+    if (!is_array($body)) {
+        my_recaptcha_log('Bad JSON from Google', ['purpose' => $purpose, 'raw' => $raw]);
+        return new WP_Error('captcha_error', __('Ошибка reCAPTCHA: некорректный ответ проверки.', 'woocommerce'));
+    }
+
+    my_recaptcha_log('Google response', [
+        'purpose'  => $purpose,
+        'success'  => $body['success'] ?? null,
+        'score'    => $body['score'] ?? null,
+        'action'   => $body['action'] ?? null,
+        'hostname' => $body['hostname'] ?? null,
+        'errors'   => $body['error-codes'] ?? null,
+    ]);
+
+    if (empty($body['success'])) {
+        return new WP_Error('captcha_error', __('Ошибка reCAPTCHA: проверка не пройдена.', 'woocommerce'));
+    }
+
+    // action check (v3)
+    if (!empty($body['action'])) {
+        $allowed = my_recaptcha_allowed_actions();
+        if (!in_array($body['action'], $allowed, true)) {
+            return new WP_Error('captcha_error', __('Ошибка reCAPTCHA: неверный action.', 'woocommerce'));
+        }
+    }
+
+    // score check
+    $score = isset($body['score']) ? (float)$body['score'] : 0.0;
+    if ($score < (float)MY_RECAPTCHA_SCORE) {
+        return new WP_Error('captcha_error', __('Ошибка reCAPTCHA: подозрительная активность.', 'woocommerce'));
+    }
+
+    // hostname check (рекомендуется)
+    if (!empty($body['hostname'])) {
+        $allowed_hosts = my_recaptcha_allowed_hosts();
+        if (!in_array($body['hostname'], $allowed_hosts, true)) {
+            return new WP_Error('captcha_error', __('Ошибка reCAPTCHA: неверный домен.', 'woocommerce'));
+        }
+    }
+
+    return true;
+}
+
+/** =======================
+ *  3) Login protection (только Woo login)
+ *  ======================= */
 add_filter('authenticate', function($user, $username, $password){
 
-    // если уже ошибка — не мешаем
     if (is_wp_error($user)) return $user;
 
-    // 1) Не проверяем вход в админку / wp-login.php
-    // (и вообще любые экраны, где нет вашего JS)
+    // Не трогаем wp-login.php и админку
     if (is_admin() || (isset($GLOBALS['pagenow']) && $GLOBALS['pagenow'] === 'wp-login.php')) {
         return $user;
     }
 
-    // 2) Проверяем ТОЛЬКО если это WooCommerce login form
-    // Признак Woo-логина: woocommerce-login-nonce присутствует в POST
+    // Только Woo login form (по nonce)
     if (empty($_POST['woocommerce-login-nonce'])) {
-        return $user; // не Woo-логин → не вмешиваемся
+        return $user;
     }
 
-    // 3) Здесь уже точно Woo login → проверяем токен
     my_recaptcha_log('authenticate (Woo login) fired', [
-        'username'  => $username,
+        'username'  => (string)$username,
         'has_token' => !empty($_POST['g-recaptcha-response']),
     ]);
 
-    $token = $_POST['g-recaptcha-response'] ?? '';
-    $ok = my_recaptcha_v3_verify_token($token);
+    $act_ok = my_recaptcha_expect_action('woocommerce_login', 'woo_login');
+    if (is_wp_error($act_ok)) return $act_ok;
+
+
+    $ok = my_recaptcha_v3_verify_token((string)($_POST['g-recaptcha-response'] ?? ''), 'woo_login');
 
     if (is_wp_error($ok)) {
-        my_recaptcha_log('authenticate (Woo login) blocked', [
-            'error' => $ok->get_error_message(),
-        ]);
+        my_recaptcha_log('authenticate (Woo login) blocked', ['error' => $ok->get_error_message()]);
         return $ok;
     }
 
@@ -180,76 +234,91 @@ add_filter('authenticate', function($user, $username, $password){
 
 }, 21, 3);
 
-
-/**
- * === 4) Registration protection (WooCommerce) ===
- * Ваш старый хук (оставляем)
- */
-// add_action('woocommerce_register_post', function($username, $email, $errors){
-// 	my_recaptcha_log('woocommerce_register_post fired', [
-// 		'email' => $email,
-// 		'has_token' => !empty($_POST['g-recaptcha-response']),
-// 	]);
-
-// 	$token = $_POST['g-recaptcha-response'] ?? '';
-// 	$ok = my_recaptcha_v3_verify_token($token);
-
-// 	if (is_wp_error($ok)) {
-// 		my_recaptcha_log('woocommerce_register_post blocked', [
-// 			'error' => $ok->get_error_message(),
-// 		]);
-// 		$errors->add($ok->get_error_code(), $ok->get_error_message());
-// 	}
-// }, 10, 3);
-
-/**
- * === 5) Registration protection (универсально через errors filter) ===
- * Это часто “надежнее”, чем woocommerce_register_post, и ловит больше кейсов.
- */
+/** =======================
+ *  4) Registration protection (Woo)
+ *  ======================= */
 add_filter('woocommerce_process_registration_errors', function($errors, $username, $email){
-	my_recaptcha_log('woocommerce_process_registration_errors fired', [
-		'email' => $email,
-		'has_token' => !empty($_POST['g-recaptcha-response']),
-	]);
 
-	$token = $_POST['g-recaptcha-response'] ?? '';
-	$ok = my_recaptcha_v3_verify_token($token);
+    // rate-limit (на попытки регистрации)
+    if (!my_recaptcha_rate_limit_ok('register', (int)MY_RECAPTCHA_REG_LIMIT_MAX, (int)MY_RECAPTCHA_REG_LIMIT_WINDOW)) {
+        $errors->add('captcha_error', __('Слишком много попыток регистрации. Попробуйте позже.', 'woocommerce'));
+        my_recaptcha_log('registration rate-limited', ['ip' => my_recaptcha_ip()]);
+        return $errors;
+    }
 
-	if (is_wp_error($ok)) {
-		my_recaptcha_log('woocommerce_process_registration_errors blocked', [
-			'error' => $ok->get_error_message(),
-		]);
-		$errors->add($ok->get_error_code(), $ok->get_error_message());
-	}
+    my_recaptcha_log('woocommerce_process_registration_errors fired', [
+        'email_arg'  => (string)$email,
+        'email_post' => (string)($_POST['email'] ?? ''),
+        'has_token'  => !empty($_POST['g-recaptcha-response']),
+    ]);
 
-	return $errors;
+    $act_ok = my_recaptcha_expect_action('woocommerce_register', 'woo_register');
+    if (is_wp_error($act_ok)) {
+        $errors->add($act_ok->get_error_code(), $act_ok->get_error_message());
+        return $errors;
+    }
+
+    $ok = my_recaptcha_v3_verify_token((string)($_POST['g-recaptcha-response'] ?? ''), 'woo_register');
+
+    if (is_wp_error($ok)) {
+        my_recaptcha_log('woocommerce_process_registration_errors blocked', ['error' => $ok->get_error_message()]);
+        $errors->add($ok->get_error_code(), $ok->get_error_message());
+    }
+
+    return $errors;
 }, 10, 3);
 
-/**
- * === 6) Checkout protection (если аккаунт создаётся при оформлении) ===
- */
+/** =======================
+ *  5) Checkout protection (если аккаунт создаётся при оформлении)
+ *  ======================= */
 add_action('woocommerce_checkout_process', function(){
-	// Уже залогинен — не проверяем
-	if (is_user_logged_in()) return;
 
-	$creating_account =
-		!empty($_POST['createaccount']) ||
-		(function_exists('WC') && WC()->checkout() && WC()->checkout()->is_registration_required());
+    if (is_user_logged_in()) return;
 
-	my_recaptcha_log('woocommerce_checkout_process fired', [
-		'creating_account' => $creating_account,
-		'has_token' => !empty($_POST['g-recaptcha-response']),
-	]);
+    $creating_account =
+        !empty($_POST['createaccount']) ||
+        (function_exists('WC') && WC()->checkout() && WC()->checkout()->is_registration_required());
 
-	if (!$creating_account) return;
+    my_recaptcha_log('woocommerce_checkout_process fired', [
+        'creating_account' => (bool)$creating_account,
+        'has_token'        => !empty($_POST['g-recaptcha-response']),
+    ]);
 
-	$token = $_POST['g-recaptcha-response'] ?? '';
-	$ok = my_recaptcha_v3_verify_token($token);
+    if (!$creating_account) return;
 
-	if (is_wp_error($ok)) {
-		my_recaptcha_log('checkout blocked', [
-			'error' => $ok->get_error_message(),
-		]);
-		wc_add_notice($ok->get_error_message(), 'error');
-	}
+    // отдельный rate-limit на чек-аут регистрации
+    if (!my_recaptcha_rate_limit_ok('checkout_register', 5, 3600)) {
+        wc_add_notice(__('Слишком много попыток. Попробуйте позже.', 'woocommerce'), 'error');
+        my_recaptcha_log('checkout rate-limited', ['ip' => my_recaptcha_ip()]);
+        return;
+    }
+
+    $expected = 'checkout'; // или 'woocommerce_register' если вы так решите
+    $act_ok = my_recaptcha_expect_action($expected, 'checkout_register');
+    if (is_wp_error($act_ok)) {
+        wc_add_notice($act_ok->get_error_message(), 'error');
+        return;
+    }
+
+
+    $ok = my_recaptcha_v3_verify_token((string)($_POST['g-recaptcha-response'] ?? ''), 'checkout_register');
+
+    if (is_wp_error($ok)) {
+        my_recaptcha_log('checkout blocked', ['error' => $ok->get_error_message()]);
+        wc_add_notice($ok->get_error_message(), 'error');
+    }
+});
+
+/** =======================
+ *  6) Diagnostics: log real WP new-user mail (optional)
+ *  ======================= */
+add_filter('wp_mail', function($args){
+    $subject = $args['subject'] ?? '';
+    if ($subject && mb_stripos($subject, 'Регистрация нового пользователя') !== false) {
+        my_recaptcha_log('WP_MAIL new-user', [
+            'to'      => is_array($args['to'] ?? null) ? implode(',', $args['to']) : ($args['to'] ?? ''),
+            'subject' => $subject,
+        ]);
+    }
+    return $args;
 });

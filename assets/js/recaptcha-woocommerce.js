@@ -1,126 +1,156 @@
 (function () {
-  // ===== CONFIG =====
   const CONFIG = {
     siteKey: window.recaptchaWoo?.siteKey || "6LcP2rIrAAAAAGxrNXEe4AP0rC_fXZ7v7vKVr4wF",
     debug: window.recaptchaWoo?.debug ?? false,
-    // Контейнеры, внутри которых могут появляться формы:
-    containers: [
-      "#customer_login",           // /my-account
-      ".login-popup",              // попап входа
-      ".register-popup"            // попап регистрации
-    ],
+
+    containers: ["#customer_login", ".login-popup", ".register-popup"],
+
     formSelectors: [
       "form.woocommerce-form-login.login",
       "form.woocommerce-form-register.register",
       "form.woocommerce-form.lost_reset_password"
     ],
-    tokenTtlMs: 100 * 1000,        // считаем токен «свежим» 100 сек (~< 2 мин жизни)
+
+    tokenTtlMs: 100 * 1000,
+
     actions: {
       idle: "woocommerce",
-      submit: "woocommerce_submit",
-      modal: "woocommerce_modal"
+      modal: "woocommerce_modal",
+      login: "woocommerce_login",
+      register: "woocommerce_register",
+      lost: "woocommerce_lost_password"
     }
   };
 
   const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel));
-  const getForms = (root) =>
-    CONFIG.formSelectors.map(s => $$(s, root)).flat();
-
+  const getForms = (root) => CONFIG.formSelectors.map(s => $$(s, root)).flat();
   const log = (...args) => { if (CONFIG.debug) console.log("[reCAPTCHA]", ...args); };
 
-  // --- кэш токена ---
+  // Кэш токенов ПО ACTION (чтобы не мешались login/register)
   const TokenCache = {
-    token: null,
-    action: null,
-    ts: 0,
-    fresh() {
-      return this.token && (Date.now() - this.ts) < CONFIG.tokenTtlMs;
+    map: new Map(), // action -> {token, ts}
+    fresh(action) {
+      const v = this.map.get(action);
+      return v && (Date.now() - v.ts) < CONFIG.tokenTtlMs;
     },
-    set(token, action) {
-      this.token = token; this.action = action; this.ts = Date.now();
+    get(action) {
+      return this.map.get(action)?.token || null;
     },
-    get() { return this.token; }
+    set(action, token) {
+      this.map.set(action, { token, ts: Date.now() });
+    }
   };
 
-  // --- безопасный execute с ожиданием готовности ---
-  let running = false; // защита от гонок
+  // защита от гонок по action
+  const runningByAction = new Map();
+
   function obtainToken(action, cb) {
     const run = () => {
-      if (running) { // сливаем частые повторы
-        log("⏳ execute уже идёт, пропускаем дубликат");
+      if (runningByAction.get(action)) {
+        log("⏳ execute уже идёт для action:", action);
         return;
       }
-      running = true;
-      grecaptcha.execute(CONFIG.siteKey, { action }).then(token => {
-        TokenCache.set(token, action);
-        log(`✅ token(${action}) получен`);
-        running = false;
-        cb && cb(token);
-      }).catch(err => {
-        running = false;
-        log("❌ ошибка execute:", err);
-      });
+      runningByAction.set(action, true);
+
+      grecaptcha.execute(CONFIG.siteKey, { action })
+        .then(token => {
+          TokenCache.set(action, token);
+          runningByAction.set(action, false);
+          log(`✅ token(${action}) получен`);
+          cb && cb(token);
+        })
+        .catch(err => {
+          runningByAction.set(action, false);
+          log("❌ execute error:", action, err);
+        });
     };
 
     if (window.grecaptcha && typeof grecaptcha.ready === "function") {
       grecaptcha.ready(run);
     } else {
-      // редкий случай: api.js ещё не готов
       let tries = 0;
       const t = setInterval(() => {
         if (window.grecaptcha && typeof grecaptcha.ready === "function") {
           clearInterval(t); grecaptcha.ready(run);
-        } else if (++tries > 75) { clearInterval(t); log("⛔ не дождались grecaptcha"); }
+        } else if (++tries > 75) {
+          clearInterval(t);
+          log("⛔ не дождались grecaptcha");
+        }
       }, 200);
     }
   }
 
-  function ensureHiddenInput(form) {
+  function ensureHiddenInputs(form) {
+    // token
     if (!form.querySelector('input[name="g-recaptcha-response"]')) {
       const inp = document.createElement("input");
       inp.type = "hidden";
       inp.name = "g-recaptcha-response";
       form.appendChild(inp);
-      log("＋ добавили скрытое поле", form);
+      log("＋ добавили g-recaptcha-response", form);
+    }
+    // action
+    if (!form.querySelector('input[name="g-recaptcha-action"]')) {
+      const inp = document.createElement("input");
+      inp.type = "hidden";
+      inp.name = "g-recaptcha-action";
+      form.appendChild(inp);
+      log("＋ добавили g-recaptcha-action", form);
     }
   }
 
-  function setTokenToForms(token, root) {
-    getForms(root || document).forEach(f => {
-      const inp = f.querySelector('input[name="g-recaptcha-response"]');
-      if (inp) inp.value = token;
-    });
+  function formAction(form) {
+    if (form.matches('form.woocommerce-form-login.login')) return CONFIG.actions.login;
+    if (form.matches('form.woocommerce-form-register.register')) return CONFIG.actions.register;
+    if (form.matches('form.woocommerce-form.lost_reset_password')) return CONFIG.actions.lost;
+    return CONFIG.actions.idle;
   }
 
-  // --- подготовка конкретной формы (лениво при первом взаимодействии) ---
+  function setTokenToForm(form, token, action) {
+    const tokenInp = form.querySelector('input[name="g-recaptcha-response"]');
+    const actInp = form.querySelector('input[name="g-recaptcha-action"]');
+    if (tokenInp) tokenInp.value = token;
+    if (actInp) actInp.value = action;
+  }
+
+  function warmUpVisibleForms() {
+    const visible = getForms(document).filter(f => f.offsetParent !== null);
+    if (!visible.length) return;
+    // прогрев idle токена (не для сабмита, просто чтобы google "видел" активность)
+    obtainToken(CONFIG.actions.idle, () => {});
+  }
+
   function prepareForm(form) {
     if (form.__recaptchaPrepared) return;
-    ensureHiddenInput(form);
 
-    // При первом фокусе на любом поле — если нет свежего токена, запросим
-    const focusHandler = () => {
-      if (!TokenCache.fresh()) {
-        log("👀 первый фокус → берём token(idle)");
-        obtainToken(CONFIG.actions.idle, (t) => setTokenToForms(t, form));
+    ensureHiddenInputs(form);
+
+    const act = formAction(form);
+
+    // При первом фокусе — возьмём токен именно под эту форму (login/register/lost)
+    form.addEventListener("focusin", () => {
+      if (!TokenCache.fresh(act)) {
+        log("👀 focus → берём token для", act);
+        obtainToken(act, (t) => setTokenToForm(form, t, act));
       }
-      form.removeEventListener("focusin", focusHandler);
-    };
-    form.addEventListener("focusin", focusHandler, { once: true });
+    }, { once: true });
 
-    // Перед сабмитом — гарантированно свежий токен
+    // На submit — гарантированно свежий токен под конкретный action
     form.addEventListener("submit", (e) => {
-      if (TokenCache.fresh()) {
-        const t = TokenCache.get();
-        setTokenToForms(t, form);
-        log("🚀 submit с кэшированным token");
-        return; // используем свежий кэш
+      const action = formAction(form);
+
+      if (TokenCache.fresh(action)) {
+        const t = TokenCache.get(action);
+        setTokenToForm(form, t, action);
+        log("🚀 submit с кэшированным token:", action);
+        return;
       }
-      // если токен протух — синхронно получим новый и дадим форме отправиться чуть позже
+
       e.preventDefault();
-      log("♻️ submit → токен просрочен, обновляем");
-      obtainToken(CONFIG.actions.submit, (t) => {
-        setTokenToForms(t, form);
-        // повторно сабмитим после установки токена
+      log("♻️ submit → обновляем token:", action);
+
+      obtainToken(action, (t) => {
+        setTokenToForm(form, t, action);
         form.submit();
       });
     }, true);
@@ -128,20 +158,20 @@
     form.__recaptchaPrepared = true;
   }
 
-  // --- инициализация внутри контейнера ---
   function initIn(root) {
     getForms(root).forEach(prepareForm);
   }
 
-  // --- наблюдаем только за нужными контейнерами, без total-subtree ---
   function setupObservers() {
     CONFIG.containers.forEach(sel => {
       $$(sel).forEach(container => {
-        initIn(container); // на всякий случай
+        initIn(container);
+
         const obs = new MutationObserver((muts) => {
           let changed = false;
+
           muts.forEach(m => {
-            if (m.type === "childList" && m.addedNodes && m.addedNodes.length) {
+            if (m.type === "childList" && m.addedNodes?.length) {
               m.addedNodes.forEach(n => {
                 if (n.nodeType === 1 && (n.matches?.("form") || n.querySelector?.("form"))) {
                   changed = true;
@@ -152,38 +182,34 @@
               if (container.classList.contains("popup_active")) changed = true;
             }
           });
+
           if (changed) {
-            log("🔎 обнаружены изменения в контейнере:", container);
+            log("🔎 изменения в контейнере:", container);
             initIn(container);
-            // при открытии попапа — если токен старый, обновим
-            if (!TokenCache.fresh()) {
-              obtainToken(CONFIG.actions.modal, (t) => setTokenToForms(t, container));
-            }
+            // при открытии попапа — лёгкий прогрев
+            obtainToken(CONFIG.actions.modal, () => {});
           }
         });
-        obs.observe(container, { childList: true, subtree: true, attributes: true, attributeFilter: ["class"] });
+
+        obs.observe(container, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ["class"]
+        });
       });
     });
   }
 
-  // --- старт ---
   document.addEventListener("DOMContentLoaded", () => {
-    log("🌐 DOM готов (lite)");
-    // Ленивая подготовка: только найденные контейнеры
+    log("🌐 DOM готов");
     CONFIG.containers.forEach(sel => $$(sel).forEach(initIn));
     setupObservers();
+    warmUpVisibleForms();
 
-    // Если страница уже содержит видимую форму — «прогреем» токен один раз по idle
-    const hasVisibleForm = getForms(document).some(f => f.offsetParent !== null);
-    if (hasVisibleForm) {
-      obtainToken(CONFIG.actions.idle, (t) => setTokenToForms(t));
-    }
-
-    // Пауза, если вкладка неактивна
     document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "visible" && !TokenCache.fresh()) {
-        log("👁 вкладка активировалась → обновим token");
-        obtainToken(CONFIG.actions.idle, (t) => setTokenToForms(t));
+      if (document.visibilityState === "visible") {
+        warmUpVisibleForms();
       }
     });
   });
