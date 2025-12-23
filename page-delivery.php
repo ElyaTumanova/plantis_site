@@ -24,6 +24,7 @@ get_header(); ?>
     $late_interval_delivery = carbon_get_theme_option('late_interval_delivery');
 
     $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
+    $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
 
     $shipping_costs = plnt_get_shiping_costs();
 
@@ -65,6 +66,9 @@ get_header(); ?>
                                 <li>за пределы МКАД (до 5 км) — от <?php echo $out_mkad ?> рублей;</li>
                                 <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
                             </ul>
+                        <?php if($isHolidayCourierTariff):?>
+                            <p>В связи с высокой загрузкой курьеров в праздничные дни заказы стоимостью до 5000 руб доставляются по тарифу курьерской службы. </p>
+                        <?php endif;?>
                         <p><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
                         <?php if($isUrgentCourierTariff):?>
                             <p>осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</p>
