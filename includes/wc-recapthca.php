@@ -45,12 +45,12 @@ function my_recaptcha_log(string $msg, array $context = []): void {
 }
 
 /** Опциональный "пинг" для проверки, что код грузится (не спамим) */
-add_action('init', function () {
-    static $once = false;
-    if ($once) return;
-    $once = true;
-    my_recaptcha_log('FILE LOADED', ['time_utc' => gmdate('c')]);
-}, 1);
+// add_action('init', function () {
+//     static $once = false;
+//     if ($once) return;
+//     $once = true;
+//     my_recaptcha_log('FILE LOADED', ['time_utc' => gmdate('c')]);
+// }, 1);
 
 /** =======================
  *  HELPERS
