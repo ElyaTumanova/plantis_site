@@ -307,6 +307,7 @@ class GiftFormValidation extends FormsValidation {
     })
 
     this.amountInput.addEventListener('input', (evt)=> this.amountMask(evt.target))
+    this.amountInput.addEventListener('blur', (evt)=> this.updateAmount(evt.target.value))
   }
 
   initDom () {
