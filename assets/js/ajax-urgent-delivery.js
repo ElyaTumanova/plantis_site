@@ -366,7 +366,9 @@ function disableNotWorkingDays () {
 
 if (checkoutForm) {
 
-  setInitalState();
+  setInitalState()
+
+  console.log(getCheckedDate())
 
   document.addEventListener('DOMContentLoaded', getDatesIntervalsInfo )
 

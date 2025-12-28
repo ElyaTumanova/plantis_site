@@ -595,6 +595,7 @@
 #additional_delivery_interval_field .woocommerce-input-wrapper label {
   width: 100%;  
   /* min-width: 115px; */
+  /* max-width: 137px; */
 }
 
 #dontcallme_field .woocommerce-input-wrapper label {
