@@ -61,8 +61,6 @@ function getOrderParametrs(event) {
     isLate = '0'
   }
 
-
-
   console.debug('isUrgent ', isUrgent);
   console.debug('isLate', isLate);
   
@@ -206,42 +204,18 @@ function setInitalState() {
 
  console.debug('today ', today);
  console.debug('this month ', new Date().getUTCMonth() + 1);
- console.debug('tis day ', new Date().getDate());
+ console.debug('this day ', new Date().getDate());
 
  
  
  deliveryDatesInput[0].checked = true;
  deliveryIntervalInput[0].checked = true;
  
- //checkHoliday(deliveryDatesInput[0].value);
 
   if(notWorking.length > 0) {
     disableNotWorkingDays()
   }
 }
-
-// function getIsUrgentIsLate() {
-//   checkedDate = getCheckedDate();
-//   console.debug('checkedDate ', checkedDate)
-
-//   if(checkedDate == today) {
-//     isUrgent = '1';
-//   } else {
-//     isUrgent = '0';
-//   }
-
-
-//   checkedInterval = getCheckedInterval();
-//   console.debug('checkedInterval ', checkedInterval)
-//   if(checkedInterval == deliveryLateInterval) {
-//     isLate = '1'
-//   } else {
-//     isLate = '0'
-//   }
-
-//   console.debug('isUrgent ', isUrgent);
-//   console.debug('isLate', isLate);
-// }
 
 //функция собирает исходные значения полей дат и интервалов доставки, чтобы потом пересивовать их
 function getDatesIntervalsInfo() {
@@ -290,39 +264,10 @@ function checkHoliday(date) {
       deliveryIntervalLabels.forEach(el =>{
           el.classList.remove('d-none');
       })
-      // deliveryIntervalInput[0].checked = true;
     };
   }
 
-
   console.log('isHoliday ', isHoliday)
-  // if (isHoliday === '1') {
-  //     deliveryIntervalInput.forEach(el =>{
-  //         if(el.defaultValue !== '11:00 - 16:00') {
-  //             el.classList.add('d-none');
-  //           } else {
-  //             el.checked = true
-  //           }
-  //     })
-  //     deliveryIntervalLabels.forEach(el =>{
-  //         if(el.htmlFor !== 'additional_delivery_interval_11:00 - 16:00') {
-  //             el.classList.add('d-none');
-  //         }
-  //     })
-  // }
-  // if (isHoliday === '0') {
-  //     deliveryIntervalInput.forEach(el =>{
-  //         el.classList.remove('d-none');
-  //     })
-  //     deliveryIntervalLabels.forEach(el =>{
-  //         el.classList.remove('d-none');
-  //     })
-  //     deliveryIntervalInput[0].checked = true;
-  // }
-
-  // getIsUrgentIsLate()
-  // console.debug('hi check holiday ajax')
-  // ajaxGetUrgent()
 
 }
 
@@ -397,29 +342,6 @@ function hideCheckoutFields(event){
           }
       };
   }        
-
-  // for holidays
-  // console.log('isHoliday ', isHoliday)
-  // if (isHoliday === '1') {
-  //     deliveryIntervalInput.forEach(el =>{
-  //         if(el.defaultValue !== '11:00 - 16:00') {
-  //             el.classList.add('d-none');
-  //         }
-  //     })
-  //     deliveryIntervalLabels.forEach(el =>{
-  //         if(el.htmlFor !== 'additional_delivery_interval_11:00 - 16:00') {
-  //             el.classList.add('d-none');
-  //         }
-  //     })
-  // }
-  // if (isHoliday === '0') {
-  //     deliveryIntervalInput.forEach(el =>{
-  //         el.classList.remove('d-none');
-  //     })
-  //     deliveryIntervalLabels.forEach(el =>{
-  //         el.classList.remove('d-none');
-  //     })
-  // }
 }
 
 function disableNotWorkingDays () {
@@ -441,9 +363,6 @@ function disableNotWorkingDays () {
   if (firstOk) {
     firstOk.checked = true;
   }
-  // getIsUrgentIsLate()
-  // console.debug('hi disableNotWorkingDays ajax')
-  // ajaxGetUrgent()
 }
 
 if (checkoutForm) {
