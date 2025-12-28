@@ -361,7 +361,6 @@ function disableNotWorkingDays () {
   const firstOk = arr.find(date => !notWorking.includes(date.value));
   if (firstOk) {
     firstOk.checked = true;
-    console.log('new checked date', firstOk.value);
   }
 }
 

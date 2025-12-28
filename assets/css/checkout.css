@@ -585,6 +585,13 @@
     cursor: pointer;
 }
 
+#delivery_dates_field .woocommerce-input-wrapper label.diabled {
+  color: var(--gray-text);
+}
+#delivery_dates_field .woocommerce-input-wrapper label.diabled span{
+  display: none;
+}
+
 #additional_delivery_interval_field .woocommerce-input-wrapper label {
   width: 100%;  
   /* min-width: 115px; */
