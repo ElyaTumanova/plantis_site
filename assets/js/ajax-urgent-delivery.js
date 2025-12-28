@@ -213,7 +213,7 @@ function setInitalState() {
   
   deliveryDatesInput[0].checked = true;
   deliveryIntervalInput[0].checked = true;
-  if(notWorking) {
+  if(notWorking.length > 0) {
     disableNotWorkingDays()
   }
 }
