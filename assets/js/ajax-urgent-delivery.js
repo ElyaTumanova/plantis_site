@@ -354,6 +354,7 @@ function disableNotWorkingDays () {
       newCheckedDate = date
       console.log(date)
       console.log(newCheckedDate)
+      return
     }
   })
   newCheckedDate.checked = true
