@@ -3,7 +3,7 @@ let isUrgent;
 let isLate;
 let isHoliday; //скрываем подние интервалы доставки
 let holidays = ['31.12']; //format dd.mm
-let notWorking = ['01.01','02.01','03.01'] //format dd.mm
+let notWorking = ['29.12','30.12','01.01','02.01','03.01'] //format dd.mm
 let deliveryDatesInfo = [];
 let deliveryIntervalsInfo = []
 let shippingMethodValues = [];
@@ -212,6 +212,7 @@ function setInitalState() {
   
   deliveryDatesInput[0].checked = true;
   deliveryIntervalInput[0].checked = true;
+
   if(notWorking.length > 0) {
     disableNotWorkingDays()
   }
@@ -394,8 +395,6 @@ function disableNotWorkingDays () {
 if (checkoutForm) {
 
   setInitalState()
-
-  console.log('first checked intreval ', getCheckedInterval())
 
   document.addEventListener('DOMContentLoaded', getDatesIntervalsInfo )
 
