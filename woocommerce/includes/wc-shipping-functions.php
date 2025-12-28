@@ -91,7 +91,7 @@ function plnt_get_urgent_shipping() {
 add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods', 10, 1 );
 function plnt_refresh_shipping_methods( $post_data ){
   // Если хотя бы один из флагов равен '1', сбрасываем кэш способов доставки
-  $has_flag = ( WC()->session->get('isUrgent') === '1' ) || ( WC()->session->get('isLate') === '1' );
+  $has_flag = ( WC()->session->get('isUrgent') === '1' ) || ( WC()->session->get('isUrgent') === '0' ) || ( WC()->session->get('isLate') === '1' );
 
   $bool = ! $has_flag;
 
