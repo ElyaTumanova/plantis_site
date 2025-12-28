@@ -44,10 +44,10 @@ function getOrderParametrs(event) {
   checkedDate = getCheckedDate();
   checkHoliday(checkedDate);
 
-  getIsUrgentIsLate()
-  
   hideCheckoutFields(event);
 
+  getIsUrgentIsLate()
+  
   renderDeliveryDates(checkedShippingMethod);
   renderDeliveryIntervals(checkedShippingMethod);
 
