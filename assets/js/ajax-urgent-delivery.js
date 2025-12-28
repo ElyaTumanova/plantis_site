@@ -50,8 +50,6 @@ function getOrderParametrs(event) {
     isUrgent = '0';
   }
 
-  checkHoliday(checkedDate);
-
   hideCheckoutFields(event);
   // определеяем checkedInterval после hideCheckoutFields, так как там идет сбрас выбранного интервала
   checkedInterval = getCheckedInterval();
@@ -61,6 +59,8 @@ function getOrderParametrs(event) {
   } else {
     isLate = '0'
   }
+
+  checkHoliday(checkedDate);
 
   console.debug('isUrgent ', isUrgent);
   console.debug('isLate', isLate);
