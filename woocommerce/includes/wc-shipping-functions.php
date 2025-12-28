@@ -72,23 +72,23 @@ function plnt_check() {
 }
 
 // срочная доставка
-// add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
-// add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
+add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
+add_action( 'wp_ajax_nopriv_get_urgent_shipping', 'plnt_get_urgent_shipping' );
 function plnt_get_urgent_shipping() {
   // Безопасная обработка значений
-    $is_urgent = sanitize_text_field( $_POST['isUrgent'] ?? '' );
-    $is_late   = sanitize_text_field( $_POST['isLate'] ?? '' );
+    // $is_urgent = sanitize_text_field( $_POST['isUrgent'] ?? '' );
+    // $is_late   = sanitize_text_field( $_POST['isLate'] ?? '' );
 
-    // Запись в сессию WooCommerce
-    WC()->session->set( 'isUrgent', $is_urgent );
-    WC()->session->set( 'isLate', $is_late );
+    // // Запись в сессию WooCommerce
+    // WC()->session->set( 'isUrgent', $is_urgent );
+    // WC()->session->set( 'isLate', $is_late );
 
-    // Можно вернуть успех для отладки
-    wp_send_json_success([
-        'isUrgent' => $is_urgent,
-        'isLate' => $is_late,
-        'message' => 'Флаги обновлены'
-    ]);
+    // // Можно вернуть успех для отладки
+    // wp_send_json_success([
+    //     'isUrgent' => $is_urgent,
+    //     'isLate' => $is_late,
+    //     'message' => 'Флаги обновлены'
+    // ]);
 
   //wp_die(); // (required)
 }
