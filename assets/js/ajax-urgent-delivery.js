@@ -38,10 +38,11 @@ function getOrderParametrs(event) {
   }
   console.debug('checkedShippingMethod ',checkedShippingMethod);
   
+  checkedDate = getCheckedDate();
   checkHoliday(checkedDate);
-
+  
   getIsUrgentIsLate()
-
+  
   hideCheckoutFields(event);
 
   renderDeliveryDates(checkedShippingMethod);
