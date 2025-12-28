@@ -91,8 +91,10 @@ function getCheckedDate (){
  let checkedDateInput = Array.from(dateInputs).find((el)=>el.checked == true); 
  if(checkedDateInput) {
    console.debug('checkedDate ',checkedDateInput.value)
+   return checkedDateInput.value;
+ } else {
+  return ''
  }
- return checkedDateInput.value;
 }
 
 function getCheckedInterval (){
