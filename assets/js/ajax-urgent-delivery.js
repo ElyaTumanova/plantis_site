@@ -36,32 +36,34 @@ function getOrderParametrs(event) {
     checkedShippingMethod = getCheckedShippingMethod();
   }
   console.debug(checkedShippingMethod);
-  checkedDate = getCheckedDate();
-  console.debug(checkedDate);
+  
+  getIsUrgentIsLate()
+  // checkedDate = getCheckedDate();
+  // console.debug(checkedDate);
 
-  if(checkedDate == today) {
-    isUrgent = '1';
-    // isLate = '0';
-  } else {
-    isUrgent = '0';
-  }
+  // if(checkedDate == today) {
+  //   isUrgent = '1';
+  //   // isLate = '0';
+  // } else {
+  //   isUrgent = '0';
+  // }
 
   checkHoliday(checkedDate);
   
   hideCheckoutFields(event);
 
-  checkedInterval = getCheckedInterval();
-  console.debug(checkedInterval)
+  // checkedInterval = getCheckedInterval();
+  // console.debug(checkedInterval)
 
 
-  if(checkedInterval == deliveryLateInterval) {
-    isLate = '1'
-  } else {
-    isLate = '0'
-  }
+  // if(checkedInterval == deliveryLateInterval) {
+  //   isLate = '1'
+  // } else {
+  //   isLate = '0'
+  // }
 
-  console.debug(isUrgent);
-  console.debug(isLate);
+  // console.debug(isUrgent);
+  // console.debug(isLate);
 
   renderDeliveryDates(checkedShippingMethod);
   renderDeliveryIntervals(checkedShippingMethod);
@@ -209,7 +211,33 @@ function setInitalState() {
   
   deliveryDatesInput[0].checked = true;
   deliveryIntervalInput[0].checked = true;
-  disableNotWorkingDays();
+  if(notWorking) {
+    disableNotWorkingDays()
+  }
+}
+
+function getIsUrgentIsLate() {
+  checkedDate = getCheckedDate();
+  // console.debug(checkedDate);
+
+  if(checkedDate == today) {
+    isUrgent = '1';
+    // isLate = '0';
+  } else {
+    isUrgent = '0';
+  }
+  checkedInterval = getCheckedInterval();
+  console.debug(checkedInterval)
+
+
+  if(checkedInterval == deliveryLateInterval) {
+    isLate = '1'
+  } else {
+    isLate = '0'
+  }
+
+  console.debug(isUrgent);
+  console.debug(isLate);
 }
 
 //функция собирает исходные значения полей дат и интервалов доставки, чтобы потом пересивовать их
@@ -359,13 +387,8 @@ function disableNotWorkingDays () {
   if (firstOk) {
     firstOk.checked = true;
   }
-  checkedDate = getCheckedDate()
-  if(checkedDate == today) {
-    isUrgent = '1';
-    // isLate = '0';
-  } else {
-    isUrgent = '0';
-  }
+  getIsUrgentIsLate()
+  console.debug('hi disableNotWorkingDays ajax')
   ajaxGetUrgent()
 }
 
