@@ -3,7 +3,7 @@ let isUrgent;
 let isLate;
 let isHoliday; //скрываем подние интервалы доставки
 let holidays = ['31.12']; //format dd.mm
-let notWorking = ['29.12','01.01','02.01','03.01'] //format dd.mm
+let notWorking = ['01.01','02.01','03.01'] //format dd.mm
 let deliveryDatesInfo = [];
 let deliveryIntervalsInfo = []
 let shippingMethodValues = [];
