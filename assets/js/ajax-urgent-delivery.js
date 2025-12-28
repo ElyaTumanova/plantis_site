@@ -42,11 +42,28 @@ function getOrderParametrs(event) {
   console.debug('checkedShippingMethod ',checkedShippingMethod);
   
   checkedDate = getCheckedDate();
+  console.debug('checkedDate ', checkedDate)
+
+  if(checkedDate == today) {
+    isUrgent = '1';
+  } else {
+    isUrgent = '0';
+  }
+
   checkHoliday(checkedDate);
 
   hideCheckoutFields(event);
+  // определеяем checkedInterval после hideCheckoutFields, так как там идет сбрас выбранного интервала
+  checkedInterval = getCheckedInterval();
+  console.debug('checkedInterval ', checkedInterval)
+  if(checkedInterval == deliveryLateInterval) {
+    isLate = '1'
+  } else {
+    isLate = '0'
+  }
 
-  getIsUrgentIsLate()
+  console.debug('isUrgent ', isUrgent);
+  console.debug('isLate', isLate);
   
   renderDeliveryDates(checkedShippingMethod);
   renderDeliveryIntervals(checkedShippingMethod);
@@ -202,28 +219,28 @@ function setInitalState() {
   }
 }
 
-function getIsUrgentIsLate() {
-  checkedDate = getCheckedDate();
-  console.debug('checkedDate ', checkedDate)
+// function getIsUrgentIsLate() {
+//   checkedDate = getCheckedDate();
+//   console.debug('checkedDate ', checkedDate)
 
-  if(checkedDate == today) {
-    isUrgent = '1';
-  } else {
-    isUrgent = '0';
-  }
+//   if(checkedDate == today) {
+//     isUrgent = '1';
+//   } else {
+//     isUrgent = '0';
+//   }
 
 
-  checkedInterval = getCheckedInterval();
-  console.debug('checkedInterval ', checkedInterval)
-  if(checkedInterval == deliveryLateInterval) {
-    isLate = '1'
-  } else {
-    isLate = '0'
-  }
+//   checkedInterval = getCheckedInterval();
+//   console.debug('checkedInterval ', checkedInterval)
+//   if(checkedInterval == deliveryLateInterval) {
+//     isLate = '1'
+//   } else {
+//     isLate = '0'
+//   }
 
-  console.debug('isUrgent ', isUrgent);
-  console.debug('isLate', isLate);
-}
+//   console.debug('isUrgent ', isUrgent);
+//   console.debug('isLate', isLate);
+// }
 
 //функция собирает исходные значения полей дат и интервалов доставки, чтобы потом пересивовать их
 function getDatesIntervalsInfo() {
