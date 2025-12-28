@@ -292,7 +292,8 @@ function checkHoliday(date) {
     };
   }
 
-  // console.log('isHoliday ', isHoliday)
+
+  console.log('isHoliday ', isHoliday)
   // if (isHoliday === '1') {
   //     deliveryIntervalInput.forEach(el =>{
   //         if(el.defaultValue !== '11:00 - 16:00') {
