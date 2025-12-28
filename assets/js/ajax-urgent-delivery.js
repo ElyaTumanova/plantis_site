@@ -41,6 +41,7 @@ function getOrderParametrs(event) {
   }
   console.debug('checkedShippingMethod ',checkedShippingMethod);
   
+  hideCheckoutFields(event);
   checkedDate = getCheckedDate();
   console.debug('checkedDate ', checkedDate)
 
@@ -50,7 +51,7 @@ function getOrderParametrs(event) {
     isUrgent = '0';
   }
 
-  hideCheckoutFields(event);
+  
   checkHoliday(checkedDate);
   // определеяем checkedInterval после hideCheckoutFields, так как там идет сбрас выбранного интервала и после checkHoliday, так как идет выбор доступного интервала
   checkedInterval = getCheckedInterval();
