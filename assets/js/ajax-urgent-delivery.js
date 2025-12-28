@@ -345,14 +345,14 @@ if (checkoutForm) {
 
   setInitalState();
 
-  console.log(isHoliday)
+  console.log('isHoliday' + isHoliday)
 
   document.addEventListener('DOMContentLoaded', getDatesIntervalsInfo )
 
   document.addEventListener('DOMContentLoaded', getOrderParametrs )
-  console.log(isHoliday)
+  console.log('isHoliday' + isHoliday)
 
   checkoutForm.addEventListener('change', getOrderParametrs);
-  console.log(isHoliday)
+  console.log('isHoliday' + isHoliday)
   
 }
