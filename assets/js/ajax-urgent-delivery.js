@@ -77,6 +77,8 @@ function getOrderParametrs(event) {
     else {
       console.log('не нужен пересчет')
     }
+
+  console.log('isHoliday' + isHoliday)
 }
 
 function getCheckedShippingMethod() {
@@ -350,9 +352,7 @@ if (checkoutForm) {
   document.addEventListener('DOMContentLoaded', getDatesIntervalsInfo )
 
   document.addEventListener('DOMContentLoaded', getOrderParametrs )
-  console.log('isHoliday' + isHoliday)
 
   checkoutForm.addEventListener('change', getOrderParametrs);
-  console.log('isHoliday' + isHoliday)
   
 }
