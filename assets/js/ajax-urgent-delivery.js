@@ -40,7 +40,7 @@ function getOrderParametrs(event) {
   
   checkedDate = getCheckedDate();
   checkHoliday(checkedDate);
-  
+
   getIsUrgentIsLate()
   
   hideCheckoutFields(event);
@@ -200,16 +200,17 @@ function setInitalState() {
 
 function getIsUrgentIsLate() {
   checkedDate = getCheckedDate();
+  console.debug('checkedDate ', checkedDate)
 
   if(checkedDate == today) {
     isUrgent = '1';
   } else {
     isUrgent = '0';
   }
+
+
   checkedInterval = getCheckedInterval();
   console.debug('checkedInterval ', checkedInterval)
-
-
   if(checkedInterval == deliveryLateInterval) {
     isLate = '1'
   } else {
