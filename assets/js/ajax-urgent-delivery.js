@@ -357,14 +357,12 @@ function disableNotWorkingDays () {
     }
   })
 
-  deliveryDatesInput.forEach(date => {
-    if (!notWorking.includes(date.value)) {
-      date.checked = true;
-      console.log('new checked date ')
-      console.log(date)
-      return
-    }
-  })
+  const arr = Array.from(deliveryDatesInput);
+  const firstOk = arr.find(date => !notWorking.includes(date.value));
+  if (firstOk) {
+    firstOk.checked = true;
+    console.log('new checked date', firstOk.value);
+  }
 }
 
 if (checkoutForm) {
