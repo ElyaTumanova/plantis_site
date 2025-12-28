@@ -87,7 +87,7 @@ function getCheckedShippingMethod() {
 function getCheckedDate (){
  let dateInputs = document.querySelectorAll('.delivery_dates input');
  let checkedDateInput = Array.from(dateInputs).find((el)=>el.checked == true); 
- console.log(checkedDateInput)
+ console.log(checkedDateInput.value)
  return checkedDateInput.value;
 }
 
@@ -234,6 +234,7 @@ function getDatesIntervalsInfo() {
 }
 
 function checkHoliday(date) {
+  console.log(holidays)
   if (holidays) {
     if (holidays.includes(date)) {
       isHoliday = '1'
