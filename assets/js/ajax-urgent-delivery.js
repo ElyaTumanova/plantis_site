@@ -2,7 +2,7 @@ const DELIVERY = window.PLNT_Delivery_Data || {};
 let isUrgent;
 let isLate;
 let isHoliday; //скрываем подние интервалы доставки
-let holidays = []; //format dd.mm
+let holidays = ['31.12']; //format dd.mm
 let deliveryDatesInfo = [];
 let deliveryIntervalsInfo = []
 let shippingMethodValues = [];
@@ -79,7 +79,7 @@ function getOrderParametrs(event) {
     }
 }
 
-function getCheckedShippingMethod (){
+function getCheckedShippingMethod() {
   let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
   return checkedShippingMethodInput.value;
 }
