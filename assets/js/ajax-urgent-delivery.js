@@ -349,6 +349,7 @@ function disableNotWorkingDays () {
     if (notWorking.includes(date.value)) {
       date.disabled = true;
       date.checked = false;
+      console.log(today)
     }
   })
 
