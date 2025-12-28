@@ -395,6 +395,8 @@ if (checkoutForm) {
 
   setInitalState()
 
+  console.log('first checked intreval ', getCheckedInterval())
+
   document.addEventListener('DOMContentLoaded', getDatesIntervalsInfo )
 
   document.addEventListener('DOMContentLoaded', getOrderParametrs )
