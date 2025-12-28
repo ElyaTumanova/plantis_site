@@ -3,7 +3,8 @@ let isUrgent;
 let isLate;
 let isHoliday; //скрываем подние интервалы доставки
 let holidays = ['31.12']; //format dd.mm
-let notWorking = ['29.12','01.01','02.01','03.01'] //format dd.mm
+let notWorking = [] //format dd.mm
+// let notWorking = ['29.12','01.01','02.01','03.01'] //format dd.mm
 let deliveryDatesInfo = [];
 let deliveryIntervalsInfo = []
 let shippingMethodValues = [];
@@ -14,7 +15,8 @@ let today;
 let isUrgentCourierTariff = DELIVERY.isUrgentCourierTariff == '1';
 let deliveryLateInterval = DELIVERY.deliveryLateInterval
 let isSmallHolidayTariffOn = DELIVERY.isSmallHolidayTariffOn == '1';
-console.log(isSmallHolidayTariffOn);
+console.debug('isUrgentCourierTariff ',isUrgentCourierTariff);
+console.debug('isSmallHolidayTariffOn ',isSmallHolidayTariffOn);
 
 let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
 let addressFields = document.querySelector('#billing_address_1_field');
@@ -35,7 +37,7 @@ function getOrderParametrs(event) {
   } else {
     checkedShippingMethod = getCheckedShippingMethod();
   }
-  console.debug(checkedShippingMethod);
+  console.debug('checkedShippingMethod ',checkedShippingMethod);
   
   getIsUrgentIsLate()
   // checkedDate = getCheckedDate();
@@ -73,11 +75,11 @@ function getOrderParametrs(event) {
     event.target.name == "additional_delivery_interval" )
     //|| event.target == document
    {
-      console.log('нужен пересчет')
+      console.debug('нужен пересчет')
       ajaxGetUrgent();
     } 
     else {
-      console.log('не нужен пересчет')
+      console.debug('не нужен пересчет')
     }
 }
 
@@ -89,7 +91,7 @@ function getCheckedShippingMethod() {
 function getCheckedDate (){
  let dateInputs = document.querySelectorAll('.delivery_dates input');
  let checkedDateInput = Array.from(dateInputs).find((el)=>el.checked == true); 
- console.log(checkedDateInput.value)
+ console.debug('checkedDate ',checkedDateInput.value)
  return checkedDateInput.value;
 }
 
@@ -202,9 +204,9 @@ function setInitalState() {
     today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${((new Date().getUTCMonth() + 1)< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
   };
 
- console.debug(today);
- console.debug(new Date().getUTCMonth() + 1);
- console.debug(new Date().getDate());
+ console.debug('today ', today);
+ console.debug('this month ', new Date().getUTCMonth() + 1);
+ console.debug('tis day ', new Date().getDate());
 
  
   checkHoliday(deliveryDatesInput[0].value);
@@ -218,16 +220,14 @@ function setInitalState() {
 
 function getIsUrgentIsLate() {
   checkedDate = getCheckedDate();
-  // console.debug(checkedDate);
 
   if(checkedDate == today) {
     isUrgent = '1';
-    // isLate = '0';
   } else {
     isUrgent = '0';
   }
   checkedInterval = getCheckedInterval();
-  console.debug(checkedInterval)
+  console.debug('checkedInterval ', checkedInterval)
 
 
   if(checkedInterval == deliveryLateInterval) {
@@ -236,8 +236,8 @@ function getIsUrgentIsLate() {
     isLate = '0'
   }
 
-  console.debug(isUrgent);
-  console.debug(isLate);
+  console.debug('isUrgent ', isUrgent);
+  console.debug('isLate', isLate);
 }
 
 //функция собирает исходные значения полей дат и интервалов доставки, чтобы потом пересивовать их
@@ -277,7 +277,7 @@ function hideInterval() {
   deliveryIntervalInput.forEach((input)=>{
       input.checked = false;
   })
-  console.debug(deliveryIntervalInput)
+  // console.debug(deliveryIntervalInput)
 }
 
 function showInterval() {
@@ -328,7 +328,7 @@ function hideCheckoutFields(event){
   
   // for INN
   if (innField) {
-      console.debug(document.querySelector('.wc_payment_methods input[checked="checked"]').value);
+      // console.debug(document.querySelector('.wc_payment_methods input[checked="checked"]').value);
       if(event && event.target.id == "payment_method_cheque") {
           innField.classList.remove('d-none');
       } else {
@@ -345,7 +345,7 @@ function hideCheckoutFields(event){
   }        
 
   // for holidays
-  console.log(isHoliday)
+  console.log('isHoliday ', isHoliday)
   if (isHoliday === '1') {
       deliveryIntervalInput.forEach(el =>{
           if(el.defaultValue !== '11:00 - 16:00') {
@@ -395,8 +395,6 @@ function disableNotWorkingDays () {
 if (checkoutForm) {
 
   setInitalState()
-
-  console.log(getCheckedDate())
 
   document.addEventListener('DOMContentLoaded', getDatesIntervalsInfo )
 
