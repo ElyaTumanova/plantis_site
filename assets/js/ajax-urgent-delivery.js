@@ -359,6 +359,14 @@ function disableNotWorkingDays () {
   if (firstOk) {
     firstOk.checked = true;
   }
+  checkedDate = getCheckedDate()
+  if(checkedDate == today) {
+    isUrgent = '1';
+    // isLate = '0';
+  } else {
+    isUrgent = '0';
+  }
+  ajaxGetUrgent()
 }
 
 if (checkoutForm) {
