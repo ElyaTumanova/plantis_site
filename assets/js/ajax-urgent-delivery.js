@@ -235,6 +235,7 @@ function getDatesIntervalsInfo() {
 
 function checkHoliday(date) {
   console.log(holidays)
+  console.log(date)
   if (holidays) {
     if (holidays.includes(date)) {
       isHoliday = '1'
