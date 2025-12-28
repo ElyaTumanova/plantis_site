@@ -366,7 +366,7 @@ function disableNotWorkingDays () {
   } else {
     isUrgent = '0';
   }
-  ajaxGetUrgent()
+  // ajaxGetUrgent()
 }
 
 if (checkoutForm) {
