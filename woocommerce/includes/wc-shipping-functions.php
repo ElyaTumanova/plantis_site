@@ -20,6 +20,11 @@ function plnt_set_initials() {
 
     WC()->session->set('isLate', '0' );
     WC()->session->set('is_courier_deliv_flag', '0' );
+
+    if ( plnt_is_backorder() || plnt_is_treez_backorder()) {
+      WC()->session->set('isUrgent', '0' );
+      WC()->session->set('isLate', '0' );
+    }
 };
 
 //for dev
