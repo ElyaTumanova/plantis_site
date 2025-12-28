@@ -346,14 +346,17 @@ function hideCheckoutFields(event){
 function disableNotWorkingDays () {
   console.log(notWorking)
   deliveryDatesInput.forEach(date => {
-    console.log(date.value)
     if (notWorking.includes(date.value)) {
       date.disabled = true;
       date.checked = false;
     }
   })
 
-  // deliveryDatesLables.forEach
+  deliveryDatesLables.forEach(date => {
+    if (notWorking.includes(date.textContent)) {
+      date.classList.add('disabled');
+    }
+  })
 }
 
 if (checkoutForm) {
