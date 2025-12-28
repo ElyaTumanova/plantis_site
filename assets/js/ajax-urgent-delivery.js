@@ -44,6 +44,8 @@ function getOrderParametrs(event) {
   } else {
     isUrgent = '0';
   }
+
+  checkHoliday(checkedDate);
   
   hideCheckoutFields(event);
 
@@ -60,8 +62,6 @@ function getOrderParametrs(event) {
 
   console.debug(isUrgent);
   console.debug(isLate);
-
-  checkHoliday(checkedDate);
 
   renderDeliveryDates(checkedShippingMethod);
   renderDeliveryIntervals(checkedShippingMethod);
@@ -345,10 +345,14 @@ if (checkoutForm) {
 
   setInitalState();
 
+  console.log(isHoliday)
+
   document.addEventListener('DOMContentLoaded', getDatesIntervalsInfo )
 
   document.addEventListener('DOMContentLoaded', getOrderParametrs )
+  console.log(isHoliday)
 
   checkoutForm.addEventListener('change', getOrderParametrs);
+  console.log(isHoliday)
   
 }
