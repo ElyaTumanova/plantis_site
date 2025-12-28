@@ -1017,8 +1017,9 @@ function plnt_add_dontcallme_field_to_checkout( $fields ) {
         'class'       => array( 'form-row dontcallme' ),
         'options'     => array(
             'Позвонить' => 'Позвонить',
-            'Написать в Whatsapp'   => 'Написать в Whatsapp',
+            'Написать в Max'   => 'Написать в Max',
             'Написать в Telegram'   => 'Написать в Telegram',
+            'Написать в Whatsapp'   => 'Написать в Whatsapp',
         ),
         'default'     => 'Позвонить',
     );
@@ -1063,8 +1064,9 @@ function plnt_print_doncallme_field_value( $order ){
         'options' => array(
             ''                   => '— Не выбран —', // значение по умолчанию "пусто"
             'Позвонить' => 'Позвонить',
-            'Написать в Whatsapp'   => 'Написать в Whatsapp',
+            'Написать в Max'   => 'Написать в Max',
             'Написать в Telegram'   => 'Написать в Telegram',
+            'Написать в Whatsapp'   => 'Написать в Whatsapp',
         )
     ) );
     echo '</div>';
