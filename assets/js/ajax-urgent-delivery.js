@@ -360,6 +360,7 @@ function disableNotWorkingDays () {
   deliveryDatesInput.forEach(date => {
     if (!notWorking.includes(date.value)) {
       date.checked = true;
+      console.log('new checked date ' + date)
       return
     }
   })
