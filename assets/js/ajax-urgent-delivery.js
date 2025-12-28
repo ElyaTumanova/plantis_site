@@ -359,7 +359,8 @@ function disableNotWorkingDays () {
   if (firstOk) {
     firstOk.checked = true;
   }
-  if(firstOk == today) {
+  checkedDate = getCheckedDate()
+  if(checkedDate == today) {
     isUrgent = '1';
     // isLate = '0';
   } else {
