@@ -585,10 +585,10 @@
     cursor: pointer;
 }
 
-#delivery_dates_field .woocommerce-input-wrapper label.diabled {
+#delivery_dates_field .woocommerce-input-wrapper label.disabled {
   color: var(--gray-text);
 }
-#delivery_dates_field .woocommerce-input-wrapper label.diabled span{
+#delivery_dates_field .woocommerce-input-wrapper label.disabled span{
   display: none;
 }
 
