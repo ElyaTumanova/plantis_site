@@ -269,6 +269,7 @@ function checkHoliday(date) {
     if (holidays.includes(date)) {
       isHoliday = '1'
       deliveryIntervalInput.forEach(el =>{
+        console.log(el)
           if(el.defaultValue !== '11:00 - 16:00') {
               el.classList.add('d-none');
             } else {
