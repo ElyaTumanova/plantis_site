@@ -345,12 +345,16 @@ function hideCheckoutFields(event){
 
 function disableNotWorkingDays () {
   console.log(notWorking)
+  let newCheckedDate
   deliveryDatesInput.forEach(date => {
     if (notWorking.includes(date.value)) {
       date.disabled = true;
       date.checked = false;
-      console.log(today)
+    } else {
+      newCheckedDate = date
+      return
     }
+    newCheckedDate.checked = true
   })
 
   deliveryDatesLables.forEach(date => {
