@@ -317,6 +317,7 @@ function hideCheckoutFields(event){
   }        
 
   // for holidays
+  console.log(isHoliday)
   if (isHoliday === '1') {
       deliveryIntervalInput.forEach(el =>{
           if(el.defaultValue !== '11:00 - 16:00') {
