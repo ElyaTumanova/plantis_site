@@ -355,8 +355,8 @@ function disableNotWorkingDays () {
       console.log(date)
       console.log(newCheckedDate)
     }
-    newCheckedDate.checked = true
   })
+  newCheckedDate.checked = true
 
   deliveryDatesLables.forEach(date => {
     if (notWorking.includes(date.textContent)) {
