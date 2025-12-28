@@ -50,7 +50,8 @@ function getOrderParametrs(event) {
 
   if(event.target.className == "shipping_method" || 
     event.target.name == "delivery_dates" || 
-    event.target.name == "additional_delivery_interval" )
+    event.target.name == "additional_delivery_interval" ||
+    notWorking.length > 0 ||  holidays.length > 0)
     //|| event.target == document
    {
       console.debug('нужен пересчет')
@@ -191,7 +192,7 @@ function setInitalState() {
  deliveryDatesInput[0].checked = true;
  deliveryIntervalInput[0].checked = true;
  
- checkHoliday(deliveryDatesInput[0].value);
+ //checkHoliday(deliveryDatesInput[0].value);
 
   if(notWorking.length > 0) {
     disableNotWorkingDays()
@@ -277,9 +278,9 @@ function checkHoliday(date) {
       deliveryIntervalInput[0].checked = true;
   }
 
-  getIsUrgentIsLate()
-  console.debug('hi check holiday ajax')
-  ajaxGetUrgent()
+  // getIsUrgentIsLate()
+  // console.debug('hi check holiday ajax')
+  // ajaxGetUrgent()
 
 }
 
@@ -398,9 +399,9 @@ function disableNotWorkingDays () {
   if (firstOk) {
     firstOk.checked = true;
   }
-  getIsUrgentIsLate()
-  console.debug('hi disableNotWorkingDays ajax')
-  ajaxGetUrgent()
+  // getIsUrgentIsLate()
+  // console.debug('hi disableNotWorkingDays ajax')
+  // ajaxGetUrgent()
 }
 
 if (checkoutForm) {
