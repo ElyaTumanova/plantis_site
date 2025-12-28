@@ -3,6 +3,7 @@ let isUrgent;
 let isLate;
 let isHoliday; //скрываем подние интервалы доставки
 let holidays = ['31.12']; //format dd.mm
+let notWorking = ['01.01','02.01','03.01'] //format dd.mm
 let deliveryDatesInfo = [];
 let deliveryIntervalsInfo = []
 let shippingMethodValues = [];
@@ -77,8 +78,6 @@ function getOrderParametrs(event) {
     else {
       console.log('не нужен пересчет')
     }
-
-  console.log('isHoliday' + isHoliday)
 }
 
 function getCheckedShippingMethod() {
@@ -208,9 +207,10 @@ function setInitalState() {
 
  
   checkHoliday(deliveryDatesInput[0].value);
-
+  
   deliveryDatesInput[0].checked = true;
   deliveryIntervalInput[0].checked = true;
+  disableNotWorkingDays();
 }
 
 //функция собирает исходные значения полей дат и интервалов доставки, чтобы потом пересивовать их
@@ -343,11 +343,20 @@ function hideCheckoutFields(event){
   }
 }
 
+function disableNotWorkingDays () {
+  deliveryDatesInput.forEach(date => {
+    if (notWorking.includes(date.value)) {
+      date.setAttribute('disabled')
+      date.removeAttribute('checked')
+    }
+  })
+
+  // deliveryDatesLables.forEach
+}
+
 if (checkoutForm) {
 
   setInitalState();
-
-  console.log('isHoliday' + isHoliday)
 
   document.addEventListener('DOMContentLoaded', getDatesIntervalsInfo )
 
