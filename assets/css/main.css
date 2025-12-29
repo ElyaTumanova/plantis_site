@@ -2,8 +2,8 @@
 
 .main__wrap {
     display: grid;
-    grid-template-columns: repeat(2, calc(50% - 10px));
-    grid-template-rows: auto 250px;
+    grid-template-columns: repeat(3, calc(33% - 13px));
+    grid-template-rows: auto 200px;
     row-gap: 30px;
     column-gap: 20px;
 }
@@ -188,7 +188,7 @@
 
 @media (min-width:767px) {
     .main__telegram {
-        min-height: 250px;
+        min-height: 200px;
     }
 }
 
@@ -315,7 +315,7 @@
 
 /* advantages */
 .advantages {
-    grid-column: span 2;
+    grid-column: span 3;
     /* display: grid;
     grid-template: repeat(2, auto) / repeat(2, auto); */
     display: flex;
