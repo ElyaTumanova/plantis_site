@@ -201,7 +201,7 @@
   background-image: linear-gradient(#FCF9E1, #F5F3DB);
   border-radius: var(--border-rad);
   overflow: hidden;
-  max-height: 250px;
+  max-height: 200px;
 }
 
 .main__test img {
@@ -210,7 +210,21 @@
   display: block;
 }
 
+/* gift banner */
+.main__giftcard {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  border-radius: var(--border-rad);
+  overflow: hidden;
+  max-height: 200px;
+}
 
+.main__giftcard img {
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
 
 /* categories sliders */
 
