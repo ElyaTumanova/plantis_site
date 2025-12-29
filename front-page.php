@@ -75,13 +75,13 @@
 			<p class="main__contacts-text">Не знаете, какое комнатное растение подойдёт именно вам?<br>Спросите нас об этом!</p>
 			<?php //get_template_part('template-parts/social-media-btns');?>
 		</div> -->
-    <a class="main__giftcard" href="<?php echo site_url()?>/shop/gift-card/" target="_blank">
-      <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gift-main.webp" 
+    <!-- <a class="main__giftcard" href="<?php echo site_url()?>/shop/gift-card/" target="_blank">
+      <img src="<?php //echo get_template_directory_uri()?>/images/gift-card/gift-main.webp" 
       alt="Подарочный сертификат"
       width="1280" height="500"
       loading='lazy'
       decoding="async">
-    </a>
+    </a> -->
 		<a class="main__telegram" href="https://t.me/plantis" target="blank"></a>
 	</div>
 	<div class="main__about container main__row">
