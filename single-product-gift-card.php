@@ -61,9 +61,9 @@ $gcid = get_the_ID();
         name="gift-manual-amount" 
         class="gift-manual-amount" 
         type="number" placeholder="" 
-        value="10" 
+        value="1500" 
         required
-        min=10
+        min=1500
         max=30000
         >
         <span class="field__errors"></span>

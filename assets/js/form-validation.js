@@ -251,7 +251,7 @@ class FormsValidation {
 
 class GiftFormValidation extends FormsValidation {
   amount = {
-    min: 10,
+    min: 1500,
     max: 30000
   }
   constructor (formSelector, errorMessageSelector) {
