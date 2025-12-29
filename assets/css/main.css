@@ -180,11 +180,11 @@
     display: block;
 }
 
-@media (min-width:1279px) {
+/* @media (min-width:1279px) {
     .main__telegram {
         background-image: url(https://plantis-shop.ru/wp-content/themes/plantis_site/images/telegram_mob_square.webp), radial-gradient(#4AB0E9, #ABDAF5);
     }
-}
+} */
 
 @media (min-width:767px) {
     .main__telegram {
