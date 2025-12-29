@@ -3,7 +3,7 @@
 .main__wrap {
     display: grid;
     grid-template-columns: repeat(3, calc(33% - 13px));
-    grid-template-rows: auto 200px;
+    grid-template-rows: auto 173px;
     row-gap: 30px;
     column-gap: 20px;
 }
@@ -188,7 +188,7 @@
 
 @media (min-width:767px) {
     .main__telegram {
-        min-height: 200px;
+        min-height: 173px;
     }
 }
 
