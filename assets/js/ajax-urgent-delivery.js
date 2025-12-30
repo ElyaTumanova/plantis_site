@@ -292,7 +292,7 @@ function showInterval() {
 }
 
 function hideCheckoutFields(event){
-  //console.log('hi hideCheckoutFields');
+  console.log('hi hideCheckoutFields');
   if (deliveryInterval) {
       if (DELIVERY.isBackorder || DELIVERY.isTreezBackorders) {
           hideInterval()
