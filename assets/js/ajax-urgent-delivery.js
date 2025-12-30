@@ -359,7 +359,7 @@ function disableNotWorkingDays () {
 
   deliveryDatesLables.forEach(date => {
     if (notWorking.includes(date.textContent)) {
-      date.classList.add('disabled');
+      date.classList.add('d-none');
     }
   })
 
