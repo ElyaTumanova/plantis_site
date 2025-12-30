@@ -201,11 +201,10 @@ function setInitalState() {
 
   isLate = 0;
 
-  if (hour >= 20) {
-    today = `${((new Date().getDate()+1) < 10 ? '0' : '') + (new Date().getDate() + 1)}.${((new Date().getUTCMonth() + 1)< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
-  } else {
-    today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${((new Date().getUTCMonth() + 1)< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
-  };
+  const baseDate = new Date();
+  if (hour >= 20) baseDate.setDate(baseDate.getDate() + 1);
+
+  today = `${String(baseDate.getDate()).padStart(2,'0')}.${String(baseDate.getUTCMonth()+1).padStart(2,'0')}`;
 
  console.debug('today ', today);
  console.debug('this month ', new Date().getUTCMonth() + 1);
