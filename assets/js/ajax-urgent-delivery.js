@@ -29,7 +29,11 @@ let deliveryDates = document.querySelector('.delivery_dates');
 let deliveryDatesInput = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
 let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
+let dateIntervals = document.querySelectorAll('.additional_delivery_interval input');
 let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
+
+console.log(deliveryIntervalInput)
+console.log(dateIntervals)
 
 //определяем параметры оформления заказа, влияющие на стоимость доставки и вызываем аякс, отрисовываем поля дат и интервалов доставки
 function getOrderParametrs(event) {
@@ -88,8 +92,8 @@ function getCheckedShippingMethod() {
 }
 
 function getCheckedDate (){
- let dateInputs = document.querySelectorAll('.delivery_dates input');
- let checkedDateInput = Array.from(dateInputs).find((el)=>el.checked == true); 
+//  let dateInputs = document.querySelectorAll('.delivery_dates input');
+ let checkedDateInput = Array.from(deliveryDatesInput).find((el)=>el.checked == true); 
  if(checkedDateInput) {
    console.debug('checkedDate ',checkedDateInput.value)
    return checkedDateInput.value;
@@ -99,7 +103,7 @@ function getCheckedDate (){
 }
 
 function getCheckedInterval (){
- let dateIntervals = document.querySelectorAll('.additional_delivery_interval input');
+//  let dateIntervals = document.querySelectorAll('.additional_delivery_interval input');
  let checkedIntervalInput = Array.from(dateIntervals).find((el)=>el.checked == true); 
  if(checkedIntervalInput) {
    return checkedIntervalInput.value;
