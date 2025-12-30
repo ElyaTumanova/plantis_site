@@ -206,14 +206,12 @@ function setInitalState() {
 
   today = `${String(baseDate.getDate()).padStart(2,'0')}.${String(baseDate.getUTCMonth()+1).padStart(2,'0')}`;
 
- console.debug('today ', today);
- console.debug('this month ', new Date().getUTCMonth() + 1);
- console.debug('this day ', new Date().getDate());
-
+  console.debug('today ', today);
+  console.debug('this month ', new Date().getUTCMonth() + 1);
+  console.debug('this day ', new Date().getDate());
  
- 
- deliveryDatesInput[0].checked = true;
- deliveryIntervalInput[0].checked = true;
+  deliveryDatesInput[0].checked = true;
+  deliveryIntervalInput[0].checked = true;
  
 
   if(notWorking.length > 0) {
