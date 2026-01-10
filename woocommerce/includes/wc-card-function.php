@@ -390,7 +390,14 @@ function plnt_product_artikul() {
 	}
 };
 
-add_action( 'woocommerce_single_product_summary', 'plnt_buy_one_click_btn', 50);
+add_action( 'woocommerce_single_product_summary', 'plnt_get_buy_one_click_btn', 50);
+
+function plnt_get_buy_one_click_btn() {
+  global $product;
+  if ( $product->get_stock_status() !=='outofstock') {
+    plnt_buy_one_click_btn();
+  }
+}
 
 //upsells & cross sells
 
