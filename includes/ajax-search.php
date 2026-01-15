@@ -124,15 +124,17 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
   $search = (string)$search;
 
   // убираем все виды тире/дефисов и кавычек
-  $search = preg_replace(
-      '/[\p{Pd}\x{2212}\x{2043}\p{Pi}\p{Pf}"\'`]+/u',
-      '',
-      $search
-  );
+  // $search = preg_replace(
+  //     '/[\p{Pd}\x{2212}\x{2043}\p{Pi}\p{Pf}"\'`]+/u',
+  //     '',
+  //     $search
+  // );
+
+  $text = preg_replace('/[\p{Pd}\x{2212}]/u', '-', $text);
 
   // дополнительно чистим лишние пробелы
-  $search = preg_replace('/\s+/u', ' ', $search);
-  $search = trim($search);
+  // $search = preg_replace('/\s+/u', ' ', $search);
+  // $search = trim($search);
 
   // (опционально) SKU — если хотите, чтобы он был самым первым:
   $sku_id = wc_get_product_id_by_sku($search);
