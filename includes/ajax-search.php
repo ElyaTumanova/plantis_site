@@ -130,11 +130,19 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
   //     $search
   // );
 
+  //заменяет длинное тире на короткое
   $search = preg_replace('/[\p{Pd}\x{2212}]/u', '-', $search);
 
+  // убираем только кавычки (все виды)
+  $search = preg_replace(
+      '/[\p{Pi}\p{Pf}"\'`]+/u',
+      '',
+      $search
+  );
+
   // дополнительно чистим лишние пробелы
-  // $search = preg_replace('/\s+/u', ' ', $search);
-  // $search = trim($search);
+  $search = preg_replace('/\s+/u', ' ', $search);
+  $search = trim($search);
 
   // (опционально) SKU — если хотите, чтобы он был самым первым:
   $sku_id = wc_get_product_id_by_sku($search);
