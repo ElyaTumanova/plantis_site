@@ -123,9 +123,16 @@ function render_search_result($product) {
 function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $paged=null) {
   $search = (string)$search;
 
-  // убираем все виды тире/дефисов и кавычек
+  // // убираем все виды тире/дефисов и кавычек
+  // $search = preg_replace(
+  //     '/[\p{Pd}\x{2212}\x{2043}\p{Pi}\p{Pf}"\'`]+/u',
+  //     '',
+  //     $search
+  // );
+
+  // убираем только кавычки
   $search = preg_replace(
-      '/[\p{Pd}\x{2212}\x{2043}\p{Pi}\p{Pf}"\'`]+/u',
+      '/[\p{Pi}\p{Pf}"\'`]+/u',
       '',
       $search
   );
