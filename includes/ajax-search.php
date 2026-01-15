@@ -64,6 +64,7 @@ function plnt_search_ajax_action_callback (){
     wp_send_json([
       'out'   => $out,
       'found' => $found,
+      '$query' => $query
     ]);
 }
 
