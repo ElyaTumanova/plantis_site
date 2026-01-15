@@ -120,8 +120,8 @@ function render_search_result($product) {
 }
 
 
-function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $paged=null) {
-  $search_init = (string)$search;
+function plnt_get_search_query($search_init, $ordering_args=null, $per_page=null, $paged=null) {
+  $search_init = (string)$search_init;
 
   // убираем все виды тире/дефисов и кавычек
   $search = preg_replace(
@@ -129,8 +129,6 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
       '',
       $search_init
   );
-
-
 
   // дополнительно чистим лишние пробелы
   $search = preg_replace('/\s+/u', ' ', $search);
