@@ -120,14 +120,14 @@ function render_search_result($product) {
 }
 
 
-function plnt_get_search_query($search_init, $ordering_args=null, $per_page=null, $paged=null) {
-  $search_init = (string)$search_init;
+function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $paged=null) {
+  $search = (string)$search;
 
   // убираем все виды тире/дефисов и кавычек
   $search = preg_replace(
       '/[\p{Pd}\x{2212}\x{2043}\p{Pi}\p{Pf}"\'`]+/u',
       '',
-      $search_init
+      $search
   );
 
   // дополнительно чистим лишние пробелы
@@ -135,7 +135,7 @@ function plnt_get_search_query($search_init, $ordering_args=null, $per_page=null
   $search = trim($search);
 
   // (опционально) SKU — если хотите, чтобы он был самым первым:
-  $sku_id = wc_get_product_id_by_sku($search_init);
+  $sku_id = wc_get_product_id_by_sku($search);
   $ids_title   = plnt_collect_ids_by_text($search, 'title');
   $ids_excerpt = plnt_collect_ids_by_text($search, 'excerpt');
 
