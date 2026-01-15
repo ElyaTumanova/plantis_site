@@ -130,7 +130,7 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
   //     $search
   // );
 
-  $text = preg_replace('/[\p{Pd}\x{2212}]/u', '-', $text);
+  $search = preg_replace('/[\p{Pd}\x{2212}]/u', '-', $search);
 
   // дополнительно чистим лишние пробелы
   // $search = preg_replace('/\s+/u', ' ', $search);
