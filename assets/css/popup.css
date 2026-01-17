@@ -100,9 +100,14 @@
     font-size: 13px;
     line-height: 14px;
     font-weight: 500;
-    width: 95px;
+    /* width: 95px; */
     min-height: 28px;
     cursor: pointer;
+}
+
+.page-popup #dontcallme input[type=radio]:checked + label {
+    background-color: #3a3a3a;
+    color: #fff;
 }
 
 /* preloader */
