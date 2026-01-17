@@ -253,10 +253,11 @@
 }
 
 .buy-one-click-popup .dontcallme-wrap {
-    display: flex;
+    /* display: flex; */
 }
 .buy-one-click-popup #dontcallme {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .buy-one-click-popup__message {
