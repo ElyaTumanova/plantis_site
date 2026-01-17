@@ -105,10 +105,11 @@
     cursor: pointer;
 }
 
-.page-popup #dontcallme input[type=radio]:checked + label {
-    background-color: #3a3a3a;
-    color: #fff;
+.page-popup #dontcallme label:has(input[type="radio"]:checked) .wpcf7-list-item-label {
+  background-color: #3a3a3a;
+  color: #fff;
 }
+
 
 /* preloader */
 
