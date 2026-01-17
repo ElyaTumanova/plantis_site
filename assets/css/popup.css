@@ -252,13 +252,13 @@
     max-width: 700px;
 }
 
-.buy-one-click-popup .dontcallme-wrap {
-    /* display: flex; */
+.buy-one-click-popup .wpcf7-list-item {
+    margin: 0;
 }
 .buy-one-click-popup #dontcallme {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 15px;
 }
 
 .buy-one-click-popup__message {
