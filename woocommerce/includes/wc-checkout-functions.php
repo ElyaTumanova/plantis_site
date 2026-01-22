@@ -1399,6 +1399,7 @@ add_filter( 'woocommerce_gateway_description', function( $description, $gateway_
             'plnt_payment_method'      => ['Способ оплаты', 'select'],
             'plnt_paid'     => ['Оплачен?', 'select'],
             'plnt_comment'     => ['Комментарий', 'text'],
+            'plnt_messenger'     => ['Где общаемся с клиентом', 'select'],
         ];
 
         $select_field_options = [
@@ -1430,6 +1431,15 @@ add_filter( 'woocommerce_gateway_description', function( $description, $gateway_
                 'yes' => 'Да',
                 'no'  => 'Нет',
                 'other' => 'Иное',
+            ],
+            'plnt_messenger' => [
+                'avito' => 'Авито',
+                'tg' => 'TG',
+                'max'  => 'MAX',
+                'wa' => 'WA',
+                'mail' => 'Почта',
+                'call' => 'Звонок',
+                'other' => 'Иное'
             ],
         ];
 
@@ -1465,6 +1475,7 @@ add_filter( 'woocommerce_gateway_description', function( $description, $gateway_
             'plnt_client_origin',
             'plnt_paid',
             'plnt_comment',
+            'plnt_messenger'  
         ];
 
         foreach ( $fields as $field ) {
