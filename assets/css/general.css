@@ -30,7 +30,8 @@
     --sale: #A4198E;
     --accent-back: #F5FDF2;
     --added-cart: #FE6A4C;
-    --stock-color: #53de00;
+    /* --stock-color: #53de00; */
+    --stock-color: #000;
     --stock-backorder: #dbc602;
     --notice-red:#f3afaf;
     --dark-bg:#262626;
