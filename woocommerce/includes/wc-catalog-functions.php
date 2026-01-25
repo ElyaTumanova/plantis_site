@@ -353,7 +353,8 @@ function plnt_img_gallery_swiper_init() {
 	?>
 	<script>
 		jQuery(function($){
-			swiper_catalog_card_imgs_init ();
+			swiper_catalog_card_imgs_init();
+      console.log('hello plnt_img_gallery_swiper_init')
 		})
 	</script>
 	<?php	
