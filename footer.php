@@ -25,8 +25,8 @@ $close_icon = carbon_get_theme_option('close_icon');
         <br>Расчетный счёт: 40802810900002894566 Банк: АО “ТИНЬКОФФ БАНК” БИК: 044525974 Корр. счёт: 30101810145250000974
     </p>
 </div>
-<a class="footer__dev" href="https://misty-studio.ru" target="_blank" rel="noopener nofollow">
-  <img src="<?php echo get_template_directory_uri()?>/imgages/misty-logo.svg" alt="Разработано в Misty studio" width="20" height="20">
+<a class="footer__dev container" href="https://misty-studio.ru" target="_blank" rel="noopener nofollow">
+  <img src="<?php echo get_template_directory_uri()?>/images/misty-logo.svg" alt="Разработано в Misty studio" width="20" height="20">
   <span>Разработано в Misty studio</span>
 </a>
 
