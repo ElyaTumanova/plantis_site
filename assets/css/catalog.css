@@ -1549,8 +1549,8 @@
     color: var(--text);
 }
 
- /* стили для скролла scroll */
-    /* start custom scroll */
+/* стили для скролла scroll */
+/* start custom scroll */
 .filter_diametr_gorshka .bapf_body::-webkit-scrollbar {
 	width: 4px;
 }
