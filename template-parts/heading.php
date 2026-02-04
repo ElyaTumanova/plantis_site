@@ -22,7 +22,7 @@ $catalog_icon = carbon_get_theme_option('catalog_icon');
 					</nav>
           <div class="header__wrap">
             <?php get_template_part('template-parts/social-media-btns');?>
-            <div class="header__phones"><a href="tel:+78002015790">8 800 201 57 90</a> | <a href="tel:+79647687944">8 964 768 79 44</a></div>
+            <div class="header__phones"><a href="tel:+78002015790">8 800 201 57 90</a> | <a href="tel:+79995527944">8 999 552-79-44</a></div>
           </div>
           <!-- <div class="header__working-hours">Eжедневно с 10 до 20</div> -->
 				</div>
@@ -121,7 +121,7 @@ $catalog_icon = carbon_get_theme_option('catalog_icon');
 		
 		<div class="header__nav-wrap container">
 			<div class="header__phone">
-					<a href="tel:+79647687944" class="header-btn__wrap">	
+					<a href="tel:+79995527944" class="header-btn__wrap">	
 						<?php echo $phone_icon ?>
 						<span class="header-btn__label">Позвонить</span>	
 					</a>
