@@ -194,22 +194,6 @@ function plnt_woocommerce_widget_shopping_cart_subtotal() {
 
 // получаем ИД товаров в wishlist для аякса
 
-// function plnt_get_wish_list_ids() {
-//   global $user_id;
-//   $wishlist_ids = YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) );
-
-//   foreach ($wishlist_ids as $wishlist_id) {
-//     $wish_id = $wishlist_id['id'];
-//     $wish_list_items = [];
-                
-//     $wish_products = YITH_WCWL()->get_products( [ 'wishlist_id' => 'all' ] );
-//     foreach ($wish_products as $wish_product) {
-//       $product_id = $wish_product['prod_id'];
-//       array_push($wish_list_items, $product_id);
-//     }
-//     return $wish_list_items_string = implode(",", $wish_list_items);
-//   }
-// };
 function plnt_get_wish_list_ids() {
     global $user_id;
     
