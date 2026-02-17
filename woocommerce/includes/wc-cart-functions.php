@@ -196,7 +196,19 @@ function plnt_woocommerce_widget_shopping_cart_subtotal() {
 
 function plnt_get_wish_list_ids() {
   global $user_id;
-  $wishlist_ids = YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) );
+  $wishlist_ids_old = YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) );
+
+  // Получаем списки желаний пользователя
+  $wishlists = YITH_WCWL_Wishlist_Factory::get_wishlists( array( 'user_id' => $user_id ) );
+
+  // Если нужны только ID (как в старом коде)
+  $wishlist_ids = array();
+  if ( ! empty( $wishlists ) ) {
+      foreach ( $wishlists as $wishlist ) {
+          $wishlist_ids[] = $wishlist->get_id();
+      }
+  }
+
 
   foreach ($wishlist_ids as $wishlist_id) {
     $wish_id = $wishlist_id['id'];
