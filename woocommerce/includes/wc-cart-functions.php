@@ -194,35 +194,46 @@ function plnt_woocommerce_widget_shopping_cart_subtotal() {
 
 // получаем ИД товаров в wishlist для аякса
 
-function plnt_get_wish_list_ids() {
-  global $user_id;
-  $wishlist_ids_old = YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) );
+// function plnt_get_wish_list_ids() {
+//   global $user_id;
+//   $wishlist_ids = YITH_WCWL()->get_wishlists( array( 'user_id' => $user_id ) );
 
-  // Получаем списки желаний пользователя
-  $wishlists = YITH_WCWL_Wishlist_Factory::get_wishlists( array( 'user_id' => $user_id ) );
-
-  // Если нужны только ID (как в старом коде)
-  $wishlist_ids = array();
-  if ( ! empty( $wishlists ) ) {
-      foreach ( $wishlists as $wishlist ) {
-          $wishlist_ids[] = $wishlist->get_id();
-      }
-  }
-
-
-  foreach ($wishlist_ids as $wishlist_id) {
-    $wish_id = $wishlist_id['id'];
-    $wish_list_items = [];
+//   foreach ($wishlist_ids as $wishlist_id) {
+//     $wish_id = $wishlist_id['id'];
+//     $wish_list_items = [];
                 
-    $wish_products = YITH_WCWL()->get_products( [ 'wishlist_id' => 'all' ] );
-    foreach ($wish_products as $wish_product) {
-      $product_id = $wish_product['prod_id'];
-      array_push($wish_list_items, $product_id);
+//     $wish_products = YITH_WCWL()->get_products( [ 'wishlist_id' => 'all' ] );
+//     foreach ($wish_products as $wish_product) {
+//       $product_id = $wish_product['prod_id'];
+//       array_push($wish_list_items, $product_id);
+//     }
+//     return $wish_list_items_string = implode(",", $wish_list_items);
+//   }
+// };
+function plnt_get_wish_list_ids() {
+    global $user_id;
+    
+    // Получаем списки желаний пользователя
+    $wishlists = YITH_WCWL_Wishlist_Factory::get_wishlists( array( 'user_id' => $user_id ) );
+    
+    $wish_list_items = array();
+    
+    foreach ( $wishlists as $wishlist ) {
+        // Получаем товары из текущего списка желаний
+        $items = $wishlist->get_items();
+        
+        foreach ( $items as $item ) {
+            $product_id = $item->get_product_id();
+            $wish_list_items[] = $product_id;
+        }
     }
-    return $wish_list_items_string = implode(",", $wish_list_items);
-  }
-};
-
+    
+    // Удаляем дубликаты на случай, если товар есть в нескольких списках
+    $wish_list_items = array_unique( $wish_list_items );
+    
+    // Возвращаем строку с ID товаров через запятую
+    return implode( ",", $wish_list_items );
+}
 //обновляем мини корзину и количество в корзине с помошью ajax при загрузке страницы, чтобы решить проблему кешрования
 function plnt_update_mini_cart() {
 	ob_start();
