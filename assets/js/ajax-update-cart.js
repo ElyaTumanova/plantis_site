@@ -7,8 +7,6 @@
 //функция используется в плагнах Load More и BeRocket filters
 function plntAjaxGetWishMiniCart() {
   //console.log('hi get minicart');
-  // let miniCartDiv = document.createElement('div');
-  //console.log(miniCartDiv);
 
   ( function ( $ ) {
     "use strict";
@@ -23,7 +21,6 @@ function plntAjaxGetWishMiniCart() {
         console.log(response);
         $('.mini-cart').html(response.mini_cart); // Repopulate the specific element with the new content
         //console.log(response.mini_cart);
-        // miniCartDiv.innerHTML = response.mini_cart;
         updateCatalogButtons();
 
         $('.header-cart__link .header__count').html(response.cart_count); // Repopulate the specific element with the new content
@@ -56,58 +53,6 @@ document.addEventListener('DOMContentLoaded', plntAjaxGetWishMiniCart);
 /*--------------------------------------------------------------
 # Update catalog add-to-cart buttons
 --------------------------------------------------------------*/
-
-// function updateCatalogButtons(miniCartDiv) {
-
-//   //console.log('hi updateCatalogButtons');
-//   // console.log(miniCartDiv);
-//   let miniCartItems = miniCartDiv.querySelectorAll('.woocommerce-mini-cart-item .remove_from_cart_button');
-//   let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
-//   let removeCartBtns = document.querySelectorAll('.remove_from_cart_button');
-//   let productsInCartIds = [];
-  
-//   // console.log(addToCartBtns.length);
-//   // console.log(miniCartItems.length);
-  
-  
-//   miniCartItems.forEach(item => {
-//     //console.log(element.dataset.product_id);
-//     productsInCartIds.push(item.dataset.product_id);
-//   });
-  
-//   //console.log(productsInCartIds);
-  
-//   addToCartBtns.forEach(button => {
-//     if(productsInCartIds.includes(button.dataset.product_id) && button.dataset.categoryName != 'Пересадка') {
-//       let addToCartForm = button.parentElement;
-//       if(addToCartForm.matches('form')) {
-//           addToCartForm.setAttribute('action', button.dataset.remove_link);
-//       } 
-//       if(button.matches('a')) {
-//           button.setAttribute('href', button.dataset.remove_link);
-//       } 
-//       button.setAttribute('class', 'button product_type_simple remove_from_cart_button added');
-//       button.innerHTML = 'Добавлен';
-//     };
-//   });
-  
-//   removeCartBtns.forEach(button => {
-//     if(productsInCartIds.includes(button.dataset.product_id)) {
-//       return
-//     } else {
-//       //console.log(button.dataset.product_id);
-//       let addToCartForm = button.parentElement;
-//       if(addToCartForm.matches('form')) {
-//           addToCartForm.setAttribute('action', `?add-to-cart=${button.dataset.product_id}`);
-//       } 
-//       if(button.matches('a')) {
-//           button.setAttribute('href', `?add-to-cart=${button.dataset.product_id}`);
-//       }
-//       button.innerHTML = 'В корзину';
-//       button.setAttribute('class', 'button product_type_simple add_to_cart_button ajax_add_to_cart');
-//     };
-//   });
-// }
 
 function updateCatalogButtons() {
   // mini-cart уже должен быть обновлён: $('.mini-cart').html(response.mini_cart)
