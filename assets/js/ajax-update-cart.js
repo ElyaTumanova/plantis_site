@@ -36,7 +36,7 @@ function plntAjaxGetWishMiniCart() {
           $('.header__nav-wrap .header-cart .header__count').addClass("header__count_active");
         }
 
-        updateWishBtns(response.wish);
+        //updateWishBtns(response.wish);
 
         $('.yith-wcwl-items-count').children('i').html( response.count );
         if (response.count > 0) {
