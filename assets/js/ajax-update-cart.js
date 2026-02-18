@@ -51,7 +51,7 @@ function plntAjaxGetWishMiniCart() {
   }( jQuery ) );
 } 
 
-//document.addEventListener('DOMContentLoaded', plntAjaxGetWishMiniCart);
+document.addEventListener('DOMContentLoaded', plntAjaxGetWishMiniCart);
 
 /*--------------------------------------------------------------
 # Update catalog add-to-cart buttons
@@ -59,7 +59,7 @@ function plntAjaxGetWishMiniCart() {
 
 function updateCatalogButtons(miniCartDiv) {
 
-  console.log('hi updateCatalogButtons');
+  //console.log('hi updateCatalogButtons');
   // console.log(miniCartDiv);
   let miniCartItems = miniCartDiv.querySelectorAll('.woocommerce-mini-cart-item .remove_from_cart_button');
   let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
@@ -114,7 +114,7 @@ function updateCatalogButtons(miniCartDiv) {
 --------------------------------------------------------------*/
 
 function updateWishBtns(wishListItemsStr) {
-    console.log('hi updateWishBtns');
+    //console.log('hi updateWishBtns');
    // console.log(wishListItemsStr);
    if(wishListItemsStr) {
         let wishListItems = wishListItemsStr.split(',');
