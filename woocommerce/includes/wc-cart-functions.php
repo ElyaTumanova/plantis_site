@@ -195,25 +195,23 @@ function plnt_woocommerce_widget_shopping_cart_subtotal() {
 // получаем ИД товаров в wishlist для аякса
 
 function plnt_get_wish_list_ids() {
-    $user_id = get_current_user_id();
 
-    // если гость — вернём пусто (лучше пусто, чем весь мир)
-    if ( $user_id === 0 ) {
+    // Берём текущий wishlist (для гостя — по cookie/token, для юзера — по user_id)
+    $wishlist = YITH_WCWL_Wishlist_Factory::get_current_wishlist();
+
+    if ( ! $wishlist ) {
         return '';
     }
 
-    $wishlists = YITH_WCWL_Wishlist_Factory::get_wishlists( array( 'user_id' => $user_id ) );
-
     $wish_list_items = array();
 
-    foreach ( $wishlists as $wishlist ) {
-        foreach ( $wishlist->get_items() as $item ) {
-            $wish_list_items[] = (int) $item->get_product_id();
-        }
+    foreach ( $wishlist->get_items() as $item ) {
+        $wish_list_items[] = (int) $item->get_product_id();
     }
 
-    return implode( ',', array_unique( $wish_list_items ) );
+    return implode(',', array_unique($wish_list_items));
 }
+
 
 //обновляем мини корзину и количество в корзине с помошью ajax при загрузке страницы, чтобы решить проблему кешрования
 function plnt_update_mini_cart() {
