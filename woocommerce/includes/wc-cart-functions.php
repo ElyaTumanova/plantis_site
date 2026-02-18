@@ -195,29 +195,26 @@ function plnt_woocommerce_widget_shopping_cart_subtotal() {
 // получаем ИД товаров в wishlist для аякса
 
 function plnt_get_wish_list_ids() {
-    global $user_id;
-    
-    // Получаем списки желаний пользователя
+    $user_id = get_current_user_id();
+
+    // если гость — вернём пусто (лучше пусто, чем весь мир)
+    if ( $user_id === 0 ) {
+        return '';
+    }
+
     $wishlists = YITH_WCWL_Wishlist_Factory::get_wishlists( array( 'user_id' => $user_id ) );
-    
+
     $wish_list_items = array();
-    
+
     foreach ( $wishlists as $wishlist ) {
-        // Получаем товары из текущего списка желаний
-        $items = $wishlist->get_items();
-        
-        foreach ( $items as $item ) {
-            $product_id = $item->get_product_id();
-            $wish_list_items[] = $product_id;
+        foreach ( $wishlist->get_items() as $item ) {
+            $wish_list_items[] = (int) $item->get_product_id();
         }
     }
-    
-    // Удаляем дубликаты на случай, если товар есть в нескольких списках
-    $wish_list_items = array_unique( $wish_list_items );
-    
-    // Возвращаем строку с ID товаров через запятую
-    return implode( ",", $wish_list_items );
+
+    return implode( ',', array_unique( $wish_list_items ) );
 }
+
 //обновляем мини корзину и количество в корзине с помошью ajax при загрузке страницы, чтобы решить проблему кешрования
 function plnt_update_mini_cart() {
 	ob_start();
@@ -230,8 +227,8 @@ function plnt_update_mini_cart() {
 	wp_send_json($response);
 	die();
 }
-add_filter( 'wp_ajax_nopriv_plnt_update_mini_cart', 'plnt_update_mini_cart' );
-add_filter( 'wp_ajax_plnt_update_mini_cart', 'plnt_update_mini_cart' );
+add_action( 'wp_ajax_nopriv_plnt_update_mini_cart', 'plnt_update_mini_cart' );
+add_action( 'wp_ajax_plnt_update_mini_cart', 'plnt_update_mini_cart' );
 
 
 /*--------------------------------------------------------------
