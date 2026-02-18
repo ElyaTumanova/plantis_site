@@ -20,7 +20,7 @@ function plntAjaxGetWishMiniCart() {
       woocommerce_params.ajax_url, // The AJAX URL
       data, // Send our PHP function
       function(response){
-        // console.log(response);
+        console.log(response);
         $('.mini-cart').html(response.mini_cart); // Repopulate the specific element with the new content
         //console.log(response.mini_cart);
         miniCartDiv.innerHTML = response.mini_cart;
