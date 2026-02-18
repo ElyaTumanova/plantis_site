@@ -51,7 +51,7 @@ function plntAjaxGetWishMiniCart() {
   }( jQuery ) );
 } 
 
-document.addEventListener('DOMContentLoaded', plntAjaxGetWishMiniCart);
+//document.addEventListener('DOMContentLoaded', plntAjaxGetWishMiniCart);
 
 /*--------------------------------------------------------------
 # Update catalog add-to-cart buttons
