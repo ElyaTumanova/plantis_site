@@ -204,3 +204,78 @@ function show_image_sizes() {
 // function ajax_ping(){
 //   wp_send_json_success('ok'); // без лишней логики
 // }
+
+
+/**
+ * TEST: wc_get_orders filter by date_completed for fixed date: 2025-12-23
+ * URL: /wp-admin/?plnt_test_date_completed=1
+ */
+function plnt_test_date_completed_query_fixed_date(): void {
+    if (!is_admin()) return;
+    if (!isset($_GET['plnt_test_date_completed'])) return;
+
+    if (!current_user_can('manage_woocommerce')) {
+        wp_die('No permission');
+    }
+
+    $tz = wp_timezone();
+
+    // Fixed day: 2025-12-23 (00:00:00 - 23:59:59) in site timezone
+    $start = new DateTime('2025-12-23 00:00:00', $tz);
+    $end   = new DateTime('2025-12-23 23:59:59', $tz);
+
+    $range = [
+        'start' => $start->format('Y-m-d H:i:s'),
+        'end'   => $end->format('Y-m-d H:i:s'),
+        'tz'    => $tz->getName(),
+    ];
+
+    $result = wc_get_orders([
+        'status'         => ['completed'],
+        'limit'          => 100,       // сколько показать
+        'orderby'        => 'date',
+        'order'          => 'ASC',
+        'return'         => 'objects',
+        'paginate'       => true,
+        'date_completed' => $range['start'] . '...' . $range['end'],
+    ]);
+
+    $orders = $result->orders ?? [];
+    $total  = (int) ($result->total ?? count($orders));
+    $pages  = (int) ($result->max_num_pages ?? 1);
+
+    $out  = '<h2>TEST: wc_get_orders(date_completed) for 2025-12-23</h2>';
+    $out .= '<p><strong>Timezone:</strong> ' . esc_html($range['tz']) . '</p>';
+    $out .= '<p><strong>Range:</strong> ' . esc_html($range['start']) . ' ... ' . esc_html($range['end']) . '</p>';
+    $out .= '<p><strong>Found:</strong> ' . esc_html((string)$total) . ' orders (pages: ' . esc_html((string)$pages) . ')</p>';
+
+    if (empty($orders)) {
+        $out .= '<p><em>No completed orders in this range (or filter not working / none were completed that day).</em></p>';
+        wp_die($out);
+    }
+
+    $out .= '<table class="widefat striped" style="max-width: 980px;">';
+    $out .= '<thead><tr><th>Order ID</th><th>Status</th><th>Date completed</th><th>Date created</th></tr></thead><tbody>';
+
+    foreach ($orders as $order) {
+        if (!$order instanceof WC_Order) continue;
+
+        $dc = $order->get_date_completed();
+        $dc_str = $dc ? $dc->date('Y-m-d H:i:s') : '(null)';
+
+        $created = $order->get_date_created();
+        $created_str = $created ? $created->date('Y-m-d H:i:s') : '(null)';
+
+        $out .= '<tr>';
+        $out .= '<td>' . esc_html((string)$order->get_id()) . '</td>';
+        $out .= '<td>' . esc_html($order->get_status()) . '</td>';
+        $out .= '<td>' . esc_html($dc_str) . '</td>';
+        $out .= '<td>' . esc_html($created_str) . '</td>';
+        $out .= '</tr>';
+    }
+
+    $out .= '</tbody></table>';
+
+    wp_die($out);
+}
+add_action('admin_init', 'plnt_test_date_completed_query_fixed_date');
