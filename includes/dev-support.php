@@ -221,8 +221,8 @@ function plnt_test_date_completed_query_fixed_date(): void {
     $tz = wp_timezone();
 
     // Fixed day: 2025-12-23 (00:00:00 - 23:59:59) in site timezone
-    $start = new DateTime('2025-12-23 00:00:00', $tz);
-    $end   = new DateTime('2025-12-23 23:59:59', $tz);
+    $start = new DateTime('2025-12-14 00:00:00', $tz);
+    $end   = new DateTime('2025-12-14 23:59:59', $tz);
 
     $range = [
         'start' => $start->format('Y-m-d H:i:s'),
