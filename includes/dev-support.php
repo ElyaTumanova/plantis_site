@@ -231,13 +231,16 @@ function plnt_test_date_completed_query_fixed_date(): void {
     ];
 
     $result = wc_get_orders([
-        'status'         => ['completed'],
-        'limit'          => 100,       // сколько показать
-        'orderby'        => 'date',
-        'order'          => 'ASC',
-        'return'         => 'objects',
-        'paginate'       => true,
-        'date_completed' => $range['start'] . '...' . $range['end'],
+        'status'       => ['completed'],
+        'limit'        => 50,
+        'orderby'      => 'date',
+        'order'        => 'ASC',
+        'return'       => 'objects',
+        'paginate'     => true,
+        'meta_key'     => '_date_completed',
+        'meta_compare' => 'BETWEEN',
+        'meta_value'   => [$start_ts, $end_ts],
+        'type'         => 'shop_order',
     ]);
 
     $orders = $result->orders ?? [];
