@@ -116,9 +116,6 @@ add_filter('woocommerce_product_export_product_column_plnt_sales_reset', functio
 }, 10, 2);
 
 
-<?php
-if (!defined('ABSPATH')) exit;
-
 /**
  * Schedule daily cron (once)
  */
