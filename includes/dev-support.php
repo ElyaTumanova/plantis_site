@@ -294,4 +294,4 @@ function plnt_test_date_completed_query_fixed_date(): void {
 
     wp_die($out);
 }
-add_action('admin_init', 'plnt_test_date_completed_query_fixed_date');
+//add_action('admin_init', 'plnt_test_date_completed_query_fixed_date');
