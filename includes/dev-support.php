@@ -220,9 +220,9 @@ function plnt_test_date_completed_query_fixed_date(): void {
 
     $tz = wp_timezone();
 
-    // Day range in site timezone
-    $start_dt = new DateTime('2025-12-23 00:00:00', $tz);
-    $end_dt   = new DateTime('2025-12-23 23:59:59', $tz);
+    // Fixed day range in site timezone
+    $start_dt = new DateTime('2025-12-14 00:00:00', $tz);
+    $end_dt   = new DateTime('2025-12-14 23:59:59', $tz);
 
     $start_str = $start_dt->format('Y-m-d H:i:s');
     $end_str   = $end_dt->format('Y-m-d H:i:s');
@@ -231,7 +231,6 @@ function plnt_test_date_completed_query_fixed_date(): void {
     $start_ts = $start_dt->getTimestamp();
     $end_ts   = $end_dt->getTimestamp();
 
-
     $result = wc_get_orders([
         'status'       => ['completed'],
         'limit'        => 50,
@@ -239,9 +238,12 @@ function plnt_test_date_completed_query_fixed_date(): void {
         'order'        => 'ASC',
         'return'       => 'objects',
         'paginate'     => true,
+
+        // main filter: meta _date_completed BETWEEN timestamps
         'meta_key'     => '_date_completed',
         'meta_compare' => 'BETWEEN',
         'meta_value'   => [$start_ts, $end_ts],
+
         'type'         => 'shop_order',
     ]);
 
@@ -249,24 +251,35 @@ function plnt_test_date_completed_query_fixed_date(): void {
     $total  = (int) ($result->total ?? count($orders));
     $pages  = (int) ($result->max_num_pages ?? 1);
 
-    $out  = '<h2>TEST: wc_get_orders(date_completed) for 2025-12-23</h2>';
-    $out .= '<p><strong>Timezone:</strong> ' . esc_html($range['tz']) . '</p>';
-    $out .= '<p><strong>Range:</strong> ' . esc_html($range['start']) . ' ... ' . esc_html($range['end']) . '</p>';
+    $out  = '<h2>TEST: wc_get_orders by meta _date_completed for 2025-12-23</h2>';
+    $out .= '<p><strong>Timezone:</strong> ' . esc_html($tz->getName()) . '</p>';
+    $out .= '<p><strong>Range:</strong> ' . esc_html($start_str) . ' ... ' . esc_html($end_str) . '</p>';
+    $out .= '<p><strong>Timestamps:</strong> ' . esc_html((string)$start_ts) . ' ... ' . esc_html((string)$end_ts) . '</p>';
     $out .= '<p><strong>Found:</strong> ' . esc_html((string)$total) . ' orders (pages: ' . esc_html((string)$pages) . ')</p>';
 
     if (empty($orders)) {
-        $out .= '<p><em>No completed orders in this range (or filter not working / none were completed that day).</em></p>';
+        $out .= '<p><em>No completed orders in this range (or _date_completed is empty for those orders).</em></p>';
         wp_die($out);
     }
 
-    $out .= '<table class="widefat striped" style="max-width: 980px;">';
-    $out .= '<thead><tr><th>Order ID</th><th>Status</th><th>Date completed</th><th>Date created</th></tr></thead><tbody>';
+    $out .= '<table class="widefat striped" style="max-width: 1100px;">';
+    $out .= '<thead><tr>'
+          . '<th>Order ID</th>'
+          . '<th>Status</th>'
+          . '<th>Date completed</th>'
+          . '<th>_date_completed (raw)</th>'
+          . '<th>Date created</th>'
+          . '</tr></thead><tbody>';
 
     foreach ($orders as $order) {
         if (!$order instanceof WC_Order) continue;
 
         $dc = $order->get_date_completed();
         $dc_str = $dc ? $dc->date('Y-m-d H:i:s') : '(null)';
+
+        $raw_completed = $order->get_meta('_date_completed', true);
+        // иногда хранится как строка timestamp, иногда может быть пусто
+        $raw_str = ($raw_completed === '' || $raw_completed === null) ? '(empty)' : (string) $raw_completed;
 
         $created = $order->get_date_created();
         $created_str = $created ? $created->date('Y-m-d H:i:s') : '(null)';
@@ -275,6 +288,7 @@ function plnt_test_date_completed_query_fixed_date(): void {
         $out .= '<td>' . esc_html((string)$order->get_id()) . '</td>';
         $out .= '<td>' . esc_html($order->get_status()) . '</td>';
         $out .= '<td>' . esc_html($dc_str) . '</td>';
+        $out .= '<td>' . esc_html($raw_str) . '</td>';
         $out .= '<td>' . esc_html($created_str) . '</td>';
         $out .= '</tr>';
     }
