@@ -285,13 +285,13 @@ function plnt_get_day_timestamps(string $ymd): array {
 function plnt_daily_sales_update(): void {
 
     $stats = [
-        'counted_day'     => null,
-        'range'           => null,
-        'orders_scanned'  => 0,
-        'items_scanned'   => 0,
-        'products_touched'=> 0,
-        'qty_total'       => 0,
-        'pages'           => 0,
+        'counted_day'      => null,
+        'range'            => null,
+        'orders_scanned'   => 0,
+        'items_scanned'    => 0,
+        'products_touched' => 0,
+        'qty_total'        => 0,
+        'pages'            => 0,
     ];
 
     try {
@@ -310,7 +310,7 @@ function plnt_daily_sales_update(): void {
 
         $limit = 100;
         $page  = 1;
-        $sold  = []; // product_id => qty
+        $sold  = [];
 
         do {
             $result = wc_get_orders([
@@ -323,14 +323,11 @@ function plnt_daily_sales_update(): void {
                 'paginate' => true,
                 'type'     => 'shop_order',
 
-                'meta_query' => [
-                    [
-                        'key'     => '_date_completed',
-                        'value'   => [$range['start_ts'], $range['end_ts']],
-                        'compare' => 'BETWEEN',
-                        'type'    => 'NUMERIC',
-                    ],
-                ],
+                // ✅ CPT datastore friendly (без meta_query)
+                'meta_key'     => '_date_completed',
+                'meta_compare' => 'BETWEEN',
+                'meta_value'   => [$range['start_ts'], $range['end_ts']],
+                'meta_type'    => 'NUMERIC',
             ]);
 
             $orders = $result->orders ?? [];
@@ -344,7 +341,7 @@ function plnt_daily_sales_update(): void {
 
                     $stats['items_scanned']++;
 
-                    $product_id = (int) $item->get_product_id(); // для вариаций обычно ID родителя
+                    $product_id = (int) $item->get_product_id();
                     if ($product_id <= 0) continue;
 
                     $qty = (int) $item->get_quantity();
@@ -372,13 +369,12 @@ function plnt_daily_sales_update(): void {
 
         update_option('plnt_expo_sales_last_run', $today, false);
 
-        // опционально: сохраняем stats в option
         update_option('plnt_expo_sales_last_stats', [
-            'counted_day'  => $yesterday,
-            'range'        => [$range['start'], $range['end']],
-            'products'     => count($sold),
-            'qty_total'    => array_sum($sold),
-            'timestamp'    => (new DateTime('now', wp_timezone()))->format('Y-m-d H:i:s'),
+            'counted_day' => $yesterday,
+            'range'       => [$range['start'], $range['end']],
+            'products'    => count($sold),
+            'qty_total'   => array_sum($sold),
+            'timestamp'   => (new DateTime('now', wp_timezone()))->format('Y-m-d H:i:s'),
         ], false);
 
         plnt_log_info('sales: done', [
@@ -392,6 +388,7 @@ function plnt_daily_sales_update(): void {
         ]);
     }
 }
+
 add_action('plnt_daily_expo_days_update_hook', 'plnt_daily_sales_update', 20);
 
 /* =========================
