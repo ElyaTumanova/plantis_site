@@ -220,15 +220,17 @@ function plnt_test_date_completed_query_fixed_date(): void {
 
     $tz = wp_timezone();
 
-    // Fixed day: 2025-12-23 (00:00:00 - 23:59:59) in site timezone
-    $start = new DateTime('2025-12-14 00:00:00', $tz);
-    $end   = new DateTime('2025-12-14 23:59:59', $tz);
+    // Day range in site timezone
+    $start_dt = new DateTime('2025-12-23 00:00:00', $tz);
+    $end_dt   = new DateTime('2025-12-23 23:59:59', $tz);
 
-    $range = [
-        'start' => $start->format('Y-m-d H:i:s'),
-        'end'   => $end->format('Y-m-d H:i:s'),
-        'tz'    => $tz->getName(),
-    ];
+    $start_str = $start_dt->format('Y-m-d H:i:s');
+    $end_str   = $end_dt->format('Y-m-d H:i:s');
+
+    // timestamps (local -> unix)
+    $start_ts = $start_dt->getTimestamp();
+    $end_ts   = $end_dt->getTimestamp();
+
 
     $result = wc_get_orders([
         'status'       => ['completed'],
