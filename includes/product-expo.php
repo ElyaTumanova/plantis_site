@@ -57,23 +57,23 @@ add_action('woocommerce_product_options_general_product_data', function () {
  * Если поля будут заполняться ТОЛЬКО программно — этот блок можно удалить,
  * или сделать readonly-поля и оставить без сохранения.
  */
-add_action('woocommerce_admin_process_product_object', function ($product) {
-    foreach (plnt_product_custom_fields_def() as $meta_key => $f) {
-        if (!isset($_POST[$meta_key])) continue;
+// add_action('woocommerce_admin_process_product_object', function ($product) {
+//     foreach (plnt_product_custom_fields_def() as $meta_key => $f) {
+//         if (!isset($_POST[$meta_key])) continue;
 
-        $raw = wp_unslash($_POST[$meta_key]);
-        $val = ($raw === '') ? '' : (string) max(0, (int) $raw);
+//         $raw = wp_unslash($_POST[$meta_key]);
+//         $val = ($raw === '') ? '' : (string) max(0, (int) $raw);
 
-        if ($val === '') {
-            $product->delete_meta_data($meta_key);
-        } else {
-            $product->update_meta_data($meta_key, $val);
-        }
-    }
+//         if ($val === '') {
+//             $product->delete_meta_data($meta_key);
+//         } else {
+//             $product->update_meta_data($meta_key, $val);
+//         }
+//     }
 
-    // Чтобы точно сохранилось
-    $product->save();
-});
+//     // Чтобы точно сохранилось
+//     $product->save();
+// });
 
 /**
  * CSV Export: add columns
@@ -120,8 +120,8 @@ add_filter('woocommerce_product_export_product_column_plnt_sales_reset', functio
  * Schedule daily cron (once)
  */
 function plnt_schedule_daily_expo_counter_cron(): void {
-    if (!wp_next_scheduled('plnt_daily_expo_days_update')) {
-        wp_schedule_event(time() + 600, 'daily', 'plnt_daily_expo_days_update');
+    if (!wp_next_scheduled('plnt_daily_expo_days_update_hook')) {
+        wp_schedule_event(time() + 600, 'daily', 'plnt_daily_expo_days_update_hook');
     }
 }
 add_action('init', 'plnt_schedule_daily_expo_counter_cron');
@@ -151,7 +151,6 @@ function plnt_product_is_in_expo_today(WC_Product $product): bool {
  */
 function plnt_daily_expo_days_update(): void {
 
-    // protect from double-run same day
     $today = (new DateTime('now', wp_timezone()))->format('Y-m-d');
     $last  = get_option('plnt_expo_days_last_run', '');
     if ($last === $today) return;
@@ -160,10 +159,9 @@ function plnt_daily_expo_days_update(): void {
     $limit = 200;
 
     do {
-        // берем разные статусы, чтобы можно было обнулить reset у снятых с публикации
         $products = wc_get_products([
             'status' => ['publish', 'draft', 'pending', 'private'],
-            'type'   => ['simple'],
+            'type'   => ['simple'], // только simple
             'limit'  => $limit,
             'page'   => $page,
             'return' => 'objects',
@@ -172,31 +170,28 @@ function plnt_daily_expo_days_update(): void {
         foreach ($products as $product) {
             if (!$product instanceof WC_Product) continue;
 
-            $qualifies = plnt_product_is_in_expo_today($product);
-
-            $changed = false;
+            $product_id = $product->get_id();
+            $qualifies  = plnt_product_is_in_expo_today($product);
 
             // TOTAL
             if ($qualifies) {
-                $total = (int) $product->get_meta('_plnt_expo_days_total', true);
-                $product->update_meta_data('_plnt_expo_days_total', (string) ($total + 1));
-                $changed = true;
+                $total = (int) get_post_meta($product_id, '_plnt_expo_days_total', true);
+                update_post_meta($product_id, '_plnt_expo_days_total', (string) ($total + 1));
             }
 
-            // RESET
-            $reset = (int) $product->get_meta('_plnt_expo_days_reset', true);
+            // RESET expo + RESET sales (синхронно)
+            $expo_reset  = (int) get_post_meta($product_id, '_plnt_expo_days_reset', true);
+            $sales_reset = (int) get_post_meta($product_id, '_plnt_sales_reset', true);
+
             if ($qualifies) {
-                $product->update_meta_data('_plnt_expo_days_reset', (string) ($reset + 1));
-                $changed = true;
+                update_post_meta($product_id, '_plnt_expo_days_reset', (string) ($expo_reset + 1));
             } else {
-                if ($reset !== 0) {
-                    $product->update_meta_data('_plnt_expo_days_reset', '0');
-                    $changed = true;
+                if ($expo_reset !== 0) {
+                    update_post_meta($product_id, '_plnt_expo_days_reset', '0');
                 }
-            }
-
-            if ($changed) {
-                $product->save();
+                if ($sales_reset !== 0) {
+                    update_post_meta($product_id, '_plnt_sales_reset', '0');
+                }
             }
         }
 
@@ -205,78 +200,64 @@ function plnt_daily_expo_days_update(): void {
 
     update_option('plnt_expo_days_last_run', $today, false);
 }
-add_action('plnt_daily_expo_days_update', 'plnt_daily_expo_days_update');
+add_action('plnt_daily_expo_days_update_hook', 'plnt_daily_expo_days_update', 10);
+
 
 
 /**
- * Manual run via URL:
- * /wp-admin/?plnt_run_expo=1
- * https://your-site.ru/wp-admin/?plnt_run_expo=1
+ * Return day range timestamps for a specific date in site timezone
  */
-function plnt_manual_run_expo_days_update(): void {
-
-    if (!is_admin()) return;
-    if (!isset($_GET['plnt_run_expo'])) return;
-
-    // только для админа
-    if (!current_user_can('manage_woocommerce')) {
-        wp_die('No permission');
-    }
-
-    // Принудительно игнорируем "уже запускалось сегодня"
-    delete_option('plnt_expo_days_last_run');
-
-    plnt_daily_expo_days_update();
-
-    wp_die('OK: Expo days update executed.');
-}
-add_action('admin_init', 'plnt_manual_run_expo_days_update');
-
-
-function plnt_get_yesterday_range(): array {
+function plnt_get_day_timestamps(string $ymd): array {
     $tz = wp_timezone();
-    $start = new DateTime('yesterday 00:00:00', $tz);
-    $end   = new DateTime('yesterday 23:59:59', $tz);
+    $start_dt = new DateTime($ymd . ' 00:00:00', $tz);
+    $end_dt   = new DateTime($ymd . ' 23:59:59', $tz);
 
     return [
-        'start' => $start->format('Y-m-d H:i:s'),
-        'end'   => $end->format('Y-m-d H:i:s'),
+        'start_ts' => $start_dt->getTimestamp(),
+        'end_ts'   => $end_dt->getTimestamp(),
+        'start'    => $start_dt->format('Y-m-d H:i:s'),
+        'end'      => $end_dt->format('Y-m-d H:i:s'),
+        'tz'       => $tz->getName(),
     ];
 }
 
 /**
- * Count yesterday sales by "date_completed" (status completed) and add to:
- * - _plnt_sales_total
- * - _plnt_sales_reset
+ * Daily job: add "yesterday completed" quantities to product counters
+ * Uses _date_completed BETWEEN start_ts/end_ts
  */
-function plnt_daily_sales_update_by_completed_date(): void {
+function plnt_daily_sales_update(): void {
 
-    // защита от повторного запуска в один день
     $today = (new DateTime('now', wp_timezone()))->format('Y-m-d');
     $last  = get_option('plnt_sales_last_run', '');
     if ($last === $today) return;
 
-    $range = plnt_get_yesterday_range();
+    $yesterday = (new DateTime('yesterday', wp_timezone()))->format('Y-m-d');
+    $range = plnt_get_day_timestamps($yesterday);
 
     $limit = 100;
     $page  = 1;
-
-    // product_id => qty_sold
-    $sold = [];
+    $sold  = [];
 
     do {
         $result = wc_get_orders([
-            'status'         => ['completed'],
-            'limit'          => $limit,
-            'paged'          => $page,
-            'orderby'        => 'date',
-            'order'          => 'ASC',
-            'return'         => 'objects',
-            'paginate'       => true,
+            'status'   => ['completed'],
+            'limit'    => $limit,
+            'paged'    => $page,
+            'orderby'  => 'date',
+            'order'    => 'ASC',
+            'return'   => 'objects',
+            'paginate' => true,
+            'type'     => 'shop_order',
 
-            // главное: заказы, завершенные "вчера"
-            // формат диапазона: "start...end"
-            'date_completed' => $range['start'] . '...' . $range['end'],
+            // надежный фильтр по _date_completed
+            'meta_query' => [
+                [
+                    'key'     => '_date_completed',
+                    'value'   => [$range['start_ts'], $range['end_ts']],
+                    'compare' => 'BETWEEN',
+                    'type'    => 'NUMERIC',
+                ],
+            ],
         ]);
 
         $orders = $result->orders ?? [];
@@ -287,7 +268,6 @@ function plnt_daily_sales_update_by_completed_date(): void {
             foreach ($order->get_items('line_item') as $item) {
                 if (!$item instanceof WC_Order_Item_Product) continue;
 
-                // Для вариаций get_product_id() обычно возвращает ID родителя (удобно для “товара”)
                 $product_id = (int) $item->get_product_id();
                 if ($product_id <= 0) continue;
 
@@ -302,20 +282,45 @@ function plnt_daily_sales_update_by_completed_date(): void {
         $page++;
     } while ($total_pages && $page <= $total_pages);
 
-    // Обновляем мета у товаров
     foreach ($sold as $product_id => $qty_sold) {
-        $product = wc_get_product($product_id);
-        if (!$product) continue;
+        $total = (int) get_post_meta($product_id, '_plnt_sales_total', true);
+        $reset = (int) get_post_meta($product_id, '_plnt_sales_reset', true);
 
-        $total = (int) $product->get_meta('_plnt_sales_total', true);
-        $reset = (int) $product->get_meta('_plnt_sales_reset', true);
-
-        $product->update_meta_data('_plnt_sales_total', (string) ($total + $qty_sold));
-        $product->update_meta_data('_plnt_sales_reset', (string) ($reset + $qty_sold));
-        $product->save();
+        update_post_meta($product_id, '_plnt_sales_total', (string) ($total + $qty_sold));
+        update_post_meta($product_id, '_plnt_sales_reset', (string) ($reset + $qty_sold));
     }
 
     update_option('plnt_sales_last_run', $today, false);
+
+    update_option('plnt_sales_last_stats', [
+        'counted_day' => $yesterday,
+        'range'       => [$range['start'], $range['end']],
+        'orders_pages'=> $total_pages ?? 0,
+        'products'    => count($sold),
+        'qty_total'   => array_sum($sold),
+        'timestamp'   => (new DateTime('now', wp_timezone()))->format('Y-m-d H:i:s'),
+    ], false);
 }
 
-add_action('plnt_daily_expo_days_update', 'plnt_daily_sales_update_by_completed_date');
+add_action('plnt_daily_expo_days_update_hook', 'plnt_daily_sales_update', 20);
+
+/**
+ * Manual run via URL (SAFE):
+ * /wp-admin/?plnt_run_expo=1
+ * Запускает весь ежедневный сценарий (expo + sales), НО без обхода защиты от повторного запуска в тот же день.
+ */
+function plnt_manual_run_expo_days_update(): void {
+
+    if (!is_admin()) return;
+    if (!isset($_GET['plnt_run_expo'])) return;
+
+    if (!current_user_can('manage_woocommerce')) {
+        wp_die('No permission');
+    }
+
+    // Запускаем общий daily hook (expo + sales)
+    do_action('plnt_daily_expo_days_update_hook');
+
+    wp_die('OK: Daily hook executed (expo + sales). If it already ran today — nothing changed.');
+}
+add_action('admin_init', 'plnt_manual_run_expo_days_update');
