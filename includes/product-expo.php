@@ -175,13 +175,17 @@ function plnt_product_is_in_expo_today(WC_Product $product): bool {
 function plnt_daily_expo_days_update(): void {
 
     $stats = [
-        'checked'      => 0,
-        'total_inc'    => 0,
-        'expo_inc'     => 0,
-        'expo_zeroed'  => 0,
-        'expo_sales_zeroed' => 0,
-        'pages'        => 0,
+        'checked'            => 0,
+        'total_inc'          => 0,
+        'expo_inc'           => 0,
+        'expo_restarted'     => 0, // сколько раз стартовали заново после паузы
+        'expo_paused_set'    => 0, // сколько раз поставили флаг паузы
+        'expo_sales_zeroed'  => 0,
+        'pages'              => 0,
     ];
+
+    // meta flag key: 1 = paused (не qualifies), 0/empty = active
+    $pause_flag_key = '_plnt_expo_paused';
 
     try {
         $today = (new DateTime('now', wp_timezone()))->format('Y-m-d');
@@ -218,22 +222,36 @@ function plnt_daily_expo_days_update(): void {
                     $stats['total_inc']++;
                 }
 
-                // RESET expo + RESET sales
-                $expo_reset  = (int) get_post_meta($product_id, '_plnt_expo_days_reset', true);
-                $sales_reset = (int) get_post_meta($product_id, '_plnt_expo_sales_reset', true);
+                // текущие значения
+                $expo_reset       = (int) get_post_meta($product_id, '_plnt_expo_days_reset', true);
+                $expo_sales_reset = (int) get_post_meta($product_id, '_plnt_expo_sales_reset', true);
+                $paused           = (int) get_post_meta($product_id, $pause_flag_key, true); // 1/0
 
                 if ($qualifies) {
-                    update_post_meta($product_id, '_plnt_expo_days_reset', (string) ($expo_reset + 1));
-                    $stats['expo_inc']++;
+                    // Если до этого был "paused", значит началась новая серия => reset = 0 и стартуем заново
+                    if ($paused === 1) {
+                        update_post_meta($product_id, '_plnt_expo_days_reset', '1'); // 0 -> +1 за сегодня
+                        update_post_meta($product_id, $pause_flag_key, '0');
+                        $stats['expo_restarted']++;
+
+                        // синхронно обнуляем продажи "после обнуления"
+                        if ($expo_sales_reset !== 0) {
+                            update_post_meta($product_id, '_plnt_expo_sales_reset', '0');
+                            $stats['expo_sales_zeroed']++;
+                        }
+                    } else {
+                        // обычное продолжение серии => +1
+                        update_post_meta($product_id, '_plnt_expo_days_reset', (string) ($expo_reset + 1));
+                        $stats['expo_inc']++;
+                    }
                 } else {
-                    if ($expo_reset !== 0) {
-                        update_post_meta($product_id, '_plnt_expo_days_reset', '0');
-                        $stats['expo_zeroed']++;
+                    // не qualifies: ставим флаг паузы, reset НЕ трогаем и НЕ обнуляем
+                    if ($paused !== 1) {
+                        update_post_meta($product_id, $pause_flag_key, '1');
+                        $stats['expo_paused_set']++;
                     }
-                    if ($sales_reset !== 0) {
-                        update_post_meta($product_id, '_plnt_expo_sales_reset', '0');
-                        $stats['expo_sales_zeroed']++;
-                    }
+                    // reset "заморожен" (ничего не делаем)
+                    // sales_reset тоже НЕ трогаем (обнулится при рестарте серии)
                 }
             }
 
@@ -254,7 +272,7 @@ function plnt_daily_expo_days_update(): void {
         ]);
     }
 }
-add_action('plnt_daily_expo_days_update_hook', 'plnt_daily_expo_days_update', 10);
+add_action('plnt_daily_expo_days_update_hook', 'plnt_daily_expo_days_update', 20);
 
 /* =========================================
  *  Helpers: day timestamps (site timezone)
@@ -389,7 +407,7 @@ function plnt_daily_sales_update(): void {
     }
 }
 
-add_action('plnt_daily_expo_days_update_hook', 'plnt_daily_sales_update', 20);
+add_action('plnt_daily_expo_days_update_hook', 'plnt_daily_sales_update', 10);
 
 /* =========================
  *  Manual run (SAFE) via URL
