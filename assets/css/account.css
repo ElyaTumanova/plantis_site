@@ -148,21 +148,12 @@
 }
 
 #customer_login h2, .u-column2 h2 {
-    margin-bottom: 20px;
-    /* cursor: pointer; */
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1.2;
 }
-
-/* #customer_login .h2_opened {
-    cursor: default;
-}
-
-#customer_login h2:hover {
-    color: var(--accent-color);
-}
-
-#customer_login .h2_opened:hover {
-    color: var(--text);
-} */
 
 #customer_login form p, .u-column2 form p  {
     margin-bottom: 10px;
