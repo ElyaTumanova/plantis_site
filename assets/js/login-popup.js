@@ -100,14 +100,14 @@ loginOpenBtn.forEach((btn)=>
       // переносим input внутрь wrapper
       wrapper.appendChild(input);
 
-      // создаём кнопку
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'show-password-input';
-      btn.setAttribute('aria-label', i18nShow);
-      btn.setAttribute('aria-describedby', input.id);
+      // // создаём кнопку
+      // const btn = document.createElement('button');
+      // btn.type = 'button';
+      // btn.className = 'show-password-input';
+      // btn.setAttribute('aria-label', i18nShow);
+      // btn.setAttribute('aria-describedby', input.id);
 
-      wrapper.appendChild(btn);
+      // wrapper.appendChild(btn);
     });
   };
 
