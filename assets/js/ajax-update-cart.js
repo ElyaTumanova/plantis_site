@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', plntAjaxGetWishMiniCart);
 --------------------------------------------------------------*/
 
 function updateCatalogButtons() {
-  console.log('hi updateCatalogButtons')
   // mini-cart уже должен быть обновлён: $('.mini-cart').html(response.mini_cart)
   const miniCartRoot = document.querySelector('.mini-cart');
   if (!miniCartRoot) return;
@@ -71,7 +70,6 @@ function updateCatalogButtons() {
 
   // // Один проход по всем кнопкам (и add, и remove)
   const buttons = document.querySelectorAll('.product .add_to_cart_button, .product .remove_from_cart_button');
-  console.log(buttons)
 
   buttons.forEach(btn => {
     const pid = btn.dataset.product_id;
