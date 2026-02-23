@@ -76,9 +76,9 @@ function plnt_change_text_order_1( $translated_text ) {
   add_filter( 'gettext', 'plnt_change_text_order_1', 20 );
 
 add_action('woocommerce_register_form_end', function () {
-    echo '<div class="plnt-auth-note">hihih</div>';
+    echo '<div class=register-form__login-btn>Вход</div>';
 });
 
 add_action('woocommerce_login_form_end', function () {
-    echo '<div class="plnt-auth-note">hihih</div>';
+    echo '<div class=login-form__registration-btn>Регистрация</div>';
 });
