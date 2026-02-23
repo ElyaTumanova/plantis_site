@@ -329,6 +329,11 @@ function reazy_only_wc_notices_ajax() {
 		wp_send_json_error(['message' => 'WooCommerce not available'], 500);
 	}
 
+  $notices = function_exists('wc_get_notices') ? wc_get_notices() : [];
+  if (empty($notices)) {
+      wp_send_json_success(['html' => '<div class="woocommerce-info">Notices сейчас нет</div>']);
+  }
+
 	ob_start();
 	wc_print_notices();
 	$html = ob_get_clean();
