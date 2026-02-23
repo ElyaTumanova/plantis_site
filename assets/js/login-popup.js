@@ -36,26 +36,40 @@ function toggle_login_popup () {
 
 
 //переменные для управления попапом Регистрации
-// const regOpenPopupBtn = document.querySelectorAll('.login-form__registration-btn');
+const regOpenPopupBtn = document.querySelectorAll('.login-form__registration-btn');
 // const regPopup = document.querySelector('.register-popup');
 // const regClosePopupBtn = document.querySelector('.register__close');
 // const regPopupOverlay = document.querySelector('.register__popup-overlay');
-// const loginOnRegPopupBtn = document.querySelectorAll('.register-form__login-btn');
+const loginOnRegPopupBtn = document.querySelectorAll('.register-form__login-btn');
+let isLogin = true;
+
+const loginForm = document.querySelector('#customer_login')
+const regForm = document.querySelector('#customer_registration')
+
+function changeLoginReg() {
+  loginForm.classList.loggle('d-none',!isLogin)
+  regForm.classList.loggle('d-none', isLogin)
+}
+document.addEventListener('DOMContentLoaded', changeLoginReg)
 
 // if(regPopup) {
-//     regOpenPopupBtn.forEach((btn)=>
-//         btn.addEventListener ("click", (evt)=>{
-//             toggle_login_popup ();
-//             toggle_reg_popup ();
-//         })
-//     );
+    regOpenPopupBtn.forEach((btn)=>
+        btn.addEventListener ("click", (evt)=>{
+          isLogin = false;
+          changeLoginReg()
+            // toggle_login_popup ();
+            // toggle_reg_popup ();
+        })
+    );
     
-//     loginOnRegPopupBtn.forEach((btn)=>
-//         btn.addEventListener ("click", (evt)=>{
-//             toggle_reg_popup ();
-//             toggle_login_popup ();
-//         })
-//     );
+    loginOnRegPopupBtn.forEach((btn)=>
+        btn.addEventListener ("click", (evt)=>{
+          isLogin = true
+          changeLoginReg()
+            // toggle_reg_popup ();
+            // toggle_login_popup ();
+        })
+    );
     
 //     regClosePopupBtn.addEventListener ("click", (evt)=>{
 //         toggle_reg_popup ();

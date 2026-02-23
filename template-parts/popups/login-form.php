@@ -67,7 +67,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         <?php if ( 'yes' === get_option( 'woocommerce_enable_myaccount_registration' ) ) : ?>
 
-        <div class="u-column2 col-2">
+        <div class="u-column2 col-2" id="customer_registration">
 
             <div class = "plnt-customer-login-title"><?php esc_html_e( 'Register', 'woocommerce' ); ?></div>
 
