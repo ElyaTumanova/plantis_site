@@ -206,13 +206,21 @@ function show_image_sizes() {
 // }
 
 
-// Footer: кнопка + JS
+/**
+ * 1) Кнопка + JS в футере
+ * 2) AJAX-хендлер (и для залогиненных, и для гостей)
+ */
+
+/** =========================
+ *  UI + JS
+ *  ========================= */
 add_action('wp_footer', 'reazy_wc_notices_debug_button', 9999);
 function reazy_wc_notices_debug_button() {
 	// Можно ограничить только каталогом:
 	// if ( ! ( function_exists('is_shop') && (is_shop() || is_product_taxonomy()) ) ) return;
 
 	$nonce = wp_create_nonce('reazy_only_wc_notices');
+	$ajax_url = admin_url('admin-ajax.php');
 	?>
 	<div style="position:fixed;right:20px;bottom:20px;z-index:99999;">
 		<button type="button" id="reazy-show-only-notices"
@@ -223,57 +231,107 @@ function reazy_wc_notices_debug_button() {
 
 	<script>
 	(function () {
-		var btn = document.getElementById('reazy-show-only-notices');
+		const btn = document.getElementById('reazy-show-only-notices');
 		if (!btn) return;
 
-		function getOrCreateWrapperBeforeShopLoop() {
-			var w = document.querySelector('.woocommerce-notices-wrapper');
+		const ajaxUrl = <?php echo wp_json_encode($ajax_url); ?>;
+		const nonce   = <?php echo wp_json_encode($nonce); ?>;
+
+		function getOrCreateWrapper() {
+			let w = document.querySelector('.woocommerce-notices-wrapper');
 			if (w) return w;
 
-			// Если решишь создавать wrapper:
-			// var anchor =
-			//   document.querySelector('.woocommerce-products-header') ||
-			//   document.querySelector('.woocommerce-result-count') ||
-			//   document.querySelector('.woocommerce-ordering') ||
-			//   document.querySelector('ul.products') ||
-			//   document.querySelector('.products') ||
-			//   document.querySelector('.woocommerce') ||
-			//   document.querySelector('main') ||
-			//   document.querySelector('body');
-			//
-			// w = document.createElement('div');
-			// w.className = 'woocommerce-notices-wrapper';
-			// anchor.parentNode.insertBefore(w, anchor);
-			// return w;
+			// Создаём wrapper, если его нет (иначе нечего обновлять)
+			const anchor =
+				document.querySelector('.woocommerce-products-header') ||
+				document.querySelector('.woocommerce-result-count') ||
+				document.querySelector('.woocommerce-ordering') ||
+				document.querySelector('ul.products') ||
+				document.querySelector('.products') ||
+				document.querySelector('.woocommerce') ||
+				document.querySelector('main') ||
+				document.body;
+
+			w = document.createElement('div');
+			w.className = 'woocommerce-notices-wrapper';
+
+			if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(w, anchor);
+			else document.body.insertBefore(w, document.body.firstChild);
+
+			return w;
 		}
 
-		btn.addEventListener('click', function () {
-			var wrapper = getOrCreateWrapperBeforeShopLoop();
+		async function postNotices() {
+			// как в вашем ajax-search.js: FormData + credentials + X-Requested-With :contentReference[oaicite:1]{index=1}
+			const fd = new FormData();
+			fd.append('action', 'reazy_only_wc_notices');
+			fd.append('nonce', nonce);
 
-			var data = new FormData();
-      data.append('action', 'reazy_only_wc_notices');
-      data.append('nonce', '<?php echo esc_js($nonce); ?>');
+			const res = await fetch(ajaxUrl, {
+				method: 'POST',
+				body: fd,
+				credentials: 'same-origin',
+				headers: { 'X-Requested-With': 'XMLHttpRequest' }
+			});
 
-			fetch('<?php echo esc_url(admin_url('admin-ajax.php')); ?>', {
-        method: 'POST',
-        credentials: 'same-origin',
-        body: data
-      })
-			.then(function (r) { return r.json(); })
-			.then(function (res) {
-				if (!res || !res.success) {
-					console.warn('AJAX error:', res);
+			// admin-ajax может вернуть не-JSON (0/HTML). Поэтому читаем безопасно:
+			const text = await res.text();
+			let data = null;
+			try { data = JSON.parse(text); } catch (e) {}
+
+			return { res, data, text };
+		}
+
+		btn.addEventListener('click', async function () {
+			const wrapper = getOrCreateWrapper();
+
+			try {
+				const { res, data, text } = await postNotices();
+
+				// Если не JSON — покажем сырой ответ (для отладки)
+				if (!data) {
+					console.warn('AJAX returned non-JSON:', res.status, text);
 					return;
 				}
-				if (!wrapper) {
-					console.warn('No .woocommerce-notices-wrapper found on page');
+
+				if (!res.ok) {
+					console.warn('AJAX HTTP error:', res.status, data);
 					return;
 				}
-				wrapper.innerHTML = res.data.html || '';
-			})
-			.catch(console.error);
+
+				if (!data.success) {
+					console.warn('AJAX app error:', data);
+					return;
+				}
+
+				wrapper.innerHTML = (data.data && data.data.html) ? data.data.html : '';
+			} catch (err) {
+				console.error('AJAX failed:', err);
+			}
 		});
 	})();
 	</script>
 	<?php
+}
+
+/** =========================
+ *  AJAX handler
+ *  ========================= */
+add_action('wp_ajax_reazy_only_wc_notices', 'reazy_only_wc_notices_ajax');
+add_action('wp_ajax_nopriv_reazy_only_wc_notices', 'reazy_only_wc_notices_ajax');
+
+function reazy_only_wc_notices_ajax() {
+	if (empty($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'reazy_only_wc_notices')) {
+		wp_send_json_error(['message' => 'Bad nonce'], 403);
+	}
+
+	if (!function_exists('wc_print_notices')) {
+		wp_send_json_error(['message' => 'WooCommerce not available'], 500);
+	}
+
+	ob_start();
+	wc_print_notices();
+	$html = ob_get_clean();
+
+	wp_send_json_success(['html' => $html]);
 }
