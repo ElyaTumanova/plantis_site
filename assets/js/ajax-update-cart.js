@@ -73,6 +73,11 @@ function updateCatalogButtons() {
   const buttons = document.querySelectorAll('.add_to_cart_button, .remove_from_cart_button');
   console.log(buttons)
 
+  let addToCartBtns = document.querySelectorAll('.add_to_cart_button');
+  let removeCartBtns = document.querySelectorAll('.remove_from_cart_button');
+  console.log(addToCartBtns)
+  console.log(removeCartBtns)
+
   // buttons.forEach(btn => {
   //   const pid = btn.dataset.product_id;
   //   if (!pid) return;
