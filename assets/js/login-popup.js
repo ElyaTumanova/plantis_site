@@ -73,5 +73,59 @@ loginOpenBtn.forEach((btn)=>
 );
 
 
+(() => {
+  const i18nShow = window.woocommerce_params?.i18n_password_show || 'Показать пароль';
+  const i18nHide = window.woocommerce_params?.i18n_password_hide || 'Скрыть пароль';
+
+  const addPwButtons = () => {
+    const popup = document.querySelector('.login-popup');
+    if (!popup) return;
+
+    const inputs = popup.querySelectorAll('#password, #reg_password');
+
+    inputs.forEach((input) => {
+      // не добавляем второй раз
+      const next = input.nextElementSibling;
+      if (next && next.classList.contains('show-password-input')) return;
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'show-password-input';
+      btn.setAttribute('aria-label', i18nShow);
+
+      const id = input.getAttribute('id');
+      if (id) btn.setAttribute('aria-describedby', id);
+
+      input.insertAdjacentElement('afterend', btn);
+    });
+  };
+
+  // 1) при загрузке
+  document.addEventListener('DOMContentLoaded', addPwButtons);
+
+  // // 2) при открытии попапа — поставь свой селектор кнопки/ссылки открытия
+  // document.addEventListener('click', (e) => {
+  //   const opener = e.target.closest('.open-login-popup, .header__login, .login-btn');
+  //   if (opener) addPwButtons();
+  // });
+
+  // 3) клик по кнопке "показать/скрыть"
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.login-popup .show-password-input');
+    if (!btn) return;
+
+    e.preventDefault();
+
+    // input обычно предыдущий элемент (мы вставляем afterend)
+    const input = btn.previousElementSibling?.matches('input') ? btn.previousElementSibling : null;
+    if (!input) return;
+
+    const show = !btn.classList.contains('display-password');
+    btn.classList.toggle('display-password', show);
+    btn.setAttribute('aria-label', show ? i18nHide : i18nShow);
+    input.type = show ? 'text' : 'password';
+    input.focus();
+  });
+})();
 
    
