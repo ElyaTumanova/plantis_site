@@ -47,8 +47,8 @@ const loginForm = document.querySelector('#customer_login')
 const regForm = document.querySelector('#customer_registration')
 
 function changeLoginReg() {
-  loginForm.classList.loggle('d-none',!isLogin)
-  regForm.classList.loggle('d-none', isLogin)
+  loginForm.classList.toggle('d-none',!isLogin)
+  regForm.classList.toggle('d-none', isLogin)
 }
 document.addEventListener('DOMContentLoaded', changeLoginReg)
 
