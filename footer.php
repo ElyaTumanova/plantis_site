@@ -68,10 +68,10 @@ $close_icon = carbon_get_theme_option('close_icon');
 </div>
 
 <?php 
-if (!is_account_page()) {
-  get_template_part('template-parts/popups/register-form');
-  get_template_part('template-parts/popups/login-form');
-}
+// if (!is_account_page()) {
+//   get_template_part('template-parts/popups/register-form');
+//   get_template_part('template-parts/popups/login-form');
+// }
 ?>
 
 <?php wp_footer(); ?>
