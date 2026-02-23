@@ -36,58 +36,58 @@ function toggle_login_popup () {
 
 
 //переменные для управления попапом Регистрации
-const regOpenPopupBtn = document.querySelectorAll('.login-form__registration-btn');
-const regPopup = document.querySelector('.register-popup');
-const regClosePopupBtn = document.querySelector('.register__close');
-const regPopupOverlay = document.querySelector('.register__popup-overlay');
-const loginOnRegPopupBtn = document.querySelectorAll('.register-form__login-btn');
+// const regOpenPopupBtn = document.querySelectorAll('.login-form__registration-btn');
+// const regPopup = document.querySelector('.register-popup');
+// const regClosePopupBtn = document.querySelector('.register__close');
+// const regPopupOverlay = document.querySelector('.register__popup-overlay');
+// const loginOnRegPopupBtn = document.querySelectorAll('.register-form__login-btn');
 
-if(regPopup) {
-    regOpenPopupBtn.forEach((btn)=>
-        btn.addEventListener ("click", (evt)=>{
-            toggle_login_popup ();
-            toggle_reg_popup ();
-        })
-    );
+// if(regPopup) {
+//     regOpenPopupBtn.forEach((btn)=>
+//         btn.addEventListener ("click", (evt)=>{
+//             toggle_login_popup ();
+//             toggle_reg_popup ();
+//         })
+//     );
     
-    loginOnRegPopupBtn.forEach((btn)=>
-        btn.addEventListener ("click", (evt)=>{
-            toggle_reg_popup ();
-            toggle_login_popup ();
-        })
-    );
+//     loginOnRegPopupBtn.forEach((btn)=>
+//         btn.addEventListener ("click", (evt)=>{
+//             toggle_reg_popup ();
+//             toggle_login_popup ();
+//         })
+//     );
     
-    regClosePopupBtn.addEventListener ("click", (evt)=>{
-        toggle_reg_popup ();
-    });
+//     regClosePopupBtn.addEventListener ("click", (evt)=>{
+//         toggle_reg_popup ();
+//     });
     
-    regPopupOverlay.addEventListener ("click", (evt)=>{
-        toggle_reg_popup ();
-    });
+//     regPopupOverlay.addEventListener ("click", (evt)=>{
+//         toggle_reg_popup ();
+//     });
     
-    document.addEventListener('keydown', function(e){
-        if((e.key=='Escape'||e.key=='Esc')){
-            if(regPopup.classList.contains('popup_active')) {
-                toggle_reg_popup ();
-            } 
-        }
-    }, true);    
-}
+//     document.addEventListener('keydown', function(e){
+//         if((e.key=='Escape'||e.key=='Esc')){
+//             if(regPopup.classList.contains('popup_active')) {
+//                 toggle_reg_popup ();
+//             } 
+//         }
+//     }, true);    
+// }
 
-function toggle_reg_popup () {
-    regPopup.classList.toggle ('popup_active');
-    body.classList.toggle ('fix-body');
-};
+// function toggle_reg_popup () {
+//     regPopup.classList.toggle ('popup_active');
+//     body.classList.toggle ('fix-body');
+// };
 
-// переменные для управления через мобильное меню
+// // переменные для управления через мобильное меню
 
-const mobOpenBtn = document.querySelector('.burger-menu__account'); 
-if(mobOpenBtn) {
-    mobOpenBtn.addEventListener ("click", (evt)=>{
-        toggle_mob_menu ();
-        toggle_login_popup ();
-    });
-}
+// const mobOpenBtn = document.querySelector('.burger-menu__account'); 
+// if(mobOpenBtn) {
+//     mobOpenBtn.addEventListener ("click", (evt)=>{
+//         toggle_mob_menu ();
+//         toggle_login_popup ();
+//     });
+// }
 
 // уведомление об ошибке
 
