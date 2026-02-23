@@ -74,62 +74,68 @@ loginOpenBtn.forEach((btn)=>
 
 //добавляем кнопку показать пароль
 
-const i18nShow = window.woocommerce_params?.i18n_password_show || 'Показать пароль';
-const i18nHide = window.woocommerce_params?.i18n_password_hide || 'Скрыть пароль';
+(() => {
+  const i18nShow = window.woocommerce_params?.i18n_password_show || 'Показать пароль';
+  const i18nHide = window.woocommerce_params?.i18n_password_hide || 'Скрыть пароль';
 
-const addPwButtons = () => {
-  if (!loginPopup) return;
+  const initPasswords = () => {
+    const popup = document.querySelector('.login-popup');
+    if (!popup) return;
 
-  const inputs = loginPopup.querySelectorAll('#password, #reg_password');
+    const inputs = popup.querySelectorAll('#password, #reg_password');
 
-  inputs.forEach((input) => {
-    // не добавляем второй раз
-    const next = input.nextElementSibling;
-    if (next && next.classList.contains('show-password-input')) return;
+    inputs.forEach((input) => {
 
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'show-password-input';
-    btn.setAttribute('aria-label', i18nShow);
+      // если уже обёрнут — пропускаем
+      if (input.closest('.password-input')) return;
 
-    const id = input.getAttribute('id');
-    if (id) btn.setAttribute('aria-describedby', id);
+      // создаём span
+      const wrapper = document.createElement('span');
+      wrapper.className = 'password-input';
 
-    input.insertAdjacentElement('afterend', btn);
+      // вставляем wrapper перед input
+      input.parentNode.insertBefore(wrapper, input);
+
+      // переносим input внутрь wrapper
+      wrapper.appendChild(input);
+
+      // создаём кнопку
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'show-password-input';
+      btn.setAttribute('aria-label', i18nShow);
+      btn.setAttribute('aria-describedby', input.id);
+
+      wrapper.appendChild(btn);
+    });
+  };
+
+  // при загрузке
+  document.addEventListener('DOMContentLoaded', initPasswords);
+
+  // // если попап открывается по клику — добавь свой селектор
+  // document.addEventListener('click', (e) => {
+  //   const opener = e.target.closest('.open-login-popup, .header__login, .login-btn');
+  //   if (opener) initPasswords();
+  // });
+
+  // переключение типа пароля
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.login-popup .show-password-input');
+    if (!btn) return;
+
+    e.preventDefault();
+
+    const input = btn.closest('.password-input')?.querySelector('input');
+    if (!input) return;
+
+    const show = !btn.classList.contains('display-password');
+
+    btn.classList.toggle('display-password', show);
+    btn.setAttribute('aria-label', show ? i18nHide : i18nShow);
+    input.type = show ? 'text' : 'password';
+    input.focus();
   });
-};
-
-// 1) при загрузке
-document.addEventListener('DOMContentLoaded', addPwButtons);
-
-// // 2) при открытии попапа — поставь свой селектор кнопки/ссылки открытия
-// document.addEventListener('click', (e) => {
-//   const opener = e.target.closest('.open-login-popup, .header__login, .login-btn');
-//   if (opener) addPwButtons();
-// });
-
-// 3) клик по кнопке "показать/скрыть"
-document.addEventListener('click', (e) => {
-  const btn = e.target.closest('.login-popup .show-password-input');
-  if (!btn) return;
-  console.log(btn)
-  console.log(btn.classList)
-
-  e.preventDefault();
-
-  // input обычно предыдущий элемент (мы вставляем afterend)
-  const input = btn.previousElementSibling?.matches('input') ? btn.previousElementSibling : null;
-  if (!input) return;
-  console.log(input)
-
-  const show = !btn.classList.contains('display-password');
-  console.log(btn.classList.contains('display-password'))
-  console.log(show)
-  btn.classList.toggle('display-password', show);
-  btn.setAttribute('aria-label', show ? i18nHide : i18nShow);
-  input.type = show ? 'text' : 'password';
-  input.focus();
-});
-
+})();
 
    
