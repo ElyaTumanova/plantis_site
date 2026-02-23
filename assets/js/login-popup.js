@@ -122,6 +122,7 @@ document.addEventListener('click', (e) => {
   console.log(input)
 
   const show = !btn.classList.contains('display-password');
+  console.log(btn.classList.contains('display-password'))
   console.log(show)
   btn.classList.toggle('display-password', show);
   btn.setAttribute('aria-label', show ? i18nHide : i18nShow);
