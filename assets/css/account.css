@@ -276,13 +276,13 @@
  */
 
 /* Обёртка нужна, чтобы кнопка стояла внутри поля справа */
-.login-popup #customer_login .password-input{
+#customer_login .password-input{
   position: relative;
   display: block;
 }
 
 /* Кнопка глаза */
-.login-popup #customer_login button.show-password-input{
+#customer_login button.show-password-input{
   position: absolute;
   right: 10px;
   top: 50%;
@@ -304,18 +304,18 @@
   transition: border-color .15s ease, background .15s ease, opacity .15s ease;
 }
 
-.login-popup #customer_login button.show-password-input:hover{
+#customer_login button.show-password-input:hover{
   border-color: #d1d5db;
   background: #fafafa;
 }
 
-.login-popup #customer_login button.show-password-input:focus-visible{
+#customer_login button.show-password-input:focus-visible{
   outline: none;
   border-color: #111;
 }
 
 /* Иконка "глаз" — по умолчанию (пароль скрыт -> показать) */
-.login-popup #customer_login button.show-password-input::before{
+#customer_login button.show-password-input::before{
   content: "";
   width: 18px;
   height: 18px;
@@ -330,7 +330,7 @@
 }
 
 /* Когда пароль ПОКАЗАН (Woo добавляет класс display-password) — показываем "eye-off" */
-.login-popup #customer_login button.show-password-input.display-password::before{
+#customer_login button.show-password-input.display-password::before{
   /* eye-off icon */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.73 5.08A10.43 10.43 0 0 1 12 5c6.5 0 10 7 10 7a17.2 17.2 0 0 1-3.1 4.33'/%3E%3Cpath d='M6.61 6.61A16.6 16.6 0 0 0 2 12s3.5 7 10 7a10.9 10.9 0 0 0 5.39-1.61'/%3E%3Cpath d='M14.12 14.12A3 3 0 0 1 9.88 9.88'/%3E%3Cpath d='M1 1l22 22'/%3E%3C/svg%3E");
 }
