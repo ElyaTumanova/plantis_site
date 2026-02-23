@@ -63,11 +63,11 @@
 
   transform: translateX(100%); /* скрыта справа */
   transition: transform .5s ease-in-out;
+  will-change: transform;
 }
 .login-popup.popup_active .page-popup__container {
   transform: translateX(0);
 }
-
 .login__close, .register__close {
     position: absolute;
     top: 80px;
