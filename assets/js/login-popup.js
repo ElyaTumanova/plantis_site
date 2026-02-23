@@ -77,7 +77,7 @@ loginOpenBtn.forEach((btn)=>
 (() => {
   const i18nShow = window.woocommerce_params?.i18n_password_show || 'Показать пароль';
   const i18nHide = window.woocommerce_params?.i18n_password_hide || 'Скрыть пароль';
-  let show = false;
+  let show = true;
 
   const initPasswords = () => {
     const popup = document.querySelector('.login-popup');
@@ -114,11 +114,6 @@ loginOpenBtn.forEach((btn)=>
   // при загрузке
   document.addEventListener('DOMContentLoaded', initPasswords);
 
-  // // если попап открывается по клику — добавь свой селектор
-  // document.addEventListener('click', (e) => {
-  //   const opener = e.target.closest('.open-login-popup, .header__login, .login-btn');
-  //   if (opener) initPasswords();
-  // });
 
   // переключение типа пароля
   document.addEventListener('click', (e) => {
