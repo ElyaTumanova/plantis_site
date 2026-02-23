@@ -179,7 +179,7 @@ function my_enqueue_recaptcha_woo_js() {
     ));
     wp_enqueue_script('recaptcha-woocommerce');
 }
-add_action('wp_enqueue_scripts', 'my_enqueue_recaptcha_woo_js');
+//add_action('wp_enqueue_scripts', 'my_enqueue_recaptcha_woo_js');
 
 /**
  * Enqueue all styles
