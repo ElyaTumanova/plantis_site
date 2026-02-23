@@ -77,6 +77,7 @@ loginOpenBtn.forEach((btn)=>
 (() => {
   const i18nShow = window.woocommerce_params?.i18n_password_show || 'Показать пароль';
   const i18nHide = window.woocommerce_params?.i18n_password_hide || 'Скрыть пароль';
+  let show = false;
 
   const initPasswords = () => {
     const popup = document.querySelector('.login-popup');
@@ -131,12 +132,13 @@ loginOpenBtn.forEach((btn)=>
     const input = btn.closest('.password-input')?.querySelector('input');
     if (!input) return;
 
-    const show = !btn.classList.contains('display-password');
+    // show = !btn.classList.contains('display-password');
 
     btn.classList.toggle('display-password', show);
     btn.setAttribute('aria-label', show ? i18nHide : i18nShow);
     input.type = show ? 'text' : 'password';
     input.focus();
+    show = !show;
   });
 })();
 
