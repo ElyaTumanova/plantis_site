@@ -116,25 +116,25 @@ loginOpenBtn.forEach((btn)=>
 
 
   // переключение типа пароля
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.login-popup .show-password-input');
-    if (!btn) return;
-    console.log(btn)
-    console.log(btn.classList)
+  // document.addEventListener('click', (e) => {
+  //   const btn = e.target.closest('.login-popup .show-password-input');
+  //   if (!btn) return;
+  //   console.log(btn)
+  //   console.log(btn.classList)
 
-    e.preventDefault();
+  //   e.preventDefault();
 
-    const input = btn.closest('.password-input')?.querySelector('input');
-    if (!input) return;
+  //   const input = btn.closest('.password-input')?.querySelector('input');
+  //   if (!input) return;
 
-    // show = !btn.classList.contains('display-password');
+  //   // show = !btn.classList.contains('display-password');
 
-    btn.classList.toggle('display-password', show);
-    btn.setAttribute('aria-label', show ? i18nHide : i18nShow);
-    input.type = show ? 'text' : 'password';
-    input.focus();
-    show = !show;
-  });
+  //   btn.classList.toggle('display-password', show);
+  //   btn.setAttribute('aria-label', show ? i18nHide : i18nShow);
+  //   input.type = show ? 'text' : 'password';
+  //   input.focus();
+  //   show = !show;
+  // });
 })();
 
    
