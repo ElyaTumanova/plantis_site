@@ -55,59 +55,60 @@ document.addEventListener('DOMContentLoaded', plntAjaxGetWishMiniCart);
 --------------------------------------------------------------*/
 
 function updateCatalogButtons() {
-  // mini-cart уже должен быть обновлён: $('.mini-cart').html(response.mini_cart)
-  const miniCartRoot = document.querySelector('.mini-cart');
-  if (!miniCartRoot) return;
+  console.log('hi updateCatalogButtons')
+  // // mini-cart уже должен быть обновлён: $('.mini-cart').html(response.mini_cart)
+  // const miniCartRoot = document.querySelector('.mini-cart');
+  // if (!miniCartRoot) return;
 
-  // Собираем product_id из мини-корзины (O(n))
-  const productsInCart = new Set(
-    Array.from(
-      miniCartRoot.querySelectorAll('.woocommerce-mini-cart-item .remove_from_cart_button')
-    )
-      .map(el => el.dataset.product_id)
-      .filter(Boolean)
-  );
+  // // Собираем product_id из мини-корзины (O(n))
+  // const productsInCart = new Set(
+  //   Array.from(
+  //     miniCartRoot.querySelectorAll('.woocommerce-mini-cart-item .remove_from_cart_button')
+  //   )
+  //     .map(el => el.dataset.product_id)
+  //     .filter(Boolean)
+  // );
 
-  // Один проход по всем кнопкам (и add, и remove)
+  // // Один проход по всем кнопкам (и add, и remove)
   const buttons = document.querySelectorAll('.add_to_cart_button, .remove_from_cart_button');
   console.log(buttons)
 
-  buttons.forEach(btn => {
-    const pid = btn.dataset.product_id;
-    if (!pid) return;
+  // buttons.forEach(btn => {
+  //   const pid = btn.dataset.product_id;
+  //   if (!pid) return;
 
-    // исключение "Пересадка"
-    if (btn.dataset.categoryName === 'Пересадка') return;
+  //   // исключение "Пересадка"
+  //   if (btn.dataset.categoryName === 'Пересадка') return;
 
-    const inCart = productsInCart.has(pid);
+  //   const inCart = productsInCart.has(pid);
 
-    // Родитель (иногда form, иногда нет)
-    const parent = btn.parentElement;
-    const isForm = parent && parent.matches && parent.matches('form');
+  //   // Родитель (иногда form, иногда нет)
+  //   const parent = btn.parentElement;
+  //   const isForm = parent && parent.matches && parent.matches('form');
 
-    if (inCart) {
-      // поставить remove link если он есть
-      const removeLink = btn.dataset.remove_link;
-      if (removeLink) {
-        if (isForm) parent.setAttribute('action', removeLink);
-        if (btn.matches('a')) btn.setAttribute('href', removeLink);
-      }
+  //   if (inCart) {
+  //     // поставить remove link если он есть
+  //     const removeLink = btn.dataset.remove_link;
+  //     if (removeLink) {
+  //       if (isForm) parent.setAttribute('action', removeLink);
+  //       if (btn.matches('a')) btn.setAttribute('href', removeLink);
+  //     }
 
-      // классы/текст (не сносим все классы целиком)
-      btn.classList.remove('add_to_cart_button', 'ajax_add_to_cart');
-      btn.classList.add('remove_from_cart_button', 'added');
-      btn.textContent = 'Добавлен';
-    } else {
-      // вернуть add-to-cart ссылку/экшен
-      const addLink = `?add-to-cart=${pid}`;
-      if (isForm) parent.setAttribute('action', addLink);
-      if (btn.matches('a')) btn.setAttribute('href', addLink);
+  //     // классы/текст (не сносим все классы целиком)
+  //     btn.classList.remove('add_to_cart_button', 'ajax_add_to_cart');
+  //     btn.classList.add('remove_from_cart_button', 'added');
+  //     btn.textContent = 'Добавлен';
+  //   } else {
+  //     // вернуть add-to-cart ссылку/экшен
+  //     const addLink = `?add-to-cart=${pid}`;
+  //     if (isForm) parent.setAttribute('action', addLink);
+  //     if (btn.matches('a')) btn.setAttribute('href', addLink);
 
-      btn.classList.remove('remove_from_cart_button', 'added');
-      btn.classList.add('add_to_cart_button', 'ajax_add_to_cart');
-      btn.textContent = 'В корзину';
-    }
-  });
+  //     btn.classList.remove('remove_from_cart_button', 'added');
+  //     btn.classList.add('add_to_cart_button', 'ajax_add_to_cart');
+  //     btn.textContent = 'В корзину';
+  //   }
+  // });
 }
 
 
