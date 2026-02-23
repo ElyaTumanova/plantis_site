@@ -167,9 +167,21 @@ function plnt_product_is_in_expo_today(WC_Product $product): bool {
 
 /* =========================================
  *  Expo daily job (FAST: update_post_meta)
- *  - _plnt_expo_days_total: +1 if qualifies
- *  - _plnt_expo_days_reset: +1 if qualifies, else -> 0
- *  - _plnt_expo_sales_reset:    -> 0 when expo resets
+ *
+ *  Условия qualifies: publish + managing_stock + stock_quantity >= 1
+ *
+ *  - _plnt_expo_days_total:
+ *      +1 каждый день, когда qualifies (накопительный, не сбрасывается)
+ *
+ *  - _plnt_expo_days_reset:
+ *      если qualifies и НЕ было паузы -> +1 (продолжение серии)
+ *      если НЕ qualifies -> НЕ меняем (замораживаем), ставим флаг _plnt_expo_paused=1
+ *      если снова qualifies после паузы (_plnt_expo_paused=1) ->
+ *          начинаем новую серию: _plnt_expo_days_reset = 1 и _plnt_expo_paused = 0
+ *
+ *  - _plnt_expo_sales_reset:
+ *      не трогаем при паузе, но при рестарте серии экспозиции обнуляем в 0
+ *      (продажи "после обнуления" начинаются заново вместе с новой серией экспозиции)
  * ========================================= */
 
 function plnt_daily_expo_days_update(): void {

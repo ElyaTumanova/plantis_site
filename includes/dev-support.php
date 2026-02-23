@@ -206,92 +206,74 @@ function show_image_sizes() {
 // }
 
 
-/**
- * TEST: wc_get_orders filter by date_completed for fixed date: 2025-12-23
- * URL: /wp-admin/?plnt_test_date_completed=1
- */
-function plnt_test_date_completed_query_fixed_date(): void {
-    if (!is_admin()) return;
-    if (!isset($_GET['plnt_test_date_completed'])) return;
+// Footer: кнопка + JS
+add_action('wp_footer', 'reazy_wc_notices_debug_button', 9999);
+function reazy_wc_notices_debug_button() {
+	// Можно ограничить только каталогом:
+	// if ( ! ( function_exists('is_shop') && (is_shop() || is_product_taxonomy()) ) ) return;
 
-    if (!current_user_can('manage_woocommerce')) {
-        wp_die('No permission');
-    }
+	$nonce = wp_create_nonce('reazy_only_wc_notices');
+	?>
+	<div style="position:fixed;right:20px;bottom:20px;z-index:99999;">
+		<button type="button" id="reazy-show-only-notices"
+			style="padding:10px 14px;border-radius:8px;border:1px solid #ddd;background:#fff;cursor:pointer;">
+			Показать только notices
+		</button>
+	</div>
 
-    $tz = wp_timezone();
+	<script>
+	(function () {
+		var btn = document.getElementById('reazy-show-only-notices');
+		if (!btn) return;
 
-    $start_dt = new DateTime('2025-12-14 00:00:00', $tz);
-    $end_dt   = new DateTime('2025-12-14 23:59:59', $tz);
+		function getOrCreateWrapperBeforeShopLoop() {
+			var w = document.querySelector('.woocommerce-notices-wrapper');
+			if (w) return w;
 
-    $start_str = $start_dt->format('Y-m-d H:i:s');
-    $end_str   = $end_dt->format('Y-m-d H:i:s');
+			// Если решишь создавать wrapper:
+			// var anchor =
+			//   document.querySelector('.woocommerce-products-header') ||
+			//   document.querySelector('.woocommerce-result-count') ||
+			//   document.querySelector('.woocommerce-ordering') ||
+			//   document.querySelector('ul.products') ||
+			//   document.querySelector('.products') ||
+			//   document.querySelector('.woocommerce') ||
+			//   document.querySelector('main') ||
+			//   document.querySelector('body');
+			//
+			// w = document.createElement('div');
+			// w.className = 'woocommerce-notices-wrapper';
+			// anchor.parentNode.insertBefore(w, anchor);
+			// return w;
+		}
 
-    $start_ts = $start_dt->getTimestamp();
-    $end_ts   = $end_dt->getTimestamp();
+		btn.addEventListener('click', function () {
+			var wrapper = getOrCreateWrapperBeforeShopLoop();
 
-    $result = wc_get_orders([
-        'status'       => ['completed'],
-        'limit'        => 50,
-        'orderby'      => 'date',
-        'order'        => 'ASC',
-        'return'       => 'objects',
-        'paginate'     => true,
+			var data = new URLSearchParams();
+			data.append('action', 'reazy_only_wc_notices');
+			data.append('nonce', '<?php echo esc_js($nonce); ?>');
 
-        'meta_key'     => '_date_completed',
-        'meta_compare' => 'BETWEEN',
-        'meta_value'   => [$start_ts, $end_ts],
-
-        'type'         => 'shop_order',
-    ]);
-
-    $orders = $result->orders ?? [];
-    $total  = (int) ($result->total ?? count($orders));
-    $pages  = (int) ($result->max_num_pages ?? 1);
-
-    $out  = '<h2>TEST: orders by meta _date_completed for 2025-12-23</h2>';
-    $out .= '<p><strong>Timezone:</strong> ' . esc_html($tz->getName()) . '</p>';
-    $out .= '<p><strong>Range:</strong> ' . esc_html($start_str) . ' ... ' . esc_html($end_str) . '</p>';
-    $out .= '<p><strong>Timestamps:</strong> ' . esc_html((string)$start_ts) . ' ... ' . esc_html((string)$end_ts) . '</p>';
-    $out .= '<p><strong>Found:</strong> ' . esc_html((string)$total) . ' orders (pages: ' . esc_html((string)$pages) . ')</p>';
-
-    if (empty($orders)) {
-        $out .= '<p><em>No completed orders in this range (or _date_completed empty).</em></p>';
-        wp_die($out);
-    }
-
-    $out .= '<table class="widefat striped" style="max-width: 1100px;">';
-    $out .= '<thead><tr>'
-          . '<th>Order ID</th>'
-          . '<th>Status</th>'
-          . '<th>Date completed (getter)</th>'
-          . '<th>_date_completed (raw postmeta)</th>'
-          . '<th>Date created</th>'
-          . '</tr></thead><tbody>';
-
-    foreach ($orders as $order) {
-        if (!$order instanceof WC_Order) continue;
-
-        $dc = $order->get_date_completed();
-        $dc_str = $dc ? $dc->date('Y-m-d H:i:s') : '(null)';
-
-        // ✅ без WooCommerce notice
-        $raw_completed = get_post_meta($order->get_id(), '_date_completed', true);
-        $raw_str = ($raw_completed === '' || $raw_completed === null) ? '(empty)' : (string) $raw_completed;
-
-        $created = $order->get_date_created();
-        $created_str = $created ? $created->date('Y-m-d H:i:s') : '(null)';
-
-        $out .= '<tr>';
-        $out .= '<td>' . esc_html((string)$order->get_id()) . '</td>';
-        $out .= '<td>' . esc_html($order->get_status()) . '</td>';
-        $out .= '<td>' . esc_html($dc_str) . '</td>';
-        $out .= '<td>' . esc_html($raw_str) . '</td>';
-        $out .= '<td>' . esc_html($created_str) . '</td>';
-        $out .= '</tr>';
-    }
-
-    $out .= '</tbody></table>';
-
-    wp_die($out);
+			fetch('<?php echo esc_url(admin_url('admin-ajax.php')); ?>', {
+				method: 'POST',
+				headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+				body: data.toString()
+			})
+			.then(function (r) { return r.json(); })
+			.then(function (res) {
+				if (!res || !res.success) {
+					console.warn('AJAX error:', res);
+					return;
+				}
+				if (!wrapper) {
+					console.warn('No .woocommerce-notices-wrapper found on page');
+					return;
+				}
+				wrapper.innerHTML = res.data.html || '';
+			})
+			.catch(console.error);
+		});
+	})();
+	</script>
+	<?php
 }
-//add_action('admin_init', 'plnt_test_date_completed_query_fixed_date');
