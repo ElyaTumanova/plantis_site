@@ -52,7 +52,7 @@
     line-height: 1;
 }
 .login-popup {
-  display: block;
+  display: block !important;
 }
 .login-popup .page-popup__container {
   width: 600px;
