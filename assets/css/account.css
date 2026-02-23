@@ -56,12 +56,15 @@
   width: 600px;
   max-width: 100vw;
   border-radius: 0;
-  right: -600px;
+  right: 0;
   left: auto;
-  transition: right 0.5s ease-in-out 1s;
+
+  transform: translateX(100%); /* скрыта справа */
+  transition: transform .5s ease-in-out;
+  will-change: transform;
 }
 .login-popup.popup_active .page-popup__container {
-  right: 0;
+  transform: translateX(0);
 }
 .login__close, .register__close {
     position: absolute;
