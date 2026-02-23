@@ -331,7 +331,7 @@ function reazy_only_wc_notices_ajax() {
 
   $notices = function_exists('wc_get_notices') ? wc_get_notices() : [];
   if (empty($notices)) {
-      wp_send_json_success(['html' => '<div class="woocommerce-info">Notices сейчас нет</div>']);
+      wp_send_json_success(['html' => '<div class="woocommerce-error">Notices сейчас нет</div>']);
   }
 
 	ob_start();
