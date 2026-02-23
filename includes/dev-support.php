@@ -214,7 +214,7 @@ function show_image_sizes() {
 /** =========================
  *  UI + JS
  *  ========================= */
-//add_action('wp_footer', 'reazy_wc_notices_debug_button', 9999);
+add_action('wp_footer', 'reazy_wc_notices_debug_button', 9999);
 function reazy_wc_notices_debug_button() {
 	// Можно ограничить только каталогом:
 	// if ( ! ( function_exists('is_shop') && (is_shop() || is_product_taxonomy()) ) ) return;
