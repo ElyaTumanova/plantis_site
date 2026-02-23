@@ -250,15 +250,15 @@ function reazy_wc_notices_debug_button() {
 		btn.addEventListener('click', function () {
 			var wrapper = getOrCreateWrapperBeforeShopLoop();
 
-			var data = new URLSearchParams();
-			data.append('action', 'reazy_only_wc_notices');
-			data.append('nonce', '<?php echo esc_js($nonce); ?>');
+			var data = new FormData();
+      data.append('action', 'reazy_only_wc_notices');
+      data.append('nonce', '<?php echo esc_js($nonce); ?>');
 
 			fetch('<?php echo esc_url(admin_url('admin-ajax.php')); ?>', {
-				method: 'POST',
-				headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-				body: data.toString()
-			})
+        method: 'POST',
+        credentials: 'same-origin',
+        body: data
+      })
 			.then(function (r) { return r.json(); })
 			.then(function (res) {
 				if (!res || !res.success) {
