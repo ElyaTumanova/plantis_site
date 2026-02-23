@@ -24,9 +24,7 @@ function changeLoginReg() {
  
 //добавляем кнопку показать пароль
 
-
-
-const initPasswords = () => {
+function initPasswords() {
   if (!loginPopup) return;
 
   const inputs = loginPopup.querySelectorAll('#password, #reg_password');
@@ -47,6 +45,13 @@ const initPasswords = () => {
     wrapper.appendChild(input);
   });
 };
+
+function addFormValidationElements() {
+  if (!customerLogin) return
+
+  const inputs = customerLogin.querySelectorAll('input')
+  console.log(inputs)
+}
 
 // уведомление об ошибке
 
