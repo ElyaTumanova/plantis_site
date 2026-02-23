@@ -67,6 +67,7 @@
 }
 .login-popup.popup_active .page-popup__container {
   transform: translateX(0);
+  transition: transform 0s;
 }
 .login__close, .register__close {
     position: absolute;
