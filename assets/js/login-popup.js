@@ -112,6 +112,7 @@ document.addEventListener('DOMContentLoaded', addPwButtons);
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('.login-popup .show-password-input');
   if (!btn) return;
+  console.log(btn)
   console.log(btn.classList)
 
   e.preventDefault();
