@@ -98,14 +98,15 @@
 }
 
 .login__close{
-    position: absolute;
-    top: 80px;
-    right: 50px;
+  position: absolute;
+  top: 71px;
+  right: 50px;
+  font-size: 22px;
 }
 
 @media (max-width: 767px) {
     .login__close {
-        top: 45px;
+        top: 80px;
         right: 15px;
     }
 }
@@ -147,8 +148,8 @@
     "registartion";
 }
 
-#customer_login h2, .u-column2 h2 {
-  margin-bottom: 20px;
+#customer_login h2 {
+  margin-bottom: 40px;
   font-size: 18px;
   text-transform: uppercase;
   font-weight: 700;
@@ -269,9 +270,69 @@
     }
 }
 
-.showlogin {
-    color: var(--accent-color);
-    font-weight: 700;
+
+/* 
+ Кнопка "показать/скрыть пароль" (иконка + убираем дефолты)
+ */
+
+/* Обёртка нужна, чтобы кнопка стояла внутри поля справа */
+.login-popup #customer_login .password-input{
+  position: relative;
+  display: block;
+}
+
+/* Кнопка глаза */
+.login-popup #customer_login button.show-password-input{
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 34px;
+  height: 34px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+
+  cursor: pointer;
+  padding: 0;
+
+  display: grid;
+  place-items: center;
+
+  transition: border-color .15s ease, background .15s ease, opacity .15s ease;
+}
+
+.login-popup #customer_login button.show-password-input:hover{
+  border-color: #d1d5db;
+  background: #fafafa;
+}
+
+.login-popup #customer_login button.show-password-input:focus-visible{
+  outline: none;
+  border-color: #111;
+}
+
+/* Иконка "глаз" — по умолчанию (пароль скрыт -> показать) */
+.login-popup #customer_login button.show-password-input::before{
+  content: "";
+  width: 18px;
+  height: 18px;
+  display: block;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px 18px;
+
+  /* eye icon */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
+}
+
+/* Когда пароль ПОКАЗАН (Woo добавляет класс display-password) — показываем "eye-off" */
+.login-popup #customer_login button.show-password-input.display-password::before{
+  /* eye-off icon */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.73 5.08A10.43 10.43 0 0 1 12 5c6.5 0 10 7 10 7a17.2 17.2 0 0 1-3.1 4.33'/%3E%3Cpath d='M6.61 6.61A16.6 16.6 0 0 0 2 12s3.5 7 10 7a10.9 10.9 0 0 0 5.39-1.61'/%3E%3Cpath d='M14.12 14.12A3 3 0 0 1 9.88 9.88'/%3E%3Cpath d='M1 1l22 22'/%3E%3C/svg%3E");
 }
 
 /* забыли пароль? */
