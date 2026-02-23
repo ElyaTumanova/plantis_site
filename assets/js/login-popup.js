@@ -50,14 +50,14 @@ const initPasswords = () => {
 
 // уведомление об ошибке
 
-if (loginPopup) {
-    const errorMsg = loginPopup.querySelector('.woocommerce-error'); 
+// if (loginPopup) {
+//     const errorMsg = loginPopup.querySelector('.woocommerce-error'); 
     
-    if (errorMsg) {
-        toggle_login_popup ();
-        changeLoginReg();
-    };
-}
+//     if (errorMsg) {
+//         toggle_login_popup ();
+//         changeLoginReg();
+//     };
+// }
 
 document.addEventListener('DOMContentLoaded', changeLoginReg)
 document.addEventListener('DOMContentLoaded', initPasswords);
