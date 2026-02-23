@@ -179,10 +179,18 @@
     margin-bottom: 40px;
 }
 
-#customer_login form input, .u-column2 form input {
+#customer_login form input {
     padding: 14px 20px;
-    border: 1px solid #ccc;
-    width: 100%
+    /* border: 1px solid #ccc; */
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background: var(--background);
+    border-radius: 0;
+}
+#customer_login form input:focus-visible {
+  border: none;
+  border-bottom: 1px solid #000;
 }
 
 #customer_login form input[name="rememberme"] {
