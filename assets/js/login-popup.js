@@ -112,12 +112,14 @@ document.addEventListener('DOMContentLoaded', addPwButtons);
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('.login-popup .show-password-input');
   if (!btn) return;
+  console.log(btn)
 
   e.preventDefault();
 
   // input обычно предыдущий элемент (мы вставляем afterend)
   const input = btn.previousElementSibling?.matches('input') ? btn.previousElementSibling : null;
   if (!input) return;
+  console.log(input)
 
   const show = !btn.classList.contains('display-password');
   console.log(show)
