@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="login-popup popup">
     <div class="plnt-customer-login page-popup__container">
-        <?php //wc_get_template('myaccount/form-login.php'); ?>
+        <?php wc_get_template('myaccount/form-login.php'); ?>
 
         <!-- CODE BASED ON plugins/woocommerce/templates/myaccount/form-login.php -->
         <?php do_action( 'woocommerce_before_customer_login_form' ); ?>
