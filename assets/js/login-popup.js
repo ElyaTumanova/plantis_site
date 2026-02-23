@@ -11,14 +11,13 @@ const loginForm = customerLogin.querySelector('.u-column1.col-1')
 const regForm = customerLogin.querySelector('.u-column2.col-2')
 let isLogin = true;
 
-
-
 function toggle_login_popup () {
     loginPopup.classList.toggle ('popup_active');
     body.classList.toggle ('fix-body');
 };
 
 function changeLoginReg() {
+  console.log(isLogin)
   loginForm.classList.toggle('d-none',!isLogin)
   regForm.classList.toggle('d-none', isLogin)
 }
