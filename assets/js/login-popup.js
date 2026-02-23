@@ -5,8 +5,8 @@ const loginClosePopupBtn = document.querySelector('.login__close');
 const loginPopupOverlay = document.querySelector('.login__popup-overlay');
 const customerLogin = document.querySelector('#customer_login');
 //переменные для переключения форм
-const regOpenPopupBtn = document.querySelectorAll('.login-form__registration-btn');
-const loginOnRegPopupBtn = document.querySelectorAll('.register-form__login-btn');
+const regOpenBtn = document.querySelectorAll('.login-form__registration-btn');
+const loginOpenBtn = document.querySelectorAll('.register-form__login-btn');
 const loginForm = customerLogin.querySelector('.u-column1.col-1')
 const regForm = customerLogin.querySelector('.u-column2.col-2')
 let isLogin = true;
@@ -57,20 +57,20 @@ if(loginPopup) {
     }
   }, true);
 
-  regOpenPopupBtn.forEach((btn)=>
-    btn.addEventListener ("click", (evt)=>{
-      isLogin = false;
-      changeLoginReg()
-    })
-  );
-
-  loginOnRegPopupBtn.forEach((btn)=>
-    btn.addEventListener ("click", (evt)=>{
-      isLogin = true
-      changeLoginReg()
-    })
-  );
 }
+regOpenBtn.forEach((btn)=>
+  btn.addEventListener ("click", (evt)=>{
+    isLogin = false;
+    changeLoginReg()
+  })
+);
+
+loginOpenBtn.forEach((btn)=>
+  btn.addEventListener ("click", (evt)=>{
+    isLogin = true
+    changeLoginReg()
+  })
+);
 
 
 
