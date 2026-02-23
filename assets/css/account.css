@@ -52,10 +52,17 @@
     line-height: 1;
 }
 
-.login-popup .page-popup__container, .register-popup .page-popup__container {
-    max-width: 600px;
+.login-popup .page-popup__container {
+  width: 600px;
+  max-width: 100vw;
+  border-radius: 0;
+  right: -600px;
+  left: auto;
+  transition: right 0.5s;
 }
-
+.login-popup.popup_active .page-popup__container {
+  right: 0;
+}
 .login__close, .register__close {
     position: absolute;
     top: 80px;
@@ -74,7 +81,8 @@
 }
 
 
-#customer_login, .u-column2 {
+#customer_login .u-column1,
+#customer_login .u-column2 {
     display: flex;
     margin-top: 30px;
     margin-bottom: 30px;
