@@ -411,6 +411,9 @@ function get_backorder_info_snippet($_product, $qty) {
     }
 }
 
+/**
+ * Проверка: есть ли в корзине хоть один товар НЕ типа gift-card
+ */
 function is_not_gift_card_checkout() {
   $notOnlyGiftCardInCart = false;
 
@@ -425,5 +428,46 @@ function is_not_gift_card_checkout() {
   }
   return $notOnlyGiftCardInCart;
 }
+
+/**
+ * Проверка: есть ли в заказе (на странице оплаты) хоть один товар НЕ типа gift-card
+ */
+function is_not_gift_card_order_pay() {
+    // На всякий случай убеждаемся, что мы вообще на endpoint'е оплаты
+    if ( ! is_wc_endpoint_url( 'order-pay' ) ) {
+        return false;
+    }
+
+    // ID заказа берём из query var 'order-pay'
+    $order_id = absint( get_query_var( 'order-pay' ) );
+    if ( ! $order_id ) {
+        return false;
+    }
+
+    $order = wc_get_order( $order_id );
+    if ( ! $order ) {
+        return false;
+    }
+
+    // Перебираем товары в заказе
+    foreach ( $order->get_items( 'line_item' ) as $item ) {
+        $product = $item->get_product();
+
+        if ( ! $product ) {
+            continue;
+        }
+
+        $type = $product->get_type();
+
+        if ( $type !== 'gift-card' ) {
+            // Нашёлся хотя бы один товар, который не gift-card
+            return true;
+        }
+    }
+
+    // В заказе только gift-card'ы (или он пустой)
+    return false;
+}
+
 
 

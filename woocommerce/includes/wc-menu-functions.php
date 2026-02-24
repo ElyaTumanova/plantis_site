@@ -152,25 +152,69 @@ function plnt_get_menu_cats_image() {
 
 
 function get_az_palnts_submenu() {
-    global $plants_cat_id;
-    $lowest_cats = get_lowest_level_product_categories($plants_cat_id); // начиная с корня
-    function sortByName($a, $b) {
-        return strcmp($a->name, $b->name);
+    global $plants_cat_id, $wpdb;
+
+    $lowest_cats = get_lowest_level_product_categories($plants_cat_id);
+
+    if (empty($lowest_cats)) {
+        return;
     }
-    usort($lowest_cats, "sortByName");
+
+    // получаем ID наших категорий
+    $cat_ids = wp_list_pluck($lowest_cats, 'term_id');
+    $cat_ids_placeholder = implode(',', array_fill(0, count($cat_ids), '%d'));
+
+    // Один SQL-запрос — получаем категории, где есть publish товары
+    $query = "
+        SELECT DISTINCT tr.term_taxonomy_id
+        FROM {$wpdb->term_relationships} tr
+        INNER JOIN {$wpdb->posts} p ON p.ID = tr.object_id
+        INNER JOIN {$wpdb->term_taxonomy} tt ON tt.term_taxonomy_id = tr.term_taxonomy_id
+        WHERE tt.taxonomy = 'product_cat'
+        AND tt.term_id IN ($cat_ids_placeholder)
+        AND p.post_type = 'product'
+        AND p.post_status = 'publish'
+    ";
+
+    $prepared = $wpdb->prepare($query, $cat_ids);
+    $valid_term_taxonomy_ids = $wpdb->get_col($prepared);
+
+    if (empty($valid_term_taxonomy_ids)) {
+        return;
+    }
+
+    // получаем term_id по найденным term_taxonomy_id
+    $valid_term_ids = $wpdb->get_col("
+        SELECT term_id 
+        FROM {$wpdb->term_taxonomy}
+        WHERE term_taxonomy_id IN (" . implode(',', array_map('intval', $valid_term_taxonomy_ids)) . ")
+    ");
+
+    // фильтрация массива
+    $lowest_cats = array_filter($lowest_cats, function($cat) use ($valid_term_ids) {
+        return in_array($cat->term_id, $valid_term_ids);
+    });
+
+    // сортировка
+    usort($lowest_cats, function($a, $b) {
+        return strcmp($a->name, $b->name);
+    });
+
     $words_to_remove = [' (Цитрофортунелла)','овая пальма', ' (Кодиеум)', ' (Купрессус)', ' (Седум)', ' (Эриокактус)', ' (Буксус)', ' (Крестовник)', ' (Кентия)', ' Одри'];
-    foreach ( $lowest_cats as $cat ) {
-        $name = $cat ->name;
-        if($words_to_remove) {
-            foreach ($words_to_remove as $word) {
-                $name = str_replace($word,'',$name);
-                $name = str_replace('ковое дерево','а',$name);
-            }
+
+    foreach ($lowest_cats as $cat) {
+        $name = $cat->name;
+
+        foreach ($words_to_remove as $word) {
+            $name = str_replace($word, '', $name);
+            $name = str_replace('ковое дерево', 'а', $name);
         }
         ?>
         <li class="header__main-submenu-item">
-            <a href="<?php echo get_term_link($cat->term_id,'product_cat')?>"><?php echo $name?></a>
-        </li> 
+            <a href="<?php echo esc_url(get_term_link($cat->term_id,'product_cat')); ?>">
+                <?php echo esc_html($name); ?>
+            </a>
+        </li>
         <?php
     }
 }

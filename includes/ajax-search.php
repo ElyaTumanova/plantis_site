@@ -22,10 +22,6 @@ function plnt_search_ajax_action_callback (){
   //   'tick'     => wp_nonce_tick(),
   // ]);
 
-
-    global $plants_treez_cat_id;
-    global $peresadka_cat_id;
-    global $plants_cat_id;
     if ( ! check_ajax_referer('search-nonce', 'nonce', false) ) {
       wp_send_json_error(['message' => 'Bad nonce'], 403);
     }
@@ -42,7 +38,6 @@ function plnt_search_ajax_action_callback (){
     $q_page = $result['query'];
     $found = (int) ($q_page->found_posts ?? 0);
     plnt_log_search_query($query, $found);
-    // $json_data['out'] = ob_start(PHP_OUTPUT_HANDLER_CLEANABLE);
     ob_start();
     ?> <div class='search-result__items'> <?php
 
@@ -66,11 +61,10 @@ function plnt_search_ajax_action_callback (){
 
     $out = ob_get_clean();
 
-    // $json_data['out'] = ob_get_clean();
-    // wp_send_json($json_data);
     wp_send_json([
       'out'   => $out,
       'found' => $found,
+      '$query' => $query
     ]);
 }
 
@@ -127,7 +121,28 @@ function render_search_result($product) {
 
 
 function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $paged=null) {
-  $search = trim((string)$search);
+  $search = (string)$search;
+
+  // убираем все виды тире/дефисов и кавычек
+  // $search = preg_replace(
+  //     '/[\p{Pd}\x{2212}\x{2043}\p{Pi}\p{Pf}"\'`]+/u',
+  //     '',
+  //     $search
+  // );
+
+  //заменяет длинное тире на короткое
+  $search = preg_replace('/[\p{Pd}\x{2212}]/u', '-', $search);
+
+  // убираем только кавычки (все виды)
+  $search = preg_replace(
+      '/[\p{Pi}\p{Pf}"\'`]+/u',
+      '',
+      $search
+  );
+
+  // дополнительно чистим лишние пробелы
+  $search = preg_replace('/\s+/u', ' ', $search);
+  $search = trim($search);
 
   // (опционально) SKU — если хотите, чтобы он был самым первым:
   $sku_id = wc_get_product_id_by_sku($search);
@@ -311,6 +326,21 @@ function plnt_collect_ids_by_text($search, $mode) {
         ]]
     ];
 
+    $argPlantsTreez = $common + [
+        'meta_query' => [[
+            'key'     => '_stock_status',
+            'value'   => 'outofstock',
+            'compare' => 'NOT IN',
+        ]],
+        'tax_query' => [[
+            'taxonomy' => 'product_cat',
+            'field' => 'id',
+            'operator' => 'IN',
+            'terms' => [$plants_treez_cat_id],
+            'include_children' => 1,
+        ]]
+    ];
+    
     $argOther = $common + [
         'meta_query' => [[
             'key'     => '_stock_status',
@@ -327,12 +357,14 @@ function plnt_collect_ids_by_text($search, $mode) {
     ];
 
     $q1 = new WP_Query($argPlants);
-    $q2 = new WP_Query($argOther);
+    $q2 = new WP_Query($argPlantsTreez);
+    $q3 = new WP_Query($argOther);
 
     $ids1 = array_map('intval', (array)$q1->posts);
     $ids2 = array_map('intval', (array)$q2->posts);
+    $ids3 = array_map('intval', (array)$q3->posts);
 
-    return array_values(array_unique(array_merge($ids1, $ids2)));
+    return array_values(array_unique(array_merge($ids1, $ids2, $ids3)));
 }
 
 add_action('wp_ajax_get_search_nonce', 'plnt_get_search_nonce');

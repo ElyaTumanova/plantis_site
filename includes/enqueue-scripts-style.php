@@ -13,6 +13,7 @@ if ( ! function_exists( 'ast_scripts' ) ) {
     global $local_pickup, $delivery_free, $delivery_pochta, $delivery_courier, $delivery_long_dist;
 
     $late_markup_delivery   = carbon_get_theme_option('late_markup_delivery');
+    $late_interval_delivery   = carbon_get_theme_option('late_interval_delivery');
     $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
     $shipping_costs         = plnt_get_shiping_costs();
 
@@ -23,6 +24,11 @@ if ( ! function_exists( 'ast_scripts' ) ) {
     $isTreezBackorders = plnt_is_treez_backorder();
 
     $delivery_murkup = get_delivery_markup();
+
+    $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff');
+    $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
+    $isSmallHolidayCart = WC()->cart->subtotal < 5000;
+    $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
 		// wp_enqueue_script( 'magnific-popup', get_template_directory_uri() .
 		//                                      '/assets/js/jquery.magnific-popup.min.js', array( 'jquery' ), null, true );
 		// wp_enqueue_script( 'owl-script', get_template_directory_uri() .
@@ -55,11 +61,14 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 
             'deliveryUrgMarkup'     => (float) $delivery_murkup['urg'],
             'deliveryLateMarkup'    => (float) $late_markup_delivery,
+            'deliveryLateInterval'    => (string) $late_interval_delivery,
             'deliveryMarkupInMkad'  => (float) $delivery_murkup['in_mkad'],
             'deliveryMarkupOutMkad' => (float) $delivery_murkup['out_mkad'],
 
             'isBackorder'           => (bool) $isbackorders,
             'isTreezBackorders'     => (bool) $isTreezBackorders,
+            'isUrgentCourierTariff'     => $isUrgentCourierTariff,
+            'isSmallHolidayTariffOn' => $isSmallHolidayTariffOn,
         ]
     );
     
@@ -119,8 +128,8 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		wp_enqueue_script( 'gift-card', get_template_directory_uri() .
 		                                     '/assets/js/gift-card.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/gift-card.js'), true );
 
-		wp_enqueue_script( 'delivery-dropdown', get_template_directory_uri() .
-		                                     '/assets/js/delivery-dropdown.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/delivery-dropdown.js'), true );
+		// wp_enqueue_script( 'delivery-dropdown', get_template_directory_uri() .
+		//                                      '/assets/js/delivery-dropdown.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/delivery-dropdown.js'), true );
 		
 		wp_enqueue_script( 'cart-backorder-crossell', get_template_directory_uri() .
 		                                     '/assets/js/cart-backorder-crossell.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/cart-backorder-crossell.js'), true );
@@ -140,6 +149,8 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		                                     '/assets/js/cart-upsells.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/cart-upsells.js'), true );
 		wp_enqueue_script( 'contact-form-validation', get_template_directory_uri() .
 		                                     '/assets/js/contact-form-validation.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/contact-form-validation.js'), true );
+		wp_enqueue_script( 'form-validation', get_template_directory_uri() .
+		                                     '/assets/js/form-validation.js', array(), filemtime(get_stylesheet_directory() .'/assets/js/form-validation.js'), true );
 
 
 		wp_enqueue_script( 'metrikaGoal', get_template_directory_uri() .
@@ -163,12 +174,12 @@ function my_enqueue_recaptcha_woo_js() {
         true
     );
     wp_localize_script('recaptcha-woocommerce', 'recaptchaWoo', array(
-        'siteKey' => '6LcP2rIrAAAAAGxrNXEe4AP0rC_fXZ7v7vKVr4wF',
+        'siteKey' => '6LezYTQsAAAAAEzapFcvWQ9w9vAP1uCYtNKXKfXy',
         'debug'   => false // <-- ставь false, чтобы выключить логи
     ));
     wp_enqueue_script('recaptcha-woocommerce');
 }
-add_action('wp_enqueue_scripts', 'my_enqueue_recaptcha_woo_js');
+//add_action('wp_enqueue_scripts', 'my_enqueue_recaptcha_woo_js');
 
 /**
  * Enqueue all styles

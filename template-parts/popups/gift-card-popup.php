@@ -3,9 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 $close_icon = carbon_get_theme_option('close_icon');
-function datePlus3MonthsIntl() {
-    // создаём дату через 3 месяца
-    $date = new DateTime('+3 months');
+function datePlus12MonthsIntl() {
+    // создаём дату через 12 месяцев
+    $date = new DateTime('+12 months');
 
     // массив русских названий месяцев в родительном падеже
     $months = [
@@ -30,6 +30,7 @@ function datePlus3MonthsIntl() {
     return "{$day} {$month} {$year}";
 }
 
+
 ?>
 <div class="page-popup popup gift-card-popup">
   <div class="page-popup__container popup__container">
@@ -53,7 +54,7 @@ function datePlus3MonthsIntl() {
             </div>
             <div class="gift-card__row">
               <p>Срок действия сертификата:</p>
-              <p><?php echo datePlus3MonthsIntl(); ?></p>
+              <p><?php echo datePlus12MonthsIntl(); ?></p>
             </div>
           </div>
           

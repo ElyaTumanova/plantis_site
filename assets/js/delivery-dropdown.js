@@ -1,4 +1,4 @@
-// for page https://plantis.shop/delivery/
+// for page https://plantis.shop/delivery/ - not used - to be refactored
 const del_dropdown = document.querySelectorAll('.delivery__block');
 
 del_dropdown.forEach((el) => {

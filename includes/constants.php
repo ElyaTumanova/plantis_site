@@ -100,8 +100,8 @@ add_action( 'wp_footer', 'plnt_check_site' );
 	$delivery_long_dist = 'free_shipping:3';
 
 	//#filters ID's
-    $filter_plant_type_id = 9310; //ok
-    $filter_plant_name_id = 9311; //ok
+  $filter_plant_type_id = 9310; //ok
+  $filter_plant_name_id = 9311; //ok
 	$filter_podborki_id = 9323; //ok
 	$filter_in_stock_id = 6110; //undo
 	$filter_price_id = 9300; //ok

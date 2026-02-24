@@ -2,7 +2,11 @@ const DELIVERY = window.PLNT_Delivery_Data || {};
 let isUrgent;
 let isLate;
 let isHoliday; //скрываем подние интервалы доставки
-let holidays = []; //format dd.mm
+// let holidays = []
+// let notWorking = []
+
+let holidays = ['31.12']; //format dd.mm
+let notWorking = ['01.01','02.01','03.01'] //format dd.mm
 let deliveryDatesInfo = [];
 let deliveryIntervalsInfo = []
 let shippingMethodValues = [];
@@ -10,6 +14,11 @@ let checkedShippingMethod = '';
 let checkedDate = '';
 let checkedInterval = '';
 let today;
+let isUrgentCourierTariff = DELIVERY.isUrgentCourierTariff == '1';
+let deliveryLateInterval = DELIVERY.deliveryLateInterval
+let isSmallHolidayTariffOn = DELIVERY.isSmallHolidayTariffOn == '1';
+console.debug('isUrgentCourierTariff ',isUrgentCourierTariff);
+console.debug('isSmallHolidayTariffOn ',isSmallHolidayTariffOn);
 
 let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
 let addressFields = document.querySelector('#billing_address_1_field');
@@ -22,6 +31,7 @@ let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerc
 let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
 let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
 
+
 //определяем параметры оформления заказа, влияющие на стоимость доставки и вызываем аякс, отрисовываем поля дат и интервалов доставки
 function getOrderParametrs(event) {
   console.debug(event);
@@ -30,65 +40,66 @@ function getOrderParametrs(event) {
   } else {
     checkedShippingMethod = getCheckedShippingMethod();
   }
-  console.debug(checkedShippingMethod);
+  console.debug('checkedShippingMethod ',checkedShippingMethod);
+  
   checkedDate = getCheckedDate();
-  console.debug(checkedDate);
-
+  console.debug('checkedDate ', checkedDate)
+  
   if(checkedDate == today) {
     isUrgent = '1';
-    // isLate = '0';
   } else {
     isUrgent = '0';
   }
   
   hideCheckoutFields(event);
-
+  
+  checkHoliday(checkedDate);
+  // определеяем checkedInterval после hideCheckoutFields, так как там идет сбрас выбранного интервала и после checkHoliday, так как идет выбор доступного интервала
   checkedInterval = getCheckedInterval();
-  console.debug(checkedInterval)
-
-
-  if(checkedInterval == '18:00 - 21:00') {
+  console.debug('checkedInterval ', checkedInterval)
+  if(checkedInterval == deliveryLateInterval) {
     isLate = '1'
   } else {
     isLate = '0'
   }
 
-
-  console.debug(isUrgent);
-  console.debug(isLate);
-
-  checkHoliday(checkedDate);
-
+  console.debug('isUrgent ', isUrgent);
+  console.debug('isLate', isLate);
+  
   renderDeliveryDates(checkedShippingMethod);
   renderDeliveryIntervals(checkedShippingMethod);
 
   if(event.target.className == "shipping_method" || 
     event.target.name == "delivery_dates" || 
-    event.target.name == "additional_delivery_interval" )
+    event.target.name == "additional_delivery_interval" ||
+    notWorking.length > 0 ||  holidays.length > 0)
     //|| event.target == document
    {
-      console.log('нужен пересчет')
+      console.debug('нужен пересчет')
       ajaxGetUrgent();
     } 
     else {
-      console.log('не нужен пересчет')
+      console.debug('не нужен пересчет')
     }
 }
 
-function getCheckedShippingMethod (){
+function getCheckedShippingMethod() {
   let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
   return checkedShippingMethodInput.value;
 }
 
 function getCheckedDate (){
- let dateInputs = document.querySelectorAll('.delivery_dates input');
- let checkedDateInput = Array.from(dateInputs).find((el)=>el.checked == true); 
- return checkedDateInput.value;
+ let checkedDateInput = Array.from(deliveryDatesInput).find((el)=>el.checked == true); 
+ if(checkedDateInput) {
+   console.debug('checkedDate ',checkedDateInput.value)
+   return checkedDateInput.value;
+ } else {
+  return ''
+ }
 }
 
 function getCheckedInterval (){
- let dateIntervals = document.querySelectorAll('.additional_delivery_interval input');
- let checkedIntervalInput = Array.from(dateIntervals).find((el)=>el.checked == true); 
+ let checkedIntervalInput = Array.from(deliveryIntervalInput).find((el)=>el.checked == true); 
  if(checkedIntervalInput) {
    return checkedIntervalInput.value;
  } else {
@@ -108,6 +119,16 @@ function renderDeliveryDates(shippingValue) {
       if(shippingValue == DELIVERY.deliveryOutMKAD) {
         priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupOutMkad)}₽` : `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryMarkupOutMkad)}₽` ;
       }
+      if ((shippingValue == DELIVERY.deliveryInMKAD || shippingValue == DELIVERY.deliveryOutMKAD) && isUrgentCourierTariff) {
+          if (info.for == `delivery_dates_${today}`) {
+              priceEl.innerHTML = 'по тарифу КС';
+          }
+      }
+      if ((shippingValue == DELIVERY.deliveryInMKAD || shippingValue == DELIVERY.deliveryOutMKAD) && isSmallHolidayTariffOn) {
+          if (info.for != `delivery_dates_${today}`) {
+              priceEl.innerHTML = 'по тарифу КС';
+          }
+      }
   })
 }
 
@@ -117,12 +138,12 @@ function renderDeliveryIntervals(shippingValue) {
     let priceEl = document.createElement('span');
     info.label.innerHTML=`${info.text}`;
     info.label.appendChild(priceEl);
-      if(shippingValue == DELIVERY.localPickupId || shippingValue == DELIVERY.deliveryFreeId || shippingValue == DELIVERY.deliveryPochtaId ||shippingValue == DELIVERY.deliveryCourierId || shippingValue == DELIVERY.deliveryLongId) {
+      if(shippingValue == DELIVERY.localPickupId || shippingValue == DELIVERY.deliveryFreeId || shippingValue == DELIVERY.deliveryPochtaId ||shippingValue == DELIVERY.deliveryCourierId || shippingValue == DELIVERY.deliveryLongId || isSmallHolidayTariffOn) {
       } else {
         if (isUrgent == '1') {
           priceEl.innerHTML = `+0₽`;
         } else {
-          priceEl.innerHTML = info.for == `additional_delivery_interval_18:00 - 21:00` ? `+${DELIVERY.deliveryLateMarkup}₽` : `+0₽` ;
+          priceEl.innerHTML = info.for == `additional_delivery_interval_${deliveryLateInterval}` ? `+${DELIVERY.deliveryLateMarkup}₽` : `+0₽` ;
         }
       }
   })
@@ -179,22 +200,22 @@ function setInitalState() {
 
   isLate = 0;
 
-  if (hour >= 20) {
-    today = `${((new Date().getDate()+1) < 10 ? '0' : '') + (new Date().getDate() + 1)}.${((new Date().getUTCMonth() + 1)< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
-  } else {
-    today = `${(new Date().getDate()< 10 ? '0' : '') + new Date().getDate()}.${((new Date().getUTCMonth() + 1)< 10 ? '0' : '') + (new Date().getUTCMonth() + 1)}`;
-  };
+  const baseDate = new Date();
+  if (hour >= 20) baseDate.setDate(baseDate.getDate() + 1);
 
- console.debug(today);
- console.debug(new Date().getUTCMonth() + 1);
- console.debug(new Date().getDate());
+  today = `${String(baseDate.getDate()).padStart(2,'0')}.${String(baseDate.getUTCMonth()+1).padStart(2,'0')}`;
 
+  console.debug('today ', today);
+  console.debug('this month ', new Date().getUTCMonth() + 1);
+  console.debug('this day ', new Date().getDate());
  
-  checkHoliday(deliveryDatesInput[0].value);
-
   deliveryDatesInput[0].checked = true;
   deliveryIntervalInput[0].checked = true;
+ 
 
+  if(notWorking.length > 0) {
+    disableNotWorkingDays()
+  }
 }
 
 //функция собирает исходные значения полей дат и интервалов доставки, чтобы потом пересивовать их
@@ -223,10 +244,32 @@ function checkHoliday(date) {
   if (holidays) {
     if (holidays.includes(date)) {
       isHoliday = '1'
+      deliveryIntervalInput.forEach(el =>{
+          if(el.defaultValue !== '11:00 - 16:00') {
+              el.classList.add('d-none');
+            } else {
+              el.checked = true
+              console.log(el)
+            }
+      })
+      deliveryIntervalLabels.forEach(el =>{
+          if(el.htmlFor !== 'additional_delivery_interval_11:00 - 16:00') {
+              el.classList.add('d-none');
+          }
+      })
     } else {
       isHoliday = '0'
+      deliveryIntervalInput.forEach(el =>{
+          el.classList.remove('d-none');
+      })
+      deliveryIntervalLabels.forEach(el =>{
+          el.classList.remove('d-none');
+      })
     };
   }
+
+  console.log('isHoliday ', isHoliday)
+
 }
 
 function hideInterval() {
@@ -234,7 +277,7 @@ function hideInterval() {
   deliveryIntervalInput.forEach((input)=>{
       input.checked = false;
   })
-  console.debug(deliveryIntervalInput)
+  // console.debug(deliveryIntervalInput)
 }
 
 function showInterval() {
@@ -245,7 +288,7 @@ function showInterval() {
 }
 
 function hideCheckoutFields(event){
-  //console.log('hi hideCheckoutFields');
+  console.log('hi hideCheckoutFields');
   if (deliveryInterval) {
       if (DELIVERY.isBackorder || DELIVERY.isTreezBackorders) {
           hideInterval()
@@ -285,7 +328,7 @@ function hideCheckoutFields(event){
   
   // for INN
   if (innField) {
-      console.debug(document.querySelector('.wc_payment_methods input[checked="checked"]').value);
+      // console.debug(document.querySelector('.wc_payment_methods input[checked="checked"]').value);
       if(event && event.target.id == "payment_method_cheque") {
           innField.classList.remove('d-none');
       } else {
@@ -300,33 +343,32 @@ function hideCheckoutFields(event){
           }
       };
   }        
+}
 
-  // for holidays
-  if (isHoliday === '1') {
-      deliveryIntervalInput.forEach(el =>{
-          if(el.defaultValue !== '11:00 - 16:00') {
-              el.classList.add('d-none');
-          }
-      })
-      deliveryIntervalLabels.forEach(el =>{
-          if(el.htmlFor !== 'additional_delivery_interval_11:00 - 16:00') {
-              el.classList.add('d-none');
-          }
-      })
-  }
-  if (isHoliday === '0') {
-      deliveryIntervalInput.forEach(el =>{
-          el.classList.remove('d-none');
-      })
-      deliveryIntervalLabels.forEach(el =>{
-          el.classList.remove('d-none');
-      })
+function disableNotWorkingDays () {
+  deliveryDatesInput.forEach(date => {
+    if (notWorking.includes(date.value)) {
+      date.disabled = true;
+      date.checked = false;
+    }
+  })
+
+  deliveryDatesLables.forEach(date => {
+    if (notWorking.includes(date.textContent)) {
+      date.classList.add('d-none');
+    }
+  })
+
+  const arr = Array.from(deliveryDatesInput);
+  const firstOk = arr.find(date => !notWorking.includes(date.value));
+  if (firstOk) {
+    firstOk.checked = true;
   }
 }
 
 if (checkoutForm) {
 
-  setInitalState();
+  setInitalState()
 
   document.addEventListener('DOMContentLoaded', getDatesIntervalsInfo )
 

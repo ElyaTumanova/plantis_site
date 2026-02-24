@@ -44,6 +44,7 @@
 
 #customer_details input, .delivery_wrap input {
 	font-weight: 500 !important;
+  border-radius: 40px;
 }
 
 #customer_details span, .delivery_wrap span {
@@ -78,9 +79,10 @@
   text-align: center;
   background-color: var(--accent-back);
   padding: 20px 5px;
-  border-radius: 15px;
+  border-radius: 25px;
   font-weight: 600;
   line-height: 1.3;
+  border: 1px solid #ccc;
 }
 
 .checkout__title {
@@ -137,7 +139,7 @@
     font-size:20px; 
     font-weight: 600;}
 
-#order_review > table > thead {background-color:var(--accent-color); color: var(--white);}
+#order_review > table > thead {background-color:var(--accent-color); color: var(--white); border-radius: 20px;}
 
 #order_review > table > tbody {font-weight: 600; border-bottom: 2px solid var(--accent-color);}
 
@@ -155,16 +157,18 @@
 #order_review > table > thead > tr > th.product-name {
     font-weight: 500;
     font-size: 16px;
-    padding: 10px 5px;
+    padding: 10px 5px 10px 20px;
     text-align: left;
     width: 70%;
+    border-top-left-radius: 20px;
 }
 
 #order_review > table > thead > tr > th.product-total {
     font-weight: 500;
     font-size: 16px;
-    padding: 10px 5px;
+    padding: 10px 20px 10px 5px;
     text-align: right;
+    border-top-right-radius: 20px;
 }
 
 .woocommerce-checkout .woocommerce-checkout-review-order table tbody tr td {
@@ -217,6 +221,7 @@
 
 #shipping_method {
     display: flex;
+    gap: 10px;
     min-height: 85px;
     overflow-x: auto;
 }
@@ -309,11 +314,14 @@
 /* способы оплаты */
 
 .wc_payment_methods li .payment_box {
-    padding: 20px;
-    border-radius: 4px;
-    margin: 10px 0 15px;
-    display: block;
-    background-color: var(--accent-back);
+    /* padding: 20px; */
+    /* border-radius: 4px; */
+    margin-top: 15px;
+    /* display: block; */
+    /* background-color: var(--accent-back); */
+}
+.wc_payment_methods li .payment_box p {
+  line-height: 1.3;
 }
 
 /* кнопка оформления заказа*/
@@ -332,6 +340,9 @@
 }
 .woocommerce-checkout .wc_payment_methods .wc_payment_method{
     margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 15px;
 }
 
 .woocommerce-checkout .wc_payment_methods label:hover{
@@ -366,8 +377,8 @@
 @media (max-width: 767px) {
     .woocommerce-billing-fields__field-wrapper input {
         margin-bottom: 15px;
-    }
-    
+        padding: 14px 14px;
+    } 
 }
 
 .woocommerce-billing-fields__field-wrapper input.input-radio {
@@ -380,6 +391,13 @@
 
 #dontcallme_field .woocommerce-input-wrapper {
     margin-top: 10px;
+    gap: 15px;
+}
+
+@media (max-width: 470px) {
+  #dontcallme_field .woocommerce-input-wrapper {
+      flex-wrap: wrap;
+  }
 }
 
 #dontcallme_field .radio {
@@ -418,6 +436,13 @@
     width: 100%;
     /* margin-bottom: 30px; */
     border: 1px solid #ccc;
+    border-radius: 25px;
+}
+
+@media (max-width: 767px) {
+    .woocommerce-additional-fields__field-wrapper textarea {
+        padding: 14px 14px;
+    } 
 }
 
 
@@ -494,7 +519,7 @@
     flex-direction: column;
     column-gap: 30px;
     row-gap: 30px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 @media (max-width: 767px) {
@@ -504,7 +529,7 @@
 }
 
 
-#additional_delivery_interval_field label::before, #delivery_dates_field label::before{
+#additional_delivery_interval_field label::before, #delivery_dates_field label::before,  #dontcallme_field label::before{
     display: none;
 }
 
@@ -517,6 +542,7 @@
     row-gap: 10px; */
     overflow: scroll;
     scrollbar-width: none;
+    gap: 10px;
 }
 
 /* для работы слайдера */
@@ -525,10 +551,9 @@
     width: 100%;
     overflow: hidden;
 }
-/* #delivery_dates_field .woocommerce-input-wrapper {
-    overflow: scroll;
-    scrollbar-width: none;
-} */
+#delivery_dates_field .woocommerce-input-wrapper {
+    gap: 10px;
+}
 
 #additional_delivery_interval_field > label {
     font-weight: 700;
@@ -538,16 +563,16 @@
 
 #additional_delivery_interval_field .woocommerce-input-wrapper label, 
 #delivery_dates_field .woocommerce-input-wrapper label, 
-#shipping_method label {
+#shipping_method label, #dontcallme_field .woocommerce-input-wrapper label {
     background-color: #f5f5f5;
     border: 1px solid #D0D0D0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-radius: 5px;
+    border-radius: 20px;
     /* margin: 5px; */
     padding: 5px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     text-align: center;
 
     font-size: 13px;
@@ -556,6 +581,32 @@
 
     width: 95px;
     min-height: 28px;
+
+    cursor: pointer;
+}
+
+#delivery_dates_field .woocommerce-input-wrapper label.disabled {
+  color: var(--gray-text);
+}
+#delivery_dates_field .woocommerce-input-wrapper label.disabled span{
+  display: none;
+}
+
+#additional_delivery_interval_field .woocommerce-input-wrapper label {
+  width: 100%;  
+  /* min-width: 115px; */
+  /* max-width: 137px; */
+}
+
+#dontcallme_field .woocommerce-input-wrapper label {
+  width: 100%;  
+  min-height: 40px;
+}
+
+@media (max-width: 470px) {
+  #dontcallme_field .woocommerce-input-wrapper label {
+    width: 155px;
+  }
 }
 
 #delivery_dates_field .woocommerce-input-wrapper label span {
@@ -582,6 +633,12 @@
     background-color: #3a3a3a;
     color: #fff;
 }
+
+#dontcallme_field .woocommerce-input-wrapper input[type=radio]:checked + label {
+    background-color: #3a3a3a;
+    color: #fff;
+}
+
 #shipping_method input[type=radio]:checked + label {
     background-color: #3a3a3a;
     color: #fff;
@@ -705,12 +762,16 @@ label.list-view {
 
 /* уведомления */
 
+.checkout__comment {
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+
 .checkout__text {
-	font-weight: 500;
+    font-weight: 500;
     line-height: 1.2;
-    padding: 10px !important;
-    background-color: var(--gray);
-    border-radius: 5px;
+    margin: 15px;
+    /* background-color: var(--gray); */
 }
 
 /* .checkout__text_alarm {
@@ -753,7 +814,7 @@ label.list-view {
   color: var(--text);
   box-shadow: none;
   background-color: var(--bg);
-  display: none; 
+  /* display: none;  */
 }
 
 .ywgc-show-giftcard::after {
@@ -907,3 +968,102 @@ label.list-view {
 .payment_method_tbank img {
     display: none;
 }
+
+
+/*gift card payment page*/
+
+.woocommerce-order-pay .content-area {
+    max-width: 600px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.woocommerce-order-pay .gift-card #payment #place_order {
+    background-color: var(--text);
+    color: var(--white);
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.gift-order-items .gift-image-wrap {
+  max-width: 500px;
+}
+
+.gift-order-items .gift-payment {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  font-weight: 600;
+  font-size: 17px;
+  margin-bottom: 30px;
+  max-width: 500px;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+/* radio button */
+
+.gift-card #payment input[type=radio] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  width: fit-content;
+}
+
+
+/* для элемента label связанного с #order_review input[type=radio] */
+.gift-card #payment input[type=radio] + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+/* создание в label псевдоэлемента before */
+.gift-card #payment input[type=radio] + label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #adb5bd;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+/* hover */
+.gift-card #payment input[type=radio]:not(:disabled):not(:checked) + label:hover::before {
+  border-color: #b3d7ff;
+}
+
+/* active */
+.gift-card #payment input[type=radio]:not(:disabled):active + label::before {
+  background-color: #b3d7ff;
+  border-color: #b3d7ff;
+}
+
+/* focus */
+.gift-card #payment input[type=radio]:focus + label::before {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* focus, но не checked */
+.gift-card #payment input[type=radio]:focus:not(:checked) + label::before {
+  border-color: #80bdff;
+}
+
+/* checked */
+.gift-card #payment input[type=radio]:checked + label::before {
+  border-color: var(--accent-color);
+  background-color: var(--accent-color);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+}
+
+/* disabled */
+.gift-card #payment input[type=radio]:disabled + label::before {
+  background-color: #e9ecef;
+}
+

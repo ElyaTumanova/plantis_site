@@ -136,7 +136,7 @@ const gridButton3 = document.getElementById('catalog__grid-button-3');
 const catalogWrap = document.querySelector('.catalog__products-wrap');
 if(catalogWrap) {
     const catalogGrid = catalogWrap.querySelector('.products');
-    console.log(catalogGrid.classList)
+    // console.log(catalogGrid.classList)
     if(catalogGrid.classList.contains('columns-2')) {
       gridButton3.disabled = false;
       gridButton2.disabled = true;

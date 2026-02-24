@@ -13,5 +13,8 @@ global $treez_poliv_cat_id;
         <?php get_catalog_submenu('kashpo-lechuza','/product-category',2,[],['Кашпо Lechuza '], true);?>
         <?php get_catalog_submenu('ukhod','/product-category',2);?>
         <?php get_catalog_submenu('iskusstvennye-rasteniya-treez','/product-category',3,[],['Treez','Искусственные', 'Искусственная', 'Искусственное', 'Искусственный','растения'],true);?>
+        <li class ="catalog__node">
+          <a href="<?php echo site_url()?>/shop/gift-card">Подарочный сертификат</a>
+        </li>
     </ul>
 </nav>

@@ -226,10 +226,10 @@ Contents
                 'label'         => 'Интервал',
                 'label_class'   => '', // класс лейбла
                 'options'	=> array( // options for  or 
-                    '11:00 - 21:00'		=> '11:00 - 21:00', // 'значение' => 'заголовок'
+                    '11:00 - 22:00'		=> '11:00 - 22:00', // 'значение' => 'заголовок'
                     '11:00 - 16:00'	=> '11:00 - 16:00', // 
-                    '14:00 - 18:00'	=> '14:00 - 18:00',
-                    '18:00 - 21:00'	=> '18:00 - 21:00',
+                    '14:00 - 19:00'	=> '14:00 - 19:00',
+                    '18:00 - 22:00'	=> '18:00 - 22:00',
                 )
             ),
         );
@@ -341,6 +341,7 @@ Contents
         woocommerce_wp_text_input( array(
             'id' => 'delivery_dates',
             'label' => 'Дата доставки (самовывоза)',
+            'wrapper_class' => 'form-field-wide',
         ) );
         echo '</div>';
     }
@@ -365,10 +366,11 @@ Contents
             'wrapper_class' => 'form-field-wide',
             'value' => $method,
             'options' => array(
-                '11:00 - 21:00'		=> '11:00 - 21:00', // 'значение' => 'заголовок'
+                ''                   => '— Не выбран —', // значение по умолчанию "пусто"
+                '11:00 - 22:00'		=> '11:00 - 22:00', // 'значение' => 'заголовок'
                 '11:00 - 16:00'	=> '11:00 - 16:00', 
-                '14:00 - 18:00'	=> '14:00 - 18:00',
-                '18:00 - 21:00'	=> '18:00 - 21:00',
+                '14:00 - 19:00'	=> '14:00 - 19:00',
+                '18:00 - 22:00'	=> '18:00 - 22:00',
             )
         ) );
         echo '</div>';
@@ -406,6 +408,21 @@ Contents
     
         return $rows;
     
+    }
+
+    // // добавляем в админку флаг доставка по тарифу курьерской службы
+     add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_courier_deliv_flag_field_value', 25 );
+    
+    function plnt_print_courier_deliv_flag_field_value( $order ){
+    
+        $method = get_post_meta( $order->get_id(), '_is_courier_deliv_flag', true ) == '1';
+    
+        echo '<div class="address">
+            <p' . ( ! $method ? ' class="none_set"' : '' ) . '>
+                <strong>Доставка по тарифу курьерской службы</strong>
+                ' . ( $method ? 'Да' : 'Нет' ) . '
+            </p>
+        </div>';
     }
 
 /*--------------------------------------------------------------
@@ -477,6 +494,11 @@ Contents
         }
         $min_small_delivery = carbon_get_theme_option('min_small_delivery');
         $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
+        // $isUrgentCourierTariff = true;
+        $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
+        $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
+        $isSmallHolidayCart = WC()->cart->subtotal < 5000;
+        $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
         $shipping_costs = plnt_get_shiping_costs();
         global $delivery_inMKAD;
         global $delivery_outMKAD;
@@ -499,65 +521,81 @@ Contents
             //Срочная доставка "День в день"
 
             if ( WC()->session->get('isUrgent' ) === '1') {
-                if($hour < 18) {
-                    echo '<div class="checkout__text checkout__text_urgent">
-                        Срочную доставку можно оформить до 18:00. 
-                        После оформления заказа мы свяжемся с вами для его подтверждения. 
-                        <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';
-                }
+              if ($isUrgentCourierTariff) {
+                echo "<div class='checkout__text checkout__text_urgent'> 
+                Срочная доставка в день заказа осуществляется по тарифам курьерской службы. 
+                \nНаш менеджер свяжется с Вами для расчета стоимости доставки.
+                </div>";
+              }
+              if($hour < 18) {
+                  echo '<div class="checkout__text checkout__text_urgent">
+                    Срочную доставку можно оформить до 18:00. 
+                    После оформления заказа мы свяжемся с вами для его подтверждения. 
+                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';
+              }
             //при оформлении после 20:00-00:00 текущего дня
-                if($hour >= 20) {
-                    echo '<div class="checkout__text checkout__text_normal-late">
-                        При оформлении после 20:00 доставки на следующий день стоимость рассчитывается по тарифу срочной доставки. 
-                        После оформления заказа мы свяжемся с вами в рабочее время для его подтверждения.</div>';
-                }
+              if($hour >= 20) {
+                  echo '<div class="checkout__text checkout__text_normal-late">
+                      При оформлении после 20:00 доставки на следующий день стоимость рассчитывается по тарифу срочной доставки. 
+                      После оформления заказа мы свяжемся с вами в рабочее время для его подтверждения.</div>';
+              }
             }
         
             //Доставка не срочная
             if ( WC()->session->get('isUrgent' ) === '0' ) {
-                //при оформлении до 20:00
-                if ($hour < 20) {
-                    echo '<div class="checkout__text checkout__text_normal">
-                        После оформления заказа мы свяжемся с вами в рабочее время с 10:00 до 20:00 для его подтверждения. 
-                        <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';
-                //при оформлении после 20:00-00:00 текущего дня
-                } else {
-                    echo '<div class="checkout__text checkout__text_normal-late">
-                        При оформлении после 20:00 доставки на следующий день стоимость рассчитывается по тарифу срочной доставки. 
-                        После оформления заказа мы свяжемся с вами в рабочее время для его подтверждения.</div>';
-                }
+              if($isSmallHolidayTariffOn) {
+                  echo '<div class="checkout__text checkout__text_holiday">
+                  В связи с высокой загрузкой курьеров в праздничные дни заказы стоимостью до 5000 руб доставляются по тарифу курьерской службы. 
+                  Мы свяжемся с Вами после оформления заказа и произведем расчет стоимости доставки. 
+                  Также, вы можете самостоятельно бесплатно забрать заказ в нашем магазине, оформив самовывоз.</div>';
+              }
+              //при оформлении до 20:00
+              if ($hour < 20) {
+                  echo '<div class="checkout__text checkout__text_normal">
+                      После оформления заказа мы свяжемся с вами в рабочее время с 10:00 до 20:00 для его подтверждения. 
+                      <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a></div>';
+              //при оформлении после 20:00-00:00 текущего дня
+              } else {
+                  echo '<div class="checkout__text checkout__text_normal-late">
+                      При оформлении после 20:00 доставки на следующий день стоимость рассчитывается по тарифу срочной доставки. 
+                      После оформления заказа мы свяжемся с вами в рабочее время для его подтверждения.</div>';
+              }
             }
             
-            //Доставка заказов до 1500 рублей
-            if (WC()->cart->subtotal < $min_small_delivery) {
-                if(!array_key_exists($delivery_courier,$shipping_costs)) {
-                    echo '<div class="checkout__text checkout__text_small-order">
-                    При заказе на сумму менее '.$min_small_delivery.' рублей стоимость доставки увеличена. 
-                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></div>';
-                } else if ($delivery_courier == $chosen_methods[0] ) {
-                    echo '<div class="checkout__text checkout__text_small-order-holiday">
-                    В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью до '.$min_small_delivery,' рублей доставляются в любой день по тарифу курьерской службы. 
-                    Мы свяжемся с Вами после оформления заказа и произведем расчет стоимости доставки. 
-                    Также, вы можете самостоятельно бесплатно забрать заказ в нашем магазине, оформив самовывоз.
-                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a>
-                    </div>';
-                }  
+            if ((WC()->session->get('isUrgent' ) === '1' && $isUrgentCourierTariff) || (WC()->session->get('isUrgent' ) === '0' && $isSmallHolidayTariffOn)) {
+
             }
-            //Доставка заказов до 2500 рублей
-            else if (WC()->cart->subtotal < $min_medium_delivery){
-                if(!array_key_exists($delivery_courier,$shipping_costs)) {
-                    echo '<div class="checkout__text checkout__text_small-order">
-                    При заказе на сумму менее '.$min_medium_delivery.' рублей стоимость доставки увеличена. 
-                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></div>';
-                } else if ($delivery_courier == $chosen_methods[0] ) {
-                    echo '<div class="checkout__text checkout__text_small-order-holiday">
-                    В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью до '.$min_medium_delivery,' рублей доставляются в любой день по тарифу курьерской службы. 
-                    Мы свяжемся с Вами после оформления заказа и произведем расчет стоимости доставки. 
-                    Также, вы можете самостоятельно бесплатно забрать заказ в нашем магазине, оформив самовывоз.
-                    <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a>
-                    </div>';
-                }  
-       
+              else {
+              //Доставка заказов до 1500 рублей
+              if (WC()->cart->subtotal < $min_small_delivery) {
+                  if(!array_key_exists($delivery_courier,$shipping_costs)) {
+                      echo '<div class="checkout__text checkout__text_small-order">
+                      При заказе на сумму менее '.$min_small_delivery.' рублей стоимость доставки увеличена. 
+                      <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></div>';
+                  } else if ($delivery_courier == $chosen_methods[0] ) {
+                      echo '<div class="checkout__text checkout__text_small-order-holiday">
+                      В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью до '.$min_small_delivery,' рублей доставляются в любой день по тарифу курьерской службы. 
+                      Мы свяжемся с Вами после оформления заказа и произведем расчет стоимости доставки. 
+                      Также, вы можете самостоятельно бесплатно забрать заказ в нашем магазине, оформив самовывоз.
+                      <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a>
+                      </div>';
+                  }  
+              }
+              //Доставка заказов до 2500 рублей
+              else if (WC()->cart->subtotal < $min_medium_delivery){
+                  if(!array_key_exists($delivery_courier,$shipping_costs)) {
+                      echo '<div class="checkout__text checkout__text_small-order">
+                      При заказе на сумму менее '.$min_medium_delivery.' рублей стоимость доставки увеличена. 
+                      <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></div>';
+                  } else if ($delivery_courier == $chosen_methods[0] ) {
+                      echo '<div class="checkout__text checkout__text_small-order-holiday">
+                      В связи с высокой загрузкой курьеров в предпраздничные дни заказы стоимостью до '.$min_medium_delivery,' рублей доставляются в любой день по тарифу курьерской службы. 
+                      Мы свяжемся с Вами после оформления заказа и произведем расчет стоимости доставки. 
+                      Также, вы можете самостоятельно бесплатно забрать заказ в нашем магазине, оформив самовывоз.
+                      <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки и самовывоза.</a>
+                      </div>';
+                  }  
+              }
             }
         }
 
@@ -974,14 +1012,16 @@ add_filter( 'woocommerce_checkout_fields', 'plnt_add_dontcallme_field_to_checkou
 function plnt_add_dontcallme_field_to_checkout( $fields ) {
     $fields['billing']['dontcallme'] = array(
         'type'        => 'radio',
-        'label'       => 'Не нужно звонков, напишите сразу в WhatsApp;)',
+        'label'       => 'К с вами связаться?',
         'required'    => true,
         'class'       => array( 'form-row dontcallme' ),
         'options'     => array(
-            'Да' => 'Да',
-            'Нет'   => 'Нет',
+            'Позвонить' => 'Позвонить',
+            'Написать в Max'   => 'Написать в Max',
+            'Написать в Telegram'   => 'Написать в Telegram',
+            'Написать в Whatsapp'   => 'Написать в Whatsapp',
         ),
-        'default'     => 'Нет',
+        'default'     => 'Позвонить',
     );
 
     $fields['billing']['dontcallme']['priority'] = 30;
@@ -1011,10 +1051,25 @@ function plnt_print_doncallme_field_value( $order ){
 
     echo '<div class="address">
         <p' . ( ! $method ? ' class="none_set"' : '' ) . '>
-            <strong>Не нужно звонков, напишите сразу в WhatsApp;)</strong>
+            <strong>Способ связи</strong>
             ' . ( $method ? $method : 'Не указан.' ) . '
         </p>
-    </div>';
+    </div>
+    <div class="edit_address">';
+    woocommerce_wp_select( array(
+        'id' => 'dontcallme',
+        'label' => 'Способ связи',
+        'wrapper_class' => 'form-field-wide',
+        'value' => $method,
+        'options' => array(
+            ''                   => '— Не выбран —', // значение по умолчанию "пусто"
+            'Позвонить' => 'Позвонить',
+            'Написать в Max'   => 'Написать в Max',
+            'Написать в Telegram'   => 'Написать в Telegram',
+            'Написать в Whatsapp'   => 'Написать в Whatsapp',
+        )
+    ) );
+    echo '</div>';
 }
 
 
@@ -1030,7 +1085,7 @@ function plnt_dontcallme_field_in_email( $rows, $order ) {
     // }
 
     $rows[ 'dontcallme' ] = array(
-        'label' => 'Не нужно звонков, напишите сразу в WhatsApp;)',
+        'label' => 'Способ связи:',
         'value' => get_post_meta( $order->get_id(), 'dontcallme', true )
     );
 
@@ -1069,7 +1124,7 @@ function plnt_save_inn_fields( $order_id ){
 
 // // добавляем поле в админку
 
-add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_inn_field_value', 20 );
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_inn_field_value', 40 );
 
 function plnt_print_inn_field_value( $order ){
 
@@ -1080,7 +1135,14 @@ function plnt_print_inn_field_value( $order ){
             <strong>ИНН (для оплаты по счету)</strong>
             ' . ( $method ? $method : 'Не указан.' ) . '
         </p>
-    </div>';
+    </div>
+    <div class="edit_address">';
+    woocommerce_wp_text_input( array(
+        'id' => 'inn',
+        'label' => 'ИНН',
+        'wrapper_class' => 'form-field-wide',
+    ) );
+    echo '</div>';
 }
 
 
@@ -1253,32 +1315,39 @@ add_filter( 'woocommerce_gateway_description', function( $description, $gateway_
     // Чтобы в письмах выводилась стомость доставки 0 руб при самовывозе
     add_filter( 'woocommerce_get_order_item_totals', function( $totals, $order ) {
         if ( isset( $totals['shipping'] ) ) {
-            // Узнаём выбранный метод
-            $methods = $order->get_shipping_methods();
-            if ( $methods ) {
-                $method = current( $methods ); // WC_Order_Item_Shipping
-                $method_id = $method->get_method_id(); // например: local_pickup
-                $shipping_total = (float) $order->get_shipping_total();
-                $shipping_tax   = (float) $order->get_shipping_tax();
 
-                // Для самовывоза (local_pickup) показывать 0 ₽ вместо названия
-                if ( false !== stripos( $method_id, 'local_pickup' ) ) {
-                    // Если хотите просто "0 ₽"
-                    $totals['shipping']['value'] = wc_price( 0, [ 'currency' => $order->get_currency() ] );
+          // Если в заказе стоит флаг курьерской доставки — показываем текст вместо суммы
+          if ( (int) $order->get_meta('_is_courier_deliv_flag', true) === 1 ) {
+              $totals['shipping']['value'] = esc_html__( 'по тарифу курьерской службы', 'textdomain' );
+              return $totals;
+          }
 
-                    // Если хотите "Самовывоз — 0 ₽", раскомментируйте:
-                    // $totals['shipping']['value'] = sprintf(
-                    //     '%s — %s',
-                    //     wp_kses_post( $method->get_name() ),
-                    //     wc_price( 0, [ 'currency' => $order->get_currency() ] )
-                    // );
-                } else {
-                    // Для других методов можно принудительно показать числовую стоимость
-                    // (учитывая налог, если нужно)
-                    $amount = $shipping_total + $shipping_tax;
-                    $totals['shipping']['value'] = wc_price( $amount, [ 'currency' => $order->get_currency() ] );
-                }
-            }
+          // Узнаём выбранный метод
+          $methods = $order->get_shipping_methods();
+          if ( $methods ) {
+              $method = current( $methods ); // WC_Order_Item_Shipping
+              $method_id = $method->get_method_id(); // например: local_pickup
+              $shipping_total = (float) $order->get_shipping_total();
+              $shipping_tax   = (float) $order->get_shipping_tax();
+
+              // Для самовывоза (local_pickup) показывать 0 ₽ вместо названия
+              if ( false !== stripos( $method_id, 'local_pickup' ) ) {
+                // Если хотите просто "0 ₽"
+                $totals['shipping']['value'] = wc_price( 0, [ 'currency' => $order->get_currency() ] );
+
+                // Если хотите "Самовывоз — 0 ₽", раскомментируйте:
+                // $totals['shipping']['value'] = sprintf(
+                //     '%s — %s',
+                //     wp_kses_post( $method->get_name() ),
+                //     wc_price( 0, [ 'currency' => $order->get_currency() ] )
+                // );
+              } else {
+                // Для других методов можно принудительно показать числовую стоимость
+                // (учитывая налог, если нужно)
+                $amount = $shipping_total + $shipping_tax;
+                $totals['shipping']['value'] = wc_price( $amount, [ 'currency' => $order->get_currency() ] );
+              }
+          }
         }
         return $totals;
     }, 10, 2 );
@@ -1330,6 +1399,7 @@ add_filter( 'woocommerce_gateway_description', function( $description, $gateway_
             'plnt_payment_method'      => ['Способ оплаты', 'select'],
             'plnt_paid'     => ['Оплачен?', 'select'],
             'plnt_comment'     => ['Комментарий', 'text'],
+            'plnt_messenger'     => ['Где общаемся с клиентом', 'select'],
         ];
 
         $select_field_options = [
@@ -1361,6 +1431,15 @@ add_filter( 'woocommerce_gateway_description', function( $description, $gateway_
                 'yes' => 'Да',
                 'no'  => 'Нет',
                 'other' => 'Иное',
+            ],
+            'plnt_messenger' => [
+                'avito' => 'Авито',
+                'tg' => 'TG',
+                'max'  => 'MAX',
+                'wa' => 'WA',
+                'mail' => 'Почта',
+                'call' => 'Звонок',
+                'other' => 'Иное'
             ],
         ];
 
@@ -1396,6 +1475,7 @@ add_filter( 'woocommerce_gateway_description', function( $description, $gateway_
             'plnt_client_origin',
             'plnt_paid',
             'plnt_comment',
+            'plnt_messenger'  
         ];
 
         foreach ( $fields as $field ) {

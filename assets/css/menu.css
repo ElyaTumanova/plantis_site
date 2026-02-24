@@ -144,9 +144,9 @@
 }
 
 [data-menu = "menu_az_palnts"].header__main-submenu .header__main-submenu_lvl1 {
-    max-height: 370px;
+    max-height: 390px;
     flex-wrap: wrap;
-    column-gap: 27px;
+    column-gap: 25px;
 }
 
 [data-menu = "menu_az_palnts"].header__main-submenu .header__main-submenu_lvl1 a{

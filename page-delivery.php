@@ -21,6 +21,10 @@ get_header(); ?>
     $urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_large');
 
     $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+    $late_interval_delivery = carbon_get_theme_option('late_interval_delivery');
+
+    $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
+    $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
 
     $shipping_costs = plnt_get_shiping_costs();
 
@@ -28,6 +32,15 @@ get_header(); ?>
     $out_mkad = $shipping_costs[$delivery_outMKAD];
     $min_small_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_small_delivery)) - 1;
     $min_medium_delivery_minus_1 =  floatval(str_replace(' ', '',  $min_medium_delivery)) - 1;
+
+
+    $intervals = [
+      '11:00 - 22:00',
+      '11:00 - 16:00',
+      '14:00 - 19:00',
+      '18:00 - 22:00',
+    ];
+
 
     //print_r($shipping_costs);
     
@@ -53,12 +66,19 @@ get_header(); ?>
                                 <li>за пределы МКАД (до 5 км) — от <?php echo $out_mkad ?> рублей;</li>
                                 <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
                             </ul>
+                        <?php if($isHolidayCourierTariff):?>
+                            <p>В связи с высокой загрузкой курьеров в праздничные дни заказы стоимостью до 5000 руб доставляются по тарифу курьерской службы. </p>
+                        <?php endif;?>
                         <p><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
-                        <ul>
-                            <li>в пределах МКАД — от <?php echo floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery)) ?> рублей;</li>
-                            <li>за пределы МКАД (до 5 км) — от <?php echo floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery)) ?> рублей;</li>
-                            <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
-                        </ul>	
+                        <?php if($isUrgentCourierTariff):?>
+                            <p>осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</p>
+                        <?php else:?>
+                          <ul>
+                              <li>в пределах МКАД — от <?php echo floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery)) ?> рублей;</li>
+                              <li>за пределы МКАД (до 5 км) — от <?php echo floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery)) ?> рублей;</li>
+                              <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
+                          </ul>	
+                        <?php endif; ?>
                         <?php if($min_small_delivery || $min_medium_delivery) {
                             if(array_key_exists($delivery_courier,$shipping_costs)) :?>
                                 <p>Если ваш заказ <b>до 
@@ -119,12 +139,16 @@ get_header(); ?>
                                 <li>за пределы МКАД (до 5 км) — от <?php echo(floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)))?> рублей;</li>
                                 <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
                             </ul>
-                            <p><strong>Крупногабаритная срочная “день в день”. Можно оформить до 18:00:</strong></p>
-                            <ul>
-                                <li>в пределах МКАД — от <?php echo(floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_in_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)))?> рублей;</li>
-                                <li>за пределы МКАД (до 5 км) — от <?php echo(floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)))?> рублей;</li>
-                                <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
-                            </ul>
+                            <p><strong>Крупногабаритная срочная “день в день”.</strong> Можно оформить до 18:00:</p>
+                            <?php if($isUrgentCourierTariff):?>
+                              <p>осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</p>
+                            <?php else:?>
+                              <ul>
+                                  <li>в пределах МКАД — от <?php echo(floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_in_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)))?> рублей;</li>
+                                  <li>за пределы МКАД (до 5 км) — от <?php echo(floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)))?> рублей;</li>
+                                  <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
+                              </ul>
+                            <?php endif;?>
                         <!-- </div> -->
                     </div>
                 <?php endif;?>				
@@ -157,11 +181,13 @@ get_header(); ?>
                     </div> -->
                     <!-- <div class="delivery__dropdown"> -->
                         <ul>
-                            <li>с 11:00 до 21:00;</li>
-                            <li>с 11:00 до 16:00;</li>
-                            <li>с 14:00 до 18:00;</li>
-                            <li>с 18:00 до 21:00 + <?php echo $late_markup_delivery?> рублей к стоимости доставки.</li>
+                          <?php foreach ($intervals as $interval): ?>
+                            <li>с <?= str_replace(' - ', ' до ', $interval); ?><?= ($interval == $late_interval_delivery)
+                                ? ' + ' . (int)$late_markup_delivery . ' рублей к стоимости доставки'
+                                : '' ?>;</li>
+                          <?php endforeach; ?>
                         </ul>
+
                         <p>Мы работаем без выходных, поэтому <strong>доставка осуществляется каждый день.</strong></p>
                         <p>При оформлении срочной доставки “день в день” менеджер согласует с вами удобный интервал доставки.</p>					
                     <!-- </div> -->

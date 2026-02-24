@@ -13,7 +13,7 @@ get_header(); ?>
 			<div class="contacts__phones">
 				<!-- <h2 class="heading-2">Телефон</h2> -->
 				<p><a class="contacts__phone" href="tel:+78002015790">8 800 201 57 90</a></p>
-				<p><a class="contacts__phone" href="tel:+79647687944">8 964 768 79 44</a></p>
+				<p><a class="contacts__phone" href="tel:+79995527944">8 999 552-79-44</a></p>
 			</div>
             
 			<div class="contacts__mail">

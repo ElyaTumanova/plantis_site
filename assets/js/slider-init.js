@@ -82,63 +82,68 @@
 // слайдер инициирован в wc-catalog-functions, чтобы повторно инициироваться при аякс обновлении каталога при приминении фильтров
 
 function swiper_catalog_card_imgs_init () {
-    //console.log('hi swiper_catalog_card_imgs_init');
-    swiper_catalog_card_imgs = new Swiper('.product__image-slider-wrap', {
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-                    enabled: true,
-                },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        // autoplay: {
-        // 	delay: 500,
-        // 	disableOnInteraction: false,
-        // },
-        grabCursor: true,
-        slidesPerView: 1,
-        slidesPerGroup: 1,
-        spaceBetween: 0,
-        loop: true,
-        freeMode: false,
-        // effect: "fade",
-        crossFade: true,
-        observer: true,
-        observeParents: true,
-        observeSlideChildren: true,
-        breakpoints: {
-            320: {
-                navigation: {
-                    enabled: false,
-                },
-            },
-            768: {
-                navigation: {
-                    enabled: true,
-                },
-            }
-        }
+  //console.log('hi swiper_catalog_card_imgs_init');
+
+  document.querySelectorAll('.product__image-slider-wrap').forEach((wrap) => {
+    // ✅ если уже инициализировано — просто обновим и выйдем
+    if (wrap.classList.contains('swiper-initialized')) {
+      if (wrap.swiper) {
+        wrap.swiper.update();
+        // иногда на мобиле буллеты "зависают" после изменения DOM — это лечит:
+        if (wrap.swiper.pagination) wrap.swiper.pagination.render();
+        if (wrap.swiper.pagination) wrap.swiper.pagination.update();
+      }
+      return;
+    }
+
+    const slidesCount = wrap.querySelectorAll('.swiper-slide').length;
+
+    const paginationEl = wrap.querySelector('.swiper-pagination');
+    const nextEl = wrap.querySelector('.swiper-button-next');
+    const prevEl = wrap.querySelector('.swiper-button-prev');
+
+    // если 0-1 слайд — выключаем loop и прячем управление
+    if (slidesCount <= 1) {
+      if (paginationEl) paginationEl.style.display = 'none';
+      if (nextEl) nextEl.style.display = 'none';
+      if (prevEl) prevEl.style.display = 'none';
+    } else {
+      // на случай если было скрыто ранее шаблоном/динамикой
+      if (paginationEl) paginationEl.style.display = '';
+      if (nextEl) nextEl.style.display = '';
+      if (prevEl) prevEl.style.display = '';
+    }
+
+    const sw = new Swiper(wrap, {
+      pagination: paginationEl ? { el: paginationEl, clickable: true } : undefined,
+      navigation: (nextEl && prevEl) ? { nextEl, prevEl, enabled: slidesCount > 1 } : undefined,
+
+      grabCursor: true,
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+      spaceBetween: 0,
+
+      loop: slidesCount > 1,
+
+      observer: true,
+      observeParents: true,
+      observeSlideChildren: true,
+
+      breakpoints: {
+        320: { navigation: { enabled: false } },
+        768: { navigation: { enabled: slidesCount > 1 } },
+      }
     });
 
-    // swiper_catalog_card_imgs.forEach((element) => {
-    // 	element.autoplay.stop();
-      // });
-
-    // const sliders = document.querySelectorAll(".product__image-slider-wrap");
-    // sliders.forEach((slider) => {
-    // 	slider.addEventListener("mouseenter", function () {
-    // 		slider.swiper.autoplay.start();
-    // 	});
-    // 	slider.addEventListener("mouseleave", function () {
-    // 		slider.swiper.autoplay.stop();
-    // 		slider.swiper.slideTo(0, 0, false);
-    // 	});
-    // });
+    // ✅ гарантируем корректную пагинацию после старта (часто важно на мобиле)
+    if (sw.pagination) {
+      sw.pagination.render();
+      sw.pagination.update();
+    }
+  });
 }
+
+
 
 /*--------------------------------------------------------------
 # Card

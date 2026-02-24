@@ -181,6 +181,44 @@ $google_xml .= "</channel>
 </rss>
 ";
 
-$fp = fopen( ABSPATH . "/wp-content/google-xml/feed-google-0.xml", 'w' ); 
-fwrite( $fp, $google_xml );
+$dir_path  = ABSPATH . 'wp-content/google-xml';
+$file_path = $dir_path . '/feed-google-0.xml';
+
+// На всякий случай логнем, что видим
+error_log('GOOGLE_XML_DEBUG dir=' . $dir_path . ' file=' . $file_path);
+
+// Проверим, есть ли директория и как её видит PHP
+clearstatcache();
+error_log('GOOGLE_XML_DEBUG is_dir=' . (int) is_dir($dir_path));
+error_log('GOOGLE_XML_DEBUG is_writable_dir=' . (int) is_writable($dir_path));
+
+// Если папки нет — пробуем создать
+if ( ! is_dir( $dir_path ) ) {
+    if ( ! function_exists( 'wp_mkdir_p' ) ) {
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+    }
+
+    if ( ! wp_mkdir_p( $dir_path ) ) {
+        throw new Exception( 'Cannot create directory for Google XML: ' . $dir_path );
+    }
+}
+
+clearstatcache();
+error_log('GOOGLE_XML_DEBUG after_mkdir is_dir=' . (int) is_dir($dir_path));
+error_log('GOOGLE_XML_DEBUG after_mkdir is_writable_dir=' . (int) is_writable($dir_path));
+
+// Пытаемся открыть файл
+$fp = @fopen( $file_path, 'w' ); // @ чтобы не засорять лог ворнингом
+if ( $fp === false ) {
+    $err = error_get_last();
+    $msg = isset($err['message']) ? $err['message'] : 'unknown fopen error';
+    throw new Exception( 'Cannot open file for writing: ' . $file_path . ' — ' . $msg );
+}
+
+$bytes = fwrite( $fp, $google_xml );
+if ( $bytes === false ) {
+    fclose( $fp );
+    throw new Exception( 'Cannot write to file: ' . $file_path );
+}
+
 fclose( $fp );
