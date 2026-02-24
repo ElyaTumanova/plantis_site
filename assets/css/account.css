@@ -249,7 +249,7 @@
     display: block;
 }
 
-#customer_login form button, .u-column2 form button {
+#customer_login form button {
     color: var(--white);
     background-color: var(--accent-color);
     border-color: var(--accent-color);
@@ -257,6 +257,12 @@
     margin: 20px 0;
 }
 
+#customer_login form button[disabled],
+#customer_login form button.is-disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 
 @media (max-width: 767px) {
     #customer_login, .u-column2 {

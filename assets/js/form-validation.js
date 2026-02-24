@@ -141,8 +141,11 @@ class FormsValidation {
 
   manageErrors(fieldControlElement, errorMessages) {
     if (!this.errorMessageSelector) return
-    const fieldErrorsElement = fieldControlElement.parentElement.querySelector(this.errorMessageSelector)
-
+    let fieldErrorsElement = fieldControlElement.parentElement.querySelector(this.errorMessageSelector)
+    if(!fieldErrorsElement) {
+      const parent = fieldControlElement.parentElement
+      fieldErrorsElement = parent.parentElement.querySelector(this.errorMessageSelector)
+    }
     fieldErrorsElement.innerHTML = errorMessages
       .map((message) => `<span class="field__error">${message}</span>`)
       .join('')
@@ -234,6 +237,8 @@ class FormsValidation {
     }
     this.sumbmitBtn = this.form.querySelector('button[type="submit"]')
     this.phoneInput = this.form.querySelector('input[type="tel"]');
+    console.log(this.form)
+    console.log(this.sumbmitBtn)
     return true
   }
 
@@ -353,3 +358,9 @@ giftFormValidation.init()
 
 const gcBalanceForm = new GCBalanceForm ('.gc-balance-form', '.field__errors')
 gcBalanceForm.init()
+
+const loginFormValidation = new FormsValidation('.woocommerce-form-login', '.field__errors')
+loginFormValidation.init()
+
+const regFormValidation = new FormsValidation('.woocommerce-form-register', '.field__errors')
+regFormValidation.init()

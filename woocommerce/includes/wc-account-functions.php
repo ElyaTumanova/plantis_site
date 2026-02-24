@@ -82,3 +82,7 @@ add_action('woocommerce_register_form_end', function () {
 add_action('woocommerce_login_form_end', function () {
     echo '<div class=login-form__registration-btn>Регистрация</div>';
 });
+
+
+remove_action( 'woocommerce_before_customer_login_form', 'woocommerce_output_all_notices', 10 );
+add_action( 'notice_popup', 'woocommerce_output_all_notices', 10 );
