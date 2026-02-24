@@ -1,6 +1,7 @@
 /*--------------------------------------------------------------
 # Menu in header for mobile
 --------------------------------------------------------------*/
+
 const menuMobWrap = document.querySelector('.burger-menu');
 const menuMob = document.querySelector('.burger-menu .modal-mob');
 const menuMobOverlay = document.querySelector('.burger-menu .modal-mob__overlay');

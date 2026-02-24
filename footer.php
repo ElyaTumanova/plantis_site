@@ -37,10 +37,10 @@ $close_icon = carbon_get_theme_option('close_icon');
         <?php echo $cart_icon ?>
         <!-- <img class="side-cart__icon" src="<?php //echo //$cart_icon ?>" alt="cart" width="35" height="35"> -->
     </button>
-    <div class="side-cart__popup popup">
+    <div class="side-cart__popup side-cart-popup popup">
         <div class="side-cart">
             <h4 class="side-cart__title heading-2">Корзина</h4>
-            <div class="modal-mob__close side-cart__close button"><?php echo $close_icon ?></div>      
+            <div class="modal-mob__close side-cart__close popup__close button"><?php echo $close_icon ?></div>      
             <?php plnt_woocommerce_mini_cart();?>
         </div>
         <div class="side-cart__popup-overlay popup-overlay"></div>
@@ -54,7 +54,7 @@ $close_icon = carbon_get_theme_option('close_icon');
 <?php //get_template_part('template-parts/popups/search-popup');?>
 <div class="burger-menu"> 
     <div class="modal-mob">
-        <div class="modal-mob__close burger-menu__close button"><?php echo $close_icon ?></div>
+        <div class="modal-mob__close popup__close button"><?php echo $close_icon ?></div>
         <div class="burger-menu__nav container">
             <div class="burger-menu__nav-btn burger-menu__nav_menu">Меню</div>
             <div class="burger-menu__nav-btn burger-menu__nav_catalog">Каталог</div>
@@ -64,7 +64,7 @@ $close_icon = carbon_get_theme_option('close_icon');
             <?php get_template_part('template-parts/catalog-menu');?>
         </div>
     </div>
-    <div class="modal-mob__overlay"></div>
+    <div class="popup-overlay"></div>
 </div>
 
 <?php 

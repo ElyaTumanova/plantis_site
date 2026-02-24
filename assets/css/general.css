@@ -53,7 +53,7 @@ html { scrollbar-gutter: stable; }
 .fix-body {
     height: 100vh;
     /* width: calc(100vw - var(--scrollWidth)); */
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     overflow: hidden;
 }
 

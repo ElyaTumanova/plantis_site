@@ -33,10 +33,10 @@ function datePlus12MonthsIntl() {
 
 ?>
 <div class="page-popup popup gift-card-popup">
-  <div class="page-popup__container">
+  <div class="page-popup__container popup__container">
     <div class="page-popup__wrap">
         <h2 class="page-popup__heading heading-2">Пример подарочного сертификата</h2>
-        <span class="page-popup__close heading-2"><?php echo $close_icon ?></span>
+        <span class="page-popup__close popup__close heading-2"><?php echo $close_icon ?></span>
         <h1 class="gift-card__title">Подарочный сертификат</h1>
         <p class="gift-card__descr">Интернет магазин комнатных растений Plantis</p>
         <div class="gift-card__main">

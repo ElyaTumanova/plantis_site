@@ -93,17 +93,17 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		wp_enqueue_script( 'search-popup', get_template_directory_uri() .
 		                                     '/assets/js/search-popup.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/search-popup.js'), true );
 		wp_enqueue_script( 'page-popup', get_template_directory_uri() .
-											 '/assets/js/page-popup.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/page-popup.js'), true );
-		wp_enqueue_script( 'side-cart', get_template_directory_uri() .
-											 '/assets/js/side-cart.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/side-cart.js'), true );
+											 '/assets/js/popup.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/popup.js'), true );
+		// wp_enqueue_script( 'side-cart', get_template_directory_uri() .
+		// 									 '/assets/js/side-cart.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/side-cart.js'), true );
 		wp_enqueue_script( 'swiper', get_template_directory_uri() .
 		                                     '/assets/js/swiper.js', array( 'jquery' ), null, true ); //swiper	
 
-		// wp_enqueue_script( 'account', get_template_directory_uri() .
-		// 									 '/assets/js/account.js', array( 'jquery' ), null, true );	
+		wp_enqueue_script( 'account', get_template_directory_uri() .
+											 '/assets/js/account.js', array(), null, true );	
 
-		wp_enqueue_script( 'login-popup', get_template_directory_uri() .
-											 '/assets/js/login-popup.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/login-popup.js'), true );
+		// wp_enqueue_script( 'login-popup', get_template_directory_uri() .
+		// 									 '/assets/js/login-popup.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/login-popup.js'), true );
 
 		// wp_enqueue_script( 'lazy-load', get_template_directory_uri() .
 		//                                      '/assets/js/lazy-load.js', array( 'jquery' ), null, true ); // for lazy load
@@ -114,8 +114,8 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		wp_enqueue_script( 'quantity-buttons', get_template_directory_uri() .
 		                                     '/assets/js/quantity-buttons.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/quantity-buttons.js'), true );
 
-		wp_enqueue_script( 'menu-mob', get_template_directory_uri() .
-		                                     '/assets/js/menu-mob.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/menu-mob.js'), true );
+		// wp_enqueue_script( 'menu-mob', get_template_directory_uri() .
+		//                                      '/assets/js/menu-mob.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/menu-mob.js'), true );
 											 
 		// wp_enqueue_script( 'jquery.flexisel', get_template_directory_uri() .
 		//                                      '/assets/js/jquery.flexisel.js', array( 'jquery' ), null, true );

@@ -61,7 +61,7 @@ $catalog_icon = carbon_get_theme_option('catalog_icon');
 										<span class="header-btn__label">Войти</span>		
 									</a>
 								<?php else :?> 
-									<div class="header-btn__wrap login-btn">
+									<div class="header-btn__wrap login-btn login-popup-open-btn">
 										<?php echo $account_icon ?>	
 										<span class="header-btn__label">Войти</span>		
 									</div>
@@ -100,7 +100,7 @@ $catalog_icon = carbon_get_theme_option('catalog_icon');
 			<div class="logo">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo__link"><img src="<?php echo $logo ?>" class="logo__img" alt="Plantis" width="150" height="26"></a>
 			</div><!-- .logo -->
-			<div class="header__mob-menu">
+			<div class="header__mob-menu burger-menu-open-btn">
 				<button class="header-btn__wrap header-btn__wrap_mob">
 					<img class="header-btn__icon" src="<?php echo $menu_icon_mob ?>" alt="menu" width="21" height="21">		
 				</button>
@@ -114,7 +114,9 @@ $catalog_icon = carbon_get_theme_option('catalog_icon');
       <div class="search__clean"><?php echo $close_icon ?></div>
     </div>
 
-    <div class="search-result">
+    <div class="search-result-popup popup">
+      <div class="search-result">
+      </div>
     </div>
 
 		<!-- <div class="header__breadcrumb container"><?php //woocommerce_breadcrumb() ?></div> -->
@@ -140,7 +142,7 @@ $catalog_icon = carbon_get_theme_option('catalog_icon');
 				<?php echo do_shortcode('[yith_wcwl_items_count]')?>
 			</div>
 			
-			<div class="header-cart">
+			<div class="header-cart side-cart-popup-open-btn">
 				<?php 
 					plnt_woocommerce_cart_header_mob(); 
 				?>

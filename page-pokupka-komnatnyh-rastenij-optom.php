@@ -66,6 +66,6 @@ $pricelist_link = carbon_get_theme_option('pricelist_link');
 		</div>
 	</main><!-- #main -->
 </div><!-- #primary -->
-<?php get_template_part('template-parts/popups/pricelist-popup');?>
+<?php //get_template_part('template-parts/popups/pricelist-popup');?>
 
 <?php get_footer(); ?>
