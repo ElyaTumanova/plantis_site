@@ -330,6 +330,10 @@ html { scrollbar-gutter: stable; }
     margin-top: 10px;
 }
 
+.woocommerce-notices-wrapper:focus-visible, .woocommerce-notices-wrapper:focus, .woocommerce-message:focus-visible, .woocommerce-message:focus {
+  outline: none;
+}
+
 /* sale badge */
 
 .sale_badge {

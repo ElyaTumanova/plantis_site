@@ -155,7 +155,7 @@ class FormsValidation {
     const errors = fieldControlElement.validity
     const errorMessages = []
 
-    console.log(errors)
+    // console.log(errors)
 
     Object.entries(this.errorMessages).forEach(([errorType, getErrorMessage]) => {
       if (errors[errorType]) {
@@ -163,7 +163,7 @@ class FormsValidation {
       }
     })
 
-    console.log(errorMessages)
+    // console.log(errorMessages)
 
 
     this.manageErrors(fieldControlElement, errorMessages)
@@ -237,8 +237,8 @@ class FormsValidation {
     }
     this.sumbmitBtn = this.form.querySelector('button[type="submit"]')
     this.phoneInput = this.form.querySelector('input[type="tel"]');
-    console.log(this.form)
-    console.log(this.sumbmitBtn)
+    // console.log(this.form)
+    // console.log(this.sumbmitBtn)
     return true
   }
 
@@ -322,8 +322,8 @@ class GiftFormValidation extends FormsValidation {
     this.giftAmounts = document.querySelectorAll('.gift__amounts p')
     this.imageAmount = document.querySelector('.gift-image-amount')
     this.giftAmountPost = document.querySelector('#giftcard_amount')
-    console.log(amountInput)
-    console.log(giftAmounts)
+    // console.log(amountInput)
+    // console.log(giftAmounts)
     return true
   }
 }

@@ -101,6 +101,10 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 
 		wp_enqueue_script( 'account', get_template_directory_uri() .
 											 '/assets/js/account.js', array(), null, true );	
+    wp_localize_script('account', 'PLANTIS_LOGIN', [
+        'ajaxUrl' => admin_url('admin-ajax.php'),
+        'nonce'   => wp_create_nonce('plantis_ajax_login'),
+    ]);
 
 		// wp_enqueue_script( 'login-popup', get_template_directory_uri() .
 		// 									 '/assets/js/login-popup.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/login-popup.js'), true );

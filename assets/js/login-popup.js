@@ -1,8 +1,8 @@
 //переменные для управления попапом
-const loginOpenPopupBtn = document.querySelectorAll('.login-btn');
+// const loginOpenPopupBtn = document.querySelectorAll('.login-btn');
 const loginPopup = document.querySelector('.login-popup');
-const loginClosePopupBtn = document.querySelector('.login__close');
-const loginPopupOverlay = document.querySelector('.login__popup-overlay');
+// const loginClosePopupBtn = document.querySelector('.login__close');
+// const loginPopupOverlay = document.querySelector('.login__popup-overlay');
 const customerLogin = document.querySelector('#customer_login');
 //переменные для переключения форм
 const regOpenBtn = document.querySelectorAll('.login-form__registration-btn');
@@ -13,10 +13,10 @@ const loginForm = customerLogin.querySelector('.woocommerce-form-login')
 const regForm = customerLogin.querySelector('.woocommerce-form-register')
 let isLogin = true;
 
-function toggle_login_popup () {
-    loginPopup.classList.toggle ('popup_active');
-    body.classList.toggle ('fix-body');
-};
+// function toggle_login_popup () {
+//     loginPopup.classList.toggle ('popup_active');
+//     body.classList.toggle ('fix-body');
+// };
 
 function changeLoginReg() {
   console.log(isLogin)
@@ -78,30 +78,30 @@ document.addEventListener('DOMContentLoaded', changeLoginReg)
 document.addEventListener('DOMContentLoaded', initPasswords);
 document.addEventListener('DOMContentLoaded', addFormValidationElements);
 
-loginOpenPopupBtn.forEach((btn)=>
-    btn.addEventListener ("click", (evt)=>{
-        toggle_login_popup ();
-    })
-);
+// loginOpenPopupBtn.forEach((btn)=>
+//     btn.addEventListener ("click", (evt)=>{
+//         toggle_login_popup ();
+//     })
+// );
 
-if(loginPopup) {
-  loginClosePopupBtn.addEventListener ("click", (evt)=>{
-    toggle_login_popup ();
-  });
+// if(loginPopup) {
+//   loginClosePopupBtn.addEventListener ("click", (evt)=>{
+//     toggle_login_popup ();
+//   });
   
-  loginPopupOverlay.addEventListener ("click", (evt)=>{
-    toggle_login_popup ();
-  });
+//   loginPopupOverlay.addEventListener ("click", (evt)=>{
+//     toggle_login_popup ();
+//   });
   
-  document.addEventListener('keydown', function(e){
-    if((e.key=='Escape'||e.key=='Esc')){
-        if(loginPopup.classList.contains('popup_active')) {
-            toggle_login_popup ();
-        } 
-    }
-  }, true);
+//   document.addEventListener('keydown', function(e){
+//     if((e.key=='Escape'||e.key=='Esc')){
+//         if(loginPopup.classList.contains('popup_active')) {
+//             toggle_login_popup ();
+//         } 
+//     }
+//   }, true);
 
-}
+// }
 regOpenBtn.forEach((btn)=>
   btn.addEventListener ("click", (evt)=>{
     isLogin = false;

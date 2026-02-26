@@ -151,72 +151,35 @@ class CF7Popup extends Popup {
 class LoginPopup extends Popup {
   constructor (popupName) {
     super (popupName)
-    this.errorMsg = null
-    this.mobMenuLoginPopupOpenBtn = null
+    this.form = null
+    this.noticeWrapper = null
+
   }
 
   initDom() {
     const ok = super.initDom()
     if (!ok) return false
-    this.errorMsg = this.popup.querySelector('.woocommerce-error')
-    this.mobMenuLoginPopupOpenBtn = document.querySelector('.burger-menu__account')
+    this.form = this.popup.querySelector('form.woocommerce-form-login')
+    this.noticeWrapper = this.popup.querySelector('.woocommerce-notices-wrapper')
     return true
   }
 
+  cleanForm () {
+    if(this.form !=null) {
+      this.form.reset()
+    }
+    if(this.noticeWrapper !=null) {
+      this.noticeWrapper.innerHTML = ''
+    }
+  }
 
   closePopup() {
     super.closePopup()
-
-    if (this.errorMsg) {
-      this.openPopup()
-    }
+    this.cleanForm ()
   }
 
-  addOpenListeners() {
-    super.addOpenListeners()
-
-    if(this.mobMenuLoginPopupOpenBtn) {
-      this.mobMenuLoginPopupOpenBtn.addEventListener ("click", (evt)=>{
-        this.openPopup()
-      })
-    }
-  }
 }
 
-class RegistrPopup extends Popup {
-  constructor (popupName) {
-    super (popupName)
-    this.loginPopup = null
-  }
-
-  initDom() {
-    const ok = super.initDom()
-    if (!ok) return false
-    this.loginOnRegPopupBtn = this.popup.querySelectorAll('.register-form__login-btn')
-    return true
-  }
-
-  setLoginPopup(popupInstance) {
-    this.loginPopup = popupInstance
-    // this.loginPopup.sayHello()
-  }
-
-  openPopup () {
-    super.openPopup()
-    this.loginPopup.closePopup()
-  }
-
-  addOpenListeners() {
-    super.addOpenListeners()
-
-    this.loginOnRegPopupBtn.forEach((btn)=>
-      btn.addEventListener ("click", (evt)=>{
-        this.closePopup()
-        this.loginPopup.openPopup()
-      })
-    );
-  }
-}
 
 class MenuMobPopup extends Popup {
   constructor (popupName) {
@@ -336,23 +299,45 @@ class SideCartPopup extends Popup {
   }
 }
 
+class NoticePopup extends Popup {
+  constructor (popupName) {
+    super (popupName)
+    this.noticeWrapper = null
+    this.observer = null;
+  }
+
+  startObserver() {
+    this.observer = new MutationObserver((mutations) => {
+      this.openPopup()
+    })
+    this.observer.observe(this.noticeWrapper, { childList: true, subtree: true });
+  }
+
+  initDom() {
+    const ok = super.initDom()
+    if (!ok) return false
+    this.noticeWrapper = this.popup.querySelector('.woocommerce-notices-wrapper')
+    this.startObserver()
+    return true
+  }
+}
+
 function initPopups() {
   const popup = new CF7Popup ('page-popup')
   const loginPoup = new LoginPopup ('login-popup')
-  const registrPoup = new RegistrPopup ('register-popup')
-  registrPoup.setLoginPopup(loginPoup)
-
   const menuMobPopup = new MenuMobPopup ('burger-menu')
   const sideCartPopup = new SideCartPopup ('side-cart-popup')
+  // const noticePopup = new NoticePopup ('notice-popup')
 
   popup.init()
   loginPoup.init()
-  registrPoup.init()
+  // registrPoup.init()
   menuMobPopup.init()
   sideCartPopup.init()
+  // noticePopup.init()
+  //debugPopup(noticePopup)
 
   console.debug('fn initPopups: popups initialized')
-  //debugPopup(sideCartPopup, 'sideCartDesctopOpenPopupBtn')
 }
 
 function debugPopup(instance, elementName = null) {
