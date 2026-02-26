@@ -341,44 +341,46 @@ function reazy_only_wc_notices_ajax() {
 	wp_send_json_success(['html' => $html]);
 }
 
-
-function plnt_debug_cron_event_check(): void {
+function plnt_debug_product_page(): void {
     if (!is_admin()) return;
-    if (!isset($_GET['plnt_debug_cron'])) return;
+    if (!isset($_GET['plnt_debug_product'])) return;
     if (!current_user_can('manage_woocommerce')) wp_die('No permission');
 
-    $hook = 'plnt_daily_expo_days_update_hook';
+    $product_id = (int) $_GET['plnt_debug_product'];
+    if ($product_id <= 0) wp_die('Bad product id');
 
-    $next = wp_next_scheduled($hook);
-    $out  = '<h2>Cron debug for hook: ' . esc_html($hook) . '</h2>';
-    $out .= '<p><strong>Next scheduled:</strong> ' . esc_html($next ? date_i18n('Y-m-d H:i:s', $next) . " (ts=$next)" : 'NONE') . '</p>';
+    $product = wc_get_product($product_id);
+    if (!$product) wp_die('Product not found');
 
-    // Посчитаем сколько раз хук встречается в cron array
-    $cron = _get_cron_array();
-    $count = 0;
-    $times = [];
+    $data = [
+        'product_id'            => $product_id,
+        'title'                 => $product->get_name(),
+        'status'                => $product->get_status(),
+        'managing_stock'        => $product->managing_stock() ? 1 : 0,
+        'stock_quantity'        => $product->get_stock_quantity(),
+        'qualifies_now'         => plnt_product_is_in_expo_today($product) ? 1 : 0,
 
-    if (is_array($cron)) {
-        foreach ($cron as $timestamp => $events) {
-            if (!isset($events[$hook])) continue;
-            foreach ($events[$hook] as $sig => $ev) {
-                $count++;
-                $times[] = (int)$timestamp;
-            }
-        }
+        '_plnt_expo_days_total' => (int) get_post_meta($product_id, '_plnt_expo_days_total', true),
+        '_plnt_expo_days_reset' => (int) get_post_meta($product_id, '_plnt_expo_days_reset', true),
+        '_plnt_expo_paused'     => (int) get_post_meta($product_id, '_plnt_expo_paused', true),
+
+        '_plnt_expo_sales_total'=> (int) get_post_meta($product_id, '_plnt_expo_sales_total', true),
+        '_plnt_expo_sales_reset'=> (int) get_post_meta($product_id, '_plnt_expo_sales_reset', true),
+    ];
+
+    $out  = '<h2>Plantis debug product: ' . esc_html((string)$product_id) . '</h2>';
+    $out .= '<p><a href="' . esc_url(admin_url('post.php?post=' . $product_id . '&action=edit')) . '">Open product edit</a></p>';
+    $out .= '<table class="widefat striped" style="max-width: 1000px;"><tbody>';
+
+    foreach ($data as $k => $v) {
+        $out .= '<tr><th style="width:320px;">' . esc_html($k) . '</th><td><code>' . esc_html(is_null($v) ? 'NULL' : (string)$v) . '</code></td></tr>';
     }
 
-    sort($times);
-    $out .= '<p><strong>Occurrences in cron array:</strong> ' . esc_html((string)$count) . '</p>';
+    $out .= '</tbody></table>';
 
-    if ($count) {
-        $out .= '<ol>';
-        foreach ($times as $ts) {
-            $out .= '<li>' . esc_html(date_i18n('Y-m-d H:i:s', $ts) . " (ts=$ts)") . '</li>';
-        }
-        $out .= '</ol>';
-    }
+    $out .= '<hr><p>Tip: to enable before/after logging for this product on next runs, open:</p>';
+    $out .= '<p><code>/wp-admin/?plnt_debug_watch=8438</code></p>';
 
     wp_die($out);
 }
-add_action('admin_init', 'plnt_debug_cron_event_check');
+add_action('admin_init', 'plnt_debug_product_page');
