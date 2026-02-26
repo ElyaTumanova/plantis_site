@@ -340,3 +340,45 @@ function reazy_only_wc_notices_ajax() {
 
 	wp_send_json_success(['html' => $html]);
 }
+
+
+function plnt_debug_cron_event_check(): void {
+    if (!is_admin()) return;
+    if (!isset($_GET['plnt_debug_cron'])) return;
+    if (!current_user_can('manage_woocommerce')) wp_die('No permission');
+
+    $hook = 'plnt_daily_expo_days_update_hook';
+
+    $next = wp_next_scheduled($hook);
+    $out  = '<h2>Cron debug for hook: ' . esc_html($hook) . '</h2>';
+    $out .= '<p><strong>Next scheduled:</strong> ' . esc_html($next ? date_i18n('Y-m-d H:i:s', $next) . " (ts=$next)" : 'NONE') . '</p>';
+
+    // Посчитаем сколько раз хук встречается в cron array
+    $cron = _get_cron_array();
+    $count = 0;
+    $times = [];
+
+    if (is_array($cron)) {
+        foreach ($cron as $timestamp => $events) {
+            if (!isset($events[$hook])) continue;
+            foreach ($events[$hook] as $sig => $ev) {
+                $count++;
+                $times[] = (int)$timestamp;
+            }
+        }
+    }
+
+    sort($times);
+    $out .= '<p><strong>Occurrences in cron array:</strong> ' . esc_html((string)$count) . '</p>';
+
+    if ($count) {
+        $out .= '<ol>';
+        foreach ($times as $ts) {
+            $out .= '<li>' . esc_html(date_i18n('Y-m-d H:i:s', $ts) . " (ts=$ts)") . '</li>';
+        }
+        $out .= '</ol>';
+    }
+
+    wp_die($out);
+}
+add_action('admin_init', 'plnt_debug_cron_event_check');
