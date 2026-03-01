@@ -11,6 +11,9 @@ add_action('wp_head','plnt_set_initials');
 function plnt_set_initials() {
     date_default_timezone_set('Europe/Moscow');
     $hour = date("H");
+    $today = date("d.m");
+    $exp_days = ['07.03','08.03'];
+    $expensive_day_markup_delivery = carbon_get_theme_option('expensive_day_markup_delivery');
 
     if ($hour >= 18 && $hour <20) {
         WC()->session->set('isUrgent', '0' ); //0
@@ -20,10 +23,16 @@ function plnt_set_initials() {
 
     WC()->session->set('isLate', '0' );
     WC()->session->set('is_courier_deliv_flag', '0' );
+    if($expensive_day_markup_delivery && $exp_days && in_array($today, $exp_days)) {
+      WC()->session->set('isExpensive', '1' );
+    } else {
+      WC()->session->set('isExpensive', '0' );
+    }
 
     if ( plnt_is_backorder() || plnt_is_treez_backorder()) {
       WC()->session->set('isUrgent', '0' );
       WC()->session->set('isLate', '0' );
+      WC()->session->set('isExpensive', '0' );
     }
 };
 
@@ -57,12 +66,15 @@ function plnt_check() {
     // echo 'hiInit '.(WC()->session->get('hiInit' )).'  ';
     // echo 'isback2 '.(WC()->session->get('isBackorder' )).'  ';
     echo 'isLate '.(WC()->session->get('isLate' )).'  ';
+    echo 'isExpensive '.(WC()->session->get('isExpensive' )).'  ';
     echo '<br>';
-    // date_default_timezone_set('Europe/Moscow');
+    date_default_timezone_set('Europe/Moscow');
     // $hour = date("H");
     // if ( is_checkout() && ($hour<18 || $hour>=20)) {
     //     echo $hour;
     // }
+    $today = date("d.m");
+    echo $today;
 
     $delivery_murkup = get_delivery_markup();
     //print_r ($delivery_murkup);
@@ -78,15 +90,18 @@ function plnt_get_urgent_shipping() {
   // Безопасная обработка значений
     $is_urgent = sanitize_text_field( $_POST['isUrgent'] ?? '' );
     $is_late   = sanitize_text_field( $_POST['isLate'] ?? '' );
+    $is_expensive   = sanitize_text_field( $_POST['isExpensive'] ?? '' );
 
     // Запись в сессию WooCommerce
     WC()->session->set( 'isUrgent', $is_urgent );
     WC()->session->set( 'isLate', $is_late );
+    WC()->session->set( 'isExpensive', $is_expensive );
 
     // Можно вернуть успех для отладки
     wp_send_json_success([
         'isUrgent' => $is_urgent,
         'isLate' => $is_late,
+        'isExpensive' => $is_expensive,
         'message' => 'Флаги обновлены'
     ]);
 
@@ -96,7 +111,7 @@ function plnt_get_urgent_shipping() {
 add_action( 'woocommerce_checkout_update_order_review', 'plnt_refresh_shipping_methods', 10, 1 );
 function plnt_refresh_shipping_methods( $post_data ){
   // Если хотя бы один из флагов равен '1', сбрасываем кэш способов доставки
-  $has_flag = ( WC()->session->get('isUrgent') === '1' ) || ( WC()->session->get('isLate') === '1' );
+  $has_flag = ( WC()->session->get('isUrgent') === '1' ) || ( WC()->session->get('isLate') === '1') || ( WC()->session->get('isExpensive') === '1' );
 
   $bool = ! $has_flag;
 
@@ -142,14 +157,19 @@ function plnt_shipping_conditions( $rates, $package ) {
 
       // //проверяем срочную доставку и позднюю доставку
 
-      if (WC()->session->get('isLate' ) === '1') {
+      if (WC()->session->get('isLate') === '1') {
         $delivery_markup_in_mkad =  $delivery_markup_in_mkad + $late_markup_delivery;
         $delivery_markup_out_mkad =  $delivery_markup_out_mkad + $late_markup_delivery;
       }
 
-      if (WC()->session->get('isUrgent' ) === '1') {
-          $delivery_markup_in_mkad =  $delivery_markup_in_mkad + $delivery_murkup['urg'];
-          $delivery_markup_out_mkad =  $delivery_markup_out_mkad + $delivery_murkup['urg'];
+      if (WC()->session->get('isUrgent') === '1') {
+        $delivery_markup_in_mkad =  $delivery_markup_in_mkad + $delivery_murkup['urg'];
+        $delivery_markup_out_mkad =  $delivery_markup_out_mkad + $delivery_murkup['urg'];
+      }
+
+      if (WC()->session->get('isExpensive') === '1' && $delivery_murkup['exp']) {
+        $delivery_markup_in_mkad =  $delivery_markup_in_mkad + $delivery_murkup['exp'];
+        $delivery_markup_out_mkad =  $delivery_markup_out_mkad + $delivery_murkup['exp'];
       }
     } 
 

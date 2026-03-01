@@ -2,11 +2,13 @@ const DELIVERY = window.PLNT_Delivery_Data || {};
 let isUrgent;
 let isLate;
 let isHoliday; //скрываем подние интервалы доставки
+let isExpensive; //увеличиваем стоимость доставки
 // let holidays = []
 // let notWorking = []
 
-let holidays = ['31.12']; //format dd.mm
-let notWorking = ['01.01','02.01','03.01'] //format dd.mm
+let holidays = ['31.12']; //format dd.mm - дни для сокращенного интервала
+let notWorking = ['01.01','02.01','03.01'] //format dd.mm - дни для отсутсвия доставки 
+let expensiveDays = ['07.03', '08.03'] //format dd.mm - дни для дорогой доставки 
 let deliveryDatesInfo = [];
 let deliveryIntervalsInfo = []
 let shippingMethodValues = [];
@@ -17,8 +19,10 @@ let today;
 let isUrgentCourierTariff = DELIVERY.isUrgentCourierTariff == '1';
 let deliveryLateInterval = DELIVERY.deliveryLateInterval
 let isSmallHolidayTariffOn = DELIVERY.isSmallHolidayTariffOn == '1';
+let deliveryExpensiveMarkup = DELIVERY.deliveryExpensiveMarkup;
 console.debug('isUrgentCourierTariff ',isUrgentCourierTariff);
 console.debug('isSmallHolidayTariffOn ',isSmallHolidayTariffOn);
+console.debug('deliveryExpensiveMarkup ',deliveryExpensiveMarkup);
 
 let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
 let addressFields = document.querySelector('#billing_address_1_field');
@@ -50,6 +54,10 @@ function getOrderParametrs(event) {
   } else {
     isUrgent = '0';
   }
+
+   if(expensiveDays && deliveryExpensiveMarkup && expensiveDays.includes(checkedDate)) {
+    isExpensive = 1
+  } else { isExpensive = 0}
   
   hideCheckoutFields(event);
   
@@ -65,6 +73,7 @@ function getOrderParametrs(event) {
 
   console.debug('isUrgent ', isUrgent);
   console.debug('isLate', isLate);
+  console.debug('isExpensive', isExpensive);
   
   renderDeliveryDates(checkedShippingMethod);
   renderDeliveryIntervals(checkedShippingMethod);
@@ -110,15 +119,22 @@ function getCheckedInterval (){
 //функция отрисовывает поля дат доставки с добавлением стоимости доставки
 function renderDeliveryDates(shippingValue) {
   deliveryDatesInfo.forEach((info) => {
+    //вычисляем надбавку по конкретной дате
+    let thisDayExpensiveMarkup = 0;
+    if(expensiveDays && deliveryExpensiveMarkup) {
+      if(expensiveDays.includes(info.text)) {thisDayExpensiveMarkup = deliveryExpensiveMarkup}
+    }
     info.label.innerHTML=`${info.text}`;
     let priceEl = document.createElement('span');
     info.label.appendChild(priceEl);
       if(shippingValue == DELIVERY.deliveryInMKAD) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(DELIVERY.deliveryCostInMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupInMkad)}₽` : `${Number(DELIVERY.deliveryCostInMkad) + Number(DELIVERY.deliveryMarkupInMkad)}₽` ;
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(DELIVERY.deliveryCostInMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupInMkad) + Number(thisDayExpensiveMarkup)}₽` : `${Number(DELIVERY.deliveryCostInMkad) + Number(DELIVERY.deliveryMarkupInMkad) + Number(thisDayExpensiveMarkup)}₽` ;
       }
       if(shippingValue == DELIVERY.deliveryOutMKAD) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupOutMkad)}₽` : `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryMarkupOutMkad)}₽` ;
+        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupOutMkad) + Number(thisDayExpensiveMarkup)}₽` : `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryMarkupOutMkad) + Number(thisDayExpensiveMarkup)}₽` ;
       }
+
+      //если isUrgentCourierTariff и/или isSmallHolidayTariffOn - все перезатираем и делаем по тарифу КС
       if ((shippingValue == DELIVERY.deliveryInMKAD || shippingValue == DELIVERY.deliveryOutMKAD) && isUrgentCourierTariff) {
           if (info.for == `delivery_dates_${today}`) {
               priceEl.innerHTML = 'по тарифу КС';
@@ -155,11 +171,13 @@ function ajaxGetUrgent() {
   console.debug('hi ajaxGetUrgent');
   console.debug('isUrgent ajax', isUrgent);
   console.debug('isLate ajax', isLate);
+  console.debug('isExpensive ajax', isExpensive);
 
   const data = new URLSearchParams();
   data.append('action', 'get_urgent_shipping');
   data.append('isUrgent', isUrgent);
   data.append('isLate', isLate);
+  data.append('isExpensive', isExpensive);
 
   fetch('/wp-admin/admin-ajax.php', {
     method: 'POST',
@@ -199,11 +217,16 @@ function setInitalState() {
   }
 
   isLate = 0;
+  
 
   const baseDate = new Date();
   if (hour >= 20) baseDate.setDate(baseDate.getDate() + 1);
 
   today = `${String(baseDate.getDate()).padStart(2,'0')}.${String(baseDate.getUTCMonth()+1).padStart(2,'0')}`;
+
+  if(expensiveDays && deliveryExpensiveMarkup && expensiveDays.includes(today)) {
+    isExpensive = 1
+  } else { isExpensive = 0}
 
   console.debug('today ', today);
   console.debug('this month ', new Date().getUTCMonth() + 1);

@@ -277,7 +277,7 @@ function plnt_wc_cart_totals_shipping_method_label( $method ) {
 
 function get_delivery_markup() {
   // define markup
-	$delivery_murkup = ['in_mkad'=>0, 'out_mkad'=>0, 'urg'=>0 ];
+	$delivery_murkup = ['in_mkad'=>0, 'out_mkad'=>0, 'urg'=>0, 'exp'=>0 ];
 
   $min_small_delivery = carbon_get_theme_option('min_small_delivery');
   $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
@@ -294,6 +294,7 @@ function get_delivery_markup() {
 
   $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
 
+  $expensive_day_markup_delivery = carbon_get_theme_option('expensive_day_markup_delivery');
 
 
   // проверяем крупногабаритную доставку
@@ -312,32 +313,22 @@ function get_delivery_markup() {
       }
   }
 
-  //проверяем срочную доставку и позднюю доставку
+  //проверяем срочную доставку 
 
-    // if (WC()->session->get('isLate' ) === '1') {
-    //      $delivery_murkup['in_mkad'] =  $delivery_murkup['in_mkad'] + $late_markup_delivery;
-    //      $delivery_murkup['out_mkad'] =  $delivery_murkup['out_mkad'] + $late_markup_delivery;
-    // }
+  if (check_if_large_delivery()) {
+    $delivery_murkup['urg'] =  $urgent_markup_delivery_large;
+  } else {
+    $delivery_murkup['urg'] =  $urgent_markup_delivery;
+  }
 
-    // if (WC()->session->get('isUrgent' ) === '1') {
-      if (check_if_large_delivery()) {
-        // $delivery_murkup['in_mkad'] =  $delivery_murkup['in_mkad'] + $urgent_markup_delivery_large;
-        // $delivery_murkup['out_mkad'] =  $delivery_murkup['out_mkad'] + $urgent_markup_delivery_large;
-        $delivery_murkup['urg'] =  $urgent_markup_delivery_large;
-      } else {
-        // $delivery_murkup['in_mkad'] =  $delivery_murkup['in_mkad'] + $urgent_markup_delivery;
-        // $delivery_murkup['out_mkad'] =  $delivery_murkup['out_mkad'] + $urgent_markup_delivery;
-        $delivery_murkup['urg'] =  $urgent_markup_delivery;
-      }
-    // }
+  $delivery_murkup['exp'] = $expensive_day_markup_delivery;
 
-    // обнуляем СРОЧНУЮ надбавку для предзаказа
-    if (plnt_is_backorder() || plnt_is_treez_backorder()) {
-        // $delivery_murkup['in_mkad'] =  0;
-        // $delivery_murkup['out_mkad'] =  0;
-        $delivery_murkup['urg'] =  0;
-    }
 
+  // обнуляем СРОЧНУЮ надбавку для предзаказа
+  if (plnt_is_backorder() || plnt_is_treez_backorder()) {
+    $delivery_murkup['urg'] =  0;
+    $delivery_murkup['exp'] =  0;
+  }
 
   return $delivery_murkup;
 }

@@ -69,6 +69,7 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'large_markup_delivery_in_mkad', 'Надбавка к стоимости крупногабаритной доставки в пределах МКАД'),
 			Field::make( 'text', 'large_markup_delivery_out_mkad', 'Надбавка к стоимости крупногабаритной доставки за пределами МКАД'),
 			Field::make( 'text', 'urgent_markup_delivery_large', 'Надбавка к стоимости срочной крупногабаритной доставки'),
+			Field::make( 'text', 'expensive_day_markup_delivery', 'Надбавка к стоимости доставки в определенные дни'),
 			Field::make( 'text', 'late_markup_delivery', 'Надбавка к стоимости доставки в дорогой интервал'),
       Field::make('select', 'late_interval_delivery', 'Дорогой интервал')
 				  ->add_options(array(

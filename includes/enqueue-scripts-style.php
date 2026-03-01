@@ -15,6 +15,7 @@ if ( ! function_exists( 'ast_scripts' ) ) {
     $late_markup_delivery   = carbon_get_theme_option('late_markup_delivery');
     $late_interval_delivery   = carbon_get_theme_option('late_interval_delivery');
     $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
+    $expensive_day_markup_delivery = carbon_get_theme_option('expensive_day_markup_delivery');
     $shipping_costs         = plnt_get_shiping_costs();
 
     $in_mkad  = $shipping_costs[$delivery_inMKAD];
@@ -61,6 +62,7 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 
             'deliveryUrgMarkup'     => (float) $delivery_murkup['urg'],
             'deliveryLateMarkup'    => (float) $late_markup_delivery,
+            'deliveryExpensiveMarkup'    => (float) $expensive_day_markup_delivery,
             'deliveryLateInterval'    => (string) $late_interval_delivery,
             'deliveryMarkupInMkad'  => (float) $delivery_murkup['in_mkad'],
             'deliveryMarkupOutMkad' => (float) $delivery_murkup['out_mkad'],
