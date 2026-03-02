@@ -1409,6 +1409,7 @@ add_filter( 'woocommerce_gateway_description', function( $description, $gateway_
                 'nal'    => 'Наличными',
                 'perevod' => 'Переводом',
                 'schet' => 'По счету',
+                'giftcard' => 'Подарочная карта',
                 'other' => 'Иное',
             ],
             'plnt_client_status' => [
