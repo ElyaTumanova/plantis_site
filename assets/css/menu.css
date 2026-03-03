@@ -704,6 +704,60 @@
     cursor: pointer;
 }
 
+/* ссылка */
+/* .catalog__node_gc a{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+  width: 100%;
+} */
+
+/* иконка через after */
+/* .catalog__node_gc a::after{
+  content: "";
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  position: relative;
+  right: -10px;
+  
+  color: var(--accent-color);
+
+  background-color: currentColor;
+
+  -webkit-mask-image: var(--gift-card-icon);
+          mask-image: var(--gift-card-icon);
+
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+
+  -webkit-mask-size: contain;
+          mask-size: contain;
+
+  -webkit-mask-position: center;
+          mask-position: center;
+} */
+.catalog__node_gc {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.catalog__node_gc span {
+  padding: 6px 8px 1px;
+  background-color: pink;
+  border-radius: 999px;
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+  right: -17px;
+}
+.catalog__node_gc svg {
+  width: 45px;
+  height: 45px;
+}
+
 .catalog__node_active > a, .catalog__node_active > span{
     color: var(--accent-color);
 }

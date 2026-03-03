@@ -1,45 +1,35 @@
 /* first sreen styles */
 
 .main__wrap {
-    display: grid;
-    grid-template-columns: repeat(2, calc(50% - 10px));
-    grid-template-rows: auto 173px;
-    row-gap: 30px;
-    column-gap: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
 }
   
-@media (max-width:900px) {
-    .main__wrap {
-      display: flex;
-      flex-direction: column;
-      row-gap: 30px;
-    }
-}
 
 @media (max-width:690px) {
-    .main__wrap {
-      row-gap: 20px;
-    }
+  .main__wrap {
+    row-gap: 20px;
+  }
 }
 
-
 .main__row {
-    margin-bottom: 55px;
+  margin-bottom: 55px;
 }
 
 
 @media (max-width:767px) {
-    .main__row {
-        margin-bottom: 45px;
-    }
+  .main__row {
+      margin-bottom: 45px;
+  }
 }
 
 /* стили для swiper */
 @media (min-width:1279px) {
-    .main__wrap .swiper-button-prev, .main__wrap .swiper-button-next {
-        margin-top: 0;
-        top: 123px;
-    }
+  .main__wrap .swiper-button-prev, .main__wrap .swiper-button-next {
+      margin-top: 0;
+      top: 123px;
+  }
 }
 
 
@@ -167,6 +157,13 @@
     }
 }
 
+.main__promo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
 /*telegram section*/
 
 .main__telegram {
@@ -186,11 +183,11 @@
     }
 } */
 
-@media (min-width:767px) {
+/* @media (min-width:767px) {
     .main__telegram {
         min-height: 173px;
     }
-}
+} */
 
 /* test banner */
 
@@ -218,12 +215,28 @@
   border-radius: var(--border-rad);
   overflow: hidden;
   max-height: 200px;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .main__giftcard img {
   object-fit: contain;
   object-position: center;
   display: block;
+}
+
+@media (max-width: 900px) {
+  .main__promo {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+  }
+  .main__giftcard, .main__telegram {
+    aspect-ratio: 64/25;
+    max-height: 200px;
+  }
 }
 
 /* categories sliders */
