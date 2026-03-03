@@ -1,5 +1,6 @@
 /*--------------------------------------------------------------
-My Account + Auth forms + Order pages
+My Account + Auth forms + Order pages (deduped + grouped)
+Правило: если ниже в исходнике было “важнее” — оставляем именно эти значения.
 --------------------------------------------------------------*/
 
 /* =========================================================
@@ -12,10 +13,6 @@ My Account + Auth forms + Order pages
   color: var(--text);
   gap: 39px;
 }
-
-/* @media (max-width:1024px){
-  .woocommerce-account .woocommerce{ grid-template-columns: 140px auto; }
-} */
 
 @media (max-width:840px){
   .woocommerce-account .woocommerce{
@@ -155,20 +152,17 @@ My Account + Auth forms + Order pages
 }
 
 /* Toggle buttons (login/register switch) */
-.login-form__registration-btn{
-  font-weight: 800;
-  grid-area: registartion;
-  justify-self: center;
-  color: var(--accent-color);
-  cursor: pointer;
-  text-align: center;
-}
-
+.login-form__registration-btn,
 .register-form__login-btn{
   font-weight: 800;
   color: var(--accent-color);
   text-align: center;
   cursor: pointer;
+}
+
+.login-form__registration-btn{
+  grid-area: registartion;
+  justify-self: center;
 }
 
 /* Grid areas for first rows */
@@ -212,7 +206,6 @@ My Account + Auth forms + Order pages
 /* =========================================================
    Show/Hide password button (login + edit account)
    ========================================================= */
-
 .password-input{
   position: relative;
   display: block;
@@ -272,21 +265,21 @@ My Account + Auth forms + Order pages
 /* =========================================================
    Lost password page
    ========================================================= */
+.woocommerce-lost-password .woocommerce{ grid-template-columns: auto; }
+
 .woocommerce-lost-password form{
   display: flex;
   flex-direction: column;
   row-gap: 15px;
 }
 
+.woocommerce-lost-password form input{ margin-top: 10px; }
+
 .woocommerce-lost-password form .button{
   background-color: var(--accent-color);
   color: var(--white);
   border: none;
 }
-
-.woocommerce-lost-password form input{ margin-top: 10px; }
-
-.woocommerce-lost-password .woocommerce{ grid-template-columns: auto; }
 
 /* =========================================================
    Notices / errors
@@ -299,103 +292,70 @@ My Account + Auth forms + Order pages
 
 .woocommerce-account .woocommerce .woocommerce-error{ text-align: center; }
 
-#customer_login ~ .woocommerce-notices-wrapper ul{
-  position: relative;
-  padding-left: 40px;
-}
-
-#customer_login ~ .woocommerce-notices-wrapper ul::before{
-  content: "";
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  width: 24px;
-  height: 24px;
-  transform: translateY(-50%);
-  background-repeat: no-repeat;
-  background-size: 24px 24px;
-  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M12%208V11.9999M12%2015.9901V16M21%2012C21%2016.9706%2016.9706%2021%2012%2021C7.02944%2021%203%2016.9706%203%2012C3%207.02944%207.02944%203%2012%203C16.9706%203%2021%207.02944%2021%2012Z%22%20stroke%3D%22%23E53B35%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E");
-}
-
 .login-popup .woocommerce-notices-wrapper{
   margin: auto;
   width: fit-content;
 }
 
-/* =========================================
-   My Account navigation — modern "filter panel" style
-   (no shadows, thin lines)
-   ========================================= */
-
-
-/* =========================================
-   My Account navigation — like info-menu-sidebar
-   Desktop: vertical list
-   Mobile: horizontal scroll
-   Icons not needed
-   ========================================= */
+/* =========================================================
+   My Account navigation
+   ========================================================= */
 
 /* hide downloads */
 .woocommerce-MyAccount-navigation-link--downloads{ display:none; }
 
-/* UL = card like sidebar */
+/* UL = sidebar card */
 .woocommerce-MyAccount-navigation ul{
-  margin:0;
-  list-style:none;
+  margin: 0;
+  list-style: none;
 
-  display:flex;
+  display: flex;
   flex-direction: column;
 
   padding: 15px;
   border-radius: 24px;
   border: 1px solid #e6e8ec;
-  background:#fff;
+  background: #fff;
 
   height: fit-content;
   max-width: 230px;
   min-width: 230px;
 }
 
-/* each row */
-.woocommerce-MyAccount-navigation ul li{
-  width:100%;
-}
+.woocommerce-MyAccount-navigation ul li{ width: 100%; }
 
-/* thin separators like sidebar */
 .woocommerce-MyAccount-navigation ul li:not(:last-child){
   border-bottom: 1px solid var(--gray);
 }
 
-/* link */
 .woocommerce-MyAccount-navigation ul li a{
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
 
   padding: 15px 0;
-  width:100%;
+  width: 100%;
 
   font-size: 14px;
   font-weight: 600;
   line-height: 1.4;
 
   color: var(--text);
-  text-decoration:none;
+  text-decoration: none;
 
   transition: color .15s ease;
+  position: relative; /* for icon ::before */
 }
 
-/* hover */
 .woocommerce-MyAccount-navigation ul li a:hover{
   color: var(--accent-color);
 }
 
-/* active */
 .woocommerce-MyAccount-navigation ul li.is-active a,
 .woocommerce-MyAccount-navigation ul li a[aria-current="page"]{
   color: var(--accent-color);
 }
 
-/* logout can stay same style (no pills), just red on hover/active */
+/* logout */
 .woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link--customer-logout a{
   color: rgba(229,59,53,.95);
 }
@@ -403,12 +363,11 @@ My Account + Auth forms + Order pages
   color: rgba(229,59,53,1);
 }
 
-/* =========================
-   MOBILE: horizontal scroll
-   ========================= */
+/* MOBILE: horizontal scroll */
 @media (max-width: 840px){
   .woocommerce-MyAccount-navigation{
     margin-top: 10px;
+    overflow: hidden;
   }
 
   .woocommerce-MyAccount-navigation ul{
@@ -425,12 +384,13 @@ My Account + Auth forms + Order pages
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
 
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
   }
+
   .woocommerce-MyAccount-navigation ul::-webkit-scrollbar{ display:none; }
 
   .woocommerce-MyAccount-navigation ul li{
-    width:auto;
+    width: auto;
     flex: 0 0 auto;
     border-bottom: 0 !important;
   }
@@ -443,6 +403,8 @@ My Account + Auth forms + Order pages
     border: 1px solid rgba(0,0,0,.10);
     color: rgba(0,0,0,.72);
     background: transparent;
+
+    justify-content: center; /* with icons */
   }
 
   .woocommerce-MyAccount-navigation ul li a:hover{
@@ -465,17 +427,7 @@ My Account + Auth forms + Order pages
   }
 }
 
-/* =========================================
-   PATCH: Icons via ::before for MyAccount nav links
-   (SVG as mask, inherits currentColor)
-   Requires your existing nav CSS
-   ========================================= */
-
-.woocommerce-MyAccount-navigation ul li a{
-  position: relative;
-}
-
-/* icon base */
+/* Icons via ::before (mask, inherits currentColor) */
 .woocommerce-MyAccount-navigation ul li a::before{
   content:"";
   width:18px;
@@ -497,55 +449,41 @@ My Account + Auth forms + Order pages
   opacity: .92;
 }
 
-/* Desktop (vertical) aligns like sidebar */
+/* Desktop alignment */
 @media (min-width: 841px){
-  .woocommerce-MyAccount-navigation ul li a{
-    justify-content: flex-start; /* override your "center" if any */
-  }
+  .woocommerce-MyAccount-navigation ul li a{ justify-content: flex-start; }
 }
 
-/* Mobile tabs: keep icon + text centered */
+/* Mobile icon spacing */
 @media (max-width: 840px){
-  .woocommerce-MyAccount-navigation ul li a{
-    justify-content: center;
-  }
-  .woocommerce-MyAccount-navigation ul li a::before{
-    margin-right:8px;
-  }
+  .woocommerce-MyAccount-navigation ul li a::before{ margin-right:8px; }
 }
 
 /* ====== ICONS (by endpoint class) ====== */
-
-/* Dashboard / Profile */
 .woocommerce-MyAccount-navigation-link--dashboard a::before{
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M3 10.5L12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V10.5Z' stroke='%23000' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E");
-          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M3 10.5L12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V10.5Z' stroke='%23000' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M9.02 2.84016L3.63 7.04016C2.73 7.74016 2 9.23016 2 10.3602V17.7702C2 20.0902 3.89 21.9902 6.21 21.9902H17.79C20.11 21.9902 22 20.0902 22 17.7802V10.5002C22 9.29016 21.19 7.74016 20.2 7.05016L14.02 2.72016C12.62 1.74016 10.37 1.79016 9.02 2.84016Z' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath opacity='0.34' d='M12 17.9902V14.9902' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M9.02 2.84016L3.63 7.04016C2.73 7.74016 2 9.23016 2 10.3602V17.7702C2 20.0902 3.89 21.9902 6.21 21.9902H17.79C20.11 21.9902 22 20.0902 22 17.7802V10.5002C22 9.29016 21.19 7.74016 20.2 7.05016L14.02 2.72016C12.62 1.74016 10.37 1.79016 9.02 2.84016Z' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath opacity='0.34' d='M12 17.9902V14.9902' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
-/* Orders */
 .woocommerce-MyAccount-navigation-link--orders a::before{
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M7 7h14v14H7V7Z' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M3 3h14v14H3V3Z' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M6 8h8M6 12h8M6 16h6' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
-          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M7 7h14v14H7V7Z' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M3 3h14v14H3V3Z' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M6 8h8M6 12h8M6 16h6' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M21.6602 10.44L20.6802 14.62C19.8402 18.23 18.1802 19.69 15.0602 19.39C14.5602 19.35 14.0202 19.26 13.4402 19.12L11.7602 18.72C7.59018 17.73 6.30018 15.67 7.28018 11.49L8.26018 7.30001C8.46018 6.45001 8.70018 5.71001 9.00018 5.10001C10.1702 2.68001 12.1602 2.03001 15.5002 2.82001L17.1702 3.21001C21.3602 4.19001 22.6402 6.26001 21.6602 10.44Z' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath opacity='0.4' d='M15.0599 19.3901C14.4399 19.8101 13.6599 20.1601 12.7099 20.4701L11.1299 20.9901C7.15985 22.2701 5.06985 21.2001 3.77985 17.2301L2.49985 13.2801C1.21985 9.3101 2.27985 7.2101 6.24985 5.9301L7.82985 5.4101C8.23985 5.2801 8.62985 5.1701 8.99985 5.1001C8.69985 5.7101 8.45985 6.4501 8.25985 7.3001L7.27985 11.4901C6.29985 15.6701 7.58985 17.7301 11.7599 18.7201L13.4399 19.1201C14.0199 19.2601 14.5599 19.3501 15.0599 19.3901Z' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath opacity='0.4' d='M12.6401 8.52979L17.4901 9.75979' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath opacity='0.4' d='M11.6602 12.3999L14.5602 13.1399' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M21.6602 10.44L20.6802 14.62C19.8402 18.23 18.1802 19.69 15.0602 19.39C14.5602 19.35 14.0202 19.26 13.4402 19.12L11.7602 18.72C7.59018 17.73 6.30018 15.67 7.28018 11.49L8.26018 7.30001C8.46018 6.45001 8.70018 5.71001 9.00018 5.10001C10.1702 2.68001 12.1602 2.03001 15.5002 2.82001L17.1702 3.21001C21.3602 4.19001 22.6402 6.26001 21.6602 10.44Z' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath opacity='0.4' d='M15.0599 19.3901C14.4399 19.8101 13.6599 20.1601 12.7099 20.4701L11.1299 20.9901C7.15985 22.2701 5.06985 21.2001 3.77985 17.2301L2.49985 13.2801C1.21985 9.3101 2.27985 7.2101 6.24985 5.9301L7.82985 5.4101C8.23985 5.2801 8.62985 5.1701 8.99985 5.1001C8.69985 5.7101 8.45985 6.4501 8.25985 7.3001L7.27985 11.4901C6.29985 15.6701 7.58985 17.7301 11.7599 18.7201L13.4399 19.1201C14.0199 19.2601 14.5599 19.3501 15.0599 19.3901Z' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath opacity='0.4' d='M12.6401 8.52979L17.4901 9.75979' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath opacity='0.4' d='M11.6602 12.3999L14.5602 13.1399' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
-/* Gift cards */
-.woocommerce-MyAccount-navigation-link--gift-cards a::before{
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M3 8h18v13H3V8Z' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M3 12h18' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M7.5 8c-1.38 0-2.5-1.12-2.5-2.5S6.12 3 7.5 3C9.5 3 10 5.5 12 5.5S14.5 3 16.5 3c1.38 0 2.5 1.12 2.5 2.5S17.88 8 16.5 8' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M12 5.5V21' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E");
-          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M3 8h18v13H3V8Z' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M3 12h18' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M7.5 8c-1.38 0-2.5-1.12-2.5-2.5S6.12 3 7.5 3C9.5 3 10 5.5 12 5.5S14.5 3 16.5 3c1.38 0 2.5 1.12 2.5 2.5S17.88 8 16.5 8' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M12 5.5V21' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E");
-}
-
-/* Edit account / Settings */
 .woocommerce-MyAccount-navigation-link--edit-account a::before{
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M19.4 15a7.9 7.9 0 0 0 .1-1 7.9 7.9 0 0 0-.1-1l2-1.6-2-3.4-2.4 1a8.3 8.3 0 0 0-1.7-1L15 3h-6l-.3 2.9a8.3 8.3 0 0 0-1.7 1l-2.4-1-2 3.4 2 1.6a7.9 7.9 0 0 0-.1 1 7.9 7.9 0 0 0 .1 1l-2 1.6 2 3.4 2.4-1a8.3 8.3 0 0 0 1.7 1L9 21h6l.3-2.9a8.3 8.3 0 0 0 1.7-1l2.4 1 2-3.4-2-1.6Z' stroke='%23000' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E");
-          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M19.4 15a7.9 7.9 0 0 0 .1-1 7.9 7.9 0 0 0-.1-1l2-1.6-2-3.4-2.4 1a8.3 8.3 0 0 0-1.7-1L15 3h-6l-.3 2.9a8.3 8.3 0 0 0-1.7 1l-2.4-1-2 3.4 2 1.6a7.9 7.9 0 0 0-.1 1 7.9 7.9 0 0 0 .1 1l-2 1.6 2 3.4 2.4-1a8.3 8.3 0 0 0 1.7 1L9 21h6l.3-2.9a8.3 8.3 0 0 0 1.7-1l2.4 1 2-3.4-2-1.6Z' stroke='%23000' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath opacity='0.34' d='M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z' stroke='%23171717' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2 12.8799V11.1199C2 10.0799 2.85 9.21994 3.9 9.21994C5.71 9.21994 6.45 7.93994 5.54 6.36994C5.02 5.46994 5.33 4.29994 6.24 3.77994L7.97 2.78994C8.76 2.31994 9.78 2.59994 10.25 3.38994L10.36 3.57994C11.26 5.14994 12.74 5.14994 13.65 3.57994L13.76 3.38994C14.23 2.59994 15.25 2.31994 16.04 2.78994L17.77 3.77994C18.68 4.29994 18.99 5.46994 18.47 6.36994C17.56 7.93994 18.3 9.21994 20.11 9.21994C21.15 9.21994 22.01 10.0699 22.01 11.1199V12.8799C22.01 13.9199 21.16 14.7799 20.11 14.7799C18.3 14.7799 17.56 16.0599 18.47 17.6299C18.99 18.5399 18.68 19.6999 17.77 20.2199L16.04 21.2099C15.25 21.6799 14.23 21.3999 13.76 20.6099L13.65 20.4199C12.75 18.8499 11.27 18.8499 10.36 20.4199L10.25 20.6099C9.78 21.3999 8.76 21.6799 7.97 21.2099L6.24 20.2199C5.33 19.6999 5.02 18.5299 5.54 17.6299C6.45 16.0599 5.71 14.7799 3.9 14.7799C2.85 14.7799 2 13.9199 2 12.8799Z' stroke='%23171717' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath opacity='0.34' d='M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z' stroke='%23171717' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2 12.8799V11.1199C2 10.0799 2.85 9.21994 3.9 9.21994C5.71 9.21994 6.45 7.93994 5.54 6.36994C5.02 5.46994 5.33 4.29994 6.24 3.77994L7.97 2.78994C8.76 2.31994 9.78 2.59994 10.25 3.38994L10.36 3.57994C11.26 5.14994 12.74 5.14994 13.65 3.57994L13.76 3.38994C14.23 2.59994 15.25 2.31994 16.04 2.78994L17.77 3.77994C18.68 4.29994 18.99 5.46994 18.47 6.36994C17.56 7.93994 18.3 9.21994 20.11 9.21994C21.15 9.21994 22.01 10.0699 22.01 11.1199V12.8799C22.01 13.9199 21.16 14.7799 20.11 14.7799C18.3 14.7799 17.56 16.0599 18.47 17.6299C18.99 18.5399 18.68 19.6999 17.77 20.2199L16.04 21.2099C15.25 21.6799 14.23 21.3999 13.76 20.6099L13.65 20.4199C12.75 18.8499 11.27 18.8499 10.36 20.4199L10.25 20.6099C9.78 21.3999 8.76 21.6799 7.97 21.2099L6.24 20.2199C5.33 19.6999 5.02 18.5299 5.54 17.6299C6.45 16.0599 5.71 14.7799 3.9 14.7799C2.85 14.7799 2 13.9199 2 12.8799Z' stroke='%23171717' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
-/* Logout */
 .woocommerce-MyAccount-navigation-link--customer-logout a::before{
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M10 7V5a2 2 0 0 1 2-2h7v18h-7a2 2 0 0 1-2-2v-2' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M3 12h10' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M6 9l-3 3 3 3' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M10 7V5a2 2 0 0 1 2-2h7v18h-7a2 2 0 0 1-2-2v-2' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M3 12h10' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M6 9l-3 3 3 3' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M8.8999 7.56023C9.2099 3.96023 11.0599 2.49023 15.1099 2.49023H15.2399C19.7099 2.49023 21.4999 4.28023 21.4999 8.75023V15.2702C21.4999 19.7402 19.7099 21.5302 15.2399 21.5302H15.1099C11.0899 21.5302 9.2399 20.0802 8.9099 16.5402' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cg opacity='0.4'%3E%3Cpath d='M14.9991 12H3.61914' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M5.85 8.65039L2.5 12.0004L5.85 15.3504' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M8.8999 7.56023C9.2099 3.96023 11.0599 2.49023 15.1099 2.49023H15.2399C19.7099 2.49023 21.4999 4.28023 21.4999 8.75023V15.2702C21.4999 19.7402 19.7099 21.5302 15.2399 21.5302H15.1099C11.0899 21.5302 9.2399 20.0802 8.9099 16.5402' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cg opacity='0.4'%3E%3Cpath d='M14.9991 12H3.61914' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M5.85 8.65039L2.5 12.0004L5.85 15.3504' stroke='%23171717' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E");
 }
 
+.woocommerce-MyAccount-navigation-link--gift-cards a::before{
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M19.9702 10H3.97021V18C3.97021 21 4.97021 22 7.97021 22H15.9702C18.9702 22 19.9702 21 19.9702 18V10Z' stroke='%23171717' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M21.5 7V8C21.5 9.1 20.97 10 19.5 10H4.5C2.97 10 2.5 9.1 2.5 8V7C2.5 5.9 2.97 5 4.5 5H19.5C20.97 5 21.5 5.9 21.5 7Z' stroke='%23171717' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath opacity='0.4' d='M11.6398 4.99994H6.11978C5.77978 4.62994 5.78978 4.05994 6.14978 3.69994L7.56978 2.27994C7.93978 1.90994 8.54978 1.90994 8.91978 2.27994L11.6398 4.99994Z' stroke='%23171717' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath opacity='0.4' d='M17.8701 4.99994H12.3501L15.0701 2.27994C15.4401 1.90994 16.0501 1.90994 16.4201 2.27994L17.8401 3.69994C18.2001 4.05994 18.2101 4.62994 17.8701 4.99994Z' stroke='%23171717' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath opacity='0.4' d='M8.93994 10V15.14C8.93994 15.94 9.81994 16.41 10.4899 15.98L11.4299 15.36C11.7699 15.14 12.1999 15.14 12.5299 15.36L13.4199 15.96C14.0799 16.4 14.9699 15.93 14.9699 15.13V10H8.93994Z' stroke='%23171717' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M19.9702 10H3.97021V18C3.97021 21 4.97021 22 7.97021 22H15.9702C18.9702 22 19.9702 21 19.9702 18V10Z' stroke='%23171717' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M21.5 7V8C21.5 9.1 20.97 10 19.5 10H4.5C2.97 10 2.5 9.1 2.5 8V7C2.5 5.9 2.97 5 4.5 5H19.5C20.97 5 21.5 5.9 21.5 7Z' stroke='%23171717' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath opacity='0.4' d='M11.6398 4.99994H6.11978C5.77978 4.62994 5.78978 4.05994 6.14978 3.69994L7.56978 2.27994C7.93978 1.90994 8.54978 1.90994 8.91978 2.27994L11.6398 4.99994Z' stroke='%23171717' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath opacity='0.4' d='M17.8701 4.99994H12.3501L15.0701 2.27994C15.4401 1.90994 16.0501 1.90994 16.4201 2.27994L17.8401 3.69994C18.2001 4.05994 18.2101 4.62994 17.8701 4.99994Z' stroke='%23171717' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath opacity='0.4' d='M8.93994 10V15.14C8.93994 15.94 9.81994 16.41 10.4899 15.98L11.4299 15.36C11.7699 15.14 12.1999 15.14 12.5299 15.36L13.4199 15.96C14.0799 16.4 14.9699 15.93 14.9699 15.13V10H8.93994Z' stroke='%23171717' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
 
 /* =========================================================
    My Account content + address + edit account form
@@ -575,12 +513,13 @@ My Account + Auth forms + Order pages
 
 .woocommerce-EditAccountForm{ max-width: 600px; }
 
+.woocommerce-EditAccountForm p{ margin-bottom: 20px; }
+
 .woocommerce-EditAccountForm input{
   padding: 14px 20px;
   width: 100%;
   border: none;
   border-bottom: 1px solid #ccc;
-  background: var(--background);
   border-radius: 0;
 }
 
@@ -591,8 +530,7 @@ My Account + Auth forms + Order pages
   outline: none;
 }
 
-.woocommerce-EditAccountForm p{ margin-bottom: 20px; }
-
+/* ниже по исходнику было важнее: display:flex для password-input в EditAccount */
 .woocommerce-EditAccountForm .password-input{
   display: flex;
   gap: 15px;
@@ -631,7 +569,7 @@ My Account + Auth forms + Order pages
 }
 
 /* =========================================================
-   Orders list (My Account)
+   Orders list (My Account) + Gift cards (tables baseline)
    ========================================================= */
 .woocommerce-MyAccount-orders,
 .my_account_giftcards{
@@ -668,13 +606,6 @@ My Account + Auth forms + Order pages
 }
 
 @media (max-width:767px){
-  /* .woocommerce-MyAccount-orders th,
-  .woocommerce-MyAccount-orders thead,
-  .my_account_giftcards th,
-  .my_account_giftcards thead{
-    display: none;
-  } */
-
   .woocommerce-MyAccount-orders tr,
   .my_account_giftcards tr{
     display: grid;
@@ -697,92 +628,8 @@ My Account + Auth forms + Order pages
 }
 
 /* =========================================================
-   Single order view (custom layout) — keep as is
+   Thankyou page
    ========================================================= */
-.plnt-order__details{
-  /* display: grid;
-  grid-template-columns: 690px;
-  column-gap: 100px; */
-  margin-bottom: 50px;
-}
-
-@media (max-width:690px){
-  .plnt-order__details{ grid-template-columns: auto; }
-  .plnt-order__totals{ max-width: 100%; }
-}
-
-.plnt-order__items{
-  padding-top: 15px;
-  padding-bottom: 17px;
-  border-bottom: solid 1px var(--gray-text);
-}
-
-.plnt-order__totals-row_total{ text-transform: uppercase; }
-
-.plnt-order__totals{
-  display: flex;
-  flex-direction: column;
-  row-gap: 17px;
-  margin-top: 17px;
-  color: var(--text);
-}
-
-.plnt-order__totals-label{
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.plnt-order__totals-value{
-  font-size: 18px;
-  font-weight: 600;
-  display: flex;
-  text-align: end;
-  align-items: end;
-}
-
-.plnt-order__totals-value_delivery{
-  flex-direction: row-reverse;
-  column-gap: 5px;
-  align-items: center;
-}
-
-.plnt-order__totals-value_total{ font-size: 22px; }
-
-.plnt-order__item{
-  display: grid;
-  grid-template-columns: auto 140px 40px;
-  grid-template-areas: "name price qty";
-  align-items: center;
-}
-
-.plnt-order__item:not(:last-child){ margin-bottom: 10px; }
-
-.plnt-order__items a{
-  font-size: 18px;
-  font-weight: 600;
-  grid-area: name;
-  align-self: end;
-  color: var(--text);
-}
-
-.plnt-order__items .woocommerce-Price-amount{
-  font-size: 22px;
-  font-weight: 600;
-  grid-area: price;
-  text-align: end;
-  padding-right: 13px;
-}
-
-.plnt-order__items .product-quantity{
-  grid-area: qty;
-  align-self: center;
-  text-align: end;
-}
-
-/*--------------------------------------------------------------
-Thankyou page
---------------------------------------------------------------*/
-
 .woocommerce-order-received .woocommerce-order .woocommerce-notice{
   font-size: 20px;
   margin-bottom: 20px;
@@ -814,7 +661,10 @@ Thankyou page
   row-gap: 5px;
 }
 
-.woocommerce-order-details{ margin-top: 40px; max-width: 728px; }
+.woocommerce-order-details{
+  margin-top: 40px;
+  max-width: 728px;
+}
 
 .woocommerce-order-details .woocommerce-table--custom-fields{
   width: fit-content;
@@ -892,12 +742,10 @@ Thankyou page
   margin: 20px 0 10px;
 }
 
-/* =========================
-   ONLY: .woocommerce-MyAccount-content
-   Applies to Orders table + Gift Cards table (YITH) inside content
-   ========================= */
-
-.woocommerce .woocommerce-MyAccount-content{
+/* =========================================================
+   ONLY: .woocommerce-MyAccount-content (card UI for tables)
+   ========================================================= */
+.woocommerce-MyAccount-content{
   background:#fff;
   border:1px solid rgba(16,24,40,.08);
   border-radius:18px;
@@ -905,18 +753,17 @@ Thankyou page
   color:var(--text);
 }
 
-.woocommerce .woocommerce-MyAccount-content h2,
-.woocommerce .woocommerce-MyAccount-content h3{
+.woocommerce-MyAccount-content h2,
+.woocommerce-MyAccount-content h3{
   margin:0 0 12px;
-  font-weight:750;
   letter-spacing:.2px;
 }
 
-.woocommerce .woocommerce-MyAccount-content .woocommerce-notices-wrapper{
+.woocommerce-MyAccount-content .woocommerce-notices-wrapper{
   margin:0 0 14px;
 }
 
-.woocommerce .woocommerce-MyAccount-content .gift-card-panel-title-container{
+.woocommerce-MyAccount-content .gift-card-panel-title-container{
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -935,30 +782,28 @@ Thankyou page
   transition:transform .18s ease, filter .18s ease, box-shadow .18s ease, background .18s ease;
 }
 
-#ywgc-add-new-gift-card:hover {
+#ywgc-add-new-gift-card:hover{
   transform:translateY(-1px);
   filter:brightness(1.06);
   box-shadow:0 14px 30px rgba(16,24,40,.22);
 }
 
 /* Tables inside content -> card list */
-.woocommerce .woocommerce-MyAccount-content .shop_table{
+.woocommerce-MyAccount-content .shop_table{
   border:0 !important;
   background:transparent !important;
   margin:0 !important;
   width:100%;
 }
 
-.woocommerce .woocommerce-MyAccount-content .shop_table thead{
-  display:none;
-}
+.woocommerce-MyAccount-content .shop_table thead{ display:none; }
 
-.woocommerce .woocommerce-MyAccount-content .shop_table tbody{
+.woocommerce-MyAccount-content .shop_table tbody{
   display:grid;
   gap:14px;
 }
 
-.woocommerce .woocommerce-MyAccount-content .shop_table tr{
+.woocommerce-MyAccount-content .shop_table tr{
   background:#fff;
   border:1px solid rgba(16,24,40,.08);
   border-radius:20px;
@@ -967,37 +812,35 @@ Thankyou page
   box-shadow: 0 3px 8px #0000000f;
 }
 
-.woocommerce .woocommerce-MyAccount-content .shop_table tr:hover{
+.woocommerce-MyAccount-content .shop_table tr:hover{
   box-shadow: 0 3px 8px #0000000f, 0 12px 15px #0000000d, 0 25px 20px #00000008, 0 45px 25px #00000003, 0 70px 28px #0000;
 }
 
 @media (min-width:600px){
-  .woocommerce .woocommerce-MyAccount-content .shop_table tr{
+  .woocommerce-MyAccount-content .shop_table tr{
     display:grid;
-    /* grid-auto-flow:column;
-    grid-auto-columns:1fr; */
     grid-template-rows: auto;
     align-items:center;
     gap:12px 14px;
   }
 
-  .woocommerce .woocommerce-MyAccount-content .woocommerce-orders-table tr{
+  .woocommerce-MyAccount-content .woocommerce-orders-table tr{
     grid-template-columns: 15% 30% 23% auto;
   }
 
-  .woocommerce .woocommerce-MyAccount-content #ywgc-my-acount-table tr{
+  .woocommerce-MyAccount-content #ywgc-my-acount-table tr{
     grid-template-columns: 24% 10% 30% auto;
   }
 }
 
 @media (max-width:600px){
-  .woocommerce .woocommerce-MyAccount-content .shop_table tr{
+  .woocommerce-MyAccount-content .shop_table tr{
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
 
-  .woocommerce .woocommerce-MyAccount-content .shop_table [data-title]::before{
+  .woocommerce-MyAccount-content .shop_table [data-title]::before{
     content:attr(data-title);
     display:block;
     font-size:12px;
@@ -1006,26 +849,27 @@ Thankyou page
     margin-bottom:6px;
     font-weight: 400;
   }
-  .woocommerce .woocommerce-MyAccount-content .shop_table .woocommerce-orders-table__cell-order-status::before{
+
+  .woocommerce-MyAccount-content .shop_table .woocommerce-orders-table__cell-order-status::before{
     display:none;
   }
 }
 
-.woocommerce .woocommerce-MyAccount-content .woocommerce-orders-table__cell-order-number a,
-.woocommerce .woocommerce-MyAccount-content #ywgc-my-acount-table td.code span{
+.woocommerce-MyAccount-content .woocommerce-orders-table__cell-order-number a,
+.woocommerce-MyAccount-content #ywgc-my-acount-table td.code span{
   font-size:18px;
   font-weight:750;
   letter-spacing:.2px;
   color:rgba(16,24,40,.92);
 }
 
-.woocommerce .woocommerce-MyAccount-content time,
-.woocommerce .woocommerce-MyAccount-content .shop_table .amount{
+.woocommerce-MyAccount-content time,
+.woocommerce-MyAccount-content .shop_table .amount{
   font-variant-numeric: tabular-nums;
 }
 
-.woocommerce .woocommerce-MyAccount-content .woocommerce-orders-table__cell-order-status,
-.woocommerce .woocommerce-MyAccount-content #ywgc-my-acount-table td.status span{
+.woocommerce-MyAccount-content .woocommerce-orders-table__cell-order-status,
+.woocommerce-MyAccount-content #ywgc-my-acount-table td.status span{
   display:inline-flex;
   align-items:center;
   padding:8px 12px;
@@ -1038,30 +882,30 @@ Thankyou page
   height: fit-content;
 }
 
-.woocommerce .woocommerce-MyAccount-content .woocommerce-orders-table__row--status-processing .woocommerce-orders-table__cell-order-status{
+.woocommerce-MyAccount-content .woocommerce-orders-table__row--status-processing .woocommerce-orders-table__cell-order-status{
   background:rgba(34,197,94,.10);
   border-color:rgba(34,197,94,.22);
   color:rgba(21,128,61,.95);
 }
-.woocommerce .woocommerce-MyAccount-content .woocommerce-orders-table__row--status-on-hold .woocommerce-orders-table__cell-order-status{
+.woocommerce-MyAccount-content .woocommerce-orders-table__row--status-on-hold .woocommerce-orders-table__cell-order-status{
   background:rgba(245,158,11,.12);
   border-color:rgba(245,158,11,.26);
   color:rgba(146,64,14,.95);
 }
 
 @media (min-width:768px){
-  .woocommerce .woocommerce-MyAccount-content .shop_table td:last-child{
+  .woocommerce-MyAccount-content .shop_table td:last-child{
     justify-self:end;
   }
 }
 
-.woocommerce .woocommerce-MyAccount-content #ywgc-my-acount-table a.button{
+.woocommerce-MyAccount-content #ywgc-my-acount-table a.button{
   text-decoration:none;
 }
 
-/* =========================
-   YITH Gift Card modal — minimal (no shadows)
-   ========================= */
+/* =========================================================
+   YITH Gift Card modal — minimal
+   ========================================================= */
 .yith-ywgc-add-new-gift-card-modal-wrapper{
   inset: 0;
   background: rgba(17,17,17,.55);
@@ -1174,10 +1018,11 @@ Thankyou page
   filter: brightness(1.05);
 }
 
-/* =====================================
+/* =========================================================
    ORDER VIEW — SIMPLE / NO GRID
-   ===================================== */
-.woocommerce .woocommerce-MyAccount-content .plnt-order__details{
+   ВАЖНО: это “поздний” блок в исходнике, поэтому именно он главный.
+   ========================================================= */
+.woocommerce-MyAccount-content .plnt-order__details{
   border:1px solid rgba(0,0,0,.08);
   border-radius:12px;
   padding:18px;
@@ -1185,106 +1030,118 @@ Thankyou page
   overflow:hidden;
 }
 
-/* Items */
-.woocommerce .plnt-order__items{
+/* Items (final) */
+.plnt-order__items{
   margin-bottom:20px;
+  padding-top: 15px;
+  padding-bottom: 17px;
+  border-bottom: solid 1px var(--gray-text);
 }
 
-.woocommerce .plnt-order__item{
+.plnt-order__items a{
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.plnt-order__items .woocommerce-Price-amount{
+  font-size: 22px;
+  font-weight: 600;
+  text-align: end;
+  padding-right: 13px;
+}
+
+.plnt-order__items .product-quantity{
+  text-align: end;
+}
+
+/* Item row (final: no grid, с разделителями) */
+.plnt-order__item{
   padding:10px 0;
   border-bottom:1px solid rgba(0,0,0,.06);
 }
 
-.woocommerce .plnt-order__item:last-child{
-  border-bottom:0;
-}
+.plnt-order__item:last-child{ border-bottom:0; }
 
-.woocommerce .plnt-order__item a{
-  text-decoration:none;
-  color:#111;
-  font-weight:500;
-}
+/* Totals (final) */
+.plnt-order__totals{
+  display: flex;
+  flex-direction: column;
+  margin-top: 17px;
+  color: var(--text);
 
-.woocommerce .plnt-order__item .product-quantity{
-  margin-left:6px;
-  color:rgba(0,0,0,.55);
-}
-
-.woocommerce .plnt-order__item .amount{
-  float:right;
-  font-weight:600;
-  font-variant-numeric: tabular-nums;
-}
-
-/* Totals */
-.woocommerce .plnt-order__totals{
   border:1px solid rgba(0,0,0,.08);
   border-radius:10px;
   overflow:hidden;
 }
 
-.woocommerce .plnt-order__totals-row{
-  padding:10px 14px;
+.plnt-order__totals-row{
+  padding:14px;
   border-bottom:1px solid rgba(0,0,0,.06);
+  display: flex;
+  justify-content: space-between;
 }
+.plnt-order__totals-row:last-child{ border-bottom:0; }
 
-.woocommerce .plnt-order__totals-row:after{
-  content:"";
-  display:block;
-  clear:both;
-}
-
-.woocommerce .plnt-order__totals-row:last-child{
-  border-bottom:0;
-}
-
-.woocommerce .plnt-order__totals-label{
-  float:left;
-  color:rgba(0,0,0,.65);
-}
-
-.woocommerce .plnt-order__totals-value{
-  float:right;
-  font-weight:600;
-  font-variant-numeric: tabular-nums;
-}
-
-.woocommerce .plnt-order__totals-row_total{
+.plnt-order__totals-row_total{
+  text-transform: uppercase;
   background:rgba(0,0,0,.03);
 }
 
-.woocommerce .plnt-order__totals-row_total .plnt-order__totals-label,
-.woocommerce .plnt-order__totals-row_total .plnt-order__totals-value{
+.plnt-order__totals-label{
+  font-size: 18px;
+  font-weight: 600;
+  color:rgba(0,0,0,.65);
+}
+
+.plnt-order__totals-value{
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  text-align: end;
+  align-items: end;
+}
+
+.plnt-order__totals-value_delivery{
+  flex-direction: row-reverse;
+  column-gap: 5px;
+  align-items: center;
+}
+
+.plnt-order__totals-value_total{ font-size: 22px; }
+
+/* total row emphasis (final overrides) */
+.plnt-order__totals-row_total .plnt-order__totals-label{
   font-weight:700;
   font-size:16px;
 }
 
-/* Нижняя секция (доставка + контакты) */
-.woocommerce .plnt-order__delivery-row,
-.woocommerce .woocommerce-customer-details{
+.plnt-order__totals-row_total .plnt-order__totals-value{
+  font-weight:700;
+  font-size:22px;
+}
+
+/* Delivery + contacts (final) */
+.plnt-order__delivery-row,
+.woocommerce-customer-details{
   max-width:726px;
 }
 
-.woocommerce .plnt-order__delivery-row{
+.plnt-order__delivery-row{
   padding:10px 0;
   border-bottom:1px solid rgba(0,0,0,.06);
+  margin: 10px 0;
 }
+.plnt-order__delivery-row:last-of-type{ border-bottom:0; }
 
-.woocommerce .plnt-order__delivery-row:last-of-type{
-  border-bottom:0;
-}
-
-.woocommerce .plnt-order__delivery-label{
+.plnt-order__delivery-label{
   color:rgba(0,0,0,.6);
   margin-bottom:4px;
 }
 
-.woocommerce .plnt-order__delivery-value{
-  font-weight:600;
-}
+.plnt-order__delivery-value{ font-weight:600; }
 
-/* Контакты */
-.woocommerce .woocommerce-customer-details address{
+.woocommerce-customer-details address{
   margin:0;
   padding:14px;
   border:1px solid rgba(0,0,0,.08);
@@ -1293,14 +1150,13 @@ Thankyou page
   font-style:normal;
 }
 
-.woocommerce .woocommerce-customer-details--phone,
-.woocommerce .woocommerce-customer-details--email{
+.woocommerce-customer-details--phone,
+.woocommerce-customer-details--email{
   margin-top:8px;
-  color:rgba(0,0,0,.75);
 }
 
 /* Order summary highlight */
-.woocommerce .woocommerce-MyAccount-content > p{
+.woocommerce-MyAccount-content > p{
   padding:12px 16px;
   border:1px solid rgba(0,0,0,.08);
   border-radius:10px;
@@ -1311,7 +1167,7 @@ Thankyou page
   line-height: 2;
 }
 
-.woocommerce .woocommerce-MyAccount-content > p mark{
+.woocommerce-MyAccount-content > p mark{
   background:rgba(0,0,0,.06);
   padding:3px 8px;
   border-radius:999px;

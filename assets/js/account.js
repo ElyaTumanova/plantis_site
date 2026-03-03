@@ -56,7 +56,7 @@ if(customerLogin) {
   }
 
   document.addEventListener('DOMContentLoaded', changeLoginReg)
-  //document.addEventListener('DOMContentLoaded', initPasswords);
+  document.addEventListener('DOMContentLoaded', initPasswords);
   document.addEventListener('DOMContentLoaded', addFormValidationElements);
 
 
@@ -113,3 +113,28 @@ if(customerLogin) {
   });
 
 }
+
+
+// my account page
+document.addEventListener('DOMContentLoaded', () => {
+  const nav = document.querySelector('.woocommerce-MyAccount-navigation ul');
+  if (!nav) return;
+
+  // только на мобилке
+  if (window.matchMedia('(max-width: 840px)').matches) {
+    const activeLink =
+      nav.querySelector('li.is-active a, a[aria-current="page"]');
+
+    if (!activeLink) return;
+
+    // скроллим контейнер так, чтобы активный пункт оказался по центру
+    const navRect = nav.getBoundingClientRect();
+    const linkRect = activeLink.getBoundingClientRect();
+
+    const currentScrollLeft = nav.scrollLeft;
+    const linkCenter = (linkRect.left - navRect.left) + (linkRect.width / 2);
+    const target = currentScrollLeft + linkCenter - (navRect.width / 2);
+
+    nav.scrollTo({ left: target, behavior: 'smooth' });
+  }
+});

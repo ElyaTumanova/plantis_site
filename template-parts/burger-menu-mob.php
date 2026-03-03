@@ -44,8 +44,12 @@ if ( ! defined( 'ABSPATH' ) ) {
     <!-- личный кабинет -->
     <?php if (!is_user_logged_in()) : ?> 
         <div class="menu__item_accent menu__item_enter burger-menu__account login-popup-open-btn">Личный кабинет 
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
-                <path d="M4.5 3.5V2.25C4.5 1.91848 4.6317 1.60054 4.86612 1.36612C5.10054 1.1317 5.41848 1 5.75 1H12.25C12.5815 1 12.8995 1.1317 13.1339 1.36612C13.3683 1.60054 13.5 1.91848 13.5 2.25V9.75C13.5 10.0815 13.3683 10.3995 13.1339 10.6339C12.8995 10.8683 12.5815 11 12.25 11H5.75C5.41848 11 5.10054 10.8683 4.86612 10.6339C4.6317 10.3995 4.5 10.0815 4.5 9.75V8.5M7.5 8.5L10 6L7.5 3.5M0.5 6H9.5" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M8.8999 7.56023C9.2099 3.96023 11.0599 2.49023 15.1099 2.49023H15.2399C19.7099 2.49023 21.4999 4.28023 21.4999 8.75023V15.2702C21.4999 19.7402 19.7099 21.5302 15.2399 21.5302H15.1099C11.0899 21.5302 9.2399 20.0802 8.9099 16.5402" stroke="#171717" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <g opacity="0.4">
+              <path d="M2 12H14.88" stroke="#171717" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12.6504 8.65039L16.0004 12.0004L12.6504 15.3504" stroke="#171717" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
             </svg>
         </div>
     <?php else :?>
