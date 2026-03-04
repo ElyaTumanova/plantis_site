@@ -7,7 +7,8 @@ let isExpensive; //увеличиваем стоимость доставки
 // let notWorking = []
 
 let holidays = ['31.12']; //format dd.mm - дни для сокращенного интервала
-let notWorking = [] //format dd.mm - дни для отсутсвия доставки 
+let notWorking = ['04.03'] //format dd.mm - дни для отсутсвия доставки 
+let notWorkingAllowPickup = true;
 let expensiveDays = ['07.03', '08.03'] //format dd.mm - дни для дорогой доставки 
 let deliveryDatesInfo = [];
 let deliveryIntervalsInfo = []
@@ -45,6 +46,7 @@ function getOrderParametrs(event) {
     checkedShippingMethod = getCheckedShippingMethod();
   }
   console.debug('checkedShippingMethod ',checkedShippingMethod);
+  if(notWorkingAllowPickup) {disableNotWorkingDays(checkedShippingMethod)}
   
   checkedDate = getCheckedDate();
   console.debug('checkedDate ', checkedDate)
@@ -368,25 +370,40 @@ function hideCheckoutFields(event){
   }        
 }
 
-function disableNotWorkingDays () {
-  deliveryDatesInput.forEach(date => {
-    if (notWorking.includes(date.value)) {
-      date.disabled = true;
-      date.checked = false;
+function disableNotWorkingDays (shippingValue) {
+  if(!shippingValue) {shippingValue = getCheckedShippingMethod()}
+  if(notWorkingAllowPickup && shippingValue == DELIVERY.localPickupId) {
+    enableNotWorkingDays()
+  } else {
+    deliveryDatesInput.forEach(date => {
+      if (notWorking.includes(date.value)) {
+        date.disabled = true;
+        date.checked = false;
+      }
+    })
+  
+    deliveryDatesLables.forEach(date => {
+      if (notWorking.includes(date.textContent)) {
+        date.classList.add('d-none');
+      }
+    })
+  
+    const arr = Array.from(deliveryDatesInput);
+    const firstOk = arr.find(date => !notWorking.includes(date.value));
+    if (firstOk) {
+      firstOk.checked = true;
     }
-  })
 
-  deliveryDatesLables.forEach(date => {
-    if (notWorking.includes(date.textContent)) {
-      date.classList.add('d-none');
-    }
-  })
-
-  const arr = Array.from(deliveryDatesInput);
-  const firstOk = arr.find(date => !notWorking.includes(date.value));
-  if (firstOk) {
-    firstOk.checked = true;
   }
+}
+
+function enableNotWorkingDays() {
+  deliveryDatesLables.forEach(date => {
+    date.classList.remove('d-none');
+  })
+  deliveryDatesInput.forEach(date => {
+    date.disabled = false;
+  })
 }
 
 if (checkoutForm) {
