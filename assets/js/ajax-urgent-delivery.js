@@ -7,7 +7,7 @@ let isExpensive; //увеличиваем стоимость доставки
 // let notWorking = []
 
 let holidays = ['31.12']; //format dd.mm - дни для сокращенного интервала
-let notWorking = ['04.03'] //format dd.mm - дни для отсутсвия доставки 
+let notWorking = [''] //format dd.mm - дни для отсутсвия доставки 
 let expensiveDays = ['07.03', '08.03'] //format dd.mm - дни для дорогой доставки 
 let deliveryDatesInfo = [];
 let deliveryIntervalsInfo = []
