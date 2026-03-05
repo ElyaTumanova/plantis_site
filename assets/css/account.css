@@ -316,8 +316,8 @@ My Account + Auth forms + Order pages (deduped + grouped)
 
 @media (max-width:767px) {
   .login-popup .woocommerce-notices-wrapper {
-    width: calc(100vw - 40px);
-    top: -10px;
+    width: calc(100vw - 85px);
+    top: -20px;
   }
 }
 
@@ -514,14 +514,6 @@ My Account + Auth forms + Order pages (deduped + grouped)
    ========================================================= */
 .woocommerce-MyAccount-content p{ margin-bottom: 10px; }
 
-/* .woocommerce-MyAccount-content a{
-  color: var(--accent-color);
-  border: none;
-  text-transform: capitalize;
-  font-size: inherit;
-  padding: 0;
-} */
-
 .woocommerce-MyAccount-content a:hover{
   text-decoration: underline;
   box-shadow: none;
@@ -651,6 +643,24 @@ My Account + Auth forms + Order pages (deduped + grouped)
   padding: 5px 5px 5px 0px;
 }
 
+.woocommerce-MyAccount-content .woocommerce-Button.wc-forward {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text, #1f1f1f);
+  border: none;
+  border-radius: 0;
+  text-transform: none;
+  padding: 0;
+  border-bottom: 1px solid rgba(0,0,0,.25);
+  width: fit-content;
+}
+.woocommerce-MyAccount-content .woocommerce-Button.wc-forward:hover {
+  border-bottom-color: rgba(0,0,0,.55);
+}
 /* =========================================================
    Thankyou page
    ========================================================= */
@@ -925,32 +935,31 @@ My Account + Auth forms + Order pages (deduped + grouped)
 /* =========================================================
    YITH Gift Card modal — minimal
    ========================================================= */
-.yith-ywgc-add-new-gift-card-modal-wrapper{
+/* .yith-ywgc-add-new-gift-card-modal-wrapper{
   inset: 0;
   background: rgba(17,17,17,.55);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   z-index: 999999;
-}
-
+} */
+/* 
 .yith-ywgc-add-new-gift-card-modal-wrapper-region{
   display: grid;
   place-items: center;
   padding: 18px;
-}
+} */
 
-.yith-ywgc-add-new-gift-card-modal{
+/* .yith-ywgc-add-new-gift-card-modal{
   width: min(520px, 100%);
   margin: 0 !important;
   background: #fff;
   border: 1px solid rgba(0,0,0,.10);
   border-radius: 14px;
   overflow: hidden;
-}
+} */
 
 .yith-ywgc-add-new-gift-card-modal-inner{
-  position: relative;
-  padding: 18px;
+  padding-top: 2em;
 }
 
 .ywgc-add-new-gift-card-modal-title{
@@ -959,14 +968,14 @@ My Account + Auth forms + Order pages (deduped + grouped)
   line-height: 1.25;
   font-weight: 650;
   letter-spacing: .2px;
-  color: rgba(0,0,0,.88);
+  color: var(--text);
 }
 
 .ywgc-add-new-gift-card-form{
-  border: 1px solid rgba(0,0,0,.08);
-  border-radius: 12px;
+  /* border: 1px solid rgba(0,0,0,.08);
+  border-radius: 12px; */
   padding: 14px;
-  background: rgba(0,0,0,.02);
+  background: #ffffff;
 }
 
 .ywgc-add-new-gift-card-label{
@@ -1036,7 +1045,13 @@ My Account + Auth forms + Order pages (deduped + grouped)
 .ywgc-link-gift-card-submit-button:hover{
   filter: brightness(1.05);
 }
-
+#yith-ywgc-add-new-gift-card-modal-container .yith-ywgc-add-new-gift-card-modal-close {
+  top: 15px !important;
+  right: 15px !important;
+}
+#yith-ywgc-add-new-gift-card-modal-container .yith-ywgc-add-new-gift-card-modal-close:after {
+  opacity: 1 !important;
+}
 /* =========================================================
    ORDER VIEW — SIMPLE / NO GRID
    ВАЖНО: это “поздний” блок в исходнике, поэтому именно он главный.
@@ -1052,10 +1067,19 @@ My Account + Auth forms + Order pages (deduped + grouped)
 /* Items (final) */
 .plnt-order__items{
   margin-bottom:20px;
-  padding-top: 15px;
-  padding-bottom: 17px;
+  padding: 14px;
   border-bottom: solid 1px var(--gray-text);
 }
+/* Item row (final: no grid, с разделителями) */
+.plnt-order__item{
+  padding:10px 0;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.plnt-order__item:last-child{ border-bottom:0; }
 
 .plnt-order__items a{
   font-size: 18px;
@@ -1066,21 +1090,19 @@ My Account + Auth forms + Order pages (deduped + grouped)
 .plnt-order__items .woocommerce-Price-amount{
   font-size: 22px;
   font-weight: 600;
-  text-align: end;
-  padding-right: 13px;
+  margin-left: auto;
 }
 
-.plnt-order__items .product-quantity{
-  text-align: end;
+@media (max-width:500px) {
+  .plnt-order__item {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  .plnt-order__items .woocommerce-Price-amount {
+    margin-left: 0;
+  }
 }
 
-/* Item row (final: no grid, с разделителями) */
-.plnt-order__item{
-  padding:10px 0;
-  border-bottom:1px solid rgba(0,0,0,.06);
-}
-
-.plnt-order__item:last-child{ border-bottom:0; }
 
 /* Totals (final) */
 .plnt-order__totals{
@@ -1099,6 +1121,7 @@ My Account + Auth forms + Order pages (deduped + grouped)
   border-bottom:1px solid rgba(0,0,0,.06);
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .plnt-order__totals-row:last-child{ border-bottom:0; }
 
