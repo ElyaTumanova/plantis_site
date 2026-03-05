@@ -329,8 +329,8 @@ html { scrollbar-gutter: stable; }
 }
 
 .woocommerce-notices-wrapper {
-    margin-bottom: 10px;
-    margin-top: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .woocommerce-error:focus-visible, .woocommerce-notices-wrapper:focus-visible, .woocommerce-notices-wrapper:focus, .woocommerce-message:focus-visible, .woocommerce-message:focus {
@@ -503,4 +503,11 @@ html { scrollbar-gutter: stable; }
     justify-content: space-between;
     column-gap: 15px;
     overflow: hidden;
+}
+
+
+/* checkbox color*/
+
+input[type="checkbox"]{
+  accent-color: var(--accent-color)
 }

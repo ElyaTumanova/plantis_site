@@ -115,13 +115,6 @@ add_action( 'woocommerce_login_form_end', function () {
 } );
 
 /* =========================================================
- * Notices: перенос вывода уведомлений
- * ========================================================= */
-
-remove_action( 'woocommerce_before_customer_login_form', 'woocommerce_output_all_notices', 10 );
-add_action( 'woocommerce_after_customer_login_form', 'woocommerce_output_all_notices', 10 );
-
-/* =========================================================
  * AJAX логин (nopriv)
  * ========================================================= */
 
@@ -169,6 +162,100 @@ function plantis_ajax_login() {
 	] );
 }
 
+
+/* =========================================================
+ * AJAX регистрация (nopriv)
+ * ========================================================= */
+
+add_action( 'wp_ajax_nopriv_plantis_ajax_register', 'plantis_ajax_register' );
+function plantis_ajax_register() {
+	check_ajax_referer( 'plantis_ajax_register', 'nonce' );
+
+	$email    = isset( $_POST['email'] ) ? wc_clean( wp_unslash( $_POST['email'] ) ) : '';
+	$password = isset( $_POST['password'] ) ? wp_unslash( $_POST['password'] ) : '';
+
+	$email = strtolower( trim( $email ) );
+
+	// Базовые проверки (под твои поля)
+	if ( empty( $email ) ) {
+		wc_add_notice( 'Введите email.', 'error' );
+		wp_send_json_success( [
+			'ok'      => false,
+			'notices' => wc_print_notices( true ),
+			'code'    => 'empty_email',
+		] );
+	}
+
+	if ( ! is_email( $email ) ) {
+		wc_add_notice( 'Некорректный email.', 'error' );
+		wp_send_json_success( [
+			'ok'      => false,
+			'notices' => wc_print_notices( true ),
+			'code'    => 'invalid_email',
+		] );
+	}
+
+	if ( empty( $password ) ) {
+		wc_add_notice( 'Введите пароль.', 'error' );
+		wp_send_json_success( [
+			'ok'      => false,
+			'notices' => wc_print_notices( true ),
+			'code'    => 'empty_password',
+		] );
+	}
+
+	// Если Woo отключил регистрацию — сразу ошибка (на всякий)
+	if ( 'yes' !== get_option( 'woocommerce_enable_myaccount_registration' ) ) {
+		wc_add_notice( 'Регистрация отключена на сайте.', 'error' );
+		wp_send_json_success( [
+			'ok'      => false,
+			'notices' => wc_print_notices( true ),
+			'code'    => 'registration_disabled',
+		] );
+	}
+
+	if ( email_exists( $email ) ) {
+		wc_add_notice( 'Пользователь с таким email уже зарегистрирован.', 'error' );
+		wp_send_json_success( [
+			'ok'      => false,
+			'notices' => wc_print_notices( true ),
+			'code'    => 'email_exists',
+		] );
+	}
+
+	// Woo обычно использует email как логин (если отдельного поля логина нет)
+	$username = $email;
+
+	$user_id = wc_create_new_customer( $email, $username, $password );
+
+	if ( is_wp_error( $user_id ) ) {
+		$code = $user_id->get_error_code();
+
+		$map = [
+			'registration-error-email-exists'    => 'Пользователь с таким email уже зарегистрирован.',
+			'registration-error-invalid-email'   => 'Некорректный email.',
+			'registration-error-username-exists' => 'Пользователь уже существует.',
+		];
+
+		$msg = $map[ $code ] ?? $user_id->get_error_message();
+
+		wc_add_notice( $msg, 'error' );
+
+		wp_send_json_success( [
+			'ok'      => false,
+			'notices' => wc_print_notices( true ),
+			'code'    => $code,
+		] );
+	}
+
+	// Сразу авторизуем
+	wc_set_customer_auth_cookie( $user_id );
+
+	wp_send_json_success( [
+		'ok'       => true,
+		'redirect' => wc_get_page_permalink( 'myaccount' ),
+	] );
+}
 /* =========================================================
  * Edit account: убрать обязательность фамилии
  * ========================================================= */

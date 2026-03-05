@@ -112,6 +112,45 @@ if(customerLogin) {
     }
   });
 
+  document.addEventListener('submit', async (e) => {
+    const form = e.target;
+    if (!form.matches('form.woocommerce-form-register')) return;
+
+    e.preventDefault();
+
+    const wrapper = document.querySelector('.woocommerce-notices-wrapper');
+    if (wrapper) wrapper.innerHTML = '';
+
+    const fd = new FormData(form);
+    fd.append('action', 'plantis_ajax_register');
+    fd.append('nonce', window.PLANTIS_LOGIN?.registerNonce || '');
+
+    try {
+      const res = await fetch(window.PLANTIS_LOGIN.ajaxUrl, {
+        method: 'POST',
+        credentials: 'same-origin',
+        body: fd
+      });
+
+      const data = await res.json();
+
+      if (data?.data?.ok) {
+        window.location.href = data.data.redirect || window.location.href;
+        return;
+      }
+
+      if (wrapper) {
+        wrapper.innerHTML =
+          data?.data?.notices || '<div class="woocommerce-error">Ошибка регистрации</div>';
+      }
+    } catch (err) {
+      if (wrapper) {
+        wrapper.innerHTML =
+          '<div class="woocommerce-error">Ошибка сети. Попробуйте ещё раз.</div>';
+      }
+    }
+  });
+
 }
 
 

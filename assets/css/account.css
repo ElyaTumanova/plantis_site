@@ -24,8 +24,7 @@ My Account + Auth forms + Order pages (deduped + grouped)
 /* =========================================================
    Auth: login / register wrappers
    ========================================================= */
-.plnt-customer-login,
-.plnt-customer-register{
+.plnt-customer-login {
   background: var(--background);
   justify-content: center;
 }
@@ -82,7 +81,7 @@ My Account + Auth forms + Order pages (deduped + grouped)
 
 #customer_login form p,
 .u-column2 form p{
-  margin-bottom: 10px;
+  margin-bottom: 40px;
   line-height: 1.2;
 }
 
@@ -92,8 +91,17 @@ My Account + Auth forms + Order pages (deduped + grouped)
   flex-direction: column;
 }
 
-#customer_login form .woocommerce-form-row--wide:first-child{
+#customer_login form .woocommerce-form-row {
   margin-bottom: 40px;
+  position: relative;
+}
+
+#customer_login form .woocommerce-form-row .field__errors {
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  font-size: 14px;
+  color: var(--red-color);
 }
 
 /* Inputs */
@@ -195,6 +203,7 @@ My Account + Auth forms + Order pages (deduped + grouped)
   .u-column2{
     display: flex;
     flex-direction: column;
+    margin-top: 40px;
   }
 
   #customer_login div,
@@ -284,17 +293,32 @@ My Account + Auth forms + Order pages (deduped + grouped)
 /* =========================================================
    Notices / errors
    ========================================================= */
+.woocommerce-account .woocommerce {
+  position: relative;
+}
 .woocommerce-account .woocommerce .woocommerce-notices-wrapper{
-  max-width: 600px;
-  margin: auto;
-  grid-column: 1 / span 2;
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
 }
 
-.woocommerce-account .woocommerce .woocommerce-error{ text-align: center; }
+.woocommerce-account .woocommerce .woocommerce-error{ text-align: center; margin: 0;}
 
 .login-popup .woocommerce-notices-wrapper{
-  margin: auto;
   width: fit-content;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+}
+
+@media (max-width:767px) {
+  .login-popup .woocommerce-notices-wrapper {
+    width: calc(100vw - 40px);
+    top: -10px;
+  }
 }
 
 /* =========================================================
@@ -490,13 +514,13 @@ My Account + Auth forms + Order pages (deduped + grouped)
    ========================================================= */
 .woocommerce-MyAccount-content p{ margin-bottom: 10px; }
 
-.woocommerce-MyAccount-content a{
+/* .woocommerce-MyAccount-content a{
   color: var(--accent-color);
   border: none;
   text-transform: capitalize;
   font-size: inherit;
   padding: 0;
-}
+} */
 
 .woocommerce-MyAccount-content a:hover{
   text-decoration: underline;
@@ -725,6 +749,7 @@ My Account + Auth forms + Order pages (deduped + grouped)
 .woocommerce-customer-details .woocommerce-column__title{
   font-size: 18px;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .woocommerce-customer-details address,
@@ -751,12 +776,6 @@ My Account + Auth forms + Order pages (deduped + grouped)
   border-radius:18px;
   padding:18px;
   color:var(--text);
-}
-
-.woocommerce-MyAccount-content h2,
-.woocommerce-MyAccount-content h3{
-  margin:0 0 12px;
-  letter-spacing:.2px;
 }
 
 .woocommerce-MyAccount-content .woocommerce-notices-wrapper{
@@ -857,7 +876,7 @@ My Account + Auth forms + Order pages (deduped + grouped)
 
 .woocommerce-MyAccount-content .woocommerce-orders-table__cell-order-number a,
 .woocommerce-MyAccount-content #ywgc-my-acount-table td.code span{
-  font-size:18px;
+  font-size:16px;
   font-weight:750;
   letter-spacing:.2px;
   color:rgba(16,24,40,.92);
@@ -1114,6 +1133,7 @@ My Account + Auth forms + Order pages (deduped + grouped)
 .plnt-order__totals-row_total .plnt-order__totals-label{
   font-weight:700;
   font-size:16px;
+  margin-top: auto;
 }
 
 .plnt-order__totals-row_total .plnt-order__totals-value{

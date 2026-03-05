@@ -104,6 +104,7 @@ if ( ! function_exists( 'ast_scripts' ) ) {
     wp_localize_script('account', 'PLANTIS_LOGIN', [
         'ajaxUrl' => admin_url('admin-ajax.php'),
         'nonce'   => wp_create_nonce('plantis_ajax_login'),
+        'registerNonce'  => wp_create_nonce('plantis_ajax_register')
     ]);
 
 		// wp_enqueue_script( 'login-popup', get_template_directory_uri() .
