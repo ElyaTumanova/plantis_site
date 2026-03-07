@@ -29,10 +29,6 @@ if ( ! function_exists( 'ast_scripts' ) ) {
     $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
     $isSmallHolidayCart = WC()->cart->subtotal < 5000;
     $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
-		// wp_enqueue_script( 'magnific-popup', get_template_directory_uri() .
-		//                                      '/assets/js/jquery.magnific-popup.min.js', array( 'jquery' ), null, true );
-		// wp_enqueue_script( 'owl-script', get_template_directory_uri() .
-		//                                  '/assets/js/owl.carousel.min.js', array( 'jquery' ), null, true );
 		
 		wp_enqueue_script( 'ajax-update-cart', get_template_directory_uri() .
 											 '/assets/js/ajax-update-cart.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/ajax-update-cart.js'), true );									 
@@ -94,8 +90,6 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		                                     '/assets/js/search-popup.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/search-popup.js'), true );
 		wp_enqueue_script( 'page-popup', get_template_directory_uri() .
 											 '/assets/js/popup.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/popup.js'), true );
-		// wp_enqueue_script( 'side-cart', get_template_directory_uri() .
-		// 									 '/assets/js/side-cart.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/side-cart.js'), true );
 		wp_enqueue_script( 'swiper', get_template_directory_uri() .
 		                                     '/assets/js/swiper.js', array( 'jquery' ), null, true ); //swiper	
 
@@ -107,35 +101,12 @@ if ( ! function_exists( 'ast_scripts' ) ) {
         'registerNonce'  => wp_create_nonce('plantis_ajax_register')
     ]);
 
-		// wp_enqueue_script( 'login-popup', get_template_directory_uri() .
-		// 									 '/assets/js/login-popup.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/login-popup.js'), true );
-
-		// wp_enqueue_script( 'lazy-load', get_template_directory_uri() .
-		//                                      '/assets/js/lazy-load.js', array( 'jquery' ), null, true ); // for lazy load
-
-		// wp_enqueue_script( 'progressive-image', get_template_directory_uri() .
-		                                    //  '/assets/js/progressive-image.js', array( 'jquery' ), null, true ); // for lazy load
-
 		wp_enqueue_script( 'quantity-buttons', get_template_directory_uri() .
 		                                     '/assets/js/quantity-buttons.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/quantity-buttons.js'), true );
-
-		// wp_enqueue_script( 'menu-mob', get_template_directory_uri() .
-		//                                      '/assets/js/menu-mob.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/menu-mob.js'), true );
-											 
-		// wp_enqueue_script( 'jquery.flexisel', get_template_directory_uri() .
-		//                                      '/assets/js/jquery.flexisel.js', array( 'jquery' ), null, true );
-
-		// wp_enqueue_script( 'jquery.nivo.slider', get_template_directory_uri() .
-		//                                      '/assets/js/jquery.nivo.slider.js', array( 'jquery' ), null, true);
-
 		wp_enqueue_script( 'catalog-menu', get_template_directory_uri() .
 		                                     '/assets/js/catalog-menu.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/catalog-menu.js'), true );
 		wp_enqueue_script( 'gift-card', get_template_directory_uri() .
 		                                     '/assets/js/gift-card.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/gift-card.js'), true );
-
-		// wp_enqueue_script( 'delivery-dropdown', get_template_directory_uri() .
-		//                                      '/assets/js/delivery-dropdown.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/delivery-dropdown.js'), true );
-		
 		wp_enqueue_script( 'cart-backorder-crossell', get_template_directory_uri() .
 		                                     '/assets/js/cart-backorder-crossell.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/cart-backorder-crossell.js'), true );
 
@@ -193,15 +164,9 @@ if ( ! function_exists( 'ast_styles' ) ) {
 	add_action( 'wp_enqueue_scripts', 'ast_styles' );
 	function ast_styles() {
 		wp_enqueue_style( 'ast-style', get_stylesheet_uri() );
-		// wp_enqueue_style( 'magnific-css', get_template_directory_uri() .
-		//                              '/assets/css/magnific-popup.css', array(), null, 'all' );
-		// wp_enqueue_style( 'owl-css', get_template_directory_uri() .
-		//                              '/assets/css/owl.carousel.min.css', array(), null, 'all' );
 
 		wp_enqueue_style( 'swiper', get_template_directory_uri() .
 									'/assets/css/swiper.css', array(), null, 'all' ); //swiper
-
-
     wp_enqueue_style( 'general', get_template_directory_uri() .
 		                             '/assets/css/general.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/general.css'), 'all' );
 		
@@ -241,16 +206,12 @@ if ( ! function_exists( 'ast_styles' ) ) {
 		wp_enqueue_style( 'test', get_template_directory_uri() .
 		                             '/assets/css/test.css', array(), filemtime(get_stylesheet_directory() .'/assets/css/test.css'), 'all' );
   
-    wp_enqueue_style( 'progressive-image', get_template_directory_uri() .
-		                             '/assets/css/progressive-image.css', array(), null, 'all' ); // for lazy load
+    // wp_enqueue_style( 'progressive-image', get_template_directory_uri() .
+		//                              '/assets/css/progressive-image.css', array(), null, 'all' ); // for lazy load
 		wp_enqueue_style( 'FlexSlider', get_template_directory_uri() .
-		                             '/assets/css/FlexSlider.css', array(), null, 'all' );
+		                             '/assets/css/FlexSlider.css', array(), null, 'all' ); //слайдер для фото товара в карточке
 		// wp_enqueue_style( 'datepicker', get_template_directory_uri() .
 		//                              '/assets/css/datepicker.material.css', array(), null, 'all' ); //datepicker
-		// wp_enqueue_style( 'flexisel', get_template_directory_uri() .
-		//                              '/assets/css/flexisel.css', array(), null, 'all' );
-		// wp_enqueue_style( 'nivo-slider', get_template_directory_uri() .
-		//                              '/assets/css/nivo-slider.css', array(), null, 'all' );
 		wp_enqueue_style( 'fonts', 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap', array(), null, 'all' );
 	};
 }
