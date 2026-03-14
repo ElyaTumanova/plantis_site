@@ -315,6 +315,7 @@ My Account + Auth forms + Order pages (deduped + grouped)
   border-bottom: 1px solid #ccc;
   background: var(--background);
   border-radius: 0;
+  box-sizing: border-box;
 }
 
 .woocommerce-lost-password .woocommerce-form-row input:focus-visible,
