@@ -614,27 +614,6 @@ add_action('yith_ywgc_show_gift_card_amount_selection', function(){
 },10);
 
 
-// add_filter('ywgc_recipient_name_label', function (){
-//   return 'Для кого подарок';
-// });
-// add_filter('ywgc_sender_name_label', function (){
-//   return 'От кого подарок';
-// });
-
-// add_filter('ywgc_edit_message_label', function (){
-//   return 'Поздравление';
-// });
-// add_filter('yith_wcgc_manual_amount_option_text', function (){
-//   return '';
-// });
-// add_filter('ywgc_add_to_cart_button_text', function (){
-//   return 'Перейти к оплате';
-// });
-
-// add_filter('ywgc_minimal_amount_error_text',function (){
-//   return 'Минимальная стоимость подарочного сертификата';
-// });
-
 add_filter( 'woocommerce_add_to_cart_redirect', function( $url ) {
     if ( isset( $_REQUEST['buy_now'] ) && '1' === $_REQUEST['buy_now'] ) {
         return wc_get_checkout_url();

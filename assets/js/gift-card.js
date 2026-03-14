@@ -175,68 +175,28 @@ if(giftCardApplyBtn) {
   giftCardApplyBtn.addEventListener('click', () => giftcardShow.classList.toggle('open'));
 }
 
-// проверка кода карты
-// const gcBalanceForm = document.querySelector('.gc-balance-form');
+document.addEventListener('DOMContentLoaded', function () {
+    const wrap = document.querySelector('.gift-image-wrap');
+    const buttons = document.querySelectorAll('.gift-gradient-picker__btn');
+    const hiddenInput = document.querySelector('#gift_card_gradient');
 
-// if (gcBalanceForm) {
-//   console.log(gcBalanceForm)
-//     const codeInput = document.getElementById('gcnum');
-//     const btn = document.querySelector('.gc-balance__checkBtn');
-//     const spin = document.getElementById('spin');
-//     const msg = document.getElementById('msg');
-//     const clearBtn = document.querySelector('.gc-balance__clearBtn');
+    if (!wrap || !buttons.length) return;
 
-//    // Кириллица (включая Ё/ё) по Unicode
-//     const reCyrillic = /[\p{Script=Cyrillic}]/u;
-//     let justTriedCyrillic = false;
+    buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            const gradient = this.dataset.gradient;
 
-//     // Отмечаем попытку ввести кириллицу (не блокируем ввод)
-//     codeInput.addEventListener('beforeinput', (e) => {
-//       if (typeof e.data === 'string' && reCyrillic.test(e.data)) {
-//         justTriedCyrillic = true;
-//       }
-//     });
+            wrap.style.background = gradient;
 
-//     // При вставке — тоже отмечаем (не блокируем)
-//     codeInput.addEventListener('paste', (e) => {
-//       const text = (e.clipboardData || window.clipboardData).getData('text');
-//       if (reCyrillic.test(text)) {
-//         justTriedCyrillic = true;
-//       }
-//     });
+            buttons.forEach(function (btn) {
+                btn.classList.remove('is-active');
+            });
 
-//     function validateNow({ forceShow = false } = {}) {
-//       const v = codeInput.value;
+            this.classList.add('is-active');
 
-//       if (!v.trim()) {
-//         codeInput.setCustomValidity('Поле не должно быть пустым');
-//       } else if (reCyrillic.test(v)) {
-//         codeInput.setCustomValidity('Используйте латинские буквы');
-//       } else {
-//         codeInput.setCustomValidity('');
-//       }
-
-//       if (forceShow || justTriedCyrillic) {
-//         codeInput.reportValidity();
-//         justTriedCyrillic = false;
-//       }
-//     }
-
-//     // Валидация на каждом вводе
-//     codeInput.addEventListener('input', () => validateNow());
-
-//     // Проверка при отправке
-//     gcBalanceForm.addEventListener('submit', (e) => {
-//       validateNow({ forceShow: true });
-//       if (!gcBalanceForm.checkValidity()) {
-//         e.preventDefault();
-//       }
-//     });
-
-//     // Кнопка «Очистить»
-//     clearBtn.addEventListener('click', () => {
-//       codeInput.value = '';
-//       codeInput.setCustomValidity('');
-//       codeInput.focus();
-//     });
-// }
+            if (hiddenInput) {
+                hiddenInput.value = gradient;
+            }
+        });
+    });
+});

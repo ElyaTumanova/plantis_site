@@ -49,6 +49,49 @@ $gcid = get_the_ID();
       <p class="gift-image-amount">1500<span>₽</span></p>
     </div>
 
+    <div class="gift-gradient-picker">
+      <p class="gift-gradient-picker__title">Выберите фон сертификата</p>
+
+      <div class="gift-gradient-picker__list">
+        <button type="button"
+                class="gift-gradient-picker__btn is-active"
+                data-gradient="linear-gradient(90deg, #7FC8F8 0%, #DFF4FF 100%)"
+                aria-label="Голубой градиент">
+          <span style="background: linear-gradient(90deg, #7FC8F8 0%, #DFF4FF 100%);"></span>
+        </button>
+
+        <button type="button"
+                class="gift-gradient-picker__btn"
+                data-gradient="linear-gradient(90deg, #F6B8D8 0%, #FCEEF5 100%)"
+                aria-label="Розовый градиент">
+          <span style="background: linear-gradient(90deg, #F6B8D8 0%, #FCEEF5 100%);"></span>
+        </button>
+
+        <button type="button"
+                class="gift-gradient-picker__btn"
+                data-gradient="linear-gradient(90deg, #B7E7C1 0%, #EEF9F1 100%)"
+                aria-label="Зелёный градиент">
+          <span style="background: linear-gradient(90deg, #B7E7C1 0%, #EEF9F1 100%);"></span>
+        </button>
+
+        <button type="button"
+                class="gift-gradient-picker__btn"
+                data-gradient="linear-gradient(90deg, #D7C2FF 0%, #F4F0FF 100%)"
+                aria-label="Сиреневый градиент">
+          <span style="background: linear-gradient(90deg, #D7C2FF 0%, #F4F0FF 100%);"></span>
+        </button>
+
+        <button type="button"
+                class="gift-gradient-picker__btn"
+                data-gradient="linear-gradient(90deg, #FFD6A5 0%, #FFF4E8 100%)"
+                aria-label="Персиковый градиент">
+          <span style="background: linear-gradient(90deg, #FFD6A5 0%, #FFF4E8 100%);"></span>
+        </button>
+      </div>
+
+      <input type="hidden" name="gift_card_gradient" id="gift_card_gradient" value="linear-gradient(90deg, #7FC8F8 0%, #DFF4FF 100%)">
+    </div>
+
 
     <form method="post" action="/wp-admin/admin-post.php" class="gift-cards_form" novalidate>
 
