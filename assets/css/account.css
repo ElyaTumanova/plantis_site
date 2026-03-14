@@ -90,7 +90,6 @@ My Account + Auth forms + Order pages (deduped + grouped)
 }
 
 #customer_login form p {
-  margin-bottom: 10px;
   line-height: 1.2;
 }
 
@@ -180,6 +179,7 @@ My Account + Auth forms + Order pages (deduped + grouped)
 .login-form__registration-btn{
   grid-area: registartion;
   justify-self: center;
+  margin-top: 40px;
 }
 
 /* Grid areas for first rows */
