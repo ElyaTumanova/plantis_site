@@ -19,7 +19,7 @@ if(customerLogin) {
   //добавляем кнопку показать пароль
 
   function initPasswords() {
-    console.log('hi initPasswords')
+    // console.log('hi initPasswords')
 
     const inputs = loginPopup.querySelectorAll('#password, #reg_password');
 

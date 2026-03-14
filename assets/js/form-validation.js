@@ -232,7 +232,7 @@ class FormsValidation {
   initDom () {
     this.form = document.querySelector(this.formSelector)
     if (!this.form) {
-      console.debug(`Form .${this.formSelector} не найдена, init() пропускаем`)
+      console.debug(`Form ${this.formSelector} не найдена, init() пропускаем`)
       return
     }
     this.sumbmitBtn = this.form.querySelector('button[type="submit"]')
