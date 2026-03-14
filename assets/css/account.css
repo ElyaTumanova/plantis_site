@@ -196,7 +196,7 @@ My Account + Auth forms + Order pages (deduped + grouped)
   background-color: var(--accent-color);
   border-color: var(--accent-color);
   width: 100%;
-  margin: 20px 0;
+  margin: 20px 0 0;
 }
 
 #customer_login form button[disabled],
