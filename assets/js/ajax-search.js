@@ -76,41 +76,49 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function runSearch(query) {
+    // отменяем предыдущую “сессию” поиска
     if (controller) controller.abort();
     controller = ('AbortController' in window) ? new AbortController() : null;
 
     const signal = controller ? controller.signal : undefined;
     lastQuery = query;
 
-    openDropdown();
-    content.classList.add('is-loading');
-    content.innerHTML = spinnerHtml;
+    document.body.classList.add('fix-body');
+    result.hidden = false;
+    result.classList.add('is-loading');
+    resultPopup.classList.add('popup_active');
+    result.innerHTML = SPINNER_HTML;
 
     try {
-      let { response, data } = await postSearch(query, signal);
+      // 1) первая попытка search-ajax
+      let { res, data } = await postSearch(query, signal);
 
+      // если пользователь уже ввёл другое — не обновляем UI
       if (input.value.trim() !== lastQuery) return;
 
-      if (isBadNonce(response, data)) {
-        const refreshed = await refreshNonce(signal);
-        if (!refreshed) throw new Error('Bad nonce');
+      // 2) если nonce плохой — обновляем и делаем ВТОРУЮ попытку
+      if (isBadNonce(res, data)) {
+        const ok = await refreshNonce(signal);
+        if (!ok) throw new Error('Bad nonce (refresh failed)');
 
+        // если пока обновляли nonce пользователь ввёл другое — выходим
         if (input.value.trim() !== lastQuery) return;
 
-        ({ response, data } = await postSearch(query, signal));
+        ({ res, data } = await postSearch(query, signal)); // <-- повторный search-ajax
       }
 
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       if (data?.success === false) throw new Error(data?.data?.message || 'AJAX error');
 
       if (input.value.trim() !== lastQuery) return;
 
-      content.classList.remove('is-loading');
-      content.innerHTML = data?.data?.out || '<div class="reazy-search-empty">Ничего не найдено</div>';
+      result.classList.remove('is-loading');
+      result.innerHTML = data?.out ?? '';
     } catch (e) {
       if (e.name !== 'AbortError') {
-        content.classList.remove('is-loading');
-        content.innerHTML = '<div class="reazy-search-empty">Ничего не найдено</div>';
+        result.classList.remove('is-loading');
+        result.innerHTML = '';
+        // console.error(e);
       }
     }
   }
