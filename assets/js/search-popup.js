@@ -3,6 +3,7 @@ const searchOpenPopupBtn = document.querySelectorAll('.search-btn');
 const searchWrap = document.querySelector('.search__wrap');
 const headerButns = document.querySelector('.header__main .header__wrap');
 const headerButnsMob = document.querySelector('.header__mob .search-btn');
+const searchResultPopup = document.querySelector('.search-result-popup');
 const searchResult = document.querySelector('.search-result');
 const searchInput = document.querySelector('.search__wrap .search-field');
 const searchClear = document.querySelector('.search__wrap .search__clean');
@@ -53,6 +54,7 @@ function closeSearchResults() {
     searchResult.hidden = true;
     searchResult.innerHTML = '';
     body.classList.remove('fix-body');
+    searchResultPopup.classList.remove('popup_active');
   }
 }
 

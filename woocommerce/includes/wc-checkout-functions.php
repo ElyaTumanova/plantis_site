@@ -177,30 +177,34 @@ Contents
 
     function plnt_check_cart_item_stock() {
 
-        $isOutOfStock = false;
+      if ( ! WC()->cart ) return;
 
-        foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-            $product = $cart_item['data'];
+      $out = [];
 
-            if ( $product->get_stock_status() ==='outofstock') {
-                $isOutOfStock = true;
-            } 
-        }
-        
-        if ($isOutOfStock) {
-            echo '<div class="cart-error-list"> Товары, недоступные для заказа:';
-        }
+      foreach ( WC()->cart->get_cart() as $cart_item ) {
+          if ( empty($cart_item['data']) || ! is_a($cart_item['data'], 'WC_Product' ) ) continue;
 
-        foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-            $product = $cart_item['data'];
+          /** @var WC_Product $product */
+          $product = $cart_item['data'];
 
-            if ( $product->get_stock_status() ==='outofstock') {
-                echo '<p class="cart-error-list__name">';
-                print_r( $product->get_name() );
-                echo '</p>';
-            } 
-        }
-        echo '</div>';
+          if ( $product->get_stock_status() === 'outofstock' ) {
+              $out[] = $product->get_name();
+          }
+      }
+
+      // Нечего выводить
+      if ( empty($out) ) return;
+
+      echo '<div class="cart-error-list" role="group" aria-label="Недоступные товары">';
+      echo '<div class="cart-error-list__title">Товары, недоступные для заказа</div>';
+      echo '<ul class="cart-error-list__items">';
+
+      foreach ( $out as $name ) {
+          echo '<li class="cart-error-list__item">' . esc_html( $name ) . '</li>';
+      }
+
+      echo '</ul>';
+      echo '</div>';
     }
 /*--------------------------------------------------------------
 # Delivery date & Interval fields

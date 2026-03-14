@@ -36,6 +36,9 @@
     --notice-red:#f3afaf;
     --dark-bg:#262626;
     --border-rad: 40px;
+
+    /* icons */
+    --error-icon: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M12%208V11.9999M12%2015.9901V16M21%2012C21%2016.9706%2016.9706%2021%2012%2021C7.02944%2021%203%2016.9706%203%2012C3%207.02944%207.02944%203%2012%203C16.9706%203%2021%207.02944%2021%2012Z%22%20stroke%3D%22%23E53B35%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E");
 }
 
 @media (max-width:767px) {
@@ -53,7 +56,7 @@ html { scrollbar-gutter: stable; }
 .fix-body {
     height: 100vh;
     /* width: calc(100vw - var(--scrollWidth)); */
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     overflow: hidden;
 }
 
@@ -326,8 +329,48 @@ html { scrollbar-gutter: stable; }
 }
 
 .woocommerce-notices-wrapper {
-    margin-bottom: 10px;
-    margin-top: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.woocommerce-error:focus-visible, .woocommerce-notices-wrapper:focus-visible, .woocommerce-notices-wrapper:focus, .woocommerce-message:focus-visible, .woocommerce-message:focus {
+  outline: none;
+}
+
+/* сообщение об ошибке */
+
+.woocommerce-error {
+  font-weight: 600;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px 20px;
+  margin: 24px 0;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid #ffe3e3;
+  box-shadow: 0 8px 24px rgba(229, 59, 53, 0.06);
+  color: #3d3d3d;
+  line-height: 1.3;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  padding-left: 45px;
+}
+
+
+.woocommerce-error::before {
+  position: absolute;
+  content: "";
+  background-image: var(--error-icon);
+  left: 15px;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  transform: translateY(-50%);
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
 }
 
 /* sale badge */
@@ -460,4 +503,11 @@ html { scrollbar-gutter: stable; }
     justify-content: space-between;
     column-gap: 15px;
     overflow: hidden;
+}
+
+
+/* checkbox color*/
+
+input[type="checkbox"]{
+  accent-color: var(--accent-color)
 }

@@ -19,9 +19,12 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
+<div class="cart-stock-warning">
+  <p class='cart-error'><?php esc_html_e( 'Некоторые товары в Вашей корзине закончились. Вернитесь, пожалуйста, в корзину, чтобы скорректировать заказ.', 'woocommerce' ); ?></p>
 
-<p class='cart-error'><?php esc_html_e( 'Некоторые товары в Вашей корзине закончились. Вернитесь, пожалуйста, в корзину, чтобы скорректировать заказ.', 'woocommerce' ); ?></p>
+  <?php do_action( 'woocommerce_cart_has_errors' ); ?>
 
-<?php do_action( 'woocommerce_cart_has_errors' ); ?>
-
-<p><a class="button wc-backward" href="<?php echo esc_url( wc_get_cart_url() ); ?>"><?php esc_html_e( 'Return to cart', 'woocommerce' ); ?></a></p>
+  <div class="cart-error-actions">
+    <a class="cart-error-link wc-backward" href="<?php echo esc_url( wc_get_cart_url() ); ?>"><?php esc_html_e( 'Return to cart', 'woocommerce' ); ?></a>
+  </div>
+</div>
