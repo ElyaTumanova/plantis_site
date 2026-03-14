@@ -64,7 +64,7 @@ My Account + Auth forms + Order pages (deduped + grouped)
 #customer_login .u-column2{
   display: flex;
   margin-top: 30px;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   column-gap: 50px;
   flex-direction: column;
   width: 100%;
@@ -289,6 +289,11 @@ My Account + Auth forms + Order pages (deduped + grouped)
 .woocommerce-lost-password .content-area {
   max-width: 500px;
   text-align: center;
+  padding: 35px;
+  border-radius: 24px;
+  border: 1px solid #e6e8ec;
+  box-shadow: 0 18px 39px 0 rgba(0, 0, 0, .102), 0 72px 72px 0 rgba(0, 0, 0, .09);
+  box-sizing: content-box;
 }
 .woocommerce-lost-password .woocommerce{ grid-template-columns: auto; }
 
