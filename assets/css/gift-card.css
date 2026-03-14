@@ -51,6 +51,10 @@ Contents
   margin: 50px 0 25px;   
 }
 
+.gift__note {
+  opacity: 0.6;
+}
+
 /* @media only screen and (max-width: 992px) {
     .gift-cards-list .gift-amount-buttons {
         width: 180px !important;
@@ -163,6 +167,12 @@ Contents
   text-align: center;
   margin-bottom: 10px;
   width: auto;
+}
+
+@media (max-width:540px) {
+  #gift-manual-amount {
+    width: 100%;
+  }
 }
 
 .gift-recipient-note {

@@ -246,6 +246,7 @@
 .page-popup__heading {
     display: inline;
     color: var(--accent-color);
+    padding-right: 24px;
 }
 
 .page-popup__close {
