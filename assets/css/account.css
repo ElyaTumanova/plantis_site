@@ -89,9 +89,8 @@ My Account + Auth forms + Order pages (deduped + grouped)
   line-height: 1.2;
 }
 
-#customer_login form p,
-.u-column2 form p{
-  margin-bottom: 40px;
+#customer_login form p {
+  margin-bottom: 10px;
   line-height: 1.2;
 }
 
