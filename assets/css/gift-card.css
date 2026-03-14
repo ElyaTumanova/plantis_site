@@ -324,6 +324,7 @@ Contents
   border-radius: 30px;
   overflow: hidden;
   box-shadow: none;
+  background: linear-gradient(90deg, #7FC8F8 0%, #DFF4FF 100%);
 }
 
 .gift-content-area .gift-image-wrap {
