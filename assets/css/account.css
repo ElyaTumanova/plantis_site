@@ -40,11 +40,8 @@ My Account + Auth forms + Order pages (deduped + grouped)
 
 /* Header */
 
-.woocommerce-account:has(#customer_login) .entry-header {
+.woocommerce-account:has(#customer_login) .content-area {
   max-width: 400px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
 }
 
