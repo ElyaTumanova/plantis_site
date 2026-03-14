@@ -299,6 +299,13 @@ My Account + Auth forms + Order pages (deduped + grouped)
   border-radius: 0;
 }
 
+.woocommerce-lost-password .woocommerce-form-row input:focus-visible,
+.woocommerce-lost-password .woocommerce-form-row input:focus{
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+}
+
 .woocommerce-lost-password form input{ margin-top: 10px; }
 
 .woocommerce-lost-password form .button{
