@@ -38,9 +38,18 @@ My Account + Auth forms + Order pages (deduped + grouped)
   line-height: 1;
 }
 
+/* Header */
+
+.woocommerce-account:has(#customer_login) .entry-header {
+  max-width: 400px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Customer login container */
 .woocommerce-account #customer_login{
-  max-width: 600px;
+  max-width: 400px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
