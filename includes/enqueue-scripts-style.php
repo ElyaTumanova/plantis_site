@@ -107,7 +107,18 @@ if ( ! function_exists( 'ast_scripts' ) ) {
 		                                     '/assets/js/catalog-menu.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/catalog-menu.js'), true );
 		wp_enqueue_script( 'gift-card', get_template_directory_uri() .
 		                                     '/assets/js/gift-card.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/gift-card.js'), true );
-		wp_enqueue_script( 'cart-backorder-crossell', get_template_directory_uri() .
+		$config = plnt_get_giftcard_designs_config();
+    wp_localize_script( 'gift-card', 'plntGiftCardData', [
+      'gradients' => $config['gradients'] ?? [],
+      'images'    => $config['images'] ?? [],
+      'defaults'  => [
+        'gradient' => plnt_get_giftcard_default_gradient(),
+        'image'    => plnt_get_giftcard_default_image(),
+      ],
+    ] );
+    
+    
+    wp_enqueue_script( 'cart-backorder-crossell', get_template_directory_uri() .
 		                                     '/assets/js/cart-backorder-crossell.js', array( 'jquery' ), filemtime(get_stylesheet_directory() .'/assets/js/cart-backorder-crossell.js'), true );
 
 		

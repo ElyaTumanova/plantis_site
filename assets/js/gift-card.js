@@ -175,28 +175,291 @@ if(giftCardApplyBtn) {
   giftCardApplyBtn.addEventListener('click', () => giftcardShow.classList.toggle('open'));
 }
 
+//GC image & gradient
+
 document.addEventListener('DOMContentLoaded', function () {
     const wrap = document.querySelector('.gift-image-wrap');
-    const buttons = document.querySelectorAll('.gift-gradient-picker__btn');
-    const hiddenInput = document.querySelector('#gift_card_gradient');
+    const arcTrack = document.querySelector('.gift-gradient-arc__track');
+    const gradientButtons = Array.from(document.querySelectorAll('.gift-gradient-picker__btn'));
+    const imageButtons = Array.from(document.querySelectorAll('.gift-image-picker__btn'));
+    const gradientInput = document.getElementById('giftcard_gradient');
+    const imageInput = document.getElementById('giftcard_image');
 
-    if (!wrap || !buttons.length) return;
+    if (!wrap || !arcTrack || !gradientInput || !imageInput || typeof plntGiftCardData === 'undefined') {
+        return;
+    }
 
-    buttons.forEach(function (button) {
-        button.addEventListener('click', function () {
-            const gradient = this.dataset.gradient;
+    const gradients = plntGiftCardData.gradients || {};
+    const images = plntGiftCardData.images || {};
+    const defaults = plntGiftCardData.defaults || {};
 
-            wrap.style.background = gradient;
+    const defaultGradientKey = defaults.gradient || Object.keys(gradients)[0] || 'sky';
+    const defaultImageKey = defaults.image || 'none';
 
-            buttons.forEach(function (btn) {
-                btn.classList.remove('is-active');
-            });
+    let activeGradientIndex = gradientButtons.findIndex(function (btn) {
+        return btn.dataset.gradientKey === (gradientInput.value || defaultGradientKey);
+    });
 
-            this.classList.add('is-active');
+    if (activeGradientIndex < 0) {
+        activeGradientIndex = 0;
+    }
 
-            if (hiddenInput) {
-                hiddenInput.value = gradient;
+    let dragOffset = 0;
+    let isDragging = false;
+    let startX = 0;
+    let startDragOffset = 0;
+    let velocity = 0;
+    let lastX = 0;
+    let lastTime = 0;
+    let snapAnimationFrame = null;
+
+    function getGradientCss(key) {
+        return gradients[key] || gradients[defaultGradientKey] || '';
+    }
+
+    function getImageCss(key) {
+        const value = images[key];
+
+        if (!value || value === 'none') {
+            return 'none';
+        }
+
+        return 'url("' + value + '")';
+    }
+
+    function setActiveButton(buttons, dataKey, value) {
+        buttons.forEach(function (button) {
+            button.classList.toggle('is-active', button.dataset[dataKey] === value);
+        });
+    }
+
+    function renderBackground() {
+        const gradientKey = gradientInput.value || defaultGradientKey;
+        const imageKey = imageInput.value || defaultImageKey;
+
+        const gradientCss = getGradientCss(gradientKey);
+        const imageCss = getImageCss(imageKey);
+
+        if (!gradientCss) {
+            return;
+        }
+
+        if (imageCss !== 'none') {
+            wrap.style.backgroundImage = imageCss + ', ' + gradientCss;
+            wrap.style.backgroundSize = 'contain, contain';
+            wrap.style.backgroundPosition = 'center, center';
+            wrap.style.backgroundRepeat = 'no-repeat, no-repeat';
+        } else {
+            wrap.style.backgroundImage = gradientCss;
+            wrap.style.backgroundSize = 'contain';
+            wrap.style.backgroundPosition = 'center';
+            wrap.style.backgroundRepeat = 'no-repeat';
+        }
+    }
+
+    function getPointX(event) {
+        if (event.touches && event.touches[0]) {
+            return event.touches[0].clientX;
+        }
+        if (event.changedTouches && event.changedTouches[0]) {
+            return event.changedTouches[0].clientX;
+        }
+        return event.clientX;
+    }
+
+    function mod(n, m) {
+        return ((n % m) + m) % m;
+    }
+
+    function getCenteredIndex() {
+        const total = gradientButtons.length;
+        return mod(Math.round(activeGradientIndex + dragOffset), total);
+    }
+
+    function updateActiveGradient() {
+        const centeredIndex = getCenteredIndex();
+        const activeButton = gradientButtons[centeredIndex];
+
+        if (!activeButton) {
+            return;
+        }
+
+        activeGradientIndex = centeredIndex;
+        dragOffset = 0;
+
+        gradientInput.value = activeButton.dataset.gradientKey || defaultGradientKey;
+        setActiveButton(gradientButtons, 'gradientKey', gradientInput.value);
+        renderBackground();
+    }
+
+    function layoutGradientArc() {
+        if (!gradientButtons.length || !arcTrack) {
+            return;
+        }
+
+        const total = gradientButtons.length;
+        const currentCenter = activeGradientIndex + dragOffset;
+
+        const trackWidth = arcTrack.offsetWidth;
+
+        const isMobile = trackWidth < 600;
+        const isSmallMobile = trackWidth < 420;
+
+        const radiusX = isSmallMobile
+            ? trackWidth * 0.46
+            : isMobile
+                ? trackWidth * 0.42
+                : trackWidth * 0.38;
+
+        const radiusY = isSmallMobile ? 30 : isMobile ? 42 : 42;
+        const angleStep = isSmallMobile ? 14 : isMobile ? 12 : 12;
+
+        gradientButtons.forEach(function (button, index) {
+            let offset = index - currentCenter;
+
+            if (offset > total / 2) {
+                offset -= total;
             }
+            if (offset < -total / 2) {
+                offset += total;
+            }
+
+            const angleDeg = offset * angleStep;
+            const angleRad = angleDeg * Math.PI / 180;
+
+            const x = Math.sin(angleRad) * radiusX;
+            const y = Math.cos(angleRad) * radiusY;
+
+            const dist = Math.abs(offset);
+            const scale = Math.max(0.72, 1 - dist * 0.06);
+            const opacity = Math.max(0.28, 1 - dist * 0.08);
+
+            button.style.transform = 'translate(' + x + 'px, ' + y + 'px) scale(' + scale + ')';
+            button.style.opacity = opacity;
+            button.style.zIndex = String(200 - Math.round(dist * 10));
+            button.classList.toggle('is-active', dist < 0.5);
+        });
+    }
+
+    function stopSnapAnimation() {
+        if (snapAnimationFrame) {
+            cancelAnimationFrame(snapAnimationFrame);
+            snapAnimationFrame = null;
+        }
+    }
+
+    function animateSnap() {
+        stopSnapAnimation();
+
+        function tick() {
+            const target = Math.round(dragOffset);
+            const delta = target - dragOffset;
+
+            if (Math.abs(delta) < 0.001) {
+                dragOffset = target;
+                layoutGradientArc();
+                updateActiveGradient();
+                stopSnapAnimation();
+                return;
+            }
+
+            dragOffset += delta * 0.16;
+            layoutGradientArc();
+            snapAnimationFrame = requestAnimationFrame(tick);
+        }
+
+        snapAnimationFrame = requestAnimationFrame(tick);
+    }
+
+    gradientButtons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+            stopSnapAnimation();
+            activeGradientIndex = index;
+            dragOffset = 0;
+            layoutGradientArc();
+            updateActiveGradient();
         });
     });
+
+    imageButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            const imageKey = this.dataset.imageKey || defaultImageKey;
+            imageInput.value = imageKey;
+            setActiveButton(imageButtons, 'imageKey', imageKey);
+            renderBackground();
+        });
+    });
+
+    function onDragStart(event) {
+        stopSnapAnimation();
+        isDragging = true;
+        startX = getPointX(event);
+        startDragOffset = dragOffset;
+        velocity = 0;
+        lastX = startX;
+        lastTime = performance.now();
+        arcTrack.classList.add('is-dragging');
+    }
+
+    function onDragMove(event) {
+        if (!isDragging) {
+            return;
+        }
+
+        const x = getPointX(event);
+        const now = performance.now();
+        const deltaX = x - startX;
+
+        dragOffset = startDragOffset - (deltaX / 36);
+
+        const dt = now - lastTime;
+        if (dt > 0) {
+            velocity = (x - lastX) / dt;
+        }
+
+        lastX = x;
+        lastTime = now;
+
+        layoutGradientArc();
+
+        if (event.cancelable) {
+            event.preventDefault();
+        }
+    }
+
+    function onDragEnd() {
+        if (!isDragging) {
+            return;
+        }
+
+        isDragging = false;
+        arcTrack.classList.remove('is-dragging');
+
+        dragOffset -= velocity * 6;
+
+        animateSnap();
+    }
+
+    if (!gradientInput.value || !gradients[gradientInput.value]) {
+        gradientInput.value = defaultGradientKey;
+    }
+
+    if (!imageInput.value || typeof images[imageInput.value] === 'undefined') {
+        imageInput.value = defaultImageKey;
+    }
+
+    setActiveButton(imageButtons, 'imageKey', imageInput.value);
+    renderBackground();
+    layoutGradientArc();
+
+    window.addEventListener('resize', layoutGradientArc);
+
+    arcTrack.addEventListener('touchstart', onDragStart, { passive: true });
+    arcTrack.addEventListener('touchmove', onDragMove, { passive: false });
+    arcTrack.addEventListener('touchend', onDragEnd);
+    arcTrack.addEventListener('touchcancel', onDragEnd);
+
+    arcTrack.addEventListener('mousedown', onDragStart);
+    window.addEventListener('mousemove', onDragMove);
+    window.addEventListener('mouseup', onDragEnd);
 });

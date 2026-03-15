@@ -120,6 +120,35 @@ function handle_giftcard_pay() {
     }
     $sender_name = sanitize_text_field( $sender_raw );
 
+    // 3.5 Градиент и изображение сертификата
+
+    $allowed_gradients = plnt_get_giftcard_allowed_gradients();
+    $allowed_images    = plnt_get_giftcard_allowed_images();
+
+    $default_gradient = plnt_get_giftcard_default_gradient();
+    $default_image    = plnt_get_giftcard_default_image();
+
+    $gradient_raw = $_POST['giftcard_gradient'] ?? $default_gradient;
+    if ( is_array( $gradient_raw ) ) {
+      $gradient_raw = reset( $gradient_raw );
+    }
+    $gradient_key = sanitize_key( $gradient_raw );
+
+    if ( ! in_array( $gradient_key, $allowed_gradients, true ) ) {
+      $gradient_key = $default_gradient;
+    }
+
+    $image_raw = $_POST['giftcard_image'] ?? $default_image;
+    if ( is_array( $image_raw ) ) {
+      $image_raw = reset( $image_raw );
+    }
+    $image_key = sanitize_key( $image_raw );
+
+    if ( ! in_array( $image_key, $allowed_images, true ) ) {
+      $image_key = $default_image;
+    }
+
+
     // 4. Создаём заказ
     $order = wc_create_order( [
         'status'      => 'pending',
@@ -166,6 +195,11 @@ function handle_giftcard_pay() {
         if ( $message ) {
             wc_add_order_item_meta( $item_id, '_ywgc_message', $message );
         }
+
+        //GC image & gradient
+
+        wc_add_order_item_meta( $item_id, '_plnt_giftcard_gradient', $gradient_key );
+        wc_add_order_item_meta( $item_id, '_plnt_giftcard_image', $image_key );
 
         // Design type: default
         wc_add_order_item_meta( $item_id, '_ywgc_design_type', 'default' );
@@ -287,60 +321,64 @@ function plantis_send_gift_cards_on_completed( $order_id ) {
         return;
     }
 
-    // Если нужно – можно ограничить только нашими "кнопочными" заказами:
     if ( $order->get_created_via() !== 'giftcard_pay_button' ) {
         return;
     }
 
-    $order_items = $order->get_items();
-
     $gift_card_ids = [];
 
-    // Собираем ID подарочных карт из позиций заказа
-    foreach ( $order->get_items() as $item_id => $item ) {
-        // // ID товара
-        // $product_id = $item->get_product_id();
+    $allowed_gradients = plnt_get_giftcard_allowed_gradients();
+    $allowed_images    = plnt_get_giftcard_allowed_images();
 
-        // Объект товара
+    $default_gradient = plnt_get_giftcard_default_gradient();
+    $default_image    = plnt_get_giftcard_default_image();
+
+    foreach ( $order->get_items() as $item_id => $item ) {
         $product = $item->get_product();
 
-         // Если товара нет — сразу к следующему
         if ( ! $product ) {
             continue;
         }
 
-        // Тип товара (simple, variable, gift-card и т.д.)
-        $product_type = $product->get_type();
-
-        // Нас интересуют только товары типа "gift-card"
-        if ( 'gift-card' !== $product_type ) {
+        if ( 'gift-card' !== $product->get_type() ) {
             continue;
         }
 
         $gift_card_post_ids = (array) $item->get_meta( '_ywgc_gift_card_post_id', true );
-        $gift_card_post_id  = isset( $gift_card_post_ids[0] ) ? $gift_card_post_ids[0] : null;
+        $gift_card_post_id  = isset( $gift_card_post_ids[0] ) ? absint( $gift_card_post_ids[0] ) : 0;
 
-        if ( $gift_card_post_id ) {
-            $gift_card_ids[] = $gift_card_post_id;
+        if ( ! $gift_card_post_id ) {
+            continue;
         }
-    }
 
+        $gradient_key = sanitize_key( $item->get_meta( '_plnt_giftcard_gradient', true ) );
+        if ( ! in_array( $gradient_key, $allowed_gradients, true ) ) {
+          $gradient_key = $default_gradient;
+        }
+
+        $image_key = sanitize_key( $item->get_meta( '_plnt_giftcard_image', true ) );
+        if ( ! in_array( $image_key, $allowed_images, true ) ) {
+          $image_key = $default_image;
+        }
+
+        update_post_meta( $gift_card_post_id, '_plnt_giftcard_gradient', $gradient_key );
+        update_post_meta( $gift_card_post_id, '_plnt_giftcard_image', $image_key );
+
+        $gift_card_ids[] = $gift_card_post_id;
+    }
 
     if ( empty( $gift_card_ids ) ) {
         return;
     }
 
-    // Класс, который умеет send_gift_card_email()
     if ( ! class_exists( 'YITH_YWGC_Emails_Premium' ) ) {
         return;
     }
 
-    // Берём singleton из твоего класса
     $emails = YITH_YWGC_Emails_Premium::get_instance();
 
     foreach ( $gift_card_ids as $gift_card_id ) {
         if ( method_exists( $emails, 'send_gift_card_email' ) ) {
-            // $only_new = true — не отправит повторно, если карта уже была отослана
             $emails->send_gift_card_email( $gift_card_id, true );
         }
     }
@@ -621,7 +659,6 @@ add_filter( 'woocommerce_add_to_cart_redirect', function( $url ) {
     return $url;
 });
 
-
 /*--------------------------------------------------------------
 #GIFT CARD PAGE
 --------------------------------------------------------------*/
@@ -659,6 +696,103 @@ function plnt_get_giftcard_by_code( $code ) {
     remove_filter( 'posts_where', 'plnt_where_exact_title', 10 );
 
     return ! empty( $q->posts ) ? (int) $q->posts[0] : null;
+}
+
+//Design helpers
+//Хелпер для получения массива
+function plnt_get_giftcard_designs_config() {
+	static $config = null;
+
+	if ( null === $config ) {
+		$config = require get_template_directory() . '/assets/data/gift-card-designs.php';
+	}
+
+	return is_array( $config ) ? $config : [];
+}
+// Хелпер для allowed keys
+function plnt_get_giftcard_allowed_gradients() {
+	$config = plnt_get_giftcard_designs_config();
+	return ! empty( $config['gradients'] ) && is_array( $config['gradients'] )
+		? array_keys( $config['gradients'] )
+		: [];
+}
+
+function plnt_get_giftcard_allowed_images() {
+	$config = plnt_get_giftcard_designs_config();
+	return ! empty( $config['images'] ) && is_array( $config['images'] )
+		? array_keys( $config['images'] )
+		: [];
+}
+
+//Хелпер для default значений
+function plnt_get_giftcard_default_gradient() {
+	$config = plnt_get_giftcard_designs_config();
+	return ! empty( $config['defaults']['gradient'] )
+		? sanitize_key( $config['defaults']['gradient'] )
+		: 'blue';
+}
+
+function plnt_get_giftcard_default_image() {
+	$config = plnt_get_giftcard_designs_config();
+	return ! empty( $config['defaults']['image'] )
+		? sanitize_key( $config['defaults']['image'] )
+		: 'none';
+}
+
+//Хелпер для CSS градиента
+
+function plnt_get_giftcard_gradient_css( $gradient_key ) {
+	$config = plnt_get_giftcard_designs_config();
+	$map = ! empty( $config['gradients'] ) && is_array( $config['gradients'] )
+		? $config['gradients']
+		: [];
+
+	$default_key = plnt_get_giftcard_default_gradient();
+
+	$gradient_key = sanitize_key( $gradient_key );
+
+	if ( empty( $map[ $gradient_key ] ) ) {
+		$gradient_key = $default_key;
+	}
+
+	return isset( $map[ $gradient_key ] ) ? trim( (string) $map[ $gradient_key ] ) : '';
+}
+
+//Хелпер для background image
+function plnt_get_giftcard_background_image_css( $image_key ) {
+	$config = plnt_get_giftcard_designs_config();
+	$map = ! empty( $config['images'] ) && is_array( $config['images'] )
+		? $config['images']
+		: [];
+
+	$default_key = plnt_get_giftcard_default_image();
+
+	$image_key = sanitize_key( $image_key );
+
+	if ( ! array_key_exists( $image_key, $map ) ) {
+		$image_key = $default_key;
+	}
+
+	$value = $map[ $image_key ] ?? 'none';
+
+	if ( 'none' === $value || '' === $value ) {
+		return 'none';
+	}
+
+	return 'url("' . esc_url_raw( $value ) . '")';
+}
+
+//Хелпер для финального background-image
+
+function plnt_get_giftcard_background_css( $gradient_key, $image_key ) {
+	$gradient = plnt_get_giftcard_gradient_css( $gradient_key );
+	$image    = plnt_get_giftcard_background_image_css( $image_key );
+
+	if ( 'none' === $image ) {
+		return $gradient;
+	}
+
+	return $image . ', ' . $gradient;
 }
 
 

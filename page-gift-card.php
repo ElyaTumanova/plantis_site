@@ -20,7 +20,17 @@ $gift_card    = [];
 
 $gift_card_id = (int) plnt_get_giftcard_by_code( $gcnum );
 if ( $gift_card_id > 0 ) {
-    $gift_card = (array) get_post_meta( $gift_card_id );
+  $gift_card = (array) get_post_meta( $gift_card_id );
+
+  $gradient_key = ! empty( $gift_card['_plnt_giftcard_gradient'][0] )
+  ? sanitize_key( $gift_card['_plnt_giftcard_gradient'][0] )
+  : plnt_get_giftcard_default_gradient();
+
+  $image_key = ! empty( $gift_card['_plnt_giftcard_image'][0] )
+  ? sanitize_key( $gift_card['_plnt_giftcard_image'][0] )
+  : plnt_get_giftcard_default_image();
+
+  $background_css = plnt_get_giftcard_background_css( $gradient_key, $image_key );
 }
 
 //for dev
@@ -44,8 +54,8 @@ if ( $gift_card_id > 0 ) {
     <p class="gift-card__descr">Интернет магазин комнатных растений Plantis</p>
     <div class="gift-card__main">
       <div class="gift-card__wrap">
-        <div class="gift-image-wrap">
-          <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_cover.jpg" class="gift-image" alt="Подарочная карта" loading="lazy">
+        <div class="gift-image-wrap"
+            style="background-image: <?php echo esc_attr( $background_css ); ?>; background-size: cover, cover; background-position: center, center; background-repeat: no-repeat, no-repeat;">
           <p class="gift-image-amount"><?php echo esc_html($gift_card['_ywgc_balance_total'][0]) ?><span>₽</span></p>
         </div>
         <div class="gift-card__row">

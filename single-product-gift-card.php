@@ -38,58 +38,71 @@ function my_logged_in_name_focus_class() {
 }
 
 $gcid = get_the_ID();
+
+$giftcard_designs = plnt_get_giftcard_designs_config();
+
+$gradients         = $giftcard_designs['gradients'] ?? [];
+$default_gradient  = $giftcard_designs['defaults']['gradient'] ?? 'sky';
+$default_image  = $giftcard_designs['defaults']['image'] ?? 'sky';
+$background_css    = plnt_get_giftcard_background_css( $default_gradient, $default_image );
 ?>
 <div class="content-area">
   <div class="gift-content-area">
     <h1 class="gift-card__title">Электронный подарочный сертификат</h1>
     <button class="gift-card__example-btn page-popup-open-btn">Посмотреть пример</button>
     <a class="gift-card__example-btn" href="<?php echo get_site_url()?>/gift-card" target="_blank">Проверить баланс</a>
-    <div class="gift-image-wrap">
-      <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gift_main_cover_no_bg.png" class="gift-image" alt="Подарочная карта">
+    <div class="gift-image-wrap"
+        style="background-image: <?php echo esc_attr( $background_css ); ?>; background-size: contain, contain; background-position: center, center; background-repeat: no-repeat, no-repeat;">
       <p class="gift-image-amount">1500<span>₽</span></p>
     </div>
 
-    <div class="gift-gradient-picker">
-      <p class="gift-gradient-picker__title">Выберите фон сертификата</p>
+<div class="gift-gradient-arc">
+  <div class="gift-gradient-picker__list gift-gradient-arc__track">
+    <?php foreach ( $gradients as $gradient_key => $gradient_css ) : ?>
+      <?php
+      $is_active = $gradient_key === $default_gradient;
+      $label = $gradient_labels[ $gradient_key ] ?? $gradient_key;
+      ?>
+      <button
+        type="button"
+        class="gift-gradient-picker__btn gift-gradient-arc__item<?php echo $is_active ? ' is-active' : ''; ?>"
+        data-gradient-key="<?php echo esc_attr( $gradient_key ); ?>"
+        aria-label="<?php echo esc_attr( $label ); ?>"
+        title="<?php echo esc_attr( $label ); ?>"
+      >
+        <span style="background-image: <?php echo esc_attr( $gradient_css ); ?>;"></span>
+      </button>
+    <?php endforeach; ?>
+  </div>
+</div>
 
-      <div class="gift-gradient-picker__list">
-        <button type="button"
-                class="gift-gradient-picker__btn is-active"
-                data-gradient="linear-gradient(90deg, #7FC8F8 0%, #DFF4FF 100%)"
-                aria-label="Голубой градиент">
-          <span style="background: linear-gradient(90deg, #7FC8F8 0%, #DFF4FF 100%);"></span>
+    <div class="gift-image-picker">
+      <p class="gift-image-picker__title">Декор</p>
+      <div class="gift-image-picker__list">
+        <button type="button" class="gift-image-picker__btn is-active"
+                data-image-key="none"
+                aria-label="Без декора">
+          <span>Без</span>
         </button>
 
-        <button type="button"
-                class="gift-gradient-picker__btn"
-                data-gradient="linear-gradient(90deg, #F6B8D8 0%, #FCEEF5 100%)"
-                aria-label="Розовый градиент">
-          <span style="background: linear-gradient(90deg, #F6B8D8 0%, #FCEEF5 100%);"></span>
+        <button type="button" class="gift-image-picker__btn"
+                data-image-key="leafs"
+                aria-label="Листья">
+          <span>Листья</span>
         </button>
 
-        <button type="button"
-                class="gift-gradient-picker__btn"
-                data-gradient="linear-gradient(90deg, #B7E7C1 0%, #EEF9F1 100%)"
-                aria-label="Зелёный градиент">
-          <span style="background: linear-gradient(90deg, #B7E7C1 0%, #EEF9F1 100%);"></span>
+        <button type="button" class="gift-image-picker__btn"
+                data-image-key="dots"
+                aria-label="Точки">
+          <span>Точки</span>
         </button>
 
-        <button type="button"
-                class="gift-gradient-picker__btn"
-                data-gradient="linear-gradient(90deg, #D7C2FF 0%, #F4F0FF 100%)"
-                aria-label="Сиреневый градиент">
-          <span style="background: linear-gradient(90deg, #D7C2FF 0%, #F4F0FF 100%);"></span>
-        </button>
-
-        <button type="button"
-                class="gift-gradient-picker__btn"
-                data-gradient="linear-gradient(90deg, #FFD6A5 0%, #FFF4E8 100%)"
-                aria-label="Персиковый градиент">
-          <span style="background: linear-gradient(90deg, #FFD6A5 0%, #FFF4E8 100%);"></span>
+        <button type="button" class="gift-image-picker__btn"
+                data-image-key="waves"
+                aria-label="Волны">
+          <span>Волны</span>
         </button>
       </div>
-
-      <input type="hidden" name="gift_card_gradient" id="gift_card_gradient" value="linear-gradient(90deg, #7FC8F8 0%, #DFF4FF 100%)">
     </div>
 
 
@@ -97,6 +110,8 @@ $gcid = get_the_ID();
 
       <input type="hidden" name="action" value="giftcard_pay">
       <input type="hidden" name="giftcard_product_id" value="<?php echo $gcid?>"> <!-- ID товара gift-card -->
+      <input type="hidden" name="giftcard_gradient" id="giftcard_gradient" value="<?php echo esc_attr( $default_gradient ); ?>">
+      <input type="hidden" name="giftcard_image" id="giftcard_image" value="none">
       <input type="number" name="giftcard_amount" id="giftcard_amount" value="" min="1" required style="display:none;">
       <h3 class="gift_select_amount_title">Выберите желаемую сумму подарка</h3>
       <div class="gift-input-wrap">
