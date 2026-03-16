@@ -353,14 +353,14 @@ function hideCheckoutFields(event){
   
   // for INN
   if (innField) {
-      // console.debug(document.querySelector('.wc_payment_methods input[checked="checked"]').value);
+      console.debug(document.querySelector('.wc_payment_methods input[name="payment_method"]:checked').value);
       if(event && event.target.id == "payment_method_cheque") {
           innField.classList.remove('d-none');
       } else {
           if(event.target.id == "payment_method_tbank" 
               || event.target.id == "payment_method_cop"
               || event.target.id == "payment_method_cod"
-              || document.querySelector('.wc_payment_methods input[checked="checked"]').value != 'cheque'
+              || document.querySelector('.wc_payment_methods input[name="payment_method"]:checked').value !== 'cheque'
           ) 
           {
               innField.classList.add('d-none')
