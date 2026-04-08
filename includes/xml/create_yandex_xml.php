@@ -169,7 +169,7 @@ foreach($allproducts as $allproduct){
     foreach ($cats as $cat) {
         array_push($idCats, $cat->term_id);
     }
-    $brand = plnt_get_brand_text($idCats);
+    // $brand = plnt_get_brand_text($idCats);
     
     $yandex_xml .= 
     "<offer id='".$allproduct->ID."' available='true'>
@@ -205,8 +205,7 @@ foreach($allproducts as $allproduct){
     }
     //Название и описание
     $yandex_xml .= "<name>".htmlspecialchars($allproduct->post_title)."</name>
-    <description><![CDATA['".htmlspecialchars(strip_tags($allproduct->post_content))."]]></description>
-    <brand>".$brand."</brand>";
+    <description><![CDATA['".htmlspecialchars(strip_tags($allproduct->post_content))."]]></description>";
 
     //Параметры товара
 

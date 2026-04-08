@@ -177,6 +177,7 @@ class FormsValidation {
 
   validateForm() {
     const isFormValid = this.form.checkValidity()
+    console.log(isFormValid)
 
     // this.sumbmitBtn.disabled = !isFormValid
     this.sumbmitBtn.classList.toggle('is-disabled', !isFormValid)
@@ -267,9 +268,9 @@ class GiftFormValidation extends FormsValidation {
       rangeOverflow: () => `Максимальная сумма — ${this.amount.max}₽`,
     };
     this.amountInput = null
-    this.giftAmounts = null
-    this.imageAmount = null
-    this.giftAmountPost = null
+    // this.giftAmounts = null
+    // this.imageAmount = null
+    // this.giftAmountPost = null
   }
 
   amountMask(inputEl) {
@@ -291,37 +292,37 @@ class GiftFormValidation extends FormsValidation {
     }
   }
 
-  updateAmount(amount) {
-    this.amountInput.value = amount
-    this.amountInput.setAttribute('value',amount)
-    this.imageAmount.innerHTML = `${amount}<span>₽</span>`
-    this.giftAmountPost.value = amount
-    this.validateField(this.amountInput)
-    this.validateForm()
-  }
+  // updateAmount(amount) {
+  //   this.amountInput.value = amount
+  //   this.amountInput.setAttribute('value',amount)
+  //   //this.imageAmount.innerHTML = `${amount}<span>₽</span>`
+  //   // this.giftAmountPost.value = amount
+  //   this.validateField(this.amountInput)
+  //   this.validateForm()
+  // }
 
   bindEvents() {
     super.bindEvents()
-    document.addEventListener('DOMContentLoaded', (evt) => this.updateAmount(this.amount.min))
+    // document.addEventListener('DOMContentLoaded', (evt) => this.updateAmount(this.amount.min))
 
-    this.giftAmounts.forEach(el => {
-      el.addEventListener('click', (evt) => {
-        let amount = el.childNodes[0].textContent
-        this.updateAmount(amount)
-      })
-    })
+    // this.giftAmounts.forEach(el => {
+    //   el.addEventListener('click', (evt) => {
+    //     let amount = el.childNodes[0].textContent
+    //     this.updateAmount(amount)
+    //   })
+    // })
 
-    this.amountInput.addEventListener('input', (evt)=> this.amountMask(evt.target))
-    this.amountInput.addEventListener('blur', (evt)=> this.updateAmount(evt.target.value))
+    // this.amountInput.addEventListener('input', (evt)=> this.amountMask(evt.target))
+    // this.amountInput.addEventListener('blur', (evt)=> this.updateAmount(evt.target.value))
   }
 
   initDom () {
     const ok = super.initDom()
     if (!ok) return false
-    this.amountInput = document.querySelector('.gift-manual-amount')
-    this.giftAmounts = document.querySelectorAll('.gift__amounts p')
-    this.imageAmount = document.querySelector('.gift-image-amount')
-    this.giftAmountPost = document.querySelector('#giftcard_amount')
+    this.amountInput = document.querySelector('.gc-amount__input')
+    // this.giftAmounts = document.querySelectorAll('.gift__amounts p')
+    // this.imageAmount = document.querySelector('.gift-image-amount')
+    // this.giftAmountPost = document.querySelector('#giftcard_amount')
     // console.log(amountInput)
     // console.log(giftAmounts)
     return true
@@ -353,7 +354,7 @@ class GCBalanceForm extends FormsValidation {
   }
 }
 
-const giftFormValidation = new GiftFormValidation('.gift-cards_form','.field__errors')
+const giftFormValidation = new FormsValidation('.gift-cards_form','.field__errors')
 giftFormValidation.init()
 
 const gcBalanceForm = new GCBalanceForm ('.gc-balance-form', '.field__errors')

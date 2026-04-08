@@ -26,10 +26,28 @@ return [
         // 'mauve' => 'radial-gradient(78% 96% at -2% -3%, rgba(226, 218, 235, 0.48) 0%, rgba(226, 218, 235, 0) 100%), radial-gradient(60% 76% at 102% 103%, rgba(214, 204, 229, 0.34) 0%, rgba(214, 204, 229, 0) 100%), radial-gradient(52% 60% at 48% 102%, rgba(235, 226, 241, 0.24) 0%, rgba(235, 226, 241, 0) 100%), linear-gradient(135deg, rgb(246, 243, 248) 0%, rgb(241, 238, 244) 100%)',
     ],
 
+    'backgrounds' => [
+        'sky' => '#EAF6FF',
+        'violet' => '#EEE7FF',
+        'fuchsia' => '#FDEAF4',
+        'lime_mint' => '#EAF6E8',
+        'lime_peach' => '#F5F1DD',
+        'lime_tropical' => '#E6F4E8',
+        'bright_peach_leaf' => '#F7EEDF',
+        'bright_lilac_green' => '#EEF1E7',
+        'champagne_peach' => '#F4EADF',
+    ],
+
     'images' => [
-        'leafs' => get_template_directory_uri() . '/images/gift-card/covers/card_2.png',
-        'dots'  => get_template_directory_uri() . '/images/gift-card/bg-dots.png',
-        'waves' => get_template_directory_uri() . '/images/gift-card/bg-waves.png',
+        'leafs'  => get_template_directory_uri() . '/images/gift-card/covers/card_2.png',
+        'boss' => get_template_directory_uri() . '/images/gift-card/covers/card_1.png',
+        'hb' => get_template_directory_uri() . '/images/gift-card/covers/card_3.png',
+        'dushno' => get_template_directory_uri() . '/images/gift-card/covers/card_4.png',
+        'babushka' => get_template_directory_uri() . '/images/gift-card/covers/card_5.png',
+        'monstera' => get_template_directory_uri() . '/images/gift-card/covers/card_6.png',
+        'cat' => get_template_directory_uri() . '/images/gift-card/covers/card_7.png',
+        'goose1' => get_template_directory_uri() . '/images/gift-card/covers/card_8.png',
+        'goose2' => get_template_directory_uri() . '/images/gift-card/covers/card_9.png',
     ],
 
     'defaults' => [

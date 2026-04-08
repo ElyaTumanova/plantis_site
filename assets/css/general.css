@@ -36,6 +36,7 @@
     --notice-red:#f3afaf;
     --dark-bg:#262626;
     --border-rad: 40px;
+    --container: 1300px;
 
     /* icons */
     --error-icon: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M12%208V11.9999M12%2015.9901V16M21%2012C21%2016.9706%2016.9706%2021%2012%2021C7.02944%2021%203%2016.9706%203%2012C3%207.02944%207.02944%203%2012%203C16.9706%203%2021%207.02944%2021%2012Z%22%20stroke%3D%22%23E53B35%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E");
@@ -66,12 +67,12 @@ html { scrollbar-gutter: stable; }
 
 
 .container {
-    max-width: 1300px;
+    max-width: var(--container);
     margin: auto;
 }
 
 .content-area {
-    max-width: 1300px;
+    max-width: var(--container);
     margin: auto;
     margin-top: 10px;
 }

@@ -22,6 +22,15 @@ defined( 'ABSPATH' ) || exit;
 
 
 $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+
+$giftcard_designs = plnt_get_giftcard_designs_config();
+
+$gradients = $giftcard_designs['gradients'] ?? [];
+$images    = $giftcard_designs['images'] ?? [];
+
+$default_gradient = $giftcard_designs['defaults']['gradient'] ?? 'sky';
+$default_image    = $giftcard_designs['defaults']['image'] ?? 'leafs';
+
 ?>
 <form id="order_review" <?php echo !is_not_gift_card_order_pay() ? 'class = gift-card' : ''?> method="post">
   <?php if(!is_not_gift_card_order_pay()):?>
@@ -35,6 +44,20 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
 
           // Сумма по позиции (числом, без форматирования HTML)
           $subtotal = $order->get_line_subtotal( $item, true, false ); // incl. tax, raw
+
+          $gradient_key = $item->get_meta( '_plnt_giftcard_gradient', true );
+          $image_key    = $item->get_meta( '_plnt_giftcard_image', true );
+
+          if ( empty( $gradient_key ) || ! isset( $gradients[ $gradient_key ] ) ) {
+            $gradient_key = $default_gradient;
+          }
+
+          if ( empty( $image_key ) || ! isset( $images[ $image_key ] ) ) {
+            $image_key = $default_image;
+          }
+
+          $gradient_css = $gradients[ $gradient_key ] ?? '';
+          $image_url    = $images[ $image_key ] ?? '';
           ?>
 
           <div class="gift-card-order-item">
@@ -46,13 +69,21 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
               ?>
             </p>
 
-            <div class="gift-image-wrap">
-              <img
-                src="<?php echo esc_url( get_template_directory_uri() . '/images/gift-card/gc_cover.jpg' ); ?>"
-                class="gift-image"
-                alt="<?php echo esc_attr( $item->get_name() ); ?>"
-                loading="lazy"
-              >
+           <div
+              class="gift-image-wrap"
+              <?php if ( $gradient_css ) : ?>
+                style="background: <?php echo esc_attr( $gradient_css ); ?>;"
+              <?php endif; ?>
+            >
+              <?php if ( $image_url ) : ?>
+                <img
+                  src="<?php echo esc_url( $image_url ); ?>"
+                  class="gift-image"
+                  alt="<?php echo esc_attr( $item->get_name() ); ?>"
+                  loading="lazy"
+                >
+              <?php endif; ?>
+
               <p class="gift-image-amount">
                 <?php echo esc_html( wc_format_decimal( $subtotal, 0 ) ); ?><span>₽</span>
               </p>

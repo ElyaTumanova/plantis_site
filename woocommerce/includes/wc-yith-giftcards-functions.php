@@ -198,6 +198,8 @@ function handle_giftcard_pay() {
 
         //GC image & gradient
 
+        $gc_design = array('_plnt_giftcard_gradient'=>$gradient_key, "_plnt_giftcard_image" =>$image_key);
+        wc_add_order_item_meta( $item_id, '_ywgc_design', $gc_design );
         wc_add_order_item_meta( $item_id, '_plnt_giftcard_gradient', $gradient_key );
         wc_add_order_item_meta( $item_id, '_plnt_giftcard_image', $image_key );
 
@@ -729,14 +731,14 @@ function plnt_get_giftcard_default_gradient() {
 	$config = plnt_get_giftcard_designs_config();
 	return ! empty( $config['defaults']['gradient'] )
 		? sanitize_key( $config['defaults']['gradient'] )
-		: 'blue';
+		: 'sky';
 }
 
 function plnt_get_giftcard_default_image() {
 	$config = plnt_get_giftcard_designs_config();
 	return ! empty( $config['defaults']['image'] )
 		? sanitize_key( $config['defaults']['image'] )
-		: 'none';
+		: 'leafs';
 }
 
 //Хелпер для CSS градиента

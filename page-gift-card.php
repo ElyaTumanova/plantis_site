@@ -17,17 +17,26 @@ $gcnum = strtoupper($clean);
 $gift_card_id = 0;
 $gift_card    = [];
 
+$giftcard_designs = plnt_get_giftcard_designs_config();
+
+
+$gradients = $giftcard_designs['gradients'] ?? [];
+$backgrounds = $giftcard_designs['backgrounds'] ?? [];
+$images = $giftcard_designs['images'] ?? [];
+
 
 $gift_card_id = (int) plnt_get_giftcard_by_code( $gcnum );
 if ( $gift_card_id > 0 ) {
+  
   $gift_card = (array) get_post_meta( $gift_card_id );
+  $gift_card_design = unserialize($gift_card['_ywgc_design'][0]);
 
-  $gradient_key = ! empty( $gift_card['_plnt_giftcard_gradient'][0] )
-  ? sanitize_key( $gift_card['_plnt_giftcard_gradient'][0] )
+  $gradient_key = ! empty( $gift_card_design['_plnt_giftcard_gradient'] )
+  ? sanitize_key( $gift_card_design['_plnt_giftcard_gradient'] )
   : plnt_get_giftcard_default_gradient();
 
-  $image_key = ! empty( $gift_card['_plnt_giftcard_image'][0] )
-  ? sanitize_key( $gift_card['_plnt_giftcard_image'][0] )
+  $image_key = ! empty( $gift_card_design['_plnt_giftcard_image'] )
+  ? sanitize_key( $gift_card_design['_plnt_giftcard_image'] )
   : plnt_get_giftcard_default_image();
 
   $background_css = plnt_get_giftcard_background_css( $gradient_key, $image_key );
@@ -41,9 +50,12 @@ if ( $gift_card_id > 0 ) {
 // // } else {
 // //     echo 'Карта с таким номером не найдена.';
 // // }
-// print_r($raw_gcnum);
-// print_r($gcnum);
-// print_r($gift_card);
+// // print_r($raw_gcnum);
+// // print_r($gcnum);
+// // print_r($gift_card_design);
+// // print_r($image_key);
+// // print_r($gradient_key);
+
 // echo('</pre>');
 ?>
 
@@ -55,8 +67,13 @@ if ( $gift_card_id > 0 ) {
     <div class="gift-card__main">
       <div class="gift-card__wrap">
         <div class="gift-image-wrap"
-            style="background-image: <?php echo esc_attr( $background_css ); ?>; background-size: cover, cover; background-position: center, center; background-repeat: no-repeat, no-repeat;">
-          <p class="gift-image-amount"><?php echo esc_html($gift_card['_ywgc_balance_total'][0]) ?><span>₽</span></p>
+            style="background-image: <?php echo esc_attr( $gradients[$gradient_key] ); ?>; background-size: cover, cover; background-position: center, center; background-repeat: no-repeat, no-repeat;">
+           <img
+            class="gc-main-slide__image"
+            src="<?php echo esc_url($images[$image_key]); ?>"
+            alt="<?php echo esc_attr($image_key); ?>"
+          >
+            <p class="gift-image-amount"><?php echo esc_html($gift_card['_ywgc_balance_total'][0]) ?><span>₽</span></p>
         </div>
         <div class="gift-card__row">
           <p>Номер сертификата:</p>
