@@ -52,7 +52,7 @@ if(customerLogin) {
     })
     regForm.setAttribute('novalidate', '')
     const regEmail = customerLogin.querySelector('#reg_email')
-    regEmail.setAttribute('pattern', '^[^\s@]+@[^\s@]+\.[^\s@]{2,}$')
+    regEmail.setAttribute('pattern', '^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$');
   }
 
   document.addEventListener('DOMContentLoaded', changeLoginReg)
