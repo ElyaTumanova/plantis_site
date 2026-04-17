@@ -55,175 +55,176 @@ $background_css    = plnt_get_giftcard_background_css( $default_gradient, $defau
 
 
 ?>
-<div>
-  <div class="gift-content-area">
-    <aside class="gc-sidebar">
-      <nav class="gc-sidebar__nav" aria-label="Навигация по шагам">
-        <ul class="gc-sidebar__list">
-          <li class="gc-sidebar__item is-active">
-            <button type="button" class="gc-sidebar__link" data-gc-step="1">
-              <span class="gc-sidebar__dot"></span>
-              <span class="gc-sidebar__text">1. Дизайн</span>
-            </button>
-          </li>
-  
-          <li class="gc-sidebar__item">
-            <button type="button" class="gc-sidebar__link" data-gc-step="2">
-              <span class="gc-sidebar__dot"></span>
-              <span class="gc-sidebar__text">2. Номинал</span>
-            </button>
-          </li>
-  
-          <li class="gc-sidebar__item">
-            <button type="button" class="gc-sidebar__link" data-gc-step="3">
-              <span class="gc-sidebar__dot"></span>
-              <span class="gc-sidebar__text">3. Кому</span>
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-    <div class="gc-step-panel is-active" data-gc-step-panel="1">
-      <h2 class="gc-amount__title" data-heading-tag="H2">Выбери дизайн карты</h2>
-      <div class="gc-slider-section">
-        <div class="gc-slider">
-          <button
-            class="gc-slider__nav gc-slider__nav--prev"
-            type="button"
-            aria-label="Предыдущий слайд"
-          ></button>
-          <div class="gc-slider__stage">
-            <div class="gc-card gc-card--side gc-card--left">
-              <div class="gc-card__media gc-card__media--circle" id="gcPrevMedia"></div>
-            </div>
-            <div class="gc-card gc-card--main">
-              <?php if (!empty($images) && is_array($images)) : ?>
-                <div class="swiper gc-main-swiper">
-                  <div class="swiper-wrapper">
-                    <?php foreach ($images as $key => $image_url) : ?>
-                      <div class="swiper-slide" data-image-key="<?php echo esc_attr($key); ?>">
-                        <div class="gc-main-slide">
-                          <img
-                            class="gc-main-slide__image"
-                            src="<?php echo esc_url($image_url); ?>"
-                            alt="<?php echo esc_attr($key); ?>"
-                          >
-                        </div>
+
+<section class="gc-content-area">
+  <aside class="gc-sidebar">
+    <nav class="gc-sidebar__nav" aria-label="Навигация по шагам">
+      <ul class="gc-sidebar__list">
+        <li class="gc-sidebar__item is-active">
+          <button type="button" class="gc-sidebar__link" data-gc-step="1">
+            <span class="gc-sidebar__dot"></span>
+            <span class="gc-sidebar__text">1. Дизайн</span>
+          </button>
+        </li>
+
+        <li class="gc-sidebar__item">
+          <button type="button" class="gc-sidebar__link" data-gc-step="2">
+            <span class="gc-sidebar__dot"></span>
+            <span class="gc-sidebar__text">2. Номинал</span>
+          </button>
+        </li>
+
+        <li class="gc-sidebar__item">
+          <button type="button" class="gc-sidebar__link" data-gc-step="3">
+            <span class="gc-sidebar__dot"></span>
+            <span class="gc-sidebar__text">3. Кому</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <section class="gc-step-panel is-active" data-gc-step-panel="1">
+    <h2 class="gc-step-panel__title" data-heading-tag="H2">Выбери дизайн карты</h2>
+    <div class="gc-step-panel__body gc-slider-section">
+      <div class="gc-slider">
+        <button
+          class="gc-slider__nav gc-slider__nav--prev"
+          type="button"
+          aria-label="Предыдущий слайд"
+        ></button>
+        <div class="gc-slider__stage">
+          <div class="gc-card gc-card--side gc-card--left">
+            <div class="gc-card__media gc-card__media--circle" id="gcPrevMedia"></div>
+          </div>
+          <div class="gc-card gc-card--main">
+            <?php if (!empty($images) && is_array($images)) : ?>
+              <div class="swiper gc-main-swiper">
+                <div class="swiper-wrapper">
+                  <?php foreach ($images as $key => $image_url) : ?>
+                    <div class="swiper-slide" data-image-key="<?php echo esc_attr($key); ?>">
+                      <div class="gc-main-slide">
+                        <img
+                          class="gc-main-slide__image"
+                          src="<?php echo esc_url($image_url); ?>"
+                          alt="<?php echo esc_attr($key); ?>"
+                        >
                       </div>
-                    <?php endforeach; ?>
-                  </div>
+                    </div>
+                  <?php endforeach; ?>
                 </div>
-              <?php endif; ?>
-            </div>
-            <div class="gc-card gc-card--side gc-card--right">
-              <div class="gc-card__media gc-card__media--circle" id="gcNextMedia"></div>
-            </div>
-            <div class="gc-card gc-card--side gc-card--right-2">
-              <div class="gc-card__media gc-card__media--circle" id="gcNext2Media"></div>
-            </div>
+              </div>
+            <?php endif; ?>
           </div>
-          <button
-            class="gc-slider__nav gc-slider__nav--next"
-            type="button"
-            aria-label="Следующий слайд"
-          ></button>
-          <div class="gc-slider__dots" id="gcSliderDots"></div>
+          <div class="gc-card gc-card--side gc-card--right">
+            <div class="gc-card__media gc-card__media--circle" id="gcNextMedia"></div>
+          </div>
+          <div class="gc-card gc-card--side gc-card--right-2">
+            <div class="gc-card__media gc-card__media--circle" id="gcNext2Media"></div>
+          </div>
         </div>
+        <button
+          class="gc-slider__nav gc-slider__nav--next"
+          type="button"
+          aria-label="Следующий слайд"
+        ></button>
+        <div class="gc-slider__dots" id="gcSliderDots"></div>
+      </div>
 
-        <div class="gift-gradient-arc">
-          <div class="gift-gradient-picker__list gift-gradient-arc__track">
-            <?php foreach ( $gradients as $gradient_key => $gradient_css ) : ?>
-              <?php
-              $is_active = $gradient_key === $default_gradient;
-              $label = $gradient_labels[ $gradient_key ] ?? $gradient_key;
-              ?>
-              <button
-                type="button"
-                class="gift-gradient-picker__btn gift-gradient-arc__item<?php echo $is_active ? ' is-active' : ''; ?>"
-                data-gradient-key="<?php echo esc_attr( $gradient_key ); ?>"
-                aria-label="<?php echo esc_attr( $label ); ?>"
-                title="<?php echo esc_attr( $label ); ?>"
-              >
-                <span style="background-image: <?php echo esc_attr( $gradient_css ); ?>;"></span>
-              </button>
-            <?php endforeach; ?>
-          </div>
+      <div class="gift-gradient-arc">
+        <div class="gift-gradient-picker__list gift-gradient-arc__track">
+          <?php foreach ( $gradients as $gradient_key => $gradient_css ) : ?>
+            <?php
+            $is_active = $gradient_key === $default_gradient;
+            $label = $gradient_labels[ $gradient_key ] ?? $gradient_key;
+            ?>
+            <button
+              type="button"
+              class="gift-gradient-picker__btn gift-gradient-arc__item<?php echo $is_active ? ' is-active' : ''; ?>"
+              data-gradient-key="<?php echo esc_attr( $gradient_key ); ?>"
+              aria-label="<?php echo esc_attr( $label ); ?>"
+              title="<?php echo esc_attr( $label ); ?>"
+            >
+              <span style="background-image: <?php echo esc_attr( $gradient_css ); ?>;"></span>
+            </button>
+          <?php endforeach; ?>
         </div>
       </div>
-      
+    </div>
+    
+    <div class="gc-step-panel__actions">
+      <button type="button" class="gc-step-btn gc-step-btn--prev" data-gc-prev-step disabled>
+        Назад
+      </button>
+      <button type="button" class="gc-step-btn gc-step-btn--next" data-gc-next-step>
+        Далее
+      </button>
+    </div>
+  </section>
 
-      <div class="gc-step-actions">
-        <button type="button" class="gc-step-btn gc-step-btn--prev" data-gc-prev-step disabled>
-          Назад
-        </button>
-        <button type="button" class="gc-step-btn gc-step-btn--next" data-gc-next-step>
-          Далее
-        </button>
+  <section class="gc-step-panel" data-gc-step-panel="2" hidden>
+    <h2 class="gc-step-panel__title">Выбери номинал карты</h2>
+
+    <div class="gc-step-panel__body gc-amount__layout">
+      <div class="gc-amount__visual">
+        <div class="gc-amount__circle-bg"></div>
+
+        <div class="gc-amount__card-wrap">
+          <!-- сюда подставляй картинку из этапа выбора дизайна -->
+          <img
+            class="gc-amount__card-image"
+            src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80""
+            alt="Выбранный дизайн подарочной карты"
+            id="giftCardPreview"
+          />
+        </div>
+
+        <div
+          class="gc-amount__wheel"
+          id="amountWheel"
+          aria-label="Выбор номинала"
+        ></div>
+      </div>
+
+      <div class="gc-amount__info">
+        <label class="gc-amount__input-wrap" for="giftCardAmountInput">
+          <input
+            class="gc-amount__input"
+            id="giftCardAmountInput"
+            type="text"
+            inputmode="numeric"
+            value="1500"
+            autocomplete="off"
+          />
+          <span class="gc-amount__currency">₽</span>
+        </label>
+
+        <div class="gc-amount__hint">
+          можно купить ≈ <strong id="giftCardAmountHintText">небольшой букет</strong>
+        </div>
       </div>
     </div>
 
-    <div class="gc-step-panel" data-gc-step-panel="2" hidden>
-      <h2 class="gc-amount__title">Выбери номинал карты</h2>
-
-      <div class="gc-amount__layout">
-        <div class="gc-amount__visual">
-          <div class="gc-amount__circle-bg"></div>
-
-          <div class="gc-amount__card-wrap">
-            <!-- сюда подставляй картинку из этапа выбора дизайна -->
-            <img
-              class="gc-amount__card-image"
-              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80""
-              alt="Выбранный дизайн подарочной карты"
-              id="giftCardPreview"
-            />
-          </div>
-
-          <div
-            class="gc-amount__wheel"
-            id="amountWheel"
-            aria-label="Выбор номинала"
-          ></div>
-        </div>
-
-        <div class="gc-amount__info">
-          <label class="gc-amount__input-wrap" for="giftCardAmountInput">
-            <input
-              class="gc-amount__input"
-              id="giftCardAmountInput"
-              type="text"
-              inputmode="numeric"
-              value="1500"
-              autocomplete="off"
-            />
-            <span class="gc-amount__currency">₽</span>
-          </label>
-
-          <div class="gc-amount__hint">
-            можно купить ≈ <strong id="giftCardAmountHintText">небольшой букет</strong>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="gc-step-actions">
-        <button type="button" class="gc-step-btn gc-step-btn--prev" data-gc-prev-step disabled>
-          Назад
-        </button>
-        <button type="button" class="gc-step-btn gc-step-btn--next" data-gc-next-step>
-          Далее
-        </button>
-      </div>
+    <div class="gc-step-panel__actions">
+      <button type="button" class="gc-step-btn gc-step-btn--prev" data-gc-prev-step disabled>
+        Назад
+      </button>
+      <button type="button" class="gc-step-btn gc-step-btn--next" data-gc-next-step>
+        Далее
+      </button>
     </div>
+  </section>
 
-    <div class="gc-step-panel" data-gc-step-panel="3" hidden>
+  <section class="gc-step-panel" data-gc-step-panel="3" hidden>
+    <h2 class="gc-step-panel__title">Введи данные</h2>
+    <div class="gc-step-panel__body">
       <form method="post" action="/wp-admin/admin-post.php" class="gift-cards_form" novalidate>
         <input type="hidden" name="action" value="giftcard_pay">
         <input type="hidden" name="giftcard_product_id" value="<?php echo $gcid?>"> <!-- ID товара gift-card -->
         <input type="hidden" name="giftcard_gradient" id="giftcard_gradient" value="<?php echo esc_attr( $default_gradient ); ?>">
         <input type="hidden" name="giftcard_image" id="giftcard_image" value="<?php echo esc_attr( $default_image ); ?>">
         <input type="number" name="giftcard_amount" id="giftcard_amount" value="" min="1" required style="display:none;">
-        <div class="gift-card-content">
+        <div class="gift-cards_form-content">
           <div>
             <h3>Куда отправить сертификат</h3>
             <div class="gift-buyer-name gift-input-wrap gift-input-wrap_labeled">
@@ -286,8 +287,18 @@ $background_css    = plnt_get_giftcard_background_css( $default_gradient, $defau
         </div>
       </form>
     </div>
-  </div>
-</div>
+
+    <div class="gc-step-panel__actions">
+      <button type="button" class="gc-step-btn gc-step-btn--prev" data-gc-prev-step disabled>
+        Назад
+      </button>
+      <button type="button" class="gc-step-btn gc-step-btn--next" data-gc-next-step>
+        Далее
+      </button>
+    </div>
+  </section>
+</section>
+
 
 
 <?php get_footer();?>

@@ -18,11 +18,11 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
             <a href="<?php echo site_url()?>/product-category/iskusstvennye-rasteniya-treez/">Искусственные растения Treez</a>
         </div>
         <div class="header__main-menu-item" data-menu = "menu_item_service">Услуги</div>
-        <div class="header__main-menu-item">
-            <a href="<?php echo site_url()?>/product-tag/skidki/">Скидки</a>
+        <div class="header__main-menu-item" data-menu = "menu_item_giftcard">
+          <a href="<?php echo site_url()?>/shop/gift-card">Подарочный сертификат</a>
         </div>
         <div class="header__main-menu-item">
-            <a href="<?php echo site_url()?>/shop/gift-card">Подарочный сертификат</a>
+            <a href="<?php echo site_url()?>/product-tag/skidki/">Скидки</a>
         </div>
     </div>
     <div class="header__menu"> 
@@ -320,6 +320,20 @@ $arrow_icon = carbon_get_theme_option('arrow_icon');
                         <li class="header__main-submenu-item">
                             <a href="<?php echo site_url()?>/pokupka-komnatnyh-rastenij-optom/">Оптовая покупка растений</a>
                         </li>
+                    </ul>
+                </div>
+                <div class="header__main-submenu" data-menu = "menu_item_giftcard">
+                    <ul class="header__main-submenu_lvl1">
+                        <li class="header__main-submenu-item">
+                          <a href="<?php echo site_url()?>/shop/gift-card">Купить подарочный сертификат</a>
+                        </li>
+                        <li class="header__main-submenu-item">
+                            <a href="<?php echo site_url()?>/gift-card/">Проверить баланс</a>
+                        </li>
+                        <li class="header__main-submenu-item">
+                            <a href="<?php echo site_url()?>/gift-card-info/">О картах</a>
+                        </li>
+
                     </ul>
                 </div>
                 <div class="header__main-submenu" data-menu = "menu_az_palnts">

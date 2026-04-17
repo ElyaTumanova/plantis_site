@@ -61,51 +61,130 @@ if ( $gift_card_id > 0 ) {
 
 <?php if ( $gift_card ):?>
 
-  <div class="gift-card-content-area">
-    <h1 class="gift-card__title">Подарочный сертификат</h1>
-    <p class="gift-card__descr">Интернет магазин комнатных растений Plantis</p>
-    <div class="gift-card__main">
-      <div class="gift-card__wrap">
-        <div class="gift-image-wrap"
-            style="background-image: <?php echo esc_attr( $gradients[$gradient_key] ); ?>; background-size: cover, cover; background-position: center, center; background-repeat: no-repeat, no-repeat;">
-           <img
-            class="gc-main-slide__image"
-            src="<?php echo esc_url($images[$image_key]); ?>"
-            alt="<?php echo esc_attr($image_key); ?>"
-          >
-            <p class="gift-image-amount"><?php echo esc_html($gift_card['_ywgc_balance_total'][0]) ?><span>₽</span></p>
-        </div>
-        <div class="gift-card__row">
-          <p>Номер сертификата:</p>
-          <p class="copy-wrap">
-            <span id="gift-code"><?php echo esc_html($gcnum)?></span>
-            <button class="copy-btn" type="button" data-copy-target="#gift-code">Скопировать</button>
-          </p>
-        </div>
-        <div class="gift-card__row">
-          <p>Срок действия сертификата:</p>
-          <p><?php echo esc_html($gift_card['_ywgc_expiration_date_formatted'][0]) ?></p>
+<section class="gift-showcase">
+  <div class="gift-showcase__wrap">
+    <div class="gift-showcase__grid">
+
+      <div class="gift-showcase__content">
+        <h1 class="gift-showcase__title">
+          Подарочный сертификат
+        </h1>
+
+        <div class="gift-showcase__bottom">
+          <div class="gift-showcase__meta">
+            <div class="gift-showcase__meta-item">
+              <span class="gift-showcase__meta-label">Номер</span>
+              <div class="gift-showcase__meta-value gift-showcase__meta-value--code">
+                <span id="gift-code"><?php echo esc_html( $gcnum ); ?></span>
+                <button class="copy-btn" type="button" data-copy-target="#gift-code">
+                  Скопировать
+                </button>
+              </div>
+            </div>
+
+            <div class="gift-showcase__meta-item">
+              <span class="gift-showcase__meta-label">Срок действия</span>
+              <span class="gift-showcase__meta-value">
+                <?php echo esc_html( $gift_card['_ywgc_expiration_date_formatted'][0] ?? '' ); ?>
+              </span>
+            </div>
+          </div>
+
+          <div class="gift-panel__actions gift-panel__actions--left">
+            <a class="button gift-btn gift-btn--primary" href="<?php echo esc_url( get_site_url() . '/shop' ); ?>">
+              К покупкам
+            </a>
+          </div>
         </div>
       </div>
-      
-      <div class="gift-card__greeting">
-        <p class="gift-card__greeting-to"><?php echo esc_html($gift_card['_ywgc_recipient_name'][0]) ?></p>
-        <?php if($gift_card['_ywgc_message'][0]):?>
-        <p class="gift-card__greeting-text"><?php echo esc_html($gift_card['_ywgc_message'][0]) ?></p>
-        <?php else:?>
-          <p class="gift-card__greeting-text">Эта подарочная карта для тебя 🌿
-              <br>
-              Открой для себя мир комнатных растений, подбери красивые горшки и полезные аксессуары.
-              <br>
-              Пусть твой дом расцветает вместе с новыми зелёными друзьями!
-          </p>
-        <?php endif; ?>
-        <p class="gift-card__greeting-from"><?php echo esc_html($gift_card['_ywgc_sender_name'][0]) ?></p>
-        <a class="button gift-card__btn" href="<?php echo get_site_url()?>/shop">К покупкам</a>
+
+      <div class="gift-showcase__card">
+        <div class="gift-panel">
+          <div class="gift-panel__head">
+            <h2 class="gift-panel__title">Ваш сертификат</h2>
+
+            <div class="gift-panel__switch">
+              <button class="gift-panel__switch-btn is-active" type="button" data-view-btn="card">
+                Сертификат
+              </button>
+              <button class="gift-panel__switch-btn" type="button" data-view-btn="message">
+                Поздравление
+              </button>
+            </div>
+          </div>
+
+          <div class="gift-panel__body">
+            <div class="gift-panel__view is-active" data-view-panel="card">
+              <div
+                class="gift-certificate"
+                style="
+                  background-image: <?php echo esc_attr( $gradients[ $gradient_key ] ?? '' ); ?>;
+                  background-size: cover, cover;
+                  background-position: center, center;
+                  background-repeat: no-repeat, no-repeat;
+                "
+              >
+              
+                  <?php if ( ! empty( $images[ $image_key ] ) ) : ?>
+                    <img
+                      class="gift-certificate__image"
+                      src="<?php echo esc_url( $images[ $image_key ] ); ?>"
+                      alt="<?php echo esc_attr( $image_key ); ?>"
+                    >
+                  <?php endif; ?>
+            
+
+     
+                  <div class="gift-certificate__amount">
+                    <?php echo esc_html( $gift_card['_ywgc_balance_total'][0] ?? '' ); ?><span>₽</span>
+                  </div>
+            
+              </div>
+            </div>
+
+            <div class="gift-panel__view" data-view-panel="message">
+              <div class="gift-certificate__message">
+                <?php if ( ! empty( $gift_card['_ywgc_recipient_name'][0] ) ) : ?>
+                  <p class="gift-certificate__message__to">
+                    <?php echo esc_html( $gift_card['_ywgc_recipient_name'][0] ); ?>
+                  </p>
+                <?php endif; ?>
+
+                <div class="gift-certificate__message-text">
+                  <?php if ( ! empty( $gift_card['_ywgc_message'][0] ) ) : ?>
+                    <?php
+                    $message_paragraphs = preg_split('/\r\n|\r|\n/', $gift_card['_ywgc_message'][0]);
+                    foreach ( $message_paragraphs as $paragraph ) :
+                      $paragraph = trim( $paragraph );
+                      if ( $paragraph === '' ) {
+                        continue;
+                      }
+                    ?>
+                      <p><?php echo esc_html( $paragraph ); ?></p>
+                    <?php endforeach; ?>
+                  <?php else : ?>
+                    <p>Эта подарочная карта для тебя 🌿</p>
+                    <p>Открой для себя мир комнатных растений, подбери красивые горшки и полезные аксессуары.</p>
+                    <p>Пусть твой дом расцветает вместе с новыми зелёными друзьями!</p>
+                  <?php endif; ?>
+
+                  <?php if ( ! empty( $gift_card['_ywgc_sender_name'][0] ) ) : ?>
+                    <p>
+                      <strong>От:</strong> <?php echo esc_html( $gift_card['_ywgc_sender_name'][0] ); ?>
+                    </p>
+                  <?php endif; ?>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
-    <?php get_template_part( 'template-parts/gift-card-faq' );?>
   </div>
+</section>
+
+<?php //get_template_part( 'template-parts/gift-card-faq' ); ?>
 
 <?php else:?>
     <div class="gift-card-cb-content-area">

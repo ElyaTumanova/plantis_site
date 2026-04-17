@@ -48,6 +48,27 @@
     }
 }
 
+:root {
+  --min-vw: 390;
+  --max-vw: 1300;
+}
+
+.example-fluid {
+  --min-size: 20;
+  --max-size: 20;
+
+  --fluid: clamp(
+    calc(var(--min-size) * 1px),
+    calc(
+      (var(--min-size) * 1px) +
+      (var(--max-size) - var(--min-size)) *
+      ((100vw - (var(--min-vw) * 1px)) / (var(--max-vw) - var(--min-vw)))
+    ),
+    calc(var(--max-size) * 1px)
+  );
+  font-size: var(--fluid);
+}
+
 .d-none {
     display: none !important;
 }
@@ -56,8 +77,6 @@ html { scrollbar-gutter: stable; }
 
 .fix-body {
     height: 100vh;
-    /* width: calc(100vw - var(--scrollWidth)); */
-    /* overflow-y: hidden; */
     overflow: hidden;
 }
 
@@ -218,7 +237,6 @@ html { scrollbar-gutter: stable; }
 }
 
 .button, .wpcf7-submit {
-    /* display: inline-block;  */
     box-sizing: border-box;
 
     display: inline-flex;
@@ -230,7 +248,6 @@ html { scrollbar-gutter: stable; }
     font-weight: 500;
     text-transform: uppercase;
     line-height: 1;
-    /* text-align: center; */
     text-decoration: none;
 
     border-style: solid;
@@ -238,6 +255,8 @@ html { scrollbar-gutter: stable; }
     border-radius: 30px;
     
     padding: 10px;
+
+    min-height: 45px;
 }
 
 .wpcf7 form input[type=submit].is-disabled,

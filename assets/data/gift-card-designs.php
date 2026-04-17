@@ -39,19 +39,20 @@ return [
     ],
 
     'images' => [
+        'mirt'  => get_template_directory_uri() . '/images/gift-card/covers/gift_main_cover_no_bg_large.png',
         'leafs'  => get_template_directory_uri() . '/images/gift-card/covers/card_2.png',
         'boss' => get_template_directory_uri() . '/images/gift-card/covers/card_1.png',
         'hb' => get_template_directory_uri() . '/images/gift-card/covers/card_3.png',
         'dushno' => get_template_directory_uri() . '/images/gift-card/covers/card_4.png',
         'babushka' => get_template_directory_uri() . '/images/gift-card/covers/card_5.png',
         'monstera' => get_template_directory_uri() . '/images/gift-card/covers/card_6.png',
-        'cat' => get_template_directory_uri() . '/images/gift-card/covers/card_7.png',
+        // 'cat' => get_template_directory_uri() . '/images/gift-card/covers/card_7.png',
         'goose1' => get_template_directory_uri() . '/images/gift-card/covers/card_8.png',
-        'goose2' => get_template_directory_uri() . '/images/gift-card/covers/card_9.png',
+        // 'goose2' => get_template_directory_uri() . '/images/gift-card/covers/card_9.png',
     ],
 
     'defaults' => [
         'gradient' => 'sky',
-        'image'    => 'leafs',
+        'image'    => 'mirt',
     ],
 ];

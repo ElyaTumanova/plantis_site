@@ -1,0 +1,102 @@
+/*--------------------------------------------------------------
+# Root variables and responsive layout tokens
+--------------------------------------------------------------*/
+
+:root {
+  /* layout */
+  --gc-sidebar-width: clamp(230px, 18vw, 280px);
+  --gc-sidebar-padding-y: 56px;
+  --gc-sidebar-padding-x: clamp(30px, calc(var(--gc-sidebar-width) * 0.15), 44px);
+
+  --gc-section-pad-right: 24px;
+  --gc-section-pad-left: 24px;
+
+  --gc-stage-h: 320px;
+
+  /* gaps */
+  --gc-gap-main-side: 20px;
+  --gc-gap-side-side: 10px;
+
+  /* main */
+  --gc-layout-w: min(calc(100vw - var(--gc-sidebar-width) - 40px), 1000px);
+  --gc-main-w: clamp(240px, calc(var(--gc-layout-w) * 0.52), 520px);
+  --gc-main-h: calc(var(--gc-stage-h) - 30px);
+  --gc-main-radius: 22px;
+
+  /* side cards */
+  --gc-side-size: clamp(75px, calc(var(--gc-main-w) * 0.3), 150px);
+  --gc-side-2-size: calc(var(--gc-side-size) - 40px);
+
+  /* full slider width */
+  --gc-slider-w: calc(
+    var(--gc-side-size) +
+    var(--gc-gap-main-side) +
+    var(--gc-main-w) +
+    var(--gc-gap-main-side) +
+    var(--gc-side-size) +
+    var(--gc-gap-side-side) +
+    var(--gc-side-2-size)
+  );
+
+  /* offsets inside slider */
+  --gc-left-offset-left: 0;
+
+  --gc-main-offset-left: calc(var(--gc-side-size) + var(--gc-gap-main-side));
+
+
+  --gc-right-offset-left: calc(
+    var(--gc-main-offset-left) + var(--gc-main-w) + var(--gc-gap-main-side)
+  );
+
+  --gc-right-2-offset-left: calc(
+    var(--gc-right-offset-left) + var(--gc-side-size) + var(--gc-gap-side-side)
+  );
+
+  /* nav */
+  --gc-nav-size: calc(var(--gc-main-h) * 0.2);
+  --gc-nav-icon-size: calc(var(--gc-nav-size) * 0.3);
+  --gc-nav-prev-left: var(--gc-main-offset-left);
+  --gc-nav-next-left: calc(var(--gc-main-offset-left) + var(--gc-main-w));
+
+  /* dots: synced with main card */
+  --gc-dots-max-width: var(--gc-main-w);
+  --gc-dots-margin-left: var(--gc-main-offset-left);
+  --gc-dots-margin-top: 18px;
+  --gc-dots-gap: 12px;
+}
+
+
+@media (max-width: 1300px) {
+  :root {
+    --gc-section-pad-right: 16px;
+    --gc-section-pad-left: 16px;
+    --gc-stage-h: 280px;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --gc-sidebar-width: 0px;
+  }
+}
+@media (max-width: 720px) {
+  :root {
+    --gc-section-pad-right: 10px;
+    --gc-section-pad-left: 10px;
+
+    --gc-stage-h: 230px;
+
+    --gc-main-radius: 18px;
+
+    --gc-side-2-size: 0px;
+    --gc-gap-side-side: 0px; 
+    --gc-right-2-offset-left: 0px;
+  }
+}
+
+@media (max-width: 460px) {
+  :root {
+    --gc-main-w: calc(100% - var(--gc-nav-size));
+    --gc-side-size: 0px;
+  } 
+}

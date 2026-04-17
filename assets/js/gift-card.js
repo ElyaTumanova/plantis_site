@@ -70,6 +70,28 @@ document.querySelectorAll('[data-copy-target]').forEach((btn) => {
   });
 });
 
+//CG result page - switch view
+
+
+const gcSwitchButtons = document.querySelectorAll('[data-view-btn]');
+const gcPanels = document.querySelectorAll('[data-view-panel]');
+const copyButtons = document.querySelectorAll('[data-copy-target]');
+
+gcSwitchButtons.forEach((btn) => {
+  btn.addEventListener('click', function () {
+    const view = btn.dataset.viewBtn;
+
+    gcSwitchButtons.forEach((b) => b.classList.remove('is-active'));
+    gcPanels.forEach((panel) => panel.classList.remove('is-active'));
+
+    btn.classList.add('is-active');
+
+    const activePanel = document.querySelector('[data-view-panel="' + view + '"]');
+    if (activePanel) activePanel.classList.add('is-active');
+  });
+});
+
+
 // checkout page
 const giftcardShow = document.querySelector('.ywgc-show-giftcard');
 const giftCardApplyBtn = document.querySelector('.ywgc_apply_gift_card_button');
