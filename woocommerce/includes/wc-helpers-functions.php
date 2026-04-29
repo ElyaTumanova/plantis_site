@@ -292,7 +292,7 @@ function get_delivery_markup() {
   $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
   $urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_large');
 
-  $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+  $expensive_interval_markup_delivery = carbon_get_theme_option('expensive_interval_markup_delivery');
 
   $expensive_day_markup_delivery = carbon_get_theme_option('expensive_day_markup_delivery');
 

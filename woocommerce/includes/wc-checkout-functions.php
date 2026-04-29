@@ -270,33 +270,21 @@ Contents
                 array_push($days, $day);
             }
         }
+
+        $options = array_combine( $days, $days );
         echo "<div class='delivery_wrap'>";
         // выводим поле функцией woocommerce_form_field()
         woocommerce_form_field( 
             'delivery_dates', 
             array(
-                'type'          => 'radio', // text, textarea, select, radio, checkbox, password
-                'required'	=> false, // по сути только добавляет значок "*" и всё
-                'class'         => array( 'delivery_dates', 'swiper' ), // массив классов поля
-                'label'         => 'Дата доставки (самовывоза)',
-                'label_class'   => array( 'delivery_dates_label', 'swiper-slide' ), // класс лейбла
-                'options'	=> array( // options for  or 
-                    $days[0]		=> $days[0], // 'значение' => 'заголовок'
-                    $days[1]		=> $days[1], // 'значение' => 'заголовок'
-                    $days[2]		=> $days[2], // 'значение' => 'заголовок'
-                    $days[3]		=> $days[3], // 'значение' => 'заголовок'
-                    $days[4]		=> $days[4], // 'значение' => 'заголовок'
-                    $days[5]		=> $days[5], // 'значение' => 'заголовок'
-                    $days[6]		=> $days[6], // 'значение' => 'заголовок'
-                    $days[7]		=> $days[7], // 'значение' => 'заголовок'
-                    $days[8]		=> $days[8], // 'значение' => 'заголовок'
-                    $days[9]		=> $days[9], // 'значение' => 'заголовок'
-                    $days[10]		=> $days[10], // 'значение' => 'заголовок'
-                    $days[11]		=> $days[11], // 'значение' => 'заголовок'
-                    $days[12]		=> $days[12], // 'значение' => 'заголовок'
-                    $days[13]		=> $days[13], // 'значение' => 'заголовок'
-                )
+              'type'          => 'radio', // text, textarea, select, radio, checkbox, password
+              'required'	=> false, // по сути только добавляет значок "*" и всё
+              'class'         => array( 'delivery_dates', 'swiper' ), // массив классов поля
+              'label'         => 'Дата доставки (самовывоза)',
+              'label_class'   => array( 'delivery_dates_label', 'swiper-slide' ), // класс лейбла
+              'options'	=> $options,
             ),
+            $days[0],
         );
     }
 

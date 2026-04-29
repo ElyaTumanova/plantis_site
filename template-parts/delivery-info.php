@@ -22,7 +22,7 @@ $large_markup_delivery_out_mkad = carbon_get_theme_option('large_markup_delivery
 $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
 $urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_large');
 
-$late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+$expensive_interval_markup_delivery = carbon_get_theme_option('expensive_interval_markup_delivery');
 
 $min_free_delivery = carbon_get_theme_option('min_free_delivery');
 

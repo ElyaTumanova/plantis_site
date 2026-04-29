@@ -48,7 +48,26 @@ function plnt_check() {
     // echo '<br>';
     $packages = WC()->shipping()->get_packages();
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
-    //print_r( $packages);
+    // foreach ( $packages as $package_index => $package ) {
+    //   if ( empty( $package['rates'] ) ) {
+    //       continue;
+    //   }
+
+    //     foreach ( $package['rates'] as $rate_id => $rate ) {
+    //         echo '<pre>';
+    //         print_r( array(
+    //             'package_index' => $package_index,
+    //             'rate_id'      => $rate_id,
+    //             'method_id'    => $rate->get_method_id(),
+    //             'instance_id'  => $rate->get_instance_id(),
+    //             'label'        => $rate->get_label(),
+    //             'cost'         => $rate->get_cost(),
+    //             'taxes'        => $rate->get_taxes(),
+    //         ) );
+    //         echo '</pre>';
+    //     }
+    // }
+    // print_r( $packages);
     // echo '<br>';
     //echo $delivery_pochta;
     echo $chosen_methods[0];
@@ -77,7 +96,7 @@ function plnt_check() {
     echo $today;
 
     $delivery_murkup = get_delivery_markup();
-    //print_r ($delivery_murkup);
+    // print_r ($delivery_murkup);
 
     //echo 'isCourier '.(WC()->session->get('is_courier_deliv_flag' )).'  ';
 
@@ -138,7 +157,7 @@ function plnt_shipping_conditions( $rates, $package ) {
     global $delivery_long_dist;
     global $delivery_pochta;
 
-    $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+    $expensive_interval_markup_delivery = carbon_get_theme_option('expensive_interval_markup_delivery');
 
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
 
@@ -158,8 +177,8 @@ function plnt_shipping_conditions( $rates, $package ) {
       // //проверяем срочную доставку и позднюю доставку
 
       if (WC()->session->get('isLate') === '1') {
-        $delivery_markup_in_mkad =  $delivery_markup_in_mkad + $late_markup_delivery;
-        $delivery_markup_out_mkad =  $delivery_markup_out_mkad + $late_markup_delivery;
+        $delivery_markup_in_mkad =  $delivery_markup_in_mkad + $expensive_interval_markup_delivery;
+        $delivery_markup_out_mkad =  $delivery_markup_out_mkad + $expensive_interval_markup_delivery;
       }
 
       if (WC()->session->get('isUrgent') === '1') {

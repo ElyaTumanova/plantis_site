@@ -70,8 +70,15 @@ Container::make('theme_options', 'Настройки темы')
 			Field::make( 'text', 'large_markup_delivery_out_mkad', 'Надбавка к стоимости крупногабаритной доставки за пределами МКАД'),
 			Field::make( 'text', 'urgent_markup_delivery_large', 'Надбавка к стоимости срочной крупногабаритной доставки'),
 			Field::make( 'text', 'expensive_day_markup_delivery', 'Надбавка к стоимости доставки в определенные дни'),
-			Field::make( 'text', 'late_markup_delivery', 'Надбавка к стоимости доставки в дорогой интервал'),
-      Field::make('select', 'late_interval_delivery', 'Дорогой интервал')
+			Field::make( 'text', 'expensive_interval_markup_delivery', 'Надбавка к стоимости доставки в дорогой интервал'),
+      Field::make('select', 'late_interval_delivery', 'Поздний интервал')
+				  ->add_options(array(
+					  '11:00 - 22:00' => '11:00 - 22:00',
+					  '11:00 - 16:00' => '11:00 - 16:00',
+					  '14:00 - 19:00' => '14:00 - 19:00',
+					  '18:00 - 22:00' => '18:00 - 22:00',
+				  )),
+      Field::make('select', 'expensive_interval_delivery', 'Дорогой интервал')
 				  ->add_options(array(
 					  '11:00 - 22:00' => '11:00 - 22:00',
 					  '11:00 - 16:00' => '11:00 - 16:00',

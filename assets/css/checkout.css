@@ -587,6 +587,8 @@
 
 #delivery_dates_field .woocommerce-input-wrapper label.disabled {
   color: var(--gray-text);
+  pointer-events: none;
+  cursor: not-allowed;
 }
 #delivery_dates_field .woocommerce-input-wrapper label.disabled span{
   display: none;
@@ -596,6 +598,16 @@
   width: 100%;  
   /* min-width: 115px; */
   /* max-width: 137px; */
+}
+
+#additional_delivery_interval_field .woocommerce-input-wrapper label.disabled {
+  color: var(--gray-text);
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+#additional_delivery_interval_field .woocommerce-input-wrapper label.disabled span{
+  display: none;
 }
 
 #dontcallme_field .woocommerce-input-wrapper label {

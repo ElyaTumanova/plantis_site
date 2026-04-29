@@ -143,7 +143,7 @@ function renderDeliveryIntervals(shippingValue) {
         if (isUrgent == '1') {
           priceEl.innerHTML = `+0₽`;
         } else {
-          priceEl.innerHTML = info.for == `additional_delivery_interval_${deliveryLateInterval}` ? `+${DELIVERY.deliveryLateMarkup}₽` : `+0₽` ;
+          priceEl.innerHTML = info.for == `additional_delivery_interval_${deliveryLateInterval}` ? `+${DELIVERY.deliveryExpensiveIntervalMarkup}₽` : `+0₽` ;
         }
       }
   })
@@ -228,7 +228,7 @@ function getDatesIntervalsInfo() {
     deliveryDatesInfo.push(dateInfo);
   });
 
-  if(DELIVERY.deliveryLateMarkup) {    
+  if(DELIVERY.deliveryExpensiveIntervalMarkup) {    
     deliveryIntervalLabels.forEach((label) => {
       let intervalInfo = {
         label: label,

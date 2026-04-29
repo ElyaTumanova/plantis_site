@@ -1,419 +1,413 @@
+const rootSelector = 'form[name="checkout"]'
+
 const DELIVERY = window.PLNT_Delivery_Data || {};
-let isUrgent;
-let isLate;
-let isHoliday; //скрываем подние интервалы доставки
-let isExpensive; //увеличиваем стоимость доставки
-// let holidays = []
-// let notWorking = []
 
-let holidays = []; //format dd.mm - дни для сокращенного интервала
-let notWorking = [] //format dd.mm - дни для отсутсвия доставки 
-let notWorkingAllowPickup = false;
-let expensiveDays = ['06.03', '07.03', '08.03'] //format dd.mm - дни для дорогой доставки 
-let deliveryDatesInfo = [];
-let deliveryIntervalsInfo = []
-let shippingMethodValues = [];
-let checkedShippingMethod = '';
-let checkedDate = '';
-let checkedInterval = '';
-let today;
-let isUrgentCourierTariff = DELIVERY.isUrgentCourierTariff == '1';
-let deliveryLateInterval = DELIVERY.deliveryLateInterval
-let isSmallHolidayTariffOn = DELIVERY.isSmallHolidayTariffOn == '1';
-let deliveryExpensiveMarkup = DELIVERY.deliveryExpensiveMarkup;
-console.debug('isUrgentCourierTariff ',isUrgentCourierTariff);
-console.debug('isSmallHolidayTariffOn ',isSmallHolidayTariffOn);
-console.debug('deliveryExpensiveMarkup ',deliveryExpensiveMarkup);
+//formatting
+DELIVERY.deliveryCostInMkad = Number(DELIVERY.deliveryCostInMkad)
+DELIVERY.deliveryCostOutMkad = Number(DELIVERY.deliveryCostOutMkad)
+DELIVERY.deliveryUrgMarkup = Number(DELIVERY.deliveryUrgMarkup)
+DELIVERY.deliveryExpensiveIntervalMarkup = Number(DELIVERY.deliveryExpensiveIntervalMarkup)
+DELIVERY.deliveryExpensiveDayMarkup = Number(DELIVERY.deliveryExpensiveDayMarkup)
+DELIVERY.deliveryMarkupInMkad = Number(DELIVERY.deliveryMarkupInMkad)
+DELIVERY.deliveryMarkupOutMkad = Number(DELIVERY.deliveryMarkupOutMkad)
 
-let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
-let addressFields = document.querySelector('#billing_address_1_field');
-let additionalAddress = document.querySelector('.additional-address-field');
-let innField = document.querySelector('#additional_inn');
-let checkoutForm = document.querySelector('form[name="checkout"]');
-let deliveryDates = document.querySelector('.delivery_dates');
-let deliveryDatesInput = document.querySelectorAll('.delivery_dates input');
-let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
-let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
-let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
+DELIVERY.isUrgentCourierTariff = DELIVERY.isUrgentCourierTariff == '1';
+DELIVERY.isSmallHolidayTariffOn = DELIVERY.isSmallHolidayTariffOn == '1';
+DELIVERY.isBackorder = DELIVERY.isBackorder == '1';
+DELIVERY.isTreezBackorders = DELIVERY.isTreezBackorders == '1';
+
+// config
+const expensiveDays = ['07.05', '08.03'] //format dd.mm - дни для дорогой доставки
+const noLateIntervalDays = ['30.04'] //format dd.mm - дни для сокращенного интервала
+const noDeliveryDays = ['01.05'] //format dd.mm - дни когда нет доставки
 
 
-//определяем параметры оформления заказа, влияющие на стоимость доставки и вызываем аякс, отрисовываем поля дат и интервалов доставки
-function getOrderParametrs(event) {
-  console.debug(event);
-  if(event && event.target.className == "shipping_method") {
-     checkedShippingMethod = event.target.value
-  } else {
-    checkedShippingMethod = getCheckedShippingMethod();
-  }
-  console.debug('checkedShippingMethod ',checkedShippingMethod);
-  if(notWorkingAllowPickup) {disableNotWorkingDays(checkedShippingMethod)}
-  
-  checkedDate = getCheckedDate();
-  console.debug('checkedDate ', checkedDate)
-  
-  if(checkedDate == today) {
-    isUrgent = '1';
-  } else {
-    isUrgent = '0';
+class Checkout {
+  selectors = {
+    root: rootSelector,
+    shippingMethods: '.woocommerce-shipping-methods input',
+    paymentMethods: '.wc_payment_methods input[name="payment_method"]',
+    deliveryDates: '.delivery_dates',
+    deliveryDatesInput: '.delivery_dates input',
+    deliveryDatesLabels:'.delivery_dates .woocommerce-input-wrapper label',
+    deliveryInterval: '#additional_delivery_interval_field',
+    deliveryIntervalInput: 'input[name=additional_delivery_interval]',
+    deliveryIntervalLabels:'#additional_delivery_interval_field .woocommerce-input-wrapper label',
+    addressField: '#billing_address_1_field',
+    additionalAddressField: '.additional-address-field',
+    innField: '#additional_inn',
   }
 
-   if(expensiveDays && deliveryExpensiveMarkup && expensiveDays.includes(checkedDate)) {
-    isExpensive = 1
-  } else { isExpensive = 0}
-  
-  hideCheckoutFields(event);
-  
-  checkHoliday(checkedDate);
-  // определеяем checkedInterval после hideCheckoutFields, так как там идет сбрас выбранного интервала и после checkHoliday, так как идет выбор доступного интервала
-  checkedInterval = getCheckedInterval();
-  console.debug('checkedInterval ', checkedInterval)
-  if(checkedInterval == deliveryLateInterval) {
-    isLate = '1'
-  } else {
-    isLate = '0'
+  stateClasses = {
+    dNone: 'd-none',
+    isDisabled: 'disabled',
   }
 
-  console.debug('isUrgent ', isUrgent);
-  console.debug('isLate', isLate);
-  console.debug('isExpensive', isExpensive);
-  
-  renderDeliveryDates(checkedShippingMethod);
-  renderDeliveryIntervals(checkedShippingMethod);
+  constructor (rootElement) {
+    // elements
+    this.rootElement = rootElement
+    this.initDom()
+    this.deliveryDatesData = this.getLabelsData(this.deliveryDatesLabelElements)
+    this.deliveryIntervalsData = this.getLabelsData(this.deliveryIntervalLabelElements)
+    //helpers
+    this.today = this.getToday()
+    this.isBackorder = DELIVERY.isBackorder || DELIVERY.isTreezBackorders
 
-  if(event.target.className == "shipping_method" || 
-    event.target.name == "delivery_dates" || 
-    event.target.name == "additional_delivery_interval" ||
-    notWorking.length > 0 ||  holidays.length > 0)
-    //|| event.target == document
-   {
-      console.debug('нужен пересчет')
-      ajaxGetUrgent();
-    } 
-    else {
-      console.debug('не нужен пересчет')
-    }
-}
+    //initial state
+    this.checkoutState = this.getProxyCheckoutState(this.getCheckoutParametrs())
+    this.state = this.getProxyAjaxState(this.getAjaxParametrs())
+    console.log({...this.state})
+    console.log({...this.checkoutState})
 
-function getCheckedShippingMethod() {
-  let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
-  return checkedShippingMethodInput.value;
-}
+    //initial UI
 
-function getCheckedDate (){
- let checkedDateInput = Array.from(deliveryDatesInput).find((el)=>el.checked == true); 
- if(checkedDateInput) {
-   console.debug('checkedDate ',checkedDateInput.value)
-   return checkedDateInput.value;
- } else {
-  return ''
- }
-}
+    this.updateUI()
+    this.ajaxGetUrgent()
 
-function getCheckedInterval (){
- let checkedIntervalInput = Array.from(deliveryIntervalInput).find((el)=>el.checked == true); 
- if(checkedIntervalInput) {
-   return checkedIntervalInput.value;
- } else {
-  return ''
- }
-}
-
-//функция отрисовывает поля дат доставки с добавлением стоимости доставки
-function renderDeliveryDates(shippingValue) {
-  deliveryDatesInfo.forEach((info) => {
-    //вычисляем надбавку по конкретной дате
-    let thisDayExpensiveMarkup = 0;
-    if(expensiveDays && deliveryExpensiveMarkup) {
-      if(expensiveDays.includes(info.text)) {thisDayExpensiveMarkup = deliveryExpensiveMarkup}
-    }
-    info.label.innerHTML=`${info.text}`;
-    let priceEl = document.createElement('span');
-    info.label.appendChild(priceEl);
-      if(shippingValue == DELIVERY.deliveryInMKAD) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(DELIVERY.deliveryCostInMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupInMkad) + Number(thisDayExpensiveMarkup)}₽` : `${Number(DELIVERY.deliveryCostInMkad) + Number(DELIVERY.deliveryMarkupInMkad) + Number(thisDayExpensiveMarkup)}₽` ;
-      }
-      if(shippingValue == DELIVERY.deliveryOutMKAD) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupOutMkad) + Number(thisDayExpensiveMarkup)}₽` : `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryMarkupOutMkad) + Number(thisDayExpensiveMarkup)}₽` ;
-      }
-
-      //если isUrgentCourierTariff и/или isSmallHolidayTariffOn - все перезатираем и делаем по тарифу КС
-      if ((shippingValue == DELIVERY.deliveryInMKAD || shippingValue == DELIVERY.deliveryOutMKAD) && isUrgentCourierTariff) {
-          if (info.for == `delivery_dates_${today}`) {
-              priceEl.innerHTML = 'по тарифу КС';
-          }
-      }
-      if ((shippingValue == DELIVERY.deliveryInMKAD || shippingValue == DELIVERY.deliveryOutMKAD) && isSmallHolidayTariffOn) {
-          if (info.for != `delivery_dates_${today}`) {
-              priceEl.innerHTML = 'по тарифу КС';
-          }
-      }
-  })
-}
-
-//функция отрисовывает поля интервалов доставки с добавлением стоимости доставки
-function renderDeliveryIntervals(shippingValue) {
-  deliveryIntervalsInfo.forEach((info) => {
-    let priceEl = document.createElement('span');
-    info.label.innerHTML=`${info.text}`;
-    info.label.appendChild(priceEl);
-      if(shippingValue == DELIVERY.localPickupId || shippingValue == DELIVERY.deliveryFreeId || shippingValue == DELIVERY.deliveryPochtaId ||shippingValue == DELIVERY.deliveryCourierId || shippingValue == DELIVERY.deliveryLongId || isSmallHolidayTariffOn) {
-      } else {
-        if (isUrgent == '1') {
-          priceEl.innerHTML = `+0₽`;
-        } else {
-          priceEl.innerHTML = info.for == `additional_delivery_interval_${deliveryLateInterval}` ? `+${DELIVERY.deliveryLateMarkup}₽` : `+0₽` ;
-        }
-      }
-  })
-  
-}
-
-//аякс запрос
-function ajaxGetUrgent() {
-  console.debug('hi ajaxGetUrgent');
-  console.debug('isUrgent ajax', isUrgent);
-  console.debug('isLate ajax', isLate);
-  console.debug('isExpensive ajax', isExpensive);
-
-  const data = new URLSearchParams();
-  data.append('action', 'get_urgent_shipping');
-  data.append('isUrgent', isUrgent);
-  data.append('isLate', isLate);
-  data.append('isExpensive', isExpensive);
-
-  fetch('/wp-admin/admin-ajax.php', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: data
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.json();
-  })
-  .then(result => {
-    console.debug('✅ AJAX success:', result);
-    if (result.success) {
-      document.body.dispatchEvent(new Event('update_checkout'));
-    }
-  })
-  .catch(error => {
-    console.error('❌ AJAX error:', error);
-  })
-  .finally(() => {
-    console.debug('⚙️ AJAX complete');
-  });
-}
-
-//определяем начальное состояние при загрузке формы
-function setInitalState() {
-  let hour = new Date().getHours();
-
-  if (hour >= 18 && hour <20) { 
-    isUrgent = 0;
-  } else {
-    isUrgent = 1;
+    this.bindEvents()
+    this.debug()
   }
 
-  isLate = 0;
-  
+  //helpers
 
-  const baseDate = new Date();
-  if (hour >= 20) baseDate.setDate(baseDate.getDate() + 1);
+  initDom = () => {
 
-  today = `${String(baseDate.getDate()).padStart(2,'0')}.${String(baseDate.getUTCMonth()+1).padStart(2,'0')}`;
-
-  if(expensiveDays && deliveryExpensiveMarkup && expensiveDays.includes(today)) {
-    isExpensive = 1
-  } else { isExpensive = 0}
-
-  console.debug('today ', today);
-  console.debug('this month ', new Date().getUTCMonth() + 1);
-  console.debug('this day ', new Date().getDate());
- 
-  deliveryDatesInput[0].checked = true;
-  deliveryIntervalInput[0].checked = true;
- 
-
-  if(notWorking.length > 0) {
-    disableNotWorkingDays()
+    this.shippingMethodsInputsElements = this.rootElement.querySelectorAll(this.selectors.shippingMethods)
+    this.paymentMethodsElements = this.rootElement.querySelectorAll(this.selectors.paymentMethods)
+    
+    this.deliveryDatesElement = this.rootElement.querySelector(this.selectors.deliveryDates)
+    this.deliveryDatesInputElements = this.rootElement.querySelectorAll(this.selectors.deliveryDatesInput)
+    this.deliveryDatesLabelElements = this.rootElement.querySelectorAll(this.selectors.deliveryDatesLabels)
+    
+    
+    this.deliveryIntervalElement = this.rootElement.querySelector(this.selectors.deliveryInterval)
+    this.deliveryIntervalInputElements = this.rootElement.querySelectorAll(this.selectors.deliveryIntervalInput)
+    this.deliveryIntervalLabelElements = this.rootElement.querySelectorAll(this.selectors.deliveryIntervalLabels)
+    
+    
+    this.addressFieldElement = this.rootElement.querySelector(this.selectors.addressField)
+    this.additionalAddressFieldElement = this.rootElement.querySelector(this.selectors.additionalAddressField)
+    this.innFieldElement = this.rootElement.querySelector(this.selectors.innField)
   }
-}
 
-//функция собирает исходные значения полей дат и интервалов доставки, чтобы потом пересивовать их
-function getDatesIntervalsInfo() {
-  deliveryDatesLables.forEach((label) => {
-    let dateInfo = {
-      label: label,
+  getCheckedInputValue(inputElements) {
+    const checkedInput = [...inputElements].find((input) => input.checked)
+    return checkedInput?.value
+  }
+
+  getLabelsData(elements) {
+    return [...elements].map((label) => ({
+      label,
       for: label.htmlFor,
-      text: label.textContent};
-    deliveryDatesInfo.push(dateInfo);
-  });
+      text: label.textContent.trim(),
+    }));
+  }
 
-  if(DELIVERY.deliveryLateMarkup) {    
-    deliveryIntervalLabels.forEach((label) => {
-      let intervalInfo = {
-        label: label,
-        for: label.htmlFor,
-        text: label.textContent
-        };
-      deliveryIntervalsInfo.push(intervalInfo);
+  getToday() {
+    const hour = new Date().getHours();
+    const baseDate = new Date();
+    if (hour >= 20) baseDate.setDate(baseDate.getDate() + 1);
+
+    const today = `${String(baseDate.getDate()).padStart(2,'0')}.${String(baseDate.getUTCMonth()+1).padStart(2,'0')}`;
+
+    return today
+  }
+
+
+  //UI helpers
+  toggleDisplayElement(element, isHidden) {
+    element.classList.toggle(this.stateClasses.dNone, isHidden)
+  }
+
+  toggleDisableDateInterval(element, isDisabled) {
+    let input = this.rootElement.querySelector(`#${CSS.escape(element.for)}`)
+    input.disabled = isDisabled;
+    element.label.classList.toggle(this.stateClasses.isDisabled, isDisabled)
+    this.unCheckFields([input], isDisabled)
+  }
+
+  isHiddenInterval() {
+    return (
+      this.isBackorder ||
+      this.checkoutState.isLocalPickup ||
+      this.state.isUrgent ||
+      this.checkoutState.shippingMethod == DELIVERY.deliveryPochtaId
+    );
+  }
+
+  getShippingPriceByDate(shippingValue, date) {
+    const isToday = date == this.today;
+    let price = ''
+
+    if(shippingValue == DELIVERY.deliveryInMKAD || shippingValue == DELIVERY.deliveryOutMKAD) {
+      if(this.isCourierTariff(date)) return 'по тарифу КС'
+
+      const baseTariff = shippingValue === DELIVERY.deliveryOutMKAD
+      ? DELIVERY.deliveryCostOutMkad + DELIVERY.deliveryMarkupOutMkad
+      : DELIVERY.deliveryCostInMkad + DELIVERY.deliveryMarkupInMkad;
+      
+      const expensiveMarkup = this.isExpensiveDay(date)
+        ? DELIVERY.deliveryExpensiveDayMarkup
+        : 0;
+
+      const urgentMarkup = isToday
+        ? DELIVERY.deliveryUrgMarkup
+        : 0;
+
+      price = baseTariff + expensiveMarkup + urgentMarkup
+    }
+    if (shippingValue == DELIVERY.deliveryLongId) {
+      return 'по тарифу КС'
+    }
+    return price
+  }
+
+  //UI functions
+
+  renderDeliveryDates(shippingValue = this.checkoutState.shippingMethod) {
+    this.deliveryDatesData.forEach((element) => {
+      element.label.innerHTML=`${element.text}`;
+      let priceEl = document.createElement('span');
+      element.label.appendChild(priceEl);
+      priceEl.innerHTML = this.getShippingPriceByDate(shippingValue, element.text)
+      
+      if(noDeliveryDays.length > 0) {
+        let isDisabled = !this.checkoutState.isLocalPickup && noDeliveryDays.includes(element.text)
+        this.toggleDisableDateInterval(element, isDisabled)
+      }
+    })
+  }
+
+  renderDeliveryIntervals(shippingValue = this.checkoutState.shippingMethod) {
+    this.deliveryIntervalsData.forEach((element) => {
+      let priceEl = document.createElement('span')
+      element.label.innerHTML=`${element.text}`
+      element.label.appendChild(priceEl)
+      if(this.isPaidDelivery()) {
+        priceEl.innerHTML = element.for == `additional_delivery_interval_${DELIVERY.deliveryExpensiveInterval}` ? `+${DELIVERY.deliveryExpensiveIntervalMarkup}₽` : `+0₽`
+      }
+
+      if(noLateIntervalDays.length > 0) {
+        let isDisabled = noLateIntervalDays.includes(this.checkoutState.deliveryDate) && element.text == DELIVERY.deliveryLateInterval
+        this.toggleDisableDateInterval(element, isDisabled)
+      }
+    })
+    
+  }
+
+  hideCheckoutFields() {
+    const isIntervalHidden = this.isHiddenInterval();
+    this.toggleDisplayElement(this.deliveryIntervalElement, isIntervalHidden)
+    this.unCheckFields(this.deliveryIntervalInputElements, isIntervalHidden)
+
+    this.toggleDisplayElement(this.deliveryDatesElement, this.isBackorder)
+    this.unCheckFields(this.deliveryDatesInputElements, this.isBackorder)
+
+    this.toggleDisplayElement(this.addressFieldElement, this.checkoutState.isLocalPickup)
+    this.toggleDisplayElement(this.additionalAddressFieldElement, this.checkoutState.isLocalPickup)
+    
+    this.toggleDisplayElement(this.innFieldElement, this.checkoutState.paymentMethod != 'cheque')
+  }
+
+  //proxy state
+  getProxyCheckoutState(initialState) {
+    return new Proxy(initialState, {
+      get: (target, prop) => {
+        return target[prop]
+      },
+      set: (target, prop, newValue) => {
+        const oldValue = target[prop]
+
+        target[prop] = newValue
+
+        if (newValue !== oldValue) {
+          this.setAjaxState()
+          this.updateUI()
+        }
+        return true
+      },
+    })
+  }
+
+  getProxyAjaxState(initialState) {
+    return new Proxy(initialState, {
+      get: (target, prop) => {
+        return target[prop]
+      },
+      set: (target, prop, newValue) => {
+        const oldValue = target[prop]
+
+        target[prop] = newValue
+
+        if (newValue !== oldValue) {
+          this.ajaxGetUrgent()
+        }
+        return true
+      },
+    })
+  }
+
+  setAjaxState() {
+    Object.assign(this.state, this.getAjaxParametrs());
+    console.log({...this.state})
+  }
+  
+  setCheckoutState() {
+    Object.assign(this.checkoutState, this.getCheckoutParametrs());
+    console.log({ ...this.checkoutState });
+  }
+
+  //state handlers
+  updateUI() {
+    this.hideCheckoutFields()
+    this.renderDeliveryDates()
+    this.renderDeliveryIntervals()
+  }
+
+  ajaxGetUrgent() {
+    const data = new URLSearchParams();
+    data.append('action', 'get_urgent_shipping');
+    data.append('isUrgent', Number(this.state.isUrgent));
+    data.append('isLate', Number(this.state.isLate) );
+    data.append('isExpensive', Number(this.state.isExpensive) );
+
+    console.log('тут fetch')
+    console.log(Object.fromEntries(data));
+
+
+    fetch('/wp-admin/admin-ajax.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: data
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(result => {
+      console.debug('✅ AJAX success:', result);
+      if (result.success) {
+        document.body.dispatchEvent(new Event('update_checkout'));
+      }
+    })
+    .catch(error => {
+      console.error('❌ AJAX error:', error);
+    })
+    .finally(() => {
+      console.debug('⚙️ AJAX complete');
     });
   }
-}
 
-function checkHoliday(date) {
-  if (holidays) {
-    if (holidays.includes(date)) {
-      isHoliday = '1'
-      deliveryIntervalInput.forEach(el =>{
-          if(el.defaultValue !== '11:00 - 16:00') {
-              el.classList.add('d-none');
-            } else {
-              el.checked = true
-              console.log(el)
-            }
-      })
-      deliveryIntervalLabels.forEach(el =>{
-          if(el.htmlFor !== 'additional_delivery_interval_11:00 - 16:00') {
-              el.classList.add('d-none');
-          }
-      })
-    } else {
-      isHoliday = '0'
-      deliveryIntervalInput.forEach(el =>{
-          el.classList.remove('d-none');
-      })
-      deliveryIntervalLabels.forEach(el =>{
-          el.classList.remove('d-none');
-      })
-    };
+  //HELPERS - CORE LOGIC
+  isExpensiveDay(date) {
+    return (expensiveDays && DELIVERY.deliveryExpensiveDayMarkup && expensiveDays.includes(date))
   }
 
-  console.log('isHoliday ', isHoliday)
-
-}
-
-function hideInterval() {
-  deliveryInterval.classList.add('d-none');
-  deliveryIntervalInput.forEach((input)=>{
-      input.checked = false;
-  })
-  // console.debug(deliveryIntervalInput)
-}
-
-function showInterval() {
-  deliveryInterval.classList.remove('d-none');
-  if (checkedInterval == '') {
-      deliveryIntervalInput[0].checked = true;
-  }
-}
-
-function hideCheckoutFields(event){
-  console.log('hi hideCheckoutFields');
-  if (deliveryInterval) {
-      if (DELIVERY.isBackorder || DELIVERY.isTreezBackorders) {
-          hideInterval()
-      } else { 
-          if ( checkedShippingMethod == DELIVERY.localPickupId || checkedShippingMethod == DELIVERY.deliveryPochtaId) {
-              hideInterval()
-          } else {
-              if (isUrgent == '1') {
-                  hideInterval();
-              }
-              if (isUrgent == '0') {
-                  showInterval()
-              }
-
-          }
-      }
+  isCourierTariff(date) {
+    return (
+      (DELIVERY.isSmallHolidayTariffOn && date != this.today) 
+      || (DELIVERY.isUrgentCourierTariff && date == this.today)
+    )
   }
 
-  //for delivery dates
-  if (deliveryDates) {
-      if (DELIVERY.isBackorder || DELIVERY.isTreezBackorders) {
-          deliveryDates.classList.add('d-none');
-          deliveryDatesInput.forEach((input)=>{
-              input.checked = false;
-          })
-      } 
+  isPaidDelivery() {
+    return (
+      (this.checkoutState.shippingMethod == DELIVERY.deliveryInMKAD || this.checkoutState.shippingMethod == DELIVERY.deliveryOutMKAD)
+      && (!this.isCourierTariff(this.checkoutState.deliveryDate))
+    )
   }
 
-  //for address 
-  if (checkedShippingMethod == DELIVERY.localPickupId) {
-      if (addressFields) {addressFields.classList.add('d-none');}
-      if (additionalAddress) {additionalAddress.classList.add('d-none');}
-  } else {
-      if (addressFields) {addressFields.classList.remove('d-none');}
-      if (additionalAddress) {additionalAddress.classList.remove('d-none');}
-  }
-  
-  // for INN
-  if (innField) {
-      console.debug(document.querySelector('.wc_payment_methods input[name="payment_method"]:checked').value);
-      if(event && event.target.id == "payment_method_cheque") {
-          innField.classList.remove('d-none');
-      } else {
-          if(event.target.id == "payment_method_tbank" 
-              || event.target.id == "payment_method_cop"
-              || event.target.id == "payment_method_cod"
-              || document.querySelector('.wc_payment_methods input[name="payment_method"]:checked').value !== 'cheque'
-          ) 
-          {
-              innField.classList.add('d-none')
-              innField.value = ''
-          }
-      };
-  }        
-}
-
-function disableNotWorkingDays (shippingValue) {
-  if(!shippingValue) {shippingValue = getCheckedShippingMethod()}
-  if(notWorkingAllowPickup && shippingValue == DELIVERY.localPickupId) {
-    enableNotWorkingDays()
-  } else {
-    deliveryDatesInput.forEach(date => {
-      if (notWorking.includes(date.value)) {
-        date.disabled = true;
-        date.checked = false;
-      }
-    })
-  
-    deliveryDatesLables.forEach(date => {
-      if (notWorking.includes(date.textContent)) {
-        date.classList.add('d-none');
-      }
-    })
-  
-    const arr = Array.from(deliveryDatesInput);
-    const firstOk = arr.find(date => !notWorking.includes(date.value));
-    if (firstOk) {
-      firstOk.checked = true;
+  //STATE PARAMETRS - CORE LOGIC
+  getCheckoutParametrs = () => {
+    return {
+      'shippingMethod': this.getCheckedInputValue(this.shippingMethodsInputsElements),
+      'deliveryDate': this.getCheckedInputValue(this.deliveryDatesInputElements),
+      'deliveryInterval': this.getCheckedInputValue(this.deliveryIntervalInputElements),
+      'paymentMethod': this.getCheckedInputValue(this.paymentMethodsElements),
+      'isLocalPickup': this.getCheckedInputValue(this.shippingMethodsInputsElements) == DELIVERY.localPickupId
     }
+  }
+
+  getAjaxParametrs() {
+    let isUrgent = this.checkoutState.deliveryDate == this.today && this.isPaidDelivery()
+    let isLate = this.checkoutState.deliveryInterval == DELIVERY.deliveryExpensiveInterval && this.isPaidDelivery()
+    let isExpensive = this.isExpensiveDay(this.checkoutState.deliveryDate) && this.isPaidDelivery()
+
+    return {
+      'isUrgent': isUrgent,
+      'isLate': isLate,
+      'isExpensive': isExpensive,
+    }
+  }
+
+
+  //key events for state
+
+  unCheckFields(elements, isHidden) {
+    if (!isHidden) return;
+
+    let hasChanged = false;
+
+    elements.forEach((el) => {
+      if (el.checked) {
+        el.checked = false;
+        hasChanged = true;
+      }
+    });
+
+    if (hasChanged) {
+      this.setCheckoutState();
+    }
+  }
+
+  onFormChange = (evt) => {
+    this.setCheckoutState()
+  }
+
+  onFormSubmit = (evt) => {
+    event.preventDefault();
+
+    const formData = new FormData(this.rootElement);
+
+    const shippingMethod = formData.get('shipping_method[0]');
+    const deliveryDate = formData.get('delivery_dates');
+    const deliveryInterval = formData.get('additional_delivery_interval');
+
+    console.log({
+      shippingMethod,
+      deliveryDate,
+      deliveryInterval,
+    });
+  }
+
+  bindEvents() {
+    this.rootElement.addEventListener('change', this.onFormChange)
+    this.rootElement.addEventListener('submit', this.onFormSubmit)
+
+    jQuery(document.body).on('updated_checkout', this.initDom);
+  }
+
+  debug() {
 
   }
 }
 
-function enableNotWorkingDays() {
-  deliveryDatesLables.forEach(date => {
-    date.classList.remove('d-none');
-  })
-  deliveryDatesInput.forEach(date => {
-    date.disabled = false;
-  })
+class CheckoutCollection {
+   constructor() {
+    this.init()
+  }
+
+  init() {
+    document.querySelectorAll(rootSelector).forEach((element) => {
+      new Checkout(element)
+    })
+  }
 }
 
-if (checkoutForm) {
+new CheckoutCollection
 
-  setInitalState()
 
-  document.addEventListener('DOMContentLoaded', getDatesIntervalsInfo )
-
-  document.addEventListener('DOMContentLoaded', getOrderParametrs )
-
-  checkoutForm.addEventListener('change', getOrderParametrs);
-  
-}
