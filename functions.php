@@ -70,6 +70,9 @@ require get_template_directory() . '/includes/xml/create_xml_task.php';
 /** Add recaptcha*/
 // require get_template_directory() . '/includes/wc-recapthca.php';
 
+require get_template_directory() . '/includes/front/icons.php';
+require get_template_directory() . '/includes/front/template-functions.php';
+
 
 
 /** Add Woocommerce files */

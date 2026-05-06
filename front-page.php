@@ -8,7 +8,9 @@
 	<div class="main__wrap-colored-bg main__row">
 		<div class="container">
 			<div class="main__banners-wrap">
-				<?php get_template_part('template-parts/main-banners-gallery');?>
+        
+				<?php 
+        get_template_part('template-parts/main-banners-gallery');?>
 			</div>
 
 			<div class="main__catalog-buttons-wrap">

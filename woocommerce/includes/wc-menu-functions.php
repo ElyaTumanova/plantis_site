@@ -3,50 +3,112 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-//example, $cat_slug = 'treez-effectory', $words_to_remove - words to be removed from menu items
-function get_primary_submenu($cat_slug,$words_to_remove = [], $clean_cat_name=false) { 
-    $term = get_term_by( 'slug', $cat_slug, 'product_cat' );
-    $term_id = $term->term_id;
-    $args = array( 'taxonomy' => 'product_cat', 'parent' => $term_id );  
-    $terms = get_terms( $args ); 
-    $cat_name = $term->name;
+/* Хелперы */
 
-    if($words_to_remove && $clean_cat_name) {
-        foreach ($words_to_remove as $word) {
-            $cat_name = str_replace($word,'',$cat_name);
-        }
-    }
+function plnt_clean_menu_name( $name, $words_to_remove = [] ) {
+	if ( empty( $words_to_remove ) || ! is_array( $words_to_remove ) ) {
+		return trim( $name );
+	}
+
+	return trim( str_replace( $words_to_remove, '', $name ) );
+}
+
+function plnt_get_child_terms( $term, $taxonomy = 'product_cat', $hide_empty = false ) {
+  $parent_id = $term->term_id;
+	$terms = get_terms( [
+		'taxonomy'   => $taxonomy,
+		'parent'     => (int) $parent_id,
+		'hide_empty' => $hide_empty,
+	] );
+
+	if ( empty( $terms ) || is_wp_error( $terms ) ) {
+		return [];
+	}
+
+	return $terms;
+}
+
+function plnt_get_menu_link( $args) {
+  $args = wp_parse_args( $args, [
+    'slug' => null,
+    'taxonomy' => 'product_cat',
+    'classes' => 'cats-sub-menu__item-link cats-sub-menu__item-image',
+    'words_to_remove' => [],
+  ]);
+
+  if ( ! $args['slug'] ) {
+		return;
+	}
+
+  $term = get_term_by( 'slug', $args['slug'], $args['taxonomy'] );
+  if ( ! $term || is_wp_error( $term ) ) {
+		return;
+	}
+
+  $name = plnt_clean_menu_name($term->name, $args['words_to_remove']);
+  
+  $term_id = $term ->term_id;  
+	if ( ! $term_id ) {
+		return;
+	}
+
+	$url = get_term_link( $term_id, $args['taxonomy'] );
+
+	if ( is_wp_error( $url ) ) {
+		return;
+	}
+
+	?>
+
+	<a
+		class="<?php echo esc_attr( $args['classes'] ); ?>"
+		data-cat_id="<?php echo esc_attr( $term_id ); ?>"
+		href="<?php echo esc_url( $url ); ?>"
+	>
+		<?php echo esc_html( $name ); ?>
+	</a>
+
+	<?php
+}
+
+//example, $cat_slug = 'treez-effectory', $words_to_remove - words to be removed from menu items
+function get_primary_submenu($args) { 
+  // $cat_slug, $show_heading = true, $words_to_remove = [], $clean_cat_name=false
+  $args = wp_parse_args( $args, [
+    'slug' => null,
+    'taxonomy' => 'product_cat',
+    'show_heading' => true,
+    'words_to_remove' => [],
+  ]);
+
+  if(!$args['slug']) return;
+
+  $term = get_term_by( 'slug', $args['slug'], $args['taxonomy'] );    
+  $terms = plnt_get_child_terms($term, $args['taxonomy']); 
+  ?>
+  <div class="cats-sub-menu">
+    <?php 
+      if($args['show_heading']) {
+        $args_heading = $args;
+        $args_heading['classes'] = 'cats-sub-menu__heading cats-sub-menu__item-image';
+        plnt_get_menu_link($args_heading);
+      }
     ?>
-    
-    <a 
-        class ="header__main-submenu-item_accent header__main-submenu-item_arrow header__main-submenu-item_image" 
-        data-cat_id = <?php echo $term_id?> 
-        href="<?php echo get_term_link($term_id,'product_cat')?>">
-        <?php echo $cat_name?>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path d="M7 17L17 7M7 7h10v10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    </a>
-    <div class="header__main-submenu-item_row">
+    <ul class="cats-sub-menu__list">
         <?php
         foreach ($terms as $term) {
-            $name = $term ->name;
-            if($words_to_remove) {
-                foreach ($words_to_remove as $word) {
-                    $name = str_replace($word,'',$name);
-                }
-            }
-            ?>
-            <a 
-                class="header__main-submenu-item_image" 
-                data-cat_id = <?php echo $term->term_id?> 
-                href="<?php echo get_term_link($term->term_id,'product_cat')?>">
-                <?php echo $name?>
-            </a>
-            <?
+          $args_link = $args;
+          $args_link['slug'] = $term->slug;
+          ?>
+          <li class="cats-sub-menu__item">
+            <?php plnt_get_menu_link($args_link); ?>
+          </li>
+          <?
         }
         ?>
-    </div> <?php
+    </ul>
+  </div>
+  <?php
 }
 
 function get_catalog_submenu($cat_slug,$link_base,$levels=1, $cats_exclude=[], $words_to_remove=[], $clean_cat_name=false) { 
@@ -150,76 +212,126 @@ function plnt_get_menu_cats_image() {
     }
 }
 
-
 function get_az_palnts_submenu() {
-    global $plants_cat_id, $wpdb;
+	global $plants_cat_id, $wpdb;
 
-    $lowest_cats = get_lowest_level_product_categories($plants_cat_id);
+	$lowest_cats = get_lowest_level_product_categories( $plants_cat_id );
 
-    if (empty($lowest_cats)) {
-        return;
-    }
+	if ( empty( $lowest_cats ) ) {
+		return;
+	}
 
-    // получаем ID наших категорий
-    $cat_ids = wp_list_pluck($lowest_cats, 'term_id');
-    $cat_ids_placeholder = implode(',', array_fill(0, count($cat_ids), '%d'));
+	$cat_ids = wp_list_pluck( $lowest_cats, 'term_id' );
+	$cat_ids = array_map( 'intval', $cat_ids );
 
-    // Один SQL-запрос — получаем категории, где есть publish товары
-    $query = "
-        SELECT DISTINCT tr.term_taxonomy_id
-        FROM {$wpdb->term_relationships} tr
-        INNER JOIN {$wpdb->posts} p ON p.ID = tr.object_id
-        INNER JOIN {$wpdb->term_taxonomy} tt ON tt.term_taxonomy_id = tr.term_taxonomy_id
-        WHERE tt.taxonomy = 'product_cat'
-        AND tt.term_id IN ($cat_ids_placeholder)
-        AND p.post_type = 'product'
-        AND p.post_status = 'publish'
-    ";
+	if ( empty( $cat_ids ) ) {
+		return;
+	}
 
-    $prepared = $wpdb->prepare($query, $cat_ids);
-    $valid_term_taxonomy_ids = $wpdb->get_col($prepared);
+	$cat_ids_placeholder = implode( ',', array_fill( 0, count( $cat_ids ), '%d' ) );
 
-    if (empty($valid_term_taxonomy_ids)) {
-        return;
-    }
+	$query = "
+		SELECT DISTINCT tt.term_id
+		FROM {$wpdb->term_relationships} tr
+		INNER JOIN {$wpdb->posts} p ON p.ID = tr.object_id
+		INNER JOIN {$wpdb->term_taxonomy} tt ON tt.term_taxonomy_id = tr.term_taxonomy_id
+		WHERE tt.taxonomy = 'product_cat'
+		AND tt.term_id IN ($cat_ids_placeholder)
+		AND p.post_type = 'product'
+		AND p.post_status = 'publish'
+	";
 
-    // получаем term_id по найденным term_taxonomy_id
-    $valid_term_ids = $wpdb->get_col("
-        SELECT term_id 
-        FROM {$wpdb->term_taxonomy}
-        WHERE term_taxonomy_id IN (" . implode(',', array_map('intval', $valid_term_taxonomy_ids)) . ")
-    ");
+	$valid_term_ids = $wpdb->get_col(
+		$wpdb->prepare( $query, $cat_ids )
+	);
 
-    // фильтрация массива
-    $lowest_cats = array_filter($lowest_cats, function($cat) use ($valid_term_ids) {
-        return in_array($cat->term_id, $valid_term_ids);
-    });
+	if ( empty( $valid_term_ids ) ) {
+		return;
+	}
 
-    // сортировка
-    usort($lowest_cats, function($a, $b) {
-        return strcmp($a->name, $b->name);
-    });
+	$valid_term_ids = array_map( 'intval', $valid_term_ids );
 
-    $words_to_remove = [' (Цитрофортунелла)','овая пальма', ' (Кодиеум)', ' (Купрессус)', ' (Седум)', ' (Эриокактус)', ' (Буксус)', ' (Крестовник)', ' (Кентия)', ' Одри'];
+	$lowest_cats = array_filter( $lowest_cats, function( $cat ) use ( $valid_term_ids ) {
+		return in_array( (int) $cat->term_id, $valid_term_ids, true );
+	} );
 
-    foreach ($lowest_cats as $cat) {
-        $name = $cat->name;
+	if ( empty( $lowest_cats ) ) {
+		return;
+	}
 
-        foreach ($words_to_remove as $word) {
-            $name = str_replace($word, '', $name);
-            $name = str_replace('ковое дерево', 'а', $name);
-        }
-        ?>
-        <li class="header__main-submenu-item">
-            <a href="<?php echo esc_url(get_term_link($cat->term_id,'product_cat')); ?>">
-                <?php echo esc_html($name); ?>
-            </a>
-        </li>
-        <?php
-    }
+	$words_to_remove = [
+		' (Цитрофортунелла)',
+		'овая пальма',
+		' (Кодиеум)',
+		' (Купрессус)',
+		' (Седум)',
+		' (Эриокактус)',
+		' (Буксус)',
+		' (Крестовник)',
+		' (Кентия)',
+		' Одри',
+	];
+
+	$grouped_cats = [];
+
+	foreach ( $lowest_cats as $cat ) {
+		$name = plnt_clean_menu_name( $cat->name, $words_to_remove );
+		$name = str_replace( 'ковое дерево', 'а', $name );
+		$name = trim( $name );
+
+		if ( ! $name ) {
+			continue;
+		}
+
+		$url = get_term_link( $cat->term_id, 'product_cat' );
+
+		if ( is_wp_error( $url ) ) {
+			continue;
+		}
+
+		$letter = mb_substr( $name, 0, 1, 'UTF-8' );
+		$letter = mb_strtoupper( $letter, 'UTF-8' );
+
+		$grouped_cats[ $letter ][] = [
+			'name' => $name,
+			'url'  => $url,
+		];
+	}
+
+	if ( empty( $grouped_cats ) ) {
+		return;
+	}
+
+	ksort( $grouped_cats, SORT_LOCALE_STRING );
+  echo ('<div class="cats-sub-menu cats-sub-menu--az">');
+	foreach ( $grouped_cats as $letter => $cats ) {
+		usort( $cats, function( $a, $b ) {
+			return strcmp( $a['name'], $b['name'] );
+		} );
+		?>
+
+
+			<div class="cats-sub-menu__wrap">
+				<span class="cats-sub-menu__letter">
+					<?php echo esc_html( $letter ); ?>
+				</span>
+
+				<ul class="cats-sub-menu__list">
+					<?php foreach ( $cats as $cat ) : ?>
+						<li class="cats-sub-menu__item">
+							<a href="<?php echo esc_url( $cat['url'] ); ?>">
+								<?php echo esc_html( $cat['name'] ); ?>
+							</a>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		
+
+		<?php
+	}
+  echo ('</div>');
 }
-
-
 
 /**
  * Выводит меню с метками WooCommerce (product_tag)
@@ -227,32 +339,65 @@ function get_az_palnts_submenu() {
  * @param string $title   Заголовок списка (первый <li>)
  * @param array  $tags    Ассоциативный массив [ 'slug' => 'Название' ]
  */
-  function render_product_tag_menu( $title, $tags = [] ) {
-      if ( empty( $tags ) ) {
-          return;
-      }
+function plnt_render_product_tag_menu( $title, $tags = [] ) {
+    if ( empty( $tags ) ) {
+        return;
+    }
 
-      echo '<ul class="header__main-submenu_lvl1">';
-      echo '<li class="header__main-submenu-item header__main-submenu-item_accent">' . esc_html( $title ) . '</li>';
-
-      foreach ( $tags as $slug => $label ) {
-          $tag = get_term_by( 'slug', $slug, 'product_tag' );
-
-          if ( $tag && ! is_wp_error( $tag ) ) {
-              $url     = get_term_link( $tag, 'product_tag' );
-              $data_id = (int) $tag->term_id; // для меток используем term_id
-          } else {
-              // fallback если метка не найдена
-              $url     = trailingslashit( site_url( '/product-tag/' . $slug ) );
-              $data_id = '';
-          }
-
-          echo '<li class="header__main-submenu-item">';
-          echo '<a class="header__main-submenu-item_image" data-cat_id="' . esc_attr( $data_id ) . '" href="' . esc_url( $url ) . '">';
-          echo esc_html( $label );
-          echo '</a>';
-          echo '</li>';
-      }
-
+    echo '<div class="cats-sub-menu">';
+      echo '<span class="cats-sub-menu__heading">' . esc_html( $title ) . '</span>';
+      
+      echo '<ul class="cats-sub-menu__list">';
+        foreach ( $tags as $slug => $label ) {
+            echo '<li class="cats-sub-menu__item">';
+            plnt_get_menu_link([
+              'slug' => $slug,
+              'taxonomy' => 'product_tag',
+            ]); 
+            echo '</li>';
+        }
       echo '</ul>';
+    echo '</div>';
+}
+
+
+function plnt_render_colors_attr_menu() {
+	$colors = [
+		'belyj'        => 'Белый',
+		'chyornyj'     => 'Чёрный',
+		'bezhevyy'     => 'Бежевый',
+		'seryj'        => 'Серый',
+		'zolotoj'      => 'Золотой',
+		'serebro'      => 'Серебро',
+		'terrakotovyj' => 'Терракотовый',
+	];
+	?>
+
+	<ul class="cats-sub-menu__list">
+		<?php foreach ( $colors as $slug => $label ) : ?>
+			<li class="cats-sub-menu__item">
+				<a
+					class="cats-sub-menu__item-link"
+					href="<?php echo esc_url( site_url( '/attribute/color/' . $slug . '/' ) ); ?>"
+				>
+					<?php echo esc_html( $label ); ?>
+				</a>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+
+	<?php
+}
+
+function plnt_render_treez_plants_menu() {
+  global $plants_treez_cat_id;
+  $args = array( 'taxonomy' => 'product_cat', 'parent' => $plants_treez_cat_id );
+  $terms = get_terms( $args );
+  foreach($terms as $term) {
+    $words_to_remove = ['Treez','Искусственные', 'Искусственная', 'Искусственное', 'Искусственный','растения'];
+    get_primary_submenu([
+      'slug' => $term->slug, 
+      'words_to_remove' => $words_to_remove, 
+    ]);
+  }
 }

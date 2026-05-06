@@ -84,18 +84,22 @@ function plnt_empty_cart_message_filter( $message ){
 
 // вывод корзины в хедере и мини корзины
 function plnt_woocommerce_cart_header() {
-	$cart_icon = carbon_get_theme_option('cart_icon')?>
-			<?php if (WC()->cart->get_cart_contents_count() == 0) :?>
-				<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="header-btn__wrap header-cart__link">
-				<span class="header__count">
-			<?php else : ?>
-				<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="header-btn__wrap header-btn__wrap_active header-cart__link">
-				<span class="header__count header__count_active">
-			<?php endif;?>
-			<?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
-			<?php echo $cart_icon ?>
-			<span class="header-btn__label">Корзина</span>		
-		</a>
+	$count     = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
+	$is_active = $count > 0;
+	?>
+
+	<div class="header__actions header-cart">
+    <a
+      href="<?php echo esc_url( wc_get_cart_url() ); ?>"
+      class="header-cart__link<?php echo $is_active ? ' header__nav-actions-wrap_active' : ''; ?>"
+    >
+      <span class="header__actions-count<?php echo $is_active ? ' header__actions-count--active' : ''; ?>">
+        <?php echo esc_html( $count ); ?>
+      </span>
+      <?php echo plnt_icon( 'cart' ); ?>
+    </a>
+  </div>
+
 	<?php
 }
 
@@ -110,18 +114,18 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_header_f
 
 // вывод корзины в хедере для мобилки
 function plnt_woocommerce_cart_header_mob() {
-	$cart_icon = carbon_get_theme_option('cart_icon')?>
-			<?php if (WC()->cart->get_cart_contents_count() == 0) :?>
-				<div class="header-btn__wrap header-cart__mob">
-				<span class="header__count">
-			<?php else : ?>
-				<div class="header-btn__wrap header-btn__wrap_active header-cart__mob">
-				<span class="header__count header__count_active">
-			<?php endif;?>
-			<?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
-			<?php echo $cart_icon ?>
-			<span class="header-btn__label">Корзина</span>		
-			</div>
+	$count     = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
+	$is_active = $count > 0;
+	?>
+
+	<div class="header__actions header-cart__mob<?php echo $is_active ? ' header__nav-actions-wrap_active' : ''; ?>">
+		<span class="header__actions-count<?php echo $is_active ? ' header__actions-count--active' : ''; ?>">
+			<?php echo esc_html( $count ); ?>
+		</span>
+
+		<?php echo plnt_icon( 'cart' ); ?>
+	</div>
+
 	<?php
 }
 
@@ -156,9 +160,9 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_mini_cart_fra
 
 function plnt_side_cart_count () {
 	if (WC()->cart->get_cart_contents_count() == 0) :?>
-		<div class="header__count header__nav_cart">
+		<div class="header__actions-count header__nav_cart">
 	<?php else : ?>
-		<div class="header__count header__nav_cart header__count_active">
+		<div class="header__actions-count header__nav_cart header__actions-count--active">
 	<?php endif;?>
 			<span class="side-cart__count"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count())?></span>
 		</div>

@@ -199,8 +199,8 @@ class MenuMobPopup extends Popup {
     this.menu = this.popup.querySelector('.modal-mob')
     this.menuOpenBtn = this.popup.querySelector('.burger-menu__nav_menu')
     this.catalogOpenBtn = this.popup.querySelector('.burger-menu__nav_catalog')
-    this.menuWrap = this.popup.querySelector('.burger-menu__wrap')
-    this.catalowWrap = this.popup.querySelector('.catalog-menu__wrap')
+    this.menuWrap = this.popup.querySelector('.burger-menu__body-inner--menu')
+    this.catalowWrap = this.popup.querySelector('.burger-menu__body-inner--catalog')
     this.mobHeaderCatalogOpenBtn = document.querySelector('.header__catalog_mob')
     this.mobMenuLoginPopupOpenBtn = document.querySelector('.burger-menu__account')
     return true
@@ -220,18 +220,18 @@ class MenuMobPopup extends Popup {
   }
 
   openMenu() {
-    this.menuWrap.classList.add('burger-menu__wrap_open');
+    this.menuWrap.classList.add('is-open');
     this.menuOpenBtn.classList.add('burger-menu__nav-btn_active');
     
-    this.catalowWrap.classList.remove('catalog-menu__wrap_open');
+    this.catalowWrap.classList.remove('is-open');
     this.catalogOpenBtn.classList.remove('burger-menu__nav-btn_active');
   }
 
   openCatalog() {
-    this.menuWrap.classList.remove('burger-menu__wrap_open');
+    this.menuWrap.classList.remove('is-open');
     this.menuOpenBtn.classList.remove('burger-menu__nav-btn_active');
     
-    this.catalowWrap.classList.add('catalog-menu__wrap_open');
+    this.catalowWrap.classList.add('is-open');
     this.catalogOpenBtn.classList.add('burger-menu__nav-btn_active');
   }
 

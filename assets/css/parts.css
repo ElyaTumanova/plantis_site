@@ -1,0 +1,6 @@
+.social-media__buttons {
+  color: var(--accent-color);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}

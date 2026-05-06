@@ -362,7 +362,7 @@ const introDiv = document.querySelector('.test__intro');
 const genDiv = document.querySelector('.test__select-gen');
 const genBtn = document.querySelector('.test__select-gen-btn');
 const testTitle = document.querySelector('.test-page .entry-title'); 
-const testNavWrap = document.querySelector('.header__nav-wrap'); 
+const testNavWrap = document.querySelector('.header__nav'); 
 const testMainDiv = document.querySelector('.test'); 
 const testUpsellsDiv = document.querySelector('.test__result-upsells'); 
 let gen;

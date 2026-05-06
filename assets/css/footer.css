@@ -1,0 +1,219 @@
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+.footer {
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 30px 0;
+    margin-top: 30px;
+}
+
+.footer__nav {
+    display: flex;
+    justify-content: space-between;
+	flex-wrap: wrap;
+    row-gap: 30px;
+}
+
+.footer__menu-wrap {
+	min-width: 200px;
+}
+
+.footer__menu-list {
+    margin-left: 0; 
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__menu-palnts .menu-item, .footer__info-menu .menu__item {
+    color: #fff;
+    list-style-type: none;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 400;
+    padding-bottom: 10px;
+}
+
+.footer__heading, .footer__menu-services .menu-item, .footer__info-menu .menu__item_accent  {
+    list-style-type: none;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-bottom: 15px;
+    color: inherit;
+    margin: 0;
+    }
+  
+.footer__heading_link, .footer__menu-services .menu-item {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.footer__heading_link:hover, .footer__menu-services .menu-item:hover {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: underline;
+}
+
+.footer__info {
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: 30px;
+}
+
+.footer__info-copyright {
+  margin-right: 20px;
+}
+.footer__info-requsits {
+  margin: 10px 0;
+  font-size: 12px;
+}
+
+.footer__info-link {
+  color: inherit;
+  text-decoration: underline;
+  display: block;
+}
+
+.footer__info-link:hover {
+  text-decoration: none;
+}
+
+.footer__contacts-heading {
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-bottom: 15px;
+    color: inherit;
+    margin: 0;
+}
+
+.footer__contacts .contacts-part__wrap {
+    margin: 0;
+    display: block;
+}
+
+.footer__contacts .contacts-part__phones {
+    font-size: 22px;
+    line-height: 1;
+    font-weight: 300;
+    text-transform: uppercase;
+    padding-bottom: 25px;
+    text-decoration: none;
+    color: inherit;
+}
+
+@media (max-width: 1279px) {
+    .footer {
+        padding-bottom: 80px;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer__contacts {
+        order: -1;
+        width: 100%;
+    }
+    .footer {
+        padding-bottom: 130px;
+    }
+}
+
+/* search and search popup styles */
+
+.search__wrap {
+    position: absolute;
+    top: 46px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin-top: 0;
+    border-radius: 999px;
+
+    background: var(--background);
+    width: 800px;
+
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+    opacity .5s ease-in-out,
+    visibility 0s linear .5s,
+    transform .3s; 
+}
+
+.search__wrap.search_open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition:
+    opacity .5s ease-in-out,
+    visibility 0s,
+    transform .3s;
+}
+
+/* .fix-body .search__wrap {
+  left: calc(50% - var(--scrollWidth));
+  transform: translateX(calc(-50% + var(--scrollWidth)));
+} */
+
+@media((min-width: 1279px)) {
+  .search__wrap.scrollhidden {
+    transform: translateX(-50%) translateY(var(--marginTopOffset));
+  }
+}
+
+
+@media((max-width: 1279px)) {
+  .search__wrap {
+    position: fixed;
+    top: 10px;
+    opacity: 0;
+    visibility: visible;
+    z-index: -1;
+    width: calc(100% - 200px);
+    transition:
+    z-index .5s ease-in-out,
+    opacity .5s ease-in-out,
+    visibility 0s;
+  }
+  
+  .search__wrap.search_open {
+    z-index: 10000;
+  }
+}
+
+@media((max-width: 767px)) {
+  .search__wrap {
+    width: calc(100% - 125px);
+  }
+}
+
+/* .search-field {
+  width: 0;
+  padding: 5px 20px !important;
+  border-radius: 40px !important;
+  transition: width 0.5s ease-in-out;
+  box-sizing: border-box !important;
+}
+.search_open .search-field {
+  width: 100%;
+} */
+
+
+
+.footer__dev {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+
+

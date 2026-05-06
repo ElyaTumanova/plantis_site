@@ -1,7 +1,7 @@
 // переменные для управления попапом
 const searchOpenPopupBtn = document.querySelectorAll('.search-btn');
 const searchWrap = document.querySelector('.search__wrap');
-const headerButns = document.querySelector('.header__main .header__wrap');
+const headerButns = document.querySelector('.header__main .header__main-btns-wrap');
 const headerButnsMob = document.querySelector('.header__mob .search-btn');
 const searchResultPopup = document.querySelector('.search-result-popup');
 const searchResult = document.querySelector('.search-result');

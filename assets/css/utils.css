@@ -1,0 +1,69 @@
+.xml_button {
+  display: none;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.check {
+  background-color: red;
+}
+
+/* * {
+  outline: 1px solid red;
+} */
+
+.fix-body {
+  height: 100vh;
+  /* width: calc(100vw - var(--scrollWidth)); */
+  /* overflow-y: hidden; */
+  overflow: hidden;
+}
+
+.no-touch {
+  touch-action: none;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+.clear-button,
+.clear-button button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+}
+
+/* custom-scroll */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(240, 244, 243, 1);
+  width: 2px;
+  border-radius: 2px;
+  margin-right: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--black-color);
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+
+/*  */

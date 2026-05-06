@@ -52,20 +52,7 @@ $close_icon = carbon_get_theme_option('close_icon');
 </div><!-- #page -->
 
 <?php //get_template_part('template-parts/popups/search-popup');?>
-<div class="burger-menu"> 
-    <div class="modal-mob">
-        <div class="modal-mob__close popup__close button"><?php echo $close_icon ?></div>
-        <div class="burger-menu__nav container">
-            <div class="burger-menu__nav-btn burger-menu__nav_menu">Меню</div>
-            <div class="burger-menu__nav-btn burger-menu__nav_catalog">Каталог</div>
-        </div>
-        <?php get_template_part('template-parts/burger-menu-mob');?>
-        <div class="catalog-menu__wrap">
-            <?php get_template_part('template-parts/catalog-menu');?>
-        </div>
-    </div>
-    <div class="popup-overlay"></div>
-</div>
+<?php get_template_part('template-parts/menu/burger-menu-mobile');?>
 
 <?php 
 if (!is_account_page()) {

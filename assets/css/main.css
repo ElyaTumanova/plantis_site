@@ -93,7 +93,7 @@
     max-width: 250px;
 }
 
-.social-media__buttons {
+/* .social-media__buttons {
     display: flex;
     column-gap: 30px;
     border-radius: 100%;
@@ -106,7 +106,6 @@
     border-radius: 100%;
     border: none;
     overflow: hidden;
-    /* padding: 0; */
 }
 
 .social-media__button-telegram {
@@ -135,7 +134,7 @@
     width: 30px;
     fill: white;
     margin: auto; 
-}
+} */
 
 /* .social-media__button-telegram .social-media__button-icon path {
     stroke: var(--gray-text);
