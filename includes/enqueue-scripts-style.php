@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /*  Style Config */
 function plnt_get_style_files() {
 	return array(
+		'swiper',
     'vars',
     'normalize',
     'utils',
@@ -13,9 +14,9 @@ function plnt_get_style_files() {
     'parts',
     'buttons',
     'search',
-		'swiper',
 		'general',
-		'main',
+    'front',
+		// 'main',
 		'header',
     'footer',
     'catalog-dropdown',
@@ -23,6 +24,8 @@ function plnt_get_style_files() {
 		// 'menu',
 		'card',
 		'catalog',
+    'filters',
+    'product',
 		'cart',
 		'checkout',
 		'pages',
@@ -47,6 +50,17 @@ function plnt_get_script_files() {
 			'handle' => 'helpers',
 			'file'   => 'helpers',
 			'deps'   => array(),
+		),
+    array(
+			'handle' => 'swiper',
+			'file'   => 'swiper',
+			'deps'   => array( 'jquery' ),
+			'ver'    => null,
+		),
+    array(
+			'handle' => 'slider-init',
+			'file'   => 'slider-init',
+			'deps'   => array( 'jquery', 'swiper' ),
 		),
 		array(
 			'handle' => 'catalog-dropdown',
@@ -84,11 +98,6 @@ function plnt_get_script_files() {
 			'deps'   => array( 'jquery' ),
 		),
 		array(
-			'handle' => 'slider-init',
-			'file'   => 'slider-init',
-			'deps'   => array( 'jquery', 'swiper' ),
-		),
-		array(
 			'handle' => 'main-cats-sliders',
 			'file'   => 'main-cats-sliders',
 			'deps'   => array( 'jquery' ),
@@ -107,12 +116,6 @@ function plnt_get_script_files() {
 			'handle' => 'page-popup',
 			'file'   => 'popup',
 			'deps'   => array( 'jquery' ),
-		),
-		array(
-			'handle' => 'swiper',
-			'file'   => 'swiper',
-			'deps'   => array( 'jquery' ),
-			'ver'    => null,
 		),
 		array(
 			'handle' => 'account',

@@ -37,6 +37,9 @@ add_action( 'wp_footer', 'plnt_check_site' );
 	$plants_treez_cat_id = 17; //ok
 	$lechuza_cat_id = 265; //ok
 	$uncategorized_cat_id = 466; //ok
+
+  $pet_tag_id = 332;
+  $neprihotliv_tag_id = 334;
 	
 	$tags_podarki = array(
         420,

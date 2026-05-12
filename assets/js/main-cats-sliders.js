@@ -1,16 +1,16 @@
-let navItems = document.querySelectorAll('.main__cats-nav-title');
+let navItems = document.querySelectorAll('.cats-nav__title');
 let catsTerm;
 let taxonomyType;
 
 function showSlider(sliderNmber) {
     navItems.forEach((el,index) => {
         if(index === sliderNmber) {
-            el.classList.add('main__cats-nav-title_active');
+            el.classList.add('cats-nav__title--active');
             catsTerm = el.dataset.term;
             taxonomyType = el.dataset.type;
             ajaxGetMainCatTerm();
         } else {
-            el.classList.remove('main__cats-nav-title_active');
+            el.classList.remove('cats-nav__title--active');
         }
     });
     // console.log('catsTerm ',catsTerm);
@@ -19,36 +19,41 @@ function showSlider(sliderNmber) {
 }
 
 function ajaxGetMainCatTerm() {
-    jQuery( function($){
-        // console.log('ajaxGetMainCatTerm init');
-        // console.log('catsTerm ajax',catsTerm);
-        // console.log('taxonomyType ajax',taxonomyType);
-        $.ajax({
-            type: 'POST',
-            url: woocommerce_params.ajax_url,
-            data: {
-                'action': 'get_main_cats_term',
-                'term': catsTerm,
-                'type': taxonomyType,
-            },
-            dataType: 'json',
-            beforeSend: function(xhr){
-            },
-            success: function (data) {
-                // console.log('ajaxGetMainCatTerm success');
-                $('.main__cats-slider').html(data.out);
-                // console.log(data.main_timing);
-                let slider = document.querySelectorAll(".product-slider-swiper .product");
-                slider.forEach((slide) => {
-                    slide.classList.add('swiper-slide');
-                });
-                swiper_product_slider_init();
-            }
-        });
+  jQuery(function ($) {
+    $.ajax({
+      type: 'POST',
+      url: woocommerce_params.ajax_url,
+      data: {
+          action: 'get_main_cats_term',
+          term: catsTerm,
+          type: taxonomyType,
+      },
+      dataType: 'json',
+
+      success: function (response) {
+        if (!response.success) {
+            return;
+        }
+
+        const oldSlider = document.querySelector('.front__popular .product-slider-swiper');
+
+        if (oldSlider && productSliders) {
+          productSliders.remove(oldSlider);
+        }
+
+        $('.front__popular .product-slider-wrap').replaceWith(response.data.out);
+        $('.front__popular .front__products-all').replaceWith(response.data.out_link);
+
+        const newSlider = document.querySelector('.front__popular .product-slider-swiper');
+
+        if (newSlider && productSliders) {
+          productSliders.add(newSlider);
+        }
+      },
     });
+  });
 }
-//document.addEventListener('DOMContentLoaded',()=>{showSlider(0)});
-document.addEventListener('DOMContentLoaded', () => swiper_product_slider_init());
+
 
 navItems.forEach((el,index) => {
     el.addEventListener('click',() => showSlider(index));

@@ -374,7 +374,7 @@
     border: 1px solid #ccc;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .woocommerce-billing-fields__field-wrapper input {
         margin-bottom: 15px;
         padding: 14px 14px;
@@ -413,7 +413,7 @@
     margin-right: 30px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     #billing_phone_field, #billing_email_field {
         width: 100%;
     }
@@ -439,7 +439,7 @@
     border-radius: 25px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .woocommerce-additional-fields__field-wrapper textarea {
         padding: 14px 14px;
     } 
@@ -522,7 +522,7 @@
     /* margin-bottom: 30px; */
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .woocommerce-additional-fields__field-wrapper {
         row-gap: 15px;
     }

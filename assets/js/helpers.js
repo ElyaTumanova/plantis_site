@@ -71,6 +71,7 @@ class ElementHeight {
 }
 
 new ElementHeight ('.header__main-top', '--headerMainTopHeight')
+new ElementHeight ('.header__nav', '--headerNavHeight')
 
 class ElementWidth {
   constructor (selector, propertyName) {

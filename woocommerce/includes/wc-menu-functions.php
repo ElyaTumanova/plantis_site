@@ -318,7 +318,7 @@ function get_az_palnts_submenu() {
 
 				<ul class="cats-sub-menu__list">
 					<?php foreach ( $cats as $cat ) : ?>
-						<li class="cats-sub-menu__item">
+						<li class="cats-sub-menu__item-link">
 							<a href="<?php echo esc_url( $cat['url'] ); ?>">
 								<?php echo esc_html( $cat['name'] ); ?>
 							</a>

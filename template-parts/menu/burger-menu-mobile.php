@@ -51,9 +51,6 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php get_template_part('template-parts/menu/catalog-menu');?>
       </div>
     </div>
-    <div class="catalog-menu__wrap d-none">
-      <?php get_template_part('template-parts/catalog-menu');?>
-    </div>
   </div>
   <div class="burger-menu__overlay popup-overlay"></div>
 </div>

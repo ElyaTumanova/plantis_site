@@ -12,19 +12,19 @@ if ( ! defined( 'ABSPATH' ) ) {
       </a>
     </li>
 
-    <li class="cats-menu__item">
+    <li class="menu__item">
       <a href="<?php echo esc_url( site_url( '/product-category/gorshki_i_kashpo/' ) ); ?>">
           Горшки и кашпо
       </a>
     </li>
 
-    <li class="cats-menu__item">
+    <li class="menu__item">
       <a href="<?php echo esc_url( site_url( '/product-category/iskusstvennye-rasteniya-treez/' ) ); ?>">
           Искусственные растения Treez
       </a>
     </li>
 
-    <li class="cats-menu__item">
+    <li class="menu__item">
       <a href="<?php echo esc_url( site_url( '/product-category/ukhod/' ) ); ?>">
           Все для ухода
       </a>

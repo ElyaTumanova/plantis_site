@@ -13,7 +13,7 @@ function plnt_account_button($classes = '') {
 
     if ( $is_logged_in ) {
         $href = home_url( '/my-account/orders' );
-        $classes .= '';
+        $classes .= ' logged-in';
     } elseif ( $is_account ) {
         $href = home_url( '/my-account' );
     } else {
@@ -79,7 +79,7 @@ function plnt_adress_link() {
 
 function plnt_phones_link() {
   ?>
-  <a href="tel:+78002015790">8 800 201 57 90</a> • <a href="tel:+79995527944">8 999 552-79-44</a>
+  <a href="tel:+78002015790">8 800 201 57 90</a> <span>•</span> <a href="tel:+79995527944">8 999 552-79-44</a>
   <?php
 }
 

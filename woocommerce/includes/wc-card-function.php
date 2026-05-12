@@ -289,7 +289,7 @@ function plnt_price_wrap() {
   };
 
 function plnt_buy_one_click_btn() {
-?> <button class="card__one-click-btn page-popup-open-btn button">Купить в один клик</button> <?php
+?> <button class="card__one-click-btn button--white page-popup-open-btn button">Купить в<span>1</span>клик</button> <?php
 }
 // peresadka
 function plnt_get_peresadka_add_to_cart() {

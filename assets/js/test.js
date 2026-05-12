@@ -336,14 +336,26 @@ function ajaxGetUpsells(catSlug) {
     })
     .then(result => {
         console.debug('✅ AJAX success:');
+        const oldSlider = document.querySelector('.test__result-upsells .product-slider-swiper');
+        if (oldSlider && productSliders) {
+          productSliders.remove(oldSlider);
+        }
         testUpsellsDiv.innerHTML = result.test_upsells;
+
+        const newSlider = document.querySelector('.test__result-upsells .product-slider-swiper');
+
+        if (newSlider && productSliders) {
+          productSliders.add(newSlider);
+        }
+
     })
     .catch(error => {
         console.error('❌ AJAX error:', error);
     })
     .finally(() => {
         console.debug('⚙️ AJAX complete');
-        swiper_product_slider_init();
+        
+        
     });
 }
 

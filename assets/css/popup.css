@@ -233,7 +233,7 @@
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .page-popup__container {
         top: 0;
         padding: 25px 15px;
@@ -260,7 +260,7 @@
     right: 30px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .page-popup__close {
         top: 0;
         right: 0;
@@ -276,7 +276,7 @@
     margin-top: 30px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .page-popup__form {
         /* margin: 20px 0; */
         margin-top: 20px;
@@ -396,7 +396,7 @@
   font-size: 22px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .login__close {
         top: 80px;
         right: 15px;

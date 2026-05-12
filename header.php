@@ -2,7 +2,7 @@
 <html <?php language_attributes(); ?> itemscope itemtype="https://schema.org/Store">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <!-- Schema.org -->
     <meta itemprop="image" content="<?php echo carbon_get_theme_option('logo') ?>">
     <meta itemprop="name" content="Интернет-магазин комнатных растений в Москве - Plantis">
@@ -56,5 +56,5 @@
 <div id="page" class="site">
 
 <?php
-    get_template_part( 'template-parts/heading' );
+    get_template_part( 'template-parts/header/heading' );
 ?>

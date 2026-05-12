@@ -30,7 +30,7 @@
     min-height: 550px;
 }
 
-@media(max-width: 767px) {
+@media(max-width: 768px) {
  .test {
     row-gap: 10px;
     margin-top: 0;
@@ -59,7 +59,7 @@
     /* min-height: 94px; */
 }
 
-@media(max-width: 767px) {
+@media(max-width: 768px) {
  .test__question {
     text-align: center;
     font-size: 16px;
@@ -83,7 +83,7 @@
     /* width: 100%; */
 }
 
-@media(max-width: 767px) {
+@media(max-width: 768px) {
  .test__image {
     display: none;
  }
@@ -97,7 +97,7 @@
     margin-bottom: 30px;
 }
 
-@media(max-width: 767px) {
+@media(max-width: 768px) {
  .test__answers {
     grid-template-columns: auto;
     row-gap: 15px;
@@ -125,7 +125,7 @@
     background-color: var(--white);
 }
 
-@media(max-width: 767px) {
+@media(max-width: 768px) {
  .test__answer {
     font-size: 16px;
     min-height: 52px;
@@ -160,7 +160,7 @@
   text-decoration: line-through;
 }
 
-@media(max-width: 767px) {
+@media(max-width: 768px) {
     .test__answers label {
         padding: 10px 20px;
     }
@@ -187,7 +187,7 @@
     }
 }
 
-@media(max-width: 767px) {
+@media(max-width: 768px) {
     .test__button {
         margin-top: auto;
         z-index: 2;
@@ -207,7 +207,7 @@
     text-align: center;
 }
 
-@media(max-width: 767px) {
+@media(max-width: 768px) {
  .test__error {
     bottom: -18px;
     text-align: center;
@@ -310,7 +310,7 @@
     text-align: center;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .test__disclaimer-text_mob {
         display: block;
         margin-top: 0;
@@ -337,7 +337,7 @@
     margin-top: 50px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .test__select-gen {
         width: 100%;
         min-height: calc(100dvh - 220px);
@@ -349,7 +349,7 @@
     column-gap: 50px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .test__select-gen-wrap {
         width: 100%;
         column-gap: 10px;
@@ -433,7 +433,7 @@
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .test__select-gen-btn {
       margin-top: auto;
   }
@@ -472,7 +472,7 @@
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .test__result {
         display: flex;
         flex-direction: column;
@@ -516,7 +516,7 @@
   margin: 0;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .test__result-image {
         max-width: 750px;
     }

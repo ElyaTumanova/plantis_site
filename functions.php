@@ -77,6 +77,7 @@ require get_template_directory() . '/includes/front/template-functions.php';
 
 /** Add Woocommerce files */
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	require get_template_directory() . '/woocommerce/includes/wc-bootstrap.php';
 	require get_template_directory() . '/woocommerce/includes/wc-helpers-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-menu-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-cart-functions.php';

@@ -156,7 +156,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       </div>
     </nav>
   </div>
-  <div class="catalog-dropdown__image">
+  <div class="catalog-dropdown__image darken">
     <img class = "cats-sub-menu__img"
     src="https://plantis-shop.ru/wp-content/uploads/2026/03/fikus-lirata-kolumnaris-na-shtambe-21-95-1-300x300.webp" 
     alt=""

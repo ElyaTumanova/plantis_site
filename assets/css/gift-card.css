@@ -272,7 +272,7 @@ Contents
   margin-bottom: 10px;
   margin-top: 70px;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .gift-card__title {
         font-size: 24px;
     }
@@ -309,7 +309,7 @@ Contents
   padding: 22px;
 }
 
-@media (max-width: 767px){
+@media (max-width: 768px){
   .gift-card__wrap {
     padding: 14px;
   }
@@ -369,7 +369,7 @@ Contents
   font-size: 30px;
 }
 
-@media (max-width: 767px){
+@media (max-width: 768px){
   .gift-image-amount{
       padding: 8px 15px;
       font-size: 25px;
@@ -431,7 +431,7 @@ Contents
   border-radius: 14px;
   padding: 22px;
 }
-@media (max-width: 767px){
+@media (max-width: 768px){
   .gift-card__greeting {
       padding: 20px 14px;
   }
@@ -471,7 +471,7 @@ Contents
   display: inline-flex;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .gift-card__example-btn {
         margin-top: 20px;
     }
@@ -483,7 +483,7 @@ Contents
   align-items:center;
   gap:10px;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .copy-wrap {
         justify-content: space-between;
         width: 100%;

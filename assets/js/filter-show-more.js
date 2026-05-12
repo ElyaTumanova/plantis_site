@@ -66,7 +66,7 @@ if(diametrFilter) {
 function setSearchFilterField() {
     const filterHeader = document.querySelector('.filter_plant_name .bapf_head');
     const filterBody = document.querySelector('.filter_plant_name .bapf_body');
-    const searchInput = document.querySelector('.berocket-search-checkbox');
+    const searchInput = document.querySelector('.berocket-search-input');
     const checkboxes = document.querySelectorAll('.filter_plant_name li');
 
     if (searchInput && checkboxes.length) {

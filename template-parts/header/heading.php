@@ -3,14 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 $close_icon = carbon_get_theme_option('close_icon');
-$search_icon = carbon_get_theme_option('search_icon');
 $logo = carbon_get_theme_option('logo');
-$site_title = carbon_get_theme_option('site_title');
-$account_icon = carbon_get_theme_option('account_icon');
-$account_logged_icon = carbon_get_theme_option('account_logged_icon');
-$menu_icon_mob = carbon_get_theme_option('menu_icon_mob');
-$phone_icon = carbon_get_theme_option('phone_icon');
-$catalog_icon = carbon_get_theme_option('catalog_icon');
 ?>
 
 <header id="header" class="header">
@@ -30,7 +23,7 @@ $catalog_icon = carbon_get_theme_option('catalog_icon');
       </div>
     </div>
     <div class="header__notice-wrap">
-      <?php get_template_part( 'template-parts/header-notice' );?>
+      <?php get_template_part( 'template-parts/header/header-notice' );?>
     </div>
 
     <div class="header__main">
@@ -109,7 +102,7 @@ $catalog_icon = carbon_get_theme_option('catalog_icon');
       </span>
     </button>
   <div class="header__notice-wrap_mob">
-    <?php get_template_part( 'template-parts/header-notice' );?>
+    <?php get_template_part( 'template-parts/header/header-notice' );?>
   </div>
   <div class="search__wrap">
     <?get_search_form();?>
@@ -149,14 +142,6 @@ $catalog_icon = carbon_get_theme_option('catalog_icon');
         <span class="header__nav-actions-label">Позвонить</span>	
       </a>
     </div>
-
-
   </div>
-
-  <?php if ( is_front_page()) : ?>
-    <h1 class="visually-hidden"><?php echo $site_title ?></h1>
-  <?php else : ?>
-    <span class="visually-hidden"><?php echo $site_title ?></span>
-  <?php endif; ?>
 </header><!-- #header -->
 	

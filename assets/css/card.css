@@ -33,7 +33,7 @@
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 
     /* #adaptive for grid*/
 
@@ -179,7 +179,7 @@
     grid-area: banner1 / banner1 / banner2 / banner2;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     #card_banner_treez {
         grid-area: banner1;
     }
@@ -264,9 +264,9 @@
     height: 0;
 }
 
-.card__image-wrap .sale_badge {
+/* .card__image-wrap .sale_badge {
     font-size: 16px;
-}
+} */
 
 .woocommerce-product-gallery {
     position: relative;
@@ -290,7 +290,7 @@
     color: var(--text);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .product_title {
         font-size: 24px;
     }
@@ -380,42 +380,6 @@
 
 /*статус наличия товара*/
 
-.card__stockstatus { 
-    font-size: 15px;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    position: absolute;
-    top: 10px;
-    left: 13px;
-    z-index: 2;
-    padding: 5px 7px;
-    border-radius: 13px;
-    color: var(--white);
-    min-width: 96px;
-}
-
-@media (max-width:767px) {
-    .card__stockstatus {
-        padding: 3px 5px;
-        min-width: 103px;
-    }
-}
-.card__stockstatus_in {
-    background-color: var(--stock-color);
-}
-
-
-.card__stockstatus_backorder {
-    background-color: var(--stock-backorder);
-}
-
-
-
-.card__stockstatus_out {
-    background-color: var(--red-color);
-}
-
 .card__image-wrap .card__stockstatus {
     font-size: 17px;
     min-width: 107px;
@@ -480,18 +444,10 @@
     /* margin: 0 14px; */
 }
 
-.card__one-click-btn {
-    margin-top: 10px;
-    width: 100%;
-    background-color: transparent;
-    border: solid 2px var(--accent-color);
-    color: var(--accent-color);
-    font-weight: 600;
-    padding: 11px 10px 9px;
-}
+
 
 @media(max-width:767px) {
-    .card__one-click-btn {
+    .card__grid .card__one-click-btn {
         display: none;
     }
 }
@@ -537,13 +493,13 @@
     transition: bottom 2s, opacity 0s;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .card_banner .backorder-info {
         display: none;
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .card__price-wrap .backorder-info {
         top: 200%;
         bottom: auto;
@@ -573,7 +529,7 @@
     grid-area: cart;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 
     .card__grid .add-to-cart-wrap .button {
         font-size: 0;
@@ -719,7 +675,7 @@ input[type="number"] {
     line-height: 1.4;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .card__outofstock-btn-wrap {
         grid-template-columns: 55px auto;
         grid-template-rows: 52px;
@@ -869,7 +825,7 @@ input[type="number"] {
 --------------------------------------------------------------*/
 
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 
     .card__grid .card__price-wrap {
         grid-area: tohide;

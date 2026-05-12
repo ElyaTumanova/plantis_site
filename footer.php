@@ -7,28 +7,12 @@ $start_footer_file = microtime(true);
 $close_icon = carbon_get_theme_option('close_icon');
 ?>
 
-<footer id="footer" class="footer" role="contentinfo">
+<footer id="footer">
+   <?php get_template_part('template-parts/footer/footer-part');?>
 <?php //$start = microtime(true); ?>
-<div class="footer__nav container">
-    <?php get_template_part('template-parts/menu-footer');?>
-</div>
+
 <?php //echo "<!-- Timing: footer nav = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
 
-<div class="footer__info container">
-    <span class="footer__info-copyright">© 2021 - 2025 Plantis | Комнатные растения и аксессуары с доставкой. Тел. <a href="tel:+78002015790">8 800 201 57 90</a></span>
-    <a href="<?php echo site_url()?>/privacy-policy/" class="footer__info-link" role="button">
-        Политика конфиденциальности
-    </a>
-    <p class="footer__info-requsits">Туманов Вячеслав Витальевич
-        <br>ИНН: 645313252670 ОГРН: 321774600774479 
-        <br>Юридический адрес: 105082, Москва, Б. Почтовая, д. 1/33, стр.1
-        <br>Расчетный счёт: 40802810900002894566 Банк: АО “ТИНЬКОФФ БАНК” БИК: 044525974 Корр. счёт: 30101810145250000974
-    </p>
-</div>
-<a class="footer__dev container" href="https://misty-studio.ru" target="_blank" rel="noopener nofollow">
-  <img src="<?php echo get_template_directory_uri()?>/images/misty-logo.svg" alt="Разработано в Misty studio" width="20" height="20">
-  <span>Разработано в MISTY studio</span>
-</a>
 
 <div class="side-cart__wrap">
     <?php $cart_icon = carbon_get_theme_option('cart_icon')?>

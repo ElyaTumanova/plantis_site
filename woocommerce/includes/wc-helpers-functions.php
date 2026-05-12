@@ -174,7 +174,7 @@ function plnt_check_stock_status() {
     // 1) Есть товар в наличии
     if ($product->get_stock_status() === 'instock') {
         ?>
-        <div class="card__stockstatus card__stockstatus_in">Доставка от 2-х часов</div>
+        <div class="card__stockstatus card__stockstatus_in">Доставка от 2 часов</div>
         <?php
         return;
     }
@@ -186,7 +186,7 @@ function plnt_check_stock_status() {
 
     // 3) Все остальные случаи — "Под заказ"
     ?>
-    <div class="card__stockstatus card__stockstatus_out">Под заказ</div>
+    <div class="card__stockstatus card__stockstatus_out icon icon--pre icon--plane">Под заказ</div>
     <?php
 }
 
@@ -395,7 +395,7 @@ function get_backorder_info_snippet($_product, $qty) {
                     <?php
                 }
             } else {
-                ?><p class="backorder_date-info">Доставка от 2-х часов</p>
+                ?><p class="backorder_date-info">Доставка от 2 часов</p>
                 <?php
             }
         }

@@ -1,79 +1,134 @@
-/*--------------------------------------------------------------
-# Front Page
---------------------------------------------------------------*/
-    const swiper_main_banners = new Swiper('.main__banners-swiper', {
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        slidesPerView: 1,
-        slidesPerGroup: 1,
-        spaceBetween: 0,
-        loop: true,
-        breakpoints: {
-            320: {
-                navigation: {
-                    enabled: false,
-                },
-            },
-            767: {
-                navigation: {
-                    enabled: true,
-                },
-            }
-        }
-    });
+/* Front Page*/
+  const swiper_main_banners = new Swiper('.hero-banner-swiper', {
+      pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+      },
+      navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+      },
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+      spaceBetween: 0,
+      loop: true,
+      breakpoints: {
+          320: {
+              navigation: {
+                  enabled: false,
+              },
+          },
+          767: {
+              navigation: {
+                  enabled: true,
+              },
+          }
+      }
+  });
 
-    const swiper_main_sale = new Swiper('.main__sale-swiper', {
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-            type: 'progressbar'
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        slidesPerView: 1,
-        slidesPerGroup: 1,
-        spaceBetween: 0,
-        loop: true,
-        freeMode: true,
-        observer: true,
-        observeParents: true,
-        observeSlideChildren: true,
-        breakpoints: {
-            320: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-                navigation: {
-                    enabled: false,
-                },
-            },
-            767: {
-                navigation: {
-                    enabled: true,
-                },
-                slidesPerView: 2,
-            },
-            1125: {
-                navigation: {
-                    enabled: true,
-                },
-                slidesPerView: 3,
-            },
-            1279: {
-                navigation: {
-                    enabled: true,
-                },
-                slidesPerView: 1,
-            }
-        }
-    });
+  const swiper_main_sale = new Swiper('.main__sale-swiper', {
+      pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          type: 'progressbar'
+      },
+      navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+      },
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+      spaceBetween: 0,
+      loop: true,
+      freeMode: true,
+      observer: true,
+      observeParents: true,
+      observeSlideChildren: true,
+      breakpoints: {
+          320: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+              navigation: {
+                  enabled: false,
+              },
+          },
+          767: {
+              navigation: {
+                  enabled: true,
+              },
+              slidesPerView: 2,
+          },
+          1125: {
+              navigation: {
+                  enabled: true,
+              },
+              slidesPerView: 3,
+          },
+          1279: {
+              navigation: {
+                  enabled: true,
+              },
+              slidesPerView: 1,
+          }
+      }
+  });
+
+  /* Cats tiles */
+  const swiper_cats_tiles = new Swiper('.cats-tiles.swiper', {
+    slidesPerView: 2.3,
+    spaceBetween: 8,
+
+    navigation: {
+      prevEl: '.cats-tiles .swiper-button-prev',
+      nextEl: '.cats-tiles .swiper-button-next',
+    },
+
+    scrollbar: {
+      el: '.cats-tiles .swiper-scrollbar',
+      draggable: true,
+    },
+
+    breakpoints: {
+      768: {
+        slidesPerView: 3.5,
+        spaceBetween: 12,
+      },
+      1024: {
+        slidesPerView: 6,
+        spaceBetween: 12,
+      },
+    },
+  })
+
+  const swiper_cats_assort = new Swiper('.front__assort.swiper', {
+    slidesPerView: 1.6,
+    spaceBetween: 8,
+
+    navigation: {
+      prevEl: '.front__assort .swiper-button-prev',
+      nextEl: '.front__assort .swiper-button-next',
+    },
+
+    scrollbar: {
+      el: '.front__assort .swiper-scrollbar',
+      draggable: true,
+    },
+
+    breakpoints: {
+      768: {
+        slidesPerView: 2.5,
+        spaceBetween: 12,
+      },
+      900: {
+        slidesPerView: 3,
+        spaceBetween: 12,
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 12,
+      },
+    },
+  })
 
 /*--------------------------------------------------------------
 # Catalog
@@ -82,7 +137,7 @@
 // слайдер инициирован в wc-catalog-functions, чтобы повторно инициироваться при аякс обновлении каталога при приминении фильтров
 
 function swiper_catalog_card_imgs_init () {
-  //console.log('hi swiper_catalog_card_imgs_init');
+  console.log('hi swiper_catalog_card_imgs_init');
 
   document.querySelectorAll('.product__image-slider-wrap').forEach((wrap) => {
     // ✅ если уже инициализировано — просто обновим и выйдем
@@ -116,7 +171,8 @@ function swiper_catalog_card_imgs_init () {
 
     const sw = new Swiper(wrap, {
       pagination: paginationEl ? { el: paginationEl, clickable: true } : undefined,
-      navigation: (nextEl && prevEl) ? { nextEl, prevEl, enabled: slidesCount > 1 } : undefined,
+      // navigation: (nextEl && prevEl) ? { nextEl, prevEl, enabled: slidesCount > 1 } : undefined,
+    
 
       grabCursor: true,
       slidesPerView: 1,
@@ -223,66 +279,136 @@ function swiper_catalog_card_imgs_init () {
 /*--------------------------------------------------------------
 # Products slider
 --------------------------------------------------------------*/
-    let swiper_product_slider;
-    function swiper_product_slider_init() {
-    swiper_product_slider = new Swiper('.product-slider-swiper', {
-        // on: {
-        //     init: function () {
-        //       console.log('swiper initialized');
-        //     },
-        //     slidesUpdated: function () {
-        //       console.log('slidesUpdated');
-        //     },
-        //     update: function () {
-        //       console.log('swiperUpdated');
-        //     },
-        // },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-            type: 'progressbar'
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        // scrollbar: {
-        //     el: '.swiper-scrollbar',
-        //     draggable: true,
-        // },
-        slidesPerView: 5,
-        slidesPerGroup: 1,
-        spaceBetween: 30,
-        loop: true,
-        freeMode: true,
-        breakpoints: {
-            320: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-                navigation: {
-                    enabled: false,
-                },
-                freeMode: true,
-            },
-            768: {
-                slidesPerView: 4,
-                spaceBetween: 20,
-                navigation: {
-                    enabled: true,
-                },
-            },
-            1024: {
-                slidesPerView: 5,
-                spaceBetween: 30,
-                navigation: {
-                    enabled: true,
-                },
-            }
-        }
-    });
+class ProductSlider {
+  constructor(element) {
+    if (!element) {
+      return;
     }
 
-    swiper_product_slider_init();
+    this.element = element;
+    this.swiper = null;
+
+    this.init();
+  }
+
+  init() {
+    this.prepareSlides();
+
+    this.swiper = new Swiper(this.element, this.getOptions());
+  }
+
+  prepareSlides() {
+    const slides = this.element.querySelectorAll('.product');
+
+    slides.forEach((slide) => {
+      slide.classList.add('swiper-slide');
+    });
+  }
+
+  getOptions() {
+    return {
+      navigation: {
+        nextEl: this.element.querySelector('.swiper-button-next'),
+        prevEl: this.element.querySelector('.swiper-button-prev'),
+      },
+
+      scrollbar: {
+        el: this.element.querySelector('.swiper-scrollbar'),
+        draggable: true,
+      },
+
+      slidesPerView: 4,
+      slidesPerGroup: 1,
+      spaceBetween: 12,
+      loop: true,
+      freeMode: true,
+
+      breakpoints: {
+        320: {
+          slidesPerView: 2,
+          spaceBetween: 8,
+          navigation: {
+            enabled: false,
+          },
+          freeMode: true,
+        },
+
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 12,
+          navigation: {
+            enabled: true,
+          },
+        },
+
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 12,
+          navigation: {
+            enabled: true,
+          },
+        },
+      },
+    };
+  }
+
+  destroy() {
+    if (!this.swiper) {
+      return;
+    }
+
+    this.swiper.destroy(true, true);
+    this.swiper = null;
+  }
+}
+
+class ProductSliderCollection {
+  constructor(selector = '.product-slider-swiper') {
+    this.selector = selector;
+    this.items = new Map();
+
+    this.init();
+  }
+
+  init() {
+    const elements = document.querySelectorAll(this.selector);
+
+    elements.forEach((element) => {
+      this.add(element);
+    });
+  }
+
+  add(element) {
+    if (!element || this.items.has(element)) {
+      return;
+    }
+
+    const slider = new ProductSlider(element);
+
+    this.items.set(element, slider);
+  }
+
+  remove(element) {
+    const slider = this.items.get(element);
+
+    if (!slider) {
+      return;
+    }
+
+    slider.destroy();
+    this.items.delete(element);
+  }
+
+  destroyAll() {
+    this.items.forEach((slider) => {
+      slider.destroy();
+    });
+
+    this.items.clear();
+  }
+}
+
+const productSliders = new ProductSliderCollection();
 
 /*--------------------------------------------------------------
 # Popular slider
@@ -416,7 +542,7 @@ function swiper_filter_metki_init() {
         //     prevEl: '.myslider-prev',
         // },
         scrollbar: {
-            el: ".swiper-scrollbar",
+            el: ".metki_swiper_wrap .swiper-scrollbar",
             hide: false,
             draggable: true,
         },
@@ -629,3 +755,5 @@ const swiper_gift = new Swiper('.gift-swiper-wrap', {
         }
     }
 });
+
+

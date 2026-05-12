@@ -5,6 +5,66 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
+function pretty_print($print) {
+  echo ('<pre>');
+  print_r($print);
+  echo ('</pre>');
+}
+
+/**
+ * Debug-комментарии для хуков каталога WooCommerce.
+ *
+ * Показывает:
+ * <!-- WC HOOK START: hook_name -->
+ * <!-- WC HOOK END: hook_name -->
+ */
+add_action( 'wp', 'custom_wc_catalog_hooks_debug_comments' );
+
+function custom_wc_catalog_hooks_debug_comments() {
+	// if ( is_admin() || ! function_exists( 'is_woocommerce' ) ) {
+	// 	return;
+	// }
+
+	if ( ! is_shop() && ! is_product_taxonomy() && ! is_product_category() && ! is_product_tag() ) {
+		return;
+	}
+
+	$hooks = array(
+		'woocommerce_before_main_content',
+		'woocommerce_archive_description',
+
+		'woocommerce_before_shop_loop',
+		'woocommerce_before_shop_loop_item',
+		'woocommerce_before_shop_loop_item_title',
+		'woocommerce_shop_loop_item_title',
+		'woocommerce_after_shop_loop_item_title',
+		'woocommerce_after_shop_loop_item',
+		'woocommerce_after_shop_loop',
+
+		'woocommerce_no_products_found',
+		'woocommerce_after_main_content',
+		'woocommerce_sidebar',
+	);
+
+	foreach ( $hooks as $hook_name ) {
+		add_action(
+			$hook_name,
+			function() use ( $hook_name ) {
+				echo "\n<!-- WC HOOK START: " . esc_html( $hook_name ) . " -->\n";
+			},
+			-9999
+		);
+
+		add_action(
+			$hook_name,
+			function() use ( $hook_name ) {
+				echo "\n<!-- WC HOOK END: " . esc_html( $hook_name ) . " -->\n";
+			},
+			9999
+		);
+	}
+}
+
 //add_action( 'wp_footer', 'plnt_echo_smth' );
 
 

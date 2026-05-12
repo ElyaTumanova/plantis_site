@@ -25,7 +25,8 @@ class CatalogDropdown {
     wideBodyCat: 'menu_az_palnts'
   }
 
-  constructor (rootSelector) {
+  constructor (rootSelector, isTouchDevice) {
+    this.isTouchDevice = isTouchDevice
     this.root = document.querySelector(rootSelector)
     this.catalogDropdownHeaderWrap = document.querySelector(this.selectors.catalogDropdownHeaderWrap)
     this.header = document.querySelector(this.selectors.header)
@@ -136,7 +137,6 @@ class CatalogDropdown {
 
   openCatalog() {
     this.openBtn.classList.add(this.stateClasses.isOpen)
-    console.log(this.openBtn.classList)
     this.catalogDropdownHeaderWrap.classList.add(this.stateClasses.isOpen)
     this.openMenu(this.menuDataValues.firstCat)
     document.addEventListener('click', this.overlayClose)
@@ -191,8 +191,8 @@ class CatalogDropdown {
   }
   
   bindEvents() {
-    const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches
-    if (!isTouchDevice) {
+    //const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches
+    if (!this.isTouchDevice) {
       this.openBtn.addEventListener('click', this.onOpenBtnClick)
       this.catsOpen.forEach(element => {
         element.addEventListener('mouseenter', this.onCatsOpenEnter)
@@ -217,6 +217,6 @@ class CatalogDropdown {
 
 }
 
-new CatalogDropdown('.header__desktop')
-new CatalogDropdown('.burger-menu')
+new CatalogDropdown('.header__desktop', false)
+new CatalogDropdown('.burger-menu', true)
 
