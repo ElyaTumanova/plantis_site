@@ -12,11 +12,13 @@
   position: relative;
   margin-bottom: clamp(0.75rem, 0.1324rem + 2.7451vw, 2.5rem);;
 }
-
-.catalog__header .woocommerce-breadcrumb {
+.content-area:has(.catalog__header) {
+  position: relative;
+}
+.content-area:has(.catalog__header) .woocommerce-breadcrumb {
   position: absolute;
-  top: var(--pad);
-  left: var(--pad);
+  top: clamp(1.25rem, 0.7955rem + 2.2727vw, 2.5rem); /* --pad */
+  left: clamp(1.25rem, 0.7955rem + 2.2727vw, 2.5rem); /* --pad */
   z-index: 2;
 }
 
@@ -290,6 +292,7 @@
   border-radius: 10px;
   z-index: -1;
   transition-duration: var(--transition-duration);
+  pointer-events: none;
 }
 
 .catalog__grid-buttons:has(#catalog__btn-rows:disabled)::before {
@@ -307,6 +310,14 @@
   color: var(--accent-color);
 }
 
+.catalog__grid-buttons {
+  position: relative;
+  z-index: 5;
+}
+
+.catalog__grid-button {
+  pointer-events: auto;
+}
 
 /* #adaptive for sidebar modal*/
 @media (max-width: 768px) {
@@ -390,6 +401,12 @@
   row-gap: var(--gap);
 }
 
+.catalog__grid .products.in-row {
+  /* display: block; */
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
 .catalog__grid .products.columns-3 .product { 
   width: calc(100% / 3 - var(--gap)*2/3);
 }
@@ -405,24 +422,12 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
+/* term-description */
 .catalog__grid .term-description {
-    margin-top: 30px;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.4;
+  margin-bottom: var(--section-mb);
 }
 
-.catalog__grid .term-description h2 {
+/* .catalog__grid .term-description h2 {
     margin-bottom: 20px;
 }
 
@@ -432,75 +437,8 @@
 
 .catalog__grid .advantages {
     margin-top: 30px;
-}
-
-/*--------------------------------------------------------------
-# Card in Catalog
---------------------------------------------------------------*/
-/* стили для карточки товара в каталоге */
-
-/* ссылка на просмотр корзины после добавления */
-.products .wc-forward {
-    display: none;
-}
-
-/* чтобы не было смещения пока грузится слайдер
-.catalog__products-wrap .product__image-slider-wrap img:not(:first-child) {
-    display: none;
 } */
 
-/* wish */
-
-
-/* .catalog__products-wrap .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, 
-.catalog__products-wrap .yith-wcwl-add-to-wishlist a.delete_item>img, 
-.catalog__products-wrap .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
-    max-width: 32px;
-    width: 32px;
-} */
-
-@media (max-width:767px) {
-/*         
-    .catalog__products-wrap .yith-wcwl-add-button {
-        box-shadow: none;
-    } */
-/* 
-    .catalog__products-wrap .yith-wcwl-add-to-wishlist a.add_to_wishlist>img, 
-    .catalog__products-wrap .yith-wcwl-add-to-wishlist a.delete_item>img, 
-    .catalog__products-wrap .yith-wcwl-add-to-wishlist a.move_to_another_wishlist>img {
-        margin: 0 !important;
-        max-width: 24px;
-        width: 24px;
-    } */
-
-    /* .catalog__products-wrap .yith-wcwl-add-to-wishlist {
-        border: none;
-        position: absolute;
-        top: 0;
-        right: 0;
-    } */
-
-    /* .catalog__products-wrap .yith-wcwl-add-to-wishlist {
-        border-radius: 100%;
-        padding: 11px 10px 9px 10px;
-        position: relative !important;
-        order: 2;
-        margin-top: -62px !important;
-        margin-left: auto !important;
-        margin-right: 70px !important;
-        height: fit-content;
-        box-shadow: 0 1px 20px rgba(4, 6, 28, .1);
-    } */
-}
-
-.woocommerce-LoopProduct-link {
-    position: relative;
-    width: 100%;
-}
-
-/* .catalog__grid .woocommerce-LoopProduct-link:first-of-type {
-    order: -2;
-} */
 
 
 
@@ -741,15 +679,62 @@
 
 
 .lmp_load_more_button {
-    margin-top: 25px;
+  margin-top: 24px;
 }
 
-.woocommerce-pagination > ul {
+.lmp_load_more_button .lmp_button {
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: var(--green-l-color) !important;
+  color: var(--accent-color) !important;
+  padding: 14px 24px !important;
+  height: 48px !important;
+  font-size: clamp(0.75rem, 0.6591rem + 0.4545vw, 1rem) !important; /* 16px - 14px */
+  font-weight: 500 !important;
+  border-radius: var(--button-br) !important;
+  line-height: 0 !important;
+}
+
+/* .woocommerce-pagination > ul {
     border-bottom: solid 2px #95E1D4;
     border-top: solid 2px #95E1D4;
+} */
+.woocommerce-pagination {
+  margin-top: 16px;
+  font-weight: 500;
+}
+.woocommerce-pagination ul.page-numbers, .woocommerce-pagination .nav-links {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8px;
 }
 
-.page-numbers {
+span.page-numbers,
+a.page-numbers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--br-xs);
+}
+
+@media (max-width:768px) {
+  span.page-numbers,
+  a.page-numbers {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+span.page-numbers.current {
+  background-color: var(--green-l-color);
+  color: var(--accent-color);
+}
+
+/* .page-numbers {
 	padding: 10px 0;
 	font-size: 16px;
     font-weight: 600;
@@ -758,17 +743,13 @@
     margin-top: 25px;
     max-width: 100%;
     overflow: hidden;
-}
+} */
 
-.woocommerce-pagination ul.page-numbers, .woocommerce-pagination .nav-links {
-	display: flex;
-    justify-content: center;
-    column-gap: 5px;
-}
+
 
 .woocommerce-pagination ul.page-numbers li .page-numbers, .woocommerce-pagination span, .woocommerce-pagination a {
-    padding: 4px 10px;
-    border-radius: 5px;
+    /* padding: 4px 10px;
+    border-radius: 5px; */
 }
 
 .woocommerce-pagination ul.page-numbers li .page-numbers:hover, .woocommerce-pagination span:hover, .woocommerce-pagination a:hover {
@@ -776,11 +757,11 @@
 }
 
 .woocommerce-pagination a.page-numbers:not(.prev):not(.next):hover, .woocommerce-pagination a.page-numbers:not(.prev):not(.next).current, .woocommerce-pagination span.page-numbers:not(.prev):not(.next):hover, .woocommerce-pagination span.page-numbers:not(.prev):not(.next).current {
-	background-color: #95E1D4 !important;
+	/* background-color: #95E1D4 !important; */
 }
 
 .woocommerce-pagination a.next, .woocommerce-pagination a.prev{
-    font-size: 25px;
+    /* font-size: 25px; */
 }
 
 /*--------------------------------------------------------------

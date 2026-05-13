@@ -31,9 +31,12 @@ p {
   }
 }
 
+.content-area {
+  margin-bottom: var(--section-mb);
+}
 
-.section:not(:first-child) {
-  margin-block: var(--section-mb);
+.section {
+  margin-bottom: var(--section-mb);
 }
 
 .grid-2-cols {

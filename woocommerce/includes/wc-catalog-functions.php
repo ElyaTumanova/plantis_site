@@ -332,14 +332,19 @@ function truemisha_custom_orderby_option( $sortby ) {
 
 add_filter( 'woocommerce_pagination_args', 'plnt_woocommerce_pagination_args_filter' );
 
-function plnt_woocommerce_pagination_args_filter( $array ){
+function plnt_woocommerce_pagination_args_filter( $array ) {
+	$prev_icon = plnt_icon('chevron-left');
+  
+	$next_icon = plnt_icon('chevron-right');
+
 	$array = array(
-		'prev_text' => is_rtl() ? '&rarr;' : '&larr;',
-		'next_text' => is_rtl() ? '&larr;' : '&rarr;',
+		'prev_text' => is_rtl() ? $next_icon : $prev_icon,
+		'next_text' => is_rtl() ? $prev_icon : $next_icon,
 		'type'      => 'list',
 		'end_size'  => 2,
 		'mid_size'  => 1,
 	);
+
 	return $array;
 }
 

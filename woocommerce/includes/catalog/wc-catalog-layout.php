@@ -15,11 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // // структура каталога - добавлеям обертки
 
-  plnt_add_wrapper('catalog__header', 'woocommerce_before_main_content', 15, 'woocommerce_before_shop_loop', 5);
-  plnt_add_wrapper('catalog__header-inner', 'woocommerce_before_main_content', 21, 'woocommerce_before_shop_loop', 4);
-  add_action('woocommerce_before_shop_loop','plnt_catalog_header_image', 3);
+  add_action('woocommerce_archive_description','plnt_catalog_header_image', 5);
 
-  plnt_add_wrapper('catalog__grid', 'woocommerce_before_shop_loop', 15, 'woocommerce_after_shop_loop', 21);
+  plnt_add_section('catalog__grid section', 'woocommerce_before_shop_loop', 15, 'woocommerce_after_shop_loop', 21);
   plnt_add_wrapper('catalog__sidebar modal-mob', 'woocommerce_before_shop_loop', 20, 'woocommerce_before_shop_loop', 22);
   add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar', 21);
   plnt_add_wrapper('catalog__top', 'woocommerce_before_shop_loop', 25, 'woocommerce_before_shop_loop', 35);
@@ -27,8 +25,8 @@ if ( ! defined( 'ABSPATH' ) ) {
   add_action('woocommerce_before_shop_loop','plnt_catalog_grid_columns', 34);
   plnt_add_wrapper('catalog__products-wrap', 'woocommerce_before_shop_loop', 40, 'woocommerce_after_shop_loop', 20);
   
+  add_action('woocommerce_after_shop_loop','plnt_get_advantages',24);
   add_action('woocommerce_after_shop_loop','woocommerce_taxonomy_archive_description',25);
-  add_action('woocommerce_after_shop_loop','plnt_get_advantages',25);
 
   //header catalog
 
@@ -49,10 +47,10 @@ if ( ! defined( 'ABSPATH' ) ) {
   function plnt_catalog_grid_columns () {
     ?>
       <div class="catalog__grid-buttons">
-      <button class="catalog__grid-button button" id="catalog__btn-grid" disabled>
+      <button class="catalog__grid-button button" type="button" id="catalog__btn-grid" disabled>
         <?php echo plnt_icon('btn-grid');?>
       </button>
-      <button class="catalog__grid-button button" id="catalog__btn-rows" >
+      <button class="catalog__grid-button button" type="button" id="catalog__btn-rows" >
         <?php echo plnt_icon('btn-rows');?>
       </button>
       </div>
@@ -159,5 +157,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // описание категории и преимущества в каталоге
 
 function plnt_get_advantages() {
+  echo ('<section class="catalog__advantages section">');
 	get_template_part( 'template-parts/advantages' );			
+  echo ('</section>');
 };

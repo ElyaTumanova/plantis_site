@@ -29,3 +29,22 @@ if ( ! defined( 'ABSPATH' ) ) {
       <?php
     }, $after_priority);
   }
+  function plnt_add_section (
+    $class,
+    $before_hook,
+    $before_priority,
+    $after_hook,
+    $after_priority,
+  ) {
+    add_action($before_hook, function() use ($class) {
+      ?>
+      <section class="<?php echo esc_attr($class); ?>">
+      <?php
+    }, $before_priority);
+
+    add_action($after_hook, function() use ($class) {
+      ?>
+      </section><!-- .<?php echo esc_attr($class); ?> -->
+      <?php
+    }, $after_priority);
+  }

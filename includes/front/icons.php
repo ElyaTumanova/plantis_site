@@ -3,6 +3,22 @@ if (!defined('ABSPATH')) exit;
 
 function plnt_icon( $name, $class = '' ) {
     $icons = [
+        //general
+
+        'close' =>
+        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M14.1248 5.87524L5.87518 14.1248M5.87518 5.87524L14.1248 14.1248" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>',
+
+        'chevron-right' =>
+        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M7.08317 15.8333L12.9165 9.99992L7.08317 4.16659" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>',
+
+        'chevron-left' =>
+        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M12.9168 4.16675L7.0835 10.0001L12.9168 15.8334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>',
 
         //socials
         'telegram' => 
@@ -39,11 +55,6 @@ function plnt_icon( $name, $class = '' ) {
         'wish' => 
         '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
           <path d="M11.1606 16.8374C10.8112 17.0524 10.6365 17.16 10.3649 17.2209C10.1623 17.2663 9.83789 17.2663 9.63527 17.2209C9.36363 17.16 9.18894 17.0524 8.83957 16.8374C6.54904 15.4278 1.66675 11.8731 1.66675 7.18438C1.66675 4.59498 3.74175 2.5 6.30008 2.5C7.81675 2.5 9.15841 3.23743 10.0001 4.37711C10.8417 3.23743 12.1917 2.5 13.7001 2.5C16.2584 2.5 18.3334 4.59498 18.3334 7.18438C18.3334 11.8731 13.4511 15.4278 11.1606 16.8374Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>',
-
-        'close' =>
-        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M14.1248 5.87524L5.87518 14.1248M5.87518 5.87524L14.1248 14.1248" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>',
 
         //menu
@@ -154,6 +165,7 @@ function plnt_icon( $name, $class = '' ) {
         '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
           <path d="M2.5 7.5H17.5M2.5 12.5H17.5M10.8333 17.5H9.16667C6.83311 17.5 5.66634 17.5 4.77504 17.0459C3.99103 16.6464 3.35361 16.009 2.95414 15.225C2.5 14.3337 2.5 13.1669 2.5 10.8333L2.5 9.16667C2.5 6.83311 2.5 5.66634 2.95414 4.77504C3.35361 3.99103 3.99103 3.35361 4.77504 2.95414C5.66634 2.5 6.83311 2.5 9.16667 2.5L10.8333 2.5C13.1669 2.5 14.3337 2.5 15.225 2.95414C16.009 3.35361 16.6464 3.99103 17.0459 4.77504C17.5 5.66634 17.5 6.83311 17.5 9.16667V10.8333C17.5 13.1669 17.5 14.3337 17.0459 15.225C16.6464 16.009 16.009 16.6464 15.225 17.0459C14.3337 17.5 13.1669 17.5 10.8333 17.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>',
+
 
     ];
 

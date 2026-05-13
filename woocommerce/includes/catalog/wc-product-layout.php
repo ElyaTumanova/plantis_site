@@ -18,20 +18,23 @@ add_action('woocommerce_before_shop_loop_item_title','plnt_catalog_gallery', 10)
 add_action('woocommerce_before_product_loop_end','plnt_img_gallery_swiper_init', 10);
 add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_product_link_close', 20);
 
-/* цена */
+/* content */
 plnt_add_wrapper('product__content-wrap','woocommerce_before_shop_loop_item_title', 24, 'woocommerce_after_shop_loop_item_title', 40 );
 
+/* цена */
 plnt_add_wrapper('product__price-wrap','woocommerce_before_shop_loop_item_title', 25, 'woocommerce_before_shop_loop_item_title', 29 );
 add_action( 'woocommerce_before_shop_loop_item_title','woocommerce_template_loop_price', 26 );
 add_action('woocommerce_before_shop_loop_item_title','truemisha_sale_badge', 27);
 
-/* метки */
-add_action('woocommerce_after_shop_loop_item_title', 'plnt_get_product_tags', 30);
-
-
 /* заголовок */
 add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product_link_open', 10);
 add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product_link_close', 15);
+
+/* метки */
+add_action('woocommerce_after_shop_loop_item_title', 'plnt_get_product_tags', 30);
+
+/* атрибуты */
+add_action( 'woocommerce_after_shop_loop_item_title', 'plnt_loop_product_attributes', 31 );
 
 
 /* кнопки в корзину */
@@ -54,8 +57,6 @@ function soChangeProductsTitle() {
 }
 
 //оформление карточки товара в каталоге
-
-
 
 function plnt_catalog_gallery() {
 
@@ -180,6 +181,54 @@ function plnt_add_class_loop_item_swiper($clasess){
 	return $clasess;
 }
 
+
+/* атрибуты */
+
+function plnt_loop_product_attributes() {
+	global $product;
+
+	if ( ! $product ) {
+		return;
+	}
+
+  $attributes = $product->get_attributes();
+
+	if ( empty( $attributes ) ) {
+		return;
+	}
+  echo ('<div class="catalog__product-attributes">');
+	echo '<ul class="product-card-attributes">';
+
+	foreach ( $attributes as $attribute ) {
+		if ( ! $attribute->get_visible() ) {
+			continue;
+		}
+
+		$name = wc_attribute_label( $attribute->get_name() );
+
+		if ( $attribute->is_taxonomy() ) {
+			$values = wc_get_product_terms(
+				$product->get_id(),
+				$attribute->get_name(),
+				array( 'fields' => 'names' )
+			);
+		} else {
+			$values = $attribute->get_options();
+		}
+
+		if ( empty( $values ) ) {
+			continue;
+		}
+
+		echo '<li>';
+		echo '<span class="product-card-attributes__name">' . esc_html( $name ) . ':</span> ';
+		echo '<span class="product-card-attributes__value">' . esc_html( implode( ', ', $values ) ) . '</span>';
+		echo '</li>';
+	}
+
+	echo '</ul>';
+  echo ('</div>');
+}
 
 //вывод данных для Schema.org 
 add_action('woocommerce_after_shop_loop_item', 'plnt_get_catalog_schema_data', 40);

@@ -1,6 +1,6 @@
 .front__hero {
   max-width: 1380px;
-  margin: auto;
+  margin-inline: auto;
 }
 
 /* banners */
@@ -103,7 +103,7 @@
 
 .cats-nav__title {
   padding: 8px 16px;
-  border-radius: var(--br-xs);
+  border-radius: var(--br-xxs);
   white-space: nowrap;
 }
 
