@@ -37,6 +37,11 @@ $close_icon = carbon_get_theme_option('close_icon');
 
 <?php //get_template_part('template-parts/popups/search-popup');?>
 <?php get_template_part('template-parts/menu/burger-menu-mobile');?>
+<?php get_template_part('template-parts/popups/buy-one-click-popup');?>
+<?php get_template_part('template-parts/popups/image-zoom-popup');?>
+
+
+
 
 <?php 
 if (!is_account_page()) {

@@ -65,6 +65,59 @@ function custom_wc_catalog_hooks_debug_comments() {
 	}
 }
 
+/**
+ * Debug-комментарии для хуков карточки товара WooCommerce.
+ *
+ * Показывает:
+ * <!-- WC HOOK START: hook_name -->
+ * <!-- WC HOOK END: hook_name -->
+ */
+add_action( 'wp', 'custom_wc_single_product_hooks_debug_comments' );
+
+function custom_wc_single_product_hooks_debug_comments() {
+	if ( ! is_product() ) {
+		return;
+	}
+
+	$hooks = array(
+		'woocommerce_before_main_content',
+
+		'woocommerce_before_single_product',
+		'woocommerce_before_single_product_summary',
+		'woocommerce_product_thumbnails',
+		'woocommerce_single_product_summary',
+		'woocommerce_before_add_to_cart_form',
+		'woocommerce_before_add_to_cart_button',
+		'woocommerce_before_add_to_cart_quantity',
+		'woocommerce_after_add_to_cart_quantity',
+		'woocommerce_after_add_to_cart_button',
+		'woocommerce_after_add_to_cart_form',
+		'woocommerce_after_single_product_summary',
+		'woocommerce_after_single_product',
+
+		'woocommerce_after_main_content',
+		'woocommerce_sidebar',
+	);
+
+	foreach ( $hooks as $hook_name ) {
+		add_action(
+			$hook_name,
+			function() use ( $hook_name ) {
+				echo "\n<!-- WC HOOK START: " . esc_html( $hook_name ) . " -->\n";
+			},
+			-9999
+		);
+
+		add_action(
+			$hook_name,
+			function() use ( $hook_name ) {
+				echo "\n<!-- WC HOOK END: " . esc_html( $hook_name ) . " -->\n";
+			},
+			9999
+		);
+	}
+}
+
 //add_action( 'wp_footer', 'plnt_echo_smth' );
 
 

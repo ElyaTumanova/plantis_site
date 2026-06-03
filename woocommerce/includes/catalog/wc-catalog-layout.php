@@ -18,15 +18,23 @@ if ( ! defined( 'ABSPATH' ) ) {
   add_action('woocommerce_archive_description','plnt_catalog_header_image', 5);
 
   plnt_add_section('catalog__grid section', 'woocommerce_before_shop_loop', 15, 'woocommerce_after_shop_loop', 21);
-  plnt_add_wrapper('catalog__sidebar modal-mob', 'woocommerce_before_shop_loop', 20, 'woocommerce_before_shop_loop', 22);
+  plnt_add_wrapper('catalog__sidebar catalog-filters', 'woocommerce_before_shop_loop', 20, 'woocommerce_before_shop_loop', 22);
   add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar', 21);
+  plnt_add_wrapper('catalog__filter-metki catalog__filter-metki-ontop', 'woocommerce_before_shop_loop', 22, 'woocommerce_before_shop_loop', 23);
+  add_action('woocommerce_before_shop_loop', 'plnt_metki_mob', 22);
   plnt_add_wrapper('catalog__top', 'woocommerce_before_shop_loop', 25, 'woocommerce_before_shop_loop', 35);
   add_action('woocommerce_before_shop_loop','plnt_woocommerce_total_count', 32);
+  add_action('woocommerce_before_shop_loop','plnt_woocommerce_clear_filters', 33);
   add_action('woocommerce_before_shop_loop','plnt_catalog_grid_columns', 34);
+  // // вывод фильтров над каталогом  #filters #berocket
+  add_action('woocommerce_before_shop_loop','plnt_catalog_filters_main_area', 34);
   plnt_add_wrapper('catalog__products-wrap', 'woocommerce_before_shop_loop', 40, 'woocommerce_after_shop_loop', 20);
   
   add_action('woocommerce_after_shop_loop','plnt_get_advantages',24);
+  plnt_add_section('section container catalog__term-description expandable-content', 'woocommerce_after_shop_loop', 24, 'woocommerce_after_shop_loop', 28);
+  plnt_add_wrapper('expandable-content-area', 'woocommerce_after_shop_loop', 24, 'woocommerce_after_shop_loop', 26);
   add_action('woocommerce_after_shop_loop','woocommerce_taxonomy_archive_description',25);
+  add_action('woocommerce_after_shop_loop','plnt_expandable_content_button',27);
 
   //header catalog
 
@@ -118,12 +126,15 @@ if ( ! defined( 'ABSPATH' ) ) {
     global $filter_gift_id; 
     global $filter_razmer_id;
     global $filter_razmer_kashpo_id;
-    $close_icon = carbon_get_theme_option('close_icon')
+
+    $total =  wc_get_loop_prop( 'total' );
     ?>
-      <!-- <div class="catalog__sidebar modal-mob"> -->
-        <h2 class="catalog__sidebar-filters-heading">Фильтры</h2>
-        <div class="modal-mob__close catalog-sidebar__close button"><?php echo $close_icon ?></div>
-        <aside class="catalog__sidebar-filters">
+      <div class="catalog__sidebar-inner modal-mob">
+        <div class="modal-mob__header">
+          <span class="h5">Фильтр</span>
+          <button type="button" class="modal-mob__close popup__close button"><?php echo plnt_icon('close') ?></button>
+        </div>
+        <aside class="catalog__sidebar-filters modal-mob__body">
           <div class="catalog__filter-metki">
             <?php echo do_shortcode('[br_filter_single filter_id='.$filter_podborki_id.']') //Подборки //56536 //10989?>  
           </div>
@@ -150,14 +161,73 @@ if ( ! defined( 'ABSPATH' ) ) {
           }
           ?>
         </aside>
-      <!-- </div> -->
-      <?php 
+        <div class="modal-mob__footer">
+          <?php plnt_woocommerce_clear_filters_mob();?>
+          <button class="button button--green catalog__sidebar-filters-show-all popup__close" type="button">Показать <span class="woocommerce-result-count">(<?php echo $total;?>)</span></button>
+        </div>
+      </div>
+      <div class="popup-overlay"></div>
+    <?php 
   };
+
+//метки над каталогом 
+
+function plnt_metki_mob() {
+  global $filter_podborki_slider_id;
+  echo do_shortcode('[br_filter_single filter_id='.$filter_podborki_slider_id.']'); //Подборки дубль
+};
 
 // описание категории и преимущества в каталоге
 
 function plnt_get_advantages() {
-  echo ('<section class="catalog__advantages section">');
+  echo ('<section class="catalog__advantages section container">');
 	get_template_part( 'template-parts/advantages' );			
   echo ('</section>');
 };
+
+
+
+function plnt_catalog_filters_main_area() {
+	?>
+    <div class = "catalog__mob-filter-wrap"> 
+      <button class="button button--green catalog__mob-filter-btn catalog-filters-open-btn"><span class="icon icon--pre icon--filter">Фильтры</span></button>
+    </div>
+  <?php 	
+};
+
+function plnt_woocommerce_clear_filters() {
+	?>
+	<div class="bapf_sfilter bapf_rst_nofltr bapf_rst_sel">
+		<div class="bapf_body">
+			<button type="button" class="button bapf_button bapf_reset">
+				<?php echo plnt_icon( 'close' ); ?>
+				Очистить фильтр
+				<span class="plnt-reset-filters__count"></span>
+			</button>
+		</div>
+	</div>
+	<?php
+}
+function plnt_woocommerce_clear_filters_mob() {
+	?>
+	<div class="bapf_sfilter bapf_rst_nofltr bapf_rst_sel">
+		<div class="bapf_body">
+			<button type="button" class="button bapf_button bapf_reset button--green-l">
+				Очистить
+			</button>
+		</div>
+	</div>
+	<?php
+}
+
+function plnt_expandable_content_button() {
+  ?>
+  <button
+    class="catalog__term-description-read-full-button button button--clean expandable-content__button"
+    type="button"
+    data-js-expandable-content-button
+  >
+    <span class="icon icon--chevron-down">Показать полностью</span>
+  </button>
+  <?php
+}

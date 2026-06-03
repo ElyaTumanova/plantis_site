@@ -70,6 +70,9 @@
   font-weight: 500;
 }
 
+.menu__item.icon--chevron-down::after {
+  color: var(--gray-l-color);
+}
 
 
 /* dropdown */
@@ -143,13 +146,11 @@
   padding: 4px 10px;
   border-radius: 100px;
   color: var(--white-color);
-  /* min-width: 96px; */
 }
 
 @media (max-width:767px) {
   .card__stockstatus {
     padding: 4px 8px;
-    /* min-width: 103px; */
   }
 }
 .card__stockstatus_in {
@@ -171,7 +172,7 @@
   display: flex;
   gap: 3px;
   color: var(--black-color);
-  font-size: clamp(0.75rem, 0.6591rem + 0.4545vw, 1rem); /* 16px - 12px */
+  font-size: clamp(0.75rem, 0.7021rem + 0.2128vw, 0.875rem); /* 14px - 12px */
   flex-wrap: wrap;
 }
 

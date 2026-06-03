@@ -31,7 +31,8 @@ class ViewportPosition {
 }
 
 new ViewportPosition ('.catalog-dropdown', '--catalogDropdownTopOffset')
-new ViewportPosition ('.burger-menu__body', '--burgerMenuBodyTopOffset')
+new ViewportPosition ('.card__image-wrap', '--cardImageWrapTopOffset')
+// new ViewportPosition ('.burger-menu__body', '--burgerMenuBodyTopOffset')
 
 
 class ElementHeight {
@@ -72,6 +73,8 @@ class ElementHeight {
 
 new ElementHeight ('.header__main-top', '--headerMainTopHeight')
 new ElementHeight ('.header__nav', '--headerNavHeight')
+new ElementHeight ('.header__desktop', '--headerHeight')
+new ElementHeight ('.header__main', '--headerMainHeight')
 
 class ElementWidth {
   constructor (selector, propertyName) {
@@ -193,3 +196,116 @@ class HoverDropdownCollection {
 new HoverDropdownCollection ('.menu__list')
 
 new HoverDropdownCollection('.header__info-menu')
+
+
+
+
+class ExpandableContent {
+  selectors = {
+    area: '.expandable-content-area',
+    button: '[data-js-expandable-content-button]'
+  }
+
+  stateClasses = {
+    isExpanded: 'is-expanded',
+  }
+
+  animationParams = {
+    duration: 500,
+    easing: 'ease',
+  }
+
+  constructor(rootElement) {
+    this.rootElement = rootElement
+    this.areaElement = this.rootElement.querySelector(this.selectors.area)
+    this.buttonElement = this.rootElement.querySelector(this.selectors.button)
+    this.collapsedHeight = this.areaElement.offsetHeight
+    this.bindEvents()
+  }
+
+  expand() {
+    const { offsetHeight, scrollHeight } = this.areaElement
+
+    this.areaElement.classList.add(this.stateClasses.isExpanded)
+    this.areaElement.animate([
+      {
+        maxHeight: `${offsetHeight}px`,
+      },
+      {
+        maxHeight: `${scrollHeight}px`,
+      },
+    ], this.animationParams)
+  }
+
+  collapse() {
+    const { offsetHeight } = this.areaElement
+
+    this.areaElement.classList.remove(this.stateClasses.isExpanded)
+
+    this.areaElement.animate([
+      { maxHeight: `${offsetHeight}px` },
+      { maxHeight: `${this.collapsedHeight}px` },
+    ], this.animationParams)
+
+    this.rootElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
+  }
+
+  onButtonClick = () => {
+    if (this.areaElement.classList.contains(this.stateClasses.isExpanded)) {
+      this.collapse()
+    } else {
+      this.expand()
+    }
+  }
+
+  bindEvents() {
+    this.buttonElement.addEventListener('click', this.onButtonClick)
+  }
+}
+
+
+class ExpandableContentCollection {
+  constructor() {
+    this.init()
+  }
+
+  init() {
+    document.querySelectorAll('.expandable-content').forEach((element) => {
+      new ExpandableContent(element)
+    })
+  }
+}
+
+new ExpandableContentCollection()
+
+function getBackorderDate() {
+  const date = new Date()
+
+  // Ищем следующую среду
+  const targetDay = 3 // среда: 0 вс, 1 пн, 2 вт, 3 ср
+  const currentDay = date.getDay()
+
+  let daysUntilWednesday = (targetDay - currentDay + 7) % 7
+
+  // аналог PHP "next wednesday" — если сегодня среда, берем следующую
+  if (daysUntilWednesday === 0) {
+    daysUntilWednesday = 7
+  }
+
+  // next wednesday + 2 weeks
+  date.setDate(date.getDate() + daysUntilWednesday + 14)
+
+  return date.toLocaleDateString('ru-RU', {
+    day: '2-digit',
+    month: '2-digit',
+  })
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-backorder-date]').forEach((element) => {
+    element.textContent = getBackorderDate()
+  })
+})

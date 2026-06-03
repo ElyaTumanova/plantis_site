@@ -93,7 +93,7 @@ $logo = carbon_get_theme_option('logo');
         width="130" 
         height="24"></a>
     </div>
-    <button class="header__mob-menu burger-menu-open-btn button"
+    <button class="header__mob-menu burger-menu-open-btn button button--clean"
       type="button"
     >
       <span class="burger">

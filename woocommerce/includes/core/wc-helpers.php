@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   * @param string $class       CSS-класс обёртки.
   * @param int    $before_priority Приоритет открытия.
   * @param int    $after_priority  Приоритет закрытия.
+  * @param string    $attributes  Прочие атрибуты тега.
   */
   function plnt_add_wrapper (
     $class,
@@ -16,29 +17,32 @@ if ( ! defined( 'ABSPATH' ) ) {
     $before_priority,
     $after_hook,
     $after_priority,
+    $attributes = ''
   ) {
-    add_action($before_hook, function() use ($class) {
+    add_action($before_hook, function() use ($class, $attributes) {
       ?>
-      <div class="<?php echo esc_attr($class); ?>">
+      <div class="<?php echo esc_attr($class); ?>" <?php echo $attributes; ?> >
       <?php
     }, $before_priority);
 
-    add_action($after_hook, function() use ($class) {
+    add_action($after_hook, function() use ($class, $attributes) {
       ?>
       </div><!-- .<?php echo esc_attr($class); ?> -->
       <?php
     }, $after_priority);
   }
-  function plnt_add_section (
+  
+  function plnt_add_section(
     $class,
     $before_hook,
     $before_priority,
     $after_hook,
     $after_priority,
+    $attributes = ''
   ) {
-    add_action($before_hook, function() use ($class) {
+    add_action($before_hook, function() use ($class, $attributes) {
       ?>
-      <section class="<?php echo esc_attr($class); ?>">
+      <section class="<?php echo esc_attr($class); ?>" <?php echo $attributes; ?>>
       <?php
     }, $before_priority);
 

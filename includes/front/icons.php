@@ -166,6 +166,18 @@ function plnt_icon( $name, $class = '' ) {
           <path d="M2.5 7.5H17.5M2.5 12.5H17.5M10.8333 17.5H9.16667C6.83311 17.5 5.66634 17.5 4.77504 17.0459C3.99103 16.6464 3.35361 16.009 2.95414 15.225C2.5 14.3337 2.5 13.1669 2.5 10.8333L2.5 9.16667C2.5 6.83311 2.5 5.66634 2.95414 4.77504C3.35361 3.99103 3.99103 3.35361 4.77504 2.95414C5.66634 2.5 6.83311 2.5 9.16667 2.5L10.8333 2.5C13.1669 2.5 14.3337 2.5 15.225 2.95414C16.009 3.35361 16.6464 3.99103 17.0459 4.77504C17.5 5.66634 17.5 6.83311 17.5 9.16667V10.8333C17.5 13.1669 17.5 14.3337 17.0459 15.225C16.6464 16.009 16.009 16.6464 15.225 17.0459C14.3337 17.5 13.1669 17.5 10.8333 17.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>',
 
+        //card 
+
+        'plus' =>
+        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M10.0003 4.16666L10.0003 15.8333M4.16699 9.99999L15.8337 9.99999" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>',
+
+        'minus' => 
+        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M4.16699 10L15.8337 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>'
+
 
     ];
 

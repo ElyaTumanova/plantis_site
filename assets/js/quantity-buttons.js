@@ -1,5 +1,5 @@
 jQuery(function ($){
-    $( 'body' ).on( 'click', 'div.plus, div.minus', function() {
+  $( 'body' ).on( 'click', 'div.plus, div.minus', function() {
 
 	var qty = $(this).parent().find( 'input' ),
 	val = parseInt( qty.val() ),
@@ -48,16 +48,16 @@ jQuery(function ($){
 
 	//уведомление для backorder
 	var stock = parseInt(qty.parent().parent().find(".product_type_simple").attr( 'data-stock-quantity'));
-	var backorderInfo = qty.parent().parent().parent().parent().parent().parent().find(".backorder-info");
-	var backorderInfoMob = qty.parent().parent().parent().parent().find(".backorder-info");
+	var backorderInfo = qty.parent().parent().parent().parent().parent().parent().find(".card__banner--backorder-info");
+	var backorderInfoMob = qty.parent().parent().parent().parent().find(".card__banner--backorder-info");
 	if (stock >0) {
 		if (newVal == (stock + 1)) {
-			backorderInfo.addClass('backorder-info_active');
-			backorderInfoMob.addClass('backorder-info_active');
+			backorderInfo.addClass('is-active');
+			backorderInfoMob.addClass('is-active');
 		} 
 		if (newVal <= (stock)) {
-			backorderInfo.removeClass('backorder-info_active');
-			backorderInfoMob.removeClass('backorder-info_active');
+			backorderInfo.removeClass('is-active');
+			backorderInfoMob.removeClass('is-active');
 		}
 	} 
 
@@ -87,13 +87,13 @@ jQuery(function ($){
 
 	//уведомление для backorder
 	var stock = parseInt($(this).parent().parent().find(".product_type_simple").attr( 'data-stock-quantity'));
-	var backorderInfo = $(this).parent().parent().parent().parent().find(".backorder-info");
+	var backorderInfo = $(this).parent().parent().parent().parent().find(".card__banner--backorder-info");
 	if (stock >0) {
 		if (qty == (stock + 1)) {
-			backorderInfo.addClass('backorder-info_active');
+			backorderInfo.addClass('is-active');
 		} 
 		if (qty <= (stock)) {
-			backorderInfo.removeClass('backorder-info_active');
+			backorderInfo.removeClass('is-active');
 		} 
 	}
 

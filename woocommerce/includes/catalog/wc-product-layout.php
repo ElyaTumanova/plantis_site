@@ -24,7 +24,7 @@ plnt_add_wrapper('product__content-wrap','woocommerce_before_shop_loop_item_titl
 /* цена */
 plnt_add_wrapper('product__price-wrap','woocommerce_before_shop_loop_item_title', 25, 'woocommerce_before_shop_loop_item_title', 29 );
 add_action( 'woocommerce_before_shop_loop_item_title','woocommerce_template_loop_price', 26 );
-add_action('woocommerce_before_shop_loop_item_title','truemisha_sale_badge', 27);
+add_action('woocommerce_before_shop_loop_item_title','plnt_sale_badge', 27);
 
 /* заголовок */
 add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product_link_open', 10);
@@ -34,7 +34,9 @@ add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product
 add_action('woocommerce_after_shop_loop_item_title', 'plnt_get_product_tags', 30);
 
 /* атрибуты */
-add_action( 'woocommerce_after_shop_loop_item_title', 'plnt_loop_product_attributes', 31 );
+add_action( 'woocommerce_after_shop_loop_item_title', function () {
+    plnt_product_attributes( 'catalog__product-attributes' );
+}, 31 );
 
 
 /* кнопки в корзину */
@@ -111,7 +113,7 @@ function plnt_change_add_to_cart_text($text,$product) {
 	if ($product->is_in_stock()) {
 		return $text;
 	} else {
-		$text = __( 'О растении', 'woocommerce' ); //было Заказать
+		$text = __( 'Заказать', 'woocommerce' );
 		return $text;
 	}
 }
@@ -137,33 +139,45 @@ function plnt_woocommerce_loop_add_to_cart_args_outofstock( $args, $product ){
 
 
 function plnt_get_product_tags() {
-	// if(is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
-		global $product;
-    global $pet_tag_id;
-    global $neprihotliv_tag_id;
+  global $product;
+  global $pet_tag_id;
+  global $neprihotliv_tag_id;
 
-    $allowed_tags = [
-        $pet_tag_id => [
-            'class' => 'petfriendly',
-        ],
-        $neprihotliv_tag_id => [
-            'class' => 'neprikhotliv',
-        ],
-    ];
-		$tags = wc_get_product_term_ids( $product->get_id(), 'product_tag' );
-		echo '<div class=catalog__tags>';
-		foreach($tags as $tag) {
-      if (!isset($allowed_tags[$tag])) {
-          continue;
-      }
+  if ( ! $product ) {
+    return;
+  }
 
-      echo '<a class=catalog__tag-link href="'.get_tag_link(get_term($tag)->term_taxonomy_id).'">
-        <span class= "catalog__tag icon icon--pre icon--'.esc_attr($allowed_tags[$tag]['class']).'">'.esc_html(get_term($tag)->name).'</span>
-      </a>';
-		
-		}
-		echo '</div>';
-	// }
+  $allowed_tags = [
+      $pet_tag_id => [
+          'class' => 'petfriendly',
+      ],
+      $neprihotliv_tag_id => [
+          'class' => 'neprikhotliv',
+      ],
+  ];
+  $tags = wc_get_product_term_ids( $product->get_id(), 'product_tag' );
+  if ( empty( $tags ) ) {
+    return;
+  }
+
+  $visible_tags = array_intersect( $tags, array_keys( $allowed_tags ) );
+
+  if ( empty( $visible_tags ) ) {
+    return;
+  }
+
+  echo '<div class=catalog__tags>';
+  foreach($tags as $tag) {
+    if (!isset($allowed_tags[$tag])) {
+        continue;
+    }
+
+    echo '<a class=catalog__tag-link href="'.get_tag_link(get_term($tag)->term_taxonomy_id).'">
+      <span class= "catalog__tag icon icon--pre icon--tags icon--'.esc_attr($allowed_tags[$tag]['class']).'">'.esc_html(get_term($tag)->name).'</span>
+    </a>';
+  
+  }
+  echo '</div>';
 }
 
 // вывод статуса в наличии
@@ -181,54 +195,6 @@ function plnt_add_class_loop_item_swiper($clasess){
 	return $clasess;
 }
 
-
-/* атрибуты */
-
-function plnt_loop_product_attributes() {
-	global $product;
-
-	if ( ! $product ) {
-		return;
-	}
-
-  $attributes = $product->get_attributes();
-
-	if ( empty( $attributes ) ) {
-		return;
-	}
-  echo ('<div class="catalog__product-attributes">');
-	echo '<ul class="product-card-attributes">';
-
-	foreach ( $attributes as $attribute ) {
-		if ( ! $attribute->get_visible() ) {
-			continue;
-		}
-
-		$name = wc_attribute_label( $attribute->get_name() );
-
-		if ( $attribute->is_taxonomy() ) {
-			$values = wc_get_product_terms(
-				$product->get_id(),
-				$attribute->get_name(),
-				array( 'fields' => 'names' )
-			);
-		} else {
-			$values = $attribute->get_options();
-		}
-
-		if ( empty( $values ) ) {
-			continue;
-		}
-
-		echo '<li>';
-		echo '<span class="product-card-attributes__name">' . esc_html( $name ) . ':</span> ';
-		echo '<span class="product-card-attributes__value">' . esc_html( implode( ', ', $values ) ) . '</span>';
-		echo '</li>';
-	}
-
-	echo '</ul>';
-  echo ('</div>');
-}
 
 //вывод данных для Schema.org 
 add_action('woocommerce_after_shop_loop_item', 'plnt_get_catalog_schema_data', 40);

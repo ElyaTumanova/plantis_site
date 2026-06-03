@@ -8,7 +8,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_filter('BeRocket_AAPF_template_full_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
 add_filter('BeRocket_AAPF_template_full_element_content', 'some_custom_berocket_aapf_template_full_content', 4000, 1);
 function some_custom_berocket_aapf_template_full_content($template_content) {
-	if ($template_content['template']['attributes']['data-name']==='Подборки') {
+  $data_name = $template_content['template']['attributes']['data-name'] ?? '';
+	if ($data_name ==='Подборки-слайдер') {
 			array_push($template_content['template']['content']['filter']['attributes']['class'],'metki_swiper_wrap');
 			array_push($template_content['template']['content']['filter']['attributes']['class'],'swiper');
 			
@@ -43,7 +44,8 @@ function some_custom_berocket_aapf_template_full_content($template_content) {
 add_filter('BeRocket_AAPF_template_full_content', 'plnt_plant_name_filter_content', 4000, 1);
 add_filter('BeRocket_AAPF_template_full_element_content', 'plnt_plant_name_filter_content', 4000, 1);
 function plnt_plant_name_filter_content($template_content) {
-	if ($template_content['template']['attributes']['data-name']==='Название') {
+  $data_name = $template_content['template']['attributes']['data-name'] ?? '';
+	if ($data_name ==='Название') {
       // echo '<pre>';
 			// print_r( $template_content['template']['content'] );
 			// echo '</pre>';
@@ -71,14 +73,15 @@ function plnt_plant_name_filter_content($template_content) {
 add_filter('BeRocket_AAPF_template_full_content', 'plnt_rename_filter_title', 4000, 1);
 add_filter('BeRocket_AAPF_template_full_element_content', 'plnt_rename_filter_title', 4000, 1);
 
-function plnt_rename_filter_title($template_content) {
-    $title_path = &$template_content['template']['content']['header']['content']['title']['content']['title'];
+function plnt_rename_filter_title( $template_content ) {
+	if (
+		isset( $template_content['template']['content']['header']['content']['title']['content']['title'] ) &&
+		$template_content['template']['content']['header']['content']['title']['content']['title'] === 'Подборки'
+	) {
+		$template_content['template']['content']['header']['content']['title']['content']['title'] = 'Подарок';
+	}
 
-    if ($title_path === 'Подборки') {
-        $title_path = 'Подарок';
-    }
-
-    return $template_content;
+	return $template_content;
 }
 
 // add_filter('BeRocket_AAPF_template_full_content', 'plnt_berocket_gift_filter_header', 4000, 1);

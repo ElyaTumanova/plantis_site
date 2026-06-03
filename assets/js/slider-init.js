@@ -136,67 +136,73 @@
 
 // слайдер инициирован в wc-catalog-functions, чтобы повторно инициироваться при аякс обновлении каталога при приминении фильтров
 
-function swiper_catalog_card_imgs_init () {
-  console.log('hi swiper_catalog_card_imgs_init');
-
+function swiper_catalog_card_imgs_init() {
   document.querySelectorAll('.product__image-slider-wrap').forEach((wrap) => {
-    // ✅ если уже инициализировано — просто обновим и выйдем
     if (wrap.classList.contains('swiper-initialized')) {
-      if (wrap.swiper) {
-        wrap.swiper.update();
-        // иногда на мобиле буллеты "зависают" после изменения DOM — это лечит:
-        if (wrap.swiper.pagination) wrap.swiper.pagination.render();
-        if (wrap.swiper.pagination) wrap.swiper.pagination.update();
-      }
-      return;
+      wrap.swiper?.update()
+      wrap.swiper?.pagination?.render()
+      wrap.swiper?.pagination?.update()
+      return
     }
 
-    const slidesCount = wrap.querySelectorAll('.swiper-slide').length;
+    const slidesCount = wrap.querySelectorAll('.swiper-slide').length
 
-    const paginationEl = wrap.querySelector('.swiper-pagination');
-    const nextEl = wrap.querySelector('.swiper-button-next');
-    const prevEl = wrap.querySelector('.swiper-button-prev');
+    const paginationEl = wrap.querySelector('.swiper-pagination')
+    const nextEl = wrap.querySelector('.swiper-button-next')
+    const prevEl = wrap.querySelector('.swiper-button-prev')
 
-    // если 0-1 слайд — выключаем loop и прячем управление
     if (slidesCount <= 1) {
-      if (paginationEl) paginationEl.style.display = 'none';
-      if (nextEl) nextEl.style.display = 'none';
-      if (prevEl) prevEl.style.display = 'none';
-    } else {
-      // на случай если было скрыто ранее шаблоном/динамикой
-      if (paginationEl) paginationEl.style.display = '';
-      if (nextEl) nextEl.style.display = '';
-      if (prevEl) prevEl.style.display = '';
+      wrap.classList.add('is-single-slide')
+
+      if (paginationEl) paginationEl.style.display = 'none'
+      if (nextEl) nextEl.style.display = 'none'
+      if (prevEl) prevEl.style.display = 'none'
+
+      return
     }
+
+    wrap.classList.remove('is-single-slide')
+
+    if (paginationEl) paginationEl.style.display = ''
+    if (nextEl) nextEl.style.display = ''
+    if (prevEl) prevEl.style.display = ''
 
     const sw = new Swiper(wrap, {
-      pagination: paginationEl ? { el: paginationEl, clickable: true } : undefined,
-      // navigation: (nextEl && prevEl) ? { nextEl, prevEl, enabled: slidesCount > 1 } : undefined,
-    
+      pagination: paginationEl
+        ? {
+            el: paginationEl,
+            clickable: true,
+          }
+        : undefined,
 
       grabCursor: true,
       slidesPerView: 1,
       slidesPerGroup: 1,
       spaceBetween: 0,
 
-      loop: slidesCount > 1,
+      loop: true,
 
       observer: true,
       observeParents: true,
       observeSlideChildren: true,
 
       breakpoints: {
-        320: { navigation: { enabled: false } },
-        768: { navigation: { enabled: slidesCount > 1 } },
-      }
-    });
+        320: {
+          navigation: {
+            enabled: false,
+          },
+        },
+        768: {
+          navigation: {
+            enabled: true,
+          },
+        },
+      },
+    })
 
-    // ✅ гарантируем корректную пагинацию после старта (часто важно на мобиле)
-    if (sw.pagination) {
-      sw.pagination.render();
-      sw.pagination.update();
-    }
-  });
+    sw.pagination?.render()
+    sw.pagination?.update()
+  })
 }
 
 
@@ -204,6 +210,30 @@ function swiper_catalog_card_imgs_init () {
 /*--------------------------------------------------------------
 # Card
 --------------------------------------------------------------*/
+    document.querySelectorAll('[data-js-product-gallery]').forEach((gallery) => {
+      const thumbsEl = gallery.querySelector('.product-gallery__thumbs')
+      const mainEl = gallery.querySelector('.product-gallery__main')
+
+      if (!thumbsEl || !mainEl) {
+        return
+      }
+
+      const thumbsSwiper = new Swiper(thumbsEl, {
+        direction: 'vertical',
+        slidesPerView: 5,
+        spaceBetween: 0,
+        watchSlidesProgress: true,
+      })
+
+      new Swiper(mainEl, {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        thumbs: {
+          swiper: thumbsSwiper,
+        },
+      })
+    })    
+
     const swiper_card_cross_upsells = new Swiper('.cross-upsells-swiper', {
         pagination: {
             el: '.swiper-pagination',
@@ -547,7 +577,7 @@ function swiper_filter_metki_init() {
             draggable: true,
         },
         slidesPerView: 'auto',
-        spaceBetween: 5,
+        spaceBetween: 4,
         loop: false,
         breakpoints: {
             320: {

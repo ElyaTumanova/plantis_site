@@ -174,7 +174,7 @@ function plnt_check_stock_status() {
     // 1) Есть товар в наличии
     if ($product->get_stock_status() === 'instock') {
         ?>
-        <div class="card__stockstatus card__stockstatus_in">Доставка от 2 часов</div>
+        <div class="card__stockstatus card__stockstatus_in icon icon--pre icon--clock">Доставка от 2 часов</div>
         <?php
         return;
     }

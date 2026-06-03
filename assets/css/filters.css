@@ -10,70 +10,13 @@
   display: none;
 }
 
-/* активные фильтры */
-
-.catalog__filter-active {
-  display: none;
-  white-space: nowrap;
-}
-
-.catalog__filter-active h3 {
-    display: none;
-}
-
-.catalog__filter-active .berocket_aapf_widget_selected_filter {
-    display: flex;
-    column-gap: 10px;
-    flex-wrap: wrap;
-}
-
-.catalog__filter-active .berocket_aapf_widget_selected_filter .bapf_sfa_unall {
-    margin-left: auto !important;
-    /* margin-top: 17px; */
-}
-
-.catalog__filter-active .bapf_sfa_taxonomy ul {
-    display: flex;
-    column-gap: 15px;
-}
-
-.catalog__filter-active .bapf_sfa_taxonomy span {
-    font-size: 14px;
-    margin-bottom: 3px;
-    display: block;
-}
-
-.catalog__filter-active .bapf_sfa_taxonomy ul li a{
-    display: flex;
-    flex-direction: row-reverse;
-    column-gap: 10px;
-}
-
-@media (max-width:767px) {
-    .catalog__filter-active {
-        overflow-x: scroll;
-        /* margin-top: 10px; */
-    }
-    .catalog__filter-active .berocket_aapf_widget_selected_filter {
-        flex-wrap: nowrap;
-        margin-bottom: 10px;
-    }
-    .catalog__filter-active .bapf_sfilter {
-        margin-bottom: 0;
-    }
-    
-    .catalog__filter-active  .bapf_sfilter.bapf_divi_sfa .berocket_aapf_widget_selected_filter ul {
-        margin-bottom: 0;
-    }
-}
-
 
 /* фильтры в сайдбаре */
 
 .catalog__sidebar-filters {
   display: flex;
   flex-direction: column;
-  row-gap: 32px;
+  row-gap: clamp(1.25rem, 0.9628rem + 1.2766vw, 2rem);
 }
 
 .catalog__sidebar-filters .bapf_head {
@@ -91,9 +34,6 @@
 }
 
 /* стрелка для выпадающего списка фильтров */
-.catalog__sidebar-filters .fa-chevron-down, .catalog__sidebar-filters .fa-chevron-up {
-    /* transform: rotate(90deg); */
-}
 
 .catalog__sidebar-filters .fa-chevron-down,
 .catalog__sidebar-filters .fa-chevron-up {
@@ -153,9 +93,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--gray-l-color);
-
+  color: var(--green-l-color);
 }
+
+@media (hover:hover) {
+  .catalog__sidebar-filters .bapf_body ul li input:hover {
+    color: var(--gray-l-color);
+    border: 1px solid #3C766252;
+  }
+}
+
 .catalog__sidebar-filters .bapf_body ul li.checked input{
   background-color: var(--accent-color);
   color: var(--white-color);
@@ -177,6 +124,21 @@
 
 .catalog__filter-metki {
   position: relative;
+}
+
+.catalog__filter-metki-ontop {
+  padding-left: 8px;
+  margin-bottom: 20px;
+}
+
+.catalog__filter-metki-ontop ul li{
+  margin-right: 4px !important;
+}
+
+@media(min-width:767px) {
+  .catalog__filter-metki-ontop {
+    display: none;
+  }
 }
 
 .metki_swiper_wrap {
@@ -211,26 +173,22 @@
 }
 
 @media (max-width:767px) {
-    .catalog__filter-metki ul {
-        flex-wrap: nowrap;
-    }
+  .catalog__filter-metki ul {
+    flex-wrap: nowrap;
+  }
 
-    .catalog__filter-metki {
-        overflow-x: scroll;
-    }
+  .catalog__filter-metki .bapf_sfilter {
+    margin-bottom: 10px;
+  }
 
-    .catalog__filter-metki .bapf_sfilter {
-        margin-bottom: 10px;
-    }
+  .catalog__filter-metki .swiper-button-next, .catalog__filter-metki .swiper-button-prev {
+    display: none;
+  }
 
-    .catalog__filter-metki .swiper-button-next, .catalog__filter-metki .swiper-button-prev {
-        display: none;
-    }
-
-    .metki_swiper_wrap {
-        margin: 0;
-        padding-bottom: 0px;
-    }
+  .metki_swiper_wrap {
+    margin: 0;
+    padding-bottom: 0px;
+  }
 }
 
 .catalog__filter-metki ul li input{
@@ -256,14 +214,14 @@
 }
 
 @media (hover: hover) {
-    .catalog__filter-metki ul li:hover{
-        background-color:var(--accent-color);
-        color: var(--white) !important;
-    }
+  .catalog__filter-metki ul li:hover{
+    background-color:var(--accent-color);
+    color: var(--white) !important;
+  }
 
-    .catalog__filter-metki  ul li label:hover{
-        color: inherit !important;
-    }
+  .catalog__filter-metki  ul li label:hover{
+    color: inherit !important;
+  }
 }
 
 .catalog__filter-metki .swiper-button-prev {
@@ -276,32 +234,6 @@
     height: 30px;
     width: 30px;
     margin-top: -15px;
-}
-
-
-/* фильтр в наличии */
-
-.catalog__instock-filter li:has([data-name="Нет в наличии"]) {
-    display: none !important;
-}
-
-.catalog__mob-filter-wrap .catalog__instock-filter .bapf_sfilter {
-    display: flex;
-    flex-direction: row-reverse;
-    margin: 0;
-}
-
-.catalog__mob-filter-wrap .catalog__instock-filter .bapf_head {
-    margin-top: 11px;
-}
-
-.catalog__mob-filter-wrap .catalog__instock-filter .bapf_body label {
-    font-size: 0 !important;
-}
-
-.catalog__mob-filter-wrap .catalog__instock-filter h3 {
-    font-size: 14px;
-    font-weight: 500;
 }
 
 /* фильтр цены */
@@ -358,8 +290,6 @@
 .divi_slider_class .bapf_slidr_all .bapf_from {
   margin-right: 4px;
 }
-
-
 
 /*фильтр с диаметром горшка*/
 
@@ -420,10 +350,6 @@
 
 /* фильтр с назанием растения */
 
-.mCSB_scrollTools_vertical {
-  /* margin-top: 50px !important; */
-}
-
 .mCSB_container {
   scroll-snap-type: x mandatory;
 }
@@ -460,6 +386,65 @@
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: contain;
+}
+
+/* reset filters */
+
+.catalog__top .bapf_rst_nofltr {
+  display: none;
+}
+
+.catalog__sidebar .bapf_rst_nofltr {
+  display: block !important;
+}
+
+.bapf_sfilter .bapf_button.bapf_reset {
+  --btn-pad-block:11px;
+  --btn-pad-inline:16px;
+  display: inline-flex !important;
+  gap: 8px;
+  font-weight: 400 !important;
+}
+
+.catalog__top .bapf_sfilter .bapf_button.bapf_reset {
+  color: var(--black-color);
+  background-color: var(--green-l-color);
+}
+
+.bapf_sfilter .bapf_button.bapf_reset svg {
+  color: var(--red-color);
+}
+
+.bapf_sfilter .bapf_button.bapf_reset .plnt-reset-filters__count {
+  color: var(--gray-l-color);
+}
+
+@media (max-width:768px) {
+  .catalog__top .bapf_sfilter .bapf_button.bapf_reset {
+    display: none !important;
+  }
+  .bapf_sfilter .bapf_button.bapf_reset {
+    --btn-pad-inline:20px;
+  }
+}
+
+.catalog__sidebar .modal-mob__footer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px;
+}
+
+.catalog__sidebar-filters-show-all {
+  --btn-pad-block:11px;
+  --btn-pad-inline:16px;
+  font-size: 16px;
+  width: 100%;
+  gap: 6px;
+}
+
+.catalog__sidebar-filters-show-all .woocommerce-result-count {
+  color: var(--white-color);
+  opacity: 75%;
 }
 
 /*стили для switch чекбокса в наличии*/

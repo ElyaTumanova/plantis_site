@@ -241,3 +241,16 @@ function updatePopularSwiper() {
         swiper_popular_slider_init();
     }
 }
+
+/* навешиваем класс loading при удалении из корзины в каталоге */
+jQuery(function ($) {
+  $(document.body).on('click', '.remove_from_cart_button', function () {
+    this.classList.add('loading')
+  })
+
+  $(document.body).on('removed_from_cart wc_fragments_refreshed updated_wc_div', function () {
+    $('.remove_from_cart_button.loading').each(function () {
+      this.classList.remove('loading')
+    })
+  })
+})

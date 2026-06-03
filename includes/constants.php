@@ -121,6 +121,8 @@ add_action( 'wp_footer', 'plnt_check_site' );
 	$filter_active_id = 9324; //ok
 	$filter_razmer_id = 60247; //to be updated
 	$filter_razmer_kashpo_id = 56545; //to be updated
+  $filter_podborki_slider_id = 15787;
+  $filter_clear_id = 15788;
 
 
 // } 

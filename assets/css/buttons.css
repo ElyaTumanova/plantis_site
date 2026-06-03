@@ -3,20 +3,29 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  /* padding: 9px 14px; */
+
   font-size: clamp(0.75rem, 0.6591rem + 0.4545vw, 1rem); /* 16px - 14px */
   font-weight: 500;
   white-space: nowrap;
-  /* background-color: var(--accent-color); */
   color: inherit;
+
   border: none;
   border-radius: var(--button-br);
-  border: none;
+
   background: transparent;
-  padding: 0;
-  margin: 0;
+
+  padding-inline: var(--btn-pad-inline, 14px);
+  padding-block: var(--btn-pad-block, 11px);
   width: fit-content;
-  height: fit-content;
+  height: var(--btn-height, fit-content);
+
+  margin: 0;
+}
+
+.button--clean,
+.button:has(> svg:only-child) {
+  --btn-pad-inline: 0px;
+  --btn-pad-block: 0px;
 }
 
 .button--transparent {
@@ -45,8 +54,8 @@
   width: 100%;
   background-color: var(--white-color);
   color: var(--accent-color);
-  padding: 11px;
   height: var(--btn-height, 42px);
+  font-size: clamp(0.75rem, 0.6591rem + 0.4545vw, 1rem); /* 16px - 14px */
 }
 
 .button--white span {
@@ -59,17 +68,21 @@
   }
 }
 
+.button--green {
+  background-color: var(--accent-color);
+  color: var(--white-color);
+}
+
 .button--green-l {
   background-color: var(--green-l-color);
   color: var(--accent-color);
-  padding: 11px;
-  height: var(--btn-height, 42px);
 }
 
 .header__main-catalog-btn {
   background-color: var(--green-l-color);
   padding: 9px 14px;
   gap: 8px;
+  font-weight: 400;
 }
 
 .header__main-catalog-btn .burger {

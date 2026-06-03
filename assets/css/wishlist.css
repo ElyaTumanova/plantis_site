@@ -2,6 +2,17 @@
   display: none !important;
 }
 
+.yith-wcwl-add-button .view-wishlist {
+  display: none !important;
+}
+
+.yith-wcwl-add-button .delete_item {
+  font-size: 0;
+}
+.yith-wcwl-add-button .separator {
+  display: none !important;
+}
+
 .yith-wcwl-add-button {
   --size: clamp(1.75rem, 1.5735rem + 0.7843vw, 2.25rem); /* 36px - 28px */
   position: relative;
@@ -20,11 +31,12 @@
 
 .yith-wcwl-add-button::after {
   position: absolute;
-  z-index: -1;
   content: '';
   --size: clamp(1rem, 0.9118rem + 0.3922vw, 1.25rem); /* 20px - 16px */
   width: var(--size);
   height: var(--size);
+
+  pointer-events: none;
 
   background-color: currentColor;
 

@@ -201,7 +201,7 @@
   position: relative;
   overflow: hidden;
   grid-template-columns: 100% 100% auto;
-  gap: var(--burger-padding);
+  gap: var(--modal-padding);
 }
 
 .burger-menu .catalog-dropdown__cats::after {
@@ -220,17 +220,16 @@
   width: 100%;
 }
 
-.catalog-dropdown__cats-item.icon::after {
+.burger-menu .catalog-dropdown__cats-item.icon::after {
   display: block;
   color: var(--gray-l-color);
   margin-left: auto;
 }
 
 .burger-menu .catalog-dropdown__sub-cats {
-  width: calc(100vw - var(--burger-offset) * 2);
+  width: var(--burgerMenuModalWidth);
   padding: 0;
-  padding-inline: var(--burger-padding);
-  /* transform: translateX(100%); */
+  padding-inline: var(--modal-padding);
   background-color: var(--background);
   transition: transform 0.5s ease;
 

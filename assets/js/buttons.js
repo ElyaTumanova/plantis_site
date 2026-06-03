@@ -37,13 +37,13 @@ window.addEventListener('resize', () => {
 --------------------------------------------------------------*/
 let headerDiv = document.querySelector('.header__desktop');
 let headerHeight= headerDiv.offsetHeight;
-document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
+// document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
 // слушаем событие resize
-window.addEventListener('resize', () => {
-    // получаем текущее значение высоты
-    let headerHeight= headerDiv.offsetHeight;
-    document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
-});
+// window.addEventListener('resize', () => {
+//     // получаем текущее значение высоты
+//     let headerHeight= headerDiv.offsetHeight;
+//     document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
+// });
 
 let headerMainDiv = document.querySelector('.header__main');
 let searchDiv = document.querySelector('.search__wrap');
@@ -62,19 +62,19 @@ window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset;
     if(scrollTop >0){
         // headerMainDiv.setAttribute('style', `margin-top:${marginTopOffset}px`);
-        document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
+        // document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
         headerMainDiv.classList.add('scrollhidden');
         searchDiv.classList.add('scrollhidden');
         searchResultDiv.classList.add('scrollhidden');
     } else{
         // headerMainDiv.removeAttribute('style');
-        document.documentElement.style.setProperty('--marginTopOffset', 0);
+        // document.documentElement.style.setProperty('--marginTopOffset', 0);
         headerMainDiv.classList.remove('scrollhidden');
         searchDiv.classList.remove('scrollhidden');
         searchResultDiv.classList.remove('scrollhidden');
     }
 });
-document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
+// document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
 
 //это не обязательно
 // window.addEventListener('resize', () => {
@@ -106,25 +106,25 @@ if(catalogFilterWrap) {
 /*--------------------------------------------------------------
 # Filters for mobile in catalog
 --------------------------------------------------------------*/
-const filtersMob = document.querySelector('.catalog__sidebar');
-const filtersMobOpen = document.querySelector('.catalog__mob-filter-btn ');
-const filtersMobClose = document.querySelector('.catalog-sidebar__close');
-const contentArea = document.querySelector('.content-area');
+// const filtersMob = document.querySelector('.catalog__sidebar');
+// const filtersMobOpen = document.querySelector('.catalog__mob-filter-btn ');
+// const filtersMobClose = document.querySelector('.catalog-sidebar__close');
+// const contentArea = document.querySelector('.content-area');
 
-if (filtersMob) {
-    filtersMobOpen.addEventListener ("click", (evt)=>{
-        toggle_mob_filters ();
-    });
-    filtersMobClose.addEventListener ("click", (evt)=>{
-        toggle_mob_filters ();
-    });
+// if (filtersMob) {
+//     filtersMobOpen.addEventListener ("click", (evt)=>{
+//         toggle_mob_filters ();
+//     });
+//     filtersMobClose.addEventListener ("click", (evt)=>{
+//         toggle_mob_filters ();
+//     });
     
-    function toggle_mob_filters () {
-        filtersMob.classList.toggle ('modal-mob_active');
-        body.classList.toggle ('fix-body');
-        contentArea.classList.toggle ('no-padding');
-    };
-}
+//     function toggle_mob_filters () {
+//         filtersMob.classList.toggle ('modal-mob--active');
+//         body.classList.toggle ('fix-body');
+//         contentArea.classList.toggle ('no-padding');
+//     };
+// }
 
 
 /*--------------------------------------------------------------

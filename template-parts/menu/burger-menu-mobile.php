@@ -5,14 +5,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="burger-menu"> 
   <div class="burger-menu__modal modal-mob">
-    <div class="burger-menu__header">
+    <div class="burger-menu__header modal-mob__header">
       <div class="burger-menu__nav container">
         <button class="button burger-menu__nav-btn burger-menu__nav_menu burger-menu__nav-btn_active">Меню</button>
         <button class="button burger-menu__nav-btn burger-menu__nav_catalog">Каталог</button>
       </div>
-      <button class="burger-menu__close popup__close button"><?php echo plnt_icon('close') ?></button>
+      <button type="button" class="burger-menu__close modal-mob__close popup__close button"><?php echo plnt_icon('close') ?></button>
     </div>
-    <div class="burger-menu__body">
+    <div class="burger-menu__body modal-mob__body">
       <div class="burger-menu__body-inner burger-menu__body-inner--menu">
         <div class="burger-menu__body-wrap">
           <span class="burger-menu__heading">Контакты</span>

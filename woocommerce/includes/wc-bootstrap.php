@@ -5,8 +5,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require get_template_directory() . '/woocommerce/includes/core/wc-helpers.php';
+require get_template_directory() . '/woocommerce/includes/core/wc-blocks.php';
+require get_template_directory() . '/woocommerce/includes/core/wc-seo-functions.php';
 
 
+require get_template_directory() . '/woocommerce/includes/catalog/wc-catalog-functions.php';
 require get_template_directory() . '/woocommerce/includes/catalog/wc-catalog-filters.php';
 require get_template_directory() . '/woocommerce/includes/catalog/wc-catalog-layout.php';
 require get_template_directory() . '/woocommerce/includes/catalog/wc-product-layout.php';
+
+require get_template_directory() . '/woocommerce/includes/product-card/wc-product-card-layout.php';
