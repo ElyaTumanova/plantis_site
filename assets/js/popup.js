@@ -116,6 +116,10 @@ class CF7Popup extends Popup {
     if(this.contactForm !=null) {
       this.contactForm.reset()
     }
+    if (this.tgNikWrap) {
+      this.tgNikWrap.classList.add('d-none')
+      this.tgNikInput.value = ""
+    }
   }
 
   closePopup () {
