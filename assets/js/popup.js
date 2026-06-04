@@ -92,6 +92,7 @@ class CF7Popup extends Popup {
     this.serviceNameInput = null
     this.contactMethods = null
     this.tgNikWrap = null
+    this.tgNikInput = null
 
   }
 
@@ -105,6 +106,7 @@ class CF7Popup extends Popup {
     this.contactMethods = this.popup.querySelectorAll('#dontcallme input[type="radio"]');
     if(this.contactMethods) {
       this.tgNikWrap = this.popup.querySelector('.tg-nik-wrap')
+      this.tgNikInput = this.tgNikWrap.querySelector('input')
     }
     
     return true
@@ -162,6 +164,7 @@ class CF7Popup extends Popup {
             console.log('не Telegram выбран');
             if (this.tgNikWrap) {
               this.tgNikWrap.classList.add('d-none')
+              this.tgNikInput.value = ""
             }
           } 
         });
