@@ -90,6 +90,9 @@ class CF7Popup extends Popup {
     this.preloader = null
     this.container = null
     this.serviceNameInput = null
+    this.contactMethods = null
+    this.tgNikWrap = null
+
   }
 
   initDom() {
@@ -99,6 +102,11 @@ class CF7Popup extends Popup {
     this.preloader = this.popup.querySelector('.preloader')
     this.container = this.popup.querySelector('.popup__container')
     this.serviceNameInput = this.popup.querySelector('.ukhod-popup-service-name')
+    this.contactMethods = this.popup.querySelectorAll('#dontcallme input[type="radio"]');
+    if(this.contactMethods) {
+      this.tgNikWrap = this.popup.querySelector('.tg-nik-wrap')
+    }
+    
     return true
   }
 
@@ -141,10 +149,31 @@ class CF7Popup extends Popup {
     }
   }
 
+  addContactMethodsListeners() {
+    if(this.contactMethods) {
+      this.contactMethods.forEach(input => {
+        input.addEventListener('change', () => {
+          if (input.checked && input.value === 'Написать в Telegram') {
+            console.log('Telegram выбран');
+            if (this.tgNikWrap) {
+              this.tgNikWrap.classList.remove('d-none')
+            }
+          } else {
+            console.log('не Telegram выбран');
+            if (this.tgNikWrap) {
+              this.tgNikWrap.classList.add('d-none')
+            }
+          } 
+        });
+      });
+    }
+  }
+
   addAllListeners() {
     super.addAllListeners()
     this.addContactFormListeners()
     this.addServiceNameListeners()
+    this.addContactMethodsListeners()
   }
 }
 
@@ -179,7 +208,6 @@ class LoginPopup extends Popup {
   }
 
 }
-
 
 class MenuMobPopup extends Popup {
   constructor (popupName) {
