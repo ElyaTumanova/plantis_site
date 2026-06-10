@@ -171,6 +171,9 @@
 .catalog__filter-metki li:has(input[data-name="Компактные"]) {
     order: -1;
 }
+.catalog__filter-metki li:has(input[type="checkbox"]:checked) {
+    order: -10;
+}
 
 @media (max-width:767px) {
   .catalog__filter-metki ul {
@@ -429,10 +432,19 @@
 }
 
 .catalog__sidebar .modal-mob__footer {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 4px;
+  display: none;
 }
+
+@media (max-width: 769px){
+  .catalog__sidebar .modal-mob__footer {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px;
+    margin-top: 20px;
+  }
+}
+
+
 
 .catalog__sidebar-filters-show-all {
   --btn-pad-block:11px;

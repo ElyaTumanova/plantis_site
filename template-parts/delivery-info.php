@@ -48,7 +48,7 @@ $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == 
             <div>от <?php echo $out_mkad?>₽</div>
         </div>
         <div class="delivery_table__row">
-            <div>В пределах МКАД <strong>в день заказа</strong></div>
+            <div>В пределах МКАД в день заказа</div>
             <?php if($isUrgentCourierTariff):?>
               <div>по тарифу грузоперевозчика</div>
             <?php else:?>
@@ -56,7 +56,7 @@ $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == 
             <?php endif; ?>
         </div>
         <div class="delivery_table__row">
-            <div>За пределы МКАД (до 5км) <strong>в день заказа</strong></div>
+            <div>За пределы МКАД (до 5км) в день заказа</div>
             <?php if($isUrgentCourierTariff):?>
               <div>по тарифу грузоперевозчика</div>
             <?php else:?>

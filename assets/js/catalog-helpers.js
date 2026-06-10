@@ -35,12 +35,30 @@ const updateActiveFiltersCount = () => {
 
 document.addEventListener('DOMContentLoaded', updateActiveFiltersCount)
 
+/* добавляем inputmode к фильтру цены */
+
+const setPriceInputMode = () => {
+  document
+    .querySelectorAll('.bapf_slidr input[type="text"]')
+    .forEach(input => {
+      input.setAttribute('inputmode', 'decimal')
+    })
+}
+document.addEventListener('DOMContentLoaded', setPriceInputMode)
+
+
+/* обновление после аякса */
+
 jQuery(document).on('berocket_ajax_filtering_end', () => {
   updateActiveFiltersCount()
+  setPriceInputMode()
+  // swiper_catalog_card_imgs_init()
 })
 
 jQuery(document).ajaxComplete(() => {
   updateActiveFiltersCount()
+  setPriceInputMode()
+  // swiper_catalog_card_imgs_init()
 })
 
 
@@ -66,3 +84,49 @@ document.addEventListener('click', (event) => {
     input.value = productName
   }
 })
+
+/*--------------------------------------------------------------
+# Buttons to change grid columns in catalog
+--------------------------------------------------------------*/
+
+const gridButton = document.getElementById('catalog__btn-grid');
+const rowsButton = document.getElementById('catalog__btn-rows');
+const catalogWrap = document.querySelector('.catalog__grid');
+
+if(gridButton && catalogWrap) {
+  const catalogGrid = catalogWrap.querySelector('.products');
+    // console.log(catalogGrid.classList)
+    if(catalogGrid.classList.contains('columns-3')) {
+      rowsButton.disabled = false;
+      gridButton.disabled = true;
+    } 
+    if(catalogGrid.classList.contains('in-row')) {
+      gridButton.disabled = false;
+      rowsButton.disabled = true;
+    } 
+    if (gridButton) {
+    gridButton.addEventListener ("click", (evt)=>{
+        make_2_grid_columns();
+    });
+
+    }
+    if (rowsButton) {
+      rowsButton.addEventListener ("click", (evt)=>{
+          make_3_grid_columns();
+      });
+    }
+    
+    function make_2_grid_columns () {
+        catalogGrid.classList.add ('columns-3');
+        catalogGrid.classList.remove ('in-row');
+        gridButton.disabled = true;
+        rowsButton.disabled = false;
+    };
+    
+    function make_3_grid_columns () {
+        catalogGrid.classList.remove ('columns-3');
+        catalogGrid.classList.add ('in-row');
+        gridButton.disabled = false;
+        rowsButton.disabled = true;
+    };
+};

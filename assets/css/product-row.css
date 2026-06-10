@@ -105,6 +105,9 @@
 .catalog__product-attributes .product-card-attributes__line {
   border-bottom: 1px dashed #EBEDED;
 }
+.catalog__product-attributes .product-card-attributes__value {
+  text-align: end;
+}
 
 /* wish */
 

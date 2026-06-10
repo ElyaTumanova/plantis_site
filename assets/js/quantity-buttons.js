@@ -49,15 +49,18 @@ jQuery(function ($){
 	//уведомление для backorder
 	var stock = parseInt(qty.parent().parent().find(".product_type_simple").attr( 'data-stock-quantity'));
 	var backorderInfo = qty.parent().parent().parent().parent().parent().parent().find(".card__banner--backorder-info");
-	var backorderInfoMob = qty.parent().parent().parent().parent().find(".card__banner--backorder-info");
 	if (stock >0) {
 		if (newVal == (stock + 1)) {
 			backorderInfo.addClass('is-active');
-			backorderInfoMob.addClass('is-active');
+      setTimeout(() => {
+        backorderInfo[0]?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'end',
+        })
+      }, 300)
 		} 
 		if (newVal <= (stock)) {
 			backorderInfo.removeClass('is-active');
-			backorderInfoMob.removeClass('is-active');
 		}
 	} 
 

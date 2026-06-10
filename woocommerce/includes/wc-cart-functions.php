@@ -91,7 +91,7 @@ function plnt_woocommerce_cart_header() {
 	<div class="header__actions header-cart">
     <a
       href="<?php echo esc_url( wc_get_cart_url() ); ?>"
-      class="header-cart__link<?php echo $is_active ? ' header__nav-actions-wrap_active' : ''; ?>"
+      class="header-cart__link"
     >
       <span class="header__actions-count<?php echo $is_active ? ' header__actions-count--active' : ''; ?>">
         <?php echo esc_html( $count ); ?>
@@ -118,7 +118,7 @@ function plnt_woocommerce_cart_header_mob() {
 	$is_active = $count > 0;
 	?>
 
-	<div class="header__actions header-cart__mob<?php echo $is_active ? ' header__nav-actions-wrap_active' : ''; ?>">
+	<div class="header__actions header-cart__mob">
 		<span class="header__actions-count<?php echo $is_active ? ' header__actions-count--active' : ''; ?>">
 			<?php echo esc_html( $count ); ?>
 		</span>

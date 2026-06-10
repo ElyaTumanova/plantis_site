@@ -26,7 +26,7 @@ $logo = carbon_get_theme_option('logo');
       <?php get_template_part( 'template-parts/header/header-notice' );?>
     </div>
 
-    <div class="header__main">
+    <div class="header__main" data-js-search>
       <div class="header__main-top container">
         <div class="header__main-wrap">
           <div class="header__main-logo logo">
@@ -77,6 +77,7 @@ $logo = carbon_get_theme_option('logo');
       <div class="header__main-catalog-dropdown">
         <?php get_template_part( 'template-parts/menu/catalog-menu');?>
       </div>
+      <div class="search-result search-result--desktop"></div>
     </div>
 
   
@@ -104,15 +105,15 @@ $logo = carbon_get_theme_option('logo');
   <div class="header__notice-wrap_mob">
     <?php get_template_part( 'template-parts/header/header-notice' );?>
   </div>
-  <div class="search__wrap">
-    <?get_search_form();?>
-    <div class="search__clean"><?php echo $close_icon ?></div>
-  </div>
+  <!-- <div class="search__wrap">
+    <?php //get_search_form();?>
+    <div class="search__clean"><?php //echo $close_icon ?></div>
+  </div> -->
 
-  <div class="search-result-popup popup">
+  <!-- <div class="search-result-popup popup">
     <div class="search-result">
     </div>
-  </div>
+  </div> -->
   
   <div class="header__nav container">
     <div class="header__nav-actions-wrap">
@@ -130,7 +131,7 @@ $logo = carbon_get_theme_option('logo');
       <span class="header__nav-actions-label">Каталог</span>		
     </div>
 
-    <div class="header__nav-actions-wrap search-btn">	
+    <div class="header__nav-actions-wrap search-popup-open-btn">	
       <?php echo plnt_icon('search'); ?>	
       <span class="header__nav-actions-label">Поиск</span>		
     </div>

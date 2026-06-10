@@ -13,68 +13,21 @@
       spaceBetween: 0,
       loop: true,
       breakpoints: {
-          320: {
+          315: {
               navigation: {
                   enabled: false,
               },
           },
-          767: {
+          768: {
               navigation: {
                   enabled: true,
               },
-          }
-      }
-  });
-
-  const swiper_main_sale = new Swiper('.main__sale-swiper', {
-      pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-          type: 'progressbar'
-      },
-      navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-      },
-      slidesPerView: 1,
-      slidesPerGroup: 1,
-      spaceBetween: 0,
-      loop: true,
-      freeMode: true,
-      observer: true,
-      observeParents: true,
-      observeSlideChildren: true,
-      breakpoints: {
-          320: {
-              slidesPerView: 2,
-              spaceBetween: 10,
-              navigation: {
-                  enabled: false,
-              },
-          },
-          767: {
-              navigation: {
-                  enabled: true,
-              },
-              slidesPerView: 2,
-          },
-          1125: {
-              navigation: {
-                  enabled: true,
-              },
-              slidesPerView: 3,
-          },
-          1279: {
-              navigation: {
-                  enabled: true,
-              },
-              slidesPerView: 1,
           }
       }
   });
 
   /* Cats tiles */
-  const swiper_cats_tiles = new Swiper('.cats-tiles.swiper', {
+  const swiper_cats_tiles = new Swiper('.cats-tiles .swiper', {
     slidesPerView: 2.3,
     spaceBetween: 8,
 
@@ -100,7 +53,7 @@
     },
   })
 
-  const swiper_cats_assort = new Swiper('.front__assort.swiper', {
+  const swiper_cats_assort = new Swiper('.front__assort .swiper', {
     slidesPerView: 1.6,
     spaceBetween: 8,
 
@@ -130,368 +83,362 @@
     },
   })
 
-/*--------------------------------------------------------------
-# Catalog
---------------------------------------------------------------*/
 
+/* Catalog */
 // слайдер инициирован в wc-catalog-functions, чтобы повторно инициироваться при аякс обновлении каталога при приминении фильтров
 
-function swiper_catalog_card_imgs_init() {
-  document.querySelectorAll('.product__image-slider-wrap').forEach((wrap) => {
-    if (wrap.classList.contains('swiper-initialized')) {
-      wrap.swiper?.update()
-      wrap.swiper?.pagination?.render()
-      wrap.swiper?.pagination?.update()
-      return
-    }
-
-    const slidesCount = wrap.querySelectorAll('.swiper-slide').length
-
-    const paginationEl = wrap.querySelector('.swiper-pagination')
-    const nextEl = wrap.querySelector('.swiper-button-next')
-    const prevEl = wrap.querySelector('.swiper-button-prev')
-
-    if (slidesCount <= 1) {
-      wrap.classList.add('is-single-slide')
-
-      if (paginationEl) paginationEl.style.display = 'none'
-      if (nextEl) nextEl.style.display = 'none'
-      if (prevEl) prevEl.style.display = 'none'
-
-      return
-    }
-
-    wrap.classList.remove('is-single-slide')
-
-    if (paginationEl) paginationEl.style.display = ''
-    if (nextEl) nextEl.style.display = ''
-    if (prevEl) prevEl.style.display = ''
-
-    const sw = new Swiper(wrap, {
-      pagination: paginationEl
-        ? {
-            el: paginationEl,
-            clickable: true,
-          }
-        : undefined,
-
-      grabCursor: true,
-      slidesPerView: 1,
-      slidesPerGroup: 1,
-      spaceBetween: 0,
-
-      loop: true,
-
-      observer: true,
-      observeParents: true,
-      observeSlideChildren: true,
-
-      breakpoints: {
-        320: {
-          navigation: {
-            enabled: false,
-          },
-        },
-        768: {
-          navigation: {
-            enabled: true,
-          },
-        },
-      },
-    })
-
-    sw.pagination?.render()
-    sw.pagination?.update()
-  })
-}
-
-
-
-/*--------------------------------------------------------------
-# Card
---------------------------------------------------------------*/
-    document.querySelectorAll('[data-js-product-gallery]').forEach((gallery) => {
-      const thumbsEl = gallery.querySelector('.product-gallery__thumbs')
-      const mainEl = gallery.querySelector('.product-gallery__main')
-
-      if (!thumbsEl || !mainEl) {
+  function swiper_catalog_card_imgs_init() {
+    console.log('hi swiper_catalog_card_imgs_init')
+    document.querySelectorAll('.product__image-slider-wrap').forEach((wrap) => {
+      if (wrap.classList.contains('swiper-initialized')) {
+        wrap.swiper?.update()
+        wrap.swiper?.pagination?.render()
+        wrap.swiper?.pagination?.update()
         return
       }
 
-      const thumbsSwiper = new Swiper(thumbsEl, {
-        direction: 'vertical',
-        slidesPerView: 5,
-        spaceBetween: 0,
-        watchSlidesProgress: true,
-      })
+      const slidesCount = wrap.querySelectorAll('.swiper-slide').length
 
-      new Swiper(mainEl, {
+      const paginationEl = wrap.querySelector('.swiper-pagination')
+      const nextEl = wrap.querySelector('.swiper-button-next')
+      const prevEl = wrap.querySelector('.swiper-button-prev')
+
+      if (slidesCount <= 1) {
+        wrap.classList.add('is-single-slide')
+
+        if (paginationEl) paginationEl.style.display = 'none'
+        if (nextEl) nextEl.style.display = 'none'
+        if (prevEl) prevEl.style.display = 'none'
+
+        return
+      }
+
+      wrap.classList.remove('is-single-slide')
+
+      if (paginationEl) paginationEl.style.display = ''
+      if (nextEl) nextEl.style.display = ''
+      if (prevEl) prevEl.style.display = ''
+
+      const sw = new Swiper(wrap, {
+        pagination: paginationEl
+          ? {
+              el: paginationEl,
+              clickable: true,
+            }
+          : undefined,
+
+        grabCursor: true,
         slidesPerView: 1,
+        slidesPerGroup: 1,
         spaceBetween: 0,
-        thumbs: {
-          swiper: thumbsSwiper,
+
+        loop: true,
+
+        observer: true,
+        observeParents: true,
+        observeSlideChildren: true,
+
+        breakpoints: {
+          315: {
+            navigation: {
+              enabled: false,
+            },
+          },
+          768: {
+            navigation: {
+              enabled: true,
+            },
+          },
         },
       })
-    })    
 
-    const swiper_card_cross_upsells = new Swiper('.cross-upsells-swiper', {
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-            type: 'progressbar'
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        slidesPerView: 3,
-        slidesPerGroup: 1,
-        spaceBetween: 15,
-        loop: true,
-        freeMode: true,
-        breakpoints: {
-            320: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-                navigation: {
-                    enabled: false,
-                },
-            },
-            768: {
-                navigation: {
-                    enabled: true,
-                },
-            }
-        }
-    });
+      sw.pagination?.render()
+      sw.pagination?.update()
+    })
+  }
 
-    const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-            type: 'progressbar'
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        slidesPerView: 6,
-        slidesPerGroup: 1,
-        spaceBetween: 15,
-        loop: true,
-        freeMode: true,
-        breakpoints: {
-            320: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-                navigation: {
-                    enabled: false,
-                },
-                freeMode: true,
-            },
-            768: {
-                slidesPerView: 4,
-                spaceBetween: 10,
-                navigation: {
-                    enabled: true,
-                },
-            },
-            1024: {
-                slidesPerView: 6,
-                spaceBetween: 15,
-                navigation: {
-                    enabled: true,
-                },
-            }
-        }
-    });
+  // swiper_catalog_card_imgs_init()
 
-/*--------------------------------------------------------------
-# Products slider
---------------------------------------------------------------*/
-class ProductSlider {
-  constructor(element) {
-    if (!element) {
-      return;
+/* Card */
+  document.querySelectorAll('[data-js-product-gallery]').forEach((gallery) => {
+    const thumbsEl = gallery.querySelector('.product-gallery__thumbs')
+    const mainEl = gallery.querySelector('.product-gallery__main')
+
+    if (!thumbsEl || !mainEl) {
+      return
     }
 
-    this.element = element;
-    this.swiper = null;
+    const thumbsSwiper = new Swiper(thumbsEl, {
+      direction: 'vertical',
+      slidesPerView: 5,
+      spaceBetween: 0,
+      watchSlidesProgress: true,
+    })
 
-    this.init();
-  }
+    new Swiper(mainEl, {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      thumbs: {
+        swiper: thumbsSwiper,
+      },
+    })
+  })    
 
-  init() {
-    this.prepareSlides();
-
-    this.swiper = new Swiper(this.element, this.getOptions());
-  }
-
-  prepareSlides() {
-    const slides = this.element.querySelectorAll('.product');
-
-    slides.forEach((slide) => {
-      slide.classList.add('swiper-slide');
-    });
-  }
-
-  getOptions() {
-    return {
+  const swiper_card_cross_upsells = new Swiper('.cross-upsells-swiper', {
+      pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          type: 'progressbar'
+      },
       navigation: {
-        nextEl: this.element.querySelector('.swiper-button-next'),
-        prevEl: this.element.querySelector('.swiper-button-prev'),
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
       },
-
-      scrollbar: {
-        el: this.element.querySelector('.swiper-scrollbar'),
-        draggable: true,
-      },
-
-      slidesPerView: 4,
+      slidesPerView: 3,
       slidesPerGroup: 1,
-      spaceBetween: 12,
+      spaceBetween: 15,
       loop: true,
       freeMode: true,
-
       breakpoints: {
-        320: {
-          slidesPerView: 2,
-          spaceBetween: 8,
-          navigation: {
-            enabled: false,
+          315: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+              navigation: {
+                  enabled: false,
+              },
           },
-          freeMode: true,
-        },
+          768: {
+              navigation: {
+                  enabled: true,
+              },
+          }
+      }
+  });
 
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 12,
-          navigation: {
-            enabled: true,
-          },
-        },
-
-        1024: {
-          slidesPerView: 4,
-          spaceBetween: 12,
-          navigation: {
-            enabled: true,
-          },
-        },
+  const swiper_card_ukhod = new Swiper('.card-ukhod-swiper', {
+      pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          type: 'progressbar'
       },
-    };
-  }
+      navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+      },
+      slidesPerView: 6,
+      slidesPerGroup: 1,
+      spaceBetween: 15,
+      loop: true,
+      freeMode: true,
+      breakpoints: {
+          315: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+              navigation: {
+                  enabled: false,
+              },
+              freeMode: true,
+          },
+          768: {
+              slidesPerView: 4,
+              spaceBetween: 10,
+              navigation: {
+                  enabled: true,
+              },
+          },
+          1024: {
+              slidesPerView: 6,
+              spaceBetween: 15,
+              navigation: {
+                  enabled: true,
+              },
+          }
+      }
+  });
+/* Products slider */
 
-  destroy() {
-    if (!this.swiper) {
-      return;
+  class ProductSlider {
+    constructor(root) {
+      if (!root) {
+        return;
+      }
+
+      this.root = root;
+      this.element = root.querySelector('.product-slider-swiper');
+      this.swiper = null;
+
+      this.init();
     }
 
-    this.swiper.destroy(true, true);
-    this.swiper = null;
-  }
-}
+    init() {
+      this.prepareSlides();
 
-class ProductSliderCollection {
-  constructor(selector = '.product-slider-swiper') {
-    this.selector = selector;
-    this.items = new Map();
-
-    this.init();
-  }
-
-  init() {
-    const elements = document.querySelectorAll(this.selector);
-
-    elements.forEach((element) => {
-      this.add(element);
-    });
-  }
-
-  add(element) {
-    if (!element || this.items.has(element)) {
-      return;
+      this.swiper = new Swiper(this.element, this.getOptions());
     }
 
-    const slider = new ProductSlider(element);
+    prepareSlides() {
+      const slides = this.element.querySelectorAll('.product');
 
-    this.items.set(element, slider);
-  }
-
-  remove(element) {
-    const slider = this.items.get(element);
-
-    if (!slider) {
-      return;
+      slides.forEach((slide) => {
+        slide.classList.add('swiper-slide');
+      });
     }
 
-    slider.destroy();
-    this.items.delete(element);
-  }
-
-  destroyAll() {
-    this.items.forEach((slider) => {
-      slider.destroy();
-    });
-
-    this.items.clear();
-  }
-}
-
-const productSliders = new ProductSliderCollection();
-
-/*--------------------------------------------------------------
-# Popular slider
---------------------------------------------------------------*/
-function swiper_popular_slider_init() {
-    // console.log('hi swiper_popular_slider_init')
-    swiper_popular_slider = new Swiper('.popular-slider-swiper', {
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-            type: 'progressbar'
-        },
+    getOptions() {
+      return {
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+          nextEl: this.root.querySelector('.swiper-button-next'),
+          prevEl: this.root.querySelector('.swiper-button-prev'),
         },
-        // scrollbar: {
-        //     el: '.swiper-scrollbar',
-        //     draggable: true,
-        // },
-        slidesPerView: 5,
+
+        scrollbar: {
+          el: this.element.querySelector('.swiper-scrollbar'),
+          draggable: true,
+        },
+
+        slidesPerView: 4,
         slidesPerGroup: 1,
-        spaceBetween: 30,
+        spaceBetween: 12,
         loop: true,
         freeMode: true,
-        breakpoints: {
-            320: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-                navigation: {
-                    enabled: false,
-                },
-                freeMode: true,
-            },
-            768: {
-                slidesPerView: 4,
-                spaceBetween: 10,
-                navigation: {
-                    enabled: true,
-                },
-            },
-            1024: {
-                slidesPerView: 5,
-                spaceBetween: 30,
-                navigation: {
-                    enabled: true,
-                },
-            }
-        }
-    });
-}
 
-swiper_popular_slider_init();
+        breakpoints: {
+          315: {
+            slidesPerView: 2,
+            spaceBetween: 8,
+            navigation: {
+              enabled: false,
+            },
+            freeMode: true,
+          },
+
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 12,
+            navigation: {
+              enabled: true,
+            },
+          },
+
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 12,
+            navigation: {
+              enabled: true,
+            },
+          },
+        },
+      };
+    }
+
+    destroy() {
+      if (!this.swiper) {
+        return;
+      }
+
+      this.swiper.destroy(true, true);
+      this.swiper = null;
+    }
+  }
+
+  class ProductSliderCollection {
+    constructor(selector = '[data-js-product-slider]') {
+      this.selector = selector;
+      this.items = new Map();
+
+      this.init();
+    }
+
+    init() {
+      const elements = document.querySelectorAll(this.selector);
+
+      elements.forEach((element) => {
+        this.add(element);
+      });
+    }
+
+    add(element) {
+      if (!element || this.items.has(element)) {
+        return;
+      }
+
+      const slider = new ProductSlider(element);
+
+      this.items.set(element, slider);
+    }
+
+    remove(element) {
+      const slider = this.items.get(element);
+
+      if (!slider) {
+        return;
+      }
+
+      slider.destroy();
+      this.items.delete(element);
+    }
+
+    destroyAll() {
+      this.items.forEach((slider) => {
+        slider.destroy();
+      });
+
+      this.items.clear();
+    }
+  }
+
+  const productSliders = new ProductSliderCollection();
+/* Popular slider */
+
+  function swiper_popular_slider_init() {
+      // console.log('hi swiper_popular_slider_init')
+      swiper_popular_slider = new Swiper('.popular-slider-swiper', {
+          pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+              type: 'progressbar'
+          },
+          navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+          },
+          // scrollbar: {
+          //     el: '.swiper-scrollbar',
+          //     draggable: true,
+          // },
+          slidesPerView: 5,
+          slidesPerGroup: 1,
+          spaceBetween: 30,
+          loop: true,
+          freeMode: true,
+          breakpoints: {
+              315: {
+                  slidesPerView: 2,
+                  spaceBetween: 10,
+                  navigation: {
+                      enabled: false,
+                  },
+                  freeMode: true,
+              },
+              768: {
+                  slidesPerView: 4,
+                  spaceBetween: 10,
+                  navigation: {
+                      enabled: true,
+                  },
+              },
+              1024: {
+                  slidesPerView: 5,
+                  spaceBetween: 30,
+                  navigation: {
+                      enabled: true,
+                  },
+              }
+          }
+      });
+  }
+
+  swiper_popular_slider_init();
 
 /*--------------------------------------------------------------
 # About Us
@@ -511,7 +458,7 @@ swiper_popular_slider_init();
 //     spaceBetween: 10,
 //     loop: true,
 //     breakpoints: {
-//         320: {
+//         315: {
 //         slidesPerView: 1,
 //         slidesPerGroup: 1,
 //         navigation: {
@@ -543,7 +490,7 @@ swiper_popular_slider_init();
 //     spaceBetween: 10,
 //     loop: true,
 //     breakpoints: {
-//         320: {
+//         315: {
 //         slidesPerView: 1,
 //         slidesPerGroup: 1,
 //         navigation: {
@@ -580,7 +527,7 @@ function swiper_filter_metki_init() {
         spaceBetween: 4,
         loop: false,
         breakpoints: {
-            320: {
+            315: {
             navigation: {
                 enabled: false,
             },
@@ -589,7 +536,7 @@ function swiper_filter_metki_init() {
             },
             loop: true,
             },
-            767: {
+            768: {
             navigation: {
                 enabled: true,
             },
@@ -655,7 +602,7 @@ function swiper_backorder_crossells_init(){
         loop: false,
         freeMode: false,
         breakpoints: {
-            320: {
+            315: {
                 slidesPerView: 2,
                 spaceBetween: 10,
                 pagination: {
@@ -720,7 +667,7 @@ function swiper_cart_upsells_init(){
         loop: false,
         freeMode: false,
         breakpoints: {
-            320: {
+            315: {
                 slidesPerView: 2,
                 spaceBetween: 10,
                 pagination: {
@@ -771,13 +718,13 @@ const swiper_gift = new Swiper('.gift-swiper-wrap', {
     spaceBetween: 5,
     loop: false,
     breakpoints: {
-        320: {
+        315: {
         navigation: {
             enabled: false,
         },
         loop: false,
         },
-        767: {
+        768: {
         navigation: {
             enabled: false,
         },

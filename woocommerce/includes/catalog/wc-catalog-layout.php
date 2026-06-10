@@ -31,19 +31,21 @@ if ( ! defined( 'ABSPATH' ) ) {
   plnt_add_wrapper('catalog__products-wrap', 'woocommerce_before_shop_loop', 40, 'woocommerce_after_shop_loop', 20);
   
   add_action('woocommerce_after_shop_loop','plnt_get_advantages',24);
-  plnt_add_section('section container catalog__term-description expandable-content', 'woocommerce_after_shop_loop', 24, 'woocommerce_after_shop_loop', 28);
-  plnt_add_wrapper('expandable-content-area', 'woocommerce_after_shop_loop', 24, 'woocommerce_after_shop_loop', 26);
-  add_action('woocommerce_after_shop_loop','woocommerce_taxonomy_archive_description',25);
-  add_action('woocommerce_after_shop_loop','plnt_expandable_content_button',27);
+  // plnt_add_section('section container catalog__term-description expandable-content', 'woocommerce_after_shop_loop', 24, 'woocommerce_after_shop_loop', 28);
+  // plnt_add_wrapper('expandable-content-area', 'woocommerce_after_shop_loop', 24, 'woocommerce_after_shop_loop', 26);
+  add_action('woocommerce_after_shop_loop','plnt_get_expandable_archive_description',25);
+  // add_action('woocommerce_after_shop_loop','plnt_expandable_content_button',27);
 
   //header catalog
 
   function plnt_catalog_header_image() {
+    if (is_page('search-results')) return;
+
     ?>
     <div class="catalog__header-image-wrap darken">
       <img
         class="catalog__header-image"
-        src="https://plantis-shop.ru/wp-content/uploads/2025/07/aglaonema-silver-bej-17-50-1-800x800.webp"
+        src="https://plantis-shop.ru/wp-content/uploads/2025/07/zamiokulkas-zamielistnyj-12-45-3-800x800.webp"
         alt=""
         whidth="800"
         height="800">
@@ -62,7 +64,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php echo plnt_icon('btn-rows');?>
       </button>
       </div>
-      <?php 	
+    <?php 	
   }
 
   /** общее количество товаров в текущем WooCommerce loop.*/
@@ -220,14 +222,29 @@ function plnt_woocommerce_clear_filters_mob() {
 	<?php
 }
 
-function plnt_expandable_content_button() {
-  ?>
-  <button
-    class="catalog__term-description-read-full-button button button--clean expandable-content__button"
-    type="button"
-    data-js-expandable-content-button
-  >
-    <span class="icon icon--chevron-down">Показать полностью</span>
-  </button>
-  <?php
+function plnt_get_expandable_archive_description() {
+  $description = term_description();
+
+  if ( ! $description ) {
+    return;
+  }
+
+  echo '<section class="section container catalog__term-description expandable-content">';
+    echo '<div class="expandable-content-area">';
+      echo '<div class="term-description">';
+        echo wp_kses_post( $description );
+      echo '</div>';
+    echo '</div>';
+    ?>
+
+    <button
+      class="catalog__term-description-read-full-button button button--clean expandable-content__button"
+      type="button"
+      data-js-expandable-content-button
+    >
+      <span class="icon icon--chevron-down">Показать полностью</span>
+    </button>
+
+    <?php
+  echo '</section>';
 }

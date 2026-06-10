@@ -61,7 +61,6 @@ function soChangeProductsTitle() {
 //оформление карточки товара в каталоге
 
 function plnt_catalog_gallery() {
-
 	if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() || is_page('search-results')) {
 		global $product;
 		$image = $product->get_image('large', array('itemprop'=>'image'));	//schema.org
@@ -83,6 +82,12 @@ function plnt_catalog_gallery() {
 	}
 };
 
+add_filter( 'single_product_archive_thumbnail_size', 'plnt_loop_product_thumbnail_size' );
+
+function plnt_loop_product_thumbnail_size() {
+	return 'large';
+}
+
 function plnt_img_gallery_swiper_init() {
 	?>
 	<script>
@@ -97,9 +102,9 @@ function plnt_img_gallery_swiper_init() {
 
 add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
 function AddThumbnailClass( $atts, $attachment ) {
-	if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
+	// if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
 		$atts['class'] .= " swiper-slide"; 
-	}
+	// }
 	return $atts;
 }
 

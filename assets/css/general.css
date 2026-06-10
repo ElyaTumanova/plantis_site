@@ -26,6 +26,9 @@ p {
   .archive .content-area {
     padding-inline: 0px;
   }
+  .woocommerce-wishlist .content-area {
+    padding-inline: 0px;
+  }
 }
 @media (max-width: 1380px) {
   .no-padding {
@@ -131,33 +134,13 @@ input {
 }
 
 @media (max-width: 768px) {
-    .content-area_sidebar {
-        display: block;
-    }
+  .content-area_sidebar {
+      display: block;
+  }
 
-    .content-area_sidebar aside{
-        display: none;
-    }
-}
-
-/* корректировка отступов для каталога */
-
-@media (max-width: 768px) {
-    /* .archive .content-area {
-        padding-left: 0;
-        padding-right: 0;
-    } */
-    /* .archive .woocommerce-products-header {
-        padding: 10px 10px 0;
-    } */
-
-    .page-template-page-search-results .content-area {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    /* .page-template-page-search-results .woocommerce-products-header {
-        padding: 10px 10px 0;
-    } */
+  .content-area_sidebar aside{
+      display: none;
+  }
 }
 
 /* заголовк H1 */
@@ -172,12 +155,6 @@ input {
 .woocommerce-products-header__title span{
   font-size: clamp(1rem, 0.7846rem + 0.9574vw, 1.5625rem); /* 25px - 16px */
 } 
-
-@media (max-width: 768px) {
-  /* .my_header__title, .entry-header, .entry-title, .woocommerce-products-header__title {
-    font-weight: 600;
-  } */
-}
 
 .heading-2 {
   font-size: 18px;

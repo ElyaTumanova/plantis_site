@@ -27,9 +27,9 @@ function plntAjaxGetWishMiniCart() {
         $('.header-cart__mob .header__actions-count').html(response.cart_count); // Repopulate the specific element with the new content
         $('.side-cart__count').html(response.cart_count);
         if (response.cart_count >0) {
-          $('.header__main .header-cart .header__nav-actions-wrap').addClass("header__nav-actions-wrap_active");
+          // $('.header__main .header-cart .header__nav-actions-wrap').addClass("header__nav-actions-wrap_active");
           $('.header__main .header-cart .header__actions-count').addClass("header__actions-count--active");
-          $('.header__nav .header-cart .header__nav-actions-wrap').addClass("header__nav-actions-wrap_active");
+          // $('.header__nav .header-cart .header__nav-actions-wrap').addClass("header__nav-actions-wrap_active");
           $('.header__nav .header-cart .header__actions-count').addClass("header__actions-count--active");
         }
 
@@ -37,8 +37,8 @@ function plntAjaxGetWishMiniCart() {
 
         $('.yith-wcwl-items-count').children('i').html( response.count );
         if (response.count > 0) {
-            $('.header__main .header__wishlist .header__nav-actions-wrap').addClass("header__nav-actions-wrap_active");
-            $('.header__nav .header__wishlist .header__nav-actions-wrap').addClass("header__nav-actions-wrap_active");
+            // $('.header__main .header__wishlist .header__nav-actions-wrap').addClass("header__nav-actions-wrap_active");
+            // $('.header__nav .header__wishlist .header__nav-actions-wrap').addClass("header__nav-actions-wrap_active");
             $('.header__main .header__wishlist .header__actions-count').addClass("header__actions-count--active");
             $('.header__nav .header__wishlist .header__actions-count').addClass("header__actions-count--active");
         }

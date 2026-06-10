@@ -125,7 +125,7 @@ class Pretty_Breadcrumb {
 		$html = str_replace( [ '<wrapper>', '</wrapper>' ], '', $html );
 
 		// Формируем контейнер для li элементов
-		$ul = '<ul class="woocommerce-breadcrumb" id="breadcrumbs" itemscope="itemscope" itemtype="https://schema.org/BreadcrumbList" class="breadcrumb">%s</ul>';
+		$ul = '<ul class="woocommerce-breadcrumb plnt-woocommerce-breadcrumb" id="breadcrumbs" itemscope="itemscope" itemtype="https://schema.org/BreadcrumbList" class="breadcrumb">%s</ul>';
 
 		// Вставляем в контейнер li элменты
 		$html = sprintf( $ul, $html );
@@ -139,7 +139,7 @@ new Pretty_Breadcrumb();
 
 add_action( 'woocommerce_before_main_content', 'plnt_breadrumbs_yoast', 20 );
 function plnt_breadrumbs_yoast() {
-    if ( is_product() || is_product_category() ||is_product_tag() || is_shop() || is_tax()) {
+    if ( is_product() || is_product_category() ||is_product_tag() || is_shop() || is_tax() || is_page('wishlist')) {
         do_action('pretty_breadcrumb');
     }
 }

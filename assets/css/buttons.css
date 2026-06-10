@@ -58,15 +58,19 @@
   font-size: clamp(0.75rem, 0.6591rem + 0.4545vw, 1rem); /* 16px - 14px */
 }
 
+.product_type_simple.product_out_of_stock {
+  padding-left: var(--btn-pad-inline) !important;
+}
+
 .button--white span {
   margin: 0 0.25em;
 }
 
-@media (max-width:767px) {
+/* @media (max-width:767px) {
   .button--white span{
     display: none;
   }
-}
+} */
 
 .button--green {
   background-color: var(--accent-color);

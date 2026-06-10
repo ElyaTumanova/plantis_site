@@ -175,6 +175,10 @@
   justify-content: center;  
 }
 
+.header__actions--account .logged-in {
+  color: var(--black-color);
+}
+
 /* header__mob */
 
 .header__mob {

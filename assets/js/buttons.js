@@ -127,50 +127,7 @@ if(catalogFilterWrap) {
 // }
 
 
-/*--------------------------------------------------------------
-# Buttons to change grid columns in catalog
---------------------------------------------------------------*/
 
-const gridButton = document.getElementById('catalog__btn-grid');
-const rowsButton = document.getElementById('catalog__btn-rows');
-const catalogWrap = document.querySelector('.catalog__products-wrap');
-if(catalogWrap) {
-    const catalogGrid = catalogWrap.querySelector('.products');
-    // console.log(catalogGrid.classList)
-    if(catalogGrid.classList.contains('columns-3')) {
-      rowsButton.disabled = false;
-      gridButton.disabled = true;
-    } 
-    if(catalogGrid.classList.contains('in-row')) {
-      gridButton.disabled = false;
-      rowsButton.disabled = true;
-    } 
-    if (gridButton) {
-        gridButton.addEventListener ("click", (evt)=>{
-            make_2_grid_columns();
-        });
-
-    }
-    if (rowsButton) {
-        rowsButton.addEventListener ("click", (evt)=>{
-            make_3_grid_columns();
-        });
-    }
-    
-    function make_2_grid_columns () {
-        catalogGrid.classList.add ('columns-3');
-        catalogGrid.classList.remove ('in-row');
-        gridButton.disabled = true;
-        rowsButton.disabled = false;
-    };
-    
-    function make_3_grid_columns () {
-        catalogGrid.classList.remove ('columns-3');
-        catalogGrid.classList.add ('in-row');
-        gridButton.disabled = false;
-        rowsButton.disabled = true;
-    };
-};
 
 //функция прокрутки до начала страницы - добавлена в checkout.min.js
 function scrollToTop () {

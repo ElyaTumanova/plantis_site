@@ -12,7 +12,7 @@
     width: 100%;
     height: 100vh;
     z-index: 9999;
-    background: rgba(0,0,0,0.5);
+    background: #02150E3D;
 }
 
 .popup-overlay {
@@ -185,12 +185,12 @@
 }
 
 .spinner {
-    width: 60px;
-    height: 60px;
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid var(--accent-color);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+  width: 60px;
+  height: 60px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--accent-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {

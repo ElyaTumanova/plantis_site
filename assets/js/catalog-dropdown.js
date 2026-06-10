@@ -179,14 +179,20 @@ class CatalogDropdown {
   }
 
   onCatsOpenClick = (evt) => {
+    if (evt.target.closest('a')) {
+      return
+    }
     const menu = evt.currentTarget.dataset.menu
     this.openMenu(menu)
   }
 
   onCatsMenuHeaderClick = (evt) => {
-    event.preventDefault()
+    // event.preventDefault()
     const menu = evt.target.closest(this.selectors.catsMenu).dataset.menu
     console.log(menu)
+    this.closeAllMenu()
+  }
+  onCatsMenuSwipeRight = (evt) => {
     this.closeAllMenu()
   }
   
@@ -208,6 +214,27 @@ class CatalogDropdown {
       this.catsMenuHeader.forEach(element => {
         element.addEventListener('click', this.onCatsMenuHeaderClick)
       });
+      this.catsMenu.forEach(element => {
+        let startX = 0
+        let startY = 0
+
+        element.addEventListener('touchstart', (evt) => {
+          startX = evt.changedTouches[0].clientX
+          startY = evt.changedTouches[0].clientY
+        })
+
+        element.addEventListener('touchend', (evt) => {
+          const endX = evt.changedTouches[0].clientX
+          const endY = evt.changedTouches[0].clientY
+
+          const diffX = endX - startX
+          const diffY = Math.abs(endY - startY)
+
+          if (diffX > 50 && diffY < 30) {
+            this.onCatsMenuSwipeRight(evt)
+          }
+        })
+      })
     }
   }
 

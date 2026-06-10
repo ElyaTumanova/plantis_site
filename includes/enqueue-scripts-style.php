@@ -24,6 +24,7 @@ function plnt_get_style_files() {
     'burger-menu',
 		// 'menu',
 		'card',
+		'card-banners',
 		'catalog',
     'filters',
     'product',
@@ -90,6 +91,11 @@ function plnt_get_script_files() {
 			'deps'   => array('jquery'),
 		),
 		array(
+			'handle' => 'card-helpers',
+			'file'   => 'card-helpers',
+			'deps'   => array('jquery'),
+		),
+		array(
 			'handle' => 'ajax-urgent-delivery',
 			'file'   => 'ajax-urgent-delivery',
 			'deps'   => array( 'jquery' ),
@@ -119,11 +125,11 @@ function plnt_get_script_files() {
 		// 	'file'   => 'header-catalog-menu',
 		// 	'deps'   => array( 'jquery' ),
 		// ),
-		array(
-			'handle' => 'search-popup',
-			'file'   => 'search-popup',
-			'deps'   => array( 'jquery' ),
-		),
+		// array(
+		// 	'handle' => 'search-popup',
+		// 	'file'   => 'search-popup',
+		// 	'deps'   => array( 'jquery' ),
+		// ),
 		array(
 			'handle' => 'page-popup',
 			'file'   => 'popup',

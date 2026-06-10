@@ -9,18 +9,32 @@ if ( ! defined( 'ABSPATH' ) ) {
   <div class="catalog-dropdown__cats">
     <ul class="catalog-dropdown__cats-list">
       <li class="catalog-dropdown__cats-item icon icon--arrow-right" data-menu="menu_item_plants">
-        <?php echo plnt_icon('plants'); ?>
-        Комнатные растения
+        <?php 
+          echo plnt_icon('plants'); 
+          plnt_get_menu_link([
+            'slug' => 'komnatnye-rasteniya', 
+            'classes' => ''
+          ]);
+        ?>
+        <!-- Комнатные растения -->
       </li>
 
       <li class="catalog-dropdown__cats-item icon icon--arrow-right" data-menu="menu_item_gorshki">
-        <?php echo plnt_icon('pots'); ?>
-        Горшки и кашпо
+        <?php echo plnt_icon('pots'); 
+          plnt_get_menu_link([
+            'slug' => 'gorshki_i_kashpo', 
+            'classes' => ''
+          ]);
+        ?>
       </li>
 
       <li class="catalog-dropdown__cats-item icon icon--arrow-right" data-menu="menu_item_treez_plants">
-        <?php echo plnt_icon('treez'); ?>
-        Искусственные растения
+        <?php echo plnt_icon('treez'); 
+          plnt_get_menu_link([
+            'slug' => 'iskusstvennye-rasteniya-treez', 
+            'classes' => ''
+          ]);
+        ?>
       </li>
       <li class="catalog-dropdown__cats-item icon icon--arrow-right" data-menu = "menu_az_palnts">
         <?php echo plnt_icon('a-to-z'); ?>
@@ -31,11 +45,11 @@ if ( ! defined( 'ABSPATH' ) ) {
   </div>
   <div class="catalog-dropdown__sub-cats">
     <nav class="catalog-dropdown__sub-cats-wrap" data-menu="menu_item_plants">
-      <div class="catalog-dropdown__sub-cats-header h5">
+      <div class="catalog-dropdown__sub-cats-header icon icon--arrow-right h5">
         <?php 
           plnt_get_menu_link([
             'slug' => 'komnatnye-rasteniya', 
-            'classes' => 'icon icon--arrow-right cats-sub-menu__item-image'
+            'classes' => 'cats-sub-menu__item-image'
           ]); 
         ?>
       </div>
@@ -82,11 +96,11 @@ if ( ! defined( 'ABSPATH' ) ) {
       </div>
     </nav>
     <nav class="catalog-dropdown__sub-cats-wrap" data-menu="menu_item_gorshki">
-      <div class="catalog-dropdown__sub-cats-header h5">
+      <div class="catalog-dropdown__sub-cats-header icon icon--arrow-right h5">
         <?php 
           plnt_get_menu_link([
             'slug' => 'gorshki_i_kashpo', 
-            'classes' => 'icon icon--arrow-right cats-sub-menu__item-image'
+            'classes' => 'cats-sub-menu__item-image'
           ]); 
         ?>
       </div>
@@ -135,11 +149,11 @@ if ( ! defined( 'ABSPATH' ) ) {
       </div>
     </nav>
     <nav class="catalog-dropdown__sub-cats-wrap" data-menu="menu_item_treez_plants">
-      <div class="catalog-dropdown__sub-cats-header h5">
+      <div class="catalog-dropdown__sub-cats-header icon icon--arrow-right h5">
         <?php  
           plnt_get_menu_link([
             'slug' => 'iskusstvennye-rasteniya-treez', 
-            'classes' => 'icon icon--arrow-right cats-sub-menu__item-image'
+            'classes' => 'cats-sub-menu__item-image'
           ]); 
         ?>
       </div>
@@ -148,8 +162,8 @@ if ( ! defined( 'ABSPATH' ) ) {
       </div>
     </nav>
     <nav class="catalog-dropdown__sub-cats-wrap" data-menu = "menu_az_palnts">
-      <div class="catalog-dropdown__sub-cats-header h5">
-        <span class="icon icon--arrow-right">Растения от А до Я</span>
+      <div class="catalog-dropdown__sub-cats-header icon icon--arrow-right h5">
+        <span>Растения от А до Я</span>
       </div>
       <div class="catalog-dropdown__sub-cats-body custom-scroll">
         <?php get_az_palnts_submenu(); ?>

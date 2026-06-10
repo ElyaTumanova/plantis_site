@@ -57,9 +57,6 @@
 
 
 /* cat-tiles */
-.cats-tiles {
-  overflow: hidden;
-}
 
 .cats-tiles__link {
   display: flex;

@@ -182,7 +182,6 @@ class LoginPopup extends Popup {
 
 }
 
-
 class ModalPopup extends Popup {
   constructor (popupName) {
     super (popupName)
@@ -352,12 +351,50 @@ class NoticePopup extends Popup {
   }
 }
 
+class SearchPopup extends Popup {
+  constructor (popupName) {
+    super (popupName)
+    this.searchInput = null
+  }
+
+  focusSearch() {
+    this.searchInput.focus();
+    
+    // Для iOS - создаем временное событие touch
+    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        const clickEvent = document.createEvent('MouseEvents');
+        clickEvent.initEvent('touchstart', true, true);
+        this.searchInput.dispatchEvent(clickEvent);
+    }
+    
+    // Дополнительный трюк для некоторых Android устройств
+    setTimeout(() => {
+        this.searchInput.setSelectionRange(0, 0);
+    }, 100);
+  }
+
+  openPopup() {
+    super.openPopup()
+    this.focusSearch()
+  }
+
+  initDom() {
+    const ok = super.initDom()
+    if (!ok) return false
+    this.searchInput = document.querySelector('.search-popup .search-field');
+    return true
+  }
+}
+
+
+
 function initPopups() {
   const popup = new CF7Popup ('page-popup')
   const loginPoup = new LoginPopup ('login-popup')
   const menuMobPopup = new MenuMobPopup ('burger-menu')
   const sideCartPopup = new SideCartPopup ('side-cart-popup')
   // const noticePopup = new NoticePopup ('notice-popup')
+  const searchPopup = new SearchPopup ('search-popup')
 
   const filtersPopup = new ModalPopup('catalog-filters')
 
@@ -367,7 +404,7 @@ function initPopups() {
   menuMobPopup.init()
   sideCartPopup.init()
   filtersPopup.init()
-  filtersPopup.sayHello()
+  searchPopup.init()
   // noticePopup.init()
   //debugPopup(noticePopup)
 

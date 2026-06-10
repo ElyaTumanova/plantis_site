@@ -19,7 +19,9 @@ $isLechuza   = check_is_lechuza( $product );
 
 		<?php if ( $product->get_stock_status() === 'instock' ) : ?>
 			<div class="card__banner card__banner--backorder-info">
-				<span class="card__banner-icon card__banner-icon--stock"></span>
+				<span class="card__banner-icon card__banner-icon--stock">
+          <?php echo plnt_icon('warning');?>
+        </span>
 
 				<span class="card__banner-title">
 					В наличии <?php echo esc_html( $stock_qty ); ?> шт.
@@ -58,7 +60,9 @@ $isLechuza   = check_is_lechuza( $product );
 
 		<?php if ( $product->get_stock_status() === 'onbackorder' ) : ?>
 			<div class="card__banner card__banner--backorder">
-				<span class="card__banner-icon"></span>
+				<span class="card__banner-icon">
+          <?php echo plnt_icon('tag');?>
+        </span>
 
 				<p class="card__banner-title">Растение под заказ из Европы</p>
 

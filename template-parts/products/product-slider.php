@@ -31,16 +31,20 @@ if (!$products) {
 
 ?>
 
-<div class="product-slider-wrap product-slider-swiper swiper <?php echo $isSwiperOver ? 'swiper--over' : ''?>">
-  <ul class="products columns-3 swiper-wrapper">
-    <?php while ( $products->have_posts() ) : $products->the_post(); ?>
-
-    <?php wc_get_template_part( 'content', 'product' ); ?>
-
-    <?php endwhile; // end of the loop. ?> 
-  </ul>
-  <div class="swiper-scrollbar"></div>
+<div class="<?php echo $isSwiperOver ? 'swiper--over' : ''?>" data-js-product-slider>
+  <div class="product-slider-wrap product-slider-swiper swiper">
+    <ul class="products columns-3 swiper-wrapper">
+      <?php while ( $products->have_posts() ) : $products->the_post(); ?>
+  
+      <?php wc_get_template_part( 'content', 'product' ); ?>
+  
+      <?php endwhile; // end of the loop. ?>
+    </ul>
+    <div class="swiper-scrollbar"></div>
+  </div>
   <div class="swiper-button-prev"></div>
   <div class="swiper-button-next"></div>
 </div>
+
+<?php wp_reset_postdata(); ?>
 

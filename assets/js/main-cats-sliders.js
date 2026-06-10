@@ -20,6 +20,10 @@ function showSlider(sliderNmber) {
 
 function ajaxGetMainCatTerm() {
   jQuery(function ($) {
+    const sliderWrap = document.querySelector('.front__popular .product-slider-wrap')
+
+    sliderWrap?.classList.add('loading')
+
     $.ajax({
       type: 'POST',
       url: woocommerce_params.ajax_url,
@@ -49,6 +53,10 @@ function ajaxGetMainCatTerm() {
         if (newSlider && productSliders) {
           productSliders.add(newSlider);
         }
+      },
+      complete: function () {
+        const newSliderWrap = document.querySelector('.front__popular .product-slider-wrap')
+        newSliderWrap?.classList.remove('loading')
       },
     });
   });

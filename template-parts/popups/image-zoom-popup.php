@@ -27,8 +27,8 @@ if ( ! defined( 'ABSPATH' ) ) {
       <div class="swiper-wrapper"></div>
     </div>
 
-    <button class="img-popup__prev mgm-arrow-btn mgm-arrow-btn--prev is-swiper-arrow" type="button" aria-label="Назад"></button>
-    <button class="img-popup__next mgm-arrow-btn mgm-arrow-btn--next is-swiper-arrow" type="button" aria-label="Вперёд"></button>
+    <div class="img-popup__prev swiper-button-prev" type="button" aria-label="Назад"></div>
+    <div class="img-popup__next swiper-button-next" type="button" aria-label="Вперёд"></div>
 
     <div class="swiper img-popup__swiper">
       <div class="swiper-wrapper"></div>

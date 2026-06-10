@@ -15,11 +15,6 @@ class ViewportPosition {
     document.documentElement.style.setProperty(this.propertyName, `${propertyValue}px`)
   }
 
-  init() {
-    this.setCssProperty()
-    this.bindEvents()
-  }
-
   bindEvents() {
     window.addEventListener('resize', () => {
         this.setCssProperty()
@@ -27,6 +22,12 @@ class ViewportPosition {
     // window.addEventListener('scroll', () => {
     //     this.setCssProperty()
     // });
+  }
+
+  init() {
+    if (!this.element) return
+    this.setCssProperty()
+    this.bindEvents()
   }
 }
 
@@ -56,10 +57,6 @@ class ElementHeight {
     document.documentElement.style.setProperty(this.propertyName, `${propertyValue}px`)
   }
 
-  init() {
-    this.setCssProperty()
-    this.bindEvents()
-  }
 
   bindEvents() {
     window.addEventListener('resize', () => {
@@ -69,12 +66,20 @@ class ElementHeight {
     //     this.setCssProperty()
     // });
   }
+
+  init() {
+    if (!this.element) return
+    this.setCssProperty()
+    this.bindEvents()
+  }
 }
 
 new ElementHeight ('.header__main-top', '--headerMainTopHeight')
 new ElementHeight ('.header__nav', '--headerNavHeight')
 new ElementHeight ('.header__desktop', '--headerHeight')
 new ElementHeight ('.header__main', '--headerMainHeight')
+new ElementHeight ('.header__mob', '--headerMobHeight')
+new ElementHeight ('.card__actions-wrap-inner', '--cardActionsHeight')
 
 class ElementWidth {
   constructor (selector, propertyName) {
@@ -97,11 +102,6 @@ class ElementWidth {
     document.documentElement.style.setProperty(this.propertyName, `${propertyValue}px`)
   }
 
-  init() {
-    this.setCssProperty()
-    this.bindEvents()
-  }
-
   bindEvents() {
     window.addEventListener('resize', () => {
         this.setCssProperty()
@@ -109,6 +109,12 @@ class ElementWidth {
     // window.addEventListener('scroll', () => {
     //     this.setCssProperty()
     // });
+  }
+
+  init() {
+    if (!this.element) return
+    this.setCssProperty()
+    this.bindEvents()
   }
 }
 
@@ -220,6 +226,7 @@ class ExpandableContent {
     this.areaElement = this.rootElement.querySelector(this.selectors.area)
     this.buttonElement = this.rootElement.querySelector(this.selectors.button)
     this.collapsedHeight = this.areaElement.offsetHeight
+    this.checkOverflow()
     this.bindEvents()
   }
 
@@ -261,8 +268,14 @@ class ExpandableContent {
     }
   }
 
+  checkOverflow = () => {
+    this.buttonElement.hidden =
+      this.areaElement.scrollHeight <= this.collapsedHeight
+  }
+
   bindEvents() {
     this.buttonElement.addEventListener('click', this.onButtonClick)
+    window.addEventListener('resize', this.checkOverflow)
   }
 }
 
@@ -281,6 +294,7 @@ class ExpandableContentCollection {
 
 new ExpandableContentCollection()
 
+/* обновление Backorder Date чтобы не кешировалось*/
 function getBackorderDate() {
   const date = new Date()
 
@@ -309,3 +323,31 @@ document.addEventListener('DOMContentLoaded', () => {
     element.textContent = getBackorderDate()
   })
 })
+
+/* copy share link for wishlist */
+document.addEventListener('click', async (e) => {
+  const block = e.target.closest('.yith-wcwl-after-share-section');
+
+  if (!block) {
+    return;
+  }
+
+  const input = block.querySelector('.copy-target');
+
+  if (!input) {
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(input.value);
+
+    block.classList.add('is-copied');
+
+    setTimeout(() => {
+      block.classList.remove('is-copied');
+    }, 2000);
+  } catch (err) {
+    input.select();
+    document.execCommand('copy');
+  }
+});
