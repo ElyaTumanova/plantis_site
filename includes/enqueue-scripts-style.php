@@ -156,14 +156,14 @@ function plnt_get_script_files() {
 			'file'   => 'gift-card',
 			'deps'   => array( 'jquery' ),
 		),
+		// array(
+		// 	'handle' => 'cart-backorder-crossell',
+		// 	'file'   => 'cart-backorder-crossell',
+		// 	'deps'   => array( 'jquery' ),
+		// ),
 		array(
-			'handle' => 'cart-backorder-crossell',
-			'file'   => 'cart-backorder-crossell',
-			'deps'   => array( 'jquery' ),
-		),
-		array(
-			'handle' => 'cart-upsells',
-			'file'   => 'cart-upsells',
+			'handle' => 'cart-reccomedations',
+			'file'   => 'cart-reccomedations',
 			'deps'   => array( 'jquery' ),
 		),
 		array(

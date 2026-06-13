@@ -66,7 +66,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 									sprintf(
 										//заменила класс remove на remove_from_cart_button, чтобы использовать аякс обновление корзины
 										'<a href="%s" class="remove_from_cart_button" aria-label="%s" data-product_id="%s" data-product_sku="%s" data-product_name="%s" data-product_category="%s" data-product_quantity="%s" data-product_price="%s">
-										<svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.07921 1.5H12.9125M1.24609 5H18.7461M16.8016 5L16.1196 16.3957C16.0173 17.9301 15.9662 18.6973 15.6348 19.279C15.343 19.7912 14.9029 20.2029 14.3725 20.46C13.77 20.752 13.0011 20.752 11.4633 20.752H8.52846C6.99065 20.752 6.22174 20.752 5.61926 20.46C5.08883 20.2029 4.64874 19.7912 4.35697 19.279C4.02557 18.6973 3.97442 17.9301 3.87213 16.3957L3.19054 5M8.05143 10.1389V15M11.9403 10.1389V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                      %s
 										</a>',
 										esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
 										/* translators: %s is the product name */
@@ -76,7 +76,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 										esc_attr( $_product->get_title() ),
 										esc_attr( get_the_category_by_ID($parentCatId) ),
 										esc_attr( $quantity),
-										esc_attr( $_product->get_price())
+										esc_attr( $_product->get_price()),
+                    plnt_icon( 'trash' )
 									),
 									$cart_item_key
 								);
@@ -98,7 +99,9 @@ do_action( 'woocommerce_before_cart' ); ?>
 						<td class="product-name" data-title="<?php esc_attr_e( 'Product', 'woocommerce' ); ?>">
 							<?php
 							if ( ! $product_permalink ) {
+                echo ('<span>');
 								echo wp_kses_post( $product_name . '&nbsp;' );
+                echo ('</span>');
 							} else {
 								/**
 								 * This filter is documented above.
@@ -121,12 +124,13 @@ do_action( 'woocommerce_before_cart' ); ?>
 							<?php get_backorder_info_snippet($_product, $cart_item[ 'quantity' ]);?>
 							<!-- peresadka_init -->
 							<div class="cart__peresadka" data-product_id=<?php echo $product_id;?>>
-							<?php 
-							get_template_part('template-parts/products/products-peresadka',null,
-									array( // массив с параметрами
-										'product_id' => $product_id
-									)); 
-							?>
+                <?php 
+                get_template_part('template-parts/products/products-peresadka',null,
+                    array( // массив с параметрами
+                      'product_id' => $product_id,
+                      'cart_item_key'  => $cart_item_key,
+                    )); 
+                ?>
 							</div>
 						</td>
 
@@ -135,10 +139,17 @@ do_action( 'woocommerce_before_cart' ); ?>
 								echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 							?>
 						</td>
-
+            
 						<td class="product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'woocommerce' ); ?>">
 							<div class="quantity">
-							<div class="minus">&#8722;</div>
+							<div class="minus"><?php
+                if ( (int) $cart_item['quantity'] <= 1 ) {
+                    echo plnt_icon( 'trash','trash-icon' );
+                } else {
+                    echo plnt_icon( 'minus' );
+                }
+              ?>
+              </div>
 							<?php
 							if ( $_product->is_sold_individually() ) {
 								$min_quantity = 1;
@@ -162,40 +173,61 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 							echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item ); // PHPCS: XSS ok.
 							?>
-							<div class="plus" <?php if($cart_item['quantity'] === $max_quantity) :?> style="opacity:50%; cursor: default;" <?php endif;?>>&#43;</div>
+							<div class="plus" <?php if($cart_item['quantity'] === $max_quantity) :?> style="opacity:50%; cursor: default;" <?php endif;?>><?php echo plnt_icon('plus');?></div>
 							</div>
 						</td>
 
 						<td class="product-subtotal" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>">
 							<?php
 								echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
-							?>
+                echo plnt_get_product_regular_subtotal(
+                    $_product,
+                    $cart_item['quantity']
+                );
+              ?>
 						</td>
 						
 						<?php 
 						global $plants_cat_id;
-                        $qty = $cart_item[ 'quantity' ];
+            $qty = $cart_item[ 'quantity' ];
 						$parentCatId = check_category ($_product);
-                        $stock_qty = $_product->get_stock_quantity();
-						if ( $_product->backorders_allowed() && $qty > $stock_qty && $parentCatId === $plants_cat_id) {
-							?><td class="product-backorder-upsells"><?php
-							get_template_part('template-parts/products/products-backorder-crosssell',null,
-								array( // массив с параметрами
-									'product_id' => $product_id,
-									'cart_item'=>$cart_item_key
-							));
-							?></td><?php
-						}	 
+            $stock_qty = $_product->get_stock_quantity();
+	
+            if ( $_product->backorders_allowed() && $qty > $stock_qty && $parentCatId === $plants_cat_id ) {
+                ?>
+                <td class="product-backorder-upsells cart__product-recs">
+                    <?php
+                    get_template_part(
+                        'template-parts/products/cart-product-recommendations',
+                        null,
+                        array(
+                          'mode'       => 'backorder_crosssell',
+                          'product_id' => $product_id,
+                          'cart_item'  => $cart_item_key,
+                        )
+                    );
+                    ?>
+                </td>
+                <?php
+            }
 
-                        if($parentCatId === $plants_cat_id) {
-                            ?><td class="product-cart-upsells"><?php
-							get_template_part('template-parts/products/products-cart-upsells', null,
-                            array( // массив с параметрами
-									'product_id' => $product_id,
-							)
-                        );
-							?></td><?php
-                        }                        
+            if ( $parentCatId === $plants_cat_id ) {
+                ?>
+                <td class="product-cart-upsells cart__product-recs">
+                    <?php
+                    get_template_part(
+                        'template-parts/products/cart-product-recommendations',
+                        null,
+                        array(
+                            'mode'       => 'cart_upsells',
+                            'product_id' => $product_id,
+                        )
+                    );
+                    ?>
+                </td>
+                <?php
+            }
+
 						?>
 						
 					</tr>

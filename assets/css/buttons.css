@@ -58,8 +58,8 @@
   font-size: clamp(0.75rem, 0.6591rem + 0.4545vw, 1rem); /* 16px - 14px */
 }
 
-.product_type_simple.product_out_of_stock {
-  padding-left: var(--btn-pad-inline) !important;
+.product_type_simple.product_out_of_stock::before {
+  display: none;
 }
 
 .button--white span {

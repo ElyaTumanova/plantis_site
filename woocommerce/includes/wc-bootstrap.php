@@ -15,3 +15,7 @@ require get_template_directory() . '/woocommerce/includes/catalog/wc-catalog-lay
 require get_template_directory() . '/woocommerce/includes/catalog/wc-product-layout.php';
 
 require get_template_directory() . '/woocommerce/includes/product-card/wc-product-card-layout.php';
+
+require get_template_directory() . '/woocommerce/includes/cart/wc-cart-functions.php';
+require get_template_directory() . '/woocommerce/includes/cart/wc-cart-layout.php';
+require get_template_directory() . '/woocommerce/includes/cart/wc-cart-fragments.php';

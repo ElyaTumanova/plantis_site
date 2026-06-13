@@ -291,7 +291,7 @@
 /* скрываем лишнее */
 
 /* ссылка на просмотр корзины после добавления */
-.wc-forward {
+.product .wc-forward {
   display: none;
 }
 
@@ -323,7 +323,6 @@
 }
 
 .card__price-wrap .quantity {
-  --qty-pad: 12px;
   --qty-width: 56px;
   display: flex;
   max-height: var(--btn-height);
@@ -342,16 +341,16 @@
 
 .card__price-wrap .add_to_cart_button, 
 .card__price-wrap .product_type_simple {
+  --icon-gap: 12px;
   font-size: clamp(0.75rem, 0.6591rem + 0.4545vw, 1rem);
   width: 100%;
   min-width: 160px;
-  background-position: var(--btn-pad-inline);
-  padding-left: calc(var(--icon-size) + var(--btn-pad-inline) + 12px);
 }
 
 @media(max-width:767px) {
   .card__price-wrap .add_to_cart_button, 
   .card__price-wrap .product_type_simple {
+    --icon-gap: 0;
     font-size: 0;
     min-width: 0;
     width: var(--btn-height);
@@ -418,7 +417,6 @@
 .card__characteristics-wrap .icon.icon--tags {
   --gap: 4px;
   --size: 20px;
-  align-items: end;
 }
 
 @media (max-width:768px) {
@@ -452,7 +450,7 @@
   }
 }
 
-@media (max-width:360px) {
+@media (max-width: 359px) {
   .card__product-attributes .product-card-attributes li {
     grid-template-columns: 120px 1fr;
   }
@@ -743,7 +741,7 @@
   }
 } 
 
-@media (max-width: 360px) {
+@media (max-width: 359px) {
   .card__actions-price:has(del) {
     grid-template-columns: auto;
     grid-template-areas: 

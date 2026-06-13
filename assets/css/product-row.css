@@ -16,7 +16,9 @@
 }
 
 /* в коризину */
-
+.products.in-row .product_type_simple {
+  --icon-gap: 12px;
+}
 .products.in-row .product__add-to-cart-wrap {
   grid-template-columns: 1fr;
   padding: 0px;
@@ -30,8 +32,7 @@
   --btn-pad-inline: 25px;
   font-size: 16px;
   width: 100%;
-  background-position: var(--btn-pad-inline);
-  padding-left: calc(var(--icon-size) + var(--btn-pad-inline) + 12px);
+
 }
 
 /* цена */

@@ -384,18 +384,18 @@ function get_backorder_info_snippet($_product, $qty) {
     $stock_qty = $_product->get_stock_quantity();
     if (check_category($_product) !== $peresadka_cat_id) {
         if ( check_is_treez($_product) || check_is_lechuza($_product) ) {
-            ?><p class="backorder_date-info backorder_date-info_late">Доставка со склада 3 - 7 дней</p>
+            ?><p class="card__stockstatus card__stockstatus_out icon icon--pre icon--plane">Доставка со склада 3 - 7 дней</p>
             <?php
         } else {
             if ( $_product->backorders_allowed() && $qty > $stock_qty ) {
                 if (check_category($_product) === $plants_cat_id) {
-                ?><p class="backorder_date-info backorder_date-info_late">Доставка после <?php echo plnt_set_backorders_date();?></p>
+                ?><p class="card__stockstatus card__stockstatus_out icon icon--pre icon--plane">Доставка после <?php echo plnt_set_backorders_date();?></p>
                 <?php } else {
-                    ?><p class="backorder_date-info backorder_date-info_late">Доставка со склада 3 - 7 дней</p>
+                    ?><p class="card__stockstatus card__stockstatus_out icon icon--pre icon--plane">Доставка со склада 3 - 7 дней</p>
                     <?php
                 }
             } else {
-                ?><p class="backorder_date-info">Доставка от 2 часов</p>
+                ?><p class="card__stockstatus card__stockstatus_in icon icon--pre icon--clock">Доставка от 2 часов</p>
                 <?php
             }
         }

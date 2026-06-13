@@ -12,8 +12,8 @@ function plnt_sale_badge() {
   if ( ! $product->is_on_sale() ) {
     return;
   }
-    // рассчитываем процент скидки
-    $percentage = ( ( $product->get_regular_price() - $product->get_sale_price() ) / $product->get_regular_price() ) * 100;
+  // рассчитываем процент скидки
+  $percentage = ( ( $product->get_regular_price() - $product->get_sale_price() ) / $product->get_regular_price() ) * 100;
 
   if ( $percentage > 0 ) {
     echo '<div class="sale_badge"> - ' . round( $percentage ) . '%</div>';

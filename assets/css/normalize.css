@@ -192,8 +192,10 @@ svg * {
   Приведение рамок таблиц в классический 'collapse' вид
  */
 :where(table) {
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
   border-color: currentColor;
+  border-spacing: 0;
+  overflow: hidden;
 }
 
 /**

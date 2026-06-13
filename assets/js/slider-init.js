@@ -257,137 +257,161 @@
   });
 /* Products slider */
 
-  class ProductSlider {
+class ProductSlider {
     constructor(root) {
-      if (!root) {
-        return;
-      }
+        if (!root) {
+            return;
+        }
 
-      this.root = root;
-      this.element = root.querySelector('.product-slider-swiper');
-      this.swiper = null;
+        this.root = root;
+        this.element = root.querySelector('.product-slider-swiper');
+        this.swiper = null;
 
-      this.init();
+        if (!this.element) {
+            return;
+        }
+
+        this.init();
     }
 
     init() {
-      this.prepareSlides();
+        this.prepareSlides();
 
-      this.swiper = new Swiper(this.element, this.getOptions());
+        this.swiper = new Swiper(this.element, this.getOptions());
     }
 
     prepareSlides() {
-      const slides = this.element.querySelectorAll('.product');
+        const slides = this.element.querySelectorAll('.product');
 
-      slides.forEach((slide) => {
-        slide.classList.add('swiper-slide');
-      });
+        slides.forEach((slide) => {
+            slide.classList.add('swiper-slide');
+        });
     }
 
     getOptions() {
-      return {
-        navigation: {
-          nextEl: this.root.querySelector('.swiper-button-next'),
-          prevEl: this.root.querySelector('.swiper-button-prev'),
-        },
+        const defaults = {
+            mobile: 2,
+            tablet: 3,
+            desktop: 4,
+            spaceBetween_mobile: 8,
+            spaceBetween_tablet: 12,
+            spaceBetween_desktop: 12,
+        };
 
-        scrollbar: {
-          el: this.element.querySelector('.swiper-scrollbar'),
-          draggable: true,
-        },
+        const slidesPerView = {
+            mobile: Number(this.root.dataset.slidesMobile) || defaults.mobile,
+            tablet: Number(this.root.dataset.slidesTablet) || defaults.tablet,
+            desktop: Number(this.root.dataset.slidesDesktop) || defaults.desktop,
+        };
+        const spaceBetween = {
+            mobile: Number(this.root.dataset.spaceMobile) || defaults.spaceBetween_mobile,
+            tablet: Number(this.root.dataset.spaceTablet) || defaults.spaceBetween_tablet,
+            desktop: Number(this.root.dataset.spaceDesktop) || defaults.spaceBetween_desktop,
+        };
 
-        slidesPerView: 4,
-        slidesPerGroup: 1,
-        spaceBetween: 12,
-        loop: true,
-        freeMode: true,
-
-        breakpoints: {
-          315: {
-            slidesPerView: 2,
-            spaceBetween: 8,
+        return {
             navigation: {
-              enabled: false,
+                nextEl: this.root.querySelector('.swiper-button-next'),
+                prevEl: this.root.querySelector('.swiper-button-prev'),
             },
+
+            scrollbar: {
+                el: this.element.querySelector('.swiper-scrollbar'),
+                draggable: true,
+            },
+
+            slidesPerView: slidesPerView.desktop,
+            slidesPerGroup: 1,
+            spaceBetween: spaceBetween.desktop,
+            loop: true,
             freeMode: true,
-          },
 
-          768: {
-            slidesPerView: 3,
-            spaceBetween: 12,
-            navigation: {
-              enabled: true,
-            },
-          },
+            breakpoints: {
+                315: {
+                    slidesPerView: slidesPerView.mobile,
+                    spaceBetween: spaceBetween.mobile,
+                    navigation: {
+                        enabled: false,
+                    },
+                    freeMode: true,
+                },
 
-          1024: {
-            slidesPerView: 4,
-            spaceBetween: 12,
-            navigation: {
-              enabled: true,
+                768: {
+                    slidesPerView: slidesPerView.tablet,
+                    spaceBetween: spaceBetween.tablet,
+                    navigation: {
+                        enabled: true,
+                    },
+                },
+
+                1024: {
+                    slidesPerView: slidesPerView.desktop,
+                    spaceBetween: spaceBetween.desktop,
+                    navigation: {
+                        enabled: true,
+                    },
+                },
             },
-          },
-        },
-      };
+        };
     }
 
     destroy() {
-      if (!this.swiper) {
-        return;
-      }
+        if (!this.swiper) {
+            return;
+        }
 
-      this.swiper.destroy(true, true);
-      this.swiper = null;
+        this.swiper.destroy(true, true);
+        this.swiper = null;
     }
-  }
+}
 
-  class ProductSliderCollection {
+class ProductSliderCollection {
     constructor(selector = '[data-js-product-slider]') {
-      this.selector = selector;
-      this.items = new Map();
+        this.selector = selector;
+        this.items = new Map();
 
-      this.init();
+        this.init();
     }
 
     init() {
-      const elements = document.querySelectorAll(this.selector);
+        const elements = document.querySelectorAll(this.selector);
 
-      elements.forEach((element) => {
-        this.add(element);
-      });
+        elements.forEach((element) => {
+            this.add(element);
+        });
     }
 
     add(element) {
-      if (!element || this.items.has(element)) {
-        return;
-      }
+        if (!element || this.items.has(element)) {
+            return;
+        }
 
-      const slider = new ProductSlider(element);
+        const slider = new ProductSlider(element);
 
-      this.items.set(element, slider);
+        this.items.set(element, slider);
     }
 
     remove(element) {
-      const slider = this.items.get(element);
+        const slider = this.items.get(element);
 
-      if (!slider) {
-        return;
-      }
+        if (!slider) {
+            return;
+        }
 
-      slider.destroy();
-      this.items.delete(element);
+        slider.destroy();
+        this.items.delete(element);
     }
 
     destroyAll() {
-      this.items.forEach((slider) => {
-        slider.destroy();
-      });
+        this.items.forEach((slider) => {
+            slider.destroy();
+        });
 
-      this.items.clear();
+        this.items.clear();
     }
-  }
+}
 
-  const productSliders = new ProductSliderCollection();
+const productSliders = new ProductSliderCollection();
 /* Popular slider */
 
   function swiper_popular_slider_init() {

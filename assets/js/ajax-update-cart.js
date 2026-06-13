@@ -18,7 +18,7 @@ function plntAjaxGetWishMiniCart() {
       woocommerce_params.ajax_url, // The AJAX URL
       data, // Send our PHP function
       function(response){
-        // console.log(response);
+        console.log(response);
         $('.mini-cart').html(response.mini_cart); // Repopulate the specific element with the new content
         //console.log(response.mini_cart);
         updateCatalogButtons();
@@ -42,6 +42,7 @@ function plntAjaxGetWishMiniCart() {
             $('.header__main .header__wishlist .header__actions-count').addClass("header__actions-count--active");
             $('.header__nav .header__wishlist .header__actions-count').addClass("header__actions-count--active");
         }
+        $('.cart-summary').replaceWith( response.cart_summary );
       }
     );
   // Close anon function.
@@ -194,12 +195,11 @@ function getAddedPeresadkaMini() {
 jQuery(function($){
 	$( document.body ).on( 'updated_cart_totals', function(){
 		console.debug('hi updated_cart_totals');
-		swiper_backorder_crossells_init();
-		swiper_cart_upsells_init();
-		backorderCrossellInit();
-        cartUpsellsInit();
+    initCartProductRecs();
+		productSliders.destroyAll();
+    productSliders.init();
 		plntAjaxGetWishMiniCart();
-        getAddedPeresadka();
+    getAddedPeresadka();
 	});
 })
 

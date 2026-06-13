@@ -146,6 +146,7 @@
   padding: 4px 10px;
   border-radius: 100px;
   color: var(--white-color);
+  width: fit-content;
 }
 
 @media (max-width:767px) {
@@ -190,6 +191,7 @@
 .sale_badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   border-radius: 100px;
   padding: 4px 5px;
   background: linear-gradient(104.67deg, #3C7662 0%, #5CC8A3 100%);
@@ -228,6 +230,9 @@
 }
 
 /* quantity */
+.quantity {
+  --qty-pad: 12px;
+}
 .quantity div {
   display: inline-flex;
   align-items: center;
@@ -252,6 +257,11 @@
   }
   .quantity .plus {
     padding-left: var(--qty-pad);
+  }
+}
+@media (max-width: 359px) {
+  .quantity {
+    --qty-pad: 10px;
   }
 }
 

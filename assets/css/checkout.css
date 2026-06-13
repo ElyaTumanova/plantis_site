@@ -15,7 +15,7 @@
     table-layout:fixed;
 }
 
-.backorder_date-info {
+/* .backorder_date-info {
     padding: 0.2em 0.4em;
     background-color: var(--accent-color);
     border-radius: 7px;
@@ -28,7 +28,7 @@
 
 .backorder_date-info_late {
   background-color: var(--stock-backorder);
-}
+} */
 
 @media (min-width: 768px) {
 	.order_wrap {

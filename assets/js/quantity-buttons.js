@@ -33,15 +33,15 @@ jQuery(function ($){
 
 	// меняем стили кнопок на активные/неактивные
 	if (newVal === max) {
-		$(".plus").attr('style','opacity:50%; cursor: default;');
+		$(".plus").attr('style','opacity:50%; cursor: default; pointer-events: none;');
 	} else {
-		$(".plus").attr('style','opacity:100%; cursor: pointer;');
+		$(".plus").attr('style','opacity:100%; cursor: pointer; pointer-events: auto;');
 	}
 
 	if (newVal === min) {
-		$(".minus").attr('style','opacity:50%; cursor: default;');
+		$(".minus").attr('style','opacity:50%; cursor: default; pointer-events: none;');
 	} else {
-		$(".minus").attr('style','opacity:100%; cursor: pointer;');
+		$(".minus").attr('style','opacity:100%; cursor: pointer; pointer-events: auto;');
 	}
 
 	qty.parent().parent().find(".add_to_cart_button").attr( 'data-quantity', newVal ); //устанавливаем новое значение для атрибута кнопки добавить в корзину. div "quantity" должен находится в одном родительском узле с кнопкой в корзирну
@@ -75,7 +75,6 @@ jQuery(function ($){
 		$( '[name="update_cart"]' ).attr("data-product_category",$productData.product_category);
 		$( '[name="update_cart"]' ).attr("data-product_price",$productData.product_price);
 	}
-
 	
 	$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
 });

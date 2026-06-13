@@ -201,6 +201,7 @@
 .icon.icon--tags {
   --gap:6px;
   --size: 16px;
+  align-items: end;
 }
 
 .icon--petfriendly::after {
@@ -217,7 +218,6 @@
   --gap: 4px;
 }
 .icon--plane::after {
-  --size: 12px;
   -webkit-mask-image: var(--plane-icon);
   mask-image: var(--plane-icon);
 }
@@ -237,6 +237,12 @@
   -webkit-mask-image: var(--clock-icon);
   mask-image: var(--clock-icon);
 }
+.icon--swap::after {
+  --gap: 8px;
+  -webkit-mask-image: var(--swap-icon);
+  mask-image: var(--swap-icon);
+}
+
 
 
 /* modal-mob */
