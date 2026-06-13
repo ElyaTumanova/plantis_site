@@ -1,0 +1,72 @@
+/*--------------------------------------------------------------
+# My Account for gift card section
+--------------------------------------------------------------*/
+
+
+.gift-card-panel-title-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.gift-card-panel-title {
+  display: none;
+}
+
+.yith-add-new-gc-my-account-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.yith-add-new-gc-my-account-button:hover {
+    color: var(--accent-color);
+}
+
+.yith-add-new-gc-my-account-button::before {
+    content: "+ ";
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+.yith-gift-add-new-gift-card-modal-opened .yith-gift-add-new-gift-card-modal-wrapper {
+  width: 100% !important;
+  padding: 20px;
+  max-width: 500px;
+}
+
+.gift-add-new-gift-card-form {
+  background-color: transparent !important;
+}
+
+.gift-add-new-gift-card-form .gift-link-gift-card-submit-button {
+    background-color: var(--text);
+    color: var(--white);
+    border-radius: 50px;
+}
+
+.gift-add-new-gift-card-form #gift-link-code {
+  border-radius: 25px !important;
+}
+
+.gift-add-new-gift-card-form .yith-add-new-gc-my-account-notice-message {
+  margin-bottom: 15px;
+}
+
+.yith-gift-add-new-gift-card-modal-inner {
+  padding-bottom: 0 !important;
+}
+
+.gift-add-new-gift-card-modal-title {
+  padding-top: 30px !important;
+}
+
+.my_account_giftcards thead .direct_link {
+  display: none;
+}
+.my_account_giftcards tbody .direct_link {
+  display: none;
+}

@@ -1,0 +1,913 @@
+/*--------------------------------------------------------------
+# Gift card result page
+--------------------------------------------------------------*/
+
+.gift-card-content-area{
+  max-width: 1160px;
+  margin: 32px auto 64px;
+  padding: 0 20px;
+}
+
+@media (max-width: 560px){
+  .gift-card-content-area { 
+    padding: 0 16px; 
+    margin-top: 80px;
+  }
+  
+}
+
+.gift-card__title{
+  font-size: 40px;
+  line-height: 1.2;
+  margin: 0 0 8px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+@media (max-width: 767px) {
+    .gift-card__title {
+        font-size: 24px;
+    }
+}
+.page-popup__container .gift-card__title {
+  margin-top: 30px;
+}
+
+.gift-card__descr{
+  color: var(--gray-text);
+  margin: 0 0 24px;
+}
+
+/* Главный блок: карточка с изображением/данными + поздравление */
+.gift-card__main{
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (max-width: 900px){
+  .gift-card__main{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Левая карточка */
+.gift-card__wrap {
+  border: 1px solid #e7eaee;
+  box-shadow: none;
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px;
+}
+
+@media (max-width: 767px){
+  .gift-card__wrap {
+    padding: 14px;
+  }
+}
+
+.gift-image-wrap{
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f2f3f5;
+  /* aspect-ratio: 3 / 1; */
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: none;
+  background-color: #f2f3f5;
+}
+
+.gc-content-area .gift-image-wrap {
+  max-width: 500px;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  /* box-shadow: 0 0 8px rgba(0, 0, 0, .16); */
+  box-shadow: 25px 15px 45px rgba(0, 0, 0, 0.18);
+}
+
+.gift-card__main .gift-image-wrap {
+  max-height: 250px;
+  width: 100%;
+}
+
+.gift-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gift-image-amount{
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: auto;
+  z-index: 2;
+
+  margin: 0;
+  padding: 12px 24px;
+
+  backdrop-filter: blur(3px);
+  border-radius: 999px;
+  background: rgba(255,255,255,.5);
+  box-shadow: 0 1px 6px rgba(0,0,0,.06);
+
+  color: var(--text);
+  font-weight: 600;
+  font-size: 30px;
+}
+
+@media (max-width: 767px){
+  .gift-image-amount{
+      padding: 8px 15px;
+      font-size: 25px;
+      bottom: 15px;
+      left: 15px;
+  }
+}
+
+.gift-image-amount span{ opacity: .9; }
+
+/* Строки с данными */
+.gift-card__row{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  border-top: 1px solid #eef0f2; 
+  padding: 12px 0;
+}
+
+@media (max-width:767px) {
+  .gift-card__row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+  }
+}
+.gift-card__row:first-of-type{ border-top: 0; }
+
+.gift-card__row p{
+  margin: 0;
+  font-size: 15px;
+}
+.gift-card__row p:first-child{ color: var(--gray-text); }
+.gift-card__row p:last-child{
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+.gift-card__row span{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+/* Блок поздравления (правая колонка) */
+.gift-card__greeting {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  border: 1px solid #e7eaee;
+  box-shadow: none;
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px;
+}
+@media (max-width: 767px){
+  .gift-card__greeting {
+      padding: 20px 14px;
+  }
+}
+.gift-card__greeting-to{
+  font-size: 18px;
+  font-weight: 700;
+}
+.gift-card__greeting-text{
+  line-height: 1.4;
+}
+.gift-card__greeting-from{
+  color: var(--gray-text);
+}
+
+/* Кнопка */
+.button.gift-card__btn{
+  color: var(--white);
+  font-weight: 600;
+  background: var(--text);
+  padding: 14px 20px;
+  margin-top: auto;
+}
+
+@media (max-width: 560px){
+  .button.gift-card__btn{ width: 100%; justify-content: center; }
+}
+
+/* Кнопка-копировать номер */
+.copy-wrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+@media (max-width: 767px) {
+    .copy-wrap {
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+/*--------------------------------------------------------------
+# Gift card check balance
+--------------------------------------------------------------*/
+
+.gift-card-cb-content-area {
+    max-width: 760px;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: clamp(24px, 4vw, 48px);
+    border-radius: 28px;
+    background: var(--white);
+    box-shadow: 0 20px 50px rgba(18, 18, 18, 0.08);
+    color: var(--black-color);
+  }
+  
+  @media (max-width: 1279px){
+    .gift-card-cb-content-area { 
+      margin-top: 80px;
+    }
+  }
+
+.gift-card__not-found {
+  margin: 50px auto 30px;
+  font-size: 20px;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: var(--gray);
+  width: fit-content;
+  font-weight: 500;
+  text-align: center;
+}
+
+.gift-card__not-found span {
+  font-weight: 700;
+}
+
+
+.gift-card__check-title {
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.gc-balance-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gc-balance-form input {
+  border-radius: 40px;
+  padding: 3px 25px;
+  outline: none;
+  margin: 10px 0 0;
+  height: 40px;
+  width: 255px;
+}
+
+/* .gc-balance__checkBtn {
+  background-color: var(--text);
+  color: var(--white);
+  padding: 10px 20px;
+}
+
+.gc-balance__checkBtn.is-disabled {
+  background-color: var(--gray);
+  color: var(--gray-text);
+}
+
+.gc-balance__clearBtn {
+  color: var(--text);
+  background-color: var(--white);
+  border: 1px solid rgba(18, 18, 18, 0.12);
+  padding: 10px 20px;
+} */
+
+.gc-balance-form .button {
+  appearance: none;
+  border-radius: 999px;
+  min-height: 45px;
+  padding: 10px 20px;
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    opacity 0.18s ease,
+    background-color 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.gc-balance__checkBtn {
+  border: 1px solid var(--black-color);
+  background: var(--black-color);
+  color: var(--white);
+  box-shadow: 0 10px 24px rgba(18, 18, 18, 0.14);
+}
+
+.gc-balance__checkBtn:hover:not(:disabled):not(.is-disabled) {
+  background: var(--text);
+  border-color: var(--text);
+  box-shadow: 0 14px 28px rgba(18, 18, 18, 0.18);
+}
+
+.gc-balance__checkBtn:active:not(:disabled):not(.is-disabled) {
+  box-shadow: 0 8px 18px rgba(18, 18, 18, 0.12);
+}
+
+.gc-balance__checkBtn.is-disabled,
+.gc-balance__checkBtn:disabled {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.gc-balance__clearBtn {
+  border: 1px solid rgba(18, 18, 18, 0.12);
+  background: transparent;
+  color: var(--black-color);
+}
+
+.gc-balance__clearBtn:hover {
+  border-color: rgba(18, 18, 18, 0.2);
+  background: var(--gray);
+}
+
+.gc-balance__clearBtn:active {
+  background: rgba(18, 18, 18, 0.04);
+  border-color: rgba(18, 18, 18, 0.24);
+}
+
+.gc-balance-form .row {
+  margin-top: 20px;
+}
+
+.gc-balance-form label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+
+/* new styles */
+
+
+
+/* Обёртка секции */
+/* .gift-card__info{
+  margin: 40px auto 24px;
+} */
+
+/*--------------------------------------------------------------
+# Gift card advantages
+--------------------------------------------------------------*/
+
+.giftcard-advantages__title{
+  font-size: 28px;
+  line-height: 1.3;
+  margin: 0 0 16px;
+  font-weight: 600;
+}
+
+
+/* Сетка преимуществ */
+.giftcard-advantages{
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px){
+  .giftcard-advantages{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px){
+  .giftcard-advantages{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Карточка преимущества */
+.giftcard-advantages__wrap{
+  display: grid;
+  grid-template: auto / 55px 1fr;
+  /* grid-template-areas: "photo desrc"; */
+  gap: 24px;
+  padding: 14px;
+  transition: transform .06s ease, box-shadow .2s ease, border-color .2s ease;
+  background: #fff;
+  border: 1px solid #e7eaee;
+  border-radius: 14px;
+  align-items: start;
+  min-height: 96px;
+  align-items: center;
+}
+
+.giftcard-advantages__wrap:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(14,23,18,.08);
+  border-color: #dfe8e2;
+}
+
+
+.giftcard-advantages__number {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent-color);
+    background-color: var(--accent-back);
+    padding: 15px;
+    border-radius: 100px;
+}
+
+/* Текст преимущества */
+.giftcard-advantages__descr{
+  /* grid-area: desrc; */
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--text);
+  opacity: .9;
+}
+
+/* Мелкие улучшения: картинки без дерганья верстки */
+.giftcard-advantages__wrap img[loading="lazy"]{
+  /* Убираем “прыжки” при ленивой загрузке */
+  aspect-ratio: 1 / 1;
+}
+
+/* Мобайл-твики */
+@media (max-width: 900px){
+  .gift-card__main{ gap: 20px; }
+}
+
+/* new style */
+
+
+.gift-showcase {
+  --panel: #ffffff;
+  --muted: var(--gray-text);
+  --line: rgba(18, 18, 18, 0.08);
+  --line-strong: rgba(18, 18, 18, 0.12);
+  --shadow-lg: 0 24px 64px rgba(16, 24, 40, 0.08);
+  /* padding: 24px; */
+  padding: clamp(10px, calc(5.91px + 1.14vw), 24px);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.gift-showcase__wrap {
+  margin: 0 auto;
+  background: var(--gray);
+  border-radius: 28px;
+  padding: 52px;
+}
+
+.gift-showcase__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(520px, 790px);
+  gap: 48px;
+  align-items: stretch;
+}
+
+.gift-showcase__content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.gift-showcase__title {
+  font-size: clamp(24px, 4vw ,64px);
+  font-weight: 500;
+}
+
+@media (max-width: 1280px) {
+  .gift-showcase__title {
+      display: none;
+  }
+}
+
+.gift-showcase__bottom {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  margin-inline: auto;
+  max-width: 720px;
+  gap: 24px;
+  width: 100%;
+}
+
+.gift-showcase__meta {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.gift-showcase__meta-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.gift-showcase__meta-label {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.gift-showcase__meta-value {
+  text-align: right;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.gift-showcase__meta-value--code {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.gift-showcase__card {
+  min-width: 0;
+  display: flex;
+}
+
+.gift-panel {
+  width: 100%;
+  background: var(--panel);
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gift-panel__head,
+.gift-panel__body,
+.gift-panel__view,
+.gift-certificate__message,
+.gift-certificate {
+  min-width: 0;
+}
+
+.gift-panel__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.gift-panel__title {
+  margin: 0;
+  font-size: clamp(34px, 3vw, 58px);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  font-weight: 500;
+}
+
+.gift-panel__switch {
+  display: inline-flex;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  border: 1px solid var(--line);
+  flex-shrink: 0;
+}
+
+.gift-panel__switch-btn {
+  min-height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.gift-panel__switch-btn.is-active {
+  background: #111;
+  color: #fff;
+}
+
+.gift-panel__body {
+  height: 360px;
+  min-height: 360px;
+  display: grid;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.gift-panel__view {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition:
+    opacity 0.32s ease,
+    transform 0.32s ease,
+    visibility 0s linear 0.32s;
+
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.gift-panel__view.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition:
+    opacity 0.32s ease,
+    transform 0.32s ease,
+    visibility 0s linear 0s;
+
+  pointer-events: auto;
+}
+
+.gift-panel,
+.gift-panel__body,
+.gift-panel__view,
+.gift-certificate,
+.gift-certificate__message {
+  box-sizing: border-box;
+}
+
+
+.gift-certificate {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: clamp(10px, 1vw, 20px);
+  border-radius: 22px;
+  overflow: hidden;
+
+  background-size: cover;
+  background-position: center;
+}
+
+/* .gift-certificate__center {
+  flex: 1 1 auto;
+  min-height: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+.gift-certificate__image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+/* .gift-certificate__bottom {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+} */
+
+.gift-certificate__amount {
+    font-size: clamp(16px, calc(8px + 2.2vw), 52px);
+    font-weight: 500;
+    margin-top: auto;
+    z-index: 2;
+    width: fit-content;
+    padding: 12px 24px;
+    backdrop-filter: blur(3px);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .5);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .06);
+}
+
+.gift-certificate__amount span {
+  margin-left: 3px;
+  font-size: 0.58em;
+  opacity: 0.7;
+}
+
+.gift-certificate__message {
+  padding: clamp(10px, 1vw, 20px);
+  border-radius: 22px;
+  height: 100%;
+  background: linear-gradient(180deg, #fbfbfa 0%, var(--gray) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.gift-certificate__message__to {
+  margin: 0 0 18px;
+  font-size: clamp(20px, calc(18px + 0.4vw), 26px);
+  font-weight: 500;
+  color: var(--text);
+}
+
+.gift-certificate__message-text {
+  display: grid;
+  gap: 8px;
+}
+
+.gift-certificate__message-text p {
+  margin: 0;
+  font-size: clamp(16px, 1.2vw, 21px);
+  line-height: 1.24;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.gift-panel__actions {
+  display: flex;
+  gap: 12px;
+}
+
+.gift-panel__actions--left {
+  max-width: 720px;
+}
+
+.gift-btn {
+  min-height: 58px;
+  padding: 0 24px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.25s ease;
+  flex: 1 1 0;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.gift-btn--primary {
+  background: var(--black-color);
+  color: #fff;
+}
+
+.gift-btn--primary:hover {
+  opacity: 0.92;
+}
+
+.gift-btn--secondary {
+  background: #f7f7f7;
+  color: #111;
+  border: 1px solid var(--line-strong);
+}
+
+.gift-btn--secondary:hover {
+  background: #f1f1f1;
+}
+
+.copy-btn {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  color: #111;
+  cursor: pointer;
+  position: relative;
+}
+
+.copy-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.2;
+}
+
+@media (max-width: 1280px) {
+  .gift-showcase__wrap {
+    padding: 34px;
+  }
+
+  .gift-showcase__grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .gift-showcase__card {
+    order: 1;
+  }
+
+  .gift-showcase__content {
+    order: 2;
+  }
+}
+
+@media (max-width: 767px) {
+  /* .gift-showcase {
+    padding: 14px;
+  } */
+
+  .gift-showcase__wrap {
+    padding: 18px;
+    border-radius: 22px;
+    min-height: auto;
+  }
+
+  .gift-showcase__grid {
+    gap: 18px;
+  }
+
+  .gift-panel {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .gift-panel__head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .gift-panel__switch {
+    width: 100%;
+  }
+
+  .gift-panel__switch-btn {
+    flex: 1 1 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .gift-panel__body {
+    height: 300px;
+    min-height: 300px;
+  }
+
+  .gift-showcase__meta-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .gift-showcase__meta-value,
+  .gift-showcase__meta-value--code {
+    text-align: left;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .gift-panel__actions--left {
+    flex-direction: column;
+  }
+
+  .gift-certificate__message {
+    padding: 18px;
+  }
+}
+
+@media (max-width:550px) {
+  .gift-panel__body {
+    height: 100%;
+    min-height: 0;
+    aspect-ratio: 1/1;
+  }
+}
