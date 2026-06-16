@@ -104,8 +104,10 @@ class CF7Popup extends Popup {
     this.container = this.popup.querySelector('.popup__container')
     this.serviceNameInput = this.popup.querySelector('.ukhod-popup-service-name')
     this.contactMethods = this.popup.querySelectorAll('#dontcallme input[type="radio"]');
+    console.log(this.contactMethods)
     if(this.contactMethods) {
       this.tgNikWrap = this.popup.querySelector('.tg-nik-wrap')
+      console.log(this.tgNikWrap)
       this.tgNikInput = this.tgNikWrap.querySelector('input')
     }
     
