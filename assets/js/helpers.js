@@ -33,6 +33,8 @@ class ViewportPosition {
 
 new ViewportPosition ('.catalog-dropdown', '--catalogDropdownTopOffset')
 new ViewportPosition ('.card__image-wrap', '--cardImageWrapTopOffset')
+new ViewportPosition ('.gc-content-area', '--gcContentAreaTopOffset')
+new ViewportPosition ('.gc-step-panel__body', '--gcSliderStageTopOffset')
 // new ViewportPosition ('.burger-menu__body', '--burgerMenuBodyTopOffset')
 
 
@@ -80,6 +82,7 @@ new ElementHeight ('.header__desktop', '--headerHeight')
 new ElementHeight ('.header__main', '--headerMainHeight')
 new ElementHeight ('.header__mob', '--headerMobHeight')
 new ElementHeight ('.card__actions-wrap-inner', '--cardActionsHeight')
+new ElementHeight ('.gc-navbar', '--gcNavBarHeight')
 
 class ElementWidth {
   constructor (selector, propertyName) {
@@ -345,9 +348,67 @@ document.addEventListener('click', async (e) => {
 
     setTimeout(() => {
       block.classList.remove('is-copied');
-    }, 2000);
+    }, 2000); 
   } catch (err) {
     input.select();
     document.execCommand('copy');
   }
 });
+
+
+
+/* debug */
+
+// (function () {
+//   const LABEL_CLASS = '__debug-height-label';
+
+//   function render() {
+//     // удаляем старые подписи
+//     document.querySelectorAll('.' + LABEL_CLASS).forEach(el => el.remove());
+
+//     document.querySelectorAll('div').forEach((el, index) => {
+//       const height = Math.round(el.getBoundingClientRect().height);
+
+//       // случайный цвет для каждого div
+//       const hue = (index * 47) % 360;
+//       const color = `hsl(${hue} 80% 50%)`;
+
+//       el.style.outline = `2px solid ${color}`;
+//       el.style.outlineOffset = '-1px';
+
+//       const style = getComputedStyle(el);
+
+//       // чтобы подпись можно было позиционировать
+//       if (style.position === 'static') {
+//         el.style.position = 'relative';
+//       }
+
+//       const label = document.createElement('span');
+//       label.className = LABEL_CLASS;
+//       label.textContent = `${height}px`;
+
+//       Object.assign(label.style, {
+//         position: 'absolute',
+//         top: '0',
+//         left: '0',
+//         zIndex: '999999',
+//         fontSize: '10px',
+//         lineHeight: '1',
+//         padding: '2px 4px',
+//         background: color,
+//         color: '#fff',
+//         pointerEvents: 'none',
+//         fontFamily: 'monospace',
+//       });
+
+//       el.append(label);
+//     });
+//   }
+
+//   render();
+
+//   window.addEventListener('resize', render);
+
+//   // чтобы можно было вызвать вручную
+//   window.debugDivHeights = render;
+// })();

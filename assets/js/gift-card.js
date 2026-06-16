@@ -110,19 +110,20 @@ if (giftCardApplyBtn && giftcardShow) {
 
 // gift card ui
 const wrap = document.querySelector('.gc-main-slide');
-const amountCardWrap = document.querySelector('.gc-amount__card-wrap');
+const amountCardWraps = Array.from(document.querySelectorAll('.gc-amount__card-wrap'));
 const amountCircleBg = document.querySelector('.gc-amount__circle-bg');
 const sideCards = Array.from(document.querySelectorAll('.gc-card--side'));
 
-const gradientTrack = document.querySelector('.gift-gradient-picker__list');
-const gradientButtons = Array.from(document.querySelectorAll('.gift-gradient-picker__btn'));
+const gradientTrack = document.querySelector('.gift-gradient-arc__track');
+const gradientButtons = Array.from(document.querySelectorAll('.gift-gradient-arc__item'));
 
 const gradientInput = document.getElementById('giftcard_gradient');
 const imageInput = document.getElementById('giftcard_image');
 
-const preview = document.getElementById('giftCardPreview');
+const previews = Array.from(document.querySelectorAll('.js-gift-card-preview'));
 const hintText = document.getElementById('giftCardAmountHintText');
 
+const gcPrev2Media = document.getElementById('gcPrev2Media');
 const gcPrevMedia = document.getElementById('gcPrevMedia');
 const gcNextMedia = document.getElementById('gcNextMedia');
 const gcNext2Media = document.getElementById('gcNext2Media');
@@ -176,14 +177,14 @@ function setActiveButton(buttons, dataKey, value) {
 }
 
 function getActiveGradientFromButton() {
-  const activeButton = document.querySelector('.gift-gradient-picker__btn.is-active');
+  const gradientKey = gradientInput.value || defaultGradientKey;
+  const activeButton = gradientButtons.find((btn) => {
+    return btn.dataset.gradientKey === gradientKey;
+  });
+
   const gradientSpan = activeButton ? activeButton.querySelector('span') : null;
 
-  if (!gradientSpan) {
-    return getGradientCss(gradientInput.value || defaultGradientKey);
-  }
-
-  return gradientSpan.style.backgroundImage || getGradientCss(gradientInput.value || defaultGradientKey);
+  return gradientSpan?.style.backgroundImage || getGradientCss(gradientKey);
 }
 
 function applyGradientStyles(element, gradientCss) {
@@ -198,8 +199,10 @@ function applyGradientStyles(element, gradientCss) {
 function applySolidBackground(element, color) {
   if (!element || !color) return;
 
-  element.style.backgroundImage = 'none';
-  element.style.backgroundColor = color;
+  element.style.backgroundColor = '';
+  element.style.backgroundImage = color;
+  element.style.backgroundSize = 'cover';
+  element.style.backgroundPosition = 'center';
 }
 
 function getActiveSlideElement() {
@@ -257,13 +260,13 @@ function applyGradientToUi() {
   const gradientKey = gradientInput.value || defaultGradientKey;
   const backgroundColor = getBackgroundColor(gradientKey);
 
-  if (!gradientCss) return;
+  document.querySelectorAll('.gc-main-slide').forEach((slide) => {
+    applyGradientStyles(slide, gradientCss);
+  });
 
-  const activeSlide = getActiveSlideElement();
-
-  applyGradientStyles(activeSlide, gradientCss);
-  applyGradientStyles(amountCardWrap, gradientCss);
-
+  amountCardWraps.forEach((cardWrap) => {
+    applyGradientStyles(cardWrap, gradientCss);
+  });
   applySolidBackground(amountCircleBg, backgroundColor);
 
   sideCards.forEach((card) => {
@@ -293,6 +296,15 @@ function createArcController(params) {
   const dataKey = params.dataKey;
   const input = params.input;
   const defaultValue = params.defaultValue;
+
+  if (params.arcHeight !== undefined) {
+    document.documentElement.style.setProperty(
+      '--gc-arc-height',
+      `${params.arcHeight}px`
+    );
+  }
+
+  new ElementHeight ('.gc-slider-section', '--gcStepPanelHeight')
 
   if (!track || !buttons.length || !input) {
     return {
@@ -376,15 +388,30 @@ function createArcController(params) {
 
       button.style.pointerEvents = '';
 
-      const x = offset * slotSpacing;
-      const normalized = usableHalfWidth ? x / usableHalfWidth : 0;
-      const y = -Math.pow(normalized, 2) * arcDepth;
+      const radius = params.radius || 300;
+      const arcHeight = params.arcHeight || radius;
+      const angleStep = params.angleStep || 11;
+      const baseYOffset = params.baseYOffset || 0;
 
-      const scale = Math.max(params.minScale, 1 - dist * params.scaleStep);
-      const opacity = Math.max(params.minOpacity, 1 - dist * params.opacityStep);
+      const angleDeg = 90 + offset * angleStep;
+      const angleRad = angleDeg * Math.PI / 180;
 
-      const baseYOffset = 38;
-      button.style.transform = `translate(${x}px, ${y + baseYOffset}px) scale(${scale})`;
+      const centerX = track.offsetWidth / 2;
+      const centerY = track.offsetHeight - buttonSize;
+
+      const x = centerX + Math.cos(angleRad) * radius;
+      const y = centerY + Math.sin(angleRad) * arcHeight - arcHeight;
+
+      // const x = Math.cos(angleRad) * radius;
+      // const y = Math.sin(angleRad) * arcHeight - arcHeight + baseYOffset;
+
+      const scale = 1;
+      const opacity = 1;
+
+      // const baseYOffset = 38;
+      // button.style.transform = `translate(${x}px, ${y + baseYOffset}px) scale(${scale})`;
+      button.style.transform =
+      `translate(${x}px, ${y}px) translate(-50%, -50%) scale(${scale})`;
       button.style.opacity = opacity;
       button.style.zIndex = String(200 - Math.round(dist * 10));
       button.classList.toggle('is-active', dist < 0.5);
@@ -394,21 +421,48 @@ function createArcController(params) {
   function animateSnap() {
     stopSnapAnimation();
 
-    function tick() {
-      const target = Math.round(dragOffset);
-      const delta = target - dragOffset;
+    const step = Math.round(dragOffset);
 
-      if (Math.abs(delta) < 0.001) {
-        dragOffset = target;
-        layout();
-        updateActive();
-        stopSnapAnimation();
+    if (!step) {
+      dragOffset = 0;
+      layout();
+      return;
+    }
+
+    animateToStep(step);
+  }
+
+  function animateToStep(step) {
+    stopSnapAnimation();
+
+    const startOffset = 0;
+    const targetOffset = step;
+    const duration = 420;
+    const startTime = performance.now();
+
+    dragOffset = 0;
+
+    function tick(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+
+      dragOffset = startOffset + (targetOffset - startOffset) * eased;
+      layout();
+
+      if (progress < 1) {
+        snapAnimationFrame = requestAnimationFrame(tick);
         return;
       }
 
-      dragOffset += delta * 0.16;
+      activeIndex = mod(activeIndex + targetOffset, buttons.length);
+      dragOffset = 0;
+
+      input.value = buttons[activeIndex].dataset[dataKey] || defaultValue;
+      setActiveButton(buttons, dataKey, input.value);
+      renderBackground();
       layout();
-      snapAnimationFrame = requestAnimationFrame(tick);
+
+      stopSnapAnimation();
     }
 
     snapAnimationFrame = requestAnimationFrame(tick);
@@ -432,7 +486,7 @@ function createArcController(params) {
     const now = performance.now();
     const deltaX = x - startX;
 
-    dragOffset = startDragOffset - deltaX / params.dragDivisor;
+    dragOffset = startDragOffset + deltaX / params.dragDivisor;
 
     const dt = now - lastTime;
     if (dt > 0) {
@@ -455,17 +509,18 @@ function createArcController(params) {
     isDragging = false;
     track.classList.remove('is-dragging');
 
-    dragOffset -= velocity * params.velocityFactor;
+    dragOffset += velocity * params.velocityFactor;
     animateSnap();
   }
 
   buttons.forEach((button, index) => {
     button.addEventListener('click', function () {
-      stopSnapAnimation();
-      activeIndex = index;
-      dragOffset = 0;
-      layout();
-      updateActive();
+      let diff = index - activeIndex;
+
+      if (diff > buttons.length / 2) diff -= buttons.length;
+      if (diff < -buttons.length / 2) diff += buttons.length;
+
+      animateToStep(diff);
     });
   });
 
@@ -477,6 +532,32 @@ function createArcController(params) {
   track.addEventListener('mousedown', onDragStart);
   window.addEventListener('mousemove', onDragMove);
   window.addEventListener('mouseup', onDragEnd);
+
+  const gradientArcElement = document.querySelector('.gift-gradient-arc');
+
+  if (gradientArcElement) {
+    let lockBodyTimer = null;
+
+    gradientArcElement.addEventListener('mouseenter', () => {
+      clearTimeout(lockBodyTimer);
+
+      lockBodyTimer = setTimeout(() => {
+        document.body.classList.add('is-gradient-arc-hover');
+      }, 300);
+    });
+
+    gradientArcElement.addEventListener('mouseleave', () => {
+      clearTimeout(lockBodyTimer);
+      document.body.classList.remove('is-gradient-arc-hover');
+    });
+
+    gradientArcElement.addEventListener('wheel', function (event) {
+      event.preventDefault();
+
+      const step = event.deltaY > 0 ? 1 : -1;
+      animateToStep(step);
+    }, { passive: false });
+  }
 
   return {
     layout: layout
@@ -497,19 +578,21 @@ const gradientArc = hasGiftCardUi
   ? createArcController({
       track: gradientTrack,
       buttons: gradientButtons,
+
       dataKey: 'gradientKey',
       input: gradientInput,
       defaultValue: defaultGradientKey,
-      buttonSize: 46,
-      sidePadding: 8,
-      arcDepth: 42,
-      maxVisibleOffset: 5,
-      minScale: 0.74,
-      scaleStep: 0.06,
-      minOpacity: 0.32,
-      opacityStep: 0.1,
-      dragDivisor: 36,
-      velocityFactor: 6
+
+      radius: 400,          // радиус окружности (размер дуги)
+      arcHeight: 140,    // высота дуги
+      angleStep: 13,        // угол между соседними кружками
+      buttonSize: 46,       // размер кнопки
+      baseYOffset: 0,      // смещение всей дуги вниз
+
+      maxVisibleOffset: 5,  // количество видимых кружков с каждой стороны от активного
+
+      dragDivisor: 50,      // чувствительность перетаскивания (меньше = быстрее)
+      velocityFactor: 5,    // сила инерции после отпускания
     })
   : { layout: function () {} };
 
@@ -554,30 +637,31 @@ function gcSetCircleBackground(element, imageUrl) {
 function gcUpdateSideSlides(activeIndex, total) {
   if (!total) return;
 
+  const prev2Index = gcGetLoopIndex(activeIndex - 2, total);
   const prevIndex = gcGetLoopIndex(activeIndex - 1, total);
   const nextIndex = gcGetLoopIndex(activeIndex + 1, total);
   const next2Index = gcGetLoopIndex(activeIndex + 2, total);
 
   const activeImage = gcGetSlideImageUrlByIndex(activeIndex);
-  const prevImage = gcGetSlideImageUrlByIndex(prevIndex);
-  const nextImage = gcGetSlideImageUrlByIndex(nextIndex);
-  const next2Image = gcGetSlideImageUrlByIndex(next2Index);
 
-  if (preview && activeImage) {
-    preview.src = activeImage;
+  if (activeImage) {
+    previews.forEach((preview) => {
+      preview.src = activeImage;
+    });
   }
 
-  gcSetCircleBackground(gcPrevMedia, prevImage);
-  gcSetCircleBackground(gcNextMedia, nextImage);
-  gcSetCircleBackground(gcNext2Media, next2Image);
+  gcSetCircleBackground(gcPrev2Media, gcGetSlideImageUrlByIndex(prev2Index));
+  gcSetCircleBackground(gcPrevMedia, gcGetSlideImageUrlByIndex(prevIndex));
+  gcSetCircleBackground(gcNextMedia, gcGetSlideImageUrlByIndex(nextIndex));
+  gcSetCircleBackground(gcNext2Media, gcGetSlideImageUrlByIndex(next2Index));
 
   syncImageInputByIndex(activeIndex);
   applyGradientToUi();
 }
 
 // steps
-const gcStepperItems = Array.from(document.querySelectorAll('.gc-sidebar__item'));
-const gcStepperButtons = Array.from(document.querySelectorAll('.gc-sidebar__link[data-gc-step]'));
+const gcStepperItems = Array.from(document.querySelectorAll('.gc-navbar__item'));
+const gcStepperButtons = Array.from(document.querySelectorAll('.gc-navbar__link[data-gc-step]'));
 const gcStepPanels = Array.from(document.querySelectorAll('[data-gc-step-panel]'));
 const gcPrevStepButtons = Array.from(document.querySelectorAll('[data-gc-prev-step]'));
 const gcNextStepButtons = Array.from(document.querySelectorAll('[data-gc-next-step]'));
@@ -589,12 +673,15 @@ let gcCurrentStep = 1;
 
 function gcSetActiveStep(step) {
   const nextStep = Math.min(Math.max(step, gcMinStep), gcMaxStep);
+
   gcCurrentStep = nextStep;
 
   gcStepperItems.forEach((item) => {
-    const button = item.querySelector('.gc-sidebar__link[data-gc-step]');
+    const button = item.querySelector('.gc-navbar__link[data-gc-step]');
     const itemStep = Number(button?.dataset.gcStep);
+
     item.classList.toggle('is-active', itemStep === nextStep);
+    item.classList.toggle('is-checked', itemStep < nextStep);
   });
 
   gcStepPanels.forEach((panel) => {
@@ -603,22 +690,22 @@ function gcSetActiveStep(step) {
 
     panel.hidden = !isActive;
     panel.classList.toggle('is-active', isActive);
+
+    if (isActive) {
+      requestAnimationFrame(() => {
+        panel.classList.add('is-ready');
+      });
+    } else {
+      panel.classList.remove('is-ready');
+    }
   });
 
-  gcStepPanels.forEach((panel) => {
-    const panelStep = Number(panel.dataset.gcStepPanel);
-    if (panelStep !== gcCurrentStep) return;
+  gcPrevStepButtons.forEach((button) => {
+    button.disabled = gcCurrentStep === gcMinStep;
+  });
 
-    const prevButton = panel.querySelector('[data-gc-prev-step]');
-    const nextButton = panel.querySelector('[data-gc-next-step]');
-
-    if (prevButton) {
-      prevButton.disabled = gcCurrentStep === gcMinStep;
-    }
-
-    if (nextButton) {
-      nextButton.disabled = gcCurrentStep === gcMaxStep;
-    }
+  gcNextStepButtons.forEach((button) => {
+    button.disabled = gcCurrentStep === gcMaxStep;
   });
 }
 
@@ -639,6 +726,8 @@ gcNextStepButtons.forEach((button) => {
     gcSetActiveStep(gcCurrentStep + 1);
   });
 });
+
+gcSetActiveStep(gcCurrentStep);
 
 // swiper
 let gcSwiper = null;
@@ -796,14 +885,17 @@ if (wheel && input) {
 
     wheel.innerHTML = '';
 
-    const centerX = wheel.clientWidth * 0.5;
-    const centerY = wheel.clientHeight * 0.44;
-    const radius = Math.min(wheel.clientWidth, wheel.clientHeight) * 0.39;
+    const radius = wheel.clientHeight * 0.9;
 
-    const activeAngleDeg = 8;
-    const startDeg = -18;
-    const endDeg = 122;
-    const stepDeg = (endDeg - startDeg) / (amounts.length - 1);
+    // центр окружности слева
+    const centerX = -radius + 60;
+    const centerY = wheel.clientHeight / 2;
+
+    // активная сумма находится примерно посередине
+    const activeAngleDeg = 0;
+
+    // расстояние между суммами
+    const stepDeg = 7;
 
     amounts.forEach((amount, index) => {
       const relativeIndex = index - currentFloatIndex;
@@ -817,11 +909,16 @@ if (wheel && input) {
       const scale = Math.max(0.86, 1 - distanceFromActive * 0.02);
 
       let opacity = 1;
-      const fadeStartDeg = -8;
-      const fadeEndDeg = -28;
 
-      if (angleDeg < fadeStartDeg) {
-        const fadeProgress = (fadeStartDeg - angleDeg) / (fadeStartDeg - fadeEndDeg);
+      const fadeStartDeg = 8;
+      const fadeEndDeg = 35;
+
+      const absAngle = Math.abs(angleDeg);
+
+      if (absAngle > fadeStartDeg) {
+        const fadeProgress =
+          (absAngle - fadeStartDeg) / (fadeEndDeg - fadeStartDeg);
+
         opacity = Math.max(0, 1 - fadeProgress);
       }
 
@@ -837,11 +934,12 @@ if (wheel && input) {
       item.style.transform = `translate(-50%, -50%) rotate(${angleDeg}deg) scale(${scale})`;
       item.innerHTML = `<span>${formatAmount(amount)}</span>`;
 
-      if (angleDeg <= fadeEndDeg) {
+      if (absAngle >= fadeEndDeg) {
         item.style.opacity = '0';
         item.style.pointerEvents = 'none';
         item.style.visibility = 'hidden';
       } else {
+        item.style.opacity = opacity;
         item.style.pointerEvents = 'auto';
         item.style.visibility = 'visible';
       }

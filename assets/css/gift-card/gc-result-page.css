@@ -104,37 +104,6 @@
   display: block;
 }
 
-.gift-image-amount{
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: auto;
-  z-index: 2;
-
-  margin: 0;
-  padding: 12px 24px;
-
-  backdrop-filter: blur(3px);
-  border-radius: 999px;
-  background: rgba(255,255,255,.5);
-  box-shadow: 0 1px 6px rgba(0,0,0,.06);
-
-  color: var(--text);
-  font-weight: 600;
-  font-size: 30px;
-}
-
-@media (max-width: 767px){
-  .gift-image-amount{
-      padding: 8px 15px;
-      font-size: 25px;
-      bottom: 15px;
-      left: 15px;
-  }
-}
-
-.gift-image-amount span{ opacity: .9; }
-
 /* Строки с данными */
 .gift-card__row{
   display: grid;

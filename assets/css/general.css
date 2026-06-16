@@ -58,7 +58,8 @@ p {
   }
 }
 
-input {
+input,
+textarea {
   border: var(--input-border);
   border-radius: var(--button-br);
   padding: 11px 14px;

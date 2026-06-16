@@ -35,7 +35,7 @@ function plnt_get_style_files() {
 		'wishlist',
 		'account',
 		'popup',
-		'gift-card',
+		// 'gift-card',
     'gift-card/gc-vars',
     'gift-card/gc-single-product',
     'gift-card/gc-result-page',
@@ -287,7 +287,7 @@ function plnt_scripts() {
 	plnt_localize_script( 'ajax-urgent-delivery', 'PLNT_Delivery_Data', plnt_get_delivery_localize_data() );
 	plnt_localize_script( 'ajax-search', 'search_form', plnt_get_ajax_search_localize_data() );
 	plnt_localize_script( 'account', 'PLANTIS_LOGIN', plnt_get_account_localize_data() );
-	// plnt_localize_script( 'gift-card', 'plntGiftCardData', plnt_get_gift_card_localize_data() );
+	plnt_localize_script( 'gift-card', 'plntGiftCardData', plnt_get_gift_card_localize_data() );
 
 	if ( is_page( 'test-kakoe-ty-rastenie' ) ) {
 		$file_rel_path = '/assets/js/test.js';

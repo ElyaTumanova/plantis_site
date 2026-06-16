@@ -318,7 +318,16 @@ class GiftFormValidation extends FormsValidation {
   initDom () {
     const ok = super.initDom()
     if (!ok) return false
-    this.amountInput = document.querySelector('.gift-manual-amount')
+    // submit вынесен за пределы формы
+    const formId = this.form.getAttribute('id')
+
+    if (formId) {
+      this.sumbmitBtn =
+        document.querySelector(`button[type="submit"][form="${formId}"]`) ||
+        this.sumbmitBtn
+    }
+
+    this.amountInput = document.querySelector('.gc-amount__input')
     this.giftAmounts = document.querySelectorAll('.gift__amounts p')
     this.imageAmount = document.querySelector('.gift-image-amount')
     this.giftAmountPost = document.querySelector('#giftcard_amount')
@@ -347,7 +356,7 @@ class GCBalanceForm extends FormsValidation {
     super.bindEvents()
     this.clearBtn.addEventListener('click', () => {
       this.codeInput.value = '';
-      this.manageErrors(this.codeInput, [])
+      // this.manageErrors(this.codeInput, [])
       this.codeInput.focus();
     });
   }

@@ -5,6 +5,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 return [
     'gradients' => [
+      'cotton_candy'   => 'radial-gradient(100% 260% at 0% 0%, #FF8DD3 0%, #FEEEF7 100%)',
+
+      'lavender_milk' => 'radial-gradient(100% 260% at 0% 0%, #CAABFF 0%, #EFEAFC 100%)',
+
+      'glacier_blue'  => 'radial-gradient(100% 260% at 0% 0%, #B2E6FF 0%, #ECF6FF 100%)',
+
+      'pistachio_cream' => 'radial-gradient(100% 260% at 0% 0%, #C0F683 0%, #EEF9EE 100%)',
+
+      'apricot_milk'  => 'radial-gradient(100% 260% at 0% 0%, #FFD6B4 0%, #FAF1E9 100%)',
+
+      'mint_frost'    => 'radial-gradient(100% 260% at 0% 0%, #82DDBE 0%, #E9FAF4 100%)',
+        
         'sky' => 'radial-gradient(82% 100% at -4% -4%, rgba(144, 220, 255, 0.80) 0%, rgba(144, 220, 255, 0) 100%), radial-gradient(66% 84% at 104% 103%, rgba(79, 178, 255, 0.56) 0%, rgba(79, 178, 255, 0) 100%), radial-gradient(56% 68% at 50% 104%, rgba(190, 246, 255, 0.34) 0%, rgba(190, 246, 255, 0) 100%), linear-gradient(135deg, rgb(241, 249, 255) 0%, rgb(233, 245, 255) 100%)',
 
         'violet' => 'radial-gradient(82% 100% at -4% -4%, rgba(185, 143, 255, 0.80) 0%, rgba(185, 143, 255, 0) 100%), radial-gradient(66% 84% at 104% 103%, rgba(129, 92, 236, 0.58) 0%, rgba(129, 92, 236, 0) 100%), radial-gradient(56% 68% at 50% 104%, rgba(227, 190, 255, 0.34) 0%, rgba(227, 190, 255, 0) 100%), linear-gradient(135deg, rgb(247, 242, 255) 0%, rgb(239, 236, 252) 100%)',
@@ -27,15 +39,36 @@ return [
     ],
 
     'backgrounds' => [
-        'sky' => '#EAF6FF',
-        'violet' => '#EEE7FF',
-        'fuchsia' => '#FDEAF4',
-        'lime_mint' => '#EAF6E8',
-        'lime_peach' => '#F5F1DD',
-        'lime_tropical' => '#E6F4E8',
-        'bright_peach_leaf' => '#F7EEDF',
-        'bright_lilac_green' => '#EEF1E7',
-        'champagne_peach' => '#F4EADF',
+
+      'cotton_candy'   => 'radial-gradient(100% 260% at 0% 0%, #FF8DD3 0%, #FEEEF7 100%)',
+
+      'lavender_milk' => 'radial-gradient(100% 260% at 0% 0%, #CAABFF 0%, #EFEAFC 100%)',
+
+      'glacier_blue'  => 'radial-gradient(100% 260% at 0% 0%, #B2E6FF 0%, #ECF6FF 100%)',
+
+      'pistachio_cream' => 'radial-gradient(100% 260% at 0% 0%, #C0F683 0%, #EEF9EE 100%)',
+
+      'apricot_milk'  => 'radial-gradient(100% 260% at 0% 0%, #FFD6B4 0%, #FAF1E9 100%)',
+
+      'mint_frost'    => 'radial-gradient(100% 260% at 0% 0%, #82DDBE 0%, #E9FAF4 100%)',
+
+        'sky' => 'radial-gradient(100% 260% at 0% 0%, #8FD8FF 0%, #EAF6FF 100%)',
+
+        'violet' => 'radial-gradient(100% 260% at 0% 0%, #C2A5FF 0%, #EEE7FF 100%)',
+
+        'fuchsia' => 'radial-gradient(100% 260% at 0% 0%, #FF8DCC 0%, #FDEAF4 100%)',
+
+        'lime_mint' => 'radial-gradient(100% 263% at 0% 0%, #82DDBE 0%, #E9FAF4 100%)',
+
+        'lime_peach' => 'radial-gradient(100% 260% at 0% 0%, #FFE19B 0%, #F7F3E3 100%)',
+
+        'lime_tropical' => 'radial-gradient(100% 263% at 0% 0%, #63D7A7 0%, #E8F8F0 100%)',
+
+        'bright_peach_leaf' => 'radial-gradient(100% 260% at 0% 0%, #FFCFA8 0%, #F9F2E8 100%)',
+
+        'bright_lilac_green' => 'radial-gradient(100% 260% at 0% 0%, #DCC7F4 0%, #F2F6EE 100%)',
+
+        'champagne_peach' => 'radial-gradient(100% 260% at 0% 0%, #F4D9C2 0%, #F8F1EA 100%)',
     ],
 
     'images' => [
