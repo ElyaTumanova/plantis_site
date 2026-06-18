@@ -197,7 +197,7 @@ function plantis_filter_orders_query_by_delivery_date( $query ) {
 /* peresadka message */
 
 
-// add_action( 'woocommerce_admin_order_item_headers', 'plnt_show_peresadka_notice_in_order' );
+add_action( 'woocommerce_admin_order_item_headers', 'plnt_show_peresadka_notice_in_order' );
 
 function plnt_show_peresadka_notice_in_order( $order ) {
 
