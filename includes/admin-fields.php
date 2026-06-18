@@ -193,3 +193,48 @@ function plantis_filter_orders_query_by_delivery_date( $query ) {
 		]
 	);
 }
+
+/* peresadka message */
+
+
+add_action( 'woocommerce_admin_order_data_after_order_details', 'plnt_show_peresadka_notice_in_order' );
+
+function plnt_show_peresadka_notice_in_order( $order ) {
+
+    $has_peresadka_crosssell = false;
+
+    foreach ( $order->get_items() as $item ) {
+
+        $product = $item->get_product();
+
+        if ( ! $product ) {
+            continue;
+        }
+
+        $crosssell_ids = $product->get_cross_sell_ids();
+
+        if ( empty( $crosssell_ids ) ) {
+            continue;
+        }
+
+        foreach ( $crosssell_ids as $crosssell_id ) {
+
+            if ( has_term( 'peresadka', 'product_cat', $crosssell_id ) ) {
+                $has_peresadka_crosssell = true;
+                break 2;
+            }
+        }
+    }
+
+    if ( ! $has_peresadka_crosssell ) {
+        return;
+    }
+
+    ?>
+    <div class="notice notice-warning inline">
+        <p>
+            <strong>Внимание:</strong> один или несколько товаров заказа имеют в кросс-продажах услугу пересадки.
+        </p>
+    </div>
+    <?php
+}
