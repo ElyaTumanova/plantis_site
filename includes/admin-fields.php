@@ -231,9 +231,9 @@ function plnt_show_peresadka_notice_in_order( $order ) {
     }
 
     ?>
-    <div class="notice notice-warning inline">
+    <div class="notice notice-error inline">
         <p>
-            <strong>Внимание:</strong> один или несколько товаров заказа имеют в кросс-продажах услугу пересадки.
+            <strong>Внимание:</strong> в заказе есть горшки с платной пересадкой.
         </p>
     </div>
     <?php
