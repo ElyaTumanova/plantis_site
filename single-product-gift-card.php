@@ -60,14 +60,47 @@ $background_css    = plnt_get_giftcard_background_css( $default_gradient, $defau
   <span class="gc__eyebrow">Электронный подарочный сертификат</span>
   <div class="gc-amount__circle-bg"></div>
   <div
-    class="gc-amount__wheel"
+    class="gc-amount__wheel gc-amount__wheel--desktop"
     id="amountWheel"
     aria-label="Выбор номинала"
-  ></div>
+  >  </div>
   <section class="gc-step-panel" data-gc-step-panel="1">
     <h2 class="gc-step-panel__title" data-heading-tag="H2">Выбери дизайн карты</h2>
+    <?php get_template_part('template-parts/front/gc-navbar')?>
     <div class="gc-step-panel__body gc-slider-section">
-      <div class="gc-slider">
+      <!-- slider for mobile -->
+        <div class="gc-slider gc-slider--mob">
+          <div class="gc-mobile-timeline">
+            <span class="gc-mobile-timeline__dot"></span>
+          </div>
+          <div class="swiper gc-main-swiper-mobile">
+            <div class="swiper-wrapper">
+              <?php foreach ($images as $key => $image_url) : ?>
+                <div class="swiper-slide" data-image-key="<?php echo esc_attr($key); ?>">
+                  <div class="gc-main-slide">
+                    <img
+                      class="gc-main-slide__image"
+                      src="<?php echo esc_url($image_url); ?>"
+                      alt="<?php echo esc_attr($key); ?>"
+                    >
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+          </div>
+          <div class="gc-card-mob-wrap">
+            <div class="js-gift-card-gradient gc-card--main gc-card--main-mob">
+              <!-- сюда подставляй картинку из этапа выбора дизайна -->
+              <img
+                class="gc-main-slide__image js-gift-card-preview-mob"
+                src=""
+                alt="Выбранный дизайн подарочной карты"
+              />
+            </div>
+          </div>
+        </div>
+      <!-- slider for desktop -->
+      <div class="gc-slider gc-slider--desktop">
         <button
           class="gc-slider__nav gc-slider__nav--prev"
           type="button"
@@ -114,7 +147,7 @@ $background_css    = plnt_get_giftcard_background_css( $default_gradient, $defau
         <div class="gc-slider__dots" id="gcSliderDots"></div>
       </div>
 
-      <div class="gift-gradient-arc">
+      <div class="gift-gradient-arc gift-gradient-arc--desktop">
         <div class="gift-gradient-arc__track">
           <?php foreach ( $gradients as $gradient_key => $gradient_css ) : ?>
             <?php
@@ -133,15 +166,37 @@ $background_css    = plnt_get_giftcard_background_css( $default_gradient, $defau
           <?php endforeach; ?>
         </div>
       </div>
+      <div class="swiper gift-gradient-swiper gift-gradient-arc--mobile">
+        <div class="swiper-wrapper">
+          <?php foreach ( $gradients as $gradient_key => $gradient_css ) : ?>
+            <?php
+            $is_active = $gradient_key === $default_gradient;
+            $label = $gradient_labels[ $gradient_key ] ?? $gradient_key;
+            ?>
+            <button
+              type="button"
+              class="swiper-slide gift-gradient-slide<?php echo $is_active ? ' is-active' : ''; ?>"
+              data-gradient-key="<?php echo esc_attr( $gradient_key ); ?>"
+              aria-label="<?php echo esc_attr( $label ); ?>"
+              title="<?php echo esc_attr( $label ); ?>"
+            >
+              <span style="background-image: <?php echo esc_attr( $gradient_css ); ?>;"></span>
+            </button>
+          <?php endforeach; ?>
+        </div>
+      </div>
+      <div class="gc-mobile-timeline gc-mobile-timeline--bottom">
+        <span class="gc-mobile-timeline__dot"></span>
+      </div>
     </div>
   </section>
 
   <section class="gc-step-panel is-active" data-gc-step-panel="2" hidden>
     <h2 class="gc-step-panel__title">Выбери номинал карты</h2>
-
+    <?php get_template_part('template-parts/front/gc-navbar')?>
     <div class="gc-step-panel__body gc-amount__layout">
       <div class="gc-amount__visual">
-        <div class="gc-amount__card-wrap gc-card--main">
+        <div class="js-gift-card-gradient gc-card--main">
           <!-- сюда подставляй картинку из этапа выбора дизайна -->
           <img
             class="gc-main-slide__image js-gift-card-preview"
@@ -168,14 +223,36 @@ $background_css    = plnt_get_giftcard_background_css( $default_gradient, $defau
           можно купить <span id="giftCardAmountHintText">небольшой букет</span>
         </div>
       </div>
+      <div class="swiper gc-amount-swiper gc-amount__wheel--mobile" id="amountSwiper">
+        <div class="swiper-wrapper">
+          <?php
+          $amounts = [1500, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 12000, 15000, 18000, 20000, 25000, 30000];
+          foreach ( $amounts as $amount ) :
+          ?>
+            <button
+              type="button"
+              class="swiper-slide gc-amount-slide"
+              data-amount="<?php echo esc_attr( $amount ); ?>"
+            >
+              <?php echo esc_html( number_format( $amount, 0, '', ' ' ) ); ?>
+              <span class="gc-amount-slide__currency">₽</span>
+            </button>
+          <?php endforeach; ?>
+        </div>
+        <div class="gc-mobile-timeline gc-mobile-timeline--wheel">
+          <span class="gc-mobile-timeline__dot"></span>
+        </div>
+
+      </div>
     </div>
   </section>
 
   <section class="gc-step-panel" data-gc-step-panel="3" hidden>
     <h2 class="gc-step-panel__title">Введи данные</h2>
+    <?php get_template_part('template-parts/front/gc-navbar')?>
     <div class="gc-step-panel__body gc-amount__layout">
       <div class="gc-amount__visual">
-        <div class="gc-amount__card-wrap gc-card--main">
+        <div class="js-gift-card-gradient gc-card--main">
           <!-- сюда подставляй картинку из этапа выбора дизайна -->
           <img
             class="gc-main-slide__image js-gift-card-preview"
@@ -270,61 +347,7 @@ $background_css    = plnt_get_giftcard_background_css( $default_gradient, $defau
     Назад
   </button>
      
-  <nav class="gc-navbar__nav" aria-label="Навигация по шагам">
-    <ul class="gc-navbar__list">
-
-      <li class="gc-navbar__item is-active">
-        <button
-          type="button"
-          class="gc-navbar__link"
-          data-gc-step="1"
-        >
-          <span class="gc-navbar__num">1</span>
-
-          <span class="gc-navbar__text">
-            Дизайн
-          </span>
-        </button>
-      </li>
-
-      <li class="gc-navbar__separator">
-        <?php echo plnt_icon( 'chevron-right' ); ?>
-      </li>
-
-      <li class="gc-navbar__item">
-        <button
-          type="button"
-          class="gc-navbar__link"
-          data-gc-step="2"
-        >
-          <span class="gc-navbar__num">2</span>
-
-          <span class="gc-navbar__text">
-            Номинал
-          </span>
-        </button>
-      </li>
-
-      <li class="gc-navbar__separator">
-        <?php echo plnt_icon( 'chevron-right' ); ?>
-      </li>
-
-      <li class="gc-navbar__item">
-        <button
-          type="button"
-          class="gc-navbar__link"
-          data-gc-step="3"
-        >
-          <span class="gc-navbar__num">3</span>
-
-          <span class="gc-navbar__text">
-            Кому
-          </span>
-        </button>
-      </li>
-
-    </ul>
-  </nav>
+  <?php get_template_part('template-parts/front/gc-navbar')?>
   <button type="button" class="button button--green gc-step-btn gc-step-btn--next" data-gc-next-step>
     Далее
   </button>

@@ -146,6 +146,9 @@ class FormsValidation {
       const parent = fieldControlElement.parentElement
       fieldErrorsElement = parent.parentElement.querySelector(this.errorMessageSelector)
     }
+    if (!fieldErrorsElement) {
+      return;
+    }
     fieldErrorsElement.innerHTML = errorMessages
       .map((message) => `<span class="field__error">${message}</span>`)
       .join('')

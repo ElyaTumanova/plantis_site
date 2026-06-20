@@ -35,7 +35,7 @@ new ViewportPosition ('.catalog-dropdown', '--catalogDropdownTopOffset')
 new ViewportPosition ('.card__image-wrap', '--cardImageWrapTopOffset')
 new ViewportPosition ('.gc-content-area', '--gcContentAreaTopOffset')
 new ViewportPosition ('.gc-step-panel__body', '--gcSliderStageTopOffset')
-// new ViewportPosition ('.burger-menu__body', '--burgerMenuBodyTopOffset')
+new ViewportPosition ('.gc-card-mob-wrap', '--gcCardMobTopOffset')
 
 
 class ElementHeight {
@@ -207,6 +207,31 @@ new HoverDropdownCollection ('.menu__list')
 new HoverDropdownCollection('.header__info-menu')
 
 
+class ScrollTopToggle {
+  constructor(selector, className = 'scrollhidden') {
+    this.element = document.querySelector(selector);
+    this.className = className;
+
+    if (!this.element) return;
+
+    this.update = this.update.bind(this);
+
+    window.addEventListener('scroll', this.update);
+    this.update();
+  }
+
+  update() {
+    this.element.classList.toggle(
+      this.className,
+      window.scrollY > 0
+    );
+  }
+}
+
+new ScrollTopToggle('.header__main')
+new ScrollTopToggle('.search__wrap')
+new ScrollTopToggle('.search-result')
+new ScrollTopToggle('.header__nav')
 
 
 class ExpandableContent {

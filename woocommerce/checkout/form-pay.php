@@ -33,10 +33,34 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
             continue;
           }
 
+          $giftcard_designs = plnt_get_giftcard_designs_config();
+
+          $images    = $giftcard_designs['images'] ?? [];
+          $gradients = $giftcard_designs['gradients'] ?? [];
+
+          $image_key    = $item->get_meta( '_plnt_giftcard_image', true ) ?: plnt_get_giftcard_default_image();
+          $gradient_key = $item->get_meta( '_plnt_giftcard_gradient', true ) ?: plnt_get_giftcard_default_gradient();
+
+          $image_url = get_template_directory_uri() . '/images/gift-card/gc_cover.jpg';
+
+          if ( ! empty( $images[ $image_key ] ) ) {
+              $image_data = $images[ $image_key ];
+
+              $image_url = is_array( $image_data )
+                  ? ( $image_data['url'] ?? $image_data['image'] ?? $image_data['src'] ?? $image_url )
+                  : $image_data;
+          }
+
+          $gradient = $gradients[ $gradient_key ] ?? '';
+
+          $wrapper_style = $gradient
+              ? 'background:' . $gradient . ';'
+              : '';
+
           // Сумма по позиции (числом, без форматирования HTML)
           $subtotal = $order->get_line_subtotal( $item, true, false ); // incl. tax, raw
           ?>
-
+     
           <div class="gift-card-order-item">
             <p class="gift-card__title">
               <?php
@@ -46,16 +70,20 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
               ?>
             </p>
 
-            <div class="gift-image-wrap">
-              <img
-                src="<?php echo esc_url( get_template_directory_uri() . '/images/gift-card/gc_cover.jpg' ); ?>"
-                class="gift-image"
-                alt="<?php echo esc_attr( $item->get_name() ); ?>"
-                loading="lazy"
-              >
-              <p class="gift-image-amount">
-                <?php echo esc_html( wc_format_decimal( $subtotal, 0 ) ); ?><span>₽</span>
-              </p>
+            <div
+                class="gift-image-wrap"
+                style="<?php echo esc_attr( $wrapper_style ); ?>"
+            >
+                <img
+                    src="<?php echo esc_url( $image_url ); ?>"
+                    class="gift-image"
+                    alt="<?php echo esc_attr( $item->get_name() ); ?>"
+                    loading="lazy"
+                >
+
+                <p class="gift-image-amount">
+                    <?php echo esc_html( wc_format_decimal( $subtotal, 0 ) ); ?><span>₽</span>
+                </p>
             </div>
             <div class="gift-payment">
               <p>Сумма к оплате:</p>

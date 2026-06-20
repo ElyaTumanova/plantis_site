@@ -109,8 +109,9 @@ if (giftCardApplyBtn && giftcardShow) {
 }
 
 // gift card ui
+const isMobile = window.matchMedia('(max-width: 1024px)').matches;
 const wrap = document.querySelector('.gc-main-slide');
-const amountCardWraps = Array.from(document.querySelectorAll('.gc-amount__card-wrap'));
+const amountCardWraps = Array.from(document.querySelectorAll('.js-gift-card-gradient'));
 const amountCircleBg = document.querySelector('.gc-amount__circle-bg');
 const sideCards = Array.from(document.querySelectorAll('.gc-card--side'));
 
@@ -355,6 +356,8 @@ function createArcController(params) {
   }
 
   function layout() {
+    
+
     const total = buttons.length;
     const currentCenter = activeIndex + dragOffset;
 
@@ -385,6 +388,26 @@ function createArcController(params) {
         button.style.zIndex = '0';
         return;
       }
+
+      // if (isMobile) {
+      //   const mobileGap = 12;
+      //   const centerX = track.offsetWidth / 2;
+      //   const centerY = track.offsetHeight / 2;
+      //   const mobileStep = buttonSize + mobileGap;
+
+      //   const x = centerX + offset * mobileStep;
+      //   const y = centerY;
+
+      //   button.style.transform =
+      //     `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+
+      //   button.style.opacity = '1';
+      //   button.style.pointerEvents = '';
+      //   button.style.zIndex = String(200 - Math.round(dist * 10));
+      //   button.classList.toggle('is-active', dist < 0.5);
+
+      //   return;
+      // }
 
       button.style.pointerEvents = '';
 
@@ -486,7 +509,9 @@ function createArcController(params) {
     const now = performance.now();
     const deltaX = x - startX;
 
-    dragOffset = startDragOffset + deltaX / params.dragDivisor;
+    const direction = isMobile ? -1 : 1;
+
+    dragOffset = startDragOffset + direction * deltaX / params.dragDivisor;
 
     const dt = now - lastTime;
     if (dt > 0) {
@@ -574,7 +599,7 @@ if (hasGiftCardUi) {
   }
 }
 
-const gradientArc = hasGiftCardUi
+const gradientArc = hasGiftCardUi && !isMobile
   ? createArcController({
       track: gradientTrack,
       buttons: gradientButtons,
@@ -596,14 +621,66 @@ const gradientArc = hasGiftCardUi
     })
   : { layout: function () {} };
 
-if (hasGiftCardUi) {
+if (hasGiftCardUi && !isMobile) {
   setActiveButton(gradientButtons, 'gradientKey', gradientInput.value);
   renderBackground();
   gradientArc.layout();
-  syncImageInputByIndex(0);
 
   window.addEventListener('resize', function () {
     gradientArc.layout();
+  });
+}
+if (hasGiftCardUi) {
+  renderBackground();
+  syncImageInputByIndex(0);
+}
+
+const gradientSwiperEl = document.querySelector('.gift-gradient-swiper');
+
+let gradientSwiper = null;
+
+function updateGradientFromSwiper(swiper) {
+  const slide = swiper.slides[swiper.activeIndex];
+
+  if (!slide || !gradientInput) return;
+
+  const gradientKey = slide.dataset.gradientKey;
+
+  if (!gradientKey) return;
+
+  gradientInput.value = gradientKey;
+
+  swiper.slides.forEach((item) => {
+    item.classList.remove('is-active');
+  });
+
+  slide.classList.add('is-active');
+
+  renderBackground();
+}
+
+if (gradientSwiperEl && gradientInput && isMobile) {
+  gradientSwiper = new Swiper('.gift-gradient-swiper', {
+    slidesPerView: 'auto',
+    centeredSlides: true,
+    spaceBetween: 12,
+    slideToClickedSlide: true,
+    resistanceRatio: 0.4,
+    initialSlide: Math.floor(
+      document.querySelectorAll('.gift-gradient-swiper .swiper-slide').length / 2
+    ),
+
+    on: {
+      init(swiper) {
+        updateGradientFromSwiper(swiper);
+      },
+      slideChange(swiper) {
+        updateGradientFromSwiper(swiper);
+      },
+      click(swiper) {
+        updateGradientFromSwiper(swiper);
+      }
+    }
   });
 }
 
@@ -741,6 +818,7 @@ if (gcMainSwiperElement && gcSlidesCount) {
     speed: 450,
     loop: true,
     allowTouchMove: true,
+    initialSlide: 3,
     navigation: {
       prevEl: '.gc-slider__nav--prev',
       nextEl: '.gc-slider__nav--next'
@@ -763,6 +841,49 @@ if (gcMainSwiperElement && gcSlidesCount) {
   });
 }
 
+const previewMob = document.querySelector('.js-gift-card-preview-mob');
+
+const gcMobileSwiperEl = document.querySelector('.gc-main-swiper-mobile');
+
+let gcMobileSwiper = null;
+
+if (gcMobileSwiperEl && previewMob) {
+  gcMobileSwiper = new Swiper('.gc-main-swiper-mobile', {
+    slidesPerView: 'auto',
+    centeredSlides: true,
+    spaceBetween: 16,
+    loop: false,
+    initialSlide: 3,
+    on: {
+      init: function () {
+        updateMobPreview(this);
+      },
+      slideChange: function () {
+        updateMobPreview(this);
+      }
+    }
+  });
+}
+
+
+
+function updateMobPreview(swiper) {
+  const activeSlide = swiper.slides[swiper.activeIndex];
+
+  if (!activeSlide) {
+    return;
+  }
+
+  const image = activeSlide.querySelector('img');
+
+  if (!image) {
+    return;
+  }
+
+  previewMob.src = image.src;
+  previewMob.alt = image.alt || '';
+}
+
 gcSetActiveStep(1);
 
 // amount wheel
@@ -774,8 +895,40 @@ const amounts = [
 const wheel = document.getElementById('amountWheel');
 const input = document.getElementById('giftCardAmountInput');
 const amountHiddenInput = document.getElementById("giftcard_amount");
+const giftImageAmount = document.querySelector('.gift-image-amount');
 
-if (wheel && input) {
+function getHintTextByAmount(value) {
+  if (value < 5000) return 'небольшое растение в кашпо';
+  if (value < 10000) return 'стильную композицию из растений';
+  if (value < 15000) return 'крупное интерьерное растение';
+  if (value < 20000) return 'набор растений для дома';
+  if (value < 25000) return 'выразительное растение в кашпо';
+  if (value < 30000) return 'премиальную зелёную композицию';
+  return 'масштабное озеленение пространства';
+}
+
+function formatAmount(value) {
+  return new Intl.NumberFormat('ru-RU').format(value);
+}
+
+function updateHint(value) {
+  if (!hintText) return;
+  hintText.textContent = getHintTextByAmount(value);
+}
+
+function updateInput(value) {
+  input.value = formatAmount(value);
+  
+  if (amountHiddenInput) {
+    amountHiddenInput.value = value || "";
+  }
+
+  if (giftImageAmount) {
+    giftImageAmount.innerHTML = `${formatAmount(value)}<span>₽</span>`;
+  }
+}
+
+if (wheel && input && !isMobile) {
   let currentIndex = 0;
   let currentValue = amounts[0];
   let currentFloatIndex = 0;
@@ -783,13 +936,10 @@ if (wheel && input) {
 
   let isDragging = false;
   let dragStartY = 0;
+  let dragStartX = 0;
   let dragStartFloatIndex = 0;
   let dragMoved = false;
   let animationFrame = null;
-
-  function formatAmount(value) {
-    return new Intl.NumberFormat('ru-RU').format(value);
-  }
 
   function parseAmount(value) {
     return Number(String(value).replace(/[^\d]/g, '')) || 0;
@@ -814,29 +964,6 @@ if (wheel && input) {
     });
 
     return { value: nearest, index: nearestIndex };
-  }
-
-  function getHintTextByAmount(value) {
-    if (value < 5000) return 'небольшое растение в кашпо';
-    if (value < 10000) return 'стильную композицию из растений';
-    if (value < 15000) return 'крупное интерьерное растение';
-    if (value < 20000) return 'набор растений для дома';
-    if (value < 25000) return 'выразительное растение в кашпо';
-    if (value < 30000) return 'премиальную зелёную композицию';
-    return 'масштабное озеленение пространства';
-  }
-
-  function updateHint(value) {
-    if (!hintText) return;
-    hintText.textContent = getHintTextByAmount(value);
-  }
-
-  function updateInput(value) {
-    input.value = formatAmount(value);
-    
-    if (amountHiddenInput) {
-      amountHiddenInput.value = value || "";
-    }
   }
 
 
@@ -1126,3 +1253,84 @@ if (wheel && input) {
   updateInput(currentValue);
   updateHint(currentValue);
 }
+
+/* мобильный слайдер с инпутами */
+const amountSwiperEl = document.querySelector('.gc-amount-swiper');
+
+let amountSwiper = null;
+
+function updateAmountFromSwiper(swiper) {
+  const slide = swiper.slides[swiper.activeIndex];
+  if (!slide) return;
+
+  const value = Number(slide.dataset.amount);
+  if (!value) return;
+
+  updateInput(value);
+  updateHint(value);
+
+  if (amountHiddenInput) {
+    amountHiddenInput.value = value;
+  }
+
+  swiper.slides.forEach((item) => {
+    item.classList.remove('is-active');
+  });
+
+  slide.classList.add('is-active');
+}
+
+if (amountSwiperEl && input && isMobile) {
+  amountSwiper = new Swiper('.gc-amount-swiper', {
+    slidesPerView: 'auto',
+    centeredSlides: true,
+    spaceBetween: 20,
+    slideToClickedSlide: true,
+    resistanceRatio: 0.4,
+
+    on: {
+      init(swiper) {
+        updateAmountFromSwiper(swiper);
+      },
+      slideChange(swiper) {
+        updateAmountFromSwiper(swiper);
+      },
+      click(swiper) {
+        updateAmountFromSwiper(swiper);
+      }
+    }
+  });
+}
+
+
+if (isMobile && gcSwiper && gcMobileSwiper) {
+  let isSyncingMobileSwipers = false;
+
+  function syncMobileGiftSwiper(from, to) {
+    if (isSyncingMobileSwipers) return;
+
+    const index = from.realIndex;
+
+    if (to.realIndex === index) return;
+
+    isSyncingMobileSwipers = true;
+
+    to.slideToLoop(index, 450, false);
+
+    requestAnimationFrame(() => {
+      isSyncingMobileSwipers = false;
+    });
+  }
+
+  gcMobileSwiper.on('slideChangeTransitionEnd', function () {
+    syncMobileGiftSwiper(gcMobileSwiper, gcSwiper);
+  });
+
+  gcSwiper.on('slideChangeTransitionEnd', function () {
+    syncMobileGiftSwiper(gcSwiper, gcMobileSwiper);
+  });
+}
+
+
+
+

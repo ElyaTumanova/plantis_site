@@ -63,11 +63,7 @@ $logo = carbon_get_theme_option('logo');
           <div class="header__main-btns-wrap">
               <?php plnt_account_button();?>
               <?php plnt_wishlist_button();?>
-              <?php plnt_woocommerce_cart_header();?>
-              <div class="mini-cart__wrap"> 
-                <?php plnt_woocommerce_mini_cart();?>
-              </div>
-         
+              <?php plnt_woocommerce_cart_header();?>         
           </div>
         </div>
       </div>

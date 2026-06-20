@@ -63,15 +63,15 @@ window.addEventListener('scroll', function() {
     if(scrollTop >0){
         // headerMainDiv.setAttribute('style', `margin-top:${marginTopOffset}px`);
         // document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
-        headerMainDiv.classList.add('scrollhidden');
-        searchDiv.classList.add('scrollhidden');
-        searchResultDiv.classList.add('scrollhidden');
+        // headerMainDiv.classList.add('scrollhidden');
+        // searchDiv.classList.add('scrollhidden');
+        // searchResultDiv.classList.add('scrollhidden');
     } else{
         // headerMainDiv.removeAttribute('style');
         // document.documentElement.style.setProperty('--marginTopOffset', 0);
-        headerMainDiv.classList.remove('scrollhidden');
-        searchDiv.classList.remove('scrollhidden');
-        searchResultDiv.classList.remove('scrollhidden');
+        // headerMainDiv.classList.remove('scrollhidden');
+        // searchDiv.classList.remove('scrollhidden');
+        // searchResultDiv.classList.remove('scrollhidden');
     }
 });
 // document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
