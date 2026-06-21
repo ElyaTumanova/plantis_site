@@ -100,9 +100,37 @@
 }
 
 @media (max-width: 1024px) {
+  .product-gallery__thumbs {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+
   .product-gallery__thumbs .swiper-wrapper {
     flex-direction: row;
     gap: 4px;
+    align-items: stretch;
+  }
+
+  .product-gallery__thumb {
+    width: 80px !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: var(--br-s);
+  }
+
+  .product-gallery__thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* перебиваем inline height от вертикального swiper */
+  .product-gallery__thumbs .swiper-slide {
+    height: auto !important;
   }
 }
 
@@ -594,6 +622,7 @@
   
   .woocommerce-tabs #tab-delivery .delivery_table {
     columns: 1;
+    font-size: 14px;
   }
 
   .woocommerce-tabs #tab-delivery .delivery_table__row {

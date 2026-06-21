@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 echo ('<section class="section">');
-echo('<h2 class="h2">Популярные товары </h2>');
+echo('<h2 class="h2">Популярные товары</h2>');
 
   get_template_part( 'template-parts/products/product-slider', null, [
     'queryArgs' => [

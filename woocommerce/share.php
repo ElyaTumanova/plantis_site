@@ -23,7 +23,7 @@ $share_email_url = add_query_arg(
 	'mailto:'
 );
 
-$share_whatsapp_url = $share_whatsapp_url ?? 'whatsapp://send?text=' . urlencode( $share_link_title . ' - ' . $share_link_url );
+$plnt_whatsapp_share_url = 'https://wa.me/?text=' . rawurlencode( $share_link_title . ' - ' . $share_link_url );
 
 $share_telegram_url = 'https://telegram.me/share/url?url=' . urlencode( $share_link_url ) . '&text=' . urlencode( $share_link_title );
 ?>
@@ -58,7 +58,7 @@ $share_telegram_url = 'https://telegram.me/share/url?url=' . urlencode( $share_l
       <li class="share-button">
         <a
           class="whatsapp"
-          href="<?php echo esc_url( $share_whatsapp_url ); ?>"
+          href="<?php echo esc_url( $plnt_whatsapp_share_url); ?>"
           data-action="share/whatsapp/share"
           target="_blank"
           rel="noopener"

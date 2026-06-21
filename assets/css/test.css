@@ -594,3 +594,47 @@
 .test-page input[type="radio"] {
   display: none;
 }
+
+
+.test__result .social-media__buttons {
+    display: flex;
+    column-gap: 30px;
+    border-radius: 100%;
+}
+
+.test__result .social-media__button {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: none;
+    overflow: hidden;
+}
+
+.test__result .social-media__button-telegram {
+    background-color: var(--telegram);
+}
+
+.test__result .social-media__button-whatsapp {
+    background-color: var(--whatsapp);
+}
+
+.test__result .social-media__button-max {
+    background-image: url('https://plantis-shop.ru/wp-content/themes/plantis_site/images/icons/max-bg.svg');
+    background-size: contain;
+}
+
+.test__result .social-media__button-ok {
+    background-color: var(--ok);
+}
+
+.test__result .social-media__button-vk {
+    background-color: var(--vk);
+}
+
+.test__result .social-media__button-icon {
+    height: 30px;
+    width: 30px;
+    fill: white;
+    margin: auto; 
+} 

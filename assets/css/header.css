@@ -223,6 +223,7 @@
     justify-content: space-between;
     gap: 4px;
     color: var(--gray-color);
+    padding-bottom: max(14px, env(safe-area-inset-bottom));
   }
 }
 

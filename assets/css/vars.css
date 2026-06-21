@@ -107,8 +107,8 @@
     --container-padding: 16px;
   }
   :root:has(.swiper--over) {
-  --container-padding: 16px;;
-}
+    --container-padding: 16px;
+  }
 
 }
 
@@ -140,6 +140,10 @@
 
 @media (max-width: 359px) {
   :root {
+    --container-padding: 10px;
+  }
+
+  :root:has(.swiper--over) {
     --container-padding: 10px;
   }
 }

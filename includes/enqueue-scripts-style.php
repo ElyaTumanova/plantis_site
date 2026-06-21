@@ -40,6 +40,7 @@ function plnt_get_style_files() {
     'gift-card/gc-single-product',
     'gift-card/gc-result-page',
     'gift-card/gc-account-section',
+    'gift-card/gc-info-page',
 		'test',
 		'faq',
 		'FlexSlider',
@@ -78,6 +79,11 @@ function plnt_get_script_files() {
 		array(
 			'handle' => 'ajax-update-cart',
 			'file'   => 'ajax-update-cart',
+			'deps'   => array( 'jquery' ),
+		),
+		array(
+			'handle' => 'cart-helpers',
+			'file'   => 'cart-helpers',
 			'deps'   => array( 'jquery' ),
 		),
 		array(

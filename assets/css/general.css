@@ -70,8 +70,10 @@ textarea {
 /* Заголовки */
 
 .h1 {
-  font-size: 48px;
+  font-size: clamp(1.625rem, 1.0984rem + 2.3404vw, 3rem);
   line-height: 112%;
+  color: var(--black-color);
+  font-weight: 500;
 }
 
 .h2 {

@@ -169,11 +169,20 @@
     }
 
     const thumbsSwiper = new Swiper(thumbsEl, {
-      direction: 'vertical',
       slidesPerView: 5,
       spaceBetween: 0,
       watchSlidesProgress: true,
-    })
+      slideToClickedSlide: true,
+
+      direction: 'horizontal',
+
+      breakpoints: {
+        1024: {
+          direction: 'vertical',
+          slidesPerView: 5,
+        },
+      },
+    });
 
     new Swiper(mainEl, {
       slidesPerView: 1,

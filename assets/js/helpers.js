@@ -36,6 +36,7 @@ new ViewportPosition ('.card__image-wrap', '--cardImageWrapTopOffset')
 new ViewportPosition ('.gc-content-area', '--gcContentAreaTopOffset')
 new ViewportPosition ('.gc-step-panel__body', '--gcSliderStageTopOffset')
 new ViewportPosition ('.gc-card-mob-wrap', '--gcCardMobTopOffset')
+new ViewportPosition ('.side-cart .mini-cart', '--sideMiniCartTopOffset')
 
 
 class ElementHeight {
@@ -83,6 +84,7 @@ new ElementHeight ('.header__main', '--headerMainHeight')
 new ElementHeight ('.header__mob', '--headerMobHeight')
 new ElementHeight ('.card__actions-wrap-inner', '--cardActionsHeight')
 new ElementHeight ('.gc-navbar', '--gcNavBarHeight')
+new ElementHeight ('.side-cart .woocommerce-mini-cart__footer', '--sideMiniCartFooterHeight')
 
 class ElementWidth {
   constructor (selector, propertyName) {

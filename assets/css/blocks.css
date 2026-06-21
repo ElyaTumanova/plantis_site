@@ -198,6 +198,7 @@
   color: var(--white-color);
   font-size: clamp(0.625rem, 0.5293rem + 0.4255vw, 0.875rem); /* 14px - 10px */
   word-break: normal;
+  white-space: nowrap;
 }
 
 /* product-slider-wrap */

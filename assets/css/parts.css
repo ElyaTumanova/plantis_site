@@ -63,18 +63,45 @@
     grid-template-columns: 1fr;
     row-gap: 8px;
   }
-
-  .advantages__wrap {
-    
-    
-  }
-
-  .advantages__title {
-
-  }
-
   .advantages__descr {
     font-size: 14px;
   }
 }
 
+/* info pages list */
+
+.info-menu-sidebar {
+  height: fit-content;
+  padding: 4px;
+  border-radius: 16px;
+  background-color: var(--green-l-color);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-menu-sidebar .menu__item {
+  padding: 12px 16px;
+  border-radius: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.info-menu-sidebar .menu__item svg {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+.info-menu-sidebar .menu__item a {
+  width: 100%;
+}
+
+.info-menu-sidebar .menu__item.is-active {
+  color: var(--accent-color);
+  background-color: var(--white-color);
+}
+.info-menu-sidebar .menu__item:hover {
+  color: var(--accent-color);
+  background-color: var(--white-color);
+}

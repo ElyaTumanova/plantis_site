@@ -121,6 +121,9 @@ function plnt_get_cart_summary() {
 
   /* добавдяем класс к строке пересадки в корзине */
   add_filter( 'woocommerce_cart_item_class', 'plnt_peresadka_cart_item_class', 10, 3 );
+  add_filter( 'woocommerce_mini_cart_item_class', 'plnt_peresadka_cart_item_class', 10, 3 );
+  
+  
 
   function plnt_peresadka_cart_item_class( $class, $cart_item, $cart_item_key ) {
     if ( ! empty( $cart_item['plnt_parent_cart_item_key'] ) ) {

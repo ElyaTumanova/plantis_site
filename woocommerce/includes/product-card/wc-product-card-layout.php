@@ -503,34 +503,53 @@ function plnt_output_actions_wrap() {
   };
           
 
-  function plnt_get_cross_sells(){
-    echo ('<section class="section">');
-    global $product;
-    $crosssell_ids = $product->get_cross_sell_ids();
-    // pretty_print($crosssell_ids);
-    
-    if ( empty( $crosssell_ids ) || ! is_array( $crosssell_ids ) ) {
-        return;
-    }
-    echo('<h2 class="h2">Похожие растения</h2>');
+ function plnt_get_cross_sells() {
+  global $product;
 
-    get_template_part( 'template-parts/products/product-slider', null, [
-      'queryArgs' => [
-        'posts_per_page' => 8,
-        'post__in' => $crosssell_ids,
-      ],
-      'tax_query' => array(
-        array(
-            'taxonomy' => 'product_cat',
-            'field' => 'slug',
-            'terms' => 'peresadka',
-            'operator' => 'NOT IN'
-        )
-      ),
-      'isSwiperOver' => true,
-    ]);
-    echo('</section>');
+  if ( ! $product ) {
+    return;
   }
+
+  $crosssell_ids = $product->get_cross_sell_ids();
+
+  if ( empty( $crosssell_ids ) || ! is_array( $crosssell_ids ) ) {
+    return;
+  }
+
+  $query_args = [
+    'posts_per_page' => 8,
+    'post__in'       => $crosssell_ids,
+    'tax_query'      => [
+      [
+        'taxonomy' => 'product_cat',
+        'field'    => 'slug',
+        'terms'    => 'peresadka',
+        'operator' => 'NOT IN',
+      ],
+    ],
+  ];
+
+  $check_query = new WP_Query( wp_parse_args( $query_args, [
+    'post_type' => 'product',
+  ] ) );
+
+  if ( ! $check_query->have_posts() ) {
+    wp_reset_postdata();
+    return;
+  }
+
+  wp_reset_postdata();
+
+  echo '<section class="section">';
+  echo '<h2 class="h2">Похожие растения</h2>';
+
+  get_template_part( 'template-parts/products/product-slider', null, [
+    'queryArgs'    => $query_args,
+    'isSwiperOver' => true,
+  ] );
+
+  echo '</section>';
+}
 
 
   // товары для ухода

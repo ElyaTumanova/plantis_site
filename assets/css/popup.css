@@ -57,7 +57,8 @@
     margin-top: 10px;
     border-radius: 30px;
     padding: 18px;
-    height: 55px;
+    height: 100px;
+    width: 100%;
 }
 
 .page-popup__form .wpcf7-form textarea:focus {

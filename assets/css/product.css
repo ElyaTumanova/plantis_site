@@ -139,6 +139,24 @@
   opacity: 1;
 }
 
+.products .product__image-slider-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.products .product__image-slider-wrap .swiper-wrapper {
+  height: 100%;
+}
+
+.products .product__image-slider-wrap .swiper-slide {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  display: block;
+}
+
 /* кнопка добавления в корзину */
 
 .product__add-to-cart-wrap {

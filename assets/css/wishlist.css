@@ -126,8 +126,8 @@
   float: none !important;
 }
 
-.yith_wcwl_wishlist_footer {
-  margin-bottom: var(--section-mb);
+.wishlist-actions {
+  display: none;
 }
 
 .yith_wcwl_wishlist_footer .yith-wcwl-share {
@@ -141,13 +141,6 @@
   font-weight: 400;
   font-size: 14px;
   margin-bottom: 8px !important;
-}
-
-@media (max-width:768px) {
-  .yith_wcwl_wishlist_footer .yith-wcwl-share {
-    display: block;
-  }
-  .yith-wcwl-share-title {display: block;}
 }
 
 .catalog__header .yith-wcwl-share {
@@ -169,6 +162,13 @@
 .yith-wcwl-share-actions {
   display: flex;
   gap: 4px;
+}
+@media (max-width:768px) {
+  .yith_wcwl_wishlist_footer .yith-wcwl-share {
+    display: block;
+    margin-bottom: var(--section-mb) !important;
+  }
+  .yith-wcwl-share-title {display: block;}
 }
 
 .yith-wcwl-share ul {

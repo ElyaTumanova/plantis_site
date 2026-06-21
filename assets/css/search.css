@@ -249,22 +249,20 @@ input[type="search"], input[type="search"]:focus-visible {
 .search-result--mob .search-result__addtocart {
   --btn-height: 36px;
 }
-.search-result--mob .search-result__addtocart .add_to_cart_button {
+.search-result--mob .search-result__addtocart .add_to_cart_button,
+.search-result--mob .search-result__addtocart .added {
   width: 36px;
 }
 
 @media (min-width: 769px) {
   .search-result__addtocart .add_to_cart_button, 
   .search-result__addtocart .product_type_simple {
+    --icon-gap: 12px;
     font-size: 16px;
     width: 100%;
-    min-width: 150px;
+    min-width: 151px;
   }
-  .search-result__addtocart .add_to_cart_button, 
-  .search-result__addtocart .product_type_simple {
-    padding-left: calc(var(--icon-size) + var(--btn-pad-inline) + 12px);
-    background-position: var(--btn-pad-inline);
-  }
+
 }
 @media (max-width: 768px) {
   .search-result__addtocart {
@@ -332,7 +330,7 @@ input[type="search"], input[type="search"]:focus-visible {
 }
 
 .page-template-page-search-results .catalog__filter-metki-ontop {
-  display: block;
+  display: none;
 }
 
 /* убираем фильтры из результатов поиска */

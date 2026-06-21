@@ -336,13 +336,13 @@ function ajaxGetUpsells(catSlug) {
     })
     .then(result => {
         console.debug('✅ AJAX success:');
-        const oldSlider = document.querySelector('.test__result-upsells .product-slider-swiper');
+        const oldSlider = document.querySelector('.test__result-upsells [data-js-product-slider]');
         if (oldSlider && productSliders) {
           productSliders.remove(oldSlider);
         }
         testUpsellsDiv.innerHTML = result.test_upsells;
 
-        const newSlider = document.querySelector('.test__result-upsells .product-slider-swiper');
+        const newSlider = document.querySelector('.test__result-upsells [data-js-product-slider]');
 
         if (newSlider && productSliders) {
           productSliders.add(newSlider);

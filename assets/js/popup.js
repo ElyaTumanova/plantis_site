@@ -46,11 +46,16 @@ class Popup {
   }
 
   addOpenListeners () {
-    this.openBtns.forEach(button => {
-      button.addEventListener ('click', (evt)=>{
-        this.openPopup()
-      })
-    })
+    document.addEventListener('click', (evt) => {
+      const button = evt.target.closest(`.${this.popupName}-open-btn`);
+
+      if (!button) {
+        return;
+      }
+
+      evt.preventDefault();
+      this.openPopup();
+    });
   }
 
   addCloseListeners() {
