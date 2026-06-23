@@ -56,8 +56,10 @@ if ( is_wp_error( $terms ) ) {
         // 	continue;
         // }
   
-        $thumb_id = (int) get_term_meta( $term->term_id, 'thumbnail_id', true );
-        $img_url  = $thumb_id ? wp_get_attachment_image_url( $thumb_id, 'woocommerce_thumbnail' ) : '';
+        $front_image_id = (int) get_term_meta( $term->term_id, 'front_image', true );
+        $thumb_id       = $front_image_id ?: (int) get_term_meta( $term->term_id, 'thumbnail_id', true );
+
+        $img_url = $thumb_id ? wp_get_attachment_image_url( $thumb_id, 'woocommerce_thumbnail' ) : '';
   
         if ( ! $img_url && function_exists( 'wc_placeholder_img_src' ) ) {
           $img_url = wc_placeholder_img_src( 'woocommerce_thumbnail' );
@@ -71,7 +73,7 @@ if ( is_wp_error( $terms ) ) {
         ?>
   
         <a class="cats-tiles__link swiper-slide" href="<?php echo esc_url( $link ); ?>">
-          <span class="cats-tiles__media">
+          <span class="cats-tiles__media darken">
             <?php if ( $img_url ) : ?>
               <img loading="lazy" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $term->name ); ?>">
             <?php endif; ?>

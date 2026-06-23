@@ -194,7 +194,7 @@
   justify-content: center;
   border-radius: 100px;
   padding: 4px 5px;
-  background: linear-gradient(104.67deg, #3C7662 0%, #5CC8A3 100%);
+  background: var(--accent-gradient);
   color: var(--white-color);
   font-size: clamp(0.625rem, 0.5293rem + 0.4255vw, 0.875rem); /* 14px - 10px */
   word-break: normal;

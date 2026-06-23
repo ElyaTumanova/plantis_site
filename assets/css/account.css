@@ -722,6 +722,7 @@ My Account + Auth forms + Order pages (deduped + grouped)
   position: absolute;
   bottom: 4px;
   margin-left: 10px;
+  display: none;
 }
 
 .woocommerce-thankyou-order-details{

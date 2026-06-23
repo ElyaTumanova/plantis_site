@@ -582,33 +582,33 @@ swiper_filter_metki_init();
 /*--------------------------------------------------------------
 # Checkout
 --------------------------------------------------------------*/
-let deliveryWrapper = document.querySelector('#delivery_dates_field .woocommerce-input-wrapper');
-if(deliveryWrapper){deliveryWrapper.classList.add('swiper-wrapper');}
+const deliverySliderWrap = document.querySelector('.delivery_slider-wrap');
+const deliveryField = document.querySelector('#delivery_dates_field');
 
-let deliverySwiper = document.querySelector('.delivery_dates');
+if (deliverySliderWrap && deliveryField) {
+    const deliveryWrapper = deliveryField.querySelector('.woocommerce-input-wrapper');
 
-if (deliverySwiper) {
-    let deliverySwiperPrev = document.createElement('div');
-    deliverySwiperPrev.classList.add('swiper-button-prev');
-    deliverySwiper.appendChild(deliverySwiperPrev);
-    
-    let deliverySwiperNext = document.createElement('div');
-    deliverySwiperNext.classList.add('swiper-button-next');
-    deliverySwiper.appendChild(deliverySwiperNext);
+    if (deliveryWrapper) {
+        deliveryWrapper.classList.add('swiper-wrapper');
+    }
+
+    deliveryField
+        .querySelectorAll('.woocommerce-input-wrapper > label.radio')
+        .forEach((label) => {
+            label.classList.add('swiper-slide');
+        });
+
+    new Swiper(deliveryField, {
+        slidesPerView: 'auto',
+        slidesPerGroup: 1,
+        spaceBetween: 0,
+
+        navigation: {
+            prevEl: deliverySliderWrap.querySelector('.swiper-button-prev'),
+            nextEl: deliverySliderWrap.querySelector('.swiper-button-next'),
+        },
+    });
 }
-
-const swiper_delivery_dates = new Swiper('#delivery_dates_field', {
-
-    slidesPerView: 'auto',
-    slidesPerGroup: 1,
-    spaceBetween: 0,
-    
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-
-});
 
 /*--------------------------------------------------------------
 # Cart

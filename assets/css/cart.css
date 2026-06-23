@@ -565,10 +565,6 @@
 }
 
 /* блок итого */
-.cart-collaterals {
-  --btn-pad-block: 14px;
-}
-
 @media (max-width: 768px) {
   .cart-collaterals {
     margin-top: 20px;
@@ -613,8 +609,12 @@
 
 .cart-summary__row span:last-child {
   color: var(--black-color);
+  white-space: nowrap;
 }
 .cart-summary__row--discount span:last-child {
+  color: var(--red-color);
+}
+.cart-summary__row--gift-card span:last-child {
   color: var(--red-color);
 }
 
@@ -638,6 +638,7 @@
 }
 
 .cart-summary__button {
+  --btn-pad-block: 14px;
   width: 100%;
 }
 .cart-summary__button .cart-summary__button-total {
@@ -684,7 +685,7 @@
   display: flex;
   align-items: center;
   gap: clamp(0.625rem, 0.5771rem + 0.2128vw, 0.75rem);
-  margin-block: clamp(1rem, 0.617rem + 1.7021vw, 2rem);
+  margin-block: clamp(1rem, 0.9043rem + 0.4255vw, 1.25rem); /* 20px - 16px */
 }
 
 .checkout-steps__item {
@@ -1027,6 +1028,10 @@
 
 .side-cart__wrap .popup {
     display: block;
+}
+
+.side-cart .woocommerce-mini-cart__empty-message {
+  padding-inline: var(--pad);
 }
 
 .side-cart {

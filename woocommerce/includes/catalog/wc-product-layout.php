@@ -102,9 +102,10 @@ function plnt_img_gallery_swiper_init() {
 
 add_filter( 'wp_get_attachment_image_attributes', 'AddThumbnailClass', 20, 2 );
 function AddThumbnailClass( $atts, $attachment ) {
-	if (!is_product()) {
-		$atts['class'] .= " swiper-slide"; 
-	}
+	if (is_product() || is_cart() || is_checkout()) {
+    return $atts;
+  }
+  $atts['class'] .= " swiper-slide"; 
 	return $atts;
 }
 

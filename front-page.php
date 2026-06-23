@@ -11,7 +11,7 @@
     <?php get_template_part('template-parts/front/front-banners-gallery');?>
   </section>
   
-  <section class="front__cat-tiles section container">
+  <section class="front__cat-tiles section container <?php echo current_user_can( 'administrator' ) ? '' : ' d-none'; ?>">
     <?php get_template_part('template-parts/front/cats-tiles');?>
   </section>
 

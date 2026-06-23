@@ -103,7 +103,7 @@ function plnt_get_script_files() {
 		),
 		array(
 			'handle' => 'ajax-urgent-delivery',
-			'file'   => 'ajax-urgent-delivery',
+			'file'   => 'new-ajax-urgent-delivery',
 			'deps'   => array( 'jquery' ),
 		),
 		array(
@@ -221,44 +221,54 @@ function plnt_get_gift_card_localize_data() {
 }
 
 function plnt_get_delivery_localize_data() {
-	global $delivery_inMKAD, $delivery_outMKAD;
-	global $local_pickup, $delivery_free, $delivery_pochta, $delivery_courier, $delivery_long_dist;
+ global $delivery_inMKAD, $delivery_outMKAD;
+  global $local_pickup, $delivery_free, $delivery_pochta, $delivery_courier, $delivery_long_dist;
 
-	$late_markup_delivery   = carbon_get_theme_option( 'late_markup_delivery' );
-	$late_interval_delivery = carbon_get_theme_option( 'late_interval_delivery' );
-	$isUrgentCourierTariff  = carbon_get_theme_option( 'is_urgent_courier_tariff' );
-	$isHolidayCourierTariff = carbon_get_theme_option( 'is_holiday_courier_tariff' ) == '1';
+  $expensive_interval_markup_delivery   = carbon_get_theme_option('expensive_interval_markup_delivery');
+  $late_interval_delivery   = carbon_get_theme_option('late_interval_delivery');
+  $expensive_interval_delivery   = carbon_get_theme_option('expensive_interval_delivery');
+  $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
+  $expensive_day_markup_delivery = carbon_get_theme_option('expensive_day_markup_delivery');
+  $shipping_costs         = plnt_get_shiping_costs();
 
-	$shipping_costs = plnt_get_shiping_costs();
-	$in_mkad        = $shipping_costs[ $delivery_inMKAD ] ?? 0;
-	$out_mkad       = $shipping_costs[ $delivery_outMKAD ] ?? 0;
+  $in_mkad  = $shipping_costs[$delivery_inMKAD];
+  $out_mkad = $shipping_costs[$delivery_outMKAD];
 
-	$isbackorders           = plnt_is_backorder();
-	$isTreezBackorders      = plnt_is_treez_backorder();
-	$delivery_murkup        = get_delivery_markup();
-	$cart_subtotal          = ( WC()->cart ) ? WC()->cart->subtotal : 0;
-	$isSmallHolidayCart     = $cart_subtotal < 5000;
-	$isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
+  $isbackorders      = plnt_is_backorder();
+  $isTreezBackorders = plnt_is_treez_backorder();
+
+  $delivery_murkup = get_delivery_markup();
+
+  $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff');
+  $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
+  $isSmallHolidayCart = WC()->cart->subtotal < 5000;
+  $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
 
 	return array(
-		'deliveryInMKAD'         => (string) $delivery_inMKAD,
-		'deliveryOutMKAD'        => (string) $delivery_outMKAD,
-		'localPickupId'          => (string) $local_pickup,
-		'deliveryFreeId'         => (string) $delivery_free,
-		'deliveryPochtaId'       => (string) $delivery_pochta,
-		'deliveryCourierId'      => (string) $delivery_courier,
-		'deliveryLongId'         => (string) $delivery_long_dist,
-		'deliveryCostInMkad'     => (float) $in_mkad,
-		'deliveryCostOutMkad'    => (float) $out_mkad,
-		'deliveryUrgMarkup'      => (float) ( $delivery_murkup['urg'] ?? 0 ),
-		'deliveryLateMarkup'     => (float) $late_markup_delivery,
-		'deliveryLateInterval'   => (string) $late_interval_delivery,
-		'deliveryMarkupInMkad'   => (float) ( $delivery_murkup['in_mkad'] ?? 0 ),
-		'deliveryMarkupOutMkad'  => (float) ( $delivery_murkup['out_mkad'] ?? 0 ),
-		'isBackorder'            => (bool) $isbackorders,
-		'isTreezBackorders'      => (bool) $isTreezBackorders,
-		'isUrgentCourierTariff'  => $isUrgentCourierTariff,
-		'isSmallHolidayTariffOn' => $isSmallHolidayTariffOn,
+		'deliveryInMKAD'        => (string) $delivery_inMKAD,
+    'deliveryOutMKAD'       => (string) $delivery_outMKAD,
+
+    'localPickupId'         => (string) $local_pickup,
+    'deliveryFreeId'        => (string) $delivery_free,
+    'deliveryPochtaId'      => (string) $delivery_pochta,
+    'deliveryCourierId'     => (string) $delivery_courier,
+    'deliveryLongId'        => (string) $delivery_long_dist,
+
+    'deliveryCostInMkad'    => (float) $in_mkad,
+    'deliveryCostOutMkad'   => (float) $out_mkad,
+
+    'deliveryUrgMarkup'     => (float) $delivery_murkup['urg'],
+    'deliveryExpensiveIntervalMarkup'    => (float) $expensive_interval_markup_delivery,
+    'deliveryExpensiveDayMarkup'    => (float) $expensive_day_markup_delivery,
+    'deliveryExpensiveInterval'    => (string) $expensive_interval_delivery,
+    'deliveryLateInterval'    => (string) $late_interval_delivery,
+    'deliveryMarkupInMkad'  => (float) $delivery_murkup['in_mkad'],
+    'deliveryMarkupOutMkad' => (float) $delivery_murkup['out_mkad'],
+
+    'isBackorder'           => (bool) $isbackorders,
+    'isTreezBackorders'     => (bool) $isTreezBackorders,
+    'isUrgentCourierTariff'     => $isUrgentCourierTariff,
+    'isSmallHolidayTariffOn' => $isSmallHolidayTariffOn,
 	);
 }
 

@@ -173,8 +173,3 @@ add_action( 'wp_footer', 'plnt_check_site' );
 // 	$filter_razmer_kashpo_id = 56545;
 
 // }
-
-/* Изображения и иконки */
-
-$filter_icon = get_template_directory_uri() . '/images/icons/filter_new.svg';
-

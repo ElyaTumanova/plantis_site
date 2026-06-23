@@ -90,122 +90,7 @@ Contents
         return $description;
     }
 
-/*--------------------------------------------------------------
-# Checkout page adjustments
---------------------------------------------------------------*/
 
-    /* скрываем Уже покупали? и форму логирования на странице оформления заказа*/
-    remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
-
-    // // переместили блок с выбором способа оплаты
-    remove_action('woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20);
-    add_action('woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20);
-
-    // // информация о пересадке в горшок
-    add_action('woocommerce_checkout_shipping', 'plnt_checkout_peresadka_info', 15);
-
-    function plnt_checkout_peresadka_info(){
-        ?>
-        <div class="checkout__additional">Мы БЕСПЛАТНО пересадим вашего нового друга в качественный грунт при одновременной покупке растения и горшка (доплата за грунт не требуется).</div>
-        <?php
-    }
-
-    // // информация об условиях доставки
-    //add_action( 'woocommerce_checkout_order_review', 'plnt_delivery_condition_info', 30 );
-
-    // function plnt_delivery_condition_info () {
-    //     echo '<div class="checkout__text checkout__text_delivery-info">
-    //         После оформления заказа мы свяжемся с вами в <a href="https://plantis-shop.ru/contacts/">рабочее время</a> и согласуем время доставки.
-    //         <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a> <br>
-    //         Важно! Срочную доставку "день в день" можно оформить до 18 часов.</div>';
-    // }
-    
-    // хук для подарчной карты #giftcard
-
-    add_action( 'woocommerce_checkout_order_review', 'plnt_set_giftcard_hook', 25 );
-
-    function plnt_set_giftcard_hook() {
-        if (is_not_gift_card_checkout()) {
-           do_action( 'plnt_woocommerce_checkout_gift_card' );
-        };
-    }
-
-    // хук перед итоговой стоимостью
-    add_action( 'woocommerce_checkout_order_review', 'plnt_set_before_order_total_hook', 30 );
-
-    function plnt_set_before_order_total_hook() {
-        echo '<table class="plnt-before-order-total">
-        <tbody>' ;
-        do_action( 'woocommerce_review_order_before_order_total' );
-        echo '
-        </tbody>
-        </table>' ;
-    }
-
-    // добавляем фрагмент, чтобы апдейтить поле с подарочной картой
-    add_action( 'woocommerce_update_order_review_fragments', 'my_update_order_review_giftcard_fragments', 10, 1 );
-    function my_update_order_review_giftcard_fragments( $fragments ) {
-        ob_start();
-        plnt_set_before_order_total_hook();
-        $fragments[ 'table.plnt-before-order-total'] = ob_get_clean();
-        return $fragments;
-    }
-
-    // итоговая стоимость
-    add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 35 );
-
-    function plnt_order_total() {
-            ?>
-            <div class="plnt-order-total">
-                <div>Итого</div>
-                <div class="plnt-order-total_price"><?php wc_cart_totals_order_total_html(); ?></div>
-            </div>
-            <?php 
-    };
-
-    // добавляем фрагмент, чтобы апдейтить итоговую стоимость
-    add_action( 'woocommerce_update_order_review_fragments', 'my_update_order_review_fragments', 10, 1 );
-    function my_update_order_review_fragments( $fragments ) {
-        ob_start();
-        plnt_order_total();
-        $fragments[ 'div.plnt-order-total'] = ob_get_clean();
-        return $fragments;
-    }
-
-    // выводим в форме оформления заказа информацию, о товарах, которые закончились
-    add_action ('woocommerce_cart_has_errors', 'plnt_check_cart_item_stock');
-
-    function plnt_check_cart_item_stock() {
-
-      if ( ! WC()->cart ) return;
-
-      $out = [];
-
-      foreach ( WC()->cart->get_cart() as $cart_item ) {
-          if ( empty($cart_item['data']) || ! is_a($cart_item['data'], 'WC_Product' ) ) continue;
-
-          /** @var WC_Product $product */
-          $product = $cart_item['data'];
-
-          if ( $product->get_stock_status() === 'outofstock' ) {
-              $out[] = $product->get_name();
-          }
-      }
-
-      // Нечего выводить
-      if ( empty($out) ) return;
-
-      echo '<div class="cart-error-list" role="group" aria-label="Недоступные товары">';
-      echo '<div class="cart-error-list__title">Товары, недоступные для заказа</div>';
-      echo '<ul class="cart-error-list__items">';
-
-      foreach ( $out as $name ) {
-          echo '<li class="cart-error-list__item">' . esc_html( $name ) . '</li>';
-      }
-
-      echo '</ul>';
-      echo '</div>';
-    }
 /*--------------------------------------------------------------
 # Delivery date & Interval fields
 --------------------------------------------------------------*/
@@ -271,6 +156,9 @@ Contents
             }
         }
         echo "<div class='delivery_wrap'>";
+        echo '<h3 class="delivery_wrap__title">Дата доставки (самовывоза)</h3>';
+        echo '<div class="delivery_slider-wrap">';
+        
         // выводим поле функцией woocommerce_form_field()
         woocommerce_form_field( 
             'delivery_dates', 
@@ -298,6 +186,9 @@ Contents
                 )
             ),
         );
+        echo '<div class="swiper-button-prev"></div>';
+        echo '<div class="swiper-button-next"></div>';
+        echo '</div>';
     }
 
     add_filter( 'woocommerce_form_field' , 'elex_remove_checkout_optional_text', 10, 4 );
@@ -475,21 +366,18 @@ Contents
     add_action('plnt_large_delivery_notice', 'plnt_large_delivery_notice');
 
     function plnt_large_delivery_notice() {
-
-        if (check_if_large_delivery()) {
-            ?>
-            <div class=large_delivery_notice>
-            <img class=large_delivery_img src="https://plantis-shop.ru/wp-content/themes/plantis_site/images/icons/car.svg" alt="car">
-            <p>Для заказа предусмотрена крупногабаритная доставка!</p></div>
-            <?php
-        }
-        
+      if (check_if_large_delivery()) {
+        ?>
+          <div class=large_delivery_notice>
+          <?php echo plnt_icon('car');?>
+          <p>Для заказа предусмотрена крупногабаритная доставка!</p></div>
+        <?php
+      }
     }
-
     
     //комментарий к выбранному способу доставки
 
-    add_action( 'woocommerce_checkout_order_review', 'delivery_info', 10 );
+    add_action( 'woocommerce_checkout_order_review', 'delivery_info', 13 );
    
     function delivery_info(){
         if (! is_not_gift_card_checkout()) {
@@ -964,15 +852,21 @@ function plnt_override_checkout_fields( $fields ) {
     $fields['billing']['billing_address_2']['priority'] = 40;
 
     //добавляем placeholder
-    $fields['billing']['billing_first_name']['placeholder'] = 'Имя (обязательно)';
-    $fields['billing']['billing_phone']['placeholder'] = 'Телефон (обязательно)';
-    $fields['billing']['billing_email']['placeholder'] = 'Email (обязательно)';
+    $fields['billing']['billing_first_name']['placeholder'] = 'Ваше имя';
+    $fields['billing']['billing_phone']['placeholder'] = '+7 999 999-99-99';
+    $fields['billing']['billing_email']['placeholder'] = 'example@yandex.com';
     //делаем обязательным
     $fields['billing']['billing_first_name']['required'] = true;
     $fields['billing']['billing_phone']['required'] = true;
     $fields['billing']['billing_email']['required'] = true;
     $fields['billing']['billing_address_1']['required'] = false;
     $fields['billing']['billing_address_2']['required'] = false;
+
+    //поле комментрай к заказу
+
+    $fields['order']['order_comments']['label'] = 'Дополнительная информация';
+
+    $fields['order']['order_comments']['placeholder'] = 'Примечания к заказу, например, указания по доставке';
 
     if (! WC()->cart->needs_shipping()) {
       unset( $fields['billing']['billing_address_1'] );
@@ -985,7 +879,7 @@ function plnt_override_checkout_fields( $fields ) {
 }
 
 //убираем заголовки
-add_filter( 'woocommerce_checkout_fields', 'hide_all_billing_field_labels' );
+//add_filter( 'woocommerce_checkout_fields', 'hide_all_billing_field_labels' );
 function hide_all_billing_field_labels( $fields ) {
     foreach ( $fields['billing'] as $key => &$field ) {
         $field['label'] = ''; // Удаляем заголовок
@@ -1019,10 +913,10 @@ function plnt_add_dontcallme_field_to_checkout( $fields ) {
         'required'    => true,
         'class'       => array( 'form-row dontcallme' ),
         'options'     => array(
-            'Позвонить' => 'Позвонить',
-            'Написать в Max'   => 'Написать в Max',
-            'Написать в Telegram'   => 'Написать в Telegram',
-            'Написать в Whatsapp'   => 'Написать в Whatsapp',
+            'Позвонить' => 'По телефону',
+            'Написать в Max'   => 'Max',
+            'Написать в Telegram'   => 'Telegram',
+            'Написать в Whatsapp'   => 'Whatsapp',
         ),
         'default'     => 'Позвонить',
     );
@@ -1182,10 +1076,10 @@ function plnt_inn_field_in_email( $rows, $order ) {
     
             $field = '<p class="form-row address-field additional-address-field form-row-wide" data-priority="60">
                 <span class="woocommerce-input-wrapper true-wrapper woocommerce-address-wrapper">
-                    <input type="text" name="billing_address_2" id="billing_address_2" placeholder="Квартира" value="">
-                    <input type="text" name="billing_address_3" id="billing_address_3" placeholder="Подъезд" value="">
-                    <input type="text" name="billing_address_4" id="billing_address_4" placeholder="Этаж" value="">
-                    <input type="text" name="billing_address_5" id="billing_address_5" placeholder="Дополнительная информация" value="">
+                    <input type="text" name="billing_address_2" id="billing_address_2" placeholder="Квартира (если есть)" value="">
+                    <input type="text" name="billing_address_3" id="billing_address_3" placeholder="Подъезд (если есть)" value="">
+                    <input type="text" name="billing_address_4" id="billing_address_4" placeholder="Этаж (если есть)" value="">
+                    <input class="d-none" type="text" name="billing_address_5" id="billing_address_5" placeholder="Примечания к заказу, например, указания по доставке" value="">
                 </span>
             </p>';
     

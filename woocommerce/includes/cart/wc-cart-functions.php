@@ -19,6 +19,7 @@ function plnt_get_cart_summary() {
 	$total         = (float) $cart->get_total( 'edit' );
 	$count         = (int) $cart->get_cart_contents_count();
 	$regular_total = 0;
+  $current_total = 0;
 	$discount = 0;
 
 
@@ -30,12 +31,14 @@ function plnt_get_cart_summary() {
 		$product  = $cart_item['data'];
 		$quantity = (int) $cart_item['quantity'];
 
-		$regular_price = (float) $product->get_regular_price();
+    $regular_price = (float) $product->get_regular_price();
+    $current_price = (float) $product->get_price();
 
-		$regular_total += $regular_price * $quantity;
+    $regular_total += $regular_price * $quantity;
+    $current_total += $current_price * $quantity;
 	}
 
-  $discount = max( 0, $regular_total - $total );
+  $discount = max( 0, $regular_total - $current_total );
 
 
 	return array(

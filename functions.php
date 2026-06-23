@@ -73,6 +73,9 @@ require get_template_directory() . '/includes/xml/create_xml_task.php';
 require get_template_directory() . '/includes/front/icons.php';
 require get_template_directory() . '/includes/front/template-functions.php';
 
+require get_template_directory() . '/includes/admin/cat-images.php';
+
+
 
 
 /** Add Woocommerce files */

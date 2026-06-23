@@ -22,7 +22,11 @@ defined( 'ABSPATH' ) || exit;
 <table class="shop_table woocommerce-checkout-review-order-table">
 	<thead>
 		<tr>
-			<th class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
+      <th class="product-thumbnail"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
+			<th class="product-name"></th>
+      <th class="product-quantity">
+        <?php esc_html_e( 'Кол-во', 'woocommerce' ); ?>
+      </th>
 			<th class="product-total"><?php esc_html_e( 'Сумма', 'woocommerce' ); ?></th>
 		</tr>
 	</thead>
@@ -43,12 +47,31 @@ defined( 'ABSPATH' ) || exit;
 				data-product_quantity="<?php echo $cart_item['quantity']?>"
 				data-product_price="<?php echo $price?>"
 				>
-					<td class="product-name">
-						<?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) ) . '&nbsp;'; ?>
-						<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-						<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-						<?php get_backorder_info_snippet($_product, $cart_item[ 'quantity' ]);?>
-					</td>
+
+          <td class="product-thumbnail">
+            <?php
+            echo $_product->get_image(
+              'woocommerce_thumbnail',
+              [
+                'class' => 'checkout-product-thumb',
+              ]
+            );
+            ?>
+          </td>
+
+          <td class="product-name">
+            <?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) ); ?>
+
+            <?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+
+            <?php get_backorder_info_snippet( $_product, $cart_item['quantity'] ); ?>
+          </td>
+
+          <td class="product-quantity">
+            <strong>
+              <?php echo esc_html( $cart_item['quantity'] ); ?>
+            </strong>
+          </td>
 					<td class="product-total">
 						<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</td>
@@ -78,7 +101,7 @@ defined( 'ABSPATH' ) || exit;
 
 			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
 
-			<?php wc_cart_totals_shipping_html(); ?>
+			<?php //wc_cart_totals_shipping_html(); ?>
 
 			<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
 
@@ -106,7 +129,7 @@ defined( 'ABSPATH' ) || exit;
 				</tr>
 			<?php endif; ?>
 		<?php endif; ?>
-
+    
 		<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
 
 		<!-- <tr class="order-total">

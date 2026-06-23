@@ -99,27 +99,34 @@ function plnt_card_grid_start () {
     <?php
 };
 
-function plnt_card_grid_end () {
+function plnt_card_grid_end() {
     global $product;
-    // global $treez_cat_id;
-    // global $treez_poliv_cat_id;
-    // global $plants_treez_cat_id;
-    // global $lechuza_cat_id;
-    $idCats = $product->get_category_ids();
-    $product_id = $product->get_id();
+
+    if ( ! $product ) {
+        return;
+    }
+
+    $product_id  = $product->get_id();
+    $idCats      = $product->get_category_ids();
+    $description = wp_strip_all_tags( $product->get_description() );
+    $brand       = plnt_get_brand_text( $idCats );
     ?>
-    <link itemprop="url" href="<?php echo get_permalink( $product_id );?>">
-	</section>
-    <?php 
-    
-    // добавляем разметку brand для schema.org
-    $brand = plnt_get_brand_text($idCats);
-    ?> 
-    <div itemscope itemtype="http://schema.org/Brand"> 
-        <meta itemprop="name" content="<?php echo $brand ?>">
-    </div>
+
+    <link itemprop="url" href="<?php echo esc_url( get_permalink( $product_id ) ); ?>">
+
+    <?php if ( $description ) : ?>
+        <meta itemprop="description" content="<?php echo esc_attr( $description ); ?>">
+    <?php endif; ?>
+
+    <?php if ( $brand ) : ?>
+        <div itemprop="brand" itemscope itemtype="https://schema.org/Brand">
+            <meta itemprop="name" content="<?php echo esc_attr( $brand ); ?>">
+        </div>
+    <?php endif; ?>
+
+    </section>
     <?php
-};
+}
 
 
 function plnt_output_actions_wrap() {
@@ -179,7 +186,7 @@ function plnt_output_actions_wrap() {
     if ( empty( $image_ids ) ) {
       return;
     }
-    plnt_product_artikul();
+    plnt_product_artikul_schema();
     plnt_card_wishlist_btn();
     ?>
 
@@ -442,13 +449,24 @@ function plnt_output_actions_wrap() {
 /*  
 */
 /* Артикул */
-  function plnt_product_artikul() {
+  function plnt_product_artikul_schema() {
     if ( is_product() ) {
       global $product;
       $sku = $product->get_sku();
         
       if( $sku ) { // если заполнен, то выводим
         echo '<span class="product__artikul">Арт. <span itemprop="sku">' . $sku . '</span> </span>';
+      }
+    }
+
+  };
+  function plnt_product_artikul() {
+    if ( is_product() ) {
+      global $product;
+      $sku = $product->get_sku();
+        
+      if( $sku ) { // если заполнен, то выводим
+        echo '<span class="product__artikul">Арт.' . $sku . '</span>';
       }
     }
 
