@@ -8,7 +8,7 @@
         <!-- Мобильная версия (до 767px) -->
         <source 
             srcset="<?php echo get_template_directory_uri() .'/images/test/test_cover_long.webp'?>" 
-            media="(max-width: 767px)">
+            media="(max-width: 768px)">
         
         <!-- Десктопная версия (от 768px и выше) -->
         <source 

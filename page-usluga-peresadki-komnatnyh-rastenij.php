@@ -13,7 +13,7 @@ get_header(); ?>
           Вы хотите купить комнатное растение. И&nbsp;теперь перед вами стоит задача его пересадить. Но вы не знаете с чего начать?
         </div>
         <div class="page-peresadka__buttons">
-          <button class="page-peresadka__rasschet button page-popup-open-btn" name="Заявка на пересадку">Оставить заявку</button>
+          <button class="page-peresadka__rasschet button--green button page-popup-open-btn" name="Заявка на пересадку">Оставить заявку</button>
           <?php get_template_part('template-parts/social-media-btns');?> 
         </div>
              
@@ -130,7 +130,7 @@ get_header(); ?>
                 </tbody>
               </table>
         </div>
-        <button class="page-peresadka__rasschet button page-popup-open-btn" name="Заявка на пересадку">Оставить заявку</button>
+        <button class="page-peresadka__rasschet button--green button page-popup-open-btn" name="Заявка на пересадку">Оставить заявку</button>
       </div>
 		</div>
 

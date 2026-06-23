@@ -1,8 +1,20 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
-
+  <?php if(is_page('wishlist')):?>
+    <?php plnt_breadrumbs_yoast();?>
+    <section class="catalog__header section">
+      <div class="catalog__header-inner">
+        <header class="woocommerce-products-header">
+          <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+        </header><!-- .entry-header -->
+        <?php do_action( 'plnt_wish_after_header' );?>
+      </div>
+      <?php plnt_wishlist_share();?>
+    </section>
+  <?php else:?>
+    <header class="entry-header">
+      <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+    </header><!-- .entry-header -->
+  <?php endif;?>
 	<div class="entry-content">
 		<?php the_content(); ?>
 		<?php

@@ -38,152 +38,322 @@ function my_logged_in_name_focus_class() {
 }
 
 $gcid = get_the_ID();
+
+$giftcard_designs = plnt_get_giftcard_designs_config();
+
+
+$gradients = $giftcard_designs['gradients'] ?? [];
+$backgrounds = $giftcard_designs['backgrounds'] ?? [];
+$images = $giftcard_designs['images'] ?? [];
+$default_gradient  = plnt_get_giftcard_default_gradient();
+$default_image  = plnt_get_giftcard_default_image();
+$background_css    = plnt_get_giftcard_background_css( $default_gradient, $default_image );
+
+// echo ('<pre>');
+// print_r($giftcard_designs);
+// echo ('</pre>');
+
+
 ?>
-<div class="content-area">
-  <div class="gift-content-area">
-    <h1 class="gift-card__title">Электронный подарочный сертификат</h1>
-    <button class="gift-card__example-btn page-popup-open-btn">Посмотреть пример</button>
-    <a class="gift-card__example-btn" href="<?php echo get_site_url()?>/gift-card" target="_blank">Проверить баланс</a>
-    <div class="gift-image-wrap">
-      <img src="<?php echo get_template_directory_uri()?>/images/gift-card/gc_cover.webp" class="gift-image" alt="Подарочная карта">
-      <p class="gift-image-amount">1500<span>₽</span></p>
-    </div>
 
-
-    <form method="post" action="/wp-admin/admin-post.php" class="gift-cards_form" novalidate>
-
-      <input type="hidden" name="action" value="giftcard_pay">
-      <input type="hidden" name="giftcard_product_id" value="<?php echo $gcid?>"> <!-- ID товара gift-card -->
-      <input type="number" name="giftcard_amount" id="giftcard_amount" value="" min="1" required style="display:none;">
-      <h3 class="gift_select_amount_title">Выберите желаемую сумму подарка</h3>
-      <div class="gift-input-wrap">
-        <input id="gift-manual-amount" 
-        name="gift-manual-amount" 
-        class="gift-manual-amount" 
-        type="number" placeholder="" 
-        value="1500" 
-        required
-        min=1500
-        max=30000
-        >
-        <span class="field__errors"></span>
-      </div>
-
-      <p class="gift__note">Можно ввести любую сумму от 1500 до 30&nbsp;000&nbsp;₽</p>
-      <div class="gift__amounts gift-swiper-wrap">
-          <div class="swiper-wrapper">
-            <p class="swiper-slide" data-amount="1500">1500</p>
-            <p class="swiper-slide" data-amount="2000">2000</p>
-            <p class="swiper-slide" data-amount="3000">3000</p>
-            <p class="swiper-slide" data-amount="4000">4000</p>
-            <p class="swiper-slide" data-amount="5000">5000</p>
-            <p class="swiper-slide" data-amount="10000">10000</p>
-            <p class="swiper-slide" data-amount="15000">15000</p>
-            <p class="swiper-slide" data-amount="20000">20000</p>
-            <p class="swiper-slide" data-amount="25000">25000</p>
-            <p class="swiper-slide" data-amount="30000">30000</p>
+<section class="gc-content-area gc-container">
+  <span class="gc__eyebrow">Электронный подарочный сертификат</span>
+  <div class="gc-amount__circle-bg"></div>
+  <div
+    class="gc-amount__wheel gc-amount__wheel--desktop"
+    id="amountWheel"
+    aria-label="Выбор номинала"
+  >  </div>
+  <section class="gc-step-panel" data-gc-step-panel="1">
+    <h2 class="gc-step-panel__title" data-heading-tag="H2">Выбери дизайн карты</h2>
+    <?php get_template_part('template-parts/front/gc-navbar')?>
+    <div class="gc-step-panel__body gc-slider-section">
+      <!-- slider for mobile -->
+        <div class="gc-slider gc-slider--mob">
+          <div class="gc-mobile-timeline">
+            <span class="gc-mobile-timeline__dot"></span>
           </div>
+          <div class="swiper gc-main-swiper-mobile">
+            <div class="swiper-wrapper">
+              <?php foreach ($images as $key => $image_url) : ?>
+                <div class="swiper-slide" data-image-key="<?php echo esc_attr($key); ?>">
+                  <div class="gc-main-slide">
+                    <img
+                      class="gc-main-slide__image"
+                      src="<?php echo esc_url($image_url); ?>"
+                      alt="<?php echo esc_attr($key); ?>"
+                    >
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+          </div>
+          <div class="gc-card-mob-wrap">
+            <div class="js-gift-card-gradient gc-card--main gc-card--main-mob">
+              <!-- сюда подставляй картинку из этапа выбора дизайна -->
+              <img
+                class="gc-main-slide__image js-gift-card-preview-mob"
+                src=""
+                alt="Выбранный дизайн подарочной карты"
+              />
+            </div>
+          </div>
+        </div>
+      <!-- slider for desktop -->
+      <div class="gc-slider gc-slider--desktop">
+        <button
+          class="gc-slider__nav gc-slider__nav--prev"
+          type="button"
+          aria-label="Предыдущий слайд"
+        ></button>
+        <div class="gc-slider__stage">
+          <div class="gc-card gc-card--side gc-card--left-2">
+            <div class="gc-card__media gc-card__media--circle" id="gcPrev2Media"></div>
+          </div>
+          <div class="gc-card gc-card--side gc-card--left">
+            <div class="gc-card__media gc-card__media--circle" id="gcPrevMedia"></div>
+          </div>
+          <div class="gc-card gc-card--main">
+            <?php if (!empty($images) && is_array($images)) : ?>
+              <div class="swiper gc-main-swiper">
+                <div class="swiper-wrapper">
+                  <?php foreach ($images as $key => $image_url) : ?>
+                    <div class="swiper-slide" data-image-key="<?php echo esc_attr($key); ?>">
+                      <div class="gc-main-slide">
+                        <img
+                          class="gc-main-slide__image"
+                          src="<?php echo esc_url($image_url); ?>"
+                          alt="<?php echo esc_attr($key); ?>"
+                        >
+                      </div>
+                    </div>
+                  <?php endforeach; ?>
+                </div>
+              </div>
+            <?php endif; ?>
+          </div>
+          <div class="gc-card gc-card--side gc-card--right">
+            <div class="gc-card__media gc-card__media--circle" id="gcNextMedia"></div>
+          </div>
+          <div class="gc-card gc-card--side gc-card--right-2">
+            <div class="gc-card__media gc-card__media--circle" id="gcNext2Media"></div>
+          </div>
+        </div>
+        <button
+          class="gc-slider__nav gc-slider__nav--next"
+          type="button"
+          aria-label="Следующий слайд"
+        ></button>
+        <div class="gc-slider__dots" id="gcSliderDots"></div>
       </div>
 
-      <div class="gift-card-content">
-
-        <h3>Куда отправить сертификат</h3>
-        <div class="gift-buyer-name gift-input-wrap gift-input-wrap_labeled">
-          <label for="gift-buyer-name">Как вас зовут*</label>
-          <input type="text"
-                id="gift-buyer-name"
-                name="gift-buyer-name[]"
-                value="<?php echo esc_attr( my_get_logged_in_user_name() ); ?>"
-                required
-                class="gift-recipient yith_wc_gift_card_input_recipient_details <?php echo esc_attr( my_logged_in_name_focus_class() ); ?>">
-          <span class="field__errors"></span>
+      <div class="gift-gradient-arc gift-gradient-arc--desktop">
+        <div class="gift-gradient-arc__track">
+          <?php foreach ( $gradients as $gradient_key => $gradient_css ) : ?>
+            <?php
+            $is_active = $gradient_key === $default_gradient;
+            $label = $gradient_labels[ $gradient_key ] ?? $gradient_key;
+            ?>
+            <button
+              type="button"
+              class="gift-gradient-picker__btn gift-gradient-arc__item<?php echo $is_active ? ' is-active' : ''; ?>"
+              data-gradient-key="<?php echo esc_attr( $gradient_key ); ?>"
+              aria-label="<?php echo esc_attr( $label ); ?>"
+              title="<?php echo esc_attr( $label ); ?>"
+            >
+              <span style="background-image: <?php echo esc_attr( $gradient_css ); ?>;"></span>
+            </button>
+          <?php endforeach; ?>
         </div>
-        <div class="gift-recipient-email gift-input-wrap gift-input-wrap_labeled">
-          <label for="gift-recipient-email">Ваша почта*</label>
-          <input type="email"
-                id="gift-recipient-email"
-                name="gift-recipient-email[]"
-                value="<?php echo esc_attr( my_get_logged_in_user_email() ); ?>"
-                required
-                pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
-                title="Введите корректный email в формате name@example.com"
-                class="gift-recipient yith_wc_gift_card_input_recipient_details <?php echo esc_attr( my_logged_in_email_focus_class() ); ?>">
-          <span class="field__errors"></span>
-          <p class="gift-recipient-note">Ссылка на подарочный сертификат будет направлена на указанную почту автоматически после оплаты</p>
-        </div>
-        <div class="gift-recipient-phone gift-input-wrap gift-input-wrap_labeled">
-          <label for="gift-recipient-phone">Ваш номер телефона*</label>
-          <input type="tel"
-                id="gift-recipient-phone"
-                name="gift-recipient-phone[]"
-                required
-                pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
-                title="Введите номер в формате: +7 (XXX) XXX-XX-XX"
-                class="gift-recipient yith_wc_gift_card_input_recipient_details">
-          <span class="field__errors"></span>
-          <p class="gift-recipient-note">Ваш номер телефона для связи</p>
-        </div>
-
-        <h3>Кому дарим</h3>
-        <div class="gift-recipient-name gift-input-wrap gift-input-wrap_labeled">
-          <label for="gift-recipient-name">Имя получателя*</label>
-          <input type="text"
-                id="gift-recipient-name"
-                name="gift-recipient-name[]"
-                required
-                class="yith_wc_gift_card_input_recipient_details">
-          <span class="field__errors"></span>
-        </div>
-
-        <div class="gift-message gift-input-wrap gift-input-wrap_labeled">
-          <label for="gift-edit-message">Добавьте теплых слов</label>
-          <textarea id="gift-edit-message" name="gift-edit-message" rows="5"></textarea>
-        </div>
-
-        <div class="gift-sender-name gift-input-wrap gift-input-wrap_labeled">
-          <label for="gift-sender-name">Имя отправителя</label>
-          <input type="text" name="gift-sender-name" id="gift-sender-name" value="">
-        </div>
-
       </div>
-
-      <button type="submit" class = "gift-card__submit-btn button">К оплате</button>
-    </form>
-
-    <div class="gift-card__info">
-      <h2 class="giftcard-advantages__title">Преимущества подарочного сертификата</h2>
-      <div class="giftcard-advantages">
-        <div class="giftcard-advantages__wrap">
-          <span class="giftcard-advantages__number">01</span>
-          <div class="giftcard-advantages__descr">Подходит для физлиц и корпоративных клиентов</div>
+      <div class="swiper gift-gradient-swiper gift-gradient-arc--mobile">
+        <div class="swiper-wrapper">
+          <?php foreach ( $gradients as $gradient_key => $gradient_css ) : ?>
+            <?php
+            $is_active = $gradient_key === $default_gradient;
+            $label = $gradient_labels[ $gradient_key ] ?? $gradient_key;
+            ?>
+            <button
+              type="button"
+              class="swiper-slide gift-gradient-slide<?php echo $is_active ? ' is-active' : ''; ?>"
+              data-gradient-key="<?php echo esc_attr( $gradient_key ); ?>"
+              aria-label="<?php echo esc_attr( $label ); ?>"
+              title="<?php echo esc_attr( $label ); ?>"
+            >
+              <span style="background-image: <?php echo esc_attr( $gradient_css ); ?>;"></span>
+            </button>
+          <?php endforeach; ?>
         </div>
-        <div class="giftcard-advantages__wrap">
-          <span class="giftcard-advantages__number">02</span>
-          <div class="giftcard-advantages__descr">Гибкий номинал сертификата от 1500 до 30 000 рублей</div>
-        </div>
-        <div class="giftcard-advantages__wrap">
-          <span class="giftcard-advantages__number">03</span>
-          <div class="giftcard-advantages__descr">Можно использовать сертификат онлайн или в шоурумах</div>
-        </div>
-        <div class="giftcard-advantages__wrap">
-          <span class="giftcard-advantages__number">04</span>
-          <div class="giftcard-advantages__descr">Можно оплачивать товары и услуги со скидкой</div>
-        </div>
-        <div class="giftcard-advantages__wrap">
-          <span class="giftcard-advantages__number">05</span>
-          <div class="giftcard-advantages__descr">Можно использовать многократно в рамках номинала и срока действия</div>
-        </div>
-        <div class="giftcard-advantages__wrap">
-          <span class="giftcard-advantages__number">06</span>
-          <div class="giftcard-advantages__descr">Удобно, если вы не знаете, какое именно растение подойдет </div>
-        </div>
+      </div>
+      <div class="gc-mobile-timeline gc-mobile-timeline--bottom">
+        <span class="gc-mobile-timeline__dot"></span>
       </div>
     </div>
-    <h2 class="giftcard-advantages__title">Часто задаваемые вопросы</h2>
-    <?php get_template_part( 'template-parts/gift-card-faq' );?>
+  </section>
+
+  <section class="gc-step-panel is-active" data-gc-step-panel="2" hidden>
+    <h2 class="gc-step-panel__title">Выбери номинал карты</h2>
+    <?php get_template_part('template-parts/front/gc-navbar')?>
+    <div class="gc-step-panel__body gc-amount__layout">
+      <div class="gc-amount__visual">
+        <div class="js-gift-card-gradient gc-card--main">
+          <!-- сюда подставляй картинку из этапа выбора дизайна -->
+          <img
+            class="gc-main-slide__image js-gift-card-preview"
+            src=""
+            alt="Выбранный дизайн подарочной карты"
+          />
+        </div>
+      </div>
+
+      <div class="gc-amount__info">
+        <label class="gc-amount__input-wrap" for="giftCardAmountInput">
+          <input
+            class="gc-amount__input"
+            id="giftCardAmountInput"
+            type="text"
+            inputmode="numeric"
+            value="1500"
+            autocomplete="off"
+          />
+          <span class="gc-amount__currency">₽</span>
+        </label>
+
+        <div class="gc-amount__hint">
+          можно купить <span id="giftCardAmountHintText">небольшой букет</span>
+        </div>
+      </div>
+      <div class="swiper gc-amount-swiper gc-amount__wheel--mobile" id="amountSwiper">
+        <div class="swiper-wrapper">
+          <?php
+          $amounts = [1500, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 12000, 15000, 18000, 20000, 25000, 30000];
+          foreach ( $amounts as $amount ) :
+          ?>
+            <button
+              type="button"
+              class="swiper-slide gc-amount-slide"
+              data-amount="<?php echo esc_attr( $amount ); ?>"
+            >
+              <?php echo esc_html( number_format( $amount, 0, '', ' ' ) ); ?>
+              <span class="gc-amount-slide__currency">₽</span>
+            </button>
+          <?php endforeach; ?>
+        </div>
+        <div class="gc-mobile-timeline gc-mobile-timeline--wheel">
+          <span class="gc-mobile-timeline__dot"></span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="gc-step-panel" data-gc-step-panel="3" hidden>
+    <h2 class="gc-step-panel__title">Введи данные</h2>
+    <?php get_template_part('template-parts/front/gc-navbar')?>
+    <div class="gc-step-panel__body gc-amount__layout">
+      <div class="gc-amount__visual">
+        <div class="js-gift-card-gradient gc-card--main">
+          <!-- сюда подставляй картинку из этапа выбора дизайна -->
+          <img
+            class="gc-main-slide__image js-gift-card-preview"
+            src=""
+            alt="Выбранный дизайн подарочной карты"
+
+          />
+          <span class="gift-image-amount"></span>
+        </div>
+      </div>
+      <form method="post" action="/wp-admin/admin-post.php" class="gift-cards_form" id="gift-card-form" novalidate>
+        <input type="hidden" name="action" value="giftcard_pay">
+        <input type="hidden" name="giftcard_product_id" value="<?php echo $gcid?>"> <!-- ID товара gift-card -->
+        <input type="hidden" name="giftcard_gradient" id="giftcard_gradient" value="<?php echo esc_attr( $default_gradient ); ?>">
+        <input type="hidden" name="giftcard_image" id="giftcard_image" value="<?php echo esc_attr( $default_image ); ?>">
+        <input type="number" name="giftcard_amount" id="giftcard_amount" value="" min="1" required style="display:none;">
+        <div class="gift-cards_form-content">
+          <div class="gift-cards_form__wrap">
+            <h3 class="gift-cards_form--widerow">Куда отправить сертификат</h3>
+            <div class="gift-cards_form--row">
+              <div class="gift-buyer-name gift-input-wrap gift-input-wrap_labeled">
+                <label for="gift-buyer-name">Как вас зовут*</label>
+                <input type="text"
+                      id="gift-buyer-name"
+                      name="gift-buyer-name[]"
+                      value="<?php echo esc_attr( my_get_logged_in_user_name() ); ?>"
+                      required
+                      class="gift-recipient yith_wc_gift_card_input_recipient_details <?php echo esc_attr( my_logged_in_name_focus_class() ); ?>">
+              </div>
+              <span class="field__errors"></span>
+            </div>
+            <div class="gift-cards_form--row">
+              <div class="gift-recipient-phone gift-input-wrap gift-input-wrap_labeled">
+                <label for="gift-recipient-phone">Ваш номер телефона*</label>
+                <input type="tel"
+                      id="gift-recipient-phone"
+                      name="gift-recipient-phone[]"
+                      required
+                      pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+                      title="Ваш номер телефона для связи"
+                      class="gift-recipient yith_wc_gift_card_input_recipient_details">
+              </div>
+              <p class="gift-recipient-note d-none">Ваш номер телефона для связи</p>
+              <span class="field__errors"></span>
+            </div>
+            <div class="gift-cards_form--widerow">
+              <div class="gift-recipient-email gift-input-wrap gift-input-wrap_labeled">
+                <label for="gift-recipient-email">Ваша почта*</label>
+                <input type="email"
+                      id="gift-recipient-email"
+                      name="gift-recipient-email[]"
+                      value="<?php echo esc_attr( my_get_logged_in_user_email() ); ?>"
+                      required
+                      pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                      title="Введите корректный email в формате name@example.com"
+                      class="gift-recipient yith_wc_gift_card_input_recipient_details <?php echo esc_attr( my_logged_in_email_focus_class() ); ?>">
+              </div>
+              <span class="field__errors"></span>
+              <p class="gift-recipient-note">Ссылка на подарочный сертификат будет направлена на указанную почту автоматически после оплаты</p>
+            </div>
+            
+          </div>
+          <div class="gift-cards_form__wrap">
+            <h3 class="gift-cards_form--widerow">Кому дарим</h3>
+            <div class="gift-cards_form--row">
+              <div class="gift-recipient-name gift-input-wrap gift-input-wrap_labeled">
+                <label for="gift-recipient-name">Имя получателя*</label>
+                <input type="text"
+                      id="gift-recipient-name"
+                      name="gift-recipient-name[]"
+                      required
+                      class="yith_wc_gift_card_input_recipient_details">
+              </div>
+              <span class="field__errors"></span>
+            </div>
+            <div class="gift-sender-name gift-input-wrap gift-input-wrap_labeled gift-cards_form--row">
+              <label for="gift-sender-name">Имя отправителя</label>
+              <input type="text" name="gift-sender-name" id="gift-sender-name" value="">
+            </div>
+            <div class="gift-message gift-input-wrap gift-input-wrap_labeled gift-cards_form--widerow">
+              <label for="gift-edit-message">Добавьте теплых слов</label>
+              <textarea id="gift-edit-message" name="gift-edit-message" rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</section>
+<div class="gc-navbar gc-container">
+  <button type="button" class="button button--green-l gc-step-btn gc-step-btn--prev" data-gc-prev-step disabled>
+    Назад
+  </button>
+     
+  <?php get_template_part('template-parts/front/gc-navbar')?>
+  <button type="button" class="button button--green gc-step-btn gc-step-btn--next" data-gc-next-step>
+    Далее
+  </button>
+  <button type="submit" class = "gift-card__submit-btn button button--green gc-step-btn"  form="gift-card-form">К оплате</button>
   </div>
-</div>
-<?php get_template_part('template-parts/popups/gift-card-popup');?>
+
 
 
 <?php get_footer();?>

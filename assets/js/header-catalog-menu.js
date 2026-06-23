@@ -3,7 +3,7 @@ let headerMenuWrap = document.querySelector('.header__main-menu-wrap');
 let headerMenuItems = document.querySelectorAll('.header__main-menu-item');
 let subMenues = document.querySelectorAll('.header__main-submenu');
 let imageCatId = [];
-let menuLinksWithImage = headerCatalogWrap.querySelectorAll('.header__main-submenu-item_image');
+let menuLinksWithImage = headerCatalogWrap.querySelectorAll('.cats-sub-menu__item-image');
 let imageLinks;
 let plantsSumbenu = headerCatalogWrap.querySelector('[data-menu = "menu_item_plants"]');
 let azPlantsBtnOpen = headerCatalogWrap.querySelector('.header__menu-azbtn_open');
@@ -82,7 +82,8 @@ function getCatImagesAjax () {
 }
 
 function getCatImage(event, catId) {
-    let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
+    let menuImage = event.target.closest('.header__main-submenu').querySelector('.cats-sub-menu__img');
+    console.log(menuImage)
     if (imageLinks && menuImage) {
         let imageLink = imageLinks[`id_${catId}`];
         if(imageLink) {
@@ -94,7 +95,7 @@ function getCatImage(event, catId) {
 }
 
 function getDefaultImage(event) {
-    let menuImage = event.target.closest('.header__main-submenu').querySelector('.header__main-submenu-img');
+    let menuImage = event.target.closest('.header__main-submenu').querySelector('.cats-sub-menu__img');
     menuImage.setAttribute('src','https://plantis-shop.ru/wp-content/themes/plantis_site/images/interior.webp');
 }
 

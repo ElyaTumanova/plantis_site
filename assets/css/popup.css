@@ -12,7 +12,7 @@
     width: 100%;
     height: 100vh;
     z-index: 9999;
-    background: rgba(0,0,0,0.5);
+    background: #02150E3D;
 }
 
 .popup-overlay {
@@ -57,7 +57,8 @@
     margin-top: 10px;
     border-radius: 30px;
     padding: 18px;
-    height: 55px;
+    height: 100px;
+    width: 100%;
 }
 
 .page-popup__form .wpcf7-form textarea:focus {
@@ -185,12 +186,12 @@
 }
 
 .spinner {
-    width: 60px;
-    height: 60px;
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid var(--accent-color);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+  width: 60px;
+  height: 60px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--accent-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
@@ -233,7 +234,7 @@
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .page-popup__container {
         top: 0;
         padding: 25px 15px;
@@ -260,7 +261,7 @@
     right: 30px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .page-popup__close {
         top: 0;
         right: 0;
@@ -276,7 +277,7 @@
     margin-top: 30px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .page-popup__form {
         /* margin: 20px 0; */
         margin-top: 20px;
@@ -396,7 +397,7 @@
   font-size: 22px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .login__close {
         top: 80px;
         right: 15px;

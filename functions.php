@@ -70,10 +70,17 @@ require get_template_directory() . '/includes/xml/create_xml_task.php';
 /** Add recaptcha*/
 // require get_template_directory() . '/includes/wc-recapthca.php';
 
+require get_template_directory() . '/includes/front/icons.php';
+require get_template_directory() . '/includes/front/template-functions.php';
+
+require get_template_directory() . '/includes/admin/cat-images.php';
+
+
 
 
 /** Add Woocommerce files */
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	require get_template_directory() . '/woocommerce/includes/wc-bootstrap.php';
 	require get_template_directory() . '/woocommerce/includes/wc-helpers-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-menu-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-cart-functions.php';
@@ -83,7 +90,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	require get_template_directory() . '/woocommerce/includes/wc-function.php';
 	require get_template_directory() . '/woocommerce/includes/wc-remove-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-card-function.php';
-	require get_template_directory() . '/woocommerce/includes/wc-catalog-functions.php';
+	// require get_template_directory() . '/woocommerce/includes/wc-catalog-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-yith-wishlist-finctions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-yith-giftcards-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-account-functions.php';

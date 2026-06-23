@@ -44,19 +44,24 @@ if( $product->is_type( 'simple' )
 else {
 	if ($parentCat == $peresadka_cat_id) 
 	{
-        $url = $product->add_to_cart_url();
-		$text = 'Добавить пересадку за ' .$product->get_price(). ' руб.';
+    $url = $product->add_to_cart_url();
+		// $text = 'Добавить пересадку за ' .$product->get_price(). ' руб.';
+		$text = 'Добавить';
 		$class = isset( $args['class'] ) ? $args['class'] : 'button';
 	} 
 	else {
-        $url = $product->add_to_cart_url();
-		$text = $product->add_to_cart_text();
+    $url = $product->add_to_cart_url();
+		if ( ! $product->is_in_stock() ) {
+        $text = 'Заказать';
+    } else {
+        $text = $product->add_to_cart_text();
+    }
 		$class = isset( $args['class'] ) ? $args['class'] : 'button';
 	}
 }
 //
 
-if ($parentCat !== $peresadka_cat_id) {
+if ($parentCat !== $peresadka_cat_id && !is_cart()) {
     echo apply_filters(
         'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
         sprintf(

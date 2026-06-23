@@ -5,6 +5,176 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
+function pretty_print($print) {
+  echo ('<pre>');
+  print_r($print);
+  echo ('</pre>');
+}
+
+/**
+ * Debug-комментарии для хуков каталога WooCommerce.
+ *
+ * Показывает:
+ * <!-- WC HOOK START: hook_name -->
+ * <!-- WC HOOK END: hook_name -->
+ */
+add_action( 'wp', 'custom_wc_catalog_hooks_debug_comments' );
+
+function custom_wc_catalog_hooks_debug_comments() {
+	// if ( is_admin() || ! function_exists( 'is_woocommerce' ) ) {
+	// 	return;
+	// }
+
+	if ( ! is_shop() && ! is_product_taxonomy() && ! is_product_category() && ! is_product_tag() ) {
+		return;
+	}
+
+	$hooks = array(
+		'woocommerce_before_main_content',
+		'woocommerce_archive_description',
+
+		'woocommerce_before_shop_loop',
+		'woocommerce_before_shop_loop_item',
+		'woocommerce_before_shop_loop_item_title',
+		'woocommerce_shop_loop_item_title',
+		'woocommerce_after_shop_loop_item_title',
+		'woocommerce_after_shop_loop_item',
+		'woocommerce_after_shop_loop',
+
+		'woocommerce_no_products_found',
+		'woocommerce_after_main_content',
+		'woocommerce_sidebar',
+	);
+
+	foreach ( $hooks as $hook_name ) {
+		add_action(
+			$hook_name,
+			function() use ( $hook_name ) {
+				echo "\n<!-- WC HOOK START: " . esc_html( $hook_name ) . " -->\n";
+			},
+			-9999
+		);
+
+		add_action(
+			$hook_name,
+			function() use ( $hook_name ) {
+				echo "\n<!-- WC HOOK END: " . esc_html( $hook_name ) . " -->\n";
+			},
+			9999
+		);
+	}
+}
+
+/**
+ * Debug-комментарии для хуков карточки товара WooCommerce.
+ *
+ * Показывает:
+ * <!-- WC HOOK START: hook_name -->
+ * <!-- WC HOOK END: hook_name -->
+ */
+add_action( 'wp', 'custom_wc_single_product_hooks_debug_comments' );
+
+function custom_wc_single_product_hooks_debug_comments() {
+	if ( ! is_product() ) {
+		return;
+	}
+
+	$hooks = array(
+		'woocommerce_before_main_content',
+
+		'woocommerce_before_single_product',
+		'woocommerce_before_single_product_summary',
+		'woocommerce_product_thumbnails',
+		'woocommerce_single_product_summary',
+		'woocommerce_before_add_to_cart_form',
+		'woocommerce_before_add_to_cart_button',
+		'woocommerce_before_add_to_cart_quantity',
+		'woocommerce_after_add_to_cart_quantity',
+		'woocommerce_after_add_to_cart_button',
+		'woocommerce_after_add_to_cart_form',
+		'woocommerce_after_single_product_summary',
+		'woocommerce_after_single_product',
+
+		'woocommerce_after_main_content',
+		'woocommerce_sidebar',
+	);
+
+	foreach ( $hooks as $hook_name ) {
+		add_action(
+			$hook_name,
+			function() use ( $hook_name ) {
+				echo "\n<!-- WC HOOK START: " . esc_html( $hook_name ) . " -->\n";
+			},
+			-9999
+		);
+
+		add_action(
+			$hook_name,
+			function() use ( $hook_name ) {
+				echo "\n<!-- WC HOOK END: " . esc_html( $hook_name ) . " -->\n";
+			},
+			9999
+		);
+	}
+}
+
+/**
+ * Debug-комментарии для хуков корзины WooCommerce.
+ *
+ * Показывает:
+ * <!-- WC HOOK START: hook_name -->
+ * <!-- WC HOOK END: hook_name -->
+ */
+add_action( 'wp', 'custom_wc_cart_hooks_debug_comments' );
+
+function custom_wc_cart_hooks_debug_comments() {
+	if ( ! is_cart() ) {
+		return;
+	}
+
+	$hooks = array(
+		'woocommerce_before_main_content',
+
+		'woocommerce_before_cart',
+		'woocommerce_before_cart_table',
+		'woocommerce_before_cart_contents',
+		'woocommerce_cart_contents',
+		'woocommerce_cart_coupon',
+		'woocommerce_after_cart_contents',
+		'woocommerce_after_cart_table',
+
+		'woocommerce_cart_collaterals',
+		'woocommerce_before_cart_collaterals',
+		'woocommerce_cart_totals_before_shipping',
+		'woocommerce_cart_totals_after_shipping',
+		'woocommerce_before_cart_totals',
+		'woocommerce_after_cart_totals',
+
+		'woocommerce_after_cart',
+		'woocommerce_after_main_content',
+
+		'woocommerce_sidebar',
+	);
+
+	foreach ( $hooks as $hook_name ) {
+		add_action(
+			$hook_name,
+			function() use ( $hook_name ) {
+				echo "\n<!-- WC HOOK START: " . esc_html( $hook_name ) . " -->\n";
+			},
+			-9999
+		);
+
+		add_action(
+			$hook_name,
+			function() use ( $hook_name ) {
+				echo "\n<!-- WC HOOK END: " . esc_html( $hook_name ) . " -->\n";
+			},
+			9999
+		);
+	}
+}
+
 //add_action( 'wp_footer', 'plnt_echo_smth' );
 
 

@@ -23,8 +23,8 @@ if ( ! function_exists( 'ast_theme_support' ) ) :
 		// Woocommerce support
 		add_theme_support( 'woocommerce' );
 		//add_theme_support( 'wc-product-gallery-zoom' ); // отключаем зум для фото товара
-		add_theme_support( 'wc-product-gallery-lightbox' );
-		add_theme_support( 'wc-product-gallery-slider' );
+		// add_theme_support( 'wc-product-gallery-lightbox' );
+		// add_theme_support( 'wc-product-gallery-slider' ); работает на базе FlexSlider
 		// Add foundation.css as editor style https://codex.wordpress.org/Editor_Style
 		add_editor_style( 'assets/stylesheets/editor.css' );
 	}

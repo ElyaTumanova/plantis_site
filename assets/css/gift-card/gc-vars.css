@@ -1,0 +1,134 @@
+/*--------------------------------------------------------------
+# Root variables and responsive layout tokens
+--------------------------------------------------------------*/
+
+:root {
+  --gc-container: 1390px;
+  --gc-content-area-height: min(calc(100dvh - var(--gcContentAreaTopOffset) - var(--gcNavBarHeight)), 600px);
+
+  --gc-circle-size: 920px;
+
+  --gc-nav-bar-mb: 20px;
+
+  --gradient-btn-size: 46px;
+
+
+  /* --gc-stage-h: 320px; */
+  --gc-stage-h: min(calc(100dvh - var(--gcSliderStageTopOffset) - var(--gcNavBarHeight) - var(--gc-arc-height) + 40px), 320px);
+
+  /* gaps */
+  --gc-gap-main-side: 60px;
+  --gc-gap-side-side: 40px;
+
+  /* main */
+  --gc-layout-w: min(calc(100vw - 40px), 1000px);
+  --gc-main-w: 490px;
+  --gc-main-h: calc(var(--gc-stage-h) - 30px);
+  --gc-main-radius: 24px;
+
+  /* side cards */
+  --gc-side-size: clamp(75px, calc(var(--gc-main-w) * 0.3), 150px);
+  --gc-side-2-size: calc(var(--gc-side-size) - 40px);
+
+  /* full slider width */
+  --gc-slider-w: calc(
+    var(--gc-side-2-size) + 
+    var(--gc-gap-side-side) +
+    var(--gc-side-size) +
+    var(--gc-gap-main-side) +
+    var(--gc-main-w) +
+    var(--gc-gap-main-side) +
+    var(--gc-side-size) +
+    var(--gc-gap-side-side) +
+    var(--gc-side-2-size)
+  );
+
+  /* offsets inside slider */
+  --gc-left-2-offset-left: 0;
+
+  --gc-left-offset-left: calc(var(--gc-side-2-size) + var(--gc-gap-side-side));
+
+  --gc-main-offset-left: calc(var(--gc-left-offset-left) + var(--gc-side-size) + var(--gc-gap-main-side));
+
+
+  --gc-right-offset-left: calc(
+    var(--gc-main-offset-left) + var(--gc-main-w) + var(--gc-gap-main-side)
+  );
+
+  --gc-right-2-offset-left: calc(
+    var(--gc-right-offset-left) + var(--gc-side-size) + var(--gc-gap-side-side)
+  );
+
+  /* nav */
+  --gc-nav-size: calc(var(--gc-main-h) * 0.12);
+  --gc-nav-icon-size: calc(var(--gc-nav-size) * 0.3);
+  --gc-nav-prev-left: var(--gc-main-offset-left);
+  --gc-nav-next-left: calc(var(--gc-main-offset-left) + var(--gc-main-w));
+
+  /* dots: synced with main card */
+  --gc-dots-max-width: calc(var(--gc-main-w) * 0.5);
+  --gc-dots-margin-left: calc(var(--gc-main-offset-left) + (var(--gc-main-w) - var(--gc-dots-max-width)) / 2) ;
+  --gc-dots-margin-top: 18px;
+  --gc-dots-gap: 4px;
+}
+
+
+@media (max-width: 1235px) {
+
+  :root {
+  --gc-gap-side-side: 0px;
+  --gc-side-2-size: 0px;
+  }
+
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --gc-circle-size: min(100dvw, 500px);
+    --gc-main-w: min(calc(100dvw - 16px * 2), 328px);
+  }
+}
+
+
+@media (max-width: 1300px) {
+  :root {
+    --gc-stage-h: 280px;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --gc-sidebar-width: 0px;
+  }
+}
+@media (max-width: 1024px) {
+  :root {
+    /* --gc-content-area-height: calc(100dvh - var(--gcContentAreaTopOffset) - var(--gcNavBarHeight) - var(--headerNavHeight)); */
+    --gc-content-area-height: auto;
+  }
+}
+@media (max-width: 720px) {
+  :root {
+
+    --gc-stage-h: 230px;
+
+    --gc-main-radius: 18px;
+
+    --gc-side-2-size: 0px;
+    --gc-gap-side-side: 0px; 
+    --gc-right-2-offset-left: 0px;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --gradient-btn-size: 40px;
+  }
+}
+
+@media (max-width: 460px) {
+  :root {
+    /* --gc-main-w: calc(100% - var(--gc-nav-size)); */
+    --gc-side-size: 0px;
+  } 
+}

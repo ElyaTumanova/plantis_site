@@ -49,7 +49,13 @@ function plnt_search_ajax_action_callback (){
       }
       ?>
         </div>
-        <input class="search-result__btn button" type="submit" form ="searchform" value="Посмотреть все" />
+      <button
+        class="search-result__btn button--green-l button"
+        type="submit"
+        form="searchform"
+      >
+        Посмотреть все
+      </button>
       <?php
     } else {
       ?>
@@ -90,7 +96,7 @@ function render_search_result($product) {
   $reg_html   = ($regular !== '' && $regular !== null) ? wc_price((float) $regular) : '';
   $sale_html  = ($sale !== '' && $sale !== null) ? wc_price((float) $sale) : '';
   ?>
-  <div class="search-result__item">
+  <div class="search-result__item product">
     <a href="<?php echo esc_url($url); ?>"
        class="search-result__link"
        target="_blank" rel="noopener noreferrer">
@@ -100,19 +106,23 @@ function render_search_result($product) {
            alt="<?php echo esc_attr($title); ?>">
 
       <div class="search-result__info">
-        <div class="search-result__row">
+        <div class="search-result__row search-result__row--title">
           <span class="search-result__title"><?php echo esc_html($title); ?></span>
           <?php plnt_check_stock_status(); ?>
         </div>
 
         <div class="search-result__row search-result__row_price">
-          <?php if ($sale_html && $reg_html): ?>
-            <span class="search-result__reg-price"><?php echo wp_kses_post($reg_html); ?></span>
-            <span class="search-result__price"><?php echo wp_kses_post($sale_html); ?></span>
-          <?php else: ?>
-            <span class="search-result__price"><?php echo wp_kses_post($price_html); ?></span>
-          <?php endif; ?>
+          <div class="product__price-wrap">
+            <?php 
+              woocommerce_template_single_price();
+              plnt_sale_badge(); 
+            ?>
+           </div>
         </div>
+      </div>
+
+      <div class="search-result__addtocart">
+        <?php woocommerce_template_loop_add_to_cart(); ?>
       </div>
     </a>
   </div>

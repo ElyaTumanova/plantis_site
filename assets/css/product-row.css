@@ -1,0 +1,120 @@
+.products.in-row .product {
+  display: grid;
+  grid-template-columns: 31% 1fr 200px;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas: 
+  'image title price'
+  'image tags price'
+  'image attrs btns';
+  column-gap: 20px;
+  row-gap: 6px;
+  padding: 4px;
+}
+
+.products.in-row .product__content-wrap {
+  display: contents;
+}
+
+/* в коризину */
+.products.in-row .product_type_simple {
+  --icon-gap: 12px;
+}
+.products.in-row .product__add-to-cart-wrap {
+  grid-template-columns: 1fr;
+  padding: 0px;
+  width: 100%;
+  padding-inline: 20px;
+  padding-bottom: 16px;
+}
+
+.products.in-row .add_to_cart_button, 
+.products.in-row .product_type_simple {
+  --btn-pad-inline: 25px;
+  font-size: 16px;
+  width: 100%;
+
+}
+
+/* цена */
+
+.products.in-row .product__price-wrap {
+  margin-top: 16px;
+  margin-inline: 20px;
+  position: relative;
+}
+
+.products.in-row .product__price-wrap:has(del) {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  row-gap: 4px;
+  column-gap: 8px;
+  grid-template-areas: 
+  'price price'
+  'oldprice badge';
+}
+
+.products.in-row .product__price-wrap:has(del) .sale_badge {
+  grid-area: badge;
+  width: fit-content;
+}
+
+.products.in-row .product .price:has(del) {
+  display: contents;
+}
+
+.products.in-row .product .price {
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.products.in-row .product__content-wrap:after {
+  content: '';
+  position: absolute;
+  right: 200px;
+  height: 100%;
+  width: 1px;
+  background: #EBEDED;
+}
+
+/* заголовок */
+
+.products.in-row .woocommerce-loop-product__title {
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 16px;
+}
+
+/* product-card-attributes */
+
+.catalog__product-attributes .product-card-attributes {
+  font-size: 14px;
+  display: grid;
+  gap: 12px;
+}
+
+.catalog__product-attributes .product-card-attributes li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 4px;
+}
+
+.product-card-attributes__name {
+  color: var(--gray-l-color);
+}
+
+.catalog__product-attributes .product-card-attributes__line {
+  border-bottom: 1px dashed #EBEDED;
+}
+.catalog__product-attributes .product-card-attributes__value {
+  text-align: end;
+}
+
+/* wish */
+
+.products.in-row .yith-wcwl-add-to-wishlist {
+  width: fit-content;
+  left: 31% !important;
+  right: auto;
+  transform: translate(calc(-100% - 8px), 0);
+}

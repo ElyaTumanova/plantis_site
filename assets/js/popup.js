@@ -23,7 +23,7 @@ class Popup {
     this.openBtns = document.querySelectorAll(`.${this.popupName}-open-btn`)
     this.body = document.querySelector('body')
     this.overlay = this.popup.querySelector('.popup-overlay')
-    this.closeBtn = this.popup.querySelector('.popup__close')
+    this.closeBtn = this.popup.querySelectorAll('.popup__close')
 
     return true
   }
@@ -46,11 +46,16 @@ class Popup {
   }
 
   addOpenListeners () {
-    this.openBtns.forEach(button => {
-      button.addEventListener ('click', (evt)=>{
-        this.openPopup()
-      })
-    })
+    document.addEventListener('click', (evt) => {
+      const button = evt.target.closest(`.${this.popupName}-open-btn`);
+
+      if (!button) {
+        return;
+      }
+
+      evt.preventDefault();
+      this.openPopup();
+    });
   }
 
   addCloseListeners() {
@@ -58,8 +63,10 @@ class Popup {
       this.closePopup()
     })
 
-    this.closeBtn.addEventListener('click', (evt) => {
-      this.closePopup()
+    this.closeBtn.forEach((button) => {
+      button.addEventListener('click', () => {
+        this.closePopup()
+      })
     })
 
     document.addEventListener('keydown', (e) =>{
@@ -216,10 +223,47 @@ class LoginPopup extends Popup {
 
 }
 
-class MenuMobPopup extends Popup {
+class ModalPopup extends Popup {
   constructor (popupName) {
     super (popupName)
-    this.menu = null
+    this.modal = null
+  }
+
+  initDom() {
+    const ok = super.initDom()
+    if (!ok) return false
+    this.modal = this.popup.querySelector('.modal-mob')
+    return true
+  }
+
+  getModalBodyOffset() {
+    const modalBody = this.modal.querySelector('.modal-mob__body')
+    const offset = modalBody.getBoundingClientRect().top
+
+    this.modal.style.setProperty('--burgerMenuBodyTopOffset', `${offset}px`)
+  }
+
+  openPopup() {
+    super.openPopup()
+    this.modal.classList.add ('modal-mob--active')
+    this.modal.scrollTo(0, 0)
+    this.getModalBodyOffset()
+  }
+
+  closePopup() {
+    super.closePopup()
+    this.modal.classList.remove ('modal-mob--active')
+    this.modal.scrollTo(0, 0)
+  }
+
+  addAllListeners() {
+    super.addAllListeners()
+  }
+} 
+
+class MenuMobPopup extends ModalPopup {
+  constructor (popupName) {
+    super (popupName)
     this.menuOpenBtn = null
     this.catalogOpenBtn = null
     this.menuWrap = null
@@ -231,42 +275,33 @@ class MenuMobPopup extends Popup {
   initDom() {
     const ok = super.initDom()
     if (!ok) return false
-    this.menu = this.popup.querySelector('.modal-mob')
     this.menuOpenBtn = this.popup.querySelector('.burger-menu__nav_menu')
     this.catalogOpenBtn = this.popup.querySelector('.burger-menu__nav_catalog')
-    this.menuWrap = this.popup.querySelector('.burger-menu__wrap')
-    this.catalowWrap = this.popup.querySelector('.catalog-menu__wrap')
+    this.menuWrap = this.popup.querySelector('.burger-menu__body-inner--menu')
+    this.catalowWrap = this.popup.querySelector('.burger-menu__body-inner--catalog')
     this.mobHeaderCatalogOpenBtn = document.querySelector('.header__catalog_mob')
     this.mobMenuLoginPopupOpenBtn = document.querySelector('.burger-menu__account')
     return true
   }
 
-  openPopup() {
-    super.openPopup()
-    this.menu.classList.add ('modal-mob_active')
-    this.menu.scrollTo(0, 0)
-    this.openMenu()
-  }
-
-  closePopup() {
-    super.closePopup()
-    this.menu.classList.remove ('modal-mob_active')
-    this.menu.scrollTo(0, 0)
-  }
+    openPopup() {
+      super.openPopup()
+      this.openMenu()
+    }
 
   openMenu() {
-    this.menuWrap.classList.add('burger-menu__wrap_open');
+    this.menuWrap.classList.add('is-open');
     this.menuOpenBtn.classList.add('burger-menu__nav-btn_active');
     
-    this.catalowWrap.classList.remove('catalog-menu__wrap_open');
+    this.catalowWrap.classList.remove('is-open');
     this.catalogOpenBtn.classList.remove('burger-menu__nav-btn_active');
   }
 
   openCatalog() {
-    this.menuWrap.classList.remove('burger-menu__wrap_open');
+    this.menuWrap.classList.remove('is-open');
     this.menuOpenBtn.classList.remove('burger-menu__nav-btn_active');
     
-    this.catalowWrap.classList.add('catalog-menu__wrap_open');
+    this.catalowWrap.classList.add('is-open');
     this.catalogOpenBtn.classList.add('burger-menu__nav-btn_active');
   }
 
@@ -357,18 +392,60 @@ class NoticePopup extends Popup {
   }
 }
 
+class SearchPopup extends Popup {
+  constructor (popupName) {
+    super (popupName)
+    this.searchInput = null
+  }
+
+  focusSearch() {
+    this.searchInput.focus();
+    
+    // Для iOS - создаем временное событие touch
+    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        const clickEvent = document.createEvent('MouseEvents');
+        clickEvent.initEvent('touchstart', true, true);
+        this.searchInput.dispatchEvent(clickEvent);
+    }
+    
+    // Дополнительный трюк для некоторых Android устройств
+    setTimeout(() => {
+        this.searchInput.setSelectionRange(0, 0);
+    }, 100);
+  }
+
+  openPopup() {
+    super.openPopup()
+    this.focusSearch()
+  }
+
+  initDom() {
+    const ok = super.initDom()
+    if (!ok) return false
+    this.searchInput = document.querySelector('.search-popup .search-field');
+    return true
+  }
+}
+
+
+
 function initPopups() {
   const popup = new CF7Popup ('page-popup')
   const loginPoup = new LoginPopup ('login-popup')
   const menuMobPopup = new MenuMobPopup ('burger-menu')
   const sideCartPopup = new SideCartPopup ('side-cart-popup')
   // const noticePopup = new NoticePopup ('notice-popup')
+  const searchPopup = new SearchPopup ('search-popup')
+
+  const filtersPopup = new ModalPopup('catalog-filters')
 
   popup.init()
   loginPoup.init()
   // registrPoup.init()
   menuMobPopup.init()
   sideCartPopup.init()
+  filtersPopup.init()
+  searchPopup.init()
   // noticePopup.init()
   //debugPopup(noticePopup)
 

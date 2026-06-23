@@ -37,13 +37,13 @@ window.addEventListener('resize', () => {
 --------------------------------------------------------------*/
 let headerDiv = document.querySelector('.header__desktop');
 let headerHeight= headerDiv.offsetHeight;
-document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
+// document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
 // слушаем событие resize
-window.addEventListener('resize', () => {
-    // получаем текущее значение высоты
-    let headerHeight= headerDiv.offsetHeight;
-    document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
-});
+// window.addEventListener('resize', () => {
+//     // получаем текущее значение высоты
+//     let headerHeight= headerDiv.offsetHeight;
+//     document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
+// });
 
 let headerMainDiv = document.querySelector('.header__main');
 let searchDiv = document.querySelector('.search__wrap');
@@ -62,19 +62,19 @@ window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset;
     if(scrollTop >0){
         // headerMainDiv.setAttribute('style', `margin-top:${marginTopOffset}px`);
-        document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
-        headerMainDiv.classList.add('scrollhidden');
-        searchDiv.classList.add('scrollhidden');
-        searchResultDiv.classList.add('scrollhidden');
+        // document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
+        // headerMainDiv.classList.add('scrollhidden');
+        // searchDiv.classList.add('scrollhidden');
+        // searchResultDiv.classList.add('scrollhidden');
     } else{
         // headerMainDiv.removeAttribute('style');
-        document.documentElement.style.setProperty('--marginTopOffset', 0);
-        headerMainDiv.classList.remove('scrollhidden');
-        searchDiv.classList.remove('scrollhidden');
-        searchResultDiv.classList.remove('scrollhidden');
+        // document.documentElement.style.setProperty('--marginTopOffset', 0);
+        // headerMainDiv.classList.remove('scrollhidden');
+        // searchDiv.classList.remove('scrollhidden');
+        // searchResultDiv.classList.remove('scrollhidden');
     }
 });
-document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
+// document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
 
 //это не обязательно
 // window.addEventListener('resize', () => {
@@ -106,71 +106,28 @@ if(catalogFilterWrap) {
 /*--------------------------------------------------------------
 # Filters for mobile in catalog
 --------------------------------------------------------------*/
-const filtersMob = document.querySelector('.catalog__sidebar');
-const filtersMobOpen = document.querySelector('.catalog__mob-filter-btn ');
-const filtersMobClose = document.querySelector('.catalog-sidebar__close');
-const contentArea = document.querySelector('.content-area');
+// const filtersMob = document.querySelector('.catalog__sidebar');
+// const filtersMobOpen = document.querySelector('.catalog__mob-filter-btn ');
+// const filtersMobClose = document.querySelector('.catalog-sidebar__close');
+// const contentArea = document.querySelector('.content-area');
 
-if (filtersMob) {
-    filtersMobOpen.addEventListener ("click", (evt)=>{
-        toggle_mob_filters ();
-    });
-    filtersMobClose.addEventListener ("click", (evt)=>{
-        toggle_mob_filters ();
-    });
+// if (filtersMob) {
+//     filtersMobOpen.addEventListener ("click", (evt)=>{
+//         toggle_mob_filters ();
+//     });
+//     filtersMobClose.addEventListener ("click", (evt)=>{
+//         toggle_mob_filters ();
+//     });
     
-    function toggle_mob_filters () {
-        filtersMob.classList.toggle ('modal-mob_active');
-        body.classList.toggle ('fix-body');
-        contentArea.classList.toggle ('no-padding');
-    };
-}
+//     function toggle_mob_filters () {
+//         filtersMob.classList.toggle ('modal-mob--active');
+//         body.classList.toggle ('fix-body');
+//         contentArea.classList.toggle ('no-padding');
+//     };
+// }
 
 
-/*--------------------------------------------------------------
-# Buttons to change grid columns in catalog
---------------------------------------------------------------*/
 
-const gridButton2 = document.getElementById('catalog__grid-button-2');
-const gridButton3 = document.getElementById('catalog__grid-button-3');
-const catalogWrap = document.querySelector('.catalog__products-wrap');
-if(catalogWrap) {
-    const catalogGrid = catalogWrap.querySelector('.products');
-    // console.log(catalogGrid.classList)
-    if(catalogGrid.classList.contains('columns-2')) {
-      gridButton3.disabled = false;
-      gridButton2.disabled = true;
-    } 
-    if(catalogGrid.classList.contains('columns-3')) {
-      gridButton2.disabled = false;
-      gridButton3.disabled = true;
-    } 
-    if (gridButton2) {
-        gridButton2.addEventListener ("click", (evt)=>{
-            make_2_grid_columns();
-        });
-
-    }
-    if (gridButton3) {
-        gridButton3.addEventListener ("click", (evt)=>{
-            make_3_grid_columns();
-        });
-    }
-    
-    function make_2_grid_columns () {
-        catalogGrid.classList.add ('columns-2');
-        catalogGrid.classList.remove ('columns-3');
-        gridButton2.disabled = true;
-        gridButton3.disabled = false;
-    };
-    
-    function make_3_grid_columns () {
-        catalogGrid.classList.remove ('columns-2');
-        catalogGrid.classList.add ('columns-3');
-        gridButton2.disabled = false;
-        gridButton3.disabled = true;
-    };
-};
 
 //функция прокрутки до начала страницы - добавлена в checkout.min.js
 function scrollToTop () {

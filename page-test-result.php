@@ -6,7 +6,7 @@ foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
 
 ?>
 
-<div class="result-test content-area">
+<main class="result-test container">
     <?php 
     $gen = get_query_var('gen');
     $plant = get_query_var('plant');
@@ -46,10 +46,22 @@ foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
             </div>
             <div class = "test__result-upsells">
                 <?php
-                get_template_part('template-parts/products/products-plants-test',null,
-                array( // массив с параметрами
-                    'cat_slug' => $plant,
-                ));
+                // get_template_part('template-parts/products/products-plants-test',null,
+                // array( // массив с параметрами
+                //     'cat_slug' => $plant,
+                // ));
+
+                get_template_part('template-parts/products/product-slider', null, [
+                  'queryArgs' => [
+                    'tax_query' => [
+                      [
+                          'taxonomy' => 'product_cat',
+                          'field'    => 'slug',
+                          'terms'    => $plant,
+                      ],
+                    ],
+                  ],
+                ]);
             ?>
             </div>
         </div>
@@ -66,6 +78,6 @@ foreach ($plant_types as $it) { $plants_by_slug[$it['slug']] = $it; };
         </div>
     <?php endif;?>
 
-</div>
+    </main>
 
 <?php get_footer();?>

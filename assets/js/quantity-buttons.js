@@ -1,5 +1,5 @@
 jQuery(function ($){
-    $( 'body' ).on( 'click', 'div.plus, div.minus', function() {
+  $( 'body' ).on( 'click', 'div.plus, div.minus', function() {
 
 	var qty = $(this).parent().find( 'input' ),
 	val = parseInt( qty.val() ),
@@ -33,31 +33,34 @@ jQuery(function ($){
 
 	// меняем стили кнопок на активные/неактивные
 	if (newVal === max) {
-		$(".plus").attr('style','opacity:50%; cursor: default;');
+		$(".plus").attr('style','opacity:50%; cursor: default; pointer-events: none;');
 	} else {
-		$(".plus").attr('style','opacity:100%; cursor: pointer;');
+		$(".plus").attr('style','opacity:100%; cursor: pointer; pointer-events: auto;');
 	}
 
 	if (newVal === min) {
-		$(".minus").attr('style','opacity:50%; cursor: default;');
+		$(".minus").attr('style','opacity:50%; cursor: default; pointer-events: none;');
 	} else {
-		$(".minus").attr('style','opacity:100%; cursor: pointer;');
+		$(".minus").attr('style','opacity:100%; cursor: pointer; pointer-events: auto;');
 	}
 
 	qty.parent().parent().find(".add_to_cart_button").attr( 'data-quantity', newVal ); //устанавливаем новое значение для атрибута кнопки добавить в корзину. div "quantity" должен находится в одном родительском узле с кнопкой в корзирну
 
 	//уведомление для backorder
 	var stock = parseInt(qty.parent().parent().find(".product_type_simple").attr( 'data-stock-quantity'));
-	var backorderInfo = qty.parent().parent().parent().parent().parent().parent().find(".backorder-info");
-	var backorderInfoMob = qty.parent().parent().parent().parent().find(".backorder-info");
+	var backorderInfo = qty.parent().parent().parent().parent().parent().parent().find(".card__banner--backorder-info");
 	if (stock >0) {
 		if (newVal == (stock + 1)) {
-			backorderInfo.addClass('backorder-info_active');
-			backorderInfoMob.addClass('backorder-info_active');
+			backorderInfo.addClass('is-active');
+      setTimeout(() => {
+        backorderInfo[0]?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'end',
+        })
+      }, 300)
 		} 
 		if (newVal <= (stock)) {
-			backorderInfo.removeClass('backorder-info_active');
-			backorderInfoMob.removeClass('backorder-info_active');
+			backorderInfo.removeClass('is-active');
 		}
 	} 
 
@@ -72,7 +75,6 @@ jQuery(function ($){
 		$( '[name="update_cart"]' ).attr("data-product_category",$productData.product_category);
 		$( '[name="update_cart"]' ).attr("data-product_price",$productData.product_price);
 	}
-
 	
 	$( '[name="update_cart"]' ).removeAttr("disabled").trigger( 'click' ); // автообновление корзины без перезагрузки 
 });
@@ -87,13 +89,13 @@ jQuery(function ($){
 
 	//уведомление для backorder
 	var stock = parseInt($(this).parent().parent().find(".product_type_simple").attr( 'data-stock-quantity'));
-	var backorderInfo = $(this).parent().parent().parent().parent().find(".backorder-info");
+	var backorderInfo = $(this).parent().parent().parent().parent().find(".card__banner--backorder-info");
 	if (stock >0) {
 		if (qty == (stock + 1)) {
-			backorderInfo.addClass('backorder-info_active');
+			backorderInfo.addClass('is-active');
 		} 
 		if (qty <= (stock)) {
-			backorderInfo.removeClass('backorder-info_active');
+			backorderInfo.removeClass('is-active');
 		} 
 	}
 
