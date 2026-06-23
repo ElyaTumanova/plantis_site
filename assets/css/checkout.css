@@ -299,6 +299,14 @@
     flex-direction: column;
     gap: 12px;
   }
+
+  #shipping_method li label{
+   width: 100%;
+  }
+  #shipping_method li label span{
+   margin-left: auto;
+  }
+
   /* создание в label псевдоэлемента  before со следующими стилями */
   #shipping_method input[type=radio]+label::before {
     content: '';
@@ -470,6 +478,7 @@
   border-radius: 100px;
   background-color: var(--white-color);
   color: var(--gray-color);
+  flex-shrink: 0;
 }
 
 /* кнопка оформления заказа*/
