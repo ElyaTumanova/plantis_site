@@ -222,3 +222,17 @@ function plnt_product_cat_catalog_image_admin_scripts( $hook ) {
 		});
 	" );
 }
+
+
+
+// Front image для меток
+add_action( 'product_tag_add_form_fields', 'plnt_add_product_cat_front_image_field' );
+add_action( 'product_tag_edit_form_fields', 'plnt_edit_product_cat_front_image_field' );
+add_action( 'created_product_tag', 'plnt_save_product_cat_front_image' );
+add_action( 'edited_product_tag', 'plnt_save_product_cat_front_image' );
+
+// Catalog image для меток
+add_action( 'product_tag_add_form_fields', 'plnt_add_product_cat_catalog_image_field' );
+add_action( 'product_tag_edit_form_fields', 'plnt_edit_product_cat_catalog_image_field' );
+add_action( 'created_product_tag', 'plnt_save_product_cat_catalog_image' );
+add_action( 'edited_product_tag', 'plnt_save_product_cat_catalog_image' );
