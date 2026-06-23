@@ -39,37 +39,37 @@ if ( ! defined( 'ABSPATH' ) ) {
   //header catalog
 
   function plnt_catalog_header_image() {
-  if ( is_page( 'search-results' ) ) {
-    return;
-  }
+    if ( is_page( 'search-results' ) ) {
+      return;
+    }
 
-  $fallback_url = 'https://plantis-shop.ru/wp-content/uploads/2025/07/zamiokulkas-zamielistnyj-12-45-3-800x800.webp';
+    $fallback_url = 'https://plantis-shop.ru/wp-content/uploads/2025/07/zamiokulkas-zamielistnyj-12-45-3-800x800.webp';
 
-  $image_url = $fallback_url;
+    $image_url = $fallback_url;
 
-  if ( is_tax() || is_product_category() || is_product_tag() ) {
-    $term = get_queried_object();
+    if ( is_tax() || is_product_category() || is_product_tag() ) {
+      $term = get_queried_object();
 
-    if ( $term && ! is_wp_error( $term ) && ! empty( $term->term_id ) ) {
-      $image_id = get_term_meta( $term->term_id, 'thumbnail_id', true );
+      if ( $term && ! is_wp_error( $term ) && ! empty( $term->term_id ) ) {
+        $image_id = get_term_meta( $term->term_id, 'catalog_image', true );
 
-      if ( $image_id ) {
-        $image_url = wp_get_attachment_image_url( $image_id, 'full' );
+        if ( $image_id ) {
+          $image_url = wp_get_attachment_image_url( $image_id, 'full' );
+        }
       }
     }
-  }
 
-  ?>
-    <div class="catalog__header-image-wrap darken">
-      <img
-        class="catalog__header-image"
-        src="<?php echo esc_url( $image_url ); ?>"
-        alt=""
-        width="800"
-        height="800">
-    </div>
-  <?php
-}
+    ?>
+      <div class="catalog__header-image-wrap darken">
+        <img
+          class="catalog__header-image"
+          src="<?php echo esc_url( $image_url ); ?>"
+          alt=""
+          width="800"
+          height="800">
+      </div>
+    <?php
+  }
 
   // // переключатель сетки
   function plnt_catalog_grid_columns () {
