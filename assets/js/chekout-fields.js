@@ -96,4 +96,20 @@ document.addEventListener('DOMContentLoaded', function () {
   const target = document.querySelector('form.checkout') || document.body;
   const mo = new MutationObserver(function(){ initMask(); });
   mo.observe(target, { childList: true, subtree: true });
+
+
+  const tgNikNameRow = document.querySelector('#additional_tg_nik_field');
+  const tgNikNameInput = document.querySelector('#additional_tg_nik');
+  document.querySelectorAll('input[name="dontcallme"]').forEach(input => {
+    input.addEventListener('change', (event) => {
+      if (event.target.checked && event.target.value === 'Написать в Telegram') {
+        tgNikNameRow.classList.remove('d-none')
+        
+      } else {
+        tgNikNameInput.value = ''
+        tgNikNameRow.classList.add('d-none')
+      }
+    })
+  })
 });
+

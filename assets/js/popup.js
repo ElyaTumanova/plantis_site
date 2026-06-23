@@ -97,6 +97,10 @@ class CF7Popup extends Popup {
     this.preloader = null
     this.container = null
     this.serviceNameInput = null
+    this.contactMethods = null
+    this.tgNikWrap = null
+    this.tgNikInput = null
+
   }
 
   initDom() {
@@ -106,12 +110,22 @@ class CF7Popup extends Popup {
     this.preloader = this.popup.querySelector('.preloader')
     this.container = this.popup.querySelector('.popup__container')
     this.serviceNameInput = this.popup.querySelector('.ukhod-popup-service-name')
+    this.contactMethods = this.popup.querySelectorAll('#dontcallme input[type="radio"]');
+    if(this.contactMethods.length > 0) {
+      this.tgNikWrap = this.popup.querySelector('.tg-nik-wrap')
+      this.tgNikInput = this.tgNikWrap.querySelector('input')
+    }
+    
     return true
   }
 
   cleanForm () {
     if(this.contactForm !=null) {
       this.contactForm.reset()
+    }
+    if (this.tgNikWrap) {
+      this.tgNikWrap.classList.add('d-none')
+      this.tgNikInput.value = ""
     }
   }
 
@@ -148,10 +162,32 @@ class CF7Popup extends Popup {
     }
   }
 
+  addContactMethodsListeners() {
+    if(this.contactMethods) {
+      this.contactMethods.forEach(input => {
+        input.addEventListener('change', () => {
+          if (input.checked && input.value === 'Написать в Telegram') {
+            console.log('Telegram выбран');
+            if (this.tgNikWrap) {
+              this.tgNikWrap.classList.remove('d-none')
+            }
+          } else {
+            console.log('не Telegram выбран');
+            if (this.tgNikWrap) {
+              this.tgNikWrap.classList.add('d-none')
+              this.tgNikInput.value = ""
+            }
+          } 
+        });
+      });
+    }
+  }
+
   addAllListeners() {
     super.addAllListeners()
     this.addContactFormListeners()
     this.addServiceNameListeners()
+    this.addContactMethodsListeners()
   }
 }
 

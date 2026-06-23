@@ -1060,7 +1060,6 @@ function plnt_inn_field_in_email( $rows, $order ) {
     );
 
     return $rows;
-
 }
 
 /*--------------------------------------------------------------
@@ -1144,6 +1143,94 @@ function plnt_inn_field_in_email( $rows, $order ) {
         update_post_meta( $order_id, '_billing_address_2', $address );
     }
 
+  /*--------------------------------------------------------------
+  # Telegram nikname field
+  --------------------------------------------------------------*/
+
+  add_filter( 'woocommerce_checkout_fields', 'plnt_add_tg_nik_field_to_checkout' );
+
+  function plnt_add_tg_nik_field_to_checkout( $fields ) {
+      $fields['billing']['additional_tg_nik'] = array(
+          'type'        => 'text',
+          'label'       => '',
+          'placeholder' => 'Ник в Telegram',
+          'required'    => false,
+          'class'       => array( 'form-row tg-nik d-none' )
+      );
+
+      return $fields;
+  }
+
+  // // сохряняем новое поле в заказе
+
+  add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_tg_nik_fields', 25 );
+
+  function plnt_save_tg_nik_fields( $order_id ){
+
+      if( ! empty( $_POST[ 'additional_tg_nik' ] ) ) {
+          update_post_meta( $order_id, 'additional_tg_nik', sanitize_text_field( $_POST[ 'additional_tg_nik' ] ) );
+      }
+  }
+
+  // // добавляем поле в админку
+
+  add_action( 'woocommerce_admin_order_data_after_billing_address', 'plnt_print_tg_nik_field_value', 40 );
+
+  function plnt_print_tg_nik_field_value( $order ){
+
+      $method = get_post_meta( $order->get_id(), 'additional_tg_nik', true );
+
+      echo '<div class="address">
+          <p' . ( ! $method ? ' class="none_set"' : '' ) . '>
+              <strong>Ник в Telegram</strong>
+              ' . ( $method ? $method : 'Не указан.' ) . '
+          </p>
+      </div>
+      <div class="edit_address">';
+      woocommerce_wp_text_input( array(
+          'id' => 'additional_tg_nik',
+          'label' => 'Ник в TG',
+          'wrapper_class' => 'form-field-wide',
+      ) );
+      echo '</div>';
+  }
+
+
+  // // добавляем новые поля в письма
+
+  add_filter( 'woocommerce_get_order_item_totals', 'plnt_tg_nik_field_in_email', 20, 2 );
+      
+  function plnt_tg_nik_field_in_email( $rows, $order ) {
+    $tg_nik = get_post_meta( $order->get_id(), 'additional_tg_nik', true );
+
+    if ( ! empty( $tg_nik ) ) {
+      $rows['additional_tg_nik'] = array(
+          'label' => 'Ник в Telegram',
+          'value' => esc_html( $tg_nik ),
+      );
+    }
+
+    return $rows;
+  }
+
+  // // добавляем в контактные данные в заказ
+  // add_filter(
+  //   'woocommerce_order_get_formatted_billing_address',
+  //   'plnt_add_tg_nik_to_formatted_address',
+  //   10,
+  //   3
+  // );
+
+  // function plnt_add_tg_nik_to_formatted_address( $address, $raw_address, $order ) {
+
+  //   $tg_nik = $order->get_meta( 'additional_tg_nik' );
+
+  //   if ( ! empty( $tg_nik ) ) {
+  //       $address .= '<br><strong>Telegram:</strong> ' . esc_html( $tg_nik );
+  //   }
+
+  //   return $address;
+  // }
 /*--------------------------------------------------------------
 # T Bank
 --------------------------------------------------------------*/
