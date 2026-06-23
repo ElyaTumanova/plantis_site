@@ -43,9 +43,9 @@ if ( ! defined( 'ABSPATH' ) ) {
       return;
     }
 
-    $fallback_url = 'https://plantis-shop.ru/wp-content/uploads/2025/07/zamiokulkas-zamielistnyj-12-45-3-800x800.webp';
+    // $fallback_url = 'https://plantis-shop.ru/wp-content/uploads/2025/07/zamiokulkas-zamielistnyj-12-45-3-800x800.webp';
 
-    $image_url = $fallback_url;
+    // $image_url = $fallback_url;
 
     if ( is_tax() || is_product_category() || is_product_tag() ) {
       $term = get_queried_object();
@@ -55,20 +55,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         if ( $image_id ) {
           $image_url = wp_get_attachment_image_url( $image_id, 'full' );
+          if($image_url) {
+            ?>
+              <div class="catalog__header-image-wrap darken">
+                <img
+                  class="catalog__header-image"
+                  src="<?php echo esc_url( $image_url ); ?>"
+                  alt=""
+                  width="800"
+                  height="800">
+              </div>
+            <?php
+          }
         }
       }
     }
-
-    ?>
-      <div class="catalog__header-image-wrap darken">
-        <img
-          class="catalog__header-image"
-          src="<?php echo esc_url( $image_url ); ?>"
-          alt=""
-          width="800"
-          height="800">
-      </div>
-    <?php
+    
   }
 
   // // переключатель сетки
