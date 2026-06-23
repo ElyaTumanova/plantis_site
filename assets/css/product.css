@@ -335,10 +335,12 @@
   display: none;
 }
 
-.in-row .catalog__product-attributes {
-  display: block;
-  grid-area: attrs;
-  align-self: flex-end;
-  margin-top: 20px;
-  margin-bottom: 16px;
+@media (min-width: 1280px) {
+  .in-row .catalog__product-attributes {
+    display: block;
+    grid-area: attrs;
+    align-self: flex-end;
+    margin-top: 20px;
+    margin-bottom: 16px;
+  }
 }
