@@ -92,22 +92,7 @@
 	padding-right: 10px;
 }
 
-.woocommerce-shipping-methods li {
-    display: flex;
-    column-gap: 7px;
-    /* min-height: 20px; */
-    align-items: center;
-    flex-basis: 200px;
-    flex-shrink: 1;
-    flex-grow: 1;
-    /* min-height: 100%; */
-    padding: 12px 20px;
-    border-radius: var(--br-xxs);
-  }
-  
-.woocommerce-shipping-methods li:has(input[type=radio]:checked) {
-  background-color: var(--white-color);
-}
+
 
 .woocommerce-input-wrapper {
 		display: flex;
@@ -305,44 +290,120 @@
 .woocommerce-shipping-totals {
   margin-top: var(--section-mb);
 }
-#shipping_method {
-  display: flex;
-  gap: 4px;
-  border-radius: var(--br-s);
-  background-color: var(--green-l-color);
-  /* min-height: 85px; */
-  overflow-x: auto;
-  font-size: 16px;
-  padding: 4px;
-  margin-top: clamp(1.25rem, 1.1543rem + 0.4255vw, 1.5rem);
-  margin-bottom: 8px;
+
+
+@media (max-width: 767.98px) {
+  #shipping_method {
+    margin-block: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  /* создание в label псевдоэлемента  before со следующими стилями */
+  #shipping_method input[type=radio]+label::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #adb5bd;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+  }
+
+  /* стили при наведении курсора на радио */
+  #shipping_method input[type=radio]:not(:disabled):not(:checked)+label:hover::before {
+    border-color: #b3d7ff;
+  }
+
+  /* стили для активной радиокнопки (при нажатии на неё) */
+  #shipping_method input[type=radio]:not(:disabled):active+label::before {
+    background-color: #b3d7ff;
+    border-color: #b3d7ff;
+  }
+
+  /* стили для радиокнопки, находящейся в фокусе */
+  #shipping_method input[type=radio]:focus+label::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+
+  /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+  #shipping_method input[type=radio]:focus:not(:checked)+label::before {
+    border-color: #80bdff;
+  }
+
+  /* стили для радиокнопки, находящейся в состоянии checked */
+  #shipping_method input[type=radio]:checked+label::before {
+    border-color: var(--accent-color);
+    background-color: var(--accent-color);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+  }
+
+  /* стили для радиокнопки, находящейся в состоянии disabled */
+  #shipping_method input[type=radio]:disabled+label::before {
+    background-color: #e9ecef;
+  }
 }
 
-#shipping_method label::before {
-    display: none;
+@media (min-width: 768px) {
+  #shipping_method {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    border-radius: var(--br-s);
+    background-color: var(--green-l-color);
+    /* min-height: 85px; */
+    overflow-x: auto;
+    font-size: 16px;
+    padding: 4px;
+    margin-top: clamp(1.25rem, 1.1543rem + 0.4255vw, 1.5rem);
+    margin-bottom: 8px;
+  }
+
+  #shipping_method label::before {
+      display: none;
+  }
+
+  #shipping_method li label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    /* align-items: flex-start; */
+    height: 100%;
+    text-align: center;
+  }
+
+  #shipping_method li span {
+      font-size: 11px;
+      line-height: 13px;
+      font-weight: 500;
+      color: var(--accent-color);
+      padding-top: 5px;
+  }
+
+  .woocommerce-shipping-methods li {
+    display: flex;
+    column-gap: 7px;
+    /* min-height: 20px; */
+    align-items: center;
+    flex-basis: 200px;
+    flex-shrink: 1;
+    flex-grow: 1;
+    /* min-height: 100%; */
+    padding: 12px 20px;
+    border-radius: var(--br-xxs);
+  }
+  
+.woocommerce-shipping-methods li:has(input[type=radio]:checked) {
+  background-color: var(--white-color);
+}
 }
 
-#shipping_method li label {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;
-  /* align-items: flex-start; */
-  height: 100%;
-  text-align: center;
-}
-
-#shipping_method li span {
-    font-size: 11px;
-    line-height: 13px;
-    font-weight: 500;
-    color: var(--accent-color);
-    padding-top: 5px;
-}
-
-/* #shipping_method input[type=radio]:checked + label span {
-    color: var(--black-color);
-} */
 
 .woocommerce-shipping-methods li span {
     display: none;
@@ -350,7 +411,6 @@
 .woocommerce-shipping-backorder li span {
     display: inline;
 }
-
 
 /* DELETE */
 /*прячем цену для почты россии*/
