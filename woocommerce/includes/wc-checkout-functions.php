@@ -1155,7 +1155,8 @@ function plnt_inn_field_in_email( $rows, $order ) {
           'label'       => '',
           'placeholder' => 'Ник в Telegram',
           'required'    => false,
-          'class'       => array( 'form-row tg-nik d-none' )
+          'class'       => array( 'form-row tg-nik d-none' ),
+          'priority'    => 40,
       );
 
       return $fields;

@@ -79,7 +79,7 @@
         target="_blank"
       >
         <img class="front__services-image"
-        src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-services-ozel.jpg' ); ?>" 
+        src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-services-ozel.webp' ); ?>" 
         alt="Озеленение офисов"
         width="644"
         height="400"
@@ -96,7 +96,7 @@
         target="_blank"
       >
         <img class="front__services-image"
-        src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-services-ukhod.jpg' ); ?>" 
+        src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-services-ukhod.webp' ); ?>" 
         alt="Профессиональный уход за растениями"
         width="644"
         height="400"
@@ -126,11 +126,11 @@
         <picture class="front__promo-image">
           <source
             media="(max-width: 500px)"
-            srcset="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-promo-giftcard-mob.jpg' ); ?>"
+            srcset="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-promo-giftcard-mob.webp' ); ?>"
           >
 
           <img
-            src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-promo-giftcard.jpg' ); ?>"
+            src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-promo-giftcard.webp' ); ?>"
             alt="Подарочный сертификат"
             width="644"
             height="260"
@@ -145,11 +145,11 @@
         <picture class="front__promo-image">
           <source
             media="(max-width: 500px)"
-            srcset="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-promo-test-mob.jpg' ); ?>"
+            srcset="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-promo-test-mob.webp' ); ?>"
           >
 
           <img
-            src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-promo-test.jpg' ); ?>"
+            src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-promo-test.webp' ); ?>"
             alt="Подарочный сертификат"
             width="644"
             height="260"
@@ -164,7 +164,7 @@
     <div class="front__about">
       <img 
       class="front__about-image"
-      src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-about.jpg' ); ?>" 
+      src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-about.webp' ); ?>" 
       alt="Plantis.shop — интернет-магазин комнатных растений с доставкой"
       width="1300"
       height="720">
