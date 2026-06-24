@@ -5,6 +5,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /* Хелперы */
 
+function plnt_get_all_published_product_cat_ids() {
+	global $wpdb;
+
+	static $cat_ids = null;
+
+	if ( null !== $cat_ids ) {
+		return $cat_ids;
+	}
+
+	$sql = "
+		SELECT DISTINCT tt.term_id
+		FROM {$wpdb->term_relationships} tr
+		INNER JOIN {$wpdb->posts} p
+			ON p.ID = tr.object_id
+		INNER JOIN {$wpdb->term_taxonomy} tt
+			ON tt.term_taxonomy_id = tr.term_taxonomy_id
+		WHERE tt.taxonomy = 'product_cat'
+		AND p.post_type = 'product'
+		AND p.post_status = 'publish'
+	";
+
+	$cat_ids = [];
+
+	foreach ( $wpdb->get_col( $sql ) as $term_id ) {
+		$cat_ids[ (int) $term_id ] = true;
+	}
+
+	return $cat_ids;
+}
+
 function plnt_clean_menu_name( $name, $words_to_remove = [] ) {
 	if ( empty( $words_to_remove ) || ! is_array( $words_to_remove ) ) {
 		return trim( $name );
@@ -85,6 +115,22 @@ function get_primary_submenu($args) {
 
   $term = get_term_by( 'slug', $args['slug'], $args['taxonomy'] );    
   $terms = plnt_get_child_terms($term, $args['taxonomy']); 
+
+  if ( empty( $terms ) ) {
+    return;
+  }
+
+  if ( 'product_cat' === $args['taxonomy'] ) {
+    $published_cat_ids = plnt_get_all_published_product_cat_ids();
+
+    $terms = array_filter( $terms, function( $term ) use ( $published_cat_ids ) {
+      return ! empty( $published_cat_ids[ (int) $term->term_id ] );
+    } );
+
+    if ( empty( $terms ) ) {
+      return;
+    }
+  }
   ?>
   <div class="cats-sub-menu">
     <?php 
