@@ -206,22 +206,21 @@ function plnt_add_class_loop_item_swiper($clasess){
 add_action('woocommerce_after_shop_loop_item', 'plnt_get_catalog_schema_data', 40);
 
 function plnt_get_catalog_schema_data() {
-    if ( is_shop() || is_product_category() || is_product_tag() || is_tax() ) {
-        global $product;
-        if ($product->is_virtual()) {
-          return;
-        }
-        global $plants_cat_id;
-        $parentCatId = check_category ($product);
-        $product_id = $product->get_id();
-        $price = number_format($product->get_price(), 2, '.', '');
-        ?>
-            <meta itemprop="description" content="<?php echo strip_tags($product->get_description())?>">
-            <link itemprop="url" href="<?php echo get_permalink( $product_id )?>">
-            <meta itemprop="price" content="<?php echo $price?>">
-            <meta itemprop="priceCurrency" content="RUB">
-        <?php
-        $availability = plnt_get_availability_text($product);
-        ?><link itemprop="availability" href="http://schema.org/<?php echo $availability?>"><?php
+  if ( is_shop() || is_product_category() || is_product_tag() || is_tax() ) {
+    global $product;
+    if ($product->is_virtual()) {
+      return;
     }
+    // global $plants_cat_id;
+    // $parentCatId = check_category ($product);
+    $product_id = $product->get_id();
+    $price = number_format($product->get_price(), 2, '.', '');
+    $availability = plnt_get_availability_text($product);
+    ?>
+      <meta itemprop="description" content="<?php echo strip_tags($product->get_description())?>">
+      <link itemprop="url" href="<?php echo get_permalink( $product_id )?>">
+      <meta itemprop="price" content="<?php echo $price?>">
+      <meta itemprop="priceCurrency" content="RUB">
+      <link itemprop="availability" href="http://schema.org/<?php echo $availability?>"><?php
+  }
 }

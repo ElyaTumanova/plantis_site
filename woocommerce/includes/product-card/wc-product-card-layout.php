@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 //определяем переменные
-add_action('woocommerce_before_single_product','plnt_set_constants',5);
+// add_action('woocommerce_before_single_product','plnt_set_constants',5);
 function plnt_set_constants() {
   global $product;
   global $parentCatId;
@@ -63,10 +63,11 @@ add_action('woocommerce_after_single_product_summary','plnt_card_ukhod_loop',60)
 
 function plnt_card_grid_start () {
     global $product;
-    global $parentCatId;
-    global $isTreez;
-    global $isLechuza;
     global $plants_cat_id;
+
+    $parentCatId = plnt_get_parent_cat_id();
+    $isTreez     = plnt_is_treez_product();
+    $isLechuza   = plnt_is_lechuza_product();
     
     $schemaOrgAttr = 'itemscope itemtype="https://schema.org/Product"';
 
@@ -261,8 +262,10 @@ function plnt_output_actions_wrap() {
 
   function for_dev() {
       global $product;
-      global $parentCatId;
-      global $isTreez;
+
+      $parentCatId = plnt_get_parent_cat_id();
+      $isTreez     = plnt_is_treez_product();
+
       $idCats = $product->get_category_ids();
       //print_r($idCats);
       echo 'stock qty '.$product->get_stock_quantity();
@@ -337,21 +340,22 @@ function plnt_output_actions_wrap() {
     global $product;
     if(is_product()) {
       $quantity =  $product->get_stock_quantity();
+      $backorders_allowed = $product->backorders_allowed()
       ?><div class="add-to-cart-wrap"> <?php
       /* quantity */
-      if ($quantity > 1 && !$product->backorders_allowed()) {
+      if ($quantity > 1 && !$backorders_allowed) {
         woocommerce_quantity_input(array(
             'min_value' => 1,
             'max_value'    => $quantity,    // почему-то пришлось передавать заново, проверить на PLANTIS #TODO
         ),);           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
       }
-      if ($product->backorders_allowed() || !$product->get_manage_stock()) {
+      if ($backorders_allowed || !$product->get_manage_stock()) {
         woocommerce_quantity_input(array(
             'min_value' => 1,
         ),);           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
       }
       /* buttons */
-      if ($product->get_stock_status() ==='instock' || $product->backorders_allowed()) {
+      if ($product->get_stock_status() ==='instock' || $backorders_allowed) {
         plnt_buy_one_click_btn();
         woocommerce_template_loop_add_to_cart(); //заменили обычную не яакс кнопку на аякс кнопку из каталога
       } else {
@@ -411,8 +415,10 @@ function plnt_output_actions_wrap() {
 */
 /* Характиристики */
   function plnt_characteristics_wrap() {
-    global $parentCatId;
     global $plants_cat_id;
+
+    $parentCatId = plnt_get_parent_cat_id();
+
     if( $parentCatId === $plants_cat_id ) {
         $title = 'Уход и характеристики';
     } else {
@@ -429,9 +435,9 @@ function plnt_output_actions_wrap() {
 */
 /* Баннер пересадка */
   function plnt_peresadka_banner() {
-    global $product;
-    $isTreez     = check_is_treez( $product );
-    $isLechuza   = check_is_lechuza( $product );
+    $isTreez   = plnt_is_treez_product();
+    $isLechuza = plnt_is_lechuza_product();
+
     if ( ! $isTreez && ! $isLechuza ) : ?>
       <div class="card__banner card__banner--peresadka" style="background-image:linear-gradient(270deg, rgba(2, 21, 14, 0.24) 0%, rgba(2, 21, 14, 0.48) 100%), url(<?php echo esc_url( get_template_directory_uri() . '/images/frontend/peresadka-bg.jpg' ); ?>)">
         <p>
@@ -497,28 +503,31 @@ function plnt_output_actions_wrap() {
     echo('</section>');
   }
 
-  function plnt_upsells_heading () {
-      global $product;
-      global $plants_cat_id;
-      global $gorshki_cat_id;
-      global $treez_cat_id;
-      global $lechuza_cat_id;
-      global $parentCatId;
-      switch ($parentCatId) {
-          case $plants_cat_id:				//category ID for plants
-              return 'Этому растению подойдет';
-              break;
-          case $gorshki_cat_id || $lechuza_cat_id:				//category ID for gorshki
-              return 'Другие цвета';
-              break;
-          case $treez_cat_id:				//category ID for treez
-              return 'Другие цвета и сопутствующие';
-              break;
-          default:
-              return 'Вас также заитересует';
-              break;
-      }    
-  };
+  function plnt_upsells_heading() {
+
+    global $plants_cat_id;
+    global $gorshki_cat_id;
+    global $treez_cat_id;
+    global $lechuza_cat_id;
+
+    $parentCatId = plnt_get_parent_cat_id();
+
+    switch ( $parentCatId ) {
+
+      case $plants_cat_id:
+          return 'Этому растению подойдет';
+
+      case $gorshki_cat_id:
+      case $lechuza_cat_id:
+          return 'Другие цвета';
+
+      case $treez_cat_id:
+          return 'Другие цвета и сопутствующие';
+
+      default:
+          return 'Вас также заинтересует';
+    }
+  }
           
 
  function plnt_get_cross_sells() {

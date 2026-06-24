@@ -6,17 +6,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 /*--------------------------------------------------------------
 #Init
 --------------------------------------------------------------*/
-add_action('woocommerce_before_shop_loop','plnt_set_constants',5);
+// add_action('woocommerce_before_shop_loop','plnt_set_constants_catalog',5);
 
+// function plnt_set_constants_catalog() {
 
-// // заголовок каталога 
+//     $GLOBALS['plnt_catalog_type'] = false;
+//     $GLOBALS['plnt_catalog_context'] = array(
+//         'title' => '',
+//         'desc'  => '',
+//         'term'  => false,
+//     );
 
-// меняем название заголовка для shop
-//add_filter( "get_the_archive_title", "plnt_change_my_title" );
-function plnt_change_my_title( $title ){
-    if ( $title == "Магазин" ) $title = "Все товары";
-    return $title;
-}
+//     if ( function_exists( 'plnt_define_catalog_type' ) ) {
+//         $GLOBALS['plnt_catalog_type'] = plnt_define_catalog_type();
+//     }
+
+//     if ( function_exists( 'wc_get_catalog_context' ) ) {
+//         $GLOBALS['plnt_catalog_context'] = wc_get_catalog_context();
+//     }
+// }
 
 // настройки заголовков для страницы каталога с атрибутом цвет #color
 
@@ -83,8 +91,9 @@ function plnt_attribute_seo_title($title) {
     return $title;
 }
 
+
 // добавляем атрибуты schema.org
-add_filter('woocommerce_product_loop_start', 'plnt_get_catalog_list_schema_data',10);
+//add_filter('woocommerce_product_loop_start', 'plnt_get_catalog_list_schema_data',10);
 
 function plnt_get_catalog_list_schema_data ($html) {
     if ( ! (is_shop() || is_product_category() || is_product_tag() || is_tax()) || is_search() ) {
@@ -97,7 +106,7 @@ function plnt_get_catalog_list_schema_data ($html) {
         1
     );
 
-    $ctx = wc_get_catalog_context();
+    $ctx = plnt_get_catalog_context();
 
     $html .= '<meta itemprop="name" content="' . $ctx['title'] . '" />' . "\n"; 
     
@@ -117,8 +126,6 @@ function plnt_get_catalog_list_schema_data ($html) {
 
     return $html;
 };
-
-
 
 
 /*--------------------------------------------------------------
@@ -170,47 +177,38 @@ function order_by_stock_status($posts_clauses) {
 add_filter( 'woocommerce_product_query_meta_query', 'shop_only_instock_products', 10, 2 );
 
 function shop_only_instock_products( $meta_query, $query ) {
-	global $plants_cat_id;
-	global $gorshki_cat_id;
-  global $treez_cat_id;
-  global $plants_treez_cat_id;
-  global $ukhod_cat_id;
-  global $lechuza_cat_id;
   global $avtopoliv_tag_id;
 
-	if( is_shop() || 
-	// is_product_category($gorshki_cat_id) || 
-	// term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) || 
-	is_product_category($treez_cat_id) || 
-	term_is_ancestor_of( $treez_cat_id, get_queried_object_id(), 'product_cat' )|| 
-	is_product_category($plants_treez_cat_id) || 
-	term_is_ancestor_of( $plants_treez_cat_id, get_queried_object_id(), 'product_cat' )||
-	is_product_category($ukhod_cat_id) || 
-	term_is_ancestor_of( $ukhod_cat_id, get_queried_object_id(), 'product_cat' ) ||
-	is_product_category($lechuza_cat_id) || 
-	term_is_ancestor_of( $lechuza_cat_id, get_queried_object_id(), 'product_cat' ) ||
-	is_product_tag ($avtopoliv_tag_id)) { 		//где хотим скрыть товары не в наличии
-		$meta_query[] = array(
-			'key' => '_stock_status',
-			'value' => 'outofstock',
-			'compare' => '!='
-			);
-		return $meta_query;
-	} else if (is_product_category($gorshki_cat_id) || 
-		term_is_ancestor_of( $gorshki_cat_id, get_queried_object_id(), 'product_cat' ) 
-	) {
-		$meta_query = array(
-			array(
-				'key' => '_stock',
-				'type'    => 'numeric',
-				'value' => '0',
-				'compare' => '>'
-			)
-		);
-		return $meta_query;
-	}	else {
-		return $meta_query;
-	}
+  $catalog_type = plnt_get_catalog_type();
+
+  if (
+    is_shop() ||
+    in_array( $catalog_type, array( 'treez', 'plants_treez', 'ukhod', 'lechuza' ), true ) ||
+    is_product_tag( $avtopoliv_tag_id )
+  ) {
+    $meta_query[] = array(
+      'key'     => '_stock_status',
+      'value'   => 'outofstock',
+      'compare' => '!='
+    );
+
+    return $meta_query;
+
+  } elseif ( $catalog_type === 'gorshki' ) {
+
+    $meta_query = array(
+      array(
+        'key'     => '_stock',
+        'type'    => 'numeric',
+        'value'   => '0',
+        'compare' => '>'
+      )
+    );
+
+    return $meta_query;
+  }
+
+  return $meta_query;
 }
 
 // // скрываем Treez Plants из результатов поиска 

@@ -7,17 +7,18 @@ global $product;
 global $plants_cat_id;
 global $plants_treez_cat_id;
 
-$parentCatId = check_category( $product );
+$parentCatId  = plnt_get_parent_cat_id();
+$isTreez      = plnt_is_treez_product();
+$isLechuza    = plnt_is_lechuza_product();
 $stock_qty   = $product->get_stock_quantity();
-$isTreez     = check_is_treez( $product );
-$isLechuza   = check_is_lechuza( $product );
+$stock_status = $product->get_stock_status();
 ?>
 
 <div class="card__banners-wrap">
 
 	<?php if ( $parentCatId === $plants_cat_id ) : ?>
 
-		<?php if ( $product->get_stock_status() === 'instock' ) : ?>
+		<?php if ($stock_status === 'instock' ) : ?>
 			<div class="card__banner card__banner--backorder-info">
 				<span class="card__banner-icon card__banner-icon--stock">
           <?php echo plnt_icon('warning');?>
@@ -58,7 +59,7 @@ $isLechuza   = check_is_lechuza( $product );
 			</div>
 		<?php endif; ?>
 
-		<?php if ( $product->get_stock_status() === 'onbackorder' ) : ?>
+		<?php if ($stock_status === 'onbackorder' ) : ?>
 			<div class="card__banner card__banner--backorder">
 				<span class="card__banner-icon">
           <?php echo plnt_icon('tag');?>
@@ -108,7 +109,7 @@ $isLechuza   = check_is_lechuza( $product );
 		</div>
 	<?php endif; ?>
 
-	<?php if ( $product->get_stock_status() === 'outofstock' ) : ?>
+	<?php if ($stock_status === 'outofstock' ) : ?>
 		<div class="card__banner card__banner--outofstock">
 			<img
 				class="card__banner-image"

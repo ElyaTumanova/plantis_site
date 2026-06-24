@@ -650,7 +650,7 @@
   left: 0;
   right: 0;
   /* width: 100vw; */
-  z-index: 9998;
+  z-index: 9989;
 
   display: none;
 
@@ -712,7 +712,7 @@
   position: fixed;
   top: calc(var(--headerMainHeight) - 2px + var(--actions-pad));
   right: max(calc((100vw - var(--container)) / 2 + var(--container-padding)), var(--container-padding));
-  z-index: 9998;
+  z-index: 9989;
   margin: 0;
   height: var(--actions-image-size);
   align-items: center;

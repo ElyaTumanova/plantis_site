@@ -39,38 +39,40 @@ if ( ! defined( 'ABSPATH' ) ) {
   //header catalog
 
   function plnt_catalog_header_image() {
-    if ( is_page( 'search-results' ) ) {
-      return;
-    }
 
-    // $fallback_url = 'https://plantis-shop.ru/wp-content/uploads/2025/07/zamiokulkas-zamielistnyj-12-45-3-800x800.webp';
-
-    // $image_url = $fallback_url;
-
-    if ( is_tax() || is_product_category() || is_product_tag() ) {
-      $term = get_queried_object();
-
-      if ( $term && ! is_wp_error( $term ) && ! empty( $term->term_id ) ) {
-        $image_id = get_term_meta( $term->term_id, 'catalog_image', true );
-
-        if ( $image_id ) {
-          $image_url = wp_get_attachment_image_url( $image_id, 'full' );
-          if($image_url) {
-            ?>
-              <div class="catalog__header-image-wrap darken">
-                <img
-                  class="catalog__header-image"
-                  src="<?php echo esc_url( $image_url ); ?>"
-                  alt=""
-                  width="800"
-                  height="800">
-              </div>
-            <?php
-          }
-        }
+      if ( is_page( 'search-results' ) || ! is_tax() ) {
+          return;
       }
-    }
-    
+
+      $term_id = get_queried_object_id();
+
+      if ( ! $term_id ) {
+          return;
+      }
+
+      $image_id = get_term_meta( $term_id, 'catalog_image', true );
+
+      if ( ! $image_id ) {
+          return;
+      }
+
+      $image_url = wp_get_attachment_image_url( $image_id, 'full' );
+
+      if ( ! $image_url ) {
+          return;
+      }
+      ?>
+
+      <div class="catalog__header-image-wrap darken">
+          <img
+              class="catalog__header-image"
+              src="<?php echo esc_url( $image_url ); ?>"
+              alt=""
+              width="800"
+              height="800">
+      </div>
+
+      <?php
   }
 
   // // переключатель сетки
@@ -173,9 +175,8 @@ if ( ! defined( 'ABSPATH' ) ) {
             //echo do_shortcode('[br_filter_single filter_id='.$filter_razmer_kashpo_id.']'); // диаметр кашпо Treez //56545 //12017
             echo do_shortcode('[br_filter_single filter_id='.$filter_color_id.']'); // цвет //56532 //6108
             echo do_shortcode('[br_filter_single filter_id='.$filter_forma_id.']'); // форма //56541 //12013
-            if(!(is_product_category($plants_treez_cat_id) || 
-              term_is_ancestor_of( $plants_treez_cat_id, get_queried_object_id(), 'product_cat' ))) {
-                echo do_shortcode('[br_filter_single filter_id='.$filter_materilal_id.']'); // материал //56543 //12015
+            if ( plnt_get_catalog_type() !== 'plants-treez' ) {
+              echo do_shortcode('[br_filter_single filter_id='.$filter_materilal_id.']');
             }
             //echo do_shortcode('[br_filter_single filter_id='.$filter_razmer_id.']'); // размер для растений Treez
             //echo do_shortcode('[br_filter_single filter_id='.$filter_volume_id.']'); // Объем //56544 //12016
@@ -216,7 +217,9 @@ function plnt_get_advantages() {
 function plnt_catalog_filters_main_area() {
 	?>
     <div class = "catalog__mob-filter-wrap"> 
-      <button class="button button--green catalog__mob-filter-btn catalog-filters-open-btn"><span class="icon icon--pre icon--filter">Фильтры</span></button>
+      <button class="button button--green catalog__mob-filter-btn catalog-filters-open-btn">
+        <span class="icon icon--pre icon--filter">Фильтры</span>
+      </button>
     </div>
   <?php 	
 };
