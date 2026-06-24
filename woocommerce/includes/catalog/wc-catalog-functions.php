@@ -92,42 +92,6 @@ function plnt_attribute_seo_title($title) {
 }
 
 
-// добавляем атрибуты schema.org
-//add_filter('woocommerce_product_loop_start', 'plnt_get_catalog_list_schema_data',10);
-
-function plnt_get_catalog_list_schema_data ($html) {
-    if ( ! (is_shop() || is_product_category() || is_product_tag() || is_tax()) || is_search() ) {
-        return $html;
-    }
-    $html = preg_replace(
-        '/<ul\s+class="products([^"]*)"/',
-        '<ul itemscope itemtype="https://schema.org/OfferCatalog" class="products$1"',
-        $html,
-        1
-    );
-
-    $ctx = plnt_get_catalog_context();
-
-    $html .= '<meta itemprop="name" content="' . $ctx['title'] . '" />' . "\n"; 
-    
-    if ( $ctx['desc'] ) {
-        $html .= '<meta itemprop="description" content="' . $ctx['desc'] . '" />' . "\n";
-    } else {
-        $html .= '<meta itemprop="description" content="' . $ctx['title'] . '" />' . "\n";
-    }
-
-    if($ctx['term']) {
-      $thumbnail_id = get_term_meta( $ctx['term']->term_id, 'thumbnail_id', true );
-      $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
-      $html .= '<meta itemprop="image" content="' . $thumbnail_url . '" />' . "\n";
-    } else {
-      $html .= '<meta itemprop="image" content="' . get_template_directory_uri() . '/images/interior.webp" />' . "\n";
-    }
-
-    return $html;
-};
-
-
 /*--------------------------------------------------------------
 #Catalog Functions
 --------------------------------------------------------------*/

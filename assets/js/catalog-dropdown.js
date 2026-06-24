@@ -82,9 +82,15 @@ class CatalogDropdown {
   }
 
   getCatImage(catId) {
-    const imageLink = this.imageLinks?.[`id_${catId}`]
+    const imageLink = this.imageLinks?.[`id_${catId}`];
 
-    this.menuImage.setAttribute('src', imageLink ? imageLink : 'https://plantis-shop.ru/wp-content/themes/plantis_site/images/interior.webp');
+    if (imageLink) {
+      this.menuImage.setAttribute('src', imageLink);
+      this.menuImage.classList.remove('d-none');
+    } else {
+      this.menuImage.removeAttribute('src');
+      this.menuImage.classList.add('d-none');
+    }
   }
 
   openMenu(menu) {
@@ -143,7 +149,7 @@ class CatalogDropdown {
     if(this.imageLinks.length === 0) {this.getCatImagesAjax()}
   }
 
-  closeCatalog() {
+  closeCatalog = () => {
     clearTimeout(this.menuTimeout)
     this.openBtn.classList.remove(this.stateClasses.isOpen)
     this.catalogDropdownHeaderWrap.classList.remove(this.stateClasses.isOpen)
@@ -207,6 +213,7 @@ class CatalogDropdown {
         element.addEventListener('mouseenter', this.onItemHover)
       });
       this.catsOpenList.addEventListener('mouseleave', () => {clearTimeout(this.menuTimeout)})
+      this.catalogDropdown.addEventListener('mouseleave',this.closeCatalog)
     } else {
       this.catsOpen.forEach(element => {
         element.addEventListener('click', this.onCatsOpenClick)
