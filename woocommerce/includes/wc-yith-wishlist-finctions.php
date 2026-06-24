@@ -27,7 +27,11 @@ function get_wishlist_top( $wishlist = null ) {
 	echo '</div>';
 }
 
-function plnt_wishlist_total_count($wishlist) {
+function plnt_wishlist_total_count( $wishlist = null ) {
+	if ( ! plnt_is_valid_wishlist( $wishlist ) ) {
+		return;
+	}
+
 	$total = count( $wishlist->get_items() );
 
 	if ( ! $total ) {
@@ -39,6 +43,10 @@ function plnt_wishlist_total_count($wishlist) {
 	echo '</span>';
 }
 
+function plnt_is_valid_wishlist( $wishlist ) {
+	return $wishlist && is_object( $wishlist ) && method_exists( $wishlist, 'get_items' );
+}
+
 add_action('plnt_wish_after_header','plnt_wish_header_image', 10);
 
 function plnt_wish_header_image() {
@@ -48,10 +56,10 @@ function plnt_wish_header_image() {
       class="catalog__header-image"
       src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/wish-header-img.png' ); ?>" 
       alt=""
-      whidth="800"
+      width="800"
       height="800">
   </div>
-  <?
+  <?php
 }
 
 function plnt_wishlist_share() {
