@@ -125,6 +125,9 @@
 .yith_wcwl_wishlist_footer .yith_wcwl_footer_additional_action {
   float: none !important;
 }
+.yith_wcwl_wishlist_footer .yith_wcwl_footer_additional_action [name="add_all_to_cart"]{
+  display: none;
+}
 
 .wishlist-actions {
   display: none;
