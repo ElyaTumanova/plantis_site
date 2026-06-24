@@ -8,18 +8,23 @@ function plnt_card_wishlist_btn() {
 };
 
 /* wish list layout */
-add_action('plnt_wish_before_shop_loop','get_wishlist_top', 32);
-function get_wishlist_top($wishlist) {
-  $total = count( $wishlist->get_items() );
+add_action( 'plnt_wish_before_shop_loop', 'get_wishlist_top', 32 );
 
-	if ( ! $total ) {
+function get_wishlist_top( $wishlist = null ) {
+	if ( ! $wishlist || ! is_object( $wishlist ) || ! method_exists( $wishlist, 'get_items' ) ) {
 		return;
 	}
 
-  echo ('<div class="catalog__top">');
-  plnt_wishlist_total_count($wishlist);
-  plnt_catalog_grid_columns();
-  echo ('</div>');
+	$items = $wishlist->get_items();
+
+	if ( empty( $items ) ) {
+		return;
+	}
+
+	echo '<div class="catalog__top">';
+	plnt_wishlist_total_count( $wishlist );
+	plnt_catalog_grid_columns();
+	echo '</div>';
 }
 
 function plnt_wishlist_total_count($wishlist) {
