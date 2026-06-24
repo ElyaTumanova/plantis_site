@@ -20,8 +20,8 @@ get_header(); ?>
     $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
     $urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_large');
 
-    $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
-    $late_interval_delivery = carbon_get_theme_option('late_interval_delivery');
+    $expensive_markup_delivery = carbon_get_theme_option('expensive_markup_delivery');
+    $expensive_interval_delivery = carbon_get_theme_option('expensive_interval_delivery');
 
     $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
     $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
@@ -182,8 +182,8 @@ get_header(); ?>
                     <!-- <div class="delivery__dropdown"> -->
                         <ul>
                           <?php foreach ($intervals as $interval): ?>
-                            <li>с <?= str_replace(' - ', ' до ', $interval); ?><?= ($interval == $late_interval_delivery)
-                                ? ' + ' . (int)$late_markup_delivery . ' рублей к стоимости доставки'
+                            <li>с <?= str_replace(' - ', ' до ', $interval); ?><?= ($interval == $expensive_interval_delivery)
+                                ? ' + ' . (int)$expensive_markup_delivery . ' рублей к стоимости доставки'
                                 : '' ?>;</li>
                           <?php endforeach; ?>
                         </ul>
