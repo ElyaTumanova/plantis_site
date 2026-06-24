@@ -30,6 +30,40 @@ $products_classes = 'products columns-' . wc_get_loop_prop( 'columns' );
 
 if ( plnt_get_catalog_type() === 'plants' ) {
   $products_classes = 'products in-row';
+} elseif ( is_product_tag() ) {
+  $term = get_queried_object();
+
+  $allowed_tags = array(
+    // Популярные подборки
+    'napolnye',
+    'novichkam',
+    'pet-friendly',
+    'malenkie-cvety-v-gorshkah',
+    'ampelnye',
+    'ehkzoticheskie-komnatnye-rasteniya',
+    'variegatnye',
+    'bonsay',
+
+    // Повод для подарка
+    'komnatnoe-rastenie-v-podarok-zhenshchine',
+    'komnatnoe-rastenie-v-podarok-muzhchine',
+    'komnatnoe-rastenie-v-podarok-na-yubilej',
+    'komnatnoe-rastenie-v-podarok-nachalniku',
+    'komnatnoe-rastenie-v-podarok-na-1-sentyabrya',
+    'komnatnoe-rastenie-v-podarok-na-den-uchitelya',
+    'komnatnoe-rastenie-v-podarok-na-den-materi',
+    'komnatnoe-rastenie-v-podarok-na-novyj-god',
+    'komnatnoe-rastenie-v-podarok-na-den-svyatogo-valentina',
+    'komnatnoe-rastenie-v-podarok-na-8-marta',
+  );
+
+  if (
+    $term
+    && ! is_wp_error( $term )
+    && in_array( $term->slug, $allowed_tags, true )
+  ) {
+    $products_classes = 'products in-row';
+  }
 }
 
 $ctx = plnt_get_catalog_context();
