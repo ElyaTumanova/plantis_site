@@ -1,64 +1,74 @@
-let filterValuesDefault = ['d22', 'd15', 'd18', 'd26', 'd30', 'd34', 'd37', '20x20', '30x30'];
-let diametrFilter = document.querySelector('.filter_diametr_gorshka');
-let diametrFilterWrap;
-let diametrFilterItems;
-let showMoreBtn;
-let diametrFilterWrapHeight = 150;
-let diametrFilterWrapHeightMax = 354;
+const filterValuesDefault = new Set([
+  'd22',
+  'd15',
+  'd18',
+  'd26',
+  'd30',
+  'd34',
+  'd37',
+  '20x20',
+  '30x30',
+]);
 
+const diametrFilter = document.querySelector('.filter_diametr_gorshka');
+const diametrFilterWrapHeightMax = 354;
 
-function hideFilterItems() {
-    let itemsCount = 0;
-    diametrFilterItems.forEach((item, index, arr) => {
-        let filterValue = item.querySelector('input').value;
-        if (!filterValuesDefault.includes(filterValue)) {
-            item.classList.add('d-none');
-        } else {
-            itemsCount++;
-        }
+if (diametrFilter) {
+  const diametrFilterWrap = diametrFilter.querySelector('.bapf_body');
+  const diametrFilterItems = Array.from(diametrFilter.querySelectorAll('li'));
+
+  if (diametrFilterWrap && diametrFilterItems.length > filterValuesDefault.size) {
+    const showMoreBtn = document.createElement('button');
+
+    showMoreBtn.type = 'button';
+    showMoreBtn.classList.add('filter-show-more-btn');
+    diametrFilter.appendChild(showMoreBtn);
+
+    document.documentElement.style.setProperty(
+      '--diametrFilterWrapHeightMax',
+      `${diametrFilterWrapHeightMax}px`
+    );
+
+    let isExpanded = false;
+
+    const updateFilter = () => {
+      diametrFilterItems.forEach((item) => {
+        const input = item.querySelector('input');
+        const isDefault = input && filterValuesDefault.has(input.value);
+
+        item.classList.toggle('d-none', !isExpanded && !isDefault);
+      });
+
+      diametrFilterWrap.classList.toggle('hidden', !isExpanded);
+
+      requestAnimationFrame(() => {
+        diametrFilterWrap.classList.toggle(
+          'scroll',
+          isExpanded && diametrFilterWrap.scrollHeight > diametrFilterWrapHeightMax
+        );
+
+        document.documentElement.style.setProperty(
+          '--diametrFilterWrapHeight',
+          `${diametrFilterWrap.scrollHeight}px`
+        );
+      });
+
+      showMoreBtn.textContent = isExpanded ? 'Свернуть' : 'Показать все';
+    };
+
+    showMoreBtn.addEventListener('click', () => {
+      isExpanded = !isExpanded;
+      updateFilter();
+
+      if (!isExpanded) {
+        document
+          .querySelector('.catalog__sidebar-filters')
+          ?.scrollIntoView({ behavior: 'smooth' });
+      }
     });
-    diametrFilterWrapHeight = 16 * itemsCount + 10 * (itemsCount - 1);
-    document.documentElement.style.setProperty('--diametrFilterWrapHeight', `${diametrFilterWrapHeight}px`);
 
-    diametrFilterWrap.classList.add('hidden');
-    diametrFilterWrap.classList.remove('scroll');
-    showMoreBtn.addEventListener('click', showAllFilterItems, {once:true});
-    showMoreBtn.textContent = 'Показать все';
-}
-
-function showAllFilterItems() {
-    let itemsCount = 0;
-    diametrFilterItems.forEach((item, index, arr) => {
-        item.classList.remove('d-none');
-        itemsCount++;
-    })
-    diametrFilterWrapHeight = 16 * itemsCount + 10 * (itemsCount - 1);
-    document.documentElement.style.setProperty('--diametrFilterWrapHeight', `${diametrFilterWrapHeight}px`);
-    diametrFilterWrap.classList.remove('hidden');
-    if (diametrFilterWrapHeight > diametrFilterWrapHeightMax) {
-      diametrFilterWrap.classList.add('scroll');
-    }
-
-    showMoreBtn.addEventListener('click', hideFilterItems, {once:true});
-    showMoreBtn.addEventListener('click', (event) => {
-        let sidebar = document.querySelector('.catalog__sidebar-filters');
-        sidebar.scrollIntoView({behavior: "smooth"});
-    }, {once:true});
-    showMoreBtn.textContent = 'Свернуть';
-}
-
-if(diametrFilter) {
-    diametrFilterWrap = diametrFilter.querySelector('.bapf_body');
-    diametrFilterItems = Array.from(diametrFilter.querySelectorAll('li'));
-    document.documentElement.style.setProperty('--diametrFilterWrapHeightMax', `${diametrFilterWrapHeightMax}px`);
-
-    if(diametrFilterItems.length > 9) {
-      showMoreBtn = document.createElement("button");
-      showMoreBtn.classList.add('filter-show-more-btn');
-      diametrFilter.appendChild(showMoreBtn);
-  
-      hideFilterItems();
-    }
+    updateFilter();
+  }
 }
 
 

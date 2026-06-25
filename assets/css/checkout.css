@@ -629,6 +629,10 @@
   width: 100%;
   margin-bottom: 16px;
 }
+.woocommerce-billing-fields__field-wrapper input::placeholder {
+  font-size: 14px;
+  color: var(--gray-l-color);
+}
 
 .woocommerce-billing-fields__field-wrapper label {
   margin-bottom: 8px;
@@ -672,6 +676,10 @@
 
 .woocommerce-additional-fields__field-wrapper textarea {
   width: 100%;
+}
+.woocommerce-additional-fields__field-wrapper textarea::placeholder {
+  font-size: 14px;
+  color: var(--gray-l-color);
 }
 
 

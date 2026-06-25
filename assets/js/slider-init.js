@@ -169,10 +169,12 @@
     }
 
     const thumbsSwiper = new Swiper(thumbsEl, {
-      slidesPerView: 5,
-      spaceBetween: 0,
+      slidesPerView: 'auto',
+      spaceBetween: 4,
+      freeMode: true,
       watchSlidesProgress: true,
       slideToClickedSlide: true,
+      slidesOffsetAfter: 4,
 
       direction: 'horizontal',
 
@@ -180,6 +182,7 @@
         1024: {
           direction: 'vertical',
           slidesPerView: 5,
+          spaceBetween: 8,
         },
       },
     });

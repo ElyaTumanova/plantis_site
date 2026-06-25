@@ -701,6 +701,20 @@ function plnt_get_giftcard_by_code( $code ) {
 }
 
 //Design helpers
+//получаем картиники из ACF
+function plnt_get_giftcard_acf_images() {
+    $images = [];
+
+    if ( have_rows( 'gc-images', 'option' ) ) {
+        while ( have_rows( 'gc-images', 'option' ) ) {
+            the_row();
+
+            $images[ 'image-key' . get_row_index() ] = get_sub_field( 'image' );
+        }
+    }
+
+    return $images;
+}
 //Хелпер для получения массива
 function plnt_get_giftcard_designs_config() {
 	static $config = null;

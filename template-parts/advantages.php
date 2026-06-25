@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   <div class="advantages__wrap">
 		<?php echo plnt_icon( 'box' ); ?>
 		<h3 class="h5 advantages__title">Бережная доставка</h3>
-		<p class="advantages__descr">Осуществляем доставку комнатных растений до двери.</p>
+		<p class="advantages__descr">Осуществляем доставку комнатных растений до двери</p>
 	</div>
 
 	<div class="advantages__wrap">

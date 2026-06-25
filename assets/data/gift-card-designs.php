@@ -71,21 +71,10 @@ return [
         'champagne_peach' => 'radial-gradient(100% 260% at 0% 0%, #F4D9C2 0%, #F8F1EA 100%)',
     ],
 
-    'images' => [
-        'mirt'  => get_template_directory_uri() . '/images/gift-card/covers/gift_main_cover_no_bg_large.png',
-        'leafs'  => get_template_directory_uri() . '/images/gift-card/covers/card_2.png',
-        'boss' => get_template_directory_uri() . '/images/gift-card/covers/card_1.png',
-        'hb' => get_template_directory_uri() . '/images/gift-card/covers/card_3.png',
-        'dushno' => get_template_directory_uri() . '/images/gift-card/covers/card_4.png',
-        'babushka' => get_template_directory_uri() . '/images/gift-card/covers/card_5.png',
-        'monstera' => get_template_directory_uri() . '/images/gift-card/covers/card_6.png',
-        // 'cat' => get_template_directory_uri() . '/images/gift-card/covers/card_7.png',
-        'goose1' => get_template_directory_uri() . '/images/gift-card/covers/card_8.png',
-        // 'goose2' => get_template_directory_uri() . '/images/gift-card/covers/card_9.png',
-    ],
+    'images' => plnt_get_giftcard_acf_images(),
 
     'defaults' => [
         'gradient' => 'sky',
-        'image'    => 'mirt',
+        'image'    => 'image-key1',
     ],
 ];
