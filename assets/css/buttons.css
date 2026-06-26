@@ -55,6 +55,12 @@
   background-color: var(--white-color);
   color: var(--accent-color);
   height: var(--btn-height, 42px);
+  font-size: 16px;
+}
+
+.product-slider-wrap .add_to_cart_button.button--white, 
+.product-slider-wrap .product_type_simple.button--white,
+.product-slider-wrap .button--white  {
   font-size: clamp(0.75rem, 0.6591rem + 0.4545vw, 1rem); /* 16px - 14px */
 }
 

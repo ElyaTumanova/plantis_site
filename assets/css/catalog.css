@@ -439,6 +439,18 @@
 }
 
 
+@media (max-width: 560px) {
+  .catalog__grid .products.columns-2 .product {
+    width: 100%;
+  }
+  .catalog__grid .products.columns-3 .product {
+    width: 100%;
+  }
+  .catalog__grid .products .product {
+    width: 100%;
+  }
+}
+
 /* term-description */
 
 .term-description {
