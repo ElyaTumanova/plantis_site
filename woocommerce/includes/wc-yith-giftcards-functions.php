@@ -394,14 +394,33 @@ function auto_complete_virtual_orders( $order_id ) {
 add_filter( 'woocommerce_order_item_get_formatted_meta_data', 'plnt_hide_giftcard_design_meta_from_customer', 10, 2 );
 
 function plnt_hide_giftcard_design_meta_from_customer( $formatted_meta, $item ) {
-    $screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+    $is_order_edit_screen = false;
 
-    $is_admin_order_screen =
-        is_admin()
-        && $screen
-        && in_array( $screen->id, [ 'shop_order', 'woocommerce_page_wc-orders' ], true );
+    if ( is_admin() ) {
+        $screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
 
-    if ( $is_admin_order_screen ) {
+        if ( $screen && in_array( $screen->id, [ 'shop_order', 'woocommerce_page_wc-orders' ], true ) ) {
+            $is_order_edit_screen = true;
+        }
+
+        if ( ! $is_order_edit_screen && ! empty( $_GET['post'] ) ) {
+            $post_id = absint( $_GET['post'] );
+
+            if ( 'shop_order' === get_post_type( $post_id ) ) {
+                $is_order_edit_screen = true;
+            }
+        }
+
+        if ( ! $is_order_edit_screen && ! empty( $_GET['id'] ) ) {
+            $order_id = absint( $_GET['id'] );
+
+            if ( $order_id && function_exists( 'wc_get_order' ) && wc_get_order( $order_id ) ) {
+                $is_order_edit_screen = true;
+            }
+        }
+    }
+
+    if ( $is_order_edit_screen ) {
         return $formatted_meta;
     }
 
