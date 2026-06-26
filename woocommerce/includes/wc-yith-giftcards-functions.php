@@ -394,7 +394,14 @@ function auto_complete_virtual_orders( $order_id ) {
 add_filter( 'woocommerce_order_item_get_formatted_meta_data', 'plnt_hide_giftcard_design_meta_from_customer', 10, 2 );
 
 function plnt_hide_giftcard_design_meta_from_customer( $formatted_meta, $item ) {
-    if ( is_admin() ) {
+    $screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+
+    $is_admin_order_screen =
+        is_admin()
+        && $screen
+        && in_array( $screen->id, [ 'shop_order', 'woocommerce_page_wc-orders' ], true );
+
+    if ( $is_admin_order_screen ) {
         return $formatted_meta;
     }
 
