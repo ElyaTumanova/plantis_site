@@ -66,11 +66,7 @@
   border-top-right-radius: var(--br);
   border-bottom-right-radius: var(--br);
 }
-@media (max-width:768px) {
-  .catalog__header-image-wrap {
-    /* right: var(--pad) */
-  }
-}
+
 .catalog__header-image {
   max-height: var(--header-img-height);
   width: auto;

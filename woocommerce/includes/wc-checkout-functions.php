@@ -1035,13 +1035,34 @@ function plnt_print_inn_field_value( $order ){
     </div>
     <div class="edit_address">';
     woocommerce_wp_text_input( array(
-        'id' => 'inn',
+        'id' => 'additional_inn',
         'label' => 'ИНН',
+        'value'         => get_post_meta( $order->get_id(), 'additional_inn', true ),
         'wrapper_class' => 'form-field-wide',
     ) );
     echo '</div>';
 }
 
+//сохранение полей из админки
+add_action( 'woocommerce_process_shop_order_meta', 'plnt_save_custom_order_admin_fields', 45, 2 );
+
+function plnt_save_custom_order_admin_fields( $order_id, $post ) {
+    if ( isset( $_POST['additional_inn'] ) ) {
+        update_post_meta(
+            $order_id,
+            'additional_inn',
+            sanitize_text_field( wp_unslash( $_POST['additional_inn'] ) )
+        );
+    }
+
+    if ( isset( $_POST['additional_tg_nik'] ) ) {
+        update_post_meta(
+            $order_id,
+            'additional_tg_nik',
+            sanitize_text_field( wp_unslash( $_POST['additional_tg_nik'] ) )
+        );
+    }
+}
 
 // // добавляем новые поля в письма
 
@@ -1191,6 +1212,7 @@ function plnt_inn_field_in_email( $rows, $order ) {
       woocommerce_wp_text_input( array(
           'id' => 'additional_tg_nik',
           'label' => 'Ник в TG',
+          'value'         => get_post_meta( $order->get_id(), 'additional_tg_nik', true ),
           'wrapper_class' => 'form-field-wide',
       ) );
       echo '</div>';
@@ -1214,24 +1236,6 @@ function plnt_inn_field_in_email( $rows, $order ) {
     return $rows;
   }
 
-  // // добавляем в контактные данные в заказ
-  // add_filter(
-  //   'woocommerce_order_get_formatted_billing_address',
-  //   'plnt_add_tg_nik_to_formatted_address',
-  //   10,
-  //   3
-  // );
-
-  // function plnt_add_tg_nik_to_formatted_address( $address, $raw_address, $order ) {
-
-  //   $tg_nik = $order->get_meta( 'additional_tg_nik' );
-
-  //   if ( ! empty( $tg_nik ) ) {
-  //       $address .= '<br><strong>Telegram:</strong> ' . esc_html( $tg_nik );
-  //   }
-
-  //   return $address;
-  // }
 /*--------------------------------------------------------------
 # T Bank
 --------------------------------------------------------------*/
