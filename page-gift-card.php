@@ -17,29 +17,52 @@ $gcnum = strtoupper($clean);
 $gift_card_id = 0;
 $gift_card    = [];
 
-$giftcard_designs = plnt_get_giftcard_designs_config();
+// $giftcard_designs = plnt_get_giftcard_designs_config();
 
 
-$gradients = $giftcard_designs['gradients'] ?? [];
-$backgrounds = $giftcard_designs['backgrounds'] ?? [];
-$images = $giftcard_designs['images'] ?? [];
+// $gradients = $giftcard_designs['gradients'] ?? [];
+// $backgrounds = $giftcard_designs['backgrounds'] ?? [];
+// $images = $giftcard_designs['images'] ?? [];
 
 
 $gift_card_id = (int) plnt_get_giftcard_by_code( $gcnum );
 if ( $gift_card_id > 0 ) {
   
   $gift_card = (array) get_post_meta( $gift_card_id );
-  $gift_card_design = unserialize($gift_card['_ywgc_design'][0]);
 
-  $gradient_key = ! empty( $gift_card_design['_plnt_giftcard_gradient'] )
-  ? sanitize_key( $gift_card_design['_plnt_giftcard_gradient'] )
-  : plnt_get_giftcard_default_gradient();
+  $gift_card_design = [];
 
-  $image_key = ! empty( $gift_card_design['_plnt_giftcard_image'] )
-  ? sanitize_key( $gift_card_design['_plnt_giftcard_image'] )
-  : plnt_get_giftcard_default_image();
+  if ( ! empty( $gift_card['_ywgc_design'][0] ) ) {
+      $maybe_design = maybe_unserialize( $gift_card['_ywgc_design'][0] );
 
-  $background_css = plnt_get_giftcard_background_css( $gradient_key, $image_key );
+      if ( is_array( $maybe_design ) ) {
+          $gift_card_design = $maybe_design;
+      }
+  }
+
+  $gradient_css = '';
+
+  if ( ! empty( $gift_card_design['_plnt_giftcard_gradient_css'] ) ) {
+      $gradient_css = plnt_sanitize_giftcard_gradient_css(
+          $gift_card_design['_plnt_giftcard_gradient_css']
+      );
+  }
+
+  if ( empty( $gradient_css ) ) {
+      $gradient_css = plnt_get_giftcard_fallback_gradient_css();
+  }
+
+  $image_url = '';
+
+  if ( ! empty( $gift_card_design['_plnt_giftcard_image_url'] ) ) {
+      $image_url = esc_url_raw(
+          $gift_card_design['_plnt_giftcard_image_url']
+      );
+  }
+
+  if ( empty( $image_url ) ) {
+      $image_url = plnt_get_giftcard_fallback_image_url();
+  }
 }
 
 //for dev
@@ -118,22 +141,20 @@ if ( $gift_card_id > 0 ) {
               <div
                 class="gift-certificate"
                 style="
-                  background-image: <?php echo esc_attr( $gradients[ $gradient_key ] ?? '' ); ?>;
+                  background-image: <?php echo esc_attr( $gradient_css ); ?>;
                   background-size: cover, cover;
                   background-position: center, center;
                   background-repeat: no-repeat, no-repeat;
                 "
               >
               
-                  <?php if ( ! empty( $images[ $image_key ] ) ) : ?>
+                  <?php if ( ! empty( $image_url ) ) : ?>
                     <img
                       class="gift-certificate__image"
-                      src="<?php echo esc_url( $images[ $image_key ] ); ?>"
-                      alt="<?php echo esc_attr( $image_key ); ?>"
+                      src="<?php echo esc_url( $image_url ); ?>"
+                      alt=""
                     >
                   <?php endif; ?>
-            
-
      
                   <div class="gift-certificate__amount">
                     <?php echo esc_html( $gift_card['_ywgc_balance_total'][0] ?? '' ); ?><span>₽</span>

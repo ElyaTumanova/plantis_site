@@ -213,10 +213,10 @@ function plnt_get_gift_card_localize_data() {
 		'gradients'   => $config['gradients'] ?? array(),
 		'images'      => $config['images'] ?? array(),
 		'backgrounds' => $config['backgrounds'] ?? array(),
-		'defaults'    => array(
-			'gradient' => plnt_get_giftcard_default_gradient(),
-			'image'    => plnt_get_giftcard_default_image(),
-		),
+		// 'defaults'    => array(
+		// 	'gradient' => plnt_get_giftcard_default_gradient(),
+		// 	'image'    => plnt_get_giftcard_default_image(),
+		// ),
 	);
 }
 

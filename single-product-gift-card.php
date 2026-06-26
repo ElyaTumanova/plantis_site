@@ -45,9 +45,6 @@ $giftcard_designs = plnt_get_giftcard_designs_config();
 $gradients = $giftcard_designs['gradients'] ?? [];
 $backgrounds = $giftcard_designs['backgrounds'] ?? [];
 $images = $giftcard_designs['images'] ?? [];
-$default_gradient  = plnt_get_giftcard_default_gradient();
-$default_image  = plnt_get_giftcard_default_image();
-$background_css    = plnt_get_giftcard_background_css( $default_gradient, $default_image );
 
 // echo ('<pre>');
 // print_r($giftcard_designs);
@@ -76,7 +73,10 @@ $background_css    = plnt_get_giftcard_background_css( $default_gradient, $defau
           <div class="swiper gc-main-swiper-mobile">
             <div class="swiper-wrapper">
               <?php foreach ($images as $key => $image_url) : ?>
-                <div class="swiper-slide" data-image-key="<?php echo esc_attr($key); ?>">
+                <div class="swiper-slide" 
+                data-image-key="<?php echo esc_attr($key); ?>"
+                data-image-url="<?php echo esc_url( $image_url ); ?>"
+                >
                   <div class="gc-main-slide">
                     <img
                       class="gc-main-slide__image"
@@ -151,13 +151,13 @@ $background_css    = plnt_get_giftcard_background_css( $default_gradient, $defau
         <div class="gift-gradient-arc__track">
           <?php foreach ( $gradients as $gradient_key => $gradient_css ) : ?>
             <?php
-            $is_active = $gradient_key === $default_gradient;
             $label = $gradient_labels[ $gradient_key ] ?? $gradient_key;
             ?>
             <button
               type="button"
-              class="gift-gradient-picker__btn gift-gradient-arc__item<?php echo $is_active ? ' is-active' : ''; ?>"
-              data-gradient-key="<?php echo esc_attr( $gradient_key ); ?>"
+              class="gift-gradient-picker__btn gift-gradient-arc__item"
+              data-gradient-key="<?php echo esc_attr( $gradient_key ); //нужен ли?>" 
+              data-gradient-css="<?php echo esc_attr( $gradient_css ); ?>"
               aria-label="<?php echo esc_attr( $label ); ?>"
               title="<?php echo esc_attr( $label ); ?>"
             >
@@ -170,13 +170,13 @@ $background_css    = plnt_get_giftcard_background_css( $default_gradient, $defau
         <div class="swiper-wrapper">
           <?php foreach ( $gradients as $gradient_key => $gradient_css ) : ?>
             <?php
-            $is_active = $gradient_key === $default_gradient;
             $label = $gradient_labels[ $gradient_key ] ?? $gradient_key;
             ?>
             <button
               type="button"
-              class="swiper-slide gift-gradient-slide<?php echo $is_active ? ' is-active' : ''; ?>"
+              class="swiper-slide gift-gradient-slide"
               data-gradient-key="<?php echo esc_attr( $gradient_key ); ?>"
+              data-gradient-css="<?php echo esc_attr( $gradient_css ); ?>"
               aria-label="<?php echo esc_attr( $label ); ?>"
               title="<?php echo esc_attr( $label ); ?>"
             >
@@ -266,8 +266,9 @@ $background_css    = plnt_get_giftcard_background_css( $default_gradient, $defau
       <form method="post" action="/wp-admin/admin-post.php" class="gift-cards_form" id="gift-card-form" novalidate>
         <input type="hidden" name="action" value="giftcard_pay">
         <input type="hidden" name="giftcard_product_id" value="<?php echo $gcid?>"> <!-- ID товара gift-card -->
-        <input type="hidden" name="giftcard_gradient" id="giftcard_gradient" value="<?php echo esc_attr( $default_gradient ); ?>">
-        <input type="hidden" name="giftcard_image" id="giftcard_image" value="<?php echo esc_attr( $default_image ); ?>">
+        <input type="hidden" name="giftcard_gradient" id="giftcard_gradient" value="">
+        <input type="hidden" name="giftcard_image" id="giftcard_image" value="">
+        <input type="hidden" name="giftcard_gradient_key" id="giftcard_gradient_key" value="">
         <input type="number" name="giftcard_amount" id="giftcard_amount" value="" min="1" required style="display:none;">
         <div class="gift-cards_form-content">
           <div class="gift-cards_form__wrap">

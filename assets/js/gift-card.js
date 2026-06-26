@@ -120,6 +120,7 @@ const gradientButtons = Array.from(document.querySelectorAll('.gift-gradient-arc
 
 const gradientInput = document.getElementById('giftcard_gradient');
 const imageInput = document.getElementById('giftcard_image');
+const gradientKeyInput = document.getElementById('giftcard_gradient_key');
 
 const previews = Array.from(document.querySelectorAll('.js-gift-card-preview'));
 const hintText = document.getElementById('giftCardAmountHintText');
@@ -141,29 +142,52 @@ const hasGiftCardUi =
 const gradients = hasGiftCardUi ? (plntGiftCardData.gradients || {}) : {};
 const images = hasGiftCardUi ? (plntGiftCardData.images || {}) : {};
 const backgrounds = hasGiftCardUi ? (plntGiftCardData.backgrounds || {}) : {};
-const defaults = hasGiftCardUi ? (plntGiftCardData.defaults || {}) : {};
+// const defaults = hasGiftCardUi ? (plntGiftCardData.defaults || {}) : {};
 
-const defaultGradientKey = defaults.gradient || Object.keys(gradients)[0] || 'sky';
-const defaultImageKey = defaults.image || Object.keys(images)[0] || 'none';
+// const defaultGradientKey = defaults.gradient || Object.keys(gradients)[0] || 'sky';
+// const defaultImageKey = defaults.image || Object.keys(images)[0] || 'none';
+
+const firstGradientKey = Object.keys(gradients)[0] || '';
+const firstImageKey = Object.keys(images)[0] || '';
+let activeGradientKey = firstGradientKey;
+let activeImageKey = firstImageKey;
 
 const gcImageKeys = Array.from(
   document.querySelectorAll('.gc-main-swiper .swiper-wrapper > .swiper-slide[data-image-key]')
 ).map((slide) => slide.dataset.imageKey || '');
 
 function getGradientCss(key) {
-  return gradients[key] || gradients[defaultGradientKey] || '';
+  return gradients[key] || '';
 }
 
 function getBackgroundColor(key) {
-  return backgrounds[key] || backgrounds[defaultGradientKey] || '';
+  return backgrounds[key] || '';
 }
 
 function getImageUrlByKey(key) {
   const value = images[key];
+
   if (!value || value === 'none') {
     return '';
   }
+
   return value;
+}
+
+function syncDesignInputs() {
+  if (!hasGiftCardUi) return;
+
+  if (gradientInput) {
+    gradientInput.value = getGradientCss(activeGradientKey);
+  }
+
+  if (gradientKeyInput) {
+    gradientKeyInput.value = activeGradientKey;
+  }
+
+  if (imageInput) {
+    imageInput.value = getImageUrlByKey(activeImageKey);
+  }
 }
 
 function getImageCssByKey(key) {
@@ -178,7 +202,7 @@ function setActiveButton(buttons, dataKey, value) {
 }
 
 function getActiveGradientFromButton() {
-  const gradientKey = gradientInput.value || defaultGradientKey;
+  const gradientKey = activeGradientKey || firstGradientKey;
   const activeButton = gradientButtons.find((btn) => {
     return btn.dataset.gradientKey === gradientKey;
   });
@@ -220,19 +244,19 @@ function getActiveSlideImageUrl() {
 }
 
 function syncImageInputByIndex(index) {
-  if (!imageInput) return;
-
   const imageKey = gcImageKeys[index];
+
   if (!imageKey) return;
 
-  imageInput.value = imageKey;
+  activeImageKey = imageKey;
+  syncDesignInputs();
 }
 
 function renderBackground() {
   if (!hasGiftCardUi) return;
 
-  const gradientKey = gradientInput.value || defaultGradientKey;
-  const imageKey = imageInput.value || defaultImageKey;
+  const gradientKey = activeGradientKey || firstGradientKey;
+  const imageKey = activeImageKey || firstImageKey;
 
   const gradientCss = getGradientCss(gradientKey);
   const imageCss = getImageCssByKey(imageKey);
@@ -252,13 +276,14 @@ function renderBackground() {
   }
 
   applyGradientToUi();
+  syncDesignInputs();
 }
 
 function applyGradientToUi() {
   if (!hasGiftCardUi) return;
 
   const gradientCss = getActiveGradientFromButton();
-  const gradientKey = gradientInput.value || defaultGradientKey;
+  const gradientKey = activeGradientKey || firstGradientKey;
   const backgroundColor = getBackgroundColor(gradientKey);
 
   document.querySelectorAll('.gc-main-slide').forEach((slide) => {
@@ -296,7 +321,6 @@ function createArcController(params) {
   const buttons = params.buttons;
   const dataKey = params.dataKey;
   const input = params.input;
-  const defaultValue = params.defaultValue;
 
   if (params.arcHeight !== undefined) {
     document.documentElement.style.setProperty(
@@ -314,7 +338,7 @@ function createArcController(params) {
   }
 
   let activeIndex = buttons.findIndex((btn) => {
-    return btn.dataset[dataKey] === (input.value || defaultValue);
+    return btn.dataset[dataKey] === activeGradientKey;
   });
 
   if (activeIndex < 0) {
@@ -350,8 +374,8 @@ function createArcController(params) {
     activeIndex = centeredIndex;
     dragOffset = 0;
 
-    input.value = activeButton.dataset[dataKey] || defaultValue;
-    setActiveButton(buttons, dataKey, input.value);
+    activeGradientKey = activeButton.dataset[dataKey] || '';
+    setActiveButton(buttons, dataKey, activeGradientKey);
     renderBackground();
   }
 
@@ -480,8 +504,8 @@ function createArcController(params) {
       activeIndex = mod(activeIndex + targetOffset, buttons.length);
       dragOffset = 0;
 
-      input.value = buttons[activeIndex].dataset[dataKey] || defaultValue;
-      setActiveButton(buttons, dataKey, input.value);
+      activeGradientKey = buttons[activeIndex].dataset[dataKey] || '';
+      setActiveButton(buttons, dataKey, activeGradientKey);
       renderBackground();
       layout();
 
@@ -590,13 +614,9 @@ function createArcController(params) {
 }
 
 if (hasGiftCardUi) {
-  if (!gradientInput.value || !gradients[gradientInput.value]) {
-    gradientInput.value = defaultGradientKey;
-  }
-
-  if (!imageInput.value || (imageInput.value !== 'none' && typeof images[imageInput.value] === 'undefined')) {
-    imageInput.value = defaultImageKey;
-  }
+  activeGradientKey = firstGradientKey;
+  activeImageKey = firstImageKey;
+  syncDesignInputs();
 }
 
 const gradientArc = hasGiftCardUi && !isMobile
@@ -606,7 +626,6 @@ const gradientArc = hasGiftCardUi && !isMobile
 
       dataKey: 'gradientKey',
       input: gradientInput,
-      defaultValue: defaultGradientKey,
 
       radius: 400,          // радиус окружности (размер дуги)
       arcHeight: 140,    // высота дуги
@@ -622,7 +641,7 @@ const gradientArc = hasGiftCardUi && !isMobile
   : { layout: function () {} };
 
 if (hasGiftCardUi && !isMobile) {
-  setActiveButton(gradientButtons, 'gradientKey', gradientInput.value);
+  setActiveButton(gradientButtons, 'gradientKey', activeGradientKey);
   renderBackground();
   gradientArc.layout();
 
@@ -648,7 +667,8 @@ function updateGradientFromSwiper(swiper) {
 
   if (!gradientKey) return;
 
-  gradientInput.value = gradientKey;
+  activeGradientKey = gradientKey;
+  syncDesignInputs();
 
   swiper.slides.forEach((item) => {
     item.classList.remove('is-active');

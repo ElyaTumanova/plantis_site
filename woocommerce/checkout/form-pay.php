@@ -32,31 +32,39 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
           if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
             continue;
           }
+          
+          $gift_card_design = $item->get_meta( '_ywgc_design', true );
 
-          $giftcard_designs = plnt_get_giftcard_designs_config();
-
-          $images    = $giftcard_designs['images'] ?? [];
-          $gradients = $giftcard_designs['gradients'] ?? [];
-
-          $image_key    = $item->get_meta( '_plnt_giftcard_image', true ) ?: plnt_get_giftcard_default_image();
-          $gradient_key = $item->get_meta( '_plnt_giftcard_gradient', true ) ?: plnt_get_giftcard_default_gradient();
-
-          $image_url = get_template_directory_uri() . '/images/gift-card/gc_cover.jpg';
-
-          if ( ! empty( $images[ $image_key ] ) ) {
-              $image_data = $images[ $image_key ];
-
-              $image_url = is_array( $image_data )
-                  ? ( $image_data['url'] ?? $image_data['image'] ?? $image_data['src'] ?? $image_url )
-                  : $image_data;
+          if ( ! is_array( $gift_card_design ) ) {
+              $gift_card_design = [];
           }
 
-          $gradient = $gradients[ $gradient_key ] ?? '';
+          $gradient_css = '';
 
-          $wrapper_style = $gradient
-              ? 'background:' . $gradient . ';'
-              : '';
+          if ( ! empty( $gift_card_design['_plnt_giftcard_gradient_css'] ) ) {
+              $gradient_css = plnt_sanitize_giftcard_gradient_css(
+                  $gift_card_design['_plnt_giftcard_gradient_css']
+              );
+          }
 
+          if ( empty( $gradient_css ) ) {
+              $gradient_css = plnt_get_giftcard_fallback_gradient_css();
+          }
+
+          $image_url = '';
+
+          if ( ! empty( $gift_card_design['_plnt_giftcard_image_url'] ) ) {
+              $image_url = esc_url_raw(
+                  $gift_card_design['_plnt_giftcard_image_url']
+              );
+          }
+
+          if ( empty( $image_url ) ) {
+              $image_url = plnt_get_giftcard_fallback_image_url();
+          }
+
+          $wrapper_style = 'background-image:' . $gradient_css . ';';
+          
           // Сумма по позиции (числом, без форматирования HTML)
           $subtotal = $order->get_line_subtotal( $item, true, false ); // incl. tax, raw
           ?>
@@ -140,7 +148,7 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
 			<?php endif; ?>
 		</tfoot>
 	</table>
-  <?endif;?>
+  <?php endif; ?>
 
 	<?php
 	/**
