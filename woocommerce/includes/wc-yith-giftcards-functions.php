@@ -207,8 +207,7 @@ function handle_giftcard_pay() {
         );
 
         // Design type: default
-        // wc_add_order_item_meta( $item_id, '_ywgc_design_type', $design_type_admin );
-        wc_add_order_item_meta( $item_id, '_ywgc_design_type', 'default' );
+        wc_add_order_item_meta( $item_id, '_ywgc_design_type', $design_type_admin );
 
         // Has custom design: 1
         wc_add_order_item_meta( $item_id, '_ywgc_has_custom_design', 1 );
