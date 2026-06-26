@@ -200,12 +200,14 @@ function handle_giftcard_pay() {
         wc_add_order_item_meta( $item_id, '_ywgc_design', $gc_design );
 
         // Только для отображения в админке
-        wc_add_order_item_meta( $item_id, 'Gift card gradient', $gradient_key );
-        wc_add_order_item_meta( $item_id, 'Gift card image', $image_url );
-
+        $design_type_admin = sprintf(
+            '%s / %s',
+            $gradient_key ?: '-',
+            $image_url ? wp_basename( $image_url ) : '-'
+        );
 
         // Design type: default
-        wc_add_order_item_meta( $item_id, '_ywgc_design_type', 'default' );
+        wc_add_order_item_meta( $item_id, '_ywgc_design_type', $design_type_admin );
 
         // Has custom design: 1
         wc_add_order_item_meta( $item_id, '_ywgc_has_custom_design', 1 );
@@ -388,49 +390,6 @@ function auto_complete_virtual_orders( $order_id ) {
     if ( $all_virtual ) {
         $order->update_status( 'completed' );
     }
-}
-
-// Убиарем поля с дизайнами из письма и Thank you page
-add_filter( 'woocommerce_order_item_get_formatted_meta_data', 'plnt_hide_giftcard_design_meta_from_customer', 10, 2 );
-
-function plnt_hide_giftcard_design_meta_from_customer( $formatted_meta, $item ) {
-    $is_order_edit_screen = false;
-
-    if ( is_admin() ) {
-        $screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
-
-        if ( $screen && in_array( $screen->id, [ 'shop_order', 'woocommerce_page_wc-orders' ], true ) ) {
-            $is_order_edit_screen = true;
-        }
-
-        if ( ! $is_order_edit_screen && ! empty( $_GET['post'] ) ) {
-            $post_id = absint( $_GET['post'] );
-
-            if ( 'shop_order' === get_post_type( $post_id ) ) {
-                $is_order_edit_screen = true;
-            }
-        }
-
-        if ( ! $is_order_edit_screen && ! empty( $_GET['id'] ) ) {
-            $order_id = absint( $_GET['id'] );
-
-            if ( $order_id && function_exists( 'wc_get_order' ) && wc_get_order( $order_id ) ) {
-                $is_order_edit_screen = true;
-            }
-        }
-    }
-
-    if ( $is_order_edit_screen ) {
-        return $formatted_meta;
-    }
-
-    foreach ( $formatted_meta as $meta_id => $meta ) {
-        if ( in_array( $meta->key, [ 'Gift card gradient', 'Gift card image' ], true ) ) {
-            unset( $formatted_meta[ $meta_id ] );
-        }
-    }
-
-    return $formatted_meta;
 }
 
 /*--------------------------------------------------------------
