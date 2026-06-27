@@ -56,7 +56,8 @@ $logo = carbon_get_theme_option('logo');
 
         <div class="header__main-wrap">
           <div class="header__main-search search">
-            <? get_search_form(); ?>
+            <?php plnt_search_form( 'searchform-desktop' ); ?>
+            <? //get_search_form(); ?>
             <div class="search__icon search__icon--search"><?php echo plnt_icon('search') ?></div>
             <div class="search__icon search__icon--close"><?php echo plnt_icon('close') ?></div>
           </div>

@@ -5,6 +5,7 @@ class AjaxSearch {
 
   constructor(root) {
     this.root = root;
+    this.form = root.querySelector('.search-form');
     this.input = root.querySelector('.search-form input[name="s"]');
     this.result = root.querySelector('.search-result');
     this.searchClean = root.querySelector('.search__icon--close');
@@ -13,7 +14,7 @@ class AjaxSearch {
     this.controller = null;
     this.lastQuery = '';
 
-    if (!this.input || !this.result || !window.search_form) return;
+    if (!this.form || !this.input || !this.result || !window.search_form) return;
 
     this.init();
   }
@@ -21,8 +22,10 @@ class AjaxSearch {
   init() {
     this.input.addEventListener('input', this.onInput);
     this.input.addEventListener('keydown', this.onKeydown);
-    this.searchClean.addEventListener('click', this.cleanSearch)
-    this.searchClean.addEventListener('click', this.hideResults)
+    if (this.searchClean) {
+      this.searchClean.addEventListener('click', this.cleanSearch);
+      this.searchClean.addEventListener('click', this.hideResults);
+    }
     document.addEventListener('click', this.onDocumentClick);
    
   }
@@ -83,6 +86,7 @@ class AjaxSearch {
     fd.append('s', query);
     fd.append('action', 'search-ajax');
     fd.append('nonce', window.search_form.nonce);
+    fd.append('form_id', this.form.id);
 
     return fd;
   }

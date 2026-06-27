@@ -88,3 +88,14 @@ function plnt_email_link() {
   <a href="mailto:INFO@PLANTIS.SHOP">INFO@PLANTIS.SHOP</a>
   <?php
 }
+
+
+function plnt_search_form( $id = 'searchform' ) {
+  ?>
+  <form role="search" method="get" id="<?php echo esc_attr( $id ); ?>" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+    <label class="screen-reader-text" for="<?php echo esc_attr( $id ); ?>-s">Найти:</label>
+    <input type="search" class="search-field" placeholder="Поиск…" value="<?php echo get_search_query(); ?>" name="s" id="<?php echo esc_attr( $id ); ?>-s">
+    <input type="hidden" value="product" name="post_type">
+  </form>
+  <?php
+}

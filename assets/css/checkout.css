@@ -688,6 +688,11 @@
   margin-bottom: clamp(1.25rem, 1.1543rem + 0.4255vw, 1.5rem);
 }
 
+.woocommerce-additional-fields__field-wrapper input::placeholder {
+  font-size: 14px;
+  color: var(--gray-l-color);
+}
+
 #billing_country_field {
     display:none; 
 }

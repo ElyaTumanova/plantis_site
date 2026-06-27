@@ -28,6 +28,7 @@ function plnt_search_ajax_action_callback (){
 
     $raw = isset($_POST['s']) ? wp_unslash($_POST['s']) : '';
     $query = trim( sanitize_text_field($raw) );
+    $form_id = sanitize_key( $_POST['form_id'] ?? 'searchform' );
 
     // не ищем мусор
     if (mb_strlen($query) < 3) {
@@ -52,7 +53,7 @@ function plnt_search_ajax_action_callback (){
       <button
         class="search-result__btn button--green-l button"
         type="submit"
-        form="searchform"
+        form="<?php echo esc_attr( $form_id ); ?>"
       >
         Посмотреть все
       </button>
