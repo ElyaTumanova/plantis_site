@@ -935,36 +935,6 @@ body:has(.gc-step-panel.is-active[data-gc-step-panel="3"]) .gc-step-btn--next {
   margin-bottom: 15px;
 } */
 
-.gift-cards_form label {
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
-  left: 16px;
-  font-size: 16px;
-  display: block;
-  /* padding: 0 4px; */
-  background-color: var(--background);
-  transition: all .3s ease;
-  color: var(--gray-l-color);
-}
-
-.gift-input-wrap_labeled {
-  position: relative;
-}
-
-.gift-input-wrap_labeled:has(.focus) label {
-  top: 16px;
-  left: 16px;
-  font-size: 10px;
-  /* color: var(--text); */
-}
-.gift-input-wrap input.focus  {
-  padding-top: 23px;
-  padding-bottom: 9px;
-
-  color: var(--black-color);
-}
 
 .gift-cards_form .field__error, .gc-balance-form .field__error {
   font-size: 14px;

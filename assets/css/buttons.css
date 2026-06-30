@@ -109,25 +109,31 @@
 }
 
 .wpcf7-submit {
-  box-sizing: border-box;
 
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  
-  font-size: 14px;
-  font-weight: 500;
-  text-transform: uppercase;
-  line-height: 1;
-  /* text-align: center; */
-  text-decoration: none;
 
-  border-style: solid;
-  border-width: 1px 1px 1px 1px;
-  border-radius: 30px;
-  
-  padding: 10px;
+  font-size: clamp(0.75rem, 0.6591rem + 0.4545vw, 1rem); /* 16px - 14px */
+  font-weight: 500;
+  white-space: nowrap;
+  color: inherit;
+
+  border: none;
+  border-radius: var(--button-br);
+
+  background: transparent;
+
+  padding-inline: var(--btn-pad-inline, 14px);
+  padding-block: var(--btn-pad-block, 11px);
+  width: fit-content;
+  height: var(--btn-height, fit-content);
+
+  margin: 0;
+
+  background-color: var(--accent-color);
+  color: var(--white-color);
+
 }
 
 .wpcf7 form input[type=submit].is-disabled,

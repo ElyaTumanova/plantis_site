@@ -97,7 +97,7 @@ class PhoneMask {
   }
 
   digitsBody(value) {
-    return value.replace(/\D/g, '');
+    return value.replace(/\D/g, '').replace(/^7/, '');
   }
 
   formatFromDigits(d) {
@@ -376,3 +376,49 @@ loginFormValidation.init()
 
 const regFormValidation = new FormsValidation('.woocommerce-form-register', '.field__errors')
 regFormValidation.init()
+
+
+
+class FormFloatingLabels {
+  constructor(selector) {
+    this.forms = document.querySelectorAll(selector);
+    this.fieldsSelector = 'input, textarea';
+
+    this.forms.forEach((form) => {
+      this.initForm(form);
+    });
+  }
+
+  initForm(form) {
+    const fields = form.querySelectorAll(this.fieldsSelector);
+
+    fields.forEach((field) => {
+      this.update(field);
+
+      field.addEventListener('focus', () => {
+        field.classList.add('focus');
+      });
+
+      field.addEventListener('blur', () => {
+        setTimeout(() => {
+          this.update(field);
+        }, 0);
+      });
+
+      field.addEventListener('input', () => {
+        this.update(field);
+      });
+
+      field.addEventListener('change', () => {
+        this.update(field);
+      });
+    });
+  }
+
+  update(field) {
+    field.classList.toggle('focus', field.value.trim() !== '');
+  }
+}
+
+new FormFloatingLabels('.gift-cards_form');
+new FormFloatingLabels('.wpcf7-form');

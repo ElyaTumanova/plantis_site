@@ -1,39 +1,3 @@
-// form
-const giftForm = document.querySelector('.gift-cards_form');
-
-if (giftForm) {
-  const allInputs = giftForm.querySelectorAll('input');
-  const allTextareas = giftForm.querySelectorAll('textarea');
-
-  allInputs.forEach((el) => {
-    el.addEventListener('focus', function () {
-      el.classList.add('focus');
-    });
-
-    el.addEventListener('blur', function () {
-      if (el.value !== '') {
-        el.classList.add('focus');
-      } else {
-        el.classList.remove('focus');
-      }
-    });
-  });
-
-  allTextareas.forEach((el) => {
-    el.addEventListener('focus', function () {
-      el.classList.add('focus');
-    });
-
-    el.addEventListener('blur', function () {
-      if (el.value !== '') {
-        el.classList.add('focus');
-      } else {
-        el.classList.remove('focus');
-      }
-    });
-  });
-}
-
 // FAQ toggle
 document.querySelectorAll('.faq-item').forEach((item) => {
   const q = item.querySelector('.faq-question');

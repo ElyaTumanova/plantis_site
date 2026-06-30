@@ -68,6 +68,39 @@ textarea {
   padding: 11px 14px;
 }
 
+.input-wrap_labeled {
+  position: relative;
+}
+.input-wrap_labeled input, .input-wrap_labeled textarea{
+  padding: 16px;
+}
+
+.input-wrap_labeled label {
+  pointer-events: none;
+  position: absolute;
+  top: 19px;
+  /* transform: translate(0, -50%); */
+  left: 16px;
+  font-size: 16px;
+  display: block;
+  background-color: var(--background);
+  transition: all .3s ease;
+  color: var(--gray-l-color);
+  z-index: 2;
+}
+
+.input-wrap_labeled:has(.focus) label {
+  top: 16px;
+  left: 16px;
+  font-size: 10px;
+}
+.input-wrap_labeled input.focus,
+.input-wrap_labeled textarea.focus  {
+  padding-top: 23px;
+  padding-bottom: 9px;
+
+  color: var(--black-color);
+}
 
 
 /* Заголовки */

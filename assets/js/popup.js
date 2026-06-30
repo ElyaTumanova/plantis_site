@@ -100,6 +100,8 @@ class CF7Popup extends Popup {
     this.contactMethods = null
     this.tgNikWrap = null
     this.tgNikInput = null
+    this.productNameInput = null
+    this.productNameMirror = null
 
   }
 
@@ -115,6 +117,8 @@ class CF7Popup extends Popup {
       this.tgNikWrap = this.popup.querySelector('.tg-nik-wrap')
       this.tgNikInput = this.tgNikWrap.querySelector('input')
     }
+    this.productNameInput = this.popup.querySelector('input.product-name')
+    this.productNameMirror = this.popup.querySelector('.product-name-mirror')
     
     return true
   }
@@ -124,14 +128,28 @@ class CF7Popup extends Popup {
       this.contactForm.reset()
     }
     if (this.tgNikWrap) {
-      this.tgNikWrap.classList.add('d-none')
+      this.tgNikWrap.classList.add('tg-nik-wrap--hidden')
       this.tgNikInput.value = ""
     }
+  }
+
+  openPopup() {
+    super.openPopup()
+
+    requestAnimationFrame(() => {
+      this.updateProductNameMirror()
+    })
   }
 
   closePopup () {
     super.closePopup()
     this.cleanForm ()
+  }
+
+  updateProductNameMirror() {
+    if (!this.productNameInput || !this.productNameMirror) return
+
+    this.productNameMirror.textContent = this.productNameInput.value || ''
   }
 
   addContactFormListeners() {
@@ -167,14 +185,12 @@ class CF7Popup extends Popup {
       this.contactMethods.forEach(input => {
         input.addEventListener('change', () => {
           if (input.checked && input.value === 'Написать в Telegram') {
-            console.log('Telegram выбран');
             if (this.tgNikWrap) {
-              this.tgNikWrap.classList.remove('d-none')
+              this.tgNikWrap.classList.remove('tg-nik-wrap--hidden')
             }
           } else {
-            console.log('не Telegram выбран');
             if (this.tgNikWrap) {
-              this.tgNikWrap.classList.add('d-none')
+              this.tgNikWrap.classList.add('tg-nik-wrap--hidden')
               this.tgNikInput.value = ""
             }
           } 

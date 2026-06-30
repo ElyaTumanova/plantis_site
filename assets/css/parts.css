@@ -16,7 +16,8 @@
 
 .advantages svg {
   color: var(--accent-color);
-  /* margin-bottom: auto; */
+  width: 32px;
+  height: 32px;
 }
 
 .advantages__wrap {

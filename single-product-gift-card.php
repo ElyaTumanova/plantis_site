@@ -274,7 +274,7 @@ $images = $giftcard_designs['images'] ?? [];
           <div class="gift-cards_form__wrap">
             <h3 class="gift-cards_form--widerow">Куда отправить сертификат</h3>
             <div class="gift-cards_form--row">
-              <div class="gift-buyer-name gift-input-wrap gift-input-wrap_labeled">
+              <div class="gift-buyer-name gift-input-wrap input-wrap_labeled">
                 <label for="gift-buyer-name">Как вас зовут*</label>
                 <input type="text"
                       id="gift-buyer-name"
@@ -286,7 +286,7 @@ $images = $giftcard_designs['images'] ?? [];
               <span class="field__errors"></span>
             </div>
             <div class="gift-cards_form--row">
-              <div class="gift-recipient-phone gift-input-wrap gift-input-wrap_labeled">
+              <div class="gift-recipient-phone gift-input-wrap input-wrap_labeled">
                 <label for="gift-recipient-phone">Ваш номер телефона*</label>
                 <input type="tel"
                       id="gift-recipient-phone"
@@ -300,7 +300,7 @@ $images = $giftcard_designs['images'] ?? [];
               <span class="field__errors"></span>
             </div>
             <div class="gift-cards_form--widerow">
-              <div class="gift-recipient-email gift-input-wrap gift-input-wrap_labeled">
+              <div class="gift-recipient-email gift-input-wrap input-wrap_labeled">
                 <label for="gift-recipient-email">Ваша почта*</label>
                 <input type="email"
                       id="gift-recipient-email"
@@ -319,7 +319,7 @@ $images = $giftcard_designs['images'] ?? [];
           <div class="gift-cards_form__wrap">
             <h3 class="gift-cards_form--widerow">Кому дарим</h3>
             <div class="gift-cards_form--row">
-              <div class="gift-recipient-name gift-input-wrap gift-input-wrap_labeled">
+              <div class="gift-recipient-name gift-input-wrap input-wrap_labeled">
                 <label for="gift-recipient-name">Имя получателя*</label>
                 <input type="text"
                       id="gift-recipient-name"
@@ -329,11 +329,11 @@ $images = $giftcard_designs['images'] ?? [];
               </div>
               <span class="field__errors"></span>
             </div>
-            <div class="gift-sender-name gift-input-wrap gift-input-wrap_labeled gift-cards_form--row">
+            <div class="gift-sender-name gift-input-wrap input-wrap_labeled gift-cards_form--row">
               <label for="gift-sender-name">Имя отправителя</label>
               <input type="text" name="gift-sender-name" id="gift-sender-name" value="">
             </div>
-            <div class="gift-message gift-input-wrap gift-input-wrap_labeled gift-cards_form--widerow">
+            <div class="gift-message gift-input-wrap input-wrap_labeled gift-cards_form--widerow">
               <label for="gift-edit-message">Добавьте теплых слов</label>
               <textarea id="gift-edit-message" name="gift-edit-message" rows="3"></textarea>
             </div>

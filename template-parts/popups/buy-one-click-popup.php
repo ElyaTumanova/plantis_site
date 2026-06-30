@@ -2,15 +2,12 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-$close_icon = carbon_get_theme_option('close_icon');
 
 ?>
 <div class="page-popup popup buy-one-click-popup">
   <div class="page-popup__container popup__container">
+    <span class="page-popup__close popup__close"><?php echo plnt_icon('close') ?></span>
     <div class="page-popup__wrap">
-      <h2 class="page-popup__heading heading-2">Купить в один клик</h2>
-      <span class="page-popup__close popup__close heading-2"><?php echo $close_icon ?></span>
-
       <div class="page-popup__form">
         <?php echo do_shortcode('[contact-form-7 id="9306"]')?>
       </div>
