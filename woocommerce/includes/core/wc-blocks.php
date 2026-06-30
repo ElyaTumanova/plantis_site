@@ -22,7 +22,7 @@ function plnt_sale_badge() {
 
 function plnt_buy_one_click_btn() {
   ?> <button class="card__one-click-btn button--white page-popup-open-btn button" type="button"> 
-    <span class="desktop-hidden">В</span><span class="mobile-hidden">Купить в</span> 1 клик</button> <?php
+    <span class="card-btn-desktop-hidden">В</span><span class="card-btn-mobile-hidden">Купить в</span> 1 клик</button> <?php
 }
 
 /* атрибуты */

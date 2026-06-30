@@ -22,10 +22,10 @@ if ( ! defined( 'ABSPATH' ) ) {
   add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar', 21);
   plnt_add_wrapper('catalog__filter-metki catalog__filter-metki-ontop', 'woocommerce_before_shop_loop', 22, 'woocommerce_before_shop_loop', 23);
   add_action('woocommerce_before_shop_loop', 'plnt_metki_mob', 22);
-  plnt_add_wrapper('catalog__top', 'woocommerce_before_shop_loop', 25, 'woocommerce_before_shop_loop', 35);
+  plnt_add_wrapper('catalog__top', 'woocommerce_before_shop_loop', 25, 'woocommerce_before_shop_loop', 36);
   add_action('woocommerce_before_shop_loop','plnt_woocommerce_total_count', 32);
   add_action('woocommerce_before_shop_loop','plnt_woocommerce_clear_filters', 33);
-  add_action('woocommerce_before_shop_loop','plnt_catalog_grid_columns', 34);
+  add_action('woocommerce_before_shop_loop','plnt_catalog_grid_columns', 35);
   // // вывод фильтров над каталогом  #filters #berocket
   add_action('woocommerce_before_shop_loop','plnt_catalog_filters_main_area', 34);
   plnt_add_wrapper('catalog__products-wrap', 'woocommerce_before_shop_loop', 40, 'woocommerce_after_shop_loop', 20);

@@ -117,48 +117,48 @@
 
   </section>
 
-  <section class="section container front__promo grid-2-cols">
-    <h2 class="visually-hidden">Специальные предложения</h2>
-    <a class="front__promo-link"
-        href="<?php echo esc_url(site_url() . '/shop/gift-card/')?>"
-        target="_blank"
-      >
-        <picture class="front__promo-image">
-          <source
-            media="(max-width: 500px)"
-            srcset="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-promo-giftcard-mob.webp' ); ?>"
-          >
+  <?php if ( have_rows( 'promo-banners' ) ) : ?>
 
-          <img
-            src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-promo-giftcard.webp' ); ?>"
-            alt="Подарочный сертификат"
-            width="644"
-            height="260"
-            loading="lazy"
-          >
-        </picture>
-    </a>
-    <a class="front__promo-link"
-        href="<?php echo esc_url(site_url() . '/test-kakoe-ty-rastenie')?>"
-        target="_blank"
-      >
-        <picture class="front__promo-image">
-          <source
-            media="(max-width: 500px)"
-            srcset="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-promo-test-mob.webp' ); ?>"
-          >
+    <section class="section container front__promo grid-2-cols">
+      <h2 class="visually-hidden">Специальные предложения</h2>
 
-          <img
-            src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-promo-test.webp' ); ?>"
-            alt="Подарочный сертификат"
-            width="644"
-            height="260"
-            loading="lazy"
-          >
-        </picture>
-    </a>
+      <?php while ( have_rows( 'promo-banners' ) ) : the_row();
 
-  </section>
+        $link          = get_sub_field( 'link' );
+        $imageDesktop  = get_sub_field( 'image-desktop' );
+        $imageMob      = get_sub_field( 'image-mob' );
+      ?>
+
+        <a
+          class="front__promo-link"
+          href="<?php echo esc_url( $link['url'] ); ?>"
+          <?php echo $link['target'] ? 'target="' . esc_attr( $link['target'] ) . '"' : ''; ?>
+        >
+          <picture class="front__promo-image">
+
+            <?php if ( $imageMob ) : ?>
+              <source
+                media="(max-width: 500px)"
+                srcset="<?php echo esc_url( $imageMob['url'] ); ?>"
+              >
+            <?php endif; ?>
+
+            <img
+              src="<?php echo esc_url( $imageDesktop['url'] ); ?>"
+              alt="<?php echo esc_attr( $imageDesktop['alt'] ); ?>"
+              width="<?php echo esc_attr( $imageDesktop['width'] ); ?>"
+              height="<?php echo esc_attr( $imageDesktop['height'] ); ?>"
+              loading="lazy"
+            >
+
+          </picture>
+        </a>
+
+      <?php endwhile; ?>
+
+    </section>
+
+  <?php endif; ?>
 
   <section class="section container">
     <div class="front__about">

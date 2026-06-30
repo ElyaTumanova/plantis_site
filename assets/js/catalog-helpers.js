@@ -118,6 +118,7 @@ if(gridButton && catalogWrap) {
     
     function make_2_grid_columns () {
         catalogGrid.classList.add ('columns-3');
+        catalogGrid.classList.add ('columns-2-mob');
         catalogGrid.classList.remove ('in-row');
         gridButton.disabled = true;
         rowsButton.disabled = false;
@@ -125,6 +126,7 @@ if(gridButton && catalogWrap) {
     
     function make_3_grid_columns () {
         catalogGrid.classList.remove ('columns-3');
+        catalogGrid.classList.remove ('columns-2-mob');
         catalogGrid.classList.add ('in-row');
         gridButton.disabled = false;
         rowsButton.disabled = true;

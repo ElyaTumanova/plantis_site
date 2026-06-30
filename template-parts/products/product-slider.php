@@ -52,7 +52,7 @@ if (!$products) {
   
 >
   <div class="product-slider-wrap product-slider-swiper swiper">
-    <ul class="products columns-3 swiper-wrapper">
+    <ul class="products columns-2-mob columns-3 swiper-wrapper">
       <?php while ( $products->have_posts() ) : $products->the_post(); ?>
   
       <?php wc_get_template_part( 'content', 'product' ); ?>
