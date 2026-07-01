@@ -46,6 +46,8 @@ if ( ! defined( 'ABSPATH' ) ) {
         </p>
       </div>
     </div>
+  </div>
+  <div class="faq-col">
     <div class="faq-item">
       <div class="faq-question icon icon--plus">
         <h3 class="h5">Сколько действует?</h3>
@@ -54,8 +56,6 @@ if ( ! defined( 'ABSPATH' ) ) {
         <p>Сертификат действует в течение года со дня покупки. Срок действия сертификата указан на странице сертификата.</p>
       </div>
     </div>
-  </div>
-  <div class="faq-col">
     <div class="faq-item">
       <div class="faq-question icon icon--plus">
         <h3 class="h5">Можно использовать частично?</h3>
