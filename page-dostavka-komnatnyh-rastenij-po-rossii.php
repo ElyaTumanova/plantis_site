@@ -6,9 +6,20 @@ get_header(); ?>
         <?php get_template_part('template-parts/info-pages-list');?> 
     </aside> 
 	<main id="main" class="site-main" role="main">
-		<header class="entry-header">
-			<h1 class="entry-title">Доставка комнатных растений по России</h1>                
-		</header>
+    <div class="catalog__header-inner">
+      <header class="entry-header">
+            <h1 class="entry-title">Доставка комнатных растений по России</h1>   
+          </header>
+      <div class="catalog__header-image-wrap darken">
+        <img
+        class="catalog__header-image"
+        src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/delivery-header-img.png' ); ?>" 
+        alt=""
+        width="245"
+        height="140">
+      </div>
+    </div> 
+		
 		<div class="info__content info__list">
             <h2 class="info__heading heading-2">Хотите купить комнатное растение, которое невозможно найти в вашем городе? А если и возможно, то цена стремится к бесконечности?</h2>
             <p> Не проблема! Мы осуществляем доставку комнатный растений почтой и другими транспортными компаниями по всей России.</p>

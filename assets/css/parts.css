@@ -91,8 +91,16 @@
 
 .info-menu-sidebar .menu__item svg {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: clamp(1.25rem, 1.1543rem + 0.4255vw, 1.5rem); /* 24px - 20px */
+  height: clamp(1.25rem, 1.1543rem + 0.4255vw, 1.5rem);
+}
+
+@media (max-width: 768px) {
+  .info-menu-sidebar .menu__item {
+    gap: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+  }
 }
 .info-menu-sidebar .menu__item a {
   width: 100%;
