@@ -103,7 +103,7 @@ function plnt_get_script_files() {
 		),
 		array(
 			'handle' => 'ajax-urgent-delivery',
-			'file'   => 'new-ajax-urgent-delivery',
+			'file'   => 'ajax-urgent-delivery',
 			'deps'   => array( 'jquery' ),
 		),
 		array(

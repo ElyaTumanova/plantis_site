@@ -18,7 +18,7 @@ let checkedDate = '';
 let checkedInterval = '';
 let today;
 let isUrgentCourierTariff = DELIVERY.isUrgentCourierTariff == '1';
-let deliveryLateInterval = DELIVERY.deliveryLateInterval
+let deliveryExpensiveInterval = DELIVERY.deliveryExpensiveInterval
 let isSmallHolidayTariffOn = DELIVERY.isSmallHolidayTariffOn == '1';
 let deliveryExpensiveMarkup = DELIVERY.deliveryExpensiveMarkup;
 console.debug('isUrgentCourierTariff ',isUrgentCourierTariff);
@@ -30,7 +30,8 @@ let addressFields = document.querySelector('#billing_address_1_field');
 let additionalAddress = document.querySelector('.additional-address-field');
 let innField = document.querySelector('#additional_inn');
 let checkoutForm = document.querySelector('form[name="checkout"]');
-let deliveryDates = document.querySelector('.delivery_dates');
+let deliveryDates = document.querySelector('.delivery_wrap');
+// let deliveryDates = document.querySelector('.delivery_dates');
 let deliveryDatesInput = document.querySelectorAll('.delivery_dates input');
 let deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
 let deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
@@ -67,7 +68,7 @@ function getOrderParametrs(event) {
   // определеяем checkedInterval после hideCheckoutFields, так как там идет сбрас выбранного интервала и после checkHoliday, так как идет выбор доступного интервала
   checkedInterval = getCheckedInterval();
   console.debug('checkedInterval ', checkedInterval)
-  if(checkedInterval == deliveryLateInterval) {
+  if(checkedInterval == deliveryExpensiveInterval) {
     isLate = '1'
   } else {
     isLate = '0'
@@ -161,7 +162,7 @@ function renderDeliveryIntervals(shippingValue) {
         if (isUrgent == '1') {
           priceEl.innerHTML = `+0₽`;
         } else {
-          priceEl.innerHTML = info.for == `additional_delivery_interval_${deliveryLateInterval}` ? `+${DELIVERY.deliveryLateMarkup}₽` : `+0₽` ;
+          priceEl.innerHTML = info.for == `additional_delivery_interval_${deliveryExpensiveInterval}` ? `+${DELIVERY.deliveryExpensiveIntervalMarkup}₽` : `+0₽` ;
         }
       }
   })
@@ -253,7 +254,7 @@ function getDatesIntervalsInfo() {
     deliveryDatesInfo.push(dateInfo);
   });
 
-  if(DELIVERY.deliveryLateMarkup) {    
+  if(DELIVERY.deliveryExpensiveIntervalMarkup) {    
     deliveryIntervalLabels.forEach((label) => {
       let intervalInfo = {
         label: label,
