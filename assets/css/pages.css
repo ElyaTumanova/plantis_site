@@ -345,6 +345,7 @@
 @media (max-width: 768px) {
   .delivery__intervals {
     margin-block: 16px;
+    flex-direction: column;
   }
 }
 
@@ -352,6 +353,7 @@
   border-radius: 8px;
   padding: 9px 14px;
   background-color: var(--green-l-color);
+  width: fit-content;
 }
 
 .delivery__intervals li span{
@@ -410,14 +412,8 @@
   font-size: 22px;
   font-weight: 600;
   color: var(--black-color);
-  margin-bottom: 16px;
 }
 
-@media (max-width: 768px) {
-  .delivery-pickup__text .delivery-pickup__time {
-    margin-bottom: 12px;
-  }
-}
 .delivery-pickup__map {
   min-height: 400px;
   overflow: hidden;
