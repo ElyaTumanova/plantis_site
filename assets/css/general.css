@@ -61,6 +61,10 @@ p {
   }
 }
 
+.grid-2-cols > * {
+  flex: 1 1;
+}
+
 input,
 textarea {
   border: var(--input-border);
