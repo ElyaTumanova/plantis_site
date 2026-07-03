@@ -96,8 +96,9 @@ function getOrderParametrs(event) {
 }
 
 function getCheckedShippingMethod() {
-  let checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input[checked="checked"]');
-  return checkedShippingMethodInput.value;
+  const checkedShippingMethodInput = document.querySelector('.woocommerce-shipping-methods input:checked');
+
+  return checkedShippingMethodInput ? checkedShippingMethodInput.value : '';
 }
 
 function getCheckedDate (){
