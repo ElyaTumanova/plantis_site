@@ -20,10 +20,10 @@ let today;
 let isUrgentCourierTariff = DELIVERY.isUrgentCourierTariff == '1';
 let deliveryExpensiveInterval = DELIVERY.deliveryExpensiveInterval
 let isSmallHolidayTariffOn = DELIVERY.isSmallHolidayTariffOn == '1';
-let deliveryExpensiveMarkup = DELIVERY.deliveryExpensiveMarkup;
+let deliveryExpensiveDayMarkup = DELIVERY.deliveryExpensiveDayMarkup;
 console.debug('isUrgentCourierTariff ',isUrgentCourierTariff);
 console.debug('isSmallHolidayTariffOn ',isSmallHolidayTariffOn);
-console.debug('deliveryExpensiveMarkup ',deliveryExpensiveMarkup);
+console.debug('deliveryExpensiveDayMarkup ',deliveryExpensiveDayMarkup);
 
 let deliveryInterval = document.querySelector('#additional_delivery_interval_field');
 let addressFields = document.querySelector('#billing_address_1_field');
@@ -58,7 +58,7 @@ function getOrderParametrs(event) {
     isUrgent = '0';
   }
 
-   if(expensiveDays && deliveryExpensiveMarkup && expensiveDays.includes(checkedDate)) {
+   if(expensiveDays && deliveryExpensiveDayMarkup && expensiveDays.includes(checkedDate)) {
     isExpensive = 1
   } else { isExpensive = 0}
   
@@ -124,8 +124,8 @@ function renderDeliveryDates(shippingValue) {
   deliveryDatesInfo.forEach((info) => {
     //вычисляем надбавку по конкретной дате
     let thisDayExpensiveMarkup = 0;
-    if(expensiveDays && deliveryExpensiveMarkup) {
-      if(expensiveDays.includes(info.text)) {thisDayExpensiveMarkup = deliveryExpensiveMarkup}
+    if(expensiveDays && deliveryExpensiveDayMarkup) {
+      if(expensiveDays.includes(info.text)) {thisDayExpensiveMarkup = deliveryExpensiveDayMarkup}
     }
     info.label.innerHTML=`${info.text}`;
     let priceEl = document.createElement('span');
@@ -227,7 +227,7 @@ function setInitalState() {
 
   today = `${String(baseDate.getDate()).padStart(2,'0')}.${String(baseDate.getUTCMonth()+1).padStart(2,'0')}`;
 
-  if(expensiveDays && deliveryExpensiveMarkup && expensiveDays.includes(today)) {
+  if(expensiveDays && deliveryExpensiveDayMarkup && expensiveDays.includes(today)) {
     isExpensive = 1
   } else { isExpensive = 0}
 
