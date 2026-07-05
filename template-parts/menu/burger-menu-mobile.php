@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
       </div>
       <div class="burger-menu__body-inner burger-menu__body-inner--catalog">
-        <?php get_template_part('template-parts/menu/catalog-menu');?>
+        <?php plnt_catalog_menu_html();?>
       </div>
     </div>
   </div>

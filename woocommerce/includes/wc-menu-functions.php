@@ -3,6 +3,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/* Вывод меню */
+function plnt_catalog_menu_html() {
+    static $html = null;
+
+    if ($html !== null) {
+        echo $html;
+        return;
+    }
+
+    ob_start();
+
+    get_template_part('template-parts/menu/catalog-menu');
+
+    $html = ob_get_clean();
+
+    echo $html;
+}
 /* Хелперы */
 
 function plnt_get_all_published_product_cat_ids() {
@@ -64,13 +81,19 @@ function plnt_get_menu_link( $args) {
     'taxonomy' => 'product_cat',
     'classes' => 'cats-sub-menu__item-link cats-sub-menu__item-image',
     'words_to_remove' => [],
+    'term'            => null,
   ]);
 
   if ( ! $args['slug'] ) {
 		return;
 	}
 
-  $term = get_term_by( 'slug', $args['slug'], $args['taxonomy'] );
+  if ( ! empty( $args['term'] ) && $args['term'] instanceof WP_Term ) {
+    $term = $args['term'];
+  } else {
+      $term = get_term_by( 'slug', $args['slug'], $args['taxonomy'] );
+  }
+
   if ( ! $term || is_wp_error( $term ) ) {
 		return;
 	}
@@ -136,6 +159,7 @@ function get_primary_submenu($args) {
     <?php 
       if($args['show_heading']) {
         $args_heading = $args;
+        $args_heading['term'] = $term;
         $args_heading['classes'] = 'cats-sub-menu__heading cats-sub-menu__item-image';
         plnt_get_menu_link($args_heading);
       }
@@ -145,6 +169,7 @@ function get_primary_submenu($args) {
         foreach ($terms as $term) {
           $args_link = $args;
           $args_link['slug'] = $term->slug;
+          $args_link['term'] = $term;
           ?>
           <li class="cats-sub-menu__item">
             <?php plnt_get_menu_link($args_link); ?>

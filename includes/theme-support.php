@@ -166,19 +166,56 @@ add_action('template_redirect', function(){
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
 
 
-//timing debug
+/**
+ * Timing debug
+ */
+
+global $plnt_timing_debug;
+
+$plnt_timing_debug = [
+    'last'  => null,
+    'items' => [],
+];
+
 function plnt_debug_time($label) {
-    static $last = null;
+    global $plnt_timing_debug;
 
     $now = microtime(true);
 
-    if ($last !== null) {
+    if ($plnt_timing_debug['last'] !== null) {
+        $ms = ($now - $plnt_timing_debug['last']) * 1000;
+
+        $plnt_timing_debug['items'][] = [
+            'label' => $label,
+            'time'  => $ms,
+        ];
+
         printf(
-            "\n<!-- %s: %.2fms -->\n",
+            "\n<!-- Timing: %s: %.2fms -->\n",
             esc_html($label),
-            ($now - $last) * 1000
+            $ms
         );
     }
 
-    $last = $now;
+    $plnt_timing_debug['last'] = $now;
+}
+
+function plnt_debug_time_output() {
+    global $plnt_timing_debug;
+
+    if (empty($plnt_timing_debug['items'])) {
+        return;
+    }
+
+    echo "\n<!-- TIMING SUMMARY\n";
+
+    foreach ($plnt_timing_debug['items'] as $item) {
+        printf(
+            "%-40s %.2fms\n",
+            $item['label'],
+            $item['time']
+        );
+    }
+
+    echo "-->\n";
 }

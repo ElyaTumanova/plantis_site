@@ -41,145 +41,144 @@ add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ){
 //см wp-config.php
 
 
+global $timing_points;
+$timing_points = [];
+
+function plnt_timing_mark($key) {
     global $timing_points;
-    $timing_points = [];
+    $timing_points[$key] = microtime(true);
+}
 
-    // === INIT ===
-    add_action('init', function () {
-        global $timing_points;
-        $timing_points['init_start'] = microtime(true);
-    }, 0);
+$timing_points['wp_start'] = WP_START;
 
-    add_action('init', function () {
-        global $timing_points;
-        $timing_points['init_end'] = microtime(true);
-    }, 999);
+add_action('muplugins_loaded', function () {
+    plnt_timing_mark('muplugins_loaded');
+}, 999);
 
-    // === plugins_loaded (после плагинов) ===
-    add_action('plugins_loaded', function () {
-        global $timing_points;
-        $timing_points['plugins_loaded'] = microtime(true);
-    }, 0);
+add_action('plugins_loaded', function () {
+    plnt_timing_mark('plugins_loaded');
+}, 999);
 
-    // === after_setup_theme (в начале темы) ===
-    add_action('after_setup_theme', function () {
-        global $timing_points;
-        $timing_points['theme_start'] = microtime(true);
-    }, 0);
+add_action('after_setup_theme', function () {
+    plnt_timing_mark('after_setup_theme_start');
+}, 0);
 
-    // === after_setup_theme (в конце темы) ===
-    add_action('after_setup_theme', function () {
-        global $timing_points;
-        $timing_points['theme_end'] = microtime(true);
-    }, 999);
+add_action('after_setup_theme', function () {
+    plnt_timing_mark('after_setup_theme_end');
+}, 999);
 
-    // === wp_loaded ===
-    add_action('wp_loaded', function () {
-        global $timing_points;
-        $timing_points['wp_loaded'] = microtime(true);
-    });
+add_action('init', function () {
+    plnt_timing_mark('init_start');
+}, 0);
 
-    // === template_include ===
-    add_filter('template_include', function ($template) {
-        global $timing_points;
-        $timing_points['template_include'] = microtime(true);
-        return $template;
-    }, 0);
+add_action('init', function () {
+    plnt_timing_mark('init_end');
+}, 999);
 
-    // === get_header ===
-    add_action('get_header', function () {
-        global $timing_points;
-        $timing_points['get_header'] = microtime(true);
-    }, 0);
+add_action('wp_loaded', function () {
+    plnt_timing_mark('wp_loaded');
+}, 999);
 
-    // === template_redirect ===
-    add_action('template_redirect', function () {
-        global $timing_points;
-        $timing_points['template_start'] = microtime(true);
-    }, 0);
+add_action('parse_request', function () {
+    plnt_timing_mark('parse_request');
+}, 999);
 
-    // === shutdown — финальный расчет ===
-    add_action('shutdown', function () {
-        global $timing_points, $wpdb;
+add_action('send_headers', function () {
+    plnt_timing_mark('send_headers');
+}, 999);
 
-        $now = microtime(true);
-        $php_total = ($now - WP_START) * 1000;
+add_action('wp', function () {
+    plnt_timing_mark('wp');
+}, 999);
 
-        $timing = [];
+add_action('template_redirect', function () {
+    plnt_timing_mark('template_redirect');
+}, 999);
 
-        // Этапы
-        $timing['init'] = ($timing_points['init_end'] - $timing_points['init_start']) * 1000;
-        $timing['plugins'] = isset($timing_points['plugins_loaded']) ? ($timing_points['plugins_loaded'] - WP_START) * 1000 : 0;
-        $timing['theme'] = isset($timing_points['theme_start'], $timing_points['theme_end']) ? ($timing_points['theme_end'] - $timing_points['theme_start']) * 1000 : 0;
-        $timing['wp_loaded'] = ($timing_points['wp_loaded'] - $timing_points['init_end']) * 1000;
-        $timing['template_include'] = ($timing_points['template_include'] - $timing_points['wp_loaded']) * 1000;
-        $timing['get_header'] = ($timing_points['get_header'] - $timing_points['template_include']) * 1000;
-        $timing['template'] = isset($timing_points['template_start']) ? ($now - $timing_points['template_start']) * 1000 : 0;
+add_filter('template_include', function ($template) {
+    plnt_timing_mark('template_include');
+    return $template;
+}, 999);
 
-        // SQL
+add_action('get_header', function () {
+    plnt_timing_mark('get_header');
+}, 0);
 
-        // $db_time = 0;
-        // if (!empty($wpdb->queries)) {
-        //     foreach ($wpdb->queries as $query) {
-        //         $db_time += $query[1];
-        //     }
-        // }
-        // $timing['db'] = $db_time * 1000;
+add_action('wp_head', function () {
+    plnt_timing_mark('wp_head');
+}, 999);
 
-        // $timing['php'] = $php_total;
-        $timing['total'] = $php_total;
+add_action('wp_footer', function () {
+    plnt_timing_mark('wp_footer');
+}, 999);
 
-        // Header
-        // $server_timing = [];
-        // foreach ($timing as $label => $ms) {
-        //     $server_timing[] = sprintf('%s;dur=%.1f', $label, $ms);
-        // }
+add_action('shutdown', function () {
+    global $timing_points, $wpdb;
 
-        // if (!headers_sent()) {
-        //     header('Server-Timing: ' . implode(', ', $server_timing));
-        // }
-    });
+    plnt_timing_mark('shutdown');
 
-    //вывод server timing в html
-    add_action('wp_footer', function () {
-        global $timing_points, $wpdb;
+    $points_order = [
+        'wp_start',
+        'muplugins_loaded',
+        'plugins_loaded',
+        'after_setup_theme_start',
+        'after_setup_theme_end',
+        'init_start',
+        'init_end',
+        'wp_loaded',
+        'parse_request',
+        'send_headers',
+        'wp',
+        'template_redirect',
+        'template_include',
+        'get_header',
+        'wp_head',
+        'wp_footer',
+        'shutdown',
+    ];
 
-        if (empty($timing_points)) {
-            echo '<!-- Server-Timing: no data collected -->';
-            return;
+    $total = (microtime(true) - WP_START) * 1000;
+
+    $db_time = 0;
+
+    if ( ! empty($wpdb->queries) ) {
+        foreach ($wpdb->queries as $query) {
+            $db_time += $query[1];
+        }
+    }
+
+    echo "\n<!-- Server-Timing Debug Full:\n";
+
+    $prev_key  = null;
+    $prev_time = null;
+
+    foreach ($points_order as $key) {
+        if (empty($timing_points[$key])) {
+            continue;
         }
 
-        $now = microtime(true);
-        $php_total = ($now - WP_START) * 1000;
+        if ($prev_time !== null) {
+            $ms = ($timing_points[$key] - $prev_time) * 1000;
 
-        $timing = [];
-
-        $timing['init'] = ($timing_points['init_end'] - $timing_points['init_start']) * 1000;
-        $timing['plugins'] = isset($timing_points['plugins_loaded']) ? ($timing_points['plugins_loaded'] - WP_START) * 1000 : 0;
-        $timing['theme'] = isset($timing_points['theme_start'], $timing_points['theme_end']) ? ($timing_points['theme_end'] - $timing_points['theme_start']) * 1000 : 0;
-        $timing['wp_loaded'] = ($timing_points['wp_loaded'] - $timing_points['init_end']) * 1000;
-        $timing['template_include'] = ($timing_points['template_include'] - $timing_points['wp_loaded']) * 1000;
-        $timing['get_header'] = ($timing_points['get_header'] - $timing_points['template_include']) * 1000;
-        $timing['template'] = isset($timing_points['template_start']) ? ($now - $timing_points['template_start']) * 1000 : 0;
-
-        $db_time = 0;
-        if (!empty($wpdb->queries)) {
-            foreach ($wpdb->queries as $query) {
-                $db_time += $query[1];
-            }
+            printf(
+                "%s -> %s: %.2fms\n",
+                $prev_key,
+                $key,
+                $ms
+            );
         }
 
-        $timing['db'] = $db_time * 1000;
-        $timing['php'] = $php_total;
-        $timing['total'] = $php_total;
+        $prev_key  = $key;
+        $prev_time = $timing_points[$key];
+    }
 
-        echo "\n<!-- Server-Timing Debug:\n";
-        foreach ($timing as $label => $dur) {
-            printf("%s: %.2fms\n", $label, $dur);
-        }
-        echo "-->\n";
-    });
+    echo "\nSummary:\n";
+    printf("db: %.2fms\n", $db_time * 1000);
+    printf("php_total: %.2fms\n", $total);
+    printf("peak_memory: %.2fMB\n", memory_get_peak_usage(true) / 1024 / 1024);
 
+    echo "-->\n";
+}, 999);
 
     // TOP 10 SLOWEST SQL QUERIES
     add_action('shutdown', function () {

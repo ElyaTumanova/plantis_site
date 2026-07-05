@@ -43,6 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     </ul>
   </div>
+  <?php echo "<!-- Timing: dropdown__cats = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
   <div class="catalog-dropdown__sub-cats">
     <nav class="catalog-dropdown__sub-cats-wrap" data-menu="menu_item_plants">
       <div class="catalog-dropdown__sub-cats-header icon icon--arrow-right h5">
@@ -59,10 +60,12 @@ if ( ! defined( 'ABSPATH' ) ) {
             'slug' => 'komnatnye-rasteniya', 
             'show_heading' => false
             ]);?>
+               <?php echo "<!-- Timing: submenu komnatnye-rasteniya = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
             <?php get_primary_submenu([
             'slug' => 'ukhod',
             ]);?>
         </div>
+        <?php echo "<!-- Timing: before Популярные подборки = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
         <div class="catalog-dropdown__sub-cats-inner">
           <?php
             plnt_render_product_tag_menu( 'Популярные подборки', [
@@ -77,6 +80,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             ] );
           ?>
         </div>
+        <?php echo "<!-- Timing: after Популярные подборки = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
         <div class="catalog-dropdown__sub-cats-inner">
           <?php
             plnt_render_product_tag_menu( 'Повод для подарка', [
@@ -93,8 +97,10 @@ if ( ! defined( 'ABSPATH' ) ) {
             ] );
           ?>
         </div>
+        <?php echo "<!-- Timing: after Повод для подарка = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
       </div>
     </nav>
+    <?php echo "<!-- Timing: sub-cats plants = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
     <nav class="catalog-dropdown__sub-cats-wrap" data-menu="menu_item_gorshki">
       <div class="catalog-dropdown__sub-cats-header icon icon--arrow-right h5">
         <?php 
@@ -130,7 +136,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           </div>
         </div>
         <div class="catalog-dropdown__sub-cats-inner">
-          <?php plnt_get_menu_link('kashpo-treez', [], 'cats-sub-menu__heading cats-sub-menu__item-image');?>
+          <?php //plnt_get_menu_link('kashpo-treez', [], 'cats-sub-menu__heading cats-sub-menu__item-image');?>
           <?php get_primary_submenu([
             'slug'=> 'treez-effectory', 
             'words_to_remove' => ['Treez Effectory ']
@@ -148,6 +154,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
       </div>
     </nav>
+      <?php echo "<!-- Timing: sub-cats gorshki = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
     <nav class="catalog-dropdown__sub-cats-wrap" data-menu="menu_item_treez_plants">
       <div class="catalog-dropdown__sub-cats-header icon icon--arrow-right h5">
         <?php  
@@ -161,6 +168,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php plnt_render_treez_plants_menu();?>
       </div>
     </nav>
+    <?php echo "<!-- Timing: sub-cats treez_plants = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
     <nav class="catalog-dropdown__sub-cats-wrap" data-menu = "menu_az_palnts">
       <div class="catalog-dropdown__sub-cats-header icon icon--arrow-right h5">
         <span>Растения от А до Я</span>
@@ -169,7 +177,9 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php get_az_palnts_submenu(); ?>
       </div>
     </nav>
+    <?php echo "<!-- Timing: sub-cats menu_az_palnts = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
   </div>
+  <?php echo "<!-- Timing: sub-cats = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
   <div class="catalog-dropdown__image darken">
     <img class = "cats-sub-menu__img"
     src="https://plantis-shop.ru/wp-content/uploads/2026/03/fikus-lirata-kolumnaris-na-shtambe-21-95-1-300x300.webp" 

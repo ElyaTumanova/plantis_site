@@ -53,7 +53,6 @@ $logo = carbon_get_theme_option('logo');
             <?php get_template_part( 'template-parts/menu/secondary-menu');?>
           </div>
         </div>
-
         <div class="header__main-wrap">
           <div class="header__main-search search">
             <?php plnt_search_form( 'searchform-desktop' ); ?>
@@ -72,7 +71,7 @@ $logo = carbon_get_theme_option('logo');
         <?php get_template_part( 'template-parts/menu/cats-menu');?>
       </div>
       <div class="header__main-catalog-dropdown">
-        <?php get_template_part( 'template-parts/menu/catalog-menu');?>
+        <?php plnt_catalog_menu_html();?>
       </div>
       <div class="search-result search-result--desktop"></div>
     </div>

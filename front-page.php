@@ -67,7 +67,7 @@
         'isSwiperOver' => true,
       ]);
     ?>
-
+<?php plnt_debug_time('before front__popular link'); ?> 
     <a class="front__products-all icon icon--arrow-right" href="<?php echo get_term_link( 'dekorativno-cvetushchie', 'product_cat' );?>">Все товары категории</a>
 
   </section>
@@ -297,6 +297,6 @@
 <?php plnt_debug_time('after front__end'); ?> 
 </main>
 
-<?php $start_footer = microtime(true); get_footer(); ?>
-<?php echo "<!-- Timing: get_footer = " . round((microtime(true) - $start_footer) * 1000, 2) . " ms -->"; ?>
+<?php get_footer(); ?>
+<?php plnt_debug_time_output(); ?>
 
