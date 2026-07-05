@@ -436,3 +436,17 @@ function remove_my_style_stylesheet() {
 	wp_deregister_style( 'woocommerce-product-filter-removable-chips-style' ); 
 	wp_deregister_style( 'woocommerce-product-gallery-style' ); 
 }
+
+add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
+
+    if ($handle === 'contact-form-7') {
+        return sprintf(
+            '<link rel="stylesheet" id="%1$s-css" href="%2$s" media="print" onload="this.media=\'all\'">',
+            esc_attr($handle),
+            esc_url($href)
+        );
+    }
+
+    return $html;
+
+}, 10, 4);
