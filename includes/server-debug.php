@@ -289,6 +289,7 @@ add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ){
                     'count' => 0,
                     'time'  => 0,
                     'sql'   => $normalized,
+                    'call'  => $call,
                 ];
             }
 
@@ -313,7 +314,8 @@ add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ){
                 $group['count'],
                 $group['time'],
                 $group['time'] * 1000,
-                $group['sql']
+                $group['sql'],
+                $group['call']
             );
         }
 
