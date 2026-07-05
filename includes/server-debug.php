@@ -113,6 +113,9 @@ add_action('wp_footer', function () {
 }, 999);
 
 add_action('shutdown', function () {
+  if ( ! plnt_server_debug_enabled() ) {
+    return;
+  }
     global $timing_points, $wpdb;
 
     plnt_timing_mark('shutdown');
@@ -183,6 +186,10 @@ add_action('shutdown', function () {
     // TOP 10 SLOWEST SQL QUERIES
     add_action('shutdown', function () {
 
+    if ( ! plnt_server_debug_enabled() ) {
+      return;
+    }
+
         if ( ! defined('SAVEQUERIES') || ! SAVEQUERIES || wp_doing_ajax() ) {
             return;
         }
@@ -205,6 +212,9 @@ add_action('shutdown', function () {
 
     // SQL DEBUG SUMMARY
     add_action('shutdown', function () {
+        if ( ! plnt_server_debug_enabled() ) {
+            return;
+        }
 
         if ( ! defined('SAVEQUERIES') || ! SAVEQUERIES || wp_doing_ajax() ) {
             return;
@@ -305,3 +315,12 @@ add_action('shutdown', function () {
 
     });
 
+function plnt_server_debug_enabled() {
+    return (
+        ! is_admin()
+        && ! wp_doing_ajax()
+        && ! wp_doing_cron()
+        && ! wp_is_json_request()
+        && ! defined('REST_REQUEST')
+    );
+}
