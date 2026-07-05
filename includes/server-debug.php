@@ -3,23 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-//helper
-
-function plnt_debug_time($label) {
-    static $last = null;
-
-    $now = microtime(true);
-
-    if ($last !== null) {
-        printf(
-            "\n<!-- %s: %.2fms -->\n",
-            esc_html($label),
-            ($now - $last) * 1000
-        );
-    }
-
-    $last = $now;
-}
 
 // Старт замера: самый ранний хук внутри ajax-запроса wc-ajax=add_to_cart
 add_action( 'init', function () {
