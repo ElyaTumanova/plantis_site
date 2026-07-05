@@ -646,7 +646,7 @@
 }
 
 @media (max-width:768px) {
-  .cart-summary__button {
+  .woocommerce:not(.checkout-summary-visible) .cart-summary__button {
     display: flex;
     gap: 16px;
     align-items: center;
@@ -664,7 +664,7 @@
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
   }
-  .cart-summary__button .cart-summary__button-total {
+  .woocommerce:not(.checkout-summary-visible) .cart-summary__button .cart-summary__button-total {
     display: block;
     font-weight: 600;
     font-size: 18px;

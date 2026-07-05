@@ -14,3 +14,44 @@ jQuery(function ($) {
     });
   });
 });
+
+/* отслеживаем кнопку Оформить заказ на чекауте */
+
+let summaryScrollTimer;
+
+function updateCheckoutSummaryState() {
+  const target = document.querySelector('.cart-summary__wrap');
+  const woocommerce = document.querySelector('.woocommerce');
+
+  if (!target || !woocommerce) return;
+
+  const rect = target.getBoundingClientRect();
+
+  const isVisible =
+    rect.height > 0 &&
+    rect.top < window.innerHeight &&
+    rect.bottom > 0;
+
+  woocommerce.classList.toggle('checkout-summary-visible', isVisible);
+}
+
+function initCheckoutObserver() {
+  clearTimeout(summaryScrollTimer);
+
+  summaryScrollTimer = setTimeout(() => {
+    updateCheckoutSummaryState();
+
+    window.removeEventListener('scroll', updateCheckoutSummaryState);
+    window.addEventListener('scroll', updateCheckoutSummaryState, { passive: true });
+
+    window.removeEventListener('resize', updateCheckoutSummaryState);
+    window.addEventListener('resize', updateCheckoutSummaryState);
+  }, 300);
+}
+
+document.addEventListener('DOMContentLoaded', initCheckoutObserver);
+
+jQuery(document.body).on(
+  'updated_checkout updated_wc_div updated_cart_totals wc_fragments_refreshed',
+  initCheckoutObserver
+);
