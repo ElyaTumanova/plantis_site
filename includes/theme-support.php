@@ -164,3 +164,21 @@ add_action('template_redirect', function(){
 
 //Убирает добаление лишних тегов в CF7
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
+
+
+//timing debug
+function plnt_debug_time($label) {
+    static $last = null;
+
+    $now = microtime(true);
+
+    if ($last !== null) {
+        printf(
+            "\n<!-- %s: %.2fms -->\n",
+            esc_html($label),
+            ($now - $last) * 1000
+        );
+    }
+
+    $last = $now;
+}

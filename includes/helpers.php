@@ -81,20 +81,3 @@ function art_social_icons( $item_url ) {
 	
 	return $item_label;
 }
-
-//timing debug
-function plnt_debug_time($label) {
-    static $last = null;
-
-    $now = microtime(true);
-
-    if ($last !== null) {
-        printf(
-            "\n<!-- %s: %.2fms -->\n",
-            esc_html($label),
-            ($now - $last) * 1000
-        );
-    }
-
-    $last = $now;
-}
