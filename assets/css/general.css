@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Onest';
+    src: url('/wp-content/themes/plantis_site/assets/fonts/Onest-Variable.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
 body {
   background:var(--background);
   font-family: 'Onest', sans-serif;

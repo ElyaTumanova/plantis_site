@@ -353,15 +353,26 @@ function plnt_styles() {
     );
   }
 
-	wp_enqueue_style(
-		'fonts',
-		//'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap',
-		'https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap',
-    array(),
-		null,
-		'all'
-	);
+	// wp_enqueue_style(
+	// 	'fonts',
+	// 	//'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap',
+	// 	'https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap',
+  //   array(),
+	// 	null,
+	// 	'all'
+	// );
 }
+
+add_action('wp_head', function () { 
+  ?>
+    <link
+        rel="preload"
+        href="<?php echo get_template_directory_uri(); ?>/assets/fonts/Onest-Variable.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin>
+  <?php 
+});
 
 /* Enqueue */
 add_action( 'wp_enqueue_scripts', 'plnt_scripts' );
