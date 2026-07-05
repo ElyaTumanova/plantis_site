@@ -404,6 +404,16 @@ function plnt_no_filter_css() {
   wp_dequeue_style('woocommerce-product-filter-price-slider-style');
   wp_dequeue_style('brands-styles');
 
+  if (
+      !is_shop() &&
+      !is_product_category() &&
+      !is_product_tag() &&
+      !is_product_taxonomy()
+  ) {
+      wp_dequeue_style('berocket_aapf_widget-style');
+      wp_deregister_style('berocket_aapf_widget-style');
+  }
+
   if( !is_checkout()) {
     wp_dequeue_style('suggestions');
     wp_dequeue_style('custom-css');

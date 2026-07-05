@@ -26,7 +26,19 @@ $banners_arr = carbon_get_theme_option('banners');
           <?endif;?>
           <span class="banner__caption">*Кроме кашпо Trezz и Lechuza диаметром больше 26 см</span>
         </div>
-        <div class="banner__bg" style="background-image:url(<?php echo $banner['banner_desktop'] ?>)"></div>
+        <div class="banner__bg">
+            <img
+              class="banner__bg"
+              src="<?php echo esc_url($banner['banner_desktop']); ?>"
+              alt=""
+              width="1380"
+              height="429"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            >
+        </div>
+        
       </div>
 			<?php 
 		}

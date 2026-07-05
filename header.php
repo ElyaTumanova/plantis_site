@@ -54,7 +54,7 @@
 	
 	<?php wp_head(); ?>
 </head>
-
+<?php plnt_debug_time('start'); ?>
 <body <?php body_class(); ?>>
 <!-- <noscript><div><img src="https://mc.yandex.ru/watch/103710881" style="position:absolute; left:-9999px;" alt="" /></div></noscript> -->
 <div id="page" class="site">

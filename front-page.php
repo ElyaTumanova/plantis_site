@@ -1,43 +1,19 @@
-<?php plnt_debug_time('start'); ?>
 <?php
     get_header();
     global $skidki_cat_id;
 ?>
-<?php plnt_debug_time('after header'); ?>
 
 <main id="main" class="site-main front" role="main">
 
   <section class="front__hero section">
     <h1 class="visually-hidden">Доставка комнатных растений в Москве</h1>
     <?php get_template_part('template-parts/front/front-banners-gallery');?>
-  </section>
-<?php plnt_debug_time('after front__hero'); ?>  
+  </section> 
+
   <section class="front__cat-tiles section container">
     <?php get_template_part('template-parts/front/cats-tiles');?>
-  </section>
-<?php plnt_debug_time('after front__cat-tiles'); ?>  
-  <section class="front__skidki section container">
-    <h2 class="h2">Скидки</h2>
-    
-    <?php 
-      get_template_part( 'template-parts/products/product-slider', null, [
-        'queryArgs' => [
-          'tax_query' => array(
-            array(
-              'taxonomy' => 'product_tag',
-              'field' => 'slug',
-              'terms' => 'skidki',
-            )
-          )
-        ],
-        'isSwiperOver' => true,
-      ]);
-    ?>
+  </section> 
 
-    <a class="front__products-all icon icon--arrow-right" href="<?php echo get_term_link( 'skidki', 'product_tag' );?>">Все товары категории</a>
-    
-  </section>
-<?php plnt_debug_time('after front__skidki'); ?> 
   <section class="front__popular section container">
     <h2 class="h2">Популярные категории</h2>
     <div class="front__cats-nav cats-nav">
@@ -67,11 +43,33 @@
         'isSwiperOver' => true,
       ]);
     ?>
-<?php plnt_debug_time('before front__popular link'); ?> 
+
     <a class="front__products-all icon icon--arrow-right" href="<?php echo get_term_link( 'dekorativno-cvetushchie', 'product_cat' );?>">Все товары категории</a>
 
   </section>
-<?php plnt_debug_time('after front__popular'); ?> 
+
+  <section class="front__skidki section container">
+    <h2 class="h2">Скидки</h2>
+    
+    <?php 
+      get_template_part( 'template-parts/products/product-slider', null, [
+        'queryArgs' => [
+          'tax_query' => array(
+            array(
+              'taxonomy' => 'product_tag',
+              'field' => 'slug',
+              'terms' => 'skidki',
+            )
+          )
+        ],
+        'isSwiperOver' => true,
+      ]);
+    ?>
+
+    <a class="front__products-all icon icon--arrow-right" href="<?php echo get_term_link( 'skidki', 'product_tag' );?>">Все товары категории</a>
+    
+  </section>
+
   <section class="section container">
     <h2 class="h2">Предоставляемые услуги</h2>
     <div class="front__services grid-2-cols">
@@ -294,9 +292,8 @@
       </div>
     </div>
   </section>
-<?php plnt_debug_time('after front__end'); ?> 
+ 
 </main>
 
 <?php get_footer(); ?>
-<?php plnt_debug_time_output(); ?>
 

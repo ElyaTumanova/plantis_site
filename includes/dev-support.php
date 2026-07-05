@@ -58,11 +58,22 @@ function custom_wc_catalog_hooks_debug_comments() {
 		add_action(
 			$hook_name,
 			function() use ( $hook_name ) {
+        // plnt_debug_time( $hook_name );
 				echo "\n<!-- WC HOOK END: " . esc_html( $hook_name ) . " -->\n";
 			},
 			9999
 		);
 	}
+
+  // for ( $priority = 20; $priority <= 30; $priority++ ) {
+  //   add_action(
+  //     'woocommerce_before_shop_loop',
+  //     function() use ( $priority ) {
+  //       plnt_debug_time( "before_shop_loop:{$priority}" );
+  //     },
+  //     $priority
+  //   );
+  // }
 }
 
 /**
