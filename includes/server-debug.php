@@ -309,7 +309,7 @@ add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ){
             }
 
             printf(
-                "<!-- #%d | count: %d | total: %.4f sec / %.2f ms | %s -->\n",
+                "<!-- #%d | count: %d | total: %.4f sec / %.2f ms | SQL: %s | CALL: %s -->\n",
                 $i + 1,
                 $group['count'],
                 $group['time'],
