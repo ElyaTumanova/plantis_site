@@ -3,6 +3,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+//helper
+
+function plnt_debug_time($label) {
+    static $last = null;
+
+    $now = microtime(true);
+
+    if ($last !== null) {
+        printf(
+            "\n<!-- %s: %.2fms -->\n",
+            esc_html($label),
+            ($now - $last) * 1000
+        );
+    }
+
+    $last = $now;
+}
 
 // Старт замера: самый ранний хук внутри ajax-запроса wc-ajax=add_to_cart
 add_action( 'init', function () {
@@ -204,4 +221,103 @@ add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ){
         }
     });
 
+    // SQL DEBUG SUMMARY
+    add_action('shutdown', function () {
+
+        if ( ! defined('SAVEQUERIES') || ! SAVEQUERIES || wp_doing_ajax() ) {
+            return;
+        }
+
+        global $wpdb;
+
+        if ( empty($wpdb->queries) ) {
+            return;
+        }
+
+        $queries = $wpdb->queries;
+
+        $total_time = 0;
+        foreach ( $queries as $query ) {
+            $total_time += $query[1];
+        }
+
+        echo "\n<!-- SQL DEBUG SUMMARY\n";
+        printf("Total queries: %d\n", count($queries));
+        printf("Total SQL time: %.4f sec / %.2f ms\n", $total_time, $total_time * 1000);
+        printf("Peak memory: %.2f MB\n", memory_get_peak_usage(true) / 1024 / 1024);
+        echo "-->\n";
+
+
+        // ALL QUERIES SLOWER THAN 2MS
+        echo "\n<!-- SQL QUERIES SLOWER THAN 2MS -->\n";
+
+        $slow_queries = array_filter($queries, function ($query) {
+            return $query[1] >= 0.002;
+        });
+
+        usort($slow_queries, function ($a, $b) {
+            return $b[1] <=> $a[1];
+        });
+
+        foreach ( $slow_queries as $i => $query ) {
+            list($sql, $time, $call) = $query;
+
+            printf(
+                "<!-- #%d | %.4f sec | %s | CALL: %s -->\n",
+                $i + 1,
+                $time,
+                trim(preg_replace('/\s+/', ' ', $sql)),
+                $call
+            );
+        }
+
+        echo "<!-- END SLOW SQL -->\n";
+
+
+        // REPEATED SIMILAR QUERIES
+        $groups = [];
+
+        foreach ( $queries as $query ) {
+            list($sql, $time, $call) = $query;
+
+            $normalized = preg_replace('/\s+/', ' ', trim($sql));
+            $normalized = preg_replace('/\b\d+\b/', '?', $normalized);
+            $normalized = preg_replace("/'[^']*'/", "'?'", $normalized);
+
+            if ( ! isset($groups[$normalized]) ) {
+                $groups[$normalized] = [
+                    'count' => 0,
+                    'time'  => 0,
+                    'sql'   => $normalized,
+                ];
+            }
+
+            $groups[$normalized]['count']++;
+            $groups[$normalized]['time'] += $time;
+        }
+
+        usort($groups, function ($a, $b) {
+            return $b['time'] <=> $a['time'];
+        });
+
+        echo "\n<!-- SQL REPEATED GROUPS TOP 20 -->\n";
+
+        foreach ( array_slice($groups, 0, 20) as $i => $group ) {
+            if ( $group['count'] < 2 ) {
+                continue;
+            }
+
+            printf(
+                "<!-- #%d | count: %d | total: %.4f sec / %.2f ms | %s -->\n",
+                $i + 1,
+                $group['count'],
+                $group['time'],
+                $group['time'] * 1000,
+                $group['sql']
+            );
+        }
+
+        echo "<!-- END SQL GROUPS -->\n";
+
+    });
 
