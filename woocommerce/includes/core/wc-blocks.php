@@ -28,6 +28,10 @@ function plnt_buy_one_click_btn() {
 /* атрибуты */
 
 function plnt_product_attributes($root_class = '') {
+  if ( is_front_page() ) {
+    return;
+  }
+
 	global $product;
 
 	if ( ! $product ) {
