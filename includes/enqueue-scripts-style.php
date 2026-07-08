@@ -352,15 +352,6 @@ function plnt_styles() {
       'all'
     );
   }
-
-	// wp_enqueue_style(
-	// 	'fonts',
-	// 	//'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap',
-	// 	'https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap',
-  //   array(),
-	// 	null,
-	// 	'all'
-	// );
 }
 
 add_action('wp_head', function () { 
@@ -377,6 +368,8 @@ add_action('wp_head', function () {
 /* Enqueue */
 add_action( 'wp_enqueue_scripts', 'plnt_scripts' );
 add_action( 'wp_enqueue_scripts', 'plnt_styles' );
+
+
 
 /* Other */
 function my_enqueue_recaptcha_woo_js() {

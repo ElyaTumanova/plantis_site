@@ -3,17 +3,12 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <!-- Schema.org -->
-    <meta itemprop="image" content="<?php echo carbon_get_theme_option('logo') ?>">
-    <meta itemprop="name" content="Интернет-магазин комнатных растений в Москве - Plantis">
-    <meta itemprop="openingHours" content="Mo-Su 10:00-20:00"/>
-    <meta itemprop="telephone" content="+7 800 201 57 90">
-    <span  itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-      <meta itemprop="streetAddress" content="ул. Мещерякова, д.3">
-      <meta itemprop="addressLocality" content="Москва">
-      <meta itemprop="addressCountry" content="RU">
-    </span>
-    <meta itemprop="priceRange" content="100 - 40000">
+  <!-- Schema.org -->
+  <meta itemprop="image" content="<?php echo carbon_get_theme_option('logo') ?>">
+  <meta itemprop="name" content="Интернет-магазин комнатных растений в Москве - Plantis">
+  <meta itemprop="openingHours" content="Mo-Su 10:00-20:00"/>
+  <meta itemprop="telephone" content="+7 800 201 57 90">
+  <meta itemprop="priceRange" content="100 - 40000">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<!-- /Schema.org -->

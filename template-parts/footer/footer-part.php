@@ -46,6 +46,7 @@ $logo = carbon_get_theme_option('logo');
         <div itemprop = "address" itemscope itemtype="http://schema.org/PostalAddress">
             <meta itemprop="addressLocality" content="г. Москва">
             <meta itemprop="streetAddress" content="ул. Мещерякова, д.3.">
+            <meta itemprop="addressCountry" content="RU">
         </div>
         <!-- /Schema.org -->
       </div>
