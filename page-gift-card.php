@@ -208,33 +208,43 @@ if ( $gift_card_id > 0 ) {
 <?php //get_template_part( 'template-parts/gift-card-faq' ); ?>
 
 <?php else:?>
-    <div class="gift-card-cb-content-area">
-      <h1 class="gift-card__check-title">Проверить баланс подарочного сертификата</h1>
-      <form method="get" class="gc-balance-form" novalidate>
-        <label for="gcnum">Номер подарочной карты</label>
-        <input id="gcnum" 
-        name="gcnum" 
-        type="text" 
-        inputmode="latin"
-        autocomplete="off" 
-        required 
-        pattern="^[0-9A-Fa-f]{4}(?:-[0-9A-Fa-f]{4}){3}$"
-        title="Формат: XXXX-XXXX-XXXX-XXXX (только 0-9 и A-F)"/>
-        <span class="field__errors"></span>
+    <div class="gift-card-cb-content-area section">
+      <h1 class="gift-card__check-title h1">Проверить баланс подарочного сертификата</h1>
 
-        <div class="row">
-          <button type="submit" class="button gc-balance__checkBtn">
-            Проверить
-            <!-- <span id="spin" class="spinner" style="display:none"></span> -->
-          </button>
-          <button type="button" class="button gc-balance__clearBtn">Очистить</button>
+      <form method="get" class="gc-balance-form" id="gc-balance-form" novalidate>
+          <div class="gc-balance-form-wrap">
+          <img class="gc-balance-form-image"
+            src="<?php echo esc_url( get_template_directory_uri() . '/images/gift-card/check-balance-bg.png' ); ?>" 
+            alt=""
+            width="480"
+            height="363"
+          >
+          <div class="gc-balance-form-inner">
+            <label for="gcnum">Введите номер подарочной карты</label>
+            <input id="gcnum"
+            name="gcnum"
+            type="text"
+            inputmode="latin"
+            autocomplete="off"
+            placeholder="— — — —   — — — —   — — — —    — — — —"
+            required
+            pattern="^[0-9A-Fa-f]{4}(?:-[0-9A-Fa-f]{4}){3}$"
+            title="Формат: XXXX-XXXX-XXXX-XXXX (только 0-9 и A-F)"/>
+            <span class="field__errors"></span>
+          </div>
         </div>
-
-        <!-- <div id="msg" class="result" style="display:none"></div> -->
-      </form>
+          <div class="gc-balance-form-submit">
+            <button type="submit" class="button button--green gc-balance__checkBtn">
+              Проверить
+            </button>
+            <button type="button" class="button button--green-l gc-balance__clearBtn">Очистить</button>
+          </div>
+        </form>
       <?php if ($gcnum):?>
-          <p class="gift-card__not-found">Карта с номером <span><?php echo esc_html($gcnum)?></span> не найдена.</p>
+        <p class="gift-card__not-found">Карта с номером <span><?php echo esc_html($gcnum)?></span> не найдена.</p>
       <?php endif; ?>
+
+      
 </div>
 <? endif;?>
 

@@ -34,12 +34,31 @@ if ( ! defined( 'ABSPATH' ) ) {
         </ul>
       </nav>
     </li>
-    <li class="menu__item icon icon--pre icon--gift">
+    <li class="menu__item icon icon--chevron-down"
+      data-js-dropdown-open
+    >
+      Подарочный сертификат
+      <nav class="menu__dropdown dropdown">
+        <ul class="dropdown__list">
+          <li class="dropdown__item">
+              <a href="<?php echo site_url()?>/shop/gift-card">Купить подарочный сертификат</a>
+          </li>
+          <li class="dropdown__item">
+              <a href="<?php echo site_url()?>/gift-card">Проверить баланс</a>
+          </li>
+          <li class="dropdown__item">
+              <a href="<?php echo site_url()?>/gift-card-info">О подарочном сертификате</a>
+          </li>
+          
+        </ul>
+      </nav>
+    </li>
+    <!-- <li class="menu__item icon icon--pre icon--gift">
       <a
-        href="<?php get_site_url()?>/shop/gift-card"
+        href="<?php //get_site_url()?>/shop/gift-card"
       >
         Подарочный сертификат
       </a>
-    </li>
+    </li> -->
   </ul>
 </nav>

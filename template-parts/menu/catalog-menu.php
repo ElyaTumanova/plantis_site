@@ -41,6 +41,10 @@ if ( ! defined( 'ABSPATH' ) ) {
         Растения от А до Я
       </li>
 
+      <li class="catalog-dropdown__cats-item icon icon--arrow-right" data-menu = "menu_gift_card">
+        <?php echo plnt_icon('gift'); ?>
+        Подарочный сертификат
+      </li>
     </ul>
   </div>
   <?php echo "<!-- Timing: dropdown__cats = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>
@@ -175,6 +179,24 @@ if ( ! defined( 'ABSPATH' ) ) {
       </div>
       <div class="catalog-dropdown__sub-cats-body custom-scroll">
         <?php get_az_palnts_submenu(); ?>
+      </div>
+    </nav>
+    <nav class="catalog-dropdown__sub-cats-wrap" data-menu = "menu_gift_card">
+      <div class="catalog-dropdown__sub-cats-header icon icon--arrow-right h5">
+        <span>Подарочный сертификат</span>
+      </div>
+      <div class="catalog-dropdown__sub-cats-body custom-scroll">
+        <ul class="cats-sub-menu__list">
+          <li class="cats-sub-menu__item">
+            <a class="cats-sub-menu__item-link" href="<?php echo site_url()?>/shop/gift-card">Купить подарочный сертификат</a>
+          </li>
+          <li class="cats-sub-menu__item">
+            <a class="cats-sub-menu__item-link" href="<?php echo site_url()?>/gift-card">Проверить баланс</a>
+          </li>
+          <li class="cats-sub-menu__item">
+            <a class="cats-sub-menu__item-link" href="<?php echo site_url()?>/gift-card-info">О подарочном сертификате</a>
+          </li>
+        </ul>
       </div>
     </nav>
     <?php echo "<!-- Timing: sub-cats menu_az_palnts = " . round((microtime(true) - $start) * 1000, 2) . " ms -->"; ?>

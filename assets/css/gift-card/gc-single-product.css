@@ -816,7 +816,7 @@ body.is-gradient-arc-hover {
   
   .gc-amount-swiper {
     width: calc(100% - 32px);
-    padding-block: 20px;
+    /* padding-block: 20px; */
 
     margin-top: 24px;
     background-color: var(--green-l-color);
@@ -825,6 +825,8 @@ body.is-gradient-arc-hover {
 
   .gc-amount-swiper .swiper-wrapper {
     align-items: center;
+    padding-top: 20px;
+    padding-bottom: 32px;
   }
 
   .gc-amount-slide {
@@ -1209,6 +1211,9 @@ body:has(.gc-step-panel.is-active[data-gc-step-panel="3"]) .gc-step-btn--next {
 .gc-mobile-timeline--wheel {
   display: block;
   margin-bottom: 0px;
+  margin-top: 0px;
+  bottom: 20px;
+  pointer-events: none;
 }
 
 .gc-mobile-timeline::before {

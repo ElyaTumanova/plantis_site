@@ -193,6 +193,12 @@
   color: var(--accent-color);
 }
 
+@media (min-width: 1151px) {
+  [data-menu="menu_gift_card"] {
+    display: none;
+  }
+}
+
 /* burger menu */
 
 .burger-menu .catalog-dropdown {

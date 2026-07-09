@@ -1270,6 +1270,9 @@ if (amountSwiperEl && input && isMobile) {
     centeredSlides: true,
     spaceBetween: 20,
     slideToClickedSlide: true,
+    touchRatio: 1.5,
+    threshold: 2,
+    longSwipesRatio: 0.25,
     resistanceRatio: 0.4,
 
     on: {

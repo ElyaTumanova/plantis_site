@@ -127,7 +127,6 @@ new ElementWidth ('.burger-menu__modal', '--burgerMenuModalWidth')
 
 class HoverDropdown {
   selectors = {
-    open: '[data-js-dropdown-open]',
     dropdown: '.dropdown',
   }
 
@@ -137,10 +136,9 @@ class HoverDropdown {
 
   constructor (root) {
     this.root = root
-    this.open = this.root.querySelector(this.selectors.open)
+    this.open = this.root
     this.dropdown = this.root.querySelector(this.selectors.dropdown)
     this.menuTimeout = null
-
     this.init()
   }
 
@@ -204,9 +202,9 @@ class HoverDropdownCollection {
   }
 }
 
-new HoverDropdownCollection ('.menu__list')
+new HoverDropdownCollection ('[data-js-dropdown-open]')
 
-new HoverDropdownCollection('.header__info-menu')
+// new HoverDropdownCollection('.header__info-menu')
 
 
 class ScrollTopToggle {
