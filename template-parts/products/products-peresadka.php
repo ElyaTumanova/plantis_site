@@ -8,10 +8,10 @@ global $gorshki_cat_id;
 global $treez_cat_id;
 global $lechuza_cat_id;
 
-$is_plants_in_cart = true;
+// $is_plants_in_cart = true;
 
 // Если нужно учитывать наличие растений в корзине, раскомментируй
-/*
+
 $is_plants_in_cart = false;
 
 foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
@@ -29,7 +29,7 @@ foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 		break;
 	}
 }
-*/
+
 
 $img = sprintf(
 	'<img src="%s" alt="" aria-hidden="true" width="50" height="48">',

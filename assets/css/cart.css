@@ -6,6 +6,12 @@
 
 
 /* cart__wrap */
+.cart__wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
 @media (min-width: 1024px) {
   .cart__wrap {
     display: grid;
