@@ -26,10 +26,11 @@ function updateCheckoutSummaryState() {
   if (!target || !woocommerce) return;
 
   const rect = target.getBoundingClientRect();
+  const bottomOffset = headerNavHeightValue;
 
   const isVisible =
 
-    rect.top < window.innerHeight &&
+    rect.top < window.innerHeight - bottomOffset &&
     rect.bottom > 0;
 
   woocommerce.classList.toggle('checkout-button-visible', isVisible);

@@ -84,7 +84,7 @@ function plnt_get_script_files() {
 		array(
 			'handle' => 'cart-helpers',
 			'file'   => 'cart-helpers',
-			'deps'   => array( 'jquery' ),
+			'deps'   => array( 'jquery','helpers' ),
 		),
 		array(
 			'handle' => 'filter-show-more',
