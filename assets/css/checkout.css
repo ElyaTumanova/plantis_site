@@ -1178,9 +1178,13 @@ label.list-view {
     margin: 15px;
 } */
 
-/* .checkout__text_alarm {
-	color: var(--red-color);
-} */
+.checkout__text_alarm {
+	background-color: var(--green-l-color);
+  padding: clamp(1.25rem, 1.1543rem + 0.4255vw, 1.5rem);
+  border-radius: 16px;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
 
 .checkout__text span{
 	font-weight: 700;

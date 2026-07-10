@@ -22,9 +22,9 @@ if ( ! defined( 'ABSPATH' ) ) {
     add_action('woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20);
 
     // // блок со способами доставки
-    add_action( 'woocommerce_checkout_order_review', 'wc_cart_totals_shipping_html', 12 );
+    add_action( 'woocommerce_checkout_order_review', 'wc_cart_totals_shipping_html', 13 );
     // // информация о пересадке в горшок
-    add_action('woocommerce_checkout_order_review', 'plnt_checkout_peresadka_info', 11);
+    add_action('woocommerce_checkout_order_review', 'plnt_checkout_peresadka_info', 12);
 
     function plnt_checkout_peresadka_info(){
         ?>
@@ -250,6 +250,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
             </div>
             <?php plnt_checkout_giftcard_form();?>
+
+            <span data-js-button-visible></span>
 
             <button
                 type="submit"

@@ -115,6 +115,7 @@ add_action( 'woocommerce_cart_is_empty', 'plnt_cart_popular', 30);
             <?php endif; ?>
           </div>
         </div>
+        <span data-js-button-visible></span>
         <a
           href="<?php echo esc_url( wc_get_checkout_url() ); ?>"
           class="cart-summary__button button button--green"

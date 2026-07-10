@@ -20,7 +20,7 @@ jQuery(function ($) {
 let summaryScrollTimer;
 
 function updateCheckoutSummaryState() {
-  const target = document.querySelector('.cart-summary__wrap');
+  const target = document.querySelector('[data-js-button-visible]');
   const woocommerce = document.querySelector('.woocommerce');
 
   if (!target || !woocommerce) return;
@@ -28,11 +28,11 @@ function updateCheckoutSummaryState() {
   const rect = target.getBoundingClientRect();
 
   const isVisible =
-    rect.height > 0 &&
+
     rect.top < window.innerHeight &&
     rect.bottom > 0;
 
-  woocommerce.classList.toggle('checkout-summary-visible', isVisible);
+  woocommerce.classList.toggle('checkout-button-visible', isVisible);
 }
 
 function initCheckoutObserver() {

@@ -345,22 +345,6 @@ Contents
         }
     }
 
-    // выбрана крупногабартная доставка (с использованием класса доставки - не применяем)
-    //add_action( 'woocommerce_checkout_order_review', 'my_delivery_large_products_oder_info', 40 );
-    //add_action( 'woocommerce_review_order_before_shipping', 'my_delivery_large_products_oder_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
-
-    function my_delivery_large_products_oder_info () {
-        $class_slug = 'delivery_large';
-
-        foreach ( WC()->cart->get_cart() as $cart_item ) {
-            if( $cart_item['data']->get_shipping_class() == $class_slug ){
-                echo '<tr> <td colspan="2" class="checkout__text checkout__text_large">
-                Вы выбрали крупногабаритный товар. Стоимость доставки увеличена. <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></td></tr>';
-                break; // Stop the loop
-            } 	
-        }
-    }
-
     // сообщение о крупногабартной доставке (с машинкой)
 
     add_action('plnt_large_delivery_notice', 'plnt_large_delivery_notice');
@@ -377,7 +361,7 @@ Contents
     
     //комментарий к выбранному способу доставки
 
-    add_action( 'woocommerce_checkout_order_review', 'delivery_info', 13 );
+    add_action( 'woocommerce_checkout_order_review', 'delivery_info', 14 );
    
     function delivery_info(){
         if (! is_not_gift_card_checkout()) {
@@ -598,7 +582,7 @@ Contents
         }
     }
 
-    add_action( 'woocommerce_review_order_before_shipping', 'delivery_pochta_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
+    add_action( 'woocommerce_checkout_order_review', 'delivery_pochta_info', 11 ); //встраиваем в таблицу, использовать теги таблицы
 
     function delivery_pochta_info() {
         global $delivery_pochta;
@@ -616,8 +600,8 @@ Contents
         }
 
         if( $notOnlyPlantsInCart && $delivery_pochta == $chosen_methods[0]) {
-            echo '<tr> <td colspan="2" class="checkout__text checkout__text_pochta checkout__text_alarm">
-            Почтой России мы доставляем только комнатные растения.</td></tr>';
+            echo '<div class="checkout__text checkout__text_pochta checkout__text_alarm">
+            Почтой России мы доставляем только комнатные растения.</div>';
         }
     }
 
@@ -709,8 +693,8 @@ Contents
 
 //уведомление о минимальной сумме заказа для Treez & Lechuza
     //add_action( 'woocommerce_checkout_order_review', 'min_amount_for_treez_info', 40 );
-    add_action( 'woocommerce_review_order_before_shipping', 'min_amount_for_treez_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
-    add_action( 'woocommerce_review_order_before_shipping', 'min_amount_for_lechuza_info', 20 ); //встраиваем в таблицу, использовать теги таблицы
+    add_action( 'woocommerce_checkout_order_review', 'min_amount_for_treez_info', 11 ); //встраиваем в таблицу, использовать теги таблицы
+    add_action( 'woocommerce_checkout_order_review', 'min_amount_for_lechuza_info', 11 ); //встраиваем в таблицу, использовать теги таблицы
 
     function min_amount_for_treez_info(){
         $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
@@ -727,14 +711,11 @@ Contents
                 $cat_amount = $cat_amount + $price*$qty;
             }	
         }
-
-        // if( $cat_amount < $min_treez_delivery && $products_min) {
-        //     echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
-        //     Минимальная сумма заказа для кашпо и искусственных растений Treez <span>'.$min_treez_delivery,'</span> рублей (без учета стоимости других товаров).</td></tr>';
-        // }   
         if( $products_min) {
-            echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
-            Доставка кашпо и искусственных растений Treez осуществляется со склада в течение 3-7 дней. <br>Оплатить заказ с кашпо и искусственными растениями Treez можно будет после подтверждения их наличия. Наш менеджер свяжется с Вами после оформления заказа.</td></tr>';
+            echo '<div class="checkout__text checkout__text_treez checkout__text_alarm">
+            Доставка кашпо и искусственных растений Treez осуществляется со склада в течение 3-7 дней. 
+            <br>Оплатить заказ с кашпо и искусственными растениями Treez можно будет после подтверждения их наличия. 
+            Наш менеджер свяжется с Вами после оформления заказа.</div>';
         }   
     }
 
@@ -754,13 +735,11 @@ Contents
           }	
         }
 
-        // if( $cat_amount < $min_lechuza_delivery && $products_min) {
-        //     echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
-        //     Минимальная сумма заказа для кашпо Lechuza <span>'.$min_lechuza_delivery,'</span> рублей (без учета стоимости других товаров).</td></tr>';
-        // }   
         if( $products_min) {
-            echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
-            Доставка кашпо Lechuza осуществляется со склада в течение 3-7 дней. <br> Оплатить заказ с кашпо Lechuza можно будет после подтверждения их наличия. Наш менеджер свяжется с Вами после оформления заказа.</td></tr>';
+            echo '<div class="checkout__text checkout__text_treez checkout__text_alarm">
+            Доставка кашпо Lechuza осуществляется со склада в течение 3-7 дней. 
+            <br> Оплатить заказ с кашпо Lechuza можно будет после подтверждения их наличия. 
+            Наш менеджер свяжется с Вами после оформления заказа.</div>';
         }   
     }
 
