@@ -84,48 +84,17 @@ if ( $gift_card_id > 0 ) {
 
 <?php if ( $gift_card ):?>
 
-<section class="gift-showcase">
-  <div class="gift-showcase__wrap">
-    <div class="gift-showcase__grid">
-
-      <div class="gift-showcase__content">
-        <h1 class="gift-showcase__title">
-          Подарочный сертификат
-        </h1>
-
-        <div class="gift-showcase__bottom">
-          <div class="gift-showcase__meta">
-            <div class="gift-showcase__meta-item">
-              <span class="gift-showcase__meta-label">Номер</span>
-              <div class="gift-showcase__meta-value gift-showcase__meta-value--code">
-                <span id="gift-code"><?php echo esc_html( $gcnum ); ?></span>
-                <button class="copy-btn" type="button" data-copy-target="#gift-code">
-                  Скопировать
-                </button>
-              </div>
-            </div>
-
-            <div class="gift-showcase__meta-item">
-              <span class="gift-showcase__meta-label">Срок действия</span>
-              <span class="gift-showcase__meta-value">
-                <?php echo esc_html( $gift_card['_ywgc_expiration_date_formatted'][0] ?? '' ); ?>
-              </span>
-            </div>
-          </div>
-
-          <div class="gift-panel__actions gift-panel__actions--left">
-            <a class="button gift-btn gift-btn--primary" href="<?php echo esc_url( get_site_url() . '/shop' ); ?>">
-              К покупкам
-            </a>
-          </div>
-        </div>
-      </div>
-
+<div class="content-area">
+  <section class="gift-showcase section">
+    <div class="gift-showcase__wrap">
+  
+      <h1 class="gift-showcase__title h1">
+        Подарочный сертификат
+      </h1>
+  
       <div class="gift-showcase__card">
         <div class="gift-panel">
           <div class="gift-panel__head">
-            <h2 class="gift-panel__title">Ваш сертификат</h2>
-
             <div class="gift-panel__switch">
               <button class="gift-panel__switch-btn is-active" type="button" data-view-btn="card">
                 Сертификат
@@ -135,7 +104,7 @@ if ( $gift_card_id > 0 ) {
               </button>
             </div>
           </div>
-
+  
           <div class="gift-panel__body">
             <div class="gift-panel__view is-active" data-view-panel="card">
               <div
@@ -147,7 +116,7 @@ if ( $gift_card_id > 0 ) {
                   background-repeat: no-repeat, no-repeat;
                 "
               >
-              
+  
                   <?php if ( ! empty( $image_url ) ) : ?>
                     <img
                       class="gift-certificate__image"
@@ -155,22 +124,30 @@ if ( $gift_card_id > 0 ) {
                       alt=""
                     >
                   <?php endif; ?>
-     
-                  <div class="gift-certificate__amount">
+  
+                  <div class="gift-image-amount">
                     <?php echo esc_html( $gift_card['_ywgc_balance_total'][0] ?? '' ); ?><span>₽</span>
                   </div>
-            
+  
               </div>
             </div>
-
+  
             <div class="gift-panel__view" data-view-panel="message">
-              <div class="gift-certificate__message">
+              <div 
+                class="gift-certificate__message"
+                style="
+                  background-image: <?php echo esc_attr( $gradient_css ); ?>;
+                  background-size: cover, cover;
+                  background-position: center, center;
+                  background-repeat: no-repeat, no-repeat;
+                "
+                >
                 <?php if ( ! empty( $gift_card['_ywgc_recipient_name'][0] ) ) : ?>
                   <p class="gift-certificate__message__to">
                     <?php echo esc_html( $gift_card['_ywgc_recipient_name'][0] ); ?>
                   </p>
                 <?php endif; ?>
-
+  
                 <div class="gift-certificate__message-text">
                   <?php if ( ! empty( $gift_card['_ywgc_message'][0] ) ) : ?>
                     <?php
@@ -188,7 +165,7 @@ if ( $gift_card_id > 0 ) {
                     <p>Открой для себя мир комнатных растений, подбери красивые горшки и полезные аксессуары.</p>
                     <p>Пусть твой дом расцветает вместе с новыми зелёными друзьями!</p>
                   <?php endif; ?>
-
+  
                   <?php if ( ! empty( $gift_card['_ywgc_sender_name'][0] ) ) : ?>
                     <p>
                       <strong>От:</strong> <?php echo esc_html( $gift_card['_ywgc_sender_name'][0] ); ?>
@@ -200,19 +177,49 @@ if ( $gift_card_id > 0 ) {
           </div>
         </div>
       </div>
-
+  
+  
+      <a class="gift-showcase__button button button--green" href="<?php echo esc_url( get_site_url() . '/shop' ); ?>">
+        К покупкам
+      </a>
+  
+      <div class="gift-showcase__meta">
+        <div class="gift-showcase__meta-item">
+            Действует до:
+  
+            <?php echo esc_html( $gift_card['_ywgc_expiration_date_formatted'][0] ?? '' ); ?>
+  
+        </div>
+  
+        <div class="gift-showcase__meta-item gift-showcase__meta-item--code">
+          <span class="gift-showcase__meta-label">Номер сертификата</span>
+          <div class="gift-showcase__meta-value gift-showcase__meta-value--code">
+            <button
+              class="copy-btn button button--clean icon icon--copy icon--pre"
+              type="button"
+              data-copy-target="#gift-code">
+            </button>
+            <span id="gift-code"><?php echo esc_html( $gcnum ); ?></span>
+          </div>
+        </div>
+  
+  
+      </div>
+  
+  
     </div>
-  </div>
-</section>
-
-<?php //get_template_part( 'template-parts/gift-card-faq' ); ?>
+  </section>
+  
+  <?php get_template_part( 'template-parts/gift-card/gift-card-advantages' ); ?>
+  <?php get_template_part( 'template-parts/gift-card/gift-card-faq' ); ?>
+</div>
 
 <?php else:?>
     <div class="gift-card-cb-content-area section">
       <h1 class="gift-card__check-title h1">Проверить баланс подарочного сертификата</h1>
 
       <form method="get" class="gc-balance-form" id="gc-balance-form" novalidate>
-          <div class="gc-balance-form-wrap">
+        <div class="gc-balance-form-wrap">
           <img class="gc-balance-form-image"
             src="<?php echo esc_url( get_template_directory_uri() . '/images/gift-card/check-balance-bg.png' ); ?>" 
             alt=""
@@ -231,6 +238,10 @@ if ( $gift_card_id > 0 ) {
             pattern="^[0-9A-Fa-f]{4}(?:-[0-9A-Fa-f]{4}){3}$"
             title="Формат: XXXX-XXXX-XXXX-XXXX (только 0-9 и A-F)"/>
             <span class="field__errors"></span>
+
+            <?php if ($gcnum):?>
+              <p class="gift-card__not-found">Карта <span><?php echo esc_html($gcnum)?></span> не найдена.</p>
+            <?php endif; ?>
           </div>
         </div>
           <div class="gc-balance-form-submit">
@@ -240,9 +251,6 @@ if ( $gift_card_id > 0 ) {
             <button type="button" class="button button--green-l gc-balance__clearBtn">Очистить</button>
           </div>
         </form>
-      <?php if ($gcnum):?>
-        <p class="gift-card__not-found">Карта с номером <span><?php echo esc_html($gcnum)?></span> не найдена.</p>
-      <?php endif; ?>
 
       
 </div>

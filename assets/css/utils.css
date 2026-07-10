@@ -237,6 +237,12 @@
   mask-image: var(--plus-icon);
 }
 
+.icon--copy::after {
+  --gap: 8px;
+  -webkit-mask-image: var(--copy-icon);
+  mask-image: var(--copy-icon);
+}
+
 
 
 /* modal-mob */
