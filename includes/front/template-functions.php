@@ -71,7 +71,7 @@ function plnt_wishlist_button() {
 
 function plnt_adress_link() {
   ?>
-  <a href="https://yandex.ru/maps/-/CPWKiHNG" target="_blank">
+  <a href="https://yandex.ru/maps/org/plentis/237252555639?si=p1prahmcdc8pzvvy45n9ctx9d8" target="_blank">
     Москва, ул. Мещерякова, д.3
   </a>
   <?php

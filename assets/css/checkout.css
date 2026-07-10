@@ -64,7 +64,7 @@
   background-color: var(--stock-backorder);
 } */
 
-@media (min-width: 768px) {
+@media (min-width: 850px) {
 	.checkout__wrap {
     display: grid;
     grid-template-columns: calc(100% - 330px) 300px;
@@ -167,33 +167,49 @@
 
 
 #order_review table {
-    border-collapse: separate;
-    border-spacing: 0;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
+#order_review tr {
+  padding: var(--pad);
+  display: grid;
+  gap: 16px;
+  grid-template-columns: clamp(2.5rem, -3.1667rem + 10.6667vw, 5.5rem) 1fr 55px 90px;
+  border-bottom: var(--border-d);
+  align-items: center;
+}
 
+@media (max-width: 768px) {
+  #order_review tr {
+    gap: 8px;
+    grid-template-columns: clamp(2.5rem, -3.1667rem + 10.6667vw, 5.5rem) 1fr 40px 60px;
+  }
+}
 
+@media (max-width: 359px) {
+  #order_review tr {
+    grid-template-columns: clamp(2.5rem, -3.1667rem + 10.6667vw, 5.5rem) minmax(135px, 1fr) 40px 60px;
+  }
+}
 #order_review > table > thead {
   background-color:var(--green-l-color); 
 }
+#order_review > table > thead tr {
+  padding: clamp(0.75rem, 0.6543rem + 0.4255vw, 1rem); /* 16px - 12px */
+}
+
 #order_review > table > thead th {
   font-weight: 400;
-  padding: clamp(0.75rem, 0.6543rem + 0.4255vw, 1rem); /* 16px - 12px */
-  padding-inline: var(--pad);;
   white-space: nowrap;
   text-align: start;
 }
 
-#order_review > table > thead th:first-child {
-  padding-left: clamp(0.75rem, 0.6543rem + 0.4255vw, 1rem);
+@media (max-width: 768px) {  
+  #order_review > table > thead th {
+    font-size: 12px;
+  }
 }
-#order_review > table > thead th:last-child {
-  padding-right: clamp(0.75rem, 0.6543rem + 0.4255vw, 1rem);
-}
-/* 
-#order_review > table > tfoot > tr.fee > td {background-color:#F1F6F3; color: #000000; } 
-
-#order_review > table > tfoot > tr.fee > td > span > bdi {color: #000000; }  */
 
 #order_review > table > tfoot > tr:nth-child(3) > th {
     font-weight: 700;
@@ -202,30 +218,18 @@
     text-align: left;
 }
 
-#order_review > table > thead > tr > th.product-name {
-    /* font-weight: 500;
-    font-size: 16px;
-    padding: 10px 5px 10px 20px;
-    text-align: left;
-    width: 70%;
-    border-top-left-radius: 20px; */
-}
-
-#order_review > table > thead > tr > th.product-total {
-    /* font-weight: 500;
-    font-size: 16px;
-    padding: 10px 20px 10px 5px;
-    text-align: right;
-    border-top-right-radius: 20px; */
-}
 
 .woocommerce-checkout .woocommerce-checkout-review-order table tbody tr td {
-    padding: var(--pad);
-    border-bottom: var(--border-d);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--black-color);
-    /* line-height: 1.4; */
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--black-color);
+  padding: 0px;
+}
+
+@media (max-width: 768px) {
+  .woocommerce-checkout .woocommerce-checkout-review-order table tbody tr td {
+    font-size: 14px;
+  }
 }
 
 .woocommerce-checkout .woocommerce-checkout-review-order table tbody tr td strong {
@@ -237,18 +241,20 @@
   font-weight: 400;
   margin-top: clamp(0.5rem, 0.4043rem + 0.4255vw, 0.75rem); /* 12px - 8px */
 }
+@media (max-width: 359px) {
+  #order_review > table > tbody > tr > td.product-name .card__stockstatus::after {
+    display: none;
+  }
+}
 @media (max-width: 768px) {
   #order_review > table > tbody > tr > td.product-name {
     font-weight: 400;
+    font-weight: 12px;
   }
-}
-#order_review > table > tbody > tr > td.product-thumbnail {
-  width: clamp(2.5rem, 1.3511rem + 5.1064vw, 5.5rem); /* 88px - 40px */
-  height: clamp(2.5rem, 1.3511rem + 5.1064vw, 5.5rem); /* 88px - 40px */
 }
 
 #order_review > table > tbody > tr > td.product-thumbnail img {
-  border-radius: var(--br-m);
+  border-radius: var(--br-s);
 }
 
 #order_review > table > tfoot > tr.woocommerce-shipping-totals.shipping > td > strong {
@@ -266,17 +272,19 @@
     justify-content: end;
 }
 
-.woocommerce-checkout .woocommerce-checkout-review-order table tbody td {
-    padding: 10px 20px;
-}
-
 .woocommerce-checkout .woocommerce-checkout-review-order table .amount {
     font-size: 20px;
     line-height: 1;
 }
 
+@media (max-width: 768px) {
+  .woocommerce-checkout .woocommerce-checkout-review-order table .amount {
+    font-size: 14px;
+  }
+}
+
 .cart-subtotal {
-    display: none;
+    display: none !important;
 }
 
 /* .woocommerce-checkout .woocommerce-checkout-review-order table tr th:last-child, .woocommerce-checkout .woocommerce-checkout-review-order table tr td:last-child {
