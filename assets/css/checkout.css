@@ -20,21 +20,16 @@
 
 
 .place-order {
-  display: none;
+  display: none !important;
 }
 /* скрываем Уже покупали? */
 .woocommerce-form-login-toggle {
-    display: none;
+    display: none !important;
 }
 
 .woocommerce-checkout-review-order-table .ywgc-gift-card-applied {
-  display: none;
+  display: none !important;
 }
-
-/* .woocommerce-checkout-review-order-table {
-    table-layout:fixed;
-
-} */
 
 .woocommerce-checkout-review-order-table {
   --pad: 8px;
