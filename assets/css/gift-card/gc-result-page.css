@@ -533,6 +533,14 @@
 }
 .gift-certificate__message-text p {
   margin: 0;
+  font-family:
+    'Onest', sans-serif,
+    "Segoe UI Emoji",
+    "Apple Color Emoji",
+    "Noto Color Emoji",
+    sans-serif;
+
+  font-variant-emoji: emoji;
 }
 
 
