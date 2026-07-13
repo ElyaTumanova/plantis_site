@@ -77,14 +77,34 @@ function plnt_get_script_files() {
 			'deps'   => array(),
 		),
 		array(
-			'handle' => 'ajax-update-cart',
-			'file'   => 'ajax-update-cart',
-			'deps'   => array( 'jquery' ),
-		),
-		array(
 			'handle' => 'cart-helpers',
 			'file'   => 'cart-helpers',
 			'deps'   => array( 'jquery','helpers' ),
+		),
+		array(
+			'handle' => 'cart-ajax-core',
+			'file'   => 'cart-ajax-core',
+			'deps'   => array( 'jquery','helpers' ),
+		),
+    array(
+			'handle' => 'yandex-ecommerce',
+			'file'   => 'yandex-ecommerce',
+			'deps'   => array( 'jquery','cart-ajax-core' ),
+		),
+    // array(
+		// 	'handle' => 'ajax-update-cart',
+		// 	'file'   => 'ajax-update-cart',
+		// 	'deps'   => array( 'jquery','cart-ajax-core' ),
+		// ),
+    array(
+			'handle' => 'quantity-buttons',
+			'file'   => 'quantity-buttons',
+			'deps'   => array( 'jquery','cart-ajax-core','yandex-ecommerce' ),
+		),
+		array(
+			'handle' => 'cart-reccomedations',
+			'file'   => 'cart-reccomedations',
+			'deps'   => array( 'jquery','cart-ajax-core' ),
 		),
 		array(
 			'handle' => 'filter-show-more',
@@ -148,11 +168,6 @@ function plnt_get_script_files() {
 			'ver'    => null,
 		),
 		array(
-			'handle' => 'quantity-buttons',
-			'file'   => 'quantity-buttons',
-			'deps'   => array( 'jquery' ),
-		),
-		array(
 			'handle' => 'catalog-menu',
 			'file'   => 'catalog-menu',
 			'deps'   => array( 'jquery' ),
@@ -167,11 +182,6 @@ function plnt_get_script_files() {
 		// 	'file'   => 'cart-backorder-crossell',
 		// 	'deps'   => array( 'jquery' ),
 		// ),
-		array(
-			'handle' => 'cart-reccomedations',
-			'file'   => 'cart-reccomedations',
-			'deps'   => array( 'jquery' ),
-		),
 		array(
 			'handle' => 'contact-form-validation',
 			'file'   => 'contact-form-validation',

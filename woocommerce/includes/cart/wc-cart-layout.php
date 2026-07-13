@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
 remove_action('woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10);
 add_action('woocommerce_cart_collaterals', 'plnt_cart_totals', 10);
-plnt_add_wrapper('cart__wrap section','woocommerce_before_cart', 20, 'woocommerce_after_cart', 10);
+plnt_add_wrapper('cart__wrap section','woocommerce_before_cart', 20, 'woocommerce_after_cart', 10); //cart__wrap
 add_action( 'woocommerce_before_cart', function() {
 	plnt_get_checkout_steps( 'cart' );
 }, 8 );
@@ -20,7 +20,14 @@ remove_action( 'woocommerce_before_checkout_form', 'woocommerce_output_all_notic
 
 // популярные товары в корзине
 add_action( 'woocommerce_after_cart', 'plnt_cart_popular', 10);
-add_action( 'woocommerce_cart_is_empty', 'plnt_cart_popular', 30);
+
+//empty cart
+plnt_add_wrapper('cart__wrap section','woocommerce_cart_is_empty', 5, 'woocommerce_cart_is_empty', 80);
+plnt_add_wrapper('cart-content-fragment','woocommerce_cart_is_empty', 7, 'woocommerce_cart_is_empty', 70);
+plnt_add_wrapper('cart-collaterals','woocommerce_cart_is_empty', 71, 'woocommerce_cart_is_empty', 74);
+plnt_add_wrapper('cart_totals','woocommerce_cart_is_empty', 72, 'woocommerce_cart_is_empty', 73);
+add_action( 'woocommerce_cart_is_empty', 'plnt_empty_cart_btns',15 );
+add_action( 'woocommerce_cart_is_empty', 'plnt_cart_popular', 90);
 
 
 /* Checkout steps */
@@ -76,18 +83,18 @@ add_action( 'woocommerce_cart_is_empty', 'plnt_cart_popular', 30);
 
     if ( $cart_summary['count'] > 0 ) :
     ?>
-      <div class="cart-summary">
-        <div class="cart-summary__wrap">
-          <div class="cart-summary__top cart-summary__row">
-            <span class="cart-summary__title">
+      <div class="cart_totals">
+        <div class="cart_totals__wrap">
+          <div class="cart_totals__top cart_totals__row">
+            <span class="cart_totals__title">
               <?php esc_html_e( 'Итого', 'plantis' ); ?>
             </span>
-            <span class="cart-summary__total">
+            <span class="cart_totals__total">
               <?php echo wp_kses_post( wc_price( $cart_summary['total'] ) ); ?>
             </span>
           </div>
-          <div class="cart-summary__list">
-            <div class="cart-summary__row">
+          <div class="cart_totals__list">
+            <div class="cart_totals__row">
               <span>
                 <?php esc_html_e( 'Кол-во товаров', 'plantis' ); ?>
               </span>
@@ -95,7 +102,7 @@ add_action( 'woocommerce_cart_is_empty', 'plnt_cart_popular', 30);
                 <?php echo esc_html( $cart_summary['count'] ); ?>
               </span>
             </div>
-            <div class="cart-summary__row">
+            <div class="cart_totals__row">
               <span>
                 <?php esc_html_e( 'Общая стоимость', 'plantis' ); ?>
               </span>
@@ -104,11 +111,11 @@ add_action( 'woocommerce_cart_is_empty', 'plnt_cart_popular', 30);
               </span>
             </div>
             <?php if ( $cart_summary['discount'] > 0 ) : ?>
-              <div class="cart-summary__row cart-summary__row--discount">
+              <div class="cart_totals__row cart_totals__row--discount">
                 <span>
                   <?php esc_html_e( 'Скидка', 'plantis' ); ?>
                 </span>
-                <span class="cart-summary__discount">
+                <span class="cart_totals__discount">
                   -<?php echo wp_kses_post( wc_price( $cart_summary['discount'] ) ); ?>
                 </span>
               </div>
@@ -118,10 +125,10 @@ add_action( 'woocommerce_cart_is_empty', 'plnt_cart_popular', 30);
         <span data-js-button-visible></span>
         <a
           href="<?php echo esc_url( wc_get_checkout_url() ); ?>"
-          class="cart-summary__button button button--green"
+          class="cart_totals__button button button--green"
         >
         <?php esc_html_e( 'Перейти к оформлению', 'plantis' ); ?>
-        <span class="cart-summary__button-total"><?php echo wp_kses_post( wc_price( $cart_summary['total'] ) ); ?></span>
+        <span class="cart_totals__button-total"><?php echo wp_kses_post( wc_price( $cart_summary['total'] ) ); ?></span>
         </a>
       </div>
     <?php endif;
@@ -171,28 +178,11 @@ function plnt_cart_popular() {
 	get_template_part('template-parts/products/products-popular'); 
 };
 
-//инициируем слайдер для backorder crossells
-//add_action('woocommerce_before_cart_table', 'plnt_backorder_crossells_swiper_init', 30);
-function plnt_backorder_crossells_swiper_init () {
-	?>
-	<script>
-		jQuery(function($){
-			$( document.body ).on( 'updated_cart_totals', function(){
-				console.log('hi updated_cart_totals');
-				swiper_backorder_crossells_init();
-			});
-		})
-	</script>
-	<?php
-}
+
 
 // замена товара в корзине для регулярного ассортимента backorder
 
-add_action(
-    'woocommerce_after_shop_loop_item',
-    'plnt_backorder_replace_button',
-    20
-);
+add_action('woocommerce_after_shop_loop_item','plnt_backorder_replace_button',20);
 
 function plnt_backorder_replace_button() {
     global $plnt_cart_product_slider_mode;
@@ -217,23 +207,8 @@ function plnt_backorder_replace_button() {
     <?php
 }
 
-add_action( 'wp_ajax_replace_backorder_product', 'plnt_replace_backorder_product' );
-add_action( 'wp_ajax_nopriv_replace_backorder_product', 'plnt_replace_backorder_product' );
-function plnt_replace_backorder_product() {
-
-	if (isset($_POST['backorder_replace_prodId'])){
-		global $woocommerce;
-		$replaceproductid = $_POST['backorder_replace_prodId']; 
-		$replacecartitem = $_POST['backorder_replace_cart_item']; 
-		$woocommerce->cart->add_to_cart( $replaceproductid );
-		$woocommerce->cart->remove_cart_item( $replacecartitem);
-	}    
-    die(); // (required)
-}
-
 // empty cart
 
-add_action( 'woocommerce_cart_is_empty', 'plnt_empty_cart_btns',15 );
 
 function plnt_empty_cart_btns() {
 	global $plants_cat_id;

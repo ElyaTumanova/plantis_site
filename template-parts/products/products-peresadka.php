@@ -132,7 +132,7 @@ if ( ! empty( $crosssell_ids ) && is_array( $crosssell_ids ) ) {
       ?>
 
 
-				<div class="cart__peresadka-added_mini"></div>
+				<!-- <div class="cart__peresadka-added_mini"></div> -->
 			</div>
       </div>
 

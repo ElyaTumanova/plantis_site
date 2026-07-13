@@ -49,17 +49,35 @@ document.addEventListener('DOMContentLoaded', setPriceInputMode)
 
 /* обновление после аякса */
 
-jQuery(document).on('berocket_ajax_filtering_end', () => {
+function plntDispatchCatalogUpdated() {
+  document.dispatchEvent(
+    new CustomEvent('plnt_catalog_updated')
+  );
+}
+
+jQuery(document).on('plnt_catalog_updated', () => {
+  console.log('ajax plnt_catalog_updated')
+  swiper_filter_metki_init()
+  swiper_catalog_card_imgs_init()
   updateActiveFiltersCount()
   setPriceInputMode()
-  // swiper_catalog_card_imgs_init()
+  setSearchFilterField()
 })
 
-jQuery(document).ajaxComplete(() => {
-  updateActiveFiltersCount()
-  setPriceInputMode()
-  // swiper_catalog_card_imgs_init()
-})
+// jQuery(document).on('berocket_ajax_filtering_end', () => {
+//   updateActiveFiltersCount()
+//   setPriceInputMode()
+//   // swiper_catalog_card_imgs_init()
+// })
+
+// jQuery(document).ajaxComplete(() => {
+//   console.log('ajax complete')
+//   swiper_filter_metki_init()
+//   updateActiveFiltersCount()
+//   setPriceInputMode()
+//   setSearchFilterField()
+//   // swiper_catalog_card_imgs_init()
+// })
 
 
 /* название товара для формы купить в один клик */

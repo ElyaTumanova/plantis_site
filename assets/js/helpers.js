@@ -80,7 +80,6 @@ class ElementHeight {
 new ElementHeight ('.header__main-top', '--headerMainTopHeight')
 const headerNavHeight  = new ElementHeight ('.header__nav', '--headerNavHeight')
 const headerNavHeightValue = headerNavHeight.getPropertyValue()
-console.log(headerNavHeightValue)
 new ElementHeight ('.header__desktop', '--headerHeight')
 new ElementHeight ('.header__main', '--headerMainHeight')
 new ElementHeight ('.header__mob', '--headerMobHeight')

@@ -182,20 +182,20 @@ if ( ! defined( 'ABSPATH' ) ) {
         ?>
 
         <div class="checkout-summary">
-            <div class="cart-summary__wrap">
+            <div class="cart_totals__wrap">
 
-                <div class="cart-summary__top cart-summary__row">
-                    <span class="cart-summary__title">
+                <div class="cart_totals__top cart_totals__row">
+                    <span class="cart_totals__title">
                         <?php esc_html_e( 'Итого', 'plantis' ); ?>
                     </span>
-                    <span class="cart-summary__total">
+                    <span class="cart_totals__total">
                         <?php echo wp_kses_post( wc_price( $cart_summary['total'] ) ); ?>
                     </span>
                 </div>
 
-                <div class="cart-summary__list">
+                <div class="cart_totals__list">
 
-                    <div class="cart-summary__row">
+                    <div class="cart_totals__row">
                         <span>
                             <?php esc_html_e( 'Кол-во товаров', 'plantis' ); ?>
                         </span>
@@ -204,7 +204,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </span>
                     </div>
 
-                    <div class="cart-summary__row">
+                    <div class="cart_totals__row">
                         <span>
                             <?php esc_html_e( 'Общая стоимость', 'plantis' ); ?>
                         </span>
@@ -214,29 +214,29 @@ if ( ! defined( 'ABSPATH' ) ) {
                     </div>
 
                     <?php if ( $cart_summary['discount'] > 0 ) : ?>
-                        <div class="cart-summary__row cart-summary__row--discount">
+                        <div class="cart_totals__row cart_totals__row--discount">
                             <span>
                                 <?php esc_html_e( 'Скидка', 'plantis' ); ?>
                             </span>
-                            <span class="cart-summary__discount">
+                            <span class="cart_totals__discount">
                                 -<?php echo wp_kses_post( wc_price( $cart_summary['discount'] ) ); ?>
                             </span>
                         </div>
                     <?php endif; ?>
 
                     <?php if ( $gift_card_total > 0 ) : ?>
-                      <div class="cart-summary__row cart-summary__row--gift-card">
+                      <div class="cart_totals__row cart_totals__row--gift-card">
                           <span>
                               <?php esc_html_e( 'Подарочный сертификат', 'plantis' ); ?>
                           </span>
-                          <span class="cart-summary__gift-card">
+                          <span class="cart_totals__gift-card">
                               -<?php echo wp_kses_post( wc_price( $gift_card_total ) ); ?>
                           </span>
                       </div>
                     <?php endif; ?>
 
                     <?php if ( $shipping_total > 0 ) : ?>
-                        <div class="cart-summary__row">
+                        <div class="cart_totals__row">
                             <span>
                                 <?php esc_html_e( 'Доставка', 'plantis' ); ?>
                             </span>
@@ -255,13 +255,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
             <button
                 type="submit"
-                class="cart-summary__button button button--green alt"
+                class="cart_totals__button button button--green alt"
                 name="woocommerce_checkout_place_order"
                 id="place_order"
                 value="<?php esc_attr_e( 'Place order', 'woocommerce' ); ?>"
             >
                 <?php esc_html_e( 'Оформить заказ', 'plantis' ); ?>
-                <span class="cart-summary__button-total">
+                <span class="cart_totals__button-total">
                     <?php echo wp_kses_post( wc_price( $cart_summary['total'] ) ); ?>
                 </span>
             </button>
