@@ -392,6 +392,70 @@ function auto_complete_virtual_orders( $order_id ) {
     }
 }
 
+
+/**
+ * Получить метаполе единственной позиции заказа подарочной карты.
+ *
+ * @param int    $gift_card_id ID записи gift_card.
+ * @param string $meta_key     Ключ метаполя позиции заказа.
+ * @param mixed  $default      Значение по умолчанию.
+ *
+ * @return mixed
+ */
+function plantis_get_gift_card_order_item_meta(
+    $gift_card_id,
+    $meta_key,
+    $default = ''
+) {
+    $gift_card_id = absint( $gift_card_id );
+
+    if ( ! $gift_card_id || ! $meta_key ) {
+        return $default;
+    }
+
+    /*
+     * ID заказа хранится в метаданных самой карты.
+     */
+    $order_id = get_post_meta(
+        $gift_card_id,
+        '_ywgc_order_id',
+        true
+    );
+
+    if ( is_array( $order_id ) ) {
+        $order_id = reset( $order_id );
+    }
+
+    $order = wc_get_order( absint( $order_id ) );
+
+    if ( ! $order ) {
+        return $default;
+    }
+
+    /*
+     * В заказе всегда одна позиция.
+     */
+    $items = $order->get_items( 'line_item' );
+
+    if ( empty( $items ) ) {
+        return $default;
+    }
+
+    $item = reset( $items );
+
+    if ( ! $item instanceof WC_Order_Item_Product ) {
+        return $default;
+    }
+
+    $value = $item->get_meta( $meta_key, true );
+
+    if ( '' === $value || null === $value ) {
+        return $default;
+    }
+
+    return $value;
+}
+
 /*--------------------------------------------------------------
 #EMAILS
 --------------------------------------------------------------*/

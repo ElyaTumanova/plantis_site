@@ -17,22 +17,61 @@ $gcnum = strtoupper($clean);
 $gift_card_id = 0;
 $gift_card    = [];
 
-// $giftcard_designs = plnt_get_giftcard_designs_config();
-
-
-// $gradients = $giftcard_designs['gradients'] ?? [];
-// $backgrounds = $giftcard_designs['backgrounds'] ?? [];
-// $images = $giftcard_designs['images'] ?? [];
-
 
 $gift_card_id = (int) plnt_get_giftcard_by_code( $gcnum );
+
+$gift_card_message = '';
+$gift_card_recipient_name = '';
+$gift_card_sender_name = '';
+$gift_card_design = [];
+
 if ( $gift_card_id > 0 ) {
   
   $gift_card = (array) get_post_meta( $gift_card_id );
-  // $order = plantis_get_order_from_yith_gift_card($gift_card);
 
-  $gift_card_design = [];
+  //gift_card_message
+  $gift_card_message = (string) get_post_meta(
+      $gift_card_id,
+      '_ywgc_message',
+      true
+  );
 
+  if ( '' === trim( $gift_card_message ) ) {
+      $gift_card_message = (string) plantis_get_gift_card_order_item_meta(
+          $gift_card_id,
+          '_ywgc_message'
+      );
+  }
+
+  //gift_card_recipient_name
+  $gift_card_recipient_name = (string) get_post_meta(
+      $gift_card_id,
+      '_ywgc_recipient_name',
+      true
+  );
+
+  if ( '' === trim( $gift_card_recipient_name ) ) {
+      $gift_card_recipient_name = (string) plantis_get_gift_card_order_item_meta(
+          $gift_card_id,
+          '_ywgc_recipient_name'
+      );
+  }
+
+  //gift_card_sender_name
+  $gift_card_sender_name = (string) get_post_meta(
+      $gift_card_id,
+      '_ywgc_sender_name',
+      true
+  );
+
+  if ( '' === trim( $gift_card_sender_name ) ) {
+      $gift_card_sender_name = (string) plantis_get_gift_card_order_item_meta(
+          $gift_card_id,
+          '_ywgc_sender_name'
+      );
+  }
+
+  //gift_card_design
   if ( ! empty( $gift_card['_ywgc_design'][0] ) ) {
       $maybe_design = maybe_unserialize( $gift_card['_ywgc_design'][0] );
 
@@ -70,7 +109,7 @@ if ( $gift_card_id > 0 ) {
 
 // echo('<pre>');
 
-// print_r($gift_card);
+// // print_r($gift_card);
 // // print_r($order);
 // // if ( $gift_card ) {
 // //     echo 'Карта найдена.';
@@ -146,17 +185,16 @@ if ( $gift_card_id > 0 ) {
                   background-repeat: no-repeat, no-repeat;
                 "
                 >
-                <?php if ( ! empty( $gift_card['_ywgc_recipient_name'][0] ) ) : ?>
+                <?php if ( '' !== trim( $gift_card_recipient_name  ) ) : ?>
                   <p class="gift-certificate__message__to">
-                    <?php echo esc_html( $gift_card['_ywgc_recipient_name'][0] ); ?>
+                    <?php echo esc_html( $gift_card_recipient_name ); ?>
                   </p>
                 <?php endif; ?>
   
                 <div class="gift-certificate__message-text">
-                  <?php //pretty_print($gift_card['_ywgc_message'][0] );?>
-                  <?php if ( ! empty( $gift_card['_ywgc_message'][0] ) ) : ?>
+                  <?php if ( '' !== trim( $gift_card_message ) ) : ?>
                     <?php
-                    $message_paragraphs = preg_split('/\r\n|\r|\n/', $gift_card['_ywgc_message'][0]);
+                    $message_paragraphs = preg_split('/\r\n|\r|\n/', $gift_card_message);
                     foreach ( $message_paragraphs as $paragraph ) :
                       $paragraph = trim( $paragraph );
                       if ( $paragraph === '' ) {
@@ -171,9 +209,9 @@ if ( $gift_card_id > 0 ) {
                     <p>Пусть твой дом расцветает вместе с новыми зелёными друзьями!</p>
                   <?php endif; ?>
   
-                  <?php if ( ! empty( $gift_card['_ywgc_sender_name'][0] ) ) : ?>
+                  <?php if ( '' !== trim( $gift_card_sender_name ) ) : ?>
                     <p>
-                      <strong>От:</strong> <?php echo esc_html( $gift_card['_ywgc_sender_name'][0] ); ?>
+                      <strong>От:</strong> <?php echo esc_html( $gift_card_sender_name ); ?>
                     </p>
                   <?php endif; ?>
                 </div>
