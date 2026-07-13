@@ -102,7 +102,7 @@ textarea {
 }
 
 .input-wrap_labeled:has(.focus) label {
-  top: 16px;
+  top: 10px;
   left: 16px;
   font-size: 10px;
 }

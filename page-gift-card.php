@@ -68,22 +68,22 @@ if ( $gift_card_id > 0 ) {
 
 //for dev
 
-// echo('<pre>');
+echo('<pre>');
 
-// // print_r($gift_card);
-// // print_r($order);
-// // if ( $gift_card ) {
-// //     echo 'Карта найдена.';
-// // } else {
-// //     echo 'Карта с таким номером не найдена.';
-// // }
-// // print_r($raw_gcnum);
-// // print_r($gcnum);
-// // print_r($gift_card_design);
-// // print_r($image_key);
-// // print_r($gradient_key);
+print_r($gift_card);
+// print_r($order);
+// if ( $gift_card ) {
+//     echo 'Карта найдена.';
+// } else {
+//     echo 'Карта с таким номером не найдена.';
+// }
+// print_r($raw_gcnum);
+// print_r($gcnum);
+// print_r($gift_card_design);
+// print_r($image_key);
+// print_r($gradient_key);
 
-// echo('</pre>');
+echo('</pre>');
 ?>
 
 <?php if ( $gift_card ):?>
