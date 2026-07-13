@@ -402,7 +402,7 @@
 }
 
 .gift-panel__body {
-  max-width: 426px;
+  max-width: 450px;
   aspect-ratio: 16 / 9;
   display: grid;
   overflow: hidden;
