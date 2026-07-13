@@ -149,7 +149,7 @@ if ( $gift_card_id > 0 ) {
                 <?php endif; ?>
   
                 <div class="gift-certificate__message-text">
-                  <?php pretty_print($gift_card['_ywgc_message'][0] );?>
+                  <?php //pretty_print($gift_card['_ywgc_message'][0] );?>
                   <?php if ( ! empty( $gift_card['_ywgc_message'][0] ) ) : ?>
                     <?php
                     $message_paragraphs = preg_split('/\r\n|\r|\n/', $gift_card['_ywgc_message'][0]);
