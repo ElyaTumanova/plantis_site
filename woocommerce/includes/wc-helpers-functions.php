@@ -15,6 +15,7 @@ function plnt_is_cart_context() {
 	$cart_actions = [
 		'plnt_cart_update',
 		'plnt_get_cart_wish',
+    'plnt_get_cart_page_fragments'
 	];
 
 	$action = isset( $_REQUEST['action'] )

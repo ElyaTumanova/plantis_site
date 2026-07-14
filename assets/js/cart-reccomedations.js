@@ -109,6 +109,7 @@ function replaceBackorderProduct(btn) {
     })
     .then((data) => {
       plntApplyCartFragments(data.fragments);
+      plntGetCartPageFragments();
     })
     .catch((error) => {
       console.error(

@@ -43,6 +43,7 @@ defined( 'ABSPATH' ) || exit;
           <tr 
             class="woocommerce-cart-form__cart-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>"
             data-js-metrika-product
+            data-product_id = "<?php echo esc_attr($product_id);?>"
             data-product_name = "<?php echo esc_attr($product_name);?>"
             data-product_price = "<?php echo esc_attr($price);?>"
             data-product_category = "<?php echo esc_attr($catName);?>"  

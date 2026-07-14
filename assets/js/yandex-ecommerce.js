@@ -80,7 +80,6 @@ class YandexEcommerce {
 
 class MetrikaProduct {
   static fromElement(element, quantity) {
-    console.log(element)
     return {
       name: element.dataset.product_name,
 
@@ -178,14 +177,34 @@ class RemoveFromCartMetrika {
     this.$body = jQuery(document.body);
     this.$document = jQuery(document);
 
+    this.inCartQuantity = 0;
+    this.productsInCart = [];
+
     this.bindEvents();
   }
 
+  getProductQuantity(pid) {
+    if(this.productsInCart.length > 0) {
+
+      const cartProduct = this.productsInCart.find(
+        (product) => product.product_id === pid
+      );
+      const quantity = cartProduct?.quantity || 0;
+
+      return quantity;
+    }
+  }
   bindEvents() {
-    /*
-     * Удаление из мини-корзины
-     * или через remove_from_cart_button.
-     */
+    /* Запоминаем количество ДО удаления товара */
+    this.$body.on(
+    'click.plntMetrika',
+    '.product_type_simple.remove_from_cart_button',
+    () => {
+      this.productsInCart = parseMiniCartElement();
+    })
+
+
+    /* Удаление из мини-корзины или через remove_from_cart_button */
     this.$body.on(
       'removed_from_cart.plntMetrika',
       (
@@ -200,20 +219,21 @@ class RemoveFromCartMetrika {
           return;
         }
 
+        const quantity = button.dataset.product_quantity 
+          ? button.dataset.product_quantity 
+          : this.getProductQuantity(button.dataset.product_id);
+
         const product =
           MetrikaProduct.fromElement(
             button,
-            button.dataset.product_quantity
+            quantity
           );
 
         this.metrika.remove(product);
       }
     );
 
-    /*
-     * Перед удалением со страницы корзины
-     * сохраняем данные товара.
-     */
+    /* Перед удалением со страницы корзины сохраняем данные товара.*/
     this.$document.on(
       'click.plntMetrika',
       [
@@ -233,10 +253,7 @@ class RemoveFromCartMetrika {
       }
     );
 
-    /*
-     * Событие вызывается после успешного
-     * удаления из классической корзины.
-     */
+    /* Событие вызывается после успешного удаления из классической корзины. */
     this.$body.on(
       'item_removed_from_classic_cart.plntMetrika',
       () => {
@@ -245,7 +262,7 @@ class RemoveFromCartMetrika {
         ) {
           return;
         }
-
+        console.log('item_removed_from_classic_cart')
         this.metrika.remove(
           this.pendingClassicCartProduct
         );

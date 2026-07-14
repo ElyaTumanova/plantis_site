@@ -394,6 +394,7 @@ function plnt_output_actions_wrap() {
   function plnt_get_add_to_card() {
     global $product;
     if(is_product()) {
+      $productId = $product->get_id();
       $productName = $product->get_title();
       $price = $product->get_price();
       $parentCatId = check_category($product);
@@ -413,6 +414,7 @@ function plnt_output_actions_wrap() {
         <div 
           class="add-to-cart-wrap"
           data-js-metrika-product
+          data-product_id = "<?php echo esc_attr($productId);?>"
           data-product_name = "<?php echo esc_attr($productName);?>"
           data-product_price = "<?php echo esc_attr($price);?>"
           data-product_category = "<?php echo esc_attr($catName);?>"

@@ -50,6 +50,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 				<li 
           class="woocommerce-mini-cart-item <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?>"
           data-js-metrika-product
+          data-product_id = "<?php echo esc_attr($product_id);?>"
           data-product_name = "<?php echo esc_attr($product_name);?>"
           data-product_price = "<?php echo esc_attr($price);?>"
           data-product_category = "<?php echo esc_attr($catName);?>"  

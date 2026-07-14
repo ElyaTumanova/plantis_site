@@ -7,22 +7,14 @@ jQuery(document.body).on('removed_from_cart', () => {
     plntGetCartPageFragments();
 });
 
-/* Start cart js after ajax cart update*/
 
 jQuery(function($){
 	$( document ).on( 'plnt:cart-page-fragments-updated', function(){
 		console.log('hi plnt:cart-page-fragments-updated');
-    // productSliders.destroyAll();
-    // productSliders.init();
+    productSliders.destroyAll();
+    productSliders.init();
 	});
 })
-// jQuery(function($){
-// 	$( document ).on( 'plnt:cart-fragments-updated', function(){
-// 		console.log('hi plnt:cart-fragments-updated');
-//     productSliders.destroyAll();
-//     productSliders.init();
-// 	});
-// })
 
 /* CUSTOM AJAX CART UPDATE */
 function plntAjaxCartUpdate(cartItemKey, quantity) {
@@ -50,12 +42,10 @@ function plntAjaxCartUpdate(cartItemKey, quantity) {
       return result.data;
     })
     .then((data) => {
-      plntApplyCartFragments(data.fragments);
+      
+      plntApplyCartFragments(data.fragments)
 
-      document.dispatchEvent(
-        new CustomEvent('plnt:cart-updated')
-      );
-
+      updateCatalogButtons(data.fragments)
       return data;
     });
 }
@@ -154,20 +144,17 @@ async function plntGetCartPageFragments() {
 
       const fragments = data.fragments ?? {}
 
-      const miniCartHtml = fragments['div.mini-cart']
+   
 
-      if (miniCartHtml) {
-        const miniCart = jQuery(miniCartHtml).get(0)
-
-        if (miniCart) {
-          updateCatalogButtons(miniCart)
-        }
-      }
-
+      updateCatalogButtons(fragments)
       updateWishBtns(data.wish_ids)
       updateWishCount(data.wish_count)
 
       plntApplyCartFragments(fragments)
+
+       document.dispatchEvent(
+        new CustomEvent('plnt:cart-wish-sync')
+      );
     } catch (error) {
       console.error('Ошибка получения избранного:', error);
 
@@ -176,7 +163,14 @@ async function plntGetCartPageFragments() {
   }
 
   //HELPERS
-  function updateCatalogButtons(miniCartRoot) {
+  function updateCatalogButtons(fragments) {
+
+    const miniCartHtml = fragments['div.mini-cart']
+    if(!miniCartHtml) {
+      return
+    }
+    const miniCartRoot = jQuery(miniCartHtml).get(0)
+
     console.log('hi updateCatalogButtons')
 
     // Собираем product_id из мини-корзины (O(n))
@@ -287,6 +281,25 @@ async function plntGetCartPageFragments() {
           wishCount > 0
         );
       });
+  }
+
+  function parseMiniCartElement() {
+    console.log('hi parseMiniCartElement')
+    const miniCartElement = document.querySelector('div.mini-cart');
+
+    // Массив товаров: product_id + quantity
+    const productsInCart = Array.from(
+      miniCartElement.querySelectorAll('.woocommerce-mini-cart-item .remove_from_cart_button')
+    )
+    .map((button) => ({
+      product_id: button.dataset.product_id,
+      quantity: Number(
+        button.dataset.product_quantity
+      ) || 1,
+    }))
+    .filter((product) => product.product_id);
+    
+    return productsInCart;
   }
 /* 
  */
