@@ -19,27 +19,6 @@ $stock_status = $product->get_stock_status();
 	<?php if ( $parentCatId === $plants_cat_id ) : ?>
 
 		<?php if ($stock_status === 'instock' ) : ?>
-			<div class="card__banner card__banner--backorder-info">
-				<span class="card__banner-icon card__banner-icon--stock">
-          <?php echo plnt_icon('warning');?>
-        </span>
-
-				<span class="card__banner-title">
-					В наличии <?php echo esc_html( $stock_qty ); ?> шт.
-				</span>
-
-				<p class="card__banner-text">
-					Если вам нужно большее количество, после оформления заказа наш менеджер свяжется с вами для уточнения деталей.
-        </p>
-
-				<span class="card__banner-pill card__banner-pill--row">
-					<span>Дата доставки</span>
-					<span class="card__banner-backorder-date" data-backorder-date>
-						<?php echo esc_html( plnt_set_backorders_date() ); ?>
-					</span>
-				</span>
-			</div>
-
 			<div class="card__banner card__banner--photo">
 				<div class="card__banner-photo-wrap">
 					<p>
@@ -130,5 +109,28 @@ $stock_status = $product->get_stock_status();
 			</div>
 		</div>
 	<?php endif; ?>
+
+  <?php if ($stock_status === 'instock' ) : ?>
+    <div class="card__banner card__banner--backorder-info">
+      <span class="card__banner-icon card__banner-icon--stock">
+        <?php echo plnt_icon('warning');?>
+      </span>
+
+      <span class="card__banner-title">
+        В наличии <?php echo esc_html( $stock_qty ); ?> шт.
+      </span>
+
+      <p class="card__banner-text">
+        Если вам нужно большее количество, после оформления заказа наш менеджер свяжется с вами для уточнения деталей.
+      </p>
+
+      <span class="card__banner-pill card__banner-pill--row">
+        <span>Дата доставки</span>
+        <span class="card__banner-backorder-date" data-backorder-date>
+          <?php echo esc_html( plnt_set_backorders_date() ); ?>
+        </span>
+      </span>
+    </div>
+  <?php endif; ?>
 
 </div>
