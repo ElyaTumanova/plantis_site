@@ -234,22 +234,35 @@
 .quantity {
   --qty-pad: 12px;
 }
-.quantity div {
+.quantity .minus,
+.quantity .plus {
   display: inline-flex;
   align-items: center;
   padding-block: var(--qty-pad);
 }
 
-.quantity div:hover {
+.quantity .minus:hover,
+.quantity .plus:hover {
   cursor: pointer;
 }
 
 .quantity .minus {
-  opacity: 10%;
+  /* opacity: 10%; */
   padding-left: var(--qty-pad);
 }
 .quantity .plus {
   padding-right: var(--qty-pad);
+}
+
+.quantity .minus.is-disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+.quantity .plus.is-disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
 }
 
 @media (max-width: 768px) {

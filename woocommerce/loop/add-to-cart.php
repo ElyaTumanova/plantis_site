@@ -61,7 +61,7 @@ else {
 }
 //
 
-if ($parentCat !== $peresadka_cat_id && !is_cart()) {
+if ($parentCat !== $peresadka_cat_id && !plnt_is_cart_context()) {
     echo apply_filters(
         'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
         sprintf(

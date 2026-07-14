@@ -74,45 +74,45 @@ if (diametrFilter) {
 
 //search field for plants names filter
 function setSearchFilterField() {
-    const filterHeader = document.querySelector('.filter_plant_name .bapf_head');
-    const filterBody = document.querySelector('.filter_plant_name .bapf_body');
-    const searchInput = document.querySelector('.berocket-search-input');
-    const checkboxes = document.querySelectorAll('.filter_plant_name li');
+  const filterHeader = document.querySelector('.filter_plant_name .bapf_head');
+  const filterBody = document.querySelector('.filter_plant_name .bapf_body');
+  const searchInput = document.querySelector('.berocket-search-input');
+  const checkboxes = document.querySelectorAll('.filter_plant_name li');
 
-    if (searchInput && checkboxes.length) {
-        searchInput.addEventListener('input', function () {
-        const query = this.value.toLowerCase();
-        checkboxes.forEach((li) => {
-            const label = li.textContent.toLowerCase();
-            li.style.display = label.includes(query) ? '' : 'none';
-        });
-        });
-    }
+  if (searchInput && checkboxes.length) {
+      searchInput.addEventListener('input', function () {
+      const query = this.value.toLowerCase();
+      checkboxes.forEach((li) => {
+          const label = li.textContent.toLowerCase();
+          li.style.display = label.includes(query) ? '' : 'none';
+      });
+      });
+  }
 
-    if (filterBody && filterHeader) {      
-      // Функция для проверки и скрытия/показа
-      const checkDisplayState = () => {
-          const computedStyle = window.getComputedStyle(filterBody);
-          if (computedStyle.display === 'none') {
-              searchInput.classList.add('d-none');
-          } else {
-              searchInput.classList.remove('d-none');
-          }
-      };
-      
-      // Проверяем сразу при загрузке
-      checkDisplayState();
-      
-      // Наблюдаем за изменениями атрибута style
-      const observer = new MutationObserver(checkDisplayState);
-      observer.observe(filterBody, {
-          attributes: true,
-          attributeFilter: ['style']
-      });
-      
-      filterHeader.addEventListener('click', function() {
-          searchInput.classList.toggle('d-none');
-      });
+  if (filterBody && filterHeader) {      
+    // Функция для проверки и скрытия/показа
+    const checkDisplayState = () => {
+        const computedStyle = window.getComputedStyle(filterBody);
+        if (computedStyle.display === 'none') {
+            searchInput.classList.add('d-none');
+        } else {
+            searchInput.classList.remove('d-none');
+        }
+    };
+    
+    // Проверяем сразу при загрузке
+    checkDisplayState();
+    
+    // Наблюдаем за изменениями атрибута style
+    const observer = new MutationObserver(checkDisplayState);
+    observer.observe(filterBody, {
+        attributes: true,
+        attributeFilter: ['style']
+    });
+    
+    filterHeader.addEventListener('click', function() {
+        searchInput.classList.toggle('d-none');
+    });
   }
 }
 

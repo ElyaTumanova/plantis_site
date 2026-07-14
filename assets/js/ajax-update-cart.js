@@ -6,13 +6,13 @@
 // получаем корзину для обновления кнопок добавления в корзину
 //функция используется в плагнах Load More и BeRocket filters
 function plntAjaxGetWishMiniCart() {
-  //console.log('hi get minicart');
+  console.log('hi get minicart');
 
   ( function ( $ ) {
     "use strict";
   // Define the PHP function to call from here
     var data = {
-      'action': 'plnt_update_mini_cart'
+      'action': 'plnt_update_wishlist'
     };
     $.get(
       woocommerce_params.ajax_url, // The AJAX URL
@@ -27,9 +27,7 @@ function plntAjaxGetWishMiniCart() {
         $('.header-cart__mob .header__actions-count').html(response.cart_count); // Repopulate the specific element with the new content
         $('.side-cart__count').html(response.cart_count);
         if (response.cart_count >0) {
-          // $('.header__main .header-cart .header__nav-actions-wrap').addClass("header__nav-actions-wrap_active");
           $('.header__main .header-cart .header__actions-count').addClass("header__actions-count--active");
-          // $('.header__nav .header-cart .header__nav-actions-wrap').addClass("header__nav-actions-wrap_active");
           $('.header__nav .header-cart .header__actions-count').addClass("header__actions-count--active");
         }
 
@@ -37,12 +35,10 @@ function plntAjaxGetWishMiniCart() {
 
         $('.yith-wcwl-items-count').children('i').html( response.count );
         if (response.count > 0) {
-            // $('.header__main .header__wishlist .header__nav-actions-wrap').addClass("header__nav-actions-wrap_active");
-            // $('.header__nav .header__wishlist .header__nav-actions-wrap').addClass("header__nav-actions-wrap_active");
             $('.header__main .header__wishlist .header__actions-count').addClass("header__actions-count--active");
             $('.header__nav .header__wishlist .header__actions-count').addClass("header__actions-count--active");
         }
-        $('.cart-summary').replaceWith( response.cart_summary );
+        $('.cart_totals').replaceWith( response.cart_summary );
       }
     );
   // Close anon function.
@@ -56,6 +52,7 @@ document.addEventListener('DOMContentLoaded', plntAjaxGetWishMiniCart);
 --------------------------------------------------------------*/
 
 function updateCatalogButtons() {
+  console.log('hi updateCatalogButtons')
   // mini-cart уже должен быть обновлён: $('.mini-cart').html(response.mini_cart)
   const miniCartRoot = document.querySelector('.mini-cart');
   if (!miniCartRoot) return;
@@ -116,7 +113,7 @@ function updateCatalogButtons() {
 --------------------------------------------------------------*/
 
 function updateWishBtns(wishListItemsStr) {
-    //console.log('hi updateWishBtns');
+    console.log('hi updateWishBtns');
    // console.log(wishListItemsStr);
    if(wishListItemsStr) {
         let wishListItems = wishListItemsStr.split(',');
@@ -203,9 +200,9 @@ jQuery(function($){
 	});
 })
 
-// jQuery(document.body).on('wc_update_cart', function() {
-//     console.log('Cart was updated (via JS event)');
-// });
+jQuery(document.body).on('wc_update_cart', function() {
+    console.log('Cart was updated (via JS event)');
+});
 
 jQuery(document.body).on('wc_cart_emptied', function() {
   swiper_popular_slider_init();
@@ -214,6 +211,12 @@ jQuery(document.body).on('wc_cart_emptied', function() {
 jQuery(document.body).on('wc_fragments_loaded', function() {
     console.debug('Фрагменты корзины обновлены!');
     getAddedPeresadkaMini();
+});
+
+jQuery(function ($) {
+    $(document.body).on('updated_wc_div', function () {
+        console.log('Корзина успешно обновлена');
+    });
 });
 
 /*--------------------------------------------------------------
@@ -241,16 +244,3 @@ function updatePopularSwiper() {
         swiper_popular_slider_init();
     }
 }
-
-/* навешиваем класс loading при удалении из корзины в каталоге */
-jQuery(function ($) {
-  $(document.body).on('click', '.remove_from_cart_button', function () {
-    this.classList.add('loading')
-  })
-
-  $(document.body).on('removed_from_cart wc_fragments_refreshed updated_wc_div', function () {
-    $('.remove_from_cart_button.loading').each(function () {
-      this.classList.remove('loading')
-    })
-  })
-})

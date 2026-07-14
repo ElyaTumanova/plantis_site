@@ -165,6 +165,8 @@ function custom_wc_cart_hooks_debug_comments() {
 		'woocommerce_after_main_content',
 
 		'woocommerce_sidebar',
+
+    'woocommerce_cart_is_empty',
 	);
 
 	foreach ( $hooks as $hook_name ) {

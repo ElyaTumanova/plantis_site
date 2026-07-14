@@ -43,14 +43,23 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 				$thumbnail         = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
 				$product_price     = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
 				$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
-				?>
-				<li class="woocommerce-mini-cart-item <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?>">
+				$parentCatId = check_category($_product);
+        $catName = get_the_category_by_ID( $parentCatId );
+        $price = $_product->get_price();
+        ?>
+				<li 
+          class="woocommerce-mini-cart-item <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?>"
+          data-js-metrika-product
+          data-product_id = "<?php echo esc_attr($product_id);?>"
+          data-product_name = "<?php echo esc_attr($product_name);?>"
+          data-product_price = "<?php echo esc_attr($price);?>"
+          data-product_category = "<?php echo esc_attr($catName);?>"  
+        >
 
           <div class="mini-cart-item__remove">
             <?php
-            $parentCatId = check_category($_product);
+            
             $quantity    = plnt_get_product_quantity_in_cart($product_id);
-
             echo apply_filters(
               'woocommerce_cart_item_remove_link',
               sprintf(
@@ -60,10 +69,10 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
                 esc_attr( $product_id ),
                 esc_attr( $cart_item_key ),
                 esc_attr( $_product->get_sku() ),
-                esc_attr( $_product->get_title() ),
-                esc_attr( get_the_category_by_ID( $parentCatId ) ),
+                esc_attr( $product_name ),
+                esc_attr( $catName ),
                 esc_attr( $quantity ),
-                esc_attr( $_product->get_price() ),
+                esc_attr( $price ),
                 plnt_icon( 'trash' )
               ),
               $cart_item_key
@@ -153,11 +162,30 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
           </div>
 
           <div class="mini-cart-item__quantity">
-            <div class="quantity">
+            <?php
+            $quantity = (int) $cart_item['quantity'];
+
+            if ( $_product->is_sold_individually() ) {
+              $min_quantity = 1;
+              $max_quantity = 1;
+            } else {
+              $min_quantity = 0;
+              $max_quantity = (int) $_product->get_max_purchase_quantity();
+            }
+
+            /*
+            * WooCommerce возвращает -1, если максимальное количество
+            * товара не ограничено.
+            */
+            $has_max_quantity = $max_quantity > 0;
+            $quantity_input_id = wp_unique_id( 'quantity_' );
+            ?>
+
+            <div class="quantity ajax-quantity">
 
               <div class="minus">
                 <?php
-                if ( (int) $cart_item['quantity'] <= 1 ) {
+                if ( $quantity <= 1 ) {
                   echo plnt_icon( 'trash', 'trash-icon' );
                 } else {
                   echo plnt_icon( 'minus' );
@@ -165,33 +193,40 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
                 ?>
               </div>
 
-              <?php
+              <div class="quantity">
+                <label
+                  class="screen-reader-text"
+                  for="<?php echo esc_attr( $quantity_input_id ); ?>"
+                >
+                  <?php
+                  printf(
+                    /* translators: %s: product name */
+                    esc_html__( 'Количество товара %s', 'woocommerce' ),
+                    esc_html( wp_strip_all_tags( $product_name ) )
+                  );
+                  ?>
+                </label>
 
-              if ( $_product->is_sold_individually() ) {
-                $min_quantity = 1;
-                $max_quantity = 1;
-              } else {
-                $min_quantity = 0;
-                $max_quantity = $_product->get_max_purchase_quantity();
-              }
-
-              echo woocommerce_quantity_input(
-                array(
-                  'input_name'   => "cart[{$cart_item_key}][qty]",
-                  'input_value'  => $cart_item['quantity'],
-                  'max_value'    => $max_quantity,
-                  'min_value'    => $min_quantity,
-                  'product_name' => $product_name,
-                ),
-                $_product,
-                false
-              );
-              ?>
+                <input
+                  type="number"
+                  id="<?php echo esc_attr( $quantity_input_id ); ?>"
+                  class="input-text qty text"
+                  name="<?php echo esc_attr( "cart[{$cart_item_key}][qty]" ); ?>"
+                  value="<?php echo esc_attr( $quantity ); ?>"
+                  aria-label="<?php esc_attr_e( 'Количество товара', 'woocommerce' ); ?>"
+                  min="<?php echo esc_attr( $min_quantity ); ?>"
+                  max="<?php echo $has_max_quantity ? esc_attr( $max_quantity ) : ''; ?>"
+                  step="1"
+                  placeholder=""
+                  inputmode="numeric"
+                  autocomplete="off"
+                >
+              </div>
 
               <div
                 class="plus"
-                <?php if ( $cart_item['quantity'] === $max_quantity ) : ?>
-                  style="opacity:.5;cursor:default;"
+                <?php if ( $has_max_quantity && $quantity >= $max_quantity ) : ?>
+                  style="opacity: .5; cursor: default;"
                 <?php endif; ?>
               >
                 <?php echo plnt_icon( 'plus' ); ?>

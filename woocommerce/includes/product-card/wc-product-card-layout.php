@@ -336,23 +336,103 @@ function plnt_output_actions_wrap() {
 
   };
 
+  function plnt_product_quantity_input( $product, $input_value = 1, $max_value = '' ) {
+    if ( ! $product instanceof WC_Product ) {
+      return;
+    }
+
+    $quantity_input_id = wp_unique_id( 'quantity_' );
+    $is_min_disabled = $input_value == 1;
+    $is_max_disabled = $input_value == $max_value;
+
+
+    ?>
+
+    <div class="quantity">
+
+      <div class="minus">
+        <?php echo plnt_icon( 'minus' ); ?>
+      </div>
+
+      <label
+        class="screen-reader-text"
+        for="<?php echo esc_attr( $quantity_input_id ); ?>"
+      >
+        <?php
+        printf(
+          /* translators: %s: product name */
+          esc_html__( 'Количество товара %s', 'woocommerce' ),
+          esc_html( $product->get_name() )
+        );
+        ?>
+      </label>
+
+      <input
+        type="number"
+        id="<?php echo esc_attr( $quantity_input_id ); ?>"
+        class="input-text qty text"
+        name="quantity"
+        value="<?php echo esc_attr( $input_value ); ?>"
+        aria-label="<?php esc_attr_e( 'Количество товара', 'woocommerce' ); ?>"
+        min="1"
+        max="<?php echo esc_attr( $max_value ); ?>"
+        step="1"
+        placeholder=""
+        inputmode="numeric"
+        autocomplete="off"
+      >
+
+      <div class="plus">
+        <?php echo plnt_icon( 'plus' ); ?>
+      </div>
+
+    </div>
+
+    <?php
+  }
+  
   function plnt_get_add_to_card() {
     global $product;
     if(is_product()) {
+      $productId = $product->get_id();
+      $productName = $product->get_title();
+      $price = $product->get_price();
+      $parentCatId = check_category($product);
+      $catName = get_the_category_by_ID($parentCatId);
+      
       $quantity =  $product->get_stock_quantity();
-      $backorders_allowed = $product->backorders_allowed()
-      ?><div class="add-to-cart-wrap"> <?php
+      $backorders_allowed = $product->backorders_allowed();
+      $cart_quantities = WC()->cart
+        ? WC()->cart->get_cart_item_quantities()
+        : [];
+
+      $cart_quantity = isset( $cart_quantities[ $product->get_id() ] )
+        ? (int) $cart_quantities[ $product->get_id() ]
+        : 1;
+
+      ?>
+        <div 
+          class="add-to-cart-wrap"
+          data-js-metrika-product
+          data-product_id = "<?php echo esc_attr($productId);?>"
+          data-product_name = "<?php echo esc_attr($productName);?>"
+          data-product_price = "<?php echo esc_attr($price);?>"
+          data-product_category = "<?php echo esc_attr($catName);?>"
+        > 
+      <?php
       /* quantity */
       if ($quantity > 1 && !$backorders_allowed) {
-        woocommerce_quantity_input(array(
-            'min_value' => 1,
-            'max_value'    => $quantity,    // почему-то пришлось передавать заново, проверить на PLANTIS #TODO
-        ),);           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
+         plnt_product_quantity_input(
+          $product,
+          $cart_quantity,
+          $quantity
+        );
       }
       if ($backorders_allowed || !$product->get_manage_stock()) {
-        woocommerce_quantity_input(array(
-            'min_value' => 1,
-        ),);           // добавили поля ввода. чтобы кнопка "в корзину" работала я полем ввода и кнопками +- см скрипт quantity-buttons.js
+         plnt_product_quantity_input(
+          $product,
+          $cart_quantity
+        );
       }
       /* buttons */
       if ($product->get_stock_status() ==='instock' || $backorders_allowed) {

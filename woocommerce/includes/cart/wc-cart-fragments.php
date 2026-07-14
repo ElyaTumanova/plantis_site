@@ -6,16 +6,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 /*--------------------------------------------------------------
 # CART FRAGMENTS 
 --------------------------------------------------------------*/
-
+//в стандартные фрагменты корзины добавляем только легкие фрагменты - потому что они вызываются везде
 add_filter( 'woocommerce_add_to_cart_fragments', 'plnt_woocommerce_cart_fragments', 25 );
 
 function plnt_woocommerce_cart_fragments( $fragments ) {
 	$items = array(
 		'div.header-cart__mob' => 'plnt_woocommerce_cart_header_mob',
-		'a.header-cart__link'  => 'plnt_woocommerce_cart_header',
+		'div.header-cart'  => 'plnt_woocommerce_cart_header',
     'div.mini-cart' => 'plnt_woocommerce_mini_cart',
     'div.header__nav_cart' => 'plnt_side_cart_count',
-    'div.cart-summary' => 'plnt_cart_totals'
+    // 'div.cart_totals' => 'plnt_cart_totals',
+    // 'div.cart-content-fragment' => 'plnt_woocommerce_cart_content',
 	);
 
 	foreach ( $items as $selector => $callback ) {
@@ -79,7 +80,6 @@ function plnt_woocommerce_mini_cart() {
 }
 
 // вывод кол-ва товаров в корзине side cart
-
 function plnt_side_cart_count () {
 	if (WC()->cart->get_cart_contents_count() == 0) :?>
 		<div class="header__actions-count header__nav_cart">
@@ -91,3 +91,67 @@ function plnt_side_cart_count () {
 	<?php
 }
 
+/* Дополнительные фрагменты страницы корзины */
+add_action('wp_ajax_nopriv_plnt_get_cart_page_fragments',	'plnt_get_cart_page_fragments');
+
+add_action(	'wp_ajax_plnt_get_cart_page_fragments',	'plnt_get_cart_page_fragments');
+
+function plnt_get_cart_page_fragments() {
+	if ( ! WC()->cart ) {
+		wc_load_cart();
+	}
+
+	$fragments = array();
+
+	$items = array(
+		'div.cart_totals'            => 'plnt_cart_totals',
+		'div.cart-content-fragment' => 'plnt_woocommerce_cart_content',
+	);
+
+	foreach ( $items as $selector => $callback ) {
+		if ( ! is_callable( $callback ) ) {
+			continue;
+		}
+
+		ob_start();
+		call_user_func( $callback );
+
+		$fragments[ $selector ] = ob_get_clean();
+	}
+
+	wp_send_json_success(
+		array(
+			'fragments' => $fragments,
+		)
+	);
+}
+
+function plnt_woocommerce_cart_content() {
+	?>
+		<?php
+		if ( WC()->cart->is_empty() ) {
+			
+    // wc_get_template( 'cart/cart-empty.php' ); 
+    ?>
+
+    <div class="cart-content-fragment">
+      <div class="wc-empty-cart-message">
+        <div class="cart-empty woocommerce-info">
+          <img decoding="async" class="cart__empty-image" src="https://dev.plantis-shop.ru/wp-content/themes/plantis_dev/images/empty_cart.svg" alt="Empty cart"> Ваша корзина пока пуста.	</div>
+        </div> 
+        <div class="cart__catalog-buttons-wrap">
+          <a class="main__plants-button button" href="https://dev.plantis-shop.ru/product-category/komnatnye-rasteniya/">Комнатные растения</a>
+          <a class="main__gorshki-button button" href="https://dev.plantis-shop.ru/product-category/gorshki_i_kashpo/">Горшки и кашпо</a>
+        </div>
+      </div>
+    </div> 
+
+        
+    <?php
+      
+		} else {
+			wc_get_template( 'cart/cart-inner.php' );
+		}
+		?>
+	<?php
+}
