@@ -74,13 +74,13 @@ if ( ! defined( 'ABSPATH' ) ) {
     plnt_send_cart_update_response();
   }
 
-  function plnt_send_cart_update_response() {
-    wp_send_json_success(
-      [
+  function plnt_send_cart_update_response($extra_data = []) {
+    $response = [
         'fragments'  => plnt_woocommerce_cart_fragments( array() ),
         'cart_count' => WC()->cart->get_cart_contents_count(),
-      ]
-    );
+      ];
+      
+    wp_send_json_success( array_merge( $response, $extra_data ) );
   }
 /* 
 */
@@ -101,43 +101,39 @@ if ( ! defined( 'ABSPATH' ) ) {
       : '';
 
     if ( ! $product_id || ! $cart_item_key ) {
-      wp_send_json_error(
-        [
-          'message' => 'Не переданы данные для замены товара',
-        ],
-        400
-      );
+      wp_send_json_error( [ 'message' => 'Не переданы данные для замены товара' ], 400 );
     }
 
     if ( ! function_exists( 'WC' ) ) {
-      wp_send_json_error(
-        [
-          'message' => 'WooCommerce недоступен',
-        ],
-        500
-      );
+      wp_send_json_error( [ 'message' => 'WooCommerce недоступен' ], 500 );
     }
 
     if ( ! WC()->cart ) {
       wc_load_cart();
     }
 
-    $cart_item = WC()->cart->get_cart_item(
-      $cart_item_key
-    );
+    $cart_item = WC()->cart->get_cart_item($cart_item_key);
 
     if ( ! $cart_item ) {
-      wp_send_json_error(
-        [
-          'message' => 'Исходный товар не найден в корзине',
-        ],
-        404
-      );
+      wp_send_json_error( [ 'message' => 'Исходный товар не найден в корзине' ], 404 );
     }
 
-    $added_cart_item_key = WC()->cart->add_to_cart(
-      $product_id
-    );
+    /*
+    * Данные Метрики сохраняем до изменения корзины.
+    */
+
+    $removed_product = isset( $cart_item['data'] ) && $cart_item['data'] instanceof WC_Product ? $cart_item['data'] : null;
+    $removed_quantity = isset( $cart_item['quantity'] ) ? (int) $cart_item['quantity'] : 1;
+    $added_product = wc_get_product( $product_id );
+
+    if ( ! $removed_product || ! $added_product ) {
+      wp_send_json_error( [ 'message' => 'Не удалось получить данные товаров' ], 400 );
+    }
+
+    $metrika_remove_product = plnt_get_metrika_product_data( $removed_product, $removed_quantity );
+    $metrika_add_product = plnt_get_metrika_product_data( $added_product, 1 );
+
+    $added_cart_item_key = WC()->cart->add_to_cart($product_id);
 
     if ( ! $added_cart_item_key ) {
       wp_send_json_error(
@@ -169,7 +165,31 @@ if ( ! defined( 'ABSPATH' ) ) {
       );
     }
 
-    plnt_send_cart_update_response();
+    plnt_send_cart_update_response(
+      [
+        'metrika' => [
+          'remove' => [ $metrika_remove_product ],
+          'add'    => [ $metrika_add_product ],
+        ],
+      ]
+    );
+  }
+
+  function plnt_get_metrika_product_data( $product, $quantity = 1 ) {
+    if ( ! $product instanceof WC_Product ) {
+      return [];
+    }
+
+    $parentCatId = check_category($product);
+    $catName = get_the_category_by_ID($parentCatId);
+
+    return [
+      'id'       => (string) $product->get_id(),
+      'name'     => wp_strip_all_tags( $product->get_name() ),
+      'price'    => (float) wc_format_decimal( $product->get_price(), wc_get_price_decimals() ),
+      'category' => $catName,
+      'quantity' => max( 1, (int) $quantity ),
+    ];
   }
 /* 
  */

@@ -108,6 +108,8 @@ function replaceBackorderProduct(btn) {
       return result.data;
     })
     .then((data) => {
+      data.metrika?.remove?.forEach((product) => window.plntYandexEcommerce?.remove(product));
+      data.metrika?.add?.forEach((product) => window.plntYandexEcommerce?.add(product));
       plntApplyCartFragments(data.fragments);
       plntGetCartPageFragments();
     })
