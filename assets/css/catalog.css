@@ -54,6 +54,7 @@
   right: calc(0px - var(--over-size));
   border-top-right-radius: var(--br);
   border-bottom-right-radius: var(--br);
+  z-index: -1;
 }
 
 .content-area:has(#yith-wcwl-form) .catalog__header-inner::after {display: none;}
@@ -67,6 +68,18 @@
   overflow: hidden;
   border-top-right-radius: var(--br);
   border-bottom-right-radius: var(--br);
+}
+
+.catalog__header-image-wrap::before {
+  position: absolute;
+  content: "";
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 35px;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(to right, #fff 0%, transparent 100%);
 }
 
 .catalog__header-image {

@@ -62,6 +62,7 @@ jQuery(document).on('plnt_catalog_updated', () => {
   updateActiveFiltersCount()
   setPriceInputMode()
   setSearchFilterField()
+  setdiametrFilterScroll()
 })
 
 // jQuery(document).on('berocket_ajax_filtering_end', () => {

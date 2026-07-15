@@ -163,6 +163,10 @@
   row-gap: 10px;
 }
 
+.cats-sub-menu__item--orhidei {
+  display: none !important;
+}
+
 @media ( hover: hover) {
   a.cats-sub-menu__heading:hover{
     color: var(--accent-color);

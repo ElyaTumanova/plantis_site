@@ -171,7 +171,7 @@ function get_primary_submenu($args) {
           $args_link['slug'] = $term->slug;
           $args_link['term'] = $term;
           ?>
-          <li class="cats-sub-menu__item">
+          <li class="cats-sub-menu__item cats-sub-menu__item--<?php echo esc_attr(sanitize_html_class($term->slug)); ?>">
             <?php plnt_get_menu_link($args_link); ?>
           </li>
           <?

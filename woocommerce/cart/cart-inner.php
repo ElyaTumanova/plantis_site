@@ -179,10 +179,9 @@ defined( 'ABSPATH' ) || exit;
                 ?>
                 <button 
                   type="button"
-                  class="button button--clean plus" 
-                  <?php if($cart_item['quantity'] === $max_quantity) :?> 
-                  style="opacity:50%; cursor: default; pointer-events:none;" 
-                  <?php endif;?>><?php echo plnt_icon('plus');?>
+                  class="button button--clean plus<?php echo $cart_item['quantity'] === $max_quantity ? ' is-disabled' : ''; ?>" 
+                >
+                <?php echo plnt_icon('plus');?>
                 </button>
               </div>
             </td>

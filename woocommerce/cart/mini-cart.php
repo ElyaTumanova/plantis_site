@@ -223,12 +223,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
                 >
               </div>
 
-              <div
-                class="plus"
-                <?php if ( $has_max_quantity && $quantity >= $max_quantity ) : ?>
-                  style="opacity: .5; cursor: default;"
-                <?php endif; ?>
-              >
+              <div class="plus<?php echo $has_max_quantity && $quantity >= $max_quantity ? ' is-disabled' : ''; ?>">
                 <?php echo plnt_icon( 'plus' ); ?>
               </div>
 

@@ -1028,46 +1028,6 @@ label.list-view {
 
 /* сообщение об ошибке */
 
-
-.cart-error {
-  font-weight: 600;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 18px 20px;
-  margin: 24px 0;
-  border-radius: 14px;
-  background: #fff;
-  border: 1px solid #ffe3e3;
-  box-shadow: 0 8px 24px rgba(229, 59, 53, 0.06);
-  color: #3d3d3d;
-  font-size: 14px;
-  line-height: 1.6;
-  position: relative;
-  padding-left: 45px; /* место под 24px иконку + воздух */
-}
-
-.cart-error::before{
-  position: absolute;
-  content: "";
-  background-image: var(--error-icon);
-  left: 15px;
-  top: 50%;
-  width: 24px;
-  height: 24px;
-  transform: translateY(-50%);
-  background-repeat: no-repeat;
-  background-size: 24px 24px;
-}
-
-/* .woocommerce .wc-backward {
-    color: var(--white);
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
-    padding: 10px 20px;
-}  */
-
-
 .cart-stock-warning{
   margin: 0 0 24px;
 }

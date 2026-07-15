@@ -104,6 +104,7 @@ function plnt_get_cart_page_fragments() {
 	$fragments = array();
 
 	$items = array(
+    'div.woocommerce-notices-wrapper' => 'woocommerce_output_all_notices',
 		'div.cart_totals'            => 'plnt_cart_totals',
 		'div.cart-content-fragment' => 'plnt_woocommerce_cart_content',
 	);
