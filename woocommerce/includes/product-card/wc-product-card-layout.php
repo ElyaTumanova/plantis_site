@@ -31,7 +31,7 @@ remove_action('woocommerce_before_single_product','woocommerce_output_all_notice
 
 
 
-add_action( 'woocommerce_before_main_content', 'plnt_product_artikul', 30 );
+add_action( 'woocommerce_before_main_content', 'plnt_product_artikul', 22 );
 add_action( 'woocommerce_before_single_product_summary', 'plnt_output_actions_wrap', 5 );
 add_action('woocommerce_before_single_product_summary','plnt_card_grid_start',6);
 add_action('woocommerce_after_single_product_summary','plnt_card_grid_end',10);
@@ -541,7 +541,7 @@ function plnt_output_actions_wrap() {
       $sku = $product->get_sku();
         
       if( $sku ) { // если заполнен, то выводим
-        echo '<span class="product__artikul">Арт. <span itemprop="sku">' . $sku . '</span> </span>';
+        echo '<span class="product__artikul product__artikul--image">Арт. <span itemprop="sku">' . $sku . '</span> </span>';
       }
     }
 
@@ -552,7 +552,7 @@ function plnt_output_actions_wrap() {
       $sku = $product->get_sku();
         
       if( $sku ) { // если заполнен, то выводим
-        echo '<span class="product__artikul">Арт.' . $sku . '</span>';
+        echo '<span class="product__artikul product__artikul--top">Арт.' . $sku . '</span>';
       }
     }
 

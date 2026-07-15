@@ -2,7 +2,7 @@
   .products.in-row .product {
     display: grid;
     grid-template-columns: 31% 1fr 200px;
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: repeat(2, auto) 1fr;
     grid-template-areas: 
     'image title price'
     'image tags price'

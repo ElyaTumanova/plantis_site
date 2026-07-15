@@ -184,13 +184,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
             <div class="quantity ajax-quantity">
 
               <div class="minus">
-                <?php
-                if ( $quantity <= 1 ) {
-                  echo plnt_icon( 'trash', 'trash-icon' );
-                } else {
-                  echo plnt_icon( 'minus' );
-                }
-                ?>
+                <?php echo plnt_icon( 'minus' ); ?>
               </div>
 
               <div class="quantity">

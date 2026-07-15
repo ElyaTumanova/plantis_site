@@ -146,13 +146,8 @@ defined( 'ABSPATH' ) || exit;
               <div class="quantity ajax-quantity">
                 <button 
                   type="button"
-                  class="button button--clean minus"><?php
-                  if ( (int) $cart_item['quantity'] <= 1 ) {
-                      echo plnt_icon( 'trash','trash-icon' );
-                  } else {
-                      echo plnt_icon( 'minus' );
-                  }
-                ?>
+                  class="button button--clean minus">
+                  <?php echo plnt_icon( 'minus' );?>
                 </button>
                 <?php
                 if ( $_product->is_sold_individually() ) {

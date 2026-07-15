@@ -175,6 +175,7 @@
   color: var(--black-color);
   font-size: clamp(0.75rem, 0.7021rem + 0.2128vw, 0.875rem); /* 14px - 12px */
   flex-wrap: wrap;
+  line-height: 1.6;
 }
 
 .woocommerce-breadcrumb li {
@@ -184,6 +185,38 @@
 
 .woocommerce-breadcrumb .active {
   color: var(--gray-color);
+}
+
+.plnt_breadrumbs_wrap {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+@media (min-width: 769px) {
+  .plnt-woocommerce-breadcrumb {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .plnt-woocommerce-breadcrumb > li {
+    flex: 0 0 auto;
+  }
+
+  .plnt-woocommerce-breadcrumb > li:last-child {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .plnt-woocommerce-breadcrumb > li:last-child > span {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }
 
 /* sale badge */

@@ -23,10 +23,13 @@ function ast_register_custom_fields() {
 }
 
 /** Add server timing debug */
-require get_template_directory() . '/includes/server-debug.php';
+//require get_template_directory() . '/includes/server-debug.php';
 
 /** Add functions for DEV & DEBUG */
 require get_template_directory() . '/includes/dev-support.php';
+
+
+require get_template_directory() . '/includes/helpers.php';
 
 /** Add functions fields for admin */
 require get_template_directory() . '/includes/admin-fields.php';

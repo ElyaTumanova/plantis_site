@@ -137,7 +137,8 @@ class Pretty_Breadcrumb {
 new Pretty_Breadcrumb();
 
 
-add_action( 'woocommerce_before_main_content', 'plnt_breadrumbs_yoast', 20 );
+add_action( 'woocommerce_before_main_content', 'plnt_breadrumbs_yoast', 21 );
+plnt_add_wrapper('plnt_breadrumbs_wrap','woocommerce_before_main_content', 20, 'woocommerce_before_main_content', 23);
 function plnt_breadrumbs_yoast() {
     if ( is_product() || is_product_category() ||is_product_tag() || is_shop() || is_tax() || is_page('wishlist')) {
         do_action('pretty_breadcrumb');
