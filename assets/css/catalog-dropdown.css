@@ -2,6 +2,7 @@
   --padding: 4px;
   display: grid;
   grid-template-columns: 296px 1fr 288px;
+  grid-template-rows: 634px;
 
   background-color: var(--background);
   border-radius: 20px;
@@ -111,8 +112,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-
-  height: calc(100dvh - var(--catalogDropdownTopOffset) - 200px);
+  height: 540px;
+  max-height: calc(100dvh - var(--catalogDropdownTopOffset) - 85px);
   overflow: auto;
   scroll-snap-type: x mandatory;
 }
