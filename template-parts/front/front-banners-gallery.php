@@ -24,7 +24,7 @@ $banners_arr = carbon_get_theme_option('banners');
             <span class="icon icon--arrow-right">Купить</span>
           </a>
           <?endif;?>
-          <span class="banner__caption">*Кроме кашпо Trezz и Lechuza диаметром больше 26 см</span>
+          <span class="banner__caption">*Кроме кашпо Treez и Lechuza диаметром больше 26 см</span>
         </div>
         <div class="banner__bg">
             <img
