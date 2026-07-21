@@ -5,10 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // FOR DEV
 
-function pretty_print($print) {
-  echo ('<pre>');
-  print_r($print);
-  echo ('</pre>');
+function pretty_print($print, $param_name = 'debug') {
+    if ( isset($_GET[$param_name]) ) {
+        echo '<pre>';
+        print_r($print);
+        echo '</pre>';
+    }
 }
 
 /**
