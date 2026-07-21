@@ -19,6 +19,23 @@
 }
 
 
+@media (min-width: 1024px) {
+  .checkout-summary {
+    height: fit-content;
+    position: sticky;
+    top: calc(var(--headerMobHeight, 80px) + 20px);
+    align-self: flex-start;
+  }
+}
+@media (min-width: 1151px) {
+  .checkout-summary {
+    height: fit-content;
+    position: sticky;
+    top: calc(var(--headerMainHeight, 80px) + 20px);
+    align-self: flex-start;
+  }
+}
+
 .place-order {
   display: none !important;
 }

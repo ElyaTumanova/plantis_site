@@ -623,13 +623,21 @@
     margin-top: 20px;
   } 
 }
-@media (min-width: 769px) {
+@media (min-width: 1024px) {
+  .cart_totals {
+    position: sticky;
+    top: calc(var(--headerMobHeight, 80px) + 20px);
+    align-self: flex-start;
+  }
+}
+@media (min-width: 1151px) {
   .cart_totals {
     position: sticky;
     top: calc(var(--headerMainHeight, 80px) + 20px);
     align-self: flex-start;
   }
 }
+
 .cart_totals__wrap {
   --pad: clamp(1.25rem, 1.1543rem + 0.4255vw, 1.5rem);
   display: flex;
