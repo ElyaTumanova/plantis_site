@@ -44,47 +44,6 @@ if ( ! empty( $tiles_acf ) && is_array( $tiles_acf ) ) {
     }
 }
 
-// Выводим результат
-pretty_print( $tiles );
-
-// $tiles = [
-//     [
-//         'taxonomy' => 'product_tag',
-//         'slug'     => 'napolnye',
-//     ],
-//     [
-//       'taxonomy' => 'product_cat',
-//       'slug'     => 'dekorativno-listvennye',
-//     ],
-//     [
-//         'taxonomy' => 'product_cat',
-//         'slug'     => 'fikusy',
-//     ],
-//     [
-//         'taxonomy' => 'product_tag',
-//         'slug'     => 'novichkam',
-//     ],
-//     [
-//         'taxonomy' => 'product_cat',
-//         'slug'     => 'dekorativno-cvetushchie',
-//     ],
-//     [
-//         'taxonomy' => 'product_cat',
-//         'slug'     => 'palms',
-//     ],
-//     [
-//         'taxonomy' => 'product_tag',
-//         'slug'     => 'pet-friendly',
-//     ],
-//     [
-//         'taxonomy' => 'product_cat',
-//         'slug'     => 'lianas',
-//     ],
-//     [
-//         'taxonomy' => 'product_cat',
-//         'slug'     => 'succulent',
-//     ],
-// ];
 
 $terms = [];
 
