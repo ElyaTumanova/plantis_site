@@ -16,7 +16,7 @@ if ( ! function_exists( 'wc_get_page_permalink' ) ) {
 | Параметры плиток
 |--------------------------------------------------------------------------
 */
-$tiles_acf = get_field('tiles')
+$tiles_acf = get_field('tiles');
 pretty_print($tiles_acf);
 
 $tiles = [
