@@ -17,7 +17,35 @@ if ( ! function_exists( 'wc_get_page_permalink' ) ) {
 |--------------------------------------------------------------------------
 */
 $tiles_acf = get_field('tiles');
-pretty_print($tiles_acf);
+
+// Карта соответствия ключей ACF системным таксономиям WooCommerce
+$taxonomy_map = [
+    'tag' => 'product_tag',
+    'cat' => 'product_cat',
+];
+
+$tiles = [];
+
+if ( ! empty( $tiles_acf ) && is_array( $tiles_acf ) ) {
+    foreach ( $tiles_acf as $item ) {
+        $slug = $item['name'] ?? '';
+        $type = $item['type'] ?? '';
+
+        // Определяем системное имя таксономии из карты
+        $taxonomy = $taxonomy_map[ $type ] ?? null;
+
+        // Проверяем наличие ярлыка и существование термина в базы данных
+        if ( $slug && $taxonomy && term_exists( $slug, $taxonomy ) ) {
+            $tiles[] = [
+                'taxonomy' => $taxonomy,
+                'slug'     => $slug,
+            ];
+        }
+    }
+}
+
+// Выводим результат
+pretty_print( $tiles );
 
 $tiles = [
     [
