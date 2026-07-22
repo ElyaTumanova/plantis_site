@@ -16,18 +16,19 @@
 
   <section class="front__popular section container">
     <h2 class="h2">Популярные категории</h2>
-    <div class="front__cats-nav cats-nav">
-      <button class="button cats-nav__title cats-nav__title--active" type="button" data-type="product_cat" data-term="dekorativno-cvetushchie">Цветущие</button>
-      <button class="button cats-nav__title" type="button" data-type="product_cat" data-term="fikusy">Фикусы</button>
-      <button class="button cats-nav__title" type="button" data-type="product_tag" data-term="napolnye">Напольные</button>
-      <button class="button cats-nav__title" type="button" data-type="product_cat" data-term="palms">Пальмы</button>
-      <button class="button cats-nav__title" type="button" data-type="product_tag" data-term="novichkam">Неприхотливые</button>
-      <button class="button cats-nav__title" type="button" data-type="product_cat" data-term="dekorativno-listvennye">Декоративно-лиственные</button>
-      <button class="button cats-nav__title" type="button" data-type="product_cat" data-term="succulent">Суккуленты</button>
-      <button class="button cats-nav__title" type="button" data-type="product_tag" data-term="pet-friendly">Pet friendly</button>
-      <button class="button cats-nav__title" type="button" data-type="product_cat" data-term="lianas">Лианы</button>
+    <div class="swiper front__cats-swiper">
+      <div class="swiper-wrapper front__cats-nav cats-nav">
+        <button class="swiper-slide button cats-nav__title cats-nav__title--active" type="button" data-type="product_cat" data-term="dekorativno-cvetushchie">Цветущие</button>
+        <button class="swiper-slide button cats-nav__title" type="button" data-type="product_cat" data-term="fikusy">Фикусы</button>
+        <button class="swiper-slide button cats-nav__title" type="button" data-type="product_tag" data-term="napolnye">Напольные</button>
+        <button class="swiper-slide button cats-nav__title" type="button" data-type="product_cat" data-term="palms">Пальмы</button>
+        <button class="swiper-slide button cats-nav__title" type="button" data-type="product_tag" data-term="novichkam">Неприхотливые</button>
+        <button class="swiper-slide button cats-nav__title" type="button" data-type="product_cat" data-term="dekorativno-listvennye">Декоративно-лиственные</button>
+        <button class="swiper-slide button cats-nav__title" type="button" data-type="product_cat" data-term="succulent">Суккуленты</button>
+        <button class="swiper-slide button cats-nav__title" type="button" data-type="product_tag" data-term="pet-friendly">Pet friendly</button>
+        <button class="swiper-slide button cats-nav__title" type="button" data-type="product_cat" data-term="lianas">Лианы</button>
+      </div>
     </div>
-
 
    <?php 
       get_template_part( 'template-parts/products/product-slider', null, [

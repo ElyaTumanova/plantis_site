@@ -53,6 +53,88 @@
     },
   })
 
+
+  class FrontCatsSwiper {
+    constructor(selector = '.front__cats-swiper', options = {}) {
+      this.container = typeof selector === 'string' 
+        ? document.querySelector(selector) 
+        : selector;
+
+      if (!this.container) return;
+
+      // Настройки по умолчанию с возможностью переопределения через options
+      this.options = {
+        spaceBetween: 4,
+        minSlides: 1.5,
+        defaultSlides: 3.5,
+        ...options
+      };
+
+      this.swiper = null;
+      this.init();
+    }
+
+    /**
+     * Динамический расчёт slidesPerView на основе средней ширины элементов
+     */
+    calculateSlidesPerView() {
+      const slides = this.container.querySelectorAll('.swiper-slide');
+      if (!slides.length) return this.options.defaultSlides;
+
+      let totalWidth = 0;
+
+      // Считаем реальную ширину каждого слайда strictly по его содержимому
+      slides.forEach(slide => {
+        totalWidth += slide.getBoundingClientRect().width;
+      });
+
+      const avgSlideWidth = totalWidth / slides.length;
+      const containerWidth = this.container.clientWidth;
+
+      // Рассчитываем количество полных слайдов + 0.5 для половинчатого слайда с краю
+      const estimatedFullSlides = Math.floor(
+        containerWidth / (avgSlideWidth + this.options.spaceBetween)
+      );
+
+      return Math.max(this.options.minSlides, estimatedFullSlides + 0.5);
+    }
+
+    /**
+     * Инициализация Swiper
+     */
+    init() {
+      this.swiper = new Swiper(this.container, {
+        slidesPerView: this.calculateSlidesPerView(),
+        spaceBetween: this.options.spaceBetween,
+        freeMode: true,
+
+        on: {
+          resize: () => {
+            if (!this.swiper) return;
+            this.swiper.params.slidesPerView = this.calculateSlidesPerView();
+            this.swiper.update();
+          }
+        }
+      });
+    }
+
+    /**
+     * Уничтожение экземпляра (полезно при AJAX или SPA)
+     */
+    destroy() {
+      if (this.swiper) {
+        this.swiper.destroy(true, true);
+        this.swiper = null;
+      }
+    }
+  }
+
+  // Инициализация при загрузке DOM
+  document.addEventListener('DOMContentLoaded', () => {
+    new FrontCatsSwiper('.front__cats-swiper');
+  });
+
+
   const swiper_cats_assort = new Swiper('.front__assort .swiper', {
     slidesPerView: 1.6,
     spaceBetween: 8,

@@ -136,11 +136,28 @@
 
 /* cats-nav */
 
+/* Контейнер слайдера */
+.front__cats-swiper {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Слайды-кнопки */
+.front__cats-swiper .swiper-slide {
+  width: auto !important; /* Ширина строго зависит от длины текста и padding */
+  white-space: nowrap;    /* Запрещаем перенос текста */
+  flex-shrink: 0;         /* Не даем Swiper сжимать кнопки */
+  box-sizing: border-box;
+}
+
+.front__cats-swiper {
+  margin-bottom: 20px;
+}
+
 .cats-nav {
   display: flex;
-  gap: 4px;
-  overflow-x: auto;
-  margin-bottom: 20px;
+  /* gap: 4px; */
+  /* overflow-x: auto; */
 }
 .cats-nav::-webkit-scrollbar {
   display: none;
