@@ -41,9 +41,6 @@ if ( ! defined( 'ABSPATH' ) ) {
           </div>
         </div>
         <div class="burger-menu__body-wrap">
-           <?php get_template_part('template-parts/menu/secondary-menu');?>
-        </div>
-        <div class="burger-menu__body-wrap">
            <?php get_template_part('template-parts/menu/info-menu-mob');?>
         </div>
       </div>

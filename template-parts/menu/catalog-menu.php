@@ -41,9 +41,18 @@ if ( ! defined( 'ABSPATH' ) ) {
         Растения от А до Я
       </li>
 
-      <li class="catalog-dropdown__cats-item icon icon--arrow-right" data-menu = "menu_gift_card">
+      <li class="catalog-dropdown__cats-item catalog-dropdown__cats-item--mobonly icon icon--arrow-right" data-menu = "menu_gift_card">
         <?php echo plnt_icon('gift'); ?>
         Подарочный сертификат
+      </li>
+
+      <li class="catalog-dropdown__cats-item catalog-dropdown__cats-item--mobonly icon icon--arrow-right" data-menu = "menu_services">
+        <?php echo plnt_icon('leyka'); ?>
+        Услуги
+      </li>
+      <li class="catalog-dropdown__cats-item catalog-dropdown__cats-item--mobonly">
+        <?php echo plnt_icon('percentage-linear'); ?>
+        <a class="cats-sub-menu__item-link" href="<?php echo site_url()?>/product-tag/skidki/">Скидки</a>
       </li>
     </ul>
   </div>
@@ -186,7 +195,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <span>Подарочный сертификат</span>
       </div>
       <div class="catalog-dropdown__sub-cats-body custom-scroll">
-        <ul class="cats-sub-menu__list">
+        <ul class="cats-sub-menu__list cats-sub-menu__list--column">
           <li class="cats-sub-menu__item">
             <a class="cats-sub-menu__item-link" href="<?php echo site_url()?>/shop/gift-card">Купить подарочный сертификат</a>
           </li>
@@ -195,6 +204,27 @@ if ( ! defined( 'ABSPATH' ) ) {
           </li>
           <li class="cats-sub-menu__item">
             <a class="cats-sub-menu__item-link" href="<?php echo site_url()?>/gift-card-info">О подарочном сертификате</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <nav class="catalog-dropdown__sub-cats-wrap" data-menu = "menu_services">
+      <div class="catalog-dropdown__sub-cats-header icon icon--arrow-right h5">
+        <span>Услуги</span>
+      </div>
+      <div class="catalog-dropdown__sub-cats-body custom-scroll">
+        <ul class="cats-sub-menu__list cats-sub-menu__list--column">
+          <li class="cats-sub-menu__item">
+            <a class="cats-sub-menu__item-link" href="<?php echo site_url()?>/pokupka-komnatnyh-rastenij-optom/">Оптовая покупка</a>
+          </li>
+          <li class="cats-sub-menu__item">
+            <a class="cats-sub-menu__item-link" href="<?php echo site_url()?>/professionalnyj-uhod-za-rasteniyami/">Профессиональный уход</a>
+          </li>
+          <li class="cats-sub-menu__item">
+            <a class="cats-sub-menu__item-link" href="<?php echo site_url()?>/landscaping">Озеленение</a>
+          </li>
+          <li class="cats-sub-menu__item">
+            <a class="cats-sub-menu__item-link" href="<?php echo site_url()?>/usluga-peresadki-komnatnyh-rastenij/">Пересадка</a>
           </li>
         </ul>
       </div>

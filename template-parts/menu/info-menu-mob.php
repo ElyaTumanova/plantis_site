@@ -16,13 +16,13 @@ if ( ! defined( 'ABSPATH' ) ) {
       <a href="<?php echo esc_url( get_site_url() . '/payment/' ); ?>">Способы оплаты</a>
     </li>
     <li class="menu__item">
-      <a href="<?php echo esc_url( get_site_url() . '/about-us/' ); ?>">О нас</a>
-    </li>
-    <li class="menu__item">
       <a href="<?php echo esc_url( get_site_url() . '/refund_returns/' ); ?>">Возврат и обмен</a>
     </li>
-     <li class="menu__item">
-      <a href="<?php echo esc_url( get_site_url() . '/faq/' ); ?>">Вопросы и ответы</a>
+    <li class="menu__item">
+     <a href="<?php echo esc_url( get_site_url() . '/faq/' ); ?>">Вопросы и ответы</a>
+   </li>
+    <li class="menu__item">
+      <a href="<?php echo esc_url( get_site_url() . '/about-us/' ); ?>">О нас</a>
     </li>
     <li class="menu__item">
       <a href="<?php echo esc_url( get_site_url() . '/partners/' ); ?>">Поставщикам и партнерам</a>

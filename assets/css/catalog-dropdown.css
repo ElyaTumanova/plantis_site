@@ -140,14 +140,6 @@
   overflow: hidden;
 }
 
-[data-menu="menu_item_plants"] .cats-sub-menu__list,
-[data-menu="menu_az_palnts"] .cats-sub-menu__list
- {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 .cats-sub-menu__heading {
   display: block;
   margin-bottom: 12px;
@@ -162,6 +154,15 @@
   flex-wrap: wrap;
   column-gap: 25px;
   row-gap: 10px;
+}
+
+[data-menu="menu_item_plants"] .cats-sub-menu__list,
+[data-menu="menu_az_palnts"] .cats-sub-menu__list,
+.cats-sub-menu__list--column
+ {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .cats-sub-menu__item--orhidei {
@@ -199,7 +200,7 @@
 }
 
 @media (min-width: 1151px) {
-  [data-menu="menu_gift_card"] {
+  .catalog-dropdown__cats-item--mobonly {
     display: none;
   }
 }
@@ -213,7 +214,7 @@
   position: relative;
   overflow: hidden;
   grid-template-columns: 100% 100% auto;
-  gap: var(--modal-padding);
+  gap: calc(var(--modal-padding) + var(--modal-scroll-margin));
 }
 
 .burger-menu .catalog-dropdown__cats::after {
