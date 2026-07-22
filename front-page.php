@@ -1,7 +1,4 @@
-<?php
-    get_header();
-    global $skidki_cat_id;
-?>
+<?php get_header();?>
 
 <main id="main" class="site-main front" role="main">
 
@@ -15,38 +12,7 @@
   </section> 
 
   <section class="front__popular section container">
-    <h2 class="h2">Популярные категории</h2>
-    <div class="swiper front__cats-swiper">
-      <div class="swiper-wrapper front__cats-nav cats-nav">
-        <button class="swiper-slide button cats-nav__title cats-nav__title--active" type="button" data-type="product_cat" data-term="dekorativno-cvetushchie">Цветущие</button>
-        <button class="swiper-slide button cats-nav__title" type="button" data-type="product_cat" data-term="fikusy">Фикусы</button>
-        <button class="swiper-slide button cats-nav__title" type="button" data-type="product_tag" data-term="napolnye">Напольные</button>
-        <button class="swiper-slide button cats-nav__title" type="button" data-type="product_cat" data-term="palms">Пальмы</button>
-        <button class="swiper-slide button cats-nav__title" type="button" data-type="product_tag" data-term="novichkam">Неприхотливые</button>
-        <button class="swiper-slide button cats-nav__title" type="button" data-type="product_cat" data-term="dekorativno-listvennye">Декоративно-лиственные</button>
-        <button class="swiper-slide button cats-nav__title" type="button" data-type="product_cat" data-term="succulent">Суккуленты</button>
-        <button class="swiper-slide button cats-nav__title" type="button" data-type="product_tag" data-term="pet-friendly">Pet friendly</button>
-        <button class="swiper-slide button cats-nav__title" type="button" data-type="product_cat" data-term="lianas">Лианы</button>
-      </div>
-    </div>
-
-   <?php 
-      get_template_part( 'template-parts/products/product-slider', null, [
-        'queryArgs' => [
-          'tax_query' => array(
-            array(
-              'taxonomy' => 'product_cat',
-              'field' => 'slug',
-              'terms' => 'dekorativno-cvetushchie',
-            )
-          )
-        ],
-        'isSwiperOver' => true,
-      ]);
-    ?>
-
-    <a class="front__products-all icon icon--arrow-right" href="<?php echo get_term_link( 'dekorativno-cvetushchie', 'product_cat' );?>">Все товары категории</a>
-
+    <?php get_template_part('template-parts/front/cats-sliders');?>
   </section>
 
   <section class="front__skidki section container">
