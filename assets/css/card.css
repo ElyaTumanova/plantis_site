@@ -54,6 +54,20 @@
   }
 }
 
+.card__bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .card__tabs {
+    order: 1;
+  }
+  .card__ukhod {
+    order: 9;
+  }
+}
+
 /* product-gallery */
 
 .card__image-wrap {

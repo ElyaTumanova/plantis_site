@@ -49,7 +49,7 @@ add_action('woocommerce_single_product_summary', 'plnt_characteristics_wrap', 60
 add_action('woocommerce_single_product_summary', 'plnt_peresadka_banner', 70);
 
 
-// plnt_add_section('card__bottom section','woocommerce_after_single_product_summary', 20, 'woocommerce_after_single_product_summary',999);
+plnt_add_section('card__bottom section','woocommerce_after_single_product_summary', 20, 'woocommerce_after_single_product_summary',999);
 
 add_action('woocommerce_after_single_product_summary','plnt_get_upsells', 30);
 
@@ -459,7 +459,7 @@ function plnt_output_actions_wrap() {
 /* Табы */
 
   function plnt_get_product_data_tabs() {
-    echo ('<section class="section">');
+    echo ('<section class="section card__tabs">');
     woocommerce_output_product_data_tabs();
     echo('</section>');
   }
@@ -563,7 +563,7 @@ function plnt_output_actions_wrap() {
   //upsells & cross sells
 
   function plnt_get_upsells(){
-    echo ('<section class="section">');
+    echo ('<section class="section card__upsells">');
     $heading = plnt_upsells_heading();
     global $product;
 
@@ -647,7 +647,7 @@ function plnt_output_actions_wrap() {
 
   wp_reset_postdata();
 
-  echo '<section class="section">';
+  echo '<section class="section card__crosssels">';
   echo '<h2 class="h2">Похожие растения</h2>';
 
   get_template_part( 'template-parts/products/product-slider', null, [
@@ -663,6 +663,7 @@ function plnt_output_actions_wrap() {
 
   function plnt_card_ukhod_loop() {
     global $product;
+    echo('<section class="section card__ukhod">');
     echo('<h2 class="h2">Товары для ухода за растениями</h2>');
 
     get_template_part( 'template-parts/products/product-slider', null, [
