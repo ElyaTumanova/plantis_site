@@ -3,7 +3,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-<?php
+
 // Получаем массив поля assort
 $assort = get_field( 'assort' );
 
