@@ -34,6 +34,9 @@ if ( ! empty( $popular_cats_acf ) && is_array( $popular_cats_acf ) ) {
   }
 }
 
+pretty_print($popular_cats_acf);
+pretty_print($popular_cats);
+
 // Если категории заполнены и существуют — выводим секцию
 if ( ! empty( $popular_cats ) ) : 
   // Берем первый элемент для начальной загрузки товаров и ссылки
