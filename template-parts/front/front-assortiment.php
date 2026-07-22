@@ -28,7 +28,7 @@ if ( ! empty( $assort ) && is_array( $assort ) ) :
             $item_type = $item['type'] ?? '';
             $title     = $item['title'] ?? '';
             $desc      = $item['description'] ?? '';
-            $image_id  = $item['image'] ?? null;
+            $image  = $item['image'] ?? null;
 
             // Проверяем существование термина и получаем ссылку
             $term_link = false;
@@ -58,19 +58,19 @@ if ( ! empty( $assort ) && is_array( $assort ) ) :
                 <?php endif; ?>
               </div>
 
-              <?php if ( $image_id ) : ?>
+              <?php if ( $image ) : ?>
                 <?php 
-                  echo wp_get_attachment_image( 
-                    $image_id, 
-                    'full', 
-                    false, 
-                    [
-                      'class'  => 'front__assort-image',
-                      'width'  => '316',
-                      'height' => '316',
-                    ] 
-                  ); 
+                  // Извлекаем URL и ALT непосредственно из массива изображения ACF
+                  $image_src = is_array( $image ) ? ( $image['url'] ?? '' ) : $image;
+                  $image_alt = is_array( $image ) ? ( $image['alt'] ?? $title ) : $title;
                 ?>
+              <img 
+                  class="front__assort-image" 
+                  src="<?php echo esc_url( $image_src ); ?>" 
+                  alt="<?php echo esc_attr( $image_alt ); ?>" 
+                  width="316" 
+                  height="316"
+                >
               <?php endif; ?>
 
               <?php if ( $term_link ) : ?>
