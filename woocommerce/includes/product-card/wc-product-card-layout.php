@@ -59,7 +59,7 @@ add_action('woocommerce_after_single_product_summary','plnt_get_cross_sells', 50
 
 add_action('woocommerce_after_single_product_summary','plnt_card_ukhod_loop',60);
 
-//обертки для card grid + schema.org
+//обертки для card grid
 
 function plnt_card_grid_start () {
     global $product;
@@ -68,8 +68,6 @@ function plnt_card_grid_start () {
     $parentCatId = plnt_get_parent_cat_id();
     $isTreez     = plnt_is_treez_product();
     $isLechuza   = plnt_is_lechuza_product();
-    
-    $schemaOrgAttr = 'itemscope itemtype="https://schema.org/Product"';
 
     $classes = array( 'card__grid', 'section' );
 
@@ -95,38 +93,14 @@ function plnt_card_grid_start () {
     ?>
     <section
       class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"
-      <?php echo $schemaOrgAttr; ?>
     >
     <?php
 };
 
 function plnt_card_grid_end() {
-    global $product;
-
-    if ( ! $product ) {
-        return;
-    }
-
-    $product_id  = $product->get_id();
-    $idCats      = $product->get_category_ids();
-    $description = wp_strip_all_tags( $product->get_description() );
-    $brand       = plnt_get_brand_text( $idCats );
-    ?>
-
-    <link itemprop="url" href="<?php echo esc_url( get_permalink( $product_id ) ); ?>">
-
-    <?php if ( $description ) : ?>
-        <meta itemprop="description" content="<?php echo esc_attr( $description ); ?>">
-    <?php endif; ?>
-
-    <?php if ( $brand ) : ?>
-        <div itemprop="brand" itemscope itemtype="https://schema.org/Brand">
-            <meta itemprop="name" content="<?php echo esc_attr( $brand ); ?>">
-        </div>
-    <?php endif; ?>
-
-    </section>
-    <?php
+  ?>
+  </section>
+  <?php
 }
 
 
@@ -187,7 +161,7 @@ function plnt_output_actions_wrap() {
     if ( empty( $image_ids ) ) {
       return;
     }
-    plnt_product_artikul_schema();
+    plnt_product_artikul_image();
     plnt_card_wishlist_btn();
     ?>
 
@@ -227,15 +201,6 @@ function plnt_output_actions_wrap() {
     <?php
   };
   
-  // добавляем к изображению товара разметку schema.org
-  add_filter( 'woocommerce_gallery_image_html_attachment_image_params', 'plnt_image_params', 10, 4 );
-
-  function plnt_image_params( $image_attributes, $attachment_id, $image_size, $main_image ){
-      $image_attributes['itemprop'] = 'image';
-    return $image_attributes;
-  }
-
-
   //слайдер фото товара
   add_filter( 'woocommerce_single_product_carousel_options', 'plnt_product_gallery' );
   
@@ -254,7 +219,7 @@ function plnt_output_actions_wrap() {
 /*  
 */
 
-/* Цена и кнопка в корзину, кнопка в избранное + schema.org */
+/* Цена и кнопка в корзину, кнопка в избранное*/
   add_filter( 'woocommerce_cart_redirect_after_error', '__return_false' );  //остановка перезагрузки страницы (перадресации) при ошибке добаления товара в корзину
   add_filter( 'wc_add_to_cart_message_html', '__return_false' ); //Удалить сообщение «Товар добавлен в корзину..»
 
@@ -290,32 +255,25 @@ function plnt_output_actions_wrap() {
   }
 
   function plnt_price_wrap() {
-    global $product;
-    $price = number_format($product->get_price(), 2, '.', ''); 
-    $availability = plnt_get_availability_text($product);
     ?>
     <div class="card__price-wrap">
-        <div class = "card__add-to-cart-wrap" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-            <?php
-            //echo for_dev();
-            echo ('<div class="product__price-wrap">');
-              woocommerce_template_single_price();
-              plnt_sale_badge();
-            echo('</div>');
-            echo ('<div class="card__btns-wrap">');
-              plnt_get_add_to_card();
-              plnt_card_wishlist_btn();
-            echo('</div>');
-           ?>
-            <link itemprop="availability" href="http://schema.org/<?php echo $availability?>">
-            <meta itemprop="price" content="<?php echo $price?>">
-            <meta itemprop="priceCurrency" content="RUB">
-            <meta itemprop="seller" content="Plantis">
-        </div>
+      <div class="card__add-to-cart-wrap">
         <?php
-        // peresadka_init
-        //plnt_get_peresadka_add_to_cart();
+        //echo for_dev();
+        echo ('<div class="product__price-wrap">');
+          woocommerce_template_single_price();
+          plnt_sale_badge();
+        echo('</div>');
+        echo ('<div class="card__btns-wrap">');
+          plnt_get_add_to_card();
+          plnt_card_wishlist_btn();
+        echo('</div>');
         ?>
+      </div>
+      <?php
+      // peresadka_init
+      //plnt_get_peresadka_add_to_cart();
+      ?>
     </div>
     <?php
   };
@@ -535,13 +493,13 @@ function plnt_output_actions_wrap() {
 /*  
 */
 /* Артикул */
-  function plnt_product_artikul_schema() {
+  function plnt_product_artikul_image() {
     if ( is_product() ) {
       global $product;
       $sku = $product->get_sku();
         
       if( $sku ) { // если заполнен, то выводим
-        echo '<span class="product__artikul product__artikul--image">Арт. <span itemprop="sku">' . $sku . '</span> </span>';
+        echo '<span class="product__artikul product__artikul--image">Арт.' . $sku . '</span>';
       }
     }
 
