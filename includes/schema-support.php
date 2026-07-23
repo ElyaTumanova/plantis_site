@@ -46,7 +46,16 @@ function plnt_schema_json() {
 		return;
 	}
 
-	if (is_product()) {
+  if (is_page('delivery')) {
+    plnt_schema_print(
+      plnt_schema_get_delivery_page_data(),
+      'plnt-schema-main'
+    );
+
+    return;
+  }
+
+	if (function_exists('is_product') && is_product()) {
 		plnt_schema_print(
 			plnt_schema_get_product_data(),
 			'plnt-schema-main'
@@ -54,9 +63,7 @@ function plnt_schema_json() {
 	}
 }
 
-/**
- * Главная страница: Organization + WebSite + WebPage.
- */
+/** Главная страница: Organization + WebSite + WebPage */
 function plnt_schema_get_front_page_data() {
 	$home_url   = trailingslashit(home_url('/'));
 	$org_id     = $home_url . '#organization';
@@ -72,7 +79,7 @@ function plnt_schema_get_front_page_data() {
 		'@type'       => 'WebPage',
 		'@id'         => $webpage_id,
 		'url'         => $home_url,
-		'name'        => wp_get_document_title(),
+		'name' => plnt_schema_clean_text(wp_get_document_title()),
 		'description' => $description,
 		'inLanguage'  => 'ru-RU',
 		'isPartOf'    => [
@@ -111,17 +118,207 @@ function plnt_schema_get_front_page_data() {
 	];
 }
 
-/**
- * Товарная страница: Organization + WebSite + WebPage + Product.
- */
+/** Страница доставки: Organization + WebSite + WebPage + ShippingService. */
+function plnt_schema_get_delivery_page_data() {
+	$page_id      = get_queried_object_id();
+	$delivery_url = $page_id ? get_permalink($page_id) : '';
+
+	if (!$delivery_url) {
+		$delivery_url = trailingslashit(home_url('/delivery/'));
+	}
+
+	$delivery_url = esc_url_raw($delivery_url);
+	$home_url     = trailingslashit(home_url('/'));
+	$website_id   = $home_url . '#website';
+	$shipping     = plnt_schema_get_standard_shipping_service();
+
+	$webpage = [
+		'@type'       => 'WebPage',
+		'@id'         => $delivery_url . '#webpage',
+		'url'         => $delivery_url,
+		'name'        => plnt_schema_clean_text(wp_get_document_title()),
+		'description' => 'Доставка комнатных растений, горшков и кашпо по Москве и Московской области.',
+		'inLanguage'  => 'ru-RU',
+		'isPartOf'    => [
+			'@id' => $website_id,
+		],
+		'about' => [
+			'@id' => $home_url . '#organization',
+		],
+		'mainEntity' => [
+			'@id' => $delivery_url . '#standard-moscow',
+		],
+	];
+
+	if ($page_id) {
+		$date_published = get_post_time('c', true, $page_id);
+		$date_modified  = get_post_modified_time('c', true, $page_id);
+
+		if ($date_published) {
+			$webpage['datePublished'] = $date_published;
+		}
+
+		if ($date_modified) {
+			$webpage['dateModified'] = $date_modified;
+		}
+	}
+
+	return [
+		'@context' => 'https://schema.org',
+		'@graph'   => [
+			plnt_schema_get_organization_data(),
+			plnt_schema_get_website_data(),
+			$webpage,
+			$shipping,
+		],
+	];
+}
+
+/** Стандартная доставка в пределах МКАД. */
+function plnt_schema_get_standard_shipping_service() {
+	global $delivery_inMKAD;
+
+	$delivery_url = trailingslashit(home_url('/delivery/'));
+	$base_rate    = null;
+
+	if (function_exists('plnt_get_shiping_costs')) {
+		$shipping_costs = plnt_get_shiping_costs();
+
+		if (
+			is_array($shipping_costs)
+			&& $delivery_inMKAD !== null
+			&& array_key_exists($delivery_inMKAD, $shipping_costs)
+		) {
+			$base_rate = plnt_schema_to_float(
+				$shipping_costs[$delivery_inMKAD]
+			);
+		}
+	}
+
+	$conditions = plnt_schema_get_standard_shipping_conditions($base_rate);
+
+	$service = [
+		'@type'           => 'ShippingService',
+		'@id'             => $delivery_url . '#standard-moscow',
+		'url'             => $delivery_url,
+		'name'            => 'Стандартная доставка в пределах МКАД',
+		'description' => 'Доставка на следующий день или позже в пределах МКАД. Базовая стоимость зависит от суммы заказа; дополнительный интервал оплачивается отдельно.',
+		'fulfillmentType' => 'https://schema.org/FulfillmentTypeDelivery',
+	];
+
+	if ($conditions) {
+		$service['shippingConditions'] = $conditions;
+	}
+
+	return $service;
+}
+
+function plnt_schema_get_standard_shipping_conditions($base_rate) {
+	if ($base_rate === null || !function_exists('carbon_get_theme_option')) {
+		return [];
+	}
+
+	$min_small    = plnt_schema_to_float(carbon_get_theme_option('min_small_delivery'));
+	$min_medium   = plnt_schema_to_float(carbon_get_theme_option('min_medium_delivery'));
+	$small_markup = plnt_schema_to_float(carbon_get_theme_option('small_markup_delivery')) ?? 0;
+	$medium_markup = plnt_schema_to_float(carbon_get_theme_option('medium_markup_delivery')) ?? 0;
+
+	$destination = [
+		'@type'          => 'DefinedRegion',
+		'name'           => 'Москва в пределах МКАД',
+		'addressCountry' => 'RU',
+		'addressRegion'  => 'Москва',
+	];
+
+	$conditions = [];
+
+	if ($min_small !== null && $min_small > 0) {
+		$conditions[] = [
+			'@type' => 'ShippingConditions',
+			'shippingDestination' => $destination,
+			'orderValue' => [
+				'@type'    => 'MonetaryAmount',
+				'minValue' => 0,
+				'maxValue' => $min_small - 1,
+				'currency' => 'RUB',
+			],
+			'shippingRate' => [
+				'@type'    => 'MonetaryAmount',
+				'value'    => $base_rate + $small_markup,
+				'currency' => 'RUB',
+			],
+		];
+	}
+
+	if ($min_small !== null && $min_medium !== null && $min_medium > $min_small) {
+		$conditions[] = [
+			'@type' => 'ShippingConditions',
+			'shippingDestination' => $destination,
+			'orderValue' => [
+				'@type'    => 'MonetaryAmount',
+				'minValue' => $min_small,
+				'maxValue' => $min_medium - 1,
+				'currency' => 'RUB',
+			],
+			'shippingRate' => [
+				'@type'    => 'MonetaryAmount',
+				'value'    => $base_rate + $medium_markup,
+				'currency' => 'RUB',
+			],
+		];
+	}
+
+	$conditions[] = [
+		'@type' => 'ShippingConditions',
+		'shippingDestination' => $destination,
+		'orderValue' => [
+			'@type'    => 'MonetaryAmount',
+			'minValue' => $min_medium ?? $min_small ?? 0,
+			'currency' => 'RUB',
+		],
+		'shippingRate' => [
+			'@type'    => 'MonetaryAmount',
+			'value'    => $base_rate,
+			'currency' => 'RUB',
+		],
+	];
+
+	return $conditions;
+}
+
+function plnt_schema_to_float($value) {
+	if ($value === null || $value === '') {
+		return null;
+	}
+
+	$value = str_replace(
+		["\xC2\xA0", ' ', ','],
+		['', '', '.'],
+		(string) $value
+	);
+
+	return is_numeric($value) ? (float) $value : null;
+}
+
+/** Товарная страница: Organization + WebSite + WebPage + Product */
 function plnt_schema_get_product_data() {
+  if (!function_exists('wc_get_product')) {
+    return [];
+  }
 	$product = wc_get_product(get_queried_object_id());
 
 	if (!$product || $product->is_type('gift-card')) {
 		return [];
 	}
 
-	$product_url  = get_permalink($product->get_id());
+	$product_url = get_permalink($product->get_id());
+
+  if (!$product_url) {
+    return [];
+  }
+
+  $product_url = esc_url_raw($product_url);
+
 	$home_url     = trailingslashit(home_url('/'));
 	$org_id       = $home_url . '#organization';
 	$website_id   = $home_url . '#website';
@@ -131,7 +328,12 @@ function plnt_schema_get_product_data() {
 
 	$images                = plnt_schema_get_product_images($product);
 	$description           = plnt_schema_get_product_description($product);
-	$brand                 = plnt_get_brand_text($product->get_category_ids());
+  $alternate_name        = plnt_schema_get_product_alternate_name($product);
+	$brand = function_exists('plnt_get_brand_text')
+    ? plnt_schema_clean_text(
+      plnt_get_brand_text($product->get_category_ids())
+    )
+    : '';
 	$additional_properties = plnt_schema_get_product_properties($product);
 	$offer                 = plnt_schema_get_product_offer($product, $product_url, $org_id);
 
@@ -139,7 +341,7 @@ function plnt_schema_get_product_data() {
 		'@type'            => 'Product',
 		'@id'              => $product_id,
 		'url'              => $product_url,
-		'name'             => $product->get_name(),
+		'name' => plnt_schema_clean_text($product->get_name()),
 		'mainEntityOfPage' => [
 			'@id' => $webpage_id,
 		],
@@ -156,6 +358,10 @@ function plnt_schema_get_product_data() {
 	if ($description) {
 		$product_data['description'] = $description;
 	}
+
+  if ($alternate_name && $alternate_name !== $product_data['name']) {
+    $product_data['alternateName'] = $alternate_name;
+  }
 
 	if ($brand) {
 		$product_data['brand'] = [
@@ -176,7 +382,7 @@ function plnt_schema_get_product_data() {
 		'@type'      => 'WebPage',
 		'@id'        => $webpage_id,
 		'url'        => $product_url,
-		'name'       => wp_get_document_title(),
+		'name' => plnt_schema_clean_text(wp_get_document_title()),
 		'inLanguage' => 'ru-RU',
 		'isPartOf'   => [
 			'@id' => $website_id,
@@ -222,13 +428,13 @@ function plnt_schema_get_product_data() {
 	];
 }
 
-/**
- * Организация/магазин. Одинаковый @id используется на всех страницах.
- */
+/** Организация/магазин. Одинаковый @id используется на всех страницах.*/
 function plnt_schema_get_organization_data() {
 	$home_url = trailingslashit(home_url('/'));
 	$org_id   = $home_url . '#organization';
 	$logo_id  = $home_url . '#logo';
+  $shipping_id      = trailingslashit(home_url('/delivery/')) . '#standard-moscow';
+  $return_policy_id = trailingslashit(home_url('/refund_returns/')) . '#policy';
 
 	$logo_value = function_exists('carbon_get_theme_option')
 		? carbon_get_theme_option('logo')
@@ -265,18 +471,31 @@ function plnt_schema_get_organization_data() {
 		],
 		'url'                  => $home_url,
 		'description'          => $description,
-		'telephone'            => [
-			'+78002015790',
-			'+79995527944',
-		],
+		'telephone'          => '+78002015790',
 		'email'                => 'info@plantis.shop',
 		'priceRange'           => '100–40 000 ₽',
 		'currenciesAccepted'   => 'RUB',
+    'openingHours'        => 'Mo-Su 10:00-20:00',
 		'address'              => [
 			'@type'           => 'PostalAddress',
 			'streetAddress'   => 'ул. Мещерякова, д. 3',
 			'addressLocality' => 'Москва',
+      'addressRegion'   => 'Москва',
+			'postalCode'      => '125362',
 			'addressCountry'  => 'RU',
+		],
+    'legalAddress' => [
+			'@type'           => 'PostalAddress',
+			'streetAddress'   => 'Б. Почтовая, д. 1/33, стр. 1',
+			'addressLocality' => 'Москва',
+			'addressRegion'   => 'Москва',
+			'postalCode'      => '105082',
+			'addressCountry'  => 'RU',
+		],
+		'geo' => [
+			'@type'     => 'GeoCoordinates',
+			'latitude'  => 55.83226,
+			'longitude' => 37.45181,
 		],
 		'openingHoursSpecification' => [
 			[
@@ -323,6 +542,14 @@ function plnt_schema_get_organization_data() {
 		'sameAs' => [
 			'https://yandex.ru/maps/org/plentis/237252555639/',
 		],
+    'hasShippingService' => [
+      [
+        '@id' => $shipping_id,
+      ],
+    ],
+    'hasMerchantReturnPolicy' => [
+      '@id' => $return_policy_id,
+    ],
 	];
 
 	if ($logo_url) {
@@ -389,16 +616,21 @@ function plnt_schema_get_product_description($product) {
 		return '';
 	}
 
-	$description = $product->get_short_description();
+	$description = $product->get_description();
 
 	if (!$description) {
-		$description = $product->get_description();
+		$description = $product->get_short_description();
 	}
 
-	$description = trim(wp_strip_all_tags($description));
-	$description = preg_replace('/\s+/u', ' ', $description);
+	return plnt_schema_clean_text($description);
+}
 
-	return $description ?: '';
+function plnt_schema_get_product_alternate_name($product) {
+	if (!$product instanceof WC_Product) {
+		return '';
+	}
+
+	return plnt_schema_clean_text($product->get_short_description());
 }
 
 function plnt_schema_get_product_offer($product, $product_url, $org_id) {
@@ -407,35 +639,6 @@ function plnt_schema_get_product_offer($product, $product_url, $org_id) {
 	}
 
 	$availability = plnt_schema_get_product_availability($product);
-
-	if ($product->is_type('variable')) {
-		$prices = $product->get_variation_prices(true);
-		$values = isset($prices['price'])
-			? array_map('floatval', $prices['price'])
-			: [];
-
-		$values = array_values(array_filter($values, function($price) {
-			return $price >= 0;
-		}));
-
-		if (!$values) {
-			return [];
-		}
-
-		return [
-			'@type'         => 'AggregateOffer',
-			'@id'           => $product_url . '#offers',
-			'url'           => $product_url,
-			'priceCurrency' => 'RUB',
-			'lowPrice'      => min($values),
-			'highPrice'     => max($values),
-			'offerCount'    => count($values),
-			'availability'  => $availability,
-			'seller'        => [
-				'@id' => $org_id,
-			],
-		];
-	}
 
 	$price = $product->get_price();
 
@@ -483,7 +686,10 @@ function plnt_schema_get_product_properties($product) {
 			continue;
 		}
 
-		$name   = trim(wp_strip_all_tags(wc_attribute_label($attribute->get_name(), $product)));
+		$name = plnt_schema_clean_text(
+      wc_attribute_label($attribute->get_name(), $product)
+    );
+
 		$values = [];
 
 		if ($attribute->is_taxonomy()) {
@@ -500,11 +706,7 @@ function plnt_schema_get_product_properties($product) {
 			$values = $attribute->get_options();
 		}
 
-		$values = array_map(function($value) {
-			$value = trim(wp_strip_all_tags((string) $value));
-
-			return preg_replace('/\s+/u', ' ', $value);
-		}, $values);
+		$values = array_map('plnt_schema_clean_text', $values);
 
 		$values = array_values(array_unique(array_filter($values)));
 
@@ -548,6 +750,20 @@ function plnt_schema_get_product_availability($product) {
 	}
 
 	return 'https://schema.org/InStock';
+}
+
+function plnt_schema_clean_text($value) {
+	$value = wp_strip_all_tags((string) $value);
+
+	$value = html_entity_decode(
+		$value,
+		ENT_QUOTES | ENT_HTML5,
+		get_bloginfo('charset') ?: 'UTF-8'
+	);
+
+	$value = preg_replace('/\s+/u', ' ', $value);
+
+	return trim((string) $value);
 }
 
 function plnt_schema_print($data, $class = '') {
@@ -617,14 +833,8 @@ function plnt_output_breadcrumb_schema() {
 
 	foreach ($links as $key => $link) {
 		$name = isset($link['text'])
-			? html_entity_decode(
-				wp_strip_all_tags($link['text']),
-				ENT_QUOTES,
-				get_bloginfo('charset')
-			)
-			: '';
-
-		$name = trim(preg_replace('/\s+/u', ' ', $name));
+      ? plnt_schema_clean_text($link['text'])
+      : '';
 
 		if (!$name) {
 			continue;

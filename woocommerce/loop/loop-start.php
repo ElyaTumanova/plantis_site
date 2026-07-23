@@ -34,6 +34,7 @@ if ( plnt_get_catalog_type() === 'plants' ) {
   $term = get_queried_object();
 
   $allowed_tags = array(
+    'skidki',
     // Популярные подборки
     'napolnye',
     'novichkam',
@@ -68,18 +69,15 @@ if ( plnt_get_catalog_type() === 'plants' ) {
 
 $ctx = plnt_get_catalog_context();
 
-$image_url = get_template_directory_uri() . '/images/interior.webp';
+$image_url = '';
 
-if ( ! empty( $ctx['term'] ) ) {
-    $thumbnail_id = get_term_meta( $ctx['term']->term_id, 'thumbnail_id', true );
+if ( ! empty( $ctx['term'] ) && $ctx['term'] instanceof WP_Term ) {
+	$term_id  = $ctx['term']->term_id;
+	$image_id = (int) get_term_meta( $term_id, 'catalog_image', true );
 
-    if ( $thumbnail_id ) {
-        $thumbnail_url = wp_get_attachment_url( $thumbnail_id );
-
-        if ( $thumbnail_url ) {
-            $image_url = $thumbnail_url;
-        }
-    }
+	if ( $image_id ) {
+		$image_url = wp_get_attachment_image_url( $image_id, 'full' );
+	}
 }
 
 ?>
@@ -96,9 +94,11 @@ if ( ! empty( $ctx['term'] ) ) {
           itemprop="description"
           content="<?php echo esc_attr( $ctx['desc'] ?: $ctx['title'] ); ?>">
 
-      <meta
+      <?php if ( $image_url ) : ?>
+        <meta
           itemprop="image"
           content="<?php echo esc_url( $image_url ); ?>">
+      <?php endif; ?>
   <?php endif; ?>
 
 <?php 

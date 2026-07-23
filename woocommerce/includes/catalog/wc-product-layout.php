@@ -206,21 +206,39 @@ function plnt_add_class_loop_item_swiper($clasess){
 add_action('woocommerce_after_shop_loop_item', 'plnt_get_catalog_schema_data', 40);
 
 function plnt_get_catalog_schema_data() {
-  if ( is_shop() || is_product_category() || is_product_tag() || is_tax() ) {
+  if ( is_shop() || is_product_taxonomy() ) {
     global $product;
+    if ( ! $product instanceof WC_Product ) {
+      return;
+    }
     if ($product->is_virtual()) {
       return;
     }
-    // global $plants_cat_id;
-    // $parentCatId = check_category ($product);
-    $product_id = $product->get_id();
+
     $price = number_format($product->get_price(), 2, '.', '');
     $availability = plnt_get_availability_text($product);
+
+
+    $description = $product->get_description();
+    $description = strip_shortcodes( $description );
+    $description = wp_strip_all_tags( $description, true );
+    $description = html_entity_decode(
+      $description,
+      ENT_QUOTES | ENT_HTML5,
+      get_bloginfo( 'charset' ) ?: 'UTF-8'
+    );
+    $description = preg_replace( '/\s+/u', ' ', trim( $description ) );
+
+    if ( '' === $description ) {
+      $description = $product->get_name();
+    }
     ?>
-      <meta itemprop="description" content="<?php echo strip_tags($product->get_description())?>">
-      <link itemprop="url" href="<?php echo get_permalink( $product_id )?>">
+      <meta itemprop="description" content="<?php echo esc_attr( $description );?>">
+      <link
+        itemprop="url"
+        href="<?php echo esc_url( $product->get_permalink() ); ?>">
       <meta itemprop="price" content="<?php echo $price?>">
       <meta itemprop="priceCurrency" content="RUB">
-      <link itemprop="availability" href="http://schema.org/<?php echo $availability?>"><?php
+      <link itemprop="availability" href="https://schema.org/<?php echo $availability?>"><?php
   }
 }

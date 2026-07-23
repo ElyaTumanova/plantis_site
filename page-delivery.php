@@ -2,8 +2,6 @@
 get_header(); ?>
 
 <?php 
-    // стоимость доставки
-
     global $delivery_inMKAD;
     global $delivery_outMKAD;
    
@@ -41,9 +39,6 @@ get_header(); ?>
       '18:00 - 22:00',
     ];
 
-
-    //print_r($shipping_costs);
-    
 ?>
 
 <div class="content-area content-area_sidebar">
@@ -146,26 +141,18 @@ get_header(); ?>
         <?php endif; ?>
       
         <?php if ( $min_small_delivery || $min_medium_delivery ) : ?>
-          <?php if ( array_key_exists( $delivery_courier, $shipping_costs ) ) : ?>
+          <?php if ( $min_small_delivery ) : ?>
             <p>
-              Если ваш заказ до
-              <b><?php echo $min_medium_delivery ? $min_medium_delivery : $min_small_delivery; ?></b>
-              рублей, доставка осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.
+              Цена доставки для заказов стоимостью до <?php echo $min_small_delivery_minus_1; ?> рублей увеличена
+              <b>на <?php echo $small_markup_delivery; ?> ₽</b>
             </p>
-          <?php else : ?>
-            <?php if ( $min_small_delivery ) : ?>
-              <p>
-                Цена доставки для заказов стоимостью до <?php echo $min_small_delivery_minus_1; ?> рублей увеличена
-                <b>на <?php echo $small_markup_delivery; ?> ₽</b>
-              </p>
-            <?php endif; ?>
+          <?php endif; ?>
       
-            <?php if ( $min_medium_delivery ) : ?>
-              <p>
-                Цена доставки для заказов стоимостью от <?php echo $min_small_delivery; ?> до <?php echo $min_medium_delivery_minus_1; ?> рублей увеличена
-                <b>на <?php echo $medium_markup_delivery; ?> ₽</b>
-              </p>
-            <?php endif; ?>
+          <?php if ( $min_medium_delivery ) : ?>
+            <p>
+              Цена доставки для заказов стоимостью от <?php echo $min_small_delivery; ?> до <?php echo $min_medium_delivery_minus_1; ?> рублей увеличена
+              <b>на <?php echo $medium_markup_delivery; ?> ₽</b>
+            </p>
           <?php endif; ?>
         <?php endif; ?>
       
@@ -228,162 +215,8 @@ get_header(); ?>
       </div>
     </section>
 
-
-    <div class="delivery info__list d-none">
-            <div class="delivery__block">
-                    <div>
-                        <!-- <h3 class="delivery__heading heading-2">Если ваш заказ <b>от <?php //echo $min_small_delivery ?></b> рублей:</h3> -->
-                        <p><strong>Доставка на следующий день или позже:</strong></p>
-                            <ul>
-                                <li>в пределах МКАД — от <?php echo $in_mkad ?> рублей;</li>
-                                <li>за пределы МКАД (до 5 км) — от <?php echo $out_mkad ?> рублей;</li>
-                                <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
-                            </ul>
-                        <?php if($isHolidayCourierTariff):?>
-                            <p>В связи с высокой загрузкой курьеров в праздничные дни заказы стоимостью до 5000 руб доставляются по тарифу курьерской службы. </p>
-                        <?php endif;?>
-                        <p><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
-                        <?php if($isUrgentCourierTariff):?>
-                            <p>осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</p>
-                        <?php else:?>
-                          <ul>
-                              <li>в пределах МКАД — от <?php echo floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery)) ?> рублей;</li>
-                              <li>за пределы МКАД (до 5 км) — от <?php echo floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery)) ?> рублей;</li>
-                              <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
-                          </ul>	
-                        <?php endif; ?>
-                        <?php if($min_small_delivery || $min_medium_delivery) {
-                            if(array_key_exists($delivery_courier,$shipping_costs)) :?>
-                                <p>Если ваш заказ <b>до 
-                                <?php  if($min_medium_delivery) {echo $min_medium_delivery;} else {echo $min_small_delivery;}?></b> рублей 
-                                доставка осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</p>
-                            <?php else :?>    
-                                <p><strong>Цена доставки для заказов стоимостью до 
-                                    <?php 
-                                    if($min_small_delivery) {
-                                        echo $min_small_delivery_minus_1.' рублей увеличена на '.$small_markup_delivery.' рублей.';   
-                                    } 
-                                    
-                                    if($min_medium_delivery) {
-                                        echo '<br>Цена доставки для заказов стоимостью от '.$min_small_delivery.' до '.$min_medium_delivery_minus_1.' рублей увеличена на '.$medium_markup_delivery.' рублей.'; 
-                                    } ?> 
-                                </strong></p>  
-                            <?php endif; ?>			
-                        <?php
-
-                        } ?>
-                        <p class="info__note">В итоговой стоимости заказа не учитывается цена доставки!</p>
-                        
-                    </div>
-                
-                    <!-- <div>
-                        <h3 class="delivery__heading heading-2">Если ваш заказ <b>до <?php //echo $min_small_delivery ?></b> рублей:</h3>
-                        <?php if(array_key_exists($delivery_courier,$shipping_costs)) :?>
-                            <p>Доставка осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</p>
-                        <?php else :?>
-                            <p><strong>Доставка на следующий день или позже:</strong></p>
-                            <ul>
-                                <li>в пределах МКАД — от <?php //echo $in_mkad_small ?> рублей;</li>
-                                <li>за пределы МКАД (до 5 км) — от <?php //echo $out_mkad_small ?> рублей;</li>
-                                <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
-                            </ul>
-                            <p><strong>Срочная “день в день”</strong>. Можно оформить до 18:00:</p>
-                            <ul>
-                                <li>в пределах МКАД — от <?php //echo $in_mkad_small_urg ?> рублей;</li>
-                                <li>за пределы МКАД (до 5 км) — от <?php //echo $out_mkad_small_urg ?> рублей;</li>
-                                <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
-                            </ul>
-                            <p class="info__note">В итоговой стоимости заказа не учитывается цена доставки!</p>
-                        <?php endif; ?>
-                    </div> -->
-                <!-- </div> -->
-            </div>
-                <?php if($large_markup_delivery_in_mkad):?>
-                    <div class="delivery__block">
-                        <!-- <div class="delivery__header"> -->
-                            <h2 class="entry-header">Крупногабаритная доставка</h2>
-                            <!-- <span class="delivery__dropdown-arrow">next</span>
-                        </div> -->
-                        <!-- <div class="delivery__dropdown"> -->
-                            <p>Доставка крупномерных растений (от 100см), больших заказов, высоких или тяжелых кашпо осуществляется грузовым автомобилем.</p>
-                            <p><strong>Крупногабаритная доставка на следующий день или позже:</strong></p>
-                            <ul>
-                                <li>в пределах МКАД — от <?php echo(floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_in_mkad)))?> рублей;</li>
-                                <li>за пределы МКАД (до 5 км) — от <?php echo(floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)))?> рублей;</li>
-                                <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
-                            </ul>
-                            <p><strong>Крупногабаритная срочная “день в день”.</strong> Можно оформить до 18:00:</p>
-                            <?php if($isUrgentCourierTariff):?>
-                              <p>осуществляется по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</p>
-                            <?php else:?>
-                              <ul>
-                                  <li>в пределах МКАД — от <?php echo(floatval(str_replace(' ', '', $in_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_in_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)))?> рублей;</li>
-                                  <li>за пределы МКАД (до 5 км) — от <?php echo(floatval(str_replace(' ', '', $out_mkad)) + floatval(str_replace(' ', '', $large_markup_delivery_out_mkad)) + floatval(str_replace(' ', '', $urgent_markup_delivery_large)))?> рублей;</li>
-                                  <li>за пределы МКАД (от 5 км) — по тарифу грузоперевозчика, рассчитывается менеджером после оформления заказа.</li>
-                              </ul>
-                            <?php endif;?>
-                        <!-- </div> -->
-                    </div>
-                <?php endif;?>				
-                    
-               			
-                
-                <div class="delivery__block">
-                    <!-- <div class="delivery__header"> -->
-                        <h2 class="entry-header">Самовывоз</h2>
-                        <!-- <span class="delivery__dropdown-arrow">next</span>
-                    </div> -->
-                    <!-- <div class="delivery__dropdown"> -->
-                        <h3 class="delivery__heading heading-2">Где</h3>
-                        <p>Вы можете бесплатно забрать товары из нашего шоурума по адресу г. Москва, ул. Мещерякова, д.3 (от м. Тушинская или м. Сокол).</p>
-                        <div class="info__map">
-                            <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=237252555639" width="560" height="400" frameborder="0"></iframe>
-                        </div>
-
-                        <h3 class="delivery__heading heading-2">Когда</h3>
-                            <p>Мы ждем Вас ежедневно в рабочие часы.</p>
-                            <p>Необходимо предварительно связаться с нами и договорится о времени Вашего прибытия.</p>
-                    <!-- </div> -->
-                </div>
-                
-                
-                <div class="delivery__block">
-                    <!-- <div class="delivery__header"> -->
-                        <h3 class="entry-header">Интервалы доставки</h3>
-                        <!-- <span class="delivery__dropdown-arrow">next</span>
-                    </div> -->
-                    <!-- <div class="delivery__dropdown"> -->
-                        <ul>
-                          <?php foreach ($intervals as $interval): ?>
-                            <li>с <?= str_replace(' - ', ' до ', $interval); ?><?= ($interval == $expensive_interval_delivery)
-                                ? ' + ' . (int)$expensive_interval_markup_delivery . ' рублей к стоимости доставки'
-                                : '' ?>;</li>
-                          <?php endforeach; ?>
-                        </ul>
-
-                        <p>Мы работаем без выходных, поэтому <strong>доставка осуществляется каждый день.</strong></p>
-                        <p>При оформлении срочной доставки “день в день” менеджер согласует с вами удобный интервал доставки.</p>					
-                    <!-- </div> -->
-                </div>
-
-                <div class="delivery__block">
-                    <!-- <div class="delivery__header"> -->
-                        <h3 class="entry-header">Связаться с нами</h3>
-                        <!-- <span class="delivery__dropdown-arrow">next</span>
-                    </div> -->
-                    <!-- <div class="delivery__dropdown"> -->
-                        <p>Ничего страшного, если вы не можете принять заказ в согласованные дату и время. В таком случае просим связаться с нами удобным для вас способом.</p>
-
-                        <?php get_template_part('template-parts/contacts-part');?>
-                    <!-- </div> -->
-                </div>
-
-
-           
-
-		</div>
-	</main><!-- #main -->  
-</div><!-- #primary -->
+	</main>  
+</div>
 
 
 
