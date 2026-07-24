@@ -48,6 +48,7 @@ require get_template_directory() . '/includes/search-synonims.php';
 require get_template_directory() . '/includes/constants.php';
 /** Add SEO support */
 require get_template_directory() . '/includes/seo-support.php'; // todo
+require get_template_directory() . '/includes/schema-support.php';
 /** Add New Yoast breadcrumd */
 require get_template_directory() . '/includes/yoast-breadcrumb.php';
 /** Add theme support */

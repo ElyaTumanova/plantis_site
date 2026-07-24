@@ -44,8 +44,6 @@ function plnt_quantity_minus() {
   } 
 };
 
-// мета данные товара артикул + schema.org
-
 
 
 //add_action( 'woocommerce_single_product_summary', 'plnt_get_buy_one_click_btn', 50);

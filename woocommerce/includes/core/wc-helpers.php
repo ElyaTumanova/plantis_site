@@ -229,8 +229,7 @@ function get_lowest_level_product_categories( $parent_id = 0 ) {
     return $lowest_level_cats;
 }
 
-/**
- * Вернёт контекст текущего каталога WooCommerce.
+/** Вернёт контекст текущего каталога WooCommerce.
  * Определяет: магазин, категория, метка, любая таксономия товаров, поиск и т.п.
  */
 function wc_get_catalog_context() {
@@ -372,6 +371,7 @@ function plnt_get_brand_text($idCats) {
     }
     return $brand;
 }
+
 
 /*--------------------------------------------------------------
 # HELPERS for cart & checkout
