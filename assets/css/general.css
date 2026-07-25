@@ -151,6 +151,13 @@ textarea {
   color: var(--black-color);
 }
 
+@media (max-width: 768px) {
+  .h4 {
+    font-weight: 600;
+  }
+}
+
+
 .h5 {
   font-size: clamp(18px, 16.6px + 0.39vw, 22px);
   line-height: 1.2;

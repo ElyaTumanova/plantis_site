@@ -38,6 +38,17 @@
   overflow: hidden !important;
 }
 
+@media (max-width:768px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+}
+@media (min-width:769px) {
+  .desktop-hidden {
+    display: none !important;
+  }
+}
+
 .clear-button,
 .clear-button button {
   border: none;

@@ -157,7 +157,7 @@ function plnt_get_script_files() {
 		// 	'deps'   => array( 'jquery' ),
 		// ),
 		array(
-			'handle' => 'page-popup',
+			'handle' => 'popup',
 			'file'   => 'popup',
 			'deps'   => array( 'jquery' ),
 		),

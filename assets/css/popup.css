@@ -55,7 +55,26 @@
   }
 }
 
+.page-popup__container--submitted {
+  visibility: hidden;
+}
 
+.page-popup__container--submitted
+.wpcf7-response-output {
+  visibility: visible;
+}
+
+.page-popup__container--submitted
+.input-wrap_labeled,
+.page-popup__container--submitted
+.input-wrap_labeled *,
+.page-popup__container--submitted
+.tg-nik-wrap,
+.page-popup__container--submitted
+.tg-nik-wrap * {
+  visibility: hidden;
+  transition: none !important;
+}
 /* ===== Только для side-popup переопределяем display ===== */
 .side-popup.popup{
   display: block !important;      /* перебиваем .popup {display:none} */
@@ -274,7 +293,7 @@
   height: 54px;
   transition-duration: var(--transition-duration);
   opacity: 1;
-  visibility: visible;
+  /* visibility: visible; */
   margin-bottom: 12px;
 }
 .tg-nik-wrap.tg-nik-wrap--hidden {

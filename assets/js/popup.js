@@ -126,6 +126,7 @@ class CF7Popup extends Popup {
   cleanForm () {
     if(this.contactForm !=null) {
       this.contactForm.reset()
+      this.removeFieldsFocus()
     }
     if (this.tgNikWrap) {
       this.tgNikWrap.classList.add('tg-nik-wrap--hidden')
@@ -152,22 +153,82 @@ class CF7Popup extends Popup {
     this.productNameMirror.textContent = this.productNameInput.value || ''
   }
 
-  addContactFormListeners() {
-    if(this.contactForm !=null) {
-      this.contactForm.addEventListener('submit', (evt) => {this.preloader.classList.add('active')})
+  removeFieldsFocus() {
+    this.contactForm
+      ?.querySelectorAll('input, textarea')
+      .forEach((field) => {
+        field.classList.remove('focus')
+      })
+  }
 
-      document.addEventListener('wpcf7submit', (evt) => {
-          // Универсальный обработчик отправки
-          this.container.style.visibility = 'hidden';
-          this.preloader.classList.remove('active');
-          setTimeout(() => {
-            this.popup.classList.remove('popup_active');
-            this.body.classList.remove('fix-body');
-            this.cleanForm();
-            this.container.style.visibility = 'visible';
-          }, 4000);
-      }, false);
+  updateFieldsFocus() {
+    this.contactForm
+      ?.querySelectorAll('input, textarea')
+      .forEach((field) => {
+        field.classList.toggle(
+          'focus',
+          field.value.trim() !== ''
+        )
+      })
+  }
+
+  addContactFormListeners() {
+    if (!this.contactForm) {
+      return
     }
+
+    this.contactForm.addEventListener(
+      'submit',
+      () => {
+        this.preloader?.classList.add('active')
+      }
+    )
+
+    document.addEventListener(
+      'wpcf7mailsent',
+      (event) => {
+        if (event.target !== this.contactForm) {
+          return
+        }
+
+        this.preloader?.classList.remove('active')
+
+        setTimeout(() => {
+          this.removeFieldsFocus()
+
+          this.container.classList.add('page-popup__container--submitted')
+        }, 0)
+
+        setTimeout(() => {
+          this.popup.classList.remove(
+            'popup_active'
+          )
+
+          this.body.classList.remove(
+            'fix-body'
+          )
+
+          this.cleanForm()
+
+          this.container.classList.remove('page-popup__container--submitted')
+        }, 4000)
+      }
+    )
+
+    document.addEventListener(
+      'wpcf7invalid',
+      (event) => {
+        if (event.target !== this.contactForm) {
+          return
+        }
+
+        this.preloader?.classList.remove('active')
+
+        setTimeout(() => {
+          this.updateFieldsFocus()
+        }, 0)
+      }
+    )
   }
 
   addServiceNameListeners() {
