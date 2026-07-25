@@ -162,21 +162,21 @@ if ( ! empty( $plants_cat_id ) ) {
 
         <li class="page-ukhod__included-item">
           <span class="page-ukhod__included-icon">
-            <?php echo plnt_icon( 'service-3' ); ?>
+            <?php echo plnt_icon( 'buildings' ); ?>
           </span>
           <p class="page-ukhod__included-text">Подбор размеров и количества под проект</p>
         </li>
 
         <li class="page-ukhod__included-item">
           <span class="page-ukhod__included-icon">
-            <?php echo plnt_icon( 'service-4' ); ?>
+            <?php echo plnt_icon( 'octagon' ); ?>
           </span>
           <p class="page-ukhod__included-text">Индивидуальное коммерческое предложение</p>
         </li>
 
         <li class="page-ukhod__included-item">
           <span class="page-ukhod__included-icon">
-            <?php echo plnt_icon( 'service-5' ); ?>
+            <?php echo plnt_icon( 'percent' ); ?>
           </span>
           <p class="page-ukhod__included-text">Оптовая скидка в зависимости от суммы заказа</p>
         </li>
@@ -190,7 +190,7 @@ if ( ! empty( $plants_cat_id ) ) {
 
         <li class="page-ukhod__included-item">
           <span class="page-ukhod__included-icon">
-            <?php echo plnt_icon( 'service-7' ); ?>
+            <?php echo plnt_icon( 'car-grad' ); ?>
           </span>
           <p class="page-ukhod__included-text">Согласование сроков и организация доставки</p>
         </li>
@@ -338,7 +338,7 @@ if ( ! empty( $plants_cat_id ) ) {
         </div>
 
         <div class="advantages__wrap">
-          <?php echo plnt_icon( 'home' ); ?>
+          <?php echo plnt_icon( 'box' ); ?>
           <h3 class="h5 advantages__title">Помощь с подбором</h3>
           <p class="advantages__descr">Подскажем подходящие виды и размеры растений с учётом пространства, бюджета и задачи.</p>
         </div>

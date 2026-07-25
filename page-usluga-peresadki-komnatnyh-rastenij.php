@@ -123,21 +123,21 @@
       <ul class="page-ukhod__included-list">
         <li class="page-ukhod__included-item">
           <span class="page-ukhod__included-icon">
-            <?php echo plnt_icon( 'service-1' ); ?>
+            <?php echo plnt_icon( 'service-2' ); ?>
           </span>
           <p class="page-ukhod__included-text">Осмотр растения и корневой системы</p>
         </li>
 
         <li class="page-ukhod__included-item">
           <span class="page-ukhod__included-icon">
-            <?php echo plnt_icon( 'service-2' ); ?>
+            <?php echo plnt_icon( 'service-8' ); ?>
           </span>
           <p class="page-ukhod__included-text">Подбор подходящего размера горшка</p>
         </li>
 
         <li class="page-ukhod__included-item">
           <span class="page-ukhod__included-icon">
-            <?php echo plnt_icon( 'service-3' ); ?>
+            <?php echo plnt_icon( 'service-5' ); ?>
           </span>
           <p class="page-ukhod__included-text">Подготовка грунта и дренажа</p>
         </li>
@@ -151,7 +151,7 @@
 
         <li class="page-ukhod__included-item">
           <span class="page-ukhod__included-icon">
-            <?php echo plnt_icon( 'service-5' ); ?>
+            <?php echo plnt_icon( 'service-7' ); ?>
           </span>
           <p class="page-ukhod__included-text">Аккуратная пересадка без повреждения растения</p>
         </li>

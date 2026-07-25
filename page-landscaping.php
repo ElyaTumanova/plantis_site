@@ -137,28 +137,28 @@
 
         <li class="page-ukhod__included-item">
           <span class="page-ukhod__included-icon">
-            <?php echo plnt_icon( 'service-3' ); ?>
+            <?php echo plnt_icon( 'service-8' ); ?>
           </span>
           <p class="page-ukhod__included-text">Подбор горшков и кашпо в стилистике интерьера</p>
         </li>
 
         <li class="page-ukhod__included-item">
           <span class="page-ukhod__included-icon">
-            <?php echo plnt_icon( 'service-4' ); ?>
+            <?php echo plnt_icon( 'gallery-grad' ); ?>
           </span>
           <p class="page-ukhod__included-text">Концепция размещения зелёных композиций</p>
         </li>
 
         <li class="page-ukhod__included-item">
           <span class="page-ukhod__included-icon">
-            <?php echo plnt_icon( 'service-5' ); ?>
+            <?php echo plnt_icon( 'receipt-grad' ); ?>
           </span>
           <p class="page-ukhod__included-text">Фиксированная смета и прозрачные условия</p>
         </li>
 
         <li class="page-ukhod__included-item">
           <span class="page-ukhod__included-icon">
-            <?php echo plnt_icon( 'service-6' ); ?>
+            <?php echo plnt_icon( 'car-grad' ); ?>
           </span>
           <p class="page-ukhod__included-text">Доставка растений и кашпо на объект</p>
         </li>
@@ -172,7 +172,7 @@
 
         <li class="page-ukhod__included-item">
           <span class="page-ukhod__included-icon">
-            <?php echo plnt_icon( 'service-8' ); ?>
+            <?php echo plnt_icon( 'service-6' ); ?>
           </span>
           <p class="page-ukhod__included-text">Рекомендации и дальнейшее обслуживание</p>
         </li>
@@ -305,7 +305,7 @@
       <div class="faq-items">
         <div class="faq-item">
           <div class="faq-question icon icon--plus">
-            <h3>Сколько времени занимает озеленение?</h3>
+            <h3 class="h5">Сколько времени занимает озеленение?</h3>
           </div>
           <div class="faq-answer">
             <p>Небольшие проекты можно реализовать за 1–2 дня, но обычно озеленение занимает 7–10 дней. Для сложных проектов может потребоваться больше времени.</p>
@@ -314,7 +314,7 @@
 
         <div class="faq-item">
           <div class="faq-question icon icon--plus">
-            <h3>Работаете ли вы с небольшими офисами?</h3>
+            <h3 class="h5">Работаете ли вы с небольшими офисами?</h3>
           </div>
           <div class="faq-answer">
             <p>Да. Мы подбираем решения для любых пространств — от отдельных кабинетов до крупных офисов и open space.</p>
