@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 
 add_action( 'woocommerce_before_main_content', 'plnt_breadcrumbs_yoast', 21 );
-plnt_add_wrapper('plnt_breadrumbs_wrap','woocommerce_before_main_content', 20, 'woocommerce_before_main_content', 23);
+plnt_add_wrapper('plnt_breadcrumbs_wrap','woocommerce_before_main_content', 20, 'woocommerce_before_main_content', 23);
 
 function plnt_breadcrumbs_yoast() {
 	if (

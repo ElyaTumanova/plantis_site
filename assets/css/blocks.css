@@ -194,7 +194,7 @@
   font-weight: 400 !important;
 }
 
-.plnt_breadrumbs_wrap {
+.plnt_breadcrumbs_wrap {
   display: flex;
   gap: 10px;
   justify-content: space-between;

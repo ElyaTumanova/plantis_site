@@ -32,6 +32,7 @@ function plnt_get_style_files() {
 		'cart',
 		'checkout',
 		'pages',
+    'services',
 		'wishlist',
 		'account',
 		'popup',

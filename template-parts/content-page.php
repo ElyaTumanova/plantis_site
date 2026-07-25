@@ -1,6 +1,6 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <?php if(is_page('wishlist')):?>
-    <?php plnt_breadrumbs_yoast();?>
+    <?php plnt_breadcrumbs_yoast();?>
     <section class="catalog__header section">
       <div class="catalog__header-inner">
         <header class="woocommerce-products-header">

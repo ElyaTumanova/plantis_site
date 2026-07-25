@@ -1,0 +1,1146 @@
+/* paddings */
+@media (max-width: 768px) {
+  .content-area:has(.page-ukhod) {
+    padding-inline: 0px;
+  }
+  .content-area:has(.page-ukhod) .section:not(:first-child) {
+    padding-inline: var(--container-padding);
+  }
+}
+
+/* Первый экран */
+
+.page-ukhod__first-screen {
+  padding: 4px;
+  border-radius: var(--br-l);
+  background-color: var(--accent-color);
+}
+
+.page-ukhod__first-screen-wrap {
+  position: relative;
+  border-radius: var(--br-m);
+  overflow: hidden;
+  padding: 40px;
+  padding-top: 164px;
+}
+
+@media (max-width: 768px) {
+  .page-ukhod__first-screen-wrap {
+    padding: 20px;
+    padding-top: 158px;
+  }
+}
+.page-ukhod__photo {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.page-ukhod__first-screen-inner {
+  max-width: 600px;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 1024px) {
+  .page-ukhod__first-screen-inner {
+    max-width: none;
+  }
+}
+
+.page-ukhod__intro_small {
+  padding: 28px 40px;
+  color: var(--white-color);
+}
+
+.page-ukhod__intro_small p:first-child {
+  margin-bottom: 4px;
+  font-size: 18px;
+  opacity: 75%;
+  font-weight: 400;
+}
+.page-ukhod__intro_small p:last-child {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .page-ukhod__intro_small {
+    padding: 20px;
+  }
+  .page-ukhod__intro_small p:first-child {
+    font-size: 14px;
+  }
+  .page-ukhod__intro_small p:last-child {
+    font-size: 18px;
+  }
+}
+
+.h1.page-ukhod__entry-title {
+  margin-bottom: 20px;
+  color: var(--white-color);
+}
+
+@media (max-width: 768px) {
+  .page-ukhod__entry-title br {
+    display: none;
+  }
+}
+
+.page-ukhod__intro {
+  max-width: 450px;
+  color: var(--white-color);
+  line-height: 1.4;
+  opacity: 75%;
+}
+
+.page-ukhod__rasschet {
+  --btn-pad-block: 14px;
+  --btn-pad-inline: 24px;
+  --btn-height:56px;
+  margin-top: 20px;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .page-ukhod__rasschet {
+    flex-direction: column;
+  }
+}
+
+.page-ukhod__rasschet .button {
+  border: solid 4px var(--white-color);
+  font-size: 16px;
+}
+@media (max-width: 768px) {
+  .page-ukhod__rasschet .button {
+    width: 100%;
+  }
+}
+.page-ukhod__rasschet .social-media__buttons {
+  gap: 4px;
+}
+.page-ukhod__rasschet .social-media__button {
+  background-color: var(--green-l-color);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.page-ukhod__rasschet .social-media__button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.page-ukhod__rasschet .social-media__button.social-media__button-telegram svg {
+  color: #0886C4;
+}
+.page-ukhod__rasschet .social-media__button.social-media__button-max svg {
+  color: #8A38F5;
+}
+.page-ukhod__rasschet .social-media__button.social-media__button-whatsapp svg {
+  color: #00A901;
+}
+
+.page-ukhod__rasschet-socials-wrap {
+  background-color: var(--white-color);
+  padding: 4px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border-radius: var(--button-br);
+}
+
+.page-ukhod__rasschet-socials-wrap span {
+  margin-left: 10px;
+  color: var(--gray-color);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) { 
+  .page-ukhod__rasschet-socials-wrap span br {
+    display: none;
+  }
+}
+
+/* Этапы */
+
+.page-ukhod__stages {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(500px, 1.2fr);
+  gap: 12px;
+}
+@media (max-width: 768px) {
+  .page-ukhod__stages {
+    grid-template-columns: 1fr;
+  }
+}
+
+.page-ukhod__stages-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.page-ukhod__stages-col .page-ukhod__stages-image {
+  width: 100%;
+}
+
+.page-ukhod__stages .page-ukhod__services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.page-ukhod__services-item {
+  display: grid;
+  grid-template-columns: 45px minmax(0, 1fr);
+  column-gap: 20px;
+  align-items: start;
+  padding: 24px;
+  border: var(--border);
+  border-radius: 16px;
+}
+
+.page-ukhod__services-item-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  border-radius: 100px;
+  background-color: var(--accent-color);
+  color: var(--white-color);
+  font-weight: 600;
+}
+
+.page-ukhod__services-item-title {
+  margin-bottom: 8px;
+}
+
+.page-ukhod__services-item-descr {
+  font-weight: 400;
+}
+
+/* Что входит в обслуживание */
+
+
+.page-ukhod__included-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 1024px) {
+  .page-ukhod__included-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
+@media (max-width: 768px) {
+  .page-ukhod__included-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
+
+.page-ukhod__included-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 24px;
+  border-radius: var(--br-m);
+  background-color: var(--green-l-color);
+  text-align: center;
+}
+
+.page-ukhod__included-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 16px;
+}
+
+.page-ukhod__included-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.page-ukhod__included-text {
+  /* max-width: 250px; */
+  color: var(--black-color);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+/* Тарифы */
+
+
+.page-ukhod__tariffs-items {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.page-ukhod__tariffs-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  column-gap: 8px;
+  padding: 24px;
+  height: 100%;
+  border-radius: var(--br-m);
+  background-color: var(--green-l-color);
+  z-index: 3;
+}
+
+.page-ukhod__tariffs-item-wrap {
+  position: relative;
+  flex: 1 1 0;
+}
+
+@media (max-width: 1024px) {
+  .page-ukhod__tariffs-items {
+    flex-wrap: wrap;
+  }
+
+  .page-ukhod__tariffs-item-wrap {
+    flex: 1 1 calc(50% - 6px);
+  }
+
+  .page-ukhod__tariffs-item-wrap:last-child {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-ukhod__tariffs-items {
+    flex-direction: column;
+  }
+
+  .page-ukhod__tariffs-item-wrap {
+    flex-basis: auto;
+    min-height: 0;
+  }
+}
+
+.page-ukhod__tariffs-item-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.page-ukhod__tariffs-item-cost,
+.page-ukhod__tariffs-item-period {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 9px 14px;
+  border-radius: var(--br-xl);
+  background-color: var(--white-color);
+  color: var(--accent-color);
+  font-size: 16px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.page-ukhod__tariffs-item-info {
+  border-radius: 100px;
+  padding: 9px;
+  background-color: var(--stock-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white-color);
+}
+.page-ukhod__tariffs-item-info svg {
+  width: 20px;
+  height: 20px;
+}
+
+.page-ukhod__tariffs-item-comment {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(0);
+  z-index: 2;
+  padding: 16px;
+  padding-top: 32px;
+  background-color: var(--stock-color);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  color: var(--white-color);
+  transition-duration: var(--transition-duration);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@media (hover:hover) {
+  .page-ukhod__tariffs-item-wrap:has(.page-ukhod__tariffs-item-info:hover) .page-ukhod__tariffs-item-comment {
+    transform: translateY(calc(100% - 16px));
+  }
+}
+
+@media (max-width: 768px) {
+  .page-ukhod__tariffs-item-comment {
+   position: relative; 
+   transform: translateY(-16px);
+  }
+}
+
+.page-ukhod__tariffs-item-comment p {
+  margin: 0;
+}
+
+.page-ukhod__tariffs-item-title {
+  margin: 12px 0 20px;
+}
+
+.page-ukhod__tariffs-item-descr {
+  margin-bottom: 20px;
+}
+
+.page-ukhod__tariffs-item-order {
+  --btn-pad-block: 14px;
+  --btn-pad-inline: 24px;
+  margin-top: auto;
+}
+
+
+
+
+/* Дополнительные стили страницы пересадки.
+ * Основная сетка, первый экран, этапы, карточки услуг и преимущества
+ * наследуются от .page-ukhod__*.
+ */
+
+.page-peresadka .page-ukhod__first-screen-wrap::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 43, 34, 0.78) 0%,
+    rgba(0, 43, 34, 0.48) 45%,
+    rgba(0, 43, 34, 0.04) 76%
+  );
+  content: '';
+  pointer-events: none;
+}
+
+.page-peresadka .page-ukhod__first-screen-inner {
+  z-index: 2;
+}
+
+.page-peresadka__stages-image {
+  max-height: 500px;
+  border-radius: var(--br-m);
+  object-fit: cover;
+}
+
+.page-peresadka .page-ukhod__included-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.page-peresadka .page-ukhod__included-item {
+  min-height: 180px;
+}
+
+/* Информационная плашка */
+
+.page-peresadka__notice {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding: 32px;
+  border-radius: var(--br-m);
+  background-color: var(--green-l-color);
+}
+
+.page-peresadka__notice-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--white-color);
+  color: var(--accent-color);
+}
+
+.page-peresadka__notice-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.page-peresadka__notice-title {
+  margin-bottom: 12px;
+}
+
+.page-peresadka__notice-content p {
+  max-width: 980px;
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Стоимость */
+
+.page-peresadka__prices-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.page-peresadka__price-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border-radius: var(--br-m);
+  background-color: var(--green-l-color);
+}
+
+.page-peresadka__price-card-title {
+  margin-bottom: 8px;
+}
+
+.page-peresadka__price-card-intro {
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.page-peresadka__table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  background-color: var(--white-color);
+}
+
+.page-peresadka__table {
+  width: 100%;
+  min-width: 440px;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+.page-peresadka__table th,
+.page-peresadka__table td {
+  padding: 15px 16px;
+  border-bottom: var(--border);
+  text-align: left;
+  font-weight: 400;
+}
+
+.page-peresadka__table th {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.page-peresadka__table th:last-child,
+.page-peresadka__table td:last-child {
+  width: 160px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.page-peresadka__table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.page-peresadka__price-note {
+  margin: 16px 0 0;
+  color: var(--gray-color);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* Пример расчёта */
+
+.page-peresadka__example {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.75fr) minmax(500px, 1.25fr);
+  gap: 32px;
+  align-items: start;
+  padding: 32px;
+  border-radius: var(--br-m);
+  background-color: var(--accent-color);
+  color: var(--white-color);
+}
+
+.page-peresadka__example-title {
+  margin-bottom: 16px;
+  color: inherit;
+}
+
+.page-peresadka__example-content p {
+  margin: 0;
+  opacity: 0.8;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.page-peresadka__example-card {
+  padding: 20px;
+  border-radius: var(--br-m);
+  background-color: var(--white-color);
+  color: var(--black-color);
+}
+
+.page-peresadka__example-card .button {
+  --btn-pad-block: 14px;
+  --btn-pad-inline: 24px;
+  margin-top: 16px;
+}
+
+.page-peresadka__table--example {
+  min-width: 500px;
+}
+
+.page-peresadka__table-total td {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .page-peresadka__prices-grid,
+  .page-peresadka__example {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-peresadka .page-ukhod__included-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-peresadka .page-ukhod__first-screen-wrap::after {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 43, 34, 0.22) 0%,
+      rgba(0, 43, 34, 0.78) 55%,
+      rgba(0, 43, 34, 0.9) 100%
+    );
+  }
+
+  .page-peresadka__notice {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px;
+  }
+
+  .page-peresadka__notice-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .page-peresadka__price-card,
+  .page-peresadka__example {
+    padding: 20px;
+  }
+
+  .page-peresadka__example {
+    gap: 20px;
+  }
+
+  .page-peresadka__example-card {
+    padding: 12px;
+  }
+
+  .page-peresadka__table {
+    min-width: 0px;
+    font-size: 14px;
+  }
+
+  .page-peresadka__table th,
+  .page-peresadka__table td {
+    padding: 13px 12px;
+  }
+
+  .page-peresadka__table th:last-child,
+  .page-peresadka__table td:last-child {
+    width: 120px;
+  }
+}
+
+
+/* Дополнительные стили страницы озеленения.
+ * Первый экран, этапы, карточки услуг, тарифы и преимущества
+ * используют общие классы страницы ухода .page-ukhod__*.
+ */
+
+.page-landscaping .page-ukhod__first-screen-wrap::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 43, 34, 0.82) 0%,
+    rgba(0, 43, 34, 0.52) 44%,
+    rgba(0, 43, 34, 0.04) 78%
+  );
+  content: '';
+  pointer-events: none;
+}
+
+.page-landscaping .page-ukhod__first-screen-inner {
+  z-index: 2;
+}
+
+.page-landscaping__stages-image {
+  max-height: 500px;
+  border-radius: var(--br-m);
+  object-fit: cover;
+}
+
+.page-landscaping__tariffs-intro {
+  max-width: 900px;
+  margin: 0 0 24px;
+  color: var(--gray-color);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Блок перехода к обслуживанию */
+
+.page-landscaping__care {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px;
+  border-radius: var(--br-m);
+  background-color: var(--accent-color);
+  color: var(--white-color);
+}
+
+.page-landscaping__care-content {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  max-width: 850px;
+}
+
+.page-landscaping__care-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--white-color);
+  color: var(--accent-color);
+}
+
+.page-landscaping__care-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.page-landscaping__care-title {
+  margin-bottom: 12px;
+  color: inherit;
+}
+
+.page-landscaping__care-descr {
+  max-width: 760px;
+  margin: 0;
+  opacity: 0.8;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.page-landscaping__care-button {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+/* FAQ */
+
+.page-landscaping__faq-title {
+  margin-bottom: 24px;
+}
+
+@media (max-width: 1024px) {
+  .page-landscaping__care {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-landscaping .page-ukhod__first-screen-wrap::after {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 43, 34, 0.15) 0%,
+      rgba(0, 43, 34, 0.72) 50%,
+      rgba(0, 43, 34, 0.92) 100%
+    );
+  }
+
+  .page-landscaping__care {
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .page-landscaping__care-content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .page-landscaping__care-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .page-landscaping__care-button {
+    width: 100%;
+    white-space: normal;
+  }
+}
+
+
+/* Дополнительные стили страницы оптовых поставок.
+ * Первый экран, этапы, карточки, тарифы и преимущества
+ * используют общие классы страницы ухода .page-ukhod__*.
+ */
+
+.page-optom__discounts-intro {
+  max-width: 800px;
+  margin: 0 0 24px;
+  color: var(--gray-color);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.page-optom__discounts-note {
+  margin: 20px 0 0;
+  color: var(--gray-color);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* Срок поставки */
+
+.page-optom__terms {
+  padding: 32px;
+  border-radius: var(--br-m);
+  background-color: var(--green-l-color);
+}
+
+.page-optom__terms-content {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.page-optom__terms-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--white-color);
+  color: var(--accent-color);
+}
+
+.page-optom__terms-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.page-optom__terms-title {
+  margin-bottom: 12px;
+}
+
+.page-optom__terms-descr {
+  max-width: 900px;
+  margin: 0;
+  color: var(--gray-color);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Финальный блок */
+
+.page-optom__cta {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px;
+  border-radius: var(--br-m);
+  background-color: var(--accent-color);
+  color: var(--white-color);
+}
+
+.page-optom__cta-content {
+  max-width: 760px;
+}
+
+.page-optom__cta-title {
+  margin-bottom: 12px;
+  color: inherit;
+}
+
+.page-optom__cta-descr {
+  margin: 0;
+  opacity: 0.8;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.page-optom__cta-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.page-optom__cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+  .page-optom__cta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-optom__terms,
+  .page-optom__cta {
+    padding: 24px;
+  }
+
+  .page-optom__terms-content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .page-optom__terms-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .page-optom__cta-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .page-optom__cta-button {
+    width: 100%;
+    white-space: normal;
+  }
+}
+
+
+/* Дополнительные стили страницы сотрудничества с дизайнерами.
+ * Первый экран, этапы, список преимуществ, бонусные карточки
+ * и общий блок преимуществ используют классы .page-ukhod__*.
+ */
+
+.page-designers__bonus-intro {
+  max-width: 800px;
+  margin: 0 0 24px;
+  color: var(--gray-color);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.page-designers__bonus-note {
+  margin: 20px 0 0;
+  color: var(--gray-color);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Юридический блок */
+
+.page-designers__legal {
+  padding: 32px;
+  border-radius: var(--br-m);
+  background-color: var(--green-l-color);
+}
+
+.page-designers__legal-heading {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+.page-designers__legal-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--white-color);
+  color: var(--accent-color);
+}
+
+.page-designers__legal-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.page-designers__legal-title {
+  margin-bottom: 8px;
+}
+
+.page-designers__legal-intro {
+  max-width: 850px;
+  margin: 0;
+  color: var(--gray-color);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.page-designers__legal-items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.page-designers__legal-item {
+  padding: 24px;
+  border-radius: var(--br-m);
+  background-color: var(--white-color);
+}
+
+.page-designers__legal-item-title {
+  margin-bottom: 8px;
+}
+
+.page-designers__legal-item p {
+  margin: 0;
+  color: var(--gray-color);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.page-designers__legal-note {
+  margin: 20px 0 0;
+  color: var(--gray-color);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Финальный блок */
+
+.page-designers__cta {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px;
+  border-radius: var(--br-m);
+  background-color: var(--accent-color);
+  color: var(--white-color);
+}
+
+.page-designers__cta-content {
+  max-width: 760px;
+}
+
+.page-designers__cta-title {
+  margin-bottom: 12px;
+  color: inherit;
+}
+
+.page-designers__cta-descr {
+  margin: 0;
+  opacity: 0.8;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.page-designers__cta-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.page-designers__cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.page-designers__cta-button--secondary {
+  border: 1px solid var(--white-color);
+  background-color: var(--white-color);
+  color: var(--accent-color);
+}
+
+@media (hover: hover) {
+  .page-designers__cta-button--secondary:hover {
+    background-color: transparent;
+    color: var(--white-color);
+  }
+}
+
+@media (max-width: 1024px) {
+  .page-designers__cta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-designers__legal,
+  .page-designers__cta {
+    padding: 24px;
+  }
+
+  .page-designers__legal-heading {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .page-designers__legal-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .page-designers__legal-items {
+    grid-template-columns: 1fr;
+  }
+
+  .page-designers__legal-item {
+    padding: 20px;
+  }
+
+  .page-designers__cta-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .page-designers__cta-button {
+    width: 100%;
+    white-space: normal;
+  }
+}
