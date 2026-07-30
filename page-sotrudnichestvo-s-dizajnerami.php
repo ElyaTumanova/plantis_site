@@ -19,23 +19,39 @@ if ( ! empty( $plants_cat_id ) ) {
 <div class="content-area">
   <main id="main" class="site-main page-ukhod page-designers" role="main">
 
+    <?php
+    $service_hero_title = get_field( 'service_hero_title' ) ?: "Сотрудничество\nс дизайнерами";
+
+    $service_hero_intro = get_field( 'service_hero_intro' ) ?: 'Поможем подобрать растения для вашего проекта, подготовим предложение для клиента и организуем поставку. За реализованный заказ вы получите бонус от стоимости приобретённых растений.';
+
+    $service_hero_bottom_text = get_field( 'service_hero_bottom_text' ) ?: 'Вы создаёте интерьер — мы берём на себя подбор, комплектацию и поставку растений.';
+
+    $service_hero_bottom_accent = get_field( 'service_hero_bottom_accent' ) ?: 'Клиент получает готовое решение, а вы — партнёрское вознаграждение.';
+
+    $service_hero_image_desktop = get_field( 'service_hero_image_desktop' );
+    $service_hero_desktop_url = ! empty( $service_hero_image_desktop['url'] ) ? $service_hero_image_desktop['url'] : get_template_directory_uri() . '/images/frontend/ukhod-hero-desktop.png';
+
+    $service_hero_image_mobile = get_field( 'service_hero_image_mobile' );
+    $service_hero_mobile_url = ! empty( $service_hero_image_mobile['url'] ) ? $service_hero_image_mobile['url'] : get_template_directory_uri() . '/images/frontend/ukhod-hero-mob.png';
+
+    $service_hero_image_alt = get_field( 'service_hero_image_alt' );
+    $service_hero_image_alt = ! empty( $service_hero_image_desktop['alt'] ) ? $service_hero_image_desktop['alt'] : $service_hero_image_alt;
+    $service_hero_image_alt = $service_hero_image_alt ?: 'Подбор комнатных растений для дизайнерского проекта';
+    ?>
+
     <section class="section page-ukhod__first-screen">
       <div class="page-ukhod__first-screen-wrap">
         <div class="page-ukhod__first-screen-inner">
           <h1 class="page-ukhod__entry-title h1">
-            Сотрудничество<br>
-            с дизайнерами
+            <?php echo nl2br( esc_html( $service_hero_title ) ); ?>
           </h1>
 
           <div class="page-ukhod__intro">
-            Поможем подобрать растения для вашего проекта, подготовим предложение для клиента и организуем поставку. За реализованный заказ вы получите бонус от стоимости приобретённых растений.
+            <?php echo esc_html( $service_hero_intro ); ?>
           </div>
 
           <div class="page-ukhod__rasschet">
-            <button
-              class="button button--green page-popup-open-btn"
-              name="Стать партнёром Plantis с первого экрана"
-            >
+            <button class="button button--green page-popup-open-btn" name="Стать партнёром Plantis с первого экрана">
               Стать партнёром
             </button>
 
@@ -47,22 +63,19 @@ if ( ! empty( $plants_cat_id ) ) {
         </div>
 
         <picture>
-          <source
-            media="(max-width: 768px)"
-            srcset="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/ukhod-hero-mob.png' ); ?>"
-          >
+          <source media="(max-width: 768px)" srcset="<?php echo esc_url( $service_hero_mobile_url ); ?>">
           <img
             class="page-ukhod__photo"
             loading="lazy"
-            src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/ukhod-hero-desktop.png' ); ?>"
-            alt="Подбор комнатных растений для дизайнерского проекта"
+            src="<?php echo esc_url( $service_hero_desktop_url ); ?>"
+            alt="<?php echo esc_attr( $service_hero_image_alt ); ?>"
           >
         </picture>
       </div>
 
       <div class="page-ukhod__intro_small">
-        <p>Вы создаёте интерьер — мы берём на себя подбор, комплектацию и поставку растений.</p>
-        <p>Клиент получает готовое решение, а вы — партнёрское вознаграждение.</p>
+        <p><?php echo esc_html( $service_hero_bottom_text ); ?></p>
+        <p><?php echo esc_html( $service_hero_bottom_accent ); ?></p>
       </div>
     </section>
 

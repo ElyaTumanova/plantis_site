@@ -19,23 +19,39 @@ if ( ! empty( $plants_cat_id ) ) {
 <div class="content-area">
   <main id="main" class="site-main page-ukhod page-optom" role="main">
 
+    <?php
+    $service_hero_title = get_field( 'service_hero_title' ) ?: "Комнатные растения\nоптом";
+
+    $service_hero_intro = get_field( 'service_hero_intro' ) ?: 'Подберём растения под вашу задачу, подготовим индивидуальное предложение и организуем поставку. Работаем с дизайнерами, озеленителями, компаниями и коммерческими пространствами.';
+
+    $service_hero_bottom_text = get_field( 'service_hero_bottom_text' ) ?: 'Нужен надёжный поставщик растений для проекта, офиса, магазина или другого пространства?';
+
+    $service_hero_bottom_accent = get_field( 'service_hero_bottom_accent' ) ?: 'Поможем собрать заказ и взять организацию поставки на себя.';
+
+    $service_hero_image_desktop = get_field( 'service_hero_image_desktop' );
+    $service_hero_desktop_url = ! empty( $service_hero_image_desktop['url'] ) ? $service_hero_image_desktop['url'] : get_template_directory_uri() . '/images/frontend/ukhod-hero-desktop.png';
+
+    $service_hero_image_mobile = get_field( 'service_hero_image_mobile' );
+    $service_hero_mobile_url = ! empty( $service_hero_image_mobile['url'] ) ? $service_hero_image_mobile['url'] : get_template_directory_uri() . '/images/frontend/ukhod-hero-mob.png';
+
+    $service_hero_image_alt = get_field( 'service_hero_image_alt' );
+    $service_hero_image_alt = ! empty( $service_hero_image_desktop['alt'] ) ? $service_hero_image_desktop['alt'] : $service_hero_image_alt;
+    $service_hero_image_alt = $service_hero_image_alt ?: 'Оптовая поставка комнатных растений';
+    ?>
+
     <section class="section page-ukhod__first-screen">
       <div class="page-ukhod__first-screen-wrap">
         <div class="page-ukhod__first-screen-inner">
           <h1 class="page-ukhod__entry-title h1">
-            Комнатные растения<br>
-            оптом
+            <?php echo nl2br( esc_html( $service_hero_title ) ); ?>
           </h1>
 
           <div class="page-ukhod__intro">
-            Подберём растения под вашу задачу, подготовим индивидуальное предложение и организуем поставку. Работаем с дизайнерами, озеленителями, компаниями и коммерческими пространствами.
+            <?php echo esc_html( $service_hero_intro ); ?>
           </div>
 
           <div class="page-ukhod__rasschet">
-            <button
-              class="button button--green page-popup-open-btn"
-              name="Получить оптовое предложение с первого экрана"
-            >
+            <button class="button button--green page-popup-open-btn" name="Получить оптовое предложение с первого экрана">
               Получить предложение
             </button>
 
@@ -47,22 +63,19 @@ if ( ! empty( $plants_cat_id ) ) {
         </div>
 
         <picture>
-          <source
-            media="(max-width: 768px)"
-            srcset="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/ukhod-hero-mob.png' ); ?>"
-          >
+          <source media="(max-width: 768px)" srcset="<?php echo esc_url( $service_hero_mobile_url ); ?>">
           <img
             class="page-ukhod__photo"
             loading="lazy"
-            src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/ukhod-hero-desktop.png' ); ?>"
-            alt="Оптовая поставка комнатных растений"
+            src="<?php echo esc_url( $service_hero_desktop_url ); ?>"
+            alt="<?php echo esc_attr( $service_hero_image_alt ); ?>"
           >
         </picture>
       </div>
 
       <div class="page-ukhod__intro_small">
-        <p>Нужен надёжный поставщик растений для проекта, офиса, магазина или другого пространства?</p>
-        <p>Поможем собрать заказ и взять организацию поставки на себя.</p>
+        <p><?php echo esc_html( $service_hero_bottom_text ); ?></p>
+        <p><?php echo esc_html( $service_hero_bottom_accent ); ?></p>
       </div>
     </section>
 
