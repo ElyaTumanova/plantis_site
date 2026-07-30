@@ -259,18 +259,22 @@
             <div class="page-ukhod__tariffs-item-badges">
               <span class="page-ukhod__tariffs-item-cost">от 26 000 ₽/месяц</span>
               <span class="page-ukhod__tariffs-item-period">1 раз в неделю</span>
-              <span class="page-ukhod__tariffs-item-info mobile-hidden"><?php echo plnt_icon('warning')?></span>
             </div>
             <h3 class="page-ukhod__tariffs-item-title h4">Гарантийное обслуживание растений</h3>
             <p class="page-ukhod__tariffs-item-descr">
               Максимальный уровень заботы о ваших растениях. Помимо регулярного ухода, мы проводим профилактику заболеваний и вредителей, рыхлим и обновляем грунт, устанавливаем опоры, при необходимости пересаживаем растения. Если растение теряет декоративный вид, мы бесплатно заменим его на новое. Услуга доступна для объектов, озеленение которых выполнила наша компания.
             </p>
-            <button
-                class="page-ukhod__tariffs-item-order button button--green page-popup-open-btn"
-                name="Заказать гарантийное обслуживание"
-              >
-              Заказать
-            </button>
+            <div class="page-ukhod__tariffs-button-wrap">
+              <button
+                  class="page-ukhod__tariffs-item-order button button--green page-popup-open-btn"
+                  name="Заказать гарантийное обслуживание"
+                >
+                Заказать
+              </button>
+               <span class="page-ukhod__tariffs-item-info mobile-hidden">
+                <?php echo plnt_icon( 'warning' ); ?>
+              </span>
+            </div>
           </div>
           <div class="page-ukhod__tariffs-item-comment">
             <p>Данная услуга доступна только в том случае, если озеленение проводили специалисты нашей компании.</p>

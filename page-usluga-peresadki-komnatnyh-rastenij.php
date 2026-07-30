@@ -244,9 +244,6 @@
             <div class="page-ukhod__tariffs-item-badges">
               <span class="page-ukhod__tariffs-item-cost">от 3 000 ₽/выезд</span>
               <span class="page-ukhod__tariffs-item-period">дом, офис, коттедж</span>
-              <span class="page-ukhod__tariffs-item-info mobile-hidden">
-                <?php echo plnt_icon( 'warning' ); ?>
-              </span>
             </div>
 
             <h3 class="page-ukhod__tariffs-item-title h4">Пересадка с выездом биолога</h3>
@@ -255,12 +252,17 @@
               Специалист приедет к вам, привезёт необходимые материалы, пересадит растения и проконсультирует по уходу. Подходит для крупных растений, большого количества растений и случаев, когда перевозка неудобна.
             </p>
 
-            <button
-              class="page-ukhod__tariffs-item-order button button--green page-popup-open-btn"
-              name="Заказать пересадку с выездом"
-            >
-              Заказать
-            </button>
+            <div class="page-ukhod__tariffs-button-wrap">
+              <button
+                class="page-ukhod__tariffs-item-order button button--green page-popup-open-btn"
+                name="Заказать пересадку с выездом"
+              >
+                Заказать
+              </button>
+              <span class="page-ukhod__tariffs-item-info mobile-hidden">
+                <?php echo plnt_icon( 'warning' ); ?>
+              </span>
+            </div>
           </div>
 
           <div class="page-ukhod__tariffs-item-comment">

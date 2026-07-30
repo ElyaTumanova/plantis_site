@@ -406,6 +406,11 @@
   margin-bottom: 20px;
 }
 
+.page-ukhod__tariffs-button-wrap {
+  display: flex;
+  gap: 8px;
+}
+
 .page-ukhod__tariffs-item-order {
   --btn-pad-block: 14px;
   --btn-pad-inline: 24px;
