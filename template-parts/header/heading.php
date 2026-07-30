@@ -98,18 +98,11 @@ $logo = carbon_get_theme_option('logo');
         <span class="burger__line"></span>
       </span>
     </button>
+  </div>
   <div class="header__notice-wrap_mob">
     <?php get_template_part( 'template-parts/header/header-notice' );?>
   </div>
-  <!-- <div class="search__wrap">
-    <?php //get_search_form();?>
-    <div class="search__clean"><?php //echo $close_icon ?></div>
-  </div> -->
 
-  <!-- <div class="search-result-popup popup">
-    <div class="search-result">
-    </div>
-  </div> -->
   
   <div class="header__nav container">
     <div class="header__nav-actions-wrap">
@@ -137,7 +130,6 @@ $logo = carbon_get_theme_option('logo');
              <?php echo plnt_icon('phone') ?>	
         </a>
         <span class="header__nav-actions-label">Позвонить</span>	
-      </a>
     </div>
   </div>
 </header><!-- #header -->
