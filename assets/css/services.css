@@ -412,15 +412,7 @@
   margin-top: auto;
 }
 
-
-
-
-/* Дополнительные стили страницы пересадки.
- * Основная сетка, первый экран, этапы, карточки услуг и преимущества
- * наследуются от .page-ukhod__*.
- */
-
-.page-peresadka .page-ukhod__first-screen-wrap::after {
+.page-ukhod__first-screen-wrap::after {
   position: absolute;
   z-index: 1;
   inset: 0;
@@ -433,10 +425,26 @@
   content: '';
   pointer-events: none;
 }
-
-.page-peresadka .page-ukhod__first-screen-inner {
+.page-ukhod__first-screen-inner {
   z-index: 2;
 }
+
+@media (max-width: 768px) {
+  .page-ukhod__first-screen-wrap::after {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 43, 34, 0.22) 0%,
+      rgba(0, 43, 34, 0.78) 55%,
+      rgba(0, 43, 34, 0.9) 100%
+    );
+  }
+}
+
+/* Дополнительные стили страницы пересадки.
+ * Основная сетка, первый экран, этапы, карточки услуг и преимущества
+ * наследуются от .page-ukhod__*.
+ */
+
 
 .page-peresadka__stages-image {
   max-height: 500px;
@@ -619,15 +627,6 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .page-peresadka .page-ukhod__first-screen-wrap::after {
-    background: linear-gradient(
-      180deg,
-      rgba(0, 43, 34, 0.22) 0%,
-      rgba(0, 43, 34, 0.78) 55%,
-      rgba(0, 43, 34, 0.9) 100%
-    );
-  }
-
   .page-peresadka__notice {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -673,24 +672,6 @@
  * Первый экран, этапы, карточки услуг, тарифы и преимущества
  * используют общие классы страницы ухода .page-ukhod__*.
  */
-
-.page-landscaping .page-ukhod__first-screen-wrap::after {
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 43, 34, 0.82) 0%,
-    rgba(0, 43, 34, 0.52) 44%,
-    rgba(0, 43, 34, 0.04) 78%
-  );
-  content: '';
-  pointer-events: none;
-}
-
-.page-landscaping .page-ukhod__first-screen-inner {
-  z-index: 2;
-}
 
 .page-landscaping__stages-image {
   max-height: 500px;
@@ -775,15 +756,6 @@
 }
 
 @media (max-width: 768px) {
-  .page-landscaping .page-ukhod__first-screen-wrap::after {
-    background: linear-gradient(
-      180deg,
-      rgba(0, 43, 34, 0.15) 0%,
-      rgba(0, 43, 34, 0.72) 50%,
-      rgba(0, 43, 34, 0.92) 100%
-    );
-  }
-
   .page-landscaping__care {
     gap: 24px;
     padding: 24px;
