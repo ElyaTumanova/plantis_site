@@ -3,23 +3,39 @@
 <div class="content-area">
   <main id="main" class="site-main page-ukhod page-peresadka" role="main">
 
+    <?php
+    $service_hero_title = get_field( 'service_hero_title' ) ?: "Пересадка комнатных\nрастений";
+
+    $service_hero_intro = get_field( 'service_hero_intro' ) ?: 'Подберём подходящий горшок и грунт, аккуратно пересадим растение и дадим рекомендации по дальнейшему уходу. Без грязи, лишних покупок и риска повредить корни.';
+
+    $service_hero_bottom_text = get_field( 'service_hero_bottom_text' ) ?: 'Привезите растение к нам или закажите выезд специалиста домой, в офис или коттедж.';
+
+    $service_hero_bottom_accent = get_field( 'service_hero_bottom_accent' ) ?: 'Подготовим всё необходимое и сделаем пересадку аккуратно.';
+
+    $service_hero_image_desktop = get_field( 'service_hero_image_desktop' );
+    $service_hero_desktop_url = ! empty( $service_hero_image_desktop['url'] ) ? $service_hero_image_desktop['url'] : get_template_directory_uri() . '/images/frontend/ukhod-hero-desktop.png';
+
+    $service_hero_image_mobile = get_field( 'service_hero_image_mobile' );
+    $service_hero_mobile_url = ! empty( $service_hero_image_mobile['url'] ) ? $service_hero_image_mobile['url'] : get_template_directory_uri() . '/images/frontend/ukhod-hero-mob.png';
+
+    $service_hero_image_alt = get_field( 'service_hero_image_alt' );
+    $service_hero_image_alt = ! empty( $service_hero_image_desktop['alt'] ) ? $service_hero_image_desktop['alt'] : $service_hero_image_alt;
+    $service_hero_image_alt = $service_hero_image_alt ?: 'Профессиональный уход за растениями';
+    ?>
+
     <section class="section page-ukhod__first-screen">
       <div class="page-ukhod__first-screen-wrap">
         <div class="page-ukhod__first-screen-inner">
           <h1 class="page-ukhod__entry-title h1">
-            Пересадка комнатных<br>
-            растений
+            <?php echo nl2br( esc_html( $service_hero_title ) ); ?>
           </h1>
 
           <div class="page-ukhod__intro">
-            Подберём подходящий горшок и грунт, аккуратно пересадим растение и дадим рекомендации по дальнейшему уходу. Без грязи, лишних покупок и риска повредить корни.
+            <?php echo esc_html( $service_hero_intro ); ?>
           </div>
 
           <div class="page-ukhod__rasschet">
-            <button
-              class="button button--green page-popup-open-btn"
-              name="Оставить заявку на пересадку с первого экрана"
-            >
+            <button class="button button--green page-popup-open-btn" name="Оставить заявку на пересадку с первого экрана">
               Оставить заявку
             </button>
 
@@ -31,22 +47,19 @@
         </div>
 
         <picture>
-            <source
-              media="(max-width: 768px)"
-              srcset="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/ukhod-hero-mob.png' ); ?>"
-            >
-            <img
-              class="page-ukhod__photo"
-              loading="lazy"
-              src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/ukhod-hero-desktop.png' ); ?>"
-              alt="Профессиональный уход за растениями"
-            >
-          </picture>
+          <source media="(max-width: 768px)" srcset="<?php echo esc_url( $service_hero_mobile_url ); ?>">
+          <img
+            class="page-ukhod__photo"
+            loading="lazy"
+            src="<?php echo esc_url( $service_hero_desktop_url ); ?>"
+            alt="<?php echo esc_attr( $service_hero_image_alt ); ?>"
+          >
+        </picture>
       </div>
 
       <div class="page-ukhod__intro_small">
-        <p>Привезите растение к нам или закажите выезд специалиста домой, в офис или коттедж.</p>
-        <p>Подготовим всё необходимое и сделаем пересадку аккуратно.</p>
+        <p><?php echo esc_html( $service_hero_bottom_text ); ?></p>
+        <p><?php echo esc_html( $service_hero_bottom_accent ); ?></p>
       </div>
     </section>
 
