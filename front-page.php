@@ -37,43 +37,78 @@
     
   </section>
 
+  <?php
+  $front_services_title = get_field( 'front_services_title' ) ?: 'Предоставляемые услуги';
+  $front_services = get_field( 'front_services' );
+
+  if ( empty( $front_services ) ) {
+    $front_services = [
+      [
+        'image' => [
+          'url' => get_template_directory_uri() . '/images/frontend/front-services-ozel.webp',
+          'alt' => 'Озеленение офисов',
+        ],
+        'link' => [
+          'url' => site_url( '/landscaping' ),
+          'target' => '_blank',
+        ],
+        'title' => 'Озеленение офисов',
+        'text' => 'Хотите озеленить офис, но не знаете, с чего начать? Поможем сделать первый шаг',
+      ],
+      [
+        'image' => [
+          'url' => get_template_directory_uri() . '/images/frontend/front-services-ukhod.webp',
+          'alt' => 'Профессиональный уход за растениями',
+        ],
+        'link' => [
+          'url' => site_url( '/professionalnyj-uhod-za-rasteniyami' ),
+          'target' => '_blank',
+        ],
+        'title' => 'Профессиональный уход за растениями',
+        'text' => 'Доверьте уход за растениями профессионалам — и просто наслаждайтесь результатом',
+      ],
+    ];
+  }
+  ?>
+
   <section class="section container">
-    <h2 class="h2">Предоставляемые услуги</h2>
+    <h2 class="h2"><?php echo esc_html( $front_services_title ); ?></h2>
+
     <div class="front__services grid-2-cols">
-      <a class="front__services-wrap"
-        href="<?php echo esc_url(site_url() . '/landscaping')?>"
-        target="_blank"
-      >
-        <img class="front__services-image"
-        src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-services-ozel.webp' ); ?>" 
-        alt="Озеленение офисов"
-        width="644"
-        height="400"
-        >
-        <div class="front__services-content icon icon--arrow-right">
-          <div class="front__services-content-inner">
-            <h3 class="h4 front__services-title">Озеленение офисов</h3>
-            <p class="front__services-text">Хотите озеленить офис, но не знаете, с чего начать? Поможем сделать первый шаг</p>
+      <?php foreach ( $front_services as $service ) :
+        $image = ! empty( $service['image'] ) ? $service['image'] : [];
+        $link = ! empty( $service['link'] ) ? $service['link'] : [];
+        $title = ! empty( $service['title'] ) ? $service['title'] : '';
+        $text = ! empty( $service['text'] ) ? $service['text'] : '';
+        $image_url = ! empty( $image['url'] ) ? $image['url'] : '';
+        $image_alt = ! empty( $image['alt'] ) ? $image['alt'] : $title;
+        $link_url = ! empty( $link['url'] ) ? $link['url'] : '#';
+        $link_target = ! empty( $link['target'] ) ? $link['target'] : '_self';
+      ?>
+        <a class="front__services-wrap" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>">
+          <?php if ( $image_url ) : ?>
+            <img
+              class="front__services-image"
+              src="<?php echo esc_url( $image_url ); ?>"
+              alt="<?php echo esc_attr( $image_alt ); ?>"
+              width="644"
+              height="400"
+            >
+          <?php endif; ?>
+
+          <div class="front__services-content icon icon--arrow-right">
+            <div class="front__services-content-inner">
+              <?php if ( $title ) : ?>
+                <h3 class="h4 front__services-title"><?php echo esc_html( $title ); ?></h3>
+              <?php endif; ?>
+
+              <?php if ( $text ) : ?>
+                <p class="front__services-text"><?php echo esc_html( $text ); ?></p>
+              <?php endif; ?>
+            </div>
           </div>
-        </div>
-      </a>
-      <a class="front__services-wrap"
-        href="<?php echo esc_url(site_url() . '/professionalnyj-uhod-za-rasteniyami')?>"
-        target="_blank"
-      >
-        <img class="front__services-image"
-        src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/front-services-ukhod.webp' ); ?>" 
-        alt="Профессиональный уход за растениями"
-        width="644"
-        height="400"
-        >
-        <div class="front__services-content icon icon--arrow-right">
-          <div class="front__services-content-inner">
-            <h3 class="h4 front__services-title">Профессиональный уход за растениями</h3>
-            <p class="front__services-text">Доверьте уход за растениями профессионалам — и просто наслаждайтесь результатом</p>
-          </div>
-        </div>
-      </a>
+        </a>
+      <?php endforeach; ?>
     </div>
   </section>
 
