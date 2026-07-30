@@ -1271,14 +1271,41 @@ add_filter( 'woocommerce_gateway_description', function( $description, $gateway_
 
     // уведомление Спасибо за заказ
 
-    add_filter( 'woocommerce_thankyou_order_received_text', 'plnt_custom_ty_msg' );
+    add_filter( 'woocommerce_thankyou_order_received_text', 'plnt_custom_ty_msg', 10, 2 );
 
-        function plnt_custom_ty_msg ( $thank_you_msg ) {
-            $emoji = '<img draggable="false" role="img" class="emoji" alt="😉" height="20px" width="20px" src="https://s.w.org/images/core/emoji/14.0.0/svg/1f609.svg">';
-            $thank_you_msg =  'Спасибо за ваш заказ! Наши менеджеры пляшут от радости! Как закончат танцевать, сразу вам перезвонят ' . $emoji ;
+  
 
-        return $thank_you_msg;
-    }
+function plnt_custom_ty_msg( $thank_you_msg, $order ) {
+  if ( ! $order instanceof WC_Order || $order->has_status( 'failed' ) ) {
+    return $thank_you_msg;
+  }
+
+  $shop_url   = wc_get_page_permalink( 'shop' );
+  $orders_url = wc_get_account_endpoint_url( 'orders' );
+
+  ob_start();
+  ?>
+  <span class="thankyou-hero__content">
+    <span class="thankyou-hero__icon" aria-hidden="true">
+     <?php echo plnt_icon('check_white');?>
+    </span>
+
+    <span class="thankyou-hero__eyebrow">Заказ успешно оформлен</span>
+    <span class="thankyou-hero__title h2">Спасибо за заказ!</span>
+
+    <span class="thankyou-hero__text">
+      Мы уже получили заказ и скоро свяжемся с вами, чтобы подтвердить детали. Информация о заказе также отправлена на вашу электронную почту.
+    </span>
+
+    <span class="thankyou-hero__actions">
+      <a class="thankyou-hero__button button button--green-l" href="<?php echo esc_url( $shop_url ); ?>">Продолжить покупки</a>
+      <a class="thankyou-hero__button button button--transparent" href="<?php echo esc_url( $orders_url ); ?>">Мои заказы</a>
+    </span>
+  </span>
+  <?php
+
+  return ob_get_clean();
+}
 
     // Чтобы в письмах выводилась стомость доставки 0 руб при самовывозе
     add_filter( 'woocommerce_get_order_item_totals', function( $totals, $order ) {

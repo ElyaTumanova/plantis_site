@@ -37,6 +37,9 @@ if ( ! defined( 'ABSPATH' ) ) {
         </nav>
       </li>
       <li class="menu__item">
+        <a href="<?php echo site_url()?>/sotrudnichestvo-s-dizajnerami/">Дизайнерам</a>
+      </li>
+      <li class="menu__item">
           <a href="<?php echo esc_url( get_site_url() . '/vakansii/' ); ?>">Вакансии</a>
       </li>
   </ul>

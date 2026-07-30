@@ -64,10 +64,10 @@ function change_my_account_editaccount_title( $title, $endpoint ) {
 /**
  * Добавляем заголовок "Информация о доставке" на странице деталей заказа.
  */
-add_action( 'woocommerce_order_details_after_order_table', 'plnt_order_adress_header' );
-function plnt_order_adress_header() {
-	echo '<h2 class="woocommerce-order-details__title">Информация о доставке</h2>';
-}
+// add_action( 'woocommerce_order_details_after_order_table', 'plnt_order_adress_header' );
+// function plnt_order_adress_header() {
+// 	echo '<h2 class="woocommerce-order-details__title">Информация о доставке</h2>';
+// }
 
 /* =========================================================
  * Регистрация: отключение проверки сложности пароля

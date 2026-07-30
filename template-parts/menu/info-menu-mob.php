@@ -28,6 +28,9 @@ if ( ! defined( 'ABSPATH' ) ) {
       <a href="<?php echo esc_url( get_site_url() . '/partners/' ); ?>">Поставщикам и партнерам</a>
     </li>
     <li class="menu__item">
+      <a href="<?php echo esc_url( home_url( '/sotrudnichestvo-s-dizajnerami/' ) ); ?>">Дизайнерам</a>
+    </li>
+    <li class="menu__item">
       <a href="<?php echo esc_url( get_site_url() . '/vakansii/' ); ?>">Вакансии</a>
     </li>
   </ul>

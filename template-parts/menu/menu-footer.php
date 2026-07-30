@@ -43,6 +43,7 @@ $logo = carbon_get_theme_option('logo');
       <li class="menu__item menu__item--accent menu__item--wide "><a class="menu__link" href="<?php get_site_url()?>/professionalnyj-uhod-za-rasteniyami/">Профессиональный уход за растениями</a></li>
       <li class="menu__item menu__item--accent"><a class="menu__link" href="<?php get_site_url()?>/pokupka-komnatnyh-rastenij-optom/">Растения оптом</a></li>
       <li class="menu__item menu__item--accent"><a class="menu__link" href="<?php get_site_url()?>/landscaping/">Озеленение</a></li>
+      <li class="menu__item menu__item--accent"><a class="menu__link" href="<?php echo site_url()?>/sotrudnichestvo-s-dizajnerami/">Сотрудничество с дизайнерами</a></li>
       <li class="menu__item menu__item--accent"><a class="menu__link" href="<?php get_site_url()?>/product-tag/skidki/">Скидки</a></li>
     </ul>
   </nav>
