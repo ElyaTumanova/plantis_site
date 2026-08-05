@@ -21,19 +21,19 @@ $stock_status = $product->get_stock_status();
 		<?php if ($stock_status === 'instock' ) : ?>
 			<div class="card__banner card__banner--photo">
 				<div class="card__banner-photo-wrap">
-					<p>
-						Хотите увидеть как выглядит растение перед покупкой? Просто напишите нам
-					</p>
+					<p>Хотите увидеть как выглядит растение перед покупкой?</p>
+					<span class="divider"></span>
+					<p>Просто напишите нам</p>
 
 					<?php get_template_part( 'template-parts/social-media-btns' ); ?>
 				</div>
 
 				<img
 					class="card__banner-image"
-					src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/card-banner-photo.png' ); ?>"
+					src="<?php echo esc_url( get_template_directory_uri() . '/images/frontend/card-banner-photo-mob.png' ); ?>"
 					alt=""
-					width="131"
-					height="130"
+					width="152"
+					height="160"
 				>
 			</div>
 		<?php endif; ?>

@@ -79,8 +79,8 @@
 /* photo */
 
 .card__banner--photo {
-  --banner-image-width: 130px;
-  --banner-image-height: 131px;
+  --banner-image-width: auto;
+  --banner-image-height: 176px;
 
   display: grid;
   grid-template-columns: 1fr var(--banner-image-width);
@@ -95,22 +95,46 @@
 
 .card__banner--photo .card__banner-photo-wrap {
   grid-column: 1;
+  max-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .card__banner--photo .card__banner-photo-wrap {
+    max-width: 136px;
+  }
+}
+
+.card__banner--photo .card__banner-photo-wrap p {
+  margin-bottom: 0px;
+}
+
+.card__banner--photo .card__banner-photo-wrap p:first-of-type {
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .card__banner--photo .card__banner-photo-wrap p:first-of-type {
+    font-size: 14px;
+  }
+  .card__banner--photo .card__banner-photo-wrap p:last-of-type {
+    font-size: 12px;
+  }
 }
 
 .card__banner--photo .social-media__button {
   color: var(--white-color);
   background-color: rgba(255, 255, 255, 0.12);
 }
-
+.card__banner--photo .card__banner-image {
+  right: 12px;
+}
 @media (max-width: 440px) {
   .card__banner--photo {
-    --banner-image-width: 119px;
-    --banner-image-height: 128px;
+    --banner-image-height: 173px;
     grid-template-columns: 260px auto;
   }
   .card__banner--photo .card__banner-image {
-    right: 0;
-    bottom: -13px;
+    right: 4px;
   }
 }
 @media (max-width: 340px) {
@@ -236,6 +260,7 @@
   margin-bottom: 24px;
   opacity: 1;
   scroll-margin-bottom: calc(var(--cardActionsHeight) + var(--headerNavHeight) + 10px);
+  margin-top: 10px;
 }
 
 .card__banner--backorder-info .card__banner-icon {

@@ -122,6 +122,15 @@
   transform: translate(0, -100%);
 }
 
+.divider {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: var(--white-color);
+  margin-block: 12px;
+  opacity: 50%;
+}
+
 /* custom-scroll */
 
 ::-webkit-scrollbar {
