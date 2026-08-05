@@ -86,7 +86,7 @@
   grid-template-columns: 1fr var(--banner-image-width);
   gap: 10px;
 
-  background: var(--accent-gradient);
+  background: var(--accent-d-gradient);
   color: var(--white-color);
   font-size: 16px;
   font-weight: 600;

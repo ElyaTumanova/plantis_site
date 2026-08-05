@@ -15,6 +15,7 @@
   --darken-bg: rgb(0 0 0 / 3%);
 
   --accent-gradient: linear-gradient(104.67deg, #3C7662 0%, #5CC8A3 100%);
+  --accent-d-gradient: linear-gradient(104.67deg, #183A31 0%, #3C7662 50%);
 
 
   --telegram:#0886C4;
