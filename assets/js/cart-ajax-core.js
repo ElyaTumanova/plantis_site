@@ -262,7 +262,6 @@ async function plntGetCartPageFragments() {
   }
 
   function updateWishCount(count) {
-    console.log(count)
     const wishCount = Number(count) || 0;
 
     document
@@ -276,7 +275,6 @@ async function plntGetCartPageFragments() {
         '.header__actions--wishlist .header__actions-count'
       )
       .forEach((element) => {
-        console.log(element)
         element.classList.toggle(
           'header__actions-count--active',
           wishCount > 0

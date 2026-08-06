@@ -79,11 +79,11 @@
 /* photo */
 
 .card__banner--photo {
-  --banner-image-width: auto;
+  --banner-image-width: 167px;
   --banner-image-height: 176px;
 
   display: grid;
-  grid-template-columns: 1fr var(--banner-image-width);
+  grid-template-columns: minmax(0, 300px) var(--banner-image-width);
   gap: 10px;
 
   background: var(--accent-d-gradient);
@@ -95,13 +95,6 @@
 
 .card__banner--photo .card__banner-photo-wrap {
   grid-column: 1;
-  max-width: 300px;
-}
-
-@media (max-width: 768px) {
-  .card__banner--photo .card__banner-photo-wrap {
-    max-width: 136px;
-  }
 }
 
 .card__banner--photo .card__banner-photo-wrap p {
@@ -131,7 +124,7 @@
 @media (max-width: 440px) {
   .card__banner--photo {
     --banner-image-height: 173px;
-    grid-template-columns: 260px auto;
+    /* grid-template-columns: 200px auto; */
   }
   .card__banner--photo .card__banner-image {
     right: 4px;
