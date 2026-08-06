@@ -492,10 +492,13 @@ function plnt_card_delivery() {
   ?>
   <div class="card__delivery-wrap">
     <div class="card__delivery-card card__delivery-card--info card__delivery-tooltip">
-      <button class="card__delivery-tooltip-btn" type="button" aria-label="Показать тарифную сетку" aria-expanded="false" aria-controls="delivery-tariffs">?</button>
+      <button class="card__delivery-tooltip-btn" type="button" aria-label="Показать тарифную сетку" aria-expanded="false" aria-controls="delivery-tariffs">
+        <?php echo plnt_icon('question');?>    
+      </button>
       <div class="card__delivery-header">
         <div class="card__delivery-title">Доставка по Москве и МО</div>
         <div class="card__delivery-tooltip-content" id="delivery-tariffs" role="tooltip" aria-hidden="true">
+          <button class="card__delivery-tooltip-close" type="button" aria-label="Закрыть тарифную сетку"><?php echo plnt_icon('close');?>   </button>
           <?php get_template_part('template-parts/delivery-info');?>
         </div>
       </div>

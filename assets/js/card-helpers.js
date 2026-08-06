@@ -47,6 +47,7 @@ class DeliveryTooltip {
     this.element = element;
     this.button = element.querySelector('.card__delivery-tooltip-btn');
     this.content = element.querySelector('.card__delivery-tooltip-content');
+    this.closeButton = element.querySelector('.card__delivery-tooltip-close');
     this.isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)');
 
     if (!this.button || !this.content) return;
@@ -80,6 +81,12 @@ class DeliveryTooltip {
 
     this.element.addEventListener('focusout', (event) => {
       if (this.isDesktop.matches && !this.element.contains(event.relatedTarget)) this.close();
+    });
+
+    this.closeButton?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      this.close();
+      this.button.focus();
     });
 
     this.content.addEventListener('click', (event) => event.stopPropagation());
@@ -117,6 +124,8 @@ class DeliveryTooltip {
     this.element.classList.toggle('is-open', isOpen);
     this.button.setAttribute('aria-expanded', String(isOpen));
     this.content.setAttribute('aria-hidden', String(!isOpen));
+
+    if (!this.isDesktop.matches) document.body.classList.toggle('delivery-tooltip-open', isOpen);
   }
 }
 
