@@ -149,6 +149,17 @@ document.addEventListener( 'wpcf7mailsent', function( event ) {
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.wpcf7').forEach((formWrap) => {
+    const form = formWrap.querySelector('.wpcf7-form');
+    const formId = form?.querySelector('input[name="_wpcf7"]')?.value;
+
+    console.log('CF7 form ID:', formId, form);
+  });
+});
+
+
+
 
 
 
