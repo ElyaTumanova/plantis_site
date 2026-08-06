@@ -262,6 +262,7 @@ async function plntGetCartPageFragments() {
   }
 
   function updateWishCount(count) {
+    console.log(count)
     const wishCount = Number(count) || 0;
 
     document
