@@ -137,15 +137,78 @@ jQuery(document).ready(function() {
 
 });
 
-//Отправка формы «Предзаказ»
-document.addEventListener( 'wpcf7mailsent', function( event ) {
-	if ( '27633' == event.detail.contactFormId ) {      // #TODO - ПРОВЕРИТЬ ИД И КЛАСС ФОРМЫ
-		//yaCounter103710881.reachGoal('form-predzakaz');
-		 ym(103710881, 'reachGoal', 'form-predzakaz');
-	}
-}, false );
+/* отправка форм */
 
+document.addEventListener('wpcf7mailsent', (event) => {
+  const goals = [
+    { selector: '.buy-one-click-popup', goal: 'otpravka-odin-klik' },
+    { selector: '.preorder-popup', goal: 'otpravka-predzakaz' }
+  ];
 
+  const matched = goals.find(({ selector }) => event.target.closest(selector));
+
+  console.log('CF7 успешно отправлена:', {
+    form: event.target,
+    matched
+  });
+
+  if (!matched) return;
+
+  console.log(`Отправляем цель Метрики: ${matched.goal}`);
+
+  if (typeof ym !== 'function') {
+    console.warn('Яндекс Метрика не загружена: функция ym не найдена');
+    return;
+  }
+
+  ym(103710881, 'reachGoal', matched.goal, () => {
+    console.log(`Цель ${matched.goal} передана в Метрику`);
+  });
+}, false);
+
+document.addEventListener('wpcf7mailsent', (event) => {
+  const popup = event.target.closest('.service-popup');
+
+  if (!popup) return;
+
+  const goals = {
+    'service-popup--ozelenenie': 'otpravka-ozelenenie',
+    'service-popup--uhod': 'otpravka-uhod',
+    'service-popup--dizajneram': 'otpravka-dizajneram',
+    'service-popup--peresadka': 'otpravka-peresadka',
+    'service-popup--optovaya-zakupka': 'otpravka-optovaya-zakupka'
+  };
+
+  const popupModifier = Object.keys(goals).find((className) => {
+    return popup.classList.contains(className);
+  });
+
+  console.log('Отправлена форма service-popup:', {
+    form: event.target,
+    popup,
+    popupClasses: popup.className,
+    popupModifier,
+    goal: popupModifier ? goals[popupModifier] : null
+  });
+
+  if (!popupModifier) {
+    console.warn('Для service-popup не найдена цель Метрики');
+    return;
+  }
+
+  const goal = goals[popupModifier];
+
+  if (typeof ym !== 'function') {
+    console.warn(`Цель ${goal} не отправлена: функция ym не найдена`);
+    return;
+  }
+
+  console.log(`Отправляем цель Метрики: ${goal}`);
+
+  ym(103710881, 'reachGoal', goal, {}, () => {
+    console.log(`Цель Метрики отправлена: ${goal}`);
+  });
+}, false);
 
 
 

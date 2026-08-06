@@ -385,6 +385,6 @@ if ( ! empty( $plants_cat_id ) ) {
 </div>
 
 <?php
-get_template_part( 'template-parts/popups/service-popup' );
+get_template_part( 'template-parts/popups/service-popup', null, ['type' => 'dizajneram'] );
 get_footer();
 ?>

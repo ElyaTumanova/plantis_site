@@ -2,9 +2,10 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+$type = $args['type'] ?? '';
 ?>
 
-<div class="page-popup popup service-popup">
+<div class="page-popup popup service-popup service-popup--<?php echo $type?> ">
     <div class="page-popup__container popup__container">
         <span class="page-popup__close popup__close"><?php echo plnt_icon('close') ?></span>
         <div class="page-popup__wrap">

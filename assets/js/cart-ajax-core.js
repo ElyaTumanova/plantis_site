@@ -140,7 +140,7 @@ async function plntGetCartPageFragments() {
       }
 
       const data = await response.json()
-      console.log(data)
+      // console.log(data)
 
       const fragments = data.fragments ?? {}
 

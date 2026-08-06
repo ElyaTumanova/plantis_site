@@ -170,7 +170,7 @@
 
 
   function swiper_catalog_card_imgs_init() {
-    console.log('hi swiper_catalog_card_imgs_init')
+    // console.log('hi swiper_catalog_card_imgs_init')
     document.querySelectorAll('.product__image-slider-wrap').forEach((wrap) => {
       if (wrap.classList.contains('swiper-initialized')) {
         wrap.swiper?.update()

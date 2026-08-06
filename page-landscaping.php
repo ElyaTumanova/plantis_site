@@ -376,6 +376,6 @@
 </div>
 
 <?php
-get_template_part( 'template-parts/popups/service-popup' );
+get_template_part( 'template-parts/popups/service-popup', null, ['type' => 'ozelenenie'] );
 get_footer();
 ?>
