@@ -272,10 +272,10 @@ async function plntGetCartPageFragments() {
 
     document
       .querySelectorAll(
-        '.header__main .header__actions--wishlist .header__actions-count ' +
-        '.header__nav .header__actions--wishlist .header__actions-count'
+        '.header__actions--wishlist .header__actions-count'
       )
       .forEach((element) => {
+        console.log(element)
         element.classList.toggle(
           'header__actions-count--active',
           wishCount > 0
