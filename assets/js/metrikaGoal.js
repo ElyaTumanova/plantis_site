@@ -148,13 +148,19 @@ document.addEventListener( 'wpcf7mailsent', function( event ) {
 
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.wpcf7').forEach((formWrap) => {
-    const form = formWrap.querySelector('.wpcf7-form');
-    const formId = form?.querySelector('input[name="_wpcf7"]')?.value;
+  const forms = document.querySelectorAll('.service-popup .wpcf7-form');
 
-    console.log('CF7 form ID:', formId, form);
+  console.log('Формы CF7 внутри .service-popup:', forms.length);
+
+  forms.forEach((form, index) => {
+    console.log(`Форма №${index + 1}:`, {
+      form,
+      popup: form.closest('.service-popup'),
+      wrapper: form.closest('.wpcf7')
+    });
+
+    form.style.outline = '3px solid red';
   });
 });
 
