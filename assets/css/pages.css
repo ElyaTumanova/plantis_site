@@ -44,6 +44,10 @@
   .content-area_sidebar aside{
     flex-direction: row;
     overflow: scroll;
+    scrollbar-width: none;
+  }
+  .content-area_sidebar aside::-webkit-scrollbar {
+    display: none;
   }
 
   .info-menu-sidebar .menu__item {

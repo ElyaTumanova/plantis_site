@@ -382,6 +382,23 @@ document.addEventListener('click', async (e) => {
 });
 
 
+/* прокрутка меню в мобилке  для info-pages-list*/
+
+// info pages menu
+document.addEventListener('DOMContentLoaded', () => {
+  const nav = document.querySelector('.info-menu-sidebar');
+  if (!nav || !window.matchMedia('(max-width: 840px)').matches) return;
+
+  const activeItem = nav.querySelector('.menu__item.is-active');
+  if (!activeItem) return;
+
+  const navRect = nav.getBoundingClientRect();
+  const itemRect = activeItem.getBoundingClientRect();
+  const itemCenter = itemRect.left - navRect.left + itemRect.width / 2;
+  const target = nav.scrollLeft + itemCenter - navRect.width / 2;
+
+  nav.scrollTo({ left: target, behavior: 'auto' });
+});
 
 /* debug */
 
