@@ -40,3 +40,84 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
   })
+
+  /* Tooltip for delivery */
+class DeliveryTooltip {
+  constructor(element) {
+    this.element = element;
+    this.button = element.querySelector('.card__delivery-tooltip-btn');
+    this.content = element.querySelector('.card__delivery-tooltip-content');
+    this.isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+    if (!this.button || !this.content) return;
+
+    this.bindEvents();
+  }
+
+  bindEvents() {
+    this.button.addEventListener('click', (event) => {
+      event.stopPropagation();
+
+      if (this.isDesktop.matches) {
+        this.open();
+        return;
+      }
+
+      this.toggle();
+    });
+
+    this.button.addEventListener('mouseenter', () => {
+      if (this.isDesktop.matches) this.open();
+    });
+
+    this.button.addEventListener('focus', () => {
+      if (this.isDesktop.matches) this.open();
+    });
+
+    this.element.addEventListener('mouseleave', () => {
+      if (this.isDesktop.matches) this.close();
+    });
+
+    this.element.addEventListener('focusout', (event) => {
+      if (this.isDesktop.matches && !this.element.contains(event.relatedTarget)) this.close();
+    });
+
+    this.content.addEventListener('click', (event) => event.stopPropagation());
+    document.addEventListener('click', () => this.close());
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || !this.element.classList.contains('is-open')) return;
+
+      this.close();
+      this.button.focus();
+    });
+  }
+
+  toggle() {
+    this.element.classList.contains('is-open') ? this.close() : this.open();
+  }
+
+  open() {
+    document.querySelectorAll('.card__delivery-tooltip.is-open').forEach((tooltip) => {
+      if (tooltip === this.element) return;
+
+      tooltip.classList.remove('is-open');
+      tooltip.querySelector('.card__delivery-tooltip-btn')?.setAttribute('aria-expanded', 'false');
+      tooltip.querySelector('.card__delivery-tooltip-content')?.setAttribute('aria-hidden', 'true');
+    });
+
+    this.setState(true);
+  }
+
+  close() {
+    this.setState(false);
+  }
+
+  setState(isOpen) {
+    this.element.classList.toggle('is-open', isOpen);
+    this.button.setAttribute('aria-expanded', String(isOpen));
+    this.content.setAttribute('aria-hidden', String(!isOpen));
+  }
+}
+
+document.querySelectorAll('.card__delivery-tooltip').forEach((element) => new DeliveryTooltip(element));
