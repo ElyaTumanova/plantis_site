@@ -122,6 +122,12 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
+.catalog-dropdown__sub-cats-wrap[data-menu="menu_item_treez_plants"] 
+.catalog-dropdown__sub-cats-body 
+.cats-sub-menu:nth-child(3) {
+  grid-row: span 2;
+}
+
 .catalog-dropdown__sub-cats-wrap[data-menu="menu_az_palnts"] .catalog-dropdown__sub-cats-body {
   display: block;
 }
