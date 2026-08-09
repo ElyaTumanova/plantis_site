@@ -85,23 +85,23 @@ window.addEventListener('scroll', function() {
 
 //скрываем панель с фльтрами в моб каталоге при скролле
 
-let catalogFilterWrap = document.querySelector('.catalog__filter-wrap');
-let lastScrollTop = window.pageYOffset;
+// let catalogFilterWrap = document.querySelector('.catalog__filter-wrap');
+// let lastScrollTop = window.pageYOffset;
 
-if(catalogFilterWrap) {
-    window.addEventListener('scroll', function() {
-        let scrollTopPosition = window.pageYOffset;
+// if(catalogFilterWrap) {
+//     window.addEventListener('scroll', function() {
+//         let scrollTopPosition = window.pageYOffset;
     
-        if (scrollTopPosition > lastScrollTop) {
-            // console.log('scrolling down');
-            catalogFilterWrap.classList.add('catalog__filter-wrap_up');
-        } else if (scrollTopPosition < lastScrollTop) {
-            // console.log('scrolling up');
-            catalogFilterWrap.classList.remove('catalog__filter-wrap_up');
-        }
-        lastScrollTop = scrollTopPosition <= 0 ? 0 : scrollTopPosition;
-    });
-}
+//         if (scrollTopPosition > lastScrollTop) {
+//             // console.log('scrolling down');
+//             catalogFilterWrap.classList.add('catalog__filter-wrap_up');
+//         } else if (scrollTopPosition < lastScrollTop) {
+//             // console.log('scrolling up');
+//             catalogFilterWrap.classList.remove('catalog__filter-wrap_up');
+//         }
+//         lastScrollTop = scrollTopPosition <= 0 ? 0 : scrollTopPosition;
+//     });
+// }
 
 /*--------------------------------------------------------------
 # Filters for mobile in catalog

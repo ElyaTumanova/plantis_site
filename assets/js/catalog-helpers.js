@@ -151,3 +151,55 @@ if(gridButton && catalogWrap) {
         rowsButton.disabled = true;
     };
 };
+
+/*--------------------------------------------------------------
+# Верхняя панель мобильного каталога
+--------------------------------------------------------------*/
+
+const catalogMobileSticky = document.querySelector(
+  '.catalog__mobile-sticky'
+);
+
+if (catalogMobileSticky) {
+  let lastScrollTop = Math.max(window.pageYOffset, 0);
+
+  const updateCatalogStickyHeight = () => {
+    catalogMobileSticky.style.setProperty(
+      '--catalog-mobile-sticky-height',
+      `${catalogMobileSticky.offsetHeight}px`
+    );
+  };
+
+  updateCatalogStickyHeight();
+
+  window.addEventListener(
+    'resize',
+    updateCatalogStickyHeight
+  );
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      const scrollTop = Math.max(window.pageYOffset, 0);
+
+      if (scrollTop > lastScrollTop) {
+        catalogMobileSticky.classList.remove(
+          'catalog__mobile-sticky--active'
+        );
+      } else if (scrollTop < lastScrollTop) {
+        catalogMobileSticky.classList.add(
+          'catalog__mobile-sticky--active'
+        );
+      }
+
+      if (scrollTop === 0) {
+        catalogMobileSticky.classList.remove(
+          'catalog__mobile-sticky--active'
+        );
+      }
+
+      lastScrollTop = scrollTop;
+    },
+    { passive: true }
+  );
+}

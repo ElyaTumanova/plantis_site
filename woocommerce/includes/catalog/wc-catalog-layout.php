@@ -20,8 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) {
   plnt_add_section('catalog__grid section', 'woocommerce_before_shop_loop', 15, 'woocommerce_after_shop_loop', 21);
   plnt_add_wrapper('catalog__sidebar catalog-filters', 'woocommerce_before_shop_loop', 20, 'woocommerce_before_shop_loop', 22);
   add_action('woocommerce_before_shop_loop','plnt_catalog_sidebar', 21);
-  plnt_add_wrapper('catalog__filter-metki catalog__filter-metki-ontop', 'woocommerce_before_shop_loop', 22, 'woocommerce_before_shop_loop', 23);
-  add_action('woocommerce_before_shop_loop', 'plnt_metki_mob', 22);
+  plnt_add_wrapper('catalog__mobile-sticky', 'woocommerce_before_shop_loop', 22, 'woocommerce_before_shop_loop', 37);
+  plnt_add_wrapper('catalog__filter-metki catalog__filter-metki-ontop', 'woocommerce_before_shop_loop', 23, 'woocommerce_before_shop_loop', 24);
+  add_action('woocommerce_before_shop_loop', 'plnt_metki_mob', 23);
   plnt_add_wrapper('catalog__top', 'woocommerce_before_shop_loop', 25, 'woocommerce_before_shop_loop', 36);
   add_action('woocommerce_before_shop_loop','plnt_woocommerce_total_count', 32);
   add_action('woocommerce_before_shop_loop','plnt_woocommerce_clear_filters', 33);

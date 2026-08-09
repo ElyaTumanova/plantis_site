@@ -6,12 +6,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $product;
 global $plants_cat_id;
 global $plants_treez_cat_id;
+global $delivery_inMKAD;
 
 $parentCatId  = plnt_get_parent_cat_id();
 $isTreez      = plnt_is_treez_product();
 $isLechuza    = plnt_is_lechuza_product();
 $stock_qty   = $product->get_stock_quantity();
 $stock_status = $product->get_stock_status();
+
+$backorders_date = plnt_set_backorders_date();
+
+
+$shipping_costs = plnt_get_shiping_costs();
+$in_mkad = $shipping_costs[$delivery_inMKAD];
+$current_hour = (int) current_datetime()->format('G');
 ?>
 
 <div class="card__banners-wrap">
@@ -54,7 +62,7 @@ $stock_status = $product->get_stock_status();
 					<span>дата доставки</span>
 
 					<span class="card__banner-backorder-date" data-backorder-date>
-						<?php echo esc_html( plnt_set_backorders_date() ); ?>
+						<?php echo $backorders_date; ?>
 					</span>
 				</div>
 			</div>
@@ -127,10 +135,47 @@ $stock_status = $product->get_stock_status();
       <span class="card__banner-pill card__banner-pill--row">
         <span>Дата доставки</span>
         <span class="card__banner-backorder-date" data-backorder-date>
-          <?php echo esc_html( plnt_set_backorders_date() ); ?>
+          <?php echo $backorders_date; ?>
         </span>
       </span>
     </div>
   <?php endif; ?>
 
 </div>
+
+<?php
+$text1 = $current_hour < 18
+  ? 'Сегодня, от 2 часов'
+  : 'Завтра, с 11:00 до 22:00';
+
+$text2 = $current_hour < 20
+  ? 'Сегодня, с 10:00 до 20:00'
+  : 'Завтра, с 10:00 до 20:00';
+
+$show_delivery = false;
+
+if ( $stock_status === 'instock' && ! ( $isTreez || $isLechuza ) ) :
+  $show_delivery = true;
+
+elseif ( $stock_status === 'onbackorder' && $parentCatId === $plants_cat_id ) :
+  $text1 = "с {$backorders_date}, с 11:00 до 22:00";
+  $text2 = "с {$backorders_date}, с 10:00 до 20:00";
+  $show_delivery = true;
+endif;
+?>
+
+<?php if ( $show_delivery ) : ?>
+  <div class="card__delivery-wrap">
+    <div class="card__delivery-card">
+      <div class="card__delivery-title">Доставка</div>
+      <div class="card__delivery-date"><?php echo esc_html( $text1 ); ?></div>
+      <div class="card__delivery-price">от <?php echo esc_html( $in_mkad ); ?>₽</div>
+    </div>
+
+    <div class="card__delivery-card">
+      <div class="card__delivery-title">Самовывоз</div>
+      <div class="card__delivery-date"><?php echo esc_html( $text2 ); ?></div>
+      <div class="card__delivery-price">Бесплатно</div>
+    </div>
+  </div>
+<?php endif; ?>

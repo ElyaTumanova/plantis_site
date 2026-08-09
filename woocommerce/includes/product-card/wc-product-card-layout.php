@@ -45,7 +45,6 @@ plnt_add_wrapper('card__title-wrap','woocommerce_single_product_summary', 1, 'wo
 add_action('woocommerce_single_product_summary', 'plnt_check_stock_status', 30);
 add_action('woocommerce_single_product_summary', 'plnt_price_wrap', 40);
 add_action('woocommerce_single_product_summary', 'plnt_banners_wrap', 50);
-add_action('woocommerce_single_product_summary', 'plnt_card_delivery', 60);
 add_action('woocommerce_single_product_summary', 'plnt_characteristics_wrap', 70);
 add_action('woocommerce_single_product_summary', 'plnt_peresadka_banner', 80);
 
@@ -472,54 +471,7 @@ function plnt_output_actions_wrap() {
   }
 /*  
 */
-/* Доставка */
 
-function plnt_card_delivery() {
-  global $delivery_inMKAD;
-
-  $shipping_costs = plnt_get_shiping_costs();
-    
-  $in_mkad = $shipping_costs[$delivery_inMKAD];
-
-  $current_hour = (int) current_datetime()->format('G');
-
-  $text1 = $current_hour < 18
-    ? 'Сегодня, от 2 часов'
-    : 'Завтра, с 11:00 до 22:00';
-  $text2 = $current_hour < 20
-    ? 'Сегодня,  с 10:00 до 20:00'
-    : 'Завтра, с 10:00 до 20:00';
-  ?>
-  <div class="card__delivery-wrap">
-    <div class="card__delivery-card card__delivery-card--info card__delivery-tooltip">
-      <button class="card__delivery-tooltip-btn" type="button" aria-label="Показать тарифную сетку" aria-expanded="false" aria-controls="delivery-tariffs">
-        <?php echo plnt_icon('question');?>    
-      </button>
-      <div class="card__delivery-header">
-        <div class="card__delivery-title">Доставка по Москве и МО</div>
-        <div class="card__delivery-tooltip-content" id="delivery-tariffs" role="tooltip" aria-hidden="true">
-          <button class="card__delivery-tooltip-close" type="button" aria-label="Закрыть тарифную сетку"><?php echo plnt_icon('close');?>   </button>
-          <?php get_template_part('template-parts/delivery-info');?>
-        </div>
-      </div>
-
-      <div class="card__delivery-date"><?php echo $text1?></div>
-
-      <div class="card__delivery-price">от <?php echo $in_mkad?>₽</div>
-    </div>
-
-    <div class="card__delivery-card">
-      <div class="card__delivery-title">Самовывоз</div>
-
-      <div class="card__delivery-date"><?php echo $text2?></div>
-
-      <div class="card__delivery-price">Бесплатно</div>
-    </div>
-  </div>
-  <?php
-}
-/* 
- */
 /* Баннер пересадка */
   function plnt_peresadka_banner() {
     $isTreez   = plnt_is_treez_product();
