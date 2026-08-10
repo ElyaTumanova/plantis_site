@@ -465,3 +465,67 @@ add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
     return $html;
 
 }, 10, 4);
+
+
+add_action( 'wp_enqueue_scripts', 'plnt_enqueue_product_lightgallery', 20 );
+
+function plnt_enqueue_product_lightgallery() {
+	if ( ! is_product() ) {
+		return;
+	}
+
+	$template_uri  = get_template_directory_uri();
+	$template_path = get_template_directory();
+
+	$base = '/assets/libs/lightgallery/';
+
+	wp_enqueue_style(
+		'lightgallery',
+		$template_uri . $base . 'lightgallery-bundle.min.css',
+		array(),
+		filemtime( $template_path . $base . 'lightgallery-bundle.min.css' )
+	);
+
+	wp_enqueue_style(
+		'plnt-product-lightgallery',
+		$template_uri . '/assets/css/product-lightgallery.css',
+		array( 'lightgallery' ),
+		filemtime( $template_path . '/assets/css/product-lightgallery.css' )
+	);
+
+	wp_enqueue_script(
+		'lightgallery',
+		$template_uri . $base . 'lightgallery.min.js',
+		array(),
+		filemtime( $template_path . $base . 'lightgallery.min.js' ),
+		true
+	);
+
+	wp_enqueue_script(
+		'lightgallery-thumbnail',
+		$template_uri . $base . 'lg-thumbnail.min.js',
+		array( 'lightgallery' ),
+		filemtime( $template_path . $base . 'lg-thumbnail.min.js' ),
+		true
+	);
+
+	wp_enqueue_script(
+		'lightgallery-zoom',
+		$template_uri . $base . 'lg-zoom.min.js',
+		array( 'lightgallery' ),
+		filemtime( $template_path . $base . 'lg-zoom.min.js' ),
+		true
+	);
+
+	wp_enqueue_script(
+		'plnt-product-lightgallery',
+		$template_uri . '/assets/js/product-lightgallery.js',
+		array(
+			'lightgallery',
+			'lightgallery-thumbnail',
+			'lightgallery-zoom',
+		),
+		filemtime( $template_path . '/assets/js/product-lightgallery.js' ),
+		true
+	);
+}

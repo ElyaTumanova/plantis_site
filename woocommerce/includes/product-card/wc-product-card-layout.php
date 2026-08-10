@@ -144,62 +144,78 @@ function plnt_output_actions_wrap() {
 /* Фото товара, бейдж распродажа */
 
   //выводим фото товара
-  function plnt_get_product_image () {
-    // woocommerce_show_product_images();
+function plnt_get_product_image() {
+	global $product;
 
-    global $product;
+	if ( ! $product ) {
+		return;
+	}
 
-    if ( ! $product ) {
-      return;
-    }
+	$main_image_id = $product->get_image_id();
+	$gallery_ids   = $product->get_gallery_image_ids();
 
-    $main_image_id = $product->get_image_id();
-    $gallery_ids   = $product->get_gallery_image_ids();
+	$image_ids = array_filter( array_merge( array( $main_image_id ), $gallery_ids ) );
 
-    $image_ids = array_filter( array_merge( array( $main_image_id ), $gallery_ids ) );
+	if ( empty( $image_ids ) ) {
+		return;
+	}
 
-    if ( empty( $image_ids ) ) {
-      return;
-    }
-    plnt_product_artikul_image();
-    plnt_card_wishlist_btn();
-    ?>
+	plnt_product_artikul_image();
+	plnt_card_wishlist_btn();
+	?>
 
-    <div class="product-gallery" data-js-product-gallery>
-      <div class="swiper product-gallery__thumbs">
-        <div class="swiper-wrapper">
-          <?php foreach ( $image_ids as $image_id ) : ?>
-            <div class="swiper-slide product-gallery__thumb">
-              <?php echo wp_get_attachment_image( $image_id, 'thumbnail' ); ?>
-            </div>
-          <?php endforeach; ?>
-        </div>
-      </div>
+	<div class="product-gallery" data-js-product-gallery data-product-lightgallery>
+		<div class="swiper product-gallery__thumbs">
+			<div class="swiper-wrapper">
+				<?php foreach ( $image_ids as $image_id ) : ?>
+					<div class="swiper-slide product-gallery__thumb">
+						<?php echo wp_get_attachment_image( $image_id, 'thumbnail' ); ?>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
 
-      <div class="swiper product-gallery__main">
-        <div class="swiper-wrapper">
-          <?php foreach ( $image_ids as $index => $image_id ) : ?>
-            <div class="swiper-slide product-gallery__slide">
-              <?php
-                echo wp_get_attachment_image(
-                  $image_id,
-                  'large',
-                  false,
-                  [
-                    'loading' => $index === 0 ? false : 'lazy',
-                    'fetchpriority' => $index === 0 ? 'high' : false,
-                    'decoding' => 'async',
-                  ]
-                );
-              ?>
-            </div>
-          <?php endforeach; ?>
-        </div>
-      </div>
-    </div>
+		<div class="swiper product-gallery__main">
+			<div class="swiper-wrapper">
+				<?php foreach ( $image_ids as $index => $image_id ) :
+					$full_image = wp_get_attachment_image_src( $image_id, 'full' );
 
-    <?php
-  };
+					if ( ! $full_image ) {
+						continue;
+					}
+
+					$full_url    = $full_image[0];
+					$full_width  = $full_image[1];
+					$full_height = $full_image[2];
+					?>
+					<div class="swiper-slide product-gallery__slide">
+						<a
+							class="product-gallery__lightgallery"
+							href="<?php echo esc_url( $full_url ); ?>"
+							data-product-lightgallery-item
+							data-lg-size="<?php echo esc_attr( $full_width . '-' . $full_height ); ?>"
+						>
+							<?php
+							echo wp_get_attachment_image(
+								$image_id,
+								'large',
+								false,
+								[
+									'loading'       => $index === 0 ? false : 'lazy',
+									'fetchpriority' => $index === 0 ? 'high' : false,
+									'decoding'      => 'async',
+								]
+							);
+							?>
+						</a>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</div>
+
+	<?php
+}
   
   //слайдер фото товара
   add_filter( 'woocommerce_single_product_carousel_options', 'plnt_product_gallery' );

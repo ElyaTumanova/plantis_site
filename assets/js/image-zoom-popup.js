@@ -466,11 +466,11 @@ document.addEventListener('DOMContentLoaded', () => {
     zoomScale: 2,
   })
 
-  manager.addTrigger({
-    itemSelector: '.product-gallery__main',
-    imgSelector: '.product-gallery__slide img',
-    openOnImageClick: true,
-    ignoreIfInsideLink: false,
-    galleryRootSelector: '.product-gallery__main',
-  })
+  // manager.addTrigger({
+  //   itemSelector: '.product-gallery__main',
+  //   imgSelector: '.product-gallery__slide img',
+  //   openOnImageClick: true,
+  //   ignoreIfInsideLink: false,
+  //   galleryRootSelector: '.product-gallery__main',
+  // })
 })
