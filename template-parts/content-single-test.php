@@ -20,7 +20,7 @@
             $test_link = site_url().'/test-kakoe-ty-rastenie';
             ?>
             <div class="test-actions">
-                <a class="take-test button" href='<?php echo $test_link?>' target = "_blank">Пройти тест</a>
+                <a class="take-test button button--green" href='<?php echo $test_link?>' target = "_blank">Пройти тест</a>
                 <div class = "test-share">
                     <p>Поделись тестом:</p>
                     <div>

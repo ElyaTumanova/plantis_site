@@ -529,3 +529,8 @@
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
+
+/* grecaptcha */
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
