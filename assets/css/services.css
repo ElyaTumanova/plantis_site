@@ -405,6 +405,7 @@
 
 .page-ukhod__tariffs-item-descr {
   margin-bottom: 20px;
+  flex-grow: 1;
 }
 
 .page-ukhod__tariffs-button-wrap {

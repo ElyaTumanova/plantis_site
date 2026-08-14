@@ -465,6 +465,77 @@ function plnt_get_product_image() {
     get_template_part('template-parts/delivery-info'); // delivery info for card
   }
 
+  add_filter('woocommerce_product_tabs', 'plnt_product_description_tab', 20);
+
+function plnt_product_description_tab($tabs) {
+  if (isset($tabs['description'])) {
+    $tabs['description']['callback'] = 'plnt_product_description_tab_content';
+  }
+
+  return $tabs;
+}
+
+function plnt_product_description_tab_content() {
+  global $post;
+
+  $parameters = get_field('parametrs', $post->ID);
+
+  $types = [
+    'diff' => [
+      'title' => 'Чем отличается сорт',
+      'icon'  => 'diff',
+    ],
+    'for' => [
+      'title' => 'Кому подойдет',
+      'icon'  => 'for',
+    ],
+    'where' => [
+      'title' => 'Куда поставить',
+      'icon'  => 'where',
+    ],
+    'pets' => [
+      'title' => 'Безопасно для животных',
+      'icon'  => 'pets',
+    ],
+  ];
+  ?>
+
+  <h2>Описание</h2>
+
+  <?php the_content(); ?>
+
+  <?php if ($parameters) : ?>
+    <div class="product-description-params">
+      <?php foreach ($parameters as $parameter) :
+        $type = $parameter['type'] ?? '';
+        $text = $parameter['text'] ?? '';
+
+        if (is_array($type)) {
+          $type = $type['value'] ?? '';
+        }
+
+        $type_key = trim(strtok($type, ':'));
+
+        if (!$text || !isset($types[$type_key])) continue;
+
+        $item = $types[$type_key];
+      ?>
+        <div class="product-description-params__item">
+          <div class="product-description-params__icon">
+            <?php echo plnt_icon($item['icon']); ?>
+          </div>
+
+          <h3 class="product-description-params__title"><?php echo esc_html($item['title']); ?></h3>
+
+          <div class="product-description-params__text">
+            <?php echo wpautop(wp_kses_post($text)); ?>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  <?php endif;
+}
+
 /*  
 */
 /* Характиристики */
