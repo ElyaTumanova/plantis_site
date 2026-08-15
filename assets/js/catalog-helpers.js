@@ -63,6 +63,7 @@ jQuery(document).on('plnt_catalog_updated', () => {
   setPriceInputMode()
   setSearchFilterField()
   setdiametrFilterScroll()
+  initCatalogSidebarSticky()
 })
 
 // jQuery(document).on('berocket_ajax_filtering_end', () => {
@@ -203,3 +204,61 @@ if (catalogMobileSticky) {
     { passive: true }
   );
 }
+
+
+function initCatalogSidebarSticky() {
+  const wrap = document.querySelector('.catalog__sidebar');
+  const sidebar = wrap?.querySelector('.catalog__sidebar-inner');
+  if (!wrap || !sidebar) return;
+
+  const topGap = headerMainHeightValue + 20;
+  const bottomGap = 20;
+
+  let lastScrollY = window.scrollY;
+  let offset = 0;
+  let ticking = false;
+
+  const update = () => {
+    if (window.innerWidth <= 1024) {
+      sidebar.style.removeProperty('--catalog-sidebar-top');
+      lastScrollY = window.scrollY;
+      ticking = false;
+      return;
+    }
+
+    const scrollY = window.scrollY;
+    const delta = scrollY - lastScrollY;
+    const sidebarHeight = sidebar.offsetHeight;
+    const availableHeight = window.innerHeight - topGap - bottomGap;
+    const maxOffset = Math.max(0, sidebarHeight - availableHeight);
+    const wrapTop = wrap.getBoundingClientRect().top;
+
+    if (wrapTop <= topGap || offset > 0) {
+      offset = Math.max(0, Math.min(maxOffset, offset + delta));
+    }
+
+    sidebar.style.setProperty('--catalog-sidebar-top', `${topGap - offset}px`);
+
+    lastScrollY = scrollY;
+    ticking = false;
+  };
+
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', update);
+
+  new ResizeObserver(() => {
+    const maxOffset = Math.max(0, sidebar.offsetHeight - (window.innerHeight - topGap - bottomGap));
+    offset = Math.min(offset, maxOffset);
+    update();
+  }).observe(sidebar);
+
+  update();
+}
+
+document.addEventListener('DOMContentLoaded', initCatalogSidebarSticky);

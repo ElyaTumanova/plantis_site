@@ -215,8 +215,6 @@
   }
 }
 
-
-
 .catalog__top {
   display: flex;
   gap: clamp(0.5rem, 0.2353rem + 1.1765vw, 1.25rem);
@@ -433,6 +431,19 @@
 /* catalog__sidebar */
 .catalog__sidebar {
   grid-area: sidebar;
+}
+
+@media (min-width: 769px) {
+  .catalog__sidebar {
+    align-self: stretch;
+  }
+
+  .catalog__sidebar-inner {
+    position: sticky !important;
+    top: var(--catalog-sidebar-top, 80px);
+    bottom: auto !important;
+    height: fit-content;
+  }
 }
 
 /* catalog__products-wrap */
