@@ -106,6 +106,7 @@ add_action( 'wp_footer', 'plnt_check_site' );
   $filter_plant_type_id = 9310; //ok
   $filter_plant_name_id = 9311; //ok
 	$filter_podborki_id = 9323; //ok
+	$filter_brands_id = 15876; //
 	$filter_in_stock_id = 6110; //undo
 	$filter_price_id = 9300; //ok
 	$filter_height_id = 9313; //ok

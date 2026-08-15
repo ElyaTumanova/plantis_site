@@ -205,6 +205,9 @@ if (catalogMobileSticky) {
   );
 }
 
+/*--------------------------------------------------------------
+# Sticky sidebar c фильтрами
+--------------------------------------------------------------*/
 
 function initCatalogSidebarSticky() {
   const wrap = document.querySelector('.catalog__sidebar');

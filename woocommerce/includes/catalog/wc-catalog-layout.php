@@ -135,6 +135,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     global $plants_treez_cat_id;
     // // #filters ID's
     global $filter_podborki_id;
+    global $filter_brands_id;
     global $filter_plant_type_id;
     global $filter_plant_name_id;
     global $filter_in_stock_id;
@@ -162,6 +163,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <aside class="catalog__sidebar-filters modal-mob__body">
           <div class="catalog__filter-metki">
             <?php echo do_shortcode('[br_filter_single filter_id='.$filter_podborki_id.']') //Подборки //56536 //10989?>  
+            <?php echo do_shortcode('[br_filter_single filter_id='.$filter_brands_id.']') //Бренды //56536 //10989?>  
           </div>
           <?php 
           echo do_shortcode('[br_filter_single filter_id='.$filter_price_id.']'); // цена  \\56529 //6055

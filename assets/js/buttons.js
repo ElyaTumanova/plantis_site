@@ -35,45 +35,45 @@ window.addEventListener('resize', () => {
 /*--------------------------------------------------------------
 # Высота хедера в десктопе
 --------------------------------------------------------------*/
-let headerDiv = document.querySelector('.header__desktop');
-let headerHeight= headerDiv.offsetHeight;
-// document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
-// слушаем событие resize
+// let headerDiv = document.querySelector('.header__desktop');
+// let headerHeight= headerDiv.offsetHeight;
+// // document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
+// // слушаем событие resize
+// // window.addEventListener('resize', () => {
+// //     // получаем текущее значение высоты
+// //     let headerHeight= headerDiv.offsetHeight;
+// //     document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
+// // });
+
+// let headerMainDiv = document.querySelector('.header__main');
+// let searchDiv = document.querySelector('.search__wrap');
+// let searchResultDiv = document.querySelector('.search-result');
+// let headerMainHeight= headerMainDiv.offsetHeight;
+
+// // слушаем событие resize
 // window.addEventListener('resize', () => {
 //     // получаем текущее значение высоты
-//     let headerHeight= headerDiv.offsetHeight;
-//     document.documentElement.style.setProperty('--headerHeight', `${headerHeight}px`);
+//     let headerMainHeight= headerMainDiv.offsetHeight;
 // });
 
-let headerMainDiv = document.querySelector('.header__main');
-let searchDiv = document.querySelector('.search__wrap');
-let searchResultDiv = document.querySelector('.search-result');
-let headerMainHeight= headerMainDiv.offsetHeight;
-
-// слушаем событие resize
-window.addEventListener('resize', () => {
-    // получаем текущее значение высоты
-    let headerMainHeight= headerMainDiv.offsetHeight;
-});
-
 //скрываем меню при скролле
-let marginTopOffset = headerMainHeight - headerHeight;
-window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset;
-    if(scrollTop >0){
-        // headerMainDiv.setAttribute('style', `margin-top:${marginTopOffset}px`);
-        // document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
-        // headerMainDiv.classList.add('scrollhidden');
-        // searchDiv.classList.add('scrollhidden');
-        // searchResultDiv.classList.add('scrollhidden');
-    } else{
-        // headerMainDiv.removeAttribute('style');
-        // document.documentElement.style.setProperty('--marginTopOffset', 0);
-        // headerMainDiv.classList.remove('scrollhidden');
-        // searchDiv.classList.remove('scrollhidden');
-        // searchResultDiv.classList.remove('scrollhidden');
-    }
-});
+// let marginTopOffset = headerMainHeight - headerHeight;
+// window.addEventListener('scroll', function() {
+//     let scrollTop = window.pageYOffset;
+//     if(scrollTop >0){
+//         // headerMainDiv.setAttribute('style', `margin-top:${marginTopOffset}px`);
+//         // document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
+//         // headerMainDiv.classList.add('scrollhidden');
+//         // searchDiv.classList.add('scrollhidden');
+//         // searchResultDiv.classList.add('scrollhidden');
+//     } else{
+//         // headerMainDiv.removeAttribute('style');
+//         // document.documentElement.style.setProperty('--marginTopOffset', 0);
+//         // headerMainDiv.classList.remove('scrollhidden');
+//         // searchDiv.classList.remove('scrollhidden');
+//         // searchResultDiv.classList.remove('scrollhidden');
+//     }
+// });
 // document.documentElement.style.setProperty('--marginTopOffset', `${marginTopOffset}px`);
 
 //это не обязательно
