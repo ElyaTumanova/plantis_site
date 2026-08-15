@@ -626,11 +626,19 @@ function plnt_schema_get_product_description($product) {
 }
 
 function plnt_schema_get_product_alternate_name($product) {
+	global $plants_cat_id;
+
 	if (!$product instanceof WC_Product) {
 		return '';
 	}
 
-	return plnt_schema_clean_text($product->get_short_description());
+	if (check_category($product) !== $plants_cat_id) {
+		return '';
+	}
+
+	return plnt_schema_clean_text(
+		$product->get_short_description()
+	);
 }
 
 function plnt_schema_get_product_offer($product, $product_url, $org_id) {
@@ -721,11 +729,78 @@ function plnt_schema_get_product_properties($product) {
 		];
 	}
 
+	$description_properties = plnt_schema_get_product_description_properties($product);
+
+	if ($description_properties) {
+		$properties = array_merge(
+			$properties,
+			$description_properties
+		);
+	}
+
 	return apply_filters(
 		'plnt_schema_product_properties',
 		$properties,
 		$product
 	);
+}
+
+function plnt_schema_get_product_description_properties($product) {
+	if (
+		!$product instanceof WC_Product
+		|| !function_exists('get_field')
+	) {
+		return [];
+	}
+
+	$rows = get_field('parametrs', $product->get_id());
+
+	if (!is_array($rows) || !$rows) {
+		return [];
+	}
+
+	$properties = [];
+
+	foreach ($rows as $row) {
+		$type = $row['type'] ?? '';
+		$text = $row['text'] ?? '';
+
+		// Select возвращает array.
+		if (is_array($type)) {
+			$type = $type['label'] ?? $type['value'] ?? '';
+		}
+
+		$type = plnt_schema_clean_text($type);
+		$text = plnt_schema_clean_text($text);
+
+		if (!$type || !$text) {
+			continue;
+		}
+
+		/*
+		 * В SCF сейчас значения:
+		 * diff: Чем отличается сорт
+		 * for: Кому подойдет
+		 * where: Куда поставить
+		 * pets: Безопасно для животных
+		 *
+		 * Для Schema оставляем только человекочитаемую часть.
+		 */
+		$name = preg_replace('/^[^:]+:\s*/u', '', $type);
+		$name = plnt_schema_clean_text($name);
+
+		if (!$name) {
+			continue;
+		}
+
+		$properties[] = [
+			'@type' => 'PropertyValue',
+			'name'  => $name,
+			'value' => $text,
+		];
+	}
+
+	return $properties;
 }
 
 function plnt_schema_get_product_availability($product) {
