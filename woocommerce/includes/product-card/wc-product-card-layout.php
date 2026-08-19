@@ -494,7 +494,7 @@ function plnt_product_description_tab_content() {
       'icon'  => 'where',
     ],
     'pets' => [
-      'title' => 'Безопасно для животных',
+      'title' => 'Безопасно для животных?',
       'icon'  => 'pets',
     ],
   ];
