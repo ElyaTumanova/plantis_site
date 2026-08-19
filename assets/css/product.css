@@ -129,6 +129,7 @@
   overflow: hidden;
   grid-area: image;
   aspect-ratio: 1 / 1;
+  position: relative;
 }
 .woocommerce-LoopProduct-link img {
   width: 100%;
@@ -180,6 +181,14 @@
   height: 100% !important;
   object-fit: cover;
   display: block;
+}
+
+.product__image-size {
+  position: absolute;
+  z-index: 1;
+  width: 20% !important;
+  height: auto;
+  bottom: 0;
 }
 
 /* кнопка добавления в корзину */

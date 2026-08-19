@@ -65,6 +65,7 @@ function plnt_catalog_gallery() {
 		global $product;
 		$image = $product->get_image('large', array('itemprop'=>'image'));	//schema.org
 		$attachment_ids = $product->get_gallery_image_ids();
+    $size_image = get_field('size_image');
 		echo '
 		<div class="product__image-slider-wrap swiper">
 			<div class="swiper-wrapper" >';
@@ -77,6 +78,9 @@ function plnt_catalog_gallery() {
 			</div>
 			<div class="swiper-pagination"></div>
 		</div>';
+    if($size_image) {
+      echo wp_get_attachment_image( $size_image, 'large', false, array( 'class' => 'product__image-size'));
+    }
 	} else {
 		woocommerce_template_loop_product_thumbnail();
 	}
