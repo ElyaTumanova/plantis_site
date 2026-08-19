@@ -265,3 +265,23 @@ function initCatalogSidebarSticky() {
 }
 
 document.addEventListener('DOMContentLoaded', initCatalogSidebarSticky);
+
+
+/* Видео */
+
+document.querySelectorAll('.product').forEach(card => {
+  const video = card.querySelector('.product__video')
+  if (!video) return
+
+  const slider = card.querySelector('.product__image-slider-wrap')
+
+  slider.addEventListener('mouseenter', () => {
+    video.play().catch(() => {})
+  })
+
+  slider.addEventListener('mouseleave', () => {
+    video.pause()
+    video.currentTime = 0
+    video.load()
+  })
+})

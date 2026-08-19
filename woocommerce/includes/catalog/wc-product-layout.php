@@ -63,13 +63,24 @@ function soChangeProductsTitle() {
 function plnt_catalog_gallery() {
 	if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() || is_page('search-results')) {
 		global $product;
+    $product_id = $product->get_id();
 		$image = $product->get_image('large', array('itemprop'=>'image'));	//schema.org
 		$attachment_ids = $product->get_gallery_image_ids();
     $size_image = get_field('size_image');
+    $video_id = get_field('video');
+    $video = $video_id ? wp_get_attachment_url($video_id) : '';
+    $image_id = $product->get_image_id();
+    $video_poster = $image_id ? wp_get_attachment_image_url($image_id, 'large') : '';    
 		echo '
 		<div class="product__image-slider-wrap swiper">
 			<div class="swiper-wrapper" >';
-				echo $image;
+        if ($video) {
+					echo '<video class="swiper-slide product__video" muted loop playsinline preload="none"  draggable="false"' . ($video_poster ? ' poster="' . esc_url($video_poster) . '"' : '') . '>
+						<source src="' . esc_url($video) . '">
+					</video>';
+				} else {
+          echo $image;
+        }
 				foreach( $attachment_ids as $attachment_id ) {
 					// $params = [ 'class' => "attachment-woocommerce_thumbnail" ];
 					echo wp_get_attachment_image( $attachment_id, 'large');

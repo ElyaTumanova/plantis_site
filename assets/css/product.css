@@ -191,6 +191,12 @@
   bottom: 0;
 }
 
+.product__video {
+	pointer-events: none;
+	user-select: none;
+	-webkit-user-drag: none;
+}
+
 /* кнопка добавления в корзину */
 
 .product__add-to-cart-wrap {
