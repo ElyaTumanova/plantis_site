@@ -1,65 +1,77 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit;
 }
+
+$banners = get_field('banners');
+
+if ( ! empty($banners) ) :
 ?>
+	<div class="front__hero-banners banner hero-banner-swiper swiper">
+		<div class="swiper-wrapper">
 
-<?php 
+			<?php foreach ($banners as $banner) :
 
-$banners_arr = carbon_get_theme_option('banners');
-	
-?>
-<div class="front__hero-banners banner hero-banner-swiper swiper">
-	<div class="swiper-wrapper">
-	<?php
-		foreach ($banners_arr as $banner) {
+				$image   = $banner['image'] ?? '';
+				$title   = $banner['title'] ?? '';
+				$caption = $banner['caption'] ?? '';
+				$button  = $banner['button'] ?? [];
+
+				$button_url    = $button['url'] ?? '';
+				$button_title  = $button['title'] ?? '';
+				$button_target = $button['target'] ?? '_self';
 			?>
-      <div class="banner__inner swiper-slide">
-        <div class="banner__content">
-          <span class="banner__title">Бесплатно пересадим при покупке горшка*</span>
-          <?php if($banner['banner_link']):?>
-            <a class="banner__button button button--transparent"
-            href="<?php echo $banner['banner_link'] ?>"
-            >
-            <span class="icon icon--arrow-right">Купить</span>
-          </a>
-          <?endif;?>
-          <span class="banner__caption">*Кроме кашпо Treez и Lechuza диаметром больше 26 см</span>
-        </div>
-        <div class="banner__bg">
-            <img
-              class="banner__bg"
-              src="<?php echo esc_url($banner['banner_desktop']); ?>"
-              alt=""
-              width="1380"
-              height="429"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-            >
-        </div>
-        
-      </div>
-			<?php 
-		}
-	?>
-	</div>
-	<div class="swiper-pagination"></div>
-	<div class="swiper-button-prev"></div>
-	<div class="swiper-button-next"></div>
-</div>
+				<div class="banner__inner swiper-slide">
 
-<div class="front__hero-banners_mob hero-banner-swiper swiper d-none">
-	<div class="swiper-wrapper">
-	<?php
-		foreach ($banners_arr as $banner) {
-			?>
-			<a class="swiper-slide <?php if(!$banner['banner_link']) : ?> front__hero-banners_no-link <?php endif; ?>" href="<?php echo $banner['banner_link'] ?>"><img src="<?php echo $banner['banner_mob'] ?>" class="main__banner-img" alt="<?php echo $banner['banner_name']?>" loading=" lazy"></a>
-			<?php 
-		}
-	?>
+					<div class="banner__content">
+
+						<?php if ($title) : ?>
+							<span class="banner__title">
+								<?php echo esc_html($title); ?>
+							</span>
+						<?php endif; ?>
+
+						<?php if ($button_url) : ?>
+							<a
+								class="banner__button button button--transparent"
+								href="<?php echo esc_url($button_url); ?>"
+								target="<?php echo esc_attr($button_target); ?>"
+							>
+								<span class="icon icon--arrow-right">
+									<?php echo esc_html($button_title); ?>
+								</span>
+							</a>
+						<?php endif; ?>
+
+						<?php if ($caption) : ?>
+							<span class="banner__caption">
+								<?php echo esc_html($caption); ?>
+							</span>
+						<?php endif; ?>
+
+					</div>
+
+					<?php if ($image) : ?>
+						<div class="banner__bg">
+							<img
+								src="<?php echo esc_url($image); ?>"
+								alt=""
+								width="1380"
+								height="429"
+								loading="eager"
+								fetchpriority="high"
+								decoding="async"
+							>
+						</div>
+					<?php endif; ?>
+
+				</div>
+			<?php endforeach; ?>
+
+		</div>
+
+		<div class="swiper-pagination"></div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
 	</div>
-	<div class="swiper-pagination"></div>
-	<div class="swiper-button-prev"></div>
-	<div class="swiper-button-next"></div>
-</div>
+<?php endif; ?>
