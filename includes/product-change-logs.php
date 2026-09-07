@@ -413,3 +413,117 @@ function wc_write_product_log($text) {
     return true;
 }
 
+/* Вывод в админке */
+
+add_action('admin_menu', function () {
+    add_submenu_page(
+        'woocommerce',
+        'Логи товаров',
+        'Логи товаров',
+        'manage_woocommerce',
+        'wc-product-change-logs',
+        'wc_product_change_logs_admin_page'
+    );
+});
+
+
+function wc_product_change_logs_admin_page() {
+
+    if ( ! current_user_can('manage_woocommerce') ) {
+        wp_die('Недостаточно прав.');
+    }
+
+    $log_dir = WP_CONTENT_DIR . '/product-logs';
+
+    $date = isset($_GET['log_date'])
+        ? sanitize_text_field($_GET['log_date'])
+        : wp_date('Y-m-d');
+
+    if ( ! preg_match('/^\d{4}-\d{2}-\d{2}$/', $date) ) {
+        $date = wp_date('Y-m-d');
+    }
+
+    $log_file = $log_dir . '/product-change-log-' . $date . '.txt';
+
+    ?>
+    <div class="wrap">
+        <h1>Логи изменений товаров</h1>
+
+        <form method="get">
+            <input type="hidden" name="page" value="wc-product-change-logs">
+
+            <label>
+                Дата:
+                <input
+                    type="date"
+                    name="log_date"
+                    value="<?php echo esc_attr($date); ?>"
+                >
+            </label>
+
+            <?php submit_button('Показать', 'secondary', '', false); ?>
+        </form>
+
+        <hr>
+
+        <?php
+
+        if ( ! file_exists($log_file) ) {
+            echo '<p>За эту дату логов нет.</p>';
+            echo '</div>';
+            return;
+        }
+
+        $lines = file(
+            $log_file,
+            FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES
+        );
+
+        if ( ! $lines ) {
+            echo '<p>Лог пуст.</p>';
+            echo '</div>';
+            return;
+        }
+
+        $lines = array_reverse($lines);
+
+        ?>
+        <table class="widefat striped">
+            <thead>
+            <tr>
+                <th style="width:180px;">Время</th>
+                <th>Запись</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <?php foreach ($lines as $line) : ?>
+
+                <?php
+                $time = '';
+
+                if (preg_match('/^\[([^\]]+)\]\s*(.*)$/', $line, $matches)) {
+                    $time = $matches[1];
+                    $text = $matches[2];
+                } else {
+                    $text = $line;
+                }
+                ?>
+
+                <tr>
+                    <td>
+                        <?php echo esc_html($time); ?>
+                    </td>
+
+                    <td>
+                        <?php echo esc_html($text); ?>
+                    </td>
+                </tr>
+
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+
+    </div>
+    <?php
+}
