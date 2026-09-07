@@ -429,21 +429,17 @@ add_action('admin_menu', function () {
 });
 
 
-/**
- * Получить все файлы логов.
- * Новые дни идут первыми.
- */
 function wc_get_product_log_files() {
 
     $log_dir = WP_CONTENT_DIR . '/product-logs';
 
-    if ( ! is_dir($log_dir) ) {
+    if (!is_dir($log_dir)) {
         return [];
     }
 
     $files = glob($log_dir . '/product-change-log-*.txt');
 
-    if ( ! $files ) {
+    if (!$files) {
         return [];
     }
 
@@ -454,14 +450,14 @@ function wc_get_product_log_files() {
 
 
 /**
- * Найти все записи конкретного товара
- * во всех дневных логах.
+ * Поиск логов по названию товара
+ * во всех файлах.
  */
-function wc_get_product_logs_by_id($product_id) {
+function wc_get_product_logs_by_name($search) {
 
-    $product_id = absint($product_id);
+    $search = trim((string) $search);
 
-    if ( ! $product_id ) {
+    if ($search === '') {
         return [];
     }
 
@@ -474,35 +470,18 @@ function wc_get_product_logs_by_id($product_id) {
             FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES
         );
 
-        if ( ! $lines ) {
+        if (!$lines) {
             continue;
         }
 
-        /*
-         * Внутри файла старые записи сверху,
-         * поэтому переворачиваем каждый день отдельно.
-         */
         $lines = array_reverse($lines);
 
         foreach ($lines as $line) {
 
             /*
-             * Наши текущие форматы:
-             *
-             * Обновление товара #123
-             * Создание товара #123
-             * Удаление товара #123
-             * ... товар #123 ...
-             *
-             * \b после ID не даст товару #123
-             * совпасть с #1234.
+             * Ищем название без учета регистра.
              */
-            if (
-                preg_match(
-                    '/\bтовар[а]?\s+#' . preg_quote((string) $product_id, '/') . '\b/ui',
-                    $line
-                )
-            ) {
+            if (mb_stripos($line, $search) !== false) {
                 $result[] = $line;
             }
         }
@@ -512,45 +491,35 @@ function wc_get_product_logs_by_id($product_id) {
 }
 
 
-/**
- * Страница логов.
- */
 function wc_product_change_logs_admin_page() {
 
-    if ( ! current_user_can('manage_woocommerce') ) {
+    if (!current_user_can('manage_woocommerce')) {
         wp_die('Недостаточно прав.');
     }
 
     $log_dir = WP_CONTENT_DIR . '/product-logs';
 
-    /*
-     * Дата.
-     */
     $date = isset($_GET['log_date'])
         ? sanitize_text_field(wp_unslash($_GET['log_date']))
         : wp_date('Y-m-d');
 
-    if ( ! preg_match('/^\d{4}-\d{2}-\d{2}$/', $date) ) {
+    if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
         $date = wp_date('Y-m-d');
     }
 
-    /*
-     * Товар.
-     */
-    $product_id = isset($_GET['product_id'])
-        ? absint($_GET['product_id'])
-        : 0;
-
-    $product = $product_id
-        ? wc_get_product($product_id)
-        : false;
+    $product_search = isset($_GET['product_search'])
+        ? sanitize_text_field(wp_unslash($_GET['product_search']))
+        : '';
 
     ?>
     <div class="wrap">
 
         <h1>Логи изменений товаров</h1>
 
-        <form method="get" style="display:flex; align-items:flex-end; gap:20px; margin-bottom:20px;">
+        <form
+            method="get"
+            style="display:flex; align-items:flex-end; gap:20px; margin-bottom:20px;"
+        >
 
             <input
                 type="hidden"
@@ -574,26 +543,23 @@ function wc_product_change_logs_admin_page() {
                 >
             </div>
 
-
             <div>
                 <label
-                    for="wc-log-product-id"
+                    for="wc-log-product-search"
                     style="display:block; margin-bottom:5px;"
                 >
-                    ID товара
+                    Товар
                 </label>
 
                 <input
-                    id="wc-log-product-id"
-                    type="number"
-                    name="product_id"
-                    min="1"
-                    value="<?php echo $product_id ? esc_attr($product_id) : ''; ?>"
-                    placeholder="Например, 1234"
-                    style="width:180px;"
+                    id="wc-log-product-search"
+                    type="search"
+                    name="product_search"
+                    value="<?php echo esc_attr($product_search); ?>"
+                    placeholder="Например, Монстера"
+                    style="width:320px;"
                 >
             </div>
-
 
             <div>
                 <?php
@@ -606,8 +572,7 @@ function wc_product_change_logs_admin_page() {
                 ?>
             </div>
 
-
-            <?php if ($product_id) : ?>
+            <?php if ($product_search !== '') : ?>
 
                 <div>
                     <a
@@ -616,7 +581,7 @@ function wc_product_change_logs_admin_page() {
                         ); ?>"
                         class="button"
                     >
-                        Сбросить товар
+                        Сбросить поиск
                     </a>
                 </div>
 
@@ -625,79 +590,32 @@ function wc_product_change_logs_admin_page() {
         </form>
 
 
-        <?php if ($product_id) : ?>
-
-            <p>
-                Показана история товара
-                <strong>#<?php echo esc_html($product_id); ?></strong>
-
-                <?php if ($product) : ?>
-
-                    —
-                    <strong>
-                        <?php echo esc_html($product->get_name()); ?>
-                    </strong>
-
-                    <a
-                        href="<?php echo esc_url(
-                            get_edit_post_link($product_id)
-                        ); ?>"
-                        target="_blank"
-                    >
-                        открыть товар
-                    </a>
-
-                <?php endif; ?>
-
-                за все дни.
-            </p>
-
-        <?php else : ?>
-
-            <p>
-                Логи за
-                <strong>
-                    <?php echo esc_html($date); ?>
-                </strong>
-            </p>
-
-        <?php endif; ?>
-
-        <hr>
-
         <?php
 
-        /*
-         * ==================================================
-         * Получаем строки.
-         * ==================================================
-         */
-
-        if ($product_id) {
+        if ($product_search !== '') {
 
             /*
-             * Есть товар:
-             * ищем ПО ВСЕМ ФАЙЛАМ.
+             * Есть поиск по товару —
+             * ищем по всем дням.
              */
-            $lines = wc_get_product_logs_by_id($product_id);
+            $lines = wc_get_product_logs_by_name($product_search);
+
+            echo '<p>';
+            echo 'Поиск по товару: <strong>' . esc_html($product_search) . '</strong>';
+            echo ' — за все дни';
+            echo '</p>';
 
         } else {
 
             /*
-             * Товара нет:
-             * обычный просмотр выбранного дня.
+             * Нет поиска —
+             * показываем выбранный день.
              */
-            $log_file =
-                $log_dir .
-                '/product-change-log-' .
-                $date .
-                '.txt';
+            $log_file = $log_dir . '/product-change-log-' . $date . '.txt';
 
-            if ( ! file_exists($log_file) ) {
-
+            if (!file_exists($log_file)) {
                 echo '<p>За эту дату логов нет.</p>';
                 echo '</div>';
-
                 return;
             }
 
@@ -709,23 +627,24 @@ function wc_product_change_logs_admin_page() {
             if ($lines) {
                 $lines = array_reverse($lines);
             }
+
+            echo '<p>';
+            echo 'Логи за <strong>' . esc_html($date) . '</strong>';
+            echo '</p>';
         }
 
 
-        /*
-         * Ничего не нашли.
-         */
-        if ( ! $lines ) {
+        if (!$lines) {
 
-            if ($product_id) {
+            echo '<p>';
 
-                echo '<p>Записей по этому товару не найдено.</p>';
-
+            if ($product_search !== '') {
+                echo 'По этому названию ничего не найдено.';
             } else {
-
-                echo '<p>Лог пуст.</p>';
+                echo 'Лог пуст.';
             }
 
+            echo '</p>';
             echo '</div>';
 
             return;
@@ -747,7 +666,6 @@ function wc_product_change_logs_admin_page() {
                     </th>
                 </tr>
             </thead>
-
 
             <tbody>
 
