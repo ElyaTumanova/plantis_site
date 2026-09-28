@@ -216,6 +216,8 @@ defined( 'ABSPATH' ) || exit;
             }
 
             if ( $parentCatId === $plants_cat_id ) {
+                $ids = $_product->get_upsell_ids();
+                if ( !empty( $ids ) ) {
                 ?>
                 <td class="product-cart-upsells cart__product-recs">
                     <?php
@@ -230,6 +232,7 @@ defined( 'ABSPATH' ) || exit;
                     ?>
                 </td>
                 <?php
+                }
             }
 
             ?>
