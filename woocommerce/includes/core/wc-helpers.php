@@ -423,22 +423,22 @@ function get_delivery_markup() {
   // define markup
 	$delivery_murkup = ['in_mkad'=>0, 'out_mkad'=>0, 'urg'=>0, 'exp'=>0 ];
 
-  $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-  $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
+  $min_small_delivery = plnt_delivery_option('min_small_delivery');
+  $min_medium_delivery = plnt_delivery_option('min_medium_delivery');
 
 
-  $large_markup_delivery_in_mkad = carbon_get_theme_option('large_markup_delivery_in_mkad');
-  $large_markup_delivery_out_mkad = carbon_get_theme_option('large_markup_delivery_out_mkad');
+  $large_markup_delivery_in_mkad = plnt_delivery_option('large_markup_delivery_in_mkad');
+  $large_markup_delivery_out_mkad = plnt_delivery_option('large_markup_delivery_out_mkad');
 
-  $small_markup_delivery = carbon_get_theme_option('small_markup_delivery');
-  $medium_markup_delivery = carbon_get_theme_option('medium_markup_delivery');
+  $small_markup_delivery = plnt_delivery_option('small_markup_delivery');
+  $medium_markup_delivery = plnt_delivery_option('medium_markup_delivery');
 
-  $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
-  $urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_large');
+  $urgent_markup_delivery = plnt_delivery_option('urgent_markup_delivery');
+  $urgent_markup_delivery_large = plnt_delivery_option('urgent_markup_delivery_large');
 
   $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
 
-  $expensive_day_markup_delivery = carbon_get_theme_option('expensive_day_markup_delivery');
+  $expensive_day_markup_delivery = plnt_delivery_option('expensive_day_markup_delivery');
 
 
   // проверяем крупногабаритную доставку

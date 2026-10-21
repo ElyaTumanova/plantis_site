@@ -2,7 +2,7 @@
 get_header(); ?>
 
 <?php 
-    $min_free_delivery = carbon_get_theme_option('min_free_delivery');
+    $min_free_delivery = plnt_delivery_option('min_free_delivery');
 ?>
 
 <div class="content-area content-area_sidebar">

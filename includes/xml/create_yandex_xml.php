@@ -82,9 +82,9 @@ $yandex_xml .= "</categories>
 
 global $delivery_inMKAD;
 global $delivery_outMKAD;
-$urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
-$urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_large');
-$large_markup_delivery_out_mkad = carbon_get_theme_option('large_markup_delivery_out_mkad');
+$urgent_markup_delivery = plnt_delivery_option('urgent_markup_delivery');
+$urgent_markup_delivery_large = plnt_delivery_option('urgent_markup_delivery_large');
+$large_markup_delivery_out_mkad = plnt_delivery_option('large_markup_delivery_out_mkad');
 $shipping_costs = plnt_get_shiping_costs();
 $in_mkad = $shipping_costs[$delivery_inMKAD];
 $out_mkad = $shipping_costs[$delivery_outMKAD];

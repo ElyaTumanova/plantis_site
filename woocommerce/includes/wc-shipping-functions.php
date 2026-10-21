@@ -13,7 +13,7 @@ function plnt_set_initials() {
     $hour = date("H");
     $today = date("d.m");
     $exp_days = ['07.03','08.03'];
-    $expensive_day_markup_delivery = carbon_get_theme_option('expensive_day_markup_delivery');
+    $expensive_day_markup_delivery = plnt_delivery_option('expensive_day_markup_delivery');
 
     // Выбранная по умолчанию дата — завтра; после 20:00 для завтра сохраняется срочный тариф.
     WC()->session->set('isUrgent', $hour >= 20 ? '1' : '0');
@@ -155,7 +155,7 @@ function plnt_shipping_conditions( $rates, $package ) {
     global $delivery_long_dist;
     global $delivery_pochta;
 
-    $expensive_interval_markup_delivery = carbon_get_theme_option('expensive_interval_markup_delivery');
+    $expensive_interval_markup_delivery = plnt_delivery_option('expensive_interval_markup_delivery');
 
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
 
@@ -163,8 +163,8 @@ function plnt_shipping_conditions( $rates, $package ) {
     $delivery_markup_in_mkad = 0;
     $delivery_markup_out_mkad = 0;
 
-    $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
-    $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
+    $isUrgentCourierTariff = plnt_delivery_option('is_urgent_courier_tariff') == '1';
+    $isHolidayCourierTariff = plnt_delivery_option('is_holiday_courier_tariff') == '1';
     $isSmallHolidayCart = WC()->cart->subtotal < 5000;
     $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
 
@@ -255,11 +255,11 @@ function plnt_shipping_conditions( $rates, $package ) {
 add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_small_order' );
 
 function plnt_disable_payment_small_order( $available_gateways ) {
-    $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-    $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
+    $min_small_delivery = plnt_delivery_option('min_small_delivery');
+    $min_medium_delivery = plnt_delivery_option('min_medium_delivery');
     // $isUrgentCourierTariff = true;
-    $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
-    $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
+    $isUrgentCourierTariff = plnt_delivery_option('is_urgent_courier_tariff') == '1';
+    $isHolidayCourierTariff = plnt_delivery_option('is_holiday_courier_tariff') == '1';
     $isSmallHolidayCart = WC()->cart->subtotal < 5000;
     $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
 

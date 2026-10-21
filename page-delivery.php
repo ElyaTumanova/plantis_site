@@ -5,24 +5,24 @@ get_header(); ?>
     global $delivery_inMKAD;
     global $delivery_outMKAD;
    
-    $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-    $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
-    $min_free_delivery = carbon_get_theme_option('min_free_delivery');
+    $min_small_delivery = plnt_delivery_option('min_small_delivery');
+    $min_medium_delivery = plnt_delivery_option('min_medium_delivery');
+    $min_free_delivery = plnt_delivery_option('min_free_delivery');
 
-    $large_markup_delivery_in_mkad = carbon_get_theme_option('large_markup_delivery_in_mkad');
-    $large_markup_delivery_out_mkad = carbon_get_theme_option('large_markup_delivery_out_mkad');
+    $large_markup_delivery_in_mkad = plnt_delivery_option('large_markup_delivery_in_mkad');
+    $large_markup_delivery_out_mkad = plnt_delivery_option('large_markup_delivery_out_mkad');
 
-    $small_markup_delivery = carbon_get_theme_option('small_markup_delivery');
-    $medium_markup_delivery = carbon_get_theme_option('medium_markup_delivery');
+    $small_markup_delivery = plnt_delivery_option('small_markup_delivery');
+    $medium_markup_delivery = plnt_delivery_option('medium_markup_delivery');
 
-    $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
-    $urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_large');
+    $urgent_markup_delivery = plnt_delivery_option('urgent_markup_delivery');
+    $urgent_markup_delivery_large = plnt_delivery_option('urgent_markup_delivery_large');
 
-    $expensive_interval_markup_delivery = carbon_get_theme_option('expensive_interval_markup_delivery');
-    $expensive_interval_delivery = carbon_get_theme_option('expensive_interval_delivery');
+    $expensive_interval_markup_delivery = plnt_delivery_option('expensive_interval_markup_delivery');
+    $expensive_interval_delivery = plnt_delivery_option('expensive_interval_delivery');
 
-    $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
-    $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
+    $isUrgentCourierTariff = plnt_delivery_option('is_urgent_courier_tariff') == '1';
+    $isHolidayCourierTariff = plnt_delivery_option('is_holiday_courier_tariff') == '1';
 
     $shipping_costs = plnt_get_shiping_costs();
 

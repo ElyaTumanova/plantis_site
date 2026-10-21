@@ -16,17 +16,17 @@ $shipping_costs = plnt_get_shiping_costs();
 $in_mkad = $shipping_costs[$delivery_inMKAD];
 $out_mkad = $shipping_costs[$delivery_outMKAD];
 
-$large_markup_delivery_in_mkad = carbon_get_theme_option('large_markup_delivery_in_mkad');
-$large_markup_delivery_out_mkad = carbon_get_theme_option('large_markup_delivery_out_mkad');
+$large_markup_delivery_in_mkad = plnt_delivery_option('large_markup_delivery_in_mkad');
+$large_markup_delivery_out_mkad = plnt_delivery_option('large_markup_delivery_out_mkad');
 
-$urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
-$urgent_markup_delivery_large = carbon_get_theme_option('urgent_markup_delivery_large');
+$urgent_markup_delivery = plnt_delivery_option('urgent_markup_delivery');
+$urgent_markup_delivery_large = plnt_delivery_option('urgent_markup_delivery_large');
 
 $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
 
-$min_free_delivery = carbon_get_theme_option('min_free_delivery');
+$min_free_delivery = plnt_delivery_option('min_free_delivery');
 
-$isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
+$isUrgentCourierTariff = plnt_delivery_option('is_urgent_courier_tariff') == '1';
 ?>
 
 <div class="delivery-info">

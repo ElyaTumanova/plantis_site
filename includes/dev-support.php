@@ -194,7 +194,7 @@ function custom_wc_cart_hooks_debug_comments() {
 
 
 function plnt_echo_smth() {
-    $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
+    $isHolidayCourierTariff = plnt_delivery_option('is_holiday_courier_tariff') == '1';
     $isSmallHolidayCart = WC()->cart->subtotal <= 5000;
     $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
     echo $isSmallHolidayTariffOn;

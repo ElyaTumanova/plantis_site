@@ -235,11 +235,11 @@ function plnt_get_delivery_localize_data() {
  	global $delivery_inMKAD, $delivery_outMKAD;
   global $local_pickup, $delivery_free, $delivery_pochta, $delivery_courier, $delivery_long_dist;
 
-  $expensive_interval_markup_delivery   = carbon_get_theme_option('expensive_interval_markup_delivery');
-  $late_interval_delivery   = carbon_get_theme_option('late_interval_delivery');
-  $expensive_interval_delivery   = carbon_get_theme_option('expensive_interval_delivery');
-  $urgent_markup_delivery = carbon_get_theme_option('urgent_markup_delivery');
-  $expensive_day_markup_delivery = carbon_get_theme_option('expensive_day_markup_delivery');
+  $expensive_interval_markup_delivery   = plnt_delivery_option('expensive_interval_markup_delivery');
+  $late_interval_delivery   = plnt_delivery_option('late_interval_delivery');
+  $expensive_interval_delivery   = plnt_delivery_option('expensive_interval_delivery');
+  $urgent_markup_delivery = plnt_delivery_option('urgent_markup_delivery');
+  $expensive_day_markup_delivery = plnt_delivery_option('expensive_day_markup_delivery');
   $shipping_costs         = plnt_get_shiping_costs();
 
   $in_mkad  = $shipping_costs[$delivery_inMKAD];
@@ -250,14 +250,14 @@ function plnt_get_delivery_localize_data() {
 
   $delivery_murkup = get_delivery_markup();
 
-  $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff');
-  $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
+  $isUrgentCourierTariff = plnt_delivery_option('is_urgent_courier_tariff');
+  $isHolidayCourierTariff = plnt_delivery_option('is_holiday_courier_tariff') == '1';
   $isSmallHolidayCart = WC()->cart->subtotal < 5000;
   $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
 
-	$disable_urgent_delivery = carbon_get_theme_option('disable_urgent_delivery') == '1';
+	$disable_urgent_delivery = plnt_delivery_option('disable_urgent_delivery') == '1';
 
-	$disable_urgent_large_delivery = carbon_get_theme_option('disable_urgent_large_delivery') == '1';
+	$disable_urgent_large_delivery = plnt_delivery_option('disable_urgent_large_delivery') == '1';
 
 	$is_large_delivery = check_if_large_delivery();
 

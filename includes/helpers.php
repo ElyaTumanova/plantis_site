@@ -52,3 +52,28 @@ if ( ! defined( 'ABSPATH' ) ) {
       <?php
     }, $after_priority);
   }
+
+
+/**
+ * Delivery configuration from the ACF Options page.
+ * One ACF read per field per PHP request. No dependence on WooCommerce session.
+ * Preserve intentional empty values (e.g. the free delivery threshold).
+ *
+ * Important: saved ACF options must be populated before removing Carbon fields.
+ */
+function plnt_delivery_option( $name, $default = null ) {
+    static $cache = array();
+
+    if ( array_key_exists( $name, $cache ) ) {
+        return $cache[ $name ];
+    }
+
+    if ( ! function_exists( 'get_field' ) ) {
+        return $default;
+    }
+
+    $value = get_field( $name, 'option' );
+    $cache[ $name ] = $value === null ? $default : $value;
+
+    return $cache[ $name ];
+}

@@ -214,14 +214,14 @@ function plnt_schema_get_standard_shipping_service() {
 }
 
 function plnt_schema_get_standard_shipping_conditions($base_rate) {
-	if ($base_rate === null || !function_exists('carbon_get_theme_option')) {
+	if ($base_rate === null || !function_exists('plnt_delivery_option')) {
 		return [];
 	}
 
-	$min_small    = plnt_schema_to_float(carbon_get_theme_option('min_small_delivery'));
-	$min_medium   = plnt_schema_to_float(carbon_get_theme_option('min_medium_delivery'));
-	$small_markup = plnt_schema_to_float(carbon_get_theme_option('small_markup_delivery')) ?? 0;
-	$medium_markup = plnt_schema_to_float(carbon_get_theme_option('medium_markup_delivery')) ?? 0;
+	$min_small    = plnt_schema_to_float(plnt_delivery_option('min_small_delivery'));
+	$min_medium   = plnt_schema_to_float(plnt_delivery_option('min_medium_delivery'));
+	$small_markup = plnt_schema_to_float(plnt_delivery_option('small_markup_delivery')) ?? 0;
+	$medium_markup = plnt_schema_to_float(plnt_delivery_option('medium_markup_delivery')) ?? 0;
 
 	$destination = [
 		'@type'          => 'DefinedRegion',

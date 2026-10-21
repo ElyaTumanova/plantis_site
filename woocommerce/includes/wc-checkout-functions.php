@@ -139,9 +139,9 @@ Contents
         }
 
         if ( check_if_large_delivery() ) {
-            return carbon_get_theme_option('disable_urgent_large_delivery') == '1';
+            return plnt_delivery_option('disable_urgent_large_delivery') == '1';
         }
-        return carbon_get_theme_option('disable_urgent_delivery') == '1';
+        return plnt_delivery_option('disable_urgent_delivery') == '1';
     }
 
     // При отправке формы не полагаемся только на JS / disabled radio.
@@ -359,8 +359,8 @@ Contents
     add_action( 'woocommerce_checkout_order_review', 'my_delivery_small_oder_info', 40 );
 
     function my_delivery_small_oder_info () {
-        $min_free_delivery = carbon_get_theme_option('min_free_delivery');
-        $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+        $min_free_delivery = plnt_delivery_option('min_free_delivery');
+        $min_small_delivery = plnt_delivery_option('min_small_delivery');
         if ($min_free_delivery) {
             if ( WC()->cart->subtotal < str_replace(" ","",$min_small_delivery)) {
                 $cart = str_replace(" ","",$min_small_delivery) - WC()->cart->subtotal;
@@ -400,11 +400,11 @@ Contents
         if (! is_not_gift_card_checkout()) {
           return;
         }
-        $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-        $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
+        $min_small_delivery = plnt_delivery_option('min_small_delivery');
+        $min_medium_delivery = plnt_delivery_option('min_medium_delivery');
         // $isUrgentCourierTariff = true;
-        $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
-        $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
+        $isUrgentCourierTariff = plnt_delivery_option('is_urgent_courier_tariff') == '1';
+        $isHolidayCourierTariff = plnt_delivery_option('is_holiday_courier_tariff') == '1';
         $isSmallHolidayCart = WC()->cart->subtotal < 5000;
         $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
         $shipping_costs = plnt_get_shiping_costs();
@@ -647,7 +647,7 @@ Contents
     //add_action( 'woocommerce_checkout_process', 'min_amount_for_category_lechuza' );
 
     function min_amount_for_category_treez(){
-        $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
+        $min_treez_delivery = plnt_delivery_option('min_treez_delivery');
         $qty = 0; // обязательно сначала ставим 0
         $cat_amount = 0;
         $products_min = false;
@@ -686,7 +686,7 @@ Contents
     }
 
     function min_amount_for_category_lechuza(){
-        $min_lechuza_delivery = carbon_get_theme_option('min_lechuza_delivery');
+        $min_lechuza_delivery = plnt_delivery_option('min_lechuza_delivery');
         $qty = 0; // обязательно сначала ставим 0
         $cat_amount = 0;
         $products_min = false;
@@ -730,7 +730,7 @@ Contents
     add_action( 'woocommerce_checkout_order_review', 'min_amount_for_lechuza_info', 11 ); //встраиваем в таблицу, использовать теги таблицы
 
     function min_amount_for_treez_info(){
-        $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
+        $min_treez_delivery = plnt_delivery_option('min_treez_delivery');
         $qty = 0; // обязательно сначала ставим 0
         $cat_amount = 0;
         $products_min = false;
@@ -753,7 +753,7 @@ Contents
     }
 
     function min_amount_for_lechuza_info(){
-        $min_lechuza_delivery = carbon_get_theme_option('min_lechuza_delivery');
+        $min_lechuza_delivery = plnt_delivery_option('min_lechuza_delivery');
         $qty = 0; // обязательно сначала ставим 0
         $cat_amount = 0;
         $products_min = false;
