@@ -52,6 +52,21 @@ Container::make('theme_options', 'Настройки темы')
 				)
 		))
 		->add_tab('Delivery', array(
+			Field::make(
+					'checkbox',
+					'disable_urgent_delivery',
+					'Отключить срочную доставку день в день'
+			)
+					->set_option_value('1')
+					->set_default_value('0'),
+
+			Field::make(
+					'checkbox',
+					'disable_urgent_large_delivery',
+					'Отключить срочную крупногабаритную доставку день в день'
+			)
+					->set_option_value('1')
+					->set_default_value('0'),
        Field::make( 'checkbox', 'is_urgent_courier_tariff', 'Включить срочную доставку по тарифам курьерской службы' )
     				->set_option_value( '1' )
             ->set_default_value( '0' ),

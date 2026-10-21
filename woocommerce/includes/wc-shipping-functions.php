@@ -15,11 +15,8 @@ function plnt_set_initials() {
     $exp_days = ['07.03','08.03'];
     $expensive_day_markup_delivery = carbon_get_theme_option('expensive_day_markup_delivery');
 
-    if ($hour >= 18 && $hour <20) {
-        WC()->session->set('isUrgent', '0' ); //0
-    } else {
-        WC()->session->set('isUrgent', '1' ); //1
-    }
+    // Выбранная по умолчанию дата — завтра; после 20:00 для завтра сохраняется срочный тариф.
+    WC()->session->set('isUrgent', $hour >= 20 ? '1' : '0');
 
     WC()->session->set('isLate', '0' );
     WC()->session->set('is_courier_deliv_flag', '0' );

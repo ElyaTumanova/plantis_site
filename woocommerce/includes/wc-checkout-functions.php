@@ -124,6 +124,39 @@ Contents
         echo "</div>";
     }
 
+    // Проверяем доступность доставки день в день на сервере.
+    // При запрете срочной доставки самовывоз остаётся доступным.
+    function plnt_is_same_day_delivery_blocked() {
+        if ( ! WC()->cart || ! WC()->cart->needs_shipping() ) {
+            return false;
+        }
+
+        global $local_pickup, $delivery_pochta;
+        $chosen = WC()->session ? (array) WC()->session->get('chosen_shipping_methods', array()) : array();
+        $method = $chosen[0] ?? '';
+        if ( $method === $local_pickup || $method === $delivery_pochta ) {
+            return false;
+        }
+
+        if ( check_if_large_delivery() ) {
+            return carbon_get_theme_option('disable_urgent_large_delivery') == '1';
+        }
+        return carbon_get_theme_option('disable_urgent_delivery') == '1';
+    }
+
+    // При отправке формы не полагаемся только на JS / disabled radio.
+    add_action( 'woocommerce_after_checkout_validation', 'plnt_validate_urgent_delivery_date', 10000, 2 );
+    function plnt_validate_urgent_delivery_date( $data, $errors ) {
+        if ( ! plnt_is_same_day_delivery_blocked() ) {
+            return;
+        }
+        $date = sanitize_text_field( (string) ( $data['delivery_dates'] ?? $_POST['delivery_dates'] ?? '' ) );
+        $today = wp_date( 'd.m', null, new DateTimeZone('Europe/Moscow') );
+        if ( $date === $today ) {
+            $errors->add( 'plnt_urgent_disabled', 'Доставка сегодня недоступна. Выберите другую дату.' );
+        }
+    }
+
     add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 15 );
 
     function plnt_add_delivery_dates() {

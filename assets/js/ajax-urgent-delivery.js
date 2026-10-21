@@ -1,4 +1,8 @@
 const DELIVERY = window.PLNT_Delivery_Data || {};
+const disableUrgentDelivery = DELIVERY.disableUrgentDelivery === true || DELIVERY.disableUrgentDelivery === '1' || DELIVERY.disableUrgentDelivery === 1;
+const disableUrgentLargeDelivery = DELIVERY.disableUrgentLargeDelivery === true || DELIVERY.disableUrgentLargeDelivery === '1' || DELIVERY.disableUrgentLargeDelivery === 1;
+const isLargeDelivery = DELIVERY.isLargeDelivery === true || DELIVERY.isLargeDelivery === '1' || DELIVERY.isLargeDelivery === 1;
+
 let isUrgent;
 let isLate;
 let isHoliday; //скрываем подние интервалы доставки
@@ -17,6 +21,7 @@ let checkedShippingMethod = '';
 let checkedDate = '';
 let checkedInterval = '';
 let today;
+let urgentTariffDate; // после 20:00 срочный тариф действует на завтра
 let isUrgentCourierTariff = DELIVERY.isUrgentCourierTariff == '1';
 let deliveryExpensiveInterval = DELIVERY.deliveryExpensiveInterval
 let isSmallHolidayTariffOn = DELIVERY.isSmallHolidayTariffOn == '1';
@@ -38,6 +43,69 @@ let deliveryIntervalInput = document.querySelectorAll('input[name=additional_del
 let deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
 
 
+function isTodayDeliveryDisabled() {
+  // Самовывоз не ограничиваем
+  if (getCheckedShippingMethod() === DELIVERY.localPickupId) {
+    return false;
+  }
+
+  // Общий запрет срочной доставки
+  if (disableUrgentDelivery) {
+    return true;
+  }
+
+  // Отдельный запрет для крупногабаритных заказов
+  return isLargeDelivery && disableUrgentLargeDelivery;
+}
+
+function selectDefaultDeliveryDate() {
+  const dates = Array.from(deliveryDatesInput);
+  // Даты в PHP формируются по московскому времени.
+  const tomorrow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
+  tomorrow.setDate(tomorrow.getDate() + 1);
+
+  const tomorrowValue =
+    `${String(tomorrow.getDate()).padStart(2, '0')}.` +
+    `${String(tomorrow.getMonth() + 1).padStart(2, '0')}`;
+
+  const preferred = dates.find(input =>
+    input.value === tomorrowValue && !input.disabled
+  );
+
+  const fallback = dates.find(input => !input.disabled);
+
+  const selected = preferred || fallback;
+
+  dates.forEach(input => {
+    input.checked = input === selected;
+  });
+}
+
+function applyUrgentDeliveryRestrictions() {
+  const disabled = isTodayDeliveryDisabled();
+
+  deliveryDatesInput.forEach(input => {
+    if (input.value !== today) return;
+
+    const shouldDisable = disabled || (
+      notWorking.includes(input.value) &&
+      !(notWorkingAllowPickup && getCheckedShippingMethod() == DELIVERY.localPickupId)
+    );
+    input.disabled = shouldDisable;
+
+    const label = Array.from(deliveryDatesLables)
+      .find(el => el.htmlFor === input.id);
+
+    if (label) {
+      label.classList.toggle('d-none', shouldDisable);
+    }
+
+    if (shouldDisable) {
+      input.checked = false;
+    }
+  });
+}
+
 //определяем параметры оформления заказа, влияющие на стоимость доставки и вызываем аякс, отрисовываем поля дат и интервалов доставки
 function getOrderParametrs(event) {
   console.debug(event);
@@ -48,11 +116,15 @@ function getOrderParametrs(event) {
   }
   console.debug('checkedShippingMethod ',checkedShippingMethod);
   if(notWorkingAllowPickup) {disableNotWorkingDays(checkedShippingMethod)}
+  applyUrgentDeliveryRestrictions();
+  if (!getCheckedDate() && !(DELIVERY.isBackorder || DELIVERY.isTreezBackorders)) {
+    selectDefaultDeliveryDate();
+  }
   
   checkedDate = getCheckedDate();
   console.debug('checkedDate ', checkedDate)
   
-  if(checkedDate == today) {
+  if(checkedDate && checkedDate == urgentTariffDate) {
     isUrgent = '1';
   } else {
     isUrgent = '0';
@@ -81,7 +153,7 @@ function getOrderParametrs(event) {
   renderDeliveryDates(checkedShippingMethod);
   renderDeliveryIntervals(checkedShippingMethod);
 
-  if(event.target.className == "shipping_method" || 
+  if(!event || event.target.className == "shipping_method" || 
     event.target.name == "delivery_dates" || 
     event.target.name == "additional_delivery_interval" ||
     notWorking.length > 0 ||  holidays.length > 0)
@@ -132,20 +204,20 @@ function renderDeliveryDates(shippingValue) {
     let priceEl = document.createElement('span');
     info.label.appendChild(priceEl);
       if(shippingValue == DELIVERY.deliveryInMKAD) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(DELIVERY.deliveryCostInMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupInMkad) + Number(thisDayExpensiveMarkup)}₽` : `${Number(DELIVERY.deliveryCostInMkad) + Number(DELIVERY.deliveryMarkupInMkad) + Number(thisDayExpensiveMarkup)}₽` ;
+        priceEl.innerHTML = info.for == `delivery_dates_${urgentTariffDate}` ? `${Number(DELIVERY.deliveryCostInMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupInMkad) + Number(thisDayExpensiveMarkup)}₽` : `${Number(DELIVERY.deliveryCostInMkad) + Number(DELIVERY.deliveryMarkupInMkad) + Number(thisDayExpensiveMarkup)}₽` ;
       }
       if(shippingValue == DELIVERY.deliveryOutMKAD) {
-        priceEl.innerHTML = info.for == `delivery_dates_${today}` ? `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupOutMkad) + Number(thisDayExpensiveMarkup)}₽` : `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryMarkupOutMkad) + Number(thisDayExpensiveMarkup)}₽` ;
+        priceEl.innerHTML = info.for == `delivery_dates_${urgentTariffDate}` ? `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryUrgMarkup) + Number(DELIVERY.deliveryMarkupOutMkad) + Number(thisDayExpensiveMarkup)}₽` : `${Number(DELIVERY.deliveryCostOutMkad) + Number(DELIVERY.deliveryMarkupOutMkad) + Number(thisDayExpensiveMarkup)}₽` ;
       }
 
       //если isUrgentCourierTariff и/или isSmallHolidayTariffOn - все перезатираем и делаем по тарифу КС
       if ((shippingValue == DELIVERY.deliveryInMKAD || shippingValue == DELIVERY.deliveryOutMKAD) && isUrgentCourierTariff) {
-          if (info.for == `delivery_dates_${today}`) {
+          if (info.for == `delivery_dates_${urgentTariffDate}`) {
               priceEl.innerHTML = 'по тарифу КС';
           }
       }
       if ((shippingValue == DELIVERY.deliveryInMKAD || shippingValue == DELIVERY.deliveryOutMKAD) && isSmallHolidayTariffOn) {
-          if (info.for != `delivery_dates_${today}`) {
+          if (info.for != `delivery_dates_${urgentTariffDate}`) {
               priceEl.innerHTML = 'по тарифу КС';
           }
       }
@@ -212,37 +284,35 @@ function ajaxGetUrgent() {
 
 //определяем начальное состояние при загрузке формы
 function setInitalState() {
-  let hour = new Date().getHours();
-
-  if (hour >= 18 && hour <20) { 
-    isUrgent = 0;
-  } else {
-    isUrgent = 1;
-  }
+  const baseDate = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
+  const hour = baseDate.getHours();
 
   isLate = 0;
-  
 
-  const baseDate = new Date();
-  if (hour >= 20) baseDate.setDate(baseDate.getDate() + 1);
+  today = `${String(baseDate.getDate()).padStart(2, '0')}.${String(baseDate.getMonth() + 1).padStart(2, '0')}`;
 
-  today = `${String(baseDate.getDate()).padStart(2,'0')}.${String(baseDate.getUTCMonth()+1).padStart(2,'0')}`;
+  const tariffDate = new Date(baseDate);
+  if (hour >= 20) tariffDate.setDate(tariffDate.getDate() + 1);
+  urgentTariffDate = `${String(tariffDate.getDate()).padStart(2, '0')}.${String(tariffDate.getMonth() + 1).padStart(2, '0')}`;
 
   if(expensiveDays && deliveryExpensiveDayMarkup && expensiveDays.includes(today)) {
     isExpensive = 1
   } else { isExpensive = 0}
 
   console.debug('today ', today);
-  console.debug('this month ', new Date().getUTCMonth() + 1);
+  console.debug('this month ', baseDate.getMonth() + 1);
   console.debug('this day ', new Date().getDate());
  
-  deliveryDatesInput[0].checked = true;
   deliveryIntervalInput[0].checked = true;
- 
 
-  if(notWorking.length > 0) {
-    disableNotWorkingDays()
+  if (notWorking.length > 0) {
+    disableNotWorkingDays();
   }
+
+  applyUrgentDeliveryRestrictions();
+  selectDefaultDeliveryDate();
+
+  isUrgent = getCheckedDate() === urgentTariffDate ? '1' : '0';
 }
 
 //функция собирает исходные значения полей дат и интервалов доставки, чтобы потом пересивовать их
@@ -373,39 +443,33 @@ function hideCheckoutFields(event){
 }
 
 function disableNotWorkingDays (shippingValue) {
-  if(!shippingValue) {shippingValue = getCheckedShippingMethod()}
-  if(notWorkingAllowPickup && shippingValue == DELIVERY.localPickupId) {
-    enableNotWorkingDays()
+  if (!shippingValue) { shippingValue = getCheckedShippingMethod(); }
+  if (notWorkingAllowPickup && shippingValue == DELIVERY.localPickupId) {
+    enableNotWorkingDays();
   } else {
     deliveryDatesInput.forEach(date => {
-      if (notWorking.includes(date.value)) {
-        date.disabled = true;
-        date.checked = false;
-      }
-    })
-  
-    deliveryDatesLables.forEach(date => {
-      if (notWorking.includes(date.textContent)) {
-        date.classList.add('d-none');
-      }
-    })
-  
-    const arr = Array.from(deliveryDatesInput);
-    const firstOk = arr.find(date => !notWorking.includes(date.value));
-    if (firstOk) {
-      firstOk.checked = true;
-    }
+      const unavailable = notWorking.includes(date.value);
+      date.disabled = unavailable;
+      if (unavailable) date.checked = false;
+    });
 
+    deliveryDatesLables.forEach(label => {
+      const input = Array.from(deliveryDatesInput).find(date => date.id == label.htmlFor);
+      label.classList.toggle('d-none', !!input && notWorking.includes(input.value));
+    });
   }
+  applyUrgentDeliveryRestrictions();
+  if (!getCheckedDate()) selectDefaultDeliveryDate();
 }
 
 function enableNotWorkingDays() {
   deliveryDatesLables.forEach(date => {
     date.classList.remove('d-none');
-  })
+  });
   deliveryDatesInput.forEach(date => {
     date.disabled = false;
-  })
+  });
+  applyUrgentDeliveryRestrictions();
 }
 
 if (checkoutForm) {
@@ -417,5 +481,31 @@ if (checkoutForm) {
   document.addEventListener('DOMContentLoaded', getOrderParametrs )
 
   checkoutForm.addEventListener('change', getOrderParametrs);
-  
+
+  // WooCommerce заменяет поля дат при update_checkout.
+  // Повторно получаем элементы и применяем ограничения к новой разметке.
+  jQuery(document.body).on('updated_checkout', function () {
+    deliveryDates = document.querySelector('.delivery_wrap');
+    deliveryDatesInput = document.querySelectorAll('.delivery_dates input');
+    deliveryDatesLables = document.querySelectorAll('.delivery_dates .woocommerce-input-wrapper label');
+    deliveryInterval = document.querySelector('#additional_delivery_interval_field');
+    deliveryIntervalInput = document.querySelectorAll('input[name=additional_delivery_interval]');
+    deliveryIntervalLabels = document.querySelectorAll('#additional_delivery_interval_field .woocommerce-input-wrapper label');
+
+    checkedShippingMethod = getCheckedShippingMethod();
+
+    const previousDate = checkedDate;
+    const oldChoice = Array.from(deliveryDatesInput).find(input => input.value === previousDate);
+
+    if (oldChoice) oldChoice.checked = true;
+
+    applyUrgentDeliveryRestrictions();
+
+    if (!getCheckedDate() && !(DELIVERY.isBackorder || DELIVERY.isTreezBackorders)) {
+      selectDefaultDeliveryDate();
+    }
+
+    checkedDate = getCheckedDate();
+    // Никакого AJAX здесь: предотвращаем цикл пересчётов checkout.
+  });
 }

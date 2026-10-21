@@ -232,7 +232,7 @@ function plnt_get_gift_card_localize_data() {
 }
 
 function plnt_get_delivery_localize_data() {
- global $delivery_inMKAD, $delivery_outMKAD;
+ 	global $delivery_inMKAD, $delivery_outMKAD;
   global $local_pickup, $delivery_free, $delivery_pochta, $delivery_courier, $delivery_long_dist;
 
   $expensive_interval_markup_delivery   = carbon_get_theme_option('expensive_interval_markup_delivery');
@@ -254,6 +254,12 @@ function plnt_get_delivery_localize_data() {
   $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
   $isSmallHolidayCart = WC()->cart->subtotal < 5000;
   $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
+
+	$disable_urgent_delivery = carbon_get_theme_option('disable_urgent_delivery') == '1';
+
+	$disable_urgent_large_delivery = carbon_get_theme_option('disable_urgent_large_delivery') == '1';
+
+	$is_large_delivery = check_if_large_delivery();
 
 	return array(
 		'deliveryInMKAD'        => (string) $delivery_inMKAD,
@@ -280,6 +286,10 @@ function plnt_get_delivery_localize_data() {
     'isTreezBackorders'     => (bool) $isTreezBackorders,
     'isUrgentCourierTariff'     => $isUrgentCourierTariff,
     'isSmallHolidayTariffOn' => $isSmallHolidayTariffOn,
+
+		'disableUrgentDelivery' => $disable_urgent_delivery,
+		'disableUrgentLargeDelivery' => $disable_urgent_large_delivery,
+		'isLargeDelivery' => $is_large_delivery,
 	);
 }
 
