@@ -406,12 +406,24 @@ function hideCheckoutFields(event){
 
   //for delivery dates
   if (deliveryDates) {
-      if (DELIVERY.isBackorder || DELIVERY.isTreezBackorders) {
-          deliveryDates.classList.add('d-none');
-          deliveryDatesInput.forEach((input)=>{
-              input.checked = false;
-          })
-      } 
+    if (
+      DELIVERY.isBackorder ||
+      DELIVERY.isTreezBackorders ||
+      checkedShippingMethod == DELIVERY.deliveryPochtaId
+    ) {
+      deliveryDates.classList.add('d-none');
+
+      deliveryDatesInput.forEach((input) => {
+        input.checked = false;
+      });
+    } else {
+      deliveryDates.classList.remove('d-none');
+
+      // Если дата не выбрана, выбираем доступную
+      if (!getCheckedDate()) {
+        selectDefaultDeliveryDate();
+      }
+    }
   }
 
   //for address 

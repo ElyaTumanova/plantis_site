@@ -238,15 +238,33 @@ Contents
 
     add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_delivery_fields', 25 );
     
-    function plnt_save_delivery_fields( $order_id ){
-    
-        if( ! empty( $_POST[ 'delivery_dates' ] ) ) {
-            update_post_meta( $order_id, 'delivery_dates', sanitize_text_field( $_POST[ 'delivery_dates' ] ) );
+    function plnt_save_delivery_fields($order_id) {
+        global $delivery_pochta;
+
+        $chosen_methods = WC()->session->get('chosen_shipping_methods', array());
+        $shipping_method = $chosen_methods[0] ?? '';
+
+        // Для Почты России дата и интервал доставки не используются.
+        if ($shipping_method === $delivery_pochta) {
+            delete_post_meta($order_id, 'delivery_dates');
+            delete_post_meta($order_id, 'additional_delivery_interval');
+            return;
         }
 
+        if (!empty($_POST['delivery_dates'])) {
+            update_post_meta(
+                $order_id,
+                'delivery_dates',
+                sanitize_text_field(wp_unslash($_POST['delivery_dates']))
+            );
+        }
 
-        if( ! empty( $_POST[ 'additional_delivery_interval' ] ) ) {
-            update_post_meta( $order_id, 'additional_delivery_interval', $_POST[ 'additional_delivery_interval' ] );
+        if (!empty($_POST['additional_delivery_interval'])) {
+            update_post_meta(
+                $order_id,
+                'additional_delivery_interval',
+                sanitize_text_field(wp_unslash($_POST['additional_delivery_interval']))
+            );
         }
     }
 
@@ -322,7 +340,16 @@ Contents
         // if( is_order_received_page() ) {
         // 	return $rows;
         // }
-    
+
+        global $delivery_pochta;
+
+        foreach ($order->get_shipping_methods() as $shipping_item) {
+            if ($shipping_item->get_method_id() === 'flat_rate'
+                && $shipping_item->get_instance_id() === 4) {
+                return $rows;
+            }
+        }
+            
         $rows[ 'delivery_dates' ] = array(
             'label' => 'Дата доставки (самовывоза)',
             'value' => get_post_meta( $order->get_id(), 'delivery_dates', true )
