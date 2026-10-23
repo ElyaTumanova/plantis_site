@@ -1,8 +1,8 @@
 <?php
 /**
- * Plantis Signals — импорт истории заказов и ночное обновление через WP-Cron.
+ * Plantis Signals — импорт истории заказов и запуск расчёта серверным cron.
  * Длинная работа выполняется пачками в Action Scheduler (часть WooCommerce).
- * Системный cron настраивается отдельно на рабочем сайте.
+ * Только расписание ночного запуска задаётся в ISPmanager.
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -10,30 +10,43 @@ defined( 'ABSPATH' ) || exit;
 const PLNT_SIGNALS_WORKER_HOOK = 'plnt_signals_process_order_batch';
 const PLNT_SIGNALS_NIGHT_HOOK  = 'plnt_signals_nightly_update';
 
-function plnt_signals_next_night_timestamp() {
-    $zone  = wp_timezone();
-    $now   = new DateTimeImmutable( 'now', $zone );
-    $night = $now->setTime( 3, 0, 0 );
-    if ( $night <= $now ) {
-        $night = $night->modify( '+1 day' );
-    }
-    return $night->getTimestamp();
-}
-
-/** WP-Cron: одноразовое событие, пересоздаётся на следующие 03:00 по времени WP. */
-function plnt_signals_schedule_night() {
-    if ( ! wp_next_scheduled( PLNT_SIGNALS_NIGHT_HOOK ) ) {
-        wp_schedule_single_event( plnt_signals_next_night_timestamp(), PLNT_SIGNALS_NIGHT_HOOK );
-    }
-}
-
-// Регистрируем расписание при обычной загрузке WordPress, без входа в админку.
-add_action( 'init', 'plnt_signals_schedule_night', 20 );
-
 /**
- * Первый вход в админку после копирования файлов: создаём таблицы,
- * назначаем ночной cron и ставим одноразовый исторический импорт в очередь.
+ * При переходе на серверный cron однократно удаляем старые
+ * расписания ТОЛЬКО трёх наших ночных процессов.
+ *
+ * Не затрагиваем системный WP-Cron, Action Scheduler, показатели
+ * экспозиции, таблицы статистики и ручные обработчики.
  */
+function plnt_signals_clear_old_nightly_schedules() {
+    $version = 'server-cron-v1';
+    if ( get_option( 'plnt_server_cron_migration_version', '' ) === $version ) {
+        return;
+    }
+
+    $hooks = array(
+        'plnt_daily_expo_days_update_hook',
+        PLNT_SIGNALS_NIGHT_HOOK,
+        'plnt_generate_feed_daily',
+        'plnt_generate_yml_daily', // Старый хук XML (если остался в базе).
+    );
+
+    foreach ( $hooks as $hook ) {
+        $result = wp_clear_scheduled_hook( $hook, array(), true );
+        if ( is_wp_error( $result ) || false === $result ) {
+            if ( function_exists( 'wc_get_logger' ) ) {
+                wc_get_logger()->error(
+                    'Не удалось очистить устаревшее расписание: ' . $hook,
+                    array( 'source' => 'plantis-signals' )
+                );
+            }
+            return; // Повторим на следующей загрузке WordPress.
+        }
+    }
+
+    update_option( 'plnt_server_cron_migration_version', $version, false );
+}
+add_action( 'init', 'plnt_signals_clear_old_nightly_schedules', 30 );
+
 add_action( 'admin_init', function () {
     if ( ! class_exists( 'WooCommerce' ) || ! current_user_can( 'manage_woocommerce' ) ) {
         return;
@@ -42,7 +55,6 @@ add_action( 'admin_init', function () {
         return;
     }
 
-    plnt_signals_schedule_night();
     $state = get_option( 'plnt_signals_backfill_state', array() );
     if ( ! is_array( $state ) || empty( $state['status'] ) ) {
         plnt_signals_start_backfill( false );
@@ -52,10 +64,8 @@ add_action( 'admin_init', function () {
     }
 }, 20 );
 
-/** Даже без посещения админки следующее ежедневное событие уже есть в расписании. */
+/** Ночной обработчик вызывается серверным cron; расписания WP-Cron нет. */
 add_action( PLNT_SIGNALS_NIGHT_HOOK, function () {
-    // Пересоздаём НОЧНОЕ задание прежде, чем запустить обработку.
-    plnt_signals_schedule_night();
 
     if ( ! plnt_signals_install_tables() ) {
         return;

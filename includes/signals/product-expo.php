@@ -139,62 +139,12 @@ add_filter('woocommerce_product_export_product_column_plnt_expo_sales_reset', fu
 }, 10, 2);
 
 /* =========================================================
- *  Daily expo cron — 01:30 in the WordPress site timezone.
+ *  Экспозиция запускается только серверным cron через ISPmanager.
  *
- *  A single event is scheduled each day to preserve the local
- *  wall-clock time even across timezone/DST changes.
- *
- *  The first migration may schedule a catch-up at 23:15 if
- *  today's counters have not yet run. This prevents losing a day
- *  when replacing an old daytime recurring WP-Cron event.
+ *  Хук plnt_daily_expo_days_update_hook оставлен для запуска
+ *  обработчиков и исходной ссылки /wp-admin/?plnt_run_expo=1.
+ *  Расписание WP-Cron здесь не регистрируется.
  * ========================================================= */
-
-function plnt_expo_next_night_timestamp(): int {
-    $now  = new DateTimeImmutable('now', wp_timezone());
-    $next = $now->setTime(1, 30);
-
-    if ($next <= $now) {
-        $next = $next->modify('+1 day');
-    }
-
-    return $next->getTimestamp();
-}
-
-function plnt_schedule_daily_expo_counter_cron(): void {
-    $hook    = 'plnt_daily_expo_days_update_hook';
-    $version = '01-30-single-v1';
-
-    // One-time transition: remove the OLD daily event, not today's stats.
-    if (get_option('plnt_expo_cron_schedule_version', '') !== $version) {
-        wp_clear_scheduled_hook($hook);
-        update_option('plnt_expo_cron_schedule_version', $version, false);
-
-        // If today's counters have not run yet and 01:30 has passed,
-        // do the first run tonight (23:15), then continue at 01:30.
-        $now          = new DateTimeImmutable('now', wp_timezone());
-        $today        = $now->format('Y-m-d');
-        $night_passed = $now >= $now->setTime(1, 30);
-        $already_done = get_option('plnt_expo_days_last_run', '') === $today;
-
-        if ($night_passed && !$already_done) {
-            $catch_up = $now->setTime(23, 15);
-            $when     = $catch_up > $now ? $catch_up->getTimestamp() : time() + 30;
-            wp_schedule_single_event($when, $hook);
-            plnt_log_info('expo: initial nocturnal catch-up scheduled', ['at' => wp_date('c', $when)]);
-            return;
-        }
-    }
-
-    if (!wp_next_scheduled($hook)) {
-        $when = plnt_expo_next_night_timestamp();
-        wp_schedule_single_event($when, $hook);
-    }
-}
-add_action('init', 'plnt_schedule_daily_expo_counter_cron');
-
-// wp-cron.php removes a single event BEFORE calling its callbacks.
-// Reschedule after the counters (priority 10 / 20) have completed.
-add_action('plnt_daily_expo_days_update_hook', 'plnt_schedule_daily_expo_counter_cron', 99);
 
 /* =========================
  *  Expo qualification rule

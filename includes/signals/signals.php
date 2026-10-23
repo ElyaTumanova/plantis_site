@@ -167,14 +167,12 @@ function plnt_signals_render_import_status() {
     $import = get_option( 'plnt_signals_backfill_state', array() );
     $daily  = get_option( 'plnt_signals_daily_state', array() );
     $status = is_array( $import ) ? ( $import['status'] ?? '' ) : '';
-    $night  = wp_next_scheduled( PLNT_SIGNALS_NIGHT_HOOK );
-    $next_run = $night ? wp_date( 'd.m.Y H:i', $night, wp_timezone() ) : 'не назначен';
     $last = get_option( 'plnt_signals_last_success', '' );
     $last_run = $last ? get_date_from_gmt( $last, 'd.m.Y H:i' ) : 'пока нет';
     ?>
     <div class="plnt-signals-job-status">
         <span>Последний пересчёт: <strong><?php echo esc_html( $last_run ); ?></strong></span>
-        <span>Следующий ночной запуск: <strong><?php echo esc_html( $next_run ); ?></strong></span>
+        <span>Плановое время (ISPmanager): <strong>03:00 ежедневно</strong></span>
         <?php if ( 'running' === $status ) : ?>
             <span>Первоначальный сбор: <strong>обработано <?php echo esc_html( number_format_i18n( (int) ( $import['processed'] ?? 0 ) ) ); ?> заказов</strong></span>
         <?php elseif ( 'error' === $status ) : ?>
