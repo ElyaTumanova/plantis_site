@@ -1,0 +1,273 @@
+/* ========================================================================== */
+/* Plantis — «Сигналы»: таблица и фильтры */
+/* ========================================================================== */
+
+.plnt-signals-wrap .description {
+    margin: 8px 0 18px;
+}
+
+.plnt-signals-filters {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin: 18px 0;
+}
+
+.plnt-signals-filters input[type="search"] {
+    width: 265px;
+    max-width: 100%;
+}
+
+.plnt-signals-filters select {
+    max-width: 250px;
+    min-width: 170px;
+}
+
+.plnt-signals-total {
+    margin-left: auto;
+    color: #646970;
+}
+
+@media (max-width: 782px) {
+    .plnt-signals-total {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+.plnt-signals-table-scroll {
+    overflow-x: auto;
+}
+
+.plnt-signals-table {
+    min-width: 1450px;
+    table-layout: fixed;
+}
+
+.plnt-signals-table .plnt-signals-heading-product {
+    width: 24%;
+}
+
+.plnt-signals-table .plnt-signals-heading-prices {
+    width: 14%;
+}
+
+.plnt-signals-table .plnt-signals-heading-stock {
+    width: 7%;
+}
+
+.plnt-signals-table .plnt-signals-heading-number {
+    width: 8%;
+}
+
+.plnt-signals-table th {
+    white-space: normal;
+    vertical-align: middle;
+}
+
+.plnt-signals-table > tbody > tr.plnt-signals-row > td {
+    padding: 13px 12px;
+    vertical-align: middle;
+}
+
+.plnt-signals-product {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.plnt-signals-photo {
+    flex: 0 0 62px;
+    width: 62px;
+}
+
+.plnt-signals-photo img {
+    display: block;
+    width: 62px;
+    height: 62px;
+    object-fit: contain;
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 5px;
+}
+
+.plnt-signals-details {
+    min-width: 0;
+}
+
+.plnt-signals-product-title {
+    display: block;
+    font-weight: 600;
+    line-height: 1.35;
+    text-decoration: none;
+}
+
+.plnt-signals-sku {
+    margin: 5px 0 8px;
+    color: #646970;
+    font-size: 12px;
+}
+
+.plnt-signals-price-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 4px 0;
+}
+
+.plnt-signals-price-line > span {
+    color: #646970;
+}
+
+.plnt-signals-sale-price {
+    color: #177245;
+}
+
+.plnt-signals-muted {
+    color: #646970;
+    font-size: 12px;
+}
+
+.plnt-signals-cell-number {
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+#plnt-signals-notice .notice {
+    margin: 16px 0;
+}
+
+.plnt-signals-wrap .tablenav {
+    margin-top: 12px;
+}
+
+
+.plnt-signals-table .plnt-signals-heading-last-sale {
+    width: 11%;
+}
+
+.plnt-signals-table .plnt-signals-heading-average {
+    width: 12%;
+}
+
+.plnt-signals-job-status {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    padding: 12px 14px;
+    margin: 14px 0 18px;
+    border: 1px solid #c3c4c7;
+    background: #fff;
+}
+
+.plnt-signals-job-status > span {
+    font-size: 13px;
+    color: #50575e;
+}
+
+.plnt-signals-job-status form {
+    margin: 0;
+}
+
+.plnt-signals-job-status form:first-of-type {
+    margin-left: auto;
+}
+
+.plnt-signals-job-error {
+    color: #b32d2e !important;
+}
+
+/* ========================================================================== */
+/* Редактор «Свойства»: сокращённая форма WooCommerce */
+/* ========================================================================== */
+
+.plnt-signals-table td.plnt-signals-editor-cell {
+    padding: 20px;
+    background: #f5f6f7;
+}
+
+.plnt-signals-editor-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 19px;
+}
+
+.plnt-signals-editor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px 22px;
+}
+
+@media (max-width: 1100px) {
+    .plnt-signals-editor-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 782px) {
+    .plnt-signals-editor-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.plnt-signals-editor-grid > label:not(.plnt-signals-checkbox) {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.plnt-signals-editor-grid > label:not(.plnt-signals-checkbox) > span {
+    color: #50575e;
+    font-weight: 500;
+}
+
+.plnt-signals-editor-grid input:not([type="checkbox"]),
+.plnt-signals-editor-grid select {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.plnt-signals-editor-grid input:disabled {
+    opacity: 0.6;
+}
+
+.plnt-signals-editor-grid .plnt-signals-checkbox {
+    display: flex;
+    align-items: center;
+    align-self: end;
+    min-height: 32px;
+    gap: 8px;
+}
+
+.plnt-signals-editor-grid .plnt-signals-checkbox input {
+    margin: 0;
+}
+
+.plnt-signals-editor-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid #dcdcde;
+}
+
+.plnt-signals-editor-actions .spinner {
+    float: none;
+    margin: 0 4px;
+}
+
+.plnt-signals-properties.is-saving .spinner {
+    visibility: visible;
+}
+
+.plnt-signals-error {
+    color: #b32d2e;
+}

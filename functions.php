@@ -37,10 +37,10 @@ require get_template_directory() . '/includes/admin-fields.php';
 /** Add functions for products change log */
 require get_template_directory() . '/includes/product-change-logs.php';
 /** Add functions for products expo metrics */
-require get_template_directory() . '/includes/product-expo.php';
+require get_template_directory() . '/includes/signals/product-expo.php';
+require get_template_directory() . '/includes/signals/signals.php';
 
-/** Add images for tags */
-require get_template_directory() . '/includes/tags-image.php';
+
 /** Add synonims for search */
 require get_template_directory() . '/includes/search-synonims.php';
 
@@ -78,6 +78,8 @@ require get_template_directory() . '/includes/front/icons.php';
 require get_template_directory() . '/includes/front/template-functions.php';
 
 require get_template_directory() . '/includes/admin/cat-images.php';
+require get_template_directory() . '/includes/admin/tags-image.php';
+require get_template_directory() . '/includes/admin/product-sale-tag.php';
 
 
 

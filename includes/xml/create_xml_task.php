@@ -60,17 +60,39 @@ function plnt_generate_feed_callback() {
 }
 
 /**
- * 2) Планируем ежедневный запуск (один раз в день, начиная "сейчас + 60 сек")
+ * 2) Генерация фидов ежедневно в 04:30 по часовому поясу WP.
+ * Используем одноразовое событие, чтобы сохранять локальное время
+ * при смене часового пояса и переходах на летнее время.
  */
-add_action('init', function () {
-    wp_clear_scheduled_hook('plnt_generate_yml_daily');
+function plnt_feed_next_night_timestamp(): int {
+    $now  = new DateTimeImmutable('now', wp_timezone());
+    $next = $now->setTime(4, 30);
+    if ($next <= $now) {
+        $next = $next->modify('+1 day');
+    }
+    return $next->getTimestamp();
+}
+
+function plnt_schedule_daily_feed_cron(): void {
     $hook = 'plnt_generate_feed_daily';
+    $version = '04-30-single-v1';
+
+    if (get_option('plnt_feed_cron_schedule_version', '') !== $version) {
+        // Однократная миграция со старого запуска «через 60 секунд + daily».
+        wp_clear_scheduled_hook($hook);
+        wp_clear_scheduled_hook('plnt_generate_yml_daily');
+        update_option('plnt_feed_cron_schedule_version', $version, false);
+    }
 
     if (!wp_next_scheduled($hook)) {
-        // первый запуск через минуту от текущего времени
-        wp_schedule_event(time() + 60, 'daily', $hook);
+        wp_schedule_single_event(plnt_feed_next_night_timestamp(), $hook);
     }
-});
+}
+add_action('init', 'plnt_schedule_daily_feed_cron');
+
+// После штатной генерации назначаем следующий ночной запуск.
+// Функция при ручном do_action() не создаёт дубли уже существующего задания.
+add_action('plnt_generate_feed_daily', 'plnt_schedule_daily_feed_cron', 20);
 
 /**
  * 3) Снимаем задачу при смене темы (если код живёт в теме)
@@ -119,7 +141,7 @@ add_action('wp_ajax_plnt_feed_daily_status', function () {
 });
 
 /**
- * 5) AJAX: "запланировать сейчас" — как твоя кнопка schedule_now
+ * Ручная генерация XML-фидов.
  *
  * /wp-admin/admin-ajax.php?action=plnt_feed_daily_schedule_now
  */
@@ -130,25 +152,18 @@ add_action('wp_ajax_plnt_feed_daily_schedule_now', function () {
 
     $hook = 'plnt_generate_feed_daily';
 
-    // Если нужно всегда пересоздавать — можно перед этим вызвать wp_clear_scheduled_hook($hook)
-    if (!wp_next_scheduled($hook)) {
-        wp_schedule_event(time() + 60, 'daily', $hook);
-    }
-
-    // Запускаем СЕЙЧАС в этом же запросе
+    // Запускаем генерацию сразу.
     do_action($hook);
-
 
     $next_ts = wp_next_scheduled($hook);
 
     wp_send_json_success([
         'hook'     => $hook,
         'next_run' => $next_ts ? [
-            'timestamp' => (int)$next_ts,
-            'local'     => wp_date('Y-m-d H:i:s', (int)$next_ts),
-            'relative'  => human_time_diff(time(), (int)$next_ts) . ' from now',
+            'timestamp' => (int) $next_ts,
+            'local'     => wp_date('Y-m-d H:i:s', (int) $next_ts),
+            'relative'  => human_time_diff(time(), (int) $next_ts) . ' from now',
         ] : null,
     ]);
 });
-
 
