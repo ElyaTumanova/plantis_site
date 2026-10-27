@@ -206,7 +206,18 @@ function plnt_signals_sort_posts_clauses( $clauses, $query ) {
 
     $sort_by = $query->get( 'plnt_signals_sort' );
     $direction = $query->get( 'plnt_signals_direction' ) === 'desc' ? 'DESC' : 'ASC';
+    $recommendation_filter = $query->get( 'plnt_signals_recommendation_filter' );
     $sort_column = '';
+
+    // Единое подключение статистики для сортировки и фильтра рекомендаций.
+    if (
+        in_array( $sort_by, array( 'last_sale', 'avg_price', 'recommendation' ), true ) ||
+        in_array( $recommendation_filter, array( 'add', 'remove', 'active', 'none' ), true )
+    ) {
+        $stats_table = plnt_signals_stats_table();
+        $clauses['join'] .= " LEFT JOIN {$stats_table} AS plnt_sort_stats
+            ON plnt_sort_stats.product_id = {$wpdb->posts}.ID";
+    }
 
     if ( in_array( $sort_by, array( 'price', 'stock' ), true ) ) {
         $lookup_table = $wpdb->prefix . 'wc_product_meta_lookup';
@@ -240,16 +251,19 @@ function plnt_signals_sort_posts_clauses( $clauses, $query ) {
         $sort_column = 'plnt_sort_expo.value';
 
     } elseif ( in_array( $sort_by, array( 'last_sale', 'avg_price', 'recommendation' ), true ) ) {
-        $stats_table = $wpdb->prefix . 'plnt_signals_stats';
-
-        $clauses['join'] .= " LEFT JOIN {$stats_table} AS plnt_sort_stats
-            ON plnt_sort_stats.product_id = {$wpdb->posts}.ID";
-
         $sort_column = 'last_sale' === $sort_by
             ? 'plnt_sort_stats.last_sale_date_gmt'
             : ( 'recommendation' === $sort_by
                 ? 'plnt_sort_stats.recommendation_priority'
                 : 'plnt_sort_stats.avg_sale_price_6m' );
+    }
+
+    // Фильтруем всю выборку до применения LIMIT и пагинации.
+    if ( in_array( $recommendation_filter, array( 'add', 'remove', 'active', 'none' ), true ) ) {
+        $clauses['where'] .= $wpdb->prepare(
+            " AND COALESCE(plnt_sort_stats.recommendation_type, 'none') = %s",
+            $recommendation_filter
+        );
     }
 
     if ( $sort_column ) {
@@ -413,6 +427,12 @@ function plnt_signals_render_page() {
         $stock_status = '';
     }
 
+    $recommendation_status = isset( $_GET['recommendation_filter'] ) && is_string( $_GET['recommendation_filter'] )
+        ? sanitize_key( wp_unslash( $_GET['recommendation_filter'] ) ) : '';
+    if ( ! in_array( $recommendation_status, array( '', 'add', 'remove', 'active', 'none' ), true ) ) {
+        $recommendation_status = '';
+    }
+
     // Фильтровать можно только по корневой категории и её потомкам.
     if ( $category && ! in_array( $category, $root_ids, true ) ) {
         $category = 0;
@@ -457,6 +477,7 @@ function plnt_signals_render_page() {
         'order'                  => strtoupper( $sort_direction ),
         'plnt_signals_sort'      => $sort_by,
         'plnt_signals_direction' => $sort_direction,
+        'plnt_signals_recommendation_filter' => $recommendation_status,
         'ignore_sticky_posts' => true,
         'tax_query'           => $tax_query,
     );
@@ -469,13 +490,13 @@ function plnt_signals_render_page() {
             ),
         );
     }
-    if ( 'title' !== $sort_by ) {
+    if ( 'title' !== $sort_by || '' !== $recommendation_status ) {
         add_filter( 'posts_clauses', 'plnt_signals_sort_posts_clauses', 10, 2 );
     }
 
     $query = new WP_Query( $query_args );
 
-    if ( 'title' !== $sort_by ) {
+    if ( 'title' !== $sort_by || '' !== $recommendation_status ) {
         remove_filter( 'posts_clauses', 'plnt_signals_sort_posts_clauses', 10 );
     }
     $stats_by_id = plnt_signals_get_stats_for_ids( wp_list_pluck( $query->posts, 'ID' ) );
@@ -500,10 +521,11 @@ function plnt_signals_render_page() {
         'product_cat_filter'  => $category,
         'product_tag_filter'  => $tag,
         'stock_status_filter' => $stock_status,
+        'recommendation_filter' => $recommendation_status,
     );
 
     $base_url  = admin_url( 'admin.php?page=plantis-signals' );
-    $has_filter = '' !== $search || $category || $tag || $stock_status;
+    $has_filter = '' !== $search || $category || $tag || $stock_status || $recommendation_status;
     ?>
     <div class="wrap plnt-signals-wrap">
         <h1 class="wp-heading-inline">Сигналы</h1>
@@ -546,6 +568,15 @@ function plnt_signals_render_page() {
                 <option value="instock" <?php selected( $stock_status, 'instock' ); ?>>В наличии</option>
                 <option value="outofstock" <?php selected( $stock_status, 'outofstock' ); ?>>Нет в наличии</option>
                 <option value="onbackorder" <?php selected( $stock_status, 'onbackorder' ); ?>>Предзаказ</option>
+            </select>
+
+            <label class="screen-reader-text" for="plnt-signals-recommendation-filter">Рекомендация</label>
+            <select id="plnt-signals-recommendation-filter" name="recommendation_filter">
+                <option value="">Все рекомендации</option>
+                <option value="add" <?php selected( $recommendation_status, 'add' ); ?>>Добавить скидку</option>
+                <option value="remove" <?php selected( $recommendation_status, 'remove' ); ?>>Снять скидку</option>
+                <option value="active" <?php selected( $recommendation_status, 'active' ); ?>>Скидка действует</option>
+                <option value="none" <?php selected( $recommendation_status, 'none' ); ?>>Без изменений</option>
             </select>
 
             <button type="submit" class="button button-primary">Фильтровать</button>
@@ -641,6 +672,7 @@ function plnt_signals_render_page() {
                 'product_cat_filter' => $category,
                 'product_tag_filter' => $tag,
                 'stock_status_filter' => $stock_status,
+                'recommendation_filter' => $recommendation_status,
             ), admin_url( 'admin.php' ) );
             echo '<div class="tablenav bottom"><div class="tablenav-pages">';
             echo wp_kses_post( paginate_links( array(
