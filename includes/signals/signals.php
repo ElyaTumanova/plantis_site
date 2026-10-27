@@ -159,6 +159,127 @@ function plnt_signals_product_row( WC_Product $product, $stats = null ) {
     return ob_get_clean();
 }
 
+/**
+ * Сортировка товаров на уровне SQL до пагинации.
+ */
+function plnt_signals_sort_posts_clauses( $clauses, $query ) {
+    global $wpdb;
+
+    $sort_by = $query->get( 'plnt_signals_sort' );
+    $direction = $query->get( 'plnt_signals_direction' ) === 'desc' ? 'DESC' : 'ASC';
+    $sort_column = '';
+
+    if ( in_array( $sort_by, array( 'price', 'stock' ), true ) ) {
+        $lookup_table = $wpdb->prefix . 'wc_product_meta_lookup';
+
+        $clauses['join'] .= " LEFT JOIN {$lookup_table} AS plnt_sort_lookup
+            ON plnt_sort_lookup.product_id = {$wpdb->posts}.ID";
+
+        $sort_column = $sort_by === 'price'
+            ? 'plnt_sort_lookup.min_price'
+            : 'plnt_sort_lookup.stock_quantity';
+
+    } elseif ( in_array( $sort_by, array( 'days_reset', 'sales_reset', 'days_total', 'sales_total' ), true ) ) {
+        $meta_keys = array(
+            'days_reset'  => '_plnt_expo_days_reset',
+            'sales_reset' => '_plnt_expo_sales_reset',
+            'days_total'  => '_plnt_expo_days_total',
+            'sales_total' => '_plnt_expo_sales_total',
+        );
+
+        $clauses['join'] .= $wpdb->prepare(
+            " LEFT JOIN (
+                SELECT post_id, MAX(CAST(meta_value AS UNSIGNED)) AS value
+                FROM {$wpdb->postmeta}
+                WHERE meta_key = %s AND meta_value <> ''
+                GROUP BY post_id
+            ) AS plnt_sort_expo
+            ON plnt_sort_expo.post_id = {$wpdb->posts}.ID",
+            $meta_keys[ $sort_by ]
+        );
+
+        $sort_column = 'plnt_sort_expo.value';
+
+    } elseif ( in_array( $sort_by, array( 'last_sale', 'avg_price' ), true ) ) {
+        $stats_table = $wpdb->prefix . 'plnt_signals_stats';
+
+        $clauses['join'] .= " LEFT JOIN {$stats_table} AS plnt_sort_stats
+            ON plnt_sort_stats.product_id = {$wpdb->posts}.ID";
+
+        $sort_column = $sort_by === 'last_sale'
+            ? 'plnt_sort_stats.last_sale_date_gmt'
+            : 'plnt_sort_stats.avg_sale_price_6m';
+    }
+
+    if ( $sort_column ) {
+        $clauses['orderby'] = "({$sort_column} IS NULL) ASC,
+            {$sort_column} {$direction},
+            {$wpdb->posts}.post_title ASC,
+            {$wpdb->posts}.ID ASC";
+    }
+
+    return $clauses;
+}
+
+/**
+ * Заголовок таблицы с сортировкой.
+ */
+function plnt_signals_sort_heading( $key, $label, $class, $current_sort, $current_direction, $url_args, $hint = '' ) {
+    $active = $current_sort === $key;
+
+    $first_direction = 'title' === $key ? 'asc' : 'desc';
+
+    $next_direction = $active
+        ? ( 'asc' === $current_direction ? 'desc' : 'asc' )
+        : $first_direction;
+
+    $classes = 'manage-column ' . $class . ' ' . (
+        $active
+            ? 'sorted ' . $current_direction
+            : 'sortable ' . $first_direction
+    );
+
+    $sort_url = add_query_arg(
+        array_merge(
+            $url_args,
+            array(
+                'orderby' => $key,
+                'order'   => $next_direction,
+            )
+        ),
+        admin_url( 'admin.php' )
+    );
+
+    $sort_label = 'asc' === $next_direction
+        ? 'по возрастанию'
+        : 'по убыванию';
+    ?>
+
+    <th
+        scope="col"
+        class="<?php echo esc_attr( $classes ); ?>"
+        <?php if ( $active ) : ?>
+            aria-sort="<?php echo 'asc' === $current_direction ? 'ascending' : 'descending'; ?>"
+        <?php endif; ?>
+        <?php if ( $hint ) : ?>
+            title="<?php echo esc_attr( $hint ); ?>"
+        <?php endif; ?>
+    >
+        <a
+            href="<?php echo esc_url( $sort_url ); ?>"
+            aria-label="<?php echo esc_attr( 'Сортировать «' . $label . '» ' . $sort_label ); ?>"
+        >
+            <span><?php echo esc_html( $label ); ?></span>
+            <span class="sorting-indicators" aria-hidden="true">
+                <span class="sorting-indicator asc"></span>
+                <span class="sorting-indicator desc"></span>
+            </span>
+        </a>
+    </th>
+
+    <?php
+}
+
 /** Состояние фонового импорта и расчётов, без чтения истории заказов. */
 function plnt_signals_render_import_status() {
     if ( ! current_user_can( 'manage_woocommerce' ) ) {
@@ -215,6 +336,33 @@ function plnt_signals_render_page() {
     $search   = isset( $_GET['s'] ) && is_string( $_GET['s'] )
         ? sanitize_text_field( wp_unslash( $_GET['s'] ) ) : '';
     $page     = isset( $_GET['paged'] ) ? max( 1, absint( $_GET['paged'] ) ) : 1;
+    $sort_keys = array(
+        'title',
+        'price',
+        'stock',
+        'days_reset',
+        'sales_reset',
+        'days_total',
+        'sales_total',
+        'last_sale',
+        'avg_price',
+    );
+
+    $sort_by = isset( $_GET['orderby'] ) && is_string( $_GET['orderby'] )
+        ? sanitize_key( wp_unslash( $_GET['orderby'] ) )
+        : 'title';
+
+    if ( ! in_array( $sort_by, $sort_keys, true ) ) {
+        $sort_by = 'title';
+    }
+
+    $sort_direction = isset( $_GET['order'] ) && is_string( $_GET['order'] )
+        ? strtolower( sanitize_key( wp_unslash( $_GET['order'] ) ) )
+        : 'asc';
+
+    if ( ! in_array( $sort_direction, array( 'asc', 'desc' ), true ) ) {
+        $sort_direction = 'asc';
+    }
     $category = isset( $_GET['product_cat_filter'] ) ? absint( $_GET['product_cat_filter'] ) : 0;
     $tag      = isset( $_GET['product_tag_filter'] ) ? absint( $_GET['product_tag_filter'] ) : 0;
     $stock_status = isset( $_GET['stock_status_filter'] ) && is_string( $_GET['stock_status_filter'] )
@@ -263,8 +411,10 @@ function plnt_signals_render_page() {
         'posts_per_page'      => 30,
         'paged'               => $page,
         's'                   => $search,
-        'orderby'             => 'title',
-        'order'               => 'ASC',
+        'orderby'                => 'title',
+        'order'                  => strtoupper( $sort_direction ),
+        'plnt_signals_sort'      => $sort_by,
+        'plnt_signals_direction' => $sort_direction,
         'ignore_sticky_posts' => true,
         'tax_query'           => $tax_query,
     );
@@ -277,7 +427,15 @@ function plnt_signals_render_page() {
             ),
         );
     }
+    if ( 'title' !== $sort_by ) {
+        add_filter( 'posts_clauses', 'plnt_signals_sort_posts_clauses', 10, 2 );
+    }
+
     $query = new WP_Query( $query_args );
+
+    if ( 'title' !== $sort_by ) {
+        remove_filter( 'posts_clauses', 'plnt_signals_sort_posts_clauses', 10 );
+    }
     $stats_by_id = plnt_signals_get_stats_for_ids( wp_list_pluck( $query->posts, 'ID' ) );
 
     $categories = get_terms( array(
@@ -294,6 +452,14 @@ function plnt_signals_render_page() {
         'order'      => 'ASC',
     ) );
 
+    $sort_url_args = array(
+        'page'                => 'plantis-signals',
+        's'                   => $search,
+        'product_cat_filter'  => $category,
+        'product_tag_filter'  => $tag,
+        'stock_status_filter' => $stock_status,
+    );
+
     $base_url  = admin_url( 'admin.php?page=plantis-signals' );
     $has_filter = '' !== $search || $category || $tag || $stock_status;
     ?>
@@ -304,6 +470,8 @@ function plnt_signals_render_page() {
 
         <form class="plnt-signals-filters" method="get" action="<?php echo esc_url( admin_url( 'admin.php' ) ); ?>">
             <input type="hidden" name="page" value="plantis-signals">
+            <input type="hidden" name="orderby" value="<?php echo esc_attr( $sort_by ); ?>">
+            <input type="hidden" name="order" value="<?php echo esc_attr( $sort_direction ); ?>">
             <label class="screen-reader-text" for="plnt-signals-search">Поиск товаров</label>
             <input type="search" id="plnt-signals-search" name="s" value="<?php echo esc_attr( $search ); ?>" placeholder="Название товара">
 
@@ -350,15 +518,53 @@ function plnt_signals_render_page() {
             <table class="wp-list-table widefat fixed striped plnt-signals-table">
                 <thead>
                     <tr>
-                        <th scope="col" class="plnt-signals-heading-product">Товар</th>
-                        <th scope="col" class="plnt-signals-heading-prices">Цены</th>
-                        <th scope="col" class="plnt-signals-heading-stock">Запас</th>
-                        <th scope="col" class="plnt-signals-heading-number" title="Дней экспозиции после последнего обнуления">Дней с обнуления</th>
-                        <th scope="col" class="plnt-signals-heading-number" title="Проданных единиц после последнего обнуления">Продаж с обнуления</th>
-                        <th scope="col" class="plnt-signals-heading-number" title="Дней экспозиции за всё время">Дней всего</th>
-                        <th scope="col" class="plnt-signals-heading-number" title="Проданных единиц за всё время">Продаж всего</th>
-                        <th scope="col" class="plnt-signals-heading-last-sale">Последняя продажа</th>
-                        <th scope="col" class="plnt-signals-heading-average">Средняя цена за 6 мес.</th>
+                        <?php
+                        plnt_signals_sort_heading(
+                            'title', 'Товар', 'plnt-signals-heading-product',
+                            $sort_by, $sort_direction, $sort_url_args
+                        );
+
+                        plnt_signals_sort_heading(
+                            'price', 'Цены', 'plnt-signals-heading-prices',
+                            $sort_by, $sort_direction, $sort_url_args,
+                            'Сортировка по текущей цене продажи WooCommerce'
+                        );
+
+                        plnt_signals_sort_heading(
+                            'stock', 'Запас', 'plnt-signals-heading-stock',
+                            $sort_by, $sort_direction, $sort_url_args
+                        );
+
+                        plnt_signals_sort_heading(
+                            'days_reset', 'Дней с обнуления', 'plnt-signals-heading-number',
+                            $sort_by, $sort_direction, $sort_url_args
+                        );
+
+                        plnt_signals_sort_heading(
+                            'sales_reset', 'Продаж с обнуления', 'plnt-signals-heading-number',
+                            $sort_by, $sort_direction, $sort_url_args
+                        );
+
+                        plnt_signals_sort_heading(
+                            'days_total', 'Дней всего', 'plnt-signals-heading-number',
+                            $sort_by, $sort_direction, $sort_url_args
+                        );
+
+                        plnt_signals_sort_heading(
+                            'sales_total', 'Продаж всего', 'plnt-signals-heading-number',
+                            $sort_by, $sort_direction, $sort_url_args
+                        );
+
+                        plnt_signals_sort_heading(
+                            'last_sale', 'Последняя продажа', 'plnt-signals-heading-last-sale',
+                            $sort_by, $sort_direction, $sort_url_args
+                        );
+
+                        plnt_signals_sort_heading(
+                            'avg_price', 'Средняя цена за 6 мес.', 'plnt-signals-heading-average',
+                            $sort_by, $sort_direction, $sort_url_args
+                        );
+                        ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -383,6 +589,8 @@ function plnt_signals_render_page() {
                 'page'               => 'plantis-signals',
                 'paged'              => '%#%',
                 's'                  => $search,
+                'orderby' => $sort_by,
+                'order'   => $sort_direction,
                 'product_cat_filter' => $category,
                 'product_tag_filter' => $tag,
                 'stock_status_filter' => $stock_status,

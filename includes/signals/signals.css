@@ -66,6 +66,26 @@
     vertical-align: middle;
 }
 
+/* Сортировка заголовков */
+
+.plnt-signals-table thead th.sortable a,
+.plnt-signals-table thead th.sorted a {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+    white-space: normal;
+}
+
+.plnt-signals-table thead th.sortable a > span:first-child,
+.plnt-signals-table thead th.sorted a > span:first-child {
+    min-width: 0;
+}
+
+.plnt-signals-table thead th .sorting-indicators {
+    flex-shrink: 0;
+}
+
 .plnt-signals-table > tbody > tr.plnt-signals-row > td {
     padding: 13px 12px;
     vertical-align: middle;
