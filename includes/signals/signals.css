@@ -41,24 +41,25 @@
 }
 
 .plnt-signals-table {
-    min-width: 1450px;
+    width: 100%;
+    min-width: 1460px;
     table-layout: fixed;
 }
 
 .plnt-signals-table .plnt-signals-heading-product {
-    width: 24%;
+    width: 18%;
 }
 
 .plnt-signals-table .plnt-signals-heading-prices {
-    width: 14%;
+    width: 10%;
 }
 
 .plnt-signals-table .plnt-signals-heading-stock {
-    width: 7%;
+    width: 6%;
 }
 
 .plnt-signals-table .plnt-signals-heading-number {
-    width: 8%;
+    width: 7%;
 }
 
 .plnt-signals-table th {
@@ -87,25 +88,25 @@
 }
 
 .plnt-signals-table > tbody > tr.plnt-signals-row > td {
-    padding: 13px 12px;
+    padding: 10px 8px;
     vertical-align: middle;
 }
 
 .plnt-signals-product {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 9px;
 }
 
 .plnt-signals-photo {
-    flex: 0 0 62px;
-    width: 62px;
+    flex: 0 0 52px;
+    width: 52px;
 }
 
 .plnt-signals-photo img {
     display: block;
-    width: 62px;
-    height: 62px;
+    width: 52px;
+    height: 52px;
     object-fit: contain;
     background: #fff;
     border: 1px solid #dcdcde;
@@ -164,11 +165,11 @@
 
 
 .plnt-signals-table .plnt-signals-heading-last-sale {
-    width: 11%;
+    width: 10%;
 }
 
 .plnt-signals-table .plnt-signals-heading-average {
-    width: 12%;
+    width: 10%;
 }
 
 .plnt-signals-job-status {
@@ -290,4 +291,54 @@
 
 .plnt-signals-error {
     color: #b32d2e;
+}
+
+/* ========================================================================== */
+/* Столбец рекомендаций: текстовые состояния без декоративных иконок */
+/* ========================================================================== */
+
+.plnt-signals-table .plnt-signals-heading-recommendation {
+    width: 18%;
+}
+
+.plnt-signals-rec {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    line-height: 1.4;
+}
+
+.plnt-signals-rec-label {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.plnt-signals-rec-detail {
+    display: block;
+    color: #646970;
+    font-size: 12px;
+}
+
+.plnt-signals-rec--add .plnt-signals-rec-label {
+    color: #9f3a13;
+    background-color: #fbe7da;
+}
+
+.plnt-signals-rec--remove .plnt-signals-rec-label {
+    color: #13663e;
+    background-color: #e0f2e8;
+}
+
+.plnt-signals-rec--active .plnt-signals-rec-label {
+    color: #58677a;
+    background-color: #edf0f3;
+}
+
+.plnt-signals-rec--none {
+    color: #757b82;
+    font-size: 12px;
 }

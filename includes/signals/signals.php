@@ -9,9 +9,10 @@ defined( 'ABSPATH' ) || exit;
 
 require_once __DIR__ . '/signals-stats.php';
 require_once __DIR__ . '/signals-cron.php';
+require_once __DIR__ . '/signals-recommendations.php';
 
 const PLNT_SIGNALS_CATEGORY_SLUG = 'komnatnye-rasteniya';
-const PLNT_SIGNALS_TABLE_COLUMNS = 9;
+const PLNT_SIGNALS_TABLE_COLUMNS = 10;
 
 /** Отдельный пункт главного меню непосредственно после «Товары». */
 add_action( 'admin_menu', function () {
@@ -100,6 +101,40 @@ function plnt_signals_expo_value( $product_id, $meta_key ) {
         : number_format_i18n( max( 0, (int) $raw ) );
 }
 
+/** Текст рекомендации — без иконок и без автоматического изменения цены. */
+function plnt_signals_recommendation_html( WC_Product $product, array $rec ) {
+    $type = $rec['type'];
+    $days = (int) $rec['days'];
+    $rule_days = (int) $rec['rule_days'];
+
+    if ( 'add' === $type ) {
+        $discount = (float) $rec['discount'];
+        $new_price = (float) $product->get_regular_price( 'edit' ) * ( 1 - $discount / 100 );
+        return '<div class="plnt-signals-rec plnt-signals-rec--add">'
+            . '<strong class="plnt-signals-rec-label">Скидка −' . esc_html( wc_format_decimal( $discount, 0 ) ) . '%</strong>'
+            . '<span class="plnt-signals-rec-detail">Нет продаж ' . esc_html( $days ) . ' дн. · Остаток: ' . esc_html( $product->get_stock_quantity() ) . ' шт.</span>'
+            . '<span class="plnt-signals-rec-detail">Предлагаемая цена: ' . wp_kses_post( wc_price( $new_price ) ) . '</span>'
+            . '</div>';
+    }
+    if ( 'remove' === $type ) {
+        return '<div class="plnt-signals-rec plnt-signals-rec--remove">'
+            . '<strong class="plnt-signals-rec-label">Снять скидку</strong>'
+            . '<span class="plnt-signals-rec-detail">Есть выполненная продажа после установки акции.</span>'
+            . '<span class="plnt-signals-rec-detail">Без продаж ' . esc_html( $days ) . ' дн. при пороге ' . esc_html( $rule_days ) . ' дн.</span>'
+            . '</div>';
+    }
+    if ( 'active' === $type ) {
+        return '<div class="plnt-signals-rec plnt-signals-rec--active">'
+            . '<strong class="plnt-signals-rec-label">Скидка действует</strong>'
+            . '<span class="plnt-signals-rec-detail">Нет оснований рекомендовать отмену.</span>'
+            . '</div>';
+    }
+    if ( $product->managing_stock() && (int) $product->get_stock_quantity() <= 0 ) {
+        return '<span class="plnt-signals-rec plnt-signals-rec--none">Нет в наличии</span>';
+    }
+    return '<span class="plnt-signals-rec plnt-signals-rec--none">Без изменений</span>';
+}
+
 /** Строка товара. Обновляется AJAX после сохранения свойств. */
 function plnt_signals_product_row( WC_Product $product, $stats = null ) {
     $id         = $product->get_id();
@@ -117,6 +152,7 @@ function plnt_signals_product_row( WC_Product $product, $stats = null ) {
         ? get_date_from_gmt( $stats->last_sale_date_gmt, 'd.m.Y' ) : '—';
     $avg_price = $stats && null !== $stats->avg_sale_price_6m
         ? wc_price( $stats->avg_sale_price_6m ) : '—';
+    $recommendation = plnt_signals_calculate_recommendation( $product, $stats );
 
     ob_start();
     ?>
@@ -154,6 +190,9 @@ function plnt_signals_product_row( WC_Product $product, $stats = null ) {
         <td class="plnt-signals-cell-number"><?php echo esc_html( plnt_signals_expo_value( $id, '_plnt_expo_sales_total' ) ); ?></td>
         <td class="plnt-signals-cell-number"><?php echo esc_html( $last_sale ); ?></td>
         <td class="plnt-signals-cell-number"><?php echo wp_kses_post( $avg_price ); ?></td>
+        <td class="plnt-signals-cell-recommendation">
+            <?php echo plnt_signals_recommendation_html( $product, $recommendation ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+        </td>
     </tr>
     <?php
     return ob_get_clean();
@@ -200,15 +239,17 @@ function plnt_signals_sort_posts_clauses( $clauses, $query ) {
 
         $sort_column = 'plnt_sort_expo.value';
 
-    } elseif ( in_array( $sort_by, array( 'last_sale', 'avg_price' ), true ) ) {
+    } elseif ( in_array( $sort_by, array( 'last_sale', 'avg_price', 'recommendation' ), true ) ) {
         $stats_table = $wpdb->prefix . 'plnt_signals_stats';
 
         $clauses['join'] .= " LEFT JOIN {$stats_table} AS plnt_sort_stats
             ON plnt_sort_stats.product_id = {$wpdb->posts}.ID";
 
-        $sort_column = $sort_by === 'last_sale'
+        $sort_column = 'last_sale' === $sort_by
             ? 'plnt_sort_stats.last_sale_date_gmt'
-            : 'plnt_sort_stats.avg_sale_price_6m';
+            : ( 'recommendation' === $sort_by
+                ? 'plnt_sort_stats.recommendation_priority'
+                : 'plnt_sort_stats.avg_sale_price_6m' );
     }
 
     if ( $sort_column ) {
@@ -346,6 +387,7 @@ function plnt_signals_render_page() {
         'sales_total',
         'last_sale',
         'avg_price',
+        'recommendation',
     );
 
     $sort_by = isset( $_GET['orderby'] ) && is_string( $_GET['orderby'] )
@@ -562,6 +604,11 @@ function plnt_signals_render_page() {
 
                         plnt_signals_sort_heading(
                             'avg_price', 'Средняя цена за 6 мес.', 'plnt-signals-heading-average',
+                            $sort_by, $sort_direction, $sort_url_args
+                        );
+
+                        plnt_signals_sort_heading(
+                            'recommendation', 'Рекомендация', 'plnt-signals-heading-recommendation',
                             $sort_by, $sort_direction, $sort_url_args
                         );
                         ?>

@@ -6,7 +6,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-const PLNT_SIGNALS_DB_VERSION = '1.0.0';
+const PLNT_SIGNALS_DB_VERSION = '1.1.0';
 const PLNT_SIGNALS_BATCH_SIZE = 75;
 
 function plnt_signals_stats_table() {
@@ -39,9 +39,15 @@ function plnt_signals_install_tables() {
         sales_qty_6m decimal(20,4) NOT NULL DEFAULT 0,
         sales_total_6m decimal(24,4) NOT NULL DEFAULT 0,
         calculated_at_gmt datetime DEFAULT NULL,
+        recommendation_type varchar(20) NOT NULL DEFAULT 'none',
+        recommendation_priority tinyint(3) unsigned NOT NULL DEFAULT 0,
+        recommendation_discount decimal(5,2) NOT NULL DEFAULT 0,
+        recommendation_days int(10) unsigned NOT NULL DEFAULT 0,
+        recommendation_updated_gmt datetime DEFAULT NULL,
         PRIMARY KEY  (product_id),
         KEY last_sale_date_gmt (last_sale_date_gmt),
-        KEY avg_sale_price_6m (avg_sale_price_6m)
+        KEY avg_sale_price_6m (avg_sale_price_6m),
+        KEY recommendation_priority (recommendation_priority)
     ) {$collate};" );
 
     dbDelta( "CREATE TABLE {$items} (
@@ -145,7 +151,7 @@ function plnt_signals_index_order( $order_id ) {
  * Дата последнего заказа = дата создания (все статусы, кроме cancelled).
  * Средняя цена = SUM(line_total)/SUM(qty) выполненных заказов за скользящие 6 мес.
  */
-function plnt_signals_rebuild_aggregates() {
+function plnt_signals_rebuild_aggregates( $recommendation_product_ids = null ) {
     global $wpdb;
 
     $stats = plnt_signals_stats_table();
@@ -197,6 +203,9 @@ function plnt_signals_rebuild_aggregates() {
         }
         $wpdb->query( 'COMMIT' );
         update_option( 'plnt_signals_last_success', $now_gmt, false );
+        // Ночной импорт уже пересчитал статистику заказов — обновим рекомендации.
+        // При одиночном завершённом заказе можно передать только его product_id.
+        do_action( 'plnt_signals_aggregates_rebuilt', $recommendation_product_ids );
     } catch ( Throwable $exception ) {
         $wpdb->query( 'ROLLBACK' );
         throw $exception;
