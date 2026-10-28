@@ -7,6 +7,30 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Акционная цена: округление вверх до десятков; итог не должен делиться на 100.
+ * Например: 3990 × 0,9 = 3591 → 3600 → 3610 ₽.
+ */
+function plnt_signals_rounded_sale_price( $regular, $percent ) {
+    $regular = (float) $regular;
+    $percent = (float) $percent;
+
+    if ( $regular <= 0 || $percent <= 0 || $percent >= 100 ) {
+        return new WP_Error( 'plnt_invalid_discount', 'Невозможно рассчитать скидку.' );
+    }
+
+    $price = (int) ( ceil( ( $regular * ( 1 - $percent / 100 ) ) / 10 ) * 10 );
+    if ( 0 === $price % 100 ) {
+        $price += 10;
+    }
+
+    if ( $price <= 0 || $price >= $regular ) {
+        return new WP_Error( 'plnt_discount_too_small', 'После округления скидочная цена не ниже обычной.' );
+    }
+
+    return $price;
+}
+
+/**
  * ACF options page можно создать самостоятельно с собственным post_id.
  * Сначала используем post_id из предыдущего ТЗ, затем стандартный ACF 'option'.
  * Каждая строка репитера задаёт нижнюю границу остатка:

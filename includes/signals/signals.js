@@ -69,6 +69,41 @@
             return;
         }
 
+        const discountButton = event.target.closest('.plnt-signals-discount-action');
+        if (discountButton) {
+            const operation = discountButton.dataset.operation;
+            const message = operation === 'apply'
+                ? `Применить акционную цену ${discountButton.dataset.newPrice} к товару?`
+                : 'Удалить акционную цену и вернуть обычную цену товара?';
+
+            if (!window.confirm(message)) return;
+
+            const row = discountButton.closest('tr.plnt-signals-row');
+            discountButton.disabled = true;
+            try {
+                const data = new FormData();
+                data.set('product_id', discountButton.dataset.productId);
+                data.set('operation', operation);
+                const result = await request('plnt_signals_discount_action', data);
+                closeEditor();
+
+                // Фильтры применяются на сервере, поэтому после изменения цены
+                // или статуса рекомендации нужна полная повторная выборка.
+                const params = new URLSearchParams(window.location.search);
+                if (params.get('recommendation_filter') || params.get('price_filter')) {
+                    window.location.reload();
+                    return;
+                }
+                if (row && result.row) row.outerHTML = result.row;
+                showNotice(result.message || 'Акционная цена обновлена.');
+            } catch (error) {
+                showNotice(error.message, true);
+            } finally {
+                discountButton.disabled = false;
+            }
+            return;
+        }
+
         const button = event.target.closest('.plnt-signals-edit');
         if (!button) {
             return;
@@ -87,7 +122,7 @@
 
         editor.className = 'plnt-signals-editor-row';
         cell.className = 'plnt-signals-editor-cell';
-        cell.colSpan = Number(plntSignalsAdmin.columns) || 9;
+        cell.colSpan = Number(plntSignalsAdmin.columns) || 5;
         cell.textContent = 'Загрузка свойств…';
         editor.appendChild(cell);
         row.after(editor);
