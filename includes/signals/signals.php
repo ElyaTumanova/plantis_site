@@ -106,7 +106,7 @@ function plnt_signals_sales_velocity( $product_id, $days_key, $sales_key ) {
     $days_raw  = get_post_meta( $product_id, $days_key, true );
     $sales_raw = get_post_meta( $product_id, $sales_key, true );
 
-    if ( '' === $days_raw || ! is_numeric( $days_raw ) || (int) $days_raw <= 0 ) {
+    if ( '' === $days_raw || ! is_numeric( $days_raw ) || (int) $days_raw < 15 ) {
         return null;
     }
 
@@ -209,12 +209,37 @@ function plnt_signals_product_row( WC_Product $product, $stats = null ) {
                     <?php echo wp_kses_post( $product->get_image( 'woocommerce_thumbnail' ) ); ?>
                 </a>
                 <div class="plnt-signals-details">
-                    <a class="plnt-signals-product-title" href="<?php echo esc_url( $edit_url ); ?>">
+                    <a
+                        class="plnt-signals-product-title"
+                        href="<?php echo esc_url( get_permalink( $id ) ); ?>"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <?php echo esc_html( $product->get_name() ); ?>
                     </a>
-                    <div class="plnt-signals-sku">Артикул: <?php echo '' !== $sku ? esc_html( $sku ) : '—'; ?></div>
+
+                    <div class="plnt-signals-sku">
+                        Артикул: <?php echo '' !== $sku ? esc_html( $sku ) : '—'; ?>
+                    </div>
+
                     <?php if ( current_user_can( 'edit_post', $id ) ) : ?>
-                        <button type="button" class="button button-small plnt-signals-edit" data-product-id="<?php echo esc_attr( $id ); ?>" aria-expanded="false">Свойства</button>
+                        <div class="plnt-signals-product-actions">
+                            <button
+                                type="button"
+                                class="button button-small plnt-signals-edit"
+                                data-product-id="<?php echo esc_attr( $id ); ?>"
+                                aria-expanded="false"
+                            >
+                                Свойства
+                            </button>
+
+                            <a
+                                class="button button-small"
+                                href="<?php echo esc_url( $edit_url ); ?>"
+                            >
+                                Изменить
+                            </a>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>
@@ -357,7 +382,11 @@ function plnt_signals_sort_posts_clauses( $clauses, $query ) {
                 $meta_key
             );
         }
-        $sort_column = '(30 * COALESCE(plnt_v_sales.value, 0) / NULLIF(plnt_v_days.value, 0))';
+        $sort_column = '(CASE
+            WHEN plnt_v_days.value >= 15
+            THEN 30 * COALESCE(plnt_v_sales.value, 0) / plnt_v_days.value
+            ELSE NULL
+        END)';
     } elseif ( in_array( $sort_by, array( 'last_sale', 'avg_price', 'recommendation' ), true ) ) {
         $sort_column = array(
             'last_sale'       => 'plnt_sort_stats.last_sale_date_gmt',

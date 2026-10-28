@@ -107,7 +107,12 @@
     align-items: center;
     gap: 9px;
 }
-
+.plnt-signals-product-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
 .plnt-signals-photo {
     flex: 0 0 52px;
     width: 52px;
