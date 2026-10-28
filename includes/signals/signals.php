@@ -12,7 +12,9 @@ require_once __DIR__ . '/signals-cron.php';
 require_once __DIR__ . '/signals-recommendations.php';
 
 const PLNT_SIGNALS_CATEGORY_SLUG = 'komnatnye-rasteniya';
-const PLNT_SIGNALS_TABLE_COLUMNS = 8;
+// Минимальное число дней экспозиции для расчёта скорости и класса спроса.
+const PLNT_SIGNALS_MIN_EXPO_DAYS = 15;
+const PLNT_SIGNALS_TABLE_COLUMNS = 10;
 
 /** Отдельный пункт главного меню непосредственно после «Товары». */
 add_action( 'admin_menu', function () {
@@ -101,12 +103,20 @@ function plnt_signals_expo_value( $product_id, $meta_key ) {
         : number_format_i18n( max( 0, (int) $raw ) );
 }
 
-/** Продажи за 30 дней экспозиции; если данных нет, скорость не выводим. */
+/** Продажи за 30 дней экспозиции; считаем только для товаров с достаточной общей историей. */
 function plnt_signals_sales_velocity( $product_id, $days_key, $sales_key ) {
-    $days_raw  = get_post_meta( $product_id, $days_key, true );
-    $sales_raw = get_post_meta( $product_id, $sales_key, true );
+    $days_raw   = get_post_meta( $product_id, $days_key, true );
+    $sales_raw  = get_post_meta( $product_id, $sales_key, true );
+    $check_days = get_post_meta( $product_id, '_plnt_expo_days_total', true );
 
-    if ( '' === $days_raw || ! is_numeric( $days_raw ) || (int) $days_raw < 15 ) {
+    // Новым товарам не рассчитываем обе скорости. Для периода после пополнения
+    // достаточно положительного числа дней, даже если прошло меньше 30 дней.
+    if (
+        ! is_numeric( $check_days )
+        || (int) $check_days < PLNT_SIGNALS_MIN_EXPO_DAYS
+        || ! is_numeric( $days_raw )
+        || (float) $days_raw <= 0
+    ) {
         return null;
     }
 
@@ -118,6 +128,123 @@ function plnt_signals_sales_velocity( $product_id, $days_key, $sales_key ) {
     }
 
     return 30 * max( 0, (float) $sales_raw ) / (float) $days_raw;
+}
+
+/**
+ * Класс спроса по скорости за весь период, отдельно в каждой ценовой группе.
+ * Используем фактическую текущую цену WooCommerce, как в фильтре «Ценовая группа».
+ * Берём все комнатные растения, а не только текущую страницу или отфильтрованные строки.
+ * Кэш только на время запроса; таблицы БД и ночные задания изменять не требуется.
+ */
+function plnt_signals_demand_classes() {
+    static $classes = null;
+
+    if ( null !== $classes ) {
+        return $classes;
+    }
+
+    $classes = array();
+    $category_ids = plnt_signals_category_ids();
+    if ( ! $category_ids ) {
+        return $classes;
+    }
+
+    global $wpdb;
+
+    $lookup       = $wpdb->prefix . 'wc_product_meta_lookup';
+    $placeholders = implode( ', ', array_fill( 0, count( $category_ids ), '%d' ) );
+
+    // MAX + GROUP BY защищают от повторов метаполей и нескольких категорий товара.
+    $sql = "SELECT p.ID AS product_id,
+                   l.min_price AS current_price,
+                   MAX(CASE WHEN pm.meta_key = '_plnt_expo_days_total'
+                            AND pm.meta_value REGEXP '^[0-9]+([.][0-9]+)?$'
+                       THEN CAST(pm.meta_value AS DECIMAL(20,4)) END) AS days_total,
+                   MAX(CASE WHEN pm.meta_key = '_plnt_expo_sales_total'
+                            AND pm.meta_value REGEXP '^[0-9]+([.][0-9]+)?$'
+                       THEN CAST(pm.meta_value AS DECIMAL(20,4)) END) AS sales_total
+            FROM {$wpdb->posts} AS p
+            INNER JOIN {$wpdb->term_relationships} AS tr ON tr.object_id = p.ID
+            INNER JOIN {$wpdb->term_taxonomy} AS tt
+                ON tt.term_taxonomy_id = tr.term_taxonomy_id
+                AND tt.taxonomy = 'product_cat'
+                AND tt.term_id IN ({$placeholders})
+            LEFT JOIN {$lookup} AS l ON l.product_id = p.ID
+            LEFT JOIN {$wpdb->postmeta} AS pm
+                ON pm.post_id = p.ID
+                AND pm.meta_key IN ('_plnt_expo_days_total', '_plnt_expo_sales_total')
+            WHERE p.post_type = 'product'
+              AND p.post_status IN ('publish', 'private', 'draft', 'pending', 'future')
+            GROUP BY p.ID, l.min_price";
+
+    $rows = $wpdb->get_results( $wpdb->prepare( $sql, ...$category_ids ) );
+    if ( ! is_array( $rows ) ) {
+        return $classes;
+    }
+
+    $groups = array( array(), array(), array(), array() );
+    foreach ( $rows as $row ) {
+        $id = (int) $row->product_id;
+        $classes[ $id ] = null; // Нет валидной цены или дней экспозиции.
+
+        if ( null === $row->current_price || null === $row->days_total ) {
+            continue;
+        }
+
+        $days = (float) $row->days_total;
+        if ( $days < PLNT_SIGNALS_MIN_EXPO_DAYS ) {
+            $classes[ $id ] = 'N';
+            continue;
+        }
+
+        $price = (float) $row->current_price;
+        $group = $price < 3000 ? 0 : ( $price < 7000 ? 1 : ( $price < 15000 ? 2 : 3 ) );
+        $sales = null === $row->sales_total ? 0 : max( 0, (float) $row->sales_total );
+        $groups[ $group ][ $id ] = 30 * $sales / $days;
+    }
+
+    foreach ( $groups as $velocities ) {
+        if ( ! $velocities ) {
+            continue;
+        }
+
+        arsort( $velocities, SORT_NUMERIC );
+        $total = count( $velocities );
+        $position = 0;
+        $faster_count = 0;
+        $previous_velocity = null;
+
+        foreach ( $velocities as $id => $velocity ) {
+            // Товары с одинаковой скоростью относятся к одному классу.
+            if ( null === $previous_velocity || abs( $previous_velocity - $velocity ) > 0.0000001 ) {
+                $faster_count = $position;
+            }
+
+            $share_faster = $faster_count / $total;
+            $classes[ $id ] = $velocity <= 0
+                ? 'C'
+                : ( $share_faster < 0.20 ? 'A' : ( $share_faster < 0.50 ? 'B' : 'C' ) );
+
+            $previous_velocity = $velocity;
+            $position++;
+        }
+    }
+
+    return $classes;
+}
+
+/** Динамика текущей скорости относительно скорости за весь период. */
+function plnt_signals_demand_trend( $velocity_start, $velocity_total ) {
+    if ( null === $velocity_start || null === $velocity_total || $velocity_total <= 0 ) {
+        return null;
+    }
+
+    $change = 100 * ( $velocity_start / $velocity_total - 1 );
+
+    return array(
+        'change' => $change,
+        'type'   => $change > 25 ? 'up' : ( $change < -25 ? 'down' : 'flat' ),
+    );
 }
 
 /** Вывод рекомендации без декоративных иконок. */
@@ -193,6 +320,15 @@ function plnt_signals_product_row( WC_Product $product, $stats = null ) {
 
     $velocity_start = plnt_signals_sales_velocity( $id, '_plnt_expo_days_reset', '_plnt_expo_sales_reset' );
     $velocity_total = plnt_signals_sales_velocity( $id, '_plnt_expo_days_total', '_plnt_expo_sales_total' );
+    $demand_classes = plnt_signals_demand_classes();
+    $demand_class   = $demand_classes[ $id ] ?? null;
+    $demand_trend   = plnt_signals_demand_trend( $velocity_start, $velocity_total );
+    $class_titles = array(
+        'A' => 'Высокая скорость продаж внутри ценовой группы',
+        'B' => 'Средняя скорость продаж внутри ценовой группы',
+        'C' => 'Низкая скорость продаж внутри ценовой группы',
+        'N' => sprintf( 'Новый товар: менее %d дней общей экспозиции', PLNT_SIGNALS_MIN_EXPO_DAYS ),
+    );
     $last_sale = $stats && ! empty( $stats->last_sale_date_gmt )
         ? get_date_from_gmt( $stats->last_sale_date_gmt, 'd.m.Y' ) : '—';
     $avg_price = $stats && null !== $stats->avg_sale_price_6m
@@ -267,6 +403,35 @@ function plnt_signals_product_row( WC_Product $product, $stats = null ) {
             </strong>
             <span class="plnt-signals-period-detail"><?php echo esc_html( $total_days ); ?> дн. / <?php echo esc_html( $total_sales ); ?> шт.</span>
         </td>
+        <td class="plnt-signals-cell-class">
+            <?php if ( $demand_class ) : ?>
+                <span
+                    class="plnt-signals-demand-class plnt-signals-demand-class--<?php echo esc_attr( strtolower( $demand_class ) ); ?>"
+                    title="<?php echo esc_attr( $class_titles[ $demand_class ] ); ?>"
+                ><?php echo esc_html( $demand_class ); ?></span>
+            <?php else : ?>
+                <span class="plnt-signals-muted" title="Недостаточно данных для определения класса">—</span>
+            <?php endif; ?>
+        </td>
+        <td class="plnt-signals-cell-trend">
+            <?php if ( $demand_trend ) : ?>
+                <?php
+                $change = $demand_trend['change'];
+                $arrow = array( 'up' => '↑', 'down' => '↓', 'flat' => '→' )[ $demand_trend['type'] ];
+                $percent = abs( round( $change ) );
+                $sign = $percent > 0 ? ( $change > 0 ? '+' : '−' ) : '';
+                ?>
+                <span
+                    class="plnt-signals-demand-trend plnt-signals-demand-trend--<?php echo esc_attr( $demand_trend['type'] ); ?>"
+                    title="Изменение скорости после поступления относительно всего периода"
+                >
+                    <span aria-hidden="true"><?php echo esc_html( $arrow ); ?></span>
+                    <?php echo esc_html( $sign . number_format_i18n( $percent ) . '%' ); ?>
+                </span>
+            <?php else : ?>
+                <span class="plnt-signals-muted" title="<?php echo esc_attr( sprintf( 'Для динамики нужны %d дней общей экспозиции, хотя бы 1 день после поступления и ненулевая историческая скорость', PLNT_SIGNALS_MIN_EXPO_DAYS ) ); ?>">—</span>
+            <?php endif; ?>
+        </td>
         <td class="plnt-signals-cell-number"><?php echo esc_html( $last_sale ); ?></td>
         <td class="plnt-signals-cell-number"><?php echo wp_kses_post( $avg_price ); ?></td>
         <td class="plnt-signals-cell-recommendation">
@@ -297,6 +462,50 @@ function plnt_signals_product_row( WC_Product $product, $stats = null ) {
     return ob_get_clean();
 }
 
+/**
+ * SQL-порядок классов из той же общей классификации, что используется в колонке.
+ * Без пересчёта ABC по отфильтрованным товарам: сортировка глобальная, до LIMIT.
+ */
+function plnt_signals_demand_class_order_sql() {
+    global $wpdb;
+
+    $groups = array( 'A' => array(), 'B' => array(), 'C' => array(), 'N' => array() );
+    foreach ( plnt_signals_demand_classes() as $id => $class ) {
+        if ( isset( $groups[ $class ] ) ) {
+            $groups[ $class ][] = (int) $id;
+        }
+    }
+
+    $conditions = array();
+    $rank = 1;
+    foreach ( $groups as $ids ) {
+        if ( $ids ) {
+            $conditions[] = "WHEN {$wpdb->posts}.ID IN (" . implode( ',', $ids ) . ") THEN {$rank}";
+        }
+        $rank++;
+    }
+
+    return $conditions ? '(CASE ' . implode( ' ', $conditions ) . ' ELSE NULL END)' : 'NULL';
+}
+
+/** Одна строка товара на каждый набор метаполей (защита от дубликатов postmeta). */
+function plnt_signals_add_velocity_meta_joins( &$clauses, array $keys ) {
+    global $wpdb;
+
+    foreach ( $keys as $alias => $meta_key ) {
+        $clauses['join'] .= $wpdb->prepare(
+            " LEFT JOIN (
+                SELECT post_id, MAX(CAST(meta_value AS DECIMAL(20,4))) AS value
+                FROM {$wpdb->postmeta}
+                WHERE meta_key = %s
+                  AND meta_value REGEXP '^[0-9]+([.][0-9]+)?$'
+                GROUP BY post_id
+            ) AS plnt_{$alias} ON plnt_{$alias}.post_id = {$wpdb->posts}.ID",
+            $meta_key
+        );
+    }
+}
+
 /** Сортировка и фильтры на уровне SQL ДО пагинации. */
 function plnt_signals_sort_posts_clauses( $clauses, $query ) {
     global $wpdb;
@@ -310,6 +519,7 @@ function plnt_signals_sort_posts_clauses( $clauses, $query ) {
     $direction = $query->get( 'plnt_signals_direction' ) === 'asc' ? 'ASC' : 'DESC';
     $rec_filter = $query->get( 'plnt_signals_recommendation_filter' );
     $price_filter = $query->get( 'plnt_signals_price_filter' );
+    $class_filter = $query->get( 'plnt_signals_class_filter' );
     $sort_column = '';
 
     $need_lookup = in_array( $sort_by, array( 'default', 'price', 'stock' ), true ) || $price_filter;
@@ -351,6 +561,22 @@ function plnt_signals_sort_posts_clauses( $clauses, $query ) {
         );
     }
 
+    // Фильтр ABC работает по всем товарам до пагинации, в том числе в поиске.
+    if ( in_array( $class_filter, array( 'A', 'B', 'C', 'N' ), true ) ) {
+        $matching_ids = array();
+        foreach ( plnt_signals_demand_classes() as $product_id => $class ) {
+            if ( $class === $class_filter ) {
+                $matching_ids[] = (int) $product_id;
+            }
+        }
+
+        if ( $matching_ids ) {
+            $clauses['where'] .= " AND {$wpdb->posts}.ID IN (" . implode( ',', $matching_ids ) . ')';
+        } else {
+            $clauses['where'] .= ' AND 1 = 0';
+        }
+    }
+
     if ( 'default' === $sort_by ) {
         // Наличие -> предзаказ -> отсутствует; внутри группы новые раньше старых.
         $clauses['orderby'] = "CASE plnt_sort_lookup.stock_status
@@ -370,23 +596,51 @@ function plnt_signals_sort_posts_clauses( $clauses, $query ) {
     } elseif ( in_array( $sort_by, array( 'velocity_reset', 'velocity_total' ), true ) ) {
         $days_key  = 'velocity_reset' === $sort_by ? '_plnt_expo_days_reset' : '_plnt_expo_days_total';
         $sales_key = 'velocity_reset' === $sort_by ? '_plnt_expo_sales_reset' : '_plnt_expo_sales_total';
-        // Derived tables avoid duplicating products if postmeta has legacy duplicate rows.
-        foreach ( array( 'v_days' => $days_key, 'v_sales' => $sales_key ) as $alias => $meta_key ) {
-            $clauses['join'] .= $wpdb->prepare(
-                " LEFT JOIN (
-                    SELECT post_id, MAX(CAST(meta_value AS DECIMAL(20,4))) AS value
-                    FROM {$wpdb->postmeta}
-                    WHERE meta_key = %s AND meta_value <> ''
-                    GROUP BY post_id
-                  ) AS plnt_{$alias} ON plnt_{$alias}.post_id = {$wpdb->posts}.ID",
-                $meta_key
-            );
+        // Для обеих скоростей минимальный срок проверяется по общей экспозиции.
+        $velocity_meta = array( 'v_days' => $days_key, 'v_sales' => $sales_key );
+        if ( 'velocity_reset' === $sort_by ) {
+            $velocity_meta['v_total_days'] = '_plnt_expo_days_total';
         }
-        $sort_column = '(CASE
-            WHEN plnt_v_days.value >= 15
-            THEN 30 * COALESCE(plnt_v_sales.value, 0) / plnt_v_days.value
-            ELSE NULL
-        END)';
+        plnt_signals_add_velocity_meta_joins( $clauses, $velocity_meta );
+
+        $total_days_column = 'velocity_reset' === $sort_by
+            ? 'plnt_v_total_days.value'
+            : 'plnt_v_days.value';
+
+        $sort_column = $wpdb->prepare(
+            "(CASE
+                WHEN {$total_days_column} >= %d AND plnt_v_days.value > 0
+                THEN 30 * COALESCE(plnt_v_sales.value, 0) / plnt_v_days.value
+                ELSE NULL
+            END)",
+            PLNT_SIGNALS_MIN_EXPO_DAYS
+        );
+    } elseif ( 'class' === $sort_by ) {
+        // A=1, B=2, C=3, N=4. Неопределённые классы всегда в конце.
+        $sort_column = plnt_signals_demand_class_order_sql();
+    } elseif ( 'trend' === $sort_by ) {
+        // Числовая динамика: от большего роста к большему снижению или наоборот.
+        // Формула идентична PHP: 100 * (V_reset / V_total - 1).
+        // Множитель 30 сокращается; для отсутствующих продаж берём ноль.
+        plnt_signals_add_velocity_meta_joins( $clauses, array(
+            't_days'  => '_plnt_expo_days_total',
+            't_sales' => '_plnt_expo_sales_total',
+            'r_days'  => '_plnt_expo_days_reset',
+            'r_sales' => '_plnt_expo_sales_reset',
+        ) );
+        $sort_column = $wpdb->prepare(
+            '(CASE
+                WHEN plnt_t_days.value >= %d
+                    AND plnt_r_days.value > 0
+                    AND plnt_t_sales.value > 0
+                THEN 100 * (
+                    (COALESCE(plnt_r_sales.value, 0) / plnt_r_days.value)
+                    / (plnt_t_sales.value / plnt_t_days.value) - 1
+                )
+                ELSE NULL
+            END)',
+            PLNT_SIGNALS_MIN_EXPO_DAYS
+        );
     } elseif ( in_array( $sort_by, array( 'last_sale', 'avg_price', 'recommendation' ), true ) ) {
         $sort_column = array(
             'last_sale'       => 'plnt_sort_stats.last_sale_date_gmt',
@@ -411,7 +665,7 @@ function plnt_signals_sort_posts_clauses( $clauses, $query ) {
 function plnt_signals_sort_heading( $key, $label, $class, $current_sort, $current_direction, $url_args, $hint = '' ) {
     $active = $current_sort === $key;
 
-    $first_direction = 'title' === $key ? 'asc' : 'desc';
+    $first_direction = in_array( $key, array( 'title', 'class' ), true ) ? 'asc' : 'desc';
 
     $next_direction = $active
         ? ( 'asc' === $current_direction ? 'desc' : 'asc' )
@@ -525,6 +779,8 @@ function plnt_signals_render_page() {
         'title',
         'velocity_reset',
         'velocity_total',
+        'class',
+        'trend',
         'price',
         'stock',
         'last_sale',
@@ -551,6 +807,12 @@ function plnt_signals_render_page() {
         ? sanitize_key( wp_unslash( $_GET['price_filter'] ) ) : '';
     if ( ! in_array( $price_filter, array( '', 'under3000', '3000_7000', '7000_15000', 'from15000' ), true ) ) {
         $price_filter = '';
+    }
+
+    $class_filter = isset( $_GET['class_filter'] ) && is_string( $_GET['class_filter'] )
+        ? strtoupper( sanitize_key( wp_unslash( $_GET['class_filter'] ) ) ) : '';
+    if ( ! in_array( $class_filter, array( '', 'A', 'B', 'C', 'N' ), true ) ) {
+        $class_filter = '';
     }
 
     $category = isset( $_GET['product_cat_filter'] ) ? absint( $_GET['product_cat_filter'] ) : 0;
@@ -613,6 +875,7 @@ function plnt_signals_render_page() {
         'plnt_signals_direction' => $sort_direction,
         'plnt_signals_recommendation_filter' => $recommendation_status,
         'plnt_signals_price_filter' => $price_filter,
+        'plnt_signals_class_filter' => $class_filter,
         'plnt_signals_custom_query' => true,
         'ignore_sticky_posts' => true,
         'tax_query'           => $tax_query,
@@ -653,10 +916,11 @@ function plnt_signals_render_page() {
         'stock_status_filter' => $stock_status,
         'recommendation_filter' => $recommendation_status,
         'price_filter' => $price_filter,
+        'class_filter' => $class_filter,
     );
 
     $base_url  = admin_url( 'admin.php?page=plantis-signals' );
-    $has_filter = '' !== $search || $category || $tag || $stock_status || $recommendation_status || $price_filter;
+    $has_filter = '' !== $search || $category || $tag || $stock_status || $recommendation_status || $price_filter || $class_filter;
     ?>
     <div class="wrap plnt-signals-wrap">
         <h1 class="wp-heading-inline">Сигналы</h1>
@@ -719,6 +983,15 @@ function plnt_signals_render_page() {
                 <option value="from15000" <?php selected( $price_filter, 'from15000' ); ?>>От 15 000 ₽</option>
             </select>
 
+            <label class="screen-reader-text" for="plnt-signals-class-filter">Класс спроса</label>
+            <select id="plnt-signals-class-filter" name="class_filter">
+                <option value="">Все классы</option>
+                <option value="A" <?php selected( $class_filter, 'A' ); ?>>A — высокий спрос</option>
+                <option value="B" <?php selected( $class_filter, 'B' ); ?>>B — средний спрос</option>
+                <option value="C" <?php selected( $class_filter, 'C' ); ?>>C — низкий спрос</option>
+                <option value="N" <?php selected( $class_filter, 'N' ); ?>>N — новые</option>
+            </select>
+
             <button type="submit" class="button button-primary">Фильтровать</button>
             <?php if ( $has_filter ) : ?>
                 <a class="button" href="<?php echo esc_url( $base_url ); ?>">Сбросить</a>
@@ -755,6 +1028,20 @@ function plnt_signals_render_page() {
                             $sort_by, $sort_direction, $sort_url_args,
                             'Среднее количество продаж за 30 дней экспозиции за весь период'
                         );
+                        ?>
+                        <?php
+                        plnt_signals_sort_heading(
+                            'class', 'Класс', 'plnt-signals-heading-class',
+                            $sort_by, $sort_direction, $sort_url_args,
+                            sprintf( 'A — верхние 20%% по скорости в своей ценовой группе, B — следующие 30%%, C — остальные, N — меньше %d дней экспозиции', PLNT_SIGNALS_MIN_EXPO_DAYS )
+                        );
+                        plnt_signals_sort_heading(
+                            'trend', 'Динамика', 'plnt-signals-heading-trend',
+                            $sort_by, $sort_direction, $sort_url_args,
+                            'Изменение скорости после поступления относительно всего периода; сортировка по проценту изменения'
+                        );
+                        ?>
+                        <?php
                         plnt_signals_sort_heading(
                             'last_sale', 'Последняя продажа', 'plnt-signals-heading-last-sale',
                             $sort_by, $sort_direction, $sort_url_args
@@ -799,6 +1086,7 @@ function plnt_signals_render_page() {
                 'stock_status_filter' => $stock_status,
                 'recommendation_filter' => $recommendation_status,
                 'price_filter' => $price_filter,
+                'class_filter' => $class_filter,
             ), admin_url( 'admin.php' ) );
             echo '<div class="tablenav bottom"><div class="tablenav-pages">';
             echo wp_kses_post( paginate_links( array(
@@ -938,6 +1226,9 @@ add_action( 'wp_ajax_plnt_signals_save_properties', function () {
 
         $regular_price = plnt_signals_decimal( 'regular_price' );
         $sale_price    = plnt_signals_decimal( 'sale_price' );
+        $refresh_demand = $status !== $product->get_status()
+            || $regular_price !== (string) $product->get_regular_price( 'edit' )
+            || $sale_price !== (string) $product->get_sale_price( 'edit' );
         $manage_stock  = isset( $_POST['manage_stock'] );
         $quantity      = plnt_signals_post_string( 'stock_quantity' );
         $backorders    = plnt_signals_post_string( 'backorders' );
@@ -976,6 +1267,7 @@ add_action( 'wp_ajax_plnt_signals_save_properties', function () {
         wp_send_json_success( array(
             'message' => 'Товар обновлён.',
             'row'     => $product && plnt_signals_is_plant( $id ) ? plnt_signals_product_row( $product ) : '',
+            'refresh_demand' => $refresh_demand,
         ) );
     } catch ( Throwable $error ) {
         wp_send_json_error( array( 'message' => $error->getMessage() ), 400 );

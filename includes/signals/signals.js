@@ -78,24 +78,17 @@
 
             if (!window.confirm(message)) return;
 
-            const row = discountButton.closest('tr.plnt-signals-row');
             discountButton.disabled = true;
             try {
                 const data = new FormData();
                 data.set('product_id', discountButton.dataset.productId);
                 data.set('operation', operation);
-                const result = await request('plnt_signals_discount_action', data);
+                await request('plnt_signals_discount_action', data);
                 closeEditor();
 
-                // Фильтры применяются на сервере, поэтому после изменения цены
-                // или статуса рекомендации нужна полная повторная выборка.
-                const params = new URLSearchParams(window.location.search);
-                if (params.get('recommendation_filter') || params.get('price_filter')) {
-                    window.location.reload();
-                    return;
-                }
-                if (row && result.row) row.outerHTML = result.row;
-                showNotice(result.message || 'Акционная цена обновлена.');
+                // Изменение цены может изменить ценовую группу и ABC других товаров.
+                window.location.reload();
+                return;
             } catch (error) {
                 showNotice(error.message, true);
             } finally {
@@ -176,6 +169,19 @@
             const result = await request('plnt_signals_save_properties', new FormData(form));
             const row = table.querySelector(`tr.plnt-signals-row[data-product-id="${form.dataset.productId}"]`);
             closeEditor();
+
+            const params = new URLSearchParams(window.location.search);
+            const needsReload = result.refresh_demand
+                || params.get('class_filter')
+                || params.get('price_filter')
+                || params.get('recommendation_filter')
+                || params.get('stock_status_filter')
+                || ['class', 'trend'].includes(params.get('orderby'));
+
+            if (needsReload) {
+                window.location.reload();
+                return;
+            }
 
             if (row) {
                 if (result.row) {
