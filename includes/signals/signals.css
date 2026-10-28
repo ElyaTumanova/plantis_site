@@ -6,44 +6,6 @@
     margin: 8px 0 18px;
 }
 
-.plnt-signals-price-tabs {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    align-items: center;
-    gap: 8px;
-    margin: 18px 0 12px;
-}
-
-@media (max-width: 900px) {
-    .plnt-signals-price-tabs {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-.plnt-signals-price-tab {
-    display: block;
-    padding: 11px 12px;
-    border-radius: 40px;
-    background: #f0f0f1;
-    text-align: center;
-    color: #50575e;
-    font-size: 14px;
-    text-decoration: none;
-    transition: background-color 0.15s ease;
-}
-
-.plnt-signals-price-tab:hover,
-.plnt-signals-price-tab:focus-visible {
-    color: #1d2327;
-    background: #e1e3e5;
-}
-
-.plnt-signals-price-tab.is-active {
-    background: #dbeafe;
-    color: #135e96;
-    font-weight: 600;
-}
-
 .plnt-signals-filters {
     display: flex;
     align-items: center;

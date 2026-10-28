@@ -231,11 +231,15 @@ function plnt_signals_product_row( WC_Product $product, $stats = null ) {
             <?php endif; ?>
         </td>
         <td class="plnt-signals-cell-velocity">
-            <strong class="plnt-signals-velocity"><?php echo null !== $velocity_start ? esc_html( number_format_i18n( $velocity_start, 1 ) ) : '—'; ?></strong>
+            <strong class="plnt-signals-velocity">
+                <?php echo null !== $velocity_start ? esc_html( number_format_i18n( $velocity_start, 1 ) ) . ' шт/мес' : '—'; ?>
+            </strong>
             <span class="plnt-signals-period-detail"><?php echo esc_html( $start_days ); ?> дн. / <?php echo esc_html( $start_sales ); ?> шт.</span>
         </td>
         <td class="plnt-signals-cell-velocity">
-            <strong class="plnt-signals-velocity"><?php echo null !== $velocity_total ? esc_html( number_format_i18n( $velocity_total, 1 ) ) : '—'; ?></strong>
+            <strong class="plnt-signals-velocity">
+                <?php echo null !== $velocity_total ? esc_html( number_format_i18n( $velocity_total, 1 ) ) . ' шт/мес' : '—'; ?>
+            </strong>
             <span class="plnt-signals-period-detail"><?php echo esc_html( $total_days ); ?> дн. / <?php echo esc_html( $total_sales ); ?> шт.</span>
         </td>
         <td class="plnt-signals-cell-number"><?php echo esc_html( $last_sale ); ?></td>
@@ -571,7 +575,7 @@ function plnt_signals_render_page() {
     $query_args = array(
         'post_type'           => 'product',
         'post_status'         => array( 'publish', 'private', 'draft', 'pending', 'future' ),
-        'posts_per_page'      => 30,
+        'posts_per_page'      => 200,
         'paged'               => $page,
         's'                   => $search,
         'orderby'                => 'date',
@@ -630,38 +634,10 @@ function plnt_signals_render_page() {
         <p class="description">Комнатные растения — цены, остатки, показатели экспозиции и статистика заказов.</p>
         <?php plnt_signals_render_import_status(); ?>
 
-        <?php
-        $price_tabs = array(
-            'under3000'  => '&lt; 3 тыс.',
-            '3000_7000'  => '3–7 тыс.',
-            '7000_15000' => '7–15 тыс.',
-            'from15000'  => '≥ 15 тыс.',
-        );
-        ?>
-        <nav class="plnt-signals-price-tabs" aria-label="Фильтр по цене">
-            <?php foreach ( $price_tabs as $bucket => $label ) : ?>
-                <?php
-                $is_active = $price_filter === $bucket;
-                $tab_url = add_query_arg(
-                    array_merge( $sort_url_args, array(
-                        'orderby' => $sort_by,
-                        'order' => $sort_direction,
-                        'price_filter' => $is_active ? '' : $bucket,
-                    ) ),
-                    admin_url( 'admin.php' )
-                );
-                ?>
-                <a href="<?php echo esc_url( $tab_url ); ?>" class="plnt-signals-price-tab <?php echo $is_active ? 'is-active' : ''; ?>" <?php if ( $is_active ) : ?>aria-current="true"<?php endif; ?>>
-                    <?php echo wp_kses_post( $label ); ?>
-                </a>
-            <?php endforeach; ?>
-        </nav>
-
         <form class="plnt-signals-filters" method="get" action="<?php echo esc_url( admin_url( 'admin.php' ) ); ?>">
             <input type="hidden" name="page" value="plantis-signals">
             <input type="hidden" name="orderby" value="<?php echo esc_attr( $sort_by ); ?>">
             <input type="hidden" name="order" value="<?php echo esc_attr( $sort_direction ); ?>">
-            <input type="hidden" name="price_filter" value="<?php echo esc_attr( $price_filter ); ?>">
             <label class="screen-reader-text" for="plnt-signals-search">Поиск товаров</label>
             <input type="search" id="plnt-signals-search" name="s" value="<?php echo esc_attr( $search ); ?>" placeholder="Название товара">
 
@@ -703,6 +679,15 @@ function plnt_signals_render_page() {
                 <option value="remove" <?php selected( $recommendation_status, 'remove' ); ?>>Снять скидку</option>
                 <option value="active" <?php selected( $recommendation_status, 'active' ); ?>>Скидка действует</option>
                 <option value="none" <?php selected( $recommendation_status, 'none' ); ?>>Без изменений</option>
+            </select>
+
+            <label class="screen-reader-text" for="plnt-signals-price-filter">Ценовая группа</label>
+            <select id="plnt-signals-price-filter" name="price_filter">
+                <option value="">Все цены</option>
+                <option value="under3000" <?php selected( $price_filter, 'under3000' ); ?>>До 3 000 ₽</option>
+                <option value="3000_7000" <?php selected( $price_filter, '3000_7000' ); ?>>3 000–7 000 ₽</option>
+                <option value="7000_15000" <?php selected( $price_filter, '7000_15000' ); ?>>7 000–15 000 ₽</option>
+                <option value="from15000" <?php selected( $price_filter, 'from15000' ); ?>>От 15 000 ₽</option>
             </select>
 
             <button type="submit" class="button button-primary">Фильтровать</button>
