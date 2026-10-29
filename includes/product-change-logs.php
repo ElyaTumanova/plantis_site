@@ -710,3 +710,147 @@ function wc_product_change_logs_admin_page() {
     </div>
     <?php
 }
+
+/* ======================================================
+ * ИСТОРИЯ ИЗМЕНЕНИЙ НА СТРАНИЦЕ РЕДАКТИРОВАНИЯ ТОВАРА
+ * ====================================================== */
+
+add_action('add_meta_boxes_product', 'wc_product_change_logs_add_metabox');
+
+function wc_product_change_logs_add_metabox() {
+    if (!current_user_can('manage_woocommerce')) {
+        return;
+    }
+
+    add_meta_box(
+        'wc-product-change-history',
+        'История изменений товара',
+        'wc_product_change_logs_render_metabox',
+        'product',
+        'normal',
+        'default'
+    );
+}
+
+/**
+ * Читает логи по ID товара за все даты, начиная с новых.
+ * ID извлекается из служебной части записи, а не из названия товара.
+ * Возвращает не более $limit + 1 записей для постраничного вывода.
+ */
+function wc_get_product_logs_by_id($product_id, $offset = 0, $limit = 25) {
+    $product_id = absint($product_id);
+    $offset     = max(0, (int) $offset);
+    $limit      = max(1, min(100, (int) $limit));
+
+    if (!$product_id) {
+        return [];
+    }
+
+    // Форматы, которые записываются в этом файле:
+    // "Обновление товара #123 (...)" и
+    // "Движение остатков (Заказ #456): товар #123 (...)".
+    $pattern = '~^\[[^\]]+\]\s*(?:'
+        . '(?:Создание|Обновление|Удаление)\s+товара'
+        . '|Движение остатков\s*\(Заказ\s*#\d+\):\s*товар'
+        . ')\s*#' . $product_id . '\s*\(~u';
+
+    $result  = [];
+    $skipped = 0;
+
+    foreach (wc_get_product_log_files() as $file) {
+        if (!is_readable($file)) {
+            continue;
+        }
+
+        $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+        if ($lines === false) {
+            continue;
+        }
+
+        // Внутри каждого файла записи идут от старых к новым.
+        for ($i = count($lines) - 1; $i >= 0; $i--) {
+            if (!preg_match($pattern, $lines[$i])) {
+                continue;
+            }
+
+            if ($skipped < $offset) {
+                $skipped++;
+                continue;
+            }
+
+            $result[] = $lines[$i];
+
+            if (count($result) > $limit) {
+                break 2;
+            }
+        }
+    }
+
+    return $result;
+}
+
+function wc_product_change_logs_render_metabox($post) {
+    if (!current_user_can('manage_woocommerce') || !current_user_can('edit_post', $post->ID)) {
+        return;
+    }
+
+    $per_page = 25;
+    $page     = isset($_GET['wc_history_page'])
+        ? max(1, absint(wp_unslash($_GET['wc_history_page'])))
+        : 1;
+
+    $lines    = wc_get_product_logs_by_id($post->ID, ($page - 1) * $per_page, $per_page);
+    $has_next = count($lines) > $per_page;
+
+    if ($has_next) {
+        array_pop($lines);
+    }
+
+    if (!$lines) {
+        echo '<p>Записей об изменениях этого товара нет.</p>';
+        return;
+    }
+
+    echo '<p>Записи по ID товара за все даты, включая изменения названия и движения остатков по заказам.</p>';
+    echo '<table class="widefat striped">';
+    echo '<thead><tr><th style="width: 160px;">Дата и время</th><th>Запись</th></tr></thead>';
+    echo '<tbody>';
+
+    foreach ($lines as $line) {
+        $time = '';
+        $text = $line;
+
+        if (preg_match('/^\[([^\]]+)\]\s*(.*)$/u', $line, $matches)) {
+            $time = $matches[1];
+            $text = $matches[2];
+        }
+
+        echo '<tr>';
+        echo '<td>' . esc_html($time) . '</td>';
+        echo '<td>' . esc_html($text) . '</td>';
+        echo '</tr>';
+    }
+
+    echo '</tbody></table>';
+
+    if ($page > 1 || $has_next) {
+        $edit_url = get_edit_post_link($post->ID, 'raw');
+
+        echo '<p style="display: flex; align-items: center; gap: 12px; margin-top: 12px;">';
+
+        if ($page > 1) {
+            $prev_url = add_query_arg('wc_history_page', $page - 1, $edit_url);
+            echo '<a class="button" href="' . esc_url($prev_url . '#wc-product-change-history') . '">← Новые записи</a>';
+        }
+
+        echo '<span>Страница ' . esc_html($page) . '</span>';
+
+        if ($has_next) {
+            $next_url = add_query_arg('wc_history_page', $page + 1, $edit_url);
+            echo '<a class="button" href="' . esc_url($next_url . '#wc-product-change-history') . '">Старые записи →</a>';
+        }
+
+        echo '</p>';
+    }
+}
