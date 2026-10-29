@@ -32,11 +32,43 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
           if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
             continue;
           }
+          
+          $gift_card_design = $item->get_meta( '_ywgc_design', true );
 
+          if ( ! is_array( $gift_card_design ) ) {
+              $gift_card_design = [];
+          }
+
+          $gradient_css = '';
+
+          if ( ! empty( $gift_card_design['_plnt_giftcard_gradient_css'] ) ) {
+              $gradient_css = plnt_sanitize_giftcard_gradient_css(
+                  $gift_card_design['_plnt_giftcard_gradient_css']
+              );
+          }
+
+          if ( empty( $gradient_css ) ) {
+              $gradient_css = plnt_get_giftcard_fallback_gradient_css();
+          }
+
+          $image_url = '';
+
+          if ( ! empty( $gift_card_design['_plnt_giftcard_image_url'] ) ) {
+              $image_url = esc_url_raw(
+                  $gift_card_design['_plnt_giftcard_image_url']
+              );
+          }
+
+          if ( empty( $image_url ) ) {
+              $image_url = plnt_get_giftcard_fallback_image_url();
+          }
+
+          $wrapper_style = 'background-image:' . $gradient_css . ';';
+          
           // Сумма по позиции (числом, без форматирования HTML)
           $subtotal = $order->get_line_subtotal( $item, true, false ); // incl. tax, raw
           ?>
-
+     
           <div class="gift-card-order-item">
             <p class="gift-card__title">
               <?php
@@ -46,16 +78,20 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
               ?>
             </p>
 
-            <div class="gift-image-wrap">
-              <img
-                src="<?php echo esc_url( get_template_directory_uri() . '/images/gift-card/gc_cover.jpg' ); ?>"
-                class="gift-image"
-                alt="<?php echo esc_attr( $item->get_name() ); ?>"
-                loading="lazy"
-              >
-              <p class="gift-image-amount">
-                <?php echo esc_html( wc_format_decimal( $subtotal, 0 ) ); ?><span>₽</span>
-              </p>
+            <div
+                class="gift-image-wrap"
+                style="<?php echo esc_attr( $wrapper_style ); ?>"
+            >
+                <img
+                    src="<?php echo esc_url( $image_url ); ?>"
+                    class="gift-image"
+                    alt="<?php echo esc_attr( $item->get_name() ); ?>"
+                    loading="lazy"
+                >
+
+                <p class="gift-image-amount">
+                    <?php echo esc_html( wc_format_decimal( $subtotal, 0 ) ); ?><span>₽</span>
+                </p>
             </div>
             <div class="gift-payment">
               <p>Сумма к оплате:</p>
@@ -112,7 +148,7 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
 			<?php endif; ?>
 		</tfoot>
 	</table>
-  <?endif;?>
+  <?php endif; ?>
 
 	<?php
 	/**

@@ -23,7 +23,7 @@ class Popup {
     this.openBtns = document.querySelectorAll(`.${this.popupName}-open-btn`)
     this.body = document.querySelector('body')
     this.overlay = this.popup.querySelector('.popup-overlay')
-    this.closeBtn = this.popup.querySelector('.popup__close')
+    this.closeBtn = this.popup.querySelectorAll('.popup__close')
 
     return true
   }
@@ -46,11 +46,16 @@ class Popup {
   }
 
   addOpenListeners () {
-    this.openBtns.forEach(button => {
-      button.addEventListener ('click', (evt)=>{
-        this.openPopup()
-      })
-    })
+    document.addEventListener('click', (evt) => {
+      const button = evt.target.closest(`.${this.popupName}-open-btn`);
+
+      if (!button) {
+        return;
+      }
+
+      evt.preventDefault();
+      this.openPopup();
+    });
   }
 
   addCloseListeners() {
@@ -58,8 +63,10 @@ class Popup {
       this.closePopup()
     })
 
-    this.closeBtn.addEventListener('click', (evt) => {
-      this.closePopup()
+    this.closeBtn.forEach((button) => {
+      button.addEventListener('click', () => {
+        this.closePopup()
+      })
     })
 
     document.addEventListener('keydown', (e) =>{
@@ -93,6 +100,8 @@ class CF7Popup extends Popup {
     this.contactMethods = null
     this.tgNikWrap = null
     this.tgNikInput = null
+    this.productNameInput = null
+    this.productNameMirror = null
 
   }
 
@@ -108,6 +117,8 @@ class CF7Popup extends Popup {
       this.tgNikWrap = this.popup.querySelector('.tg-nik-wrap')
       this.tgNikInput = this.tgNikWrap.querySelector('input')
     }
+    this.productNameInput = this.popup.querySelector('input.product-name')
+    this.productNameMirror = this.popup.querySelector('.product-name-mirror')
     
     return true
   }
@@ -115,11 +126,20 @@ class CF7Popup extends Popup {
   cleanForm () {
     if(this.contactForm !=null) {
       this.contactForm.reset()
+      this.removeFieldsFocus()
     }
     if (this.tgNikWrap) {
-      this.tgNikWrap.classList.add('d-none')
+      this.tgNikWrap.classList.add('tg-nik-wrap--hidden')
       this.tgNikInput.value = ""
     }
+  }
+
+  openPopup() {
+    super.openPopup()
+
+    requestAnimationFrame(() => {
+      this.updateProductNameMirror()
+    })
   }
 
   closePopup () {
@@ -127,22 +147,88 @@ class CF7Popup extends Popup {
     this.cleanForm ()
   }
 
-  addContactFormListeners() {
-    if(this.contactForm !=null) {
-      this.contactForm.addEventListener('submit', (evt) => {this.preloader.classList.add('active')})
+  updateProductNameMirror() {
+    if (!this.productNameInput || !this.productNameMirror) return
 
-      document.addEventListener('wpcf7submit', (evt) => {
-          // Универсальный обработчик отправки
-          this.container.style.visibility = 'hidden';
-          this.preloader.classList.remove('active');
-          setTimeout(() => {
-            this.popup.classList.remove('popup_active');
-            this.body.classList.remove('fix-body');
-            this.cleanForm();
-            this.container.style.visibility = 'visible';
-          }, 4000);
-      }, false);
+    this.productNameMirror.textContent = this.productNameInput.value || ''
+  }
+
+  removeFieldsFocus() {
+    this.contactForm
+      ?.querySelectorAll('input, textarea')
+      .forEach((field) => {
+        field.classList.remove('focus')
+      })
+  }
+
+  updateFieldsFocus() {
+    this.contactForm
+      ?.querySelectorAll('input, textarea')
+      .forEach((field) => {
+        field.classList.toggle(
+          'focus',
+          field.value.trim() !== ''
+        )
+      })
+  }
+
+  addContactFormListeners() {
+    if (!this.contactForm) {
+      return
     }
+
+    this.contactForm.addEventListener(
+      'submit',
+      () => {
+        this.preloader?.classList.add('active')
+      }
+    )
+
+    document.addEventListener(
+      'wpcf7mailsent',
+      (event) => {
+        if (event.target !== this.contactForm) {
+          return
+        }
+
+        this.preloader?.classList.remove('active')
+
+        setTimeout(() => {
+          this.removeFieldsFocus()
+
+          this.container.classList.add('page-popup__container--submitted')
+        }, 0)
+
+        setTimeout(() => {
+          this.popup.classList.remove(
+            'popup_active'
+          )
+
+          this.body.classList.remove(
+            'fix-body'
+          )
+
+          this.cleanForm()
+
+          this.container.classList.remove('page-popup__container--submitted')
+        }, 4000)
+      }
+    )
+
+    document.addEventListener(
+      'wpcf7invalid',
+      (event) => {
+        if (event.target !== this.contactForm) {
+          return
+        }
+
+        this.preloader?.classList.remove('active')
+
+        setTimeout(() => {
+          this.updateFieldsFocus()
+        }, 0)
+      }
+    )
   }
 
   addServiceNameListeners() {
@@ -160,14 +246,12 @@ class CF7Popup extends Popup {
       this.contactMethods.forEach(input => {
         input.addEventListener('change', () => {
           if (input.checked && input.value === 'Написать в Telegram') {
-            console.log('Telegram выбран');
             if (this.tgNikWrap) {
-              this.tgNikWrap.classList.remove('d-none')
+              this.tgNikWrap.classList.remove('tg-nik-wrap--hidden')
             }
           } else {
-            console.log('не Telegram выбран');
             if (this.tgNikWrap) {
-              this.tgNikWrap.classList.add('d-none')
+              this.tgNikWrap.classList.add('tg-nik-wrap--hidden')
               this.tgNikInput.value = ""
             }
           } 
@@ -216,10 +300,47 @@ class LoginPopup extends Popup {
 
 }
 
-class MenuMobPopup extends Popup {
+class ModalPopup extends Popup {
   constructor (popupName) {
     super (popupName)
-    this.menu = null
+    this.modal = null
+  }
+
+  initDom() {
+    const ok = super.initDom()
+    if (!ok) return false
+    this.modal = this.popup.querySelector('.modal-mob')
+    return true
+  }
+
+  getModalBodyOffset() {
+    const modalBody = this.modal.querySelector('.modal-mob__body')
+    const offset = modalBody.getBoundingClientRect().top
+
+    this.modal.style.setProperty('--burgerMenuBodyTopOffset', `${offset}px`)
+  }
+
+  openPopup() {
+    super.openPopup()
+    this.modal.classList.add ('modal-mob--active')
+    this.modal.scrollTo(0, 0)
+    this.getModalBodyOffset()
+  }
+
+  closePopup() {
+    super.closePopup()
+    this.modal.classList.remove ('modal-mob--active')
+    this.modal.scrollTo(0, 0)
+  }
+
+  addAllListeners() {
+    super.addAllListeners()
+  }
+} 
+
+class MenuMobPopup extends ModalPopup {
+  constructor (popupName) {
+    super (popupName)
     this.menuOpenBtn = null
     this.catalogOpenBtn = null
     this.menuWrap = null
@@ -231,42 +352,33 @@ class MenuMobPopup extends Popup {
   initDom() {
     const ok = super.initDom()
     if (!ok) return false
-    this.menu = this.popup.querySelector('.modal-mob')
     this.menuOpenBtn = this.popup.querySelector('.burger-menu__nav_menu')
     this.catalogOpenBtn = this.popup.querySelector('.burger-menu__nav_catalog')
-    this.menuWrap = this.popup.querySelector('.burger-menu__wrap')
-    this.catalowWrap = this.popup.querySelector('.catalog-menu__wrap')
+    this.menuWrap = this.popup.querySelector('.burger-menu__body-inner--menu')
+    this.catalowWrap = this.popup.querySelector('.burger-menu__body-inner--catalog')
     this.mobHeaderCatalogOpenBtn = document.querySelector('.header__catalog_mob')
     this.mobMenuLoginPopupOpenBtn = document.querySelector('.burger-menu__account')
     return true
   }
 
-  openPopup() {
-    super.openPopup()
-    this.menu.classList.add ('modal-mob_active')
-    this.menu.scrollTo(0, 0)
-    this.openMenu()
-  }
-
-  closePopup() {
-    super.closePopup()
-    this.menu.classList.remove ('modal-mob_active')
-    this.menu.scrollTo(0, 0)
-  }
+    openPopup() {
+      super.openPopup()
+      this.openMenu()
+    }
 
   openMenu() {
-    this.menuWrap.classList.add('burger-menu__wrap_open');
+    this.menuWrap.classList.add('is-open');
     this.menuOpenBtn.classList.add('burger-menu__nav-btn_active');
     
-    this.catalowWrap.classList.remove('catalog-menu__wrap_open');
+    this.catalowWrap.classList.remove('is-open');
     this.catalogOpenBtn.classList.remove('burger-menu__nav-btn_active');
   }
 
   openCatalog() {
-    this.menuWrap.classList.remove('burger-menu__wrap_open');
+    this.menuWrap.classList.remove('is-open');
     this.menuOpenBtn.classList.remove('burger-menu__nav-btn_active');
     
-    this.catalowWrap.classList.add('catalog-menu__wrap_open');
+    this.catalowWrap.classList.add('is-open');
     this.catalogOpenBtn.classList.add('burger-menu__nav-btn_active');
   }
 
@@ -357,18 +469,60 @@ class NoticePopup extends Popup {
   }
 }
 
+class SearchPopup extends Popup {
+  constructor (popupName) {
+    super (popupName)
+    this.searchInput = null
+  }
+
+  focusSearch() {
+    this.searchInput.focus();
+    
+    // Для iOS - создаем временное событие touch
+    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        const clickEvent = document.createEvent('MouseEvents');
+        clickEvent.initEvent('touchstart', true, true);
+        this.searchInput.dispatchEvent(clickEvent);
+    }
+    
+    // Дополнительный трюк для некоторых Android устройств
+    setTimeout(() => {
+        this.searchInput.setSelectionRange(0, 0);
+    }, 100);
+  }
+
+  openPopup() {
+    super.openPopup()
+    this.focusSearch()
+  }
+
+  initDom() {
+    const ok = super.initDom()
+    if (!ok) return false
+    this.searchInput = document.querySelector('.search-popup .search-field');
+    return true
+  }
+}
+
+
+
 function initPopups() {
   const popup = new CF7Popup ('page-popup')
   const loginPoup = new LoginPopup ('login-popup')
   const menuMobPopup = new MenuMobPopup ('burger-menu')
   const sideCartPopup = new SideCartPopup ('side-cart-popup')
   // const noticePopup = new NoticePopup ('notice-popup')
+  const searchPopup = new SearchPopup ('search-popup')
+
+  const filtersPopup = new ModalPopup('catalog-filters')
 
   popup.init()
   loginPoup.init()
   // registrPoup.init()
   menuMobPopup.init()
   sideCartPopup.init()
+  filtersPopup.init()
+  searchPopup.init()
   // noticePopup.init()
   //debugPopup(noticePopup)
 

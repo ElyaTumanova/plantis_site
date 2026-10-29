@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php
 	if ( $order ) :
-
+    ?> <div class="woocommerce-order__hero section"><?php
 		do_action( 'woocommerce_before_thankyou', $order->get_id() );
 		?>
 
@@ -40,33 +40,76 @@ defined( 'ABSPATH' ) || exit;
 					<a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="button pay"><?php esc_html_e( 'My account', 'woocommerce' ); ?></a>
 				<?php endif; ?>
 			</p>
-
+    </div><!--woocommerce-order__hero-->
 		<?php else : ?>
 
 			<?php wc_get_template( 'checkout/order-received.php', array( 'order' => $order ) ); ?>
+    
+      <ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
+        <li class="woocommerce-order-overview__order order">
+          <span>Заказ</span>
+          <strong>#<?php echo esc_html( $order->get_order_number() ); ?></strong>
+        </li>
 
-			<ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
+        <li class="woocommerce-order-overview__date date">
+          <span>Дата</span>
+          <strong><?php echo esc_html( wc_format_datetime( $order->get_date_created() ) ); ?></strong>
+        </li>
 
-				<li class="woocommerce-order-overview__order order">
-					<?php esc_html_e( 'Order number:', 'woocommerce' ); ?>
-					<strong><?php echo $order->get_order_number(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></strong>
-				</li>
+        <?php if ( $order->get_payment_method_title() ) : ?>
+          <li class="woocommerce-order-overview__payment-method method">
+            <span>Оплата</span>
+            <strong><?php echo wp_kses_post( $order->get_payment_method_title() ); ?></strong>
+          </li>
+        <?php endif; ?>
 
-				<li class="woocommerce-order-overview__date date">
-					<?php esc_html_e( 'Date:', 'woocommerce' ); ?>
-					<strong><?php echo wc_format_datetime( $order->get_date_created() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></strong>
-				</li>
+        <?php if ( $order->get_shipping_method() ) : ?>
+          <li class="woocommerce-order-overview__shipping shipping">
+            <span>Доставка</span>
+            <strong><?php echo esc_html( $order->get_shipping_method() ); ?></strong>
+          </li>
+        <?php endif; ?>
 
-				<?php if ( $order->get_payment_method_title() ) : ?>
-					<li class="woocommerce-order-overview__payment-method method">
-						<?php esc_html_e( 'Payment method:', 'woocommerce' ); ?>
-						<strong><?php echo wp_kses_post( $order->get_payment_method_title() ); ?></strong>
-					</li>
-				<?php endif; ?>
-
-			</ul>
-
+        <li class="woocommerce-order-overview__total total">
+          <span>Итого</span>
+          <strong><?php echo wp_kses_post( $order->get_formatted_order_total() ); ?></strong>
+        </li>
+      </ul>
+    </div><!--woocommerce-order__hero-->
 		<?php endif; ?>
+
+    <section class="thankyou-next section">
+      <h2 class="h2 thankyou-next__title">Что будет дальше</h2>
+
+      <ul class="thankyou-next__list">
+        <li class="thankyou-next__item">
+          <span class="thankyou-next__number">01</span>
+
+          <div class="thankyou-next__content">
+            <h3 class="h5 thankyou-next__item-title">Подтвердим заказ</h3>
+            <p class="thankyou-next__descr">Менеджер проверит состав заказа и свяжется с вами удобным способом.</p>
+          </div>
+        </li>
+
+        <li class="thankyou-next__item">
+          <span class="thankyou-next__number">02</span>
+
+          <div class="thankyou-next__content">
+            <h3 class="h5 thankyou-next__item-title">Подготовим растения</h3>
+            <p class="thankyou-next__descr">Осмотрим растения, аккуратно соберём заказ и при необходимости пришлём фотографии.</p>
+          </div>
+        </li>
+
+        <li class="thankyou-next__item">
+          <span class="thankyou-next__number">03</span>
+
+          <div class="thankyou-next__content">
+            <h3 class="h5 thankyou-next__item-title">Согласуем получение</h3>
+            <p class="thankyou-next__descr">Уточним дату и время доставки или сообщим, когда заказ будет готов к самовывозу.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
 
 		<?php //do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() ); ?>
 		<?php do_action( 'woocommerce_thankyou', $order->get_id() ); ?>

@@ -13,13 +13,10 @@ function plnt_set_initials() {
     $hour = date("H");
     $today = date("d.m");
     $exp_days = ['07.03','08.03'];
-    $expensive_day_markup_delivery = carbon_get_theme_option('expensive_day_markup_delivery');
+    $expensive_day_markup_delivery = plnt_delivery_option('expensive_day_markup_delivery');
 
-    if ($hour >= 18 && $hour <20) {
-        WC()->session->set('isUrgent', '0' ); //0
-    } else {
-        WC()->session->set('isUrgent', '1' ); //1
-    }
+    // Выбранная по умолчанию дата — завтра; после 20:00 для завтра сохраняется срочный тариф.
+    WC()->session->set('isUrgent', $hour >= 20 ? '1' : '0');
 
     WC()->session->set('isLate', '0' );
     WC()->session->set('is_courier_deliv_flag', '0' );
@@ -48,7 +45,26 @@ function plnt_check() {
     // echo '<br>';
     $packages = WC()->shipping()->get_packages();
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
-    //print_r( $packages);
+    // foreach ( $packages as $package_index => $package ) {
+    //   if ( empty( $package['rates'] ) ) {
+    //       continue;
+    //   }
+
+    //     foreach ( $package['rates'] as $rate_id => $rate ) {
+    //         echo '<pre>';
+    //         print_r( array(
+    //             'package_index' => $package_index,
+    //             'rate_id'      => $rate_id,
+    //             'method_id'    => $rate->get_method_id(),
+    //             'instance_id'  => $rate->get_instance_id(),
+    //             'label'        => $rate->get_label(),
+    //             'cost'         => $rate->get_cost(),
+    //             'taxes'        => $rate->get_taxes(),
+    //         ) );
+    //         echo '</pre>';
+    //     }
+    // }
+    // print_r( $packages);
     // echo '<br>';
     //echo $delivery_pochta;
     echo $chosen_methods[0];
@@ -77,11 +93,12 @@ function plnt_check() {
     echo $today;
 
     $delivery_murkup = get_delivery_markup();
-    //print_r ($delivery_murkup);
+    // print_r ($delivery_murkup);
 
     //echo 'isCourier '.(WC()->session->get('is_courier_deliv_flag' )).'  ';
 
 }
+
 
 // срочная доставка
 add_action( 'wp_ajax_get_urgent_shipping', 'plnt_get_urgent_shipping' );
@@ -138,7 +155,7 @@ function plnt_shipping_conditions( $rates, $package ) {
     global $delivery_long_dist;
     global $delivery_pochta;
 
-    $late_markup_delivery = carbon_get_theme_option('late_markup_delivery');
+    $expensive_interval_markup_delivery = plnt_delivery_option('expensive_interval_markup_delivery');
 
     $chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
 
@@ -146,8 +163,8 @@ function plnt_shipping_conditions( $rates, $package ) {
     $delivery_markup_in_mkad = 0;
     $delivery_markup_out_mkad = 0;
 
-    $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
-    $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
+    $isUrgentCourierTariff = plnt_delivery_option('is_urgent_courier_tariff') == '1';
+    $isHolidayCourierTariff = plnt_delivery_option('is_holiday_courier_tariff') == '1';
     $isSmallHolidayCart = WC()->cart->subtotal < 5000;
     $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
 
@@ -158,8 +175,8 @@ function plnt_shipping_conditions( $rates, $package ) {
       // //проверяем срочную доставку и позднюю доставку
 
       if (WC()->session->get('isLate') === '1') {
-        $delivery_markup_in_mkad =  $delivery_markup_in_mkad + $late_markup_delivery;
-        $delivery_markup_out_mkad =  $delivery_markup_out_mkad + $late_markup_delivery;
+        $delivery_markup_in_mkad += $expensive_interval_markup_delivery;
+        $delivery_markup_out_mkad += $expensive_interval_markup_delivery;
       }
 
       if (WC()->session->get('isUrgent') === '1') {
@@ -238,11 +255,11 @@ function plnt_shipping_conditions( $rates, $package ) {
 add_filter( 'woocommerce_available_payment_gateways', 'plnt_disable_payment_small_order' );
 
 function plnt_disable_payment_small_order( $available_gateways ) {
-    $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-    $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
+    $min_small_delivery = plnt_delivery_option('min_small_delivery');
+    $min_medium_delivery = plnt_delivery_option('min_medium_delivery');
     // $isUrgentCourierTariff = true;
-    $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
-    $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
+    $isUrgentCourierTariff = plnt_delivery_option('is_urgent_courier_tariff') == '1';
+    $isHolidayCourierTariff = plnt_delivery_option('is_holiday_courier_tariff') == '1';
     $isSmallHolidayCart = WC()->cart->subtotal < 5000;
     $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
 

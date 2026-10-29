@@ -6,13 +6,13 @@
 // получаем корзину для обновления кнопок добавления в корзину
 //функция используется в плагнах Load More и BeRocket filters
 function plntAjaxGetWishMiniCart() {
-  //console.log('hi get minicart');
+  console.log('hi get minicart');
 
   ( function ( $ ) {
     "use strict";
   // Define the PHP function to call from here
     var data = {
-      'action': 'plnt_update_mini_cart'
+      'action': 'plnt_update_wishlist'
     };
     $.get(
       woocommerce_params.ajax_url, // The AJAX URL
@@ -23,25 +23,22 @@ function plntAjaxGetWishMiniCart() {
         //console.log(response.mini_cart);
         updateCatalogButtons();
 
-        $('.header-cart__link .header__count').html(response.cart_count); // Repopulate the specific element with the new content
-        $('.header-cart__mob .header__count').html(response.cart_count); // Repopulate the specific element with the new content
+        $('.header-cart__link .header__actions-count').html(response.cart_count); // Repopulate the specific element with the new content
+        $('.header-cart__mob .header__actions-count').html(response.cart_count); // Repopulate the specific element with the new content
         $('.side-cart__count').html(response.cart_count);
         if (response.cart_count >0) {
-          $('.header__main .header-cart .header-btn__wrap').addClass("header-btn__wrap_active");
-          $('.header__main .header-cart .header__count').addClass("header__count_active");
-          $('.header__nav-wrap .header-cart .header-btn__wrap').addClass("header-btn__wrap_active");
-          $('.header__nav-wrap .header-cart .header__count').addClass("header__count_active");
+          $('.header__main .header-cart .header__actions-count').addClass("header__actions-count--active");
+          $('.header__nav .header-cart .header__actions-count').addClass("header__actions-count--active");
         }
 
         updateWishBtns(response.wish);
 
         $('.yith-wcwl-items-count').children('i').html( response.count );
         if (response.count > 0) {
-            $('.header__main .header__wishlist .header-btn__wrap').addClass("header-btn__wrap_active");
-            $('.header__nav-wrap .header__wishlist .header-btn__wrap').addClass("header-btn__wrap_active");
-            $('.header__main .header__wishlist .header__count').addClass("header__count_active");
-            $('.header__nav-wrap .header__wishlist .header__count').addClass("header__count_active");
+            $('.header__main .header__wishlist .header__actions-count').addClass("header__actions-count--active");
+            $('.header__nav .header__wishlist .header__actions-count').addClass("header__actions-count--active");
         }
+        $('.cart_totals').replaceWith( response.cart_summary );
       }
     );
   // Close anon function.
@@ -55,6 +52,7 @@ document.addEventListener('DOMContentLoaded', plntAjaxGetWishMiniCart);
 --------------------------------------------------------------*/
 
 function updateCatalogButtons() {
+  console.log('hi updateCatalogButtons')
   // mini-cart уже должен быть обновлён: $('.mini-cart').html(response.mini_cart)
   const miniCartRoot = document.querySelector('.mini-cart');
   if (!miniCartRoot) return;
@@ -115,7 +113,7 @@ function updateCatalogButtons() {
 --------------------------------------------------------------*/
 
 function updateWishBtns(wishListItemsStr) {
-    //console.log('hi updateWishBtns');
+    console.log('hi updateWishBtns');
    // console.log(wishListItemsStr);
    if(wishListItemsStr) {
         let wishListItems = wishListItemsStr.split(',');
@@ -194,18 +192,17 @@ function getAddedPeresadkaMini() {
 jQuery(function($){
 	$( document.body ).on( 'updated_cart_totals', function(){
 		console.debug('hi updated_cart_totals');
-		swiper_backorder_crossells_init();
-		swiper_cart_upsells_init();
-		backorderCrossellInit();
-        cartUpsellsInit();
+    initCartProductRecs();
+		productSliders.destroyAll();
+    productSliders.init();
 		plntAjaxGetWishMiniCart();
-        getAddedPeresadka();
+    getAddedPeresadka();
 	});
 })
 
-// jQuery(document.body).on('wc_update_cart', function() {
-//     console.log('Cart was updated (via JS event)');
-// });
+jQuery(document.body).on('wc_update_cart', function() {
+    console.log('Cart was updated (via JS event)');
+});
 
 jQuery(document.body).on('wc_cart_emptied', function() {
   swiper_popular_slider_init();
@@ -214,6 +211,12 @@ jQuery(document.body).on('wc_cart_emptied', function() {
 jQuery(document.body).on('wc_fragments_loaded', function() {
     console.debug('Фрагменты корзины обновлены!');
     getAddedPeresadkaMini();
+});
+
+jQuery(function ($) {
+    $(document.body).on('updated_wc_div', function () {
+        console.log('Корзина успешно обновлена');
+    });
 });
 
 /*--------------------------------------------------------------

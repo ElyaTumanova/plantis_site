@@ -35,18 +35,21 @@ get_header( 'shop' );
 do_action( 'woocommerce_before_main_content' );
 
 ?>
-<header class="woocommerce-products-header">
-  <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-    <h1 class="woocommerce-products-header__title page-title">Результаты поиска: <?php if ($result['sku']){echo('Артикул ');}; echo esc_html($search) ?></h1>
-  <?php endif; ?>
-
-  <?php	do_action( 'woocommerce_archive_description' );?>
-</header>
+<section class="catalog__header section">
+  <div class="catalog__header-inner">
+    <header class="woocommerce-products-header">
+      <span class="catalog__header--eyebrow">Результаты поиска</span>
+      <h1 class="woocommerce-products-header__title page-title"><?php if ($result['sku']){echo('Артикул ');}; echo esc_html($search) ?></h1>
+    </header>
+  </div>
+</section>
 <?php
 
 if ( empty( $q_page->have_posts() ) ) {
-    do_action( 'woocommerce_no_products_found' );
-    get_template_part('template-parts/products/products-popular');
+  echo ('<section class="section">');
+  do_action( 'woocommerce_no_products_found' );
+  echo('</section>');
+  get_template_part('template-parts/products/products-popular'); 
 } else {
 
   if ( ! empty( $ordering_args['meta_key'] ) ) {

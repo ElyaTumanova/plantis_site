@@ -20,7 +20,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <div class="cart-stock-warning">
-  <p class='cart-error'><?php esc_html_e( 'Некоторые товары в Вашей корзине закончились. Вернитесь, пожалуйста, в корзину, чтобы скорректировать заказ.', 'woocommerce' ); ?></p>
+  <p class="woocommerce-error cart-error"><?php esc_html_e( 'Некоторые товары в Вашей корзине закончились. Вернитесь, пожалуйста, в корзину, чтобы скорректировать заказ.', 'woocommerce' ); ?></p>
 
   <?php do_action( 'woocommerce_cart_has_errors' ); ?>
 

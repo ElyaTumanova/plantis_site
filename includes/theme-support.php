@@ -23,8 +23,8 @@ if ( ! function_exists( 'ast_theme_support' ) ) :
 		// Woocommerce support
 		add_theme_support( 'woocommerce' );
 		//add_theme_support( 'wc-product-gallery-zoom' ); // отключаем зум для фото товара
-		add_theme_support( 'wc-product-gallery-lightbox' );
-		add_theme_support( 'wc-product-gallery-slider' );
+		// add_theme_support( 'wc-product-gallery-lightbox' );
+		// add_theme_support( 'wc-product-gallery-slider' ); работает на базе FlexSlider
 		// Add foundation.css as editor style https://codex.wordpress.org/Editor_Style
 		add_editor_style( 'assets/stylesheets/editor.css' );
 	}
@@ -162,3 +162,71 @@ add_action('template_redirect', function(){
     }
 });
 
+//Убирает добаление лишних тегов в CF7
+add_filter( 'wpcf7_autop_or_not', '__return_false' );
+
+/**
+ * Срок действия сессии
+ */
+
+add_filter( 'auth_cookie_expiration', function( $expiration, $user_id, $remember ) {
+    if ( $remember ) {
+        return 2 * DAY_IN_SECONDS;
+    }
+
+    return $expiration;
+}, 10, 3 );
+
+/**
+ * Timing debug
+ */
+
+global $plnt_timing_debug;
+
+$plnt_timing_debug = [
+    'last'  => null,
+    'items' => [],
+];
+
+function plnt_debug_time($label) {
+    global $plnt_timing_debug;
+
+    $now = microtime(true);
+
+    if ($plnt_timing_debug['last'] !== null) {
+        $ms = ($now - $plnt_timing_debug['last']) * 1000;
+
+        $plnt_timing_debug['items'][] = [
+            'label' => $label,
+            'time'  => $ms,
+        ];
+
+        printf(
+            "\n<!-- Timing: %s: %.2fms -->\n",
+            esc_html($label),
+            $ms
+        );
+    }
+
+    $plnt_timing_debug['last'] = $now;
+}
+
+function plnt_debug_time_output() {
+    global $plnt_timing_debug;
+
+    if (empty($plnt_timing_debug['items'])) {
+        return;
+    }
+
+    echo "\n<!-- TIMING SUMMARY\n";
+
+    foreach ($plnt_timing_debug['items'] as $item) {
+        printf(
+            "%-40s %.2fms\n",
+            $item['label'],
+            $item['time']
+        );
+    }
+
+    echo "-->\n";
+}

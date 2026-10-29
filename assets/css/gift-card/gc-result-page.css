@@ -1,0 +1,546 @@
+/*--------------------------------------------------------------
+# Gift card result page
+--------------------------------------------------------------*/
+
+.gift-card-content-area{
+  max-width: 1160px;
+  margin: 32px auto 64px;
+  padding: 0 20px;
+}
+
+@media (max-width: 560px){
+  .gift-card-content-area { 
+    padding: 0 16px; 
+    margin-top: 80px;
+  }
+  
+}
+
+.gift-card__title{
+  font-size: 40px;
+  line-height: 1.2;
+  margin: 0 0 8px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+@media (max-width: 767px) {
+    .gift-card__title {
+        font-size: 24px;
+    }
+}
+.page-popup__container .gift-card__title {
+  margin-top: 30px;
+}
+
+.gift-card__descr{
+  color: var(--gray-text);
+  margin: 0 0 24px;
+}
+
+/* Главный блок: карточка с изображением/данными + поздравление */
+.gift-card__main{
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (max-width: 900px){
+  .gift-card__main{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Левая карточка */
+.gift-card__wrap {
+  border: 1px solid #e7eaee;
+  box-shadow: none;
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px;
+}
+
+@media (max-width: 767px){
+  .gift-card__wrap {
+    padding: 14px;
+  }
+}
+
+.gift-image-wrap{
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f2f3f5;
+  /* aspect-ratio: 3 / 1; */
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: none;
+  background-color: #f2f3f5;
+}
+
+.gc-content-area .gift-image-wrap {
+  max-width: 500px;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  /* box-shadow: 0 0 8px rgba(0, 0, 0, .16); */
+  box-shadow: 25px 15px 45px rgba(0, 0, 0, 0.18);
+}
+
+.gift-card__main .gift-image-wrap {
+  max-height: 250px;
+  width: 100%;
+}
+
+.gift-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Строки с данными */
+.gift-card__row{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  border-top: 1px solid #eef0f2; 
+  padding: 12px 0;
+}
+
+@media (max-width:767px) {
+  .gift-card__row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+  }
+}
+.gift-card__row:first-of-type{ border-top: 0; }
+
+.gift-card__row p{
+  margin: 0;
+  font-size: 15px;
+}
+.gift-card__row p:first-child{ color: var(--gray-text); }
+.gift-card__row p:last-child{
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+.gift-card__row span{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+/* Блок поздравления (правая колонка) */
+.gift-card__greeting {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  border: 1px solid #e7eaee;
+  box-shadow: none;
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px;
+}
+@media (max-width: 767px){
+  .gift-card__greeting {
+      padding: 20px 14px;
+  }
+}
+.gift-card__greeting-to{
+  font-size: 18px;
+  font-weight: 700;
+}
+.gift-card__greeting-text{
+  line-height: 1.4;
+}
+.gift-card__greeting-from{
+  color: var(--gray-text);
+}
+
+/* Кнопка */
+.button.gift-card__btn{
+  color: var(--white);
+  font-weight: 600;
+  background: var(--text);
+  padding: 14px 20px;
+  margin-top: auto;
+}
+
+@media (max-width: 560px){
+  .button.gift-card__btn{ width: 100%; justify-content: center; }
+}
+
+/* Кнопка-копировать номер */
+.copy-wrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+@media (max-width: 767px) {
+    .copy-wrap {
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+/*--------------------------------------------------------------
+# Gift card check balance
+--------------------------------------------------------------*/
+
+.gift-card-cb-content-area {
+  max-width: 696px;
+  margin-inline: auto;
+  margin-top: 60px;
+  color: var(--black-color);
+}
+
+.gift-card__not-found {
+  /* position: absolute; */
+  /* bottom: 12px;
+  right: 12px;
+  left: 12px; */
+  padding: 8px 12px;
+  border-radius: 100px;
+  background-color: var(--white-color);
+  color: var(--gray-l-color);
+  text-align: center;
+}
+
+.gift-card__not-found span {
+  color: var(--red-color);
+}
+
+
+.gift-card__check-title {
+  margin-bottom: clamp(1.5rem, 1.3085rem + 0.8511vw, 2rem); /* 32px - 24px */
+  text-align: center;
+}
+.gc-balance-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gc-balance-form-wrap {
+  position: relative;
+  max-width: 480px;
+  margin: auto;
+}
+.gc-balance-form-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--green-l-color);
+  border-radius: var(--br-l);
+  position: absolute;
+  top: clamp(2.1875rem, 1.7088rem + 2.1277vw, 3.4375rem); /* 55px - 35px */
+  bottom: clamp(2.1875rem, 1.7088rem + 2.1277vw, 3.4375rem);
+  left: clamp(1rem, 0.7606rem + 1.0638vw, 1.625rem); /* 26px - 16px */
+  right:clamp(1rem, 0.7606rem + 1.0638vw, 1.625rem);
+}
+
+.gc-balance-form label {
+  margin-bottom: 10px;
+  display: block;
+  color: var(--gray-color);
+}
+
+.gc-balance-form input {
+  border-radius: 40px;
+  padding: 0px;
+  outline: none;  
+  margin: auto;
+  height: 40px;
+  width: 255px;
+  border: none;
+  border-radius: 0px;
+  background-color: var(--green-l-color);
+  text-align: center;
+}
+
+.gc-balance-form input::placeholder {
+  color: var(--gray-l-color);
+}
+
+.gc-balance-form-submit {
+  --btn-pad-inline: 20px;
+  --btn-pad-block: 14px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+
+.gc-balance__checkBtn.is-disabled,
+.gc-balance__checkBtn:disabled {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+
+
+/* new style */
+
+
+
+.gift-showcase__wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  min-width: 0;
+  max-width: 700px;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  .gift-showcase__wrap {
+    gap: 24px;
+  }
+}
+
+.gift-showcase__bottom {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  margin-inline: auto;
+  max-width: 720px;
+  gap: 24px;
+  width: 100%;
+}
+
+.gift-showcase__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gift-showcase__meta-item {
+  display: flex;
+  justify-content: center;
+}
+
+.gift-showcase__meta-item--code {
+  column-gap: 16px;
+  row-gap: 4px;
+  padding: 8px 12px;
+  border-radius: 100px;
+  background-color: var(--green-l-color);
+  color: var(--gray-l-color);
+}
+
+@media (max-width: 768px) {
+  .gift-showcase__meta-item--code {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.gift-showcase__meta-value--code {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--black-color);
+}
+
+.gift-showcase__meta-value--code .copy-btn {
+  color: var(--accent-color);
+}
+
+
+
+.gift-showcase__card {
+  min-width: 0;
+  width: 100%;
+}
+
+.gift-panel__head {
+  margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+  .gift-panel__head {
+    margin-bottom: 12px;
+  }
+}
+.gift-panel__switch {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--br-s);
+  background: var(--green-l-color);
+  width: 100%;
+}
+
+.gift-panel__switch-btn {
+  min-height: clamp(2.25rem, 1.9628rem + 1.2766vw, 3rem);
+  padding: 9px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--gray-color);
+  cursor: pointer;
+  transition: 0.25s ease;
+  flex-grow: 1;
+  font-size: clamp(0.875rem, 0.7793rem + 0.4255vw, 1.125rem);
+  font-weight: 500;
+}
+
+.gift-panel__switch-btn.is-active {
+  background: var(--white-color);
+  color: var(--black-color);
+}
+
+.gift-panel__body {
+  max-width: 450px;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  overflow: hidden;
+  min-width: 0;
+  margin: auto;
+  border-radius: var(--br-l);
+}
+
+@media (max-width: 380px) {
+  .gift-panel__body {
+    aspect-ratio: auto;
+    min-height: 200px;
+  }
+}
+
+.gift-panel__view {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition:
+    opacity 0.32s ease,
+    transform 0.32s ease,
+    visibility 0s linear 0.32s;
+
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.gift-panel__view.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition:
+    opacity 0.32s ease,
+    transform 0.32s ease,
+    visibility 0s linear 0s;
+
+  pointer-events: auto;
+}
+
+
+
+
+
+
+
+.gift-certificate {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  border-radius: var(--br-l);
+  overflow: hidden;
+
+  background-size: cover;
+  background-position: center;
+}
+
+.gift-certificate__image {
+  display: block;
+  width: 100%;
+  max-height: 100%;
+  max-width: 426px;
+  height: auto;
+  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+.gift-showcase__button {
+  --btn-pad-block: 14px;
+  min-width: 207px;
+}
+
+.gift-certificate__amount span {
+  margin-left: 3px;
+  font-size: 0.58em;
+  opacity: 0.7;
+}
+
+.gift-certificate__message {
+  padding: clamp(1rem, 0.9043rem + 0.4255vw, 1.25rem);
+  border-radius: var(--br-l);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  text-align: center;
+}
+
+.gift-certificate__message__to {
+  margin: 0 0 12px;
+  font-size: clamp(1.125rem, 1.0293rem + 0.4255vw, 1.375rem);
+  font-weight: 600;
+  color: var(--black-color);
+}
+
+@media (max-width: 768px) {
+  .gift-certificate__message__to {
+    margin-bottom: 8px;
+  }
+}
+
+.gift-certificate__message-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: clamp(0.875rem, 0.8271rem + 0.2128vw, 1rem);
+  overflow-y: auto;
+}
+@media (max-width: 768px) {
+  .gift-certificate__message-text {
+    gap: 4px;
+  }
+}
+.gift-certificate__message-text p {
+  margin: 0;
+  font-family:
+    'Onest', sans-serif,
+    "Segoe UI Emoji",
+    "Apple Color Emoji",
+    "Noto Color Emoji",
+    sans-serif;
+
+  font-variant-emoji: emoji;
+}
+
+

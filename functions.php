@@ -28,16 +28,19 @@ function ast_register_custom_fields() {
 /** Add functions for DEV & DEBUG */
 require get_template_directory() . '/includes/dev-support.php';
 
+
+require get_template_directory() . '/includes/helpers.php';
+
 /** Add functions fields for admin */
 require get_template_directory() . '/includes/admin-fields.php';
 
 /** Add functions for products change log */
 require get_template_directory() . '/includes/product-change-logs.php';
 /** Add functions for products expo metrics */
-require get_template_directory() . '/includes/product-expo.php';
+require get_template_directory() . '/includes/signals/product-expo.php';
+require get_template_directory() . '/includes/signals/signals.php';
 
-/** Add images for tags */
-require get_template_directory() . '/includes/tags-image.php';
+
 /** Add synonims for search */
 require get_template_directory() . '/includes/search-synonims.php';
 
@@ -45,6 +48,7 @@ require get_template_directory() . '/includes/search-synonims.php';
 require get_template_directory() . '/includes/constants.php';
 /** Add SEO support */
 require get_template_directory() . '/includes/seo-support.php'; // todo
+require get_template_directory() . '/includes/schema-support.php';
 /** Add New Yoast breadcrumd */
 require get_template_directory() . '/includes/yoast-breadcrumb.php';
 /** Add theme support */
@@ -70,10 +74,19 @@ require get_template_directory() . '/includes/xml/create_xml_task.php';
 /** Add recaptcha*/
 // require get_template_directory() . '/includes/wc-recapthca.php';
 
+require get_template_directory() . '/includes/front/icons.php';
+require get_template_directory() . '/includes/front/template-functions.php';
+
+require get_template_directory() . '/includes/admin/cat-images.php';
+require get_template_directory() . '/includes/admin/tags-image.php';
+require get_template_directory() . '/includes/admin/product-sale-tag.php';
+
+
 
 
 /** Add Woocommerce files */
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	require get_template_directory() . '/woocommerce/includes/wc-bootstrap.php';
 	require get_template_directory() . '/woocommerce/includes/wc-helpers-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-menu-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-cart-functions.php';
@@ -83,7 +96,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	require get_template_directory() . '/woocommerce/includes/wc-function.php';
 	require get_template_directory() . '/woocommerce/includes/wc-remove-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-card-function.php';
-	require get_template_directory() . '/woocommerce/includes/wc-catalog-functions.php';
+	// require get_template_directory() . '/woocommerce/includes/wc-catalog-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-yith-wishlist-finctions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-yith-giftcards-functions.php';
 	require get_template_directory() . '/woocommerce/includes/wc-account-functions.php';

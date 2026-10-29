@@ -8,4 +8,4 @@ function plnt_add_lazy_attr ($attr) {
 	return $attr;
 }
 
- add_filter( 'wp_get_attachment_image_attributes', 'plnt_add_lazy_attr', 10, 2);
+//  add_filter( 'wp_get_attachment_image_attributes', 'plnt_add_lazy_attr', 10, 2);

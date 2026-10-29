@@ -90,122 +90,7 @@ Contents
         return $description;
     }
 
-/*--------------------------------------------------------------
-# Checkout page adjustments
---------------------------------------------------------------*/
 
-    /* скрываем Уже покупали? и форму логирования на странице оформления заказа*/
-    remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
-
-    // // переместили блок с выбором способа оплаты
-    remove_action('woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20);
-    add_action('woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20);
-
-    // // информация о пересадке в горшок
-    add_action('woocommerce_checkout_shipping', 'plnt_checkout_peresadka_info', 15);
-
-    function plnt_checkout_peresadka_info(){
-        ?>
-        <div class="checkout__additional">Мы БЕСПЛАТНО пересадим вашего нового друга в качественный грунт при одновременной покупке растения и горшка (доплата за грунт не требуется).</div>
-        <?php
-    }
-
-    // // информация об условиях доставки
-    //add_action( 'woocommerce_checkout_order_review', 'plnt_delivery_condition_info', 30 );
-
-    // function plnt_delivery_condition_info () {
-    //     echo '<div class="checkout__text checkout__text_delivery-info">
-    //         После оформления заказа мы свяжемся с вами в <a href="https://plantis-shop.ru/contacts/">рабочее время</a> и согласуем время доставки.
-    //         <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a> <br>
-    //         Важно! Срочную доставку "день в день" можно оформить до 18 часов.</div>';
-    // }
-    
-    // хук для подарчной карты #giftcard
-
-    add_action( 'woocommerce_checkout_order_review', 'plnt_set_giftcard_hook', 25 );
-
-    function plnt_set_giftcard_hook() {
-        if (is_not_gift_card_checkout()) {
-           do_action( 'plnt_woocommerce_checkout_gift_card' );
-        };
-    }
-
-    // хук перед итоговой стоимостью
-    add_action( 'woocommerce_checkout_order_review', 'plnt_set_before_order_total_hook', 30 );
-
-    function plnt_set_before_order_total_hook() {
-        echo '<table class="plnt-before-order-total">
-        <tbody>' ;
-        do_action( 'woocommerce_review_order_before_order_total' );
-        echo '
-        </tbody>
-        </table>' ;
-    }
-
-    // добавляем фрагмент, чтобы апдейтить поле с подарочной картой
-    add_action( 'woocommerce_update_order_review_fragments', 'my_update_order_review_giftcard_fragments', 10, 1 );
-    function my_update_order_review_giftcard_fragments( $fragments ) {
-        ob_start();
-        plnt_set_before_order_total_hook();
-        $fragments[ 'table.plnt-before-order-total'] = ob_get_clean();
-        return $fragments;
-    }
-
-    // итоговая стоимость
-    add_action( 'woocommerce_checkout_order_review', 'plnt_order_total', 35 );
-
-    function plnt_order_total() {
-            ?>
-            <div class="plnt-order-total">
-                <div>Итого</div>
-                <div class="plnt-order-total_price"><?php wc_cart_totals_order_total_html(); ?></div>
-            </div>
-            <?php 
-    };
-
-    // добавляем фрагмент, чтобы апдейтить итоговую стоимость
-    add_action( 'woocommerce_update_order_review_fragments', 'my_update_order_review_fragments', 10, 1 );
-    function my_update_order_review_fragments( $fragments ) {
-        ob_start();
-        plnt_order_total();
-        $fragments[ 'div.plnt-order-total'] = ob_get_clean();
-        return $fragments;
-    }
-
-    // выводим в форме оформления заказа информацию, о товарах, которые закончились
-    add_action ('woocommerce_cart_has_errors', 'plnt_check_cart_item_stock');
-
-    function plnt_check_cart_item_stock() {
-
-      if ( ! WC()->cart ) return;
-
-      $out = [];
-
-      foreach ( WC()->cart->get_cart() as $cart_item ) {
-          if ( empty($cart_item['data']) || ! is_a($cart_item['data'], 'WC_Product' ) ) continue;
-
-          /** @var WC_Product $product */
-          $product = $cart_item['data'];
-
-          if ( $product->get_stock_status() === 'outofstock' ) {
-              $out[] = $product->get_name();
-          }
-      }
-
-      // Нечего выводить
-      if ( empty($out) ) return;
-
-      echo '<div class="cart-error-list" role="group" aria-label="Недоступные товары">';
-      echo '<div class="cart-error-list__title">Товары, недоступные для заказа</div>';
-      echo '<ul class="cart-error-list__items">';
-
-      foreach ( $out as $name ) {
-          echo '<li class="cart-error-list__item">' . esc_html( $name ) . '</li>';
-      }
-
-      echo '</ul>';
-      echo '</div>';
-    }
 /*--------------------------------------------------------------
 # Delivery date & Interval fields
 --------------------------------------------------------------*/
@@ -237,6 +122,39 @@ Contents
             ),
         );
         echo "</div>";
+    }
+
+    // Проверяем доступность доставки день в день на сервере.
+    // При запрете срочной доставки самовывоз остаётся доступным.
+    function plnt_is_same_day_delivery_blocked() {
+        if ( ! WC()->cart || ! WC()->cart->needs_shipping() ) {
+            return false;
+        }
+
+        global $local_pickup, $delivery_pochta;
+        $chosen = WC()->session ? (array) WC()->session->get('chosen_shipping_methods', array()) : array();
+        $method = $chosen[0] ?? '';
+        if ( $method === $local_pickup || $method === $delivery_pochta ) {
+            return false;
+        }
+
+        if ( check_if_large_delivery() ) {
+            return plnt_delivery_option('disable_urgent_large_delivery') == '1';
+        }
+        return plnt_delivery_option('disable_urgent_delivery') == '1';
+    }
+
+    // При отправке формы не полагаемся только на JS / disabled radio.
+    add_action( 'woocommerce_after_checkout_validation', 'plnt_validate_urgent_delivery_date', 10000, 2 );
+    function plnt_validate_urgent_delivery_date( $data, $errors ) {
+        if ( ! plnt_is_same_day_delivery_blocked() ) {
+            return;
+        }
+        $date = sanitize_text_field( (string) ( $data['delivery_dates'] ?? $_POST['delivery_dates'] ?? '' ) );
+        $today = wp_date( 'd.m', null, new DateTimeZone('Europe/Moscow') );
+        if ( $date === $today ) {
+            $errors->add( 'plnt_urgent_disabled', 'Доставка сегодня недоступна. Выберите другую дату.' );
+        }
     }
 
     add_action( 'woocommerce_checkout_order_review', 'plnt_add_delivery_dates', 15 );
@@ -271,6 +189,9 @@ Contents
             }
         }
         echo "<div class='delivery_wrap'>";
+        echo '<h3 class="delivery_wrap__title">Дата доставки (самовывоза)</h3>';
+        echo '<div class="delivery_slider-wrap">';
+        
         // выводим поле функцией woocommerce_form_field()
         woocommerce_form_field( 
             'delivery_dates', 
@@ -298,6 +219,9 @@ Contents
                 )
             ),
         );
+        echo '<div class="swiper-button-prev"></div>';
+        echo '<div class="swiper-button-next"></div>';
+        echo '</div>';
     }
 
     add_filter( 'woocommerce_form_field' , 'elex_remove_checkout_optional_text', 10, 4 );
@@ -314,15 +238,33 @@ Contents
 
     add_action( 'woocommerce_checkout_update_order_meta', 'plnt_save_delivery_fields', 25 );
     
-    function plnt_save_delivery_fields( $order_id ){
-    
-        if( ! empty( $_POST[ 'delivery_dates' ] ) ) {
-            update_post_meta( $order_id, 'delivery_dates', sanitize_text_field( $_POST[ 'delivery_dates' ] ) );
+    function plnt_save_delivery_fields($order_id) {
+        global $delivery_pochta;
+
+        $chosen_methods = WC()->session->get('chosen_shipping_methods', array());
+        $shipping_method = $chosen_methods[0] ?? '';
+
+        // Для Почты России дата и интервал доставки не используются.
+        if ($shipping_method === $delivery_pochta) {
+            delete_post_meta($order_id, 'delivery_dates');
+            delete_post_meta($order_id, 'additional_delivery_interval');
+            return;
         }
 
+        if (!empty($_POST['delivery_dates'])) {
+            update_post_meta(
+                $order_id,
+                'delivery_dates',
+                sanitize_text_field(wp_unslash($_POST['delivery_dates']))
+            );
+        }
 
-        if( ! empty( $_POST[ 'additional_delivery_interval' ] ) ) {
-            update_post_meta( $order_id, 'additional_delivery_interval', $_POST[ 'additional_delivery_interval' ] );
+        if (!empty($_POST['additional_delivery_interval'])) {
+            update_post_meta(
+                $order_id,
+                'additional_delivery_interval',
+                sanitize_text_field(wp_unslash($_POST['additional_delivery_interval']))
+            );
         }
     }
 
@@ -398,7 +340,16 @@ Contents
         // if( is_order_received_page() ) {
         // 	return $rows;
         // }
-    
+
+        global $delivery_pochta;
+
+        foreach ($order->get_shipping_methods() as $shipping_item) {
+            if ($shipping_item->get_method_id() === 'flat_rate'
+                && $shipping_item->get_instance_id() === 4) {
+                return $rows;
+            }
+        }
+            
         $rows[ 'delivery_dates' ] = array(
             'label' => 'Дата доставки (самовывоза)',
             'value' => get_post_meta( $order->get_id(), 'delivery_dates', true )
@@ -435,8 +386,8 @@ Contents
     add_action( 'woocommerce_checkout_order_review', 'my_delivery_small_oder_info', 40 );
 
     function my_delivery_small_oder_info () {
-        $min_free_delivery = carbon_get_theme_option('min_free_delivery');
-        $min_small_delivery = carbon_get_theme_option('min_small_delivery');
+        $min_free_delivery = plnt_delivery_option('min_free_delivery');
+        $min_small_delivery = plnt_delivery_option('min_small_delivery');
         if ($min_free_delivery) {
             if ( WC()->cart->subtotal < str_replace(" ","",$min_small_delivery)) {
                 $cart = str_replace(" ","",$min_small_delivery) - WC()->cart->subtotal;
@@ -454,52 +405,33 @@ Contents
         }
     }
 
-    // выбрана крупногабартная доставка (с использованием класса доставки - не применяем)
-    //add_action( 'woocommerce_checkout_order_review', 'my_delivery_large_products_oder_info', 40 );
-    //add_action( 'woocommerce_review_order_before_shipping', 'my_delivery_large_products_oder_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
-
-    function my_delivery_large_products_oder_info () {
-        $class_slug = 'delivery_large';
-
-        foreach ( WC()->cart->get_cart() as $cart_item ) {
-            if( $cart_item['data']->get_shipping_class() == $class_slug ){
-                echo '<tr> <td colspan="2" class="checkout__text checkout__text_large">
-                Вы выбрали крупногабаритный товар. Стоимость доставки увеличена. <a href="https://plantis-shop.ru/delivery/">Подробнее об условиях доставки.</a></td></tr>';
-                break; // Stop the loop
-            } 	
-        }
-    }
-
     // сообщение о крупногабартной доставке (с машинкой)
 
     add_action('plnt_large_delivery_notice', 'plnt_large_delivery_notice');
 
     function plnt_large_delivery_notice() {
-
-        if (check_if_large_delivery()) {
-            ?>
-            <div class=large_delivery_notice>
-            <img class=large_delivery_img src="https://plantis-shop.ru/wp-content/themes/plantis_site/images/icons/car.svg" alt="car">
-            <p>Для заказа предусмотрена крупногабаритная доставка!</p></div>
-            <?php
-        }
-        
+      if (check_if_large_delivery()) {
+        ?>
+          <div class=large_delivery_notice>
+          <?php echo plnt_icon('car');?>
+          <p>Для заказа предусмотрена крупногабаритная доставка!</p></div>
+        <?php
+      }
     }
-
     
     //комментарий к выбранному способу доставки
 
-    add_action( 'woocommerce_checkout_order_review', 'delivery_info', 10 );
+    add_action( 'woocommerce_checkout_order_review', 'delivery_info', 14 );
    
     function delivery_info(){
         if (! is_not_gift_card_checkout()) {
           return;
         }
-        $min_small_delivery = carbon_get_theme_option('min_small_delivery');
-        $min_medium_delivery = carbon_get_theme_option('min_medium_delivery');
+        $min_small_delivery = plnt_delivery_option('min_small_delivery');
+        $min_medium_delivery = plnt_delivery_option('min_medium_delivery');
         // $isUrgentCourierTariff = true;
-        $isUrgentCourierTariff = carbon_get_theme_option('is_urgent_courier_tariff') == '1';
-        $isHolidayCourierTariff = carbon_get_theme_option('is_holiday_courier_tariff') == '1';
+        $isUrgentCourierTariff = plnt_delivery_option('is_urgent_courier_tariff') == '1';
+        $isHolidayCourierTariff = plnt_delivery_option('is_holiday_courier_tariff') == '1';
         $isSmallHolidayCart = WC()->cart->subtotal < 5000;
         $isSmallHolidayTariffOn = $isHolidayCourierTariff && $isSmallHolidayCart;
         $shipping_costs = plnt_get_shiping_costs();
@@ -710,7 +642,7 @@ Contents
         }
     }
 
-    add_action( 'woocommerce_review_order_before_shipping', 'delivery_pochta_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
+    add_action( 'woocommerce_checkout_order_review', 'delivery_pochta_info', 11 ); //встраиваем в таблицу, использовать теги таблицы
 
     function delivery_pochta_info() {
         global $delivery_pochta;
@@ -728,8 +660,8 @@ Contents
         }
 
         if( $notOnlyPlantsInCart && $delivery_pochta == $chosen_methods[0]) {
-            echo '<tr> <td colspan="2" class="checkout__text checkout__text_pochta checkout__text_alarm">
-            Почтой России мы доставляем только комнатные растения.</td></tr>';
+            echo '<div class="checkout__text checkout__text_pochta checkout__text_alarm">
+            Почтой России мы доставляем только комнатные растения.</div>';
         }
     }
 
@@ -742,7 +674,7 @@ Contents
     //add_action( 'woocommerce_checkout_process', 'min_amount_for_category_lechuza' );
 
     function min_amount_for_category_treez(){
-        $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
+        $min_treez_delivery = plnt_delivery_option('min_treez_delivery');
         $qty = 0; // обязательно сначала ставим 0
         $cat_amount = 0;
         $products_min = false;
@@ -781,7 +713,7 @@ Contents
     }
 
     function min_amount_for_category_lechuza(){
-        $min_lechuza_delivery = carbon_get_theme_option('min_lechuza_delivery');
+        $min_lechuza_delivery = plnt_delivery_option('min_lechuza_delivery');
         $qty = 0; // обязательно сначала ставим 0
         $cat_amount = 0;
         $products_min = false;
@@ -821,11 +753,11 @@ Contents
 
 //уведомление о минимальной сумме заказа для Treez & Lechuza
     //add_action( 'woocommerce_checkout_order_review', 'min_amount_for_treez_info', 40 );
-    add_action( 'woocommerce_review_order_before_shipping', 'min_amount_for_treez_info', 10 ); //встраиваем в таблицу, использовать теги таблицы
-    add_action( 'woocommerce_review_order_before_shipping', 'min_amount_for_lechuza_info', 20 ); //встраиваем в таблицу, использовать теги таблицы
+    add_action( 'woocommerce_checkout_order_review', 'min_amount_for_treez_info', 11 ); //встраиваем в таблицу, использовать теги таблицы
+    add_action( 'woocommerce_checkout_order_review', 'min_amount_for_lechuza_info', 11 ); //встраиваем в таблицу, использовать теги таблицы
 
     function min_amount_for_treez_info(){
-        $min_treez_delivery = carbon_get_theme_option('min_treez_delivery');
+        $min_treez_delivery = plnt_delivery_option('min_treez_delivery');
         $qty = 0; // обязательно сначала ставим 0
         $cat_amount = 0;
         $products_min = false;
@@ -839,19 +771,16 @@ Contents
                 $cat_amount = $cat_amount + $price*$qty;
             }	
         }
-
-        // if( $cat_amount < $min_treez_delivery && $products_min) {
-        //     echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
-        //     Минимальная сумма заказа для кашпо и искусственных растений Treez <span>'.$min_treez_delivery,'</span> рублей (без учета стоимости других товаров).</td></tr>';
-        // }   
         if( $products_min) {
-            echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
-            Доставка кашпо и искусственных растений Treez осуществляется со склада в течение 3-7 дней. <br>Оплатить заказ с кашпо и искусственными растениями Treez можно будет после подтверждения их наличия. Наш менеджер свяжется с Вами после оформления заказа.</td></tr>';
+            echo '<div class="checkout__text checkout__text_treez checkout__text_alarm">
+            Доставка кашпо и искусственных растений Treez осуществляется со склада в течение 3-7 дней. 
+            <br>Оплатить заказ с кашпо и искусственными растениями Treez можно будет после подтверждения их наличия. 
+            Наш менеджер свяжется с Вами после оформления заказа.</div>';
         }   
     }
 
     function min_amount_for_lechuza_info(){
-        $min_lechuza_delivery = carbon_get_theme_option('min_lechuza_delivery');
+        $min_lechuza_delivery = plnt_delivery_option('min_lechuza_delivery');
         $qty = 0; // обязательно сначала ставим 0
         $cat_amount = 0;
         $products_min = false;
@@ -866,13 +795,11 @@ Contents
           }	
         }
 
-        // if( $cat_amount < $min_lechuza_delivery && $products_min) {
-        //     echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
-        //     Минимальная сумма заказа для кашпо Lechuza <span>'.$min_lechuza_delivery,'</span> рублей (без учета стоимости других товаров).</td></tr>';
-        // }   
         if( $products_min) {
-            echo '<tr> <td colspan="2" class="checkout__text checkout__text_treez checkout__text_alarm">
-            Доставка кашпо Lechuza осуществляется со склада в течение 3-7 дней. <br> Оплатить заказ с кашпо Lechuza можно будет после подтверждения их наличия. Наш менеджер свяжется с Вами после оформления заказа.</td></tr>';
+            echo '<div class="checkout__text checkout__text_treez checkout__text_alarm">
+            Доставка кашпо Lechuza осуществляется со склада в течение 3-7 дней. 
+            <br> Оплатить заказ с кашпо Lechuza можно будет после подтверждения их наличия. 
+            Наш менеджер свяжется с Вами после оформления заказа.</div>';
         }   
     }
 
@@ -964,15 +891,21 @@ function plnt_override_checkout_fields( $fields ) {
     $fields['billing']['billing_address_2']['priority'] = 40;
 
     //добавляем placeholder
-    $fields['billing']['billing_first_name']['placeholder'] = 'Имя (обязательно)';
-    $fields['billing']['billing_phone']['placeholder'] = 'Телефон (обязательно)';
-    $fields['billing']['billing_email']['placeholder'] = 'Email (обязательно)';
+    $fields['billing']['billing_first_name']['placeholder'] = 'Ваше имя';
+    $fields['billing']['billing_phone']['placeholder'] = '+7 999 999-99-99';
+    $fields['billing']['billing_email']['placeholder'] = 'example@yandex.com';
     //делаем обязательным
     $fields['billing']['billing_first_name']['required'] = true;
     $fields['billing']['billing_phone']['required'] = true;
     $fields['billing']['billing_email']['required'] = true;
     $fields['billing']['billing_address_1']['required'] = false;
     $fields['billing']['billing_address_2']['required'] = false;
+
+    //поле комментрай к заказу
+
+    $fields['order']['order_comments']['label'] = 'Дополнительная информация';
+
+    $fields['order']['order_comments']['placeholder'] = 'Примечания к заказу, например, указания по доставке';
 
     if (! WC()->cart->needs_shipping()) {
       unset( $fields['billing']['billing_address_1'] );
@@ -985,7 +918,7 @@ function plnt_override_checkout_fields( $fields ) {
 }
 
 //убираем заголовки
-add_filter( 'woocommerce_checkout_fields', 'hide_all_billing_field_labels' );
+//add_filter( 'woocommerce_checkout_fields', 'hide_all_billing_field_labels' );
 function hide_all_billing_field_labels( $fields ) {
     foreach ( $fields['billing'] as $key => &$field ) {
         $field['label'] = ''; // Удаляем заголовок
@@ -1019,10 +952,10 @@ function plnt_add_dontcallme_field_to_checkout( $fields ) {
         'required'    => true,
         'class'       => array( 'form-row dontcallme' ),
         'options'     => array(
-            'Позвонить' => 'Позвонить',
-            'Написать в Max'   => 'Написать в Max',
-            'Написать в Telegram'   => 'Написать в Telegram',
-            'Написать в Whatsapp'   => 'Написать в Whatsapp',
+            'Позвонить' => 'По телефону',
+            'Написать в Max'   => 'Max',
+            'Написать в Telegram'   => 'Telegram',
+            'Написать в Whatsapp'   => 'Whatsapp',
         ),
         'default'     => 'Позвонить',
     );
@@ -1141,13 +1074,34 @@ function plnt_print_inn_field_value( $order ){
     </div>
     <div class="edit_address">';
     woocommerce_wp_text_input( array(
-        'id' => 'inn',
+        'id' => 'additional_inn',
         'label' => 'ИНН',
+        'value'         => get_post_meta( $order->get_id(), 'additional_inn', true ),
         'wrapper_class' => 'form-field-wide',
     ) );
     echo '</div>';
 }
 
+//сохранение полей из админки
+add_action( 'woocommerce_process_shop_order_meta', 'plnt_save_custom_order_admin_fields', 45, 2 );
+
+function plnt_save_custom_order_admin_fields( $order_id, $post ) {
+    if ( isset( $_POST['additional_inn'] ) ) {
+        update_post_meta(
+            $order_id,
+            'additional_inn',
+            sanitize_text_field( wp_unslash( $_POST['additional_inn'] ) )
+        );
+    }
+
+    if ( isset( $_POST['additional_tg_nik'] ) ) {
+        update_post_meta(
+            $order_id,
+            'additional_tg_nik',
+            sanitize_text_field( wp_unslash( $_POST['additional_tg_nik'] ) )
+        );
+    }
+}
 
 // // добавляем новые поля в письма
 
@@ -1181,10 +1135,10 @@ function plnt_inn_field_in_email( $rows, $order ) {
     
             $field = '<p class="form-row address-field additional-address-field form-row-wide" data-priority="60">
                 <span class="woocommerce-input-wrapper true-wrapper woocommerce-address-wrapper">
-                    <input type="text" name="billing_address_2" id="billing_address_2" placeholder="Квартира" value="">
-                    <input type="text" name="billing_address_3" id="billing_address_3" placeholder="Подъезд" value="">
-                    <input type="text" name="billing_address_4" id="billing_address_4" placeholder="Этаж" value="">
-                    <input type="text" name="billing_address_5" id="billing_address_5" placeholder="Дополнительная информация" value="">
+                    <input type="text" name="billing_address_2" id="billing_address_2" placeholder="Квартира (если есть)" value="">
+                    <input type="text" name="billing_address_3" id="billing_address_3" placeholder="Подъезд (если есть)" value="">
+                    <input type="text" name="billing_address_4" id="billing_address_4" placeholder="Этаж (если есть)" value="">
+                    <input class="d-none" type="text" name="billing_address_5" id="billing_address_5" placeholder="Примечания к заказу, например, указания по доставке" value="">
                 </span>
             </p>';
     
@@ -1261,7 +1215,8 @@ function plnt_inn_field_in_email( $rows, $order ) {
           'label'       => '',
           'placeholder' => 'Ник в Telegram',
           'required'    => false,
-          'class'       => array( 'form-row tg-nik d-none' )
+          'class'       => array( 'form-row tg-nik d-none' ),
+          'priority'    => 40,
       );
 
       return $fields;
@@ -1296,6 +1251,7 @@ function plnt_inn_field_in_email( $rows, $order ) {
       woocommerce_wp_text_input( array(
           'id' => 'additional_tg_nik',
           'label' => 'Ник в TG',
+          'value'         => get_post_meta( $order->get_id(), 'additional_tg_nik', true ),
           'wrapper_class' => 'form-field-wide',
       ) );
       echo '</div>';
@@ -1319,24 +1275,6 @@ function plnt_inn_field_in_email( $rows, $order ) {
     return $rows;
   }
 
-  // // добавляем в контактные данные в заказ
-  // add_filter(
-  //   'woocommerce_order_get_formatted_billing_address',
-  //   'plnt_add_tg_nik_to_formatted_address',
-  //   10,
-  //   3
-  // );
-
-  // function plnt_add_tg_nik_to_formatted_address( $address, $raw_address, $order ) {
-
-  //   $tg_nik = $order->get_meta( 'additional_tg_nik' );
-
-  //   if ( ! empty( $tg_nik ) ) {
-  //       $address .= '<br><strong>Telegram:</strong> ' . esc_html( $tg_nik );
-  //   }
-
-  //   return $address;
-  // }
 /*--------------------------------------------------------------
 # T Bank
 --------------------------------------------------------------*/
@@ -1393,14 +1331,41 @@ add_filter( 'woocommerce_gateway_description', function( $description, $gateway_
 
     // уведомление Спасибо за заказ
 
-    add_filter( 'woocommerce_thankyou_order_received_text', 'plnt_custom_ty_msg' );
+    add_filter( 'woocommerce_thankyou_order_received_text', 'plnt_custom_ty_msg', 10, 2 );
 
-        function plnt_custom_ty_msg ( $thank_you_msg ) {
-            $emoji = '<img draggable="false" role="img" class="emoji" alt="😉" height="20px" width="20px" src="https://s.w.org/images/core/emoji/14.0.0/svg/1f609.svg">';
-            $thank_you_msg =  'Спасибо за ваш заказ! Наши менеджеры пляшут от радости! Как закончат танцевать, сразу вам перезвонят ' . $emoji ;
+  
 
-        return $thank_you_msg;
-    }
+function plnt_custom_ty_msg( $thank_you_msg, $order ) {
+  if ( ! $order instanceof WC_Order || $order->has_status( 'failed' ) ) {
+    return $thank_you_msg;
+  }
+
+  $shop_url   = wc_get_page_permalink( 'shop' );
+  $orders_url = wc_get_account_endpoint_url( 'orders' );
+
+  ob_start();
+  ?>
+  <span class="thankyou-hero__content">
+    <span class="thankyou-hero__icon" aria-hidden="true">
+     <?php echo plnt_icon('check_white');?>
+    </span>
+
+    <span class="thankyou-hero__eyebrow">Заказ успешно оформлен</span>
+    <span class="thankyou-hero__title h2">Спасибо за заказ!</span>
+
+    <span class="thankyou-hero__text">
+      Мы уже получили заказ и скоро свяжемся с вами, чтобы подтвердить детали. Информация о заказе также отправлена на вашу электронную почту.
+    </span>
+
+    <span class="thankyou-hero__actions">
+      <a class="thankyou-hero__button button button--green-l" href="<?php echo esc_url( $shop_url ); ?>">Продолжить покупки</a>
+      <a class="thankyou-hero__button button button--transparent" href="<?php echo esc_url( $orders_url ); ?>">Мои заказы</a>
+    </span>
+  </span>
+  <?php
+
+  return ob_get_clean();
+}
 
     // Чтобы в письмах выводилась стомость доставки 0 руб при самовывозе
     add_filter( 'woocommerce_get_order_item_totals', function( $totals, $order ) {

@@ -1,8 +1,8 @@
 // переменные для управления попапом
-const searchOpenPopupBtn = document.querySelectorAll('.search-btn');
+// const searchOpenPopupBtn = document.querySelectorAll('.search-btn');
 const searchWrap = document.querySelector('.search__wrap');
-const headerButns = document.querySelector('.header__main .header__wrap');
-const headerButnsMob = document.querySelector('.header__mob .search-btn');
+const headerButns = document.querySelector('.header__main .header__main-btns-wrap');
+// const headerButnsMob = document.querySelector('.header__mob .search-btn');
 const searchResultPopup = document.querySelector('.search-result-popup');
 const searchResult = document.querySelector('.search-result');
 const searchInput = document.querySelector('.search__wrap .search-field');
@@ -25,7 +25,7 @@ function openSearch(activeBtn = null) {
 function closeSearch() {
   // снимаем состояния у обёртки и кнопок
   searchWrap.classList.remove('search_open');
-  searchOpenPopupBtn.forEach(btn => btn.classList.remove('search_open'));
+  // searchOpenPopupBtn.forEach(btn => btn.classList.remove('search_open'));
 
   // всегда прячем и очищаем результаты
   closeSearchResults();
@@ -59,15 +59,15 @@ function closeSearchResults() {
 }
 
 // ====== события ======
-searchOpenPopupBtn.forEach(btn =>
-  btn.addEventListener('click', () => {
-    if (searchWrap.classList.contains('search_open')) {
-      closeSearch();
-    } else {
-      openSearch(btn);
-    }
-  })
-);
+// searchOpenPopupBtn.forEach(btn =>
+//   btn.addEventListener('click', () => {
+//     if (searchWrap.classList.contains('search_open')) {
+//       closeSearch();
+//     } else {
+//       openSearch(btn);
+//     }
+//   })
+// );
 
 // клик вне области — закрыть
 document.addEventListener('pointerdown', (e) => {
@@ -78,9 +78,9 @@ document.addEventListener('pointerdown', (e) => {
   if (
     searchWrap.contains(e.target) ||
     searchResult.contains(e.target) ||
-    headerButns?.contains(e.target) ||
-    headerButnsMob?.contains?.(e.target) ||
-    e.target === headerButnsMob
+    headerButns?.contains(e.target)
+    // headerButnsMob?.contains?.(e.target) ||
+    // e.target === headerButnsMob
   ) return;
 
   // иначе закрываем всё
@@ -88,7 +88,7 @@ document.addEventListener('pointerdown', (e) => {
 });
 
 //очистить строку поиска
-searchClear.addEventListener('click', ()=>{
-    focusSearch();
-    closeSearchResults();
-})
+// searchClear.addEventListener('click', ()=>{
+//     focusSearch();
+//     closeSearchResults();
+// })

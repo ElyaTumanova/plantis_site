@@ -1,0 +1,471 @@
+/* ========================================================================== */
+/* Plantis — «Сигналы»: скорость, ценовые группы, класс и динамика спроса */
+/* ========================================================================== */
+
+.plnt-signals-wrap .description {
+    margin: 8px 0 18px;
+}
+
+.plnt-signals-filters {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin: 12px 0 18px;
+}
+
+.plnt-signals-filters input[type="search"] {
+    width: 265px;
+    max-width: 100%;
+}
+
+.plnt-signals-filters select {
+    min-width: 170px;
+    max-width: 250px;
+}
+
+.plnt-signals-total {
+    margin-left: auto;
+    color: #646970;
+}
+
+@media (max-width: 782px) {
+    .plnt-signals-total {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+.plnt-signals-table-scroll {
+    overflow-x: auto;
+}
+
+.plnt-signals-table {
+    width: 100%;
+    min-width: 1120px;
+    table-layout: fixed;
+}
+
+.plnt-signals-table th {
+    padding: 8px 5px;
+    white-space: normal;
+    overflow-wrap: break-word;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.plnt-signals-table .plnt-signals-heading-product {
+    width: 22%;
+}
+
+.plnt-signals-table .plnt-signals-heading-prices {
+    width: 11%;
+}
+
+.plnt-signals-table .plnt-signals-heading-stock {
+    width: 5%;
+}
+
+.plnt-signals-table .plnt-signals-heading-velocity {
+    width: 9%;
+}
+
+.plnt-signals-table .plnt-signals-heading-class {
+    width: 5%;
+}
+
+.plnt-signals-table .plnt-signals-heading-trend {
+    width: 7.5%;
+}
+
+.plnt-signals-table .plnt-signals-heading-last-sale {
+    width: 8.5%;
+}
+
+.plnt-signals-table .plnt-signals-heading-average {
+    width: 9%;
+}
+
+.plnt-signals-table .plnt-signals-heading-recommendation {
+    width: 14%;
+}
+
+.plnt-signals-table thead th.sortable a,
+.plnt-signals-table thead th.sorted a {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+    white-space: normal;
+}
+
+.plnt-signals-table thead th.sortable a > span:first-child,
+.plnt-signals-table thead th.sorted a > span:first-child {
+    min-width: 0;
+}
+
+.plnt-signals-table thead th .sorting-indicators {
+    flex-shrink: 0;
+}
+
+.plnt-signals-table > tbody > tr.plnt-signals-row > td {
+    padding: 9px 5px;
+    vertical-align: middle;
+    font-size: 13px;
+}
+
+.plnt-signals-product {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.plnt-signals-product-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.plnt-signals-product-actions .button {
+    min-height: 24px;
+    padding: 0 6px;
+    font-size: 11px;
+    line-height: 22px;
+}
+.plnt-signals-photo {
+    flex: 0 0 40px;
+    width: 40px;
+}
+
+.plnt-signals-photo img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border: 1px solid #dcdcde;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.plnt-signals-details {
+    min-width: 0;
+}
+
+.plnt-signals-product-title {
+    display: block;
+    font-weight: 600;
+    line-height: 1.35;
+    text-decoration: none;
+}
+
+.plnt-signals-sku {
+    margin: 3px 0 6px;
+    color: #646970;
+    font-size: 12px;
+}
+
+.plnt-signals-price-line {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 3px;
+    row-gap: 0;
+    margin: 3px 0;
+    line-height: 1.3;
+}
+
+.plnt-signals-price-line strong {
+    white-space: nowrap;
+}
+
+.plnt-signals-price-line > span {
+    color: #646970;
+}
+
+.plnt-signals-sale-price {
+    color: #177245;
+}
+
+.plnt-signals-muted {
+    color: #646970;
+    font-size: 12px;
+}
+
+.plnt-signals-cell-number {
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+.plnt-signals-cell-velocity {
+    text-align: left;
+    font-variant-numeric: tabular-nums;
+}
+
+.plnt-signals-velocity {
+    display: block;
+    font-size: 13px;
+    line-height: 1.3;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.plnt-signals-period-detail {
+    display: block;
+    margin-top: 3px;
+    color: #646970;
+    font-size: 11px;
+    line-height: 1.3;
+}
+
+/* Класс востребованности и динамика в ценовой группе. */
+.plnt-signals-cell-class,
+.plnt-signals-cell-trend {
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+.plnt-signals-demand-class {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 27px;
+    min-height: 26px;
+    padding: 3px 6px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.plnt-signals-demand-class--a {
+    color: #11673b;
+    background: #dff4e8;
+}
+
+.plnt-signals-demand-class--b {
+    color: #835b08;
+    background: #fff0c9;
+}
+
+.plnt-signals-demand-class--c {
+    color: #626b75;
+    background: #eef0f2;
+}
+
+.plnt-signals-demand-class--n {
+    color: #255c9f;
+    background: #e4efff;
+}
+
+.plnt-signals-demand-trend {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.plnt-signals-demand-trend--up {
+    color: #16804b;
+}
+
+.plnt-signals-demand-trend--down {
+    color: #b32d2e;
+}
+
+.plnt-signals-demand-trend--flat {
+    color: #646970;
+}
+
+.plnt-signals-rec-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.plnt-signals-rec-cell .plnt-signals-discount-action {
+    height: auto;
+    min-height: 26px;
+    padding: 3px 6px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
+}
+
+#plnt-signals-notice .notice {
+    margin: 16px 0;
+}
+
+.plnt-signals-wrap .tablenav {
+    margin-top: 12px;
+}
+
+.plnt-signals-job-status {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    padding: 12px 14px;
+    margin: 14px 0 18px;
+    border: 1px solid #c3c4c7;
+    background: #fff;
+}
+
+.plnt-signals-job-status > span {
+    font-size: 13px;
+    color: #50575e;
+}
+
+.plnt-signals-job-status form {
+    margin: 0;
+}
+
+.plnt-signals-job-status form:first-of-type {
+    margin-left: auto;
+}
+
+.plnt-signals-job-error {
+    color: #b32d2e !important;
+}
+
+/* ========================================================================== */
+/* Редактор «Свойства»: сокращённая форма WooCommerce */
+/* ========================================================================== */
+
+.plnt-signals-table td.plnt-signals-editor-cell {
+    padding: 20px;
+    background: #f5f6f7;
+}
+
+.plnt-signals-editor-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 19px;
+}
+
+.plnt-signals-editor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px 22px;
+}
+
+@media (max-width: 1100px) {
+    .plnt-signals-editor-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 782px) {
+    .plnt-signals-editor-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.plnt-signals-editor-grid > label:not(.plnt-signals-checkbox) {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.plnt-signals-editor-grid > label:not(.plnt-signals-checkbox) > span {
+    color: #50575e;
+    font-weight: 500;
+}
+
+.plnt-signals-editor-grid input:not([type="checkbox"]),
+.plnt-signals-editor-grid select {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.plnt-signals-editor-grid input:disabled {
+    opacity: 0.6;
+}
+
+.plnt-signals-editor-grid .plnt-signals-checkbox {
+    display: flex;
+    align-items: center;
+    align-self: end;
+    min-height: 32px;
+    gap: 8px;
+}
+
+.plnt-signals-editor-grid .plnt-signals-checkbox input {
+    margin: 0;
+}
+
+.plnt-signals-editor-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid #dcdcde;
+}
+
+.plnt-signals-editor-actions .spinner {
+    float: none;
+    margin: 0 4px;
+}
+
+.plnt-signals-properties.is-saving .spinner {
+    visibility: visible;
+}
+
+.plnt-signals-error {
+    color: #b32d2e;
+}
+
+/* ========================================================================== */
+/* Рекомендации: текстовые статусы без иконок */
+/* ========================================================================== */
+
+.plnt-signals-rec {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    line-height: 1.4;
+}
+
+.plnt-signals-rec-label {
+    display: inline-block;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.plnt-signals-rec-detail {
+    display: block;
+    color: #646970;
+    font-size: 11px;
+}
+
+.plnt-signals-rec--add .plnt-signals-rec-label {
+    color: #9f3a13;
+    background-color: #fbe7da;
+}
+
+.plnt-signals-rec--remove .plnt-signals-rec-label {
+    color: #13663e;
+    background-color: #e0f2e8;
+}
+
+.plnt-signals-rec--active .plnt-signals-rec-label {
+    color: #58677a;
+    background-color: #edf0f3;
+}
+
+.plnt-signals-rec--none {
+    color: #757b82;
+    font-size: 12px;
+}

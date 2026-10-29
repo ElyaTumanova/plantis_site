@@ -8,14 +8,26 @@ add_action('wp_ajax_get_test_upsells', 'plnt_get_test_upsells_action_callback');
 add_action('wp_ajax_nopriv_get_test_upsells', 'plnt_get_test_upsells_action_callback');
 
 function plnt_get_test_upsells_action_callback() {
-    $cat_slug = $_POST['cat_slug'];
-    ob_start();
-    get_template_part('template-parts/products/products-plants-test',null,
-        array( // массив с параметрами
-            'cat_slug' => $cat_slug,
-        ));
-        
-    $response['test_upsells'] = ob_get_clean();
+  $cat_slug = $_POST['cat_slug'];
+  ob_start();
+  // get_template_part('template-parts/products/products-plants-test',null,
+  //     array( // массив с параметрами
+  //         'cat_slug' => $cat_slug,
+  //     ));
+
+  get_template_part('template-parts/products/product-slider', null, [
+    'queryArgs' => [
+      'tax_query' => [
+        [
+            'taxonomy' => 'product_cat',
+            'field'    => 'slug',
+            'terms'    => $cat_slug,
+        ],
+      ],
+    ],
+  ]);
+      
+  $response['test_upsells'] = ob_get_clean();
 
 	wp_send_json($response);
 	die();
@@ -27,58 +39,49 @@ add_action('wp_ajax_nopriv_get_main_cats_term', 'plnt_main_cats_slider_action_ca
 
 function plnt_main_cats_slider_action_callback() {
   $start_main = microtime(true);
-	$term_slug = $_POST['term'];
-	$term_type = $_POST['type'];
-    //   WC()->session->set('term_slug', $_POST['term'] );
-    //   WC()->session->set('term_type', $_POST['type'] );
 
-    $args = array(
-        'post_type' => 'product',
-        'ignore_sticky_posts' => 1,
-        'no_found_rows' => 1,
-        'posts_per_page' => 8,
-        'orderby' => 'rand',
-        'meta_query' => array( 
-            array(
-                'key'       => '_stock_status',
-                'value'     => array('outofstock','onbackorder'),
-                'compare'   => 'NOT IN'
-            )
-        ),
-        'tax_query' => array(
-          array(
+  $term_slug = isset($_POST['term']) ? sanitize_title(wp_unslash($_POST['term'])) : '';
+  $term_type = isset($_POST['type']) ? sanitize_key(wp_unslash($_POST['type'])) : '';
+
+  if (!$term_slug || !$term_type || !taxonomy_exists($term_type)) {
+      wp_send_json_error([
+          'message' => 'Invalid term or taxonomy',
+      ]);
+  }
+
+  $term = get_term_by('slug', $term_slug, $term_type);
+
+  if (!$term || is_wp_error($term)) {
+      wp_send_json_error([
+          'message' => 'Term not found',
+      ]);
+  }
+
+  ob_start();
+
+  get_template_part('template-parts/products/product-slider', null, [
+    'queryArgs' => [
+      'tax_query' => [
+        [
             'taxonomy' => $term_type,
-            'field' => 'slug',
-            'terms' => $term_slug,
-          )
-        ),
-    );
-    
-    $products = new WP_Query( $args );
-	  ob_start();
-    if ( $products->have_posts() ) : ?>  
-	
-		<div class="product-slider-wrap product-slider-swiper swiper">
-			<ul class="products columns-3 swiper-wrapper">
-				<?php while ( $products->have_posts() ) : $products->the_post(); ?>
+            'field'    => 'slug',
+            'terms'    => $term_slug,
+        ],
+      ],
+    ],
+    'isSwiperOver' => true
+  ]);
 
-				<?php wc_get_template_part( 'content', 'product' ); ?>
+  $slider_html = ob_get_clean();
 
-				<?php endwhile; // end of the loop. ?> 
-			</ul>
-			<div class="swiper-pagination"></div>
-			<div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div>
-		</div>
-		<a class="main__cats-all" href="<?php echo get_term_link( $term_slug, $term_type );?>">Все товары категории</a>
-    
-    <?php endif;
-    ?>
-    <!-- <div><?php //echo 'hello '.$term_slug.' '.$term_type ;?></div> -->
-    <?php
-    $main_timing = round((microtime(true) - $start_main) * 1000, 2);
-    $json_data['out'] = ob_get_clean();
-    $json_data['main_timing'] = $main_timing;
-    wp_send_json($json_data);
-    wp_die();
-};
+  $link_html = sprintf(
+    '<a class="front__products-all icon icon--arrow-right" href="%s">Все товары категории</a>',
+    esc_url(get_term_link($term))
+  );
+
+  wp_send_json_success([
+    'out'         => $slider_html,
+    'out_link'    => $link_html,
+    'main_timing' => round((microtime(true) - $start_main) * 1000, 2),
+  ]);
+}

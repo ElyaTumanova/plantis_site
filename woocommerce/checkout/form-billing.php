@@ -24,12 +24,12 @@ defined( 'ABSPATH' ) || exit;
 	<?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
 
 		<!-- <h3><?php //esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?></h3> -->
-        <h3 class="checkout__title">Контактная информация</h3>
+        <h3 class="checkout__title h3">Контактная информация</h3>
 
 	<?php else : ?>
 
 		<!-- <h3><?php //esc_html_e( 'Billing details', 'woocommerce' ); ?></h3> -->
-    <h3 class="checkout__title">Контактная информация</h3>
+    <h3 class="checkout__title h3">Контактная информация</h3>
 
 	<?php endif; ?>
 

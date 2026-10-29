@@ -60,28 +60,13 @@ function plnt_generate_feed_callback() {
 }
 
 /**
- * 2) Планируем ежедневный запуск (один раз в день, начиная "сейчас + 60 сек")
+ * Автоматическую генерацию ежедневно в 04:30 запускает ISPmanager.
+ * Расписание WP-Cron здесь не создаётся.
+ * Старые события очищаются однократно при загрузке signals-cron.php.
  */
-add_action('init', function () {
-    wp_clear_scheduled_hook('plnt_generate_yml_daily');
-    $hook = 'plnt_generate_feed_daily';
-
-    if (!wp_next_scheduled($hook)) {
-        // первый запуск через минуту от текущего времени
-        wp_schedule_event(time() + 60, 'daily', $hook);
-    }
-});
 
 /**
- * 3) Снимаем задачу при смене темы (если код живёт в теме)
- * Если это плагин — лучше использовать register_deactivation_hook.
- */
-// add_action('switch_theme', function () {
-//     wp_clear_scheduled_hook('plnt_generate_feed_daily');
-// });
-
-/**
- * 4) AJAX: посмотреть статус последнего запуска и следующее выполнение
+ * AJAX: посмотреть статус последнего запуска XML
  *
  * Вызов из админки, например:
  * /wp-admin/admin-ajax.php?action=plnt_feed_daily_status
@@ -92,16 +77,11 @@ add_action('wp_ajax_plnt_feed_daily_status', function () {
     }
 
     $hook      = 'plnt_generate_feed_daily';
-    $next_ts   = wp_next_scheduled($hook);
     $status    = get_option('plnt_generate_feed_daily_status', null);
 
     wp_send_json_success([
         'hook'     => $hook,
-        'next_run' => $next_ts ? [
-            'timestamp' => (int)$next_ts,
-            'local'     => wp_date('Y-m-d H:i:s', (int)$next_ts),
-            'relative'  => human_time_diff(time(), (int)$next_ts) . ' from now',
-        ] : null,
+        'next_run' => null, // За расписание отвечает ISPmanager, не WP-Cron.
         'last' => $status ? [
             'last_started_at'      => $status['last_started_at'] ?? null,
             'last_started_local'   => !empty($status['last_started_at'])
@@ -119,7 +99,7 @@ add_action('wp_ajax_plnt_feed_daily_status', function () {
 });
 
 /**
- * 5) AJAX: "запланировать сейчас" — как твоя кнопка schedule_now
+ * AJAX: исходная ссылка для немедленной ручной генерации
  *
  * /wp-admin/admin-ajax.php?action=plnt_feed_daily_schedule_now
  */
@@ -130,24 +110,13 @@ add_action('wp_ajax_plnt_feed_daily_schedule_now', function () {
 
     $hook = 'plnt_generate_feed_daily';
 
-    // Если нужно всегда пересоздавать — можно перед этим вызвать wp_clear_scheduled_hook($hook)
-    if (!wp_next_scheduled($hook)) {
-        wp_schedule_event(time() + 60, 'daily', $hook);
-    }
-
     // Запускаем СЕЙЧАС в этом же запросе
     do_action($hook);
 
 
-    $next_ts = wp_next_scheduled($hook);
-
     wp_send_json_success([
         'hook'     => $hook,
-        'next_run' => $next_ts ? [
-            'timestamp' => (int)$next_ts,
-            'local'     => wp_date('Y-m-d H:i:s', (int)$next_ts),
-            'relative'  => human_time_diff(time(), (int)$next_ts) . ' from now',
-        ] : null,
+        'next_run' => null, // Ночной запуск настроен отдельно через ISPmanager.
     ]);
 });
 

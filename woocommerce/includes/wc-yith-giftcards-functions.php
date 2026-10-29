@@ -120,6 +120,27 @@ function handle_giftcard_pay() {
     }
     $sender_name = sanitize_text_field( $sender_raw );
 
+    // 3.5 Градиент и изображение сертификата
+
+    $gradient_key = sanitize_key( $_POST['giftcard_gradient_key'] ?? '' );
+
+    $gradient_raw = $_POST['giftcard_gradient'] ?? '';
+
+    if ( is_array( $gradient_raw ) ) {
+        $gradient_raw = reset( $gradient_raw );
+    }
+
+    $gradient_css = plnt_sanitize_giftcard_gradient_css( $gradient_raw );
+
+    $image_raw = $_POST['giftcard_image'] ?? '';
+
+    if ( is_array( $image_raw ) ) {
+        $image_raw = reset( $image_raw );
+    }
+
+    $image_url = esc_url_raw( $image_raw );
+
+
     // 4. Создаём заказ
     $order = wc_create_order( [
         'status'      => 'pending',
@@ -167,8 +188,26 @@ function handle_giftcard_pay() {
             wc_add_order_item_meta( $item_id, '_ywgc_message', $message );
         }
 
+        //GC image & gradient
+
+        $gc_design = array(
+            '_plnt_giftcard_gradient_key' => $gradient_key,
+            '_plnt_giftcard_gradient_css' => $gradient_css,
+            '_plnt_giftcard_image_url'    => $image_url,
+        );
+
+        // Основное место хранения дизайна
+        wc_add_order_item_meta( $item_id, '_ywgc_design', $gc_design );
+
+        // Только для отображения в админке
+        $design_type_admin = sprintf(
+            '%s / %s',
+            $gradient_key ?: '-',
+            $image_url ? wp_basename( $image_url ) : '-'
+        );
+
         // Design type: default
-        wc_add_order_item_meta( $item_id, '_ywgc_design_type', 'default' );
+        wc_add_order_item_meta( $item_id, '_ywgc_design_type', $design_type_admin );
 
         // Has custom design: 1
         wc_add_order_item_meta( $item_id, '_ywgc_has_custom_design', 1 );
@@ -287,60 +326,45 @@ function plantis_send_gift_cards_on_completed( $order_id ) {
         return;
     }
 
-    // Если нужно – можно ограничить только нашими "кнопочными" заказами:
     if ( $order->get_created_via() !== 'giftcard_pay_button' ) {
         return;
     }
 
-    $order_items = $order->get_items();
-
     $gift_card_ids = [];
 
-    // Собираем ID подарочных карт из позиций заказа
     foreach ( $order->get_items() as $item_id => $item ) {
-        // // ID товара
-        // $product_id = $item->get_product_id();
-
-        // Объект товара
         $product = $item->get_product();
 
-         // Если товара нет — сразу к следующему
         if ( ! $product ) {
             continue;
         }
 
-        // Тип товара (simple, variable, gift-card и т.д.)
-        $product_type = $product->get_type();
-
-        // Нас интересуют только товары типа "gift-card"
-        if ( 'gift-card' !== $product_type ) {
+        if ( 'gift-card' !== $product->get_type() ) {
             continue;
         }
 
         $gift_card_post_ids = (array) $item->get_meta( '_ywgc_gift_card_post_id', true );
-        $gift_card_post_id  = isset( $gift_card_post_ids[0] ) ? $gift_card_post_ids[0] : null;
+        $gift_card_post_id  = isset( $gift_card_post_ids[0] ) ? absint( $gift_card_post_ids[0] ) : 0;
 
-        if ( $gift_card_post_id ) {
-            $gift_card_ids[] = $gift_card_post_id;
+        if ( ! $gift_card_post_id ) {
+            continue;
         }
+        
+        $gift_card_ids[] = $gift_card_post_id;
     }
-
 
     if ( empty( $gift_card_ids ) ) {
         return;
     }
 
-    // Класс, который умеет send_gift_card_email()
     if ( ! class_exists( 'YITH_YWGC_Emails_Premium' ) ) {
         return;
     }
 
-    // Берём singleton из твоего класса
     $emails = YITH_YWGC_Emails_Premium::get_instance();
 
     foreach ( $gift_card_ids as $gift_card_id ) {
         if ( method_exists( $emails, 'send_gift_card_email' ) ) {
-            // $only_new = true — не отправит повторно, если карта уже была отослана
             $emails->send_gift_card_email( $gift_card_id, true );
         }
     }
@@ -368,6 +392,69 @@ function auto_complete_virtual_orders( $order_id ) {
     }
 }
 
+
+/**
+ * Получить метаполе единственной позиции заказа подарочной карты.
+ *
+ * @param int    $gift_card_id ID записи gift_card.
+ * @param string $meta_key     Ключ метаполя позиции заказа.
+ * @param mixed  $default      Значение по умолчанию.
+ *
+ * @return mixed
+ */
+function plantis_get_gift_card_order_item_meta(
+    $gift_card_id,
+    $meta_key,
+    $default = ''
+) {
+    $gift_card_id = absint( $gift_card_id );
+
+    if ( ! $gift_card_id || ! $meta_key ) {
+        return $default;
+    }
+
+    /*
+     * ID заказа хранится в метаданных самой карты.
+     */
+    $order_id = get_post_meta(
+        $gift_card_id,
+        '_ywgc_order_id',
+        true
+    );
+
+    if ( is_array( $order_id ) ) {
+        $order_id = reset( $order_id );
+    }
+
+    $order = wc_get_order( absint( $order_id ) );
+
+    if ( ! $order ) {
+        return $default;
+    }
+
+    /*
+     * В заказе всегда одна позиция.
+     */
+    $items = $order->get_items( 'line_item' );
+
+    if ( empty( $items ) ) {
+        return $default;
+    }
+
+    $item = reset( $items );
+
+    if ( ! $item instanceof WC_Order_Item_Product ) {
+        return $default;
+    }
+
+    $value = $item->get_meta( $meta_key, true );
+
+    if ( '' === $value || null === $value ) {
+        return $default;
+    }
+
+    return $value;
+}
 
 /*--------------------------------------------------------------
 #EMAILS
@@ -614,34 +701,12 @@ add_action('yith_ywgc_show_gift_card_amount_selection', function(){
 },10);
 
 
-// add_filter('ywgc_recipient_name_label', function (){
-//   return 'Для кого подарок';
-// });
-// add_filter('ywgc_sender_name_label', function (){
-//   return 'От кого подарок';
-// });
-
-// add_filter('ywgc_edit_message_label', function (){
-//   return 'Поздравление';
-// });
-// add_filter('yith_wcgc_manual_amount_option_text', function (){
-//   return '';
-// });
-// add_filter('ywgc_add_to_cart_button_text', function (){
-//   return 'Перейти к оплате';
-// });
-
-// add_filter('ywgc_minimal_amount_error_text',function (){
-//   return 'Минимальная стоимость подарочного сертификата';
-// });
-
 add_filter( 'woocommerce_add_to_cart_redirect', function( $url ) {
     if ( isset( $_REQUEST['buy_now'] ) && '1' === $_REQUEST['buy_now'] ) {
         return wc_get_checkout_url();
     }
     return $url;
 });
-
 
 /*--------------------------------------------------------------
 #GIFT CARD PAGE
@@ -682,6 +747,61 @@ function plnt_get_giftcard_by_code( $code ) {
     return ! empty( $q->posts ) ? (int) $q->posts[0] : null;
 }
 
+//Design helpers
+//получаем картиники из ACF
+function plnt_get_giftcard_acf_images() {
+    $images = [];
+
+    if ( have_rows( 'gc-images', 'option' ) ) {
+        while ( have_rows( 'gc-images', 'option' ) ) {
+            the_row();
+
+            $images[ 'image-key' . get_row_index() ] = get_sub_field( 'image' );
+        }
+    }
+
+    return $images;
+}
+//Хелпер для получения массива
+function plnt_get_giftcard_designs_config() {
+	static $config = null;
+
+	if ( null === $config ) {
+		$config = require get_template_directory() . '/assets/data/gift-card-designs.php';
+	}
+
+	return is_array( $config ) ? $config : [];
+}
+
+
+
+
+//хелперы
+
+function plnt_sanitize_giftcard_gradient_css( $value ) {
+    $value = wp_strip_all_tags( (string) $value );
+    $value = str_replace( [ "\n", "\r", "\t" ], '', $value );
+    $value = trim( $value );
+
+    if (
+        '' === $value ||
+        false !== stripos( $value, 'javascript:' ) ||
+        false !== stripos( $value, 'expression(' ) ||
+        false !== stripos( $value, 'url(' )
+    ) {
+        return '';
+    }
+
+    return $value;
+}
+
+function plnt_get_giftcard_fallback_gradient_css() {
+    return 'radial-gradient(82% 100% at -4% -4%, rgba(144, 220, 255, 0.80) 0%, rgba(144, 220, 255, 0) 100%), radial-gradient(66% 84% at 104% 103%, rgba(79, 178, 255, 0.56) 0%, rgba(79, 178, 255, 0) 100%), radial-gradient(56% 68% at 50% 104%, rgba(190, 246, 255, 0.34) 0%, rgba(190, 246, 255, 0) 100%), linear-gradient(135deg, rgb(241, 249, 255) 0%, rgb(233, 245, 255) 100%)';
+}
+
+function plnt_get_giftcard_fallback_image_url() {
+    return esc_url_raw( get_template_directory_uri() . '/images/gift-card/covers/gift_main_cover_no_bg_large.png' );
+}
 
 /*--------------------------------------------------------------
 #PRICE FIX

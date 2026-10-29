@@ -28,6 +28,7 @@ function plnt_search_ajax_action_callback (){
 
     $raw = isset($_POST['s']) ? wp_unslash($_POST['s']) : '';
     $query = trim( sanitize_text_field($raw) );
+    $form_id = sanitize_key( $_POST['form_id'] ?? 'searchform' );
 
     // не ищем мусор
     if (mb_strlen($query) < 3) {
@@ -49,7 +50,13 @@ function plnt_search_ajax_action_callback (){
       }
       ?>
         </div>
-        <input class="search-result__btn button" type="submit" form ="searchform" value="Посмотреть все" />
+      <button
+        class="search-result__btn button--green-l button"
+        type="submit"
+        form="<?php echo esc_attr( $form_id ); ?>"
+      >
+        Посмотреть все
+      </button>
       <?php
     } else {
       ?>
@@ -90,7 +97,7 @@ function render_search_result($product) {
   $reg_html   = ($regular !== '' && $regular !== null) ? wc_price((float) $regular) : '';
   $sale_html  = ($sale !== '' && $sale !== null) ? wc_price((float) $sale) : '';
   ?>
-  <div class="search-result__item">
+  <div class="search-result__item product">
     <a href="<?php echo esc_url($url); ?>"
        class="search-result__link"
        target="_blank" rel="noopener noreferrer">
@@ -100,19 +107,23 @@ function render_search_result($product) {
            alt="<?php echo esc_attr($title); ?>">
 
       <div class="search-result__info">
-        <div class="search-result__row">
+        <div class="search-result__row search-result__row--title">
           <span class="search-result__title"><?php echo esc_html($title); ?></span>
           <?php plnt_check_stock_status(); ?>
         </div>
 
         <div class="search-result__row search-result__row_price">
-          <?php if ($sale_html && $reg_html): ?>
-            <span class="search-result__reg-price"><?php echo wp_kses_post($reg_html); ?></span>
-            <span class="search-result__price"><?php echo wp_kses_post($sale_html); ?></span>
-          <?php else: ?>
-            <span class="search-result__price"><?php echo wp_kses_post($price_html); ?></span>
-          <?php endif; ?>
+          <div class="product__price-wrap">
+            <?php 
+              woocommerce_template_single_price();
+              plnt_sale_badge(); 
+            ?>
+           </div>
         </div>
+      </div>
+
+      <div class="search-result__addtocart">
+        <?php woocommerce_template_loop_add_to_cart(); ?>
       </div>
     </a>
   </div>
@@ -146,8 +157,16 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
 
   // (опционально) SKU — если хотите, чтобы он был самым первым:
   $sku_id = wc_get_product_id_by_sku($search);
-  $ids_title   = plnt_collect_ids_by_text($search, 'title');
-  $ids_excerpt = plnt_collect_ids_by_text($search, 'excerpt');
+  // 1) title & excerpt
+  $ids_title = array_merge(
+    plnt_collect_ids_by_text_plants($search, 'title'),
+    plnt_collect_ids_by_text_other($search, 'title')
+  );
+
+  $ids_excerpt = array_merge(
+    plnt_collect_ids_by_text_plants($search, 'excerpt'),
+    plnt_collect_ids_by_text_other($search, 'excerpt')
+  );
 
   // 2) synonyms (как у вас, почти без изменений)
   $ids_by_cat_synonyms = [];
@@ -202,14 +221,33 @@ function plnt_get_search_query($search, $ordering_args=null, $per_page=null, $pa
       array_map('intval', (array)$ids_by_product_synonyms)
   )));
 
-  // 3) content (описание)
-  $ids_content = plnt_collect_ids_by_text($search, 'content');
+  // 1) title & excerpt plants treez
+  $ids_treez_title = plnt_collect_ids_by_text_treez($search, 'title');
+  $ids_treez_excerpt = plnt_collect_ids_by_text_treez($search, 'excerpt');
+
+  // 4) content (описание)
+  $ids_content = array_merge(
+    plnt_collect_ids_by_text_plants($search, 'content'),
+    plnt_collect_ids_by_text_other($search, 'content'),
+    plnt_collect_ids_by_text_treez($search, 'content')
+  );
 
   // Склейка с приоритетом групп + без дублей (порядок сохраняется)
   $all_ids = [];
   if ($sku_id) $all_ids[] = (int)$sku_id;
 
-  foreach ([$ids_title, $ids_excerpt, $ids_syn, $ids_content] as $chunk) {
+  foreach ([
+    $ids_title,
+    $ids_excerpt,
+
+    // Синонимы раньше искусственных растений
+    $ids_syn,
+
+    $ids_treez_title,
+    $ids_treez_excerpt,
+
+    $ids_content,
+  ] as $chunk) {
     foreach ((array)$chunk as $id) {
       $id = (int)$id;
       if ($id && !in_array($id, $all_ids, true)) $all_ids[] = $id;
@@ -300,71 +338,79 @@ add_filter('posts_search', function ($search, $wp_query) {
 
 
 //Хелпер: получить IDs товаров по строке и режиму (title_excerpt / content)
-function plnt_collect_ids_by_text($search, $mode) {
-    global $plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id;
+// Общий helper для текстового поиска
+function plnt_collect_ids_by_text_query($search, $mode, $args = []) {
+  $common = [
+    'post_type'      => 'product',
+    'post_status'    => 'publish',
+    's'              => $search,
+    'plnt_search_in' => $mode,
+    'fields'         => 'ids',
+    'posts_per_page' => -1,
+    'no_found_rows'  => true,
+    'orderby'        => 'meta_value',
+    'meta_key'       => '_stock_status',
+    'order'          => 'ASC',
+  ];
 
-    $common = [
-        'post_type'        => 'product',
-        'post_status'      => 'publish',
-        's'                => $search,
-        'plnt_search_in'   => $mode,      // <-- ключевое
-        'fields'           => 'ids',
-        'posts_per_page'   => -1,
-        'no_found_rows'    => true,
-        'orderby'          => 'meta_value',
-        'meta_key'         => '_stock_status',
-        'order'            => 'ASC',
-    ];
+  $q = new WP_Query(array_merge($common, $args));
 
-    $argPlants = $common + [
-        'tax_query' => [[
-            'taxonomy' => 'product_cat',
-            'field' => 'id',
-            'operator' => 'IN',
-            'terms' => [$plants_cat_id],
-            'include_children' => 1,
-        ]]
-    ];
+  return array_map('intval', (array)$q->posts);
+}
 
-    $argPlantsTreez = $common + [
-        'meta_query' => [[
-            'key'     => '_stock_status',
-            'value'   => 'outofstock',
-            'compare' => 'NOT IN',
-        ]],
-        'tax_query' => [[
-            'taxonomy' => 'product_cat',
-            'field' => 'id',
-            'operator' => 'IN',
-            'terms' => [$plants_treez_cat_id],
-            'include_children' => 1,
-        ]]
-    ];
-    
-    $argOther = $common + [
-        'meta_query' => [[
-            'key'     => '_stock_status',
-            'value'   => 'outofstock',
-            'compare' => 'NOT IN',
-        ]],
-        'tax_query' => [[
-            'taxonomy' => 'product_cat',
-            'field' => 'id',
-            'operator' => 'NOT IN',
-            'terms' => [$plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id],
-            'include_children' => 1,
-        ]]
-    ];
+// Обычные растения
+function plnt_collect_ids_by_text_plants($search, $mode) {
+  global $plants_cat_id;
 
-    $q1 = new WP_Query($argPlants);
-    $q2 = new WP_Query($argPlantsTreez);
-    $q3 = new WP_Query($argOther);
+  return plnt_collect_ids_by_text_query($search, $mode, [
+    'tax_query' => [[
+      'taxonomy'         => 'product_cat',
+      'field'            => 'id',
+      'operator'         => 'IN',
+      'terms'            => [$plants_cat_id],
+      'include_children' => true,
+    ]]
+  ]);
+}
 
-    $ids1 = array_map('intval', (array)$q1->posts);
-    $ids2 = array_map('intval', (array)$q2->posts);
-    $ids3 = array_map('intval', (array)$q3->posts);
+// Искусственные растения Treez
+function plnt_collect_ids_by_text_treez($search, $mode) {
+  global $plants_treez_cat_id;
 
-    return array_values(array_unique(array_merge($ids1, $ids2, $ids3)));
+  return plnt_collect_ids_by_text_query($search, $mode, [
+    'meta_query' => [[
+      'key'     => '_stock_status',
+      'value'   => 'outofstock',
+      'compare' => 'NOT IN',
+    ]],
+    'tax_query' => [[
+      'taxonomy'         => 'product_cat',
+      'field'            => 'id',
+      'operator'         => 'IN',
+      'terms'            => [$plants_treez_cat_id],
+      'include_children' => true,
+    ]]
+  ]);
+}
+
+// Остальные товары
+function plnt_collect_ids_by_text_other($search, $mode) {
+  global $plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id;
+
+  return plnt_collect_ids_by_text_query($search, $mode, [
+    'meta_query' => [[
+      'key'     => '_stock_status',
+      'value'   => 'outofstock',
+      'compare' => 'NOT IN',
+    ]],
+    'tax_query' => [[
+      'taxonomy'         => 'product_cat',
+      'field'            => 'id',
+      'operator'         => 'NOT IN',
+      'terms'            => [$plants_treez_cat_id, $peresadka_cat_id, $plants_cat_id],
+      'include_children' => true,
+    ]]
+  ]);
 }
 
 add_action('wp_ajax_get_search_nonce', 'plnt_get_search_nonce');

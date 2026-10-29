@@ -37,6 +37,9 @@ add_action( 'wp_footer', 'plnt_check_site' );
 	$plants_treez_cat_id = 17; //ok
 	$lechuza_cat_id = 265; //ok
 	$uncategorized_cat_id = 466; //ok
+
+  $pet_tag_id = 332;
+  $neprihotliv_tag_id = 334;
 	
 	$tags_podarki = array(
         420,
@@ -103,6 +106,7 @@ add_action( 'wp_footer', 'plnt_check_site' );
   $filter_plant_type_id = 9310; //ok
   $filter_plant_name_id = 9311; //ok
 	$filter_podborki_id = 9323; //ok
+	$filter_brands_id = 15876; //
 	$filter_in_stock_id = 6110; //undo
 	$filter_price_id = 9300; //ok
 	$filter_height_id = 9313; //ok
@@ -118,6 +122,8 @@ add_action( 'wp_footer', 'plnt_check_site' );
 	$filter_active_id = 9324; //ok
 	$filter_razmer_id = 60247; //to be updated
 	$filter_razmer_kashpo_id = 56545; //to be updated
+  $filter_podborki_slider_id = 15787;
+  $filter_clear_id = 15788;
 
 
 // } 
@@ -168,8 +174,3 @@ add_action( 'wp_footer', 'plnt_check_site' );
 // 	$filter_razmer_kashpo_id = 56545;
 
 // }
-
-/* Изображения и иконки */
-
-$filter_icon = get_template_directory_uri() . '/images/icons/filter_new.svg';
-

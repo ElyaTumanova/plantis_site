@@ -1,0 +1,257 @@
+PRODUCT LIGHTGALLERY
+
+.lg-backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.lg-outer {
+  --popup-size: min(800px, calc(100vh - 160px));
+  --thumb-size: 100px;
+  --popup-gap: 12px;
+}
+
+/* Основное изображение */
+
+.lg-outer .lg-content {
+  background: transparent;
+}
+
+.lg-outer .lg-inner {
+  background: transparent;
+}
+
+@media (min-width: 768px) {
+  .lg-outer .lg-item {
+    padding: 16px;
+  }
+
+  .lg-outer .lg-inner,
+  .lg-outer .lg-item,
+  .lg-outer .lg-img-wrap {
+    overflow: hidden;
+  }
+
+  .lg-outer .lg-img-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lg-outer .lg-object.lg-image {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    border-radius: var(--br-xl);
+    object-fit: contain;
+  }
+}
+
+/* Нижняя панель с миниатюрами */
+
+.lg-outer .lg-components {
+  background: transparent;
+}
+
+.lg-outer .lg-thumb-outer {
+  background: transparent;
+}
+
+.lg-outer .lg-thumb {
+  padding: 8px 0;
+}
+
+.lg-outer .lg-thumb-item {
+  width: var(--thumb-size) !important;
+  height: var(--thumb-size) !important;
+  margin-right: 10px !important;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  opacity: 0.55;
+  box-sizing: border-box;
+}
+
+.lg-outer .lg-thumb-item.active {
+  opacity: 1;
+  border-color: rgba(88, 92, 91, 0.12);
+}
+
+.lg-outer .lg-thumb-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Подпись */
+
+.lg-outer .lg-sub-html {
+  display: none;
+  padding: 8px 12px;
+  background: transparent;
+  color: var(--white-color);
+  font-size: 14px;
+}
+
+/* Стрелки */
+
+.lg-outer .lg-prev,
+.lg-outer .lg-next {
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  border-radius: 50%;
+  background: var(--background);
+  color: var(--text-color);
+}
+
+.lg-outer .lg-prev {
+  left: 24px;
+}
+
+.lg-outer .lg-next {
+  right: 24px;
+}
+
+/* Закрытие */
+
+.lg-outer .lg-toolbar {
+  background: transparent;
+}
+
+.lg-outer .lg-close {
+  position: relative;
+  margin: 16px;
+  border-radius: 50%;
+  background: var(--background);
+  color: var(--text-color);
+}
+
+.lg-backdrop {
+  z-index: 10000 !important;
+}
+
+.lg-outer {
+  z-index: 10001 !important;
+}
+
+.lg-icon.lg-zoom-in:after {
+  content: none;
+}
+
+@media (min-width: 768px) {
+  .lg-outer .lg-inner,
+  .lg-outer .lg-item,
+  .lg-outer .lg-img-wrap {
+    overflow: hidden;
+  }
+
+  .lg-outer .lg-img-wrap {
+    width: 100%;
+    height: 100%;
+  }
+
+  .lg-outer .lg-object.lg-image {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+  .lg-outer {
+    --thumb-size: 72px;
+  }
+
+  .lg-outer .lg-item {
+    padding: 0;
+  }
+
+  .lg-outer .lg-thumb-item {
+    width: var(--thumb-size) !important;
+    height: var(--thumb-size) !important;
+  }
+
+  .lg-outer .lg-prev,
+  .lg-outer .lg-next {
+    display: none;
+  }
+}
+
+/* LightGallery custom icons */
+
+.lg-outer .lg-close::before,
+.lg-outer .lg-next::before,
+.lg-outer .lg-prev::before {
+  content: none !important;
+  
+}
+
+.lg-outer .lg-close::after,
+.lg-outer .lg-next::after,
+.lg-outer .lg-prev::after {
+  content: "" !important;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: currentColor;
+  transform: translate(-50%, -50%);
+
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* close */
+.lg-outer .lg-close::after {
+  -webkit-mask-image: var(--close-icon);
+  mask-image: var(--close-icon);
+}
+
+/* next */
+.lg-outer .lg-next::after {
+  -webkit-mask-image: var(--chevron-right-icon);
+  mask-image: var(--chevron-right-icon);
+}
+
+/* prev */
+.lg-outer .lg-prev::after {
+  -webkit-mask-image: var(--chevron-left-icon);
+  mask-image: var(--chevron-left-icon);
+}
+
+.lg-outer .lg-close,
+.lg-outer .lg-prev,
+.lg-outer .lg-next {
+  color: var(--gray-color);
+  transition: color var(--transition-duration);
+}
+
+@media (hover: hover) {
+  .lg-outer .lg-close:hover,
+  .lg-outer .lg-prev:hover,
+  .lg-outer .lg-next:hover {
+    color: var(--gray-color);
+  }
+}
+
+.lg-outer .lg-thumb-item.active,
+.lg-outer .lg-thumb-item:hover {
+  border-color: var(--gray-l-color);
+}
+
+.lg-backdrop.in {
+    opacity: 0.7;
+}
