@@ -165,6 +165,17 @@ add_action('template_redirect', function(){
 //Убирает добаление лишних тегов в CF7
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
 
+/**
+ * Срок действия сессии
+ */
+
+add_filter( 'auth_cookie_expiration', function( $expiration, $user_id, $remember ) {
+    if ( $remember ) {
+        return 2 * DAY_IN_SECONDS;
+    }
+
+    return $expiration;
+}, 10, 3 );
 
 /**
  * Timing debug
