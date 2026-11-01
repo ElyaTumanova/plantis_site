@@ -80,6 +80,7 @@ require get_template_directory() . '/includes/front/template-functions.php';
 require get_template_directory() . '/includes/admin/cat-images.php';
 require get_template_directory() . '/includes/admin/tags-image.php';
 require get_template_directory() . '/includes/admin/product-sale-tag.php';
+require get_template_directory() . '/includes/admin/admin-order-peresadka.php';
 
 
 
