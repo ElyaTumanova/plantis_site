@@ -1,7 +1,7 @@
 <?php
 /**
  * Plantis — правила ACF и рекомендации по скидкам.
- * Данные сохраняются в plnt_signals_stats. Цены товаров НЕ меняем.
+ * Данные сохраняются в plnt_signals_stats. Цена изменяется только по действию сотрудника.
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -31,10 +31,9 @@ function plnt_signals_rounded_sale_price( $regular, $percent ) {
 }
 
 /**
- * ACF options page можно создать самостоятельно с собственным post_id.
- * Сначала используем post_id из предыдущего ТЗ, затем стандартный ACF 'option'.
- * Каждая строка репитера задаёт нижнюю границу остатка:
- * 1 = [1,2), 2 = [2,3), 3 = [3,∞) и т.д.
+ * Репитер ACF: остаток от, дней без продаж, скидка, %.
+ * Для одного порога остатка допустимо несколько строк с разными сроками.
+ * Например: 1 шт. — 30/45/60 дней -> 10/15/20%.
  */
 function plnt_signals_discount_rules() {
     static $cache = null;
@@ -48,22 +47,24 @@ function plnt_signals_discount_rules() {
     }
 
     $rows = get_field( 'plnt_signals_discount_rules', 'option' );
-
     if ( ! is_array( $rows ) || ! $rows ) {
         return $cache;
     }
 
+    $unique = array();
     foreach ( $rows as $row ) {
         $min      = isset( $row['min_stock'] ) ? absint( $row['min_stock'] ) : 0;
         $days     = isset( $row['days_without_sales'] ) ? absint( $row['days_without_sales'] ) : 0;
         $discount = isset( $row['discount_percent'] ) ? (float) $row['discount_percent'] : 0;
+
         if ( $min < 1 || $days < 1 || $discount <= 0 || $discount >= 100 ) {
             continue;
         }
 
-        // При дублировании нижней границы сохраняем первое подходящее правило.
-        if ( ! isset( $cache[ $min ] ) ) {
-            $cache[ $min ] = array(
+        // Дубли одного остатка и срока: выбираем наибольшую скидку.
+        $key = $min . ':' . $days;
+        if ( ! isset( $unique[ $key ] ) || $discount > $unique[ $key ]['discount_percent'] ) {
+            $unique[ $key ] = array(
                 'min_stock'        => $min,
                 'days'             => $days,
                 'discount_percent' => $discount,
@@ -71,15 +72,57 @@ function plnt_signals_discount_rules() {
         }
     }
 
-    ksort( $cache, SORT_NUMERIC );
-    return array_values( $cache );
+    $cache = array_values( $unique );
+    usort( $cache, function ( $a, $b ) {
+        return ( $a['min_stock'] <=> $b['min_stock'] ) ?: ( $a['days'] <=> $b['days'] );
+    } );
+
+    return $cache;
 }
 
-/** Находим строку с максимальной нижней границей, не превышающей остаток. */
-function plnt_signals_rule_for_stock( $stock ) {
-    $matched = null;
+/**
+ * Все ступени именно подходящей группы остатка.
+ * Например, 4 шт. попадают в группу «от 3», но не в группы «от 1» и «от 2».
+ */
+function plnt_signals_rules_for_stock( $stock ) {
+    $selected_min = 0;
+    $selected     = array();
+
     foreach ( plnt_signals_discount_rules() as $rule ) {
-        if ( $stock < $rule['min_stock'] ) {
+        if ( $rule['min_stock'] > $stock ) {
+            break;
+        }
+
+        if ( $rule['min_stock'] > $selected_min ) {
+            $selected_min = $rule['min_stock'];
+            $selected = array();
+        }
+
+        if ( $rule['min_stock'] === $selected_min ) {
+            $selected[] = $rule;
+        }
+    }
+
+    return $selected;
+}
+
+/**
+ * Для выбранного остатка берём максимальный достигнутый порог дней.
+ * Если $days не указан, возвращаем первую ступень для совместимости.
+ */
+function plnt_signals_rule_for_stock( $stock, $days = null ) {
+    $rules = plnt_signals_rules_for_stock( $stock );
+    if ( ! $rules ) {
+        return null;
+    }
+
+    if ( null === $days ) {
+        return $rules[0];
+    }
+
+    $matched = null;
+    foreach ( $rules as $rule ) {
+        if ( $days < $rule['days'] ) {
             break;
         }
         $matched = $rule;
@@ -157,51 +200,76 @@ function plnt_signals_completed_sale_after_discount( $product_id, $sale_started_
     ) );
 }
 
-/** Рассчитываем состояние одного товара на основании правила ACF. */
+/**
+ * Состояния:
+ * add — скидки нет, достигнута ступень;
+ * increase — скидка уже есть, но следующая ступень предлагает меньшую цену;
+ * remove — после начала акции выполнен заказ, порог первой ступени больше не достигнут;
+ * active — существующая скидка не требует изменения.
+ */
 function plnt_signals_calculate_recommendation( WC_Product $product, $stats = null ) {
     $none = array( 'type' => 'none', 'priority' => 0, 'discount' => 0, 'days' => 0, 'rule_days' => 0 );
     if ( ! $product->is_type( 'simple' ) || ! $product->managing_stock() ) {
         return $none;
     }
 
-    $stock = $product->get_stock_quantity();
-    if ( null === $stock || $stock <= 0 || (float) $product->get_regular_price( 'edit' ) <= 0 ) {
+    $stock   = $product->get_stock_quantity();
+    $regular = (float) $product->get_regular_price( 'edit' );
+    if ( null === $stock || $stock <= 0 || $regular <= 0 ) {
         return $none;
     }
 
-    $rule = plnt_signals_rule_for_stock( (int) $stock );
     $days = plnt_signals_days_since_sale( $product->get_id(), $stats );
-    if ( ! $rule || null === $days ) {
+    if ( null === $days ) {
         return $none;
     }
 
-    $reached = $days >= $rule['days'];
-    $sale    = (string) $product->get_sale_price( 'edit' );
-    $type    = 'none';
+    $first_rule = plnt_signals_rule_for_stock( (int) $stock );
+    if ( ! $first_rule ) {
+        return $none;
+    }
+
+    $rule   = plnt_signals_rule_for_stock( (int) $stock, $days );
+    $sale   = (string) $product->get_sale_price( 'edit' );
+    $type   = 'none';
     $priority = 0;
 
-    if ( '' === $sale && $reached ) {
-        $type = 'add';
-        $priority = 3;
-    } elseif ( '' !== $sale ) {
-        if ( ! $reached && plnt_signals_completed_sale_after_discount(
-            $product->get_id(),
-            get_post_meta( $product->get_id(), '_plnt_signals_sale_started_gmt', true )
-        ) ) {
-            $type = 'remove';
-            $priority = 2;
+    if ( '' === $sale ) {
+        if ( $rule ) {
+            $target_price = plnt_signals_rounded_sale_price( $regular, $rule['discount_percent'] );
+            if ( ! is_wp_error( $target_price ) ) {
+                $type = 'add';
+                $priority = 4;
+            }
+        }
+    } elseif ( ! $rule && plnt_signals_completed_sale_after_discount(
+        $product->get_id(),
+        get_post_meta( $product->get_id(), '_plnt_signals_sale_started_gmt', true )
+    ) ) {
+        $type = 'remove';
+        $priority = 2;
+    } elseif ( $rule ) {
+        $target_price = plnt_signals_rounded_sale_price( $regular, $rule['discount_percent'] );
+        if ( ! is_wp_error( $target_price ) && (float) $target_price < (float) $sale ) {
+            $type = 'increase';
+            $priority = 3;
         } else {
             $type = 'active';
             $priority = 1;
         }
+    } else {
+        $type = 'active';
+        $priority = 1;
     }
+
+    $display_rule = $rule ?: $first_rule;
 
     return array(
         'type'      => $type,
         'priority'  => $priority,
-        'discount'  => (float) $rule['discount_percent'],
+        'discount'  => (float) $display_rule['discount_percent'],
         'days'      => $days,
-        'rule_days' => (int) $rule['days'],
+        'rule_days' => (int) $display_rule['days'],
     );
 }
 

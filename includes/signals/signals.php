@@ -252,11 +252,12 @@ function plnt_signals_recommendation_html( WC_Product $product, array $rec ) {
     $type = $rec['type'];
     $days = (int) $rec['days'];
 
-    if ( 'add' === $type ) {
+    if ( in_array( $type, array( 'add', 'increase' ), true ) ) {
         $discount = (float) $rec['discount'];
         $price    = plnt_signals_rounded_sale_price( $product->get_regular_price( 'edit' ), $discount );
+        $label    = 'increase' === $type ? 'Увеличить скидку до −' : 'Скидка −';
         $html     = '<div class="plnt-signals-rec plnt-signals-rec--add">'
-            . '<strong class="plnt-signals-rec-label">Скидка −' . esc_html( wc_format_decimal( $discount, 0 ) ) . '%</strong>'
+            . '<strong class="plnt-signals-rec-label">' . esc_html( $label . wc_format_decimal( $discount, 0 ) . '%' ) . '</strong>'
             . '<span class="plnt-signals-rec-detail">Нет продаж ' . esc_html( $days ) . ' дн.</span>';
 
         if ( ! is_wp_error( $price ) ) {
@@ -333,7 +334,7 @@ function plnt_signals_product_row( WC_Product $product, $stats = null ) {
         ? get_date_from_gmt( $stats->last_sale_date_gmt, 'd.m.Y' ) : '—';
     $avg_price = $stats && null !== $stats->avg_sale_price_6m
         ? wc_price( $stats->avg_sale_price_6m ) : '—';
-    $apply_price = 'add' === $rec['type']
+    $apply_price = in_array( $rec['type'], array( 'add', 'increase' ), true )
         ? plnt_signals_rounded_sale_price( $regular, $rec['discount'] ) : null;
 
     ob_start();
@@ -438,14 +439,14 @@ function plnt_signals_product_row( WC_Product $product, $stats = null ) {
             <div class="plnt-signals-rec-cell">
                 <?php echo plnt_signals_recommendation_html( $product, $rec ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                 <?php if ( current_user_can( 'edit_post', $id ) ) : ?>
-                    <?php if ( 'add' === $rec['type'] && ! is_wp_error( $apply_price ) ) : ?>
+                    <?php if ( in_array( $rec['type'], array( 'add', 'increase' ), true ) && ! is_wp_error( $apply_price ) ) : ?>
                         <button
                             type="button"
                             class="button button-primary plnt-signals-discount-action"
                             data-operation="apply"
                             data-product-id="<?php echo esc_attr( $id ); ?>"
                             data-new-price="<?php echo esc_attr( number_format_i18n( $apply_price, 0 ) . ' ₽' ); ?>"
-                        >Применить скидку</button>
+                        ><?php echo 'increase' === $rec['type'] ? 'Увеличить скидку' : 'Применить скидку'; ?></button>
                     <?php elseif ( '' !== $sale ) : ?>
                         <button
                             type="button"
@@ -554,7 +555,7 @@ function plnt_signals_sort_posts_clauses( $clauses, $query ) {
         }
     }
 
-    if ( in_array( $rec_filter, array( 'add', 'remove', 'active', 'none' ), true ) ) {
+    if ( in_array( $rec_filter, array( 'add', 'increase', 'remove', 'active', 'none' ), true ) ) {
         $clauses['where'] .= $wpdb->prepare(
             " AND COALESCE(plnt_sort_stats.recommendation_type, 'none') = %s",
             $rec_filter
@@ -825,7 +826,7 @@ function plnt_signals_render_page() {
 
     $recommendation_status = isset( $_GET['recommendation_filter'] ) && is_string( $_GET['recommendation_filter'] )
         ? sanitize_key( wp_unslash( $_GET['recommendation_filter'] ) ) : '';
-    if ( ! in_array( $recommendation_status, array( '', 'add', 'remove', 'active', 'none' ), true ) ) {
+    if ( ! in_array( $recommendation_status, array( '', 'add', 'increase', 'remove', 'active', 'none' ), true ) ) {
         $recommendation_status = '';
     }
 
@@ -969,6 +970,7 @@ function plnt_signals_render_page() {
             <select id="plnt-signals-recommendation-filter" name="recommendation_filter">
                 <option value="">Все рекомендации</option>
                 <option value="add" <?php selected( $recommendation_status, 'add' ); ?>>Добавить скидку</option>
+                <option value="increase" <?php selected( $recommendation_status, 'increase' ); ?>>Увеличить скидку</option>
                 <option value="remove" <?php selected( $recommendation_status, 'remove' ); ?>>Снять скидку</option>
                 <option value="active" <?php selected( $recommendation_status, 'active' ); ?>>Скидка действует</option>
                 <option value="none" <?php selected( $recommendation_status, 'none' ); ?>>Без изменений</option>
@@ -1291,7 +1293,7 @@ add_action( 'wp_ajax_plnt_signals_discount_action', function () {
         $sale = (string) $product->get_sale_price( 'edit' );
 
         if ( 'apply' === $operation ) {
-            if ( 'add' !== $rec['type'] || '' !== $sale ) {
+            if ( ! in_array( $rec['type'], array( 'add', 'increase' ), true ) ) {
                 throw new RuntimeException( 'Условия рекомендации изменились. Обновите страницу.' );
             }
 
@@ -1307,7 +1309,7 @@ add_action( 'wp_ajax_plnt_signals_discount_action', function () {
             $product->set_date_on_sale_to( null );
             $product->set_sale_price( wc_format_decimal( $new_price, 0 ) );
             $product->set_price( wc_format_decimal( $new_price, 0 ) );
-            $message = 'Акционная цена установлена: ' . wp_strip_all_tags( wc_price( $new_price ) );
+            $message = ( 'increase' === $rec['type'] ? 'Скидка увеличена. Новая цена: ' : 'Акционная цена установлена: ' ) . wp_strip_all_tags( wc_price( $new_price ) );
         } else {
             if ( '' === $sale ) {
                 throw new RuntimeException( 'У товара уже нет акционной цены. Обновите страницу.' );
