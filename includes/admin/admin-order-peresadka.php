@@ -7,64 +7,64 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Есть ли в заказе комнатные растения.
  */
-function plnt_admin_order_has_plants( $order ) {
-    global $plants_cat_id;
+// function plnt_admin_order_has_plants( $order ) {
+//     global $plants_cat_id;
 
-    $plant_term = get_term_by(
-        'slug',
-        'komnatnye-rasteniya',
-        'product_cat'
-    );
+//     $plant_term = get_term_by(
+//         'slug',
+//         'komnatnye-rasteniya',
+//         'product_cat'
+//     );
 
-    foreach ( $order->get_items( 'line_item' ) as $item ) {
-        $product = $item->get_product();
+//     foreach ( $order->get_items( 'line_item' ) as $item ) {
+//         $product = $item->get_product();
 
-        if ( ! $product ) {
-            continue;
-        }
+//         if ( ! $product ) {
+//             continue;
+//         }
 
-        // Используем существующую функцию сайта.
-        if (
-            function_exists( 'check_category' )
-            && ! empty( $plants_cat_id )
-            && (int) check_category( $product ) === (int) $plants_cat_id
-        ) {
-            return true;
-        }
+//         // Используем существующую функцию сайта.
+//         if (
+//             function_exists( 'check_category' )
+//             && ! empty( $plants_cat_id )
+//             && (int) check_category( $product ) === (int) $plants_cat_id
+//         ) {
+//             return true;
+//         }
 
-        // Резервная проверка по категории и её потомкам.
-        if ( ! $plant_term ) {
-            continue;
-        }
+//         // Резервная проверка по категории и её потомкам.
+//         if ( ! $plant_term ) {
+//             continue;
+//         }
 
-        $product_id = $product->get_parent_id() ?: $product->get_id();
+//         $product_id = $product->get_parent_id() ?: $product->get_id();
 
-        $categories = wp_get_post_terms(
-            $product_id,
-            'product_cat',
-            array( 'fields' => 'ids' )
-        );
+//         $categories = wp_get_post_terms(
+//             $product_id,
+//             'product_cat',
+//             array( 'fields' => 'ids' )
+//         );
 
-        if ( is_wp_error( $categories ) ) {
-            continue;
-        }
+//         if ( is_wp_error( $categories ) ) {
+//             continue;
+//         }
 
-        foreach ( $categories as $category_id ) {
-            if (
-                (int) $category_id === (int) $plant_term->term_id
-                || in_array(
-                    (int) $plant_term->term_id,
-                    get_ancestors( $category_id, 'product_cat', 'taxonomy' ),
-                    true
-                )
-            ) {
-                return true;
-            }
-        }
-    }
+//         foreach ( $categories as $category_id ) {
+//             if (
+//                 (int) $category_id === (int) $plant_term->term_id
+//                 || in_array(
+//                     (int) $plant_term->term_id,
+//                     get_ancestors( $category_id, 'product_cat', 'taxonomy' ),
+//                     true
+//                 )
+//             ) {
+//                 return true;
+//             }
+//         }
+//     }
 
-    return false;
-}
+//     return false;
+// }
 
 /**
  * Получить доступные пересадки из cross-sell товара.
@@ -155,10 +155,6 @@ function plnt_admin_render_peresadka_button( $item_id, $item, $product ) {
         return;
     }
 
-    if ( ! plnt_admin_order_has_plants( $order ) ) {
-        return;
-    }
-
     $peresadki = plnt_admin_get_peresadka_products( $product );
 
     if ( empty( $peresadki ) ) {
@@ -233,10 +229,6 @@ function plnt_admin_ajax_add_peresadka() {
 
     if ( ! $parent_product ) {
         wp_send_json_error( array( 'message' => 'Товар не найден.' ) );
-    }
-
-    if ( ! plnt_admin_order_has_plants( $order ) ) {
-        wp_send_json_error( array( 'message' => 'В заказе нет комнатных растений.' ) );
     }
 
     if ( plnt_admin_order_has_peresadka( $order, $item_id ) ) {
