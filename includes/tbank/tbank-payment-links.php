@@ -4,7 +4,7 @@
  *
  * Установка: require_once get_stylesheet_directory() . '/inc/tbank-payment-links.php';
  * Требования: WooCommerce, существующие настройки шлюза tbank.
- * Версия: 1.0.2
+ * Версия: 1.0.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -160,6 +160,33 @@ function plnt_tbank_links_add_receipt_line( &$items, $name, $amount, $quantity, 
     return true;
 }
 
+/** Контакт для фискализации: единая проверка для интерфейса и сервера. */
+function plnt_tbank_links_receipt_contacts( $order ) {
+    $contacts = array();
+
+    $email = sanitize_email( $order->get_billing_email() );
+    if ( is_email( $email ) ) {
+        $contacts['Email'] = mb_substr( $email, 0, 64 );
+    }
+
+    $digits = preg_replace( '/\D+/', '', (string) $order->get_billing_phone() );
+    if ( 11 === strlen( $digits ) && '8' === $digits[0] ) {
+        $digits = '7' . substr( $digits, 1 );
+    }
+    if ( 10 === strlen( $digits ) ) {
+        $digits = '7' . $digits;
+    }
+    if ( strlen( $digits ) >= 11 && strlen( $digits ) <= 15 ) {
+        $contacts['Phone'] = '+' . $digits;
+    }
+
+    if ( ! isset( $contacts['Email'] ) && ! isset( $contacts['Phone'] ) ) {
+        return new WP_Error( 'plnt_tbank_contact', 'Для фискализации укажите в заказе корректный email или телефон покупателя.' );
+    }
+
+    return $contacts;
+}
+
 /** Сбор чека без зависимости от WC()->cart и действующих цен каталога. */
 function plnt_tbank_links_receipt( $order, $settings ) {
     $ffd = (string) ( $settings['ffd'] ?? '' );
@@ -180,25 +207,11 @@ function plnt_tbank_links_receipt( $order, $settings ) {
         'Items'      => array(),
     );
 
-    $email = sanitize_email( $order->get_billing_email() );
-    if ( is_email( $email ) ) {
-        $receipt['Email'] = mb_substr( $email, 0, 64 );
+    $contacts = plnt_tbank_links_receipt_contacts( $order );
+    if ( is_wp_error( $contacts ) ) {
+        return $contacts;
     }
-
-    $digits = preg_replace( '/\D+/', '', (string) $order->get_billing_phone() );
-    if ( 11 === strlen( $digits ) && '8' === $digits[0] ) {
-        $digits = '7' . substr( $digits, 1 );
-    }
-    if ( 10 === strlen( $digits ) ) {
-        $digits = '7' . $digits;
-    }
-    if ( strlen( $digits ) >= 11 && strlen( $digits ) <= 15 ) {
-        $receipt['Phone'] = '+' . $digits;
-    }
-
-    if ( ! isset( $receipt['Email'] ) && ! isset( $receipt['Phone'] ) ) {
-        return new WP_Error( 'plnt_tbank_contact', 'Для фискализации укажите в заказе корректный email или телефон покупателя.' );
-    }
+    $receipt = array_merge( $receipt, $contacts );
 
     $company_email = sanitize_email( (string) ( $settings['email_company'] ?? '' ) );
     if ( is_email( $company_email ) ) {
@@ -291,13 +304,41 @@ function plnt_tbank_links_apply_status( $order, $index, $status, $payment_id, $a
 
         if ( $actual_total !== (int) $amount ) {
             $order->add_order_note( 'ВНИМАНИЕ: Т-Банк подтвердил оплату ' . $payment_id . ', но сумма текущего заказа отличается от оплаченной. Проверьте вручную!' );
-        } elseif ( $order->is_paid() ) {
-            if ( (string) $order->get_transaction_id() !== (string) $payment_id ) {
-                $order->add_order_note( 'ВНИМАНИЕ: обнаружена ещё одна оплата Т-Банка (' . $payment_id . ') для уже оплаченного заказа. Проверьте возможную двойную оплату.' );
-            }
         } else {
-            $order->payment_complete( (string) $payment_id );
-            $order->add_order_note( 'Заказ оплачен по ссылке Т-Банка. PaymentId: ' . $payment_id . '.' );
+            // Статус WooCommerce сам по себе не доказывает, что деньги получены.
+            // Сверяем лишь известные подтверждения Т-Банка и идентификаторы транзакций.
+            $another_confirmed = '';
+            foreach ( $history as $link_index => $link ) {
+                if ( (int) $link_index !== (int) $index &&
+                     'CONFIRMED' === ( $link['status'] ?? '' ) &&
+                     ! empty( $link['payment_id'] ) ) {
+                    $another_confirmed = (string) $link['payment_id'];
+                    break;
+                }
+            }
+
+            $existing_transaction = (string) $order->get_transaction_id();
+            if ( $another_confirmed ) {
+                $order->add_order_note( 'ВНИМАНИЕ: подтверждён ещё один платёж Т-Банка (' . $payment_id . '). Уже есть подтверждённый платёж ' . $another_confirmed . '. Проверьте возможную двойную оплату.' );
+            } elseif ( '' !== $existing_transaction && $existing_transaction !== (string) $payment_id ) {
+                $order->add_order_note( 'ВНИМАНИЕ: Т-Банк подтвердил платёж ' . $payment_id . ', но у заказа уже сохранён другой Transaction ID (' . $existing_transaction . '). Проверьте оплаты вручную.' );
+            } elseif ( $order->has_status( array( 'refunded', 'cancelled' ) ) ) {
+                $order->add_order_note( 'ВНИМАНИЕ: Т-Банк подтвердил платёж ' . $payment_id . ', но заказ отменён или возвращён. Требуется ручная проверка.' );
+            } else {
+                // Для ожидающих статусов WooCommerce сам переведёт заказ в обработку.
+                if ( $order->has_status( array( 'pending', 'on-hold', 'failed' ) ) ) {
+                    $order->payment_complete( (string) $payment_id );
+                } else {
+                    // Например, «Обработка» была выставлена вручную до оплаты.
+                    // Статус не меняем, но фиксируем подтверждённую транзакцию банка.
+                    $order->set_transaction_id( (string) $payment_id );
+                    if ( ! $order->get_date_paid() ) {
+                        $order->set_date_paid( time() );
+                    }
+                    $order->save();
+                }
+                $order->add_order_note( 'Т-Банк подтвердил оплату по ссылке. PaymentId: ' . $payment_id . '.' );
+            }
         }
     } elseif ( $old_status !== $status && 'CONFIRMED' !== $status ) {
         $order->add_order_note( 'Статус ссылки Т-Банка (' . $payment_id . '): ' . sanitize_text_field( (string) $status ) . '.' );
@@ -465,8 +506,18 @@ function plnt_tbank_links_render_box( $post_or_order ) {
     // Статус заказа не ограничивает создание ссылки: только состояние предыдущей операции.
     $can_create = ! $last || ( ! plnt_tbank_links_is_active( $last ) && 'UNKNOWN' !== ( $last['status'] ?? '' ) );
 
+    // Если включена фискализация, перед созданием проверяем контакты покупателя.
+    $check_data_tax = 'yes' === ( plnt_tbank_links_settings()['check_data_tax'] ?? '' );
+    $contact_check  = $check_data_tax ? plnt_tbank_links_receipt_contacts( $order ) : array();
+    $contact_error  = is_wp_error( $contact_check ) ? $contact_check : null;
+
     if ( $can_create ) {
-        echo '<p><button type="button" class="button button-primary plnt-tbank-action" data-operation="create">Создать ссылку на оплату</button></p>';
+        if ( $contact_error ) {
+            echo '<p><button type="button" class="button button-primary" disabled>Создать ссылку на оплату</button></p>';
+            echo '<p style="color:#b32d2e">' . esc_html( $contact_error->get_error_message() ) . '</p>';
+        } else {
+            echo '<p><button type="button" class="button button-primary plnt-tbank-action" data-operation="create">Создать ссылку на оплату</button></p>';
+        }
     }
     if ( $last && ! empty( $last['payment_id'] ) ) {
         echo '<p><button type="button" class="button plnt-tbank-action" data-operation="check">Проверить оплату</button></p>';
@@ -495,8 +546,14 @@ function plnt_tbank_links_render_box( $post_or_order ) {
         }
     }
 
-    if ( $can_create && $order->is_paid() ) {
-        echo '<p style="color:#b32d2e"><small>Заказ уже отмечен оплаченным. Новая ссылка может привести к повторной оплате.</small></p>';
+    // Предупреждаем только о подтверждённой Т-Банком оплате этой интеграции.
+    if ( $can_create ) {
+        foreach ( $history as $link ) {
+            if ( 'CONFIRMED' === ( $link['status'] ?? '' ) ) {
+                echo '<p style="color:#b32d2e"><small>Т-Банк уже подтвердил оплату по одной из ссылок этого заказа. Новая ссылка может привести к повторной оплате.</small></p>';
+                break;
+            }
+        }
     }
     echo '</div>';
 }
@@ -532,8 +589,11 @@ jQuery(function($) {
                 feedback.text((response && response.data && response.data.message) || 'Ошибка запроса').css('color', '#b32d2e');
                 box.find('.plnt-tbank-action').prop('disabled', false);
             }
-        }).fail(function() {
-            feedback.text('Не удалось получить ответ сервера. Проверьте заказ перед повторной попыткой.').css('color', '#b32d2e');
+        }).fail(function(xhr) {
+            // WP отдаёт ошибки в responseJSON при HTTP 400/403/409.
+            var serverMessage = xhr && xhr.responseJSON && xhr.responseJSON.data && xhr.responseJSON.data.message;
+            var fallback = 'Не удалось получить ответ сервера. Проверьте заказ перед повторной попыткой.';
+            feedback.text(serverMessage || fallback).css('color', '#b32d2e');
             box.find('.plnt-tbank-action').prop('disabled', false);
         });
     });
