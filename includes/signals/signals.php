@@ -489,6 +489,43 @@ function plnt_signals_demand_class_order_sql() {
     return $conditions ? '(CASE ' . implode( ' ', $conditions ) . ' ELSE NULL END)' : 'NULL';
 }
 
+/**
+ * Расширяем стандартный поиск WP_Query: название/описание ИЛИ артикул (_sku).
+ * Применяется только к запросам нашей страницы «Сигналы», в том числе к счётчикам наличия.
+ * Поиск SKU идёт по подстроке и не создаёт дубликатов строк (EXISTS вместо JOIN).
+ */
+function plnt_signals_search_by_name_or_sku( $search_sql, $query ) {
+    if ( ! $query->get( 'plnt_signals_custom_query' ) || ! $search_sql ) {
+        return $search_sql;
+    }
+
+    $term = trim( (string) $query->get( 's' ) );
+    if ( '' === $term ) {
+        return $search_sql;
+    }
+
+    global $wpdb;
+
+    // Стандартное условие WP уже содержит поиск по названию и описанию.
+    // Убираем его ведущий AND, чтобы объединить с поиском по SKU через OR.
+    $native_search = preg_replace( '/^\s*AND\s+/i', '', trim( $search_sql ), 1 );
+    $sku_like = '%' . $wpdb->esc_like( $term ) . '%';
+
+    return $wpdb->prepare(
+        " AND (
+            ({$native_search})
+            OR EXISTS (
+                SELECT 1 FROM {$wpdb->postmeta} AS plnt_signals_sku_search
+                WHERE plnt_signals_sku_search.post_id = {$wpdb->posts}.ID
+                  AND plnt_signals_sku_search.meta_key = '_sku'
+                  AND plnt_signals_sku_search.meta_value LIKE %s
+            )
+        )",
+        $sku_like
+    );
+}
+add_filter( 'posts_search', 'plnt_signals_search_by_name_or_sku', 10, 2 );
+
 /** Одна строка товара на каждый набор метаполей (защита от дубликатов postmeta). */
 function plnt_signals_add_velocity_meta_joins( &$clauses, array $keys ) {
     global $wpdb;
@@ -1023,8 +1060,8 @@ function plnt_signals_render_page() {
                 <input type="hidden" name="recommendation_filter" value="<?php echo esc_attr( $recommendation_status ); ?>">
                 <input type="hidden" name="price_filter" value="<?php echo esc_attr( $price_filter ); ?>">
                 <input type="hidden" name="class_filter" value="<?php echo esc_attr( $class_filter ); ?>">
-                <label class="screen-reader-text" for="plnt-signals-search">Поиск товаров</label>
-                <input type="search" id="plnt-signals-search" name="s" value="<?php echo esc_attr( $search ); ?>">
+                <label class="screen-reader-text" for="plnt-signals-search">Поиск по названию или артикулу</label>
+                <input type="search" id="plnt-signals-search" name="s" value="<?php echo esc_attr( $search ); ?>" placeholder="Название или артикул">
                 <button type="submit" class="button">Поиск по товарам</button>
             </form>
         </div>
