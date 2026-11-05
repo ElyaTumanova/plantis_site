@@ -82,6 +82,8 @@ require get_template_directory() . '/includes/admin/tags-image.php';
 require get_template_directory() . '/includes/admin/product-sale-tag.php';
 require get_template_directory() . '/includes/admin/admin-order-peresadka.php';
 
+require get_template_directory() . '/includes/tbank/tbank-payment-links.php';
+
 
 
 
