@@ -489,6 +489,43 @@ function plnt_signals_demand_class_order_sql() {
     return $conditions ? '(CASE ' . implode( ' ', $conditions ) . ' ELSE NULL END)' : 'NULL';
 }
 
+/**
+ * Расширяем стандартный поиск WP_Query: название/описание ИЛИ артикул (_sku).
+ * Применяется только к запросам нашей страницы «Сигналы», в том числе к счётчикам наличия.
+ * Поиск SKU идёт по подстроке и не создаёт дубликатов строк (EXISTS вместо JOIN).
+ */
+function plnt_signals_search_by_name_or_sku( $search_sql, $query ) {
+    if ( ! $query->get( 'plnt_signals_custom_query' ) || ! $search_sql ) {
+        return $search_sql;
+    }
+
+    $term = trim( (string) $query->get( 's' ) );
+    if ( '' === $term ) {
+        return $search_sql;
+    }
+
+    global $wpdb;
+
+    // Стандартное условие WP уже содержит поиск по названию и описанию.
+    // Убираем его ведущий AND, чтобы объединить с поиском по SKU через OR.
+    $native_search = preg_replace( '/^\s*AND\s+/i', '', trim( $search_sql ), 1 );
+    $sku_like = '%' . $wpdb->esc_like( $term ) . '%';
+
+    return $wpdb->prepare(
+        " AND (
+            ({$native_search})
+            OR EXISTS (
+                SELECT 1 FROM {$wpdb->postmeta} AS plnt_signals_sku_search
+                WHERE plnt_signals_sku_search.post_id = {$wpdb->posts}.ID
+                  AND plnt_signals_sku_search.meta_key = '_sku'
+                  AND plnt_signals_sku_search.meta_value LIKE %s
+            )
+        )",
+        $sku_like
+    );
+}
+add_filter( 'posts_search', 'plnt_signals_search_by_name_or_sku', 10, 2 );
+
 /** Одна строка товара на каждый набор метаполей (защита от дубликатов postmeta). */
 function plnt_signals_add_velocity_meta_joins( &$clauses, array $keys ) {
     global $wpdb;
@@ -765,6 +802,62 @@ function plnt_signals_render_import_status() {
     <?php
 }
 
+/**
+ * Количество товаров по статусам наличия в текущей выборке.
+ * Учитываем поиск и все остальные фильтры, но исключаем сам фильтр наличия.
+ * Один запрос ID + одно группирование postmeta вместо трёх отдельных WP_Query.
+ */
+function plnt_signals_stock_status_counts( array $query_args ) {
+    global $wpdb;
+
+    $count_args = $query_args;
+    unset( $count_args['meta_query'] ); // В этом запросе meta_query используется только для наличия.
+
+    $count_args['posts_per_page'] = -1;
+    $count_args['paged'] = 1;
+    $count_args['fields'] = 'ids';
+    $count_args['no_found_rows'] = true;
+    $count_args['orderby'] = 'ID';
+    $count_args['order'] = 'ASC';
+    $count_args['plnt_signals_sort'] = 'title';
+    $count_args['plnt_signals_direction'] = 'asc';
+
+    add_filter( 'posts_clauses', 'plnt_signals_sort_posts_clauses', 10, 2 );
+    $count_query = new WP_Query( $count_args );
+    remove_filter( 'posts_clauses', 'plnt_signals_sort_posts_clauses', 10 );
+
+    $ids = array_values( array_filter( array_unique( array_map( 'absint', $count_query->posts ) ) ) );
+    $counts = array(
+        ''            => count( $ids ),
+        'instock'     => 0,
+        'onbackorder' => 0,
+        'outofstock'  => 0,
+    );
+
+    if ( ! $ids ) {
+        return $counts;
+    }
+
+    // Все идентификаторы — целые числа из WP_Query, поэтому список безопасен для SQL.
+    $id_list = implode( ',', $ids );
+    $rows = $wpdb->get_results(
+        "SELECT meta_value AS stock_status, COUNT(DISTINCT post_id) AS total
+         FROM {$wpdb->postmeta}
+         WHERE meta_key = '_stock_status' AND post_id IN ({$id_list})
+         GROUP BY meta_value"
+    );
+
+    if ( is_array( $rows ) ) {
+        foreach ( $rows as $row ) {
+            if ( isset( $counts[ $row->stock_status ] ) && '' !== $row->stock_status ) {
+                $counts[ $row->stock_status ] = (int) $row->total;
+            }
+        }
+    }
+
+    return $counts;
+}
+
 /** Отдельная таблица: только комнатные растения, поиск и фильтрация. */
 function plnt_signals_render_page() {
     if ( ! current_user_can( 'edit_products' ) ) {
@@ -909,6 +1002,8 @@ function plnt_signals_render_page() {
         'order'      => 'ASC',
     ) );
 
+    $stock_counts = plnt_signals_stock_status_counts( $query_args );
+
     $sort_url_args = array(
         'page'                => 'plantis-signals',
         's'                   => $search,
@@ -928,12 +1023,55 @@ function plnt_signals_render_page() {
         <p class="description">Комнатные растения — цены, остатки, показатели экспозиции и статистика заказов.</p>
         <?php plnt_signals_render_import_status(); ?>
 
+        <div class="plnt-signals-toolbar">
+            <nav class="plnt-signals-stock-statuses" aria-label="Фильтр по наличию">
+                <?php
+                $stock_tabs = array(
+                    ''            => 'Все',
+                    'instock'     => 'В наличии',
+                    'onbackorder' => 'Предзаказ',
+                    'outofstock'  => 'Нет в наличии',
+                );
+                foreach ( $stock_tabs as $status_key => $status_label ) :
+                    $status_url = add_query_arg(
+                        array_merge( $sort_url_args, array( 'stock_status_filter' => $status_key ) ),
+                        admin_url( 'admin.php' )
+                    );
+                    $is_current = $stock_status === $status_key;
+                    ?>
+                    <a
+                        href="<?php echo esc_url( $status_url ); ?>"
+                        class="<?php echo $is_current ? 'current' : ''; ?>"
+                        <?php if ( $is_current ) : ?>aria-current="page"<?php endif; ?>
+                    >
+                        <?php echo esc_html( $status_label ); ?>
+                        <span class="plnt-signals-stock-count">(<?php echo esc_html( number_format_i18n( $stock_counts[ $status_key ] ) ); ?>)</span>
+                    </a>
+                <?php endforeach; ?>
+            </nav>
+
+            <form class="plnt-signals-search-form" method="get" action="<?php echo esc_url( admin_url( 'admin.php' ) ); ?>">
+                <input type="hidden" name="page" value="plantis-signals">
+                <input type="hidden" name="orderby" value="<?php echo esc_attr( $sort_by ); ?>">
+                <input type="hidden" name="order" value="<?php echo esc_attr( $sort_direction ); ?>">
+                <input type="hidden" name="product_cat_filter" value="<?php echo esc_attr( $category ); ?>">
+                <input type="hidden" name="product_tag_filter" value="<?php echo esc_attr( $tag ); ?>">
+                <input type="hidden" name="stock_status_filter" value="<?php echo esc_attr( $stock_status ); ?>">
+                <input type="hidden" name="recommendation_filter" value="<?php echo esc_attr( $recommendation_status ); ?>">
+                <input type="hidden" name="price_filter" value="<?php echo esc_attr( $price_filter ); ?>">
+                <input type="hidden" name="class_filter" value="<?php echo esc_attr( $class_filter ); ?>">
+                <label class="screen-reader-text" for="plnt-signals-search">Поиск по названию или артикулу</label>
+                <input type="search" id="plnt-signals-search" name="s" value="<?php echo esc_attr( $search ); ?>" placeholder="Название или артикул">
+                <button type="submit" class="button">Поиск по товарам</button>
+            </form>
+        </div>
+
         <form class="plnt-signals-filters" method="get" action="<?php echo esc_url( admin_url( 'admin.php' ) ); ?>">
             <input type="hidden" name="page" value="plantis-signals">
             <input type="hidden" name="orderby" value="<?php echo esc_attr( $sort_by ); ?>">
             <input type="hidden" name="order" value="<?php echo esc_attr( $sort_direction ); ?>">
-            <label class="screen-reader-text" for="plnt-signals-search">Поиск товаров</label>
-            <input type="search" id="plnt-signals-search" name="s" value="<?php echo esc_attr( $search ); ?>" placeholder="Название товара">
+            <input type="hidden" name="s" value="<?php echo esc_attr( $search ); ?>">
+            <input type="hidden" name="stock_status_filter" value="<?php echo esc_attr( $stock_status ); ?>">
 
             <label class="screen-reader-text" for="plnt-signals-category">Категория</label>
             <select id="plnt-signals-category" name="product_cat_filter">
@@ -956,14 +1094,6 @@ function plnt_signals_render_page() {
                         <option value="<?php echo esc_attr( $term->term_id ); ?>" <?php selected( $tag, $term->term_id ); ?>><?php echo esc_html( $term->name ); ?></option>
                     <?php endforeach; ?>
                 <?php endif; ?>
-            </select>
-
-            <label class="screen-reader-text" for="plnt-signals-stock">Наличие</label>
-            <select id="plnt-signals-stock" name="stock_status_filter">
-                <option value="">Все статусы наличия</option>
-                <option value="instock" <?php selected( $stock_status, 'instock' ); ?>>В наличии</option>
-                <option value="outofstock" <?php selected( $stock_status, 'outofstock' ); ?>>Нет в наличии</option>
-                <option value="onbackorder" <?php selected( $stock_status, 'onbackorder' ); ?>>Предзаказ</option>
             </select>
 
             <label class="screen-reader-text" for="plnt-signals-recommendation-filter">Рекомендация</label>
