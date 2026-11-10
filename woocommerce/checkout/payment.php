@@ -27,7 +27,7 @@ if ( ! wp_doing_ajax() ) {
 	<?php if ( WC()->cart->needs_payment() ) : ?>
     <h3 class="checkout__title h3">Оплата</h3>
 		<div class="payment-notice woocommerce-error">
-			Если у вас не получается оплатить онлайн, попробуйте открыть сайт в Яндекс Браузере или выберите «Оплата после получения фотографий растений».
+			Если у вас не получается оплатить онлайн, попробуйте открыть сайт в Яндекс Браузере или выберите «Оплата после получения фотографии растения».
 	</div>
 		<ul class="wc_payment_methods payment_methods methods">
 			<?php
