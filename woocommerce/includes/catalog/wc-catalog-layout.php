@@ -37,6 +37,8 @@ if ( ! defined( 'ABSPATH' ) ) {
   add_action('woocommerce_after_shop_loop','plnt_get_expandable_archive_description',25);
   // add_action('woocommerce_after_shop_loop','plnt_expandable_content_button',27);
 
+  add_action( 'woocommerce_shop_loop', 'plnt_catalog_add_banner', 5 );
+
   //header catalog
 
   function plnt_catalog_header_image() {
@@ -277,4 +279,25 @@ function plnt_get_expandable_archive_description() {
 
     <?php
   echo '</section>';
+}
+
+// Баннер внутри списка товаров каталога
+function plnt_catalog_add_banner() {
+
+    if ( (int) wc_get_loop_prop( 'loop', 0 ) !== 3 ) {
+        return;
+    }
+
+    $banner_id = get_field( 'card_add_banner', 'option' );
+
+    if ( ! $banner_id ) {
+        return;
+    }
+    ?>
+
+    <div class="card__banner card__banner--catalog">
+        <?php echo wp_get_attachment_image( $banner_id, 'full' ); ?>
+    </div>
+
+    <?php
 }

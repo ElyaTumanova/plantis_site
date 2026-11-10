@@ -64,6 +64,7 @@ jQuery(document).on('plnt_catalog_updated', () => {
   setSearchFilterField()
   setdiametrFilterScroll()
   initCatalogSidebarSticky()
+  plntUpdateCatalogBanner()
 })
 
 // jQuery(document).on('berocket_ajax_filtering_end', () => {
@@ -142,6 +143,8 @@ if(gridButton && catalogWrap) {
         catalogGrid.classList.remove ('in-row');
         gridButton.disabled = true;
         rowsButton.disabled = false;
+
+        plntUpdateCatalogBanner()
     };
     
     function make_3_grid_columns () {
@@ -150,6 +153,8 @@ if(gridButton && catalogWrap) {
         catalogGrid.classList.add ('in-row');
         gridButton.disabled = false;
         rowsButton.disabled = true;
+        
+        plntUpdateCatalogBanner()
     };
 };
 
@@ -285,3 +290,40 @@ document.querySelectorAll('.product').forEach(card => {
     video.load()
   })
 })
+
+// Рекламный баннер в каталоге
+
+/* Баннер внутри каталога */
+
+function plntUpdateCatalogBanner() {
+  const catalog = document.querySelector('.catalog__grid .products')
+  const banner = catalog?.querySelector('.card__banner--catalog')
+
+  if (!catalog || !banner) return
+
+  const products = [...catalog.children].filter(
+    item => item.classList.contains('product')
+  )
+
+  const isRows = catalog.classList.contains('in-row')
+  const isDesktop = window.innerWidth > 1280
+
+  const position = window.innerWidth < 560
+  ? 2
+  : isRows && isDesktop
+    ? 3
+    : 6
+
+  if (products.length <= position) {
+    banner.hidden = true
+    return
+  }
+
+  banner.hidden = false
+
+  products[position - 1].after(banner)
+}
+
+document.addEventListener('DOMContentLoaded', plntUpdateCatalogBanner)
+
+// window.addEventListener('resize', plntUpdateCatalogBanner)

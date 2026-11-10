@@ -700,3 +700,8 @@ span.page-numbers.current {
 }
 
 
+/* Баннер в каталоге */
+
+.card__banner--catalog {
+  padding: 0;
+}
