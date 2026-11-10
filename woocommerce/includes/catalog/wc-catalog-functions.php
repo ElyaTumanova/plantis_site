@@ -252,7 +252,7 @@ function plnt_woocommerce_pagination_args_filter( $array ) {
 		'prev_text' => is_rtl() ? $next_icon : $prev_icon,
 		'next_text' => is_rtl() ? $prev_icon : $next_icon,
 		'type'      => 'list',
-		'end_size'  => 2,
+		'end_size'  => 1,
 		'mid_size'  => 1,
 	);
 
