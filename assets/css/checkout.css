@@ -1487,3 +1487,30 @@ label.list-view {
     width: fit-content;
 }
 
+/*payment notice */
+.payment-notice {
+    display: block;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    margin: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+
+    transition:
+        max-height 0.35s ease,
+        opacity 0.3s ease,
+        padding 0.35s ease,
+        margin 0.35s ease,
+        visibility 0.35s;
+}
+
+.payment-notice.is-visible {
+    opacity: 1;
+    visibility: visible;
+    max-height: 250px;
+    margin-bottom: 20px !important;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+}

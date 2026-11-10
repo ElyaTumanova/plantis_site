@@ -25,7 +25,10 @@ if ( ! wp_doing_ajax() ) {
 ?>
 <div id="payment" class="woocommerce-checkout-payment">
 	<?php if ( WC()->cart->needs_payment() ) : ?>
-        <h3 class="checkout__title h3">Оплата</h3>
+    <h3 class="checkout__title h3">Оплата</h3>
+		<div class="payment-notice woocommerce-error">
+			Если у вас не установлен сертификат НУЦ, возможны проблемы с онлайн-оплатой. Если оплата не проходит, попробуйте открыть сайт в Яндекс Браузере или выберите «Оплата после получения фотографий растений».
+	</div>
 		<ul class="wc_payment_methods payment_methods methods">
 			<?php
 			if ( ! empty( $available_gateways ) ) {

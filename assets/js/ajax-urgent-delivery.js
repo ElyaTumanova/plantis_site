@@ -521,3 +521,27 @@ if (checkoutForm) {
     // Никакого AJAX здесь: предотвращаем цикл пересчётов checkout.
   });
 }
+
+function updatePaymentNotice() {
+    const payment = document.querySelector('#payment');
+    if (!payment) return;
+
+    const notice = payment.querySelector('.payment-notice');
+    if (!notice) return;
+
+    const selected = payment.querySelector(
+        'input[name="payment_method"]:checked'
+    );
+
+    notice.classList.toggle('is-visible', selected?.value === 'tbank');
+}
+
+document.addEventListener('DOMContentLoaded', updatePaymentNotice);
+
+document.addEventListener('change', function(event) {
+    if (event.target.matches('input[name="payment_method"]')) {
+        updatePaymentNotice();
+    }
+});
+
+jQuery(document.body).on('updated_checkout', updatePaymentNotice);
