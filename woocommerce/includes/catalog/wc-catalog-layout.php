@@ -288,16 +288,5 @@ function plnt_catalog_add_banner() {
         return;
     }
 
-    $banner_id = get_field( 'card_add_banner', 'option' );
-
-    if ( ! $banner_id ) {
-        return;
-    }
-    ?>
-
-    <div class="card__banner card__banner--catalog">
-        <?php echo wp_get_attachment_image( $banner_id, 'full' ); ?>
-    </div>
-
-    <?php
+    plnt_get_ad_banner( 'card__banner--catalog' );
 }

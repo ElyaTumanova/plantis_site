@@ -278,5 +278,47 @@ function move_to_top_on_pagination() {
 add_action('woocommerce_after_main_content', 'move_to_top_on_pagination');
 
 
+// Рекламные баннеры
 
+function plnt_get_ad_banner( $class = '' ) {
 
+	$banner_id = get_field( 'ad_banner_group_banner', 'option' );
+	$link      = get_field( 'ad_banner_group_link', 'option' );
+	$limit     = get_field( 'ad_banner_group_limit', 'option' );
+
+	if ( ! $banner_id ) {
+			return;
+	}
+
+	if ( $limit ) {
+			$limit_date = DateTimeImmutable::createFromFormat(
+					'!Y-m-d H:i:s',
+					$limit,
+					wp_timezone()
+			);
+
+			if ( ! $limit_date || current_datetime() >= $limit_date ) {
+					return;
+			}
+	}
+
+	$classes = trim( 'card__banner ' . $class );
+	?>
+
+	<div class="<?php echo esc_attr( $classes ); ?>">
+			<?php if ( ! empty( $link['url'] ) ) : ?>
+					<a
+							href="<?php echo esc_url( $link['url'] ); ?>"
+							target="<?php echo esc_attr( $link['target'] ?: '_self' ); ?>"
+					>
+			<?php endif; ?>
+
+			<?php echo wp_get_attachment_image( $banner_id, 'full' ); ?>
+
+			<?php if ( ! empty( $link['url'] ) ) : ?>
+					</a>
+			<?php endif; ?>
+	</div>
+
+	<?php
+}
