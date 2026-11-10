@@ -24,6 +24,16 @@ $current_hour = (int) current_datetime()->format('G');
 
 <div class="card__banners-wrap">
 
+	<?php if ( $product->is_on_sale() ) : ?>
+			<?php $banner_id = get_field( 'card_add_banner', 'option' ); ?>
+
+			<?php if ( $banner_id ) : ?>
+					<div class="card__banner card__banner--add">
+							<?php echo wp_get_attachment_image( $banner_id, 'full' ); ?>
+					</div>
+			<?php endif; ?>
+	<?php endif; ?>
+
 	<?php if ( $parentCatId === $plants_cat_id ) : ?>
 
 		<?php if ($stock_status === 'instock' ) : ?>

@@ -330,3 +330,12 @@
     display: block;
   }
 }
+
+
+/* add рекламные баннеры */
+
+.card__banner--add {
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: clamp(1.25rem, 1.1543rem + 0.4255vw, 1.5rem);
+}
