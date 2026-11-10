@@ -42,6 +42,8 @@ $start_footer_file = microtime(true);
 <?php get_template_part('template-parts/popups/buy-one-click-popup');?>
 <?php get_template_part('template-parts/popups/image-zoom-popup');?>
 
+<?php get_template_part('template-parts/footer/cookie-notice');?>
+
 
 
 

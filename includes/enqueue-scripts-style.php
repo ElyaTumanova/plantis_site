@@ -56,6 +56,11 @@ function plnt_get_script_files() {
 			'file'   => 'helpers',
 			'deps'   => array(),
 		),
+		array(
+			'handle' => 'cookie-notice',
+			'file'   => 'cookie-notice',
+			'deps'   => array(),
+		),
     array(
 			'handle' => 'swiper',
 			'file'   => 'swiper',
