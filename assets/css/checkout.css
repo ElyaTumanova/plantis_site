@@ -532,7 +532,7 @@
 
 .woocommerce-checkout .wc_payment_methods .wc_payment_method {
   border-radius: 12px;
-  padding: 20px;
+  /* padding: 20px; */
   background-color: var(--green-l-color);
   color: var(--black-color);
   font-weight: 600;
@@ -544,7 +544,7 @@
     grid-template-columns: 1fr;
   }
   .woocommerce-checkout .wc_payment_methods .wc_payment_method {
-    padding: 14px 16px;
+    /* padding: 14px 16px; */
     font-size: 14px;
   }
 }
@@ -575,6 +575,13 @@
   display: flex;
   align-items: center;
   gap: 16px;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .woocommerce-checkout .wc_payment_methods .wc_payment_method label {
+    padding: 14px 16px;
+  }
 }
 .woocommerce-checkout .wc_payment_methods .wc_payment_method label::before {
     content: '';
