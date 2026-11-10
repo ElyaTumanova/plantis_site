@@ -28,6 +28,11 @@ $GLOBALS['wc_change_context']      = 'manual';
 $GLOBALS['wc_context_per_id']      = [];
 $GLOBALS['wc_suppress_after_save'] = [];
 
+// Изменения запасов из приходной накладной собираем до фиксации транзакции.
+$GLOBALS['wc_pa_invoice_logging'] = null;
+$GLOBALS['wc_pa_invoice_log_queue'] = [];
+$GLOBALS['wc_pa_stock_before'] = [];
+
 // --- инициализация ---
 add_action('init', function () {
     if (!class_exists('WooCommerce')) return;
@@ -35,6 +40,16 @@ add_action('init', function () {
     // Снимки и сравнение
     add_action('woocommerce_before_product_object_save', 'wc_log_snapshot_before_save', 10, 2);
     add_action('woocommerce_after_product_object_save',  'wc_log_compare_after_save',   10, 2);
+
+    // wc_update_product_stock() меняет _stock напрямую перед сохранением объекта.
+    // Запоминаем старое значение на штатном хуке WooCommerce, пока оно ещё в БД.
+    add_action('woocommerce_product_before_set_stock', 'wc_log_stock_before_set', 5, 1);
+
+    // Интеграция с Plantis Purchase Accounting без прямой зависимости от плагина.
+    // Логи записываются только после COMMIT, а при ROLLBACK отбрасываются.
+    add_action('plnt_pa_invoice_post_started', 'wc_log_invoice_post_started', 10, 3);
+    add_action('plnt_pa_invoice_post_committed', 'wc_log_invoice_post_committed', 10, 1);
+    add_action('plnt_pa_invoice_post_rolled_back', 'wc_log_invoice_post_rolled_back', 10, 1);
 
     // Удаление
     add_action('before_delete_post', 'log_wc_product_delete');
@@ -80,8 +95,84 @@ add_action('init', function () {
         $GLOBALS['wc_change_context']      = 'manual';
         $GLOBALS['wc_context_per_id']      = [];
         $GLOBALS['wc_suppress_after_save'] = [];
+        $GLOBALS['wc_pa_invoice_logging']  = null;
+        $GLOBALS['wc_pa_invoice_log_queue'] = [];
+        $GLOBALS['wc_pa_stock_before']     = [];
     });
 });
+
+/**
+ * Контекст проведения накладной: не пишем текстовые логи до COMMIT.
+ */
+function wc_log_invoice_post_started($invoice_id, $invoice_number, $invoice_date): void {
+    $GLOBALS['wc_pa_invoice_logging'] = [
+        'id'     => (int) $invoice_id,
+        'number' => (string) $invoice_number,
+        'date'   => (string) $invoice_date,
+    ];
+
+    $GLOBALS['wc_pa_invoice_log_queue'] = [];
+    $GLOBALS['wc_pa_stock_before'] = [];
+}
+
+function wc_log_invoice_post_committed($invoice_id): void {
+    $invoice = $GLOBALS['wc_pa_invoice_logging'] ?? null;
+    if (!$invoice || (int) $invoice['id'] !== (int) $invoice_id) {
+        return;
+    }
+
+    $entries = $GLOBALS['wc_pa_invoice_log_queue'];
+    wc_log_invoice_clear_context();
+
+    foreach ($entries as $entry) {
+        wc_write_product_log($entry);
+    }
+}
+
+function wc_log_invoice_post_rolled_back($invoice_id): void {
+    $invoice = $GLOBALS['wc_pa_invoice_logging'] ?? null;
+    if ($invoice && (int) $invoice['id'] === (int) $invoice_id) {
+        wc_log_invoice_clear_context();
+    }
+}
+
+function wc_log_invoice_clear_context(): void {
+    $GLOBALS['wc_pa_invoice_logging'] = null;
+    $GLOBALS['wc_pa_invoice_log_queue'] = [];
+    $GLOBALS['wc_pa_stock_before'] = [];
+}
+
+/**
+ * WooCommerce вызывает этот хук ПЕРЕД прямой записью нового _stock в БД.
+ * Ограничиваем перехват приходной накладной, чтобы не дублировать логи заказов.
+ */
+function wc_log_stock_before_set($product): void {
+    if (!($product instanceof WC_Product) || !$product->get_id()
+        || empty($GLOBALS['wc_pa_invoice_logging'])) {
+        return;
+    }
+
+    $id = (int) $product->get_id();
+    if (array_key_exists($id, $GLOBALS['wc_pa_stock_before'])) {
+        return;
+    }
+
+    global $wpdb;
+    $previous = $wpdb->get_var($wpdb->prepare(
+        "SELECT meta_value FROM {$wpdb->postmeta} WHERE post_id = %d AND meta_key = '_stock' ORDER BY meta_id DESC LIMIT 1",
+        $id
+    ));
+    $GLOBALS['wc_pa_stock_before'][$id] = $previous === null ? '' : $previous;
+}
+
+/** Сохранить строку в буфер накладной либо сразу в журнал. */
+function wc_log_write_or_buffer($entry): void {
+    if (!empty($GLOBALS['wc_pa_invoice_logging'])) {
+        $GLOBALS['wc_pa_invoice_log_queue'][] = $entry;
+    } else {
+        wc_write_product_log($entry);
+    }
+}
 
 add_action('post_updated', 'wc_log_title_change', 10, 3);
 
@@ -108,7 +199,7 @@ function wc_log_title_change($post_ID, $post_after, $post_before) {
         wc_stringify($old),
         wc_stringify($new)
     );
-    wc_write_product_log($log_entry);
+    wc_log_write_or_buffer($log_entry);
 }
 
 
@@ -134,6 +225,12 @@ function wc_log_snapshot_before_save($product) {
     $old_sale_price    = get_post_meta($id, '_sale_price', true);
     $old_price         = get_post_meta($id, '_price', true);
     $old_stock_qty     = get_post_meta($id, '_stock', true);
+    // При проведении накладной _stock уже обновлён через прямой SQL WooCommerce.
+    // Значение ДО обновления сохранено на woocommerce_product_before_set_stock.
+    if (!empty($GLOBALS['wc_pa_invoice_logging'])
+        && array_key_exists($id, $GLOBALS['wc_pa_stock_before'])) {
+        $old_stock_qty = $GLOBALS['wc_pa_stock_before'][$id];
+    }
     $old_stock_status  = get_post_meta($id, '_stock_status', true);
 
     // Старые категории и метки по термам
@@ -175,6 +272,7 @@ function wc_log_compare_after_save($product) {
     $before = $GLOBALS['wc_product_snapshots'][$id] ?? null;
     $after  = wc_collect_product_state($product);
     unset($GLOBALS['wc_product_snapshots'][$id]);
+    unset($GLOBALS['wc_pa_stock_before'][$id]);
 
     $user = wp_get_current_user();
     $username = ($user && $user->exists()) ? $user->user_login : 'system';
@@ -184,7 +282,8 @@ function wc_log_compare_after_save($product) {
 
     // Подавление дублей складских изменений
     $context = wc_detect_context_for_product($id);
-    if ($context === 'order' || !empty($GLOBALS['wc_suppress_after_save'][$id])) {
+    if ($context !== 'purchase_invoice'
+        && ($context === 'order' || !empty($GLOBALS['wc_suppress_after_save'][$id]))) {
         $changes = wc_filter_out_stock_changes($changes);
     }
     if ($action === 'Обновление' && empty($changes)) return;
@@ -195,6 +294,16 @@ function wc_log_compare_after_save($product) {
         $lines[] = sprintf('%s: "%s" → "%s"', $label, wc_stringify($old), wc_stringify($new));
     }
     $summary = $lines ? ' | Изменения: ' . implode('; ', $lines) : '';
+    if ($context === 'purchase_invoice') {
+        $invoice = $GLOBALS['wc_pa_invoice_logging'];
+
+        $summary .= sprintf(
+            ' | Накладная №%s от %s (ID %d)',
+            wc_stringify($invoice['number']),
+            mysql2date('d.m.Y', $invoice['date']),
+            (int) $invoice['id']
+        );
+    }
 
     $log_entry = sprintf(
         "[%s] %s товара #%d (%s) пользователем %s | Способ: %s%s\n",
@@ -207,7 +316,7 @@ function wc_log_compare_after_save($product) {
         $summary
     );
 
-    wc_write_product_log($log_entry);
+    wc_log_write_or_buffer($log_entry);
 }
 
 // ======================================================
@@ -351,6 +460,7 @@ function wc_has_meaningful_value($v) {
 }
 
 function wc_detect_context_for_product($id) {
+    if (!empty($GLOBALS['wc_pa_invoice_logging'])) return 'purchase_invoice';
     if (!empty($GLOBALS['wc_context_per_id'][$id])) return $GLOBALS['wc_context_per_id'][$id];
     return $GLOBALS['wc_change_context'] ?? 'manual';
 }
@@ -360,6 +470,7 @@ function wc_context_label($ctx) {
         'manual' => 'Вручную',
         'import' => 'Импорт',
         'order'  => 'Заказ',
+        'purchase_invoice' => 'Приходная накладная',
     ][$ctx] ?? 'Вручную';
 }
 
