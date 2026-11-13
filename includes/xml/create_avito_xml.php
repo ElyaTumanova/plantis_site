@@ -156,18 +156,28 @@ function plnt_avito_output_xml(): void {
         ],
     ];
 
-    // Do not expose a partial document if a PHP warning was already emitted.
-    if ( headers_sent() ) {
-        exit;
+    // Путь к XML-файлу Авито.
+    $dir_path  = WP_CONTENT_DIR . '/avito-xml';
+    $file_path = $dir_path . '/feed-avito-0.xml';
+
+    // Проверяем доступность папки.
+    if ( ! is_dir( $dir_path ) || ! is_writable( $dir_path ) ) {
+        wp_die( 'Avito XML: папка не существует или недоступна для записи: ' . esc_html( $dir_path ) );
     }
 
-    nocache_headers();
-    header( 'Content-Type: application/xml; charset=UTF-8' );
+    // Создаём временный файл в той же папке.
+    $temp_file = tempnam( $dir_path, 'avito-' );
 
+    if ( false === $temp_file ) {
+        wp_die( 'Avito XML: не удалось создать временный файл.' );
+    }
+
+    // Открываем XMLWriter для записи в файл.
     $xml = new XMLWriter();
-    if ( ! $xml->openUri( 'php://output' ) ) {
-        status_header( 500 );
-        exit;
+
+    if ( ! $xml->openUri( $temp_file ) ) {
+        @unlink( $temp_file );
+        wp_die( 'Avito XML: не удалось открыть файл для записи.' );
     }
 
     $xml->setIndent( true );
@@ -329,89 +339,41 @@ function plnt_avito_output_xml(): void {
 
     $xml->endElement(); // Ads
     $xml->endDocument();
-    $xml->flush();
+
+    // Завершаем запись XML.
+    $result = $xml->flush();
+
+    unset( $xml );
+
+    clearstatcache( true, $temp_file );
+
+    // Проверяем, что файл записан.
+    if (
+        false === $result
+        || ! is_file( $temp_file )
+        || filesize( $temp_file ) === 0
+    ) {
+        @unlink( $temp_file );
+        wp_die( 'Avito XML: ошибка записи XML-файла.' );
+    }
+
+    // Файл должен быть доступен для чтения веб-сервером.
+    if ( ! chmod( $temp_file, 0644 ) ) {
+        @unlink( $temp_file );
+        wp_die( 'Avito XML: не удалось установить права доступа к файлу.' );
+    }
+
+    // Заменяем рабочий XML только после успешной генерации.
+    if ( ! rename( $temp_file, $file_path ) ) {
+        @unlink( $temp_file );
+        wp_die( 'Avito XML: не удалось заменить основной файл.' );
+    }
+
+    // Показываем готовый XML в браузере.
+    nocache_headers();
+
+    header( 'Content-Type: application/xml; charset=UTF-8' );
+
+    readfile( $file_path );
     exit;
-}
-
-
-/**
- * Предпросмотр описания Авито в карточке товара WooCommerce.
- */
-add_action( 'add_meta_boxes_product', 'plnt_avito_add_description_preview' );
-
-function plnt_avito_add_description_preview(): void {
-
-    add_meta_box(
-        'plnt-avito-description-preview',
-        'Описание для Авито — предпросмотр',
-        'plnt_avito_render_description_preview',
-        'product',
-        'normal',
-        'low'
-    );
-}
-
-
-/**
- * Вывод готового описания без возможности редактирования.
- */
-function plnt_avito_render_description_preview( WP_Post $post ): void {
-
-    if ( ! function_exists( 'plnt_avito_get_description' ) ) {
-        return;
-    }
-
-    $product = wc_get_product( $post->ID );
-
-    if ( ! $product ) {
-        return;
-    }
-
-    $description = plnt_avito_get_description( $product );
-
-    if ( '' === trim( $description ) ) {
-        echo '<p>Описание Авито не сформировано. Проверьте заполнение блоков ACF.</p>';
-        return;
-    }
-
-    ?>
-    <div class="plnt-avito-preview">
-        <?php echo wp_kses_post( $description ); ?>
-    </div>
-
-    <style>
-        .plnt-avito-preview {
-            max-height: 650px;
-            overflow-y: auto;
-            padding: 20px 24px;
-            background: #f8faf9;
-            border-radius: 8px;
-            font-size: 14px;
-            line-height: 1.7;
-            white-space: normal;
-        }
-
-        .plnt-avito-preview p {
-            margin: 0 0 14px;
-        }
-
-        .plnt-avito-preview ul,
-        .plnt-avito-preview ol {
-            margin: 0 0 16px 20px;
-            padding: 0;
-        }
-
-        .plnt-avito-preview li {
-            margin-bottom: 5px;
-        }
-
-        .plnt-avito-preview strong {
-            font-weight: 600;
-        }
-
-        .plnt-avito-preview > :last-child {
-            margin-bottom: 0;
-        }
-    </style>
-    <?php
 }
