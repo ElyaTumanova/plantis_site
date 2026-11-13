@@ -525,3 +525,76 @@ function reazy_only_wc_notices_ajax() {
 
 	wp_send_json_success(['html' => $html]);
 }
+
+/**
+ * Список категорий WooCommerce: ID, название, slug, родитель.
+ * Доступ: /wp-admin/?plnt_product_cats=1
+ */
+add_action( 'admin_init', function () {
+
+    if ( ! isset( $_GET['plnt_product_cats'] ) ) {
+        return;
+    }
+
+    if ( ! current_user_can( 'manage_woocommerce' ) ) {
+        wp_die( 'Недостаточно прав.' );
+    }
+
+    $categories = get_terms( [
+        'taxonomy'   => 'product_cat',
+        'hide_empty' => false,
+        'orderby'    => 'name',
+        'order'      => 'ASC',
+    ] );
+
+    if ( is_wp_error( $categories ) ) {
+        wp_die( esc_html( $categories->get_error_message() ) );
+    }
+
+    $names = [];
+
+    foreach ( $categories as $category ) {
+        $names[ $category->term_id ] = $category->name;
+    }
+
+    header( 'Content-Type: text/html; charset=UTF-8' );
+
+    echo '<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8">';
+    echo '<title>Категории WooCommerce</title>';
+    echo '<style>
+        body { font-family: Arial, sans-serif; padding: 30px; background: #f6f7f7; }
+        table { width: 100%; border-collapse: collapse; background: #fff; }
+        th, td { padding: 10px 14px; border: 1px solid #ddd; text-align: left; }
+        th { background: #e8ecef; }
+        tr:hover { background: #f4f8fa; }
+        code { font-size: 13px; }
+    </style></head><body>';
+
+    echo '<h1>Категории товаров WooCommerce</h1>';
+    echo '<p>Всего категорий: ' . count( $categories ) . '</p>';
+
+    echo '<table><thead><tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Slug</th>
+        <th>Родитель</th>
+    </tr></thead><tbody>';
+
+    foreach ( $categories as $category ) {
+
+        $parent = $category->parent
+            ? ( $names[ $category->parent ] ?? 'ID ' . $category->parent )
+            : '—';
+
+        echo '<tr>';
+        echo '<td>' . (int) $category->term_id . '</td>';
+        echo '<td>' . esc_html( $category->name ) . '</td>';
+        echo '<td><code>' . esc_html( $category->slug ) . '</code></td>';
+        echo '<td>' . esc_html( $parent ) . '</td>';
+        echo '</tr>';
+    }
+
+    echo '</tbody></table></body></html>';
+
+    exit;
+} );
