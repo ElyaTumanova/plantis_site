@@ -291,6 +291,14 @@ function plnt_avito_output_xml(): void {
 
             $xml->startElement( 'Ad' );
             $xml->writeElement( 'Id', (string) $product_id );
+            $xml->writeElement( 'Id', (string) $product_id );
+
+            // ID существующего объявления Авито.
+            $avito_id = trim( (string) get_post_meta( $product_id, 'avitoid', true ) );
+
+            if ( '' !== $avito_id ) {
+                $xml->writeElement( 'AvitoId', $avito_id );
+            }
             $xml->writeElement( 'ListingFee', $common['ListingFee'] );
             $xml->writeElement( 'ManagerName', $common['ManagerName'] );
             $xml->writeElement( 'ContactPhone', $common['ContactPhone'] );
