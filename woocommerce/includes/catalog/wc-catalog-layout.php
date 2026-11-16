@@ -281,12 +281,137 @@ function plnt_get_expandable_archive_description() {
   echo '</section>';
 }
 
-// Баннер внутри списка товаров каталога
+
+/**
+ * Баннеры внутри списка товаров каталога.
+ *
+ * Источник: ACF Repeater catalog_banners (Options).
+ * Позиции задаются относительно каждой страницы каталога.
+ */
 function plnt_catalog_add_banner() {
 
-    if ( (int) wc_get_loop_prop( 'loop', 0 ) !== 3 ) {
+    $loop_position = (int) wc_get_loop_prop( 'loop', 0 );
+
+    if ( $loop_position < 1 ) {
         return;
     }
 
-    plnt_get_ad_banner( 'card__banner--catalog' );
+    static $banners = null;
+
+    if ( null === $banners ) {
+
+        $banners = [];
+
+        $count = absint(
+            get_option( 'options_catalog_banners', 0 )
+        );
+
+        for ( $i = 0; $i < $count; $i++ ) {
+
+            $prefix = 'options_catalog_banners_' . $i . '_';
+
+            $banner_id = absint(
+                get_option( $prefix . 'banner', 0 )
+            );
+
+            $banner_mob_id = absint(
+                get_option( $prefix . 'banner_mob', 0 )
+            );
+
+            $position_desktop = absint(
+                get_option( $prefix . 'position_desktop', 0 )
+            );
+
+            $position_mobile = absint(
+                get_option( $prefix . 'position_mobile', 0 )
+            );
+
+            $position_rows = absint(
+                get_option( $prefix . 'position_rows', 0 )
+            );
+
+            if (
+                ! $banner_id ||
+                ! $position_desktop ||
+                ! $position_mobile ||
+                ! $position_rows
+            ) {
+                continue;
+            }
+
+            // Для экранов 560–1280 px сетка двухколоночная.
+            $position_two_columns = (int) (
+                ceil( $position_desktop / 2 ) * 2
+            );
+
+            // Самая ранняя позиция для вставки через PHP.
+            $position_base = min(
+                $position_desktop,
+                $position_mobile,
+                $position_rows,
+                $position_two_columns
+            );
+
+            $banners[] = [
+                'id'               => $banner_id,
+                'mobile_id'        => $banner_mob_id,
+                'position_desktop' => $position_desktop,
+                'position_mobile'  => $position_mobile,
+                'position_rows'    => $position_rows,
+                'position_base'    => $position_base,
+            ];
+        }
+    }
+
+    foreach ( $banners as $banner ) {
+
+        if ( $loop_position !== $banner['position_base'] ) {
+            continue;
+        }
+
+        $image = wp_get_attachment_image(
+            $banner['id'],
+            'full'
+        );
+
+        if ( ! $image ) {
+            continue;
+        }
+
+        $mobile_id = $banner['mobile_id'] ?: $banner['id'];
+
+        $mobile_url = wp_get_attachment_image_url(
+            $mobile_id,
+            'full'
+        );
+
+        $page_size = absint(
+            wc_get_loop_prop( 'per_page', 0 )
+        );
+        ?>
+
+        <div
+            class="card__banner card__banner--catalog"
+            data-position-base="<?php echo esc_attr( $banner['position_base'] ); ?>"
+            data-position-desktop="<?php echo esc_attr( $banner['position_desktop'] ); ?>"
+            data-position-mobile="<?php echo esc_attr( $banner['position_mobile'] ); ?>"
+            data-position-rows="<?php echo esc_attr( $banner['position_rows'] ); ?>"
+            data-page-size="<?php echo esc_attr( $page_size ); ?>"
+        >
+            <picture>
+                <?php if ( $mobile_url ) : ?>
+                    <source
+                        media="(max-width: 559.98px)"
+                        srcset="<?php echo esc_url( $mobile_url ); ?>"
+                    >
+                <?php endif; ?>
+
+                <?php echo $image; ?>
+            </picture>
+        </div>
+
+        <?php
+    }
 }
+
+

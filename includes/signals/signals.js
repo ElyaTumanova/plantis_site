@@ -145,7 +145,28 @@
         }
     });
 
-    table.addEventListener('change', (event) => {
+    table.addEventListener('change', async (event) => {
+        const avitoToggle = event.target.closest('.plnt-signals-avito-toggle');
+        if (avitoToggle) {
+            const previousValue = !avitoToggle.checked;
+            avitoToggle.disabled = true;
+
+            try {
+                const data = new FormData();
+                data.set('product_id', avitoToggle.dataset.productId);
+                data.set('publish', avitoToggle.checked ? '1' : '0');
+                const result = await request('plnt_signals_save_avito_publish', data);
+                avitoToggle.checked = Boolean(result.publish);
+                showNotice(result.message || 'Настройка Авито сохранена.');
+            } catch (error) {
+                avitoToggle.checked = previousValue;
+                showNotice(error.message, true);
+            } finally {
+                avitoToggle.disabled = false;
+            }
+            return;
+        }
+
         if (event.target.matches('input[name="manage_stock"]')) {
             const form = event.target.closest('.plnt-signals-properties');
             if (form) updateStockField(form);
@@ -176,7 +197,7 @@
                 || params.get('price_filter')
                 || params.get('recommendation_filter')
                 || params.get('stock_status_filter')
-                || ['class', 'trend'].includes(params.get('orderby'));
+                || params.get('orderby') === 'class';
 
             if (needsReload) {
                 window.location.reload();

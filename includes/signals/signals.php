@@ -233,19 +233,6 @@ function plnt_signals_demand_classes() {
     return $classes;
 }
 
-/** Динамика текущей скорости относительно скорости за весь период. */
-function plnt_signals_demand_trend( $velocity_start, $velocity_total ) {
-    if ( null === $velocity_start || null === $velocity_total || $velocity_total <= 0 ) {
-        return null;
-    }
-
-    $change = 100 * ( $velocity_start / $velocity_total - 1 );
-
-    return array(
-        'change' => $change,
-        'type'   => $change > 25 ? 'up' : ( $change < -25 ? 'down' : 'flat' ),
-    );
-}
 
 /** Вывод рекомендации без декоративных иконок. */
 function plnt_signals_recommendation_html( WC_Product $product, array $rec ) {
@@ -323,7 +310,9 @@ function plnt_signals_product_row( WC_Product $product, $stats = null ) {
     $velocity_total = plnt_signals_sales_velocity( $id, '_plnt_expo_days_total', '_plnt_expo_sales_total' );
     $demand_classes = plnt_signals_demand_classes();
     $demand_class   = $demand_classes[ $id ] ?? null;
-    $demand_trend   = plnt_signals_demand_trend( $velocity_start, $velocity_total );
+    $avito_publish  = function_exists( 'get_field' )
+        ? (bool) get_field( 'plnt_avito_publish', $id )
+        : '1' === (string) get_post_meta( $id, 'plnt_avito_publish', true );
     $class_titles = array(
         'A' => 'Высокая скорость продаж внутри ценовой группы',
         'B' => 'Средняя скорость продаж внутри ценовой группы',
@@ -414,24 +403,15 @@ function plnt_signals_product_row( WC_Product $product, $stats = null ) {
                 <span class="plnt-signals-muted" title="Недостаточно данных для определения класса">—</span>
             <?php endif; ?>
         </td>
-        <td class="plnt-signals-cell-trend">
-            <?php if ( $demand_trend ) : ?>
-                <?php
-                $change = $demand_trend['change'];
-                $arrow = array( 'up' => '↑', 'down' => '↓', 'flat' => '→' )[ $demand_trend['type'] ];
-                $percent = abs( round( $change ) );
-                $sign = $percent > 0 ? ( $change > 0 ? '+' : '−' ) : '';
-                ?>
-                <span
-                    class="plnt-signals-demand-trend plnt-signals-demand-trend--<?php echo esc_attr( $demand_trend['type'] ); ?>"
-                    title="Изменение скорости после поступления относительно всего периода"
-                >
-                    <span aria-hidden="true"><?php echo esc_html( $arrow ); ?></span>
-                    <?php echo esc_html( $sign . number_format_i18n( $percent ) . '%' ); ?>
-                </span>
-            <?php else : ?>
-                <span class="plnt-signals-muted" title="<?php echo esc_attr( sprintf( 'Для динамики нужны %d дней общей экспозиции, хотя бы 1 день после поступления и ненулевая историческая скорость', PLNT_SIGNALS_MIN_EXPO_DAYS ) ); ?>">—</span>
-            <?php endif; ?>
+        <td class="plnt-signals-cell-avito">
+            <input
+                type="checkbox"
+                class="plnt-signals-avito-toggle"
+                data-product-id="<?php echo esc_attr( $id ); ?>"
+                aria-label="Публикация на Авито: <?php echo esc_attr( $product->get_name() ); ?>"
+                <?php checked( $avito_publish ); ?>
+                <?php disabled( ! current_user_can( 'edit_post', $id ) ); ?>
+            >
         </td>
         <td class="plnt-signals-cell-number"><?php echo esc_html( $last_sale ); ?></td>
         <td class="plnt-signals-cell-number"><?php echo wp_kses_post( $avg_price ); ?></td>
@@ -592,7 +572,16 @@ function plnt_signals_sort_posts_clauses( $clauses, $query ) {
         }
     }
 
-    if ( in_array( $rec_filter, array( 'add', 'increase', 'remove', 'active', 'none' ), true ) ) {
+    // «Скидка действует» — общая подборка: включаем и товары,
+    // для которых рекомендовано снять действующую скидку.
+    // «Снять скидку» при этом остаётся отдельным узким фильтром.
+    if ( 'active' === $rec_filter ) {
+        $clauses['where'] .= $wpdb->prepare(
+            " AND plnt_sort_stats.recommendation_type IN (%s, %s)",
+            'active',
+            'remove'
+        );
+    } elseif ( in_array( $rec_filter, array( 'add', 'increase', 'remove', 'none' ), true ) ) {
         $clauses['where'] .= $wpdb->prepare(
             " AND COALESCE(plnt_sort_stats.recommendation_type, 'none') = %s",
             $rec_filter
@@ -656,29 +645,6 @@ function plnt_signals_sort_posts_clauses( $clauses, $query ) {
     } elseif ( 'class' === $sort_by ) {
         // A=1, B=2, C=3, N=4. Неопределённые классы всегда в конце.
         $sort_column = plnt_signals_demand_class_order_sql();
-    } elseif ( 'trend' === $sort_by ) {
-        // Числовая динамика: от большего роста к большему снижению или наоборот.
-        // Формула идентична PHP: 100 * (V_reset / V_total - 1).
-        // Множитель 30 сокращается; для отсутствующих продаж берём ноль.
-        plnt_signals_add_velocity_meta_joins( $clauses, array(
-            't_days'  => '_plnt_expo_days_total',
-            't_sales' => '_plnt_expo_sales_total',
-            'r_days'  => '_plnt_expo_days_reset',
-            'r_sales' => '_plnt_expo_sales_reset',
-        ) );
-        $sort_column = $wpdb->prepare(
-            '(CASE
-                WHEN plnt_t_days.value >= %d
-                    AND plnt_r_days.value > 0
-                    AND plnt_t_sales.value > 0
-                THEN 100 * (
-                    (COALESCE(plnt_r_sales.value, 0) / plnt_r_days.value)
-                    / (plnt_t_sales.value / plnt_t_days.value) - 1
-                )
-                ELSE NULL
-            END)',
-            PLNT_SIGNALS_MIN_EXPO_DAYS
-        );
     } elseif ( in_array( $sort_by, array( 'last_sale', 'avg_price', 'recommendation' ), true ) ) {
         $sort_column = array(
             'last_sale'       => 'plnt_sort_stats.last_sale_date_gmt',
@@ -874,7 +840,6 @@ function plnt_signals_render_page() {
         'velocity_reset',
         'velocity_total',
         'class',
-        'trend',
         'price',
         'stock',
         'last_sale',
@@ -1167,12 +1132,8 @@ function plnt_signals_render_page() {
                             $sort_by, $sort_direction, $sort_url_args,
                             sprintf( 'A — верхние 20%% по скорости в своей ценовой группе, B — следующие 30%%, C — остальные, N — меньше %d дней экспозиции', PLNT_SIGNALS_MIN_EXPO_DAYS )
                         );
-                        plnt_signals_sort_heading(
-                            'trend', 'Динамика', 'plnt-signals-heading-trend',
-                            $sort_by, $sort_direction, $sort_url_args,
-                            'Изменение скорости после поступления относительно всего периода; сортировка по проценту изменения'
-                        );
                         ?>
+                        <th scope="col" class="plnt-signals-heading-avito" title="Поле ACF plnt_avito_publish">Публикация Авито</th>
                         <?php
                         plnt_signals_sort_heading(
                             'last_sale', 'Последняя продажа', 'plnt-signals-heading-last-sale',
@@ -1304,6 +1265,45 @@ function plnt_signals_render_properties( WC_Product $product ) {
     <?php
     return ob_get_clean();
 }
+
+/** Быстрое переключение ACF-флага публикации товара на Авито. */
+add_action( 'wp_ajax_plnt_signals_save_avito_publish', function () {
+    $product = plnt_signals_get_editable_product(); // Nonce, права и категория уже проверены.
+    $value   = plnt_signals_post_string( 'publish' );
+
+    if ( ! in_array( $value, array( '0', '1' ), true ) ) {
+        wp_send_json_error( array( 'message' => 'Недопустимое значение флага Авито.' ), 400 );
+    }
+
+    $id = $product->get_id();
+
+    // True/False в ACF хранится как 1 или 0. Не сохраняем весь WC_Product:
+    // изменение флага не требует пересчёта рекомендаций и скорости продаж.
+    if ( function_exists( 'update_field' ) ) {
+        $field = function_exists( 'get_field_object' )
+            ? get_field_object( 'plnt_avito_publish', $id, false, false )
+            : false;
+        $selector = is_array( $field ) && ! empty( $field['key'] )
+            ? $field['key']
+            : 'plnt_avito_publish';
+        update_field( $selector, (int) $value, $id );
+    }
+
+    // Для товаров, где поле ещё не сохранялось в ACF, гарантируем значение мета.
+    if ( (string) get_post_meta( $id, 'plnt_avito_publish', true ) !== $value ) {
+        update_post_meta( $id, 'plnt_avito_publish', $value );
+    }
+
+    $saved = (string) get_post_meta( $id, 'plnt_avito_publish', true );
+    if ( $saved !== $value ) {
+        wp_send_json_error( array( 'message' => 'Не удалось сохранить настройку Авито.' ), 500 );
+    }
+
+    wp_send_json_success( array(
+        'publish' => '1' === $saved,
+        'message' => 'Настройка публикации на Авито сохранена.',
+    ) );
+} );
 
 add_action( 'wp_ajax_plnt_signals_get_properties', function () {
     $product = plnt_signals_get_editable_product();

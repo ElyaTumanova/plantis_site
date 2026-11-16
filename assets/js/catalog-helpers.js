@@ -64,7 +64,7 @@ jQuery(document).on('plnt_catalog_updated', () => {
   setSearchFilterField()
   setdiametrFilterScroll()
   initCatalogSidebarSticky()
-  plntUpdateCatalogBanner()
+  plntUpdateCatalogBanners()
 })
 
 // jQuery(document).on('berocket_ajax_filtering_end', () => {
@@ -144,7 +144,7 @@ if(gridButton && catalogWrap) {
         gridButton.disabled = true;
         rowsButton.disabled = false;
 
-        plntUpdateCatalogBanner()
+        plntUpdateCatalogBanners()
     };
     
     function make_3_grid_columns () {
@@ -154,7 +154,7 @@ if(gridButton && catalogWrap) {
         gridButton.disabled = false;
         rowsButton.disabled = true;
         
-        plntUpdateCatalogBanner()
+        plntUpdateCatalogBanners()
     };
 };
 
@@ -291,39 +291,160 @@ document.querySelectorAll('.product').forEach(card => {
   })
 })
 
-// Рекламный баннер в каталоге
 
-/* Баннер внутри каталога */
+/*--------------------------------------------------------------
+# Баннеры внутри каталога
+--------------------------------------------------------------*/
 
-function plntUpdateCatalogBanner() {
+
+function plntUpdateCatalogBanners() {
   const catalog = document.querySelector('.catalog__grid .products')
-  const banner = catalog?.querySelector('.card__banner--catalog')
 
-  if (!catalog || !banner) return
+  if (!catalog) return
 
-  const products = [...catalog.children].filter(
-    item => item.classList.contains('product')
-  )
+  const banners = [
+    ...catalog.querySelectorAll(':scope > .card__banner--catalog')
+  ]
 
+  if (!banners.length) return
+
+  const products = [
+    ...catalog.children
+  ].filter(item => item.classList.contains('product'))
+
+  const width = window.innerWidth
+  const isMobile = width < 560
   const isRows = catalog.classList.contains('in-row')
-  const isDesktop = window.innerWidth > 1280
+  const isWide = width > 1280
 
-  const position = window.innerWidth < 560
-  ? 2
-  : isRows && isDesktop
-    ? 3
-    : 6
+  // Для новых баннеров запоминаем начало страницы.
+  // PHP размещает их после position_base.
+  banners.forEach(banner => {
+    if (banner.dataset.pageStart !== undefined) return
 
-  if (products.length <= position) {
-    banner.hidden = true
-    return
-  }
+    let productsBefore = 0
+    let sibling = banner.previousElementSibling
 
-  banner.hidden = false
+    while (sibling) {
+      if (sibling.classList.contains('product')) {
+        productsBefore++
+      }
 
-  products[position - 1].after(banner)
+      sibling = sibling.previousElementSibling
+    }
+
+    const basePosition = Number(banner.dataset.positionBase)
+
+    banner.dataset.pageStart = String(
+      Math.max(0, productsBefore - basePosition)
+    )
+  })
+
+  // Определяем начало каждой загруженной страницы.
+  const pageStarts = [
+    ...new Set(
+      banners.map(banner => Number(banner.dataset.pageStart))
+    )
+  ].sort((a, b) => a - b)
+
+  // Рассчитываем позиции баннеров.
+  const items = banners.map((banner, index) => {
+    const pageStart = Number(banner.dataset.pageStart)
+
+    const desktopPosition = Number(
+      banner.dataset.positionDesktop
+    )
+
+    const mobilePosition = Number(
+      banner.dataset.positionMobile
+    )
+
+    const rowsPosition = Number(
+      banner.dataset.positionRows
+    )
+
+    const pageSize = Number(
+      banner.dataset.pageSize
+    )
+
+    let localPosition
+
+    if (isMobile) {
+      // Менее 560 px — независимо от класса.
+      localPosition = mobilePosition
+
+    } else if (!isWide) {
+      // От 560 до 1280 px — всегда сетка из двух колонок.
+      localPosition = Math.ceil(desktopPosition / 2) * 2
+
+    } else if (isRows) {
+      // Более 1280 px и .in-row.
+      localPosition = rowsPosition
+
+    } else {
+      // Более 1280 px, обычная сетка.
+      localPosition = desktopPosition
+    }
+
+    return {
+      banner,
+      pageStart,
+      pageSize,
+      position: pageStart + localPosition,
+      index
+    }
+  })
+
+  // Сортируем по фактической позиции.
+  items.sort((a, b) => {
+    return a.position - b.position || a.index - b.index
+  })
+
+  const anchors = new Map()
+
+  items.forEach(({ banner, position, pageStart, pageSize }) => {
+
+    // Начало следующей страницы, если она загружена.
+    const nextPageStart = pageStarts.find(
+      start => start > pageStart
+    ) ?? products.length
+
+    // Не позволяем баннеру выйти за пределы страницы.
+    const pageEnd = Math.min(
+      nextPageStart,
+      pageSize > 0 ? pageStart + pageSize : products.length,
+      products.length
+    )
+
+    if (
+      !Number.isInteger(position) ||
+      position <= pageStart ||
+      position > pageEnd
+    ) {
+      banner.hidden = true
+      return
+    }
+
+    banner.hidden = false
+
+    // Несколько баннеров после одного товара
+    // размещаем последовательно.
+    const anchor = anchors.get(position) || products[position - 1]
+
+    anchor.after(banner)
+
+    anchors.set(position, banner)
+  })
 }
 
-document.addEventListener('DOMContentLoaded', plntUpdateCatalogBanner)
+// Первоначальное размещение.
+document.addEventListener(
+  'DOMContentLoaded',
+  plntUpdateCatalogBanners
+)
 
-// window.addEventListener('resize', plntUpdateCatalogBanner)
+// Перерасчёт при изменении ширины экрана.
+// window.addEventListener(
+//   'resize',
+//   plntUpdateCatalogBanners
+// )

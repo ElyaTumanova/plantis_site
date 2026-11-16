@@ -704,4 +704,5 @@ span.page-numbers.current {
 
 .card__banner--catalog {
   padding: 0;
+  overflow: hidden;
 }
