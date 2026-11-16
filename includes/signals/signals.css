@@ -295,15 +295,6 @@
     text-align: center;
 }
 
-.plnt-signals-avito-toggle {
-    margin: 0 !important;
-    cursor: pointer;
-}
-
-.plnt-signals-avito-toggle:disabled {
-    cursor: default;
-}
-
 .plnt-signals-demand-class {
     display: inline-flex;
     align-items: center;

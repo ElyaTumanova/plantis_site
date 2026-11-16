@@ -403,16 +403,16 @@ function plnt_signals_product_row( WC_Product $product, $stats = null ) {
                 <span class="plnt-signals-muted" title="Недостаточно данных для определения класса">—</span>
             <?php endif; ?>
         </td>
+        
         <td class="plnt-signals-cell-avito">
             <input
                 type="checkbox"
-                class="plnt-signals-avito-toggle"
-                data-product-id="<?php echo esc_attr( $id ); ?>"
-                aria-label="Публикация на Авито: <?php echo esc_attr( $product->get_name() ); ?>"
                 <?php checked( $avito_publish ); ?>
-                <?php disabled( ! current_user_can( 'edit_post', $id ) ); ?>
+                disabled
+                aria-label="Публикация на Авито"
             >
         </td>
+
         <td class="plnt-signals-cell-number"><?php echo esc_html( $last_sale ); ?></td>
         <td class="plnt-signals-cell-number"><?php echo wp_kses_post( $avg_price ); ?></td>
         <td class="plnt-signals-cell-recommendation">
@@ -1265,45 +1265,6 @@ function plnt_signals_render_properties( WC_Product $product ) {
     <?php
     return ob_get_clean();
 }
-
-/** Быстрое переключение ACF-флага публикации товара на Авито. */
-add_action( 'wp_ajax_plnt_signals_save_avito_publish', function () {
-    $product = plnt_signals_get_editable_product(); // Nonce, права и категория уже проверены.
-    $value   = plnt_signals_post_string( 'publish' );
-
-    if ( ! in_array( $value, array( '0', '1' ), true ) ) {
-        wp_send_json_error( array( 'message' => 'Недопустимое значение флага Авито.' ), 400 );
-    }
-
-    $id = $product->get_id();
-
-    // True/False в ACF хранится как 1 или 0. Не сохраняем весь WC_Product:
-    // изменение флага не требует пересчёта рекомендаций и скорости продаж.
-    if ( function_exists( 'update_field' ) ) {
-        $field = function_exists( 'get_field_object' )
-            ? get_field_object( 'plnt_avito_publish', $id, false, false )
-            : false;
-        $selector = is_array( $field ) && ! empty( $field['key'] )
-            ? $field['key']
-            : 'plnt_avito_publish';
-        update_field( $selector, (int) $value, $id );
-    }
-
-    // Для товаров, где поле ещё не сохранялось в ACF, гарантируем значение мета.
-    if ( (string) get_post_meta( $id, 'plnt_avito_publish', true ) !== $value ) {
-        update_post_meta( $id, 'plnt_avito_publish', $value );
-    }
-
-    $saved = (string) get_post_meta( $id, 'plnt_avito_publish', true );
-    if ( $saved !== $value ) {
-        wp_send_json_error( array( 'message' => 'Не удалось сохранить настройку Авито.' ), 500 );
-    }
-
-    wp_send_json_success( array(
-        'publish' => '1' === $saved,
-        'message' => 'Настройка публикации на Авито сохранена.',
-    ) );
-} );
 
 add_action( 'wp_ajax_plnt_signals_get_properties', function () {
     $product = plnt_signals_get_editable_product();
