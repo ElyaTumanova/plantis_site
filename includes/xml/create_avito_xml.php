@@ -393,48 +393,24 @@ function plnt_avito_output_xml(): void {
 }
 
 /**
- * Страница формирования XML-фида Авито.
+ * Кнопка формирования XML Авито в верхней панели WordPress.
  */
-add_action( 'admin_menu', 'plnt_avito_register_export_page' );
+add_action( 'admin_bar_menu', 'plnt_avito_admin_bar_button', 100 );
 
-function plnt_avito_register_export_page() {
-    add_submenu_page(
-        'edit.php?post_type=product',
-        'Выгрузка Авито',
-        'Выгрузка Авито',
-        'manage_woocommerce',
-        'plnt-avito-export',
-        'plnt_avito_render_export_page'
-    );
-}
+function plnt_avito_admin_bar_button( $wp_admin_bar ) {
 
-/**
- * Кнопка запуска выгрузки.
- */
-function plnt_avito_render_export_page() {
     if ( ! current_user_can( 'manage_woocommerce' ) ) {
         return;
     }
 
-    $export_url = add_query_arg( 'plnt_avito_xml', '1', home_url( '/' ) );
-    ?>
-
-    <div class="wrap">
-        <h1>Выгрузка товаров на Авито</h1>
-
-        <p>Формирование XML-фида комнатных растений для Авито.</p>
-
-        <p>
-            <a
-                href="<?php echo esc_url( $export_url ); ?>"
-                class="button button-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Сформировать XML
-            </a>
-        </p>
-    </div>
-
-    <?php
+    $wp_admin_bar->add_node( [
+        'id'    => 'plnt-avito-xml',
+        'title' => 'Обновить XML Авито',
+        'href'  => add_query_arg( 'plnt_avito_xml', '1', home_url( '/' ) ),
+        'meta'  => [
+            'title'  => 'Сформировать XML-фид Авито',
+            'target' => '_blank',
+            'rel'    => 'noopener noreferrer',
+        ],
+    ] );
 }
