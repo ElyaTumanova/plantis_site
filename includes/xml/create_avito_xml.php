@@ -290,8 +290,14 @@ function plnt_avito_output_xml(): void {
             }
 
             $xml->startElement( 'Ad' );
-            $xml->writeElement( 'Id', (string) $product_id );
-            $xml->writeElement( 'Id', (string) $product_id );
+
+            // ID объявления: из ACF, если заполнено, иначе ID товара WooCommerce.
+            $plnt_avito_id = trim( (string) get_post_meta( $product_id, 'plnt_avitoid', true ) );
+
+            $xml->writeElement(
+                'Id',
+                '' !== $plnt_avito_id ? $plnt_avito_id : (string) $product_id
+            );
 
             // ID существующего объявления Авито.
             $avito_id = trim( (string) get_post_meta( $product_id, 'avitoid', true ) );
@@ -384,4 +390,51 @@ function plnt_avito_output_xml(): void {
 
     readfile( $file_path );
     exit;
+}
+
+/**
+ * Страница формирования XML-фида Авито.
+ */
+add_action( 'admin_menu', 'plnt_avito_register_export_page' );
+
+function plnt_avito_register_export_page() {
+    add_submenu_page(
+        'edit.php?post_type=product',
+        'Выгрузка Авито',
+        'Выгрузка Авито',
+        'manage_woocommerce',
+        'plnt-avito-export',
+        'plnt_avito_render_export_page'
+    );
+}
+
+/**
+ * Кнопка запуска выгрузки.
+ */
+function plnt_avito_render_export_page() {
+    if ( ! current_user_can( 'manage_woocommerce' ) ) {
+        return;
+    }
+
+    $export_url = add_query_arg( 'plnt_avito_xml', '1', home_url( '/' ) );
+    ?>
+
+    <div class="wrap">
+        <h1>Выгрузка товаров на Авито</h1>
+
+        <p>Формирование XML-фида комнатных растений для Авито.</p>
+
+        <p>
+            <a
+                href="<?php echo esc_url( $export_url ); ?>"
+                class="button button-primary"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Сформировать XML
+            </a>
+        </p>
+    </div>
+
+    <?php
 }
