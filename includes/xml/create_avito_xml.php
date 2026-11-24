@@ -1,12 +1,13 @@
 <?php
 /**
- * PLANTIS — dev XML feed for Avito.
+ * PLANTIS — XML feed for Avito: manual export and server cron.
  *
  * Include this file in functions.php:
  * require_once get_theme_file_path( '/includes/xml/create_avito_xml.php' );
  *
- * Open: https://dev.plantis-shop.ru/?plnt_avito_xml=1
- * No cron and no physical XML file: XML is generated on every request.
+ * Manual export: /?plnt_avito_xml=1
+ * Server cron calls plnt_avito_generate_xml() via plnt_generate_avito_feed.
+ * The generated file is saved at wp-content/avito-xml/feed-avito-0.xml.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -115,9 +116,29 @@ function plnt_avito_output_xml(): void {
         return;
     }
 
+    try {
+        $file_path = plnt_avito_generate_xml();
+    } catch ( Throwable $e ) {
+        wp_die( esc_html( $e->getMessage() ), 'Ошибка выгрузки Авито', [ 'response' => 500 ] );
+    }
+
+    // Ручной запуск по ссылке по-прежнему показывает готовый XML.
+    nocache_headers();
+    header( 'Content-Type: application/xml; charset=UTF-8' );
+    readfile( $file_path );
+    exit;
+}
+
+/**
+ * Generate the Avito feed on disk without printing XML or terminating PHP.
+ * This function is shared by the public link and the ISPmanager cron.
+ *
+ * @return string Absolute path to the generated XML file.
+ * @throws RuntimeException When export fails.
+ */
+function plnt_avito_generate_xml(): string {
     if ( ! class_exists( 'WooCommerce' ) || ! function_exists( 'get_field' ) || ! class_exists( 'XMLWriter' ) ) {
-        status_header( 503 );
-        exit( 'Avito XML: WooCommerce, ACF Gallery and XMLWriter are required.' );
+        throw new RuntimeException( 'Avito XML: WooCommerce, ACF и XMLWriter обязательны.' );
     }
 
     // Existing Avito XML template / export values. Edit here if needed.
@@ -162,14 +183,14 @@ function plnt_avito_output_xml(): void {
 
     // Проверяем доступность папки.
     if ( ! is_dir( $dir_path ) || ! is_writable( $dir_path ) ) {
-        wp_die( 'Avito XML: папка не существует или недоступна для записи: ' . esc_html( $dir_path ) );
+        throw new RuntimeException( 'Avito XML: папка не существует или недоступна для записи: ' . $dir_path );
     }
 
     // Создаём временный файл в той же папке.
     $temp_file = tempnam( $dir_path, 'avito-' );
 
     if ( false === $temp_file ) {
-        wp_die( 'Avito XML: не удалось создать временный файл.' );
+        throw new RuntimeException( 'Avito XML: не удалось создать временный файл.' );
     }
 
     // Открываем XMLWriter для записи в файл.
@@ -177,7 +198,7 @@ function plnt_avito_output_xml(): void {
 
     if ( ! $xml->openUri( $temp_file ) ) {
         @unlink( $temp_file );
-        wp_die( 'Avito XML: не удалось открыть файл для записи.' );
+        throw new RuntimeException( 'Avito XML: не удалось открыть файл для записи.' );
     }
 
     $xml->setIndent( true );
@@ -368,28 +389,22 @@ function plnt_avito_output_xml(): void {
         || filesize( $temp_file ) === 0
     ) {
         @unlink( $temp_file );
-        wp_die( 'Avito XML: ошибка записи XML-файла.' );
+        throw new RuntimeException( 'Avito XML: ошибка записи XML-файла.' );
     }
 
     // Файл должен быть доступен для чтения веб-сервером.
     if ( ! chmod( $temp_file, 0644 ) ) {
         @unlink( $temp_file );
-        wp_die( 'Avito XML: не удалось установить права доступа к файлу.' );
+        throw new RuntimeException( 'Avito XML: не удалось установить права доступа к файлу.' );
     }
 
     // Заменяем рабочий XML только после успешной генерации.
     if ( ! rename( $temp_file, $file_path ) ) {
         @unlink( $temp_file );
-        wp_die( 'Avito XML: не удалось заменить основной файл.' );
+        throw new RuntimeException( 'Avito XML: не удалось заменить основной файл.' );
     }
 
-    // Показываем готовый XML в браузере.
-    nocache_headers();
-
-    header( 'Content-Type: application/xml; charset=UTF-8' );
-
-    readfile( $file_path );
-    exit;
+    return $file_path;
 }
 
 /**

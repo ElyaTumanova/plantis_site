@@ -60,6 +60,64 @@ function plnt_generate_feed_callback() {
 }
 
 /**
+ * Avito: independent server cron at 00:00 and 12:00.
+ * ISPmanager should call:
+ * wp --path=/path/to/wordpress eval 'do_action("plnt_generate_avito_feed");'
+ *
+ * We do not register WP-Cron events: the real schedule is in ISPmanager.
+ */
+add_action( 'plnt_generate_avito_feed', 'plnt_generate_avito_feed_callback' );
+
+function plnt_generate_avito_feed_callback(): void {
+    $status_key = 'plnt_generate_avito_feed_status';
+
+    update_option( $status_key, [
+        'last_started_at'  => time(),
+        'last_finished_at' => null,
+        'status'           => 'running',
+        'result'           => null,
+        'error'            => null,
+    ], false );
+
+    try {
+        $avito_file = get_theme_file_path( '/includes/xml/create_avito_xml.php' );
+
+        if ( ! is_file( $avito_file ) ) {
+            throw new RuntimeException( 'Avito XML generator file not found: ' . $avito_file );
+        }
+
+        require_once $avito_file;
+
+        if ( ! function_exists( 'plnt_avito_generate_xml' ) ) {
+            throw new RuntimeException( 'Avito XML generator function not found.' );
+        }
+
+        // Writes wp-content/avito-xml/feed-avito-0.xml, with no HTTP output.
+        plnt_avito_generate_xml();
+
+        $data = get_option( $status_key, [] );
+        $data['status']           = 'ok';
+        $data['result']           = [ 'message' => 'Avito XML generated successfully' ];
+        $data['error']            = null;
+        $data['last_finished_at'] = time();
+        update_option( $status_key, $data, false );
+
+    } catch ( Throwable $e ) {
+        $data = get_option( $status_key, [] );
+        $data['status']           = 'failed';
+        $data['result']           = null;
+        $data['error']            = $e->getMessage();
+        $data['last_finished_at'] = time();
+        update_option( $status_key, $data, false );
+
+        // Let ISPmanager record a failed job rather than an apparently successful one.
+        if ( defined( 'WP_CLI' ) && WP_CLI ) {
+            throw $e;
+        }
+    }
+}
+
+/**
  * Автоматическую генерацию ежедневно в 04:30 запускает ISPmanager.
  * Расписание WP-Cron здесь не создаётся.
  * Старые события очищаются однократно при загрузке signals-cron.php.
