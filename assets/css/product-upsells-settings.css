@@ -1,0 +1,230 @@
+.plnt-upsells {
+    margin-top: 20px;
+}
+
+.plnt-upsells > p {
+    max-width: 900px;
+}
+
+#plnt-upsell-groups {
+    display: grid;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.plnt-upsell-group {
+    padding: 22px;
+    border: 1px solid #dcdcde;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.plnt-upsell-group__heading,
+.plnt-upsell-group__selected-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.plnt-upsell-group__heading {
+    margin-bottom: 22px;
+}
+
+.plnt-upsell-group__title {
+    font-size: 15px;
+}
+
+.plnt-upsell-group__field,
+.plnt-upsell-group__picker {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 18px;
+    font-weight: 600;
+}
+
+.plnt-upsell-group__field select,
+.plnt-upsell-group__skus {
+    width: 100%;
+    max-width: none;
+    min-height: 40px;
+    font-weight: 400;
+}
+
+.plnt-upsell-group__skus {
+    box-sizing: border-box;
+    min-height: 100px;
+    padding: 10px 12px;
+    resize: vertical;
+}
+
+.plnt-upsell-group__picker .description {
+    margin: 0;
+    font-weight: 400;
+}
+
+.plnt-upsell-group__apply-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-weight: 400;
+}
+
+.plnt-upsell-group__apply-result {
+    color: #646970;
+    font-size: 13px;
+}
+
+.plnt-upsell-group__sku-errors {
+    margin: 0;
+    padding: 12px 16px 12px 30px;
+    border-left: 3px solid #b32d2e;
+    background: #fff4f4;
+    color: #8a2424;
+    font-weight: 400;
+    list-style: disc;
+}
+
+.plnt-upsell-group__sku-errors[hidden] {
+    display: none;
+}
+
+.plnt-upsell-group__sku-errors li {
+    margin: 0 0 5px;
+}
+
+.plnt-upsell-group__item small {
+    color: #646970;
+    white-space: nowrap;
+}
+
+.plnt-upsell-group__selected {
+    margin-top: 20px;
+    padding: 16px;
+    border: 1px solid #dcdcde;
+    border-radius: 6px;
+    background: #f8f9fa;
+}
+
+.plnt-upsell-group__selected-header {
+    margin-bottom: 12px;
+}
+
+.plnt-upsell-group__selected-filter {
+    width: 240px;
+    max-width: 55%;
+    font-weight: 400;
+}
+
+.plnt-upsell-group__list {
+    display: grid;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.plnt-upsell-group__list.is-expanded {
+    overflow-y: auto;
+    max-height: 420px;
+}
+
+.plnt-upsell-group__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-width: 0;
+    margin: 0;
+    padding: 8px 10px;
+    border: 1px solid #e0e4e7;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.plnt-upsell-group__item[hidden] {
+    display: none;
+}
+
+.plnt-upsell-group__item-title {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    min-width: 0;
+}
+
+.plnt-upsell-group__item-title a {
+    overflow-wrap: anywhere;
+    text-decoration: none;
+}
+
+.plnt-upsell-group__item-remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    min-width: 27px;
+    height: 27px;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: #b32d2e;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.plnt-upsell-group__item-remove:hover,
+.plnt-upsell-group__item-remove:focus-visible {
+    background: #fbeaea;
+}
+
+.plnt-upsell-group__empty {
+    margin: 8px 0 0;
+    color: #646970;
+}
+
+.plnt-upsell-group__show-all {
+    margin-top: 12px;
+}
+
+.plnt-upsells__maintenance {
+    margin-top: 36px;
+    padding: 18px 0 0;
+    border-top: 1px dashed #c3c4c7;
+}
+
+.plnt-upsells__maintenance summary {
+    width: fit-content;
+    color: #646970;
+    cursor: pointer;
+}
+
+.plnt-upsells__maintenance p {
+    max-width: 850px;
+    color: #646970;
+}
+
+#plnt-upsell-sync-result {
+    margin-left: 12px;
+    color: #2271b1;
+}
+
+@media (max-width: 782px) {
+    .plnt-upsell-group {
+        padding: 16px;
+    }
+
+    .plnt-upsell-group__selected-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .plnt-upsell-group__selected-filter {
+        width: 100%;
+        max-width: none;
+    }
+}

@@ -1,0 +1,350 @@
+(function ($) {
+    'use strict';
+
+    $(function () {
+        const $form = $('#plnt-upsell-form');
+        const $groups = $('#plnt-upsell-groups');
+        const template = document.getElementById('plnt-upsell-group-template');
+        const $status = $('#plnt-upsell-save-status');
+        const $sync = $('#plnt-upsell-sync-all');
+        let dirty = false;
+        let syncing = false;
+        let applying = 0;
+        let nextIndex = 0;
+
+        if (!$form.length || !$groups.length || !template) {
+            return;
+        }
+
+        function rows() {
+            return $groups.children('.plnt-upsell-group');
+        }
+
+        function markDirty() {
+            dirty = true;
+            $status.addClass('is-dirty').text('Есть несохранённые изменения');
+            $sync.prop('disabled', true);
+            $('#plnt-upsell-sync-result').text('Сначала сохраните настройки');
+        }
+
+        function refreshTerms() {
+            const occupied = new Map();
+
+            rows().each(function () {
+                const value = $(this).find('.plnt-upsell-group__term').val();
+
+                if (value) {
+                    occupied.set(value, this);
+                }
+            });
+
+            rows().each(function () {
+                const $select = $(this).find('.plnt-upsell-group__term');
+                const selected = $select.val();
+
+                $select.find('option').each(function () {
+                    if (!this.value) {
+                        return;
+                    }
+
+                    const owner = occupied.get(this.value);
+                    const taken = Boolean(owner && owner !== $select.closest('.plnt-upsell-group')[0]);
+                    this.disabled = taken;
+                    this.dataset.originalLabel = this.dataset.originalLabel || this.textContent;
+                    this.textContent = this.dataset.originalLabel + (taken ? ' — уже используется' : '');
+                });
+
+                const name = $select.find('option:selected').text().trim();
+                $(this).find('.plnt-upsell-group__title').text(selected ? name : 'Новая группа');
+            });
+        }
+
+        function refreshSelected($group) {
+            const $items = $group.find('.plnt-upsell-group__item');
+            const $list = $group.find('.plnt-upsell-group__list');
+            const $toggle = $group.find('.plnt-upsell-group__show-all');
+            const filter = $group.find('.plnt-upsell-group__selected-filter').val().trim().toLocaleLowerCase('ru');
+            const expanded = $group.data('expanded') === true;
+            let matched = 0;
+
+            $items.each(function () {
+                const matches = !filter || this.textContent.toLocaleLowerCase('ru').includes(filter);
+
+                if (matches) {
+                    matched += 1;
+                }
+
+                this.hidden = !matches || (!filter && !expanded && matched > 8);
+            });
+
+            $list.toggleClass('is-expanded', expanded || Boolean(filter));
+            $group.find('.plnt-upsell-group__total').text($items.length);
+            $group.find('.plnt-upsell-group__empty')
+                .prop('hidden', $items.length > 0)
+                .text('Горшки пока не выбраны.');
+
+            $toggle.prop('hidden', Boolean(filter) || $items.length <= 8)
+                .text(expanded ? 'Свернуть список' : 'Показать все (' + $items.length + ')');
+        }
+
+        function makeSelectedItem(product, index) {
+            const item = document.createElement('li');
+            item.className = 'plnt-upsell-group__item';
+            item.dataset.productId = String(product.id);
+
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'upsell_groups[' + index + '][products][]';
+            input.value = String(product.id);
+
+            const title = document.createElement('span');
+            title.className = 'plnt-upsell-group__item-title';
+
+            const link = document.createElement('a');
+            link.textContent = product.name;
+            link.href = product.editUrl || '#';
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            title.appendChild(link);
+
+            if (product.sku) {
+                const sku = document.createElement('small');
+                sku.textContent = 'Арт. ' + product.sku;
+                title.appendChild(sku);
+            }
+
+            const remove = document.createElement('button');
+            remove.type = 'button';
+            remove.className = 'plnt-upsell-group__item-remove';
+            remove.textContent = '×';
+            remove.setAttribute('aria-label', 'Убрать ' + product.name);
+
+            item.append(input, title, remove);
+            return item;
+        }
+
+        function selectedIds($group) {
+            return new Set($group.find('.plnt-upsell-group__item').map(function () {
+                return String(this.dataset.productId);
+            }).get());
+        }
+
+        async function applySkus($group) {
+            const $input = $group.find('.plnt-upsell-group__skus');
+            const $button = $group.find('.plnt-upsell-group__apply');
+            const $result = $group.find('.plnt-upsell-group__apply-result');
+            const $errors = $group.find('.plnt-upsell-group__sku-errors');
+            const raw = $input.val().trim();
+
+            if (!raw) {
+                $result.text('Введите артикулы через запятую.');
+                return;
+            }
+
+            applying += 1;
+            $button.prop('disabled', true);
+            $result.text('Проверяем артикулы…');
+            $errors.empty().prop('hidden', true);
+
+            try {
+                const response = await $.ajax({
+                    url: plntPlantUpsellAdmin.ajaxUrl,
+                    type: 'POST',
+                    dataType: 'json',
+                    timeout: 60000,
+                    data: {
+                        action: 'plnt_plant_upsell_resolve_skus',
+                        nonce: plntPlantUpsellAdmin.nonce,
+                        skus: raw,
+                    },
+                });
+
+                if (!response.success) {
+                    throw new Error(response.data && response.data.message || 'Не удалось проверить артикулы.');
+                }
+
+                const products = response.data.products || [];
+                const unresolved = response.data.unresolved || [];
+                const selected = selectedIds($group);
+                const field = $group.find('.plnt-upsell-group__term').attr('name');
+                const index = field.match(/^upsell_groups\[([^\]]+)\]/)[1];
+                let added = 0;
+                let existing = 0;
+
+                products.forEach(function (product) {
+                    if (selected.has(String(product.id))) {
+                        existing += 1;
+                        return;
+                    }
+
+                    $group.find('.plnt-upsell-group__list').append(makeSelectedItem(product, index));
+                    selected.add(String(product.id));
+                    added += 1;
+                });
+
+                unresolved.forEach(function (item) {
+                    const row = document.createElement('li');
+                    row.textContent = item.sku + ' — ' + item.reason;
+                    $errors.append(row);
+                });
+
+                $errors.prop('hidden', !unresolved.length);
+                $input.val(unresolved.map((item) => item.sku).join(', '));
+                $group.find('.plnt-upsell-group__selected-filter').val('');
+                $group.data('expanded', true);
+                refreshSelected($group);
+
+                if (added) {
+                    markDirty();
+                }
+
+                $result.text('Добавлено: ' + added + '. Уже выбрано: ' + existing +
+                    '. Не найдено или недоступно: ' + unresolved.length + '.');
+            } catch (error) {
+                $result.text(error.responseJSON && error.responseJSON.data && error.responseJSON.data.message
+                    || error.message || 'Не удалось проверить артикулы.');
+            } finally {
+                applying -= 1;
+                $button.prop('disabled', false);
+            }
+        }
+
+        $groups.on('change', '.plnt-upsell-group__term', function () {
+            refreshTerms();
+            markDirty();
+        });
+
+        $groups.on('click', '.plnt-upsell-group__apply', function () {
+            applySkus($(this).closest('.plnt-upsell-group'));
+        });
+
+        $groups.on('click', '.plnt-upsell-group__item-remove', function () {
+            const $group = $(this).closest('.plnt-upsell-group');
+            $(this).closest('.plnt-upsell-group__item').remove();
+            refreshSelected($group);
+            markDirty();
+        });
+
+        $groups.on('input', '.plnt-upsell-group__selected-filter', function () {
+            refreshSelected($(this).closest('.plnt-upsell-group'));
+        });
+
+        $groups.on('click', '.plnt-upsell-group__show-all', function () {
+            const $group = $(this).closest('.plnt-upsell-group');
+            $group.data('expanded', $group.data('expanded') !== true);
+            refreshSelected($group);
+        });
+
+        $('#plnt-upsell-add-group').on('click', function () {
+            nextIndex += 1;
+            const index = 'new_' + Date.now() + '_' + nextIndex;
+            const $group = $(template.innerHTML.replace(/__INDEX__/g, index));
+            $groups.append($group);
+            refreshTerms();
+            refreshSelected($group);
+            markDirty();
+            $group.find('.plnt-upsell-group__term').trigger('focus');
+        });
+
+        $groups.on('click', '.plnt-upsell-group__delete', function () {
+            if (!window.confirm('Удалить эту группу апсейлов?')) {
+                return;
+            }
+
+            $(this).closest('.plnt-upsell-group').remove();
+            refreshTerms();
+            markDirty();
+        });
+
+        $form.on('submit', function (event) {
+            if (syncing || applying) {
+                event.preventDefault();
+                window.alert('Дождитесь завершения обработки артикулов.');
+                return;
+            }
+
+            if (rows().find('.plnt-upsell-group__skus').filter(function () {
+                return this.value.trim() !== '';
+            }).length) {
+                event.preventDefault();
+                window.alert('Остались неприменённые артикулы. Нажмите «Применить» или очистите поле перед сохранением.');
+                return;
+            }
+
+            const used = new Set();
+            let duplicate = false;
+
+            rows().find('.plnt-upsell-group__term').each(function () {
+                if (used.has(this.value)) {
+                    duplicate = true;
+                }
+
+                used.add(this.value);
+            });
+
+            if (duplicate) {
+                event.preventDefault();
+                window.alert('Для одного значения атрибута можно создать только одну группу.');
+            }
+        });
+
+        async function syncAll() {
+            if (dirty || syncing || applying || !window.confirm(
+                'Перезаписать апсейлы у всех комнатных растений по сохранённым группам?'
+            )) {
+                return;
+            }
+
+            syncing = true;
+            $sync.prop('disabled', true);
+            const $result = $('#plnt-upsell-sync-result');
+            $result.text('Обновление апсейлов…');
+
+            try {
+                let offset = 0;
+                let done = false;
+                let skipped = 0;
+
+                while (!done) {
+                    const response = await $.ajax({
+                        url: plntPlantUpsellAdmin.ajaxUrl,
+                        type: 'POST',
+                        dataType: 'json',
+                        timeout: 60000,
+                        data: {
+                            action: 'plnt_plant_upsell_sync_all',
+                            nonce: plntPlantUpsellAdmin.nonce,
+                            offset,
+                        },
+                    });
+
+                    if (!response.success) {
+                        throw new Error(response.data && response.data.message || 'Ошибка обновления');
+                    }
+
+                    offset = response.data.processed;
+                    done = response.data.done;
+                    skipped += response.data.skipped || 0;
+                    $result.text('Проверено: ' + offset + ' из ' + response.data.total +
+                        '. Без настроенной группы пропущено: ' + skipped + '.');
+                }
+
+            } catch (error) {
+                $result.text(error.message || 'Не удалось обновить апсейлы');
+            } finally {
+                syncing = false;
+                $sync.prop('disabled', dirty);
+            }
+        }
+
+        $sync.on('click', function () {
+            syncAll();
+        });
+
+        refreshTerms();
+        rows().each(function () {
+            refreshSelected($(this));
+        });
+
+    });
+})(jQuery);

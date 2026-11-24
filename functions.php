@@ -84,6 +84,14 @@ require get_template_directory() . '/includes/admin/admin-order-peresadka.php';
 
 require get_template_directory() . '/includes/tbank/tbank-payment-links.php';
 
+require get_template_directory() . '/includes/admin/product-cross-sells.php';
+require get_template_directory() . '/includes/admin/product-links-settings.php';
+
+require get_template_directory() . '/includes/admin/product-up-sells.php';
+require get_template_directory() . '/includes/admin/product-upsells-settings.php';
+require get_template_directory() . '/includes/admin/product-links-product.php';
+require get_template_directory() . '/includes/admin/product-category-attributes.php';
+
 
 
 
