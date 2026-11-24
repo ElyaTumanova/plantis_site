@@ -7,8 +7,9 @@
         const template = document.getElementById('plnt-upsell-group-template');
         const $status = $('#plnt-upsell-save-status');
         const $sync = $('#plnt-upsell-sync-all');
-        let dirty = false;
+        let pendingDeletion = false;
         let syncing = false;
+        let saving = false;
         let applying = 0;
         let nextIndex = 0;
 
@@ -20,11 +21,40 @@
             return $groups.children('.plnt-upsell-group');
         }
 
-        function markDirty() {
-            dirty = true;
-            $status.addClass('is-dirty').text('Есть несохранённые изменения');
-            $sync.prop('disabled', true);
-            $('#plnt-upsell-sync-result').text('Сначала сохраните настройки');
+        function setCollapsed($group, collapsed) {
+            $group.toggleClass('is-collapsed', collapsed);
+            $group.find('.plnt-upsell-group__toggle')
+                .attr('aria-expanded', String(!collapsed))
+                .attr('aria-label', collapsed ? 'Развернуть группу' : 'Свернуть группу');
+        }
+
+        function isDirty() {
+            return pendingDeletion || rows().filter('.is-dirty').length > 0;
+        }
+
+        function updateDirtyStatus() {
+            const dirty = isDirty();
+            $status.toggleClass('is-dirty', dirty)
+                .text(dirty ? 'Есть несохранённые изменения' : 'Все изменения сохранены');
+            $sync.prop('disabled', dirty || syncing || saving);
+
+            if (dirty) {
+                $('#plnt-upsell-sync-result').text('Сначала сохраните настройки');
+            } else {
+                $('#plnt-upsell-sync-result').text('');
+            }
+        }
+
+        function markDirty($group) {
+            $group.addClass('is-dirty');
+            $group.find('.plnt-upsell-group__save-result').text('Есть несохранённые изменения');
+            updateDirtyStatus();
+        }
+
+        function hasUnappliedSkus($group) {
+            const $input = $group.find('.plnt-upsell-group__skus');
+            const value = $input.val().trim();
+            return Boolean(value && value !== ($input.data('lastAppliedSkus') || ''));
         }
 
         function refreshTerms() {
@@ -79,6 +109,7 @@
 
             $list.toggleClass('is-expanded', expanded || Boolean(filter));
             $group.find('.plnt-upsell-group__total').text($items.length);
+            $group.find('.plnt-upsell-group__summary-total').text($items.length);
             $group.find('.plnt-upsell-group__empty')
                 .prop('hidden', $items.length > 0)
                 .text('Горшки пока не выбраны.');
@@ -134,7 +165,13 @@
             const $button = $group.find('.plnt-upsell-group__apply');
             const $result = $group.find('.plnt-upsell-group__apply-result');
             const $errors = $group.find('.plnt-upsell-group__sku-errors');
+            const $errorBox = $group.find('.plnt-upsell-group__errors');
             const raw = $input.val().trim();
+
+            if (syncing || saving) {
+                $result.text('Дождитесь завершения сохранения.');
+                return;
+            }
 
             if (!raw) {
                 $result.text('Введите артикулы через запятую.');
@@ -144,7 +181,8 @@
             applying += 1;
             $button.prop('disabled', true);
             $result.text('Проверяем артикулы…');
-            $errors.empty().prop('hidden', true);
+            $errors.empty();
+            $errorBox.prop('hidden', true);
 
             try {
                 const response = await $.ajax({
@@ -188,14 +226,16 @@
                     $errors.append(row);
                 });
 
-                $errors.prop('hidden', !unresolved.length);
+                $errorBox.prop('hidden', !unresolved.length);
+                $group.find('.plnt-upsell-group__error-count').text(unresolved.length);
                 $input.val(unresolved.map((item) => item.sku).join(', '));
+                $input.data('lastAppliedSkus', $input.val().trim());
                 $group.find('.plnt-upsell-group__selected-filter').val('');
                 $group.data('expanded', true);
                 refreshSelected($group);
 
                 if (added) {
-                    markDirty();
+                    markDirty($group);
                 }
 
                 $result.text('Добавлено: ' + added + '. Уже выбрано: ' + existing +
@@ -209,20 +249,114 @@
             }
         }
 
+        async function saveGroup($group) {
+            if (syncing || saving || applying) {
+                $group.find('.plnt-upsell-group__save-result').text('Дождитесь завершения обработки артикулов.');
+                return;
+            }
+
+            const $term = $group.find('.plnt-upsell-group__term');
+            const termId = $term.val();
+            const $result = $group.find('.plnt-upsell-group__save-result');
+
+            if (!termId) {
+                $result.text('Сначала выберите значение атрибута.');
+                $term.trigger('focus');
+                return;
+            }
+
+            if (hasUnappliedSkus($group)) {
+                $result.text('Нажмите «Применить» для новых артикулов перед сохранением.');
+                return;
+            }
+
+            saving = true;
+            const $button = $group.find('.plnt-upsell-group__save');
+            const $controls = $group.find('.plnt-upsell-group__term, .plnt-upsell-group__skus, ' +
+                '.plnt-upsell-group__apply, .plnt-upsell-group__item-remove, .plnt-upsell-group__delete');
+            $button.prop('disabled', true);
+            $controls.prop('disabled', true);
+            $result.text('Сохраняем группу…');
+
+            try {
+                const productIds = $group.find('.plnt-upsell-group__item').map(function () {
+                    return this.dataset.productId;
+                }).get();
+
+                const response = await $.ajax({
+                    url: plntPlantUpsellAdmin.ajaxUrl,
+                    type: 'POST',
+                    dataType: 'json',
+                    timeout: 60000,
+                    data: {
+                        action: 'plnt_plant_upsell_save_group',
+                        nonce: plntPlantUpsellAdmin.nonce,
+                        original_term_id: $group.attr('data-saved-term-id') || 0,
+                        term_id: termId,
+                        products: productIds,
+                    },
+                });
+
+                if (!response.success) {
+                    throw new Error(response.data && response.data.message || 'Не удалось сохранить группу.');
+                }
+
+                const allowed = new Set((response.data.productIds || []).map(String));
+                $group.find('.plnt-upsell-group__item').each(function () {
+                    if (!allowed.has(this.dataset.productId)) {
+                        $(this).remove();
+                    }
+                });
+
+                $group.attr('data-saved-term-id', String(response.data.termId));
+                $group.removeClass('is-dirty');
+                refreshSelected($group);
+                $result.text('Группа сохранена.' + (response.data.skipped
+                    ? ' Недоступные товары пропущены: ' + response.data.skipped + '.'
+                    : ' Ошибочные артикулы не добавлены.'));
+            } catch (error) {
+                $result.text(error.responseJSON && error.responseJSON.data && error.responseJSON.data.message
+                    || error.message || 'Не удалось сохранить группу.');
+            } finally {
+                saving = false;
+                $button.prop('disabled', false);
+                $controls.prop('disabled', false);
+                updateDirtyStatus();
+            }
+        }
+
         $groups.on('change', '.plnt-upsell-group__term', function () {
             refreshTerms();
-            markDirty();
+            markDirty($(this).closest('.plnt-upsell-group'));
         });
+
+        $groups.on('click', '.plnt-upsell-group__toggle', function () {
+            const $group = $(this).closest('.plnt-upsell-group');
+            setCollapsed($group, !$group.hasClass('is-collapsed'));
+        });
+
+        // Если обязательный атрибут не выбран, раскрываем группу перед подсказкой браузера.
+        $form[0].addEventListener('invalid', function (event) {
+            const $group = $(event.target).closest('.plnt-upsell-group');
+
+            if ($group.length) {
+                setCollapsed($group, false);
+            }
+        }, true);
 
         $groups.on('click', '.plnt-upsell-group__apply', function () {
             applySkus($(this).closest('.plnt-upsell-group'));
+        });
+
+        $groups.on('click', '.plnt-upsell-group__save', function () {
+            saveGroup($(this).closest('.plnt-upsell-group'));
         });
 
         $groups.on('click', '.plnt-upsell-group__item-remove', function () {
             const $group = $(this).closest('.plnt-upsell-group');
             $(this).closest('.plnt-upsell-group__item').remove();
             refreshSelected($group);
-            markDirty();
+            markDirty($group);
         });
 
         $groups.on('input', '.plnt-upsell-group__selected-filter', function () {
@@ -242,7 +376,7 @@
             $groups.append($group);
             refreshTerms();
             refreshSelected($group);
-            markDirty();
+            markDirty($group);
             $group.find('.plnt-upsell-group__term').trigger('focus');
         });
 
@@ -251,23 +385,29 @@
                 return;
             }
 
-            $(this).closest('.plnt-upsell-group').remove();
+            const $group = $(this).closest('.plnt-upsell-group');
+
+            if (Number($group.attr('data-saved-term-id'))) {
+                pendingDeletion = true;
+            }
+
+            $group.remove();
             refreshTerms();
-            markDirty();
+            updateDirtyStatus();
         });
 
         $form.on('submit', function (event) {
-            if (syncing || applying) {
+            if (syncing || saving || applying) {
                 event.preventDefault();
-                window.alert('Дождитесь завершения обработки артикулов.');
+                window.alert('Дождитесь завершения текущей операции.');
                 return;
             }
 
-            if (rows().find('.plnt-upsell-group__skus').filter(function () {
-                return this.value.trim() !== '';
+            if (rows().filter(function () {
+                return hasUnappliedSkus($(this));
             }).length) {
                 event.preventDefault();
-                window.alert('Остались неприменённые артикулы. Нажмите «Применить» или очистите поле перед сохранением.');
+                window.alert('Есть новые неприменённые артикулы. Нажмите «Применить» или очистите поле перед сохранением. Ошибки уже проверенных артикулов не препятствуют сохранению.');
                 return;
             }
 
@@ -289,7 +429,7 @@
         });
 
         async function syncAll() {
-            if (dirty || syncing || applying || !window.confirm(
+            if (isDirty() || syncing || saving || applying || !window.confirm(
                 'Перезаписать апсейлы у всех комнатных растений по сохранённым группам?'
             )) {
                 return;
@@ -333,7 +473,7 @@
                 $result.text(error.message || 'Не удалось обновить апсейлы');
             } finally {
                 syncing = false;
-                $sync.prop('disabled', dirty);
+                $sync.prop('disabled', isDirty());
             }
         }
 
@@ -345,6 +485,8 @@
         rows().each(function () {
             refreshSelected($(this));
         });
+
+        updateDirtyStatus();
 
     });
 })(jQuery);

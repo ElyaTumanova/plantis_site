@@ -31,6 +31,58 @@
     margin-bottom: 22px;
 }
 
+.plnt-upsell-group__toggle {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #1d2327;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.plnt-upsell-group__toggle:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 5px;
+}
+
+.plnt-upsell-group__arrow {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    flex: 0 0 8px;
+    margin: -4px 2px 0;
+    border-right: 2px solid #646970;
+    border-bottom: 2px solid #646970;
+    transform: rotate(45deg);
+    transition: transform .15s ease;
+}
+
+.plnt-upsell-group.is-collapsed .plnt-upsell-group__arrow {
+    margin-top: 4px;
+    transform: rotate(-45deg);
+}
+
+.plnt-upsell-group__summary-count {
+    color: #646970;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.plnt-upsell-group.is-collapsed > :not(.plnt-upsell-group__heading) {
+    display: none;
+}
+
+.plnt-upsell-group.is-collapsed .plnt-upsell-group__heading {
+    margin-bottom: 0;
+}
+
 .plnt-upsell-group__title {
     font-size: 15px;
 }
@@ -77,22 +129,31 @@
     font-size: 13px;
 }
 
-.plnt-upsell-group__sku-errors {
-    margin: 0;
-    padding: 12px 16px 12px 30px;
-    border-left: 3px solid #b32d2e;
-    background: #fff4f4;
-    color: #8a2424;
-    font-weight: 400;
-    list-style: disc;
+.plnt-upsell-group__errors {
+    margin-top: 18px;
+    padding: 14px 18px;
+    border-left: 4px solid #dba617;
+    border-radius: 4px;
+    background: #fff8e5;
+    color: #664d03;
 }
 
-.plnt-upsell-group__sku-errors[hidden] {
+.plnt-upsell-group__errors[hidden] {
     display: none;
+}
+
+.plnt-upsell-group__sku-errors {
+    margin: 10px 0;
+    padding-left: 22px;
+    list-style: disc;
 }
 
 .plnt-upsell-group__sku-errors li {
     margin: 0 0 5px;
+}
+
+.plnt-upsell-group__errors p {
+    margin: 9px 0 0;
 }
 
 .plnt-upsell-group__item small {
@@ -189,6 +250,25 @@
 
 .plnt-upsell-group__show-all {
     margin-top: 12px;
+}
+
+.plnt-upsell-group__footer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid #e0e4e7;
+}
+
+.plnt-upsell-group__save-result {
+    color: #646970;
+    font-size: 13px;
+}
+
+.plnt-upsell-group.is-dirty .plnt-upsell-group__save-result {
+    color: #996800;
 }
 
 .plnt-upsells__maintenance {

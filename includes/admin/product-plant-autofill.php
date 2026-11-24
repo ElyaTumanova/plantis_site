@@ -67,7 +67,7 @@ function plnt_plant_links_enqueue_product_script( string $hook ): void {
         return;
     }
 
-    $script = 'assets/js/product-links-product.js';
+    $script = 'assets/js/product-plant-autofill.js';
 
     wp_enqueue_script(
         'plnt-plant-links-product',

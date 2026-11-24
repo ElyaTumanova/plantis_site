@@ -41,7 +41,7 @@ function plnt_plant_cross_sell_enqueue_settings_assets( string $hook ): void {
         return;
     }
 
-    $style = 'assets/css/product-links-settings.css';
+    $style = 'assets/css/product-cross-sells-settings.css';
 
     wp_enqueue_style(
         'plnt-product-links-settings',
@@ -54,7 +54,7 @@ function plnt_plant_cross_sell_enqueue_settings_assets( string $hook ): void {
         return;
     }
 
-    $script = 'assets/js/product-links-settings.js';
+    $script = 'assets/js/product-cross-sells-settings.js';
 
     wp_enqueue_script( 'jquery-ui-sortable' );
 

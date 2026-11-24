@@ -54,12 +54,16 @@ function plnt_plant_upsell_render_group( array $group, $index, array $terms ): v
     $term_id  = absint( $group['term_id'] ?? 0 );
     $products = array_values( array_unique( array_filter( array_map( 'absint', (array) ( $group['products'] ?? array() ) ) ) ) );
     ?>
-    <div class="plnt-upsell-group">
+    <div class="plnt-upsell-group" data-saved-term-id="<?php echo esc_attr( $term_id ); ?>">
         <div class="plnt-upsell-group__heading">
-            <strong class="plnt-upsell-group__title"><?php
-                $current = $term_id ? get_term( $term_id, plnt_plant_upsell_attribute_taxonomy() ) : null;
-                echo esc_html( $current && ! is_wp_error( $current ) ? $current->name : 'Новая группа' );
-            ?></strong>
+            <button type="button" class="plnt-upsell-group__toggle" aria-expanded="true" aria-label="Свернуть или развернуть группу">
+                <span class="plnt-upsell-group__arrow" aria-hidden="true"></span>
+                <strong class="plnt-upsell-group__title"><?php
+                    $current = $term_id ? get_term( $term_id, plnt_plant_upsell_attribute_taxonomy() ) : null;
+                    echo esc_html( $current && ! is_wp_error( $current ) ? $current->name : 'Новая группа' );
+                ?></strong>
+                <span class="plnt-upsell-group__summary-count">Горшков: <span class="plnt-upsell-group__summary-total"><?php echo esc_html( (string) count( $products ) ); ?></span></span>
+            </button>
             <button class="button-link-delete plnt-upsell-group__delete" type="button">Удалить группу</button>
         </div>
 
@@ -83,9 +87,8 @@ function plnt_plant_upsell_render_group( array $group, $index, array $terms ): v
                 <button type="button" class="button plnt-upsell-group__apply">Применить</button>
                 <span class="plnt-upsell-group__apply-result" role="status" aria-live="polite"></span>
             </div>
-            <ul class="plnt-upsell-group__sku-errors" hidden></ul>
             <p class="description">Укажите артикулы через запятую. «Применить» добавит найденные товары в список ниже.
-                После этого сохраните группы. Доступны горшки из категорий «Горшки и кашпо», Treez и Lechuza.</p>
+                После этого сохраните группу. Доступны горшки из категорий «Горшки и кашпо», Treez и Lechuza.</p>
         </div>
 
         <div class="plnt-upsell-group__selected">
@@ -112,6 +115,17 @@ function plnt_plant_upsell_render_group( array $group, $index, array $terms ): v
             </ul>
             <p class="plnt-upsell-group__empty" <?php echo $products ? 'hidden' : ''; ?>>Горшки пока не выбраны.</p>
             <button type="button" class="button-link plnt-upsell-group__show-all" hidden>Показать все</button>
+        </div>
+
+        <div class="plnt-upsell-group__errors" hidden>
+            <strong>Не добавлены артикулы: <span class="plnt-upsell-group__error-count">0</span></strong>
+            <ul class="plnt-upsell-group__sku-errors"></ul>
+            <p>Эти товары не попадут в группу и не препятствуют её сохранению.</p>
+        </div>
+
+        <div class="plnt-upsell-group__footer">
+            <button type="button" class="button button-primary plnt-upsell-group__save">Сохранить группу</button>
+            <span class="plnt-upsell-group__save-result" role="status" aria-live="polite"></span>
         </div>
     </div>
     <?php
@@ -143,7 +157,8 @@ function plnt_plant_upsell_render_settings(): void {
     <section class="plnt-upsells" id="plnt-upsells">
         <h2>Апсейлы растений — горшки для пересадки</h2>
         <p>Для каждого значения атрибута «Для пересадки» укажите конкретные горшки. При нескольких значениях
-            у растения списки горшков объединяются без повторов. Апсейлы меняются только у комнатных растений.</p>
+            у растения списки горшков объединяются без повторов. Апсейлы меняются только у комнатных растений,
+            по отдельной кнопке в карточке товара или по кнопке массового обновления ниже.</p>
 
         <?php if ( isset( $_GET['upsells_updated'] ) ) : ?>
             <div class="notice notice-success is-dismissible"><p>Группы апсейлов сохранены. Для обновления связей у существующих растений запустите пересчёт отдельной кнопкой.</p></div>
@@ -163,7 +178,7 @@ function plnt_plant_upsell_render_settings(): void {
 
             <div class="plnt-links-settings__savebar">
                 <span class="plnt-links-settings__save-status" id="plnt-upsell-save-status">Все изменения сохранены</span>
-                <button type="submit" class="button button-primary" <?php disabled( ! $taxonomy ); ?>>Сохранить группы апсейлов</button>
+                <button type="submit" class="button button-primary" <?php disabled( ! $taxonomy ); ?>>Сохранить все группы</button>
             </div>
 
             <div id="plnt-upsell-groups">
@@ -255,6 +270,81 @@ function plnt_plant_upsell_save_groups(): void {
 
     wp_safe_redirect( add_query_arg( $redirect_args, admin_url( 'admin.php' ) ) . '#plnt-upsells' );
     exit;
+}
+
+/** Сохранить одну группу, не затрагивая остальные группы и не запуская пересчёт. */
+add_action( 'wp_ajax_plnt_plant_upsell_save_group', 'plnt_plant_upsell_save_group_ajax' );
+
+function plnt_plant_upsell_save_group_ajax(): void {
+    if ( ! current_user_can( 'manage_woocommerce' ) ) {
+        wp_send_json_error( array( 'message' => 'Недостаточно прав.' ), 403 );
+    }
+
+    check_ajax_referer( 'plnt_plant_upsell_admin', 'nonce' );
+
+    $taxonomy = plnt_plant_upsell_attribute_taxonomy();
+    $term_id  = isset( $_POST['term_id'] ) ? absint( $_POST['term_id'] ) : 0;
+    $old_id   = isset( $_POST['original_term_id'] ) ? absint( $_POST['original_term_id'] ) : 0;
+    $term     = $taxonomy && $term_id ? get_term( $term_id, $taxonomy ) : null;
+
+    if ( ! $term || is_wp_error( $term ) ) {
+        wp_send_json_error( array( 'message' => 'Выберите значение атрибута «Для пересадки».' ), 400 );
+    }
+
+    $groups = plnt_plant_upsell_groups();
+    $index  = null;
+
+    foreach ( $groups as $group_index => $group ) {
+        $existing_id = absint( $group['term_id'] ?? 0 );
+
+        if ( $old_id && $old_id === $existing_id ) {
+            $index = $group_index;
+        }
+
+        if ( $term_id === $existing_id && $old_id !== $existing_id ) {
+            wp_send_json_error( array( 'message' => 'Для этого значения атрибута уже сохранена другая группа.' ), 409 );
+        }
+    }
+
+    if ( $old_id && null === $index ) {
+        wp_send_json_error( array( 'message' => 'Исходная группа не найдена. Обновите страницу.' ), 409 );
+    }
+
+    $submitted = isset( $_POST['products'] ) && is_array( $_POST['products'] )
+        ? $_POST['products']
+        : array();
+    $products = array();
+    $skipped  = 0;
+
+    foreach ( $submitted as $product_id ) {
+        $product_id = absint( $product_id );
+
+        if ( ! plnt_plant_upsell_is_allowed_pot( $product_id ) ) {
+            ++$skipped;
+            continue;
+        }
+
+        $products[ $product_id ] = $product_id;
+    }
+
+    $saved_group = array(
+        'term_id'  => $term_id,
+        'products' => array_values( $products ),
+    );
+
+    if ( null === $index ) {
+        $groups[] = $saved_group;
+    } else {
+        $groups[ $index ] = $saved_group;
+    }
+
+    update_option( 'plnt_plant_upsell_groups', $groups, false );
+
+    wp_send_json_success( array(
+        'termId'     => $term_id,
+        'productIds' => array_values( $products ),
+        'skipped'    => $skipped,
+    ) );
 }
 
 /** Преобразовать список точных артикулов в товары разрешённых категорий. */
