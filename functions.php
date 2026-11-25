@@ -87,6 +87,19 @@ require get_template_directory() . '/includes/admin/admin-order-peresadka.php';
 
 require get_template_directory() . '/includes/tbank/tbank-payment-links.php';
 
+//Автосвязи товаров: кроссейлы и апсейлы растений
+
+require get_template_directory() . '/includes/admin/product-cross-sells.php';
+require get_template_directory() . '/includes/admin/product-cross-sells-settings.php';
+
+require get_template_directory() . '/includes/admin/product-up-sells.php';
+require get_template_directory() . '/includes/admin/product-upsells-settings.php';
+
+require get_template_directory() . '/includes/admin/product-plant-autofill.php';
+require get_template_directory() . '/includes/admin/product-category-attributes.php';
+
+// require get_template_directory() . '/includes/admin/product-express-create.php';
+
 
 
 
