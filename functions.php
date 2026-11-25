@@ -95,7 +95,7 @@ require get_template_directory() . '/includes/admin/product-upsells-settings.php
 require get_template_directory() . '/includes/admin/product-plant-autofill.php';
 require get_template_directory() . '/includes/admin/product-category-attributes.php';
 
-require get_template_directory() . '/includes/admin/product-express-create.php';
+// require get_template_directory() . '/includes/admin/product-express-create.php';
 
 
 
