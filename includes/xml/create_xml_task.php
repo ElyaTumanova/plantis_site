@@ -118,6 +118,104 @@ function plnt_generate_avito_feed_callback(): void {
 }
 
 /**
+ * Пересобираем XML Авито, когда растение заканчивается или снова появляется.
+ * Для нескольких изменений остатков за минуту создаётся одна фоновая задача.
+ * Плановый cron в ISPmanager при этом продолжает работать без изменений.
+ */
+add_action( 'woocommerce_product_before_set_stock', 'plnt_avito_remember_stock_before_change' );
+add_action( 'woocommerce_product_set_stock', 'plnt_avito_schedule_on_stock_change' );
+add_action( 'woocommerce_product_set_stock_status', 'plnt_avito_schedule_on_stock_status_change', 10, 3 );
+
+/** Запоминаем старое количество до записи нового значения WooCommerce. */
+function plnt_avito_remember_stock_before_change( $product ): void {
+    if ( ! $product instanceof WC_Product || 'product' !== get_post_type( $product->get_id() ) ) {
+        return;
+    }
+
+    $old_stock = get_post_meta( $product->get_id(), '_stock', true );
+
+    $GLOBALS['plnt_avito_stock_before'][ $product->get_id() ] = is_numeric( $old_stock )
+        ? (float) $old_stock
+        : null;
+}
+
+/** Срабатывает только при переходах > 0 → <= 0 или <= 0 → > 0. */
+function plnt_avito_schedule_on_stock_change( $product ): void {
+    if ( ! $product instanceof WC_Product ) {
+        return;
+    }
+
+    $product_id = $product->get_id();
+    $before     = $GLOBALS['plnt_avito_stock_before'][ $product_id ] ?? null;
+
+    unset( $GLOBALS['plnt_avito_stock_before'][ $product_id ] );
+
+    $after = $product->get_stock_quantity();
+
+    if ( null === $before || null === $after || ( $before > 0 ) === ( (float) $after > 0 ) ) {
+        return;
+    }
+
+    plnt_avito_queue_stock_refresh( $product_id );
+}
+
+/** Если наличие меняют вручную без изменения количества, обновляем фид тоже. */
+function plnt_avito_schedule_on_stock_status_change( $product_id, $stock_status, $product ): void {
+    plnt_avito_queue_stock_refresh( (int) $product_id );
+}
+
+/**
+ * Только опубликованные комнатные растения с включённой публикацией Авито.
+ * Action Scheduler выполняет задачу через минуту, не задерживая заказ/админку.
+ */
+function plnt_avito_queue_stock_refresh( int $product_id ): void {
+    if (
+        'product' !== get_post_type( $product_id )
+        || 'publish' !== get_post_status( $product_id )
+        || '1' !== (string) get_post_meta( $product_id, 'plnt_avito_publish', true )
+        || ! function_exists( 'as_schedule_single_action' )
+    ) {
+        return;
+    }
+
+    $indoor_category = get_term_by( 'slug', 'komnatnye-rasteniya', 'product_cat' );
+    $product_terms   = get_the_terms( $product_id, 'product_cat' );
+
+    if ( ! $indoor_category || ! is_array( $product_terms ) ) {
+        return;
+    }
+
+    $is_indoor_plant = false;
+
+    foreach ( $product_terms as $term ) {
+        if (
+            (int) $term->term_id === (int) $indoor_category->term_id
+            || in_array(
+                (int) $indoor_category->term_id,
+                array_map( 'intval', get_ancestors( $term->term_id, 'product_cat', 'taxonomy' ) ),
+                true
+            )
+        ) {
+            $is_indoor_plant = true;
+            break;
+        }
+    }
+
+    if ( ! $is_indoor_plant ) {
+        return;
+    }
+
+    // $unique = true: одно отложенное обновление на все изменения за минуту.
+    as_schedule_single_action(
+        time() + MINUTE_IN_SECONDS,
+        'plnt_generate_avito_feed',
+        [],
+        'plnt_avito',
+        true
+    );
+}
+
+/**
  * Автоматическую генерацию ежедневно в 04:30 запускает ISPmanager.
  * Расписание WP-Cron здесь не создаётся.
  * Старые события очищаются однократно при загрузке signals-cron.php.
