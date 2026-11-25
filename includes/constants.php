@@ -3,6 +3,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * Глобальные настройки категорий и способов доставки.
+ * Должны быть доступны как при HTTP-запросах,
+ * так и при запуске WordPress через WP-CLI.
+ */
+global $plants_cat_id,
+       $gorshki_cat_id,
+       $ukhod_cat_id,
+       $treez_cat_id,
+       $treez_poliv_cat_id,
+       $plants_treez_cat_id,
+       $lechuza_cat_id,
+       $misc_cat_id,
+       $peresadka_cat_id,
+       $uncategorized_cat_id,
+       $local_pickup,
+       $delivery_inMKAD,
+       $delivery_outMKAD,
+       $delivery_free,
+       $delivery_pochta,
+       $delivery_courier,
+       $delivery_long_dist;
+			 
 $site = get_site_url();
 
 function plnt_check_site() {
