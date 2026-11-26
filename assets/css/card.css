@@ -98,8 +98,23 @@
   display: grid;
   grid-template-columns: var(--cardImageThumbsWidth) minmax(0, 1fr);
   gap: 8px;
+  position: relative;
 }
 
+@media (min-width: 1025px) {
+  .product-gallery__thumbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--cardImageThumbsWidth);
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .product-gallery__main {
+    grid-column: 2;
+  }
+}
 @media (max-width: 1024px) {
   .product-gallery {
     display: flex;
